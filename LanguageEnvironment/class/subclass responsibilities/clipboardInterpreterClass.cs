@@ -1,0 +1,4 @@
+clipboardInterpreterClass
+
+	self subclassResponsibility.
+	^ NoConversionClipboardInterpreter.
