@@ -1,7 +1,7 @@
 allSentMessages
 	"Answer the set of selectors which are sent somewhere in the system."
 	| sent |
-	sent _ Set new.
+	sent _ IdentitySet new: CompiledMethod instanceCount.
 	Cursor execute showWhile: 
 		[self allBehaviorsDo: 
 			[:cl | cl selectorsDo: 
