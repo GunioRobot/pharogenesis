@@ -1,21 +1,17 @@
 colorPatch
 	"Return a color patch button that lets the user choose a color and modifies the code"
-	| msg cc patch ss |
+	| cc patch sel completeMsg |
 	
-	(self nodeClassIs: KeyWordNode) ifTrue: [
-		msg _ self firstOwnerSuchThat: [:oo | 
-			(oo isSyntaxMorph and: [oo nodeClassIs: MessageNode]) 
-				ifTrue: [ss _ oo submorphs select: [:mm | mm isSyntaxMorph].
-					ss size > 1 ifTrue: [ss second printString = 'r:g:b:']
-							ifFalse: [false]]
-				ifFalse: [false]]].
-	"Later test for SelectorNode with a standard color name"
-	(self nodeClassIs: VariableNode) ifTrue: [
-		self printString = 'Color' ifTrue: [
-			owner isSyntaxMorph ifTrue: [msg _ owner]]].
+	
+	((self nodeClassIs: MessageNode) "or: [self nodeClassIs: SelectorNode]") ifFalse: [^ nil].
+	(sel _ self selector) ifNil: [^ nil].
+	(Color colorNames includes: sel) | (sel == #r:g:b:) ifFalse: [^ nil].
+		"a standard color name"
+	completeMsg _ self isNoun ifTrue: [self] 
+				ifFalse: [owner isNoun ifTrue: [owner] ifFalse: [owner owner]].
 
-	msg ifNil: [^ nil].
-	(cc _ msg try) class == Color ifFalse: [^ nil].
-	patch _ RectangleMorph new color: cc; borderWidth: 1.
-	patch on: #mouseDown send: #chooseColor to: msg.
+	(cc _ completeMsg try) class == Color ifFalse: [^ nil].
+	patch _ ColorTileMorph new colorSwatchColor: cc.
+		"sends colorChangedForSubmorph: to the messageNode"
+	patch color: Color transparent; borderWidth: 0.  patch submorphs last delete.
 	^ patch
