@@ -4,6 +4,7 @@ addHandleAt: aPoint color: aColor icon: iconName on: eventName send: selector to
 	handle _ EllipseMorph
 		newBounds: (Rectangle center: aPoint extent: self handleSize asPoint)
 		color: aColor.
+	handle borderColor: aColor muchDarker.
 	self addMorph: handle.
 	iconName ifNotNil:
 		[ | form |
@@ -15,5 +16,5 @@ addHandleAt: aPoint color: aColor icon: iconName on: eventName send: selector to
 				lock)]].
 	handle on: #mouseUp send: #endInteraction to: self.
 	handle on: eventName send: selector to: recipient.
-	handle setBalloonText: (target balloonHelpTextForHandle: handle).
+	handle setBalloonText: (target balloonHelpTextForHandle: handle) translated.
 	^ handle
