@@ -1,6 +1,6 @@
 validateClassName: aString
 	"Validate the new class name"
-	aString first isUppercase ifFalse:[
+	aString first canBeGlobalVarInitial ifFalse:[
 		self error: 'Class names must be capitalized'.
 		^false].
 	environ at: aString ifPresent:[:old|
