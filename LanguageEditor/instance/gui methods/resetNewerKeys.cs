@@ -1,0 +1,3 @@
+resetNewerKeys
+
+	self initializeNewerKeys.
