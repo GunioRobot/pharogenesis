@@ -34,7 +34,7 @@ shapeFill: aColor interiorPoint: interiorPoint
 					[:form | form pixelValueAt: interiorPoint put: 1].
 
 	"Finally use that shape as a mask to flood the region with color"
-	((BitBlt destForm: self sourceForm: bwForm 
+	((BitBlt current destForm: self sourceForm: bwForm 
 		fillColor: nil
 		combinationRule: Form erase1bitShape	"Cut a hole in the picture with my mask"
 		destOrigin: bwForm offset 
@@ -42,11 +42,5 @@ shapeFill: aColor interiorPoint: interiorPoint
 		extent: self extent clipRect: self boundingBox)
 		colorMap: (Bitmap with: 0 with: 16rFFFFFFFF))
 		copyBits.
-"	bwForm displayOn: self
-		at: 0@0
-		clippingBox: self boundingBox
-		rule: Form erase1bitShape
-		fillColor: nil.	"
-	"(cColor pixelValueForDepth: depth) = 0 ifTrue: [^ bwForm]."	"transparent"
 	self fillShape: bwForm fillColor: aColor.
 	^ bwForm
