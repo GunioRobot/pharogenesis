@@ -5,4 +5,4 @@ nonObsoleteClass
 	obsName _ self name.
 	[obsName beginsWith: 'AnObsolete']
 		whileTrue: [obsName _ obsName copyFrom: 'AnObsolete' size + 1 to: obsName size].
-	^ Smalltalk at: obsName asSymbol
+	^ self environment at: obsName asSymbol
