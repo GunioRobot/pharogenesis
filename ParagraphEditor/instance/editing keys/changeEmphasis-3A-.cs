@@ -2,7 +2,7 @@ changeEmphasis: characterStream
 	"Change the emphasis of the current selection or prepare to accept characters with the change in emphasis. Emphasis change amounts to a font change.  Keeps typeahead."
 	| keyCode attribute oldAttributes index thisSel colors |		 "control 0..9 -> 0..9"
 	keyCode _ ('0123456789-=' indexOf: sensor keyboard ifAbsent: [1]) - 1.
-	oldAttributes _ paragraph text attributesAt: startBlock stringIndex.
+	oldAttributes _ paragraph text attributesAt: startBlock stringIndex forStyle: paragraph textStyle.
 	thisSel _ self selection.
 
 	"Decipher keyCodes for Command 0-9..."
