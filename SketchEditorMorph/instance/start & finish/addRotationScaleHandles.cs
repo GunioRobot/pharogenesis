@@ -11,8 +11,9 @@ addRotationScaleHandles
 	"Put cursor back"
 	rotationButton on: #mouseLeave send: #mouseEnter: to: self.
 	self addMorph: rotationButton.
-	rotationButton setBalloonText: 'Drag me sideways to\rotate your
-picture.' withCRs.
+	rotationButton setBalloonText: 'Drag me sideways to
+rotate your
+picture.' translated.
 
 	scaleButton _ SketchMorph withForm: (palette scaleTabForm).
 	scaleButton position: bounds rightCenter - ((scaleButton width)@6).
@@ -22,8 +23,9 @@ picture.' withCRs.
 	"Put cursor back"
 	scaleButton on: #mouseLeave send: #mouseEnter: to: self.
 	self addMorph: scaleButton.
-	scaleButton setBalloonText: 'Drag me up and down to change\the size
-of your picture.' withCRs.
+	scaleButton setBalloonText: 'Drag me up and down to change
+the size
+of your picture.' translated.
 
 "REMOVED:
 	fwdButton _ PolygonMorph new.
@@ -37,8 +39,9 @@ pt+(0@22)).
 	fwdButton on: #mouseLeave send: #mouseEnter: to: self.
 	self setProperty: #fwdButton toValue: fwdButton.
 	self addMorph: fwdButton.
-	fwdButton setBalloonText: 'Drag me around to point\in the direction
-I go forward.' withCRs.
+	fwdButton setBalloonText: 'Drag me around to point
+in the direction
+I go forward.' translated.
 
 	toggle _ EllipseMorph
 		newBounds: (Rectangle center: fwdButton vertices last +
@@ -49,9 +52,12 @@ I go forward.' withCRs.
 	toggle on: #mouseLeave send: #mouseEnter: to: self.
 	self setProperty: #fwdToggle toValue: toggle.
 	fwdButton addMorph: toggle.
-	toggle setBalloonText: 'When your object turns,\how should its
-picture change?\It can rotate, face left or right,\face up or down, or not
-change.' withCRs.
+	toggle setBalloonText: 'When your object turns,
+how should its
+picture change?
+It can rotate, face left or right,
+face up or down, or not
+change.' translated.
 	"
 	self setProperty: #rotationStyle toValue: hostView rotationStyle.
 "	self forward: hostView setupAngle direction: fwdButton.	"
