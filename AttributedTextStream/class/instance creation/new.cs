@@ -1,0 +1,2 @@
+new
+	^super basicNew initialize
