@@ -1,0 +1,2 @@
+morphMaker
+	^ AttributeInspector on: self
