@@ -1,17 +1,26 @@
 resumeProcess: aTopView
-	World ifNil: [aTopView erase].
-	Smalltalk installLowSpaceWatcher.  "restart low space handler"
+
+	Smalltalk isMorphic ifFalse: [aTopView erase].
+	savedCursor ifNotNil: [Sensor currentCursor: savedCursor].
+	isolationHead ifNotNil:
+		[failedProject enterForEmergencyRecovery.
+		isolationHead invoke. isolationHead _ nil].
 	interruptedProcess suspendedContext method
-			== (Process compiledMethodAt: #terminate) ifFalse:
+			== (Process compiledMethodAt: #terminate)
+		ifFalse:
 		[contextStackIndex > 1
 			ifTrue: [interruptedProcess popTo: self selectedContext]
 			ifFalse: [interruptedProcess install: self selectedContext].
-		World ifNil: [ScheduledControllers
+		Smalltalk isMorphic
+			ifTrue: [Project current resumeProcess: interruptedProcess]
+			ifFalse: [ScheduledControllers
 						activeControllerNoTerminate: interruptedController
-						andProcess: interruptedProcess]
-			ifNotNil: [interruptedProcess resume]].
+						andProcess: interruptedProcess]].
+
 	"if old process was terminated, just terminate current one"
-	interruptedProcess _ nil. 
-	World ifNil: [aTopView controller closeAndUnscheduleNoErase]
-		ifNotNil: [aTopView delete].
+	interruptedProcess _ nil. "Before delete, so release doesn't terminate it"
+	Smalltalk isMorphic
+		ifTrue: [aTopView delete. World displayWorld]
+		ifFalse: [aTopView controller closeAndUnscheduleNoErase].
+	Smalltalk installLowSpaceWatcher.  "restart low space handler"
 	Processor terminateActive
