@@ -1,0 +1,2 @@
+presentAppearanceMenu
+	self popUpMenuFor: #appearanceMenu
