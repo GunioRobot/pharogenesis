@@ -1,0 +1,2 @@
+browseWithDragNDrop
+	^ self valueOfFlag: #browseWithDragNDrop
