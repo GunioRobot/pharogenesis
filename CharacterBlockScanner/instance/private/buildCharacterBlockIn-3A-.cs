@@ -4,13 +4,16 @@ buildCharacterBlockIn: para
 	(para numberOfLines = 0 or: [text size = 0])
 		ifTrue:	[^ CharacterBlock new stringIndex: 1  "like being off end of string"
 					text: para text
-					topLeft: (para leftMarginForDisplayForLine: 1)
+					topLeft: (para leftMarginForDisplayForLine: 1 alignment: (alignment ifNil:[textStyle alignment]))
 								@ para compositionRectangle top
 					extent: 0 @ textStyle lineGrid].
 	"find the line"
 	lineIndex _ para lineIndexOfTop: characterPoint y.
 	destY _ para topAtLineIndex: lineIndex.
 	line _ para lines at: lineIndex.
+	lastIndex _ line first.
+     self setStopConditions.  " also loads the font and loads all emphasis attributes "
+
 	rightMargin _ para rightMarginForDisplay.
 
 	(lineIndex = para numberOfLines and:
@@ -22,8 +25,8 @@ buildCharacterBlockIn: para
 								characterPoint _ (para compositionRectangle) topLeft].
 					characterPoint x > rightMargin
 						ifTrue:	[self characterPointSetX: rightMargin]].
-	destX _ (leftMargin _ para leftMarginForDisplayForLine: lineIndex).
-	nextLeftMargin_ para leftMarginForDisplayForLine: lineIndex+1.
+	destX _ (leftMargin _ para leftMarginForDisplayForLine: lineIndex alignment: (alignment ifNil:[textStyle alignment])).
+	nextLeftMargin_ para leftMarginForDisplayForLine: lineIndex+1 alignment: (alignment ifNil:[textStyle alignment]).
 	lastIndex _ line first.
 
 	self setStopConditions.		"also sets font"
@@ -35,6 +38,7 @@ buildCharacterBlockIn: para
 		ifTrue:	[runStopIndex _ lineStop].
 	lastCharacterExtent _ 0 @ line lineHeight.
 	spaceCount _ 0. done  _ false.
+	self handleIndentation.
 
 	[done]
 	whileFalse:
