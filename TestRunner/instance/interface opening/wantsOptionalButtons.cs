@@ -1,0 +1,2 @@
+wantsOptionalButtons
+	^ Preferences optionalButtons
