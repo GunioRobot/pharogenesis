@@ -37,4 +37,5 @@ openAsMorph
 		frame: (0 @ 0.5 corner: 1 @ 1).
 	window setUpdatablePanesFrom: #(#processNameList #stackNameList ).
 	(window setLabel: 'Process Browser') openInWorld.
+	startedCPUWatcher ifTrue: [ self setUpdateCallbackAfter: 7 ].
 	^ window
