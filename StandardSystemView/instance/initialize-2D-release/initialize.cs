@@ -11,3 +11,4 @@ initialize
 	collapsedViewport _ nil.
 	expandedViewport _ nil.
 	bitsValid _ false.
+	updatablePanes _ #()
