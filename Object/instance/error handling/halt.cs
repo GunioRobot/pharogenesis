@@ -4,9 +4,4 @@ halt
 	avoid putting this message on the stack. Halt is especially useful when 
 	the breakpoint message is an arbitrary one."
 
-	Debugger
-		openContext: thisContext
-		label: 'Halt encountered.'
-		contents: thisContext shortStack
-
-	"nil halt."
+	Halt signal
