@@ -3,7 +3,7 @@ brushAlphaFromGray
 
 	| d alphaMap this alpha colorMaker newBox smallNib |
 	currentNib _ palette getNib.
-	newBox _ currentNib innerPixelRectFor: 0 orNot: true.
+	newBox _ currentNib rectangleEnclosingPixelsNotOfColor: Color transparent.
 	"minimum size"
 	smallNib _ Form extent: newBox extent depth: currentNib depth.
 	smallNib copyBits: newBox from: currentNib at: 0@0 
@@ -21,7 +21,7 @@ brushAlphaFromGray
 				put: ((currentColor alpha: alpha) pixelWordForDepth: 32)].	
 	brush _ Form extent: smallNib extent depth: 32.
 	"brush offset: smallNib offset."
-	colorMaker _ BitBlt toForm: brush.
+	colorMaker _ BitBlt current toForm: brush.
 	colorMaker sourceForm: smallNib; colorMap: alphaMap.
 	colorMaker sourceOrigin: 0@0; destOrigin: 0@0; combinationRule: Form over;
 		width: brush width; height: brush height; copyBits.
