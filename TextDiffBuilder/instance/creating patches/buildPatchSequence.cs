@@ -1,7 +1,6 @@
 buildPatchSequence
-	"@@ TODO: Das funktioniert noch nicht für n-m matches"
-	matches := PluggableDictionary new.
-	matches hashBlock: self pointHashBlock.
+	"@@ TODO: Das funktioniert noch nicht f√ºr n-m matches"
+	matches := TwoLevelDictionary new.
 	self buildReferenceMap.
 	runs := self processDiagonals.
 	self validateRuns: runs.
