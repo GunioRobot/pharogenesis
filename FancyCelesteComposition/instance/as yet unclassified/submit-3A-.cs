@@ -8,7 +8,7 @@ submit: sendNow
 		celeste _ Celeste open.
 	].
 
-	newMessageNumber _ celeste PROTOqueueMessageWithText: (
+	newMessageNumber _ celeste queueMessageWithText: (
 		self breakLines: self completeTheMessage atWidth: 999
 	).
 	sendNow ifTrue: [celeste sendMail: {newMessageNumber}].
