@@ -1,0 +1,2 @@
+length
+	^ self vector r
