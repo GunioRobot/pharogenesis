@@ -1,8 +1,6 @@
 open: aForm named: aString
-	"FormView open: (GIFReadWriter imageFromFileNamed: 'TylerCrop.GIF')
-named: 'Squeak' "
-	"Answer a scheduled view whose model is aForm and whose label is
-aString. 12/11/96 tk"
+	"FormView open: ((Form extent: 100@100) borderWidth: 1) named: 'Squeak' "
+	"Open a window whose model is aForm and whose label is aString."
 	| topView aView |
 	topView _ StandardSystemView new.
 	topView model: aForm.
@@ -10,8 +8,7 @@ aString. 12/11/96 tk"
 	topView minimumSize: 80@80.
 	aView _ FormView new.
 	aView model: aForm.
-	aView window: (0 @ 0 extent: aForm extent + (4@4)).
-		"compensate for borders.  Should be window:viewport:"
+	aView window: (aForm boundingBox expandBy: 2).
 	aView borderWidthLeft: 2 right: 2 top: 2 bottom: 2.
 	topView addSubView: aView.
 	topView controller open
