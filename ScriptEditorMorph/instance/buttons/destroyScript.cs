@@ -1,5 +1,8 @@
 destroyScript
 	| aMenu reply |
+	true ifTrue: [^ playerScripted removeScript: scriptName].
+
+	self flag: #deferred.  "revisit"
 	(playerScripted okayToDestroyScriptNamed: scriptName)
 		ifFalse:
 			[^ self inform: 'Sorry, this script is being called
