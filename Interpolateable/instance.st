@@ -1,6 +1,6 @@
 Object
 	subclass: #Interpolateable
-	instanceVariableNames: 'value '
+	instanceVariableNames: 'value'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon3D-Wonderland Misc'
+	category: 'Balloon3D-Wonderland-Misc'
