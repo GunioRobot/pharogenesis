@@ -1,0 +1,2 @@
+initializeWithPreference: aPreference
+	preference := aPreference
