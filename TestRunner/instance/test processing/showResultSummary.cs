@@ -8,6 +8,5 @@ showResultSummary
 	summary :=
 		self result runCount printString, ' run, ',
 		self result failureCount printString, ' failed, ',
-		self result errorCount printString, ' errors (',
-		self duration printString, ' ms)'.
+		self result errorCount printString, ' errors'.
 	Transcript crtab; show: summary.
