@@ -1,0 +1,2 @@
+removeAssertions
+	"default: do nothing"
