@@ -1,0 +1,2 @@
+openMVCWindowForSuspendedProcess: aProcess
+	ProcessBrowser new openAsMVC.
