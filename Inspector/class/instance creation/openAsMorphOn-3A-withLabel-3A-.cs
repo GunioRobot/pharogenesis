@@ -10,9 +10,7 @@ openAsMorphOn: anObject withLabel: aLabel
 			on: inspector list: #fieldList
 			selected: #selectionIndex
 			changeSelected: #toggleIndex:
-			menu: ((inspector isMemberOf: DictionaryInspector)
-					ifTrue: [#dictionaryMenu:]
-					ifFalse: [#fieldListMenu:])
+			menu: #fieldListMenu:
 			keystroke: #inspectorKey:from:)
 		frame: (0@0 corner: self horizontalDividerProportion @ self verticalDividerProportion).
 	window addMorph: (PluggableTextMorph on: inspector text: #contents accept: #accept:
