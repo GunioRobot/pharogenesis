@@ -1,6 +1,6 @@
 WonderlandLightSource
 	subclass: #WonderlandPositionalLight
-	instanceVariableNames: 'attenuation '
+	instanceVariableNames: 'attenuation'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon3D-Wonderland Lights'
+	category: 'Balloon3D-Wonderland-Lights'
