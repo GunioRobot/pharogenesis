@@ -1,6 +1,7 @@
 confirmRemovalOf: aSelector
-	"Determine if it is okay to remove the given selector.  Answer 1 if it should be removed, 2 if it should be removed followed by a senders browse, and 3 if it should not be removed. 1/17/96 sw
-	9/18/96 sw: made the wording more delicate"
+	"Determine if it is okay to remove the given selector.  Answer 1 if it should be removed, 2 if it should be removed followed by a senders browse, and 3 if it should not be removed. 
+	9/18/96 sw: made the wording more delicate
+	: bug fix -- auto select string needs to be first keyword only"
 
 	| count aMenu answer caption allCalls |
 	(count _ (allCalls _ Smalltalk allCallsOn: aSelector) size) > 0
@@ -17,7 +18,7 @@ Forget it -- do nothing -- sorry I asked'.
 			answer == 3 ifTrue:
 				[Smalltalk browseMessageList: allCalls
 					name: 'Senders of ', aSelector
-					autoSelect: aSelector].
+					autoSelect: aSelector keywords first].
 			answer == 0 ifTrue: [answer _ 3].  "If user didn't answer, treat it as cancel"
 			^ answer min: 3]
 		ifFalse:
