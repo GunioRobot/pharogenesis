@@ -1,39 +1,32 @@
 httpPostDocument: url  args: argsDict accept: mimeType request: requestString
 	"like httpGET, except it does a POST instead of a GET.  POST allows data to be uploaded"
 
-	| s header length page list firstData aStream argsStream first type newUrl httpUrl |
+	| s header length page list firstData aStream type newUrl httpUrl argString |
 	Socket initializeNetwork.
-
 	httpUrl _ Url absoluteFromText: url.
-	page _ httpUrl toText.
+	page _ httpUrl fullPath.
 	"add arguments"
-	argsDict ifNotNil: [page _ page, (self argString: argsDict) ].
-
-	"encode the arguments dictionary"
-	argsStream _ WriteStream on: String new.
-	first _ true.
-	argsDict associationsDo: [ :assoc |
-		assoc value do: [ :value |
-			first ifTrue: [ first _ false ] ifFalse: [ argsStream nextPut: $& ].
-			argsStream nextPutAll: assoc key encodeForHTTP.
-			argsStream nextPut: $=.
-			argsStream nextPutAll: value encodeForHTTP.
-	] ].
+	argString _ argsDict
+		ifNotNil: [argString _ self argString: argsDict]
+		ifNil: [''].
+	page _ page, argString.
 
 	s _ HTTPSocket new. 
 	s _ self initHTTPSocket: httpUrl wait: (self deadlineSecs: 30) ifError: [:errorString | ^errorString].
-	Transcript cr; show: url; cr.
 	s sendCommand: 'POST ', page, ' HTTP/1.0', CrLf, 
 		(mimeType ifNotNil: ['ACCEPT: ', mimeType, CrLf] ifNil: ['']),
 		'ACCEPT: text/html', CrLf,	"Always accept plain text"
+		HTTPProxyCredentials,
 		HTTPBlabEmail,	"may be empty"
 		requestString,	"extra user request. Authorization"
-		'User-Agent: Squeak 1.31', CrLf,
+		self userAgentString, CrLf,
 		'Content-type: application/x-www-form-urlencoded', CrLf,
-		'Content-length: ', argsStream contents size printString, CrLf,
+		'Content-length: ', argString size printString, CrLf,
 		'Host: ', httpUrl authority, CrLf.  "blank line automatically added"
 
-	s sendCommand: argsStream contents.
+	argString first = $? ifTrue: [ argString _ argString copyFrom: 2 to: argString size].
+	"umur - IE sends argString without a $? and swiki expects so"
+	s sendCommand: argString.
 
 	"get the header of the reply"
 	list _ s getResponseUpTo: CrLf, CrLf ignoring: (String with: CR).	"list = header, CrLf, CrLf, beginningOfData"
@@ -49,8 +42,9 @@ httpPostDocument: url  args: argsDict accept: mimeType request: requestString
 	s responseCode first = $3 ifTrue: [
 		newUrl _ s getHeader: 'location'.
 		newUrl ifNotNil: [
-			Transcript show: 'Response: ' , s responseCode.
-			Transcript show: ' redirecting to: ', newUrl; cr.
+			"umur 6/25/2003 12:58 - If newUrl is relative then we need to make it absolute."
+			newUrl _ (httpUrl newFromRelativeText: newUrl) asString.
+			self flag: #refactor. "get, post, postmultipart are almost doing the same stuff"
 			s destroy.
 			"^self httpPostDocument: newUrl  args: argsDict  accept: mimeType"
 			^self httpGetDocument: newUrl accept: mimeType ] ].
