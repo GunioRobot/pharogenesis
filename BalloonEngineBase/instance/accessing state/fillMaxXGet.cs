@@ -1,0 +1,2 @@
+fillMaxXGet
+	^workBuffer at: GWFillMaxX
