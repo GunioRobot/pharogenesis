@@ -1,0 +1,2 @@
+splashMorph
+	^SplashMorph
