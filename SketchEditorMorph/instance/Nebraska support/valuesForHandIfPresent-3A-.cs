@@ -1,8 +1,7 @@
-valuesForHandIfPresent: anEventOrHand
-
+valuesForHandIfPresent: anEventOrHand 
 	| hand |
-	forEachHand ifNil: [forEachHand _ IdentityDictionary new].
-	hand _ (anEventOrHand isKindOf: HandMorph) 
-				ifTrue: [anEventOrHand] ifFalse: [anEventOrHand hand].
-	^forEachHand at: hand ifAbsent: [nil].
-
+	forEachHand ifNil: [forEachHand := IdentityDictionary new].
+	hand := (anEventOrHand isHandMorph) 
+				ifTrue: [anEventOrHand]
+				ifFalse: [anEventOrHand hand].
+	^forEachHand at: hand ifAbsent: [nil]
