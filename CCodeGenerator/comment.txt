@@ -1,5 +1,2 @@
-This class oversees the translation of a subset of Smalltalk to C, allowing the comforts of Smalltalk during development and the efficiency and portability of C for the resulting interpreter.  Executing
-
-	Interpreter translate: 'interp.c' doInlining: true.
-
-(with single quotes) will cause all the methods of Interpreter, ObjectMemory and BitBltSimulation to be translated to C, and stored in the named file.  This file together with the files emitted by InterpreterSupportCode (qv) should be adequate to produce a complete interpreter for the Macintosh environment.
+This class oversees the translation of a subset of Smalltalk to C, allowing the comforts of Smalltalk during development and the efficiency and portability of C for the resulting interpreter.  
+See VMMaker for more useful info
