@@ -1,7 +1,7 @@
 canDiscardEdits
-	"Return true if this model has no dirty panes."
+	"Answer true if none of the views on this model has unaccepted edits that matter."
 
-	self dependents do: [:vv |
-		vv == self ifFalse: [
-			vv canDiscardEdits ifFalse: [^ false]]].
+	self dependents
+		do: [:each | each canDiscardEdits ifFalse: [^ false]]
+		without: self.
 	^ true
