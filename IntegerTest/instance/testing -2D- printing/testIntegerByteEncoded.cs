@@ -1,0 +1,32 @@
+testIntegerByteEncoded
+	self assert: (String streamContents: [:s| 2 byteEncode: s base: 2]) = '$1$0'.
+	self assert: (String streamContents: [:s| 21 byteEncode: s base: 3]) = '$2$1$0'.
+	self assert: (String streamContents: [:s| 228 byteEncode: s base: 4]) = '$3$2$1$0'.
+	self assert: (String streamContents: [:s| 2930 byteEncode: s base: 5]) = '$4$3$2$1$0'.
+	self assert: (String streamContents: [:s| 44790 byteEncode: s base: 6]) = '$5$4$3$2$1$0'.
+	self assert: (String streamContents: [:s| 800667 byteEncode: s base: 7]) = '$6$5$4$3$2$1$0'.
+	self assert: (String streamContents: [:s| 16434824 byteEncode: s base: 8]) = '$7$6$5$4$3$2$1$0'.
+	self assert: (String streamContents: [:s| 381367044 byteEncode: s base: 9]) = '$8$7$6$5$4$3$2$1$0'.
+	self assert: (String streamContents: [:s| 9876543210 byteEncode: s base: 10]) = '$9$8$7$6$5$4$3$2$1$0'.
+	self assert: (String streamContents: [:s| 282458553905 byteEncode: s base: 11]) = '$A$9$8$7$6$5$4$3$2$1$0'.
+	self assert: (String streamContents: [:s| 8842413667692 byteEncode: s base: 12]) = '$B$A$9$8$7$6$5$4$3$2$1$0'.
+	self assert: (String streamContents: [:s| 300771807240918 byteEncode: s base: 13]) = '$C$B$A$9$8$7$6$5$4$3$2$1$0'.
+	self assert: (String streamContents: [:s| 11046255305880158 byteEncode: s base: 14]) = '$D$C$B$A$9$8$7$6$5$4$3$2$1$0'.
+	self assert: (String streamContents: [:s| 435659737878916215 byteEncode: s base: 15]) = '$E$D$C$B$A$9$8$7$6$5$4$3$2$1$0'.
+	self assert: (String streamContents: [:s| 18364758544493064720 byteEncode: s base: 16]) = '$F$E$D$C$B$A$9$8$7$6$5$4$3$2$1$0'.
+
+	self assert: (String streamContents: [:s| -2 byteEncode: s base: 2]) = '$-$1$0'.
+	self assert: (String streamContents: [:s| -21 byteEncode: s base: 3]) = '$-$2$1$0'.
+	self assert: (String streamContents: [:s| -228 byteEncode: s base: 4]) = '$-$3$2$1$0'.
+	self assert: (String streamContents: [:s| -2930 byteEncode: s base: 5]) = '$-$4$3$2$1$0'.
+	self assert: (String streamContents: [:s| -44790 byteEncode: s base: 6]) = '$-$5$4$3$2$1$0'.
+	self assert: (String streamContents: [:s| -800667 byteEncode: s base: 7]) = '$-$6$5$4$3$2$1$0'.
+	self assert: (String streamContents: [:s| -16434824 byteEncode: s base: 8]) = '$-$7$6$5$4$3$2$1$0'.
+	self assert: (String streamContents: [:s| -381367044 byteEncode: s base: 9]) = '$-$8$7$6$5$4$3$2$1$0'.
+	self assert: (String streamContents: [:s| -9876543210 byteEncode: s base: 10]) = '$-$9$8$7$6$5$4$3$2$1$0'.
+	self assert: (String streamContents: [:s| -282458553905 byteEncode: s base: 11]) = '$-$A$9$8$7$6$5$4$3$2$1$0'.
+	self assert: (String streamContents: [:s| -8842413667692 byteEncode: s base: 12]) = '$-$B$A$9$8$7$6$5$4$3$2$1$0'.
+	self assert: (String streamContents: [:s| -300771807240918 byteEncode: s base: 13]) = '$-$C$B$A$9$8$7$6$5$4$3$2$1$0'.
+	self assert: (String streamContents: [:s| -11046255305880158 byteEncode: s base: 14]) = '$-$D$C$B$A$9$8$7$6$5$4$3$2$1$0'.
+	self assert: (String streamContents: [:s| -435659737878916215 byteEncode: s base: 15]) = '$-$E$D$C$B$A$9$8$7$6$5$4$3$2$1$0'.
+	self assert: (String streamContents: [:s| -18364758544493064720 byteEncode: s base: 16]) = '$-$F$E$D$C$B$A$9$8$7$6$5$4$3$2$1$0'.
