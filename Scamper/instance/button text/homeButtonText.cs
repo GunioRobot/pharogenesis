@@ -1,3 +1,2 @@
 homeButtonText
-
-	^'Go to start page'
+	^ 'Go to start page' translated
