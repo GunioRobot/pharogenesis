@@ -18,7 +18,8 @@ name: newName inEnvironment: environ subclassOf: sup instanceVariableNames: inst
 					[self error: newName , ' already exists!  Proceed will store over it'.
 					wasPresent _ false.
 					oldClass _ self newNamed: newName]]
-		ifFalse: [oldClass _ self newNamed: newName].
+		ifFalse: [oldClass _ self newNamed: newName.
+				Smalltalk flushClassNameCache].
 	newClass _ oldClass copy.
 	invalidFields _ 
 		changed | (newClass
