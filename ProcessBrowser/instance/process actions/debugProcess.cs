@@ -4,4 +4,4 @@ debugProcess
 	nameAndRules third
 		ifFalse: [PopUpMenu inform: 'Nope, won''t debug ' , nameAndRules first.
 			^ self].
-	selectedProcess debugWithTitle: 'Interrupted from the Process Browser'.
+	self class debugProcess: selectedProcess.
