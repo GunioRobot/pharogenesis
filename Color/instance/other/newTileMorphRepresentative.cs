@@ -1,2 +1,2 @@
 newTileMorphRepresentative
-	^ ColorTileMorph new
+	^ ColorTileMorph new colorSwatchColor: self
