@@ -3,4 +3,4 @@ removeSelectorSimply: selector
 	Internal access from compiler."
 
 	methodDict removeKey: selector ifAbsent: [^self].
-	self flushCache
+	selector flushCache
