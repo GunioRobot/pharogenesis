@@ -10,7 +10,7 @@ buildMVCNotifierButtonView
 			buttonView _ PluggableButtonView
 				on: self
 				getState: nil
-				action: aSpec second..
+				action: aSpec second.
 			buttonView
 				label: aSpec first;
 				insideColor: (Color perform: aSpec third) muchLighter lighter;
