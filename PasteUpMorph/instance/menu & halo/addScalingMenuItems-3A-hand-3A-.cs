@@ -4,14 +4,14 @@ addScalingMenuItems: menu hand: aHandMorph
 
 	(subMenu _ MenuMorph new)
 		defaultTarget: self;
-		add: 'show application view' action: #showApplicationView;
-		add: 'show factory view' action: #showFactoryView;
-		add: 'show whole world view' action: #showFullView;
-		add: 'expand' action: #showExpandedView;
-		add: 'reduce' action: #showReducedView;
+		add: 'show application view' translated action: #showApplicationView;
+		add: 'show factory view' translated action: #showFactoryView;
+		add: 'show whole world view' translated action: #showFullView;
+		add: 'expand' translated action: #showExpandedView;
+		add: 'reduce' translated action: #showReducedView;
 		addLine;
-		add: 'define application view' action: #defineApplicationView;
-		add: 'define factory view' action: #defineFactoryView.
+		add: 'define application view' translated action: #defineApplicationView;
+		add: 'define factory view' translated action: #defineFactoryView.
 	menu
-		add: 'world scale and clip...'
+		add: 'world scale and clip...' translated
 		subMenu: subMenu
