@@ -1,0 +1,2 @@
+transparentColorrcc0
+	^ TranslucentColor
