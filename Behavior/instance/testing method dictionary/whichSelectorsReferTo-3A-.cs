@@ -3,7 +3,7 @@ whichSelectorsReferTo: literal
 literal."
 
 	| special byte |
-	special _ Smalltalk hasSpecialSelector: literal ifTrueSetByte: [:b |
+	special _ self environment hasSpecialSelector: literal ifTrueSetByte: [:b |
 byte _ b].
 	^self whichSelectorsReferTo: literal special: special byte: byte
 
