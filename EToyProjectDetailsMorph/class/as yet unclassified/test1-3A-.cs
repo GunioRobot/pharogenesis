@@ -6,7 +6,7 @@ test1: aProject
 		actionBlock: [ :x | 
 			aProject world setProperty: #ProjectDetails toValue: x.
 			x at: 'projectname' ifPresent: [ :newName | 
-				newName = aProject name ifFalse: [aProject changeSet name: newName].
+				aProject renameTo: newName.
 			]
 		];
 
