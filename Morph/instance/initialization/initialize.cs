@@ -1,6 +1,7 @@
 initialize
-
-	bounds _ 0@0 corner: 50@40.
-	owner _ nil.
+	"initialize the state of the receiver"
+owner _ nil.
 	submorphs _ EmptyArray.
-	color _ self defaultColor.
+	bounds _ self defaultBounds.
+	
+	color _ self defaultColor
