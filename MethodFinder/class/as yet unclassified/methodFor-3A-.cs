@@ -6,7 +6,7 @@ methodFor: dataAndAnswers
 	resultString _ String streamContents: [:strm |
 		resultOC do: [:exp | strm nextPut: $(; nextPutAll: exp; nextPut: $); space]].
 	Smalltalk isMorphic ifTrue: [
-		selFinder _ (Display bestGuessOfCurrentWorld 
+		selFinder _ (ActiveWorld 
 				submorphThat: [:mm | mm class == SystemWindow and: 
 									[mm model isKindOf: SelectorBrowser]] 
 				ifNone: [^ resultString]) model.
