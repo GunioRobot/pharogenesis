@@ -6,7 +6,7 @@ replyTextFor: msgID
 	s _ WriteStream on: (String new: 500).
 
 	"add From:"
-	s nextPutAll: 'From: ', Celeste userName; cr.
+	s nextPutAll: 'From: ', self account userName; cr.
 
 
 	"add Subject:"
@@ -32,16 +32,29 @@ replyTextFor: msgID
 	(msg cc isEmpty) ifFalse: [
 		anyCCs ifTrue: [ s nextPutAll: ', ' ] ifFalse: [ anyCCs _ true ].
 		s nextPutAll: msg cc ].
-	(Celeste ccList isEmpty) ifFalse: [
+	(self account ccList isEmpty) ifFalse: [
 		anyCCs ifTrue: [ s nextPutAll: ', ' ] ifFalse: [ anyCCs _ true ].	
-		s nextPutAll: Celeste ccList ].
+		s nextPutAll: self account ccList ].
 	s cr.
+
+	"add In-Reply-To and References"
+	(msg hasFieldNamed: 'message-id') ifTrue: [
+		| replyTo references |
+		replyTo := (msg fieldNamed: 'message-id') mainValue.
+		(msg hasFieldNamed: 'references')
+			ifTrue: [ references := (msg fieldNamed: 'references') mainValue, String cr, ' ' ]
+			ifFalse:[ references := '' ].
+		references := references, replyTo.
+
+		s nextPutAll: 'In-Reply-To: '; nextPutAll: replyTo; cr.
+		s nextPutAll: 'References: '; nextPutAll: references; cr.
+	].
 
 
 	"add contents of previous message"
 	s cr.
 	s nextPutAll: msg from; nextPutAll: ' wrote:'; cr.
-	msg bodyText linesDo: [ :line |
+	msg formattedText asString linesDo: [ :line |
 		s nextPutAll: '> '.
 		s nextPutAll: line.
 		s cr ].
