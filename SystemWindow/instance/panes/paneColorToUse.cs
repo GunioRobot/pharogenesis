@@ -3,4 +3,4 @@ paneColorToUse
 		ifTrue:
 			[Color white]
 		ifFalse:
-			[self existingPaneColor ifNil: [self paneColor]]
+			[self paneColor]
