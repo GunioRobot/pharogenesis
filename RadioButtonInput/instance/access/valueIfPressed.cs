@@ -1,0 +1,2 @@
+valueIfPressed
+	^value
