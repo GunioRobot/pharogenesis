@@ -1,22 +1,21 @@
-adjustAllOopsBy: bytesToShift
-	"Adjust all oop references by the given number of bytes. This is done just after reading in an image when the new base address of the object heap is different from the base address in the image."
-	"ar 10/7/1998 - Clear the RootBit of all objects"
+adjustAllOopsBy: bytesToShift 
+	"Adjust all oop references by the given number of bytes. This 
+	is done just after reading in an image when the new base 
+	address of the object heap is different from the base address 
+	in the image."
 	"di 11/18/2000 - return number of objects found"
-
-	| oop header totalObjects |
-	"Note: Don't bypass this method even if bytesToShift is zero 
-		until the RootBit problem has been fixed in the appropriate places."
-	"bytesToShift = 0 ifTrue: [ ^ nil ]."
-
+	| oop totalObjects |
+	self inline: false.
+	bytesToShift = 0 ifTrue: [^ 300000].
+	"this is probably an improvement over the previous answer of 
+	nil, but maybe we should do the obejct counting loop and 
+	simply guard the adjustFieldsAndClass... with a bytesToShift 
+	= 0 ifFalse: ?"
 	totalObjects _ 0.
 	oop _ self firstObject.
-	[oop < endOfMemory] whileTrue: [
-		(self isFreeObject: oop) ifFalse: [
-			totalObjects _ totalObjects + 1.
-			header _ self longAt: oop.
-			self longAt: oop put: (header bitAnd: AllButRootBit).
-			self adjustFieldsAndClassOf: oop by: bytesToShift.
- 		].
-		oop _ self objectAfter: oop.
-	].
-	^totalObjects
+	[oop < endOfMemory]
+		whileTrue: [(self isFreeObject: oop)
+				ifFalse: [totalObjects _ totalObjects + 1.
+					self adjustFieldsAndClassOf: oop by: bytesToShift].
+			oop _ self objectAfter: oop].
+	^ totalObjects
