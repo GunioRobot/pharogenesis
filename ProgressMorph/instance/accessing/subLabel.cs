@@ -1,0 +1,2 @@
+subLabel
+	^self subLabelMorph contents
