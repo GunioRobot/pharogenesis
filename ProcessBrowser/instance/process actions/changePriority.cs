@@ -12,5 +12,5 @@ changePriority
 			or: [newPriority > Processor highestPriority])
 		ifTrue: [PopUpMenu inform: 'Bad priority'.
 			^ self].
-	selectedProcess priority: newPriority.
+	self class setProcess: selectedProcess toPriority: newPriority.
 	self updateProcessList
