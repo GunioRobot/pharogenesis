@@ -1,6 +1,7 @@
 mouseMove: evt
 	| editEvt |
 	super mouseMove: evt.
+	evt redButtonPressed ifFalse: [^ self].
 	editEvt _ evt transformedBy: (self transformedFrom: editView) inverseTransformation.
 	(editEvt position y between: editView top and: editView bottom) ifFalse:[
 		"Start auto-scrolling"
