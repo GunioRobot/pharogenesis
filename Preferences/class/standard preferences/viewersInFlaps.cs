@@ -1,0 +1,2 @@
+viewersInFlaps
+	^ self valueOfFlag: #viewersInFlaps
