@@ -6,9 +6,9 @@ installStrikeFont: aStrikeFont foregroundColor: foregroundColor backgroundColor:
 		["Set up color map for a different source depth (color font)"
 		"Uses caching for reasonable efficiency"
 		colorMap _ self cachedFontColormapFrom: sourceForm depth to: destForm depth.
-		colorMap at: 1 put: (backgroundColor pixelValueForDepth: destForm depth)].
+		colorMap at: 1 put: (destForm pixelValueFor: backgroundColor)].
 	sourceForm depth = 1 ifTrue:
-		[colorMap at: 2 put: (foregroundColor pixelValueForDepth: destForm depth).
+		[colorMap at: 2 put: (destForm pixelValueFor: foregroundColor).
 		"Ignore any halftone pattern since we use a color map approach here"
 		halftoneForm _ nil].
 	sourceY _ 0.
