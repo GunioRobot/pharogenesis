@@ -2,7 +2,7 @@ addTitle
 	"Add a title."
 
 	| font title r |
-	font _ StrikeFont familyName: 'ComicBold' size: 20.
+	font _ StrikeFont familyName: Preferences standardEToysFont familyName size: 20.
 	title _ StringMorph contents: 'Phoneme Recognizer' font: font.
 	r _ AlignmentMorph newColumn
 		color: color;
