@@ -15,15 +15,12 @@ patchInterp: fileName
 	remnant _ f next: len - (code size * 4).
 	i _ 0.
 	["Look for a BCTR instruction"
-	(i _ code indexOf: 16r4E800420 startingAt: i + 1 ifAbsent: [0]) > 0] whileTrue: [
-		"Look for a CMPLWI FF, 6 instrs back"
-	       ((code at: i - delta) bitAnd: 16rFFE0FFFF) = 16r280000FF ifTrue: [
-	       	"Copy dispatch instrs back over the compare"
-			SelectionMenu notify: 'Patching at ', i hex.
+	(i _ code indexOf: 16r4E800420 startingAt: i + 1 ifAbsent: [0]) > 0] whileTrue:
+		["Look for a CMPLWI FF, 6 instrs back"
+	       ((code at: i - delta) bitAnd: 16rFFE0FFFF) = 16r280000FF ifTrue:
+			["Copy dispatch instrs back over the compare"
+			self inform: 'Patching at ', i hex.
 			0 to: delta - 2 do: [ :j |
-				code at: (i - delta) + j put: (code at: (i - delta) + j + 2).
-			].
-		].
-	].
+				code at: (i - delta) + j put: (code at: (i - delta) + j + 2)]]].
 	f position: 0; nextPutAll: code; nextPutAll: remnant.
 	f close.
