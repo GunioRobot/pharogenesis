@@ -1,0 +1,3 @@
+peekButtons
+	self fetchMoreEvents.
+	^mouseButtons
