@@ -1,3 +1,2 @@
 referencePosition
-
-	^ self center
+	^ transform localPointToGlobal: self renderedMorph referencePosition
