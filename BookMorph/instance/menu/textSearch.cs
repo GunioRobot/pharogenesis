@@ -6,9 +6,9 @@ textSearch
 	str _ String streamContents: [:strm | 
 			list do: [:each | strm nextPutAll: each; space]].
 	wanted _ FillInTheBlank request: 'words to search for.  Order is not important.
-Beginnings of words are OK.'
+Beginnings of words are OK.' translated
 		initialAnswer: str.
 	wants _ wanted findTokens: Character separators.
-	wants size = 0 ifTrue: [^ self].
+	wants isEmpty ifTrue: [^ self].
 	self getAllText.		"save in allText, allTextUrls"
 	^ self findText: wants	"goes to the page and highlights the text"
