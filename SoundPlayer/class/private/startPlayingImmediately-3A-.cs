@@ -19,22 +19,26 @@ startPlayingImmediately: aSound
 		n _ self primSoundInsertSamples: totalSamples
 			from: buf
 			samplesOfLeadTime: 1024.
-		leftover _ totalSamples - n.
+		n > 0 ifTrue:[
+			leftover _ totalSamples - n.
 
-		"copy the remainder of buf into Buffer"
-		"Note: the following loop iterates over 16-bit words, not two-word stereo slices"
-		"assert: 0 < leftover <= Buffer stereoSampleCount"
-		src _ 2 * n.
-		1 to: 2 * leftover do:
-			[:dst | Buffer at: dst put: (buf at: (src _ src + 1))].
+			"copy the remainder of buf into Buffer"
+			"Note: the following loop iterates over 16-bit words, not two-word stereo slices"
+			"assert: 0 < leftover <= Buffer stereoSampleCount"
+			src _ 2 * n.
+			1 to: 2 * leftover do:
+				[:dst | Buffer at: dst put: (buf at: (src _ src + 1))].
 
-		"generate enough additional samples to finish filling Buffer"
-		rest _ Buffer stereoSampleCount - leftover.
-		aSound playSampleCount: rest into: Buffer startingAt: leftover + 1.
-		ReverbState == nil ifFalse: [
-			ReverbState applyReverbTo: Buffer startingAt: leftover + 1 count: rest].
+			"generate enough additional samples to finish filling Buffer"
+			rest _ Buffer stereoSampleCount - leftover.
+			aSound playSampleCount: rest into: Buffer startingAt: leftover + 1.
+			ReverbState == nil ifFalse: [
+				ReverbState applyReverbTo: Buffer startingAt: leftover + 1 count: rest].
 
-		"record the fact that this sound has already been played into Buffer so that we don't process it again this time around"
-		SoundJustStarted _ aSound.
-
+			"record the fact that this sound has already been played into Buffer so that we don't process it again this time around"
+			SoundJustStarted _ aSound.
+		] ifFalse:[
+			"quick start failed; reset the sound so we start over"
+			aSound reset.
+		].
 		ActiveSounds add: aSound].
