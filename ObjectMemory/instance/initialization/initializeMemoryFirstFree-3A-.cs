@@ -18,7 +18,7 @@ initializeMemoryFirstFree: firstFree
 	"make a fake free chunk at endOfMemory for use as a sentinal in memory scans"
 	self setSizeOfFree: endOfMemory to: BaseHeaderSize.
 
-	checkAssertions ifTrue: [
+	DoAssertionChecks ifTrue: [
 		((freeBlock < endOfMemory) and: [endOfMemory < memoryLimit])
 			ifFalse: [ self error: 'error in free space computation' ].	
 		(self oopFromChunk: endOfMemory) = endOfMemory
