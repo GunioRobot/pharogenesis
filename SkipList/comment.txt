@@ -1,0 +1,8 @@
+From "Skip Lists: A Probabilistic Alternative to Balanced Trees" by William Pugh ( http://epaperpress.com/sortsearch/download/skiplist.pdf ):
+
+"Skip lists are a data structure that can be used in place of balanced trees.  Skip lists use probabilistic balancing rather than strictly enforcing balancing and as a result the algorithms for insertion and deletion in skip lists are much simpler and significantly faster than equivalent algorithms for balanced trees."
+
+Notes:
+
+The elements of the skip list must implement #< or you must provide a sort block.
+
