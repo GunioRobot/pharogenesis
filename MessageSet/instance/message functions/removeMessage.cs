@@ -1,7 +1,7 @@
 removeMessage
 	"Remove the selected message from the system. 1/15/96 sw"
 
-	| message messageName confirmation |
+	| messageName confirmation |
 
 	messageListIndex = 0 ifTrue: [^ self].
 	self okToChange ifFalse: [^ self].
@@ -15,4 +15,4 @@ removeMessage
 	self changed: #messageListChanged.
 
 	confirmation == 2 ifTrue:
-		[Smalltalk sendersOf: messageName]
+		[Smalltalk browseAllCallsOn: messageName]
