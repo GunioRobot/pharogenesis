@@ -1,0 +1,1 @@
+This class is a history table for our 'killer heuristic'. It remembers moves that have proven effective in the past and is later used to prioritize newly generated moves according to the effectiveness of the particular move in the past.
