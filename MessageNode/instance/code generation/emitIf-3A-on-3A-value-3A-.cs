@@ -11,6 +11,7 @@ emitIf: stack on: strm value: forValue
 	forValue
 		ifTrue:  "Code all forValue as two-armed"
 			[self emitBranchOn: false dist: thenSize pop: stack on: strm.
+			pc _ strm position.
 			thenExpr emitForEvaluatedValue: stack on: strm.
 			stack pop: 1.  "then and else alternate; they don't accumulate"
 			thenExpr returns not
@@ -21,7 +22,9 @@ emitIf: stack on: strm value: forValue
 			[thenSize > 0
 				ifTrue:
 					[self emitBranchOn: false dist: thenSize pop: stack on: strm.
+					pc _ strm position.
 					thenExpr emitForEvaluatedEffect: stack on: strm]
 				ifFalse:
 					[self emitBranchOn: true dist: elseSize pop: stack on: strm.
+					pc _ strm position.
 					elseExpr emitForEvaluatedEffect: stack on: strm]]
