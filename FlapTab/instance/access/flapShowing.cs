@@ -1,0 +1,2 @@
+flapShowing
+	^ flapShowing == true
