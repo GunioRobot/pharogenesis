@@ -1,0 +1,2 @@
+upToEnd
+	^self stream upToEnd.
