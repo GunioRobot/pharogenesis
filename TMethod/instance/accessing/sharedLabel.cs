@@ -1,0 +1,2 @@
+sharedLabel
+	^sharedLabel
