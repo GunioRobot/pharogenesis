@@ -1,6 +1,6 @@
 Hierarchical
 	subclass: #WonderlandScene
-	instanceVariableNames: 'myWonderland myColor '
+	instanceVariableNames: 'myWonderland myColor'
 	classVariableNames: ''
-	poolDictionaries: 'WonderlandConstants '
-	category: 'Balloon3D-Wonderland Objects'
+	poolDictionaries: 'WonderlandConstants'
+	category: 'Balloon3D-Wonderland-Objects'
