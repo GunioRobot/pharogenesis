@@ -8,4 +8,6 @@ clipBy: aRectangle during: aBlock
 		connection: connection 
 		clipRect: (outerClipRect intersect: newR) 
 		transform: transform.
-	aBlock value: newCanvas
+	newCanvas privateShadowColor: shadowColor.
+	aBlock value: newCanvas.
+	connection shadowColor: shadowColor.
