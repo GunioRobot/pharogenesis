@@ -1,0 +1,3 @@
+sqFileSize: file
+
+	^ file size
