@@ -1,0 +1,2 @@
+showingGlobalFlapsString
+	^ Preferences valueOfFlag: #useGlobalFlaps.
