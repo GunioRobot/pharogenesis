@@ -1,6 +1,6 @@
 Object
 	subclass: #Alarm
-	instanceVariableNames: 'alarmTask alarmTime myScheduler '
+	instanceVariableNames: 'alarmTask alarmTime myScheduler'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon3D-Wonderland Time'
+	category: 'Balloon3D-Wonderland-Time'
