@@ -1,2 +1,2 @@
 liftAllPens
-	submorphs do: [:m | m assuredCostumee liftPen]
+	submorphs do: [:m | m assuredPlayer liftPen]
