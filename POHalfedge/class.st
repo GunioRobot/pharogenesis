@@ -1,0 +1,1 @@
+POHalfedge class instanceVariableNames: ''
