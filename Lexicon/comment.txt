@@ -1,0 +1,14 @@
+An instance of Lexicon shows the a list of all the method categories known to an object or any of its superclasses, as a "flattened" list, and, within any selected category, shows all methods understood by the class's instances which are associated with that category, again as a "flattened" list.  A variant with a search pane rather than a category list is also implemented.
+
+categoryList				the list of categories
+categoryListIndex		index of currently-selected category
+targetObject				optional -- an instance being viewed
+targetClass				the class being viewed
+lastSearchString			the last string searched for
+lastSendersSearchSelector	the last senders search selector
+limitClass				optional -- the limit class to search for
+selectorsVisited			list of selectors visited
+selectorsActive			not presently in use, subsumed by selectorsVisited
+currentVocabulary		the vocabulary currently installed
+currentQuery			what the query category relates to:
+							#senders #selectorName #currentChangeSet
