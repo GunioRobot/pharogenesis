@@ -1,6 +1,6 @@
 Symbol
 	variableWordSubclass: #MultiSymbol
 	instanceVariableNames: ''
-	classVariableNames: 'MultiSymbolTable NewMultiSymbols OneCharacterMultiSymbols '
+	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Collections-Text'
