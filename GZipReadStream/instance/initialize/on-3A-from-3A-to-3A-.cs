@@ -2,6 +2,7 @@ on: aCollection from: firstIndex to: lastIndex
 	"Check the header of the GZIP stream."
 	| method magic flags length |
 	super on: aCollection from: firstIndex to: lastIndex.
+	crc _ 16rFFFFFFFF.
 	magic _ self nextBits: 16.
 	(magic = GZipMagic) 
 		ifFalse:[^self error:'Not a GZipped stream'].
