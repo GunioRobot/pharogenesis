@@ -1,0 +1,2 @@
+origin: aPoint
+	point := aPoint
