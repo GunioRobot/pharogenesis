@@ -1,7 +1,9 @@
 buildMorphicMessageTextPaneFor: model 
-	^ PluggableTextMorph new
+	^ self morphicTextEditorClass new
 				on: model
 				text: #messageText
 				accept: #messageText:
 				readSelection: nil
-				menu: #messageMenu:shifted:
+				menu: #messageMenu:shifted:;
+		borderWidth: 1;
+		yourself
