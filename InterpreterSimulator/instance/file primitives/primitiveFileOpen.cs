@@ -6,7 +6,8 @@ primitiveFileOpen
 	successFlag ifTrue:
 		[fileName _ self stringOf: namePointer.
 		filesOpen addLast: (writeFlag
-			ifTrue: [(FileStream fileNamed: fileName) binary]
+			ifTrue: [f _ FileStream fileNamed: fileName.
+					f ifNil: [^ self primitiveFail] ifNotNil: [f binary]]
 			ifFalse: [(StandardFileStream isAFileNamed: fileName)
 				ifTrue: [f _ (FileStream readOnlyFileNamed: fileName).
 						f ifNil:[^self primitiveFail] ifNotNil:[f binary]]
