@@ -13,7 +13,7 @@ to back out with no harm done.'.
 	(reply ==  true) ifFalse:
 		[^ self inform: 'Okay - abandoned'].
 
-	aName _ self changesName.
+	aName _ SmalltalkImage current changesName.
 	(aFile _ SourceFiles last) == nil ifTrue:
 		[(FileDirectory default fileExists: aName)
 			ifFalse: [^ self halt: 'Cannot locate ', aName, ' so cannot proceed.'].
