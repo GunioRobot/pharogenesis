@@ -5,7 +5,10 @@ space
 
 	spaceX _ destX.
 	destX _ spaceX + spaceWidth.
-	lastIndex _ (spaceIndex _ lastIndex) + 1.
+	spaceIndex _ lastIndex.
+	lineHeightAtSpace _ lineHeight.
+	baselineAtSpace _ baseline.
+	lastIndex _ lastIndex + 1.
 	spaceCount _ spaceCount + 1.
 	destX > rightMargin ifTrue: 	[^self crossedX].
 	^false
