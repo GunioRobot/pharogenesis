@@ -6,41 +6,37 @@ replaceFrom: start to: stop with: aText displaying: displayBoolean
 
 	| compositionScanner obsoleteLines obsoleteLastLine firstLineIndex lastLineIndex
 	startLine stopLine replacementRange visibleRectangle startIndex newLine done
-	newStop obsoleteY newY upOrDown moveRectangle |
+	newStop obsoleteY newY moveRectangle |
 
-	text			"Update the text."
-	  replaceFrom: start to: stop with: aText.
-	lastLine = 0
-	  ifTrue: 	["if lines have never been set up, measure them and display
-					all the lines falling in the visibleRectangle"
-				self composeAll.
-				displayBoolean
-					ifTrue:	[^ self displayLines: (1 to: lastLine)]].
+	text replaceFrom: start to: stop with: aText.		"Update the text."
+	lastLine = 0 ifTrue:
+		["if lines have never been set up, measure them and display
+		all the lines falling in the visibleRectangle"
+		self composeAll.
+		displayBoolean ifTrue: [^ self displayLines: (1 to: lastLine)]].
 
 	"save -- things get pretty mashed as we go along"
 	obsoleteLines _ lines copy.
 	obsoleteLastLine _ lastLine.
 
-		"find the starting and stopping lines"
+	"find the starting and stopping lines"
 	firstLineIndex _ startLine _ self lineIndexOfCharacterIndex: start.
 	stopLine _ self lineIndexOfCharacterIndex: stop.
-		"how many characters being inserted or deleted -- negative if
-			aText size is < characterInterval size."
+
+	"how many characters being inserted or deleted
+		-- negative if aText size is < characterInterval size."
 	replacementRange _ aText size - (stop - start + 1).
-		"Give ourselves plenty of elbow room."
-	compositionRectangle height: textStyle lineGrid * 8196.	"max Vector length"
-		"build a boundingBox of the actual screen space in question -- we'll need it later"
+	"Give ourselves plenty of elbow room."
+	compositionRectangle _ compositionRectangle withHeight: (textStyle lineGrid * 9999).
+	"build a boundingBox of the actual screen space in question -- we'll need it later"
 	visibleRectangle _ (clippingRectangle intersect: compositionRectangle)
 							intersect: destinationForm boundingBox.
-		"Initialize a scanner."
-	compositionScanner _ CompositionScanner new in: self.
+	compositionScanner _ CompositionScanner new in: self.		"Initialize a scanner."
 
-		"If the starting line is not also the first line, then measuring must commence from line preceding the one in which characterInterval start appears.  For example, deleting a line with only a carriage return may move characters following the deleted portion of text into the line preceding the deleted line."
+	"If the starting line is not also the first line, then measuring must commence from line preceding the one in which characterInterval start appears.  For example, deleting a line with only a carriage return may move characters following the deleted portion of text into the line preceding the deleted line."
 	startIndex _ (lines at: firstLineIndex) first.
 	startLine > 1
-		ifTrue: 	[newLine _
-					compositionScanner
-						composeLine: startLine - 1
+		ifTrue: 	[newLine _ compositionScanner composeLine: startLine - 1
 						fromCharacterIndex: (lines at: startLine - 1) first
 						inParagraph: self.
 				(lines at: startLine - 1) = newLine
@@ -48,15 +44,14 @@ replaceFrom: start to: stop with: aText displaying: displayBoolean
 							startLine _ startLine - 1.
 							self lineAt: startLine put: newLine.
 							startIndex _ newLine last + 1]].
-	startIndex > text size
-		ifTrue: 	["nil lines after a deletion -- remeasure last line below"
-				self trimLinesTo: (firstLineIndex - 1 max: 0).
-				text size = 0
-					ifTrue:	["entire text deleted -- clear visibleRectangle and return."
-							destinationForm
-				 				fill: visibleRectangle rule: rule fillColor: self backgroundColor.
-							self updateCompositionHeight.
-							^self]].
+	startIndex > text size ifTrue:
+		["nil lines after a deletion -- remeasure last line below"
+		self trimLinesTo: (firstLineIndex - 1 max: 0).
+		text size = 0 ifTrue:
+			["entire text deleted -- clear visibleRectangle and return."
+			displayBoolean ifTrue: [destinationForm fill: visibleRectangle rule: rule fillColor: self backgroundColor].
+			self updateCompositionHeight.
+			^self]].
 
 	"Now we really get to it."
 	done _ false.
@@ -74,11 +69,10 @@ replaceFrom: start to: stop with: aText displaying: displayBoolean
 			whileFalse: 
 			[newStop = newLine last
 				ifTrue:	["got the match"
-						upOrDown _ replacementRange < 0
-							ifTrue: [0] ifFalse: [1].
-							"get source and dest y's for moving the unchanged lines"
-						obsoleteY _ self topAtLineIndex: lastLineIndex + upOrDown.
-						newY _ self topAtLineIndex: firstLineIndex + upOrDown.
+						"get source and dest y's for moving the unchanged lines"
+						obsoleteY _ self topAtLineIndex: lastLineIndex + 1
+									using: obsoleteLines and: obsoleteLastLine.
+						newY _ self topAtLineIndex: firstLineIndex + 1.
 						stopLine _ firstLineIndex.
 						done _ true.
 							"Fill in the new line vector with the old unchanged lines.
@@ -98,9 +92,7 @@ replaceFrom: start to: stop with: aText displaying: displayBoolean
 	the 'unchanged' lines and display those which have changed."
 	displayBoolean   "Not much to do if not displaying"
 		ifFalse: [^ self updateCompositionHeight].
-
-	startIndex > text size
-		ifTrue:
+	startIndex > text size ifTrue:
 		["If at the end of previous lines simply display lines from the line in
 		which the first character of the replacement occured through the
 		end of the paragraph."
@@ -129,7 +121,7 @@ replaceFrom: start to: stop with: aText displaying: displayBoolean
 
 		newY < obsoleteY
 			ifTrue:
-			[(self topAtLineIndex: obsoleteLastLine + 1) > visibleRectangle bottom
+			[(self topAtLineIndex: obsoleteLastLine+1 using: obsoleteLines and: obsoleteLastLine) > visibleRectangle bottom
 				ifTrue:
 				["A deletion may have 'pulled' previously undisplayed lines
 				into the visibleRectangle.  If so, display them."
@@ -138,9 +130,9 @@ replaceFrom: start to: stop with: aText displaying: displayBoolean
 						to: (self lineIndexOfTop: visibleRectangle bottom))].
 			"Clear out obsolete material at the bottom of the visibleRectangle."
 			destinationForm
-				fill: ((visibleRectangle left @ (self topAtLineIndex: lastLine + 1)
+				fill: ((visibleRectangle left @ ((self bottomAtLineIndex: lastLine) + 1)
 						extent: visibleRectangle extent)
-					intersect: visibleRectangle)
+					intersect: visibleRectangle)  "How about just corner: ??"
 				rule: rule fillColor: self backgroundColor].
 
 		(newY > obsoleteY and: [obsoleteY < visibleRectangle top])
@@ -148,7 +140,7 @@ replaceFrom: start to: stop with: aText displaying: displayBoolean
 				["An insertion may have 'pushed' previously undisplayed lines
 				into the visibleRectangle.  If so, display them."
 				self displayLines:
-					((self lineIndexOfTop: obsoleteY)
-						to: (self lineIndexOfTop: visibleRectangle top))].
+					((self lineIndexOfTop: visibleRectangle top)
+						to: (self lineIndexOfTop: visibleRectangle top + (newY-obsoleteY)))].
 
 		self updateCompositionHeight]
