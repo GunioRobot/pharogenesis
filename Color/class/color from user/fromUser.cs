@@ -27,10 +27,9 @@ fromUser
 		c = oldColor ifFalse: [
 			Display fillWhite: (20@61 + startPt extent: 135@19).
 			c isTransparent
-				ifTrue: [s _ c shortPrintString]
-				ifFalse: [
-					s _ c shortPrintString.
-					s _ s copyFrom: 7 to: s size - 1].
+				ifTrue: [s _ 'transparent']
+				ifFalse: [s _ c shortPrintString.
+						s _ s copyFrom: 7 to: s size - 1].
 			s displayAt: 20@61 + startPt.
 			oldColor _ c]].
 	save displayAt: startPt.
