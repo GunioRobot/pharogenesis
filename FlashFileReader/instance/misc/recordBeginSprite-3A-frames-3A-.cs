@@ -1,0 +1,1 @@
+recordBeginSprite: id frames: frameCount
