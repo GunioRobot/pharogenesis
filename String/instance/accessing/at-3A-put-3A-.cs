@@ -6,5 +6,8 @@ at: index put: aCharacter
 
 	<primitive: 64>
 	(aCharacter isKindOf: Character)
-		ifTrue: [self errorNonIntegerIndex]
+		ifTrue: [	
+			index isInteger
+				ifTrue: [self errorSubscriptBounds: index]
+				ifFalse: [self errorNonIntegerIndex]]
 		ifFalse: [self error: 'Strings only store Characters']
