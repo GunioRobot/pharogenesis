@@ -30,6 +30,9 @@ ProjectViewMorph step."
 						self doArmsLengthCommand: aCommand.
 					] fixTemps
 			).
+		tempProject projectParameters 
+			at: #deleteWhenEnteringNewProject 
+			put: true.
 		tempProject enter.
 	] ifFalse: [
 		parentProject ifNil: [^ self inform: 'The top project can''t do that'].
