@@ -1,6 +1,23 @@
 macSoundFile
 
-	^ '#include "sq.h"
+	^ '/* Adjustments for pluginized VM
+ *
+ * Note: The Mac support files have not yet been fully converted to
+ * pluginization. For the time being, it is assumed that they are linked
+ * with the VM. When conversion is complete, they will no longer import
+ * "sq.h" and they will access all VM functions and variables through
+ * the interpreterProxy mechanism.
+ */
+
+#include "sq.h"
+#include "SoundPlugin.h"
+
+/* initialize/shutdown */
+int soundInit() { return true; }
+int soundShutdown() { snd_Stop(); }
+
+/* End of adjustments for pluginized VM */
+
 #include <Sound.h>
 #include <SoundInput.h>
 
@@ -78,8 +95,9 @@ typedef struct {
 
 /* Note: RECORD_BUFFER_SIZE should be a multiple of 4096 bytes to avoid clicking.
    (The clicking was observed on a Mac 8100; the behavior of other Macs could differ.)
+   Note: G3 Series Powerbook requires minimum of 4 * 4096 buffer size for stereo.
 */
-#define RECORD_BUFFER_SIZE (4096 * 1)
+#define RECORD_BUFFER_SIZE (4096 * 2)
 typedef struct {
 	SPB paramBlock;
 	int stereo;
@@ -92,7 +110,7 @@ typedef struct {
 /*** sound output variables ***/
 
 SndChannelPtr chan;
-PlayStateRec bufState = {false, false, 0, 0, NULL, NULL, true, 0};
+PlayStateRec bufState = {false, false, 0, 0, 0, 0, 0, 0, 0, true};
 SndDoubleBufferHeader dblBufHeader;
 
 /*** sound input variables ***/
@@ -109,13 +127,11 @@ pascal void FlipRecordBuffers(SPBPtr pb);
 int MixInSamples(int count, char *srcBufPtr, int srcStartIndex, char *dstBufPtr, int dstStartIndex);
 
 pascal void DoubleBack(SndChannelPtr chan, SndDoubleBufferPtr buf) {
+  /* Switch buffers (at interrupt time). The given buffer just finished playing. */
+
 	PlayStateRec *state;
 
 	chan;  /* reference argument to avoid compiler warnings */
-
-	/* insert a click to help user detect failure to fill buffer in time */
-	*(unsigned int *) &buf->dbSoundData[0] = 0;
-	*(unsigned int *) &buf->dbSoundData[4] = 0xFFFFFFFF;
 
 	state = (PlayStateRec *) buf->dbUserInfo[0];
 	if (buf->dbUserInfo[1] == 0) {
@@ -129,12 +145,12 @@ pascal void DoubleBack(SndChannelPtr chan, SndDoubleBufferPtr buf) {
 	buf->dbNumFrames = state->frameCount;
 	buf->dbFlags = buf->dbFlags | dbBufferReady;
 	if (state->done) {
-		FillBufferWithSilence(buf);
 		buf->dbFlags = buf->dbFlags | dbLastBuffer;
 	} else {
 		signalSemaphoreWithIndex(state->playSemaIndex);
 	}
 	state->lastFlipTime = ioMicroMSecs();
+	FillBufferWithSilence(buf);  /* avoids ugly stutter if not filled in time */
 }
 
 int FillBufferWithSilence(SndDoubleBufferPtr buf) {
@@ -293,7 +309,7 @@ int snd_InsertSamplesFromLeadTime(int frameCount, int srcBufPtr, int samplesOfLe
 	if (startSample < bufState.frameCount) {
 		count = bufState.frameCount - startSample;
 		if (count > frameCount) count = frameCount;
-		MixInSamples(count, (char *) srcBufPtr, 0, &bufPlaying->dbSoundData[0], startSample);
+		MixInSamples(count, (char *) srcBufPtr, 0, (char *) &bufPlaying->dbSoundData[0], startSample);
 		samplesInserted = count;
 	}
 
@@ -302,7 +318,7 @@ int snd_InsertSamplesFromLeadTime(int frameCount, int srcBufPtr, int samplesOfLe
 	if (count > (frameCount - samplesInserted)) {
 		count = frameCount - samplesInserted;
 	}
-	MixInSamples(count, (char *) srcBufPtr, samplesInserted, &otherBuf->dbSoundData[0], 0);
+	MixInSamples(count, (char *) srcBufPtr, samplesInserted, (char *) &otherBuf->dbSoundData[0], 0);
 	return samplesInserted + count;
 }
 
@@ -361,7 +377,15 @@ int snd_Start(int frameCount, int samplesPerSec, int stereo, int semaIndex) {
 
 	for (i = 0; i < 2; i++) {
 		buffer = (SndDoubleBufferPtr) NewPtrClear(sizeof(SndDoubleBuffer) + bufState.bufSizeInBytes);
-		if (buffer == NULL) return false; /* could not allocate memory for a buffer */
+		if (buffer == NULL) {   /* could not allocate memory for a buffer; clean up and abort */
+			SndDisposeChannel(chan, true);
+			DisposeRoutineDescriptor(dblBufHeader.dbhDoubleBack);
+			if (i == 1) {  /* free the first buffer */
+				DisposePtr((char *) dblBufHeader.dbhBufferPtr[1]);
+				dblBufHeader.dbhBufferPtr[1] = NULL;
+			}
+			return false;
+		}
 		buffer->dbNumFrames		= bufState.frameCount;
 		buffer->dbFlags			= dbBufferReady;
 		buffer->dbUserInfo[0]	= (long) &bufState;
@@ -392,7 +416,7 @@ int snd_Stop(void) {
 		err = SndChannelStatus(chan, sizeof(status), &status);
 		if (err != noErr) break; /* could not get channel status */
 		if (!status.scChannelBusy) break;
-		Delay(1, &junk);
+		Delay(1, (void *) &junk);
 	}
 	SndDisposeChannel(chan, true);
 	DisposeRoutineDescriptor(dblBufHeader.dbhDoubleBack);
@@ -622,4 +646,4 @@ int snd_RecordSamplesIntoAtLength(int buf, int startSliceIndex, int bufferSizeIn
 	bytesCopied = (int) nextBuf - (buf + (startSliceIndex * bytesPerSlice));
 	return bytesCopied / bytesPerSlice;
 }
-'.
+'
