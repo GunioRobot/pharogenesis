@@ -1,0 +1,2 @@
+testCharacterBlockNormal
+	^super testCharacterBlockNormal
