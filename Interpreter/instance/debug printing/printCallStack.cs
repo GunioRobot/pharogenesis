@@ -1,0 +1,2 @@
+printCallStack
+	^self printCallStackOf: activeContext
