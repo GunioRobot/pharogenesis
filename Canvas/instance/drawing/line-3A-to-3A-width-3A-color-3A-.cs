@@ -1,2 +1,3 @@
 line: pt1 to: pt2 width: w color: c
-	"Noop here; overridden by non-trivial canvases."
+	"Draw a line using the given width and color"
+	^self subclassResponsibility
