@@ -1,3 +1,2 @@
 isBlank
-
-	^ indexInQuote == nil
+	^indexInQuote isNil
