@@ -1,8 +1,10 @@
 reversed
 	"Answer a copy of the receiver with element order reversed."
-	| reversal strm |
-	reversal _ self species new: self size.
-	strm _ WriteStream on: reversal.
-	self reverseDo: [:elem | strm nextPut: elem].
-	^ reversal
-" 'frog' reversed "
+	"Example: 'frog' reversed"
+
+	| n result src |
+	n _ self size.
+	result _ self species new: n.
+	src _ n + 1.
+	1 to: n do: [:i | result at: i put: (self at: (src _ src - 1))].
+	^ result
