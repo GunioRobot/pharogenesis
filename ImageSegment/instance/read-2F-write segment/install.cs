@@ -14,4 +14,4 @@ install
 		ifFalse: [
 			arrayOfRoots elementsForwardIdentityTo: newRoots].
 	state _ #inactive.
-	self beep.	"Don't use Squeak sound here."
+	Beeper beepPrimitive
