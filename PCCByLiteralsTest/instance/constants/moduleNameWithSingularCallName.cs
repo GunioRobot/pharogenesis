@@ -1,0 +1,2 @@
+moduleNameWithSingularCallName
+	^ 'LOne'
