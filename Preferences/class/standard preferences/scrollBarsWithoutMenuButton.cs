@@ -1,0 +1,2 @@
+scrollBarsWithoutMenuButton
+	^ self valueOfFlag: #scrollBarsWithoutMenuButton
