@@ -9,12 +9,10 @@ bytecodePrimAt
 	successFlag ifTrue:
 		[atIx _ rcvr bitAnd: AtCacheMask.  "Index into atCache = 4N, for N = 0 ... 7"
 		(atCache at: atIx+AtCacheOop) = rcvr
-		ifTrue:
-			[result _ self commonVariableInternal: rcvr at: (self integerValueOf: index)
-							cacheIndex: atIx.
+		ifTrue: [result _ self commonVariableInternal: rcvr at: (self integerValueOf: index) cacheIndex: atIx.
 			successFlag ifTrue:
 				[self fetchNextBytecode.
-				^ self internalPop: 2 thenPush: result]]].
+				^self internalPop: 2 thenPush: result]]].
 
 	messageSelector _ self specialSelector: 16.
 	argumentCount _ 1.
