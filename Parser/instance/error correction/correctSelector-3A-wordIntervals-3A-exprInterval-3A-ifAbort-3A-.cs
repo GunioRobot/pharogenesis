@@ -9,6 +9,8 @@ correctSelector: proposedKeyword wordIntervals: spots exprInterval: expInt ifAbo
 	requestor selectFrom: spots first first to: spots last last.
 	requestor select.
 	alternatives _ Symbol possibleSelectorsFor: proposedKeyword.
+	self flag: #toBeFixed.
+	"alternatives addAll: (MultiSymbol possibleSelectorsFor: proposedKeyword)."
 
 	aStream _ WriteStream on: (String new: 200).
 	aStream nextPutAll: (proposedKeyword contractTo: 35); cr.
@@ -32,6 +34,6 @@ confirm, correct, or cancel'.
 	choice = 1 ifTrue: [ ^ proposedKeyword asSymbol ].
 	correctSelector _ alternatives at: choice - 1.
 	self substituteSelector: correctSelector keywords wordIntervals: spots.
-	((proposedKeyword last ~~ $:) and: [correctSelector last == $:]) ifTrue: [
+	((proposedKeyword last ~= $:) and: [correctSelector last == $:]) ifTrue: [
 		^ abortAction value].
 	^ correctSelector.
