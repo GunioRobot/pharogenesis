@@ -1,0 +1,3 @@
+exError
+	^SUnitNameResolver errorObject
+			
