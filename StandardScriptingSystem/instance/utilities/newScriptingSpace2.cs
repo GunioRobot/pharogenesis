@@ -1,7 +1,7 @@
 newScriptingSpace2
 	"Answer a complete scripting space"
 
-	| aTemplate  aPlayfield |
+	| aTemplate  aPlayfield aControl |
 	
 	(aTemplate _ PasteUpMorph new)
 		setNameTo: 'etoy';
@@ -10,7 +10,11 @@ newScriptingSpace2
 		impartPrivatePresenter;
 		setProperty: #automaticPhraseExpansion toValue: true;
 		beSticky.
-	aTemplate presenter addStopStepGoButtons; addTrashCan.
+	aTemplate useRoundedCorners; borderWidth: 2. 
+	aControl _  ScriptingSystem scriptControlButtons setToAdhereToEdge: #bottomLeft.
+	aControl beSticky; borderWidth: 0; beTransparent.
+	aTemplate addMorphBack: aControl.
+	aTemplate presenter addTrashCan.
 
 	aTemplate addMorph: (aPlayfield _ PasteUpMorph new).
 	aPlayfield
