@@ -1,2 +1,2 @@
 setLabelWidgetAllowance
-	^ labelWidgetAllowance _ 75
+	^ labelWidgetAllowance :=  (self boxExtent x * 4) + 19
