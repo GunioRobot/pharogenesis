@@ -1,2 +1,2 @@
 name
-	^ projectChangeSet name
+	^ changeSet name
