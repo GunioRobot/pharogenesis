@@ -1,5 +1,11 @@
 insert: anObject before: spot
-	| index delta spotIndex|
+
+  "  spot is an index in the range firstIndex .. lastIndex, such an index is not known from outside the collection. 
+     Never use this method in your code, it is meant for private use by OrderedCollection only.
+     The methods for use are:
+        #add:before:   to insert an object before another object
+        #add:beforeIndex:   to insert an object before a given position. "
+	| "index" delta spotIndex|
 	spotIndex _ spot.
 	delta _ spotIndex - firstIndex.
 	firstIndex = 1
