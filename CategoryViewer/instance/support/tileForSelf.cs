@@ -1,4 +1,4 @@
 tileForSelf
-	"Return a tile representing the target morph itself."
+	"Return a tile representing the receiver's viewee"
 
-	^ self tileForPlayer: scriptedPlayer
+	^ scriptedPlayer tileToRefer
