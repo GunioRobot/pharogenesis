@@ -16,7 +16,7 @@ readHeader
 	colorPlanes _ self next.
 	rowByteSize _ self nextWord.
 	isGrayScale _ (self next: 2) = 2.
-	self next: 58. "skip over filler".
+	self next: 58. "skip over filler"
 
 
 
