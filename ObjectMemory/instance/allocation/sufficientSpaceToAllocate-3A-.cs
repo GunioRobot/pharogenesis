@@ -6,8 +6,7 @@ sufficientSpaceToAllocate: bytes
 	minFree _ lowSpaceThreshold + bytes + BaseHeaderSize.
 
 	"check for low-space"
-	(self sizeOfFree: freeBlock) >= minFree ifTrue: [
-		^ true.
-	] ifFalse: [
-		^ self sufficientSpaceAfterGC: minFree.
-	].
+	(self cCoerce: (self sizeOfFree: freeBlock) to: 'unsigned ')
+		>= (self cCoerce: minFree to: 'unsigned ')
+		ifTrue: [^ true]
+		ifFalse: [^ self sufficientSpaceAfterGC: minFree].
