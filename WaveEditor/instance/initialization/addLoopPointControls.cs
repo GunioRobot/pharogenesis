@@ -5,14 +5,14 @@ addLoopPointControls
 	r color: self color; borderWidth: 0; layoutInset: 0.
 	r hResizing: #spaceFill; vResizing: #rigid; extent: 5@20; wrapCentering: #center; cellPositioning: #leftCenter.
 
-	m _ StringMorph new contents: 'Loop end: '.
+	m _ StringMorph new contents: 'Loop end: ' translated.
 	r addMorphBack: m.
 	m _ UpdatingStringMorph new
 		target: self; getSelector: #loopEnd; putSelector: #loopEnd:;
 		growable: false; width: 50; step.
 	r addMorphBack: m.
 
-	m _ StringMorph new contents: 'Loop length: '.
+	m _ StringMorph new contents: 'Loop length: ' translated.
 	r addMorphBack: m.
 	m _ UpdatingStringMorph new
 		target: self; getSelector: #loopLength; putSelector: #loopLength:;
@@ -20,7 +20,7 @@ addLoopPointControls
 		growable: false; width: 50; step.
 	r addMorphBack: m.
 
-	m _ StringMorph new contents: 'Loop cycles: '.
+	m _ StringMorph new contents: 'Loop cycles: ' translated.
 	r addMorphBack: m.
 	m _ UpdatingStringMorph new
 		target: self; getSelector: #loopCycles; putSelector: #loopCycles:;
@@ -28,7 +28,7 @@ addLoopPointControls
 		growable: false; width: 50; step.
 	r addMorphBack: m.
 
-	m _ StringMorph new contents: 'Frequency: '.
+	m _ StringMorph new contents: 'Frequency: ' translated.
 	r addMorphBack: m.
 	m _ UpdatingStringMorph new
 		target: self; getSelector: #perceivedFrequency; putSelector: #perceivedFrequency:;
