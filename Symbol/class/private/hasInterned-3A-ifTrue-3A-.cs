@@ -12,15 +12,13 @@ hasInterned: aString ifTrue: symBlock
 	table _ ((ascii >= "$a asciiValue" 97) and:
 		[(ascii <= "$z asciiValue" 122) and:
 		[(numArgs _ aString numArgs) >= 0]])
-			ifTrue: [ (SelectorTables at: (numArgs + 1 min: SelectorTables size))
-						at: ascii - "($a asciiValue - 1)" 96 ]
-			ifFalse: [ OtherTable at: aString stringhash \\ OtherTable size + 1].
+			ifTrue: [(SelectorTables at: (numArgs + 1 min: SelectorTables size))
+						at: ascii - "($a asciiValue - 1)" 96]
+			ifFalse: [OtherTable at: aString stringhash \\ OtherTable size + 1].
 
-	1 to: table size do: 
-		[:i | 
-		(table at: i) == nil 
-			ifFalse: [aString size = (table at: i) size ifTrue: [aString = (table at: i)
-						ifTrue: 
-							[symBlock value: (table at: i).
-							^true]]]].
+	1 to: table size do: [:i | 
+		aString size = (table at: i) size ifTrue: [aString = (table at: i) ifTrue: [
+			symBlock value: (table at: i).
+			^true]]
+	].
 	^false
