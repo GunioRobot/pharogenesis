@@ -21,7 +21,6 @@ getStemUrl
 	"A new legal place"
 	url _ knownURL
 		ifTrue: [initial]
-		ifFalse: [[FillInTheBlank request: 'url of the place to store a typical page in this book.
-Must begin with file:// or ftp://' initialAnswer: initial]
-				valueWithWorld: self world].
+		ifFalse: [FillInTheBlank request: 'url of the place to store a typical page in this book.
+Must begin with file:// or ftp://' translated initialAnswer: initial].
 	^ SqueakPage stemUrl: url
