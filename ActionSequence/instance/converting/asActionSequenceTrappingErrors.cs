@@ -1,0 +1,3 @@
+asActionSequenceTrappingErrors
+
+	^WeakActionSequenceTrappingErrors withAll: self
