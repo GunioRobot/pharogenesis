@@ -1,0 +1,1 @@
+A filter that matches messages based on Smalltalk code entered by the user.
