@@ -1,0 +1,3 @@
+makeTargetSolidFill
+
+	myTarget useSolidFill
