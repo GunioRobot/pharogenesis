@@ -1,0 +1,2 @@
+classString
+	^String
