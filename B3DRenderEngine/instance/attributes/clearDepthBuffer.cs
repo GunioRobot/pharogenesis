@@ -1,0 +1,2 @@
+clearDepthBuffer
+	^rasterizer clearDepthBuffer
