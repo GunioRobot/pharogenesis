@@ -3,7 +3,7 @@ updateInstancesFrom: oldClass
 	the receiver, which is a newly changed class. Permute variables as 
 	necessary."
 
-	| oldInstVarNames map variable old new instSize offset fieldName oldInstances |
+	| oldInstVarNames map variable new instSize oldInstances |
 	oldClass someInstance == nil ifTrue: [^self].
 	"no instances to convert"
 	oldInstVarNames _ oldClass allInstVarNames.
