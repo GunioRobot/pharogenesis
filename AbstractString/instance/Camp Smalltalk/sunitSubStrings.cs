@@ -1,0 +1,3 @@
+sunitSubStrings
+
+        ^self substrings
