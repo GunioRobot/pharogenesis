@@ -1,0 +1,4 @@
+passedCount
+
+	^self passed size
+			
