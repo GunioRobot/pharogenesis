@@ -1,0 +1,3 @@
+subfamilyName
+
+	^ ttcDescription subfamilyName.
