@@ -1,3 +1,3 @@
 drawOn: aCanvas
 
-	aCanvas image: self rotatedForm at: bounds origin.
+	aCanvas paintImage: self rotatedForm at: bounds origin.
