@@ -15,3 +15,4 @@ bytecodePrimValueWithArg
 		argumentCount _ 1.
 		^ self normalSend
 	].
+	self fetchNextBytecode.
