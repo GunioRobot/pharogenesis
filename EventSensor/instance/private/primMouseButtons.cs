@@ -1,2 +1,4 @@
 primMouseButtons
-	^mouseButtons
+	self fetchMoreEvents.
+	self flushNonKbdEvents.
+	^ mouseButtons
