@@ -1,0 +1,3 @@
+cursorColorAtZeroCrossing
+
+	^ cursorColorAtZeroCrossings
