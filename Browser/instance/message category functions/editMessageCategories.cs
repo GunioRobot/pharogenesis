@@ -6,6 +6,6 @@ editMessageCategories
 	classListIndex ~= 0
 		ifTrue: 
 			[self messageCategoryListIndex: 0.
-			editSelection _ #editMessageCategories.
+			self editSelection: #editMessageCategories.
 			self changed: #editMessageCategories.
 			self contentsChanged]
