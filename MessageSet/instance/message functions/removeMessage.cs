@@ -14,7 +14,7 @@ removeMessage
 		"self messageListIndex: 0."
 	self changed: #messageList.
 	self changed: #messageListIndex.
-	self changed: #contents.
+	self contentsChanged.
 
 	confirmation == 2 ifTrue:
 		[Smalltalk browseAllCallsOn: messageName]
