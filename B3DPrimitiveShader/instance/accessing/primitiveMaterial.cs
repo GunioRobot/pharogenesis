@@ -1,0 +1,2 @@
+primitiveMaterial
+	^material
