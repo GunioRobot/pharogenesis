@@ -11,8 +11,8 @@ shiftEnclose: characterStream
 	char asciiValue = 27 ifTrue: [ char _ ${ ].	"ctrl-["
 
 	self closeTypeIn.
-	startIndex _ startBlock stringIndex.
-	stopIndex _ stopBlock stringIndex.
+	startIndex _ self startIndex.
+	stopIndex _ self stopIndex.
 	oldSelection _ self selection.
 	which _ '([<{"''' indexOf: char ifAbsent: [1].
 	left _ '([<{"''' at: which.
