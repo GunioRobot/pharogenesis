@@ -1,0 +1,2 @@
+defaultNameStemForInstances
+	^ 'tab'
