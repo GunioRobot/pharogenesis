@@ -2,6 +2,8 @@ startField
 	"Examine and possibly trace the next field of the object being traced. See comment in markAndTrace for explanation of tracer state variables."
 
 	| typeBits childType |
+	self inline: true.
+
 	child _ self longAt: field.
 	typeBits _ child bitAnd: TypeMask.
 
@@ -20,7 +22,7 @@ startField
 
 	typeBits = 2 ifTrue: [
 		"reached the header; do we need to process the class word?"
-		(child bitAnd: 16r1F000) ~= 0 ifTrue: [
+		(child bitAnd: CompactClassMask) ~= 0 ifTrue: [
 			"object's class is compact; we're done"
 			"restore the header type bits"
 			child _ child bitAnd: AllButTypeMask.
