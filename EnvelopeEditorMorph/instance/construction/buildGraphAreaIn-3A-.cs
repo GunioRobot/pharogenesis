@@ -2,7 +2,7 @@ buildGraphAreaIn: frame
 	| r y |
 	graphArea _ RectangleMorph
 		newBounds: ((frame left + 40) @ (frame top + 40)
-		corner: (frame right+1) @ (frame bottom - 50))
+		corner: (frame right+1) @ (frame bottom - 60))
 		color: Color lightGreen lighter lighter.
 	graphArea borderWidth: 1.
 	self addMorph: graphArea.
