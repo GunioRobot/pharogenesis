@@ -5,8 +5,8 @@ A MethodInterface describes the interface for a single method.  The most generic
 	resultSpecification 		A characterization of the return value of the method
 	userLevel				
 	attributeKeywords		A list of symbols, comprising keywords that the user wishes to
-								associate with this method
+								see on the screen for this method
 	defaultStatus			The status to apply to new instances of the class by default
-	defaultFiresPerTick		How many fires per tick, by default, should be allowed if ticking.
+							(#ticking, #paused, #normal, etc.)
 
 
