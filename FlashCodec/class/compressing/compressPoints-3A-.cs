@@ -1,2 +1,2 @@
-compressPoints: points
-	^(self new initialize compressPoints: points) contents
+compressPoints: points 
+	^(self new compressPoints: points) contents
