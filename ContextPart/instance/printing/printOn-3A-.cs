@@ -16,4 +16,8 @@ printOn: aStream
 			aStream nextPutAll: mclass name.
 			aStream nextPut: $)].
 	aStream nextPutAll: '>>'.
-	aStream nextPutAll: selector
+	aStream nextPutAll: selector.
+	selector = #doesNotUnderstand: ifTrue: [
+		aStream space.
+		(self tempAt: 1) selector printOn: aStream.
+	].
