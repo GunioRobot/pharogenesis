@@ -1,0 +1,2 @@
+maxFrames
+	^player maxFrames
