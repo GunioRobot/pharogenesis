@@ -1,0 +1,3 @@
+compiledScript
+
+	^compiledScript
