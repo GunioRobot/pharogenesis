@@ -9,4 +9,4 @@ setPenSize: evt
 			selector: #penSize:hand:
 			argumentList: (Array with: w with: evt hand)].
 
-	menu popUpAt: evt hand position event: evt.
+	menu popUpEvent: evt
