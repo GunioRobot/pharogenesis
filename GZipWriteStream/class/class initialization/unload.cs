@@ -1,0 +1,2 @@
+unload
+	FileList unregisterFileReader: self
