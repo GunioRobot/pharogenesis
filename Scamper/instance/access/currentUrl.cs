@@ -1,0 +1,2 @@
+currentUrl
+	^currentUrl
