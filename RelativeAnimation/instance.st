@@ -1,6 +1,6 @@
 Animation
 	subclass: #RelativeAnimation
-	instanceVariableNames: 'getReverseStateFunction '
+	instanceVariableNames: 'getReverseStateFunction'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon3D-Wonderland Time'
+	category: 'Balloon3D-Wonderland-Time'
