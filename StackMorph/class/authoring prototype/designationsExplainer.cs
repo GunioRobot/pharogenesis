@@ -23,11 +23,12 @@ to this card')) do:
 		aSwatch _ AlignmentMorph new extent: 132 @80; color: (Color perform: aPair first); lock.
 		aSwatch hResizing: #rigid; vResizing: #rigid; layoutInset: 0.
 		aSwatch borderColor: Color black.
-		aTextMorph _ TextMorph new string: aPair second fontName: 'ComicBold' size: 18.
+		aTextMorph _ TextMorph new string: aPair second fontName: Preferences standardEToysFont familyName size: 18.
 		aTextMorph width: 130.
 		aTextMorph centered.
 		aSwatch addMorphBack: aTextMorph.
 		aMorph addMorphBack: aSwatch].
+	aMorph hResizing: #shrinkWrap; vResizing: #shrinkWrap.
 
 	^ aMorph
 
