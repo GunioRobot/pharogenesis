@@ -1,0 +1,28 @@
+upLoadProject: projectFile named: fileNameOnServer resourceUrl: resUrl retry: aBool
+	"Upload the given project file. If it's an archive, upload only the files that are local to the project."
+	| archive members upload prefix |
+	self isTypeFile ifTrue:[
+ 		^(FileDirectory on: urlObject pathForDirectory)
+			upLoadProject: projectFile named: fileNameOnServer resourceUrl: resUrl retry: aBool].
+	projectFile isZipArchive
+		ifFalse:[^self putFile: projectFile named: fileNameOnServer retry: aBool].
+	projectFile binary.
+	archive _ ZipArchive new readFrom: projectFile.
+	resUrl last = $/ 
+		ifTrue:[prefix _ resUrl copyFrom: 1 to: resUrl size-1] "remove last slash"
+		ifFalse:[prefix _ resUrl].
+	prefix _ prefix copyFrom: 1 to: (prefix lastIndexOf: $/).
+	members _ archive members select:[:entry|
+		"figure out where it's coming from"
+		upload _ false.
+		(entry fileName indexOf: $:) = 0 ifTrue:[
+			upload _ true. "one of the core files, e.g., project itself, resource map, meta info"
+		] ifFalse:[
+			(entry fileName asLowercase beginsWith: resUrl asLowercase) ifTrue:[
+				upload _ true.
+				entry fileName: (entry fileName copyFrom: prefix size+1 to: entry fileName size).
+			].
+		].
+		upload].
+	members _ members asArray sort:[:m1 :m2| m1 compressedSize < m2 compressedSize].
+	^self upLoadProject: fileNameOnServer members: members retry: aBool.
