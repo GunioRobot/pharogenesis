@@ -1,0 +1,2 @@
+emptySymbolTokenId
+	^scanner emptySymbolTokenId
