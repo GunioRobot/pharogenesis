@@ -5,12 +5,11 @@ closeTypeIn
 	 Typing commands can call 'closeTypeIn: aCharacterStream' instead of this to
 	 save typeahead.  Undoer & Redoer: undoAndReselect:redoAndReselect:."
 
-	| begin start stop |
+	| begin stop |
 	beginTypeInBlock == nil ifFalse:
 		[(UndoMessage sends: #noUndoer) ifTrue: "should always be true, but just in case..."
 			[begin _ self startOfTyping.
-			start _ startBlock stringIndex.
-			stop _ stopBlock stringIndex.
+			stop _ self stopIndex.
 			self undoer: #undoAndReselect:redoAndReselect:
 				with: (begin + UndoMessage argument to: begin + UndoSelection size - 1)
 				with: (stop to: stop - 1).
