@@ -1,0 +1,2 @@
+isEmpty
+	^ submorphs size < firstTileRow
