@@ -1,0 +1,2 @@
+wantsChangeSetLogging
+	^ (self == WonderlandStillCamera).
