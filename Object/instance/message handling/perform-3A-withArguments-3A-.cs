@@ -1,12 +1,8 @@
-perform: selector withArguments: anArray 
-	"Primitive. Send the receiver the keyword message indicated by the 
-	arguments. The argument, selector, is the selector of the message. The 
-	arguments of the message are the elements of anArray. Invoke 
-	messageNotUnderstood: if the number of arguments expected by the 
-	selector is not the same as the length of anArray. Essential. See Object 
-	documentation whatIsAPrimitive."
+perform: selector withArguments: argArray 
+	"Send the selector, aSymbol, to the receiver with arguments in argArray.
+	Fail if the number of arguments expected by the selector 
+	does not match the size of argArray.
+	Primitive. Optional. See Object documentation whatIsAPrimitive."
 
 	<primitive: 84>
-	(selector isMemberOf: Symbol)
-		ifFalse: [^ self error: 'selector argument must be a Symbol'].
-	self primitiveFailed
+	^ self perform: selector withArguments: argArray inSuperclass: self class
