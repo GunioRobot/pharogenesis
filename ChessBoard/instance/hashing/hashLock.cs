@@ -1,0 +1,2 @@
+hashLock
+	^hashLock
