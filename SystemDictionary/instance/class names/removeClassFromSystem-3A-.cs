@@ -1,8 +1,9 @@
 removeClassFromSystem: aClass
-	"Delete the class, aClass, from the system.
-	 7/18/96 sw: now that removeClassChanges doesn't remove the changes for the metaclass, call removeClassAndMetaClassChanges: instead"
+	"Delete the class, aClass, from the system."
 
-	SystemChanges removeClassAndMetaClassChanges: aClass.
+	SystemChanges noteRemovalOf: aClass.
+	aClass acceptsLoggingOfCompilation ifTrue:
+		[Smalltalk logChange:  'Smalltalk removeClassNamed: #', aClass name].
 	SystemOrganization removeElement: aClass name.
 	self removeKey: aClass name.
 	self flushClassNameCache
