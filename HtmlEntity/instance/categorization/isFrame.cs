@@ -1,0 +1,2 @@
+isFrame
+	^false
