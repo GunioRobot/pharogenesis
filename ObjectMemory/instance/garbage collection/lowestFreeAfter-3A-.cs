@@ -12,7 +12,7 @@ lowestFreeAfter: chunk
 			ifFalse: [
 				oopHeaderType = HeaderTypeSizeAndClass
 					ifTrue: [ oopSize _ (self sizeHeader: oop) bitAnd: AllButTypeMask ]
-					ifFalse: [ oopSize _ oopHeader bitAnd: 16rFC ].
+					ifFalse: [ oopSize _ oopHeader bitAnd: SizeMask ].
 			].
 		oop _ self oopFromChunk: (oop + oopSize).
 	].
