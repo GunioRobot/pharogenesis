@@ -4,4 +4,4 @@ filterToCurrentChangeSet
 	self filterFrom:
 		[:aClass :aSelector |
 			(aClass notNil and: [aSelector notNil]) and:
-				[(Smalltalk changes atSelector: aSelector class: aClass) ~~ #none]]
+				[(ChangeSet current atSelector: aSelector class: aClass) ~~ #none]]
