@@ -1,3 +1,3 @@
 foregroundColor
-	foreColor == nil ifTrue: [^ Display black].
+	foreColor == nil ifTrue: [^ Color black].
 	^ foreColor
