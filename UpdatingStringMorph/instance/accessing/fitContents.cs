@@ -1,8 +1,8 @@
 fitContents
 
-	| scanner newExtent |
-	scanner _ DisplayScanner quickPrintOn: Display box: Display boundingBox font: self fontToUse.
-	newExtent _ (((scanner stringWidth: contents) max: self minimumWidth) min: self maximumWidth)  @ scanner lineHeight.
+	| newExtent f |
+	f _ self fontToUse.
+	newExtent _ (((f widthOfString: contents) max: self minimumWidth) min: self maximumWidth)  @ f height.
 	(self extent = newExtent) ifFalse:
 		[self extent: newExtent.
 		self changed]
