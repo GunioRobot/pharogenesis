@@ -1,7 +1,8 @@
-constantTile: anObject
+constantTile: anObject 
+	"Answer a constant tile that represents the object"
 
-	(anObject isKindOf: Color) ifTrue:
-		[^ ColorTileMorph new typeColor: (ScriptingSystem colorForType: #color)].
-
-	^ anObject newTileMorphRepresentative
+	(anObject isColor) 
+		ifTrue: 
+			[^ColorTileMorph new typeColor: (ScriptingSystem colorForType: #Color)].
+	^anObject newTileMorphRepresentative 
 		typeColor: (ScriptingSystem colorForType: (self typeForConstant: anObject))
