@@ -1,0 +1,2 @@
+categorizer
+	^ categoriesFile categorizer
