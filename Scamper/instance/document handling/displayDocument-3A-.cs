@@ -13,7 +13,7 @@ displayDocument: mimeDocument
 	mimeDocument mainType = 'image' 
 		ifTrue: [handled _ self displayImagePage: mimeDocument].
 
-	mimeDocument contentType = 'text/html' 
+	(mimeDocument contentType beginsWith: 'text/html') 
 		ifTrue: [handled _ self displayTextHtmlPage: mimeDocument].
 
 	mimeDocument contentType = 'x-application/shockwave-flash'
