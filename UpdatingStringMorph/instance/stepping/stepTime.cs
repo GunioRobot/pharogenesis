@@ -1,3 +1,3 @@
 stepTime
 
-	^ 50
+	^ stepTime ifNil: [50]
