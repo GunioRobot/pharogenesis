@@ -18,16 +18,24 @@ open: aChangeList name: aString multiSelect: multiSelect
 		borderWidth: 1.
 
 	aListView _ (multiSelect
-			ifTrue: [PluggableListViewOfMany]
-			ifFalse: [PluggableListView])
-		on: aChangeList
-		list: #list
-		selected: #listIndex
-		changeSelected: #toggleListIndex:
-		menu: (aChangeList showsVersions
-			ifTrue: [#versionsMenu:]
-			ifFalse: [#changeListMenu:])
-		keystroke: #changeListKey:from:.
+			ifTrue: [PluggableListViewOfMany
+						on: aChangeList
+						list: #list
+						primarySelection: #listIndex
+						changePrimarySelection: #toggleListIndex:
+						listSelection: #listSelectionAt:
+						changeListSelection: #listSelectionAt:put:
+						menu: (aChangeList showsVersions
+								ifTrue: [#versionsMenu:]
+								ifFalse: [#changeListMenu:])]
+			ifFalse: [PluggableListView
+						on: aChangeList
+						list: #list
+						selected: #listIndex
+						changeSelected: #toggleListIndex:
+						menu: (aChangeList showsVersions
+								ifTrue: [#versionsMenu:]
+								ifFalse: [#changeListMenu:])]).
 	aListView window: (0 @ 0 extent: 200 @ listHeight).
 	topView addSubView: aListView.
 
