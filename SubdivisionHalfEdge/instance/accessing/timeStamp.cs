@@ -1,0 +1,2 @@
+timeStamp
+	^quadEdge timeStamp
