@@ -1,0 +1,2 @@
+suite
+        ^TestCase buildSuite
