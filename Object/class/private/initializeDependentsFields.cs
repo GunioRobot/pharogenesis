@@ -1,4 +1,4 @@
 initializeDependentsFields
-	DependentsFields _ IdentityDictionary new: 4
+	DependentsFields _ IdentityDictionary new
 
 	"Object initializeDependentsFields"
