@@ -7,4 +7,4 @@ selectedSelector
 					who _ selectedContext method.
 					selectedClass _ who first.
 					who last]
-				ifNotNil: [selectedContext selector]]
+				ifNotNil: [selectedContext methodSelector]]
