@@ -1,0 +1,2 @@
+fenceEnabled
+	^ self valueOfFlag: #fenceEnabled
