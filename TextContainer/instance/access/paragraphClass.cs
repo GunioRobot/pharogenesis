@@ -1,2 +1,2 @@
 paragraphClass
-	^ NewParagraph
+	^ MultiNewParagraph
