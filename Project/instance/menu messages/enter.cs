@@ -5,8 +5,10 @@ enter
 
 	CurrentProject saveState.
 	CurrentProject _ self.
-	Smalltalk newChanges: projectChangeSet.
-	TextCollector newTranscript: projectTranscript.
+	Smalltalk newChanges: changeSet.
+	TextCollector newTranscript: transcript.
 	displayDepth == nil ifTrue: [displayDepth _ Display depth].
 	Display newDepthNoRestore: displayDepth.
-	ControlManager newScheduler: projectWindows
+	world isMorph ifFalse: [World _ nil.  ^ ControlManager newScheduler: world].
+	(World _ world) install.
+	self spawnNewProcess
