@@ -1,0 +1,2 @@
+endCData
+	self stream nextPutAll: ']]>'
