@@ -3,7 +3,7 @@ objectForDataStream: refStrm
 
 	refStrm projectChangeSet == self ifTrue: [^ self].
 
-	"try to write reference for me".
+	"try to write reference for me"
 	^ DiskProxy 
 		global: #ChangeSorter
 		selector: #existingOrNewChangeSetNamed: 
