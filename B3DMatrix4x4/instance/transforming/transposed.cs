@@ -1,6 +1,7 @@
 transposed
 	"Return a transposed copy of the receiver"
 	| matrix |
+	<primitive: 'b3dTransposeMatrix' module: 'Squeak3D'>
 	matrix := self class new.
 	matrix 
 		a11: self a11; a12: self a21; a13: self a31; a14: self a41;
