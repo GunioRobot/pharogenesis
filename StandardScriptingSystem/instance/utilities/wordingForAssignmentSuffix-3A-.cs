@@ -3,9 +3,9 @@ wordingForAssignmentSuffix: aString
 
 	toTest _ aString asString.
 	#(	(':'					'_')
-		('Incr:'				'<+')
-		('Decr:'				'<-')
-		('Mult:'				'<*'))
+		('Incr:'				'increase by')
+		('Decr:'				'decrease by')
+		('Mult:'				'multiply by'))
 	do:
 		[:pair | toTest = pair first ifTrue: [^ pair second]].
 	^ toTest
