@@ -11,13 +11,13 @@ saveIndexOfOnly: aPage
 	strm _ strm asStream.
 	strm class == String ifTrue: [^ self saveIndexOnURL].
 	remote _ strm fileInObjectAndCode.
-	dict _ remote at: 1.
+	dict _ remote first.
 	allText _ dict at: #allText ifAbsent: [nil].	"remote, not local"
 	allTextUrls _ dict at: #allTextUrls ifAbsent: [nil].
-	allText size + 1 ~= remote size ifTrue: [self error: '.bo size mismatch.  Please tell Ted what you just did to this book.'].
+	allText size + 1 ~= remote size ifTrue: [self error: '.bo size mismatch.  Please tell Ted what you just did to this book.' translated].
 
 
-	(pageURL _ aPage url) ifNil: [self error: 'just had one!'].
+	(pageURL _ aPage url) ifNil: [self error: 'just had one!' translated].
 	fName _ pageURL copyAfterLast: $/.
 	2 to: remote size do: [:ii | 
 		((remote at: ii) url findString: fName startingAt: 1 
