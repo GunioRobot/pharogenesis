@@ -7,7 +7,7 @@ completeTheMessage
 	strm _ WriteStream on: newText.
 	strm 
 		nextPutAll: 'Content-Type: text/html'; cr;
-		nextPutAll: 'From: ', Celeste userName; cr;
+		nextPutAll: 'From: ', celeste account userName; cr;
 		nextPutAll: 'To: ',to; cr;
 		nextPutAll: 'Subject: ',subject; cr;
 
