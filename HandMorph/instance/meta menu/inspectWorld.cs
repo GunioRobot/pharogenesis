@@ -1,0 +1,3 @@
+inspectWorld
+
+	owner inspect.
