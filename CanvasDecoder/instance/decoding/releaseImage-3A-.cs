@@ -1,6 +1,5 @@
-releaseImage: command
+releaseImage: command 
 	| cacheID |
-
 	CachedForms ifNil: [^self].
-	cacheID _ self class decodeInteger: (command at: 2).
-	CachedForms at: cacheID put: nil.
+	cacheID := self class decodeInteger: (command second).
+	CachedForms at: cacheID put: nil
