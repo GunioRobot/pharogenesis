@@ -1,0 +1,3 @@
+inspectMorph
+
+	argument inspect.
