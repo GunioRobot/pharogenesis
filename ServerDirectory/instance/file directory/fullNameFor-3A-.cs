@@ -7,6 +7,8 @@ fullNameFor: aFileName
 	urlObject ifNotNil: [^ urlObject pathString, aFileName].
 	(aFileName includes: self pathNameDelimiter)
 		ifTrue: [^ aFileName].
+	self isTypeHTTP ifTrue: [
+		^ self downloadUrl, aFileName].
 	directory isEmpty ifTrue: [^ server, 
 		self pathNameDelimiter asString, aFileName].
 	^ (directory first == $/ ifTrue: [''] ifFalse: [user,'@']), 
