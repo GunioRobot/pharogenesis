@@ -6,8 +6,8 @@ exchangeWith: prior
 	 Don't affect the paste buffer.  Undoer: itself; Redoer: Undoer."
 
 	| start stop before selection priorSelection delta altInterval |
-	start _ startBlock stringIndex.
-	stop _ stopBlock stringIndex - 1.
+	start _ self startIndex.
+	stop _ self stopIndex - 1.
 	((prior first <= prior last) | (start <= stop) "Something to exchange" and:
 			[self isDisjointFrom: prior])
 		ifTrue:
