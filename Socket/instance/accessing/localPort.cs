@@ -1,0 +1,3 @@
+localPort
+
+	^ self primSocketLocalPort: socketHandle
