@@ -1,0 +1,3 @@
+asMultiSymbol
+
+	^ self asSymbol.
