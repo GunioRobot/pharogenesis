@@ -2,12 +2,14 @@ reportPlayersAndScripts
 	"Open a window which contains a report on players and their scripts"
 
 	| aList aString |
-	(aList _ self uniclassesAndCounts) size == 0 ifTrue: [^ self inform: 'there are no scripted players'].
+	(aList _ self uniclassesAndCounts) ifEmpty:  [^ self inform: 'there are no scripted players' translated].
 	aString _ String streamContents:
 		[:aStream |
 			aList do:
-				[:aPair | aStream nextPutAll: aPair first name, ' -- ', aPair second printString, ' instance',
-		(aPair second > 1 ifTrue: ['s'] ifFalse: ['']) , ', named '.
+				[:aPair |
+					aStream nextPutAll: aPair first name, ' -- ', aPair second printString.
+					aStream nextPutAll: ' ', (aPair second > 1 ifTrue: ['instances'] ifFalse: ['instance']) translated, ', '.
+					aStream nextPutAll: 'named' translated.
 					aPair first allInstancesDo: [:inst | aStream space; nextPutAll: inst externalName].
 					aStream cr].
 			aStream cr.
@@ -16,10 +18,12 @@ reportPlayersAndScripts
 					aStream cr.
 					aStream nextPutAll: 
 '--------------------------------------------------------------------------------------------'.
-					aStream cr; nextPutAll: aPair first name.
+					aStream cr; nextPutAll: aPair first typicalInstanceName.
+					aStream nextPutAll: '''s' translated.
+					aStream nextPutAll: ' scripts:' translated.
 					aPair first addDocumentationForScriptsTo: aStream]].
 
 	(StringHolder new contents: aString)
-		openLabel: 'All scripts of all players in this world'
+		openLabel: 'All scripts in this project' translated
 
 "self currentWorld presenter reportPlayersAndScripts"
