@@ -1,8 +1,7 @@
 tallyMethods: aBlock
 	"This method uses the simulator to count the number of calls on each method
 	invoked in evaluating aBlock. Results are given in order of decreasing counts."
-
-	| prev current tallies |
+	| prev tallies |
 	tallies _ Bag new.
 	prev _ aBlock.
 	thisContext sender
