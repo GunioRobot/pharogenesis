@@ -1,40 +1,57 @@
 fileContentsMenu: aMenu shifted: shifted
+	"Construct aMenu to have items appropriate for the file browser's code pane, given the shift state provided"
 
-| shiftMenu |
-^ shifted 
-	ifFalse: [aMenu 
-		labels: 
-'get entire file
-view as hex
-browse changes
-find...(f)
-find again (g)
-set search string (h)
-do again (j)
-undo (z)
-copy (c)
-cut (x)
-paste (v)
-paste...
-do it (d)
-print it (p)
-inspect it (i)
-fileIn selection
-accept (s)
-cancel (l)
-more...' 
-		lines: #(3 6 8 12 16 18)
-		selections: #(get getHex browseChanges
-find findAgain setSearchString
-again undo
-copySelection cut paste pasteRecent
-doIt printIt inspectIt fileItIn
-accept cancel
-shiftedYellowButtonActivity)]
-
-	ifTrue: [shiftMenu _ ParagraphEditor shiftedYellowButtonMenu.
-		aMenu 
+	| shiftMenu services maybeLine extraLines |
+	shifted ifTrue:
+		[shiftMenu _ ParagraphEditor shiftedYellowButtonMenu.
+		^ aMenu 
 			labels: shiftMenu labelString 
 			lines: shiftMenu lineArray
-			selections: shiftMenu selections]
+			selections: shiftMenu selections].
+	fileName ifNotNil:
+		[services _ OrderedCollection new.
+		(#(briefHex briefFile needToGetBriefHex needToGetBrief) includes: brevityState) ifTrue:
+			[services add: self serviceGet].
+		(#(fullHex briefHex needToGetFullHex needToGetBriefHex) includes: brevityState) ifFalse:
+			[services add: self serviceGetHex].
+		(#(needToGetShiftJIS needToGetEUCJP needToGetCNGB needToGetEUCKR needToGetUTF8) includes: brevityState) ifFalse:
+			[services add: self serviceGetEncodedText].
+		maybeLine _ services size.
+		(FileStream sourceFileSuffixes includes: self suffixOfSelectedFile) ifTrue:
+			[services addAll:
+				(self servicesFromSelectorSpecs:
+					#(fileIntoNewChangeSet: fileIn: browseChangesFile: browseFile:))].
 
+		extraLines _ OrderedCollection new.
+		maybeLine > 0 ifTrue: [extraLines add: maybeLine].
+		services size > maybeLine ifTrue: [extraLines add: services size].
+		aMenu 
+			addServices: services
+			for: self fullName
+			extraLines: extraLines].
+
+	aMenu addList: {
+			{'find...(f)' translated.		#find}.
+			{'find again (g)' translated.		#findAgain}.
+			{'set search string (h)' translated.	#setSearchString}.
+			#-.
+			{'do again (j)' translated.		#again}.
+			{'undo (z)' translated.			#undo}.
+			#-.
+			{'copy (c)' translated.			#copySelection}.
+			{'cut (x)' translated.			#cut}.
+			{'paste (v)' translated.		#paste}.
+			{'paste...' translated.			#pasteRecent}.
+			#-.
+			{'do it (d)' translated.		#doIt}.
+			{'print it (p)' translated.		#printIt}.
+			{'inspect it (i)' translated.		#inspectIt}.
+			{'fileIn selection (G)' translated.	#fileItIn}.
+			#-.
+			{'accept (s)' translated.		#accept}.
+			{'cancel (l)' translated.		#cancel}.
+			#-.
+			{'more...' translated.			#shiftedYellowButtonActivity}}.
+
+
+	^ aMenu
