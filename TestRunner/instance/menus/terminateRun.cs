@@ -1,0 +1,2 @@
+terminateRun
+	running := false.
