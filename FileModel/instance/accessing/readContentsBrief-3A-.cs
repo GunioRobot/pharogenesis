@@ -1,7 +1,9 @@
 readContentsBrief: brevityFlag
-	"retrieve the contents from the external file unless it is too long"
+	"retrieve the contents from the external file unless it is too long.
+	  Don't create a file here.  Check if exists."
 	| f size newContents first1000 last1000 |
-	f _ FileStream fileNamed: self fullName. 
+
+	f _ FileStream oldFileOrNoneNamed: self fullName. 
 	f == nil ifTrue:
 		[^ 'For some reason, this file cannot be read'].
 	(brevityFlag and: [(size _ f size) > 30000]) ifFalse: 
