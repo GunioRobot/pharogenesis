@@ -1,0 +1,2 @@
+isBlockElement
+	^true
