@@ -5,8 +5,9 @@ initialize
 	MessageListYellowButtonMenu _ 
 		PopUpMenu 
 			labels:
-'browse class
+'browse full
 fileOut
+printOut
 senders
 implementors
 senders of...
@@ -19,12 +20,12 @@ class variables
 class refs
 remove
 more...'
-			lines: #(2 6 7 9 12).
+			lines: #(3 8 13).
 	MessageListYellowButtonMessages _
-		#( browseClass  fileOut
-		senders implementors  browseSendersOfMessages messages
-		versions browseInstVarRefs browseInstVarDefs classVarRefs browseClassVariables browseClassRefs remove 
-		shiftedYellowButtonActivity )
+		#(browseFull fileOut printOut
+		senders implementors  browseSendersOfMessages messages versions
+		browseInstVarRefs browseInstVarDefs classVarRefs browseClassVariables browseClassRefs
+		remove shiftedYellowButtonActivity )
 "
 	MessageListController initialize.
 	MessageListController allInstancesDo:
