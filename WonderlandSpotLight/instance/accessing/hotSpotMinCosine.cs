@@ -1,0 +1,2 @@
+hotSpotMinCosine
+	^minCos
