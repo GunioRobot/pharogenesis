@@ -1,2 +1,2 @@
 clearStroke
-	self outline vertices: OrderedCollection new.
+	self outline: nil
