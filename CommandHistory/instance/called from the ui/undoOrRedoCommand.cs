@@ -3,7 +3,7 @@ undoOrRedoCommand
 
 	"Command undoOrRedoCommand"
 	| aPhase |
-	lastCommand ifNil: [^ self beep].
+	lastCommand ifNil: [^ Beeper beep].
 
 	(aPhase _ lastCommand phase) == #done
 		ifTrue:
