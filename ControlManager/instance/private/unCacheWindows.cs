@@ -1,3 +1,3 @@
 unCacheWindows
-	scheduledControllers do:
-		[:aController | aController view uncacheBits]
+	scheduledControllers ifNotNil: [scheduledControllers do:
+		[:aController | aController view uncacheBits]]
