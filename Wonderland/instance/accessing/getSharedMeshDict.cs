@@ -1,4 +1,4 @@
 getSharedMeshDict
 	"Return the shared mesh dictionary"
 
-	^ sharedMeshDict.
+	^ sharedMeshDict ifNil:[sharedMeshDict := Dictionary new].
