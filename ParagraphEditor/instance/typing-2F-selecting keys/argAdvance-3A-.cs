@@ -8,7 +8,7 @@ argAdvance: characterStream
 	| start |
 	sensor keyboard.		"flush character"
 	self closeTypeIn: characterStream.
-	start _ paragraph text findString: ': ' startingAt: stopBlock stringIndex.
+	start _ paragraph text findString: ': ' startingAt: self stopIndex.
 	start = 0 ifTrue: [start _ paragraph text size + 1].
 	self selectAt: start + 2.
 	^true
