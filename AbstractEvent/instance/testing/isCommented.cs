@@ -1,0 +1,3 @@
+isCommented
+
+	^false
