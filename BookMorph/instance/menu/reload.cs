@@ -4,21 +4,19 @@ reload
 
 	| url onServer onPgs sq which |
 	(url _ self valueOfProperty: #url) ifNil: ["for .bo index file"
-		[
-			url _ FillInTheBlank 
-				request: 'url of the place where this book''s index is stored.
-Must begin with file:// or ftp://' 
-				initialAnswer: (self getStemUrl, '.bo').
-		] valueWithWorld: self world.
-		url size > 0 ifTrue: [self setProperty: #url toValue: url]
-			ifFalse: [^ self]].
+	url _ FillInTheBlank 
+		request: 'url of the place where this book''s index is stored.
+Must begin with file:// or ftp://' translated
+		initialAnswer: (self getStemUrl, '.bo').
+	url notEmpty ifTrue: [self setProperty: #url toValue: url]
+				ifFalse: [^ self]].
 	onServer _ self class new fromURL: url.
 	"Later: test book times?"
 	onPgs _ onServer pages collect: [:out |
 		sq _ SqueakPageCache pageCache at: out url ifAbsent: [nil].
-		(sq ~~ nil and: [sq contentsMorph isInMemory])
+		(sq notNil and: [sq contentsMorph isInMemory])
 			ifTrue: [((out sqkPage lastChangeTime > sq lastChangeTime) or: 
-					  [sq contentsMorph == nil]) 
+					  [sq contentsMorph isNil]) 
 						ifTrue: [SqueakPageCache atURL: out url put: out sqkPage.
 							out]
 						ifFalse: [sq contentsMorph]]
