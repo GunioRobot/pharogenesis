@@ -1,7 +1,7 @@
 addColorSwatch
 
 	| m1 m2 desiredW |
-	m1 _ StringMorph contents: 'color' font: (StrikeFont familyName: #NewYork size: 12).
+	m1 _ StringMorph contents: 'color' translated font: ScriptingSystem fontForTiles.
 	m2 _ Morph new extent: 12@8; color: (Color r: 0.8 g: 0 b: 0).
 	desiredW _ m1 width + 6.
 	self extent: (desiredW max: self basicWidth) @ self class defaultH.
