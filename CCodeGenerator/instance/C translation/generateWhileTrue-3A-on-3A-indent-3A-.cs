@@ -1,9 +1,11 @@
 generateWhileTrue: msgNode on: aStream indent: level
-	"Generate the C code for this message onto the given stream."
+	"Generate C code for a loop in one of the following formats, as appropriate:
+		while(cond) { stmtList }
+		do {stmtList} while(cond)
+		while(1) {stmtListA; if (!(cond)) break; stmtListB}"
 
-	aStream nextPutAll: 'while ('.
-	self emitCTestBlock: msgNode receiver on: aStream.
-	aStream nextPutAll: ') {'; cr.
-	msgNode args first emitCCodeOn: aStream level: level + 1 generator: self.
-	level timesRepeat: [ aStream tab ].
-	aStream nextPutAll: '}'.
+	msgNode receiver statements size <= 1
+		ifTrue: [^self generateWhileTrueLoop: msgNode on: aStream indent: level].
+	msgNode args first isNilStmtListNode
+		ifTrue: [^self generateDoWhileTrue: msgNode on: aStream indent: level].
+	^self generateWhileForeverBreakFalseLoop: msgNode on: aStream indent: level
