@@ -1,15 +1,17 @@
 shiftedMessageMenu: aMenu
-
-	^ aMenu labels: 'browse class hierarchy
-browse class
-browse method
-implementors of sent messages
-change sets with this method
-inspect instances
-inspect subinstances
-more...' 
-	lines: #(5 7 10)
-	selections: #(classHierarchy browseClass 
-		buildMessageBrowser browseAllMessages findMethodInChangeSets 
-		inspectInstances inspectSubInstances
-		unshiftedYellowButtonActivity)
+	^ aMenu addList: #(
+		-
+		('method pane'						makeIsolatedCodePane)
+		('toggle diffing'						toggleDiffing)
+		('implementors of sent messages'		browseAllMessages)
+		('change category...'				changeCategory)
+			-
+		('sample instance'					makeSampleInstance)
+		('inspect instances'					inspectInstances)
+		('inspect subinstances'				inspectSubInstances)
+		-
+		('change sets with this method'		findMethodInChangeSets)
+		('revert to previous version'			revertToPreviousVersion)
+		('revert and forget'					revertAndForget)
+		-
+		('more...'							unshiftedYellowButtonActivity))
