@@ -1,3 +1,2 @@
 lastSubmorph
-
-	^ submorphs at: submorphs size
+	^submorphs last
