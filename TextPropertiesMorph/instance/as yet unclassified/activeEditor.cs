@@ -1,0 +1,3 @@
+activeEditor
+
+	^self activeTextMorph editor
