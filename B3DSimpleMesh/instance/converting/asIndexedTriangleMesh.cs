@@ -9,7 +9,7 @@ asIndexedTriangleMesh
 					with: (map at: tri first ifAbsentPut:[map size + 1])
 					with: (map at: tri second ifAbsentPut:[map size + 1])
 					with: (map at: tri third ifAbsentPut:[map size + 1]).
-		faces nextPut: face].
+		face isDegenerate ifFalse:[faces nextPut: face]].
 	faces _ faces contents.
 	vtx _ B3DVector3Array new: map size.
 	nrm _ B3DVector3Array new: map size.
