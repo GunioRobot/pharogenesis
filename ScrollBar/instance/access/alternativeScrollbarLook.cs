@@ -1,0 +1,2 @@
+alternativeScrollbarLook
+	^Preferences alternativeScrollbarLook
