@@ -3,6 +3,7 @@ initialize
 
 	"Translation flags (booleans that control code generation via conditional translation):"
 	DoAssertionChecks _ false.  "generate assertion checks"
+	DoBalanceChecks _ false. "generate stack balance checks"
 
 	self initializeSpecialObjectIndices.
 	self initializeObjectHeaderConstants.
@@ -14,7 +15,8 @@ initialize
 	NilContext _ 1.  "the oop for the integer 0; used to mark the end of context lists"
 
 	RemapBufferSize _ 25.
-	RootTableSize _ 2500.  "number of root table entries (4 bytes/entry)"
+	RootTableSize _ 2500.  	"number of root table entries (4 bytes/entry)"
+	RootTableRedZone _ RootTableSize - 100.	"red zone of root table - when reached we force IGC"
 
 	"tracer actions"
 	StartField _ 1.
