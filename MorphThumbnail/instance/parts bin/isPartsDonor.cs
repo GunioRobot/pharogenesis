@@ -1,2 +1,3 @@
 isPartsDonor
-	^self partRepresented isPartsDonor
+	"answer whether the receiver is PartsDonor"
+	^ self partRepresented isPartsDonor
