@@ -2,7 +2,7 @@ gridFormOrigin: origin grid: smallGrid background: backColor line: lineColor
 
 	| bigGrid gridForm gridOrigin |
 	gridOrigin _ origin \\ smallGrid.
-	bigGrid _ (40 roundTo: smallGrid asPoint x) @ (40 roundTo: smallGrid asPoint y).
+	bigGrid _ (smallGrid asPoint x) @ (smallGrid asPoint y).
 	gridForm _ Form extent: bigGrid depth: Display depth.
 	backColor ifNotNil: [gridForm fillWithColor: backColor].
 	gridOrigin x to: gridForm width by: smallGrid x do:
