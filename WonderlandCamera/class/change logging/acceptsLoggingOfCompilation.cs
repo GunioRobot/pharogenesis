@@ -1,0 +1,2 @@
+acceptsLoggingOfCompilation
+	^ (self == WonderlandCamera).
