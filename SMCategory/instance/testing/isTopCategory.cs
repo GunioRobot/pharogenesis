@@ -1,0 +1,2 @@
+isTopCategory
+	^parent isNil
