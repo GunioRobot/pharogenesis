@@ -2,7 +2,7 @@ partitionedSub: word1 from: word2 nBits: nBits nPartitions: nParts
 	"Subtract word1 from word2 as nParts partitions of nBits each.
 	This is useful for packed pixels, or packed colors"
 	| mask result p1 p2 |
-	mask _ (1 << nBits) - 1.  "partition mask starts at the right"
+	mask _ maskTable at: nBits.  "partition mask starts at the right"
 	result _ 0.
 	1 to: nParts do:
 		[:i |
