@@ -6,3 +6,6 @@ initialize
 	ScaledIndexOverflow _ 2 raisedTo: 29.  "handle overflow before needing LargePositiveIntegers"
 	self useCoffeeCupClink.
 	SoundLibrary ifNil: [SoundLibrary _ Dictionary new].
+	Beeper setDefault: (self new
+						setSamples: self coffeeCupClink
+						samplingRate: 12000).
