@@ -1,0 +1,3 @@
+This is a class that shows a tutorial.
+Execute 
+TutorialPresenter openAsMorph
