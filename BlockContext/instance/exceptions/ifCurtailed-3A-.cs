@@ -1,4 +1,5 @@
 ifCurtailed: aBlock
 	"Evaluate the receiver with an abnormal termination action."
 
-	^self valueUninterruptably
+	<primitive: 198>
+	^ self value
