@@ -1,21 +1,19 @@
 makeGameControls
-
-	^self rowForButtons
-		addMorph:
-			(self
+	^ self rowForButtons
+		addMorph: (self
 				buildButtonTarget: self
-				label: 'Quit'
+				label: 'Quit' translated
 				selector: #delete
-				help: 'quit');
-		addMorph:
-			(self
+				help: 'quit' translated);
+		
+		addMorph: (self
 				buildButtonTarget: board
-				label: 'Pause'
+				label: 'Pause' translated
 				selector: #pause
-				help: 'pause');
-		addMorph:
-			(self
+				help: 'pause' translated);
+		
+		addMorph: (self
 				buildButtonTarget: board
-				label: 'New game'
+				label: 'New game' translated
 				selector: #newGame
-				help: 'new game')
+				help: 'new game' translated)
