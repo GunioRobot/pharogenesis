@@ -1,0 +1,2 @@
+noviceMode
+	^ self valueOfFlag: #noviceMode
