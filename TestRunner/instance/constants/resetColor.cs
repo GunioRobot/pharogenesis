@@ -1,0 +1,2 @@
+resetColor
+        ^ Color white
