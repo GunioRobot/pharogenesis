@@ -1,0 +1,1 @@
+B3DVertexBufferPlugin class instanceVariableNames: ''
