@@ -1,4 +1,4 @@
 add: aSound
+	"Add the given sound with a pan setting of centered and no attenuation."
 
-	sounds _ sounds copyWith: aSound.
-	panSettings _ panSettings copyWith: 500.  "pan settings defaults to centered"
+	self add: aSound pan: 0.5 volume: 1.0.
