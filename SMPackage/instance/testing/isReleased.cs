@@ -1,0 +1,2 @@
+isReleased
+	^ releases isEmpty not
