@@ -1,7 +1,8 @@
 repelsMorph: aMorph event: ev
+	"Answer whether the receiver shoul repel the given morph"
 
-	(showingMethodPane == true and: 
-		[self world valueOfProperty: #universalTiles ifAbsent: [false]]) ifTrue: [
-			^ (aMorph respondsTo: #parseNode) not].
-
-	^ aMorph isTileLike not
+	^ Preferences universalTiles
+		ifTrue:
+			[(aMorph respondsTo: #parseNode) not]
+		ifFalse:
+			[aMorph isTileLike not]
