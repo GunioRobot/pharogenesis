@@ -1,4 +1,4 @@
-formerOwner: aMorphOrNil
-	aMorphOrNil == nil
-		ifTrue:[self removeProperty: #formerOwner]
-		ifFalse:[self setProperty: #formerOwner toValue: aMorphOrNil]
+formerOwner: aMorphOrNil 
+	aMorphOrNil isNil 
+		ifTrue: [self removeProperty: #formerOwner]
+		ifFalse: [self setProperty: #formerOwner toValue: aMorphOrNil]
