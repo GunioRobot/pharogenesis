@@ -4,7 +4,7 @@ selectAndScrollToTop
 	| lineHeight deltaY rect deltaX |
 	lineHeight _ paragraph textStyle lineGrid.
 	rect _ morph owner bounds.
-	deltaY _ stopBlock top - rect top.
+	deltaY _ self stopBlock top - rect top.
 	deltaY ~= 0 ifTrue: [
 		deltaX _ 0.
 		deltaY _ (deltaY abs + lineHeight - 1 truncateTo: lineHeight) negated.
