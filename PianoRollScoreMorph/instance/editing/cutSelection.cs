@@ -1,5 +1,4 @@
 cutSelection
-
-	selection == nil ifTrue: [^ self].
+	selection isNil ifTrue: [^self].
 	self copySelection.
 	self deleteSelection
