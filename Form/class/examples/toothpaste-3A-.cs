@@ -21,7 +21,7 @@ toothpaste: diam		"Display restoreAfter: [Form toothpaste: 30]"
 	ball _ Form dotOfSize: diam.
 	color _ 8.
 	[ true ] whileTrue:
-		[port _ BitBlt toForm: Display.
+		[port _ BitBlt current toForm: Display.
 		"Expand 1-bit forms to any pixel depth"
 		port colorMap: (Bitmap with: 0 with: 16rFFFFFFFF).
 		queue _ OrderedCollection new: 32.
