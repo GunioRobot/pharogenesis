@@ -1,0 +1,2 @@
+moduleName
+	^'Squeak3DX'
