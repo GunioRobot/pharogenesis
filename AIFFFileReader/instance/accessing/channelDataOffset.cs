@@ -1,0 +1,3 @@
+channelDataOffset
+
+	^ channelDataOffset
