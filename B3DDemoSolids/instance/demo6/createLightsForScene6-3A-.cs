@@ -1,0 +1,1 @@
+createLightsForScene6: aScene
