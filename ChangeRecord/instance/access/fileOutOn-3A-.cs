@@ -1,21 +1,27 @@
-fileOutOn: f
+fileOutOn: aFileStream
+	"File the receiver out on the given file stream"
+
+	| aString |
 	type == #method
 		ifTrue:
-			[f nextPut: $!.
-			f nextChunkPut: class asString
-					, (meta ifTrue: [' class methodsFor: ']
-							ifFalse: [' methodsFor: '])
-					, category asString printString.
-			f cr].
+			[aFileStream nextPut: $!.
+			aString _  class asString
+							, (meta ifTrue: [' class methodsFor: ']
+									ifFalse: [' methodsFor: '])
+							, category asString printString.
+			stamp ifNotNil:
+				[aString _ aString, ' stamp: ''', stamp, ''''].
+			aFileStream nextChunkPut: aString.
+			aFileStream cr].
 
-	type == #preamble ifTrue: [f nextPut: $!].
+	type == #preamble ifTrue: [aFileStream nextPut: $!].
 
 	type == #classComment
 		ifTrue:
-			[f nextPut: $!.
-			f nextChunkPut: class asString, ' commentStamp: ', stamp storeString.
-			f cr].
+			[aFileStream nextPut: $!.
+			aFileStream nextChunkPut: class asString, ' commentStamp: ', stamp storeString.
+			aFileStream cr].
 
-	f nextChunkPut: self string.
-	type == #method ifTrue: [f nextChunkPut: ' '].
-	f cr
+	aFileStream nextChunkPut: self string.
+	type == #method ifTrue: [aFileStream nextChunkPut: ' '].
+	aFileStream cr
