@@ -9,4 +9,5 @@ veryDeepInner: deepCopier
 	growingOrRotating _ growingOrRotating veryDeepCopyWith: deepCopier.
 	directionArrowAnchor _ directionArrowAnchor.
 	simpleMode _ simpleMode.
-	haloBox _ haloBox
+	haloBox _ haloBox.
+	originalExtent _ originalExtent
