@@ -1,7 +1,7 @@
 manageMarker
-	"Returns the selected item, or else the last selection
-	2/4/96 sw: if no selection, return nil"
+	"Returns the selected item. If no selection, return nil."
 
 	super manageMarker.
-	selection = 0 ifTrue: [^ nil].
+	(selections = nil or: [(selection between: 1 and: selections size) not])
+		ifTrue: [^ nil].
 	^ selections at: selection
