@@ -1,7 +1,10 @@
 referencesToIt
-	"Open a references browser on the selected symbol.  1/8/96 sw.
-	 2/29/96 sw: select current line first if appropriate, and call selectedSymbol, to avoid pointless interning of spurious selections"
+	"Open a references browser on the selected symbol"
 
-	self selectLine.
-	startBlock = stopBlock ifTrue: [view flash. ^ self].
+	| aSymbol |
+	self lineSelectAndEmptyCheck: [^ self].
+	((aSymbol _ self selectedSymbol) == nil or:
+		[(Smalltalk includesKey: aSymbol) not])
+			ifTrue: [^ view flash].
+
 	self terminateAndInitializeAround: [Smalltalk browseAllCallsOn: (Smalltalk associationAt: self selectedSymbol)]
