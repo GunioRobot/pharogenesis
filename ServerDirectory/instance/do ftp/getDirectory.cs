@@ -9,16 +9,20 @@ getDirectory
 
 	dd connectTo: so remoteAddress port: dd portNum.
 	dd waitForConnectionUntil: FTPSocket standardDeadline.
-	Transcript show: 'retrieve from port ', dd portNum printString; cr.
+	Transcript show: 'getting directory LIST'; cr.
+	"Transcript show: 'retrieve from port ', dd portNum printString; cr."
 	resp _ dd getAllDataWhileWatching: so.	"Later use the length to pre-allocate the buffer"
-	(resp == #error:) ifTrue: [^ resp].
+	(resp == #error:) ifTrue: [socket _ nil.  ^ resp].
 	dd close.
 
-	(rr _ so responseOK) == true ifFalse: [^ rr].	"150 Opening binary conn on foo (3113 bytes)"
-	(rr _ so responseOK) == true ifFalse: [^ rr].	"226 Transfer complete."
-	so sendCommand: 'QUIT'.
-	(rr _ so responseOK) == true ifFalse: [^ rr].	"221"
-	so destroy.	"Always OK to destroy"
+	(rr _ so responseOK) == true ifFalse: [
+		socket _ nil.  ^ rr].	"150 Opening binary conn on foo (3113 bytes)"
+	(rr _ so responseOK) == true ifFalse: [
+		socket _ nil.  ^ rr].	"226 Transfer complete."
+	socket ifNil: [
+		so sendCommand: 'QUIT'.
+		(rr _ so responseOK) == true ifFalse: [^ rr].	"221"
+		so destroy].	"Always OK to destroy"
 	dd destroy.
 
 	^ resp	"RWStream with just the data"
