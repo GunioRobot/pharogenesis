@@ -1,23 +1,5 @@
 installPastelWindowColors
-	"Preferences installPastelWindowColors"
-	| windowColorDict |
-	(Parameters includesKey: #windowColors) ifFalse:
-		[Parameters at: #windowColors put: IdentityDictionary new].
-	windowColorDict _ Parameters at: #windowColors.
+	"Install the factory-provided default pastel window colors for all tools"
 
-	#(	(Browser				paleGreen)
-		(ChangeList				paleBlue)
-		(ChangeSorter			paleBlue)
-		(Debugger				veryPaleRed)
-		(DualChangeSorter		paleBlue)
-		(FileContentsBrowser		paleTan)
-		(FileList					paleMagenta)
-		(MessageSet				paleBlue)
-		(Object					white)
-		(SelectorBrowser			palePeach)
-		(StringHolder			paleYellow)
-		(TranscriptStream		paleOrange))
-
-	do:
-			[:pair |
-				windowColorDict at: pair first put: (Color perform: pair last)]
+	"Preferences installBrightWindowColors"
+	self installWindowColorsVia: [:aSpec | aSpec pastelColor]
