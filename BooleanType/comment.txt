@@ -1,0 +1,1 @@
+A data type representing Boolean values, i.e., true or false.
