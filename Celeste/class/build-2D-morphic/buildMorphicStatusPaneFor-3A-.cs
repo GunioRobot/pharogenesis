@@ -4,4 +4,6 @@ buildMorphicStatusPaneFor: model
 				text: #status
 				accept: nil
 				readSelection: nil
-				menu: nil.
+				menu: nil
+		; borderWidth: 1
+		; yourself
