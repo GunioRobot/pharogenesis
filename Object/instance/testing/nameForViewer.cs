@@ -3,5 +3,7 @@ nameForViewer
 
 	| aName |
 	(aName _ self uniqueNameForReferenceOrNil) ifNotNil: [^ aName].
+	(aName _ self knownName) ifNotNil: [^ aName].
 
-	^ (self printString copyWithout: Character cr) withNoLineLongerThan:  20
+	^ [(self asString copyWithout: Character cr) truncateTo:  27] ifError:
+		[:msg :rcvr | ^ self class name printString]
