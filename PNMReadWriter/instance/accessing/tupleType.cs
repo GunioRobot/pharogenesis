@@ -1,0 +1,2 @@
+tupleType
+	^tupleType
