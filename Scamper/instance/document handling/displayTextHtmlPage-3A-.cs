@@ -3,9 +3,9 @@ displayTextHtmlPage: newSource
 	| formatter bgimageUrl bgimageDoc bgimage |
 	currentUrl _ newSource url.
 	pageSource _ newSource content isoToSqueak.
-	self status: 'parsing...'.
+	self status: 'parsing...' translated.
 	document _ (HtmlParser parse: (ReadStream on: pageSource)).
-	self status: 'laying out...'.
+	self status: 'laying out...' translated.
 	formatter _ HtmlFormatter preferredFormatterClass new.
 	formatter browser: self.
 	formatter baseUrl: currentUrl.
@@ -30,9 +30,9 @@ displayTextHtmlPage: newSource
 	self startDownloadingMorphState: (formatter incompleteMorphs).
 
 	self changeAll: 	#(currentUrl relabel hasLint lint backgroundColor formattedPage formattedPageSelection).
-	self status: 'done.'.
+	self status: 'done.' translated.
 	"pardon this horrible hack...(tk)"
 	(currentUrl authority beginsWith: 'ets.freetranslation.com') ifTrue: [
 		self status: 'done.
-**** Please Scroll Down To See Your Results ****'].
+**** Please Scroll Down To See Your Results ****' translated].
 	^true
