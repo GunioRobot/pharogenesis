@@ -1,0 +1,2 @@
+beBeginningOfWord
+	matchSelector := #atBeginningOfWord
