@@ -1,0 +1,2 @@
+isGeneratingPluginCode
+	^true
