@@ -1,0 +1,2 @@
+setPopUserName
+	^self class setPopUserName
