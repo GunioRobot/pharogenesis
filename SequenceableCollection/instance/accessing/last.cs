@@ -1,6 +1,7 @@
 last
-	"Answer the last element of the receiver. Create an error notification if 
-	the receiver contains no elements."
+	"Answer the last element of the receiver.
+	Raise an error if the collection is empty."
 
-	self emptyCheck.
-	^self at: self size
+	| size |
+	(size _ self size) = 0 ifTrue: [self errorEmptyCollection].
+	^ self at: size
