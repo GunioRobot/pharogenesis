@@ -1,17 +1,18 @@
 fullScreen
-	"SystemWindow fullScreen
-	Zoom Window to Full World size with possible DeskMargins"
+	"Zoom Window to Full World size with possible DeskMargins"
+		"SystemWindow fullScreen"
+	
 	| left right possibleBounds |
 	left _ right _ 0.
 	self paneMorphs
 		do: [:pane | ((pane isKindOf: ScrollPane)
 					and: [pane retractableScrollBar])
 				ifTrue: [pane scrollBarOnLeft
-						ifTrue: [left _ left max: pane scrollbarWidth]
-						ifFalse: [right _ right max: pane scrollbarWidth]]].
-	possibleBounds _ self worldBounds
+						ifTrue: [left _ left max: pane scrollBarThickness]
+						ifFalse: [right _ right max: pane scrollBarThickness]]].
+	possibleBounds _ (RealEstateAgent maximumUsableAreaInWorld: self world)
 				insetBy: (left @ 0 corner: right @ 0).
-	((Preferences useGlobalFlaps
+	((Flaps sharedFlapsAllowed
 				and: [CurrentProjectRefactoring currentFlapsSuppressed not])
 			or: [Preferences fullScreenLeavesDeskMargins])
 		ifTrue: [possibleBounds _ possibleBounds insetBy: 22].
