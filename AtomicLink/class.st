@@ -1,0 +1,1 @@
+AtomicLink class instanceVariableNames: ''
