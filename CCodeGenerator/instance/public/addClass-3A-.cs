@@ -6,6 +6,8 @@ addClass: aClass
 	"ikp..."
 	self addPoolVarsFor: aClass.
 	variables addAll: aClass instVarNames.
+	self retainMethods: aClass requiredMethodNames.
+	
 	'Adding Class ' , aClass name , '...'
 		displayProgressAt: Sensor cursorPoint
 		from: 0
@@ -19,4 +21,5 @@ addClass: aClass
 							parse: source
 							in: aClass
 							notifying: nil)
-							asTranslationMethodOfClass: self translationMethodClass)]]
+							asTranslationMethodOfClass: self translationMethodClass)]].
+	aClass declareCVarsIn: self
