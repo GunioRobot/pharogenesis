@@ -5,11 +5,11 @@ leavesPrintOn: aStream tallyExact: isExact orThreshold: threshold
 	isExact ifTrue: 
 		[dict asSortedCollection
 			do: [:node |
-				node printOn: aStream total: tally tallyExact: isExact.
+				node printOn: aStream total: tally totalTime: nil tallyExact: isExact.
 				node printSenderCountsOn: aStream]]
 		ifFalse:
 		[(dict asOrderedCollection
 				select: [:node | node tally > threshold])
 			asSortedCollection
 			do: [:node |
-				node printOn: aStream total: tally tallyExact: isExact]]
+				node printOn: aStream total: tally totalTime: time tallyExact: isExact]]
