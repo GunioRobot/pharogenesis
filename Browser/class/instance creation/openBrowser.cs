@@ -5,3 +5,4 @@ openBrowser
 
 	Browser openBrowserView: (Browser new openEditString: nil)
 			label: 'System Browser'
+
