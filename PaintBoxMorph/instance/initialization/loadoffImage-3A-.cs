@@ -15,13 +15,13 @@ type = 'gif' ifTrue: [
 			OriginalBounds _ Rectangle fromUser].
 	getBounds = 'fromPic' ifTrue: [OriginalBounds _ pic16Bit boundingBox].
 	].
-		"Use OriginalBounds as it was last time".
+		"Use OriginalBounds as it was last time"
 type = 'bmp' ifTrue: [
 	pic16Bit _ (Form fromBMPFileNamed: fileName) asFormOfDepth: 16.
 	getBounds = 'fromUser' ifTrue: ["Just first time, collect the bounds"
 			pic16Bit display.
 			OriginalBounds _ Rectangle fromUser].
-		"Use OriginalBounds as it was last time".
+		"Use OriginalBounds as it was last time"
 	(getBounds = 'fromPic') ifTrue: [OriginalBounds _ pic16Bit boundingBox].
 	AllOffImage _ Form extent: OriginalBounds extent depth: 16.
 	].
