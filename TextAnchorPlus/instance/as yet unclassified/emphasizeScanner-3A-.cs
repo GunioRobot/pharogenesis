@@ -2,5 +2,6 @@ emphasizeScanner: scanner
 
 	anchoredMorph ifNil: [^self].
 	(anchoredMorph owner isKindOf: TextPlusPasteUpMorph) ifFalse: [^anchoredMorph _ nil].
-	scanner setYFor: anchoredMorph
+	"follwing has been removed - there was no implementation for it"
+	"scanner setYFor: anchoredMorph"
 
