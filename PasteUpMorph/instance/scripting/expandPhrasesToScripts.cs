@@ -1,2 +1,2 @@
 expandPhrasesToScripts
-	^ (self hasProperty: #suppressPhraseExpansion) not
+	^ self hasProperty: #automaticPhraseExpansion
