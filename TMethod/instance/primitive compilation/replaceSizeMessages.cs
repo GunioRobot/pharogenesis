@@ -10,5 +10,5 @@ replaceSizeMessages
 				arguments: (Array with: (TConstantNode new setValue: 1)).
 			n
 				setSelector: #sizeOfSTArrayFromCPrimitive:
-				receiver: (TVariableNode new setName: 'self')
+				receiver: (TVariableNode new setName: self vmNameString)
 				arguments: (Array with: argExpr)]].
