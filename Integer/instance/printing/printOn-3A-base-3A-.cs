@@ -2,6 +2,7 @@ printOn: aStream base: b
 	"Print a representation of the receiver on the stream, aStream, in base, b, 
 	where 2<=b<=16."
 	| digits source dest i j pos t rem |
+	self negative ifTrue:[aStream nextPut:$-].
 	b = 10 ifFalse: [aStream print: b; nextPut: $r].
 	i _ self digitLength.
 	"Estimate size of result, conservatively"
