@@ -1,0 +1,3 @@
+openAddressBook
+
+	CelesteAddressBook openOn: self
