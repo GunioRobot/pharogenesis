@@ -5,7 +5,7 @@ addMorph: aMorph
 
 	savedAttributes _ outputStream currentAttributes.
 	outputStream currentAttributes: (savedAttributes copyWith: (TextAnchor new anchoredMorph: aMorph)).
-	self addChar: $*.
+	self addChar: (Character value: 1).
 	outputStream currentAttributes: savedAttributes.
 
 	self addChar: Character space.
