@@ -1,0 +1,2 @@
+prettyPrint
+	self prettyPrint: false
