@@ -13,4 +13,4 @@ makePlaneNamed: aString
 	mesh vertices: vertices.
 	mesh faces: faces.
 	mesh texCoords: tex.
-	self createSimpleActor: mesh named: aString parent: nil.
+	^ self createSimpleActor: mesh named: aString parent: nil
