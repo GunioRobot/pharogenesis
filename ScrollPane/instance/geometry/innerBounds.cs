@@ -1,9 +1,11 @@
 innerBounds
-	| inner w |
+	| inner |
 	inner _ super innerBounds.
-	w _ self scrollbarWidth.
-	retractableScrollBar | (submorphs includes: scrollBar) not
+	retractableScrollBar | (submorphs includes: scrollBar) not ifFalse:[
+		inner _ (scrollBarOnLeft
+					ifTrue: [scrollBar right @ inner top corner: inner bottomRight]
+					ifFalse: [inner topLeft corner: scrollBar left @ inner bottom])
+	].
+	(retractableScrollBar | self hIsScrollbarShowing not)
 		ifTrue: [^ inner]
-		ifFalse: [^ (scrollBarOnLeft
-					ifTrue: [inner topLeft + ((w-1)@0) corner: inner bottomRight]
-					ifFalse: [inner topLeft corner: inner bottomRight - ((w-2)@0)])]
+		ifFalse: [^ inner topLeft corner: (inner bottomRight - (0@self scrollBarThickness))].
