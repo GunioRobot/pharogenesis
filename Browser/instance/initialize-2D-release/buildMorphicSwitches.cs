@@ -1,6 +1,7 @@
 buildMorphicSwitches
 
-	| instanceSwitch commentSwitch classSwitch row |
+	| instanceSwitch commentSwitch classSwitch row aColor |
+
 	instanceSwitch _ PluggableButtonMorph
 		on: self
 		getState: #instanceMessagesIndicated
@@ -11,10 +12,11 @@ buildMorphicSwitches
 	commentSwitch _ PluggableButtonMorph
 		on: self
 		getState: #classCommentIndicated
-		action: #editComment.
+		action: #plusButtonHit.
 	commentSwitch
-		label: '?' asText allBold asParagraph;
-		askBeforeChanging: true.
+		label: '?' asText allBold;
+		askBeforeChanging: true;
+		setBalloonText: 'class comment'.
 	classSwitch _ PluggableButtonMorph
 		on: self
 		getState: #classMessagesIndicated
@@ -30,4 +32,10 @@ buildMorphicSwitches
 		addMorphBack: instanceSwitch;
 		addMorphBack: commentSwitch;
 		addMorphBack: classSwitch.
+
+	aColor _ Color colorFrom: self defaultBackgroundColor.
+	row submorphs do:
+		[:m | m color: aColor.
+		m onColor: aColor darker offColor: aColor].
+
 	^ row
