@@ -11,4 +11,4 @@ messageCategoryListIndex: anInteger
 	self changed: #messageCategorySelectionChanged.
 	self changed: #messageCategoryListIndex.	"update my selection"
 	self changed: #messageList.
-	self changed: #contents.
+	self contentsChanged
