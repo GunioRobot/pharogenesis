@@ -1,0 +1,3 @@
+textLength
+
+	^textLength
