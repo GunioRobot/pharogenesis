@@ -1,0 +1,3 @@
+stopReason
+
+	^stopCode
