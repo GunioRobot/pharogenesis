@@ -1,0 +1,16 @@
+V1.01 johnmci@smalltalkconsulting.com Nov 8th 2000
+A Simple MPEG Player for playing MPEG3 audio or video 
+
+| foo |
+foo _ MpegPlayer playFile: 'my.mpg'.
+foo playStream: 0. "To play both audio and video, stream #0 "
+
+foo playAudioStream: 0 "To play audio stream".
+foo playVideoStream: 0 "To play video stream"
+foo playStreamWaitTilDone: 0 "To play audio/video as currrent process"
+
+or 
+	| foo |
+	foo _ MPEGPlayer playFile: 'my.mpg' onForm: Display.
+	foo playStream: 0.
+	To play full screen.
