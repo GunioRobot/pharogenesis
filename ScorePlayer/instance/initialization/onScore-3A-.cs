@@ -1,31 +1,31 @@
 onScore: aMIDIScore
 
-	| n totalVol incr curr vol |
+	| trackCount totalVol incr curr pan |
 	score _ aMIDIScore.
-	n _ score tracks size.
-	instruments _ (1 to: n) collect: [:i | FMSound oboe1].
-	leftVols _ Array new: n.
-	rightVols _ Array new: n.
-	muted  _ Array new: n withAll: false.
+	trackCount _ score tracks size.
+	durationInTicks _ score durationInTicks.
+	instruments _ (1 to: trackCount) collect: [:i | FMSound oboe1].
+	leftVols _ Array new: trackCount.
+	rightVols _ Array new: trackCount.
+	muted  _ Array new: trackCount withAll: false.
 	rate _ 1.0.
 	repeat _ false.
 	tempo _ 120.0.
 
-	n = 0 ifTrue: [^ self].
-	n = 1 ifTrue: [  "center solo voice"
-		leftVols at: i put: ScaleFactor // 8.
-		rightVols at: i put: ScaleFactor // 8.
-		^ self].
-		
+	trackCount = 0 ifTrue: [^ self].
+	1 to: trackCount do: [:i |
+		leftVols at: i put: ScaleFactor // 4.
+		rightVols at: i put: ScaleFactor // 4].
+
 	"distribute inital panning of tracks left-to-right"
-	totalVol _ ScaleFactor // (2 * n).
-	incr _ totalVol // (((n // 2) + 1) * 2).
+	totalVol _ 1.0.
+	incr _ totalVol / (((trackCount // 2) + 1) * 2).
 	curr _ 0.
-	1 to: n do: [:i |
-		i even
-			ifTrue: [vol _ curr]
+	1 to: trackCount do: [:t |
+		t even
+			ifTrue: [pan _ curr]
 			ifFalse: [
 				curr _ curr + incr.
-				vol _ totalVol - curr].
-		leftVols at: i put: vol.
-		rightVols at: i put: (totalVol - vol)].
+				pan _ totalVol - curr].
+		self panForTrack: t put: pan].
+
