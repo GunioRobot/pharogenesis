@@ -1,15 +1,16 @@
 fileOutPool: aPool onFileStream: aFileStream 
-	| aPoolName |
+	| aPoolName aValue |
 	aPoolName _ Smalltalk keyAtValue: aPool.
 	Transcript cr; show: aPoolName.
 	aFileStream nextPutAll: 'Transcript show: ''' , aPoolName , '''; cr!'; cr.
 	aFileStream nextPutAll: 'Smalltalk at: #' , aPoolName , ' put: Dictionary new!'; cr.
-	aPool asSortedCollection do: [ :anItem | 
-		aFileStream nextPutAll: aPoolName , ' at: #' , anItem key asString , ' put:  '.
-		(anItem value isKindOf: Number)
-			ifTrue: [anItem value printOn: aFileStream]
+	aPool keys asSortedCollection do: [ :aKey |
+		aValue _ aPool at: aKey.
+		aFileStream nextPutAll: aPoolName , ' at: #' , aKey asString , ' put:  '.
+		(aValue isKindOf: Number)
+			ifTrue: [aValue printOn: aFileStream]
 			ifFalse: [aFileStream nextPutAll: '('.
-					anItem value printOn: aFileStream.
+					aValue printOn: aFileStream.
 					aFileStream nextPutAll: ')'].
 		aFileStream nextPutAll: '!'; cr].
 	aFileStream cr
