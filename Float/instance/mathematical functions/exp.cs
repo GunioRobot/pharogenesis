@@ -1,21 +1,31 @@
 exp
-	"See Computer Approximations, pp. 96-104, p. 205 (EXPB 1065)."
+	"Answer E raised to the receiver power.
+	 Optional. See Object documentation whatIsAPrimitive." 
 
-	| a n1 x x2 P Q |
-	self abs > 9212.0
-		ifTrue: ["Float maxVal ln"
-			"1.0 exp"
-			self error: 'exp overflow']
-		ifFalse: 
-			[x _ self / Ln2.
-			n1 _ 2.0 raisedTo: x asInteger.
-			(x _ x - x asInteger) >= 0.5
-				ifTrue: 
-					[n1 _ n1 * Sqrt2.
-					x _ x - 0.5].
-			x2 _ x * x.
-			"compute 2.0 power: x"
-			P _ Q _ 0.0.
-			ExpPCoefficients do: [:a | P _ P * x2 + a].
-			ExpQCoefficients do: [:a | Q _ Q * x2 + a].
-			^n1 * (Q + (x * P) / (Q - (x * P)))]
+	| base fract correction delta div |
+	<primitive: 59>
+
+	"Taylor series"
+	"check the special cases"
+	self < 0.0 ifTrue: [^ (self negated exp) reciprocal].
+	self = 0.0 ifTrue: [^ 1].
+	self abs > MaxValLn ifTrue: [self error: 'exp overflow'].
+
+	"get first approximation by raising e to integer power"
+	base _ E raisedToInteger: (self truncated).
+
+	"now compute the correction with a short Taylor series"
+	"fract will be 0..1, so correction will be 1..E"
+	"in the worst case, convergance time is logarithmic with 1/Epsilon"
+	fract _ self fractionPart.
+	fract = 0.0 ifTrue: [ ^ base ].  "no correction required"
+
+	correction _ 1.0 + fract.
+	delta _ fract * fract / 2.0.
+	div _ 2.0.
+	[delta > Epsilon] whileTrue: [
+		correction _ correction + delta.
+		div _ div + 1.0.
+		delta _ delta * fract / div].
+	correction _ correction + delta.
+	^ base * correction
