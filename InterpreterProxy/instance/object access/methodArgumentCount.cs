@@ -1,0 +1,2 @@
+methodArgumentCount
+	^argumentCount
