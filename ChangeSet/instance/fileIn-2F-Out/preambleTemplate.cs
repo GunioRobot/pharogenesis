@@ -8,4 +8,4 @@ preambleTemplate
 		strm cr; nextPutAll: 'Date:'; tab; tab; tab; nextPutAll: Date today printString.
 		strm cr; nextPutAll: 'Author:'; tab; tab; tab; nextPutAll: Preferences defaultAuthorName.
 		strm cr; cr; nextPutAll: '<your descriptive text goes here>"']
-"Smalltalk changes preambleTemplate"
+"ChangeSet current preambleTemplate"
