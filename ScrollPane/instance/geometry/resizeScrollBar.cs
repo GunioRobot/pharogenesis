@@ -1,5 +1,9 @@
 resizeScrollBar
-	| d | d _ retractableScrollBar ifTrue: [14@0] ifFalse: [0@0].
-	scrollBar bounds: (scrollBarOnLeft
-		ifTrue: [bounds topLeft - d extent: 16 @ bounds height]
-		ifFalse: [bounds topRight - (16@0) + d extent: 16 @ bounds height])
+	| w topLeft |
+	w _ self scrollbarWidth.
+	topLeft _ scrollBarOnLeft
+		ifTrue: [retractableScrollBar ifTrue: [bounds topLeft - ((w-1)@0)]
+									ifFalse: [bounds topLeft]]
+		ifFalse: [retractableScrollBar ifTrue: [bounds topRight]
+									ifFalse: [bounds topRight - ((w-1)@0)]].
+	scrollBar bounds: (topLeft extent: w @ bounds height)
