@@ -1,0 +1,2 @@
+edit
+	self editor openInWorld
