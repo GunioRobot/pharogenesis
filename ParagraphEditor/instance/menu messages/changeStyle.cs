@@ -3,11 +3,11 @@ changeStyle
 	 Moved from experimentalCommand to its own method  "
 
 	| aList reply style |
-	aList _ StrikeFont familyNames remove: 'DefaultTextStyle' ifAbsent: []; asOrderedCollection.
+	aList _ StrikeFont actualFamilyNames.
 	aList addFirst: 'DefaultTextStyle'.
 	reply _ (SelectionMenu labelList: aList lines: #(1) selections: aList) startUp.
-	reply ~~ nil ifTrue:
-		[(style _ TextStyle named: reply) ifNil: [self beep. ^ true].
+	reply ifNotNil:
+		[(style _ TextStyle named: reply) ifNil: [Beeper beep. ^ true].
 		paragraph textStyle: style copy.
 		paragraph composeAll.
 		self recomputeSelection.
