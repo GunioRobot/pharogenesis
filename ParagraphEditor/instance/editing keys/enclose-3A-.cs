@@ -3,7 +3,7 @@ enclose: characterStream
 	 Flushes typeahead."
 
 	| char left right startIndex stopIndex oldSelection which text |
-	char _ Sensor keyboard.
+	char _ sensor keyboard.
 	self closeTypeIn.
 	startIndex _ startBlock stringIndex.
 	stopIndex _ stopBlock stringIndex.
