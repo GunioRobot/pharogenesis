@@ -1,0 +1,2 @@
+isSelected
+	^selected == true
