@@ -1,8 +1,7 @@
 perform: aSymbol 
-	"Primitive. Send the receiver the unary message indicated by the 
-	argument. The argument is the selector of the message. Invoke 
-	messageNotUnderstood: if the number of arguments expected by the 
-	selector is not zero. Optional. See Object documentation whatIsAPrimitive."
+	"Send the unary selector, aSymbol, to the receiver.
+	Fail if the number of arguments expected by the selector is not zero.
+	Primitive. Optional. See Object documentation whatIsAPrimitive."
 
 	<primitive: 83>
-	^self perform: aSymbol withArguments: (Array new: 0)
+	^ self perform: aSymbol withArguments: (Array new: 0)
