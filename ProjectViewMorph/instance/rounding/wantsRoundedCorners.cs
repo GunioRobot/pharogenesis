@@ -1,2 +1,3 @@
 wantsRoundedCorners
-	^(Preferences roundedWindowCorners and: [(owner isKindOf: SystemWindow) not])
+	^Preferences roundedWindowCorners 
+		and: [(owner isSystemWindow) not]
