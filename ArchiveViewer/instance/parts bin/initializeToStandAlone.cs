@@ -1,0 +1,2 @@
+initializeToStandAlone
+	self initialize createWindow.
