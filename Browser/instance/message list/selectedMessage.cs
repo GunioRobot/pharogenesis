@@ -4,7 +4,9 @@ selectedMessage
 	contents == nil ifFalse: [^ contents copy].
 	class _ self selectedClassOrMetaClass.
 	selector _ self selectedMessageName.
-	method _ class compiledMethodAt: selector.
+	method _ class compiledMethodAt: selector ifAbsent: [
+		^ ''].	"method deleted while in another project"
+	currentCompiledMethod _ method.
 
 	(Sensor controlKeyPressed
 		or: [method fileIndex > 0 and: [(SourceFiles at: method fileIndex) == nil]])
@@ -12,6 +14,7 @@ selectedMessage
 		["Emergency or no source file -- decompile without temp names"
 		contents _ (class decompilerClass new decompile: selector in: class method: method)
 			decompileString.
+		contents _ contents asText makeSelectorBoldIn: class.
 		^ contents copy].
 
 	Sensor leftShiftDown ifTrue:
@@ -20,12 +23,18 @@ selectedMessage
 						parse: method getSourceFromFile asString in: class notifying: nil)
 						tempNames.
 		contents _ ((class decompilerClass new withTempNames: tempNames)
-				decompile: selector
-				in: class
-				method: method) decompileString.
-		contents _ contents asText makeSelectorBoldIn: self selectedClassOrMetaClass.
+				decompile: selector in: class method: method) decompileString.
+		contents _ contents asText makeSelectorBoldIn: class.
 		^ contents copy].
 
 	contents _ class sourceCodeAt: selector.
-	contents _ contents asText makeSelectorBoldIn: self selectedClassOrMetaClass.
+	self validateMessageSource: selector.
+
+	Preferences browseWithPrettyPrint ifTrue:
+		[contents _ class compilerClass new
+			format: contents in: class notifying: nil decorated: Preferences colorWhenPrettyPrinting].
+	self showDiffs ifTrue:
+		[contents _ self diffFromPriorSourceFor: contents].
+
+	contents _ contents asText makeSelectorBoldIn: class.
 	^ contents copy
