@@ -1,7 +1,6 @@
 newOnClass: aClass 
 	"Open a new class browser on this class."
-
-	| index each newBrowser |
+	| index newBrowser |
 	newBrowser _ Browser new.
 	newBrowser systemCategoryListIndex:
 		(index _ SystemOrganization numberOfCategoryOfElement: aClass name).
