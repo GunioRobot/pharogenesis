@@ -9,19 +9,22 @@ Three cases for files from older versions of the system:
 2) Class has changed instance variables (or needs fixup).  Call a particular method to do it.
 3) There is a new class instead.  Find it, call a particular method to read.
 	All classes used to construct the structures dictionary *itself* need to be in 'steady' and they must not change!  See setStream:"
-	| anObject newName newClass dict oldInstVars |
+	| anObject newName newClass dict oldInstVars isMultiSymbol |
 
 	self flag: #bobconv.	
 
 	self setCurrentReference: refPosn.  "remember pos before readDataFrom:size:"
 	newName _ renamed at: className ifAbsent: [className].
-	newClass _ Smalltalk at: newName.
+	isMultiSymbol _ newName = #MultiSymbol.
+	newClass _ Smalltalk at: newName asSymbol.
 	(steady includes: newClass) & (newName == className) ifTrue: [
 	 	anObject _ newClass isVariable "Create it here"
 			ifFalse: [newClass basicNew]
 			ifTrue: [newClass basicNew: instSize - (newClass instSize)].
+
 		anObject _ anObject readDataFrom: self size: instSize.
 		self setCurrentReference: refPosn.  "before returning to next"
+		isMultiSymbol ifTrue: [^ MultiSymbol internLoadedSymbol: anObject.].
 		^ anObject].
 	oldInstVars _ structures at: className ifAbsent: [
 			self error: 'class is not in structures list'].	"Missing in object file"
