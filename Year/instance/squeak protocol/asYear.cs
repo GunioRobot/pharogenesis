@@ -1,0 +1,4 @@
+asYear
+
+
+	^ self
