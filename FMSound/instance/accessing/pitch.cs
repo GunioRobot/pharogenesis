@@ -1,3 +1,3 @@
 pitch
 
-	^ (self samplingRate * (scaledIndexIncr // ScaleFactor)) asFloat / waveTable size
+	^ (self samplingRate asFloat * scaledIndexIncr / ScaleFactor) asFloat / waveTable size
