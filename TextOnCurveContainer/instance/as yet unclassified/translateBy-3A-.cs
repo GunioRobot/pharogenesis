@@ -1,6 +1,8 @@
-translateBy: delta
-	textSegments == nil ifTrue: [^ self].
-	textSegments _ textSegments collect:
-		[:ls | Array with: ((ls at: 1) translateBy: delta)
-					with: ((ls at: 2) translateBy: delta)
-					with: (ls at: 3)]
+translateBy: delta 
+	textSegments isNil ifTrue: [^self].
+	textSegments := textSegments collect: 
+					[:ls | 
+					Array 
+						with: (ls first translateBy: delta)
+						with: (ls second translateBy: delta)
+						with: ls third]
