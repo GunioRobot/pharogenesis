@@ -1,0 +1,3 @@
+targetTextColor
+
+	^Color black
