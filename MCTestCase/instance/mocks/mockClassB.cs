@@ -1,0 +1,2 @@
+mockClassB
+	^ Smalltalk at: #MCMockClassB
