@@ -10,7 +10,7 @@ open
 			changeSelected: #musicType:
 			menu: #musicTypeMenu:
 			keystroke: #musicTypeKeystroke:.
-
+	listView1  menuTitleSelector: #musicTypeListTitle.
 	listView2 _
 		PluggableListView on: model
 			list: #artistList
