@@ -6,31 +6,24 @@ displayLines: linesInterval affectedRectangle: affectedRectangle
 	occupied by lastLine."
 
 	| lineGrid topY firstLineIndex lastLineIndex lastLineIndexBottom |
-	lineGrid _ textStyle lineGrid.
+
 	"Save some time by only displaying visible lines"
 	firstLineIndex _ self lineIndexOfTop: affectedRectangle top.
 	firstLineIndex < linesInterval first ifTrue: [firstLineIndex _ linesInterval first].
 	lastLineIndex _ self lineIndexOfTop: affectedRectangle bottom - 1.
-	lastLineIndex > linesInterval last 
-		ifTrue:
+	lastLineIndex > linesInterval last ifTrue:
 			[linesInterval last > lastLine
 		 		ifTrue: [lastLineIndex _ lastLine]
 		  		ifFalse: [lastLineIndex _ linesInterval last]].
+	lastLineIndexBottom _ (self bottomAtLineIndex: lastLineIndex).
 	((Rectangle 
 		origin: affectedRectangle left @ (topY _ self topAtLineIndex: firstLineIndex) 
-		corner: affectedRectangle right @ 
-					(lastLineIndexBottom _ (self topAtLineIndex: lastLineIndex)
-					  + lineGrid))
+		corner: affectedRectangle right @ lastLineIndexBottom)
 	  intersects: affectedRectangle)
 		ifTrue: [ " . . . (skip to clear-below if no lines displayed)"
-	"Clear space for the lines in linesInterval."
-	destinationForm
-	  fill: (affectedRectangle left @ (topY max: affectedRectangle top)
-			corner: affectedRectangle right @ (lastLineIndexBottom min: affectedRectangle bottom))
-	  rule: rule fillColor: self backgroundColor.
-	DisplayScanner new
-	  displayLines: (firstLineIndex to: lastLineIndex)
-	  in: self clippedBy: affectedRectangle].
+				DisplayScanner new
+					displayLines: (firstLineIndex to: lastLineIndex)
+					in: self clippedBy: affectedRectangle].
 	lastLineIndex = lastLine ifTrue: 
 		 [destinationForm  "Clear out white space below last line"
 		 	fill: (affectedRectangle left @ (lastLineIndexBottom max: affectedRectangle top)
