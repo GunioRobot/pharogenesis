@@ -1,8 +1,11 @@
 waitButtonOrKeyboard
-	"Wait for the user to press either any mouse button or any key.
+	"Wait for the user to press either any mouse button or any key. 
 	Answer the current cursor location or nil if a keypress occured."
 
-	[self anyButtonPressed] whileFalse:
-		[(Delay forMilliseconds: 50) wait.
-		self keyboardPressed ifTrue: [^ nil]].
+	| delay |
+	delay := Delay forMilliseconds: 50.
+	[self anyButtonPressed]
+		whileFalse: [delay wait.
+			self keyboardPressed
+				ifTrue: [^ nil]].
 	^ self cursorPoint
