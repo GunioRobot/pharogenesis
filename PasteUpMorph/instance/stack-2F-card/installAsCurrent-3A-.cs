@@ -3,7 +3,7 @@ installAsCurrent: anInstance
 	currentDataInstance _ anInstance.
 	"aList _ self world allViewersOn: currentDataInstance."
 	anInstance costume: self.
-	costumee _ anInstance.
+	self player: anInstance.
 	self morphsForInstanceData do:
 			[:m | m dockUpToInstance: anInstance].
 "	aList do:
