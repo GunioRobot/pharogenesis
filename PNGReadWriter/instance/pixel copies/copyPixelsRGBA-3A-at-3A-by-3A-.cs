@@ -27,5 +27,5 @@ copyPixelsRGBA: y at: startX by: incX
 			i _ i + 8.
 		].
 	].
-	tempForm displayOn: form at: 0@y rule: Form paint.
+	tempForm displayOn: form at: 0@y rule: Form paintAlpha.
 
