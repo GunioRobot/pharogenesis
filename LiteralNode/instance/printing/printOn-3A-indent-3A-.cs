@@ -9,4 +9,5 @@ printOn: aStream indent: level
 				ifFalse:
 					[aStream nextPutAll: '##';
 						nextPutAll: key key]]
-		ifFalse: [key storeOn: aStream]
+		ifFalse:
+			[aStream withAttributes: (Preferences syntaxAttributesFor: #literal) do:  [key storeOn: aStream]]
