@@ -6,14 +6,14 @@ yTallyPixelValue: pv orNot: not
 	not ifTrue: [cm atAllPut: 1].		"... or all but pv to one"
 	cm at: pv+1 put: 1 - (cm at: pv+1).
 	slice _ Form extent: width@1.
-	copyBlt _ (BitBlt destForm: slice sourceForm: self
+	copyBlt _ (BitBlt current destForm: slice sourceForm: self
 				halftoneForm: nil combinationRule: Form over
 				destOrigin: 0@0 sourceOrigin: 0@0 extent: slice width @ 1
 				clipRect: slice boundingBox) colorMap: cm.
-	countBlt _ (BitBlt toForm: slice)
+	countBlt _ (BitBlt current toForm: slice)
 				fillColor: (Bitmap with: 0);
 				destRect: (0@0 extent: slice extent);
-				combinationRule: 22.
+				combinationRule: 32.
 	^ (0 to: height-1) collect:
 		[:y |
 		copyBlt sourceOrigin: 0@y; copyBits.
