@@ -1,6 +1,6 @@
 Animation
 	subclass: #AbsoluteAnimation
-	instanceVariableNames: 'lastStartState '
+	instanceVariableNames: 'lastStartState'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon3D-Wonderland Time'
+	category: 'Balloon3D-Wonderland-Time'
