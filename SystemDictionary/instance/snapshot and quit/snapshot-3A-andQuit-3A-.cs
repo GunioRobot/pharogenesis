@@ -8,19 +8,25 @@ snapshot: save andQuit: quit
 			ifFalse: ['----SNAPSHOT----'])
 			, Date dateAndTimeNow printString.
 		sourceLink _ ' priorSource: ' , LastQuitLogPosition printString.
-
+		self assureStartupStampLogged.
 		LastQuitLogPosition _ (SourceFiles at: 2) setToEnd; position.
 		self logChange: msg , sourceLink.
 		Transcript cr; show: msg].
 
-	self processShutDownList.
-	Smalltalk isMorphic ifFalse: [Cursor write show].
-	save
-		ifTrue: [resuming _ self snapshotPrimitive]  "<-- PC frozen here on image file"
+	self processShutDownList: quit.
+	Cursor write show.
+	save ifTrue: [resuming _ self snapshotPrimitive.  "<-- PC frozen here on image file"
+				resuming ifFalse:
+					["Time to reclaim segment files is immediately after a save"
+					Smalltalk at: #ImageSegment
+						ifPresent: [:theClass | theClass reclaimObsoleteSegmentFiles]]]
 		ifFalse: [resuming _ false].
 	quit & resuming not ifTrue: [self quitPrimitive].
-	Smalltalk isMorphic ifFalse: [Cursor normal show].
-	self processStartUpList.
-	resuming ifTrue: [
-		self clearExternalObjects.
-		self readDocumentFile].
+	Cursor normal show.
+	self setGCParameters.
+	resuming ifTrue: [self clearExternalObjects].
+	self processStartUpList: resuming.
+	resuming ifTrue:
+		[self readDocumentFile].
+	Smalltalk isMorphic ifTrue: [SystemWindow wakeUpTopWindowUponStartup].
+	^ resuming
