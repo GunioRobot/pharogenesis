@@ -1,2 +1,3 @@
 shutDown  "Saves space in snapshots"
-	ScheduledControllers unCacheWindows
+
+	Smalltalk isMorphic ifFalse: [ScheduledControllers unCacheWindows]
