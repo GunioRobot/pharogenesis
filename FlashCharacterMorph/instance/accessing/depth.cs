@@ -1,0 +1,2 @@
+depth
+	^self depthAtFrame: frame
