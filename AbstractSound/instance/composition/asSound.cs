@@ -1,0 +1,3 @@
+asSound
+
+	^ self
