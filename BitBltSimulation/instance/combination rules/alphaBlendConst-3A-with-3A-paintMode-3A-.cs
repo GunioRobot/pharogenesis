@@ -15,10 +15,10 @@ alphaBlendConst: sourceWord with: destinationWord paintMode: paintMode
 
 	| pixMask destShifted sourceShifted destPixVal rgbMask sourcePixVal unAlpha result pixBlend shift blend maskShifted bitsPerColor |
 	self inline: false.
-	destPixSize < 16 ifTrue: [^ destinationWord "no-op"].
+	destDepth < 16 ifTrue: [^ destinationWord "no-op"].
 	unAlpha _ 255 - sourceAlpha.
-	pixMask _ maskTable at: destPixSize.
-	destPixSize = 16 
+	pixMask _ maskTable at: destDepth.
+	destDepth = 16 
 		ifTrue: [bitsPerColor _ 5]
 		ifFalse:[bitsPerColor _ 8].
 	rgbMask _ (1<<bitsPerColor) - 1.
@@ -26,25 +26,36 @@ alphaBlendConst: sourceWord with: destinationWord paintMode: paintMode
 	destShifted _ destinationWord.
 	sourceShifted _ sourceWord.
 	result _ destinationWord.
-	1 to: pixPerWord do:
-		[:j |
-		sourcePixVal _ sourceShifted bitAnd: pixMask.
-		((maskShifted bitAnd: pixMask) = 0  "no effect if outside of dest rectangle"
-			or: [paintMode & (sourcePixVal = 0)  "or painting a transparent pixel"])
-		ifFalse:
-			[destPixVal _ destShifted bitAnd: pixMask.
-			pixBlend _ 0.
-			1 to: 3 do:
-				[:i | shift _ (i-1)*bitsPerColor.
-				blend _ (((sourcePixVal>>shift bitAnd: rgbMask) * sourceAlpha)
-							+ ((destPixVal>>shift bitAnd: rgbMask) * unAlpha))
+	destPPW = 1 ifTrue:["32bpp blends include alpha"
+		paintMode & (sourceWord = 0)  "painting a transparent pixel" ifFalse:[
+			result _ 0.
+			1 to: 4 do:[:i|
+				shift _ (i-1)*8.
+				blend _ (((sourceWord>>shift bitAnd: rgbMask) * sourceAlpha)
+							+ ((destinationWord>>shift bitAnd: rgbMask) * unAlpha))
 					 	+ 254 // 255 bitAnd: rgbMask.
-				pixBlend _ pixBlend bitOr: blend<<shift].
-			destPixSize = 16
-				ifTrue: [result _ (result bitAnd: (pixMask << (j-1*16)) bitInvert32)
-									bitOr: pixBlend << (j-1*16)]
-				ifFalse: [result _ pixBlend]].
-		maskShifted _ maskShifted >> destPixSize.
-		sourceShifted _ sourceShifted >> destPixSize.
-		destShifted _ destShifted >> destPixSize].
+				result _ result bitOr: blend<<shift].
+		].
+	] ifFalse:[
+		1 to: destPPW do:[:j |
+			sourcePixVal _ sourceShifted bitAnd: pixMask.
+			((maskShifted bitAnd: pixMask) = 0  "no effect if outside of dest rectangle"
+				or: [paintMode & (sourcePixVal = 0)  "or painting a transparent pixel"])
+			ifFalse:
+				[destPixVal _ destShifted bitAnd: pixMask.
+				pixBlend _ 0.
+				1 to: 3 do:
+					[:i | shift _ (i-1)*bitsPerColor.
+					blend _ (((sourcePixVal>>shift bitAnd: rgbMask) * sourceAlpha)
+								+ ((destPixVal>>shift bitAnd: rgbMask) * unAlpha))
+						 	+ 254 // 255 bitAnd: rgbMask.
+					pixBlend _ pixBlend bitOr: blend<<shift].
+				destDepth = 16
+					ifTrue: [result _ (result bitAnd: (pixMask << (j-1*16)) bitInvert32)
+										bitOr: pixBlend << (j-1*16)]
+					ifFalse: [result _ pixBlend]].
+			maskShifted _ maskShifted >> destDepth.
+			sourceShifted _ sourceShifted >> destDepth.
+			destShifted _ destShifted >> destDepth].
+	].
 	^ result
