@@ -1,0 +1,2 @@
+filterSelector
+    ^#storeOnStream:.
