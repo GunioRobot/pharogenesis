@@ -1,0 +1,2 @@
+contents
+	^sourceStream contents
