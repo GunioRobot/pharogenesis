@@ -1,16 +1,16 @@
 addHeaderMorphWithBarHeight: anInteger includeDismissButton: aBoolean
 	"Add the header morph to the receiver, using anInteger as a guide for its height, and if aBoolean is true, include a dismiss buton for it"
 
-	| header aFont aButton aTextMorph nail wrpr costs headWrapper inner |
+	| header aFont aButton aTextMorph nail wrpr costs headWrapper |
 	header _ AlignmentMorph newRow color: self color muchLighter; wrapCentering: #center; cellPositioning: #leftCenter.
 	aFont _ Preferences standardButtonFont.
 	aBoolean ifTrue:
-		[header addMorph: (aButton _ SimpleButtonMorph new label: 'O' font: aFont).
+		[aButton _ self tanOButton.
+		header addMorph: aButton.
 		aButton target: self;
-				color:  Color tan;
 				actionSelector: #dismiss;
 				setBalloonText: 'remove this entire Viewer from the screen
-don''t worry -- nothing will be lost!.'.
+don''t worry -- nothing will be lost!.' translated.
 		header addTransparentSpacerOfSize: 4@1].
 
 	aButton _ IconicButton new borderWidth: 0;
@@ -19,7 +19,7 @@ don''t worry -- nothing will be lost!.'.
 			target: self;
 			actionSelector: #addCategoryViewer;
 			setBalloonText: 'click here to add
-another category pane';
+another category pane' translated;
 			shedSelvedge.
 	header addMorphBack: aButton.
 	header addTransparentSpacerOfSize: 4@1.
@@ -28,43 +28,41 @@ another category pane';
 	costs ifNotNil:
 	[(costs size > 1 or: [costs size = 1 and: [costs first ~~ scriptedPlayer costume]]) ifTrue:
 		[header addUpDownArrowsFor: self.
-		(wrpr _ header submorphs last) submorphs second setBalloonText: 'switch to previous costume'.	
-		wrpr submorphs first  setBalloonText: 'switch to next costume']].	
+		(wrpr _ header submorphs last) submorphs second setBalloonText: 'switch to previous costume' translated.	
+		wrpr submorphs first  setBalloonText: 'switch to next costume' translated]].	
 
-	(self hasProperty: #noInteriorThumbnail)
+	nail _ (self hasProperty: #noInteriorThumbnail)
 		ifFalse:
-			[nail _ ThumbnailMorph new objectToView: scriptedPlayer viewSelector: #costume]
+			[ThumbnailMorph new objectToView: scriptedPlayer viewSelector: #costume]
 		ifTrue:
-			[inner _ ImageMorph new image: (ScriptingSystem formAtKey: 'Menu').
-			nail _ RectangleMorph new beTransparent extent: inner extent.
-			nail addMorph: inner lock].
+			[ImageMorph new image: Cursor menu].
 	nail on: #mouseDown send: #offerViewerMenuForEvt:morph: to: scriptedPlayer.
 	header addMorphBack: nail.
 	nail setBalloonText: 'click here to get a menu
 that will allow you to
-add an instance variable,,
-tear off a tile, etc..'.
+add a variable,
+tear off a tile, etc..' translated.
 	(self hasProperty: #noInteriorThumbnail)
 		ifFalse:
 			[nail borderWidth: 3; borderColor: #raised].
 
 	header addTransparentSpacerOfSize: 5@5.
 
-"	aButton _ SimpleButtonMorph new target: self; actionSelector: #newEmptyScript; label: 'S' font: (aFont _ StrikeFont familyName: #ComicBold size: 16);  color: Color transparent; borderWidth: 0; actWhen: #buttonDown.
+"	aButton _ SimpleButtonMorph new target: self; actionSelector: #newEmptyScript; label: 'S' translated font: (aFont _ StrikeFont familyName: #ComicBold size: 16);  color: Color transparent; borderWidth: 0; actWhen: #buttonDown.
 	aButton setBalloonText: 'drag from here to
 create a new script
-for this object'.	
+for this object' translated.	
 	header addMorphBack: aButton.
 
-	header addTransparentSpacerOfSize: 8@5.
-
-	aButton _ SimpleButtonMorph new target: scriptedPlayer; actionSelector: #addInstanceVariable; label: 'I' font: aFont;  color: Color transparent; borderWidth: 0; actWhen: #buttonUp.
-	aButton setBalloonText: 'click here to add
-an instance variable
-to this object.'.
+	header addTransparentSpacerOfSize: 8@5."
+	
+	aButton _ SimpleButtonMorph new target: scriptedPlayer; actionSelector: #addInstanceVariable; label: 'v' translated font: (aFont emphasized: 1);  color: Color transparent; borderWidth: 1; actWhen: #buttonUp.
+	"aButton firstSubmorph color: Color gray."
+	aButton setBalloonText: 'click here to add a variable
+to this object.' translated.
 	header addMorphBack: aButton.
 
-	header addTransparentSpacerOfSize: 5@5."
+	header addTransparentSpacerOfSize: 5@5.
 	self viewsMorph ifTrue: [scriptedPlayer costume assureExternalName].
 	aTextMorph _ UpdatingStringMorph new
 		useStringFormat;
@@ -77,7 +75,7 @@ to this object.'.
 		aTextMorph setProperty: #okToTextEdit toValue: true].
 	aTextMorph step.
 	header  addMorphBack: aTextMorph.
-	aTextMorph setBalloonText: 'Click here to edit the player''s name.'.	
+	aTextMorph setBalloonText: 'Click here to edit the player''s name.' translated.	
 
 	header beSticky.
 	anInteger > 0
