@@ -7,16 +7,19 @@ parse: sourceStream class: class noPattern: noPattern context: ctxt notifying: r
         noPattern is a Boolean that is true if the the sourceStream does not 
         contain a method header (i.e., for DoIts)."
 
-         | meth repeatNeeded myStream parser |
+         | methNode repeatNeeded myStream parser s p |
         (req notNil and: [RequestAlternateSyntaxSetting signal and: [(sourceStream isKindOf: FileStream) not]])
                 ifTrue: [parser _ self as: DialectParser]
                 ifFalse: [parser _ self].
         myStream _ sourceStream.
         [repeatNeeded _ false.
+	   p _ myStream position.
+	   s _ myStream upToEnd.
+	   myStream position: p.
         parser init: myStream notifying: req failBlock: [^ aBlock value].
         doitFlag _ noPattern.
         failBlock_ aBlock.
-        [meth _ parser method: noPattern context: ctxt
+        [methNode _ parser method: noPattern context: ctxt
                                 encoder: (Encoder new init: class context: ctxt notifying: parser)] 
                 on: ParserRemovedUnusedTemps 
                 do: 
@@ -25,4 +28,5 @@ parse: sourceStream class: class noPattern: noPattern context: ctxt notifying: r
                         ex resume].
         repeatNeeded] whileTrue.
         encoder _ failBlock _ requestor _ parseNode _ nil. "break cycles & mitigate refct overflow"
-        ^ meth
+	   methNode sourceText: s.
+        ^ methNode
