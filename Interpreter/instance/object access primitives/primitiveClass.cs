@@ -1,4 +1,4 @@
 primitiveClass
 	| instance |
-	instance _ self popStack.
-	self push: (self fetchClassOf: instance)
+	instance _ self stackTop.
+	self pop: argumentCount+1 thenPush: (self fetchClassOf: instance)
