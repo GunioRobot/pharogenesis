@@ -1,0 +1,2 @@
+gradientFillbosfcepbbfgcc0
+	^ GradientFillMorph
