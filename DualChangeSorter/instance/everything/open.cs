@@ -1,11 +1,12 @@
 open
 	"1991, tk.  Modified 5/16/96 sw: decrease minimum size drastically
-	 6/18/96 sw: more modest minimum size, and other minor adjustments"
+	 : more modest minimum size, and other minor adjustments
+	 : more useful choice for initial cs in second sorter"
 
 	| topView |
-	leftCngSorter _ ChangeSorter new initialize.
+	leftCngSorter _ ChangeSorter new initializeFor: Smalltalk changes.
 	leftCngSorter parent: self.
-	rightCngSorter _ ChangeSorter new initialize.
+	rightCngSorter _ ChangeSorter new initializeFor: ChangeSorter secondaryChangeSet.
 	rightCngSorter parent: self.
 
 	topView _ StandardSystemView new.
