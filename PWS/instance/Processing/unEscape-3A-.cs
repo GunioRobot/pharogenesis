@@ -6,11 +6,12 @@ unEscape: aString
 	ws := WriteStream on: ''.
 	[ rs atEnd ] whileFalse: [
 		c := rs next.
-		ws nextPut: 
+		ws nextPut:
 			(c = $+ ifTrue: [ $  ] ifFalse: [
-				c = $% 
-					ifTrue: [ (Number readFrom: (rs next: 2) asUppercase base: 16) asCharacter ]
+				c = $%
+					ifTrue: [ (Number readFrom: (rs
+next: 2) asUppercase base: 16) asCharacter ]
 					ifFalse: [ c ]
 				]).
 		].
-	^ws contents copyWithout: Character cr
+	^ws contents 
