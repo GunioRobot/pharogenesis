@@ -1,9 +1,37 @@
 Vocabulary
 
-  vocabularyName	a Symbol -- the formal name by which this vocabulary is known.
-  categories			a list of MethodCategory objects: the categories that comprise the vocabulary
-  methodInterfaces 	an IdentityDictionary; keys are method selectors, values are MethodInterfaces
+vocabularyName	a Symbol -- the formal name by which this vocabulary is known.
+categories			a list of ElementCategory objects: the categories that comprise the vocabulary
+methodInterfaces 	an IdentityDictionary; keys are method selectors, values are MethodInterfaces
 
-  AllMethodInterfaces		This class variable is available to hold on to all method interfaces
-							defined in the system, regardless of class.  Not deployed in 
-							the first version of this code to be circulated externally.
+A Vocabulary can be either be *abstract*, i.e. associated with a *class*, or it can be *bound to an instance*.  The form that is bound to an instance is still in its infancy however.
+
+object				in the *bound* form, an actual object is associated with the vocabulary
+limitClass			in the *bound* form, an actual limit class is assocaited with the vocabulary
+
+AllMethodInterfaces	This class variable is available to hold on to all method interfaces
+						defined in the system, regardless of class.  Not deployed in 
+						the first version of this code to be circulated externally.
+
+AllVocabularies		A dictionary associating symbols with actual abstract vocabulary instances
+
+------
+Hints on making a vocabulary for a new foreign language.  You need build a method like #addGermanVocabulary.  Execute
+
+	Transcript show: Vocabulary eToyVocabulary strings.
+
+and copy the text from the transcript to the method you are building.
+	A cheap trick to get started is to use a web site that translates.  Here is how.  For an entry like:  
+
+(clearTurtleTrails			'clear pen trails'			'Clear all the pen trails in the interior.')
+
+	substitute exclamation points for single quotes by using Alt-shift-j.  Most of the statements are imperatives.
+
+(clearOwnersPenTrails !clear all pen trails! !clear all pen trails in my containing play field!) 
+
+	This translates to
+
+(ClearOwnersPenTrails! reinigt allen Kugelschreiber verfolgt! ! Reinigt allen Kugelschreiber Pfade in meinem enthaltenden Spiel Feld sind!) 
+
+	Which is laughable, and will certainly stimulate the author to improve it.
+------
