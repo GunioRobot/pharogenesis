@@ -1,6 +1,6 @@
 OrientedFillStyle
 	subclass: #GradientFillStyle
 	instanceVariableNames: 'colorRamp pixelRamp radial isTranslucent '
-	classVariableNames: ''
+	classVariableNames: 'PixelRampCache '
 	poolDictionaries: ''
 	category: 'Balloon-Fills'
