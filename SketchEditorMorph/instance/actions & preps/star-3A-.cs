@@ -19,13 +19,10 @@ star: evt
 									ifFalse: [ext]) degrees: angle + pt degrees)
 						+ sOrigin].
 	poly _ PolygonMorph new addHandles.
-	cColor == Color transparent
-		ifTrue: [poly color: cColor;
-				 borderWidth: 1;
-				 borderColor: Color black]
-		ifFalse: [poly color: cColor;
-				 borderWidth: 0;
-				 borderColor: Color transparent].
+	poly borderColor: (cColor isTransparent ifTrue: [Color black] ifFalse: [cColor]).
+	poly borderWidth: (self getNibFor: evt) width.
+	poly fillStyle: Color transparent.
+
 	"can't handle thick brushes"
 	self invalidRect: rect.
 	"self addMorph: poly."
