@@ -1,0 +1,2 @@
+terminateDuringSelect: trueOrFalse
+	terminateDuringSelect _ trueOrFalse
