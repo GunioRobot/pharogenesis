@@ -12,11 +12,7 @@ storeOn: aStream base: anInteger
 	self depth printOn: aStream.
 	aStream crtab: 1.
 	aStream nextPutAll: 'fromArray: #('.
-	1 to: bits size do: [:index | 
-		anInteger = 10
-			ifTrue: [aStream space]
-			ifFalse: [aStream crtab: 2].
-		(self bits at: index) printOn: aStream base: anInteger].
+	self storeBitsOn:aStream base:anInteger.
 	aStream nextPut: $).
 	aStream crtab: 1.
 	aStream nextPutAll: 'offset: '.
