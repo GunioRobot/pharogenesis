@@ -4,7 +4,7 @@ hierarchy
 	classListIndex = 0 ifTrue: [^ self].
 	self okToChange ifFalse: [^ self].
 	self messageCategoryListIndex: 0.
-	editSelection := #hierarchy.
+	self editSelection: #hierarchy.
 	self changed: #editComment.
 	self contentsChanged.
 	^ self
