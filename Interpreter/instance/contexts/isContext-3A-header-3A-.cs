@@ -6,7 +6,5 @@ isContext: oop header: hdr
 	ccIndex = 0
 		ifTrue: [theClass _ (self classHeader: oop) bitAnd: AllButTypeMask]
 		ifFalse: ["look up compact class"
-				theClass _ self fetchPointer: ccIndex - 1
-							ofObject: (self splObj: CompactClasses)].
-	^ theClass = (self splObj: ClassMethodContext)
-		or: [theClass = (self splObj: ClassBlockContext)]
+				theClass _ self fetchPointer: ccIndex - 1 ofObject: (self splObj: CompactClasses)].
+	^ theClass = (self splObj: ClassMethodContext) or: [theClass = (self splObj: ClassBlockContext)]
