@@ -1,0 +1,3 @@
+dummy
+	self assert: true
+			
