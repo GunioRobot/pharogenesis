@@ -5,14 +5,17 @@ setContents
 
 	image ifNil: [^self setNoImageContents].
 
-	imageMorph _ ImageMorph new.
+	defaultExtent isNil
+		ifTrue: [(imageMorph _ ImageMorph new) image: image]
+		ifFalse: [imageMorph := SketchMorph withForm: image].
 	(imageMapName notNil
 	and: [formatter notNil
 	and: [(imageMap _ formatter imageMapNamed: imageMapName) notNil]])
 		ifTrue: [imageMap buildImageMapForImage: imageMorph andBrowser: formatter browser].
 
-	imageMorph image: image.
 	imageMorph position: self position.
 	self addMorph: imageMorph.
-	imageMorph extent ~= self extent
-		ifTrue: [self extent: imageMorph extent].
+	defaultExtent isNil
+		ifFalse: [imageMorph extent: defaultExtent].
+	self extent ~= imageMorph extent
+		ifTrue: [	self extent: imageMorph extent ]
