@@ -8,7 +8,8 @@ update: aSymbol
 	aSymbol == getSelectionSelector ifTrue: [^ self setSelection: self getSelection].
 	aSymbol == #clearUserEdits ifTrue: [^ self hasUnacceptedEdits: false].
 	(aSymbol == #autoSelect and: [getSelectionSelector ~~ nil]) ifTrue:
-			[^ controller setSearch: model autoSelectString;
+			[ParagraphEditor abandonChangeText.	"no replacement!"
+			^ controller setSearch: model autoSelectString;
 					againOrSame: true].
 	aSymbol == #appendEntry ifTrue:
 			[^ controller doOccluded: [controller appendEntry]].
