@@ -1,0 +1,2 @@
+switchRotationStatus
+	b3DSceneMorph switchRotationStatus
