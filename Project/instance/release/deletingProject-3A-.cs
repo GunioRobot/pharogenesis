@@ -3,7 +3,9 @@ deletingProject: aProject
 
 	self flag: #bob.		"zapping projects"
 
-
+	parentProject == aProject ifTrue: [
+		parentProject _ parentProject parent
+	].
 	previousProject == aProject
 		ifTrue: [previousProject _ nil].
 	nextProject == aProject
