@@ -1,8 +1,8 @@
 initializePrimitiveTable 
-	"This table generates a C switch statement for primitive dispatching."
+	"This table generates a C function address table use in primitiveResponse along with dispatchFunctionPointerOn:in:"
 
-	"NOTE: The real limit here is 2047, but our C compiler currently barfs over 700"
-	MaxPrimitiveIndex _ 700.
+	"NOTE: The real limit here is 2047 because of the method header layout but there is no point in going over the needed size"
+	MaxPrimitiveIndex _ 575.
 	PrimitiveTable _ Array new: MaxPrimitiveIndex + 1.
 	self table: PrimitiveTable from: 
 	#(	"Integer Primitives (0-19)"
@@ -117,7 +117,7 @@ initializePrimitiveTable
 		(112 primitiveBytesLeft)
 		(113 primitiveQuit)
 		(114 primitiveExitToDebugger)
-		(115 primitiveFail)					"Blue Book: primitiveOopsLeft"
+		(115 primitiveChangeClass)					"Blue Book: primitiveOopsLeft"
 		(116 primitiveFlushCacheByMethod)
 		(117 primitiveExternalCall)
 		(118 primitiveDoPrimitiveWithArgs)
@@ -129,7 +129,7 @@ initializePrimitiveTable
 		(120 primitiveCalloutToFFI)
 		(121 primitiveImageName)
 		(122 primitiveNoop)					"Blue Book: primitiveImageVolume"
-		(123 primitiveFail)
+		(123 primitiveValueUninterruptably)	"@@@: Remove this when all VMs have support"
 		(124 primitiveLowSpaceSemaphore)
 		(125 primitiveSignalAtBytesLeft)
 
@@ -156,6 +156,8 @@ initializePrimitiveTable
 		(143 primitiveShortAt)
 		(144 primitiveShortAtPut)
 		(145 primitiveConstantFill)
+		"NOTE: When removing the obsolete indexed primitives,
+		the following two should go become #primitiveIntegerAt / atPut"
 		(146 primitiveObsoleteIndexedPrimitive)	"primitiveReadJoystick"
 		(147 primitiveObsoleteIndexedPrimitive)	"primitiveWarpBits"
 		(148 primitiveClone)
@@ -163,14 +165,32 @@ initializePrimitiveTable
 
 		"File Primitives (150-169) - NO LONGER INDEXED"
 		(150 164 primitiveObsoleteIndexedPrimitive)
-		(165 168 primitiveFail)
+		(165 primitiveIntegerAt)		"hacked in here for now"
+		(166 primitiveIntegerAtPut)
+		(167 primitiveYield)
+		(168 primitiveCopyObject)
 		(169 primitiveObsoleteIndexedPrimitive)
 
 		"Sound Primitives (170-199) - NO LONGER INDEXED"
 		(170 185 primitiveObsoleteIndexedPrimitive)
-		(186 188 primitiveFail)
-		(189 194 primitiveObsoleteIndexedPrimitive)
-		(195 199 primitiveFail)
+
+		"Old closure primitives"
+		(186 primitiveFail) "was primitiveClosureValue"
+		(187 primitiveFail) "was primitiveClosureValueWithArgs"
+
+		"Perform method directly"
+		(188 primitiveExecuteMethodArgsArray)
+		(189 primitiveExecuteMethod)
+
+		"Sound Primitives (continued) - NO LONGER INDEXED"
+		(190 194 primitiveObsoleteIndexedPrimitive)
+
+		"Unwind primitives"
+		(195 primitiveFindNextUnwindContext)
+		(196 primitiveTerminateTo)
+		(197 primitiveFindHandlerContext)
+		(198 primitiveMarkUnwindMethod)
+		(199 primitiveMarkHandlerMethod)
 
 		"Networking Primitives (200-229) - NO LONGER INDEXED"
 		(200 225 primitiveObsoleteIndexedPrimitive)
@@ -192,7 +212,8 @@ initializePrimitiveTable
 		(245 primitiveObsoleteIndexedPrimitive) "primStringindexOfAsciiinStringstartingAt"
 		(246 primitiveObsoleteIndexedPrimitive) "primStringfindSubstringinstartingAtmatchTable"
 		(247 primitiveSnapshotEmbedded)
-		(248 249 primitiveFail)
+		(248 primitiveInvokeObjectAsMethod)
+		(249 primitiveArrayBecomeOneWayCopyHash)
 
 		"VM Implementor Primitives (250-255)"
 		(250 clearProfile)
@@ -239,4 +260,4 @@ initializePrimitiveTable
 		(574 primitiveFail) "reserved for addl. external support prims"
 
 		"Unassigned Primitives"
-		(575 700 primitiveFail)).
+		(575 primitiveFail)).
