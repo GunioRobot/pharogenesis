@@ -1,2 +1,2 @@
 invert: aPoint
-	^ globalTransform invert: (localTransform transform: aPoint)
+	^ globalTransform invert: (localTransform invert: aPoint)
