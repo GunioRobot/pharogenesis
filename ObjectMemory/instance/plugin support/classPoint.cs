@@ -1,0 +1,2 @@
+classPoint
+	^self splObj: ClassPoint
