@@ -11,5 +11,5 @@ next: anInteger
 
 	"oh, well..."
 	newArray _ collection species new: anInteger.
-	1 to: anInteger do: [:index | newArray at: index put: self next].
+	1 to: anInteger do: [:index | newArray at: index put: (self next ifNil: [ ^newArray copyFrom: 1 to: index - 1]) ].
 	^newArray
