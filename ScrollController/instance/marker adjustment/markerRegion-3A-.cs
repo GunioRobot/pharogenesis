@@ -3,4 +3,5 @@ markerRegion: aRectangle
 
 	Display fill: marker fillColor: scrollBar insideColor.
 	marker region: aRectangle.
-	marker _ marker align: marker topCenter with: self upDownLine @ (scrollBar top + 2) 
+	marker _ marker align: marker topCenter 
+			with: self upDownLine @ (scrollBar top + 2) 
