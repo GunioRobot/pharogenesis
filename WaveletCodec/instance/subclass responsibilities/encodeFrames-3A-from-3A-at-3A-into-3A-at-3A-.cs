@@ -78,8 +78,8 @@ encodeFrames: frameCount from: srcSoundBuffer at: srcIndex into: dstByteArray at
 "This displays a temporary indication of compression achieved"
 sm _ TextMorph new contents: (((frameBase - srcIndex) *2.0 / (outStream position+1 - dstIndex) truncateTo: 0.1) printString , ' : 1') asText allBold.
 sm position: Sensor cursorPoint + (-20@30).
-Display getCurrentMorphicWorld addMorph: sm.
-Display doOneCycleNowMorphic.
+ActiveWorld addMorph: sm.
+World doOneCycleNow.
 sm delete.
 
 	outStream position > dstByteArray size ifTrue:
