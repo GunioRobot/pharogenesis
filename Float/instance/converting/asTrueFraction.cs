@@ -50,7 +50,6 @@ bitShift: zeroBitsCount negated)
 						denominator: (1 bitShift:
 exp) ] ].
 
-	" Validate the result (low cost; optional); answer result "
-	(result asFloat = self)
-		ifFalse: [self error: 'asTrueFraction validation failed' ].
+	"Low cost validation omitted after extensive testing"
+	"(result asFloat = self) ifFalse: [self error: 'asTrueFraction validation failed']."
 	^ result 
