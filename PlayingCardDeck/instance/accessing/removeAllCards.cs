@@ -1,0 +1,2 @@
+removeAllCards
+	self removeAllMorphs
