@@ -16,14 +16,15 @@ primitiveVMParameter
 		10	total milliseconds in incremental GCs since startup (read-only)
 		11	tenures of surving objects since startup (read-only)
 		12-20 specific to the translating VM
-		21   root table size (read-only)
-		22   root table overflows since startup (read-only)
+		21	root table size (read-only)
+		22	root table overflows since startup (read-only)
+		23	bytes of extra memory to reserve for VM buffers, plugins, etc.
 	Note: Thanks to Ian Piumarta for this primitive."
 
 	| mem paramsArraySize result arg index |
 	mem _ self cCoerce: memory to: 'int'.
 	argumentCount = 0 ifTrue: [
-		paramsArraySize _ 22.
+		paramsArraySize _ 23.
 		result _ self instantiateClass: (self splObj: ClassArray) indexableSize: paramsArraySize.
 		0 to: paramsArraySize - 1 do:
 			[:i | self storeWord: i ofObject: result withValue: (self integerObjectOf: 0)].
@@ -40,6 +41,7 @@ primitiveVMParameter
 		self storeWord: 10	ofObject: result withValue: (self integerObjectOf: statTenures).
 		self storeWord: 20	ofObject: result withValue: (self integerObjectOf: rootTableCount).
 		self storeWord: 21	ofObject: result withValue: (self integerObjectOf: statRootTableOverflows).
+		self storeWord: 22	ofObject: result withValue: (self integerObjectOf: extraVMMemory).
 		self pop: 1 thenPush: result.
 		^nil].
 
@@ -47,7 +49,7 @@ primitiveVMParameter
 	(self isIntegerObject: arg) ifFalse: [^self primitiveFail].
 	arg _ self integerValueOf: arg.
 	argumentCount = 1 ifTrue: [	 "read VM parameter"
-		(arg < 1 or: [arg > 22]) ifTrue: [^self primitiveFail].
+		(arg < 1 or: [arg > 23]) ifTrue: [^self primitiveFail].
 		arg = 1		ifTrue: [result _ youngStart - mem].
 		arg = 2		ifTrue: [result _ freeBlock - mem].
 		arg = 3		ifTrue: [result _ endOfMemory - mem].
@@ -62,6 +64,7 @@ primitiveVMParameter
 		((arg >= 12) and: [arg <= 20]) ifTrue: [result _ 0].
 		arg = 21		ifTrue: [result _ rootTableCount].
 		arg = 22		ifTrue: [result _ statRootTableOverflows].
+		arg = 23		ifTrue: [result _ extraVMMemory].
 		self pop: 2 thenPush: (self integerObjectOf: result).
 		^nil].
 
@@ -79,6 +82,10 @@ primitiveVMParameter
 	index = 6 ifTrue: [
 		result _ tenuringThreshold.
 		tenuringThreshold _ arg.
+		successFlag _ true].
+	index = 23 ifTrue: [
+		result _ extraVMMemory.
+		extraVMMemory _ arg.
 		successFlag _ true].
 	successFlag ifTrue: [
 		self pop: 3 thenPush: (self integerObjectOf: result).  "return old value"
