@@ -1,0 +1,2 @@
+ioLowResMSecs
+	^ Time millisecondClockValue
