@@ -1,4 +1,6 @@
 pvtOpenFileNamed: fName
+	"Private - open on the movie file iof the given name"
+
 	| f w h d n m |
 	self stopRunning.
 	fName = movieFileName ifTrue: [^ self].  "No reopen necessary on same file"
@@ -22,14 +24,15 @@ pvtOpenFileNamed: fName
 	msAtLastSync _ 0.
 	msPerFrame _ m/1000.0.
 	self makeMyPage.
-	(Smalltalk extraVMMemory < self fileByteCountPerFrame) ifTrue:
-		[^ PopUpMenu notify:
+	(SmalltalkImage current platformName = 'Mac OS') ifTrue:[
+		(SmalltalkImage current extraVMMemory < self fileByteCountPerFrame) ifTrue:
+			[^ self inform:
 'Playing movies in Squeak requires that extra memory be allocated
 for asynchronous file IO.  This particular movie requires a buffer of
 ' ,
-(self fileByteCountPerFrame printString) , ' bytes, but you only have ' , (Smalltalk extraVMMemory printString) , ' allocated.
-You can evaluate ''Smalltalk extraVMMemory'' to check your allocation,
-and ''Smalltalk extraVMMemory: 485000'' or the like to increase your allocation.
+(self fileByteCountPerFrame printString) , ' bytes, but you only have ' , (SmalltalkImage current extraVMMemory printString) , ' allocated.
+You can evaluate ''SmalltalkImage current extraVMMemory'' to check your allocation,
+and ''SmalltalkImage current extraVMMemory: 485000'' or the like to increase your allocation.
 Note that raising your allocation in this way only marks your image as
 needing this much, so you must then save, quit, and start over again
-before you can run this movie.  Good luck.'].
+before you can run this movie.  Good luck.']].
