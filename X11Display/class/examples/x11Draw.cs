@@ -2,7 +2,7 @@ x11Draw
 	"X11Display x11Draw"
 	| display window gc nextPt lastPt ptr |
 	display _ X11Display XOpenDisplay: nil.
-	window _ display getInputFocus.
+	window _ display ourWindow.
 	gc _ X11GC on: window.
 	gc foreground: 0.
 	lastPt _ nil.
