@@ -1,0 +1,3 @@
+ptrAddress
+
+	^ arrayBaseAddress + ptrOffset
