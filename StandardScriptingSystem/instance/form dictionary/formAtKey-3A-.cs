@@ -1,3 +1,6 @@
-formAtKey: aKey
-	"ScriptingSystem saveForm: (TileMorph downPicture) atKey: 'downArrow'"
-	^ FormDictionary at: aKey asSymbol ifAbsent: [nil]
+formAtKey: aString
+	"Answer the form saved under the given key"
+
+	Symbol hasInterned: aString ifTrue:
+		[:aKey | ^ FormDictionary at: aKey ifAbsent: [nil]].
+	^ nil
