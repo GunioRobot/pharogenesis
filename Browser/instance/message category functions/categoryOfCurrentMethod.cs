@@ -1,5 +1,5 @@
 categoryOfCurrentMethod
-	"Determine the method category associated with the receiver.  If there is a method currently selected, answer its category.  If no that owns the current method.  Return the category name."
+	"Determine the method category associated with the receiver at the current moment, or nil if none"
 
 	| aCategory |
 	^ super categoryOfCurrentMethod ifNil:
