@@ -2,10 +2,10 @@ cCoreBytesRshiftCount: count n: n m: m f: f bytes: b from: pFrom len: fromLen to
 	| x digit |
 	self var: #pTo declareC: 'unsigned char * pTo'.
 	self var: #pFrom declareC: 'unsigned char * pFrom'.
-	self assert: b < fromLen.
+	self sqAssert: b < fromLen.
 	x _ (pFrom at: b)
 				bitShift: n.
-	self assert: count - 1 < fromLen.
+	self sqAssert: count - 1 < fromLen.
 	b + 1 to: count - 1 do: 
 		[:j | 
 		digit _ pFrom at: j.
