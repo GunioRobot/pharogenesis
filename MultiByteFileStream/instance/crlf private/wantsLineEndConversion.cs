@@ -1,0 +1,3 @@
+wantsLineEndConversion
+
+	^ wantsLineEndConversion ifNil: [false].
