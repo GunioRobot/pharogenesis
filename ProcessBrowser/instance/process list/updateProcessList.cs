@@ -7,11 +7,11 @@ updateProcessList
 	lastUpdate _ now.
 	oldSelectedProcess _ selectedProcess.
 	processList _ selectedProcess _ selectedSelector _ nil.
-	Smalltalk garbageCollect.
+	Smalltalk garbageCollectMost.
 	"lose defunct processes"
 
 	processList _ Process allSubInstances
-				reject: [:each | each suspendedContext isNil].
+				reject: [:each | each isTerminated].
 	processList _ processList
 				sortBy: [:a :b | a priority >= b priority].
 	processList _ WeakArray withAll: processList.
