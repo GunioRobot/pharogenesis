@@ -11,7 +11,7 @@ humanWordsForSecondsAgo: secs
 	date _ Date fromSeconds: self totalSeconds - secs.		"now work with dates"
 	today _ Date today.
 	date > (today subtractDays: 2) ifTrue: [^ 'yesterday'].
-	date > (today subtractDays: 8) ifTrue: [^ 'last ', date weekday].
+	date > (today subtractDays: 8) ifTrue: [^ 'last ', date dayOfWeekName].
 	date > (today subtractDays: 13) ifTrue: [^ 'a week ago'].
 	date > (today subtractDays: 28) ifTrue: [
 		^ ((today subtractDate: date)//7) printString, ' weeks ago'].
@@ -20,5 +20,6 @@ humanWordsForSecondsAgo: secs
 	^ date monthName, ', ', date year printString
 
 "Example
-#(0.5 30 62 130 4000 10000 60000 90000 345600 864000 1728000 3456000 17280000 34560000 345600000) collect: [:ss | Time humanWordsForSecondsAgo: ss].
+#(0.5 30 62 130 4000 10000 60000 90000 345600 864000 1728000 3456000 17280000 34560000 345600000) 
+		collect: [:ss | Time humanWordsForSecondsAgo: ss].
 "
