@@ -1,4 +1,7 @@
 classListKey: aChar from: view
-	"Overridden to obviate spurious StringHolder processing of $f for findClass"
+	"Respond to a Command key in the class-list pane."
 
-	^ self messageListKey: aChar from: view
+	aChar == $x ifTrue: [^ self removeClass].
+	aChar == $d ifTrue: [^ self forgetClass]. 
+
+	^ self messageListKey: aChar from: view "picks up b,h,p"
