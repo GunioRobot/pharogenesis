@@ -2,14 +2,16 @@ instantiatedScriptEditorForPlayer: aPlayer
 	"Return the current script editor, creating it if necessary"
 
 	currentScriptEditor ifNil:
-		[currentScriptEditor _ (playerClass includesSelector: selector) 
-			ifTrue: [ScriptEditorMorph new 
-				fromExistingMethod: selector 
-				forPlayer: aPlayer]
-			ifFalse: [ScriptEditorMorph new
-				setMorph: aPlayer costume
-				scriptName: selector].
-		defaultStatus == #ticking ifTrue:
+		[currentScriptEditor _ (self playerClass includesSelector: selector) 
+			ifTrue:
+				[Preferences universalTiles
+					ifFalse:
+						[self error: 'duplicate selector'].
+				ScriptEditorMorph new fromExistingMethod: selector forPlayer: aPlayer]
+			ifFalse:
+				[ScriptEditorMorph new setMorph: aPlayer costume scriptName: selector].
+
+		(defaultStatus == #ticking and: [selector numArgs == 0]) ifTrue:
 			[aPlayer costume arrangeToStartStepping]].
 	
 	^ currentScriptEditor
