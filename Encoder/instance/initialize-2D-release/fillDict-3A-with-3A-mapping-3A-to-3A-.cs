@@ -1,6 +1,5 @@
 fillDict: dict with: nodeClass mapping: keys to: codeArray
-
-	| codeStream key |
+	| codeStream |
 	codeStream _ ReadStream on: codeArray.
 	keys do: 
 		[:key | dict 
