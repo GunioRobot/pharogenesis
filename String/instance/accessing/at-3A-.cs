@@ -4,4 +4,4 @@ at: index
 	is out of bounds. Essential. See Object documentation whatIsAPrimitive."
 
 	<primitive: 63>
-	^Character value: (super at: index)
+	^ Character value: (super at: index)
