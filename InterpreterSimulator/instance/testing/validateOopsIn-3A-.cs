@@ -5,10 +5,10 @@ validateOopsIn: object
 	limit _ object + (self lastPointerOf: object).	"a good field"
 	[fieldPtr > limit] whileFalse: [
 		former _ self longAt: fieldPtr.
-		self validOop: former.
+		(self validOop: former) ifFalse: [self halt].
 		fieldPtr _ fieldPtr + 4].
 	"class"
 	header _ self baseHeader: object.
-	(header bitAnd: 16r1F000 "compact class bits") = 0 ifTrue: [	
-		former _ (self classHeader: object) bitAnd: 16rFFFFFFFC.
-		self validOop: former].
+	(header bitAnd: CompactClassMask) = 0 ifTrue: [	
+		former _ (self classHeader: object) bitAnd: AllButTypeMask.
+		(self validOop: former) ifFalse: [self halt]].
