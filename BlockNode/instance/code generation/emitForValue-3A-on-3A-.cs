@@ -12,5 +12,8 @@ emitForValue: stack on: aStream
 	stack push: arguments size.
 	arguments reverseDo: [:arg | arg emitStorePop: stack on: aStream].
 	self emitForEvaluatedValue: stack on: aStream.
-	self returns ifFalse: [aStream nextPut: EndRemote].
+	self returns ifFalse: [
+		aStream nextPut: EndRemote.
+		pc _ aStream position.
+	].
 	stack pop: 1
