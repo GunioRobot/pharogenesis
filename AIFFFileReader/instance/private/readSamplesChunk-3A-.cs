@@ -2,8 +2,6 @@ readSamplesChunk: chunkSize
 	"Read a SSND chunk. All AIFF files with a non-zero frameCount contain exactly one chunk of this type."
 
 	| offset blockSize bytesOfSamples s |
-	skipDataChunk ifTrue: [in skip: chunkSize. ^ self].
-
 	offset _ in nextNumber: 4.
 	blockSize _ in nextNumber: 4.
 	((offset ~= 0) or: [blockSize ~= 0])
@@ -11,6 +9,10 @@ readSamplesChunk: chunkSize
 	bytesOfSamples _ chunkSize - 8.
 	bytesOfSamples = (channelCount * frameCount * (bitsPerSample // 8))
 		ifFalse: [self error: 'actual sample count does not match COMM chunk'].
+
+	channelDataOffset _ in position.  "record stream position for start of data"
+	skipDataChunk ifTrue: [in skip: (chunkSize - 8). ^ self].  "if skipDataChunk, skip sample data"
+
 	(mergeIfStereo and: [channelCount = 2])
 		ifTrue: [
 			channelData _ Array with: (SoundBuffer newMonoSampleCount: frameCount)]
