@@ -14,7 +14,7 @@ saveDocCheck: aMorph
 		unNum = a higher unnumbered set that has method.
 		lastUp = lastUpdate we know about in methodVersions
 		beyond = any set about lastUp that has the method."
-	ChangeSorter gatherChangeSets doWithIndex: [:cs :ind | "youngest first"
+	ChangeSorter allChangeSets doWithIndex: [:cs :ind | "youngest first"
 		(cs name includesSubString: lastUpdateName) ifTrue: [lastUp _ ind].
 		(cs atSelector: selector class: class) ~~ #none ifTrue: [
 			lastUp ifNotNil: [beyond _ ind. ours _ cs name]
