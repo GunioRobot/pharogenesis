@@ -1,5 +1,5 @@
 standardPositions
-	"Return a list of standard window positions -- this may have one, two, or four of them, depending on the size and shape of the display screen.  5/22/96 sw"
+	"Return a list of standard window positions -- this may have one, two, or four of them, depending on the size and shape of the display screen.  "
 
 	| anArea aList  midX midY |
 
@@ -13,7 +13,7 @@ standardPositions
 			[aList add: (midX @ ScreenTopSetback)].
 	self windowRowsDesired > 1
 		ifTrue:
-			[aList add: (ScrollBarSetback @ midY).
+			[aList add: (ScrollBarSetback @ (midY+ScreenTopSetback)).
 			self windowColumnsDesired > 1 ifTrue:
-				[aList add: (midX @ midY)]].
+				[aList add: (midX @ (midY+ScreenTopSetback))]].
 	^ aList
