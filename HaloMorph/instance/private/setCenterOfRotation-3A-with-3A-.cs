@@ -2,6 +2,9 @@ setCenterOfRotation: evt with: rotationHandle
 	| localPt |
 	evt hand obtainHalo: self.
 	evt hand showTemporaryCursor: nil.
-	localPt _ innerTarget transformFromWorld globalPointToLocal: rotationHandle center.
-	innerTarget setRotationCenterFrom: localPt.
+	(rotationHandle hasProperty: #dragByCenterOfRotation) ifFalse:[
+		localPt _ innerTarget transformFromWorld globalPointToLocal: rotationHandle center.
+		innerTarget setRotationCenterFrom: localPt.
+	].
+	rotationHandle removeProperty: #dragByCenterOfRotation.
 	self endInteraction
