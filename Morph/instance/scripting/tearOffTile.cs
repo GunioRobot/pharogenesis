@@ -1,0 +1,2 @@
+tearOffTile
+	^ self assuredPlayer tearOffTileForSelf
