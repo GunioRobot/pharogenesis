@@ -1,0 +1,2 @@
+doFirstPersonControl: aBoolean
+	firstPersonControls _ aBoolean
