@@ -1,7 +1,6 @@
 makeHelpButton
-
-	^self
+	^ self
 		buildButton: SimpleButtonMorph new
 		target: self
-		label: 'Help'
+		label: 'Help' translated
 		selector: #help
