@@ -6,10 +6,12 @@ at: index put: value
 	stored. Essential. See Object documentation whatIsAPrimitive."
 
 	<primitive: 61>
-	index isInteger
-		ifTrue: [(index >= 1 and: [index <= self size])
+	index isInteger ifTrue:
+		[self class isVariable
+			ifTrue: [(index >= 1 and: [index <= self size])
 					ifTrue: [self errorImproperStore]
-					ifFalse: [self errorSubscriptBounds: index]].
+					ifFalse: [self errorSubscriptBounds: index]]
+			ifFalse: [self error: (self class name) , 's are not indexable']].
 	index isNumber
 		ifTrue: [^self at: index asInteger put: value]
 		ifFalse: [self errorNonIntegerIndex]
