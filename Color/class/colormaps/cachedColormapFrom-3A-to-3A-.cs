@@ -3,14 +3,12 @@ cachedColormapFrom: sourceDepth to: destDepth
 	"Note: This method returns a shared, cached colormap to save time and space. Clients that need to modify a colormap returned by this method should make a copy and modify that!"
 	"Note: The colormap cache may be cleared by evaluating 'Color shutDown'."
 
-	| key newMap |
-	key _ sourceDepth@destDepth.
-	CachedColormaps == nil ifTrue: [CachedColormaps _ Dictionary new].
-	^ CachedColormaps at: key ifAbsent: [
-		newMap _ self computeColormapFrom: sourceDepth to: destDepth.
-		CachedColormaps at: key put: newMap.
-		((sourceDepth >= 16) and: [destDepth < 16]) ifTrue: [
-			"can use the same map from both 16-bits and 32-bits to a given lesser depth"
-			CachedColormaps at: 16@destDepth put: newMap.
-			CachedColormaps at: 32@destDepth put: newMap].
-		newMap].
+	| srcIndex map |
+	CachedColormaps class == Array ifFalse: [CachedColormaps _ (1 to: 9) collect: [:i | Array new: 32]].
+	srcIndex _ sourceDepth.
+	sourceDepth > 8 ifTrue: [srcIndex _ 9].
+	(map _ (CachedColormaps at: srcIndex) at: destDepth) ~~ nil ifTrue: [^ map].
+
+	map _ self computeColormapFrom: sourceDepth to: destDepth.
+	(CachedColormaps at: srcIndex) at: destDepth put: map.
+	^ map
