@@ -1,14 +1,21 @@
-mouseLeaveDragging: evt
+mouseLeaveDragging: evt 
+	"Transcript cr; print: self; show: ' leaveDragging'."
 
-"Transcript cr; print: self; show: ' leaveDragging'."
-	self isBlockNode ifTrue:
-		[self stopStepping; removeDropZones.
-		(self firstOwnerSuchThat: [:m | m isSyntaxMorph and: [m isBlockNode]])
-			ifNotNilDo: [:m | "Activate outer block."
-						m startStepping]].
+	self rootTile isMethodNode ifFalse: [^self].	"not in a script"
+	self isBlockNode 
+		ifTrue: 
+			[self
+				stopStepping;
+				removeDropZones.
+			(self firstOwnerSuchThat: [:m | m isSyntaxMorph and: [m isBlockNode]]) 
+				ifNotNilDo: [:m | m startStepping].	"Activate outer block."
+			self submorphs do: 
+					[:ss | 
+					"cancel drop color in line beside mouse"
+
+					ss color = self dropColor ifTrue: [ss setDeselectedColor]]].
 
 	"Move drop highlight back out a level"
 	self unhighlight.
-	(owner ~~ nil and: [owner isSyntaxMorph])
-		ifTrue: [owner highlightForDrop: evt].
-
+	(owner notNil and: [owner isSyntaxMorph]) 
+		ifTrue: [owner isBlockNode ifFalse: [owner highlightForDrop: evt]]
