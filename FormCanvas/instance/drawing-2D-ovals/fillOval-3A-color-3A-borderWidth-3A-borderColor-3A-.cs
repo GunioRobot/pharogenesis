@@ -2,7 +2,7 @@ fillOval: r color: fillColor borderWidth: borderWidth borderColor: borderColor
 	| rect |
 	"draw the border of the oval"
 	rect _ (r translateBy: origin) truncated.
-	borderColor isTransparent ifFalse:[
+	(borderWidth = 0 or: [borderColor isTransparent]) ifFalse:[
 		self setFillColor: borderColor.
 		(r area > 10000 or: [fillColor isTranslucent]) 
 			ifTrue: [port frameOval: rect borderWidth: borderWidth]
