@@ -1,4 +1,4 @@
 addSibling
 
-	parentWrapper ifNil: [^1 beep].
+	parentWrapper ifNil: [^Beeper beep].
 	parentWrapper addNewChildAfter: item.
