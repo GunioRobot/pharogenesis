@@ -1,0 +1,3 @@
+maxCode
+
+	^ maxCode.
