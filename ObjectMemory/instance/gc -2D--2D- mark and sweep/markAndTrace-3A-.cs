@@ -23,10 +23,10 @@ markAndTrace: oop
 	lastFieldOffset _ self lastPointerOf: oop.
 	field _ oop + lastFieldOffset.
 	action _ StartField.
-
+	youngStartLocal _ youngStart.
 	"run the tracer state machine until all objects reachable from oop are marked"
 	[action = Done] whileFalse: [
-		action = StartField	ifTrue: [ action _ self startField ].
-		action = StartObj		ifTrue: [ action _ self startObj ].
-		action = Upward		ifTrue: [ action _ self upward ].
+		action = StartField ifTrue: [ action _ self startField ].
+		action = StartObj ifTrue: [ action _ self startObj ].
+		action = Upward ifTrue: [ action _ self upward ].
 	].
