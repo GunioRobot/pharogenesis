@@ -1,0 +1,3 @@
+originalSamplingRate
+
+	^ originalSamplingRate
