@@ -1,6 +1,5 @@
 init: aClass context: aContext notifying: req
-
-	| variable node n homeNode indexNode |
+	| node n homeNode indexNode |
 	requestor _ req.
 	class _ aClass.
 	nTemps _ 0.
