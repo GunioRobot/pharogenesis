@@ -8,4 +8,4 @@ editMessageCategories
 			[self messageCategoryListIndex: 0.
 			editSelection _ #editMessageCategories.
 			self changed: #editMessageCategories.
-			self changed: #contents]
+			self contentsChanged]
