@@ -1,0 +1,2 @@
+personalizedWorldMenu
+	^ self valueOfFlag: #personalizedWorldMenu
