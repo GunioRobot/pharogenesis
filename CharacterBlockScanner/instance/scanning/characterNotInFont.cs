@@ -1,4 +1,4 @@
-characterNotInFont
+characterNotInFont 
 	"This does not handle character selection nicely, i.e., illegal characters are a 
 	little tricky to select.  Since the end of a run or line is subverted here by actually
 	having the scanner scan a different string in order to manage the illegal 
@@ -7,5 +7,5 @@ characterNotInFont
 	manage the situation."
 
 	lastCharacterExtent _ 
-		(font widthOf: (font maxAscii + 1) asCharacter) @ textStyle lineGrid.
+		(font widthOf: (font maxAscii + 1) asCharacter) @ line lineHeight.
 	^super characterNotInFont
