@@ -12,7 +12,6 @@ copyBitsLockedAndClipped
 		interpreterProxy methodArgumentCount = 1
 			ifTrue: [sourceAlpha _ interpreterProxy stackIntegerValue: 0.
 					(interpreterProxy failed not and: [(sourceAlpha >= 0) & (sourceAlpha <= 255)])
-						ifTrue: [interpreterProxy pop: 1]
 						ifFalse: [^ interpreterProxy primitiveFail]]
 			ifFalse: [^ interpreterProxy primitiveFail]].
 
@@ -22,10 +21,7 @@ copyBitsLockedAndClipped
 
 	(combinationRule = 22) | (combinationRule = 32) ifTrue:
 		["zero width and height; return the count"
-		affectedL _ affectedR _ affectedT _ affectedB _ 0.
-		interpreterProxy pop: 1.
-		^ interpreterProxy pushInteger: bitCount].
- 
+		affectedL _ affectedR _ affectedT _ affectedB _ 0]. 
 	hDir > 0
 		ifTrue: [affectedL _ dx.
 				affectedR _ dx + bbW]
