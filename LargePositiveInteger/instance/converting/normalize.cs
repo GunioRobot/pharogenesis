@@ -1,6 +1,7 @@
 normalize
 	"Check for leading zeroes and return shortened copy if so"
 	| sLen val len oldLen |
+	<primitive: 'primNormalizePositive' module:'LargeIntegers'>
 	"First establish len = significant length"
 	len _ oldLen _ self digitLength.
 	[len = 0 ifTrue: [^0].
