@@ -1,7 +1,7 @@
 named: projName
-	"Answer the project with the given name, or the current project if there is no project of that given name."
-	"(Project named: 'zork') enter"
+	"Answer the project with the given name, or nil if there is no project of that given name."
+	"(Project named: 'New Changes') enter"
 
-	^ self allInstances
+	^ self allProjects
 		detect: [:proj | proj name = projName]
-		ifNone: [self current]
+		ifNone: [nil]
