@@ -1,4 +1,4 @@
 flushCachedForm
 
 	cachedForm _ nil.
-	self changed.
+	hasChanged _ true.
