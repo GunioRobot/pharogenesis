@@ -3,9 +3,11 @@ debug
 	| topView |
 	topView _ self topView.
 	topView model: nil.  "so close won't release me."
-	World ifNotNil:
-		[self openFullMorphicLabel: topView label.
-		^ topView delete].
+	Smalltalk isMorphic
+		ifTrue:
+			[self breakDependents.
+			self openFullMorphicLabel: topView label.
+			^ topView delete].
 	topView controller controlTerminate.
 	topView deEmphasizeView; erase.
 	self openFullNoSuspendLabel: topView label.
