@@ -1,14 +1,18 @@
 thatStarts: leadingCharacters skipping: skipSym
-	"Answer a selector symbol that starts with aKeyword and
-		starts with a lower-case letter. Ignore case in aKeyword.
+	"Answer a selector symbol that starts with leadingCharacters.
+	Symbols beginning with a lower-case letter handled directly here.
+	Ignore case after first char.
 	If skipSym is not nil, it is a previous answer; start searching after it.
 	If no symbols are found, answer nil.
-	Used by Ctrl-s routines."
+	Used by Alt-q (Command-q) routines."
 
 	| key size index table candidate i skip firstTable |
 	key _ leadingCharacters asLowercase.
-	((index _ (key at: 1) asciiValue - "($a asciiValue - 1)" 96) between: 0 and: 25)
-		ifFalse: [^nil].
+	index _ key first asciiValue - "($a asciiValue - 1)" 96.
+	((index >= 1) and:
+		[(index <= 26) and:
+		[leadingCharacters numArgs >= 0]])
+			ifFalse: [^ self otherThatStarts: leadingCharacters skipping: skipSym].
 	size _ key size.
 	skip _ skipSym ~~ nil.
 	firstTable _ skip
