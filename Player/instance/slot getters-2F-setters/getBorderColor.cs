@@ -1,4 +1,4 @@
 getBorderColor
 	"Answer the border color of my costume"
 
-	^ self getValueFromCostume: #borderColor
+	^ costume renderedMorph borderStyle color ifNil: [costume renderedMorph borderStyle baseColor]
