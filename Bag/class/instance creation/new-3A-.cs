@@ -1,2 +1,2 @@
 new: nElements
-	^ super new setContents: (Dictionary new: nElements)
+	^ super new setContents: (self contentsClass new: nElements)
