@@ -1,5 +1,5 @@
 printOn: aStream 
-	| mclass selector class |
+	| selector class |
 	selector _ 
 		(class _ self receiver class) 
 			selectorAtMethod: self method 
