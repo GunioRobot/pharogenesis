@@ -1,3 +1,3 @@
 isPossessive
-	possessive == nil ifTrue: [^ false].
-	^ possessive
+	possessive isNil ifTrue: [^false].
+	^possessive
