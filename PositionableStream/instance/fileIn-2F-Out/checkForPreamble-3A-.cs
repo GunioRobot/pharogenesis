@@ -1,6 +1,6 @@
 checkForPreamble: chunk
-	((chunk beginsWith: '"Change Set:') and: [Smalltalk changes preambleString == nil])
-		ifTrue: [Smalltalk changes preambleString: chunk].
-	((chunk beginsWith: '"Postscript:') and: [Smalltalk changes postscriptString == nil])
-		ifTrue: [Smalltalk changes postscriptString: chunk].
+	((chunk beginsWith: '"Change Set:') and: [ChangeSet current preambleString == nil])
+		ifTrue: [ChangeSet current preambleString: chunk].
+	((chunk beginsWith: '"Postscript:') and: [ChangeSet current postscriptString == nil])
+		ifTrue: [ChangeSet current postscriptString: chunk].
 							
