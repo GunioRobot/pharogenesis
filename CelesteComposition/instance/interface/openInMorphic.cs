@@ -4,7 +4,7 @@ openInMorphic
 	| textMorph buttonsList sendButton attachmentButton |
 	morphicWindow _ SystemWindow labelled: 'Mister Postman'.
 	morphicWindow model: self.
-	textEditor _ textMorph _ PluggableTextMorph
+	textEditor _ textMorph _ Celeste morphicTextEditorClass
 						on: self
 						text: #messageText
 						accept: #messageText:.
