@@ -1,2 +1,2 @@
 userScriptObject
-	^ playerScripted class userScriptForPlayer: playerScripted selector: scriptName
+	^ self topEditor playerScripted class userScriptForPlayer: playerScripted selector: scriptName
