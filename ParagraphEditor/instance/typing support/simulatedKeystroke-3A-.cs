@@ -3,11 +3,11 @@ simulatedKeystroke: char
 
 	self deselect.
 	self openTypeIn.
-	startBlock = stopBlock ifFalse: [UndoSelection _ self selection].
+	self markBlock = self pointBlock ifFalse: [UndoSelection _ self selection].
 	self zapSelectionWith:
 		(Text string: char asString emphasis: emphasisHere).
 	self userHasEdited.
-	startBlock _ stopBlock copy.
+	self unselect.
 	self selectAndScroll.
 	self updateMarker.
 	view ifNotNil:
