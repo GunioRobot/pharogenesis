@@ -1,5 +1,6 @@
 resort: newMode
 	"Re-sort the list of files."
+
 	| name |
 	listIndex > 0
 		ifTrue: [name _ self fileNameFromFormattedItem: (list at: listIndex)].
@@ -9,4 +10,5 @@ resort: newMode
 		fileName _ name.
 		listIndex _ list findFirst: [:item | (self fileNameFromFormattedItem: item) = name. ].
 		self changed: #fileListIndex].
-	listIndex = 0 ifTrue: [self changed: #contents]
+	listIndex = 0 ifTrue: [self changed: #contents].
+	self updateButtonRow
