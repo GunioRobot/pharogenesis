@@ -1,8 +1,3 @@
 nextPut: aChar
-	attributesChanged 
-		ifTrue: [ 
-			attributeRuns addLast: currentAttributes.
-			attributesChanged _ false ]
-		ifFalse: [
-			attributeRuns  repeatLastIfEmpty: [ OrderedCollection new ] ].
+	currentRun _ currentRun + 1.
 	characters nextPut: aChar
