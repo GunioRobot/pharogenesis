@@ -1,10 +1,12 @@
 renameFile
 	"Rename the currently selected file"
-	| newName |
+	| newName response |
 	listIndex = 0 ifTrue: [^ self].
 	self okToChange ifFalse: [^ self].
-	newName _ (FillInTheBlank request: 'NewFileName?'
- 					initialAnswer: fileName) asFileName.
+	(response _ FillInTheBlank request: 'NewFileName?'
+ 					initialAnswer: fileName)
+		isEmpty ifTrue: [^ self].
+	newName _ response asFileName.
 	newName = fileName ifTrue: [^ self].
 	directory rename: fileName toBe: newName.
 	self updateFileList.
