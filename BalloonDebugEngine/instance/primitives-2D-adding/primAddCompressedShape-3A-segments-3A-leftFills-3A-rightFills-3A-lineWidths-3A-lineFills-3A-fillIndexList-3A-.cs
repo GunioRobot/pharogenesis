@@ -1,0 +1,2 @@
+primAddCompressedShape: points segments: nSegments leftFills: leftFills rightFills: rightFills lineWidths: lineWidths lineFills: lineFills fillIndexList: fillIndexList
+	^BalloonEnginePlugin doPrimitive: 'gePrimitiveAddCompressedShape'
