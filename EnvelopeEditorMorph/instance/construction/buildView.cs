@@ -8,4 +8,5 @@ buildView
 	self addHandlesIn: frame.
 	self addCurves.
 	line addHandles.
-	self addControls
+	self addControls.
+	self addKeyboard
