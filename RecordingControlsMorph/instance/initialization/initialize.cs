@@ -6,6 +6,7 @@ initialize
 	orientation _ #vertical.
 	recorder _ SoundRecorder new.
 	self addButtonRows.
+	self addRecordLevelSlider.
 
 	r _ AlignmentMorph newRow vResizing: #shrinkWrap.
 	r addMorphBack: self makeRecordMeter.
