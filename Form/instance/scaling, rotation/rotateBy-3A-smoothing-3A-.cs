@@ -7,7 +7,7 @@ rotateBy: deg smoothing: cellSize
 	center _ rot extent // 2.
 
 	"Now compute the sin and cos constants for the rotation angle." 
-	warp _ (WarpBlt toForm: rot)
+	warp _ (WarpBlt current toForm: rot)
 		sourceForm: self;
 		colorMap: (self colormapIfNeededForDepth: depth);
 		cellSize: cellSize;  "installs a new colormap if cellSize > 1"
