@@ -30,4 +30,4 @@ forkProgressWatcher
 			translucentMorph privateDeleteWithAbsolutelyNoSideEffects.
 			killTarget ifNotNil: [killTarget privateDeleteWithAbsolutelyNoSideEffects].
 		].
-	] forkAt: 6.
+	] forkAt: Processor lowIOPriority.
