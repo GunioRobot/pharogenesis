@@ -6,6 +6,5 @@ stopRecording
 	self primStopRecording.
 	Smalltalk unregisterExternalObject: bufferAvailableSema.
 	((currentBuffer ~~ nil) and: [nextIndex > 1])
-		ifTrue: [
-			recordedBuffers addLast: (currentBuffer copyFrom: 1 to: nextIndex - 1)].
+		ifTrue: [self emitPartialBuffer].
 	self initializeRecordingState.
