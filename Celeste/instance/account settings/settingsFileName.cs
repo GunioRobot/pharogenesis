@@ -1,0 +1,2 @@
+settingsFileName
+	^ 'CelesteSettings.txt'
