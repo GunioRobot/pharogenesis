@@ -1,3 +1,1 @@
-Implement the socket and resolver primitives.
-
-I really think it wouldbe worth a minor rewrite to avoid the sq{plat}Socket.c files refering directly back t the VM -- TPR 
+Implement the socket and resolver primitives.  Since it requires platform support it will only be built when supported on your platform
