@@ -1,1 +1,2 @@
-A simple text-based user interface to run all the test cases that exist in this image within the SUnit framework by Kent Beck and Erich Gamma (SUnit release 2, November 1998). The tests can be executed via TestRunner runTests or TestRunner runTests: '* test*'. The test results appear in the Transcript window.
+This is a user interface for the SUnit TestCase and TestSuite classes.
+It lets you run tests in the background, and you can select subsets to run.
