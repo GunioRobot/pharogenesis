@@ -1,0 +1,2 @@
+defaultContentType
+	^'application/octet-stream'
