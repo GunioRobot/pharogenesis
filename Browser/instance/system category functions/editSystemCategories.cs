@@ -5,4 +5,4 @@ editSystemCategories
 	self systemCategoryListIndex: 0.
 	editSelection _ #editSystemCategories.
 	self changed: #editSystemCategories.
-	self changed: #contents
+	self contentsChanged
