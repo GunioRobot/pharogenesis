@@ -1,0 +1,2 @@
+canBeProgramed
+	^ isMoving not
