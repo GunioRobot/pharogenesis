@@ -1,13 +1,4 @@
 blueButtonActivity
-	"Determine which item in the blue button pop-up menu is selected. If 
-	one is selected, then send the corresponding message to the object 
-	designated as the menu message receiver."
-
-	| index |
-	blueButtonMenu ~~ nil
-		ifTrue: 
-			[index _ blueButtonMenu startUp.
-			index ~= 0 
-				ifTrue: [self menuMessageReceiver perform:
-							(blueButtonMessages at: index)]]
-		ifFalse: [super controlActivity]
+	"This normally opens the window menu. It is a no-op here
+	as only the StandardSystemController deals with that kind
+	of menus."
