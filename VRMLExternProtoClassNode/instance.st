@@ -1,6 +1,6 @@
 VRMLProtoClassNode
 	subclass: #VRMLExternProtoClassNode
-	instanceVariableNames: 'urlList '
+	instanceVariableNames: 'urlList'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon3D-VRML BaseNodes'
+	category: 'Balloon3D-VRML-BaseNodes'
