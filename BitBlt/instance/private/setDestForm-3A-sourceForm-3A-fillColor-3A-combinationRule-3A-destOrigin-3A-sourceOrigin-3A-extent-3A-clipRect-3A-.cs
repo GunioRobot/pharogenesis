@@ -18,4 +18,4 @@ setDestForm: df sourceForm: sf fillColor: hf combinationRule: cr destOrigin: des
 	clipWidth _ aPoint x - clipX.
 	clipHeight _ aPoint y - clipY.
 	sourceForm == nil ifFalse:
-		[colorMap _ sourceForm colormapIfNeededForDepth: destForm depth]
+		[colorMap _ sourceForm colormapIfNeededFor: destForm]
