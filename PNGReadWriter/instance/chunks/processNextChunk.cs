@@ -1,21 +1,28 @@
 processNextChunk
 
-	| length asciiType |
+	| length chunkType crc chunkCrc |
 
 	length _ self nextLong.
-	asciiType _ (self next: 4) asString.
-	chunk _ self next: length.
-	"crc _" self nextLong. "TODO - validate crc"
-	asciiType = 'IEND' ifTrue: [^self	"*should* be the last chunk"].
-	asciiType = 'sBIT' ifTrue: [^self	"could indicate unusual sample depth in original"].
-	asciiType = 'gAMA' ifTrue: [^self 	"indicates gamma correction value"].
-	asciiType = 'bKGD' ifTrue: [^self processBackgroundChunk].
-	asciiType = 'pHYs' ifTrue: [^self processPhysicalPixelChunk].
-	asciiType = 'tRNS' ifTrue: [^self processTransparencyChunk].
 
-	asciiType = 'IHDR' ifTrue: [^self processIHDRChunk].
-	asciiType = 'PLTE' ifTrue: [^self processPLTEChunk].
-	asciiType = 'IDAT' ifTrue: [
+	chunkType _ (self next: 4) asString.
+	chunk _ self next: length.
+	chunkCrc := self nextLong bitXor: 16rFFFFFFFF.
+	crc := self updateCrc: 16rFFFFFFFF from: 1 to: 4 in: chunkType.
+	crc := self updateCrc: crc from: 1 to: length in: chunk.
+	crc = chunkCrc ifFalse:[
+		self error: 'PNGReadWriter crc error in chunk ', chunkType.
+	].
+
+	chunkType = 'IEND' ifTrue: [^self	"*should* be the last chunk"].
+	chunkType = 'sBIT' ifTrue: [^self processSBITChunk "could indicate unusual sample depth in original"].
+	chunkType = 'gAMA' ifTrue: [^self 	"indicates gamma correction value"].
+	chunkType = 'bKGD' ifTrue: [^self processBackgroundChunk].
+	chunkType = 'pHYs' ifTrue: [^self processPhysicalPixelChunk].
+	chunkType = 'tRNS' ifTrue: [^self processTransparencyChunk].
+
+	chunkType = 'IHDR' ifTrue: [^self processIHDRChunk].
+	chunkType = 'PLTE' ifTrue: [^self processPLTEChunk].
+	chunkType = 'IDAT' ifTrue: [
 		"---since the compressed data can span multiple
 		chunks, stitch them all together first. later,
 		if memory is an issue, we need to figure out how
@@ -24,4 +31,4 @@ processNextChunk
 			[globalDataChunk,chunk].
 		^self
 	].
-	unknownChunks add: asciiType.
+	unknownChunks add: chunkType.
