@@ -1,0 +1,2 @@
+isFrameSet
+	^true
