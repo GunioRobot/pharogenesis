@@ -1,0 +1,2 @@
+isRotating
+	^isRotating
