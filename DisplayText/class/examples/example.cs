@@ -2,13 +2,13 @@ example
 	"Continually prints two lines of text wherever you point with the cursor 
 	and press any mouse button.  Terminate by pressing any key on the 
 	keyboard."
-
-	| t |
-	t _ 'this is a line of characters and
+	| tx |
+	tx _ 'this is a line of characters and
 this is the second line.' asDisplayText.
-	t alignTo: #center.
+	tx foregroundColor: Color black backgroundColor: Color transparent.
+	tx _ tx alignedTo: #center.
 	[Sensor anyButtonPressed]
 		whileFalse:
-			[t displayOn: Display at: Sensor cursorPoint]
+			[tx displayOn: Display at: Sensor cursorPoint]
 
 	"DisplayText example."
