@@ -32,8 +32,18 @@ initializeSpecialObjectIndices
 	CompactClasses _ 28.
 	TheTimerSemaphore _ 29.
 	TheInterruptSemaphore _ 30.
-	SmallMethodContext _ 34.
-	SmallBlockContext _ 36.
+	FloatProto _ 31.
+	SelectorCannotInterpret _ 34.
+	MethodContextProto _ 35.
+	BlockContextProto _ 37.
 	ExternalObjectsArray _ 38.
 	ClassPseudoContext _ 39.
 	ClassTranslatedMethod _ 40.
+	TheFinalizationSemaphore _ 41.
+	ClassLargeNegativeInteger _ 42.
+
+	ClassExternalAddress _ 43.
+	ClassExternalStructure _ 44.
+	ClassExternalData _ 45.
+	ClassExternalFunction _ 46.
+	ClassExternalLibrary _ 47.
