@@ -1,15 +1,17 @@
 newDay: day month: monthName year: year 
 	"Answer an instance of me which is the day'th day of the month named 
-	monthName in the year'th year. The year may be specified as the actual 
-	number of years since the beginning of the Roman calendar or the 
-	number of years since the beginning of the century."
+	 monthName in the year'th year. The year may be specified as the actual 
+	 number of years since the beginning of the Roman calendar or the 
+	 number of years since the beginning of the century."
+	"Tolerate a month index instead of a month name."
 
 	| monthIndex daysInMonth firstDayOfMonth |
-	year < 100 ifTrue: [^self
+	year < 100 ifTrue: [^ self
 			newDay: day
 			month: monthName
 			year: 1900 + year].
-	monthIndex _ self indexOfMonth: monthName.
+	monthIndex _ monthName isInteger
+	 ifTrue: [monthName] ifFalse: [self indexOfMonth: monthName].
 	monthIndex = 2
 		ifTrue: [daysInMonth _ (DaysInMonth at: monthIndex)
 						+ (self leapYear: year)]
