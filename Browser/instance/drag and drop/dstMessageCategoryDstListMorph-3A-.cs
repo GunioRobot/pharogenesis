@@ -1,7 +1,7 @@
 dstMessageCategoryDstListMorph: dstListMorph
-	| dropMorph |
+	| dropItem |
 	^dstListMorph getListSelector == #messageCategoryList
 		ifTrue: 
-			[dropMorph _ dstListMorph potentialDropMorph.
-			dropMorph ifNotNil: [dropMorph contents asSymbol]]
-		ifFalse: [self selectedMessageCategoryName]
+			[dropItem _ dstListMorph potentialDropItem.
+			dropItem ifNotNil: [dropItem asSymbol]]
+		ifFalse: [self selectedMessageCategoryName ifNil: [ Categorizer default ]]
