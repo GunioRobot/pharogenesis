@@ -1,0 +1,2 @@
+asColor
+	^colorRamp first value
