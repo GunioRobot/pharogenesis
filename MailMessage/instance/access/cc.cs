@@ -1,3 +1,3 @@
 cc
 
-	^cc
+	^self fieldsNamed: 'cc' separatedBy: ', '
