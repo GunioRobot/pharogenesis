@@ -41,4 +41,6 @@ confirm, correct, or cancel'.
 	choice = 1 ifTrue: [ ^ proposedKeyword asSymbol ].
 	correctSelector _ alternatives at: choice - 1.
 	self substituteSelector: correctSelector keywords wordIntervals: spots.
+	((proposedKeyword last ~~ $:) and: [correctSelector last == $:]) ifTrue: [
+		^ abortAction value].
 	^ correctSelector.
