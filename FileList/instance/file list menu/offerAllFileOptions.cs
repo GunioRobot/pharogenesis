@@ -1,6 +1,4 @@
 offerAllFileOptions
-	| items action |
-	items _ self itemsForFileEnding: '*'.
-	action _ (SelectionMenu labels: items first lines: items second selections: items third)
-			startUp.
-	action ifNotNil: [self perform: action]
+	"Put up a menu offering all possible file options, whatever the suffix of the current selection may be.  Specially useful if you're wanting to keep the menu up"
+
+	self offerMenuFrom: #fullFileListMenu:shifted: shifted: true
