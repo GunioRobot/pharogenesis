@@ -1,0 +1,1 @@
+PoohTriangle class instanceVariableNames: ''
