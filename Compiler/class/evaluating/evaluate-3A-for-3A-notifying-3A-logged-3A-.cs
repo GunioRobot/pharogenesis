@@ -5,12 +5,10 @@ evaluate: textOrString for: anObject notifying: aController logged: logFlag
 	(write) the text onto a system changes file so that it can be replayed if 
 	necessary."
 
-	| val |
-	val _ self new
+	^ self new
 				evaluate: textOrString
 				in: nil
 				to: anObject
 				notifying: aController
-				ifFail: [^nil].
-	logFlag ifTrue: [Smalltalk logChange: textOrString].
-	^val
+				ifFail: [^nil]
+				logged: logFlag.
