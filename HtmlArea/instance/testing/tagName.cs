@@ -1,0 +1,2 @@
+tagName
+	^'area'
