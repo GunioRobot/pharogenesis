@@ -7,4 +7,4 @@ stopEverything
 
 	[ documentQueue isEmpty ] whileFalse: [ documentQueue next ].
 
-	self status: 'sittin'.
+	self status: 'sittin' translated.
