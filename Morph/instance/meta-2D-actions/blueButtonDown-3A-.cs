@@ -18,7 +18,7 @@ blueButtonDown: anEvent
 	anEvent hand 
 		waitForClicksOrDrag: h
 		event: (anEvent transformedBy: tfm)
-		selectors: { nil. nil. #dragTarget:. }
+		selectors: { nil. nil. nil. #dragTarget:. }
 		threshold: 5.
 	"Pass focus explicitly here"
 	anEvent hand newMouseFocus: h.
