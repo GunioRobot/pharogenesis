@@ -8,4 +8,6 @@ stSizeOf: oop
 	fmt _ (hdr >> 8) bitAnd: 16rF.
 	totalLength _ self lengthOf: oop baseHeader: hdr format: fmt.
 	fixedFields _ self fixedFieldsOf: oop format: fmt length: totalLength.
-	^ totalLength - fixedFields
+	(fmt = 3 and: [self isContextHeader: hdr])
+		ifTrue: [^ self fetchStackPointerOf: oop]
+		ifFalse: [^ totalLength - fixedFields]
