@@ -3,7 +3,7 @@ restoreEndianness
 	Why is this the right thing to do?  We are using memory as a byteStream.  High and low bytes are reversed in each 16-bit word, but the stream of words ascends through memory.  Different from a Bitmap."
 
 	| hack blt |
-	Smalltalk endianness == #little ifTrue: [
+	SmalltalkImage current  isLittleEndian ifTrue: [
 		"The implementation is a hack, but fast for large ranges"
 		hack _ Form new hackBits: self.
 		blt _ (BitBlt toForm: hack) sourceForm: hack.
