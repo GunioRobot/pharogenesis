@@ -1,5 +1,3 @@
-inToggleArea: event
+inToggleArea: aPoint
 
-	^self toggleRectangle containsPoint: event cursorPoint
-
-	
+	^self toggleRectangle containsPoint: aPoint
