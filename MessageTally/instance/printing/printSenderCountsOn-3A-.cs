@@ -10,4 +10,4 @@ printSenderCountsOn: aStream
 	mergedSenders asSortedCollection do:
 		[:node | 
 		10 to: node tally printString size by: -1 do: [:i | aStream space].
-		node printOn: aStream total: tally tallyExact: true]
+		node printOn: aStream total: tally totalTime: nil tallyExact: true]
