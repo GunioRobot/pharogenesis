@@ -1,3 +1,4 @@
 buttonPublish
+	"Answer a button for publishing the project"
 
-	^self makeButton: 'PUBLISH IT!' balloonText: 'Publish this project. Save it where it came from (server, hard disk, etc.) ' for: #publishProject
+	^ self makeButton: 'PUBLISH IT!' translated balloonText: 'Click here to save a project.  Hold down this button to reveal additional publishing options' translated for: #publishProject
