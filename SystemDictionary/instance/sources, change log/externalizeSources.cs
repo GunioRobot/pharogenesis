@@ -1,20 +1,18 @@
 externalizeSources   
-	"Write the sources and changes streams onto external files.
-		1/29/96 sw"
+	"Write the sources and changes streams onto external files."
  	"Smalltalk externalizeSources"
-
-	"NB: openSourceFiles, actualContents, and fileExistsNamed: are symbols not yet in AST image 1/25/96 sw"
 
 	| sourcesName changesName aFile |
 	sourcesName _ self sourcesName.
-	(FileDirectory default includesKey: sourcesName) ifTrue:
-		[^ self inform: 'Sorry, you must first move or remove the
+	(FileDirectory default fileExists: sourcesName)
+		ifTrue: [^ self inform:
+'Sorry, you must first move or remove the
 file named ', sourcesName].
 	changesName _ self changesName.
-	(FileDirectory default includesKey: changesName) ifTrue:
-		[^ self inform: 'Sorry, you must first move or remove the
+	(FileDirectory default fileExists: changesName)
+		ifTrue: [^ self inform:
+'Sorry, you must first move or remove the
 file named ', changesName].
-
 
 	aFile _  FileStream newFileNamed: sourcesName.
 	aFile nextPutAll: SourceFiles first originalContents.
@@ -26,4 +24,4 @@ file named ', changesName].
 	aFile close.
 	SourceFiles at: 2 put: (FileStream oldFileNamed: changesName).
 
-	self inform: 'Sources successfully externalized'
+	self inform: 'Sources successfully externalized'.
