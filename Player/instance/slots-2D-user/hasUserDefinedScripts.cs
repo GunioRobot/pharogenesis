@@ -1,2 +1,2 @@
 hasUserDefinedScripts
-	^ self class scripts size > 0
+	^self class scripts notEmpty
