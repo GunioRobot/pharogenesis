@@ -3,8 +3,9 @@ simpleOuterTest
 
 	[[self doSomething.
 	MyTestNotification signal.
-	self doSomethingElse]
+	"self doSomethingElse"
+	self doSomethingExceptional]
 		on: MyTestNotification
-		do: [:ex | ex outer]]
+		do: [:ex | ex outer. self doSomethingElse]]
 				on: MyTestNotification
 				do: [:ex | self doYetAnotherThing. ex resume]
