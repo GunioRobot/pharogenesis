@@ -1,3 +1,3 @@
 frequency
-	(frequency == nil or: [frequency = 0]) ifTrue: [frequency _ 1].
-	^ frequency
+	(frequency isNil or: [frequency = 0]) ifTrue: [frequency := 1].
+	^frequency
