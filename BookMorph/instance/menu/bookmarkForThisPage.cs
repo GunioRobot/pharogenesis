@@ -4,7 +4,7 @@ bookmarkForThisPage
 	(url _ self url) ifNil: [
 		bb _ SimpleButtonMorph new target: self.
 		bb actionSelector: #goToPageMorph:fromBookmark:.
-		bb label: 'Bookmark'.
+		bb label: 'Bookmark' translated.
 		bb arguments: (Array with: currentPage with: bb).
 		self primaryHand attachMorph: bb.
 		^ bb].
@@ -14,7 +14,7 @@ bookmarkForThisPage
 	(SqueakPage stemUrl: url) = (SqueakPage stemUrl: currentPage url) 
 		ifTrue: [um book: true]
 		ifFalse: [um book: url].  	"remember which book"
-	um isBookmark: true; label: 'Bookmark'.
+	um isBookmark: true; label: 'Bookmark' translated.
 	um borderWidth: 1; borderColor: #raised.
 	um color: (Color r: 0.4 g: 0.8 b: 0.6).
 	self primaryHand attachMorph: um.
