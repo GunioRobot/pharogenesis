@@ -8,7 +8,7 @@ prepareToPaint
 	brush _ currentNib _ palette getNib.
 	paintingFormPen _ Pen newOnForm: paintingForm.
 	stampForm _ nil.	"let go of stamp"
-	formCanvas _ FormCanvas on: paintingForm.	"remember to change when undo"
+	formCanvas _ paintingForm getCanvas.	"remember to change when undo"
 	formCanvas _ formCanvas
 		copyOrigin: self topLeft negated
 		clipRect: (0@0 extent: bounds extent).
