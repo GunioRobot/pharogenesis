@@ -1,2 +1,2 @@
 getColor
-	^ costume renderedMorph color
+	^ self costume renderedMorph color
