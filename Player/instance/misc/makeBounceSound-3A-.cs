@@ -1,4 +1,4 @@
 makeBounceSound: soundName
 
-	costume world soundsEnabled
+	Preferences soundsEnabled
 		ifTrue: [self playSoundNamed: soundName].
