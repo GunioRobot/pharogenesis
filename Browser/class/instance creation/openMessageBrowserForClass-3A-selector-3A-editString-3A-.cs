@@ -5,6 +5,6 @@ openMessageBrowserForClass: aBehavior selector: aSymbol editString: aString
 	aSymbol."
 
 	| newBrowser |
-	(newBrowser _ Browser new) setClass: aBehavior selector: aSymbol.
-	^ Browser openBrowserView: (newBrowser openMessageEditString: aString)
+	(newBrowser _ self new) setClass: aBehavior selector: aSymbol.
+	^ self openBrowserView: (newBrowser openMessageEditString: aString)
 		label: newBrowser selectedClassOrMetaClassName , ' ' , newBrowser selectedMessageName
