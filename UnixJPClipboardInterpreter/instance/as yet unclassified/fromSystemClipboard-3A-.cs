@@ -1,0 +1,2 @@
+fromSystemClipboard: aString
+	^ aString convertFromSystemString
