@@ -8,8 +8,8 @@ noteSequenceOn: aSound from: anArray
 				pitch _ el at: 1.
 				pitch isNumber ifFalse: [pitch _ self pitchForName: pitch].
 				score add: (
-					aSound copy
-						setPitch: pitch
+					aSound
+						soundForPitch: pitch
 						dur: (el at: 2)
 						loudness: (el at: 3) / 1000.0)]
 			ifFalse: [
