@@ -3,4 +3,3 @@ printMinutes
 
 	^String streamContents:
 		[ :aStream | self print24: false showSeconds: false on: aStream ]
-
