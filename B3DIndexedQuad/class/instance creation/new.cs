@@ -1,2 +1,2 @@
 new
-	^self new: 4
+	^self basicNew: 4
