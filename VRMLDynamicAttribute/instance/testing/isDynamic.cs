@@ -1,0 +1,2 @@
+isDynamic
+	^true
