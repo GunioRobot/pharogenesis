@@ -1,0 +1,3 @@
+loadSineWave
+
+	self sendMessageToCostume: #loadSineWave.
