@@ -1,12 +1,12 @@
 printMethodChunk: selector withPreamble: doPreamble on: outStream
 		moveSource: moveSource toFile: fileIndex
 	"Copy the source code for the method associated with selector onto the fileStream.  If moveSource true, then also set the source code pointer of the method."
-	| preamble method oldPos newPos sourceFile |
+	| preamble method oldPos newPos sourceFile endPos |
 	doPreamble 
 		ifTrue: [preamble _ self name , ' methodsFor: ' ,
 					(self organization categoryOfElement: selector) asString printString]
 		ifFalse: [preamble _ ''].
-	method _ methodDict at: selector.
+	method _ self methodDict at: selector.
 	((method fileIndex = 0
 		or: [(SourceFiles at: method fileIndex) == nil])
 		or: [(oldPos _ method filePosition) = 0])
@@ -23,10 +23,12 @@ printMethodChunk: selector withPreamble: doPreamble on: outStream
 		"Copy the method chunk"
 		newPos _ outStream position.
 		outStream copyMethodChunkFrom: sourceFile.
-		sourceFile skipSeparators.	"The following chunk may have ]style["
+		sourceFile skipSeparators.      "The following chunk may have ]style["
 		sourceFile peek == $] ifTrue: [
 			outStream cr; copyMethodChunkFrom: sourceFile].
 		moveSource ifTrue:    "Set the new method source pointer"
-			[method setSourcePosition: newPos inFile: fileIndex]].
+			[endPos _ outStream position.
+			method checkOKToAdd: endPos - newPos at: newPos.
+			method setSourcePosition: newPos inFile: fileIndex]].
 	preamble size > 0 ifTrue: [outStream nextChunkPut: ' '].
-	^ outStream cr.
+	^ outStream cr
