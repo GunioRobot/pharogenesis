@@ -1,4 +1,8 @@
 setY: val
 	"Set the y coordinate as indicated"
 
-	^ self costume y: val
+	| aCostume |
+	(aCostume _ self costume) isInWorld ifFalse: [^ self].
+	aCostume isWorldOrHandMorph ifTrue: [^ self].
+	aCostume owner isHandMorph ifTrue: [^ self].
+	^ aCostume y: val
