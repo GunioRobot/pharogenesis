@@ -1,0 +1,2 @@
+getColor
+	^ self color
