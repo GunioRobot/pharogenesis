@@ -1,3 +1,4 @@
 skipSeparators
-	[self atEnd == false and: [self peek isSeparator]]
-		whileTrue: [self next]
+	[self atEnd]
+		whileFalse:
+		[self next isSeparator ifFalse: [^ self position: self position-1]]
