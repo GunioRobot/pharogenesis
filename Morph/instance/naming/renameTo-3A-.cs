@@ -1,9 +1,9 @@
 renameTo: aName
-	| aPresenter putInViewer |
-	self setNameTo: aName.
-	(aPresenter _ self world presenter) ifNotNil:
-		[putInViewer _ aPresenter currentlyViewing: costumee.
-		aPresenter flushViewerCache.
+	| aPresenter putInViewer aPasteUp renderer |
+	(renderer _ self topRendererOrSelf) setNameTo: aName.
+	(aPresenter _ self presenter) ifNotNil:
+		[putInViewer _ aPresenter currentlyViewing: renderer player.
 		putInViewer ifTrue: [aPresenter viewMorph: self]].
-	self world allTileScriptingElements do:
-		[:m | m bringUpToDate]
+	(aPasteUp _ self topPasteUp) ifNotNil:
+		[aPasteUp allTileScriptingElements do:
+			[:m | m bringUpToDate]]
