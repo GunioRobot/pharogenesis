@@ -11,7 +11,8 @@ send: startUpOrShutDown toClassesNamedIn: startUpOrShutDownList with: argument
 		class _ self at: name ifAbsent: [nil].
 		class == nil
 			ifTrue: [removals add: name]
-			ifFalse: [class perform: startUpOrShutDown with: argument]].
+			ifFalse: [class isInMemory ifTrue:
+						[class perform: startUpOrShutDown with: argument]]].
 
 	"Remove any obsolete entries, but after the iteration"
 	startUpOrShutDownList removeAll: removals
