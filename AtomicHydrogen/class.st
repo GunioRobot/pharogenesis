@@ -1,0 +1,1 @@
+AtomicHydrogen class instanceVariableNames: ''
