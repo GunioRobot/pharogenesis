@@ -22,7 +22,7 @@ cBytesLshift: shiftCount from: pFrom len: lenFrom to: pTo len: lenTo
 	limit _ byteShift - 1.
 	0 to: limit do: [:i | pTo at: i put: 0].
 	limit _ lenTo - byteShift - 2.
-	self assert: limit < lenFrom.
+	self sqAssert: limit < lenFrom.
 	0 to: limit do: 
 		[:i | 
 		digit _ pFrom at: i.
@@ -38,4 +38,4 @@ cBytesLshift: shiftCount from: pFrom len: lenFrom to: pTo len: lenTo
 			bitShift: bitShift)
 			bitOr: carry).
 	carry _ digit bitShift: rShift.
-	self assert: carry = 0
+	self sqAssert: carry = 0
