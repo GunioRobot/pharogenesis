@@ -1,3 +1,3 @@
 standardPlayerHit
 
-	self playSoundNamed: #peaks.
+	self playSoundNamed: 'peaks'.
