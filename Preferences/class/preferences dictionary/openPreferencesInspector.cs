@@ -1,5 +1,6 @@
 openPreferencesInspector
-	"Open a window on the current preferences dictionary, allowing the user to inspect and change the current preference settings."
-	"Preferences openPreferencesInspector"
-
-	FlagDictionary inspectWithLabel: 'Preferences'
+	"Open a window on the current set of preferences choices, allowing the user to view and change their settings"
+	
+	Smalltalk hasMorphic
+		ifFalse:	[self inspectPreferences]
+		ifTrue:	[self openPreferencesControlPanel]
