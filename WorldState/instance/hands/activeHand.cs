@@ -1,3 +1,3 @@
 activeHand
 
-	^ activeHand
+	^ ActiveHand
