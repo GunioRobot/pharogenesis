@@ -1,0 +1,2 @@
+categoryName: aString
+	categoryName := aString
