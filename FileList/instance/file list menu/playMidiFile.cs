@@ -1,6 +1,10 @@
 playMidiFile
-	"Play a midi file."
+	"Play a MIDI file."
  
-	Smalltalk at: #MIDIFileReader ifPresent: [:midiReaderClass |
-		midiReaderClass playMidiStream: (directory oldFileNamed: self fullName) 
-				title: fileName].
+	| f score |
+	Smalltalk at: #MIDIFileReader ifPresent: [:midiReader |
+		Smalltalk at: #ScorePlayerMorph ifPresent: [:scorePlayer |
+			f _ (directory oldFileNamed: self fullName) binary.
+			score _ (midiReader new readMIDIFrom: f) asScore.
+			f close.
+			scorePlayer openOn: score title: fileName]].
