@@ -5,20 +5,20 @@ addCustomMenuItems: aCustomMenu hand: aHandMorph
 	aCustomMenu addLine.
 	subMenu _ MenuMorph new defaultTarget: self.
 	frameList size > 1 ifTrue: [
-		subMenu add: 'repaint' action: #editDrawing.
-		subMenu add: 'set rotation center' action: #setRotationCenter.
-		subMenu add: 'play once' action: #playOnce.
-		subMenu add: 'play loop' action: #playLoop.
-		subMenu add: 'stop playing' action: #stopPlaying.
+		subMenu add: 'repaint' translated action: #editDrawing.
+		subMenu add: 'set rotation center' translated action: #setRotationCenter.
+		subMenu add: 'play once' translated action: #playOnce.
+		subMenu add: 'play loop' translated action: #playLoop.
+		subMenu add: 'stop playing' translated action: #stopPlaying.
 		currentFrameIndex > 1 ifTrue: [
-			subMenu add: 'previous frame' action: #previousFrame].
+			subMenu add: 'previous frame' translated action: #previousFrame].
 		currentFrameIndex < frameList size ifTrue: [
-			subMenu add: 'next frame' action: #nextFrame]].
-	subMenu add: 'extract this frame' action: #extractFrame:.
+			subMenu add: 'next frame' translated action: #nextFrame]].
+	subMenu add: 'extract this frame' translated action: #extractFrame:.
 	movies _
 		(self world rootMorphsAt: aHandMorph targetOffset)
 			select: [:m | (m isKindOf: MovieMorph) or:
-						[m isKindOf: SketchMorph]].
+						[m isSketchMorph]].
 	(movies size > 1) ifTrue:
-		[subMenu add: 'insert into movie' action: #insertIntoMovie:].
-	aCustomMenu add: 'movie...' subMenu: subMenu
+		[subMenu add: 'insert into movie' translated action: #insertIntoMovie:].
+	aCustomMenu add: 'movie...' translated subMenu: subMenu
