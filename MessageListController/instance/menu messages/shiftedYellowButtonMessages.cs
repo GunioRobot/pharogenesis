@@ -1,4 +1,4 @@
 shiftedYellowButtonMessages
-	"Answer the messages corresponding to the shifted-yellow-button menu, to be put up when shift key is down.  1/26/96 sw.  Adjustments, 2/5/96 sw"
+	"Answer the messages corresponding to the shifted-yellow-button menu, to be put up when shift key is down."
 
-	^ #(browseFull browse allImplementorsOf inspectInstances inspectSubInstances removeMessageFromBrowser unshiftedYellowButtonActivity)
+	^ #(methodHierarchy classHierarchy browseClass browse allImplementorsOf inspectInstances inspectSubInstances removeMessageFromBrowser revertToPreviousVersion removeFromCurrentChanges revertAndForget unshiftedYellowButtonActivity)
