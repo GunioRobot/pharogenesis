@@ -1,0 +1,3 @@
+isNoteEvent
+
+	^ false
