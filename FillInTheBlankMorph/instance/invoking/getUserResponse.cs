@@ -5,8 +5,17 @@ getUserResponse
 	| w |
 	w _ self world.
 	w ifNil: [^ response].
+	
+	(ProvideAnswerNotification signal:
+		(self submorphOfClass: TextMorph) userString) ifNotNilDo:
+		[:answer |
+		self delete.
+		w doOneCycle.
+		^ response _ (answer == #default) ifTrue: [response] ifFalse: [answer]].
+
 	done _ false.
-	[done] whileFalse: [Display doOneCycleMorphic].
+	w activeHand newKeyboardFocus: textPane.
+	[done] whileFalse: [w doOneCycle].
 	self delete.
-	Display doOneCycleMorphic.
+	w doOneCycle.
 	^ response
