@@ -3,4 +3,4 @@ openCommandKeyHelp
 	"Utilities openCommandKeyHelp"
 
 	(StringHolder new contents: self commandKeyMappings)
-		openLabel: 'Command Key Actions'
+		openLabel: 'Command Key Actions' translated
