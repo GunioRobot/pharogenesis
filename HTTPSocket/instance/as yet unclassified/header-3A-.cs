@@ -24,4 +24,4 @@ header: headerText
 		i > 0 ifTrue: [
 			headers 
 			at: (line copyFrom: 1 to: i-1) asLowercase 
-			put: (line copyFrom: i+1 to: line size) withBlanksTrimmed ] ]..
+			put: (line copyFrom: i+1 to: line size) withBlanksTrimmed ] ].
