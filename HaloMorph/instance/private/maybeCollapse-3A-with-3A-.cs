@@ -1,10 +1,12 @@
-maybeCollapse: evt with: collapseHandle
+maybeCollapse: evt with: collapseHandle 
 	"Ask hand to collapse my target if mouse comes up in it."
+
 	evt hand obtainHalo: self.
-	(collapseHandle containsPoint: evt cursorPoint)
-		ifFalse:
-			[self delete.
+	self delete.
+	(collapseHandle containsPoint: evt cursorPoint) 
+		ifFalse: 
+			[
 			target addHalo: evt]
-		ifTrue:
-			[self delete.
+		ifTrue: 
+			[
 			target collapse]
