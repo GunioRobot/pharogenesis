@@ -35,7 +35,7 @@ FileList2 morphicViewGeneralLoaderInWorld: self currentWorld
 		extent: 350@300; 
 		retractable: false;
 		borderWidth: 0.
-	window addARow: {window fancyText: 'Find...' ofSize: 21 color: textColor1}.
+	window addARow: {window fancyText: 'Find...' translated ofSize: 21 color: textColor1}.
 	fileTypeRow _ window addARowCentered: fileTypeButtons.
 	actionRow _ window addARowCentered: {
 		buttons first. 
@@ -72,4 +72,5 @@ FileList2 morphicViewGeneralLoaderInWorld: self currentWorld
 		self enableTypeButtons: fileTypeButtons info: fileTypeInfo forDir: newDir
 	] fixTemps.
 	aFileList directory: aFileList directory.
+	window adoptPaneColor: (Color r: 0.548 g: 0.677 b: 1.0).
 	^ window openInWorld: aWorld.
