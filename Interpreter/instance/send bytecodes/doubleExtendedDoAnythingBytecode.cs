@@ -20,6 +20,7 @@ doubleExtendedDoAnythingBytecode
 		argumentCount _ byte2 bitAnd: 16r1F.
 		^ self superclassSend
 	].
+	self fetchNextBytecode.
 	opType = 2 ifTrue: [^ self pushReceiverVariable: byte3].
 	opType = 3 ifTrue: [^ self pushLiteralConstant: byte3].
 	opType = 4 ifTrue: [^ self pushLiteralVariable: byte3].
