@@ -1,0 +1,1 @@
+recordBitmapFill: fillIndex matrix: bmMatrix id: bitmapID clipped: aBoolean
