@@ -9,7 +9,7 @@ may generate spurious message due to agglutination of keywords with the value ex
 	edits _ OrderedCollection new.
 	methodNode encoder globalSourceRanges do:
 		[:tuple |   "{ varName. srcRange. store }"
-		(aClass scopeHas: (varName _ tuple first asSymbol) ifTrue: [:ignored]) ifFalse:
+		(aClass bindingOf: (varName _ tuple first asSymbol)) notNil ifFalse:
 			["This is a remote global.  Add it as reference to be edited."
 			edits addLast: { varName. tuple at: 2. tuple at: 3 }]].
 	"Sort the edits by source position."
