@@ -1,7 +1,4 @@
 playArrivalSound
+	"Make a sound that something has arrived."
 
-	Preferences soundsEnabled ifTrue: [
-		SampledSound playSoundNamed: 'chirp'.
-	] ifFalse: [
-		1 beep
-	].
+	SoundService default playSoundNamedOrBeep: 'chirp'
