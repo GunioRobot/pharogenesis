@@ -3,6 +3,7 @@ pattern: fromDoit inContext: ctxt
 	{selector, arguments, precedence}."
 
 	| args selector |
+	doitFlag _ fromDoit.
 	fromDoit 
 		ifTrue: 
 			[ctxt == nil
