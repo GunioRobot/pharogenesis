@@ -3,7 +3,8 @@ grabMorphFromMenu: m
 	| delta |
 	(m owner isKindOf: DropShadowMorph)
 		ifTrue: [^ self grabMorphFromMenu: m owner].
-	delta _ m position - menuTargetOffset.
+	m aboutToBeGrabbedBy: self.
+	delta _ m positionInWorld - menuTargetOffset.
 	gridOn ifTrue: [delta _ delta grid: grid].
 	m position: self position + delta.
 	self addMorphBack: m.
