@@ -1,0 +1,2 @@
+liftPen
+	self assuredPlayer liftPen
