@@ -1,11 +1,16 @@
 shiftedYellowButtonMenu
-	"Answer the menu to be put up when shift key is down.  1/26/96 sw"
+	"Answer the menu to be put up when shift key is down.  "
 
-	^ PopUpMenu labels: 'browse full
+	^ PopUpMenu labels: 'browse method inheritance
+browse class hierarchy
+browse class
 browse method
 implementors of sent messages
 inspect instances
 inspect subinstances
-remove from browser
+remove from this browser
+revert to previous version
+remove from current change set
+revert and forget
 more...' 
-lines: #(3 5)
+lines: #(5 7 11)
