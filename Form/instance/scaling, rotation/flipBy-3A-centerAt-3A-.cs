@@ -1,11 +1,11 @@
 flipBy: direction centerAt: aPoint
 	"Return a copy of the receiver flipped either #vertical or #horizontal."
 	| newForm quad |
-	newForm _ Form extent: self extent depth: depth.
+	newForm _ self class extent: self extent depth: depth.
 	quad _ self boundingBox innerCorners.
 	quad _ (direction = #vertical ifTrue: [#(2 1 4 3)] ifFalse: [#(4 3 2 1)])
 		collect: [:i | quad at: i].
-	(WarpBlt toForm: newForm)
+	(WarpBlt current toForm: newForm)
 		sourceForm: self;
 		colorMap: (self colormapIfNeededForDepth: depth);
 		combinationRule: 3;
