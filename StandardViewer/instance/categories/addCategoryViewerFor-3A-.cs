@@ -1,4 +1,4 @@
-addCategoryViewerFor: aStartingCategory
-	| aViewer |
-	self addMorphBack: (aViewer _ CategoryViewer new initializeFor: scriptedPlayer categoryChoice: aStartingCategory).
-	self world ifNotNil: [self world startSteppingSubmorphsOf: aViewer]
+addCategoryViewerFor: categoryInfo
+	"Add a category viewer for the given category info"
+
+	self addCategoryViewerFor: categoryInfo atEnd: true
