@@ -1,15 +1,10 @@
-rewriteMethodCacheSel: selector class: class primIndex: localPrimIndex 
-	"Rewrite an existing entry in the method cache with a new primitive   
-	index."
-	| probe hash |
+rewriteMethodCacheSel: selector class: class primIndex: localPrimIndex
+"rewrite the cache entry with the provided prim index and matching function pointer"
+	| primPtr |
 	self inline: false.
-	hash _ selector bitXor: class.
-	0 to: CacheProbeMax - 1 do: 
-		[:p | 
-		probe _ hash >> p bitAnd: MethodCacheMask.
-		((methodCache at: probe + MethodCacheSelector)
-			= selector and: [(methodCache at: probe + MethodCacheClass)
-				= class])
-			ifTrue: 
-				[methodCache at: probe + MethodCachePrim put: localPrimIndex.
-				^ nil]]
+	localPrimIndex = 0
+		ifTrue:[primPtr _ 0]
+		ifFalse:[primPtr _ self cCoerce: (primitiveTable at: localPrimIndex) to: 'int'].
+	self
+		rewriteMethodCacheSel: selector class: class
+		primIndex: localPrimIndex primFunction: primPtr
