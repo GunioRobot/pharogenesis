@@ -4,7 +4,7 @@ repeatCopy
 
 	[sensor redButtonPressed]
 		whileTrue: 
-		[(BitBlt destForm: Display sourceForm: form halftoneForm: color
+		[(BitBlt current destForm: Display sourceForm: form halftoneForm: color
 			combinationRule: (Display depth > 1 ifTrue: [Form paint]
 										ifFalse: [mode])
 			destOrigin: self cursorPoint sourceOrigin: 0@0 extent: form extent
