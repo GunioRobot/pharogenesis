@@ -3,10 +3,9 @@ changedMessageList
 
 	| messageList |
 	messageList _ SortedCollection new.
-	methodChanges associationsDo: 
+	changeRecords associationsDo: 
 		[:clAssoc | 
-		clAssoc value associationsDo: 
-			[:mAssoc |
-			mAssoc value = #remove ifFalse:
+		clAssoc value methodChangeTypes associationsDo: 
+			[:mAssoc | (#(remove addedThenRemoved) includes: mAssoc value) ifFalse:
 				[messageList add: clAssoc key asString, ' ' , mAssoc key]]].
-	^messageList asArray
+	^ messageList asArray
