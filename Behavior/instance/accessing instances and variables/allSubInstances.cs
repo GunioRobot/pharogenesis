@@ -1,8 +1,7 @@
 allSubInstances 
-	"Answer a list of all current instances of the receiver and all of its subclasses.  1/26/96 sw."
-
+	"Answer a list of all current instances of the receiver and all of its subclasses."
 	| aCollection |
-	aCollection _ self allInstances.
+	aCollection _ OrderedCollection new.
 	self allSubInstancesDo:
 		[:x | x == aCollection ifFalse: [aCollection add: x]].
 	^ aCollection
