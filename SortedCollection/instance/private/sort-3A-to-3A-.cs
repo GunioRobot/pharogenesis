@@ -3,6 +3,7 @@ sort: i to: j
 	sortBlock."
 
 	| di dij dj tt ij k l n |
+	sortBlock ifNil: [^self defaultSort: i to: j].
 	"The prefix d means the data at that index."
 	(n _ j + 1  - i) <= 1 ifTrue: [^self].	"Nothing to sort." 
 	 "Sort di,dj."
