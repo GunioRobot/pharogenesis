@@ -1,4 +1,4 @@
 selection
 
-	selectionIndex = 0 ifTrue: [^ ''].
-	^ object at: (keyArray at: selectionIndex) ifAbsent:[nil]
+	selectionIndex <= (self numberOfFixedFields) ifTrue: [^ super selection].
+	^ object at: (keyArray at: selectionIndex - self numberOfFixedFields) ifAbsent:[nil]
