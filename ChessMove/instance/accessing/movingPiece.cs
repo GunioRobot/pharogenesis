@@ -1,0 +1,2 @@
+movingPiece
+	^movingPiece
