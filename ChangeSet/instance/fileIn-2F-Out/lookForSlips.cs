@@ -21,5 +21,5 @@ Transcript or other ''slips'' in them.
 Would you like to browse them?'].
 
 	(PopUpMenu withCaption: msg chooseFrom: 'Ignore\Browse slips') = 2
-		ifTrue: [Smalltalk browseMessageList: slips
+		ifTrue: [self systemNavigation  browseMessageList: slips
 							name: 'Possible slips in ', name]
