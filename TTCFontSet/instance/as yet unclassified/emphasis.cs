@@ -1,0 +1,2 @@
+emphasis
+	^ fontArray first emphasis
