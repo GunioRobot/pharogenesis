@@ -3,12 +3,11 @@ openOn: fileName extraMemory: extraBytes
 
 	| f version headerSize count oldBaseAddr bytesToShift swapBytes |
 	"open image file and read the header"
-	checkAssertions _ false.
 	f _ FileStream oldFileNamed: fileName.
 	imageName _ f fullName.
 	f binary; readOnly.
 	version _ self nextLongFrom: f.  "current version: 16r1966 (=6502)"
-	version = self imageFormatVersion
+	(self readableFormat: version)
 		ifTrue: [swapBytes _ false]
 		ifFalse: [(version _ self byteSwapped: version) = self imageFormatVersion
 					ifTrue: [swapBytes _ true]
@@ -38,4 +37,3 @@ openOn: fileName extraMemory: extraBytes
 	endOfMemory _ endOfMemory.
 	Utilities informUser: 'Relocating object pointers...'
 				during: [self initializeInterpreter: bytesToShift].
-	checkAssertions _ false.
