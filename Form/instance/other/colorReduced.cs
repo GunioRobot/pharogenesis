@@ -35,4 +35,5 @@ colorReduced
 		fillColor: nil
 		map: cm.
 	newForm colors: newFormColors.
+	newForm offset: offset.
 	^ newForm
