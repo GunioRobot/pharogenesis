@@ -1,56 +1,82 @@
 changeEmphasis: characterStream 
 	"Change the emphasis of the current selection or prepare to accept characters with the change in emphasis. Emphasis change amounts to a font change.  Keeps typeahead."
-	| keyCode attribute oldAttributes index thisSel colors |		 "control 0..9 -> 0..9"
-	keyCode _ ('0123456789-=' indexOf: sensor keyboard ifAbsent: [1]) - 1.
-	oldAttributes _ paragraph text attributesAt: startBlock stringIndex forStyle: paragraph textStyle.
-	thisSel _ self selection.
+	| keyCode attribute oldAttributes index thisSel colors extras indexOfOldAttributes |		 "control 0..9 -> 0..9"
+	keyCode := ('0123456789-=' indexOf: sensor keyboard ifAbsent: [1]) - 1.
+
+	"grab the old set of attributes"
+	indexOfOldAttributes := startBlock stringIndex = stopBlock stringIndex
+		ifTrue:[
+			"selection is empty, look on character to the left"
+			(startBlock stringIndex - 1) max: 1]
+		ifFalse:[
+			"selection is not empty, look on leftmost character in the selection"
+			 startBlock stringIndex min: stopBlock stringIndex].
+	oldAttributes := paragraph text attributesAt: indexOfOldAttributes forStyle: paragraph textStyle.
+
+	thisSel := self selection.
 
 	"Decipher keyCodes for Command 0-9..."
 	(keyCode between: 1 and: 5) ifTrue:
-		[attribute _ TextFontChange fontNumber: keyCode].
+		[attribute := TextFontChange fontNumber: keyCode].
 	keyCode = 6 ifTrue:
-		[colors _ #(black magenta red yellow green blue cyan white).
-		index _ (PopUpMenu labelArray: colors , #('Do it' 'Link to comment of class' 'Link to definition of class' 'Link to hierarchy of class' 'Link to method' 'URL' 'Copy hidden info')
-							lines: (Array with: colors size)) startUp.
+		[colors := #(black magenta red yellow green blue cyan white).
+		extras := ((self class name = #TextMorphEditor) and: 
+			[(self morph isKindOf: TextMorphForEditView) not]) "not a system window"
+				ifTrue: [#()]
+				ifFalse: [#('Link to comment of class' 'Link to definition of class' 
+						'Link to hierarchy of class' 'Link to method')].
+		index := (PopUpMenu labelArray: colors , #('choose color...' 'Do it' 'Print it'), 
+			extras, #('be a web URL link' 
+			'Edit hidden info' 'Copy hidden info')
+							lines: (Array with: colors size +1)) startUp.
 		index = 0 ifTrue: [^ true].
 		index <= colors size
 		ifTrue:
-			[attribute _ TextColor color: (Color perform: (colors at: index))]
+			[attribute := TextColor color: (Color perform: (colors at: index))]
 		ifFalse:
-			[index _ index - colors size.
-			index = 1 ifTrue: [attribute _ TextDoIt new.
-				thisSel _ attribute analyze: self selection asString].
-			index = 2 ifTrue: [attribute _ TextLink new. 
-				thisSel _ attribute analyze: self selection asString with: 'Comment'].
-			index = 3 ifTrue: [attribute _ TextLink new. 
-				thisSel _ attribute analyze: self selection asString with: 'Definition'].
-			index = 4 ifTrue: [attribute _ TextLink new. 
-				thisSel _ attribute analyze: self selection asString with: 'Hierarchy'].
-			index = 5 ifTrue: [attribute _ TextLink new. 
-				thisSel _ attribute analyze: self selection asString].
-			index = 6 ifTrue: [attribute _ TextURL new. 
-				thisSel _ attribute analyze: self selection asString].
-			index = 7 ifTrue: ["Copy hidden info"
+			[index := index - colors size - 1.	"Re-number!!!"
+			index = 0 ifTrue: [attribute := self chooseColor].
+			index = 1 ifTrue: [attribute := TextDoIt new.
+				thisSel := attribute analyze: self selection asString].
+			index = 2 ifTrue: [attribute := TextPrintIt new.
+				thisSel := attribute analyze: self selection asString].
+			(extras size = 0) & (index > 2) ifTrue: [index := index + 4].	"skip those"
+			index = 3 ifTrue: [attribute := TextLink new. 
+				thisSel := attribute analyze: self selection asString with: 'Comment'].
+			index = 4 ifTrue: [attribute := TextLink new. 
+				thisSel := attribute analyze: self selection asString with: 'Definition'].
+			index = 5 ifTrue: [attribute := TextLink new. 
+				thisSel := attribute analyze: self selection asString with: 'Hierarchy'].
+			index = 6 ifTrue: [attribute := TextLink new. 
+				thisSel := attribute analyze: self selection asString].
+			index = 7 ifTrue: [attribute := TextURL new. 
+				thisSel := attribute analyze: self selection asString].
+			index = 8 ifTrue: ["Edit hidden info"
+				thisSel := self hiddenInfo.	"includes selection"
+				attribute := TextEmphasis normal].
+			index = 9 ifTrue: ["Copy hidden info"
 				self copyHiddenInfo.  ^ true].	"no other action"
 		thisSel ifNil: [^ true]].	"Could not figure out what to link to"
 		].
 	(keyCode between: 7 and: 11) ifTrue:
 		[sensor leftShiftDown
 		ifTrue:
-			[keyCode = 10 ifTrue: [attribute _ TextKern kern: -1].
-			keyCode = 11 ifTrue: [attribute _ TextKern kern: 1]]
+			[keyCode = 10 ifTrue: [attribute := TextKern kern: -1].
+			keyCode = 11 ifTrue: [attribute := TextKern kern: 1]]
 		ifFalse:
-			[attribute _ TextEmphasis perform:
+			[attribute := TextEmphasis perform:
 					(#(bold italic narrow underlined struckOut) at: keyCode - 6).
 			oldAttributes do:
-				[:att | (att dominates: attribute) ifTrue: [attribute turnOff]]]].
+				[:att | 
+					((att dominates: attribute) and: [att ~= TextEmphasis normal]) 
+						ifTrue: [attribute turnOff]]]].
 	(keyCode = 0) ifTrue:
-		[attribute _ TextEmphasis normal].
+		[attribute := TextEmphasis normal].
 
 	beginTypeInBlock ~~ nil
-		ifTrue:  "only change emphasisHere while typing"
-			[self insertTypeAhead: characterStream.
-			emphasisHere _ Text addAttribute: attribute toArray: oldAttributes.
-			^ true].
-	self replaceSelectionWith: (thisSel asText addAttribute: attribute).
+		ifTrue: 
+			[self insertTypeAhead: characterStream]
+		ifFalse:
+			[self replaceSelectionWith: (thisSel asText addAttribute: attribute)].
+	emphasisHere := Text addAttribute: attribute toArray: oldAttributes.
 	^ true
