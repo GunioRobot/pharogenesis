@@ -4,7 +4,7 @@ querySymbol: characterStream
 
 	sensor keyboard.		"flush character"
 	self closeTypeIn: characterStream.	"keep typeahead"
-	startBlock = stopBlock
+	self hasCaret
 		ifTrue: "Ctrl-q typed when a caret"
 			[self perform: #completeSymbol:lastOffering: withArguments:
 				((UndoParagraph == paragraph and: [UndoMessage sends: #undoQuery:lastOffering:])
