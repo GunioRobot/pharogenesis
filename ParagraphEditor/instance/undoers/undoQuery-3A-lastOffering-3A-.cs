@@ -4,4 +4,4 @@ undoQuery: hintText lastOffering: selectorOrNil
 
 	self zapSelectionWith: UndoSelection.
 	self undoMessage: (Message selector: #completeSymbol:lastOffering: arguments: UndoMessage arguments) forRedo: true.
-	self selectAt: stopBlock stringIndex
+	self selectAt: self stopIndex
