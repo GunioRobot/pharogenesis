@@ -1,0 +1,2 @@
+resetMIMEdatabase
+	MIMEdatabase _ self extendedMIMEdatabase
