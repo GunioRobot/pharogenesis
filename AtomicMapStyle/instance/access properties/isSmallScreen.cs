@@ -1,0 +1,2 @@
+isSmallScreen
+	^ smallScreen
