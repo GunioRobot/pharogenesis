@@ -1,4 +1,7 @@
 presenter
 	"Normally only the world will have a presenter, but the architecture supports individual localized presenters as well"
 
-	^ presenter ifNil: [super presenter] ifNotNil: [presenter]
+	^ presenter ifNil:
+		[self isWorldMorph
+			ifTrue: [presenter _ Presenter new associatedMorph: self]
+			ifFalse: [super presenter]]
