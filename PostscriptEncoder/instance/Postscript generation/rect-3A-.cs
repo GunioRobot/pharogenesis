@@ -1,6 +1,6 @@
 rect: aRect
 
-	EPSCanvas bobsPostScriptHacks ifTrue: [self newpath].
+	self newpath.
 	self
 		moveto:aRect topLeft;
 		lineto:aRect topRight x @ aRect topRight y;
