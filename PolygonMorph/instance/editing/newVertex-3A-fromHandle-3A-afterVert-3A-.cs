@@ -1,7 +1,4 @@
-newVertex: evt fromHandle: handle afterVert: ix
-	"Insert a new vertex and fix everything up! Install the drag-handle of the new vertex as recipient of further mouse events."
-
-	| pt |
-	pt _ evt cursorPoint.
-	self setVertices: (vertices copyReplaceFrom: ix + 1 to: ix with: (Array with: pt)).
-	evt hand newMouseFocus: (handles at: ((ix + 1) * 2) - 1).
+newVertex: arg1 fromHandle: arg2 afterVert: arg3
+	"Reorder the arguments for existing event handlers"
+	(arg3 isMorph and:[arg3 eventHandler notNil]) ifTrue:[arg3 eventHandler fixReversedValueMessages].
+	^self newVertex: arg1 event: arg2 fromHandle: arg3
