@@ -1,6 +1,10 @@
-printOn: aStream
+printOn: aStream 
 	| aSelector className aClass |
-	aSelector _ class selectorAtMethod: method setClass: [:c | aClass _ c].
-	className _ aClass name contractTo: 30.
-	aStream nextPutAll: className; nextPutAll: ' >> ';
-			nextPutAll: (aSelector contractTo: 60-className size)
+	(class isNil or: [method isNil]) ifTrue: [^super printOn: aStream].
+	aSelector := class selectorAtMethod: method setClass: [:c | aClass := c].
+	className := aClass name contractTo: self maxClassNameSize.
+	aStream
+		nextPutAll: className;
+		nextPutAll: ' >> ';
+		nextPutAll: (aSelector 
+					contractTo: self maxClassPlusSelectorSize - className size)
