@@ -5,7 +5,7 @@ fadeImage: otherImage at: topLeft
 	ones in the halftone produce the 'otherImage'.
 	IndexAndMaskBlock gets evaluated prior to each cycle,
 	and the resulting boolean determines whether to continue cycling."
-	| index imageRect maskForm tempForm resultForm |
+	| index imageRect maskForm resultForm |
 	imageRect _ otherImage boundingBox.
 	resultForm _ self copy: (topLeft extent: imageRect extent).
 	maskForm _ Form extent: 32@32.
@@ -19,4 +19,5 @@ fadeImage: otherImage at: topLeft
 		resultForm copyBits: imageRect from: otherImage at: 0@0
 			clippingBox: imageRect rule: Form under fillColor: maskForm.
 		self copyBits: imageRect from: resultForm at: topLeft
-				clippingBox: self boundingBox rule: Form over fillColor: nil]
+				clippingBox: self boundingBox rule: Form over fillColor: nil.
+		Smalltalk forceDisplayUpdate]
