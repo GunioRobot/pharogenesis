@@ -3,6 +3,6 @@ assureNotPaintingElse: aBlock
 
 	self sketchEditorOrNil ifNotNil:
 		[self inform: 'Sorry, you can only paint
-one object at a time'.
+one object at a time' translated.
 		Cursor normal show.
 		^ aBlock value]
