@@ -2,6 +2,7 @@ openView: topView
 	"Create change sorter on one changeSet only.  Two of these in a DualChangeSorter."
 	| classView messageView codeView |
 
+	self isThisEverCalled.
 	buttonView _ SwitchView new.
 	buttonView model: self controller: TriggerController new.
 	buttonView borderWidthLeft: 2 right: 2 top: 2 bottom: 0.
@@ -33,13 +34,12 @@ openView: topView
 	codeView model: self.
 	codeView window: (0 @ 0 extent: 360 @ 180).
 	codeView borderWidthLeft: 2 right: 2 top: 0 bottom: 2.
-	"codeView editString: aString."
 
 	topView addSubView: buttonView.
-	topView addSubView: classView.
-	topView addSubView: messageView.
-	topView addSubView: codeView.
-
+	topView addSubView: classView below: buttonView.
+	topView addSubView: messageView toRightOf: classView.
+	topView addSubView: codeView below: classView.
+"
 	classView 
 		align: classView viewport topLeft 	
 		with: buttonView viewport bottomLeft.
@@ -49,3 +49,4 @@ openView: topView
 	codeView 
 		align: codeView viewport topLeft 	
 		with: classView viewport bottomLeft.
+"
