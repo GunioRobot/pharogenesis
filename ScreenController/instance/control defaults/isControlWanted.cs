@@ -1,3 +1,2 @@
 isControlWanted
-
-	^super isControlWanted and: [sensor anyButtonPressed]
+	^ self viewHasCursor and: [sensor anyButtonPressed]
