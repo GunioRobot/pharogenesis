@@ -1,7 +1,6 @@
 explainClass: symbol 
 	"Is symbol a class variable or a pool variable?"
-
-	| class name pool reply classes |
+	| class reply classes |
 	class _ model selectedClass.
 	class == nil ifTrue: [^nil].	  "no class is selected"
 	(class isKindOf: Metaclass) ifTrue: [class _ class soleInstance].
