@@ -1,0 +1,3 @@
+SocketStream provides a Stream interface to Sockets decoupling protocol and other clients from the concrete Socket implementation and idiosyncrasies.
+
+The implementation is based on Bolot Kerimbaev's original version in Comanche.
