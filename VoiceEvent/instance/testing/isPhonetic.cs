@@ -1,0 +1,2 @@
+isPhonetic
+	^ false
