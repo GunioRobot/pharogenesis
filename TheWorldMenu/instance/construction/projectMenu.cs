@@ -12,11 +12,6 @@ projectMenu
 		{ 'see if server version is more recent...' . { #myProject . #loadFromServer } }.
 		{ 'load project from file...' . { self . #loadProject } }.
 		nil.
-		{ #universalTilesString . { self . #toggleTileEra }. 'yes: new tiles in scripts and viewers.
-no: old tiles'}.
-		{ #largeTilesString . { self . #toggleLargeTiles }. 
-	'yes: tiles in scripts and viewers are tall and green. no: tiles are short and transparent'}.
-		nil.
 	}.
 
 	self fillIn: menu from:
