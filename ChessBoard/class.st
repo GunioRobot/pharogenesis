@@ -1,0 +1,1 @@
+ChessBoard class instanceVariableNames: ''
