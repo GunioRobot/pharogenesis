@@ -1,0 +1,3 @@
+starLogoTreesbosfcedppplppppttwssdlgrsttdt0
+
+	^ StarSqueakTrees
