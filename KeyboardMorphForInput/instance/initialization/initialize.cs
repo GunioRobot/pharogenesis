@@ -1,5 +1,7 @@
 initialize
+"initialize the state of the receiver"
 	super initialize.
+""
 	buildingChord _ false.
 	self addRecordingControls.
 	self duration: 4 onOff: true.
