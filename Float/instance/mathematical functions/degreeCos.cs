@@ -1,3 +1,4 @@
 degreeCos
-	"Answer the sine of the receiver in degrees."
+	"Answer the cosine of the receiver taken as an angle in degrees."
+
 	^ self degreesToRadians cos
