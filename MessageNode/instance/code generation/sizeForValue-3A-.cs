@@ -1,6 +1,5 @@
 sizeForValue: encoder
-
-	| arg total argSize |
+	| total argSize |
 	special > 0 
 		ifTrue: [^self perform: (MacroSizers at: special) with: encoder with: true].
 	receiver == NodeSuper
