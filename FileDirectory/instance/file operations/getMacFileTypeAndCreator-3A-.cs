@@ -5,10 +5,10 @@ getMacFileTypeAndCreator: fileName
 
 	typeString _ ByteArray new: 4 withAll: ($? asInteger).
 	creatorString _ ByteArray new: 4 withAll: ($? asInteger).
-	[self primGetMacFileNamed: (self fullNameFor: fileName)
+	[self primGetMacFileNamed: (self fullNameFor: fileName) asVmPathName
 		type: typeString
 		creator: creatorString.] ensure: 
 		[typeString _ typeString asString. 
 		creatorString _ creatorString asString].
-	results _ Array with: typeString with: creatorString.
+	results _ Array with: typeString convertFromSystemString with: creatorString convertFromSystemString.
 	^results
