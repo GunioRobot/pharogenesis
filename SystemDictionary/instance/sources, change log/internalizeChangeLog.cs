@@ -15,7 +15,7 @@ to back out with no harm done.'.
 
 	aName _ self changesName.
 	(aFile _ SourceFiles last) == nil ifTrue:
-		[(FileDirectory default includesKey: aName)
+		[(FileDirectory default fileExists: aName)
 			ifFalse: [^ self halt: 'Cannot locate ', aName, ' so cannot proceed.'].
 		aFile _ FileStream readOnlyFileNamed: aName].
 	SourceFiles at: 2 put: (ReadWriteStream with: aFile contentsOfEntireFile).
