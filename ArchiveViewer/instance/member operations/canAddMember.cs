@@ -1,0 +1,2 @@
+canAddMember
+	^archive notNil
