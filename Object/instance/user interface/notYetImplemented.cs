@@ -1,2 +1,2 @@
 notYetImplemented
-	self inform: 'Not yet implemented'
+	self inform: 'Not yet implemented (', thisContext sender printString, ')'
