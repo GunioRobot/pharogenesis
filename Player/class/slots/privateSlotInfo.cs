@@ -1,0 +1,3 @@
+privateSlotInfo
+	"for copying"
+	^ slotInfo
