@@ -1,0 +1,2 @@
+clipFlags
+	^clipFlags
