@@ -1,0 +1,2 @@
+validatesAttributes
+	^validateAttributes
