@@ -1,0 +1,2 @@
+stackPointer
+	^self cachedStackPointerAt: activeCachedContext
