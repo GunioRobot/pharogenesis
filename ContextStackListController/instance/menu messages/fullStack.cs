@@ -1,7 +1,7 @@
 fullStack
 	"Change from displaying the minimal stack to a full one."
 
-	model contextStackList size > 7
+	model contextStackList size > 15 "Already expanded"
 		ifTrue:
 			[view flash]
 		ifFalse:
