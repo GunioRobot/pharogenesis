@@ -1,2 +1,2 @@
 renderOn: aRenderer
-	^(meshes at: index) renderOn: aRenderer
+	^(meshes at: index asInteger) renderOn: aRenderer
