@@ -15,6 +15,7 @@ fileIn
 				val _ (self peekFor: $!)
 							ifTrue: [(Compiler evaluate: self nextChunk logged: false)
 									scanFrom: self]
-							ifFalse: [Compiler evaluate: self nextChunk logged: true]].
+							ifFalse: [Compiler evaluate: self nextChunk logged: true].
+				self skipStyleChunk].
 		self close].
 	^ val
