@@ -1,6 +1,7 @@
 test
 	Transcript clear.
 	byteCount _ 0.
+	quitBlock _ [^ self].
 	self internalizeIPandSP.
 	self fetchNextBytecode.
 	[true] whileTrue:
