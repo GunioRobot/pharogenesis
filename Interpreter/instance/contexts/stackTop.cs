@@ -1,0 +1,2 @@
+stackTop
+	^self longAt: stackPointer
