@@ -1,6 +1,9 @@
 urlEditPane
 	"Create and return the URL edit pane."
 
-	^(PluggableTextMorph on: self text: #currentUrl accept: #jumpToAbsoluteUrl:)
-		acceptOnCR: true;
-		yourself
+	| pane |
+	pane _ (PluggableTextMorph on: self text: #currentUrl accept: #jumpToAbsoluteUrl:).
+		pane acceptOnCR: true.
+pane hideScrollBarsIndefinitely.
+^pane 
+		
