@@ -1,8 +1,9 @@
 fileOut  "SystemOrganization fileOut"
 
-	(FileStream newFileNamed:
-		(FileDirectory default nextNameFor: 'SystemOrganization' extension: 'st'))
-		nextPutAll: 'SystemOrganization changeFromCategorySpecs: #('; cr;
+	| internalStream |
+	internalStream _ WriteStream on: (String new: 30000).
+	internalStream nextPutAll: 'SystemOrganization changeFromCategorySpecs: #('; cr;
 		print: SystemOrganization;  "ends with a cr"
-		nextPutAll: ')!'; cr;
-		close.
+		nextPutAll: ')!'; cr.
+
+	FileStream writeSourceCodeFrom: internalStream baseName: (FileDirectory default nextNameFor: 'SystemOrganization' extension: 'st') isSt: true useHtml: false
