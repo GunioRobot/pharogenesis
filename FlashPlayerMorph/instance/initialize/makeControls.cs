@@ -1,17 +1,23 @@
 makeControls
 
-	| b r loopSwitch |
-	b _ SimpleButtonMorph new
-		target: self;
-		borderColor: #raised;
-		borderWidth: 2.
+	| bb r loopSwitch |
 	r _ AlignmentMorph newRow.
 	r hResizing: #shrinkWrap; vResizing: #shrinkWrap; extent: 5@5.
-	r addMorphBack: (b fullCopy label: 'Rewind';		actionSelector: #rewind).
-	r addMorphBack: (b fullCopy label: 'Play';			actionSelector: #startPlaying).
-	r addMorphBack: (b fullCopy label: 'Pause';			actionSelector: #stopPlaying).
-	r addMorphBack: (b fullCopy label: 'Next';			actionSelector: #stepForward).
-	r addMorphBack: (b fullCopy label: 'Prev';			actionSelector: #stepBackward).
+	bb _ SimpleButtonMorph new target: self; borderColor: #raised;
+				borderWidth: 2.
+	r addMorphBack: (bb label: 'Rewind';		actionSelector: #rewind).
+	bb _ SimpleButtonMorph new target: self; borderColor: #raised;
+				borderWidth: 2.
+	r addMorphBack: (bb label: 'Play';		actionSelector: #startPlaying).
+	bb _ SimpleButtonMorph new target: self; borderColor: #raised;
+				borderWidth: 2.
+	r addMorphBack: (bb label: 'Pause';		actionSelector: #stopPlaying).
+	bb _ SimpleButtonMorph new target: self; borderColor: #raised;
+				borderWidth: 2.
+	r addMorphBack: (bb label: 'Next';		actionSelector: #stepForward).
+	bb _ SimpleButtonMorph new target: self; borderColor: #raised;
+				borderWidth: 2.
+	r addMorphBack: (bb label: 'Prev';		actionSelector: #stepBackward).
 	loopSwitch _ SimpleSwitchMorph new
 		borderWidth: 2;
 		label: 'Loop';
@@ -26,9 +32,16 @@ makeControls
 		target: self;
 		setSwitchState: self deferred.
 	r addMorphBack: loopSwitch.
-	r addMorphBack: (b fullCopy label: 'Fastest'; 	actionSelector: #drawFastest).
-	r addMorphBack: (b fullCopy label: 'Medium';	actionSelector: #drawMedium).
-	r addMorphBack: (b fullCopy label: 'Nicest';		actionSelector: #drawNicest).
-	r addMorphBack: (b fullCopy label: '+10';		actionSelector: #jump10).
-	b target: self.
+	bb _ SimpleButtonMorph new target: self; borderColor: #raised;
+				borderWidth: 2.
+	r addMorphBack: (bb label: 'Fastest'; 	actionSelector: #drawFastest).
+	bb _ SimpleButtonMorph new target: self; borderColor: #raised;
+				borderWidth: 2.
+	r addMorphBack: (bb label: 'Medium';	actionSelector: #drawMedium).
+	bb _ SimpleButtonMorph new target: self; borderColor: #raised;
+				borderWidth: 2.
+	r addMorphBack: (bb label: 'Nicest';		actionSelector: #drawNicest).
+	bb _ SimpleButtonMorph new target: self; borderColor: #raised;
+				borderWidth: 2.
+	r addMorphBack: (bb label: '+10';		actionSelector: #jump10).
 	^ self world activeHand attachMorph: r
