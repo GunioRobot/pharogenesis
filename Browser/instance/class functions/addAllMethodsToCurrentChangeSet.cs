@@ -5,5 +5,5 @@ addAllMethodsToCurrentChangeSet
 	(aClass _ self selectedClassOrMetaClass) ifNotNil:
 		[aClass selectors do:
 			[:sel |
-				Smalltalk changes adoptSelector: sel forClass: aClass].
+				ChangeSet current adoptSelector: sel forClass: aClass].
 		self changed: #annotation]
