@@ -1,3 +1,3 @@
 bePossessive
-	possessive _ true.
-	self line1: actualObject externalName, '''s'
+	possessive := true.
+	self line1: actualObject externalName , '''s' translated
