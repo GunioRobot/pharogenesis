@@ -1,3 +1,3 @@
 handsDo: aBlock
 
-	^ worldState handsDo: aBlock
+	^ worldState ifNotNil: [ worldState handsDo: aBlock ]
