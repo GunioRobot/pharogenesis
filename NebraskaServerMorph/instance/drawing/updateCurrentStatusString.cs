@@ -1,11 +1,13 @@
 updateCurrentStatusString
 
 	self server ifNil:[
-		currentStatusString _ '<server not active>'
+		currentStatusString _ '<Nebraska not active>' translated.
+		currentBacklogString _ ''.
 	] ifNotNil:[
 		currentStatusString _ 
-			'server with ', 
+			' Nebraska: ' translated, 
 			self server numClients printString, 
-			' clients  ',
-			((previousBacklog _ self server backlog) // 1024) printString,'k'
+			' clients' translated.
+		currentBacklogString _ 'backlog: ' translated,
+				((previousBacklog _ self server backlog) // 1024) printString,'k'
 	].
