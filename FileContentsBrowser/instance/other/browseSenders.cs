@@ -3,4 +3,4 @@ browseSenders
 	currently selected message selector. Do nothing if no message is selected."
 
 	messageListIndex ~= 0 
-		ifTrue: [Smalltalk browseAllCallsOn: self selectedMessageName]
+		ifTrue: [self systemNavigation browseAllCallsOn: self selectedMessageName]
