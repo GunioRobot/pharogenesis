@@ -11,7 +11,7 @@ contents: input notifying: aController
 
 	editSelection == #editComment 
 		ifTrue: [theClass _ self selectedClass.
-				theClass ifNil: [PopUpMenu notify: 'You must select a class
+				theClass ifNil: [self inform: 'You must select a class
 before giving it a comment.'.
 				^ false].
 				theClass comment: aText. ^ true].
