@@ -9,4 +9,4 @@ flipHAroundX: centerX
 			cent asFloat / vertices size"]		"average is the center"
 		ifNotNil: [centerX].
 	self setVertices: (vertices collect: [:vv |
-			(vv x - cent) * -1 + cent @ vv y]) reversed.
+			((vv x - cent) * -1 + cent) @ vv y]) reversed.
