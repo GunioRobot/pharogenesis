@@ -2,6 +2,7 @@ copyFrom: anotherObject
 	"Copy to myself all instance variables I have in common with anotherObject.  This is dangerous because it ignores an object's control over its own inst vars.  "
 
 	| mine his |
+	<primitive: 168>
 	mine _ self class allInstVarNames.
 	his _ anotherObject class allInstVarNames.
 	1 to: (mine size min: his size) do: [:ind |
