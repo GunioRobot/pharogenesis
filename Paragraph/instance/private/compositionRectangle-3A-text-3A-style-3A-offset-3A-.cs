@@ -4,7 +4,7 @@ compositionRectangle: compositionRect text: aText style: aTextStyle offset: aPoi
 	text _ aText.
 	textStyle _ aTextStyle.
 	rule _ DefaultRule.
-	mask _ DefaultMask.
+	mask _ nil.		"was DefaultMask "
 	marginTabsLevel _ 0.
 	destinationForm _ Display.
 	offset _ aPoint.
