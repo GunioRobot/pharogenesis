@@ -7,11 +7,20 @@ findNewMethodInClass: class
 			ifFalse: [(self nameOfClass: class)].
 		self cr; print: cName , '>>' , (self stringOf: messageSelector)].
 "
-"
-(self stringOf: messageSelector) = 'raisedToInteger:' ifTrue: [self halt].
-"
+
+(self stringOf: messageSelector) = 'doesNotUnderstand:' ifTrue: [self halt].
+
 	sendCount _ sendCount + 1.
-(false "sendCount > 1090" "and: [sendCount\\10 = 0]") ifTrue:
+
+"
+	(sendCount > 1000 and: [sendCount\\10 = 0]) ifTrue:
 		[Transcript print: sendCount; space.
 		self validate].
+"
+"
+	(sendCount > 100150) ifTrue:
+		[self qvalidate.
+		messageQueue == nil ifTrue: [messageQueue _ OrderedCollection new].
+		messageQueue addLast: (self stringOf: messageSelector)].
+"
 	super findNewMethodInClass: class.
