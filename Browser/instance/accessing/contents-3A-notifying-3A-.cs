@@ -16,10 +16,11 @@ contents: input notifying: aController
 			[theClass _ self selectedClass.
 			theClass
 				ifNil: 
-					[PopUpMenu notify: 'You must select a class
+					[self inform: 'You must select a class
 before giving it a comment.'.
 					^ false].
 			theClass comment: aText stamp: Utilities changeStamp.
+			self changed: #classCommentText.
 			^ true].
 	editSelection == #hierarchy ifTrue: [^ true].
 	editSelection == #editMessageCategories ifTrue: [^ self changeMessageCategories: aString].
@@ -32,7 +33,7 @@ before giving it a comment.'.
 					[self compileMessage: aText notifying: aController]].
 	editSelection == #none
 		ifTrue: 
-			[PopUpMenu notify: 'This text cannot be accepted
+			[self inform: 'This text cannot be accepted
 in this part of the browser.'.
 			^ false].
 	self error: 'unacceptable accept'
