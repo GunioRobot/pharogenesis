@@ -1,5 +1,6 @@
 browseClassVariables
-	"Browse the class varialbes of the selected class.  2/5/96 sw"
-
+	"Browse the class variables of the selected class. 2/5/96 sw"
 	| cls |
-	(cls _ self selectedClass) ifNotNil: [cls browseClassVariables]
+	cls _ self selectedClass.
+	cls
+		ifNotNil: [self systemNavigation  browseClassVariables: cls]
