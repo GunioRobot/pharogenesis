@@ -1,0 +1,2 @@
+quadEdgeClass
+	^PoohQuadEdge
