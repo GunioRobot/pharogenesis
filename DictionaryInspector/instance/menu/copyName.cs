@@ -5,4 +5,4 @@ copyName
 	sel _ '(self at: ', 
 		(String streamContents: [:strm | (keyArray at: selectionIndex) storeOn: strm]) ,
 		')'.
-	ParagraphEditor new clipboardTextPut: sel asText.	"no undo allowed"
+	ParagraphEditor clipboardTextPut: sel asText.	"no undo allowed"
