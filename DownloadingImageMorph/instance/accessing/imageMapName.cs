@@ -1,0 +1,2 @@
+imageMapName
+	^imageMapName
