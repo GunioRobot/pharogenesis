@@ -1,0 +1,2 @@
+doLight: aVRMLNode
+	^self
