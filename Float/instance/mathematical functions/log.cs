@@ -1,4 +1,4 @@
 log
-	"Answer the base 10 logarithm."
+	"Answer the base 10 logarithm of the receiver."
 
-	^self ln / 10.0 ln
+	^ self ln / Ln10
