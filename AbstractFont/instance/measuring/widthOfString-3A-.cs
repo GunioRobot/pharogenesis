@@ -1,6 +1,6 @@
 widthOfString: aString
-
-	^ self composeWord: (1 to: aString size) in: aString beginningAt: 0
+	aString ifNil:[^0].
+	^self widthOfString: aString from: 1 to: aString size.
 "
 	TextStyle default defaultFont widthOfString: 'zort' 21
 "
