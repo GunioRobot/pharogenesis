@@ -29,7 +29,7 @@ tallyIndirectRefs   "Smalltalk tallyIndirectRefs"
 				[:sel | cm _ cl compiledMethodAt: sel.
 				lits _ cm literals.
 				lits do:
-					[:lit | lit class == Association ifTrue:
+					[:lit | lit isVariableBinding ifTrue:
 						[(lit value == cl or: [cls canFindWithoutEnvironment: lit key])
 							ifFalse: [refs add: lit key]]]]].
 		envtRefs _ Bag new.
