@@ -1,0 +1,2 @@
+isThinking
+	^myProcess notNil
