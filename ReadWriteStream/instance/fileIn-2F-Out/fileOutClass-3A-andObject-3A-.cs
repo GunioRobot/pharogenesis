@@ -4,6 +4,7 @@ fileOutClass: extraClass andObject: theObject
 	| class srefStream |
 	self setFileTypeToObject.
 		"Type and Creator not to be text, so can attach correctly to an email msg"
+	self text.
 	self header; timeStamp.
 
 	extraClass ifNotNil: [
@@ -13,6 +14,7 @@ fileOutClass: extraClass andObject: theObject
 				ifTrue: [class fileOutSharedPoolsOn: self]].
 		class fileOutOn: self moveSource: false toFile: 0].
 	self trailer.	"Does nothing for normal files.  HTML streams will have trouble with object data"
+	self binary.
 
 	"Append the object's raw data"
 	srefStream _ SmartRefStream on: self.
