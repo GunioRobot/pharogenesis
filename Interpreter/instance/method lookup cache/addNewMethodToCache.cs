@@ -14,16 +14,19 @@ addNewMethodToCache
 	self compilerTranslateMethodHook.	"newMethod x lkupClass -> newNativeMethod (may cause GC !)"
 	hash _ messageSelector bitXor: lkupClass.  "drop low-order zeros from addresses"
 
+	primitiveFunctionPointer _ self functionPointerFor: primitiveIndex inClass: lkupClass.
+	
 	0 to: CacheProbeMax-1 do:
 		[:p | probe _ (hash >> p) bitAnd: MethodCacheMask.
 		(methodCache at: probe + MethodCacheSelector) = 0 ifTrue:
-				["Found an empty entry -- use it"
-				methodCache at: probe + MethodCacheSelector put: messageSelector.
-				methodCache at: probe + MethodCacheClass put: lkupClass.
-				methodCache at: probe + MethodCacheMethod put: newMethod.
-				methodCache at: probe + MethodCachePrim put: primitiveIndex.
-				methodCache at: probe + MethodCacheNative put: newNativeMethod.
-				^ nil]].
+			["Found an empty entry -- use it"
+			methodCache at: probe + MethodCacheSelector put: messageSelector.
+			methodCache at: probe + MethodCacheClass put: lkupClass.
+			methodCache at: probe + MethodCacheMethod put: newMethod.
+			methodCache at: probe + MethodCachePrim put: primitiveIndex.
+			methodCache at: probe + MethodCacheNative put: newNativeMethod.
+			methodCache at: probe + MethodCachePrimFunction put: primitiveFunctionPointer.
+			^ nil]].
 
 	"OK, we failed to find an entry -- install at the first slot..."
 	probe _ hash bitAnd: MethodCacheMask.  "first probe"
@@ -32,6 +35,7 @@ addNewMethodToCache
 	methodCache at: probe + MethodCacheMethod put: newMethod.
 	methodCache at: probe + MethodCachePrim put: primitiveIndex.
 	methodCache at: probe + MethodCacheNative put: newNativeMethod.
+	methodCache at: probe + MethodCachePrimFunction put: primitiveFunctionPointer.
 
 	"...and zap the following entries"
 	1 to: CacheProbeMax-1 do:
