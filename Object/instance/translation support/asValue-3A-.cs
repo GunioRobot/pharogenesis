@@ -1,0 +1,3 @@
+asValue: aClass
+
+	^self
