@@ -1,0 +1,3 @@
+ascentKern
+
+	^ fontArray first ascentKern.
