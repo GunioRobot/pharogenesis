@@ -1,0 +1,2 @@
+nextPut: aByte
+	"do nothing"
