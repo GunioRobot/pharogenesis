@@ -7,10 +7,11 @@ compile: text classified: category withStamp: changeStamp notifying: requestor
 		ifFail: [^nil]
 		elseSetSelectorAndNode: 
 			[:sel :node | selector _ sel.
-			priorMethod _ methodDict at: selector ifAbsent: [nil].
+			priorMethod _ self methodDict at: selector ifAbsent: [nil].
 			methodNode _ node].
 	self acceptsLoggingOfCompilation ifTrue:
-		[newText _ (requestor ~~ nil and: [Preferences confirmFirstUseOfStyle])
+		[newText _ ((requestor == nil or: [requestor isKindOf: SyntaxError]) not
+						and: [Preferences confirmFirstUseOfStyle])
 			ifTrue: [text askIfAddStyle: priorMethod req: requestor]
 			ifFalse: [text].
 		 method putSource: newText
