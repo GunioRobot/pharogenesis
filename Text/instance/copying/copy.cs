@@ -1,3 +1,3 @@
 copy
 
-	^self deepCopy
+	^ self class new setString: string copy setRuns: runs copy
