@@ -1,11 +1,8 @@
 browseIt
-	"Launch a browser for the current selection, if appropriate.  2/96 sw.
-	In this initial version, we open a system browser on a class, and an implementors browser on a selector, otherwise we flash.
-	2/29/96 sw: select current line first, if selection was an insertion pt"
+	"Launch a browser for the current selection, if appropriate"
 
 	| aSymbol anEntry |
-	self selectLine.
-
+	self lineSelectAndEmptyCheck: [^ self].
 	(aSymbol _ self selectedSymbol) isNil ifTrue: [^ view flash].
 
 	self terminateAndInitializeAround:
@@ -19,4 +16,4 @@ browseIt
 					ifFalse:
 						[anEntry inspect]]
 			ifFalse:
-				[Smalltalk implementorsOf: aSymbol]]
+				[Smalltalk browseAllImplementorsOf: aSymbol]]
