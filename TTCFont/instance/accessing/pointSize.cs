@@ -1,0 +1,3 @@
+pointSize
+
+	^ pointSize.
