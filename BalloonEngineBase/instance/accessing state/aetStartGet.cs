@@ -1,0 +1,2 @@
+aetStartGet
+	^workBuffer at: GWAETStart
