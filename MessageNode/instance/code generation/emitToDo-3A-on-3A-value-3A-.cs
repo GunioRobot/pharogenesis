@@ -12,7 +12,8 @@ emitToDo: stack on: strm value: forValue
 		ifFalse: [limitInit emitForEffect: stack on: strm].
 	initStmt emitForEffect: stack on: strm.
 	test emitForValue: stack on: strm.
-	self emitBranchOn: false dist: blockSize pop: stack on: strm. 
+	self emitBranchOn: false dist: blockSize pop: stack on: strm.
+	pc _ strm position.
 	block emitForEvaluatedEffect: stack on: strm.
 	incStmt emitForEffect: stack on: strm.
 	self emitJump: 0 - loopSize on: strm.
