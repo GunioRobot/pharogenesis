@@ -1,5 +1,5 @@
 makeIsolatedCodePane
 	| msgName |
 
-	(msgName _ self selectedMessageName) ifNil: [^ self beep].
+	(msgName _ self selectedMessageName) ifNil: [^ Beeper beep].
 	MethodHolder makeIsolatedCodePaneForClass: self selectedClassOrMetaClass selector: msgName
