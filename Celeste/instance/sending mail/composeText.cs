@@ -3,12 +3,12 @@ composeText
 
 	^ String streamContents: [:str |
 		str nextPutAll: 'From: '.
-		str nextPutAll: Celeste userName; cr.
+		str nextPutAll: self account userName; cr.
 
 		str nextPutAll: 'To: '; cr.
 		str nextPutAll: 'Subject: '; cr.
 
-		Celeste ccList isEmpty ifFalse: [
+		self account ccList isEmpty ifFalse: [
 			str nextPutAll: 'Cc: '.
-			str nextPutAll: Celeste ccList; cr].
+			str nextPutAll: self account ccList; cr].
 		str cr].
