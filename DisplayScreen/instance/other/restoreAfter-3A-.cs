@@ -4,5 +4,5 @@ restoreAfter: aBlock
 	aBlock value.
 	Sensor waitButton.
 	Smalltalk isMorphic
-		ifTrue: [self repaintMorphicDisplay]
+		ifTrue: [World fullRepaintNeeded]
 		ifFalse: [(ScheduledControllers restore; activeController) view emphasize]
