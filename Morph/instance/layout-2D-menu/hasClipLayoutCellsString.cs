@@ -1,4 +1,4 @@
 hasClipLayoutCellsString
-	self clipLayoutCells
-		ifTrue:[^'<on>clip to cell size']
-		ifFalse:[^'<off>clip to cell size']
+	^ (self clipLayoutCells
+		ifTrue: ['<on>']
+		ifFalse: ['<off>']), 'clip to cell size' translated
