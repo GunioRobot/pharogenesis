@@ -11,5 +11,7 @@ reclaimDependents		"Smalltalk reclaimDependents"
 		they should be reinstated as dependent views..."
 	View allSubInstancesDo:
 		[:v | (v model==nil or: [v model isKindOf: Model])
-				ifFalse: [v model addDependent: v]]
-	
+				ifFalse: [v model addDependent: v]].
+	SystemWindow allSubInstancesDo:
+		[:v | (v model==nil or: [v model isKindOf: Model])
+				ifFalse: [v model addDependent: v]].
