@@ -1,5 +1,6 @@
 reopen
-	"Reopen the receiver, in the same mode as previously, first closing it if applicable.  1/31/96 sw"
+	"Close and reopen this file. The file position is reset to zero."
+	"Details: Files that were open when a snapshot occurs are no longer valid when the snapshot is resumed. This operation re-opens the file if that has happened."
 
-	closed ifFalse: [self close].
-	self open: name forWrite: rwmode
+	fileID ifNotNil: [self primCloseNoError: fileID].
+	self open: name forWrite: rwmode.
