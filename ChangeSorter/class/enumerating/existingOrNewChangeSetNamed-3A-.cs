@@ -3,7 +3,7 @@ existingOrNewChangeSetNamed: aName
 	| newSet |
 
 	^(self changeSetNamed: aName) ifNil: [
-		newSet _ ChangeSet new initialize name: aName.
+		newSet _ ChangeSet basicNewNamed: aName.
 		AllChangeSets add: newSet.
 		newSet
 	]
