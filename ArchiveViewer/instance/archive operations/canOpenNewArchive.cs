@@ -1,0 +1,2 @@
+canOpenNewArchive
+	^true
