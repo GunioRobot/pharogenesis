@@ -1,7 +1,7 @@
 okToChange
-	"This message is sent when changing the selection in either the message cateory or message list panes. Eventually, this should ask the user if it is okay to throw away and unaccepted edits of the current message. For now, it always gives permission."
+	"This message is sent when changing the selection in either the message cateory or message list panes."
 
-	currentCategory isNil | currentMsgID isNil ifTrue: [
+	currentMsgID isNil ifTrue: [
 		"no message selected; discard edits in message pane silently"
 		messageTextView hasUnacceptedEdits: false.
 		^ true].
