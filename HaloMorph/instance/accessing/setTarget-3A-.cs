@@ -5,4 +5,5 @@ setTarget: aMorph
 	innerTarget _ target renderedMorph.
 	innerTarget wantsDirectionHandles
 		ifTrue: [self showDirectionHandles: true addHandles: false].
+	target hasHalo: true.
 
