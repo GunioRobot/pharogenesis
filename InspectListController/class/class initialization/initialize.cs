@@ -1,12 +1,19 @@
 initialize
-	"1/25/96 sw: added references and browse items."
+	"Initialize the menu associated with the upper-left pane of an Inspector"
 
 	InspectListYellowButtonMenu _ PopUpMenu labels: 'inspect
-references
+method refs to this inst var
+objects pointing to this value
+copy name
 browse full
-browse class'
-	lines: #(1 2).
+browse class
+inst var refs...
+inst var defs...
+class var refs...
+class variables
+class refs'
+	lines: #(1 3 4     6 8 10 11 ).
 	InspectListYellowButtonMessages _ 
-		#(inspectSelection referencesToSelection browseFull browseClass )
+		#(inspectSelection referencesToSelection objectReferencesToSelection copyName  browseFull browseClass  browseInstVarRefs browseInstVarDefs classVarRefs browseClassVariables browseClassRefs unshiftedYellowButtonActivity).
 
 	"InspectListController initialize"
