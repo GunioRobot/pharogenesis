@@ -32,7 +32,4 @@ Do you really want to go ahead with this?') ifFalse: [^ self]].
 
 	self removePrompting: false.
 	self showChangeSet: nextToView.
-	self class gatherChangeSets.
 	parent modelWakeUp.
-	"(parent other: self) changed: #classList.
-	(parent other: self) changed: #messageList."
