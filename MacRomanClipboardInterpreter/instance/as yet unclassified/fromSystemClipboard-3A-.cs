@@ -1,0 +1,3 @@
+fromSystemClipboard: aString
+
+	^ aString squeakToIso.
