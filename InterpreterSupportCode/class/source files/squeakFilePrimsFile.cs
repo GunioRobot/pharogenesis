@@ -1,6 +1,8 @@
 squeakFilePrimsFile
 
 	^ '#include "sq.h"
+#ifndef NO_STD_FILE_SUPPORT
+#include "FilePlugin.h"
 
 /***
 	The state of a file is kept in the following structure,
@@ -45,18 +47,20 @@ squeakFilePrimsFile
 
 /*** Variables ***/
 int thisSession = 0;
+extern struct VirtualMachine * interpreterProxy;
+
 
 int sqFileAtEnd(SQFile *f) {
 	/* Return true if the file''s read/write head is at the end of the file. */
 
-	if (!sqFileValid(f)) return success(false);
+	if (!sqFileValid(f)) return interpreterProxy->success(false);
 	return ftell(f->file) == f->fileSize;
 }
 
 int sqFileClose(SQFile *f) {
 	/* Close the given file. */
 
-	if (!sqFileValid(f)) return success(false);
+	if (!sqFileValid(f)) return interpreterProxy->success(false);
 	fclose(f->file);
 	f->file = NULL;
 	f->sessionID = 0;
@@ -70,18 +74,20 @@ int sqFileDeleteNameSize(int sqFileNameIndex, int sqFileNameSize) {
 	int i, err;
 
 	if (sqFileNameSize >= 1000) {
-		return success(false);
+		return interpreterProxy->success(false);
 	}
 
 	/* copy the file name into a null-terminated C string */
-	for (i = 0; i < sqFileNameSize; i++) {
-		cFileName[i] = *((char *) (sqFileNameIndex + i));
+	sqFilenameFromString(cFileName, sqFileNameIndex, sqFileNameSize);
+
+	if (!plugInAllowAccessToFilePath(cFileName, sqFileNameSize)) {
+		return interpreterProxy->success(false);
 	}
-	cFileName[sqFileNameSize] = 0;
+
 
 	err = remove(cFileName);
 	if (err) {
-		return success(false);
+		return interpreterProxy->success(false);
 	}
 }
 
@@ -90,9 +96,9 @@ int sqFileGetPosition(SQFile *f) {
 
 	int position;
 
-	if (!sqFileValid(f)) return success(false);
+	if (!sqFileValid(f)) return interpreterProxy->success(false);
 	position = ftell(f->file);
-	if (position < 0) return success(false);
+	if (position < 0) return interpreterProxy->success(false);
 	return position;
 }
 
@@ -104,6 +110,11 @@ int sqFileInit(void) {
 
 	thisSession = clock() + time(NULL);
 	if (thisSession == 0) thisSession = 1;	/* don''t use 0 */
+	return 1;
+}
+
+int sqFileShutdown(void) {
+	return 1;
 }
 
 int sqFileOpen(SQFile *f, int sqFileNameIndex, int sqFileNameSize, int writeFlag) {
@@ -117,16 +128,17 @@ int sqFileOpen(SQFile *f, int sqFileNameIndex, int sqFileNameSize, int writeFlag
 	int i;
 
 	/* don''t open an already open file */
-	if (sqFileValid(f)) return success(false);
+	if (sqFileValid(f)) return interpreterProxy->success(false);
 
 	/* copy the file name into a null-terminated C string */
 	if (sqFileNameSize > 1000) {
-		return success(false);
+		return interpreterProxy->success(false);
 	}
-	for (i = 0; i < sqFileNameSize; i++) {
-		cFileName[i] = *((char *) (sqFileNameIndex + i));
+	sqFilenameFromString(cFileName, sqFileNameIndex, sqFileNameSize);
+
+	if (!plugInAllowAccessToFilePath(cFileName, sqFileNameSize)) {
+		return interpreterProxy->success(false);
 	}
-	cFileName[sqFileNameSize] = 0;
 
 	if (writeFlag) {
 		/* First try to open an existing file read/write: */
@@ -138,7 +150,7 @@ int sqFileOpen(SQFile *f, int sqFileNameIndex, int sqFileNameSize, int writeFlag
 			f->file = fopen(cFileName, "w+b");
 			if (f->file != NULL) {
 				/* set the type and creator of newly created Mac files */
-				dir_SetMacFileTypeAndCreator(cFileName, strlen(cFileName), "TEXT", "R*ch");	
+				dir_SetMacFileTypeAndCreator((char *)sqFileNameIndex, sqFileNameSize, "TEXT", "R*ch");	
 			}
 		}
 		f->writable = true;
@@ -150,7 +162,7 @@ int sqFileOpen(SQFile *f, int sqFileNameIndex, int sqFileNameSize, int writeFlag
 	if (f->file == NULL) {
 		f->sessionID = 0;
 		f->fileSize = 0;
-		return success(false);
+		return interpreterProxy->success(false);
 	} else {
 		f->sessionID = thisSession;
 		/* compute and cache file size */
@@ -172,7 +184,7 @@ int sqFileReadIntoAt(SQFile *f, int count, int byteArrayIndex, int startIndex) {
 	char *dst;
 	int bytesRead;
 
-	if (!sqFileValid(f)) return success(false);
+	if (!sqFileValid(f)) return interpreterProxy->success(false);
 	if (f->writable && (f->lastOp == WRITE_OP)) fseek(f->file, 0, SEEK_CUR);  /* seek between writing and reading */
 	dst = (char *) (byteArrayIndex + startIndex);
 	bytesRead = fread(dst, 1, count, f->file);
@@ -185,30 +197,29 @@ int sqFileRenameOldSizeNewSize(int oldNameIndex, int oldNameSize, int newNameInd
 	int i, err;
 
 	if ((oldNameSize >= 1000) || (newNameSize >= 1000)) {
-		return success(false);
+		return interpreterProxy->success(false);
 	}
 
 	/* copy the file names into null-terminated C strings */
-	for (i = 0; i < oldNameSize; i++) {
-		cOldName[i] = *((char *) (oldNameIndex + i));
-	}
-	cOldName[oldNameSize] = 0;
+	sqFilenameFromString(cOldName, oldNameIndex, oldNameSize);
 
-	for (i = 0; i < newNameSize; i++) {
-		cNewName[i] = *((char *) (newNameIndex + i));
+	sqFilenameFromString(cNewName, newNameIndex, newNameSize);
+
+	if (!plugInAllowAccessToFilePath(cOldName, oldNameSize) ||
+		!plugInAllowAccessToFilePath(cNewName, newNameSize)) {
+		return interpreterProxy->success(false);
 	}
-	cNewName[newNameSize] = 0;
 
 	err = rename(cOldName, cNewName);
 	if (err) {
-		return success(false);
+		return interpreterProxy->success(false);
 	}
 }
 
 int sqFileSetPosition(SQFile *f, int position) {
 	/* Set the file''s read/write head to the given position. */
 
-	if (!sqFileValid(f)) return success(false);
+	if (!sqFileValid(f)) return interpreterProxy->success(false);
 	fseek(f->file, position, SEEK_SET);
 	f->lastOp = UNCOMMITTED;
 }
@@ -216,7 +227,7 @@ int sqFileSetPosition(SQFile *f, int position) {
 int sqFileSize(SQFile *f) {
 	/* Return the length of the given file. */
 
-	if (!sqFileValid(f)) return success(false);
+	if (!sqFileValid(f)) return interpreterProxy->success(false);
 	return f->fileSize;
 }
 
@@ -236,7 +247,7 @@ int sqFileWriteFromAt(SQFile *f, int count, int byteArrayIndex, int startIndex) 
 	char *src;
 	int bytesWritten, position;
 
-	if (!(sqFileValid(f) && f->writable)) return success(false);
+	if (!(sqFileValid(f) && f->writable)) return interpreterProxy->success(false);
 	if (f->lastOp == READ_OP) fseek(f->file, 0, SEEK_CUR);  /* seek between reading and writing */
 	src = (char *) (byteArrayIndex + startIndex);
 	bytesWritten = fwrite(src, 1, count, f->file);
@@ -247,9 +258,11 @@ int sqFileWriteFromAt(SQFile *f, int count, int byteArrayIndex, int startIndex) 
 	}
 
 	if (bytesWritten != count) {
-		success(false);
+		interpreterProxy->success(false);
 	}
 	f->lastOp = WRITE_OP;
 	return bytesWritten;
 }
+#endif /* NO_STD_FILE_SUPPORT */
+
 '
