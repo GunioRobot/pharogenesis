@@ -1,8 +1,8 @@
 deal
 	| card |
-	self cards size > 0 
-		ifTrue: [
-			card _ self topCard.
+	^ self cards notEmpty 
+		ifTrue: 
+			[card := self topCard.
 			card delete.
-			^card]
-		ifFalse: [^nil]
+			card]
+		ifFalse: [nil]
