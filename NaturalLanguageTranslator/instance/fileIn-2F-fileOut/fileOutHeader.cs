@@ -1,0 +1,2 @@
+fileOutHeader
+	^ '''Translation dictionary'''
