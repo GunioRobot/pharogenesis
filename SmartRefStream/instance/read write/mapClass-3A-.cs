@@ -18,6 +18,7 @@ mapClass: incoming
 	sel _ sel, oldVer.	"i.e. #rectangleoc4"
 	Symbol hasInterned: sel ifTrue: [:symb | 
 		(self class canUnderstand: sel asSymbol) ifTrue: [
+			reshaped ifNil: [reshaped _ Dictionary new].
 			cls _ self perform: sel asSymbol]].	"This class will take responsibility"
 	cls ifNil: [cls _ self writeClassRenameMethod: sel was: nm
 					fromInstVars: (structures at: nm).
