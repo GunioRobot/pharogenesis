@@ -1,6 +1,6 @@
-setR: rho degrees: theta 
+setR: rho degrees: degrees 
 
 	| radians |
-	radians _ theta asFloat degreesToRadians.
+	radians _ degrees asFloat degreesToRadians.
 	x _ rho asFloat * radians cos.
 	y _ rho asFloat * radians sin.
