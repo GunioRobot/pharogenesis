@@ -3,8 +3,9 @@ scanToNextMessageIn: aStream
 
 	| delimiter |
 	[self scanToNextAndSigns: aStream] whileTrue:
-		[delimiter _ aStream next: 8.
-		 ((delimiter = '&&&start') or: [delimiter = '&&&XXXXX'])
+		[delimiter _ aStream next: 10.
+		 ((delimiter = '&&&&&start') or: [delimiter = '&&&&&XXXXX'])
 			ifTrue: [aStream skip: -10. ^true]
-			ifFalse: [(delimiter includes: $&) ifTrue: [aStream skip: -8]]].
+			ifFalse: [aStream skip: -5]  "Keep going - it was't a delimiter"
+		].
 	^false	"end of file"
