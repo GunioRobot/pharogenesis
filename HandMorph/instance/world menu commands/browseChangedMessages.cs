@@ -1,0 +1,2 @@
+browseChangedMessages
+	Smalltalk browseChangedMessages
