@@ -3,5 +3,7 @@ startPage
 	| file |
 	file _ FileStream oldFileOrNoneNamed: 'StartPage.html'.
 	file 
-		ifNil: [ ^'<title>Personal Start Page</title>\<h1>Personal Start Page</h1>\This space is empty' withCRs ]
+		ifNil: [ ^'<title>{1}</title>
+<h1>{1}</h1>
+{2}' format:{'Personal Start Page' translated. 'This space is empty' translated} ]
 		ifNotNil: [ ^file contentsOfEntireFile ]
