@@ -3,4 +3,4 @@ addCustomMenuItems: aCustomMenu hand: aHandMorph
 	aCustomMenu 
 		addLine;
 		addUpdating: #startMondayOrSundayString action: #toggleStartMonday;
-		add: 'jump to year...' action: #chooseYear.
+		add: 'jump to year...' translated action: #chooseYear.
