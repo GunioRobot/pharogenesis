@@ -1,0 +1,2 @@
+last
+	^array at: stop
