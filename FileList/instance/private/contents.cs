@@ -5,28 +5,16 @@ contents
 		fullFile, briefFile, needToGetFull, needToGetBrief,
 		fullHex, briefHex, needToGetFullHex, needToGetBriefHex"
 
-	(listIndex = 0) | (brevityState == #FileList) ifTrue: [
-		"no file selected"
-		contents _ self defaultContents.
-		brevityState _ #FileList.
-		^ contents].
+	(listIndex = 0) | (brevityState == #FileList) ifTrue: [^ self defaultContents].  "no file selected"
 	brevityState == #fullFile ifTrue: [^ contents].
-	brevityState == #needToGetFull ifTrue: [
-		contents _ self readContentsBrief: false.
-		brevityState _ #fullFile.	"don't change till actually read"
-		^ contents].
 	brevityState == #fullHex ifTrue: [^ contents].
-	brevityState == #needToGetFullHex ifTrue: [
-		contents _ self readContentsHex: false.
-		brevityState _ #fullHex.
-		^ contents].
-	brevityState == #briefHex ifTrue: [^ contents].
-	brevityState == #needToGetBriefHex ifTrue: [
-		contents _ self readContentsHex: true.
-		^ contents].
 	brevityState == #briefFile ifTrue: [^ contents].
-	"default"
-	"brevityState == #needToGetBrief" true ifTrue: [
-		contents _ self readContentsBrief: true.
-		brevityState _ #briefFile.	"don't change till actually read"
-		^ contents].
+	brevityState == #briefHex ifTrue: [^ contents].
+
+	brevityState == #needToGetFullHex ifTrue: [^ self readContentsHex: false].
+	brevityState == #needToGetBriefHex ifTrue: [^ self readContentsHex: true].
+
+	brevityState == #needToGetFull ifTrue: [^ self readContentsBrief: false].
+	brevityState == #needToGetBrief ifTrue: [^ self readContentsBrief: true].  "default"
+
+	self halt: 'unknown state ' , brevityState printString
