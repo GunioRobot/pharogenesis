@@ -1,0 +1,2 @@
+classBitmap
+	^self splObj: ClassBitmap
