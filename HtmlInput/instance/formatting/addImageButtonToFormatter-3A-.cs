@@ -14,7 +14,7 @@ addImageButtonToFormatter: formatter
 	formData _ formatter currentFormData.
 	morph
 		on: #mouseUp
-		send: #mouseUpEvent:linkMorph:formData:
+		send: #mouseUpFormData:event:linkMorph:
 		to: self
 		withValue: formData.
 	formatter addIncompleteMorph: morph
