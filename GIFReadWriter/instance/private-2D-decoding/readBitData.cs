@@ -1,13 +1,26 @@
 readBitData
 	"using modified Lempel-Ziv Welch algorithm."
 
-	| outCodes outCount bitMask initCodeSize code curCode oldCode inCode finChar i bytes f c |
-	self readWord.	"skip Image Left"
-	self readWord.	"skip Image Top"
+	| outCodes outCount bitMask initCodeSize code curCode oldCode inCode finChar i bytes f c packedBits hasLocalColor localColorSize maxOutCodes |
+
+	maxOutCodes _ 4096.
+	offset := self readWord@self readWord. "Image Left@Image Top"
 	width _ self readWord.
 	height _ self readWord.
-	interlace _ (self next bitAnd: 16r40) ~= 0.
-	"I ignore the possible existence of a local color map."
+
+	"---
+	Local Color Table Flag        1 Bit
+	Interlace Flag                1 Bit
+	Sort Flag                     1 Bit
+	Reserved                      2 Bits
+	Size of Local Color Table     3 Bits
+	----"
+	packedBits _ self next.
+	interlace _ (packedBits bitAnd: 16r40) ~= 0.
+	hasLocalColor _ (packedBits bitAnd: 16r80) ~= 0.
+	localColorSize _ 1 bitShift: ((packedBits bitAnd: 16r7) + 1).
+	hasLocalColor ifTrue: [localColorTable _ self readColorTable: localColorSize].
+
 	pass _ 0.
 	xpos _ 0.
 	ypos _ 0.
@@ -16,13 +29,14 @@ readBitData
 	bufByte _ 0.
 	bufStream _ ReadStream on: ByteArray new.
 
-	outCodes _ ByteArray new: 1025.
+	outCodes _ ByteArray new: maxOutCodes + 1.
 	outCount _ 0.
 	bitMask _ (1 bitShift: bitsPerPixel) - 1.
 	prefixTable _ Array new: 4096.
 	suffixTable _ Array new: 4096.
 
 	initCodeSize _ self next.
+
 	self setParameters: initCodeSize.
 	bitsPerPixel > 8 ifTrue: [^self error: 'never heard of a GIF that deep'].
 	bytes _ ByteArray new: rowByteSize * height.
@@ -44,7 +58,7 @@ readBitData
 					[curCode _ oldCode.
 					outCodes at: (outCount _ outCount + 1) put: finChar].
 				[curCode > bitMask] whileTrue:
-					[outCount > 1024
+					[outCount > maxOutCodes
 						ifTrue: [^self error: 'corrupt GIF file (OutCount)'].
 					outCodes at: (outCount _ outCount + 1)
 						put: (suffixTable at: curCode + 1).
