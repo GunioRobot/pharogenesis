@@ -1,0 +1,1 @@
+I model a CelesteAdressBook contact. I store interest information about a contact (it is a company? How often is it present on my addressbook? and so on,,,)
