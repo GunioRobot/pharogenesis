@@ -1,6 +1,6 @@
 addMorphNearBack: aMorph
 	| bg |
-	submorphs last mustBeBackmost ifTrue:
+	(submorphs size > 0 and: [submorphs last mustBeBackmost]) ifTrue:
 		[bg _ submorphs last.
 		bg privateDelete].
 	self addMorphBack: aMorph.
