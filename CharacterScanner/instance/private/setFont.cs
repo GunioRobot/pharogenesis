@@ -1,13 +1,17 @@
-setFont 
-	"Set the font and the stop conditions for the font."
-	| newFont |
-	newFont _ textStyle fontAt: (text emphasisAt: lastIndex).
-	font == newFont ifTrue: [^ self].  "no need to reinitialize"
-	font _ newFont.
+setFont
+	"Set the font and other emphasis."
+	self setFont: 1.
+	emphasisCode _ 0.
+	kern _ 0.
+	(text attributesAt: lastIndex) do: 
+		[:att | att emphasizeScanner: self].
+	font _ font emphasized: emphasisCode.
+
+	"Install various parameters from the font."
 	spaceWidth _ font widthOf: Space. 
-	sourceForm _ font glyphs.
+	sourceForm _ font glyphs.  "Should only be needed in DisplayScanner"
+	height _ font height.			" ditto "
 	xTable _ font xTable.
-	height _ font height.
 	stopConditions _ font stopConditions.
 	stopConditions at: Space asciiValue + 1 put: #space.
 	stopConditions at: Tab asciiValue + 1 put: #tab.
