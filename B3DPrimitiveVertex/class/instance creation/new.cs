@@ -1,2 +1,2 @@
 new
-	^self new: PrimVertexSize
+	^self basicNew: PrimVertexSize
