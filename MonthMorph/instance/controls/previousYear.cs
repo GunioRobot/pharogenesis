@@ -1,2 +1,2 @@
 previousYear
-	self month: (Month newDay: 1 month: month monthName year: month year - 1)
+	self month: (Month month: month month year: month year - 1)
