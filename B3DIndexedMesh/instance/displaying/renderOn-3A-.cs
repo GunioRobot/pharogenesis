@@ -1,0 +1,2 @@
+renderOn: aRenderer
+	^self subclassResponsibility
