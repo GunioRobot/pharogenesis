@@ -3,22 +3,22 @@ buildMetaMenu: evt
 	| menu |
 	menu _ MenuMorph new defaultTarget: self.
 	menu addStayUpItem.
-	menu add: 'grab' action: #grabMorph:.
-	menu add: 'copy to paste buffer' action: #copyToPasteBuffer:.
+	menu add: 'grab' translated action: #grabMorph:.
+	menu add: 'copy to paste buffer' translated action: #copyToPasteBuffer:.
 	self maybeAddCollapseItemTo: menu.
-	menu add: 'delete' action: #dismissMorph:.
+	menu add: 'delete' translated action: #dismissMorph:.
 	menu addLine.
-	menu add: 'copy Postscript' action: #clipPostscript.
-	menu add: 'print PS to file...' action: #printPSToFile.
+	menu add: 'copy text' translated action: #clipText.
+	menu add: 'copy Postscript' translated action: #clipPostscript.
+	menu add: 'print Postscript to file...' translated action: #printPSToFile.
 	menu addLine.
-	menu add: 'go behind' action: #goBehind.
-	menu add: 'add halo' action: #addHalo:.
-	menu add: 'duplicate' action: #maybeDuplicateMorph:.
+	menu add: 'go behind' translated action: #goBehind.
+	menu add: 'add halo' translated action: #addHalo:.
+	menu add: 'duplicate' translated action: #maybeDuplicateMorph:.
 
-	self potentialEmbeddingTargets size > 1 ifTrue:
-		[menu add: 'embed...' action: #embedInto:].
+	self addEmbeddingMenuItemsTo: menu hand: evt hand.
 
-	menu add: 'resize' action: #resizeMorph:.
+	menu add: 'resize' translated action: #resizeMorph:.
 	"Give the argument control over what should be done about fill styles"
 	self addFillStyleMenuItems: menu hand: evt hand.
 	self addDropShadowMenuItems: menu hand: evt hand.
@@ -27,28 +27,30 @@ buildMetaMenu: evt
 	menu addLine.
 
 	(self morphsAt: evt position) size > 1 ifTrue:
-		[menu add: 'submorphs...'
+		[menu add: 'submorphs...' translated
 			target: self
 			selector: #invokeMetaMenuAt:event:
 			argument: evt position].
 	menu addLine.
-	menu add: 'inspect' selector: #inspectAt:event: argument: evt position.
-	menu add: 'explore' action: #explore.
-	menu add: 'browse hierarchy' action: #browseHierarchy.
-	menu add: 'make own subclass' action: #subclassMorph.
+	menu add: 'inspect' translated selector: #inspectAt:event: argument: evt position.
+	menu add: 'explore' translated action: #explore.
+	menu add: 'browse hierarchy' translated action: #browseHierarchy.
+	menu add: 'make own subclass' translated action: #subclassMorph.
 	menu addLine.
-	menu add: 'set variable name...' action: #choosePartName.
+	menu add: 'set variable name...' translated action: #choosePartName.
 	(self isMorphicModel) ifTrue:
-		[menu add: 'save morph as prototype' action: #saveAsPrototype.
+		[menu add: 'save morph as prototype' translated action: #saveAsPrototype.
 		(self ~~ self world modelOrNil) ifTrue:
-			 [menu add: 'become this world''s model' action: #beThisWorldsModel]].
-	menu add: 'save morph in file' action: #saveOnFile.
+			 [menu add: 'become this world''s model' translated action: #beThisWorldsModel]].
+	menu add: 'save morph in file' translated action: #saveOnFile.
 	(self hasProperty: #resourceFilePath)
 		ifTrue: [((self valueOfProperty: #resourceFilePath) endsWith: '.morph')
-				ifTrue: [menu add: 'save as resource' action: #saveAsResource].
-				menu add: 'update from resource' action: #updateFromResource]
-		ifFalse: [menu add: 'attach to resource' action: #attachToResource].
-	menu add: 'show actions' action: #showActions.
+				ifTrue: [menu add: 'save as resource' translated action: #saveAsResource].
+				menu add: 'update from resource' translated action: #updateFromResource]
+		ifFalse: [menu add: 'attach to resource' translated action: #attachToResource].
+	menu add: 'show actions' translated action: #showActions.
 	menu addLine.
+	self addDebuggingItemsTo: menu hand: evt hand.
+
 	self addCustomMenuItems: menu hand: evt hand.
 	^ menu
