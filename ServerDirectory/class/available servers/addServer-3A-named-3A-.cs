@@ -1,2 +1,2 @@
 addServer: server named: nameString
-	Servers at: nameString put: server
+	self servers at: nameString put: server
