@@ -1,0 +1,2 @@
+active: aBoolean
+	Active := aBoolean
