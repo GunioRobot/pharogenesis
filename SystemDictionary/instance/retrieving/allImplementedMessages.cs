@@ -3,7 +3,7 @@ allImplementedMessages
 	but are not implemented."
 
 	| aSet |
-	aSet _ Set new: Symbol instanceCount * 2.
+	aSet _ IdentitySet new: Symbol instanceCount.
 	Cursor wait showWhile: 
 		[self allBehaviorsDo: [:cl | cl selectorsDo: [:aSelector | aSet add: aSelector]]].
 	^aSet
