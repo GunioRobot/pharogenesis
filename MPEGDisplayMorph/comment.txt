@@ -1,0 +1,1 @@
+I am a simple display screen for an MPEG movie player. My step method advances the movie according to the current frame rate. If necessary, frames as skipped to maintain the desired frame rate. However, since even skipping frames takes time, it may not be possible to achieve fast frame rates with large frame sizes on slow machines.
