@@ -1,0 +1,3 @@
+clearUserEditFlag
+
+	messageTextView hasUnacceptedEdits: false.
