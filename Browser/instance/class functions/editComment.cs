@@ -4,6 +4,10 @@ editComment
 	classListIndex = 0 ifTrue: [^ self].
 	self okToChange ifFalse: [^ self].
 	self messageCategoryListIndex: 0.
-	editSelection _ #editComment.
+	metaClassIndicated _ false.
+	self editSelection: #editComment.
 	self changed: #classSelectionChanged.
+	self changed: #messageCategoryList.
+	self changed: #messageList.
+	self decorateButtons.
 	self contentsChanged
