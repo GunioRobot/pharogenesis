@@ -1,3 +1,5 @@
 fileName: aString
 
-	fileName _ aString
+urlObject ~~ nil  "type == #file" 
+	ifTrue: [urlObject path at: urlObject path size put: aString]
+	ifFalse: [fileName _ aString]
