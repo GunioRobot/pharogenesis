@@ -1,5 +1,5 @@
 example
-	"Envelope example showOnDisplay"
+	"Envelope example"
 
 	| p |
 	p _ Array with: 0@0 with: 100@1.0 with: 250@0.7 with: 400@1.0 with: 500@0.
