@@ -3,4 +3,4 @@ preDebugNotifierContentsFrom: messageString
 		ifFalse:
 			[messageString]
 		ifTrue:
-			['An error has occurred; you should probably just hit ''abandon''.  Sorry!'] 
+			['An error has occurred; you should probably just hit ''abandon''.  Sorry!' translated] 
