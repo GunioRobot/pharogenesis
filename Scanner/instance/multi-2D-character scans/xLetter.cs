@@ -11,7 +11,7 @@ xLetter
 			source atEnd
 				ifTrue: [aheadChar _ 30 asCharacter "doit"]
 				ifFalse: [aheadChar _ source next]].
-	type == #colon
+	(type == #colon or: [type = #xColon and: [aheadChar ~= $=]])
 		ifTrue: 
 			[buffer nextPut: self step.
 			tokenType _ #keyword]
