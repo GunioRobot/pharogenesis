@@ -2,7 +2,11 @@ emitCFunctionPrototype: aStream generator: aCodeGen
 	"Emit a C function header for this method onto the given stream."
 
 	| arg |
-	aStream nextPutAll: returnType; space.
+	export 
+		ifTrue:[aStream nextPutAll:'EXPORT('; nextPutAll: returnType; nextPutAll:') ']
+		ifFalse:[(aCodeGen isGeneratingPluginCode and:[self isStatic]) 
+					ifTrue:[aStream nextPutAll:'static '].
+				aStream nextPutAll: returnType; space].
 	aStream nextPutAll: (aCodeGen cFunctionNameFor: selector), '('.
 	args isEmpty ifTrue: [ aStream nextPutAll: 'void' ].
 	1 to: args size do: [ :i |
