@@ -1,8 +1,8 @@
 open
 	"Open a view of an instance of me on the default directory."
 	"FileList open"
-	| dir aFileList topView volListView templateView fileListView fileContentsView |
-	World ifNotNil: [^ self openAsMorph].
+	| dir aFileList topView volListView templateView fileListView fileContentsView underPane pHeight |
+	Smalltalk isMorphic ifTrue: [^ self openAsMorph].
 
 	dir _ FileDirectory default.
 	aFileList _ self new directory: dir.
@@ -29,13 +29,28 @@ open
 	templateView window: (0@0 extent: 80@15).
 	topView addSubView: templateView below: volListView.
 
+	Preferences optionalButtons
+		ifTrue: [
+			underPane _ aFileList optionalButtonView.
+			underPane isNil
+				ifTrue: [pHeight _ 60]
+				ifFalse: [
+					topView addSubView: underPane toRightOf: volListView.
+					pHeight _ 60 - aFileList optionalButtonHeight]]
+		ifFalse: [
+			underPane _ nil.
+			pHeight _ 60].
+
 	fileListView _ PluggableListView on: aFileList
 		list: #fileList
 		selected: #fileListIndex
 		changeSelected: #fileListIndex:
 		menu: #fileListMenu:.
-	fileListView window: (0@0 extent: 120@60).
-	topView addSubView: fileListView toRightOf: volListView.
+	fileListView window: (0@0 extent: 120@pHeight).
+	underPane isNil
+		ifTrue: [topView addSubView: fileListView toRightOf: volListView]
+		ifFalse: [topView addSubView: fileListView below: underPane].
+	fileListView controller terminateDuringSelect: true.  "Pane to left may change under scrollbar"
 
 	fileContentsView _ PluggableTextView on: aFileList
 		text: #contents accept: #put:
