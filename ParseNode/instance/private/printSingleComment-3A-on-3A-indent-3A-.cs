@@ -3,7 +3,7 @@ printSingleComment: aString on: aStream indent: indent
 	Break the string at word breaks, given the widths in the default font, at 
 	450 points."
 
-	| readStream word position lineBreak lastChar font wordWidth tabWidth spaceWidth |
+	| readStream word position lineBreak font wordWidth tabWidth spaceWidth |
 	readStream _ ReadStream on: aString.
 	font _ TextStyle default defaultFont.
 	tabWidth _ TextConstants at: #DefaultTab.
