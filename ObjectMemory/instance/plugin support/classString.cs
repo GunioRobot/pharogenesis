@@ -1,0 +1,2 @@
+classString
+	^self splObj: ClassString
