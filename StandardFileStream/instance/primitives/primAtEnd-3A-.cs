@@ -1,5 +1,5 @@
 primAtEnd: id
-	"Answer whether the receiver is currently at its end.  2/12/96 sw"
+	"Answer true if the file position is at the end of the file."
 
 	<primitive: 150>
-	^ self primitiveFailed
+	self primitiveFailed
