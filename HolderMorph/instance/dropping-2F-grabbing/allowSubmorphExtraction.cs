@@ -1,0 +1,3 @@
+allowSubmorphExtraction
+
+	^ openToDragNDrop
