@@ -1,8 +1,7 @@
-addMouseUpAction 
-
+addMouseUpAction
 	| codeToRun oldCode |
-
-	oldCode _ self valueOfProperty: #mouseUpCodeToRun ifAbsent: [''].
-	codeToRun _ FillInTheBlank request: 'MouseUp expression:' initialAnswer: oldCode.
+	oldCode := self
+				valueOfProperty: #mouseUpCodeToRun
+				ifAbsent: [''].
+	codeToRun := FillInTheBlank request: 'MouseUp expression:' translated initialAnswer: oldCode.
 	self addMouseUpActionWith: codeToRun
-
