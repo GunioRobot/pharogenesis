@@ -1,6 +1,7 @@
 printOn: aStream
-	aStream nextPutAll: self class name.
-	aStream nextPutAll: ' runs: '.
-	runs printOn: aStream.
-	aStream nextPutAll: ' values: '.
-	values printOn: aStream.
+	self printNameOn: aStream.
+	aStream
+		nextPutAll: ' runs: ';
+		print: runs;
+		nextPutAll: ' values: ';
+		print: values
