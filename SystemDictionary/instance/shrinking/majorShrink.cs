@@ -77,9 +77,6 @@ Shall we proceed to discard most of the content in this image?')
 	Smalltalk noChanges.
 	ChangeSorter classPool at: #AllChangeSets 
 		put: (OrderedCollection with: Smalltalk changes).
-	(Smalltalk includesKey: #Morph) "only remove if Morphic has been removed"
-		ifTrue:[Smalltalk removeClassNamed: #CornerRounder.
-			ScriptingSystem _ nil].
 	SystemDictionary removeSelector: #majorShrink.
 
 	[Smalltalk removeAllUnSentMessages > 0]
