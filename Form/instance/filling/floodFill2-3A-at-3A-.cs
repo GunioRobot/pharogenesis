@@ -8,7 +8,7 @@ floodFill2: aColor at: interiorPoint
 	"read old pixel value"
 	old _ peeker pixelAt: interiorPoint.
 	"compute new value"
-	new _ aColor pixelValueForDepth: self depth.
+	new _ self pixelValueFor: aColor.
 	old = new ifTrue:[^self]. "no point, is there?!"
 
 	x _ interiorPoint x.
