@@ -1,0 +1,2 @@
+defaultExtension
+	^'.eps'
