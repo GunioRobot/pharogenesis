@@ -1,0 +1,2 @@
+isTranscript
+	^stream == Transcript
