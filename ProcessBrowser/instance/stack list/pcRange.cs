@@ -25,11 +25,9 @@ pcRange
 			sourceMap _ methodNode sourceMap.
 			tempNames _ methodNode tempNames.
 			selectedContext method cacheTempNames: tempNames].
-	sourceMap size = 0
+	(sourceMap size = 0 or: [ selectedContext isDead ])
 		ifTrue: [^ 1 to: 0].
 	pc _ selectedContext pc.
-	pc
-		ifNil: [^ 1 to: 0].
 	pc _ pc - 2.
 	i _ sourceMap
 				indexForInserting: (Association key: pc value: nil).
