@@ -5,12 +5,8 @@ warpSourcePixels: nPix xDeltah: xDeltah yDeltah: yDeltah
 
 	| destWord sourcePix sourcePixMask destPixMask srcPixPerWord destPix |
 	self inline: false.
-	sourcePixSize = 32
-		ifTrue: [ sourcePixMask _ -1]
-		ifFalse: [ sourcePixMask _ (1 << sourcePixSize) - 1].
-	destPixSize = 32
-		ifTrue: [ destPixMask _ -1]
-		ifFalse: [ destPixMask _ (1 << destPixSize) - 1].
+	sourcePixMask _ maskTable at: sourcePixSize.
+	destPixMask _ maskTable at: destPixSize.
 	srcPixPerWord _ 32 // sourcePixSize.
 	destWord _ 0.
 	1 to: nPix do:
@@ -29,7 +25,7 @@ warpSourcePixels: nPix xDeltah: xDeltah yDeltah: yDeltah
 									y: sy >> BinaryPoint
 									pixPerWord: srcPixPerWord)
 						bitAnd: sourcePixMask.
-			colorMap = interpreterProxy nilObject
+			colorMap = nil
 				ifTrue:
 				[destPixSize = sourcePixSize
 				ifTrue:
@@ -48,8 +44,10 @@ warpSourcePixels: nPix xDeltah: xDeltah yDeltah: yDeltah
 						ifTrue: [sourcePix _ self rgbMap: sourcePix from: 5 to: cmBitsPerColor]
 						ifFalse: [sourcePix _ self rgbMap: sourcePix from: 8 to: cmBitsPerColor]].
 				"Then look up sourcePix in colorMap"
-				destPix _ (interpreterProxy fetchWord: sourcePix ofObject: colorMap) bitAnd: destPixMask]].
-		destWord _ (destWord << destPixSize) bitOr: destPix.
+				destPix _ (self colormapAt: sourcePix) bitAnd: destPixMask]].
+		destPixSize = 32
+			ifTrue:[destWord _ destPix]
+			ifFalse:[destWord _ (destWord << destPixSize) bitOr: destPix].
 		sx _ sx + xDeltah.
 		sy _ sy + yDeltah.
 		].
