@@ -1,2 +1,2 @@
 sendersOfIt
-	textMorph editor sendersOfIt
+	self handleEdit: [textMorph editor sendersOfIt]
