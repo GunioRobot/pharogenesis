@@ -1,9 +1,11 @@
 mimeEncode
 	"Convert from data to 6 bit characters."
 
-	| phase1 phase2 raw nib |
+	| phase1 phase2 raw nib lineLength |
 	phase1 _ phase2 _ false.
+	lineLength := 0.
 	[dataStream atEnd] whileFalse: [
+		lineLength >= 70 ifTrue: [ mimeStream cr.  lineLength := 0. ].
 		data _ raw _ dataStream next asInteger.
 		nib _ (data bitAnd: 16rFC) bitShift: -2.
 		mimeStream nextPut: (ToCharTable at: nib+1).
@@ -16,7 +18,9 @@ mimeEncode
 		nib _ (data bitAnd: 16rFC0) bitShift: -6.
 		mimeStream nextPut: (ToCharTable at: nib+1).
 		nib _ (data bitAnd: 16r3F).
-		mimeStream nextPut: (ToCharTable at: nib+1)].
+		mimeStream nextPut: (ToCharTable at: nib+1).
+
+		lineLength := lineLength + 4.].
 	phase1 ifTrue: [mimeStream skip: -2; nextPut: $=; nextPut: $=.
 			^ mimeStream].
 	phase2 ifTrue: [mimeStream skip: -1; nextPut: $=.
