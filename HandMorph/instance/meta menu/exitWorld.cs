@@ -1,0 +1,2 @@
+exitWorld
+	owner exit
