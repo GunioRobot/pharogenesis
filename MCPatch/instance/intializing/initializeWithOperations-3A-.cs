@@ -1,0 +1,2 @@
+initializeWithOperations: aCollection
+	operations _ aCollection
