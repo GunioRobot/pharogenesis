@@ -1,0 +1,2 @@
+upArrowHit
+	self previousCostume
