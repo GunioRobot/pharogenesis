@@ -1,6 +1,6 @@
 tab
 	| currentX |
-	currentX _ (textStyle alignment == Justified and: [self leadingTab not])
+	currentX _ (alignment == Justified and: [self leadingTab not])
 		ifTrue:		"imbedded tabs in justified text are weird"
 			[destX + (textStyle tabWidth - (line justifiedTabDeltaFor: spaceCount)) max: destX]
 		ifFalse:
