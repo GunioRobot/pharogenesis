@@ -1,6 +1,6 @@
 Object
 	subclass: #UndoAnimation
-	instanceVariableNames: 'wrappedAnimation '
+	instanceVariableNames: 'wrappedAnimation'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon3D-Wonderland Undo'
+	category: 'Balloon3D-Wonderland-Undo'
