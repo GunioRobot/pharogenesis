@@ -1,6 +1,7 @@
 primitiveSnapshot
 
 	| activeProc dataSize rcvr |
+	self compilerPreSnapshotHook.
 	"save the state of the current process and save it on the scheduler queue"
 	self storeContextRegisters: activeContext.
 	activeProc _
@@ -10,6 +11,7 @@ primitiveSnapshot
 		  withValue: activeContext.
 
 	"compact memory and compute the size of the memory actually in use"
+	self cleanUpContexts.
 	self incrementalGC.  "maximimize space for forwarding table"
 	self fullGC.
 
@@ -25,3 +27,4 @@ primitiveSnapshot
 	successFlag
 		ifTrue: [ self push: falseObj ]
 		ifFalse: [ self push: rcvr ].
+	self compilerPostSnapshotHook.
