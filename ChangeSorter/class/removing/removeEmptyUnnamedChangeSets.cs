@@ -5,5 +5,5 @@ removeEmptyUnnamedChangeSets
 	| toGo |
 	(toGo _ (self changeSetsNamedSuchThat: [:csName | csName beginsWith: 'Unnamed'])
 		select: [:cs | cs isEmpty and: [cs okayToRemoveInforming: false]])
-		do: [:cs | AllChangeSets remove: cs wither].
+		do: [:cs | self removeChangeSet: cs].
 	self inform: toGo size printString, ' change set(s) removed.'
