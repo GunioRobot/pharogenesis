@@ -1,2 +1,4 @@
 addTileHandle: haloSpec
-	self addHandle: haloSpec on: #mouseDown send: #tearOffTile to: innerTarget
+	"Add the 'tear-off-tile' handle from the spec"
+
+	self addHandle: haloSpec on: #mouseDown send: #tearOffTileForTarget:with: to: self
