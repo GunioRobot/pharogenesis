@@ -1,8 +1,10 @@
-printOn: aStream 
-	"Refer to the comment in Object|printOn:."
- 
-	super printOn: aStream.
-	aStream nextPutAll: ' with selector: ';
-	 print: selector;
-	 nextPutAll: ' and arguments: ';
-	 print: args
+printOn: stream
+
+	args isEmpty ifTrue: [^ stream nextPutAll: selector].
+	args with: selector keywords do: [:arg :word |
+		stream nextPutAll: word.
+		stream space.
+		arg printOn: stream.
+		stream space.
+	].
+	stream skip: -1.
