@@ -1,8 +1,16 @@
 drawOn: aCanvas
-
+	| pref |
 	aCanvas
 		fillRectangle: (bounds topLeft corner: bounds rightCenter)
-		color: owner color darker.
+		color: ((pref _ Preferences menuColorFromWorld)
+					ifTrue:
+						[owner color darker]
+					ifFalse:
+						[Preferences menuLineUpperColor]).
 	aCanvas
 		fillRectangle: (bounds leftCenter corner: bounds bottomRight)
-		color: owner color lighter.
+		color: (pref
+					ifTrue:
+						[owner color lighter]
+					ifFalse:
+						[Preferences menuLineLowerColor])
