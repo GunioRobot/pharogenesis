@@ -1,0 +1,3 @@
+isBlockClosure
+
+	^ false
