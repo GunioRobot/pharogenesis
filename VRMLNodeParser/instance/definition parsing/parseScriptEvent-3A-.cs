@@ -1,0 +1,3 @@
+parseScriptEvent: aVRMLStream
+	"Dummy"
+	^nil
