@@ -1,7 +1,7 @@
 absPrintOn: aStream base: base digitCount: digitCount 
 	"Print me in the given base, using digitCount significant figures."
 
-	| fuzz x exp q fBase scale logScale |
+	| fuzz x exp q fBase scale logScale xi |
 	self isInf ifTrue: [^ aStream nextPutAll: 'Inf'].
 	fBase _ base asFloat.
 	"x is myself normalized to [1.0, fBase), exp is my exponent"
@@ -28,7 +28,8 @@ absPrintOn: aStream base: base digitCount: digitCount
 		ifTrue: 
 			["decimal notation"
 			q _ 0.
-			exp < 0 ifTrue: [1 to: 1 - exp do: [:i | aStream nextPut: ('0.0000' at: i)]]]
+			exp < 0 ifTrue: [1 to: 1 - exp do: [:i | aStream nextPut: ('0.0000'
+at: i)]]]
 		ifFalse: 
 			["scientific notation"
 			q _ exp.
@@ -36,9 +37,9 @@ absPrintOn: aStream base: base digitCount: digitCount
 	[x >= fuzz]
 		whileTrue: 
 			["use fuzz to track significance"
-			i _ x asInteger.
-			aStream nextPut: (Character digitValue: i).
-			x _ x - i asFloat * fBase.
+			xi _ x asInteger.
+			aStream nextPut: (Character digitValue: xi).
+			x _ x - xi asFloat * fBase.
 			fuzz _ fuzz * fBase.
 			exp _ exp - 1.
 			exp = -1 ifTrue: [aStream nextPut: $.]].
