@@ -1,5 +1,5 @@
 becomeStack
-	currentDataInstance _ self assuredCostumee.
+	currentDataInstance _ self assuredPlayer.
 	dataInstances _ OrderedCollection with: currentDataInstance.
 	isStackLike _ true.
 	self borderWidth: (self borderWidth + 1).
