@@ -1,0 +1,3 @@
+damageRecorder
+
+	^ worldState damageRecorder
