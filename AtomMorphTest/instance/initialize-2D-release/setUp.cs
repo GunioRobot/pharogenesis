@@ -1,0 +1,3 @@
+setUp
+	
+	morph := AtomMorph new.
