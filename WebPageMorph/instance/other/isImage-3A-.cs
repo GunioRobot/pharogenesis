@@ -1,4 +1,3 @@
-isImage: aForm
-
-		(aForm isKindOf: Form) ifFalse:[^false].
-		^true
+isImage: aForm 
+	(aForm isForm) ifFalse: [^false].
+	^true
