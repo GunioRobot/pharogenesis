@@ -1,6 +1,9 @@
 fullDrawOn: aCanvas
+	"Draw the full Morphic structure on the given Canvas"
 
-	(aCanvas isVisible: self fullBounds) ifFalse: [^ self].
-	(aCanvas isVisible: bounds) ifTrue: [self drawOn: aCanvas].
-	submorphs isEmpty ifFalse: [
-		submorphs reverseDo: [:m | m fullDrawOn: aCanvas]].  "draw back-to-front"
+	self visible ifFalse: [^ self].
+	(self hasProperty: #errorOnDraw) ifTrue:[^self drawErrorOn: aCanvas].
+	aCanvas drawMorph: self.
+	self drawSubmorphsOn:aCanvas.
+	self drawDropHighlightOn: aCanvas.
+	self drawMouseDownHiglightOn: aCanvas
