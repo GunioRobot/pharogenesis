@@ -2,8 +2,8 @@ curveBounds
 	"Compute the bounds from actual curve traversal, with leeway for borderWidth.
 	Also note the next-to-first and next-to-last points for arrow directions."
 	| curveBounds |
-	self computeCurve.
 	curveBounds _ vertices first corner: vertices last.
+	coefficients _ nil.  "Force recomputation"
 	ntfPoint _ nil.
 	self lineSegmentsDo:
 		[:p1 :p2 | ntfPoint == nil ifTrue: [ntfPoint _ p2 asIntegerPoint].
