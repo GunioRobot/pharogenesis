@@ -9,11 +9,11 @@ tab
 				leftMargin: leftMargin
 				rightMargin: rightMargin].
 	lastSpaceOrTabExtent _ lastCharacterExtent copy.
-	lastSpaceOrTabExtent x: (currentX - destX max: 0).
+	self lastSpaceOrTabExtentSetX: (currentX - destX max: 0).
 	currentX >= characterPoint x
 		ifTrue: 
 			[lastCharacterExtent _ lastSpaceOrTabExtent copy.
-			^self crossedX].
+			^ self crossedX].
 	destX _ currentX.
 	lastIndex _ lastIndex + 1.
 	^false
