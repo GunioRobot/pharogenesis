@@ -1,9 +1,10 @@
 printOn: aStream 
-	| selector class |
+	| selector class mclass |
+	self method == nil ifTrue: [^ super printOn: aStream].
 	selector _ 
 		(class _ self receiver class) 
 			selectorAtMethod: self method 
-			setClass: [:mclass].
+			setClass: [:c | mclass _ c].
 	selector == #?
 		ifTrue: 
 			[aStream nextPut: $?; print: self method who.
