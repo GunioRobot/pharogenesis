@@ -9,7 +9,8 @@ scrollBy: heightToMove withSelectionFrom: startBlock to: stopBlock
 		compositionRectangle top - clippingRectangle top.
 	amount _ ((heightToMove truncateTo: textStyle lineGrid) min: max) max: min.
 	amount ~= 0
-		ifTrue: [self scrollUncheckedBy: amount
-					withSelectionFrom: startBlock to: stopBlock.
+		ifTrue: [destinationForm deferUpdatesIn: clippingRectangle while: [
+					self scrollUncheckedBy: amount
+						withSelectionFrom: startBlock to: stopBlock].
 				^ true]
 		ifFalse: [^ false]
