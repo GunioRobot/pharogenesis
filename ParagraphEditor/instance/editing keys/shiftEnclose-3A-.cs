@@ -3,7 +3,7 @@ shiftEnclose: characterStream
 	 Flushes typeahead."
 
 	| char left right startIndex stopIndex oldSelection which text |
-	char _ Sensor keyboard.
+	char _ sensor keyboard.
 	char = $9 ifTrue: [ char _ $( ].
 	char = $, ifTrue: [ char _ $< ].
 	char = $[ ifTrue: [ char _ ${ ].
