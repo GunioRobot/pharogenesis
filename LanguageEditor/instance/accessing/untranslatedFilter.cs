@@ -1,0 +1,3 @@
+untranslatedFilter
+	^ untranslatedFilter
+		ifNil: ['']
