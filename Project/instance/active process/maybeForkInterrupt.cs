@@ -1,6 +1,5 @@
 maybeForkInterrupt
-
-	World ifNil: [ScheduledControllers cmdDotEnabled ifTrue:
-					[[ScheduledControllers interruptName: 'User Interrupt'] fork]]
-		ifNotNil: [self cmdDotEnabled ifTrue:
-					[[self interruptName: 'User Interrupt'] fork]]
+	Preferences cmdDotEnabled ifTrue:
+		[Smalltalk isMorphic
+			ifTrue: [[self interruptName: 'User Interrupt'] fork]
+			ifFalse: [[ScheduledControllers interruptName: 'User Interrupt'] fork]]
