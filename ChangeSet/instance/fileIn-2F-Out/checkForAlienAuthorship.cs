@@ -8,4 +8,4 @@ checkForAlienAuthorship
 			[^ self inform: 'All methods in "', self name, '"
 have authoring stamps which start with "', initials, '"']
 		ifTrue:
-			[Smalltalk browseMessageList: aList name: 'methods in "', self name, '" whose authoring stamps do not start with "', initials, '"']
+			[self systemNavigation  browseMessageList: aList name: 'methods in "', self name, '" whose authoring stamps do not start with "', initials, '"']
