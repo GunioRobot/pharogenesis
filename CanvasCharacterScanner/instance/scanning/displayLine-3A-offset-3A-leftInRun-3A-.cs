@@ -1,42 +1,46 @@
-displayLine: textLine  offset: offset  leftInRun: leftInRun
-	|  nowLeftInRun done startLoc startIndex stopCondition |
+displayLine: textLine offset: offset leftInRun: leftInRun 
 	"largely copied from DisplayScanner's routine"
 
-	line _ textLine.
-	foregroundColor ifNil: [ foregroundColor _ Color black ].
-	leftMargin _ (line leftMarginForAlignment: textStyle alignment) + offset x.
+	| nowLeftInRun done startLoc startIndex stopCondition |
+	line := textLine.
+	foregroundColor ifNil: [foregroundColor := Color black].
+	leftMargin := (line leftMarginForAlignment: alignment) + offset x.
+	rightMargin := line rightMargin + offset x.
+	lineY := line top + offset y.
+	lastIndex := textLine first.
+	nowLeftInRun := leftInRun <= 0 
+				ifTrue: 
+					[self setStopConditions.	"also sets the font"
+					text runLengthFor: lastIndex]
+				ifFalse: [leftInRun]. 
+	runX := destX := leftMargin.
+	runStopIndex := lastIndex + (nowLeftInRun - 1) min: line last.
+	spaceCount := 0.
+	done := false.
+	[done] whileFalse: 
+			["remember where this portion of the line starts"
 
-	rightMargin _ line rightMargin + offset x.
-	lineY _ line top + offset y.
-	lastIndex _ textLine first.
-	leftInRun <= 0
-		ifTrue: [self setStopConditions.  "also sets the font"
-				nowLeftInRun _ text runLengthFor: lastIndex]
-		ifFalse: [nowLeftInRun _ leftInRun].
-	runX _ destX _ leftMargin.
+			startLoc := destX @ destY.
+			startIndex := lastIndex.
 
-	runStopIndex _ lastIndex + (nowLeftInRun - 1) min: line last.
-	spaceCount _ 0.
-	done _ false.
+			"find the end of this portion of the line"
+			stopCondition := self 
+						scanCharactersFrom: lastIndex
+						to: runStopIndex
+						in: text string
+						rightX: rightMargin
+						stopConditions: stopConditions
+						kern: kern.	"displaying: false"
 
-	[done] whileFalse: [
-		"remember where this portion of the line starts"
-		startLoc _ destX@destY.
-		startIndex _ lastIndex.
+			"display that portion of the line"
+			canvas 
+				drawString: text string
+				from: startIndex
+				to: lastIndex
+				at: startLoc
+				font: font
+				color: foregroundColor.
 
-		"find the end of this portion of the line"
-		stopCondition _ self scanCharactersFrom: lastIndex to: runStopIndex
-						in: text string rightX: rightMargin stopConditions: stopConditions
-						kern: kern "displaying: false".
-
-		"display that portion of the line"
-		canvas text: (text string copyFrom: startIndex to: lastIndex)
-			bounds: (startLoc corner: 99999@99999)
-			font: font
-			color: foregroundColor.
-
-		"handle the stop condition"
-		done _ self perform: stopCondition
-	].
-
+			"handle the stop condition"
+			done := self perform: stopCondition].
 	^runStopIndex - lastIndex
