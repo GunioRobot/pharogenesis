@@ -1,0 +1,2 @@
+firstPointListGet
+	^workBuffer at: GWPointListFirst
