@@ -3,7 +3,7 @@ addFirst: value
 	lastIndex _ nil.  "flush access cache"
 	(runs size=0 or: [values first ~= value])
 	  ifTrue:
-		[runs_ (Array with: 1) , runs.
-		values_ (Array with: value) , values]
+		[runs addFirst: 1.
+		values addFirst: value]
 	  ifFalse:
 		[runs at: 1 put: runs first+1]
