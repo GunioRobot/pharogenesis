@@ -19,7 +19,7 @@ displayInterpolatedOn: aForm
 	].
 	"Otherwise use the 3D engine for our purposes"
 	engine viewport: aForm boundingBox.
-	engine material: (B3DMaterial new emission: Color white).
+	engine material: ((Smalltalk at: #B3DMaterial) new emission: Color white).
 	engine texture: self.
-	engine render: (B3DIndexedQuadMesh new plainTextureRect).
+	engine render: ((Smalltalk at: #B3DIndexedQuadMesh) new plainTextureRect).
 	engine finish.
