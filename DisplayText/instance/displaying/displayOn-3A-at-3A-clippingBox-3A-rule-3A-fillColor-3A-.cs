@@ -6,5 +6,7 @@ displayOn: aDisplayMedium at: aDisplayPoint clippingBox: clipRectangle rule: rul
 		displayOn: aDisplayMedium
 		at: aDisplayPoint + offset
 		clippingBox: clipRectangle
-		rule: ruleInteger
+		rule: ((ruleInteger = Form over and: [backColor isTransparent])
+				ifTrue: [Form paint]
+				ifFalse: [ruleInteger])
 		fillColor: aForm
