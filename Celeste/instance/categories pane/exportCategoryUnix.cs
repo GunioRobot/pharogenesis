@@ -1,8 +1,7 @@
 exportCategoryUnix
 	"Store the filtered message list of the current category into a Eudora/Unix database"
 	| destFileName destFile messageIds count |
-
-	currentCategory ifNil: [ ^self ].
+	mailDB ifNil: [ ^self ].
 
 	destFileName _ FillInTheBlank
 		request: 'Destination mail file?'
@@ -12,7 +11,7 @@ exportCategoryUnix
 	destFile ifNil: [ ^self error: 'could not open file' ].
 	destFile setToEnd.
 
-	messageIds _ self filteredMessagesIn: currentCategory.
+	messageIds _ self filteredMessages.
 
 	('exporting ', messageIds size printString, ' messages')
 		displayProgressAt: Sensor mousePoint
