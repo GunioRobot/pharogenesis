@@ -4,5 +4,5 @@ fileOutCategory: category asHtml: useHtml
 	fileStream _ useHtml
 		ifTrue: [(FileStream newFileNamed: category , '.html') asHtml]
 		ifFalse: [FileStream newFileNamed: category , '.st'].
-	self fileOutCategory: category on: fileStream.
+	self fileOutCategory: category on: fileStream initializing: true.
 	fileStream close
