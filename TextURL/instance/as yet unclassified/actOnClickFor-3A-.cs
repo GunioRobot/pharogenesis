@@ -27,14 +27,15 @@ actOnClickFor: anObject
 		].
 
 	"no browser in sight.  ask if we should start a new browser"
-	(self confirm: 'open a browser to view this URL?') ifTrue: [
-		Scamper openOnUrl: url.
+	((self confirm: 'open a browser to view this URL?' translated) and: [WebBrowser default notNil]) ifTrue: [
+		WebBrowser default openOnUrl: url.
 		^ true ].
 
 	"couldn't display in a browser.  Offer to put up just the source"
 
-	response _ (PopUpMenu labels: 'View web page as source\Cancel' withCRs)
+	response _ (PopUpMenu labels: 'View web page as source
+Cancel' translated)
 		startUpWithCaption: 'Couldn''t find a web browser.  View
-page as source?'.
+page as source?' translated.
 	response = 1 ifTrue: [HTTPSocket httpShowPage: url].
 	^ true
