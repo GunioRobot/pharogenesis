@@ -1,0 +1,3 @@
+resources
+	^self class resources
+			
