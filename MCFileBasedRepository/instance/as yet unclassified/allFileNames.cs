@@ -1,0 +1,2 @@
+allFileNames
+	self subclassResponsibility
