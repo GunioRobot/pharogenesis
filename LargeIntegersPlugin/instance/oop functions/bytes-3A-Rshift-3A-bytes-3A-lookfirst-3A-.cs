@@ -1,6 +1,5 @@
 bytes: aBytesOop Rshift: anInteger bytes: b lookfirst: a 
-	"Attention: this method invalidates all oop's! Only newBytes is valid at    
-	  return."
+	"Attention: this method invalidates all oop's! Only newBytes is valid at return."
 	"Shift right 8*b+anInteger bits, 0<=n<8.         
 	Discard all digits beyond a, and all zeroes at or below a."
 	"Does not normalize."
