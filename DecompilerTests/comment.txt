@@ -1,0 +1,6 @@
+Apparently the decompiler does not really work totally.
+Here are a bunch of methods that can help improving the decompiler:
+	- blockingClasses return class for which it is impossible to decompile methods 
+	- failures are problems that lead to a DNU
+	- decompilerDiscrepancies are the results of running decompileTestHelper..as you see the pattern 	
+	is quite present.
