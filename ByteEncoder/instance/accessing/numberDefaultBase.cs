@@ -1,0 +1,2 @@
+numberDefaultBase
+	^self class numberDefaultBase.
