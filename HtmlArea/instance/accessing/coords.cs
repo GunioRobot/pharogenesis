@@ -1,0 +1,2 @@
+coords
+	^self getAttribute: 'coords'
