@@ -1,6 +1,6 @@
 innocuousName
 	^ (self isFlap)
 		ifTrue:
-			['flap']
+			['flap' translated]
 		ifFalse:
 			[super innocuousName]
