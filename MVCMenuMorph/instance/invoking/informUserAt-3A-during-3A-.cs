@@ -4,15 +4,16 @@ informUserAt: aPoint during: aBlock
 	| title w |
 	Smalltalk isMorphic ifFalse: [^ self].
 
-	title _ submorphs first submorphs first.
+	title _ self allMorphs detect: [ :ea | ea hasProperty: #titleString ].
+	title _ title submorphs first.
 	self visible: false.
-	w _ Display getCurrentMorphicWorld.
+	w _ ActiveWorld.
 	aBlock value:[:string|
 		self visible ifFalse:[
 			w addMorph: self centeredNear: aPoint.
 			self visible: true].
 		title contents: string.
-		self setConstrainedPositionFrom: Sensor cursorPoint.
+		self setConstrainedPosition: Sensor cursorPoint hangOut: false.
 		self changed.
 		w displayWorld		 "show myself"
 	]. 
