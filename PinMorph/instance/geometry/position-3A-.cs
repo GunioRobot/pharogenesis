@@ -4,7 +4,9 @@ position: p
 	r _ owner bounds.
 	side _ r sideNearestTo: p.
 	p1 _ r pointNearestTo: p.  "a point on the border"
-	p1 _ p1 grid: 4@4.
+	(side = # top or: [side = #left])
+		ifTrue: [p1 _ r topLeft + (p1 - r topLeft grid: 4@4)]
+		ifFalse: [p1 _ r bottomRight + (p1 - r bottomRight grid: 4@4)].
 
 	"Update pin spec(5) = side index + fraction along side"
 	corners _ r corners.
