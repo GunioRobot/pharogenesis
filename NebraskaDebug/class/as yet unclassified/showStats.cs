@@ -1,4 +1,4 @@
 showStats
 
-	DEBUG ifNil: [^1 beep].
+	DEBUG ifNil: [^Beeper beep].
 	DEBUG explore.
