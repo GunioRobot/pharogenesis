@@ -3,6 +3,7 @@ mapPointersInObjectsFrom: memStart to: memEnd
 
 	| oop |
 	self inline: false.
+	self compilerMapHookFrom: memStart to: memEnd.
 	"update interpreter variables"
 	self mapInterpreterOops.
 
