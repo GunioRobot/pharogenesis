@@ -1,7 +1,7 @@
 expandButton
 
 	^self
-		buttonNamed: 'More' 
+		buttonNamed: 'More' translated
 		action: #doExpand 
 		color: self buttonColor 
-		help: 'Show more info on this project.'
+		help: 'Show more info on this project.' translated.
