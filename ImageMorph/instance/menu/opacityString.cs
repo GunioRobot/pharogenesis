@@ -1,2 +1,4 @@
 opacityString
-	^self isOpaque ifTrue:['<on>opaque'] ifFalse:['<off>opaque']
+	^ (self isOpaque
+		ifTrue: ['<on>']
+		ifFalse: ['<off>']), 'opaque' translated
