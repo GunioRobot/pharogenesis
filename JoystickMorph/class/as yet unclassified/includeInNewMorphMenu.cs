@@ -1,0 +1,2 @@
+includeInNewMorphMenu
+	^ true
