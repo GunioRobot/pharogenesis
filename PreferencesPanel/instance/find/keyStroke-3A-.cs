@@ -1,5 +1,5 @@
 keyStroke: anEvent
-	"Handle a keystroke event in the panel; we map f into a #findPreference: call here"
+	"Handle a keystroke event in the panel; we map f (for find) into a switch to the ? category"
 
 	(anEvent keyCharacter == $f) ifTrue:
-		[^ self findPreference: anEvent]
+		[^ self switchToCategoryNamed: #? event: nil]
