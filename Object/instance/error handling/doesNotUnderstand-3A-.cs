@@ -4,6 +4,9 @@ doesNotUnderstand: aMessage
 
 	(Preferences autoAccessors and: [self tryToDefineVariableAccess: aMessage])
 		ifTrue: [^ aMessage sentTo: self].
-	MessageNotUnderstood new message: aMessage;
+
+	MessageNotUnderstood new 
+		message: aMessage;
+		receiver: self;
 		signal.
-	^aMessage sentTo: self
+	^ aMessage sentTo: self.
