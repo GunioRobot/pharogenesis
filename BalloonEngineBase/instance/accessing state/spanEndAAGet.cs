@@ -1,0 +1,2 @@
+spanEndAAGet
+	^workBuffer at: GWSpanEndAA
