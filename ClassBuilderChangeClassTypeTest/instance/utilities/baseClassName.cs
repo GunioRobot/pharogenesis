@@ -1,0 +1,3 @@
+baseClassName
+
+   ^'TestClassForClassChangeTest'
