@@ -17,5 +17,5 @@ left on Rocko Dundee Rd
 down a swail and up.  We''re #419 on the left'.
 	PDARecord new key: 'work'; description: 'archaeology memo'.
 	PDARecord new key: 'work'; description: 'worlds and envts memo'.
-	PDARecord new key: 'work'; description: PDA comment string.
+	PDARecord new key: 'work'; description: PDA comment asString.
 	}
