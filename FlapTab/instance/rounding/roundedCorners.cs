@@ -1,14 +1,5 @@
 roundedCorners
-	^self orientation == #vertical
-		ifTrue:
-			[edgeToAdhereTo == #right
-				ifTrue:
-					[#(1 2)]
-				ifFalse:
-					[#(3 4)]]
-		ifFalse:
-			[edgeToAdhereTo == #top
-				ifTrue:
-					[#(2 3)]
-				ifFalse:
-					[#(1 4)]].
+	edgeToAdhereTo == #bottom ifTrue: [^ #(1 4)].
+	edgeToAdhereTo == #right ifTrue: [^ #(1 2)].
+	edgeToAdhereTo == #left ifTrue: [^ #(3 4)].
+	^ #(2 3)  "#top and undefined"
