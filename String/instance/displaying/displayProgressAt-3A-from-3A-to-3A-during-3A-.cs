@@ -17,20 +17,28 @@ The key, though, is that the block is supplied with an argument,
 named 'bar' in the example, which will update the bar image every 
 it is sent the message value: x, where x is in the from:to: range.
 "
-	| delta savedArea captionText textFrame barFrame outerFrame |
+	| delta savedArea captionText textFrame barFrame outerFrame result range |
 	barFrame _ aPoint - (75@10) corner: aPoint + (75@10).
 	captionText _ DisplayText text: self asText allBold.
+	captionText
+		foregroundColor: Color black
+		backgroundColor: Color white.
 	textFrame _ captionText boundingBox insetBy: -4.
 	textFrame _ textFrame align: textFrame bottomCenter
 					with: barFrame topCenter + (0@2).
 	outerFrame _ barFrame merge: textFrame.
 	delta _ outerFrame amountToTranslateWithin: Display boundingBox.
-	barFrame moveBy: delta.  textFrame moveBy: delta.  outerFrame moveBy: delta.
+	barFrame _ barFrame translateBy: delta.
+	textFrame _ textFrame translateBy: delta.
+	outerFrame _ outerFrame translateBy: delta.
 	savedArea _ Form fromDisplay: outerFrame.
 	Display fillBlack: barFrame; fillWhite: (barFrame insetBy: 2).
 	Display fillBlack: textFrame; fillWhite: (textFrame insetBy: 2).
 	captionText displayOn: Display at: textFrame topLeft + (4@4).
-	workBlock value:  "Supply the bar-update block for evaluation in the work block"
-		[:barVal | Display fillGray: (barFrame topLeft + (2@2) extent:
-					((barFrame width-4) * (barVal-minVal) /(maxVal - minVal)@16))].
+	range _ maxVal = minVal ifTrue: [1] ifFalse: [maxVal - minVal].  "Avoid div by 0"
+	result _ workBlock value:  "Supply the bar-update block for evaluation in the work block"
+		[:barVal |
+		Display fillGray: (barFrame topLeft + (2@2) extent:
+				(((barFrame width-4) * ((barVal-minVal) asFloat / range min: 1.0)) asInteger@16))].
 	savedArea displayOn: Display at: outerFrame topLeft.
+	^ result
