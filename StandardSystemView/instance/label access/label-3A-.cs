@@ -4,8 +4,7 @@ label: aString
 			withText: (Text string: ((aString == nil or: [aString isEmpty])
 								ifTrue: ['Untitled' copy]
 								ifFalse: [aString])
-							attributes: (Array with: (TextFontChange fontNumber: 2)
-											with: TextEmphasis bold))
+							attributes: (Array with: TextEmphasis bold))
 			style: LabelStyle.
 	insetDisplayBox == nil ifTrue: [^ self].  "wait for further initialization"
 	self setLabelRegion
