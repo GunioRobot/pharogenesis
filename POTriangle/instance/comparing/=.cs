@@ -1,2 +1,4 @@
 = aTDTriangle 
-	^ self edges asSet = aTDTriangle edges asSet
+
+	^ self species == aTDTriangle species and: [
+		self edges asSet = aTDTriangle edges asSet]
