@@ -1,4 +1,4 @@
 startRunning
-	costume startStepping.
+	self costume arrangeToStartStepping.
 	self instantiatedUserScriptsDo:
 		[:aScript | aScript startRunningIfPaused]
