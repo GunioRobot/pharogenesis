@@ -1,5 +1,6 @@
 specialMenuItems
-	"Refer to comment under #presentSpecialMenu.  4/29/96 sw."
+	"Refer to comment under #presentSpecialMenu.  .
+	 : added objectsReferencingIt,"
 
 	^ #(	'Transcript cr; show: ''testing'''
 			'view superView model inspect'
@@ -10,4 +11,5 @@ specialMenuItems
 			'view topView inspect'
 			'self compareToClipboard'
 			'view insideColor: Form white'
+			'self objectsReferencingIt'
 		) 
