@@ -1,3 +1,3 @@
 chooseEmphasis
-	self installEditor changeEmphasis.
+	self editor changeEmphasis.
 	self updateFromParagraph
