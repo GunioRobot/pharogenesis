@@ -1,9 +1,12 @@
 hasInterned: aString ifTrue: symBlock 
-	"Answer with false if aString hasnt been interned (into a Symbol), 
+	"Answer with false if aString hasnt been interned (into a Symbol),  
 	otherwise supply the symbol to symBlock and return true."
 
 	| symbol |
-
-	^(symbol _ SymbolTable like: aString)
+	((aString isKindOf: MultiString)
+			and: [aString isOctetString not])
+		ifTrue: [^ MultiSymbol hasInterned: aString ifTrue: symBlock].
+	^ (symbol _ self lookup: aString)
 		ifNil: [false]
-		ifNotNil: [symBlock value: symbol. true]
+		ifNotNil: [symBlock value: symbol.
+			true]
