@@ -1,2 +1,2 @@
 roundCornersOf: aMorph during: aBlock
-	^aBlock value
+	^self roundCornersOf: aMorph in: aMorph bounds during: aBlock
