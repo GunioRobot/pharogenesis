@@ -1,2 +1,3 @@
 knownName
-	^ self valueOfProperty: #name
+	extension == nil ifTrue: [^ nil].
+	^ extension externalName
