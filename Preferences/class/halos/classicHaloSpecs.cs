@@ -13,6 +13,7 @@ classicHaloSpecs
 	(addGrabHandle:			center		top				(black)							none)
 	(addDragHandle:			rightCenter	top				(brown)							none)
 	(addDupHandle:			right		top				(green)							none)	
+	(addMakeSiblingHandle:		right		top				(green muchDarker)				'Halo-Dup')	
 	(addDebugHandle:		right		topCenter		(blue	veryMuchLighter)		none)
 	(addPoohHandle:			right		center			(white)							none)
 	(addPaintBgdHandle:		right		center			(lightGray)						none)
