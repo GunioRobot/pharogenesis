@@ -1,0 +1,1 @@
+I am responsible for building the view for the preference that choose the halo theme
