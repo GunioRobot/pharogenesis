@@ -10,5 +10,6 @@ notify: error at: location in: source
 			with: error.
 	self setClass: aClass
 		code: aString
-		debugger: (Debugger context: thisContext).
+		debugger: (Debugger context: thisContext)
+		doitFlag: false.
 	self class open: self.
