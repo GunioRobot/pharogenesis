@@ -1,3 +1,3 @@
 specForDeleteButton
-	"action label helpText"
-	^ #(#turnOn 'Delete' 'Delete the selected message' )
+	"getState action label helpText"
+	^ #(nil #deleteMessage 'Delete' 'Delete the selected message' )
