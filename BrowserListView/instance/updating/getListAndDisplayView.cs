@@ -7,4 +7,5 @@ getListAndDisplayView
 		ifTrue: [^self]
 		ifFalse: 
 			[self list: newList.
+			model maybeSetSelection.
 			self displayView; emphasizeView]
