@@ -3,6 +3,7 @@ writesField: field
 	by the argument."
 
 	self isQuick ifTrue: [^false].
-	(field <= 8 and: [self scanFor: 96 + field - 1])
-		ifTrue: [^true]
-		ifFalse: [^self scanLongStore: field - 1]
+	field <= 8 ifTrue: [^ (self scanFor: 96 + field - 1)
+						or: [self scanLongStore: field - 1]].
+	field <= 64 ifTrue: [^ self scanLongStore: field - 1].
+	^ self scanVeryLongStore: 160 offset: field - 1
