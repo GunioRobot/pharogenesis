@@ -3,4 +3,4 @@ obsolete
 	superclass' subclass list."
 
 	methodDict _ MethodDictionary new.
-	superclass removeSubclass: self
+	superclass == nil ifFalse: [superclass removeSubclass: self]
