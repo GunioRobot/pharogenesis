@@ -12,11 +12,11 @@ loadScannerFrom: bbObj
 	scanDisplayFlag _ displayFlag.
 	interpreterProxy success: (
 		(interpreterProxy isPointers: scanStopArray)
-			and: [(interpreterProxy lengthOf: scanStopArray) >= 1]).
+			and: [(interpreterProxy slotSizeOf: scanStopArray) >= 1]).
 	scanXTable _ interpreterProxy fetchPointer: BBXTableIndex ofObject: bbObj.
 	interpreterProxy success: (
 		(interpreterProxy isPointers: scanXTable)
-			and: [(interpreterProxy lengthOf: scanXTable) >= 1]).
+			and: [(interpreterProxy slotSizeOf: scanXTable) >= 1]).
 
 	"width and sourceX may not be set..."
 	interpreterProxy storeInteger: BBWidthIndex ofObject: bbObj withValue: 0.
@@ -26,5 +26,5 @@ loadScannerFrom: bbObj
 	scanDisplayFlag
 		ifTrue: [interpreterProxy success: (self loadBitBltFrom: bbObj)]
 		ifFalse: [bitBltOop _ bbObj.
-				destX _ interpreterProxy fetchIntegerOrTruncFloat: BBDestXIndex ofObject: bbObj].
+				destX _ self fetchIntOrFloat: BBDestXIndex ofObject: bbObj].
 	^interpreterProxy failed not
