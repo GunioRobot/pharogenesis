@@ -1,5 +1,9 @@
 contentsOfArea: aRectangle into: aForm
+	| bb |
 	self flush.
-	port contentsOfArea: ((aRectangle origin + origin) negated extent: aRectangle extent)
-		into: aForm.
+	bb _ BitBlt toForm: aForm.
+	bb sourceForm: form; combinationRule: Form over;
+		sourceX: (aRectangle left + origin x); sourceY: (aRectangle top + origin y);
+		width: aRectangle width; height: aRectangle height;
+		copyBits.
 	^aForm
