@@ -1,0 +1,3 @@
+secondsSinceMidnight
+
+	^ seconds
