@@ -1,3 +1,3 @@
 endOfLastToken
 
-	^ prevMark + prevToken - 1
+	^ prevEnd ifNil: [mark]
