@@ -1,2 +1,2 @@
 snapshot
-	Smalltalk snapshot: true andQuit: false
+	SmalltalkImage current snapshot: true andQuit: false
