@@ -3,4 +3,4 @@ B3DEnginePlugin
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'VMConstruction-Plugins'
+	category: 'Balloon3D-Plugins'
