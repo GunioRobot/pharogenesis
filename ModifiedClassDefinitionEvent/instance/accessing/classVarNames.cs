@@ -1,0 +1,2 @@
+classVarNames
+	^ item classVarNames asSet
