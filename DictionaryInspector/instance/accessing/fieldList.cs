@@ -1,2 +1,3 @@
 fieldList
-	^ keyArray collect: [ :key | key printString ]
+	^ self baseFieldList
+		, (keyArray collect: [:key | key printString])
