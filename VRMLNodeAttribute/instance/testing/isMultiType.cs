@@ -1,0 +1,2 @@
+isMultiType
+	^type first = $M
