@@ -21,7 +21,7 @@ displayLines: linesInterval affectedRectangle: affectedRectangle
 		corner: affectedRectangle right @ lastLineIndexBottom)
 	  intersects: affectedRectangle)
 		ifTrue: [ " . . . (skip to clear-below if no lines displayed)"
-				DisplayScanner new
+				MultiDisplayScanner new
 					displayLines: (firstLineIndex to: lastLineIndex)
 					in: self clippedBy: affectedRectangle].
 	lastLineIndex = lastLine ifTrue: 
