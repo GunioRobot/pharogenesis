@@ -1,8 +1,9 @@
-printCommentOn: aStream indent: indent
-
+printCommentOn: aStream indent: indent 
 	| thisComment |
 	comment == nil ifTrue: [^self].
-	1 to: comment size do: 
+	"Show comments in green"
+	aStream withAttribute: (TextColor color: Color blue) do: 
+	[1 to: comment size do: 
 		[:index | 
 		index > 1 ifTrue: [aStream crtab: indent].
 		aStream nextPut: $".
@@ -10,5 +11,5 @@ printCommentOn: aStream indent: indent
 		self printSingleComment: thisComment
 			on: aStream
 			indent: indent.
-		aStream nextPut: $"].
+		aStream nextPut: $"]].
 	comment _ nil
