@@ -8,7 +8,7 @@ transformBy: aDisplayTransform clippingTo: aClipRect during: aBlock	 smoothing: 
 	].
 	"Prepare an appropriate warp from patch to innerRect"
 	innerRect _ aClipRect.
-	patchRect _ aDisplayTransform globalBoundsToLocal: innerRect.
+	patchRect _ (aDisplayTransform globalBoundsToLocal: innerRect) truncated.
 	sourceQuad _ (aDisplayTransform sourceQuadFor: innerRect)
 					collect: [:p | p - patchRect topLeft].
 	warp _ self warpFrom: sourceQuad toRect: innerRect.
