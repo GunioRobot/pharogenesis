@@ -7,8 +7,8 @@ nextPut: anObject
 	whatIsAPrimitive."
 
 	<primitive: 66>
-	position = writeLimit
-		ifTrue: [^self pastEndPut: anObject]
+	position >= writeLimit
+		ifTrue: [^ self pastEndPut: anObject]
 		ifFalse: 
 			[position _ position + 1.
 			^collection at: position put: anObject]
