@@ -1,2 +1,2 @@
 wrap
-	costume wrap
+	self costume wrap
