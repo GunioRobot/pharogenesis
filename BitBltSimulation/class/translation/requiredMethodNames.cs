@@ -1,0 +1,2 @@
+requiredMethodNames
+	^self opTable asSet
