@@ -1,5 +1,6 @@
 contents: aString notifying: aController
 	| selectedMessageName selector oldMessageList cls |
+	self okayToAccept ifFalse: [^ false].
 	selectedMessageName _ self selectedMessageName.
 	oldMessageList _ self messageList.
 	contents _ nil.
