@@ -4,8 +4,8 @@ driveName
 
    | firstTwoChars |
 
-   ( pathName size >= 2 ) ifTrue: [
-      firstTwoChars _ (pathName copyFrom: 1 to: 2).
+   ( pathName asSqueakPathName size >= 2 ) ifTrue: [
+      firstTwoChars _ (pathName asSqueakPathName copyFrom: 1 to: 2).
       (self class isDrive: firstTwoChars) ifTrue: [^firstTwoChars]
    ].
    ^''
