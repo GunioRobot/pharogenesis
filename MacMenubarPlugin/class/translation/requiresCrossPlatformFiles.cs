@@ -1,0 +1,2 @@
+requiresCrossPlatformFiles
+	^false
