@@ -6,9 +6,9 @@ self halt.		"not ready for prime time"
 	"process user input events, but only for remote hands"
 	self handsDo: [:h |
 		(h isKindOf: RemoteHandMorph) ifTrue: [
-			activeHand _ h.
+			ActiveHand _ h.
 			h processEvents.
-			activeHand _ nil]].
+			ActiveHand _ nil]].
 
 	self runStepMethods.
 	self displayWorldSafely.
