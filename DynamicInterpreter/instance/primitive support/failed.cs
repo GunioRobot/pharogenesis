@@ -1,0 +1,3 @@
+failed
+
+	^successFlag not
