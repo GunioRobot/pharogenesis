@@ -1,3 +1,6 @@
-labels: labels lines: lines selections: selections
-	"Note that the last item in selections will be returned on menu aborts"
-	^ (self labels: labels lines: lines) selections: selections
+labels: aString lines: linesArray selections: selectionsArray
+	"Answer an instance of me whose items are in aString, with lines drawn 
+	after each item indexed by anArray. Record the given array of selections
+	corresponding to the items in labelsArray."
+
+	^ (self labels: aString lines: linesArray) selections: selectionsArray
