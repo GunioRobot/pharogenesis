@@ -5,5 +5,5 @@ initialize
 	origin _ 0 @ 0.
 	corner _ 0 @ 0.
 	borderWidth _ 1.
-	borderColor _ Display black.
-	insideColor _ Display white
+	borderColor _ Color black.
+	insideColor _ Color white.
