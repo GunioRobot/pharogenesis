@@ -4,7 +4,7 @@ rejectDropMorph: aMorph event: evt
 	(2)  It remembers its former position only, in which case it was torn off from a parts bin, and the UI is that it floats back to its donor position and then vanishes.
 	(3)  Neither former owner nor position is remembered, in which case it is whisked to the Trash"
 
-	formerOwner ifNotNil:
+	(formerOwner notNil and: [formerOwner isPartsBin not]) ifTrue:
 		[^ aMorph slideBackToFormerSituation: evt].
 
 	formerPosition ifNotNil:  "Position but no owner -- can just make it vanish"
