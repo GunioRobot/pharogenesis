@@ -1,4 +1,3 @@
 lastValue
-
-	data size = 0 ifTrue: [^ 0].
-	^ data last
+	data isEmpty ifTrue: [^0].
+	^data last
