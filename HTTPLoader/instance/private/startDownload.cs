@@ -1,12 +1,19 @@
 startDownload
 	| newDownloadProcess |
-	(downloads size < self maxNrOfConnections 
-		and: [requests size > 0]) ifTrue: [
-			newDownloadProcess _ [
-				self flag: #httpLoader log: 'Starting download'.
-				self nextRequest startRetrieval.
-				self flag: #httpLoader log: 'Download done'.
-				downloads remove: Processor activeProcess.
-				self startDownload] newProcess.
-			downloads add: newDownloadProcess.
-			newDownloadProcess resume]
+	
+	downloads size >= self maxNrOfConnections ifTrue: [^self].
+	requests size <= 0 ifTrue: [^self].
+
+	newDownloadProcess _ [
+		[
+			self nextRequest startRetrieval
+		] on: FTPConnectionException do: [ :ex | 
+			Cursor normal show.
+			self removeProcess: Processor activeProcess.
+			self startDownload
+		].
+		self removeProcess: Processor activeProcess.
+		self startDownload
+	] newProcess.
+	downloads add: newDownloadProcess.
+	newDownloadProcess resume
