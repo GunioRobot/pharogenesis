@@ -1,0 +1,7 @@
+An editor for the http proxy settings.
+
+To open it evaluate:
+
+	HTTPProxyEditor open.
+
+or use the World Menu (open... >> http proxy editor).
