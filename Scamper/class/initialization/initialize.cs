@@ -1,3 +1,9 @@
 initialize
-	self StartUrl: 'http://minnow.cc.gatech.edu/squeak.1'.
+	"Initialize the class"
+
+	self StartUrl: 'browser:about'.
+	FileList registerFileReader: self.
+	self registerInOpenMenu.
+	WebBrowser register: self.
 	
+	Flaps registerQuad: { #Scamper. #newOpenableMorph. 'Scamper'. 'A web browser' } forFlapNamed: 'Tools'.
