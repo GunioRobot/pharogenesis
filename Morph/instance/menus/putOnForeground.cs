@@ -7,9 +7,9 @@ putOnForeground
 formerly had its own value for this
 item.  If you put it on the foreground,
 the values  of this item on all other
-cards will be lost'
+cards will be lost' translated
 				orCancel: [^ self]].
 
 	self removeProperty: #shared.
-	self pasteUpMorph reassessBackgroundShape.
+	self stack reassessBackgroundShape.
 	"still work to be done here!"
