@@ -5,8 +5,8 @@ buildSystemCategoryBrowserEditString: aString
 	| newBrowser |
 	systemCategoryListIndex > 0
 		ifTrue: 
-			[newBrowser _ Browser new.
+			[newBrowser _ self class new.
 			newBrowser systemCategoryListIndex: systemCategoryListIndex.
 			newBrowser setClass: self selectedClassOrMetaClass selector: self selectedMessageName.
-			Browser openBrowserView: (newBrowser openSystemCatEditString: aString)
+			self class openBrowserView: (newBrowser openSystemCatEditString: aString)
 				label: 'Classes in category ', newBrowser selectedSystemCategoryName]
