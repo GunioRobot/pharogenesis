@@ -1,0 +1,2 @@
+initialize
+	ProtectTable _ Semaphore forMutualExclusion
