@@ -1,16 +1,15 @@
 initialize
-
+	"initialize the state of the receiver"
 	super initialize.
+	""
 	Statistics newSession.
 	autoMoveRecursionCount _ 0.
 	self listDirection: #topToBottom.
-	self wrapCentering: #center; cellPositioning: #topCenter.
+	self wrapCentering: #center;
+		 cellPositioning: #topCenter.
 	self vResizing: #shrinkWrap.
 	self hResizing: #shrinkWrap.
 	self
-		color: self colorNearTop;
-		borderWidth: 2;
-		addMorph: self makeControls;
-		addMorph: self board;
-		newGame.
-
+		 addMorph: self makeControls;
+		 addMorph: self board;
+		 newGame
