@@ -16,9 +16,14 @@ paintBits
 	colorMap _ oldMap.
 	combinationRule _ saveRule
 
-"(Form dotOfSize: 32)
-	displayOn: Display
-	at: Sensor cursorPoint
-	clippingBox: Display boundingBox
-	rule: Form paint
-	mask: Form lightGray"
+" | dot |
+dot _ Form dotOfSize: 32.
+((BitBlt destForm: Display
+		sourceForm: dot
+		fillColor: Color lightGray
+		combinationRule: Form paint
+		destOrigin: Sensor cursorPoint
+		sourceOrigin: 0@0
+		extent: dot extent
+		clipRect: Display boundingBox)
+		colorMap: (Bitmap with: 0 with: 16rFFFFFFFF)) copyBits"
