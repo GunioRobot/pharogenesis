@@ -17,7 +17,7 @@ processCharacterMappingTable: entry
 			copy _ entry copy.
 			copy offset: initialOffset + offset.
 			cmap _ self decodeCmapFmtTable: copy.
-			(pID = 1 and: [cmap notNil]) "Prefer Macintosh encoding over everything else"
+			(pID = 3 and: [cmap notNil]) "Prefer Windows encoding over everything else"
 				ifTrue: [^ pID -> cmap].
 			assoc _ pID -> cmap. "Keep it in case we don't find a Mac encoded table"
 		].
