@@ -1,8 +1,8 @@
-getText 
+getText
 	"Retrieve the current model text"
 
 	| newText |
-	getTextSelector == nil ifTrue: [^ Text new].
-	newText _ model perform: getTextSelector.
+	getTextSelector isNil ifTrue: [^Text new].
+	newText := model perform: getTextSelector.
 	newText ifNil: [^Text new].
-	^ newText shallowCopy
+	^newText shallowCopy
