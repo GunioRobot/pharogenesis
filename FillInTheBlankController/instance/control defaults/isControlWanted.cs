@@ -1,3 +1,2 @@
 isControlWanted
-
 	^ model done not
