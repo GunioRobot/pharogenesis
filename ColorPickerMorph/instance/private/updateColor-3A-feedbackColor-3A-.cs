@@ -8,3 +8,4 @@ updateColor: aColor feedbackColor: feedbackColor
 	self form: originalForm.
 	selectedColor _ aColor.
 	updateContinuously ifTrue: [self updateTargetColor].
+	self locationIndicator center: self topLeft + (self positionOfColor: feedbackColor).
