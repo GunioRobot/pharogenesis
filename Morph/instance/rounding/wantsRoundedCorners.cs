@@ -1,5 +1,3 @@
 wantsRoundedCorners
-	"Default response is simple, fast, and false.
-	May be overridden to allow almost any morph to be rounded."
-
-	^ false
+	"Return true if the receiver wants its corners rounded"
+	^ self cornerStyle == #rounded
