@@ -4,7 +4,7 @@ receiver: rcvr selector: selName arguments: args precedence: p from: encoder
 	self receiver: rcvr
 		arguments: args
 		precedence: p.
-	special _ MacroSelectors indexOf: selName.
+	self noteSpecialSelector: selName.
 	(self transform: encoder)
 		ifTrue: 
 			[selector isNil
