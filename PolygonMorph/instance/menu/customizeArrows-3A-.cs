@@ -10,7 +10,7 @@ customizeArrows: evt
 			self arrowSpec: (newPoint - origin) / 5.0]
 		lastPointDo:
 			[:newPoint | handle deleteBalloon.
-			self halo doIfNotNil: [:halo | halo addHandles].].
+			self halo ifNotNilDo: [:halo | halo addHandles].].
 	aHand attachMorph: handle.
 	handle setProperty: #helpAtCenter toValue: true.
 	handle showBalloon:
