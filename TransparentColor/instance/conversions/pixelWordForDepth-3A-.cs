@@ -1,0 +1,3 @@
+pixelWordForDepth: depth
+
+	^ 0
