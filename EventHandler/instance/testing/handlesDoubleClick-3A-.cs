@@ -1,0 +1,2 @@
+handlesDoubleClick: evt
+	^ doubleClickRecipient notNil
