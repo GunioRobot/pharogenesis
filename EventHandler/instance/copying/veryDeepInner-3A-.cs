@@ -3,4 +3,3 @@ veryDeepInner: deepCopier
 
 	super veryDeepInner: deepCopier.
 	"just keep old pointers to all fields"
-	clickRecipient _ clickRecipient.
