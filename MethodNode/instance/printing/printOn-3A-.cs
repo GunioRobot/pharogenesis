@@ -1,24 +1,31 @@
-printOn: aStream
-	| s args |
+printOn: aStream 
+	| args |
 	precedence = 1
 		ifTrue: 
 			[aStream nextPutAll: self selector]
 		ifFalse: 
 			[args _ ReadStream on: arguments.
-			self selector keywords with: arguments do: 
-				[:s :arg | 
-				aStream nextPutAll: s; space; nextPutAll: arg key; space]].
-	aStream cr.
+			self selector keywords do: 
+				[:s | 
+				aStream nextPutAll: s; space.
+				aStream withAttribute: (TextColor color: Color green)
+					do: [aStream nextPutAll: args next key].
+				aStream space]].
 	comment == nil ifFalse: 
-			[self printCommentOn: aStream indent: 0.
-			aStream cr].
-	temporaries isEmpty 
-		ifTrue: [comment == nil ifFalse: [aStream cr]]
-		ifFalse: [aStream tab; nextPutAll: '| '.
-				temporaries do: 
-					[:temp | aStream nextPutAll: temp key; space].
-				aStream nextPut: $|; cr].
-	(primitive between: 1 and: 255) ifTrue:
-			[self printPrimitiveOn: aStream.
-			aStream cr].
-	^ block printStatementsOn: aStream indent: 0
+			[aStream crtab: 1.
+			self printCommentOn: aStream indent: 1].
+	temporaries size > 0 ifTrue: 
+			[aStream crtab: 1.
+			aStream nextPutAll: '| '.
+			aStream withAttribute: (TextColor color: Color green)
+				do: [temporaries do: 
+					[:temp | 
+					aStream nextPutAll: temp key.
+					aStream space]].
+			aStream nextPut: $|].
+	primitive > 0 ifTrue:
+			[primitive < 256 ifTrue:  " Dont decompile <prim> for, eg, ^ self "
+				[aStream crtab: 1.
+				self printPrimitiveOn: aStream]].
+	aStream crtab: 1.
+	^block printStatementsOn: aStream indent: 0
