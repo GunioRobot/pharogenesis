@@ -4,6 +4,7 @@ checkImageVersionFrom: f startingAt: imageOffset
 
 	| version firstVersion |
 	self var: #f declareC: 'sqImageFile f'.
+	self var: #imageOffset declareC: 'squeakFileOffsetType imageOffset'.
 
 	"check the version number"
 	self sqImageFile: f Seek: imageOffset.
