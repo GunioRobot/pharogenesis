@@ -1,0 +1,2 @@
+rotationAngle: aNumber
+	rotationAngle := aNumber
