@@ -11,7 +11,7 @@ againOrSame: useOldKeys many: many
 		"If the last command was in another paragraph, ChangeText is set..."
 		paragraph == UndoParagraph ifTrue: "... else set it now as follows."
 			[UndoInterval ~= home ifTrue: [self selectInterval: UndoInterval]. "blink"
-			ChangeText _ ((UndoMessage sends: #undoCutCopy:) and: [startBlock ~= stopBlock])
+			ChangeText _ ((UndoMessage sends: #undoCutCopy:) and: [self hasSelection])
 				ifTrue: [FindText] "== objects signal no model-locking by 'undo copy'"
 				ifFalse: [self selection]]]. "otherwise, change text is last-replaced text"
 
@@ -32,7 +32,7 @@ againOrSame: useOldKeys many: many
 		wasTypedKey ifFalse: [^self]].
 
 	(many | wasTypedKey) ifFalse: "after undo, select this replacement"
-		[home _ startBlock stringIndex to:
-			startBlock stringIndex + UndoSelection size - 1].
+		[home _ self startIndex to:
+			self startIndex + UndoSelection size - 1].
 
 	self undoer: #undoAgain:andReselect:typedKey: with: indices contents with: home with: wasTypedKey
