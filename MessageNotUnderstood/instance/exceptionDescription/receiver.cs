@@ -1,4 +1,4 @@
 receiver
-	"Answer the receiver of the message that failed."
+	"Answer the receiver that did not understand the message"
 
-	^initialContext receiver
+	^ receiver
