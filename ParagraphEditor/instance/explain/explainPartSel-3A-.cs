@@ -11,7 +11,7 @@ explainPartSel: string
 					ifNone: []) ~~ nil]
 				ifNone: []) ~~ nil
 		ifTrue: [reply _ ', which is the selector of this very method!'.
-			s _ '.  To see the other definitions, go to the message list pane and use yellowbug to select ''implementors''."']
+			s _ '.  To see the other definitions, go to the message list pane, get the menu from the top of the scroll bar, and select ''implementors of...''."']
 		ifFalse: 
 			["Selectors called from this method"
 			lits _ (model selectedClassOrMetaClass compiledMethodAt:
@@ -23,7 +23,7 @@ explainPartSel: string
 					ifTrue: [^self explainChar: '<']
 					ifFalse: [^nil]].
 			reply _ '.'.
-			s _ '.  To see the definitions, go to the message list pane and use yellowbug to select ''messages''."'].
+			s _ '.  To see the definitions, go to the message list pane, get the menu from the top of the scroll bar, and select ''implementors of...''."'].
 	classes _ Smalltalk allClassesImplementing: whole.
 	classes size > 12
 		ifTrue: [classes _ 'many classes']
