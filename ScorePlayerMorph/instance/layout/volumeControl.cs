@@ -12,7 +12,7 @@ volumeControl
 		hResizing: #shrinkWrap;
 		vResizing: #rigid;
 		height: 24.
-	r addMorphBack: (StringMorph contents: 'soft  ').
+	r addMorphBack: (StringMorph contents: 'soft  ' translated).
 	r addMorphBack: volumeSlider.
-	r addMorphBack: (StringMorph contents: ' loud').
+	r addMorphBack: (StringMorph contents: ' loud' translated).
 	^ r
