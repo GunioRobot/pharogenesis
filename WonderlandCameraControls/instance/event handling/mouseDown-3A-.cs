@@ -3,4 +3,4 @@ mouseDown: evt
 
 	myUndoStack push: (UndoPOVChange for: myCamera from: (myCamera getPointOfView)).
 
-	moveAction _ myCamera doEachFrame: [ self moveCamera ].
+	moveAction _ myCamera doEachFrame: [self moveCamera: World primaryHand lastEvent].
