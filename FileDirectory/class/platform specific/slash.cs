@@ -1,0 +1,2 @@
+slash
+	^ self pathNameDelimiter asString
