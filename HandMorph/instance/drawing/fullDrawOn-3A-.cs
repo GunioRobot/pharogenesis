@@ -6,26 +6,36 @@ fullDrawOn: aCanvas
 	"Note: This version caches an image of the morphs being held by the hand for
 	 better performance. This cache is invalidated if one of those morphs changes."
 
-	| disableCaching myBnds shadowCanvas |
+	| disableCaching subBnds |
 	self suppressDisplay ifTrue: [^ self].
 
 	disableCaching _ false.
 	disableCaching ifTrue: [self nonCachingFullDrawOn: aCanvas. ^ self].
 
-	submorphs isEmpty ifTrue: [
-		cacheCanvas _ nil.
+	submorphs isEmpty ifTrue:
+		[cacheCanvas _ nil.
 		^ self drawOn: aCanvas].  "just draw the hand itself"
 
-	myBnds _ super fullBounds.  "my full bounds without my shadow"
-	self updateCacheCanvasDepth: aCanvas depth.
+	subBnds _ Rectangle merging: (submorphs collect: [:m | m fullBounds]).
+	self updateCacheCanvas: aCanvas.
+	(cacheCanvas == nil or: [cachedCanvasHasHoles and: [cacheCanvas depth = 1]])
+		ifTrue:
+		["could not use caching due to translucency; do full draw"
+		self nonCachingFullDrawOn: aCanvas. ^ self].
 
 	"draw the shadow"
-	shadowCanvas _ aCanvas copyForShadowDrawingOffset: self shadowOffset.
-	"Note: it's 3x faster to fill a rectangle rather than draw the shadow of a Form"
-	cachedCanvasHasHoles
-		ifTrue: [shadowCanvas image: cacheCanvas form at: myBnds origin]
-		ifFalse: [shadowCanvas fillRectangle: myBnds color: color].
+	aCanvas asShadowDrawingCanvas
+		translateBy: self shadowOffset during:[:shadowCanvas|
+		cachedCanvasHasHoles
+			ifTrue: ["Have to draw the real shadow of the form"
+					shadowCanvas paintImage: cacheCanvas form at: subBnds origin]
+			ifFalse: ["Much faster if only have to shade the edge of a solid rectangle"
+					(subBnds areasOutside: (subBnds translateBy: self shadowOffset negated)) do:
+						[:r | shadowCanvas fillRectangle: r color: Color black]]].
 
 	"draw morphs in front of the shadow using the cached Form"
-	aCanvas image: cacheCanvas form at: myBnds origin.
+	cachedCanvasHasHoles
+		ifTrue: [aCanvas paintImage: cacheCanvas form at: subBnds origin]
+		ifFalse: [aCanvas drawImage: cacheCanvas form at: subBnds origin
+					sourceRect: cacheCanvas form boundingBox].
 	self drawOn: aCanvas.  "draw the hand itself in front of morphs"
