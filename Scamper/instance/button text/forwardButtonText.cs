@@ -1,3 +1,2 @@
 forwardButtonText
-
-	^'Go forward to next URL in history'
+	^ 'Go forward to next URL in history' translated
