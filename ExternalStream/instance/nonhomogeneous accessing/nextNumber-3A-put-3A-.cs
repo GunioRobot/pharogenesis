@@ -3,5 +3,5 @@ nextNumber: n put: v
 	SmallInteger or a LargePositiveInteger, as the next n bytes.
 	Possibly pad with leading zeros."
 
-	1 to: n do: [:i | self nextPut: (v digitAt: 5-i)].
+	1 to: n do: [:i | self nextPut: (v digitAt: n+1-i)].
 	^ v
