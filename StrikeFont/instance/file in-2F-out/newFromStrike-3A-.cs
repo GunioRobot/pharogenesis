@@ -3,7 +3,7 @@ newFromStrike: fileName
 	is optional."
 
 	| strike startName raster16 |
-	name _ fileName copyUpTo: $..	"assumes extension (if any) is '.strike'".
+	name _ fileName copyUpTo: $..	"assumes extension (if any) is '.strike'"
 	strike _ FileStream readOnlyFileNamed: name, '.strike.'.
 	strike binary.
 
