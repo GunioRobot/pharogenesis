@@ -1,6 +1,5 @@
 promoteToTop: aChangeSet
-	"make aChangeSet the first in the list from now on"
-	self gatherChangeSets.
+	"Make aChangeSet the first in the list from now on"
+
 	AllChangeSets remove: aChangeSet ifAbsent: [^ self].
-	AllChangeSets add: aChangeSet.
-	Smalltalk isMorphic ifTrue: [SystemWindow wakeUpTopWindowUponStartup]
+	AllChangeSets add: aChangeSet
