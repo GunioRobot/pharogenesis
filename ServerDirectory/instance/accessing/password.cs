@@ -1,0 +1,2 @@
+password
+	^ passwordHolder passwordFor: self
