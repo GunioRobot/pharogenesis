@@ -1,2 +1,3 @@
 addEmphasis: emphasisCode
-	emphasis _ emphasisCode.
+
+	emphasis _ emphasis bitOr: emphasisCode.
