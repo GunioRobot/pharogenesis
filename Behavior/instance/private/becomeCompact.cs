@@ -3,7 +3,7 @@ becomeCompact
 	| cct index |
 
 	self isWeak ifTrue:[^ self halt: 'You must not make a weak class compact'].
-	cct _ Smalltalk compactClassesArray.
+	cct _ self environment compactClassesArray.
 	(self indexIfCompact > 0 or: [cct includes: self])
 		ifTrue: [^ self halt: self name , 'is already compact'].
 	index _ cct indexOf: nil
