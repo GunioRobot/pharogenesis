@@ -3,4 +3,4 @@ imageExtent
 	| widthText heightText |
 	widthText _ self getAttribute: 'width' ifAbsent: [ ^nil ].
 	heightText _ self getAttribute: 'height' ifAbsent: [ ^nil ].
-	^ widthText asNumber @ heightText asNumber
+	^ [ widthText asNumber @ heightText asNumber ] ifError: [ :a :b | nil ]
