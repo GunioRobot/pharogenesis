@@ -1,0 +1,1 @@
+A simple dictionary for the use of the TextDiffBuilder. Keys are presumed to be Points and a significant speed advantage is gained by using a dictionary of dictionaries. The first is keyed by the x-values and the second by the y-values. Only the minimum necessary protocol is implemented.
