@@ -1,0 +1,3 @@
+deleteNotes
+
+	pianoRoll deleteSelection
