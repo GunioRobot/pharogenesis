@@ -3,4 +3,4 @@ B3DIndexedMesh
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon3D-Meshes'
+	category: 'Balloon3D-Kernel-Meshes'
