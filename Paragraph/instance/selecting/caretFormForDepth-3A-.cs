@@ -8,7 +8,7 @@ caretFormForDepth: depth
 	map _ (Color cachedColormapFrom: CaretForm depth to: depth) copy.
 	map at: 1 put: (Color transparent pixelValueForDepth: depth).
 	map at: 2 put: (Color quickHighLight: depth) first.  "pixel value for reversing"
-	bb _ BitBlt toForm: f.
+	bb _ BitBlt current toForm: f.
 	bb
 		sourceForm: CaretForm;
 		sourceRect: box;
