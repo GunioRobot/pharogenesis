@@ -4,3 +4,5 @@ privateFullMoveBy: delta
 	self privateMoveBy: delta.
 	1 to: submorphs size do: [:i |
 		(submorphs at: i) privateFullMoveBy: delta].
+	owner ifNotNil:[
+		owner isTextMorph ifTrue:[owner adjustTextAnchor: self]].
