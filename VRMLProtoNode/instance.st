@@ -1,6 +1,6 @@
 VRMLGenericNode
 	subclass: #VRMLProtoNode
-	instanceVariableNames: 'nodeSpec protoType '
+	instanceVariableNames: 'nodeSpec protoType'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon3D-VRML BaseNodes'
+	category: 'Balloon3D-VRML-BaseNodes'
