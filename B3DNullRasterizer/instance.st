@@ -3,4 +3,4 @@ B3DVertexRasterizer
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon3D-Engine'
+	category: 'Balloon3D-Kernel-Engine'
