@@ -1,13 +1,7 @@
 chooseInitialSettings
-	"Restore the default choices for Preferences."
-	"Preferences chooseInitialSettings"
+	"Restore the default choices for all of the standard Preferences."
 
-	self allPreferenceInitializationSpecs do:
-		[:aSpec |
-			aSpec second == #true
-				ifTrue:
-					[self enable: aSpec first]
-				ifFalse:
-					[self disable: aSpec first]].
-	self resetCategoryInfo
-
+	self allPreferenceObjects do:
+		[:aPreference |
+			aPreference restoreDefaultValue].
+	Project current installProjectPreferences
