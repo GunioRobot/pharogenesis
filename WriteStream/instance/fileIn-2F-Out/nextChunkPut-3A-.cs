@@ -8,4 +8,10 @@ nextChunkPut: aString
 		[self nextPutAll: (remainder copyFrom: 1 to: i).
 		self nextPut: terminator.  "double imbedded terminators"
 		remainder _ remainder copyFrom: i+1 to: remainder size].
-	self nextPutAll: remainder; nextPut: terminator
+	self nextPutAll: remainder.
+	aString includesUnifiedCharacter ifTrue: [
+		self nextPut: terminator.
+		self nextPutAll: ']lang['.
+		aString writeLeadingCharRunsOn: self.
+	].
+	self nextPut: terminator.
