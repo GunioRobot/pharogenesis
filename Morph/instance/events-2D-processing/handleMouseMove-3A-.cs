@@ -14,4 +14,4 @@ handleMouseMove: anEvent
 		self startStepping: #handleMouseStillDown: 
 			at: Time millisecondClockValue
 			arguments: {anEvent copy resetHandlerFields}
-			stepTime: 1].
+			stepTime: self mouseStillDownStepRate ].
