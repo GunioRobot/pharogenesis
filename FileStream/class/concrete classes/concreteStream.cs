@@ -1,3 +1,3 @@
 concreteStream
 	"Who should we really direct class queries to?  "
-	^ StandardFileStream
+	^ StandardFileStream  "may change this to CrLfFileStream"
