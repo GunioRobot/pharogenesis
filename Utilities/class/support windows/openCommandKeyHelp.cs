@@ -1,7 +1,6 @@
 openCommandKeyHelp
-	"Open a window giving command key help.  1/17/96 sw"
+	"Open a window giving command key help."
 	"Utilities openCommandKeyHelp"
 
-	Utilities
-		openScratchWorkspaceLabeled: 'Command Keys'
-		contents: self commandKeyMappings.
+	(StringHolder new contents: self commandKeyMappings)
+		openLabel: 'Command Key Actions'
