@@ -8,8 +8,8 @@ pickWarpPixelAtX: xx y: yy
 	"note: it would be much faster if we could just
 	avoid these stupid tests for being inside sourceForm."
 	(xx < 0 or:[yy < 0 or:[
-		(x _ xx >> BinaryPoint) >= srcWidth or:[
-			(y _ yy >> BinaryPoint) >= srcHeight]]]) ifTrue:[^0]. "out of bounds"
+		(x _ xx >> BinaryPoint) >= sourceWidth or:[
+			(y _ yy >> BinaryPoint) >= sourceHeight]]]) ifTrue:[^0]. "out of bounds"
 
 	"Fetch source word.
 	Note: We should really update srcIndex with sx and sy so that
