@@ -1,2 +1,3 @@
-nilObject  "For access from BitBlt module"
+nilObject
+	"For access from BitBlt module"
 	^ nilObj
