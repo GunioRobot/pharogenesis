@@ -1,0 +1,2 @@
+initialModules
+	^vmMaker availableModules
