@@ -3,14 +3,15 @@ initializeFor: aScriptInstantiation
 
 	|  statusReadout |
 	self hResizing: #shrinkWrap.
+	self cellInset: 2@0.
 	scriptInstantiation _ aScriptInstantiation.
 	tickPauseButtonsShowing _ false.
-	tickPauseWrapper _ AlignmentMorph newColumn beTransparent; yourself.
-	self addMorphBack: tickPauseWrapper.
+
 	self addMorphBack: (statusReadout _ UpdatingSimpleButtonMorph new).
+	statusReadout label: aScriptInstantiation status asString font: Preferences standardButtonFont.
 	statusReadout setNameTo: 'trigger'.
-	statusReadout target: aScriptInstantiation; wordingSelector: #status; actionSelector: #presentScriptStatusPopUp.
-	statusReadout setBalloonText: 'when this script should run'.
+	statusReadout target: aScriptInstantiation; wordingSelector: #translatedStatus; actionSelector: #presentScriptStatusPopUp.
+	statusReadout setBalloonText: 'when this script should run' translated.
 	statusReadout actWhen: #buttonDown.
 
 	self assurePauseTickControlsShow.
