@@ -1,0 +1,2 @@
+handlesDragOver: evt
+	^true
