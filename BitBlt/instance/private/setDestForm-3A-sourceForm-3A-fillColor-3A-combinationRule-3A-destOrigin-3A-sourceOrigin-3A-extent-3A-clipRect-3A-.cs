@@ -17,7 +17,4 @@ setDestForm: df sourceForm: sf fillColor: hf combinationRule: cr destOrigin: des
 	aPoint _ clipRect corner.
 	clipWidth _ aPoint x - clipX.
 	clipHeight _ aPoint y - clipY.
-	(sourceForm isMemberOf: TwoToneForm)
-		ifTrue: [colorMap _ sourceForm colorMapForDepth: destForm depth]
-		ifFalse: [(destForm depth > 8 and: [sourceForm depth = 1])
-					ifTrue: [colorMap _ Bitmap with: 16rFFFFFFFF with: 0]]
+	colorMap _ sourceForm colormapIfNeededForDepth: destForm depth.
