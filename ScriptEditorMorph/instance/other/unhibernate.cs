@@ -1,11 +1,23 @@
 unhibernate
-	| ww |
-	"Recreate my tiles from my method.  If I have new universal tiles."
+	"I have been loaded as part of an ImageSegment.
+	Make sure that I am fixed up properly."
+	| fixMe |
+	(fixMe := self valueOfProperty: #needsLayoutFixed ifAbsent: [ false ])
+		ifTrue: [self removeProperty: #needsLayoutFixed ].
 
-	(ww _ self world) 
-		ifNil: [playerScripted ifNil: [^ self].
-			playerScripted isUniversalTiles ifFalse: [^ self]]
-		ifNotNil: [
-			(ww valueOfProperty: #universalTiles ifAbsent: [false]) ifFalse: [^ self]].
+	self topEditor == self
+		ifFalse: [^ self]. "Part of a compound test"
 
-	self showSourceInScriptor. 
+	self updateHeader.
+	fixMe ifTrue: [ self fixLayout. self removeProperty: #needsLayoutFixed ].
+
+	"Recreate my tiles from my method if i have new universal tiles."
+
+	self world
+		ifNil: [(playerScripted isNil
+					or: [playerScripted isUniversalTiles not])
+				ifTrue: [^ self]]
+		ifNotNil: [Preferences universalTiles
+				ifFalse: [^ self]].
+	self insertUniversalTiles.
+	self showingMethodPane: false
