@@ -1,44 +1,48 @@
-editDrawingIn: aPasteUpMorph forBackground: forBackground
-
+editDrawingIn: aPasteUpMorph forBackground: forBackground 
 	| w bnds sketchEditor pal aPaintTab aWorld aPaintBox tfx |
-	self world assureNotPaintingElse: [^ self].
-
-	w _ aPasteUpMorph world.
-	w stopRunningAll; abandonAllHalos.
+	self world assureNotPaintingElse: [^self].
+	w := aPasteUpMorph world.
+	w prepareToPaint.
 	w displayWorld.
 	self visible: false.
-	forBackground
-		ifTrue:
-			[bnds _ aPasteUpMorph boundsInWorld]
-		ifFalse:
-			[bnds _ (self boundsInWorld expandBy: (60 @ 60)) intersect: self world bounds.
-			bnds _ (aPasteUpMorph paintingBoundsAround: bnds center) merge: bnds].
-	sketchEditor _ SketchEditorMorph new.
-	forBackground ifTrue: [sketchEditor setProperty: #background toValue: true].
+	bnds := forBackground 
+				ifTrue: [aPasteUpMorph boundsInWorld]
+				ifFalse: 
+					[bnds := self boundsInWorld expandBy: 60 @ 60.
+					(aPasteUpMorph paintingBoundsAround: bnds center) merge: bnds]. 
+	sketchEditor := SketchEditorMorph new.
+	forBackground 
+		ifTrue: [sketchEditor setProperty: #background toValue: true].
 	w addMorphFront: sketchEditor.
-	sketchEditor initializeFor: self inBounds: bnds pasteUpMorph: aPasteUpMorph.
-	sketchEditor
-		afterNewPicDo: [:aForm :aRect |
+	sketchEditor 
+		initializeFor: self
+		inBounds: bnds
+		pasteUpMorph: aPasteUpMorph.
+	sketchEditor afterNewPicDo: 
+			[:aForm :aRect | 
 			self visible: true.
 			self form: aForm.
-			tfx _ aPasteUpMorph transformFrom: aPasteUpMorph world.
+			tfx := aPasteUpMorph transformFrom: aPasteUpMorph world.
 			self topRendererOrSelf position: (tfx globalPointToLocal: aRect origin).
 			self rotationStyle: sketchEditor rotationStyle.
 			self forwardDirection: sketchEditor forwardDirection.
+			(aPaintTab := (aWorld := self world) paintingFlapTab) 
+				ifNotNil: [aPaintTab hideFlap]
+				ifNil: [(aPaintBox := aWorld paintBox) ifNotNil: [aPaintBox delete]].
 			self presenter drawingJustCompleted: self.
-			forBackground ifTrue: [self goBehind]]  "shouldn't be necessary"
-		ifNoBits: ["If no bits drawn.  Must keep old pic.  Can't have no picture"
+			forBackground ifTrue: [self goBehind	"shouldn't be necessary"]]
+		ifNoBits: 
+			["If no bits drawn.  Must keep old pic.  Can't have no picture"
+
 			self visible: true.
-			aWorld _ self currentWorld.
-				"sometimes by now I'm no longer in a world myself, but we still need
+			aWorld := self currentWorld.
+			"sometimes by now I'm no longer in a world myself, but we still need
 				 to get ahold of the world so that we can deal with the palette"
-			((pal _ aPasteUpMorph standardPalette) notNil and: [pal isInWorld])
-				ifTrue:
-					[(aPaintBox _ aWorld paintBox) ifNotNil: [aPaintBox delete].
+			((pal := aPasteUpMorph standardPalette) notNil and: [pal isInWorld]) 
+				ifTrue: 
+					[(aPaintBox := aWorld paintBox) ifNotNil: [aPaintBox delete].
 					pal viewMorph: self]
-				ifFalse:
-					[(aPaintTab _ aWorld paintingFlapTab)
-						ifNotNil:
-							[aPaintTab hideFlap]
-						ifNil:
-							[(aPaintBox _ aWorld paintBox) ifNotNil: [aPaintBox delete]]]].
+				ifFalse: 
+					[(aPaintTab := (aWorld := self world) paintingFlapTab) 
+						ifNotNil: [aPaintTab hideFlap]
+						ifNil: [(aPaintBox := aWorld paintBox) ifNotNil: [aPaintBox delete]]]]
