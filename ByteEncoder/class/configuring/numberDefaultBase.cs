@@ -1,0 +1,2 @@
+numberDefaultBase
+	^10.
