@@ -9,7 +9,9 @@ fileOutChangeSet: aChangeSetOrNil andObject: theObject
 	self header; timeStamp.
 
 	aChangeSetOrNil ifNotNil: [
+		aChangeSetOrNil fileOutPreambleOn: self.
 		aChangeSetOrNil fileOutOn: self.
+		aChangeSetOrNil fileOutPostscriptOn: self.
 	].
 	self trailer.	"Does nothing for normal files.  HTML streams will have trouble with object data"
 
