@@ -1,5 +1,6 @@
 setListFontTo: aFont
+	"Set the list font as indicated"
 
 	Parameters at: #standardListFont put: aFont.
 	ListParagraph initialize.
-	Utilities replaceToolsFlap
+	Flaps replaceToolsFlap
