@@ -1,22 +1,5 @@
 initialize
-	"Create all the standard cursors
-		Cursor origin
-		Cursor rightArrow
-		Cursor menu
-		Cursor corner
-		Cursor read
-		Cursor write
-		Cursor wait
-		Cursor blank
-		Cursor xeq
-		Cursor square
-		Cursor normal
-		Cursor crossHair
-		Cursor marker
-		Cursor up
-		Cursor down
-		Cursor move"
-
+	"Create all the standard cursors..."
 		self initOrigin.
 		self initRightArrow.
 		self initMenu.
@@ -27,11 +10,13 @@ initialize
 		BlankCursor _ Cursor new.
 		self initXeq.
 		self initSquare.
-		self initNormal.
+		self initNormalWithMask.
 		self initCrossHair.
 		self initMarker.
 		self initUp.
 		self initDown.
 		self initMove.
+
+		self makeCursorsWithMask.
 
 		"Cursor initialize"
