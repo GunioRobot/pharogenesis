@@ -1,0 +1,2 @@
+verifyStack
+	^ self
