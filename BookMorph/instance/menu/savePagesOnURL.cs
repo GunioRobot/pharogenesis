@@ -5,11 +5,17 @@ savePagesOnURL
 	(self valueOfProperty: #keepTogether) ifNotNil: [
 		self inform: 'This book is marked ''keep in one file''. 
 Several pages use a common Player.
-Save the owner of the book instead.'.
+Save the owner of the book instead.' translated.
 		^ self].
 	self getAllText.	"stored with index later"
-	response _ (PopUpMenu labels: 'Use page numbers\Type in file names\Save in a new place (using page numbers)\Save in a new place (typing names)\Save new book sharing old pages' withCRs)
-			startUpWithCaption: 'Each page will be a file on the server.  \Do you want to page numbers be the names of the files? \or name each one yourself?' withCRs.
+	response _ (PopUpMenu labels: 'Use page numbers
+Type in file names
+Save in a new place (using page numbers)
+Save in a new place (typing names)
+Save new book sharing old pages' translated)
+			startUpWithCaption: 'Each page will be a file on the server.  
+Do you want to page numbers be the names of the files? 
+or name each one yourself?' translated.
 	response = 1 ifTrue: [self saveAsNumberedURLs. ^ self].
 	response = 3 ifTrue: [self forgetURLs; saveAsNumberedURLs. ^ self].
 	response = 4 ifTrue: [self forgetURLs].
@@ -18,7 +24,7 @@ Save the owner of the book instead.'.
 		[rand _ String new: 4.
 		1 to: rand size do: [:ii |
 			rand at: ii put: ('bdfghklmnpqrstvwz' at: 17 atRandom)].
-		(newPlace _ self getStemUrl) size = 0 ifTrue: [^ self].
+		(newPlace _ self getStemUrl) isEmpty ifTrue: [^ self].
 		newPlace _ (newPlace copyUpToLast: $/), '/BK', rand, '.bo'.
 		dir _ ServerFile new fullPath: newPlace.
 		(dir includesKey: dir fileName)] whileTrue.	"keep doing until a new file"
@@ -48,7 +54,7 @@ list _ (list select: [:each | each notNil]) asArray.
 	elementsExchangeIdentityWith:
 		(list collect: [:spg | MorphObjectOut new xxxSetUrl: spg url page: spg]).
 
-firstTime _ (self valueOfProperty: #url) == nil.
+firstTime _ (self valueOfProperty: #url) isNil.
 self saveIndexOnURL.
 self presenter ifNotNil: [self presenter flushPlayerListCache].
 firstTime ifTrue: ["Put a thumbnail into the hand"
