@@ -1,0 +1,2 @@
+nearDistance
+	^nearDistance
