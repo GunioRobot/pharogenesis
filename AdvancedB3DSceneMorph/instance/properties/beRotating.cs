@@ -1,0 +1,2 @@
+beRotating
+	isRotating := true.
