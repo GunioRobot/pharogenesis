@@ -1,3 +1,2 @@
-handlesMouseDown: evt
-
-	^ model ~~ nil
+handlesMouseDown: evt 
+	^model notNil
