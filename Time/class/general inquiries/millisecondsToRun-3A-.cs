@@ -4,4 +4,4 @@ millisecondsToRun: timedBlock
 	| initialMilliseconds |
 	initialMilliseconds _ self millisecondClockValue.
 	timedBlock value.
-	^self millisecondClockValue - initialMilliseconds
+	^self millisecondsSince: initialMilliseconds
