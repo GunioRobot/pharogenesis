@@ -3,6 +3,7 @@ startRunningScripts
 	self stopButtonState: false.
 	self stepButtonState: false.
 	self goButtonState: true.
-	goButton world startRunningAll.
+	associatedMorph startRunningAll.
+	associatedMorph borderColor: Preferences borderColorWhenRunning.
 
 	ThumbnailMorph recursionReset.  "needs to be done once in a while"
