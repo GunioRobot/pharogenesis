@@ -1,0 +1,2 @@
+isSystemDefined
+	^ name endsWithDigit not
