@@ -1,3 +1,2 @@
 acceptsLoggingOfCompilation
-
-	^ self == WonderlandAmbientLight.
+	^ self == WonderlandAmbientLight
