@@ -1,0 +1,2 @@
+printXMLOn: writer
+	self subclassResponsibility
