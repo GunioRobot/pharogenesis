@@ -2,7 +2,7 @@ absorbAfter: oldVersion from: fileName
 	"Read the .ix file and add to the methodVersions database.  See class comment."
 
 	| server aUrl strm newUpdate newName prevFile classAndMethod updateID key verList new |
-	server _ ServerDirectory groupNamed: group.
+	server _ ServerDirectory serverInGroupNamed: group.
 		"later try multiple servers"
 	aUrl _ server altUrl, 'docpane/', fileName.
 	strm _ HTTPSocket httpGetNoError: aUrl
