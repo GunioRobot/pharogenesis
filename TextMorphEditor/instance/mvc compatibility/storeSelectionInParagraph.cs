@@ -1,2 +1,2 @@
 storeSelectionInParagraph
-	paragraph selectionStart: startBlock selectionStop: stopBlock
+	paragraph selectionStart: self startBlock selectionStop: self stopBlock
