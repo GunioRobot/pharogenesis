@@ -1,7 +1,7 @@
 nextChunkPutWithStyle: aStringOrText
 	"Append the argument, aText, to the receiver, doubling embedded terminators.  Put out one chunk for the string and one for the style runs.  Mark the style with ]style[."
 
-	aStringOrText class == String ifTrue: [^ self nextChunkPut: aStringOrText].
+	aStringOrText isString ifTrue: [^ self nextChunkPut: aStringOrText].
 	aStringOrText runs coalesce.
 	aStringOrText unembellished ifTrue: [^ self nextChunkPut: aStringOrText asString].
 
@@ -10,4 +10,3 @@ nextChunkPutWithStyle: aStringOrText
 	self nextChunkPut: 
 		(String streamContents: [:strm | 
 			aStringOrText runs writeScanOn: strm]).
-
