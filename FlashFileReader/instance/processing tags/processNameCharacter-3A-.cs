@@ -1,0 +1,2 @@
+processNameCharacter: data
+	^true
