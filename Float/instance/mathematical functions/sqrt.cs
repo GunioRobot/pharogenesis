@@ -1,25 +1,25 @@
 sqrt
-	"Answer the square root of the receiver.
+	"Answer the square root of the receiver. 
 	 Optional. See Object documentation whatIsAPrimitive."
-
 	| exp guess eps delta |
 	<primitive: 55>
-
+	#Numeric.
+	"Changed 200/01/19 For ANSI <number> support."
 	"Newton-Raphson"
-	self <= 0.0 ifTrue: [
-		self = 0.0
-			ifTrue: [^ 0.0]
-			ifFalse: [^ self error: 'sqrt is invalid for x < 0']].
-
+	self <= 0.0
+		ifTrue: [self = 0.0
+				ifTrue: [^ 0.0]
+				ifFalse: ["v Chg"
+					^ FloatingPointException signal: 'undefined if less than zero.']].
 	"first guess is half the exponent"
-	exp _ self exponent // 2.
-	guess _ self timesTwoPower: (0 - exp).
-
+	exp := self exponent // 2.
+	guess := self timesTwoPower: 0 - exp.
 	"get eps value"
-	eps _ guess * Epsilon.
-	eps _ eps * eps.
-	delta _ (self - (guess * guess)) / (guess * 2.0).
-	[(delta * delta) > eps] whileTrue: [
-		guess _ guess + delta.
-		delta _ (self - (guess * guess)) / (guess * 2.0)].
+	eps := guess * Epsilon.
+	eps := eps * eps.
+	delta := self - (guess * guess) / (guess * 2.0).
+	[delta * delta > eps]
+		whileTrue: 
+			[guess := guess + delta.
+			delta := self - (guess * guess) / (guess * 2.0)].
 	^ guess
