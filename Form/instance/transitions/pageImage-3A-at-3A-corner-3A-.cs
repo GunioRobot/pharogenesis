@@ -2,7 +2,7 @@ pageImage: otherImage at: topLeft corner: corner
 	"Produce a page-turning illusion that gradually reveals otherImage
 	located at topLeft in this form.  Corner specifies which corner, as
 		1=topLeft, 2=topRight, 3=bottomRight, 4=bottomLeft."
-	| bb maskForm resultForm delta p maskLoc maskRect stepSize cornerSel smallRect |
+	| bb maskForm resultForm delta maskLoc maskRect stepSize cornerSel smallRect |
 	stepSize _ 10.
 	bb _ otherImage boundingBox.
 	resultForm _ self copy: (topLeft extent: bb extent).
@@ -72,6 +72,7 @@ pageImage: otherImage at: topLeft corner: corner
 		"Now update Display in a single BLT."
 		self copyBits: maskRect from: resultForm at: topLeft + maskRect topLeft
 				clippingBox: self boundingBox rule: Form over fillColor: nil.
+		Smalltalk forceDisplayUpdate.
 		maskLoc _ maskLoc + (delta*stepSize)]
 "
 1 to: 4 do: [:corner | Display pageImage:
