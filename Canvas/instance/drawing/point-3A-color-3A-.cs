@@ -1,2 +1,2 @@
 point: p color: c
-	"Noop here; overridden by non-trivial canvases."
+	"Obsolete - will be removed in the future"
