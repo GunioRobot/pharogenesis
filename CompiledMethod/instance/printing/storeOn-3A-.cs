@@ -1,6 +1,5 @@
 storeOn: aStream
-
-	| noneYet index |
+	| noneYet |
 	aStream nextPutAll: '(('.
 	aStream nextPutAll: self class name.
 	aStream nextPutAll: ' newMethod: '.
