@@ -1,15 +1,10 @@
 primitiveMultiply
-
-	| rcvr arg result |
-	rcvr _ self stackValue: 1.
-	arg _ self stackValue: 0.
-	self pop: 2.
-	self success: (self areIntegers: rcvr and: arg).
-	successFlag ifTrue: [
-		rcvr _ self integerValueOf: rcvr.
-		arg _ self integerValueOf: arg.
-		result _ rcvr * arg.
+	| integerRcvr integerArg integerResult |
+	integerRcvr _ self stackIntegerValue: 1.
+	integerArg _ self stackIntegerValue: 0.
+	successFlag ifTrue:
+		[integerResult _ integerRcvr * integerArg.
 		"check for C overflow by seeing if computation is reversible"
-		self success: ((arg = 0) or: [(result // arg) = rcvr]).
-	].
-	self checkIntegerResult: result from: 9.
+		((integerArg = 0) or: [(integerResult // integerArg) = integerRcvr])
+			ifTrue: [self pop2AndPushIntegerIfOK: integerResult]
+			ifFalse: [self primitiveFail]]
