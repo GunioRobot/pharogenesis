@@ -1,5 +1,5 @@
 makeRoomAtLast
-	| index newLast delta |
+	| newLast delta |
 	newLast _ self size.
 	array size - self size = 0 ifTrue: [self grow].
 	(delta _ firstIndex - 1) = 0 ifTrue: [^ self].
