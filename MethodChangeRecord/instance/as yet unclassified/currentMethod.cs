@@ -1,0 +1,3 @@
+currentMethod
+
+	^ currentMethod
