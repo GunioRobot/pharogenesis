@@ -12,9 +12,9 @@ changeBorderWidth: evt
 			self borderWidth: newWidth]
 		lastPointDo:
 			[:newPoint | handle deleteBalloon.
-			self halo doIfNotNil: [:halo | halo addHandles].
+			self halo ifNotNilDo: [:halo | halo addHandles].
 			self rememberCommand:
-				(Command new cmdWording: 'border change';
+				(Command new cmdWording: 'border change' translated;
 					undoTarget: self selector: #borderWidth: argument: oldWidth;
 					redoTarget: self selector: #borderWidth: argument: newWidth)].
 	aHand attachMorph: handle.
