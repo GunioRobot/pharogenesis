@@ -1,17 +1,17 @@
-mouseTrailFrom: currentBuf
+mouseTrailFrom: currentBuf 
 	"Current event, a mouse event buffer, is about to be processed.  If there are other similar mouse events queued up, then drop them from the queue, and report the positions inbetween."
+
 	| nextEvent trail |
-	trail _ WriteStream on: (Array new: 1).
-	trail nextPut: ((currentBuf at: 3) @ (currentBuf at: 4)).
-	[(nextEvent _ Sensor peekEvent) == nil] whileFalse:[
-		(nextEvent at: 1) = (currentBuf at: 1) ifFalse:
-			[^ trail contents  "different event type"].
-		(nextEvent at: 5) = (currentBuf at: 5) ifFalse:
-			[^ trail contents  "buttons changed"].
-		(nextEvent at: 6) = (currentBuf at: 6) ifFalse:
-			[^ trail contents  "modifiers changed"].
-		"nextEvent is similar.  Remove it from the queue, and check the next."
-		nextEvent _ Sensor nextEvent.
-		trail nextPut: ((nextEvent at: 3) @ (nextEvent at: 4))
-	].
+	trail := WriteStream on: (Array new: 1).
+	trail nextPut: currentBuf third @ currentBuf fourth.
+	[(nextEvent := Sensor peekEvent) isNil] whileFalse: 
+			[nextEvent first = currentBuf first 
+				ifFalse: [^trail contents	"different event type"].
+			nextEvent fifth = currentBuf fifth 
+				ifFalse: [^trail contents	"buttons changed"].
+			nextEvent sixth = currentBuf sixth 
+				ifFalse: [^trail contents	"modifiers changed"].
+			"nextEvent is similar.  Remove it from the queue, and check the next."
+			nextEvent := Sensor nextEvent.
+			trail nextPut: nextEvent third @ nextEvent fourth].
 	^trail contents
