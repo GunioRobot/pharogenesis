@@ -1,6 +1,6 @@
 ImageMorph
 	subclass: #WonderlandCameraControls
-	instanceVariableNames: 'myCamera myScheduler myUndoStack moveAction myMoveScale myRotationScale '
+	instanceVariableNames: 'myCamera myScheduler myUndoStack moveAction myMoveScale myRotationScale'
 	classVariableNames: ''
-	poolDictionaries: 'WonderlandConstants '
-	category: 'Balloon3D-Wonderland Morphs'
+	poolDictionaries: 'WonderlandConstants'
+	category: 'Balloon3D-Wonderland-Morphs'
