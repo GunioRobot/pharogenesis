@@ -1,0 +1,2 @@
+enabledPrimStartString
+	^ '<primitive:'
