@@ -1,7 +1,5 @@
-browseMethodInheritance: aSelector
+browseMethodInheritance: aSelector 
 	"Open an inheritance browser on aSelector"
-
 	| aClass |
-	aClass _ scriptedPlayer class classThatUnderstands: aSelector.
-	Utilities methodHierarchyBrowserForClass: aClass selector: aSelector
-
+	aClass _ scriptedPlayer class whichClassIncludesSelector: aSelector.
+	self systemNavigation methodHierarchyBrowserForClass: aClass selector: aSelector
