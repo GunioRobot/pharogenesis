@@ -1,24 +1,20 @@
 infoButtonFor: aScriptOrSlotSymbol
-	"Answer a fully-formed morph that will serve as the 'info button' alongside an entry corresponding to the given slot or script symbol"
+	"Answer a fully-formed morph that will serve as the 'info button' alongside an entry corresponding to the given slot or script symbol.  If no such button is appropriate, answer a transparent graphic that fills the same space."
 
-	| aButton balloonTextSelector |
-	balloonTextSelector _ nil.
-	((scriptedPlayer isKindOf: Player) and: [scriptedPlayer slotInfo includesKey: aScriptOrSlotSymbol asSymbol])
-		ifTrue: [balloonTextSelector _ #userSlot].
+	| aButton |
+	(self wantsRowMenuFor: aScriptOrSlotSymbol) ifFalse:
+		["Fill the space with sweet nothing, since there is no meaningful menu to offer"
+		aButton _ RectangleMorph new beTransparent extent: (17@20).
+		aButton borderWidth: 0.
+		^ aButton].
 
-	(scriptedPlayer belongsToUniClass and:
-			[scriptedPlayer class includesSelector: aScriptOrSlotSymbol])
-		ifTrue: [balloonTextSelector _ #userScript].
-
-	aButton _ SimpleButtonMorph new.
+	aButton _ IconicButton new labelGraphic: Cursor menu.
 	aButton target: scriptedPlayer;
 		actionSelector: #infoFor:inViewer:;
-		arguments: (Array with: aScriptOrSlotSymbol with: self);
-		label: '¥' font: (StrikeFont familyName: #ComicBold size: 12);
+		arguments: (Array with:aScriptOrSlotSymbol with: self);
 		color: Color transparent;
 		borderWidth: 0;
+		shedSelvedge;
 		actWhen: #buttonDown.
-	balloonTextSelector
-		ifNotNil:	[aButton balloonTextSelector: balloonTextSelector]
-		ifNil:		[aButton setBalloonText: 'Press here to get a menu'].
+	aButton setBalloonText: 'Press here to get a menu' translated.
 	^ aButton
