@@ -1,3 +1,2 @@
 codeBlock: statements returns: returns
-
-	^BlockNode new statements: statements returns: returns
+	^ BlockNode statements: statements returns: returns
