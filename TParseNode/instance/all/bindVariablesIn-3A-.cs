@@ -1,0 +1,3 @@
+bindVariablesIn: aDictionary
+
+	^self
