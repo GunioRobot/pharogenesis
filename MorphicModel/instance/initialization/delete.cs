@@ -2,7 +2,8 @@ delete
 
 	(model isKindOf: MorphicModel) ifFalse: [^ super delete].
 
-	(PopUpMenu confirm:
+	slotName ifNotNil:
+		[(PopUpMenu confirm:
 'Shall I remove the slot ', slotName, '
 along with all associated methods?') ifTrue: [
 		(model class selectors select: [:s | s beginsWith: slotName])
@@ -13,6 +14,6 @@ along with all associated methods?') ifTrue: [
 		(PopUpMenu confirm:
 '...but should I at least dismiss this morph?
 [choose no to leave everything unchanged]')
-			ifFalse: [^ self]].
+			ifFalse: [^ self]]].
 
 	super delete.
