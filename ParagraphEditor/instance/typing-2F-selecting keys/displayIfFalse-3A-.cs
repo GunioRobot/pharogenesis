@@ -3,5 +3,5 @@ displayIfFalse: characterStream
 	ctrl-f."
 
 	sensor keyboard.		"flush character"
-	characterStream nextPutAll: 'ifFalse: ['.
+	characterStream nextPutAll: 'ifFalse:'.
 	^false
