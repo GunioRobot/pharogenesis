@@ -1,0 +1,2 @@
+restoreTexture
+	self restoreTextureFrom: restore
