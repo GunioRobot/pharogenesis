@@ -1,0 +1,2 @@
+warnIfNoSourcesFile
+	^ self valueOfFlag: #warnIfNoSourcesFile
