@@ -1,3 +1,3 @@
 isExpendableScript: aScriptName
 	^ (self isEmptyTileScript: aScriptName) and:
-		[aScriptName beginsWith: 'script']
+		[aScriptName beginsWith: 'script' translated]
