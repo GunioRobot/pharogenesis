@@ -6,8 +6,11 @@ findObsoleteNamedPrimitive: functionName length: functionLength
 	self var: #entry type:'const char *'.
 	index _ 0.
 	[true] whileTrue:[
-		entry _ (obsoleteNamedPrimitiveTable at: index) at: 0.
+		entry _ self
+			cCode: 'obsoleteNamedPrimitiveTable[index][0]'
+			inSmalltalk: [ (CArrayAccessor on: (obsoleteNamedPrimitiveTable at: index)) at: 0 ].
 		entry == nil ifTrue:[^-1]. "at end of table"
+		self cCode: '' inSmalltalk: [ entry _ CArrayAccessor on: entry ].
 		"Compare entry with functionName"
 		chIndex _ 0.
 		[(entry at: chIndex) = (functionName at: chIndex) 
