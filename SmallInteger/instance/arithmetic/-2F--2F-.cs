@@ -5,4 +5,4 @@
 	Essential. No Lookup. See Object documentation whatIsAPrimitive. "
 
 	<primitive: 12>
-	^super // aNumber"Do with quo: if primitive fails"
+	^ super // aNumber 	"Do with quo: if primitive fails"
