@@ -10,7 +10,7 @@ extractStaticDirective
 	newStatements _ OrderedCollection new: parseTree statements size.
 	parseTree statements do: [ :stmt |
 		(stmt isSend and: [stmt selector = #static:]) ifTrue: [
-			result _ stmt args first name ~= 'false'.
+			result _ stmt args first value ~= false.
 		] ifFalse: [
 			newStatements add: stmt.
 		].
