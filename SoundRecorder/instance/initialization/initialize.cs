@@ -2,7 +2,6 @@ initialize
 	"SoundRecorder new"
 
 	stereo _ false.
-	samplingRate _ SoundPlayer samplingRate.
-	recordedBuffers _ OrderedCollection new: 1000.
-	meteringBuffer _ SoundBuffer newMonoSampleCount: 1024.
+	samplingRate _ 11025.
+	recordLevel _ 0.5.
 	self initializeRecordingState.
