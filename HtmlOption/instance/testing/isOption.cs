@@ -1,0 +1,2 @@
+isOption
+	^true
