@@ -2,6 +2,7 @@ pauseIn: aWorld
 	"Suspend playing or recording, either as part of a stop command,
 	or as part of a project switch, after which it will be resumed."
 
+	self setStatusLight: #ready.
 	state = #play ifTrue:
 		[state _ #suspendedPlay.
 		playHand delete.
