@@ -4,5 +4,5 @@ line: pt1 to: pt2 brushForm: brush
 	self setPaintColor: Color black.
 	port sourceForm: brush; fillColor: nil;
 		sourceRect: brush boundingBox;
-		colorMap: (brush colormapIfNeededForDepth: self depth);
+		colorMap: (brush colormapIfNeededFor: form);
 		drawFrom: (pt1 + offset) to: (pt2 + offset)
