@@ -1,5 +1,5 @@
 printOn: aStream total: total tallyExact: isExact
-	| aSelector aClass className myTally |
+	| aSelector className myTally |
 	isExact ifTrue:
 		[myTally _ tally.
 		receivers == nil
