@@ -28,6 +28,8 @@ drawLoopX: xDelta Y: yDelta
 					P _ P + py].
 				i < py ifTrue:
 					[self copyBits.
+					interpreterProxy failed ifTrue:
+						[^ nil "bail out now on failure -- avoid storing x,y"].
 					(affectedL < affectedR and: [affectedT < affectedB]) ifTrue:
 						["Affected rectangle grows along the line"
 						affL _ affL min: affectedL.
@@ -38,7 +40,7 @@ drawLoopX: xDelta Y: yDelta
 							["If affected rectangle gets large, update it in chunks"
 							affectedL _ affL.  affectedR _ affR.
 							affectedT _ affT.  affectedB _ affB.
-							interpreterProxy showDisplayBits.
+							self showDisplayBits.
 							affL _ affT _ 9999.  "init null rectangle"
 							affR _ affB _ -9999]].
 					]]]
@@ -53,6 +55,8 @@ drawLoopX: xDelta Y: yDelta
 					P _ P + px].
 				i < px ifTrue:
 					[self copyBits.
+					interpreterProxy failed ifTrue:
+						[^ nil "bail out now on failure -- avoid storing x,y"].
 					(affectedL < affectedR and: [affectedT < affectedB]) ifTrue:
 						["Affected rectangle grows along the line"
 						affL _ affL min: affectedL.
@@ -63,7 +67,7 @@ drawLoopX: xDelta Y: yDelta
 							["If affected rectangle gets large, update it in chunks"
 							affectedL _ affL.  affectedR _ affR.
 							affectedT _ affT.  affectedB _ affB.
-							interpreterProxy showDisplayBits.
+							self showDisplayBits.
 							affL _ affT _ 9999.  "init null rectangle"
 							affR _ affB _ -9999]].
 					]]].
