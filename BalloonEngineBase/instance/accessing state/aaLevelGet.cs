@@ -1,0 +1,2 @@
+aaLevelGet
+	^workBuffer at: GWAALevel
