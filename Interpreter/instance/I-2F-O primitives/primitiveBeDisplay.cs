@@ -1,10 +1,6 @@
 primitiveBeDisplay
-	"Record the system Display object."
-
+	"Record the system Display object in the specialObjectsTable."
 	| rcvr |
 	rcvr _ self stackTop.
 	self success: ((self isPointers: rcvr) and: [(self lengthOf: rcvr) >= 4]).
-	successFlag ifTrue: [
-		"record the display object both in a variable and in the specialObjectsOop"
-		self storePointer: TheDisplay ofObject: specialObjectsOop withValue: rcvr.
-	].
+	successFlag ifTrue: [self storePointer: TheDisplay ofObject: specialObjectsOop withValue: rcvr]
