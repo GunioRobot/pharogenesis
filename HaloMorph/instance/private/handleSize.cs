@@ -1,2 +1,4 @@
 handleSize
-	^ HandleSize
+	^ Preferences biggerHandles
+		ifTrue: [20]
+		ifFalse: [16]
