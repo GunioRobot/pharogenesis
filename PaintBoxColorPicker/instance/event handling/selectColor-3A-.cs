@@ -12,4 +12,7 @@ selectColor: evt
 			currentColor _ Color transparent]
 		ifFalse: [
 			currentColor _ image colorAt: locOfCurrent].
+
+	(owner isKindOf: PaintBoxMorph) ifTrue: [owner takeColorFrom: self].
+
 	self changed.
