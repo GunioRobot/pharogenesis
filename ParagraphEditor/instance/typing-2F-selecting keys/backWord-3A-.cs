@@ -7,15 +7,15 @@ backWord: characterStream
 	sensor keyboard.
 	characterStream isEmpty
 		ifTrue:
-			[startBlock = stopBlock
+			[self hasCaret
 				ifTrue: "a caret, delete at least one character"
-					[startIndex _ 1 max: startBlock stringIndex - 1.
+					[startIndex _ 1 max: self markIndex - 1.
 					[startIndex > 1 and:
 						[(paragraph text at: startIndex - 1) asCharacter tokenish]]
 						whileTrue:
 							[startIndex _ startIndex - 1]]
 				ifFalse: "a non-caret, just delete it"
-					[startIndex _ startBlock stringIndex].
+					[startIndex _ self markIndex].
 			self backTo: startIndex]
 		ifFalse:
 			[characterStream reset].
