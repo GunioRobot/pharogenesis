@@ -1,0 +1,2 @@
+nextSystemLiteral
+	^self nextAttributeValue
