@@ -22,5 +22,7 @@ renderPrimitive
 	(visible == nil)
 		ifTrue:[visible _ self privatePostClipVB: vertexBuffer].
 
+	visible == false ifTrue:[^nil].
+
 	"Step 5: Rasterize the mesh"
 	^self privateRasterizeVB: vertexBuffer.
