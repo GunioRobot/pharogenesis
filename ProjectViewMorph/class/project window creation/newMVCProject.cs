@@ -7,5 +7,4 @@ newMVCProject
 	window
 		addMorph: (self on: proj)
 		frame: (0@0 corner: 1.0@1.0).
-	proj projectParameters at: #globalFlapsEnabledInProject put: false.
 	^ window
