@@ -1,0 +1,3 @@
+isTopEdge
+
+	^ y = 0
