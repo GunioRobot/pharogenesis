@@ -1,0 +1,2 @@
+texCoords
+	^current texCoords
