@@ -1,8 +1,10 @@
 putFile: fileStream named: fileNameOnServer
 
+	
 	^(
 		self sendToSwikiProjectServer: {
-			'uploadproject: ',fileNameOnServer.
+			'uploadproject: ',fileNameOnServer convertToSuperSwikiServerString.
+			'password: ',ProjectPasswordNotification signal.
 			fileStream contentsOfEntireFile.
 		}
 	) beginsWith: 'OK'
