@@ -1,8 +1,6 @@
 clear 
 	"Reset the receiver to be empty.  "
 
-	classChanges _ Dictionary new.
-	methodChanges _ Dictionary new.
-	classRemoves _ Set new.
+	changeRecords _ Dictionary new.
 	preamble _ nil.
 	postscript _ nil
