@@ -1,5 +1,5 @@
 methodsWithoutComments
-	"Return a collection representing methods in the receiver which have no comments"
+	"Return a collection representing methods in the receiver which have no precode comments"
 
 	| slips |
 	slips _ OrderedCollection new.
@@ -8,8 +8,8 @@ methodsWithoutComments
 		(self methodChangesAtClass: aClass name) associationsDo: 
 				[:mAssoc | (#(remove addedThenRemoved) includes: mAssoc value) ifFalse:
 					[(aClass selectors includes:  mAssoc key) ifTrue:
-						[(aClass firstCommentAt: mAssoc key) isEmptyOrNil
+						[(aClass firstPrecodeCommentFor: mAssoc key) isEmptyOrNil
 								ifTrue: [slips add: aClass name , ' ' , mAssoc key]]]]].
 	^ slips
 
-	"Smalltalk browseMessageList: (Smalltalk changes methodsWithoutComments) name: 'methods lacking comments'"
+	"Smalltalk browseMessageList: (ChangeSet current methodsWithoutComments) name: 'methods lacking comments'"
