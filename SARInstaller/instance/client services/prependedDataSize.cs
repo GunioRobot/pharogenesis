@@ -1,0 +1,2 @@
+prependedDataSize
+	^self zip prependedDataSize
