@@ -2,15 +2,17 @@ replaceColor: oldColor withColor: newColor
 	"Replace one color with another everywhere is this form"
 
 	| cm newInd target ff |
-	cm _ Bitmap new: (1 bitShift: (depth min: 15)).
-	1 to: cm size do: [:i | cm at: i put: i - 1].
+	depth = 32
+		ifTrue: [cm _ (Color  cachedColormapFrom: 16 to: 32) copy]
+		ifFalse: [cm _ Bitmap new: (1 bitShift: (depth min: 15)).
+				1 to: cm size do: [:i | cm at: i put: i - 1]].
 	newInd _ newColor pixelValueForDepth: depth.
-	cm at: (oldColor pixelValueForDepth: depth)+1 put: newInd.
+	cm at: (oldColor pixelValueForDepth: (depth min: 16))+1 put: newInd.
 	target _ newColor isTransparent 
 		ifTrue: [ff _ Form extent: self extent depth: depth.
 			ff fillWithColor: newColor.  ff]
 		ifFalse: [self].
-	(BitBlt toForm: target)
+	(BitBlt current toForm: target)
 		sourceForm: self;
 		sourceOrigin: 0@0;
 		combinationRule: Form paint;
