@@ -15,7 +15,7 @@ browseRecentLog    "ChangeList browseRecentLog"
 					pos _ Number readFrom: (chunk copyFrom: i+13 to: chunk size)]
 			ifFalse: [pos _ 0]].
 	changesFile close.
-	pos _ (SelectionMenu labelList: banners reversed selections: positions reversed)
+	pos _ (SelectionMenu labelList: banners selections: positions)
 				startUpWithCaption: 'Browse as far back as...'.
 	pos == nil ifTrue: [^ self].
 	self browseRecent: end-pos
