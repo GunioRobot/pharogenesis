@@ -1,3 +1,5 @@
 addDupHandle: haloSpec
-	self addHandle: haloSpec on: #mouseDown send: #doDup:with: to: self
+	"Add the halo that offers duplication, or, when shift is down, make-sibling"
+
+	self addHandle: haloSpec on: #mouseDown send: #doDupOrMakeSibling:with: to: self
 
