@@ -10,4 +10,4 @@ addInstanceVariableNamed: nameSymbol type: typeChosen value: aValue
 	setterSelector _ Utilities setterSelectorFor: nameSymbol.
 	(self class allSubInstances copyWithout: self) do:
 		[:anInstance | anInstance perform: setterSelector with: initialValue].
-	self updateAllViewersAndForceToShow: #'instance variables'
+	self updateAllViewersAndForceToShow: ScriptingSystem nameForInstanceVariablesCategory
