@@ -1,6 +1,6 @@
 explanation
 
-	(key isMemberOf: Association) ifFalse: [
+	(key isVariableBinding) ifFalse: [
 		^'Literal ', key storeString
 	].
 	key key isNil ifTrue: [
