@@ -1,0 +1,3 @@
+failureLog
+	^SUnitNameResolver defaultLogDevice
+			
