@@ -1,9 +1,13 @@
 setSearchString: characterStream
-	"Establish the current selection as the current search string.  2/7/96 sw"
+	"Establish the current selection as the current search string."
 
 	| aString |
-	sensor keyboard.		"flush character"
+	sensor keyboard.
+	self lineSelectAndEmptyCheck: [^ true].
 	aString _  self selection string.
-	aString size == 0 ifTrue: [^ self flash].
-	self setSearch: aString.
+	aString size == 0
+		ifTrue:
+			[self flash]
+		ifFalse:
+			[self setSearch: aString].
 	^ true
