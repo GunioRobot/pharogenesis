@@ -1,0 +1,2 @@
+hasVertexNormals
+	^flags anyMask: VBVtxHasNormals
