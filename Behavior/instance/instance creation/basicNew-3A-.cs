@@ -10,6 +10,6 @@ basicNew: sizeRequested
 		[self error: self printString, ' cannot have variable sized instances'].
 	(sizeRequested isInteger and: [sizeRequested >= 0]) ifTrue:
 		["arg okay; space must be low."
-		Smalltalk signalLowSpace.
+		self environment signalLowSpace.
 		^ self basicNew: sizeRequested  "retry if user proceeds"].
 	self primitiveFailed
