@@ -1,7 +1,7 @@
 absorbStateFromRenderer: aRenderer 
-	| current |
-	"Transfer knownName, actorState, and player info over from aRenderer, which was formerly imposed above me as a transformation shell but is now going away."
+	"Transfer knownName, actorState, visible, and player info over from aRenderer, which was formerly imposed above me as a transformation shell but is now going away."
 
+	| current |
 	(current _ aRenderer actorStateOrNil) ifNotNil:
 		[self actorState: current.
 		aRenderer actorState: nil].
@@ -13,4 +13,6 @@ absorbStateFromRenderer: aRenderer
 	(current _ aRenderer player) ifNotNil:
 		[self player: current.
 		current rawCostume: self.
-		aRenderer player: nil]
+		aRenderer player: nil].
+
+	self visible: aRenderer visible
