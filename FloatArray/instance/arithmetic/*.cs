@@ -1,0 +1,2 @@
+* anObject
+	^self clone *= anObject
