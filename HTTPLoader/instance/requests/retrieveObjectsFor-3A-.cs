@@ -8,7 +8,7 @@ retrieveObjectsFor: aURL
 
 	| stream info data |
  	data _ self retrieveContentsFor: aURL.
-	(data isKindOf: String)
+	(data isString)
 		ifTrue: [^self error: data]
 		ifFalse: [data _ data content].
 	(data beginsWith: 'error')
