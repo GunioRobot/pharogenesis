@@ -1,0 +1,2 @@
+record
+^	self subclassResponsibility
