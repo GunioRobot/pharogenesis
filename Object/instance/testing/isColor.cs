@@ -1,3 +1,4 @@
 isColor
-	"Overridden to return true in Color, natch"
+	"Answer true if receiver is a Color. False by default."
+
 	^ false
