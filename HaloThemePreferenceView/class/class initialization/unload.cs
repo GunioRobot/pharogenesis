@@ -1,0 +1,2 @@
+unload
+	PreferenceViewRegistry ofHaloThemePreferences unregister: self.
