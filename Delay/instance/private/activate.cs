@@ -3,5 +3,13 @@ activate
 
 	ActiveDelay _ self.
 	ActiveDelayStartTime _ Time millisecondClockValue.
-	TimingSemaphore initSignals.
-	Delay primSignal: TimingSemaphore atMilliseconds: resumptionTime.
+	ActiveDelayStartTime > resumptionTime ifTrue:[
+		ActiveDelay signalWaitingProcess.
+		SuspendedDelays isEmpty ifTrue:[
+			ActiveDelay _ nil.
+			ActiveDelayStartTime _ nil.
+		] ifFalse:[SuspendedDelays removeFirst activate].
+	] ifFalse:[
+		TimingSemaphore initSignals.
+		Delay primSignal: TimingSemaphore atMilliseconds: resumptionTime.
+	].
