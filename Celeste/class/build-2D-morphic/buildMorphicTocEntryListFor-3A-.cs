@@ -1,8 +1,16 @@
 buildMorphicTocEntryListFor: model 
-	^ PluggableMultiColumnListMorphByItem
+	| listFont |
+	listFont := (TextStyle named: #DefaultFixedTextStyle) defaultFont.
+	^ (PluggableMultiColumnListMorph
 				on: model
-				list: #tocEntryList
-				selected: #tocEntry
-				changeSelected: #setTOCEntry:
+				list: nil
+				selected: #tocIndex
+				changeSelected: #setTOCIndex:
 				menu: #tocMenu:
-				keystroke: #tocKeystroke:
+				keystroke: #tocKeystroke:)
+		font: listFont;
+		getListSizeSelector: #tocSize;
+		getListElementSelector: #tocColumnsForRow: ;
+		getListSelector: #tocEntryList ;
+		enableDragNDrop: false;
+		yourself
