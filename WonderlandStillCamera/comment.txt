@@ -1,0 +1,1 @@
+A camera used for object stills.
