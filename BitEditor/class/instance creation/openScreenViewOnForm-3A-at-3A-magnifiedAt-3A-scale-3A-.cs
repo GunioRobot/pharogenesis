@@ -5,7 +5,6 @@ openScreenViewOnForm: aForm at: formLocation magnifiedAt: magnifiedLocation scal
 	smallFormView _ FormView new model: aForm.
 	smallFormView align: smallFormView viewport topLeft with: formLocation.
 	bitEditor _ self bitEdit: aForm at: magnifiedLocation scale: scaleFactor remoteView: smallFormView.
-	bitEditor controller blueButtonMenu: nil blueButtonMessages: nil.
 	savedForm _ Form fromDisplay: (r _ bitEditor displayBox expandBy: (0@23 corner: 0@0)).
 	bitEditor controller startUp.
 	savedForm displayOn: Display at: r topLeft.
