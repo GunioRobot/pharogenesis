@@ -1,3 +1,3 @@
 new
 
-	^self runs: OrderedCollection new values: OrderedCollection new
+	^self runs: Array new values: Array new
