@@ -1,0 +1,2 @@
+displayObject
+	^self splObj: TheDisplay
