@@ -3,6 +3,7 @@ processDiagonalsFrom: todoList
 	todo := todoList copy.
 	runList := PluggableDictionary new.
 	runList hashBlock: self pointHashBlock.
+	runList equalBlock: self pointEqualBlock.
 	[todo isEmpty] whileFalse:[
 		start := todo detect:[:any| true].
 		run := OrderedCollection new.
