@@ -4,5 +4,5 @@ doesNotUnderstand: aMessage
 
 	Debugger openContext: thisContext
 				label: 'About to perform: ', aMessage selector
-				contents: thisContext shortStack.
+				contents: nil.
 	^ aMessage sentTo: tracedObject.
