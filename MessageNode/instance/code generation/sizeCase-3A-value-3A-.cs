@@ -17,6 +17,7 @@ sizeCase: encoder value: forValue
 		[:keyNode :valueNode :last |
 		sizes at: sizeIndex put: elseSize.
 		thenSize _ valueNode sizeForEvaluatedValue: encoder.
+		last ifFalse: [thenSize _ thenSize + 1]. "Pop"
 		valueNode returns ifFalse: [thenSize _ thenSize + (self sizeJump: elseSize)].
 		sizes at: sizeIndex-1 put: thenSize.
 		last ifFalse: [elseSize _ elseSize + 1]. "Dup"
