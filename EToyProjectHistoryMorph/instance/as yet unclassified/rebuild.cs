@@ -1,13 +1,13 @@
 rebuild
 
 	| history r1 |
-	changeCounter _ ProjectHistory changeCounter.
 	history _ ProjectHistory currentHistory mostRecentCopy.
+	changeCounter _ ProjectHistory changeCounter.
 	self removeAllMorphs.
 	self rubberBandCells: false. "enable growing"
 	r1 _ self addARow: {
 		self inAColumn: {
-			StringMorph new contents: 'Jump...'; lock.
+			StringMorph new contents: 'Jump...' translated; lock.
 		}.
 	}.
 	r1 on: #mouseUp send: #jumpToProject to: self.
