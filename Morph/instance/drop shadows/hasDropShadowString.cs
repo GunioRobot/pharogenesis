@@ -1,4 +1,5 @@
 hasDropShadowString
- 	^self hasDropShadow 
-		ifTrue:['<on>show shadow'] 
-		ifFalse:['<off>show shadow']
+	^ (self hasDropShadow
+		ifTrue: ['<on>']
+		ifFalse: ['<off>'])
+		, 'show shadow' translated
