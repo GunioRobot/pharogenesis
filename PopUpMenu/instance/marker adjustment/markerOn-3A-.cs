@@ -6,7 +6,7 @@ markerOn: aPoint
 		ifTrue: [selection = 0 & (marker containsPoint: aPoint)
 					ifTrue: [Display reverse: marker]
 					ifFalse: 
-						[selection ~= 0 ifTrue: [Display reverse: marker].
+						[selection > 0 ifTrue: [Display reverse: marker].
 						marker _ 
 							marker 
 								align: marker topLeft 
