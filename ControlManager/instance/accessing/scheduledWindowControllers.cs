@@ -1,4 +1,6 @@
 scheduledWindowControllers
-	"Same as scheduled controllers, but without ScreenController.  1/13/96 sw"
+	"Same as scheduled controllers, but without ScreenController.
+	Avoids null views just after closing, eg, a debugger."
 
-	^ scheduledControllers copyWithout: screenController
+	^ scheduledControllers select:
+		[:c | c ~~ screenController and: [c view ~~ nil]]
