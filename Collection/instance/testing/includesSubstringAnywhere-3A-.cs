@@ -2,10 +2,10 @@ includesSubstringAnywhere: testString
 	"Answer whether the receiver includes, anywhere in its nested structure, a string that has testString as a substring"
 	self do:
 		[:element |
-			(element isKindOf: String)
+			(element isString)
 				ifTrue:
 					[(element includesSubString: testString) ifTrue: [^ true]].
-			(element isKindOf: Collection)
+			(element isCollection)
 				ifTrue:
 					[(element includesSubstringAnywhere: testString) ifTrue: [^ true]]].
 	^ false
