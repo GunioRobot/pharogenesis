@@ -1,4 +1,4 @@
-initializePrimitiveTable
+initializePrimitiveTable 
 	"This table generates a C switch statement for primitive dispatching."
 
 	"NOTE: The real limit here is 2047, but our C compiler currently barfs over 700"
@@ -25,7 +25,7 @@ initializePrimitiveTable
 		(16 primitiveBitXor)
 		(17 primitiveBitShift)
 		(18 primitiveMakePoint)
-		(19 primitiveFail)
+		(19 primitiveFail)					"Guard primitive for simulation -- *must* fail"
 
 		"LargeInteger Primitives (20-39)"
 		"32-bit logic is aliased to Integer prims above"
@@ -68,17 +68,17 @@ initializePrimitiveTable
 		(69 primitiveObjectAtPut)
 		(70 primitiveNew)
 		(71 primitiveNewWithArg)
-		(72 primitiveFail)					"Blue Book: primitiveBecome"
+		(72 primitiveArrayBecomeOneWay)	"Blue Book: primitiveBecome"
 		(73 primitiveInstVarAt)
 		(74 primitiveInstVarAtPut)
 		(75 primitiveAsOop)
-		(76 primitiveFail)					"Blue Book: primitiveAsObject"
+		(76 primitiveStoreStackp)					"Blue Book: primitiveAsObject"
 		(77 primitiveSomeInstance)
 		(78 primitiveNextInstance)
 		(79 primitiveNewMethod)
 
 		"Control Primitives (80-89)"
-		(80 primitiveFail)   					"Blue Book:  primitiveBlockCopy"
+		(80 primitiveBlockCopy)
 		(81 primitiveValue)
 		(82 primitiveValueWithArgs)
 		(83 primitivePerform)
@@ -91,20 +91,20 @@ initializePrimitiveTable
 
 		"Input/Output Primitives (90-109)"
 		(90 primitiveMousePoint)
-		(91 primitiveFail)					"Blue Book: primitiveCursorLocPut"
-		(92 primitiveFail)					"Blue Book: primitiveCursorLink"
+		(91 primitiveTestDisplayDepth)			"Blue Book: primitiveCursorLocPut"
+		(92 primitiveSetDisplayMode)				"Blue Book: primitiveCursorLink"
 		(93 primitiveInputSemaphore)
-		(94 primitiveFail)					"Blue Book: primitiveSampleInterval"
+		(94 primitiveFail)						"Blue Book: primitiveSampleInterval"
 		(95 primitiveInputWord)
-		(96 primitiveCopyBits)
+		(96 primitiveObsoleteIndexedPrimitive)	"primitiveCopyBits"
 		(97 primitiveSnapshot)
-		(98 primitiveFail)					"Blue Book: primitiveTimeWordsInto"
-		(99 primitiveFail)					"Blue Book: primitiveTickWordsInto"
-		(100 primitiveFail)					"Blue Book: primitiveSignalAtTick"
+		(98 primitiveStoreImageSegment)
+		(99 primitiveLoadImageSegment)
+		(100 primitivePerformInSuperclass)		"Blue Book: primitiveSignalAtTick"
 		(101 primitiveBeCursor)
 		(102 primitiveBeDisplay)
 		(103 primitiveScanCharacters)
-		(104 primitiveDrawLoop)
+		(104 primitiveObsoleteIndexedPrimitive)	"primitiveDrawLoop"
 		(105 primitiveStringReplace)
 		(106 primitiveScreenSize)
 		(107 primitiveMouseButtons)
@@ -118,13 +118,15 @@ initializePrimitiveTable
 		(113 primitiveQuit)
 		(114 primitiveExitToDebugger)
 		(115 primitiveFail)					"Blue Book: primitiveOopsLeft"
-		(116 primitiveFail)
-		(117 primitiveFail)
+		(116 primitiveFlushCacheByMethod)
+		(117 primitiveExternalCall)
 		(118 primitiveDoPrimitiveWithArgs)
 		(119 primitiveFlushCacheSelective)
+			"Squeak 2.2 and earlier use 119.  Squeak 2.3 and later use 116.
+			Both are supported for backward compatibility."
 
 		"Miscellaneous Primitives (120-127)"
-		(120 primitiveFail)
+		(120 primitiveCalloutToFFI)
 		(121 primitiveImageName)
 		(122 primitiveNoop)					"Blue Book: primitiveImageVolume"
 		(123 primitiveFail)
@@ -154,79 +156,36 @@ initializePrimitiveTable
 		(143 primitiveShortAt)
 		(144 primitiveShortAtPut)
 		(145 primitiveConstantFill)
-		(146 primitiveReadJoystick)
-		(147 primitiveWarpBits)
+		(146 primitiveObsoleteIndexedPrimitive)	"primitiveReadJoystick"
+		(147 primitiveObsoleteIndexedPrimitive)	"primitiveWarpBits"
 		(148 primitiveClone)
 		(149 primitiveGetAttribute)
 
 		"File Primitives (150-169)"
-		(150 primitiveFileAtEnd)
-		(151 primitiveFileClose)
-		(152 primitiveFileGetPosition)
-		(153 primitiveFileOpen)
-		(154 primitiveFileRead)
-		(155 primitiveFileSetPosition)
-		(156 primitiveFileDelete)
-		(157 primitiveFileSize)
-		(158 primitiveFileWrite)
-		(159 primitiveFileRename)
-		(160 primitiveDirectoryCreate)
-		(161 primitiveDirectoryDelimitor)
-		(162 primitiveDirectoryLookup)
-		(163 168 primitiveFail)
-		(169 primitiveDirectorySetMacTypeAndCreator)
+		(150 163 primitiveObsoleteIndexedPrimitive)
+		(164 168 primitiveFail)
+		(169 primitiveObsoleteIndexedPrimitive)
 
 		"Sound Primitives (170-199)"
-		(170 primitiveSoundStart)
-		(171 primitiveSoundStartWithSemaphore)
-		(172 primitiveSoundStop)
-		(173 primitiveSoundAvailableSpace)
-		(174 primitiveSoundPlaySamples)
-		(175 primitiveSoundPlaySilence)		"obsolete; will be removed in the future"
+		(170 175 primitiveObsoleteIndexedPrimitive)
 		(176 primWaveTableSoundmixSampleCountintostartingAtpan)
 		(177 primFMSoundmixSampleCountintostartingAtpan)
 		(178 primPluckedSoundmixSampleCountintostartingAtpan)
 		(179 primSampledSoundmixSampleCountintostartingAtpan)
 		(180 primFMSoundmixSampleCountintostartingAtleftVolrightVol)
 		(181 primPluckedSoundmixSampleCountintostartingAtleftVolrightVol)
-		(182 primSampledSoundmixSampleCountintostartingAtleftVolrightVol)
+		(182 oldprimSampledSoundmixSampleCountintostartingAtleftVolrightVol)
 		(183 primReverbSoundapplyReverbTostartingAtcount)
-		(184 188 primitiveFail)
-		(189 primitiveSoundInsertSamples)
-		(190 primitiveSoundStartRecording)
-		(191 primitiveSoundStopRecording)
-		(192 primitiveSoundGetRecordingSampleRate)
-		(193 primitiveSoundRecordSamples)
-		(194 primitiveSoundSetRecordLevel)
+		(184 primLoopedSampledSoundmixSampleCountintostartingAtleftVolrightVol)
+		(185 primSampledSoundmixSampleCountintostartingAtleftVolrightVol)
+
+		(186 188 primitiveFail)
+		(189 194 primitiveObsoleteIndexedPrimitive)
 		(195 199 primitiveFail)
 
 		"Networking Primitives (200-229)"
-		(200 primitiveInitializeNetwork)
-		(201 primitiveResolverStartNameLookup)
-		(202 primitiveResolverNameLookupResult)
-		(203 primitiveResolverStartAddressLookup)
-		(204 primitiveResolverAddressLookupResult)
-		(205 primitiveResolverAbortLookup)
-		(206 primitiveResolverLocalAddress)
-		(207 primitiveResolverStatus)
-		(208 primitiveResolverError)
-		(209 primitiveSocketCreate)
-		(210 primitiveSocketDestroy)
-		(211 primitiveSocketConnectionStatus)
-		(212 primitiveSocketError)
-		(213 primitiveSocketLocalAddress)
-		(214 primitiveSocketLocalPort)
-		(215 primitiveSocketRemoteAddress)
-		(216 primitiveSocketRemotePort)
-		(217 primitiveSocketConnectToPort)
-		(218 primitiveSocketListenOnPort)
-		(219 primitiveSocketCloseConnection)
-		(220 primitiveSocketAbortConnection)
-		(221 primitiveSocketReceiveDataBufCount)
-		(222 primitiveSocketReceiveDataAvailable)
-		(223 primitiveSocketSendDataBufCount)
-		(224 primitiveSocketSendDone)
-		(225 229 primitiveFail)
+		(200 225 primitiveObsoleteIndexedPrimitive)
+		(226 229 primitiveFail)
 
 		"Other Primitives (230-249)"
 		(230 primitiveRelinquishProcessor)
@@ -237,11 +196,13 @@ initializePrimitiveTable
 		(235 primStringcomparewithcollated)
 		(236 primSampledSoundconvert8bitSignedFromto16Bit)
 		(237 primBitmapcompresstoByteArray)
-		(238 primitiveSerialPortOpen)
-		(239 primitiveSerialPortClose)
-		(240 primitiveSerialPortWrite)
-		(241 primitiveSerialPortRead)
-		(242 249 primitiveFail)
+		(238 241 primitiveObsoleteIndexedPrimitive)
+		(242 primitiveFail)
+		(243 primStringtranslatefromtotable)
+		(244 primStringfindFirstInStringinSetstartingAt)
+		(245 primStringindexOfAsciiinStringstartingAt)
+		(246 primStringfindSubstringinstartingAtmatchTable)
+		(247 249 primitiveFail)
 
 		"VM Implementor Primitives (250-255)"
 		(250 clearProfile)
@@ -249,7 +210,7 @@ initializePrimitiveTable
 		(252 startProfiling)
 		(253 stopProfiling)
 		(254 primitiveVMParameter)
-		(255 primitiveFail)
+		(255 primitiveInstVarsPutFromStack) "Never used except in Disney tests.  Remove after 2.3 release."
 
 		"Quick Push Const Methods"
 		(256 primitivePushSelf)
@@ -265,17 +226,30 @@ initializePrimitiveTable
 		(264 519 primitiveLoadInstVar)
 
 		"MIDI Primitives (520-539)"
-		(520 primitiveFail)
-		(521 primitiveMIDIClosePort)
-		(522 primitiveMIDIGetClock)
-		(523 primitiveMIDIGetPortCount)
-		(524 primitiveMIDIGetPortDirectionality)
-		(525 primitiveMIDIGetPortName)
-		(526 primitiveMIDIOpenPort)
-		(527 primitiveMIDIParameterGetOrSet)
-		(528 primitiveMIDIRead)
-		(529 primitiveMIDIWrite)
+		(520 529 primitiveObsoleteIndexedPrimitive)
 		(530 539 primitiveFail)  "reserved for extended MIDI primitives"
 
+		"Experimental Asynchrous File Primitives"
+		(540 545 primitiveObsoleteIndexedPrimitive)
+		(546 547 primitiveFail)
+
+		"Pen Tablet Primitives"
+		(548 primitiveObsoleteIndexedPrimitive)
+		(549 primitiveObsoleteIndexedPrimitive)
+
+		"Sound Codec Primitives"
+		(550 primADPCMCodecprivateDecodeMono)	
+		(551 primADPCMCodecprivateDecodeStereo)	
+		(552 primADPCMCodecprivateEncodeMono)	
+		(553 primADPCMCodecprivateEncodeStereo)	
+		(554 569 primitiveFail)  "reserved for additional codec primitives"
+
+		"External primitive support primitives"
+		(570 primitiveFlushExternalPrimitives)
+		(571 primitiveUnloadModule)
+		(572 primitiveListBuiltinModule)
+		(573 primitiveListExternalModule)
+		(574 primitiveFail) "reserved for addl. external support prims"
+
 		"Unassigned Primitives"
-		(540 700 primitiveFail)).
+		(575 700 primitiveFail)).
