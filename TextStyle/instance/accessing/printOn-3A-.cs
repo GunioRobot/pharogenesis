@@ -1,3 +1,8 @@
 printOn: aStream
+
 	super printOn: aStream.
-	aStream space; nextPutAll: self defaultFont name
+	(fontArray first isMemberOf: StrikeFontSet) ifTrue: [
+		aStream space; nextPutAll: self defaultFont familySizeFace first; nextPutAll: '(FontSet)'
+	] ifFalse: [
+		aStream space; nextPutAll: self defaultFont familySizeFace first
+	]
