@@ -4,5 +4,5 @@ size
 	documentation whatIsAPrimitive."
 
 	<primitive: 62>
-	"The number of indexable fields of fixed-length objects is 0"
-	^0
+	self class isVariable ifFalse: [self errorNotIndexable].
+	^ 0
