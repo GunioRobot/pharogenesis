@@ -1,5 +1,5 @@
 internalActivateNewMethod
-	| methodHeader newContext tempCount argCount2 needsLarge |
+	| methodHeader newContext tempCount argCount2 needsLarge where |
 	self inline: true.
 
 	methodHeader _ self headerOf: newMethod.
@@ -15,29 +15,24 @@ internalActivateNewMethod
 
 	"Assume: newContext will be recorded as a root if necessary by the
 	 call to newActiveContext: below, so we can use unchecked stores."
-
-	self storePointerUnchecked: SenderIndex	ofObject: newContext
-		withValue: activeContext.
-	self storeWord: InstructionPointerIndex	ofObject: newContext
-		withValue: (self integerObjectOf:
+	where _   newContext + BaseHeaderSize.
+	self longAt: where + (SenderIndex << 2) put: activeContext.
+	self longAt: where + (InstructionPointerIndex << 2) put: (self integerObjectOf:
 			(((LiteralStart + (self literalCountOfHeader: methodHeader)) * 4) + 1)).
-	self storeWord: StackPointerIndex			ofObject: newContext
-		withValue: (self integerObjectOf: tempCount).
-	self storePointerUnchecked: MethodIndex ofObject: newContext
-		withValue: newMethod.
+	self longAt: where + (StackPointerIndex << 2) put: (self integerObjectOf: tempCount).
+	self longAt: where + (MethodIndex << 2) put: newMethod.
 
 	"Copy the reciever and arguments..."
 	argCount2 _ argumentCount.
 	0 to: argCount2 do:
-		[:i | self storePointerUnchecked: ReceiverIndex+i ofObject: newContext
-			withValue: (self internalStackValue: argCount2-i)].
+		[:i | self longAt: where + ((ReceiverIndex+i) << 2) put: (self internalStackValue: argCount2-i)].
 
 	"clear remaining temps to nil in case it has been recycled"
 	methodHeader _ nilObj.  "methodHeader here used just as faster (register?) temp"
-	argCount2+1 to: tempCount do:
-		[:i | self storePointerUnchecked: ReceiverIndex+i ofObject: newContext
-			withValue: methodHeader].
+	argCount2+1+ReceiverIndex to: tempCount+ReceiverIndex do:
+		[:i | self longAt: where + (i << 2) put: methodHeader].
 
 	self internalPop: argCount2 + 1.
 	reclaimableContextCount _ reclaimableContextCount + 1.
 	self internalNewActiveContext: newContext.
+ 
