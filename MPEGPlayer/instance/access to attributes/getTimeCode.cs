@@ -1,0 +1,2 @@
+getTimeCode
+	^self external getTimeCode
