@@ -10,10 +10,8 @@ boinkPitch: p dur: d loudness: l waveTable: waveTable pan: pan
 	cycles _ (d * SamplingRate asFloat) asInteger.
 
 	i _ 1.
-	1 to: cycles do: [ :cycle |
-		(cycle \\ 100) = 0 ifTrue: [
-			amplitude _ (decay * amplitude asFloat) asInteger.
-		].
+	1 to: cycles do: [:cycle |
+		(cycle \\ 100) = 0
+			ifTrue: [amplitude _ (decay * amplitude asFloat) asInteger].
 		i _ (((i - 1) + increment) \\ tableSize) + 1.
-		self playTestSample: (amplitude * (waveTable at: i)) // 1000 pan: pan.
-	].
+		self playTestSample: (amplitude * (waveTable at: i)) // 1000 pan: pan].
