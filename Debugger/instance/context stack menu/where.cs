@@ -1,4 +1,5 @@
 where
 	"Select the expression whose evaluation was interrupted."
 
-	self selectPC
+	selectingPC _ true.
+	self contextStackIndex: contextStackIndex oldContextWas: self selectedContext
