@@ -1,2 +1,3 @@
 bringFlapTabsToFront
-	(submorphs select:[:m| m isFlapOrTab]) do:[:m| self addMorphInLayer: m].
+	self deprecated: 'Replaced by #bringTopmostsToFront'.
+	(submorphs select:[:m| m wantsToBeTopmost]) do:[:m| self addMorphInLayer: m].
