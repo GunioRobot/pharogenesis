@@ -1,3 +1,3 @@
 subject
 
-	^subject
+		^(self fieldNamed: 'subject' ifAbsent: [ ^'' ])  mainValue
