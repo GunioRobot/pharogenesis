@@ -1,2 +1,3 @@
 printSpaceAnalysis	"Smalltalk printSpaceAnalysis"
-	^ self printSpaceAnalysis: 0
+
+	^ Smalltalk printSpaceAnalysis: 0 on: 'STspace.text'
