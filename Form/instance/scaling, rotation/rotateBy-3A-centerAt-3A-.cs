@@ -9,7 +9,7 @@ rotateBy: direction centerAt: aPoint
 	rot _ #(right pi left) indexOf: direction.
 	(WarpBlt current toForm: newForm)
 		sourceForm: self;
-		colorMap: (self colormapIfNeededForDepth: depth);
+		colorMap: (self colormapIfNeededFor: newForm);
 		combinationRule: 3;
 		copyQuad: ((1+rot to: 4+rot) collect: [:i | quad atWrap: i])
 			 toRect: newForm boundingBox.
