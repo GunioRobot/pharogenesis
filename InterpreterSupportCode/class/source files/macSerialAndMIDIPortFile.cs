@@ -1,32 +1,159 @@
 macSerialAndMIDIPortFile
 
-	^ '#include <Devices.h>
-#include <Serial.h>
+	^ '/* Adjustments for pluginized VM
+ *
+ * Note: The Mac support files have not yet been fully converted to
+ * pluginization. For the time being, it is assumed that they are linked
+ * with the VM. When conversion is complete, they will no longer import
+ * "sq.h" and they will access all VM functions and variables through
+ * the interpreterProxy mechanism.
+ */
+
 #include "sq.h"
+#include "SerialPlugin.h"
+#include "MidiPlugin.h"
+
+/* initialize/shutdown */
+int midiInit() { return true; }
+int midiShutdown() {}
+int serialPortInit() { return true; }
+int serialPortShutdown() {
+	serialPortClose(0);
+	serialPortClose(1);
+}
+
+/* helper function for MIDI module */
+int sqMIDIParameter(int whichParameter, int modify, int newValue);
+
+int sqMIDIParameterSet(int whichParameter, int newValue) {
+	sqMIDIParameter(whichParameter, true, newValue);
+}
+
+int sqMIDIParameterGet(int whichParameter) {
+	sqMIDIParameter(whichParameter, false, 0);
+}
+/* End of adjustments for pluginized VM */
+
+#include <CommResources.h>
+#include <CRMSerialDevices.h>
+#include <Devices.h>
+#include <QuickTimeComponents.h>
+#include <QuickTimeMusic.h>
+#include <Serial.h>
+#include <Strings.h>
 
 /*** Constants ***/
 #define INPUT_BUF_SIZE 1000
+#define FIRST_DRUM_KIT 16385
 
 /*** Imported Variables ***/
 extern int successFlag;
 
-/*** Local Variables ***/
-short inRefNum[2] = {0, 0};
-short outRefNum[2] = {0, 0};
-char inputBuffer[2][INPUT_BUF_SIZE];
+/*** Serial Ports ***/
+#define MAX_PORTS 4
+short inRefNum[MAX_PORTS] = {0, 0, 0, 0};
+short outRefNum[MAX_PORTS] = {0, 0, 0, 0};
+char inputBuffer[MAX_PORTS][INPUT_BUF_SIZE];
+
+/* Quicktime MIDI note allocator and channels */
+NoteAllocator na = nil;
+NoteChannel channel[16] = {
+	nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil};
+
+/* Initial instruments: drums on channel 10, piano on all other channels */
+int channelInstrument[16] = {
+	1, 1, 1, 1, 1, 1, 1, 1, 1, FIRST_DRUM_KIT, 1, 1, 1, 1, 1, 1};
+
+/* Quicktime MIDI parser state */
+enum {idle, want1of2, want2of2, want1of1, sysExclusive};
+int state = idle;
+int argByte1 = 0;
+int argByte2 = 0;
+int lastCmdByte = nil;
+
+/* number of argument bytes for each MIDI command */
+char argumentBytes[128] = {
+	2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+	2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+	2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+	2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+	1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+	1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+	2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+	3, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+};
+
 
 /*** Private Functions ***/
 int portIsOpen(int portNum);
+int portNames(int portNum, char *portName, char *inName, char *outName);
+int serialPortCount(void);
 int setHandshakeOptions(int portNum, int inFlowCtrl, int outFlowCtrl, int xOnChar, int xOffChar);
 int setMidiClockRate(int portNum, int interfaceClockRate);
+
+/*** Quicktime MIDI Support Functions ***/
+void closeQuicktimeMIDIPort(void);
+void openQuicktimeMIDIPort(void);
+void performMIDICmd(int cmdByte, int arg1, int arg2);
+void processMIDIByte(int aByte);
+void startMIDICommand(int cmdByte);
+
+int serialPortCount(void) {
+  /* Return the number of serial ports available on this machine */
+
+ 	CRMRec		commRec;
+ 	CRMRecPtr	thisRecPtr;
+ 	int			count = 0;
+ 
+	InitCRM();
+ 	commRec.crmDeviceType = crmSerialDevice;
+ 	commRec.crmDeviceID = 0;
+	thisRecPtr = (CRMRecPtr) CRMSearch(&commRec);
+ 	while (thisRecPtr != nil) {
+ 		count++;
+		commRec.crmDeviceID = thisRecPtr->crmDeviceID;
+		thisRecPtr = (CRMRecPtr) CRMSearch(&commRec);
+    }
+    if (count > MAX_PORTS) count = MAX_PORTS;
+ 	return count;
+ }
 
 int portIsOpen(int portNum) {
 	if ((portNum < 0) || (portNum > 1)) return false;
 	return outRefNum[portNum] != 0;
 }
 
+int portNames(int portNum, char *portName, char *inName, char *outName) {
+/* Fill in the user name and input and output port names for the given
+   port number. Note that ports are numbered starting with zero. */
+
+ 	CRMRec			commRec;
+ 	CRMRecPtr		thisRecPtr;
+ 	CRMSerialPtr	serialPtr;
+ 	int				count = 0;
+ 
+ 	portName[0] = inName[0] = outName[0] = 0;
+	InitCRM();
+ 	commRec.crmDeviceType = crmSerialDevice;
+ 	commRec.crmDeviceID = 0;
+	thisRecPtr = (CRMRecPtr) CRMSearch(&commRec);
+ 	while (thisRecPtr != nil) {
+ 		if (count == portNum) {
+			serialPtr = (CRMSerialPtr) thisRecPtr->crmAttributes;
+			CopyPascalStringToC((void *) *(serialPtr->name),portName);
+			CopyPascalStringToC((void *) *(serialPtr->inputDriverName),inName);
+			CopyPascalStringToC((void *) *(serialPtr->outputDriverName),outName);
+ 		}
+ 		count++;
+		commRec.crmDeviceID = thisRecPtr->crmDeviceID;
+		thisRecPtr = (CRMRecPtr) CRMSearch(&commRec);
+    }
+ }
+
 int setHandshakeOptions(
   int portNum, int inFlowCtrl, int outFlowCtrl, int xOnChar, int xOffChar) {
+/* Set the given port''s handshaking parameters. */
+
 	SerShk handshakeOptions;
 	int osErr;
 
@@ -81,7 +208,6 @@ int setMidiClockRate(int portNum, int interfaceClockRate) {
 	}
 }
 
-
 /*** Serial Port Functions ***/
 
 int serialPortClose(int portNum) {
@@ -118,7 +244,7 @@ int serialPortOpen(
    divisor that will generate the closest available baud rate. */
 
 	short int options, baudRateParam;
-	unsigned char *inName, *outName;
+	char userName[256], inName[256], outName[256];
 	int osErr;
 
 	if ((portNum < 0) || (portNum > 1) || portIsOpen(portNum)) {
@@ -171,19 +297,14 @@ int serialPortOpen(
 		return success(false);
 	}
 
-	inName = outName = nil;
-	if (portNum == 0) {
-		inName = "\p.AIn";  outName = "\p.AOut";
-	}
-	if (portNum == 1) {
-		inName = "\p.BIn";  outName = "\p.BOut";
-	}
-
-	osErr = OpenDriver(outName, &outRefNum[portNum]);
+	portNames(portNum, userName, inName, outName);
+	CopyCStringToPascal((const char *)outName,(unsigned char *) outName);
+	osErr = OpenDriver((unsigned char *)outName, &outRefNum[portNum]);
 	if (osErr != noErr) {
 		return success(false);
 	}
-	osErr = OpenDriver(inName, &inRefNum[portNum]);
+	CopyCStringToPascal((const char *)inName,(unsigned char *)inName);
+	osErr = OpenDriver((unsigned char *)inName, &inRefNum[portNum]);
 	if (osErr != noErr) {
 		CloseDriver(outRefNum[portNum]);
 		return success(false);
@@ -265,7 +386,6 @@ int serialPortWriteFrom(int portNum, int count, int bufferPtr) {
 	return byteCount;
 }
 
-
 /*** MIDI Parameters (used with sqMIDIParameter function) ***/
 
 #define sqMIDIInstalled				1
@@ -341,14 +461,21 @@ int serialPortWriteFrom(int portNum, int count, int bufferPtr) {
    client must read input data frequently and provide its own
    timestamping. */
 
-
 /*** MIDI Functions ***/
 
 int sqMIDIClosePort(int portNum) {
 /* Close the given MIDI port. Do nothing if the port is not open.
    Fail if there is no port of the given number.*/
 
-	return serialPortClose(portNum);
+	int serialPorts;
+	
+	serialPorts = serialPortCount();
+	if (portNum == serialPorts) {
+		closeQuicktimeMIDIPort();
+		return;
+	} else {
+		return serialPortClose(portNum);
+	}
 }
 
 int sqMIDIGetClock(void) {
@@ -368,7 +495,7 @@ int sqMIDIGetPortCount(void) {
    are numbered from 0 to N-1, where N is the number returned by this
    primitive. */
 
-	return 2;
+	return serialPortCount() + 1;  /* serial ports + QuickTime Synth */
 }
 
 int sqMIDIGetPortDirectionality(int portNum) {
@@ -376,8 +503,16 @@ int sqMIDIGetPortDirectionality(int portNum) {
    port where: 1 = input, 2 = output, 3 = bidirectional. Fail if
    there is no port of the given number. */
 
-	success((portNum == 0) || (portNum == 1));
-	return 3;
+	
+	int serialPorts;
+	
+	serialPorts = serialPortCount();
+	if (portNum > serialPorts) return success(false);
+	if (portNum == serialPorts) {
+		return 2;
+	} else {
+		return 3;
+	}
 }
 
 int sqMIDIGetPortName(int portNum, int namePtr, int length) {
@@ -385,20 +520,21 @@ int sqMIDIGetPortName(int portNum, int namePtr, int length) {
    address. Copy at most length characters, and return the number of
    characters copied. Fail if there is no port of the given number.*/
 
-	char *portName;
-	int count;
+	char userName[256], inName[256], outName[256];
+	int serialPorts, count;
+	
+	serialPorts = serialPortCount();
+	if (portNum > serialPorts) return success(false);
 
-	if (portNum == 0) {
-		portName = "modem port";
-	} else if (portNum == 1) {
-		portName = "printer port";
+	if (portNum == serialPorts) {
+		strcpy(userName, "QuickTime MIDI");
 	} else {
-		return success(false);
+		portNames(portNum, userName, inName, outName);
 	}
 
-	count = strlen(portName);
+	count = strlen(userName);
 	if (count > length) count = length;
-	memcpy((void *) namePtr, portName, count);
+	memcpy((void *) namePtr, userName, count);
 	return count;
 }
 
@@ -412,9 +548,22 @@ int sqMIDIOpenPort(int portNum, int readSemaIndex, int interfaceClockRate) {
    adaptor on platforms that use such adaptors (e.g., Macintosh).
    Fail if there is no port of the given number.*/
 
+	int serialPorts;
+	
+	serialPorts = serialPortCount();
+	if (portNum > serialPorts) return success(false);
+
+	if (portNum == serialPorts) {
+		openQuicktimeMIDIPort();
+		return;
+	}
+
 	serialPortOpen(portNum, 9600, 1, 0, 8, 0, 0, 0, 0);
 	if (successFlag) {
 		setMidiClockRate(portNum, interfaceClockRate);
+		if (!successFlag) {
+			serialPortClose(portNum);
+		}
 	}
 }
 
@@ -519,6 +668,183 @@ int sqMIDIPortWriteFromAt(int portNum, int count, int bufferPtr, int time) {
    not support a timestamped output queue, such as this one, always
    send the data immediately; see sqMIDIHasBuffer. */
 
+	int serialPorts, i;
+	unsigned char *bytePtr;
+	
+	serialPorts = serialPortCount();
+	if (portNum > serialPorts) return success(false);
+
+	if (portNum == serialPorts) {
+		if (!na) return success(false);  /* QuickTime port not open */
+		bytePtr = (unsigned char *) bufferPtr;
+		for (i = 0; i < count; i++) {
+			processMIDIByte(*bytePtr++);
+		}
+		return count;
+	}
 	return serialPortWriteFrom(portNum, count, bufferPtr);
 }
-'.
+
+/*** Quicktime MIDI Support Functions ***/
+
+void closeQuicktimeMIDIPort(void) {
+	int i;
+
+	if (!na) return;
+	for (i = 0; i < 16; i++) {
+		/* dispose of note channels */
+		if (channel[i]) NADisposeNoteChannel(na, channel[i]);
+		channel[i] = nil;
+	}
+	CloseComponent(na);  /* close note allocator */
+}
+
+void openQuicktimeMIDIPort(void) {
+	ComponentResult err;
+	NoteRequest nr;
+	NoteChannel nc;
+	int i;
+
+	closeQuicktimeMIDIPort();
+	na = OpenDefaultComponent(''nota'', 0);
+	if (!na) return;
+
+	for (i = 0; i < 16; i++) {
+		nr.info.polyphony = 11;					/* max simultaneous tones */
+		nr.info.typicalPolyphony = 0x00010000;	/* typical simultaneous tones */
+		NAStuffToneDescription(na, 1, &nr.tone);
+		err = NANewNoteChannel(na, &nr, &nc);
+		if (err || !nc) {
+			closeQuicktimeMIDIPort();
+			return;
+		}
+		NAResetNoteChannel(na, nc);
+		NASetInstrumentNumber(na, nc, channelInstrument[i]);
+		channel[i] = nc;
+	}
+	state = idle;
+	argByte1 = 0;
+	argByte2 = 0;
+	lastCmdByte = nil;
+	return;
+}
+
+void performMIDICmd(int cmdByte, int arg1, int arg2) {
+	/* Perform the given MIDI command with the given arguments. */
+
+	int ch, cmd, val, instrument, bend;
+
+	ch = cmdByte & 0x0F;
+	cmd = cmdByte & 0xF0;
+	if (cmd == 128) {  /* note off */
+		NAPlayNote(na, channel[ch], arg1, 0);
+	}
+	if (cmd == 144) {  /* note on */
+		NAPlayNote(na, channel[ch], arg1, arg2);
+	}
+	if (cmd == 176) {  /* control change */
+		if ((arg1 >= 32) && (arg1 <= 63)) {
+			val = arg2 << 1;  /* LSB of controllers 0-31 */
+		} else {
+			val = arg2 << 8;  /* scale MSB to QT controller range */
+		}
+		NASetController(na, channel[ch], arg1, val);
+	}
+	if (cmd == 192) {  /* program change */
+		if (ch == 9) {
+			instrument = FIRST_DRUM_KIT + arg1;  /* if channel 10, select a drum set */
+		} else {
+			instrument = arg1 + 1;
+		}
+		NASetInstrumentNumber(na, channel[ch], instrument);
+		channelInstrument[ch] = instrument;
+	}
+	if (cmd == 224) {  /* pitch bend */
+		bend = ((arg2 << 7) + arg1) - (64 << 7);
+		bend = bend / 32;  /* default sensitivity = +/- 2 semitones */
+		NASetController(na, channel[ch], kControllerPitchBend, bend);
+	}
+}
+
+void processMIDIByte(int aByte) {
+	/* Process the given incoming MIDI byte and perform any completed commands. */
+
+	if (aByte > 247) return;  /* skip all real-time messages */
+
+	switch (state) {
+	case idle:
+		if (aByte >= 128) {
+			/* start a new command using the action table */
+			startMIDICommand(aByte);
+		} else {
+			/* data byte arrived in idle state: use running status if possible */
+			if (lastCmdByte == nil) {
+				return;  /* last command byte is not defined; just skip this byte */
+			} else {
+				/* process this data as if it had the last command byte in front of it */
+				startMIDICommand(lastCmdByte);
+				/* the previous line put us into a new state; we now do a recursive
+			   	   call to process the data byte in this new state. */
+				processMIDIByte(aByte);
+				return;
+			}
+		}
+		break;
+	case want1of2:
+		argByte1 = aByte;
+		state = want2of2;
+		break;
+	case want2of2:
+		argByte2 = aByte;
+		performMIDICmd(lastCmdByte, argByte1, argByte2);
+		state = idle;
+		break;
+	case want1of1:
+		argByte1 = aByte;
+		performMIDICmd(lastCmdByte, argByte1, 0);
+		state = idle;
+		break;
+	case sysExclusive:
+		if (aByte < 128) {
+			/* skip a system exclusive data byte */
+		} else {
+			if (aByte < 248) {
+				/* a system exclusive message can be terminated by any non-real-time command byte */
+				state = idle;
+				if (aByte != 247) {
+					processMIDIByte(aByte);	/* if not endSysExclusive, byte is the start the next command */
+				}
+			}
+		}
+		break;
+	}
+}
+
+void startMIDICommand(int cmdByte) {
+	/* Start processing a MIDI message beginning with the given command byte. */
+
+	int argCount;
+
+	argCount = argumentBytes[cmdByte - 128];
+	switch (argCount) {
+	case 0:						/* start a zero argument command (e.g., a real-time message) */
+		/* Stay in the current state and don''t change active status.
+		   Real-time messages may arrive between data bytes without disruption. */
+		performMIDICmd(cmdByte, 0, 0);
+		break;
+	case 1:						/* start a one argument command */
+		lastCmdByte = cmdByte;
+		state = want1of1;
+		break;
+	case 2:						/* start a two argument command */
+		lastCmdByte = cmdByte;
+		state = want1of2;
+		break;
+	case 3:						/* start a variable length ''system exclusive'' command */
+		/* a system exclusive command clears running status */
+		lastCmdByte = nil;
+		state = sysExclusive;
+		break;
+	}
+}
+'
