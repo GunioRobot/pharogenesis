@@ -1,0 +1,3 @@
+existsCallIn: aMethodRef
+
+	self subclassResponsibility
