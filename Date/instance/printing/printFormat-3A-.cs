@@ -4,4 +4,4 @@ printFormat: formatArray
 	| aStream |
 	aStream _ WriteStream on: (String new: 16).
 	self printOn: aStream format: formatArray.
-	^aStream contents
+	^ aStream contents
