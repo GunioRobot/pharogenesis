@@ -3,4 +3,4 @@ fields
 	"The following really means
 		typedef void* Win32Handle;
 	"
-	^#(nil	'void*') "an opaque 32bit handle"
+	^#(nil	'ulong') "an opaque 32bit handle"
