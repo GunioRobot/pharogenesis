@@ -2,7 +2,7 @@ importUrl: aFile
 	| oldFile url strings position |
 	oldFile _ FileStream oldFileOrNoneNamed: aFile.
 	oldFile isBinary 
-		ifTrue:[ self error: 'not url file']
+		ifTrue:[ self error: 'not url file' translated]
 		ifFalse:[ strings _ (oldFile contentsOfEntireFile) substrings.
 				strings do:[:sub |
 				( sub includesSubString: 'URL=')
@@ -14,5 +14,5 @@ importUrl: aFile
 							]	
 					].
 				]. 
-	url =='' ifTrue:[ self error: 'blank file: url not exist'].
+	url =='' ifTrue:[ self error: 'blank file: url not exist' translated].
 	^url asUrl.
