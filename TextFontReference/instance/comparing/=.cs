@@ -1,3 +1,3 @@
 = other 
 	^ (other class == self class) 
-		and: [other font == font]
+		and: [other font = font]
