@@ -1,0 +1,2 @@
+hasSpecularPart
+	^false
