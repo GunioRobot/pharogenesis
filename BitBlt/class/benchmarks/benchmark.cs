@@ -23,7 +23,7 @@ benchmark		"BitBlt benchmark"
 				bb sourceForm: source.
 				bb sourceRect: source boundingBox.
 				bb destRect: dest boundingBox.
-				bb colorMap: (source colormapIfNeededForDepth: dest depth).
+				bb colorMap: (source colormapIfNeededFor: dest).
 				bb combinationRule: rule.
 
 				"Measure speed of copyBits"
