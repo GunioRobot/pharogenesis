@@ -10,5 +10,6 @@ jumplfFalseBy: offset
 			argumentCount _ 0.
 			^ self normalSend
 		].
+		self fetchNextBytecode.
 	].
 	self internalPop: 1.
