@@ -1,0 +1,2 @@
+moduleName
+	^'B2DPlugin'
