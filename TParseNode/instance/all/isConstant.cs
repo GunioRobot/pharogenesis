@@ -1,0 +1,3 @@
+isConstant
+
+	^false
