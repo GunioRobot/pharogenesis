@@ -4,7 +4,8 @@ printInstructionsOn: aStream
 	
 	| end |
 	stream _ aStream.
-	end _ self method endPC.
-	oldPC _ pc.
-	[pc <= end]
-		whileTrue: [super interpretNextInstructionFor: self]
+	scanner _ InstructionStream on: method.
+	end _ method endPC.
+	oldPC _ scanner pc.
+	[scanner pc <= end]
+		whileTrue: [scanner interpretNextInstructionFor: self]
