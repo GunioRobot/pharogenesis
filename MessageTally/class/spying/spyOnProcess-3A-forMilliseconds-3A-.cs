@@ -6,7 +6,7 @@ spyOnProcess: aProcess forMilliseconds: msecDuration
 	| node |
 	node _ self new.
 	node
-		spyEvery: 10
+		spyEvery: self defaultPollPeriod
 		onProcess: aProcess
 		forMilliseconds: msecDuration.
 	(StringHolder new
