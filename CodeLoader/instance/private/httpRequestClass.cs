@@ -1,2 +1,2 @@
 httpRequestClass
-	^HTTPRequest
+	^HTTPDownloadRequest
