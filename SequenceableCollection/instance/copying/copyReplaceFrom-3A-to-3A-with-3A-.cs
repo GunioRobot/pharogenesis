@@ -9,19 +9,22 @@ copyReplaceFrom: start to: stop with: replacementCollection
 	newSize _ self size - (stop - start + 1) + replacementCollection size.
 	endReplacement _ start - 1 + replacementCollection size.
 	newSequenceableCollection _ self species new: newSize.
-	newSequenceableCollection
-		replaceFrom: 1
-		to: start - 1
-		with: self
-		startingAt: 1.
-	newSequenceableCollection
-		replaceFrom: start
-		to: endReplacement
-		with: replacementCollection
-		startingAt: 1.
-	newSequenceableCollection
-		replaceFrom: endReplacement + 1
-		to: newSize
-		with: self
-		startingAt: stop + 1.
+	start > 1 ifTrue:[
+		newSequenceableCollection
+			replaceFrom: 1
+			to: start - 1
+			with: self
+			startingAt: 1].
+	start <= endReplacement ifTrue:[
+		newSequenceableCollection
+			replaceFrom: start
+			to: endReplacement
+			with: replacementCollection
+			startingAt: 1].
+	endReplacement < newSize ifTrue:[
+		newSequenceableCollection
+			replaceFrom: endReplacement + 1
+			to: newSize
+			with: self
+			startingAt: stop + 1].
 	^newSequenceableCollection
