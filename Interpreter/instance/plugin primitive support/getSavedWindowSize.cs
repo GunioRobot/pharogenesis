@@ -1,0 +1,2 @@
+getSavedWindowSize
+	^savedWindowSize
