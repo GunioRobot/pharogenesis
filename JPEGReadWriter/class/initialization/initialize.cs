@@ -1,5 +1,5 @@
 initialize
-
+	"JPEGReadWriter initialize"
 	"general constants"
 	DCTSize _ 8.
 	MaxSample _ (2 raisedToInteger: DCTSize) - 1.
@@ -16,6 +16,8 @@ initialize
 	DCTK2 _ 1.847759065.
 	DCTK3 _ 1.082392200.
 	DCTK4 _ -2.613125930.
+	Pass1Div _ 1 bitShift: ConstBits - Pass1Bits.
+	Pass2Div _ 1 bitShift: ConstBits + Pass1Bits + 3.
 
 	"fixed-point Inverse Discrete Cosine Transform (IDCT) constants"
 	FIXn0n298631336 _ 2446.
