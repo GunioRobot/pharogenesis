@@ -1,4 +1,4 @@
 toggleRoundString
-	^ self isRound
+	^ (self isRound
 		ifTrue: ['be square']
-		ifFalse: ['be round']
+		ifFalse: ['be round'])  translated
