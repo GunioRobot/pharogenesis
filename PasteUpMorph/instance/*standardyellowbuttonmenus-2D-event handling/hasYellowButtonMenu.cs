@@ -1,0 +1,2 @@
+hasYellowButtonMenu
+	^self isWorldMorph 
