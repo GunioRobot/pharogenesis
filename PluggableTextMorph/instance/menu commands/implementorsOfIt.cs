@@ -1,2 +1,2 @@
 implementorsOfIt
-	textMorph editor implementorsOfIt
+	self handleEdit: [textMorph editor implementorsOfIt]
