@@ -1,0 +1,3 @@
+milliSecond
+
+	^ self sign milliSeconds
