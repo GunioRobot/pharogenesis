@@ -5,4 +5,4 @@ closeAndUnschedule
 	status _ #closed.
 	view erase.
 	view release.
-	ScheduledControllers unschedule: self
+	ScheduledControllers unschedule: self; searchForActiveController
