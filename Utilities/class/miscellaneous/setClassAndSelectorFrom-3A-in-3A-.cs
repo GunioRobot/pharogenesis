@@ -2,6 +2,11 @@ setClassAndSelectorFrom: messageIDString in: csBlock
 	"Decode strings of the form <className> [class] <selectorName>.   If <className> does not exist as a class, use nil for the class in the block"
 
 	| aStream aClass maybeClass sel |
+
+	(messageIDString isKindOf: MethodReference) ifTrue: [
+		^messageIDString setClassAndSelectorIn: csBlock
+	].
+
 	aStream _ ReadStream on: messageIDString.
 	aClass _ Smalltalk at: (aStream upTo: $ ) asSymbol ifAbsent: [nil].
 	maybeClass _ aStream upTo: $ .
