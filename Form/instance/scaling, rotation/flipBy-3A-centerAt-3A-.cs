@@ -7,7 +7,7 @@ flipBy: direction centerAt: aPoint
 		collect: [:i | quad at: i].
 	(WarpBlt current toForm: newForm)
 		sourceForm: self;
-		colorMap: (self colormapIfNeededForDepth: depth);
+		colorMap: (self colormapIfNeededFor: newForm);
 		combinationRule: 3;
 		copyQuad: quad toRect: newForm boundingBox.
 	newForm offset: (self offset flipBy: direction centerAt: aPoint).
