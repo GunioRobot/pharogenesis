@@ -1,8 +1,7 @@
 open
 	"ChangeSorterPluggable new open"
 	| topView |
-	World ifNotNil: [^ self openAsMorph].
-	Sensor leftShiftDown ifTrue: [^ self openAsMorph].   "testing"
+	Smalltalk isMorphic | Sensor leftShiftDown ifTrue: [^ self openAsMorph].
 
 	topView _ StandardSystemView new.
 	topView model: self.
