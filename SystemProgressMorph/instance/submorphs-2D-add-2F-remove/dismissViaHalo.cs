@@ -1,0 +1,2 @@
+dismissViaHalo
+	self class reset
