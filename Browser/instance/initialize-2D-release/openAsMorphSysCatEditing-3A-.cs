@@ -9,6 +9,7 @@ openAsMorphSysCatEditing: editString
 			selected: #indexIsOne changeSelected: #indexIsOne:
 			menu: #systemCatSingletonMenu: keystroke: #systemCatSingletonKey:from:.
  	mySingletonList enableDragNDrop: Preferences browseWithDragNDrop.
+	mySingletonList hideScrollBarsIndefinitely.
 	window 
 		addMorph: mySingletonList
 		fullFrame: (
