@@ -1,16 +1,17 @@
 openAsMorph
 	"Create a pluggable version of all the views for a Browser, including views and controllers."
-	| window aListExtent next |
+	| window aListExtent next mySingletonList |
 	window _ (SystemWindow labelled: 'later') model: self.
 	self packages size = 1
 		ifTrue: [
 			aListExtent _ 0.333333 @ 0.34.
 			self systemCategoryListIndex: 1.
-			window addMorph: (PluggableListMorph on: self list: #systemCategorySingleton
+			mySingletonList _ PluggableListMorph on: self list: #systemCategorySingleton
 					selected: #indexIsOne changeSelected: #indexIsOne:
 					menu: #packageListMenu:
-					keystroke: #packageListKey:from:)
-				frame: (0@0 extent: 1.0@0.06).
+					keystroke: #packageListKey:from:.
+			mySingletonList hideScrollBarsIndefinitely.
+			window addMorph: mySingletonList frame: (0@0 extent: 1.0@0.06).
 			next := 0@0.06]
 		ifFalse: [
 			aListExtent _ 0.25 @ 0.4.
