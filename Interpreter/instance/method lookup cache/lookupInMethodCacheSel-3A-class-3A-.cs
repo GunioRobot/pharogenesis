@@ -5,16 +5,27 @@ lookupInMethodCacheSel: selector class: class
 
 	| hash probe |
 	self inline: true.
-	hash _ (selector bitXor: class) >> 2.  "shift drops two low-order zeros from addresses"
-	probe _ (hash bitAnd: MethodCacheMask) + 1.  "initial probe"
+	hash _ selector bitXor: class.  "shift drops two low-order zeros from addresses"
 
-	1 to: CacheProbeMax do: [ :p |
-		(((methodCache at: probe) = selector) and:
-		 [(methodCache at: probe + MethodCacheEntries) = class]) ifTrue: [
-			newMethod _ methodCache at: probe + (MethodCacheEntries * 2).
-			primitiveIndex _ methodCache at: probe + (MethodCacheEntries * 3).
-			^ true	"found entry in cache; done"
-		].
-		probe _ ((hash >> p) bitAnd: MethodCacheMask) + 1
-	].
+	probe _ hash bitAnd: MethodCacheMask.  "first probe"
+	(((methodCache at: probe + MethodCacheSelector) = selector) and:
+		 [(methodCache at: probe + MethodCacheClass) = class]) ifTrue:
+			[newMethod _ methodCache at: probe + MethodCacheMethod.
+			primitiveIndex _ methodCache at: probe + MethodCachePrim.
+			^ true	"found entry in cache; done"].
+
+	probe _ (hash >> 1) bitAnd: MethodCacheMask.  "second probe"
+	(((methodCache at: probe + MethodCacheSelector) = selector) and:
+		 [(methodCache at: probe + MethodCacheClass) = class]) ifTrue:
+			[newMethod _ methodCache at: probe + MethodCacheMethod.
+			primitiveIndex _ methodCache at: probe + MethodCachePrim.
+			^ true	"found entry in cache; done"].
+
+	probe _ (hash >> 2) bitAnd: MethodCacheMask.
+	(((methodCache at: probe + MethodCacheSelector) = selector) and:
+		 [(methodCache at: probe + MethodCacheClass) = class]) ifTrue:
+			[newMethod _ methodCache at: probe + MethodCacheMethod.
+			primitiveIndex _ methodCache at: probe + MethodCachePrim.
+			^ true	"found entry in cache; done"].
+
 	^ false
