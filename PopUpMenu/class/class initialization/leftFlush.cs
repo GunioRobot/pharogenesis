@@ -1,0 +1,3 @@
+leftFlush
+
+	MenuStyle leftFlush
