@@ -1,0 +1,3 @@
+cursorColor
+
+	^ cursorColor
