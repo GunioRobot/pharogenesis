@@ -1,6 +1,6 @@
 CompositeAnimation
 	subclass: #SequentialAnimation
-	instanceVariableNames: 'index '
+	instanceVariableNames: 'index'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon3D-Wonderland Time'
+	category: 'Balloon3D-Wonderland-Time'
