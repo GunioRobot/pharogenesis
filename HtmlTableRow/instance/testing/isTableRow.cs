@@ -1,0 +1,2 @@
+isTableRow
+	^true
