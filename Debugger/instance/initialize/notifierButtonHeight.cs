@@ -1,0 +1,3 @@
+notifierButtonHeight
+
+	^ 18
