@@ -1,0 +1,2 @@
+externalModules
+	^vmMaker externalModules
