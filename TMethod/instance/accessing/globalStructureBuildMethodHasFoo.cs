@@ -1,0 +1,2 @@
+globalStructureBuildMethodHasFoo
+	^globalStructureBuildMethodHasFoo
