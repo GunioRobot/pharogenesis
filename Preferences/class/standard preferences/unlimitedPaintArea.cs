@@ -1,0 +1,2 @@
+unlimitedPaintArea
+	^ self valueOfFlag: #unlimitedPaintArea
