@@ -9,4 +9,3 @@ expandAll: aMorph except: aBlock
 		(each canExpand
 			and: [each isExpanded not])
 			ifTrue: [self expandAll: each except: aBlock]].
-	self installEventHandlerOn: allChildren
