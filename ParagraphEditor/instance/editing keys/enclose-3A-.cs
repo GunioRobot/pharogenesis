@@ -5,8 +5,8 @@ enclose: characterStream
 	| char left right startIndex stopIndex oldSelection which text |
 	char _ sensor keyboard.
 	self closeTypeIn.
-	startIndex _ startBlock stringIndex.
-	stopIndex _ stopBlock stringIndex.
+	startIndex _ self startIndex.
+	stopIndex _ self stopIndex.
 	oldSelection _ self selection.
 	which _ '([<{"''' indexOf: char ifAbsent: [ ^true ].
 	left _ '([<{"''' at: which.
