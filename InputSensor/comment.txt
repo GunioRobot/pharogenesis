@@ -1,1 +1,12 @@
-I represent an interface to the user input devices. There is at least one instance of me named Sensor in the system.
+An InputSensor is an interface to the user input devices.
+There is at least one (sub)instance of InputSensor named Sensor in the system.
+
+Class variables:
+
+ButtonDecodeTable <ByteArray> - maps mouse buttons as reported by the VM to ones reported in the events.
+
+KeyDecodeTable <Dictionary<SmallInteger->SmallInteger>> - maps some keys and their modifiers to other keys (used for instance to map Ctrl-X to Alt-X)
+
+InterruptSemaphore <Semaphore> - signalled by the the VM and/or the event loop upon receiving an interrupt keystroke.
+
+InterruptWatcherProcess <Process> - waits on the InterruptSemaphore and then responds as appropriate.
