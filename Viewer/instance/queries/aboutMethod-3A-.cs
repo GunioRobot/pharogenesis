@@ -1,8 +1,8 @@
-aboutMethod: aSelector
+aboutMethod: aSelector 
 	"Give the user documentation for the selector"
-
 	| aClass help |
-	aClass _ scriptedPlayer class classThatUnderstands: aSelector.
+	aClass _ scriptedPlayer class whichClassIncludesSelector: aSelector.
 	help _ aClass firstCommentAt: aSelector.
-	help ifNotNil:
-		[self inform: (help string withNoLineLongerThan: 25)]
+	help
+		ifNotNil: [self
+				inform: (help string withNoLineLongerThan: 25)]
