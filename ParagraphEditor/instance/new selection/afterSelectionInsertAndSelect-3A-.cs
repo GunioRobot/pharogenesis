@@ -1,3 +1,3 @@
 afterSelectionInsertAndSelect: aString
 
-	self insertAndSelect: aString at: stopBlock stringIndex 
+	self insertAndSelect: aString at: self stopIndex 
