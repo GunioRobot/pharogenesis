@@ -1,0 +1,3 @@
+dataIsValid
+
+	localDataValid _ true.
