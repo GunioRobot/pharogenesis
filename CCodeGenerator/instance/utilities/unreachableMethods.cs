@@ -4,6 +4,7 @@ unreachableMethods
 	| sent out |
 	sent _ Set new.
 	methods do: [ :m |
+		m export ifTrue:[sent add: m selector].
 		sent addAll: m allCalls.
 	].
 
