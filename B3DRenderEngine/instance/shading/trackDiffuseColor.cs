@@ -1,0 +1,2 @@
+trackDiffuseColor
+	^vertexBuffer trackDiffuseColor
