@@ -1,0 +1,3 @@
+copyBits
+
+	^ myBitBlt copyBits
