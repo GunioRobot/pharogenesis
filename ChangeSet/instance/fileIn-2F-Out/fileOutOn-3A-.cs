@@ -2,17 +2,18 @@ fileOutOn: stream
 	"Write out all the changes the receiver knows about"
 
 	| classList |
-	self isEmpty ifTrue: [self notify: 'Warning: no changes to file out'].
+	(self isEmpty and: [stream isKindOf: FileStream])
+		ifTrue: [self notify: 'Warning: no changes to file out'].
 	classList _ ChangeSet superclassOrder: self changedClasses asOrderedCollection.
-	classList do:
-		[:aClass |  "if class defn changed, put it onto the file now"
-			self fileOutClassDefinition: aClass on: stream].
-	classList do:
-		[:aClass |  "nb: he following no longer puts out class headers"
-			self fileOutChangesFor: aClass on: stream].
-	stream cr.
-	classList do:
-		[:aClass |
-		self fileOutPSFor: aClass on: stream].
-	classRemoves do:
+
+	"First put out rename, max classDef and comment changes."
+	classList do: [:aClass | self fileOutClassDefinition: aClass on: stream].
+
+	"Then put out all the method changes"
+	classList do: [:aClass | self fileOutChangesFor: aClass on: stream].
+
+	"Finally put out removals, final class defs and reorganization if any"
+	classList reverseDo: [:aClass | self fileOutPSFor: aClass on: stream].
+
+	self classRemoves asSortedCollection do:
 		[:aClassName | stream nextChunkPut: 'Smalltalk removeClassNamed: #', aClassName; cr].
