@@ -3,4 +3,7 @@ atRandom
 	shared generator. Heavy users should their own implementation or use
 	Interval>atRandom: directly."
 
-	^ self atRandom: Collection randomForPicking
+	self = 0 ifTrue: [ ^0 ].
+	self < 0 ifTrue: [ ^self negated atRandom negated ].
+	^Collection mutexForPicking critical: [
+		self atRandom: Collection randomForPicking ]
