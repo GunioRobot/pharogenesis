@@ -8,5 +8,5 @@ selectUnchangedMethods
 			((change type = #method and:
 				[(class _ change methodClass) notNil]) and:
 					[(class includesSelector: change methodSelector) and:
-						[change string = (class sourceCodeAt: change methodSelector) asString]])]].
+						[change string withBlanksCondensed = (class sourceCodeAt: change methodSelector) asString withBlanksCondensed ]])]].
 	self changed: #allSelections
