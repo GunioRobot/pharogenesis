@@ -1,0 +1,2 @@
+computeAttenuationFor: distance
+	^self subclassResponsibility
