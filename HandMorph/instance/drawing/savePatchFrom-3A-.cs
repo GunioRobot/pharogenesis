@@ -8,14 +8,9 @@ savePatchFrom: aCanvas
 		damageRect _ myBnds merge: (savedPatch offset extent: savedPatch extent)].
 	(savedPatch == nil or: [savedPatch extent ~= myBnds extent])
 		ifTrue: [  "allocate new patch form if needed"
-			savedPatch _ Form extent: myBnds extent depth: aCanvas form depth].
-	savedPatch
-		copyBits: (myBnds translateBy: aCanvas origin)
-		from: aCanvas form
-		at: 0@0
-		clippingBox: savedPatch boundingBox
-		rule: Form over
-		fillColor: nil.
-
+			savedPatch _ aCanvas form allocateForm: myBnds extent].
+	aCanvas
+		contentsOfArea: (myBnds translateBy: aCanvas origin)
+		into: savedPatch.
 	savedPatch offset: myBnds topLeft.
 	^ damageRect
