@@ -5,7 +5,6 @@ listenLoop
 
 
 	| newConnection |
-	Socket initializeNetwork.
 	socket _ Socket newTCP.
 	"We'll accept four simultanous connections at the same time"
 	socket listenOn: portNumber backlogSize: 4.
@@ -18,7 +17,7 @@ listenLoop
 			socket destroy.
 			(Delay forMilliseconds: 10) wait.
 			^self listenLoop ].
-		newConnection _ socket waitForAcceptUntil: (Socket deadlineSecs: 10).
+		newConnection _ socket waitForAcceptFor: 10.
 		(newConnection notNil and:[newConnection isConnected]) ifTrue:
 			[accessSema critical: [connections addLast: newConnection].
 			newConnection _ nil].
