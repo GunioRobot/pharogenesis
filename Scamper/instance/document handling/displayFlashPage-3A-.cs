@@ -7,7 +7,7 @@ displayFlashPage: newSource
 	player sourceUrl: newSource url.
 	player startPlaying.
 	attrib _ TextAnchor new anchoredMorph: player.
-	formattedPage _ ' * ' asText.
+	formattedPage _ (Character value: 1) asText.
 	backgroundColor _ self defaultBackgroundColor.
 	formattedPage addAttribute: attrib from: 2 to: 2.
 
@@ -19,5 +19,5 @@ displayFlashPage: newSource
 "	recentDocuments removeLast."
 
 	self changeAll: 	#(currentUrl relabel hasLint lint backgroundColor formattedPage formattedPageSelection).
-	self status: 'sittin'.
+	self status: 'sittin' translated.
 	^true
