@@ -10,4 +10,5 @@ copyFrom: sourceRectangle in: srcForm to: destPt
 	sourceY _ sourceOrigin y.
 	width _ sourceRectangle width.
 	height _ sourceRectangle height.
+	colorMap _ srcForm colormapIfNeededForDepth: destForm depth.
 	self copyBits
