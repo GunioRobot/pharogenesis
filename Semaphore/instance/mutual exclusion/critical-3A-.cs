@@ -5,6 +5,6 @@ critical: mutuallyExcludedBlock
 
 	| blockValue |
 	self wait.
-	blockValue _ mutuallyExcludedBlock value.
-	self signal.
+	[blockValue _ mutuallyExcludedBlock value]
+		ensure: [self signal].
 	^blockValue
