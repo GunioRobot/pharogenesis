@@ -1,4 +1,4 @@
-connection: aConnection
-	^self new initialize;
+connection: aConnection 
+	^(self new)
 		connection: aConnection;
 		yourself
