@@ -1,0 +1,2 @@
+isInf
+	^ false
