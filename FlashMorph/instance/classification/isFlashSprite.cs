@@ -1,0 +1,2 @@
+isFlashSprite
+	^false
