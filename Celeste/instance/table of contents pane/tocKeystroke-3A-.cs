@@ -1,13 +1,11 @@
 tocKeystroke: aCharacter 
-	aCharacter = Character backspace
+	(aCharacter = Character backspace or: [ aCharacter = Character delete or: [ aCharacter = $d ]])
 		ifTrue: [self deleteMessage].
-	aCharacter asciiValue = 30
+	(aCharacter asciiValue = 30 or: [ aCharacter = $p ])
 		ifTrue: [self previousMessage].
-	aCharacter asciiValue = 31
+	(aCharacter asciiValue = 31 or: [ aCharacter = $n ])
 		ifTrue: [self nextMessage].
-	aCharacter = $c
-		ifTrue: [self customFilterOn].
-	aCharacter = $m
-		ifTrue: [self customFilterMove].
+	aCharacter = $n
+		ifTrue: [self addNamedFilter].
 	aCharacter = $s
-		ifTrue: [self subjectFilterOn]
+		ifTrue: [self addSubjectFilter]
