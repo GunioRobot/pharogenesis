@@ -1,6 +1,8 @@
 checkSourceOverlap
-	| t |
 	"check for possible overlap of source and destination"
+	"ar 10/19/1999: This method requires surfaces to be locked."
+	| t |
+	self inline: true.
 	(sourceForm = destForm and: [dy >= sy]) ifTrue:
 		[dy > sy ifTrue:
 			["have to start at bottom"
@@ -8,7 +10,7 @@ checkSourceOverlap
 			sy _ sy + bbH - 1.
 			dy _ dy + bbH - 1]
 		ifFalse:
-			[dx > sx ifTrue:
+			[(dy = sy) & (dx > sx) ifTrue:
 				["y's are equal, but x's are backward"
 				hDir _ -1.
 				sx _ sx + bbW - 1.
@@ -20,5 +22,5 @@ checkSourceOverlap
 					mask1 _ mask2.
 					mask2 _ t]]].
 		"Dest inits may be affected by this change"
-		destIndex _ (destBits + 4) + (dy * destRaster + (dx // pixPerWord) *4).
-		destDelta _ 4 * ((destRaster * vDir) - (nWords * hDir))]
+		destIndex _ destBits + (dy * destPitch) + ((dx // pixPerWord) *4).
+		destDelta _ (destPitch * vDir) - (4 * (nWords * hDir))]
