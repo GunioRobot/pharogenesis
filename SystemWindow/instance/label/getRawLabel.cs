@@ -1,0 +1,2 @@
+getRawLabel
+	^ label
