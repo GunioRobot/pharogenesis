@@ -1,3 +1,3 @@
 textPlusMenuFor: aMorph
 
-	^theTextMorph textPlusMenuFor: aMorph
+	^(self nearestTextPlusMorphTo: aMorph) textPlusMenuFor: aMorph
