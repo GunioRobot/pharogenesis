@@ -3,4 +3,4 @@ storeBitsOn:aStream base:anInteger
 		anInteger = 10
 			ifTrue: [aStream space]
 			ifFalse: [aStream crtab: 2].
-		word printOn: aStream base: anInteger].
+		word storeOn: aStream base: anInteger].
