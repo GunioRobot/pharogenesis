@@ -1,5 +1,4 @@
 fromString: aString 
-	"Answer an instance of me whose characters are those of the argument, 
-	aString."
+	"Answer an instance of me whose characters are those of the argument, aString."
 
-	^self string: aString attribute: (TextFontChange fontNumber: 1)
+	^ self string: aString attribute: (TextFontChange fontNumber: TextStyle default defaultFontIndex)
