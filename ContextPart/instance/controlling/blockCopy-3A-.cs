@@ -8,7 +8,7 @@ blockCopy: numArgs
 	whatIsAPrimitive."
 
 	<primitive: 80>
-	^(BlockContext new: self size)
+	^ (BlockContext newForMethod: self home method)
 		home: self home
 		startpc: pc + 2
 		nargs: numArgs
