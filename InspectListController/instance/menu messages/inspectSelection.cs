@@ -5,4 +5,4 @@ inspectSelection
 	model selectionIndex = 0
 		ifTrue: [^view flash].
 	self controlTerminate.
-	^model selection inspect
+	^model selection smartInspect  "eliminate annoyance of 1-element collections"
