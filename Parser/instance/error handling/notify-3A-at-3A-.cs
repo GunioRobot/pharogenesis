@@ -1,12 +1,14 @@
 notify: string at: location
 	requestor isNil
-		ifTrue: [SyntaxError 
+		ifTrue: [(encoder == self or: [encoder isNil]) ifTrue: [^ self fail  "failure setting up syntax error"].
+				SyntaxError 
 					errorInClass: encoder classEncoding
 					withCode: 
 						(source contents
 							copyReplaceFrom: location
 							to: location - 1
-							with: string , ' ->')]
+							with: string , ' ->')
+					doitFlag: doitFlag]
 		ifFalse: [requestor
 					notify: string , ' ->'
 					at: location
