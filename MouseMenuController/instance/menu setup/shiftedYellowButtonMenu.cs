@@ -1,7 +1,7 @@
 shiftedYellowButtonMenu
-	"Serves as a nonsense default backstop; every situation where a shifted menu is anticipated should reimplement this.  2/5/96 sw"
+	"Serves as a default backstop; every situation where a shifted menu is anticipated should reimplement this"
 
-	^ PopUpMenu labels: 'eat
-drink
-be merry
-die tomorrow' lines: #()
+	^ PopUpMenu labels: 'no
+shift
+menu
+available' lines: #()
