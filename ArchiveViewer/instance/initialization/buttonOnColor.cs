@@ -1,0 +1,2 @@
+buttonOnColor
+	^self defaultBackgroundColor
