@@ -9,7 +9,7 @@ startOfMessageFromMe
 	myForm ifNil: [
 		^(Preferences defaultAuthorName asText allBold addAttribute: TextColor blue)
 	].
-	^'*' asText
+	^(String value: 1) asText
 		addAttribute: (TextAnchor new anchoredMorph: myForm);
 		yourself
 
