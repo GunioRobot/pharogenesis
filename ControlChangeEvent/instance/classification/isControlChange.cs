@@ -1,0 +1,3 @@
+isControlChange
+
+	^ true
