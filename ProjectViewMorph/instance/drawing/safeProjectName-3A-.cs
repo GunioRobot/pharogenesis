@@ -1,9 +1,7 @@
-safeProjectName: aString
-
+safeProjectName: aString 
 	self addProjectNameMorphFiller.
-	self isTheRealProjectPresent ifFalse: [^ self].
-
-	aString = project name ifFalse: [project changeSet name: aString].
+	self isTheRealProjectPresent ifFalse: [^self].
+	project renameTo: aString.
 	self setProperty: #SafeProjectName toValue: project name.
 	self updateNamePosition.
-	(owner isKindOf: SystemWindow) ifTrue: [owner setLabel: aString].
+	(owner isSystemWindow) ifTrue: [owner setLabel: aString]
