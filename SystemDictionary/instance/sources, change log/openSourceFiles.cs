@@ -6,4 +6,5 @@ openSourceFiles
 	FileDirectory
 		openSources: self sourcesName
 		andChanges: self changesName
-		forImage: LastImageName
+		forImage: LastImageName.
+	StandardSourceFileArray install
