@@ -6,7 +6,6 @@ onBlock: block
 
 	| inst result |
 	inst := self new.
-	inst block: block.
-	result _ inst runBlock.
+	result _ inst runBlock: block.
 	self open: inst name: 'Time Profile'.
 	^ result
