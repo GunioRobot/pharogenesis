@@ -1,2 +1,2 @@
 inspectWithLabel: aLabel
-	InspectorView open: (InspectorView inspectorWithTrash: (Inspector inspect: self)) withLabel: aLabel
+	Inspector openOn: self withEvalPane: true withLabel: aLabel
