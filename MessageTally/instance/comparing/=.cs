@@ -1,3 +1,4 @@
 = aMessageTally
 
-	^aMessageTally method == method
+	self species == aMessageTally species ifFalse: [^ false].
+	^ aMessageTally method == method
