@@ -1,0 +1,3 @@
+isCategoryKnown
+
+	^self itemCategory notNil
