@@ -3,9 +3,9 @@ trumpsMouseDown: evt
 
 	| aPoint |
 	upArrow ifNotNil:
-		[(upArrow containsPoint: (aPoint _ evt cursorPoint))
+		[(upArrow boundsInWorld containsPoint: (aPoint _ evt cursorPoint))
 			ifTrue: [^ true].
-		(downArrow containsPoint: aPoint)
+		(downArrow boundsInWorld containsPoint: aPoint)
 			ifTrue: [^ true]].
 
 	^ false
