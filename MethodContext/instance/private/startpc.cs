@@ -1,0 +1,3 @@
+startpc
+
+	^ self method initialPC
