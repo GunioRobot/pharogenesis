@@ -1,7 +1,7 @@
 readBitData
 	"using modified Lempel-Ziv Welch algorithm."
 
-	| outCodes outCount bitMask initCodeSize code curCode oldCode inCode finChar i bytes f |
+	| outCodes outCount bitMask initCodeSize code curCode oldCode inCode finChar i bytes f c |
 	self readWord.	"skip Image Left"
 	self readWord.	"skip Image Top"
 	width _ self readWord.
@@ -67,4 +67,10 @@ readBitData
 
 	f _ ColorForm extent: width@height depth: 8.
 	f bits copyFromByteArray: bytes.
-	^ f
+	"Squeak can handle depths 1, 2, 4, and 8"
+	bitsPerPixel > 4 ifTrue: [^ f].
+	"reduce depth to save space"
+	c _ ColorForm extent: width@height
+		depth: (bitsPerPixel = 3 ifTrue: [4] ifFalse: [bitsPerPixel]).
+	f displayOn: c.
+	^ c
