@@ -1,0 +1,1 @@
+A ChangeSetCategory represents a list of change sets to be shown in a ChangeSorter.  It computes whether a given change set is in the list by sending its membershipSelector to ChangeSorter (i.e. the class object) with the change set as message argument.
