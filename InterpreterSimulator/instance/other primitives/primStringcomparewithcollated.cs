@@ -1,0 +1,2 @@
+primStringcomparewithcollated
+	^ self primitiveFail
