@@ -1,0 +1,3 @@
+icosahedron
+
+  ^self new createIcosahedron
