@@ -10,3 +10,5 @@ makeThumbnail
 			combinationRule: Form over;
 			copyQuad: (Display boundingBox) innerCorners
 			toRect: (0@0 extent: viewSize).
+	InternalThreadNavigationMorph cacheThumbnailFor: self.
+	^thumbnail
