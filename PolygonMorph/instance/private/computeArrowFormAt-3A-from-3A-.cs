@@ -10,8 +10,8 @@ computeArrowFormAt: endPoint from: priorPoint
 				with: (endPoint + (borderWidth//2) + (Point r: d*4 degrees: angle - 135.0)).
 
 	box _ ((pts first rect: pts last) encompass: (pts at: 2)) expandBy: 1.
-	arrowForm _ ColorForm extent: box extent asIntegerPoint.
-	bb _ (BitBlt toForm: arrowForm) sourceForm: nil; fillColor: Color black;
+	arrowForm _ Form extent: box extent asIntegerPoint.
+	bb _ (BitBlt current toForm: arrowForm) sourceForm: nil; fillColor: Color black;
 			combinationRule: Form over; width: 1; height: 1.
 	origin _ box topLeft.
 	p1 _ pts last - origin.
