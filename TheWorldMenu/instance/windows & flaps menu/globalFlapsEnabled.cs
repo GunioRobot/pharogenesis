@@ -1,4 +1,4 @@
 globalFlapsEnabled
-	"Answer whether global flaps are enabled"
+	"Answer whether global flaps are enabled.  Retained for the benefit of preexisting menus/butons that may call this"
 
-	^ Preferences useGlobalFlaps
+	^ Flaps sharedFlapsAllowed
