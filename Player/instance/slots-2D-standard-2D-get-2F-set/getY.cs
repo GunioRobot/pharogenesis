@@ -1,2 +1,2 @@
 getY
-	^ costume y
+	^ self costume y
