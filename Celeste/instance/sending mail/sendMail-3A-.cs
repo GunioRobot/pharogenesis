@@ -1,16 +1,15 @@
 sendMail: aCollectionOfMessages
 	"Send <aCollectionOfMessages> to the SMTP server."
 
-	| sender n message recipients socket |
+	| sender n message client |
 
 	self requiredCategory: '.sent.'.
 
-	self preSendAuthentication.
+	client _ SMTPClient new.
+	self account fillInSmtpInfo: client.
+	client ensureConnection.
 
-	sender _ (MailAddressParser addressesIn: self class userName) first.
-
-	[socket _ SMTPSocket usingServer: Celeste smtpServer]
-		ifError: [ :a :b | self error: 'error opening connection to mail server'].
+	sender _ self account sender.
 
 	('sending ', aCollectionOfMessages size printString, ' messages...')
 		displayProgressAt: Sensor mousePoint
@@ -22,22 +21,19 @@ sendMail: aCollectionOfMessages
 				progressBar value: (n _ n + 1).
 				message _ mailDB getMessage: id.
 
-				recipients _ Set new.
-				recipients addAll: (MailAddressParser addressesIn: message to).
-				recipients addAll: (MailAddressParser addressesIn: message cc).
-
-				[socket 
+				client 
 					mailFrom: sender
-					to: recipients 
+					to: message recipients 
 					text: message text.	"send this one message on the stream"
 
 				mailDB remove: id fromCategory: '.tosend.'.
 				mailDB file: id inCategory: '.sent.'
-				] ifError: [ :a :b | self error: 'error posting mail']
-		]].
+		].
+	].
 
-	socket quit; close.
+	client quit; close.
 	mailDB saveDB.
 
 	(self category = '.tosend.') |  (self category = '.sent.') ifTrue: [self updateTOC].
 
+	self changed: #outBoxStatus.
