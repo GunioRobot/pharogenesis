@@ -3,13 +3,13 @@ instantiateSmallClass: classPointer sizeInBytes: sizeInBytes fill: fillValue
 
 	| hash header1 header2 hdrSize |
 	hash _ self newObjectHash.
-	header1 _ ((hash << 17) bitAnd: 16r1FFE0000) bitOr:
+	header1 _ ((hash << HashBitsOffset) bitAnd: HashBits) bitOr:
 			   (self formatOfClass: classPointer).
-	header1 _ header1 + (sizeInBytes - (header1 bitAnd: 16rFC)).
+	header1 _ header1 + (sizeInBytes - (header1 bitAnd: SizeMask)).
 	header2 _ classPointer.
 
-	(header1 bitAnd: 16r1F000) = 0 "is compact class field from format word zero?"
+	(header1 bitAnd: CompactClassMask) = 0 "is compact class field from format word zero?"
 		ifTrue: [ hdrSize _ 2 ]
 		ifFalse: [ hdrSize _ 1 ].
 
-	^ self allocate: sizeInBytes headerSize: hdrSize h1: header1 h2: header2 h3: 0 fill: fillValue
+	^ self allocate: sizeInBytes headerSize: hdrSize h1: header1 h2: header2 h3: 0 doFill: true with: fillValue
