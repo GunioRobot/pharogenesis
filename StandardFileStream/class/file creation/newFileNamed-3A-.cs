@@ -6,6 +6,6 @@ newFileNamed: fileName
 
 	^(self isAFileNamed: fullName)
 		ifTrue: ["file already exists:"
-			(FileExistsException fileName: fullName) signal]
+			(FileExistsException fileName: fullName fileClass: self) signal]
 		ifFalse: [self new open: fullName forWrite: true]
 
