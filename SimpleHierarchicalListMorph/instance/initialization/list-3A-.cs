@@ -12,4 +12,3 @@ list: aCollection
 		withExpandedItems: wereExpanded
 		atLevel: 0.
 	self insertNewMorphs: morphList.
-	self installEventHandlerOn: morphList
