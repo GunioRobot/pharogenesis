@@ -1,0 +1,2 @@
+projectsSentToDisk
+	^ self valueOfFlag: #projectsSentToDisk
