@@ -1,6 +1,7 @@
 colormapToARGB
 	"Return a ColorMap mapping from the receiver into canonical ARGB space."
-	self isExternalForm ifTrue:[^self colormapFromARGB inverseMap].
+	self hasNonStandardPalette 
+		ifTrue:[^self colormapFromARGB inverseMap].
 	self depth <= 8 ifTrue:[
 		^ColorMap
 			shifts: #(0 0 0 0)
