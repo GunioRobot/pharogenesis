@@ -1,3 +1,3 @@
 referencePosition: aPoint
 
-	self position: aPoint - (self extent // 2).
+	self position: self position + (aPoint - self referencePosition)
