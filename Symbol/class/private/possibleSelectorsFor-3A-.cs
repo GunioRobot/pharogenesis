@@ -12,8 +12,7 @@ possibleSelectorsFor: misspelled
 
 	"First assemble candidates for detailed scoring"
 	candidates _ OrderedCollection new.
-	SymbolTable do:
-		[:s | (((ss _ s size) >= short	"not too short"
+	self allSymbolTablesDo: [:s | (((ss _ s size) >= short	"not too short"
 			and: [ss <= long			"not too long"
 					or: [(s at: 1) = first]])	"well, any length OK if starts w/same letter"
 			and: [s numArgs = numArgs])	"and numArgs is the same"
