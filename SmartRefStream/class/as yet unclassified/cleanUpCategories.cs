@@ -11,7 +11,7 @@ cleanUpCategories
 				ifFalse: [false]].
 	valid _ 0.  removed _ 0.
 	list do: [:symb |
-		(Smalltalk allClassesImplementing: symb) do: [:newClass |
+		(self systemNavigation allClassesImplementing: symb) do: [:newClass |
 			newList _ (Array with: newClass classVersion), (newClass allInstVarNames).
 			newVers _ self new versionSymbol: newList.
 			(symb endsWith: (':',newVers,':')) 
