@@ -4,7 +4,7 @@ CanvasEncoder showStats
 "
 	| answer bucket |
 
-	SentTypesAndSizes ifNil: [^1 beep].
+	SentTypesAndSizes ifNil: [^Beeper beep].
 	answer _ WriteStream on: String new.
 	SentTypesAndSizes keys asSortedCollection do: [ :each |
 		bucket _ SentTypesAndSizes at: each.
