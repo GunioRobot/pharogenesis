@@ -1,11 +1,11 @@
-copy
+copy 
 	| newClass |
 	newClass _ self class copy new
 		superclass: superclass
-		methodDict: methodDict copy
+		methodDict: self methodDict copy
 		format: format
 		name: name
-		organization: organization copy
+		organization: self organization copy
 		instVarNames: instanceVariables copy
 		classPool: classPool copy
 		sharedPools: sharedPools.
