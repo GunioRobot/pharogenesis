@@ -1,4 +1,5 @@
 fieldList
+	object ifNil: [ ^ OrderedCollection new].
 	^ self baseFieldList ,
 		(object size <= (self i1 + self i2)
 			ifTrue: [(1 to: object size)
