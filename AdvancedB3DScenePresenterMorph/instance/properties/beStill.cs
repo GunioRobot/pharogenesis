@@ -1,0 +1,2 @@
+beStill
+	isRotating := false.
