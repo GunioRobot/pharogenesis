@@ -1,0 +1,3 @@
+zoulouSymbol
+
+	self callingAnotherMethod
