@@ -5,8 +5,8 @@ httpFileInNewChangeSet: url
 
 	| doc |
 	doc _ self httpGet: url accept: 'application/octet-stream'.
-	doc class == String ifTrue: [
-			PopUpMenu notify: 'Cannot seem to contact the web site'].
+	doc class == String ifTrue:
+			[self inform: 'Cannot seem to contact the web site'].
 	doc reset.
 	ChangeSorter newChangesFromStream: doc
 				named: (url findTokens: '/') last.
