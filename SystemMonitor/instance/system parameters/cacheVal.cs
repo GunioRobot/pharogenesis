@@ -10,6 +10,7 @@ cacheVal
 	deltaIcHit _ icHit - prevIcHit.
 	prevIcHit _ icHit.
 	total _ deltaMcMiss + deltaMcHit + deltaIcHit.
+	total = 0 ifTrue: [total _ 1].
 	deltaMcMiss _ (deltaMcMiss * 100 / total asInteger).
 	deltaMcHit _ (deltaMcHit * 100 / total asInteger).
 	^Array
