@@ -1,0 +1,2 @@
+currentState
+	^stateStack last
