@@ -1,6 +1,6 @@
 addTouchesADetailTo: aRow
-	| clrTile readout aTile |
-	aRow addMorphBack: (Morph new color: self color; extent: 2@10).  " spacer".
+	| clrTile |
+	aRow addMorphBack: (Morph new color: self color; extent: 2@10).  " spacer"
 	aRow addMorphBack: (clrTile _ self tileForSelf).
 	aRow addMorphBack: (AlignmentMorph new beTransparent).  "flexible spacer"
 
