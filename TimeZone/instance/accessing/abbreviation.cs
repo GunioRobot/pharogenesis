@@ -1,0 +1,3 @@
+abbreviation
+
+	^ abbreviation
