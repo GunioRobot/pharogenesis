@@ -17,9 +17,9 @@ benchDiffsFrom: before to: afterwards
 			oldLine atEnd] whileFalse:[
 				oldVal _ Integer readFrom: oldLine.
 				newVal _ Integer readFrom: newLine.
-				improvement _ oldVal asFloat / newVal asFloat roundTo: 0.1.
-				Transcript show: improvement printString; tab.
-				log print: improvement; tab].
+				improvement _ oldVal asFloat / newVal asFloat roundTo: 0.01.
+				Transcript show: improvement printString; tab; tab.
+				log print: improvement; tab; tab].
 		] ifFalse:[
 			Transcript cr; show: oldLine.
 			log cr; nextPutAll: oldLine.
