@@ -1,0 +1,2 @@
+internalMethod
+	^self cachedMethodAt: localCP
