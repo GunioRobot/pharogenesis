@@ -4,7 +4,7 @@ morphicViewProjectLoader
 
 	dir _ FileDirectory default.
 	aFileList _ self new directory: dir.
-	aFileList optionalButtonSpecs: self specsForProjectLoader.
+	aFileList optionalButtonSpecs: aFileList servicesForProjectLoader.
 	aFileList fileSelectionBlock: self projectOnlySelectionBlock.
 	window _ (SystemWindow labelled: dir pathName) model: aFileList.
 
