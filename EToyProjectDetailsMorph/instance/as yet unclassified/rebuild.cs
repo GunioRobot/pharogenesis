@@ -3,16 +3,16 @@ rebuild
 	| bottomButtons |
 	self removeAllMorphs.
 	self addARow: {
-		self lockedString: 'Please describe this project'.
+		self lockedString: 'Please describe this project' translated.
 	}.
 	self addARow: {
-		self lockedString: 'Name:'.
+		self lockedString: 'Name:' translated.
 		self inAColumnForText: {self fieldForProjectName}
 	}.
 	self expandedFormat ifTrue: [
 		self fieldToDetailsMappings do: [ :each |
 			self addARow: {
-				self lockedString: each third.
+				self lockedString: each third translated.
 				self inAColumnForText: {(self genericTextFieldNamed: each first) height: each fourth}
 			}.
 		].
