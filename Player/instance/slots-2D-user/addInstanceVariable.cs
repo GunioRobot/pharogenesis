@@ -10,12 +10,14 @@ addInstanceVariable
 	(Utilities isLegalInstVarName: itsName) ifFalse: [^ self inform: 'sorry, illegal name, try again.'].
 	itsName _ itsName asSymbol.
 	(self class allInstVarNames includes: itsName) ifTrue: [^ self inform: 'that name is already used.'].
+	
+	self assureUniClass.
 	typeChosen _ self initialTypeForSlotNamed: itsName.
-	self slotInfo at: itsName put: typeChosen.
+	self slotInfo at: itsName put: (SlotInformation new initialize type: typeChosen).
 	initialValue _ self initialValueForSlotOfType: typeChosen.
 	self addInstanceVarNamed: itsName withValue: initialValue.
-	self compileAccessorsFor: itsName.
+	self class compileAccessorsFor: itsName.
 	setterSelector _ Utilities setterSelectorFor: itsName.
-	(self class allInstances copyWithout: self) do:
+	(self class allSubInstances copyWithout: self) do:
 		[:anInstance | anInstance perform: setterSelector with: initialValue].
-	self updateAllViewers
+	self updateAllViewersAndForceToShow: 'instance variables'
