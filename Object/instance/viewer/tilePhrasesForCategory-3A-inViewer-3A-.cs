@@ -1,10 +1,7 @@
-tilePhrasesForCategory: aCategory inViewer: aViewer
-	"Return an array of phrases for the category"
+tilePhrasesForCategory: aCategorySymbol inViewer: aViewer
+	"Return a collection of phrases for the category."
 
-	^ (self tilePhrasesSpecsForCategory: aCategory) collect:
-		[:aSpec |
-			aSpec first == #slot
-				ifTrue:
-					[aViewer phraseForSlot: aSpec]
-				ifFalse:
-					[self commandPhraseFor: aSpec inViewer: aViewer]]
+	| interfaces |
+	interfaces _ self methodInterfacesForCategory: aCategorySymbol inVocabulary: aViewer currentVocabulary limitClass: aViewer limitClass.
+	interfaces _ self methodInterfacesInPresentationOrderFrom: interfaces forCategory: aCategorySymbol.
+	^ self tilePhrasesForMethodInterfaces: interfaces inViewer: aViewer
