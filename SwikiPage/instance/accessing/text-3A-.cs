@@ -1,10 +1,11 @@
 text: aString
 	"Add onto the end of the file"
 
-	| this aFile start end |
-	this _ String streamContents: [:ss | 
+	| this aFile start end realString |
+	realString _ self uniqueInsertionPoints: aString.
+	this _ String streamContents: [:ss |
 		ss nextPutAll: self chunk1.
-		aString storeOn: ss.
+		realString storeOn: ss.
 		ss nextPutAll: ' back: '].
 	(aFile _ FileStream fileNamed: file) setToEnd.
 	start _ aFile position.
