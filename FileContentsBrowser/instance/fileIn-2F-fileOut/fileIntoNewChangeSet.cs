@@ -1,5 +1,5 @@
 fileIntoNewChangeSet
 	| p ff |
-	(p _ self selectedPackage) ifNil: [^ self beep].
-	ff _ StandardFileStream readOnlyFileNamed: p fullPackageName.
+	(p _ self selectedPackage) ifNil: [^ Beeper beep].
+	ff _ FileStream readOnlyFileNamed: p fullPackageName.
 	ChangeSorter newChangesFromStream: ff named: p packageName
