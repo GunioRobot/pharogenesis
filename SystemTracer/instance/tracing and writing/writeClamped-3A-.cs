@@ -1,0 +1,3 @@
+writeClamped: obj
+
+	^false
