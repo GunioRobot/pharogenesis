@@ -3,9 +3,8 @@ pause
 
 	paused _ true.
 	((currentBuffer ~~ nil) and: [nextIndex > 1])
-		ifTrue: [
-			recordedBuffers addLast: (currentBuffer copyFrom: 1 to: nextIndex - 1).
-			self allocateBuffer].
+		ifTrue: [self emitPartialBuffer.
+				self allocateBuffer].
 
 	soundPlaying ifNotNil: [
 		soundPlaying pause.
