@@ -6,7 +6,7 @@ scaleByVector: aVector
 
 	"Scale my matrix"
 	aMatrix scalingX: (aVector x) y: (aVector y) z: (aVector z).
-	scaleMatrix _ scaleMatrix composeWith: aMatrix.
+	scaleMatrix _ aMatrix composeWith: scaleMatrix.
 
 	"Now scale my parts"
 	myChildren do: [:child | (child isPart) ifTrue: [
