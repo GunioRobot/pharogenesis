@@ -1,0 +1,1 @@
+Disused.  Instances may persist in users' images, so this obsolete code is kept around for the time being.  Supplanted by the ObjectsTool.
