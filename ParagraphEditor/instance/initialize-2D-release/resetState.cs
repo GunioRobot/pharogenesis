@@ -3,8 +3,8 @@ resetState
 	before first character, set the emphasis to that of the first character,
 	and save the paragraph for purposes of canceling."
 
-	startBlock _ paragraph defaultCharacterBlock.
-	stopBlock _ startBlock copy.
+	stopBlock _ paragraph defaultCharacterBlock.
+	self pointBlock: stopBlock copy.
 	beginTypeInBlock _ nil.
 	UndoInterval _ otherInterval _ 1 to: 0.
 	self setEmphasisHere.
