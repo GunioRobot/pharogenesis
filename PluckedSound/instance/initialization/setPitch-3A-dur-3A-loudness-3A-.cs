@@ -1,7 +1,8 @@
-setPitch: p dur: d loudness: vol
+setPitch: pitchNameOrNumber dur: d loudness: vol
 
-	| sz |
-	super setPitch: p dur: d loudness: vol.
+	| p sz |
+	super setPitch: pitchNameOrNumber dur: d loudness: vol.
+	p _ self nameOrNumberToPitch: pitchNameOrNumber.
 	initialCount _ (d * self samplingRate asFloat) asInteger.
 	ring _ SoundBuffer newMonoSampleCount:
 		(((2.0 * self samplingRate) / p) asInteger max: 2).
