@@ -1,0 +1,2 @@
+subjectPattern: aString
+	subjectPattern := aString
