@@ -4,7 +4,7 @@ getTypedFileName: aResult
 	name _ FillInTheBlank 
 		request: 'Enter a new file name' 
 		initialAnswer: ''.
-	name = '' ifTrue: [^self startUpWithCaption: 'Select a File:'].
+	name = '' ifTrue: [^self startUpWithCaption: 'Select a File:' translated].
 	name _ aResult directory fullNameFor: name.
 	^ StandardFileMenuResult
 			directory: (FileDirectory forFileName: name)
