@@ -5,6 +5,8 @@ scanVersionsOf: method class: class meta: meta category: category selector: sele
 	classOfMethod _ meta ifTrue: [class class] ifFalse: [class].
 	changeList _ OrderedCollection new.
 	list _ OrderedCollection new.
+	self addedChangeRecord ifNotNilDo: [ :change |
+		self addItem: change text: ('{1} (in {2})' translated format: { change stamp. change fileName }) ].
 	listIndex _ 0.
 	position _ method filePosition.
 	sourceFilesCopy _ SourceFiles collect:
@@ -12,11 +14,11 @@ scanVersionsOf: method class: class meta: meta category: category selector: sele
 				ifFalse: [x readOnlyCopy]].
 	method fileIndex == 0 ifTrue: [^ nil].
 	file _ sourceFilesCopy at: method fileIndex.
+
 	[position notNil & file notNil]
 		whileTrue:
 		[file position: (0 max: position-150).  "Skip back to before the preamble"
-		[file position < (position-1)]  "then pick it up from the front"
-			whileTrue: [preamble _ file nextChunk].
+		preamble _ method getPreambleFrom: file at: (0 max: position - 3).
 
 		"Preamble is likely a linked method preamble, if we're in
 			a changes file (not the sources file).  Try to parse it
