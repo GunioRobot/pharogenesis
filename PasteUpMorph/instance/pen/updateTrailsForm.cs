@@ -1,22 +1,23 @@
-updateTrailsForm
-	"Update the turtle-trails form using the current positions of all turtles."
-	"Details: The positions of all turtles with their pens down are recorded each time the draw method is called. If the list from the previous display cycle isn't empty, then trails are drawn from the old to the new positions of those morphs on the turtle-trails form. The turtle-trails form is created on demand when the first pen is put down and removed (to save space) when turtle trails are cleared."
+updateTrailsForm 
+	"Update the turtle-trails form using the current positions of all pens.
+	Only used in conjunction with Preferences batchPenTrails."
 
-	| origin m oldPoint newPoint mPenSize offset |
-	origin _ self topLeft.
-	turtlePen ifNil: [turtlePen _ Pen newOnForm: turtleTrailsForm].
+	"Details: The positions of all morphs with their pens down are recorded each time the draw method is called. If the list from the previous display cycle isn't empty, then trails are drawn from the old to the new positions of those morphs on the turtle-trails form. The turtle-trails form is created on demand when the first pen is put down and removed (to save space) when turtle trails are cleared."
+
+	| morph oldPoint newPoint removals player tfm |
+	(lastTurtlePositions == nil or: [lastTurtlePositions size = 0]) ifTrue: [^ self].
+
+	removals _ OrderedCollection new.
 	lastTurtlePositions associationsDo: [:assoc |
-		m _ assoc key costume.
-		oldPoint _ assoc value.
-		newPoint _ m referencePosition.
-		((m owner == self) and:
-		 [m getPenDown and:
-		 [newPoint ~= oldPoint]]) ifTrue:
-			[mPenSize _ m getPenSize.
-			turtlePen sourceForm width ~= mPenSize
-				ifTrue: [turtlePen squareNib: mPenSize].
-			offset _ (mPenSize // 2)@(mPenSize // 2).
-			turtlePen color: m getPenColor.
-			turtlePen drawFrom: (oldPoint - origin - offset) asIntegerPoint
-				to: (newPoint - origin - offset) asIntegerPoint.
-			self invalidRect: ((oldPoint rect: newPoint) expandBy: mPenSize)]]
+		player _ assoc key.
+		morph _ player costume.
+		(player getPenDown and: [morph trailMorph == self])
+			 ifTrue:
+				[oldPoint _ assoc value.
+				tfm _ morph owner transformFrom: self.
+				newPoint _ tfm localPointToGlobal: morph referencePosition.
+				newPoint = oldPoint ifFalse:
+					[assoc value: newPoint.
+					self drawPenTrailFor: morph from: oldPoint to: newPoint]]
+			ifFalse: [removals add: player]].
+	removals do: [:key | lastTurtlePositions removeKey: key ifAbsent: []]
