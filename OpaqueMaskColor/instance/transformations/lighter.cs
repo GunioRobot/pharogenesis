@@ -1,0 +1,3 @@
+lighter
+
+	^ self
