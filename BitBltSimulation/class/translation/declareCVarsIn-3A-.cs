@@ -3,7 +3,7 @@ declareCVarsIn: aCCodeGenerator
 		declareC: 'int opTable[' , OpTableSize printString , ']'.
 	aCCodeGenerator var: 'maskTable'
 		declareC:'int maskTable[33] = {
-0, 1, 3, 0, 15, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 65535,
+0, 1, 3, 0, 15, 31, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 65535,
 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1
 }'.
 	aCCodeGenerator var: 'ditherMatrix4x4'
@@ -23,3 +23,13 @@ declareCVarsIn: aCCodeGenerator
 
 	aCCodeGenerator var: 'warpBitShiftTable'
 		declareC:'int warpBitShiftTable[32]'.
+
+	aCCodeGenerator var:'cmShiftTable' 
+		declareC:'int *cmShiftTable'.
+	aCCodeGenerator var:'cmMaskTable' 
+		declareC:'unsigned int *cmMaskTable'.
+	aCCodeGenerator var:'cmLookupTable' 
+		declareC:'unsigned int *cmLookupTable'.
+
+	aCCodeGenerator var: 'dither8Lookup'
+		declareC:' unsigned char dither8Lookup[4096]'.
