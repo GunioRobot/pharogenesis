@@ -1,0 +1,3 @@
+peekPosition
+	self fetchMoreEvents.
+	^mousePosition
