@@ -1,12 +1,12 @@
 userInitials: aString andPicture: aForm
 
-	| qp cb pictRect initRect |
+	| cb pictRect initRect f |
 
 	userInitials _ aString.
 	pictRect _ initRect _ cb _ self cursorBounds.
 	userInitials isEmpty ifFalse: [
-		qp _ DisplayScanner quickPrintOn: Display.
-		initRect _ cb topRight + (0@4) extent: (qp stringWidth: userInitials)@(qp lineHeight).
+		f _ TextStyle defaultFont.
+		initRect _ cb topRight + (0@4) extent: (f widthOfString: userInitials)@(f height).
 	].
 	self userPicture: aForm.
 	aForm ifNotNil: [
