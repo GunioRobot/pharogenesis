@@ -1,0 +1,2 @@
+isExteriorEdge
+	^quadEdge isExteriorEdge
