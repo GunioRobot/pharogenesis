@@ -12,10 +12,9 @@ initHTTPSocket: httpUrl wait: timeout ifError: aBlock
 		port _ HTTPProxyPort].
 
   	"make the request"	
-	self retry: [serverAddr _ NetNameResolver addressForName: serverName timeout: 20.
-				serverAddr ~~ nil] 
-		asking: 'Trouble resolving server name.  Keep trying?'
-		ifGiveUp: [aBlock value: 'Error: Could not resolve the server named: ', serverName].
+	serverAddr _ NetNameResolver addressForName: serverName timeout: 20.
+	serverAddr ifNil: [
+		aBlock value: 'Error: Could not resolve the server named: ', serverName].
 
 	s _ HTTPSocket new.
 	s connectTo: serverAddr port: port.
