@@ -5,9 +5,9 @@ findWindow: evt
 	expanded _ SystemWindow windowsIn: self satisfying: [:w | w isCollapsed not].
 	collapsed _ SystemWindow windowsIn: self satisfying: [:w | w isCollapsed].
 	nakedMorphs _ self submorphsSatisfying:
-		[:m | ((m isKindOf: SystemWindow) not and: [(m isKindOf: StickySketchMorph) not]) and:
+		[:m | (m isSystemWindow not and: [(m isKindOf: StickySketchMorph) not]) and:
 			[(m isFlapTab) not]].
-	(expanded isEmpty & (collapsed isEmpty & nakedMorphs isEmpty)) ifTrue: [^ self beep].
+	(expanded isEmpty & (collapsed isEmpty & nakedMorphs isEmpty)) ifTrue: [^ Beeper beep].
 	(expanded asSortedCollection: [:w1 :w2 | w1 label caseInsensitiveLessOrEqual: w2 label]) do:
 		[:w | menu add: w label target: w action: #activateAndForceLabelToShow.
 			w model canDiscardEdits ifFalse: [menu lastItem color: Color red]].
@@ -18,6 +18,6 @@ findWindow: evt
 	nakedMorphs isEmpty ifFalse: [menu addLine].
 	(nakedMorphs asSortedCollection: [:w1 :w2 | w1 nameForFindWindowFeature caseInsensitiveLessOrEqual: w2 nameForFindWindowFeature]) do:
 		[:w | menu add: w nameForFindWindowFeature target: w action: #comeToFrontAndAddHalo].
-	menu addTitle: 'find window'.
+	menu addTitle: 'find window' translated.
 	
 	menu popUpEvent: evt in: self.
