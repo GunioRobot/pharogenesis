@@ -1,0 +1,4 @@
+isCarryingChip
+
+	^ isCarryingChip
+
