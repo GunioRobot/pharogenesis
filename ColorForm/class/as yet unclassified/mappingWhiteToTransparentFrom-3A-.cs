@@ -4,7 +4,7 @@ mappingWhiteToTransparentFrom: aFormOrCursor
 	| f map |
 	aFormOrCursor depth <= 8 ifFalse: [
 		^ self error: 'argument depth must be 8-bits per pixel or less'].
-	(aFormOrCursor isKindOf: ColorForm) ifTrue: [
+	(aFormOrCursor isColorForm) ifTrue: [
 		f _ aFormOrCursor deepCopy.
 		map _ aFormOrCursor colors.
 	] ifFalse: [
