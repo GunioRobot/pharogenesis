@@ -1,12 +1,13 @@
 newRectFrom: newRectBlock
 	"Track the outline of a new rectangle until mouse button changes.
 	newFrameBlock produces each new rectangle from the previous"
-	| rect newRect buttonStart buttonNow |
+	| rect newRect buttonStart buttonNow aHand delay |
+	delay _ Delay forMilliseconds: 10.
 	buttonStart _ buttonNow _ Sensor anyButtonPressed.
 	rect _ self.
 	Display border: rect width: 2 rule: Form reverse fillColor: Color gray.
 	[buttonNow == buttonStart] whileTrue: 
-		[Processor yield.
+		[delay wait.
 		buttonNow _ Sensor anyButtonPressed.
 		newRect _ newRectBlock value: rect.
 		newRect = rect ifFalse:
@@ -14,4 +15,11 @@ newRectFrom: newRectBlock
 			Display border: newRect width: 2 rule: Form reverse fillColor: Color gray.
 			rect _ newRect]].
 	Display border: rect width: 2 rule: Form reverse fillColor: Color gray.
+	" pay the price for reading the sensor directly ; get this party started "
+	Smalltalk isMorphic
+		ifTrue: [aHand _ World activeHand.
+			aHand newMouseFocus: nil;
+				 showTemporaryCursor: nil;
+				 flushEvents].
+	Sensor processEvent: Sensor createMouseEvent.
 	^ rect
