@@ -10,4 +10,4 @@ request: queryString initialAnswer: defaultAnswer centerAt: aPoint
 		request: queryString 
 		initialAnswer: defaultAnswer 
 		centerAt: aPoint 
-		inWorld: Display getCurrentMorphicWorld
+		inWorld: ActiveWorld
