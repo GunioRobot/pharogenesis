@@ -1,0 +1,2 @@
+leaveThisWorld
+	exitFlag _ true
