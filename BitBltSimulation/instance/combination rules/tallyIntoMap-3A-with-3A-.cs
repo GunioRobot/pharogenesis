@@ -5,22 +5,23 @@ tallyIntoMap: sourceWord with: destinationWord
 	to be performed at setup."
 	| mapIndex pixMask destShifted maskShifted pixVal |
 	self inline: false.
-	colorMap = nil
-		ifTrue: [^ destinationWord "no op"].
-	pixMask _ maskTable at: destPixSize.
+	(cmFlags bitAnd: (ColorMapPresent bitOr: ColorMapIndexedPart)) = 
+		(ColorMapPresent bitOr: ColorMapIndexedPart)
+			ifFalse: [^ destinationWord "no op"].
+	pixMask _ maskTable at: destDepth.
 	destShifted _ destinationWord.
 	maskShifted _ destMask.
-	1 to: pixPerWord do:
+	1 to: destPPW do:
 		[:i |
 		(maskShifted bitAnd: pixMask) = 0 ifFalse:
 			["Only tally pixels within the destination rectangle"
 			pixVal _ destShifted bitAnd: pixMask.
-			destPixSize < 16
+			destDepth < 16
 				ifTrue: [mapIndex _ pixVal]
-				ifFalse: [destPixSize = 16
+				ifFalse: [destDepth = 16
 					ifTrue: [mapIndex _ self rgbMap: pixVal from: 5 to: cmBitsPerColor]
 					ifFalse: [mapIndex _ self rgbMap: pixVal from: 8 to: cmBitsPerColor]].
-			self colormapAt: mapIndex put: (self colormapAt: mapIndex) + 1].
-		maskShifted _ maskShifted >> destPixSize.
-		destShifted _ destShifted >> destPixSize].
+			self tallyMapAt: mapIndex put: (self tallyMapAt: mapIndex) + 1].
+		maskShifted _ maskShifted >> destDepth.
+		destShifted _ destShifted >> destDepth].
 	^ destinationWord  "For no effect on dest"
