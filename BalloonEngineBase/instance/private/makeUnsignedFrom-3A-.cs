@@ -1,0 +1,2 @@
+makeUnsignedFrom: someIntegerValue
+	^someIntegerValue
