@@ -1,5 +1,5 @@
 primitiveFileOpen
-	| namePointer writeFlag fileName |
+	| namePointer writeFlag fileName f |
 	writeFlag _ self booleanValueOf: self stackTop.
 	namePointer _ self stackValue: 1.
 	self success: (self isBytes: namePointer).
@@ -8,7 +8,8 @@ primitiveFileOpen
 		filesOpen addLast: (writeFlag
 			ifTrue: [(FileStream fileNamed: fileName) binary]
 			ifFalse: [(StandardFileStream isAFileNamed: fileName)
-				ifTrue: [(FileStream oldFileNamed: fileName) readOnly; binary]
+				ifTrue: [f _ (FileStream oldFileNamed: fileName).
+						f ifNil:[^self primitiveFail] ifNotNil:[f readOnly; binary]]
 				ifFalse: [^ self primitiveFail]]).
 		self pop: 3.  "rcvr, name, write"
 		self pushInteger: filesOpen size]
