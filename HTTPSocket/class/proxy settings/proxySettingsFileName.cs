@@ -1,0 +1,2 @@
+proxySettingsFileName
+	^'proxySettings'
