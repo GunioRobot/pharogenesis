@@ -4,4 +4,4 @@
 	whatIsAPrimitive."
 
 	<primitive: 42>
-	^ (aNumber adaptFloat: self) - aNumber adaptToFloat
+	^ aNumber adaptToFloat: self andSend: #-
