@@ -31,10 +31,10 @@ morphs do: [:mm | 	"break the back pointers"
 		(morphs includesAllOf: (mm eventHandler allRecipients)) ifTrue: [
 			mm eventHandler: nil]].
 	"temporary, until using Model for PartsBin"
-	(mm isKindOf: MorphicModel) ifTrue: [
-		(mm model isKindOf: MorphicModel) ifTrue: [
+	(mm isMorphicModel) ifTrue: [
+		(mm model isMorphicModel) ifTrue: [
 			mm model breakDependents]].
-	(mm isKindOf: TextMorph) ifTrue: [mm setContainer: nil]]].
+	(mm isTextMorph) ifTrue: [mm setContainer: nil]]].
 (Smalltalk includesKey: #Owners) ifTrue: [Smalltalk at: #Owners put: nil].
 	"in case findOwnerMap: is commented out"
 "self findOwnerMap: morphs."
