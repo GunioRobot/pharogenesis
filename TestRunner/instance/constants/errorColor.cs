@@ -1,0 +1,2 @@
+errorColor
+	^ Color red lighter
