@@ -1,5 +1,6 @@
 activate
 	"Bring me to the front and make me able to respond to mouse and keyboard"
+
 	| oldTop outerMorph sketchEditor pal |
 	outerMorph _ self topRendererOrSelf.
 	outerMorph owner ifNil: [^ self "avoid spurious activate when drop in trash"].
@@ -10,11 +11,13 @@ activate
 		ifFalse: ["Bring me (with any flex) to the top if not already"
 				outerMorph owner addMorphFront: outerMorph].
 	self submorphsDo: [:m | m unlock].
-	labelArea submorphsDo: [:m | m unlock].
-	self setStripeColorsFrom: self paneColorToUse.
+	labelArea ifNotNil:
+		[labelArea submorphsDo: [:m | m unlock].
+		self setStripeColorsFrom: self paneColorToUse].
 	self isCollapsed ifFalse:
 		[model modelWakeUpIn: self.
-		self positionSubmorphs].
+		self positionSubmorphs.
+		labelArea ifNil: [self adjustBorderUponActivationWhenLabeless]].
 
 	(sketchEditor _ self extantSketchEditor) ifNotNil:
 		[sketchEditor comeToFront.
