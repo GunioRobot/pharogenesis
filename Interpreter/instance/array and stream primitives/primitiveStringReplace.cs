@@ -34,18 +34,23 @@ primitiveStringReplace
 		ifFalse: [(arrayFmt bitAnd: 16rC) = (replFmt bitAnd: 16rC) ifFalse: [^ self primitiveFail]].
 
 	srcIndex _ replStart + replInstSize - 1.   " - 1 for 0-based access"
-	start + arrayInstSize - 1 to: stop + arrayInstSize - 1 do: [:i | 
-		arrayFmt < 4 ifTrue: [  "pointer type objects"
+
+	arrayFmt < 4 ifTrue: [ "pointer type objects"
+		start + arrayInstSize - 1 to: stop + arrayInstSize - 1 do: [:i | 
 			self storePointer: i ofObject: array withValue:
-				(self fetchPointer: srcIndex ofObject: repl)]
-		ifFalse: [
-			arrayFmt < 8 ifTrue: [  "long-word type objects"
+				(self fetchPointer: srcIndex ofObject: repl).
+			srcIndex _ srcIndex + 1. ] ]
+	ifFalse: [
+		arrayFmt < 8  ifTrue: [ "long-word type objects"
+			start + arrayInstSize - 1 to: stop + arrayInstSize - 1 do: [:i | 
 				self storeWord: i ofObject: array withValue:
-					(self fetchWord: srcIndex ofObject: repl)]
-			ifFalse: [  "byte-type objects"
+					(self fetchWord: srcIndex ofObject: repl).
+				srcIndex _ srcIndex + 1 ] ]
+		ifFalse: [  "byte-type objects"
+			start + arrayInstSize - 1 to: stop + arrayInstSize - 1 do: [:i | 
 				self storeByte: i ofObject: array withValue:
-					(self fetchByte: srcIndex ofObject: repl)]].
-		srcIndex _ srcIndex + 1.
-	].
+					(self fetchByte: srcIndex ofObject: repl).
+				srcIndex _ srcIndex + 1. ] ].	].
+
 
 	self pop: 4.  "leave rcvr on stack"
