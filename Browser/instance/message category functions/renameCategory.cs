@@ -13,7 +13,6 @@ renameCategory
 		ifTrue: [^ self]
 		ifFalse: [newName _ newName asSymbol].
 	newName = oldName ifTrue: [^ self].
-	Smalltalk changes reorganizeClass: self selectedClassOrMetaClass.
 	self classOrMetaClassOrganizer
 		renameCategory: oldName
 		toBe: newName.
