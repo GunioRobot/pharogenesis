@@ -1,0 +1,2 @@
+scrollBarsOnRight
+	^ self valueOfFlag: #scrollBarsOnRight
