@@ -1,0 +1,3 @@
+reggaeCmd
+
+	self musicType: 'reggae'.
