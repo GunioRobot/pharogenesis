@@ -1,0 +1,2 @@
+fastDragWindowForMorphic
+	^ self valueOfFlag: #fastDragWindowForMorphic
