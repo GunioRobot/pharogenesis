@@ -1,5 +1,5 @@
 cancel
 	"Sent by the cancel button."
 
-	response _ ''.
+	response _ responseUponCancel.
 	done _ true.
