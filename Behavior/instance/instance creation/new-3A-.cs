@@ -8,6 +8,6 @@ new: anInteger
 	(anInteger isInteger and: [anInteger >= 0]) ifTrue: [
 		"arg okay; space must be low"
 		Smalltalk signalLowSpace.
-		^ self new: anInteger  "retry if user proceeds"
+		^ self basicNew: anInteger  "retry if user proceeds"
 	].
 	self primitiveFailed
