@@ -1,0 +1,2 @@
+backgroundColorForMorphicProject
+	^ Color lightOrange
