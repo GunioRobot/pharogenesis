@@ -1,0 +1,2 @@
+runButtonColor
+	^ Color green lighter
