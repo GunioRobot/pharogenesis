@@ -8,6 +8,7 @@ decompile: aSelector in: aClass method: aMethod using: aConstructor
 		ifTrue: [block _ self quickMethod]
 		ifFalse: 
 			[stack _ OrderedCollection new: method frameSize.
+			caseExits _ OrderedCollection new.
 			statements _ OrderedCollection new: 20.
 			super method: method pc: method initialPC.
 			block _ self blockTo: method endPC + 1.
@@ -15,6 +16,6 @@ decompile: aSelector in: aClass method: aMethod using: aConstructor
 	^constructor
 		codeMethod: aSelector
 		block: block
-		tempVars: (tempVars select: [:t | t scope >=0])
+		tempVars: tempVars
 		primitive: method primitive
 		class: aClass
