@@ -11,7 +11,7 @@ exportSegmentFileName: aFileName directory: aDirectory
 	(changeSet notNil and: [changeSet isEmpty not]) ifTrue: [
 		(self confirm: 
 'Would you like to include all the changes in the change set
-as part of this publishing operation?') ifTrue: [
+as part of this publishing operation?' translated) ifTrue: [
 			exportChangeSet _ changeSet
 		].
 	].
