@@ -1,0 +1,2 @@
+paragraphClass
+	^ TextOnCurve
