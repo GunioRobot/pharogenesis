@@ -3,18 +3,15 @@ defineMessage: aString notifying: aController
 	occurs. Install the compiled method in the selected class classified under 
 	the currently selected message category name. Answer true if 
 	compilation succeeds, false otherwise."
-
-	| selectedMessageName selector category oldMessageList notice |
+	| selectedMessageName selector category oldMessageList |
 	selectedMessageName _ self selectedMessageName.
 	oldMessageList _ self messageList.
 	contents _ nil.
-	selector _ 
-		self selectedClassOrMetaClass
+	selector _ self selectedClassOrMetaClass
 				compile: aString
 				classified: (category _ self selectedMessageCategoryName)
 				notifying: aController.
-	notice _ self selectedClassOrMetaClass checkForPerform: selector in: aController.
-	selector == nil ifTrue: [^false].
+	selector == nil ifTrue: [^ false].
 	contents _ aString copy.
 	selector ~~ selectedMessageName
 		ifTrue: 
@@ -25,9 +22,4 @@ defineMessage: aString notifying: aController
 			(oldMessageList includes: selector)
 				ifFalse: [self changed: #messageListChanged].
 			self messageListIndex: (self messageList indexOf: selector)].
-	notice size = 0 ifFalse: ["insert the notice"
-			aController notify: notice
-				at: contents size + 1
-				in: nil.
-			self lock  "code is dirty"].
-	^true
+	^ true
