@@ -3,7 +3,8 @@ mergeBlobs
 	bounds, then all our vertices against any Blob with overlapping bounds.
 	If we find a need to merge, then someone else does all the work."
 
-	AllBlobs size < 2 ifTrue: [^ self].
+	(AllBlobs isNil or: [AllBlobs size < 2]) 
+		ifTrue: [^ self].
 	AllBlobs
 		do:
 			[:aBlob |
