@@ -5,7 +5,7 @@ lengthOf: oop baseHeader: hdr format: fmt
 	self inline: true.
 	(hdr bitAnd: TypeMask) = HeaderTypeSizeAndClass
 		ifTrue: [ sz _ (self sizeHeader: oop) bitAnd: AllButTypeMask ]
-		ifFalse: [ sz _ hdr bitAnd: 16rFC ].
+		ifFalse: [ sz _ hdr bitAnd: SizeMask ].
 
 	fmt < 8
 		ifTrue: [ ^ (sz - BaseHeaderSize) >> 2 ]  "words"
