@@ -1,0 +1,2 @@
+actOn: aHeadMorph
+	self subclassResponsibility
