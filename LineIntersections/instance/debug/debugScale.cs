@@ -1,0 +1,2 @@
+debugScale
+	^1
