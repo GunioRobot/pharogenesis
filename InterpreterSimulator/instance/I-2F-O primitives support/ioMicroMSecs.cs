@@ -1,4 +1,4 @@
 ioMicroMSecs
-	"Return the value of the microsecond clock (dummied here)."
+	"Answer the value of the high-resolution millisecond clock."
 
-	^ 0
+	^ Time millisecondClockValue
