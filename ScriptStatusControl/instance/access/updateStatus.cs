@@ -1,0 +1,2 @@
+updateStatus
+	scriptInstantiation updateStatusMorph: self
