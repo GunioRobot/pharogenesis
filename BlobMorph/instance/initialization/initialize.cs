@@ -1,10 +1,7 @@
 initialize
-
-	super initialize.
-	self beSmoothCurve.
-
+	"initialize the state of the receiver"
 	random _ Random new.
 	sneaky _ random next < 0.75.
-	self initializeColor.
-	self initializeBlobShape.
-	self setVelocity
+	super initialize.
+""
+	self beSmoothCurve; initializeBlobShape; setVelocity
