@@ -1,6 +1,6 @@
 B3DLightSource
 	subclass: #B3DDirectionalLight
-	instanceVariableNames: 'direction '
+	instanceVariableNames: 'direction'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon3D-Lights'
+	category: 'Balloon3D-Kernel-Lights'
