@@ -1,5 +1,6 @@
 transformToDo: encoder
-	" var _ rcvr. L1: [var <= arg1] Bfp(L2) [block body. var _ var + inc] Jmp(L1) L2: "
+	" var _ rcvr. L1: [var <= arg1] Bfp(L2) [block body. var _ var + inc] 
+Jmp(L1) L2: "
 	| limit increment block initStmt test incStmt limitInit blockVar |
 	"First check for valid arguments"
 	((arguments last isMemberOf: BlockNode)
@@ -9,7 +10,8 @@ transformToDo: encoder
 		ifFalse: [^ false]. "As with debugger remote vars"
 	arguments size = 3
 		ifTrue: [increment _ arguments at: 2.
-				increment isConstantNumber ifFalse: [^ false]]
+				(increment isConstantNumber and:
+					[increment literalValue ~= 0]) ifFalse: [^ false]]
 		ifFalse: [increment _ encoder encodeLiteral: 1].
 	arguments size < 3 ifTrue:   "transform to full form"
 		[selector _ SelectorNode new key: #to:by:do: code: #macro].
