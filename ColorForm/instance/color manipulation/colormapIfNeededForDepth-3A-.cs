@@ -6,7 +6,8 @@ colormapIfNeededForDepth: destDepth
 		"use the standard colormap"
 		^ Color colorMapIfNeededFrom: depth to: destDepth].
 
-	destDepth = cachedDepth ifTrue: [^ cachedColormap].
+	(destDepth = cachedDepth and:[cachedColormap isColormap not]) 
+		ifTrue: [^ cachedColormap].
 	newMap _ Bitmap new: colors size.
 	1 to: colors size do: [:i |
 		newMap
