@@ -1,2 +1,2 @@
 getNib
-	^ currentBrush arguments at: 3
+	^currentBrush arguments third
