@@ -1,2 +1,3 @@
 localName
-	^ fileName
+
+	^ self fileName
