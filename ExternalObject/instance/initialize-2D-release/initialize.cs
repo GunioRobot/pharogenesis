@@ -1,0 +1,2 @@
+initialize
+	"Initialize the receiver"
