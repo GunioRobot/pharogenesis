@@ -1,0 +1,2 @@
+updateDisplay
+	"overridden by subclass"
