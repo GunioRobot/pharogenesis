@@ -38,3 +38,9 @@ layoutChanged
 		ctrl position:
 			self bounds origin +
 			((((frameWidth - ctrl extent x) / 2) rounded)@frameWidth)].
+
+	ctrl := wheels at: #accel ifAbsent:[nil].
+	ctrl ifNotNil:[
+		ctrl position:
+			self bounds origin +
+			(frameWidth @ ((((frameWidth - ctrl extent y) / 2) rounded)))].
