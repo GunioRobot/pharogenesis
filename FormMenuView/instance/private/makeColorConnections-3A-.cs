@@ -3,7 +3,8 @@ makeColorConnections: indexInterval
 	| connector buttonCache button aSwitchView |
 	connector _ Object new.  "a dummy model for connecting dependents"
 	indexInterval do: [:index |
-		buttonCache _ FormButtons at: index.
+	buttonCache _ (FormButtons at: index) shallowCopy.
+	buttonCache form: (FormButtons at: index) form copy.
 		buttonCache initialState = #true
 			ifTrue: [button _ OneOnSwitch newOn]
 			ifFalse: [button _ OneOnSwitch newOff].
