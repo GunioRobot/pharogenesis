@@ -1,16 +1,13 @@
-showPageControls: controlSpecs 
-	| spacer pageControls anIndex |
-	self hidePageControls.
-	anIndex _ (submorphs size > 0 and: [submorphs first hasProperty: #header])
-		ifTrue:	[2]
-		ifFalse:	[1].
-	spacer _ Morph new color: color; extent: 0@10.
-	spacer  setProperty: #pageControl toValue: true.
-	self privateAddMorph: spacer atIndex: anIndex.
+showPageControls: controlSpecs  
+	"Remove any existing page controls, and add fresh controls at the top of the receiver (or in position 2 if the receiver's first submorph is one with property #header).  Add a single column of controls."
 
+	| pageControls column |
+	self hidePageControls.
+	column _ AlignmentMorph newColumn beTransparent.
 	pageControls _ self makePageControlsFrom: controlSpecs.
 	pageControls borderWidth: 0; layoutInset: 4.
-	pageControls  setProperty: #pageControl toValue: true.
+	pageControls beSticky.
 	pageControls setNameTo: 'Page Controls'.
-	pageControls eventHandler: (EventHandler new on: #mouseDown send: #move to: self).
-	self privateAddMorph:  pageControls beSticky atIndex: anIndex
+	self setEventHandlerForPageControls: pageControls.
+	column addMorphBack: pageControls.
+	self addPageControlMorph: column
