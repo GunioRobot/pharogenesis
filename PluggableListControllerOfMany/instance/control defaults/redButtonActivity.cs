@@ -19,14 +19,14 @@ redButtonActivity
 		(selection == nil or: [selection = lastSelection]) ifFalse: 
 			[firstHit ifTrue:
 				[firstHit _ false.
-				turningOn _ (model listSelectionAt: selection) not].
+				turningOn _ (view listSelectionAt: selection) not].
 			view selection: selection.
-			(model listSelectionAt: selection) == turningOn ifFalse:
+			(view listSelectionAt: selection) == turningOn ifFalse:
 				[view displaySelectionBox.
-				model listSelectionAt: selection put: turningOn].
+				view listSelectionAt: selection put: turningOn].
 			lastSelection _ selection]].
 	selection notNil ifTrue:
 		["Normal protocol delivers change, so unchange first (ugh)"
-		model listSelectionAt: selection put: (model listSelectionAt: selection) not.
+		view listSelectionAt: selection put: (view listSelectionAt: selection) not.
 		self changeModelSelection: selection].
 	scrollFlag ifTrue: [self moveMarker]
