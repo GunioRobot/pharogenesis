@@ -1,0 +1,4 @@
+second
+
+
+	^ self asDuration seconds
