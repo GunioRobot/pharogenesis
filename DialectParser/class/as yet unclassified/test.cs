@@ -50,5 +50,5 @@ during: [:bar | n _ 0.
 				Transcript endEntry.
 				badOnes add: cls name , ' ' , selector]]]].
 ].
-	Smalltalk browseMessageList: badOnes asSortedCollection name: 'Formatter Discrepancies'.
+	self systemNavigation browseMessageList: badOnes asSortedCollection name: 'Formatter Discrepancies'.
 	Preferences disable: #printAlternateSyntax.
