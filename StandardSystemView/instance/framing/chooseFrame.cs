@@ -10,11 +10,11 @@ chooseFrame
 			bitsValid _ false.
 			self erase.
 			labelForm slideFrom: self labelDisplayBox origin
-					to: expandedViewport origin-(0@labelFrame height)
+					to: expandedViewport origin-self labelOffset
 					nSteps: 10.
 			^ expandedViewport]
 		ifFalse:
 			[f _ self getFrame.
 			bitsValid _ false.
 			self erase.
-			^ f topLeft + (0@ labelFrame height) extent: f extent]
+			^ f topLeft + self labelOffset extent: f extent]
