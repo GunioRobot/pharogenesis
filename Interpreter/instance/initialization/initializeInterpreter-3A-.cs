@@ -1,8 +1,10 @@
 initializeInterpreter: bytesToShift
 	"Initialize Interpreter state before starting execution of a new image."
 
+	interpreterProxy _ self sqGetInterpreterProxy.
 	self initializeObjectMemory: bytesToShift.
-	self initBBOpTable.
+	self initCompilerHooks.
+	self flushExternalPrimitives.
 
 	activeContext	_ nilObj.
 	theHomeContext	_ nilObj.
@@ -14,10 +16,15 @@ initializeInterpreter: bytesToShift
 	self flushMethodCache.
 	self loadInitialContext.
 	interruptCheckCounter _ 0.
+	interruptCheckCounterFeedBackReset _ 1000.
+	interruptChecksEveryNms _ 5.
 	nextPollTick _ 0.
 	nextWakeupTick _ 0.
 	lastTick _ 0.
 	interruptKeycode _ 2094.  "cmd-."
 	interruptPending _ false.
-	semaphoresToSignalCount _ 0.
+	semaphoresUseBufferA _ true.
+	semaphoresToSignalCountA _ 0.
+	semaphoresToSignalCountB _ 0.
 	deferDisplayUpdates _ false.
+	pendingFinalizationSignals _ 0.
