@@ -1,0 +1,3 @@
+resources: anObject
+	resources := anObject
+			
