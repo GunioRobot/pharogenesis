@@ -1,2 +1,4 @@
 initialize3
-	"more selectors to consider"
+	"additional selectors to consider"
+
+#(asWords threeDigitName ) do: [:sel | Approved add: sel].
