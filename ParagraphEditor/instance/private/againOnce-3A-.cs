@@ -5,7 +5,7 @@ againOnce: indices
 	Note that the search is case-sensitive for replacements, otherwise not."
 
 	| where |
-	where _ paragraph text findString: FindText startingAt: stopBlock stringIndex
+	where _ paragraph text findString: FindText startingAt: self stopIndex
 				caseSensitive: ((ChangeText ~~ FindText) or: [Preferences caseSensitiveFinds]).
 	where = 0 ifTrue: [^ false].
 	self deselect; selectInvisiblyFrom: where to: where + FindText size - 1.
