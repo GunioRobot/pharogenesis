@@ -7,7 +7,7 @@ container
 	4.  container is nil, and wrap is false -- grow in 2D as nexessary."
 
 	container ifNil:
-		[successor ifNotNil: [^ self bounds].
-		wrapFlag ifTrue: [^ self bounds withHeight: 9999999].
-		^ self position extent: 9999999@9999999].
+		[successor ifNotNil: [^ self compositionRectangle].
+		wrapFlag ifTrue: [^ self compositionRectangle withHeight: 9999999].
+		^ self compositionRectangle topLeft extent: 9999999@9999999].
 	^ container
