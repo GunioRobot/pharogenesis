@@ -1,5 +1,5 @@
 volumeForTrack: i
 
-	| total |
-	total _ (leftVols at: i) + (rightVols at: i).
-	^ (total asFloat / ScaleFactor) roundTo: 0.0001
+	| vol |
+	vol _ (leftVols at: i) max: (rightVols at: i).
+	^ (vol asFloat / ScaleFactor) roundTo: 0.0001
