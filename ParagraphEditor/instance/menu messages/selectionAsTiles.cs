@@ -5,5 +5,7 @@ selectionAsTiles
 	selection _ self selection.
 	self terminateAndInitializeAround:
 		[self currentHand attachMorph: (tiles _ Player tilesFrom: selection).
-		tiles align: tiles topLeft 
-			 with: self currentHand position + tiles cursorBaseOffset].
+		Preferences tileTranslucentDrag
+			ifTrue: [tiles lookTranslucent]
+			ifFalse: [tiles align: tiles topLeft 
+			 			with: self currentHand position + tiles cursorBaseOffset]].
