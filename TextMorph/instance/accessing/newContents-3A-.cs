@@ -1,8 +1,19 @@
 newContents: stringOrText 
 	"Accept new text contents."
 	| newText embeddedMorphs |
-	newText _ stringOrText copy asText.	"should be veryDeepCopy?"
-	text = newText ifTrue: [^ self].	"No substantive change"
+	"If my text is all the same font, use the font for my new contents"
+	newText _ stringOrText isString ifTrue: [ | textSize |
+		(text notNil
+		  and: [ (textSize _ text size) > 0
+		    and: [ (text runLengthFor: 1) = textSize ]]) ifTrue: [ | attribs |
+			attribs _ text attributesAt: 1 forStyle: textStyle.
+			Text string: stringOrText copy attributes: attribs.
+		]
+		ifFalse: [ Text fromString: stringOrText copy ]
+	]
+	ifFalse: [ stringOrText copy asText.	"should be veryDeepCopy?" ].
+
+	(text = newText and: [text runs = newText runs]) ifTrue: [^ self].	"No substantive change"
 	text ifNotNil: [(embeddedMorphs _ text embeddedMorphs)
 			ifNotNil: 
 				[self removeAllMorphsIn: embeddedMorphs.
