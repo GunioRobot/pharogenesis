@@ -1,0 +1,2 @@
+sampleCount
+	^sampleCount
