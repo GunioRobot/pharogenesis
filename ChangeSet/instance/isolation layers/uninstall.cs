@@ -1,0 +1,3 @@
+uninstall
+
+	self halt.
