@@ -1,0 +1,2 @@
+basicWidth
+	^ 18
