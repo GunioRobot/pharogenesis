@@ -1,0 +1,2 @@
+sourceForm:newForm
+	^self.
