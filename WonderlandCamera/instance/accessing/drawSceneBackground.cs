@@ -1,0 +1,2 @@
+drawSceneBackground
+	^drawSceneBackground
