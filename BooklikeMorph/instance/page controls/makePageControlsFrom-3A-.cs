@@ -1,9 +1,8 @@
 makePageControlsFrom: controlSpecs
 	"From the controlSpecs, create a set of page control and return them -- this method does *not* add the controls to the receiver."
 
-	| c aButton col row b lastGuy |
+	| c col row b lastGuy |
 	c _ (color saturation > 0.1) ifTrue: [color slightlyLighter] ifFalse: [color slightlyDarker].
-	aButton _ SimpleButtonMorph new target: self; borderWidth: 1; borderColor: Color veryLightGray; color: c.
 	col _ AlignmentMorph newColumn.
 	col color: c; borderWidth: 0; layoutInset: 0.
 	col hResizing: #spaceFill; vResizing: #shrinkWrap; extent: 5@5.
@@ -20,8 +19,9 @@ makePageControlsFrom: controlSpecs
 					ifTrue:
 						[row addMorphBack: AlignmentMorph newVariableTransparentSpacer]
 					ifFalse:
-						[b _ aButton fullCopy
-						label: spec first;
+						[b _ SimpleButtonMorph new target: self; borderWidth: 1; 
+								borderColor: Color veryLightGray; color: c.
+						b label: spec first;
 						actionSelector: spec second;
 						borderWidth: 0;
 	 					setBalloonText: spec third.
