@@ -3,7 +3,7 @@ characters: anInterval in: sourceString displayAt: aPoint
 	No wrap-around is provided."
 	| ascii destPoint bb leftX rightX sourceRect |
 	destPoint _ aPoint.
-	bb _ BitBlt toForm: Display.
+	bb _ BitBlt current toForm: Display.
 	anInterval do: 
 		[:i | 
 		ascii _ (sourceString at: i) asciiValue.
