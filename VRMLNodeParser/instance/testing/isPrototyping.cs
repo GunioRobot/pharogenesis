@@ -1,0 +1,2 @@
+isPrototyping
+	^protoList notNil
