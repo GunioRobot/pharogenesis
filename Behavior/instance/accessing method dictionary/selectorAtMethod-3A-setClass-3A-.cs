@@ -3,7 +3,7 @@ selectorAtMethod: method setClass: classResultBlock
 	and the class in which that selector is defined."
 
 	| sel |
-	sel _ methodDict keyAtValue: method
+	sel _ self methodDict keyAtIdentityValue: method
 				ifAbsent: 
 					[superclass == nil
 						ifTrue: 
