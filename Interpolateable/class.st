@@ -1,1 +1,1 @@
-Interpolateable class instanceVariableNames: 'value '
+Interpolateable class instanceVariableNames: 'value'
