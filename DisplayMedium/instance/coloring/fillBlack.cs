@@ -1,4 +1,4 @@
 fillBlack
 	"Set all bits in the receiver to black (ones)."
 
-	self fill: self boundingBox fillColor: self black
+	self fill: self boundingBox fillColor: Color black
