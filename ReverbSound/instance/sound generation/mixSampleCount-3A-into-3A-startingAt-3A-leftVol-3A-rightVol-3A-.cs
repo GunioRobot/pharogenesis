@@ -1,5 +1,5 @@
 mixSampleCount: n into: aSoundBuffer startingAt: startIndex leftVol: leftVol rightVol: rightVol
-	"Play my sound with reberberation."
+	"Play my sound with reverberation."
 
 	sound mixSampleCount: n
 		into: aSoundBuffer
