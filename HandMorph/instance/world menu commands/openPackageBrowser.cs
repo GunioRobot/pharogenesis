@@ -1,0 +1,2 @@
+openPackageBrowser
+	PackageBrowser openBrowser
