@@ -18,6 +18,7 @@ step
 				ifTrue: 
 					[oldMethod _ currentContext method.
 					currentContext _ currentContext step.
+					currentContext stepToSendOrReturn.
 					self resetContext: currentContext.
 					oldMethod == currentContext method "didnt used to update pc here"
 						ifTrue: [self changed: #pc]]
