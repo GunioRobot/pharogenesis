@@ -1,5 +1,6 @@
-isPartsDonor: aBoolean
-	extension == nil ifTrue:
-		[aBoolean ifFalse: [^ self].
-		self assureExtension].
-	extension isPartsDonor: aBoolean
+isPartsDonor: aBoolean 
+	"change the receiver's isPartDonor property"
+	(self hasExtension not
+			and: [aBoolean not])
+		ifTrue: [^ self].
+	self assureExtension isPartsDonor: aBoolean
