@@ -1,8 +1,10 @@
 actorMenu: aMenu
 	"Builds the menu to display when the user right clicks on an actor"
 
-	(selectedActor isKindOf: WonderlandScene) | (selectedActor = nil)
-	ifTrue: [ ^ aMenu ].
+ 	selectedActor ifNil: [ ^ aMenu ].
+
+	(selectedActor isKindOf: WonderlandScene)
+		ifTrue: [ ^ aMenu addList: { { 'Load actor'. #loadActor } } ].
 
 	(selectedActor isFirstClass)
 		ifTrue: [
