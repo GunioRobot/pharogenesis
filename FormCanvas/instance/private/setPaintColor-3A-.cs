@@ -1,7 +1,6 @@
 setPaintColor: aColor
 	"Install a new color used for filling."
 	| paintColor screen patternWord |
-	port isFXBlt ifTrue:[port sourceMap: nil; destMap: nil; colorMap: nil; sourceKey: nil].
 	paintColor _ self shadowColor ifNil:[aColor].
 	paintColor ifNil:[paintColor _ Color transparent].
 	paintColor isColor ifFalse:[
@@ -13,17 +12,9 @@ setPaintColor: aColor
 		port fillPattern: paintColor.
 		port combinationRule: Form paint.
 		self depth = 8 ifTrue:[
-			port fillColor: (paintColor balancedPatternForDepth: 8)].
+			port fillColor: (form balancedPatternFor: paintColor)].
 		^self].
 	"paintColor is translucent color"
-	(port isFXBlt and:[self depth >= 8]) ifTrue:[
-		"FXBlt setup for alpha mapped transfer"
-		port fillPattern: paintColor.
-		port fillColor: (paintColor bitPatternForDepth: 32).
-		port destMap: form colormapToARGB.
-		port colorMap: form colormapFromARGB.
-		port combinationRule: Form blend.
-		^self].
 
 	self depth > 8 ifTrue:[
 		"BitBlt setup for alpha mapped transfer"
@@ -35,6 +26,6 @@ setPaintColor: aColor
 
 	"Can't represent actual transparency -- use stipple pattern"
 	screen _ Color translucentMaskFor: paintColor alpha depth: self depth.
-	patternWord _ paintColor pixelWordForDepth: self depth.
+	patternWord _ form pixelWordFor: paintColor.
 	port fillPattern: (screen collect: [:maskWord | maskWord bitAnd: patternWord]).
 	port combinationRule: Form paint
