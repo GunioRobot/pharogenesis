@@ -1,0 +1,2 @@
+hasUserDefinedSlots
+	^ false
