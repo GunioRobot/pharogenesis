@@ -1,0 +1,2 @@
+openDirectMessagesObserver
+	IRCDirectMessagesObserver openForConnection: self
