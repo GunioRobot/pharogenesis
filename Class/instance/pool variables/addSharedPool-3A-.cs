@@ -1,9 +1,10 @@
-addSharedPool: aDictionary 
-	"Add the argument, aDictionary, as one of the receiver's pool dictionaries. 
-	Create an error if the dictionary is already one of the pools."
+addSharedPool: aSharedPool 
+	"Add the argument, aSharedPool, as one of the receiver's shared pools. 
+	Create an error if the shared pool is already one of the pools.
+	This method will work with shared pools that are plain Dictionaries or thenewer SharedPool subclasses"
 
-	(self sharedPools includes: aDictionary)
-		ifTrue: [^self error: 'The dictionary is already in my pool'].
+	(self sharedPools includes: aSharedPool)
+		ifTrue: [^self error: 'This is already in my shared pool list'].
 	sharedPools == nil
-		ifTrue: [sharedPools _ OrderedCollection with: aDictionary]
-		ifFalse: [sharedPools add: aDictionary]
+		ifTrue: [sharedPools _ OrderedCollection with: aSharedPool]
+		ifFalse: [sharedPools add: aSharedPool]
