@@ -8,13 +8,13 @@ completeSymbol: hintText lastOffering: selectorOrNil
 	 Undoer: #undoQuery:lastOffering:; Redoer: itself.
 	If redoing, just redisplay the last offering, selector[OrNil]."
 
-	| firstTime input prior caret newStart sym kwds blockNode outStream |
+	| firstTime input prior caret newStart sym kwds outStream |
 	firstTime _ self isRedoing
 		ifTrue: [prior _ sym _ selectorOrNil. true]
 		ifFalse: [hintText isNil].
 	firstTime
 		ifTrue: "Initial Ctrl-q (or redo)"					
-			[caret _ startBlock stringIndex.
+			[caret _ self startIndex.
 			self selectPrecedingIdentifier.
 			input _ self selection]
 		ifFalse: "Repeated Ctrl-q"
@@ -25,7 +25,7 @@ completeSymbol: hintText lastOffering: selectorOrNil
 	(input size ~= 0 and: [sym ~~ nil or:
 			[(sym _ Symbol thatStarts: input string skipping: prior) ~~ nil]])
 		ifTrue: "found something to offer"
-			[newStart _ startBlock stringIndex.
+			[newStart _ self startIndex.
 			outStream _ WriteStream on: (String new: 2 * sym size).
 			1 to: (kwds _ sym keywords) size do:
 				[:i |
