@@ -1,0 +1,1 @@
+This is a basic example of connecting to a mail server, using POP3, to check how many messages are waiting.  It does everything at one time, which may make it too slow to use as is.
