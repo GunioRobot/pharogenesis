@@ -1,0 +1,3 @@
+maxAscii
+
+	^ ttcDescription size.
