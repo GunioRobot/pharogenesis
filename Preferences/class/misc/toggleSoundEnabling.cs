@@ -1,0 +1,2 @@
+toggleSoundEnabling
+     self togglePreference: #soundsEnabled
