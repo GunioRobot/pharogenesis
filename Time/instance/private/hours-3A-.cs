@@ -1,3 +1,3 @@
 hours: anInteger
 
-	hours _ anInteger
+	self hours: anInteger minutes: 0 seconds: 0.
