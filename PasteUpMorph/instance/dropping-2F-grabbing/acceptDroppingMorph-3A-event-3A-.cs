@@ -7,7 +7,7 @@ acceptDroppingMorph: dropped event: evt
 		ifTrue:["Add the given morph to this world and start stepping it if it wants to be."
 				self addMorphFront: aMorph.
 				(aMorph fullBounds intersects: self viewBox) ifFalse:
-					[self beep.  aMorph position: self bounds center]]
+					[Beeper beep.  aMorph position: self bounds center]]
 		ifFalse:[super acceptDroppingMorph: aMorph event: evt].
 
 	aMorph submorphsDo: [:m | (m isKindOf: HaloMorph) ifTrue: [m delete]].
