@@ -9,5 +9,9 @@ passwordFor: serverDir
 	msg _ (serverDir isKindOf: ServerDirectory)
 		ifTrue: [serverDir moniker]
 		ifFalse: ['this directory'].
+	(serverDir user = 'anonymous') & (serverDir type == #ftp) ifTrue: [
+			^ cache _ FillInTheBlank request: 'Please let this anonymous ftp\server know your email address.\This is the polite thing to do.' withCRs
+			initialAnswer: 'yourName@company.com'].
+
 	^ cache _ FillInTheBlank request: 'Password for ', msg, ':'.
 		"Diff between empty string and abort?"
