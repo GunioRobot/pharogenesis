@@ -6,7 +6,7 @@ displayPlainTextPage: newSource
 	backgroundColor _ self defaultBackgroundColor.
 	currentUrl _ newSource url.
 
-	self status: 'sittin'.
+	self status: 'sittin' translated.
 	self changeAll: 	#(currentUrl relabel hasLint lint formattedPage formattedPage
 formattedPageSelection).
 	^true
