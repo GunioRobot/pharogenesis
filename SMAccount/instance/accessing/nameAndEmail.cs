@@ -1,0 +1,2 @@
+nameAndEmail
+	^name , ' <', email, '>'
