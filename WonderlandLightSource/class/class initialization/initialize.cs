@@ -1,7 +1,8 @@
 initialize
 	"Add the light names to WonderlandConstants"
-
-	WonderlandConstants at: 'ambient' put: 'ambientLight'.
-	WonderlandConstants at: 'positional' put: 'positionalLight'.
-	WonderlandConstants at: 'directional' put: 'directionalLight'.
-	WonderlandConstants at: 'spotlight' put: 'spotLight'.
+	| dict |
+	dict _ Smalltalk at: #WonderlandConstants.
+	#(ambient positional directional spotlight) do:[:each| 
+		dict declare: each from: Undeclared.
+		dict at: each put: each.
+	].
