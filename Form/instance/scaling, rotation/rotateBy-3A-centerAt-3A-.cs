@@ -1,12 +1,13 @@
 rotateBy: direction centerAt: aPoint
 	"Return a rotated copy of the receiver. 
-	direction = #right, #left, or #pi"
+	direction = #none, #right, #left, or #pi"
 	| newForm quad rot |
+	direction == #none ifTrue: [^ self].
 	newForm _ self class extent: (direction = #pi ifTrue: [width@height]
 											ifFalse: [height@width]) depth: depth.
 	quad _ self boundingBox innerCorners.
 	rot _ #(right pi left) indexOf: direction.
-	(WarpBlt toForm: newForm)
+	(WarpBlt current toForm: newForm)
 		sourceForm: self;
 		colorMap: (self colormapIfNeededForDepth: depth);
 		combinationRule: 3;
