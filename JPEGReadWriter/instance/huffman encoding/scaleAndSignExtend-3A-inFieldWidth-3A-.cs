@@ -1,5 +1,5 @@
 scaleAndSignExtend: aNumber inFieldWidth: w
 
-	^ aNumber < (1 << (w - 1))
-		ifTrue: [aNumber + (1 << w) negated + 1]
-		ifFalse: [aNumber]
+	aNumber < (1 bitShift: (w - 1))
+		ifTrue: [^aNumber - (1 bitShift: w) + 1]
+		ifFalse: [^aNumber]
