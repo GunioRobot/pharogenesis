@@ -12,7 +12,7 @@ cleanedHeader
 	priorityFields do: [ :pField |
 		"We don't check whether the priority field is in the omitted list!"
 		self headerFieldsNamed: pField do:
-			[: fValue | new nextPutAll: pField, ': ', fValue decodeMimeHeader; cr]].
+			[: fValue | new nextPutAll: pField, ': ', fValue decodeMimeHeader isoToSqueak; cr]].
 
 	"Show the rest of the fields, omitting the uninteresting ones and ones we have already shown"
 	omittedFields _ omittedFields, priorityFields.
