@@ -1,7 +1,6 @@
 makeQuitButton
-
-	^self
+	^ self
 		buildButton: SimpleButtonMorph new
 		target: self
-		label: 'Quit'
+		label: 'Quit' translated
 		selector: #quit
