@@ -1,0 +1,2 @@
+deletePath
+	self removeProperty: #pathPoints
