@@ -1,0 +1,2 @@
+serverConfDirectoryName
+	^'knownServers'
