@@ -6,4 +6,4 @@ sizeBitsOfSafe: oop
 	type _ self rightType: header.
 	type = HeaderTypeSizeAndClass
 		ifTrue: [ ^ (self sizeHeader: oop) bitAnd: AllButTypeMask ]
-		ifFalse: [ ^ header bitAnd: 16rFC ].
+		ifFalse: [ ^ header bitAnd: SizeMask ].
