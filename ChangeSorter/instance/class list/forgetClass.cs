@@ -3,7 +3,7 @@ forgetClass
 
 	self okToChange ifFalse: [^ self].
 	currentClassName ifNotNil: [
-		myChangeSet removeClassChanges: self selectedClassOrMetaClass.
+		myChangeSet removeClassChanges: currentClassName.
 		currentClassName _ nil.
 		currentSelector _ nil.
 		self showChangeSet: myChangeSet].
