@@ -12,5 +12,5 @@ copy: destRectangle from: sourcePt in: srcForm fillColor: hf rule: rule
 	width _ destRectangle width.
 	height _ destRectangle height.
 	srcForm == nil ifFalse:
-		[colorMap _ srcForm colormapIfNeededForDepth: destForm depth].
+		[colorMap _ srcForm colormapIfNeededFor: destForm].
 	^ self copyBits
