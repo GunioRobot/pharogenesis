@@ -1,0 +1,2 @@
+valueWithPossibleArgs: args
+	^ self
