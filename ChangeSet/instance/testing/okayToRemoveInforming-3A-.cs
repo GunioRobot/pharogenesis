@@ -3,7 +3,7 @@ okayToRemoveInforming: aBoolean
 
 	| aName |
 	aName _ self name.
-	self == Smalltalk changes ifTrue:
+	self == self class current ifTrue:
 		[aBoolean ifTrue: [self inform: 'Cannot remove "', aName, '"
 because it is the 
 current change set.'].
