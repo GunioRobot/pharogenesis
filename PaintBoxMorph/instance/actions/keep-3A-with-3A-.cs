@@ -3,8 +3,8 @@ keep: keepButton with: keepSelector
 	| ss |
 	owner ifNil: [^ self].
 	keepButton ifNotNil: [keepButton state: #off].
-	(ss _ self world findA: SketchEditorMorph) 
-		ifNotNil: [ss save]
+	(ss _ self focusMorph) 
+		ifNotNil: [ss savePainting: self]
 		ifNil:
 		[keepSelector == #silent ifTrue: [^ self].
 		self notCurrentlyPainting].
