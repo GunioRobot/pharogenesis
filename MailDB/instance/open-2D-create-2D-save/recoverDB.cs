@@ -9,4 +9,4 @@ Shall I fix it?  (This might take some time)')
 		ifFalse: [self release. ^nil].
 
 	self openDB.
-	self compact.
+	Cursor execute showWhile: [self compact].
