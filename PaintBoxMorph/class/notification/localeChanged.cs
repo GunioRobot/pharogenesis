@@ -1,0 +1,2 @@
+localeChanged
+	self initializeColorChart
