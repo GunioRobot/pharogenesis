@@ -1,0 +1,3 @@
+leftSamples
+
+	^ leftSamples
