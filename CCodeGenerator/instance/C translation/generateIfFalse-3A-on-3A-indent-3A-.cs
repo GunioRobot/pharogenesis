@@ -4,6 +4,12 @@ generateIfFalse: msgNode on: aStream indent: level
 	 to help with inlining later. Taking the last agument should do the correct
 	 thing even if your compiler is different."
 
+	| const |
+	const _ self nilOrBooleanConstantReceiverOf: msgNode.
+	const ifNotNil: [
+		const ifFalse: [msgNode args first emitCCodeOn: aStream level: level generator: self].
+		^ self].
+
 	aStream nextPutAll: 'if (!('.
 	msgNode receiver emitCCodeOn: aStream level: level generator: self.
 	aStream nextPutAll: ')) {'; cr.
