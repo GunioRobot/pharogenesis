@@ -11,5 +11,9 @@ addNewObject: newObject thumbForm: aForm sentBy: senderName ipAddress: ipAddress
 			StringMorph new contents: ipAddressString; lock.
 		}
 	}.
-	row on: #mouseDown send: #mouseDownEvent:for: to: self.
+	true ifTrue: [	"simpler protocol"
+		row on: #mouseUp send: #mouseUpEvent:for: to: self.
+	] ifFalse: [
+		row on: #mouseDown send: #mouseDownEvent:for: to: self.
+	].
 
