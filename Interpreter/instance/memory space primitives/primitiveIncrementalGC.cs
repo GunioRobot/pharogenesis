@@ -3,4 +3,4 @@ primitiveIncrementalGC
 
 	self pop: 1.
 	self incrementalGC.
-	self pushInteger: (self sizeOfFree: freeBlock).
+	self pushInteger: (self bytesLeft: false).
