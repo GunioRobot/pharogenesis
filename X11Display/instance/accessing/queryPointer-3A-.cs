@@ -1,7 +1,7 @@
 queryPointer: aX11Window
 	| root child rootX rootY winX winY mask |
-	root _ X11Window new.
-	child _ X11Window new.
+	root _ X11Window display: self.
+	child _ X11Window display: self.
 	rootX _ WordArray new: 1.
 	rootY _ WordArray new: 1.
 	winX _ WordArray new: 1.
