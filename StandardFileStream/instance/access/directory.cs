@@ -1,4 +1,4 @@
 directory
-	"Return the directory I am in"
+	"Return the directory containing this file."
 
-	^ FileDirectory on: (FileDirectory dirPathFor: self fullName)
+	^ FileDirectory forFileName: self fullName
