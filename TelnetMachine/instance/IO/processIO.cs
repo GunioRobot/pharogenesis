@@ -13,5 +13,4 @@ processIO
 	outputBuffer _ WriteStream on: outputBuffer.
 
 	"do some input"
-	[socket dataAvailable] whileTrue: [
-		self processInput: socket getData ].
+	self processInput: socket receiveAvailableData.
