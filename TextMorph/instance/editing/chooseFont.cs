@@ -1,3 +1,3 @@
 chooseFont
-	self installEditor offerFontMenu.
+	self editor offerFontMenu.
 	self updateFromParagraph
