@@ -1,2 +1,2 @@
 serverNames
-	^ Servers keys asSortedArray
+	^self servers keys asSortedArray
