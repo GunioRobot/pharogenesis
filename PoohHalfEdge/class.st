@@ -1,0 +1,1 @@
+PoohHalfEdge class instanceVariableNames: ''
