@@ -35,7 +35,12 @@ fromBMPFile: aBinaryStream
 		aBinaryStream position: pixDataStart.
 		^ self bmp24BitPixelDataFrom: aBinaryStream width: w height: h].
 
-	colors _ self bmpColorsFrom: aBinaryStream count: colorCount.
+	"read the color map"
+	"Note: some programs (e.g. Photoshop 4.0) apparently do not set colorCount; assume that any data between the end of the header and the start of the pixel data is the color map"
+	colorCount _ (pixDataStart - 54) // 4.
+	colors _ self bmpColorsFrom: aBinaryStream count: colorCount depth: d.
+
+	"read the pixel data"
 	aBinaryStream position: pixDataStart.
 	colorForm _ self bmpPixelDataFrom: aBinaryStream width: w height: h depth: d.
 	colorForm colors: colors.
