@@ -1,0 +1,1 @@
+MinesBoard class instanceVariableNames: ''
