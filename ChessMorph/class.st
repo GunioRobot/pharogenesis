@@ -1,0 +1,1 @@
+ChessMorph class instanceVariableNames: ''
