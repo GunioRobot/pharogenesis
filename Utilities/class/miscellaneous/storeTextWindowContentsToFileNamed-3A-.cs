@@ -8,7 +8,7 @@ storeTextWindowContentsToFileNamed: aName
 	aDict _ Dictionary new.
 	Smalltalk isMorphic
 		ifTrue:
-			[windows _ Display bestGuessOfCurrentWorld submorphs select: [:m | m isKindOf: SystemWindow].
+			[windows _ World submorphs select: [:m | m isSystemWindow].
 			windows do:
 				[:w | assoc _ w titleAndPaneText.
 				assoc ifNotNil:
