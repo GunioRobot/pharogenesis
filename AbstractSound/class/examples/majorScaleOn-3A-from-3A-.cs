@@ -3,4 +3,4 @@ majorScaleOn: aSound from: aPitch
 
 	^ self noteSequenceOn: aSound
 		from: ((self majorPitchesFrom: aPitch)
-			 collect: [:pitch | Array with: pitch with: 0.25 with: 300])
+			 collect: [:pitch | Array with: pitch with: 0.5 with: 300])
