@@ -1,9 +1,10 @@
-vertices: verts color: c borderWidth: bw borderColor: bc
+vertices: verts color: aColor borderWidth: borderWidthInteger borderColor: anotherColor 
 	super initialize.
+""
 	vertices _ verts.
-	color _ c.
-	borderWidth _ bw.
-	borderColor _ bc.
+	color _ aColor.
+	borderWidth _ borderWidthInteger.
+	borderColor _ anotherColor.
 	closed _ vertices size > 2.
 	arrows _ #none.
-	self computeBounds.
+	self computeBounds
