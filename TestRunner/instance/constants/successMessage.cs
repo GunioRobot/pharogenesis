@@ -1,0 +1,2 @@
+successMessage
+	^'succeeded'
