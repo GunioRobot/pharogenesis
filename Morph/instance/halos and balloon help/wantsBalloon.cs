@@ -1,0 +1,2 @@
+wantsBalloon
+	^ self hasProperty: #balloonText
