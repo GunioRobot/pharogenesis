@@ -1,0 +1,1 @@
+MCRepositoryGroup class instanceVariableNames: 'default'
