@@ -1,0 +1,1 @@
+VRMLUndefinedNode class instanceVariableNames: ''
