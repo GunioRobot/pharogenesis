@@ -1,0 +1,2 @@
+permitsThumbnailing
+	^ false
