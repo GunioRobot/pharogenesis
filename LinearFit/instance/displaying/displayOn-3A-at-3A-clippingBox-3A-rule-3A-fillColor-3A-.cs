@@ -1,6 +1,7 @@
-displayOn: aDisplayMedium at: aPoint clippingBox: clipRect rule: anInteger fillColor: aForm
+displayOn: aDisplayMedium at: aPoint clippingBox: clipRect rule: anInteger
+fillColor: aForm
  
-	| pt line |
+	| line |
 	line _ Line new.
 	line form: self form.
 	1 to: self size - 1 do: 
