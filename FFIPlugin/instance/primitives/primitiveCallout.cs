@@ -26,7 +26,7 @@ primitiveCallout
 	interpreterProxy failed ifTrue:[^self ffiFail: FFIErrorBadArgs].
 	argTypes _ interpreterProxy fetchPointer: 2 ofObject: lit.
 	"must be array of arg types"
-	(interpreterProxy fetchClassOf: argTypes) == interpreterProxy classArray 
+	(interpreterProxy isArray: argTypes)
 		ifFalse:[^self ffiFail: FFIErrorBadArgs].
 	nArgs _ interpreterProxy slotSizeOf: argTypes.
 	"must be argumentCount+1 arg types"
