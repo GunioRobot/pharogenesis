@@ -1,0 +1,2 @@
+newTileMorphRepresentative
+	^ UndescribedTile new
