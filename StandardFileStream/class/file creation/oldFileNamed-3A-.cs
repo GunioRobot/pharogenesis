@@ -1,21 +1,23 @@
-oldFileNamed: aFileName 
- 	"Open a file in the default directory (or in the directory contained
-	in the input arg); by default, it's available for reading.  2/12/96 sw
-	Prior contents will be overwritten, but not truncated on close.  3/18 di"
-	| selection |
-	(self isAFileNamed: aFileName) ifTrue:
-		[^ self new open: aFileName forWrite: true].
+oldFileNamed: fileName
+	"Open an existing file with the given name for reading and writing. If the name has no directory part, then the file will be created in the default directory. If the file already exists, its prior contents may be modified or replaced, but the file will not be truncated on close."
+
+	| selection fullName newName |
+	fullName _ self fullName: fileName.
+	(self isAFileNamed: fullName) ifTrue:
+		[^ self new open: fullName forWrite: true].
 
 	"File does not exist..."
-	selection _ (PopUpMenu labels: 'create a new file
+	selection _ (PopUpMenu labels:
+'create a new file
 choose another name
 cancel')
-			startUpWithCaption: (FileDirectory localNameFor: aFileName) , '
+			startUpWithCaption: (FileDirectory localNameFor: fullName) , '
 does not exist.'.
 	selection = 1 ifTrue:
-		[^ self new open: aFileName forWrite: true].
+		[^ self new open: fullName forWrite: true].
 	selection = 2 ifTrue:
-		[^ self oldFileNamed:
-			(FillInTheBlank request: 'Enter a new file name'
-						initialAnswer: (FileDirectory localNameFor: aFileName))].
+		[ newName _ FillInTheBlank request: 'Enter a new file name'
+						initialAnswer:  fullName.
+		^ self oldFileNamed:
+			(self fullName: newName)].
 	self halt
