@@ -10,9 +10,9 @@ connect
 
 	socket _ Socket new.
 	
-	socket connectTo: addr port: port.
-	(socket waitForConnectionUntil: Socket standardDeadline) ifFalse: [
-		self error: 'connection failed' ].
+	[socket connectTo: addr port: port]
+		on: ConnectionTimedOut
+		do: [:ex | self error: 'connection failed' ].
 
 	
 	requestedRemoteEcho _ true.
