@@ -11,8 +11,10 @@ scroll
 										ifTrue: [self scrollAbsolute]
 										ifFalse: [sensor cursorPoint x <= self yellowLine
 												ifTrue: [self scrollUp]
-												ifFalse: [self changeCursor: Cursor menu.
+												ifFalse: [sensor cursorPoint x <= scrollBar right
+														ifTrue: "Might not be, with touch pen"
+														[self changeCursor: Cursor menu.
 														sensor anyButtonPressed 
 														ifTrue: [self changeCursor: savedCursor. 
-																self anyButtonActivity]]]]].
+																self anyButtonActivity]]]]]].
 	savedCursor show
