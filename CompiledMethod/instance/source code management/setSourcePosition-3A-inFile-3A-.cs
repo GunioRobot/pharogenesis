@@ -3,15 +3,7 @@ setSourcePosition: position inFile: fileIndex
 	location consists of which source file (*.sources or *.changes) and the 
 	position in that file."
 
-	| index hiByte middleByte lowByte |
-	"set last three bytes to be position in file (1-4)"
-	fileIndex > 4 ifTrue: [^self error: 'invalid file number'].
-	index _ self size - 2.
-	middleByte _ position bitShift: -8.
-	hiByte _ middleByte bitShift: -8.
-	middleByte _ middleByte bitAnd: 255.
-	lowByte _ position bitAnd: 255.
-	hiByte > 62 ifTrue: [Transcript show: 'Source file is getting full!!'; cr].
-	self at: index + 2 put: fileIndex - 1 * 64 + hiByte.
-	self at: index + 1 put: middleByte.
-	self at: index put: lowByte
+	fileIndex > 4 ifTrue: [^ self error: 'invalid file number'].
+	self at: self size put: 251 + fileIndex.
+	1 to: 3 do: 
+		[:i | self at: self size - i put: ((position bitShift: (i-3)*8) bitAnd: 16rFF)].
