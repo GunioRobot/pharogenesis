@@ -7,16 +7,7 @@ test2: anArray
 				self error: 'bad assn'].
 			(#('3' '5.6' 'x' '''abcd''') includes: sub key printString) ifFalse: [
 				self error: 'bad assn'].
-
-	"			sub value class == Association ifTrue: [
-					self error: 'bad assn'].
-				(sub value isKindOf: Class) ifTrue: [
-					self error: 'class in assn'].
-				sub value class == Symbol ifTrue: [sub value asciiValue = 204 '$Ì' ifTrue: [
-					self error: 'Write into char']].
-				sub value == $Ì ifTrue: [
-					self error: 'Write into char']
-	"].
+		].
 		sub class == Array ifTrue: [
 			sub do: [:element | 
 				element class == String ifTrue: [element first asciiValue < 32 ifTrue: [
