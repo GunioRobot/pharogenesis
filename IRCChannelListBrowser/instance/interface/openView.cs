@@ -1,0 +1,2 @@
+openView
+	^self openMorphicView
