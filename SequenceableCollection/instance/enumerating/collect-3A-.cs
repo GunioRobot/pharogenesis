@@ -1,7 +1,11 @@
 collect: aBlock 
-	"Refer to the comment in Collection|collect:."
-	| result |
-	result _ self species new: self size.
+	"Evaluate aBlock with each of the receiver's elements as the argument.  
+	Collect the resulting values into a collection like the receiver. Answer  
+	the new collection."
+
+	| newCollection |
+	newCollection _ self species new: self size.
 	1 to: self size do:
-		[:index | result at: index put: (aBlock value: (self at: index))].
-	^ result
+		[:index |
+		newCollection at: index put: (aBlock value: (self at: index))].
+	^ newCollection
