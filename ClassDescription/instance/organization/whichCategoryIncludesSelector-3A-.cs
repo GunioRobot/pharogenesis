@@ -3,5 +3,5 @@ whichCategoryIncludesSelector: aSelector
 	the receiver, or answer nil if the receiver does not inlcude this selector."
 
 	(self includesSelector: aSelector)
-		ifTrue: [^organization categoryOfElement: aSelector]
+		ifTrue: [^ self organization categoryOfElement: aSelector]
 		ifFalse: [^nil]
