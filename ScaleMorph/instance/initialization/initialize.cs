@@ -1,7 +1,8 @@
 initialize
+	"initialize the state of the receiver"
 	super initialize.
-	borderWidth _ 0.
-	color _ Color lightGreen.
+	""
+	
 	start _ 0.
 	stop _ 100.
 	minorTick _ 1.
