@@ -3,7 +3,7 @@ offerFontMenu
 	Use only names of Fonts of this paragraph  "
 
 	| aList reply |
-	aList _ paragraph textStyle fontNames.
+	aList _ paragraph textStyle fontNamesWithPointSizes.
 	reply _ (SelectionMenu labelList: aList selections: aList) startUp.
 	reply ~~ nil ifTrue:
 		[self replaceSelectionWith:
