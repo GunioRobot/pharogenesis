@@ -1,0 +1,2 @@
+fileReaderServicesForDirectory: aDirectory
+	^{ self serviceBrowseCodeFiles }
