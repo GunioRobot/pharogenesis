@@ -1,0 +1,2 @@
+classExternalLibrary
+	^self splObj: ClassExternalLibrary
