@@ -13,4 +13,4 @@ methodsWithInitialsOtherThan: myInits
 								ifTrue: [slips add: aClass name , ' ' , mAssoc key]]]]].
 	^ slips
 
-	"Smalltalk browseMessageList: (Smalltalk changes methodsWithInitialsOtherThan: 'sw') name: 'authoring problems'"
+	"Smalltalk browseMessageList: (ChangeSet current methodsWithInitialsOtherThan: 'sw') name: 'authoring problems'"
