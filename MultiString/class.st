@@ -3,4 +3,4 @@ String
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Collections-Text'
+	category: 'Collections-Strings'
