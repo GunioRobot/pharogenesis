@@ -3,5 +3,5 @@ inspectIt: characterStream
 	 2/29/96 sw: don't call selectLine; it's done by inspectIt now"
 
 	sensor keyboard.		"flush character"
-	self inspectIt.
+	self terminateAndInitializeAround: [self inspectIt].
 	^ true
