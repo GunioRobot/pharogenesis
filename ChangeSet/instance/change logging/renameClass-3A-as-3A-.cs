@@ -12,6 +12,7 @@ renameClass: class as: newName
 	"store under new name (metaclass too)"
 	changeRecords at: newName put: recorder.
 	changeRecords removeKey: class name.
+	self noteClassStructure: class.
 
 	recorder _ changeRecords at: class class name ifAbsent: [^ nil].
 	changeRecords at: (newName, ' class') put: recorder.
