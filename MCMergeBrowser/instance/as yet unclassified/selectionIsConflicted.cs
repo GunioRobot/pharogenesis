@@ -1,0 +1,2 @@
+selectionIsConflicted
+	^ selection isKindOf: MCConflict
