@@ -1,0 +1,2 @@
+cautionBeforeClosing
+	^ self valueOfFlag: #cautionBeforeClosing
