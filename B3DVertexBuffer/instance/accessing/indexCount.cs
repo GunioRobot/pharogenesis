@@ -1,0 +1,2 @@
+indexCount
+	^indexCount
