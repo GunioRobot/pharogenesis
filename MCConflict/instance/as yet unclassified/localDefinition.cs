@@ -1,0 +1,2 @@
+localDefinition
+	^ operation baseDefinition
