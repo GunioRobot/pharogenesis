@@ -1,10 +1,9 @@
 collect: aBlock 
-	"Return a Set containing the result of evaluating aBlock
-	for each element of this set"
+	"Evaluate aBlock with each of the receiver's elements as the argument.  
+	Collect the resulting values into a collection like the receiver. Answer  
+	the new collection."
+
 	| newSet |
-	tally = 0 ifTrue: [^ Set new: 2].
 	newSet _ Set new: self size.
-	array do:
-		[:element |
-		element == nil ifFalse: [newSet add: (aBlock value: element)]].
+	array do: [:each | each ifNotNil: [newSet add: (aBlock value: each)]].
 	^ newSet
