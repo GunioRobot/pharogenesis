@@ -5,7 +5,13 @@ changeClass: class from: oldClass
 	isolationSet ifNotNil:
 		["If there is an isolation layer above me, inform it as well."
 		isolationSet changeClass: class from: oldClass].
-	self atClass: class add: #change.
+	class isMeta 
+		ifFalse: [self atClass: class add: #change]	"normal"
+		ifTrue: [((self classChangeAt: class theNonMetaClass name) includes: #add) 
+			ifTrue: [self atClass: class add: #add] 	"When a class is defined, the metaclass
+				is not recorded, even though it was added.  A further change is
+				really just part of the original add."
+			ifFalse: [self atClass: class add: #change]].
 	self addCoherency: class name.
 	(self changeRecorderFor: class) notePriorDefinition: oldClass.
 	self noteClassStructure: oldClass
