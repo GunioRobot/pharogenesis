@@ -1,0 +1,3 @@
+infected
+
+	^ color = Color red
