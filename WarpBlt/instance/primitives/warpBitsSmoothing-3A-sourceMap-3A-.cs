@@ -3,11 +3,11 @@ warpBitsSmoothing: n sourceMap: sourceMap
 	<primitive: 'primitiveWarpBits' module: 'BitBltPlugin'>
 
 	"Check for compressed source, destination or halftone forms"
-	((sourceForm isKindOf: Form) and: [sourceForm unhibernate])
+	((sourceForm isForm) and: [sourceForm unhibernate])
 		ifTrue: [^ self warpBitsSmoothing: n sourceMap: sourceMap].
-	((destForm isKindOf: Form) and: [destForm unhibernate])
+	((destForm isForm) and: [destForm unhibernate])
 		ifTrue: [^ self warpBitsSmoothing: n sourceMap: sourceMap].
-	((halftoneForm isKindOf: Form) and: [halftoneForm unhibernate])
+	((halftoneForm isForm) and: [halftoneForm unhibernate])
 		ifTrue: [^ self warpBitsSmoothing: n sourceMap: sourceMap].
 
 	(width < 1) | (height < 1) ifTrue: [^ self].
