@@ -2,9 +2,10 @@ nextPutAll: aCollection
 	"Optimized access to get around Text at:Put: overhead"
 	| n |
 	n _ aCollection size.
-	((aCollection isMemberOf: String) not or: [position + n > writeLimit])
-		ifTrue: [^ super nextPutAll: aCollection].
-	collection string
+     position + n > writeLimit
+       ifTrue:
+        [self growTo: position + n + 10].
+	collection 
 		replaceFrom: position+1
 		to: position + n
 		with: aCollection
