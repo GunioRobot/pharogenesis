@@ -1,0 +1,10 @@
+highBitOfMagnitude
+	"Answer the index of the high order bit of the magnitude of the  
+	receiver, or zero if the receiver is zero.  
+	This method is used for LargeNegativeIntegers as well,  
+	since Squeak's LargeIntegers are sign/magnitude."
+	| realLength lastDigit |
+	realLength _ self digitLength.
+	[(lastDigit _ self digitAt: realLength) = 0]
+		whileTrue: [(realLength _ realLength - 1) = 0 ifTrue: [^ 0]].
+	^ lastDigit highBitOfPositiveReceiver + (8 * (realLength - 1))
