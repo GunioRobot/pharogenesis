@@ -1,12 +1,15 @@
 colormapIfNeededFor: destForm
 	| newMap color pv |
+	(self hasNonStandardPalette or:[destForm hasNonStandardPalette]) ifFalse:[
+		^self colormapIfNeededForDepth: destForm depth.
+	].
 	colors == nil ifTrue: [
 		"use the standard colormap"
 		^ super colormapIfNeededFor: destForm].
 
 	(destForm depth = cachedDepth and:[cachedColormap isColormap]) 
 		ifTrue: [^ cachedColormap].
-	newMap _ WordArray new: (1 bitShift: depth).
+	newMap _ WordArray new: (1 bitShift: self depth).
 	1 to: colors size do: [:i |
 		color _ colors at: i.
 		pv _ destForm pixelValueFor: color.
