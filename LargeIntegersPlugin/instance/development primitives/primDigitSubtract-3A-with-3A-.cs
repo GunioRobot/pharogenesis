@@ -1,5 +1,4 @@
 primDigitSubtract: firstInteger with: secondInteger
-	""
 	| firstLarge secondLarge |
 	self debugCode: [self msg: 'primDigitSubtract: firstInteger with: secondInteger'].
 	self
