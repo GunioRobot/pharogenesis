@@ -1,4 +1,4 @@
 compress
 	"Compact the method dictionary of the receiver."
 
-	methodDict rehash
+	self methodDict rehash
