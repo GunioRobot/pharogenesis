@@ -4,13 +4,13 @@ hashInteger: aPositiveInteger seed: seedInteger
 	| buffer dstIndex |
 	"Initialize totalA through totalE to their seed values."
 	totalA _ ThirtyTwoBitRegister new
-		load: ((seedInteger bitShift: - 128) bitAnd: 16rFFFFFFFF).
+		load: ((seedInteger bitShift: -128) bitAnd: 16rFFFFFFFF).
 	totalB _ ThirtyTwoBitRegister new
-		load: ((seedInteger bitShift: - 96) bitAnd: 16rFFFFFFFF).
+		load: ((seedInteger bitShift: -96) bitAnd: 16rFFFFFFFF).
 	totalC _ ThirtyTwoBitRegister new
-		load: ((seedInteger bitShift: - 64) bitAnd: 16rFFFFFFFF).
+		load: ((seedInteger bitShift: -64) bitAnd: 16rFFFFFFFF).
 	totalD _ ThirtyTwoBitRegister new
-		load: ((seedInteger bitShift: - 32) bitAnd: 16rFFFFFFFF).
+		load: ((seedInteger bitShift: -32) bitAnd: 16rFFFFFFFF).
 	totalE _ ThirtyTwoBitRegister new
 		load: (seedInteger bitAnd: 16rFFFFFFFF).
 	self initializeTotalsArray.
