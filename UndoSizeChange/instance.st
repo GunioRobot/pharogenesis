@@ -1,6 +1,6 @@
 Object
 	subclass: #UndoSizeChange
-	instanceVariableNames: 'theActor originalSize '
+	instanceVariableNames: 'theActor originalSize'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon3D-Wonderland Undo'
+	category: 'Balloon3D-Wonderland-Undo'
