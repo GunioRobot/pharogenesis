@@ -3,7 +3,8 @@ redButtonActivity
 	view isCollapsed ifTrue: [^ super redButtonActivity].
 	(view insetDisplayBox containsPoint: Sensor cursorPoint)
 		ifFalse: [^ super redButtonActivity].
-	index _ (PopUpMenu labelArray: #('enter' 'fileOut') lines: #(1)) 
+	index _ (PopUpMenu labelArray: #('enter') lines: #()) 
 		startUpCenteredWithCaption: nil.
-	index = 1 ifTrue: [^ model enter].
-	index = 2 ifTrue: [^ model fileOut].
+	index = 1 ifTrue: ["Save size on enter for thumbnail on exit"
+					model setViewSize: view insetDisplayBox extent.
+					^ model enter]
