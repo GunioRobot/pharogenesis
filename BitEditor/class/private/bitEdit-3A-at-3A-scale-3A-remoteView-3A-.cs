@@ -12,7 +12,7 @@ bitEdit: aForm at: magnifiedFormLocation scale: scaleFactor remoteView: remoteVi
 	bitEditor _ self new.
 	scaledFormView controller: bitEditor.
 	bitEditor setColor: Color black.
-	topView _ StandardSystemView new.
+	topView _ ColorSystemView new.
 	remoteView == nil ifTrue: [topView label: 'Bit Editor'].
 	topView borderWidth: 2.
 
