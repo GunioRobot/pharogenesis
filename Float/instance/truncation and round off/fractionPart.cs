@@ -4,4 +4,4 @@ fractionPart
 	documentation whatIsAPrimitive."
 
 	<primitive: 52>
-	^self - self asInteger
+	^self - self truncated asFloat
