@@ -1,4 +1,3 @@
 printOn: aStream 
-	self seconds = 0
-		ifTrue: [self print24: false showSeconds: false on: aStream]
-		ifFalse: [self print24: false on: aStream]
+
+	self print24: false showSeconds: (self seconds ~= 0) on: aStream
