@@ -1,0 +1,2 @@
+touch
+	lastAccess := Time now.
