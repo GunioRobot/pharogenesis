@@ -1,4 +1,5 @@
-primClose: anID
-	"Primitive call to close the receiver.  2/12/96 sw"
+primClose: id
+	"Close this file."
+
 	<primitive: 151>
-	^ self primitiveFailed
+	self primitiveFailed
