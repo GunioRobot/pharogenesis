@@ -9,5 +9,5 @@ trulyFlashIndicator: aSymbol
 
 	self 
 		addMouseActionIndicatorsWidth: 15 
-		color: (Color green alpha: (state ifTrue: [0.3] ifFalse: [0.7])). 1 beep.
+		color: (Color green alpha: (state ifTrue: [0.3] ifFalse: [0.7])). Beeper beep.
 	"self world displayWorldSafely."
