@@ -1,9 +1,8 @@
 uniqueNameLike: aString
 
-	| namesInUse try |
+	| try |
+	(ChangeSorter changeSetNamed: aString) ifNil: [^ aString].
 
-	namesInUse _ ChangeSorter gatherChangeSets collect: [:each | each name].
-	1 to: 999999 do: [:i |
-		try _ aString , i printString.
-		(namesInUse includes: try) ifFalse: [^ try]
-	]
+	1 to: 999999 do:
+		[:i | try _ aString , i printString.
+		(ChangeSorter changeSetNamed: try) ifNil: [^ try]]
