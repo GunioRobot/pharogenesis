@@ -9,9 +9,22 @@ initialize
 	Interpreter initialize.
 
 	methodCache _ Array new: MethodCacheSize.
+	atCache _ Array new: AtCacheTotalSize.
 	rootTable _ Array new: RootTableSize.
 	remapBuffer _ Array new: RemapBufferSize.
-	semaphoresToSignal _ Array new: SemaphoresToSignalSize.
+	semaphoresUseBufferA _ true.
+	semaphoresToSignalA _ Array new: SemaphoresToSignalSize.
+	semaphoresToSignalB _ Array new: SemaphoresToSignalSize.
+
+	obsoleteNamedPrimitiveTable _ 
+		CArrayAccessor on: self class obsoleteNamedPrimitiveTable.
+	obsoleteIndexedPrimitiveTable _ CArrayAccessor on: 
+		(self class obsoleteIndexedPrimitiveTable collect:[:spec| 
+			CArrayAccessor on:
+				(spec ifNil:[Array new: 3] 
+					  ifNotNil:[Array with: spec first with: spec second with: nil])]).
+	pluginList _ #().
+	mappedPluginEntries _ #().
 
 	"initialize InterpreterSimulator variables used for debugging"
 	byteCount _ 0.
