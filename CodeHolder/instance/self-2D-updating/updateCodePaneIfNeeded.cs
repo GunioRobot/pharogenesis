@@ -5,7 +5,7 @@ updateCodePaneIfNeeded
 		ifTrue:
 			[self hasUnacceptedEdits
 				ifFalse:
-					[contents _ nil.
+					[self setContentsToForceRefetch.
 					self contentsChanged]
 				ifTrue:
 					[self changed: #codeChangedElsewhere]]
