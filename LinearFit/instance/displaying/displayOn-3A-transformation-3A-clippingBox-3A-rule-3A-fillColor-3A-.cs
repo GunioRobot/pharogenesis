@@ -1,12 +1,10 @@
-displayOn: aDisplayMedium transformation: aTransformation clippingBox: clipRect rule: anInteger fillColor: aForm 
+displayOn: aDisplayMedium transformation: aTransformation clippingBox:
+clipRect rule: anInteger fillColor: aForm 
 
-	| newLinearFit transformedPath |
+	| transformedPath |
 	"get the scaled and translated Path."
 	transformedPath _ aTransformation applyTo: self.
-	newLinearFit _ LinearFit new.
-	transformedPath do: [:point | newLinearFit add: point].
-	newLinearFit form: self form.
-	newLinearFit
+	transformedPath
 		displayOn: aDisplayMedium
 		at: 0 @ 0
 		clippingBox: clipRect
