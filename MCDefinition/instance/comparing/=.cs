@@ -1,0 +1,2 @@
+= aDefinition
+	^ self isRevisionOf: aDefinition
