@@ -1,0 +1,2 @@
+clipboadInterpreter
+	^NoConversionClipboardInterpreter new
