@@ -10,6 +10,6 @@ testJoystick: index
 'xy: ', pt printString, '
 buttons: ', buttons hex.
 		f fillWhite.
-		status asParagraph displayOn: f at: 10@10.
+		status displayOn: f at: 10@10.
 		f displayOn: Display at: 10@10.
 	].
