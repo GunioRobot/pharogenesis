@@ -1,13 +1,4 @@
-addPreference: prefSymbol category: categorySymbol default: defaultFlag
-balloonHelp: helpString 
-	self class compileProgrammatically: (#initialValuesAddition ,
-categorySymbol , prefSymbol) asString , '
-	^ #((' , prefSymbol asSymbol, ' ' , defaultFlag printString , ' (' ,
-categorySymbol asSymbol, ' ) ) )' classified: 'initial values'.
+addPreference: prefSymbol category: categorySymbol default: defaultValue balloonHelp: helpString 
+	"Add the given preference, putting it in the given category, with the given default value, and with the given balloon help. It assumes boolean preference for backward compatibility"
 
-	self class compileProgrammatically: (#helpMsgsAddition , categorySymbol
-, prefSymbol) asString , '
-	^ #((' , prefSymbol, ' ', helpString printString, ' ) )' classified:
-'help'.
-
-	self absorbAdditions
+	self addBooleanPreference: prefSymbol category: categorySymbol default: defaultValue balloonHelp: helpString.
