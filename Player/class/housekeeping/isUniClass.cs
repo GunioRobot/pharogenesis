@@ -1,3 +1,4 @@
 isUniClass
 	"UnscriptedPlayer reimplements to false"
-	^ true
+
+	^ self ~~ Player
