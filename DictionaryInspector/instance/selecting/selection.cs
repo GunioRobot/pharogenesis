@@ -1,4 +1,4 @@
 selection
 
 	selectionIndex = 0 ifTrue: [^ ''].
-	^ object at: (keyArray at: selectionIndex)
+	^ object at: (keyArray at: selectionIndex) ifAbsent:[nil]
