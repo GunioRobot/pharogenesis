@@ -1,0 +1,1 @@
+NumberType is a data type representing a numeric value.
