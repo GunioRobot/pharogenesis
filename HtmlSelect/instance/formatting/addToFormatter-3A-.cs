@@ -1,5 +1,9 @@
 addToFormatter: formatter
 	| options defaultOption listMorph names size valueHolder |
+	formatter currentFormData ifNil: [
+		"not in a form.  It's bogus HTML but try to survive"
+		^self ].
+
 	names _ OrderedCollection new.
 	options _ OrderedCollection new.
 	defaultOption _ nil.
