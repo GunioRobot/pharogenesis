@@ -4,7 +4,7 @@ selectPrecedingIdentifier
 	| string sep stop tok |
 	tok _ false.
 	string _ paragraph text string.
-	stop _ stopBlock stringIndex - 1.
+	stop _ self stopIndex - 1.
 	[stop > 0 and: [(string at: stop) isSeparator]] whileTrue: [stop _ stop - 1].
 	sep _ stop.
 	[sep > 0 and: [(string at: sep) tokenish]] whileTrue: [tok _ true. sep _ sep - 1].
