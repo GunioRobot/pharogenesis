@@ -1,7 +1,7 @@
 initialize 
-	"Reset the receiver to be empty."
+	"Initialize the receiver to be empty."
 
+	name ifNil:
+		[^ self error: 'All changeSets must be registered, as in ChangeSorter newChangeSet'].
 	revertable _ false.
 	self clear.
- 	"Avoid duplicate entries in AllChanges if initialize gets called twice"
-	name _ ChangeSet defaultName.
