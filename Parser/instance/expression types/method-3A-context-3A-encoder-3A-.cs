@@ -6,7 +6,7 @@ method: doit context: ctxt encoder: encoderToUse
 	sap _ self pattern: doit inContext: ctxt.
 	"sap={selector, arguments, precedence}"
 	(sap at: 2) do: [:argNode | argNode isArg: true].
-	temps _ self temporaries.
+	temps _ self temporariesIn: (sap at: 1).
 	messageComment _ currentComment.
 	currentComment _ nil.
 	prim _ doit ifTrue: [0] ifFalse: [self primitive].
