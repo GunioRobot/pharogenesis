@@ -4,11 +4,11 @@ splitName: fullName to: pathAndNameBlock
 	| delimiter i dirName localName |
 	delimiter _ self pathNameDelimiter.
 	(i _ fullName findLast: [:c | c = delimiter]) = 0
-		ifTrue: [
-			dirName _ String new.
+		ifTrue:
+			[dirName _ String new.
 			localName _ fullName]
-		ifFalse: [
-			dirName _ fullName copyFrom: 1 to: i - 1.
+		ifFalse:
+			[dirName _ fullName copyFrom: 1 to: (i - 1 max: 1).
 			localName _ fullName copyFrom: i + 1 to: fullName size].
 
 	^ pathAndNameBlock value: dirName value: localName
