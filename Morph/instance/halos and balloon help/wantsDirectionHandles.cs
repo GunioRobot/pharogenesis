@@ -1,3 +1,2 @@
 wantsDirectionHandles
-
-	^ Preferences showDirectionHandles 
+	^self valueOfProperty: #wantsDirectionHandles ifAbsent:[Preferences showDirectionHandles]
