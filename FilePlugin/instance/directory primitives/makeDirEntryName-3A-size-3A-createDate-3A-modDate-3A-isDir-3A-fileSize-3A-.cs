@@ -2,9 +2,10 @@ makeDirEntryName: entryName size: entryNameSize
 	createDate: createDate modDate: modifiedDate
 	isDir: dirFlag fileSize: fileSize
 
-	| modDateOop createDateOop nameString results stringPtr |
+	| modDateOop createDateOop nameString results stringPtr fileSizeOop |
 	self var: 'entryName' declareC: 'char *entryName'.
 	self var: 'stringPtr' declareC:'char *stringPtr'.
+	self var: 'fileSize' declareC:'squeakFileOffsetType fileSize'.
 
 	"allocate storage for results, remapping newly allocated
 	 oops in case GC happens during allocation"
@@ -16,7 +17,10 @@ makeDirEntryName: entryName size: entryNameSize
 		(interpreterProxy positive32BitIntegerFor: createDate).
 	interpreterProxy pushRemappableOop: 
 		(interpreterProxy positive32BitIntegerFor: modifiedDate).
+	interpreterProxy pushRemappableOop:
+		(interpreterProxy positive64BitIntegerFor: fileSize).
 
+	fileSizeOop   _ interpreterProxy popRemappableOop.
 	modDateOop   _ interpreterProxy popRemappableOop.
 	createDateOop _ interpreterProxy popRemappableOop.
 	nameString    _ interpreterProxy popRemappableOop.
@@ -34,6 +38,5 @@ makeDirEntryName: entryName size: entryNameSize
 	dirFlag
 		ifTrue: [ interpreterProxy storePointer: 3 ofObject: results withValue: interpreterProxy trueObject ]
 		ifFalse: [ interpreterProxy storePointer: 3 ofObject: results withValue: interpreterProxy falseObject ].
-	interpreterProxy storePointer: 4 ofObject: results
-		withValue: (interpreterProxy integerObjectOf: fileSize).
+	interpreterProxy storePointer: 4 ofObject: results withValue: fileSizeOop.
 	^ results
