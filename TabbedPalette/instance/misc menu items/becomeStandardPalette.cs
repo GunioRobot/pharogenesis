@@ -1,0 +1,2 @@
+becomeStandardPalette
+	self presenter standardPalette: self
