@@ -1,0 +1,3 @@
+stringVersion
+
+	^stringVersion
