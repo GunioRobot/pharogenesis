@@ -1,7 +1,7 @@
 transferStateToRenderer: aRenderer
-	| current |
-	"Transfer knownName, actorState, and player info over to aRenderer, which is being imposed above me as a transformation shell"
+	"Transfer knownName, actorState, visible, and player info over to aRenderer, which is being imposed above me as a transformation shell"
 
+	| current |
 	(current _ self actorStateOrNil) ifNotNil:
 		[aRenderer actorState: current.
 		self actorState: nil].
@@ -13,4 +13,13 @@ transferStateToRenderer: aRenderer
 	(current _ self player) ifNotNil:
 		[aRenderer player: current.
 		self player rawCostume: aRenderer.
-		"self player: nil"]
+		"NB player is redundantly pointed to in the extension of both the renderer and the rendee; this is regrettable but many years ago occasionally people tried to make that clean but always ran into problems iirc"
+		"self player: nil"].
+
+	aRenderer simplySetVisible: self visible
+
+
+
+ 
+
+		
