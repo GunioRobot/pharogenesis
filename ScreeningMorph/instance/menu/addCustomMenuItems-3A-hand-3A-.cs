@@ -1,16 +1,16 @@
 addCustomMenuItems: aCustomMenu hand: aHandMorph
 	super addCustomMenuItems: aCustomMenu hand: aHandMorph.
-	submorphs size = 0 ifTrue:
-		[^ aCustomMenu add: '*Please add a source morph*' action: #itself].
+	submorphs isEmpty ifTrue:
+		[^ aCustomMenu add: '*Please add a source morph*' translated action: #itself].
 	submorphs size = 1 ifTrue:
-		[^ aCustomMenu add: '*Please add a screen morph*' action: #itself].
+		[^ aCustomMenu add: '*Please add a screen morph*' translated action: #itself].
 	submorphs size > 2 ifTrue:
-		[^ aCustomMenu add: '*I have too many submorphs*' action: #itself].
-	aCustomMenu add: 'show screen only' action: #showScreenOnly.
-	aCustomMenu add: 'show source only' action: #showSourceOnly.
-	aCustomMenu add: 'show screen over source' action: #showScreenOverSource.
-	aCustomMenu add: 'show source screened' action: #showScreened.
-	aCustomMenu add: 'exchange source and screen' action: #exchange.
+		[^ aCustomMenu add: '*I have too many submorphs*' translated action: #itself].
+	aCustomMenu add: 'show screen only' translated action: #showScreenOnly.
+	aCustomMenu add: 'show source only' translated action: #showSourceOnly.
+	aCustomMenu add: 'show screen over source' translated action: #showScreenOverSource.
+	aCustomMenu add: 'show source screened' translated action: #showScreened.
+	aCustomMenu add: 'exchange source and screen' translated action: #exchange.
 	displayMode == #showScreenOnly ifTrue:
-		[aCustomMenu add: 'choose passing color' action: #choosePassingColor.
-		aCustomMenu add: 'choose blocking color' action: #chooseBlockingColor].
+		[aCustomMenu add: 'choose passing color' translated action: #choosePassingColor.
+		aCustomMenu add: 'choose blocking color' translated action: #chooseBlockingColor].
