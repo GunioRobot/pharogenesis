@@ -2,11 +2,11 @@ setDisplayType
 	"Set the display type."
 
 	| aMenu choice on |
-	aMenu _ CustomMenu new title: 'display type (currently ', displayType, ')'.
-	aMenu addList:	#(
-		('signal'	'signal')
-		('spectrum'	'spectrum')
-		('sonogram'	'sonogram')).
+	aMenu _ CustomMenu new title: ('display type (currently {1})' translated format:{displayType}).
+	aMenu addList:	{
+		{'signal' translated.	'signal'}.
+		{'spectrum' translated.	'spectrum'}.
+		{'sonogram' translated.	'sonogram'}}.
 	choice _ aMenu startUp.
 	choice ifNil: [^ self].
 
