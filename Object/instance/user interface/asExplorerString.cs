@@ -1,0 +1,3 @@
+asExplorerString
+
+	^self asString
