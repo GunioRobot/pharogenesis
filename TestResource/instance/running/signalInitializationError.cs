@@ -1,0 +1,3 @@
+signalInitializationError
+	^self class signalInitializationError
+			
