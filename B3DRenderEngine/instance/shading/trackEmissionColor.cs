@@ -1,0 +1,2 @@
+trackEmissionColor
+	^vertexBuffer trackEmissionColor
