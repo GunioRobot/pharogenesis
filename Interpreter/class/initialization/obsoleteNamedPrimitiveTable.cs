@@ -51,7 +51,7 @@ obsoleteNamedPrimitiveTable
 		(primitiveFloatArrayAddScalar FloatArrayPlugin primitiveAddScalar)
 		(primitiveFloatArrayDivFloatArray FloatArrayPlugin primitiveDivFloatArray)
 		(primitiveFloatArrayDivScalar FloatArrayPlugin primitiveDivScalar)
-		(primitiveFloatArrayHash FloatArrayPlugin primitiveHash)
+		(primitiveFloatArrayHash FloatArrayPlugin primitiveHashArray)
 		(primitiveFloatArrayAtPut FloatArrayPlugin primitiveAtPut)
 		(primitiveFloatArrayMulScalar FloatArrayPlugin primitiveMulScalar)
 		(primitiveFloatArrayAddFloatArray FloatArrayPlugin primitiveAddFloatArray)
