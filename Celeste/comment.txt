@@ -1,3 +1,55 @@
 I am the core of a mail reading and organizing program. The name "Celeste" is a reference to an earlier mail reader named "Babar", which was written at Xerox PARC by Steve Putz and John Maloney.
 
 This object provides a user interface and some higher-level functionality for the application. The foundation of of the mail reader is really the mail database, implemented by the class MailDB.
+
+Implementation note: the 'mailDB' instance variable can be nil.  This way, it is possible to have a Celeste window with no DB currently loaded.  All user-accessible functions that access mailDB should be careful to quietly do nothing if mailDB is nil.  The purpose is to provide a useful prototype window for new users.
+
+This class is abstract.  The concrete subclasses provide slightly different interfaces.
+
+
+
+
+Release Notes for Celeste 1.24 / gg 3 Oct. 2004
+ Bug fix the createDB method of maildb which does not work correctly when creating a new mail db.
+ Some improvements over SMTPClient  by a lot of sources.
+ Removed the if:then: construct (thanks to Marcus Denker and Adam Spitz)
+Included Patches:
+ Merged Squeak source improvements (bp14)
+	It includes the following fixes:
+		- improve rebuild spam database performance by Daniel Vainsencher (from dvf.6)
+		- more robust decodeMimeHeader (from bp.9)
+		- status pane drawing fix
+(thanks to Bernhard Pieber <bernhard@pieber.com> and Daniel Vainsencher).
+
+Some other pacthes (see Celeste comments for details):
+Details:
+ Change Set:		Celeste Patches
+Date:			4 July 2004
+Author:			dms
+
+Massively speeds up trimming
+large token bags. Necessary
+if you build a spam database
+from a 330meg email file.
+
+Fixes Undeclared in Celeste>messageText
+
+
+Change Set:		Celeste Patches 1
+Date:			13 July 2004
+Author:			dms
+
+Fixes bug with CelesteAddressBook
+Symptom: send a message causes walkback
+
+Analysis: CelesteAddressBook>buildMessageForSelectedContact
+needs access to MailAccount.
+
+Fix: Modify CelesteAddressBook to hold reference to
+Celeste, rather than MailDB.  The address book
+can access the MailAccount and the MailDB via Celeste.
+The AddressBook must now be opened from the Celeste
+mail browser, and cannot be opened independently.
+
+Also, I removed the acknowledgement following Celeste
+fetch mail.
