@@ -1,4 +1,3 @@
 doOneCycleNow
-	"Do one cycle of the interactive loop. This method is called repeatedly when the world is running."
-
+	"see the comment in doOneCycleNowFor:"
 	worldState doOneCycleNowFor: self.
