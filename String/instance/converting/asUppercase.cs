@@ -2,7 +2,4 @@ asUppercase
 	"Answer a String made up from the receiver whose characters are all 
 	uppercase."
 
-	| aStream |
-	aStream _ WriteStream on: (String new: self size).
-	self do: [:aCharacter | aStream nextPut: aCharacter asUppercase].
-	^aStream contents
+	^ self collect: [:each | each asUppercase]
