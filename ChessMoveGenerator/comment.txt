@@ -1,0 +1,1 @@
+This class generates moves for any given board. It's speed is critical - for each new position all moves need to be generated in that position. It may be worthwhile to make give this class a little plugin support at some time.
