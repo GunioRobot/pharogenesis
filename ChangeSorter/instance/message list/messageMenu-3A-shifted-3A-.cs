@@ -12,7 +12,7 @@ messageMenu: aMenu shifted: shifted
 			('move method to other side'			moveMethodToOther))].
 
 	aMenu addList: #(
-			('delete method from change set'		forget)
+			('delete method from changeSet (d)'	forget)
 			-
 			('remove method from system (x)'	removeMessage)
 				-
