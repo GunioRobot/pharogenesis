@@ -1,4 +1,5 @@
 initialize
 	"AutoStart initialize"
-
-	Smalltalk addToStartUpList: AutoStart
+	"Order: ExternalSettings, SecurityManager, AutoStart"
+	Smalltalk addToStartUpList: AutoStart after: SecurityManager.
+	Smalltalk addToShutDownList: AutoStart after: SecurityManager.
