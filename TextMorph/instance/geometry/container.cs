@@ -8,6 +8,6 @@ container
 
 	container ifNil:
 		[successor ifNotNil: [^ self bounds].
-		wrapFlag ifTrue: [^ self bounds withHeight: 99999].
-		^ self position extent: 99999@99999].
+		wrapFlag ifTrue: [^ self bounds withHeight: 9999999].
+		^ self position extent: 9999999@9999999].
 	^ container
