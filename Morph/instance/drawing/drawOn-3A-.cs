@@ -1,3 +1,3 @@
 drawOn: aCanvas
 
-	aCanvas fillRectangle: self bounds color: color.
+	aCanvas fillRectangle: self bounds fillStyle: self fillStyle.
