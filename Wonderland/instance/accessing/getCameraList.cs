@@ -1,0 +1,3 @@
+getCameraList
+
+	^ cameraList.
