@@ -1,0 +1,2 @@
+isCodeFilter
+	^false
