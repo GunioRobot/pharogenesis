@@ -1,9 +1,9 @@
-privateMoveBy: delta
+privateMoveBy: delta 
+	super privateMoveBy: delta.
+	editor isNil 
+		ifTrue: [paragraph ifNotNil: [paragraph moveBy: delta]]
+		ifFalse: 
+			["When moving text with an active editor, save and restore all state."
 
-	editor == nil
-		ifTrue: [super privateMoveBy: delta.
-				paragraph ifNotNil: [paragraph moveBy: delta]]
-		ifFalse: ["When moving text with an active editor, save and restore all state."
-				super privateMoveBy: delta.
-				paragraph moveBy: delta.
-				self installEditorToReplace: editor]
+			paragraph moveBy: delta.
+			self installEditorToReplace: editor]
