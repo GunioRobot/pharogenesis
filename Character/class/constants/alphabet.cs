@@ -1,2 +1,4 @@
 alphabet
-	^ 'abdcefghijklmnopqrstuvwxyz'
+	"($a to: $z) as: String"
+
+	^ 'abcdefghijklmnopqrstuvwxyz'
