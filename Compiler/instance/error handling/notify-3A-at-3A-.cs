@@ -2,8 +2,8 @@ notify: aString at: location
 	"Refer to the comment in Object|notify:."
 
 	requestor == nil
-		ifTrue: [^SyntaxError 
-					errorInClass: class
+		ifTrue: [^SyntaxErrorNotification
+					inClass: class
 					withCode: 
 						(sourceStream contents
 							copyReplaceFrom: location
