@@ -7,7 +7,7 @@ primitiveLoadImageSegment
 	| outPointerArray segmentWordArray endSeg segOop fieldPtr fieldOop doingClass lastPtr extraSize mapOop lastOut outPtr hdrTypeBits header data |
 
 	DoAssertionChecks ifTrue: [self verifyCleanHeaders].
-	outPointerArray _ self stackValue: 0.
+	outPointerArray _ self stackTop.
 	lastOut _ outPointerArray + (self lastPointerOf: outPointerArray).
 	segmentWordArray _ self stackValue: 1.
 	endSeg _ segmentWordArray + (self sizeBitsOf: segmentWordArray) - BaseHeaderSize.
@@ -83,14 +83,14 @@ primitiveLoadImageSegment
 	"Again, proceed through the segment checking consistency..."
 	segOop _ self oopFromChunk: segmentWordArray + BaseHeaderSize + 4.
 	[segOop <= endSeg] whileTrue:
-		[(self oopHasOKclass: segOop) ifFalse: [^ self primitiveFail "inconsistency"].
+		[(self oopHasAcceptableClass: segOop) ifFalse: [^ self primitiveFail "inconsistency"].
 		fieldPtr _ segOop + BaseHeaderSize.		"first field"
 		lastPtr _ segOop + (self lastPointerOf: segOop).	"last field"
 		"Go through all oops, remapping them..."
 		[fieldPtr > lastPtr] whileFalse:
 			["Examine each pointer field"
 			fieldOop _ self longAt: fieldPtr.
-			(self oopHasOKclass: fieldOop) ifFalse: [^ self primitiveFail "inconsistency"].
+			(self oopHasAcceptableClass: fieldOop) ifFalse: [^ self primitiveFail "inconsistency"].
 			fieldPtr _ fieldPtr + 4].
 		segOop _ self objectAfter: segOop].
 
