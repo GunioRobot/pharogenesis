@@ -1,0 +1,2 @@
+hasMesh
+	^myMesh notNil
