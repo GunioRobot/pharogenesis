@@ -1,0 +1,2 @@
+attributes: aCollection
+	attributes := aCollection
