@@ -5,7 +5,7 @@ markPhase
 	| oop |
 	self inline: false.
 	"clear the recycled context lists"
-	freeSmallContexts _ NilContext.
+	freeContexts _ NilContext.
 	freeLargeContexts _ NilContext.
 
 	"trace the interpreter's objects, including the active stack and special objects array"
@@ -14,5 +14,5 @@ markPhase
 	"trace the roots"
 	1 to: rootTableCount do: [ :i | 
 		oop _ rootTable at: i.
-		(self isIntegerObject: oop) ifFalse: [ self markAndTrace: oop ].
+		self markAndTrace: oop.
 	].
