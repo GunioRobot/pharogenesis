@@ -4,5 +4,5 @@ labels: aString lines: anArray
 
 	^self new
 		labels: aString
-		font: (TextStyle default fontAt: 7)
+		font: (MenuStyle fontAt: 1)
 		lines: anArray
