@@ -9,5 +9,6 @@ checkForReframe
 	self cursorOnBorder ifFalse: [^ self].
 	((view insetDisplayBox insetBy: 2@2) containsPoint: cp)
 		ifFalse: [^ self adjustWindowBorders].
+	view subViews size <= 1 ifTrue: [^ self].
 	(view subviewWithLongestSide: [:s | ] near: cp) == nil
 		ifFalse: [^ self adjustPaneBorders].
