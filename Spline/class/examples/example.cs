@@ -4,7 +4,7 @@ example
 	selected points, using a long black form."
 
 	| splineCurve aForm flag|
-	aForm _ Form extent: 1@40.
+	aForm _ Form extent: 2@2.
 	aForm  fillBlack.
 	splineCurve _ Spline new.
 	splineCurve form: aForm.
