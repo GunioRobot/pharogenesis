@@ -1,11 +1,15 @@
-removeSelector: aSymbol 
-	"Remove the message whose selector is aSymbol from the method 
+removeSelector: selector 
+	| priorMethod | 
+	"Remove the message whose selector is given from the method 
 	dictionary of the receiver, if it is there. Answer nil otherwise."
 
-	(methodDict includesKey: aSymbol) ifFalse: [^nil].
-	self wantsChangeSetLogging ifTrue:
-		[Smalltalk changes removeSelector: aSymbol class: self].
-	super removeSelector: aSymbol.
-	self organization removeElement: aSymbol.
+	(self methodDict includesKey: selector) ifFalse: [^ nil].
+	priorMethod _ self compiledMethodAt: selector.
+	Smalltalk changes removeSelector: selector class: self
+		priorMethod: priorMethod
+		lastMethodInfo: {priorMethod sourcePointer.
+						(self whichCategoryIncludesSelector: selector)}.
+	super removeSelector: selector.
+	self organization removeElement: selector.
 	self acceptsLoggingOfCompilation ifTrue:
-		[Smalltalk logChange: self name , ' removeSelector: #' , aSymbol]
+		[Smalltalk logChange: self name , ' removeSelector: #' , selector]
