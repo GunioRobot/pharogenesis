@@ -1,20 +1,20 @@
 processUnhandledPage: newSource
 	"offer to save it to a file"
 	| fileName file |
-	self status: 'sittin'.
+	self status: 'sittin' translated.
 
 	(newSource url toText endsWith: '.pr') ifTrue: [
-		(self confirm: 'Looks like a Squeak project - do you want to load it as such?') ifTrue: [
+		(self confirm: 'Looks like a Squeak project - do you want to load it as such?' translated) ifTrue: [
 			^ProjectLoading thumbnailFromUrl: newSource url toText
 		].
 	].
 
-	(self confirm: 'unkown content-type ', newSource contentType,'--
-Would you like to save to a file?') ifFalse: [ ^false ].
+	(self confirm: ('unkown content-type {1}--
+Would you like to save to a file?' translated format:{newSource contentType})) ifFalse: [ ^false ].
 
 	fileName _ ''.
 	[
-		fileName _ FillInTheBlank request: 'file to save in' initialAnswer: fileName.
+		fileName _ FillInTheBlank request: 'file to save in' translated initialAnswer: fileName.
 		fileName isEmpty ifTrue: [ ^self ].
 		file _ FileStream fileNamed: fileName.
 		file == nil
