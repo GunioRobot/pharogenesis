@@ -1,0 +1,2 @@
+vertexNormals
+	^meshes first vertexNormals
