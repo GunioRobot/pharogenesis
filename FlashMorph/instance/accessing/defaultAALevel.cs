@@ -1,0 +1,2 @@
+defaultAALevel
+	^self valueOfProperty: #aaLevel
