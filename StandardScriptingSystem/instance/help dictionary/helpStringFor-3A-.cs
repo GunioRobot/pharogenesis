@@ -1,2 +1,2 @@
 helpStringFor: aSymbol
-	^ HelpStrings at: aSymbol ifAbsent: ['No help available']
+	^ HelpStrings at: aSymbol ifAbsent: ['No help yet available for ', aSymbol]
