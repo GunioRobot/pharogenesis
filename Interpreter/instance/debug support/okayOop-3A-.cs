@@ -33,7 +33,7 @@ okayOop: oop
 
 	"format check"
 	fmt _ self formatOf: oop.
-	((fmt = 4) | (fmt = 5) | (fmt = 7))
+	((fmt = 5) | (fmt = 7))
 		ifTrue:  [ self error: 'oop has an unknown format type' ].
 
 	"mark and root bit checks"
