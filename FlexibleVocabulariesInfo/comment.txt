@@ -1,0 +1,20 @@
+Package:		FlexibleVocabularies-nk
+Date:			12 October 2003
+Author:			Ned Konz
+
+This makes it possible for packages to extend Morph class vocabularies.
+Previously, you'd have to edit #additionsToViewerCategories, which would result in potential conflicts between different packages that all wanted to (for instance) extend Morph's vocabulary.
+
+Subclasses that have additions can do one or both of:
+	- override #additionsToViewerCategories (as before)
+	- define one or more additionToViewerCategory* methods.
+
+The advantage of the latter technique is that class extensions may be added
+by external packages without having to re-define additionsToViewerCategories.
+
+So, for instance, package A could add a method named #additionsToViewerCategoryPackageABasic
+and its methods would be added to the vocabulary automatically.
+
+NOTE: this change set is hand-rearranged to avoid problems on file-in.
+
+Specifically, Morph>>hasAdditionsToViewerCategories must come before Morph class>>additionsToViewerCategories
