@@ -1,3 +1,3 @@
 fontForButtons
 
-	^(TextStyle named: #ComicBold) fontOfSize: 18
+	^Preferences standardEToysFont
