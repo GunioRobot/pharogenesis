@@ -24,7 +24,7 @@ explainPartSel: string
 					ifFalse: [^nil]].
 			reply _ '.'.
 			s _ '.  To see the definitions, go to the message list pane, get the menu from the top of the scroll bar, and select ''implementors of...''."'].
-	classes _ Smalltalk allClassesImplementing: whole.
+	classes _ self systemNavigation allClassesImplementing: whole.
 	classes size > 12
 		ifTrue: [classes _ 'many classes']
 		ifFalse: [classes _ 'these classes ' , classes printString].
