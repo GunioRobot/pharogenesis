@@ -1,0 +1,2 @@
+couldDeriveFromPrettyPrinting
+	^ false
