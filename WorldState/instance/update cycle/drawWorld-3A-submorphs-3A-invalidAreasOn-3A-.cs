@@ -1,38 +1,46 @@
 drawWorld: aWorld submorphs: submorphs invalidAreasOn: aCanvas 
 	"Redraw the damaged areas of the given canvas and clear the damage list. Return a collection of the areas that
 were redrawn."
-	| rectList c i n mm morphs rects rectToFill remnants rect |
 
-	rectList _ damageRecorder invalidRectsFullBounds: aWorld viewBox.
+	| rectList c i n mm morphs rects rectToFill remnants rect validList |
+	rectList := damageRecorder invalidRectsFullBounds: aWorld viewBox.
+	"sort by areas to draw largest portions first"
+	rectList := rectList asArray sort: [:r1 :r2 | r1 area > r2 area].
 	damageRecorder reset.
-	n _ submorphs size.
-	morphs _ OrderedCollection new: n*2.
-	rects _ OrderedCollection new: n*2.
-	rectList do: [:r |
-		true
-		ifTrue:
-			["Experimental top-down drawing --
+	n := submorphs size.
+	morphs := OrderedCollection new: n * 2.
+	rects := OrderedCollection new: n * 2.
+	validList := OrderedCollection new: n * 2.
+	rectList do: 
+			[:dirtyRect | 
+			dirtyRect allAreasOutsideList: validList
+				do: 
+					[:r | 
+					"Experimental top-down drawing --
 			Traverses top to bottom, stopping if the entire area is filled.
 			If only a single rectangle remains, then continue with the reduced rectangle."
-			rectToFill _ r.
-			i _ 1.
-			[rectToFill == nil or: [i > n]] whileFalse:
-				[mm _ submorphs at: i.
-				((mm fullBounds intersects: r) and: [mm visible]) ifTrue:
-					[morphs addLast: mm.  rects addLast: rectToFill.
-					remnants _ mm areasRemainingToFill: rectToFill.
-					remnants size = 1 ifTrue: [rectToFill _ remnants first].
-					remnants size = 0 ifTrue: [rectToFill _ nil]].
-				i _ i+1].
 
-			"Now paint from bottom to top, but using the reduced rectangles."
-			rectToFill ifNotNil:[aWorld drawOn: (c _ aCanvas copyClipRect: rectToFill)].
-			[morphs isEmpty] whileFalse:
-				[(rect _ rects removeLast) == rectToFill ifFalse:
-					[c _ aCanvas copyClipRect: (rectToFill _ rect)].
-				c fullDrawMorph: morphs removeLast].
-			morphs reset.  rects reset]
-		ifFalse: [rectToFill ifNotNil:[aWorld drawOn: (aCanvas copyClipRect: rectToFill)].
-				submorphs reverseDo: [:m | c fullDrawMorph: m]].
-	].
-	^ rectList
+					rectToFill := r.
+					i := 1.
+					[rectToFill isNil or: [i > n]] whileFalse: 
+							[mm := submorphs at: i.
+							((mm fullBounds intersects: r) and: [mm visible]) 
+								ifTrue: 
+									[morphs addLast: mm.
+									rects addLast: rectToFill.
+									remnants := mm areasRemainingToFill: rectToFill.
+									remnants size = 1 ifTrue: [rectToFill := remnants first].
+									remnants isEmpty ifTrue: [rectToFill := nil]].
+							i := i + 1].
+
+					"Now paint from bottom to top, but using the reduced rectangles."
+					rectToFill 
+						ifNotNil: [aWorld drawOn: (c := aCanvas copyClipRect: rectToFill)].
+					[morphs isEmpty] whileFalse: 
+							[(rect := rects removeLast) == rectToFill 
+								ifFalse: [c := aCanvas copyClipRect: (rectToFill := rect)].
+							c fullDrawMorph: morphs removeLast].
+					morphs reset.
+					rects reset.
+					validList add: r]].
+	^validList
