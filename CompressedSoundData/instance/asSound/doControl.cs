@@ -1,0 +1,3 @@
+doControl
+
+	cachedSound doControl
