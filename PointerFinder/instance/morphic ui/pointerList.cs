@@ -1,0 +1,2 @@
+pointerList
+	^ pointerList asArray
