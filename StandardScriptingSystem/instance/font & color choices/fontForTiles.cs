@@ -1,2 +1,2 @@
 fontForTiles
-	^ StrikeFont familyName: #ComicBold size: 18
+	^ Preferences standardEToysFont
