@@ -5,7 +5,7 @@ updateDisplayContents
 	contents _ model contents.
 	displayContents asString ~= contents
 		ifTrue: 
-			[model messageListIndex ~= 0
+			[model wantsBoldSelector
 				ifTrue: [contents _ contents asText
 								makeSelectorBoldIn: model selectedClassOrMetaClass].
 			self editString: contents.
