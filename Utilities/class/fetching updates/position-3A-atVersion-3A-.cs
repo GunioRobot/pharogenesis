@@ -6,7 +6,7 @@ position: updateStrm atVersion: version
 	foundIt _ false.
 	[char _ updateStrm next.
 	 updateStrm atEnd] whileFalse: [
-		char == Character cr ifTrue: [
+		(char == Character cr or: [char == Character lf]) ifTrue: [
 			updateStrm peek == $# ifTrue: [
 				foundIt ifTrue: ["Next section"
 					where _ updateStrm position.
