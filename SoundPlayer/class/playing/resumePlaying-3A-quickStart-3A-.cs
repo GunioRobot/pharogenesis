@@ -7,10 +7,7 @@ resumePlaying: aSound quickStart: quickStart
 	Preferences soundQuickStart ifFalse: [doQuickStart _ false].
 	PlayerProcess == nil ifTrue: [
 		self canStartPlayer ifFalse: [^ self].
-		self startUp.
-		"Check if startup was successful"
-		SoundSupported ifFalse:[^self].
-		doQuickStart _ false].
+		^self startUpWithSound: aSound].
 
 	PlayerSemaphore critical: [
 		(ActiveSounds includes: aSound)
