@@ -1,4 +1,2 @@
-otherPinFrom: aPin
-	(pins at: 1) = aPin
-		ifTrue: [^ pins at: 2]
-		ifFalse: [^ pins at: 1]
+otherPinFrom: aPin 
+	^ pins first = aPin ifTrue: [pins second] ifFalse: [pins first]
