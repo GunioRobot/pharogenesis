@@ -3,4 +3,4 @@ veryDeepInner: deepCopier
 
 super veryDeepInner: deepCopier.
 "key _ key.		Weakly copied"
-code _ code veryDeepCopyWith: deepCopier.
+self code: (self code veryDeepCopyWith: deepCopier).
