@@ -1,0 +1,1 @@
+A type associated with menu-item values.  An imperfect thing thus far, only usable in the doMenuItem etoy scripting phrase.
