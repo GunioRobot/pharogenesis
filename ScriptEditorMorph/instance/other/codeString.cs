@@ -1,6 +1,2 @@
 codeString
-
-	| s |
-	s _ WriteStream on: ''.
-	self storeCodeOn: s.
-	^ s contents
+	^ String streamContents: [:aStream | self storeCodeOn: aStream indent: 1]
