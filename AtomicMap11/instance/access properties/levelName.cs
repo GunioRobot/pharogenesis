@@ -1,0 +1,2 @@
+levelName
+	^ 'Acetic Acid' translated
