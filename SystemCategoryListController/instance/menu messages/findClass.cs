@@ -1,5 +1,5 @@
 findClass
-	"modified 4/29/96 sw so that if only 1 class matches the user-supplied string, or if the user-supplied string exactly matches a class name, then the pop-up menu is bypassed"
+	"modified  so that if only 1 class matches the user-supplied string, or if the user-supplied string exactly matches a class name, then the pop-up menu is bypassed"
 	| pattern foundClass classNames index reply |
 	self controlTerminate.
 	model okToChange ifFalse: [^ self classNotFound].
