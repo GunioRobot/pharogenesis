@@ -1,14 +1,11 @@
 interruptName: labelString
 	"Create a Notifier on the active scheduling process with the given label. Make the Notifier the active controller."
-
 	| suspendingList newActiveController |
-	suspendingList _ activeControllerProcess suspendingList.
-	suspendingList isNil ifTrue: [
-		activeControllerProcess == Processor activeProcess
-			ifTrue: [activeControllerProcess suspend].
-	] ifFalse: [
-		suspendingList remove: activeControllerProcess.
-		activeControllerProcess offList].
+	(suspendingList _ activeControllerProcess suspendingList) == nil
+		ifTrue: [activeControllerProcess == Processor activeProcess
+					ifTrue: [activeControllerProcess suspend]]
+		ifFalse: [suspendingList remove: activeControllerProcess ifAbsent:[].
+				activeControllerProcess offList].
 
 	activeController ~~ nil ifTrue: [
 		"Carefully de-emphasis the current window."
