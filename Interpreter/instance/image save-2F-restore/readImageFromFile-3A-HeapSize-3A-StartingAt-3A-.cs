@@ -5,6 +5,10 @@ readImageFromFile: f HeapSize: desiredHeapSize StartingAt: imageOffset
 
 	| swapBytes headerStart headerSize dataSize oldBaseAddr minimumMemory memStart bytesRead bytesToShift heapSize |
 	self var: #f declareC: 'sqImageFile f'.
+	self var: #headerStart declareC: 'squeakFileOffsetType headerStart'.
+	self var: #dataSize declareC: 'size_t dataSize'.
+	self var: #imageOffset declareC: 'squeakFileOffsetType imageOffset'.
+	self var: #memStart type: 'unsigned'.
 
 	swapBytes _ self checkImageVersionFrom: f startingAt: imageOffset.
 	headerStart _ (self sqImageFilePosition: f) - 4.  "record header start position"
@@ -28,20 +32,11 @@ readImageFromFile: f HeapSize: desiredHeapSize StartingAt: imageOffset
 	"compare memory requirements with availability".
 	minimumMemory _ dataSize + 100000.  "need at least 100K of breathing room"
 	heapSize < minimumMemory ifTrue: [
-		GenerateBrowserPlugin
-			ifTrue: [
-				self plugInNotifyUser: 'The amount of memory specified by the ''memory'' EMBED tag is not enough for the installed Squeak image file.'.
-				^ nil]
-			ifFalse: [self error: 'Insufficient memory for this image']].
+		self insufficientMemorySpecifiedError].
 
 	"allocate a contiguous block of memory for the Squeak heap"
 	memory _ self cCode: '(unsigned char *) sqAllocateMemory(minimumMemory, heapSize)'.
-	memory = nil ifTrue: [
-		GenerateBrowserPlugin
-			ifTrue: [
-				self plugInNotifyUser: 'There is not enough memory to give Squeak the amount specified by the ''memory'' EMBED tag.'.
-				^ nil]
-			ifFalse: [self error: 'Failed to allocate memory for the heap']].
+	memory = nil ifTrue: [self insufficientMemoryAvailableError].
 
 	memStart _ self startOfMemory.
 	memoryLimit _ (memStart + heapSize) - 24.  "decrease memoryLimit a tad for safety"
@@ -52,13 +47,13 @@ readImageFromFile: f HeapSize: desiredHeapSize StartingAt: imageOffset
 
 	"read in the image in bulk, then swap the bytes if necessary"
 	bytesRead _ self cCode: 'sqImageFileRead(memory, sizeof(unsigned char), dataSize, f)'.
-	bytesRead ~= dataSize ifTrue: [
-		GenerateBrowserPlugin
-			ifTrue: [
-				self plugInNotifyUser: 'Squeak had problems reading its image file.'.
-				self plugInShutdown.
-				^ nil]
-			ifFalse: [self error: 'Read failed or premature end of image file']].
+	bytesRead ~= dataSize ifTrue: [self unableToReadImageError].
+
+	headerTypeBytes at: 0 put: 8. "3-word header (type 0)"	
+	headerTypeBytes at: 1 put: 4. "2-word header (type 1)"
+	headerTypeBytes at: 2 put: 0. "free chunk (type 2)"	
+	headerTypeBytes at: 3 put: 0. "1-word header (type 3)"
+
 	swapBytes ifTrue: [self reverseBytesInImage].
 
 	"compute difference between old and new memory base addresses"
