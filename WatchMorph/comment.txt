@@ -2,7 +2,7 @@ This class is a representation of a watch.
 The labels' font is changeble. Labels' font size increase or decrease when resizing me.
 
 WatchMorph new openInWorld
-(WatchMorph fontName: 'ComicPlain') openInWorld		" transparent "
+(WatchMorph fontName: 'ComicPlain' bgColor: Color transparent centerColor: Color transparent) openInWorld		" transparent "
 (WatchMorph fontName: 'ComicBold' bgColor: Color white centerColor: Color black) openInWorld
 
 Structure:
