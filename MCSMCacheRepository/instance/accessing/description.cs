@@ -1,0 +1,2 @@
+description
+	^ smCache directory pathName
