@@ -1,4 +1,4 @@
-(c) 1996-97 Bert Freudenberg, ne SchšnwŠlder, (bert@isg.cs.uni-magdeburg.de) University of Magdeburg, Germany.
+(c) 1996-97 Bert Freudenberg, neÃ™ SchÂnwÂ´lder, (bert@isg.cs.uni-magdeburg.de) University of Magdeburg, Germany.
 
 Modified 1998 by Andreas Raab (Andreas.Raab@disney.com) for Squeak.
 
