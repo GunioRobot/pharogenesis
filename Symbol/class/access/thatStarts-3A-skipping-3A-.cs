@@ -14,8 +14,7 @@ thatStarts: leadingCharacters skipping: skipSym
 	firstMatch _ leadingCharacters at: 1.
 	size > 1 ifTrue: [key _ leadingCharacters copyFrom: 2 to: size].
 
-	SymbolTable do:
-		[:each |
+	self allSymbolTablesDo: [:each |
 			each size >= size ifTrue:
 				[
 					((each at: 1) == firstMatch and:
