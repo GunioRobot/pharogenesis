@@ -5,7 +5,7 @@ installEditorToReplace: priorEditor
 
 	| stateArray |
 	priorEditor ifNotNil: [stateArray _ priorEditor stateArray].
-	editor _ TextMorphEditor new morph: self.
+	editor _ self editorClass new morph: self.
 	editor changeParagraph: self paragraph.
 	priorEditor ifNotNil: [editor stateArrayPut: stateArray].
 	self selectionChanged.
