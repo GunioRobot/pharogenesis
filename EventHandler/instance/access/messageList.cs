@@ -6,26 +6,29 @@ messageList
 	list _ SortedCollection new.
 	mouseDownRecipient ifNotNil:
 		[list add: (mouseDownRecipient class classThatUnderstands:
-	mouseDownSelector) name,
-			' ', mouseDownSelector].
+					mouseDownSelector) name , ' ', mouseDownSelector].
 	mouseStillDownRecipient ifNotNil:
 		[list add: (mouseStillDownRecipient class classThatUnderstands:
-	mouseStillDownSelector) name,
-			' ', mouseStillDownSelector].
+					mouseStillDownSelector) name , ' ', mouseStillDownSelector].
 	mouseUpRecipient ifNotNil:
 		[list add: (mouseUpRecipient class classThatUnderstands:
-	mouseUpSelector) name,
-			' ', mouseUpSelector].
+					mouseUpSelector) name , ' ', mouseUpSelector].
 	mouseEnterRecipient ifNotNil:
 		[list add: (mouseEnterRecipient class classThatUnderstands:
-	mouseEnterSelector) name,
-			' ', mouseEnterSelector].
+					mouseEnterSelector) name , ' ', mouseEnterSelector].
 	mouseLeaveRecipient ifNotNil:
 		[list add: (mouseLeaveRecipient class classThatUnderstands:
-	mouseLeaveSelector) name,
-			' ', mouseLeaveSelector].
+					mouseLeaveSelector) name , ' ', mouseLeaveSelector].
+	mouseEnterDraggingRecipient ifNotNil:
+		[list add: (mouseEnterDraggingRecipient class classThatUnderstands:
+					mouseEnterDraggingSelector) name , ' ', mouseEnterDraggingSelector].
+	mouseLeaveDraggingRecipient ifNotNil:
+		[list add: (mouseLeaveDraggingRecipient class classThatUnderstands:
+					mouseLeaveDraggingSelector) name , ' ', mouseLeaveDraggingSelector].
+	doubleClickRecipient ifNotNil:
+		[list add: (doubleClickRecipient class classThatUnderstands:
+					doubleClickSelector) name , ' ', doubleClickSelector].
 	keyStrokeRecipient ifNotNil:
 		[list add: (keyStrokeRecipient class classThatUnderstands:
-	keyStrokeSelector) name,
-			' ', keyStrokeSelector].
+					keyStrokeSelector) name , ' ', keyStrokeSelector].
 	^ list
