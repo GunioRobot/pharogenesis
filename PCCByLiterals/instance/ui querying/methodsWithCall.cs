@@ -1,0 +1,2 @@
+methodsWithCall
+	^ self methodsWithCompiledCall
