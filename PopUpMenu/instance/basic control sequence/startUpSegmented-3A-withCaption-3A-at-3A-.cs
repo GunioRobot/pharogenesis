@@ -16,7 +16,7 @@ startUpSegmented: segmentHeight withCaption: captionOrNil at: location
 	[ true ] whileTrue:
 		[to := (from + nLinesPer) min: nLines.
 		subset := allLabels copyFrom: from to: to.
-		subset add: (to = nLines ifTrue: ['start over...'] ifFalse: ['more...'])
+		subset add: (to = nLines ifTrue: ['start over...' translated] ifFalse: ['more...' translated])
 			before: subset first.
 		subLines _ lineArray select: [:n | n >= from] thenCollect: [:n | n - (from-1) + 1].
 		subLines _ (Array with: 1) , subLines.
