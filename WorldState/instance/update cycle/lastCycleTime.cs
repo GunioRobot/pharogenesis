@@ -1,0 +1,3 @@
+lastCycleTime
+
+	^ lastCycleTime
