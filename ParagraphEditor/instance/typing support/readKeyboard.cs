@@ -10,7 +10,7 @@ readKeyboard
 		 [sensor keyboardPressed] whileTrue: 
 			[char _ sensor keyboardPeek.
 			(self dispatchOnCharacter: char with: typeAhead) ifTrue:
-				[beginTypeInBlock _ nil.
+				[self doneTyping.
 				^self selectAndScroll; updateMarker].
 			self openTypeIn].
 		startBlock = stopBlock ifFalse: "save highlighted characters"
