@@ -1,0 +1,3 @@
+nextFromStream: aStream
+
+	^ aStream basicNext.
