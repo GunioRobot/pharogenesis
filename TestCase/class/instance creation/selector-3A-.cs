@@ -1,3 +1,4 @@
 selector: aSymbol
 
-	^self new testMessage: aSymbol
+	^self new setTestSelector: aSymbol
+			
