@@ -2,7 +2,7 @@ primitiveSetDisplayMode
 	"Set to OS to the requested display mode.
 	See also DisplayScreen setDisplayDepth:extent:fullscreen:"
 	| fsFlag h w d okay |
-	fsFlag _ self booleanValueOf: (self stackValue: 0).
+	fsFlag _ self booleanValueOf: (self stackTop).
 	h _ self stackIntegerValue: 1.
 	w _ self stackIntegerValue: 2.
 	d _ self stackIntegerValue: 3.
