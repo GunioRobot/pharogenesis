@@ -1,5 +1,6 @@
 playSoundNamed: soundName
-	"Play the sound with the given name. Do nothing if this image lacks sound playing facilities."
+	"Deprecated.
+	Play the sound with the given name."
 
-	Smalltalk at: #SampledSound ifPresent: [:sampledSound |
-		sampledSound playSoundNamed: soundName asString].
+	self deprecated: 'Use "SoundService default playSoundNamed: aName" instead.'.
+	SoundService default playSoundNamed: soundName
