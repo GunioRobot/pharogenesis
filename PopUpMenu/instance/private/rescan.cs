@@ -3,7 +3,6 @@ rescan
 
 	labelString == nil ifTrue: [labelString _ 'NoText!'].
 	self labels: labelString font: (MenuStyle fontAt: 1) lines: lineArray.
-	form _ nil.
+	frame _ marker _ form _ nil.
 
-	"PopUpMenu withAllSubclasses do: [ :menuClass |
-		menuClass allInstancesDo: [ :m | m rescan ]]"
+	"PopUpMenu allSubInstancesDo: [:m | m rescan]"
