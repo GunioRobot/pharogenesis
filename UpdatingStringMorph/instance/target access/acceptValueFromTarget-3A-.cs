@@ -1,7 +1,10 @@
 acceptValueFromTarget: v
+	"Accept a value from the target"
+
+	self flag: #yo.  "we may want to translate the v asString result."
 	lastValue _ v.
-	format = #string ifTrue: [^ v asString].
-	(format = #default and: [v isNumber]) ifTrue:
-		[v isInteger ifTrue: [^ v asInteger printString].
-		(v isKindOf: Float) ifTrue: [^ (v roundTo: self floatPrecision) printString]].
-	^ v printString
+	self format == #string ifTrue: [^ v asString].
+	self format == #symbol ifTrue: [^ v asString translated].
+	(format == #default and: [v isNumber]) ifTrue:
+		[^ v printShowingDecimalPlaces: self decimalPlaces].
+	^ v printString translated.
