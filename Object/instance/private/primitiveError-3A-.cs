@@ -1,16 +1,19 @@
 primitiveError: aString 
-	"This method is called when the error handling results in a recursion in calling
-	on error: or halt or halt:."
+	"This method is called when the error handling results in a recursion in 
+	calling on error: or halt or halt:."
+
 	| context |
-	(String streamContents:
-		[:s |
-		s nextPutAll: '**System error handling failed** '.
-		s cr; nextPutAll: aString.
-		context _ thisContext sender sender.
-		20 timesRepeat: 
-			[context == nil ifFalse: [s cr; print: (context _ context sender)]].
-		s cr; nextPutAll: '**Type any character to restart.**'])
-		displayAt: 0@0.
+	(String
+		streamContents: 
+			[:s |
+			s nextPutAll: '**System error handling failed**'.
+			s cr; nextPutAll: aString.
+			context _ thisContext sender sender.
+			20 timesRepeat: [context == nil ifFalse: [s cr; print: (context _ context sender)]].
+			s cr; nextPutAll: '**Type CR to enter an emergency evaluator.**'.
+			s cr; nextPutAll: '**Type any other character to restart.**'])
+		displayAt: 0 @ 0.
 	[Sensor keyboardPressed] whileFalse.
-	Sensor keyboard.
+	Sensor keyboard == Character cr ifTrue: [Transcripter emergencyEvaluator].
+	Smalltalk isMorphic ifTrue: [^ World install "To init hand events and redisplay world"].
 	ScheduledControllers searchForActiveController
