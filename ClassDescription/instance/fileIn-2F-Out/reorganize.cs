@@ -1,5 +1,5 @@
 reorganize
-	"Record that the receiver is being reorganized and answer the receiver's organization."
+	"During fileIn, !Rectangle reorganize! allows Rectangle to seize control and treat the next chunk as its organization.  See the transfer of control where ReadWriteStream fileIn calls scanFrom:"
 
 	Smalltalk changes reorganizeClass: self.
 	^self organization
