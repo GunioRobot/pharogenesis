@@ -1,0 +1,2 @@
+mayActOnClick
+	^true
