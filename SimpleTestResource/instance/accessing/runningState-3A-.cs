@@ -1,0 +1,4 @@
+runningState: aSymbol
+
+	runningState := aSymbol
+			
