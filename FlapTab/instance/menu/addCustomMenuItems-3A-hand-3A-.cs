@@ -1,6 +1,9 @@
 addCustomMenuItems: aMenu hand: aHandMorph
 	"Add further items to the menu as appropriate"
 
+	aMenu add: 'tab color...' translated target: self action: #changeColor.
+	aMenu add: 'flap color...' translated target: self action: #changeFlapColor.
+	aMenu addLine.
 	aMenu addUpdating: #edgeString action: #setEdgeToAdhereTo.
 	aMenu addLine.
 	aMenu addUpdating: #textualTabString action: #textualTab.
@@ -13,11 +16,11 @@ addCustomMenuItems: aMenu hand: aHandMorph
 	aMenu addUpdating: #dragoverString action: #toggleDragOverBehavior.
 	aMenu addUpdating: #mouseoverString action: #toggleMouseOverBehavior.
 	aMenu addLine.
-	aMenu addUpdating: #isGlobalFlapString action: #toggleIsGlobalFlap.
-	aMenu balloonTextForLastItem: 'If checked, this flap will be available in all morphic projects; if not, it will be private to this project.,'.
+	aMenu addUpdating: #isGlobalFlapString enablement: #sharedFlapsAllowed action: #toggleIsGlobalFlap.
+	aMenu balloonTextForLastItem: 'If checked, this flap will be available in all morphic projects; if not, it will be private to this project.,' translated.
 
 	aMenu addLine.
-	aMenu add: 'destroy this flap' action: #destroyFlap.
+	aMenu add: 'destroy this flap' translated action: #destroyFlap.
 
 	"aMenu addUpdating: #slideString action: #toggleSlideBehavior.
 	aMenu addUpdating: #inboardString action: #toggleInboardness.
