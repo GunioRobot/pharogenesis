@@ -7,7 +7,7 @@ buildImage     "(PlayingCard the: 12 of: #hearts) cardForm display"
 	blt _ BitBlt current toForm: cardForm.
 	fillColor _ self color.
 	colorMap _ (((Array with: Color white with: fillColor)
-				collect: [:c | c pixelWordForDepth: cardForm depth])
+				collect: [:c | cardForm pixelWordFor: c])
 					 as: Bitmap).
 
 	blt copy: cardForm boundingBox from: 0@0 in: self blankCard.  "Start with a blank card image"
