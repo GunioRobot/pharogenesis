@@ -1,5 +1,5 @@
 constEquiv
-	| const subTest got |
+	| const subTest got jj |
 	"See if (data1 = C) or (data1 ~= C) is the answer"
 
 	"quick test"
@@ -11,8 +11,8 @@ constEquiv
 	got _ (subTest _ MethodFinder new copy: self addArg: const) 
 				searchForOne isEmpty not.
 	got ifFalse: ["try other polarity for ~~ "
-		(ii _ answers indexOf: (answers at: 1) not) > 0 ifTrue: [
-		const _ (thisData at: ii) at: 1.
+		(jj _ answers indexOf: (answers at: 1) not) > 0 ifTrue: [
+		const _ (thisData at: jj) at: 1.
 		got _ (subTest _ MethodFinder new copy: self addArg: const) 
 				searchForOne isEmpty not]]. 
 	got ifFalse: [^ false]. 
