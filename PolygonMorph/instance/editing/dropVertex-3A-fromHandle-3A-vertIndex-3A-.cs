@@ -1,10 +1,4 @@
-dropVertex: evt fromHandle: handle vertIndex: ix
-	| p |
-	p _ vertices at: ix.
-	(((vertices atWrap: ix-1) dist: p) < 3 or:
-		[((vertices atWrap: ix+1) dist: p) < 3])
-		ifTrue: ["Drag a vertex onto its neighbor means delete"
-				self setVertices: (vertices copyReplaceFrom: ix to: ix with: Array new)].
-	evt shiftPressed
-		ifTrue: [self removeHandles]
-		ifFalse: [self addHandles "remove then add to recreate"]
+dropVertex: arg1 fromHandle: arg2 vertIndex: arg3
+	"Reorder the arguments for existing event handlers"
+	(arg3 isMorph and:[arg3 eventHandler notNil]) ifTrue:[arg3 eventHandler fixReversedValueMessages].
+	^self dropVertex: arg1 event: arg2 fromHandle: arg3
