@@ -1,0 +1,3 @@
+pixelValueForDepth: d
+
+	^ 0
