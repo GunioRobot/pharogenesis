@@ -6,5 +6,4 @@ text: t textStyle: s wrap: wrap color: c
 	wrapFlag _ wrap.
 	color _ c.
 	paragraph _ editor _ container _ nil.
-	predecessor _ pred.
-	successor _ succ
+	self predecessor: pred successor: succ
