@@ -5,7 +5,7 @@ storeToMakeRoom
 	| params memoryEnd goalFree cnt gain proj skip tried |
 	GoalFreePercent ifNil: [GoalFreePercent _ 33].
 	GoalNotMoreThan ifNil: [GoalNotMoreThan _ 20000000].
-	params _ Smalltalk getVMParameters.
+	params _ SmalltalkImage current  getVMParameters.
 	memoryEnd	_ params at: 3.
 "	youngSpaceEnd	_ params at: 2.
 	free _ memoryEnd - youngSpaceEnd.
@@ -28,6 +28,6 @@ storeToMakeRoom
 		proj storeSegment ifTrue: ["Yes, did send its morphs to the disk"
 			gain _ gain + (proj projectParameters at: #segmentSize 
 						ifAbsent: [20000]).	"a guess"
-			self beep.
+			Beeper beep.
 			(cnt _ cnt + 1) > 5 ifTrue: [^ self]].	"put out 5 at most"
 		(tried _ tried + 1) > 23 ifTrue: [^ self]].	"don't get stuck in a loop"
