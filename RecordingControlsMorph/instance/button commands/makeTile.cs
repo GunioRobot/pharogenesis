@@ -14,7 +14,7 @@ makeTile
 			SampledSound
 				addLibrarySoundNamed: sndName
 				samples: recorder condensedSamples
-				sampleRate: recorder samplingRate.
+				samplingRate: recorder samplingRate.
 			tile _ SoundTile new literal: sndName]
 		ifFalse: [
 			tile _ InterimSoundMorph new sound: 
@@ -22,4 +22,4 @@ makeTile
 					samples: recorder condensedSamples
 					samplingRate: recorder samplingRate)].
 
-	self world hands first attachMorph: tile.
+	self world firstHand attachMorph: tile.
