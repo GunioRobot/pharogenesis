@@ -8,6 +8,6 @@ list: anArray
 	i _ 2.
 	anArray do: [:el | arrayCopy at: i put: el. i _ i+1].
 	arrayCopy _ arrayCopy copyWithout: nil.
-	list _ ListParagraph withArray: arrayCopy.
+	list _ ListParagraph withArray: arrayCopy style: self assuredTextStyle.
 	selection _ 0.
-	self positionList
+	self positionList.
