@@ -1,7 +1,8 @@
-withSuccessorsDo: aBlock
+withSuccessorsDo: aBlock 
 	"Evaluate aBlock for each morph in my successor chain"
+
 	| each |
-	each _ self.
-	[each == nil]
-		whileFalse: [aBlock value: each.
-					each _ each successor]
+	each := self.
+	[each isNil] whileFalse: 
+			[aBlock value: each.
+			each := each successor]
