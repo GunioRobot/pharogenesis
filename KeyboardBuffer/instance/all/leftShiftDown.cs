@@ -1,0 +1,2 @@
+leftShiftDown
+	^ event shiftPressed
