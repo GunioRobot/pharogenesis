@@ -8,6 +8,7 @@ browse
 printOut
 fileOut
 reorganize
+alphabetize
 update
 add item...
 rename...
@@ -16,5 +17,5 @@ remove'
 	selections:
 		#(findClass recent browseAllClasses buildSystemCategoryBrowser
 		printOutSystemCategory fileOutSystemCategory
-		editSystemCategories updateSystemCategories
+		editSystemCategories alphabetizeSystemCategories updateSystemCategories
 		addSystemCategory renameSystemCategory removeSystemCategory )
