@@ -1,5 +1,5 @@
 dstCategoryDstListMorph: dstListMorph internal: internal 
-	| dropMorph |
+	| dropItem |
 	^ internal & (dstListMorph getListSelector == #systemCategoryList)
-		ifTrue: [(dropMorph _ dstListMorph potentialDropMorph) ifNotNil: [(self package , '-' , dropMorph contents) asSymbol]]
+		ifTrue: [(dropItem _ dstListMorph potentialDropItem) ifNotNil: [(self package , '-' , dropItem) asSymbol]]
 		ifFalse: [self selectedSystemCategoryName]
