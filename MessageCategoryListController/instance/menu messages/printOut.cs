@@ -1,6 +1,7 @@
 printOut
-	"Make a file with the description of the selected mesage category.
-	Defaults to the same file as fileOut, but could be changed in any given
-	implementation to have a prettier format."
+	"Make a file with the description of the selected mesage category in Html format."
 
-	self fileOut
+	self controlTerminate.
+	Cursor write showWhile:
+		[model printOutMessageCategories].
+	self controlInitialize
