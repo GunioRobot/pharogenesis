@@ -1,0 +1,2 @@
+protocolKind
+	^ AbstractEvent protocolKind
