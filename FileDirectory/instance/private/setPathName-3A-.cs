@@ -1,2 +1,3 @@
 setPathName: pathString
-	pathName _ pathString
+
+	pathName _ pathString.
