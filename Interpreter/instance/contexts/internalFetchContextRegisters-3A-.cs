@@ -12,7 +12,7 @@ internalFetchContextRegisters: activeCntx
 		"otherwise, it is a method context and is its own home context"
 		tmp _ activeCntx.
 	].
-	theHomeContext _ tmp.
+	localHomeContext _ tmp.
 	receiver _ self fetchPointer: ReceiverIndex ofObject: tmp.
 	method _ self fetchPointer: MethodIndex ofObject: tmp.
 
