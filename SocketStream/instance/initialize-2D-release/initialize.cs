@@ -1,4 +1,6 @@
 initialize
-	buffered := true.
-	autoFlush := true.
-	binary := false
+	autoFlush _ true.
+	shouldSignal _ true.
+	recentlyRead _ 0.
+	bufferSize _ 4096.
+	self ascii
