@@ -1,0 +1,2 @@
+literalCountOf: methodPointer
+	^methodPointer numLiterals
