@@ -1,6 +1,6 @@
 shiftedYellowButtonActivity
-	"Present the alternate (shifted) menu and take action accordingly.  1/17/96 sw.
-	1/25/96 sw: let #shiftedYellowButtonActivity: do the work"
+	"Present the alternate (shifted) menu and take action accordingly.  .
+	: let #shiftedYellowButtonActivity: do the work"
 
 	| index shiftMenu |
 
