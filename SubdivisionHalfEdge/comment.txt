@@ -1,0 +1,1 @@
+I represent a half-edge within a subdivision.
