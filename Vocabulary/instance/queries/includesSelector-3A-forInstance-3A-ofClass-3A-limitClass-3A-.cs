@@ -9,4 +9,5 @@ includesSelector: aSelector forInstance: anInstance ofClass: aTargetClass limitC
 		ifNil:
 			[false]
 		ifNotNil:
-			[aClass includesBehavior: mostGenericClass]
+			[(aClass includesBehavior: mostGenericClass) and:
+				[(self someCategoryThatIncludes: aSelector) notNil]]
