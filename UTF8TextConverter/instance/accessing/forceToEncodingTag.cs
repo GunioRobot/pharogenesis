@@ -1,0 +1,3 @@
+forceToEncodingTag
+
+	^ forceToEncodingTag.
