@@ -1,0 +1,1 @@
+recordEndSprite: id
