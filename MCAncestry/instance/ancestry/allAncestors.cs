@@ -1,0 +1,4 @@
+allAncestors
+	^ MCVersionSorter new
+		addAllVersionInfos: self ancestors;
+		sortedVersionInfos
