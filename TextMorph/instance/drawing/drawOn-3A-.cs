@@ -1,6 +1,12 @@
 drawOn: aCanvas
+	"Draw the receiver on a canvas"
+
+	| fauxBounds |
 	self setDefaultContentsIfNil.
-	"self drawBoundsOn: aCanvas."  "show line rects for debugging"
-	self startingIndex > text size
-		ifTrue: [self drawNullTextOn: aCanvas]
-		ifFalse: [aCanvas paragraph: self paragraph bounds: bounds color: color].
+	super drawOn: aCanvas.  "Border and background if any"
+	false ifTrue: [self debugDrawLineRectsOn: aCanvas].  "show line rects for debugging"
+	(self startingIndex > text size)
+		ifTrue: [self drawNullTextOn: aCanvas].
+	"Hack here:  The canvas expects bounds to carry the location of the text, but we also need to communicate clipping."
+	fauxBounds _ self bounds topLeft corner: self innerBounds bottomRight.
+	aCanvas paragraph: self paragraph bounds: fauxBounds color: color
