@@ -1,9 +1,10 @@
-messageList
+messageList 
 
-	| probe |
+	| probe newSelectors |
 	currentClassName ifNil: [^ #()].
 	probe _ (currentClassName endsWith: ' class')
 		ifTrue: [currentClassName]
 		ifFalse: [currentClassName asSymbol].
-	^ ((myChangeSet selectorsInClass: probe) collect: 
-					[:each | each printString]) asSortedCollection
+	newSelectors _ myChangeSet selectorsInClass: probe.
+	(newSelectors includes: currentSelector) ifFalse: [currentSelector _ nil].
+	^ newSelectors asSortedCollection
