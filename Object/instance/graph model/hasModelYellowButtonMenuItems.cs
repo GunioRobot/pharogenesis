@@ -1,0 +1,2 @@
+hasModelYellowButtonMenuItems
+	^Preferences cmdGesturesEnabled
