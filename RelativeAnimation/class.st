@@ -1,0 +1,1 @@
+RelativeAnimation class instanceVariableNames: ''
