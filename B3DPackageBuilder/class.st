@@ -1,0 +1,1 @@
+B3DPackageBuilder class instanceVariableNames: ''
