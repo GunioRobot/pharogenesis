@@ -4,6 +4,7 @@ parseArgsAndTemps: aString notifying: req
 	names and temporary variable names)."
 
 	aString == nil ifTrue: [^#()].
+	doitFlag _ false.		"Don't really know if a doit or not!"
 	^self
 		initPattern: aString
 		notifying: req
