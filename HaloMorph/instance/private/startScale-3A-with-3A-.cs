@@ -1,7 +1,7 @@
 startScale: evt with: scaleHandle
 	"Initialize scaling of my target."
-	evt hand obtainHalo: self.
-	target isFlexMorph ifFalse: [target addFlexShell].
+
+	self obtainHaloForEvent: evt andRemoveAllHandlesBut: scaleHandle.
+	target isFlexMorph ifFalse: [target addFlexShellIfNecessary].
 	growingOrRotating _ true.
-	self removeAllHandlesBut: scaleHandle.  "remove all other handles"
-	positionOffset _ 0@0.
+	positionOffset _ 0@0
