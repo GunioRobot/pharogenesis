@@ -11,5 +11,5 @@ stopButton
 		actWhen: #buttonUp;
 		target: self;
 		setNameTo: 'Stop Button'; 
-		setBalloonText: 'Pause all ticking scripts.'.
+		setBalloonText: 'Pause all ticking scripts.' translated.
 	^ aButton
