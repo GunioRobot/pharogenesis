@@ -15,9 +15,7 @@ parseHuffmanTable
 		(count > 256 or: [(count > (length - (self position - markerStart)))])
 			ifTrue: [self error: 'Huffman Table count is incorrect'].
 		huffVal _ self next: count.
-		(hTable _ JPEGHuffmanTable new)
-			bits: bits;
-			values: huffVal.
+		hTable _ stream buildLookupTable: huffVal counts: bits.
 		isACTable
 			ifTrue:
 				[self hACTable at: index put: hTable]
