@@ -1,6 +1,7 @@
 importImage
-	"Import the selected file and store the resulting Form or ColorForm in the global dictionary GIFImports, at a key consisting of the short filename up to the first period."
-
-	| ff |
-	ff _ Form fromFile: (directory oldFileNamed: fileName).
-	Smalltalk gifImports at: (fileName sansPeriodSuffix) put: ff.
+	"Import the given image file and store the resulting Form in the global dictionary
+	ImageImports, at a key consisting of the short filename up to the first period.  "
+	| key image |
+	key _ fileName sansPeriodSuffix.
+	image _ Form fromFileNamed: self fullName.
+	Smalltalk imageImports at: key put: image.
