@@ -2,7 +2,7 @@ readFrom: stringOrStream
 	"Answer a number as described on aStream.  The number may
 	include a leading radix specification, as in 16rFADE"
 	| value base aStream sign |
-	aStream _ (stringOrStream isMemberOf: String)
+	aStream _ (stringOrStream isString)
 		ifTrue: [ReadStream on: stringOrStream]
 		ifFalse: [stringOrStream].
 	(aStream nextMatchAll: 'NaN') ifTrue: [^ Float nan].
