@@ -1,4 +1,5 @@
 terminate
 	"Make myself unresumable."
 
-	sender _ nil
+	sender _ nil.
+	pc _ nil.
