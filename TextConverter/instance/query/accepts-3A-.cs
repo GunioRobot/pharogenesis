@@ -1,0 +1,3 @@
+accepts: aSymbol
+
+	self subclassResponsibility.
