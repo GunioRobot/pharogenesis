@@ -11,7 +11,7 @@ at: index put: value
 			ifTrue: [(index >= 1 and: [index <= self size])
 					ifTrue: [self errorImproperStore]
 					ifFalse: [self errorSubscriptBounds: index]]
-			ifFalse: [self error: (self class name) , 's are not indexable']].
+			ifFalse: [self errorNotIndexable]].
 	index isNumber
 		ifTrue: [^self at: index asInteger put: value]
 		ifFalse: [self errorNonIntegerIndex]
