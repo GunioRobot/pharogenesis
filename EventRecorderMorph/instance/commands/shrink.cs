@@ -6,6 +6,6 @@ shrink
 	self writeCheck.
 	oldSize _ priorSize _ tape size.
 	[self condense.  tape size < priorSize] whileTrue: [priorSize _ tape size].
-	PopUpMenu notify: oldSize printString , ' events reduced to ' , tape size printString.
+	self inform: ('{1} events reduced to {2}' translated format:{oldSize. tape size}).
 	voiceRecorder ifNotNil: [voiceRecorder suppressSilence].
 	saved _ false.
