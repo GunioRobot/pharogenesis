@@ -1,4 +1,3 @@
 startMondayOrSundayString
-	^ Week startMonday
-		ifTrue: ['start Sunday']
-		ifFalse: ['start Monday']
+	^(Week startDay  ifTrue: ['start Sunday'] ifFalse: ['start Monday']) 
+		translated
