@@ -1,0 +1,2 @@
+opcodeTable
+	^OpcodeTable
