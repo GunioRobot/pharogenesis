@@ -1,0 +1,2 @@
+browserClass: aBrowserClass
+	browserClass := aBrowserClass
