@@ -9,7 +9,7 @@ paddedSpace
 	spaceCount _ spaceCount + 1.
 	pad _ line justifiedPadFor: spaceCount.
 	lastSpaceOrTabExtent _ lastCharacterExtent copy.
-	lastSpaceOrTabExtent x:  spaceWidth + pad.
+	self lastSpaceOrTabExtentSetX:  spaceWidth + pad.
 	(destX + lastSpaceOrTabExtent x)  >= characterPoint x
 		ifTrue: [lastCharacterExtent _ lastSpaceOrTabExtent copy.
 				^self crossedX].
