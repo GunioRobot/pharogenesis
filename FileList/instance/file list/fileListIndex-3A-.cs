@@ -3,22 +3,24 @@ fileListIndex: anInteger
 
 	| item name |
 	self okToChange ifFalse: [^ self].
-	listIndex _ anInteger.
+	listIndex := anInteger.
 	listIndex = 0 
-		ifTrue: [fileName _ nil]
+		ifTrue: [fileName := nil]
 		ifFalse:
-			[item _ self fileNameFromFormattedItem: (list at: anInteger).
+			[item := self fileNameFromFormattedItem: (list at: anInteger).
 			(item endsWith: self folderString)
 				ifTrue:
 					["remove [...] folder string and open the folder"
-					name _ item copyFrom: 1 to: item size - directory folderString size.
-					listIndex _ 0.
-					self changed: #closeScrollBar.  "will write in pane to left (MVC)"
-					self directory: (directory directoryNamed: name).
-					brevityState _ #FileList.
-					^ self changed: #contents]
-				ifFalse: [fileName _ item]].  "open the file selected"
+					name := item copyFrom: 1 to: item size - self folderString size.
+					listIndex := 0.
+					brevityState := #FileList.
+					self addPath: name.
+					name first = $^
+						ifTrue: [self directory: (ServerDirectory serverNamed: name allButFirst)]
+						ifFalse: [volListIndex = 1 ifTrue: [name _ name, directory slash].
+							self directory: (directory directoryNamed: name)]]
+				ifFalse: [fileName := item]].  "open the file selected"
 
-	brevityState _ #needToGetBrief.
+	brevityState := #needToGetBrief.
 	self changed: #fileListIndex.
-	self changed: #contents.
+	self changed: #contents
