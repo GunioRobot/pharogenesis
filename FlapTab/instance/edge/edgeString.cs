@@ -1,2 +1,2 @@
 edgeString
-	^ 'cling to edge... (current: ', edgeToAdhereTo, ')'
+	^ 'cling to edge... (current: {1})' translated format: {edgeToAdhereTo translated}
