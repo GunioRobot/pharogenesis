@@ -6,8 +6,10 @@ browse: pageRef from: request
 	"Make a copy, then format the text."
 	formattedPage formatted: (HTMLformatter swikify: pageRef text
 			linkhandler: [:link | urlmap
-					linkForCache: link
+					linkFor: link
 					from: request peerName
-					storingTo: OrderedCollection new]).
-	request reply: (HTMLformatter evalEmbedded: (self fileContents: source ,'page.html')
+					storingTo: OrderedCollection new
+					page: formattedPage]).
+	request reply: (HTMLformatter evalEmbedded: (self fileContents:
+source ,'page.html')
 			with: formattedPage).
