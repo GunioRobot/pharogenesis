@@ -1,6 +1,5 @@
 findTokens: delimiters
-
-	"Answer the collection of tokens that result from parsing self.  The tokens are seperated by delimiters, any of a string of characters."
+	"Answer the collection of tokens that result from parsing self.  Any character in the String delimiters marks a border.  Several delimiters in a row are considered as just one separation."
 
 	| tokens keyStart keyStop |
 
