@@ -1,3 +1,3 @@
 setChangeSet: aChangeSet
 
-	projectChangeSet _ aChangeSet
+	changeSet _ aChangeSet
