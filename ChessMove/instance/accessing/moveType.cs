@@ -1,0 +1,2 @@
+moveType
+	^type
