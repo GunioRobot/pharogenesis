@@ -1,7 +1,7 @@
-updateReferencesUsing: aDictionary
+updateReferencesUsing: aDictionary 
 	| srcMorph dstMorph |
 	super updateReferencesUsing: aDictionary.
-	srcMorph _ (submorphs at: submorphs size-1).
-	dstMorph _ (submorphs at: submorphs size).
+	srcMorph := submorphs at: submorphs size - 1.
+	dstMorph := submorphs last.
 	self removeAllMorphs.
-	self from: srcMorph to: dstMorph.
+	self from: srcMorph to: dstMorph
