@@ -1,0 +1,2 @@
+classListSelectorTitle
+	^ 'Class List Menu'
