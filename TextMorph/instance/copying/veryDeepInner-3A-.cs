@@ -11,4 +11,6 @@ veryDeepInner: deepCopier
 	editor _ editor veryDeepCopyWith: deepCopier.
 	container _ container veryDeepCopyWith: deepCopier.
 	predecessor _ predecessor.
-	successor _ successor
+	successor _ successor.
+	backgroundColor _ backgroundColor veryDeepCopyWith: deepCopier.
+	margins _ margins veryDeepCopyWith: deepCopier.
