@@ -3,4 +3,4 @@ paste
 	redisplay if necessary.  Undoer & Redoer: undoAndReselect."
 
 	self replace: self selectionInterval with: self clipboardText and:
-		[self selectAt: stopBlock stringIndex]
+		[self selectAt: self pointIndex]
