@@ -1,0 +1,2 @@
+firstDate
+	^ self asDate
