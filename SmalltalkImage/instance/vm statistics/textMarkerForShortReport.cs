@@ -1,0 +1,3 @@
+textMarkerForShortReport
+
+	^  'Since last view	'
