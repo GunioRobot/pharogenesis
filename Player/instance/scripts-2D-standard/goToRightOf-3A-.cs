@@ -1,9 +1,9 @@
 goToRightOf: aPlayer
 
-	| hisCostume |
+	| hisCostume aCostume |
 	(aPlayer == nil or: [aPlayer == self]) ifTrue: [^ self].
 	(hisCostume _ aPlayer costume) isInWorld ifFalse: [^ self].
-	(costume owner == hisCostume owner) ifFalse:
-		[hisCostume owner addMorphFront: costume].
-	costume position:
-		(hisCostume bounds rightCenter - (0 @ (costume height // 2)))
+	((aCostume _ self costume) owner == hisCostume owner) ifFalse:
+		[hisCostume owner addMorphFront: aCostume].
+	aCostume position:
+		(hisCostume bounds rightCenter - (0 @ (aCostume height // 2)))
