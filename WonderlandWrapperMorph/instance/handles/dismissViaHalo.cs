@@ -1,0 +1,2 @@
+dismissViaHalo
+	myActor destroy.
