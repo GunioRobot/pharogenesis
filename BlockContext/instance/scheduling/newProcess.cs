@@ -5,5 +5,5 @@ newProcess
 	^Process
 		forContext: 
 			[self value.
-			Processor terminateActive]
+			Processor terminateActive] asContext
 		priority: Processor activePriority
