@@ -1,5 +1,5 @@
 initialize
-
+	"initialize the state of the receiver"
 	super initialize.
-	self extent: 1@1;
-		color: Color black.
+	""
+	self extent: 1 @ 1
