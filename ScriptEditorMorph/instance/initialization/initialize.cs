@@ -1,12 +1,16 @@
 initialize
-
+	"initialize the state of the receiver"
 	super initialize.
-	color _ ScriptingSystem colorBehindTiles.
-	self listDirection: #topToBottom.
-	self hResizing: #shrinkWrap.
-	self vResizing: #shrinkWrap.
-
-	self setDefaultBorderCharacteristics.
-	firstTileRow _ 1.  "index of first tile-carrying submorph"
+	""
+	self listDirection: #topToBottom;
+		 hResizing: #shrinkWrap;
+		 vResizing: #shrinkWrap;
+		 cellPositioning: #topLeft;
+		 setProperty: #autoFitContents toValue: true;
+	 layoutInset: 2;
+	 useRoundedCorners.
+	self setNameTo: 'Script Editor' translated.
+	firstTileRow _ 1.
+	"index of first tile-carrying submorph"
 	self addNewRow.
-	showingMethodPane _ false.
+	showingMethodPane _ false
