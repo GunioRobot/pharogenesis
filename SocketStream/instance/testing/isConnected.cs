@@ -1,0 +1,2 @@
+isConnected
+	^self socket isConnected
