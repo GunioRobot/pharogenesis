@@ -1,0 +1,2 @@
+messageFile: aMessageFile
+	messageFile := aMessageFile
