@@ -6,6 +6,8 @@ setInvokingView: invokingView
 	This supports MVC's vectoring of non-model messages to the editPane."
 	self items do:
 		[:item |
-		item arguments isEmpty ifTrue:  "only the simple messages"
-			[item arguments: (Array with: item selector with: invokingView).
-			item selector: #perform:orSendTo:]]
+		item hasSubMenu 
+			ifTrue: [ item subMenu setInvokingView: invokingView]
+			ifFalse: [ item arguments isEmpty ifTrue:  "only the simple messages"
+						[item arguments: (Array with: item selector with: invokingView).
+						item selector: #perform:orSendTo:]]]
