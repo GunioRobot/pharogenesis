@@ -5,7 +5,17 @@ contents: aString notifying: aController
 	created a new method, deselect the current selection. Then answer true."
 	| category selector class oldSelector |
 
-	(class _ self selectedClassOrMetaClass) ifNil: [^ false].
+	(class _ self selectedClassOrMetaClass) ifNil:
+		[(myChangeSet preambleString == nil or: [aString size == 0]) ifTrue: [ ^ false].
+		(aString count: [:char | char == $"]) odd 
+			ifTrue: [self inform: 'unmatched double quotes in preamble']
+			ifFalse: [(Scanner new scanTokens: aString) size > 0 ifTrue: [
+				self inform: 'Part of the preamble is not within double-quotes.
+To put a double-quote inside a comment, type two double-quotes in a row.
+(Ignore this warning if you are including a doIt in the preamble.)']].
+		myChangeSet preambleString: aString.
+		self currentSelector: nil.  "forces update with no 'unsubmitted chgs' feedback"
+		^ true].
 	oldSelector _ self selectedMessageName.
 	category _ class organization categoryOfElement: oldSelector.
 	selector _ class compile: aString
