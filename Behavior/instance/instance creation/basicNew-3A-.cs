@@ -5,6 +5,8 @@ basicNew: anInteger
 	Essential. See Object documentation whatIsAPrimitive."
 
 	<primitive: 71>
+	self isVariable ifFalse: [
+		self error: self printString, ' cannot have variable sized instances'].
 	(anInteger isInteger and: [anInteger >= 0]) ifTrue: [
 		"arg okay; space must be low"
 		Smalltalk signalLowSpace.
