@@ -16,5 +16,5 @@ backgroundWorldDisplay
 		f nextPutAll: 'worlds equal ',(formerWorld == World) printString; cr; cr.
 		f nextPutAll: thisContext longStack; cr; cr.
 		f nextPutAll: formerProcess suspendedContext longStack; cr; cr.
-		f close. 1 beep.
+		f close. Beeper beep.
 	].
