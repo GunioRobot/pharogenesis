@@ -1,7 +1,7 @@
 methodNamesContainingIt
-	"Open a browser on methods names containing the selected string.  1/17/96 sw"
+	"Open a browser on methods names containing the selected string"
 
-	startBlock = stopBlock ifTrue: [view flash.  ^ self].
+	self lineSelectAndEmptyCheck: [^ self].
 	Cursor wait showWhile:
-		[self terminateAndInitializeAround: [Smalltalk browseMethodsWhoseNamesContain: self selection string]].
+		[self terminateAndInitializeAround: [Smalltalk browseMethodsWhoseNamesContain: self selection string withBlanksTrimmed]].
 	Cursor normal show
