@@ -1,0 +1,2 @@
+browserSupportsAPI
+	^BrowserSupportsAPI == true
