@@ -1,0 +1,2 @@
+adjustPositionAfterHidingFlap
+	self positionObject: self
