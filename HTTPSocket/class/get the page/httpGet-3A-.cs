@@ -7,4 +7,4 @@ httpGet: url
 	"	HTTPSocket httpShowPage: 'www.altavista.digital.com/'	 "
 	"	HTTPSocket httpShowPage: 'jumbo/tedk/ab.html'	 "
 
-	^ self httpGet: url accept: 'application/octet-stream'
+	^ self httpGet: url accept: '*/*'
