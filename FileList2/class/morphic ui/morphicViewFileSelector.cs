@@ -1,0 +1,3 @@
+morphicViewFileSelector
+
+	^self morphicViewFileSelectorForSuffixes: nil
