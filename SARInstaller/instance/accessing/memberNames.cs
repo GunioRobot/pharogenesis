@@ -1,0 +1,2 @@
+memberNames
+	^self zip memberNames
