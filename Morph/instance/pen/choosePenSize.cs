@@ -1,0 +1,2 @@
+choosePenSize
+	self assuredPlayer choosePenSize
