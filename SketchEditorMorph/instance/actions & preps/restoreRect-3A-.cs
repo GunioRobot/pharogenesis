@@ -1,8 +1,7 @@
 restoreRect: oldRect
 	"Restore the given rectangular area of the painting Form from the undo buffer."
 
-	formCanvas image: undoBuffer
+	formCanvas drawImage: undoBuffer
 		at: oldRect origin
-		sourceRect: (oldRect translateBy: self topLeft negated)
-		rule: Form over.
+		sourceRect: (oldRect translateBy: self topLeft negated).
 	self invalidRect: oldRect.
