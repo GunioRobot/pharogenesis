@@ -1,0 +1,2 @@
+bytesPerBasicElement
+	^4
