@@ -1,3 +1,5 @@
 doPop
 
-	statements addLast: stack removeLast
+	stack last == CaseFlag
+		ifTrue: [stack removeLast]
+		ifFalse: [statements addLast: stack removeLast].
