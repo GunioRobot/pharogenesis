@@ -1,0 +1,2 @@
+internalStackPointer
+	^self cachedStackPointerAt: localCP
