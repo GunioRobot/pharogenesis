@@ -1,2 +1,2 @@
 fontOfPointSize: aPointSize
-	^ fontArray detect: [:aFont | aFont pointSize = aPointSize] ifNone: [nil]
+	^ fontArray at: (self fontIndexOfPointSize: aPointSize)
