@@ -1,3 +1,3 @@
 configureForKids
-	self openToDragNDrop: false.
+	self disableDragNDrop.
 	super configureForKids
