@@ -1,5 +1,4 @@
 displayAt: aPoint 
-	"Show a representation of the receiver as a DisplayText at location aPoint 
-	on the display screen."
+	"Display the receiver as a DisplayText at aPoint on the display screen."
 
-	self asDisplayText displayAt: aPoint
+	self displayOn: Display at: aPoint
