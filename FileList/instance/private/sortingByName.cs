@@ -1,0 +1,2 @@
+sortingByName
+	^ sortMode == #name
