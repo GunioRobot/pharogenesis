@@ -3,4 +3,4 @@ B3DLightSource
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon3D-Lights'
+	category: 'Balloon3D-Kernel-Lights'
