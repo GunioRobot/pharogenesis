@@ -1,2 +1,2 @@
-on: aDecoder
-	^super new initialize decoder: aDecoder
+on: aDecoder 
+	^self new  decoder: aDecoder
