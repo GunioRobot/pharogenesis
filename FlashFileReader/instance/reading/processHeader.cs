@@ -5,7 +5,13 @@ processHeader
 	self processSignature ifFalse:[^false].
 	version _ stream nextByte.
 	"Check for the version supported"
-	version > self maximumSupportedVersion ifTrue:[^false].
+	version > self maximumSupportedVersion ifTrue:[
+		(self confirm:('This file''s version ({1}) is higher than 
+the currently supported version ({2}). 
+It may contain features that are not supported 
+and it may not display correctly.
+Do you want to continue?' translated format:{version. self maximumSupportedVersion})) ifFalse:[^false]].
+
 	dataSize _ stream nextLong.
 	"Check for the minimal file size"
 	dataSize < 21 ifTrue:[^false].
