@@ -1,0 +1,2 @@
+minAngle
+	^minCos arcCos radiansToDegrees
