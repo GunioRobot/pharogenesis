@@ -1,0 +1,1 @@
+AtomicMap03 class instanceVariableNames: ''
