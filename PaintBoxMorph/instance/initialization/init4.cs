@@ -8,11 +8,11 @@ picNewBit _ Form extent: pic24Bit extent depth: 16.
 pic24Bit displayOn: picNewBit.
 OriginalBounds _ picNewBit boundingBox.
 AllOffImage _ Form extent: OriginalBounds extent depth: 16.
-blt _ BitBlt toForm: AllOffImage.
+blt _ BitBlt current toForm: AllOffImage.
 blt sourceForm: picNewBit; combinationRule: Form over;
 		sourceRect: OriginalBounds; destOrigin: 0@0; copyBits.
 
-AllOffImage removeZeroPixelsFromForm.
+AllOffImage mapColor: Color transparent to: Color black.
 self image: AllOffImage.
 self invalidRect: bounds.
 
