@@ -1,7 +1,7 @@
 setProjectHolder: aProject
 
-	projectWindows _ ControlManager new.
-	projectChangeSet _ ChangeSet new initialize.
-	projectTranscript _ TextCollector new.
+	world _ ControlManager new.
+	changeSet _ ChangeSet new initialize.
+	transcript _ TextCollector new.
 	displayDepth _ Display depth.
-	projectHolder _ aProject
+	parentProject _ aProject
