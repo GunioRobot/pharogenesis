@@ -12,7 +12,7 @@ myClasses _ Set new.
 arrayOfRoots do: [:aRoot | aRoot class class == Metaclass ifTrue: [myClasses add: aRoot]].
 outIndexes _ IdentityDictionary new.
 outPointers withIndexDo: [:anOut :ind | 
-	anOut class == Association ifTrue: [
+	anOut isVariableBinding ifTrue: [
 		(myClasses includes: anOut value)
 			ifFalse: [outIndexes at: anOut put: ind]
 			ifTrue: [(Smalltalk associationAt: anOut key ifAbsent: [3]) == anOut 
