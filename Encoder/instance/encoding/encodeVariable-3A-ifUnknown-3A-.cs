@@ -1,6 +1,5 @@
 encodeVariable: name ifUnknown: action
-
-	| varNode assoc sym |
+	| varNode |
 	varNode _ 
 		scopeTable 
 			at: name
