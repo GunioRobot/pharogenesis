@@ -4,6 +4,6 @@ listenOn: port
 	| status |
 	status _ self primSocketConnectionStatus: socketHandle.
 	(status == Unconnected)
-		ifFalse: [self error: 'Socket status must Unconnected before listening for a new connection'].
+		ifFalse: [InvalidSocketStatusException signal: 'Socket status must Unconnected before listening for a new connection'].
 
 	self primSocket: socketHandle listenOn: port.
