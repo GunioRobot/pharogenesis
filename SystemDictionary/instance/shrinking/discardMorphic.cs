@@ -19,4 +19,4 @@ Updated for 2.8 TPR"
 	SystemOrganization removeCategoriesMatching: 'Morphic-*'.
 	SystemOrganization removeSystemCategory: 'Graphics-Transformations'.
 	SystemOrganization removeSystemCategory: 'ST80-Morphic'.
-
+	ScriptingSystem _ nil.
