@@ -1,0 +1,1 @@
+A generic reactions to an event.
