@@ -1,0 +1,2 @@
+isAccelerated
+	^false
