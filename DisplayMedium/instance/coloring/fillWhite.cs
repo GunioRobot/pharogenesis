@@ -1,4 +1,4 @@
 fillWhite
-	"Set all bits in the form to white (zeros)."
+	"Set all bits in the form to white."
 
-	self fill: self boundingBox fillColor: self white
+	self fill: self boundingBox fillColor: Color white.
