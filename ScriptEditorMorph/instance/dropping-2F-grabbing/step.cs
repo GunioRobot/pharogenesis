@@ -1,6 +1,6 @@
 step
 	| hand insertion i space1 d space2 insHt nxtHt prevBot ht2 c1 c2 ii |
-	hand _ self primaryHand.
+	hand _ handWithTile ifNil: [self primaryHand].
 	(hand lastEvent redButtonPressed)
 		ifTrue:
 		[hand submorphCount > 0 ifTrue:
@@ -31,4 +31,4 @@ step
 		self removeSpaces.
 		self allMorphsDo: [:m |
 			(m isKindOf: TileMorph) ifTrue: [
-				m color: (TilePadMorph unbrightColorFor: m color)]]]
+				m color: (ScriptingSystem unbrightColorFor: m color)]]]
