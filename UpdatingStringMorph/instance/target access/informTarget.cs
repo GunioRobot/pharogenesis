@@ -6,6 +6,8 @@ informTarget
 		newValue ifNotNil:
 			[target scriptPerformer perform: putSelector with: newValue.
 			target isMorph ifTrue: [target changed]].
-			self growable ifTrue:
+			self fitContents.
+			(owner isKindOf: TileMorph) ifTrue: [owner resizeToFitLabel]
+			"self growable ifTrue:
 				[self readFromTarget; fitContents.
-				owner updateLiteralLabel]]
+				owner ifNotNil:  [owner updateLiteralLabel]]"]
