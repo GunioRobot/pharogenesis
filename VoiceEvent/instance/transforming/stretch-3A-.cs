@@ -1,0 +1,2 @@
+stretch: aNumber
+	^ self
