@@ -1,2 +1,4 @@
 chooseBlockingColor
-	self mapColor: Color fromUser to: 0 othersTo: 16rFFFFFFFF
+	passingColor _ Color fromUser.
+	passElseBlock _ false.
+	self layoutChanged
