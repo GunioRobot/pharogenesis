@@ -3,4 +3,4 @@ putCoffeeCupClinkInSoundLibrary
 
 	self addLibrarySoundNamed: 'clink'
 		samples: self coffeeCupClink
-		sampleRate: 11025
+		samplingRate: 11025
