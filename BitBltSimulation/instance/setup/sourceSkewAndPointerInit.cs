@@ -2,6 +2,7 @@ sourceSkewAndPointerInit
 	"This is only used when source and dest are same depth,
 	ie, when the barrel-shift copy loop is used."
 	| dWid sxLowBits dxLowBits pixPerM1 |
+	self inline: true.
 	pixPerM1 _ pixPerWord - 1.  "A mask, assuming power of two"
 	sxLowBits _ sx bitAnd: pixPerM1.
 	dxLowBits _ dx bitAnd: pixPerM1.
@@ -23,9 +24,10 @@ sourceSkewAndPointerInit
 			ifFalse: [skew _ skew-32]].
 
 	"Calc byte addr and delta from longWord info"
-	sourceIndex _ (sourceBits + 4) + (sy * sourceRaster + (sx // (32//sourcePixSize)) *4).
+	sourceIndex _ sourceBits + (sy * sourcePitch) + ((sx // (32//sourcePixSize)) *4).
 	"calculate increments from end of 1 line to start of next"
-	sourceDelta _ 4 * ((sourceRaster * vDir) - (nWords * hDir)).
+	sourceDelta _ (sourcePitch * vDir) - (4 * (nWords * hDir)).
+
 	preload ifTrue:
 		["Compensate for extra source word fetched"
 		sourceDelta _ sourceDelta - (4*hDir)].
