@@ -1,6 +1,5 @@
 stopSoundTrackIfAny
-
-	scorePlayer == nil ifTrue:[^ self].
-	(scorePlayer isKindOf: SampledSound)
+	scorePlayer isNil ifTrue: [^self].
+	(scorePlayer isKindOf: SampledSound) 
 		ifTrue: [scorePlayer endGracefully]
-		ifFalse: [scorePlayer _ nil]
+		ifFalse: [scorePlayer := nil]
