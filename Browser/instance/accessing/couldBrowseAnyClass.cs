@@ -3,7 +3,7 @@ couldBrowseAnyClass
 
 	self dependents
 		detect: [:d |
-			(d class == PluggableListView) and: 
+			((d isKindOf: PluggableListView) or: [d isKindOf: PluggableListMorph]) and: 
 			[d getListSelector == #systemCategoryList]]
 		ifNone: [^ false].
 	^ true
