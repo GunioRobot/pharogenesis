@@ -5,7 +5,8 @@ printArgumentsOn: aStream indent: level
 			[arguments do: 
 				[:arg | 
 				aStream nextPut: $:.
-				aStream nextPutAll: arg key.
+				aStream withAttributes: (Preferences syntaxAttributesFor: #blockArgument)
+					do: [aStream nextPutAll: arg key].
 				aStream space].
 			aStream nextPutAll: '| '.
 			"If >0 args and >1 statement, put all statements on separate lines"
