@@ -1,2 +1,2 @@
 outline
-	^ outline ifNil:[outline _ POSimplePolygon new].
+	^ outline ifNil:[outline _ ReadWriteStream on: #()]
