@@ -1,0 +1,3 @@
+alwaysAcceptBlock
+
+	^[:theDirectory :theFileName | true]
