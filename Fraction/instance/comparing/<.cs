@@ -1,7 +1,6 @@
-< aFraction
-
-	(aFraction isMemberOf: Fraction)
-		ifTrue: [aFraction numerator = 0
+< aNumber
+	aNumber isFraction
+		ifTrue: [aNumber numerator = 0
 				ifTrue: [^numerator < 0]
-				ifFalse: [^self - aFraction < 0]]
-		ifFalse: [^self retry: #< coercing: aFraction]
+				ifFalse: [^self - aNumber < 0]]
+		ifFalse: [^ (aNumber adaptFraction: self) < aNumber adaptToFraction]
