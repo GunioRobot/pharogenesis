@@ -1,3 +1,3 @@
 loadSineWave
 
-	self loadSoundData: FMSound sineTable.
+	self loadSoundData: SoundBuffer sineTable.
