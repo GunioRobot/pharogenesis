@@ -5,8 +5,11 @@ newFileNamed: fullName
 	file _ self as: ServerFile.
 	(fullName includes: self pathNameDelimiter)
 		ifTrue: [file fullPath: fullName]		"sets server, directory(path), fileName"
-		ifFalse: [file fileName: fullName].	"already have the rest"
+		ifFalse: [file fileName: fullName].	"JUST a single NAME, rest is here"
+			"Mac files that include / in name, must encode it as %2F "
 	file readWrite.
+	file type == #file ifTrue: [
+		^ FileStream newFileNamed: (file fileNameRelativeTo: self)].
 	file exists 
 		ifTrue: [
 			selection _ (PopUpMenu labels: 'overwrite that file
@@ -19,6 +22,7 @@ already exists.']
 	selection = 1 ifTrue:
 		[remoteStrm _ RemoteFileStream on: (String new: 2000).
 		remoteStrm remoteFile: file.
+		remoteStrm dataIsValid.	"empty stream is the real contents!"
 		^ remoteStrm].	"no actual writing till close"
 	selection = 2 ifTrue: [
 		^ self newFileNamed:
