@@ -1,0 +1,2 @@
+borderColorWhenStopped
+	^ Color red
