@@ -6,6 +6,15 @@ openContext: haltContext label: aString contents: contentsString
 			[ErrorRecursion _ false.
 			self primitiveError: aString].
 	ErrorRecursion _ true.
+	World ifNotNil:
+			["Put up a Morphic debugger in Morphic worlds"
+			"Written so that Morphic can still be removed."
+			(Smalltalk at: #DebuggerStub) openContext: haltContext
+				label: aString
+				contents: contentsString.
+			ErrorRecursion _ false.
+			Project current spawnNewProcess.
+			^ Processor activeProcess suspend].
 	self openNotifier: (Debugger context: haltContext)
 		contents: contentsString
 		label: aString.
