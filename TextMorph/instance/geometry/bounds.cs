@@ -1,3 +1,3 @@
 bounds
 	container ifNil: [^ bounds].
-	^ container bounds
+	^ container bounds ifNil: [bounds]
