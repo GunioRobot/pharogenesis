@@ -1,7 +1,5 @@
-selectFrom: selection
-
-	(trackIndex = (selection at: 1)
-		and: [indexInTrack >= (selection at: 2)
-		and: [indexInTrack <= (selection at: 3)]])
+selectFrom: selection 
+	(trackIndex = selection first and: 
+			[indexInTrack >= (selection second) and: [indexInTrack <= (selection third)]]) 
 		ifTrue: [selected ifFalse: [self select]]
 		ifFalse: [selected ifTrue: [self deselect]]
