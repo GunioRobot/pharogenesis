@@ -1,3 +1,3 @@
 = anObject
-	^self class == anObject class and: [
+	^self species == anObject species and: [
 		self byteArrayMap = anObject byteArrayMap ]
