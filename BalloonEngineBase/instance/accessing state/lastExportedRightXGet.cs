@@ -1,0 +1,2 @@
+lastExportedRightXGet
+	^workBuffer at: GWLastExportedRightX
