@@ -1,0 +1,3 @@
+makeTargetGradientFill
+
+	myTarget useGradientFill
