@@ -1,0 +1,2 @@
+shape
+	^self getAttribute: 'shape'
