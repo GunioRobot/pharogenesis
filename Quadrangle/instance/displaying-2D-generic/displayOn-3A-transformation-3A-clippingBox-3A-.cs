@@ -9,7 +9,7 @@ displayOn: aDisplayMedium transformation: aWindowingTransformation clippingBox: 
 		(aWindowingTransformation applyTo: self) intersect: aRectangle.
 	borderWidth ~~ 0 & (insideColor ~~ nil)
 		ifTrue: 
-			[aDisplayMedium fill: screenRectangle fillColor: Display black "borderColor".
+			[aDisplayMedium fill: screenRectangle fillColor: Color black "borderColor".
 			aDisplayMedium
 				fill: (screenRectangle insetBy: borderWidth)
 				fillColor: insideColor]
