@@ -1,0 +1,2 @@
+printAlternateSyntax
+	^ self valueOfFlag: #printAlternateSyntax
