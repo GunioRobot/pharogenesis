@@ -1,0 +1,3 @@
+createInstance
+
+	^self basicNew initialize
