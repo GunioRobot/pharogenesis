@@ -1,0 +1,2 @@
+standardPaletteIsAlready: aPalette
+	^ standardPalette == aPalette
