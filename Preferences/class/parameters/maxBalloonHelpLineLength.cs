@@ -1,0 +1,2 @@
+maxBalloonHelpLineLength
+	^ Parameters at: #maxBalloonHelpLineLength
