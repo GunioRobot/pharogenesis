@@ -5,18 +5,21 @@ primitivePerformAt: lookupClass
 	The only failures are arg types and consistency of argumentCount."
 
 	| performSelector argumentArray arraySize index cntxSize performMethod performArgCount |
-	argumentArray _ self popStack.
-	self assertClassOf: argumentArray is: (self splObj: ClassArray).
+	argumentArray _ self stackTop.
+	(self isArray: argumentArray) ifFalse:[^self primitiveFail].
+
 	successFlag ifTrue:
-		["Check for enough space to push all args"
+		["Check for enough space in thisContext to push all args"
 		arraySize _ self fetchWordLengthOf: argumentArray.
 		cntxSize _ self fetchWordLengthOf: activeContext.
 		self success: (self stackPointerIndex + arraySize) < cntxSize].
-	successFlag ifFalse: [^ self unPop: 1].
+	successFlag ifFalse: [^nil].
 
 	performSelector _ messageSelector.
 	performMethod _ newMethod.
 	performArgCount _ argumentCount.
+	"pop the arg array and the selector, then push the args out of the array, as if they were on the stack"
+	self popStack.
 	messageSelector _ self popStack.
 
 	"Copy the arguments to the stack, and execute"
@@ -26,12 +29,17 @@ primitivePerformAt: lookupClass
 		[self push: (self fetchPointer: index - 1 ofObject: argumentArray).
 		index _ index + 1].
 	argumentCount _ arraySize.
+
 	self findNewMethodInClass: lookupClass.
-	self success: (self argumentCountOf: newMethod) = argumentCount.
+
+	"Only test CompiledMethods for argument count - any other objects playacting as CMs will have to take their chances"
+	(self isCompiledMethod: newMethod)
+		ifTrue: [self success: (self argumentCountOf: newMethod) = argumentCount].
+
 	successFlag
-		ifTrue: [self executeNewMethod.  "Recursive xeq affects successFlag"
+		ifTrue: [self executeNewMethodFromCache.  "Recursive xeq affects successFlag"
 				successFlag _ true]
-		ifFalse: ["Restore the state and fail"
+		ifFalse: ["Restore the state by popping all those array entries and pushing back the selector and array, and fail"
 				self pop: argumentCount.
 				self push: messageSelector.
 				self push: argumentArray.
