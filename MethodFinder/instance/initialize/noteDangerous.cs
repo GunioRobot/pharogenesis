@@ -33,14 +33,18 @@ noteDangerous
 "No Restrictions:   Boolean, False, True, "
 
 "Morph"
-	#(fullCopy copyRecordingIn:)
+	#()
 		do: [:sel | Dangerous add: sel].
 
 "Behavior"
 	#(obsolete confirmRemovalOf: copyOfMethodDictionary literalScannedAs:notifying: storeLiteral:on: addSubclass: removeSubclass: superclass: 
 "creating method dictionary" addSelector:withMethod: compile: compile:notifying: compileAll compileAllFrom: compress decompile: defaultSelectorForMethod: methodDictionary: recompile:from: recompileChanges removeSelector: compressedSourceCodeAt: selectorAtMethod:setClass: allInstances allSubInstances inspectAllInstances inspectSubInstances thoroughWhichSelectorsReferTo:special:byte: "enumerating" allInstancesDo: allSubInstancesDo: allSubclassesDo: allSuperclassesDo: selectSubclasses: selectSuperclasses: subclassesDo: withAllSubclassesDo:
-"user interface" allCallsOn: browse browseAllAccessesTo: browseAllCallsOn: browseAllStoresInto: "too slow->" crossReference removeUninstantiatedSubclassesSilently "too slow->" unreferencedInstanceVariables
-"private" becomeCompact becomeUncompact flushCache format:variable:words:pointers: format:variable:words:pointers:weak: printSubclassesOn:level: removeSelectorSimply:)
+   "too slow->" crossReference removeUninstantiatedSubclassesSilently "too slow->" unreferencedInstanceVariables
+"private" becomeCompact becomeUncompact flushCache format:variable:words:pointers: format:variable:words:pointers:weak: printSubclassesOn:level: basicRemoveSelector: addSelector:withMethod:notifying: addSelectorSilently:withMethod:)
+		do: [:sel | Dangerous add: sel].
+
+"CompiledMethod"
+	#(defaultSelector)
 		do: [:sel | Dangerous add: sel].
 
 "Others "
