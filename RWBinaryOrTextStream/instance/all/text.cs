@@ -1,0 +1,2 @@
+text
+	isBinary _ false
