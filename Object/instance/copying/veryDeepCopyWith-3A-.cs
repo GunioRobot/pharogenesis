@@ -5,10 +5,13 @@ veryDeepCopyWith: deepCopier
 	class _ self class.
 	class isMeta ifTrue: [^ self].		"a class"
 	new _ self clone.
-	class isSystemDefined ifFalse: [
+	(class isSystemDefined not and: [deepCopier newUniClasses "allowed"]) ifTrue: [
 		uc _ deepCopier uniClasses at: class ifAbsent: [nil].
-		uc ifNil: [deepCopier uniClasses at: class put: (uc _ self copyUniClassWith: deepCopier)].
-		new _ uc new].
+		uc ifNil: [
+			deepCopier uniClasses at: class put: (uc _ self copyUniClassWith: deepCopier).
+			deepCopier references at: class put: uc].	"remember"
+		new _ uc new.
+		new copyFrom: self].	"copy inst vars in case any are weak"
 	deepCopier references at: self put: new.	"remember"
 	(class isVariable and: [class isPointers]) ifTrue: 
 		[index _ self basicSize.
@@ -24,9 +27,10 @@ veryDeepCopyWith: deepCopier
 	"other superclasses want all inst vars deep copied"
 	sup _ class.  index _ class instSize.
 	[has _ sup compiledMethodAt: #veryDeepInner: ifAbsent: [nil].
+	has _ has ifNil: [class isSystemDefined not "is a uniClass"] ifNotNil: [true].
 	mine _ sup instVarNames.
-	has ifNotNil: [index _ index - mine size]
-		ifNil: [1 to: mine size do: [:xx |
+	has ifTrue: [index _ index - mine size]	"skip inst vars"
+		ifFalse: [1 to: mine size do: [:xx |
 				sub _ self instVarAt: index.
 				(subAss _ deepCopier references associationAt: sub ifAbsent: [nil])
 						"use association, not value, so nil is an exceptional value"
