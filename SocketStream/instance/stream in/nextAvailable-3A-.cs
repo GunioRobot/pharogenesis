@@ -1,5 +1,7 @@
 nextAvailable: howMany
-	"Answer howMany bytes of data at most, otherwise answer as many as available."
-	self inStream atEnd ifFalse: [^ self inStream next: howMany].
+	"Answer all the data currently available,
+	in buffer or in socket - but limited to <howMany>."
+
+	self isInBufferEmpty ifFalse: [^self nextInBuffer: howMany].
 	self isDataAvailable ifTrue: [self receiveData].
-	^self inStream next: howMany
+	^self nextInBuffer: howMany
