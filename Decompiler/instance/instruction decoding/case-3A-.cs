@@ -5,10 +5,13 @@ case: dist
 	nextCase _ pc + dist.
 	end _ limit.
 	"Now add CascadeFlag & keyValueBlock to statements"
-	statements addLast: stack removeLast; addLast: (self blockTo: nextCase).
-	stack last == CascadeFlag
-		ifFalse: "Last case"
+	statements addLast: stack removeLast.
+	stack addLast: CaseFlag. "set for next pop"
+	statements addLast: (self blockForCaseTo: nextCase).
+	stack last == CaseFlag
+		ifTrue: "Last case"
 			["ensure jump is within block (in case thenExpr returns wierdly I guess)"
+			stack removeLast. "get rid of CaseFlag".
 			thenJump _ exit <= end ifTrue: [exit] ifFalse: [nextCase].
 			stmtStream _ ReadStream on: (self popTo: stack removeLast).
 			elements _ OrderedCollection new.
