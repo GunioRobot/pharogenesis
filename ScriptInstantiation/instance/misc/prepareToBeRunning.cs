@@ -1,0 +1,2 @@
+prepareToBeRunning
+	lastTick _ nil.
