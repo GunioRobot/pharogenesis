@@ -3,13 +3,13 @@ deliverPainting: result
 
 	| newBox newForm |
 	action == #areaFill: ifTrue: [palette setCurrentBrush: palette brush3a].
-	palette setAction: #paint:.	"Get out of odd modes"
+	palette ifNotNil: "nil happens" [palette setAction: #paint:].	"Get out of odd modes"
 	"rot _ palette getRotations."	"rotate with heading, or turn to and fro"
 	"palette setRotation: #normal."
 	result == #cancel ifTrue: [^ self cancelOutOfPainting].	"for Morphic"
 
 	"hostView rotationStyle: rot."		"rotate with heading, or turn to and fro"
-	newBox _ paintingForm innerPixelRectFor: 0 orNot: true.
+	newBox _ paintingForm rectangleEnclosingPixelsNotOfColor: Color transparent.
 	registrationPoint ifNotNil:
 		[registrationPoint _ registrationPoint - newBox origin]. "relative to newForm origin"
 	newForm _ 	Form extent: newBox extent depth: paintingForm depth.
