@@ -1,0 +1,3 @@
+loopStartIndex
+
+	^ loopStartIndex
