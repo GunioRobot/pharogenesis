@@ -1,5 +1,4 @@
-mouseMoveEvent: event noteMorph: noteMorph pitch: pitch
-
-	(noteMorph containsPoint: event cursorPoint) ifFalse:
-		["If drag out of me, zap focus so other morphs can see drag in."
-		event hand releaseMouseFocus: noteMorph]
+mouseMoveEvent: arg1 noteMorph: arg2 pitch: arg3
+	"Reorder the arguments for existing event handlers"
+	(arg3 isMorph and:[arg3 eventHandler notNil]) ifTrue:[arg3 eventHandler fixReversedValueMessages].
+	^self mouseMovePitch: arg1 event: arg2 noteMorph: arg3
