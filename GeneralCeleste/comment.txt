@@ -1,0 +1,2 @@
+A version of the interface that allows a general list of filters.
+
