@@ -1,0 +1,2 @@
+loopCount
+	^loopCount
