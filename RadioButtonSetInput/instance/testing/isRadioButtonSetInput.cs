@@ -1,0 +1,2 @@
+isRadioButtonSetInput
+	^true
