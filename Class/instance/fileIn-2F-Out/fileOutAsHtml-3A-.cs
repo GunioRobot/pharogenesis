@@ -11,3 +11,5 @@ fileOutAsHtml: useHtml
 			ifTrue: [self fileOutSharedPoolsOn: fileStream]].
 	self fileOutOn: fileStream moveSource: false toFile: 0.
 	fileStream trailer; close.
+
+	DeepCopier new checkVariables.
