@@ -3,7 +3,7 @@ scriptSelectorToTriggerFor: aButtonMorph
 
 	| buttonName selectorName |
 	buttonName _ aButtonMorph externalName.
-	selectorName _ ScriptingSystem acceptableScriptNameFrom: buttonName  forScriptCurrentlyNamed:  nil asScriptNameIn: self assuredPlayer world: self world.
+	selectorName _ self assuredPlayer acceptableScriptNameFrom: buttonName  forScriptCurrentlyNamed: nil.
 
 	buttonName ~= selectorName ifTrue:
 		[aButtonMorph setNameTo: selectorName].
