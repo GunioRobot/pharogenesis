@@ -5,6 +5,13 @@ openAsMorphEditing: editString
 	hSepFrac _ 0.4.
 	window _ (SystemWindow labelled: 'later') model: self.
 
+"The method SystemWindow>>addMorph:fullFrame: checks scrollBarsOnRight, then adds the morph at the back if true, otherwise it is added in front. But flopout hScrollbars need the lowerpanes to be behind the upper ones in the draw order. Hence the value of scrollBarsOnRight affects the order in which the lowerpanes are added. "
+	Preferences scrollBarsOnRight ifFalse:
+		[self 
+			addLowerPanesTo: window 
+			at: (0@hSepFrac corner: 1@1) 
+			with: editString].
+		
 	window 
 		addMorph: self buildMorphicSystemCatList
 		frame: (0@0 corner: 0.25@hSepFrac).
@@ -17,9 +24,12 @@ openAsMorphEditing: editString
 		frame: (0.5@0 extent: 0.25@hSepFrac).
 	window addMorph: self buildMorphicMessageList
 		frame: (0.75@0 extent: 0.25@hSepFrac).
-	self 
-		addLowerPanesTo: window 
-		at: (0@hSepFrac corner: 1@1) 
-		with: editString.
+
+	Preferences scrollBarsOnRight ifTrue:
+		[self 
+			addLowerPanesTo: window 
+			at: (0@hSepFrac corner: 1@1) 
+			with: editString].
+
 	window setUpdatablePanesFrom: #(systemCategoryList classList messageCategoryList messageList).
 	^ window
