@@ -1,0 +1,2 @@
+isOnFile
+	^ state == #onFile
