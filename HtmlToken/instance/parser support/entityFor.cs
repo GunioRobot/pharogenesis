@@ -1,0 +1,2 @@
+entityFor
+	^self subclassResponsibility
