@@ -2,5 +2,5 @@ printPatchSequence: seq on: aStream
 	seq do: 
 		[:assoc | 
 		aStream
-			withAttribute: (self attributeOf: assoc key)
+			withAttributes: (self attributesOf: assoc key)
 			do: [aStream nextPutAll: assoc value; cr]]
