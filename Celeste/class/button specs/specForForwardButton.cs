@@ -1,3 +1,3 @@
 specForForwardButton
-	"action label helpText"
-	^ #(#turnOn 'Forward' 'Forward the selected message' )
+	"getState action label helpText"
+	^ #(nil #forward 'Forward' 'Forward the selected message' )
