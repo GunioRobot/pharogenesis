@@ -1,0 +1,2 @@
+lock
+	lockFlag _ true
