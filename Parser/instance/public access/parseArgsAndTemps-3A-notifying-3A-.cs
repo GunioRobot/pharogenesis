@@ -9,4 +9,4 @@ parseArgsAndTemps: aString notifying: req
         doitFlag _ false.               "Don't really know if a doit or not!"
         ^self initPattern: aString
                 notifying: req
-                return: [:pattern | (pattern at: 2) , self temporaries]
+                return: [:pattern | (pattern at: 2) , 	self temporariesIn: (pattern at: 1)]
