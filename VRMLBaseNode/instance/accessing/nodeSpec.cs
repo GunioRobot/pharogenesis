@@ -1,0 +1,2 @@
+nodeSpec
+	^self subclassResponsibility
