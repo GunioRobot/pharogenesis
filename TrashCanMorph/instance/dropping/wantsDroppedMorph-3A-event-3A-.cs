@@ -1,3 +1,3 @@
 wantsDroppedMorph: aMorph event: evt
 
-	^ aMorph ~~ self
+	^ (aMorph ~~ self) and: [aMorph ~~ Utilities scrapsBook]
