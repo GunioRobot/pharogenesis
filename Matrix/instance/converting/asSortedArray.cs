@@ -1,0 +1,2 @@
+asSortedArray
+	^contents asSortedArray
