@@ -1,5 +1,4 @@
-enablementSelector: aSelector
-
-	(aSelector isKindOf: BlockContext)
-		ifTrue: [enablementSelector _ aSelector copyForSaving]
-		ifFalse: [enablementSelector _ aSelector]
+enablementSelector: aSelector 
+	enablementSelector := (aSelector isKindOf: BlockContext) 
+				ifTrue: [aSelector copyForSaving]
+				ifFalse: [aSelector] 
