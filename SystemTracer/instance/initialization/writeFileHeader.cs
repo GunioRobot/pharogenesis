@@ -11,4 +11,10 @@ writeFileHeader
 	self write4Bytes: Display width * 16r10000 + Display height.  "display size"
 	file position > imageHeaderSize ifTrue: [self error: 'Header ran over allotted length'].
 	file padTo: imageHeaderSize put: 0.  "Pad header page"
-	file setType: 'STim' creator: 'FAST'; close
+
+	"On Mac, set the file type and creator (noop on other platforms)"
+	FileDirectory default
+		setMacFileNamed: file fullName
+		type: 'STim'
+		creator: 'FAST'.
+	file close.
