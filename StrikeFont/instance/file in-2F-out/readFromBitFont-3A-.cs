@@ -68,5 +68,4 @@ readFromBitFont: fileName
 	glyphs _ Form extent: (xTable at: maxAscii+3) @ self height.
 	glyphs copy: glyphs boundingBox from: 0@0 in: tempGlyphs rule: Form over.
 	xTable _ xTable copyFrom: 1 to: maxAscii+3.
-
-	self setStopConditions
+	characterToGlyphMap _ nil.
