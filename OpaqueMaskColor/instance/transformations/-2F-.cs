@@ -1,0 +1,3 @@
+/ aFactor
+
+	^ self
