@@ -1,0 +1,3 @@
+deleteOnMouseUp
+
+	^ deleteOnMouseUp
