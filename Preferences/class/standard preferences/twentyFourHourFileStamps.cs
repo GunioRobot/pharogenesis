@@ -1,0 +1,2 @@
+twentyFourHourFileStamps
+	^ self valueOfFlag: #twentyFourHourFileStamps
