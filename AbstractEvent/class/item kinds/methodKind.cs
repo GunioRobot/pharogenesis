@@ -1,0 +1,3 @@
+methodKind
+
+	^#method
