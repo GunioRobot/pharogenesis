@@ -1,2 +1,2 @@
-directoryNamesFor: fullString
-	^model directoryNamesFor: itemName, FileDirectory slash, fullString
+directoryNamesFor: anItem
+	^model directoryNamesFor: anItem
