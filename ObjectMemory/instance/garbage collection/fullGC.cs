@@ -3,6 +3,7 @@ fullGC
 
 	| startTime |
 	self inline: false.
+	DoAssertionChecks ifTrue: [self reverseDisplayFrom: 0 to: 7].
 	self preGCAction: true.
 	startTime _ self ioMicroMSecs.
 	self clearRootsTable.
@@ -16,3 +17,4 @@ fullGC
 
 	youngStart _ freeBlock.  "reset the young object boundary"
 	self postGCAction.
+	DoAssertionChecks ifTrue: [self reverseDisplayFrom: 0 to: 7].
