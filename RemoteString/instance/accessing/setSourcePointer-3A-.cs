@@ -1,0 +1,3 @@
+setSourcePointer: aSourcePointer
+	sourceFileNumber _ SourceFiles fileIndexFromSourcePointer: aSourcePointer.
+	filePositionHi _ SourceFiles filePositionFromSourcePointer: aSourcePointer
