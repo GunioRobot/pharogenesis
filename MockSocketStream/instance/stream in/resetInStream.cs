@@ -1,0 +1,2 @@
+resetInStream
+	inStream := WriteStream on: ''.
