@@ -1,4 +1,4 @@
 browseInstVarDefs 
 
 	| cls |
-	(cls _ self selectedClassOrMetaClass) ifNotNil: [cls browseInstVarDefs]
+	(cls _ self selectedClassOrMetaClass) ifNotNil: [self systemNavigation browseInstVarDefs: cls]
