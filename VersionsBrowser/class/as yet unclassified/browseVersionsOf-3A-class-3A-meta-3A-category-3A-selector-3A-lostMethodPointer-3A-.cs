@@ -1,13 +1,15 @@
 browseVersionsOf: method class: class meta: meta category: msgCategory selector: selector lostMethodPointer: sourcePointer 
-	| changeList |
+	| changeList browser |
 	Cursor read showWhile:
-		[changeList _ self new
+		[changeList _ (browser _ self new)
 			scanVersionsOf: method class: class meta: meta
 			category: msgCategory selector: selector].
-	changeList ifNil: [^ self inform: 'No versions available'].
+	changeList ifNil: [ self inform: 'No versions available'. ^nil ].
 
 	sourcePointer ifNotNil:
 		[changeList setLostMethodPointer: sourcePointer].
 
 	self open: changeList name: 'Recent versions of ' ,
-selector multiSelect: false
+selector multiSelect: false.
+
+	^browser
