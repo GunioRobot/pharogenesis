@@ -1,3 +1,3 @@
 primitiveBeep
 
-	self beep.
+	Beeper beep.
