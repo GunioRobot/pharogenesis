@@ -1,6 +1,6 @@
 WonderlandActor
 	subclass: #WonderlandLightSource
-	instanceVariableNames: 'lightColor '
+	instanceVariableNames: 'lightColor'
 	classVariableNames: ''
-	poolDictionaries: 'B3DEngineConstants '
-	category: 'Balloon3D-Wonderland Lights'
+	poolDictionaries: 'B3DEngineConstants'
+	category: 'Balloon3D-Wonderland-Lights'
