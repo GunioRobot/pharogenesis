@@ -1,0 +1,2 @@
+clearSpanBufferGet
+	^workBuffer at: GWClearSpanBuffer
