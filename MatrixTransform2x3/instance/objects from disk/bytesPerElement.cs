@@ -1,0 +1,3 @@
+bytesPerElement
+
+	^ 4.
