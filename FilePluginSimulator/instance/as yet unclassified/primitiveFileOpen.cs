@@ -1,0 +1,2 @@
+primitiveFileOpen
+	^interpreterProxy primitiveFileOpen
