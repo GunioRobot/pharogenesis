@@ -1,0 +1,9 @@
+mouseUp: evt
+	"An attempt to break up the old processRedButton code into threee phases"
+	(startBlock = stopBlock 
+		and: [oldInterval = (startBlock stringIndex to: startBlock stringIndex-1)])
+		ifTrue: [self selectWord].
+	self setEmphasisHere.
+	(self isDisjointFrom: oldInterval) ifTrue:
+		[otherInterval _ oldInterval].
+	paragraph selectionStart: startBlock selectionStop: stopBlock
