@@ -5,4 +5,4 @@ confirm: queryString
 
 	"PopUpMenu confirm: 'Are you hungry?'"
 
-	^ self confirm: queryString trueChoice: 'Yes' falseChoice: 'No'
+	^ self confirm: queryString trueChoice: 'Yes' translated falseChoice: 'No' translated
