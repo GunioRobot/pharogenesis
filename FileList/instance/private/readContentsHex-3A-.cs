@@ -3,27 +3,28 @@ readContentsHex: brevity
 	  Don't create a file here.  Check if exists."
 	| f size data hexData s |
 
-	f _ directory oldFileOrNoneNamed: self fullName. 
-	f == nil ifTrue: [^ 'For some reason, this file cannot be read'].
-	((size _ f size)) > 5000 & brevity
-		ifTrue: [data _ f next: 10000. f close. brevityState _ #briefHex]
-		ifFalse: [data _ f contentsOfEntireFile. brevityState _ #fullHex].
+	f := directory oldFileOrNoneNamed: self fullName. 
+	f == nil ifTrue: [^ 'For some reason, this file cannot be read' translated].
+	f binary.
+	((size := f size)) > 5000 & brevity
+		ifTrue: [data := f next: 10000. f close. brevityState := #briefHex]
+		ifFalse: [data := f contentsOfEntireFile. brevityState := #fullHex].
 
-	s _ WriteStream on: (String new: data size*4).
+	s := WriteStream on: (String new: data size*4).
 	0 to: data size-1 by: 16 do:
 		[:loc | s nextPutAll: loc hex; space;
 			nextPut: $(; print: loc; nextPut: $); space; tab.
 		loc+1 to: (loc+16 min: data size) do: [:i | s nextPutAll: (data at: i) hex; space].
 		s cr].
-	hexData _ s contents.
+	hexData := s contents.
 
-	^ contents _ ((size > 5000) & brevity
-		ifTrue: ['File ''', fileName, ''' is ', size printString, ' bytes long.
+	^ contents := ((size > 5000) & brevity
+		ifTrue: ['File ''{1}'' is {2} bytes long.
 You may use the ''get'' command to read the entire file.
 
 Here are the first 5000 characters...
 ------------------------------------------
-', hexData , '
+{3}
 ------------------------------------------
-... end of the first 5000 characters.']
+... end of the first 5000 characters.' translated format: {fileName. size. hexData}]
 		ifFalse: [hexData]).
