@@ -6,5 +6,5 @@ veryDeepInner: deepCopier
 	firstTileRow _ firstTileRow veryDeepCopyWith: deepCopier.
 	timeStamp _ timeStamp veryDeepCopyWith: deepCopier.
 	playerScripted _ playerScripted.		"Weakly copied"
-	handWithTile _ handWithTile.  "Just a cache"
+	handWithTile _ nil.  "Just a cache"
 	showingMethodPane _ showingMethodPane.	"boolean"
