@@ -1,0 +1,2 @@
+prevObj
+	^prev
