@@ -1,0 +1,2 @@
+closeFile
+	self finalize.
