@@ -1,10 +1,7 @@
 printOn: aStream indent: level
 
-	| shown |
 	aStream nextPut: ${.
-	shown _ elements size.
-	1 to: shown do: 
-		[:i | 
-		(elements at: i) printOn: aStream indent: level.
-		i < shown ifTrue: [aStream nextPut: $.; space]].
+	1 to: elements size do: 
+		[:i | (elements at: i) printOn: aStream indent: level.
+		i < elements size ifTrue: [aStream nextPutAll: '. ']].
 	aStream nextPut: $}
