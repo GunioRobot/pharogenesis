@@ -1,0 +1,2 @@
+getMaxVal
+	^  self getValueFromCostume: #maxVal
