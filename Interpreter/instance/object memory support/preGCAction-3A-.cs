@@ -1,2 +1,4 @@
 preGCAction: fullGCFlag
-	"no-op"
+
+	self compilerPreGCHook: fullGCFlag.
+	activeContext == nilObj ifFalse: [self storeContextRegisters: activeContext].
