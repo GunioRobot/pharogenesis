@@ -1,0 +1,2 @@
+destinationSquare
+	^destinationSquare
