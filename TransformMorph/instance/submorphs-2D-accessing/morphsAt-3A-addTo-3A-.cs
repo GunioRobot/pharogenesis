@@ -4,7 +4,7 @@ morphsAt: aPoint addTo: mList
 	(self containsPoint: aPoint) ifFalse:
 		["TransformMorph clips to bounds"
 		^ mList].
-	p _ transform transform: aPoint.
+	p _ transform globalPointToLocal: aPoint.
 	submorphs do: [:m | m morphsAt: p addTo: mList].
 	mList addLast: self.
 	^ mList
