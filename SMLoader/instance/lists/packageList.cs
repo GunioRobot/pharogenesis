@@ -11,7 +11,7 @@ packageList
 						ifTrue: [(self perform: currFilter) value: p]
 						ifFalse: [
 						self package: p
-							filteredByCategory: (model object: currFilter)]]]].
+							filteredByCategory: (squeakMap object: currFilter)]]]].
 	selectedCategoryWrapper ifNil:[self updateLabel: list. ^list].
 	selectedCategory := selectedCategoryWrapper category.
 	list := list select: [:each | self package: each filteredByCategory: selectedCategory].
