@@ -1,0 +1,3 @@
+canAssign
+
+	^ false
