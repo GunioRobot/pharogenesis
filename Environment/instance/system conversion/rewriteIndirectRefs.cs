@@ -27,8 +27,8 @@ rewriteIndirectRefs   "Smalltalk rewriteIndirectRefs"
 					lits _ cm literals.
 					foundOne _ false.
 					lits do:
-						[:lit | lit class == Association ifTrue:
-							[(lit value == cl or: [cl scopeHas: lit key ifTrue: [:ignored]])
+						[:lit | lit isVariableBinding ifTrue:
+							[(lit value == cl or: [(cl bindingOf: lit key) notNil])
 								ifFalse: [foundOne _ true]]].
 					foundOne ifTrue:
 						[self rewriteSourceForSelector: sel inClass: cl using: envtForVar]]].
