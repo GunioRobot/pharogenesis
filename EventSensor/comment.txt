@@ -1,4 +1,7 @@
-EventSensor is a replacement for InputSensor based on a set of (optional) event primitives. An EventSensor updates its state when events are received so that all state based users of Sensor (e.g., Sensor keyboard, Sensor leftShiftDown, Sensor mouseButtons) will work exactly as before, by moving the current VM mechanisms into EventSensor itself. An optional input semaphore is part of the new design. For platforms that support true asynchronous event notification the semaphore can be signaled to indicate pending events. However, since most platforms do not support asynchronous notifications about events EventSensor still has to poll every now and then.
+EventSensor is a replacement for InputSensor based on a set of (optional) event primitives. An EventSensor updates its state when events are received so that all state based users of Sensor (e.g., Sensor keyboard, Sensor leftShiftDown, Sensor mouseButtons) will work exactly as before, by moving the current VM mechanisms into EventSensor itself. An optional input semaphore is part of the new design.
+
+For platforms that support true asynchronous event notification, the semaphore will be signaled to indicate pending events.
+On platforms that do not support asynchronous notifications about events, the UI will have to poll EventSensor periodically to read events from the VM.
 
 Instance variables:
 	mouseButtons <Integer>	- mouse button state as replacement for primMouseButtons
@@ -7,11 +10,13 @@ Instance variables:
 	interruptKey <Integer>			- currently defined interrupt key
 	interruptSemaphore <Semaphore>	- the semaphore signaled when the interruptKey is detected
 	eventQueue <SharedQueue>	- an optional event queue for event driven applications
-	inputProcess <Process>		- the process receiving low-level events
 	inputSemaphore <Semaphore>- the semaphore signaled by the VM if asynchronous event notification is supported
+	lastEventPoll <Integer>		- the last millisecondClockValue at which we called fetchMoreEvents
+	hasInputSemaphore <Boolean>	- true if my inputSemaphore has actually been signaled at least once.
 
 Class variables:
-	EventPollFrequency <Integer>	- the number of milliseconds to wait between polling for more events
+	EventPollPeriod <Integer>	- the number of milliseconds to wait between polling for more events in the userInterruptHandler.
+	EventTicklerProcess <Process>	- the process that makes sure that events are polled for often enough (at least every EventPollPeriod milliseconds).
 
 Event format:
 The current event format is very simple. Each event is recorded into an 8 element array. All events must provide some SmallInteger ID (the first field in the event buffer) and a time stamp (the second field in the event buffer), so that the difference between the time stamp of an event and the current time can be reported.
