@@ -9,7 +9,7 @@ fromWaveFileNamed: fileName
 				snd play.
 				SoundPlayer waitUntilDonePlaying: snd]]."
 
-	| stream header data type channels samplingRate blockAlign bitsPerSample leftData rightData index dataWord |
+	| stream header data type channels samplingRate blockAlign bitsPerSample leftAndRight |
 	stream _ FileStream oldFileNamed: fileName.
 	header _ self readWaveChunk: 'fmt ' inRIFF: stream.
 	data _ self readWaveChunk: 'data' inRIFF: stream.
@@ -33,21 +33,10 @@ fromWaveFileNamed: fileName
 		ifFalse: [data _ self convertBytesTo16BitSamples: data mostSignificantByteFirst: false].
 
 	channels = 2 ifTrue: [
-		leftData _ SoundBuffer newMonoSampleCount: data size.
-		rightData _ SoundBuffer newMonoSampleCount: data size.
-		stream _ ReadStream on: data.
-		index _ 1.
-		[stream atEnd] whileFalse: [
-			dataWord _ self next16BitWord: false from: stream.
-			dataWord > 16r8000 ifTrue: [dataWord _ dataWord - 16r10000].
-			leftData at: index put: dataWord.
-			dataWord _ self next16BitWord: false from: stream.
-			dataWord > 16r8000 ifTrue: [dataWord _ dataWord - 16r10000].
-			rightData at: index put: dataWord.
-			index _ index + 1].
+		leftAndRight _ data splitStereo.
 		^ MixedSound new
-			add: (self samples: leftData samplingRate: samplingRate) pan: 0.0;
-			add: (self samples: rightData samplingRate: samplingRate) pan: 1.0;
+			add: (self samples: leftAndRight first samplingRate: samplingRate) pan: 0.0;
+			add: (self samples: leftAndRight last samplingRate: samplingRate) pan: 1.0;
 			yourself].
 
 	^ self samples: data samplingRate: samplingRate
