@@ -1,9 +1,13 @@
 newFrom: aCollection 
 	"Answer an instance of me containing the same elements as aCollection."
 
-	| newInterval |
-	newInterval _ self from: aCollection first to: aCollection last by:
-		(aCollection last - aCollection first)//(aCollection size - 1).
+    | newInterval n |
+
+    (n := aCollection size) <= 1 ifTrue: [
+		n = 0 ifTrue: [^self from: 1 to: 0].
+		^self from: aCollection first to: aCollection last].
+    	newInterval := self from: aCollection first to: aCollection last
+	by: (aCollection last - aCollection first) // (n - 1).
 	aCollection ~= newInterval
 		ifTrue: [self error: 'The argument is not an arithmetic progression'].
 	^newInterval
