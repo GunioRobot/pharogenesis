@@ -1,3 +1,2 @@
 showingDirectionHandles
-
-	^ directionArrowAnchor ~~ nil
+	^directionArrowAnchor notNil
