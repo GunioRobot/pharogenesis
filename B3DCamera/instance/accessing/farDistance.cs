@@ -1,0 +1,2 @@
+farDistance
+	^perspective farDistance
