@@ -1,0 +1,2 @@
+lightColor
+	^lightColor
