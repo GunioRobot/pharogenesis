@@ -1,6 +1,6 @@
 decompress
 	| newShape |
-	(points isKindOf: String) ifTrue:[
+	(points isOctetString) ifTrue:[
 		newShape _ FlashCodec decompress: (ReadStream on: points).
 		points _ newShape points.
 		leftFills _ newShape leftFills.
