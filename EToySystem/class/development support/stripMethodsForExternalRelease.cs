@@ -1,4 +1,4 @@
 stripMethodsForExternalRelease
 	"EToySystem stripMethodsForExternalRelease"
 
-	Utilities stripMethods: self methodsToStripForExternalRelease messageCode: '2.0BetaExternal'
+	Utilities stripMethods: self methodsToStripForExternalRelease messageCode: '2.3External'
