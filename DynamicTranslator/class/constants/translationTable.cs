@@ -1,0 +1,2 @@
+translationTable
+	^TranslationTable
