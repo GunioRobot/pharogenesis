@@ -3,5 +3,5 @@ attachMorph: m
 	| delta |
 	delta _ m bounds extent // 2.
 	gridOn ifTrue: [delta _ delta grid: grid].
-	m position: self position - delta.
+	m position: (formerPosition _ self position - delta).
 	self addMorphBack: m.
