@@ -3,7 +3,7 @@ labels: labelList lines: linesArray selections: selectionsArray
 	"Labels can be either a sting with embedded crs, or a collection of strings."
 
 	| labelArray |
-	(labelList isMemberOf: String)
+	labelList isString
 		ifTrue: [labelArray _ labelList findTokens: String cr]
 		ifFalse: [labelArray _ labelList].
 	1 to: labelArray size do: [:i |
