@@ -4,7 +4,7 @@ classComment: aString
 
 	(aString isKindOf: RemoteString) 
 		ifTrue: [globalComment _ aString]
-		ifFalse: [aString size = 0
+		ifFalse: [(aString == nil or: [aString size = 0])
 			ifTrue: [globalComment _ nil]
 			ifFalse: [
 				self error: 'use aClass classComment:'.
