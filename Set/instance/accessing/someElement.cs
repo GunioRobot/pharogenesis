@@ -1,4 +1,4 @@
 someElement
-	"Return some element of the Set.  "
+	"Deprecated. Use anyOne."
 
-	^ array detect: [:each | each ~~ nil] ifNone: [ nil]
+	^ self anyOne
