@@ -1,21 +1,27 @@
 findClass
-	"Search for a class by name.  Modified so that if only 1 class matches the user-supplied string, or if the user-supplied string exactly matches a class name, then the pop-up menu is bypassed"
-	| pattern foundClass classNames index reply |
+	"Search for a class by name."
+	| pattern foundClass classNames index toMatch exactMatch potentialClassNames |
 
 	self okToChange ifFalse: [^ self classNotFound].
-	pattern _ (reply _ FillInTheBlank request: 'Class Name?') asLowercase.
+	pattern _ FillInTheBlank request: 'Class name or fragment?'.
 	pattern isEmpty ifTrue: [^ self classNotFound].
-	(Smalltalk hasClassNamed: reply)
-		ifTrue:
-			[foundClass _ Smalltalk at: reply asSymbol]
-		ifFalse:
- 			[classNames _ Smalltalk classNames asArray select: 
-				[:n | (n asLowercase indexOfSubCollection: pattern startingAt: 1) > 0].
-			classNames isEmpty ifTrue: [^ self classNotFound].
-			index _ classNames size == 1
-				ifTrue:	[1]
-				ifFalse:	[(PopUpMenu labelArray: classNames lines: #()) startUp].
-			index = 0 ifTrue: [^ self classNotFound].
-			foundClass _ Smalltalk at: (classNames at: index)].
- 	self systemCategoryListIndex: (self systemCategoryList indexOf: foundClass category).
-	self classListIndex: (self classList indexOf: foundClass name). 
+	toMatch _ (pattern copyWithout: $.) asLowercase.
+	potentialClassNames _ self potentialClassNames asOrderedCollection.
+	classNames _ pattern last = $. 
+		ifTrue: [potentialClassNames select:
+					[:nm |  nm asLowercase = toMatch]]
+		ifFalse: [potentialClassNames select: 
+					[:n | n includesSubstring: toMatch caseSensitive: false]].
+	classNames isEmpty ifTrue: [^ self classNotFound].
+	exactMatch _ classNames detect: [:each | each asLowercase = toMatch] ifNone: [nil].
+
+	index _ classNames size = 1
+		ifTrue:	[1]
+		ifFalse:	[exactMatch
+			ifNil: [(PopUpMenu labelArray: classNames lines: #()) startUp]
+			ifNotNil: [classNames addFirst: exactMatch.
+				(PopUpMenu labelArray: classNames lines: #(1)) startUp]].
+	index = 0 ifTrue: [^ self classNotFound].
+	foundClass _ Smalltalk at: (classNames at: index) asSymbol.
+ 	self selectCategoryForClass: foundClass.
+	self selectClass: foundClass
