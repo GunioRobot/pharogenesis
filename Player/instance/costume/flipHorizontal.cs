@@ -1,0 +1,2 @@
+flipHorizontal
+	self costume flipHorizontal
