@@ -1,0 +1,2 @@
+pushMaterial
+	materialStack addLast: material.
