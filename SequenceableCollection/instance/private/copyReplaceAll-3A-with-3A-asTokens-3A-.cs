@@ -7,7 +7,7 @@ copyReplaceAll: oldSubstring with: newSubstring asTokens: ifTokens
 	newSubstring if ifTokens is true.  See example below. "
 
 	| aString startSearch currentIndex endIndex |
-	(ifTokens and: [(self isKindOf: String) not])
+	(ifTokens and: [(self isString) not])
 		ifTrue: [(self isKindOf: Text) ifFalse: [
 			self error: 'Token replacement only valid for Strings']].
 	aString _ self.
