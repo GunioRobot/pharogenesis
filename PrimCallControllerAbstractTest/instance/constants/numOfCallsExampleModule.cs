@@ -1,0 +1,2 @@
+numOfCallsExampleModule
+	^ self methodSelectorsToExampleModule size
