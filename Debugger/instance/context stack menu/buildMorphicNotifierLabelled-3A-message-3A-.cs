@@ -8,7 +8,7 @@ buildMorphicNotifierLabelled: label message: messageString
 	window addMorph: (self buttonRowForPreDebugWindow: window)
 				frame: (0@0 corner: 1 @ contentTop).
 
-	Preferences eToyFriendly
+	Preferences eToyFriendly | messageString notNil
 		ifFalse:
 			[notifyPane _ PluggableListMorph on: self list: #contextStackList
 				selected: #contextStackIndex changeSelected: #debugAt:
