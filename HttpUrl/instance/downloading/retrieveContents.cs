@@ -1,0 +1,2 @@
+retrieveContents
+	^ self retrieveContentsArgs: nil
