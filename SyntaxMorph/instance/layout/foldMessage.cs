@@ -4,8 +4,11 @@ foldMessage
 	| messageRow node2 |
 	node2 _ parseNode copy receiver: nil.
 	messageRow _ SyntaxMorph row: #keyword1 on: node2.
-	messageRow addMorph: (self transparentSpacerOfSize: 20@10);
-			addMorphBack: submorphs second.
+
+	messageRow 
+		addMorph: (self transparentSpacerOfSize: 20@10);
+		addMorphBack: submorphs last.		"<<handle noise words better"
 	self listDirection: #topToBottom;
 		wrapCentering: #topLeft;
+		addMorphBack: (self transparentSpacerOfSize: 4@4);
 		addMorphBack: messageRow.
