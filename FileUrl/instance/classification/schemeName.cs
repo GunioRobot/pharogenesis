@@ -1,2 +1,2 @@
 schemeName
-	^'file'
+	^self class schemeName
