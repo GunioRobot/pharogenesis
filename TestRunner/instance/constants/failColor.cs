@@ -1,0 +1,2 @@
+failColor
+	^ Color yellow lighter
