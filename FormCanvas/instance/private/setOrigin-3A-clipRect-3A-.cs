@@ -1,4 +1,5 @@
 setOrigin: aPoint clipRect: aRectangle
 
-	super setOrigin: aPoint clipRect: aRectangle.
-	port clipRect: aRectangle
+	origin _ aPoint.
+	clipRect _ aRectangle.
+	port clipRect: aRectangle.
