@@ -1,2 +1,4 @@
 morph: aMorph droppedIntoPasteUpMorph: aPasteUpMorph
-	"self viewMorph: aMorph"
+	aPasteUpMorph automaticViewing ifTrue:
+		[aMorph isCandidateForAutomaticViewing ifTrue:
+			[self viewMorph: aMorph]]
