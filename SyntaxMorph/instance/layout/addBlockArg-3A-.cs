@@ -6,33 +6,34 @@ addBlockArg: aMorph
 	| tempHolder tt var nn |
 	owner isMethodNode ifTrue: [
 		^ (self addTempVar: aMorph)].	"Node for them is not inside the block"
-		"If exists, drop the temp in this block and let use extend it."
+		"If exists, drop the temp in this block and let user extend it."
+	nn _ aMorph decompile string.	"name"
+	(self isKnownVarName: nn) ifTrue: [^ false].	"already defined"
+
 	tt _ self firstSubmorph.
 	tempHolder _ tt firstSubmorph isSyntaxMorph 
 				ifTrue: [(tt nodeClassIs: BlockArgsNode) 
 							ifTrue: [tt] ifFalse: [nil]]
 				ifFalse: [nil].
-	nn _ aMorph parseNode key.	"name"
 
-	tempHolder ifNil: ["make whole row"
+	tempHolder ifNil: ["make new row"
 		tempHolder _ self addRow: #blockarg1 on: (BlockArgsNode new).
+		tempHolder addNoiseString: self noiseBeforeBlockArg.
+		tempHolder submorphs last firstSubmorph emphasis: 1.
+		tempHolder useRoundedCorners.
+
 		self addMorphFront: tempHolder.
 		aMorph parseNode name: nn key: nn code: nil.
-		var _ tempHolder addColumn: #tempVariable on: aMorph parseNode.
-		var layoutInset: 1.
-		var addMorphBack: (self addString: nn).
-		self cleanupAfterItDroppedOnMe.
+		aMorph parseNode asMorphicSyntaxIn: tempHolder.
+		tempHolder cleanupAfterItDroppedOnMe.
 		^ true].
 
-	tempHolder submorphsDo:
-		[:m | "if present. caller adds the temp as a new line of code to be extended"
-		m isSyntaxMorph and: [m parseNode key = nn ifTrue: [^ false]]].
-		
-	"If this variable is not present, add it"
+	"Know this variable is not present, so add it"
+
 	aMorph parseNode name: nn key: nn code: nil.
 	tempHolder addMorphBack: (tempHolder transparentSpacerOfSize: 4@4).
-	var _ tempHolder addColumn: #tempVariable on: aMorph parseNode.
+	var _ tempHolder addRow: #tempVariable on: aMorph parseNode.
 	var layoutInset: 1.
-	var addMorphBack: (StringMorph contents: nn).
+	var addMorphBack: (self aSimpleStringMorphWith: nn).
 	var cleanupAfterItDroppedOnMe.
 	^ true
