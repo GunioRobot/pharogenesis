@@ -4,16 +4,22 @@ shiftedChangeSetMenu: aMenu
 	Smalltalk isMorphic ifTrue:
 		[aMenu title: 'Change set (shifted)'.
 		aMenu addStayUpItemSpecial].
+
+	"CONFLICTS SECTION"
 	aMenu add: 'conflicts with other change sets' action: #browseMethodConflicts.
 	aMenu balloonTextForLastItem: 
 'Browse all methods that occur both in this change set and in at least one other change set.'.
-
 	parent ifNotNil:
-		[aMenu add: 'conflicts with opposite side' action: #methodConflictsWithOtherSide.
+		[aMenu add: 'conflicts with change set opposite' action: #methodConflictsWithOtherSide.
 			aMenu balloonTextForLastItem: 
 'Browse all methods that occur both in this change set and in the one on the opposite side of the change sorter.'.
-].
+
+			aMenu add: 'conflicts with category opposite' action: #methodConflictsWithOppositeCategory.
+			aMenu balloonTextForLastItem: 
+'Browse all methods that occur both in this change set and in ANY change set in the category list on the opposite side of this change sorter, other of course than this change set itself.  (Caution -- this could be VERY slow)'].
 	aMenu addLine.
+
+	"CHECKS SECTION"
 	aMenu add: 'check for slips' action: #lookForSlips.
 	aMenu balloonTextForLastItem: 
 'Check this change set for halts and references to Transcript.'.
@@ -26,11 +32,22 @@ shiftedChangeSetMenu: aMenu
 	aMenu balloonTextForLastItem:
 'Check this change set for methods that do not have comments'.
 
+	aMenu add: 'check for uncommented classes' action: #checkForUncommentedClasses.
+	aMenu balloonTextForLastItem:
+'Check for classes with code in this changeset which lack class comments'.
+
 	Utilities authorInitialsPerSe isEmptyOrNil ifFalse:
 		[aMenu add: 'check for other authors' action: #checkForAlienAuthorship.
 		aMenu balloonTextForLastItem:
-'Check this change set for methods whose current authoring stamp does not start with "', Utilities authorInitials, '"'].
+'Check this change set for methods whose current authoring stamp does not start with "', Utilities authorInitials, '"'.
 
+	aMenu add: 'check for any other authors' action: #checkForAnyAlienAuthorship.
+	aMenu balloonTextForLastItem:
+'Check this change set for methods any of whose authoring stamps do not start with "', Utilities authorInitials, '"'].
+
+	aMenu add: 'check for uncategorized methods' action: #checkForUnclassifiedMethods.
+	aMenu balloonTextForLastItem:
+'Check to see if any methods in the selected change set have not yet been assigned to a category.  If any are found, open a browser on them.'.
 	aMenu addLine.
 
 	aMenu add: 'inspect change set' action: #inspectChangeSet.
@@ -53,6 +70,9 @@ shiftedChangeSetMenu: aMenu
 	aMenu balloonTextForLastItem: 
 ' Drops any methods added and then removed, as well as renaming and reorganization of newly-added classes.  NOTE: can cause confusion if later filed in over an earlier version of these changes'.
 
+	aMenu add: 'remove contained in class categories...' action: #removeContainedInClassCategories.
+	aMenu balloonTextForLastItem: ' Drops any changes in given class categories'.
+
 	aMenu add: 'clear this change set' action: #clearChangeSet.
 	aMenu balloonTextForLastItem: 
 'Reset this change set to a pristine state where it holds no information. CAUTION: this is destructive and irreversible!'.
@@ -69,12 +89,13 @@ shiftedChangeSetMenu: aMenu
 	aMenu balloonTextForLastItem: 
 'Load a fileout from disk and place its changes into a new change set (seldom needed -- much better to do this from a file-list browser these days.)'.
 
-	aMenu add: 'file out all change sets' action: #fileOutUnnumberedChangeSets.
+	aMenu add: 'reorder all change sets' action: #reorderChangeSets.
 	aMenu balloonTextForLastItem:
-'File out every change set in the system whose name does not begin with a digit, except those that are empty or whose names start with "Play with me".  The usual checks for slips are suppressed when this command is done.'.
+'Applies a standard reordering of all change-sets in the system -- at the bottom will come the sets that come with the release; next will come all the numbered updates; finally, at the top, will come all other change sets'.
 
 	aMenu addLine.
-	aMenu add: 'more...' action: #unshiftedYellowButtonActivity.
+
+	aMenu add: 'more...' action: #offerUnshiftedChangeSetMenu.
 	aMenu balloonTextForLastItem: 
 'Takes you back to the primary change-set menu.'.
 
