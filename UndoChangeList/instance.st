@@ -1,6 +1,6 @@
 Object
 	subclass: #UndoChangeList
-	instanceVariableNames: 'changeList '
+	instanceVariableNames: 'changeList'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon3D-Wonderland Undo'
+	category: 'Balloon3D-Wonderland-Undo'
