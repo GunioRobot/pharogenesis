@@ -3,5 +3,5 @@ becomeTextuallyCoded
 
 	self isTextuallyCoded ifTrue: [^ self].
 	self saveScriptVersion.
-	self userScriptObject becomeTextuallyCoded.
+	Preferences universalTiles ifFalse: [self userScriptObject becomeTextuallyCoded].
 	(submorphs copyFrom: 2 to: submorphs size) do: [:m | m delete]
