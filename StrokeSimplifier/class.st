@@ -1,0 +1,1 @@
+StrokeSimplifier class instanceVariableNames: ''
