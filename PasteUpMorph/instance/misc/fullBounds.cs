@@ -1,12 +1,15 @@
 fullBounds
-	"This is the hook that triggers lazy re-layout. See the comment in LayoutMorph."
 
-	| result |
+	| result oldBounds |
 	(fullBounds == nil and: [self autoLineLayout]) ifTrue:
-		[self fixLayout.
-		"compute fullBounds before calling changed to avoid infinite recursion!"
-		result _ super fullBounds.  "updates cache"
+		[oldBounds _ bounds.
+		self fixLayout.
+		self resizeToFit ifTrue:
+			[result _ self boundingBoxOfSubmorphs.
+			bounds _ bounds withBottom: result bottom].
+		fullBounds _ bounds.
+		self invalidRect: oldBounds.
 		self changed.
-		^ result].
-	self resizeToFit ifFalse: [^ bounds].
-	^ super fullBounds
+		^ bounds].  "compute fullBounds before calling changed to avoid infinite recursion!"
+
+	^ fullBounds _ bounds
