@@ -1,4 +1,5 @@
 selectedClass
-
-	^ currentClassName ifNil: [nil]
-		ifNotNil: [self selectedClassOrMetaClass theNonMetaClass]
+	"Answer the currently-selected class.  If there is no selection, or if the selection refers to a class no longer extant, return nil"
+	| c |
+	^ currentClassName ifNotNil: [(c _ self selectedClassOrMetaClass)
+		ifNotNil: [c theNonMetaClass]]
