@@ -1,7 +1,9 @@
 saveState
 	"Save the current state in me prior to switching projects"
 
-	projectWindows _ ScheduledControllers.
-	projectChangeSet _ Smalltalk changes.
-	projectTranscript _ Transcript.
+	world isMorph ifTrue: [world _ World]
+				ifFalse: [world _ ScheduledControllers.
+						ScheduledControllers unCacheWindows].
+	changeSet _ Smalltalk changes.
+	transcript _ Transcript.
 	displayDepth _ Display depth.
