@@ -11,11 +11,9 @@ alphaSourceBlendBits16
 	deltaY _ bbH + 1. "So we can pre-decrement"
 	srcY _ sy.
 	dstY _ dy.
-	(dx bitAnd: 1) = 0 
-		ifTrue:[	mask1 _ 16r0000FFFF.
-				srcShift _ 16]
-		ifFalse:[mask1 _ 16rFFFF0000.
-				srcShift _ 0].
+	srcShift _ (dx bitAnd: 1) * 16.
+	destMSB ifTrue:[srcShift _ 16 - srcShift].
+	mask1 _ 16rFFFF << (16 - srcShift).
 	"This is the outer loop"
 	[(deltaY _ deltaY - 1) ~= 0] whileTrue:[
 		srcIndex _ sourceBits + (srcY * sourcePitch) + (sx * 4).
@@ -34,13 +32,13 @@ alphaSourceBlendBits16
 			srcAlpha = 255 ifTrue:[
 				"Dither from 32 to 16 bit"
 				sourceWord _ self dither32To16: sourceWord threshold: ditherThreshold.
-				sourceWord = 0 ifTrue:[sourceWord _ 1].
-				sourceWord _ sourceWord << srcShift.
+				sourceWord = 0 
+					ifTrue:[sourceWord _ 1 << srcShift]
+					ifFalse: [sourceWord _ sourceWord << srcShift].
 				"Store masked value"
 				self dstLongAt: dstIndex put: sourceWord mask: dstMask.
 			] ifFalse:[ "srcAlpha ~= 255"
-				srcAlpha = 0 ifTrue:[
-				] ifFalse:[ "0 < srcAlpha < 255"
+				srcAlpha = 0 ifFalse:[ "0 < srcAlpha < 255"
 					"If we have to mix colors then just copy a single word"
 					destWord _ self dstLongAt: dstIndex.
 					destWord _ destWord bitAnd: dstMask bitInvert32.
@@ -54,14 +52,17 @@ alphaSourceBlendBits16
 					sourceWord _ self alphaBlendScaled: sourceWord with: destWord.
 					"And dither"
 					sourceWord _ self dither32To16: sourceWord threshold: ditherThreshold.
-					sourceWord = 0 ifTrue:[sourceWord _ 1].
-					sourceWord _ sourceWord << srcShift.
+					sourceWord = 0 
+						ifTrue:[sourceWord _ 1 << srcShift]
+						ifFalse:[sourceWord _ sourceWord << srcShift].
 					"Store back"
 					self dstLongAt: dstIndex put: sourceWord mask: dstMask.
 				].
 			].
 			srcIndex _ srcIndex + 4.
-			srcShift = 0 ifTrue:[dstIndex _ dstIndex + 4].
+			destMSB
+				ifTrue:[srcShift = 0 ifTrue:[dstIndex _ dstIndex + 4]]
+				ifFalse:[srcShift = 0 ifFalse:[dstIndex _ dstIndex + 4]].
 			srcShift _ srcShift bitXor: 16. "Toggle between 0 and 16"
 			dstMask _ dstMask bitInvert32. "Mask other half word"
 		].
