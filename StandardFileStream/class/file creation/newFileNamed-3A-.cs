@@ -1,13 +1,22 @@
 newFileNamed: aFileName
- 	"create a file in the default directory (or in the directory contained in the input arg), set for write access.  2/12/96 sw.  Fixed 6/13/96 sw so that if deletion of old conflicting file fails, the error raised is more helpful."
+ 	"create a file in the default directory (or in the directory contained in the input arg), set for write access."
+	| selection |
+	(self isAFileNamed: aFileName) ifFalse:
+		[^ self new open: aFileName forWrite: true].
 
-	| result |
-	(self isAFileNamed: aFileName)
-		ifTrue:
-			[(self confirm: (self localNameFor: aFileName) , ' already exists.
-Do you want to overwrite it?')
-				ifTrue: [result _ FileDirectory default deleteFileNamed: aFileName.
-					result == nil ifTrue: "deletion failed"
-						[self halt: 'Sorry - deletion failed']]
-				ifFalse: [self halt]].
-	^ self new open: aFileName forWrite: true
+	"File already exists..."
+	selection _ (PopUpMenu labels: 'overwrite that file
+choose another name
+cancel')
+			startUpWithCaption: (FileDirectory localNameFor: aFileName) , '
+already exists.'.
+	selection = 1 ifTrue:
+		[FileDirectory default
+			deleteFileNamed: aFileName
+			ifAbsent: [self error: 'Sorry, deletion failed'].
+		^ self new open: aFileName forWrite: true].
+	selection = 2 ifTrue:
+		[^ self newFileNamed:
+			(FillInTheBlank request: 'Enter a new file name'
+						initialAnswer: (FileDirectory localNameFor: aFileName))].
+	self halt
