@@ -1,5 +1,5 @@
 runCase
 
-	self setUp.
-	[self perform: self testMessage]
-		ensure: [self tearDown].
+	[self setUp.
+	self performTest] sunitEnsure: [self tearDown]
+			
