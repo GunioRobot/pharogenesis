@@ -1,0 +1,1 @@
+LineIntersectionEvent class instanceVariableNames: ''
