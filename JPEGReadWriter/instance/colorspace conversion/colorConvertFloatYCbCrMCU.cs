@@ -16,5 +16,5 @@ colorConvertFloatYCbCrMCU
 		red _ self sampleFloatRangeLimit: (y + (1.40200 * cr)).
 		green _ self sampleFloatRangeLimit: (y - (0.34414 * cb) - (0.71414 * cr)).
 		blue _ self sampleFloatRangeLimit: (y + (1.77200 * cb)).
-		bits at: i put: (red << 16) + (green << 8) + blue].
+		bits at: i put: 16rFF000000 + (red << 16) + (green << 8) + blue].
 	
