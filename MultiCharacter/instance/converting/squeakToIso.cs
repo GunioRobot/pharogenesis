@@ -1,0 +1,3 @@
+squeakToIso 
+
+	^ self
