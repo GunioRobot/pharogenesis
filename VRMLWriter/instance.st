@@ -1,6 +1,6 @@
 Object
 	subclass: #VRMLWriter
 	instanceVariableNames: ''
-	classVariableNames: 'Default VRMLFieldTypes '
+	classVariableNames: 'Default VRMLFieldTypes'
 	poolDictionaries: ''
-	category: 'Balloon3D-VRML Definition'
+	category: 'Balloon3D-VRML-Definition'
