@@ -12,14 +12,14 @@ backTo: startIndex
 
 	| saveLimit newBackovers |
 	saveLimit _ beginTypeInBlock == nil
-		ifTrue: [self openTypeIn. UndoSelection _ self nullText. stopBlock stringIndex]
+		ifTrue: [self openTypeIn. UndoSelection _ self nullText. self stopIndex]
 		ifFalse: [self startOfTyping].
-	startBlock _ paragraph characterBlockForIndex: startIndex.
+	self setMark: startIndex.
 	startIndex < saveLimit ifTrue:
 		[newBackovers _ self startOfTyping - startIndex.
-		beginTypeInBlock _ startBlock stringIndex.
+		beginTypeInBlock _ self startIndex.
 		UndoSelection replaceFrom: 1 to: 0 with:
 			(paragraph text copyFrom: startIndex to: saveLimit - 1).
 		UndoMessage argument: (UndoMessage argument ifNil: [1]) + newBackovers].
 	self zapSelectionWith: self nullText.
-	startBlock _ stopBlock copy
+	self unselect
