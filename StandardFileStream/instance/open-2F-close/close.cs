@@ -1,6 +1,7 @@
 close
-	"Close the receiver."
+	"Close this file."
 
-	closed ifTrue: [^ self].
-	self primClose: fileID.
-	closed _ true.
+	fileID ifNotNil: [
+		self primClose: fileID.
+		self unregister.
+		fileID _ nil].
