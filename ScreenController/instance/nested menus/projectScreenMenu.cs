@@ -1,24 +1,29 @@
 projectScreenMenu
 	"Answer the project screen menu."
 
-	ProjectScreenMenu == nil ifTrue:
-		[ProjectScreenMenu _ SelectionMenu labelList:
-		#(	'previous project'
-			'  jump to project...'
+	^ SelectionMenu labelList:
+		#(	'keep this menu up'
+
+			'previous project'
+			'jump to project...'
 			'restore display'
+
 			'open...'
+			'windows...'
 			'changes...'
-			'window...'
 			'help...'
+			'appearance...'
 			'do...'
+
 			'save'
 			'save as...'
 			'save and quit'
-			'quit...')
-		lines: #(2 3 8)
-		selections: #(returnToPreviousProject jumpToProject restoreDisplay openMenu changesMenu windowMenu helpMenu commonRequests  snapshot saveAs snapshotAndQuit quit)].
-	^ ProjectScreenMenu
-
+			'quit')
+		lines: #(1 4 10)
+		selections: #(durableScreenMenu
+returnToPreviousProject jumpToProject restoreDisplay
+presentOpenMenu presentWindowMenu presentChangesMenu presentHelpMenu presentAppearanceMenu commonRequests
+snapshot saveAs snapshotAndQuit quit )
 "
 ScreenController new projectScreenMenu startUp
 "
