@@ -1,4 +1,26 @@
-My instances observe and report the amount of time spent in methods. Observing a method implies observing all messages it sends.
+My instances observe and report the amount of time spent in methods.
+
+NOTE: a higher-level user interface (combining the MessageTally result tree with a method browser) is available from TimeProfileBrowser.
+
+MessageTally provides two different strategies available for profiling:
+
+* spyOn: and friends use a high-priority Process to interrupt the block or process being spied on at periodic intervals. The interrupted call stack is then examined for caller information.
+
+* tallySends: and friends use the interpreter simulator to run the block, recording every method call.
+
+The two give you different results:
+
+* spyOn: gives you a view of where the time is being spent in your program, at least on a rough statistical level (assuming you've run the block for long enough and have a high enough poll rate). If you're trying to optimize your code, start here and optimize the methods where most of the time is being spent first.
+
+* tallySends: gives you accurate counts of how many times methods get called, and by exactly which route. If you're debugging, or trying to figure out if a given method is getting called too many times, this is your tool.
+
+You can change the printing format (that is, the whitespace and string compression) by using these instance methods: 
+	maxClassNameSize:
+	maxClassPlusSelectorSize:
+	maxTabs:
+
+You can change the default polling period (initially set to 1) by calling
+	MessageTally defaultPollPeriod: numberOfMilliseconds
 
 Q: How do you interpret MessageTally>>tallySends
 A: The methods #tallySends and #spyOn: measure two very different quantities, but broken down in the same who-called-who format.  #spyOn: is approximate, but more indicative of real time spent, whereas #tallySends is exact and a precise record of how many times each method got executed.
