@@ -1,10 +1,10 @@
 showMenuFor: aSymbol event: evt
 
-	aSymbol == #publishProject ifTrue: [
+	(aSymbol == #publishProject or: [aSymbol == #publishProjectSimple]) ifTrue: [
 		self doPublishButtonMenuEvent: evt.
 		^true		"we did show the menu"
 	].
-	aSymbol == #findAProject ifTrue: [
+	(aSymbol == #findAProject or: [aSymbol == #findAProjectSimple]) ifTrue: [
 		self doFindButtonMenuEvent: evt.
 		^true		"we did show the menu"
 	].
