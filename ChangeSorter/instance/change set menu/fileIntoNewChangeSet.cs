@@ -5,7 +5,7 @@ fileIntoNewChangeSet
 
 	aFileName _ FillInTheBlank request: 'Name of file to be imported: '.
 	aFileName size == 0 ifTrue: [^ self].
-	(FileDirectory default includesKey: aFileName) ifFalse:
+	(FileDirectory default fileExists: aFileName) ifFalse:
 		[self inform: 'Sorry -- cannot find that file'.
 		^ self].
 
