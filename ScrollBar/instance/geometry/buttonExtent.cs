@@ -1,4 +1,4 @@
 buttonExtent
 	^ bounds isWide
-		ifTrue: [9 @ self innerBounds height]
-		ifFalse: [self innerBounds width @ 9]
+		ifTrue: [11 @ self innerBounds height]
+		ifFalse: [self innerBounds width @ 11]
