@@ -1,2 +1,2 @@
 vSpaceFill
-	^flags anyMask: 2
+	^self flags anyMask: 2
