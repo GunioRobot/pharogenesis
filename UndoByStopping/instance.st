@@ -1,6 +1,6 @@
 Object
 	subclass: #UndoByStopping
-	instanceVariableNames: 'stoppableItem myUndoStack '
+	instanceVariableNames: 'stoppableItem myUndoStack'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon3D-Wonderland Undo'
+	category: 'Balloon3D-Wonderland-Undo'
