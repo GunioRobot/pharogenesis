@@ -1,0 +1,2 @@
+useGlobalFlaps
+	^ self valueOfFlag: #useGlobalFlaps
