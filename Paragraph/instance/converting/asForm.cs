@@ -1,12 +1,16 @@
 asForm
 	"Answer a Form made up of the bits that represent the receiver's displayable text."
 	| theForm oldBackColor oldForeColor |
-	theForm _ (ColorForm extent: compositionRectangle extent)
-		offset: offset;
-		colors: (Array
-			with: (backColor == nil ifTrue: [Color transparent] ifFalse: [backColor])
-			with: (foreColor == nil ifTrue: [Color black] ifFalse: [foreColor])).
-
+	textStyle isTTCStyle ifTrue: [
+		theForm _  (Form extent: compositionRectangle extent depth: 32)
+		offset: offset.
+	] ifFalse: [
+		theForm _ (ColorForm extent: compositionRectangle extent)
+			offset: offset;
+			colors: (Array
+				with: (backColor == nil ifTrue: [Color transparent] ifFalse: [backColor])
+				with: (foreColor == nil ifTrue: [Color black] ifFalse: [foreColor])).
+	].
 	oldBackColor _ backColor.
 	oldForeColor _ foreColor.
 	backColor _ Color white.
