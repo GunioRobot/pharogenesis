@@ -21,6 +21,9 @@ copyBits
 	<primitive: 96>
 
 	"Check for compressed source, destination or halftone forms"
+	(combinationRule >= 30 and: [combinationRule <= 31]) ifTrue:
+		["No alpha specified -- re-run with alpha = 1.0"
+		^ self copyBitsTranslucent: 255].
 	((sourceForm isKindOf: Form) and: [sourceForm unhibernate])
 		ifTrue: [^ self copyBits].
 	((destForm isKindOf: Form) and: [destForm unhibernate])
@@ -32,7 +35,7 @@ copyBits
 	combinationRule = Form oldPaint ifTrue: [^ self paintBits].
 	combinationRule = Form oldErase1bitShape ifTrue: [^ self eraseBits].
 
-	self halt: 'Bad BitBlt arg (Fraction?); proceed to convert.'.
+	self error: 'Bad BitBlt arg (Fraction?); proceed to convert.'.
 	"Convert all numeric parameters to integers and try again."
 	destX _ destX asInteger.
 	destY _ destY asInteger.
