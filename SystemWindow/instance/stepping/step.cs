@@ -1,2 +1,2 @@
 step
-	model ifNotNil: [model step]
+	model ifNotNil: [model stepIn: self]
