@@ -1,2 +1,2 @@
 fill: newEvent
-	currentCanvas form shapeFill: currentColor interiorPoint: currentPosition
+	currentCanvas form floodFill: currentColor at: currentPosition asIntegerPoint
