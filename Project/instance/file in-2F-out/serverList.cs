@@ -1,15 +1,14 @@
 serverList
-	| swiki bigHACK |
+	| servers server |
+	"Take my list of server URLs and return a list of ServerDirectories to write on."
 
-	"Take my list of server URLs and return a list of ServerDirectories to write on.  Each starts with ftp://"
-
-	self flag: #bob.		"BIG hack to try projects on a swiki"
-	bigHACK _ false.
-
-	bigHACK ifTrue: [
-		(swiki _ SuperSwikiServer currentSuperSwiki) ifNotNil: [
-			^{swiki}
-		].
-	].
 	urlList isEmptyOrNil ifTrue: [^ nil].
-	^ urlList collect: [:url | Project serverDirectoryFromURL: url]
+	servers _ OrderedCollection new.
+	urlList do: [:url |
+		server _ ServerDirectory serverForURL: url.
+		server ifNotNil: [servers add: server].
+		server _ ServerDirectory serverForURL: url asUrl downloadUrl.
+		server ifNotNil: [servers add: server]].
+	^servers isEmpty
+		ifTrue: [nil]
+		ifFalse: [servers]
