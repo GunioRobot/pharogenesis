@@ -1,0 +1,3 @@
+lastAcceptedScript
+
+	^ lastAcceptedScript
