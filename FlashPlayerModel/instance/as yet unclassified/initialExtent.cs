@@ -1,0 +1,2 @@
+initialExtent
+	^player bounds extent
