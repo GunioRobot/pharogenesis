@@ -1,15 +1,18 @@
 reverseFrom: characterBlock1 to: characterBlock2 
 	"Reverse area between the two character blocks given as arguments."
-	| visibleRectangle initialRectangle interiorRectangle finalRectangle |
-	characterBlock1 = characterBlock2
-		ifTrue: [^ CaretForm  "Use a caret to indicate null selection"
-					displayOn: destinationForm
-					at: characterBlock1 topLeft + (0 @ textStyle baseline)
-					clippingBox: clippingRectangle
-					rule: (Display depth>8
-							ifTrue: [9 "not-reverse"]
-							ifFalse: [Form reverse])
-					fillColor: nil].
+	| visibleRectangle initialRectangle interiorRectangle finalRectangle lineNo baseline caret |
+	characterBlock1 = characterBlock2 ifTrue:
+		[lineNo _ self lineIndexOfCharacterIndex: characterBlock1 stringIndex.
+		baseline _ lineNo = 0 ifTrue: [textStyle baseline]
+							ifFalse: [(lines at: lineNo) baseline].
+		caret _ self caretFormForDepth: Display depth.
+		^ caret  "Use a caret to indicate null selection"
+				displayOn: destinationForm
+				at: characterBlock1 topLeft + (-3 @ baseline)
+				clippingBox: clippingRectangle
+				rule: (false "Display depth>8" ifTrue: [9 "not-reverse"]
+									ifFalse: [Form reverse])
+				fillColor: nil].
 	visibleRectangle _ 
 		(clippingRectangle intersect: compositionRectangle)
 			"intersect: destinationForm boundingBox" "not necessary".
