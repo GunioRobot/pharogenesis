@@ -1,0 +1,3 @@
+correspondingSymbolClass
+
+	^ Symbol
