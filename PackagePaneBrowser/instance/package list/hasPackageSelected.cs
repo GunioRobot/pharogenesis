@@ -1,0 +1,3 @@
+hasPackageSelected
+
+	^ packageListIndex ~= 0
