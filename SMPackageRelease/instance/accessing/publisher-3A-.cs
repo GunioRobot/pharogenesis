@@ -1,0 +1,2 @@
+publisher: anObject
+	publisher := anObject
