@@ -25,10 +25,8 @@ classify: element under: heading
 		and: [element >= (elementArray at: elemIndex)]] whileTrue.
 
 	"elemIndex is now the index for inserting the element. Do the insertion before it."
-	elementArray _ 
-		(elementArray copyFrom: 1 to: elemIndex - 1)
-			, (Array with: element) 
-			, (elementArray copyFrom: elemIndex to: elementArray size).	"insertion"
+	elementArray _ elementArray copyReplaceFrom: elemIndex to: elemIndex-1
+						with: (Array with: element).
 
 	"add one to stops for this and later categories"
 	catIndex to: categoryArray size do: 
