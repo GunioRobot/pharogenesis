@@ -1,14 +1,14 @@
 onMouseMove: event
 	"The default response to mouse motion events"
 
-	| deltaX deltaY screenPos scenePos depth camera |
+	| deltaX deltaY screenPos scenePos depth camera evt |
 
 	deltaX _ event getCursorDelta x.
 	deltaY _ event getCursorDelta y.
 	camera _ event getCamera.
-
-	(Sensor shiftPressed)
-		ifTrue: [ (Sensor controlKeyPressed)
+	evt _ event getMorphicEvent.
+	(evt shiftPressed)
+		ifTrue: [ (evt controlKeyPressed)
 					ifTrue: [
 						"If both shift and control are pressed, tumble the bunny"
 							scenePos _ self getPosition.
@@ -31,7 +31,7 @@ onMouseMove: event
 								undoable: false.
 							].
 				]
-		ifFalse: [ (Sensor controlKeyPressed)
+		ifFalse: [ (evt controlKeyPressed)
 					ifTrue: [
 							scenePos _ self getPosition.
 							self moveToRightNow: { 0. 0. 0 } asSeenBy: (myWonderland getScene)
