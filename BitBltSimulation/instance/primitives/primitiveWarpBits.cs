@@ -6,4 +6,7 @@ primitiveWarpBits
 	(self loadWarpBltFrom: rcvr) 
 		ifFalse:[^interpreterProxy primitiveFail].
 	self warpBits.
+	interpreterProxy failed ifTrue:[^nil].
 	self showDisplayBits.
+	interpreterProxy failed ifTrue:[^nil].
+	interpreterProxy pop: interpreterProxy methodArgumentCount.
