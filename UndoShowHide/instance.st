@@ -1,6 +1,6 @@
 Object
 	subclass: #UndoShowHide
-	instanceVariableNames: 'theActor undoingHide '
+	instanceVariableNames: 'theActor undoingHide'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon3D-Wonderland Undo'
+	category: 'Balloon3D-Wonderland-Undo'
