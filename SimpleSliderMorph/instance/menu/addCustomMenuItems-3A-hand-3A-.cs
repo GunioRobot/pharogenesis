@@ -6,9 +6,8 @@ addCustomMenuItems: aCustomMenu hand: aHandMorph
 	aCustomMenu add: 'change arguments' action: #setArguments.
 	aCustomMenu add: 'set minimum value' action: #setMinVal.
 	aCustomMenu add: 'set maximum value' action: #setMaxVal.
-	truncate
-		ifTrue: [aCustomMenu add: 'turn off truncating' action: #toggleTruncate]
-		ifFalse: [aCustomMenu add: 'turn on truncating' action: #toggleTruncate].
+	aCustomMenu addUpdating: #descendingString action: #toggleDescending.
+	aCustomMenu addUpdating: #truncateString action: #toggleTruncate.
 	((self world rootMorphsAt: aHandMorph targetOffset) size > 1) ifTrue: [
 		aCustomMenu add: 'set target' action: #setTarget:].
 	target ifNotNil: [
