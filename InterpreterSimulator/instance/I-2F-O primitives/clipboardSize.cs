@@ -1,0 +1,3 @@
+clipboardSize
+
+	^ Clipboard clipboardText size
