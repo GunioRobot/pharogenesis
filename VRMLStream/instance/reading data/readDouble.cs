@@ -1,0 +1,2 @@
+readDouble
+	^self readFloat
