@@ -1,0 +1,2 @@
+isProjectSwiki
+	^true
