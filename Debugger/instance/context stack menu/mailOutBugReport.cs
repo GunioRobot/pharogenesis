@@ -6,39 +6,22 @@ number, VM version, platform, available RAM, author...'
 
 and address it to the list with the appropriate subject prefix."
 
-	| subjectPrefix messageStrm |
-	(Smalltalk includesKey: #Celeste)
-		ifFalse: [^ self notify: 'no mail reader present'].
-
-	subjectPrefix _ '[BUG]'.
+	| messageStrm |
+	MailSender default ifNil: [^self].
 
 	Cursor write
 		showWhile: 
 			["Prepare the message"
-			messageStrm _ WriteStream on: (String new: 30).
+			messageStrm _ WriteStream on: (String new: 1500).
 			messageStrm nextPutAll: 'From: ';
-			 nextPutAll: Celeste userName;
+			 nextPutAll: MailSender userName;
 			 cr;
-			 nextPutAll: 'To: squeak@cs.uiuc.edu';
+			 nextPutAll: 'To: squeak-dev@lists.squeakfoundation.org';
 			 cr;
 			 nextPutAll: 'Subject: ';
-			 nextPutAll: subjectPrefix; 
-			 nextPutAll: self interruptedContext printString;
+			 nextPutAll: '[BUG]'; nextPutAll: self interruptedContext printString;
 			 cr;cr;
-			 nextPutAll: 'here insert explanation of what you were doing, suspect changes youd made and so forth.';cr;cr;
-			 nextPutAll: 'Image version: ';
-			 nextPutAll: Smalltalk systemInformationString ; cr;cr;
-			 nextPutAll: 'VM version: ';
-			 nextPutAll: Smalltalk vmVersion, String cr, 'for: ', Smalltalk platformName ; cr;cr;
-			 nextPutAll: 'Receiver: ';
-			 nextPutAll: receiverInspector object printString; cr;cr;
-			 nextPutAll: 'Instance variables: ';cr;
-			 nextPutAll: receiverInspector object longPrintString; cr;
-			 nextPutAll: 'Method (temp) variables: ';cr;
-			 nextPutAll: contextVariablesInspector object tempsAndValues; cr;
-			 nextPutAll: 'Stack: '; cr.
-			self contextStackList do: [:e | messageStrm nextPutAll: e; cr].
+			 nextPutAll: 'here insert explanation of what you were doing, suspect changes you''ve made and so forth.';cr;cr.
+			self interruptedContext errorReportOn: messageStrm.
 
-			CelesteComposition
-				openForCeleste: Celeste current 
-				initialText: messageStrm contents].
+			MailSender sendMessage: (MailMessage from: messageStrm contents)].
