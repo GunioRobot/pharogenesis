@@ -1,21 +1,27 @@
 openMenu
-	"ScreenController initialize"
+	^ SelectionMenu labelList:
+		#(	'keep this menu up'
 
-	OpenMenu == nil ifTrue:
-		[OpenMenu _ SelectionMenu labelList:
-		#(	'open browser'
-			'open workspace'
-			'open file list'
-			'open change sorter'
-			'open project (mvc)'
-			'open project (morphic)'
-			'open transcript'
-			'open Morphic world'
-			'open Morphic construction')
-		lines: #(7)
-		selections: #(openBrowser openWorkspace openFileList openChangeManager openProject  openMorphicProject openTranscript  openMorphicWorld openMorphicConstructionWorld)].
-	^ OpenMenu
+			'browser'
+			'package browser'
+			'method finder'
+			'workspace'
+			'file list'
+			'file...'
+			'transcript'
+			'morphic world'
 
+			'simple change sorter'
+			'dual change sorter'
+
+			'mvc project'
+			'morphic project'
+			)
+		lines: #(1 9 11)
+		selections: #(durableOpenMenu
+openBrowser openPackageBrowser openSelectorBrowser openWorkspace openFileList openFile openTranscript openMorphicWorld
+openSimpleChangeSorter openChangeManager
+openProject  openMorphicProject  )
 "
-ScreenController new openMenu startUp
+ScreenController  new openMenu startUp
 "
