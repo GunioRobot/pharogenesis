@@ -1,0 +1,2 @@
+initializeObsoleteSubclasses
+	ObsoleteSubclasses _ WeakKeyToCollectionDictionary new.
