@@ -5,6 +5,7 @@ customizeForEToyUsers: aBoolean
 		(balloonHelpEnabled			yes		dontReverse)
 		(debugHaloHandle			no		reverse)
 		(modalColorPickers			yes		dontReverse)
+		(oliveHandleForScriptedObjects	no	dontReverse)
 		(uniqueNamesInHalos		yes		reverse)
 		(useUndo					yes		dontReverse)
 		(infiniteUndo				no		dontReverse)
