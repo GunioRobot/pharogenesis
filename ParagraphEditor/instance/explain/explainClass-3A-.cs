@@ -14,7 +14,7 @@ explainClass: symbol
 					ifNone: [])
 					~~ nil]
 				ifNone: [].
-	reply == nil ifFalse: [^ '"is a class variable, defined in class ' , reply printString , '"\' withCRs , 'Smalltalk browseAllCallsOn: (' , reply printString , ' classPool associationAt: #' , symbol , ').'].
+	reply == nil ifFalse: [^ '"is a class variable, defined in class ' , reply printString , '"\' withCRs , 'SystemNavigation new browseAllCallsOn: (' , reply printString , ' classPool associationAt: #' , symbol , ').'].
 	"pool variables"
 	classes do: [:each | (each sharedPools
 			detect: [:pool | (pool includesKey: symbol)
@@ -25,17 +25,16 @@ explainClass: symbol
 			~~ nil].
 	reply
 		ifNil: [(Undeclared includesKey: symbol)
-				ifTrue: [^ '"is an undeclared variable.' , '"\' withCRs , 'Smalltalk browseAllCallsOn: (Undeclared associationAt: #' , symbol , ').']]
+				ifTrue: [^ '"is an undeclared variable.' , '"\' withCRs , 'SystemNavigation new browseAllCallsOn: (Undeclared associationAt: #' , symbol , ').']]
 		ifNotNil: 
 			[classes _ WriteStream on: Array new.
-			Smalltalk
+			self systemNavigation
 				allBehaviorsDo: [:each | (each sharedPools
 						detect: 
 							[:pool | 
-							self halt.
 							pool == reply]
 						ifNone: [])
 						~~ nil ifTrue: [classes nextPut: each]].
 			"Perhaps not print whole list of classes if too long. (unlikely)"
-			^ '"is a pool variable from the pool ' , (Smalltalk keyAtIdentityValue: reply) asString , ', which is used by the following classes ' , classes contents printString , '"\' withCRs , 'Smalltalk browseAllCallsOn: (' , (Smalltalk keyAtIdentityValue: reply) asString , ' associationAt: #' , symbol , ').'].
+			^ '"is a pool variable from the pool ' , (Smalltalk keyAtIdentityValue: reply) asString , ', which is used by the following classes ' , classes contents printString , '"\' withCRs , 'SystemNavigation new browseAllCallsOn: (' , (Smalltalk keyAtIdentityValue: reply) asString , ' bindingOf: #' , symbol , ').'].
 	^ nil
