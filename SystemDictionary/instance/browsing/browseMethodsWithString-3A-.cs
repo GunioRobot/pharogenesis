@@ -1,17 +1,14 @@
 browseMethodsWithString: aString
-	"Launch a browser on all methods which contain string literals that have aString as a substring.  The search is case-sensitive, unless the option key is pressed, in which case the search is case-insensitive (and consequently somewhat slower)"
+	"Launch a browser on all methods that contain string literals with aString as a substring. The search is case-insensitive, unless the shift key is pressed, in which case the search is case-sensitive."
 
-	| caseBlind testString suffix |
-	(caseBlind _ Sensor optionKeyPressed)
-		ifTrue:
-			[testString _ aString asLowercase.
-			suffix _ ' (case-blind)']
-		ifFalse:
-			[testString _ aString.
-			suffix _ '-'].
+	| caseSensitive suffix |
+	(caseSensitive _ Sensor shiftPressed)
+		ifTrue: [suffix _ ' (case-sensitive)']
+		ifFalse: [suffix _ ' (use shift for case-sensitive)'].
 	self browseAllSelect:
-		[:method |  method  hasLiteralSuchThat:
-				[:lit | lit class == String and:
-					[lit includesSubstring: testString caseSensitive: caseBlind not]]]
-				name:  'Methods with string ''', aString, '''', suffix
-				autoSelect: aString
+			[:method |
+				method  hasLiteralSuchThat: [:lit |
+					lit class == String and:
+					[lit includesSubstring: aString caseSensitive: caseSensitive]]]
+		name:  'Methods with string ', aString printString, suffix
+		autoSelect: aString.
