@@ -1,5 +1,8 @@
-labels: aString selections: selectionsArray
-	"Answer an instance of me whose items are in aString, recording
-	 the given array of selections corresponding to the items in aString."
+labels: labels selections: selectionsArray
+	"Answer an instance of me whose items are in labels, recording 
+	the given array of selections corresponding to the items in labels."
 
-	^ self labels: aString lines: #() selections: selectionsArray
+	^ self
+		labels: labels
+		lines: #()
+		selections: selectionsArray
