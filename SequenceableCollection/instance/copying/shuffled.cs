@@ -1,6 +1,6 @@
 shuffled
-	| copy |  "($A to: $Z) shuffled"
-	copy _ self shallowCopy.
-	copy size to: 1 by: -1 do: 
-		[:i | copy swap: i with: (1 to: i) atRandom].
-	^ copy
+	^ self shuffledBy: Collection randomForPicking
+
+"Examples:
+	($A to: $Z) shuffled
+"
