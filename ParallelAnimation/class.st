@@ -1,0 +1,1 @@
+ParallelAnimation class instanceVariableNames: ''
