@@ -1,0 +1,3 @@
+isLeaf
+
+	^true
