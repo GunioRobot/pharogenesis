@@ -2,10 +2,10 @@ selectConflictsWith
 	"Selects all method definitions for which there is ALSO an entry in the specified changeSet or changList chosen by the user. 4/11/96 tk"
 	| aStream all index |
 	aStream _ WriteStream on: (String new: 200).
-	all _ ChangeSet allInstances asOrderedCollection.
+	all _ ChangeSet allSubInstances asOrderedCollection.
 	all do:
 		[:sel | aStream nextPutAll: (sel name contractTo: 40); cr].
-	ChangeList allInstancesDo:
+	ChangeList allSubInstancesDo:
 		[:sel | aStream nextPutAll: (sel file name); cr.
 			all addLast: sel].
 	aStream skip: -1.
