@@ -16,3 +16,4 @@ compressFile
 				zipped nextPutAll: (self nextInto: buffer)].
 			zipped close.
 			self close].
+	^zipped
