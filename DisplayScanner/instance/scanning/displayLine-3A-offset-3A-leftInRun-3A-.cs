@@ -3,19 +3,20 @@ displayLine: textLine offset: offset leftInRun: leftInRun
 	| done stopCondition nowLeftInRun startIndex string lastPos |
 	line _ textLine.
 	morphicOffset _ offset.
-	leftMargin _ (line leftMarginForAlignment: textStyle alignment) + offset x.
-	destX _ runX _ leftMargin.
-	rightMargin _ line rightMargin + offset x.
 	lineY _ line top + offset y.
 	lineHeight _ line lineHeight.
+	rightMargin _ line rightMargin + offset x.
+	lastIndex _ line first.
+	leftInRun <= 0 ifTrue: [self setStopConditions].
+	leftMargin _ (line leftMarginForAlignment: alignment) + offset x.
+	destX _ runX _ leftMargin.
 	fillBlt == nil ifFalse:
 		["Not right"
 		fillBlt destX: line left destY: lineY
 			width: line width left height: lineHeight; copyBits].
 	lastIndex _ line first.
 	leftInRun <= 0
-		ifTrue: [self setStopConditions.  "also sets the font"
-				nowLeftInRun _ text runLengthFor: lastIndex]
+		ifTrue: [nowLeftInRun _ text runLengthFor: lastIndex]
 		ifFalse: [nowLeftInRun _ leftInRun].
 	destY _ lineY + line baseline - font ascent.
 	runStopIndex _ lastIndex + (nowLeftInRun - 1) min: line last.
@@ -32,5 +33,7 @@ displayLine: textLine offset: offset leftInRun: leftInRun
 			font displayString: string on: bitBlt 
 				from: startIndex to: lastIndex at: lastPos kern: kern].
 		"see setStopConditions for stopping conditions for displaying."
-		done _ self perform: stopCondition].
+		done _ self perform: stopCondition.
+		lastIndex > runStopIndex ifTrue: [done _ true].
+	].
 	^ runStopIndex - lastIndex   "Number of characters remaining in the current run"
