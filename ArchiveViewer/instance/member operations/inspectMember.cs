@@ -1,0 +1,2 @@
+inspectMember
+	self selectedMember inspect
