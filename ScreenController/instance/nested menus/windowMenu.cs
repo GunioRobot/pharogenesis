@@ -1,18 +1,23 @@
 windowMenu
-	"Answer a menu for windows-related items.  2/4/96 sw"
+	"Answer a menu for windows-related items.  "
 
-	WindowMenu == nil ifTrue:
-		[WindowMenu _ SelectionMenu labelList:
+	^ SelectionMenu labelList:
 		#(	'find window...'
+			'find changed browsers...'
 			'find changed windows...'
 			'collapse all windows'
 			'expand all windows'
-			'close unchanged windows'
-			'fast windows')
-		lines: #(2 4)
-		selections: #(findWindow indicateWindowsWithUnacceptedInput collapseAll expandAll  closeUnchangedWindows fastWindows)].
-	^ WindowMenu
+			'close unchanged windows') ,
+			(Array with: (StandardSystemView cachingBits
+							ifTrue: ['dont save bits (compact)']
+							ifFalse: ['save bits (fast)'])
+				with: ((Preferences valueOfFlag: #reverseWindowStagger)
+							ifTrue: ['tile windows']
+							ifFalse: ['stagger windows']))
+		lines: #(3 5 6)
+		selections: #(findWindow chooseDirtyBrowser indicateWindowsWithUnacceptedInput collapseAll expandAll closeUnchangedWindows fastWindows changeWindowPolicy)
 
 "
 ScreenController new windowMenu startUp
+ScreenController initialize
 "
