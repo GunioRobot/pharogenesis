@@ -1,0 +1,3 @@
+useLineAfter
+
+	^useLineAfter == true
