@@ -3,4 +3,4 @@ VRMLClassNode
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon3D-VRML BaseNodes'
+	category: 'Balloon3D-VRML-BaseNodes'
