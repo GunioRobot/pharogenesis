@@ -1,0 +1,3 @@
+categoryKind
+
+	^ AbstractEvent categoryKind
