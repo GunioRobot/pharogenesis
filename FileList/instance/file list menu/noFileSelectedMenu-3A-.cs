@@ -1,10 +1,7 @@
 noFileSelectedMenu: aMenu
-
+	| items |
+	items _ self itemsForNoFile.
 	^ aMenu
-		labels:
-'sort by name
-sort by size
-sort by date
-add new file'
-		lines: # (3)
-		selections: #(sortByName sortBySize sortByDate addNewFile)
+		labels: items first
+		lines: items second
+		selections: items third
