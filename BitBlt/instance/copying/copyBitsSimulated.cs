@@ -1,2 +1,2 @@
 copyBitsSimulated
-	^BitBltSimulation copyBitsFrom: self.
+	^Smalltalk at: #BitBltSimulation ifPresent:[:bb| bb copyBitsFrom: self].
