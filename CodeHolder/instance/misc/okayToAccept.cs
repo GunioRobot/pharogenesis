@@ -1,7 +1,7 @@
 okayToAccept
 	"Answer whether it is okay to accept the receiver's input"
 
-	self showComment ifTrue:
+	self showingDocumentation ifTrue:
 		[self inform: 
 'Sorry, for the moment you can
 only submit changes here when
@@ -11,7 +11,7 @@ here and save it back, but only if YOU
 implement it!.'.
 		^ false].
 
-	self showDiffs ifFalse:
+	self showingAnyKindOfDiffs ifFalse:
 		[^ true]. 
 	^ SelectionMenu confirm: 
 'Caution!  You are "showing diffs" here, so 
