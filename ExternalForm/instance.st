@@ -1,6 +1,6 @@
 Form
 	subclass: #ExternalForm
-	instanceVariableNames: 'display argbMap '
+	instanceVariableNames: 'display argbMap'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Graphics-External'
