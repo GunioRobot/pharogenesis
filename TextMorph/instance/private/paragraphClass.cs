@@ -1,3 +1,3 @@
 paragraphClass
-	container ifNil: [^ NewParagraph].
+	container ifNil: [^ MultiNewParagraph].
 	^ container paragraphClass
