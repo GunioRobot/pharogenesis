@@ -1,0 +1,2 @@
+isGeneric
+	^true
