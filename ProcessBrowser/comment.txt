@@ -1,13 +1,15 @@
 Change Set:		ProcessBrowser
-Date:			29 October 2000
+Date:			14 March 2000
 Author:			Ned Konz
-
-This is a preliminary version
-of my Process Browser.
 
 email: ned@bike-nomad.com
 
 This is distributed under the Squeak License.
+
+Added 14 March:
+	CPUWatcher integration
+	automatically start and stop CPUWatcher
+	added CPUWatcher to process list menu
 
 Added 29 October:
 	MVC version
