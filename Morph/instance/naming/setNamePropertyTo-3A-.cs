@@ -1,2 +1,3 @@
 setNamePropertyTo: aName
-	self setProperty: #name toValue: aName
+	extension == nil ifTrue: [self assureExtension].
+	extension externalName: aName
