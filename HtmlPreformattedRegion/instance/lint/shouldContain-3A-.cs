@@ -1,0 +1,2 @@
+shouldContain: anEntity
+	^anEntity isTextualEntity
