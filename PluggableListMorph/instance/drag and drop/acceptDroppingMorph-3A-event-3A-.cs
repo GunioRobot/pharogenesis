@@ -9,5 +9,6 @@ acceptDroppingMorph: aMorph event: evt
 		acceptDroppingMorph: aMorph
 		event: evt
 		inMorph: self.
-	self resetPotentialDropMorph.
+	self resetPotentialDropRow.
+	evt hand releaseMouseFocus: self.
 	Cursor normal show.
