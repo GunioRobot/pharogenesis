@@ -4,3 +4,5 @@ deleteFile
 	(self confirm: 'Really delete ' , fileName , '?') ifFalse: [^ self].
 	directory deleteFileNamed: fileName.
 	self updateFileList.
+	brevityState _ #FileList.
+	self get
