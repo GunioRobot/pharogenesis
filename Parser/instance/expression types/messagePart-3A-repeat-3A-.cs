@@ -26,7 +26,7 @@ messagePart: level repeat: repeat
 				and: [level >= 2])
 				ifTrue: 
 					[start _ self startOfNextToken.
-					selector _ self advance asSymbol.
+					selector _ self advance asOctetString asSymbol.
 					self primaryExpression ifFalse: [^self expected: 'Argument'].
 					self messagePart: 1 repeat: true.
 					args _ Array with: parseNode.
