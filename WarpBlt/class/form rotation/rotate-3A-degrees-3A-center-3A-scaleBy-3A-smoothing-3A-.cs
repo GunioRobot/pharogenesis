@@ -24,9 +24,9 @@ rotate: srcForm degrees: angleInDegrees center: aPoint scaleBy: scalePoint smoot
 
 	"make a Form to hold the result and do the rotation"
 	warpSrc _ srcForm.
-	(srcForm isKindOf: ColorForm)
+	(srcForm isColorForm)
 		ifTrue: [
-			cellSize > 1
+			cellSize > 1 | true "ar 12/27/2001: Always enable - else sketches won't work"
 				ifTrue: [
 					warpSrc _ Form extent: srcForm extent depth: 16.
 					srcForm displayOn: warpSrc.
@@ -38,11 +38,11 @@ rotate: srcForm degrees: angleInDegrees center: aPoint scaleBy: scalePoint smoot
 
 	(WarpBlt toForm: dstForm)
 		sourceForm: warpSrc;
-		colorMap: (dstForm colormapIfNeededForDepth: warpSrc depth);
+		colorMap: (warpSrc colormapIfNeededFor: dstForm);
 		cellSize: cellSize;  "installs a new colormap if cellSize > 1"
 		combinationRule: Form paint;
 		copyQuad: quad toRect: dstForm boundingBox.
 
-	(dstForm isKindOf: ColorForm) ifTrue: [dstForm colors: srcForm colors copy].
+	(dstForm isColorForm) ifTrue: [dstForm colors: srcForm colors copy].
 	newCenter _ (center rotateBy: radians about: aPoint) truncated.
 	^ Array with: dstForm with: dstRect origin + (newCenter - center)
