@@ -1,0 +1,1 @@
+I am a SMInstaller that knows how to install .pr (Project) files.
