@@ -20,6 +20,6 @@ backTo: startIndex
 		beginTypeInBlock _ startBlock copy.
 		UndoSelection replaceFrom: 1 to: 0 with:
 			(paragraph text copyFrom: startIndex to: saveLimit - 1).
-		UndoMessage argument: UndoMessage argument + newBackovers].
+		UndoMessage argument: (UndoMessage argument ifNil: [1]) + newBackovers].
 	self zapSelectionWith: self nullText.
 	startBlock _ stopBlock copy
