@@ -15,7 +15,7 @@ Preferences logDebuggerStackToFile ifTrue:
 	[(aString includesSubString: 'Space') & 
 		(aString includesSubString: 'low') ifTrue: [
 			Smalltalk logError: aString inContext: debugger interruptedContext to:'LowSpaceDebug.log']].
-
+	Preferences eToyFriendly ifTrue: [World stopRunningAll].
 	^ debugger
-		openNotifierContents: debugger interruptedContext shortStack
+		openNotifierContents: nil
 		label: aString
