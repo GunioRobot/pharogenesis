@@ -1,0 +1,3 @@
+bitsPerSample
+
+	^ bitsPerSample
