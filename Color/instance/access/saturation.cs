@@ -6,8 +6,12 @@ saturation
 	g _ self privateGreen.
 	b _ self privateBlue. 
 
-	max _ ((r max: g) max: b).
-	min _ ((r min: g) min: b).
+	max _ min _ r.
+	g > max ifTrue: [max _ g].
+	b > max ifTrue: [max _ b].
+	g < min ifTrue: [min _ g].
+	b < min ifTrue: [min _ b].
+
 	max = 0
 		ifTrue: [ ^ 0.0 ]
 		ifFalse: [ ^ (max - min) asFloat / max asFloat ].
