@@ -1,31 +1,20 @@
 playLoop
+	"The sound player process loop."
 
+	| bytesPerSlice count |
+	bytesPerSlice _ Stereo ifTrue: [4] ifFalse: [2].
 	[true] whileTrue: [
-		[self primSoundAvailableSpace > 0] whileFalse: [
-			(Delay forMilliseconds: 1) wait.
-		].
+		[(count _ self primSoundAvailableBytes // bytesPerSlice) > 100]
+			whileFalse: [ReadyForBuffer wait].
 
+		count _ count min: Buffer stereoSampleCount.
 		PlayerSemaphore critical: [
-			BufferReady ifTrue: [
-				self primSoundPlaySamples: Buffer sampleCount from: Buffer startingAt: 1.
-				Buffer primFill: 0.
-				BufferReady _ false.
-			] ifFalse: [
-				self primSoundPlaySilence.
-			].
-		].
-
-		PlayerSemaphore critical: [
-			BufferReady ifFalse: [
-				ActiveSounds copy do: [ :snd |
-					snd samplesRemaining <= 0 ifTrue: [ ActiveSounds remove: snd ].
-				].
-				ActiveSounds do: [ :snd |
-					snd playSampleCount: Buffer sampleCount into: Buffer startingAt: 1 stereo: Stereo.
-					BufferReady _ true.
-				].
-			].
-		].
-	].
-
-	PlayerProcess _ nil.
+			ActiveSounds _ ActiveSounds select: [:snd | snd samplesRemaining > 0].
+			ActiveSounds do: [:snd |
+				snd ~~ SoundJustStarted ifTrue: [
+					snd playSampleCount: count into: Buffer startingAt: 1]].
+			ReverbState == nil ifFalse: [
+				ReverbState applyReverbTo: Buffer startingAt: 1 count: count].
+			self primSoundPlaySamples: count from: Buffer startingAt: 1.
+			Buffer primFill: 0.
+			SoundJustStarted _ nil]].
