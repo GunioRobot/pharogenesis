@@ -1,7 +1,6 @@
 makeNewGameButton
-
-	^self
+	^ self
 		buildButton: SimpleButtonMorph new
 		target: self
-		label: 'New game'
+		label: 'New game' translated
 		selector: #newGame
