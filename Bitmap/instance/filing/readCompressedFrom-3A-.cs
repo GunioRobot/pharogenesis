@@ -1,6 +1,34 @@
-readCompressedFrom: aStream 
-	"Initialize the array of bits by reading integers from the argument, 
-	aStream."
-	| pixSize |
-	pixSize _ aStream next.  "1, 2, or 4 bytes"
-	
+readCompressedFrom: strm
+	"Decompress a run-coded stream into this bitmap:
+		[0 means end of runs]
+		[n = 1..127] [(n+3) copies of next byte]
+		[n = 128..191] [(n-127) next bytes as is]
+		[n = 192..255] [(n-190) copies of next 4 bytes]"
+	| n byte out outBuff bytes |
+	out _ WriteStream on: (outBuff _ ByteArray new: self size*4).
+	[(n _ strm next) > 0] whileTrue:
+		[(n between: 1 and: 127) ifTrue:
+			[byte _ strm next.
+			1 to: n+3 do: [:i | out nextPut: byte]].
+		(n between: 128 and: 191) ifTrue:
+			[1 to: n-127 do: [:i | out nextPut: strm next]].
+		(n between: 192 and: 255) ifTrue:
+			[bytes _ (1 to: 4) collect: [:i | strm next].
+			1 to: n-190 do: [:i | bytes do: [:b | out nextPut: b]]]].
+	out position = outBuff size ifFalse: [self error: 'Decompression size error'].
+	"Copy the final byteArray into self"
+	self copyFromByteArray: outBuff.
+"
+Integerity check:
+ | f r |
+r _ Rectangle fromUser.
+f _ Form fromDisplay: r.
+f bits: (Bitmap decompressFromByteArray: f bits compressToByteArray).
+f bits size = f bitsSize ifFalse: [self halt].
+f displayAt: r topLeft
+
+Total Integerity check:
+Form allInstances do: [:f |
+f bits = (Bitmap decompressFromByteArray: f bits compressToByteArray)
+	ifFalse: [self halt]]
+"
