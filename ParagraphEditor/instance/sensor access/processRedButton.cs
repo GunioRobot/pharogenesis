@@ -4,14 +4,14 @@ processRedButton
 	itself. Double clicking causes a selection of the area between the nearest 
 	enclosing delimitors."
 
-	| previousStartBlock previousStopBlock selectionBlocks tempBlock clickPoint oldDelta oldInterval |
+	|  selectionBlocks clickPoint oldDelta oldInterval previousMarkBlock previousPointBlock |
 
 	clickPoint _ sensor cursorPoint.
 	(view containsPoint: clickPoint) ifFalse: [^ self].
 	(paragraph clickAt: clickPoint for: model controller: self) ifTrue: [^ self].
-	oldInterval _ startBlock stringIndex to: stopBlock stringIndex - 1.
-	previousStartBlock _ startBlock.
-	previousStopBlock _ stopBlock.
+	oldInterval _ self selectionInterval.
+	previousMarkBlock _ self markBlock.
+	previousPointBlock _ self pointBlock.
 	oldDelta _ paragraph scrollDelta.
 	sensor leftShiftDown
 		ifFalse:
@@ -19,18 +19,13 @@ processRedButton
 			self closeTypeIn.
 			selectionBlocks _ paragraph mouseSelect: clickPoint]
 		ifTrue:
-			[selectionBlocks _ paragraph extendSelectionAt: startBlock endBlock: stopBlock.
+			[selectionBlocks _ paragraph extendSelectionMark: self markBlock pointBlock: self pointBlock.
 			self closeTypeIn].
 	selectionShowing _ true.
-	startBlock _ selectionBlocks at: 1.
-	stopBlock _ selectionBlocks at: 2.
-	startBlock > stopBlock
-		ifTrue: 
-			[tempBlock _ startBlock.
-			startBlock _ stopBlock.
-			stopBlock _ tempBlock].
-	(startBlock = stopBlock 
-		and: [previousStartBlock = startBlock and: [previousStopBlock = stopBlock]])
+	self markBlock: (selectionBlocks at: 1).
+	self pointBlock: (selectionBlocks at: 2).
+	(self hasCaret
+		and: [previousMarkBlock = self markBlock and: [previousPointBlock = self pointBlock]])
 		ifTrue: [self selectWord].
 	oldDelta ~= paragraph scrollDelta "case of autoscroll"
 			ifTrue: [self updateMarker].
