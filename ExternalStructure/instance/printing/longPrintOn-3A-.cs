@@ -5,7 +5,7 @@ longPrintOn: aStream
 	(fields isEmpty or: [fields first isNil]) ifTrue: [fields _ #()]
 		ifFalse: [(fields first isKindOf: Array) ifFalse: [fields _ Array with: fields]].
 	fields do: [ :field |
-		field first ~~ #nil ifTrue: [
+		field first notNil ifTrue: [
 			aStream nextPutAll: field first; nextPut: $:; space; tab.
 			(self perform: field first) printOn: aStream.
 			aStream cr]].
