@@ -6,4 +6,4 @@ reset
 	currentMatrix := modelMatrix.
 	matrixStack := OrderedCollection new: 30.
 	matrixStack resetTo: 1.
-	needsUpdate := false.
+	needsUpdate := true.
