@@ -6,7 +6,7 @@ setArguments
 	newArgs _ FillInTheBlank
 		request:
 'Please type the arguments to be sent to the target
-when this button is pressed separated by periods'
+when this button is pressed separated by periods' translated
 		initialAnswer: s contents.
 	newArgs isEmpty ifFalse: [
 		newArgsArray _ Compiler evaluate: '{', newArgs, '}' for: self logged: false.
