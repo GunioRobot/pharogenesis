@@ -5,16 +5,15 @@ swapChars: characterStream
 	sensor keyboard.		"flush the triggering cmd-key character"
 	(chars _ self selection) size == 0
 		ifTrue:
-			[currentSelection _ startBlock stringIndex]
+			[currentSelection _ self pointIndex.
+			self selectMark: currentSelection - 1 point: currentSelection]
 		ifFalse:
 			[chars size == 2
 				ifFalse:
 					[view flash.  ^ true]
 				ifTrue:
-					[currentSelection _ startBlock stringIndex + 1]].
-
-	self selectFrom: currentSelection - 1 to: currentSelection.
+					[currentSelection _ self pointIndex - 1]].
 	aString _ self selection string.
-	self replaceSelectionWith: (Text fromString: aString reversed).
+	self replaceSelectionWith: (Text string: aString reversed emphasis: emphasisHere).
 	self selectAt: currentSelection + 1.
 	^ true
