@@ -1,0 +1,1 @@
+B3DSceneMorph class instanceVariableNames: ''
