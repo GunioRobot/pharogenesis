@@ -1,8 +1,8 @@
 emitForValue: stack on: strm
 
-	code < 256
+	self code < 256
 		ifTrue: 
-			[strm nextPut: (code = LdSuper ifTrue: [LdSelf] ifFalse: [code]).
+			[strm nextPut: (self code = LdSuper ifTrue: [LdSelf] ifFalse: [self code]).
 			stack push: 1]
 		ifFalse: 
 			[self emitLong: LoadLong on: strm.
