@@ -1,0 +1,3 @@
+evaporatePheromone
+
+	self decayPatchVariable: 'pheromone'.
