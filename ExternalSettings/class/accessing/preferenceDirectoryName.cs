@@ -1,0 +1,2 @@
+preferenceDirectoryName
+	^'prefs'
