@@ -1,8 +1,9 @@
 showBytecodes
-	"Show the bytecodes of the selected method."
-	"Set a mode for contents!"
+	"Show or hide the bytecodes of the selected method."
 
-	((self messageListIndex = 0) | (self okToChange not))
+	(messageListIndex = 0 or: [self okToChange not])
 		ifTrue: [^ self changed: #flash].
-	editSelection _ #byteCodes.
-	self changed: #contents.
+	editSelection == #byteCodes
+		ifTrue: [editSelection _ #editMessage]
+		ifFalse: [editSelection _ #byteCodes].
+	self contentsChanged
