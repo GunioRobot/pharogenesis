@@ -2,6 +2,7 @@ show
 	"Show my samples in a WaveEditor."
 
 	| ed w |
+	recorder verifyExistenceOfRecordedSound ifFalse: [^ self].
 	recorder pause.
 	ed _ WaveEditor new.
 	ed data: recorder condensedSamples.
