@@ -1,0 +1,3 @@
+xxxUnTrace
+
+	tracedObject become: self
