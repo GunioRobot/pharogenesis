@@ -1,0 +1,2 @@
+isCurrentlyGraphical
+	^ true
