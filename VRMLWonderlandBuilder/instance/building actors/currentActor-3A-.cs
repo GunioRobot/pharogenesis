@@ -1,0 +1,2 @@
+currentActor: aWonderlandActor
+	currentActor _ aWonderlandActor
