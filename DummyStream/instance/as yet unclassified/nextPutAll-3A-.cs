@@ -1,0 +1,2 @@
+nextPutAll: aByteArray
+	"do nothing"
