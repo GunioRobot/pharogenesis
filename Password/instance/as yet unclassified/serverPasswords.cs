@@ -1,10 +1,10 @@
 serverPasswords
-	"Get the server passwords off the disk.  Decode them.  File 'sqk.info' must be in the same folder with the version of the Squeak application (VM) that is running this image now."
+	"Get the server passwords off the disk and decode them. The file 'sqk.info' must be in the same folder as the Squeak application (VM) that is running this image. (Note: This code works even if you are running with no system sources file.)"
 
-	| raw dir |
-	dir _ (SourceFiles at: 1) directory.
+	| dir encodedPasswords |
+	dir _ FileDirectory on: Smalltalk vmPath.
 	(dir fileExists: 'sqk.info') ifFalse: [^ nil].	"Caller will ask user for password"
-	raw _ (dir oldFileNamed: 'sqk.info') contentsOfEntireFile.
+	encodedPasswords _ (dir oldFileNamed: 'sqk.info') contentsOfEntireFile.
 		"If you don't have this file, and you really do want to release 
 		an update, contact Ted Kaehler."
-	^ (self decode: raw) findTokens: String cr.
+	^ (self decode: encodedPasswords) findTokens: String cr
