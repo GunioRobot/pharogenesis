@@ -1,0 +1,2 @@
+changesText
+	^ CelesteAddressBook changesText.
