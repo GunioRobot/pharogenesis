@@ -1,4 +1,3 @@
 doIfNotNil: aBlock
-	"Deprecated -- use ifNotNilDo:"
-
+	self deprecated: 'use ifNotNilDo:'.
 	^ self ifNotNilDo: aBlock
