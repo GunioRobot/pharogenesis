@@ -1,3 +1,4 @@
 startingIndex
-	predecessor == nil ifTrue: [^ 1].
-	^ predecessor lastCharacterIndex + 1
+	predecessor isNil
+		ifTrue: [^ 1].
+	^ predecessor lastCharacterIndex + 1 
