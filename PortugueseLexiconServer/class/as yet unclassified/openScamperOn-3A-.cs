@@ -4,6 +4,6 @@ openScamperOn: aWord
 
 	aUrl _ 'http://www.priberam.pt/scripts/dlpouniv.dll', 
 		'?search_value=', (self decodeAccents: aWord).
-	scamperWindow _ Scamper newOrExistingOn: aUrl.
+	scamperWindow _ (WebBrowser default ifNil: [^self]) newOrExistingOn: aUrl.
 	scamperWindow model jumpToUrl: aUrl asUrl.
 	scamperWindow activate.
