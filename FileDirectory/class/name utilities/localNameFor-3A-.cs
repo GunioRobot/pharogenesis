@@ -1,6 +1,5 @@
-localNameFor: fullName
+localNameFor: fullName 
 	"Return the local part the given name."
-
-	self
+	DirectoryClass
 		splitName: fullName
 		to: [:dirPath :localName | ^ localName]
