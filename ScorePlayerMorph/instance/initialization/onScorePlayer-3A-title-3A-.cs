@@ -4,14 +4,6 @@ onScorePlayer: aScorePlayer title: scoreName
 	scorePlayer ifNotNil:
 		[scorePlayer  reset.
 		instrumentSelector _ Array new: scorePlayer score tracks size].
-	divider _ AlignmentMorph new
-		extent: 10@1;
-		borderWidth: 1;
-		layoutInset: 0;
-		borderColor: #raised;
-		color: color;
-		hResizing: #spaceFill;
-		vResizing: #rigid.
 
 	self removeAllMorphs.
 	self addMorphBack: self makeControls.
@@ -29,7 +21,15 @@ onScorePlayer: aScorePlayer title: scoreName
 	col _ AlignmentMorph newColumn color: color; layoutInset: 0.
 	self addMorphBack: col.
 	1 to: scorePlayer trackCount do: [:trackIndex |
-		col addMorphBack: divider fullCopy.
+		divider _ AlignmentMorph new
+			extent: 10@1;
+			borderWidth: 1;
+			layoutInset: 0;
+			borderColor: #raised;
+			color: color;
+			hResizing: #spaceFill;
+			vResizing: #rigid.
+		col addMorphBack: divider.
 		col addMorphBack: (self trackControlsFor: trackIndex)].
 
 	LastMIDIPort ifNotNil: [
