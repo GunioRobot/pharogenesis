@@ -1,0 +1,2 @@
+viewRegistry
+	^viewRegistry
