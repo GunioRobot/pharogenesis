@@ -1,5 +1,5 @@
 goButtonState: newState
-	goButton ifNotNil:
-		[newState
-			ifTrue: [goButton state: #on]
-			ifFalse: [goButton state: #off]]
+	"Get all go buttons in my scope to show the correct state"
+
+	self allGoButtons do:
+		[:aButton | aButton state: newState]
