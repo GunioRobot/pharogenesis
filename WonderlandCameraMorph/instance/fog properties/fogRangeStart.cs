@@ -1,0 +1,2 @@
+fogRangeStart
+	^myCamera getFogRangeStart
