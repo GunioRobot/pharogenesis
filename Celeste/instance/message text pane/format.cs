@@ -1,5 +1,5 @@
 format
-
+	mailDB ifNil: [ ^self ].
 	messageTextView
-		editString: self formatedMessageText;
+		editString: self formattedMessageText;
 		hasUnacceptedEdits: true.
