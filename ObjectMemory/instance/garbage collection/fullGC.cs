@@ -9,7 +9,9 @@ fullGC
 	self clearRootsTable.
 	youngStart _ self startOfMemory.  "process all of memory"
 	self markPhase.
-	self sweepPhase.
+	"Sweep phase returns the number of survivors.
+	Use the up-to-date version instead the one from startup."
+	totalObjectCount _ self sweepPhase.
 	self fullCompaction.
 	allocationCount _ 0.
 	statFullGCs _ statFullGCs + 1.
