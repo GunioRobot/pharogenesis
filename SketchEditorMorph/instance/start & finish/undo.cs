@@ -12,7 +12,7 @@ undo
 	undoBuffer _ temp.		"can get back to what you had by
 undoing again"
 	paintingFormPen setDestForm: paintingForm.
-	formCanvas _ FormCanvas on: paintingForm.	"used for lines,
+	formCanvas _ paintingForm getCanvas.	"used for lines,
 ovals, etc."
 	formCanvas _ formCanvas
 		copyOrigin: self topLeft negated
