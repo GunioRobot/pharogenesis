@@ -1,0 +1,3 @@
+ccgDeclareCForVar: aSymbolOrString
+
+	^'unsigned ', aSymbolOrString
