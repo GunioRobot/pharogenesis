@@ -1,0 +1,2 @@
+menuTitleBorderWidth
+	^ Parameters at: #menuTitleBorderWidth
