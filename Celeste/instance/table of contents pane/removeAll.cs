@@ -1,10 +1,9 @@
 removeAll
-	"Remove all messages from the current category."
-	mailDB removeAll: currentMessages fromCategory: currentCategory.
+	"Remove all presently listed messages from the current category."
+	mailDB ifNil: [ ^self ].
+	self category ifNil: [ ^self ].
+	mailDB removeAll: currentMessages fromCategory: self category.
 	currentMsgID _ nil.
-	currentMessages _ #().
-	currentTOC _ #().
-	self initializeTocLists.
-	self changed: #tocEntryList.
-	self changed: #tocEntry.
-	self changed: #messageText
+
+	"Regenerate the (possibly empty) TOC for this category"
+	self updateTOC.
