@@ -1,0 +1,2 @@
+clearChoice
+	chooseRemote _ nil
