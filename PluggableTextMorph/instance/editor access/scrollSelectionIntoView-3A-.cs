@@ -16,7 +16,7 @@ scrollSelectionIntoView: event
 	selRect _ transform localBoundsToGlobal: rectToTest.
 	selRect height > bounds height
 		ifTrue: [^ false].  "Would not fit, even if we tried to scroll"
-	(delta _ selRect amountToTranslateWithin: self bounds) y ~= 0 ifTrue:
+	(delta _ selRect amountToTranslateWithin: self innerBounds) y ~= 0 ifTrue:
 		["Scroll end of selection into view if necessary"
 		self scrollBy: 0@delta y.
 		^ true].
