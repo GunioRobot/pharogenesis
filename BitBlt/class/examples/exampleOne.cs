@@ -8,6 +8,6 @@ exampleOne
 	1 to: 16 do: [:index | BitBlt
 			exampleAt: (path at: index)
 			rule: index - 1
-			fillColor: Color gray]
+			fillColor: Color black]
 
 	"BitBlt exampleOne"
