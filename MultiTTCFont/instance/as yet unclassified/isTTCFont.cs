@@ -1,0 +1,2 @@
+isTTCFont
+	^true
