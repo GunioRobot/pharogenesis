@@ -1,0 +1,2 @@
+splineVertexClass
+	^self specAt: #splineVertex
