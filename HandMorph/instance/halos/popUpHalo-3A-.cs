@@ -7,4 +7,4 @@ popUpHalo: evt
 	argument submorphCount > 0 ifTrue:
 		[(argument _ self chooseHaloSubmorphOf: argument caption: 'Who gets halo?')
 			ifNil: [^ self]].
-	self addHalo.
+	self addHalo: evt.
