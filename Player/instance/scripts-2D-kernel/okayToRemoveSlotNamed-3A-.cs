@@ -1,5 +1,5 @@
 okayToRemoveSlotNamed: aSlotName
-	costume world allExtantPlayers do:
+	self costume world presenter allExtantPlayers do:
 		[:aPlayer | (aPlayer hasScriptReferencing: aSlotName ofPlayer: self)
 			ifTrue:
 				[^ false]].
