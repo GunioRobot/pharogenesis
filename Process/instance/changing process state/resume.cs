@@ -1,8 +1,8 @@
 resume
-	"Primitive. Allow the process that the receiver represents to continue. Put 
-	the receiver in line to become the activeProcess. Fail if the receiver is 
-	already waiting in a queue (in a Semaphore or ProcessScheduler). 
-	Essential. See Object documentation whatIsAPrimitive."
+	"Allow the process that the receiver represents to continue. Put  
+	the receiver in line to become the activeProcess. Check for a nil 
+	suspendedContext, which indicates a previously terminated Process that 
+	would cause a vm crash if the resume attempt were permitted"
 
-	<primitive: 87>
-	self primitiveFailed
+	suspendedContext ifNil: [^ self primitiveFailed].
+	^ self primitiveResume
