@@ -1,0 +1,2 @@
+bytesPerElement
+	^2
