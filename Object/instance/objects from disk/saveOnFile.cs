@@ -4,7 +4,7 @@ saveOnFile
 	| aFileName fileStream |
 	aFileName _ self class name asFileName.	"do better?"
 	aFileName _ FillInTheBlank request: 'File name?' initialAnswer: aFileName.
-	aFileName size == 0 ifTrue: [^ self beep].
+	aFileName size == 0 ifTrue: [^ Beeper beep].
 
-	fileStream _ FileStream newFileNamed: aFileName.
+	fileStream _ FileStream newFileNamed: aFileName asFileName.
 	fileStream fileOutClass: nil andObject: self.
