@@ -1,0 +1,5 @@
+I am the test suite for the CelesteCategorizer
+Has been remamed to CelesteCategorizerTest because of a naming conflict on Squeak 3.7
+To try regression test, eval
+ TestRunner open 
+gg 6/9/2004 20:09
