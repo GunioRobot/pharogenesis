@@ -6,4 +6,4 @@ generatePreIncrement: msgNode on: aStream indent: level
 	varNode isVariable
 		ifFalse: [ self error: 'preIncrement can only be applied to variables' ].
 	aStream nextPutAll: '++'.
-	aStream nextPutAll: varNode name.
+	aStream nextPutAll: (self returnPrefixFromVariable: varNode name).
