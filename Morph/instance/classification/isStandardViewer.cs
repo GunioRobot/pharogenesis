@@ -1,0 +1,2 @@
+isStandardViewer
+	^false
