@@ -1,0 +1,2 @@
+previousPage
+	self sendMessageToCostume: #previousPage
