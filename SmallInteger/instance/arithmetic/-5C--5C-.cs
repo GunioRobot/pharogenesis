@@ -5,4 +5,4 @@
 	No Lookup. See Object documentation whatIsAPrimitive."
 
 	<primitive: 11>
-	^super \\ aNumber"Do with // if primitive fails"
+	^ super \\ aNumber 	"will use // to compute it if primitive fails"
