@@ -1,0 +1,2 @@
+defaultBitBltClass
+	^FXBlt
