@@ -1,5 +1,5 @@
 exponentialDecay: multiplier
-	"(Envelope exponentialDecay: 0.95) showOnDisplay"
+	"(Envelope exponentialDecay: 0.95) "
 
 	| mSecsPerStep pList t v last |
 	mSecsPerStep _ 10.
