@@ -1,17 +1,15 @@
 initialize
-
+	"initialize the state of the receiver"
 	super initialize.
+	""
 	board _ TetrisBoard new game: self.
-	color _ Color lightGray.
-	self listDirection: #topToBottom.
-	self wrapCentering: #center.
-	self vResizing: #shrinkWrap.
-	self hResizing: #shrinkWrap.
-	self layoutInset: 3.
-	self 
-		addMorphBack: self makeGameControls;
-		addMorphBack: self makeMovementControls;
-		addMorphBack: self showScoreDisplay;
-		addMorphBack: board.
-	board newGame.
-
+	self listDirection: #topToBottom;
+	  wrapCentering: #center;
+	  vResizing: #shrinkWrap;
+	  hResizing: #shrinkWrap;
+	  layoutInset: 3;
+	  addMorphBack: self makeGameControls;
+		 addMorphBack: self makeMovementControls;
+		 addMorphBack: self showScoreDisplay;
+		 addMorphBack: board.
+	board newGame
