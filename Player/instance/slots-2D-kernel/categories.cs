@@ -6,8 +6,9 @@ categories
 		ifTrue:	[^ self categoriesForWorld].
 
 	aList _ OrderedCollection new.
-	self slotNames size > 0 ifTrue:
-		[aList add: #'instance variables'].
+	self slotNames notEmpty ifTrue:
+		[aList add: ScriptingSystem nameForInstanceVariablesCategory].
 	aList addAll: costume categoriesForViewer.
-	aList add: #scripts after: aList first.
+	aList remove: ScriptingSystem nameForScriptsCategory ifAbsent: [].
+	aList add: ScriptingSystem nameForScriptsCategory after: aList first.
 	^ aList
