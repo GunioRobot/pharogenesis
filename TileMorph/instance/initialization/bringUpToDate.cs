@@ -1,4 +1,8 @@
 bringUpToDate
+	| newLabel |
 	type == #objRef ifTrue:
-		[self line1: actualObject externalName]
+		[newLabel _ actualObject externalName.
+		self isPossessive ifTrue:
+			[newLabel _ newLabel, '''s'].
+		self line1: newLabel]
 	
