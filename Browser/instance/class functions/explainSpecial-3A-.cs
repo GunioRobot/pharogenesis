@@ -14,7 +14,7 @@ explainSpecial: string
 						ifNone: []) ~~ nil
 				ifTrue: [reply _ '"' , string , ' is one part of the message selector ' , whole , '.']
 				ifFalse: [^nil].
-			classes _ Smalltalk allClassesImplementing: whole.
+			classes _ self systemNavigation allClassesImplementing: whole.
 			classes _ 'these classes ' , classes printString.
 			^reply , '  It is defined in ' , classes , '."
 Smalltalk browseAllImplementorsOf: #' , whole].
