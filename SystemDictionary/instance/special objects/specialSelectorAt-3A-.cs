@@ -1,5 +1,4 @@
 specialSelectorAt: anInteger 
-	"Answer the special message selector stored at location anInteger in the 
-	system dictionary."
+	"Answer the special message selector from the interleaved specialSelectors array."
 
-	^SpecialSelectors at: anInteger * 2 - 1
+	^ (self specialObjectsArray at: 24) at: anInteger * 2 - 1
