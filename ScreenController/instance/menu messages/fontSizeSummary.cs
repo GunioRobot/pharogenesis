@@ -1,2 +1,2 @@
 fontSizeSummary
-	Utilities fontSizeSummary
+	TextStyle fontSizeSummary
