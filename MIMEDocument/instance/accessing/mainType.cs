@@ -1,0 +1,2 @@
+mainType
+	^ mainType
