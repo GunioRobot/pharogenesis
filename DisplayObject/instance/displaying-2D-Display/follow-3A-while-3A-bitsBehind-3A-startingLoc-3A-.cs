@@ -5,10 +5,12 @@ follow: locationBlock while: durationBlock bitsBehind: initialBitsBehind startin
    location _ loc.
    rect1 _ location extent: self extent.
    save1 _ initialBitsBehind.
-   save1Blt _ BitBlt toForm: save1.
+   save1Blt _ BitBlt current toForm: save1.
    buffer _ Form extent: self extent*2 depth: Display depth.  "Holds overlapping region"
-   bufferBlt _ BitBlt toForm: buffer.
+   bufferBlt _ BitBlt current toForm: buffer.
+   Display deferUpdates: true.
    self displayOn: Display at: location rule: Form paint.
+   Display deferUpdates: false; forceToScreen: (location extent: self extent).
    [durationBlock value] whileTrue: [
 		newLoc _ locationBlock value.
 		newLoc ~= location ifTrue: [
@@ -21,11 +23,17 @@ follow: locationBlock while: durationBlock bitsBehind: initialBitsBehind startin
 					"now buffer is clean background; get new bits for save1"
 					save1Blt copy: (0@0 extent: self extent) from: rect2 origin - bothRects origin in: buffer.
 					self displayOnPort: bufferBlt at: rect2 origin - bothRects origin rule: Form paint.
-					Display copy: bothRects from: 0@0 in: buffer rule: Form over]
+					Display deferUpdates: true.
+					Display copy: bothRects from: 0@0 in: buffer rule: Form over.
+					Display deferUpdates: false; forceToScreen: bothRects]
 				ifFalse: [  "when no overlap, do the simple thing (both rects might be too big)"
+					Display deferUpdates: true.
 					Display copy: (location extent: save1 extent) from: 0@0 in: save1 rule: Form over.
 					save1Blt copyFrom: rect2 in: Display to: 0@0.
-					self displayOn: Display at: newLoc rule: Form paint].
+					self displayOn: Display at: newLoc rule: Form paint.
+					Display deferUpdates: false; 
+						forceToScreen: (location extent: save1 extent); 
+						forceToScreen: (newLoc extent: self extent)].
 			location _ newLoc.
 			rect1 _ rect2]].
 
