@@ -10,12 +10,14 @@ scanCharactersFrom: startIndex to: stopIndex in: sourceString rightX: rightX sto
 	reached, then return stops at: 257. Fail under the same conditions that 
 	the Smalltalk code below would cause an error. Optional. See Object 
 	documentation whatIsAPrimitive."
-	| ascii nextDestX |
+	| ascii nextDestX maxAscii |
 	<primitive: 103>
+	maxAscii _ xTable size-2.
 	lastIndex _ startIndex.
 	[lastIndex <= stopIndex]
 		whileTrue: 
 			[ascii _ (sourceString at: lastIndex) asciiValue.
+			"ascii > maxAscii ifTrue: [ascii _ maxAscii]."
 			(stopConditions at: ascii + 1) == nil
 				ifFalse: [^stops at: ascii + 1].
 			sourceX _ xTable at: ascii + 1.
