@@ -1,2 +1,3 @@
 floatPrecision: aNumber
-	floatPrecision _ aNumber
+
+	floatPrecision _ aNumber.
