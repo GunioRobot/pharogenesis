@@ -2,7 +2,7 @@ undoLastCommand
 	"Undo the last command, i.e. move backward in the recent-commands tape, if possible."
 
 	| aPhase anIndex |
-	lastCommand ifNil: [^ self beep].
+	lastCommand ifNil: [^ Beeper beep].
 
 	(aPhase _ lastCommand phase) == #done
 		ifFalse:
