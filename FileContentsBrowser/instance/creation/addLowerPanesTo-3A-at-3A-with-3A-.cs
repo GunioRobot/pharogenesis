@@ -1,6 +1,6 @@
 addLowerPanesTo: window at: nominalFractions with: editString
 
-	| verticalOffset row innerFractions codePane infoPane infoHeight |
+	| verticalOffset row codePane infoPane infoHeight divider |
 
 	row _ AlignmentMorph newColumn
 		hResizing: #spaceFill;
@@ -10,13 +10,15 @@ addLowerPanesTo: window at: nominalFractions with: editString
 		borderColor: Color black;
 		layoutPolicy: ProportionalLayout new.
 
-	codePane _ PluggableTextMorph on: self text: #contents accept: #contents:notifying:
+	codePane _ MorphicTextEditor default on: self text: #contents accept: #contents:notifying:
 			readSelection: #contentsSelection menu: #codePaneMenu:shifted:.
 	infoPane _ PluggableTextMorph on: self text: #infoViewContents accept: nil
 			readSelection: nil menu: nil.
+	infoPane askBeforeDiscardingEdits: false.
 	verticalOffset _ 0.
-	innerFractions _ 0@0 corner: 1@0.
+
 ">>not with this browser--- at least not yet ---
+	innerFractions _ 0@0 corner: 1@0.
 	verticalOffset _ self addOptionalAnnotationsTo: row at: innerFractions plus: verticalOffset.
 	verticalOffset _ self addOptionalButtonsTo: row  at: innerFractions plus: verticalOffset.
 <<<<"
@@ -29,15 +31,19 @@ addLowerPanesTo: window at: nominalFractions with: editString
 				fractions: (0@0 corner: 1@1) 
 				offsets: (0@verticalOffset corner: 0@infoHeight negated)
 		).
+	divider _ BorderedSubpaneDividerMorph forTopEdge.
+	Preferences alternativeWindowLook ifTrue:[
+		divider extent: 4@4; color: Color transparent; borderColor: #raised; borderWidth: 2.
+	].
 	row 
-		addMorph: (SubpaneDividerMorph forTopEdge)
+		addMorph: divider
 		fullFrame: (
 			LayoutFrame 
 				fractions: (0@1 corner: 1@1) 
 				offsets: (0@infoHeight negated corner: 0@(1-infoHeight))
 		).
 	row 
-		addMorph: (infoPane borderWidth: 0; hideScrollBarIndefinitely)
+		addMorph: (infoPane borderWidth: 0; hideScrollBarsIndefinitely)
 		fullFrame: (
 			LayoutFrame 
 				fractions: (0@1 corner: 1@1) 
