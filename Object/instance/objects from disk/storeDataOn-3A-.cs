@@ -1,9 +1,5 @@
 storeDataOn: aDataStream
-	"Store myself on a DataStream. Answer self.  This is a low-level DataStream/ReferenceStream method. See also objectToStoreOnDataStream.
-	 NOTE: This method must send 'aDataStream beginInstance:size:'
-		and then put a number of objects (via aDataStream nextPut:/nextPutWeak:).
-	 Cf. readDataFrom:size:, which must read back what this puts
-	when given the size that it gave to beginInstance:size:. -- 11/15/92 jhm"
+	"Store myself on a DataStream.  Answer self.  This is a low-level DataStream/ReferenceStream method. See also objectToStoreOnDataStream.  NOTE: This method must send 'aDataStream beginInstance:size:' and then (nextPut:/nextPutWeak:) its subobjects.  readDataFrom:size: reads back what we write here."
 	| cntInstVars cntIndexedVars |
 
 	cntInstVars _ self class instSize.
@@ -14,7 +10,8 @@ storeDataOn: aDataStream
 	1 to: cntInstVars do:
 		[:i | aDataStream nextPut: (self instVarAt: i)].
 
-	(aDataStream byteStream class == DummyStream) ifFalse: [
+	"Write fields of a variable length object.  When writing to a dummy 
+		stream, don't bother to write the bytes"
+	((aDataStream byteStream class == DummyStream) and: [self class isBits]) ifFalse: [
 		1 to: cntIndexedVars do:
 			[:i | aDataStream nextPut: (self basicAt: i)]].
-		"save a little time if dummy stream"
