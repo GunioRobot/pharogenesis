@@ -1,2 +1,2 @@
 hide
-	costume hide
+	self costume hide
