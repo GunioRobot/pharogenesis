@@ -3,4 +3,4 @@ writeRecentCharacters: nCharacters toFileNamed: aFilename
 	| changes |
 	changes _ SourceFiles at: 2.
 	changes setToEnd; skip: nCharacters negated.
-	(FileStream newFileNamed: aFilename) nextPutAll: (changes next: nCharacters); close; open; edit
+	(StandardFileStream newFileNamed: aFilename) nextPutAll: (changes next: nCharacters); close; open; edit
