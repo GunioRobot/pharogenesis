@@ -1,0 +1,2 @@
+getInterruptCheckCounter
+	^interruptCheckCounter
