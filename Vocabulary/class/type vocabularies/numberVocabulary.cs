@@ -1,4 +1,4 @@
 numberVocabulary
-	"Answer the standard vocabulary representing numbers"
+	"Answer the standard vocabulary representing numbers, creating it if necessary"
 
-	^ self allVocabularies detect: [:aVocabulary | aVocabulary vocabularyName == #number] ifNone: [nil]
+	^self allStandardVocabularies at: #Number ifAbsentPut: [self newNumberVocabulary]
