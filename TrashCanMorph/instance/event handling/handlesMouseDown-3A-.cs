@@ -1,3 +1,3 @@
 handlesMouseDown: evt
 
-	^ true
+	^ self inPartsBin not and: [self uncoveredAt: evt cursorPoint]
