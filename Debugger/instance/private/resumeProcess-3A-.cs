@@ -1,5 +1,6 @@
 resumeProcess: aScheduledController
 	aScheduledController view erase.
+	Smalltalk installLowSpaceWatcher.  "restart low space handler"
 	interruptedProcess suspendedContext method
 			== (Process compiledMethodAt: #terminate) ifFalse:
 		[contextStackIndex > 1
