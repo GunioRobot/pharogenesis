@@ -4,6 +4,14 @@ crossedX
 	or before one."
 
 	| leadingTab currentX |
+	characterIndex == nil ifFalse: [
+		"If the last character of the last line is a space,
+		and it crosses the right margin, then locating
+		the character block after it is impossible without this hack."
+		characterIndex > text size ifTrue: [
+			lastIndex _ characterIndex.
+			characterPoint _ (nextLeftMargin ifNil: [leftMargin]) @ (destY + line lineHeight).
+			^true]].
 	characterPoint x <= (destX + (lastCharacterExtent x // 2))
 		ifTrue:	[lastCharacter _ (text at: lastIndex).
 				characterPoint _ destX @ destY.
@@ -22,7 +30,7 @@ crossedX
 	lastCharacter = Space ifFalse: [^ true].
 
 	"Yukky if next character is space or tab."
-	textStyle alignment = Justified ifTrue:
+	alignment = Justified ifTrue:
 		[self lastCharacterExtentSetX:
 			(lastCharacterExtent x + 	(line justifiedPadFor: (spaceCount + 1))).
 		^ true].
@@ -34,7 +42,7 @@ crossedX
 	leadingTab _ true.
 	line first to: lastIndex - 1 do:
 		[:index | (text at: index) ~= Tab ifTrue: [leadingTab _ false]].
-	(textStyle alignment ~= Justified or: [leadingTab])
+	(alignment ~= Justified or: [leadingTab])
 		ifTrue:	[self lastCharacterExtentSetX: (textStyle nextTabXFrom: currentX
 					leftMargin: leftMargin rightMargin: rightMargin) -
 						currentX]
