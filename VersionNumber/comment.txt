@@ -1,0 +1,20 @@
+I am a version number.  My representation allows me to handle an entire tree of versions.  Once created, an instance should not change (note: VersionNumbers could be canonicalized like Symbols, but are not currently).  
+
+I am a magnitude so that you can see if one version preceeds another (only if the two versions are in the same branch).  
+
+	'2.1' asVersion < '2.2.1' asVersion	"true"
+	'2.3' asVersion < '2.2.1' asVersion	"error different branches"
+	'2.3' asVersion inSameBranchAs: '2.2.1' asVersion	"false, why the previous one failed."	
+	'2.1' asVersion = '2.1' asVersion		"true, obviously"
+
+To get the next version number in the same branch:
+
+	'2.3.4' asVersion next	"2.3.5"
+
+To get the next version number, starting a new branch:
+
+	'2.3.4' asVersion branchNext		"2.3.4.1"
+
+To get the common base version of any two version numbers (useful for merging):
+
+	'2.3.8' asVersion commonBase: '2.3.4.1' asVersion		"2.3.4"
