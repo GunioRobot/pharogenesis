@@ -1,4 +1,5 @@
 controlActivity
+	self scrollByKeyboard ifTrue: [^ self].
 	self scrollBarContainsCursor
-				ifTrue: [self scroll]
-				ifFalse: [super controlActivity]
+		ifTrue: [self scroll]
+		ifFalse: [self normalActivity]
