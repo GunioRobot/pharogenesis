@@ -6,7 +6,7 @@ open: aStringHolder label: labelString
 	an instance of me. The label of the view is aString."
 	| aStringHolderView topView |
 
-	World ifNotNil: [^ aStringHolder openAsMorphLabel: labelString].
+	Smalltalk isMorphic ifTrue: [^ aStringHolder openAsMorphLabel: labelString].
 
 	aStringHolderView _ self container: aStringHolder.
 	topView _ StandardSystemView new.
