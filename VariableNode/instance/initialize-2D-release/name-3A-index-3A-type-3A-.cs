@@ -1,6 +1,6 @@
 name: varName index: i type: type
-
-	self name: varName
-		key: varName
+	"Only used for initting instVar refs"
+	name _ varName.
+	self key: varName
 		index: i
 		type: type
