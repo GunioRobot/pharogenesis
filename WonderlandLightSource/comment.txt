@@ -1,0 +1,1 @@
+A generic light source. Subclasses represent individual types of lights.
