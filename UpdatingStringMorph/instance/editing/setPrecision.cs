@@ -1,8 +1,10 @@
 setPrecision
-	| aList aMenu reply |
-	aList _ #('0' '1' '2' '3' '4' '5').
-	aMenu _ SelectionMenu labels: aList selections: aList.
-	reply _ aMenu startUpWithCaption: 'How many decimal places?'.
-	reply ifNotNil:
-		[self floatPrecision:
-			(#(1 0.1 0.01 0.001 0.0001 0.00001 0.000001) at: (aList indexOf: reply))]
+	"Allow the user to specify a number of decimal places.  This UI is invoked from a menu.  Nowadays the precision can be set by simple type-in, making this menu approach mostly obsolete.  However, it's still useful for read-only readouts, where type-in is not allowed."
+
+	| aMenu |
+	aMenu _ MenuMorph new.
+	aMenu addTitle: ('How many decimal places? (currently {1})' translated format: {self decimalPlaces}).
+	0 to: 5 do:
+		[:places |
+			aMenu add: places asString target: self selector: #setDecimalPlaces: argument: places].
+	aMenu popUpInWorld
