@@ -1,3 +1,2 @@
 headerOf: methodPointer
-	^self fetchPointer: HeaderIndex
-		ofObject: methodPointer
+	^self fetchPointer: HeaderIndex ofObject: methodPointer
