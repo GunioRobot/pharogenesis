@@ -10,4 +10,5 @@ slideImage: otherImage at: topLeft delta: delta
 	1 to: nSteps do:
 			[:i | self copyBits: bb from: otherImage
 				at: delta*(i-nSteps) + topLeft
-				clippingBox: clipRect rule: Form over fillColor: nil]
+				clippingBox: clipRect rule: Form over fillColor: nil.
+			Smalltalk forceDisplayUpdate]
