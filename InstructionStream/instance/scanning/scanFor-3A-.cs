@@ -12,7 +12,7 @@ scanFor: scanBlock
 			pc _ 
 				type = 8
 					ifTrue: ["extensions"
-							pc + (#(2 2 2 2 3 2 3 1 1 1 ) at: byte \\ 16 + 1)]
+							pc + (#(2 2 2 2 3 2 2 1 1 1 ) at: byte \\ 16 + 1)]
 					ifFalse: [type = 10
 								ifTrue: [pc + 2"long jumps"]
 								ifFalse: [pc + 1]]].
