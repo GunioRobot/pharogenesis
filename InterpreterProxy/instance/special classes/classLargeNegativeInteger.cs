@@ -1,0 +1,2 @@
+classLargeNegativeInteger
+	^LargeNegativeInteger
