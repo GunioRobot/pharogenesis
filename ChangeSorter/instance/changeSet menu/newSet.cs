@@ -5,6 +5,9 @@ newSet
 	self okToChange ifFalse: [^ self].
 	aSet _ self class newChangeSet.
 	aSet ifNotNil:
-		[self update.
-		self showChangeSet: aSet.
+		[self changeSetCategory acceptsManualAdditions ifTrue:
+			[changeSetCategory addChangeSet: aSet].
+		self update.
+		(changeSetCategory includesChangeSet: aSet) ifTrue:
+			[self showChangeSet: aSet].
 		self changed: #relabel]
