@@ -6,7 +6,8 @@ putCommentOnFile: aFileStream numbered: sourceIndex moveSource: moveSource forCl
 		header _ String streamContents: [:strm | 
 				strm nextPutAll: aClass name;
 				nextPutAll: ' commentStamp: '.
-				Utilities changeStamp storeOn: strm.
+				commentStamp ifNil: [commentStamp _ '<historical>'].
+				commentStamp storeOn: strm.
 				strm nextPutAll: ' prior: '; nextPutAll: '0'].
 		aFileStream nextChunkPut: header.
 		aClass organization fileOutCommentOn: aFileStream
