@@ -1,0 +1,2 @@
+currentPluginVersion
+	^SmalltalkImage current vmVersion
