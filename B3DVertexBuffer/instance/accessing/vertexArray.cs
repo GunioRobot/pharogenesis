@@ -1,0 +1,2 @@
+vertexArray
+	^vertexArray
