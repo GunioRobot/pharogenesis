@@ -1,0 +1,2 @@
+chooseLocal
+	chooseRemote _ false
