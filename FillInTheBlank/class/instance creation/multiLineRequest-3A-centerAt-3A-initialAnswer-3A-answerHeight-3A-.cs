@@ -1,4 +1,4 @@
-multiLineRequest: queryString centerAt: aPoint initialAnswer: defaultAnswer answerHeight: answerHeight
+multiLineRequest: queryString centerAt: aPoint initialAnswer: defaultAnswer answerHeight: answerHeight 
 	"Create a multi-line instance of me whose question is queryString with
 	the given initial answer. Invoke it centered at the given point, and
 	answer the string the user accepts.  Answer nil if the user cancels.  An
@@ -17,24 +17,22 @@ or canceling via menu or press Alt+s/Alt+l'
 		answerHeight: 200"
 
 	| model fillInView |
-	Smalltalk isMorphic
-		ifTrue:
-			[^ self fillInTheBlankMorphClass
+	Smalltalk isMorphic 
+		ifTrue: 
+			[^self fillInTheBlankMorphClass 
 				request: queryString
 				initialAnswer: defaultAnswer
 				centerAt: aPoint
 				inWorld: self currentWorld
 				onCancelReturn: nil
 				acceptOnCR: false].
-
-	model _ self new initialize.
+	model := self new.
 	model contents: defaultAnswer.
 	model responseUponCancel: nil.
 	model acceptOnCR: false.
-	fillInView _
-		self fillInTheBlankViewClass
-			multiLineOn: model
-			message: queryString
-			centerAt: aPoint
-			answerHeight: answerHeight.
-	^ model show: fillInView
+	fillInView := self fillInTheBlankViewClass 
+				multiLineOn: model
+				message: queryString
+				centerAt: aPoint
+				answerHeight: answerHeight.
+	^model show: fillInView
