@@ -1,4 +1,4 @@
 breakDependents
-	"Reset the user's dependents list.  1/23/96 sw"
+	"Remove all of the receiver's dependents."
 
-	dependents _ nil
+	dependents _ nil.
