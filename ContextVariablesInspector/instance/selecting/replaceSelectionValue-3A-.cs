@@ -3,4 +3,4 @@ replaceSelectionValue: anObject
 
 	selectionIndex = 1
 		ifTrue: [^object]
-		ifFalse: [^object tempAt: selectionIndex - 1 put: anObject]
+		ifFalse: [^object tempAt: selectionIndex - 2 put: anObject]
