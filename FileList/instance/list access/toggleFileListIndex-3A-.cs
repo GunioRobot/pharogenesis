@@ -5,7 +5,6 @@ toggleFileListIndex: anInteger
 	listIndex = anInteger
 	ifTrue:
 		[listIndex _ 0.
-		contents _ ''.
 		fileName _ nil]
 	ifFalse: 
 		[listIndex _ anInteger.
@@ -17,8 +16,7 @@ toggleFileListIndex: anInteger
 			["remove [...] folder string and open the folder"
 			name _ item copyFrom: 1 to: item size - self folderString size.
 			listIndex _ 0.
-			^ self directory: (FileDirectory newOnPath:
-				(directory fullNameFor: name))]
+			^ self directory: (FileDirectory on: (directory fullNameFor: name))]
 			ifFalse:
 			["open the file selected"
 			self setFileName: item]].
