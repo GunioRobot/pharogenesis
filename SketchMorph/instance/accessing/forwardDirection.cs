@@ -1,4 +1,6 @@
 forwardDirection
-	"Return the forward direction of the original Form. Angles are in degrees, increasing clockwise like a compass. Up is zero degrees."
+	"Return my forward direction.  If #normal I am not flexed."
 
-	^ (self valueOfProperty: #forwardDirection) ifNil: [0.0]
+	^ rotationStyle == #normal 
+		ifTrue: [0.0]
+		ifFalse: [rotationDegrees]	"fwd dir kept here when leftRight, upDown, none"
