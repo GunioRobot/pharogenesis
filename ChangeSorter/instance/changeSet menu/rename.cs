@@ -11,5 +11,6 @@ rename
 			[^ Utilities inform: 'Sorry that name is already used'].
 
 	myChangeSet name: newName.
+	self update.
 	self changed: #mainButtonName.
 	self changed: #relabel.
