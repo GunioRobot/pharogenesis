@@ -1,0 +1,2 @@
+writePoint:aPoint
+	self write:aPoint x; space; write:aPoint y.
