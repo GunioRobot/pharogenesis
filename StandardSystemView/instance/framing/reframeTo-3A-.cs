@@ -1,10 +1,10 @@
 reframeTo: newFrame
-	"Reframe the receiver to the given screen rectangle.  1/26/96 sw
-	Repaint difference after the change.  5/8/96 di"
+	"Reframe the receiver to the given screen rectangle.  
+	Repaint difference after the change.  "
 	| oldBox newBox portRect |
 	self uncacheBits.
 	oldBox _ self windowBox.
-	portRect _ newFrame topLeft + (0@labelFrame height)
+	portRect _ newFrame topLeft + self labelOffset
 				corner: newFrame corner.
 	self window: self window viewport: portRect.
 	self setLabelRegion.
