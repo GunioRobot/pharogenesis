@@ -5,8 +5,8 @@ formatOf: obj
         1=      Fixed pointer fields only
         2=      Var pointer fields only
         3=      Fixed and var pointer fields
- 
-        4=      unused
+        4=      both fixed and indexable weak fields
+
         5=      unused
         6=      var long (bit) fields only
         7=      unused
