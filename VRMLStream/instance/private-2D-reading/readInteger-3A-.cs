@@ -1,7 +1,8 @@
 readInteger: base 
-	"Optimized version of Integer>>readFrom:base: for the VRML stream"
-	| digit value neg startPos aStream char |
-	aStream _ self.
+	"Heavily optimized version of Integer>>readFrom:base: for the VRML stream"
+	| digit value neg startPos aStream char pos |
+	pos _ self position.
+	aStream _ ReadStream on: (theStream next: 64 "more than enough") asString.
 	char _ aStream next.
 	char = $-
 		ifTrue:[	neg _ true.
@@ -15,9 +16,11 @@ readInteger: base
 		(digit < 0 or: [digit >= base]) ifTrue:[
 			aStream skip: -1.
 			aStream position = startPos ifTrue: [self error: 'At least one digit expected here'].
+			self position: pos + aStream position.
 			neg ifTrue: [^ 0 - value].
 			^ value
 		] ifFalse: [value _ value * base + digit].
 		char _ aStream next].
+	self position: pos + aStream position.
 	neg ifTrue: [^ 0 - value].
 	^ value
