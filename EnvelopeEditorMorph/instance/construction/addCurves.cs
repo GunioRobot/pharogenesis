@@ -12,7 +12,7 @@ addCurves
 						borderColor: (self colorForEnvelope: env).
 			env == envelope
 				ifTrue: [aLine borderWidth: 2.  line _ aLine]
-				ifFalse: [aLine on: #mouseUp send: #clickOnLine:evt:envelope:
+				ifFalse: [aLine on: #mouseUp send: #clickOn:evt:from:
 							to: self withValue: env.
 						self addMorph: aLine]]].
 	self addMorph: line  "add the active one last (in front)"
