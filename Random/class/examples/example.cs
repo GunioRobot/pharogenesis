@@ -3,14 +3,16 @@ example
 		10 atRandom
 	Every integer interval can give a random number:
 		(6 to: 12) atRandom
-	Most Collections can give randomly selected elements:
+	SequenceableCollections can give randomly selected elements:
 		'pick one of these letters randomly' atRandom
-	Collections also respond to shuffled, as in:
+	SequenceableCollections also respond to shuffled, as in:
 		($A to: $Z) shuffled
 
 	The correct way to use class Random is to store one in 
 	an instance or class variable:
 		myGenerator _ Random new.
-	Then use it every time you need another number between 0.0 and 1.0
+	Then use it every time you need another number between 0.0 and 1.0 (excluding)
 		myGenerator next
+	You can also generate a positive integer
+		myGenerator nextInt: 10
 "
