@@ -1,0 +1,2 @@
+cameraClass
+	^self specAt: #camera
