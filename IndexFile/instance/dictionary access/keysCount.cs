@@ -1,0 +1,2 @@
+keysCount
+	^msgDictionary size
