@@ -3,8 +3,8 @@ copyClassToOther
 
 	| otherSorter otherChangeSet |
 	self checkThatSidesDiffer: [^ self].
-	self okToChange ifFalse: [^ self beep].
-	currentClassName ifNil: [^ self beep].
+	self okToChange ifFalse: [^ Beeper beep].
+	currentClassName ifNil: [^ Beeper beep].
 	otherSorter _ parent other: self.
 	otherChangeSet _ otherSorter changeSet.
 
