@@ -1,6 +1,6 @@
 writeImageFile: imageBytes
 
-	| headerStart headerSize f bytesWritten |
+	| headerStart headerSize f bytesWritten fn |
 	self var: #f declareC: 'sqImageFile f'.
 
 	"local constants"
@@ -25,7 +25,8 @@ writeImageFile: imageBytes
 	self putLong: lastHash toFile: f.
 	self putLong: (self ioScreenSize) toFile: f.
 	self putLong: fullScreenFlag toFile: f.
-	1 to: 8 do: [:i | self putLong: 0 toFile: f].  "fill remaining header words with zeros"
+	self putLong: extraVMMemory toFile: f.
+	1 to: 7 do: [:i | self putLong: 0 toFile: f].  "fill remaining header words with zeros"
 	successFlag ifFalse: [
 		"file write or seek failure"
 		self cCode: 'sqImageFileClose(f)'.
@@ -40,4 +41,7 @@ writeImageFile: imageBytes
 	self cCode: 'sqImageFileClose(f)'.
 
 	"set Mac file type and creator; this is a noop on other platforms"
-	self cCode: 'dir_SetMacFileTypeAndCreator(imageName, strlen(imageName), "STim", "FAST")'.
+	fn _ self ioLoadFunction: 'setMacFileTypeAndCreator' From: 'FilePlugin'.
+	fn = 0 ifFalse:[
+		self cCode:'((int (*) (char*, char*, char*)) fn) (imageName, "STim", "FAST")'.
+	].
