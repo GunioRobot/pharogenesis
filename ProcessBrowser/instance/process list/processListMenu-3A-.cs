@@ -1,4 +1,6 @@
 processListMenu: menu 
+	| pw |
+
 	selectedProcess
 		ifNotNil: [| nameAndRules | 
 			nameAndRules _ self nameAndRulesForSelectedProcess.
@@ -17,12 +19,23 @@ processListMenu: menu
 				ifTrue: [menu add: 'signal Semaphore (S)' action: #signalSemaphore].
 			menu add: 'full stack (k)' action: #moreStack.
 			menu addLine].
+
 	menu addList: {{'find context... (f)'. #findContext}. {'find again (g)'. #nextContext}}.
 	menu addLine.
+
 	menu
 		add: (self isAutoUpdating
 				ifTrue: ['turn off auto-update (a)']
 				ifFalse: ['turn on auto-update (a)'])
 		action: #toggleAutoUpdate.
 	menu add: 'update list (u)' action: #updateProcessList.
+
+	pw _ Smalltalk at: #CPUWatcher ifAbsent: [].
+	pw ifNotNil: [
+		menu addLine.
+		pw isMonitoring
+				ifTrue: [ menu add: 'stop CPUWatcher' action: #stopCPUWatcher ]
+				ifFalse: [ menu add: 'start CPUWatcher' action: #startCPUWatcher  ]
+	].
+
 	^ menu
