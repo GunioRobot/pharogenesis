@@ -1,3 +1,3 @@
 specForComposeButton
-	"action label helpText"
-	^ #(#turnOn 'New' 'Compose a new message' )
+	"getState action label helpText"
+	^ #(nil #compose 'New' 'Compose a new message' )
