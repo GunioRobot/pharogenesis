@@ -1,10 +1,13 @@
 hiliteRect: rect
-	(rect ~~ nil) ifTrue:
-		[ destinationForm
+
+	| highlightColor |
+	highlightColor _ Color quickHighLight: destinationForm depth.
+	rect ifNotNil: [
+		destinationForm
 			fill: rect
 			rule: Form reverse
-			fillColor: destinationForm highLight.
+			fillColor: highlightColor.
 		"destinationForm
 			fill: (rect translateBy: 1@1)
 			rule: Form reverse
-			fillColor: destinationForm highLight" ].
+			fillColor: highlightColor" ].
