@@ -1,0 +1,2 @@
+getMyText
+	^myContents
