@@ -1,6 +1,7 @@
 localDirToGlobal: aVector
 	"Multiply direction vector with the receiver"
 	| x y z rx ry rz |
+	<primitive: 'b3dTransformDirection' module: 'Squeak3D'>
 	x := aVector x.
 	y := aVector y.
 	z := aVector z.
