@@ -1,11 +1,3 @@
 toggleIsPartsBin
-	isPartsBin _ self isPartsBin not.
-	isPartsBin
-		ifTrue:
-			[submorphs do:
-				[:m | m setProperty: #partsDonor toValue: true.
-					m suspendEventHandler]]
-		ifFalse:
-			[submorphs do:
-				[:m | m removeProperty: #partsDonor.
-					m restoreSuspendedEventHandler]]
+	"Not entirely happy with the openToDragNDrop not being directly manipulable etc, but still living with it for now."
+	self setPartsBinStatusTo: self isPartsBin not
