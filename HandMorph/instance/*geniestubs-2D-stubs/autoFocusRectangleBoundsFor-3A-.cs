@@ -1,0 +1,2 @@
+autoFocusRectangleBoundsFor: aMorph
+	^aMorph bounds
