@@ -1,0 +1,3 @@
+primitiveAt
+
+	self commonAt: false.
