@@ -9,5 +9,4 @@ primitiveFloatDivide: rcvrOop byArg: argOop
 		self success: arg ~= 0.0.
 		successFlag ifTrue: [
 			self pop: 2.
-			self pushFloat: (self cCode: 'rcvr / arg'
-							inSmalltalk: [rcvr / arg])]].
+			self pushFloat: (self cCode: 'rcvr / arg' inSmalltalk: [rcvr / arg])]].
