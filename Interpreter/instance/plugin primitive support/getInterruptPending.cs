@@ -1,0 +1,2 @@
+getInterruptPending
+	^interruptPending
