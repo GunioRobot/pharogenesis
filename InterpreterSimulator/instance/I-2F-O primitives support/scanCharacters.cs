@@ -1,0 +1,3 @@
+scanCharacters
+
+	^ myBitBlt scanCharacters
