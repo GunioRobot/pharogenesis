@@ -1,0 +1,3 @@
+keyboardFocusForAMorph: aMorph
+
+	"do nothing"
