@@ -1,2 +1,2 @@
 setColor: aColor
-	costume renderedMorph color: aColor
+	self costume renderedMorph color: aColor
