@@ -1,2 +1,2 @@
 renameTo: aName
-	costume topRendererOrSelf renameTo: aName
+	self costume topRendererOrSelf renameTo: aName
