@@ -1,0 +1,2 @@
+disabledCallSelectors
+	^ #(#lDisabledRealExternalCall #lDisabledRealExternalCallNaked #lDisabledRealExternalCallOrPrimitiveFailed #lDisabledExternalCallWithoutModule )
