@@ -12,9 +12,12 @@ mouseDown: evt
 		^ self].
 
 	"Out in the world -- treat as a unit"
+	rootTile isSticky ifTrue: [^ self].	"later may allow to be selected"
 	rootTile isPartsDonor 
 		ifTrue: [dup _ rootTile duplicate.
 				dup setProperty: #beScript toValue: true]
 		ifFalse: [dup _ rootTile].
 	evt hand attachMorph: dup.
-	^ dup align: dup topLeft with: evt hand position + self cursorBaseOffset.
+	Preferences tileTranslucentDrag
+		ifTrue: [^ dup lookTranslucent]
+		ifFalse: [^ dup align: dup topLeft with: evt hand position + self cursorBaseOffset]
