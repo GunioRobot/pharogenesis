@@ -1,4 +1,2 @@
-submorphsDo: aBlock
-
-	submorphs size = 0 ifTrue: [^ self].
-	submorphs do: aBlock.
+submorphsDo: aBlock 
+	submorphs do: aBlock
