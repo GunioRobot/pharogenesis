@@ -1,0 +1,2 @@
+getUsedGet
+	^workBuffer at: GWGETUsed
