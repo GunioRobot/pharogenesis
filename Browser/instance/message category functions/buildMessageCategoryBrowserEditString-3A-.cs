@@ -14,6 +14,6 @@ buildMessageCategoryBrowserEditString: aString
 			newBrowser metaClassIndicated: metaClassIndicated.
 			newBrowser messageCategoryListIndex: messageCategoryListIndex.
 			newBrowser messageListIndex: messageListIndex.
-			Browser openBrowserView: (newBrowser openMessageCatEditString: aString)
+			self class openBrowserView: (newBrowser openMessageCatEditString: aString)
 				label: 'Message Category Browser (' , 
 						newBrowser selectedClassOrMetaClassName , ')']
