@@ -1,0 +1,2 @@
+controlButtonColor
+	^ Color blue muchLighter
