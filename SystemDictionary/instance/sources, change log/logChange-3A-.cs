@@ -1,8 +1,8 @@
 logChange: aStringOrText
 	"Write the argument, aString, onto the changes file."
-	| aFileStream aString |
+	| aString |
 	(SourceFiles isNil or: [(SourceFiles at: 2) == nil]) ifTrue: [^self].
-	(aStringOrText isMemberOf: Text)
+	aStringOrText isText
 		ifTrue: [aString _ aStringOrText string]
 		ifFalse: [aString _ aStringOrText].
 	(aString isMemberOf: String)
@@ -11,4 +11,5 @@ logChange: aStringOrText
 		ifTrue: [^self].  "null doits confuse replay"
 	(SourceFiles at: 2) setToEnd;
 			cr; cr; nextChunkPut: aString.
+		"If want style changes in DoIt, use nextChunkPutWithStyle:, and allow Texts to get here"
 	self forceChangesToDisk.
