@@ -1,4 +1,3 @@
-withLeft: x
-	"Copy the receiver with x as its left.  1/24/96 sw"
-
-	^ x @ origin y corner: corner copy
+withLeft: x 
+	"Return a copy of me with a different left x"
+	^ x @ origin y corner: corner x @ corner y
