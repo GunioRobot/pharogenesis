@@ -1,0 +1,19 @@
+tryNamedPrimitiveIn: aCompiledMethod for: aReceiver withArgs: arguments
+	"Hack. Attempt to execute the named primitive from the given compiled method"
+	| selector theMethod spec |
+	arguments size > 8 ifTrue:[^PrimitiveFailToken].
+	selector _ #(
+		tryNamedPrimitive 
+		tryNamedPrimitive: 
+		tryNamedPrimitive:with: 
+		tryNamedPrimitive:with:with: 
+		tryNamedPrimitive:with:with:with:
+		tryNamedPrimitive:with:with:with:with:
+		tryNamedPrimitive:with:with:with:with:with:
+		tryNamedPrimitive:with:with:with:with:with:with:
+		tryNamedPrimitive:with:with:with:with:with:with:with:) at: arguments size+1.
+	theMethod _ aReceiver class lookupSelector: selector.
+	theMethod == nil ifTrue:[^PrimitiveFailToken].
+	spec _ theMethod literalAt: 1.
+	spec replaceFrom: 1 to: spec size with: (aCompiledMethod literalAt: 1) startingAt: 1.
+	^aReceiver perform: selector withArguments: arguments
