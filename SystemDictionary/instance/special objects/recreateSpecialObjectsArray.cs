@@ -2,8 +2,8 @@ recreateSpecialObjectsArray    "Smalltalk recreateSpecialObjectsArray"
 	"The Special Objects Array is an array of object pointers used by the
 	Smalltalk virtual machine.  Its contents are critical and unchecked,
 	so don't even think of playing here unless you know what you are doing."
-	| newArray smallFrameSize largeFrameSize |
-	newArray _ Array new: 41.
+	| newArray |
+	newArray _ Array new: 48.
 	"Nil false and true get used throughout the interpreter"
 	newArray at: 1 put: nil.
 	newArray at: 2 put: false.
@@ -47,19 +47,31 @@ recreateSpecialObjectsArray    "Smalltalk recreateSpecialObjectsArray"
 	newArray at: 32 put: (Float new: 2).
 	newArray at: 33 put: (LargePositiveInteger new: 4).
 	newArray at: 34 put: Point new.
-	smallFrameSize _ (CompiledMethod newBytes: 0 nArgs: 0 nTemps: 0
-						nStack: 0 nLits: 0 primitive: 0) frameSize.
-	largeFrameSize _ (CompiledMethod newBytes: 0 nArgs: 0 nTemps: 0
-						nStack: smallFrameSize+1 nLits: 0 primitive: 0) frameSize.
-	newArray at: 35 put: (MethodContext new: smallFrameSize).
-	newArray at: 36 put: (MethodContext new: largeFrameSize).
-	newArray at: 37 put: (BlockContext new: smallFrameSize).
-	newArray at: 38 put: (BlockContext new: largeFrameSize).
+	newArray at: 35 put: #cannotInterpret:.
+	"Note: This must be fixed once we start using context prototypes"
+	newArray at: 36 put: (self specialObjectsArray at: 36). 
+						"(MethodContext new: CompiledMethod fullFrameSize)."
+	newArray at: 37 put: nil.
+	newArray at: 38 put: (self specialObjectsArray at: 38). 
+						"(BlockContext new: CompiledMethod fullFrameSize)."
 
 	newArray at: 39 put: Array new.  "array of objects referred to by external code"
 
 	newArray at: 40 put: PseudoContext.
 	newArray at: 41 put: TranslatedMethod.
+
+	"finalization Semaphore"
+	newArray at: 42 put: ((self specialObjectsArray at: 42) ifNil:[Semaphore new]).
+
+	newArray at: 43 put: LargeNegativeInteger.
+
+	"External objects for callout.
+	Note: Written so that one can actually completely remove the FFI."
+	newArray at: 44 put: (Smalltalk at: #ExternalAddress ifAbsent:[nil]).
+	newArray at: 45 put: (Smalltalk at: #ExternalStructure ifAbsent:[nil]).
+	newArray at: 46 put: (Smalltalk at: #ExternalData ifAbsent:[nil]).
+	newArray at: 47 put: (Smalltalk at: #ExternalFunction ifAbsent:[nil]).
+	newArray at: 48 put: (Smalltalk at: #ExternalLibrary ifAbsent:[nil]).
 
 	"Now replace the interpreter's reference in one atomic operation"
 	self specialObjectsArray become: newArray
