@@ -4,6 +4,8 @@ initialize
 		PopUpMenu 
 			labels:
 'find class...
+recent classes...
+browse all
 browse
 printOut
 fileOut
@@ -12,9 +14,10 @@ update
 add item...
 rename...
 remove' 
-			lines: #(1 3 6).
+			lines: #(2 4 6 8).
 	SystemCategoryListYellowButtonMessages _
-		#(findClass browse printOut fileOut
+		#(findClass findRecentClass browseAllClasses browse
+		printOut fileOut
 		edit update
 		add rename remove )
 	"
