@@ -1,0 +1,3 @@
+primitiveBeep
+
+	self beep.
