@@ -1,0 +1,2 @@
+asTexture
+	^self
