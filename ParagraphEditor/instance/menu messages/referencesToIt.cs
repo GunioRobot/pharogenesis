@@ -1,8 +1,7 @@
 referencesToIt
 	"Open a references browser on the selected symbol"
-
 	| aSymbol |
-	self lineSelectAndEmptyCheck: [^ self].
+	self selectionInterval isEmpty ifTrue: [self selectWord].
 	((aSymbol _ self selectedSymbol) == nil or:
 		[(Smalltalk includesKey: aSymbol) not])
 			ifTrue: [^ view flash].
