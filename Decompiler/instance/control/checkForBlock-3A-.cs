@@ -15,7 +15,9 @@ checkForBlock: receiver
 			[stack addLast: ArgumentFlag.  "Flag for doStore:"
 			self interpretNextInstructionFor: self].
 	args _ Array new: statements size - argPos.
-	1 to: args size do: [:i | args at: i put: statements removeLast].  "Retrieve args"
+	1 to: args size do:  "Retrieve args"
+		[:i | args at: i put: statements removeLast.
+		(args at: i) scope: -1  "flag args as block temps"].
 	block _ self blockTo: jump.
 	stack addLast: (constructor codeArguments: args block: block).
 	^true
