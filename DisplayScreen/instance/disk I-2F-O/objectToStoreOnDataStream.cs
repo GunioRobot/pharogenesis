@@ -1,5 +1,5 @@
 objectToStoreOnDataStream
-	"HyperSqueak is about to write me out.  See if I am a system object.  Write out just a name if so.  See SqueakSupport class.aComment.  8/13/96 tk"
+	"I am about to be written on an object file.  Write a reference to the Display in the other system instead.  "
 
-	"Path or real thing, depending"
-	^ Smalltalk hyperSqueakSupportClass sysRef: self
+	"A path to me"
+	^ DiskProxy global: #Display selector: #yourself args: #()
