@@ -23,12 +23,12 @@ fillIn: aMenu from: dataForMenu
 						argumentList: {itemData second}]
 				 ifFalse:
 					[aMenu 
-						add: itemData first 
+						add: itemData first translated
 						target: self 
 						selector: #doMenuItem:with: 
 						argumentList: {itemData second}].
 			itemData size >= 3 ifTrue:
-				[aMenu balloonTextForLastItem: itemData third.
+				[aMenu balloonTextForLastItem: itemData third translated.
 			itemData size >= 4 ifTrue:
 				[item enablementSelector: itemData fourth]]]].
 
