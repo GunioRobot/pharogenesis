@@ -1,3 +1,4 @@
 fontForButtons
 
-	^Preferences standardButtonFont
+	^ TextStyle defaultFont.
+	"^Preferences standardButtonFont"
