@@ -1,6 +1,10 @@
 addPoolVarsFor: aClass 
 	"Add the pool variables for the given class to the code base as constants."
+	| val node |
 	aClass sharedPools do: [:pool |
-		pool associationsDo: [:assoc |
-			constants at: assoc key asString 
-				put: (TConstantNode new setValue: assoc value)]]
+		pool bindingsDo: [:assoc |
+			val _ assoc value.
+			(useSymbolicConstants and:[self isCLiteral: val])
+				ifTrue:[node _ TDefineNode new setName: assoc key asString value: assoc value]
+				ifFalse:[node _ TConstantNode new setValue: assoc value].
+			constants at: assoc key asString put: node]].
