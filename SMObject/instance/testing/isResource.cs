@@ -1,0 +1,2 @@
+isResource
+	^false
