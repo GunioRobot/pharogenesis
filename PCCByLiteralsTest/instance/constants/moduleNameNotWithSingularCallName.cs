@@ -1,0 +1,2 @@
+moduleNameNotWithSingularCallName
+	^ 'LNotOne'
