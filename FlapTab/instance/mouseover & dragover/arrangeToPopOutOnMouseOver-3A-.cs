@@ -6,5 +6,5 @@ arrangeToPopOutOnMouseOver: aBoolean
 			self on: #mouseLeave send: #maybeHideFlapOnMouseLeave to: self]
 		ifFalse:
 			[self on: #mouseEnter send: nil to: nil.
-			self on: #mouseLeave send: #nil to: nil.
+			self on: #mouseLeave send: nil to: nil.
 			referent on: #mouseLeave send: nil to: nil]
