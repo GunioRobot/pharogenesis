@@ -1,4 +1,4 @@
 fillWhite: aRectangle
-	"Set all bits in the receiver's area defined by aRectangle to white (zeros)."
+	"Set all bits in the receiver's area defined by aRectangle to white."
 
-	self fill: aRectangle rule: Form over fillColor: self white
+	self fill: aRectangle rule: Form over fillColor: Color white.
