@@ -1,19 +1,20 @@
 buildWindowMenu
 	| aMenu |
 	aMenu _ MenuMorph new defaultTarget: self.
-	aMenu add: 'change title...' action: #relabel.
+	aMenu add: 'change title...' translated action: #relabel.
 	aMenu addLine.
-	aMenu add: 'send to back' action: #sendToBack.
-	aMenu add: 'make next-to-topmost' action: #makeSecondTopmost.
+	aMenu add: 'send to back' translated action: #sendToBack.
+	aMenu add: 'make next-to-topmost' translated action: #makeSecondTopmost.
 	aMenu addLine.
 	self mustNotClose
 		ifFalse:
-			[aMenu add: 'make unclosable' action: #makeUnclosable]
+			[aMenu add: 'make unclosable' translated action: #makeUnclosable]
 		ifTrue:
-			[aMenu add: 'make closable' action: #makeClosable].
-	aMenu add: (self isSticky ifTrue: ['make draggable'] ifFalse: ['make undraggable']) 
+			[aMenu add: 'make closable' translated action: #makeClosable].
+	aMenu
+		add: (self isSticky ifTrue: ['make draggable'] ifFalse: ['make undraggable']) translated 
 		action: #toggleStickiness.
 	aMenu addLine.
-	aMenu add: 'full screen' action: #fullScreen.
-	self isCollapsed ifFalse: [aMenu add: 'window color...' action: #setWindowColor].
+	aMenu add: 'full screen' translated action: #fullScreen.
+	self isCollapsed ifFalse: [aMenu add: 'window color...' translated action: #setWindowColor].
 	^aMenu
