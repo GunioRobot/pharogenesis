@@ -14,8 +14,9 @@ emitCase: stack on: strm value: forValue
 		keyNode emitForEvaluatedValue: stack on: strm.
 		equalNode emit: stack args: 1 on: strm.
 		self emitBranchOn: false dist: thenSize pop: stack on: strm.
+		last ifFalse: [strm nextPut: Pop. stack pop: 1].
 		valueNode emitForEvaluatedValue: stack on: strm.
-		stack pop: 1.
+		last ifTrue: [stack pop: 1].
 		valueNode returns ifFalse: [self emitJump: elseSize on: strm]].
 	arguments size = 2
 		ifTrue:
