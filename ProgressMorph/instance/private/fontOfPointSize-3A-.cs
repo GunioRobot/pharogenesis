@@ -1,2 +1,2 @@
 fontOfPointSize: size
-	^ (TextConstants at: #ComicBold ifAbsent: [TextStyle default]) fontOfPointSize: size
+	^ (TextConstants at: Preferences standardEToysFont familyName ifAbsent: [TextStyle default]) fontOfPointSize: size
