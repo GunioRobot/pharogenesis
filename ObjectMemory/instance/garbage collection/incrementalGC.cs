@@ -6,9 +6,10 @@ incrementalGC
 	rootTableCount >= RootTableSize ifTrue: [
 		"root table overflow; cannot do an incremental GC (this should be very rare)"
 		statRootTableOverflows _ statRootTableOverflows + 1.
-		^ self fullGC
-	].
+		^ self fullGC].
 
+	DoAssertionChecks ifTrue: [self reverseDisplayFrom: 8 to: 15].
+	DoAssertionChecks ifTrue: [self validateRoots].
 	self preGCAction: false.
 	"incremental GC and compaction"
 	startTime _ self ioMicroMSecs.
@@ -29,3 +30,4 @@ incrementalGC
 		youngStart _ freeBlock.  "reset the young object boundary"
 	].
 	self postGCAction.
+	DoAssertionChecks ifTrue: [self reverseDisplayFrom: 8 to: 15].
