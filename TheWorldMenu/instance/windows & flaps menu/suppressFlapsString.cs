@@ -1,3 +1,4 @@
 suppressFlapsString
+	"Answer the wording of the suppress-flaps item"
 
-	^ Utilities suppressFlapsString
+	^ CurrentProjectRefactoring suppressFlapsString
