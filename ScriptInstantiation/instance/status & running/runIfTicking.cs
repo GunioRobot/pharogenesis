@@ -1,3 +1,4 @@
 runIfTicking
 	status == #ticking ifTrue:
-		[player perform: selector]
+		[1 to: self frequency do:
+			[:i | player perform: selector]]
