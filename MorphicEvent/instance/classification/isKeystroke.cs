@@ -1,0 +1,3 @@
+isKeystroke
+
+	^ type == #keystroke
