@@ -5,11 +5,13 @@ messageCategoryMenu: aMenu
 printOut
 fileOut
 reorganize
-add item...
+alphabetize
+remove empty categories
+new category...
 rename...
 remove'
-	lines: #(3 4)
+	lines: #(3 7)
 	selections:
 		#(buildMessageCategoryBrowser printOutMessageCategories fileOutMessageCategories
-		editMessageCategories
+		editMessageCategories alphabetizeMessageCategories removeEmptyCategories
 		addCategory renameCategory removeMessageCategory)
