@@ -13,4 +13,14 @@ initialize
 			#(0 0 0 0 0) }.
 
 	BlockHeight _ #(8 8 4 4 2 2 1).
-	BlockWidth _ #(8 4 4 2 2 1 1)
+	BlockWidth _ #(8 4 4 2 2 1 1).
+
+	StandardColors := Color indexedColors collect:[:aColor|
+		Color 
+			r: (aColor red * 255) truncated / 255
+			g: (aColor green * 255) truncated / 255
+			b: (aColor blue * 255) truncated / 255.
+	].
+
+	StandardSwizzleMaps := Array new: 4.
+	#(1 2 4) do:[:i| StandardSwizzleMaps at: i put: (self computeSwizzleMapForDepth: i)].
