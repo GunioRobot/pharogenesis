@@ -4,7 +4,7 @@ borderFormOfWidth: borderWidth sharpCorners: sharpen
 	by right angles (takes an additional diagonal smears ANDed with both
 	horizontal and vertical smears)."
 	| smearForm bigForm smearPort all cornerForm cornerPort nbrs |
-	depth > 1 ifTrue: [self halt]. "Only meaningful for B/W forms."
+	self depth > 1 ifTrue: [self halt]. "Only meaningful for B/W forms."
 	bigForm _ self deepCopy.
 	all _ bigForm boundingBox.
 	smearForm _ Form extent: self extent.
