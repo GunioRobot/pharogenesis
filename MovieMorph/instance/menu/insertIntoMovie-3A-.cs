@@ -4,10 +4,10 @@ insertIntoMovie: evt
 	movies _
 		(self world rootMorphsAt: evt hand targetOffset)
 			select: [:m | ((m isKindOf: MovieMorph) or:
-						 [m isKindOf: SketchMorph]) and: [m ~= self]].
+						 [m isSketchMorph]) and: [m ~= self]].
 	movies isEmpty ifTrue: [^ self].
 	aTarget _ movies first.
-	(aTarget isKindOf: SketchMorph) ifTrue:
+	(aTarget isSketchMorph) ifTrue:
 		[aTarget _ aTarget replaceSelfWithMovie].
 	movies first insertFrames: frameList.
 	self delete.
