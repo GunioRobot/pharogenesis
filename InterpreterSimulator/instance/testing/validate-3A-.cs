@@ -17,7 +17,7 @@ validate: oop
 		["free block" ^ self].
 	fmt _ (header >> 8) bitAnd: 16rF.
 	cc _ (header >> 12) bitAnd: 31.
-	cc > 15 ifTrue: [self halt].
+	cc > 16 ifTrue: [self halt].	"up to 32 are legal, but not used"
 	type = 0 ifTrue:
 		["three-word header"
 		((self longAt: oop-4) bitAnd: 3) = type ifFalse: [self halt].
@@ -32,7 +32,6 @@ validate: oop
 	type = 3 ifTrue:
 		["one-word header"
 		cc = 0 ifTrue: [self halt]].
-	fmt = 4 ifTrue: [self halt].
 	fmt = 5 ifTrue: [self halt].
 	fmt = 7 ifTrue: [self halt].
 	fmt >= 12 ifTrue:
