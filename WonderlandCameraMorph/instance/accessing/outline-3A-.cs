@@ -1,2 +1,2 @@
-outline: aSimplePolygon
-	outline _ aSimplePolygon
+outline: pointList
+	outline _ pointList
