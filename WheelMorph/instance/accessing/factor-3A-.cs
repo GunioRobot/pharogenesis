@@ -1,0 +1,2 @@
+factor: aFloat
+	factor := aFloat
