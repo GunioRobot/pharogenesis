@@ -1,0 +1,3 @@
+isBroadcasting
+
+	^ silenceLevel = 0
