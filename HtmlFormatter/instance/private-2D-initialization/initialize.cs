@@ -11,5 +11,3 @@ initialize
 	incompleteMorphs _ OrderedCollection new.
 	anchorLocations _ Dictionary new.
 	imageMaps _ OrderedCollection new.
-
-	outputStream nextPut: Character cr.
