@@ -1,10 +1,14 @@
 mouseEnterDragging: evt
 	"Highlight this level as a potential drop target"
 
-"Transcript cr; print: self; show: ' enterDragging'."
+"self isBlockNode ifTrue: [Transcript cr; print: self; show: ' enterDragging']."
+	self rootTile isMethodNode ifFalse: [^ self]. 	"not in a script"
+
 	evt hand hasSubmorphs ifFalse: [^ self].  "Don't react to empty hand"
-	self unhighlightOwner.
-	self highlightForDrop: evt.
+	self unhighlightOwnerBorder.
+	self isBlockNode ifFalse: [self highlightForDrop: evt.
+		(self firstOwnerSuchThat: [:m | m isSyntaxMorph and: [m color = self dropColor]])
+			ifNotNilDo: [:m | m unhighlight]].
 
 	self isBlockNode ifTrue:
 		[(self firstOwnerSuchThat: [:m | m isSyntaxMorph and: [m isBlockNode]])
