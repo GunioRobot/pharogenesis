@@ -1,9 +1,13 @@
 printOn: aStream indent: level
 
-	| printer leadingKeyword |
-	special > 0 ifTrue: [printer _ MacroPrinters at: special].
+	| leadingKeyword |
+
+"may not need this check anymore - may be fixed by the #receiver: change"
+	special ifNil: [^aStream nextPutAll: '** MessageNode with nil special **'].
+
+
 	(special > 0)
-		ifTrue: [self perform: printer with: aStream with: level]
+		ifTrue: [self perform: self macroPrinter with: aStream with: level]
 		ifFalse: [selector key first = $:
 				ifTrue: [leadingKeyword _ selector key keywords first.
 						aStream nextPutAll: leadingKeyword; space.
