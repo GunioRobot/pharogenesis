@@ -1,0 +1,2 @@
+hasSubCategories
+	^subCategories isEmptyOrNil not
