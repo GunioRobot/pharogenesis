@@ -10,5 +10,5 @@ goButton
 			target: self;
 			setNameTo: 'Go Button';
 			setBalloonText:
-'Resume running all paused scripts'.
+'Resume running all paused scripts' translated.
 	^ aButton
