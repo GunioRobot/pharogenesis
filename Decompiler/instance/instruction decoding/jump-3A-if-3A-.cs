@@ -1,7 +1,7 @@
 jump: dist if: condition
 
 	| savePc elseDist sign elsePc elseStart end cond ifExpr thenBlock elseBlock thenJump
-		elseJump condHasValue n b |
+		elseJump condHasValue b |
 	stack last == CascadeFlag ifTrue: [^self case: dist].
 	elsePc _ lastPc.
 	elseStart _ pc + dist.
@@ -33,7 +33,8 @@ jump: dist if: condition
 					codeMessage: (constructor codeBlock: b returns: false)
 					selector: (constructor codeSelector: (sign ifTrue: [#whileFalse:] ifFalse: [#whileTrue:]) code: #macro)
 					arguments: (Array with: thenBlock)).
-			pc _ elseStart]
+			pc _ elseStart.
+			self convertToDoLoop]
 		ifFalse:
 			[elseBlock _ self blockTo: thenJump.
 			elseJump _ exit.
