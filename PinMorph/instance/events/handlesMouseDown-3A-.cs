@@ -1,2 +1,3 @@
 handlesMouseDown: evt
-	^ (evt optionKeyPressed | evt commandKeyPressed) not
+
+	^ (evt yellowButtonPressed | evt blueButtonPressed) not
