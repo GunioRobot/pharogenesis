@@ -1,0 +1,2 @@
+returnPrefixFromVariable: aName
+	^aName
