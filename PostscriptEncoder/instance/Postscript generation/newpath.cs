@@ -1,2 +1,2 @@
 newpath
-	self print:'newpath'; cr.
+	self print: 'newpath'; cr.
