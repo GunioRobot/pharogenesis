@@ -2,6 +2,7 @@ abandonSources    "Smalltalk abandonSources"
 	"Replaces every method by a copy with the 4-byte source pointer 
 	replaced by a string of all arg and temp names, followed by its length.
 	These names can then be used to inform the decompiler.  See stats below"
+	"wod 11/3/1998: zap the organization before rather than after condensing changes."
 	 | oldCodeString argsAndTemps bTotal bCount oldMethods newMethods m |
 	(self confirm:  '-- CAUTION --
 If you have backed up your system and
@@ -32,8 +33,9 @@ to back out with no harm done.')
 			oldMethods addLast: m.
 			newMethods addLast: (m copyWithTempNames: argsAndTemps)]]]].
 	oldMethods asArray elementsExchangeIdentityWith: newMethods asArray.
-	Smalltalk condenseChanges.
 	Smalltalk allBehaviorsDo: [: b | b zapOrganization].
+	Smalltalk condenseChanges.
+	Preferences disable: #warnIfNoSourcesFile.
 "
 In a system with 7780 methods, we got 83k of temp names, or around 100k with spaces between.  The order of letter frequency was eatrnoislcmdgpSub, with about 60k falling in the first 11.  This suggests that we could encode in 4 bits, with 0-11 beng most common chars, and 12-15 contributing 2 bits to the next nibble for 6 bits, enough to cover all alphaNumeric with upper and lower case.  If we get 3/4 in 4 bits and 1/4 in 8, then we get 5 bits per char, or about 38% savings (=38k in this case).
 
