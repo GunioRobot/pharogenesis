@@ -1,15 +1,10 @@
 fileOutChangesFor: class on: stream 
-	"Write out all the changes the receiver knows about this class.
-	 5/15/96 sw: altered to call fileOutClassModifications:on: rather than fileOutClassChanges:on:, so that class headers won't go out as part of this process (they no go out at the beginning of the fileout"
+	"Write out all the method changes for this class."
 
 	| changes |
-					"first file out class changes"
-	self fileOutClassModifications: class on: stream.
-					"next file out changed methods"
-	changes _ OrderedCollection new.
-	(methodChanges at: class name ifAbsent: [^ self]) associationsDo: 
-		[:mAssoc | 
-		mAssoc value = #remove
+	changes _ Set new.
+	(self methodChangesAtClass: class name) associationsDo: 
+		[:mAssoc | (mAssoc value = #remove or: [mAssoc value = #addedThenRemoved])
 			ifFalse: [changes add: mAssoc key]].
 	changes isEmpty ifFalse: 
 		[class fileOutChangedMessages: changes on: stream.
