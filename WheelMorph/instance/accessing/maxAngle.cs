@@ -1,0 +1,2 @@
+maxAngle
+	^maxAngle
