@@ -4,4 +4,4 @@ implementorsOfIt
 	| aSelector |
 	self lineSelectAndEmptyCheck: [^ self].
 	(aSelector _ self selectedSelector) == nil ifTrue: [^ view flash].
-	self terminateAndInitializeAround: [Smalltalk browseAllImplementorsOf: aSelector]
+	self terminateAndInitializeAround: [ self systemNavigation browseAllImplementorsOf: aSelector]
