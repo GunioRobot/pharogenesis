@@ -1,0 +1,2 @@
+roundedWindowCorners
+	^ self valueOfFlag: #roundedWindowCorners
