@@ -1,0 +1,2 @@
+defaultCamera
+	^defaultCamera
