@@ -1,3 +1,7 @@
-copyReplaceFrom: start to: stop with: aText
+copyReplaceFrom: start to: stop with: aTextOrString
 
-	^self shallowCopy replaceFrom: start to: stop with: aText
+	| txt |
+	txt _ aTextOrString asText.	"might be a string"
+	^self class 
+             string: (string copyReplaceFrom: start to: stop with: txt string)
+             runs: (runs copyReplaceFrom: start to: stop with: txt runs)
