@@ -3,7 +3,8 @@ collapse
 	label only."
 
 	self isCollapsed ifFalse:
-			[(subViews ~~ nil and: [subViews size = 1 and: [subViews first isKindOf: MorphWorldView]])
+			[model modelSleep.
+			(subViews ~~ nil and: [subViews size = 1 and: [subViews first isKindOf: MorphWorldView]])
 				ifTrue: [subViews first deEmphasizeView].
 			expandedViewport _ self viewport.
 			savedSubViews _ subViews.
