@@ -1,0 +1,2 @@
+primIndex
+	^ primitiveIndex
