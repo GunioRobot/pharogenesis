@@ -1,9 +1,10 @@
 store15To24HexBitsOn:aStream
 
-	| buf i |
+	| buf i lineWidth |
 
 	"write data for 16-bit form, optimized for encoders writing directly to files to do one single file write rather than 12. I'm not sure I understand the significance of the shifting pattern, but I think I faithfully translated it from the original"
 
+	lineWidth _ 0.
 	buf _ String new: 12.
 	bits do: [:word | 
 		i _ 0.
@@ -27,6 +28,8 @@ store15To24HexBitsOn:aStream
 
 		buf at: (i _ i + 1) put: ((word bitShift: -1) bitAnd: 15) asHexDigit.
 		buf at: (i _ i + 1) put: ((word bitShift: -6) bitAnd: 8) asHexDigit.
-		aStream print: buf.
+		aStream nextPutAll: buf.
+		lineWidth _ lineWidth + 12.
+		lineWidth > 100 ifTrue: [ aStream cr. lineWidth _ 0 ].
 		"#( 31 26 21 15 10 5 )  do:[:startBit | ]"
 	].
