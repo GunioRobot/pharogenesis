@@ -1,0 +1,2 @@
+flush
+	"Flush pending operations."
