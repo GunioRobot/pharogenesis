@@ -18,14 +18,20 @@ buildColorMenu: extent colorCount: nColors
 		form borderWidth: 5.
 		form border: form boundingBox width: 4 fillColor: Color white.
 		button _ Button new.
-		index = 1
-			ifTrue: [button onAction: [menuView model setColor: Color fromUser]]
-			ifFalse: [button onAction: [menuView model setTransparentColor]].
-
 		aSwitchView _ PluggableButtonView
 			on: button
 			getState: #isOn
-			action: #turnOn.
+			action: #turnOn
+			label: #getCurrentColor.
+
+		index = 1
+			ifTrue: [button onAction: [menuView model setColor: Color fromUser.
+									  aSwitchView label: menuView model getCurrentColor;
+									                  displayView
+					                     ]
+				    ]
+			ifFalse: [button onAction: [menuView model setTransparentColor]].
+
 		aSwitchView
 			shortcutCharacter: ((nColors=3 ifTrue: ['xvn'] ifFalse: ['xn']) at: index);
 			label: form;
