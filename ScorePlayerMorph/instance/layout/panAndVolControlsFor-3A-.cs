@@ -12,7 +12,12 @@ panAndVolControlsFor: trackIndex
 		minVal: 0.0;
 		maxVal: 1.0;
 		adjustToValue: (scorePlayer volumeForTrack: trackIndex).
-	panSlider _ volSlider fullCopy
+	panSlider _ SimpleSliderMorph new
+		color: color;
+		sliderColor: pianoRollColor;
+		extent: 101@2;
+		target: scorePlayer;
+		arguments: (Array with: trackIndex);
 		actionSelector: #panForTrack:put:;
 		minVal: 0.0;
 		maxVal: 1.0;		
@@ -34,8 +39,8 @@ panAndVolControlsFor: trackIndex
 	r addMorphBack: (StringMorph contents: '10').
 	c addMorphBack: r.
 	r _ self makeRow.
-	r addMorphBack: (StringMorph contents: 'L').
+	r addMorphBack: (StringMorph contents: 'L' translated).
 	r addMorphBack: panSlider.
-	r addMorphBack: (StringMorph contents: 'R').
+	r addMorphBack: (StringMorph contents: 'R' translated).
 	c addMorphBack: r.
 	^ c
