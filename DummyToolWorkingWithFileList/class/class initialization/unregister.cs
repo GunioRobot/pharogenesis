@@ -1,0 +1,4 @@
+unregister
+
+	FileList unregisterFileReader: self.
+	
