@@ -1,0 +1,3 @@
+initBBOpTable
+
+	^ myBitBlt initBBOpTable
