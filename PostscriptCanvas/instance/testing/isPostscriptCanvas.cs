@@ -1,0 +1,2 @@
+isPostscriptCanvas
+	^true
