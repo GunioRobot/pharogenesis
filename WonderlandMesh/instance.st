@@ -3,4 +3,4 @@ B3DIndexedTriangleMesh
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon3D-Wonderland Mesh'
+	category: 'Balloon3D-Wonderland-Mesh'
