@@ -1,0 +1,3 @@
+asJulianDayNumber
+
+	^self julianDayNumber
