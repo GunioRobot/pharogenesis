@@ -1,0 +1,2 @@
+isResolved
+	^ chooseRemote notNil
