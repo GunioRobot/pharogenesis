@@ -3,7 +3,7 @@ xColon		"Allow := for assignment by converting to #_ "
 		[self step.
 		tokenType _ #leftArrow.
 		self step.
-		^ token _ #_].
+		^ token _ #'_'].
 	"Otherwise, just do what normal scan of colon would do"
 	tokenType _ #colon.
 	^ token _ self step asSymbol
