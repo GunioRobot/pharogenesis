@@ -10,7 +10,7 @@ evalStrings
         each == #true ifTrue: [it _ true].
 		      each == #false ifTrue: [it _ false].
         each == #nil ifTrue: [it _ nil].
-        each class == String ifTrue: [
+        ((each class == String) or: [each class == MultiString]) ifTrue: [
 			it _ Compiler evaluate: each].
         each class == Array ifTrue: [it _ it evalStrings].
         it]
