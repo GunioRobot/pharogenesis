@@ -1,7 +1,7 @@
 compileHardCodedPref: prefName enable: aBoolean
 	"Compile a method that returns a simple true or false (depending on the value of aBoolean) when Preferences is sent prefName as a message"
 
-	self class compileProgrammatically: (prefName asString, '
+	self class compileSilently: (prefName asString, '
 	"compiled programatically -- return hard-coded preference value"
 	^ ', aBoolean storeString) classified: 'hard-coded prefs'.
 	
