@@ -1,0 +1,2 @@
+initializedInstance
+	^ 2468
