@@ -5,8 +5,8 @@ backspace: characterStream
 	sensor leftShiftDown ifTrue: [^ self backWord: characterStream].
 	characterStream isEmpty
 		ifTrue:
-			[startIndex _ startBlock stringIndex +
-				(startBlock = stopBlock ifTrue: [0] ifFalse: [1]).
+			[startIndex _ self markIndex +
+				(self hasCaret ifTrue: [0] ifFalse: [1]).
 			[sensor keyboardPressed and:
 			 [sensor keyboardPeek asciiValue = 8]] whileTrue: [
 				"process multiple backspaces"
