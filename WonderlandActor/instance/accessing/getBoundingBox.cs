@@ -5,6 +5,12 @@ getBoundingBox
 
 	(myMesh notNil)
 		ifTrue: [ meshBBox _ myMesh boundingBox.
+true ifTrue:[
+				cOrigin _ scaleMatrix localPointToGlobal: meshBBox origin.
+				cCorner _ scaleMatrix localPointToGlobal: meshBBox corner.
+				nOrigin _ cOrigin min: cCorner.
+				nCorner _ cOrigin max: cCorner.
+] ifFalse:[
 				 size _ self getSizeVector.
 				 mOrigin _ meshBBox origin.
 				 mCorner _ meshBBox corner.
@@ -18,6 +24,7 @@ getBoundingBox
 				 y _ (mCorner y) * (size y).
 				 z _ (mCorner z) * (size z).
 				 nCorner _ B3DVector3 x: x y: y z: z.
+].
 				]
 		ifFalse: [ nOrigin _ (B3DVector3 x:0 y:0 z:0).
 				  nCorner _ (B3DVector3 x:0 y:0 z:0) ].
