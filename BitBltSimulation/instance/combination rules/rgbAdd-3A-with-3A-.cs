@@ -1,10 +1,10 @@
 rgbAdd: sourceWord with: destinationWord
 	self inline: false.
-	destPixSize < 16 ifTrue:
+	destDepth < 16 ifTrue:
 		["Add each pixel separately"
 		^ self partitionedAdd: sourceWord to: destinationWord
-						nBits: destPixSize nPartitions: pixPerWord].
-	destPixSize = 16 ifTrue:
+						nBits: destDepth nPartitions: destPPW].
+	destDepth = 16 ifTrue:
 		["Add RGB components of each pixel separately"
 		^ (self partitionedAdd: sourceWord to: destinationWord
 						nBits: 5 nPartitions: 3)
