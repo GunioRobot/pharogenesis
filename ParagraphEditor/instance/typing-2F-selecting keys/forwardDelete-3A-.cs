@@ -3,11 +3,11 @@ forwardDelete: characterStream
 	  Make Undo work on the whole type-in, not just the one char.
 	wod 11/3/1998: If there was a selection use #zapSelectionWith: rather than #backspace: which was 'one off' in deleting the selection. Handling of things like undo or typeIn area were not fully considered."
 	| startIndex usel upara uinterval ind stopIndex |
-	startIndex _ startBlock stringIndex.
+	startIndex _ self mark.
 	startIndex > paragraph text size ifTrue:
 		[sensor keyboard.
 		^ false].
-	startIndex = stopBlock stringIndex ifFalse:
+	self hasSelection ifTrue:
 		["there was a selection"
 		sensor keyboard.
 		self zapSelectionWith: self nullText.
@@ -16,8 +16,6 @@ forwardDelete: characterStream
 	beginTypeInBlock == nil	"no previous typing.  openTypeIn"
 		ifTrue: [self openTypeIn. UndoSelection _ self nullText].
 	uinterval _ UndoInterval deepCopy.
-	"umes _ UndoMessage deepCopy.	Set already by openTypeIn"
-	"usel _ UndoSelection deepCopy."
 	upara _ UndoParagraph deepCopy.
 	stopIndex := startIndex.
 	(sensor keyboard asciiValue = 127 and: [sensor leftShiftDown])
