@@ -5,7 +5,7 @@ xxxFixup
 	real _ page contentsMorph.
 	real == self ifTrue: [page error: 'should be converted by now'].
 	temp _ self.
-	list _ (Smalltalk pointersTo: temp) asOrderedCollection.
+	list _ (PointerFinder pointersTo: temp) asOrderedCollection.
 	list add: thisContext.  list add: thisContext sender.
 	list do: [:holder |
 		1 to: holder class instSize do:
