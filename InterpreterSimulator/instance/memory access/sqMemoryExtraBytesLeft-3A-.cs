@@ -1,0 +1,2 @@
+sqMemoryExtraBytesLeft: includingSwap
+	^0
