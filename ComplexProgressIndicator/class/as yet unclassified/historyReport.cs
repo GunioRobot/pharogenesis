@@ -3,7 +3,7 @@ historyReport
 ComplexProgressIndicator historyReport
 "
 	| answer data |
-	History ifNil: [^1 beep].
+	History ifNil: [^Beeper beep].
 	answer _ String streamContents: [ :strm |
 		(History keys asSortedCollection: [ :a :b | a asString <= b asString]) do: [ :k |
 			strm nextPutAll: k printString; cr.
