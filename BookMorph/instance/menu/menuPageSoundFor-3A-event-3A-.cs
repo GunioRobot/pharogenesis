@@ -3,7 +3,7 @@ menuPageSoundFor: target event: evt
 	tSpec _ self transitionSpecFor: target.
 	menu _ (MenuMorph entitled: 'Choose a sound
 (it is now ' , tSpec first , ')') defaultTarget: target.
-	SampledSound soundNames do:
+	SoundService default sampledSoundChoices do:
 		[:soundName |
 		menu add: soundName target: target
 			selector: #setProperty:toValue:
