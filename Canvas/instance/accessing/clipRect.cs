@@ -1,2 +1,3 @@
 clipRect
-	^ clipRect translateBy: origin negated
+	"Return the currently active clipping rectangle"
+	^self subclassResponsibility
