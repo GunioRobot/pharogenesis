@@ -1,6 +1,6 @@
 initProgressMorph
-	progress _ FlashProgressMorph new.
+	progress := ProgressBarMorph new.
 	progress borderWidth: 1.
-	progress color: Color transparent.
+	progress color: Color white.
 	progress progressColor: Color gray.
-	progress extent: (200 @ 15).
+	progress extent: 200 @ 15.
