@@ -1,6 +1,6 @@
 digitDiv: arg neg: ng 
 	"Answer with an array of (quotient, remainder)."
-	| quo rem ql d div dh dnh dl qhi qlo i j k l hi lo r3 a t |
+	| quo rem ql d div dh dnh dl qhi qlo j l hi lo r3 a t |
 	l _ self digitLength - arg digitLength + 1.
 	l <= 0 ifTrue: [^Array with: 0 with: self].
 	d _ 8 - arg lastDigit highBit.
