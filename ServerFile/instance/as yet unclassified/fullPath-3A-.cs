@@ -3,6 +3,7 @@ fullPath: serverAndDirectory
 
 	| delim ii |
 	super fullPath: serverAndDirectory.		"set server and directory"
+	type == #file ifTrue: [fileName _  ''. ^ self].
 	delim _ self pathNameDelimiter.
 	ii _ directory findLast: [:c | c = delim].
 	ii = 0
