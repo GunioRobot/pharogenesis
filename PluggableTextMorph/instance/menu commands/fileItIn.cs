@@ -1,2 +1,2 @@
 fileItIn
-	textMorph editor fileItIn
+	self handleEdit: [textMorph editor fileItIn]
