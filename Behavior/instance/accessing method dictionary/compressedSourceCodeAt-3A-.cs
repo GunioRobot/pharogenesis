@@ -2,7 +2,7 @@ compressedSourceCodeAt: selector
 	"(Paragraph compressedSourceCodeAt: #displayLines:affectedRectangle:) size 721 1921
 	Paragraph selectors inject: 0 into: [:tot :sel | tot + (Paragraph compressedSourceCodeAt: sel) size] 13606 31450"
 	| rawText parse |
-	rawText _ self sourceCodeAt: selector.
+	rawText _ (self sourceCodeAt: selector) asString.
 	parse _ self compilerClass new parse: rawText in: self notifying: nil.
 	^ rawText compressWithTable:
 		((selector keywords ,
