@@ -1,0 +1,2 @@
+shouldPreserveContents
+	^false
