@@ -1,6 +1,8 @@
 destroyFlap
+	"Destroy the receiver"
+
 	| reply request |
-	request _ self isGlobal
+	request _ self isGlobalFlap
 		ifTrue:
 			['Caution -- this would permanently
 remove this flap, so it would no longer be
@@ -9,11 +11,12 @@ Do you really want to this? ']
 		ifFalse:
 			['Caution -- this is permanent!  Do
 you really want to do this? '].
-	reply _ self confirm: request orCancel: [^ self].
+	reply _ self confirm: request translated orCancel: [^ self].
 	reply ifTrue:
-		[self isGlobal
+		[self isGlobalFlap
 			ifTrue:
-				[Utilities removeFlapTab: self keepInList: false]
+				[Flaps removeFlapTab: self keepInList: false.
+				self currentWorld reformulateUpdatingMenus]
 			ifFalse:
 				[referent isInWorld ifTrue: [referent delete].
 				self delete]]
