@@ -1,0 +1,2 @@
+assertStackPointerIsExternal
+	^ self
