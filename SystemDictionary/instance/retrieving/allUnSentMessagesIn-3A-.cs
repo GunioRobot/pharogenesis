@@ -8,11 +8,15 @@ allUnSentMessagesIn: selectorSet
 			[:cl | cl selectorsDo: 
 				[:sel | 
 				(cl compiledMethodAt: sel) literals do: 
-					[:m |
-					(m isMemberOf: Symbol)  "might be sent"
-						ifTrue: [all remove: m ifAbsent: []].
-					(m isMemberOf: Array)  "might be performed"
-						ifTrue: [m do: [:x | all remove: x ifAbsent: []]].
+					[:lit |
+					(lit isMemberOf: Symbol)  "might be sent"
+						ifTrue: [all remove: lit ifAbsent: []].
+					(lit isMemberOf: Array)  "might be performed"
+						ifTrue: [lit do:
+								[:elt |
+								(elt isMemberOf: Array)
+									ifTrue: [elt do: [:e | all remove: e ifAbsent: []]]
+									ifFalse: [all remove: elt ifAbsent: []]]].
 					]]].
 		"The following may be sent without being in any literal frame"
 		1 to: self specialSelectorSize do: 
