@@ -5,4 +5,4 @@ jump: offset if: condition
 		(condition
 			ifTrue: ['jumpTrue: ']
 			ifFalse: ['jumpFalse: '])
-			, (pc + offset) printString
+			, (scanner pc + offset) printString
