@@ -1,7 +1,7 @@
 changeRecorderFor: class
 
 	| cname |
-	(class isKindOf: String)
+	(class isString)
 		ifTrue: [ cname _ class ]
 		ifFalse: [ cname _ class name ].
 
