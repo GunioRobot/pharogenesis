@@ -1,5 +1,8 @@
 forEvaluatingEmbedded: stringOrStream
-	"stringOrStream is text with <?expr?> expressions intermingled.  This creates a HTLMLformatter instance which will substitute the <?expr?> expressions with the value of the argument (named request), and which leaves all other text in stringOrStream alone"
+	"stringOrStream is text with <?expr?> expressions intermingled.
+This creates a HTLMLformatter instance which will substitute the <?expr?>
+expressions with the value of the argument (named request), and which
+leaves all other text in stringOrStream alone"
 
 	| blockStream sourceStream doingEval ch |
 
@@ -14,22 +17,26 @@ forEvaluatingEmbedded: stringOrStream
 
 	[sourceStream atEnd] whileFalse:  [
 		ch := sourceStream next.
-		(doingEval not and: [ ch = $<  and: [ sourceStream peek = $? ]]) ifTrue: [
+		(doingEval not and: [ ch = $<  and: [ sourceStream peek =
+$? ]]) ifTrue: [
 			"beginning of an <?...?> expression"
 			blockStream nextPutAll: '''.  output nextPutAll: ['.
-			sourceStream next.  "Skip the ?" 
+			sourceStream next.  "Skip the ?"
 			doingEval _ true]
 		ifFalse: [
-		(doingEval and: [ ch = $? and: [ sourceStream peek = $> ]]) ifTrue: [
+		(doingEval and: [ ch = $? and: [ sourceStream peek = $> ]])
+ifTrue: [
 			"end of a <?...?> expression"
-			blockStream nextPutAll: '] value asString.  output nextPutAll: '''.
-			sourceStream next.  "Skip the >" 
+			blockStream nextPutAll: '] value asString.  output
+nextPutAll: '''.
+			sourceStream next.  "Skip the >"
 			doingEval _ false.]
 		ifFalse: [
 			"normal char"
 			blockStream nextPut: ch.
-			(doingEval not and: [ ch = $' ]) ifTrue: [ "double $' marks"  blockStream nextPut: $' ] ] ] ].
-
+			(doingEval not and: [ ch = $' ]) ifTrue: [
+				 "double $' marks"  blockStream nextPut: $'
+] ] ] ].
 
 	"end the block"
 	doingEval
@@ -37,4 +44,5 @@ forEvaluatingEmbedded: stringOrStream
 		ifFalse: [ blockStream nextPutAll: '''' ].
 	blockStream nextPutAll: ']'.
 
-	^HTMLformatter new formattingBlock: (Compiler evaluate: blockStream contents)
+	^HTMLformatter new formattingBlock: (Compiler evaluate: blockStream
+contents)
