@@ -1,15 +1,9 @@
 resetState 
 	"Establish the initial conditions for editing the paragraph: place caret 
-	before first character, set the emphasis to that of the first character, and 
-	save the paragraph for purposes of canceling."
+	before first character, set the emphasis to that of the first character,
+	and save the paragraph for purposes of canceling."
 
-	| insetDisplayBox |
-	insetDisplayBox _ paragraph compositionRectangle.
-	startBlock _ 
-		CharacterBlock
-			stringIndex: 1
-			character: nil
-			boundingRectangle: (insetDisplayBox topLeft extent: 0 @ 0).
+	startBlock _ paragraph defaultCharacterBlock.
 	stopBlock _ startBlock copy.
 	beginTypeInBlock _ nil.
 	UndoInterval _ otherInterval _ 1 to: 0.
