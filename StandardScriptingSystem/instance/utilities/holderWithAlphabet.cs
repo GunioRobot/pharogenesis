@@ -10,11 +10,11 @@ holderWithAlphabet
 
 	aWrapper _ AlignmentMorph new hResizing: #shrinkWrap; vResizing: #shrinkWrap; layoutInset: 0.
 	aWrapper addMorphBack: (aMorph _ TextMorph new contents: 'A').
-	aMorph beAllFont: ((TextStyle named: #ComicBold) fontOfSize: 24).
+	aMorph beAllFont: ((TextStyle named: Preferences standardEToysFont familyName) fontOfSize: 24).
 	aMorph width: 14; lock.
 	aWrapper beTransparent; setNameTo: 'A'.
 	aPlayer _ aWrapper assuredPlayer.
-	aPlayer addInstanceVariableNamed: #index type: #number value: 1.
+	aPlayer addInstanceVariableNamed: #index type: #Number value: 1.
 	aContainer addMorphBack: aWrapper.
 	2 to: 26 do:
 		[:anIndex |
