@@ -7,9 +7,10 @@ encodeVariable: name sourceRange: range ifUnknown: action
 					ifTrue: [varNode]
 					ifFalse: [action value]].
 	range ifNotNil: [
-		name first isUppercase ifTrue:
+		name first canBeGlobalVarInitial ifTrue:
 			[globalSourceRanges addLast: { name. range. false }]. ].
 
-	(varNode isTemp and: [varNode scope < 0]) ifTrue: [^self notify: 'out of scope'].
-
+	(varNode isTemp and: [varNode scope < 0]) ifTrue: [
+		OutOfScopeNotification signal ifFalse: [ ^self notify: 'out of scope'].
+	].
 	^ varNode
