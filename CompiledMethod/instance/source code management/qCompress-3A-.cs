@@ -11,7 +11,7 @@ qCompress: str
 		[:strm | odd _ true.  "Flag for odd or even nibble out"
 		str do:
 			[:char | ix _ (charTable indexOf: char) - 1.
-			(ix <= 12 ifTrue: [ix]
+			(ix <= 12 ifTrue: [Array with: ix]
 				ifFalse: [Array with: ix//16+12 with: ix\\16])
 				do:
 				[:nibble | (odd _ odd not)
