@@ -22,5 +22,4 @@ setFont
 	"Install various parameters from the font."
 	spaceWidth _ font widthOf: Space.
 	xTable _ font xTable.
-	map _ font characterToGlyphMap.
 	stopConditions _ DefaultStopConditions.
