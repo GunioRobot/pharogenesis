@@ -1,6 +1,7 @@
 fileOutPool: aString
 	"file out the global pool named aString"
-	| f |
-	f _ FileStream newFileNamed: aString, '.st'.
-	self new fileOutPool: (Smalltalk at: aString asSymbol) onFileStream: f. 	f close.
-	
+	| internalStream |
+	internalStream _ WriteStream on: (String new: 1000).
+	self new fileOutPool: (self environment at: aString asSymbol) onFileStream: internalStream.
+
+	FileStream writeSourceCodeFrom: internalStream baseName: aString isSt: true useHtml: false.
