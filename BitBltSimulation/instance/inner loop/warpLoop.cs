@@ -1,44 +1,45 @@
 warpLoop
-	| skewWord halftoneWord mergeWord destMask startBits
-	  deltaP12x deltaP12y deltaP43x deltaP43y pAx pAy
-	  xDelta yDelta pBx pBy smoothingCount sourceMapOop nSteps t |
-
+	"ar 12/7/1999: This version is unused but kept as reference implemenation"
 	"This version of the inner loop traverses an arbirary quadrilateral
 	source, thus producing a general affine transformation."
+	| skewWord halftoneWord mergeWord startBits
+	  deltaP12x deltaP12y deltaP43x deltaP43y pAx pAy
+	  xDelta yDelta pBx pBy smoothingCount sourceMapOop nSteps t |
+	self inline: false.
  
-	(interpreterProxy fetchWordLengthOf: bitBltOop) >= (BBWarpBase+12)
+	(interpreterProxy slotSizeOf: bitBltOop) >= (BBWarpBase+12)
 		ifFalse: [^ interpreterProxy primitiveFail].
 	nSteps _ height-1.  nSteps <= 0 ifTrue: [nSteps _ 1].
 
-	pAx _ interpreterProxy fetchIntegerOrTruncFloat: BBWarpBase ofObject: bitBltOop.
-	t _ interpreterProxy fetchIntegerOrTruncFloat: BBWarpBase+3 ofObject: bitBltOop.
+	pAx _ self fetchIntOrFloat: BBWarpBase ofObject: bitBltOop.
+	t _ self fetchIntOrFloat: BBWarpBase+3 ofObject: bitBltOop.
 	deltaP12x _ self deltaFrom: pAx to: t nSteps: nSteps.
 	deltaP12x < 0 ifTrue: [pAx _ t - (nSteps*deltaP12x)].
 
-	pAy _ interpreterProxy fetchIntegerOrTruncFloat: BBWarpBase+1 ofObject: bitBltOop.
-	t _ interpreterProxy fetchIntegerOrTruncFloat: BBWarpBase+4 ofObject: bitBltOop.
+	pAy _ self fetchIntOrFloat: BBWarpBase+1 ofObject: bitBltOop.
+	t _ self fetchIntOrFloat: BBWarpBase+4 ofObject: bitBltOop.
 	deltaP12y _ self deltaFrom: pAy to: t nSteps: nSteps.
 	deltaP12y < 0 ifTrue: [pAy _ t - (nSteps*deltaP12y)].
 
-	pBx _ interpreterProxy fetchIntegerOrTruncFloat: BBWarpBase+9 ofObject: bitBltOop.
-	t _ interpreterProxy fetchIntegerOrTruncFloat: BBWarpBase+6 ofObject: bitBltOop.
+	pBx _ self fetchIntOrFloat: BBWarpBase+9 ofObject: bitBltOop.
+	t _ self fetchIntOrFloat: BBWarpBase+6 ofObject: bitBltOop.
 	deltaP43x _ self deltaFrom: pBx to: t nSteps: nSteps.
 	deltaP43x < 0 ifTrue: [pBx _ t - (nSteps*deltaP43x)].
 
-	pBy _ interpreterProxy fetchIntegerOrTruncFloat: BBWarpBase+10 ofObject: bitBltOop.
-	t _ interpreterProxy fetchIntegerOrTruncFloat: BBWarpBase+7 ofObject: bitBltOop.
+	pBy _ self fetchIntOrFloat: BBWarpBase+10 ofObject: bitBltOop.
+	t _ self fetchIntOrFloat: BBWarpBase+7 ofObject: bitBltOop.
 	deltaP43y _ self deltaFrom: pBy to: t nSteps: nSteps.
 	deltaP43y < 0 ifTrue: [pBy _ t - (nSteps*deltaP43y)].
 
 	interpreterProxy failed ifTrue: [^ false].  "ie if non-integers above"
-	interpreterProxy argCount = 2
+	interpreterProxy methodArgumentCount = 2
 		ifTrue: [smoothingCount _ interpreterProxy stackIntegerValue: 1.
 				sourceMapOop _ interpreterProxy stackValue: 0.
 				sourceMapOop = interpreterProxy nilObject
 				ifTrue: [sourcePixSize < 16 ifTrue:
 					["color map is required to smooth non-RGB dest"
 					^ interpreterProxy primitiveFail]]
-				ifFalse: [(interpreterProxy fetchWordLengthOf: sourceMapOop)
+				ifFalse: [(interpreterProxy slotSizeOf: sourceMapOop)
 							< (1 << sourcePixSize) ifTrue:
 					["sourceMap must be long enough for sourcePixSize"
 					^ interpreterProxy primitiveFail]]]
@@ -68,7 +69,7 @@ warpLoop
 
 		noHalftone
 			ifTrue: [halftoneWord _ AllOnes]
-			ifFalse: [halftoneWord _ interpreterProxy longAt: (halftoneBase + (dy+i-1 \\ halftoneHeight * 4))].
+			ifFalse: [halftoneWord _ self halftoneAt: dy+i-1].
 		destMask _ mask1.
 		"pick up first word"
 		bbW < startBits
@@ -86,11 +87,9 @@ warpLoop
 		1 to: nWords do:
 			[ :word |		"here is the inner horizontal loop..."
 			mergeWord _ self merge: (skewWord bitAnd: halftoneWord)
-				with: ((interpreterProxy longAt: destIndex) bitAnd: destMask).
-			interpreterProxy longAt: destIndex
-				put: ((destMask bitAnd: mergeWord)
-					bitOr:
-					(destMask bitInvert32 bitAnd: (interpreterProxy longAt: destIndex))).
+				with: ((self dstLongAt: destIndex) bitAnd: destMask).
+			self dstLongAt: destIndex put: (destMask bitAnd: mergeWord)
+				mask: destMask bitInvert32.
 			destIndex _ destIndex + 4.
 			word >= (nWords - 1) ifTrue:
 				[word = nWords ifFalse:
