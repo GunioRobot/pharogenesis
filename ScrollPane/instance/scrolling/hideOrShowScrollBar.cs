@@ -6,5 +6,5 @@ hideOrShowScrollBar
 	"Don't show it if we were told not to."
 	(self valueOfProperty: #noScrollBarPlease ifAbsent: [false]) ifTrue: [^self].
 
-	self isScrollable not & self isScrolledFromTop not ifTrue: [self hideScrollBar].
-	self isScrollable | self isScrolledFromTop ifTrue: [self showScrollBar].
+	self vIsScrollable not & self isScrolledFromTop not ifTrue: [self vHideScrollBar].
+	self vIsScrollable | self isScrolledFromTop ifTrue: [self vShowScrollBar].
