@@ -1,6 +1,5 @@
 offerCommonRequests
-	"Offer up the common-requests menu.  If the user chooses one, then evaluate it, and -- provided the value is anumber or string -- show it in the Transcript.  Revised technique 5/10/96 sw as per a suggestion from JM
-	6/6/96 sw: bug fix: if no choice, don't treat it as if the first item was chosen"
+	"Offer up the common-requests menu.  If the user chooses one, then evaluate it, and -- provided the value is a number or string -- show it in the Transcript."
 
 	"Utilities offerCommonRequests"
 
@@ -10,8 +9,8 @@ offerCommonRequests
 		ifTrue:
 			[self initializeCommonRequestStrings].
 	strings _ CommonRequestStrings contents.
-	normalItemCount _ strings lineCount.
-	aMenu _ PopUpMenu labels: (strings, '
+	normalItemCount _ strings asString lineCount.
+	aMenu _ PopUpMenu labels: (strings asString, '
 edit this menu') lines: (Array with: normalItemCount).
 
 	index _ aMenu startUp.
