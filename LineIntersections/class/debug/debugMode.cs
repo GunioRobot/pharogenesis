@@ -1,0 +1,2 @@
+debugMode
+	^Debug == true
