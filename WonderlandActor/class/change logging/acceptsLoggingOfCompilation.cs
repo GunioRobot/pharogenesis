@@ -1,0 +1,3 @@
+acceptsLoggingOfCompilation
+
+	^ self == WonderlandActor.
