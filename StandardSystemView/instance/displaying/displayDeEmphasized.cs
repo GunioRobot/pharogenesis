@@ -5,5 +5,7 @@ displayDeEmphasized
 	(bitsValid and: [controller ~~ ScheduledControllers activeController])
 		ifTrue: [self lock.
 				windowBits displayAt: self windowOrigin]
-		ifFalse: [super display.
+		ifFalse: [Display deferUpdates: true.
+				super display.
+				Display deferUpdates: false; forceToScreen: self windowBox.
 				CacheBits ifTrue: [self cacheBitsAsIs]]
