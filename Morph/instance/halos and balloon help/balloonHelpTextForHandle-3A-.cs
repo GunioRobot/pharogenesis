@@ -10,28 +10,32 @@ balloonHelpTextForHandle: aHandle
 		(chooseNewGraphicFromHalo				'Choose a new graphic')
 		(chooseStyle								'Change style')
 		(dismiss									'Remove')
-		(doDebug:with:							'Debug')
+		(doDebug:with:							'Debug (press shift to inspect morph)')
 		(doDirection:with:						'Choose forward direction')
 		(doDup:with:							'Duplicate')
+		(doDupOrMakeSibling:with: 				'Duplicate (press shift to make a sibling)')
+		(doMakeSiblingOrDup:with: 				'Make a sibling (press shift to make simple duplicate)')
+		(doMakeSibling:with: 					'Make a sibling')
 		(doMenu:with:							'Menu')
 		(doGrab:with:							'Pick up')
-		(doRecolor:with:							'Change color')
 		(editButtonsScript						'See the script for this button')
 		(editDrawing							'Repaint')
 		(maybeDoDup:with:						'Duplicate')
 		(makeNascentScript						'Make a scratch script')
 		(makeNewDrawingWithin				'Paint new object')
-		(mouseDownInCollapseHandle:with:		'Collapse morph')
+		(mouseDownInCollapseHandle:with:		'Collapse')
 		(mouseDownOnHelpHandle:				'Help')
 		(openViewerForArgument				'Open a Viewer for me')
+		(openViewerForTarget:with:				'Open a Viewer for me')
 		(paintBackground						'Paint background')
-		(prepareToTrackCenterOfRotation:with:	'Set center of rotation')
+		(prepareToTrackCenterOfRotation:with:	'Move object or set center of rotation')
 		(presentViewMenu						'Present the Viewing menu')
 		(startDrag:with:							'Move')
-		(startGrow:with:							'Change size') 
+		(startGrow:with:							'Change size (press shift to preserve aspect)') 
 		(startRot:with:							'Rotate')
 		(startScale:with:							'Change scale') 
 		(tearOffTile								'Make a tile representing this object')
+		(tearOffTileForTarget:with:				'Make a tile representing this object')
 		(trackCenterOfRotation:with:				'Set center of rotation')) 
 
 
@@ -44,5 +48,10 @@ balloonHelpTextForHandle: aHandle
 				['Move to trash']
 			ifFalse:
 				['Remove from screen']].
+
+	(itsSelector == #doRecolor:with:) ifTrue: [
+		^ Preferences propertySheetFromHalo
+			ifTrue: ['Property Sheet (press shift for simple recolor)']
+			ifFalse: ['Change color (press shift for more properties)']].
 
 	^ 'unknown halo handle'
