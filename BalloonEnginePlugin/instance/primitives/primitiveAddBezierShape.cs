@@ -25,7 +25,7 @@ primitiveAddBezierShape
 		(length = (nSegments * 3) or:[length = (nSegments * 6)])
 			ifFalse:[^interpreterProxy primitiveFail].
 	] ifFalse:["Must be Array of points"
-		(interpreterProxy fetchClassOf: points) = interpreterProxy classArray
+		(interpreterProxy isArray: points)
 			ifFalse:[^interpreterProxy primitiveFail].
 		length = (nSegments * 3)
 			ifFalse:[^interpreterProxy primitiveFail].
