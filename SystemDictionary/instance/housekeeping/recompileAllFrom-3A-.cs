@@ -8,4 +8,4 @@ recompileAllFrom: firstName
 				[Transcript show: class name; cr.
 				class compileAll]]
 
-	"Smalltalk recompileAllFrom: 'Aardvark'."
+	"Smalltalk recompileAllFrom: 'AAABodyShop'."
