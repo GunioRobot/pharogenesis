@@ -1,0 +1,2 @@
+timeStampsInMenuTitles
+	^ self valueOfFlag: #timeStampsInMenuTitles
