@@ -1,0 +1,2 @@
+canDeleteMember
+	^memberIndex > 0
