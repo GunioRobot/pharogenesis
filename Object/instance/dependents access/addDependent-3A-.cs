@@ -4,5 +4,5 @@ addDependent: anObject
 	| dependents |
 	dependents _ self dependents.
 	(dependents includes: anObject) ifFalse:
-		[self myDependents: (dependents copyWith: anObject)].
+		[self myDependents: (dependents copyWithDependent: anObject)].
 	^ anObject
