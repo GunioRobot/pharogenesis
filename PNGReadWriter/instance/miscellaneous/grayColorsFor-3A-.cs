@@ -9,8 +9,8 @@ grayColorsFor: d
 		].
 	d = 2 ifTrue: [
 		palette at: 1 put: Color black.
-		palette at: 2 put: (Color gray: 0.3333).
-		palette at: 3 put: (Color gray: 0.6667).
+		palette at: 2 put: (Color gray: 85.0 / 255.0).
+		palette at: 3 put: (Color gray: 170.0 / 255.0).
 		palette at: 4 put: Color white.
 		^ palette,{Color transparent}.
 		].
