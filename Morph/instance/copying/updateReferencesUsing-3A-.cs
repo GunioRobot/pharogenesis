@@ -9,16 +9,5 @@ overridden to avoid this behavior if so desired."
 	Morph instSize + 1 to: self class instSize do:
 		[:i | old _ self instVarAt: i.
 		old isMorph ifTrue:
-			[self instVarAt: i put: (aDictionary at: old
-ifAbsent: [old])]].
-	eventHandler ifNotNil:
-		[eventHandler _ eventHandler copy.
-		1 to: eventHandler class instSize do:
-			[:i | old _ eventHandler instVarAt: i.
-			old isMorph ifTrue:
-				[eventHandler instVarAt: i put:
-(aDictionary at: old ifAbsent: [old])]]].
-	properties ifNotNil: [
-		properties associationsDo: [:ass |
-			ass value: (aDictionary at: ass value ifAbsent:
-[ass value])]].	"note side effecting"
+			[self instVarAt: i put: (aDictionary at: old ifAbsent: [old])]].
+	extension == nil ifFalse: [extension updateReferencesUsing: aDictionary]
