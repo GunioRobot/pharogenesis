@@ -1,0 +1,2 @@
+serverDirectory
+	^'Guz BigDisk:Server:'.
