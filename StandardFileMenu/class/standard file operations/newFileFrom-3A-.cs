@@ -1,4 +1,4 @@
 newFileFrom: aDirectory
 
 	^(self newFileMenu: aDirectory)
-		startUpWithCaption: 'Select a File:'
+		startUpWithCaption: 'Select a File:' translated
