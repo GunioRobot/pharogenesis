@@ -1,2 +1,2 @@
 fullDrawOn: aCanvas
-	self installed ifFalse: [self drawOn: aCanvas]
+	self installed ifFalse: [aCanvas drawMorph: self]
