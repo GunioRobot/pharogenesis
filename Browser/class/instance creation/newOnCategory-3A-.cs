@@ -4,9 +4,10 @@ newOnCategory: aCategory
 	"Browser newOnCategory: 'Interface-Browser'"
 
 	| newBrowser catList |
-	newBrowser _ Browser new.
+	newBrowser _ self new.
 	catList _ newBrowser systemCategoryList.
 	newBrowser systemCategoryListIndex: 
 		(catList indexOf: aCategory asSymbol ifAbsent: [^ self inform: 'No such category']).
-	Browser openBrowserView: (newBrowser openSystemCatEditString: nil)
-				label: 'Classes in category ', aCategory
+	^ self 
+		openBrowserView: (newBrowser openSystemCatEditString: nil)
+		label: 'Classes in category ', aCategory
