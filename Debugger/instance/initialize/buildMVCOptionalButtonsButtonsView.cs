@@ -9,8 +9,8 @@ buildMVCOptionalButtonsButtonsView
 	pairs _ self optionalButtonPairs.
 	previousView _ nil.
 	pairs do: [:pair |
-		aButtonView _ PluggableButtonView on: self getState: nil action: pair last.
-		pair last = pairs last last
+		aButtonView _ PluggableButtonView on: self getState: nil action: pair second.
+		pair second = pairs last second
 			ifTrue:
 				[wid _ windowWidth - offset]
 			ifFalse:
@@ -21,7 +21,7 @@ buildMVCOptionalButtonsButtonsView
 			insideColor: Color red muchLighter lighter;
 			window: (offset@0 extent: wid@bHeight).
 		offset _ offset + wid.
-		pair last = pairs first last
+		pair second = pairs first second
 			ifTrue: [aView addSubView: aButtonView]
 			ifFalse: [aView addSubView: aButtonView toRightOf: previousView].
 		previousView _ aButtonView].
