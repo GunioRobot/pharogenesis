@@ -1,3 +1,2 @@
 currentHistory
-
-	^CurrentHistory ifNil: [CurrentHistory _ self new initialize].
+	^CurrentHistory ifNil: [CurrentHistory := self new]
