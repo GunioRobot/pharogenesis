@@ -1,0 +1,2 @@
+autoAccessors
+	^ self valueOfFlag: #autoAccessors
