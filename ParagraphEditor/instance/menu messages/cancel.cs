@@ -7,7 +7,7 @@ cancel
 
 	UndoSelection _ paragraph text.
 	self undoer: #undoAndReselect:redoAndReselect: with: self selectionInterval with: (1 to: 0).
-	view clearInside.
+	view ifNotNil: [view clearInside].
 	self changeParagraph: (paragraph text: initialText).
 	UndoParagraph _ paragraph.
 	otherInterval _ UndoInterval _ 1 to: initialText size. "so undo will replace all"
