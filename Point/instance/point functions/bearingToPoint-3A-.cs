@@ -11,4 +11,4 @@ bearingToPoint: anotherPoint
             [^ deltaY > 0 ifTrue: [180] ifFalse: [0]].
 
     ^ ((deltaX >= 0 ifTrue: [90] ifFalse: [270])
-            - ((deltaY / deltaX) arcTan negated * 57.2957795131)) rounded
+            - ((deltaY / deltaX) arcTan negated radiansToDegrees)) rounded
