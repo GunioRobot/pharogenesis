@@ -1,6 +1,11 @@
 fromInteger: address
-	"set my handle to point at address"
+	"set my handle to point at address."
+	"Do we really need this? bf 2/21/2001 23:48"
 
-	(4 to: 1 by: -1) inject: address into: [:remainder :index | 
-		self at: index put: (remainder bitAnd: 255).
-		remainder // 256]
+	| pointer |
+	pointer _ ByteArray new: 4.
+	pointer unsignedLongAt: 1 put: address.
+	self basicAt: 1 put: (pointer byteAt: 1);
+		basicAt: 2 put: (pointer byteAt: 2);
+		basicAt: 3 put: (pointer byteAt: 3);
+		basicAt: 4 put: (pointer byteAt: 4)
