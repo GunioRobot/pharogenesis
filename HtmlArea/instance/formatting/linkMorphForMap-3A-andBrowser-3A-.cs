@@ -4,7 +4,7 @@ linkMorphForMap: map andBrowser: browser
 	m color: (Color random alpha: 0.1). "hack to ensure the morph is clickable"
 	m
 		on: #mouseUp
-		send: #mouseUpEvent:linkMorph:browserAndUrl:
+		send: #mouseUpBrowserAndUrl:event:linkMorph:
 		to: map
 		withValue: {browser. self href}.
 	^m
