@@ -1,5 +1,6 @@
 invalidRect: aRectangle from: aMorph
 	| damageRect |
+	aRectangle hasPositiveExtent ifFalse: [ ^self ].
 	damageRect _ aRectangle.
 	aMorph == self ifFalse:[
 		"Clip to receiver's clipping bounds if the damage came from a child"
