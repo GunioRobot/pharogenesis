@@ -1,7 +1,7 @@
 removePrompting: doPrompt
-	"Completely destroy my change set.  Check if it's OK first,  and if doPrompt is true, get the user to confirm his intentions first"
-	| message aName |
+	"Completely destroy my change set.  Check if it's OK first, and if doPrompt is true, get the user to confirm his intentions first."
 
+	| message aName changeSetNumber msg |
 	aName _ myChangeSet name.
 	myChangeSet okayToRemove ifFalse: [^ self]. "forms current changes for some project"
 	(myChangeSet isEmpty or: [doPrompt not]) ifFalse:
@@ -10,15 +10,29 @@ remove (destroy) the change set
 named  "', aName, '" ?'.
 		(self confirm: message) ifFalse: [^ self]].
 
-	(doPrompt and: [myChangeSet hasPreamble or: [myChangeSet hasPostscript]])
-		ifTrue:
+	doPrompt ifTrue:
+		[msg _ myChangeSet hasPreamble
+			ifTrue:
+				[myChangeSet hasPostscript
+					ifTrue:
+						['a preamble and a postscript']
+					ifFalse:
+						['a preamble']]
+			ifFalse:
+				[myChangeSet hasPostscript
+					ifTrue:
+						['a postscript']
+					ifFalse:
+						['']].
+		msg isEmpty ifFalse:
 			[(self confirm: 
-'Caution!  This change set has a preamble
-and/or a postscript, which will be lost if 
-you destroy the change set.
-Do you really want to go ahead with this?') ifFalse: [^ self]].
+'Caution!  This change set has
+', msg, ' which will be
+lost if you destroy the change set.
+Do you really want to go ahead with this?') ifFalse: [^ self]]].
 
 	"Go ahead and remove the change set"
-	AllChangeSets remove: myChangeSet.
-	myChangeSet wither.		"clear out its contents"
-	self showChangeSet: Smalltalk changes.
+	changeSetNumber _ myChangeSet name initialIntegerOrNil.
+	changeSetNumber ifNotNil: [SystemVersion current unregisterUpdate: changeSetNumber].
+	ChangeSorter removeChangeSet: myChangeSet.
+	self showChangeSet: ChangeSet current.
