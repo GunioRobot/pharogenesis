@@ -6,6 +6,10 @@ valueWithArguments: anArray
 	Essential. See Object documentation whatIsAPrimitive."
 
 	<primitive: 82>
+
 	self numArgs = anArray size
 		ifTrue: [self error: 'Attempt to evaluate a block that is already being evaluated.']
-		ifFalse: [self error: 'This block requires ' , self numArgs printString , ' arguments and is being evaluated with ', anArray size printString]
+		ifFalse: [self error: 
+			'This block accepts ' ,self numArgs printString, ' argument', (self numArgs = 1 ifTrue:[''] ifFalse:['s']) , 
+			', but was called with ', anArray size printString, '.']
+
