@@ -1,0 +1,3 @@
+openReadOnly
+
+	segmentFile openReadOnly
