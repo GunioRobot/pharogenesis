@@ -3,8 +3,9 @@ renameClass
 	classListIndex = 0 ifTrue: [^ self].
 	self okToChange ifFalse: [^ self].
 	oldName _ self selectedClass name.
-	newName _ (self request: 'Please type new class name'
-						initialAnswer: oldName) asSymbol.
+	newName _ self request: 'Please type new class name' initialAnswer: oldName.
+	newName = '' ifTrue: [^ self].  " Cancel returns '' "
+	newName _ newName asSymbol.
 	newName = oldName ifTrue: [^ self].
 	(Smalltalk includesKey: newName)
 		ifTrue: [^ self error: newName , ' already exists'].
