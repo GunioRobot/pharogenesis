@@ -1,3 +1,3 @@
 printOn: aStream indent: level 
-	aStream withAttribute: (TextColor color: Color blue)
+	aStream withAttributes: (Preferences syntaxAttributesFor: #temporaryVariable)
 			do: [aStream nextPutAll: name]
