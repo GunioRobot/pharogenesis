@@ -1,0 +1,2 @@
+isPartsDonor
+	^ self hasProperty: #partsDonor
