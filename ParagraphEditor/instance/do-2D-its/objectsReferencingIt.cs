@@ -5,7 +5,7 @@ objectsReferencingIt
 	result _ self evaluateSelection.
 	((result isKindOf: FakeClassPool) or: [result == #failedDoit])
 		ifTrue: [view flash]
-		ifFalse: [Smalltalk
+		ifFalse: [self systemNavigation
 					browseAllObjectReferencesTo: result
 					except: #()
 					ifNone: [:obj | view topView flash]].
