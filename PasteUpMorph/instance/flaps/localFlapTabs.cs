@@ -1,6 +1,8 @@
 localFlapTabs
+	"Answer a list of local flap tabs in the current project"
+
 	| globalList aList aFlapTab |
-	globalList _ Utilities globalFlapTabsIfAny.
+	globalList _ Flaps globalFlapTabsIfAny.
 	aList _ OrderedCollection new.
 	submorphs do:
 		[:m | ((m isFlapTab) and: [(globalList includes: m) not])
