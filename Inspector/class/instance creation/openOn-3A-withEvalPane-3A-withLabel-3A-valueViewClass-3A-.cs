@@ -10,8 +10,6 @@ openOn: anObject withEvalPane: withEval withLabel: label valueViewClass: valueVi
 		changeSelected: #toggleIndex:
 		menu: #fieldListMenu:
 		keystroke: #inspectorKey:from:.
-	(inspector isMemberOf: DictionaryInspector)
-		ifTrue: [listView menu: #dictionaryMenu:].
 	listView window: (0 @ 0 extent: 40 @ 40).
 	topView addSubView: listView.
 
