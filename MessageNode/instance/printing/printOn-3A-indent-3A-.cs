@@ -4,6 +4,8 @@ printOn: aStream indent: level
 	special > 0 ifTrue: [printer _ MacroPrinters at: special].
 	(printer == #printCaseOn:indent:) ifTrue: 
 		[^self printCaseOn: aStream indent: level].
+	(printer == #printIfNilNotNil:indent:) ifTrue: 
+		[^self printIfNilNotNil: aStream indent: level].
 	receiver == nil 
 		ifFalse: [receiver printOn: aStream indent: level precedence: precedence].
 	(special > 0)
