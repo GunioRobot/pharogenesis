@@ -1,0 +1,2 @@
+asPostscript
+	^self asPostscriptPrintJob.
