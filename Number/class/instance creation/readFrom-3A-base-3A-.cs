@@ -2,7 +2,7 @@ readFrom: stringOrStream base: base
 	"Answer a number as described on aStream in the given number base."
 
 	| aStream sign |
-	aStream _ (stringOrStream isMemberOf: String)
+	aStream _ (stringOrStream isString)
 		ifTrue: [ReadStream on: stringOrStream]
 		ifFalse: [stringOrStream].
 	(aStream nextMatchAll: 'NaN') ifTrue: [^ Float nan].
