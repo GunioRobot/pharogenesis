@@ -3,7 +3,6 @@ primitiveError: aString
 	calling on error: or halt or halt:."
 
 	| context |
-	Sensor eventQueue: nil. "Or else we won't get keyboard and possibly run out of memory"
 	(String
 		streamContents: 
 			[:s |
@@ -18,5 +17,5 @@ primitiveError: aString
 	[Sensor keyboardPressed] whileFalse.
 	Sensor keyboard = Character cr ifTrue: [Transcripter emergencyEvaluator].
 	Smalltalk isMorphic
-		ifTrue: [Display reinstallMorphicWorldAfterError]
+		ifTrue: [World install "init hands and redisplay"]
 		ifFalse: [ScheduledControllers searchForActiveController]
