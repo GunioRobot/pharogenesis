@@ -1,0 +1,2 @@
+center
+	^ self vertices average
