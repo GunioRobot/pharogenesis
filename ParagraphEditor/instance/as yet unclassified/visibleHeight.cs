@@ -1,0 +1,3 @@
+visibleHeight
+
+	^paragraph clippingRectangle height
