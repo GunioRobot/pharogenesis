@@ -1,3 +1,3 @@
 specForReplyButton
-	"action label helpText"
-	^ #(#turnOn 'Reply' 'Reply to the selected message' )
+	"getState action label helpText"
+	^ #(nil #reply 'Reply' 'Reply to the selected message' )
