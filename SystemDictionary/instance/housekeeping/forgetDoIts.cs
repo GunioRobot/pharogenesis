@@ -1,6 +1,4 @@
-forgetDoIts
-
+forgetDoIts	"Smalltalk forgetDoIts"
 	Smalltalk allBehaviorsDo: "get rid of old DoIt methods"
-			[:cl | cl removeSelector: #DoIt; removeSelector: #DoItIn:]
+		[:cl | cl removeSelectorSimply: #DoIt; removeSelectorSimply: #DoItIn:]
 
-	"Smalltalk forgetDoIts"
