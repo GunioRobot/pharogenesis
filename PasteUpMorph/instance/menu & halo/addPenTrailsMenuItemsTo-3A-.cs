@@ -1,10 +1,16 @@
 addPenTrailsMenuItemsTo: aMenu
-	| oldTarget |
 	"Add items relating to pen trails to aMenu"
 
+	| oldTarget |
 	oldTarget _ aMenu defaultTarget.
 	aMenu defaultTarget: self.
-	aMenu add: 'clear pen trails' action: #clearTurtleTrails.
-	aMenu add: 'all pens up' action: #liftAllPens.
-	aMenu add: 'all pens down' action: #lowerAllPens.
+	aMenu add: 'clear pen trails' translated action: #clearTurtleTrails.
+	aMenu addLine.
+	aMenu add: 'all pens up' translated action: #liftAllPens.
+	aMenu add: 'all pens down' translated action: #lowerAllPens.
+	aMenu addLine.
+	aMenu add: 'all pens show lines' translated action: #linesForAllPens.
+	aMenu add: 'all pens show arrowheads' translated action: #arrowsForAllPens.
+	aMenu add: 'all pens show arrows' translated action: #linesAndArrowsForAllPens.
+	aMenu add: 'all pens show dots' translated action: #dotsForAllPens.
 	aMenu defaultTarget: oldTarget
