@@ -4,13 +4,6 @@ request: queryString initialAnswer: defaultAnswer
 		request: 'What is your favorite color?'
 		initialAnswer: 'red, no blue. Ahhh!'"
 
-	World ifNotNil: [
-		^ FillInTheBlankMorph
-			request: queryString
-			initialAnswer: defaultAnswer
-			centerAt: Sensor cursorPoint].
-
-	^ self
-		request: queryString
+	^ self request: queryString
 		initialAnswer: defaultAnswer
 		centerAt: Sensor cursorPoint.
