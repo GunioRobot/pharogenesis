@@ -1,5 +1,5 @@
 weekdayIndex
-	"Sunday=1, ... , Saturday=7"
+	"Monday=1, ... , Sunday=7"
 
 	| yearIndex dayIndex |  
 	day < (self firstDayOfMonthIndex: 3)
