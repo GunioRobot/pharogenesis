@@ -1,9 +1,8 @@
-systemOrganizer: aSystemOrganizer 
+systemOrganizer: aSystemOrganizer
 	"Initialize the receiver as a perspective on the system organizer, 
 	aSystemOrganizer. Typically there is only one--the system variable 
 	SystemOrganization."
 
-	super initialize.
 	contents _ nil.
 	systemOrganizer _ aSystemOrganizer.
 	systemCategoryListIndex _ 0.
@@ -12,4 +11,4 @@ systemOrganizer: aSystemOrganizer
 	messageListIndex _ 0.
 	metaClassIndicated _ false.
 	self setClassOrganizer.
-	editSelection _ #none
+	self editSelection: #none.
