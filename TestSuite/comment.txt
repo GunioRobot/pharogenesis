@@ -1,4 +1,1 @@
-A Composite of test cases. It runs a collection of test cases.
-
-Instance Variables:
-	tests	<OrderedCollection of: TestCase>
+This is a Composite of Tests, either TestCases or other TestSuites. The common protocol is #run: aTestResult and the dependencies protocol
