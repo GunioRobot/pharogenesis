@@ -6,4 +6,4 @@ checkForUncommentedMethods
 		ifFalse:
 			[^ self inform: 'All methods in "', self name, '" have comments']
 		ifTrue:
-			[Smalltalk browseMessageList: aList name: 'methods in "', self name, '" that lack comments']
+			[self systemNavigation  browseMessageList: aList name: 'methods in "', self name, '" that lack comments']
