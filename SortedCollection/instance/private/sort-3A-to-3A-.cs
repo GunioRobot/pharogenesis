@@ -3,13 +3,12 @@ sort: i to: j
 	sortBlock."
 
 	| di dij dj tt ij k l n |
-	sortBlock ifNil: [^self defaultSort: i to: j].
 	"The prefix d means the data at that index."
 	(n _ j + 1  - i) <= 1 ifTrue: [^self].	"Nothing to sort." 
 	 "Sort di,dj."
 	di _ array at: i.
 	dj _ array at: j.
-	(sortBlock value: di value: dj) "i.e., should di precede dj?"
+	(self should: di precede: dj)
 		ifFalse: 
 			[array swap: i with: j.
 			 tt _ di.
@@ -19,13 +18,13 @@ sort: i to: j
 		ifTrue:  "More than two elements."
 			[ij _ (i + j) // 2.  "ij is the midpoint of i and j."
 			 dij _ array at: ij.  "Sort di,dij,dj.  Make dij be their median."
-			 (sortBlock value: di value: dij) "i.e. should di precede dij?"
+			 (self should: di precede: dij)
 			   ifTrue: 
-				[(sortBlock value: dij value: dj) "i.e., should dij precede dj?"
+				[(self should: dij precede: dj)
 				  ifFalse: 
 					[array swap: j with: ij.
 					 dij _ dj]]
-			   ifFalse:  "i.e. di should come after dij"
+			   ifFalse:
 				[array swap: i with: ij.
 				 dij _ di].
 			n > 3
@@ -34,9 +33,9 @@ sort: i to: j
 				Swap k and l.  Repeat this procedure until k and l pass each other."
 				 k _ i.
 				 l _ j.
-				 [[l _ l - 1.  k <= l and: [sortBlock value: dij value: (array at: l)]]
+				 [[l _ l - 1.  k <= l and: [self should: dij precede: (array at: l)]]
 				   whileTrue.  "i.e. while dl succeeds dij"
-				  [k _ k + 1.  k <= l and: [sortBlock value: (array at: k) value: dij]]
+				  [k _ k + 1.  k <= l and: [self should: (array at: k) precede: dij]]
 				   whileTrue.  "i.e. while dij succeeds dk"
 				  k <= l]
 				   whileTrue:
