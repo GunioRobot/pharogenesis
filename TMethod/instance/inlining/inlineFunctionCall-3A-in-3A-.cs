@@ -10,10 +10,9 @@ inlineFunctionCall: aSendNode in: aCodeGen
 	meth renameVarsForInliningInto: self in: aCodeGen.
 	meth renameLabelsForInliningInto: self.
 	self addVarsDeclarationsAndLabelsOf: meth.
-	substitutionDict _ Dictionary new.
+	substitutionDict _ Dictionary new: 100.
 	meth args with: aSendNode args do: [ :argName :exprNode |
-		substitutionDict at: argName asSymbol put: exprNode.
-		locals remove: argName.
-	].
+		substitutionDict at: argName put: exprNode.
+		locals remove: argName].
 	meth parseTree bindVariablesIn: substitutionDict.
-	^meth statements first expression
+	^ meth statements first expression
