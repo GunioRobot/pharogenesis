@@ -1,3 +1,3 @@
 chooseStyle
 	self editor changeStyle.
-	self updateFromParagraph
+	self updateFromParagraph.
