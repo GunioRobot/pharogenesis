@@ -1,2 +1,2 @@
 step
-	"Default for moephic models is no-op"
+	"Default for morphic models is no-op"
