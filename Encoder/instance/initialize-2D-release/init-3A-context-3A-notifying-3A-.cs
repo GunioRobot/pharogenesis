@@ -21,11 +21,12 @@ init: aClass context: aContext notifying: req
 			aContext tempNames do: 
 				[:variable | 
 				indexNode _ self encodeLiteral: (n _ n + 1).
-				node _ MessageNode new
+				node _ MessageAsTempNode new
 							receiver: homeNode
 							selector: #tempAt:
 							arguments: (Array with: indexNode)
 							precedence: 3
 							from: self.
 				scopeTable at: variable put: node]].
-	sourceRanges _ Dictionary new: 32
+	sourceRanges _ Dictionary new: 32.
+	globalSourceRanges _ OrderedCollection new: 32.
