@@ -5,4 +5,4 @@ updateStatusMorph: statusMorph
 	statusSymbol _ self scriptInstantiation status.
 	colorSelector _ ScriptingSystem statusColorSymbolFor: statusSymbol.
 	statusMorph recolor: (Color perform: colorSelector) muchLighter.
-	statusMorph label: statusSymbol asString font: ScriptingSystem fontForScriptorButtons
+	statusMorph label: statusSymbol asString font: Preferences standardButtonFont
