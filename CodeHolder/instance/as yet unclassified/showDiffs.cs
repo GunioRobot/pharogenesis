@@ -1,0 +1,2 @@
+showDiffs
+	^ showDiffs == true
