@@ -1,12 +1,19 @@
 balloonText
-	"Answer balloon help text or nil, if no help is available.
-	NB: subclasses may override such that they programatically construct
-	the text, for economy's sake, such as model phrases in a Viewer"
+	"Answer balloon help text or nil, if no help is available.  
+	NB: subclasses may override such that they programatically  
+	construct the text, for economy's sake, such as model phrases in 
+	a Viewer"
 
-	| text |
-	extension == nil ifTrue: [^ nil].
-	(text _ extension balloonText) ifNotNil: [^ text].
-	(text _ extension balloonTextSelector)
-		ifNotNil: [^ (ScriptingSystem helpStringFor: text)
-			withNoLineLongerThan: Preferences maxBalloonHelpLineLength].
-	^ nil
+	| text balloonSelector aString |
+	self hasExtension ifFalse: [^nil].
+	(text := self extension balloonText) ifNotNil: [^text].
+	(balloonSelector := self extension balloonTextSelector) ifNotNil: 
+			[aString := ScriptingSystem helpStringOrNilFor: balloonSelector.
+			(aString isNil and: [balloonSelector == #methodComment]) 
+				ifTrue: [aString := self methodCommentAsBalloonHelp].
+			((aString isNil and: [balloonSelector numArgs = 0]) 
+				and: [self respondsTo: balloonSelector]) 
+					ifTrue: [aString := self perform: balloonSelector]].
+	^aString ifNotNil: 
+			[aString asString 
+				withNoLineLongerThan: Preferences maxBalloonHelpLineLength]
