@@ -1,0 +1,2 @@
+toggleAcceleratorState
+	self accelerationEnabled: self accelerationEnabled not.
