@@ -1,0 +1,3 @@
+multiSt
+
+	^ 'mst' clone.
