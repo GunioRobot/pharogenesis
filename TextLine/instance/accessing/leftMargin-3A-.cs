@@ -1,2 +1,2 @@
 leftMargin: lm
-	leftMargin _ lm
+	left _ lm
