@@ -1,15 +1,17 @@
 selectionIndex: index
 	"Called internally to select the index-th item."
 	| theMorph range |
-	index ifNil: [^ self].
-	(theMorph _ index = 0 ifTrue: [nil] ifFalse: [scroller submorphs at: index])
+	(index isNil or: [index > scroller submorphs size]) ifTrue: [^ self].
+	(theMorph _ index = 0 ifTrue: [nil] ifFalse: [scroller submorphs at: 
+index])
 		ifNotNil:
 		[((theMorph bounds top - scroller offset y) >= 0
-			and: [(theMorph bounds bottom - scroller offset y) <= bounds height]) ifFalse:
+			and: [(theMorph bounds bottom - scroller offset y) <= bounds height]) 
+ifFalse:
 			["Scroll into view -- should be elsewhere"
-			range _ self totalScrollRange.
+			range _ self leftoverScrollRange.
 			scrollBar value: (range > 0
-				ifTrue: [((index-1 * theMorph height) / self totalScrollRange)
+				ifTrue: [((index-1 * theMorph height) / self leftoverScrollRange)
 									truncateTo: scrollBar scrollDelta]
 				ifFalse: [0]).
 			scroller offset: -3 @ (range * scrollBar value)]].
