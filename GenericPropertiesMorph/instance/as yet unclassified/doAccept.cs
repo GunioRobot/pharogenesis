@@ -1,0 +1,3 @@
+doAccept
+
+	self delete
