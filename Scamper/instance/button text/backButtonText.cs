@@ -1,3 +1,2 @@
 backButtonText
-
-	^'Go back to previous URL in history'
+	^ 'Go back to previous URL in history' translated
