@@ -6,7 +6,7 @@ disconnectRemoteUser
 	initials _ FillInTheBlank request: 'Enter initials for remote user''s cursor?'.
 	initials isEmpty ifTrue: [^ self].  "abort"
 	handToRemove _ nil.
-	self world hands do: [:h |
+	self world handsDo: [:h |
 		h userInitials = initials ifTrue: [handToRemove _ h]].
 	handToRemove ifNil: [^ self].  "no hand with those initials"
 
