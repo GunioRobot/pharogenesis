@@ -1,3 +1,5 @@
 correctCount
+	"depreciated - use #passedCount"
 
-	^self runCount - self failureCount - self errorCount
+	^self passedCount
+			
