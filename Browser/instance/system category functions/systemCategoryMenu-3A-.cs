@@ -1,8 +1,8 @@
 systemCategoryMenu: aMenu
 
 ^ aMenu labels:
-'find class...
-recent classes...
+'find class... (f)
+recent classes... (r)
 browse all
 browse
 printOut
