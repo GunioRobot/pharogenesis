@@ -1,0 +1,2 @@
+soundsEnabled
+	^ true
