@@ -1,14 +1,25 @@
 contextStackMenu: aMenu shifted: shifted
 	"Set up the menu appropriately for the context-stack-list, either shifted or unshifted as per the parameter provided"
 
-	^ shifted ifFalse: [aMenu labels: 
+	^ shifted ifFalse: 
+		[self selectedContext selector = #doesNotUnderstand: ifTrue:
+			[aMenu 
+				add: 'implement in...' 
+				subMenu: (self populateImplementInMenu: (Smalltalk isMorphic ifTrue: [MenuMorph new defaultTarget: self] ifFalse: [CustomMenu new]))
+				target: nil 
+				selector: nil 
+				argumentList: #(nil)].
+		aMenu labels: 
 'fullStack (f)
 restart (r)
 proceed (p)
 step (t)
+step through (T)
 send (e)
 where (w)
 peel to first like this
+return entered value
+toggle break on entry
 senders of... (n)
 implementors of... (m)
 inheritance (i)
@@ -22,8 +33,8 @@ browse full (b)
 file out 
 mail out bug report
 more...'
-	lines: #(7 11 13 16 19)
-	selections: #(fullStack restart proceed doStep send where peelToFirst
+	lines: #(8 9 13 15 18 21)
+	selections: #(fullStack restart proceed doStep stepIntoBlock send where peelToFirst returnValue toggleBreakOnEntry
 browseSendersOfMessages browseMessages methodHierarchy browseVersions
 browseInstVarRefs browseInstVarDefs
 browseClassVarRefs browseClassVariables browseClassRefs
