@@ -11,22 +11,20 @@ Click Here<Point>
 	b2 _ aString indexOf: $>.
 	(b1 < b2) & (b1 > 0) ifFalse: ["only one part"
 		classAndMethod _ self validate: aString, ' ', nonMethod.
-		^ classAndMethod size = 0 ifTrue: [nil] ifFalse: [aString]].
+		^ classAndMethod ifNotNil: [aString]].
 	"Two parts"
 	trim _ aString withBlanksTrimmed.
 	(trim at: 1) == $< 
 		ifTrue: [(trim last) == $>
 			ifTrue: ["only instructions" 
 				classAndMethod _ self validate: (aString copyFrom: b1+1 to: b2-1), ' ', nonMethod.
-				^ classAndMethod size = 0 ifTrue: [nil] ifFalse: [classAndMethod]]
+				^ classAndMethod ifNotNil: [classAndMethod]]
 			ifFalse: ["at the front"
 				classAndMethod _ self validate: (aString copyFrom: b1+1 to: b2-1), ' ', nonMethod.
-				^ classAndMethod size = 0 ifTrue: [nil] 
-						ifFalse: [aString copyFrom: b2+1 to: aString size]]]
+				^ classAndMethod ifNotNil: [aString copyFrom: b2+1 to: aString size]]]
 		ifFalse: [(trim last) == $>
 			ifTrue: ["at the end"
 				classAndMethod _ self validate: (aString copyFrom: b1+1 to: b2-1), ' ', nonMethod.
-				^ classAndMethod size = 0 ifTrue: [nil] 
-						ifFalse: [aString copyFrom: 1 to: b1-1]]
+				^ classAndMethod ifNotNil: [aString copyFrom: 1 to: b1-1]]
 			ifFalse: ["Illegal -- <> has text on both sides"
 				^ nil]]
