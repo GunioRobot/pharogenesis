@@ -5,8 +5,6 @@ before: target ifAbsent: exceptionBlock
 
 	| index |
 	index _ self indexOf: target.
-	^ index == 0
+	^ (index == 0 or: [index == 1])
 		ifTrue: [exceptionBlock value]
-		ifFalse: [index == 1 
-			ifTrue: [self errorFirstObject: target]
-			ifFalse: [self at: index - 1]]
+		ifFalse: [self at: index - 1]
