@@ -1,3 +1,4 @@
 actorStateOrNil
-	extension == nil ifTrue: [^ nil].
-	^ extension actorState
+	"answer the redeiver's actorState"
+	^ self hasExtension
+		ifTrue: [self extension actorState]
