@@ -1,4 +1,4 @@
 isControlActive 
-	view isNil ifTrue: [^ false].
-	^ (view insetDisplayBox merge: scrollBar inside)
-		containsPoint: sensor cursorPoint
+	super isControlActive ifTrue: [^ true].
+	sensor blueButtonPressed ifTrue: [^ false].
+	^ (scrollBar inside merge: view insetDisplayBox) containsPoint: sensor cursorPoint
