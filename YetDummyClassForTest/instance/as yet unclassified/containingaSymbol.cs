@@ -1,0 +1,3 @@
+containingaSymbol
+
+	^ #zoulouSymbol
