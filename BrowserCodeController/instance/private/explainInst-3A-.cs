@@ -1,7 +1,6 @@
 explainInst: string 
 	"Is string an instance variable of this class?"
-
-	| name each classes |
+	| classes |
 	model selectedClassOrMetaClass == nil ifTrue: [^nil].	  "no class is selected"
 	classes _ (Array with: model selectedClassOrMetaClass)
 				, model selectedClassOrMetaClass allSuperclasses.
