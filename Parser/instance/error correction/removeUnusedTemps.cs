@@ -1,6 +1,7 @@
-removeUnusedTemps 
-	| str end start madeChanges | 
+removeUnusedTemps
+	"Scan for unused temp names, and prompt the user about the prospect of removing each one found"
 
+	| str end start madeChanges | 
 	madeChanges _ false.
 	str _ requestor text string.
 	((tempsMark between: 1 and: str size)
@@ -19,7 +20,7 @@ OK to remove it?') asText makeBoldFrom: 1 to: temp size))
 			["Beginning at right temp marker..."
 			start _ end - temp size + 1.
 			end < temp size or: [temp = (str copyFrom: start to: end)
-					and: [(str at: start-1) isSeparator & (str at: end+1) isSeparator]]]
+					and: [(str at: start-1) isAlphaNumeric not & (str at: end+1) isAlphaNumeric not]]]
 			whileFalse:
 				["Search left for the unused temp"
 				end _ requestor nextTokenFrom: end direction: -1].
@@ -30,7 +31,7 @@ OK to remove it?') asText makeBoldFrom: 1 to: temp size))
 				madeChanges _ true.
 				tempsMark _ tempsMark - (end-start+1)]]
 			ifFalse:
-			[PopUpMenu notify:
+			[self inform:
 'You''ll first have to remove the
 statement where it''s stored into']]].
 	madeChanges ifTrue: [ParserRemovedUnusedTemps signal]
