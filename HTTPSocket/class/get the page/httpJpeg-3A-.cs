@@ -4,5 +4,5 @@ httpJpeg: url
 	| doc ggg |
 	doc _ self httpGet: url.
 	doc binary; reset.
-	(ggg _ Smalltalk jpegReaderClass new) setStream: doc.
+	(ggg _ JPEGReadWriter new) setStream: doc.
 	^ ggg nextImage.
