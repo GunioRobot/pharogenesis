@@ -1,0 +1,4 @@
+bePrintable
+	self
+		beControl;
+		negate
