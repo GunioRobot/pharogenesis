@@ -1,0 +1,2 @@
+isAtom
+	^ false
