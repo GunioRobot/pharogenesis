@@ -1,0 +1,2 @@
+levelName
+	^ 'Cyclo-Pentane' translated
