@@ -1,6 +1,7 @@
 destMaskAndPointerInit
 	"Compute masks for left and right destination words"
 	| startBits pixPerM1 endBits |
+	self inline: true.
 	pixPerM1 _ pixPerWord - 1.  "A mask, assuming power of two"
 	"how many pixels in first word"
 	startBits _ pixPerWord - (dx bitAnd: pixPerM1).
@@ -17,6 +18,6 @@ destMaskAndPointerInit
 	hDir _ vDir _ 1. "defaults for no overlap with source"
 
 	"calculate byte addr and delta, based on first word of data"
-	"Note raster and nwords are longs, not bytes"
-	destIndex _ (destBits + 4) + (dy * destRaster + (dx // pixPerWord) *4).
-	destDelta _ 4 * ((destRaster * vDir) - (nWords * hDir)).  "byte addr delta"
+	"Note pitch is bytes and nWords is longs, not bytes"
+	destIndex _ destBits + (dy * destPitch) + ((dx // pixPerWord) *4).
+	destDelta _ destPitch * vDir - (4 * (nWords * hDir)).  "byte addr delta"
