@@ -1,2 +1,2 @@
 chooseMenuFont
-	self chooseFontWithPrompt: 'standard menu font' andSendTo: self withSelector: #setMenuFontTo:
+	self chooseFontWithPrompt: 'Choose the standard menu font' translated andSendTo: self withSelector: #setMenuFontTo: highlight: self standardMenuFont
