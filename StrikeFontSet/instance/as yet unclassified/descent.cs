@@ -1,0 +1,3 @@
+descent
+
+	^ fontArray first descent.
