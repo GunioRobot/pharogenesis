@@ -1,0 +1,2 @@
+outputFormat
+	^self class outputFormat
