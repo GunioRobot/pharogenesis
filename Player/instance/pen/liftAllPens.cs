@@ -1,0 +1,2 @@
+liftAllPens
+	self costume liftAllPens
