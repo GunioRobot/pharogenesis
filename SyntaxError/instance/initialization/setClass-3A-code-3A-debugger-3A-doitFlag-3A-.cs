@@ -5,8 +5,8 @@ setClass: aClass code: aString debugger: aDebugger doitFlag: flag
 	debugger _ aDebugger.
 	selector _ aClass parserClass new parseSelector: aString.
 	types _ Scanner classPool at: #TypeTable.	"dictionary"
-	printables _ '!@#$%&*-_=+<>{}?/\,¥£¢¤¦»¼ĞÑÒÔÓÕÉò¾òøùÀÇÈ`~`' asSet.
-	badChar _ aString detect: [:aChar | (types at: aChar asciiValue) == #xBinary and: [
+	printables _ '!@#$%&*-_=+<>{}?/\,Â·Â£Â¢Â§Â¶ÂªÂºÂ–Â—Â“Â‘Â”Â’Â…ÃšÃ¦ÃšÂ¯Ã—Â¿Â«Â»`~`' asSet.
+	badChar _ aString detect: [:aChar | (types at: aChar asciiValue ifAbsent: [#xLetter]) == #xBinary and: [
 			(printables includes: aChar) not]] ifNone: [nil].
 	contents _ badChar 
 		ifNil: [aString]
