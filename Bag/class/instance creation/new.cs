@@ -1,3 +1,2 @@
 new
-
-	^super new setDictionary
+	^ self new: 4
