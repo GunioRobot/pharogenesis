@@ -1,0 +1,2 @@
+contentsSize
+	^3
