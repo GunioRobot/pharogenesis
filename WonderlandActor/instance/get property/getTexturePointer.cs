@@ -1,0 +1,2 @@
+getTexturePointer
+	^myTexture
