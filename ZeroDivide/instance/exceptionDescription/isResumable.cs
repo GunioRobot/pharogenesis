@@ -1,5 +1,4 @@
 isResumable
-	
-"Determine whether an exception is resumable."
+	"Determine whether an exception is resumable."
 
 	^true
