@@ -1,4 +1,4 @@
 jump: offset
 	"Print the Unconditional Jump bytecode."
 
-	self print: 'jumpTo: ' , (pc + offset) printString
+	self print: 'jumpTo: ' , (scanner pc + offset) printString
