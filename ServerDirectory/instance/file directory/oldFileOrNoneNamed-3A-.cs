@@ -7,9 +7,12 @@ Cursor wait showWhile:
 	file _ self as: ServerFile.
 	(fullName includes: self pathNameDelimiter)
 		ifTrue: [file fullPath: fullName]		"sets server, directory(path), fileName"
-		ifFalse: [file fileName: fullName].	"already have the rest"
+		ifFalse: [file fileName: fullName].	"JUST a single NAME, rest is here"
+			"Mac files that include / in name, must encode it as %2F "
 	file readOnly.
-	file exists ifFalse: [^ nil].		"on the server"
+	file type == #file ifTrue: [
+		^ FileStream oldFileOrNoneNamed: (file fileNameRelativeTo: self)].
+	"file exists ifFalse: [^ nil]."		"on the server"
 	remoteStrm _ RemoteFileStream on: (String new: 2000).
 	remoteStrm remoteFile: file.
 	file getFileNamed: file fileName into: remoteStrm].	"prefetch data"
