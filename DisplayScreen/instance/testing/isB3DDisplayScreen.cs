@@ -1,0 +1,2 @@
+isB3DDisplayScreen
+	^false
