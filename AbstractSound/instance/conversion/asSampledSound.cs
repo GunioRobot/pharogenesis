@@ -1,3 +1,4 @@
 asSampledSound
-	^SampledSound samples: (self computeSamplesForSeconds: self 
-duration) samplingRate: (self samplingRate)*2.
+	"Answer a SampledSound containing my samples. If the receiver is some kind of sampled sound, the resulting SampledSound will have the same original sampling rate as the receiver."
+
+	^ SampledSound samples: self samples samplingRate: self originalSamplingRate
