@@ -17,4 +17,7 @@ contents
 	brevityState == #needToGetFull ifTrue: [^ self readContentsBrief: false].
 	brevityState == #needToGetBrief ifTrue: [^ self readContentsBrief: true].  "default"
 
+	(TextConverter allEncodingNames includes: brevityState) 
+		ifTrue: [ ^self readContentsAsEncoding: brevityState].
+
 	self halt: 'unknown state ' , brevityState printString
