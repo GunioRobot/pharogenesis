@@ -1,5 +1,5 @@
 dstClassDstListMorph: dstListMorph
-	| dropMorph |
+	| dropItem |
 	^(dstListMorph getListSelector == #classList)
-		ifTrue: [(dropMorph _ dstListMorph potentialDropMorph) ifNotNil: [Smalltalk at: dropMorph contents withBlanksCondensed asSymbol]]
+		ifTrue: [(dropItem _ dstListMorph potentialDropItem) ifNotNil: [Smalltalk at: dropItem withBlanksCondensed asSymbol]]
 		ifFalse: [dstListMorph model selectedClass]
