@@ -1,0 +1,2 @@
+subClassName
+	^#DummyClassBuilderFormatTestSubClass
