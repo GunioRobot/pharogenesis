@@ -11,6 +11,8 @@ TextLink -- Show a method, class comment, class hierarchy, or class defintion.
 
 TextURL -- Show the web page. <www.disney.com>
 
-These attributes of text need to be stored on the disk in a regular file-out.  It is done in this form: 	(ascii 2)<!do Smalltalk beep(ascii 3)>Hi There(ascii 3)<!>
-	(ascii 2)<!li Point extent:(ascii 3)>Click here to see the extent: method(ascii 3)<!>
-The brackets are for people to see in fileOuts.  The wierd ascii are for the scanner to pick up easily.  See RunArray class scanFrom: where decoding is done.
+These attributes of text need to be stored on the disk in a regular file-out.  It is done in this form: 	Hi There   
+	in the text, and a Run containing   dSmalltalk beep;;
+	Click here to see the extent:   
+	in the text, and a Run containing   method LPoint extent:;
+See RunArray class scanFrom: where decoding is done.
