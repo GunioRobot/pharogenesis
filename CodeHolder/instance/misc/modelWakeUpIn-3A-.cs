@@ -3,4 +3,6 @@ modelWakeUpIn: aWindow
 
 	self updateListsAndCodeIn: aWindow.
 	self decorateButtons.
+	self refreshAnnotation.
+
 	super modelWakeUpIn: aWindow
