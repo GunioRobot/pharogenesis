@@ -1,7 +1,7 @@
 composeLine: lineIndex fromCharacterIndex: startIndex inParagraph: aParagraph 
 	"Answer an instance of TextLineInterval that represents the next line in the paragraph."
 	| runLength done stopCondition |
-	spaceX _ destX _ leftMargin _ aParagraph leftMarginForCompositionForLine: lineIndex.
+	destX _ spaceX _ leftMargin _ aParagraph leftMarginForCompositionForLine: lineIndex.
 	destY _ 0.
 	rightMargin _ aParagraph rightMarginForComposition.
 	leftMargin >= rightMargin ifTrue: [self error: 'No room between margins to compose'].
@@ -22,7 +22,7 @@ composeLine: lineIndex fromCharacterIndex: startIndex inParagraph: aParagraph
 		whileFalse: 
 			[stopCondition _ self scanCharactersFrom: lastIndex to: runStopIndex
 				in: text string rightX: rightMargin stopConditions: stopConditions
-				kern: kern displaying: false.
+				kern: kern.
 			"See setStopConditions for stopping conditions for composing."
 			(self perform: stopCondition)
 				ifTrue: [^line lineHeight: lineHeight + textStyle leading
