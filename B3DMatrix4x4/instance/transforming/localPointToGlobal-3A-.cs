@@ -1,6 +1,8 @@
 localPointToGlobal: aVector
 	"Multiply aVector (temporarily converted to 4D) with the receiver"
 	| x y z rx ry rz rw |
+	<primitive: 'b3dTransformPoint' module: 'Squeak3D'>
+
 	x := aVector x.
 	y := aVector y.
 	z := aVector z.
