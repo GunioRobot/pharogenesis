@@ -1,0 +1,1 @@
+WonderlandMorph is the morph used for putting wonderlands into the Squeak environment.
