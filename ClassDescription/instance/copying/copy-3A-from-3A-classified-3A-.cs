@@ -12,7 +12,7 @@ copy: sel from: class classified: cat
 			[cat == nil
 				ifTrue: [category _ class organization categoryOfElement: sel]
 				ifFalse: [category _ cat].
-			(methodDict includesKey: sel)
+			(self methodDict includesKey: sel)
 				ifTrue: [code asString = (self sourceMethodAt: sel) asString 
 							ifFalse: [self error: self name 
 										, ' ' 
