@@ -2,3 +2,22 @@ I decompile a method in three phases:
 	Reverser: postfix byte codes -> prefix symbolic codes (nodes and atoms)
 	Parser: prefix symbolic codes -> node tree (same as the compiler)
 	Printer: node tree -> text (done by the nodes)
+	
+
+instance vars:
+
+	constructor
+	method
+	instVars
+	tempVars
+	constTable
+	stack
+	statements
+	lastPc
+	exit
+	caseExits	- stack of exit addresses that have been seen in the branches of caseOf:'s
+	lastJumpPc
+	lastReturnPc
+	limit
+	hasValue
+	blockStackBase
