@@ -6,5 +6,5 @@ isActiveDirectoryClass
 	would work out. See pathNameDelimiter for more woeful details - then
 	just get on and enjoy Squeak"
 
-	^ Smalltalk platformName = 'RiscOS'
+	^ SmalltalkImage current platformName = 'RiscOS'
 		or: [self primPathNameDelimiter = $.]
