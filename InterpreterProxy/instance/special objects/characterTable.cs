@@ -1,0 +1,2 @@
+characterTable
+	^Character characterTable
