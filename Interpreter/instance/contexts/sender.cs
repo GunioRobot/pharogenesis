@@ -1,3 +1,3 @@
 sender
 
-	^ self fetchPointer: SenderIndex ofObject: theHomeContext
+	^ self fetchPointer: SenderIndex ofObject: localHomeContext
