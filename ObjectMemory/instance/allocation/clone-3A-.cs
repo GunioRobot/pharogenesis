@@ -1,5 +1,5 @@
 clone: oop
-	"Return a shallow copy of the given object."
+	"Return a shallow copy of the given object. May cause GC"
 	"Assume: Oop is a real object, not a small integer."
 
 	| extraHdrBytes bytes newChunk remappedOop fromIndex toIndex lastFrom newOop header hash |
@@ -18,15 +18,13 @@ clone: oop
 	fromIndex _ (remappedOop - extraHdrBytes) - 4.
 	lastFrom _ fromIndex + bytes.
 	[fromIndex < lastFrom] whileTrue: [
-		self longAt: (toIndex _ toIndex + 4)
-			put: (self longAt: (fromIndex _ fromIndex + 4)).
-	].
+		self longAt: (toIndex _ toIndex + 4) put: (self longAt: (fromIndex _ fromIndex + 4))].
 	newOop _ newChunk + extraHdrBytes.  "convert from chunk to oop"
 
 	"fix base header: compute new hash and clear Mark and Root bits"
 	hash _ self newObjectHash.
 	header _ (self longAt: newOop) bitAnd: 16r1FFFF.
-		"use old ccIndex, format, size, and header-type fields"
+	"use old ccIndex, format, size, and header-type fields"
 	header _ header bitOr: ((hash << 17) bitAnd: 16r1FFE0000).
 	self longAt: newOop put: header.
-	^ newOop
+	^newOop
