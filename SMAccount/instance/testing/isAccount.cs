@@ -1,0 +1,2 @@
+isAccount
+	^true
