@@ -1,4 +1,4 @@
 replaceFrom: start to: stop with: aText displaying: displayBoolean 
-	"Compatibility with old Paragraph" 
-	text replaceFrom: start to: stop with: aText.		"Update the text."
-	self recomposeFrom: start orLineAbove: true
+	"Edit the text, and then recompose the lines." 
+	text replaceFrom: start to: stop with: aText.
+	self recomposeFrom: start to: start + aText size - 1 delta: aText size - (stop-start+1)
