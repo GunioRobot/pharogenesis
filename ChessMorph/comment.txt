@@ -1,0 +1,1 @@
+This class defines the user interface for a fine game of chess.
