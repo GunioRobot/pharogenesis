@@ -1,19 +1,29 @@
 changesMenu
 	"Answer a menu for changes-related items"
+	^ SelectionMenu labelList:
+		#(	'keep this menu up'
 
+			'simple change sorter'
+			'dual change sorter'
 
-	ChangesMenu == nil ifTrue: 
-		[ChangesMenu _ SelectionMenu labelList:
-		#(	'file out changes'
-			'open changes sorter'
+			'file out current change set'
+			'create new change set...'
 			'browse changed methods'
+			'check change set for slips'
+
+			'isolate methods of this project'
+			'propagate changes above'
+
 			'browse recent submissions'
-			'recent change log')
-		lines: #(1 4)
-		selections: #(fileOutChanges openChangeManager browseChangedMessages browseRecentSubmissions browseRecentLog)].
-
-	^ ChangesMenu
-
+			'recently logged changes...'
+			'recent log file...'
+			)
+		lines: #(1 3 7 9)
+		selections: #(durableChangesMenu
+openSimpleChangeSorter openChangeManager
+fileOutChanges newChangeSet browseChangedMessages lookForSlips
+beIsolated propagateChanges
+browseRecentSubmissions browseRecentLog fileForRecentLog)
 "
 ScreenController new changesMenu startUp
 "
