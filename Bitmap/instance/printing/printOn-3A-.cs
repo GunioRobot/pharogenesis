@@ -1,4 +1,3 @@
 printOn: aStream
-
-	aStream nextPutAll: 'a Bitmap of length '.
-	self size printOn: aStream
+	self printNameOn: aStream.
+	aStream nextPutAll: ' of length '; print: self size
