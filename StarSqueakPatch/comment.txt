@@ -1,0 +1,1 @@
+I represent a patch in a StarSqueak world. Patch objects are not retained, but are created as needed, such as in patchesDo:.
