@@ -2,8 +2,11 @@ declareTempAndPaste: name
 	| insertion tabbed |
 	(requestor text string at: tempsMark) = $|
 				ifTrue:  "Paste it before the second vertical bar"
-					[tempsMark _ tempsMark +
-						(self substituteWord: name , ' '
+					[insertion _ name, ' '.
+					(requestor text string at: tempsMark-1) isSeparator
+						ifFalse: [insertion _ ' ', insertion].
+					tempsMark _ tempsMark +
+						(self substituteWord: insertion
 							wordInterval: (tempsMark to: tempsMark-1)
 							offset: 0)]
 				ifFalse:  "No bars - insert some with CR, tab"
@@ -18,4 +21,4 @@ declareTempAndPaste: name
 							wordInterval: (tempsMark to: tempsMark-1)
 							offset: 0)
 						- (tabbed ifTrue: [3] ifFalse: [2])].
-			^ encoder reallyBind: name
+			^ encoder bindAndJuggle: name
