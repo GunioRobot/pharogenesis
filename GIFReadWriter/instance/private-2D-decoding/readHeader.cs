@@ -1,5 +1,5 @@
 readHeader
-	| is89 byte hasColorMap array r g b |
+	| is89 byte hasColorMap |
 	(self hasMagicNumber: 'GIF87a' asByteArray)
 		ifTrue: [is89 _ false]
 		ifFalse: [(self hasMagicNumber: 'GIF89a' asByteArray)
@@ -16,12 +16,7 @@ readHeader
 			ifFalse: [^self error: 'corrupt GIF file (screen descriptor)']].
 	hasColorMap
 		ifTrue:
-			[array _ Array new: (1 bitShift: bitsPerPixel).
-			1 to: array size do: [:i |
-				r _ self next.  g _ self next.  b _ self next.
-				array at: i put: (Color r: r g: g b: b range: 255)
-				  "depth 32"].
-			colorPalette _ array]
+			[colorPalette _ self readColorTable: (1 bitShift: bitsPerPixel)]
 		ifFalse:
 			["Transcript cr; show: 'GIF file does not have a color map.'."
 			colorPalette _ nil "Palette monochromeDefault"].
