@@ -1,6 +1,6 @@
 showStats: queueName
 
-	DEBUG ifNil: [^1 beep].
+	DEBUG ifNil: [^Beeper beep].
 	self 
 		showStats: queueName 
 		from: DEBUG.
