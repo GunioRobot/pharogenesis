@@ -1,0 +1,3 @@
+defaultEncodingName
+
+	^ 'mac-roman'.
