@@ -1,4 +1,5 @@
-run: aTestResult
-
-	self tests do: [:each |
-		each run: aTestResult].
+run: aResult 
+	self tests do: [:each | 
+		self sunitChanged: each.
+		each run: aResult]
+			
