@@ -1,4 +1,2 @@
 isLiteral
-
-	self detect: [:element | element isLiteral not] ifNone: [^true].
-	^false
+	^ self allSatisfy: [:each | each isLiteral]
