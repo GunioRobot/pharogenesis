@@ -1,0 +1,2 @@
+isLikelyRecipientForMouseOverHalos
+	^ true
