@@ -1,0 +1,2 @@
+pushTexture
+	^rasterizer pushTexture
