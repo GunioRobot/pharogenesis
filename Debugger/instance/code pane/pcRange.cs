@@ -7,7 +7,7 @@ pcRange
 		ifFalse: [^1 to: 0].
 	sourceMap == nil ifTrue:
 		[methodNode _ self selectedClass compilerClass new
-			parse: self selectedMessage
+			parse: contents
 			in: self selectedClass
 			notifying: nil.
 		sourceMap _ methodNode sourceMap.
