@@ -1,8 +1,8 @@
 loopbackTest
 	"Send data from one socket to another on the local machine. Tests most of the socket primitives."
-	"Socket loopbackTest"
+	"100 timesRepeat: [Socket loopbackTest]"
 
-	| sock1 sock2 bytesToSend sendBuf receiveBuf done bytesSent bytesReceived t extraBytes |
+	| sock1 sock2 bytesToSend sendBuf receiveBuf done bytesSent bytesReceived t extraBytes packetsSent packetsRead |
 	Transcript cr; show: 'starting loopback test'; cr.
 
 	Transcript show: '---------- Connecting ----------'; cr.
@@ -18,19 +18,21 @@ loopbackTest
 	Transcript show: 'connection established'; cr.
 
 	bytesToSend _ 5000000.
-	sendBuf _ String new: 4000 withAll: $x.
+	sendBuf _ String new: 5000 withAll: $x.
 	receiveBuf _ String new: 50000.
 	done _ false.
-	bytesSent _ bytesReceived _ 0.
+	packetsSent _ packetsRead _ bytesSent _ bytesReceived _ 0.
 	t _ Time millisecondsToRun: [
 		[done] whileFalse: [
 			(sock1 sendDone and: [bytesSent < bytesToSend]) ifTrue: [
+				packetsSent _ packetsSent + 1.
 				bytesSent _ bytesSent + (sock1 sendSomeData: sendBuf)].
 			sock2 dataAvailable ifTrue: [
+				packetsRead _ packetsRead + 1.
 				bytesReceived _ bytesReceived +
 					(sock2 receiveDataInto: receiveBuf)].
 			done _ (bytesSent >= bytesToSend) and: [bytesReceived = bytesSent]]].
-
+	
 	Transcript show: 'closing connection'; cr.
 	sock1 waitForSendDoneUntil: self standardDeadline.
 	sock1 close.
@@ -48,5 +50,5 @@ loopbackTest
 	sock1 destroy.
 	sock2 destroy.
 	Transcript show: 'loopback test done; time = ', t printString; cr.
-	Transcript show: ((bytesToSend asFloat / t) roundTo: 0.01) printString, ' kBytes/sec'; cr.
+	Transcript show: ((bytesToSend asFloat / t) roundTo: 0.01) printString, ' 1000Bytes/sec'; cr.
 	Transcript endEntry.
