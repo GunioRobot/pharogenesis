@@ -1,6 +1,6 @@
 wantsFrameAdornments
 	"Answer whether the receiver wishes to have red borders, etc., used to show editing state"
 
-	"An unsavory way to get the desired effect, sorry"
+	"A 'long-term temporary workaround': a nonmodular, unsavory, but expedient way to get the desired effect, sorry.  Clean up someday."
 
-	^ getTextSelector ~~ #annotation
+	^ (#(annotation searchString infoViewContents) includes: getTextSelector) not
