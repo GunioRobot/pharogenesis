@@ -2,7 +2,7 @@ validateFrom: oldClass in: environ instanceVariableNames: invalidFields methods:
 	"Recompile the receiver, a class, and redefine its subclasses if necessary.
 	The parameter invalidFields is no longer really used"
 
-	| sub newSub invalidSubMethods |
+	| newSub invalidSubMethods |
 	oldClass becomeUncompact.  "Its about to be abandoned"
 	invalidMethods & self hasMethods
 		ifTrue: 
