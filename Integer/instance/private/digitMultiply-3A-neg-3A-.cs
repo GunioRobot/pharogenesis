@@ -1,6 +1,6 @@
 digitMultiply: arg neg: ng
-	| prod prodLen carry digit i j k ab |
-	(arg digitLength = 1 and: [(arg digitAt: 1) = 0]) ifTrue: [^0].
+	| prod prodLen carry digit k ab |
+	(arg digitLength = 1 and: [(arg digitAt: 1) = 0]) ifTrue: [^ 0].
 	prodLen _ self digitLength + arg digitLength.
 	prod _ Integer new: prodLen neg: ng.
 	"prod starts out all zero"
