@@ -1,0 +1,3 @@
+asDefaultDecodedString
+
+	^ self
