@@ -12,8 +12,8 @@ removeMessage
 	confirmation == 3 ifTrue: [^ self].
 
 	self selectedClassOrMetaClass removeSelector: self selectedMessageName.
-	self changed: #messageList.
 	self messageListIndex: 0.
+	self changed: #messageList.
 	self setClassOrganizer.  "In case organization not cached"
 
 	confirmation == 2 ifTrue:
