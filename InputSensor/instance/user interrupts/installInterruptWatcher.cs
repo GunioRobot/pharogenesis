@@ -2,9 +2,7 @@ installInterruptWatcher
 	"Initialize the interrupt watcher process. Terminate the old process if any."
 	"Sensor installInterruptWatcher"
 
-	InterruptWatcherProcess == nil ifFalse: [InterruptWatcherProcess terminate].
+	InterruptWatcherProcess ifNotNil: [InterruptWatcherProcess terminate].
 	InterruptSemaphore _ Semaphore new.
-	InterruptWatcherProcess _ [self userInterruptWatcher] newProcess.
-	InterruptWatcherProcess priority: Processor lowIOPriority.
-	InterruptWatcherProcess resume.
+	InterruptWatcherProcess _ [self userInterruptWatcher] forkAt: Processor lowIOPriority.
 	self primInterruptSemaphore: InterruptSemaphore.
