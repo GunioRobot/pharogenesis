@@ -1,2 +1,3 @@
 reset
-	^ self reopen
+	self ensureOpen.
+	self position: 0.
