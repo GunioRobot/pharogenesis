@@ -1,3 +1,3 @@
 beep: soundName
-
-	self playSoundNamed: soundName.
+	Preferences soundsEnabled
+		ifTrue: [self playSoundNamed: soundName]
