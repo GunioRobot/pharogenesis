@@ -1,0 +1,2 @@
+oneViewerFlapAtATime
+	^ self valueOfFlag: #oneViewerFlapAtATime
