@@ -4,7 +4,7 @@ initialize
 	Approved _ Set new.
 	AddAndRemove _ Set new.
 	Blocks _ Set new.
-	"These modify an argument: longPrintOn: printOn: storeOn: sentTo: storeOn:base: printOn:base: absPrintExactlyOn:base: absPrintOn:base: absPrintOn:base:digitCount: writeOn: writeScanOn: possibleVariablesFor:continuedFrom:"
+	"These modify an argument and are not used by the MethodFinder: longPrintOn: printOn: storeOn: sentTo: storeOn:base: printOn:base: absPrintExactlyOn:base: absPrintOn:base: absPrintOn:base:digitCount: writeOn: writeScanOn: possibleVariablesFor:continuedFrom: printOn:format:"
 
 "Object"  
 	#("in class, instance creation" categoryForUniclasses chooseUniqueClassName initialInstance isSystemDefined newFrom: officialClass readCarefullyFrom:
@@ -114,7 +114,7 @@ initialize
 "comparing"
 "inquiries" dayOfMonth daysInMonth daysInYear daysLeftInYear firstDayOfMonth previous:
 "converting" asSeconds
-"printing" mmddyy mmddyyyy printFormat: printOn:format:
+"printing" mmddyy mmddyyyy printFormat: 
 "private" firstDayOfMonthIndex: weekdayIndex 
 	"in class, instance creation" fromSeconds: now 
 	"in class, general inquiries" dateAndTimeFromSeconds: dateAndTimeNow millisecondClockValue millisecondsToRun: totalSeconds
@@ -172,7 +172,7 @@ initialize
 "Collection"
 	#("accessing" anyOne
 "testing" includes: includesAllOf: includesAnyOf: includesSubstringAnywhere: isEmpty isSequenceable occurrencesOf:
-"enumerating" collect: collect:thenSelect: count: detect: detect:ifNone: detectMax: detectMin: detectSum: inject:into: reject: select: select:thenCollect:
+"enumerating" collect: collect:thenSelect: count: detect: detect:ifNone: detectMax: detectMin: detectSum: inject:into: reject: select: select:thenCollect: intersection:
 "converting" asBag asCharacterSet asSet asSortedArray asSortedCollection asSortedCollection:
 "printing"
 "private" maxSize
