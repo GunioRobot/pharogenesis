@@ -1,0 +1,2 @@
+isNullable
+	^#syntaxAny ~~ kind
