@@ -1,0 +1,2 @@
+setResponseForCancel
+	self contents: responseUponCancel
