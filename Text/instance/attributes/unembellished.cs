@@ -1,7 +1,7 @@
 unembellished 
-	"Return true if the only emphases are font-1 and bold"
+	"Return true if the only emphases are the default font and bold"
 	| font1 bold |
-	font1 _ TextFontChange font1.
+	font1 _ TextFontChange defaultFontChange.
 	bold _ TextEmphasis bold.
 	Preferences ignoreStyleIfOnlyBold ifFalse:
 		["Ignore font1 only or font1-bold followed by font1-plain"
