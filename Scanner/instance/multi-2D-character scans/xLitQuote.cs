@@ -2,15 +2,15 @@ xLitQuote
 	"Symbols and vectors: #(1 (4 5) 2 3) #ifTrue:ifFalse: #'abc'."
 
 	| start |
+	start _ mark.
 	self step. "litQuote"
 	self scanToken.
 	tokenType = #leftParenthesis
 		ifTrue: 
-			[start _ mark.
-			self scanToken; scanLitVec.
+			[self scanToken; scanLitVec.
+			mark _ start+1.
 			tokenType == #doIt
-				ifTrue: [mark _ start.
-						self offEnd: 'Unmatched parenthesis']]
+				ifTrue: [self offEnd: 'Unmatched parenthesis']]
 		ifFalse: 
 			[(#(word keyword colon ) includes: tokenType) 
 				ifTrue:
@@ -18,11 +18,12 @@ xLitQuote
 				ifFalse:
 					[(tokenType==#literal)
 						ifTrue:
-							[(token isMemberOf: Symbol)
+							[((token isMemberOf: Symbol) or: [token isMemberOf: MultiSymbol])
 								ifTrue: "##word"
 									[token _ token "May want to move toward ANSI here"]]
 						ifFalse:
 							[tokenType==#string ifTrue: [token _ token asSymbol]]]].
+	mark _ start.
 	tokenType _ #literal
 
 "	#(Pen)
