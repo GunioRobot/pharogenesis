@@ -1,7 +1,8 @@
 acceptCurrentItemText: aText
+	"Accept into the current item from the text provided, and update lists accordingly"
 
 	currentItem ifNil:
-		[PopUpMenu notify: 'Can''t accept -- no item is selected'. ^ false].
+		[self inform: 'Can''t accept -- no item is selected'. ^ false].
 	viewDescriptionOnly ifTrue:
 		[currentItem description: aText string. ^ true].
 
