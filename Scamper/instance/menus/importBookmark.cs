@@ -1,6 +1,6 @@
 importBookmark
 	| newDirectory importLinks filename file |
-	newDirectory _ FillInTheBlank request: 'Directory to import' initialAnswer: bookDir pathName.
+	newDirectory _ FillInTheBlank request: 'Directory to import' translated initialAnswer: bookDir pathName.
 	(newDirectory isNil or: [ newDirectory isEmpty ]) ifTrue: [ ^self ].
 	(FileDirectory new directoryExists: newDirectory)
 		ifTrue:[importLinks _ self makeBookmark: (FileDirectory on: newDirectory).
@@ -11,7 +11,7 @@ importBookmark
 								ifFalse:[filename _ ass key,'.lin'.
 										bookDir deleteFileNamed: filename.
 										file _ StandardFileStream fileNamed: (bookDir fullNameFor: filename).
-										file ifNil:[self error: 'could not save file'].
+										file ifNil:[self error: 'could not save file' translated].
 										file nextPutAll: ass value asString. 
 										file close]
 								]
