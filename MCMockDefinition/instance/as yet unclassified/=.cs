@@ -1,0 +1,2 @@
+= definition
+	^definition token = token
