@@ -4,7 +4,7 @@ repeatLast: times  ifEmpty: defaultBlock
 	lastIndex _ nil.  "flush access cache"
 	(runs size=0)
 	  ifTrue:
-		[runs addLast: times.
-		values addLast: defaultBlock value]
+		[runs _ runs copyWith: times.
+		values _ values copyWith: defaultBlock value]
 	  ifFalse:
 		[runs at: runs size put: runs last+times] 
