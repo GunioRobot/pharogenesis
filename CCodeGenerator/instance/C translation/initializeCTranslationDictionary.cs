@@ -69,6 +69,7 @@ initializeCTranslationDictionary
 	#asInteger			#generateAsInteger:on:indent:
 	#anyMask:			#generateBitAnd:on:indent:
 	#raisedTo:			#generateRaisedTo:on:indent:
+	#touch:				#generateTouch:on:indent:
 
 	#perform:						#generatePerform:on:indent:
 	#perform:with:					#generatePerform:on:indent:
