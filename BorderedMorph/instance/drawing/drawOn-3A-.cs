@@ -6,26 +6,36 @@ drawOn: aCanvas
 
 	| insetColor |
 	borderWidth = 0 ifTrue: [  "no border"
-		aCanvas fillRectangle: bounds color: color.
+		"Note: This is the hook for border styles.
+			When converting to the new borders we'll just put 0 into the borderWidth"
+		super drawOn: aCanvas.
 		^ self].
 
 	borderColor == #raised ifTrue: [
+		"Use a hack for now"
+		aCanvas fillRectangle: self bounds fillStyle: self fillStyle.
 		^ aCanvas frameAndFillRectangle: bounds
-			fillColor: color
+			fillColor: Color transparent
 			borderWidth: borderWidth
-			topLeftColor: color lighter
-			bottomRightColor: color darker].
+			topLeftColor: (borderWidth = 1 ifTrue: [color twiceLighter]
+										ifFalse: [color lighter])
+			bottomRightColor: (borderWidth = 1 ifTrue: [color twiceDarker]
+										ifFalse: [color darker])].
 
 	borderColor == #inset ifTrue: [
 		insetColor _ owner colorForInsets.
+		aCanvas fillRectangle: self bounds fillStyle: self fillStyle.
 		^ aCanvas frameAndFillRectangle: bounds
-			fillColor: color
+			fillColor: Color transparent
 			borderWidth: borderWidth
-			topLeftColor: insetColor darker
-			bottomRightColor: insetColor lighter].
+			topLeftColor: (borderWidth = 1 ifTrue: [insetColor twiceDarker]
+										ifFalse: [insetColor darker])
+			bottomRightColor: (borderWidth = 1 ifTrue: [insetColor twiceLighter]
+										ifFalse: [insetColor lighter])].
 
 	"solid color border"
+	aCanvas fillRectangle: (self bounds insetBy: borderWidth) fillStyle: self fillStyle.
 	aCanvas frameAndFillRectangle: bounds
-		fillColor: color
+		fillColor: Color transparent
 		borderWidth: borderWidth
 		borderColor: borderColor.
