@@ -5,7 +5,6 @@ primitiveFractionalPart
 	self var: #trunc declareC: 'double trunc'.
 	rcvr _ self popFloat.
 	successFlag
-		ifTrue: [self cCode: 'frac = modf(rcvr, &trunc)'
-					inSmalltalk: [frac _ rcvr fractionPart].
+		ifTrue: [self cCode: 'frac = modf(rcvr, &trunc)' inSmalltalk: [frac _ rcvr fractionPart].
 				self pushFloat: frac]
 		ifFalse: [self unPop: 1]
