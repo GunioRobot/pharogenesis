@@ -3,9 +3,12 @@ initializeNetworkIfFail: errorBlock
 	"NetNameResolver initializeNetworkIfFail: [self error: 'network initialization failed']"
 
 	| semaIndex result |
-	self primNameResolverStatus = ResolverUninitialized
-		ifFalse: [^ self].  "network is already initialized"
+	self resolverStatus = ResolverUninitialized
+		ifFalse: [
+			LastContact _ Time totalSeconds.  HaveNetwork _ true.
+			^ self].  "network is already initialized"
 
+	LastContact _ Time totalSeconds.  HaveNetwork _ false.	"in case abort"
 	ResolverSemaphore _ Semaphore new.
 	semaIndex _ Smalltalk registerExternalObject: ResolverSemaphore.
 
@@ -13,6 +16,8 @@ initializeNetworkIfFail: errorBlock
 'Initializing the network drivers; this may
 take up to 30 seconds and can''t be interrupted'
 		during: [result _ self primInitializeNetwork: semaIndex].
+	Smalltalk isMorphic ifTrue: [World displayWorld].  "take the informer down"
 
 	"result is nil if network initialization failed, self if it succeeds"
-	result ifNil: [errorBlock value].
+	result ifNil: [errorBlock value]
+		ifNotNil: [HaveNetwork _ true].
