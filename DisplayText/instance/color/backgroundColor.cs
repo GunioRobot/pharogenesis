@@ -1,3 +1,3 @@
 backgroundColor
-	backColor == nil ifTrue: [^ Display white].
+	backColor == nil ifTrue: [^ Color transparent].
 	^ backColor
