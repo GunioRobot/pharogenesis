@@ -1,0 +1,2 @@
+isWhitePlayer
+	^board whitePlayer == self
