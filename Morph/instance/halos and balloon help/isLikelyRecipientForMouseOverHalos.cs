@@ -1,2 +1,2 @@
 isLikelyRecipientForMouseOverHalos
-	^ self player ~~ nil
+	^self player notNil
