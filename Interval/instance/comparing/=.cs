@@ -1,8 +1,9 @@
-= anInterval 
-	"Answer true if my species and anInterval species are equal, and
-	if our starts, steps and sizes are equal."
+= anObject
 
-	self species == anInterval species
-		ifTrue: [^start = anInterval first
-					and: [step = anInterval increment and: [self size = anInterval size]]]
-		ifFalse: [^false]
+	^ self == anObject
+		ifTrue: [true]
+		ifFalse: [anObject isInterval
+			ifTrue: [start = anObject first
+				and: [step = anObject increment
+					and: [self last = anObject last]]]
+			ifFalse: [super = anObject]]
