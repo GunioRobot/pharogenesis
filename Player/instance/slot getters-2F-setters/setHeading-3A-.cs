@@ -3,6 +3,7 @@ setHeading: newHeading
 
 	| aCostume |
 	aCostume _ self costume.
+	aCostume isWorldMorph ifTrue: [^ self].
 	(newHeading closeTo: aCostume heading) ifTrue: [^ self].
 	aCostume heading: newHeading.
 	aCostume _ self costume. "in case we just got flexed for no apparent reason"
