@@ -9,7 +9,7 @@ fillFromXYColorBlock: colorBlock
 		0 to: width-1 do:
 			[:x |  xRel _ x asFloat / (width-1) asFloat.
 			poker pixelAt: x@y
-				put: ((colorBlock value: xRel value: yRel) pixelWordForDepth: depth)]]
+				put: ((colorBlock value: xRel value: yRel) pixelWordForDepth: self depth)]]
 "
  | d |
 ((Form extent: 100@20 depth: Display depth)
