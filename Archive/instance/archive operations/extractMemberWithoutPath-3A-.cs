@@ -1,0 +1,2 @@
+extractMemberWithoutPath: aMemberOrName
+	self extractMemberWithoutPath: aMemberOrName inDirectory: FileDirectory default.
