@@ -2,17 +2,19 @@ emptyTrash
 	"Delete all messages in the '.trash.' category.
 	WARNING: The messages will be totally removed from the Celeste index, and the .messages file will be marked so that the message contents are removed when it is next compressed."
 
-	| msgList |
-
+	| messagesInTrash messagesOnlyInTrash messagesToDelete |
+	mailDB ifNil: [ ^self ].
 	self requiredCategory: '.trash.'.
 
-	msgList _ mailDB messagesIn: '.trash.'.			"Look at ALL messages in the trash"
-	"Remove from the list messages which are also in other categories"
-	msgList _ msgList select: [ :msgID | (mailDB categoriesThatInclude: msgID) size = 1].
+	messagesInTrash _ mailDB messagesIn: '.trash.'.
+	messagesOnlyInTrash _ messagesInTrash select: [ :msgID |
+		(mailDB categoriesThatInclude: msgID) size = 1].
+	(messagesOnlyInTrash size < messagesInTrash size and: [
+		(SelectionMenu confirm: 'Some messages are also filed in other categories.
+Do you want to delete them anyway?')])
+			ifTrue: [messagesToDelete _ messagesInTrash]
+			ifFalse: [messagesToDelete _ messagesOnlyInTrash].
 
-	mailDB deleteAll: msgList.
-	mailDB cleanUpCategories.
+	mailDB deleteAll: messagesToDelete.
 	self updateTOC.
-
-	(mailDB messagesIn: '.trash.') isEmpty ifFalse:
-		[self inform: 'Some messages were not removed because they are also filed in other categories'].
+	self synchronizeToDisk.
