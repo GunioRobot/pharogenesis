@@ -1,9 +1,9 @@
 emitForReturn: stack on: strm
 
-	(code >= LdSelf and: [code <= LdNil])
+	(self code >= LdSelf and: [self code <= LdNil])
 		ifTrue: 
 			["short returns"
-			strm nextPut: EndMethod - 4 + (code - LdSelf).
+			strm nextPut: EndMethod - 4 + (self code - LdSelf).
 			stack push: 1 "doesnt seem right"]
 		ifFalse: 
 			[super emitForReturn: stack on: strm]
