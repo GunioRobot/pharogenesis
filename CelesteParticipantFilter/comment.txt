@@ -1,0 +1,1 @@
+A filter that checks the From, To, and CC fields for a particular substring.
