@@ -1,5 +1,4 @@
 binary
-	"Set the receiver's file to be binary mode.
-	 1/31/96 sw: subclassResponsibility"
+	"Set this file to binary mode."
 
 	self subclassResponsibility
