@@ -1,11 +1,13 @@
 nextStringPut: s 
-	"Append the string, s, to the receiver."
+	"Append the string, s, to the receiver.  Only used by DataStream.  Max size of 64*256*256*256."
 
 	| length |
 	(length _ s size) < 192
 		ifTrue: [self nextPut: length]
 		ifFalse: 
-			[self nextPut: (length // 256 + 192).
-			self nextPut: (length \\ 256)].
-	s do: [:char | self nextPut: char asciiValue].
+			[self nextPut: (length digitAt: 4)+192.
+			self nextPut: (length digitAt: 3).
+			self nextPut: (length digitAt: 2).
+			self nextPut: (length digitAt: 1)].
+	self nextPutAll: s.
 	^s
