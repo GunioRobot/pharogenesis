@@ -2,7 +2,7 @@ startPlayingImmediately: aSound
 	"Private! Start playing the given sound as soon as possible by mixing it into the sound output buffers of the underlying sound driver."
 
 	| dontInsertSamples totalSamples buf n leftover src rest |
-	dontInsertSamples _ false.  "temporary, until insert samples primitive is ported"
+	dontInsertSamples _ true.  "temporary, until insert samples primitive is ported"
 	dontInsertSamples ifTrue: [
 		ActiveSounds add: aSound.
 		^ self].
