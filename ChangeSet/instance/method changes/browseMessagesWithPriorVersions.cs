@@ -6,6 +6,6 @@ browseMessagesWithPriorVersions
 	aList _ self changedMessageListAugmented select:
 		[:msg |  Utilities setClassAndSelectorFrom: msg in: 
 				[:cl :sl | aClass _ cl.  aSelector _ sl].
-			(ChangeList versionCountForSelector: aSelector class: aClass) > 1].
+			(VersionsBrowser versionCountForSelector: aSelector class: aClass) > 1].
 	aList size > 0 ifFalse: [self inform: 'None!'.  ^ nil].
 	Smalltalk browseMessageList: aList name: (self name, ' methods that have prior versions')
