@@ -1,17 +1,21 @@
 booleanTiles
-	| list rcvr op arg |
-	list _ #(
-		(0 < 1)
-		(0 <= 1)
-		(0 = 1)
-		(0 ~= 1)
-		(0 > 1)
-		(0 >= 1)).
+	"Answer some boolean-valued tiles.  This dates back to very early etoy work in 1997, and presently has no sent senders"
 
-	list _ list asOrderedCollection collect: [:entry |
-		rcvr _ entry first.
-		op _ (entry at: 2) asSymbol.
-		arg _ entry last.
-		self phraseForReceiver: rcvr op: op arg: arg resultType: #boolean].
-	list add: (self phraseForReceiver: Color red op: #= arg: Color red resultType: #boolean).
-	^ list "copyWith: CompoundTileMorph new"
+	| list rcvr op arg |
+	list := #(#(0 #< 1) #(0 #<= 1) #(0 #= 1) #(0 #~= 1) #(0 #> 1) #(0 #>= 1)).
+	list := list asOrderedCollection collect: 
+					[:entry | 
+					rcvr := entry first.
+					op := (entry second) asSymbol.
+					arg := entry last.
+					self 
+						phraseForReceiver: rcvr
+						op: op
+						arg: arg
+						resultType: #Boolean].
+	list add: (self 
+				phraseForReceiver: Color red
+				op: #=
+				arg: Color red
+				resultType: #Boolean).
+	^list	"copyWith: CompoundTileMorph new"
