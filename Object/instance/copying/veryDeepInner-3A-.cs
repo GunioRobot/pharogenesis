@@ -1,2 +1,2 @@
 veryDeepInner: deepCopier
-	"I have no fields and no superclass"
+	"No special treatment for inst vars of my superclasses.  Override when some need to be weakly copied.  Object>>veryDeepCopyWith: will veryDeepCopy any inst var whose class does not actually define veryDeepInner:"
