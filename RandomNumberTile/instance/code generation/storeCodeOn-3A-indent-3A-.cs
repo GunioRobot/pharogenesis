@@ -1,0 +1,5 @@
+storeCodeOn: aStream indent: tabCount
+	aStream
+			nextPut: $(;
+			nextPutAll: literal printString;
+			nextPutAll: ' atRandom)'.
