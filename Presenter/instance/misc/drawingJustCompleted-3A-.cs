@@ -1,2 +1,16 @@
 drawingJustCompleted: aSketchMorph
-	"Some presenters, such as the original EToyPlayer, wish to pop up a viewer immediately"
+	| aPaintBox aPaintTab aWorld |
+	(aPaintTab _ (aWorld _ associatedMorph world) paintingFlapTab)
+		ifNotNil:
+			[aPaintTab hideFlap]
+		ifNil:
+			[(aPaintBox _ aWorld paintBox) ifNotNil:
+				[aPaintBox delete]].
+
+	(aWorld hasProperty: #automaticFlapViewing)
+		ifTrue:
+			[^ aWorld presenter viewMorph: aSketchMorph].
+
+	(aSketchMorph pasteUpMorph hasProperty: #automaticViewing)
+		ifTrue:
+			[self viewMorph: aSketchMorph]
