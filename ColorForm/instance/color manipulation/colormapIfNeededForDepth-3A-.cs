@@ -4,7 +4,7 @@ colormapIfNeededForDepth: destDepth
 	| newMap |
 	colors == nil ifTrue: [
 		"use the standard colormap"
-		^ Color colorMapIfNeededFrom: depth to: destDepth].
+		^ Color colorMapIfNeededFrom: self depth to: destDepth].
 
 	(destDepth = cachedDepth and:[cachedColormap isColormap not]) 
 		ifTrue: [^ cachedColormap].
