@@ -1,5 +1,6 @@
 handlesMouseDown: evt
-	"Return true if this morph handles mouse events (mouseDown, mouseMove, mouseUp) itself or if its event handler does. Subclasses that implement mouse events typically override this message."
+	"Do I want to receive mouseDown events (mouseDown:, mouseMove:, mouseUp:)?"
+	"NOTE: The default response is false, except if you have added sensitivity to mouseDown events using the on:send:to: mechanism.  Subclasses that implement these messages directly should override this one to return true." 
 
-	eventHandler ifNotNil: [^ eventHandler handlesMouseDown: evt].
+	self eventHandler ifNotNil: [^ self eventHandler handlesMouseDown: evt].
 	^ false
