@@ -1,3 +1,3 @@
 processDiagonals
 
-	^self processDiagonalsFrom: matches keys asSet
+	^self processDiagonalsFrom: matches twoLevelKeys
