@@ -30,3 +30,4 @@ processInterlaced
 					]
 				]
 	].
+	z atEnd ifFalse:[self error:'Unexpected data'].
