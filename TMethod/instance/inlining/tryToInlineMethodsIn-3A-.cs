@@ -4,7 +4,7 @@ tryToInlineMethodsIn: aCodeGen
 	| stmtLists didSomething newStatements inlinedStmts sendsToInline |
 	didSomething _ false.
 
-	sendsToInline _ Dictionary new.
+	sendsToInline _ Dictionary new: 100.
 	parseTree nodesDo: [ :n |
 		(self inlineableFunctionCall: n in: aCodeGen) ifTrue: [
 			sendsToInline at: n put: (self inlineFunctionCall: n in: aCodeGen).
