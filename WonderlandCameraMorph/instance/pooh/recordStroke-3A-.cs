@@ -1,2 +1,2 @@
 recordStroke: p
-	self outline add: p
+	self outline nextPut: p
