@@ -9,7 +9,7 @@ helpContributions
 		(actorState
 			'return the ActorState object for the receiver, creating it if necessary')
 		(addInstanceVariable
-			'start the interaction for adding a new instance variable to the receiver')
+			'start the interaction for adding a new variable to the object')
 		(addPlayerMenuItemsTo:hand:
 			'add player-specific menu items to the given menu, on behalf of the given hand.  At present, these are only commands relating to the turtle')
 		(addYesNoToHand
@@ -23,6 +23,8 @@ helpContributions
 		(anonymousScriptEditorFor:
 			'answer a new ScriptEditor object to serve as the place for scripting an anonymous (unnamed, unsaved) script for the receiver')
 		(append:
+			'add an object to this container')
+		(prepend:
 			'add an object to this container')
 		(assignDecrGetter:setter:amt:
 			'evaluate the decrement variant of assignment')
@@ -59,6 +61,8 @@ helpContributions
 "normal" means "only when called"')
 		(clearTurtleTrails
 			'Clear all the pen trails in the interior.')
+		(clearOwnersPenTrails
+			'Clear all the pen trails in my container.')
 		(color	
 			'The object''s interior color')
 		(colorSees
@@ -73,8 +77,14 @@ helpContributions
 			'Delete the current card.')
 		(dismiss
 			'Click here to dismiss me')
+		(doMenuItem:
+			'Do a menu item, the same way as if it were chosen manually')
+		(doScript:
+			'Perform the given script once, on the next tick.')
 		(elementNumber
 			'My element number as seen by my owner')
+		(fire
+			'Run any and all button-firing scripts of this object')
 		(firstPage
 			'Go to first page of book')
 		(followPath
@@ -130,8 +140,8 @@ helpContributions
 		(obtrudes
 			'Whether any part of the object sticks out beyond its container''s borders')
 		(offerScriptorMenu
-			'Scriptee and script name.
-Press to get a menu')
+			'The Scriptee.
+Press here to get a menu')
 		(pauseScript:
 			'Make a running script become paused.')
 		(penDown
@@ -140,6 +150,8 @@ Press to get a menu')
 			'The color of the object''s pen')
 		(penSize	
 			'The size of the object''s pen')
+		(clearPenTrails
+			'Clear all pen trails in the current playfield')
 		(playerSeeingColorPhrase
 			'The player who "sees" a given color')
 		(previousPage
@@ -176,7 +188,7 @@ Press to get a menu')
 		(userScript
 			'This is a script defined by you.')
 		(userSlot
-			'This is an instance variable defined by you.  Click here to change its type')
+			'This is a variable defined by you.  Click here to change its type')
 		(valueAtCursor
 			'The chosen element')
 		(wearCostumeOf:
