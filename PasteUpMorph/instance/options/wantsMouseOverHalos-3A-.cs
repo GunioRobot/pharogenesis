@@ -1,0 +1,2 @@
+wantsMouseOverHalos: aBoolean
+	wantsMouseOverHalos _ aBoolean
