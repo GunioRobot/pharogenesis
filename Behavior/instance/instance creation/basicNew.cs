@@ -6,5 +6,5 @@ basicNew
 	<primitive: 70>
 	self isVariable ifTrue: [ ^ self basicNew: 0 ].
 	"space must be low"
-	Smalltalk signalLowSpace.
+	self environment signalLowSpace.
 	^ self basicNew  "retry if user proceeds"
