@@ -1,0 +1,2 @@
+failModuleName
+	^ 'CFailModule'
