@@ -4,7 +4,8 @@ terminate
 	| context |
 	Processor activeProcess == self
 		ifTrue: 
-			[thisContext sender == nil ifFalse:
+			[thisContext unwindTo: nil.
+			thisContext sender == nil ifFalse:
 				[thisContext sender release].
 			thisContext removeSelf suspend]
 		ifFalse: 
@@ -14,5 +15,6 @@ terminate
 					myList _ nil].
 			context _ suspendedContext.
 			suspendedContext _ nil.
+			context == nil ifFalse: [context unwindTo: nil].
 			(context ~~ nil and: [context sender ~~ nil])
 				ifTrue: [context sender release]]
