@@ -5,7 +5,7 @@ httpGetNoError: url args: args accept: mimeType
 
 	| document data |
 	document _ self httpGetDocument: url  args: args  accept: mimeType.
-	(document isKindOf: String) ifTrue: [
+	(document isString) ifTrue: [
 		"strings indicate errors"
 		^ document ].
 	data _ document content.
