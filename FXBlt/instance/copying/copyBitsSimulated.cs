@@ -1,0 +1,2 @@
+copyBitsSimulated
+	^FXBltSimulation copyBitsFrom: self.
