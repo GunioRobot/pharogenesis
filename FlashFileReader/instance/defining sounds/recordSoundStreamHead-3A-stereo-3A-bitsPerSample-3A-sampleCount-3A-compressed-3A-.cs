@@ -1,0 +1,1 @@
+recordSoundStreamHead: mixFmt stereo: stereo bitsPerSample: bitsPerSample sampleCount: sampleCount compressed: compressed
