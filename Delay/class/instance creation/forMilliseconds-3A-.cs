@@ -3,5 +3,5 @@ forMilliseconds: anInteger
 
 	anInteger < 0 ifTrue: [self error: 'delay times cannot be negative'].
 	^ self new
-		setDelay: anInteger
+		setDelay: anInteger asInteger
 		forSemaphore: Semaphore new
