@@ -13,6 +13,4 @@ appendEntry
 			self selectWithoutComp: paragraph text size + 1.
 			self replaceSelectionWith: model nextEntry asText.
 			self selectWithoutComp: paragraph text size + 1.
-			self selectAndScroll.
-			self deselect.
 			model contents: paragraph text]
