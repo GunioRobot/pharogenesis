@@ -1,2 +1,2 @@
 browseChangedMessages
-	Smalltalk browseChangedMessages
+	ChangeSet  browseChangedMessages
