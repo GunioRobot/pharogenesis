@@ -14,8 +14,8 @@ setClass: aBehavior selector: aSymbol
 	self metaClassIndicated: isMeta.
 	aSymbol ifNil: [^ self].
 	messageCatIndex _ aBehavior organization numberOfCategoryOfElement: aSymbol.
-	self messageCategoryListIndex: messageCatIndex.
+	self messageCategoryListIndex: messageCatIndex + 1. "<- FIXED offset"
 	messageCatIndex = 0 ifTrue: [^ self].
 	self messageListIndex:
 			((aBehavior organization listAtCategoryNumber: messageCatIndex)
-					indexOf: aSymbol).
+					indexOf: aSymbol)
