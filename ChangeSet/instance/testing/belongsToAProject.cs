@@ -1,5 +1,6 @@
 belongsToAProject
 
-	Project allInstancesDo: [:proj |
-		proj projectChangeSet == self ifTrue: [^ true]].
+	Smalltalk at: #Project ifPresent:
+		[:projClass | projClass allSubInstancesDo:
+			[:proj | proj projectChangeSet == self ifTrue: [^ true]]].
 	^ false
