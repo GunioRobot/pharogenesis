@@ -1,0 +1,2 @@
+valueAtCursor: aMorph
+	self shouldNotImplement
