@@ -31,16 +31,14 @@ digitLogic: arg op: op length: len
 										256 - b2]]
 						ifFalse: [255 - b2]].
 		b _ b1 perform: op with: b2.
-		b = 0
-			ifTrue: 
-				[result digitAt: i put: 0]
-			ifFalse: 
-				[result 
-					digitAt: i 
-					put: (rneg
-							ifTrue: [rz ifTrue: 
+		result 
+			digitAt: i 
+			put: (rneg
+					ifTrue: [rz ifTrue: [b = 0
+										ifTrue: [0]
+										ifFalse:
 											[rz _ false.
-											256 - b]
-										ifFalse: [255 - b]]
-						ifFalse: [b])]].
+											256 - b]]
+								ifFalse: [255 - b]]
+				ifFalse: [b])].
 	^ result normalize
