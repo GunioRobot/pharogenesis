@@ -1,4 +1,4 @@
 loudness
-	"Return a suitable volume for initing"
+	"Answer the current volume setting for this sound."
 
 	^ scaledVol asFloat / ScaleFactor asFloat
