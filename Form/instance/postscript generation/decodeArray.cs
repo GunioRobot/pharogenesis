@@ -1,2 +1,2 @@
 decodeArray
-	^depth <= 8 ifTrue:['[1 0]'] ifFalse:['[0 1 0 1 0 1 ]'].
+	^self depth <= 8 ifTrue:['[1 0]'] ifFalse:['[0 1 0 1 0 1 ]'].
