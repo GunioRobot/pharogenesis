@@ -1,10 +1,13 @@
 dragPassengerFor: item inMorph: dragSource 
-	| transferType |
+	| transferType smn |
 	(dragSource isKindOf: PluggableListMorph)
-		ifFalse: [^item].
+		ifFalse: [^nil].
 	transferType _ self dragTransferTypeForMorph: dragSource.
-	transferType == #messageList
-		ifTrue: [^self selectedClassOrMetaClass->item contents].
 	transferType == #classList
 		ifTrue: [^self selectedClass].
-	^item contents
+	transferType == #messageList
+		ifFalse: [ ^nil ].
+	smn _ self selectedMessageName ifNil: [ ^nil ].
+	(MessageSet isPseudoSelector: smn) ifTrue: [ ^nil ].
+
+	^ self selectedClassOrMetaClass -> smn.
