@@ -1,0 +1,1 @@
+B3DTexture class instanceVariableNames: ''
