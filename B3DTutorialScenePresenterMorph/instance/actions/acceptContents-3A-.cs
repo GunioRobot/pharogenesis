@@ -1,0 +1,3 @@
+acceptContents: xx
+
+  ^true
