@@ -1,0 +1,1 @@
+A subclass of AppRegistry which allows the user, or Browser add-ons, to control which class is used when creating the code editing view in mvc Browsers
