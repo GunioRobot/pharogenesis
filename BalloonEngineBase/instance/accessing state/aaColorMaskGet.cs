@@ -1,0 +1,2 @@
+aaColorMaskGet
+	^workBuffer at: GWAAColorMask
