@@ -1,0 +1,2 @@
+getVertices
+	^vertices
