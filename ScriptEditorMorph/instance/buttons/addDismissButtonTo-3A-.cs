@@ -1,12 +1,13 @@
 addDismissButtonTo: aRowMorph
-	aRowMorph addMorphBack:
-		((SimpleButtonMorph new label: 'O' font: Preferences standardButtonFont)
-			target: self;
-			color:  Color tan;
-			actionSelector: #dismiss;
+	"Add the brown dismiss button to the header"
+
+	| aButton |
+	aButton _ self tanOButton.
+	aRowMorph addMorphBack: aButton.
+	aButton actionSelector: #dismiss;
 			setBalloonText: 
 'Remove this script
 from the screen
 (you can open it
-again from a Viewer)').
+again from a Viewer)' translated.
 	^ aRowMorph
