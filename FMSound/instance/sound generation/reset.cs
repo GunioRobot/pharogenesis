@@ -1,4 +1,7 @@
 reset
 
+	self internalizeModulationAndRatio.
 	super reset.
-	modulation _ initialModulation.
+	count _ initialCount.
+	scaledIndex _ 0.
+	scaledOffsetIndex _ 0.
