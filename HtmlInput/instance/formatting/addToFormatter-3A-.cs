@@ -1,4 +1,8 @@
 addToFormatter: formatter
+	formatter currentFormData ifNil: [
+		"not in a form.  It's bogus HTML but try to survive"
+		^self ].
+
 	"is it a submit button?"
 	self type = 'submit' ifTrue: [
 		formatter addMorph: ((PluggableButtonMorph on: formatter currentFormData getState: nil action: #submit) label: (self getAttribute: 'value' default: 'Submit')).
