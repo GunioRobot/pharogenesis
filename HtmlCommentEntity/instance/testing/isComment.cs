@@ -1,0 +1,2 @@
+isComment
+	^true
