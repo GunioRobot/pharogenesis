@@ -1,0 +1,3 @@
+sqFileClose: file
+
+	file close.
