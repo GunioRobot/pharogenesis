@@ -3,4 +3,7 @@ printOut
 	Defaults to the same file as fileOut, but could be changed in any given
 	implementation to have a prettier format."
 
-	self fileOut
+	self controlTerminate.
+	Cursor write showWhile:
+		[model printOutSystemCategories].
+	self controlInitialize
