@@ -1,2 +1,2 @@
 oldFileNamed: fileName 
-	^ StandardFileStream oldFileNamed: (self fullName: fileName)
+	^ self concreteStream oldFileNamed: (self fullName: fileName)
