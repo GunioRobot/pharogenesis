@@ -1,0 +1,2 @@
+smCache
+	^smCache
