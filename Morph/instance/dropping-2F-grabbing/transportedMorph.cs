@@ -1,0 +1,2 @@
+transportedMorph
+	^self
