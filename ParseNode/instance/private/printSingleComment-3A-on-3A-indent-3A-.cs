@@ -17,7 +17,7 @@ printSingleComment: aString on: aStream indent: indent
 			position _ position + wordWidth.
 			position > lineBreak
 				ifTrue: 
-					[aStream crtab: indent.
+					[aStream skip: -1; crtab: indent.
 					position _ indent * tabWidth + wordWidth + spaceWidth.
 					lastChar = Character cr
 						ifTrue: [[readStream peekFor: Character tab] whileTrue].
@@ -30,6 +30,6 @@ printSingleComment: aString on: aStream indent: indent
 							aStream space].
 					lastChar = Character cr
 						ifTrue: 
-							[aStream crtab: indent.
+							[aStream skip: -1; crtab: indent.
 							position _ indent * tabWidth.
 							[readStream peekFor: Character tab] whileTrue]]]
