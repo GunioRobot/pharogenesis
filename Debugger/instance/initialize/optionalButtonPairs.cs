@@ -1,9 +1,8 @@
 optionalButtonPairs
+	"Actually, return triples.  In mvc (until someone deals with this) only the custom debugger-specific buttons are shown, but in morphic, the standard code-tool buttons are provided in addition to the custom buttons"
 
-	^ #(('Proceed'		proceed)
-		('Restart'		restart)
-		('Send'			send)
-		('Step'			doStep)
-		('Full Stack'		fullStack)
-		('Where'		where)
-		('Browse'		browseMethodFull))
+	^ Smalltalk isMorphic
+		ifFalse:
+			[self customButtonSpecs]
+		ifTrue:
+			[super optionalButtonPairs]
