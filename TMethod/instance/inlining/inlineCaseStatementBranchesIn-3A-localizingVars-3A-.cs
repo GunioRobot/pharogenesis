@@ -13,8 +13,6 @@ inlineCaseStatementBranchesIn: aCodeGen localizingVars: varsList
 					 [meth hasNoCCode and:
 					 [meth args size = 0]]) ifTrue: [
 						meth _ meth copy.
-						maxTemp _ maxTemp max: (meth renameVarsForCaseStmt).
-
 						meth hasReturn ifTrue: [
 							exitLabel _ self unusedLabelForInliningInto: self.
 							meth exitVar: nil label: exitLabel.
@@ -32,7 +30,7 @@ inlineCaseStatementBranchesIn: aCodeGen localizingVars: varsList
 									setLabel: exitLabel comment: 'end case').
 						].
 
-						newStatements addAllFirst: meth statements.
+						newStatements addFirst: meth asInlineNode.
 						newStatements addFirst:
 							(TLabeledCommentNode new setComment: meth selector).
 						stmtNode setStatements: newStatements.
