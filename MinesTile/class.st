@@ -1,0 +1,1 @@
+MinesTile class instanceVariableNames: ''
