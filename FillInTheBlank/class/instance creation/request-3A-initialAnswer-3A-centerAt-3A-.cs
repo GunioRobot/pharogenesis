@@ -1,4 +1,4 @@
-request: queryString initialAnswer: defaultAnswer centerAt: aPoint
+request: queryString initialAnswer: defaultAnswer centerAt: aPoint 
 	"Create an instance of me whose question is queryString with the given
 	initial answer. Invoke it centered at the given point, and answer the
 	string the user accepts. Answer the empty string if the user cancels."
@@ -9,18 +9,16 @@ request: queryString initialAnswer: defaultAnswer centerAt: aPoint
 		centerAt: Display center"
 
 	| model fillInView |
-	Smalltalk isMorphic
-		ifTrue:
-			[^ self fillInTheBlankMorphClass
+	Smalltalk isMorphic 
+		ifTrue: 
+			[^self fillInTheBlankMorphClass 
 				request: queryString
 				initialAnswer: defaultAnswer
 				centerAt: aPoint].
-
-	model _ self new initialize.
+	model := self new.
 	model contents: defaultAnswer.
-	fillInView _
-		self fillInTheBlankViewClass
-			on: model
-			message: queryString
-			centerAt: aPoint.
-	^ model show: fillInView
+	fillInView := self fillInTheBlankViewClass 
+				on: model
+				message: queryString
+				centerAt: aPoint.
+	^model show: fillInView
