@@ -1,0 +1,1 @@
+InterpolatingImageMorph class instanceVariableNames: ''
