@@ -1,4 +1,5 @@
 initialize
+	"initialize the state of the receiver"
 	super initialize.
-	borderColor _ Color black.
-	borderWidth _ 2
+""
+	self borderInitialize
