@@ -1,0 +1,4 @@
+initialize
+
+	self registerInFlapsRegistry;
+		registerInAppRegistry.
