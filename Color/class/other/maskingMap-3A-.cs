@@ -5,9 +5,9 @@ maskingMap: depth
 	depth <= 8
 		ifTrue: [sizeNeeded _ 1 bitShift: depth]
 		ifFalse: [sizeNeeded _ 4096].
-	MaskingMap size = sizeNeeded ifTrue: [^ MaskingMap].
 
-	MaskingMap _ Bitmap new: sizeNeeded withAll: 16rFFFFFFFF.
-	MaskingMap at: 1 put: 0.  "transparent"
+	(MaskingMap == nil or: [MaskingMap size ~= sizeNeeded]) ifTrue:
+		[MaskingMap _ Bitmap new: sizeNeeded withAll: 16rFFFFFFFF.
+		MaskingMap at: 1 put: 0.  "transparent"].
 
 	^ MaskingMap
