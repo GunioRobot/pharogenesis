@@ -9,3 +9,4 @@ setVariables
 	form _ Form extent: 8 @ 8.
 	form fillBlack.
 	unNormalizedColor _ color _ Color black.
+	hasUnsavedChanges := ValueHolder new contents: false.
