@@ -1,6 +1,7 @@
 fileOutPool: aPool onFileStream: aFileStream 
 	| aPoolName aValue |
-	aPoolName _ Smalltalk keyAtIdentityValue: aPool.
+	(aPool  isKindOf: SharedPool class) ifTrue:[^self notify: 'we do not fileout SharedPool type shared pools for now'].
+	aPoolName _ self environment keyAtIdentityValue: aPool.
 	Transcript cr; show: aPoolName.
 	aFileStream nextPutAll: 'Transcript show: ''' , aPoolName , '''; cr!'; cr.
 	aFileStream nextPutAll: 'Smalltalk at: #' , aPoolName , ' put: Dictionary new!'; cr.
