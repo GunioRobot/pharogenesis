@@ -6,12 +6,12 @@ passwordFor: serverDir
 	sequence ifNotNil: [
 		(sp _ self serverPasswords) ifNotNil: [
 			sequence <= sp size ifTrue: [^ sp at: sequence]]].
-	msg _ (serverDir isKindOf: ServerDirectory)
+	msg _ serverDir isRemoteDirectory
 		ifTrue: [serverDir moniker]
 		ifFalse: ['this directory'].
 	(serverDir user = 'anonymous') & (serverDir typeWithDefault == #ftp) ifTrue: [
 			^ cache _ FillInTheBlank request: 'Please let this anonymous ftp\server know your email address.\This is the polite thing to do.' withCRs
 			initialAnswer: 'yourName@company.com'].
 
-	^ cache _ FillInTheBlank requestPassword: 'Password for ', msg, ':'.
+	^ cache _ FillInTheBlank requestPassword: 'Password for ', serverDir user, ' at ', msg, ':'.
 		"Diff between empty string and abort?"
