@@ -1,0 +1,2 @@
++ increment
+	^self clone += increment
