@@ -27,14 +27,14 @@ endOfRun
 				then we back destX off by the width of the character stopped on
 				(it will be pointing at the right side of the character) and return"
 				runStopIndex = characterIndex
-					ifTrue:	[characterPoint x: destX - lastCharacterExtent x.
+					ifTrue:	[self characterPointSetX: destX - lastCharacterExtent x.
 							^true].
 				"Otherwise the requested index was greater than the length of the
 				string.  Return string size + 1 as index, indicate further that off the
 				string by setting character to nil and the extent to 0."
 				lastIndex _  lastIndex + 1.
 				lastCharacter _ nil.
-				lastCharacterExtent x: 0.
+				self lastCharacterExtentSetX: 0.
 				^true].
 
 	"Scanning for a point and either off the end of the line or off the end of the string."
@@ -42,7 +42,7 @@ endOfRun
 		ifTrue:	["off end of string"
 				lastIndex _  lastIndex + 1.
 				lastCharacter _ nil.
-				lastCharacterExtent x: 0.
+				self lastCharacterExtentSetX: 0.
 				^true].
 	"just off end of line without crossing x"
 	lastIndex _ lastIndex + 1.
