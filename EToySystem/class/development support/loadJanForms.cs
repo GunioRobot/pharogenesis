@@ -6,4 +6,4 @@ loadJanForms
 	newFormDict _ aReferenceStream next.
 	aReferenceStream close.
 	newFormDict associationsDo:
-		[:assoc | Smalltalk imageImports add: assoc]
+		[:assoc | Imports default importImage: assoc value named: assoc key]
