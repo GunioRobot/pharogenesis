@@ -6,5 +6,4 @@ findActivePaintBox
 	w ifNil: [^ nil].
 	(w findA: SketchEditorMorph) ifNil: [^ nil].  "not painting"
 	(m _ w findA: PaintBoxMorph) ifNotNil: [^ m].
-	(m _ w findA: EToyPalette) ifNotNil: [^ m paintPalette].
 	^ nil
