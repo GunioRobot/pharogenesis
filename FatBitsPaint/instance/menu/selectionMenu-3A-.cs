@@ -16,5 +16,5 @@ selectionMenu: evt
                         target: self
                         selector: each second
                         argumentList: #()].
-        menu toggleStayUp: nil.
+        menu toggleStayUp: evt.
         menu popUpEvent: evt in: self world
