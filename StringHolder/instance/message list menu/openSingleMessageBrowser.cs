@@ -1,7 +1,14 @@
 openSingleMessageBrowser
-	| msgName title |
+	| msgName mr |
 	"Create and schedule a message list browser populated only by the currently selected message"
 
 	(msgName _ self selectedMessageName) ifNil: [^ self].
-	Smalltalk browseMessageList: (Array with: (title _ self selectedClassOrMetaClass name, ' ', msgName))
-		name: title autoSelect: nil
+
+	mr _ MethodReference new
+		setStandardClass: self selectedClassOrMetaClass
+		methodSymbol: msgName.
+
+	self systemNavigation 
+		browseMessageList: (Array with: mr)
+		name: mr asStringOrText
+		autoSelect: nil
