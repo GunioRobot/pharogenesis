@@ -6,7 +6,7 @@ nextTag
 	attribs _ Dictionary new.
 
 	"determine if its negated"
-	self peekChar = $/ 
+	self peekChar = $/
 		ifTrue: [ negated _ true.  self nextChar. ]
 		ifFalse: [ negated _ false ].
 
@@ -23,14 +23,18 @@ nextTag
 		attribName _ self nextName.
 		attribName _ attribName asLowercase.
 		self skipSpaces.
-		self peekChar = $= 
-			ifTrue: [ 
+		self peekChar = $=
+			ifTrue: [
 				self nextChar.
 				self skipSpaces.
 				attribValue _ self nextAttributeValue withoutQuoting  ]
 			ifFalse: [ attribValue _ '' ].
 		attribs at: attribName  put: attribValue ].
 
+	self skipSpaces.
+	"determine if the tag is of the form <foo/>"
+	self peekChar = $/ ifTrue: [ self nextChar. ].
+	self skipSpaces.
 	self peekChar = $> ifTrue: [ self nextChar ].
 
 	sourceEnd _ pos-1.
