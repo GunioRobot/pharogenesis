@@ -1,9 +1,10 @@
 evaluateSelection
 	"Treat the current text selection as an expression; evaluate it.
-	If the left shift key is down, wait for mouse click, then restore the display.
-	 2/29/96 sw: if the selection is an insertion point, first select the current line."
+	If the left shift key is down, wait for mouse click, then restore the display"
 	| result saveBits |
-	self selectLine.
+
+	self lineSelectAndEmptyCheck: [^ ''].
+
 	(saveBits _ sensor leftShiftDown)
 		ifTrue: [view topView deEmphasize; cacheBits].
 	result _ model doItReceiver class evaluatorClass new
