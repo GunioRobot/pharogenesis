@@ -6,8 +6,7 @@ bytecodePrimMultiply
 		ifTrue: [rcvr _ self integerValueOf: rcvr.
 				arg _ self integerValueOf: arg.
 				result _ rcvr * arg.
-				((arg = 0 or: [(result // arg) = rcvr])
-					and: [self isIntegerValue: result])
+				((arg = 0 or: [(result // arg) = rcvr]) and: [self isIntegerValue: result])
 					ifTrue: [self internalPop: 2 thenPush: (self integerObjectOf: result).
 							^ self fetchNextBytecode "success"]]
 		ifFalse: [successFlag _ true.
