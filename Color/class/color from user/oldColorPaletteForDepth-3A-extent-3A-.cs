@@ -16,7 +16,7 @@ oldColorPaletteForDepth: depth extent: paletteExtent
 				f fill: rect fillColor: c]]].
 	q _ Quadrangle origin: paletteExtent - (50@19) corner: paletteExtent.
 	q displayOn: f.
-	('Trans.' asParagraph asForm) displayOn: f at: q origin + (9@0) rule: Form paint.
+	'Trans.' displayOn: f at: q origin + (9@1).
 
 	w _ ((paletteExtent x - q width - 130) // 64) max: 1.
 	p _ paletteExtent x - q width - (64 * w) - 1 @ (paletteExtent y - 19).
