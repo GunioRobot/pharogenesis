@@ -1,0 +1,1 @@
+This is a slightly modified copy of B3DSceneExplorerMorph.
