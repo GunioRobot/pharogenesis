@@ -1,6 +1,6 @@
 B3DMultiMesh
 	subclass: #B3DInterpolatedMesh
-	instanceVariableNames: 'index '
+	instanceVariableNames: 'index'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon3D-Meshes'
+	category: 'Balloon3D-Kernel-Meshes'
