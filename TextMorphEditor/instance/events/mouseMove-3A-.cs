@@ -6,4 +6,4 @@ mouseMove: evt
 	dragBlock > pivotBlock
 		ifTrue: [stopBlock _ dragBlock.  startBlock _ pivotBlock]
 		ifFalse: [startBlock _ dragBlock.  stopBlock _ pivotBlock].
-	paragraph selectionStart: startBlock selectionStop: stopBlock
+	self storeSelectionInParagraph
