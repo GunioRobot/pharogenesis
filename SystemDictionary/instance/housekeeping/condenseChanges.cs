@@ -1,6 +1,6 @@
 condenseChanges		"Smalltalk condenseChanges"
 	"Move all the changes onto a compacted sources file."
-	| f name oldChanges classCount |
+	| f oldChanges classCount |
 	f _ FileStream fileNamed: 'ST80.temp'.
 	f header; timeStamp.
 'Condensing Changes File...'
@@ -16,6 +16,7 @@ condenseChanges		"Smalltalk condenseChanges"
 	f trailer; close.
 	oldChanges _ SourceFiles at: 2.
 	oldChanges close.
+	FileDirectory default deleteFileNamed: oldChanges name , '.old'.
 	FileDirectory default rename: oldChanges name
 						toBe: oldChanges name , '.old'.
 	FileDirectory default rename: f name
