@@ -1,0 +1,2 @@
+startPlaying
+	player startPlaying
