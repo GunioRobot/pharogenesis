@@ -1,0 +1,2 @@
+isHighlighted
+	^ false
