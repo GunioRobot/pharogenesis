@@ -9,7 +9,7 @@ checkClassForNameConflicts: aClass
 	].
 	"ikp..."
 	aClass sharedPools do: [:pool |
-		pool associationsDo: [ :assoc |
+		pool bindingsDo: [ :assoc |
 			(constants includesKey: assoc key asString) ifTrue: [
 				self error: 'Constant was defined in a previously added class: ', assoc key.
 			].
