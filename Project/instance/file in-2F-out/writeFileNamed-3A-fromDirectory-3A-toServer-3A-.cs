@@ -3,9 +3,12 @@ writeFileNamed: localFileName fromDirectory: localDirectory toServer: primarySer
 	| local resp gifFileName f |
 
 	local _ localDirectory oldFileNamed: localFileName.
-	resp _ primaryServerDirectory putFile: local named: localFileName retry: false.
+	resp _ primaryServerDirectory upLoadProject: local named: localFileName resourceUrl: self resourceUrl retry: false.
 	local close.
 	resp == true ifFalse: [
+		"abandon resources that would've been stored with the project"
+		self resourceManager abandonResourcesThat:
+			[:loc| loc urlString beginsWith: self resourceUrl].
 		self inform: 'the primary server of this project seems to be down (',
 							resp printString,')'. 
 		^ self
@@ -26,8 +29,11 @@ writeFileNamed: localFileName fromDirectory: localDirectory toServer: primarySer
 	GIFReadWriter putForm: f onStream: local.
 	local close.
 
-	local _ localDirectory oldFileNamed: gifFileName.
+	[local _ StandardFileStream readOnlyFileNamed: (localDirectory fullNameFor: gifFileName).
+	(primaryServerDirectory isKindOf: FileDirectory)
+		ifTrue: [primaryServerDirectory deleteFileNamed: gifFileName ifAbsent: []].
 	resp _ primaryServerDirectory putFile: local named: gifFileName retry: false.
+	] on: Error do: [:ex |].
 	local close.
 
 	primaryServerDirectory updateProjectInfoFor: self.
