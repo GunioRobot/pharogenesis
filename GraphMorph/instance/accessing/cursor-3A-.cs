@@ -7,4 +7,4 @@ cursor: aNumber
 		truncP > data size ifTrue: [cursor _ data size].
 		truncP < 0 ifTrue: [cursor _ 1].
 		self keepIndexInView: truncP.
-		self changed].
+		hasChanged _ true].
