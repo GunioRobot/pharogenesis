@@ -1,6 +1,6 @@
 initialize
 	"BitBltSimulation initialize"
-  
+
 	self initializeRuleTable.
 
 	"Mask constants"
@@ -37,3 +37,15 @@ initialize
 	BBWarpBase _ 15.
 	BBLastIndex _ 15.
 	BBXTableIndex _ 16.
+
+	"RGBA indexes"
+	RedIndex _ 0.
+	GreenIndex _ 1.
+	BlueIndex _ 2.
+	AlphaIndex _ 3.
+
+	"Color map flags"
+	ColorMapPresent _ 1.		"do we have one?"
+	ColorMapFixedPart _ 2.		"does it have a fixed part?"
+	ColorMapIndexedPart _ 4.	"does it have an indexed part?"
+	ColorMapNewStyle _ 8.		"new style color map"
