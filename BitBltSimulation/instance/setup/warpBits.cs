@@ -11,7 +11,7 @@ warpBits
 
  	self lockSurfaces.
 	self destMaskAndPointerInit.
-	self xWarpLoop.
+	self warpLoop.
  
 	hDir > 0
 		ifTrue: [affectedL _ dx.
