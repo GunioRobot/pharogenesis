@@ -1,10 +1,4 @@
 fullCopy
-	"Produce a copy of me with my entire tree of submorphs.  Morphs
-mentioned more than once are all directed to a single new copy.  Simple
-inst vars are not copied, so you must override to copy Arrays, etc.  "
+	"Deprecated, but maintained for backward compatibility with existing code (no senders in the base 3.0 image).   Calls are revectored to #veryDeepCopy, but note that #veryDeepCopy does not do exactly the same thing that the original #fullCopy did, so beware!"
 
-	| dict new |
-	dict _ IdentityDictionary new: 1000.
-	new _ self copyRecordingIn: dict.
-	new allMorphsDo: [:m | m updateReferencesUsing: dict].
-	^ new
+	^ self veryDeepCopy
