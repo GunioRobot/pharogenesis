@@ -1,0 +1,2 @@
+beCircular
+	circular := true
