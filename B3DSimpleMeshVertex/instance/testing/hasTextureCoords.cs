@@ -1,0 +1,2 @@
+hasTextureCoords
+	^texCoord notNil
