@@ -6,5 +6,5 @@ browseAllMessages
 		method _ (aClass _ self selectedClassOrMetaClass) compiledMethodAt: aName.
 		filteredList _ method messages reject: 
 			[:each | #(new initialize = ) includes: each].
-		Smalltalk browseAllImplementorsOfList: filteredList asSortedCollection
+		self systemNavigation browseAllImplementorsOfList: filteredList asSortedCollection
 			 title: 'All messages sent in ', aClass name, '.', aName]
