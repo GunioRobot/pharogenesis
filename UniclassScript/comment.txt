@@ -1,8 +1,9 @@
-Represents a script of uniclass.  Holds the ScriptEditorMorph structures for the current version of a user-defined tile script, as well as previous versions thereof.
+Represents a tile script of uniclass.  Holds the ScriptEditorMorph structures for the current version of a user-defined tile script, as well as previous versions thereof.
 
-playerClass				The actual uniclass with which this script is associated.	
-selector					The script''s selector
-defaultStatus			The status to apply to new instances of the class by default
-defaultFiresPerTick		How many fires per tick, by default, should be allowed if ticking.
+In addition to the instance variables of my superclass, my instance variables are:
+
 currentScriptEditor		The current version of the ScriptEditorMorph for the script
-formerScriptingTiles		A collection of pairs, (<timeStamp>  (list of morphs))  each pair characterizing a prior tile version
+formerScriptingTiles		A collection of pairs, (<timeStamp>  (list of morphs)) 
+							each pair characterizing a prior tile version
+isTextuallyCoded			A boolean.  If true, then a hand-crafted user coding supersedes
+							the tale of the tiles.  This architecture is in transition, perhaps.
