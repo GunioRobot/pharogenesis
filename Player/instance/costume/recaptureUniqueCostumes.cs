@@ -5,7 +5,7 @@ recaptureUniqueCostumes
 	unique := PluggableSet new 
 				equalBlock:[:s1 :s2| s1 form == s2 form];
 				hashBlock:[:s| s form identityHash].
-	unique addAll: (costumes select:[:c| c isKindOf: SketchMorph]).
+	unique addAll: (costumes select:[:c| c isSketchMorph]).
 	unique := unique asIdentitySet.
 	costumes := costumes select:[:c|
-		(c isKindOf: SketchMorph) not or:[unique includes: c]].
+		(c isSketchMorph) not or:[unique includes: c]].
