@@ -1,3 +1,12 @@
 wearCostumeOfClass: aClass
-	self costume:
-		(self costumeNamed: aClass formalCostumeName) fullCopy
+	"Assume that the costume in the library has player = nil"
+	| newCostume |
+	(costume renderedMorph isKindOf: aClass) ifTrue: [^ self].
+	costumes ifNotNil:
+		[costumes do:
+			[:aCostume | (aCostume class  == aClass)
+				ifTrue:
+					[^ self renderedCostume: aCostume]]].
+
+	newCostume _ aClass new.
+	self renderedCostume: newCostume
