@@ -1,2 +1,2 @@
 setX: val
-	^ costume x: val
+	^ self costume x: val
