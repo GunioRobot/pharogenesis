@@ -7,8 +7,8 @@ deliverPainting: result evt: evt
 	"palette setRotation: #normal."
 	result == #cancel ifTrue: [
 		ans _ PopUpMenu withCaption: 'Do you really want to throw away 
-what you just painted?' 
-				chooseFrom: 'throw it away\keep painting it'.
+what you just painted?' translated 
+				chooseFrom: 'throw it away\keep painting it' translated.
 		^ ans = 1 ifTrue: [self cancelOutOfPainting]
 				ifFalse: [nil]].	"for Morphic"
 
@@ -22,6 +22,8 @@ what you just painted?'
 	newForm isAllWhite ifTrue: [
 		(self valueOfProperty: #background) == true 
 			ifFalse: [^ self cancelOutOfPainting]].
+
+	newForm fixAlpha. "so alpha channel stays intact for 32bpp"
 
 	self delete.	"so won't find me again"
 	dimForm ifNotNil: [dimForm delete].
