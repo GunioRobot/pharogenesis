@@ -9,5 +9,5 @@ nextStringPut: s
 			self nextPut: (length digitAt: 3).
 			self nextPut: (length digitAt: 2).
 			self nextPut: (length digitAt: 1)].
-	self nextPutAll: s.
+	self nextPutAll: s asByteArray.
 	^s
