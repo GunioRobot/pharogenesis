@@ -1,0 +1,2 @@
+canRenameMember
+	^memberIndex > 0
