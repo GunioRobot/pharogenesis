@@ -12,12 +12,14 @@ oldStyleListenLoop
 			ifTrue: [(Delay forMilliseconds: 100) wait]
 			ifFalse: [
 				socket isUnconnected ifTrue: [socket listenOn: portNumber].
-				socket waitForConnectionUntil: (Socket deadlineSecs: 10).
-				socket isConnected
-					ifTrue: [  "connection established"
-						accessSema critical: [connections addLast: socket].
-						socket _ nil]
-					ifFalse: [
-						socket isWaitingForConnection
-							ifFalse: [socket destroy. socket _ nil]]].  "broken socket; start over"
+				[socket waitForConnectionFor: 10]
+					on: ConnectionTimedOut
+					do: [:ex |
+						socket isConnected
+							ifTrue: [  "connection established"
+								accessSema critical: [connections addLast: socket].
+								socket _ nil]
+							ifFalse: [
+								socket isWaitingForConnection
+									ifFalse: [socket destroy. socket _ nil]]]].  "broken socket; start over"
 		self pruneStaleConnections].
