@@ -6,18 +6,18 @@ web   "Display restoreAfter: [Pen new web]"
 	"self erase."
 	color _ 1.
 	[ true ] whileTrue:
-		[ history _ SharedQueue new.
+		[ history _ OrderedCollection new.
 		Sensor waitButton.
 		Sensor yellowButtonPressed ifTrue: [^ self].
 		filter _ lastPoint _ Sensor mousePoint.
-		20 timesRepeat: [ history nextPut: lastPoint ].
+		20 timesRepeat: [ history addLast: lastPoint ].
 		self color: (color _ color + 1).
 		[ Sensor redButtonPressed ] whileTrue: 
 			[ newPoint _ Sensor mousePoint.
 			(newPoint = lastPoint) ifFalse:
-				[ ancientPoint _ history next.
+				[ ancientPoint _ history removeFirst.
 				filter _ filter * 4 + newPoint // 5.
 				self place: filter.
 				self goto: ancientPoint.
 				lastPoint _ newPoint.
-				history nextPut: filter ] ] ]
+				history addLast: filter ] ] ]
