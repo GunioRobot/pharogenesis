@@ -1,10 +1,8 @@
 setInitialState
-	self listDirection: #topToBottom.
-	self wrapCentering: #topLeft.
-	self hResizing: #shrinkWrap.
-	self vResizing: #shrinkWrap.
-	self layoutInset: 5.
-	color _ Color white.
-							"pageSize _ 1060@800."
-	pageSize _ 160@300.		"back to the original since the pother was way too big"
+	self listDirection: #topToBottom;
+	  wrapCentering: #topLeft;
+	  hResizing: #shrinkWrap;
+	  vResizing: #shrinkWrap;
+	  layoutInset: 5.
+	pageSize _ 160 @ 300.
 	self enableDragNDrop
