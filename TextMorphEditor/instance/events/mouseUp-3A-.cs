@@ -7,4 +7,4 @@ mouseUp: evt
 	self setEmphasisHere.
 	(self isDisjointFrom: oldInterval) ifTrue:
 		[otherInterval _ oldInterval].
-	paragraph selectionStart: startBlock selectionStop: stopBlock
+	self storeSelectionInParagraph
