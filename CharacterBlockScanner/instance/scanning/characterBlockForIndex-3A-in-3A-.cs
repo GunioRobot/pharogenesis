@@ -3,7 +3,7 @@ characterBlockForIndex: targetIndex in: aParagraph
 	coordinates in the CharacterBlock will be appropriate to the intersection 
 	of the destination form rectangle and the composition rectangle."
 
-	super 
+	self 
 		initializeFromParagraph: aParagraph 
 		clippedBy: aParagraph clippingRectangle.
 	characterIndex _ targetIndex.
