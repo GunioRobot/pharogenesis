@@ -5,7 +5,6 @@ spaceReclaimed
 	| oldFree  |
 	oldFree _ Smalltalk garbageCollect.
 	ThumbnailMorph recursionReset.
-	MorphicModel removeUninstantiatedSubclassesSilently.
 	Player removeUninstantiatedSubclassesSilently.
 	Smalltalk cleanOutUndeclared.
 	Smalltalk reclaimDependents.
