@@ -1,9 +1,8 @@
-initialize
+initialize 
 	"Initialize the keyboard shortcut maps and the shared buffers
 	for copying text across views and managing again and undo.
-	: call initializeTextEditorMenus
-	other times: marked change to trigger reinit" 
-
+	Marked this method changed to trigger reinit" 
+ 
 	"ParagraphEditor initialize"
 
 	CurrentSelection _ UndoSelection _ FindText _ ChangeText _ Text new.
