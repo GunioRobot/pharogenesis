@@ -1,0 +1,3 @@
+warpBits
+
+	^ myBitBlt warpBits
