@@ -11,7 +11,7 @@ commentContents
 									['---']
 								ifNotNil:
 									[(aClass precodeCommentOrInheritedCommentFor: aSelector)", String cr, String cr, self timeStamp"
-"which however misses comments that are between the temps  declaration and the body of the method; those are picked up by ¥aClass commentOrInheritedCommentFor: aSelector¥ but that method will get false positives from comments *anywhere* in the method source"]])
+"which however misses comments that are between the temps  declaration and the body of the method; those are picked up by Â·aClass commentOrInheritedCommentFor: aSelectorÂ· but that method will get false positives from comments *anywhere* in the method source"]])
 		isEmptyOrNil
 			ifTrue:
 				[aSelector
