@@ -1,6 +1,6 @@
 trace: aBlock onFileNamed: fileName		"ContextPart trace: [3 factorial]"
 	"This method uses the simulator to print calls to a file."
-	| prev current f sel |
+	| prev f sel |
 	f _ FileStream fileNamed: fileName.
 	prev _ aBlock.
 	thisContext sender
