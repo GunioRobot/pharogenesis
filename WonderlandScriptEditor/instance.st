@@ -1,6 +1,6 @@
 Workspace
 	subclass: #WonderlandScriptEditor
-	instanceVariableNames: 'myTextEditor '
+	instanceVariableNames: 'myTextEditor'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon3D-Wonderland Morphs'
+	category: 'Balloon3D-Wonderland-Morphs'
