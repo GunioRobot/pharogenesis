@@ -1,0 +1,4 @@
+testShortRunArrayWithRefStreamOnDisk
+	array _ self createSampleShortRunArray.
+	self validateRefStreamOnDisk
+	
