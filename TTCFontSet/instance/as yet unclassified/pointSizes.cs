@@ -1,0 +1,3 @@
+pointSizes
+
+	^ self class pointSizes.
