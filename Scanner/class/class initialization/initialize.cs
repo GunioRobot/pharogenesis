@@ -3,8 +3,12 @@ initialize
 	newTable _ Array new: 256 withAll: #xBinary. "default"
 	newTable atAll: #(9 10 12 13 32 ) put: #xDelimiter. "tab lf ff cr space"
 	newTable atAll: ($0 asciiValue to: $9 asciiValue) put: #xDigit.
-	newTable atAll: ($A asciiValue to: $Z asciiValue) put: #xLetter.
-	newTable atAll: ($a asciiValue to: $z asciiValue) put: #xLetter.
+
+	1 to: 255
+		do: [:index |
+			(Character value: index) isLetter
+				ifTrue: [newTable at: index put: #xLetter]].
+
 	newTable at: 30 put: #doIt.
 	newTable at: $" asciiValue put: #xDoubleQuote.
 	newTable at: $# asciiValue put: #xLitQuote.
