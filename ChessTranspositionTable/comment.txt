@@ -1,0 +1,7 @@
+The transposition table is a lookup cache for positions in a game that occur through transpositions in move. As an example, the same position is obtained by the moves:
+	1. e2-e4		Nb8-c6
+	2. d2-d4
+and
+	1. d2-d4		Nb8-c6
+	2. e2-e4
+An extremely large number of search branches can be cut off immediately by recognizing that the current position is just the transposition of another one. The transposition table is one of the techniques that actually make modern chess programs good enough to compete with or even beat humans.
