@@ -1,0 +1,3 @@
+typeForPrefs
+
+	^'bss'
