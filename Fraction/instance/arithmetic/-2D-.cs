@@ -1,6 +1,5 @@
-- aFraction
-
-	(aFraction isMemberOf: Fraction)
-		ifTrue: [^self + aFraction 
-	"Refer to the comment in Number|-." negated]
-		ifFalse: [^self retry: #- coercing: aFraction]
+- aNumber
+	"Answer the difference between the receiver and aNumber."
+	aNumber isFraction
+		ifTrue: [^ self + aNumber negated]
+		ifFalse: [^ (aNumber adaptFraction: self) - aNumber adaptToFraction]
