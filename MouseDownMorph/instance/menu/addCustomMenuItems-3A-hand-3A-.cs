@@ -2,7 +2,7 @@ addCustomMenuItems: aCustomMenu hand: aHandMorph
 	super addCustomMenuItems: aCustomMenu hand: aHandMorph.
 "template..."
 	aCustomMenu addLine.
-	aCustomMenu add: 'rename me' action: #renameMe.
+	aCustomMenu add: 'set variable name...' action: #renameMe.
 	aCustomMenu addLine.
 	aCustomMenu add: 'plug mouseDown to model slot' action: #plugMouseDownToSlot.
 	aCustomMenu add: 'plug mouseMove to model slot' action: #plugMouseMoveToSlot.
