@@ -1,0 +1,1 @@
+B3DPrimitiveRasterizerState class instanceVariableNames: ''
