@@ -13,6 +13,7 @@ emitIfNil: stack on: strm value: forValue
 		dist: theSize 
 		pop: stack 
 		on: strm.
+	pc _ strm position.
 	forValue 
 		ifTrue: 
 			[strm nextPut: Pop. stack pop: 1.
