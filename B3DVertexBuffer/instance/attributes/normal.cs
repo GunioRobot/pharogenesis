@@ -1,0 +1,2 @@
+normal
+	^current normal
