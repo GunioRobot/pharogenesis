@@ -1,0 +1,2 @@
+flapMenuTitle
+	^ 'flap: ', self wording
