@@ -12,4 +12,4 @@ explainInst: string
 			~~ nil] ifNone: [^nil].
 	classes _ classes printString.
 	^ '"is an instance variable of the receiver; defined in class ' , classes , 
-		'"\' withCRs , classes , ' browseAllAccessesTo: ''' , string , '''.'
+		'"\' withCRs , classes , ' systemNavigation browseAllAccessesTo: ''' , string , ''' from: ', classes, '.'
