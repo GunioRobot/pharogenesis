@@ -1,2 +1,2 @@
 realClass
-	^Smalltalk at: self name asSymbol
+	^Smalltalk at: self name asSymbol ifAbsent: []
