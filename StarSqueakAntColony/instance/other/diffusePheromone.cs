@@ -1,0 +1,3 @@
+diffusePheromone
+
+	self diffusePatchVariable: 'pheromone'.
