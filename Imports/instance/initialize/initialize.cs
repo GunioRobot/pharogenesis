@@ -1,0 +1,3 @@
+initialize
+
+	imports := Dictionary new.
