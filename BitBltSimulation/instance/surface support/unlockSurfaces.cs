@@ -1,25 +1,29 @@
 unlockSurfaces
 	"Unlock the bits of any OS surfaces."
-
-	"Note: It is possible to query for the dirty rectangle from ioUnlockSurfaceBits()
-	since the affected regions are set before this method is called. This is currently
-	not part of the InterpreterProxy interface but one can query for affectedLeft(),
-	affectedRight(), affectedTop(), and affectedBottom() if the surface support
-	is compiled with the VM."
-
-	| surfaceHandle |
+	"See the comment in lockSurfaces. Similar rules apply. That is, the area provided in ioUnlockSurface can be used to determine the dirty region after drawing. If a source is unlocked, then the area will be (0,0,0,0) to indicate that no portion is dirty."
+	| sourceHandle destHandle destLocked fn |
+	self var: #fn declareC:'int (*fn)(int, int, int, int, int)'.
 	hasSurfaceLock ifTrue:[
-		surfaceHandle _ interpreterProxy fetchPointer: FormBitsIndex ofObject: sourceForm.
-		(interpreterProxy isIntegerObject: surfaceHandle) ifTrue:[
-			surfaceHandle _ interpreterProxy integerValueOf: surfaceHandle.
-			"self ioUnlockSurfaceBits: surfaceHandle."
-			sourceBits _ sourcePitch _ 0.
-		].
-		surfaceHandle _ interpreterProxy fetchPointer: FormBitsIndex ofObject: destForm.
-		(interpreterProxy isIntegerObject: surfaceHandle) ifTrue:[
-			surfaceHandle _ interpreterProxy integerValueOf: surfaceHandle.
-			"self ioUnlockSurfaceBits: surfaceHandle."
+		unlockSurfaceFn = 0 ifTrue:[self loadSurfacePlugin ifFalse:[^nil]].
+		fn _ self cCoerce: unlockSurfaceFn to: 'int (*)(int, int, int, int, int)'.
+		destLocked _ false.
+		destHandle _ interpreterProxy fetchPointer: FormBitsIndex ofObject: destForm.
+		(interpreterProxy isIntegerObject: destHandle) ifTrue:[
+			destHandle _ interpreterProxy integerValueOf: destHandle.
+			"The destBits are always assumed to be dirty"
+			self cCode:'fn(destHandle, affectedL, affectedT, affectedR-affectedL, affectedB-affectedT)'.
 			destBits _ destPitch _ 0.
+			destLocked _ true.
+		].
+		noSource ifFalse:[
+			sourceHandle _ interpreterProxy fetchPointer: FormBitsIndex ofObject: sourceForm.
+			(interpreterProxy isIntegerObject: sourceHandle) ifTrue:[
+				sourceHandle _ interpreterProxy integerValueOf: sourceHandle.
+				"Only unlock sourceHandle if different from destHandle"
+				(destLocked and:[sourceHandle = destHandle]) 
+					ifFalse:[self cCode: 'fn(sourceHandle, 0, 0, 0, 0)'].
+				sourceBits _ sourcePitch _ 0.
+			].
 		].
 		hasSurfaceLock _ false.
 	].
