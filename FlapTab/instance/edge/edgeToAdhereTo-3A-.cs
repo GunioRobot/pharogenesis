@@ -1,2 +1,2 @@
 edgeToAdhereTo: e
-	edgeToAdhereTo _ e
+	edgeToAdhereTo _ e asSymbol
