@@ -1,0 +1,2 @@
+size
+	^theStream size
