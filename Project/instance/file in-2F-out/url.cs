@@ -4,5 +4,8 @@ url
 
 	urlList isEmptyOrNil ifTrue: [^''].
 	firstURL _ urlList first.
-	firstURL last == $/ ifFalse: [firstURL _ firstURL, '/'].
+	firstURL isEmpty
+		ifFalse: [
+			firstURL last == $/
+				ifFalse: [firstURL _ firstURL, '/']].
 	^ firstURL, self versionedFileName
