@@ -6,8 +6,8 @@ parse: textOrStream in: aClass notifying: req dialect: useDialect
 
         self from: textOrStream class: aClass context: nil notifying: req.
         ^ ((useDialect and: [RequestAlternateSyntaxSetting signal])
-                ifTrue: [DialectParser]
-                ifFalse: [Parser]) new
+                ifTrue: [self dialectParserClass]
+                ifFalse: [self parserClass]) new
                         parse: sourceStream
                         class: class
                         noPattern: false
