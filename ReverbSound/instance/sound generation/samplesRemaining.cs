@@ -1,0 +1,3 @@
+samplesRemaining
+
+	^ sound samplesRemaining
