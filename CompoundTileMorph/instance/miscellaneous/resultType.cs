@@ -1,2 +1,4 @@
 resultType
-	^ #command
+	"Answer the result type of the receiver"
+
+	^ #Command
