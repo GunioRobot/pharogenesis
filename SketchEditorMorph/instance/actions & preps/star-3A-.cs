@@ -18,7 +18,14 @@ star: evt
 			+ strokeOrigin].
 	
 	poly _ PolygonMorph new addHandles.
-	poly color: currentColor; borderWidth: ww; borderColor: Color black.
+	currentColor == Color transparent
+	ifFalse:[
+	poly color: currentColor; borderWidth: 0; borderColor: Color transparent.]
+	ifTrue:[
+	poly color: currentColor; borderWidth: 1; borderColor: Color black ]. " can't handle thick brushes"
+	self invalidRect: rect.
+
+	
 	"self addMorph: poly."
 	poly privateOwner: self.
 	poly bounds: (strokeOrigin extent: ext).
