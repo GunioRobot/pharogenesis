@@ -1,0 +1,2 @@
+lookForSlips
+	Smalltalk changes lookForSlips
