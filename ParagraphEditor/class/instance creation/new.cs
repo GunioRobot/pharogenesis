@@ -3,6 +3,5 @@ new
 
 	| aParagraphEditor |
 	aParagraphEditor _ super new.
-	aParagraphEditor initialize.
 	aParagraphEditor changeParagraph: '' asParagraph.
 	^aParagraphEditor
