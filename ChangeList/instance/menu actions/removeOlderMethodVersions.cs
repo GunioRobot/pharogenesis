@@ -1,19 +1,17 @@
 removeOlderMethodVersions
-	"Remove older versions of entries from the receiver.  1/26/96 sw:"
-
-	| newChangeList newList found |
-
+	"Remove older versions of entries from the receiver."
+	| newChangeList newList found str |
 	newChangeList _ OrderedCollection new.
 	newList _ OrderedCollection new.
 	found _ OrderedCollection new.
 
 	changeList reverseWith: list do:
-		[:chRec :str |
+		[:chRec :strNstamp | str _ strNstamp copyUpTo: $;.
 			(found includes: str)
 				ifFalse:
 					[found add: str.
 					newChangeList add: chRec.
-					newList add: str]].
+					newList add: strNstamp]].
 	newChangeList size < changeList size
 		ifTrue:
 			[changeList _ newChangeList reversed.
