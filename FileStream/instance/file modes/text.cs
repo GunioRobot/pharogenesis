@@ -1,5 +1,4 @@
 text
-	"Set the receiver's file to be in text mode.
-	 1/31/96 sw: subclassResponsibility"
+	"Define both text and ascii as meaning not binary.  We need to supply what people will think of.  tk 6/26/97 12:15"
 
-	self subclassResponsibility
+	self ascii
