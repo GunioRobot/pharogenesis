@@ -1,0 +1,2 @@
+wantsStepsIn: aWindow
+	^ Preferences smartUpdating
