@@ -1,0 +1,3 @@
+pushConstantNilBytecode
+
+	self internalPush: nilObj.
