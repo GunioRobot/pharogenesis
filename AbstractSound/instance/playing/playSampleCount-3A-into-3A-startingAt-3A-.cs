@@ -1,10 +1,10 @@
 playSampleCount: n into: aSoundBuffer startingAt: startIndex
-	"Mixes the next count samples of this sound into the given buffer starting at the given index, updating the receiver's control parameters at periodic intervals."
+	"Mix the next n samples of this sound into the given buffer starting at the given index. Update the receiver's control parameters periodically."
 
 	| fullVol samplesBetweenControlUpdates pastEnd i remainingSamples count |
 	fullVol _ AbstractSound scaleFactor.
 	samplesBetweenControlUpdates _ self samplingRate // self controlRate.
-	pastEnd _ startIndex + n.  "index just index of after last sample"
+	pastEnd _ startIndex + n.  "index just after the last sample"
 	i _ startIndex.
 	[i < pastEnd] whileTrue: [
 		remainingSamples _ self samplesRemaining.
