@@ -1,0 +1,2 @@
+currentDirectorySelected
+	^ currentDirectorySelected
