@@ -1,7 +1,5 @@
 popInteger
+"returns 0 if the stackTop was not an integer value, plus sets successFlag false"
 	| integerPointer |
 	integerPointer _ self popStack.
-	(self isIntegerObject: integerPointer)
-		ifTrue: [^ self integerValueOf: integerPointer]
-		ifFalse: [successFlag _ false.
-				^ 1  "in case need SOME integer prior to fail"]
+	^self checkedIntegerValueOf: integerPointer
