@@ -1,0 +1,2 @@
+isTableDataItem
+	^false
