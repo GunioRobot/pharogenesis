@@ -1,0 +1,2 @@
+realExternalCallOrPrimitiveFailedSelector
+	^ #cRealExternalCallOrPrimitiveFailed
