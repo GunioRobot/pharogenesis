@@ -1,0 +1,2 @@
+recordInteractionFor: aClass
+	aClass recordInteraction.
