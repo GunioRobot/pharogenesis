@@ -9,13 +9,12 @@ browseVersions
 		ifTrue: [method _ class compiledMethodAt: selector.
 				category _ class whichCategoryIncludesSelector: selector.
 				sourcePointer _ nil]
-		ifFalse: [pair _ myChangeSet methodRemoves
-							at: (Array with: class name with: selector)
-							ifAbsent: [^ nil].
+		ifFalse: [pair _ myChangeSet methodInfoFromRemoval: {class name. selector}.
+				pair ifNil: [^ nil].
 				sourcePointer _ pair first.
 				method _ CompiledMethod toReturnSelf setSourcePointer: sourcePointer.
 				category _ pair last].
-	ChangeList
+	VersionsBrowser
 		browseVersionsOf: method
 		class: self selectedClass meta: class isMeta
 		category: category selector: selector
