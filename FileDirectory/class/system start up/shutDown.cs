@@ -1,3 +1,3 @@
 shutDown
 
-	Smalltalk closeSourceFiles.
+	SmalltalkImage current closeSourceFiles.
