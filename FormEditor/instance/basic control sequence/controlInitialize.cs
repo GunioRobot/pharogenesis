@@ -1,5 +1,5 @@
 controlInitialize
 
-	Cursor blank show.
+	Cursor crossHair show.
 	self normalizeColor: unNormalizedColor.
 	sensor waitNoButton
