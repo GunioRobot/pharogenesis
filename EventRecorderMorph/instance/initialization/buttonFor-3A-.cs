@@ -1,4 +1,10 @@
-buttonFor: aSymbol 
-	^ SimpleButtonMorph new target: self;
-	 label: aSymbol asString;
-	 actionSelector: aSymbol
+buttonFor: data 
+
+	| b |
+	b _ SimpleButtonMorph new 
+		target: self;
+		label: data first asString translated;
+		actionSelector: data first.
+	data second ifNotNil: [b width < data second ifTrue: [b width: data second]].
+	data third ifNotNil: [b setBalloonText: data third translated].
+	^b
