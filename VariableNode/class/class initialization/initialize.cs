@@ -1,5 +1,4 @@
-initialize
-
+initialize    "VariableNode initialize.  Decompiler initialize"
 	| encoder |
 	encoder _ Encoder new.
 	StdVariables _ Dictionary new: 16.
@@ -23,6 +22,10 @@ initialize
 		mapping: #(-1 0 1 2 )
 		to: (LdMinus1 to: LdMinus1 + 3).
 	encoder initScopeAndLiteralTables.
-	self initialize2: encoder
 
-	"VariableNode initialize. Decompiler initialize"
+	NodeNil _ encoder encodeVariable: 'nil'.
+	NodeTrue _ encoder encodeVariable: 'true'.
+	NodeFalse _ encoder encodeVariable: 'false'.
+	NodeSelf _ encoder encodeVariable: 'self'.
+	NodeThisContext _ encoder encodeVariable: 'thisContext'.
+	NodeSuper _ encoder encodeVariable: 'super'
