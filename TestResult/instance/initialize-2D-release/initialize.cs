@@ -1,6 +1,4 @@
 initialize
-
-	self
-		runCount: 0;
-		failures: OrderedCollection new;
-		errors: OrderedCollection new.
+	passed _ OrderedCollection new.
+	failures _ Set new.
+	errors _ OrderedCollection new.
