@@ -1,6 +1,5 @@
-target: anObject
-
-	target _ anObject.
-	(target respondsTo: #color)
-		ifTrue: [selectedColor _ target color]
-		ifFalse: [selectedColor _ Color white].
+target: anObject 
+	target := anObject.
+	selectedColor := (target respondsTo: #color)  
+				ifTrue: [target color]
+				ifFalse: [Color white]
