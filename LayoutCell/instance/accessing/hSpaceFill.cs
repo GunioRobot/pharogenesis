@@ -1,2 +1,2 @@
 hSpaceFill
-	^flags anyMask: 1
+	^self flags anyMask: 1
