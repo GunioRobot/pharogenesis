@@ -1,9 +1,4 @@
 fromDays: dayCount
-	"Answer an instance of me which is dayCount days after January 1, 
-	1901."
+	"Answer an instance of me which is dayCount days after January 1, 1901.  Works for negative days before 1901.  Works over a huge range, both BC and AD."
 
-	^self
-		newDay: 1 + (dayCount asInteger rem: 1461)
-							"There are 1461 days in a 4-year cycle. 
-							 2000 is a leap year, so no extra correction is necessary. "
-		year: 1901 + ((dayCount asInteger quo: 1461) * 4)
+	^self fromJulianDayNumber: dayCount +  2415386 "Julian Day Number of 1 Jan 1901" 
