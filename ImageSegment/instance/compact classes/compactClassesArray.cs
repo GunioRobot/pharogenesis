@@ -6,7 +6,7 @@ compactClassesArray
 	ind _ 2. 	"skip version word, first object"
 	"go past extra header words"
 	(hdrBits _ (segment atPin: ind) bitAnd: 3) = 1 ifTrue: [ind _ ind+1].
-	hdrBits = 0 ifTrue: [ind _ ind+3].
+	hdrBits = 0 ifTrue: [ind _ ind+2].
 
 	[ccIndexes add: (self compactIndexAt: ind).	"0 if has class field"
 	 ind _ self objectAfter: ind.
