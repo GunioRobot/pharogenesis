@@ -1,9 +1,7 @@
 addAll: aCollection
-
 	aCollection size > (self size // 3)
-		ifTrue: 
-			["Faster to add the new elements and resort"
-			aCollection do: [:each | self addLast: each].
+		ifTrue:
+			[aCollection do: [:each | self addLast: each].
 			self reSort]
-		ifFalse: ["Faster to add the elements individually in their proper places"
-			aCollection do: [:each | self add: each]]
+		ifFalse: [aCollection do: [:each | self add: each]].
+	^ aCollection
