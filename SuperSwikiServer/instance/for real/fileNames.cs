@@ -1,3 +1,3 @@
 fileNames
 
-	^self entries collect: [ :each | each name]
+	^self entries select:[:each| each isDirectory not] thenCollect: [ :each | each name]
