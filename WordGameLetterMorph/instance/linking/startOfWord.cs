@@ -1,4 +1,3 @@
 startOfWord
-
-	(predecessor == nil or: [predecessor isBlank]) ifTrue: [^ self].
-	^ predecessor startOfWord
+	(predecessor isNil or: [predecessor isBlank]) ifTrue: [^self].
+	^predecessor startOfWord
