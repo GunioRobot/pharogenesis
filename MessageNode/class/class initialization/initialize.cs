@@ -28,4 +28,4 @@ initialize		"MessageNode initialize"
 			printIfOn:indent: printIfOn:indent:
 			printWhileOn:indent: printWhileOn:indent: printWhileOn:indent: printWhileOn:indent:
 			printToDoOn:indent: printToDoOn:indent:
-			printCase:indent: printCase:indent: printAs:indent: )
+			printCaseOn:indent: printCaseOn:indent: printAsOn:indent: )
