@@ -1,0 +1,6 @@
+PrimCallController tests.
+
+Tests are here, but this class isAbstract and won't be tested.
+Tests are done in the subclasses, which inherit the tests here.
+
+If you want to perform some more very slow tests, change doNotMakeSlowTestsFlag in >>setUp.
