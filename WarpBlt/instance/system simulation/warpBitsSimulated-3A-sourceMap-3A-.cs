@@ -1,3 +1,3 @@
 warpBitsSimulated: n sourceMap: sourceMap
 	"Simulate WarpBlt"
-	BitBltSimulation warpBitsFrom: self.
+	Smalltalk at: #BitBltSimulation ifPresent:[:bb| bb warpBitsFrom: self].
