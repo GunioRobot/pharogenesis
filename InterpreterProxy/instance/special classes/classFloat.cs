@@ -1,0 +1,2 @@
+classFloat
+	^Float
