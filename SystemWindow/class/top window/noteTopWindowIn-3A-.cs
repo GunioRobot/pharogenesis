@@ -5,7 +5,7 @@ noteTopWindowIn: aWorld
 	aWorld ifNil: [^ self].
 	newTop _ nil.
 	aWorld submorphsDo:
-		[:m | (m isKindOf: SystemWindow) ifTrue:
+		[:m | (m isSystemWindow) ifTrue:
 			[(newTop == nil and: [m activeOnlyOnTop])
 				ifTrue: [newTop _ m].
 			(m model isKindOf: Project)
