@@ -13,5 +13,5 @@ mapClass: newClass origName: originalName
 		classVariableNames: ''
 		poolDictionaries: ''
 		category: 'Obsolete'.
-	Smalltalk changes removeClassChanges: fakeClass name.	"reduce clutter"
+	ChangeSet current removeClassChanges: fakeClass name.	"reduce clutter"
 	^ fakeClass
