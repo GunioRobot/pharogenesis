@@ -1,5 +1,5 @@
 initialize
 	super initialize.
-	color _ Color black.
+	borderWidth _ 0.
 	textStyle _ TextStyle default copy.
 	wrapFlag _ true.
