@@ -1,6 +1,4 @@
 displayOn: aPort
-	bitsValid ifFalse: [^ self].
-	windowBits displayOnPort: aPort
-		at: (self isCollapsed
-			ifTrue: [self displayBox origin]
-			ifFalse: [self displayBox origin - (0@labelFrame height)])
+	bitsValid ifFalse:
+		[^ Display clippingTo: aPort clipRect do: [super display]].
+	windowBits displayOnPort: aPort at: self windowOrigin
