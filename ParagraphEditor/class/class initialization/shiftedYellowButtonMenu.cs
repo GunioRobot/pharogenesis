@@ -1,44 +1,40 @@
 shiftedYellowButtonMenu
-	| ww |
 	"Answer the menu to be presented when the yellow button is pressed while the shift key is down"
 
-^ SelectionMenu fromArray: (Array streamContents: [:strm | 
-	strm nextPutAll: #(
-		('set font... (k)'					offerFontMenu)
-		('set style... (K)'					changeStyle)
-		('set alignment...'				chooseAlignment)
-		-								).
-	(ww _ World) isMorph ifTrue: [
-		(ww valueOfProperty: #universalTiles ifAbsent: [false]) ifTrue: [
-			strm nextPutAll: #(
-				('tiles from it'			selectionAsTiles))]].
-
-	strm nextPutAll: #(
-		('explain'						explain)
-		('pretty print'					prettyPrint)
-		('pretty print with color'		prettyPrintWithColor)
-		('file it in'						fileItIn)
-		('recognizer (r)'					recognizeCharacters)
-		('spawn (o)'						spawn)
-		-
-		('definition of word'				wordDefinition)
-		('verify spelling of word'		verifyWordSpelling)
-"		('spell check it'					spellCheckIt)	"
-		('translate it'					translateIt)
-		('choose language'				languagePrefs)
-		-
-		('browse it (b)'					browseIt)
-		('senders of it (n)'				sendersOfIt)
-		('implementors of it (m)'		implementorsOfIt)
-		('references to it (N)'			referencesToIt)
-		('selectors containing it (W)'		methodNamesContainingIt)
-		('method strings with it (E)'		methodStringsContainingit)
-		('method source with it'			methodSourceContainingIt)
-		-
-		('save contents to file...'			saveContentsInFile)
-		('send contents to printer'		sendContentsToPrinter)
-		('printer setup'					printerSetup)
-		-
-		('special menu...'				presentSpecialMenu)
-		('more...'						yellowButtonActivity))]).
-
+	^ SelectionMenu fromArray: {
+		{'set font... (k)' translated.					#offerFontMenu}.
+		{'set style... (K)' translated.					#changeStyle}.
+		{'set alignment...' translated.				#chooseAlignment}.
+		#-.
+		{'explain' translated.						#explain}.
+		{'pretty print' translated.					#prettyPrint}.
+		{'pretty print with color' translated.		#prettyPrintWithColor}.
+		{'file it in (G)' translated.					#fileItIn}.
+		{'tiles from it' translated.					#selectionAsTiles}.
+		{'recognizer (r)' translated.					#recognizeCharacters}.
+		{'spawn (o)' translated.						#spawn}.
+		#-.
+		{'definition of word' translated.				#wordDefinition}.
+		{'verify spelling of word' translated.		#verifyWordSpelling}.
+		{'translate it' translated.						#translateIt}.
+		{'choose language' translated.				#languagePrefs}.
+		#-.
+		{'browse it (b)' translated.					#browseIt}.
+		{'senders of it (n)' translated.				#sendersOfIt}.
+		{'implementors of it (m)' translated.		#implementorsOfIt}.
+		{'references to it (N)' translated.			#referencesToIt}.
+		#-.
+		{'selectors containing it (W)' translated.	#methodNamesContainingIt}.
+		{'method strings with it (E)' translated.	#methodStringsContainingit}.
+		{'method source with it' translated.		#methodSourceContainingIt}.
+		{'class names containing it' translated.	#classNamesContainingIt}.
+		{'class comments with it' translated.		#classCommentsContainingIt}.
+		{'change sets with it' translated.			#browseChangeSetsWithSelector}.
+		#-.
+		{'save contents to file...' translated.		#saveContentsInFile}.
+		{'send contents to printer' translated.		#sendContentsToPrinter}.
+		{'printer setup' translated.					#printerSetup}.
+		#-.
+		{'special menu...' translated.				#presentSpecialMenu}.
+		{'more...' translated.							#yellowButtonActivity}.
+	}
