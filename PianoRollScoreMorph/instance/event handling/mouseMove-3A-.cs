@@ -16,7 +16,7 @@ mouseMove: evt
 		(soundsPlaying includesKey: m)
 			ifFalse: [sound _ m soundOfDuration: 999.0.
 					soundsPlaying at: m put: sound.
-					sound play]].
+					SoundPlayer resumePlaying: sound quickStart: false]].
 	soundsPlaying keys do:
 		[:m |  "Remove any sounds no longer in selection."
 		(noteMorphs includes: m)
