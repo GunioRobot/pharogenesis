@@ -1,4 +1,6 @@
 localPort
-	self waitForConnectionUntil: Socket standardDeadline.
-	self isConnected ifFalse: [^0 ].
+	self isWaitingForConnection
+		ifFalse: [[self waitForConnectionFor: Socket standardTimeout]
+				on: ConnectionTimedOut
+				do: [:ex | ^ 0]].
 	^ self primSocketLocalPort: socketHandle
