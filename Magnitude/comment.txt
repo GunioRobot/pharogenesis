@@ -1,1 +1,8 @@
-I am an abstract representation of objects that measure something linear. Examples are dates, times, and numbers.
+Magnitude has methods for dealing with linearly ordered collections.
+
+Subclasses represent dates, times, and numbers.
+
+Example for interval-testing (answers a Boolean):
+	7 between: 5 and: 10 
+
+No instance-variables.
