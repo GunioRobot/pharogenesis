@@ -1,0 +1,2 @@
+showSplash
+	^showSplash
