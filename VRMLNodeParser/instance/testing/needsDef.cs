@@ -1,0 +1,2 @@
+needsDef
+	^defName notNil
