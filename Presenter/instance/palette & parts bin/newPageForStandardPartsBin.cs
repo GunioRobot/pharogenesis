@@ -1,7 +1,8 @@
 newPageForStandardPartsBin
 	| aPage |
-	aPage _ PasteUpMorph new.
-	aPage color: Color white; padding: 10.
+	aPage _ PasteUpMorph new extent:  361@175.
+	aPage color: Color white; padding: 6.
 	aPage autoLineLayout: true.
-	aPage isPartsBin: true; openToDragNDrop: false.
+	aPage isPartsBin: true; disableDragNDrop.
+	aPage setProperty: #alwaysShowThumbnail toValue: true.
 	^ aPage
