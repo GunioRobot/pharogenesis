@@ -5,7 +5,9 @@ declareAndPossiblyRename: classThatIsARoot
 	catInstaller _ [
 		classThatIsARoot superclass name == #Player 
 			ifTrue: [classThatIsARoot category: Object categoryForUniclasses]
-			ifFalse: [classThatIsARoot category: 'Morphic-Imported'].
+			ifFalse: [(classThatIsARoot superclass name beginsWith: 'WonderLandActor')
+				ifTrue: [classThatIsARoot category: 'Balloon3D-UserObjects']
+				ifFalse: [classThatIsARoot category: 'Morphic-Imported']].
 	].
 	classThatIsARoot superclass addSubclass: classThatIsARoot.
 	(Smalltalk includesKey: classThatIsARoot name) ifFalse: [
@@ -25,7 +27,7 @@ declareAndPossiblyRename: classThatIsARoot
 	(existing isKindOf: Class) ifTrue: [
 		classThatIsARoot isSystemDefined not ifTrue: [
 			"UniClass.  give it a new name"
-			classThatIsARoot setName: Player chooseUniqueClassName.
+			classThatIsARoot setName: classThatIsARoot baseUniclass chooseUniqueClassName.
 			catInstaller value.	"must be after new name"
 			^ Smalltalk at: classThatIsARoot name put: classThatIsARoot].
 		"Take the incoming one"
