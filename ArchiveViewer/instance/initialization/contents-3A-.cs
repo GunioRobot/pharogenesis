@@ -1,0 +1,2 @@
+contents: aText
+	self shouldNotImplement.
