@@ -15,7 +15,7 @@ senders of it (n)
 implementors of it (m)
 references to it (N)
 selectors containing it (W)
-method strings with it
+method strings with it (E)
 method source with it
 special menu...
 more...' 
