@@ -3,8 +3,8 @@ initialize
 	 1/12/96 sw: added senders of it, etc.  1/15/96 sw: explain
 	 1/22/96 sw: cmd keys detailed
 	 1/24/96 sw: added find; moved many items to shifted side etc.
-	 1/26/96 sw: made compatible with paragraph editor's version; I'm not clear on when/how this guy gets used (seemingly eg in a workspace) vs when the paragraph editor's does (seemingly in browsers)
-	 2/29/96 sw: correct cmd-key equivalent for do again, and add set-search-string"
+	 : made compatible with paragraph editor's version; I'm not clear on when/how this guy gets used (seemingly eg in a workspace) vs when the paragraph editor's does (seemingly in browsers)
+	 : correct cmd-key equivalent for do again, and add set-search-string"
 
 	CodeYellowButtonMenu _ 
 		PopUpMenu 
@@ -22,9 +22,10 @@ print it (p)
 inspect it (i)
 accept (s)
 cancel (l)
+show bytecodes
 more...' 
-		lines: #(3 5  8 11 13).
+		lines: #(3 5 8 11 13 14).
 	CodeYellowButtonMessages _ 
-		#(find findAgain setSearchString again undo copySelection cut paste doIt printIt inspectIt accept cancel shiftedYellowButtonActivity)
+		#(find findAgain setSearchString again undo copySelection cut paste doIt printIt inspectIt accept cancel showBytecodes shiftedYellowButtonActivity)
 
 	"StringHolderController initialize"
