@@ -1,0 +1,2 @@
+nameWithVersionLabel
+	^name, ' (', self versionLabel, ')'
