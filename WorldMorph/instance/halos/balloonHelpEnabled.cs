@@ -1,0 +1,2 @@
+balloonHelpEnabled
+	^ BalloonMorph mouseOverEnabled 
