@@ -1,0 +1,2 @@
+openAsMorph
+	^ self morphicWindow openInWorld
