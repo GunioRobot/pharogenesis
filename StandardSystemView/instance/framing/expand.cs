@@ -8,7 +8,7 @@ expand
 			collapsedViewport _ self viewport.
 			subViews _ savedSubViews.
 			self window: self defaultWindow.
-			labelFrame borderWidthLeft: 2 right: 2 top: 2 bottom: 0.
+			labelFrame borderWidthLeft: 2 right: 2 top: 2 bottom: 2.
 			savedSubViews _ nil.
 			self resizeTo: newFrame.
 			self displayDeEmphasized]
