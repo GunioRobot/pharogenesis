@@ -1,0 +1,3 @@
+changeKind
+
+	^self class changeKind
