@@ -1,5 +1,9 @@
 copyWithTempNames: tempNames
-	| tempStr |
+	| tempStr compressed |
 	tempStr _ String streamContents:
 		[:strm | tempNames do: [:n | strm nextPutAll: n; space]].
-	^ self copyWithTrailerBytes: (self qCompress: tempStr)
+	compressed := self qCompress: tempStr firstTry: true.
+	compressed ifNil:
+		["failure case (tempStr too big) will just decompile with tNN names"
+		^ self copyWithTrailerBytes: #(0 0 0 0)].
+	^ self copyWithTrailerBytes: compressed
