@@ -4,7 +4,7 @@ keyAtValue: value ifAbsent: exceptionBlock
 	| theKey |
 	1 to: self basicSize do:
 		[:index |
-		value == (array at: index)
+		value = (array at: index)
 			ifTrue:
 				[(theKey _ self basicAt: index) == nil
 					ifFalse: [^ theKey]]].
