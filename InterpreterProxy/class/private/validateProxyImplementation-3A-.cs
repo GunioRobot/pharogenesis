@@ -1,6 +1,7 @@
 validateProxyImplementation: anInterpreter 
 	"InterpreterProxy validateProxyImplementation: Interpreter"
 	"InterpreterProxy validateProxyImplementation: DynamicInterpreter"
+
 	| proxyClass catList |
 	proxyClass _ InterpreterProxy.
 	catList _ proxyClass organization categories copy asOrderedCollection.
@@ -9,4 +10,5 @@ validateProxyImplementation: anInterpreter
 	catList do:[:categ|
 		(proxyClass organization listAtCategoryNamed: categ) do:[:selector|
 			(anInterpreter canUnderstand: selector) 
-				ifFalse:[self notify: selector, ' is not implemented in ', anInterpreter name]]].
+				ifFalse:
+					[self notifyWithLabel: selector, ' is not implemented in ', anInterpreter name]]]
