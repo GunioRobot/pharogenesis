@@ -1,13 +1,18 @@
 markAndTrace: oop
-	"Mark all objects reachable from the given one. Trace from the given object even if it is old or already marked. Mark it only if it is a young object."
+	"Mark all objects reachable from the given one.
+	Trace from the given object even if it is old.
+	Do not trace if it is already marked.
+	Mark it only if it is a young object."
 	"Tracer state variables:
 		child		object being examined
 		field		next field of child to examine
 		parentField	field where child was stored in its referencing object"
 
 	| header lastFieldOffset action |
-	"record tracing status in object's header"
 	header _ self longAt: oop.
+	(header bitAnd: MarkBit) = 0 ifFalse: [^ 0  "already marked"].
+
+	"record tracing status in object's header"
 	header _ (header bitAnd: AllButTypeMask) bitOr: HeaderTypeGC.
 	oop >= youngStart ifTrue: [ header _ header bitOr: MarkBit ].  "mark only if young"
 	self longAt: oop put: header.
