@@ -1,0 +1,3 @@
+minHeight
+
+	^ self extent y
