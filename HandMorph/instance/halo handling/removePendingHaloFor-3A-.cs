@@ -1,3 +1,3 @@
 removePendingHaloFor: aMorph
 	"Get rid of pending balloon help or halo actions."
-	self removeAlarm: #spawnHaloFor:.
+	self removeAlarm: #spawnMagicHaloFor:.
