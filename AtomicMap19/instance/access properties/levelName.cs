@@ -1,0 +1,2 @@
+levelName
+	^ 'Malic Acid' translated
