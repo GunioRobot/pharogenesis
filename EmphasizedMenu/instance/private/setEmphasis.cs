@@ -3,7 +3,7 @@ setEmphasis
 
 	| selStart selEnd currEmphasis |
 	labelString _ labelString asText.
-	emphases size == 0 ifTrue: [^ self].
+	emphases isEmptyOrNil ifTrue: [^ self].
 	selStart _ 1.
 	1 to: selections size do:
 		[:line |
