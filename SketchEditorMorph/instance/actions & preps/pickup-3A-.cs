@@ -6,7 +6,7 @@ pickup: evt
 	lastEvent == nil ifFalse: [
 			"Last draw will stick out, must erase the area"
 			oldRect _ strokeOrigin rect: lastEvent cursorPoint + (14@14).
-			self restoreRect: oldRect].
-	formCanvas frameAndFillRectangle: rect fillColor: Color transparent
+			self restoreRect: (oldRect insetBy: -2)].
+	formCanvas frameAndFillRectangle: (rect insetBy: -2) fillColor: Color transparent
 		borderWidth: 2 borderColor: Color gray.
-	self invalidRect: rect.
+	self invalidRect: (rect insetBy: -2).
