@@ -1,0 +1,2 @@
+packageInfo
+	^ PackageInfo named: name
