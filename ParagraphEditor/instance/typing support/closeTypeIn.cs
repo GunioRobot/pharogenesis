@@ -8,7 +8,7 @@ closeTypeIn
 	| begin start stop |
 	beginTypeInBlock == nil ifFalse:
 		[(UndoMessage sends: #noUndoer) ifTrue: "should always be true, but just in case..."
-			[begin _ beginTypeInBlock stringIndex.
+			[begin _ self startOfTyping.
 			start _ startBlock stringIndex.
 			stop _ stopBlock stringIndex.
 			self undoer: #undoAndReselect:redoAndReselect:
