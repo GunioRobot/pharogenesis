@@ -1,0 +1,2 @@
+closeRelativeAttribute
+	^ TextEmphasis underlined
