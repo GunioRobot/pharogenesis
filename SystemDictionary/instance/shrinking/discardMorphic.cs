@@ -1,22 +1,26 @@
 discardMorphic
-   "Smalltalk discardMorphic"
 	"Discard Morphic.
-Updated for 2.8 TPR"
-
+	Updated for 2.8 TPR"
+	"Smalltalk discardMorphic"
+	"Check that we are in an MVC Project and that there are no
+	Morphic Projects
+	or WorldMorphViews."
 	| subs |
-	"Check that we are in an MVC Project and that there are no Morphic Projects
-		or WorldMorphViews."
-	Utilities clobberFlapTabList.
-	Smalltalk discardFlash.
-	Smalltalk discardTrueType.
-	subs _ OrderedCollection new.
-	Morph allSubclassesWithLevelDo: [:c :i | subs addFirst: c]
+	Flaps clobberFlapTabList.
+	self discardFlash.
+	self discardTrueType.
+	subs := OrderedCollection new.
+	Morph
+		allSubclassesWithLevelDo: [:c :i | subs addFirst: c]
 		startingLevel: 0.
-	subs do: [:c | c removeFromSystem].
-	Smalltalk removeClassNamed: #CornerRounder.
-	Smalltalk removeKey: #BalloonEngineConstants ifAbsent: [].
+	subs
+		do: [:c | c removeFromSystem].
+	self removeClassNamed: #CornerRounder.
+	self
+		removeKey: #BalloonEngineConstants
+		ifAbsent: [].
 	SystemOrganization removeCategoriesMatching: 'Balloon-*'.
 	SystemOrganization removeCategoriesMatching: 'Morphic-*'.
 	SystemOrganization removeSystemCategory: 'Graphics-Transformations'.
 	SystemOrganization removeSystemCategory: 'ST80-Morphic'.
-	ScriptingSystem _ nil.
+	ScriptingSystem := nil
