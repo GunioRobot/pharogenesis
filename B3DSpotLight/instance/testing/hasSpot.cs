@@ -1,0 +1,2 @@
+hasSpot
+	^true
