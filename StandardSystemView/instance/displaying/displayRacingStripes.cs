@@ -4,8 +4,8 @@ displayRacingStripes
 	labelDisplayBox _ self labelDisplayBox.
 	top _ labelDisplayBox top + 3.
 	bottom _ labelDisplayBox bottom - 3.
-	stripes _ Bitmap with: (self labelColor pixelWordForDepth: Display depth)
-			with: (Color black pixelWordForDepth: Display depth).
+	stripes _ Bitmap with: (Display pixelWordFor: self labelColor)
+			with: (Display pixelWordFor: Color black).
 	top even ifFalse: [stripes swap: 1 with: 2].
 
 	left _ labelDisplayBox left + 3.
