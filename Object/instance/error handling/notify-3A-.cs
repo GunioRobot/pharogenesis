@@ -2,9 +2,6 @@ notify: aString
 	"Create and schedule a Notifier with the argument as the message in 
 	order to request confirmation before a process can proceed."
 
-	Debugger
-		openContext: thisContext
-		label: 'Notifier'
-		contents: aString
+	Warning signal: aString
 
 	"nil notify: 'confirmation message'"
