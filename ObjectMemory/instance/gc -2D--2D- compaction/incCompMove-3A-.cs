@@ -9,8 +9,8 @@ incCompMove: bytesFreed
 		next _ self objectAfterWhileForwarding: oop.
 		(self isFreeObject: oop) ifFalse: [
 			"a moving object; unwind its forwarding block"
-			fwdBlock _ (self longAt: oop) bitAnd: AllButMarkBitAndTypeMask.
-			checkAssertions ifTrue: [ self fwdBlockValidate: fwdBlock ].
+			fwdBlock _ ((self longAt: oop) bitAnd: AllButMarkBitAndTypeMask) << 1.
+			DoAssertionChecks ifTrue: [ self fwdBlockValidate: fwdBlock ].
 			newOop _ self longAt: fwdBlock.
 			header _ self longAt: fwdBlock + 4.
 			self longAt: oop put: header.  "restore the original header"
@@ -40,7 +40,7 @@ incCompMove: bytesFreed
 		self setSizeOfFree: newFreeChunk to: bytesFreed.
 	].
 
-	checkAssertions ifTrue: [
+	DoAssertionChecks ifTrue: [
 		(self objectAfter: newFreeChunk) = (self oopFromChunk: compEnd)
 			ifFalse: [ self error: 'problem creating free chunk after compaction' ].
 	].
