@@ -1,0 +1,2 @@
+internalModules
+	^vmMaker internalModules
