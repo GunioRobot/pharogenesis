@@ -6,7 +6,7 @@ rotateBy: deg magnify: scale smoothing: cellSize
 	side _ 1 + ((width*width) + (height*height)) asFloat sqrt asInteger.
 	bigSide _ (side * scale) rounded.
 	rot _ Form extent: bigSide@bigSide depth: self depth.
-	warp _ (WarpBlt toForm: rot)
+	warp _ (WarpBlt current toForm: rot)
 		sourceForm: self;
 		colorMap: (self colormapIfNeededForDepth: depth);
 		cellSize: cellSize;  "installs a new colormap if cellSize > 1"
