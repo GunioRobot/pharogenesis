@@ -5,7 +5,8 @@ tallySendsTo: receiver inBlock: aBlock showTree: treeOption
 	to that receiver are tallied.
 	Results are presented as leaves, sorted by frequency,
 	preceded, optionally, by the whole tree."
-	| prev current tallies |
+	| prev tallies startTime totalTime |
+	startTime _ Time millisecondClockValue.
 	tallies _ MessageTally new class: aBlock receiver class
 							method: aBlock method.
 	prev _ aBlock.
@@ -18,12 +19,15 @@ tallySendsTo: receiver inBlock: aBlock showTree: treeOption
 				prev sender == nil ifFalse: 
 					["call only"
 					(receiver == nil or: [current receiver == receiver])
-						ifTrue: [tallies tally: current]].
+						ifTrue: [tallies tally: current by: 1]].
 				prev _ current]].
 
+	totalTime _ Time millisecondClockValue - startTime // 1000.0 roundTo: 0.01.
 	StringHolderView open: (StringHolder new contents:
 		(String streamContents:
 			[:s |
+			s nextPutAll: 'This simulation took ' , totalTime printString
+							, ' seconds.'; cr.
 			treeOption
 				ifTrue: [tallies fullPrintOn: s tallyExact: true orThreshold: 0]
 				ifFalse: [tallies leavesPrintOn: s tallyExact: true orThreshold: 0].
