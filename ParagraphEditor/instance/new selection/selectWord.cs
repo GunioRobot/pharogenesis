@@ -4,7 +4,7 @@ selectWord
 	| openDelimiter closeDelimiter direction match level leftDelimiters rightDelimiters
 	string here hereChar start stop |
 	string _ paragraph text string.
-	here _ startBlock stringIndex.
+	here _ self pointIndex.
 	(here between: 2 and: string size)
 		ifFalse: ["if at beginning or end, select entire string"
 			^self selectFrom: 1 to: string size].
