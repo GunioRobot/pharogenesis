@@ -4,8 +4,9 @@ buildAggregateChangeSet
 	| aggregateChangeSet |
 	aggregateChangeSet _ self existingOrNewChangeSetNamed: 'Aggregate'.
 	aggregateChangeSet clear.
-	(self gatherChangeSets copyWithout: aggregateChangeSet) do:
-		[:aChangeSet | aggregateChangeSet assimilateAllChangesFoundIn: aChangeSet]
+	self allChangeSets do:
+		[:aChangeSet | aChangeSet == aggregateChangeSet ifFalse:
+			[aggregateChangeSet assimilateAllChangesFoundIn: aChangeSet]]
 
 "ChangeSorter buildAggregateChangeSet"
 
