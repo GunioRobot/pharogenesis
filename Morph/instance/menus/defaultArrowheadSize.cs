@@ -1,0 +1,3 @@
+defaultArrowheadSize
+	
+	^ self class defaultArrowheadSize
