@@ -1,0 +1,2 @@
+representativeButtonWithColor: aColor inPanel: aPreferencesPanel
+	self subclassResponsibility 
