@@ -1,8 +1,8 @@
-doDup: evt fromHalo: halo handle: dupHandle.
+doDup: evt fromHalo: halo handle: dupHandle
 
-	selectedItems _ selectedItems collect: [:m | m duplicate].
+	selectedItems _ self duplicateMorphCollection: selectedItems.
 	selectedItems do: [:m | self owner addMorph: m].
-	dupDelta == nil
+	dupDelta isNil
 		ifTrue: ["First duplicate operation -- note starting location"
 				dupLoc _ self position.
 				evt hand grabMorph: self.
