@@ -4,12 +4,12 @@ objectForDataStream: refStrm
 	| clone bookUrl bb stem ind |
 	(bookMorph class == String) & (page class == String) ifTrue: [
 		^ super objectForDataStream: refStrm].
-	(bookMorph == nil) & (page class == String) ifTrue: [
+	(bookMorph isNil) & (page class == String) ifTrue: [
 		^ super objectForDataStream: refStrm].
-	(bookMorph == nil) & (page url ~~ nil) ifTrue: [
+	(bookMorph isNil) & (page url notNil) ifTrue: [
 		^ super objectForDataStream: refStrm].
-	(bookMorph == nil) & (page url == nil) ifTrue: [
-		self error: 'page should already have a url'.
+	(bookMorph isNil) & (page url isNil) ifTrue: [
+		self error: 'page should already have a url' translated.
 		"find page's book, and remember it"
 		"bookMorph _ "].
 	
