@@ -50,7 +50,7 @@ initialize2
 "displaying" "printing"
 "system primitives" compare:with:collated: 
 "Celeste" withCRs
-"internet" decodeMimeHeader decodeQuotedPrintable replaceHtmlCharRefs unescapePercents withInternetLineEndings withSqueakLineEndings withoutQuoting
+"internet" decodeMimeHeader decodeQuotedPrintable unescapePercents withInternetLineEndings withSqueakLineEndings withoutQuoting
 "testing" isAllSeparators lastSpacePosition
 "paragraph support" indentationIfBlank:
 "arithmetic" ) do: [:sel | Approved add: sel].
