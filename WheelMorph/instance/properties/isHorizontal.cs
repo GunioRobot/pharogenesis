@@ -1,0 +1,2 @@
+isHorizontal
+	^ bounds isWide
