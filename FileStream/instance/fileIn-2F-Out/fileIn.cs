@@ -3,4 +3,4 @@ fileIn
 	to eliminate remote sharing conflicts."
 
 	self readOnly.
-	^super fileIn
+	self fileInAnnouncing: 'Loading ', self localName
