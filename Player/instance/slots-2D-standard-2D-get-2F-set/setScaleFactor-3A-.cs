@@ -1,10 +1,11 @@
 setScaleFactor: aNumber
-
+	| aCostume |
+	aCostume _ self costume.
 	1.0 = aNumber
-		ifTrue: [
-			0.0 = self getHeading ifTrue: [
-				costume isFlexMorph ifTrue: [costume removeFlexShell].
+		ifTrue:
+			[0.0 = self getHeading ifTrue:
+				[aCostume isFlexMorph ifTrue: [aCostume removeFlexShell].
 				^ self]]
-		ifFalse: [
-			costume isFlexMorph ifFalse: [costume addFlexShell]].
-	costume scale: (aNumber asFloat max: 0.125).
+		ifFalse:
+			[aCostume isFlexMorph ifFalse: [aCostume addFlexShell]].
+	costume scale: (aNumber asFloat max: 0.125)
