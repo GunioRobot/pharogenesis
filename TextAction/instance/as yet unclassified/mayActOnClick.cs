@@ -1,0 +1,3 @@
+mayActOnClick
+
+	^ true
