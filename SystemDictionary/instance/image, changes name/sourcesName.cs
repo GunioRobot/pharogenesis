@@ -1,4 +1,4 @@
 sourcesName
-	"Answer the sources file name used in this Smalltalk release."
+	"Answer the full path for to the sources file, which is initially assumed to be in the VM's directory."
 
-	^ self vmPath, 'ST-80vers1.sources'
+	^ self vmPath, 'SqueakV1.sources'
