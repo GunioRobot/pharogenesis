@@ -1,2 +1,2 @@
 chooseListFont
-	self chooseFontWithPrompt: 'standard list font' andSendTo: self withSelector: #setListFontTo:
+	self chooseFontWithPrompt: 'Choose the standard list font' translated andSendTo: self withSelector: #setListFontTo: highlight: self standardListFont
