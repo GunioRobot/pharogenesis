@@ -4,4 +4,4 @@ methodSourceContainingIt
 	self lineSelectAndEmptyCheck: [^ self].
 	(self confirm: 'This will take a few minutes.
 Shall I proceed?') ifFalse: [^ self].
-	Smalltalk browseMethodsWithSourceString: self selection string
+	self systemNavigation browseMethodsWithSourceString: self selection string
