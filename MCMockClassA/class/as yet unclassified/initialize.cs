@@ -1,0 +1,2 @@
+initialize
+	CVar _ #initialized
