@@ -1,6 +1,8 @@
 erasePixelsOfColor: evt
 
-	| c |
+	| c r |
 	c _ evt hand chooseColor.
 	originalForm mapColor: c to: Color transparent.
-	self form: (originalForm trimToPixelValue: Color transparent orNot: true).
+	r _ originalForm rectangleEnclosingPixelsNotOfColor: Color transparent.
+	self form: (originalForm copy: r).
+
