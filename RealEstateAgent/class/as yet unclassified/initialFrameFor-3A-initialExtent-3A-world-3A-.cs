@@ -23,7 +23,7 @@ initialFrameFor: aView initialExtent: initialExtent world: aWorld
 	(self standardPositionsInWorld: aWorld) do:  "First see if one of the standard positions is free"
 		[:aPosition | (allOrigins includes: aPosition)
 			ifFalse:
-				[^ (aPosition extent: initialExtent) squishedWithin: allowedArea]].
+				[^ (aPosition extent: initialExtent) translatedAndSquishedToBeWithin: allowedArea]].
 
 	staggerOrigin _ (self standardPositionsInWorld: aWorld) first.  "Fallback: try offsetting from top left"
 	putativeOrigin _ staggerOrigin.
@@ -35,5 +35,5 @@ initialFrameFor: aView initialExtent: initialExtent world: aWorld
 				whileTrue:
 					[(allOrigins includes: putativeOrigin)
 						ifFalse:
-							[^ (putativeOrigin extent: initialExtent) squishedWithin: allowedArea]].
-	^ (self scrollBarSetback @ self screenTopSetback extent: initialExtent) squishedWithin: allowedArea
+							[^ (putativeOrigin extent: initialExtent) translatedAndSquishedToBeWithin: allowedArea]].
+	^ (self scrollBarSetback @ self screenTopSetback extent: initialExtent) translatedAndSquishedToBeWithin: allowedArea
