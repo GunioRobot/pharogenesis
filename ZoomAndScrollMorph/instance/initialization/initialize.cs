@@ -1,8 +1,6 @@
 initialize
-
-	usingBalloon _ true.
+	"initialize the state of the receiver"
 	super initialize.
-	color _ Color lightGray.
-	borderColor _ Color red.
-	self createInteriorTransform.
-
+	""
+	usingBalloon _ true.
+	self createInteriorTransform 
