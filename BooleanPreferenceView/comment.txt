@@ -1,0 +1,1 @@
+I am responsible for building the visual representation of a preference that accepts true and false values
