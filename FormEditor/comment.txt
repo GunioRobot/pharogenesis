@@ -1,1 +1,4 @@
 I represent the basic editor for creating and modifying Forms. This is intended to be an easy to use general-purpose picture (bitMap) editor. I am a kind of MouseMenuController that creates a yellow button menu for accepting and canceling edits. My instances give up control if the cursor is outside the FormView or if a key on the keyboard is pressed.
+
+The form to be edited is stored in instance variable model.
+The instance variable form references the paint brush.
