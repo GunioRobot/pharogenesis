@@ -3,6 +3,7 @@ longAt: index put: value bigEndian: aBool
 	| b0 b1 b2 b3 |
 	b0 _ value bitShift: -24.
 	b0 _ (b0 bitAnd: 16r7F) - (b0 bitAnd: 16r80).
+	b0 < 0 ifTrue:[b0 := 256 + b0].
 	b1 _ (value bitShift: -16) bitAnd: 255.
 	b2 _ (value bitShift: -8) bitAnd: 255.
 	b3 _ value bitAnd: 255.
