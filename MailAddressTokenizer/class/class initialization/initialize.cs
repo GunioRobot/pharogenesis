@@ -1,7 +1,7 @@
 initialize
 	"Initalize class variables using   MailAddressTokenizer initialize"
 
-	| skipCharacters |
+	| atomChars |
 
 	CSParens _ CharacterSet empty.
 	CSParens addAll: '()'.
@@ -9,12 +9,14 @@ initialize
 	CSSpecials _ CharacterSet empty.
 	CSSpecials addAll: '()<>@,;:\".[]'.
 
-	skipCharacters _ CharacterSet separators.
-	0 to: 31 do: [ :c |
-		skipCharacters add: (Character value: c) ].
-	skipCharacters add: (Character value: 127).
+	CSNonSeparators _ CharacterSet separators complement.
 
-	CSNonSeparators _ skipCharacters complement.
 
-	CSNonAtom _ skipCharacters addAll: CSSpecials.
+	"(from RFC 2822)"
+	atomChars := CharacterSet empty.
+	atomChars addAll: ($A to: $Z).
+	atomChars addAll: ($a to: $z).
+	atomChars addAll: ($0 to: $9).
+	atomChars addAll: '!#$%^''*+-/=?^_`{|}~'.
 
+	CSNonAtom :=  atomChars complement.
