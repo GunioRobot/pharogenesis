@@ -1,0 +1,2 @@
+mouseUpStroke: evt
+	^self createPoohActor
