@@ -1,0 +1,3 @@
+closeMorph
+
+  self delete
