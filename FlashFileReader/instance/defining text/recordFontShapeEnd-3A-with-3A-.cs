@@ -1,0 +1,1 @@
+recordFontShapeEnd: fontId with: charId
