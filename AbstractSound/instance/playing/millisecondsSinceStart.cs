@@ -1,0 +1,3 @@
+millisecondsSinceStart
+
+	^ mSecsSinceStart
