@@ -1,7 +1,6 @@
-methodsFor: aString 
-	"Answer a ClassCategoryReader for accessing the messages in the method 
-	dictionary category, aString, of the receiver."
+methodsFor: categoryName 
+	"Answer a ClassCategoryReader for compiling the messages in the category, categoryName, of the receiver."
 
-	^ClassCategoryReader class: self category: aString asSymbol
+	^ ClassCategoryReader new setClass: self category: categoryName asSymbol
 
-	"False methodsFor: 'logical operations' inspect"
+	"(False methodsFor: 'logical operations') inspect"
