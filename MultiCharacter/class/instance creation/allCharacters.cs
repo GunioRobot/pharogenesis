@@ -1,0 +1,3 @@
+allCharacters
+
+	self shouldNotImplement.
