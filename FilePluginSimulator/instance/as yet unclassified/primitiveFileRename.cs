@@ -1,0 +1,2 @@
+primitiveFileRename
+	^interpreterProxy primitiveFileRename
