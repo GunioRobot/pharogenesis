@@ -1,0 +1,2 @@
+mouseOverHalosOff
+	mouseOverTimes _ nil
