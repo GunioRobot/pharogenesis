@@ -1,3 +1,3 @@
 checkContextSelection
 
-	contextStackIndex = 0 ifTrue: [contextStackIndex _ 1]
+	contextStackIndex = 0 ifTrue: [self contextStackIndex: 1 oldContextWas: nil].
