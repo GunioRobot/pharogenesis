@@ -3,4 +3,4 @@ printOn: aStream
 
 	aStream nextPutAll: self class name.
 	aStream nextPutAll: ' on '.
-	pathName printOn: aStream.
+	pathName asSqueakPathName printOn: aStream.
