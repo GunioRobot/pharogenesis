@@ -1,11 +1,10 @@
 printKeywords: key arguments: args on: aStream indent: level
-
-	| keywords part prev arg indent thisKey |
+	| keywords prev arg indent thisKey |
 	args size = 0 
-		ifTrue: [aStream space; nextPutAll: key. ^self].
+		ifTrue: [aStream space; nextPutAll: key. ^ self].
 	keywords _ key keywords.
 	prev _ receiver.
-	1 to: args size do:
+	1 to: keywords size do:
 		[:part | arg _ args at: part.
 		thisKey _ keywords at: part.
 		(prev isMemberOf: BlockNode)
