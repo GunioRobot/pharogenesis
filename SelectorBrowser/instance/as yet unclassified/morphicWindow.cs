@@ -11,6 +11,7 @@ morphicWindow
 		text: #contents accept: #contents:notifying:
 		readSelection: #contentsSelection menu: #codePaneMenu:shifted:.
 	typeInView acceptOnCR: true.
+	typeInView hideScrollBarsIndefinitely.
 	window addMorph: typeInView frame: (0@0 corner: 0.5@0.14).
 
 	selectorListView _ PluggableListMorph on: self
