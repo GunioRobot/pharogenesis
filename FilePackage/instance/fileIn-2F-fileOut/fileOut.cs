@@ -12,4 +12,4 @@ fileOut
 	stream cr.
 	stream close.
 
-	DeepCopier new checkVariables.
+	"DeepCopier new checkVariables."
