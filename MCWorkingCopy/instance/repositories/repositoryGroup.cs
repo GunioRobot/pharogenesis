@@ -1,0 +1,2 @@
+repositoryGroup
+	^ repositoryGroup ifNil: [repositoryGroup _ MCRepositoryGroup new]
