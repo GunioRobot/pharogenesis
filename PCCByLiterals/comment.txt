@@ -1,0 +1,12 @@
+This class is for switching external prim calls (primitiveExternalCall) on and off.
+
+It is best suited for plugin testing purposes with temporarily switching plugin calls off and on. For permanently switching plugin calls off while preserving the possibility to switch them on later, you should use PCCByCompilation instead.
+
+It works by manipulating literals in the CompiledMethods:
+	Disabling works by changing the function index in the first literal of the CompiledMethod to a negative value (-2). This leads to a fast fail (value -2 is used for disabling to make a difference to the standard failed value of -1).
+	Enabling works by changing the function index in the first literal of the CompiledMethod to 0, followed by flushing the method cache. This enforces a fresh lookup.
+
+Please look into superclass PrimCallControllerAbstract for more info and the user interface.
+
+Structure:
+ No instVars here: look into superclass.
