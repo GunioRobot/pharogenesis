@@ -14,8 +14,8 @@ storeDataOn: aDataStream
 	arrayOfRoots _ tempRoots.
 	outPointers _ tempOutP.
 	state _ #activeCopy.
-	aDataStream references at: #AnImageSegment put: false.
-		"flag that there is one in this write"
+	aDataStream references at: #AnImageSegment put: false.	"the false is meaningless"
+		"This key in refs is the flag that there is an ImageSegment in this file."
 
 	"Find the receivers of blocks in the segment.  Need to get the structure of their classes into structures.  Put the receivers into references."
 	(aDataStream byteStream isKindOf: DummyStream) ifTrue: [
