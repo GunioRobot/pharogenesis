@@ -1,2 +1,2 @@
 isOtherEndConnected
-	^self socket isOtherEndClosed not
+	^socket isOtherEndClosed not
