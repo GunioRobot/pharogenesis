@@ -1,16 +1,21 @@
 initialize
 	"ObjectMemory initialize"
 
+	"Translation flags (booleans that control code generation via conditional translation):"
+	DoAssertionChecks _ false.  "generate assertion checks"
+
 	self initializeSpecialObjectIndices.
 	self initializeObjectHeaderConstants.
 
-	LargeContextSize _ 156.
-	SmallContextSize _ 76.
+	SmallContextSize _ 92.  "16 indexable fields"
+	LargeContextSize _ 252.  "56 indexable fileds.  Max with single header word."
+	LargeContextBit _ 16r40000.  "This bit set in method headers if large context is needed."
+	CtxtTempFrameStart _ 6.  "Copy of TempFrameStart in Interp"
 	NilContext _ 1.  "the oop for the integer 0; used to mark the end of context lists"
 
 	MinimumForwardTableBytes _ 16000.  "bytes reserved for forwarding table (8 bytes/entry)"
 	RemapBufferSize _ 25.
-	RootTableSize _ 1000.  "number of root table entries (4 bytes/entry)"
+	RootTableSize _ 2500.  "number of root table entries (4 bytes/entry)"
 
 	"tracer actions"
 	StartField _ 1.
