@@ -8,11 +8,10 @@ characterNotInFont
 	| illegalAsciiString saveIndex stopCondition | 
 	saveIndex _ lastIndex.
 	illegalAsciiString _ String with: (font maxAscii + 1) asCharacter.
-	stopCondition _ 
-		self scanCharactersFrom: 1 to: 1
+	stopCondition _ self scanCharactersFrom: 1 to: 1
 			in: illegalAsciiString
 			rightX: rightMargin stopConditions: stopConditions
-			displaying: self doesDisplaying.
+			kern: kern displaying: self doesDisplaying.
 	lastIndex _ saveIndex + 1.
 	stopCondition ~= (stopConditions at: EndOfRun)
 		ifTrue:	[^self perform: stopCondition]
