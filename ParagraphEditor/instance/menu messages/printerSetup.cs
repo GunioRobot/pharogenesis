@@ -1,0 +1,3 @@
+printerSetup
+	
+	TextPrinter defaultTextPrinter inspect
