@@ -41,3 +41,19 @@ Approved ifNil: [self initialize].	"Sets of allowed selectors"
 	) searchForOne asArray = #('data1 sin') ifFalse: [self error: 'should have found it'].	
 (MethodFinder new load: #((7 5) 2   (4 5) 4   (-9 4) 3)
 	) searchForOne asArray = #('data1 \\ data2') ifFalse: [self error: 'should have found it'].	
+
+(MethodFinder new load: #((7) 2   (4) 2 )
+	) searchForOne asArray = #('^ 2')  ifFalse: [self error: 'should have found it'].	
+(MethodFinder new load: {#(7). true.   #(4.1).  true.   #(1.5). false}
+	) searchForOne asArray = #('data1 >= 4.1') ifFalse: [self error: 'should have found it'].	
+(MethodFinder new load: #((35) 3   (17) 1   (5) 5)
+	) searchForOne asArray = #('data1 \\ 8') ifFalse: [self error: 'should have found it'].	
+(MethodFinder new load: #((36) 7   (50) 10 )
+	) searchForOne asArray = #('data1 quo: 5' 'data1 // 5') ifFalse: [
+		self error: 'should have found it'].	
+(MethodFinder new load: #( ((2 3) 2) 8   ((2 3) 5) 17 )
+	) searchForOne asArray = #('data1 polynomialEval: data2') ifFalse: [
+		self error: 'should have found it'].	
+(MethodFinder new load: #((2) 8   (5) 17 )
+	) searchForOne asArray = #('#(2 3) polynomialEval: data1') ifFalse: [
+		self error: 'should have found it'].	
