@@ -2,7 +2,7 @@ partitionedAdd: word1 to: word2 nBits: nBits nPartitions: nParts
 	"Add word1 to word2 as nParts partitions of nBits each.
 	This is useful for packed pixels, or packed colors"
 	| mask sum result |
-	mask _ (1 << nBits) - 1.  "partition mask starts at the right"
+	mask _ maskTable at: nBits.  "partition mask starts at the right"
 	result _ 0.
 	1 to: nParts do:
 		[:i |
