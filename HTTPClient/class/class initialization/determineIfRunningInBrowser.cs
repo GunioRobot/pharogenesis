@@ -1,0 +1,4 @@
+determineIfRunningInBrowser
+	"HTTPClient determineIfRunningInBrowser"
+
+	RunningInBrowser _ StandardFileStream isRunningAsBrowserPlugin
