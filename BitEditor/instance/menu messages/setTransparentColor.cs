@@ -1,3 +1,3 @@
 setTransparentColor
 	squareForm fillColor: Color gray.
-	color _ model transparentPixelValue
+	color _ Color transparent
