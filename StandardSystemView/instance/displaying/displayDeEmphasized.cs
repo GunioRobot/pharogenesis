@@ -1,12 +1,9 @@
 displayDeEmphasized
 	"Display this view with emphasis off.
-	If windowBits is not nil, then simply BLT"
-	bitsValid
-		ifTrue:
-		[self lock.
-		windowBits displayAt: (self isCollapsed
-			ifTrue: [self displayBox origin]
-			ifFalse: [self displayBox origin - (0@labelFrame height)])]
-		ifFalse:
-		[super display.
-		CacheBits ifTrue: [self cacheBitsAsIs]]
+	If windowBits is not nil, then simply BLT if possible,
+		but force full display for top window so color is preserved."
+	(bitsValid and: [controller ~~ ScheduledControllers activeController])
+		ifTrue: [self lock.
+				windowBits displayAt: self windowOrigin]
+		ifFalse: [super display.
+				CacheBits ifTrue: [self cacheBitsAsIs]]
