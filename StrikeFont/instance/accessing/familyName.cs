@@ -1,0 +1,3 @@
+familyName
+	^self name withoutTrailingDigits.
+
