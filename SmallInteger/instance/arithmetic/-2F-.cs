@@ -5,7 +5,7 @@
 	No Lookup. See Object documentation whatIsAPrimitive."
 
 	<primitive: 10>
-	aNumber = 0 ifTrue: [^(ZeroDivide dividend: self) signal].
+	aNumber isZero ifTrue: [^(ZeroDivide dividend: self) signal].
 	(aNumber isMemberOf: SmallInteger)
 		ifTrue: [^(Fraction numerator: self denominator: aNumber) reduced]
 		ifFalse: [^super / aNumber]
