@@ -29,7 +29,7 @@ stepToFrame: frame
 			"fullRect _ damageRecorder fullDamageRect.
 			fullRect _ (self transform localBoundsToGlobal: fullRect)."
 			fullRect _ bounds.
-			owner invalidRect: (fullRect insetBy: -1).
+			owner invalidRect: (fullRect insetBy: -1) from: self.
 		].
 	].
 	postDamage ifTrue:[
