@@ -6,7 +6,7 @@ contextStackIndex: anInteger oldContextWas: oldContext
 		ifTrue:
 			[tempNames _ sourceMap _ contents _ nil.
 			self changed: #contextStackIndex.
-			self changed: #contents.
+			self contentsChanged.
 			contextVariablesInspector object: nil.
 			receiverInspector object: self receiver.
 			^self].
@@ -14,8 +14,8 @@ contextStackIndex: anInteger oldContextWas: oldContext
 		[oldContext method ~~ self selectedContext method])
 		ifTrue:
 			[tempNames _ sourceMap _ nil.
-			contents _ self selectedContext sourceCode.
-			self changed: #contents.
+			contents _ self selectedMessage.
+			self contentsChanged.
 			self pcRange "will compute tempNamesunless noFrills"].
 	self changed: #contextStackIndex.
 	tempNames == nil
