@@ -33,7 +33,7 @@ optionalButtonsView
 
 	button _ PluggableButtonView
 		on: self
-		getState: #showDiffs
+		getState: #showingAnyKindOfDiffs
 		action: #toggleDiffing.
 	button
 		label: 'diffs' asParagraph;
