@@ -1,4 +1,4 @@
 browseChangedMessages
-	"Browse all methods in the current change set.  1/18/96 sw"
+	"Browse all methods in the current change set.  , "
 
-	Smalltalk browseChangesAndAdditions
+	ChangedMessageSet openFor: Smalltalk changes
