@@ -1,0 +1,3 @@
+pushConstantZeroBytecode
+
+	self internalPush: ConstZero.
