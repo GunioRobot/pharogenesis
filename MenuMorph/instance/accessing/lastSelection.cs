@@ -1,6 +1,4 @@
 lastSelection
 	"Return the label of the last selected item or nil."
 
-	selectedItem == nil
-		ifTrue: [^ selectedItem selector]
-		ifFalse: [^ nil].
+	selectedItem isNil ifTrue: [^selectedItem selector] ifFalse: [^nil]
