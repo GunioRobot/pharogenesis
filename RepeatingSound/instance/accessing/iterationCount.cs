@@ -1,0 +1,3 @@
+iterationCount
+
+	^ iterationCount
