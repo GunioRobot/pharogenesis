@@ -1,0 +1,2 @@
+removePackage
+	self packageOrganizer unregisterPackage: selectedPackage
