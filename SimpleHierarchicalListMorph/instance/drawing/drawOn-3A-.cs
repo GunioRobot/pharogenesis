@@ -4,4 +4,10 @@ drawOn: aCanvas
 		[aCanvas fillRectangle:
 			(((scroller transformFrom: self) invertBoundsRect: selectedMorph bounds)
 						intersect: scroller bounds)
-				color: color darker]
+				color: color blacker].
+
+	Preferences showLinesInHierarchyViews ifTrue:[
+		self drawLinesOn: aCanvas.
+	].
+
+
