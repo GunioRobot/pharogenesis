@@ -11,14 +11,15 @@ readKeyboard
 			[char _ sensor keyboardPeek.
 			(self dispatchOnCharacter: char with: typeAhead) ifTrue:
 				[self doneTyping.
+				self setEmphasisHere.
 				^self selectAndScroll; updateMarker].
 			self openTypeIn].
-		startBlock = stopBlock ifFalse: "save highlighted characters"
+		self hasSelection ifTrue: "save highlighted characters"
 			[UndoSelection _ self selection]. 
 		self zapSelectionWith: 
 			(Text string: typeAhead contents emphasis: emphasisHere).
 		typeAhead reset.
-		startBlock _ stopBlock copy.
+		self unselect.
 		sensor keyboardPressed ifFalse: 
 			[self selectAndScroll.
 			sensor keyboardPressed
