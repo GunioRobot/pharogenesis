@@ -1,2 +1,2 @@
 allSuperclasses
-	^ self realClass allSuperclasses
+	^ (self realClass ifNil: [ ^#() ]) allSuperclasses
