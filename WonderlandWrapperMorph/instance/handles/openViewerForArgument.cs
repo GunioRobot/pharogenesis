@@ -1,0 +1,2 @@
+openViewerForArgument
+	myActor beViewed.
