@@ -4,7 +4,7 @@ readHeader
 	setwidth _ setheight _ false.
 		[((stream atEnd) or: [setwidth and: [setheight]])]
 		whileFalse: [
-	  	stream skipSeparators.
+	  	self skipCComments.
 		(stream nextMatchAll: '#define ') ifFalse: [^ false].
 		(stream skipTo: $_) ifFalse: [^ false].
 		fieldName _ String streamContents:
