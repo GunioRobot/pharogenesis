@@ -1,6 +1,11 @@
 colorForType: typeSymbol
 	"Answer the color to use to represent the given type symbol"
 
-	^ ((TypeColorDictionary
-		at: typeSymbol asSymbol
-		ifAbsent: [^ Color magenta muchLighter]) at: 1) lighter
+	true ifTrue:
+		[^ self standardTileBorderColor].
+
+	typeSymbol capitalized = #Command ifTrue:
+		[^ Color fromRgbTriplet: #(0.065 0.258 1.0)].
+	"Command is historical and idiosyncratic and should be regularized"
+
+	^ (Vocabulary vocabularyForType: typeSymbol) typeColor
