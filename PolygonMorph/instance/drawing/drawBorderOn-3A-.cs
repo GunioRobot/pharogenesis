@@ -1,4 +1,4 @@
 drawBorderOn: aCanvas 
 	self
-		drawBorderOn: aCanvas
+		drawClippedBorderOn: aCanvas
 		usingEnds: (Array with: vertices first with: vertices last)
