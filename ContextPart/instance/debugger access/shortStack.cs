@@ -1,7 +1,7 @@
 shortStack
-	"Answer a String showing the top four contexts on my sender chain."
-	| shortStackStream |
-	shortStackStream _ WriteStream on: (String new: 55*10).
-	(self stackOfSize: 10) do: 
-		[:item | shortStackStream print: item; cr].
-	^shortStackStream contents
+	"Answer a String showing the top ten contexts on my sender chain."
+
+	^ String streamContents:
+		[:strm |
+		(self stackOfSize: 10)
+			do: [:item | strm print: item; cr]]
