@@ -1,0 +1,2 @@
+globalStructureBuildMethodHasFoo: number
+	globalStructureBuildMethodHasFoo _ number
