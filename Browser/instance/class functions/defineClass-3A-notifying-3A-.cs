@@ -9,7 +9,7 @@ defineClass: defString notifying: aController
 	envt _ Smalltalk environmentForCategory: ((defTokens at: keywdIx+1) copyWithout: $').
 	keywdIx _ defTokens findFirst: [:x | '*subclass*' match: x].
 	newClassName _ (defTokens at: keywdIx+1) copyWithoutAll: '#()'.
-	((oldClass isNil or: [oldClass name asString ~= newClassName])
+	((oldClass isNil or: [oldClass theNonMetaClass name asString ~= newClassName])
 		and: [envt includesKeyOrAbove: newClassName asSymbol]) ifTrue:
 			["Attempting to define new class over existing one when
 				not looking at the original one in this browser..."
@@ -25,12 +25,10 @@ Is this really what you want to do?') asText makeBoldFrom: 1 to: newClassName si
 				notifying: aController
 				logged: true.
 	(class isKindOf: Behavior)
-		ifTrue: [self changed: #classList.
-				self classListIndex: 
-					(self classList indexOf: 
-						((class isKindOf: Metaclass)
-							ifTrue: [class soleInstance name]
-							ifFalse: [class name])).
-				self clearUserEditFlag; editClass.
+		ifTrue: [self changed: #systemCategoryList.
+				self changed: #classList.
+				self clearUserEditFlag.
+				self setClass: class selector: nil.
+				"self clearUserEditFlag; editClass."
 				^ true]
 		ifFalse: [^ false]
