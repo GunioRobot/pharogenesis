@@ -20,15 +20,16 @@ sendTest
 		^ self inform: 'could not connect'].
 	Transcript show: 'connection established; sending data'; cr.
 
-	bytesToSend _ 100000.
-	sendBuf _ String new: 5000 withAll: $x.
+	bytesToSend _ 1000000.
+	sendBuf _ String new: 64*1024 withAll: $x.
 	bytesSent _ 0.
 	t _ Time millisecondsToRun: [
 		[bytesSent < bytesToSend] whileTrue: [
 			sock sendDone ifTrue: [
 				bytesSent _ bytesSent + (sock sendSomeData: sendBuf)]]].
+	sock waitForSendDoneUntil: self standardDeadline.
 	sock destroy.
 	Transcript show: '---------- Connection Closed ----------'; cr.
 	Transcript show: 'send test done; time = ', t printString; cr.
-	Transcript show: ((bytesToSend asFloat / t) roundTo: 0.01) printString, ' kBytes/sec'; cr.
+	Transcript show: ((bytesToSend asFloat / t) roundTo: 0.01) printString, ' 1000Bytes/sec'; cr.
 	Transcript endEntry.
