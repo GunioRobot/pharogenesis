@@ -1,0 +1,3 @@
+fromSystemClipboard: aString
+
+	self subclassResponsibility.
