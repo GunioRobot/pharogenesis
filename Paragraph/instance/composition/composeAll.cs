@@ -11,7 +11,7 @@ composeAll
 			^maximumRightX].
 	startIndex _ lineIndex _ 1.
 	stopIndex _ text size.
-	compositionScanner _ CompositionScanner new in: self.
+	compositionScanner _ CompositionScanner new forParagraph: self.
 	[startIndex > stopIndex] whileFalse: 
 		[self lineAt: lineIndex 
 				put: (compositionScanner composeLine: lineIndex 
