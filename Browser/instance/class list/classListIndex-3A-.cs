@@ -2,17 +2,18 @@ classListIndex: anInteger
 	"Set anInteger to be the index of the current class selection."
 
 	| className |
+
 	classListIndex _ anInteger.
 	self setClassOrganizer.
-	messageCategoryListIndex _ 1.
+	messageCategoryListIndex _ 0.
 	messageListIndex _ 0.
 	self classCommentIndicated
 		ifTrue: []
-		ifFalse: [editSelection _ anInteger = 0
+		ifFalse: [self editSelection: (anInteger = 0
 					ifTrue: [metaClassIndicated | (systemCategoryListIndex == 0)
 						ifTrue: [#none]
 						ifFalse: [#newClass]]
-					ifFalse: [#editClass]].
+					ifFalse: [#editClass])].
 	contents _ nil.
 	self selectedClass isNil
 		ifFalse: [className _ self selectedClass name.
@@ -22,7 +23,9 @@ classListIndex: anInteger
 			RecentClasses size > 16
 				ifTrue: [RecentClasses removeLast]].
 	self changed: #classSelectionChanged.
+	self changed: #classCommentText.
 	self changed: #classListIndex.	"update my selection"
 	self changed: #messageCategoryList.
 	self changed: #messageList.
+	self changed: #relabel.
 	self contentsChanged
