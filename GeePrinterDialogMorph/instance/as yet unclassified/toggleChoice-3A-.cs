@@ -6,3 +6,6 @@ toggleChoice: aSymbol
 	aSymbol == #drawAsBitmapFlag ifTrue: [
 		printSpecs drawAsBitmapFlag: printSpecs drawAsBitmapFlag not
 	].
+	aSymbol == #scaleToFitPage ifTrue: [
+		printSpecs scaleToFitPage: printSpecs scaleToFitPage not
+	].
