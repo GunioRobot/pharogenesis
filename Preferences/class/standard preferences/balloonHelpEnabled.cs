@@ -1,0 +1,2 @@
+balloonHelpEnabled
+	^ self valueOfFlag: #balloonHelpEnabled
