@@ -22,5 +22,5 @@ checkSourceOverlap
 					mask1 _ mask2.
 					mask2 _ t]]].
 		"Dest inits may be affected by this change"
-		destIndex _ destBits + (dy * destPitch) + ((dx // pixPerWord) *4).
+		destIndex _ destBits + (dy * destPitch) + ((dx // destPPW) *4).
 		destDelta _ (destPitch * vDir) - (4 * (nWords * hDir))]
