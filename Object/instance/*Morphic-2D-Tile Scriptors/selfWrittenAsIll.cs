@@ -1,0 +1,3 @@
+selfWrittenAsIll
+
+	^self
