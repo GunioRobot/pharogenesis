@@ -3,4 +3,4 @@ WonderlandLightSource
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon3D-Wonderland Lights'
+	category: 'Balloon3D-Wonderland-Lights'
