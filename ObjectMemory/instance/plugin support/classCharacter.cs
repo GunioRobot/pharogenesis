@@ -1,0 +1,2 @@
+classCharacter
+	^self splObj: ClassCharacter
