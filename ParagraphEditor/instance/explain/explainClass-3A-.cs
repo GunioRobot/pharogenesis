@@ -25,8 +25,8 @@ explainClass: symbol
 					(each sharedPools detect: [:pool | pool == reply] ifNone: [])
 					~~ nil ifTrue: [classes nextPut: each]].
 			"Perhaps not print whole list of classes if too long. (unlikely)"
-			^'"is a pool variable from the pool ' , (Smalltalk keyAtValue: reply),
+			^'"is a pool variable from the pool ' , (Smalltalk keyAtIdentityValue: reply),
 			', which is used by the following classes ' , classes contents printString , '"\' withCRs,
-			'Smalltalk browseAllCallsOn: (', (Smalltalk keyAtValue: reply) printString,
+			'Smalltalk browseAllCallsOn: (', (Smalltalk keyAtIdentityValue: reply) printString,
 			' associationAt: #', symbol, ').'].
 	^nil
