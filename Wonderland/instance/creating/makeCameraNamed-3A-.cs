@@ -3,6 +3,7 @@ makeCameraNamed: aString
 	| newClass newCamera name windowName |
 	newClass _ WonderlandCamera newUniqueClassInstVars: '' classInstVars: ''.
 	newCamera _ newClass createFor: self.
+	newCamera getMorph openInWorld.
 	actorClassList addLast: newClass.
 
 	name _ self uniqueNameFrom: aString.
