@@ -1,11 +1,5 @@
 invokeWorldMenu: evt
-	| menu |
-	Utilities bringFlapsToFront.
-	evt isMouse ifTrue:[
-		evt yellowButtonPressed
-			ifTrue: [^ self yellowButtonClickOnDesktopWithEvent: evt].
-		evt shiftPressed ifTrue:[^self findWindow: evt]].
-	"put put screen menu"
-	menu _ self buildWorldMenu: evt.
-	menu addTitle: Preferences desktopMenuTitle.
-	menu popUpEvent: evt in: self
+	"Put up the world menu, triggered by the passed-in event.  But don't do it if the eToyFriendly preference is set to true."
+
+	Preferences eToyFriendly ifFalse:
+		[self putUpWorldMenu: evt]
