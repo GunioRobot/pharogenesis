@@ -4,10 +4,9 @@ displayRacingStripes
 	labelDisplayBox _ self labelDisplayBox.
 	top _ labelDisplayBox top + 3.
 	bottom _ labelDisplayBox bottom - 3.
-	stripes _ Array with: self labelColor
-					with: Form black.
+	stripes _ Bitmap with: (self labelColor pixelWordForDepth: Display depth)
+			with: (Color black pixelWordForDepth: Display depth).
 	top even ifFalse: [stripes swap: 1 with: 2].
-	stripes _ Pattern extent: 1@2 colors: stripes.
 
 	left _ labelDisplayBox left + 3.
 
