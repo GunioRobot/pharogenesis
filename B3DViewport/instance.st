@@ -1,6 +1,6 @@
 Rectangle
 	subclass: #B3DViewport
-	instanceVariableNames: 'center scale '
+	instanceVariableNames: 'center scale'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon3D-Viewing'
+	category: 'Balloon3D-Kernel-Viewing'
