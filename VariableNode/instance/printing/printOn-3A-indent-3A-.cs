@@ -1,2 +1,3 @@
 printOn: aStream indent: level 
-	aStream nextPutAll: name
+	aStream withAttributes: (Preferences syntaxAttributesFor: #variable)
+		do: [aStream nextPutAll: name].
