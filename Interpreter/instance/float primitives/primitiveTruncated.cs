@@ -9,5 +9,6 @@ primitiveTruncated
 		self cCode: 'success((-1073741824.0 <= trunc) && (trunc <= 1073741823.0))'.
 	].
 	successFlag
-		ifTrue: [self cCode: 'pushInteger((int) trunc)']
+		ifTrue: [self cCode: 'pushInteger((int) trunc)'
+					inSmalltalk: [self pushInteger: rcvr truncated]]
 		ifFalse: [self unPop: 1]
