@@ -1,4 +1,4 @@
 nextLineLf
 	| nextLine |
-	nextLine _ self upToAll: String lf.
+	nextLine := self upToAll: String lf.
 	^nextLine
