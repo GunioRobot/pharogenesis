@@ -1,7 +1,7 @@
 tocMenu: aMenu 
 	"Answer the menu for the table of contents pane."
 	| messageSelected autoFolder |
-	currentCategory ifNil: [^ nil].
+	mailDB ifNil: [ ^nil ].
 	messageSelected _ currentMsgID isNil not.
 	messageSelected
 		ifTrue: 
@@ -29,7 +29,9 @@ tocMenu: aMenu
 			autoFolder := self chooseFilterForCurrentMessage.
 			autoFolder ifNotNil: [
 				aMenu add: ('file -> ', autoFolder) action: #autoFile.
+				aMenu balloonTextForLastItem: 'Add this message also to the (automatically selected) category ' , autoFolder.
 				aMenu add: ('move -> ', autoFolder) action: #autoMove.
+				aMenu balloonTextForLastItem: 'Move this message to the (automatically selected) category ' , autoFolder.
 				aMenu addLine ].
 
 			aMenu add: 'file' action: #fileMessage.
@@ -63,10 +65,6 @@ tocMenu: aMenu
 			aMenu add: 'save message' action: #saveMessage.
 			aMenu balloonTextForLastItem: 'Save this message'.
 			aMenu addLine].
-	self tocEntryList size = self maxMessagesToDisplay ifTrue: [
-		"the test above is not exactly correct, but is usually correct."
-		aMenu add: 'view all messages' action: #viewAllMessages.
-		aMenu balloonTextForLastItem: 'View all messages that match the current filters,	even if there are many thousands of such messages'. ].
 
 	aMenu add: 'search' action: #search.
 	aMenu balloonTextForLastItem: 'Search all messages in this category for something'.
