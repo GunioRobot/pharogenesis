@@ -1,6 +1,7 @@
 sketchOn: aCanvas
 	| vtx prev next |
-	vtx _ ReadStream on: self outline vertices.
+	vtx _ self outline.
+	vtx reset.
 	vtx atEnd ifTrue:[^self].
 	prev _ vtx next.
 	[vtx atEnd] whileFalse: [
