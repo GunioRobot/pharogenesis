@@ -1,2 +1,2 @@
 shutDown
-	^ self closeSourceFiles
+	^ SmalltalkImage current closeSourceFiles
