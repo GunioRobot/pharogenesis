@@ -1,15 +1,14 @@
 whichSelectorsReferTo: literal special: specialFlag byte: specialByte
 	"Answer a set of selectors whose methods access the argument as a literal."
-	| who method |
+
+	| who |
 	who _ Set new.
-	methodDict associationsDo:
-		[:assn |
-		method _ assn value.
-		((method hasLiteral: literal) or:
-				[specialFlag and: [method scanFor: specialByte]])
+	self selectorsAndMethodsDo: 
+		[:sel :method |
+		((method hasLiteral: literal) or: [specialFlag and: [method scanFor: specialByte]])
 			ifTrue:
-			[((literal isMemberOf: Association) not
-				or: [method sendsToSuper not
+				[((literal isMemberOf: Association) not
+					or: [method sendsToSuper not
 					or: [method literals allButLast includes: literal]])
-				ifTrue: [who add: assn key]]].
-	^who
+						ifTrue: [who add: sel]]].
+	^ who
