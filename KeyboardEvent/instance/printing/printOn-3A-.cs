@@ -1,13 +1,8 @@
 printOn: aStream
+	"Print the receiver on a stream"
 
 	aStream nextPut: $[.
-	aStream nextPutAll: type.
-	self controlKeyPressed ifTrue: [
-		aStream nextPutAll: ' ''^'.
-		aStream nextPut: (keyValue + $a asciiValue - 1) asCharacter.
-	] ifFalse: [
-		aStream nextPutAll: ' '''.
-		aStream nextPut: self keyCharacter.
-	].
+	aStream nextPutAll: type; nextPutAll: ' '''.
+	self printKeyStringOn: aStream.
 	aStream nextPut: $'.
-	aStream nextPut: $].
+	aStream nextPut: $]
