@@ -9,4 +9,6 @@ bringMenuChainToFront
 		(owningItem isKindOf: MenuItemMorph)
 			ifTrue: [menu _ owningItem owner]
 			ifFalse: [menu _ nil]].
-	menusToPopUp do: [:m | m owner addMorphFront: m].
+	menusToPopUp do: [:m | (m owner isKindOf: AlignmentMorph)
+		ifFalse:
+			[m owner addMorphFront: m]].
