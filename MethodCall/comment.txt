@@ -1,0 +1,3 @@
+A MethodCall is a resendable message-send, complete with receiver, instantiated arguments, and a memory of when it was last evaluated and what the last value was.  
+
+The methodInterface with which it is associated can furnish argument names, documentation, and other information.
