@@ -1,4 +1,5 @@
 formFromFileNamed: fileName
 	"Answer a ColorForm stored on the file with the given name."
-
-	^ self formFromFile: (FileStream oldFileNamed: fileName)
+	| stream |
+	stream _ FileStream readOnlyFileNamed: fileName.
+	^self formFromStream: stream
