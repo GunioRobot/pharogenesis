@@ -1,10 +1,10 @@
 changeScript: scriptName toStatus: statusSymbol
-	| aWorld |
+	"Change the script of the given name to have the given status, and get all relevant script-status controls updated"
+
 	scriptName ifNil: [^ self].
 	Symbol hasInterned: scriptName ifTrue:
 		[:sym | self instantiatedUserScriptsDo:
-			[:aUserScript | aUserScript selector == sym
+			[:aScriptInstantiation | aScriptInstantiation selector == sym
 				ifTrue:
-					[aUserScript status: statusSymbol.
-					^ (aWorld _ self costume world) ifNotNil:
-						[aWorld updateStatusForAllScriptEditors]]]]
+					[aScriptInstantiation status: statusSymbol.
+					aScriptInstantiation updateAllStatusMorphs]]]
