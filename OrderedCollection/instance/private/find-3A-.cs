@@ -5,4 +5,4 @@ find: oldObject
 		whileTrue: [index _ index + 1].
 	index <= lastIndex
 		ifTrue: [^ index]
-		ifFalse: [self errorNotFound]
+		ifFalse: [self errorNotFound: oldObject]
