@@ -1,6 +1,5 @@
-canvas: x
-
-	canvas _ x.
-	damageRecorder == nil
-		ifTrue: [damageRecorder _ DamageRecorder new]
+canvas: x 
+	canvas := x.
+	damageRecorder isNil 
+		ifTrue: [damageRecorder := DamageRecorder new]
 		ifFalse: [damageRecorder doFullRepaint]
