@@ -1,0 +1,3 @@
+isShadowDrawing
+	"Always"
+	^true
