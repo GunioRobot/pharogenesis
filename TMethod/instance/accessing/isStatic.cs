@@ -1,0 +1,2 @@
+isStatic
+	^static ifNil:[false].
