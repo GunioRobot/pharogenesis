@@ -20,5 +20,7 @@ forgetDispatchesTo: aSelector
 		ifTrue: [clickRecipient _ clickSelector _ nil].
 	doubleClickSelector == aSelector
 		ifTrue: [doubleClickRecipient _ doubleClickSelector _ nil].
+	doubleClickTimeoutSelector == aSelector
+		ifTrue: [doubleClickTimeoutRecipient _ doubleClickTimeoutSelector _ nil].
 	keyStrokeSelector == aSelector
 		ifTrue: [keyStrokeRecipient _ keyStrokeSelector _ nil].
