@@ -14,7 +14,7 @@ and move the mouse around the dot'
 		sourceForm: Display;
 		combinationRule: Form over.
 	warp2 _ (self toForm: Display)
-		clipRect: ((0@0 extent: r1 extent*5) translateBy: 200@0);
+		clipRect: ((0@0 extent: r1 extent*5) translateBy: 250@0);
 		sourceForm: Display;
 		combinationRule: Form over.
 	[Sensor anyButtonPressed] whileFalse:
@@ -23,5 +23,5 @@ and move the mouse around the dot'
 			collect: [:pt | pt rotateBy: (p-p0) theta about: r1 center].
 		ext _ (r1 extent*((p-p0) r / 20.0 max: 0.1)) asIntegerPoint.
 		warp copyQuad: pts toRect: (r1 extent*5-ext//2 extent: ext).
-		warp2 copyQuad: pts toRect: ((r1 extent*5-ext//2 extent: ext) translateBy: 200@0).
+		warp2 copyQuad: pts toRect: ((r1 extent*5-ext//2 extent: ext) translateBy: 250@0).
 		]
