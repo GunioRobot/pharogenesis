@@ -1,5 +1,5 @@
 soundNamed: aString
-	"Return a list of sound names for the sounds stored in the sound library."
+	"Answer the sound of the given name, or nil if there is no sound of that name."
 	"(SampledSound soundNamed: 'shutterClick') play"
 
 	| entry samples |
