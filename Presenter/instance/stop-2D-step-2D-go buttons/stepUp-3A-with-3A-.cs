@@ -1,3 +1,4 @@
 stepUp: evt with: aMorph
-	(stepButton == nil or: [stepButton isInWorld not]) ifTrue: [stepButton _ aMorph].
-	stepButton state: #off
+	"The step button came up; get things right"
+
+	self stepButtonState: #off
