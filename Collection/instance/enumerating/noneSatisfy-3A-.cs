@@ -4,4 +4,4 @@ noneSatisfy: aBlock
 	Otherwise return false"
 
 	self do: [:item | (aBlock value: item) ifTrue: [^ false]].
-	^ false
+	^ true
