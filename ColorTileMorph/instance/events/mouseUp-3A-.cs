@@ -1,4 +1,2 @@
 mouseUp: evt
-
-	evt hand changeColorTarget: colorSwatch selector: #color:.
-	self acceptNewLiteral.
+	evt hand changeColorTarget: colorSwatch selector: #userSelectedColor: originalColor: colorSwatch color
