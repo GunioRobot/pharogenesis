@@ -1,0 +1,2 @@
+clearViewport: aColor
+	"Do nothing"
