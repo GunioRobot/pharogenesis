@@ -3,5 +3,5 @@ withPassenger: anObject from: source
 	ddm _ self new.
 	ddm passenger: anObject.
 	ddm source: source.
-	Sensor shiftPressed ifTrue: [ddm copy].
+	Sensor shiftPressed ifTrue: [ddm shouldCopy: true].
 	^ ddm
