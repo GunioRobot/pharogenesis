@@ -1,5 +1,5 @@
 assignmentCheck: encoder at: location
 
-	(encoder cantStoreInto: name)
+	(encoder cantStoreInto: self name)
 		ifTrue: [^ location]
 		ifFalse: [^ -1]
