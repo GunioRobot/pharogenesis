@@ -15,15 +15,23 @@ comeFullyUpOnReload: smartRefStream
 					"index var in readArray.  Later safer to find i on stack of context."
 				smartRefStream renamedConv at: arrayIndex put: symbol].	"save original name"
 		symbol _ smartRefStream renamed at: symbol ifAbsent: [symbol]].	"map"
-	globalObj _ Smalltalk at: symbol 
-		ifAbsent: [^ self error: 'Global not found'].
+	globalObj _ Smalltalk at: symbol ifAbsent: [
+		preSelector == nil & (constructorSelector = #yourself) ifTrue: [
+			Transcript cr; show: symbol, ' is undeclared.'.
+			(Undeclared includesKey: symbol) ifTrue: [^ Undeclared at: symbol].
+			Undeclared at: symbol put: nil.
+			^ nil].
+		^ self error: 'Global "', symbol, '" not found'].
 	((symbol == #World) and: [Smalltalk isMorphic not]) ifTrue: [
 		self inform: 'These objects will work better if opened in a Morphic World.
 Dismiss and reopen all menus.'].
 
 	preSelector ifNotNil: [
 		Symbol hasInterned: preSelector ifTrue: [:selector |
-			globalObj _ globalObj perform: selector]].
+			[globalObj _ globalObj perform: selector] on: Error do: [:ex |
+				ex messageText = 'key not found' ifTrue: [^ nil].
+				^ ex signal]]
+	].
 	symbol == #Project ifTrue: [
 		(constructorSelector = #fromUrl:) ifTrue: [
 			nn _ (constructorArgs first findTokens: '/') last.
@@ -34,9 +42,10 @@ Dismiss and reopen all menus.'].
 		^ pr ifNil: [self] ifNotNil: [pr]].	"keep the Proxy if Project does not exist"
 
 	constructorSelector ifNil: [^ globalObj].
-	constructorSelector ifNotNil: [
-		Symbol hasInterned: constructorSelector ifTrue: [:selector |
-			^ globalObj perform: selector
-					withArguments: constructorArgs]].
-					"args not checked against Renamed"
+	Symbol hasInterned: constructorSelector ifTrue: [:selector |
+		[^ globalObj perform: selector withArguments: constructorArgs] on: Error do: [:ex |
+			ex messageText = 'key not found' ifTrue: [^ nil].
+			^ ex signal]
+	].
+				"args not checked against Renamed"
 	^ nil 	"was not in proper form"
