@@ -5,5 +5,5 @@ emitForValue: stack on: strm
 			[strm nextPut: (code = LdSuper ifTrue: [LdSelf] ifFalse: [code]).
 			stack push: 1]
 		ifFalse: 
-			[self emitLong: LdInstLong on: strm.
+			[self emitLong: LoadLong on: strm.
 			stack push: 1]
