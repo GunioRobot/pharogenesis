@@ -1,3 +1,3 @@
-characterForAscii: integerObj  "Arg must lie in range 0-255!"
-	^ self fetchPointer: (self integerValueOf: integerObj)
-			ofObject: (self splObj: CharacterTable)
+characterForAscii: ascii  "Arg must lie in range 0-255!"
+	self inline: true.
+	^ self fetchPointer: ascii ofObject: (self splObj: CharacterTable)
