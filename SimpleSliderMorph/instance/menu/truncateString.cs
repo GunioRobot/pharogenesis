@@ -1,6 +1,4 @@
 truncateString
-	^ truncate
-		ifTrue:
-			['turn off truncation']
-		ifFalse:
-			['turn on truncation']
+	^ (truncate
+		ifTrue: ['turn off truncation']
+		ifFalse: ['turn on truncation'])  translated
