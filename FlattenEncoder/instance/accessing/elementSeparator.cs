@@ -1,0 +1,2 @@
+elementSeparator
+	^target elementSeparator.
