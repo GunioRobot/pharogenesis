@@ -1,5 +1,4 @@
 pathNameDelimiter
-	"separator on that remote server.  How tell??"
+	"the separator that is used in URLs"
 
-	type == #ftp ifTrue: [^ $/].
 	^ $/
