@@ -1,5 +1,5 @@
 methodNamesContainingIt: characterStream 
-	"Triggered by Cmd-K; browse selectors containing the selection in their names.  8/11/96 sw"
+	"Browse methods whose selectors containing the selection in their names"
 
 	sensor keyboard.		"flush character"
 	self methodNamesContainingIt.
