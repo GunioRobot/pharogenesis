@@ -1,0 +1,3 @@
+wantsRolloverIndicator
+
+	^wantsRolloverIndicator ifNil: [false]
