@@ -1,3 +1,3 @@
 drawOn: aCanvas
 
-	aCanvas text: contents bounds: bounds font: self fontToUse color: color.
+	aCanvas drawString: contents in: bounds font: self fontToUse color: color.
