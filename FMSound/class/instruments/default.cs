@@ -1,0 +1,3 @@
+default
+
+	^ self oboe1
