@@ -5,7 +5,7 @@ addInstVarName: aString
 		inEnvironment: self environment
 		subclassOf: superclass
 		type: self typeOfClass
-		instanceVariableNames: self instanceVariablesString , aString
+		instanceVariableNames: self instanceVariablesString, ' ', aString
 		classVariableNames: self classVariablesString
 		poolDictionaries: self sharedPoolsString
 		category: self category
