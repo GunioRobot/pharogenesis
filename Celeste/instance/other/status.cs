@@ -1,2 +1,2 @@
 status
-	^ status
+	^'status line not implemented'
