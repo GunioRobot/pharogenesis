@@ -1,4 +1,7 @@
 familyName: aName size: aSize
 	"Answer a font (or the default font if the name is unknown) in the specified size."
-
-	^ ((TextStyle named: aName asSymbol) ifNil: [TextStyle default]) fontOfSize: aSize
+	| style |
+	style := TextStyle named: aName asSymbol.
+	style ifNil: [^(FontSubstitutionDuringLoading forFamilyName: aName pixelSize: aSize)
+			signal: 'missing font' ].
+	^style fontOfSize: aSize
