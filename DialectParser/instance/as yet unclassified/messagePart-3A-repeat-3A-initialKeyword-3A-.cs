@@ -13,7 +13,7 @@ messagePart: level repeat: repeat initialKeyword: kwdIfAny
 				whileTrue: 
 					[keywordStart _ self startOfNextToken + requestorOffset.
 					selector nextPutAll: self advance , ':'.
-					words addLast: (keywordStart to: hereMark + self previousTokenSize + requestorOffset).
+					words addLast: (keywordStart to: hereEnd + requestorOffset).
 					self primaryExpression ifFalse: [^ self expected: 'Argument'].
 					args addLast: parseNode].
 			(Symbol hasInterned: selector contents ifTrue: [ :sym | selector _ sym])
