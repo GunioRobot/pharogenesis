@@ -1,0 +1,2 @@
+target: aTargetObject
+	target := aTargetObject
