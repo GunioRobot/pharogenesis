@@ -1,6 +1,7 @@
 initialize
-
+	"initialize the state of the receiver"
 	super initialize.
-	color _ Color veryVeryLightGray.
+	""
+	
 	drawState _ IdentityDictionary new.
-	self clear.
+	self clear
