@@ -1,0 +1,2 @@
+smartUpdating
+	^ self valueOfFlag: #smartUpdating
