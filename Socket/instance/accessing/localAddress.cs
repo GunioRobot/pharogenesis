@@ -1,4 +1,6 @@
 localAddress
-	self waitForConnectionUntil: Socket standardDeadline.
-	self isConnected ifFalse: [^ByteArray new: 4].
+	self isWaitingForConnection
+		ifFalse: [[self waitForConnectionFor: Socket standardTimeout]
+				on: ConnectionTimedOut
+				do: [:ex | ^ ByteArray new: 4]].
 	^ self primSocketLocalAddress: socketHandle
