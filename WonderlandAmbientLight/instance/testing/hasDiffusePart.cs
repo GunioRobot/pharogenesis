@@ -1,0 +1,2 @@
+hasDiffusePart
+	^false
