@@ -1,0 +1,3 @@
+tearDown
+
+	self resumeFromDeprecatedMethods: false.
