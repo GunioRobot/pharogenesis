@@ -1,4 +1,4 @@
 orientation
-	^ (#(left right) includes: edgeToAdhereTo)
+	^ (#left == edgeToAdhereTo or: [#right == edgeToAdhereTo])
 		ifTrue:		[#vertical]
 		ifFalse:		[#horizontal]
