@@ -7,4 +7,5 @@ encodeVariable: name ifUnknown: action
 				[self lookupInPools: name 
 					ifFound: [:assoc | ^self global: assoc name: name].
 				^action value].
+	(varNode isTemp and: [varNode scope < 0]) ifTrue: [^self notify: 'out of scope'].
 	^varNode
