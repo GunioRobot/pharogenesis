@@ -3,7 +3,7 @@ objectAfter: oop
 
 	| sz |
 	self inline: true.
-	checkAssertions ifTrue: [
+	DoAssertionChecks ifTrue: [
 		oop >= endOfMemory ifTrue: [ self error: 'no objects after the end of memory' ].
 	].
 
