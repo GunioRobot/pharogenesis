@@ -5,7 +5,7 @@ loadBitBltFrom: bbObj warping: aBool
 	| ok |
 	self inline: false.
 	bitBltOop _ bbObj.
-	colorMap _ nil. "Assume no color map"
+	isWarping _ aBool.
 	combinationRule _ interpreterProxy fetchInteger: BBRuleIndex ofObject: bitBltOop.
 	(interpreterProxy failed
 		or: [combinationRule < 0 or: [combinationRule > (OpTableSize - 2)]])
@@ -23,10 +23,10 @@ loadBitBltFrom: bbObj warping: aBool
 	ok _ self loadBitBltDestForm.
 	ok ifFalse:[^false].
 
-	destX _ self fetchIntOrFloat: BBDestXIndex ofObject: bitBltOop.
-	destY _ self fetchIntOrFloat: BBDestYIndex ofObject: bitBltOop.
-	width _ self fetchIntOrFloat: BBWidthIndex ofObject: bitBltOop.
-	height _ self fetchIntOrFloat: BBHeightIndex ofObject: bitBltOop.
+	destX _ self fetchIntOrFloat: BBDestXIndex ofObject: bitBltOop ifNil: 0.
+	destY _ self fetchIntOrFloat: BBDestYIndex ofObject: bitBltOop ifNil: 0.
+	width _ self fetchIntOrFloat: BBWidthIndex ofObject: bitBltOop ifNil: destWidth.
+	height _ self fetchIntOrFloat: BBHeightIndex ofObject: bitBltOop ifNil: destHeight.
 		interpreterProxy failed ifTrue: [^ false  "non-integer value"].
 
 	noSource ifTrue:
@@ -36,19 +36,19 @@ loadBitBltFrom: bbObj warping: aBool
 			ifFalse: [^ false].
 		ok _ self loadBitBltSourceForm.
 		ok ifFalse:[^false].
-		colorMap _ interpreterProxy fetchPointer: BBColorMapIndex ofObject: bitBltOop.
-		ok _ self loadColorMap: aBool.
+		ok _ self loadColorMap.
 		ok ifFalse:[^false].
-		self setupColorMasks.
-		sourceX _ self fetchIntOrFloat: BBSourceXIndex ofObject: bitBltOop.
-		sourceY _ self fetchIntOrFloat: BBSourceYIndex ofObject: bitBltOop].
+		"Need the implicit setup here in case of 16<->32 bit conversions"
+		(cmFlags bitAnd: ColorMapNewStyle) = 0 ifTrue:[self setupColorMasks].
+		sourceX _ self fetchIntOrFloat: BBSourceXIndex ofObject: bitBltOop ifNil: 0.
+		sourceY _ self fetchIntOrFloat: BBSourceYIndex ofObject: bitBltOop ifNil: 0].
 
 	ok _ self loadHalftoneForm.
 	ok ifFalse:[^false].
-	clipX _ self fetchIntOrFloat: BBClipXIndex ofObject: bitBltOop.
-	clipY _ self fetchIntOrFloat: BBClipYIndex ofObject: bitBltOop.
-	clipWidth _ self fetchIntOrFloat: BBClipWidthIndex ofObject: bitBltOop.
-	clipHeight _ self fetchIntOrFloat: BBClipHeightIndex ofObject: bitBltOop.
+	clipX _ self fetchIntOrFloat: BBClipXIndex ofObject: bitBltOop ifNil: 0.
+	clipY _ self fetchIntOrFloat: BBClipYIndex ofObject: bitBltOop ifNil: 0.
+	clipWidth _ self fetchIntOrFloat: BBClipWidthIndex ofObject: bitBltOop ifNil: destWidth.
+	clipHeight _ self fetchIntOrFloat: BBClipHeightIndex ofObject: bitBltOop ifNil: destHeight.
 		interpreterProxy failed ifTrue: [^ false  "non-integer value"].
 	clipX < 0 ifTrue: [clipWidth _ clipWidth + clipX.  clipX _ 0].
 	clipY < 0 ifTrue: [clipHeight _ clipHeight + clipY.  clipY _ 0].
