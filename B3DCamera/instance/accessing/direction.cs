@@ -1,0 +1,2 @@
+direction
+	^target - position
