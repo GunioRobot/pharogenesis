@@ -1,0 +1,3 @@
+loopLength
+
+	^ scaledLoopLength / FloatLoopIndexScaleFactor
