@@ -9,12 +9,12 @@ view source
 inspect parse tree
 go to start page
 edit start page
-bookmark'.
+bookmark' translated.
 	linePositions _ #(2 4 6 ).
 	selections _ #(#back #forward #jumpToNewUrl #displayHistory #viewSource #inspectParseTree #visitStartPage #editStartPage #bookmark ).
 	downloadingProcess
 		ifNotNil: 
-			[lines _ lines , String cr , 'stop downloading'.
+			[lines _ lines , String cr , 'stop downloading' translated.
 			linePositions _ linePositions , selections size asOrderedCollection.
 			selections _ selections , #(#stopEverything )].
 	menu
