@@ -1,3 +1,3 @@
-player: anObject
-	extension == nil ifTrue: [self assureExtension].
-	extension player: anObject
+player: anObject 
+	"change the receiver's player"
+	self assureExtension player: anObject
