@@ -1,0 +1,2 @@
+baseClassName
+	^#DummyClassBuilderFormatTestSuperClass
