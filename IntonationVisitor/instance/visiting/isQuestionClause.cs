@@ -1,0 +1,2 @@
+isQuestionClause
+	^ clause string includes: $?
