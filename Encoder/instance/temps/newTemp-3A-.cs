@@ -1,7 +1,8 @@
 newTemp: name
 
 	nTemps _ nTemps + 1.
-	^VariableNode new
+	^ TempVariableNode new
 		name: name
 		index: nTemps - 1
 		type: LdTempType
+		scope: 0
