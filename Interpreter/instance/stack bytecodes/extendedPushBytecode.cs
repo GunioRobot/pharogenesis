@@ -2,6 +2,7 @@ extendedPushBytecode
 
 	| descriptor variableType variableIndex |
 	descriptor _ self fetchByte.
+	self fetchNextBytecode.
 	variableType _ (descriptor >> 6) bitAnd: 16r3.
 	variableIndex _ descriptor bitAnd: 16r3F.
 	variableType=0 ifTrue: [^self pushReceiverVariable: variableIndex].
