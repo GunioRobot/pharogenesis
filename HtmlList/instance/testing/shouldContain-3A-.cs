@@ -1,0 +1,2 @@
+shouldContain: anEntity
+	^anEntity isListItem
