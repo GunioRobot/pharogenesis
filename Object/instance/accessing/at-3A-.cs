@@ -8,7 +8,7 @@ at: index
 	index isInteger ifTrue:
 		[self class isVariable
 			ifTrue: [self errorSubscriptBounds: index]
-			ifFalse: [self error: (self class name) , 's are not indexable']].
+			ifFalse: [self errorNotIndexable]].
 	index isNumber
 		ifTrue: [^self at: index asInteger]
 		ifFalse: [self errorNonIntegerIndex]
