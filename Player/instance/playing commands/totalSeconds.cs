@@ -1,0 +1,3 @@
+totalSeconds
+
+	^ self sendMessageToCostume: #totalSeconds
