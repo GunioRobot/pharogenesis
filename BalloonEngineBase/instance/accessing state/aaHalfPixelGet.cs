@@ -1,0 +1,2 @@
+aaHalfPixelGet
+	^workBuffer at: GWAAHalfPixel
