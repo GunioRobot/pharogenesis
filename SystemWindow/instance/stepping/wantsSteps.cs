@@ -1,8 +1,5 @@
 wantsSteps
-	"Return true if the model responds to step (except if it is a debugger)."
-	| c |
-	c _ model class.
-	[c == nil] whileFalse:
-		[(c includesSelector: #step) ifTrue: [^ c ~= Debugger].
-		c _ c superclass].
-	^ false
+	"Return true if the model wants its view to be stepped."
+	self isPartsDonor ifTrue: [^ false].
+	self player wantsSteps ifTrue: [^ true].
+	^ model wantsStepsIn: self
