@@ -1,0 +1,3 @@
+localAddress
+
+	^ self primSocketLocalAddress: socketHandle
