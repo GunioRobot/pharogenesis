@@ -1,5 +1,4 @@
 squeakOldSoundPrimsFile
-
 	^ '/* Automatically generated from Squeak on (4 January 1998 3:05:25 am ) */
 
 #include "sq.h"
@@ -22,6 +21,7 @@ int primFMSoundmixSampleCountintostartingAtpan(void);
 int primPluckedSoundmixSampleCountintostartingAtpan(void);
 int primSampledSoundmixSampleCountintostartingAtpan(void);
 int primWaveTableSoundmixSampleCountintostartingAtpan(void);
+int oldprimSampledSoundmixSampleCountintostartingAtleftVolrightVol(void);
 
 int primFMSoundmixSampleCountintostartingAtpan(void) {
     int rcvr;
@@ -307,4 +307,94 @@ int primWaveTableSoundmixSampleCountintostartingAtpan(void) {
 	storeIntegerofObjectwithValue(9, rcvr, index);
 	pop(4);
 }
-'.
+
+int oldprimSampledSoundmixSampleCountintostartingAtleftVolrightVol(void) {
+    int rcvr;
+    int n;
+    short int *aSoundBuffer;
+    int startIndex;
+    int leftVol;
+    int rightVol;
+    int sliceIndex;
+    int sampleIndex;
+    int sample;
+    int s;
+    int lastIndex;
+    int i;
+    int scaledVol;
+    int scaledVolIncr;
+    int scaledVolLimit;
+    int count;
+    short int *samples;
+    int samplesSize;
+    int incrementTimes1000;
+    int indexTimes1000;
+
+	rcvr = stackValue(5);
+	n = checkedIntegerValueOf(stackValue(4));
+	aSoundBuffer = arrayValueOf(stackValue(3));
+	aSoundBuffer -= 1;
+	startIndex = checkedIntegerValueOf(stackValue(2));
+	leftVol = checkedIntegerValueOf(stackValue(1));
+	rightVol = checkedIntegerValueOf(stackValue(0));
+	scaledVol = fetchIntegerofObject(3, rcvr);
+	scaledVolIncr = fetchIntegerofObject(4, rcvr);
+	scaledVolLimit = fetchIntegerofObject(5, rcvr);
+	count = fetchIntegerofObject(7, rcvr);
+	samples = fetchArrayofObject(8, rcvr);
+	samples -= 1;
+	samplesSize = fetchIntegerofObject(10, rcvr);
+	incrementTimes1000 = fetchIntegerofObject(11, rcvr);
+	indexTimes1000 = fetchIntegerofObject(12, rcvr);
+	if (!(successFlag)) {
+		return null;
+	}
+	lastIndex = (startIndex + n) - 1;
+	sliceIndex = startIndex;
+	sampleIndex = indexTimes1000 / 1000;
+	while ((sampleIndex <= samplesSize) && (sliceIndex <= lastIndex)) {
+		sample = ((int) ((samples[sampleIndex]) * scaledVol) >> 15);
+		if (leftVol > 0) {
+			i = (2 * sliceIndex) - 1;
+			s = (aSoundBuffer[i]) + (((int) (sample * leftVol) >> 15));
+			if (s > 32767) {
+				s = 32767;
+			}
+			if (s < -32767) {
+				s = -32767;
+			}
+			aSoundBuffer[i] = s;
+		}
+		if (rightVol > 0) {
+			i = 2 * sliceIndex;
+			s = (aSoundBuffer[i]) + (((int) (sample * rightVol) >> 15));
+			if (s > 32767) {
+				s = 32767;
+			}
+			if (s < -32767) {
+				s = -32767;
+			}
+			aSoundBuffer[i] = s;
+		}
+		if (scaledVolIncr != 0) {
+			scaledVol += scaledVolIncr;
+			if (((scaledVolIncr > 0) && (scaledVol >= scaledVolLimit)) || ((scaledVolIncr < 0) && (scaledVol <= scaledVolLimit))) {
+				scaledVol = scaledVolLimit;
+				scaledVolIncr = 0;
+			}
+		}
+		indexTimes1000 += incrementTimes1000;
+		sampleIndex = indexTimes1000 / 1000;
+		sliceIndex += 1;
+	}
+	count -= n;
+	if (!(successFlag)) {
+		return null;
+	}
+	storeIntegerofObjectwithValue(3, rcvr, scaledVol);
+	storeIntegerofObjectwithValue(4, rcvr, scaledVolIncr);
+	storeIntegerofObjectwithValue(7, rcvr, count);
+	storeIntegerofObjectwithValue(12, rcvr, indexTimes1000);
+	pop(5);
+}
+'
