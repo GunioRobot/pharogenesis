@@ -1,6 +1,6 @@
 httpTestHost: hostName port: port url: url
 	"This test fetches a URL from the given host and port."
-	"SimpleClientSocket httpTestHost: 'www.exploratorium.edu' port: 80 url: '/'"
+	"SimpleClientSocket httpTestHost: 'www.disney.com' port: 80 url: '/'"
 	"Tests URL fetch through a local HTTP proxie server:
 		(SimpleClientSocket
 			httpTestHost: '127.0.0.1'
@@ -16,7 +16,7 @@ httpTestHost: hostName port: port url: url
 	s _ SimpleClientSocket new.
 	Transcript show: '---------- Connecting ----------'; cr.
 	s connectTo: hostAddr port: port.
-	s waitForConnectionUntil: "self standardDeadline" (Socket deadlineSecs: 4).
+	s waitForConnectionUntil: "self standardDeadline" (Socket deadlineSecs: 10).
 	(s isConnected) ifFalse: [
 		s destroy.
 		^ self inform: 'could not connect'].
