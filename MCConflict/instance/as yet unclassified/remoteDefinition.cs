@@ -1,0 +1,2 @@
+remoteDefinition
+	^ operation targetDefinition
