@@ -1,0 +1,2 @@
+isWonderlandCamera
+	^false
