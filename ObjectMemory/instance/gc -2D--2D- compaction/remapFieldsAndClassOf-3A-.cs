@@ -9,8 +9,8 @@ remapFieldsAndClassOf: oop
 		fieldOop _ self longAt: (oop + fieldOffset).
 		(self isObjectForwarded: fieldOop) ifTrue: [
 			"update this oop from its forwarding block"
-			fwdBlock _ (self longAt: fieldOop) bitAnd: AllButMarkBitAndTypeMask.
-			checkAssertions ifTrue: [ self fwdBlockValidate: fwdBlock ].
+			fwdBlock _ ((self longAt: fieldOop) bitAnd: AllButMarkBitAndTypeMask) << 1.
+			DoAssertionChecks ifTrue: [ self fwdBlockValidate: fwdBlock ].
 			newOop _ self longAt: fwdBlock.
 			self longAt: (oop + fieldOffset) put: newOop.
 
