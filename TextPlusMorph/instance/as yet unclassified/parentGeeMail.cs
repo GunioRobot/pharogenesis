@@ -1,0 +1,3 @@
+parentGeeMail
+	
+	^self ownerThatIsA: GeeMailMorph
