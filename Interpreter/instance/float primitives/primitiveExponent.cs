@@ -6,7 +6,8 @@ primitiveExponent
 	self var: #frac declareC: 'double frac'.
 	rcvr _ self popFloat.
 	successFlag
-		ifTrue: [
-			self cCode: 'frac = frexp(rcvr, &pwr)'.  "rcvr = frac * 2^pwr, where frac is in [0.5..1.0)"
+		ifTrue: [  "rcvr = frac * 2^pwr, where frac is in [0.5..1.0)"
+			self cCode: 'frac = frexp(rcvr, &pwr)'
+					inSmalltalk: [rcvr exponent].
 			self pushInteger: pwr - 1]
 		ifFalse: [self unPop: 1].
