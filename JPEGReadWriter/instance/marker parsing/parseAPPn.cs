@@ -4,7 +4,10 @@ parseAPPn
 	markerStart _ self position.
 	length _ self nextWord.
 	buffer _ self next: 4.
-	(buffer asString = 'JFIF') ifFalse: [self error: 'APP header is incorrect'].
+	(buffer asString = 'JFIF') ifFalse: [
+		"Skip APPs that we're not interested in"
+		stream next: length-6.
+		^self].
 	self next.
 	majorVersion _ self next.
 	minorVersion _ self next.
