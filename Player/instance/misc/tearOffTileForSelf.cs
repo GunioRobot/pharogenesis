@@ -1,6 +1,10 @@
 tearOffTileForSelf
 	| tiles |
-	self currentHand attachMorph: (tiles _ self tileReferringToSelf).
-	(tiles respondsTo: #cursorBaseOffset) ifTrue: [
-		tiles align: tiles topLeft 
-			 with: self currentHand position + tiles cursorBaseOffset].
+	self currentHand attachMorph: (tiles := self tileReferringToSelf).
+	(tiles isSyntaxMorph) 
+		ifTrue: 
+			[Preferences tileTranslucentDrag 
+				ifTrue: [tiles lookTranslucent]
+				ifFalse: 
+					[tiles align: tiles topLeft
+						with: self currentHand position + tiles cursorBaseOffset]]
