@@ -1,0 +1,2 @@
+togglePartsBinMode
+	referent setPartsBinStatusTo: referent isPartsBin not
