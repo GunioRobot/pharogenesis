@@ -1,10 +1,13 @@
-okayOop: oop
+okayOop: signedOop
 	"Verify that the given oop is legitimate. Check address, header, and size but not class."
 
-	| sz type fmt |
+	| sz type fmt oop |
+	self var: #oop type: 'unsigned'.
+	oop := self cCoerce: signedOop to: 'unsigned'.
+
 	"address and size checks"
 	(self isIntegerObject: oop) ifTrue: [ ^true ].
-	((0 < oop) & (oop < endOfMemory))
+	(oop < endOfMemory)
 		ifFalse: [ self error: 'oop is not a valid address' ].
 	((oop \\ 4) = 0)
 		ifFalse: [ self error: 'oop is not a word-aligned address' ].
