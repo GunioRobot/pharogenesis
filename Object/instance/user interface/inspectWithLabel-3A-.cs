@@ -1,2 +1,2 @@
 inspectWithLabel: aLabel
-	Inspector openOn: self withEvalPane: true withLabel: aLabel
+	^self inspectorClass openOn: self withEvalPane: true withLabel: aLabel
