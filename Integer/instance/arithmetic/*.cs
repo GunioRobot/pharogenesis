@@ -3,4 +3,4 @@
 	aNumber isInteger
 		ifTrue: [^ self digitMultiply: aNumber 
 					neg: self negative ~~ aNumber negative]
-		ifFalse: [^self retry: #* coercing: aNumber]
+		ifFalse: [^ (aNumber adaptInteger: self) * aNumber adaptToInteger]
