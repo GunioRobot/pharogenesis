@@ -6,7 +6,12 @@ printMethodChunk: selector withPreamble: doPreamble on: outStream
 		ifTrue: [preamble _ self name , ' methodsFor: ' ,
 					(self organization categoryOfElement: selector) asString printString]
 		ifFalse: [preamble _ ''].
-	method _ self methodDict at: selector.
+	method _ self methodDict at: selector ifAbsent:
+		[outStream nextPutAll: selector; cr.
+		outStream tab; nextPutAll: '** ERROR!  THIS SCRIPT IS MISSING ** ' translated; cr; cr.
+		outStream nextPutAll: '  '.
+		^ outStream].
+
 	((method fileIndex = 0
 		or: [(SourceFiles at: method fileIndex) == nil])
 		or: [(oldPos _ method filePosition) = 0])
@@ -17,9 +22,11 @@ printMethodChunk: selector withPreamble: doPreamble on: outStream
 											in: self method: method) decompileString]
 		ifFalse:
 		[sourceFile _ SourceFiles at: method fileIndex.
-		sourceFile position: oldPos.
-		preamble size > 0 ifTrue:    "Copy the preamble"
-			[outStream copyPreamble: preamble from: sourceFile].
+		preamble size > 0
+			ifTrue:    "Copy the preamble"
+				[outStream copyPreamble: preamble from: sourceFile at: oldPos]
+			ifFalse:
+				[sourceFile position: oldPos].
 		"Copy the method chunk"
 		newPos _ outStream position.
 		outStream copyMethodChunkFrom: sourceFile.
