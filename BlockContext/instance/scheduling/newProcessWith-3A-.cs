@@ -6,5 +6,5 @@ newProcessWith: anArray
 	^Process
 		forContext: 
 			[self valueWithArguments: anArray.
-			Processor terminateActive]
+			Processor terminateActive] asContext
 		priority: Processor activePriority
