@@ -1,0 +1,2 @@
+downArrowHit
+	self nextCostume
