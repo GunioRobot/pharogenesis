@@ -1,4 +1,3 @@
-drawOn: aCanvas
-
-		super drawOn: aCanvas.	
-		image = nil ifFalse:[aCanvas image: image at: bounds origin].
+drawOn: aCanvas 
+	super drawOn: aCanvas.
+	image isNil ifFalse: [aCanvas image: image at: bounds origin]
