@@ -1,0 +1,2 @@
+initialize
+	CommentsTable := Dictionary new.
