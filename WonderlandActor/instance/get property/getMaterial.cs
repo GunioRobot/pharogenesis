@@ -1,0 +1,2 @@
+getMaterial
+	^myMaterial
