@@ -1,0 +1,2 @@
+beLinear
+	circular := false
