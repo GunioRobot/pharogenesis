@@ -1,0 +1,2 @@
+participantSubstring: aString
+	participantSubstring := aString
