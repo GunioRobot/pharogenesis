@@ -1,0 +1,2 @@
+representsBook
+	^ morphToInstall ~~ nil
