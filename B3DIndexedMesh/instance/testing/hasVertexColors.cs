@@ -1,0 +1,2 @@
+hasVertexColors
+	^vtxColors notNil
