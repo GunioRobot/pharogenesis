@@ -1,3 +1,3 @@
-balloonTextSelector: aSelector
-	extension == nil ifTrue: [self assureExtension].
-	extension balloonTextSelector: aSelector
+balloonTextSelector: aSelector 
+	"change the receiver's balloonTextSelector"
+	self assureExtension balloonTextSelector: aSelector
