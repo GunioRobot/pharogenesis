@@ -1,0 +1,3 @@
+buttonProperties
+
+	^self valueOfProperty: #universalButtonProperties
