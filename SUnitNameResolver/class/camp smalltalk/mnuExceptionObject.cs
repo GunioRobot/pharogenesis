@@ -1,0 +1,2 @@
+mnuExceptionObject
+	^MessageNotUnderstood new
