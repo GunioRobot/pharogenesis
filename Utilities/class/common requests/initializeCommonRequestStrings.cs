@@ -1,27 +1,33 @@
 initializeCommonRequestStrings
-	"Initialize an array of common request strings.  2/1/96 sw"
+	"Initialize the common request strings, a directly-editable list of expressions that can be evaluated from the 'do...' menu."
 
 	CommonRequestStrings _ StringHolder new contents: 
-'Utilities emergencyCollapse
-Utilities closeAllDebuggers
-Sensor keyboard
-Cursor normal show
-ParagraphEditor abandonChangeText
-----------------------------------
-Preferences enable: #cmdDotEnabled
-Form fromUser bitEdit
-Display border: (0@0 extent: 640@480) width: 2
-----------------------------------
-Undeclared inspect
-Undeclared removeUnreferencedKeys; inspect
-Transcript clear
-ChangeSorter removeEmptyUnnamedChangeSets
-Utilities reconstructTextWindowsFromFileNamed: ''TextWindows''.
-Utilities storeTextWindowContentsToFileNamed: ''TextWindows''.
-self currentHand attachMorph: (FrameRateMorph new contents: ''FrameRate'').
-----------------------------------
-ChangeSorter removeEmptyUnnamedChangeSets
+'Utilities emergencyCollapse.
+Utilities closeAllDebuggers.
+-
+Sensor keyboard.
+ParagraphEditor abandonChangeText.
+Cursor normal show.
+-
+CommandHistory resetAllHistory.
+Project allInstancesDo: [:p | p displayDepth: 16].
+ScriptingSystem inspectFormDictionary.
+Form fromUser bitEdit.
+Display border: (0@0 extent: 640@480) width: 2.
+-
+Undeclared inspect.
+Undeclared removeUnreferencedKeys; inspect.
+Transcript clear.
+Utilities grabScreenAndSaveOnDisk.
+FrameRateMorph new openInHand.
+-
+Utilities reconstructTextWindowsFromFileNamed: ''TW''.
+Utilities storeTextWindowContentsToFileNamed: ''TW''.
+ChangeSorter removeEmptyUnnamedChangeSets.
 ChangeSorter reorderChangeSets.
-Utilities grabScreenAndSaveOnDisk'
+-
+ActiveWorld installVectorVocabulary.
+ActiveWorld abandonVocabularyPreference.
+Smalltalk saveAsNewVersion'
 
 "Utilities initializeCommonRequestStrings"
