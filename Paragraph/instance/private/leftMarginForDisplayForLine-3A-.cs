@@ -9,7 +9,7 @@ leftMarginForDisplayForLine: lineIndex
 				+ (self leftMarginForCompositionForLine: lineIndex)].
 	"When called from character location code and entire string has been cut,
 	there are no valid lines, hence following nil check."
-	(lines at: lineIndex) ~~ nil
+	(lineIndex <= lines size and: [(lines at: lineIndex) notNil])
 		ifTrue: 
 			[pad _ (lines at: lineIndex) paddingWidth]
 		ifFalse: 
