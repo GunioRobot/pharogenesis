@@ -1,0 +1,2 @@
+activeProcess
+	^ CurrentProject activeProcess
