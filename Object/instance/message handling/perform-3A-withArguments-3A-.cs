@@ -7,4 +7,6 @@ perform: selector withArguments: anArray
 	documentation whatIsAPrimitive."
 
 	<primitive: 84>
+	(selector isMemberOf: Symbol)
+		ifFalse: [^ self error: 'selector argument must be a Symbol'].
 	self primitiveFailed
