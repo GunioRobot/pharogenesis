@@ -3,6 +3,6 @@ compileReferenceAccessorFor: varName
 
 	Preferences capitalizedReferences ifTrue: [^ self].
 
-	self class compileUnlogged: ((self referenceAccessorSelectorFor: varName), '
+	self class compileSilently: ((self referenceAccessorSelectorFor: varName), '
 	^ ', varName)
-		classified: 'reference' notifying: nil
+		classified: 'reference'
