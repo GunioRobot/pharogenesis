@@ -1,20 +1,41 @@
 createPoohActor
-	| tdo actor |
-	outline normalizeTo: 20.
-	"outline reduceTo: 80."
+	| actor pointList box scale center subdivision mesh tex |
+	pointList _ self outline.
+	pointList reset.
+	pointList _ pointList contents.
+	pointList size < 2 ifTrue:[
+		self clearStroke.
+		^errorSound play].
 
-	outline _ outline normalizedWithin: self bounds.
+	pointList _ self simplify: pointList.
+	pointList _ self smoothen: pointList length: 10.
+	pointList _ self regularize: pointList.
+	box _ Rectangle encompassing: pointList.
+	scale _ bounds extent y * 0.5.
+	scale _ 1.0 / (scale @ scale negated).
+	center _ box origin + box corner * 0.5.
+	pointList _ pointList collect:[:each|  each - center * scale].
+	subdivision _ PoohSubdivision points: pointList shuffled.
+	subdivision constraintOutline: pointList.
+	mesh _ subdivision build3DObject.
 
-	tdo _ POObject createOn: self outline.
-
-	actor _ self getWonderland makeActorNamed: 'pooh'.
-	actor setProperty: #handmade toValue: true;
-	 setMesh: tdo asB3DSimpleMesh;
-	 setColor: brown;
-	 setTexturePointer: ((Form extent: 256@128 depth: Display depth) fillColor: Color white) asTexture.
-
-	"actor scaleByMatrix: (B3DMatrix4x4 identity setScale: 0.01@0.01@0.01)."
-	actor setComposite: (myCamera getMatrixFromRoot composedWithLocal: (B3DMatrix4x4 withOffset: 0@0@2)).
+	mesh ifNil:[
+		errorSound play.
+	] ifNotNil:[
+		actor _ self getWonderland makeActorNamed: 'sketch'.
+		actor setProperty: #handmade toValue: true;
+			setBackfaceCulling: #ccw;
+			setMesh: mesh;
+			setColor: gray.
+		Preferences twoSidedPoohTextures
+			ifTrue:[tex _ (Form extent: 256@512 depth: 32) asTexture fillColor: Color white]
+			ifFalse:[tex _ (Form extent: 256@256 depth: 32) asTexture fillColor: Color white].
+		actor setTexturePointer: tex.
+		actor setComposite: (myCamera getMatrixFromRoot composedWithLocal: (B3DMatrix4x4 withOffset: 0@0@2)).
+		actor scaleByMatrix: (B3DRotation axis: 0@1@0 angle: 90) asMatrix4x4.
+		actor rotateByMatrix: (B3DRotation axis: 0@1@0 angle:-90) asMatrix4x4.
+	].
 
 	self clearStroke.
-	Cursor normal beCursor
+	self mode: nil.
+	Cursor normal show.
