@@ -1,0 +1,2 @@
+getStartGet
+	^workBuffer at: GWGETStart
