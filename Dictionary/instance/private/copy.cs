@@ -1,5 +1,5 @@
 copy
-	"Must copy the associations, or later store will effect both the
+	"Must copy the associations, or later store will affect both the
 original and the copy"
 
 	^ self shallowCopy withArray:
