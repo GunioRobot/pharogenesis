@@ -1,0 +1,3 @@
+dyeCount
+
+	^ dyeCount
