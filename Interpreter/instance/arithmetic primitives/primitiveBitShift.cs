@@ -1,6 +1,5 @@
 primitiveBitShift 
 	| integerReceiver integerArgument shifted |
-	successFlag _ true.
 	integerArgument _ self popInteger.
 	integerReceiver _ self popPos32BitInteger.
 	successFlag ifTrue: [
@@ -17,4 +16,4 @@ primitiveBitShift
 	].
 	successFlag
 		ifTrue: [self push: (self positive32BitIntegerFor: shifted)]
-		ifFalse: [self unPop: 2.  self failSpecialPrim: 17]
+		ifFalse: [self unPop: 2]
