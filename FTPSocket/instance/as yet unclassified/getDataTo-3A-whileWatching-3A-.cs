@@ -3,7 +3,7 @@ getDataTo: dataStream whileWatching: otherSocket
 
 	| buf bytesRead |
 	buf _ String new: 4000.
-	[(self dataAvailable | self isConnected)] whileTrue: [
+	[self isConnected | self dataAvailable] whileTrue: [
 		(self waitForDataUntil: (Socket deadlineSecs: 5)) ifFalse: [
 			otherSocket responseError ifTrue: [self destroy. ^ #error:].
 			Transcript show: 'data was late'; cr].
