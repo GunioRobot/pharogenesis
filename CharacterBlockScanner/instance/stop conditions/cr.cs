@@ -12,9 +12,7 @@ cr
 		ifTrue:	["When off end of string, give data for next character"
 				destY _ destY +  line lineHeight.
 				lastCharacter _ nil.
-				characterPoint _ ((text at: lastIndex) = CR
-								ifTrue: [leftMargin]
-								ifFalse: [nextLeftMargin]) @ destY.
+				characterPoint _ (nextLeftMargin ifNil: [leftMargin]) @ destY.
 				lastIndex _ lastIndex + 1.
 				self lastCharacterExtentSetX: 0.
 				^ true].
