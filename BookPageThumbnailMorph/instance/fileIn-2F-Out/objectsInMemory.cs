@@ -11,10 +11,10 @@ objectsInMemory
 		(wld _ self world) ifNil: [wld _ Smalltalk currentWorld].
 		bk _ BookMorph isInWorld: wld withUrl: bookUrl.
 		bk == #conflict ifTrue: [
-			^ self inform: 'This book is already open in some other project'].
+			^ self inform: 'This book is already open in some other project' translated].
 		bk == #out ifTrue: [
 			(bk _ BookMorph new fromURL: bookUrl) ifNil: [^ self]].
 		bookMorph _ bk].
 	page class == String ifTrue: [
 		page _ (bookMorph pages detect: [:pg | pg url = page] 
-					ifNone: [bookMorph pages at: 1])].
+					ifNone: [bookMorph pages first])].
