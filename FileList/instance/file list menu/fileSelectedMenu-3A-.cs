@@ -1,21 +1,15 @@
 fileSelectedMenu: aMenu
-
+	| firstItems secondItems thirdItems n1 n2 n3 |
+	firstItems _ self itemsForFileEnding: self fileNameSuffix asLowercase.
+	secondItems _ self itemsForAnyFile.
+	thirdItems _ self itemsForNoFile.
+	n1 _ firstItems first size.
+	n2 _ n1 + secondItems first size.
+	n3 _ n2 + thirdItems first size.
 	^ aMenu
-		labels:
-'fileIn
-file into new change set
-browse changes
-copy name to clipboard
-open image in a window
-read image into GIFImports
-play midi file
-sort by name
-sort by size
-sort by date
-rename
-delete
-add new file
-broadcast as update'
-		lines: # (4 6 7 10)
-		selections: #(fileInSelection fileIntoNewChangeSet browseChanges  copyName
-openImageInWindow importImage playMidiFile sortByName sortBySize sortByDate renameFile deleteFile addNewFile putUpdate)
+		labels: firstItems first , secondItems first , thirdItems first , #('more...')
+		lines: firstItems second
+				, (Array with: n1 with: n2)
+				, (thirdItems second collect: [:n | n + n2])
+				, (Array with: n3)
+		selections: firstItems third , secondItems third , thirdItems third , #(offerAllFileOptions)
