@@ -1,0 +1,3 @@
+stopPlaying
+
+	SoundPlayer stopPlayerProcess.
