@@ -1,9 +1,11 @@
 optionalButtonRow
+	"Answer a row of buttons to occur in a tool pane"
+
 	| aRow aButton |
 	aRow _ AlignmentMorph newRow.
 	aRow hResizing: #spaceFill.
 	aRow clipSubmorphs: true.
-	aRow addTransparentSpacerOfSize: (5@0).
+	aRow layoutInset: 5@2; cellInset: 3.
 	aRow wrapCentering: #center; cellPositioning: #leftCenter.
 	self changeListButtonSpecs do:
 		[:triplet |
@@ -20,8 +22,8 @@ optionalButtonRow
 				onColor: Color transparent offColor: Color transparent.
 
 			aRow addMorphBack: aButton.
-			aRow addTransparentSpacerOfSize: (3 @ 0).
-			aButton setBalloonText: triplet third.
-		].
-	aRow addMorphBack: self diffButton.	
+			aButton setBalloonText: triplet third].
+	aRow addMorphBack: self regularDiffButton.
+	self wantsPrettyDiffOption ifTrue:
+		[aRow addMorphBack: self prettyDiffButton].
 	^ aRow
