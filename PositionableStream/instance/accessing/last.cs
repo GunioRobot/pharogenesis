@@ -1,4 +1,4 @@
 last
-	"Return the final element in the receiver.  Put in at Alan's request.  2/2/96 sw"
+	"Return the final element in the receiver"
 
-	^ collection at: (position - 1)
+	^ collection at: position
