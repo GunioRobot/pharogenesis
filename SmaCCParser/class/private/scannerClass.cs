@@ -1,0 +1,2 @@
+scannerClass
+	^self subclassResponsibility
