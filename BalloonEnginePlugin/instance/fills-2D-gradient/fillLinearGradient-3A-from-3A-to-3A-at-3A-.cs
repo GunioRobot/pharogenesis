@@ -15,10 +15,13 @@ fillLinearGradient: fill from: leftX to: rightX at: yValue
 
 	"Note: The inner loop has been divided into three parts for speed"
 	"Part one: Fill everything outside the left boundary"
-	[(rampIndex _ ds // 16r10000) < 0 and:[x < x1]] 
+	[((rampIndex _ ds // 16r10000) < 0 or:[rampIndex >= rampSize]) and:[x < x1]] 
 		whileTrue:[	x _ x + 1.
 					ds _ ds + dsX].
-	x > x0 ifTrue:[self fillColorSpan: (self makeUnsignedFrom: (ramp at: 0)) from: x0 to: x].
+	x > x0 ifTrue:[
+		rampIndex < 0 ifTrue:[rampIndex _ 0].
+		rampIndex >= rampSize ifTrue:[rampIndex _ rampSize - 1].
+		self fillColorSpan: (self makeUnsignedFrom: (ramp at: rampIndex)) from: x0 to: x].
 
 	"Part two: Fill everything inside the boundaries"
 	self aaLevelGet = 1 ifTrue:[
