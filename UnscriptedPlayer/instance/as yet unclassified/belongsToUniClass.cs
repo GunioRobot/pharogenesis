@@ -1,0 +1,2 @@
+belongsToUniClass
+	^ false
