@@ -1,2 +1,2 @@
 getMouseY
-	^ self costume mouseY
+	^ self costume renderedMorph mouseY.
