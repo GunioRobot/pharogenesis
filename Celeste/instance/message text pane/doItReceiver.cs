@@ -1,2 +1,2 @@
 doItReceiver
-	^nil
+	^self
