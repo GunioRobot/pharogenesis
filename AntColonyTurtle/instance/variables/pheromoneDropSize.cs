@@ -1,0 +1,3 @@
+pheromoneDropSize
+
+	^ pheromoneDropSize
