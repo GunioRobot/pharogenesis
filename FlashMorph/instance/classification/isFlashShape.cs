@@ -1,0 +1,2 @@
+isFlashShape
+	^false
