@@ -5,6 +5,8 @@ upward
 	NOTE: Type field of object below has already been restored!!!"
 
 	| type header |
+	self inline: true.
+
 	(parentField bitAnd: 1) = 1 ifTrue: [
 		parentField = GCTopMarker ifTrue: [
 			"top of the chain"
