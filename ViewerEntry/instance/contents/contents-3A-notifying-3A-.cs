@@ -5,5 +5,5 @@ contents: c notifying: k
 		ifNotNil:
 			[info documentation: c.
 			^ true].
-	self beep.
+	Beeper beep.
 	^ false
