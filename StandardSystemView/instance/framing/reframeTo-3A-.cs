@@ -6,6 +6,7 @@ reframeTo: newFrame
 	oldBox _ self windowBox.
 	portRect _ newFrame topLeft + self labelOffset
 				corner: newFrame corner.
+	self setWindow: nil.
 	self resizeTo: portRect.
 	self setLabelRegion.
 	newBox _ self windowBox.
