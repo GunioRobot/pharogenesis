@@ -1,0 +1,3 @@
+classIsMeta
+
+	^classIsMeta
