@@ -4,5 +4,5 @@ pasteInitials: characterStream
 
 	sensor keyboard.		"flush character"
 	self closeTypeIn: characterStream.
-	self replace: self selectionInterval with: (Text fromString: Utilities changeStamp) and: [self selectAt: stopBlock stringIndex].
+	self replace: self selectionInterval with: (Text fromString: Utilities changeStamp) and: [self selectAt: self stopIndex].
 	^ true
