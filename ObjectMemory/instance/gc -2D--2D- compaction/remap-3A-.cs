@@ -5,8 +5,8 @@ remap: oop
 	self inline: false.
 	(self isObjectForwarded: oop) ifTrue: [
 		"get the new value for oop from its forwarding block"
-		fwdBlock _ (self longAt: oop) bitAnd: AllButMarkBitAndTypeMask.
-		checkAssertions ifTrue: [ self fwdBlockValidate: fwdBlock ].
+		fwdBlock _ ((self longAt: oop) bitAnd: AllButMarkBitAndTypeMask) << 1.
+		DoAssertionChecks ifTrue: [ self fwdBlockValidate: fwdBlock ].
 		^ self longAt: fwdBlock
 	].
 	^ oop
