@@ -25,7 +25,7 @@ primitiveAddPolygon
 		(length = nPoints or:[nPoints * 2 = length])
 			ifFalse:[^interpreterProxy primitiveFail].
 	] ifFalse:["Must be Array of points"
-		(interpreterProxy fetchClassOf: points) = interpreterProxy classArray
+		(interpreterProxy isArray: points)
 			ifFalse:[^interpreterProxy primitiveFail].
 		length = nPoints
 			ifFalse:[^interpreterProxy primitiveFail].
