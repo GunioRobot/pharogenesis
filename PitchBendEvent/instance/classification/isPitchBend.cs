@@ -1,0 +1,3 @@
+isPitchBend
+
+	^ true
