@@ -7,6 +7,17 @@ openAsMorphIn: window rect: rect
 	msgListHeight _ 0.25.
 	csMsgListHeight _ csListHeight + msgListHeight.
 	self addDependent: window.		"so it will get changed: #relabel"
+	
+"The method SystemWindow>>addMorph:fullFrame: checks scrollBarsOnRight, then adds the morph at the back if true, otherwise it is added in front. But flopout hScrollbars needs the crrentSelector pane to be behind the upper ones in the draw order. Hence the value of scrollBarsOnRight affects the order in which the lowerpanes are added."
+	Preferences scrollBarsOnRight ifFalse:
+		[window addMorph: (PluggableListMorphByItem on: self
+					list: #messageList
+					selected: #currentSelector
+					changeSelected: #currentSelector:
+					menu: #messageMenu:shifted:
+					keystroke: #messageListKey:from:)
+			frame: (((0@csListHeight extent: 1@msgListHeight)
+				scaleBy: rect extent) translateBy: rect origin)].
 
 	window addMorph: ((PluggableListMorphByItem on: self
 				list: #changeSetList
@@ -22,19 +33,20 @@ openAsMorphIn: window rect: rect
 				list: #classList
 				selected: #currentClassName
 				changeSelected: #currentClassName:
-				menu: #classMenu:shifted:
+				menu: #classListMenu:shifted:
 				keystroke: #classListKey:from:)
 		frame: (((0.5@0 extent: 0.5@csListHeight)
 			scaleBy: rect extent) translateBy: rect origin).
 
-	window addMorph: (PluggableListMorphByItem on: self
-				list: #messageList
-				selected: #currentSelector
-				changeSelected: #currentSelector:
-				menu: #messageMenu:shifted:
-				keystroke: #messageListKey:from:)
-		frame: (((0@csListHeight extent: 1@msgListHeight)
-			scaleBy: rect extent) translateBy: rect origin).
+	Preferences scrollBarsOnRight ifTrue:
+		[window addMorph: (PluggableListMorphByItem on: self
+					list: #messageList
+					selected: #currentSelector
+					changeSelected: #currentSelector:
+					menu: #messageMenu:shifted:
+					keystroke: #messageListKey:from:)
+			frame: (((0@csListHeight extent: 1@msgListHeight)
+				scaleBy: rect extent) translateBy: rect origin)].
 
 	 self addLowerPanesTo: window
 		at: (((0@csMsgListHeight corner: 1@1) scaleBy: rect extent) translateBy: rect origin)
