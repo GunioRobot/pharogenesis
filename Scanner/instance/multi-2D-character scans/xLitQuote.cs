@@ -1,6 +1,5 @@
 xLitQuote
-	"UniqueStrings and vectors: #(1 (4 5) 2 3) #ifTrue:ifFalse:.
-	 For ##x answer #x->nil.  For ###x answer nil->#x."
+	"Symbols and vectors: #(1 (4 5) 2 3) #ifTrue:ifFalse: #'abc'."
 
 	| start |
 	self step. "litQuote"
@@ -19,16 +18,16 @@ xLitQuote
 				ifFalse:
 					[(tokenType==#literal)
 						ifTrue:
-							[(token isMemberOf: Association)
-								ifTrue: "###word"
-									[token _ nil->token key].
-							(token isMemberOf: Symbol)
+							[(token isMemberOf: Symbol)
 								ifTrue: "##word"
-									[token _ token->nil]]]].
+									[token _ token "May want to move toward ANSI here"]]
+						ifFalse:
+							[tokenType==#string ifTrue: [token _ token asSymbol]]]].
 	tokenType _ #literal
 
 "	#(Pen)
 	#Pen
+	#'Pen'
 	##Pen
 	###Pen
 "
