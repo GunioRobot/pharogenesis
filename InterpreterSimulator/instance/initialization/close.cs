@@ -1,2 +1,2 @@
 close  "close any files that ST may have opened"
-	filesOpen do: [:f | f setToEnd; close]
+	filesOpen do: [:f | f close]
