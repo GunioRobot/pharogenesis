@@ -1,22 +1,19 @@
-updateInstancesFrom: oldClass 
+updateInstancesFrom: oldClass
 	"Recreate any existing instances of the argument, oldClass, as instances of 
 	the receiver, which is a newly changed class. Permute variables as 
-	necessary."
+	necessary. Return the array of old instances (none of which should be
+	pointed to legally by anyone but the array)."
 	"ar 7/15/1999: The updating below is possibly dangerous. If there are any
 	contexts having an old instance as receiver it might crash the system if
 	the new receiver in which the context is executed has a different layout.
 	See bottom below for a simple example:"
 	| oldInstances |
-
-	Smalltalk garbageCollect.	"ensure that allInstances is correct"
 	oldInstances _ oldClass allInstances asArray.
-	self updateInstances: oldInstances from: oldClass isMeta: self isMeta.
+	oldInstances _ self updateInstances: oldInstances from: oldClass isMeta: self isMeta.
 	"Now fix up instances in segments that are out on the disk."
 	ImageSegment allSubInstancesDo: [:seg |
 		seg segUpdateInstancesOf: oldClass toBe: self isMeta: self isMeta].
-	oldInstances _ nil.
-	Smalltalk garbageCollect.	"ensure that old instances are gone"
-
+	^oldInstances
 
 "	| crashingBlock class |
 	class _ Object subclass: #CrashTestDummy
