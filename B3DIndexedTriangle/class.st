@@ -1,1 +1,6 @@
-B3DIndexedTriangle class instanceVariableNames: ''
+B3DGeometry
+	variableWordSubclass: #B3DIndexedTriangle
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Balloon3D-Kernel-Meshes'
