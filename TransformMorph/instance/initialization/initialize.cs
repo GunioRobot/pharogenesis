@@ -1,5 +1,7 @@
 initialize
+	"initialize the state of the receiver"
 	super initialize.
-	color _ Color lightGreen.
+	""
+	
 	smoothing _ 1.
-	transform _ MorphicTransform identity.
+	transform _ MorphicTransform identity
