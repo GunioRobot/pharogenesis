@@ -1,7 +1,10 @@
 fileIndex
-	"Answer 1 if the source code of the receiver is on the *.sources file and 2 
-	if it is on the *.changes file."
+	"Answer the index of the sources file on which this method is stored, as follows:
+		1:	.sources file
+		2:	.changes file
+		3 and 4 are also available for future extension of source code management"
 
-	(self last between: 120 and: 124)
-		ifTrue: [self error: 'Somehow a method does not have a file index.'].
-	^self last // 64 + 1
+	self last < 252 ifTrue: [^ 0  "no source"].
+	^ self last - 251
+
+	
