@@ -1,5 +1,5 @@
 primitiveSoundAvailableSpace
-	"Returns the number of sample frames of available sound output buffer space."
+	"Returns the number of bytes of available sound output buffer space.  This should be (frames*4) if the device is in stereo mode, or (frames*2) otherwise"
 
 	| frames |
 	self primitive: 'primitiveSoundAvailableSpace'.
