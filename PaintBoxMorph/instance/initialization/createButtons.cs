@@ -6,7 +6,7 @@ createButtons
 #(erase: eyedropper: fill: paint: rect: ellipse: polygon: line: star: pickup: "pickup: pickup: pickup:" stamp: "stamp: stamp: stamp:" undo: keep: toss: prevStamp: nextStamp:) do: [:sel |
 	(self findButton: sel) ifNil: [
 		PopUpMenu notify: 'Rectangle for ',sel.
-		rect _ Rectangle fromUser translateBy: self world viewBox origin negated.
+		rect _ Rectangle fromUser.
 		button _ ThreePhaseButtonMorph new.
 		button onImage: nil; bounds: rect.
 		self addMorph: button.
@@ -16,7 +16,7 @@ createButtons
 #(brush1: brush2: brush3: brush4: brush5: brush6: ) doWithIndex: [:sel :ind |
 	(self findButton: sel) ifNil: [
 		PopUpMenu notify: 'Rectangle for ',sel.
-		rect _ Rectangle fromUser translateBy: self world viewBox origin negated.
+		rect _ Rectangle fromUser.
 		button _ ThreePhaseButtonMorph new.
 		button onImage: nil; bounds: rect.
 		self addMorph: button.
