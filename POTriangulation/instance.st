@@ -1,6 +1,6 @@
 POEdgeList
 	subclass: #POTriangulation
-	instanceVariableNames: 'points toptriangle '
+	instanceVariableNames: 'points toptriangle'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Balloon3D-Pooh'
