@@ -1,8 +1,5 @@
 currentFrame
-
-	frameList isEmpty ifTrue: [^ nil].
-	currentFrameIndex > frameList size
-		ifTrue: [currentFrameIndex _ frameList size].
-	currentFrameIndex < 1
-		ifTrue: [currentFrameIndex _ 1].
-	^ frameList at: currentFrameIndex
+	frameList isEmpty ifTrue: [^nil].
+     currentFrameIndex := currentFrameIndex min: (frameList size).
+     currentFrameIndex := currentFrameIndex max: 1.
+	^frameList at: currentFrameIndex
