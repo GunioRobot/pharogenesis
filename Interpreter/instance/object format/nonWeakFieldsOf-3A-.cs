@@ -5,7 +5,7 @@ nonWeakFieldsOf: oop
 	| class classFormat |
 	self inline: false. "No need to inline - we won't call this often"
 
-	(self isWeak: oop) ifFalse:[self error:'Called fixedFieldsOfWeak: with a non-weak oop'].
+	(self isWeakNonInt: oop) ifFalse:[self error:'Called fixedFieldsOfWeak: with a non-weak oop'].
 
 	"fmt = 3 or 4: mixture of fixed and indexable fields, so must look at class format word"
 	class _ self fetchClassOf: oop.
