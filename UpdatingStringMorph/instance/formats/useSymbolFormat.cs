@@ -1,0 +1,3 @@
+useSymbolFormat
+
+	format _ #symbol.
