@@ -1,0 +1,2 @@
+roundedMenuCorners
+	^ self valueOfFlag: #roundedMenuCorners
