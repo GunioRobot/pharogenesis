@@ -1,0 +1,2 @@
+undoPainting: aPaintBoxMorph
+	^self undo
