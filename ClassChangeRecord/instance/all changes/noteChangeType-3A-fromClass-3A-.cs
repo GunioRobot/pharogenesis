@@ -8,6 +8,8 @@ noteChangeType: changeSymbol fromClass: class
 	changeSymbol = #change ifTrue:
 		[(changeTypes includes: #add) ifTrue: [^ self].
 		^ changeTypes add: changeSymbol].
+	changeSymbol == #addedThenRemoved ifTrue:
+		[^ self].  "An entire class was added but then removed"
 	changeSymbol = #comment ifTrue:
 		[^ changeTypes add: changeSymbol].
 	changeSymbol = #reorganize ifTrue:
