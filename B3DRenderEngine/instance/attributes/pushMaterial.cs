@@ -1,0 +1,2 @@
+pushMaterial
+	^shader pushMaterial.
