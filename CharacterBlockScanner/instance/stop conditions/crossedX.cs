@@ -4,23 +4,26 @@ crossedX
 	or before one."
 
 	| leadingTab currentX |
-	((characterPoint x <= (destX + ((lastCharacterExtent x) // 2)))
-		or: [line last = lastIndex])
+	characterPoint x <= (destX + ((lastCharacterExtent x) // 2))
 		ifTrue:	[lastCharacter _ (text at: lastIndex).
+				characterPoint _ destX @ destY.
+				^true].
+	lastIndex >= line last 
+		ifTrue:	[lastCharacter _ (text at: line last).
 				characterPoint _ destX @ destY.
 				^true].
 	"Pointing past middle of a character, return the next character."
 	lastIndex _ lastIndex + 1.
 	lastCharacter _ text at: lastIndex.
 	currentX _ destX + lastCharacterExtent x.
-	lastCharacterExtent x: (font widthOf: lastCharacter).
+	self lastCharacterExtentSetX: (font widthOf: lastCharacter).
 	characterPoint _ currentX @ destY.
 
 	"Yukky if next character is space or tab."
 	(lastCharacter = Space and: [textStyle alignment = Justified])
-		ifTrue:	[lastCharacterExtent x:
+		ifTrue:	[self lastCharacterExtentSetX:
 					(lastCharacterExtent x + 	(line justifiedPadFor: (spaceCount + 1))).
-				^true].
+				^ true].
 	lastCharacter = Space
 		ifTrue:
 			["See tabForDisplay for illumination on the following awfulness."
@@ -30,10 +33,10 @@ crossedX
 			(text at: index) ~= Tab
 				ifTrue: [leadingTab _ false]].
 			(textStyle alignment ~= Justified or: [leadingTab])
-				ifTrue:	[lastCharacterExtent x: (textStyle nextTabXFrom: currentX
+				ifTrue:	[self lastCharacterExtentSetX: (textStyle nextTabXFrom: currentX
 							leftMargin: leftMargin rightMargin: rightMargin) -
 								currentX]
-				ifFalse:	[lastCharacterExtent x:  (((currentX + (textStyle tabWidth -
+				ifFalse:	[self lastCharacterExtentSetX:  (((currentX + (textStyle tabWidth -
 								(line justifiedTabDeltaFor: spaceCount))) -
 									currentX) max: 0)]].
 	^ true
