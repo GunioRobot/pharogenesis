@@ -1,21 +1,4 @@
 majorScale
-	"BoinkSound majorScale play"
+	"FMSound majorScale play"
 
-	^ self namedNoteSequenceFrom: #(
-		(c5 0.25 400)
-		(d5 0.25 400)
-		(e5 0.25 400)
-		(f5 0.25 400)
-		(g5 0.25 400)
-		(a5 0.25 400)
-		(b5 0.25 400)
-		(c6 0.25 400)
-		(d6 0.25 400)
-		(c6 0.25 400)
-		(b5 0.25 400)
-		(a5 0.25 400)
-		(g5 0.25 400)
-		(f5 0.25 400)
-		(e5 0.25 400)
-		(d5 0.25 400)
-		(c5 1.00 400))
+	^ self majorScaleOn: self default
