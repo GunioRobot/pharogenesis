@@ -1,0 +1,2 @@
+buildStandardPackage
+	^self new buildStandardPackage
