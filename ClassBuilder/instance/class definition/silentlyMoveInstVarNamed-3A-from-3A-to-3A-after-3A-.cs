@@ -1,7 +1,10 @@
 silentlyMoveInstVarNamed: instVarName from: srcClass to: dstClass after: prevInstVarName
 	"Move the instvar from srcClass to dstClass.
 	Do not perform any checks."
-	| srcVars dstVars dstIndex |
+	| srcVars dstVars dstIndex newClass copyOfSrcClass copyOfDstClass |
+	copyOfSrcClass _ srcClass copy.
+	copyOfDstClass _ dstClass copy.
+	
 	srcVars _ srcClass instVarNames copyWithout: instVarName.
 	srcClass == dstClass
 		ifTrue:[dstVars _ srcVars]
@@ -13,16 +16,22 @@ silentlyMoveInstVarNamed: instVarName from: srcClass to: dstClass after: prevIns
 	instVarMap at: srcClass name put: srcVars.
 	instVarMap at: dstClass name put: dstVars.
 	(srcClass inheritsFrom: dstClass) ifTrue:[
-		self recompile: false from: dstClass to: dstClass mutate: true.
+		newClass _ self reshapeClass: dstClass toSuper: dstClass superclass.
+		self recompile: false from: dstClass to: newClass mutate: true.
 	] ifFalse:[
 		(dstClass inheritsFrom: srcClass) ifTrue:[
-			self recompile: false from: srcClass to: srcClass mutate: true.
+			newClass _ self reshapeClass: srcClass toSuper: srcClass superclass.
+			self recompile: false from: srcClass to: newClass mutate: true.
 		] ifFalse:[ "Disjunct hierarchies"
 			srcClass == dstClass ifFalse:[
-				self recompile: false from: dstClass to: dstClass mutate: true.
+				newClass _ self reshapeClass: dstClass toSuper: dstClass superclass.
+				self recompile: false from: dstClass to: newClass mutate: true.
 			].
-			self recompile: false from: srcClass to: srcClass mutate: true.
+			newClass _ self reshapeClass: srcClass toSuper: srcClass superclass.
+			self recompile: false from: srcClass to: newClass mutate: true.
 		].
 	].
 	self doneCompiling: srcClass.
 	self doneCompiling: dstClass.
+	SystemChangeNotifier uniqueInstance classDefinitionChangedFrom: copyOfSrcClass to: srcClass.
+	SystemChangeNotifier uniqueInstance classDefinitionChangedFrom: copyOfDstClass to: dstClass.
