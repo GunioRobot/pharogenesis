@@ -12,13 +12,14 @@ cleanedHeader
 	priorityFields do: [ :pField |
 		"We don't check whether the priority field is in the omitted list!"
 		self headerFieldsNamed: pField do:
-			[: fValue | new nextPutAll: pField, ': ', fValue; cr]].
+			[: fValue | new nextPutAll: pField, ': ', fValue decodeMimeHeader; cr]].
 
 	"Show the rest of the fields, omitting the uninteresting ones and ones we have already shown"
 	omittedFields _ omittedFields, priorityFields.
 	self fieldsFrom: (ReadStream on: text) do:
 		[: fName : fValue |
-		 (omittedFields anySatisfy: [: omitted | fName sameAs: omitted]) ifFalse:
-			[new nextPutAll: fName, ': ', fValue; cr]].
+		((fName beginsWith: 'x-') or:
+			[omittedFields anySatisfy: [: omitted | fName sameAs: omitted]])
+				ifFalse: [new nextPutAll: fName, ': ', fValue; cr]].
 
 	^new contents
