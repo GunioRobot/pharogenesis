@@ -1,5 +1,5 @@
-actOnClickFor: anObject
-	"Open an new LinkedMessageSet and show this method in it.  If anObject is already a LinkedMessageSet, then just add to the end of the list.  (Class method) (Class Comment) (Class Definition) (Class Hierarchy)"
+actOnClickFor: aMessageSet
+	"Add to the end of the list.  'aClass selector', 'aClass Comment', 'aClass Definition', 'aClass Hierarchy' are the formats allowed."
 
-	anObject linkMethod: classAndMethod.
+	aMessageSet addItem: classAndMethod.
 	^ true
