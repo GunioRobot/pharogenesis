@@ -15,6 +15,6 @@ decompile: aSelector in: aClass method: aMethod using: aConstructor
 	^constructor
 		codeMethod: aSelector
 		block: block
-		tempVars: tempVars
+		tempVars: (tempVars select: [:t | t scope >=0])
 		primitive: method primitive
 		class: aClass
