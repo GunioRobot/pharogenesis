@@ -3,7 +3,7 @@ deleteCard
 
 	| aCard |
 	aCard _ self currentCard.
-	cards size = 1 ifTrue: [^ self beep].
-	(self confirm: 'Really delete this card and all of its data?') ifTrue: [
-		self goToNextCardInStack.
-		cards remove: aCard].
+	self privateCards size = 1 ifTrue: [^ Beeper beep].
+	(self confirm: 'Really delete this card and all of its data?' translated) ifTrue:
+		[self goToNextCardInStack.
+		self privateCards remove: aCard].
