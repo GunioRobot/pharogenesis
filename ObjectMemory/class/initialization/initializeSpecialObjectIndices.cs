@@ -47,3 +47,6 @@ initializeSpecialObjectIndices
 	ClassExternalData _ 45.
 	ClassExternalFunction _ 46.
 	ClassExternalLibrary _ 47.
+
+	SelectorAboutToReturn _ 48.
+	SelectorRunWithIn _ 49.
