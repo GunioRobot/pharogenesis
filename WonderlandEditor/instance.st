@@ -1,6 +1,6 @@
 WonderlandMorph
 	subclass: #WonderlandEditor
-	instanceVariableNames: 'myTabs myControls myActorBrowser '
+	instanceVariableNames: 'myTabs myControls myActorBrowser'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon3D-Wonderland Morphs'
+	category: 'Balloon3D-Wonderland-Morphs'
