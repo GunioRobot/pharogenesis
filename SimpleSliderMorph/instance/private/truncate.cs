@@ -1,0 +1,2 @@
+truncate
+	^ truncate == true
