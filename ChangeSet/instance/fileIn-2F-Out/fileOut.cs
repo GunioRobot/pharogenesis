@@ -1,28 +1,39 @@
 fileOut
-	"File out the receiver, to a file whose name is a function of the change-set name and either of the date & time or chosen to have a unique numeric tag, depending on the preference 'sequentialChangeSetRevertableFileNames'"
-
-	| file slips nameToUse |
+	"File out the receiver, to a file whose name is a function of the  
+	change-set name and either of the date & time or chosen to have a  
+	unique numeric tag, depending on the preference  
+	'changeSetVersionNumbers'"
+	| slips nameToUse internalStream |
 	self checkForConversionMethods.
-	nameToUse _ Preferences changeSetVersionNumbers
-		ifTrue:
-			[FileDirectory default nextNameFor: self name extension: 'cs']
-		ifFalse:
-			[(self name, FileDirectory dot, Utilities dateTimeSuffix, 
-				FileDirectory dot, 'cs') asFileName].
-	Cursor write showWhile:
-		[[file _ FileStream newFileNamed: nameToUse.
-		file header; timeStamp.
-		self fileOutPreambleOn: file.
-		self fileOutOn: file.
-		self fileOutPostscriptOn: file.
-		file trailer] ensure: [file close]].
+	ChangeSet promptForDefaultChangeSetDirectoryIfNecessary.
+	nameToUse := Preferences changeSetVersionNumbers
+				ifTrue: [self defaultChangeSetDirectory nextNameFor: self name extension: FileStream cs]
+				ifFalse: [self name , FileDirectory dot , Utilities dateTimeSuffix, FileDirectory dot , FileStream cs].
+	(Preferences warningForMacOSFileNameLength
+			and: [nameToUse size > 30])
+		ifTrue: [nameToUse := FillInTheBlank
+						request: (nameToUse , '\has ' , nameToUse size asString , ' letters - too long for Mac OS.\Suggested replacement is:') withCRs
+						initialAnswer: (nameToUse contractTo: 30).
+			nameToUse = ''
+				ifTrue: [^ self]].
+	nameToUse := self defaultChangeSetDirectory fullNameFor: nameToUse.
+	Cursor write showWhile: [
+			internalStream _ WriteStream on: (String new: 10000).
+			internalStream header; timeStamp.
+			self fileOutPreambleOn: internalStream.
+			self fileOutOn: internalStream.
+			self fileOutPostscriptOn: internalStream.
+			internalStream trailer.
 
-	Preferences checkForSlips ifFalse: [^ self].
-
-	slips _ self checkForSlips.
-	(slips size > 0 and: [(PopUpMenu withCaption: 'Methods in this fileOut have halts
+			FileStream writeSourceCodeFrom: internalStream baseName: (nameToUse copyFrom: 1 to: nameToUse size - 3) isSt: false useHtml: false.
+	].
+	Preferences checkForSlips
+		ifFalse: [^ self].
+	slips := self checkForSlips.
+	(slips size > 0
+			and: [(PopUpMenu withCaption: 'Methods in this fileOut have halts
 or references to the Transcript
 or other ''slips'' in them.
-Would you like to browse them?' chooseFrom: 'Ignore\Browse slips') = 2])
-		ifTrue: [Smalltalk browseMessageList: slips
-							name: 'Possible slips in ', name]
+Would you like to browse them?' chooseFrom: 'Ignore\Browse slips')
+					= 2])
+		ifTrue: [self systemNavigation browseMessageList: slips name: 'Possible slips in ' , name]
