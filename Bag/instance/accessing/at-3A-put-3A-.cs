@@ -1,3 +1,2 @@
-at: index put: anObject
-
+at: index put: anObject 
 	self errorNotKeyed
