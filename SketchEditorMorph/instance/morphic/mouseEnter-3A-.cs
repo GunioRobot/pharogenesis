@@ -6,10 +6,9 @@ mouseEnter: evt
 	top _ evt hand recipientForMouseDown: evt.
 	top == self ifTrue: ["none of my buttons in the way"
 		curs _ palette actionCursor.
-		evt hand showTemporaryCursor: curs
-			hotSpotOffset: (curs ifNil: [0@0] ifNotNil: [curs offset]).
+		evt hand showTemporaryCursor: curs.
 		palette getSpecial == #polygon: ifTrue:
 			[(poly _ self valueOfProperty: #polygon) ifNil: [^ self].
 			currentColor _ palette getColor.
-			poly color: currentColor; borderWidth: palette getNib width.
+			poly color: currentColor; borderWidth: 1.
 			poly changed]].
