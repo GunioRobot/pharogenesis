@@ -3,7 +3,7 @@ additionsToViewerCategories
 
 	^  #((speaker
 
-((slot conePosition  'the position of the speaker cone' number readWrite player getConePosition player setConePosition:))))
+((slot conePosition  'the position of the speaker cone' Number readWrite Player getConePosition Player setConePosition:))))
 
 
 
