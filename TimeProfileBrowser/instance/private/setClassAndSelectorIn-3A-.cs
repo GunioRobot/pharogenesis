@@ -2,9 +2,10 @@ setClassAndSelectorIn: csBlock
 	"Decode strings of the form    <selectorName> (<className> [class])  "
 
 	| string strm class sel parens |
-	messageListIndex < 3 ifTrue: [^contents := nil].		"Ignore first 2 lines"
-	string _ self selection asString.
-	string isEmpty ifTrue: [^contents := nil].
+
+	self flag: #mref.	"fix for faster references to methods"
+
+	[string _ self selection asString.
 	string first == $* ifTrue: [^contents := nil].		"Ignore lines starting with *"
 	parens := string includes: $(.					"Does it have open-paren?"
 	strm := ReadStream on: string.
@@ -24,6 +25,5 @@ setClassAndSelectorIn: csBlock
 			class := strm upTo: $>.
 			strm next.
 			sel := strm upToEnd].
-	class isEmpty ifTrue: [^contents := nil].
-	sel isEmpty ifTrue: [^contents := nil].
-	^MessageSet parse: (class, ' ', sel) toClassAndSelector: csBlock
+	^ MessageSet parse: (class, ' ', sel) toClassAndSelector: csBlock]
+		on: Error do: [:ex | ^ contents _ nil]
