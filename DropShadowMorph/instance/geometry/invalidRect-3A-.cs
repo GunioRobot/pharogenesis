@@ -1,3 +1,2 @@
 invalidRect: damageRect
-	owner ifNotNil:
-		[owner invalidRect: (damageRect merge: (damageRect translateBy: shadowOffset))].
+	super invalidRect: (damageRect merge: (damageRect translateBy: self shadowOffset)).
