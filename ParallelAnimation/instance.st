@@ -3,4 +3,4 @@ CompositeAnimation
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon3D-Wonderland Time'
+	category: 'Balloon3D-Wonderland-Time'
