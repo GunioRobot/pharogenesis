@@ -1,7 +1,7 @@
 expandSlider
-	| r val2 |
-	val2 _ value + interval min: 1.0.
-	r _ self roomToMove.
+	"Compute the new size of the slider (use the old sliderThickness as a minimum)."
+	| r |
+	r _ self totalSliderArea.
 	slider extent: (bounds isWide
-		ifTrue: [((r width * (val2 - value)) asInteger + self sliderThickness) @ slider height]
-		ifFalse: [slider width @ ((r height * (val2 - value)) asInteger + self sliderThickness)])
+		ifTrue: [((r width * interval) asInteger max: self sliderThickness) @ slider height]
+		ifFalse: [slider width @ ((r height * interval) asInteger max: self sliderThickness)])
