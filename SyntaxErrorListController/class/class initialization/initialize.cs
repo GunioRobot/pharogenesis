@@ -1,6 +1,7 @@
 initialize
 
-	SyntaxErrorListYellowButtonMenu _ PopUpMenu labels: 'proceed'.
-	SyntaxErrorListYellowButtonMessages _ #(proceed )
+	SyntaxErrorListYellowButtonMenu _ PopUpMenu 
+		labels: 'proceed\debugger on calling process' withCRs.
+	SyntaxErrorListYellowButtonMessages _ #(proceed debug)
 
 	"SyntaxErrorListController initialize"
