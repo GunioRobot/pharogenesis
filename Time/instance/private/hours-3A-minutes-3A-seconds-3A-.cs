@@ -1,5 +1,3 @@
 hours: hourInteger minutes: minInteger seconds: secInteger
 
-	hours _ hourInteger.
-	minutes _ minInteger.
-	seconds _ secInteger
+	self setSeconds: (hourInteger * 3600) + (minInteger * 60) + secInteger.
