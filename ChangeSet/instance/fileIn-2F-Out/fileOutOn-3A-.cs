@@ -3,7 +3,7 @@ fileOutOn: stream
 
 	| classList |
 	(self isEmpty and: [stream isKindOf: FileStream])
-		ifTrue: [self notify: 'Warning: no changes to file out'].
+		ifTrue: [self inform: 'Warning: no changes to file out'].
 	classList _ ChangeSet superclassOrder: self changedClasses asOrderedCollection.
 
 	"First put out rename, max classDef and comment changes."
