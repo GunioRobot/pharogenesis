@@ -1,5 +1,5 @@
 displaySelectionInLine: line on: aCanvas
-	| leftX rightX w |
+	| leftX rightX w caretColor |
 	selectionStart ifNil: [^ self].  "No selection"
 	selectionStart = selectionStop
 		ifTrue: ["Only show caret on line where clicked"
@@ -23,14 +23,19 @@ displaySelectionInLine: line on: aCanvas
 					and: [selectionStop textLine ~= line]])
 		ifTrue: [rightX _ line right]
 		ifFalse: [rightX _ selectionStop left].
-	selectionStart = selectionStop ifTrue:
+	selectionStart = selectionStop
+		ifTrue:
 		[rightX _ rightX + 1.
 		w _ self caretWidth.
+		caretColor _ self insertionPointColor.
 		1 to: w do:
 			[:i |  "Draw caret triangles at top and bottom"
 			aCanvas fillRectangle: ((leftX-w+i-1)@(line top+i-1) extent: (w-i*2+3)@1)
-				color: self selectionColor.
+				color: caretColor.
 			aCanvas fillRectangle: ((leftX-w+i-1)@(line bottom-i) extent: (w-i*2+3)@1)
-				color: self selectionColor]].
-	aCanvas fillRectangle: (leftX@line top corner: rightX@line bottom)
-				color: self selectionColor.
+				color: caretColor].
+		aCanvas fillRectangle: (leftX@line top corner: rightX@line bottom)
+				color: caretColor]
+	ifFalse:
+		[aCanvas fillRectangle: (leftX@line top corner: rightX@line bottom)
+				color: self selectionColor]
