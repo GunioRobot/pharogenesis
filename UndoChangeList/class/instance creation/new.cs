@@ -1,3 +1,3 @@
 new
 
-	^ super new initialize.
+	^self basicNew initialize.
