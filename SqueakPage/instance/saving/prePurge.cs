@@ -4,5 +4,5 @@ prePurge
 	self isContentsInMemory ifFalse: [^ nil].
 	contentsMorph ifNil: [^ nil].  "out already"
 	url ifNil: [^ nil].	"just to be safe"
-	^ (Display bestGuessOfCurrentWorld ~~ nil and: [contentsMorph world == Display bestGuessOfCurrentWorld]) 
+	^ (World ~~ nil and: [contentsMorph world == World]) 
 		ifTrue: [nil "showing now"] ifFalse: [self]
