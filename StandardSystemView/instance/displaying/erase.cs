@@ -6,7 +6,6 @@ erase
 			[oldValid _ bitsValid.
 			bitsValid _ false.
 			ScheduledControllers restore: self windowBox without: self.
-			bitsValid _ oldValid.]
+			bitsValid _ oldValid]
 		ifFalse:
-			[self clear: Color gray.
-			Display fillGray: self windowBox]
+			[ScheduledControllers restore: self windowBox without: self]
