@@ -2,7 +2,7 @@ initWithContents: anObject prior: priorMorph forList: hostList indentLevel: newL
 
 	container _ hostList.
 	complexContents _ anObject.
-	self initWithContents: anObject asString font: nil emphasis: nil.
+	self initWithContents: anObject asString font: Preferences standardListFont emphasis: nil.
 	indentLevel _ 0.
 	isExpanded _ false.
  	nextSibling _ firstChild _ nil.
