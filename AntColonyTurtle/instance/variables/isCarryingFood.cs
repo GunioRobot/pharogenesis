@@ -1,0 +1,3 @@
+isCarryingFood
+
+	^ isCarryingFood
