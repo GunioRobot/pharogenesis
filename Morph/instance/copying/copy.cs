@@ -1,3 +1,3 @@
 copy
 
-	^ self copyWithoutSubmorphs
+	^ self veryDeepCopy
