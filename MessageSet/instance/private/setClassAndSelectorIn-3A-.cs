@@ -1,3 +1,12 @@
 setClassAndSelectorIn: csBlock
+	| sel |
 	"Decode strings of the form <className> [class] <selectorName>."
-	^ MessageSet parse: self selection toClassAndSelector: csBlock
+
+	self flag: #mref.	"compatibility with pre-MethodReference lists"
+
+	sel _ self selection.
+	^(sel isKindOf: MethodReference) ifTrue: [
+		sel setClassAndSelectorIn: csBlock
+	] ifFalse: [
+		MessageSet parse: sel toClassAndSelector: csBlock
+	]
