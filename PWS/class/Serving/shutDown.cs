@@ -1,0 +1,3 @@
+shutDown
+
+	self stopServer
