@@ -1,0 +1,2 @@
+promptForUpdateServer
+	^ self valueOfFlag: #promptForUpdateServer
