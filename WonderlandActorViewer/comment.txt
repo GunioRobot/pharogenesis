@@ -1,0 +1,1 @@
+This class shows information about any particular actor.
