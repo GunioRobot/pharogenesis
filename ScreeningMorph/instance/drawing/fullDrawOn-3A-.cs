@@ -1,19 +1,17 @@
 fullDrawOn: aCanvas
 	| mergeForm |
-	submorphs size = 2 ifFalse: [^ super fullDrawOn: aCanvas].
-	(aCanvas isVisible: self fullBounds) ifFalse: [^ self].
-	"self drawOn: aCanvas."
-	displayMode == #showScreenOnly ifTrue:
-		[self screenMorph fullDrawOn: aCanvas].
+	submorphs size = 0 ifTrue: [^ super fullDrawOn: aCanvas].
+	(submorphs size = 1 or: [displayMode == #showScreenOnly]) ifTrue:
+		[^ aCanvas fullDrawMorph: self screenMorph].
 	displayMode == #showSourceOnly ifTrue:
-		[self sourceMorph fullDrawOn: aCanvas].
-	screenForm ifNil:
-		[self mapColor: Color black to: 16rFFFFFFFF othersTo: 0].
+		[^ aCanvas fullDrawMorph: self sourceMorph].
 	displayMode == #showScreenOverSource ifTrue:
-		[self sourceMorph fullDrawOn: aCanvas.
-		aCanvas image: screenForm at: self position].
+		[aCanvas fullDrawMorph: self sourceMorph.
+		^ aCanvas fullDrawMorph: self screenMorph].
 	displayMode == #showScreened ifTrue:
-		[mergeForm _ self sourceMorph imageFormForRectangle: self bounds.
-		(BitBlt toForm: mergeForm) copyForm: screenForm to: 0@0 rule: Form and
+		[aCanvas fullDrawMorph: self screenMorph.
+		self flag: #fixCanvas. "There should be a more general way than this"
+		mergeForm _ self sourceMorph imageFormForRectangle: self screenMorph bounds.
+		(BitBlt current toForm: mergeForm) copyForm: self screenForm to: 0@0 rule: Form and
 			colorMap: (Bitmap with: 0 with: 16rFFFFFFFF).
-		aCanvas image: mergeForm at: self position]
+		aCanvas paintImage: mergeForm at: self screenMorph position]
