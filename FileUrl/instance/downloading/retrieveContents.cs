@@ -1,23 +1,28 @@
 retrieveContents
-	| file pathString s dir |
-	
+	| file pathString s type entries |
 	pathString _ self pathForFile.
-	path last size > 0 ifTrue: [
-		file _ FileStream oldFileOrNoneNamed: pathString.
-		file ifNotNil: [ 
-			^MIMEDocument contentType: (MIMEDocument guessTypeFromName: self path last) content: file contentsOfEntireFile ] ].
+	file _ [FileStream readOnlyFileNamed: pathString] 
+			on: FileDoesNotExistException do:[:ex| ex return: nil].
+	file ifNotNil: [
+		type _ file mimeTypes.
+		type ifNotNil:[type _ type first].
+		type ifNil:[MIMEDocument guessTypeFromName: self path last].
+		^MIMELocalFileDocument 
+			contentType: type
+			contentStream: file].
 
-	"assume it's a directory..."
+	"see if it's a directory..."
+	entries _ [(FileDirectory on: pathString) entries] 
+				on: InvalidDirectoryError do:[:ex| ex return: nil].
+	entries ifNil:[^nil].
+
 	s _ WriteStream on: String new.
-	dir _ FileDirectory on: pathString.
-
 	(pathString endsWith: '/') ifFalse: [ pathString _ pathString, '/' ].
-
 	s nextPutAll: '<title>Directory Listing for ', pathString, '</title>'.
 	s nextPutAll: '<h1>Directory Listing for ', pathString, '</h1>'.
 	s nextPutAll: '<ul>'.
 	s cr.
-	dir entries do: [ :entry |
+	entries do: [ :entry |
 		s nextPutAll: '<li><a href="'.
 		s nextPutAll: entry name.
 		s nextPutAll: '">'.
@@ -25,5 +30,4 @@ retrieveContents
 		s nextPutAll: '</a>'.
 		s cr. ].
 	s nextPutAll: '</ul>'.
-
-	^MIMEDocument  contentType: 'text/html'  content: s contents  url: ('file:', pathString)
+	^MIMEDocument  contentType: 'text/html'  content: s contents  url: ('file://', pathString)
