@@ -1,4 +1,4 @@
 minutes
 	"Answer the number of minutes the receiver represents."
 
-	^minutes
+	^seconds \\ 3600 // 60
