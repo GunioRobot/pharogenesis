@@ -1,2 +1,2 @@
-removeProcess: downloadProcess.
+removeProcess: downloadProcess
 	downloads remove: downloadProcess ifAbsent: []
