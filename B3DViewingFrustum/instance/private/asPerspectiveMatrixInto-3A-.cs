@@ -13,7 +13,7 @@ asPerspectiveMatrixInto: aB3DMatrix4x4
 	c := (self near + self far) "*negated*" / dz.
 	d := (-2.0 * self near * self far) / dz.
 	aB3DMatrix4x4
-		a11: x;		a12: 0.0;		a13: a;		a14: 0.0;
+		a11: x;			a12: 0.0;	a13: a;		a14: 0.0;
 		a21: 0.0;		a22: y;		a23: b;		a24: 0.0;
 		a31: 0.0;		a32: 0.0;	a33: c;		a34: d;
 		a41: 0.0;		a42: 0.0;	a43: "*-1*"1;		a44: 0.0.
