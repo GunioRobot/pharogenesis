@@ -9,9 +9,9 @@ nextChunk
 			self peek == terminator ifTrue: [
 				self next.  "skip doubled terminator"
 			] ifFalse: [
-				^ out contents  "terminator is not doubled; we're done!"
+				^ self parseLangTagFor: out contents  "terminator is not doubled; we're done!"
 			].
 		].
 		out nextPut: ch.
 	].
-	^ out contents
+	^ self parseLangTagFor: out contents.
