@@ -5,4 +5,4 @@
 	whatIsAPrimitive. "
 
 	<primitive: 46>
-	^self retry: #>= coercing: aNumber
+	^ (aNumber adaptFloat: self) >= aNumber adaptToFloat
