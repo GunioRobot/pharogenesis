@@ -1,6 +1,1 @@
-B3DMaterialColor
-	variableWordSubclass: #B3DMaterial
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Balloon3D-Kernel-Lights'
+B3DMaterial class instanceVariableNames: ''
