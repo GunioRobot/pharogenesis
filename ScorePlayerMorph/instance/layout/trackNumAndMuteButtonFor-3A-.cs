@@ -5,7 +5,7 @@ trackNumAndMuteButtonFor: trackIndex
 		onColor: (Color r: 1.0 g: 0.6 b: 0.6);
 		offColor: color;
 		color: color;
-		label: 'Mute';
+		label: 'Mute' translated;
 		target: scorePlayer;
 		actionSelector: #mutedForTrack:put:;
 		arguments: (Array with: trackIndex).
