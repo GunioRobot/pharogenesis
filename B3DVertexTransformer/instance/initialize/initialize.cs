@@ -6,4 +6,4 @@ initialize
 	currentMatrix _ modelMatrix.
 	matrixStack _ OrderedCollection new: 30.
 	matrixStack resetTo: 1.
-	needsUpdate _ false.
+	needsUpdate _ true.
