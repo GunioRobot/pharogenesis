@@ -6,4 +6,4 @@ soundOfDuration: duration
 		pan: (owner scorePlayer panForTrack: trackIndex)
 		volume: owner scorePlayer overallVolume *
 				(owner scorePlayer volumeForTrack: trackIndex).
-	^ sound
+	^ sound reset
