@@ -1,5 +1,5 @@
 on: aDate
 	^ self new
-		week: aDate week
-		month: aDate month
+		week: aDate asWeek
+		month: aDate asMonth
 		model: nil
