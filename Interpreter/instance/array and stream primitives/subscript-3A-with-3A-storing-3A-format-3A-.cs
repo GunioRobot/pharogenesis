@@ -3,7 +3,7 @@ subscript: array with: index storing: oopToStore format: fmt
 
 	| valueToStore |
 	self inline: true.
-	fmt < 4 ifTrue: [  "pointer type objects"
+	fmt <= 4 ifTrue: [  "pointer type objects"
 		self storePointer: index - 1 ofObject: array withValue: oopToStore.
 	] ifFalse: [
 		fmt < 8 ifTrue: [  "long-word type objects"
