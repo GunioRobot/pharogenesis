@@ -3,3 +3,4 @@ hibernate
 
 	super hibernate.
 	self clearColormapCache.
+	colors ifNotNil:[colors _ colors asColorArray].
