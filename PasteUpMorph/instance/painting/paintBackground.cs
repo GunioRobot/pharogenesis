@@ -1,7 +1,6 @@
 paintBackground
 	| pic rect |
-	self world abandonAllHalos.
-	self world stopRunningAll.
+	self world prepareToPaint.
 	pic _ self backgroundSketch.
 	pic ifNotNil: [pic editDrawingIn: self forBackground: true]		"need to resubmit it? (tck comment)"
 		ifNil: [rect _ self bounds.
