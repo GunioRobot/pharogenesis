@@ -12,14 +12,14 @@ jumpToAbsoluteUrl: urlText
 	newUrl hasContents ifFalse: [ newUrl activate.  ^true ].
 
 	"fork a Process to do the actual downloading, parsing, and formatting.  It's results will be picked up in #step"
-	self status: 'downloading ', newUrl toText, '...'.
+	self status: ('downloading {1}...' translated format:{newUrl toText}).
 
 	downloadingProcess _ [ 
 	  	newSource _ [ newUrl retrieveContentsForBrowser: self ] ifError: [ :msg :ctx |
 			MIMEDocument contentType: 'text/plain' content: msg ].
 
 		newSource 
-			ifNil: [ newSource _ MIMEDocument contentType: 'text/plain' content: 'Error retrieving this URL' ].
+			ifNil: [ newSource _ MIMEDocument contentType: 'text/plain' content: 'Error retrieving this URL' translated].
 
 			newSource url ifNil: [
 				newSource _ MIMEDocument contentType: newSource contentType  content: newSource content  url: newUrl ].
