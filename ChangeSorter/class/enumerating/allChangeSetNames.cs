@@ -1,2 +1,2 @@
 allChangeSetNames
-	^ self gatherChangeSets collect: [:c | c name]
+	^ self allChangeSets collect: [:c | c name]
