@@ -7,14 +7,16 @@ addHandlesIn: frame
 			newBounds: ((self handleOffset: handle)-(2@0) extent: 1@(graphArea height-2))
 			color: Color orange) borderWidth: 0).
 
-	limitHandles _ Array with: handle with: handle fullCopy with: handle fullCopy.
+	limitHandles _ Array with: handle with: handle veryDeepCopy with: handle veryDeepCopy.
 	1 to: limitHandles size do:
 		[:i | handle _ limitHandles at: i.
 		handle on: #mouseDown
-				send: #limitHandleMoveEvent:from:index:
+				send: #limitHandleMove:event:from:
 				to: self withValue: i.
 		handle on: #mouseMove
-				send: #limitHandleMoveEvent:from:index:
+				send: #limitHandleMove:event:from:
 				to: self withValue: i.
 		self addMorph: handle.
-		handle position: ((self xFromMs: (envelope points at: (limits at: i)) x) @ (graphArea top)) - (self handleOffset: handle)]
+		handle position: ((self xFromMs: 
+			(envelope points at: (limits at: i)) x) @ 
+				(graphArea top)) - (self handleOffset: handle)]
