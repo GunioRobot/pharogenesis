@@ -3,6 +3,6 @@ update
 
 	selectionIndex = 0
 		ifFalse:
-			[contents _ self selection printString.
+			[contents _ self selectionPrintString.
 			self changed: #selection.
 			self changed: #selectionIndex]
