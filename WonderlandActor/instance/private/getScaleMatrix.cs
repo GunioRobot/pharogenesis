@@ -1,0 +1,2 @@
+getScaleMatrix
+	^scaleMatrix
