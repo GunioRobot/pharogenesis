@@ -1,0 +1,2 @@
+verifyMethodCache
+	^ self
