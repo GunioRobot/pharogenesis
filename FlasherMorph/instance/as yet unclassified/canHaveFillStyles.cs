@@ -1,0 +1,2 @@
+canHaveFillStyles
+	^false
