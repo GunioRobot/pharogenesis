@@ -1,0 +1,2 @@
+needsFlushGet
+	^workBuffer at: GWNeedsFlush
