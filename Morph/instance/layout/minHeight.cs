@@ -1,3 +1,5 @@
 minHeight
-	extension == nil ifTrue:[^2].
-	^self valueOfProperty: #minHeight ifAbsent:[2]
+	"answer the receiver's minHeight"
+	^ self
+		valueOfProperty: #minHeight
+		ifAbsent: [2]
