@@ -7,9 +7,9 @@ addHandles
 		[:vertPt :vertIndex |
 		handle _ EllipseMorph newBounds: (Rectangle center: vertPt extent: 8@8)
 				color: Color yellow.
-		handle on: #mouseMove send: #dragVertex:fromHandle:vertIndex:
+		handle on: #mouseMove send: #dragVertex:event:fromHandle:
 				to: self withValue: vertIndex.
-		handle on: #mouseUp send: #dropVertex:fromHandle:vertIndex:
+		handle on: #mouseUp send: #dropVertex:event:fromHandle:
 				to: self withValue: vertIndex.
 		self addMorph: handle.
 		handles addLast: handle.
@@ -17,7 +17,7 @@ addHandles
 			[newVert _ PolygonMorph
 					vertices: (tri collect: [:p | p + (vertPt + (vertices atWrap: vertIndex+1) // 2)])
 					color: Color green borderWidth: 1 borderColor: Color black.
-			newVert on: #mouseDown send: #newVertex:fromHandle:afterVert:
+			newVert on: #mouseDown send: #newVertex:event:fromHandle:
 					to: self withValue: vertIndex.
 			self addMorph: newVert.
 			handles addLast: newVert]].
