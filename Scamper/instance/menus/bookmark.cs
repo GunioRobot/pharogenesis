@@ -1,14 +1,14 @@
 bookmark
 	| menu sub url |
-	menu _ (MenuMorph entitled: ' Bookmark ')
+	menu _ (MenuMorph entitled: ' Bookmark ' translated)
 				defaultTarget: self.
 	menu addStayUpItem.
 	menu addLine.
 	menu
-		add: 'add to bookmark'
+		add: 'add to bookmark' translated
 		target: self
 		selector: #addToBookmark.
-	menu add: 'Import...' target: self selector: #importBookmark. 
+	menu add: 'Import...' translated target: self selector: #importBookmark. 
 	menu addLine.
 	bookmark
 		keysAndValuesDo: 
