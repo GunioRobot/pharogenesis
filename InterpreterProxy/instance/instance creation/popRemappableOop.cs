@@ -1,0 +1,2 @@
+popRemappableOop
+	^remapBuffer removeLast
