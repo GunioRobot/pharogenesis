@@ -1,0 +1,2 @@
+attenuation: aLightAttenuation
+	attenuation _ aLightAttenuation
