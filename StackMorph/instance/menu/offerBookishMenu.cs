@@ -31,7 +31,10 @@ offerBookishMenu
 
 	aMenu add: (self dragNDropEnabled ifTrue: ['close'] ifFalse: ['open']) , ' dragNdrop'
 			action: #toggleDragNDrop.
+	aMenu addLine.
 	aMenu add: 'make all pages this size' action: #makeUniformPageSize.
+	aMenu addUpdating: #keepingUniformPageSizeString target: self action: #toggleMaintainUniformPageSize.
+	aMenu addLine.
 	aMenu add: 'send all pages to server' action: #savePagesOnURL.
 	aMenu add: 'send this page to server' action: #saveOneOnURL.
 	aMenu add: 'reload all from server' action: #reload.
