@@ -17,6 +17,9 @@ Undeclared variables are taken to be integers and will be converted from Smallta
 	o method cannot access class variables
 	o method can only return an integer"
 
+	"ar 10/7/1998 -- 	Add the export directive for translated primitives.
+				--	Use the name of the primitive if it's called by name."
+
 	| prolog postlog instVarsUsed varsAssignedTo instVarList primArgCount varName endsWithReturn |
 	prolog _ OrderedCollection new.
 	postlog _ OrderedCollection new.
@@ -53,7 +56,14 @@ Undeclared variables are taken to be integers and will be converted from Smallta
 	endsWithReturn _ self endsWithReturn.
 	self fixUpReturns: primArgCount postlog: postlog.
 
-	selector _ 'prim', aClass name, selector.
+	"Check for pluggable primitive"
+	primitive = 117 
+		ifTrue:[selector _ ((aClass includesSelector: selector)
+					ifTrue: [aClass compiledMethodAt: selector]
+					ifFalse: [aClass class compiledMethodAt: selector]) literals first at: 2.
+				export _ true]
+		ifFalse:[selector _ 'prim', aClass name, selector].
+
 	endsWithReturn
 		ifTrue: [parseTree setStatements: prolog, parseTree statements]
 		ifFalse: [
