@@ -1,7 +1,7 @@
 copyBits
 	"This function is exported for the Balloon engine"
 	self export: true.
-	self inline: true.
+	self inline: false.
 	self clipRange.
 	(bbW <= 0 or: [bbH <= 0]) ifTrue:
 		["zero width or height; noop"
