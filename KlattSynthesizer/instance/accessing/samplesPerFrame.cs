@@ -1,0 +1,2 @@
+samplesPerFrame
+	^ samplesPerFrame
