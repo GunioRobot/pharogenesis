@@ -1,2 +1,4 @@
 hasRubberBandCellsString
-	^self rubberBandCells ifTrue:['<on>rubber band cells'] ifFalse:['<off>rubber band cells']
+	^ (self rubberBandCells
+		ifTrue: ['<on>']
+		ifFalse: ['<off>']), 'rubber band cells' translated
