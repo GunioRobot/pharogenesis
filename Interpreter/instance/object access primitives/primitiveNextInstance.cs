@@ -1,7 +1,7 @@
 primitiveNextInstance
 	| object instance |
-	object _ self popStack.
+	object _ self stackTop.
 	instance _ self instanceAfter: object.
 	instance = nilObj
-		ifTrue: [self unPop: 1. self primitiveFail]
-		ifFalse: [self push: instance]
+		ifTrue: [self primitiveFail]
+		ifFalse: [self pop: argumentCount+1 thenPush: instance]
