@@ -1,0 +1,3 @@
+sqFileAtEnd: file
+
+	^ file atEnd
