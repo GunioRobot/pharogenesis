@@ -1,0 +1,2 @@
+startParsingMarkup
+	parsingMarkup _ true
