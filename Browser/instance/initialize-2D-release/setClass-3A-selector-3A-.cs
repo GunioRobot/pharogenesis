@@ -1,21 +1,26 @@
 setClass: aBehavior selector: aSymbol
 	"Set the state of a new, uninitialized Browser."
 
-	| isMeta aClass systemCatIndex messageCatIndex |
+	| isMeta aClass messageCatIndex |
 	aBehavior ifNil: [^ self].
 	(aBehavior isKindOf: Metaclass)
-		ifTrue: [isMeta _ true. aClass _ aBehavior soleInstance]
-		ifFalse: [isMeta _ false. aClass _ aBehavior].
-	systemCatIndex _ SystemOrganization categories indexOf: aClass category.
-	self systemCategoryListIndex: systemCatIndex.
-	self classListIndex:
-			((SystemOrganization listAtCategoryNumber: systemCatIndex)
-					indexOf: aClass name).
+		ifTrue: [
+			isMeta _ true.
+			aClass _ aBehavior soleInstance]
+		ifFalse: [
+			isMeta _ false.
+			aClass _ aBehavior].
+	self selectCategoryForClass: aClass.
+	self classListIndex: (
+		(SystemOrganization listAtCategoryNamed: self selectedSystemCategoryName)
+			indexOf: aClass name).
 	self metaClassIndicated: isMeta.
 	aSymbol ifNil: [^ self].
 	messageCatIndex _ aBehavior organization numberOfCategoryOfElement: aSymbol.
-	self messageCategoryListIndex: messageCatIndex + 1. "<- FIXED offset"
+	self messageCategoryListIndex: (messageCatIndex > 0
+		ifTrue: [messageCatIndex + 1]
+		ifFalse: [0]).
 	messageCatIndex = 0 ifTrue: [^ self].
-	self messageListIndex:
-			((aBehavior organization listAtCategoryNumber: messageCatIndex)
-					indexOf: aSymbol)
+	self messageListIndex: (
+		(aBehavior organization listAtCategoryNumber: messageCatIndex)
+			indexOf: aSymbol).
