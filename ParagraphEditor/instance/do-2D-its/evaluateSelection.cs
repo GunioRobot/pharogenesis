@@ -8,10 +8,16 @@ evaluateSelection
 				rcvr _ model doItReceiver.
 				ctxt _ model doItContext]
 		ifFalse: [rcvr _ ctxt _ nil].
-	result _ rcvr class evaluatorClass new evaluate: self selectionAsStream
-				in: ctxt to: rcvr notifying: self
-				ifFail: [FakeClassPool adopt: nil.
-						^ #failedDoit].
+	result _ [
+		rcvr class evaluatorClass new 
+			evaluate: self selectionAsStream
+			in: ctxt
+			to: rcvr
+			notifying: self
+			ifFail: [FakeClassPool adopt: nil. ^ #failedDoit]
+			logged: true.
+	] 
+		on: OutOfScopeNotification 
+		do: [ :ex | ex resume: true].
 	FakeClassPool adopt: nil.
-	Smalltalk logChange: self selection string.
 	^ result
