@@ -7,7 +7,7 @@ statementsForCaseTo: end
 	Note that stack initially contains a CaseFlag which will be removed by
 	a subsequent Pop instruction, so adjust the StackPos accordingly."
 
-	| blockPos stackPos t |
+	| blockPos stackPos |
 	blockPos _ statements size.
 	stackPos _ stack size - 1. "Adjust for CaseFlag"
 	[pc < end]
@@ -18,6 +18,8 @@ statementsForCaseTo: end
 	of this block."
 	(hasValue _ stack size > stackPos)
 		ifTrue:
-			[statements addLast: stack removeLast].
+			[stack last == CaseFlag
+				ifFalse: [ statements addLast: stack removeLast] ].
 	lastJumpPc = lastPc ifFalse: [exit _ pc].
+	caseExits add: exit.
 	^self popTo: blockPos
