@@ -8,8 +8,6 @@ storeContextRegisters: activeCntx
 
 	self inline: true.
 	self storeWord: InstructionPointerIndex ofObject: activeCntx
-		withValue: (self integerObjectOf: 
-			(instructionPointer - method - (BaseHeaderSize - 2))).
-	self storeWord: StackPointerIndex		  ofObject: activeCntx
-		withValue: (self integerObjectOf:
-			(self stackPointerIndex - TempFrameStart + 1)).
+		withValue: (self integerObjectOf: (instructionPointer - method - (BaseHeaderSize - 2))).
+	self storeWord: StackPointerIndex ofObject: activeCntx
+		withValue: (self integerObjectOf: (self stackPointerIndex - TempFrameStart + 1)).
