@@ -1,0 +1,2 @@
+hasYellowButtonMenu
+	^getMenuSelector notNil
