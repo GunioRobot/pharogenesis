@@ -1,6 +1,5 @@
 bytesOrInt: oop growTo: len 
-	"Attention: this method invalidates all oop's! Only newBytes is valid at    
-	          return."
+	"Attention: this method invalidates all oop's! Only newBytes is valid at return."
 	| newBytes val class |
 	(interpreterProxy isIntegerObject: oop)
 		ifTrue: 
