@@ -1,0 +1,2 @@
+maxAngle: aNumber
+	maxAngle := aNumber
