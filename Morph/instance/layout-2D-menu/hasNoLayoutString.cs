@@ -1,4 +1,5 @@
 hasNoLayoutString
-	^self layoutPolicy == nil
-		ifTrue:['<on>no layout']
-		ifFalse:['<off>no layout'].
+	^ (self layoutPolicy isNil
+		ifTrue: ['<on>']
+		ifFalse: ['<off>'])
+		, 'no layout' translated
