@@ -1,7 +1,6 @@
 flash: aRectangle 
-	"Complement twice the area of the screen defined by the argument, 
-	aRectangle."
+	"Flash the area of the screen defined by the given rectangle."
 
-	2 timesRepeat:
-		[self reverse: aRectangle.
-		"(Delay forMilliseconds: 30) wait"]
+	self reverse: aRectangle.
+	(Delay forMilliseconds: 100) wait.
+	self reverse: aRectangle.
