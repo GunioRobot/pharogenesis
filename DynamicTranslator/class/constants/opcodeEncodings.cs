@@ -1,0 +1,2 @@
+opcodeEncodings
+	^TranslatorOpcodeEncodings
