@@ -9,7 +9,7 @@ The major dash will have the normal border color.
 A blank response will remove the dash specification.
 [Note: You may give 5 items as, eg, {10. 5. Color white. 0. 3}
 where the 4th ityem is zero, and the 5th is the number of pixels
-by which the dashes will move in each step of animation]'
+by which the dashes will move in each step of animation]' translated
 		initialAnswer: '{ 10. 5. Color red }'.
 	executableSpec isEmpty ifTrue:
 		[^ self stopStepping; dashedBorder: nil].
