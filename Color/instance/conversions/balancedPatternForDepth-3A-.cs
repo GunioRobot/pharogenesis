@@ -2,7 +2,7 @@ balancedPatternForDepth: depth
 	"A generalization of bitPatternForDepth: as it exists.  Generates a 2x2 stipple of color.
 	The topLeft and bottomRight pixel are closest approx to this color"
 	| pv1 pv2 mask1 mask2 pv3 c |
-	depth == cachedDepth ifTrue: [^ cachedBitPattern].
+	(depth == cachedDepth and:[cachedBitPattern size = 2]) ifTrue: [^ cachedBitPattern].
 	(depth between: 4 and: 16) ifFalse: [^ self bitPatternForDepth: depth].
 	cachedDepth _ depth.
 	pv1 _ self pixelValueForDepth: depth.
@@ -29,4 +29,4 @@ balancedPatternForDepth: depth
 			16r10101010 - - -			"replicates the other 4 bits"
 			16r01000100 - - - - - - -	"replicates the other 8 bits"
 			16r00010000) at: depth).	"replicates the other 16 bits"
-	^ Bitmap with: (mask1*pv1) + (mask2*pv2) with: (mask1*pv3) + (mask2*pv1)
+	^ cachedBitPattern _ Bitmap with: (mask1*pv1) + (mask2*pv2) with: (mask1*pv3) + (mask2*pv1)
