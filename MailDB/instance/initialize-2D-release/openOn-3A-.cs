@@ -4,7 +4,7 @@ openOn: rootNameString
 	| status |
 	rootFilename _ rootNameString.
 	status _ self dbStatus.
-	messageFile _ indexFile _ categoriesFile _ nil.
+	messageFile _ indexFile _ categoriesFile _ spamFilterFile _ nil.
 	(status = #exists) ifTrue: [^self openDB].
 	(status = #partialDatabase) ifTrue: [^self recoverDB].
 	(status = #doesNotExist) ifTrue: [^self createDB].
