@@ -1,0 +1,2 @@
+zipFileComment
+	^self zip zipFileComment
