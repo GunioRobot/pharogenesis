@@ -1,10 +1,2 @@
-Refactored to use Julian Day Numbers internally.
-
-Julian Day Numbers are the number of days which have elapsed since 24 November -4713 Gregorian.
-
-The algorithm was published in the Communications of the ACM, volume 11, Number 10, October 1968.
-
-See also: 
-http://www.magnet.ch/serendipity/hermetic/cal_stud/jdn.htm
-http://www.cs.ubc.ca/spider/flinn/docs/scham/primitives/time.html
-
+Instances of Date are Timespans with duration of 1 day.
+Their default creation assumes a start of midnight in the local time zone.
