@@ -1,5 +1,3 @@
-changeExtent: aPoint
-
+changeExtent: aPoint 
 	self extent: aPoint.
-	pageHolder extent: self extent - borderWidth.
-
+	pageHolder extent: self extent - self borderWidth
