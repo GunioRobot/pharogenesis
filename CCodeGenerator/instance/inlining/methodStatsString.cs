@@ -1,7 +1,9 @@
 methodStatsString
-	"Return a string describing the size, # of locals, and # of senders of each method. Note methods that have inline C code or C declarations."
+	"Return a string describing the size, # of locals, and # of senders of
+each method. Note methods that have inline C code or C declarations."
 
-	| methodsWithCCode sizesOf callsOf hasCCode nodeCount senderCount s calls registers selr |
+	| methodsWithCCode sizesOf callsOf hasCCode nodeCount senderCount s
+calls registers selr m |
 	methodsWithCCode _ Set new: methods size.
 	sizesOf _ Dictionary new: methods size * 2.  "selector -> nodeCount"
 	callsOf _ Dictionary new: methods size * 2.  "selector -> senderCount"
@@ -12,7 +14,7 @@ methodStatsString
 		3. increment the sender counts of the methods it calls
 		4. determine if it includes any C declarations or code"
 
-	methods do: [ :m |
+	methods do: [ :m0 |  m _ m0.
 		(translationDict includesKey: m selector) ifTrue: [
 			hasCCode _ true.
 		] ifFalse: [
