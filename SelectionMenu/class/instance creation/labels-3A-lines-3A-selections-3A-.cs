@@ -4,4 +4,11 @@ labels: labels lines: linesArray selections: selectionsArray
 	with embedded CRs, or a collection of strings. Record the given array of 
 	selections corresponding to the items in labels."
 
-	^ (self labels: labels lines: linesArray) selections: selectionsArray
+	| labelString |
+	(labels isString)
+		ifTrue: [labelString _ labels]
+		ifFalse: [labelString _ String streamContents:
+					[:s |
+					labels do: [:l | s nextPutAll: l; cr].
+					s skip: -1]].
+	^ (self labels: labelString lines: linesArray) selections: selectionsArray
