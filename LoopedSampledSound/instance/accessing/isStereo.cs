@@ -1,0 +1,3 @@
+isStereo
+
+	^ leftSamples ~~ rightSamples
