@@ -5,6 +5,5 @@ primitiveArrayBecomeOneWay
 	| arg rcvr |
 	arg _ self stackTop.
 	rcvr _ self stackValue: 1.
-	self success: (self become: rcvr with: arg twoWay: false).
-	self flushMethodCache.
+	self success: (self become: rcvr with: arg twoWay: false copyHash: true).
 	successFlag ifTrue: [ self pop: 1 ].
