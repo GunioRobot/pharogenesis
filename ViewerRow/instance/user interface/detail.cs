@@ -1,0 +1,2 @@
+detail
+	owner detailButtonPressed
