@@ -46,7 +46,7 @@ openMessageCatEditString: aString
                 underPane _ optionalButtonsView.
                 y _ y - self optionalButtonHeight].
 
-        browserCodeView _ PluggableTextView on: self 
+        browserCodeView _ MvcTextEditor default on: self 
                         text: #contents accept: #contents:notifying:
                         readSelection: #contentsSelection menu: #codePaneMenu:shifted:.
         browserCodeView window: (0@0 extent: 200@y).
