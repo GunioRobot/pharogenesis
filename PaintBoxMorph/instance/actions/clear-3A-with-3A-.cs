@@ -1,7 +1,7 @@
 clear: clearButton with: clearSelector
 
 	| ss |
-	(ss _ self world findA: SketchEditorMorph) 
-		ifNotNil: [ss clear]
+	(ss _ self focusMorph) 
+		ifNotNil: [ss clearPainting: self]
 		ifNil: [self notCurrentlyPainting].
 	clearButton state: #off.
