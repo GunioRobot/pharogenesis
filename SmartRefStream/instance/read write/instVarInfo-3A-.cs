@@ -27,6 +27,7 @@ instVarInfo: anObject
 	newSupers _ Set new.
 	structures at: #Point put: false.	"writeRectangle: does not put out class pointer"
 	structures at: #Rectangle put: false.
+	structures at: #LargePositiveInteger put: false.	"used in slow case of WordArray"
 	structures keysDo: [:nm | 
 		cls _ (nm endsWith: ' class') 
 			ifFalse: [Smalltalk at: nm]
