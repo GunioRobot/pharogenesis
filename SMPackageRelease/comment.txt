@@ -1,0 +1,3 @@
+Release-specific package information. This is autonumbered (with a VersionNumber) as well and has a designated version name which can be whatever the maintainer wants.
+
+The instvar publisher holds the name of the SMAccount that owned the package at the time of the release. This is for historic reasons. We don't reference the account itself because those may be deleted.
