@@ -1,2 +1,2 @@
 saveAs
-	^ Smalltalk saveAs
+	^ SmalltalkImage current saveAs
