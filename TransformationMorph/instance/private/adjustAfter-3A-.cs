@@ -1,11 +1,10 @@
-adjustAfter: changeBlock
+adjustAfter: changeBlock 
 	"Cause this morph to remain cetered where it was before, and
 	choose appropriate smoothing, after a change of scale or rotation."
-	| oldCenter |
-	oldCenter _ self center.
+	| oldRefPos |
+	oldRefPos _ self referencePosition.
 	changeBlock value.
-	(self scale < 1.0 or: [self angle ~= (self angle roundTo: Float pi / 2.0)])
-		ifTrue: [smoothing _ 2]
-		ifFalse: [smoothing _ 1].
+	self chooseSmoothing.
+	self penUpWhile: [self position: self position + (oldRefPos - self referencePosition)].
 	self layoutChanged.
-	self position: oldCenter - (self extent // 2)
+	owner ifNotNil: [owner invalidRect: bounds]
