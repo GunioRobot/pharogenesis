@@ -1,2 +1,2 @@
 setName: aName
-	^ costume renameTo: aName
+	^ self costume renameTo: aName
