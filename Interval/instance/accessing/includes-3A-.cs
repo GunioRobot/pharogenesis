@@ -1,2 +1,3 @@
 includes: aNumber
-	^ aNumber between: self first and: self last
+	"Determine if aNumber is an element of this interval."
+	^ (self rangeIncludes: aNumber) and: [ self valuesInclude: aNumber ]
