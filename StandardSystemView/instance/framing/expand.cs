@@ -1,6 +1,5 @@
 expand
-	"If the receiver is collapsed, change its view to be that of all of its 
-	subviews, not its label alone. "
+	"If the receiver is collapsed, change its view to be that of all of its subviews, not its label alone."
 	| newFrame |
 	self isCollapsed
 		ifTrue:
@@ -11,4 +10,5 @@ expand
 			savedSubViews _ nil.
 			self setWindow: nil.
 			self resizeTo: newFrame.
-			self displayDeEmphasized]
+			self displayDeEmphasized.
+			model modelWakeUpIn: self]
