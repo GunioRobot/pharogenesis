@@ -6,6 +6,7 @@ initializeCaches
 	MethodCacheMethod _ 3.
 	MethodCachePrim _ 4.
 	MethodCacheNative _ 5.
+	MethodCachePrimFunction _ 6.
 	MethodCacheEntrySize _ 8.  "Must be power of two for masking scheme."
 	MethodCacheMask _ (MethodCacheEntries - 1) * MethodCacheEntrySize.
 	MethodCacheSize _ MethodCacheEntries * MethodCacheEntrySize.
