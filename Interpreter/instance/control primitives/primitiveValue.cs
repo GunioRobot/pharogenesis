@@ -15,9 +15,7 @@ primitiveValue
 			 allowing use to use unchecked stored in the following code."
 			self pop: argumentCount + 1.
 			initialIP _ self fetchPointer: InitialIPIndex	ofObject: blockContext.
-			self storePointerUnchecked: InstructionPointerIndex ofObject: blockContext
-				withValue: initialIP.
-			self storeStackPointerValue: argumentCount	inContext: blockContext.
-			self storePointerUnchecked: CallerIndex		ofObject: blockContext
-				withValue: activeContext.
+			self storePointerUnchecked: InstructionPointerIndex ofObject: blockContext withValue: initialIP.
+			self storeStackPointerValue: argumentCount inContext: blockContext.
+			self storePointerUnchecked: CallerIndex ofObject: blockContext withValue: activeContext.
 			self newActiveContext: blockContext]
