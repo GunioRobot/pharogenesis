@@ -1,0 +1,2 @@
+nowHasDef
+	hasDefs _ true
