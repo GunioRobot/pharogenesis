@@ -1,0 +1,3 @@
+value
+
+	^ getterBlock value
