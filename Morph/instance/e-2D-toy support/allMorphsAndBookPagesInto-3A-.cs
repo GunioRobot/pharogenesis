@@ -6,5 +6,6 @@ allMorphsAndBookPagesInto: aSet
 			(aSet includes: m) ifFalse: ["Stop infinite recursion"
 				m allMorphsAndBookPagesInto: aSet]].
 	aSet add: self.
+	self player ifNotNil:
+		[self player allScriptEditors do: [:e | e allMorphsAndBookPagesInto: aSet]].
 	^ aSet
-	
