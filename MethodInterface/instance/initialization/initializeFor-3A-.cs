@@ -3,5 +3,4 @@ initializeFor: aSelector
 
 	selector _ aSelector.
 	attributeKeywords _ OrderedCollection new.
-	defaultStatus _ #normal.
-	defaultFiresPerTick _ 1.
+	defaultStatus _ #normal
