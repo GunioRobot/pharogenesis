@@ -1,3 +1,3 @@
 authorName
-	AuthorName ifNil: [self setAuthorName].
+	AuthorName ifEmpty: [self setAuthorName].
 	^ AuthorName
