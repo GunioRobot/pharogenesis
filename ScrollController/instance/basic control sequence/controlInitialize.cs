@@ -1,8 +1,8 @@
 controlInitialize
 	"Recompute scroll bars.  Save underlying image unless it is already saved."
-	| yellowBar |
+	| |
 	super controlInitialize.
-	scrollBar region: (0 @ 0 extent: 44 @ view apparentDisplayBox height).
+	scrollBar region: (0 @ 0 extent: 24 @ view apparentDisplayBox height).
 	scrollBar insideColor: view backgroundColor.
 	marker region: self computeMarkerRegion.
 	scrollBar _ scrollBar align: scrollBar topRight with: view apparentDisplayBox topLeft.
