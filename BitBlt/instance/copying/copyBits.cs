@@ -24,16 +24,23 @@ copyBits
 	(combinationRule >= 30 and: [combinationRule <= 31]) ifTrue:
 		["No alpha specified -- re-run with alpha = 1.0"
 		^ self copyBitsTranslucent: 255].
-	((sourceForm isKindOf: Form) and: [sourceForm unhibernate])
+	((sourceForm isForm) and: [sourceForm unhibernate])
 		ifTrue: [^ self copyBits].
-	((destForm isKindOf: Form) and: [destForm unhibernate])
+	((destForm isForm) and: [destForm unhibernate])
 		ifTrue: [^ self copyBits].
-	((halftoneForm isKindOf: Form) and: [halftoneForm unhibernate])
+	((halftoneForm isForm) and: [halftoneForm unhibernate])
 		ifTrue: [^ self copyBits].
 
 	"Check for unimplmented rules"
 	combinationRule = Form oldPaint ifTrue: [^ self paintBits].
 	combinationRule = Form oldErase1bitShape ifTrue: [^ self eraseBits].
+
+	"Check if BitBlt doesn't support full color maps"
+	(colorMap notNil and:[colorMap isColormap]) ifTrue:[
+		colorMap _ colorMap colors.
+		^self copyBits].
+	"Check if clipping gots us way out of range"
+	self clipRange ifTrue:[^self copyBits].
 
 	self error: 'Bad BitBlt arg (Fraction?); proceed to convert.'.
 	"Convert all numeric parameters to integers and try again."
