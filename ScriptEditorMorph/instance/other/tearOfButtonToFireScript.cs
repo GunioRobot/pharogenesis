@@ -1,7 +1,4 @@
 tearOfButtonToFireScript
-	| aButton |
-	aButton _ ScriptActivationButton new target: playerScripted.
-	aButton actionSelector: #runScript:.
-	aButton arguments: (Array with: scriptName).
-	aButton establishLabelWording.
-	self currentHand attachMorph: aButton
+	"Tear off a button to fire this script"
+
+	playerScripted tearOffButtonToFireScriptForSelector: scriptName
