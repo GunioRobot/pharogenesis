@@ -8,7 +8,8 @@ notify: aString at: location
 						(sourceStream contents
 							copyReplaceFrom: location
 							to: location - 1
-							with: aString)]
+							with: aString)
+					doitFlag: false]
 		ifFalse: [^requestor
 					notify: aString
 					at: location
