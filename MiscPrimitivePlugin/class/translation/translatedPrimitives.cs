@@ -10,5 +10,6 @@ translatedPrimitives
 		(String findFirstInString:inSet:startingAt:)
 		(String indexOfAscii:inString:startingAt:)
 		(String findSubstring:in:startingAt:matchTable:)
+		(ByteArray hashBytes:startingWith:)
 		(SampledSound convert8bitSignedFrom:to16Bit:)
 	)
