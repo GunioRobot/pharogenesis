@@ -1,5 +1,5 @@
 selectorsContaining: aString
-	"Answer a list of selectors that contain aString within them. Case-insensitive"
+	"Answer a list of selectors that contain aString within them. Case-insensitive.  Does return symbols that begin with a capital letter."
 
 	| size selectorList ascii |
 
@@ -9,7 +9,7 @@ selectorsContaining: aString
 	aString size = 1 ifTrue:
 		[
 			ascii _ aString first asciiValue.
-			ascii < 128 ifTrue: [selectorList add: (SymbolTable like: aString)]
+			ascii < 128 ifTrue: [selectorList add: (OneCharacterSymbols at: ascii+1)]
 		].
 
 	aString first isLetter ifFalse:
@@ -22,16 +22,13 @@ selectorsContaining: aString
 
 	selectorList _ selectorList copyFrom: 2 to: selectorList size.
 
-	SymbolTable do:
-		[:each |
-			each size >= size ifTrue:
-				[
-					((each at: 1) isLowercase and:
-						[((each findString: aString startingAt: 1 caseSensitive: false) > 0)])
-							ifTrue: [selectorList add: each]
-				]
-		].
+	self allSymbolTablesDo: [:each |
+		each size >= size ifTrue:
+			[(each findSubstring: aString in: each startingAt: 1 
+				matchTable: CaseInsensitiveOrder) > 0
+						ifTrue: [selectorList add: each]]].
 
-	^selectorList
+	^selectorList reject: [:each | "reject non-selectors, but keep ones that begin with an uppercase"
+		each numArgs < 0 and: [each asString withFirstCharacterDownshifted numArgs < 0]].
 
 "Symbol selectorsContaining: 'scon'"
