@@ -1,3 +1,4 @@
 categoryForUniclasses
-	"Answer the category into which to place unique-class instances"
-	^ 'Morphic-UserObjects'
+	"Answer the default system category into which to place unique-class instances"
+
+	^ 'UserObjects'
