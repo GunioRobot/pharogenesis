@@ -1,0 +1,2 @@
+getIsRunning
+	^ self sendMessageToCostume: #getIsRunning
