@@ -5,6 +5,7 @@ display
 	in the structure in order to display that View and its subViews. It is 
 	typically sent in response to an update request to a View."
 
-	self displayBorder.
-	self displayView.
-	self displaySubViews
+	Display deferUpdatesIn: self displayBox while: [
+		self displayBorder.
+		self displayView.
+		self displaySubViews]
