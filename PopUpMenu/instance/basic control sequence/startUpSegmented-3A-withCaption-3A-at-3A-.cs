@@ -7,10 +7,11 @@ startUpSegmented: segmentHeight withCaption: captionOrNil at: location
 		lines: (5 to: 100 by: 5)) startUpWithCaption: 'Give it a whirl...'.
 "
 	| nLines nLinesPer allLabels from to subset subLines index |
-	nLines _ (frame height - 4) // marker height.
+	frame ifNil: [self computeForm].
 	allLabels := labelString findTokens: Character cr asString.
+	nLines _ allLabels size.
 	lineArray ifNil: [lineArray _ Array new].
-	nLinesPer _ segmentHeight // marker height - 2.
+	nLinesPer _ segmentHeight // marker height - 3.
 	from := 1.
 	[ true ] whileTrue:
 		[to := (from + nLinesPer) min: nLines.
@@ -19,7 +20,8 @@ startUpSegmented: segmentHeight withCaption: captionOrNil at: location
 			before: subset first.
 		subLines _ lineArray select: [:n | n >= from] thenCollect: [:n | n - (from-1) + 1].
 		subLines _ (Array with: 1) , subLines.
-		index := (PopUpMenu labels: subset asStringWithCr lines: subLines) startUpWithCaption: captionOrNil at: location.
+		index := (PopUpMenu labels: subset asStringWithCr lines: subLines)
+					startUpWithCaption: captionOrNil at: location.
 		index = 1
 			ifTrue: [from := to + 1.
 					from > nLines ifTrue: [ from := 1 ]]
