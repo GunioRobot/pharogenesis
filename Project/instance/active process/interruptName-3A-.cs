@@ -1,12 +1,14 @@
 interruptName: labelString
 	"Create a Notifier on the active scheduling process with the given label."
-	| suspendingList |
-	suspendingList _ activeProcess suspendingList.
-	suspendingList == nil
-		ifTrue: [activeProcess == Processor activeProcess
-					ifTrue: [activeProcess suspend]]
-		ifFalse: [suspendingList remove: activeProcess.
-				activeProcess offList].
+	| suspendingList projectProcess |
+	Smalltalk isMorphic ifFalse:
+		[^ ScheduledControllers interruptName: labelString].
 
-	Debugger openInterrupt: labelString
-			onProcess: activeProcess
+	projectProcess _ Project current activeProcess.
+	(suspendingList _ projectProcess suspendingList) == nil
+		ifTrue: [projectProcess == Processor activeProcess
+					ifTrue: [projectProcess suspend]]
+		ifFalse: [suspendingList remove: projectProcess.
+				projectProcess offList].
+
+	Debugger openInterrupt: labelString onProcess: projectProcess
