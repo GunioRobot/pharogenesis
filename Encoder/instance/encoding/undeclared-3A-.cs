@@ -1,7 +1,9 @@
 undeclared: name
 
 	| sym |
-	requestor interactive ifTrue: [^self notify: 'Undeclared'].
+	requestor interactive ifTrue: [
+		requestor requestor == #error: ifTrue: [requestor error: 'Undeclared'].
+		^ self notify: 'Undeclared'].
 	Transcript show: ' (' , name , ' is Undeclared) '.
 	sym _ name asSymbol.
 	Undeclared at: sym put: nil.
