@@ -14,7 +14,6 @@ numArgs
 			ifFalse: [ numColons > 0 ifTrue: [ -1 ] ifFalse: [ 0 ] ] ].
 	firstChar isSpecial ifTrue:
 		[self size = 1 ifTrue: [^ 1].
-		self size > 2 ifTrue: [^ -1].
-		^ (self at: 2) isSpecial ifTrue: [1] ifFalse: [-1]].
-	self = #- ifTrue: [ ^ 1 ].
+		2 to: self size do: [:i | (self at: i) isSpecial ifFalse: [^ -1]].
+		^ 1].
 	^ -1.
