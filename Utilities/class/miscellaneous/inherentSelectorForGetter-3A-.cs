@@ -4,4 +4,4 @@ inherentSelectorForGetter: aGetterSelector
 	"Utilities inherentSelectorForGetter: #getWidth"
 	((aGetterSelector size < 4) or: [(aGetterSelector beginsWith: 'get') not])
 			ifTrue: [ ^ aGetterSelector].
-	^ (aGetterSelector at: 4) asLowercase asString, (aGetterSelector copyFrom: 5 to: aGetterSelector size)
+	^ ((aGetterSelector at: 4) asLowercase asString, (aGetterSelector copyFrom: 5 to: aGetterSelector size)) asSymbol
