@@ -7,6 +7,9 @@ stringForUnrecognizedFeatures: features
 or hit return to ignore 
 ', features).
 
+	textMorph ifNotNil:
+		[textMorph world displayWorld "take down the FillInTheBlank morph"].
+
 	^ (result = '~' | result = '')
 		ifTrue:
 			['']
