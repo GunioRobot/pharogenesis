@@ -1,4 +1,5 @@
 redButtonPressed
-	"Answer true if the red mouse button is being pressed. This is the first mouse button."
+	"Answer true if only the red mouse button is being pressed.
+	This is the first mouse button, usually the left one."
 
-	^self buttons = 4
+	^ (self primMouseButtons bitAnd: 7) = 4
