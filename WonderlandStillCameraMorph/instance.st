@@ -3,4 +3,4 @@ WonderlandCameraMorph
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon3D-Wonderland Morphs'
+	category: 'Balloon3D-Wonderland-Morphs'
