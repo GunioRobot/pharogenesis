@@ -7,7 +7,7 @@ sufficientSpaceToInstantiate: classOop indexableSize: size
 	format _ ((self formatOfClass: classOop) >> 8) bitAnd: 16rF.
 
 	"fail if attempting to call new: on non-indexable class"
-	(size > 0 and: [format < 2]) ifTrue: [ ^ false ].
+	((self cCoerce: size to: 'unsigned ') > 0 and: [format < 2]) ifTrue: [ ^ false ].
 
 	format < 8 ifTrue: [
 		"indexable fields are words or pointers"
