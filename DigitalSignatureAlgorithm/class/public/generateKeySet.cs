@@ -7,6 +7,6 @@ generateKeySet
 	| dsa |
 	dsa _ DigitalSignatureAlgorithm new.
 	(self confirm: 'Shall I seed the random generator from the current sound input?')
-		ifTrue: [dsa initRandom: (dsa randomBitsFromSoundInput: 512)]
+		ifTrue: [dsa initRandomNonInteractively]
 		ifFalse: [dsa initRandomFromUser].
 	^ dsa generateKeySet
