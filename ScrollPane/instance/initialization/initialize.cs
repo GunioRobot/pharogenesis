@@ -1,20 +1,13 @@
 initialize
-	retractableScrollBar _ (Preferences valueOfFlag: #inboardScrollbars) not.
-	scrollBarOnLeft _ (Preferences valueOfFlag: #scrollBarsOnRight) not.
+	
+	"initialize the state of the receiver"
 	super initialize.
+	""
+	self initializePreferences.
 	hasFocus _ false.
-	borderWidth _ 2.
-	borderColor _ Color black.
+	self initializeScrollBars.
+	""
+	self extent: 150 @ 120.
+	self hideOrShowScrollBars.
 
-	scrollBar := ScrollBar new model: self slotName: 'scrollBar'.
-	scrollBar borderWidth: 1; borderColor: Color black.
 
-	scroller := TransformMorph new color: Color transparent.
-	scroller offset: -3@0.
-	self addMorph: scroller.
-
-	retractableScrollBar ifFalse: [self addMorph: scrollBar].
-
-	self on: #mouseEnter send: #mouseEnter: to: self.
-	self on: #mouseLeave send: #mouseLeave: to: self.
-	self extent: 150@120
