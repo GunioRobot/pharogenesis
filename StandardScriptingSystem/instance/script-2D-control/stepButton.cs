@@ -15,5 +15,5 @@ stepButton
 			on: #mouseStillDown send: #stepStillDown:with: to: self;
 			on: #mouseUp send: #stepUp:with: to: self;
 			setBalloonText:
-'Run every paused script exactly once.  Keep the mouse button down over "Step" and everything will keep running until you release it'.
+'Run every paused script exactly once.  Keep the mouse button down over "Step" and everything will keep running until you release it' translated.
 	^ aButton
