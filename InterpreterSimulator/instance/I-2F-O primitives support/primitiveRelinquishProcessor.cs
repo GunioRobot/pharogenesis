@@ -1,4 +1,4 @@
 primitiveRelinquishProcessor
 	"No-op in simulator"
 
-	^ self
+	^ self pop: 1
