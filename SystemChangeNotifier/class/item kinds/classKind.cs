@@ -1,0 +1,3 @@
+classKind
+
+	^ AbstractEvent classKind
