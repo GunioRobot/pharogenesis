@@ -1,0 +1,2 @@
+bufferSize: anInt
+	bufferSize := anInt
