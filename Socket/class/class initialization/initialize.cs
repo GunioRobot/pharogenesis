@@ -1,6 +1,10 @@
 initialize
 	"Socket initialize"
 
+	"Socket Types"
+	TCPSocketType _ 0.
+	UDPSocketType _ 1.
+
 	"Socket Status Values"
 	InvalidSocket _ -1.
 	Unconnected _ 0.
