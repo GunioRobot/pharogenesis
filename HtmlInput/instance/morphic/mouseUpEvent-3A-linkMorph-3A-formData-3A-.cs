@@ -1,6 +1,4 @@
-mouseUpEvent: event linkMorph: linkMorph formData: formData
-	| aPoint |
-	aPoint _ event cursorPoint - linkMorph topLeft.
-	formData addInput: (HiddenInput name: (value, '.x') value: aPoint x asInteger asString).
-	formData addInput: (HiddenInput name: (value, '.y') value: aPoint y asInteger asString).
-	formData submit
+mouseUpEvent: arg1 linkMorph: arg2 formData: arg3
+	"Reorder the arguments for existing event handlers"
+	(arg3 isMorph and:[arg3 eventHandler notNil]) ifTrue:[arg3 eventHandler fixReversedValueMessages].
+	^self mouseUpFormData: arg1 event: arg2 linkMorph: arg3
