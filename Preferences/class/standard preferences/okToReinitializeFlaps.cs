@@ -1,0 +1,2 @@
+okToReinitializeFlaps
+	^ self valueOfFlag: #okToReinitializeFlaps
