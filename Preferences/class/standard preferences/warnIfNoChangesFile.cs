@@ -1,0 +1,2 @@
+warnIfNoChangesFile
+	^ self valueOfFlag: #warnIfNoChangesFile
