@@ -1,0 +1,2 @@
+unlock
+	self removeProperty: #locked
