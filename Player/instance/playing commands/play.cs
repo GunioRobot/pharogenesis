@@ -1,0 +1,2 @@
+play
+	self sendMessageToCostume: #play
