@@ -1,4 +1,6 @@
 do: aBlock 
 	tally = 0 ifTrue: [^ self].
-	array do: 
-		[:element | element == nil ifFalse: [aBlock value: element]]
+	1 to: array size do:
+		[:index |
+		| each |
+		(each _ array at: index) ifNotNil: [aBlock value: each]]
