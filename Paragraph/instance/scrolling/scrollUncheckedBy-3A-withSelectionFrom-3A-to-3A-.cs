@@ -3,7 +3,7 @@ scrollUncheckedBy: heightToMove withSelectionFrom: startBlock to: stopBlock
 	If selection blocks are not nil, then select the newly visible text as well."
 	| savedClippingRectangle delta |
 	delta _ 0 @ (0 - heightToMove).
-	compositionRectangle moveBy: delta.
+	compositionRectangle _ compositionRectangle translateBy: delta.
 	startBlock == nil ifFalse:
 		[startBlock moveBy: delta.
 		stopBlock moveBy: delta].
