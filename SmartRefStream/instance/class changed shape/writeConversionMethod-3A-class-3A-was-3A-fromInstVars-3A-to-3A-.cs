@@ -1,14 +1,10 @@
 writeConversionMethod: sel class: newClass was: oldName fromInstVars: oldList to: newList
-	"No method sel was found in newClass.  Writing a default conversion method."
+	"The method convertToCurrentVersion:refStream: was not found in newClass.  Write a default conversion method for the author to modify."
 
-	| code keywords newOthers oldOthers copied |
-
-	self flag: #bobconv.	
+	| code newOthers oldOthers copied |
 
 	code _ WriteStream on: (String new: 500).
-	keywords _ sel keywords.
-	code nextPutAll: (keywords at: 1); nextPutAll: ' varDict '; 
-			nextPutAll: (keywords at: 2); nextPutAll: ' smartRefStrm'; cr; tab.
+	code nextPutAll: 'convertToCurrentVersion: varDict refStream: smartRefStrm'; cr; tab.
 	newOthers _ newList asOrderedCollection "copy".
 	oldOthers _ oldList asOrderedCollection "copy".
 	copied _ OrderedCollection new.
@@ -21,11 +17,13 @@ writeConversionMethod: sel class: newClass was: oldName fromInstVars: oldList to
 	code nextPutAll: copied asArray printString; nextPut: $. .
 	code cr; tab; nextPutAll: 'This method is for additional changes.'; 
 		nextPutAll: ' Use statements like (foo _ varDict at: ''foo'')."'; cr; cr; tab.
-	(newOthers size = 0) & (oldOthers size = 0) 
-		ifTrue: [code nextPutAll: '"Instance variables are the same.  Only the order changed.  This method should work as written."'].
+	(newOthers size = 0) & (oldOthers size = 0) ifTrue: [^ self].
+		"Instance variables are the same.  Only the order changed.  No conversion needed."
 	(newOthers size > 0) ifTrue: [code nextPutAll: '"New variables: ', newOthers asArray printString, '  If a non-nil value is needed, please assign it."\' withCRs].
-	(oldOthers size > 0) ifTrue: [code nextPutAll: '	"These are going away ', oldOthers asArray printString, '.  Possibly store their info in another variable?"'].
+	(oldOthers size > 0) ifTrue: [code nextPutAll: '	"These are going away ', oldOthers asArray printString, '.  Possibly store their info in some other variable?"'].
 
+	code cr; tab.
+	code nextPutAll: '^ super convertToCurrentVersion: varDict refStream: smartRefStrm'.
 	newClass compile: code contents classified: 'object fileIn'.
 
 
