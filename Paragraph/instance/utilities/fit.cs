@@ -5,4 +5,4 @@ fit
 	[(self lineIndexOfTop: clippingRectangle top) = 1]
 		whileFalse: [self scrollBy: (0-1)*textStyle lineGrid].
 	self updateCompositionHeight.
-	clippingRectangle bottom: compositionRectangle bottom
+	clippingRectangle _ clippingRectangle withBottom: compositionRectangle bottom
