@@ -5,7 +5,7 @@ loadNotes
 	names _ OrderedCollection new.
 	notes _ OrderedCollection new.
 	(FileDirectory default directoryExists: 'audio')
-		ifFalse: [FileDirectory default createDirectory: 'audio'].
+		ifFalse: [^self].
 	dir _ self audioDirectory.
 	dir fileNames do: [:fname |
 		(fname endsWith: '.name') ifTrue: [
