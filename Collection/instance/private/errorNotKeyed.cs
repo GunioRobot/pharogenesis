@@ -1,3 +1,3 @@
 errorNotKeyed
 
-	self error: self class name, 's do not respond to keyed accessing messages.'
+	self error: ('Instances of {1} do not respond to keyed accessing messages.' translated format: {self class name})
