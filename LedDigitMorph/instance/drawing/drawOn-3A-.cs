@@ -2,7 +2,7 @@ drawOn: aCanvas
 
 	| foregroundColor backgroundColor thickness hThickness vThickness hOffset vOffset |
 	foregroundColor _ highlighted ifTrue: [Color white] ifFalse: [color].
-	backgroundColor _ color darker darker darker.
+	backgroundColor _ color muchDarker.
 	hThickness _ self height * 0.1.
 	vThickness _ self width * 0.1.
 	thickness _ hThickness min: vThickness.
