@@ -1,0 +1,3 @@
+codeTTCFont
+
+	^ $T.
