@@ -1,0 +1,1 @@
+MCCacheRepository class instanceVariableNames: 'default'
