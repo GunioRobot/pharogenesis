@@ -1,0 +1,2 @@
+menuBorderWidth
+	^ Parameters at: #menuBorderWidth
