@@ -1,0 +1,2 @@
+tearDown
+	self mockSnapshot install
