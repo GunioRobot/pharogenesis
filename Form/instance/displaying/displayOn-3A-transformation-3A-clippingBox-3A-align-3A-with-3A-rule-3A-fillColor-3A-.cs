@@ -11,7 +11,7 @@ displayOn: aDisplayMedium transformation: displayTransformation clippingBox: cli
 		ifTrue: [magnifiedForm _ self]
 		ifFalse: 
 			[scale _ displayTransformation scale.
-			scale _ scale x rounded @ scale y rounded.
+			scale _ scale x @ scale y.
 			(1@1 = scale)
 					ifTrue: [scale _ nil. magnifiedForm _ self]
 					ifFalse: [magnifiedForm _ self magnify: self boundingBox by: scale]].
