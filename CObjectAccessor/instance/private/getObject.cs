@@ -1,0 +1,2 @@
+getObject
+	^object
