@@ -1,0 +1,2 @@
+mouseOverHalosEnabled
+	^ BalloonMorph mouseOverEnabled 
