@@ -4,11 +4,12 @@ updateProjectInfoFor: aProject
 
 	data _ OrderedCollection new.
 	data add: 'action: updatepage'.
-	data add: 'projectimage: ',aProject name,'.gif'.
+	data add: 'password: ',ProjectPasswordNotification signal.
+	data add: 'projectimage: ',aProject name convertToSuperSwikiServerString,'.gif'.
 	uploader _ Utilities authorNamePerSe.
 	uploader isEmptyOrNil ifTrue: [uploader _ Utilities authorInitialsPerSe].
 	uploader isEmptyOrNil ifFalse: [
-		data add: 'submittedBy: ',uploader.
+		data add: 'submittedBy: ',uploader convertToSuperSwikiServerString.
 	].
 	projectLinks _ Set new.
 	aProject world allMorphsDo: [ :each |
@@ -31,6 +32,6 @@ updateProjectInfoFor: aProject
 		details at: 'projectlinks' put: linkString
 	].
 	details keysAndValuesDo: [ :k :v |
-		data add: k , ': ' , v
+		data add: k , ': ' , (v convertToSuperSwikiServerString). self flag: #yoFlag.
 	].
 	^self sendToSwikiProjectServer: data.
