@@ -6,8 +6,8 @@ paddedSpace
 	| oldX |
 	spaceCount _ spaceCount + 1.
 	oldX _ destX.
-	destX _ destX + spaceWidth + (line justifiedPadFor: spaceCount).
+	destX _ oldX + spaceWidth + (line justifiedPadFor: spaceCount).
 	fillBlt == nil ifFalse:
-		[fillBlt destX: oldX destY: destY width: destX - oldX height: height; copyBits].
+		[fillBlt destX: oldX destY: destY width: destX - oldX height: font height; copyBits].
 	lastIndex _ lastIndex + 1.
 	^ false
