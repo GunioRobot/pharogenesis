@@ -1,6 +1,5 @@
 close
-	"Save and close the messageFile."
-	self consolidateDB.
-	messageFile notNil ifTrue: [messageFile close].
-	rootFilename _ nil.
-	messageFile _ indexFile _ categoriesFile _ nil
+	"Close up the database in preparation for closing celeste"
+
+	self saveDB; saveTokens.
+	messageFile ifNotNil: [messageFile close].
