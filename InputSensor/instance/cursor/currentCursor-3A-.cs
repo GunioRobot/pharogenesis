@@ -1,5 +1,4 @@
 currentCursor: newCursor 
-	"Set newCursor to be the displayed Cursor form."
+	"The current cursor is maintained in class Cursor."
 
-	CurrentCursor _ newCursor.
-	Cursor currentCursor: CurrentCursor.
+	Cursor currentCursor: newCursor.
