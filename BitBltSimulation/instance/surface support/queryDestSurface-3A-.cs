@@ -5,6 +5,7 @@ queryDestSurface: handle
 	can be obtained. This might, for instance, happen if the user
 	resizes the main window.
 	Note: Moved to a separate function for better inlining of the caller."
-	"^(self cCode:'ioGetSurfaceFormat(handle, &destWidth, &destHeight, &destPixSize, &dstFormat)')
-		~~ 0"
-	^false
+	querySurfaceFn = 0 ifTrue:[self loadSurfacePlugin ifFalse:[^false]].
+	^(self cCode:' ((int (*) (int, int*, int*, int*, int*))querySurfaceFn)
+		(handle, &destWidth, &destHeight, &destDepth, &destMSB)'
+			 inSmalltalk:[false])
