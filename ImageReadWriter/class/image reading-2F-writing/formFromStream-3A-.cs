@@ -3,9 +3,9 @@ formFromStream: aBinaryStream
 	| reader readerClass form  |
 
 	readerClass _ self withAllSubclasses
-		detect: [:subclass | aBinaryStream reset. (subclass new on: aBinaryStream) understandsImageFormat]
+		detect: [:subclass | subclass understandsImageFormat: aBinaryStream]
 		ifNone: [
-			(aBinaryStream respondsTo: #close) ifTrue: [ aBinaryStream close ].
+			aBinaryStream close.
 			^self error: 'image format not recognized'].
 	reader _ readerClass new on: aBinaryStream reset.
 	Cursor read showWhile: [
