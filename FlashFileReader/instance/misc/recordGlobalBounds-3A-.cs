@@ -1,0 +1,1 @@
+recordGlobalBounds: bounds
