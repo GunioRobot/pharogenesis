@@ -3,3 +3,4 @@ stopUsingProxyServer
 
 	HTTPProxyServer _ nil.
 	HTTPProxyPort _ 80.
+	HTTPProxyCredentials _ ''
