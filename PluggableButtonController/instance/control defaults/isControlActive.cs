@@ -1,3 +1,3 @@
 isControlActive 
 
-	^ sensor anyButtonPressed & self viewHasCursor
+	^ sensor anyButtonPressed
