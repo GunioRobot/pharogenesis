@@ -1,4 +1,4 @@
 version
-	"Answer the version of this Smalltalk release."
+	"Answer the version of this release."
 
-	^ 'Smalltalk-80 version 1.03 of July 31, 1996'
+	^ 'Squeak 1.31 of Feb 4, 1998'
