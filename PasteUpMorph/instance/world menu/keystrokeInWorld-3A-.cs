@@ -1,22 +1,22 @@
 keystrokeInWorld: evt
-	"A keystroke was hit when no keyboard focus was in set, so it is sent here to the world instead.  This current implementation is regrettably hard-coded; until someone cleans this up, you may be tempted to edit this method to suit your personal taste in interpreting cmd-keys issued to the desktop."
+	"A keystroke was hit when no keyboard focus was set, so it is sent here to the world instead."
 
-	|  aChar isCmd |
+	|  aChar isCmd ascii |
 	aChar _ evt keyCharacter.
+	(ascii _ aChar asciiValue) = 27 ifTrue: "escape key"
+		[^ self putUpWorldMenuFromEscapeKey].
+	(evt controlKeyPressed not
+		and: [(#(1 4 8 28 29 30 31 32) includes: ascii)  "home, end, backspace, arrow keys, space"
+			and: [self keyboardNavigationHandler notNil]])
+				ifTrue: [self keyboardNavigationHandler navigateFromKeystroke: aChar].
+
 	isCmd _ evt commandKeyPressed and: [Preferences cmdKeysInText].
-	isCmd ifTrue:
-		[(aChar == $z) ifTrue: [^ self commandHistory undoOrRedoCommand].
-		(aChar == $w) ifTrue: [^ SystemWindow closeTopWindow].
-		(aChar == $\) ifTrue: [^ SystemWindow sendTopWindowToBack].
+	(evt commandKeyPressed and: [Preferences eToyFriendly])
+			ifTrue:
+				[(aChar == $W) ifTrue: [^ self putUpWorldMenu: evt]].
+	(isCmd and: [Preferences honorDesktopCmdKeys]) ifTrue:
+		[^ self dispatchCommandKeyInWorld: aChar event: evt].
 
-		(aChar == $t) ifTrue: [^ self findATranscript: evt].
-		(aChar == $b) ifTrue: [^ Browser openBrowser].
-		(aChar == $k) ifTrue: [^ Workspace open].
-
-		(aChar == $C) ifTrue: [^ self findAChangeSorter: evt].
-		(aChar == $R) ifTrue: [^ self openRecentSubmissionsBrowser: evt].
-
-		(aChar == $r) ifTrue: [^ Display restoreMorphicDisplay].
-
-		(aChar == $W) ifTrue: [^ self invokeWorldMenu: evt]]
-			"This last item is a weirdo feature requested by the Open School in Fall of 2000 as a keyhole to the world menu in systems that normally do not offer a world menu"
+	"It was unhandled. Remember the keystroke."
+	self lastKeystroke: evt keyString.
+	self triggerEvent: #keyStroke
