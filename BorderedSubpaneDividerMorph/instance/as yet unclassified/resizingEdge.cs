@@ -1,0 +1,3 @@
+resizingEdge
+
+	^resizingEdge
