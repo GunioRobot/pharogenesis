@@ -9,6 +9,9 @@ defaultMIMEdatabase
 	at: 'gif' put: 'image/gif';
 	at: 'jpg' put: 'image/jpeg';
 	at: 'jpeg' put: 'image/jpeg';
+	at: 'gif' put: 'image/gif';
+	at: 'png' put: 'image/png';
+	at: 'pnm' put: 'image/pnm';
 	at: 'xbm' put: 'image/x-xbitmap';
 	at: 'mid' put: 'audio/midi';
 	at: 'doc' put: 'application/ms-word-document'.
