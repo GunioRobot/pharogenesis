@@ -1,0 +1,2 @@
+isLinear
+	^circular not
