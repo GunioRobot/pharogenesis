@@ -1,0 +1,2 @@
+aboutToTrashColor
+	^ Color red
