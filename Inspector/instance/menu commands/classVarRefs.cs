@@ -3,4 +3,4 @@ classVarRefs
 
 	| aClass |
 	(aClass _ self classOfSelection) ifNotNil:
-		[aClass browseClassVarRefs].
+		[self systemNavigation  browseClassVarRefs: aClass].
