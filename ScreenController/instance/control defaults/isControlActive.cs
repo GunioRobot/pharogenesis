@@ -1,3 +1,2 @@
 isControlActive
-
-	^super isControlActive and: [sensor anyButtonPressed]
+	^ self isControlWanted
