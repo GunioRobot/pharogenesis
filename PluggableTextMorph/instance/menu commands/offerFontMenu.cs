@@ -1,2 +1,2 @@
 offerFontMenu
-	self handleEdit: [textMorph editor offerFontMenu]
+	self handleEdit: [textMorph editor changeTextFont]
