@@ -1,4 +1,4 @@
-setBorderColor: aColor
+setBorderColor: aColor 
 	"Set the border color as requested"
 
-	self setCostumeSlot: #borderColor: toValue: aColor
+	costume renderedMorph borderColor: aColor
