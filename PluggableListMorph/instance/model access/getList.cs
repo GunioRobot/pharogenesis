@@ -1,4 +1,4 @@
-getList 
+getList
 	"Answer the list to be displayed."
 	| lst |
 	getListSelector == nil ifTrue: [^ #()].
