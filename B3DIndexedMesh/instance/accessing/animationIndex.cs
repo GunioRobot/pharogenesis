@@ -1,0 +1,2 @@
+animationIndex
+	^1
