@@ -1,0 +1,2 @@
+isTypeFile
+	^true
