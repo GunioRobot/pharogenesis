@@ -3,7 +3,5 @@ labelDisplayBox
 	on the display screen."
 
 	^ labelFrame region
-		align: (self isCollapsed
-				ifTrue: [labelFrame topLeft]
-				ifFalse: [labelFrame bottomLeft])
-		with: self displayBox topLeft
+		align: labelFrame topLeft
+		with: self windowOrigin
