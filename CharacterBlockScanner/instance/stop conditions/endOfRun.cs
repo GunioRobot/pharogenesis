@@ -4,9 +4,12 @@ endOfRun
 	up indexes for building the appropriate CharacterBlock."
 
 	| runLength lineStop |
-	((characterIndex ~~ nil and:
+	(((characterIndex ~~ nil and:
 		[runStopIndex < characterIndex and: [runStopIndex < text size]])
-			or:	[characterIndex == nil and: [lastIndex < line last]])
+			or:	[characterIndex == nil and: [lastIndex < line last]]) or: [
+				((lastIndex < line last)
+				and: [((text at: lastIndex) leadingChar ~= (text at: lastIndex+1) leadingChar)
+					and: [lastIndex ~= characterIndex]])])
 		ifTrue:	["We're really at the end of a real run."
 				runLength _ (text runLengthFor: (lastIndex _ lastIndex + 1)).
 				characterIndex ~~ nil
@@ -19,7 +22,7 @@ endOfRun
 
 	lastCharacter _ text at: lastIndex.
 	characterPoint _ destX @ destY.
-	((lastCharacter = Space and: [textStyle alignment = Justified])
+	((lastCharacter = Space and: [alignment = Justified])
 		or: [lastCharacter = Tab and: [lastSpaceOrTabExtent notNil]])
 		ifTrue: [lastCharacterExtent _ lastSpaceOrTabExtent].
 	characterIndex ~~ nil
