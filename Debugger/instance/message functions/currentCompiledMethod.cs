@@ -1,0 +1,2 @@
+currentCompiledMethod
+	^ self selectedClassOrMetaClass compiledMethodAt: self selectedMessageName
