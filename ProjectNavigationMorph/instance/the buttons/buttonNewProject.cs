@@ -1,3 +1,3 @@
 buttonNewProject
 
-	^self makeButton: 'NEW PROJECT' balloonText: 'Start a new project' for: #newProject
+	^self makeButton: 'NEW' balloonText: 'Start a new project' for: #newProject
