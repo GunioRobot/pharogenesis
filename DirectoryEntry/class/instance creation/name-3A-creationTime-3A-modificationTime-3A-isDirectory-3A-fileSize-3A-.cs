@@ -1,0 +1,2 @@
+name: name0  creationTime: creationTime  modificationTime: modificationTime   isDirectory: isDirectory  fileSize: fileSize
+	^self new privateName: name0  creationTime: creationTime  modificationTime: modificationTime  isDirectory: isDirectory  fileSize: fileSize
