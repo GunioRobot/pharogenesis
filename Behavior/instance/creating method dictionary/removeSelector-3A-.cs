@@ -4,4 +4,4 @@ removeSelector: selector
 	the method dictionary, create an error notification."
 
 	methodDict removeKey: selector.
-	self flushCache
+	selector flushCache
