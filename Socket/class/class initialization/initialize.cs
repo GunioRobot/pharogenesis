@@ -12,3 +12,5 @@ initialize
 	Connected _ 2.
 	OtherEndClosed _ 3.
 	ThisEndClosed _ 4.
+
+	RegistryThreshold _ 100. "# of sockets"
