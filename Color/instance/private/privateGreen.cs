@@ -1,4 +1,4 @@
 privateGreen
-	"Private! Answer the internal representation of my green component."
+	"Private! Return the internal representation of my green component."
 
 	^ (rgb >> GreenShift) bitAnd: ComponentMask
