@@ -3,13 +3,14 @@ directoryExists: filenameOrPath
 	"FileDirectory default directoryExists: FileDirectory default pathName"
 
 	| fName dir |
-	FileDirectory splitName: filenameOrPath to:
+	DirectoryClass splitName: filenameOrPath to:
 		[:filePath :name |
 			fName _ name.
 			filePath isEmpty
 				ifTrue: [dir _ self]
-				ifFalse: [dir _ FileDirectory on: filePath]].
+				ifFalse: [dir _ self directoryNamed: filePath]].
 
-	self isCaseSensitive 
-		ifTrue:[^dir directoryNames includes: fName]
-		ifFalse:[^dir directoryNames anySatisfy: [:name| name sameAs: fName]].
+	^dir exists and: [
+		self isCaseSensitive 
+			ifTrue:[dir directoryNames includes: fName]
+			ifFalse:[dir directoryNames anySatisfy: [:name| name sameAs: fName]]].
