@@ -9,9 +9,6 @@ send: selector super: superFlag numArgs: numArgs
 	arguments _ Array new: numArgs.
 	numArgs to: 1 by: -1 do: [ :i | arguments at: i put: self pop].
 	receiver _ self pop.
-	(selector == #halt or: [selector == #halt:]) ifTrue:
-		[self error: 'Cant simulate halt.  Proceed to bypass it.'.
-		self push: nil. ^self].
 	selector == #doPrimitive:method:receiver:args:
 		ifTrue: [answer _ receiver 
 					doPrimitive: (arguments at: 1)
@@ -20,4 +17,7 @@ send: selector super: superFlag numArgs: numArgs
 					args: (arguments at: 4).
 				self push: answer.
 				^self].
+	QuickStep == self ifTrue: [
+		QuickStep _ nil.
+		^self quickSend: selector to: receiver with: arguments super: superFlag].
 	^self send: selector to: receiver with: arguments super: superFlag
