@@ -3,5 +3,5 @@ addGraphicalHandle: formKey at: aPoint on: eventName send: selector to: recipien
 	| handle |
 	handle _ self addGraphicalHandleFrom: formKey at: aPoint.
 	handle on: eventName send: selector to: recipient.
-	handle setBalloonText: (target balloonHelpTextForHandle: handle).
+	handle setBalloonText: (target balloonHelpTextForHandle: handle) translated.
 	^ handle
