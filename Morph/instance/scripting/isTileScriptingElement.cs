@@ -1,2 +1,3 @@
 isTileScriptingElement
-	^ false
+
+	^ self hasButtonProperties and: [self buttonProperties isTileScriptingElement]
