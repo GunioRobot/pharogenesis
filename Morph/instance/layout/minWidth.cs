@@ -1,3 +1,5 @@
 minWidth
-	extension == nil ifTrue:[^2].
-	^self valueOfProperty: #minWidth ifAbsent:[2]
+	"answer the receiver's minWidth"
+	^ self
+		valueOfProperty: #minWidth
+		ifAbsent: [2]
