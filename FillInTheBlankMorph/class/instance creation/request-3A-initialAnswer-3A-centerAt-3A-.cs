@@ -1,15 +1,9 @@
 request: queryString initialAnswer: defaultAnswer centerAt: aPoint
-	"Create an instance of me whose question is queryString with the given initial answer. Invoke it centered at the given point, and answer the string the user accepts. Answer the empty string if the user cancels."
+	"Create an instance of me whose question is queryString with the given initial answer. Invoke it centered at the given point, and answer the string the user accepts. Answer the empty string if the user cancels.
+	This variant is only for calling from within a Morphic project."
 	"FillInTheBlankMorph
 		request: 'Type something, then type CR.'
 		initialAnswer: 'yo ho ho!'
 		centerAt: Display center"
 
-	| m |
-	World ifNil: [^ ''].
-	m _ self new
-		setQuery: queryString
-		initialAnswer: defaultAnswer
-		answerHeight: 50.
-	World addMorph: m centeredNear: aPoint.
-	^ m getUserResponse
+	 ^ self request: queryString initialAnswer: defaultAnswer centerAt: aPoint inWorld: World
