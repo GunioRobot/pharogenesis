@@ -1,0 +1,3 @@
+isBlockEntity
+	"not sure...."
+	^true
