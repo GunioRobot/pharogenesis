@@ -5,7 +5,7 @@ parts
 	partStreams _ OrderedCollection new.
 	rwStream ifNil: [self stream].
 	rwStream reset.
-	rwStream match: 'Palavra desconhecida pelo Dicionário.'.
+	rwStream match: 'Palavra desconhecida pelo DicionÂ·rio.'.
 	rwStream atEnd ifFalse: [^ #()].	"not in dictionary"
 
 	rwStream reset.
