@@ -1,0 +1,2 @@
+removePostscript
+	postscript _ nil
