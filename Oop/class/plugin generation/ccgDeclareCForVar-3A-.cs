@@ -1,0 +1,3 @@
+ccgDeclareCForVar: aSymbolOrString
+
+	^'int ', aSymbolOrString
