@@ -1,15 +1,10 @@
 expression
 
 	(hereType == #word and: [tokenType == #leftArrow])
-		ifTrue: [^self assignment: self variable].
+		ifTrue: [^ self assignment: self variable].
 	hereType == #leftBrace
-		ifTrue: [self braceExpression.
-				hereType == #leftArrow
-					ifTrue:
-						[^self assignment: parseNode]]
-		ifFalse: [self primaryExpression
-					ifFalse: [^false]].
+		ifTrue: [self braceExpression]
+		ifFalse: [self primaryExpression ifFalse: [^ false]].
 	(self messagePart: 3 repeat: true)
-		ifTrue:
-			[hereType == #semicolon ifTrue: [self cascade]].
-	^true
+		ifTrue: [hereType == #semicolon ifTrue: [self cascade]].
+	^ true
