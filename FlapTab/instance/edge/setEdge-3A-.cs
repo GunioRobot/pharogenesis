@@ -1,16 +1,16 @@
 setEdge: anEdge
 	"Set the edge as indicated, if possible"
 
-	| newOrientation |
+	| newOrientation e |
+	e _ anEdge asSymbol.
 	self edgeToAdhereTo = anEdge ifTrue: [^ self].
 	newOrientation _ nil.
 	self orientation == #vertical
-		ifTrue: [(#(top bottom) includes: anEdge) ifTrue:
+		ifTrue: [(#top == e or: [#bottom == e]) ifTrue:
 					[newOrientation _ #horizontal]]
-		ifFalse: [(#(top bottom) includes: anEdge) ifFalse:
+		ifFalse: [(#top == e or: [#bottom == e]) ifFalse:
 					[newOrientation _ #vertical]].
-	self edgeToAdhereTo: anEdge.
+	self edgeToAdhereTo: e.
 	newOrientation ifNotNil: [self transposeParts].
 	referent isInWorld ifTrue: [self positionReferent].
-	self changeTabText: self existingWording.
 	self adjustPositionVisAVisFlap
