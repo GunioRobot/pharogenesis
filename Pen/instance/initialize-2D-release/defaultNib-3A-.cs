@@ -8,5 +8,5 @@ defaultNib: widthInteger
 		bic combinationRule: Form paint; turn: 90.
 		10 timesRepeat: [bic down; go: 10; up; go: 20].
 "
-	self color: destForm black.
+	self color: Color black.
 	self squareNib: widthInteger
