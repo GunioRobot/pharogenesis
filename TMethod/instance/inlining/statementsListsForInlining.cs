@@ -20,7 +20,11 @@ statementsListsForInlining
 				stmtLists remove: node receiver ifAbsent: [].
 			].
 			((node selector = #whileFalse:) or: [node selector = #whileTrue:]) ifTrue: [
-				stmtLists remove: node receiver ifAbsent: [].
+				"Allow inlining if it is a [...] whileTrue/whileFalse.
+				This is identified by having more than one statement in the 
+				receiver block in which case the C code wouldn't work anyways"
+				node receiver statements size = 1
+					ifTrue:[stmtLists remove: node receiver ifAbsent: []].
 			].
 			(node selector = #to:do) ifTrue: [
 				stmtLists remove: node receiver ifAbsent: [].
