@@ -1,0 +1,2 @@
+annotations
+	^self annotations: Preferences defaultAnnotationRequests
