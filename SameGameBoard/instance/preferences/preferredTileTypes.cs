@@ -1,0 +1,3 @@
+preferredTileTypes
+
+	^ 5
