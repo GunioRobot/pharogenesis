@@ -41,7 +41,7 @@ metaEventAt: ticks
 
 	type = 16r54 ifTrue: [
 		"SMPTE offset"
-		self report: 'Warning: SMPTE offsets are not implemented'.
+		self report: 'Ignoring SMPTE offset'.
 		trackStream skip: length.
 		^ self].
 
