@@ -7,4 +7,4 @@ playOnce
 	scale _ 32767.0 / scale.
 	scaledData _ SoundBuffer newMonoSampleCount: data size.
 	1 to: data size do: [:i | scaledData at: i put: (scale * (data at: i)) truncated].
-	(SampledSound samples: scaledData samplingRate: 11025) play.
+	SoundService default playSampledSound: scaledData rate: 11025.
