@@ -9,7 +9,7 @@ classListIndex: anInteger
 	self classCommentIndicated
 		ifTrue: []
 		ifFalse: [editSelection _ anInteger = 0
-					ifTrue: [metaClassIndicated
+					ifTrue: [metaClassIndicated | (systemCategoryListIndex == 0)
 						ifTrue: [#none]
 						ifFalse: [#newClass]]
 					ifFalse: [#editClass]].
@@ -25,4 +25,4 @@ classListIndex: anInteger
 	self changed: #classListIndex.	"update my selection"
 	self changed: #messageCategoryList.
 	self changed: #messageList.
-	self changed: #contents.
+	self contentsChanged
