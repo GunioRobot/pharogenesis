@@ -1,6 +1,6 @@
 initialize
-
+	"initialize the state of the receiver"
 	super initialize.
-	color _ Color green.
+	""
 	highlighted _ false.
-	digit _ 0.
+	digit _ 0 
