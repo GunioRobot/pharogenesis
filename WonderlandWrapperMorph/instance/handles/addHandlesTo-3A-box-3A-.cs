@@ -9,7 +9,7 @@ addHandlesTo: aHaloMorph box: box
 
 	aHaloMorph addHandleAt: (box leftCenter + (0 @ (s+2)) min: box leftCenter + box bottomLeft // 2)
 		color: Color lightBrown icon: 'Halo-Tile'
-		on: #mouseDown send: #yourself "#tearOffTile" to: self.
+		on: #mouseDown send: #tearOffTile to: self.
 
 	dismissHandle _ aHaloMorph addHandleAt: (box topLeft + ((s+2)@0) min: box topLeft + box topCenter // 2)
 		color: Color red muchLighter icon: 'Halo-Dismiss'
@@ -19,7 +19,7 @@ addHandlesTo: aHaloMorph box: box
 	dismissHandle on: #mouseMove send: #setDismissColor:with: to: aHaloMorph.
 
 	aHaloMorph addHandleAt: box leftCenter color: Color cyan icon: 'Halo-View'
-		on: #mouseDown send: #yourself "#openViewerForArgument" to: self.
+		on: #mouseDown send: #openViewerForArgument to: self.
 
 	aHaloMorph addHandleAt: box topCenter color: Color black icon: 'Halo-Grab'
 		on: #mouseDown send: #grabFromHalo:with: to: self.
@@ -53,5 +53,5 @@ addHandlesTo: aHaloMorph box: box
 	myActor isHandmade
 		ifTrue: [
 			(aHaloMorph addHandleAt: box center color: Color white icon: 'Halo-Paint'
-				on: #mouseUp send: #paintMode to: self getCameraMorph)]
+				on: #mouseUp send: #paintTexture to: self)]
 
