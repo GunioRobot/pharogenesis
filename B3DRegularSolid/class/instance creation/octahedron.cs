@@ -1,0 +1,3 @@
+octahedron
+
+  ^self new createOctahedron
