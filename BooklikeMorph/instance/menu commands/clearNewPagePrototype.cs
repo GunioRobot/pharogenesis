@@ -1,0 +1,2 @@
+clearNewPagePrototype
+	newPagePrototype _ nil
