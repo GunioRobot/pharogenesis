@@ -1,5 +1,3 @@
 requiredWidth
-	submorphs size = 0
-		ifTrue:
-			[^ self basicWidth].
-	^ (submorphs detectSum: [:m | m width]) + (submorphs size * padding)
+	submorphs isEmpty ifTrue: [^self basicWidth].
+	^(submorphs detectSum: [:m | m width]) + (submorphs size * padding)
