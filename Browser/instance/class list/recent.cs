@@ -5,7 +5,7 @@ recent
 
 	| className class recentList |
 	recentList _ RecentClasses select: [:n | Smalltalk includesKey: n].
-	recentList size == 0 ifTrue: [^ self beep].
+	recentList size == 0 ifTrue: [^ Beeper beep].
 	className := (SelectionMenu selections: recentList) startUp.
 	className == nil ifTrue: [^ self].
 	class := Smalltalk at: className.
