@@ -1,0 +1,2 @@
+adaptInteger: scalar
+	^ scalar @ scalar
