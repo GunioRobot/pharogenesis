@@ -1,4 +1,4 @@
 assignmentCheck: encoder at: location
 
-	isAnArg ifTrue: [^ location]
+	self isArg ifTrue: [^ location]
 			ifFalse: [^ -1]
