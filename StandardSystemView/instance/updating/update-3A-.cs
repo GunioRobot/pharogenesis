@@ -1,4 +1,4 @@
 update: aSymbol
 	aSymbol = #relabel
-		ifTrue: [^ self relabel: model labelString].
+		ifTrue: [^ self setLabelTo: model labelString].
 	^ super update: aSymbol
