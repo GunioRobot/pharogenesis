@@ -6,7 +6,7 @@ retrieveUrls: urls ontoQueue: queue withWaitSema: waitSema
 	waited on every time before a new document is downloaded; this keeps 
 	the downloader from getting too far  ahead of the main process"
 	"kill the existing downloader if there is one"
-	| doc |
+	| doc canPeek front |
 	UpdateDownloader
 		ifNotNil: [UpdateDownloader terminate].
 	"fork a new downloading process"
@@ -14,12 +14,19 @@ retrieveUrls: urls ontoQueue: queue withWaitSema: waitSema
 				do: [:url | 
 					waitSema wait.
 					queue nextPut: url.
-					doc _ HTTPSocket httpGet: url accept: 'application/octet-stream'.
+					doc _ HTTPClient httpGet: url.
 					doc class == String
 						ifTrue: [queue nextPut: #failed.
 							UpdateDownloader _ nil.
 							Processor activeProcess terminate]
-						ifFalse: [queue nextPut: doc]].
+						ifFalse: [canPeek _ 120 min: doc size.
+							front _ doc next: canPeek.  doc skip: -1 * canPeek.
+							(front beginsWith: '<!DOCTYPE') ifTrue: [
+								(front includesSubString: 'Not Found') ifTrue: [
+									queue nextPut: #failed.
+									UpdateDownloader _ nil.
+									Processor activeProcess terminate]]].
+						UpdateDownloader ifNotNil: [queue nextPut: doc]].
 			queue nextPut: ''.
 			queue nextPut: #finished.
 			UpdateDownloader _ nil] newProcess.
