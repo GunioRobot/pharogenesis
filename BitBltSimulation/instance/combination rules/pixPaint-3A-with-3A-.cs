@@ -3,4 +3,4 @@ pixPaint: sourceWord with: destinationWord
 	sourceWord = 0 ifTrue: [^ destinationWord].
 	^ sourceWord bitOr:
 		(self partitionedAND: sourceWord bitInvert32 to: destinationWord
-						nBits: destPixSize nPartitions: pixPerWord)
+						nBits: destDepth nPartitions: destPPW)
