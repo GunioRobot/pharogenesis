@@ -6,5 +6,5 @@ hierarchy
 	self messageCategoryListIndex: 0.
 	editSelection := #hierarchy.
 	self changed: #editComment.
-	self changed: #contents.
+	self contentsChanged.
 	^ self
