@@ -1,10 +1,7 @@
 adhereTo: aRectangle
-	"If the receiver lies outside aRectangle, it is mapped to the nearest point on the boundary of the rectangle"
+	"If the receiver lies outside aRectangle, return the nearest point on the boundary of the rectangle, otherwise return self."
 
-(aRectangle containsPoint: self)
-	ifFalse: [x _ x max: (aRectangle origin x).
-			x _ x min: (aRectangle corner x).
-			y _ y max: (aRectangle origin y).
-			y _ y min: (aRectangle corner y)]
-"Redo this more efficiently"
-				
+	(aRectangle containsPoint: self)
+	ifTrue: [^ self]
+	ifFalse: [^ (x min: (aRectangle corner x) max: (aRectangle origin x))
+			@ (y min: (aRectangle corner y) max: (aRectangle origin y))]
