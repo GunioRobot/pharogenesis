@@ -1,0 +1,2 @@
+isParagraph
+	^false
