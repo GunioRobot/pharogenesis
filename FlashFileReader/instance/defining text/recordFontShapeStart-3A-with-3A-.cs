@@ -1,0 +1,1 @@
+recordFontShapeStart: fontId with: charId
