@@ -1,6 +1,5 @@
 copyFrom: start to: stop
-
-	| run1 offset1 value1 run2 offset2 value2 newRuns |
+	| newRuns |
 	stop < start ifTrue: [^RunArray new].
 	self at: start setRunOffsetAndValue: [:run1 :offset1 :value1 | value1].
 	self at: stop setRunOffsetAndValue: [:run2 :offset2 :value2 | value2].
