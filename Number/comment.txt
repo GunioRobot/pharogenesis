@@ -1,6 +1,6 @@
-I am an abstract representation of a number. My subclasses Float, Fraction, and Integer, and their subclasses, provide concrete representations of a numeric quantity.
+Class Number holds the most general methods for dealing with numbers. Subclasses Float, Fraction, and Integer, and their subclasses, provide concrete representations of a numeric quantity.
 
-All my subclasses participate in a simple type coercion mechanism that supports mixed-mode arithmetic and comparisons.  It works as follows:  If
+All of Number's subclasses participate in a simple type coercion mechanism that supports mixed-mode arithmetic and comparisons.  It works as follows:  If
 	self<typeA> op: arg<typeB>
 fails because of incompatible types, then it is retried in the following guise:
 	(arg adaptTypeA: self) op: arg adaptToTypeA.
