@@ -1,0 +1,2 @@
+containingWindow
+	^ self ownerThatIsA: SystemWindow
