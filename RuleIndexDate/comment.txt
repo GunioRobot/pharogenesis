@@ -1,0 +1,18 @@
+This class is deprecated. Use the chronology package classes
+
+
+RuleIndexDate instances represent dates determined by some rule but the exact day of the month varies from year to year.  Once created they must be updated for a selected year to represent the exact day of that year.
+	It has a rule that selects exact day of the month based on the ordinal position (1, 2, etc.) of the desired day in the list of days occurring on that day of the week in the desired month.
+
+Typical Use:
+
+	RuleIndexDate instances are suitable for representing dates such as Thanksgiving Day (fourth Tuesday in November) in the USA.
+
+Implementation:
+
+Instance variables:
+
+	(selectionRule in super class)	- an <Integer> representing the
+			ordinal position (1, 2, etc.) of the desired day in the list
+			of days occurring on that day of the week in the desired
+			month.
