@@ -1,13 +1,15 @@
 definition
 	"Answer a String that defines the receiver."
 
-	| aStream |
+	| aStream path |
 	aStream _ WriteStream on: (String new: 300).
-	aStream nextPutAll: 
-		(superclass == nil
-			ifTrue: ['nil']
-			ifFalse: [superclass name])
-		, self kindOfSubclass.
+	superclass == nil
+		ifTrue: [aStream nextPutAll: 'nil']
+		ifFalse: [path _ ''.
+				self environment scopeFor: superclass name from: nil
+						envtAndPathIfFound: [:envt :remotePath | path _ remotePath].
+				aStream nextPutAll: path , superclass name].
+	aStream nextPutAll: self kindOfSubclass.
 	self name storeOn: aStream.
 	aStream cr; tab; nextPutAll: 'instanceVariableNames: '.
 	aStream store: self instanceVariablesString.
