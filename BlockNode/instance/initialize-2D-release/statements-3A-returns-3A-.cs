@@ -10,7 +10,7 @@ statements: statementsCollection returns: returnBool
 					isReturningIf])
 				ifTrue: 
 					[returnLast _ false.
-					statementsCollection copyFrom: 1 to: statementsCollection size - 1]
+					statementsCollection allButLast]
 				ifFalse: [statementsCollection size = 0
 						ifTrue: [Array with: NodeNil]
 						ifFalse: [statementsCollection]].
