@@ -1,0 +1,2 @@
+hasAlpha
+	^hasAlpha
