@@ -6,4 +6,4 @@ editComment
 	self messageCategoryListIndex: 0.
 	editSelection _ #editComment.
 	self changed: #classSelectionChanged.
-	self changed: #contents.
+	self contentsChanged
