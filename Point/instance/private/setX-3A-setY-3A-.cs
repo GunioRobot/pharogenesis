@@ -1,4 +1,4 @@
-setX: xPoint setY: yPoint
+setX: xValue setY: yValue
 
-	x _ xPoint.
-	y _ yPoint
+	x _ xValue.
+	y _ yValue
