@@ -4,6 +4,6 @@ editClass
 	classListIndex = 0 ifTrue: [^ self].
 	self okToChange ifFalse: [^ self].
 	self messageCategoryListIndex: 0.
-	editSelection _ #editClass.
-	self changed: #editClass.
+	self editSelection: #editClass.
 	self changed: #contents.
+	self changed: #classCommentText.
