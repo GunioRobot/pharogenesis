@@ -1,0 +1,2 @@
+liftFirstValue: aCollection 
+	^aCollection first
