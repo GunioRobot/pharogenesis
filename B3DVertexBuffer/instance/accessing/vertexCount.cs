@@ -1,0 +1,2 @@
+vertexCount
+	^vertexCount
