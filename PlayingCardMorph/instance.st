@@ -1,6 +1,6 @@
 ImageMorph
 	subclass: #PlayingCardMorph
-	instanceVariableNames: 'cardNumber suitNumber '
+	instanceVariableNames: 'cardNumber suitNumber'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Games'
