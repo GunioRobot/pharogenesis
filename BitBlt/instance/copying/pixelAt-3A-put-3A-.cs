@@ -6,6 +6,8 @@ pixelAt: aPoint put: pixelValue
 	sourceForm bits at: 1 put: pixelValue.
 	self copyBits
 "
+| bb |
+bb _ (BitBlt bitPokerToForm: Display).
 [Sensor anyButtonPressed] whileFalse:
-	[Display valueAt: Sensor cursorPoint put: 55]
+	[bb pixelAt: Sensor cursorPoint put: 55]
 "
