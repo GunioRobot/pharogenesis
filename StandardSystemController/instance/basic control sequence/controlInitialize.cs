@@ -1,6 +1,6 @@
 controlInitialize
 	view displayEmphasized.
 	view uncacheBits.  "Release cached bitmap while active"
-	sensor waitNoButton.
+	model windowActiveOnFirstClick ifFalse: [sensor waitNoButton].
 	status _ #active.
-	view topView isCollapsed ifFalse: [model modelWakeUp].
+	view isCollapsed ifFalse: [model modelWakeUpIn: view]
