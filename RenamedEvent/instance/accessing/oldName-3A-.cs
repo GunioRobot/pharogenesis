@@ -1,0 +1,3 @@
+oldName: aName
+
+	oldName := aName
