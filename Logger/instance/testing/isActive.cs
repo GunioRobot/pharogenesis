@@ -1,0 +1,2 @@
+isActive
+	^stream ~~ nil
