@@ -1,0 +1,2 @@
+mayContain: anEntity
+	^false
