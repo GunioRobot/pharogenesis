@@ -1,0 +1,2 @@
+positionReferent
+	self positionObject: referent
