@@ -1,0 +1,2 @@
+levelName
+	^ 'Ethylic Acetate' translated
