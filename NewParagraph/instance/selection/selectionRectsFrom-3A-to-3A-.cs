@@ -13,11 +13,16 @@ selectionRectsFrom: characterBlock1 to: characterBlock2
 		[^ Array with: (cb1 topLeft corner: cb2 bottomRight)].
 	rects _ OrderedCollection new.
 	rects addLast: (cb1 topLeft corner: (lines at: line1) bottomRight).
-	(container isMemberOf: Rectangle)
-		ifTrue: [(line1+1) <= (line2-1) ifTrue:
-					[rects addLast: ((lines at: line1+1) topLeft
-								corner: (lines at: line2-1) bottomRight)]]
-		ifFalse: [(line1+1) to: (line2-1) do:
-					[:i | rects addLast: (lines at: i) rectangle]].
+	line1+1 to: line2-1 do: [ :i |
+		| line |
+		line := lines at: i.
+		(line left = rects last left and: [ line right = rects last right ])
+			ifTrue: [ "new line has same margins as old one -- merge them, so that the caller gets as few rectangles as possible"
+					| lastRect |
+					lastRect := rects removeLast.
+					rects add: (lastRect bottom: line bottom) ]
+			ifFalse: [ "differing margins; cannot merge"
+					rects add: line rectangle ] ].
+
 	rects addLast: ((lines at: line2) topLeft corner: cb2 bottomLeft).
 	^ rects
