@@ -6,4 +6,6 @@ valueWithArguments: anArray
 	Essential. See Object documentation whatIsAPrimitive."
 
 	<primitive: 82>
-	self valueError
+	self numArgs = anArray size
+		ifTrue: [self error: 'Attempt to evaluate a block that is already being evaluated.']
+		ifFalse: [self error: 'This block requires ' , self numArgs printString , ' arguments.']
