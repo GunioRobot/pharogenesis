@@ -7,3 +7,4 @@ removeLight: lightIndex
 	lights do:[:light| 
 		light ifNotNil:[pLight _ light asPrimitiveLight].
 		pLight ifNotNil:[primitiveLights _ primitiveLights copyWith: pLight]].
+	needsLightUpdate _ true.
