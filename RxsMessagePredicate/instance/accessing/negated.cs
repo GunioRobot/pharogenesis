@@ -1,0 +1,2 @@
+negated
+	^negated
