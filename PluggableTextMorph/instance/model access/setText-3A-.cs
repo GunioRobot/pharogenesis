@@ -6,4 +6,5 @@ setText: aText
 				textMorph setEditView: self.
 				scroller addMorph: textMorph]
 		ifNotNil: [textMorph newContents: aText].
-	self hasUnacceptedEdits: false
+	self hasUnacceptedEdits: false.
+	self setScrollDeltas.
