@@ -3,9 +3,12 @@ primitiveFileWrite
 	| count startIndex array file byteSize arrayIndex bytesWritten |
 	self var: 'file' declareC: 'SQFile *file'.
 	self var: 'arrayIndex' type: 'char *'.
+	self var: 'count' type: 'size_t'.
+	self var: 'startIndex' type: 'size_t'.
+	self var: 'byteSize' type: 'size_t'.
 	self export: true.
-	count		_ interpreterProxy stackIntegerValue: 0.
-	startIndex	_ interpreterProxy stackIntegerValue: 1.
+	count		_ interpreterProxy positive32BitValueOf: (interpreterProxy stackValue: 0).
+	startIndex	_ interpreterProxy positive32BitValueOf: (interpreterProxy stackValue: 1).
 	array		_ interpreterProxy stackValue: 2.
 	file			_ self fileValueOf: (interpreterProxy stackValue: 3).
 
