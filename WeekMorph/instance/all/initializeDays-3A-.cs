@@ -3,7 +3,7 @@ initializeDays: modelOrNil
 	self removeAllMorphs.
 	days _ OrderedCollection new: 7.
 	extent _ self tile extent.
-	week do:
+	week datesDo:
 		[:each |
 		tile _ (self tileLabeled: each dayOfMonth printString) extent: extent.
 		each month = month ifFalse:
