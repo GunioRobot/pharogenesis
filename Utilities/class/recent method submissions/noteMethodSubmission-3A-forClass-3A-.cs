@@ -1,11 +1,22 @@
 noteMethodSubmission: selectorName forClass: class
-	| submission className |
+
+	| submission |
+
+	self flag: #mref.	"fix for faster references to methods"
+
+	self recentMethodSubmissions.	"ensure it is valid"
 	class wantsChangeSetLogging ifFalse: [^ self].
-	className _ class name.
 	self purgeRecentSubmissionsOfMissingMethods.
-	submission _ className asString, ' ', selectorName.
-	(self recentMethodSubmissions includes: submission)
-		ifTrue: [RecentSubmissions remove: submission]
-		ifFalse: [(RecentSubmissions size >= self numberOfRecentSubmissionsToStore) 
-					ifTrue: [RecentSubmissions removeFirst]].
-	RecentSubmissions addLast: submission
+	submission _ class name asString, ' ', selectorName.
+	RecentSubmissions removeAllSuchThat: [ :each |
+		each asStringOrText = submission
+	].
+	RecentSubmissions size >= self numberOfRecentSubmissionsToStore ifTrue: [
+		RecentSubmissions removeFirst
+	].
+	RecentSubmissions addLast: (
+		MethodReference new
+			setClass: class 
+			methodSymbol: selectorName 
+			stringVersion: submission
+	) 
