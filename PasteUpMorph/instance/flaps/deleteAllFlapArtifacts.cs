@@ -1,4 +1,4 @@
 deleteAllFlapArtifacts
 	"self currentWorld deleteAllFlapArtifacts"
 
-	self submorphs do:[:m | m isFlapOrTab ifTrue:[m delete]]
+	self submorphs do:[:m | m wantsToBeTopmost ifTrue:[m delete]]
