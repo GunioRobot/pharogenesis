@@ -1,7 +1,11 @@
 rigAFewCategories
-	"Rig a few catgories, mate.   'Vocabulary fullVocabulary rigAFewCategories'"
+	"Formerly used to rig generic categories, now seemingly disfunctional and in abeyance"
 
 	| aMethodCategory |
+	true ifTrue: [^ self].
+
+	self flag: #deferred.
+"Vocabulary fullVocabulary rigAFewCategories "
 	#(	(accessing	'Generally holds methods to read and write instance variables')
 		(initialization	'messages typically sent when an object is created, to set up its initial state'))
 
