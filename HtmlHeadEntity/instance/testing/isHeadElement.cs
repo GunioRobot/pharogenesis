@@ -1,0 +1,2 @@
+isHeadElement
+	^true
