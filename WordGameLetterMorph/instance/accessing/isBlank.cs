@@ -1,0 +1,3 @@
+isBlank
+
+	^ indexInQuote == nil
