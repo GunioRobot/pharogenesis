@@ -1,0 +1,3 @@
+sqFileGetPosition: file
+
+	^ file position
