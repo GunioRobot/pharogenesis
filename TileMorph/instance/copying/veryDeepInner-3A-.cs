@@ -16,3 +16,5 @@ nArrowTicks _ nArrowTicks veryDeepCopyWith: deepCopier.
 operatorReadoutString _ operatorReadoutString veryDeepCopyWith: deepCopier.
 possessive _ possessive veryDeepCopyWith: deepCopier.
 retractArrow _ retractArrow veryDeepCopyWith: deepCopier.
+vocabularySymbol _ vocabularySymbol.  "Weakly copied"
+vocabulary _ nil.   "obsolete - clobbered"
