@@ -9,5 +9,5 @@ recent
 	className := (SelectionMenu selections: recentList) startUp.
 	className == nil ifTrue: [^ self].
 	class := Smalltalk at: className.
-	self systemCategoryListIndex: (self systemCategoryList indexOf: class category).
+	self selectCategoryForClass: class.
 	self classListIndex: (self classList indexOf: class name)
