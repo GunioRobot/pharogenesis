@@ -3,7 +3,7 @@ addLast: value
 	lastIndex _ nil.  "flush access cache"
 	(runs size=0 or: [values last ~= value])
 	  ifTrue:
-		[runs_ runs copyWith: 1.
-		values_ values copyWith: value]
+		[runs addLast: 1.
+		values addLast: value]
 	  ifFalse:
 		[runs at: runs size put: runs last+1]
