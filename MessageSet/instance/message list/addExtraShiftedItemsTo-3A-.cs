@@ -6,4 +6,5 @@ addExtraShiftedItemsTo: aMenu
 			-
 			('remove from this browser'		removeMessageFromBrowser)
 			('filter message list...'			filterMessageList)
-			('add to message list...'			augmentMessageList))]
+			('add to message list...'			augmentMessageList))].
+	aMenu add: 'sort by date' action: #sortByDate
