@@ -1,6 +1,6 @@
 digitBitLogic: firstInteger with: secondInteger opIndex: opIx 
-	"Bit logic here is only implemented for positive integers or Zero; if rec 
-	or arg is negative, it fails."
+	"Bit logic here is only implemented for positive integers or Zero;
+	if rec or arg is negative, it fails."
 	| firstLarge secondLarge firstLen secondLen shortLen shortLarge longLen longLarge result |
 	(interpreterProxy isIntegerObject: firstInteger)
 		ifTrue: 
