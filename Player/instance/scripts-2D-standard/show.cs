@@ -1,2 +1,2 @@
 show
-	costume show
+	self costume show
