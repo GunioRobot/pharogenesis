@@ -31,7 +31,7 @@ replaceFrom: start to: stop with: aText displaying: displayBoolean
 	"build a boundingBox of the actual screen space in question -- we'll need it later"
 	visibleRectangle _ (clippingRectangle intersect: compositionRectangle)
 							intersect: destinationForm boundingBox.
-	compositionScanner _ CompositionScanner new in: self.		"Initialize a scanner."
+	compositionScanner _ CompositionScanner new forParagraph: self.		"Initialize a scanner."
 
 	"If the starting line is not also the first line, then measuring must commence from line preceding the one in which characterInterval start appears.  For example, deleting a line with only a carriage return may move characters following the deleted portion of text into the line preceding the deleted line."
 	startIndex _ (lines at: firstLineIndex) first.
