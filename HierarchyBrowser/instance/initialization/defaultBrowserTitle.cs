@@ -1,0 +1,2 @@
+defaultBrowserTitle
+	^ 'Hierarchy Browser'
