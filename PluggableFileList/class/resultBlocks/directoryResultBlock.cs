@@ -1,0 +1,3 @@
+directoryResultBlock
+
+	^[:theDirectory :theFileName | theDirectory]
