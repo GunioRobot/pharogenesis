@@ -1,0 +1,2 @@
+firstPoint
+	^firstPoint
