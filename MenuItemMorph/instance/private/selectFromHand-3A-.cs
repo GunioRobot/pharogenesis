@@ -5,6 +5,7 @@ selectFromHand: aHand
 	subMenu ifNotNil: [
 		subMenu delete.
 		subMenu
-			popUpAt: self bounds topRight + (10@0)
+			popUpAdjacentTo: (Array with: self bounds topRight + (10@0)
+									with: self bounds topLeft)
 			forHand: aHand
 			from: self].
