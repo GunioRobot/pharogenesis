@@ -1,0 +1,3 @@
+primitiveStringAtPut
+
+	self commonAtPut: true.
