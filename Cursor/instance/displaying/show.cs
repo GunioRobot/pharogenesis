@@ -1,4 +1,4 @@
 show
-	"Make the current cursor shape be the receiver."
+	"Make the hardware's mouse cursor look like the receiver"
 
 	Sensor currentCursor: self
