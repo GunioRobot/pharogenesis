@@ -1,5 +1,10 @@
 next: anInteger
-	"Answer anInteger bytes of data."
-	[self atEnd not and: [self inStream size - self inStream position < anInteger]]
-		whileTrue: [self receiveData].
-	^self inStream next: anInteger
+	"Answer anInteger bytes of data.
+
+	NOTE: This method doesn't honor timeouts if shouldSignal is false!"
+
+	| start |
+	self receiveData: anInteger.
+	start _ lastRead + 1.
+	lastRead _ (lastRead + anInteger) min: inNextToWrite - 1.
+	^inBuffer copyFrom: start to: lastRead
