@@ -1,8 +1,8 @@
 openOnClassWithEditString: aString
 	"Create a pluggable version of all the views for a Browser, including views and controllers."
-	| classListView messageCategoryListView messageListView browserCodeView topView switchView |
+	| classListView messageCategoryListView messageListView browserCodeView topView switchView annotationPane underPane y optionalButtonsView |
 
-	World ifNotNil: [^ self openAsMorphClassEditing: aString].
+	Smalltalk isMorphic ifTrue: [^ self openAsMorphClassEditing: aString].
 
 	topView _ (StandardSystemView new) model: self.
 	topView borderWidth: 1.
@@ -12,7 +12,8 @@ openOnClassWithEditString: aString
 		list: #classListSingleton
 		selected: #indexIsOne 
 		changeSelected: #indexIsOne:
-		menu: #classListMenu:.
+		menu: #classListMenu:
+		keystroke: #classListKey:from:.
 	classListView window: (0 @ 0 extent: 100 @ 12).
 	topView addSubView: classListView.
 
@@ -30,6 +31,7 @@ openOnClassWithEditString: aString
 		changeSelected: #messageListIndex:
 		menu: #messageListMenu:shifted:
 		keystroke: #messageListKey:from:.
+	messageListView menuTitleSelector: #messageListSelectorTitle.
 	messageListView window: (0 @ 0 extent: 100 @ 70).
 	topView addSubView: messageListView toRightOf: messageCategoryListView.
 
@@ -41,11 +43,33 @@ openOnClassWithEditString: aString
 					corner: messageListView viewport topRight).
 	topView addSubView: switchView toRightOf: classListView.
 
+	Preferences useAnnotationPanes
+		ifTrue:
+			[annotationPane _ PluggableTextView on: self
+				text: #annotation accept: nil
+				readSelection: nil menu: nil.
+			annotationPane window: (0@0 extent: 200@self optionalAnnotationHeight).
+			topView addSubView: annotationPane below: messageCategoryListView.
+			underPane _ annotationPane.
+			y _ (200-12-70) - self optionalAnnotationHeight]
+		ifFalse:
+			[underPane _ messageCategoryListView.
+			y _ (200-12-70)].
+
+	Preferences optionalButtons ifTrue:
+		[optionalButtonsView _ self buildOptionalButtonsView.
+		optionalButtonsView borderWidth: 1.
+		topView addSubView: optionalButtonsView below: underPane.
+		underPane _ optionalButtonsView.
+		y _ y - self optionalButtonHeight].
+
 	browserCodeView _ PluggableTextView on: self 
 			text: #contents accept: #contents:notifying:
 			readSelection: #contentsSelection menu: #codePaneMenu:shifted:.
-	browserCodeView window: (0@0 extent: 200@(200-12-70)).
-	topView addSubView: browserCodeView below: messageCategoryListView.
+	browserCodeView window: (0@0 extent: 200@y).
+	topView addSubView: browserCodeView below: underPane.
 	aString ifNotNil: [browserCodeView editString: aString.
 			browserCodeView hasUnacceptedEdits: true].
+
+	topView setUpdatablePanesFrom: #(messageCategoryList messageList).
 	^ topView
