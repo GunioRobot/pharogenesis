@@ -1,3 +1,3 @@
 beSticky
-	extension == nil ifTrue: [self assureExtension].
-	extension sticky: true
+	"make the receiver sticky"
+	self assureExtension sticky: true
