@@ -1,0 +1,17 @@
+instVarGetExprFor: varName offset: instIndex
+	"Return the parse tree for an expression that fetches and converts the value of the instance variable at the given offset."
+
+	| decl expr |
+	(declarations includesKey: varName) ifTrue: [
+		decl _ declarations at: varName.
+		(decl includes: $*) ifTrue: [  "array"
+			expr _ varName, ' _ self fetchArray: ', instIndex printString, ' ofObject: rcvr'.
+		] ifFalse: [  "must be a double"
+			((decl findString: 'double' startingAt: 1) = 0)
+				ifTrue: [ self error: 'unsupported type declaration in a primitive method' ].
+			expr _ varName, ' _ self fetchFloat: ', instIndex printString, ' ofObject: rcvr'.
+		].
+	] ifFalse: [  "undeclared variables are taken to be integer"
+		expr _ varName, ' _ self fetchInteger: ', instIndex printString, ' ofObject: rcvr'.
+	].
+	^ self statementsFor: expr varName: varName
