@@ -1,0 +1,3 @@
+worldBounds
+
+	^ self world bounds
