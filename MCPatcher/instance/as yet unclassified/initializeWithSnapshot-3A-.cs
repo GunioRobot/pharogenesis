@@ -1,0 +1,2 @@
+initializeWithSnapshot: aSnapshot
+	definitions _ MCDefinitionIndex definitions: aSnapshot definitions
