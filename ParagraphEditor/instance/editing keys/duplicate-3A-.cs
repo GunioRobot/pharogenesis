@@ -4,10 +4,10 @@ duplicate: characterStream
 
 	sensor keyboard.
 	self closeTypeIn.
-	(startBlock ~= stopBlock and: [self isDisjointFrom: otherInterval])
+	(self hasSelection and: [self isDisjointFrom: otherInterval])
 		ifTrue: "Something to duplicate"
 			[self replace: otherInterval with: self selection and:
-				[self selectAt: stopBlock stringIndex]]
+				[self selectAt: self pointIndex]]
 		ifFalse:
 			[view flash].
 	^true
