@@ -1,8 +1,7 @@
-= arg
-	arg isNumber
-		ifFalse: [^ false].
-	arg isInteger
-		ifTrue: [arg negative == self negative
-					ifTrue: [^ (self digitCompare: arg) = 0]
+= aNumber
+	aNumber isNumber ifFalse: [^ false].
+	aNumber isInteger
+		ifTrue: [aNumber negative == self negative
+					ifTrue: [^ (self digitCompare: aNumber) = 0]
 					ifFalse: [^ false]]
-		ifFalse: [^ self retry: #= coercing: arg]
+		ifFalse: [^ (aNumber adaptInteger: self) = aNumber adaptToInteger]
