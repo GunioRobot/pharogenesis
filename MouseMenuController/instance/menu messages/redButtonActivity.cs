@@ -6,7 +6,7 @@ redButtonActivity
 	| index |
 	redButtonMenu ~~ nil
 		ifTrue: 
-			[index _ redButtonMenu startUpRedButton.
+			[index _ redButtonMenu startUp.
 			index ~= 0 
 				ifTrue: [self menuMessageReceiver perform:
 							(redButtonMessages at: index)]]
