@@ -7,7 +7,7 @@ setLoopStart
 		^ self inform:
 'Please set the loop end and the approximate frequency
 first, then position the cursor one or more cycles
-before the loop end and try this again.'].
+before the loop end and try this again.' translated].
 	len _ (loopEnd - start) + 1.
 	loopCycles _ (len / (samplingRate / perceivedFrequency)) rounded.
 	self loopLength: len.
