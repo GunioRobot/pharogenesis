@@ -3,9 +3,9 @@ restoreHeaderOf: oop
 
 	| fwdHeader fwdBlock |
 	fwdHeader _ self longAt: oop.
-	fwdBlock _ fwdHeader bitAnd: AllButMarkBitAndTypeMask.
+	fwdBlock _ (fwdHeader bitAnd: AllButMarkBitAndTypeMask) << 1.
 
-	checkAssertions ifTrue: [
+	DoAssertionChecks ifTrue: [
 		(fwdHeader bitAnd: MarkBit) = 0 ifTrue: [
 			self error: 'attempting to restore the header of an object that has no forwarding block'.
 		].
