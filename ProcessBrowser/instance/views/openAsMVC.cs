@@ -39,4 +39,5 @@ openAsMVC
 	window subViews
 		do: [:each | each controller].
 	window controller open.
+	startedCPUWatcher ifTrue: [ self setUpdateCallbackAfter: 7 ].
 	^ window
