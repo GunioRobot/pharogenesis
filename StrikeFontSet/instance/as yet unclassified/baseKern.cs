@@ -1,0 +1,3 @@
+baseKern
+
+	^ fontArray first baseKern.
