@@ -4,9 +4,9 @@ helpMenu
 	^ SelectionMenu labelList:
 		#(	'keep this menu up'
 
-			'about this system'
+			'about this system...'
 			'update code from server'
-			'edit preferences...'
+			'preferences...'
 
 			'command-key help'
 			'font size summary'
