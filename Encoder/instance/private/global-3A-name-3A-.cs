@@ -3,6 +3,6 @@ global: ref name: name
 	^self
 		name: name
 		key: ref
-		class: VariableNode
+		class: LiteralVariableNode
 		type: LdLitIndType
 		set: litIndSet
