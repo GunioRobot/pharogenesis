@@ -3,8 +3,8 @@ addNameBeneath: outerRectangle string: aString
 
 	| nameMorph namePosition w |
 	w _ self world ifNil:[target world].
-	nameMorph _ NameStringInHalo contents: aString.
-	nameMorph color: Color magenta.
+	nameMorph _ NameStringInHalo contents: aString font: Preferences standardHaloLabelFont.
+	nameMorph color: Color black.
 	nameMorph useStringFormat; target: innerTarget; putSelector: #tryToRenameTo:.
 	namePosition _ outerRectangle bottomCenter -
 		((nameMorph width // 2) @ (self handleSize negated // 2 - 1)).
