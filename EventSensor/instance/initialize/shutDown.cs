@@ -1,4 +1,6 @@
 shutDown
-	inputProcess ifNotNil:[inputProcess terminate].
-	inputProcess _ nil.
+	super shutDown.
+	EventTicklerProcess ifNotNil: [
+		EventTicklerProcess terminate.
+		EventTicklerProcess _ nil. ].
 	inputSemaphore ifNotNil:[Smalltalk unregisterExternalObject: inputSemaphore].
