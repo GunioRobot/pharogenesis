@@ -8,14 +8,8 @@ target: aForm
 	bb _ BitBlt current toForm: target.
 	self class primitiveSetBitBltPlugin: bb getPluginName.
 	bb sourceForm: sourceForm.
-	bb isFXBlt ifTrue:[
-		"Specific setup for FXBlt is necessary"
-		bb colorMap: (sourceForm colormapIfNeededFor: target).
-		bb combinationRule: (target depth >= 8 ifTrue:[34] ifFalse:[Form paint]).
-	] ifFalse:[
-		bb colorMap: (sourceForm colormapIfNeededForDepth: target depth).
-		bb combinationRule: (target depth >= 8 ifTrue:[34] ifFalse:[Form paint]).
-	].
+	bb colorMap: (sourceForm colormapIfNeededFor: target).
+	bb combinationRule: (target depth >= 8 ifTrue:[34] ifFalse:[Form paint]).
 	bb destX: 0; destY: 0; sourceX: 0; sourceY: 0; width: 1; height: 1.
 	state spanBuffer: span.
 	state bitBlt: bb.
