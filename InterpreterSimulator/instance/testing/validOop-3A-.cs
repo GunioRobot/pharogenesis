@@ -1,8 +1,9 @@
 validOop: oop
-	"halt if invalid active object"
-	(oop bitAnd: 1) = 1 ifTrue: [^ self].
-	(oop bitAnd: 3) = 0 ifFalse: [self halt].
-	oop >= endOfMemory ifTrue: [self halt].
+	" Return true if oop appears to be valid "
+	(oop bitAnd: 1) = 1 ifTrue: [^ true].  "Integer"
+	(oop bitAnd: 3) = 0 ifFalse: [^ false].  "Uneven address"
+	oop >= endOfMemory ifTrue: [^ false].  "Out of range"
 	"could test if within the first large freeblock"
-	(self longAt: oop) = 4 ifTrue: [self halt].
-	(self headerType: oop) = 2 ifTrue: [self halt].	"free object"
+	(self longAt: oop) = 4 ifTrue: [^ false].
+	(self headerType: oop) = 2 ifTrue: [^ false].	"Free object"
+	^ true
