@@ -1,0 +1,3 @@
+isCommand
+
+	^name isNil
