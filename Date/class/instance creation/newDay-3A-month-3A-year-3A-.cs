@@ -1,26 +1,26 @@
-newDay: day month: monthName year: year 
-	"Answer an instance of me which is the day'th day of the month named 
-	 monthName in the year'th year. The year may be specified as the actual 
-	 number of years since the beginning of the Roman calendar or the 
-	 number of years since 1900.  **Note** two digit dates are always from 1900.
-		1/1/01 will NOT mean 2001."
-	"Tolerate a month index instead of a month name."
+newDay: day month: month year: year 
+	"Arguments day, month and year are all integers, except month may be a string
+	 Two digit dates are always from 1900. 1/1/01 will NOT mean 2001."
 
-	| monthIndex daysInMonth firstDayOfMonth |
-	year < 100 ifTrue: [^ self
-			newDay: day
-			month: monthName
-			year: 1900 + year].
-	monthIndex _ monthName isInteger
-	 ifTrue: [monthName] ifFalse: [self indexOfMonth: monthName].
+	| monthIndex daysInMonth p q r s |
+
+	year < 100 ifTrue: [ ^self newDay: day month: month year: 1900 + year].
+
+	monthIndex _ month isInteger ifTrue: [month] ifFalse: [self indexOfMonth: month].
 	monthIndex = 2
-		ifTrue: [daysInMonth _ (DaysInMonth at: monthIndex)
-						+ (self leapYear: year)]
-		ifFalse: [daysInMonth _ DaysInMonth at: monthIndex].
-	monthIndex > 2
-		ifTrue: [firstDayOfMonth _ (FirstDayOfMonth at: monthIndex)
-						+ (self leapYear: year)]
-		ifFalse: [firstDayOfMonth _ FirstDayOfMonth at: monthIndex].
-	(day < 1 or: [day > daysInMonth])
-		ifTrue: [self error: 'illegal day in month']
-		ifFalse: [^self new day: day - 1 + firstDayOfMonth year: year]
+		ifTrue: [ daysInMonth _ (DaysInMonth at: monthIndex) + (self leapYear: year) ]
+		ifFalse: [ daysInMonth _ DaysInMonth at: monthIndex ].
+	(day < 1 or: [day > daysInMonth]) ifTrue: [ self error: 'illegal day in month' ].
+
+	p _ (monthIndex - 14) quo: 12.
+	q _ year + 4800 + p.
+	r _ monthIndex - 2 - (12 * p).
+	s _ (year + 4900 + p) quo: 100.
+ 
+	^self fromJulianDayNumber: 
+		( (1461 * q) quo: 4 ) + 
+			( (367 * r) quo: 12 ) - 
+				( (3 * s) quo: 4 ) + 
+					( day - 32075 ).
+	
+
