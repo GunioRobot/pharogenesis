@@ -4,20 +4,20 @@ processBackgroundChunk
 
 	"Transcript show: '  BACKGROUND: ',chunk printString."
 	colorType = 3 ifTrue: [
-		form fillColor: (palette at: chunk first).
+		backColor := palette at: chunk first + 1.
 		^self
 	].
 	max _ (2 raisedTo: bitsPerChannel) - 1.
 	(colorType = 0 or: [colorType = 4]) ifTrue: [
 		val _ chunk unsignedShortAt: 1 bigEndian: true.
-		form fillColor: (Color gray: val / max).
+		backColor := Color gray: val / max.
 		^self
 	].
 	(colorType = 2 or: [colorType = 6]) ifTrue: [
 		red _ chunk unsignedShortAt: 1 bigEndian: true.
 		green _ chunk unsignedShortAt: 3 bigEndian: true.
 		blue _ chunk unsignedShortAt: 5 bigEndian: true.
-		form fillColor: (Color r: red/max g: green/max b: blue/max).
+		backColor := Color r: red/max g: green/max b: blue/max.
 		^self
 	].
 "self halt."
