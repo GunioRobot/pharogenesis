@@ -5,5 +5,4 @@ changeText: aText
 	self resetState.
 	self selectWithoutComp: paragraph text size + 1.
 	self selectAndScroll.
-	self deselect.
-	view displayView
+	self deselect
