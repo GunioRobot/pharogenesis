@@ -1,8 +1,7 @@
 fileOutCategory: category asHtml: useHtml
 	"FileOut all the classes in the named system category."
-	| fileStream |
-	fileStream _ useHtml
-		ifTrue: [(FileStream newFileNamed: category , '.html') asHtml]
-		ifFalse: [FileStream newFileNamed: category , '.st'].
-	self fileOutCategory: category on: fileStream initializing: true.
-	fileStream close
+	| internalStream |
+	internalStream _ WriteStream on: (String new: 1000).
+	self fileOutCategory: category on: internalStream initializing: true.
+
+	FileStream writeSourceCodeFrom: internalStream baseName: category isSt: true useHtml: useHtml.
