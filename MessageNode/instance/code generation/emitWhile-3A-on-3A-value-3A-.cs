@@ -8,6 +8,7 @@ emitWhile: stack on: strm value: forValue
 	cond emitForEvaluatedValue: stack on: strm.
 	self emitBranchOn: (selector key == #whileFalse:)  "Bfp for whileTrue"
 					dist: stmtSize pop: stack on: strm.   "Btp for whileFalse"
+	pc _ strm position.
 	stmt emitForEvaluatedEffect: stack on: strm.
 	self emitJump: 0 - loopSize on: strm.
 	forValue ifTrue: [strm nextPut: LdNil. stack push: 1]
