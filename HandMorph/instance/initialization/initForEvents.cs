@@ -4,4 +4,5 @@ initForEvents
 	lastEvent _ MorphicEvent new.
 	eventTransform _ MorphicTransform identity.
 	self resetClickState.
-	mouseOverTimes ifNotNil: [mouseOverTimes _ Dictionary new].
+	mouseOverTimes _ Dictionary new.
+	suppressDrawing _ false
