@@ -1,2 +1,2 @@
 simpleHalosInForce
-	^ (self parameterAt: #HaloTheme) == #simpleFullHaloSpecifications
+	^ (self preferenceAt: #haloTheme) preferenceValue == #simpleFullHaloSpecifications
