@@ -1,0 +1,1 @@
+An array of (weak) dependents of some object.
