@@ -1,4 +1,5 @@
 storeContextRegisters: activeCntx
+	"Note: internalStoreContextRegisters: should track changes to this method."
 
 	"InstructionPointer is a pointer variable equal to
 	method oop + ip + BaseHeaderSize
