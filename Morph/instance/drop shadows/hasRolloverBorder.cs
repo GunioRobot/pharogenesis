@@ -1,3 +1,5 @@
 hasRolloverBorder
-	extension == nil ifTrue:[^false].
-	^self valueOfProperty: #hasRolloverBorder ifAbsent:[false]
+	"answer whether the receiver has RolloverBorder"
+	^ self
+		valueOfProperty: #hasRolloverBorder
+		ifAbsent: [false]
