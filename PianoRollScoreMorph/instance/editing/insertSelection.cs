@@ -1,6 +1,5 @@
 insertSelection
-
-	self selection == nil ifTrue: [^ self].
+	self selection isNil ifTrue: [^self].
 	score insertEvents: NotePasteBuffer at: self selection.
 	scorePlayer updateDuration.
-	self rebuildFromScore 
+	self rebuildFromScore
