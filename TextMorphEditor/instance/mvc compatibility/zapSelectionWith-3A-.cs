@@ -2,8 +2,8 @@ zapSelectionWith: aText
 	"**overridden to inhibit old-style display"
 	| start stop |
 	self deselect.
-	start _ startBlock stringIndex.
-	stop _ stopBlock stringIndex.
+	start _ self startIndex.
+	stop _ self stopIndex.
 	(aText isEmpty and: [stop > start]) ifTrue:
 		["If deleting, then set emphasisHere from 1st character of the deletion"
 		emphasisHere _ (paragraph text attributesAt: start forStyle: paragraph textStyle)
