@@ -1,0 +1,2 @@
+start
+	self vertices first
