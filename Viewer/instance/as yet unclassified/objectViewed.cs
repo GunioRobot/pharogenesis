@@ -1,0 +1,2 @@
+objectViewed
+	^ scriptedPlayer costume
