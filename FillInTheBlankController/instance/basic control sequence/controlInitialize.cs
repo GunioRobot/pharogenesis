@@ -1,7 +1,7 @@
 controlInitialize
 
 	model acceptOnCR ifFalse: [^ super controlInitialize].
-	startBlock _ paragraph characterBlockForIndex: startBlock stringIndex.
-	stopBlock _ paragraph characterBlockForIndex: stopBlock stringIndex.
+	self setMark: self markBlock stringIndex.
+	self setPoint: self pointBlock stringIndex.
 	self initializeSelection.
 	beginTypeInBlock _ nil.
