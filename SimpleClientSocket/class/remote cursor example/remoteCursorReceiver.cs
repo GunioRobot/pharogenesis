@@ -23,7 +23,7 @@ remoteCursorReceiver
 			sock dataAvailable
 				ifTrue: [
 					response _ sock getResponse.
-					response asParagraph displayOn: Display at: 10@10]
+					response displayOn: Display at: 10@10]
 				ifFalse: [
 					"if no data available, let other processes run for a while"
 					(Delay forMilliseconds: 20) wait]].
