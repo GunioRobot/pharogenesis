@@ -1,0 +1,1 @@
+This class tests whether locating characters past the end of a text is possible in all cases.
