@@ -1,5 +1,6 @@
 selectedMessage
 	"Answer a copy of the source code for the selected message selector."
+
 	| class selector |
 	class _ self selectedClassOrMetaClass.
 	selector _ self selectedMessageName.
@@ -9,7 +10,7 @@ selectedMessage
 					in: class
 					notifying: nil
 					decorated: Preferences colorWhenPrettyPrinting].
-	self showDiffs ifTrue:
+	self showingAnyKindOfDiffs ifTrue:
 		[contents _ self
 			methodDiffFor: contents
 			class: self selectedClass
