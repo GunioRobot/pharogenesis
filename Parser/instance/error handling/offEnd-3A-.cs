@@ -2,5 +2,5 @@ offEnd: aString
 	"Notify a problem beyond 'here' (in lookAhead token). Don't be offEnded!"
 
 	requestorOffset == nil
-		ifTrue: [^self notify: aString at: 1]
-		ifFalse: [^self notify: aString at: mark + requestorOffset]
+		ifTrue: [^ self notify: aString at: mark]
+		ifFalse: [^ self notify: aString at: mark + requestorOffset]
