@@ -1,11 +1,8 @@
-benchmark "Time millisecondsToRun: [10 benchmark]
-	11950 (AST 1.0 3/31 on 8100 (arith & spl prims in primary dispatch)
-	15100 (AST 1.0 3/20 on 8100 (checkProcessSwitch out of inner loop)
-	17033 (AST 1.0 3/15 on 8100)
-	35483 (AST 1.0 3/1 on 8100)
-	4110 (PPS interpreter on 8100)
-	10880 (APDA interpreter on Duo)"
-    | size flags i prime k count iter |
+benchmark  "Handy bytecode-heavy benchmark"
+	"(500000 // time to run) = approx bytecodes per second"
+	"5000000 // (Time millisecondsToRun: [10 benchmark]) * 1000"
+	"3059000 on a Mac 8100/100"
+    | size flags prime k count |
     size _ 8190.
     1 to: self do:
         [:iter |
