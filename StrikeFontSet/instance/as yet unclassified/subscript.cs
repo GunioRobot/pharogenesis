@@ -1,0 +1,3 @@
+subscript
+
+	^ fontArray first subscript
