@@ -6,9 +6,7 @@ changeSound: upDown
 	arg _ owner submorphs atWrap: ind+1.
 	arg isSyntaxMorph ifFalse: [^ self].
 	st _ arg submorphs detect: [:mm | mm isKindOf: StringMorph] ifNone: [^ self].
-	soundChoices _ #('silence').  "default, if no SampledSound class"
-	Smalltalk at: #SampledSound ifPresent:
-		[:sampledSound | soundChoices _ sampledSound soundNames].
+	soundChoices _ SoundService default sampledSoundChoices.
 	current _ st contents copyFrom: 2 to: st contents size-1.	"remove string quotes"
 	index _ soundChoices indexOf: current.
 	index > 0 ifTrue:
