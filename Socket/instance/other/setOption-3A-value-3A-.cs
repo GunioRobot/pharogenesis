@@ -7,7 +7,7 @@ setOption: aName value: aValue
 	See getOption for list of keys"
 
 	(socketHandle == nil or: [self isValid not])
-		ifTrue: [self error: 'Socket status must valid before setting an option'].
+		ifTrue: [InvalidSocketStatusException signal: 'Socket status must valid before setting an option'].
 	value _ aValue asString.
 	aValue == true ifTrue: [value _ '1'].
 	aValue == false ifTrue: [value _ '0'].
