@@ -1,0 +1,1 @@
+WonderlandScriptEditor class instanceVariableNames: ''
