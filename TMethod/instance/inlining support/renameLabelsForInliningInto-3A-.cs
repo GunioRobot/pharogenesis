@@ -5,7 +5,7 @@ renameLabelsForInliningInto: destMethod
 	destLabels _ destMethod labels asSet.
 	usedLabels _ destLabels copy.  "usedLabels keeps track of labels in use"
 	usedLabels addAll: labels.
-	labelMap _ Dictionary new.
+	labelMap _ Dictionary new: 100.
 	self labels do: [ :l |
 		(destLabels includes: l) ifTrue: [
 			newLabelName _ self unusedNamePrefixedBy: 'l' avoiding: usedLabels.
