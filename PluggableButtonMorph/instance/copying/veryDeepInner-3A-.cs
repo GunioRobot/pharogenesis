@@ -16,3 +16,6 @@ onColor _ onColor veryDeepCopyWith: deepCopier.
 feedbackColor _ feedbackColor veryDeepCopyWith: deepCopier.
 showSelectionFeedback _ showSelectionFeedback veryDeepCopyWith: deepCopier.
 allButtons _ nil.		"a cache"
+arguments _ arguments veryDeepCopyWith: deepCopier.
+argumentsProvider _ argumentsProvider veryDeepCopyWith: deepCopier.
+argumentsSelector _ argumentsSelector.  " a Symbol" 
