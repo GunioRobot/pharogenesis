@@ -4,4 +4,4 @@ newKeyboardFocus: aMorphOrNil
 	oldFocus _ self keyboardFocus.
 	self keyboardFocus: aMorphOrNil.
 	oldFocus ifNotNil: [oldFocus == aMorphOrNil ifFalse: [oldFocus keyboardFocusChange: false]].
-	aMorphOrNil ifNotNil: [aMorphOrNil keyboardFocusChange: true].
+	aMorphOrNil ifNotNil: [aMorphOrNil keyboardFocusChange: true. self compositionWindowManager keyboardFocusForAMorph: aMorphOrNil].
