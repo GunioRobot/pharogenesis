@@ -15,7 +15,9 @@ braceExpression
 					locations addLast: loc]
 				ifFalse:
 					[^self expected: 'Variable or expression'].
-			more _ self match: #period].
+			(self match: #period)
+				ifTrue: [more _ hereType ~~ #rightBrace]
+				ifFalse: [more _ false]].
 	parseNode _ BraceNode new elements: elements sourceLocations: locations.
 	(self match: #rightBrace)
 		ifFalse: [^self expected: 'Period or right brace'].
