@@ -1,0 +1,2 @@
+tag
+	^ self name asSymbol
