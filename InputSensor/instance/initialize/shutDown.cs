@@ -1,4 +1,4 @@
 shutDown
-	InterruptWatcherProcess == nil ifFalse: [
+	InterruptWatcherProcess ifNotNil: [
 		InterruptWatcherProcess terminate.
-		InterruptWatcherProcess terminate].
+		InterruptWatcherProcess _ nil ].
