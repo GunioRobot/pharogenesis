@@ -9,6 +9,6 @@ minExtentOf: aMorph in: newBounds
 		layouts but I'm not sure how and when."
 		extent _ m minExtent.
 		frame _ m layoutFrame.
-		frame ifNotNil:[extent _ (frame layout: (0@0 extent: extent) in: newBounds) extent].
+		frame ifNotNil:[extent _ frame minExtentFrom: extent].
 		min _ min max: extent].
 	^min
