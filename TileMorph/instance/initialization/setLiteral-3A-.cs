@@ -7,6 +7,6 @@ setLiteral: anObject
 	type _ #literal.
 	m _ UpdatingStringMorph contents: ' ' font: ScriptingSystem fontForTiles.
 	m target: self; getSelector: #literal; putSelector: #literal:.
-	(anObject isKindOf: String orOf: Text) ifTrue: [m useStringFormat].
+	(anObject isString or: [ anObject isText]) ifTrue: [m useStringFormat].
 	self addMorphBack: m.
 	self setLiteralInitially: anObject.
