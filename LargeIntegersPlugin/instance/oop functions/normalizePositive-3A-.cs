@@ -1,6 +1,6 @@
 normalizePositive: aLargePositiveInteger 
-	"Check for leading zeroes and return shortened copy if so"
-	"First establish len = significant length"
+	"Check for leading zeroes and return shortened copy if so."
+	"First establish len = significant length."
 	| sLen val len oldLen |
 	len _ oldLen _ self digitLength: aLargePositiveInteger.
 	[len ~= 0 and: [(self unsafeByteOf: aLargePositiveInteger at: len)
