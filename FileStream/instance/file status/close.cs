@@ -9,5 +9,4 @@ close
 							ifFalse: [self flush]].
 			closed _ true.
 			readLimit _ writeLimit _ 0.
-			self file close.
-			FileDirectory removeExternalReference: self]
+			self file close].
