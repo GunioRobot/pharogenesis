@@ -1,7 +1,7 @@
 roundUpStrays
 	self submorphsDo:
 		[:m |
-			(m isFlapOrTab)
+			(m wantsToBeTopmost)
 				ifFalse:
 					[m goHome.
 					m isPlayfieldLike ifTrue: [m roundUpStrays]]]
