@@ -1,0 +1,1 @@
+recordCurveSegmentTo: anchorPoint with: controlPoint
