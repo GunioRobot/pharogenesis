@@ -3,6 +3,6 @@ unfoldMessage
 	Rearrange me so that the entire message is one row."
 	| messageRow |
 	messageRow _ self submorphs last.
-	self privateRemoveMorph: messageRow.
+	self removeMorph: messageRow.
 	messageRow submorphs do: [:m | self addMorphBack: m].
 
