@@ -1,4 +1,4 @@
 discardPluggableWebServer
 	"Discard the Pluggable Web Server."
 
-	SystemOrganization removeCategoriesMatching: 'PluggableWebServer'.
+	SystemOrganization removeCategoriesMatching: 'Network-PluggableWebServer'.
