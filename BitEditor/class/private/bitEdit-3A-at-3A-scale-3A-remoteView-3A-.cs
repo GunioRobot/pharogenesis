@@ -12,7 +12,7 @@ bitEdit: aForm at: magnifiedFormLocation scale: scaleFactor remoteView: remoteVi
 	bitEditor _ self new.
 	scaledFormView controller: bitEditor.
 	bitEditor setColor: Color black.
-	topView _ ColorSystemView new.
+	topView _ StandardSystemView new.
 	remoteView == nil ifTrue: [topView label: 'Bit Editor'].
 	topView borderWidth: 2.
 
@@ -21,9 +21,6 @@ bitEdit: aForm at: magnifiedFormLocation scale: scaleFactor remoteView: remoteVi
 		ifTrue:  "If no remote view, then provide a local view of the form"
 			[aFormView _ FormView new model: scaledFormView workingForm.
 			aFormView controller: NoController new.
-			(aForm isMemberOf: MaskedForm) ifTrue:
-				[scaledFormView insideColor: Color gray.
-				aFormView insideColor: Color white].
 			aForm height < 50
 				ifTrue: [aFormView borderWidthLeft: 0 right: 2 top: 2 bottom: 2]
 				ifFalse: [aFormView borderWidthLeft: 0 right: 2 top: 2 bottom: 0].
@@ -36,8 +33,7 @@ bitEdit: aForm at: magnifiedFormLocation scale: scaleFactor remoteView: remoteVi
 					(aFormView viewport height max: 50)]
 			ifFalse:
 				[scaledFormView viewport width @ 50].
-	menuView _ self buildColorMenu: lowerRightExtent
-		colorCount: ((aForm isMemberOf: MaskedForm) ifTrue: [2] ifFalse: [1]).
+	menuView _ self buildColorMenu: lowerRightExtent colorCount: 1.
 	menuView model: bitEditor.
 	menuView borderWidthLeft: 0 right: 0 top: 2 bottom: 0.
 	topView
@@ -49,4 +45,5 @@ bitEdit: aForm at: magnifiedFormLocation scale: scaleFactor remoteView: remoteVi
 	topView minimumSize: extent.
 	topView maximumSize: extent.
 	topView translateBy: magnifiedFormLocation.
+	topView insideColor: Color white.
 	^topView
