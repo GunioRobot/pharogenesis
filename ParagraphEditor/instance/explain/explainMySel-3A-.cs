@@ -7,7 +7,7 @@ explainMySel: symbol
 	| lits classes msg |
 	(model respondsTo: #selectedMessageName) ifFalse: [^ nil].
 	(msg _ model selectedMessageName) ifNil: [^nil].	"not in a message"
-	classes _ Smalltalk allClassesImplementing: symbol.
+	classes _ self systemNavigation allClassesImplementing: symbol.
 	classes size > 12
 		ifTrue: [classes _ 'many classes']
 		ifFalse: [classes _ 'these classes ' , classes printString].
