@@ -1,5 +1,4 @@
-on: anObject list: getListSel selected: getSelectionSel changeSelected: setSelectionSel menu: getMenuSel keystroke: keyActionSel
-
+on: anObject list: getListSel selected: getSelectionSel changeSelected: setSelectionSel menu: getMenuSel keystroke: keyActionSel 
 	self model: anObject.
 	getListSelector _ getListSel.
 	getIndexSelector _ getSelectionSel.
@@ -9,3 +8,5 @@ on: anObject list: getListSel selected: getSelectionSel changeSelected: setSelec
 	autoDeselect _ true.
 	self borderWidth: 1.
 	self list: self getList.
+	self selectionIndex: self getCurrentSelectionIndex.
+	self initForKeystrokes
