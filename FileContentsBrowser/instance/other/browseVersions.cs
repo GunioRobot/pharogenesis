@@ -7,7 +7,7 @@ browseVersions
 		(class exists and: [class realClass includesSelector: selector]) ifTrue:
 			[VersionsBrowser
 				browseVersionsOf: (class realClass compiledMethodAt: selector)
-				class: class realClass
+				class: class realClass theNonMetaClass
 				meta: class realClass isMeta
 				category: self selectedMessageCategoryName
 				selector: selector]]
