@@ -9,7 +9,7 @@ putSource: sourceStr fromParseNode: methodNode inFile: fileIndex withPreamble: p
 	(SourceFiles == nil or: [(file _ SourceFiles at: fileIndex) == nil]) ifTrue:
 		[^ self become: (self copyWithTempNames: methodNode tempNames)].
 
-	Smalltalk assureStartupStampLogged.
+	SmalltalkImage current assureStartupStampLogged.
 	file setToEnd.
 
 	preambleBlock value: file.  "Write the preamble"
@@ -25,6 +25,7 @@ putSource: sourceStr fromParseNode: methodNode inFile: fileIndex withPreamble: p
 		[remoteString _ RemoteString newString: sourceStr
 						onFileNumber: fileIndex toFile: file].
 
-	file nextChunkPut: ' '; flush.
+	file nextChunkPut: ' '.
+	InMidstOfFileinNotification signal ifFalse: [file flush].
 	self checkOKToAdd: sourceStr size at: remoteString position.
 	self setSourcePosition: remoteString position inFile: fileIndex
