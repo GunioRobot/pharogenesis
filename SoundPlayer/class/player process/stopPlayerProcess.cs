@@ -2,9 +2,12 @@ stopPlayerProcess
 	"Stop the sound player process."
 	"SoundPlayer stopPlayerProcess"
 
-	self primSoundStop.
-	PlayerProcess == nil ifFalse: [ PlayerProcess terminate ].
+	PlayerProcess == nil ifFalse: [PlayerProcess terminate].
 	PlayerProcess _ nil.
-	PlayerSemaphore _ nil.
-	Buffer _ nil.
+	self primSoundStop.
 	ActiveSounds _ OrderedCollection new.
+	Buffer _ nil.
+	PlayerSemaphore _ Semaphore forMutualExclusion.
+	ReadyForBuffer ifNotNil:
+		[Smalltalk unregisterExternalObject: ReadyForBuffer].
+	ReadyForBuffer _ nil.
