@@ -1,8 +1,6 @@
 addStayUpItem
-	"Append a menu item that can be used to toggle this menu's persistent."
+	"Append a menu item that can be used to toggle this menu's persistence."
 
-	self add: 'keep this menu up'
-		target: self
-		selector: #toggleStayUp:
-		argumentList: EmptyArray.
-	self addLine
+	(self valueOfProperty: #hasTitlebarWidgets ifAbsent: [ false ])
+		ifTrue: [ ^self ].
+	self addStayUpIcons.
