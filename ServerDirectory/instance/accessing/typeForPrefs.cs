@@ -1,0 +1,3 @@
+typeForPrefs
+
+	^self typeWithDefault
