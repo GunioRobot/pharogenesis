@@ -16,5 +16,4 @@ doJumpTo: aString
 	self editor selectFrom: myStart to: myStop.
 	ignoreNextUp _ true.
 	self changed.
-	scrollerOwner ifNil: [^self].
-	scrollerOwner scrollSelectionIntoView: nil alignTop: true.
+	self scrollSelectionToTop.
