@@ -1,36 +1,46 @@
-generateMouseEvent: evtBuf
+generateMouseEvent: evtBuf 
 	"Generate the appropriate mouse event for the given raw event buffer"
-	| position buttons modifiers type trail stamp oldButtons |
-	stamp _ (evtBuf at: 2).
-	stamp = 0 ifTrue:[stamp _ Time millisecondClockValue].
-	position _ (evtBuf at: 3) @ (evtBuf at: 4).
-	buttons _ (evtBuf at: 5).
-	modifiers _ (evtBuf at: 6).
-	buttons = 0 
-		ifTrue:[	(lastEventBuffer at: 5) = 0
-					ifTrue:[type _ #mouseMove]
-					ifFalse:[type _ #mouseUp]]
-		ifFalse:[	(lastEventBuffer at: 5) = 0
-					ifTrue:[type _ #mouseDown]
-					ifFalse:[type _ #mouseMove]].
-	buttons _ buttons bitOr: (modifiers bitShift: 3).
-	oldButtons _ (lastEventBuffer at: 5) bitOr: ((lastEventBuffer at: 6) bitShift: 3).
-	lastEventBuffer _ evtBuf.
-	type == #mouseMove ifTrue:[
-		trail _ self mouseTrailFrom: evtBuf.
-		^MouseMoveEvent new 
-			setType: type 
-			startPoint: trail first
-			endPoint: trail last 
-			trail: trail
-			buttons: buttons
-			hand: self
-			stamp: stamp.
-	].
+
+	| position buttons modifiers type trail stamp oldButtons evtChanged |
+	evtBuf first = lastEventBuffer first 
+		ifTrue: 
+			["Workaround for Mac VM bug, *always* generating 3 events on clicks"
+
+			evtChanged := false.
+			3 to: evtBuf size
+				do: [:i | (lastEventBuffer at: i) = (evtBuf at: i) ifFalse: [evtChanged := true]].
+			evtChanged ifFalse: [^nil]].
+	stamp := evtBuf second.
+	stamp = 0 ifTrue: [stamp := Time millisecondClockValue].
+	position := evtBuf third @ evtBuf fourth.
+	buttons := evtBuf fifth.
+	modifiers := evtBuf sixth.
+	type := buttons = 0 
+		ifTrue: 
+			[lastEventBuffer fifth = 0 ifTrue: [#mouseMove] ifFalse: [#mouseUp]]
+		ifFalse: 
+			[lastEventBuffer fifth = 0 
+						ifTrue: [#mouseDown]
+						ifFalse: [#mouseMove]].
+	buttons := buttons bitOr: (modifiers bitShift: 3).
+	oldButtons := lastEventBuffer fifth 
+				bitOr: (lastEventBuffer sixth bitShift: 3).
+	lastEventBuffer := evtBuf.
+	type == #mouseMove 
+		ifTrue: 
+			[trail := self mouseTrailFrom: evtBuf.
+			^MouseMoveEvent new 
+				setType: type
+				startPoint: (self position)
+				endPoint: trail last
+				trail: trail
+				buttons: buttons
+				hand: self
+				stamp: stamp].
 	^MouseButtonEvent new 
-		setType: type 
+		setType: type
 		position: position
 		which: (oldButtons bitXor: buttons)
-		buttons: buttons 
+		buttons: buttons
 		hand: self
 		stamp: stamp
