@@ -1,0 +1,1 @@
+createLightsForScene3: aScene
