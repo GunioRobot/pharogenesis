@@ -1,10 +1,23 @@
 initializeMessageList: anArray
-	"Initialize the message list from anArray, which must contain objects which, when sent #asString, answer a string in standard format such as 'Rectangle width'"
+	"Initialize my messageList from the given list of MethodReference or string objects.  NB: special handling for uniclasses."
 
-	messageList _ anArray collect: [:each |
-		MessageSet parse: each asString toClassAndSelector: [:class :sel |
-			class ifNotNil: [class name , ' ' , sel , ' {' , ((class organization categoryOfElement: sel) ifNil: ['']) , '}']]]
-		thenSelect:
-			[:each | each notNil].
-	messageListIndex _ 0.
+	| s |
+	messageList _ OrderedCollection new.
+	anArray do: [ :each |
+		MessageSet 
+			parse: each  
+			toClassAndSelector: [ :class :sel |
+				class ifNotNil:
+					[class isUniClass
+						ifTrue:
+							[s _ class typicalInstanceName, ' ', sel]
+						ifFalse:
+							[s _ class name , ' ' , sel , ' {' , 
+								((class organization categoryOfElement: sel) ifNil: ['']) , '}'].
+					messageList add: (
+						MethodReference new
+							setClass: class  
+							methodSymbol: sel 
+							stringVersion: s)]]].
+	messageListIndex _ messageList isEmpty ifTrue: [0] ifFalse: [1].
 	contents _ ''
