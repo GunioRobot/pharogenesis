@@ -1,0 +1,3 @@
+getFilePathNameWithExistenceCheck
+
+	^self getFilePathNameDialogWithExistenceCheck open
