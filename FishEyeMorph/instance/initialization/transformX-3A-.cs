@@ -11,7 +11,7 @@ transformX: aFloatArray
 	aFloatArray replaceFrom: 1 to: gridNum2 with: subArray startingAt: 1.
 
 
-	dMaxX _ focus.    " = (size - focus)".
+	dMaxX _ focus.    " = (size - focus)"
 	subArray _ self g: (aFloatArray copyFrom: gridNum2 + 1 to: gridNum x + 1)
 		max: dMaxX focus: focus.
 
