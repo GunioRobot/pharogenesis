@@ -1,0 +1,2 @@
+capturedPiece
+	^capturedPiece
