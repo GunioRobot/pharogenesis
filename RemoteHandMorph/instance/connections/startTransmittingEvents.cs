@@ -4,7 +4,7 @@ startTransmittingEvents
 	Transcript
 		show: 'Connecting to remote WorldMorph at ';
 		show: (NetNameResolver stringFromAddress: self remoteHostAddress), ' ...'; cr.
-	sendSocket _ SimpleClientSocket new.
+	sendSocket _ OldSimpleClientSocket new.
 	sendSocket connectTo: self remoteHostAddress port: 54323.
 	sendState _ #opening.
 	owner primaryHand addEventListener: self.
