@@ -13,7 +13,9 @@ colorFromPixelValue: p depth: d
 		r _ (p bitShift: -10) bitAnd: 16r1F.
 		g _ (p bitShift: -5) bitAnd: 16r1F.
 		b _ p bitAnd: 16r1F.
-		(r = 0 and: [g = 0 and: [b = 0]])  ifTrue: [^Color transparent].
+		(r = 0 and: [g = 0]) ifTrue: [
+			b = 0 ifTrue: [^Color transparent].
+			b = 1 ifTrue: [^Color black]].
 		^ Color r: r g: g b: b range: 31].
 
 	d = 32 ifTrue: [
