@@ -10,7 +10,7 @@ doPrimitive: primitiveIndex method: meth receiver: receiver args: arguments
 		Debugger 
 			openContext: self
 			label:'Code simulation error'
-			contents: self shortStack].
+			contents: nil].
 
 	(primitiveIndex = 80 and: [receiver isKindOf: ContextPart])
 		ifTrue: [^self push: ((BlockContext newForMethod: receiver home method)
