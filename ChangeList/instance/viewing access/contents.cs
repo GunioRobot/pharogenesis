@@ -1,4 +1,4 @@
 contents
 	^ listIndex = 0
 		ifTrue: ['']
-		ifFalse: [(changeList at: listIndex) string]
+		ifFalse: [(changeList at: listIndex) text]
