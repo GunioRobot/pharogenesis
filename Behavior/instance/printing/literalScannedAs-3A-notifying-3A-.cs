@@ -10,24 +10,22 @@ literalScannedAs: scannedLiteral notifying: requestor
 	add it to Undeclared a answer the new Association."
 
 	| key value |
-	(scannedLiteral isMemberOf: Association)
+	(scannedLiteral isVariableBinding)
 		ifFalse: [^ scannedLiteral].
 	key _ scannedLiteral key.
 	value _ scannedLiteral value.
 	key isNil 
 		ifTrue: "###<metaclass soleInstance name>"
-			[self scopeHas: value ifTrue:
-				[:assoc |
+			[(self bindingOf: value) ifNotNilDo:[:assoc|
 				 (assoc value isKindOf: Behavior)
 					ifTrue: [^ nil->assoc value class]].
 			 requestor notify: 'No such metaclass'.
 			 ^false].
 	(key isMemberOf: Symbol)
 		ifTrue: "##<global var name>"
-			[(self scopeHas: key ifTrue: [:assoc | ^assoc])
-				ifFalse:
-					[Undeclared at: key put: nil.
-					 ^ Undeclared associationAt: key]].
+			[(self bindingOf: key) ifNotNilDo:[:assoc | ^assoc].
+			Undeclared at: key put: nil.
+			 ^Undeclared bindingOf: key].
 	requestor notify: '## must be followed by a non-local variable name'.
 	^false
 
