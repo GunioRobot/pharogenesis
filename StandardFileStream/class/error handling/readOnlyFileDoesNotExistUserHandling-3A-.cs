@@ -10,6 +10,7 @@ readOnlyFileDoesNotExistUserHandling: fullFileName
 	selection _ (PopUpMenu labelArray: choices lines: (Array with: 5) )
 		startUpWithCaption: (FileDirectory localNameFor: fullFileName), '
 does not exist.'.
+	selection = choices size ifTrue:["cancel" ^ nil "should we raise another exception here?"].
 	selection < (choices size - 1) ifTrue: [
 		newName _ (dir pathName , FileDirectory slash , (choices at: selection))].
 	selection = (choices size - 1) ifTrue: [
