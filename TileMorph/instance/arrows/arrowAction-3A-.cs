@@ -4,18 +4,19 @@ arrowAction: delta
 	| index aList |
 	owner ifNil: [^ self].
 	(type == #literal and: [literal isNumber])
-		ifTrue: [^ self literal: literal + delta].
+		ifTrue:
+			[self literal: literal + delta. ^ self layoutChanged.].
 
 	(type == #literal and: [literal isKindOf: Boolean])
-		ifTrue: [^ self literal: literal not].
+		ifTrue: [self literal: literal not.  ^ self layoutChanged].
 
 	operatorOrExpression ifNotNil:
-		[aList _ #(+ - * / min: max:).
+		[aList _ #(+ - * / // \\ min: max:).
 		index _ aList indexOf: operatorOrExpression.
 		index  > 0 ifTrue:
 			[self setOperatorAndUseArrows: (aList atWrap: index + delta)].
 
-		aList _ #(< <= = ~= > >=).
+		aList _ #(< <= = ~= > >= isDivisibleBy:).
 		index _ aList indexOf: operatorOrExpression.
 		index  > 0 ifTrue:
 			[owner firstSubmorph type = #number 
