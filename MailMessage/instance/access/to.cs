@@ -1,3 +1,2 @@
 to
-
-	^to
+	^self fieldsNamed: 'to' separatedBy: ', '
