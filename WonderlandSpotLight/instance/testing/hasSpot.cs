@@ -1,0 +1,3 @@
+hasSpot
+
+	^ true.
