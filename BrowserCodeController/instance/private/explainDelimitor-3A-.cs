@@ -19,7 +19,7 @@ explainDelimitor: string
 			(string first = $$ and: [string size = 2]) ifTrue:
 				[^'"An instance of class Character.  This one is the character ', (String with: string last), '."'].
 			(string first = $:) ifTrue:
-				[str _ (string copyFrom: 2 to: string size).
+				[str _ string allButFirst.
 				(self explainTemp: str) ~~ nil ifTrue:
 					[^'"An argument to this block will be bound to the temporary variable ',
 						str, '."']]].
