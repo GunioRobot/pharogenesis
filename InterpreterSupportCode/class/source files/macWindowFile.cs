@@ -1,27 +1,32 @@
 macWindowFile
 
-	^ '#include <MacHeaders.h>
-#include <AppleEvents.h>
+	^ '#include <AppleEvents.h>
 #include <Dialogs.h>
 #include <Devices.h>
 #include <Files.h>
 #include <Fonts.h>
 #include <Gestalt.h>
+#include <LowMem.h>
+#include <Memory.h>
 #include <Menus.h>
 #include <OSUtils.h>
 #include <Power.h>
+#include <QuickDraw.h>
 #include <Scrap.h>
 #include <Strings.h>
 #include <Timer.h>
 #include <ToolUtils.h>
 #include <Windows.h>
 #include <profiler.h>
+#include <sound.h>
+#include <Math64.h>
 
 #include "sq.h"
+#include <DriverServices.h>
 
 /*** Compilation Options:
 *
-*	define PLUGIN		to compile code for Netscape Plug-in
+*	define PLUGIN		to compile code for Netscape or IE Plug-in
 *	define MAKE_PROFILE	to compile code for profiling
 *
 ***/
@@ -29,9 +34,36 @@ macWindowFile
 //#define PLUGIN
 //#define MAKE_PROFILE
 
+//Aug 7th 2000,JMM Added logic for interrupt driven dispatching
+
+#if TARGET_API_MAC_CARBON
+    #define EnableMenuItemCarbon(m1,v1)  EnableMenuItem(m1,v1);
+    #define DisableMenuItemCarbon(m1,v1)  DisableMenuItem(m1,v1);
+#else
+    #ifndef NewAEEventHandlerUPP
+    	#define NewAEEventHandlerUPP NewAEEventHandlerProc 
+    #endif
+    #define EnableMenuItemCarbon(m1,v1)  EnableItem(m1,v1);
+    #define DisableMenuItemCarbon(m1,v1)  DisableItem(m1,v1);
+        inline Rect *GetPortBounds(CGrafPtr w,Rect *r) { *r = w->portRect; return &w->portRect;}  
+        inline BitMap *GetQDGlobalsScreenBits(BitMap *bm){*bm = qd.screenBits; return &qd.screenBits; }
+        inline BitMap * GetPortBitMapForCopyBits (CGrafPtr w) { return &((GrafPtr)w)->portBits;}
+        inline pascal long InvalWindowRect(WindowRef  window,  const Rect * bounds) {InvalRect (bounds);}
+#endif
+
 /*** Enumerations ***/
 enum { appleID = 1, fileID, editID };
 enum { quitItem = 1 };
+
+/* The following prototype is missing from the CW11 header files: */
+pascal void ExitToShell(void);
+
+/*** Variables -- Imported from Browser Plugin Module ***/
+#ifdef PLUGIN
+extern int pluginArgCount;
+extern char *pluginArgName[100];
+extern char *pluginArgValue[100];
+#endif
 
 /*** Variables -- Imported from Virtual Machine ***/
 extern int fullScreenFlag;
@@ -43,30 +75,36 @@ extern int savedWindowSize;   /* set from header when image file is loaded */
 
 /*** Variables -- image and path names ***/
 #define IMAGE_NAME_SIZE 300
-char imageName[IMAGE_NAME_SIZE + 1];  /* full path to image */
+char imageName[IMAGE_NAME_SIZE + 1];  /* full path to image file */
 
 #define SHORTIMAGE_NAME_SIZE 100
 char shortImageName[SHORTIMAGE_NAME_SIZE + 1];  /* just the image file name */
 
 #define DOCUMENT_NAME_SIZE 300
-char documentName[DOCUMENT_NAME_SIZE + 1];  /* full path to document or image file */
-
-#define SHORTDOCUMENT_NAME_SIZE 100
-char shortDocumentName[SHORTDOCUMENT_NAME_SIZE + 1];  /* just the document file name */
+char documentName[DOCUMENT_NAME_SIZE + 1];  /* full path to document file */
 
 #define VMPATH_SIZE 300
 char vmPath[VMPATH_SIZE + 1];  /* full path to interpreter''s directory */
 
 /*** Variables -- Mac Related ***/
 MenuHandle		appleMenu = nil;
-Handle			clipboardBuffer = nil;
 MenuHandle		editMenu = nil;
+int				menuBarHeight = 20;
+RgnHandle		menuBarRegion = nil;  /* if non-nil, then menu bar has been hidden */
 MenuHandle		fileMenu = nil;
 CTabHandle		stColorTable = nil;
 PixMapHandle	stPixMap = nil;
 WindowPtr		stWindow = nil;
 
+
 /*** Variables -- Event Recording ***/
+#define MAX_EVENT_BUFFER 1024
+int inputSemaphoreIndex = 0;/* if non-zero the event semaphore index */
+
+sqInputEvent eventBuffer[MAX_EVENT_BUFFER];
+int eventBufferGet = 0;
+int eventBufferPut = 0;
+
 #define KEYBUF_SIZE 64
 int keyBuf[KEYBUF_SIZE];	/* circular buffer */
 int keyBufGet = 0;			/* index of next item of keyBuf to read */
@@ -75,6 +113,10 @@ int keyBufOverflows = 0;	/* number of characters dropped */
 
 int buttonState = 0;		/* mouse button and modifier state when mouse
 							   button went down or 0 if not pressed */
+int cachedButtonState = 0;	/* buffered mouse button and modifier state for
+							   last mouse click even if button has since gone up;
+							   this cache is kept until the next time ioGetButtonState()
+							   is called to avoid missing short clicks */
 
 Point savedMousePosition;	/* mouse position when window is inactive */
 int windowActive = true;	/* true if the Squeak window is the active window */
@@ -101,6 +143,11 @@ void HandleMouseDown(EventRecord *theEvent);
 void InitMacintosh(void);
 void InstallAppleEventHandlers(void);
 int  IsImageName(char *name);
+CFragConnectionID LoadLibViaPath(char *libName, char *pluginDirPath);
+void MenuBarHide(void);
+void MenuBarRestore(void);
+int PathToWorkingDir(char *pathName, int pathNameMax);
+int PrefixPathWith(char *pathName, int pathNameSize, int pathNameMax, char *prefix);
 void SetColorEntry(int index, int red, int green, int blue);
 void SetUpClipboard(void);
 void SetUpMenus(void);
@@ -108,17 +155,25 @@ void SetUpPixmap(void);
 void SetUpWindow(void);
 void SetWindowTitle(char *title);
 void StoreFullPathForLocalNameInto(char *shortName, char *fullName, int length);
+void SqueakTerminate();
+void ExitCleanup();
+
 
 /* event capture */
+sqInputEvent *nextEventPut(void);
+
 int recordKeystroke(EventRecord *theEvent);
 int recordModifierButtons(EventRecord *theEvent);
 int recordMouseDown(EventRecord *theEvent);
+int recordMouseEvent(EventRecord *theEvent, int theButtonState);
+int recordKeyboardEvent(EventRecord *theEvent, int keyType);
+int MouseModifierState(EventRecord *theEvent);
 
 /*** Apple Event Handlers ***/
-static pascal OSErr HandleOpenAppEvent(AEDescList *aevt, AEDescList *reply, int refCon);
-static pascal OSErr HandleOpenDocEvent(AEDescList *aevt, AEDescList *reply, int refCon);
-static pascal OSErr HandlePrintDocEvent(AEDescList *aevt, AEDescList *reply, int refCon);
-static pascal OSErr HandleQuitAppEvent(AEDescList *aevt, AEDescList *reply, int refCon);
+static pascal OSErr HandleOpenAppEvent(const AEDescList *aevt,  AEDescList *reply, UInt32 refCon);
+static pascal OSErr HandleOpenDocEvent(const AEDescList *aevt,  AEDescList *reply, UInt32 refCon);
+static pascal OSErr HandlePrintDocEvent(const AEDescList *aevt, AEDescList *reply, UInt32 refCon);
+static pascal OSErr HandleQuitAppEvent(const AEDescList *aevt,  AEDescList *reply, UInt32 refCon);
 
 /*** Apple Event Handling ***/
 
@@ -129,27 +184,27 @@ void InstallAppleEventHandlers() {
 	shortImageName[0] = 0;
 	err = Gestalt(gestaltAppleEventsAttr, &result);
 	if (err == noErr) {
-		AEInstallEventHandler(kCoreEventClass, kAEOpenApplication, NewAEEventHandlerProc(HandleOpenAppEvent),  0, false);
-		AEInstallEventHandler(kCoreEventClass, kAEOpenDocuments,   NewAEEventHandlerProc(HandleOpenDocEvent),  0, false);
-		AEInstallEventHandler(kCoreEventClass, kAEPrintDocuments,  NewAEEventHandlerProc(HandlePrintDocEvent), 0, false);
-		AEInstallEventHandler(kCoreEventClass, kAEQuitApplication, NewAEEventHandlerProc(HandleQuitAppEvent),  0, false);
+		AEInstallEventHandler(kCoreEventClass, kAEOpenApplication, NewAEEventHandlerUPP(HandleOpenAppEvent),  0, false);
+		AEInstallEventHandler(kCoreEventClass, kAEOpenDocuments,   NewAEEventHandlerUPP(HandleOpenDocEvent),  0, false);
+		AEInstallEventHandler(kCoreEventClass, kAEPrintDocuments,  NewAEEventHandlerUPP(HandlePrintDocEvent), 0, false);
+		AEInstallEventHandler(kCoreEventClass, kAEQuitApplication, NewAEEventHandlerUPP(HandleQuitAppEvent),  0, false);
 	}
 }
 
-pascal OSErr HandleOpenAppEvent(AEDescList *aevt, AEDescList *reply, int refCon) {
+pascal OSErr HandleOpenAppEvent(const AEDescList *aevt,  AEDescList *reply, UInt32 refCon) {
 	/* User double-clicked application; look for "squeak.image" in same directory */
 
 	aevt; reply; refCon;  /* reference args to avoid compiler warnings */
 
 	/* record path to VM''s home folder */
-	dir_PathToWorkingDir(vmPath, VMPATH_SIZE);
+	PathToWorkingDir(vmPath, VMPATH_SIZE);
 
 	/* use default image name in same directory as the VM */
 	strcpy(shortImageName, "squeak.image");
 	return noErr;
 }
 
-pascal OSErr HandleOpenDocEvent(AEDescList *aevt, AEDescList *reply, int refCon) {
+pascal OSErr HandleOpenDocEvent(const AEDescList *aevt, AEDescList *reply, UInt32 refCon) {
 	/* User double-clicked an image file. Record the path to the VM''s directory,
 	   then set the default directory to the folder containing the image and
 	   record the image name. Fail if mullitple image files were selected. */
@@ -161,32 +216,39 @@ pascal OSErr HandleOpenDocEvent(AEDescList *aevt, AEDescList *reply, int refCon)
 	AEKeyword	keyword;
 	FSSpec		fileSpec;
 	WDPBRec		pb;
-
+	FInfo		finderInformation;
+	
 	reply; refCon;  /* reference args to avoid compiler warnings */
 
 	/* record path to VM''s home folder */
-	dir_PathToWorkingDir(vmPath, VMPATH_SIZE);
+	PathToWorkingDir(vmPath, VMPATH_SIZE);
 
 	/* copy document list */
 	err = AEGetKeyDesc(aevt, keyDirectObject, typeAEList, &fileList);
-	if (err) goto done;
+	if (err) return errAEEventNotHandled;;
 
 	/* count list elements */
 	err = AECountItems( &fileList, &numFiles);
 	if (err) goto done;
-	if (numFiles != 1) {
-		error("You may only open one Squeak image or document file at a time.");
+	
+	if (shortImageName[0] != 0) {
+		goto done;
 	}
 
 	/* get image name */
 	err = AEGetNthPtr(&fileList, 1, typeFSS,
 					  &keyword, &type, (Ptr) &fileSpec, sizeof(fileSpec), &size);
 	if (err) goto done;
-	strcpy(shortImageName, p2cstr(fileSpec.name));
+	
+	err = FSpGetFInfo(&fileSpec,&finderInformation);
+	if (err) goto done;
+		
+	CopyPascalStringToC(fileSpec.name,shortImageName);
 
-	if (!IsImageName(shortImageName)) {
+	if (!(IsImageName(shortImageName) || finderInformation.fdType == ''STim'') || finderInformation.fdType == ''STch'') {
 		/* record the document name, but run the default image in VM directory */
-		strcpy(shortDocumentName, shortImageName);
+		if (finderInformation.fdType == ''SOBJ'')
+			StoreFullPathForLocalNameInto(shortImageName, documentName, DOCUMENT_NAME_SIZE);
 		strcpy(shortImageName, "squeak.image");
 		StoreFullPathForLocalNameInto(shortImageName, imageName, IMAGE_NAME_SIZE);
 	}
@@ -196,22 +258,17 @@ pascal OSErr HandleOpenDocEvent(AEDescList *aevt, AEDescList *reply, int refCon)
 	pb.ioWDDirID = fileSpec.parID;
 	PBHSetVolSync(&pb);
 
-	if (shortDocumentName[0] != 0) {
-		/* record the document''s full name */
-		StoreFullPathForLocalNameInto(shortDocumentName, documentName, DOCUMENT_NAME_SIZE);
-	}
-
 done:
 	AEDisposeDesc(&fileList);
 	return err;
 }
 
-pascal OSErr HandlePrintDocEvent(AEDescList *aevt, AEDescList *reply, int refCon) {
+pascal OSErr HandlePrintDocEvent(const AEDescList *aevt,  AEDescList *reply, UInt32 refCon) {
 	aevt; reply; refCon;  /* reference args to avoid compiler warnings */
 	return errAEEventNotHandled;
 }
 
-pascal OSErr HandleQuitAppEvent(AEDescList *aevt, AEDescList *reply, int refCon) {
+pascal OSErr HandleQuitAppEvent(const AEDescList *aevt,  AEDescList *reply, UInt32 refCon) {
 	aevt; reply; refCon;  /* reference args to avoid compiler warnings */
 	return errAEEventNotHandled;
 }
@@ -239,39 +296,39 @@ int vmPathGetLength(int sqVMPathIndex, int length) {
 /*** Mac-related Functions ***/
 
 void AdjustMenus(void) {
-	WindowPeek		wp;
+	WindowRef		wp;
 	int				isDeskAccessory;
 
-	wp = (WindowPeek) FrontWindow();
+	wp = FrontWindow();
 	if (wp != NULL) {
-		isDeskAccessory = (wp->windowKind < 0);
+		isDeskAccessory = GetWindowKind(wp) < 0;
 	} else {
 		isDeskAccessory = false;
 	}
 
 	if (isDeskAccessory) {
 		/* Enable items in the Edit menu */
-		EnableItem(editMenu, 1);
-		EnableItem(editMenu, 3);
-		EnableItem(editMenu, 4);
-		EnableItem(editMenu, 5);
-		EnableItem(editMenu, 6);
+		EnableMenuItemCarbon(editMenu, 1);
+		EnableMenuItemCarbon(editMenu, 3);
+		EnableMenuItemCarbon(editMenu, 4);
+		EnableMenuItemCarbon(editMenu, 5);
+		EnableMenuItemCarbon(editMenu, 6);
 	} else {
 		/* Disable items in the Edit menu */
-		DisableItem(editMenu, 1);
-		DisableItem(editMenu, 3);
-		DisableItem(editMenu, 4);
-		DisableItem(editMenu, 5);
-		DisableItem(editMenu, 6);
+		DisableMenuItemCarbon(editMenu, 1);
+		DisableMenuItemCarbon(editMenu, 3);
+		DisableMenuItemCarbon(editMenu, 4);
+		DisableMenuItemCarbon(editMenu, 5);
+		DisableMenuItemCarbon(editMenu, 6);
 	}
 }
 
 int HandleEvents(void) {
 	EventRecord		theEvent;
 	int				ok;
+	Rect    bounds;
 
-	SystemTask();
-	ok = GetNextEvent(everyEvent, &theEvent);
+	ok = WaitNextEvent(everyEvent, &theEvent,0,null);
 	if (ok) {
 		switch (theEvent.what) {
 			case mouseDown:
@@ -280,6 +337,10 @@ int HandleEvents(void) {
 			break;
 
 			case mouseUp:
+				if(inputSemaphoreIndex) {
+					recordMouseEvent(&theEvent,MouseModifierState(&theEvent));
+					return false;
+				}
 				recordModifierButtons(&theEvent);
 				return false;
 			break;
@@ -290,8 +351,18 @@ int HandleEvents(void) {
 					AdjustMenus();
 					HandleMenu(MenuKey(theEvent.message & charCodeMask));
 				}
+				if(inputSemaphoreIndex) {
+					recordKeyboardEvent(&theEvent,EventKeyDown);
+					break;
+				}
 				recordModifierButtons(&theEvent);
 				recordKeystroke(&theEvent);
+			break;
+			
+			case keyUp:
+				if(inputSemaphoreIndex) {
+					recordKeyboardEvent(&theEvent,EventKeyUp);
+				}
 			break;
 
 			case updateEvt:
@@ -307,12 +378,35 @@ int HandleEvents(void) {
 					GetMouse(&savedMousePosition);
 					windowActive = false;
 				}
-				InvalRect(&stWindow->portRect);
+				GetPortBounds(GetWindowPort(stWindow),&bounds);
+				InvalWindowRect(stWindow,&bounds);
 			break;
 
 			case kHighLevelEvent:
 				AEProcessAppleEvent(&theEvent);
 			break;
+			
+			case osEvt: 
+				if (((theEvent.message>>24)& 0xFF) == suspendResumeMessage) {
+				
+					//JMM July 4th 2000
+					//Fix for menu bar tabbing, thanks to Javier Diaz-Reinoso for pointing this out
+					//
+					if (fullScreenFlag) {
+						if ((theEvent.message & resumeFlag) == 0) {
+							MenuBarRestore();
+						}
+						else {
+							MenuBarHide();
+						}
+					}
+				}
+				break;
+		}
+	}
+	else {
+		if(inputSemaphoreIndex) {
+			recordMouseEvent(&theEvent,MouseModifierState(&theEvent));
 		}
 	}
 	return ok;
@@ -329,7 +423,9 @@ void HandleMenu(int mSelect) {
 		case appleID:
 			GetPort(&savePort);
 			GetMenuItemText(appleMenu, menuItem, name);
+#if !TARGET_API_MAC_CARBON
 			OpenDeskAcc(name);
+#endif 
 			SetPort(savePort);
 		break;
 
@@ -340,23 +436,27 @@ void HandleMenu(int mSelect) {
 		break;
 
 		case editID:
+#if !TARGET_API_MAC_CARBON
 			if (!SystemEdit(menuItem - 1)) {
 				SysBeep(5);
 			}
+#endif
 		break;
 	}
 }
 
 void HandleMouseDown(EventRecord *theEvent) {
+    BitMap      bmap;
 	WindowPtr	theWindow;
 	Rect		growLimits = { 20, 20, 4000, 4000 };
-	Rect		dragBounds;
 	int			windowCode, newSize;
 
 	windowCode = FindWindow(theEvent->where, &theWindow);
 	switch (windowCode) {
 		case inSysWindow:
+#if !TARGET_API_MAC_CARBON
 			SystemClick(theEvent, theWindow);
+#endif
 		break;
 
 		case inMenuBar:
@@ -365,9 +465,10 @@ void HandleMouseDown(EventRecord *theEvent) {
 		break;
 
 		case inDrag:
-			dragBounds = qd.screenBits.bounds;
+
+			GetQDGlobalsScreenBits(&bmap);
 			if (theWindow == stWindow) {
-				DragWindow(stWindow, theEvent->where, &dragBounds);
+				DragWindow(stWindow, theEvent->where, &bmap.bounds);
 			}
 		break;
 
@@ -385,6 +486,10 @@ void HandleMouseDown(EventRecord *theEvent) {
 				if (theWindow != FrontWindow()) {
 					SelectWindow(stWindow);
 				}
+				if(inputSemaphoreIndex) {
+					recordMouseEvent(theEvent,MouseModifierState(theEvent));
+					break;
+				}
 				recordMouseDown(theEvent);
 			}
 		break;
@@ -398,6 +503,73 @@ void HandleMouseDown(EventRecord *theEvent) {
 	}
 }
 
+
+#if TARGET_API_MAC_CARBON
+void InitMacintosh(void) {
+	FlushEvents(everyEvent, 0);
+	InitCursor();
+}
+
+void MenuBarHide(void) {
+ 	if (menuBarRegion != nil) return;  /* saved state, so menu bar is already hidden */
+    menuBarRegion = (RgnHandle) 1;
+    HideMenuBar();
+}
+void MenuBarRestore(void) {
+	if (menuBarRegion == nil) return;  /* no saved state, so menu bar is not hidden */
+    ShowMenuBar();
+    menuBarRegion = nil;
+}
+
+/*** Clipboard Support (text only for now) ***/
+
+void SetUpClipboard(void) {
+}
+
+void FreeClipboard(void) {
+}
+
+int clipboardReadIntoAt(int count, int byteArrayIndex, int startIndex) {
+	long clipSize, charsToMove;
+	ScrapRef scrap;
+	OSStatus err;
+
+    err = GetCurrentScrap (&scrap);
+    if (err != noErr) return 0;       
+	clipSize = clipboardSize();
+ 	charsToMove = (count < clipSize) ? count : clipSize;
+    err = GetScrapFlavorData(scrap,kScrapFlavorTypeText,(long *) &charsToMove,(char *) byteArrayIndex + startIndex);
+    if (err != noErr) { 
+        FreeClipboard();
+        return 0;       
+    }
+	return charsToMove;
+}
+
+int clipboardSize(void) {
+	long count;
+	ScrapRef scrap;
+	OSStatus err;
+
+    err = GetCurrentScrap (&scrap);
+    if (err != noErr) return 0;       
+    err = GetScrapFlavorSize (scrap, kScrapFlavorTypeText, &count); 
+	if (err != noErr) {
+		return 0;
+	} else {
+		return count;
+	}
+}
+
+int clipboardWriteFromAt(int count, int byteArrayIndex, int startIndex) {
+	ScrapRef scrap;
+	OSErr err;
+	err = ClearCurrentScrap();
+    err = GetCurrentScrap (&scrap);
+	err = PutScrapFlavor ( scrap, kScrapFlavorTypeText, kScrapFlavorMaskNone , count,  (const void *) (byteArrayIndex + startIndex));
+}
+
+#else 
 void InitMacintosh(void) {
 	MaxApplZone();
 	InitGraf(&qd.thePort);
@@ -410,14 +582,117 @@ void InitMacintosh(void) {
 	InitCursor();
 }
 
+void MenuBarHide(void) {
+  /* Remove the menu bar, saving its old state. */
+  /* Many thanks to John McIntosh for this code! */
+	Rect screenRect, mBarRect;
+
+	if (menuBarRegion != nil) return;  /* saved state, so menu bar is already hidden */
+	screenRect = (**GetMainDevice()).gdRect;
+	menuBarHeight = GetMBarHeight();
+	SetRect(&mBarRect, screenRect.left, screenRect.top, screenRect.right, screenRect.top + menuBarHeight);
+	menuBarRegion = NewRgn();
+	if (menuBarRegion != nil) {
+		LMSetMBarHeight(0);
+		RectRgn(menuBarRegion, &mBarRect);
+		UnionRgn(GetGrayRgn(), menuBarRegion, GetGrayRgn());
+	}
+}
+
+void MenuBarRestore(void) {
+  /* Restore the menu bar from its saved state. Do nothing if it isn''t hidden. */
+  /* Many thanks to John McIntosh for this code! */
+ 
+ 	WindowPtr win;
+ 	
+	if (menuBarRegion == nil) return;  /* no saved state, so menu bar is not hidden */
+	DiffRgn(GetGrayRgn(), menuBarRegion, GetGrayRgn());
+	LMSetMBarHeight(menuBarHeight);
+	
+	win = FrontWindow();
+	if (win) {
+		CalcVis(win);
+		CalcVisBehind(win,menuBarRegion);
+	}
+	HiliteMenu(0);
+	DisposeRgn(menuBarRegion);
+	
+	menuBarRegion = nil;
+	DrawMenuBar();
+}
+
+/*** Clipboard Support (text only for now) ***/
+Handle			clipboardBuffer = nil;
+
+void SetUpClipboard(void) {
+	/* allocate clipboard in the system heap to support really big copy/paste */
+	THz oldZone;
+
+	oldZone = GetZone();
+	SetZone(SystemZone());
+	clipboardBuffer = NewHandle(0);
+	SetZone(oldZone);
+}
+
+void FreeClipboard(void) {
+	if (clipboardBuffer != nil) {
+		DisposeHandle(clipboardBuffer);
+		clipboardBuffer = nil;
+	}
+}
+
+int clipboardReadIntoAt(int count, int byteArrayIndex, int startIndex) {
+	long clipSize, charsToMove;
+	char *srcPtr, *dstPtr, *end;
+
+	clipSize = clipboardSize();
+	charsToMove = (count < clipSize) ? count : clipSize;
+    //JMM locking
+    HLock(clipboardBuffer); 
+	srcPtr = (char *) *clipboardBuffer;
+	dstPtr = (char *) byteArrayIndex + startIndex;
+	end = srcPtr + charsToMove;
+	while (srcPtr < end) {
+		*dstPtr++ = *srcPtr++;
+	}
+    HUnlock(clipboardBuffer); 
+	return charsToMove;
+}
+
+int clipboardSize(void) {
+	long count, offset;
+
+	count = GetScrap(clipboardBuffer, ''TEXT'', &offset);
+	if (count < 0) {
+		return 0;
+	} else {
+		return count;
+	}
+}
+
+int clipboardWriteFromAt(int count, int byteArrayIndex, int startIndex) {
+	ZeroScrap();
+	PutScrap(count, ''TEXT'', (char *) (byteArrayIndex + startIndex));
+}
+
+#endif
+
 void SetUpMenus(void) {
+	long decideOnQuitMenu;
+	
 	InsertMenu(appleMenu = NewMenu(appleID, "\p\024"), 0);
 	InsertMenu(fileMenu  = NewMenu(fileID,  "\pFile"), 0);
 	InsertMenu(editMenu  = NewMenu(editID,  "\pEdit"), 0);
 	DrawMenuBar();
+#if TARGET_API_MAC_CARBON
+    Gestalt( gestaltMenuMgrAttr, &decideOnQuitMenu);
+    if (!(decideOnQuitMenu & gestaltMenuMgrAquaLayoutMask))	
+        AppendMenu(fileMenu, "\pQuit");
+#else
 	AppendResMenu(appleMenu, ''DRVR'');
-	AppendMenu(fileMenu, "\pQuit");
-	AppendMenu(editMenu, "\pUndo/Z;(-;Cut/X;Copy/C;Paste/V;Clear");
+    AppendMenu(fileMenu, "\pQuit");
+#endif
+ 	AppendMenu(editMenu, "\pUndo/Z;(-;Cut/X;Copy/C;Paste/V;Clear");
 }
 
 void SetColorEntry(int index, int red, int green, int blue) {
@@ -523,23 +798,31 @@ void SetUpWindow(void) {
 	stWindow = NewCWindow(
 		0L, &windowBounds,
 		"\p Welcome to Squeak!  Reading Squeak image file... ",
-		true, documentProc, (WindowPtr) -1L, true, 0);
+		true, documentProc, (WindowPtr) -1L, false, 0);
 }
 
 void SetWindowTitle(char *title) {
-	SetWTitle(stWindow, c2pstr(title));
-	p2cstr((unsigned char *) title);
+    Str255 tempTitle;
+	CopyCStringToPascal(title,tempTitle);
+	SetWTitle(stWindow, tempTitle);
 }
 
 /*** Event Recording Functions ***/
 
 int recordKeystroke(EventRecord *theEvent) {
-	int keystate;
+	int asciiChar, modifierBits, keystate;
 
 	/* keystate: low byte is the ascii character; next 4 bits are modifier bits */
-	keystate =
-		(modifierMap[(theEvent->modifiers >> 8) & 0x1F] << 8) |
-		(theEvent->message & 0xFF);
+	asciiChar = theEvent->message & charCodeMask;
+	modifierBits = modifierMap[(theEvent->modifiers >> 8) & 0x1F];
+	if ((modifierBits & 0x9) == 0x9) {  /* command and shift */
+		if ((asciiChar >= 97) && (asciiChar <= 122)) {
+			/* convert ascii code of command-shift-letter to upper case */
+			asciiChar = asciiChar - 32;
+		}
+	}
+
+	keystate = (modifierBits << 8) | asciiChar;
 	if (keystate == interruptKeycode) {
 		/* Note: interrupt key is "meta"; it not reported as a keystroke */
 		interruptPending = true;
@@ -556,25 +839,35 @@ int recordKeystroke(EventRecord *theEvent) {
 }
 
 int recordMouseDown(EventRecord *theEvent) {
+
+	/* button state: low three bits are mouse buttons; next 4 bits are modifier bits */
+	buttonState = MouseModifierState(theEvent);
+	cachedButtonState = cachedButtonState | buttonState;
+}
+
+int MouseModifierState(EventRecord *theEvent) {
 	int stButtons;
 
-	stButtons = 4;		/* red button by default */
-	if ((theEvent->modifiers & optionKey) != 0) {
-		stButtons = 2;	/* yellow button if option down */
-	}
-	if ((theEvent->modifiers & cmdKey) != 0) {
-		stButtons = 1;	/* blue button if command down */
-	}
+	stButtons = 0;
+	if ((theEvent->modifiers & btnState) == false) {  /* is false if button is down */
+		stButtons = 4;		/* red button by default */
+		if ((theEvent->modifiers & optionKey) != 0) {
+			stButtons = 2;	/* yellow button if option down */
+		}
+		if ((theEvent->modifiers & cmdKey) != 0) {
+			stButtons = 1;	/* blue button if command down */
+		}
+	} 
+
 	/* button state: low three bits are mouse buttons; next 4 bits are modifier bits */
-	buttonState =
-		(modifierMap[(theEvent->modifiers >> 8) & 0x1F] << 3) |
-		(stButtons & 0x7);
+	return ((modifierMap[(theEvent->modifiers >> 8) & 0x1F] << 3) |
+		(stButtons & 0x7));
 }
 
 int recordModifierButtons(EventRecord *theEvent) {
 	int stButtons = 0;
 
-	if (Button()) {
+	if ((theEvent->modifiers & btnState) == false) {
 		stButtons = buttonState & 0x7;
 	} else {
 		stButtons = 0;
@@ -585,16 +878,219 @@ int recordModifierButtons(EventRecord *theEvent) {
 		(stButtons & 0x7);
 }
 
+int recordMouseEvent(EventRecord *theEvent, int theButtonState) {
+	sqMouseEvent *evt;
+	
+	evt = (sqMouseEvent*) nextEventPut();
+
+	/* first the basics */
+	evt->type = EventTypeMouse;
+	evt->timeStamp = ioMSecs(); 
+	GlobalToLocal((Point *) &theEvent->where);
+	evt->x = theEvent->where.h;
+	evt->y = theEvent->where.v;
+	/* then the buttons */
+	evt->buttons = theButtonState & 0x07;
+	/* then the modifiers */
+	evt->modifiers = theButtonState >> 3;
+	/* clean up reserved */
+	evt->reserved1 = 0;
+	evt->reserved2 = 0;
+	signalSemaphoreWithIndex(inputSemaphoreIndex);
+	return 1;
+}
+
+int recordKeyboardEvent(EventRecord *theEvent, int keyType) {
+	int stButtons = 0;
+	int asciiChar, modifierBits;
+	sqKeyboardEvent *evt, *extra;
+
+	evt = (sqKeyboardEvent*) nextEventPut();
+
+	/* keystate: low byte is the ascii character; next 4 bits are modifier bits */
+	asciiChar = theEvent->message & charCodeMask;
+	modifierBits = MouseModifierState(theEvent); //Capture mouse/option states
+	if ((modifierBits & 0x9) == 0x9) {  /* command and shift */
+		if ((asciiChar >= 97) && (asciiChar <= 122)) {
+			/* convert ascii code of command-shift-letter to upper case */
+			asciiChar = asciiChar - 32;
+		}
+	}
+
+	/* first the basics */
+	evt->type = EventTypeKeyboard;
+	evt->timeStamp = ioMSecs();
+	/* now the key code */
+	/* press code must differentiate */
+	evt->charCode = (theEvent->message & keyCodeMask) >> 8;
+	evt->pressCode = keyType;
+	evt->modifiers = modifierBits;
+	/* clean up reserved */
+	evt->reserved1 = 0;
+	evt->reserved2 = 0;
+	/* generate extra character event */
+	if (keyType == EventKeyDown) {
+		extra = (sqKeyboardEvent*)nextEventPut();
+		*extra = *evt;
+		extra->charCode = asciiChar;
+		extra->pressCode = EventKeyChar;
+	}
+	signalSemaphoreWithIndex(inputSemaphoreIndex);
+	return 1;
+}
+
+static sqInputEvent *nextEventPut(void) {
+	sqInputEvent *evt;
+	evt = eventBuffer + eventBufferPut;
+	eventBufferPut = (eventBufferPut + 1) % MAX_EVENT_BUFFER;
+	if (eventBufferGet == eventBufferPut) {
+		/* buffer overflow; drop the last event */
+		eventBufferGet = (eventBufferGet + 1) % MAX_EVENT_BUFFER;
+	}
+	return evt;
+}
+
+int ioSetInputSemaphore(int semaIndex) {
+	inputSemaphoreIndex = semaIndex;
+	return 1;
+}
+
+int ioGetNextEvent(sqInputEvent *evt) {
+	if (eventBufferGet == eventBufferPut) {
+		ioProcessEvents();
+	}
+	if (eventBufferGet == eventBufferPut) 
+		return 1;
+
+	*evt = eventBuffer[eventBufferGet];
+	eventBufferGet = (eventBufferGet+1) % MAX_EVENT_BUFFER;
+	return 1;
+}
+
+
+/*** Mac Specific External Primitive Support ***/
+
+/* ioLoadModule:
+	Load a module from disk.
+	WARNING: this always loads a *new* module. Don''t even attempt to find a loaded one.
+	WARNING: never primitiveFail() within, just return 0
+*/
+int ioLoadModule(char *pluginName) {
+	char pluginDirPath[1000];
+	CFragConnectionID libHandle;
+	Ptr mainAddr;
+	Str255 errorMsg,tempPluginName;
+	OSErr err;
+    
+    	/* first, look in the "<Squeak VM directory>Plugins" directory for the library */
+	strcpy(pluginDirPath, vmPath);
+	
+#ifdef PLUGIN
+	strcat(pluginDirPath, ":Plugins");
+#else
+	strcat(pluginDirPath, "Plugins");
+#endif 	
+    
+    libHandle = LoadLibViaPath(pluginName, pluginDirPath);
+	if (libHandle != nil) return (int) libHandle;
+
+#ifndef PLUGIN
+	/* second, look directly in Squeak VM directory for the library */
+	libHandle = LoadLibViaPath(pluginName, vmPath);
+	if (libHandle != nil) return (int) libHandle;
+    
+    /* Lastly look for it as a shared import library */
+    
+    CopyCStringToPascal(pluginName,tempPluginName);
+    err = GetSharedLibrary(tempPluginName, kAnyCFragArch, kLoadCFrag, &libHandle, &mainAddr, errorMsg);
+	if (err == noErr) 
+	    err = GetSharedLibrary(tempPluginName, kAnyCFragArch, kFindCFrag, &libHandle, &mainAddr, errorMsg);
+	if (libHandle != nil) return (int) libHandle;
+#endif
+    
+	return nil;
+}
+
+/* ioFindExternalFunctionIn:
+	Find the function with the given name in the moduleHandle.
+	WARNING: never primitiveFail() within, just return 0.
+*/
+int ioFindExternalFunctionIn(char *lookupName, int moduleHandle) {
+	CFragSymbolClass ignored;
+	Ptr functionPtr = 0;
+	OSErr err;
+    Str255 tempLookupName;
+    
+	if (!moduleHandle) return 0;
+
+	/* get the address of the desired primitive function */
+	CopyCStringToPascal(lookupName,tempLookupName);
+	err = FindSymbol(
+		(CFragConnectionID) moduleHandle, (unsigned char *) tempLookupName,
+		&functionPtr, &ignored);
+	if (err) return 0;
+
+	return (int) functionPtr;
+}
+
+/* ioFreeModule:
+	Free the module with the associated handle.
+	WARNING: never primitiveFail() within, just return 0.
+*/
+int ioFreeModule(int moduleHandle) {
+	CFragConnectionID libHandle;
+	OSErr err;
+
+	if (!moduleHandle) return 0;
+	libHandle = (CFragConnectionID) moduleHandle;
+	err = CloseConnection(&libHandle);
+	return 0;
+}
+
+CFragConnectionID LoadLibViaPath(char *libName, char *pluginDirPath) {
+	short 				vRefNum;
+	long				ignore;
+	CInfoPBRec 			pb;
+	FSSpec				fileSpec;
+	Str255				problemLibName,fileSpecName,tempPlugindirPath;
+    Ptr					junk;
+	CFragConnectionID	libHandle = 0;
+	OSErr				err = noErr;
+
+	/* get the default volume */
+	HGetVol( nil, &vRefNum, &ignore);
+
+	/* get the directory ID for the given path */
+	CopyCStringToPascal(pluginDirPath,tempPlugindirPath);
+	pb.hFileInfo.ioNamePtr = tempPlugindirPath;
+	pb.hFileInfo.ioVRefNum = 0;  /* use the default volume */
+	pb.hFileInfo.ioFDirIndex = 0;
+	pb.hFileInfo.ioDirID = 0;
+	err = PBGetCatInfoSync(&pb);
+	if (err) return nil; /* bad plugin directory path */
+
+	/* make a file spec for the given file name in the plugin directory */
+	CopyCStringToPascal(libName,fileSpecName);
+	FSMakeFSSpec(vRefNum,pb.hFileInfo.ioDirID,fileSpecName,&fileSpec);
+
+	err = GetDiskFragment(
+		&fileSpec, 0, kCFragGoesToEOF, nil, kLoadCFrag, &libHandle, &junk, problemLibName);
+	if (err) return nil;
+	return libHandle;
+}
 /*** I/O Primitives ***/
 
 int ioBeep(void) {
 	SysBeep(1000);
 }
 
+#ifndef PLUGIN
 int ioExit(void) {
-	sqNetworkShutdown();
+	ioShutdownAllModules();
+	MenuBarRestore();
 	ExitToShell();
 }
+#endif
 
 int ioForceDisplayUpdate(void) {
 	/* do nothing on a Mac */
@@ -611,6 +1107,12 @@ int ioFormPrint(int bitsAddr, int width, int height, int depth, double hScale, d
 
 int ioGetButtonState(void) {
 	ioProcessEvents();  /* process all pending events */
+	if ((cachedButtonState & 0x7) != 0) {
+		int result = cachedButtonState;
+		cachedButtonState = 0;  /* clear cached button state */
+		return result;
+	}
+	cachedButtonState = 0;  /* clear cached button state */
 	return buttonState;
 }
 
@@ -629,6 +1131,38 @@ int ioGetKeystroke(void) {
 	return keystate;
 }
 
+int ioHasDisplayDepth(int depth) {
+	/* Return true if this platform supports the given color display depth. */
+
+	switch (depth) {
+	case 1:
+	case 2:
+	case 4:
+	case 8:
+	case 16:
+	case 32:
+		return true;
+	}
+	return false;
+}
+
+
+int ioMicroMSecsExpensive(void);
+
+int ioMicroMSecsExpensive(void) {
+	UnsignedWide microTicks;
+	Microseconds(&microTicks);
+	return (microTicks.lo / 1000) + (microTicks.hi * 4294967);
+}
+
+#if TARGET_CPU_PPC || GENERATINGPOWERPC
+Boolean HasUpTime (void);
+
+Boolean HasUpTime (void)
+{
+    return ( (Ptr) UpTime != (Ptr) kUnresolvedCFragSymbolAddress);
+}
+
 int ioMicroMSecs(void) {
 	/* millisecond clock based on microsecond timer (about 60 times slower than clock()!!) */
 	/* Note: This function and ioMSecs() both return a time in milliseconds. The difference
@@ -638,20 +1172,31 @@ int ioMicroMSecs(void) {
 	   where clock performance became less critical, and we also started to want millisecond-
 	   resolution timers for real time applications such as music. Thus, on the Mac, we''ve
 	   opted to use the microsecond clock for both ioMSecs() and ioMicroMSecs(). */
-	UnsignedWide microTicks;
-
-	Microseconds(&microTicks);
-	return (microTicks.lo / 1000) + (microTicks.hi * 4294967);
+	
+	UInt32		  valueLong;
+	
+	if (HasUpTime()) {
+		valueLong = (UInt32 )  U64Div(UnsignedWideToUInt64(AbsoluteToNanoseconds(UpTime())), (UInt64) 1000000);
+		if (valueLong > 0x7FFFFFFF) 
+			return (long) (valueLong - 0x7FFFFFFF);
+		else
+			return (long) valueLong;
+			
+    } else {
+	    return ioMicroMSecsExpensive();
+	}
 }
+#else
+int ioMicroMSecs(void) {
+    return ioMicroMSecsExpensive();
+}
+#endif
 
 int ioMSecs(void) {
 	/* return a time in milliseconds for use in Delays and Time millisecondClockValue */
 	/* Note: This was once a macro based on clock(); it now uses the microsecond clock for
 	   greater resolution. See the comment in ioMicroMSecs(). */
-	UnsignedWide microTicks;
-
-	Microseconds(&microTicks);
-	return (microTicks.lo / 1000) + (microTicks.hi * 4294967);
+	return ioMicroMSecs();
 }
 
 int ioMousePoint(void) {
@@ -683,7 +1228,7 @@ int ioPeekKeystroke(void) {
 
 int ioProcessEvents(void) {
 	/* This is a noop when running as a plugin; the browser handles events. */
-	int maxPollsPerSec = 30;
+	const int nextPollOffsetCheck = (CLOCKS_PER_SEC/30);
 	static clock_t nextPollTick = 0;
 
 #ifndef PLUGIN
@@ -694,7 +1239,7 @@ int ioProcessEvents(void) {
 		}
 
 		/* wait a while before trying again */
-		nextPollTick = clock() + (CLOCKS_PER_SEC / maxPollsPerSec);
+		nextPollTick = clock() + nextPollOffsetCheck;
 	}
 #endif
 	return interruptPending;
@@ -702,24 +1247,26 @@ int ioProcessEvents(void) {
 
 int ioRelinquishProcessorForMicroseconds(int microSeconds) {
 	/* This operation is platform dependent. On the Mac, it simply calls
-	 * HandleEvents(), which gives other applications a chance to run.
+	 * ioProcessEvents(), which gives other applications a chance to run.
 	 */
-
-	while (HandleEvents()) {
-		/* process all pending events */
-	}
-	return microSeconds;
+    microSeconds;
+    
+	ioProcessEvents();  /* process all pending events */
 }
 
+#ifndef PLUGIN
 int ioScreenSize(void) {
 	int w = 10, h = 10;
-
+    Rect portRect;
+    
 	if (stWindow != nil) {
-		w = stWindow->portRect.right - stWindow->portRect.left;
-		h = stWindow->portRect.bottom - stWindow->portRect.top;
+        GetPortBounds(GetWindowPort(stWindow),&portRect);
+		w =  portRect.right -  portRect.left;
+		h =  portRect.bottom - portRect.top;
 	}
 	return (w << 16) | (h & 0xFFFF);  /* w is high 16 bits; h is low 16 bits */
 }
+#endif
 
 int ioSeconds(void) {
 	struct tm timeRec;
@@ -744,12 +1291,33 @@ int ioSeconds(void) {
 }
 
 int ioSetCursor(int cursorBitsIndex, int offsetX, int offsetY) {
+	/* Old version; forward to new version. */
+	ioSetCursorWithMask(cursorBitsIndex, nil, offsetX, offsetY);
+}
+
+int ioSetCursorWithMask(int cursorBitsIndex, int cursorMaskIndex, int offsetX, int offsetY) {
+	/* Set the 16x16 cursor bitmap. If cursorMaskIndex is nil, then make the mask the same as
+	   the cursor bitmap. If not, then mask and cursor bits combined determine how cursor is
+	   displayed:
+			mask	cursor	effect
+			 0		  0		transparent (underlying pixel shows through)
+			 1		  1		opaque black
+			 1		  0		opaque white
+			 0		  1		invert the underlying pixel
+	*/
 	Cursor macCursor;
 	int i;
 
-	for (i = 0; i < 16; i++) {
-		macCursor.data[i] = (checkedLongAt(cursorBitsIndex + (4 * i)) >> 16) & 0xFFFF;
-		macCursor.mask[i] = (checkedLongAt(cursorBitsIndex + (4 * i)) >> 16) & 0xFFFF;
+	if (cursorMaskIndex == nil) {
+		for (i = 0; i < 16; i++) {
+			macCursor.data[i] = (checkedLongAt(cursorBitsIndex + (4 * i)) >> 16) & 0xFFFF;
+			macCursor.mask[i] = (checkedLongAt(cursorBitsIndex + (4 * i)) >> 16) & 0xFFFF;
+		}
+	} else {
+		for (i = 0; i < 16; i++) {
+			macCursor.data[i] = (checkedLongAt(cursorBitsIndex + (4 * i)) >> 16) & 0xFFFF;
+			macCursor.mask[i] = (checkedLongAt(cursorMaskIndex + (4 * i)) >> 16) & 0xFFFF;
+		}
 	}
 
 	/* Squeak hotspot offsets are negative; Mac''s are positive */
@@ -758,24 +1326,48 @@ int ioSetCursor(int cursorBitsIndex, int offsetX, int offsetY) {
 	SetCursor(&macCursor);
 }
 
+int ioSetDisplayMode(int width, int height, int depth, int fullscreenFlag) {
+	/* Set the window to the given width, height, and color depth. Put the window
+	   into the full screen mode specified by fullscreenFlag. */
+	/* Note: Changing display depth is not yet, and may never be, implemented
+	   on the Macintosh, where (a) it is considered inappropriate and (b) it may
+	   not even be a well-defined operation if the Squeak window spans several
+	   displays (which display''s depth should be changed?). */
+
+	depth;
+	ioSetFullScreen(fullscreenFlag);
+	if (!fullscreenFlag) {
+		SizeWindow(stWindow, width, height, true);
+	}
+}
+
+#ifndef PLUGIN
 int ioSetFullScreen(int fullScreen) {
-	Rect screen = qd.screenBits.bounds;
+	Rect screen,portRect;
+	BitMap bmap;
 	int width, height, maxWidth, maxHeight;
 	int oldWidth, oldHeight;
-
+			
+	GetQDGlobalsScreenBits(&bmap);
+    screen = bmap.bounds;
+    
 	if (fullScreen) {
-		oldWidth = stWindow->portRect.right - stWindow->portRect.left;
-		oldHeight = stWindow->portRect.bottom - stWindow->portRect.top;
-		width  = screen.right - screen.left;
-		height = (screen.bottom - screen.top) - 20;
+		MenuBarHide();
+		GetPortBounds(GetWindowPort(stWindow),&portRect);
+		oldWidth =  portRect.right -  portRect.left;
+		oldHeight =  portRect.bottom -  portRect.top;
+		width  = screen.right - screen.left; 
+		height = (screen.bottom - screen.top);
 		if ((oldWidth < width) || (oldHeight < height)) {
 			/* save old size if it wasn''t already full-screen */ 
 			savedWindowSize = (oldWidth << 16) + (oldHeight & 0xFFFF);
 		}
-		MoveWindow(stWindow, 0, 20, true);
+		MoveWindow(stWindow, 0, 0, true);
 		SizeWindow(stWindow, width, height, true);
 		fullScreenFlag = true;
 	} else {
+		MenuBarRestore();
+
 		/* get old window size */
 		width  = (unsigned) savedWindowSize >> 16;
 		height = savedWindowSize & 0xFFFF;
@@ -794,6 +1386,7 @@ int ioSetFullScreen(int fullScreen) {
 		fullScreenFlag = false;
 	}
 }
+#endif
 
 int ioShowDisplay(
 	int dispBitsIndex, int width, int height, int depth,
@@ -828,8 +1421,8 @@ int ioShowDisplay(
 	maskRect = NewRgn();
 	SetRectRgn(maskRect, affectedL, affectedT, affectedR, affectedB);
 
-	SetPort(stWindow);
-	CopyBits((BitMap *) *stPixMap, &stWindow->portBits, &srcRect, &dstRect, srcCopy, maskRect);
+	SetPortWindowPort(stWindow);
+	CopyBits((BitMap *) *stPixMap, GetPortBitMapForCopyBits(GetWindowPort(stWindow)), &srcRect, &dstRect, srcCopy, maskRect);
 	DisposeRgn(maskRect);
 }
 
@@ -838,7 +1431,7 @@ int ioShowDisplay(
 void StoreFullPathForLocalNameInto(char *shortName, char *fullName, int length) {
 	int offset, sz, i;
 
-	offset = dir_PathToWorkingDir(fullName, length);
+	offset = PathToWorkingDir(fullName, length);
 
 	/* copy the file name into a null-terminated C string */
 	sz = strlen(shortName);
@@ -892,56 +1485,77 @@ int imageNamePutLength(int sqImageNameIndex, int length) {
 	return count;
 }
 
-/*** Clipboard Support (text only for now) ***/
+/*** Initializing the path to Working Dir ***/
 
-void SetUpClipboard(void) {
-	/* allocate clipboard in the system heap to support really big copy/paste */
-	THz oldZone;
+int PathToWorkingDir(char *pathName, int pathNameMax) {
+	/* Fill in the given string with the full path from a root volume to
+	   to current working directory. (At startup time, the working directory
+	   is set to the application''s directory. Fails if the given string is not
+	   long enough to hold the entire path. (Use at least 1000 characters to
+	   be safe.)
+	*/
 
-	oldZone = GetZone();
-	SetZone(SystemZone());
-	clipboardBuffer = NewHandle(0);
-	SetZone(oldZone);
-}
+	Str255 thisName;
+	CInfoPBRec pb;
+	int nextDirRefNum, pathLen;
 
-void FreeClipboard(void) {
-	if (clipboardBuffer != nil) {
-		DisposeHandle(clipboardBuffer);
-		clipboardBuffer = nil;
+	/* initialize string copying state */
+	pathName[0] = 0;
+	pathLen = 0;
+
+	/* get refNum of working directory */
+	strcpy((char *) thisName, ":");
+	CopyCStringToPascal((const char *)thisName,thisName);
+	pb.hFileInfo.ioNamePtr = thisName;
+	pb.hFileInfo.ioVRefNum = 0;
+	pb.hFileInfo.ioFDirIndex = 0;
+	pb.hFileInfo.ioDirID = 0;
+	if (PBGetCatInfoSync(&pb) != noErr) {
+		nextDirRefNum = 0;
 	}
-}
+	nextDirRefNum = pb.hFileInfo.ioDirID;
 
-int clipboardReadIntoAt(int count, int byteArrayIndex, int startIndex) {
-	long clipSize, charsToMove;
-	char *srcPtr, *dstPtr, *end;
-
-	clipSize = clipboardSize();
-	charsToMove = (count < clipSize) ? count : clipSize;
-
-	srcPtr = (char *) *clipboardBuffer;
-	dstPtr = (char *) byteArrayIndex + startIndex;
-	end = srcPtr + charsToMove;
-	while (srcPtr < end) {
-		*dstPtr++ = *srcPtr++;
+	while (true) {
+		thisName[0] = 0;
+		pb.hFileInfo.ioFDirIndex = -1; /* map ioDirID -> name */
+		pb.hFileInfo.ioVRefNum = 0;
+		pb.hFileInfo.ioDirID = nextDirRefNum;
+		if (PBGetCatInfoSync(&pb) != noErr) {
+			break;  /* we''ve reached the root */
+		}
+    	CopyPascalStringToC((unsigned char *)thisName,(char *) thisName);
+		pathLen = PrefixPathWith(pathName, pathLen, pathNameMax,(char *) thisName);
+		nextDirRefNum = pb.dirInfo.ioDrParID;
 	}
-	return charsToMove;
+	return pathLen;
 }
 
-int clipboardSize(void) {
-	long count, offset;
+int PrefixPathWith(char *pathName, int pathNameSize, int pathNameMax, char *prefix) {
+	/* Insert the given prefix C string plus a delimitor character at the
+	   beginning of the given C string. Return the new pathName size. Fails
+	   if pathName is does not have sufficient space for the result.
+	   Assume: pathName is null terminated.
+	*/
 
-	count = GetScrap(clipboardBuffer, ''TEXT'', &offset);
-	if (count < 0) {
-		return 0;
-	} else {
-		return count;
+	int offset, i;
+
+	offset = strlen(prefix) + 1;
+	if ((pathNameSize + offset) > pathNameMax) {
+		return pathNameSize;
 	}
+
+	for (i = pathNameSize; i >= 0; i--) {
+		/* make room in pathName for prefix (moving string terminator, too) */
+		pathName[i + offset] = pathName[i];
+	}
+	for (i = 0; i < offset; i++) {
+		/* make room in pathName for prefix */
+		pathName[i] = prefix[i];
+	}
+	pathName[offset - 1] = '':'';  /* insert delimitor */
+	return pathNameSize + offset;
 }
 
-int clipboardWriteFromAt(int count, int byteArrayIndex, int startIndex) {
-	ZeroScrap();
-	PutScrap(count, ''TEXT'', (char *) (byteArrayIndex + startIndex));
-}
 
 /*** Profiling ***/
 
@@ -972,10 +1586,8 @@ int stopProfiling(void) {
 /*** Plugin Support ***/
 
 int plugInInit(char *fullImagePath) {
-	if (memory == nil) {
-		return;	/* failed to read image */
-	}
 
+	fullImagePath;
 	/* check the interpreter''s size assumptions for basic data types */
 	if (sizeof(int) != 4) {
 		error("This C compiler''s integers are not 32 bits.");
@@ -987,17 +1599,15 @@ int plugInInit(char *fullImagePath) {
 		error("This C compiler''s time_t''s are not 32 bits.");
 	}
 
-	strcpy(imageName, fullImagePath);
-	dir_PathToWorkingDir(vmPath, VMPATH_SIZE);
+	/* clear all path and file names */
+	imageName[0] = shortImageName[0] = documentName[0] = vmPath[0] = 0;
 
 	SetUpClipboard();
 	SetUpPixmap();
-	sqFileInit();
-	joystickInit();
 }
 
 int plugInShutdown(void) {
-	snd_Stop();
+	ioShutdownAllModules();
 	FreeClipboard();
 	FreePixmap();
 	if (memory != nil) {
@@ -1005,6 +1615,14 @@ int plugInShutdown(void) {
 		memory = nil;
 	}
 }
+
+#ifndef PLUGIN
+int plugInAllowAccessToFilePath(char *pathString, int pathStringLength) {
+  /* Grant permission to all files. */
+	pathString; pathStringLength;
+	return true;
+}
+#endif
 
 /*** System Attributes ***/
 
@@ -1029,14 +1647,27 @@ char * GetAttributeString(int id) {
 
 	// id #0 should return the full name of VM; for now it just returns its path
 	if (id == 0) return vmPath;
-	// id #1 should return imageName, but returns empty string in this release to
-	// ease the transition (1.3x images otherwise try to read image as a document)
-	if (id == 1) return "";  /* will be imageName */
+	/* Note: 1.3x images will try to read the image as a document because they
+	   expect attribute #1 to be the document name. A 1.3x image can be patched
+	   using a VM of 2.6 or earlier. */
+	if (id == 1) return imageName;
 	if (id == 2) return documentName;
+
+#ifdef PLUGIN
+	/* When running in browser, return the EMBED tag info */
+	if ((id > 2) && (id <= (2 + (2 * pluginArgCount)))) {
+		int i = id - 3;
+		if ((i & 1) == 0) {  /* i is even */
+			return pluginArgName[i/2];
+		} else {
+			return pluginArgValue[i/2];
+		}
+	}
+#endif
 
 	if (id == 1001) return "Mac OS";
 	if (id == 1002) return "System 7 or Later";
-	if (id == 1003) return "PowerPC or 680xx";
+	if (id == 1003) return "PowerPC or 68K";
 
 	/* attribute undefined by this platform */
 	success(false);
@@ -1073,18 +1704,22 @@ void sqImageFileClose(sqImageFile f) {
 
 sqImageFile sqImageFileOpen(char *fileName, char *mode) {
 	short int err, err2, fRefNum;
-	unsigned char *pascalFileName;
+	Str255 tempPascalFileName;
 
-	pascalFileName = c2pstr(fileName);
-	err = FSOpen(pascalFileName, 0, &fRefNum);
+	CopyCStringToPascal(fileName,tempPascalFileName);
+	if (strchr(mode, ''w'') != null) 
+	    err = HOpenDF(0,0,tempPascalFileName,fsRdWrPerm, &fRefNum);
+	 else
+	    err = HOpenDF(0,0,tempPascalFileName,fsRdPerm, &fRefNum);
+	    
 	if ((err != 0) && (strchr(mode, ''w'') != null)) {
 		/* creating a new file for "save as" */
-		err2 = Create(pascalFileName, 0, ''FAST'', ''STim'');
+		err2 = HCreate(0,0,tempPascalFileName,  ''FAST'', ''STim'');
 		if (err2 == 0) {
-			err = FSOpen(pascalFileName, 0, &fRefNum);
+			err = HOpenDF(0,0,tempPascalFileName,fsRdWrPerm, &fRefNum);
 		}
 	}
-	p2cstr(pascalFileName);
+
 	if (err != 0) return null;
 
 	if (strchr(mode, ''w'') != null) {
@@ -1127,6 +1762,15 @@ int sqImageFileWrite(void *ptr, int elementSize, int count, sqImageFile f) {
 	return byteCount / elementSize;
 }
 
+#ifndef PLUGIN
+void * sqAllocateMemory(int minHeapSize, int desiredHeapSize) {
+	/* Application allocates Squeak object heap memory from its own heap. */
+	minHeapSize;
+	MaxBlock();
+	return NewPtr(desiredHeapSize);
+}
+#endif
+
 /*** Main ***/
 
 #ifndef PLUGIN
@@ -1140,8 +1784,7 @@ void main(void) {
 	SetUpClipboard();
 	SetUpWindow();
 	SetUpPixmap();
-	sqFileInit();
-	joystickInit();
+	SetEventMask(everyEvent); // also get key up events
 
 	/* install apple event handlers and wait for open event */
 	imageName[0] = shortImageName[0] = documentName[0] = vmPath[0] = 0;
@@ -1174,7 +1817,7 @@ void main(void) {
 #endif
 
 	/* compute the desired memory allocation */
-	reservedMemory = 400000;
+	reservedMemory = 500000;
 	availableMemory = MaxBlock() - reservedMemory;
 	/******
 	  Note: This is platform-specific. On the Mac, the user specifies the desired
@@ -1190,7 +1833,9 @@ void main(void) {
 	    console is opened. 50K allows the console to be opened (with and w/o the
 	    profiler). I added another 30K to provide for sound buffers and reliability.
 	    (Note: Later discovered that sound output failed if SoundManager was not
-	    preloaded unless there is about 100K reserved. Added 30K to that.)
+	    preloaded unless there is about 100K reserved. Added 50K to that.)
+	    
+	    JMM Note changed to 500 for Open Transport support on 68K machines
 	******/
 
 	/* uncomment the following when using the C transcript window for debugging: */
@@ -1211,7 +1856,7 @@ void main(void) {
 		printf("Aborting...\n");
 		ioExit();
 	}
-	readImageFromFileHeapSize(f, availableMemory);
+	readImageFromFileHeapSizeStartingAt(f, availableMemory, 0);
 	sqImageFileClose(f);
 
 	SetWindowTitle(shortImageName);
@@ -1221,5 +1866,85 @@ void main(void) {
 	interpret();
 }
 #endif
+
+void SqueakTerminate() {
+#ifdef PLUGIN
+	ExitCleanup();
+#else
+	ioShutdownAllModules();
+#endif
+}
+
+#if !TARGET_API_MAC_CARBON
+//
+//	CopyPascalStringToC converts the source pascal string to a destination
+//	C string as it copies. 
+//
+void CopyPascalStringToC(ConstStr255Param src, char* dst)
+{
+	if ( src != NULL )
+	{
+		short   length  = *src++;
+	
+		while ( length > 0 ) 
+		{
+			*dst++ = *(char*)src++;
+			--length;
+		}
+	}
+	*dst = ''\0'';
+}
+
+
+//
+//	CopyCStringToPascal converts the source C string to a destination
+//	pascal string as it copies. The dest string will
+//	be truncated to fit into an Str255 if necessary.
+//  If the C String pointer is NULL, the pascal string''s length is set to zero
+//
+void CopyCStringToPascal(const char* src, Str255 dst)
+{
+	short 	length  = 0;
+	
+	// handle case of overlapping strings
+	if ( (void*)src == (void*)dst )
+	{
+		unsigned char*		curdst = &dst[1];
+		unsigned char		thisChar;
+				
+		thisChar = *(const unsigned char*)src++;
+		while ( thisChar != ''\0'' ) 
+		{
+			unsigned char	nextChar;
+			
+			// use nextChar so we don''t overwrite what we are about to read
+			nextChar = *(const unsigned char*)src++;
+			*curdst++ = thisChar;
+			thisChar = nextChar;
+			
+			if ( ++length >= 255 )
+				break;
+		}
+	}
+	else if ( src != NULL )
+	{
+		unsigned char*		curdst = &dst[1];
+		short 				overflow = 255;		// count down so test it loop is faster
+		register char		temp;
+	
+		// Can''t do the K&R C thing of Òwhile (*s++ = *t++)Ó because it will copy trailing zero
+		// which might overrun pascal buffer.  Instead we use a temp variable.
+		while ( (temp = *src++) != 0 ) 
+		{
+			*(char*)curdst++ = temp;
+				
+			if ( --overflow <= 0 )
+				break;
+		}
+		length = 255 - overflow;
+	}
+	dst[0] = length;
+}
+#endif
+
 '
-.
