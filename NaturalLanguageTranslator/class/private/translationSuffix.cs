@@ -1,0 +1,2 @@
+translationSuffix
+	^'translation'
