@@ -26,7 +26,7 @@ initTextConstants
 		Clear 	173
 	).
 
-	varAndValue size odd ifTrue: [self notify: 'unpaired text constant'].
+	varAndValue size odd ifTrue: [self error: 'unpaired text constant'].
 	(2 to: varAndValue size by: 2) do:
 		[:i | TextConstants at: (varAndValue at: i - 1) put: (varAndValue at: i) asCharacter].
 
@@ -63,7 +63,7 @@ initTextConstants
 		DefaultFontFamilySize	3	"basal, bold, italic"
 	).
 
-	varAndValue size odd ifTrue: [self notify: 'unpaired text constant'].
+	varAndValue size odd ifTrue: [self error: 'unpaired text constant'].
 	(2 to: varAndValue size by: 2) do:
 		[:i | TextConstants at: (varAndValue at: i - 1) put: (varAndValue at: i)].
 
