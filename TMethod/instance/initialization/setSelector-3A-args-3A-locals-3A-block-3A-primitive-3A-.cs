@@ -12,5 +12,7 @@ setSelector: sel args: argList locals: localList block: aBlockNode primitive: aN
 	complete _ false.  "set to true when all possible inlining has been done"
 	export _ self extractExportDirective.
 	static _ self extractStaticDirective.
+	self extractSharedCase.
 	self removeFinalSelfReturn.
 	self recordDeclarations.
+	globalStructureBuildMethodHasFoo _ 0.
