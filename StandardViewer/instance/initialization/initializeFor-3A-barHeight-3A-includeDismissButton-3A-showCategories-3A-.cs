@@ -1,4 +1,6 @@
-initializeFor: aPlayer barHeight: anInteger includeDismissButton: aBoolean showCategories: cats
+initializeFor: aPlayer barHeight: anInteger includeDismissButton: aBoolean showCategories: categoryInfo
+	"Initialize the receiver to be a look inside the given Player.  The categoryInfo, if present, describes which categories should be present in it, in which order"
+
 	scriptedPlayer _ aPlayer.
 	self listDirection: #topToBottom;
 		hResizing: #shrinkWrap;
@@ -7,10 +9,11 @@ initializeFor: aPlayer barHeight: anInteger includeDismissButton: aBoolean showC
 	self color: self standardViewerColor.
 	self addHeaderMorphWithBarHeight: anInteger includeDismissButton: aBoolean.
 
-	cats isEmptyOrNil
-		ifFalse:
-			[cats do:
+	categoryInfo isEmptyOrNil
+		ifFalse:  "Reincarnating an pre-existing list"
+			[categoryInfo do:
 				[:aCat | self addCategoryViewerFor: aCat]]
-		ifTrue:
-			[self addCategoryViewer.
+		ifTrue:  "starting fresh"
+			[self addSearchPane. 
+			self addCategoryViewer.
 			self addCategoryViewer].
