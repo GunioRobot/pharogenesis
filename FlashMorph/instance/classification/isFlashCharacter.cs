@@ -1,0 +1,2 @@
+isFlashCharacter
+	^false
