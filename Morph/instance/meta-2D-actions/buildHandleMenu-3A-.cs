@@ -4,10 +4,11 @@ buildHandleMenu: aHand
 	| menu |
 	menu _ MenuMorph new defaultTarget: self.
 	menu addStayUpItem.
-	self addAddHandMenuItemsForHalo: menu hand: aHand.
+	menu addLine.
+	self addStandardHaloMenuItemsTo: menu hand: aHand.
+	menu defaultTarget: aHand.
+	self addAddHandMenuItemsForHalo: menu  hand: aHand.
 	menu defaultTarget: self.
 	self addCustomHaloMenuItems: menu hand: aHand.
-	menu addLine.
-	self player ifNotNil: [self player addPlayerMenuItemsTo: menu hand: aHand].
 	menu defaultTarget: aHand.
 	^ menu
