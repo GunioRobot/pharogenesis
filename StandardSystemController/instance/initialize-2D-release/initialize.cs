@@ -1,5 +1,3 @@
 initialize
-
 	super initialize.
-	status _ #inactive.
-	self initializeBlueButtonMenu
+	status _ #inactive
