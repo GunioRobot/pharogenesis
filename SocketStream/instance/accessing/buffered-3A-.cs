@@ -1,0 +1,2 @@
+buffered: aBoolean
+	buffered := aBoolean
