@@ -10,18 +10,18 @@ type = 'gif' ifTrue: [
 	pic16Bit "really 8" _ GIFReadWriter formFromFileNamed: fileName.
 	pic16Bit display.
 	aa _ AllOnImage _ Form extent: OriginalBounds extent depth: 8.
-	blt _ BitBlt toForm: aa.
+	blt _ BitBlt current toForm: aa.
 	blt sourceForm: pic16Bit; combinationRule: Form over;
 		sourceRect: OriginalBounds; destOrigin: 0@0; copyBits.
 	].
 type = 'bmp' ifTrue: [
-	pic16Bit _ Form fromBMPFileNamed: fileName depth: 16.
+	pic16Bit _ (Form fromBMPFileNamed: fileName) asFormOfDepth: 16.
 	pic16Bit display.
 	aa _ AllOnImage _ Form extent: OriginalBounds extent depth: 16.
-	blt _ BitBlt toForm: aa.
+	blt _ BitBlt current toForm: aa.
 	blt sourceForm: pic16Bit; combinationRule: Form over;
 		sourceRect: OriginalBounds; destOrigin: 0@0; copyBits.
-	aa removeZeroPixelsFromForm.
+	aa mapColor: Color transparent to: Color black.
 	].
 	"Collect all the images for the buttons in the on state"
 	self allMorphsDo: [:button |
