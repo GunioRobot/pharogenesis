@@ -1,9 +1,10 @@
 toss: cancelButton with: cancelSelector
-	"Reject the painting.  Showing noPalette is done by the block submitted to the SketchMorphEditor, see (EToyHand makeNewDrawing) and (SketchMorph editDrawingInWorld:forBackground:)."
+	"Reject the painting.  Showing noPalette is done by the block submitted to the SketchEditorMorph"
 
-	| ss |
+	| focus |
 	owner ifNil: ["it happens"  ^ self].
-	(ss _ self world findA: SketchEditorMorph) 
-		ifNotNil: [ss cancel]
-		ifNil: [self notCurrentlyPainting].
+	(focus _ self focusMorph) 
+		ifNotNil: [focus cancelPainting: self]
+		ifNil:
+			[self delete].
 	cancelButton state: #off.
