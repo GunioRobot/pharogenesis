@@ -1,0 +1,2 @@
+descentOf: aCharacter
+	^ self descent
