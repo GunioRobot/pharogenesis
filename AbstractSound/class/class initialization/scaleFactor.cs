@@ -1,0 +1,3 @@
+scaleFactor
+
+	^ ScaleFactor
