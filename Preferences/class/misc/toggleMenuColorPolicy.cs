@@ -1,0 +1,2 @@
+toggleMenuColorPolicy
+	self togglePreference: #menuColorFromWorld
