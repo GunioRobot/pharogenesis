@@ -1,0 +1,1 @@
+B3DSpotLight class instanceVariableNames: ''
