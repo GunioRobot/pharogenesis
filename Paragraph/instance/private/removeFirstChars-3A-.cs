@@ -11,5 +11,5 @@ removeFirstChars: numberOfChars
 		[delta _ scrollDelta. 	"deleting some visible lines"
 		self clearVisibleRectangle].
 	self replaceFrom: 1 to: numberOfChars with: '' asText displaying: false.
-	compositionRectangle moveBy: 0@delta.
+	compositionRectangle _ compositionRectangle translateBy: 0@delta.
 	delta = scrollDelta ifTrue: [self display]
