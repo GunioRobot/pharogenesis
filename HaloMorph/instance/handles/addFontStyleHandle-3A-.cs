@@ -1,4 +1,8 @@
-addFontStyleHandle: haloSpec
-	(innerTarget isKindOf: TextMorph) ifTrue:
-		[self addHandle: haloSpec
-				on: #mouseDown send: #chooseStyle to: innerTarget]
+addFontStyleHandle: haloSpec 
+	(innerTarget isTextMorph) 
+		ifTrue: 
+			[self 
+				addHandle: haloSpec
+				on: #mouseDown
+				send: #chooseStyle
+				to: innerTarget]
