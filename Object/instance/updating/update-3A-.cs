@@ -3,4 +3,4 @@ update: aParameter
 	dependent. The default behavior is to do nothing; a subclass might want 
 	to change itself in some way."
 
-	^self
+	^ self
