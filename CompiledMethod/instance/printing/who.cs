@@ -7,4 +7,5 @@ who
 		class selectorsDo:
 			[:sel |
 			(class compiledMethodAt: sel) == self 
-				ifTrue: [^Array with: class with: sel]]]
+				ifTrue: [^Array with: class with: sel]]].
+	^ Array with: #unknown with: #unknown
