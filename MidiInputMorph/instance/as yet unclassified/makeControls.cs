@@ -1,17 +1,16 @@
 makeControls
 
-	| b r reverbSwitch onOffSwitch |
-	b _ SimpleButtonMorph new
+	| bb r reverbSwitch onOffSwitch |
+	bb _ SimpleButtonMorph new
 		target: self;
 		borderColor: #raised;
 		borderWidth: 2;
 		color: color.
 	r _ AlignmentMorph newRow.
-	r color: b color; borderWidth: 0; layoutInset: 0.
+	r color: bb color; borderWidth: 0; layoutInset: 0.
 	r hResizing: #shrinkWrap; vResizing: #shrinkWrap; extent: 5@5.
 	r addMorphBack: (
-		b fullCopy
-			label: '<>';
+		bb label: '<>';
 			actWhen: #buttonDown;
 			actionSelector: #invokeMenu).
 	onOffSwitch _ SimpleSwitchMorph new
