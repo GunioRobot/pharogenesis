@@ -11,7 +11,7 @@ adjustWindowCorners
 				(Cursor perform: readCorner) showWhile:
 					[[(cornerBox containsPoint: (p _ sensor cursorPoint))
 						and: [(clicked _ sensor anyButtonPressed) not]]
-						whileTrue.
+						whileTrue: [ self interActivityPause ].
 				"Display reverse: cornerBox."
 				clicked ifTrue:
 					[view newFrame:
