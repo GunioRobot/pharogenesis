@@ -1,6 +1,5 @@
-<= other
-
-	date = other date ifFalse: [^ date < other date].
-	time == nil ifTrue: [^ true].
-	other time == nil ifTrue: [^ false].
-	^ time <= other time
+<= other 
+	date = other date ifFalse: [^date < other date].
+	time isNil ifTrue: [^true].
+	other time isNil ifTrue: [^false].
+	^time <= other time
