@@ -1,0 +1,3 @@
+shortPrintString
+
+	^ 'Transparent'
