@@ -14,10 +14,9 @@ initializeObjectMemory: bytesToShift
 	youngStart _ endOfMemory.
 
 	"image may be at a different address; adjust oops for new location"
-	totalObjectFoundAtStartup _ (self adjustAllOopsBy: bytesToShift) bitAnd: 16rFFFFFFFC.
+	totalObjectCount _ self adjustAllOopsBy: bytesToShift.
 
-	self initializeMemoryFirstFree: endOfMemory.
-		"initializes endOfMemory, freeBlock"
+	self initializeMemoryFirstFree: endOfMemory. "initializes endOfMemory, freeBlock"
 
 	specialObjectsOop _ specialObjectsOop + bytesToShift.
 
@@ -27,9 +26,6 @@ initializeObjectMemory: bytesToShift
 	trueObj	_ self splObj: TrueObject.
 
 	rootTableCount _ 0.
-	child _ 0.
-	field _ 0.
-	parentField _ 0.
 	freeContexts _ NilContext.
 	freeLargeContexts _ NilContext.
 	allocationCount _ 0.
@@ -42,6 +38,8 @@ initializeObjectMemory: bytesToShift
 	remapBufferCount _ 0.
 	allocationsBetweenGCs _ 4000.  "do incremental GC after this many allocations"
 	tenuringThreshold _ 2000.  "tenure all suriving objects if count is over this threshold"
+	growHeadroom _ 4*1024*1024. "four megabyte of headroom when growing"
+	shrinkThreshold _ 8*1024*1024. "eight megabyte of free space before shrinking"
 
 	"garbage collection statistics"
 	statFullGCs _ 0.
@@ -50,5 +48,3 @@ initializeObjectMemory: bytesToShift
 	statIncrGCMSecs _ 0.
 	statTenures _ 0.
 	statRootTableOverflows _ 0.
-
-	displayBits _ 0.  "support for the Acorn VM; ignored if zero"
