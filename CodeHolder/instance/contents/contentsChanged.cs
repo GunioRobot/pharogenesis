@@ -1,3 +1,4 @@
 contentsChanged
-	self changed: #contents.
+
+	super contentsChanged.
 	self changed: #annotation
