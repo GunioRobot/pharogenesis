@@ -1,0 +1,3 @@
+hasAudio
+	^self external hasAudio
+	
