@@ -4,10 +4,10 @@ whichSelectorsAccess: instVarName
 
 	| instVarIndex |
 	instVarIndex _ self allInstVarNames indexOf: instVarName ifAbsent: [^Set new].
-	^methodDict keys select: 
+	^ self methodDict keys select: 
 		[:sel | 
-		((methodDict at: sel)
+		((self methodDict at: sel)
 			readsField: instVarIndex)
-			or: [(methodDict at: sel) writesField: instVarIndex]]
+			or: [(self methodDict at: sel) writesField: instVarIndex]]
 
 	"Point whichSelectorsAccess: 'x'."
