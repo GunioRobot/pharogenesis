@@ -7,4 +7,4 @@ removeChangeSetIfPossible
 	(changeSet projectsBelongedTo copyWithout: self) isEmpty ifFalse: [^self].
 	itsName _ changeSet name.
 	ChangeSorter removeChangeSet: changeSet.
-	Transcript cr; show: 'project change set ', itsName, ' deleted.'
+	"Transcript cr; show: 'project change set ', itsName, ' deleted.'"
