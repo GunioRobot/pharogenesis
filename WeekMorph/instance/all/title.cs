@@ -8,10 +8,12 @@ title
 		vResizing: #shrinkWarp;
 		height: tileRect height.
 		extent _ self tile extent.
-	days _ Week startMonday
-		ifTrue: [7 to: 1 by: -1]       "Original code, Mon-Sun."
-		ifFalse: [#(6 5 4 3 2 1 7)].   "Sun-Sat."
-	(days collect: [:each | Date nameOfDay: each]) do:
+		
+	days _ (Week startDay = #Monday)
+		ifTrue: [ #(2 3 4 5 6 7 1) ]
+		ifFalse: [ 1 to: 7 ].
+		
+	(days reverse collect: [:each | Date nameOfDay: each]) do:
 		[:each |
 		title addMorph:
 			((self tileLabeled: (each copyFrom: 1 to: 2))
