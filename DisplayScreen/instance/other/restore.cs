@@ -1,4 +1,4 @@
 restore
 	Smalltalk isMorphic
-		ifTrue: [self repaintMorphicDisplay]
+		ifTrue: [World fullRepaintNeeded]
 		ifFalse: [ScheduledControllers unCacheWindows; restore].
