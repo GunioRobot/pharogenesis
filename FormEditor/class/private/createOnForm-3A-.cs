@@ -1,6 +1,5 @@
 createOnForm: aForm
 	"Create a StandardSystemView for a FormEditor on the form aForm."
-
 	| formView formEditor menuView aView topView extent topViewBorder |
 	topViewBorder _ 2.
 	formView _ FormHolderView new model: aForm.
@@ -18,9 +17,6 @@ createOnForm: aForm
 		((formView viewport 
 			merge: (menuView viewport expandBy: (16 @ 0 corner: 16@16))) 
 		  expandBy: (0@topViewBorder corner: 0@0)).
-	aView window extent > formView viewport extent
-		ifTrue: [formView borderWidthLeft: 1 right: 1 top: 0 bottom: 1]
-		ifFalse: [formView borderWidthLeft: 0 right: 0 top: 0 bottom: 1].
 	topView _ StandardSystemView new.
 	topView backgroundColor: #veryLightGray.
 	topView addSubView: aView.
