@@ -5,11 +5,11 @@ copyBitsTranslucent: factor
 	<primitive: 'primitiveCopyBits' module: 'BitBltPlugin'>
 
 	"Check for compressed source, destination or halftone forms"
-	((sourceForm isKindOf: Form) and: [sourceForm unhibernate])
+	((sourceForm isForm) and: [sourceForm unhibernate])
 		ifTrue: [^ self copyBitsTranslucent: factor].
-	((destForm isKindOf: Form) and: [destForm unhibernate])
+	((destForm isForm) and: [destForm unhibernate])
 		ifTrue: [^ self copyBitsTranslucent: factor].
-	((halftoneForm isKindOf: Form) and: [halftoneForm unhibernate])
+	((halftoneForm isForm) and: [halftoneForm unhibernate])
 		ifTrue: [^ self copyBitsTranslucent: factor].
 
 	self primitiveFailed  "Later do nicer error recovery -- share copyBits recovery"
