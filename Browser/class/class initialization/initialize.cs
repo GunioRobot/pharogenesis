@@ -1,4 +1,7 @@
 initialize
-        "Browser initialize"
+	"Browser initialize"
 
-        RecentClasses := OrderedCollection new
+	RecentClasses := OrderedCollection new.
+	self 
+		registerInFlapsRegistry;
+		registerInAppRegistry	
