@@ -1,7 +1,7 @@
 openEditorOn: aFileStream editString: editString
 	"Open an editor on the given FileStream."
 	| fileModel topView fileContentsView |
-	World ifNotNil: [^ self openMorphOn: aFileStream editString: editString ].
+	Smalltalk isMorphic ifTrue: [^ (self openMorphOn: aFileStream editString: editString) openInWorld].
 
 	fileModel _ FileList new setFileStream: aFileStream.	"closes the stream"
 	topView _ StandardSystemView new.
