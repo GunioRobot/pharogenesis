@@ -2,7 +2,7 @@ displayOn: aDisplayMedium at: aDisplayPoint clippingBox: clipRectangle rule: rul
 	"This is the real display message, but it doesn't get used until the new
 	display protocol is installed."
 	| targetBox patternBox bb |
-	(patternForm isKindOf: Form) ifFalse:
+	(patternForm isForm) ifFalse:
 		[^ aDisplayMedium fill: clipRectangle rule: ruleInteger fillColor: patternForm].
 
 	"Do it iteratively"
@@ -12,7 +12,7 @@ displayOn: aDisplayMedium at: aDisplayPoint clippingBox: clipRectangle rule: rul
 		combinationRule: ruleInteger destOrigin: 0@0 sourceOrigin: 0@0
 		extent: patternBox extent clipRect: clipRectangle.
 	bb colorMap:
-		(patternForm colormapIfNeededForDepth: aDisplayMedium depth).
+		(patternForm colormapIfNeededFor: aDisplayMedium).
 	(targetBox left truncateTo: patternBox width)
 		to: targetBox right - 1 by: patternBox width do:
 		[:x |
