@@ -1,3 +1,5 @@
-trackCenterOfRotation: anEvent with: rotationCenterHandle
+trackCenterOfRotation: anEvent with: rotationHandle
+	(rotationHandle hasProperty: #dragByCenterOfRotation) 
+		ifTrue:[^self doDrag: anEvent with: rotationHandle].
 	anEvent hand obtainHalo: self.
-	rotationCenterHandle center: anEvent cursorPoint
+	rotationHandle center: anEvent cursorPoint.
