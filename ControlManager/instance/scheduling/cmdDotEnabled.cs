@@ -1,0 +1,2 @@
+cmdDotEnabled
+	^ CmdDotEnabled ~~ false
