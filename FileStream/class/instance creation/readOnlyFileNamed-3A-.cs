@@ -1,2 +1,2 @@
 readOnlyFileNamed: fileName 
-	^ StandardFileStream readOnlyFileNamed: (self fullName: fileName)
+	^ self concreteStream readOnlyFileNamed: (self fullName: fileName)
