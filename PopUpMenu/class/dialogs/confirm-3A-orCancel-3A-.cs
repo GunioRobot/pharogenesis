@@ -6,7 +6,7 @@ confirm: queryString orCancel: cancelBlock
 	"PopUpMenu confirm: 'Reboot universe' orCancel: [^'Nevermind']"
 
 	| menu choice |
-	menu _ PopUpMenu labelArray: {'Yes'. 'No'. 'Cancel'}.
+	menu _ PopUpMenu labelArray: {'Yes' translated. 'No' translated. 'Cancel' translated}.
 	choice _ menu startUpWithCaption: queryString.
 	choice = 1 ifTrue: [^ true].
 	choice = 2 ifTrue: [^ false].
