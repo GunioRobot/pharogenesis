@@ -1,7 +1,5 @@
-+ delta 
-	"Answer a Point that is the sum of the receiver and delta (which is a 
-	Point or Number)."
++ arg 
+	"Answer a Point that is the sum of the receiver and arg."
 
-	| deltaPoint |
-	deltaPoint _ delta asPoint.
-	^x + deltaPoint x @ (y + deltaPoint y)
+	arg isPoint ifTrue: [^ (x + arg x) @ (y + arg y)].
+	^ arg adaptToPoint: self andSend: #+
