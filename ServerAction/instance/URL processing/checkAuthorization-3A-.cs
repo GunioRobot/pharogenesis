@@ -1,0 +1,2 @@
+checkAuthorization: request
+	^self
