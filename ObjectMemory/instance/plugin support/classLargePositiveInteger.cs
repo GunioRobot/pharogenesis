@@ -1,0 +1,2 @@
+classLargePositiveInteger
+	^self splObj: ClassLargePositiveInteger
