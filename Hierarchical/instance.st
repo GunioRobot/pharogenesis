@@ -1,6 +1,6 @@
 Object
 	subclass: #Hierarchical
-	instanceVariableNames: 'myParent myChildren '
+	instanceVariableNames: 'myParent myChildren'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon3D-Wonderland Objects'
+	category: 'Balloon3D-Wonderland-Objects'
