@@ -1,2 +1,3 @@
 attachmentSeparator
-	^(self fields at: 'Content-Type') parameters at: 'boundary' 
+	^(self fieldNamed: 'content-type' ifAbsent: [^nil]) parameters
+		at: 'boundary' ifAbsent: [^nil]
