@@ -1,0 +1,2 @@
+copyBitsSimulated
+	^BitBltSimulation copyBitsFrom: self.
