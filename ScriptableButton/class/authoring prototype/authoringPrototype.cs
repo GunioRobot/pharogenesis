@@ -6,8 +6,8 @@ authoringPrototype
 		borderColor: Color black;
 		useRoundedCorners;
 		color: Color yellow;
-		label: 'Press me';
-		setNameTo: 'script1';
+		label: 'Press me' translated;
+		setNameTo: ('script{1}' translated format: {'1'});
 		yourself
 
 "ScriptableButton authoringPrototype openInHand"
