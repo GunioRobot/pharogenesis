@@ -1,0 +1,2 @@
+unload
+	Smalltalk removeClassNamed: name
