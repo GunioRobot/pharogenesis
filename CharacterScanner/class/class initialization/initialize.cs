@@ -1,12 +1,19 @@
 initialize
-	"CharacterScanner initialize"
-	"NewCharacterScanner initialize"
-	| stopConditions |
-	stopConditions _ Array new: 258.
-	stopConditions atAllPut: nil.
-	stopConditions at: Space asciiValue + 1 put: nil.
-	stopConditions at: Tab asciiValue + 1 put: #tab.
-	stopConditions at: CR asciiValue + 1 put: #cr.
-	stopConditions at: EndOfRun put: #endOfRun.
-	stopConditions at: CrossedX put: #crossedX.
-	DefaultStopConditions _ stopConditions.
+"
+	CharacterScanner initialize
+"
+	| a |
+	a _ Array new: 258.
+	a at: 1 + 1 put: #embeddedObject.
+	a at: Tab asciiValue + 1 put: #tab.
+	a at: CR asciiValue + 1 put: #cr.
+	a at: EndOfRun put: #endOfRun.
+	a at: CrossedX put: #crossedX.
+	NilCondition _ a copy.
+	DefaultStopConditions _ a copy.
+
+	PaddedSpaceCondition _ a copy.
+	PaddedSpaceCondition at: Space asciiValue + 1 put: #paddedSpace.
+	
+	SpaceCondition _ a copy.
+	SpaceCondition at: Space asciiValue + 1 put: #space.
