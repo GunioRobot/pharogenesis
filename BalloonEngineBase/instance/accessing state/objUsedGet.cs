@@ -1,0 +1,2 @@
+objUsedGet
+	^workBuffer at: GWObjUsed
