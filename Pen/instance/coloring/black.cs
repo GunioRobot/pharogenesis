@@ -1,4 +1,4 @@
 black
-	"Set the receiver's mask to the black form."
+	"Set the receiver's mask to black."
 
-	self fillColor: destForm black
+	self fillColor: Color black.
