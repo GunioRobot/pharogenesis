@@ -2,9 +2,8 @@ restoreSavedPatchOn: aCanvas
 	"Clear the changed flag and restore the part of the given canvas under this hand from the previously saved patch. If necessary, handle the transition to using the hardware cursor."
 
 	hasChanged _ false.
-	savedPatch ifNotNil: [
-		aCanvas image: savedPatch at: savedPatch offset.
-
+	savedPatch ifNotNil:
+		[aCanvas drawImage: savedPatch at: savedPatch offset.
 		((userInitials size = 0) and:
 		 [(submorphs size = 0) and:
 		 [temporaryCursor == nil]]) ifTrue: [
