@@ -6,8 +6,8 @@ debug
 	Smalltalk isMorphic
 		ifTrue:
 			[self breakDependents.
-			self openFullMorphicLabel: topView label.
-			^ topView delete].
+			topView delete.
+			^ self openFullMorphicLabel: topView label].
 
 	topView controller controlTerminate.
 	topView deEmphasize; erase.
