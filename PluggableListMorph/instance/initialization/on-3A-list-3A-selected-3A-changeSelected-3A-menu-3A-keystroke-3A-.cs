@@ -7,6 +7,6 @@ on: anObject list: getListSel selected: getSelectionSel changeSelected: setSelec
 	keystrokeActionSelector _ keyActionSel.
 	autoDeselect _ true.
 	self borderWidth: 1.
-	self list: self getList.
+	self updateList.
 	self selectionIndex: self getCurrentSelectionIndex.
 	self initForKeystrokes
