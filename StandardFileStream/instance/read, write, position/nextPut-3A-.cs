@@ -1,6 +1,7 @@
 nextPut: char
-	"Put char on the receiver stream.  2/12/96 sw"
+	"Write the given character to this file."
+
+	rwmode ifFalse: [^ self error: 'Cannot write a read-only file'].
 	buffer1 at: 1 put: char.
-	self primWrite: fileID from: buffer1
-		startingAt: 1 count: 1.
+	self primWrite: fileID from: buffer1 startingAt: 1 count: 1.
 	^ char
