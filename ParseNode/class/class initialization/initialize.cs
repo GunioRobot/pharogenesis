@@ -12,11 +12,13 @@ initialize
 	LdFalse _ 114.
 	LdNil _ 115.
 	LdMinus1 _ 116.
-	LdInstLong _ 128.
+	LoadLong _ 128.
 	Store _ 129.
 	StorePop _ 130.
 	ShortStoP _ 96.
 	SendLong _ 131.
+	DblExtDoAll _ 132.
+	SendLong2 _ 134.
 	LdSuper _ 133.
 	Pop _ 135.
 	Dup _ 136.
