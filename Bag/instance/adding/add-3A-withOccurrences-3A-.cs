@@ -1,8 +1,5 @@
 add: newObject withOccurrences: anInteger 
-	"Add the element newObject to the receiver. Do so as though the element 
-	were added anInteger number of times. Answer newObject."
+	"Add newObject anInteger times to the receiver. Answer newObject."
 
-	(self includes: newObject)
-		ifTrue: [contents at: newObject put: anInteger + (contents at: newObject)]
-		ifFalse: [contents at: newObject put: anInteger].
-	^newObject
+	contents at: newObject put: (contents at: newObject ifAbsent: [0]) + anInteger.
+	^ newObject
