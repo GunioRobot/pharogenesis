@@ -14,4 +14,5 @@ volumeListIndex: index
 	brevityState := #FileList.
 	self addPath: path.
 	self changed: #fileList.
-	self changed: #contents
+	self changed: #contents.
+	self updateButtonRow
