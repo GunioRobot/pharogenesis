@@ -9,5 +9,5 @@ redButtonActivity
 
 	"save size on enter for thumbnail on exit"
 	model setViewSize: view insetDisplayBox extent.
-	index = 1 ifTrue: [^ model enter: false].
+	index = 1 ifTrue: [^ model enter: false revert: false saveForRevert: false].
 	index = 2 ifTrue: [Project jumpToProject. ^ self].
