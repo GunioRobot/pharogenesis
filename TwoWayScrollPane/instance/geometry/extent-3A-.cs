@@ -1,3 +1,4 @@
 extent: newExtent
-	super extent: (newExtent max: 36@16).
-	self resizeScrollBar; resizeScroller; setScrollDeltas
+	bounds extent = newExtent ifTrue: [^ self].
+	super extent: (newExtent max: 36@32).
+	self resizeScrollBar; resizeScroller; setScrollDeltas.
