@@ -4,7 +4,10 @@ computeForm
 	| borderInset paraForm menuForm inside |
 	borderInset _ 4@4.
 	paraForm _ (DisplayText text: labelString asText textStyle: MenuStyle) form.
-	menuForm _ Form extent: paraForm extent + (borderInset * 2).
+	menuForm _ Form extent: paraForm extent + (borderInset * 2) depth: paraForm depth.
+      menuForm fill: (0 @ 0 extent: menuForm  extent)
+                        rule: Form over
+                        fillColor: Color white.
 	menuForm borderWidth: 2.
 	paraForm displayOn: menuForm at: borderInset.
 	lineArray == nil ifFalse:
