@@ -1,0 +1,2 @@
+dialectParserClass
+	^DialectParser
