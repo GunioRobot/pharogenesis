@@ -1,0 +1,2 @@
+whitePlayer
+	^whitePlayer
