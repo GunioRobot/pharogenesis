@@ -1,9 +1,10 @@
-addDependent: anObject 
-	"Add anObject as one of the receiver's dependents.  Uniform with generic #addDependent:, returns the newly-object dependent, though this feature is not used anywhere in the base system.  1/23/96 sw"
+addDependent: anObject
+	"Make the given object one of the receiver's dependents."
 
 	dependents == nil
-		ifTrue: 
-			[dependents _ OrderedCollection with: anObject]
-		ifFalse:
-			[dependents add: anObject].
-	^ anObject
+		ifTrue: [dependents _ Array with: anObject]
+		ifFalse: [
+			"done if anObject is already a dependent"
+			dependents do: [:o | o == anObject ifTrue: [^ self]].
+			"otherwise, add it"
+			dependents _ dependents copyWith: anObject].
