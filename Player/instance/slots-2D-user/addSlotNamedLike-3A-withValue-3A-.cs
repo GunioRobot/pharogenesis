@@ -1,5 +1,5 @@
 addSlotNamedLike: suggestedName withValue: aValue
-	| otherNames numericSuffix nameToUse  stem |
+	| otherNames numericSuffix nameToUse  stem itsInfo |
 	stem _ suggestedName first asLowercase asString , suggestedName allButFirst.
 	stem _ stem stemAndNumericSuffix first.
 	nameToUse _ stem.
@@ -9,7 +9,7 @@ addSlotNamedLike: suggestedName withValue: aValue
 		whileTrue: [numericSuffix _ numericSuffix + 1. (nameToUse _ stem, numericSuffix printString)].
 	self class addInstVarName: nameToUse.
 	self instVarAt: self class instSize put: aValue.  "Assumes added as last field"
-	self compileAccessorsFor: nameToUse.
-	self slotInfo at: nameToUse asSymbol put: aValue basicType.
-
+	self class compileAccessorsFor: nameToUse.
+	itsInfo _ SlotInformation new initialize type: aValue basicType.
+	self slotInfo at: nameToUse asSymbol put: itsInfo.
 	^ nameToUse
