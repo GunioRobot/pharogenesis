@@ -1,0 +1,2 @@
+isEmpty
+	^ numElements = 0
