@@ -1,4 +1,4 @@
 readOnly
-	"Set the receiver to be read-only"
+	"Make this file read-only."
 
-	rwmode _ false
+	rwmode _ false.
