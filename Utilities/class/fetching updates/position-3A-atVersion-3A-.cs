@@ -12,12 +12,13 @@ position: updateStrm atVersion: version
 					where _ updateStrm position.
 					data _ updateStrm upTo: (255 asCharacter).
 					updateStrm position: where.
-					^ data].
-						"won't be found -- copy all the way to the end"
+					^ data].	"won't be found -- copy all the way to the end"
 				updateStrm next.
 				(updateStrm nextMatchAll: version) ifTrue: [
-						foundIt _ true
-					]]]].
+					(updateStrm atEnd or: [(updateStrm peek = Character cr) | 
+						(updateStrm peek = Character lf)]) ifTrue: [
+							foundIt _ true
+					]]]]].
 	foundIt ifTrue: [
 		updateStrm setToEnd.
 		^ ''].
