@@ -1,8 +1,9 @@
 fullOnClass: aClass selector: aSelector
 	"Open a new full browser set to class."
 
-	| brow |
-	brow _ Browser new.
+	| brow classToUse |
+	classToUse _ Preferences browseToolClass.
+	brow _ classToUse new.
 	brow setClass: aClass selector: aSelector.
-	Browser openBrowserView: (brow openEditString: nil)
-		label: 'System Browser'
+	classToUse openBrowserView: (brow openEditString: nil)
+		label: brow defaultBrowserTitle
