@@ -1,7 +1,7 @@
 + aNumber
 	"Refer to the comment in Number + "
-	aNumber isInteger
-		ifTrue: [self negative == aNumber negative
-					ifTrue: [^(self digitAdd: aNumber) normalize]
-					ifFalse: [^self digitSubtract: aNumber]]
-		ifFalse: [^ (aNumber adaptInteger: self) + aNumber adaptToInteger]
+	aNumber isInteger ifTrue:
+		[self negative == aNumber negative
+			ifTrue: [^ (self digitAdd: aNumber) normalize]
+			ifFalse: [^ self digitSubtract: aNumber]].
+	^ aNumber adaptToInteger: self andSend: #+
