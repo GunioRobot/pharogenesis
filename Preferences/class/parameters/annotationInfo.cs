@@ -5,6 +5,8 @@ annotationInfo
 
 		(timeStamp			'The time stamp of the last submission of the method.')
 		(firstComment		'The first comment in the method, if any.')
+		(masterComment		'The comment at the beginning of the supermost implementor of the method if any.')
+		(documentation		'Comment at beginning of the method or, if it has none, comment at the beginning of a superclass''s implementation of the method')
 		(messageCategory	'Which method category the method lies in')
 		(sendersCount		'A report of how many senders there of the message.')
 		(implementorsCount	'A report of how many implementors there are of the message.')
