@@ -1,4 +1,4 @@
 selections: aList
-	"Create a Selection menu whose labels and selections are identical.  6/27/96 sw"
+	"Answer an instance of me whose labels and selections are identical.  "
 
 	^ self labelList: aList lines: nil selections: aList
