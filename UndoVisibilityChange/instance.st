@@ -1,6 +1,6 @@
 Object
 	subclass: #UndoVisibilityChange
-	instanceVariableNames: 'theActor originalVisibility '
+	instanceVariableNames: 'theActor originalVisibility'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon3D-Wonderland Undo'
+	category: 'Balloon3D-Wonderland-Undo'
