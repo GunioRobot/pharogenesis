@@ -62,18 +62,22 @@ Space check:
  | n rawBytes myBytes b |
 n _ rawBytes _ myBytes _ 0.
 Form allInstancesDo:
-	[:f | b _ f bits.
+	[:f | f unhibernate.
+	b _ f bits.
 	n _ n + 1.
 	rawBytes _ rawBytes + (b size*4).
-	myBytes _ myBytes + (b compressToByteArray size)].
+	myBytes _ myBytes + (b compressToByteArray size).
+	f hibernate].
 Array with: n with: rawBytes with: myBytes
 ColorForms: (116 230324 160318 )
 Forms: (113 1887808 1325055 )
 
 Integerity check:
 Form allInstances do:
-	[:f | f bits = (Bitmap decompressFromByteArray: f bits compressToByteArray)
-		ifFalse: [self halt]]
+	[:f | f unhibernate.
+	f bits = (Bitmap decompressFromByteArray: f bits compressToByteArray)
+		ifFalse: [self halt].
+	f hibernate]
 
 Speed test:
 MessageTally spyOn: [Form allInstances do:
