@@ -3,9 +3,10 @@ shuffleSubmorphs
 
 	| bg |
 	self invalidRect: self fullBounds.
-	(submorphs size > 0 and: [submorphs last mustBeBackmost]) ifTrue:
-		[bg _ submorphs last.
-		bg privateDelete].
-	submorphs _ submorphs shuffled.
+	(submorphs notEmpty and: [submorphs last mustBeBackmost]) 
+		ifTrue: 
+			[bg := submorphs last.
+			bg privateDelete].
+	submorphs := submorphs shuffled.
 	bg ifNotNil: [self addMorphBack: bg].
 	self layoutChanged
