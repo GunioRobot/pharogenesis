@@ -1,11 +1,14 @@
 initialize
+	"initialize the state of the receiver"
 	super initialize.
-	tileRect _ 0@0 extent: 23@19.
-	self layoutInset: 1;
-		color: Color red;
+	""
+	tileRect _ 0 @ 0 extent: 23 @ 19.
+	self 
+		layoutInset: 1;
 		listDirection: #topToBottom;
 		vResizing: #shrinkWrap;
 		hResizing: #shrinkWrap;
-		month: Date today month.
+		month: Month current.
+
 	self rubberBandCells: false.
-	self extent: 160@130.
+	self extent: 160 @ 130
