@@ -5,10 +5,7 @@ superclassSend
 	| rcvr |
 	self inline: true.
 	self sharedCodeNamed: 'commonSupersend' inCase: 133.
-
 	lkupClass _ self superclassOf: (self methodClassOf: method).
 	rcvr _ self internalStackValue: argumentCount.
 	receiverClass _ self fetchClassOf: rcvr.
-	self internalFindNewMethod.
-	self internalExecuteNewMethod.
-	self fetchNextBytecode.
+	self commonSend.
