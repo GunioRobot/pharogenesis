@@ -1,19 +1,17 @@
-+ aFraction
-
++ aNumber
+	"Answer the sum of the receiver and aNumber."
 	| commonDenominator newNumerator |
-	(aFraction isMemberOf: Fraction)
+	aNumber isFraction
 		ifTrue: 
-			[denominator = aFraction 
-	"Refer to the comment in Number|+." denominator 
-				ifTrue: [^(Fraction 
-							numerator: numerator + aFraction numerator
-							denominator: denominator) reduced].
-			commonDenominator _ denominator lcm: aFraction denominator.
-			newNumerator _ numerator 
-								* (commonDenominator / denominator) 
-								+ (aFraction numerator * 
-									(commonDenominator / aFraction denominator)).
-			^(Fraction 
+			[denominator = aNumber denominator ifTrue: [
+				^ (Fraction 
+					numerator: numerator + aNumber numerator
+					denominator: denominator) reduced].
+			commonDenominator _ denominator lcm: aNumber denominator.
+			newNumerator _
+				(numerator * (commonDenominator / denominator)) +
+				(aNumber numerator * (commonDenominator / aNumber denominator)).
+			^ (Fraction 
 				numerator: newNumerator 
 				denominator: commonDenominator) reduced]
-		ifFalse: [^self retry: #+ coercing: aFraction]
+		ifFalse: [^ (aNumber adaptFraction: self) + aNumber adaptToFraction]
