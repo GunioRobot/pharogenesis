@@ -12,8 +12,4 @@ chooseCollapsePoint
 							ifTrue: [beenDown _ true]
 							ifFalse: [beenDown not]].
 		^ pt].
-	collapsedViewport isNil ifTrue:
-		[^ RealEstateAgent assignCollapsePointFor: self].
-	labelForm slideFrom: self labelDisplayBox origin
-			to: (pt _ collapsedViewport topLeft) nSteps: 10.
-	^ pt
+	^ (RealEstateAgent assignCollapseFrameFor: self) origin.
