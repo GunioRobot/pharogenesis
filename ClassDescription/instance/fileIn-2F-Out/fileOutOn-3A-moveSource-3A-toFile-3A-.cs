@@ -3,17 +3,19 @@ fileOutOn: aFileStream moveSource: moveSource toFile: fileIndex
 	argument, moveSource, is true, then set the trailing bytes to the position 
 	of aFileStream and to fileIndex in order to indicate where to find the 
 	source code."
-	aFileStream emphasis: 5.
-	aFileStream nextChunkPut: self definition.
-	aFileStream emphasis: 3.
+
+	aFileStream command: 'H3'.
+		aFileStream nextChunkPut: self definition.
+		aFileStream command: '/H3'.
+
 	self organization
 		putCommentOnFile: aFileStream
 		numbered: fileIndex
-		moveSource: moveSource.
+		moveSource: moveSource
+		forClass: self.
 	self organization categories do: 
 		[:heading |
-		self
-			fileOutCategory: heading
+		self fileOutCategory: heading
 			on: aFileStream
 			moveSource: moveSource
 			toFile: fileIndex]
