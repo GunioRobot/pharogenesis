@@ -1,6 +1,5 @@
 digitAt: n 
-	"Answer the value of an indexable field in the receiver. Fail if the 
-	argument (the index) is not an Integer or is out of bounds."
+	"Answer the value of an indexable field in the receiver.  LargePositiveInteger uses bytes of base two number, and each is a 'digit' base 256.  Fail if the argument (the index) is not an Integer or is out of bounds."
 	n>4 ifTrue: [^ 0].
 	self < 0
 		ifTrue: 
