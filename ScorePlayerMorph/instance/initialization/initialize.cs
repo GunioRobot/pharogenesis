@@ -1,12 +1,12 @@
 initialize
-
+	"initialize the state of the receiver"
 	super initialize.
-	self listDirection: #topToBottom.
-	self wrapCentering: #center; cellPositioning: #topCenter.
-	self hResizing: #shrinkWrap.
-	self vResizing: #shrinkWrap.
-	self layoutInset: 3.
-	color _ Color veryLightGray.
-	self borderWidth: 2.
-	self onScorePlayer: (ScorePlayer new initialize) title: ' '.
-	self extent: 20@20.
+	""
+	self listDirection: #topToBottom;
+		 wrapCentering: #center;
+		 cellPositioning: #topCenter;
+		 hResizing: #shrinkWrap;
+		 vResizing: #shrinkWrap;
+		 layoutInset: 3;
+		 onScorePlayer: ScorePlayer new initialize title: ' ';
+		 extent: 20 @ 20 
