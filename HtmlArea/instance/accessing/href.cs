@@ -1,0 +1,2 @@
+href
+	^self getAttribute: 'href'
