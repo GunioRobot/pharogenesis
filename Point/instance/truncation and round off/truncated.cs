@@ -1,4 +1,5 @@
 truncated
-	"Answer a Point that is the receiver's x and y truncated by removing the fractional part."
+	"Answer a Point whose x and y coordinates are integers. Answer the receiver if its coordinates are already integral."
 
-	^(x truncated) @ (y truncated)
+	(x isInteger and: [y isInteger]) ifTrue: [^ self].
+	^ x truncated @ y truncated
