@@ -1,0 +1,2 @@
+stepTime: aNumber
+	stepTime := aNumber
