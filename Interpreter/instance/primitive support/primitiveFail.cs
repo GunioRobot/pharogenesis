@@ -1,0 +1,3 @@
+primitiveFail
+
+	successFlag _ false.
