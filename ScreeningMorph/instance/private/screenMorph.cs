@@ -1,2 +1,2 @@
 screenMorph
-	^ submorphs at: 1
+	^submorphs first
