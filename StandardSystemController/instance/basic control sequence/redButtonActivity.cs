@@ -1,10 +1,7 @@
 redButtonActivity
-	"If cursor is in label of a window when red button is pushed ,
-	check for closeBox or growBox, else drag the window frame.
-	5/10/96 sw: factored mouse-tracking-within-boxes into 
-		awaitMouseUpIn:ifSucceed:
-	5/12/96 sw: instead, call Utilities awaitMouseUpIn:repeating:ifSucceed:"
-	| box p inside |
+	"If cursor is in label of a window when red button is pushed,
+	check for closeBox or growBox, else drag the window frame"
+	| box p |
 	p _ sensor cursorPoint.
 	self labelHasCursor ifFalse: [super redButtonActivity. ^ self].
 	sensor blueButtonPressed & self viewHasCursor 
@@ -14,7 +11,9 @@ redButtonActivity
 				^ self].
 	((box _ view growBoxFrame) containsPoint: p)
 		ifTrue: [Utilities awaitMouseUpIn: box repeating: [] ifSucceed:
-					[^ view isCollapsed
+					[Sensor controlKeyPressed ifTrue:
+						[^ self expand; fullScreen].
+					^ view isCollapsed
 						ifTrue: [self expand]
 						ifFalse: [self collapse]].
 				^ self].
