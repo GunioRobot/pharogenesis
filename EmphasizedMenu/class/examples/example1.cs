@@ -3,5 +3,5 @@ example1
 
 	^ (self
 		selections: #('how' 'well' 'does' 'this' 'work?' ) 
-		emphases: #(#bold #plain #italic #struckOut #plain ))
+		emphases: #(#bold #normal #italic #struckOut #normal ))
 			startUpWithCaption: 'A Menu with Emphases'
