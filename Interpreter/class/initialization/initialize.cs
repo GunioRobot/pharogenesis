@@ -4,8 +4,10 @@ initialize
 	super initialize.  "initialize ObjectMemory constants"
 	self initializeAssociationIndex.
 	self initializeBytecodeTable.
+	self initializeCaches.
 	self initializeCharacterIndex.
 	self initializeClassIndices.
+	self initializeCompilerHooks.
 	self initializeContextIndices.
 	self initializeDirectoryLookupResultCodes.
 	self initializeMessageIndices.
@@ -16,11 +18,6 @@ initialize
 	self initializeSmallIntegers.
 	self initializeStreamIndices.
 
-	MethodCacheEntries _ 512. 
-	MethodCacheMask _ MethodCacheEntries - 1.
-	(MethodCacheEntries bitAnd: MethodCacheMask) = 0
-		ifFalse: [ self error: 'MethodCacheEntries must be a power of two' ].
-	MethodCacheSize _ MethodCacheEntries * 4.
-	CacheProbeMax _ 3.
-
-	SemaphoresToSignalSize _ 25.
+	SemaphoresToSignalSize _ 500.
+	PrimitiveExternalCallIndex _ 117. "Primitive index for #primitiveExternalCall"
+	GenerateBrowserPlugin _ false.
