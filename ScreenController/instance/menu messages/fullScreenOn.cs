@@ -1,4 +1,5 @@
 fullScreenOn
 
-	Smalltalk fullScreenMode: (LastScreenModeSelected _ true).
+	Display fullScreenMode: (LastScreenModeSelected _ true).
+	DisplayScreen checkForNewScreenSize.
 	self restoreDisplay.
