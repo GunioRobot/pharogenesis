@@ -8,19 +8,19 @@ enterForEmergencyRecovery
 	CurrentProject saveState.
 	CurrentProject _ self.
 	Display newDepthNoRestore: displayDepth.
-	Smalltalk newChanges: changeSet.
+	ChangeSet  newChanges: changeSet.
 	TranscriptStream newTranscript: transcript.
-	Display pauseMorphicEventRecorder.
+	World pauseEventRecorder.
 
 	world isMorph
 		ifTrue:
 			["Entering a Morphic project"
-			Display changeMorphicWorldTo: world.
+			World _ world.
 			world install.
 			world triggerOpeningScripts]
 		ifFalse:
 			["Entering an MVC project"
-			Display changeMorphicWorldTo: nil.
+			World _ nil.
 			Smalltalk at: #ScheduledControllers put: world.
 			ScheduledControllers restore].
 	UIProcess _ Processor activeProcess.
