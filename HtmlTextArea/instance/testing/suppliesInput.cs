@@ -1,0 +1,2 @@
+suppliesInput
+	^self name ~= nil
