@@ -1,0 +1,5 @@
+Hopefully this class ought to be useful as a general-purpose categorizer.
+
+gg: Has been remamed to CelesteCategorizer because of a naming conflict on Squeak 3.7
+     Was missed a call to initialize, fixed in the constructor
+gg 6/9/2004 20:09
