@@ -1,0 +1,1 @@
+This isn't really a proper general-purpose text classifier yet. I don't really know what that would look like. But it's a bit more general-purpose than just a spam filter.
