@@ -1,13 +1,14 @@
 strictlyStaggeredInitialFrameFor: aStandardSystemView initialExtent: initialExtent world: aWorld
-	"This method implements a staggered window placement policy that I like.
+	"This method implements a staggered window placement policy that I (di) like.
 	Basically it provides for up to 4 windows, staggered from each of the 4 corners.
-	The windows are staggered so that there will always be a corner visible.
-	"
+	The windows are staggered so that there will always be a corner visible."
+
 	| allowedArea grid initialFrame otherFrames cornerSel corner delta putativeCorner free maxLevel |
 
-	allowedArea _(self maximumUsableAreaInWorld: aWorld) insetBy: (
-		self scrollBarSetback @ self screenTopSetback extent: 0@0
-	).
+	allowedArea _(self maximumUsableAreaInWorld: aWorld)
+		insetBy: (self scrollBarSetback @ self screenTopSetback extent: 0@0).
+	(Smalltalk isMorphic and: [Flaps sharedFlapsAllowed]) ifTrue:
+		[allowedArea _ self reduceByFlaps: allowedArea].
 	"Number to be staggered at each corner (less on small screens)"
 	maxLevel _ allowedArea area > 300000 ifTrue: [3] ifFalse: [2].
 	"Amount by which to stagger (less on small screens)"
@@ -39,7 +40,7 @@ strictlyStaggeredInitialFrameFor: aStandardSystemView initialExtent: initialExte
 			free ifTrue:
 				[^ (initialFrame align: (initialFrame perform: cornerSel)
 								with: putativeCorner)
-						 squishedWithin: allowedArea]]].
+						 translatedAndSquishedToBeWithin: allowedArea]]].
 	"If all else fails..."
 	^ (self scrollBarSetback @ self screenTopSetback extent: initialFrame extent)
-		squishedWithin: allowedArea
+		translatedAndSquishedToBeWithin: allowedArea
