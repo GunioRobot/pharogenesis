@@ -12,9 +12,8 @@ Do you still want to proceed with the install?')
 	myRelease := self installedReleaseOfMe.
 	[Cursor wait showWhile: [
 		(SMInstaller forPackageRelease: aRelease) install.
-		myRelease = self installedReleaseOfMe
-					ifFalse: [self reOpen]
-					ifTrue: [self noteChanged]]
+		myRelease = self installedReleaseOfMe ifFalse: [self reOpen].
+		self noteChanged]
 	] on: Error do: [:ex |
 		| msg |
 		msg := ex messageText ifNil:[ex asString].
