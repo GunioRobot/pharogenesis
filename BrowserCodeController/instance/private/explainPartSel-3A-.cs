@@ -1,7 +1,7 @@
 explainPartSel: string 
 	"Is this a fragment of a multiple-argument selector sent in this method?"
 
-	| lits frag whole reply classes s |
+	| lits whole reply classes s |
 	model messageListIndex = 0 ifTrue: [^nil].  "not in a message"
 	string last == $: ifFalse: [^nil].
 	"Name of this method"
