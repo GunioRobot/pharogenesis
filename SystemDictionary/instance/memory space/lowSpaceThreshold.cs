@@ -3,4 +3,4 @@ lowSpaceThreshold
 
 	thisContext isPseudoContext
 		ifTrue: [^ 300000  "Allow for translated methods"]
-		ifFalse: [^  80000  "Enough for interpreter"]
+		ifFalse: [^ 100000  "Enough for interpreter"]
