@@ -1,7 +1,7 @@
-setOtherSelection: otherOrNil
-
-	otherSelection _ otherOrNil.
-	otherOrNil == nil
+setOtherSelection: otherOrNil 
+	otherSelection := otherOrNil.
+	otherOrNil isNil 
 		ifTrue: [super borderColor: Color blue]
-		ifFalse: [itemsAlreadySelected _ otherSelection selectedItems.
-				super borderColor: Color green]
+		ifFalse: 
+			[itemsAlreadySelected := otherSelection selectedItems.
+			super borderColor: Color green]
