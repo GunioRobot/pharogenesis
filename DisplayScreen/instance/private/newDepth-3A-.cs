@@ -4,4 +4,4 @@ newDepth: pixelSize
 	Display newDepth: 1.
 "
 	self newDepthNoRestore: pixelSize.
-	ControlManager shutDown; startUp.
+	ScheduledControllers unCacheWindows; restore.
