@@ -40,5 +40,5 @@ bodyTextFormatted
 		^(MailMessage from: self body content) formattedText ].
 
 	"nothing special--just return the text"
-	^body content.
+	^body content isoToSqueak.
 
