@@ -4,8 +4,5 @@ openProjectFromFile
 	appropriate Morphic world."
 
  	| preStream |
-	Smalltalk verifyMorphicAvailability ifFalse: [^ self].
-	Smalltalk isMorphic ifFalse: [^ self inform: 
-			'Later, allow jumping from MVC to Morphic Projects.'].
 	preStream _ directory oldFileNamed: self fullName.
 	ProjectViewMorph openFromFile: preStream
