@@ -9,7 +9,7 @@ incCompMakeFwd
 			bytesFreed _ bytesFreed + (self sizeOfFree: oop).
 		] ifFalse: [
 			"create a forwarding block for oop"
-			fwdBlock _ self fwdBlockGet.
+			fwdBlock _ self fwdBlockGet: 8.  "Two-word block"
 			fwdBlock = nil ifTrue: [
 				"stop; we have used all available forwarding blocks"
 				compEnd _ self chunkFromOop: oop.
@@ -17,7 +17,7 @@ incCompMakeFwd
 			].
 
 			newOop _ oop - bytesFreed.
-			self initForwardBlock: fwdBlock mapping: oop to: newOop.
+			self initForwardBlock: fwdBlock mapping: oop to: newOop withBackPtr: false.
 		].
 		oop _ self objectAfterWhileForwarding: oop.
 	].
