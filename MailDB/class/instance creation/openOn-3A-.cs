@@ -9,5 +9,5 @@ openOn: rootFilename
 			 [db rootFilename = rootFilename]]
 		ifNone: [nil].
 	(alreadyOpenDB notNil)
-		ifTrue: [^alreadyOpenDB]
+		ifTrue: [^alreadyOpenDB reopenDB]
 		ifFalse: [^(self new) openOn: rootFilename].
