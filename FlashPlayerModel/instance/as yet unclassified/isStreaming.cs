@@ -1,0 +1,2 @@
+isStreaming
+	^player isStreaming
