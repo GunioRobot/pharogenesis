@@ -11,7 +11,11 @@ list: arrayOfStrings
 		withArray:
 			(Array streamContents: [:s |
 				s nextPut: topDelimiter.
-				arrayOfStrings do: [:item | item == nil ifFalse: [s nextPut: item]].
+				arrayOfStrings do:
+					[:item | item == nil ifFalse:
+						[(item isMemberOf: MethodReference)  "A very specific fix for MVC"
+							ifTrue: [s nextPut: item asStringOrText]
+							ifFalse: [s nextPut: item]]].
 				s nextPut: bottomDelimiter])
 		 style: self assuredTextStyle.
 
