@@ -1,6 +1,6 @@
 Object
 	subclass: #UndoParentChange
-	instanceVariableNames: 'oldParent theActor '
+	instanceVariableNames: 'oldParent theActor'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon3D-Wonderland Undo'
+	category: 'Balloon3D-Wonderland-Undo'
