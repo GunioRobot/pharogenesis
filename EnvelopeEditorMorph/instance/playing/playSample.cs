@@ -1,0 +1,2 @@
+playSample
+	self perform: whatToPlay
