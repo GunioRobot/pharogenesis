@@ -1,13 +1,7 @@
 contents: aString notifying: aController 
-	"Compile the code in aString and notify aController of any errors. Answer 
-	true if compilation succeeds, false otherwise."
+	"Compile the code in aString and notify aController of any errors.
+	If there are no errors, then automatically proceed."
 
-	| selectedMessageName compiledSelector |
-	selectedMessageName _ selector.
-	compiledSelector _ class
-							compile: aString
-							classified: category
-							notifying: aController.
-	compiledSelector == nil ifTrue: [^false].
-	contents _ aString.
-	^true
+	(class compile: aString classified: category notifying: aController)
+		 == nil ifTrue: [^ false].
+	self autoProceed
