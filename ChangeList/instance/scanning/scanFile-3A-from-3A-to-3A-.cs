@@ -20,6 +20,7 @@ scanFile: aFile from: startPosition to: stopPosition
 		ifFalse:
 			[itemPosition _ file position.
 			item _ file nextChunk.
+			file skipStyleChunk.
 			item size > 0 ifTrue:
 				[self addItem: (ChangeRecord new file: file position: itemPosition type: #doIt)
 					text: 'do it: ' , (item contractTo: 50)]]]].
