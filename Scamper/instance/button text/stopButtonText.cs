@@ -1,3 +1,2 @@
 stopButtonText
-
-	^'Stop loading page'
+	^ 'Stop loading page' translated
