@@ -4,7 +4,7 @@ browseVersions
 	| class selector |
 	(selector _ self selectedMessageName) ifNotNil:
 		[class _ self selectedClassOrMetaClass.
-		ChangeList
+		VersionsBrowser
 			browseVersionsOf: (class compiledMethodAt: selector)
 			class: self selectedClass
 			meta: class isMeta
