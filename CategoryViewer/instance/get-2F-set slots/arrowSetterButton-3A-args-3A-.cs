@@ -6,7 +6,7 @@ arrowSetterButton: sel args: argArray
 		extent: 24@TileMorph defaultH;
 		borderWidth: 0.
 	m addMorphCentered: (ImageMorph new image: (ScriptingSystem formAtKey: 'Gets')).
-	m setBalloonText: 'drag from here to obtain an assignment phrase.'.
+	m setBalloonText: 'drag from here to obtain an assignment phrase.' translated.
 	m on: #mouseDown send: sel
 		to: self
 		withValue: argArray.
