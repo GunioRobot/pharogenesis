@@ -2,7 +2,7 @@ hasInterned: aString ifTrue: symBlock
 	"Answer with false if aString hasnt been interned (into a Symbol), 
 	otherwise supply the symbol to symBlock and return true."
 
-	| table ascii numArgs |
+	| table ascii numArgs symbol |
 
 	ascii _ (aString at: 1) asciiValue.
 	aString size = 1 ifTrue: [ascii < 128 ifTrue: 
@@ -17,8 +17,9 @@ hasInterned: aString ifTrue: symBlock
 			ifFalse: [OtherTable at: aString stringhash \\ OtherTable size + 1].
 
 	1 to: table size do: [:i | 
-		aString size = (table at: i) size ifTrue: [aString = (table at: i) ifTrue: [
-			symBlock value: (table at: i).
-			^true]]
+		symbol _ table at: i.
+		(symbol notNil and:[aString size = symbol size and: [aString = symbol]]) ifTrue: [
+			symBlock value: symbol.
+			^true]
 	].
 	^false
