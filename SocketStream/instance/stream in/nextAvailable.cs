@@ -1,5 +1,7 @@
 nextAvailable
-	"Answer all the data currently available."
-	self inStream atEnd ifFalse: [^ self inStream upToEnd].
+	"Answer all the data currently available,
+	in buffer or in socket."
+
+	self isInBufferEmpty ifFalse: [^self nextAllInBuffer].
 	self isDataAvailable ifTrue: [self receiveData].
-	^self inStream upToEnd
+	^self nextAllInBuffer
