@@ -7,19 +7,19 @@ tryCopyingBitsQuickly
 	noSource ifTrue:[^false].
 	"We handle only combinationRule 34"
 	(combinationRule = 34) ifFalse:[^false].
-	"We handle only sourcePixSize 32"
-	(sourcePixSize = 32) ifFalse:[^false].
+	"We handle only sourceDepth 32"
+	(sourceDepth = 32) ifFalse:[^false].
 	"We don't handle overlaps"
 	(sourceForm = destForm) ifTrue:[^false].
 	"We need at least 8bit deep dest forms"
-	(destPixSize < 8) ifTrue:[^false].
+	(destDepth < 8) ifTrue:[^false].
 	"If 8bit, then we want a color map"
-	(destPixSize = 8 and:[colorMap = nil]) ifTrue:[^false].
-	destPixSize = 32 
+	(destDepth = 8 and:[(cmFlags bitAnd: ColorMapPresent) = 0]) ifTrue:[^false].
+	destDepth = 32 
 		ifTrue:[self alphaSourceBlendBits32].
-	destPixSize = 16
+	destDepth = 16
 		ifTrue:[self alphaSourceBlendBits16].
-	destPixSize = 8
+	destDepth = 8
 		ifTrue:[self alphaSourceBlendBits8].
 	affectedL _ dx.
 	affectedR _ dx + bbW.
