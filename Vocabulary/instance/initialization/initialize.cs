@@ -4,5 +4,4 @@ initialize
 	super initialize.
 	vocabularyName _ #unnamed.
 	categories _ OrderedCollection new.
-	methodInterfaces _ IdentityDictionary new.
-	self documentation: 'A vocabulary that has not yet been documented'.
+	methodInterfaces _ IdentityDictionary new
