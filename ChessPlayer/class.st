@@ -1,0 +1,1 @@
+ChessPlayer class instanceVariableNames: ''
