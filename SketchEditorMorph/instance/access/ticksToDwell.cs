@@ -1,3 +1,3 @@
 ticksToDwell
-	ticksToDwell == nil ifTrue: [ticksToDwell _ 1].
-	^ ticksToDwell
+	ticksToDwell isNil ifTrue: [ticksToDwell := 1].
+	^ticksToDwell
