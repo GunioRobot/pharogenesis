@@ -1,0 +1,3 @@
+isStereo
+
+	^ true
