@@ -3,7 +3,7 @@ closeUnchangedWindows
 	and activate the one that gets chosen."
 	(SelectionMenu confirm:
 'Do you really want to close all windows
-except those with unaccepted edits?')
+except those with unaccepted edits?' translated)
 		ifFalse: [^ self].
 
 	(SystemWindow windowsIn: self satisfying: [:w | w model canDiscardEdits])
