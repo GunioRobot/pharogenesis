@@ -1,4 +1,7 @@
 handleEdit: editBlock
-	textMorph editor model: model.  "For evaluateSelection"
-	textMorph handleEdit: editBlock.   "Update selection after edit"
-	self scrollSelectionIntoView
+	| result |
+	textMorph editor selectFrom: selectionInterval first to: selectionInterval last;
+						model: model.  "For, eg, evaluateSelection"
+	textMorph handleEdit: [result _ editBlock value].   "Update selection after edit"
+	self scrollSelectionIntoView.
+	^ result
