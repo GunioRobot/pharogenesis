@@ -1,0 +1,3 @@
+isMouseUp
+
+	^ type == #mouseUp
