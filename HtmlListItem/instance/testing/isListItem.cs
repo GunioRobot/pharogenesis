@@ -1,0 +1,2 @@
+isListItem
+	^true
