@@ -8,6 +8,5 @@ redButtonActivity
 		ifTrue: 
 			[index _ redButtonMenu startUp.
 			index ~= 0 
-				ifTrue: [self menuMessageReceiver perform:
-							(redButtonMessages at: index)]]
+				ifTrue: [self perform: (redButtonMessages at: index)]]
 		ifFalse: [super controlActivity]
