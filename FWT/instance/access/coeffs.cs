@@ -1,5 +1,5 @@
 coeffs
-	"Return all coefficients neede to reconstruct the original samples"
+	"Return all coefficients needed to reconstruct the original samples"
 	| header csize strm |
 	header _ Array with: nSamples with: nLevels with: alpha with: beta.
 	csize _ header size.
