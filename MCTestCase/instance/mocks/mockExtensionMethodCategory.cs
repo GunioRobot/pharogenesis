@@ -1,0 +1,2 @@
+mockExtensionMethodCategory
+	^ MCMockPackageInfo new methodCategoryPrefix.
