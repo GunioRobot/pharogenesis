@@ -1,14 +1,18 @@
 selectorsContaining: aString
-	"Answer a list of selectors that contain aString within them.  Case-insensitive.
-	 1/15/96 sw.  This is an extremely slow, sledge-hammer approach at present, taking around 30 seconds to execute on an FX.  A variety of speedups is conceivable -- improvements invited."
-
-	| key size table candidate selectorList selectorTable |
-
-	key _ aString asLowercase.
+	"Answer a list of selectors that contain aString within them.  Case-insensitive."
+	| size table candidate selectorList selectorTable ascii |
 
 	selectorList _ OrderedCollection new.
-	size _ key size.
+	(size _ aString size) = 0 ifTrue: [^ selectorList].
 
+	aString size = 1 ifTrue:
+		[ascii _ aString first asciiValue.
+		ascii < 128 ifTrue:
+			[selectorList add: (SingleCharSymbols at: ascii + 1)]].
+	aString first isLetter ifFalse: [
+		aString size == 2 ifTrue: 
+			[Symbol hasInterned: aString ifTrue: [:s | selectorList add: s]].
+		^ selectorList].
 	(SelectorTables size to: 1 by: -1) do:
 		[:j | selectorTable _ SelectorTables at: j.
 		1 to: 26 do: [:index |
@@ -17,10 +21,8 @@ selectorsContaining: aString
 			[:t | 
 			((candidate _ table at: t) == nil) ifFalse:
 				[candidate size >= size ifTrue:
-					[((candidate asLowercase findString: key startingAt: 1) > 0)
-						ifTrue:
+					[((candidate findString: aString startingAt: 1 caseSensitive: false) > 0) ifTrue:
 							[selectorList add: candidate]]]]]].
 	^ selectorList
 
-
-"Symbol selectorsContaining: 'scon' OrderedCollection (includesController: selectorsContaining: codeThisContext conversionNotesContents isControlWanted isControlActive isConstantNumber isConnectionSet thisContext )"
+"Symbol selectorsContaining: 'scon' "
