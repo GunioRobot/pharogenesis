@@ -1,2 +1,2 @@
 absorbUpdatesFromServer 
-	Utilities absorbUpdatesFromServer
+	Utilities updateFromServer
