@@ -17,7 +17,8 @@ allocateChunk: byteSize
 		interruptCheckCounter _ 0.
 	].
 
-	(self sizeOfFree: freeBlock) < (byteSize + BaseHeaderSize) ifTrue: [
+	(self cCoerce: (self sizeOfFree: freeBlock) to: 'unsigned ')
+		< (self cCoerce: (byteSize + BaseHeaderSize) to: 'unsigned ') ifTrue: [
 		self error: 'out of memory'.
 	].
 
