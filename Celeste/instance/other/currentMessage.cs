@@ -1,0 +1,2 @@
+currentMessage
+	^mailDB getMessage: currentMsgID
