@@ -17,4 +17,4 @@ extraSpacePerMorph
 		extra _ (bounds height - spaceNeeded) max: 0].
 
 	(submorphs size <= 1 or: [spaceFillingMorphs <= 1]) ifTrue: [^ extra].
-	^ extra // spaceFillingMorphs
+	^ extra asFloat / spaceFillingMorphs
