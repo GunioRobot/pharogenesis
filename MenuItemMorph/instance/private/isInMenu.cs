@@ -1,0 +1,3 @@
+isInMenu
+
+	^ owner isKindOf: MenuMorph
