@@ -1,7 +1,7 @@
 spawnOffsetReframeHandle: event divider: divider
 	"The mouse has crossed a secondary (fixed-height) pane divider.  Spawn a reframe handle."
 	"Only supports vertical adjustments."
-	| siblings topAdjustees bottomAdjustees topOnly bottomOnly resizer pt delta minY maxY |
+	| siblings topAdjustees bottomAdjustees topOnly bottomOnly resizer pt delta minY maxY cursor |
 	allowReframeHandles ifFalse: [^ self].
 	owner ifNil: [^ self  "Spurious mouseLeave due to delete"].
 	(self isActive not or: [self isCollapsed]) ifTrue:  [^ self].
@@ -13,6 +13,7 @@ spawnOffsetReframeHandle: event divider: divider
 	siblings _ divider owner submorphs select: [:m | m layoutFrame notNil ].
 	divider resizingEdge = #bottom ifTrue:
 		[
+		cursor _ Cursor resizeTop.
 		topAdjustees _ siblings select: [:m |
 			m layoutFrame topFraction = divider layoutFrame bottomFraction and:
 				[m layoutFrame topOffset >= divider layoutFrame topOffset] ].
@@ -22,6 +23,7 @@ spawnOffsetReframeHandle: event divider: divider
 		].
 	divider resizingEdge = #top ifTrue:
 		[
+		cursor _ Cursor resizeBottom.
 		topAdjustees _ siblings select: [:m |
 			m layoutFrame topFraction = divider layoutFrame bottomFraction and:
 				[m layoutFrame topOffset <= divider layoutFrame bottomOffset] ].
@@ -50,6 +52,7 @@ spawnOffsetReframeHandle: event divider: divider
 			divider layoutChanged.
 			pt := pt + delta.
 		]
-		lastPointDo: [:p | ].
+		lastPointDo: [:p | ]
+		withCursor: cursor.
 	event hand world addMorphInLayer: resizer.
 	resizer startStepping
