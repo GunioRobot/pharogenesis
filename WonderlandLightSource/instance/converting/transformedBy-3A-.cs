@@ -1,0 +1,2 @@
+transformedBy: aTransformer
+	^self clone
