@@ -2,6 +2,7 @@ dropTargetFor: aMorph event: evt
 	"Return the morph that the given morph is to be dropped onto.  Return nil if we must repel the morph.  Return the world, if no other morph wants the dropping morph."
 
 	| root coreSample |
+	aMorph willingToBeEmbeddedUponLanding ifFalse: [^ self world].
 	root _ nil.
 	owner submorphsReverseDo: [:m |
 		((m fullContainsPoint: evt cursorPoint) and:
@@ -10,7 +11,8 @@ dropTargetFor: aMorph event: evt
 	coreSample _ root morphsAt: evt cursorPoint.
 	coreSample do:
 		[:m |
-			(m repelsMorph: aMorph event: evt) ifTrue: ["self halt: 'Repel by ', m externalName." ^ nil]].
+			(m repelsMorph: aMorph event: evt) ifTrue:
+				[^ nil]].
 
 	coreSample do:
 		[:m |
