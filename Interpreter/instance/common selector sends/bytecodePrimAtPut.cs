@@ -7,15 +7,12 @@ bytecodePrimAtPut
 	index _ self internalStackValue: 1.
 	rcvr _ self internalStackValue: 2.
 	successFlag _ (self isIntegerObject: rcvr) not and: [self isIntegerObject: index].
-	successFlag ifTrue:
-		[atIx _ (rcvr bitAnd: AtCacheMask) + AtPutBase.  "Index into atPutCache"
-		(atCache at: atIx+AtCacheOop) = rcvr
-		ifTrue:
-			[self commonVariable: rcvr at: (self integerValueOf: index)
-							put: value cacheIndex: atIx.
-			successFlag ifTrue:
-				[self fetchNextBytecode.
-				^ self internalPop: 3 thenPush: value]]].
+	successFlag
+		ifTrue: [atIx _ (rcvr bitAnd: AtCacheMask) + AtPutBase.  "Index into atPutCache"
+			(atCache at: atIx+AtCacheOop) = rcvr
+				ifTrue: [self commonVariable: rcvr at: (self integerValueOf: index) put: value cacheIndex: atIx.
+					successFlag ifTrue: [self fetchNextBytecode.
+						^self internalPop: 3 thenPush: value]]].
 
 	messageSelector _ self specialSelector: 17.
 	argumentCount _ 2.
