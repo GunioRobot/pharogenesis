@@ -1,0 +1,1 @@
+PoohQuadEdge class instanceVariableNames: ''
