@@ -14,7 +14,7 @@ definePath
 			ifTrue:
 				[dwell _ dwell + 1.
 				((dwell \\ 1000) = 0) ifTrue:
-					[self beep]]
+					[Beeper beep]]
 			ifFalse:
 				[self position: (currentPoint - offset).
 				self world displayWorld.
