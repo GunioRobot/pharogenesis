@@ -1,12 +1,14 @@
 adjustPaneBorders 
 	| side sub newRect outerFrame |
 	outerFrame _ view displayBox.
-	side = #none.
+	side _ #none.
 	VBorderCursor showWhile:
 		[ [sub _ view subviewWithLongestSide: [:s | side _ s]
 						near: sensor cursorPoint.
 		  self cursorOnBorder and: [(side = #left) | (side = #right)]]
-			whileTrue: [sensor redButtonPressed ifTrue:
+			whileTrue: [
+				self interActivityPause.
+				sensor redButtonPressed ifTrue:
 				[side = #left ifTrue:
 					[newRect _ sub stretchFrame:
 						[:f | (f withLeft: sensor cursorPoint x)
@@ -22,7 +24,9 @@ adjustPaneBorders
 		[ [sub _ view subviewWithLongestSide: [:s | side _ s]
 						near: sensor cursorPoint.
 		  self cursorOnBorder and: [(side = #top) | (side = #bottom)]]
-			whileTrue: [sensor redButtonPressed ifTrue:
+			whileTrue: [
+				self interActivityPause.
+				sensor redButtonPressed ifTrue:
 				[side = #top ifTrue:
 					[newRect _ sub stretchFrame:
 						[:f | (f withTop: sensor cursorPoint y)
