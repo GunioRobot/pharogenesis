@@ -1,4 +1,6 @@
 scrollSelectionToTop
 
-	scrollerOwner ifNil: [^self].
-	scrollerOwner scrollSelectionIntoView: nil alignTop: true.
+	(self parentGeeMail ifNil: [^self])
+		scrollSelectionIntoView: nil 
+		alignTop: true 
+		inTextMorph: self.
