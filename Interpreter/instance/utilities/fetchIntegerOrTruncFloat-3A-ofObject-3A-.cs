@@ -12,10 +12,11 @@ fetchIntegerOrTruncFloat: fieldIndex ofObject: objectPointer
 	(self isIntegerObject: intOrFloat) ifTrue: [^ self integerValueOf: intOrFloat].
 	self assertClassOf: intOrFloat is: (self splObj: ClassFloat).
 	successFlag ifTrue: [
+		self cCode: '' inSmalltalk: [floatVal _ Float new: 2].
 		self fetchFloatAt: intOrFloat + BaseHeaderSize into: floatVal.
 		self cCode: 'frac = modf(floatVal, &trunc)'.
 		"the following range check is for C ints, with range -2^31..2^31-1"
 		self cCode: 'success((-2147483648.0 <= trunc) && (trunc <= 2147483647.0))'].
 	successFlag
-		ifTrue: [^ self cCode: '((int) trunc)']
+		ifTrue: [^ self cCode: '((int) trunc)' inSmalltalk: [floatVal truncated]]
 		ifFalse: [^ 0].
