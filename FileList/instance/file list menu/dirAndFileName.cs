@@ -1,0 +1,3 @@
+dirAndFileName
+
+	^{directory. fileName}
