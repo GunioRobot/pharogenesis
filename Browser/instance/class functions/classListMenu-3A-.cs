@@ -1,29 +1,33 @@
-classListMenu: aMenu
+classListMenu: aMenu 
+	^ aMenu addList: #(
 
-^ aMenu labels: 
-'browse class
-browse full
-printOut
-fileOut
-hierarchy
-definition
-comment
-spawn hierarchy
-spawn protocol
-inst var refs..
-inst var defs..
-class var refs...
-class vars
-class refs
-rename...
-remove
-unsent methods
-find method...' 
-	lines: #(4 7 9 11 14 16)
-	selections:
-		#(buildClassBrowser browseMethodFull printOutClass fileOutClass
-		hierarchy editClass editComment
-		spawnHierarchy spawnProtocol
-		browseInstVarRefs browseInstVarDefs browseClassVarRefs 
-		browseClassVariables browseClassRefs
-		renameClass removeClass browseUnusedMethods findMethod)
+		-
+		('browse full (b)'			browseMethodFull)
+		('browse hierarchy (h)'		spawnHierarchy)
+		('browse protocol'			spawnProtocol)
+		-
+		('printOut'					printOutClass)
+		('fileOut'					fileOutClass)
+		-
+		('show hierarchy'			hierarchy)
+		('show definition'			editClass)
+		('show comment'			editComment)
+		-
+		('inst var refs...'			browseInstVarRefs)
+		('inst var defs...'			browseInstVarDefs)
+		-
+		('class var refs...'			browseClassVarRefs)
+		('class vars'					browseClassVariables)
+		('class refs (N)'				browseClassRefs)
+		-
+		('rename class ...'			renameClass)
+		('copy class'				copyClass)
+		('remove class (x)'			removeClass)
+		-
+		('unsent methods'			browseUnusedMethods)
+		('unreferenced inst vars'	showUnreferencedInstVars)
+		('subclass template'			makeNewSubclass)
+		('sample instance'			ÃmakeSampleInstance)
+		-
+		('find method...'				findMethod)
+		('fetch documentation'		fetchClassDocPane))
