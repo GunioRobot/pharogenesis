@@ -1,0 +1,3 @@
+scaleToFitPage
+
+	^scaleToFitPage ifNil: [false]
