@@ -7,6 +7,7 @@ displayString: aString from: startIndex to: stopIndex at: aPoint strikeFont: fon
 	sourceX ifNil: [sourceX _ 100].
 	width ifNil: [width _ 100].
 
-	^self primDisplayString: aString from: startIndex to: stopIndex
+	self primDisplayString: aString from: startIndex to: stopIndex
 			map: font characterToGlyphMap xTable: font xTable
 			kern: kernDelta.
+	^ destX@destY.
