@@ -1,0 +1,2 @@
+splitCharacter
+	^Character cr
