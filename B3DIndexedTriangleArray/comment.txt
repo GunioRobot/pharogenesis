@@ -1,0 +1,1 @@
+I am used in a B3DIndexedTriangleMesh, where I store the faces of the mesh.
