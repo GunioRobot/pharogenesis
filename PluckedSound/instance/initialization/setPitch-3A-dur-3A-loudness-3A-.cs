@@ -1,7 +1,11 @@
-setPitch: p dur: d loudness: l
+setPitch: p dur: d loudness: vol
 
-	amplitude _ l rounded.
-	ring _ SoundBuffer new: (((2.0 * self samplingRate asFloat) / p asFloat) asInteger max: 2).
-	ringSize _ ring size.
+	| sz |
+	super setPitch: p dur: d loudness: vol.
 	initialCount _ (d * self samplingRate asFloat) asInteger.
+	ring _ SoundBuffer newMonoSampleCount:
+		(((2.0 * self samplingRate) / p) asInteger max: 2).
+	sz _ ring monoSampleCount.
+	scaledIndexLimit _ (sz + 1) * ScaleFactor.
+	scaledIndexIncr _ (p * sz * ScaleFactor) // (2.0 * self samplingRate).
 	self reset.
