@@ -7,6 +7,7 @@ floatValueOf: oop
 	self var: #result declareC: 'double result'.
 	self assertClassOf: oop is: (self splObj: ClassFloat).
 	successFlag
-		ifTrue: [self fetchFloatAt: oop + BaseHeaderSize into: result]
+		ifTrue: [self cCode: '' inSmalltalk: [result _ Float new: 2].
+				self fetchFloatAt: oop + BaseHeaderSize into: result]
 		ifFalse: [result _ 0.0].
 	^ result
