@@ -1,0 +1,2 @@
+clearColor
+	^clearColor
