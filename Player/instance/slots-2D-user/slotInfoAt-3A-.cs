@@ -1,9 +1,11 @@
-slotInfoAt: slotName
+slotInfoAt: slotName 
 	| info |
-	info _ self slotInfo at: slotName ifAbsent: [nil].
-	info ifNil:
-		[self slotInfo at: slotName put: (info _ SlotInformation new initialize)].
-	(info isKindOf: Symbol) "bkward compat"
-		ifTrue:
-			[self slotInfo at: slotName put: (info _ SlotInformation new type: info)].
-	^ info
+	info := self slotInfo at: slotName ifAbsent: [nil].
+	info ifNil: 
+			[self slotInfo at: slotName put: (info := SlotInformation new initialize)].
+	(info isKindOf: Symbol) 
+		ifTrue: 
+			["bkward compat"
+
+			self slotInfo at: slotName put: (info := SlotInformation new type: info)].
+	^info
