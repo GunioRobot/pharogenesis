@@ -4,11 +4,11 @@ nextImageDitheredToDepth: depth
 	ditherMask _ DitherMasks
 		at: depth
 		ifAbsent: [self error: 'can only dither to display depths'].
-	redResidual _ greenResidual _ blueResidual _ 0.
+	residuals _ WordArray new: 3.
 	sosSeen _ false.
 	self parseFirstMarker.
 	[sosSeen] whileFalse: [self parseNextMarker].
-	form _ Form extent: (width @ height) depth: 32.
+	form _ Form extent: (width @ height) depth: depth.
 	xStep _ mcuWidth * DCTSize.
 	yStep _ mcuHeight * DCTSize.
 	y _ 0.
