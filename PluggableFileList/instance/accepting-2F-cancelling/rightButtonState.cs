@@ -1,0 +1,3 @@
+rightButtonState
+
+	^self canAccept
