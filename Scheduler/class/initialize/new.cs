@@ -2,6 +2,6 @@ new
 	"Creates a new Scheduler and make sure it gets initialized."
 
 	| newScheduler |
-	newScheduler _ super new.
+	newScheduler _ self basicNew.
 	newScheduler initialize.
 	^ newScheduler.
