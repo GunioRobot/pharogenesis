@@ -11,7 +11,7 @@ parseQuantizationTable
 			 ifTrue: [self error: 'image has more than ',
 				QuantizationTableSize printString,
 				' quantization tables'].
-		table _ Array new: DCTSize2.
+		table _ IntegerArray new: DCTSize2.
 		1 to: DCTSize2 do:
 			[:i |
 			value _ (prec
