@@ -3,6 +3,6 @@ dateAndTimeNow
 
 	| secondCount d t |
 	secondCount _ self primSecondsClock.
-	d _ Date fromDays: secondCount // 86400.
+	d _ Date fromSeconds: secondCount.
 	t _ Time fromSeconds: secondCount \\ 86400.
 	^ Array with: d with: t
