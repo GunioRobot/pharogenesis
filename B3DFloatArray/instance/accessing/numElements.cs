@@ -1,0 +1,2 @@
+numElements
+	^self class numElements
