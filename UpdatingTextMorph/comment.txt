@@ -1,0 +1,1 @@
+A TextMorph that constantly tries to show the current data from the target object.  When sent #step, it shows what the target objects has (target perform: getSelector).
