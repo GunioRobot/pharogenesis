@@ -1,0 +1,3 @@
+createCharacterToGlyphMap
+
+	^ IdentityGlyphMap new.
