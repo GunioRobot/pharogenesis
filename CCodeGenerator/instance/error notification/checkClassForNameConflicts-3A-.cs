@@ -3,14 +3,14 @@ checkClassForNameConflicts: aClass
 
 	"check for constant name collisions"
 	aClass classPool associationsDo: [ :assoc |
-		(constants includesKey: assoc key) ifTrue: [
+		(constants includesKey: assoc key asString) ifTrue: [
 			self error: 'Constant was defined in a previously added class: ', assoc key.
 		].
 	].
 	"ikp..."
 	aClass sharedPools do: [:pool |
 		pool associationsDo: [ :assoc |
-			(constants includesKey: assoc key) ifTrue: [
+			(constants includesKey: assoc key asString) ifTrue: [
 				self error: 'Constant was defined in a previously added class: ', assoc key.
 			].
 		].
