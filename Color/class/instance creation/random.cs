@@ -1,4 +1,5 @@
 random
+	"Return a random color that isn't too dark or under-saturated."
 
 	^ self basicNew
 		setHue: (360.0 * RandomStream next)
