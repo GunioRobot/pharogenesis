@@ -1,0 +1,2 @@
+toggleMouseOverHalos
+	wantsMouseOverHalos _ self wantsMouseOverHalos not
