@@ -1,4 +1,4 @@
 reverseSelection
 	"Reverse the valence of the current selection highlighting."
 	selectionShowing _ selectionShowing not.
-	paragraph reverseFrom: startBlock to: stopBlock
+	paragraph reverseFrom: self pointBlock to: self markBlock
