@@ -3,5 +3,6 @@ makeSelectorBoldIn: aClass
 	the receiver's string that parses as a message selector to be bold."
 	| parser |
 	string size = 0 ifTrue: [^self].
+	string first isLetter ifFalse: [^ self].
 	(parser _ aClass parserClass new) parseSelector: string.
 	self makeBoldFrom: 1 to: (parser endOfLastToken min: string size)
