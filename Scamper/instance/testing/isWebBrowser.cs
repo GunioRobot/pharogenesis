@@ -1,0 +1,2 @@
+isWebBrowser
+	^true
