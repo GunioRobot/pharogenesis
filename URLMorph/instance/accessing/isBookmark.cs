@@ -1,0 +1,3 @@
+isBookmark
+
+	^ isBookmark
