@@ -1,0 +1,25 @@
+resultType
+	"Look up my result type.  If I am a constant, use that class.  If I am a message, look up the selector."
+
+	| list value |
+	parseNode class == BlockNode ifTrue: [^#blockContext].
+	parseNode class == AssignmentNode ifTrue: [^#command].
+	parseNode class == ReturnNode ifTrue: [^#command].	"Need more restriction than this"
+	list := submorphs 
+				select: [:ss | ss isSyntaxMorph and: [ss parseNode notNil]].
+	list size > 1 ifTrue: [^self resultTypeFor: self selector].
+	list size = 1 
+		ifTrue: 
+			["test for levels that are just for spacing in layout"
+
+			(list first isSyntaxMorph and: [list first nodeClassIs: MessageNode]) 
+				ifTrue: [^list first resultType]].	"go down one level"
+	value := self try.
+	value class == Error ifTrue: [^#unknown].
+	(value isNumber) ifTrue: [^#Number].
+	(value isKindOf: Boolean) ifTrue: [^#Boolean].
+	(value isForm) ifTrue: [^#Graphic].
+	value class == String 
+		ifTrue: [(SoundService default sampledSoundChoices includes: value) ifTrue: [^#Sound]].
+	(value isPlayerLike) ifTrue: [^#Player].
+	^value class name asLowercase	"asSymbol (not needed)"
