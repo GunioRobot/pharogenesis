@@ -1,0 +1,2 @@
+initialize
+	nodeStack := OrderedCollection new
