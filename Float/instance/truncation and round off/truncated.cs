@@ -6,4 +6,4 @@ truncated
 	whatIsAPrimitive. "
 
 	<primitive: 51>
-	self primitiveFailed
+	^ (self quo: 16383.0) * 16383 + (self rem: 16383.0) truncated
