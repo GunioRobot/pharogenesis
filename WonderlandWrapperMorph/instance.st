@@ -1,6 +1,6 @@
 Morph
 	subclass: #WonderlandWrapperMorph
-	instanceVariableNames: 'myWonderland myActor '
+	instanceVariableNames: 'myWonderland myActor'
 	classVariableNames: ''
-	poolDictionaries: 'WonderlandConstants '
-	category: 'Balloon3D-Wonderland Morphs'
+	poolDictionaries: 'WonderlandConstants'
+	category: 'Balloon3D-Wonderland-Morphs'
