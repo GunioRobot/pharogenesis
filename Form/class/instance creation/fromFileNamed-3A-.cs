@@ -1,4 +1,8 @@
 fromFileNamed: fileName
-	"Read a Form or ColorForm from given file in any of four formats."
+	"Read a Form or ColorForm from the given file."
 
-	^ self fromFile: (FileStream readOnlyFileNamed: fileName).
+	| file form |
+	file _ (FileStream readOnlyFileNamed: fileName) binary.
+	form _ self fromBinaryStream: file.
+	file close.
+	^ form
