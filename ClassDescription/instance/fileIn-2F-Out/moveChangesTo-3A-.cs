@@ -5,7 +5,7 @@ moveChangesTo: newFile
 
 	| changes |
 	self organization moveChangedCommentToFile: newFile numbered: 2.
-	changes _ methodDict keys select: [:sel | (methodDict at: sel) fileIndex > 1].
+	changes _ self methodDict keys select: [:sel | (self methodDict at: sel) fileIndex > 1].
 	self fileOutChangedMessages: changes
 		on: newFile
 		moveSource: true
