@@ -1,5 +1,5 @@
 emitForValue: stack on: aStream
-	| arg |
+
 	aStream nextPut: LdThisContext.
 	stack push: 1.
 	nArgsNode emitForValue: stack on: aStream.
