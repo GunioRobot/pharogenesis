@@ -1,0 +1,2 @@
+defaultBrowserTitle
+	^ 'Package Browser'
