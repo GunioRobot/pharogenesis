@@ -1,0 +1,2 @@
+lastResult
+	^lastResult
