@@ -1,25 +1,40 @@
-morphsAt: aPoint behind: aMorph unlocked: aBool
+morphsAt: aPoint behind: aMorph unlocked: aBool 
 	"Return all morphs at aPoint that are behind frontMorph; if aBool is true return only unlocked, visible morphs."
+
 	| isBack found all tfm |
-	(aMorph == nil or:[owner == nil]) ifTrue:["Traverse down"
-		(self fullBounds containsPoint: aPoint) ifFalse:[^#()].
-		(aBool and:[self isLocked or:[self visible not]]) ifTrue:[^#()].
-		all _ nil.
-	] ifFalse:[ "Traverse up"
-		tfm _ self transformedFrom: owner.
-		all _ owner morphsAt: (tfm localPointToGlobal: aPoint) behind: self unlocked: aBool.
-		all _ WriteStream with: all.
-	].
-	isBack _ aMorph == nil.
-	self submorphsDo:[:m|
-		isBack ifTrue:[
-			tfm _ m transformedFrom: self.
-			found _ m morphsAt: (tfm globalPointToLocal: aPoint) behind: nil unlocked: aBool.
-			found size > 0 ifTrue:[
-				all ifNil:[all _ WriteStream on: #()].
-				all nextPutAll: found]].
-		m == aMorph ifTrue:[isBack _ true]].
-	(isBack and:[self containsPoint: aPoint]) ifTrue:[
-		all ifNil:[^Array with: self].
-		all nextPut: self].
-	^all ifNil:[#()] ifNotNil:[all contents].
+	all := (aMorph isNil or: [owner isNil]) 
+				ifTrue: 
+					["Traverse down"
+
+					(self fullBounds containsPoint: aPoint) ifFalse: [^#()].
+					(aBool and: [self isLocked or: [self visible not]]) ifTrue: [^#()].
+					nil]
+				ifFalse: 
+					["Traverse up"
+
+					tfm := self transformedFrom: owner.
+					all := owner 
+								morphsAt: (tfm localPointToGlobal: aPoint)
+								behind: self
+								unlocked: aBool.
+					WriteStream with: all].
+	isBack := aMorph isNil.
+	self submorphsDo: 
+			[:m | 
+			isBack 
+				ifTrue: 
+					[tfm := m transformedFrom: self.
+					found := m 
+								morphsAt: (tfm globalPointToLocal: aPoint)
+								behind: nil
+								unlocked: aBool.
+					found notEmpty 
+						ifTrue: 
+							[all ifNil: [all := WriteStream on: #()].
+							all nextPutAll: found]].
+			m == aMorph ifTrue: [isBack := true]].
+	(isBack and: [self containsPoint: aPoint]) 
+		ifTrue: 
+			[all ifNil: [^Array with: self].
+			all nextPut: self].
+	^all ifNil: [#()] ifNotNil: [all contents]
