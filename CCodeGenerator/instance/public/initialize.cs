@@ -7,4 +7,6 @@ initialize
 	methods _ Dictionary new: 500.
 	self initializeCTranslationDictionary.
 	headerFiles _ OrderedCollection new.
-	isCPP _ false
+	globalVariableUsage _ Dictionary new.
+	useSymbolicConstants _ true.
+	generateDeadCode _ true.
