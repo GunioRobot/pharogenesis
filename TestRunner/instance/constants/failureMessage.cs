@@ -1,0 +1,2 @@
+failureMessage
+	^'failed'
