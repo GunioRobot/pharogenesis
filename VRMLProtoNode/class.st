@@ -1,0 +1,1 @@
+VRMLProtoNode class instanceVariableNames: ''
