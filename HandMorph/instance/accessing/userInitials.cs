@@ -1,0 +1,3 @@
+userInitials
+
+	^ userInitials
