@@ -1,7 +1,7 @@
 checkAuthorization: webDocument retry: retryBlock
 	"authorization failed if webDocument is a String"
 	| oldRealm i end encoded |
-	((webDocument isKindOf: String)
+	((webDocument isString)
 		and: [(webDocument beginsWith: 'HTTP/1.0 401')
 			or: [webDocument beginsWith: 'HTTP/1.1 401']])
 	ifFalse: [^self].
