@@ -1,3 +1,4 @@
 goToPageMorph: aMorph
+	"Set the given morph as the current page; run closing and opening scripts as appropriate"
 
-	self goToPage: (pages identityIndexOf: aMorph ifAbsent: [^ self "abort"]).
+	self goToPageMorph: aMorph runTransitionScripts: true
