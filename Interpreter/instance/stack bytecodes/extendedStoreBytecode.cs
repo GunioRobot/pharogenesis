@@ -3,6 +3,7 @@ extendedStoreBytecode
 	| descriptor variableType variableIndex association |
 	self inline: true.
 	descriptor _ self fetchByte.
+	self fetchNextBytecode.
 	variableType _ (descriptor >> 6) bitAnd: 16r3.
 	variableIndex _ descriptor bitAnd: 16r3F.
 	variableType = 0 ifTrue:
@@ -11,7 +12,7 @@ extendedStoreBytecode
 			withValue: self internalStackTop].
 	variableType = 1 ifTrue:
 		[^self storePointerUnchecked: variableIndex + TempFrameStart
-			ofObject: theHomeContext
+			ofObject: localHomeContext
 			withValue: self internalStackTop].
 	variableType = 2 ifTrue:
 		[self error: 'illegal store'].
