@@ -1,0 +1,2 @@
+targetBorderColor
+	^myTarget borderStyle baseColor
