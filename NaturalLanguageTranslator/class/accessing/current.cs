@@ -1,0 +1,3 @@
+current
+	^ LocaleID current translator
+
