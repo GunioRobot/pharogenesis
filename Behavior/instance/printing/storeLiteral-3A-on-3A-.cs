@@ -2,7 +2,7 @@ storeLiteral: aCodeLiteral on: aStream
 	"Store aCodeLiteral on aStream, changing an Association to ##GlobalName
 	 or ###MetaclassSoleInstanceName format if appropriate"
 	| key value |
-	(aCodeLiteral isMemberOf: Association)
+	(aCodeLiteral isVariableBinding)
 		ifFalse:
 			[aCodeLiteral storeOn: aStream.
 			 ^self].
@@ -11,7 +11,7 @@ storeLiteral: aCodeLiteral on: aStream
 		ifTrue:
 			[aStream nextPutAll: '###'; nextPutAll: value soleInstance name.
 			 ^self].
-	((key isMemberOf: Symbol) and: [self scopeHas: key ifTrue: [:ignore]])
+	((key isMemberOf: Symbol) and: [(self bindingOf: key) notNil])
 		ifTrue:
 			[aStream nextPutAll: '##'; nextPutAll: key.
 			 ^self].
