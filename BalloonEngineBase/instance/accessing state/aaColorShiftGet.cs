@@ -1,0 +1,2 @@
+aaColorShiftGet
+	^workBuffer at: GWAAColorShift
