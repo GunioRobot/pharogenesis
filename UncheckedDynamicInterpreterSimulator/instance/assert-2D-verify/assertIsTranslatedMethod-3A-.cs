@@ -1,0 +1,1 @@
+assertIsTranslatedMethod: anObject
