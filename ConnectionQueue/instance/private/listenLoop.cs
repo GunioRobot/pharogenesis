@@ -1,24 +1,25 @@
 listenLoop
 	"Private! This loop is run in a separate process. It will establish up to maxQueueLength connections on the given port."
 	"Details: When out of sockets or queue is full, retry more frequently, since a socket may become available, space may open in the queue, or a previously queued connection may be aborted by the client, making it available for a fresh connection."
+	"Note: If the machine is disconnected from the network while the server is running, the currently waiting socket will go from 'isWaitingForConnection' to 'unconnected', and attempts to create new sockets will fail. When this happens, delete the broken socket and keep trying to create a socket in case the network connection is re-established. Connecting and disconnecting was tested under PPP on Mac system 8.1. It is not if this will work on other platforms."
 
+
+	| newConnection |
+	Socket initializeNetwork.
+	socket _ Socket newTCP.
+	"We'll accept four simultanous connections at the same time"
+	socket listenOn: portNumber backlogSize: 4.
+	"If the listener is not valid then the we cannot use the
+	BSD style accept() mechanism."
+	socket isValid ifFalse: [^self oldStyleListenLoop].
 	[true] whileTrue: [
-		((socket == nil) and: [connections size < maxQueueLength]) ifTrue: [
-			"try to create a new socket for listening"
-			socket _ Socket createIfFail: [nil]].
-
-		socket == nil
-			ifTrue: [(Delay forMilliseconds: 100) wait]
-			ifFalse: [
-				socket isUnconnected ifTrue: [socket listenOn: portNumber].
-				socket waitForConnectionUntil: (Socket deadlineSecs: 10).
-				socket isConnected
-					ifTrue: [  "connection established"
-						accessSema critical: [connections addLast: socket].
-						socket _ nil]
-					ifFalse: [
-						(socket isWaitingForConnection or:
-						 [socket isUnconnected])
-							ifFalse: [socket destroy. socket _ nil]]].  "return to unconnected state"
-
-		self pruneStaleConnections].
+		socket isValid ifFalse: [
+			"socket has stopped listening for some reason"
+			socket destroy.
+			(Delay forMilliseconds: 10) wait.
+			^self listenLoop ].
+		newConnection _ socket waitForAcceptUntil: (Socket deadlineSecs: 10).
+		(newConnection notNil and:[newConnection isConnected]) ifTrue:
+			[accessSema critical: [connections addLast: newConnection].
+			newConnection _ nil].
+		self pruneStaleConnections]. 
