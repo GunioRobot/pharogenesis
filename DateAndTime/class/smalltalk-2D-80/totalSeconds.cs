@@ -1,0 +1,3 @@
+totalSeconds
+
+	^ Time totalSeconds
