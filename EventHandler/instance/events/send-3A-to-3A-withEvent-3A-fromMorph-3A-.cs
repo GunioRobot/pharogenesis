@@ -9,5 +9,5 @@ send: selector to: recipient withEvent: event fromMorph: sourceMorph
 	arity = 2 ifTrue:
 		[^ recipient perform: selector with: event with: sourceMorph].
 	arity = 3 ifTrue:
-		[^ recipient perform: selector with: event with: sourceMorph with: valueParameter].
+		[^ recipient perform: selector with: valueParameter with: event with: sourceMorph].
 	self error: 'Event handling selectors must be Symbols and take 0-3 arguments'
