@@ -51,6 +51,7 @@ makeActorFrom3DS: filename
 	cameras associationsDo:[:assoc|
 		name _ assoc key.
 		newCamera _ WonderlandCamera createFor: self.
+		newCamera getMorph openInWorld.
 		newCamera setName: (self fixNameFrom: name).
 		newCamera copySettingsFrom: assoc value.
 		newCamera reparentTo: baseActor.
