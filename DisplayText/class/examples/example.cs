@@ -1,7 +1,7 @@
 example
-	"Continually prints two lines of text wherever you point with the cursor 
-	and press any mouse button.  Terminate by pressing any key on the 
-	keyboard."
+	"Continually prints two lines of text wherever you point with the cursor
+	and press any mouse button.  Terminate by pressing any button on the
+	mouse."
 	| tx |
 	tx _ 'this is a line of characters and
 this is the second line.' asDisplayText.
