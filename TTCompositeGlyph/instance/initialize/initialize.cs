@@ -1,0 +1,2 @@
+initialize
+	glyphs _ #().
