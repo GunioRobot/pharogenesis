@@ -1,0 +1,2 @@
+isSubjectFilterOn 
+	^subjectFilter notNil
