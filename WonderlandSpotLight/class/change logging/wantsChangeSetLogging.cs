@@ -1,0 +1,4 @@
+wantsChangeSetLogging
+
+	^ self == WonderlandSpotLight.
+
