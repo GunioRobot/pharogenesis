@@ -25,7 +25,9 @@ printIfOn: aStream indent: level
 		^ self printKeywords: #Yes:No: arguments: arguments
 						on: aStream indent: level prefix: true].
 
-	receiver printOn: aStream indent: level + 1 precedence: precedence.
+	receiver ifNotNil: [
+		receiver printOn: aStream indent: level + 1 precedence: precedence.
+	].
 	(arguments last isJust: NodeNil) ifTrue:
 		[^ self printKeywords: #ifTrue: arguments: (Array with: arguments first)
 					on: aStream indent: level].
