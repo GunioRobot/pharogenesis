@@ -3,4 +3,4 @@ Object
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon3D-Objects'
+	category: 'Balloon3D-Kernel-Objects'
