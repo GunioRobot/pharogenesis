@@ -1,0 +1,2 @@
+playerBearingCode
+	^ owner owner scriptedPlayer
