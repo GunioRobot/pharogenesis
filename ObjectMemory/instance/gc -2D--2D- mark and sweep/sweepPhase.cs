@@ -4,7 +4,8 @@ sweepPhase
 
 	| entriesAvailable survivors freeChunk firstFree oop oopHeader oopHeaderType hdrBytes oopSize freeChunkSize |
 	self inline: false.
-	entriesAvailable _ self fwdTableInit.
+	entriesAvailable _ self fwdTableInit: 8.  "Two-word blocks"
+.
 	survivors _ 0.
 	freeChunk _ nil.
 	firstFree _ nil.  "will be updated later"
@@ -14,25 +15,26 @@ sweepPhase
 		oopHeader _ self baseHeader: oop.
 		oopHeaderType _ oopHeader bitAnd: TypeMask.
 		(oopHeaderType = HeaderTypeShort) ifTrue: [
-			oopSize _ oopHeader bitAnd: 16rFC.
+			oopSize _ oopHeader bitAnd: SizeMask.
 			hdrBytes _ 0.
 		] ifFalse: [
 			(oopHeaderType = HeaderTypeClass) ifTrue: [
-				oopSize _ oopHeader bitAnd: 16rFC.
+				oopSize _ oopHeader bitAnd: SizeMask.
 				hdrBytes _ 4.
 			] ifFalse: [
 				(oopHeaderType = HeaderTypeSizeAndClass) ifTrue: [
 					oopSize _ (self sizeHeader: oop) bitAnd: AllButTypeMask.
 					hdrBytes _ 8.
 				] ifFalse: [  "free chunk"
-					oopSize _ oopHeader bitAnd: FreeSizeMask.
+					oopSize _ oopHeader bitAnd: AllButTypeMask.
 					hdrBytes _ 0.
 				].
 			].
 		].
 
-		(oopHeader bitAnd: MarkBit) = 0 ifTrue: [
-			"object is not marked; free it"
+		(oopHeader bitAnd: MarkBit) = 0 ifTrue: ["object is not marked; free it"
+			"<-- Finalization support: We need to mark each oop chunk as free -->"
+			self longAt: oop - hdrBytes put: HeaderTypeFree.
 			freeChunk ~= nil ifTrue: [
 				"enlarge current free chunk to include this oop"
 				freeChunkSize _ freeChunkSize + oopSize + hdrBytes.
@@ -45,6 +47,10 @@ sweepPhase
 		] ifFalse: [
 			"object is marked; clear its mark bit and possibly adjust the compaction start"
 			self longAt: oop put: (oopHeader bitAnd: AllButMarkBit).
+			"<-- Finalization support: Check if we're running about a weak class -->"
+			(self isWeak: oop) ifTrue:[
+				self finalizeReference: oop.
+			].
 			entriesAvailable > 0 ifTrue: [
 				entriesAvailable _ entriesAvailable - 1.
 			] ifFalse: [
@@ -54,7 +60,7 @@ sweepPhase
 			freeChunk ~= nil ifTrue: [
 				"record the size of the last free chunk"
 				self longAt: freeChunk
-					    put: ((freeChunkSize bitAnd: FreeSizeMask) bitOr: HeaderTypeFree).
+					    put: ((freeChunkSize bitAnd: AllButTypeMask) bitOr: HeaderTypeFree).
 			].
 			freeChunk _ nil.
 			survivors _ survivors + 1.
@@ -65,7 +71,7 @@ sweepPhase
 	freeChunk ~= nil ifTrue: [
 		"record size of final free chunk"
 		self longAt: freeChunk
-			    put: ((freeChunkSize bitAnd: FreeSizeMask) bitOr: HeaderTypeFree).
+			    put: ((freeChunkSize bitAnd: AllButTypeMask) bitOr: HeaderTypeFree).
 	].
 
 	oop = endOfMemory
