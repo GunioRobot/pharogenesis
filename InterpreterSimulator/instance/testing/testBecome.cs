@@ -16,7 +16,7 @@ testBecome
 	p4 _ self instantiateClass: (self splObj: ClassMessage) indexableSize: 0.
 	self push: p4.
 	self storePointer: 1 ofObject: list2 withValue: p4.
-	(self become: list1 with: list2 twoWay: true) ifFalse: [self error: 'failed'].
+	(self become: list1 with: list2 twoWay: true copyHash: true) ifFalse: [self error: 'failed'].
 	self popStack = p2 ifFalse: [self halt].
 	self popStack = p1 ifFalse: [self halt].
 	self popStack = p4 ifFalse: [self halt].
