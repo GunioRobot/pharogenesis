@@ -5,7 +5,7 @@ getOption: aName
 	element two is the resulting of the requested option"
 
 	(socketHandle == nil or: [self isValid not])
-		ifTrue: [self error: 'Socket status must valid before getting an option'].
+		ifTrue: [InvalidSocketStatusException signal: 'Socket status must valid before getting an option'].
 	^self primSocket: socketHandle getOption: aName
 
 "| foo options |
