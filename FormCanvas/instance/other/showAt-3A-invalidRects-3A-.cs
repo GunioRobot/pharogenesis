@@ -1,6 +1,6 @@
 showAt: pt invalidRects: updateRects
 	| blt |
-	blt _ (BitBlt toForm: Display)
+	blt _ (BitBlt current toForm: Display)
 		sourceForm: form;
 		combinationRule: Form over.
 	updateRects do:
