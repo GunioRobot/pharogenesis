@@ -1,4 +1,7 @@
-forgetDoIts	"Smalltalk forgetDoIts"
-	Smalltalk allBehaviorsDo: "get rid of old DoIt methods"
+forgetDoIts	
+	"Smalltalk forgetDoIts"
+	 "get rid of old DoIt methods"
+
+	self systemNavigation allBehaviorsDo:
 		[:cl | cl forgetDoIts]
 
