@@ -1,0 +1,2 @@
+getMinVal
+	^  self getValueFromCostume: #minVal
