@@ -14,5 +14,6 @@ statements: statementsCollection returns: returnBool
 				ifFalse: [statementsCollection size = 0
 						ifTrue: [Array with: NodeNil]
 						ifFalse: [statementsCollection]].
-	arguments _ Array new: 0.
+	arguments _ #().
+	temporaries _ #().
 	returnLast ifTrue: [self returnLast]
