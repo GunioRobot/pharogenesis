@@ -1,4 +1,4 @@
 compileReferenceAccessorFor: varName
-	self class compile: ((self referenceAccessorSelectorFor: varName), '
+	self class compileUnlogged: ((self referenceAccessorSelectorFor: varName), '
 	^ ', varName)
 		classified: 'reference' notifying: nil
