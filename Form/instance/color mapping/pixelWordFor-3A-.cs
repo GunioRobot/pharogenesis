@@ -1,7 +1,8 @@
 pixelWordFor: aColor
 	"Return the pixel word for representing the given color on the receiver"
 	| basicPattern |
-	self isExternalForm ifFalse:[^aColor pixelWordForDepth: self depth].
+	self hasNonStandardPalette 
+		ifFalse:[^aColor pixelWordForDepth: self depth].
 	basicPattern _ self pixelValueFor: aColor.
 	self depth = 32 
 		ifTrue:[^basicPattern]
