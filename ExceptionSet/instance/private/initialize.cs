@@ -1,0 +1,3 @@
+initialize
+
+	exceptions := OrderedCollection new
