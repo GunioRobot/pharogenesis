@@ -1,0 +1,15 @@
+This is an incomplete test suite for storing and reading various word- and short-word subclasses of ArrayedCollection.
+
+It demonstrates some problems with filing in of certain kinds of arrayed objects, including:
+
+ShortPointArray
+ShortIntegerArray
+ShortRunArray
+WordArray
+MatrixTransform2x3
+
+In 3.6b-5331, I get 8 passed/6 failed/6 errors (not counting the MatrixTransform2x3 tests, which were added later).
+
+I ran into problems when trying to read back the SqueakLogo flash character morph, after I'd done a 'save morph to disk' from its debug menu.
+
+The words within the ShortPointArrays and ShortRunArrays were reversed.
