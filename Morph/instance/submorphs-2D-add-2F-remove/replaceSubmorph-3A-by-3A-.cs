@@ -1,11 +1,10 @@
 replaceSubmorph: oldMorph by: newMorph
-	| index itsPosition |
+	| index itsPosition w |
 	oldMorph stopStepping.
-	itsPosition _ oldMorph position.
+	itsPosition _ oldMorph referencePositionInWorld.
 	index _ submorphs indexOf: oldMorph.
 	oldMorph privateDelete.
 	self privateAddMorph: newMorph atIndex: index.
-	newMorph position: itsPosition.
-	self autoLineLayout
-		ifTrue:
-			[self fixLayout]
+	newMorph referencePositionInWorld: itsPosition.
+	(w _ newMorph world) ifNotNil:
+		[w startSteppingSubmorphsOf: newMorph]
