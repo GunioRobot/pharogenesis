@@ -1,7 +1,7 @@
 changeEmphasis
 	| aList reply  |
-	aList _ #(plain bold italic narrow underlined struckOut).
-	reply _ (SelectionMenu labelList: aList selections: aList) startUp.
+	aList _ #(normal bold italic narrow underlined struckOut).
+	reply _ (SelectionMenu labelList: (aList collect: [:t | t translated]) selections: aList) startUp.
 	reply ~~ nil ifTrue:
 		[self setEmphasis: reply.
 		paragraph composeAll.
