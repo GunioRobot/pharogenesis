@@ -1,0 +1,2 @@
+innerEdges
+	^ self edgesWithoutTag: #border
