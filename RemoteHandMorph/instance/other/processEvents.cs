@@ -15,12 +15,13 @@ processEvents
 			lastEvent _ evt.
 			^ self invokeMetaMenu: evt].
 
-		(evt blueButtonPressed and:
-		 [lastEvent blueButtonPressed not]) ifTrue:
-			[eventTransform _ MorphicTransform identity.
-			lastEvent _ evt.
-			^ self specialGesture: evt].
+		evt blueButtonPressed ifTrue:
+			[lastEvent blueButtonPressed 
+				ifTrue: [^ self specialDrag: evt]
+				ifFalse: [eventTransform _ MorphicTransform identity.
+						lastEvent _ evt.
+						^ self specialGesture: evt]].
 
 		self handleEvent: evt.
 		lastEvent _ evt.
-		evt _ self getNextRemoteEvent].
+		evt _ self getNextRemoteEvent]
