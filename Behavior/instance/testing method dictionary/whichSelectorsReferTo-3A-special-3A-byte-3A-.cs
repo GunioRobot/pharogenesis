@@ -7,7 +7,7 @@ whichSelectorsReferTo: literal special: specialFlag byte: specialByte
 		[:sel :method |
 		((method hasLiteral: literal) or: [specialFlag and: [method scanFor: specialByte]])
 			ifTrue:
-				[((literal isMemberOf: Association) not
+				[((literal isVariableBinding) not
 					or: [method sendsToSuper not
 					or: [method literals allButLast includes: literal]])
 						ifTrue: [who add: sel]]].
