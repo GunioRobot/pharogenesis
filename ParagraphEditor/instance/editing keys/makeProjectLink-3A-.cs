@@ -4,7 +4,7 @@ makeProjectLink: characterStream
 	| attribute oldAttributes thisSel |
 	
 	sensor keyboard.
-	oldAttributes _ paragraph text attributesAt: startBlock stringIndex forStyle: paragraph textStyle.
+	oldAttributes _ paragraph text attributesAt: self pointIndex forStyle: paragraph textStyle.
 	thisSel _ self selection.
 
 	attribute _ TextSqkProjectLink new. 
