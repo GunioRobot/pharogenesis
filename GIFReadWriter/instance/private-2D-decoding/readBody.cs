@@ -1,7 +1,7 @@
 readBody
 	"Read the GIF blocks. Modified to return a form.  "
 
-	| form extype block blocksize |
+	| form extype block blocksize packedFields delay1 |
 	form _ nil.
 	[stream atEnd] whileFalse: [
 		block _ self next.
@@ -17,9 +17,22 @@ readBody
 			extype _ self next.	"extension type"
 			extype = 16rF9 ifTrue: [  "graphics control"
 				self next = 4 ifFalse: [^ form "^ self error: 'corrupt GIF file'"].
-				self next; next; next.
+				"====
+				Reserved                      3 Bits
+				Disposal Method               3 Bits
+				User Input Flag               1 Bit
+				Transparent Color Flag        1 Bit
+				==="
+ 
+				packedFields _ self next.
+				delay1 := self next.	"delay time 1"
+				delay := (self next*256 + delay1) *10.	 "delay time 2"
 				transparentIndex _ self next.
+				(packedFields bitAnd: 1) = 0 ifTrue: [transparentIndex _ nil].
 				self next = 0 ifFalse: [^ form "^ self error: 'corrupt GIF file'"].
-			] ifFalse: [  "Skip blocks"
+			] ifFalse: [
+				"Skip blocks"
 				[(blocksize _ self next) > 0]
-					whileTrue: [self next: blocksize]]]].
+					whileTrue: [
+						"Read the block and ignore it and eat the block terminator"
+						self next: blocksize]]]]
