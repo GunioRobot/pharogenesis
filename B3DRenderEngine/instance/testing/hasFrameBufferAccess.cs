@@ -1,0 +1,2 @@
+hasFrameBufferAccess
+	^true
