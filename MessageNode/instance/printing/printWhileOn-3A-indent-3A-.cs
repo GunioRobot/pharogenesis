@@ -9,7 +9,7 @@ printWhileOn: aStream indent: level
 				self printKeywords: #do: arguments: arguments
 					on: aStream indent: level prefix: true]
 		ifFalse: [self printReceiver: receiver on: aStream indent: level.
-				(arguments first isJust: NodeNil) ifTrue:
+				(arguments isEmpty not and: [ arguments first isJust: NodeNil]) ifTrue:
 						[selector _ SelectorNode new
 								key: (selector key == #whileTrue:
 									ifTrue: [#whileTrue] ifFalse: [#whileFalse])
