@@ -1,7 +1,8 @@
 cannotReturn: result
 	"The receiver tried to return result to a method context that no longer exists."
 
-	Debugger
-		openContext: thisContext
-		label: 'Block cannot return'
-		contents: thisContext shortStack.
+	| ex newResult |
+	ex := BlockCannotReturn new.
+	ex result: result.
+	newResult := ex signal.
+	^newResult
