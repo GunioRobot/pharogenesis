@@ -1,0 +1,2 @@
+notificationObject
+	^Notification new
