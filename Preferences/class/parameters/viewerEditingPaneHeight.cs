@@ -1,0 +1,2 @@
+viewerEditingPaneHeight
+	^ 60
