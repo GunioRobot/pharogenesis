@@ -1,0 +1,1 @@
+This class represents an entry in the transposition table, storing the value (plus some maintenance information) of some position.
