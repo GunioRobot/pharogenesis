@@ -1,8 +1,9 @@
 showFlap
+	"Open the flap up"
+
 	| thicknessToUse flapOwner |
 
-	"19 sept 2000 - going for all paste ups"
-
+	"19 sept 2000 - going for all paste ups <- raa note"
 	flapOwner _ self pasteUpMorph.
 	self referentThickness <= 0
 		ifTrue:
@@ -25,4 +26,6 @@ showFlap
 		[self adjustPositionVisAVisFlap].
 	flapShowing _ true.
 	
-	flapOwner bringFlapTabsToFront
+	self pasteUpMorph hideFlapsOtherThan: self ifClingingTo: edgeToAdhereTo.
+
+	flapOwner bringTopmostsToFront
