@@ -10,4 +10,4 @@ newFromStream: s
 		ifTrue: ["Old compressed format"
 				^ (self new: len negated) readCompressedFrom: s]
 		ifFalse: ["Old raw data format"
-				^ s nextInto: (self new: len)]
+				^ s nextWordsInto: (self new: len)]
