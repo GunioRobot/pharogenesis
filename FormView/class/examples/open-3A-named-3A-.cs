@@ -5,7 +5,8 @@ open: aForm named: aString
 	topView _ StandardSystemView new.
 	topView model: aForm.
 	topView label: aString.
-	topView minimumSize: 80@80.
+	topView minimumSize: aForm extent;
+	          maximumSize: aForm extent.
 	aView _ FormView new.
 	aView model: aForm.
 	aView window: (aForm boundingBox expandBy: 2).
