@@ -1,27 +1,31 @@
-helpMenu
+helpMenu 
 	"Answer the help menu to be put up as a screen submenu"
 
-	HelpMenu == nil ifTrue:
-		[HelpMenu _ SelectionMenu labelList:
-		#(	'preferences...'
-			'update code from server'
-			'about this system...'
-			'command-key help'
-			'useful expressions'
-			'set author initials...'
-			'set desktop color...'
-			'set display depth...'
-			'full screen on'
-			'full screen off'
-			'view GIF imports'
-			'space left'
-			'vm statistics'
-				)
-		lines: #(2 5 8 10)
-		selections: #(editPreferences  absorbUpdatesFromServer aboutThisSystem openCommandKeyHelp openStandardWorkspace setAuthorInitials setDesktopColor setDisplayDepth fullScreenOn fullScreenOff viewGIFImports garbageCollect vmStatistics)].
-	^ HelpMenu
+	^ SelectionMenu labelList:
+		#(	'keep this menu up'
 
+			'about this system'
+			'update code from server'
+			'edit preferences...'
+
+			'command-key help'
+			'font size summary'
+			'useful expressions'
+			'view graphical imports'
+			'standard graphics library'),
+
+			(Array with: (Preferences soundsEnabled
+							ifFalse: ['turn sound on']
+							ifTrue: ['turn sound off'])) ,
+
+		#(	'definition for...'
+			'set author initials...'
+			'vm statistics'
+			'space left')
+		lines: #(1 4 6 11)
+		selections: #(durableHelpMenu aboutThisSystem absorbUpdatesFromServer
+editPreferences  openCommandKeyHelp fontSizeSummary openStandardWorkspace viewImageImports
+standardGraphicsLibrary soundOnOrOff  lookUpDefinition setAuthorInitials vmStatistics garbageCollect)
 "
 ScreenController new helpMenu startUp
-ScreenController initialize
 "
