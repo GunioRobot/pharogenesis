@@ -4,7 +4,7 @@ initSymbols: aClass
 	constTable _ constructor codeConstants.
 	instVars _ Array new: aClass instSize.
 	nTemps _ method numTemps.
-	namedTemps _ tempVars == nil ifTrue: [Array new] ifFalse: [tempVars].
+	namedTemps _ tempVars ifNil: [method tempNames].
 	tempVars _ (1 to: nTemps) collect:
 				[:i | i <= namedTemps size
 					ifTrue: [constructor codeTemp: i - 1 named: (namedTemps at: i)]
