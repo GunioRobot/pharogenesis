@@ -1,6 +1,6 @@
 becomeUncompact
 	| cct index |
-	cct _ Smalltalk compactClassesArray.
+	cct _ self environment compactClassesArray.
 	(index _ self indexIfCompact) = 0
 		ifTrue: [^ self].
 	(cct includes: self)
