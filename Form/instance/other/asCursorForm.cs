@@ -1,0 +1,2 @@
+asCursorForm
+	^ self
