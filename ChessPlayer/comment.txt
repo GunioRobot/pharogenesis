@@ -1,0 +1,1 @@
+This class represents a player in the game, including its pieces and the current value of the player's position.
