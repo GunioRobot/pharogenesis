@@ -5,5 +5,5 @@ instVarPutExprFor: varName offset: instIndex
 	(declarations includesKey: varName) ifTrue: [
 		self error: 'a primitive method can only modify integer instance variables'.
 	].
-	expr _ 'self storeInteger: ', instIndex printString, ' ofObject: rcvr withValue: ', varName.
+	expr _ '', self vmNameString, ' storeInteger: ', instIndex printString, ' ofObject: rcvr withValue: ', varName.
 	^ self statementsFor: expr varName: varName
