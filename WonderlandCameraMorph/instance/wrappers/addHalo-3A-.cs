@@ -9,4 +9,5 @@ addHalo: evt
 	root _ wrapper createHierarchy.
 	root computeFullBounds: self.
 	self addMorphFront: root.
-	wrapper addHalo. "Add programatically"
+	"pass on the event as if it had been there"
+	root processEvent: evt copy resetHandlerFields.
