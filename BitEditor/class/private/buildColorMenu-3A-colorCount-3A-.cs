@@ -1,9 +1,8 @@
 buildColorMenu: extent colorCount: nColors
 	"See BitEditor magnifyWithSmall."
 
-	| menuView index form aSwitchView connector
+	| menuView form aSwitchView
 	button formExtent highlightForm color leftOffset |
-	connector _ Object new.
 	menuView _ FormMenuView new.
 	menuView window: (0@0 corner: extent).
 	formExtent _ 30@30 min: extent//(nColors*2+1@2).  "compute this better"
@@ -18,7 +17,7 @@ buildColorMenu: extent colorCount: nColors
 		form _ Form extent: formExtent.
 		form fill: form boundingBox fillColor: (Color perform: color).
 		form borderWidth: 5.
-		form border: form boundingBox width: 4 fillColor: form white.
+		form border: form boundingBox width: 4 fillColor: Color white.
 		button _ Button new.
 		index = 1 ifTrue:
 			[button onAction: [menuView model setColor: Color fromUser]]
