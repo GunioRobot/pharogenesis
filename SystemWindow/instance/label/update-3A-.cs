@@ -1,3 +1,3 @@
 update: aSymbol
 	aSymbol = #relabel
-		ifTrue: [^ self setLabel: model labelString].
+		ifTrue: [^ model ifNotNil: [ self setLabel: model labelString ] ].
