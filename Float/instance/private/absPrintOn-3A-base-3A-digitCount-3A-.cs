@@ -1,13 +1,21 @@
 absPrintOn: aStream base: base digitCount: digitCount 
 	"Print me in the given base, using digitCount significant figures."
-	| fuzz x exp q i fBase |
+
+	| fuzz x exp q fBase scale logScale |
+	self isInf ifTrue: [^ aStream nextPutAll: 'Inf'].
 	fBase _ base asFloat.
 	"x is myself normalized to [1.0, fBase), exp is my exponent"
 	exp _ 
 		self < 1.0
-			ifTrue: [(fBase / self floorLog: fBase) negated]
+			ifTrue: [self reciprocalFloorLog: fBase]
 			ifFalse: [self floorLog: fBase].
-	x _ self / (fBase raisedTo: exp).
+	scale _ 1.0.
+	logScale _ 0.
+	[(x _ fBase raisedTo: (exp + logScale)) = 0]
+		whileTrue:
+			[scale _ scale * fBase.
+			logScale _ logScale + 1].
+	x _ self * scale / x.
 	fuzz _ fBase raisedTo: 1 - digitCount.
 	"round the last digit to be printed"
 	x _ 0.5 * fuzz + x.
@@ -30,7 +38,7 @@ absPrintOn: aStream base: base digitCount: digitCount
 			["use fuzz to track significance"
 			i _ x asInteger.
 			aStream nextPut: (Character digitValue: i).
-			x _ x - i * fBase.
+			x _ x - i asFloat * fBase.
 			fuzz _ fuzz * fBase.
 			exp _ exp - 1.
 			exp = -1 ifTrue: [aStream nextPut: $.]].
