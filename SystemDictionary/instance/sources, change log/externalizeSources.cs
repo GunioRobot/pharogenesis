@@ -1,14 +1,16 @@
 externalizeSources   
 	"Write the sources and changes streams onto external files."
  	"Smalltalk externalizeSources"
-
+	"the logic of this method is complex because it uses changesName and self changesName
+	may be this is normal - sd"
+	
 	| sourcesName changesName aFile |
-	sourcesName _ self sourcesName.
+	sourcesName _ SmalltalkImage current sourcesName.
 	(FileDirectory default fileExists: sourcesName)
 		ifTrue: [^ self inform:
 'Sorry, you must first move or remove the
 file named ', sourcesName].
-	changesName _ self changesName.
+	changesName _ SmalltalkImage current changesName.
 	(FileDirectory default fileExists: changesName)
 		ifTrue: [^ self inform:
 'Sorry, you must first move or remove the
@@ -20,12 +22,12 @@ file named ', changesName].
 	self setMacFileInfoOn: sourcesName.
 	SourceFiles at: 1 put: (FileStream readOnlyFileNamed: sourcesName).
 
-	aFile _ FileStream newFileNamed: self changesName.
+	aFile _ FileStream newFileNamed: SmalltalkImage current changesName.
 	aFile nextPutAll: SourceFiles last contents.
 	aFile close.
 	"On Mac, set the file type and creator (noop on other platforms)"
 	FileDirectory default
-		setMacFileNamed: self changesName
+		setMacFileNamed: SmalltalkImage current changesName
 		type: 'STch'
 		creator: 'FAST'.
 	SourceFiles at: 2 put: (FileStream oldFileNamed: changesName).
