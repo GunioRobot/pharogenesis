@@ -70,4 +70,3 @@ writeBitData: bits
 	self flushCode.
 
 	self nextPut: 0.	"zero-length packet"
-	self nextPut: Terminator.
