@@ -7,7 +7,7 @@ createFullScreenForm
 	formEditor _ formView controller.
 	menuView _ FormMenuView new makeFormEditorMenu model: formEditor.
 	formEditor model: menuView controller.
-	topView _ FormEditorView new.
+	topView _ StandardSystemView new.
 	topView backgroundColor: #veryLightGray.
 	topView model: aForm.
 	topView addSubView: formView.
