@@ -1,0 +1,2 @@
+isGestural
+	^ true
