@@ -1,0 +1,3 @@
+getFolder
+
+	^self getFolderDialog open
