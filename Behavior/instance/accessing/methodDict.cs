@@ -1,3 +1,3 @@
 methodDict
-	methodDict == nil ifTrue: [self recoverFromMDFault].
+	methodDict == nil ifTrue: [self recoverFromMDFaultWithTrace].
 	^ methodDict
