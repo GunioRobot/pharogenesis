@@ -1,8 +1,21 @@
 macDirectoryFile
 
-	^ '#include <Files.h>
-#include <Strings.h>
+	^ '/* Adjustments for pluginized VM
+ *
+ * Note: The Mac support files have not yet been fully converted to
+ * pluginization. For the time being, it is assumed that they are linked
+ * with the VM. When conversion is complete, they will no longer import
+ * "sq.h" and they will access all VM functions and variables through
+ * the interpreterProxy mechanism.
+ */
+
 #include "sq.h"
+#include "FilePlugin.h"
+
+/* End of adjustments for pluginized VM */
+
+#include <Files.h>
+#include <Strings.h>
 
 /***
 	The interface to the directory primitive is path based.
@@ -33,7 +46,6 @@ int equalsLastPath(char *pathString, int pathStringLength);
 int lookupDirectory(int volRefNum, int folderRefNum, char *name, int *refNumPtr);
 int lookupPath(char *pathString, int pathStringLength, int *refNumPtr, int *volNumPtr);
 int lookupVolume(char *volName, int *refNumPtr);
-int prefixPathWith(char *pathName, int pathNameSize, int pathNameMax, char *prefix);
 int recordPath(char *pathString, int pathStringLength, int refNum, int volNum);
 
 int convertToSqueakTime(int macTime) {
@@ -50,16 +62,47 @@ int dir_Create(char *pathString, int pathStringLength) {
 	HParamBlockRec pb;
 	int i;
 
+	if (!plugInAllowAccessToFilePath(pathString, pathStringLength)) {
+		return false;
+	}
+
 	for (i = 0; i < pathStringLength; i++) {
 		name[i] = pathString[i];
 	}
 	name[i] = 0; /* string terminator */
-	c2pstr((char *) name);
 
+	CopyCStringToPascal((const char *) name,name);
 	pb.fileParam.ioNamePtr = name;
 	pb.fileParam.ioVRefNum = 0;
 	pb.fileParam.ioDirID = 0;
 	return PBDirCreateSync(&pb) == noErr;
+}
+
+int dir_Delete(char *pathString, int pathStringLength) {
+	/* Delete the existing directory with the given path. */
+	int okay, refNum, volNum, i;
+	HParamBlockRec pb;
+	Str255 name;
+
+	if (!plugInAllowAccessToFilePath(pathString, pathStringLength)) {
+		return false;
+	}
+
+	for (i = 0; i < pathStringLength; i++) {
+		name[i] = pathString[i];
+	}
+	name[i] = 0; /* string terminator */
+
+	okay = lookupPath(pathString, pathStringLength, &refNum, &volNum);
+	if (!okay) {
+		return false;
+	}
+
+	CopyCStringToPascal((const char *) name,name);
+	pb.fileParam.ioNamePtr = name;
+	pb.fileParam.ioVRefNum = volNum;
+	pb.fileParam.ioDirID = refNum;
+	return PBHDeleteSync(&pb) == noErr;
 }
 
 int dir_Delimitor(void) {
@@ -90,6 +133,10 @@ int dir_Lookup(char *pathString, int pathStringLength, int index,
 	*isDirectory      = false;
 	*sizeIfFile       = 0;
 
+	if (!plugInAllowAccessToFilePath(pathString, pathStringLength)) {
+		return NO_MORE_ENTRIES;
+	}
+
 	if ((pathStringLength == 0)) {
 		/* get volume info */
 		volumeParams.ioNamePtr = (unsigned char *) name;
@@ -97,7 +144,7 @@ int dir_Lookup(char *pathString, int pathStringLength, int index,
 		volumeParams.ioVolIndex = index;
 		okay = PBHGetVInfoSync((HParmBlkPtr) &volumeParams) == noErr;
 		if (okay) {
-			p2cstr((unsigned char *) name);
+			CopyPascalStringToC((ConstStr255Param) name,name);
 			*nameLength       = strlen(name);
 			*creationDate     = convertToSqueakTime(volumeParams.ioVCrDate);
 			*modificationDate = convertToSqueakTime(volumeParams.ioVLsMod);
@@ -130,7 +177,7 @@ int dir_Lookup(char *pathString, int pathStringLength, int index,
 		}
 		okay = PBGetCatInfoSync(&dirParams) == noErr;
 		if (okay) {
-			p2cstr((unsigned char *) name);
+			CopyPascalStringToC((ConstStr255Param) name,name);
 			*nameLength       = strlen(name);
 			*creationDate     = convertToSqueakTime(dirParams.hFileInfo.ioFlCrDat);
 			*modificationDate = convertToSqueakTime(dirParams.hFileInfo.ioFlMdDat);
@@ -148,48 +195,6 @@ int dir_Lookup(char *pathString, int pathStringLength, int index,
 	}
 }
 
-int dir_PathToWorkingDir(char *pathName, int pathNameMax) {
-	/* Fill in the given string with the full path from a root volume to
-	   to current working directory. (At startup time, the working directory
-	   is set to the application''s directory. Fails if the given string is not
-	   long enough to hold the entire path. (Use at least 1000 characters to
-	   be safe.)
-	*/
-
-	char thisName[256];
-	CInfoPBRec pb;
-	int nextDirRefNum, pathLen;
-
-	/* initialize string copying state */
-	pathName[0] = 0;
-	pathLen = 0;
-
-	/* get refNum of working directory */
-	strcpy(thisName, ":");
-	pb.hFileInfo.ioNamePtr = c2pstr(thisName);
-	pb.hFileInfo.ioVRefNum = 0;
-	pb.hFileInfo.ioFDirIndex = 0;
-	pb.hFileInfo.ioDirID = 0;
-	if (PBGetCatInfoSync(&pb) != noErr) {
-		nextDirRefNum = 0;
-	}
-	nextDirRefNum = pb.hFileInfo.ioDirID;
-
-	while (true) {
-		thisName[0] = 0;
-		pb.hFileInfo.ioFDirIndex = -1; /* map ioDirID -> name */
-		pb.hFileInfo.ioVRefNum = 0;
-		pb.hFileInfo.ioDirID = nextDirRefNum;
-		if (PBGetCatInfoSync(&pb) != noErr) {
-			break;  /* we''ve reached the root */
-		}
-		p2cstr((unsigned char *) thisName);
-		pathLen = prefixPathWith(pathName, pathLen, pathNameMax, thisName);
-		nextDirRefNum = pb.dirInfo.ioDrParID;
-	}
-	return pathLen;
-}
-
 dir_SetMacFileTypeAndCreator(char *filename, int filenameSize, char *fType, char *fCreator) {
 	/* Set the Macintosh type and creator of the given file. */
 	/* Note: On other platforms, this is just a noop. */
@@ -205,10 +210,10 @@ dir_SetMacFileTypeAndCreator(char *filename, int filenameSize, char *fType, char
 		name[i] = filename[i - 1];
 	}
 
-	if (GetFInfo(name, 0, &finderInfo) != noErr) return false;
+	if (HGetFInfo(0,0,name,  &finderInfo) != noErr) return false;
 	finderInfo.fdType = *((int *) fType);
 	finderInfo.fdCreator = *((int *) fCreator);
-	if (SetFInfo(name, 0, &finderInfo) != noErr) return false;
+	if (HSetFInfo(0,0,name,  &finderInfo) != noErr) return false;
 	return true;
 }
 
@@ -236,20 +241,19 @@ int lookupDirectory(int volRefNum, int folderRefNum, char *name, int *refNumPtr)
 	   number of the resulting folder. Return true if this succeeds. */
 
 	CInfoPBRec pb;
+	Str255 tempName;
 
-	c2pstr((char *) name);
-	pb.hFileInfo.ioNamePtr = (unsigned char *) name;
+	CopyCStringToPascal((const char *) name,tempName);
+	pb.hFileInfo.ioNamePtr = tempName;
 	pb.hFileInfo.ioFVersNum = 0;
 	pb.hFileInfo.ioFDirIndex = 0;
 	pb.hFileInfo.ioVRefNum = volRefNum;
 	pb.hFileInfo.ioDirID = folderRefNum;
 
 	if (PBGetCatInfoSync(&pb) == noErr) {
-		p2cstr((unsigned char *) name);
 		*refNumPtr = pb.hFileInfo.ioDirID;
 		return true;
 	}
-	p2cstr((unsigned char *) name);
 	return false;
 }
 
@@ -316,43 +320,19 @@ int lookupVolume(char *volName, int *refNumPtr) {
 
 	int okay;
 	HVolumeParam volumeParams;
+	Str255 tempVolName;
 
-	volumeParams.ioNamePtr = c2pstr(volName);
+	CopyCStringToPascal((const char *)volName,tempVolName);
+	volumeParams.ioNamePtr = (StringPtr) tempVolName;
 	volumeParams.ioVRefNum = 0;
 	volumeParams.ioVolIndex = -1;
 	okay = PBHGetVInfoSync((HParmBlkPtr) &volumeParams) == noErr;
-	p2cstr((unsigned char *) volName);
+
 	if (okay) {
 		*refNumPtr = volumeParams.ioVRefNum;
 		return true;
 	}
 	return false;
-}
-
-int prefixPathWith(char *pathName, int pathNameSize, int pathNameMax, char *prefix) {
-	/* Insert the given prefix C string plus a delimitor character at the
-	   beginning of the given C string. Return the new pathName size. Fails
-	   if pathName is does not have sufficient space for the result.
-	   Assume: pathName is null terminated.
-	*/
-
-	int offset, i;
-
-	offset = strlen(prefix) + 1;
-	if ((pathNameSize + offset) > pathNameMax) {
-		error("path name to working directory is too long for available space");
-	}
-
-	for (i = pathNameSize; i >= 0; i--) {
-		/* make room in pathName for prefix (moving string terminator, too) */
-		pathName[i + offset] = pathName[i];
-	}
-	for (i = 0; i < offset; i++) {
-		/* make room in pathName for prefix */
-		pathName[i] = prefix[i];
-	}
-	pathName[offset - 1] = DELIMITOR;  /* insert delimitor */
-	return pathNameSize + offset;
 }
 
 int recordPath(char *pathString, int pathStringLength, int refNum, int volNum) {
@@ -376,4 +356,4 @@ int recordPath(char *pathString, int pathStringLength, int refNum, int volNum) {
 	lastVolNum = volNum;
 }
 
-'.
+'
