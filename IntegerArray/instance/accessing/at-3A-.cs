@@ -1,5 +1,6 @@
 at: index
 	| word |
+	<primitive: 165>
 	word _ self basicAt: index.
 	word < 16r3FFFFFFF ifTrue:[^word]. "Avoid LargeInteger computations"
 	^word >= 16r80000000	"Negative?!"
