@@ -1,0 +1,3 @@
+catcher
+
+	^ MessageCatcher new
