@@ -1,4 +1,5 @@
 newGlobalFlapString
-	"Answer a string for the new-global-flap item in the flap menu"
+	"Answer a string for the new-global-flap item in the flap menu.  Obsolete; retained momentarily for the benefit of preexisting persistent menus."
 
-	^ 'new global flap...'
+	self flag: #toRemove.
+	^ 'make a new shared flap'
