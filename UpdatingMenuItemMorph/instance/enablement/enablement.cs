@@ -1,5 +1,8 @@
-enablement
+enablement 
 
-	(enablementSelector isKindOf: BlockContext)
+	enablementSelector isBlock
 		ifTrue: [^ enablementSelector value]
-		ifFalse: [^ wordingProvider perform: enablementSelector]
+		ifFalse: [enablementSelector numArgs = 0
+				ifTrue: [^ wordingProvider perform: enablementSelector]
+				ifFalse: [^ wordingProvider perform: enablementSelector
+										withArguments: arguments]]
