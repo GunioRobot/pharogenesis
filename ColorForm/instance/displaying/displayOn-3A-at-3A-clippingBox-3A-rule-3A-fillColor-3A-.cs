@@ -6,4 +6,4 @@ displayOn: aDisplayMedium at: aDisplayPoint clippingBox: clipRectangle rule: rul
 		clippingBox: clipRectangle
 		rule: rule
 		fillColor: aForm
-		map: (self colormapIfNeededForDepth: aDisplayMedium depth).
+		map: (self colormapIfNeededFor: aDisplayMedium).
