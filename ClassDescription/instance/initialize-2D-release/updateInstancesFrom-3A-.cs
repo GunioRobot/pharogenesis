@@ -2,31 +2,33 @@ updateInstancesFrom: oldClass
 	"Recreate any existing instances of the argument, oldClass, as instances of 
 	the receiver, which is a newly changed class. Permute variables as 
 	necessary."
+	"ar 7/15/1999: The updating below is possibly dangerous. If there are any
+	contexts having an old instance as receiver it might crash the system if
+	the new receiver in which the context is executed has a different layout.
+	See bottom below for a simple example:"
+	| oldInstances |
 
-	| oldInstVarNames map variable new instSize oldInstances |
-	oldClass someInstance == nil ifTrue: [^self].
-	"no instances to convert"
-	oldInstVarNames _ oldClass allInstVarNames.
-	map _ 
-		self allInstVarNames 
-			collect: [:instVarName | oldInstVarNames indexOf: instVarName].
-	variable _ self isVariable.
-	instSize _ self instSize.
-
-	"Now perform a bulk mutation of old instances into new ones"
 	oldInstances _ oldClass allInstances asArray.
-	oldInstances elementsExchangeIdentityWith:
-		(oldInstances collect: 
-		[:old | 
-		variable
-			ifTrue: [new _ self basicNew: old basicSize]
-			ifFalse: [new _ self basicNew].
-		1 to: instSize do: 
-			[:offset |  (map at: offset) > 0 ifTrue:
-				[new instVarAt: offset
-						put: (old instVarAt: (map at: offset))]].
-		variable 
-			ifTrue: [1 to: old basicSize do: 
-						[:offset |
-						new basicAt: offset put: (old basicAt: offset)]].
-		new])
+	self updateInstances: oldInstances from: oldClass isMeta: false.
+	"Now fix up instances in segments that are out on the disk."
+	ImageSegment allSubInstancesDo: [:seg |
+		seg segUpdateInstancesOf: oldClass toBe: self isMeta: false].
+
+
+"	| crashingBlock class |
+	class _ Object subclass: #CrashTestDummy
+		instanceVariableNames: 'instVar'
+		classVariableNames: ''
+		poolDictionaries: ''
+		category: 'Crash-Test'.
+	class compile:'instVar: value instVar _ value'.
+	class compile:'crashingBlock ^[instVar]'.
+	crashingBlock _ (class new) instVar: 42; crashingBlock.
+	Object subclass: #CrashTestDummy
+		instanceVariableNames: ''
+		classVariableNames: ''
+		poolDictionaries: ''
+		category: 'Crash-Test'.
+	crashingBlock.
+	crashingBlock value.
+	"
