@@ -11,11 +11,11 @@ buildThreadOfProjects
 	].
 	projectNames _ projectNames reject: [ :each | each isNil].
 	threadName _ FillInTheBlank 
-		request: 'Please name this thread.' 
+		request: 'Please name this thread.' translated 
 		initialAnswer: (
-			self valueOfProperty: #nameOfThreadOfProjects ifAbsent: ['Projects on Parade']
+			self valueOfProperty: #nameOfThreadOfProjects ifAbsent: ['Projects on Parade' translated]
 		).
 	threadName isEmptyOrNil ifTrue: [^self].
 	InternalThreadNavigationMorph 
 		know: projectNames as: threadName;
-		openThreadNamed: threadName.
+		openThreadNamed: threadName atIndex: nil.
