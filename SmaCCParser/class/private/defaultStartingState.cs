@@ -1,0 +1,2 @@
+defaultStartingState
+	^1
