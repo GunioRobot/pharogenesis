@@ -10,4 +10,4 @@ initShapeDicts
 		renamed _ Dictionary new.  "(old class name symbol -> new class name)"
 		renamedConv _ Dictionary new "(oldClassNameSymbol -> conversionSelectorInNewClass)"
 	].
-				
+	self initKnownRenames
