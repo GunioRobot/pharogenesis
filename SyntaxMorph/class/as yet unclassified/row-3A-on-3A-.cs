@@ -4,12 +4,12 @@ row: aColor on: aParseNode
 	color _ self translateColor: aColor.
 	(r _ self newRow)
 		parseNode: aParseNode;
-		layoutInset: self standardInset;
+		layoutInset: r standardInset;
 		hResizing: #shrinkWrap;
 		vResizing: #shrinkWrap;
 		color: color;
 		borderWidth: 1;
 		borderColor: r stdBorderColor;
 		wrapCentering: #topLeft;
-		cellPositioning: #topLeft.
+		cellPositioning: r standardCellPositioning.
 	^r
