@@ -1,0 +1,2 @@
+parseEndOfInput
+	eoiSeen _ true.
