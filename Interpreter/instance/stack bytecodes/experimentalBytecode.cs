@@ -23,6 +23,7 @@ If two values pushed are not small integers, this bytecode acts like the pushTem
 	(self isIntegerObject: arg1) ifTrue: [
 		arg1Val _ self integerValueOf: arg1.
 	] ifFalse: [
+		self fetchNextBytecode.
 		^ self internalPush: arg1.  "abort; first arg is not an integer"
 	].
 
@@ -32,6 +33,7 @@ If two values pushed are not small integers, this bytecode acts like the pushTem
 		(self isIntegerObject: arg2Val) ifTrue: [
 			arg2Val _ self integerValueOf: arg2Val.
 		] ifFalse: [
+			self fetchNextBytecode.
 			^ self internalPush: arg1.  "abort; second arg is not an integer"
 		].
 	] ifFalse: [
@@ -42,6 +44,7 @@ If two values pushed are not small integers, this bytecode acts like the pushTem
 			(self isIntegerObject: arg2Val) ifTrue: [
 				arg2Val _ self integerValueOf: arg2Val.
 			] ifFalse: [
+				self fetchNextBytecode.
 				^ self internalPush: arg1.  "abort; second arg is not an integer"
 			].
 		].
@@ -55,13 +58,14 @@ If two values pushed are not small integers, this bytecode acts like the pushTem
 				"next instruction is a storeAndPopTemp"
 				localIP _ localIP + 3.
 				self storePointerUnchecked: (byte4 bitAnd: 7) + TempFrameStart
-					ofObject: theHomeContext
+					ofObject: localHomeContext
 					withValue: (self integerObjectOf: result).
 			] ifFalse: [
 				localIP _ localIP + 2.
 				self internalPush: (self integerObjectOf: result).
 			].
 		] ifFalse: [
+			self fetchNextBytecode.
 			^ self internalPush: arg1.  "abort; result is not an integer"
 		].
 	] ifFalse: [
@@ -70,4 +74,5 @@ If two values pushed are not small integers, this bytecode acts like the pushTem
 		arg1Val <= arg2Val
 			ifTrue: [localIP _ localIP + 3 + 1]  "jump not taken; skip extra instruction byte"
 			ifFalse: [localIP _ localIP + 3 + 1 + offset].
+			self fetchNextBytecode.
 	].
