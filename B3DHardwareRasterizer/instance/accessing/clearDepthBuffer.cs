@@ -1,0 +1,2 @@
+clearDepthBuffer
+	self primClearDepthBuffer.
