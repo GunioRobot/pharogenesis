@@ -1,0 +1,2 @@
+currentPage
+	^ currentPage
