@@ -5,4 +5,4 @@ changeFlapColor
 		ifFalse:
 			[self inform: 'The flap itself needs to be open
 before you can change its
-color.']
+color.' translated]
