@@ -1,6 +1,6 @@
 typeInFrequency
 	| reply aNumber |
-	reply _ FillInTheBlank request: 'Number of firings per tick: ' initialAnswer: self scriptInstantiation frequency printString.
+	reply _ FillInTheBlank request: 'Number of firings per tick: ' translated initialAnswer: self scriptInstantiation frequency printString.
 
 	reply ifNotNil:
 		[aNumber _ reply asNumber.
