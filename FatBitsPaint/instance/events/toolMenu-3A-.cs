@@ -12,5 +12,5 @@ toolMenu: evt
 			target: self
 			selector: #setCurrentToolTo:
 			argumentList: {each second}].
-	menu toggleStayUp: nil.
+	menu toggleStayUp: evt.
 	menu popUpEvent: evt in: self world
