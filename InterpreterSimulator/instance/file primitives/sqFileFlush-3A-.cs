@@ -1,0 +1,3 @@
+sqFileFlush: file
+
+	^ file flush
