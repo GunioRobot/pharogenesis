@@ -1,6 +1,6 @@
 WeakKeyDictionary
 	subclass: #ExternalFormRegistry
-	instanceVariableNames: 'lockFlag '
+	instanceVariableNames: 'lockFlag'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Graphics-External'
