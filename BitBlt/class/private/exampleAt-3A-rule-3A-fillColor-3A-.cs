@@ -6,7 +6,7 @@ exampleAt: originPoint rule: rule fillColor: mask
 	| s d border aBitBlt | 
 	border_Form extent: 32@32.
 	border fillBlack.
-	border fill: (1@1 extent: 30@30) fillColor: Form white.
+	border fill: (1@1 extent: 30@30) fillColor: Color white.
 	s _ Form extent: 32@32.
 	s fillWhite.
 	s fillBlack: (7@7 corner: 25@25).
