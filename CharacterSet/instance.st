@@ -1,6 +1,6 @@
 Collection
 	subclass: #CharacterSet
-	instanceVariableNames: 'map '
+	instanceVariableNames: 'map'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Collections-Text'
+	category: 'Collections-Support'
