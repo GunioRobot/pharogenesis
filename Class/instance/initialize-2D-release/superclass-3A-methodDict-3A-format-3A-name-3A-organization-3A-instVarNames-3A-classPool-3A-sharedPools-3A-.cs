@@ -7,7 +7,7 @@ superclass: sup methodDict: md format: ft name: nm organization: org instVarName
 	methodDict _ md.
 	format _ ft.
 	name _ nm.
-	organization _ org.
 	instanceVariables _ nilOrArray.
 	classPool _ pool.
-	sharedPools _ poolSet
+	sharedPools _ poolSet.
+	self organization: org.
