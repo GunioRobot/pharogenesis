@@ -4,5 +4,5 @@ userInterruptWatcher
 	[true] whileTrue: [
 		InterruptSemaphore wait.
 		Display deferUpdates: false.
-		Smalltalk shutDownSound.
-		Project current maybeForkInterrupt]
+		Smalltalk at: #SoundPlayer ifPresent: [:theClass | theClass shutDown].
+		Smalltalk handleUserInterrupt]
