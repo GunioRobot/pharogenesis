@@ -3,16 +3,17 @@ mapUniClasses
 	"Players also refer to each other using associations in the References dictionary.  Search the methods of our Players for those.  Make new entries in References and point to them."
 | pp oldPlayer newKey newAssoc oldSelList newSelList |
 
+	newUniClasses ifFalse: [^ self].	"All will be siblings.  uniClasses is empty"
 "Uniclasses use class vars to hold onto siblings who are referred to in code"
-pp _ Object class instSize + 1.
+pp _ Player class superclass instSize.
 uniClasses do: [:playersClass | "values = new ones"
 	playersClass classPool associationsDo: [:assoc |
 		assoc value: (assoc value veryDeepCopyWith: self)].
-	playersClass scripts: (playersClass privateScripts veryDeepCopyWith: self).	"pp+0"
-	"(pp+1) slotInfo was deepCopied in copyUniClass and that's all it needs"
-	pp+2 to: playersClass class instSize do: [:i | 
-		playersClass instVarAt: i put: 
-			((playersClass instVarAt: i) veryDeepCopyWith: self)].
+	playersClass scripts: (playersClass privateScripts veryDeepCopyWith: self).	"pp+1"
+	"(pp+2) slotInfo was deepCopied in copyUniClass and that's all it needs"
+	pp+3 to: playersClass class instSize do: [:ii | 
+		playersClass instVarAt: ii put: 
+			((playersClass instVarAt: ii) veryDeepCopyWith: self)].
 	].
 
 "Make new entries in References and point to them."
@@ -26,7 +27,7 @@ uniClasses "values" do: [:newClass |
 	oldSelList _ OrderedCollection new.   newSelList _ OrderedCollection new.
 	newClass selectorsDo: [:sel | 
 		(newClass compiledMethodAt: sel)	 literals do: [:assoc |
-			assoc class == Association ifTrue: [
+			assoc isVariableBinding ifTrue: [
 				(References associationAt: assoc key ifAbsent: [nil]) == assoc ifTrue: [
 					newKey _ (references at: assoc value ifAbsent: [assoc value]) 
 									externalName asSymbol.
