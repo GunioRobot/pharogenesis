@@ -8,4 +8,4 @@ chooseSound: evt
 		menu add: name
 			target: self selector: #editSoundNamed:
 			argument: name].
-	menu popUpAt: evt hand position event: evt.
+	menu popUpEvent: evt
