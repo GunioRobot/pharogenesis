@@ -1,0 +1,3 @@
+totalTextHeight
+
+	^paragraph boundingBox height
