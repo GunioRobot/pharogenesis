@@ -13,6 +13,7 @@ lookAhead: aChunk
 	oldName _ oldName asSymbol.
 	(Smalltalk includesKey: oldName) ifFalse: [^ aChunk].	"no conflict"
 	existing _ Smalltalk at: oldName.
+	(existing isKindOf: Class) ifFalse: [^ aChunk].	"Write over non-class global"
 	existing isSystemDefined ifTrue: [^ aChunk].	"Go ahead and redefine it!"
 	"Is a UniClass"
 	newName _ sup chooseUniqueClassName.
