@@ -1,5 +1,5 @@
 fromStrike: fileName 
-	"Answer an instance of me determined by reading the file whose name is 
-	fileName followed by '.strike'."
+	"Read a font from disk in the old ST-80 'strike' format.
+	Note: this is an old format; use strike2 format instead"
 
 	^self new newFromStrike: fileName
