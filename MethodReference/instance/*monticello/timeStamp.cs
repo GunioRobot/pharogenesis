@@ -1,0 +1,2 @@
+timeStamp
+	^ self compiledMethod timeStamp
