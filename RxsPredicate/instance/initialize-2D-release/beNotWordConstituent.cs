@@ -1,0 +1,4 @@
+beNotWordConstituent
+	self
+		beWordConstituent;
+		negate
