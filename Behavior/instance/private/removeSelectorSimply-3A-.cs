@@ -1,6 +1,11 @@
 removeSelectorSimply: selector 
-	"Remove the message selector from the receiver's method dictionary.
-	Internal access from compiler."
+	"Assuming that the argument, selector (a Symbol), is a message selector 
+	in my method dictionary, remove it and its method."
 
-	methodDict removeKey: selector ifAbsent: [^self].
-	selector flushCache
+	| oldMethod |
+	oldMethod _ self methodDict at: selector ifAbsent: [^ self].
+	self methodDict removeKey: selector.
+
+	"Now flush Squeak's method cache, either by selector or by method"
+	oldMethod flushCache.
+	selector flushCache.
