@@ -23,7 +23,7 @@ displayInterpolatedIn: aRectangle on: aForm
 	"there seems to be a slight bug in B3D which the following adjusts for"
 	adjustedR _ (aRectangle withRight: aRectangle right + 1) translateBy: 0@1.
 	engine viewport: adjustedR.
-	engine material: (B3DMaterial new emission: Color white).
+	engine material: ((Smalltalk at: #B3DMaterial) new emission: Color white).
 	engine texture: self.
-	engine render: (B3DIndexedQuadMesh new plainTextureRect).
+	engine render: ((Smalltalk at: #B3DIndexedQuadMesh) new plainTextureRect).
 	engine finish.
