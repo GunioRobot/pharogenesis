@@ -7,3 +7,4 @@ longUnconditionalJump
 		"backward jump means we're in a loop; check for possible interrupts"
 		self internalQuickCheckForInterrupts.
 	].
+	self fetchNextBytecode.
