@@ -1,9 +1,8 @@
 rowOfRightTypeFor: aLayoutMorph forActor: aPlayer
-	| aPartsViewer aPhrase |
+	| aTemporaryViewer aPhrase |
 	aLayoutMorph demandsBoolean ifTrue:
 		[self isBoolean ifTrue: [^ self].
-		aPartsViewer _ PartsViewer new invisiblySetPlayer: aPlayer.
-		aPhrase _ aPartsViewer booleanPhraseFromPhrase: self.
-		aLayoutMorph presenter coloredTilesEnabled ifFalse: [aPhrase makeAllTilesGreen].
+		aTemporaryViewer _ CategoryViewer new invisiblySetPlayer: aPlayer.
+		aPhrase _ aTemporaryViewer booleanPhraseFromPhrase: self.
 		^ aPhrase].
 	^ self
