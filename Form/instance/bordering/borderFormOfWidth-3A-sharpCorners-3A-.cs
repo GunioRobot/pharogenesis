@@ -8,10 +8,10 @@ borderFormOfWidth: borderWidth sharpCorners: sharpen
 	bigForm _ self deepCopy.
 	all _ bigForm boundingBox.
 	smearForm _ Form extent: self extent.
-	smearPort _ BitBlt toForm: smearForm.
+	smearPort _ BitBlt current toForm: smearForm.
 	sharpen ifTrue:
 		[cornerForm _ Form extent: self extent.
-		cornerPort _ BitBlt toForm: cornerForm].
+		cornerPort _ BitBlt current toForm: cornerForm].
 	nbrs _ (0@0) fourNeighbors.
 	1 to: borderWidth do:
 		[:i |  "Iterate to get several layers of 'skin'"
