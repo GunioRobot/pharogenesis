@@ -9,3 +9,6 @@ contractTo: smallSize
 	^ self copyReplaceFrom: leftSize+1		"First N/2 ... last N/2"
 		to: self size - (smallSize - leftSize - 3)
 		with: '...'
+"
+	'A clear but rather long-winded summary' contractTo: 18
+"
