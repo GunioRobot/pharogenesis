@@ -1,8 +1,11 @@
 upToEnd
-	"Answer a subcollection from the current access position through the last element of the receiver."
-	| resultStream |
-	resultStream _ WriteStream on: (self streamBuffer: 100).
-	[resultStream nextPutAll: self inStream upToEnd.
-	self atEnd not or: [self isDataAvailable]]
-		whileTrue: [self receiveData].
-	^resultStream contents
+	"Answer all data coming in on the socket until the socket
+	is closed by the other end, or we get a timeout.
+	This means this method catches ConnectionClosed by itself.
+	
+	NOTE: Does not honour timeouts if shouldSignal is false!"
+
+	[[self atEnd] whileFalse: [self receiveData]]
+		on: ConnectionClosed
+		do: [:ex | "swallow it"]. 
+	^self nextAllInBuffer
