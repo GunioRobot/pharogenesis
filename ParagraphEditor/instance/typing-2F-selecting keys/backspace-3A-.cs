@@ -2,6 +2,7 @@ backspace: characterStream
 	"Backspace over the last character."
 
 	| startIndex |
+	sensor leftShiftDown ifTrue: [^ self backWord: characterStream].
 	characterStream isEmpty
 		ifTrue:
 			[startIndex _ startBlock stringIndex +
