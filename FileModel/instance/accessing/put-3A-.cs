@@ -2,7 +2,7 @@ put: aString
 	| f |
 	(aString size >= 5 and:
 		[#('File ' '16r0 ') includes: (aString copyFrom: 1 to: 5)])
-		ifTrue: [(PopUpMenu confirm:
+		ifTrue: [(self confirm:
 'Abbreviated and hexadecimal file views
 cannot be meaningfully saved at present.
 Is this REALLY what you want to do?')
