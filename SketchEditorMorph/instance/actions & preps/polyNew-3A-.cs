@@ -6,8 +6,13 @@ another tool."
 	| poly |
 	self polyFreeze.		"any old one we were working on"
 	poly _ PolygonMorph new addHandles.
-	poly color: currentColor; borderWidth: palette getNib width;
-borderColor: Color black.
+ 	currentColor == Color transparent
+	ifFalse:[
+	poly color: currentColor; borderWidth: 0;
+	borderColor: Color transparent]
+	ifTrue:[
+	poly color: currentColor; borderWidth: 1;     "still some problems with brushsize !!"
+	borderColor: Color black].
 	poly position: evt cursorPoint.
 	self addMorph: poly.
 	poly changed.
