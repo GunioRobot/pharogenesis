@@ -1,5 +1,5 @@
-currentlyViewing: aPlayer
+currentlyViewing: aPlayer 
 	"Only detects viewers in tabs"
 
-	aPlayer ifNil: [^ false].
-	^ aPlayer viewerFlapTab ~~ nil
+	aPlayer ifNil: [^false].
+	^aPlayer viewerFlapTab notNil
