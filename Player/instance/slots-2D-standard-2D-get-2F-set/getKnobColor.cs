@@ -1,0 +1,2 @@
+getKnobColor
+	^ self getValueFromCostume: #sliderColor
