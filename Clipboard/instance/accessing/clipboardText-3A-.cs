@@ -1,5 +1,8 @@
-clipboardText: text
-	"Set text currently on the clipboard.  Also export to OS"
-	contents _ text.
-	self noteRecentClipping: text.
-	self primitiveClipboardText: text string
+clipboardText: text 
+
+	| string |
+	string _ text asString.
+	self noteRecentClipping: text asText.
+	contents _ text asText.
+	string _ self interpreter toSystemClipboard: string.
+	self primitiveClipboardText: string.
