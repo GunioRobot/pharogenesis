@@ -1,31 +1,8 @@
-initialize	
+initialize	"Text initialize"
 	"Initialize constants shared by classes associated with text display."
 
-	(Smalltalk includes: TextConstants) 
-		ifFalse: [Smalltalk at: #TextConstants put: (Dictionary new: 32)].
-	TextConstants at: #CaretForm  
-		 		 put: (Cursor
-	extent: 16@16
-	fromArray: #(
-		2r00110000000
-		2r00110000000
-		2r01111000000
-		2r11111100000
-		2r11001100000
-		2r0
-		2r0
-		2r0
-		2r0
-		2r0
-		2r0
-		2r0
-		2r0
-		2r0
-		2r0
-		2r0)
-	offset: 8@0).
-
-	self initTextConstants.
-	self initDefaultFontsAndStyle
-
-	"Text initialize"
+	TextConstants at: #CaretForm put:
+				(Form extent: 16@5
+					fromArray: #(2r001100e26 2r001100e26 2r011110e26 2r111111e26 2r110011e26)
+					offset: -3@0).
+	self initTextConstants
