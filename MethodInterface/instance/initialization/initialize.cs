@@ -4,4 +4,4 @@ initialize
 	super initialize.
 	attributeKeywords _ OrderedCollection new.
 	defaultStatus _ #normal.
-	defaultFiresPerTick _ 1.
+	argumentVariables _ OrderedCollection new
