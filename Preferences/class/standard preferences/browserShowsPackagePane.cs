@@ -1,0 +1,2 @@
+browserShowsPackagePane
+	^ self valueOfFlag: #browserShowsPackagePane
