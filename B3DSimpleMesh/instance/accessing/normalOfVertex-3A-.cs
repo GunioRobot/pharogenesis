@@ -1,0 +1,2 @@
+normalOfVertex: vtx
+	^vtx normal
