@@ -11,7 +11,11 @@ makeCondensedGlyphs
 		g copy: (x@0 extent: w@g height) from: x1@0 in: glyphs rule: Form over.
 		newXTable at: i+1 put: (x _ x + w)].
 	xTable _ newXTable.
-	glyphs _ g
+	glyphs _ g.
+	fallbackFont ifNotNil: [
+		fallbackFont emphasized: 8
+	].
+
 "
 (TextStyle default fontAt: 1) copy makeCondensedGlyphs
 	displayLine: 'The quick brown fox jumps over the lazy dog'
