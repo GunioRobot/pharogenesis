@@ -1,5 +1,7 @@
 reorganizeEverything
-	"Environment reorganizeEverything."
+	"Undertake a grand reorganization.
+	Environment reorganizeEverything.
+	"
 
 	| bigCat envt pool s |
 	"First check for clashes between environment names and existing globals..."
@@ -11,18 +13,18 @@ reorganizeEverything
 both a package and a class or other global variable.
 No reorganization will be attempted.']]].
 
-	(PopUpMenu confirm:
+	(self confirm:
 'Your image is about to be partitioned into environments.
 Many things may not work after this, so you should be
 working in a throw-away copy of your working image.
 Are you really ready to procede?
 (choose ''no'' to stop here safely)')
-		ifFalse: [^ PopUpMenu notify: 'No changes were made'].
+		ifFalse: [^ self inform: 'No changes were made'].
 
-	Smalltalk newChanges: (ChangeSet new initialize name: 'Reorganization').
+	ChangeSet newChanges: (ChangeSet basicNewNamed: 'Reorganization').
 
 	"Recreate the Smalltalk dictionary as the top-level Environment."
-	Smalltalk _ SmalltalkEnvironment newFrom: Smalltalk.
+	Smalltalk at: #Smalltalk put: (SmalltalkEnvironment newFrom: Smalltalk).
 	Smalltalk setName: #Smalltalk inOuterEnvt: nil.
 
 	"Don't hang onto old copy of Smalltalk ."
@@ -56,7 +58,7 @@ Are you really ready to procede?
 				[envt declare: assn key from: Smalltalk]]].
 
 	Smalltalk rewriteIndirectRefs.
-	Smalltalk newChanges: (ChangeSet new initialize name: 'PostReorganization').
-	ChangeSorter gatherChangeSets.
+	ChangeSet newChanges: (ChangeSet basicNewNamed: 'PostReorganization').
+	ChangeSorter initialize.
 	Preferences enable: #browserShowsPackagePane.
 
