@@ -1,6 +1,6 @@
 projectScreenMenu
-	"Answer the project screen menu.   7/23/96 sw
-	 7/24/96 sw: remove misc menu thing"
+	"Answer the project screen menu.   
+	 : remove misc menu thing"
 
 	ProjectScreenMenu == nil ifTrue:
 		[ProjectScreenMenu _ SelectionMenu labelList:
@@ -13,9 +13,10 @@ projectScreenMenu
 			'do...'
 			'save'
 			'save as...'
+			'save and quit'
 			'quit...')
 		lines: #(2 7)
-		selections: #(exitProject restoreDisplay openMenu changesMenu windowMenu helpMenu commonRequests  snapshot saveAs quit)].
+		selections: #(exitProject restoreDisplay openMenu changesMenu windowMenu helpMenu commonRequests  snapshot saveAs snapshotAndQuit quit)].
 	^ ProjectScreenMenu
 
 "
