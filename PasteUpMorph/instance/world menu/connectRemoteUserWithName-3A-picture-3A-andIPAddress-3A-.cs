@@ -16,7 +16,7 @@ connectRemoteUserWithName: nameStringOrNil picture: aFormOrNil andIPAddress: aSt
 	].
 	addr = 0 ifTrue: [^ self].  "abort"
 
-	Socket ensureNetworkConnected.
+	RemoteHandMorph ensureNetworkConnected.
 	h _ RemoteHandMorph new userInitials: initials andPicture: aFormOrNil.
 	self addHand: h.
 	h changed.
