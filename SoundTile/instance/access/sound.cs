@@ -1,0 +1,3 @@
+sound
+
+	^ SampledSound soundNamed: literal
