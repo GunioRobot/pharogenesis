@@ -1,0 +1,2 @@
+toggleFirstPersonControl
+	self doFirstPersonControl: self doFirstPersonControl not.
