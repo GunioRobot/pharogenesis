@@ -5,6 +5,8 @@ offerCommonRequests
 
 	| reply result aMenu index normalItemCount strings |
 
+	Smalltalk isMorphic ifTrue: [^ self offerCommonRequestsInMorphic].
+
 	(CommonRequestStrings == nil or: [CommonRequestStrings isKindOf: Array])
 		ifTrue:
 			[self initializeCommonRequestStrings].
@@ -21,6 +23,6 @@ edit this menu') lines: (Array with: normalItemCount).
 		[^ self editCommonRequestStrings].
 
 	result _ self evaluate: reply in: nil to: nil.
-	(result isKindOf: Number) | (result isKindOf: String)
+	(result isNumber) | (result isString)
 		ifTrue:
 			[Transcript cr; nextPutAll: result printString]
