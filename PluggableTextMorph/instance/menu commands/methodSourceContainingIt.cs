@@ -1,2 +1,2 @@
 methodSourceContainingIt
-	textMorph editor methodSourceContainingIt
+	self handleEdit: [textMorph editor methodSourceContainingIt]
