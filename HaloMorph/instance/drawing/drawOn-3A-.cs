@@ -1,9 +1,11 @@
-drawOn: aCanvas
+drawOn: aCanvas 
 	"Draw this morph only if it has no target."
 
-	target == nil ifTrue: [^ super drawOn: aCanvas].
-	Preferences showBoundsInHalo ifTrue:
-		[aCanvas frameAndFillRectangle: target boundsInWorld
+	target isNil ifTrue: [^super drawOn: aCanvas].
+	Preferences showBoundsInHalo 
+		ifTrue: 
+			[aCanvas 
+				frameAndFillRectangle: self bounds
 				fillColor: Color transparent
 				borderWidth: 1
 				borderColor: Color blue]
