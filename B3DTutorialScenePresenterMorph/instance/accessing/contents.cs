@@ -1,0 +1,2 @@
+contents
+ ^source perform: textAccessor
