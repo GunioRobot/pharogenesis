@@ -1,0 +1,2 @@
+getNumericValue
+	^ self getValueFromCostume: #getScaledValue
