@@ -1,6 +1,7 @@
-addDependent: anObject 
-	"Add anObject as one of the receiver's dependents."
+addDependent: anObject
+	"Make the given object one of the receiver's dependents."
 
-	self dependents isEmpty ifTrue: [self setDependents].
-	self dependents add: anObject.
-	^anObject
+	| dependents |
+	dependents _ self dependents.
+	dependents do: [:o | o == anObject ifTrue: [^ self]].  "anObject is already a dependent"
+	DependentsFields at: self put: (dependents copyWith: anObject).
