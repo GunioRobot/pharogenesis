@@ -33,7 +33,7 @@ smoothPix: n atXf: xf yf: yf dxh: dxh dyh: dyh dxv: dxv dyv: dyv
 		].
 	(nPix = 0 or: [combinationRule=25 "PAINT" and: [nPix < (maxPix//2)]])
 		ifTrue: [^ 0  "All pixels were 0, or most were transparent"].
-	colorMap ~= interpreterProxy nilObject
+	colorMap ~= nil
 		ifTrue: [bitsPerColor _ cmBitsPerColor]
 		ifFalse: [destPixSize = 16 ifTrue: [bitsPerColor _ 5].
 				destPixSize = 32 ifTrue: [bitsPerColor _ 8]].
@@ -44,6 +44,6 @@ smoothPix: n atXf: xf yf: yf dxh: dxh dyh: dyh dxv: dxv dyv: dyv
 	rgb = 0 ifTrue: [
 		"only generate zero if pixel is really transparent"
 		(r + g + b) > 0 ifTrue: [rgb _ 1]].
-	colorMap ~= interpreterProxy nilObject
-		ifTrue: [^ interpreterProxy fetchWord: rgb ofObject: colorMap]
+	colorMap ~= nil
+		ifTrue: [^self colormapAt: rgb]
 		ifFalse: [^ rgb]
