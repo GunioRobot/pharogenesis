@@ -1,0 +1,3 @@
+inspectForm
+
+        self unmagnifiedForm inspect
