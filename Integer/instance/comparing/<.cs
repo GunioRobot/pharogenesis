@@ -1,8 +1,8 @@
-< anInteger
-	(anInteger isInteger)
-		ifTrue: [self negative == anInteger negative
+< aNumber
+	aNumber isInteger
+		ifTrue: [self negative == aNumber negative
 					ifTrue: [self negative
-								ifTrue: [^(self digitCompare: anInteger) > 0]
-								ifFalse: [^(self digitCompare: anInteger) < 0]]
+								ifTrue: [^(self digitCompare: aNumber) > 0]
+								ifFalse: [^(self digitCompare: aNumber) < 0]]
 					ifFalse: [^self negative]]
-		ifFalse: [^self retry: #< coercing: anInteger]
+		ifFalse: [^ (aNumber adaptInteger: self) < aNumber adaptToInteger]
