@@ -25,11 +25,11 @@ clipRange
 		ifTrue: [dx _ dx - sx.
 				bbW _ bbW + sx.
 				sx _ 0].
-	sx + bbW > srcWidth
-		ifTrue: [bbW _ bbW - (sx + bbW - srcWidth)].
+	sx + bbW > sourceWidth
+		ifTrue: [bbW _ bbW - (sx + bbW - sourceWidth)].
 	sy < 0
 		ifTrue: [dy _ dy - sy.
 				bbH _ bbH + sy.
 				sy _ 0].
-	sy + bbH > srcHeight
-		ifTrue: [bbH _ bbH - (sy + bbH - srcHeight)]
+	sy + bbH > sourceHeight
+		ifTrue: [bbH _ bbH - (sy + bbH - sourceHeight)]
