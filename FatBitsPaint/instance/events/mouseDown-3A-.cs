@@ -1,3 +1,5 @@
 mouseDown: evt
 
-	lastMouse _ nil.
+        ^ self
+                perform: (currentTools at: #mouseDown: ifAbsent: [^nil])
+                with: evt
