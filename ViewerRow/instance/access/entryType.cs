@@ -1,3 +1,4 @@
 entryType
-	"systemSlot userSlot systemScript userScript"
-	^ self playerBearingCode elementTypeFor: elementSymbol
+	"Answer one of: #systemSlot #userSlot #systemScript #userScript"
+
+	^ self playerBearingCode elementTypeFor: elementSymbol vocabulary: self currentVocabulary
