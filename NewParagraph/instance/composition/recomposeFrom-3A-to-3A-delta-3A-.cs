@@ -10,6 +10,11 @@ recomposeFrom: start to: stop delta: delta
 		whileTrue: [startLine _ startLine - 1].  "Find leftmost of line pieces"
 	newLines _ OrderedCollection new: lines size + 1.
 	1 to: startLine-1 do: [:i | newLines addLast: (lines at: i)].
-	self composeLinesFrom: (lines at: startLine) first to: stop delta: delta
+	text string isOctetString ifTrue: [
+		^ self composeLinesFrom: (lines at: startLine) first to: stop delta: delta
 			into: newLines priorLines: lines
-			atY: (lines at: startLine) top
+			atY: (lines at: startLine) top.
+	].
+	self multiComposeLinesFrom: (lines at: startLine) first to: stop delta: delta
+		into: newLines priorLines: lines
+		atY: (lines at: startLine) top.
