@@ -1,6 +1,6 @@
 Object
 	subclass: #UndoTextureChange
-	instanceVariableNames: 'theActor originalTexture '
+	instanceVariableNames: 'theActor originalTexture'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon3D-Wonderland Undo'
+	category: 'Balloon3D-Wonderland-Undo'
