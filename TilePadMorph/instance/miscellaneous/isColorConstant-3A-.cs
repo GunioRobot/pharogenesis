@@ -3,7 +3,7 @@ isColorConstant: aParseNode
 
 	| rec |
 	((rec _ aParseNode receiver) isKindOf: VariableNode) ifFalse: [^ false].
-	rec key class == Association ifFalse: [^ false].
+	rec key isVariableBinding ifFalse: [^ false].
 	rec key value == Color ifFalse: [^ false].
 	aParseNode selector key == #r:g:b: ifFalse: [^ false].
 	aParseNode arguments  size = 3 ifFalse: [^ false].
