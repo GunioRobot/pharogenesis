@@ -10,4 +10,4 @@ clearChangeSet
 	self changed: #classList.
 	self changed: #messageList.
 	self setContents.
-	self changed: #contents.
+	self contentsChanged.
