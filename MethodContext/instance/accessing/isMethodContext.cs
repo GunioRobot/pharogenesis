@@ -1,0 +1,3 @@
+isMethodContext
+
+	^ true
