@@ -11,8 +11,7 @@ primitiveBlockCopy
 
 	"remap methodContext in case GC happens during allocation"
 	self pushRemappableOop: methodContext.
-	newContext _ self instantiateContext: (self splObj: ClassBlockContext)
-							   sizeInBytes: contextSize.
+	newContext _ self instantiateContext: (self splObj: ClassBlockContext) sizeInBytes: contextSize.
 	methodContext _ self popRemappableOop.
 
 	initialIP _ self integerObjectOf: instructionPointer - method.
@@ -22,16 +21,11 @@ primitiveBlockCopy
 	"Assume: have just allocated a new context; it must be young.
 	 Thus, can use uncheck stores. See the comment in fetchContextRegisters."
 
-	self storeWord: InitialIPIndex					ofObject: newContext
-		withValue: initialIP.
-	self storeWord: InstructionPointerIndex		ofObject: newContext
-		withValue: initialIP.
-	self storeStackPointerValue: 0				inContext: newContext.
-	self storePointerUnchecked: BlockArgumentCountIndex	ofObject: newContext
-		withValue: (self stackValue: 0).
-	self storePointerUnchecked: HomeIndex		ofObject: newContext
-		withValue: methodContext.
-	self storePointerUnchecked: SenderIndex		ofObject: newContext
-		withValue: nilObj.
+	self storeWord: InitialIPIndex ofObject: newContext withValue: initialIP.
+	self storeWord: InstructionPointerIndex ofObject: newContext withValue: initialIP.
+	self storeStackPointerValue: 0 inContext: newContext.
+	self storePointerUnchecked: BlockArgumentCountIndex ofObject: newContext withValue: (self stackValue: 0).
+	self storePointerUnchecked: HomeIndex ofObject: newContext withValue: methodContext.
+	self storePointerUnchecked: SenderIndex ofObject: newContext withValue: nilObj.
 
 	self pop: 2 thenPush: newContext.
