@@ -1,9 +1,7 @@
-* aFraction
-
-	(aFraction isMemberOf: Fraction)
-		ifTrue: [^(Fraction 
-					numerator: numerator * aFraction 
-	"Refer to the comment in Number|*." numerator
-					denominator: denominator * aFraction denominator)
-					reduced]
-		ifFalse: [^self retry: #* coercing: aFraction]
+* aNumber
+	"Answer the result of multiplying the receiver by aNumber."
+	aNumber isFraction
+		ifTrue: [^ (Fraction numerator: numerator * aNumber numerator
+							denominator: denominator * aNumber denominator)
+						reduced]
+		ifFalse: [^ (aNumber adaptFraction: self) * aNumber adaptToFraction]
