@@ -21,7 +21,8 @@ colorFromPixelValue: p depth: d
 		g _ (p bitShift: -8) bitAnd: 16rFF.
 		b _ p bitAnd: 16rFF.
 		alpha _ p bitShift: -24.
-		alpha > 0
+		alpha = 0 ifTrue:[^Color transparent].
+		alpha < 255
 			ifTrue: [^ (Color r: r g: g b: b range: 255) alpha: (alpha asFloat / 255.0)]
 			ifFalse: [^ (Color r: r g: g b: b range: 255)]].
 
