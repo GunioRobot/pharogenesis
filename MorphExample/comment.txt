@@ -1,0 +1,8 @@
+This is a example of how to use a morph. It consists of only two 
+methods, initialize and step.
+
+DoIt:
+MorphExample new openInWorld.
+
+
+
