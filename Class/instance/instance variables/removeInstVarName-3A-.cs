@@ -7,16 +7,12 @@ removeInstVarName: aString
 	newInstVarString _ ''.
 	(self instVarNames copyWithout: aString) do: 
 		[:varName | newInstVarString _ newInstVarString , ' ' , varName].
-	superclass class
+	^(ClassBuilder new)
 		name: self name
-		inEnvironment: Smalltalk
+		inEnvironment: self environment
 		subclassOf: superclass
+		type: self typeOfClass
 		instanceVariableNames: newInstVarString
-		variable: self isVariable
-		words: self isWords
-		pointers: self isPointers
 		classVariableNames: self classVariablesString
 		poolDictionaries: self sharedPoolsString
 		category: self category
-		comment: nil
-		changed: false
