@@ -1,4 +1,4 @@
 balloonText
 	^ 'Click here to enter the
 project named
-"', project name, '"'
+"{1}"' translated format: {project name}
