@@ -7,7 +7,7 @@ displayImagePage: newSource
 		image _ ImageReadWriter formFromStream: (RWBinaryOrTextStream with: newSource content) binary reset.
 		imageMorph _ ImageMorph new image: image.
 		attrib _ TextAnchor new anchoredMorph: imageMorph.
-		text _ ' * ' asText.
+		text _ (Character value: 1) asText.
 		text addAttribute: attrib from: 2 to: 2.
 		text] ifError: [ :msg :ctx | handled _ false ].
 
@@ -19,5 +19,5 @@ displayImagePage: newSource
 "	recentDocuments removeLast."
 
 	self changeAll: 	#(currentUrl relabel hasLint lint backgroundColor formattedPage formattedPageSelection).
-	self status: 'sittin'.
+	self status: 'sittin' translated.
 	^handled
