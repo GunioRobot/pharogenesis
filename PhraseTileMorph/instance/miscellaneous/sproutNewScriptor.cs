@@ -7,7 +7,7 @@ sproutNewScriptor
 	newScriptor _ self actualObject newScriptorAround:
 		((self ownerThatIsA: Viewer orA: ScriptEditorMorph)
 			ifNotNil:
-				[self fullCopy]
+				[self veryDeepCopy]
 			ifNil:
 				[self]).
 	self currentHand attachMorph: newScriptor
