@@ -1,4 +1,3 @@
 slightlyLighter
-	"Answer a slightly lighter shade of this color."
 
-	^ self alphaMixed: 0.93 with: Color white
+	^ self adjustSaturation: -0.01 brightness: 0.03
