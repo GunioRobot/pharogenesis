@@ -16,8 +16,8 @@ layoutInBounds: cellBounds
 		"And do the layout within the new bounds"
 		self layoutBounds: box.
 		self doLayoutIn: box].
-	cellBounds = bounds ifTrue:[^self]. "already up to date"
-	cellBounds extent = bounds extent "nice fit"
+	cellBounds = self fullBounds ifTrue:[^self]. "already up to date"
+	cellBounds extent = self fullBounds extent "nice fit"
 		ifTrue:[^self position: cellBounds origin].
 	box _ bounds.
 	"match #spaceFill constraints"
