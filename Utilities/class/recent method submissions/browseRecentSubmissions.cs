@@ -1,14 +1,15 @@
 browseRecentSubmissions
-	"Open up a browser on the most recent methods submitted in the image.  5/96 sw.
-	5/29/96 sw: fixed so the browser doesn't go all wonkie after you submit more code
-	: reverse the order, have most recent submissions at the top of the list	
-	: use RecentMessageList"
+	"Open up a browser on the most recent methods submitted in the image.  5/96 sw."
 
 	"Utilities browseRecentSubmissions"
 
 	| recentMessages |
+
 	self recentMethodSubmissions size == 0 ifTrue:
-		[^ SelectionMenu notify: 'There are no recent submissions'].
+		[^ self inform: 'There are no recent submissions'].
 	
 	recentMessages _ RecentSubmissions copy reversed.
-	RecentMessageSet openMessageList: recentMessages name: 'Recently submitted methods -- youngest first ' autoSelect: nil
+	RecentMessageSet 
+		openMessageList: recentMessages 
+		name: 'Recent submissions -- youngest first ' 
+		autoSelect: nil
