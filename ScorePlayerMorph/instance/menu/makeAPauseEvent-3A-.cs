@@ -10,7 +10,7 @@ makeAPauseEvent: evt
 		hResizing: #shrinkWrap; 
 		vResizing: #shrinkWrap; 
 		extent: 5@5;
-		addMorph: (StringMorph contents: '[pause]') lock;
+		addMorph: (StringMorph contents: '[pause]' translated) lock;
 		addMouseUpActionWith: (
 			MessageSend receiver: self selector: #showResumeButtonInTheWorld
 		).
