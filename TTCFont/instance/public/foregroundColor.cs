@@ -1,0 +1,3 @@
+foregroundColor
+
+	^ foregroundColor.
