@@ -1,2 +1,2 @@
 numComponents
-	^depth <= 8 ifTrue:[1] ifFalse:[3].
+	^self depth <= 8 ifTrue:[1] ifFalse:[3].
