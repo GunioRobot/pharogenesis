@@ -1,0 +1,2 @@
+currentCngSet
+	^ myChangeSet name
