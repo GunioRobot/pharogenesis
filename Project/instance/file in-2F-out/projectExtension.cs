@@ -1,2 +1,2 @@
 projectExtension
-	^'pr'
+	^self class projectExtension
