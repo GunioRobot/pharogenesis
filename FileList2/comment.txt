@@ -5,7 +5,6 @@ Some variations on FileList that
 FileList2 morphicView openInWorld				"an alternative to the standard FileList"
 FileList2 morphicViewNoFile openInWorld			"useful for selecting, but not viewing"
 FileList2 morphicViewProjectLoader openInWorld	"useful for finding and loading projects"
-FileList2 morphicViewImageViewer openInWorld	"useful for finding and using images"
 FileList2 modalFolderSelector						"allows the user to select a folder"
 
 
