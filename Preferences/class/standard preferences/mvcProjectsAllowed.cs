@@ -1,0 +1,2 @@
+mvcProjectsAllowed
+	^ self valueOfFlag: #mvcProjectsAllowed
