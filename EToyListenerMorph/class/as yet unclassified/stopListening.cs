@@ -1,7 +1,7 @@
 stopListening
-
-	GlobalListener ifNotNil: [
-		GlobalListener stopListening.
+	GlobalListener ifNotNil:
+		[GlobalListener stopListening.
 		GlobalListener _ nil.
-		self bumpUpdateCounter.
-	].
+		self bumpUpdateCounter]
+
+	"EToyListenerMorph stopListening"
