@@ -1,5 +1,4 @@
-roundTo: aNumber 
-	"Answer the integer that is a multiple of aNumber that is nearest the 
-	receiver."
+roundTo: quantum 
+	"Answer the nearest number that is a multiple of quantum."
 
-	^(self / aNumber) rounded * aNumber
+	^(self / quantum) rounded * quantum
