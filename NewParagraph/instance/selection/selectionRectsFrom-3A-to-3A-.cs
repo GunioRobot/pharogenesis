@@ -10,9 +10,14 @@ selectionRectsFrom: characterBlock1 to: characterBlock2
 	line1 _ self lineIndexForCharacter: cb1 stringIndex.
 	line2 _ self lineIndexForCharacter: cb2 stringIndex.
 	line1 = line2 ifTrue:
-		[^ Array with: (cb1 topLeft corner: cb2 bottomLeft)].
+		[^ Array with: (cb1 topLeft corner: cb2 bottomRight)].
 	rects _ OrderedCollection new.
 	rects addLast: (cb1 topLeft corner: (lines at: line1) bottomRight).
-	line1+1 to: line2-1 do: [:i | rects addLast: (lines at: i) rectangle].
+	(container isMemberOf: Rectangle)
+		ifTrue: [(line1+1) <= (line2-1) ifTrue:
+					[rects addLast: ((lines at: line1+1) topLeft
+								corner: (lines at: line2-1) bottomRight)]]
+		ifFalse: [(line1+1) to: (line2-1) do:
+					[:i | rects addLast: (lines at: i) rectangle]].
 	rects addLast: ((lines at: line2) topLeft corner: cb2 bottomLeft).
 	^ rects
