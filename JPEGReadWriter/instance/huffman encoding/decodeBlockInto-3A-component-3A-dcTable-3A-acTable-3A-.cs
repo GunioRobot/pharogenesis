@@ -1,14 +1,14 @@
 decodeBlockInto: anArray component: aColorComponent dcTable: huffmanDC acTable: huffmanAC
 
 	| byte i zeroCount |
-	byte _ self decodeByteWithTable: huffmanDC.
+	byte _ stream decodeValueFrom: huffmanDC.
 	byte ~= 0 ifTrue: [byte _ self scaleAndSignExtend: ( self getBits: byte) inFieldWidth: byte].
 	byte _ aColorComponent updateDCValue: byte.
 	anArray atAllPut: 0.
 	anArray at: 1 put: byte.
 	i _ 2.
 	[i <= DCTSize2] whileTrue:
-		[byte _ self decodeByteWithTable: huffmanAC.
+		[byte _ stream decodeValueFrom: huffmanAC.
 		zeroCount _ byte >> 4.
 		byte _ byte bitAnd: 16r0F.
 		byte ~= 0
