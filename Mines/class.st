@@ -1,0 +1,1 @@
+Mines class instanceVariableNames: ''
