@@ -1,7 +1,6 @@
-image: anImage
-
+image: anImage 
 	self changed.
-	anImage depth = 1
-		ifTrue: [image _ ColorForm mappingWhiteToTransparentFrom: anImage]
-		ifFalse: [image _ anImage].
-	super extent: image extent.
+	image := anImage depth = 1 
+				ifTrue: [ColorForm mappingWhiteToTransparentFrom: anImage]
+				ifFalse: [anImage]. 
+	super extent: image extent
