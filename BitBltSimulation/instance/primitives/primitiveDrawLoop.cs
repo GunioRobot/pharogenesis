@@ -5,8 +5,7 @@ primitiveDrawLoop
 	rcvr _ interpreterProxy stackValue: 2.
 	xDelta _ interpreterProxy stackIntegerValue: 1.
 	yDelta _ interpreterProxy stackIntegerValue: 0.
-	(self loadBitBltFrom: rcvr) 
-		ifFalse:[^interpreterProxy primitiveFail].
+	(self loadBitBltFrom: rcvr) ifFalse:[^interpreterProxy primitiveFail].
 	interpreterProxy failed ifFalse:[
 		self drawLoopX: xDelta Y: yDelta.
 		self showDisplayBits].
