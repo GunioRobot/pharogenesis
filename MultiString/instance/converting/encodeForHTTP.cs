@@ -1,0 +1,3 @@
+encodeForHTTP
+
+	self flag: #toBeImplemented.
