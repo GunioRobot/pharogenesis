@@ -1,0 +1,1 @@
+B3DPrimitiveClipper class instanceVariableNames: ''
