@@ -1,2 +1,2 @@
 createStandardPartsBin
-	associatedMorph primaryHand attachMorph: self newStandardPartsBin 
+	associatedMorph primaryHand attachMorph: self standardPartsWindow 
