@@ -1,0 +1,2 @@
+maxTokenBagSize
+	^ 5000
