@@ -1,28 +1,52 @@
 openAsMorphClassEditing: editString
 	"Create a pluggable version a Browser on just a single class."
-	| window codePane |
+	| window switches codePane baseline aTextMorph dragNDropFlag |
 	window _ (SystemWindow labelled: 'later') model: self.
 
-	window addMorph: (PluggableListMorph on: self list: #classListSingleton
+	dragNDropFlag _ Preferences browseWithDragNDrop.
+
+	window addMorph: ((PluggableListMorph on: self list: #classListSingleton
 			selected: #indexIsOne changeSelected: #indexIsOne:
-			menu: #classListMenu:)
+			menu: #classListMenu: keystroke: #classListKey:from:) enableDragNDrop: dragNDropFlag)
 		frame: (0@0 extent: 0.5@0.06).
-	window addMorph: self buildMorphicSwitches
-		frame: (0.5@0 extent: 0.5@0.06).
-	window addMorph: (PluggableListMorph on: self list: #messageCategoryList
+	switches _ self buildMorphicSwitches.
+	window addMorph: switches frame: (0.5@0 extent: 0.5@0.06).
+	switches borderWidth: 0.
+
+	window addMorph: ((PluggableMessageCategoryListMorph on: self list: #messageCategoryList
 			selected: #messageCategoryListIndex changeSelected: #messageCategoryListIndex:
-			menu: #messageCategoryMenu:)
+			menu: #messageCategoryMenu: keystroke: #arrowKey:from:	 getRawListSelector: #rawMessageCategoryList)  enableDragNDrop: dragNDropFlag)
 		frame: (0@0.06 extent: 0.5@0.30).
-	window addMorph: (PluggableListMorph on: self list: #messageList
+
+	window addMorph: ((PluggableListMorph on: self list: #messageList
 			selected: #messageListIndex changeSelected: #messageListIndex:
-			menu: #messageListMenu:shifted:)
+			menu: #messageListMenu:shifted:
+			keystroke: #messageListKey:from:) enableDragNDrop: dragNDropFlag)
 		frame: (0.5@0.06 extent: 0.5@0.30).
+
+	Preferences useAnnotationPanes
+		ifFalse:
+			[baseline _ 0.36]
+		ifTrue:
+			[aTextMorph _ PluggableTextMorph on: self
+					text: #annotation accept: nil
+					readSelection: nil menu: nil.
+			aTextMorph askBeforeDiscardingEdits: false.
+			window addMorph: aTextMorph
+				frame: (0@0.36 corner: 1@0.41).
+			baseline _ 0.41].
+
+	Preferences optionalButtons
+		ifTrue:
+			[window addMorph: self optionalButtonRow frame: ((0@baseline corner: 1 @ (baseline + 0.08))).
+			baseline _ baseline + 0.08].
 
 	codePane _ PluggableTextMorph on: self text: #contents accept: #contents:notifying:
 			readSelection: #contentsSelection menu: #codePaneMenu:shifted:.
 	editString ifNotNil: [codePane editString: editString.
 					codePane hasUnacceptedEdits: true].
 	window addMorph: codePane
-		frame: (0@0.36 corner: 1@1).
+		frame: (0@baseline corner: 1@1).
 
+	window setUpdatablePanesFrom: #(messageCategoryList messageList).
 	^ window
