@@ -1,4 +1,4 @@
 currentCursor
-	"Answer the instance of Cursor currently displayed."
+	"The current cursor is maintained in class Cursor."
 
-	^CurrentCursor
+	^ Cursor currentCursor
