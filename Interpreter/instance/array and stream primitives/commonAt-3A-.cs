@@ -1,23 +1,32 @@
 commonAt: stringy
-	"This version of at: is called from the special byteCode, from
-	primitiveAt, and from primStringAt.  The boolean 'stringy'
-	indicates that the result should be converted to a Character."
-
-	| index rcvr result |
-	self inline: true.
-	index _ self stackTop.
+	"This code is called if the receiver responds primitively to at:.
+	If this is so, it will be installed in the atCache so that subsequent calls of at:
+	or next may be handled immediately in bytecode primitive routines."
+	| index rcvr atIx result |
+	index _ self positive32BitValueOf: (self stackValue: 0).  "Sets successFlag"
 	rcvr _ self stackValue: 1.
-	(self isIntegerObject: index) & (self isIntegerObject: rcvr) not ifTrue: [
-		index _ self integerValueOf: index.
-		result _ self stObject: rcvr at: index.
-		(stringy and: [successFlag]) ifTrue: [result _ self characterForAscii: result].
-	] ifFalse: [
-		successFlag _ false.
-	].
-	successFlag ifTrue: [
-		self pop: 2 thenPush: result.
-	] ifFalse: [
-		stringy
-			ifTrue: [self failSpecialPrim: 63]
-			ifFalse: [self failSpecialPrim: 60].
-	].
+	successFlag & (self isIntegerObject: rcvr) not
+		ifFalse: [^ self primitiveFail].
+
+	"NOTE:  The at-cache, since it is specific to the non-super response to #at:.
+	Therefore we must determine that the message is #at: (not, eg, #basicAt:),
+	and that the send is not a super-send, before using the at-cache."
+	(messageSelector = (self specialSelector: 16)
+		and: [lkupClass = (self fetchClassOfNonInt: rcvr)])
+		ifTrue:
+		["OK -- look in the at-cache"
+		atIx _ rcvr bitAnd: AtCacheMask.  "Index into atCache = 4N, for N = 0 ... 7"
+		(atCache at: atIx+AtCacheOop) = rcvr ifFalse:
+			["Rcvr not in cache.  Install it..."
+			self install: rcvr inAtCache: atCache at: atIx string: stringy].
+		successFlag ifTrue:
+			[result _ self commonVariable: rcvr at: index cacheIndex: atIx].
+		successFlag ifTrue:
+			[^ self pop: 2 thenPush: result]].
+
+	"The slow but sure way..."
+	successFlag _ true.
+	result _ self stObject: rcvr at: index.
+	successFlag ifTrue:
+		[stringy ifTrue: [result _ self characterForAscii: (self integerValueOf: result)].
+		^ self pop: 2 thenPush: result]
