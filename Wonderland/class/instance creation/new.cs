@@ -8,4 +8,4 @@ Are you sure you want to do this?
 	Display depth < 8 ifTrue:
 		[(self confirm: 'The display depth should be set to at least 8 bit.
 Shall I do this now for you?') ifTrue: [Display newDepth: 8]].
-	^ super new initialize
+	^ self basicNew initialize
