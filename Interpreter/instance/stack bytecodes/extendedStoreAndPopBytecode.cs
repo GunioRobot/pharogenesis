@@ -1,4 +1,4 @@
 extendedStoreAndPopBytecode
 
 	self extendedStoreBytecode.
-	self popStackBytecode.
+	self internalPop: 1.
