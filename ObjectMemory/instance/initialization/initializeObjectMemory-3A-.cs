@@ -9,7 +9,6 @@ initializeObjectMemory: bytesToShift
 	"
 
 	self inline: false.
-	checkAssertions _ false.  "set this early to allow assertions in initialization code to use it"
 
 	"set the start of the young object space"
 	youngStart _ endOfMemory.
@@ -29,8 +28,8 @@ initializeObjectMemory: bytesToShift
 	child _ 0.
 	field _ 0.
 	parentField _ 0.
+	freeContexts _ NilContext.
 	freeLargeContexts _ NilContext.
-	freeSmallContexts _ NilContext.
 	allocationCount _ 0.
 	lowSpaceThreshold _ 0.
 	signalLowSpace _ false.
