@@ -1,9 +1,12 @@
 restore: nameOfSwiki
-	"Read all files in the directory 'nameOfSwiki'.  Reconstruct the url map."
+	"Read all files in the directory 'nameOfSwiki'.  Reconstruct the
+url map."
 
 	| map page folder dir rep templateFolder |
-	map _ URLmap new.
+	map _ self class mapClass new.
 	self map: map.
+	self formatter: (HTMLformatter new initialize).
+	self formatter specialCharacter: $*.
 	self name: nameOfSwiki.
 	templateFolder _ 'swiki'.
 	self source: templateFolder,(ServerAction pathSeparator).
@@ -16,6 +19,8 @@ restore: nameOfSwiki
 		rep _ fName detect: [:char | char isDigit not] ifNone: [$3].
 		rep isDigit ifTrue: ["all are digits"
 			page _ self class pageClass new.
-			page fromFileNamed: folder,(ServerAction pathSeparator),fName action: self.
+			page fromFileNamed: folder,
+				(ServerAction pathSeparator),fName action: self.
+			(page time isNil) ifTrue: [page time: Time now].
 			map at: page name put: page]].
 	PWS link: nameOfSwiki to: self.
