@@ -1,2 +1,2 @@
 sourceMorph
-	^ submorphs at: 2
+	^submorphs second
