@@ -1,0 +1,2 @@
+isPlaying
+	^ SoundPlayer isPlaying: self
