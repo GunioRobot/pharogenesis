@@ -1,4 +1,4 @@
 getUndoStack
 	"Returns the Wonderland's undo stack."
 
-	^ myUndoStack.
+	^ myUndoStack ifNil:[myUndoStack _ WonderlandUndoStack new].
