@@ -1,7 +1,7 @@
 mouseMoveSelectionMode: evt
 
         | p |
-        p _ self griddedPoint: evt.
+        p _ self pointGriddedFromEvent: evt.
         lastMouse = p ifTrue: [^ self].
 
         currentSelectionMorph ifNil:
