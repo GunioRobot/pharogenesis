@@ -10,7 +10,7 @@ primitiveShortAt
 	self success: ((index >= 1) and: [index <= sz]).
 	successFlag ifTrue: [
 		addr _ rcvr + BaseHeaderSize + (2 * (index - 1)).
-		value _ self cCode: '*((short int *) addr)'.
+		value _ self cCode: '*((short int *) addr)' inSmalltalk: [self halfWordAt: addr].
 		self pop: 2.  "pop rcvr, index"
 		self pushInteger: value.  "push element value"
 	].
