@@ -3,7 +3,7 @@ setColor: aColor
 	Hacked to invoke color chooser if not B/W screen.
 	Leaves the tool set in its previous state."
 
-	self normalizeColor:  (Display depth > 1
+	self normalizeColor:  (unNormalizedColor := Display depth > 1
 							ifTrue: [Color fromUser]
 							ifFalse: [aColor]).
 	tool _ previousTool
