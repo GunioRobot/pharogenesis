@@ -1,2 +1,3 @@
 readOnlyCopy
-	^ StandardFileStream readOnlyFileNamed: self name
+
+	^ self class readOnlyFileNamed: self name.
