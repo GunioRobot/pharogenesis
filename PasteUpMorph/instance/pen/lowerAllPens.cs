@@ -1,2 +1,2 @@
 lowerAllPens
-	submorphs do: [:m | m assuredCostumee lowerPen]
+	submorphs do: [:m | m assuredPlayer lowerPen]
