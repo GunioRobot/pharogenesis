@@ -1,0 +1,2 @@
+downloadUrl: anObject
+	^downloadUrl := anObject
