@@ -11,7 +11,7 @@ twoToneFromDisplay: aRectangle backgroundColor: bgColor
 	1 to: map size do: [:i | map at: i put: 16rFFFFFFFF].
 	map at: (bgColor indexInMap: map) put: 0.
 
-	(BitBlt toForm: self)
+	(BitBlt current toForm: self)
 		destOrigin: 0@0;
 		sourceForm: Display;
 		sourceRect: aRectangle;
