@@ -7,7 +7,7 @@ findProjectView: projectDescription
 	self flag: #bob.		"read the comment"
 
 
-	pName _ (projectDescription isKindOf: String) 
+	pName _ (projectDescription isString) 
 		ifTrue: [projectDescription]
 		ifFalse: [projectDescription name].
 	self isMorphic 
@@ -19,7 +19,7 @@ findProjectView: projectDescription
 					pvm project class == DiskProxy ifTrue: [ 
 						dpName _ pvm project constructorArgs first.
 						dpName _ (dpName findTokens: '/') last.
-						dpName _ (Project parseProjectFileName: dpName) first.
+						dpName _ (Project parseProjectFileName: dpName unescapePercents) first.
 						dpName = pName ifTrue: [^ pvm]]]]]
 		ifFalse: [world scheduledControllers do: [:cont |
 				(cont isKindOf: ProjectController) ifTrue: [
@@ -29,7 +29,7 @@ findProjectView: projectDescription
 					proj class == DiskProxy ifTrue: [ 
 						dpName _ proj constructorArgs first.
 						dpName _ (dpName findTokens: '/') last.
-						dpName _ (Project parseProjectFileName: dpName) first.
+						dpName _ (Project parseProjectFileName: dpName unescapePercents) first.
 						dpName = pName ifTrue: [^ cont view]]]]
 			].
 	^ nil
