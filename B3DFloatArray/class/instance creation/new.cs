@@ -1,2 +1,2 @@
 new
-	^super new: self numElements
+	^self basicNew: self numElements
