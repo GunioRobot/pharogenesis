@@ -1,2 +1,2 @@
 formatLine: aString
-	^aString
+	^aString copyWithout: Character lf
