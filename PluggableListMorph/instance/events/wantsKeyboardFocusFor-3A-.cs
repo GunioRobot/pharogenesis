@@ -1,0 +1,2 @@
+wantsKeyboardFocusFor: aMorph
+	^ false
