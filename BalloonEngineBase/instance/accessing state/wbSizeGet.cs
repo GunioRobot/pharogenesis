@@ -1,0 +1,2 @@
+wbSizeGet
+	^workBuffer at: GWSize
