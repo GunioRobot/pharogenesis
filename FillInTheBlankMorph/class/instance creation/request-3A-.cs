@@ -5,4 +5,4 @@ request: queryString
 	^ self
 		request: queryString
 		initialAnswer: ''
-		centerAt: Sensor cursorPoint.
+		centerAt: (ActiveHand ifNil:[Sensor]) cursorPoint
