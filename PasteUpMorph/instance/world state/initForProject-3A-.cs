@@ -6,5 +6,6 @@ initForProject: aWorldState
 	self addHand: HandMorph new.
 	self setProperty: #automaticPhraseExpansion toValue: true.
 	self setProperty: #optimumExtentFromAuthor toValue: Display extent.
+	self wantsMouseOverHalos: Preferences mouseOverHalos.
 	self borderWidth: 0.
 	model _ nil.
