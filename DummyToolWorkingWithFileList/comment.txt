@@ -1,0 +1,2 @@
+I'm a dummy class for testing that the registration of the tool to the FileList of actually happens.
+In the future the tests should cover that the class register when loaded in memory and unregister when unloaded.
