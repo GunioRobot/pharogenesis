@@ -1,9 +1,13 @@
 saveState
-	"Save the current state in me prior to switching projects"
+	"Save the current state in me prior to leaving this project"
 
-	world isMorph ifTrue: [world _ World]
-				ifFalse: [world _ ScheduledControllers.
-						ScheduledControllers unCacheWindows].
 	changeSet _ Smalltalk changes.
+	Smalltalk isMorphic
+		ifTrue:
+			[world _ World.
+			world sleep]
+		ifFalse:
+			[world _ ScheduledControllers.
+			ScheduledControllers unCacheWindows].
 	transcript _ Transcript.
-	displayDepth _ Display depth.
+	activeProcess _ nil
