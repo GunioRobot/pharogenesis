@@ -1,0 +1,2 @@
+copyBits
+	bb copyBits.
