@@ -1,0 +1,2 @@
+duration
+	^ self daysInMonth
