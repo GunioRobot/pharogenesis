@@ -1,6 +1,8 @@
-initialize "ScrollBar initialize"
-
-	UpArrow _ Form
-		extent: 6@3
-		fromArray: #(2r11e28 2r1111e27 2r111111e26)
-		offset: 0@0.
+initialize
+	"ScrollBar initialize"
+	UpArrow := Form
+				extent: 6 @ 3
+				fromArray: #(805306368 2013265920 4227858432 )
+				offset: 0 @ 0.
+	""
+	self initializeImagesCache
