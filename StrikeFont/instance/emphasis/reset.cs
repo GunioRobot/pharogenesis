@@ -2,6 +2,8 @@ reset
 	"Reset the cache of derivative emphasized fonts"
 
 	| style font |
+	fallbackFont class = FixedFaceFont
+		ifTrue: [fallbackFont _ nil].
 	derivativeFonts _ Array new: 32.
 	#('B' 'I' 'BI') doWithIndex:
 		[:tag :index | 
