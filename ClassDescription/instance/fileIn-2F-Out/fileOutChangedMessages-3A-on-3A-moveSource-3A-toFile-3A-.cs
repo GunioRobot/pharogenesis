@@ -1,19 +1,13 @@
 fileOutChangedMessages: aSet on: aFileStream moveSource: moveSource toFile: fileIndex 
-	"File a description of the messages of the receiver that have been 
-	changed (i.e., are entered into the argument, aSet) onto aFileStream. If 
-	the boolean argument, moveSource, is true, then set the trailing bytes to 
-	the position of aFileStream and to fileIndex in order to indicate where to 
-	find the source code."
+	"File a description of the messages of this class that have been 
+	changed (i.e., are entered into the argument, aSet) onto aFileStream.  If 
+	moveSource, is true, then set the method source pointer to the new file position.
+	Note when this method is called with moveSource=true, it is condensing the
+	.changes file, and should only write a preamble for every method."
 	| org sels |
 	(org _ self organization) categories do: 
 		[:cat | 
 		sels _ (org listAtCategoryNamed: cat) select: [:sel | aSet includes: sel].
-		sels size > 0
-			ifTrue: 
-				[self printCategoryChunk: cat on: aFileStream.
-				sels do: [:sel | 
-						self printMethodChunk: sel
-							on: aFileStream
-							moveSource: moveSource
-							toFile: fileIndex].
-				aFileStream nextChunkPut: ' ']]
+		sels do:
+			[:sel |  self printMethodChunk: sel withPreamble: true on: aFileStream
+							moveSource: moveSource toFile: fileIndex]]
