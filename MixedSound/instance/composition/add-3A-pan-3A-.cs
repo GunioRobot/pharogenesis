@@ -1,4 +1,4 @@
-add: aSound pan: pan
+add: aSound pan: leftRightPan
+	"Add the given sound with the given left-right panning and no attenuation."
 
-	sounds _ sounds copyWith: aSound.
-	panSettings _ panSettings copyWith: pan.
+	self add: aSound pan: leftRightPan volume: 1.0.
