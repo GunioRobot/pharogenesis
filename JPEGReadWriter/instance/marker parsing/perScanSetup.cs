@@ -9,7 +9,8 @@ perScanSetup
 		[:c :i |
 		c priorDCValue: 0.
 		mcuMembership addAll: ((1 to: c totalMcuBlocks) collect: [:b | i])].
-	mcuSampleBuffer _ (1 to: mcuMembership size) collect: [:i | Array new: DCTSize2].
+	mcuMembership _ mcuMembership asArray.
+	mcuSampleBuffer _ (1 to: mcuMembership size) collect: [:i | IntegerArray new: DCTSize2].
 	currentComponents withIndexDo:
 		[:c :i |
 			c initializeSampleStreamBlocks:
