@@ -1,4 +1,4 @@
-formerPosition: formerPosition
-	formerPosition == nil
-		ifTrue:[self removeProperty: #formerPosition]
-		ifFalse:[self setProperty: #formerPosition toValue: formerPosition]
+formerPosition: formerPosition 
+	formerPosition isNil 
+		ifTrue: [self removeProperty: #formerPosition]
+		ifFalse: [self setProperty: #formerPosition toValue: formerPosition]
