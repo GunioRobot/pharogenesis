@@ -1,6 +1,5 @@
 bytes: aBytesOop Lshift: shiftCount 
-	"Attention: this method invalidates all oop's! Only newBytes is valid at    
-	       return."
+	"Attention: this method invalidates all oop's! Only newBytes is valid at return."
 	"Does not normalize."
 	| newBytes highBit newLen oldLen |
 	oldLen _ self byteSizeOfBytes: aBytesOop.
