@@ -1,2 +1,3 @@
 become: array1 with: array2
-	^ self become: array1 with: array2 twoWay: true
+
+	^ self become: array1 with: array2 twoWay: true copyHash: true
