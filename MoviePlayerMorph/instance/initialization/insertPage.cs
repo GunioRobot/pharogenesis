@@ -1,0 +1,2 @@
+insertPage
+	^ self makeMyPage
