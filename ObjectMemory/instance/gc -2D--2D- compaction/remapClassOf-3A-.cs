@@ -8,8 +8,8 @@ remapClassOf: oop
 	classHeader _ self longAt: (oop - 4).
 	classOop _ classHeader bitAnd: AllButTypeMask.
 	(self isObjectForwarded: classOop) ifTrue: [
-		fwdBlock _ (self longAt: classOop) bitAnd: AllButMarkBitAndTypeMask.
-		checkAssertions ifTrue: [ self fwdBlockValidate: fwdBlock ].
+		fwdBlock _ ((self longAt: classOop) bitAnd: AllButMarkBitAndTypeMask) << 1.
+		DoAssertionChecks ifTrue: [ self fwdBlockValidate: fwdBlock ].
 		newClassOop _ self longAt: fwdBlock.
 		newClassHeader _ newClassOop bitOr: (classHeader bitAnd: TypeMask).
 		self longAt: (oop - 4) put: newClassHeader.
