@@ -1,0 +1,2 @@
+bestMove
+	^nil
