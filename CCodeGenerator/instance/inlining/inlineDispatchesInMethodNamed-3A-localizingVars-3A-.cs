@@ -7,7 +7,7 @@ inlineDispatchesInMethodNamed: selector localizingVars: varsList
 		m inlineCaseStatementBranchesIn: self localizingVars: varsList.
 		m parseTree nodesDo: [ :n |
 			n isCaseStmt ifTrue: [
-				n customizeShortCasesForDispatchVar: 'currentBytecode'.
+				n customizeShortCasesForDispatchVar: 'currentBytecode' in: self method: m.
 			].
 		].
 	].
