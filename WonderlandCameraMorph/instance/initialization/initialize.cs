@@ -4,5 +4,5 @@ initialize
 	CurrentProjectRefactoring currentAddGuard: self.
 
 	"Teddy"
-	self mode: #view.
-	self outline: POSimplePolygon new
+	self mode: nil.
+	self outline: nil.
