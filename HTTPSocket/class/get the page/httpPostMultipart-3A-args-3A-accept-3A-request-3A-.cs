@@ -20,7 +20,7 @@ httpPostMultipart: url args: argsDict accept: mimeType request: requestString
 
 	page _ bare copyFrom: (bare indexOf: $/) to: bare size.
 	page size = 0 ifTrue: [page _ '/'].
-	HTTPProxyServer ifNotNil: [ 
+	(self shouldUseProxy: serverName) ifTrue: [ 
 		page _ 'http://', serverName, ':', port printString, page.		"put back together"
 		serverName _ HTTPProxyServer.
 		port _ HTTPProxyPort].
@@ -33,7 +33,7 @@ httpPostMultipart: url args: argsDict accept: mimeType request: requestString
 		"print the boundary"
 		argsStream nextPutAll: '--', mimeBorder, CrLf.
 		" check if it's a non-text field "
-		argsStream nextPutAll: 'Content-disposition: form-data; name="', assoc key, '"'.
+		argsStream nextPutAll: 'Content-disposition: multipart/form-data; name="', assoc key, '"'.
 		(value isKindOf: MIMEDocument)
 			ifFalse: [fieldValue _ value]
 			ifTrue: [argsStream nextPutAll: ' filename="', value url pathForFile, '"', CrLf, 'Content-Type: ', value contentType.
@@ -46,10 +46,9 @@ httpPostMultipart: url args: argsDict accept: mimeType request: requestString
 	argsStream nextPutAll: '--', mimeBorder, '--'.
 
   	"make the request"	
-	self retry: [serverAddr _ NetNameResolver addressForName: serverName timeout: 20.
-				serverAddr ~~ nil] 
-		asking: 'Trouble resolving server name.  Keep trying?'
-		ifGiveUp: [^ 'Could not resolve the server named: ', serverName].
+	serverAddr _ NetNameResolver addressForName: serverName timeout: 20.
+	serverAddr ifNil: [
+		^ 'Could not resolve the server named: ', serverName].
 
 
 	s _ HTTPSocket new.
@@ -59,9 +58,10 @@ httpPostMultipart: url args: argsDict accept: mimeType request: requestString
 	s sendCommand: 'POST ', page, ' HTTP/1.1', CrLf, 
 		(mimeType ifNotNil: ['ACCEPT: ', mimeType, CrLf] ifNil: ['']),
 		'ACCEPT: text/html', CrLf,	"Always accept plain text"
+		HTTPProxyCredentials,
 		HTTPBlabEmail,	"may be empty"
 		requestString,	"extra user request. Authorization"
-		'User-Agent: Squeak 1.31', CrLf,
+		self userAgentString, CrLf,
 		'Content-type: multipart/form-data; boundary=', mimeBorder, CrLf,
 		'Content-length: ', argsStream contents size printString, CrLf,
 		'Host: ', specifiedServer, CrLf.  "blank line automatically added"
