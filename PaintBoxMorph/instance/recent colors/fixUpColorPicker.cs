@@ -1,11 +1,11 @@
 fixUpColorPicker
 	| chart picker |
-	chart _ ColorChart ifNil:[Cursor wait showWhile:[ColorChart _ (Color colorPaletteForDepth: 16 extent: 120@89)]].
+	chart _ ColorChart ifNil:[Cursor wait showWhile:[ColorChart _ (Color colorPaletteForDepth: 32 extent: (360+10)@(180+10))]].
 	chart getCanvas frameRectangle: chart boundingBox color: Color black.
-	picker _ Form extent: (chart extent + (14@12)) depth: 16.
+	picker _ Form extent: (chart extent + (14@12)) depth: 32.
 	picker fillWhite.
 	"top"
-	picker copy: (0@0 extent: picker width@6)
+	false ifTrue: [picker copy: (0@0 extent: picker width@6)
 			from: (colorMemory image width - picker width)@0 
 			in: colorMemory image rule: Form over.
 	"bottom"
@@ -19,7 +19,7 @@ fixUpColorPicker
 	"right"
 	picker copy: (picker width-6@6 corner: picker width@(picker height - 6))
 			from: (colorMemory image boundingBox topRight - (6@-6)) 
-			in: colorMemory image rule: Form over.
+			in: colorMemory image rule: Form over.].
 	chart displayOn: picker at: 8@6.
 	picker getCanvas frameRectangle: picker boundingBox color: Color black.
 	colorMemory image: picker.
