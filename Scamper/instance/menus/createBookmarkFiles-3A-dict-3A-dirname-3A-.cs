@@ -8,7 +8,7 @@ createBookmarkFiles: aDirectory dict: aDictionary dirname: aName
 					ifFalse:[filename _ k, '.lin'.
 							dir deleteFileNamed: filename.
 							file _ StandardFileStream fileNamed: (dir fullNameFor: filename).
-							file ifNil:[self error: 'could not save file'].
+							file ifNil:[self error: 'could not save file' translated].
 							file nextPutAll: v asString.
 							file close]
 				].
