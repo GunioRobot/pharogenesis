@@ -5,3 +5,4 @@ addStayUpItem
 		target: self
 		selector: #toggleStayUp:
 		argumentList: EmptyArray.
+	self addLine
