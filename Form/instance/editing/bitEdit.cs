@@ -4,7 +4,14 @@ bitEdit
 	modified using the Bit Editor. It also contains a view of the original 
 	form."
 
-	BitEditor openOnForm: self
+	Smalltalk isMorphic
+		ifFalse: [BitEditor openOnForm: self]
+		ifTrue: [self currentHand attachMorph: (FatBitsPaint new
+			editForm: self;
+			magnification: 8;
+			brushColor: Color black;
+			penSize: 1;
+			yourself)].
 
 	"Note that using direct messages to BitEditor, fixed locations and scales can be created.
 	That is, also try:
