@@ -1,4 +1,4 @@
 new: anInteger
-	"Return a SoundBuffer large enough to hold the given number of 16-bit values. (That is, an array of 32-bit words half the requested size)."
+	"See the comment in newMonoSampleCount:. To avoid confusion, it is best to create new instances using newMonoSampleCount: or newStereoSampleCount:."
 
-	^ self basicNew: (anInteger // 2)
+	^ self newMonoSampleCount: anInteger
