@@ -1,2 +1,2 @@
 lookForSlips
-	Smalltalk changes lookForSlips
+	ChangeSet current lookForSlips
