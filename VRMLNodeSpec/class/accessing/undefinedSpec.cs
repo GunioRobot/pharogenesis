@@ -1,0 +1,2 @@
+undefinedSpec
+	^UndefinedSpec
