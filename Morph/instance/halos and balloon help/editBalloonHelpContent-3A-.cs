@@ -1,10 +1,11 @@
 editBalloonHelpContent: aString
-
 	| reply |
 	reply _ FillInTheBlank
-		multiLineRequest: ('Edit the balloon help text for ', self externalName)
+		multiLineRequest: 'Edit the balloon help text for ' , self externalName
 		centerAt: Sensor cursorPoint
-		initialAnswer: aString
+		initialAnswer: (aString ifNil: [self noHelpString] ifNotNil: [aString])
 		answerHeight: 200.
-	(reply size > 0 and: [reply asString ~= self noHelpString])
-		ifTrue: [self setBalloonText: reply].
+	reply ifNil: [^ self].  "User cancelled out of the dialog"
+	(reply isEmpty or: [reply asString = self noHelpString])
+		ifTrue: [self setBalloonText: nil]
+		ifFalse: [self setBalloonText: reply]
