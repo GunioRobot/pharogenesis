@@ -1,3 +1,4 @@
 computeSlider
+	"interval ifNotNil: [self expandSlider]."
 	super computeSlider.
-	interval ifNotNil: [self expandSlider]
+
