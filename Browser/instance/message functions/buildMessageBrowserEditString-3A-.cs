@@ -3,5 +3,5 @@ buildMessageBrowserEditString: aString
 	argument, aString, contains characters to be edited in the text view."
 
 	messageListIndex = 0 ifTrue: [^ self].
-	^ Browser openMessageBrowserForClass: self selectedClassOrMetaClass 
+	^ self class openMessageBrowserForClass: self selectedClassOrMetaClass 
 		selector: self selectedMessageName editString: aString
