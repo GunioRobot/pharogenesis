@@ -11,5 +11,5 @@ useProxyServerNamed: proxyServerName port: portNum
 	HTTPProxyServer _ proxyServerName.
 
 	HTTPProxyPort _ portNum.
-	HTTPProxyPort class == String ifTrue: [HTTPPort _ portNum asNumber].
+	HTTPProxyPort class == String ifTrue: [HTTPProxyPort _ portNum asNumber].
 	HTTPProxyPort ifNil: [HTTPProxyPort _ self defaultPort].
