@@ -1,6 +1,4 @@
 returnTopFromMethod
-
-	| cntx val |
-	cntx _ self sender.
-	val _ self internalStackTop.
-	self returnValue: val to: cntx.
+	localReturnContext _ self sender.
+	localReturnValue _ self internalStackTop.
+	self commonReturn.
