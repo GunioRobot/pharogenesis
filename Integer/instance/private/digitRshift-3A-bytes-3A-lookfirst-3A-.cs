@@ -1,8 +1,7 @@
 digitRshift: anInteger bytes: b lookfirst: a 
 	 "Shift right 8*b+anInteger bits, 0<=n<8.
 	Discard all digits beyond a, and all zeroes at or below a."
-
-	| n x i r f m digit count |
+	| n x r f m digit count i |
 	n _ 0 - anInteger.
 	x _ 0.
 	f _ n + 8.
@@ -18,8 +17,8 @@ digitRshift: anInteger bytes: b lookfirst: a
 	count _ i.
 	x _ (self digitAt: b + 1) bitShift: n.
 	b + 1 to: count do:
-		[:i | digit _ self digitAt: i + 1.
-		r digitAt: i - b put: (((digit bitAnd: m) bitShift: f) bitOr: x) 
+		[:j | digit _ self digitAt: j + 1.
+		r digitAt: j - b put: (((digit bitAnd: m) bitShift: f) bitOr: x) 
 			"Avoid values > 8 bits".
 		x _ digit bitShift: n].
 	^r
