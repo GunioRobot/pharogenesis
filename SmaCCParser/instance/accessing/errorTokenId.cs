@@ -1,0 +1,2 @@
+errorTokenId
+	^scanner errorTokenId
