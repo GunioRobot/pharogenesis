@@ -1,2 +1,2 @@
 inspectView
-	view notNil ifTrue: [^ view inspect]
+	view notNil ifTrue: [^ view inspect; yourself]
