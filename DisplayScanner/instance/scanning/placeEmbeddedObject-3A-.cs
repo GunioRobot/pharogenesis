@@ -1,5 +1,11 @@
 placeEmbeddedObject: anchoredMorph
-
+	anchoredMorph relativeTextAnchorPosition ifNotNil:[
+		anchoredMorph position: 
+			anchoredMorph relativeTextAnchorPosition +
+			(anchoredMorph owner textBounds origin x @ 0)
+			- (0@morphicOffset y) + (0@lineY).
+		^true
+	].
 	(super placeEmbeddedObject: anchoredMorph) ifFalse: [^ false].
 	anchoredMorph isMorph ifTrue: [
 		anchoredMorph position: ((destX - anchoredMorph width)@lineY) - morphicOffset
