@@ -1,6 +1,5 @@
 emitForValue: stack on: strm
 
-	| argument |
 	special > 0
 		ifTrue: 
 			[self perform: (MacroEmitters at: special) with: stack with: strm with: true.
