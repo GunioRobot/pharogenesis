@@ -7,5 +7,8 @@ cCodeForMiscPrimitives
 		(Bitmap encodeBytesOf:in:at:)
 		(Bitmap encodeInt:in:at:)
 		(String compare:with:collated:)
-		(SampledSound #convert8bitSignedFrom:to16Bit:))
-
+		(String translate:from:to:table:)	
+		(String findFirstInString:inSet:startingAt:)
+		(String indexOfAscii:inString:startingAt:)
+		(String findSubstring:in:startingAt:matchTable:)
+		(SampledSound convert8bitSignedFrom:to16Bit:))
