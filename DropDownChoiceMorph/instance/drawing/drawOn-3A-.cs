@@ -1,6 +1,6 @@
 drawOn: aCanvas
 
-	aCanvas text: contents bounds: (bounds insetBy: 2)  font: self fontToUse color: color.
+	aCanvas drawString: contents in: (bounds insetBy: 2)  font: self fontToUse color: color.
 
 	border ifNotNil: [aCanvas frameAndFillRectangle: bounds
 		fillColor: Color transparent
