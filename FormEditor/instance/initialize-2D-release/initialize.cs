@@ -1,5 +1,3 @@
 initialize
-
 	super initialize.
-	self setVariables.
-	self initializeYellowButtonMenu
+	self setVariables
