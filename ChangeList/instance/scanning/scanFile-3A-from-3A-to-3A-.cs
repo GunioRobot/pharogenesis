@@ -5,7 +5,7 @@ scanFile: aFile from: startPosition to: stopPosition
 	list _ OrderedCollection new.
 	listIndex _ 0.
 	file position: startPosition.
-'Scanning changes...'
+'Scanning ', aFile localName, '...'
 	displayProgressAt: Sensor cursorPoint
 	from: startPosition to: stopPosition
 	during: [:bar |
@@ -16,7 +16,8 @@ scanFile: aFile from: startPosition to: stopPosition
 				whileTrue: [prevChar _ file next].
 		(file peekFor: $!)
 		ifTrue:
-			[prevChar = Character cr ifTrue: [self scanCategory]]
+			[(prevChar = Character cr or: [prevChar = Character lf])
+				ifTrue: [self scanCategory]]
 		ifFalse:
 			[itemPosition _ file position.
 			item _ file nextChunk.
