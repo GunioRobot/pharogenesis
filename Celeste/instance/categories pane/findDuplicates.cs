@@ -2,6 +2,7 @@ findDuplicates
 	"Find duplicate messages, and move the redundant copies to a given category."
 
 	| duplicatesCategory |
+	mailDB ifNil: [ ^self ].
 	duplicatesCategory _ FillInTheBlank
 		request: 'File duplicates in category?'
 		initialAnswer: '.duplicates.'.
