@@ -1,3 +1,3 @@
 mouseUp: evt
 
-	evt hand changeColorTarget: self selector: #setTargetColor:.
+	evt hand changeColorTarget: self selector: #setTargetColor: originalColor: color.
