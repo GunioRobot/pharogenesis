@@ -3,7 +3,7 @@ renameVarsForCaseStmt
 
 	| i varMap |
 	i _ 1.
-	varMap _ Dictionary new.
+	varMap _ Dictionary new: 100.
 	args, locals do: [ :v |
 		varMap at: v put: ('t', i printString) asSymbol.
 		i _ i + 1.
