@@ -1,2 +1,2 @@
 clip
-	self print:'clip newpath'; cr.
+	self print: 'clip'; cr.
