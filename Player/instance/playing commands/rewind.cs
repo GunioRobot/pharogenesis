@@ -1,0 +1,2 @@
+rewind
+	self sendMessageToCostume: #rewind
