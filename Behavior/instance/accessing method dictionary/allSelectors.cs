@@ -1,12 +1,8 @@
 allSelectors
-	"Answer a Set of all the message selectors that instances of the receiver 
-	can understand."
+	"Answer all selectors understood by instances of the receiver"
 
-	| temp |
-	superclass == nil
-		ifTrue: [^self selectors]
-		ifFalse: [temp _ superclass allSelectors.
-				temp addAll: self selectors.
-				^temp]
-
-	"Point allSelectors"
+	| coll |
+	coll _ OrderedCollection new.
+	self withAllSuperclasses do:
+		[:aClass | coll addAll: aClass selectors].
+	^ coll asIdentitySet
