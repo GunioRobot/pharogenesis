@@ -1,2 +1,2 @@
 newTileMorphRepresentative
-	^ TileMorph new setLiteral: self
+	^ TileMorph new setLiteral: self;addSuffixIfCan
