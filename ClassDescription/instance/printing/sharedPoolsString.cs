@@ -3,5 +3,5 @@ sharedPoolsString
 
 	| aStream |
 	aStream _ WriteStream on: (String new: 100).
-	self sharedPools do: [:x | aStream nextPutAll: (Smalltalk keyAtValue: x ifAbsent: ['private']); space].
+	self sharedPools do: [:x | aStream nextPutAll: (self environment keyAtIdentityValue: x ifAbsent: ['private']); space].
 	^ aStream contents
