@@ -11,10 +11,10 @@ method: doit context: ctxt
 	prim _ doit ifTrue: [0] ifFalse: [self primitive].
 	self statements: #() innerBlock: doit.
 	blk _ parseNode.
-	doit 
-		ifTrue: [blk returnLast]
+	doit ifTrue: [blk returnLast]
 		ifFalse: [blk returnSelfIfNoOther].
 	hereType == #doIt ifFalse: [^self expected: 'Nothing more'].
+	self interactive ifTrue: [self removeUnusedTemps].
 	methodNode _ MethodNode new comment: messageComment.
 	^methodNode
 		selector: (sap at: 1)
