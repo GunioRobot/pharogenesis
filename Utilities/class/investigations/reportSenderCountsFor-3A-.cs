@@ -7,10 +7,10 @@ reportSenderCountsFor: selectorList
 '.
 	selectorList do:
 		[:selector | thisSize _ (Smalltalk allCallsOn: selector) size.
-		report _ report, thisSize printString, Character tab, selector printString, Character cr.
+		report _ report, thisSize printString, String tab, selector printString, String cr.
 		total _ total + thisSize].
 	report _ report, '--- ------------------
 '.
-	report _ report, total printString, Character tab, 'TOTAL
+	report _ report, total printString, String tab, 'TOTAL
 '.
 	^ report
