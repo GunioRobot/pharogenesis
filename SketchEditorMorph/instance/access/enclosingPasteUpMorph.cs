@@ -1,0 +1,2 @@
+enclosingPasteUpMorph
+	^ enclosingPasteUpMorph
