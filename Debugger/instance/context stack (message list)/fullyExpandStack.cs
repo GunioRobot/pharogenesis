@@ -3,5 +3,5 @@ fullyExpandStack
 	contexts."
 
 	self okToChange ifFalse: [^ self].
-	self newStack: contextStackTop stack.
+	self newStack: contextStackTop contextStack.
 	self changed: #contextStackList
