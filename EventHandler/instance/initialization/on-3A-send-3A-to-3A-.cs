@@ -9,6 +9,14 @@ on: eventName send: selector to: recipient
 		[mouseEnterRecipient _ recipient.  mouseEnterSelector _ selector. ^ self].
 	eventName = #mouseLeave ifTrue:
 		[mouseLeaveRecipient _ recipient.  mouseLeaveSelector _ selector. ^ self].
+	eventName = #mouseEnterDragging ifTrue:
+		[mouseEnterDraggingRecipient _ recipient.  mouseEnterDraggingSelector _ selector. ^ self].
+	eventName = #mouseLeaveDragging ifTrue:
+		[mouseLeaveDraggingRecipient _ recipient.  mouseLeaveDraggingSelector _ selector. ^ self].
+	eventName = #doubleClick ifTrue:
+		[doubleClickRecipient _ recipient. doubleClickSelector _ selector. ^ self].
+	eventName = #startDrag ifTrue:
+		[startDragRecipient _ recipient. startDragSelector _ selector. ^ self].
 	eventName = #keyStroke ifTrue:
 		[keyStrokeRecipient _ recipient.  keyStrokeSelector _ selector. ^ self].
 	self error: 'Event name, ' , eventName , ' is not recognizable.'
