@@ -2,5 +2,6 @@ waitButton
 	"Wait for the user to press any mouse button and then answer with the 
 	current location of the cursor."
 
-	[self anyButtonPressed] whileFalse.
+	[self anyButtonPressed] whileFalse:
+		[(Delay forMilliseconds: 50) wait].
 	^self cursorPoint
