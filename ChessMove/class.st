@@ -1,0 +1,1 @@
+ChessMove class instanceVariableNames: ''
