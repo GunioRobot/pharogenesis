@@ -17,7 +17,8 @@ createOnForm: aForm
 		((formView viewport 
 			merge: (menuView viewport expandBy: (16 @ 0 corner: 16@16))) 
 		  expandBy: (0@topViewBorder corner: 0@0)).
-	topView _ StandardSystemView new.
+	topView _ "ColorSystemView" FormEditorView new.
+	topView model: formEditor.
 	topView backgroundColor: #veryLightGray.
 	topView addSubView: aView.
 	topView label: 'Form Editor'.
