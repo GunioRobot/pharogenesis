@@ -17,7 +17,8 @@ addVariableNamed: varName
 	self class compile: (String streamContents:
 			[:s | s nextPutAll: partName, 'Set: newValue'; cr;
 				tab; nextPutAll: partName, ' _ newValue.'; cr;
-				tab; nextPutAll: 'self changed: #', partName])
+				tab; nextPutAll: 'self changed: #', partName, '.'; cr;
+				tab; nextPutAll: '^ true' "for components that expect a boolean for accept"])
 		classified: 'view access'
 		notifying: nil.
 
