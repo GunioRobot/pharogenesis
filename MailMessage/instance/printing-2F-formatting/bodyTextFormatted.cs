@@ -29,8 +29,11 @@ bodyTextFormatted
 
 
 	"check for HTML"
-	self body contentType = 'text/html'
-		ifTrue: [^(HtmlParser parse: (ReadStream on: body content)) formattedText].
+	(self body contentType = 'text/html') ifTrue: [
+		Smalltalk at: #HtmlParser ifPresentAndInMemory: [ :htmlParser |
+			^(htmlParser parse: (ReadStream on: body content)) formattedText
+		]
+	].
 
 	"check for an embedded message"
 	self body contentType = 'message/rfc822' ifTrue: [
