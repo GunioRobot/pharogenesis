@@ -1,2 +1,2 @@
 hasVariable
-	^ modelReadSelector ~~ nil or: [modelWriteSelector ~~ nil]
+	^modelReadSelector notNil or: [modelWriteSelector notNil]
