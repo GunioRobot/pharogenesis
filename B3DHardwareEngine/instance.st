@@ -1,6 +1,6 @@
 B3DPrimitiveEngine
 	subclass: #B3DHardwareEngine
-	instanceVariableNames: 'vpTransform '
-	classVariableNames: ''
+	instanceVariableNames: 'handle target bufRect textures backingForm'
+	classVariableNames: 'B3DHardwareRenderer B3DSoftwareRenderer B3DStencilBuffer'
 	poolDictionaries: ''
-	category: 'Balloon3D-Acceleration'
+	category: 'Balloon3D-Kernel-Acceleration'
