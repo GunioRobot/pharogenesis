@@ -13,7 +13,7 @@ sendToSwikiProjectServer: anArray
 		at: 'swikicommands'
 		put: {buildStream contents}.
 	answer _ HTTPSocket 
-		httpPostMultipartBOB: self url
+		httpPostToSuperSwiki: self url
 		args: argsDict
 		accept: 'application/octet-stream' 
 		request: ''.
