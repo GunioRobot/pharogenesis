@@ -1,0 +1,2 @@
+isCandidateForAutomaticViewing
+	^ self isPartsDonor not
