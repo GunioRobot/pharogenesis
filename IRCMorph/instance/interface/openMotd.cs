@@ -1,0 +1,2 @@
+openMotd
+	connection openMotd
