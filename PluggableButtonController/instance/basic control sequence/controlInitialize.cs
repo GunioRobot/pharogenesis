@@ -6,4 +6,5 @@ controlInitialize
 		ifTrue: [sensor yellowButtonPressed 
 			ifTrue: [self yellowButtonActivity]
 			ifFalse: [view performAction]]
-		ifFalse: [view toggleMouseOverFeedback].
+		ifFalse: [view toggleMouseOverFeedback.
+				 shownAsComplemented _ true]
