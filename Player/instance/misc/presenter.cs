@@ -1,3 +1,3 @@
 presenter
 	"Convenience for calling from user scripts"
-	^ costume presenter
+	^ self costume presenter
