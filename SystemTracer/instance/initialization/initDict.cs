@@ -17,9 +17,11 @@ initDict
 			(class inheritsFrom: MethodDictionary) | (class == MethodDictionary) ifTrue:
 				[writeDict at: class put: #writeMethodDictionary:]].
 				].
+
+"check for Associations of replaced classes"
+	writeDict at: Association put: #writeAssociation:.
+
 	Smalltalk allBehaviorsDo: 
-		[:class | writeDict at: class class put: #writeBehavior:].
-	(ObjectTracer withAllSubclasses) do: 
 		[:class | writeDict at: class class put: #writeBehavior:].
 	writeDict at: PseudoContext class put: #writeBehavior:.
 	writeDict at: SmallInteger put: #writeClamped:.
