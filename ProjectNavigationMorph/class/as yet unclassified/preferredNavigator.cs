@@ -1,4 +1,4 @@
 preferredNavigator
 
-	Preferences eToyFriendly ifTrue: [^KidNavigationMorph].
+	"Preferences eToyFriendly ifTrue: [^KidNavigationMorph]."
 	^ProjectNavigationMorph
