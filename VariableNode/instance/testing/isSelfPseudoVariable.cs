@@ -1,4 +1,4 @@
 isSelfPseudoVariable
 	"Answer if this ParseNode represents the 'self' pseudo-variable."
 
-	^ (key = 'self') | (name = '{{self}}')
+	^ (self key = 'self') | (self name = '{{self}}')
