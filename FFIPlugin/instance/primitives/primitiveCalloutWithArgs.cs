@@ -19,13 +19,13 @@ primitiveCalloutWithArgs
 	interpreterProxy failed ifTrue:[^self ffiFail: FFIErrorBadArgs].
 	argTypes _ interpreterProxy fetchPointer: 2 ofObject: lit.
 	"must be array of arg types"
-	(interpreterProxy fetchClassOf: argTypes) == interpreterProxy classArray 
+	(interpreterProxy isArray: argTypes) 
 		ifFalse:[^self ffiFail: FFIErrorBadArgs].
 	nArgs _ interpreterProxy slotSizeOf: argTypes.
 	(interpreterProxy methodArgumentCount = 1) 
 		ifFalse:[^self ffiFail: FFIErrorBadArgs].
 	argArray _ interpreterProxy stackValue: 0.
-	(interpreterProxy fetchClassOf: argArray) = (interpreterProxy classArray)
+	(interpreterProxy isArray: argArray)
 		ifFalse:[^self ffiFail: FFIErrorBadArgs].
 	nArgs = ((interpreterProxy slotSizeOf: argArray) + 1)
 		ifFalse:[^self ffiFail: FFIErrorBadArgs].
