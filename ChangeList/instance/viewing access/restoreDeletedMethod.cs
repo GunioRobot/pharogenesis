@@ -4,9 +4,9 @@ restoreDeletedMethod
 	dummyMethod _ CompiledMethod toReturnSelf setSourcePointer: lostMethodPointer.
 	class _ (changeList at: listIndex) methodClass.
 	selector _ (changeList at: listIndex) methodSelector.
-	class addSelector: selector withMethod: dummyMethod.
+	class addSelectorSilently: selector withMethod: dummyMethod.
 	(changeList at: listIndex) fileIn.
 	"IF for some reason, the dummy remains, remove it, but (N.B.!) we might not get control back if the compile (fileIn above) fails."
 	(class compiledMethodAt: selector) == dummyMethod
-		ifTrue: [class removeSelectorSimply: selector].
+		ifTrue: [class basicRemoveSelector: selector].
 	^ true
