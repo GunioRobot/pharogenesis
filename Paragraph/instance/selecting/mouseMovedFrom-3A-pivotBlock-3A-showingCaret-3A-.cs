@@ -20,7 +20,7 @@ mouseMovedFrom: beginBlock pivotBlock: pivotBlock showingCaret: caretOn
 					[self reverseFrom: startBlock to: pivotBlock.
 					self reverseFrom: pivotBlock to: stopBlock.
 					startBlock _ stopBlock].
-			(clippingRectangle contains: stopBlock) ifFalse:
+			(clippingRectangle containsRect: stopBlock) ifFalse:
 				[stopBlock top < clippingRectangle top
 				ifTrue: [self scrollBy: stopBlock top - clippingRectangle top
 						withSelectionFrom: pivotBlock to: stopBlock]
