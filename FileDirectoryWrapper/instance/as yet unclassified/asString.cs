@@ -1,3 +1,2 @@
-asString 
-
-	^itemName
+asString
+	 ^itemName translatedIfCorresponds
