@@ -1,0 +1,12 @@
+a subtitle file
+
+i can only read subtitle files with a format like this:
+
+[..]
+{1043}{1082}La gente siempre me pregunta|si conozco a Tyler Durden.
+{1083}{1096}Tres minutos.
+{1097}{1133}El momento de la verdad.|Punto cero.
+[..]
+from Fight Club
+
+while reading, pipes(|) are replaced by carriage returns
