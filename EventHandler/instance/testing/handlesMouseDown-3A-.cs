@@ -3,4 +3,4 @@ handlesMouseDown: evt
 	mouseStillDownRecipient ifNotNil: [^ true].
 	mouseUpRecipient ifNotNil: [^ true].
 	(self handlesClickOrDrag: evt) ifTrue:[^true].
-	^ false
+	^self handlesGestureStart: evt
