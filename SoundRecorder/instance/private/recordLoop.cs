@@ -18,5 +18,5 @@ recordLoop
 					ifFalse: [sampleCount _ currentBuffer monoSampleCount].
 				nextIndex > sampleCount
 					ifTrue: [
-						recordedBuffers addLast: currentBuffer.
+						self emitBuffer: currentBuffer.
 						self allocateBuffer]]].
