@@ -20,6 +20,9 @@ playLoop
 			willStop _ mayStop and:[
 						(ActiveSounds size = 0) and:[
 							self isAllSilence: Buffer size: count]].
+			LastBuffer ifNotNil:[
+				LastBuffer replaceFrom: 1 to: LastBuffer size with: Buffer startingAt: 1.
+			].
 			willStop
 				ifTrue:[self shutDown. PlayerProcess _ nil]
 				ifFalse:[Buffer primFill: 0].
