@@ -1,0 +1,3 @@
+internalStackTop
+
+	^ self longAt: localSP
