@@ -1,10 +1,15 @@
 addYesNoToHand
+	"Place a test/yes/no complex in the hand of the beloved user"
 
-	| ms messageNodeMorph |
-	(self world valueOfProperty: #universalTiles ifAbsent: [false])
-		ifTrue: [ms _ MessageSend receiver: true selector: #ifTrue:ifFalse: 
+	| ms messageNodeMorph aMorph |
+	Preferences universalTiles
+		ifTrue:
+			[ms _ MessageSend receiver: true selector: #ifTrue:ifFalse: 
 						arguments: {['do nothing']. ['do nothing']}.
-			messageNodeMorph _ ms asTilesIn: playerScripted class.
-			"messageNodeMorph setProperty: #whoIsSelf toValue: playerScripted."
+			messageNodeMorph _ ms asTilesIn: playerScripted class globalNames: true.
 			self primaryHand attachMorph: messageNodeMorph]
-		ifFalse: [self primaryHand attachMorph: CompoundTileMorph new].
+		ifFalse:
+			[aMorph _ CompoundTileMorph new.
+			ActiveHand attachMorph: aMorph.
+			aMorph position: ActiveHand position.
+			aMorph formerPosition: ActiveHand position]
