@@ -1,9 +1,11 @@
 chooseCngSet
-	"Put up a list of them"
-	| index |
-
+	"Present the user with an alphabetical list of change set names, and let her choose one"
+	| index changeSetsSortedAlphabetically |
 	self okToChange ifFalse: [^ self].
 	ChangeSet instanceCount > AllChangeSets size ifTrue: [self class gatherChangeSets].
+	changeSetsSortedAlphabetically _ AllChangeSets asSortedCollection:
+		[:a :b | a name asLowercase withoutLeadingDigits < b name asLowercase withoutLeadingDigits].
+
 	index _ (PopUpMenu labels: 
-		(AllChangeSets collect: [:each | each name]) asStringWithCr) startUp.
-	index = 0 ifFalse: [self showChangeSet: (AllChangeSets at: index)].
+		(changeSetsSortedAlphabetically collect: [:each | each name]) asStringWithCr) startUp.
+	index = 0 ifFalse: [self showChangeSet: (changeSetsSortedAlphabetically at: index)].
