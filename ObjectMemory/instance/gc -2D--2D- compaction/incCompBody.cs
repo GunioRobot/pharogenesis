@@ -4,7 +4,7 @@ incCompBody
 	| bytesFreed |
 	self inline: false.
 	"reserve memory for forwarding table"
-	self fwdTableInit.
+	self fwdTableInit: 8.  "Two-word blocks"
 
 	"assign new oop locations, reverse their headers, and initialize forwarding blocks"
 	bytesFreed _ self incCompMakeFwd.
