@@ -4,7 +4,9 @@ openAsMorphIn: window  "PDA new openAsMorph openInWorld"
 	window color: Color black.
 	paneColor _ (Color r: 0.6 g: 1.0 b: 0.0).
 	window model: self.
-
+	Preferences alternativeWindowLook ifTrue:[
+		window color: Color white.
+		window paneColor: paneColor].
 	dragNDropFlag _ Preferences browseWithDragNDrop.
 	window addMorph: ((PluggableListMorph on: self list: #peopleListItems
 			selected: #peopleListIndex changeSelected: #peopleListIndex:
@@ -37,8 +39,9 @@ openAsMorphIn: window  "PDA new openAsMorph openInWorld"
 			text: #currentItemText accept: #acceptCurrentItemText:
 			readSelection: #currentItemSelection menu: #currentItemMenu:)
 		frame: (0@0.7 corner: 1@1).
-	window firstSubmorph color: paneColor.
+	Preferences alternativeWindowLook ifFalse:[
+		window firstSubmorph color: paneColor.
+	].
 	window updatePaneColors.
-
 	window step.
 	^ window
