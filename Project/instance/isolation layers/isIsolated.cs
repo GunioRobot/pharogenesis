@@ -1,0 +1,3 @@
+isIsolated
+
+	^ isolatedHead
