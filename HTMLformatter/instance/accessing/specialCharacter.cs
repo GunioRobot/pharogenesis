@@ -1,0 +1,2 @@
+specialCharacter
+	^specialCharacter
