@@ -1,9 +1,5 @@
 connectTo: hostAddress port: port
-	"Initiate a connection to the given port at the given host address. This operation will return immediately; follow it with waitForConnectionUntil: to wait until the connection is established."
+	"Initiate a connection to the given port at the given host address.
+	Waits until the connection is established or time outs."
 
-	| status |
-	status _ self primSocketConnectionStatus: socketHandle.
-	(status == Unconnected)
-		ifFalse: [self error: 'Socket status must Unconnected before opening a new connection'].
-
-	self primSocket: socketHandle connectTo: hostAddress port: port.
+	self connectTo: hostAddress port: port waitForConnectionFor: Socket standardTimeout
