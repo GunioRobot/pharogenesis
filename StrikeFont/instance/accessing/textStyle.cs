@@ -1,3 +1,3 @@
 textStyle
-	^ Utilities actualTextStyles detect:
+	^ TextStyle actualTextStyles detect:
 		[:aStyle | aStyle fontArray includes: self] ifNone: [nil]
