@@ -5,6 +5,6 @@ displayOn: aDisplayMedium at: aDisplayPoint clippingBox: clipRectangle rule: rul
 	rule _ ruleInteger.
 	mask _ aForm.
 	clippingRectangle _ clipRectangle.
-	compositionRectangle moveTo: aDisplayPoint.
+	compositionRectangle _ aDisplayPoint extent: compositionRectangle extent.
 	(lastLine == nil or: [lastLine < 1]) ifTrue: [self composeAll].
 	self displayOn: aDisplayMedium lines: (1 to: lastLine)
