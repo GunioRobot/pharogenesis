@@ -1,0 +1,2 @@
+objectViewed
+	^ self playerScripted costume
