@@ -1,0 +1,2 @@
+primitiveFileDelete 
+	^interpreterProxy primitiveFileDelete 
