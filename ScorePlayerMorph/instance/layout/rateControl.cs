@@ -19,7 +19,7 @@ rateControl
 		hResizing: #shrinkWrap;
 		vResizing: #rigid;
 		height: 24.
-	r addMorphBack: (StringMorph contents: 'slow ').
+	r addMorphBack: (StringMorph contents: 'slow ' translated).
 	r addMorphBack: rateSlider.
-	r addMorphBack: (StringMorph contents: ' fast').
+	r addMorphBack: (StringMorph contents: ' fast' translated).
 	^ r
