@@ -5,8 +5,7 @@ playProjectTransitionFrom: oldProject to: newProject entering: aBoolean
 	self stopPlaying.
 	owner ifNotNil:[
 		self stopStepping.
-		owner privateRemoveMorph: self.
-		owner _ nil].
+		owner removeMorph: self].
 	aBoolean ifTrue:[
 		self updateProjectFillsFrom: newProject.
 	] ifFalse:[
@@ -20,12 +19,11 @@ playProjectTransitionFrom: oldProject to: newProject entering: aBoolean
 	self comeToFront.
 	self startStepping.
 	self startPlaying.
-	[playing] whileTrue: [Display doOneCycleNowMorphic].
+	[playing] whileTrue: [World doOneCycleNow].
 	self stopPlaying.
 	self stopStepping.
-	owner privateRemoveMorph: self.
-	owner _ nil.
+	owner removeMorph: self.
 	self removeProperty: #transitionBackground.
 	Display deferUpdates: true.
-	Display bestGuessOfCurrentWorld fullDrawOn: (Display getCanvas).
+	ActiveWorld fullDrawOn: (Display getCanvas).
 	Display deferUpdates: false.
