@@ -1,0 +1,3 @@
+samplesPerFrame
+
+	^ 160
