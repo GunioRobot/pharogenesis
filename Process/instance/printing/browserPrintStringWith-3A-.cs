@@ -7,10 +7,8 @@ browserPrintStringWith: anObject
 	self isSuspended
 		ifTrue: [stream nextPut: $s].
 	stream nextPutAll: ') '.
-	stream
-		nextPutAll: ((self respondsTo: #processName)
-				ifTrue: [self processName]
-				ifFalse: [self hash asString forceTo: 5 paddingStartWith: $ ]).
+	stream nextPutAll: self name.
+	stream nextPut: $:.
 	stream space.
 	stream nextPutAll: anObject asString.
 	^ stream contents
