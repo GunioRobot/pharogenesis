@@ -1,2 +1,4 @@
 selectionColor
-	^ (Color r: 0.4 g: 1.0 b: 0)
+	Display depth = 1 ifTrue: [^ Color veryLightGray].
+	Display depth = 2 ifTrue: [^ Color gray].
+	^ Preferences textHighlightColor
