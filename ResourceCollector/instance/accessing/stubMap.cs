@@ -1,0 +1,2 @@
+stubMap
+	^stubMap
