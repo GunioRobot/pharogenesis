@@ -1,4 +1,4 @@
 startRunningScripts
 	self startRunning.
-	costume startStepping.  "emergency patch, if not going already"
-	costume presenter startRunningScripts
+	self costume arrangeToStartStepping.  "emergency patch, if not going already"
+	self costume presenter startRunningScripts
