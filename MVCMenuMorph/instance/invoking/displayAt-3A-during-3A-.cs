@@ -3,7 +3,7 @@ displayAt: aPoint during: aBlock
 
 	Smalltalk isMorphic ifFalse: [^ self].
 
-	Display getCurrentMorphicWorld addMorph: self centeredNear: aPoint.
+	ActiveWorld addMorph: self centeredNear: aPoint.
 	self world displayWorld.  "show myself"
 	aBlock value.
 	self delete
