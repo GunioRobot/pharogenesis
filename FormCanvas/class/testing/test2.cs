@@ -1,18 +1,19 @@
 test2
 	"FormCanvas test2"
 
-	| baseCanvas p canvas |
+	| baseCanvas p |
 	baseCanvas _ FormCanvas extent: 200@200.
 	p _ Sensor cursorPoint.
 	[Sensor anyButtonPressed] whileFalse: [
-		canvas _ baseCanvas copyOffset: (Sensor cursorPoint - p).
-		canvas fillColor: (Color white).
-		canvas line: 10@10 to: 50@30 width: 1 color: (Color black).
-		canvas frameRectangle: ((20@20) corner: (120@120)) width: 4 color: (Color gray).
-		canvas point: 90@90 color: (Color black).
-		canvas text: 'Hello, Roxie' at: 40@40 font: nil color: (Color black).
-		canvas fillRectangle: ((10@80) corner: (31@121)) color: (Color lightGray).
-		canvas fillOval: ((10@80) corner: (31@121)) color: (Color black).
-		canvas fillRectangle: ((130@30) corner: (170@80)) color: (Color lightGray).
-		canvas showAt: 0@0.
-	].
+		baseCanvas translateBy: (Sensor cursorPoint - p) during:[:canvas|
+			canvas fillColor: Color white.
+			canvas line: 10@10 to: 50@30 width: 1 color: Color red.
+			canvas frameRectangle: ((20@20) corner: (120@120)) width: 4 color: Color green.
+			canvas point: 100@100 color: Color black.
+			canvas text: 'Hello, World!' at: 40@40 font: nil color: Color cyan.
+			canvas fillRectangle: ((10@80) corner: (31@121)) color: Color magenta.
+			canvas fillOval: ((10@80) corner: (31@121)) color: Color cyan.
+			canvas frameOval: ((40@80) corner: (61@121)) color: Color blue.
+			canvas frameOval: ((70@80) corner: (91@121)) width: 3 color: Color red.
+			canvas fillRectangle: ((130@30) corner: (170@80)) color: Color lightYellow.
+			canvas showAt: 0@0]].
