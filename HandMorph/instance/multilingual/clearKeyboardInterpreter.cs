@@ -1,0 +1,3 @@
+clearKeyboardInterpreter
+
+	keyboardInterpreter _ nil.
