@@ -1,0 +1,2 @@
+bottomRightColor
+	^color
