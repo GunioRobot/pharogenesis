@@ -5,8 +5,8 @@ sendUDPData: aStringOrByteArray toHost: hostAddress port: portNumber
 	bytesToSend _ aStringOrByteArray size.
 	bytesSent _ 0.
 	[bytesSent < bytesToSend] whileTrue: [
-		(self waitForSendDoneUntil: (Socket deadlineSecs: 20))
-			ifFalse: [self error: 'send data timeout; data not sent'].
+		(self waitForSendDoneFor: 20)
+			ifFalse: [ConnectionTimedOut signal: 'send data timeout; data not sent'].
 		count _ self primSocket: socketHandle
 			sendUDPData: aStringOrByteArray
 			toHost: hostAddress
