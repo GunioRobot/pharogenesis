@@ -1,0 +1,2 @@
+classSemaphore
+	^Semaphore
