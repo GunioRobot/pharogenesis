@@ -1,0 +1,3 @@
+numArgs
+
+	^ method numArgs
