@@ -4,7 +4,7 @@ windowColumnsDesired
 		ifTrue:
 			[1]
 		ifFalse:
-			[(Display usableArea width > 640)
+			[(self maximumUsableArea width > 640)
 				ifTrue:
 					[2]
 				ifFalse:
