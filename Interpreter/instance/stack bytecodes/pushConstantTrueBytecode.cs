@@ -1,0 +1,3 @@
+pushConstantTrueBytecode
+
+	self internalPush: trueObj.
