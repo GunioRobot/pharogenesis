@@ -7,7 +7,7 @@ balloonHelpTextForHandle: aHandle
 		(grabFromHalo:with:						'Pick up')
 		(dragStartFromHalo:with:				'Move')
 		(extractTexture:							'Extract texture')
-		(paintMode								'Paint on surface')
+		(paintTexture							'Paint on surface')
 	) do:
 		[:pair | itsSelector == pair first ifTrue: [^ pair last]].
 	^super balloonHelpTextForHandle: aHandle
