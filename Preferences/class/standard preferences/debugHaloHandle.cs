@@ -1,0 +1,2 @@
+debugHaloHandle
+	^ self valueOfFlag: #debugHaloHandle
