@@ -6,4 +6,4 @@ readFromDisk: evt
 		menu add: fileName
 			target: self selector: #readFileNamed:
 			argument: fileName].
-	menu popUpAt: evt hand position event: evt.
+	menu popUpEvent: evt
