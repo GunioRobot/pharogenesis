@@ -1,0 +1,1 @@
+recordBackgroundColor: aColor
