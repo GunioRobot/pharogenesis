@@ -1,16 +1,17 @@
 peekForAll: aString
-	"<Boolean> Answer whether or not the next string of characters in the receiver
-	matches aString.  If a match is made, advance over that string in the receiver and
-	answer true.  If no match, then leave the receiver alone and answer false."
+	"Answer whether or not the next string of characters in the receiver
+	matches aString. If a match is made, advance over that string in the receiver and
+	answer true. If no match, then leave the receiver alone and answer false.
+	We use findString:startingAt: to avoid copying.
 
-	| start tmp |
-	[self atEnd not and: [self inStream size - self inStream position < aString size]]
-		whileTrue: [self receiveData].
-	(self inStream size - self inStream position) >= aString size ifFalse: [^false].
-	start := self inStream position + 1.
-	tmp := self inStream contents 
-		copyFrom: start
-		to: (start + aString size - 1).
-	tmp = aString ifFalse: [^false].
-	self next: aString size.
+	NOTE: This method doesn't honor timeouts if shouldSignal is false!"
+
+	| sz start |
+	sz _ aString size.
+	self receiveData: sz.
+	(inNextToWrite - lastRead - 1) < sz ifTrue: [^false].
+	start _ lastRead + 1.
+	(inBuffer findString: aString startingAt: start) = start
+		ifFalse: [^false].
+	lastRead _ lastRead + sz.
 	^true
