@@ -1,20 +1,19 @@
 windowColorHelp
-	"The 'Window Colors' panel lets you select colors for the standard Squeak windows.
+	"Provide help for the window-color panel"
 
-The three buttons entitled 'Bright', 'Pastel', and 'White' let you install three different standard color schemes.
+	| helpString |
+	helpString _ 
+'The "Window Colors" panel lets you select colors for many kinds of standard Squeak windows.
 
-The rows of color swatches and tool names indicate what the color for each tool is currently set to be.  You can change the color for any tool by clicking on its swatch, then choosing a new color in the ensuing color-picker.
+You can change your color preference for any particular tool by clicking on the color swatch and then selecting the desired color from the resulting color-picker.
 
-'TranscriptStream' governs the color of Transcripts.
-'MessageSet' governs the color of message-list browsers.
-'ChangeList' governs the color of change-list browsers *and* versions browsers.
-'StringHolder' governs the color of Workspaces.
+The three buttons entitled "Bright", "Pastel", and "White" let you revert to any of three different standard color schemes.  
 
-Any time you request a new window (browser, file-list, etc.), the current window-color setting for that kind of window will determine what color is used.
+The choices you make in the Window Colors panel only affect the colors of new windows that you open.
 
-But note that if in Morphic, the 'Tools' flap and the 'Standard Parts Bin' both contain pre-allocated window prototypes, and these will not automatically change when you edit the standard window colors.  To get the Tools flap to reflect your latest color choices, hit the 'Update Tools Flap' button.  To get the standard parts bin to reflect your latest color choices, evaluate 'ScriptingSystem resetStandardPartsBin'"
+You can make other tools have their colors governed by this panel by simply implementing #windowColorSpecification on the class side of the model -- consult implementors of that method to see examples of how to do this.'.
 
-	(StringHolder new contents: (self class firstCommentAt: #windowColorHelp))
+	 (StringHolder new contents: helpString)
 		openLabel: 'About Window Colors'
 
 	"Preferences windowColorHelp"
