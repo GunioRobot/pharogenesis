@@ -1,0 +1,2 @@
+color
+	^myActor getColorVector asColor
