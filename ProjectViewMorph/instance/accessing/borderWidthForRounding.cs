@@ -1,0 +1,3 @@
+borderWidthForRounding
+
+	^1
