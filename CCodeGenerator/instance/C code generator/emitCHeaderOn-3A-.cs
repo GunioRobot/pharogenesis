@@ -6,7 +6,10 @@ emitCHeaderOn: aStream
 	aStream nextPutAll: ' */'; cr; cr.
 
 	aStream nextPutAll: '#include "sq.h"'; cr.
-	aStream nextPutAll: '#include "sqMachDep.h"  /* needed only by the JIT virtual machine */'; cr.
+
+	"Additional header files"
+	headerFiles do:[:hdr|
+		aStream nextPutAll:'#include '; nextPutAll: hdr; cr].
 
 	aStream nextPutAll: '
 /* memory access macros */
