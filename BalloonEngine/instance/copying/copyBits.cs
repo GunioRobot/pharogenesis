@@ -1,0 +1,2 @@
+copyBits
+	self copyLoopFaster.
