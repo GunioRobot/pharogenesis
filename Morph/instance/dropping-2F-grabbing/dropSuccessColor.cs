@@ -1,0 +1,2 @@
+dropSuccessColor
+	^ Color blue
