@@ -2,7 +2,7 @@ coloredEllipses
 	"X11Display coloredEllipses"
 	| display window gc colors rnd w h pt1 pt2 r |
 	display _ X11Display XOpenDisplay: nil.
-	window _ display getInputFocus.
+	window _ display ourWindow.
 	gc _ X11GC on: window.
 	colors _ Color colorNames collect:[:n| (Color perform: n) pixelWordForDepth: 32].
 	rnd _ Random new.
