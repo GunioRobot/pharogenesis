@@ -1,7 +1,4 @@
 nextPutAll: aString
 	"add an entire string with the same attributes"
-	attributesChanged 
-		ifTrue: [ attributeRuns addLast: currentAttributes times: aString size.
-			attributesChanged _ false. ]
-		ifFalse: [ attributeRuns repeatLast: aString size  ifEmpty: [ OrderedCollection new ] ].
+	currentRun _ currentRun + aString size.
 	characters nextPutAll: aString.
