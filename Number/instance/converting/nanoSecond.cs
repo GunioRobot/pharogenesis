@@ -1,0 +1,3 @@
+nanoSecond
+
+	^ self sign nanoSeconds
