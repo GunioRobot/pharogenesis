@@ -1,0 +1,2 @@
+isPossessive
+	^ false
