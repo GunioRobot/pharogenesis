@@ -1,0 +1,2 @@
+resourceCacheName
+	^'resourceCache.map'
