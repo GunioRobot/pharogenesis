@@ -1,5 +1,6 @@
-scopeHas: name ifTrue: assocBlock 
-	"If the argument name is a variable known to the receiver, then evaluate 
-	the second argument, assocBlock."
-
-	^superclass scopeHas: name ifTrue: assocBlock
+scopeHas: varName ifTrue: aBlock
+	"Obsolete. Kept around for possible spurios senders which we don't know about"
+	(self bindingOf: varName) ifNotNilDo:[:binding|
+		aBlock value: binding.
+		^true].
+	^false
