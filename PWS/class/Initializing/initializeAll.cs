@@ -1,5 +1,6 @@
 initializeAll
 	| anAuthorizer |
+	(self checkVersion) ifFalse: [^ false].
 	anAuthorizer _ Authorizer new.
 	anAuthorizer realm: 'AuthorizedSpace'.
 "	anAuthorizer mapName: 'JSmith' password: 'hard2guess' to: 'JSmith'.  "
