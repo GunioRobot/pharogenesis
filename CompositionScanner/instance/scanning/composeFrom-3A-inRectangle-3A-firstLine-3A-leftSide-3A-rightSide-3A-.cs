@@ -17,10 +17,12 @@ composeFrom: startIndex inRectangle: lineRectangle
 	runLength _ text runLengthFor: startIndex.
 	runStopIndex _ (lastIndex _ startIndex) + (runLength - 1).
 	line _ (TextLine start: lastIndex stop: 0 internalSpaces: 0 paddingWidth: 0)
-				rectangle: lineRectangle;
-				leftMargin: leftMargin.
-	
+				rectangle: lineRectangle.
 	spaceCount _ 0.
+	self handleIndentation.
+	leftMargin _ destX.
+	line leftMargin: leftMargin.
+
 	done _ false.
 	[done]
 		whileFalse: 
