@@ -27,7 +27,7 @@ remoteCursorTest
 					sock1 sendCommand: self sensorStateString.
 					samplesSent _ samplesSent + 1].
 				sock2 dataAvailable ifTrue: [
-					sock2 getResponse asParagraph displayOn: Display at: 10@10].
+					sock2 getResponse displayOn: Display at: 10@10].
 				done _ samplesSent = samplesToSend]].
 	sock1 destroy.
 	sock2 destroy.
