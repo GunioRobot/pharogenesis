@@ -5,7 +5,7 @@ statementsFor: sourceText varName: varName
 	| s |
 	s _ WriteStream on: ''.
 	s nextPutAll: 'temp'; cr; cr; tab.
-	s nextPutAll: '| rcvr stackPointer successFlag ', varName,' |'; cr.
+	self printTempsAndVar: varName on: s.
 	s nextPutAll: sourceText.
 	^ ((Compiler new parse: s contents in: Object notifying: nil)
-			asTMethodFromClass: Object) statements
+			asTranslationMethodOfClass: self class) statements
