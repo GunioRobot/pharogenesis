@@ -1,0 +1,3 @@
+masterVolume
+
+	^ masterVolume
