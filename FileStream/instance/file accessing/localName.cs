@@ -1,2 +1,3 @@
 localName
-	^ self class localNameFor: self name
+
+	^ FileDirectory localNameFor: self name
