@@ -1,0 +1,3 @@
+sizeof: var
+
+	^ 4
