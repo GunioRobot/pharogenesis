@@ -1,5 +1,9 @@
 parseFirstMarker
 
+	| marker |
 	self next = 16rFF ifFalse: [self error: 'JFIF marker expected'].
-	self next = 16rD8 ifFalse: [self error: 'SOI marker expected'].
+	marker _ self next.
+	marker = 16rD9
+		ifTrue: [^self "halt: 'EOI encountered.'"].
+	marker = 16rD8 ifFalse: [self error: 'SOI marker expected'].
 	self parseStartOfInput.
