@@ -1,0 +1,2 @@
+isExposedField
+	^self attrClass = 'exposedField'
