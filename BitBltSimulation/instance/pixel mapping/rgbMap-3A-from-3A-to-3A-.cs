@@ -15,7 +15,16 @@ rgbMap: sourcePixel from: nBitsIn to: nBitsOut
 				 	+ (srcPix << d bitAnd: mask << nBitsOut)]
 		ifFalse:
 			["Compress to fewer bits by truncation"
-			d = 0 ifTrue: [^ sourcePixel].  "no compression"
+			d = 0 ifTrue:
+				[nBitsIn = 5 ifTrue:
+					["Sometimes called with 16 bits, though pixel is 15,
+					but we must never return more than 15."
+					^ sourcePixel bitAnd: 16r7FFF].
+				nBitsIn = 8 ifTrue:
+					["Sometimes called with 32 bits, though pixel is 24,
+					but we must never return more than 24."
+					^ sourcePixel bitAnd: 16rFFFFFF].
+				^ sourcePixel].  "no compression"
 			sourcePixel = 0 ifTrue: [^ sourcePixel].  "always map 0 (transparent) to 0"
 			d _ nBitsIn - nBitsOut.
 			mask _ (1 << nBitsOut) - 1.  "Transfer mask"
