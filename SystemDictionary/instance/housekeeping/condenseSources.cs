@@ -1,10 +1,20 @@
-condenseSources		"Smalltalk condenseSources"
+condenseSources	
 	"Move all the changes onto a compacted sources file."
-	| f classCount dir |
+	"Smalltalk condenseSources"
+
+	| f classCount dir newVersionString |
+	Utilities fixUpProblemsWithAllCategory.
+	"The above removes any concrete, spurious '-- all --' categories, which mess up the process."
 	dir _ FileDirectory default.
+	newVersionString _ FillInTheBlank request: 'Please designate the version
+for the new source code file...' initialAnswer: SourceFileVersionString.
+	newVersionString ifNil: [^ self].
+	newVersionString = SourceFileVersionString ifTrue:
+		[^ self error: 'The new source file must not be the same as the old.'].
+	SourceFileVersionString _ newVersionString.
 
 	"Write all sources with fileIndex 1"
-	f _ FileStream newFileNamed: self sourcesName , '.temp'.
+	f _ FileStream newFileNamed: SmalltalkImage current sourcesName.
 	f header; timeStamp.
 'Condensing Sources File...'
 	displayProgressAt: Sensor cursorPoint
@@ -17,20 +27,16 @@ condenseSources		"Smalltalk condenseSources"
 	f trailer; close.
 
 	"Make a new empty changes file"
-	self closeSourceFiles.
-	dir rename: self changesName
-		toBe: self changesName , '.old'.
-	(FileStream newFileNamed: self changesName)
+	SmalltalkImage current closeSourceFiles.
+	dir rename: SmalltalkImage current changesName
+		toBe: SmalltalkImage current changesName , '.old'.
+	(FileStream newFileNamed: SmalltalkImage current changesName)
 		header; timeStamp; close.
-	LastQuitLogPosition _ 0.
+	SmalltalkImage current lastQuitLogPosition: 0.
 
-	dir rename: self sourcesName
-		toBe: self sourcesName , '.old'.
-	dir rename: self sourcesName , '.temp'
-		toBe: self sourcesName.
-	self setMacFileInfoOn: self changesName.
-	self setMacFileInfoOn: self sourcesName.
-	self openSourceFiles.
-	SelectionMenu notify: 'Source files have been rewritten!
+	self setMacFileInfoOn: SmalltalkImage current changesName.
+	self setMacFileInfoOn: SmalltalkImage current sourcesName.
+	SmalltalkImage current openSourceFiles.
+	self inform: 'Source files have been rewritten!
 Check that all is well,
 and then save/quit.'
