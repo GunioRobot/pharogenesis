@@ -1,3 +1,4 @@
 font: aTTFontDescription
 	font _ aTTFontDescription.
-	self string: aTTFontDescription fullName.
+	string ifNil: [self string: aTTFontDescription fullName]
+		ifNotNil: [self initializeString].
