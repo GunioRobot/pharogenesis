@@ -1,0 +1,2 @@
+ffiGetLastError
+	^ffiLastError
