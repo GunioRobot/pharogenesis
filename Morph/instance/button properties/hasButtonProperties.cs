@@ -1,0 +1,3 @@
+hasButtonProperties
+
+	^self hasProperty: #universalButtonProperties
