@@ -1,7 +1,6 @@
 explainGlobal: symbol 
 	"Is symbol a global variable?"
-
-	| each pool reply classes |
+	| reply classes |
 	reply _ Smalltalk at: symbol ifAbsent: [^nil].
 	(reply isKindOf: Behavior)
 		ifTrue: [^'"is a global variable.  ' , symbol , ' is a class in category ', reply category,
