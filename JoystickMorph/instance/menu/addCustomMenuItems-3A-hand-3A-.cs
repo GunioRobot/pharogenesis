@@ -6,3 +6,6 @@ addCustomMenuItems: aCustomMenu hand: aHandMorph
 	autoCenter
 		ifTrue: [aCustomMenu add: 'turn auto-center off' action: #toggleAutoCenter]
 		ifFalse: [aCustomMenu add: 'turn auto-center on' action: #toggleAutoCenter].
+	realJoystickIndex
+		ifNil: [aCustomMenu add: 'track real joystick' action: #trackRealJoystick]
+		ifNotNil: [aCustomMenu add: 'stop tracking joystick' action: #stopTrackingJoystick].
