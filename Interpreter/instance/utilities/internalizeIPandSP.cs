@@ -3,3 +3,4 @@ internalizeIPandSP
 
 	localIP _ self cCoerce: instructionPointer to: 'char *'.
 	localSP _ self cCoerce: stackPointer to: 'char *'.
+	localHomeContext _ theHomeContext.
