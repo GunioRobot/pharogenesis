@@ -1,0 +1,2 @@
+changeSetVersionNumbers
+	^ self valueOfFlag: #changeSetVersionNumbers
