@@ -1,0 +1,3 @@
+minesDisplay
+
+	^ minesDisplay
