@@ -1,4 +1,4 @@
 save
 	"Snapshot the database to disk."
-
-	mailDB saveDB.
+	mailDB ifNil: [ ^self ].
+	mailDB saveDB; saveTokens.
