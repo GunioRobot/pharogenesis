@@ -1,0 +1,2 @@
+allSystemEvents
+	^AbstractEvent systemEvents
