@@ -1,0 +1,2 @@
+followPath
+	self costume followPath
