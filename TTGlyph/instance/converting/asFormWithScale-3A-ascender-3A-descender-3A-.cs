@@ -5,3 +5,5 @@ asFormWithScale: scale ascender: ascender descender: descender
 		descender: descender
 		fgColor: Color black
 		bgColor: Color white
+		depth: 8
+		replaceColor: true.
