@@ -9,6 +9,6 @@ tab
 				leftMargin: leftMargin
 				rightMargin: rightMargin].
 	fillBlt == nil ifFalse:
-		[fillBlt destX: oldX destY: destY width: destX - oldX height: height; copyBits].
+		[fillBlt destX: oldX destY: destY width: destX - oldX height: font height; copyBits].
 	lastIndex _ lastIndex + 1.
 	^ false
