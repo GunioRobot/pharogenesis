@@ -1,28 +1,26 @@
 reorderChangeSets
-	"ChangeSorter reorderChangeSets"
 	"Change the order of the change sets to something more convenient:
-		First come the unnumbered changesets that come with the release.
-		Next come the numbered updates.
+		First come the project changesets that come with the release.  These are mostly empty.
+		Next come all numbered updates.
 		Next come all remaining changesets
 	In a ChangeSorter, they will appear in the reversed order."
 
-	| newHead newMid newTail itsName |
+	"ChangeSorter reorderChangeSets"
 
-	self gatherChangeSets.
+	| newHead newMid newTail |
 	newHead _ OrderedCollection new.
 	newMid _ OrderedCollection new.
 	newTail _ OrderedCollection new.
 	AllChangeSets do:
-		[:aSet |
-			itsName _ aSet name.
-			((itsName beginsWith:  'Play With Me') or: [#('New Changes' 'MakeInternal') includes: itsName])
+		[:aChangeSet |
+			(self belongsInProjectsInRelease: aChangeSet)
 				ifTrue:
-					[newHead add: aSet]
+					[newHead add: aChangeSet]
 				ifFalse:
-					[itsName startsWithDigit
+					[(self belongsInNumbered: aChangeSet)
 						ifTrue:
-							[newMid add: aSet]
+							[newMid add: aChangeSet]
 						ifFalse:
-							[newTail add: aSet]]].
+							[newTail add: aChangeSet]]].
 	AllChangeSets _ newHead, newMid, newTail.
 	Smalltalk isMorphic ifTrue: [SystemWindow wakeUpTopWindowUponStartup]
