@@ -1,0 +1,3 @@
+bytesPerEncodedFrame
+
+	^ 33
