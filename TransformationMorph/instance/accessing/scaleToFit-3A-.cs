@@ -1,7 +1,8 @@
 scaleToFit: anExtent
-
-	| scalePoint scaleFactor |
-	scalePoint _ anExtent / submorphs first fullBounds extent.
-	scaleFactor _ (scalePoint x abs min: scalePoint y abs) asFloat.
-	((scaleFactor - 1.0) abs < 0.05) ifTrue: [scaleFactor _ 1.0].
-	self scale: ((scaleFactor min: 8.0) max: 0.05).
+	| scaleFactor |
+	scaleFactor _ self scale * (anExtent r / self fullBounds extent r).
+	scaleFactor _ scaleFactor < 1.0
+		ifTrue: [scaleFactor detentBy: 0.05 atMultiplesOf: 0.25 snap: false]
+		ifFalse: [scaleFactor detentBy: 0.1 atMultiplesOf: 0.5 snap: false].
+	self scale: ((scaleFactor min: 8.0) max: 0.1).
+	self extent: anExtent
