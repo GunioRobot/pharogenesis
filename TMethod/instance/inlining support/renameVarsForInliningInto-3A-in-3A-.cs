@@ -7,7 +7,7 @@ renameVarsForInliningInto: destMethod in: aCodeGen
 	destVars addAll: destMethod args.
 	usedVars _ destVars copy.  "keeps track of names in use"
 	usedVars addAll: args; addAll: locals.
-	varMap _ Dictionary new.
+	varMap _ Dictionary new: 100.
 	args, locals do: [ :v |
 		(destVars includes: v) ifTrue: [
 			newVarName _ self unusedNamePrefixedBy: v avoiding: usedVars.
