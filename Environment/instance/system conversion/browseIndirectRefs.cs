@@ -1,6 +1,9 @@
 browseIndirectRefs  "Smalltalk browseIndirectRefs"
 
 	| cm lits browseList foundOne allClasses n |
+
+	self flag: #mref.		"no senders at the moment. also no Environments at the moment"
+
 	browseList _ OrderedCollection new.
 	allClasses _ OrderedCollection new.
 	Smalltalk allClassesAnywhereDo: [:cls | allClasses addLast: cls].
@@ -17,10 +20,18 @@ browseIndirectRefs  "Smalltalk browseIndirectRefs"
 					lits _ cm literals.
 					foundOne _ false.
 					lits do:
-						[:lit | lit class == Association ifTrue:
-							[(lit value == cl or: [cl scopeHas: lit key ifTrue: [:ignored]])
+						[:lit | lit isVariableBinding ifTrue:
+							[(lit value == cl or: [(cl bindingOf: lit key) notNil])
 								ifFalse: [foundOne _ true]]].
-					foundOne ifTrue: [browseList add: cl name , ' ' , sel]]]]].
+					foundOne ifTrue: [
+						browseList add: (
+							MethodReference new
+								setStandardClass: cl 
+								methodSymbol: sel
+						)
+					]]]]].
 
-	Smalltalk browseMessageList: browseList asSortedCollection
-		name: 'Indirect Global References' autoSelect: nil
+	self systemNavigation 
+		browseMessageList: browseList asSortedCollection
+		name: 'Indirect Global References'
+		autoSelect: nil
