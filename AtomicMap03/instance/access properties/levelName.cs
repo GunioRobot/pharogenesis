@@ -1,0 +1,2 @@
+levelName
+	^ 'Methanol' translated
