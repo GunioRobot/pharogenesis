@@ -1,4 +1,4 @@
 wantsHalo
 	| topOwner |
-	^ (topOwner _ self topRendererOrSelf owner) ~~ nil and:
-		[topOwner wantsHaloFor: self]
+	^(topOwner := self topRendererOrSelf owner) notNil 
+		and: [topOwner wantsHaloFor: self]
