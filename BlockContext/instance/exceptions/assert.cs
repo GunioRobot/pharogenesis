@@ -1,0 +1,2 @@
+assert
+	self assert: self
