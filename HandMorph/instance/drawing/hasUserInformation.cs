@@ -1,3 +1,2 @@
 hasUserInformation
-
-	^self userInitials size > 0 or: [self userPicture notNil]
+	^self userInitials notEmpty or: [self userPicture notNil]
