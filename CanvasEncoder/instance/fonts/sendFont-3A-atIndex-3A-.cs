@@ -1,6 +1,10 @@
 sendFont: aFont atIndex: index
-	"transmit the given fint to the other side"
+	"Transmits the given fint to the other side"
+
+	| code |
+	code _ CanvasEncoder codeFont.
+	aFont isTTCFont ifTrue: [code _ CanvasEncoder codeTTCFont].
 	self sendCommand: {
-		String with: CanvasEncoder codeFont.
+		String with: code.
 		self class encodeInteger: index.
 		self class encodeFont: aFont }.
