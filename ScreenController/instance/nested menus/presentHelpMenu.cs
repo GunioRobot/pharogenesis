@@ -1,0 +1,2 @@
+presentHelpMenu
+	self popUpMenuFor: #helpMenu
