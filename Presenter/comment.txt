@@ -1,13 +1,9 @@
-Optionally associated with a PasteUpMorph, provides presentation services.
+Optionally associated with a PasteUpMorph, provides a local scope for the running of scripts.
 
-Holds control buttons:
-	stopButton stepButton goButton.
+Once more valuable, may be again, but at present occupies primarily a historical niche.
 
-Holds state flags:
-	mouseOverHalosEnabled soundsEnabled fenceEnabled coloredTilesEnabled
+Maintains a playerList cache.
 
-Holds a viewerCache 
+Holds, optionally three 'standard items' -- standardPlayer standardPlayfield standardPalette -- originally providing idiomatic support of ongoing squeak-team internal work, but now extended to more general applicability.
 
-Holds, optionally three 'standard items' originally providing idiomatic support of ongoing squeak-team internal work, but now extended to more general applicability:
-
-   standardPlayer standardPlayfield standardPalette 
+   
