@@ -3,7 +3,7 @@ readFrom: aStream
 	| fontData headerEntry maxProfileEntry nameEntry indexLocEntry charMapEntry glyphEntry horzHeaderEntry horzMetricsEntry kerningEntry glyphOffset cmap numHMetrics indexToLocFormat |
 
 	"Read the raw font byte data"
-	(aStream respondsTo: #binary) ifTrue:[aStream binary].
+	aStream binary.
 	fontData _ aStream contents asByteArray.
 	fontDescription _ TTFontDescription new.
 
