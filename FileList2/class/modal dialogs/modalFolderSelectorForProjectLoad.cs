@@ -8,6 +8,6 @@ modalFolderSelectorForProjectLoad
 	window position: w topLeft + (w extent - window extent // 2).
 	window openInWorld: w.
 	[window world notNil] whileTrue: [
-		window outermostWorldMorph doOneCycleNow.
+		window outermostWorldMorph doOneCycle.
 	].
 	^fileModel getSelectedDirectory withoutListWrapper
