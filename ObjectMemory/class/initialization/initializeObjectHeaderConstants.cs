@@ -16,13 +16,12 @@ initializeObjectHeaderConstants
 	HeaderTypeGC _ 2.
 	GCTopMarker _ 3.  "neither an oop, nor an oop+1, this value signals that we have crawled back up to the top of the marking phase."
 
-	"mask for a free chunk size"
-	FreeSizeMask _ 16r1FFFFFFC.
-
 	"base header word bit fields"
 	HashBits _ 16r1FFE0000.
 	AllButHashBits _ 16rFFFFFFFF - HashBits.
 	HashBitsOffset _ 17.
+	SizeMask _ 16rFC.
+	CompactClassMask _ 16r1F000.
 
 	"masks for root and mark bits"
 	MarkBit _ 16r80000000.
