@@ -6,7 +6,7 @@ getRecentLocatorWithPrompt: aPrompt
 	banners _ OrderedCollection new.
 	positions _ OrderedCollection new.
 	end _ changesFile size.
-	pos _ Smalltalk lastQuitLogPosition.
+	pos _ SmalltalkImage current lastQuitLogPosition.
 	[pos = 0 or: [banners size > 20]] whileFalse:
 		[changesFile position: pos.
 		chunk _ changesFile nextChunk.
