@@ -21,7 +21,7 @@ createOnForm: aForm
 	aView window extent > formView viewport extent
 		ifTrue: [formView borderWidthLeft: 1 right: 1 top: 0 bottom: 1]
 		ifFalse: [formView borderWidthLeft: 0 right: 0 top: 0 bottom: 1].
-	topView _ FormEditorView new.
+	topView _ StandardSystemView new.
 	topView backgroundColor: #veryLightGray.
 	topView addSubView: aView.
 	topView label: 'Form Editor'.
