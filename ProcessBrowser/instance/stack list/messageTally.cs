@@ -5,4 +5,4 @@ messageTally
 	(secs isNil
 			or: [secs isZero])
 		ifTrue: [^ self].
-	MessageTally spyOnProcess: selectedProcess forMilliseconds: secs * 1000
+	[ TimeProfileBrowser spyOnProcess: selectedProcess forMilliseconds: secs * 1000 ] forkAt: selectedProcess priority + 1.
