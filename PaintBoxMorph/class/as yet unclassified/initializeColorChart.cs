@@ -1,3 +1,3 @@
 initializeColorChart
 	"PaintBoxMorph initializeColorChart"
-	ColorChart _ (Color colorPaletteForDepth: 16 extent: 120@89)
+	ColorChart _ (Color colorPaletteForDepth: 32 extent: (360+10)@(180+10))
