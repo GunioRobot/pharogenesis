@@ -1,0 +1,3 @@
+isExecutingBlock
+
+	^ true
