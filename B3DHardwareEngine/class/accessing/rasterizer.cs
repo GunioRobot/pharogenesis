@@ -1,0 +1,2 @@
+rasterizer
+	^B3DHardwareRasterizer
