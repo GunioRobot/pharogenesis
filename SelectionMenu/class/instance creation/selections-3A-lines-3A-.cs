@@ -1,4 +1,7 @@
-selections: aList lines: lineList
-	"Answer an instance of me whose labels and selections are identical"
+selections: selectionsArray lines: linesArray
+	"Answer an instance of me whose labels and selections are identical."
 
-	^ self labelList: aList lines: lineList selections: aList
+	^ self
+		labelList: (selectionsArray collect: [:each | each asString])
+		lines: linesArray
+		selections: selectionsArray
