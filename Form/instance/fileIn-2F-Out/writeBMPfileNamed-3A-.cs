@@ -14,24 +14,24 @@ writeBMPfileNamed: fName  "Display writeBMPfileNamed: 'display'"
  	f _ (FileStream newFileNamed: fileName) binary.
 	"Write the file header"
 	f position: 0.
-	f nextLitteEndianNumber: 2 put: 19778.  "bfType = BM"
-	f nextLitteEndianNumber: 4 put: bfOffBits + biSizeImage.  "Entire file size in bytes"
-	f nextLitteEndianNumber: 4 put: 0.  "bfReserved"
-	f nextLitteEndianNumber: 4 put: bfOffBits.  "Offset of bitmap data from start of hdr (and file)"
+	f nextLittleEndianNumber: 2 put: 19778.  "bfType = BM"
+	f nextLittleEndianNumber: 4 put: bfOffBits + biSizeImage.  "Entire file size in bytes"
+	f nextLittleEndianNumber: 4 put: 0.  "bfReserved"
+	f nextLittleEndianNumber: 4 put: bfOffBits.  "Offset of bitmap data from start of hdr (and file)"
 
 	"Write the bitmap info header"
 	f position: bhSize.
-	f nextLitteEndianNumber: 4 put: biSize.  "info header size in bytes"
-	f nextLitteEndianNumber: 4 put: width.  "biWidth"
-	f nextLitteEndianNumber: 4 put: height.  "biHeight"
-	f nextLitteEndianNumber: 2 put: 1.  "biPlanes"
-	f nextLitteEndianNumber: 2 put: (depth min: 24).  "biBitCount"
-	f nextLitteEndianNumber: 4 put: 0.  "biCompression"
-	f nextLitteEndianNumber: 4 put: biSizeImage.  "size of image section in bytes"
-	f nextLitteEndianNumber: 4 put: 2800.  "biXPelsPerMeter"
-	f nextLitteEndianNumber: 4 put: 2800.  "biYPelsPerMeter"
-	f nextLitteEndianNumber: 4 put: biClrUsed.
-	f nextLitteEndianNumber: 4 put: 0.  "biClrImportant"
+	f nextLittleEndianNumber: 4 put: biSize.  "info header size in bytes"
+	f nextLittleEndianNumber: 4 put: width.  "biWidth"
+	f nextLittleEndianNumber: 4 put: height.  "biHeight"
+	f nextLittleEndianNumber: 2 put: 1.  "biPlanes"
+	f nextLittleEndianNumber: 2 put: (depth min: 24).  "biBitCount"
+	f nextLittleEndianNumber: 4 put: 0.  "biCompression"
+	f nextLittleEndianNumber: 4 put: biSizeImage.  "size of image section in bytes"
+	f nextLittleEndianNumber: 4 put: 2800.  "biXPelsPerMeter"
+	f nextLittleEndianNumber: 4 put: 2800.  "biYPelsPerMeter"
+	f nextLittleEndianNumber: 4 put: biClrUsed.
+	f nextLittleEndianNumber: 4 put: 0.  "biClrImportant"
 	biClrUsed > 0 ifTrue: [
 		"write color map; this works for ColorForms, too"
 		colorValues _ self colormapIfNeededForDepth: 32.
@@ -45,7 +45,7 @@ writeBMPfileNamed: fName  "Display writeBMPfileNamed: 'display'"
 				[:i | bar value: i.
 				data _ (self copy: (0@(height-i) extent: width@1)) bits.
 				depth = 32
-				ifTrue: [1 to: data size do: [:j | f nextLitteEndianNumber: 3 put: (data at: j)].
+				ifTrue: [1 to: data size do: [:j | f nextLittleEndianNumber: 3 put: (data at: j)].
 						1 to: (data size*3)+3//4*4-(data size*3) do: [:j | f nextPut: 0 "pad to 32-bits"]]
 				ifFalse: [1 to: data size do: [:j | f nextNumber: 4 put: (data at: j)]]]].
 	f position = (bfOffBits + biSizeImage) ifFalse: [self halt].
