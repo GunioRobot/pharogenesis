@@ -1,3 +1,3 @@
 font
 
-	^ font
+	^ self listMorph font
