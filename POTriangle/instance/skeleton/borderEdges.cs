@@ -1,0 +1,2 @@
+borderEdges
+	^ self edgesWithTag: #border
