@@ -1,4 +1,4 @@
 scriptEdited
 
 	| anEditor |
-	(anEditor _ self topEditor) ifNotNil: [anEditor markEdited]
+	(anEditor _ self topEditor) ifNotNil: [anEditor recompileScript]
