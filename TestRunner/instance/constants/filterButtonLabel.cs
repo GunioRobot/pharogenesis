@@ -1,0 +1,2 @@
+filterButtonLabel
+	^'Filter'
