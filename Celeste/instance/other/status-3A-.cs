@@ -1,3 +1,2 @@
 status: aStringOrNil
-	status _ aStringOrNil.
-	self changed: #status
+	"should not really be used"
