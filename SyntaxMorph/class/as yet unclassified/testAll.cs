@@ -1,16 +1,17 @@
 testAll
 
-	| source tree total count |
+	| source tree total count systNav|
 "
 SyntaxMorph testAll
 "
+	systNav _ self systemNavigation.
 	count _ total _ 0.
-	Smalltalk allBehaviorsDo: [ :aClass | total _ total + 1].
+	systNav allBehaviorsDo: [ :aClass | total _ total + 1].
 'Testing all behaviors'
 	displayProgressAt: Sensor cursorPoint
 	from: 0 to: total
 	during: [ :bar |
-		Smalltalk allBehaviorsDo: [ :aClass |
+		systNav allBehaviorsDo: [ :aClass |
 			bar value: (count _ count + 1).
 			aClass selectors do: [ :aSelector |
 				source _ (aClass compiledMethodAt: aSelector) getSourceFromFile.
