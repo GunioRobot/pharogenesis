@@ -1,3 +1,2 @@
-name: aName
-	(aName isKindOf: String) ifTrue:
-		[self setNameTo: aName]
+name: aName 
+	(aName isString) ifTrue: [self setNameTo: aName]
