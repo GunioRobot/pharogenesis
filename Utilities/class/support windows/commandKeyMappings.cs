@@ -1,9 +1,8 @@
 commandKeyMappings
-	^ self class firstCommentAt: #commandKeyMappings
+	^ (self class firstCommentAt: #commandKeyMappings) translated
 
 "Lower-case command keys
 (use with Cmd key on Mac and Alt key on other platforms)
-
 a	Select all
 b	Browse it (selection is a class name or cursor is over a class-list or message-list)
 c	Copy selection
@@ -34,19 +33,21 @@ z	Undo
 Note: for Do it, Senders of it, etc., a null selection will be expanded to a word or to the current line in an attempt to do what you want.  Also note that Senders/Implementors of it will find the outermost keyword selector in a large selection, as when you have selected a bracketed expression or an entire line.  Finally note that the same cmd-m and cmd-n (and cmd-v for versions) work in the message pane of most browsers.
 
 Upper-case command keys
-(use with Shift-Cmd, or Ctrl on Mac
- or Shift-Alt on other platforms; sometimes Ctrl works too)
-
+	(use with Shift-Cmd, or Ctrl on Mac
+	or Shift-Alt on other platforms; sometimes Ctrl works too)
 A	Advance argument
 B	Browse it in this same browser (in System browsers only)
 C	Compare argument to clipboard
 D	Duplicate
 E	Method strings containing it
 F	Insert 'ifFalse:'
+G	fileIn from it (a file name)
+H	cursor TopHome:
 I	Inspect via Object Explorer
 J	Again many (apply the previous text command repeatedly until the end of the text)
 K	Set style
 L	Outdent (move selection one tab-stop left)
+M	Select current type-in
 N	References to it (selection is a class name, or cursor is over a class-list or message-list)
 O	Open single-message browser (in message lists)
 P	Make project link
@@ -61,49 +62,43 @@ Y	Force selection to uppercase
 Z	Capitalize all words in selection
 
 Other special keys
-
 Backspace	Backward delete character
 Del			Forward delete character
-Shift-Bcksp	Backward delete word
+Shift-Bksp	Backward delete word
 Shift-Del	Forward delete word
-Esc			Select current type-in
-
+Esc			Pop up the Desktop Menu
 \			Send top window to back
 
 Cursor keys
 left, right,
-up, or
-down		Move cursor left, right, up or down
-Ctrl+Left	Move cursor left one word
-Ctrl+Right	Move cursor right one word
+up, down	Move cursor left, right, up or down
+Ctrl-left		Move cursor left one word
+Ctrl-right	Move cursor right one word
 Home		Move cursor to begin of line or begin of text
 End			Move cursor to end of line or end of text
-PgUp, or
-Ctrl+Up		Move cursor up one page
-PgDown, or
-Ctrl+Down	Move cursor down one page
+PgUp, Ctrl-up	Move cursor up one page
+PgDown, Ctrl-Dn	Move cursor down one page
 
-Note all these keys can be used together with Shift to define or enlarge the selection. You cannot however shrink that selection again, which is, compared to other systems, still a limitation aka bug.
+Note all these keys can be used together with Shift to define or enlarge the selection. You cannot however shrink that selection again, as in some other systems.
 
-Other Cmd-key combinations (does not work on all platforms)
-
+Other Cmd-key combinations (not available on all platforms)
 Return		Insert return followed by as many tabs as the previous line
 			(with a further adjustment for additional brackets in that line)
 Space		Select the current word as with double clicking
 
 Enclose the selection in a kind of bracket.  Each is a toggle.
-(does not work on all platforms)
+	(not available on all platforms)
 Ctrl-(	Enclose within ( and ), or remove enclosing ( and )
 Ctrl-[	Enclose within [ and ], or remove enclosing [ and ]
 Crtl-{	Enclose within { and }, or remove enclosing { and }
 Ctrl-<	Enclose within < and >, or remove enclosing < and >
 Ctrl-'	Enclose within ' and ', or remove enclosing ' and '
 Ctrl-""	Enclose within "" and "", or remove enclosing "" and ""
+Note also that you can double-click just inside any of the above delimiters,
+or at the beginning or end of a line, to select the text enclosed.
 
-Note also that you can double-click just inside any of the above delimiters (or at the beginning or end of a line) to select the text enclosed.
-
-Text Emphasis...
-(does not work on all platforms)
+Text Emphasis
+	(not available on all platforms)
 Cmd-1	10 point font
 Cmd-2	12 point font
 Cmd-3	18 point font
