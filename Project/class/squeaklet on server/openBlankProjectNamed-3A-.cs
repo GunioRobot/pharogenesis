@@ -12,6 +12,6 @@ openBlankProjectNamed: projName
 	).
 	CurrentProjectRefactoring currentBeParentTo: proj.
 	projViewer _ (CurrentProject findProjectView: projName) ifNil: [^proj].
-	(projViewer owner isKindOf: SystemWindow) ifTrue: [
+	(projViewer owner isSystemWindow) ifTrue: [
 			projViewer owner model: proj].
 	^ projViewer project: proj
