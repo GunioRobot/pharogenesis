@@ -1,2 +1,3 @@
-isPartsDonor: aBool
-	self partRepresented isPartsDonor: aBool
+isPartsDonor: aBoolean
+	"change the receiver's isPartDonor property"
+	self partRepresented isPartsDonor: aBoolean
