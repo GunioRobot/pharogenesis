@@ -1,0 +1,9 @@
+An SMDocument refers typically to a piece of digital information accessible through a URL. :-)
+This means it can be downloaded and cached.
+
+The instvar description describes the document and instvar author references the name and/or email of the original author.
+
+SMDocument has two subclasses - SMPackage and SMResource. Since SqueakMap is primarily meant for
+keeping track of installable source packages of Squeak software, a specific subclass handles those.
+
+The main difference is that an SMPackage has SMPackageReleases - versions of the package. An SMResource has no versions and is always referred to as it is *now*, but it does have a field for keeping track of the current version name.
