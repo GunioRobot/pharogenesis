@@ -1,7 +1,7 @@
 printStreaksOn: aStream 
-	aStream nextPutAll: 'Streaks: ';
-	 tab;
-	 tab.
+	aStream nextPutAll: 'Streaks: ' translated;
+		 tab;
+		 tab.
 	self
 		print: streakWins
 		type: #wins
