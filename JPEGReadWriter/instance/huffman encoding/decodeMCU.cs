@@ -1,13 +1,15 @@
 decodeMCU
 
-	| comp |
+	| comp ci |
 	(restartInterval ~= 0 and: [restartsToGo = 0]) ifTrue: [self processRestart].
-	mcuMembership withIndexDo:
-		[:ci :i |
+	1 to: mcuMembership size do:[:i|
+		ci _ mcuMembership at: i.
 		comp _ currentComponents at: ci.
 		self
-			decodeBlockInto: (mcuSampleBuffer at: i)
+			primDecodeBlockInto: (mcuSampleBuffer at: i)
 			component: comp
 			dcTable: (hDCTable at: comp dcTableIndex)
-			acTable: (hACTable at: comp acTableIndex)].
+			acTable: (hACTable at: comp acTableIndex)
+			stream: stream.
+	].
 	restartsToGo _ restartsToGo - 1.
