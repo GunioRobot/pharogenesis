@@ -1,0 +1,2 @@
+allowsGestureStart: evt
+	^false
