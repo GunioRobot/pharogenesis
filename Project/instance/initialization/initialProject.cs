@@ -1,3 +1,3 @@
 initialProject
 	self saveState.
-	projectHolder _ self
+	parentProject _ self
