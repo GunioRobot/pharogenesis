@@ -6,7 +6,7 @@ systemCategoryListIndex: anInteger
 	classListIndex _ 0.
 	messageCategoryListIndex _ 0.
 	messageListIndex _ 0.
-	editSelection _ anInteger = 0 ifTrue: [#none] ifFalse: [#newClass].
+	self editSelection: ( anInteger = 0 ifTrue: [#none] ifFalse: [#newClass]).
 	metaClassIndicated _ false.
 	self setClassOrganizer.
 	contents _ nil.
@@ -15,4 +15,5 @@ systemCategoryListIndex: anInteger
 	self changed: #classList.
 	self changed: #messageCategoryList.
 	self changed: #messageList.
-	self contentsChanged.
+	self changed: #relabel.
+	self contentsChanged
