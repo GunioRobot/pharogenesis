@@ -1,0 +1,2 @@
+isEmpty
+	^stop = 0
