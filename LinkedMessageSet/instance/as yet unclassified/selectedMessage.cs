@@ -3,11 +3,16 @@ selectedMessage
 
 	| source |
 	self setClassAndSelectorIn: [:class :selector | 
-		selector first isUppercase ifFalse: [
-			source _ class sourceMethodAt: selector.
+		selector first isUppercase ifFalse:
+			[source _ class sourceMethodAt: selector.
+			currentCompiledMethod _ class compiledMethodAt: selector ifAbsent: [nil]..
 			^ source asText makeSelectorBoldIn: self selectedClassOrMetaClass].
 		selector = #Comment ifTrue: [^ class comment].
 		selector = #Definition ifTrue: [^ class definition].
 		selector = #Hierarchy ifTrue: [^ class printHierarchy].
 		source _ class sourceMethodAt: selector.
+		currentCompiledMethod _ class compiledMethodAt: selector ifAbsent: [nil].
+		Preferences browseWithPrettyPrint ifTrue:
+			[source _ class compilerClass new
+				format: source in: class notifying: nil decorated: Preferences colorWhenPrettyPrinting].
 		^ source asText makeSelectorBoldIn: self selectedClassOrMetaClass]
