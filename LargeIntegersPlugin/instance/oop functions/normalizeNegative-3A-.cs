@@ -1,6 +1,6 @@
 normalizeNegative: aLargeNegativeInteger 
-	"Check for leading zeroes and return shortened copy if so"
-	"First establish len = significant length"
+	"Check for leading zeroes and return shortened copy if so."
+	"First establish len = significant length."
 	| sLen val len oldLen minVal |
 	len _ oldLen _ self digitLength: aLargeNegativeInteger.
 	[len ~= 0 and: [(self unsafeByteOf: aLargeNegativeInteger at: len)
