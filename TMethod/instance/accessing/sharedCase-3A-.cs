@@ -1,0 +1,2 @@
+sharedCase: aNumber
+	sharedCase := aNumber.
