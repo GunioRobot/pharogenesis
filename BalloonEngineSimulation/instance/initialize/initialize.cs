@@ -1,0 +1,2 @@
+initialize
+	doProfileStats _ false.
