@@ -3,5 +3,6 @@ addDependent: anObject
 
 	| dependents |
 	dependents _ self dependents.
-	dependents do: [:o | o == anObject ifTrue: [^ self]].  "anObject is already a dependent"
-	DependentsFields at: self put: (dependents copyWith: anObject).
+	(dependents includes: anObject) ifFalse:
+		[self myDependents: (dependents copyWith: anObject)].
+	^ anObject
