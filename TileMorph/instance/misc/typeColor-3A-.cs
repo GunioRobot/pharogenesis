@@ -1,4 +1,6 @@
 typeColor: aColor
-	borderColor _ aColor.
+	"Set the receiver's typeColor"
+
+	borderColor _ ScriptingSystem standardTileBorderColor.
 	typeColor _ aColor.
-	color _ typeColor
+	color _ ScriptingSystem uniformTileInteriorColor 
