@@ -12,7 +12,7 @@ signFilesFrom: sourceNames to: destNames key: privateKey
 		key: DOLPrivateKey."
 	| dsa |
 	dsa _ DigitalSignatureAlgorithm new.
-	dsa initRandom: (dsa randomBitsFromSoundInput: 512).
+	dsa initRandomNonInteractively.
 	'Signing files...' displayProgressAt: Sensor cursorPoint
 		from: 1 to: sourceNames size during:[:bar|
 			1 to: sourceNames size do:[:i|
