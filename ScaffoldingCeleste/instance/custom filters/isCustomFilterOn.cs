@@ -1,0 +1,2 @@
+isCustomFilterOn
+	^codeFilter notNil
