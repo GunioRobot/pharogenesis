@@ -3,5 +3,5 @@ adoptMessageInCurrentChangeset
 
 	self setClassAndSelectorIn: [:cl :sel |
 		cl ifNotNil:
-			[Smalltalk changes adoptSelector: sel forClass: cl.
+			[ChangeSet current adoptSelector: sel forClass: cl.
 			self changed: #annotation]]
