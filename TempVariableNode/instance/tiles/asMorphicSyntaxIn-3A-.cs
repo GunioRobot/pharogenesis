@@ -1,3 +1,3 @@
 asMorphicSyntaxIn: parent
 
-	^ parent addToken: name type: #tempVariable on: self
+	^ parent addToken: self name type: #tempVariable on: self
