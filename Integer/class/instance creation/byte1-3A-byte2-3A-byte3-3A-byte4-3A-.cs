@@ -2,7 +2,7 @@ byte1: byte1 byte2: byte2 byte3: byte3 byte4: byte4
 	"Depending on high-order byte copy directly into a LargeInteger,
 	or build up a SmallInteger by shifting"
 	| value |
-	byte4 < 16r20 ifTrue:
+	byte4 < 16r40 ifTrue:
 		[^ (byte4 bitShift: 24)
 		 + (byte3 bitShift: 16)
 		 + (byte2 bitShift: 8)
