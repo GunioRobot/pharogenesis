@@ -1,0 +1,2 @@
+maxMessageCount
+	^ 200
