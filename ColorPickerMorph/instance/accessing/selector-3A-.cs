@@ -1,3 +1,4 @@
 selector: aSymbol
 
-	selector _ aSymbol.
+        selector _ aSymbol.
+        self updateSelectorDisplay
