@@ -1,0 +1,3 @@
+second
+
+	^ self sign seconds
