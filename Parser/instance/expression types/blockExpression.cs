@@ -11,4 +11,5 @@ blockExpression
 		ifTrue: [^self expected: 'Vertical bar'].
 	self statements: argNodes innerBlock: true.
 	(self match: #rightBracket)
-		ifFalse: [^self expected: 'Period or right bracket']
+		ifFalse: [^self expected: 'Period or right bracket'].
+	argNodes do: [:arg | arg scope: -1] "Scope no longer active"
