@@ -1,0 +1,3 @@
+lineGrid
+
+	^ fontArray first lineGrid.
