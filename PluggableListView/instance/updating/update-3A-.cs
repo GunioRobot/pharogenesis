@@ -7,5 +7,3 @@ update: aSymbol
 		^self].
 	aSymbol == getSelectionSelector ifTrue:
 		[^ self moveSelectionBox: self getCurrentSelectionIndex].
-	aSymbol == #closeScrollBar ifTrue:
-		[^ controller controlTerminate].
