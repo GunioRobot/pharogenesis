@@ -29,7 +29,7 @@ initialize
 		 driver. Otherwise, return 0."
 
 	CanSetClock _ 5.
-		"Read-only. Return 1 if this MIDI driver’s clock can be set
+		"Read-only. Return 1 if this MIDI driver's clock can be set
 		 via an extended primitive, 0 if not."
 
 	CanUseSemaphore _ 6.
