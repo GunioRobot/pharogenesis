@@ -1,8 +1,8 @@
 createViews
 	"Create a pluggable version of all the views for a Browser, including views and controllers."
-	| hasSingleFile width topView packageListView classListView switchView messageCategoryListView messageListView browserCodeView infoView |
 
-	showDiffs _ true.
+	| hasSingleFile width topView packageListView classListView switchView messageCategoryListView messageListView browserCodeView infoView |
+	contentsSymbol _ self defaultDiffsSymbol.  "#showDiffs or #prettyDiffs"
 	Smalltalk isMorphic ifTrue: [^ self openAsMorph].
 
 	(hasSingleFile _ self packages size = 1)
@@ -66,7 +66,7 @@ createViews
 	messageListView window: (0 @ 0 extent: 50 @ 70).
 	topView addSubView: messageListView toRightOf: messageCategoryListView.
 
-	browserCodeView _ PluggableTextView on: self 
+	browserCodeView _ MvcTextEditor default on: self 
 			text: #contents accept: #contents:notifying:
 			readSelection: #contentsSelection menu: #codePaneMenu:shifted:.
 	browserCodeView window: (0@0 extent: width@110).
