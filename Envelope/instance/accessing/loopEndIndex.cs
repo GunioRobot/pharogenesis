@@ -1,0 +1,3 @@
+loopEndIndex
+
+	^ loopEndIndex
