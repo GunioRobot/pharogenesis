@@ -1,0 +1,2 @@
+initializedInstance
+	^ false
