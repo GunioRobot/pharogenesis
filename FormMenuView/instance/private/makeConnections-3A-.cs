@@ -12,5 +12,5 @@ makeConnections: indexInterval
 		aSwitchView _ self makeViews: buttonCache for: button.
 		aSwitchView
 			borderWidthLeft: 1 right: 0 top: 1 bottom: 1;
-			actionSelector: #turnOn].
+			action: #turnOn].
 	aSwitchView borderWidth: 1.
