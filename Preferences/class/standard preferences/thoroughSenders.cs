@@ -1,0 +1,2 @@
+thoroughSenders
+	^ self valueOfFlag: #thoroughSenders
