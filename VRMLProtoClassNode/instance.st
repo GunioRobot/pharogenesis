@@ -1,6 +1,6 @@
 VRMLUnhandledNode
 	subclass: #VRMLProtoClassNode
-	instanceVariableNames: 'protoSpec protoValues '
+	instanceVariableNames: 'protoSpec protoValues'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon3D-VRML BaseNodes'
+	category: 'Balloon3D-VRML-BaseNodes'
