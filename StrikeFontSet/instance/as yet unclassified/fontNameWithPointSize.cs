@@ -1,0 +1,3 @@
+fontNameWithPointSize
+
+	^ fontArray first fontNameWithPointSize.
