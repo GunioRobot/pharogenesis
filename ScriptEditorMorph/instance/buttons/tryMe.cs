@@ -1,2 +1,4 @@
 tryMe
-	self playerScripted perform: scriptName
+
+	self playerScripted perform: scriptName.
+
