@@ -1,0 +1,3 @@
+parseScriptField: aVRMLStream
+	"Dummy"
+	^nil
