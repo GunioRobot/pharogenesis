@@ -15,7 +15,7 @@ showFormsDictAcrossTopOfScreen: formDict
 			h _ box height.
 			keyString _ (assoc key isKindOf: String) ifTrue: [assoc key] ifFalse: [assoc key printString].
 			keyString displayAt: (position @ (ceiling + h)).
-			labelWidth _ keyString asDisplayText boundingBox width.
+			labelWidth _ TextStyle default defaultFont widthOfString: keyString.
 			maxHeight _ maxHeight max: h.
 			position _ position + (box width max: labelWidth) + 5.
 			position > (screenBox right - 100) ifTrue:
