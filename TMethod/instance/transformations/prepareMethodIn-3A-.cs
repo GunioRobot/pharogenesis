@@ -13,7 +13,7 @@ prepareMethodIn: aCodeGen
 			stmts _ node statements.
 			1 to: stmts size do: [ :i |
 				stmt _ stmts at: i.
-				(stmt isSend and: [stmt selector = #dispatchOn:in:]) ifTrue: [
+				(stmt isSend and: [CaseStatements includes: stmt selector]) ifTrue: [
 					stmts at: i put: (self buildCaseStmt: stmt).
 				].
 			].
