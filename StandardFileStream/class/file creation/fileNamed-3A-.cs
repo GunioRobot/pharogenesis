@@ -1,6 +1,4 @@
-fileNamed: aFileName 
- 	"Open a file in the default directory (or in the directory contained
-	in the input arg); by default, it's available for writing.  2/12/96 sw
-	Prior contents will be overwritten, but not truncated on close.  3/18 di"
+fileNamed: fileName
+	"Open a file with the given name for reading and writing. If the name has no directory part, then the file will be created in the default directory. If the file already exists, its prior contents may be modified or replaced, but the file will not be truncated on close."
 
-	^ self new open: aFileName forWrite: true
+	^ self new open: (self fullName: fileName) forWrite: true
