@@ -5,7 +5,8 @@ isLiteralSymbol: aSymbol
 	| i ascii type |
 	i _ aSymbol size.
 	i = 0 ifTrue: [^ false].
-	i = 1 ifTrue: [('$''"()' includes: (aSymbol at: 1)) ifTrue: [^ false] ifFalse: [^ true]].
+	i = 1 ifTrue: [('$''"()#0123456789' includes: (aSymbol at: 1))
+		ifTrue: [^ false] ifFalse: [^ true]].
 	ascii _ (aSymbol at: 1) asciiValue.
 	"TypeTable should have been origined at 0 rather than 1 ..."
 	ascii = 0 ifTrue: [^ false].
