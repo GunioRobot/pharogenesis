@@ -3,12 +3,18 @@ colorPaletteForDepth: depth extent: chartExtent
 	"Note: It is slow to build this palette, so it should be cached for quick access."
 	"(Color colorPaletteForDepth: 16 extent: 190@60) display"
 
-	| basicHue x y c startHue palette transHt vSteps transCaption grayWidth hSteps |
+	| basicHue x y c startHue palette transHt vSteps transCaption grayWidth hSteps formTranslator noColorForm |
+	formTranslator := NaturalLanguageFormTranslator localeID: Locale current localeID.
+	noColorForm := formTranslator translate: 'no color'.
+	noColorForm
+		ifNil: [noColorForm := Form
+						extent: 34 @ 9
+						depth: 1
+						fromArray: #(0 0 256 0 256 0 3808663859 2147483648 2491688266 2147483648 2491688266 0 2491688266 0 2466486578 0 0 0 )
+						offset: 0 @ 0].
 	palette _ Form extent: chartExtent depth: depth.
 	transCaption _ "(DisplayText text: 'no color' asText textStyle: (TextConstants at: #ComicPlain)) form storeString"
-		(Form extent: 34@9 depth: 1
-			fromArray: #(0 0 256 0 256 0 3808663859 2147483648 2491688266 2147483648 2491688266 0 2491688266 0 2466486578 0 0 0)
-			offset: 0@0).
+		noColorForm.
 	transHt _ transCaption height.
 	palette fillWhite: (0@0 extent: palette width@transHt).
 	palette fillBlack: (0@transHt extent: palette width@1).
