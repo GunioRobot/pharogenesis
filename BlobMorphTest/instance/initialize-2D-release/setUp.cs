@@ -1,0 +1,2 @@
+setUp
+	morph := BlobMorph new.
