@@ -3,7 +3,7 @@ fileExists: filenameOrPath
 	"FileDirectory default fileExists: Smalltalk sourcesName"
 
 	| fName dir |
-	FileDirectory splitName: filenameOrPath to:
+	DirectoryClass splitName: filenameOrPath to:
 		[:filePath :name |
 			fName _ name.
 			filePath isEmpty
