@@ -19,7 +19,10 @@ declareCVarsIn: aCCodeGenerator
 		declareC: 'int (*compilerHooks[', (CompilerHooksSize + 1) printString, '])()'.
 	aCCodeGenerator
 		var: #interpreterVersion
-		declareC: 'const char *interpreterVersion = "', Smalltalk version, ' [', Smalltalk lastUpdateString,']"'.
+		declareC: 'const char *interpreterVersion = "', Smalltalk datedVersion, ' [', Smalltalk lastUpdateString,']"'.
+	aCCodeGenerator
+		var: #primitiveTable
+		declareC: 'fptr const primitiveTable[] = ', self primitiveTableString.
 	aCCodeGenerator
 		var: #obsoleteIndexedPrimitiveTable
 		declareC: 'char* obsoleteIndexedPrimitiveTable[][3] = ', self obsoleteIndexedPrimitiveTableString.
