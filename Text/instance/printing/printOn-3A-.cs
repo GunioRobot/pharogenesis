@@ -1,4 +1,3 @@
 printOn: aStream
-
-	aStream nextPutAll: 'Text for '.
-	string printOn: aStream
+	self printNameOn: aStream.
+	aStream nextPutAll: ' for '; print: string
