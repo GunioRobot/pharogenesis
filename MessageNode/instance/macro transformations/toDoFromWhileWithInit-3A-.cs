@@ -16,9 +16,7 @@ toDoFromWhileWithInit: initStmt
 	((test isMemberOf: MessageNode)
 		and: [(limit _ test toDoLimit: variable) notNil])
 		ifFalse: [^ nil].
-	toDoBlock _ BlockNode new
-			statements: body allButLast
-			returns: false.
+	toDoBlock _ BlockNode statements: body allButLast returns: false.
 	toDoBlock arguments: (Array with: variable).
 	^ MessageNode new
 		receiver: initStmt value
