@@ -1,0 +1,3 @@
+isProtocolKnown
+
+	^self itemCategory notNil
