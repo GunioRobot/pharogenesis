@@ -4,10 +4,12 @@ uniqueNameFrom: aString
 	| index aName |
 	aName _ self fixNameFrom: aString.
 	(myNamespace includesKey: aName)
-			ifFalse: [ ^ aName ]
-			ifTrue: [
-						index _ 2.
-						[ myNamespace includesKey: (aName , (index asString)) ]
-							whileTrue: [ index _ index + 1 ].
-						^ aName , (index asString).
-					].
+			ifFalse: [ ^ aName ].
+	aName endsWithDigit ifTrue:[
+		index _ aName findLast:[:ch| ch isDigit].
+		aName _ (aName copyFrom: 1 to: index-1).
+	].
+	index _ 1.
+	[ myNamespace includesKey: (aName , (index asString)) ]
+		whileTrue: [ index _ index + 1 ].
+	^ aName , (index asString).
