@@ -1,0 +1,1 @@
+The values of pool and global variables (traditionally Associations) are fetched by sending #poolValue and set by sending #setInPool: which send #poolValue:.  These sends are automatically added in by the Compiler (see PoolVarNode {code generation}).  So any object can act like a pool variable.  This class allows getter and setter blocks for poolValue and poolValue:.
