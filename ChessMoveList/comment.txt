@@ -1,0 +1,1 @@
+An optimized representation of a set of moves - mainly there to avoid excessive allocation (and garbage collections) in a few critical places.
