@@ -4,6 +4,6 @@ goToCard
 	| reply index |
 	reply _ FillInTheBlank request: 'Which card number? ' initialAnswer: '1'.
 	reply isEmptyOrNil ifTrue: [^ self].
-	((index _ reply asNumber) > 0 and: [index <= cards size])
+	((index _ reply asNumber) > 0 and: [index <= self privateCards size])
 		ifFalse: [^ self inform: 'no such card'].
-	self goToCard: (cards at: index)
+	self goToCard: (self privateCards at: index)
