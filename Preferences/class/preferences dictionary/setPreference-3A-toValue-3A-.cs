@@ -1,3 +1,5 @@
-setPreference: preferenceNameSymbol toValue: aBoolean
-
-	FlagDictionary at: preferenceNameSymbol put: aBoolean.
+setPreference: prefSymbol toValue: aBoolean
+	(FlagDictionary at: prefSymbol ifAbsent: [nil]) == aBoolean
+		ifFalse:
+			[FlagDictionary at: prefSymbol put: aBoolean.
+			self noteThatFlag: prefSymbol justChangedTo: aBoolean]
