@@ -7,7 +7,7 @@ composeAll
 	maximumRightX _ 0.
 	text size = 0
 		ifTrue:
-			[compositionRectangle height: 0.
+			[compositionRectangle _ compositionRectangle withHeight: 0.
 			^maximumRightX].
 	startIndex _ lineIndex _ 1.
 	stopIndex _ text size.
@@ -22,4 +22,4 @@ composeAll
 		 lineIndex _ lineIndex + 1].
 	self updateCompositionHeight.
 	self trimLinesTo: lineIndex - 1.
-	^maximumRightX
+	^ maximumRightX
