@@ -1,2 +1,2 @@
 moduleName
-	^'Squeak3DX'
+	^'B3DAcceleratorPlugin'
