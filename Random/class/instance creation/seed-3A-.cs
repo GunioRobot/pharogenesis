@@ -1,2 +1,2 @@
-seed: anInteger
-	^ self new initialize seed: anInteger
+seed: anInteger 
+	^self new seed: anInteger
