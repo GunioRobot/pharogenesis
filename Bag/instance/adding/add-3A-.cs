@@ -1,4 +1,4 @@
 add: newObject 
-	"Refer to the comment in Collection|add:."
+	"Include newObject as one of the receiver's elements. Answer newObject."
 
-	^self add: newObject withOccurrences: 1
+	^ self add: newObject withOccurrences: 1
