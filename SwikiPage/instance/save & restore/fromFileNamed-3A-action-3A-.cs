@@ -8,4 +8,3 @@ fromFileNamed: filePath action: aSwikiAction
 	coreID _ theFile localName.
 	url _ aSwikiAction name, '.', coreID.
 	self scanFrom: theFile.	"name, date"
-	address _ ''.		"should be page that points at it, but how get that?"
