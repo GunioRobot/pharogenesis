@@ -1,6 +1,6 @@
 hash
-	| hash |
+	"#hash is implemented, because #= is implemented"
 
-	hash _ 0.
-	1 to: self size do: [:i | hash _ (hash + (self at: i)) hashMultiply].
-	^hash
+	^self class
+		hashBytes: self
+		startingWith: self species hash
