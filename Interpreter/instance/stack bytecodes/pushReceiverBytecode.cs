@@ -1,0 +1,3 @@
+pushReceiverBytecode
+
+	self internalPush: receiver.
