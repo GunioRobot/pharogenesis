@@ -1,0 +1,2 @@
+sharedCase
+	^sharedCase
