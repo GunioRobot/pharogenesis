@@ -4,7 +4,7 @@ spyOn: aBlock toFileNamed: fileName
 
 	| file value node |
 	node _ self new.
-	value _ node spyEvery: 16 on: aBlock.
+	value _ node spyEvery: self defaultPollPeriod on: aBlock.
 	file _ FileStream newFileNamed: fileName.
 	node report: file; close.
 	file close.
