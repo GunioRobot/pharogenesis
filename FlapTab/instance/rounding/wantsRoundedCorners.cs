@@ -1,2 +1,2 @@
 wantsRoundedCorners
-	^self isCurrentlyTextual
+	^self isCurrentlyTextual or:[super wantsRoundedCorners]
