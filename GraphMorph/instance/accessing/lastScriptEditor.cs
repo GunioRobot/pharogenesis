@@ -1,0 +1,3 @@
+lastScriptEditor
+
+	^ lastScriptEditor
