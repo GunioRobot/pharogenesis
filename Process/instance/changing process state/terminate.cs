@@ -1,20 +1,27 @@
 terminate 
-	"Stop the process that the receiver represents forever."
+	"Stop the process that the receiver represents forever.  Unwind to execute pending ensure:/ifCurtailed: blocks before terminating."
 
-	| context |
-	Processor activeProcess == self
-		ifTrue: 
-			[thisContext unwindTo: nil.
-			thisContext sender == nil ifFalse:
-				[thisContext sender release].
-			thisContext removeSelf suspend]
-		ifFalse: 
-			[myList == nil
-				ifFalse: 
-					[myList remove: self ifAbsent: [].
-					myList _ nil].
-			context _ suspendedContext.
-			suspendedContext _ nil.
-			context == nil ifFalse: [context unwindTo: nil].
-			(context ~~ nil and: [context sender ~~ nil])
-				ifTrue: [context sender release]]
+	| ctxt unwindBlock |
+	self isActiveProcess ifTrue: [
+		ctxt _ thisContext.
+		[	ctxt _ ctxt findNextUnwindContextUpTo: nil.
+			ctxt isNil
+		] whileFalse: [
+			unwindBlock _ ctxt tempAt: 1.
+			unwindBlock ifNotNil: [
+				ctxt tempAt: 1 put: nil.
+				thisContext terminateTo: ctxt.
+				unwindBlock value].
+		].
+		thisContext terminateTo: nil.
+		myList _ nil.
+		self primitiveSuspend.
+	] ifFalse: [
+		myList ifNotNil: [
+			myList remove: self ifAbsent: [].
+			myList _ nil].
+		suspendedContext ifNotNil: [
+			ctxt _ self popTo: suspendedContext bottomContext.
+			ctxt == suspendedContext bottomContext ifFalse: [
+				self debug: ctxt title: 'Unwind error during termination']].
+	].
