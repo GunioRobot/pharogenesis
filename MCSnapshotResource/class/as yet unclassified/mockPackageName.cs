@@ -1,0 +1,2 @@
+mockPackageName
+	^ MCMockPackageInfo new packageName
