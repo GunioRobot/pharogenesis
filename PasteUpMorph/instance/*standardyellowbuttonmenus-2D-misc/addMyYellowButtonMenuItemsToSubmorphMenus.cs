@@ -1,0 +1,2 @@
+addMyYellowButtonMenuItemsToSubmorphMenus
+	^self isPartsBin
