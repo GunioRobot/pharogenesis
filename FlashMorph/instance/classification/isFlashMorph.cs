@@ -1,0 +1,2 @@
+isFlashMorph
+	^true
