@@ -1,8 +1,8 @@
 notify: string at: location
 	requestor isNil
 		ifTrue: [(encoder == self or: [encoder isNil]) ifTrue: [^ self fail  "failure setting up syntax error"].
-				SyntaxError 
-					errorInClass: encoder classEncoding
+				SyntaxErrorNotification
+					inClass: encoder classEncoding
 					withCode: 
 						(source contents
 							copyReplaceFrom: location
