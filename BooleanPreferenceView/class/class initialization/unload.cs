@@ -1,0 +1,2 @@
+unload
+	PreferenceViewRegistry ofBooleanPreferences unregister: self.
