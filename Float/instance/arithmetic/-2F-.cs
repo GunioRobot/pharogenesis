@@ -6,4 +6,4 @@
 	<primitive: 50>
 	aNumber = 0
 		ifTrue: [self error: 'attempt to divide by zero']
-		ifFalse: [^self retry: #/ coercing: aNumber]
+		ifFalse: [^ (aNumber adaptFloat: self) / aNumber adaptToFloat]
