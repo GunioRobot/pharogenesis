@@ -1,0 +1,2 @@
+menuLineUpperColor
+	^ Parameters at: #menuLineUpperColor
