@@ -4,7 +4,7 @@ spyOnProcess: aProcess forMilliseconds: msecDuration toFileNamed: fileName
 	| file node |
 	node _ self new.
 	node
-		spyEvery: 10
+		spyEvery: self defaultPollPeriod
 		onProcess: aProcess
 		forMilliseconds: msecDuration.
 	file _ FileStream fileNamed: fileName.
