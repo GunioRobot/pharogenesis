@@ -2,8 +2,8 @@ thumbnailOrNil
 	"Answer the thumbnail Form for the page this morph represents. Answer nil if no thumbnail is available."
 
 	| thum |
-	page ifNil: [page _ SqueakPageCache atURL: url].
-	(thum _ page thumbnail) ifNil: [^ nil].
-	^ (thum isKindOf: Form) 
+	page ifNil: [page := SqueakPageCache atURL: url].
+	(thum := page thumbnail) ifNil: [^nil].
+	^(thum isForm) 
 		ifTrue: [thum]
-		ifFalse: [thum form]	"a BookPageThumbnailMorph"
+		ifFalse: [thum form	"a BookPageThumbnailMorph"]
