@@ -1,0 +1,2 @@
+isAccented
+	^ self accent notNil
