@@ -1,13 +1,15 @@
 chooseSlotTypeFor: slotName
 	| typeChoices typeChosen |
-	typeChoices _ #(number player boolean color point string costume).
+	self flag: #deferred.  "sound should be reinstated but too much difficulty at present"
+
+	typeChoices _ #(number player boolean color string "sound point costume").
 	typeChosen _ (SelectionMenu selections: typeChoices lines: #()) startUpWithCaption: 'Choose the TYPE
 for ', slotName.
-	(typeChosen size == 0) ifTrue: [^ self].
+	typeChosen isEmptyOrNil ifTrue: [^ self].
 	(self typeForSlot: slotName) = typeChosen ifTrue: [^ self].
 
-	self slotInfo at: slotName put: typeChosen.
-	self class allInstancesDo:
+	(self slotInfoAt: slotName) type: typeChosen.
+	self class allInstancesDo:   "allSubInstancesDo:"
 		[:anInst | anInst instVarNamed: slotName asString put: 
 			(anInst valueOfType: typeChosen from: (anInst instVarNamed: slotName)).
 		anInst updateAllViewers]
