@@ -1,0 +1,2 @@
+translatedMethod
+	^self cachedTranslatedMethodAt: activeCachedContext
