@@ -28,5 +28,15 @@ initializeNames
 	self named: #lightMagenta put: (Color r: 1.0 g: 0.8 b: 1.0).
 	self named: #lightBrown put: (Color r: 1.0 g: 0.6 b: 0.2).
 	self named: #lightOrange put: (Color r: 1.0 g: 0.8 b: 0.4).
-	self named: #transparent put: (TransparentColor new).
-	self named: #opaqueMask put: (OpaqueMaskColor new).
+	self named: #transparent put: (TranslucentColor new alpha: 0.0).
+	self named: #paleBuff put: (Color r: 254 g: 250 b: 235 range: 255).
+	self named: #paleBlue put: (Color r: 222 g: 249 b: 254 range: 255).
+	self named: #paleYellow put: (Color r: 255 g: 255 b: 217 range: 255).
+	self named: #paleGreen put: (Color r: 223 g: 255 b: 213 range: 255).
+	self named: #paleRed put: (Color r: 255 g: 230 b: 230 range: 255).
+	self named: #veryPaleRed put: (Color r: 255 g: 242 b: 242 range: 255).
+	self named: #paleTan put: (Color r: 235 g: 224 b: 199 range: 255).
+	self named: #paleMagenta put: (Color r: 255 g: 230 b: 255 range: 255).
+	self named: #paleOrange put: (Color r: 253 g: 237 b: 215 range: 255).
+	self named: #palePeach put: (Color r: 255 g: 237 b: 213 range: 255).
+
