@@ -1,8 +1,9 @@
 readFromTarget
+	"Read the color value from my target"
 
 	| v |
-	((target == nil) or: [getSelector == nil]) ifTrue: [^ contents].
-	target isInWorld ifFalse: [^ contents].
-	v _ target scriptPerformer perform: getSelector.
-	lastValue _ v.
-	^ v 
+	(target isNil or: [getSelector isNil]) ifTrue: [^contents].
+	target isMorph ifTrue: [target isInWorld ifFalse: [^contents]].
+	v := self valueProvider perform: getSelector.
+	lastValue := v.
+	^v
