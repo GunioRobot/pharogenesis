@@ -23,6 +23,11 @@ diff y abs)*2
 		within & (currentColor isTransparent not) ifFalse:
 			["Last draw will stick out, must erase the area"
 			self restoreRect: oldRect]].
+	currentColor == Color transparent
+	ifFalse:[
 	formCanvas frameAndFillRectangle: rect fillColor: currentColor
-		borderWidth: (palette getNib width) borderColor: Color black.
+		borderWidth: 0 borderColor: Color transparent.]
+	ifTrue:[
+	formCanvas frameAndFillRectangle: rect fillColor: currentColor
+		borderWidth: (palette getNib width) borderColor: Color black].
 	self invalidRect: rect.
