@@ -1,5 +1,5 @@
 swapChars: characterStream 
-	"Triggered byCmd-Y;.  Swap two characters, either those straddling the insertion point, or the two that comprise the selection.  Suggested by Ted Kaehler.  1/18/96 sw"
+	"Triggered byCmd-Y;.  Swap two characters, either those straddling the insertion point, or the two that comprise the selection.  Suggested by Ted Kaehler.  "
 
 	| currentSelection aString chars |
 	sensor keyboard.		"flush the triggering cmd-key character"
@@ -15,6 +15,6 @@ swapChars: characterStream
 
 	self selectFrom: currentSelection - 1 to: currentSelection.
 	aString _ self selection string.
-	self replaceSelectionWith: (Text fromString: aString backwards).
+	self replaceSelectionWith: (Text fromString: aString reversed).
 	self selectAt: currentSelection + 1.
 	^ true
