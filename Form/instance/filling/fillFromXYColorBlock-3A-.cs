@@ -3,7 +3,7 @@ fillFromXYColorBlock: colorBlock
 	Supply relative x and y in [0.0 ... 1.0] to colorBlock,
 	and paint each pixel with the color that comes back"
 	| poker yRel xRel |
-	poker _ BitBlt bitPokerToForm: self.
+	poker _ BitBlt current bitPokerToForm: self.
 	0 to: height-1 do:
 		[:y | yRel _ y asFloat / (height-1) asFloat.
 		0 to: width-1 do:
