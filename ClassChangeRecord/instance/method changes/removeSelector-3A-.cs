@@ -1,5 +1,8 @@
 removeSelector: selector
-	"Remove all memory of changes associated with the argument, selector, in 
-	this class."
+	"Remove all memory of changes associated with the argument, selector, in this class."
 
-	methodChanges removeKey: selector ifAbsent: []
+	selector == #Comment
+		ifTrue:
+			[changeTypes remove: #comment ifAbsent: []]
+		ifFalse:
+			[methodChanges removeKey: selector ifAbsent: []]
