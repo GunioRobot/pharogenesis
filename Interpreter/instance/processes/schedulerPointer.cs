@@ -1,4 +1,3 @@
 schedulerPointer
 
-	^ self fetchPointer: ValueIndex
-		ofObject: (self splObj: SchedulerAssociation)
+	^ self fetchPointer: ValueIndex ofObject: (self splObj: SchedulerAssociation)
