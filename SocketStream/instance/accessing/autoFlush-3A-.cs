@@ -1,0 +1,2 @@
+autoFlush: aBoolean
+	autoFlush := aBoolean
