@@ -9,7 +9,7 @@ lookAhead: aChunk
 	(pieces at: 2) = 'subclass:' ifFalse: [^ aChunk].
 	sup _ Smalltalk at: (pieces at: 1) asSymbol ifAbsent: [^ aChunk].
 	sup class class == Metaclass ifFalse: [^ aChunk].
-	((oldName _ pieces at: 3) at: 1) isUppercase ifFalse: [^ aChunk].
+	((oldName _ pieces at: 3) at: 1) canBeGlobalVarInitial ifFalse: [^ aChunk].
 	oldName _ oldName asSymbol.
 	(Smalltalk includesKey: oldName) ifFalse: [^ aChunk].	"no conflict"
 	existing _ Smalltalk at: oldName.
