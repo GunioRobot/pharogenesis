@@ -1,2 +1,2 @@
 allowSubmorphExtraction
-	^ openToDragNDrop == true and: [isPartsBin ~~ true]
+	^self dragNDropEnabled and: [isPartsBin ~~ true]
