@@ -3,4 +3,4 @@ addSelector: selector withMethod: compiledMethod
 	receiver's method dictionary."
 
 	methodDict at: selector put: compiledMethod.
-	self flushCache
+	selector flushCache
