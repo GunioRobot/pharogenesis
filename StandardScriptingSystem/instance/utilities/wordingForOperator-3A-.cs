@@ -2,16 +2,25 @@ wordingForOperator: aString
 	| toTest |
 
 	toTest _ aString asString.
-	#(	(forward:				'forward by')
-		(turn:					'turn by')
-		(beep:					'make sound')
+	#(	(beep:					'make sound')
 		(bounce:				'bounce')
-		(stopProgramatically	'stop')
-		(wearCostumeOf:		'look like')
+		(clearTurtleTrails		'clear pen trails')
+		(forward:				'forward by')
 		(moveToward:			'move toward')
 		(goToRightOf:			'align after')
+		(isDivisibleBy:			'is divisible by')
+		(liftAllPens				'lift all pens')
+		(lowerAllPens			'lower all pens')
+		(pauseScript:			'pause script')
 		(max:					'max')
 		(min:					'min')
+		(seesColor:				'is over color')
+		(makeNewDrawingIn:	'start painting in')
+		(startScript:				'start script')
+		(stopProgramatically	'stop')
+		(stopScript				'stop script')
+		(turn:					'turn by')
+		(wearCostumeOf:		'look like')
 		(=						'=?'))
 
 	do:
