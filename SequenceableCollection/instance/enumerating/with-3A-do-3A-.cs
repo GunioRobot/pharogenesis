@@ -1,8 +1,6 @@
-with: aSequenceableCollection do: aBlock 
-	"Evaluate aBlock with each of the receiver's elements along with the 
-	corresponding element from aSequencableCollection."
-
-	| otherCollection |
-	self size ~= aSequenceableCollection size ifTrue: [^self errorNoMatch].
-	otherCollection _ ReadStream on: aSequenceableCollection.
-	self do: [:each | aBlock value: each value: otherCollection next]
+with: otherCollection do: twoArgBlock 
+	"Evaluate twoArgBlock with corresponding elements from this collection and otherCollection."
+	1 to: self size do:
+		[:index |
+		twoArgBlock value: (self at: index)
+				value: (otherCollection at: index)]
