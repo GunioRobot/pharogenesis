@@ -1,3 +1,2 @@
 caller
-	^self fetchPointer: CallerIndex
-		ofObject: activeContext
+	^self fetchPointer: CallerIndex ofObject: activeContext
