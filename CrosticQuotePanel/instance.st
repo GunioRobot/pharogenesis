@@ -1,6 +1,6 @@
 WordGamePanelMorph
 	subclass: #CrosticQuotePanel
-	instanceVariableNames: 'cluesPanel '
+	instanceVariableNames: 'cluesPanel'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Games'
