@@ -3,5 +3,5 @@ characterBlockForIndex: index
 	| line |
 	line _ lines at: (self lineIndexForCharacter: index).
 	^ (CharacterBlockScanner new text: text textStyle: textStyle)
-		characterBlockAtPoint: nil index: ((index max: line first) min: line last+1)
+		characterBlockAtPoint: nil index: ((index max: line first) min: text size+1)
 		in: line
