@@ -1,0 +1,2 @@
+presentWindowMenu
+	self popUpMenuFor: #windowMenu
