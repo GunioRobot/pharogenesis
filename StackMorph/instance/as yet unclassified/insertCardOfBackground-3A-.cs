@@ -3,5 +3,5 @@ insertCardOfBackground: aBackground
 
 	| newCard |
 	newCard _  aBackground newCard.
-	cards add: newCard after: self currentCard.
+	self privateCards add: newCard after: self currentCard.
 	self goToCard: newCard
