@@ -1,5 +1,5 @@
 normalizeContents: webDocument
-	(webDocument isKindOf: String) ifTrue: [
+	(webDocument isString) ifTrue: [
 		^MIMEDocument
 			contentType: 'text/plain'
 			content: 'error occured retrieving ', self toText, ': ', webDocument
