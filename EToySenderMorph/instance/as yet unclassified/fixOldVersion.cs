@@ -4,7 +4,7 @@ fixOldVersion
 	uName _ self userName.
 	uForm _ userPicture ifNil: [
 		(self 
-		findDeepSubmorphThat: [ :x | (x isKindOf: ImageMorph) or: [x isKindOf: SketchMorph]] 
+		findDeepSubmorphThat: [ :x | (x isKindOf: ImageMorph) or: [x isSketchMorph]] 
 		ifAbsent: [self halt]) form.
 	].
 	uEmail _ (fields at: #emailAddress) contents.
