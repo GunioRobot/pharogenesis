@@ -1,15 +1,11 @@
 removeAllSuchThat: aBlock 
-	"Evaluate aBlock for each element of the receiver. Remove each element 	for which aBlock evaluates to true. Answer an OrderedCollection of the 
-	removed elements."
-	| index element newCollection |
-	newCollection _ self species new.
+	"Evaluate aBlock for each element and remove all that elements from
+	the receiver for that aBlock evaluates to true."
+
+	| index |
 	index _ firstIndex.
 	[index <= lastIndex]
 		whileTrue: 
-			[element _ array at: index.
-			(aBlock value: element)
-				ifTrue: 
-					[newCollection add: element.
-					self removeIndex: index]
-				ifFalse: [index _ index + 1]].
-	^newCollection
+			[(aBlock value: (array at: index))
+				ifTrue: [self removeIndex: index]
+				ifFalse: [index _ index + 1]]
