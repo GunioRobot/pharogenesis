@@ -4,7 +4,7 @@ definitionST80
 	| aStream path |
 	aStream _ WriteStream on: (String new: 300).
 	superclass == nil
-		ifTrue: [aStream nextPutAll: 'nil']
+		ifTrue: [aStream nextPutAll: 'ProtoObject']
 		ifFalse: [path _ ''.
 				self environment scopeFor: superclass name from: nil
 						envtAndPathIfFound: [:envt :remotePath | path _ remotePath].
@@ -19,4 +19,10 @@ definitionST80
 			store: self sharedPoolsString.
 	aStream cr; tab; nextPutAll: 'category: ';
 			store: (SystemOrganization categoryOfElement: self name) asString.
+
+	superclass ifNil: [ 
+		aStream nextPutAll: '.'; cr.
+		aStream nextPutAll: self name.
+		aStream space; nextPutAll: 'superclass: nil'. ].
+
 	^ aStream contents
