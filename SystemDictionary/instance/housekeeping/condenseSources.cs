@@ -29,6 +29,6 @@ condenseSources		"Smalltalk condenseSources"
 	dir rename: self sourcesName , '.temp'
 		toBe: self sourcesName.
 	self openSourceFiles.
-	PopUpMenu notify: 'Source files have been rewritten!
+	SelectionMenu notify: 'Source files have been rewritten!
 Check that all is well,
 and then save/quit.'
