@@ -5,7 +5,7 @@ readContentsHex: brevity
 
 	f _ directory oldFileOrNoneNamed: self fullName. 
 	f == nil ifTrue: [^ 'For some reason, this file cannot be read'].
-	(size _ f size) > 5000 & (brevity)
+	((size _ f size)) > 5000 & brevity
 		ifTrue: [data _ f next: 10000. f close. brevityState _ #briefHex]
 		ifFalse: [data _ f contentsOfEntireFile. brevityState _ #fullHex].
 
@@ -17,8 +17,13 @@ readContentsHex: brevity
 		s cr].
 	hexData _ s contents.
 
-	size > 5000 & (brevity)
-		ifTrue: [^ 'First 5k bytes:
-------------------
-' , hexData]
-		ifFalse: [^ hexData].
+	^ contents _ ((size > 5000) & brevity
+		ifTrue: ['File ''', fileName, ''' is ', size printString, ' bytes long.
+You may use the ''get'' command to read the entire file.
+
+Here are the first 5000 characters...
+------------------------------------------
+', hexData , '
+------------------------------------------
+... end of the first 5000 characters.']
+		ifFalse: [hexData]).
