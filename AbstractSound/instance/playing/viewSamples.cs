@@ -1,5 +1,4 @@
 viewSamples
+	"Open a WaveEditor on my samples."
 
-	| stereoBuf |
-	stereoBuf _ self computeSamplesForSeconds: self duration.
-	WaveEditor openOn: stereoBuf extractLeftChannel.
+	WaveEditor openOn: self samples.
