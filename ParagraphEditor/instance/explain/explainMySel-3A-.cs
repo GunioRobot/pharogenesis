@@ -13,11 +13,11 @@ explainMySel: symbol
 		ifFalse: [classes _ 'these classes ' , classes printString].
 	msg = symbol
 		ifTrue: [^ '"' , symbol , ' is the selector of this very method!  It is defined in ',
-			classes , '.  To see the other definitions, go to the message list pane and use yellowbug to select ''implementors''."']
+			classes , '.  To see the other definitions, go to the message list pane, get the menu from the top of the scroll bar, and select ''implementors of...''."']
 		ifFalse: 
 			[lits _ (model selectedClassOrMetaClass compiledMethodAt:
 				msg) messages.
 			(lits detect: [:each | each == symbol]
 				ifNone: [])
 				== nil ifTrue: [^nil].
-			^ '"' , symbol , ' is a message selector which is defined in ', classes , '.  To see the definitions, go to the message list pane and use yellowbug to select ''messages''."'].
+			^ '"' , symbol , ' is a message selector which is defined in ', classes , '.  To see the definitions, go to the message list pane, get the menu from the top of the scroll bar, and select ''implementors of...''."'].
