@@ -1,0 +1,2 @@
+computeDirectionTo: aB3DPrimitiveVertex
+	^self subclassResponsibility
