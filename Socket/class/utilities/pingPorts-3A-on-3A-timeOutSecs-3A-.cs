@@ -3,7 +3,6 @@ pingPorts: portList on: hostName timeOutSecs: timeOutSecs
 	"Socket pingPorts: #(7 13 19 21 23 25 80 110 119) on: 'squeak.cs.uiuc.edu' timeOutSecs: 15"
 
 	| serverAddr sockets sock deadline done unconnectedCount connectedCount waitingCount result |
-	Socket initializeNetwork.
 	serverAddr _ NetNameResolver addressForName: hostName timeout: 10.
 	serverAddr = nil ifTrue: [
 		self inform: 'Could not find an address for ', hostName.
