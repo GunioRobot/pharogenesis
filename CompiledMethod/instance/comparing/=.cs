@@ -13,7 +13,7 @@
 		(#(117 120) includes: self primitive) ifTrue: [^ true].
 		myLits with: otherLits do:
 			[:lit1 :lit2 | lit1 = lit2 ifFalse:
-			[(lit1 isMemberOf: Association)
+			[(lit1 isVariableBinding)
 			ifTrue:
 				["Associations match if value is equal, since associations
 				used for super may have key = nil or name of class."
