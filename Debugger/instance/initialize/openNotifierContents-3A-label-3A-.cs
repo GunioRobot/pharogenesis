@@ -5,8 +5,9 @@ openNotifierContents: msgString label: label
 	Sensor flushKeyboard.
 	savedCursor _ Sensor currentCursor.
 	Sensor currentCursor: Cursor normal.
-	msg _ msgString.
-	(label beginsWith: 'Space is low') ifTrue: [msg _ self lowSpaceChoices, msgString].
+	(label beginsWith: 'Space is low')
+		ifTrue: [msg _ self lowSpaceChoices, (msgString ifNil: [''])]
+		ifFalse: [msg _ msgString].
 	isolationHead ifNotNil:
 		["We have already revoked the isolation layer -- now jump to the parent project."
 		msg _ self isolationRecoveryAdvice, msgString.
@@ -20,7 +21,10 @@ openNotifierContents: msgString label: label
 	].
 
 	Display fullScreen.
-	topView _ self buildMVCNotifierViewLabel: label message: msg minSize: 350@((14 * 5) + 16 + self optionalButtonHeight).
+	topView _ self 
+		buildMVCNotifierViewLabel: label 
+		message: thisContext sender sender shortStack 
+		minSize: 350@((14 * 5) + 16 + self optionalButtonHeight).
 	ScheduledControllers activeController
 		ifNil: [p _ Display boundingBox center]
 		ifNotNil: [p _ ScheduledControllers activeController view displayBox center].
