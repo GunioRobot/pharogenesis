@@ -27,7 +27,7 @@ characterBlockAtPoint: aPoint index: index in: textLine
 	[done] whileFalse:
 		[stopCondition _ self scanCharactersFrom: lastIndex to: runStopIndex
 			in: text string rightX: characterPoint x
-			stopConditions: stopConditions kern: kern displaying: false.
+			stopConditions: stopConditions kern: kern.
 		"see setStopConditions for stopping conditions for character block 	operations."
 		self lastCharacterExtentSetX: (specialWidth == nil
 			ifTrue: [font widthOf: (text at: lastIndex)]
