@@ -11,17 +11,17 @@ buttonRowPane
 		addTransparentSpacerOfSize: (5@0).
 	
 	buttonRow 
-		addMorphBack: (self simpleButtonNamed: 'Back' action: #back text: self backButtonText); 
+		addMorphBack: (self simpleButtonNamed: 'Back' translated action: #back text: self backButtonText); 
 		addTransparentSpacerOfSize: (5@0);
-		addMorphBack: (self simpleButtonNamed: 'Forward' action: #forward text: self forwardButtonText); 
+		addMorphBack: (self simpleButtonNamed: 'Forward' translated action: #forward text: self forwardButtonText); 
 		addTransparentSpacerOfSize: (5@0);
-		addMorphBack: (self simpleButtonNamed: 'History' action: #displayHistory text: self historyButtonText); 
+		addMorphBack: (self simpleButtonNamed: 'History' translated action: #displayHistory text: self historyButtonText); 
 		addTransparentSpacerOfSize: (5@0);
-		addMorphBack: (self simpleButtonNamed: 'Reload' action: #reload text: self reloadButtonText); 
+		addMorphBack: (self simpleButtonNamed: 'Reload' translated action: #reload text: self reloadButtonText); 
 		addTransparentSpacerOfSize: (5@0);
-		addMorphBack: (self simpleButtonNamed: 'Home' action: #visitStartPage text: self homeButtonText); 
+		addMorphBack: (self simpleButtonNamed: 'Home' translated action: #visitStartPage text: self homeButtonText); 
 		addTransparentSpacerOfSize: (5@0);
-		addMorphBack: (self simpleButtonNamed: 'Stop!' action: #stopEverything text: self stopButtonText); 
+		addMorphBack: (self simpleButtonNamed: 'Stop!' translated action: #stopEverything text: self stopButtonText); 
 		addTransparentSpacerOfSize: (5@0).
 
 	^buttonRow
