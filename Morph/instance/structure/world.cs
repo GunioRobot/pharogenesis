@@ -1,2 +1,2 @@
 world
-	^ owner == nil ifTrue: [nil] ifFalse: [owner world]
+	^owner isNil ifTrue: [nil] ifFalse: [owner world]
