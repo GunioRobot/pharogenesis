@@ -1,0 +1,3 @@
+selfWrittenAsThis
+
+	^self
