@@ -1,0 +1,2 @@
+shimmer
+	^ self patternFrame shimmer
