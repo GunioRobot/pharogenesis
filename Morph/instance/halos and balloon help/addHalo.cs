@@ -1,6 +1,3 @@
 addHalo
-	| halo |
-	halo _ HaloMorph new.
-	self world addMorphFront: halo.
-	halo target: self.
-	halo startStepping.
+	"Invoke a halo programatically (e.g., not from a meta gesture)"
+	^self addHalo: nil
