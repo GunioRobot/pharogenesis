@@ -1,0 +1,2 @@
+normalized
+	^self copy normalize
