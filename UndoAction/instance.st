@@ -1,6 +1,6 @@
 Object
 	subclass: #UndoAction
-	instanceVariableNames: 'wrappedAction '
+	instanceVariableNames: 'wrappedAction'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon3D-Wonderland Undo'
+	category: 'Balloon3D-Wonderland-Undo'
