@@ -1,0 +1,2 @@
+allSuperclasses
+	^ self realClass allSuperclasses
