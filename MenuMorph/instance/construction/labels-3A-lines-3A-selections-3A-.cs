@@ -1,10 +1,11 @@
-labels: labelString lines: lineArray selections: selectorArray
-	"Supports MVC-compatible menu creation protocol"
-	| labelArray lineNo |
-	labelArray _ labelString findTokens: String cr.
-	lineNo _ 1.
-	labelArray with: selectorArray do:
-		[:label :sel |
-		self add: label action: sel.
-		(lineArray includes: lineNo) ifTrue: [self addLine].
-		lineNo _ lineNo + 1]
+labels: labelList lines: linesArray selections: selectionsArray
+	"This method allows the receiver to accept old-style SelectionMenu creation messages. It should be used only for backward compatibility during the MVC-to-Morphic transition. New code should be written using the other menu construction protocol such as addList:."
+	"Labels can be either a sting with embedded crs, or a collection of strings."
+
+	| labelArray |
+	(labelList isMemberOf: String)
+		ifTrue: [labelArray _ labelList findTokens: String cr]
+		ifFalse: [labelArray _ labelList].
+	1 to: labelArray size do: [:i |
+		self add: (labelArray at: i) action: (selectionsArray at: i).
+		(linesArray includes: i) ifTrue: [self addLine]].
