@@ -1,6 +1,10 @@
 next
+	"Return next byte, if inBuffer is empty
+	we recieve some more data and try again."
+
 	self atEnd ifTrue: [^nil].
-	self inStream atEnd ifTrue: 
+	self isInBufferEmpty ifTrue:
 		[self receiveData.
 		self atEnd ifTrue: [^nil]].
-	^self inStream next
+	lastRead _ lastRead + 1.
+	^inBuffer at: lastRead
