@@ -1,0 +1,2 @@
+associatedPlayer
+	^ actualObject
