@@ -26,7 +26,7 @@ stampHolder pickupButtons: (stampHolder pickupButtons copyFrom: 1 to: 3).
 "| rect |"
 stampHolder pickupButtons do: [:button |
 		"PopUpMenu notify: 'Rectangle for ',sel."
-		rect _ Rectangle fromUser translateBy: self world viewBox origin negated.
+		rect _ Rectangle fromUser.
 		button bounds: rect.	"image is nil"
 		].
 "| rect lay |"
@@ -35,7 +35,7 @@ stampHolder stampButtons do: [:button |
 		button offImage: nil; pressedImage: nil.
 		lay _ button owner.
 		"PopUpMenu notify: 'Rectangle for ',sel."
-		rect _ Rectangle fromUser translateBy: self world viewBox origin negated.
+		rect _ Rectangle fromUser.
 		button image: (Form fromDisplay: (rect insetBy: 2)).
 		lay borderWidth: 2.
 		lay bounds: rect.	"image is nil"
@@ -43,7 +43,7 @@ stampHolder stampButtons do: [:button |
 "| pic16Bit blt aa on |"
 	pic16Bit "really 8" _ GIFReadWriter formFromFileNamed: 'etoy_in.gif'.
 	aa _ Form extent: OriginalBounds extent depth: 8.
-	blt _ BitBlt toForm: aa.
+	blt _ BitBlt current toForm: aa.
 	blt sourceForm: pic16Bit; combinationRule: Form over;
 		sourceRect: OriginalBounds; destOrigin: 0@0; copyBits.
 	"Collect all the images for the buttons in the on state"
@@ -68,7 +68,7 @@ stampHolder stampButtons do: [:button |
 thumbnail delete.
 thumbnail _ nil.
 (submorphs select: [:e | e class == RectangleMorph]) first bounds: 
-	(Rectangle fromUser translateBy: self world viewBox origin negated).
+	Rectangle fromUser.
 (submorphs select: [:e | e class == RectangleMorph]) first borderWidth: 1; borderColor: Color black.
 "| thin |"
 	submorphs do: [:ss | ss class == ImageMorph ifTrue: [thin _ ss "first"]].
