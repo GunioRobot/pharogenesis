@@ -1,4 +1,2 @@
 setClass: aClass category: aCategory
-
-	class _ aClass.
-	category _ aCategory
+	^ self setClass: aClass category: aCategory changeStamp: String new
