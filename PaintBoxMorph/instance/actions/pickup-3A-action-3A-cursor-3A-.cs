@@ -21,14 +21,14 @@ pickup: actionButton action: aSelector cursor: aCursor
 				map _ Color indexedColors copy.
 				map at: 1 put: Color transparent.
 				currentCursor colors: map.
-				currentCursor offset: currentCursor extent // 2.
+				currentCursor offset: currentCursor extent // -2.
 				"Emphisize the stamp button"
 				actionButton owner "layoutMorph" "color: (Color r: 1.0 g: 0.645 b: 0.419);"
 					borderColor: (Color r: 0.65 g: 0.599 b: 0.8).
 				]].
 
 	aSelector == #pickup: ifTrue: [
-		ss _ self world findA: SketchEditorMorph.
+		ss _ self focusMorph.
 		ss ifNotNil: [currentCursor _ aCursor]	 
-			ifNil: [self notCurrentlyPainting
+			ifNil: [self notCurrentlyPainting.
 				self setAction: #paint:]].
