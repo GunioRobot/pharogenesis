@@ -1,0 +1,1 @@
+A widget that displays the dates of a month in a table.
