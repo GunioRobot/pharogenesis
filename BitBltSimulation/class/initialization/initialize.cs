@@ -1,6 +1,6 @@
 initialize
 	"BitBltSimulation initialize"
- 
+  
 	self initializeRuleTable.
 
 	"Mask constants"
