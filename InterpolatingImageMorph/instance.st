@@ -1,6 +1,6 @@
 ImageMorph
 	subclass: #InterpolatingImageMorph
-	instanceVariableNames: 'cachedImage '
+	instanceVariableNames: 'cachedImage'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Demo'
+	category: 'Balloon3D-Morphic'
