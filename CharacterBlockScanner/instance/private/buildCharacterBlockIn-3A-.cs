@@ -22,7 +22,7 @@ buildCharacterBlockIn: para
 								characterPoint _ (para compositionRectangle) topLeft].
 					characterPoint x > rightMargin
 						ifTrue:	[self characterPointSetX: rightMargin]].
-	destX _ leftMargin _ para leftMarginForDisplayForLine: lineIndex.
+	destX _ (leftMargin _ para leftMarginForDisplayForLine: lineIndex).
 	nextLeftMargin_ para leftMarginForDisplayForLine: lineIndex+1.
 	lastIndex _ line first.
 
@@ -40,7 +40,7 @@ buildCharacterBlockIn: para
 	whileFalse:
 	[stopCondition _ self scanCharactersFrom: lastIndex to: runStopIndex
 			in: text string rightX: characterPoint x
-			stopConditions: stopConditions kern: kern displaying: false.
+			stopConditions: stopConditions kern: kern.
 
 	"see setStopConditions for stopping conditions for character block 	operations."
 	self lastCharacterExtentSetX: (font widthOf: (text at: lastIndex)).
