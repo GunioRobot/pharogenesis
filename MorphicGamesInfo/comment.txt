@@ -1,0 +1,7 @@
+to create the package:
+
+in a 5325 image
+	-file in SARBuilder
+
+SARPackageDumper 	fileOutPackageNamed: 'Morphic-Games' 
+					as: (FileDirectory default nextNameFor: 'Morphic-Games' extension: 'sar')
