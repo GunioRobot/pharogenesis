@@ -1,0 +1,2 @@
+directionArrowLength
+	^ 20
