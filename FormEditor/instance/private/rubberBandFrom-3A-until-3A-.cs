@@ -10,18 +10,18 @@ rubberBandFrom: startPoint until: aBlock
 				at: 0 @ 0
 				clippingBox: view insetDisplayBox
 				rule: Form reverse
-				fillColor: Display black.
+				fillColor: Color black.
 			(Line from: startPoint to: endPoint withForm: form)
 				displayOn: Display
 				at: 0 @ 0
 				clippingBox: view insetDisplayBox
 				rule: Form reverse
-				fillColor: Display black.
+				fillColor: Color black.
 			previousEndPoint  _ endPoint]].
 	(Line from: startPoint to: previousEndPoint withForm: form)
 		displayOn: Display
 		at: 0 @ 0
 		clippingBox: view insetDisplayBox
 		rule: Form reverse
-		fillColor: Display black.
+		fillColor: Color black.
 	^endPoint
