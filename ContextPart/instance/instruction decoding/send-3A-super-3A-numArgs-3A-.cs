@@ -12,11 +12,12 @@ send: selector super: superFlag numArgs: numArgs
 	(selector == #halt or: [selector == #halt:]) ifTrue:
 		[self error: 'Cant simulate halt.  Proceed to bypass it.'.
 		self push: nil. ^self].
-	selector == #doPrimitive:receiver:args:
+	selector == #doPrimitive:method:receiver:args:
 		ifTrue: [answer _ receiver 
 					doPrimitive: (arguments at: 1)
-					receiver: (arguments at: 2)
-					args: (arguments at: 3).
+					method: (arguments at: 2)
+					receiver: (arguments at: 3)
+					args: (arguments at: 4).
 				self push: answer.
 				^self].
 	^self send: selector to: receiver with: arguments super: superFlag
