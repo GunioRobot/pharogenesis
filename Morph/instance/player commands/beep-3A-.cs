@@ -1,3 +1,3 @@
 beep: soundName
 
-	self playSoundNamed: soundName.
+	self playSoundNamed: soundName
