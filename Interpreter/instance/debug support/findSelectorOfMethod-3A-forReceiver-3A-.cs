@@ -17,4 +17,4 @@ findSelectorOfMethod: meth forReceiver: rcvr
 		currClass _ self fetchPointer: SuperclassIndex ofObject: currClass.
 		done _ currClass = nilObj.
 	].
-	^self splObj: SelectorDoesNotUnderstand    "method not found in superclass chain"
+	^ nilObj    "method not found in superclass chain"
