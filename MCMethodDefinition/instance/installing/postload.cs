@@ -1,0 +1,2 @@
+postload
+	self isInitializer ifTrue: [self actualClass theNonMetaClass initialize]
