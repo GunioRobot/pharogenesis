@@ -3,15 +3,9 @@ mapColor: oldColor to: newColor
 	"Warnings: This method modifies the receiver. It may lose some color accuracy on 32-bit Forms, since the transformation uses a color map with only 15-bit resolution."
 
 	| map |
-	depth < 16
-		ifTrue: [map _ (Color cachedColormapFrom: depth to: depth) copy]
-		ifFalse: [
-			"use maximum resolution color map"
-			"source is 16-bit or 32-bit RGB; use colormap with 5 bits per color component"
-			map _ Color computeRGBColormapFor: depth bitsPerColor: 5].
+	map _ (Color cachedColormapFrom: depth to: depth) copy.
 	map at: (oldColor indexInMap: map) put: (newColor pixelWordForDepth: depth).
-
-	(BitBlt toForm: self)
+	(BitBlt current toForm: self)
 		sourceForm: self;
 		sourceOrigin: 0@0;
 		combinationRule: Form over;
