@@ -3,6 +3,8 @@ browseIt
 
 	| aSymbol anEntry brow |
 
+	self flag: #yoCharCases.
+
 	Preferences alternativeBrowseIt ifTrue: [^ self browseClassFromIt].
 
 	self lineSelectAndEmptyCheck: [^ self].
@@ -14,15 +16,15 @@ browseIt
 				[anEntry _ (Smalltalk
 					at: aSymbol
 					ifAbsent:
-						[Smalltalk browseAllImplementorsOf: aSymbol.
+						[ self systemNavigation browseAllImplementorsOf: aSymbol.
 						^ nil]).
 				anEntry isNil ifTrue: [^ view flash].
 				(anEntry isKindOf: Class)
 					ifFalse:	[anEntry _ anEntry class].
-				brow _ Preferences browseToolClass new.
+				brow _ SystemBrowser default new.
 				brow setClass: anEntry selector: nil.
 				brow class
 					openBrowserView: (brow openEditString: nil)
 					label: 'System Browser']
 			ifFalse:
-				[Smalltalk browseAllImplementorsOf: aSymbol]]
+				[ self systemNavigation browseAllImplementorsOf: aSymbol]]
