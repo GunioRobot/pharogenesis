@@ -1,13 +1,18 @@
 makeControls
 
-	| b r |
-	b _ SimpleButtonMorph new target: self; borderColor: Color black.
+	| bb r cc |
+	cc _ Color black.
 	r _ AlignmentMorph newRow.
-	r color: b color; borderWidth: 0; layoutInset: 0.
+	r color: cc; borderWidth: 0; layoutInset: 0.
 	r hResizing: #shrinkWrap; vResizing: #shrinkWrap; extent: 5@5.
-	r addMorphBack: (b fullCopy label: 'V1';			actionSelector: #playV1).
-	r addMorphBack: (b fullCopy label: 'V2';			actionSelector: #playV2).
-	r addMorphBack: (b fullCopy label: 'V3';			actionSelector: #playV3).
-	r addMorphBack: (b fullCopy label: 'All';			actionSelector: #playAll).
-	r addMorphBack: (b fullCopy label: 'Stop';		actionSelector: #stopSound).
+	bb _ SimpleButtonMorph new target: self; borderColor: cc.
+	r addMorphBack: (bb label: 'V1';			actionSelector: #playV1).
+	bb _ SimpleButtonMorph new target: self; borderColor: cc.
+	r addMorphBack: (bb label: 'V2';			actionSelector: #playV2).
+	bb _ SimpleButtonMorph new target: self; borderColor: cc.
+	r addMorphBack: (bb label: 'V3';			actionSelector: #playV3).
+	bb _ SimpleButtonMorph new target: self; borderColor: cc.
+	r addMorphBack: (bb label: 'All';			actionSelector: #playAll).
+	bb _ SimpleButtonMorph new target: self; borderColor: cc.
+	r addMorphBack: (bb label: 'Stop';		actionSelector: #stopSound).
 	^ r
