@@ -1,1 +1,1 @@
-FloatArrayPlugin defines the basic access messages for FloatArray (e.g., floatAt: and floatAt:put:).
+FloatArrayPlugin provides fast access to FloatArrays for batch processing of float numbers
