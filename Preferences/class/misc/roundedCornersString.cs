@@ -1,6 +1,4 @@
 roundedCornersString
-	^ ((self valueOfFlag: #roundedWindowCorners)
-		ifFalse:
-			['start']
-		ifTrue:
-			['stop']), ' rounding window corners'
+	^ (((self valueOfFlag: #roundedWindowCorners)
+		ifTrue: ['stop']
+		ifFalse: ['start']) , ' rounding window corners') translated
