@@ -1,11 +1,12 @@
 readFrom: aStream
 	"Read a MorphicEvent from the given stream."
 
-	| s type x y buttons keyValue |
-	s _ WriteStream on: ''.
-	[aStream peek isLetter] whileTrue: [s nextPut: aStream next].
-	type _ s contents asSymbol.
-	aStream skip: 1.
+	| type x y buttons keyValue typeString c |
+	typeString _ String streamContents:
+		[:s |   [(c _ aStream next) isLetter] whileTrue: [s nextPut: c]].
+	typeString = 'mouseMove'
+		ifTrue: [type _ #mouseMove  "fast treatment of common case"]
+		ifFalse: [type _ typeString asSymbol].
 
 	x _ Integer readFrom: aStream.
 	aStream skip: 1.
