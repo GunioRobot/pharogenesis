@@ -1,4 +1,3 @@
-withBottom: y
-	"Copy the receiver with y as its bottom.  1/24/96 sw"
-
-	^  origin copy corner: corner x @ y
+withBottom: y 
+	"Return a copy of me with a different bottom y"
+	^ origin x @ origin y corner: corner x @ y
