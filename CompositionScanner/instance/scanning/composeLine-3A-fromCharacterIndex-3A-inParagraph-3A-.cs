@@ -9,6 +9,7 @@ composeLine: lineIndex fromCharacterIndex: startIndex inParagraph: aParagraph
 	lineHeight _ textStyle lineGrid.  "may be increased by setFont:..."
 	baseline _ textStyle baseline.
 	self setStopConditions.	"also sets font"
+	self handleIndentation.
 	runLength _ text runLengthFor: startIndex.
 	runStopIndex _ (lastIndex _ startIndex) + (runLength - 1).
 	line _ TextLineInterval
