@@ -1,37 +1,48 @@
 addControls
 
-	| slider b r m |
-	b _ SimpleButtonMorph new target: self; borderColor: Color black.
+	| slider bb r m |
 	r _ AlignmentMorph newRow.
-	r color: b color; borderWidth: 0; layoutInset: 0.
+	bb _ SimpleButtonMorph new target: self; borderColor: Color black.
+	r color: bb color; borderWidth: 0; layoutInset: 0.
 	r hResizing: #shrinkWrap; vResizing: #shrinkWrap; extent: 5@5.
 	r wrapCentering: #topLeft.
-	r addMorphBack: (b fullCopy label: 'X';					actionSelector: #delete).
-	r addMorphBack: (b fullCopy label: '<>'; actWhen: #buttonDown;
+	bb _ SimpleButtonMorph new target: self; borderColor: Color black.
+	r addMorphBack: (bb label: 'X';					actionSelector: #delete).
+	bb _ SimpleButtonMorph new target: self; borderColor: Color black.
+	r addMorphBack: (bb label: '<>'; actWhen: #buttonDown;
 															actionSelector: #invokeMenu).
-	r addMorphBack: (b fullCopy label: 'Play';				actionSelector: #play).
-	r addMorphBack: (b fullCopy label: 'Play Before';		actionSelector: #playBeforeCursor).
-	r addMorphBack: (b fullCopy label: 'Play After';			actionSelector: #playAfterCursor).
-	r addMorphBack: (b fullCopy label: 'Play Loop';			actionSelector: #playLoop).
-	r addMorphBack: (b fullCopy label: 'Test';				actionSelector: #playTestNote).
-	r addMorphBack: (b fullCopy label: 'Save';				actionSelector: #saveInstrument).
-	r addMorphBack: (b fullCopy label: 'Set Loop End';		actionSelector: #setLoopEnd).
-	r addMorphBack: (b fullCopy label: 'One Cycle';			actionSelector: #setOneCycle).
-	r addMorphBack: (b fullCopy label: 'Set Loop Start';		actionSelector: #setLoopStart).
+	bb _ SimpleButtonMorph new target: self; borderColor: Color black.
+	r addMorphBack: (bb label: 'Play' translated;				actionSelector: #play).
+	bb _ SimpleButtonMorph new target: self; borderColor: Color black.
+	r addMorphBack: (bb label: 'Play Before' translated;		actionSelector: #playBeforeCursor).
+	bb _ SimpleButtonMorph new target: self; borderColor: Color black.
+	r addMorphBack: (bb label: 'Play After' translated;			actionSelector: #playAfterCursor).
+	bb _ SimpleButtonMorph new target: self; borderColor: Color black.
+	r addMorphBack: (bb label: 'Play Loop' translated;			actionSelector: #playLoop).
+	bb _ SimpleButtonMorph new target: self; borderColor: Color black.
+	r addMorphBack: (bb label: 'Test' translated;				actionSelector: #playTestNote).
+	bb _ SimpleButtonMorph new target: self; borderColor: Color black.
+	r addMorphBack: (bb label: 'Save' translated;				actionSelector: #saveInstrument).
+	bb _ SimpleButtonMorph new target: self; borderColor: Color black.
+	r addMorphBack: (bb label: 'Set Loop End' translated;		actionSelector: #setLoopEnd).
+	bb _ SimpleButtonMorph new target: self; borderColor: Color black.
+	r addMorphBack: (bb label: 'One Cycle' translated;			actionSelector: #setOneCycle).
+	bb _ SimpleButtonMorph new target: self; borderColor: Color black.
+	r addMorphBack: (bb label: 'Set Loop Start' translated;		actionSelector: #setLoopStart).
 	self addMorphBack: r.
 
 	r _ AlignmentMorph newRow.
 	r color: self color; borderWidth: 0; layoutInset: 0.
 	r hResizing: #spaceFill; vResizing: #rigid; extent: 5@20; wrapCentering: #center; cellPositioning: #leftCenter.
 
-	m _ StringMorph new contents: 'Index: '.
+	m _ StringMorph new contents: 'Index: ' translated.
 	r addMorphBack: m.
 	m _ UpdatingStringMorph new
 		target: graph; getSelector: #cursor; putSelector: #cursor:;
 		growable: false; width: 71; step.
 	r addMorphBack: m.
 
-	m _ StringMorph new contents: 'Value: '.
+	m _ StringMorph new contents: 'Value: ' translated.
 	r addMorphBack: m.
 	m _ UpdatingStringMorph new
 		target: graph; getSelector: #valueAtCursor; putSelector: #valueAtCursor:;
