@@ -1,0 +1,2 @@
+predicate
+	^predicate
