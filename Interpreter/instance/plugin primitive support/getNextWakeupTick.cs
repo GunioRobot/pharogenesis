@@ -1,0 +1,2 @@
+getNextWakeupTick
+	^nextWakeupTick
