@@ -1,16 +1,18 @@
 saveUpdate: doc onFile: fileName
-	"See if the user wants the update stored on a local file.  With or without the update number on the front."
+	"Save the update on a local file.  With or without the update number on the front, depending on the preference #updateRemoveSequenceNum"
 
-| file fName |
-(Preferences valueOfFlag: #updateSavesFile) ifTrue: [
+	| file fName pos updateDirectory |
+
+	(FileDirectory default directoryNames includes: 'updates') ifFalse:
+		[FileDirectory default createDirectory: 'updates'].
+	updateDirectory _ FileDirectory default directoryNamed: 'updates'.
+
 	fName _ fileName.
-	(Preferences valueOfFlag: #updateRemoveSequenceNum) ifTrue: [
-		1 to: 100 do: [:pos | 
-			(fName at: pos) isDigit ifFalse: [
-				fName _ fName copyFrom: pos to: fName size.
-				doc reset; ascii.
-				(FileDirectory default fileExists: fName) ifFalse: [
-					file _ FileStream newFileNamed: fName.
-					file nextPutAll: doc contents.
-					file close].
-				^ self]]]].
+	(Preferences valueOfFlag: #updateRemoveSequenceNum) ifTrue:
+		[pos _ fName findFirst: [:c | c isDigit not].
+		fName _ fName copyFrom: pos to: fName size].
+	doc reset; ascii.
+	(updateDirectory fileExists: fName) ifFalse:
+		[file _ updateDirectory newFileNamed: fName.
+		file nextPutAll: doc contents.
+		file close].
