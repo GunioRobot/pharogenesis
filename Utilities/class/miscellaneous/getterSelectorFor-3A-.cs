@@ -1,3 +1,10 @@
-getterSelectorFor: aName
+getterSelectorFor: identifier
+	"Answer the corresponding getter.  Two idiosyncratic vectorings herein... " 
+
 	"Utilities getterSelectorFor: #elvis"
-	^ ('get', (aName asString capitalized)) asSymbol
+
+	| aSymbol |
+	(aSymbol _ identifier asSymbol) == #isOverColor: ifTrue: [^ #seesColor:].
+	aSymbol == #copy ifTrue: [^ #getNewClone].
+
+	^ ('get', (identifier asString capitalized)) asSymbol
