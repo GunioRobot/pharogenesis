@@ -1,0 +1,3 @@
+stSize
+
+	^self size
