@@ -1,0 +1,2 @@
+color
+	^vertexBuffer color
