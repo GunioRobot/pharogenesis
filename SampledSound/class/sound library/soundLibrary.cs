@@ -1,4 +1,4 @@
 soundLibrary
-	"Return the sound library dictionary."
+	"Answer the sound library dictionary."
 
 	^ SoundLibrary
