@@ -1,0 +1,3 @@
+layoutChanged
+
+	fullBounds _ nil.
