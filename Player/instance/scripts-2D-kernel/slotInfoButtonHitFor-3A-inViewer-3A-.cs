@@ -1,26 +1,31 @@
-slotInfoButtonHitFor: aSlotName inViewer: aViewer
-	"The user made a gesture asking for info/menu relating"
+slotInfoButtonHitFor: aGetterSymbol inViewer: aViewer
+	"The user made a gesture asking for slot menu for the given getter symbol in a viewer; put up the menu."
 
-	| aMenu slotSym aType |
-	slotSym _ aSlotName asSymbol.
-	aType _ self typeForSlot: aSlotName asSymbol.
+	| aMenu slotSym aType typeVocab interface selector |
+	slotSym _ Utilities inherentSelectorForGetter: aGetterSymbol.
+	aType _ self typeForSlotWithGetter: aGetterSymbol asSymbol.
 	aMenu _ MenuMorph new defaultTarget: self.
-	(#(colorSees copy getNewClone) includes: slotSym) ifFalse:
-		[aMenu add: 'simple watcher' selector: #tearOffWatcherFor: argument: slotSym].
-	(#(copy getNewClone) includes: slotSym) ifTrue:
-		[aMenu add: 'give me a copy now' action: #handTheUserACopy].
+	interface := aViewer currentVocabulary methodInterfaceAt: aGetterSymbol ifAbsent: [nil].
+	selector := interface isNil
+		ifTrue: [slotSym asString]
+		ifFalse: [interface selector].
+	aMenu addTitle: (selector, ' (', (aType asString translated), ')').
 
-	aType == #number "later others" ifTrue:
-		[aMenu add: 'detailed watcher' selector: #tearOffFancyWatcherFor: argument: slotSym].
+	(typeVocab _ Vocabulary vocabularyForType: aType) addWatcherItemsToMenu: aMenu forGetter: aGetterSymbol.
 
 	(self slotInfo includesKey: slotSym)
-		ifTrue:  "User slot"
-			[aMenu add: 'change data type' selector: #chooseSlotTypeFor: argument: slotSym.
-			aType == #number ifTrue:
-				[aMenu add: 'decimal places...' selector: #setPrecisionFor: argument: slotSym].
-			aMenu add: 'remove "', aSlotName, '"' selector: #removeSlotNamed: argument: slotSym.
-			aMenu add: 'rename  "', aSlotName, '"' selector: #renameSlot: argument: slotSym].
-	aMenu items size == 0 ifTrue:
-		[aMenu add: 'ok' action: #yourself].
-	aMenu addTitle: (aSlotName asString, ' (', aType, ')').
+		ifTrue:
+			[aMenu add: 'change value type' translated selector: #chooseSlotTypeFor: argument: aGetterSymbol.
+			typeVocab addUserSlotItemsTo: aMenu slotSymbol: slotSym.
+			aMenu add: ('remove "{1}"' translated format: {slotSym}) selector: #removeSlotNamed: argument: slotSym.
+			aMenu add: ('rename "{1}"' translated format: {slotSym}) selector: #renameSlot: argument: slotSym.			aMenu addLine].
+
+	typeVocab addExtraItemsToMenu: aMenu forSlotSymbol: slotSym.  "e.g. Player type adds hand-me-tiles"
+
+	aMenu add: 'show categories....' translated target: aViewer selector: #showCategoriesFor: argument: aGetterSymbol.
+	self addIdiosyncraticMenuItemsTo: aMenu forSlotSymol: slotSym.
+
+	aMenu items isEmpty ifTrue:
+		[aMenu add: 'ok' translated action: #yourself].
+
 	aMenu popUpForHand: aViewer primaryHand in: aViewer world
