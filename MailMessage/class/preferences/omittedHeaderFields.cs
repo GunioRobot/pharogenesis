@@ -45,10 +45,11 @@ omittedHeaderFields
 			'content-class'
 			'thread-topic'
 			'thread-index'
-			'list-help',
-			'list-post',
-			'list-subscribe',
-			'list-id',
-			'list-unsubscribe',
+			'list-help'
+			'list-post'
+			'list-subscribe'
+			'list-id'
+			'list-unsubscribe'
 			'list-archive'
+			'face'
 		)
