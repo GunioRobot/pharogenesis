@@ -1,0 +1,3 @@
+blockHome
+
+	^ self home
