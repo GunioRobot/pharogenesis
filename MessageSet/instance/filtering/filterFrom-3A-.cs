@@ -4,5 +4,6 @@ filterFrom: aBlock
 	| newList |
 	newList _ messageList select:
 		[:anElement |
-			self class parse: anElement toClassAndSelector: aBlock].
+			self class parse: anElement toClassAndSelector: [ :cls :sel | 
+				(self class isPseudoSelector: sel) not and: [  aBlock value: cls value: sel ]]].
 	self setFilteredList: newList
