@@ -18,18 +18,15 @@ unpackBits: bits depthTo8From: depth with: width height: height pad: pad
 		bitIndex _ i - 1 * bitsWidth.
 		upBitIndex _ i - 1 * upBitsWidth.
 		1 to: stopWidth - 1 do: [:j |
-			val _ bits byteAt: (bitIndex _ bitIndex + 1).
+			val _ bits at: (bitIndex _ bitIndex + 1).
 			upBitIndex _ upBitIndex + pixelInByte.
 			1 to: pixelInByte do: [:k |
-				upBits at: (upBitIndex - k + 1) put: (val
-bitAnd: bitMask).
+				upBits at: (upBitIndex - k + 1) put: (val bitAnd: bitMask).
 				val _ val bitShift: depth negated]].
-		val _ (bits byteAt: (bitIndex _ bitIndex + 1))
-				bitShift: depth negated * (pixelInByte -
-trailingSize).
+		val _ (bits at: (bitIndex _ bitIndex + 1))
+				bitShift: depth negated * (pixelInByte - trailingSize).
 		upBitIndex _ upBitIndex + trailingSize.
 		1 to: trailingSize do: [:k |
-			upBits at: (upBitIndex - k + 1) put: (val bitAnd:
-bitMask).
+			upBits at: (upBitIndex - k + 1) put: (val bitAnd: bitMask).
 			val _ val bitShift: depth negated]].
 	^ upBits
