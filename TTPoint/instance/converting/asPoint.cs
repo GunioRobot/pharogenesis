@@ -1,0 +1,2 @@
+asPoint
+	^x@y
