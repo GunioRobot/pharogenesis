@@ -4,6 +4,6 @@ reportField: aString to: aBlock
 	| s fieldName fieldValue |
 	(aString includes: $:) ifFalse: [^self].
 	s _ ReadStream on: aString.
-	fieldName _ s upTo: $:.
+	fieldName _ (s upTo: $:) asLowercase.	"fieldname must be lowercase"
 	fieldValue _ s upToEnd withBlanksTrimmed.
 	fieldValue isEmpty ifFalse: [aBlock value: fieldName value: fieldValue].
