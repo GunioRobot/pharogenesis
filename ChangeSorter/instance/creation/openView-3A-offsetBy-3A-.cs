@@ -19,7 +19,7 @@ openView: topView offsetBy: offset
 		list: #classList
 		selected: #currentClassName
 		changeSelected: #currentClassName:
-		menu: #classMenu:shifted:
+		menu: #classListMenu:shifted:
 		keystroke: #classListKey:from:.
 	classView window: ((0@0 extent: 180@100) translateBy: offset).
 	topView addSubView: classView toRightOf: cngSetListView.
