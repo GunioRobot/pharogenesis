@@ -1,0 +1,3 @@
+doNotRunLongTestCases
+
+	DoNotRunLongTestCases := true.
