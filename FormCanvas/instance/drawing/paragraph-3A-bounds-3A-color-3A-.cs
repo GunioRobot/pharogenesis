@@ -2,7 +2,7 @@ paragraph: para bounds: bounds color: c
 
 	| scanner |
 	self setPaintColor: c.
-	scanner _ port displayScannerFor: para
+	scanner _ (port clippedBy: (bounds translateBy: origin)) displayScannerFor: para
 		foreground: (self shadowColor ifNil:[c]) background: Color transparent
 		ignoreColorChanges: self shadowColor notNil.
-	para displayOn: self using: scanner at: (bounds topLeft + origin).
+	para displayOn: (self copyClipRect: bounds) using: scanner at: origin+ bounds topLeft.
