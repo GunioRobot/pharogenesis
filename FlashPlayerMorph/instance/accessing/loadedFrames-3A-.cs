@@ -9,6 +9,6 @@ loadedFrames: aNumber
 			progressValue contents: aNumber asFloat / maxFrames.
 			"Give others a chance"
 			Smalltalk isMorphic
-				ifTrue: [Display doOneCycleMorphic]
+				ifTrue: [World doOneCycle]
 				ifFalse: [Processor yield]].
 	loadedFrames _ aNumber
