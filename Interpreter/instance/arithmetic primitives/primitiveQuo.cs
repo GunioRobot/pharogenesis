@@ -1,27 +1,21 @@
 primitiveQuo
 	"Rounds negative results towards zero."
-	"Note: unlike the other arithmetic primitives, this is called as
-	a real send, not as a special byte.  Thus successFlag has already
-	been set, and failure is normal, not through failSpecialPrim."
-	| rcvr arg result |
-	arg _ self popInteger.
-	rcvr _ self popInteger.
-	self success: arg ~= 0.
+	| integerRcvr integerArg integerResult |
+	integerRcvr _ self stackIntegerValue: 1.
+	integerArg _ self stackIntegerValue: 0.
+	self success: integerArg ~= 0.
 	successFlag ifTrue: [
-		rcvr > 0 ifTrue: [
-			arg > 0 ifTrue: [
-				result _ rcvr // arg.
+		integerRcvr > 0 ifTrue: [
+			integerArg > 0 ifTrue: [
+				integerResult _ integerRcvr // integerArg.
 			] ifFalse: [
-				result _ 0 - (rcvr // (0 - arg)).
+				integerResult _ 0 - (integerRcvr // (0 - integerArg)).
 			].
 		] ifFalse: [
-			arg > 0 ifTrue: [
-				result _ 0 - ((0 - rcvr) // arg).
+			integerArg > 0 ifTrue: [
+				integerResult _ 0 - ((0 - integerRcvr) // integerArg).
 			] ifFalse: [
-				result _ (0 - rcvr) // (0 - arg).
+				integerResult _ (0 - integerRcvr) // (0 - integerArg).
 			].
-		].
-		self success: (self isIntegerValue: result)].
-	successFlag
-		ifTrue: [self pushInteger: result]
-		ifFalse: [self unPop: 2]
+		]].
+	self pop2AndPushIntegerIfOK: integerResult
