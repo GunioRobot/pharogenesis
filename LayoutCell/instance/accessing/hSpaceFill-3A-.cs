@@ -1,3 +1,2 @@
 hSpaceFill: aBool
-	flags ifNil:[flags _ 0].
-	flags _ aBool ifTrue:[flags bitOr: 1] ifFalse:[flags bitClear: 1].
+	flags _ aBool ifTrue:[self flags bitOr: 1] ifFalse:[self flags bitClear: 1].
