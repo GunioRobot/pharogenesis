@@ -1,0 +1,3 @@
+convertToSystemString
+
+	^ self
