@@ -1,0 +1,3 @@
+* n
+
+	^ self ptrAddress * n
