@@ -3,16 +3,11 @@ symbolic
 	with a short description of each." 
 	| aStream |
 	self isQuick ifTrue: 
-		[self isReturnSpecial ifTrue: [^ 'Quick return ' ,
-				(#('self' 'true' 'false' 'nil' '-1' '0' '1' '2')
-						at: self primitive - 255)].
+		[self isReturnSpecial ifTrue:
+			[^ 'Quick return ' , (#('self' 'true' 'false' 'nil' '-1' '0' '1' '2')
+									at: self primitive - 255)].
 		^ 'Quick return field ' , self returnField printString , ' (0-based)'].
 	aStream _ WriteStream on: (String new: 1000).
-	self primitive > 0 
-		ifTrue: 
-			[aStream nextPutAll: '<primitive: '.
-			aStream print: self primitive.
-			aStream nextPut: $>.
-			aStream cr].
+	self printPrimitiveOn: aStream.
 	(InstructionPrinter on: self) printInstructionsOn: aStream.
 	^aStream contents
