@@ -6,7 +6,7 @@ forwardTextFor: msgID
 	^String streamContents: [ :str |
 		"From header"
 		str nextPutAll: 'From: ';
-		nextPutAll: Celeste userName; cr.
+		nextPutAll: self account userName; cr.
 
 		"Put a blank To"
 		str nextPutAll: 'To: '; cr.
@@ -18,9 +18,9 @@ forwardTextFor: msgID
 
 
 		"Add auto-cc if it's been set"
-		Celeste ccList isEmpty ifFalse: [
+		self account ccList isEmpty ifFalse: [
 			str nextPutAll: 'Cc: '.
-			str nextPutAll: Celeste ccList; cr].
+			str nextPutAll: self account ccList; cr].
 
 		"add the mime headers to make it multi-part"
 		separator := MailMessage generateSeparator.
