@@ -5,5 +5,6 @@ find
 	reply _ FillInTheBlank request: 'Find what? ' initialAnswer: ''.
 	reply size == 0 ifTrue: [^ self].
 	self setSearch: reply.
+	ChangeText _ FindText.  "Implies no replacement to againOnce: method"
 	self againOrSame: true
 	
