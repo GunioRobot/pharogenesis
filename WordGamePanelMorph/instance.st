@@ -1,6 +1,6 @@
 BorderedMorph
 	subclass: #WordGamePanelMorph
-	instanceVariableNames: 'letterMorphs haveTypedHere '
+	instanceVariableNames: 'letterMorphs haveTypedHere'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Games'
