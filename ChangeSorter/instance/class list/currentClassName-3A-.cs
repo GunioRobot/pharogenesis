@@ -5,4 +5,4 @@ currentClassName: aString
 	self changed: #currentClassName.
 	self changed: #messageList.
 	self setContents.
-	self changed: #contents.
+	self contentsChanged.
