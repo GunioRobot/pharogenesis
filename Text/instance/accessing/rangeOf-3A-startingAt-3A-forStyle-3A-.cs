@@ -1,10 +1,4 @@
-rangeOf: attribute startingAt: index forStyle: aStyle
-	"This is stupid, slow code, but it works"
-	| start stop |
-	start _ index.
-	[start > 1 and: [(self attributesAt: (start - 1) forStyle: aStyle) includes: attribute]]
-		whileTrue: [start _ start - 1].
-	stop _ index-1.
-	[stop < self size and: [(self attributesAt: (stop + 1) forStyle: aStyle) includes: attribute]]
-		whileTrue: [stop _ stop + 1].
-	^ start to: stop
+rangeOf: attribute startingAt: index forStyle: aTextStyle
+"aTextStyle is not really needed, it is kept for compatibility with an earlier method version "
+	self deprecated: 'Use Text>>rangeOf:startingAt: instead.'.
+	^self rangeOf: attribute startingAt: index
