@@ -1,6 +1,5 @@
-/ aFraction
-
-	(aFraction isMemberOf: Fraction)
-		ifTrue: [^self * aFraction 
-	"Refer to the comment in Number|/." reciprocal]
-		ifFalse: [^self retry: #/ coercing: aFraction]
+/ aNumber
+	"Answer the result of dividing the receiver by aNumber."
+	aNumber isFraction
+		ifTrue: [^self * aNumber reciprocal]
+		ifFalse: [^ (aNumber adaptFraction: self) / aNumber adaptToFraction]
