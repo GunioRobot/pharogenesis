@@ -1,4 +1,5 @@
 printOn: aStream 
 	"Overrides method inherited from the byte arrayed collection."
 
-	aStream nextPutAll: 'a CompiledMethod'
+	self printNameOn: aStream.
+	aStream space; nextPutAll: self identityHashPrintString
