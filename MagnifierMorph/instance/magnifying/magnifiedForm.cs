@@ -1,17 +1,29 @@
 magnifiedForm
-	| srcRect form exclusion |
-	lastPos _ self sourcePoint.
-	srcRect _ self sourceRectFrom: lastPos.
-	((srcRect intersects: self bounds) and: [ RecursionLock == nil ])
-		ifTrue: [RecursionLock _ self.
-				self isRound
-					ifTrue: [exclusion _ owner]
-					ifFalse: [exclusion _ self].
-				form _ self world patchAt: srcRect without: exclusion andNothingAbove: false.
-				RecursionLock _ nil]
+	"Answer the magnified form"
+	| srcRect form exclusion magnified |
+	srcRect := self sourceRectFrom: self sourcePoint.
+	(RecursionLock isNil and: [ self showPointer or: [ srcRect intersects: self bounds ]])
+		ifTrue: [RecursionLock := self.
+			exclusion := self isRound
+						ifTrue: [owner]
+						ifFalse: [self].
+			form := self currentWorld
+						patchAt: srcRect
+						without: exclusion
+						andNothingAbove: false.
+			RecursionLock := nil]
 		ifFalse: ["cheaper method if the source is not occluded"
-				form _ Display copy: srcRect].
+			form := Display copy: srcRect].
 	"smooth if non-integer scale"
-	^ form magnify: form boundingBox
-		by: magnification
-		smoothing: (magnification isInteger ifTrue: [1] ifFalse: [2])
+	magnified := form
+				magnify: form boundingBox
+				by: magnification
+				smoothing: (magnification isInteger
+						ifTrue: [1]
+						ifFalse: [2]).
+	"display the pointer rectangle if desired"
+	self showPointer
+		ifTrue: [magnified
+				reverse: (magnified center - (2 @ 2) extent: 4 @ 4)
+				fillColor: Color white].
+	^ magnified
