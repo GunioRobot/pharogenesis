@@ -1,0 +1,2 @@
+maxLevel
+	^ pointers size
