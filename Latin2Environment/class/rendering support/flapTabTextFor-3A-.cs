@@ -1,0 +1,3 @@
+flapTabTextFor: aString
+
+	^ aString.
