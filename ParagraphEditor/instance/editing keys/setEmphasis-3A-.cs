@@ -2,7 +2,7 @@ setEmphasis: emphasisSymbol
 	"Change the emphasis of the current selection."
 
 	| oldAttributes attribute |
-	oldAttributes _ paragraph text attributesAt: startBlock stringIndex.
+	oldAttributes _ paragraph text attributesAt: startBlock stringIndex forStyle: paragraph textStyle.
 	(emphasisSymbol == #plain) 
 		ifTrue:
 			[attribute _ TextEmphasis normal]
