@@ -1,0 +1,3 @@
+setUp
+	resource := SimpleTestResource current
+			
