@@ -9,11 +9,14 @@ startPlayerProcessBufferSize: bufferSize rate: samplesPerSecond stereo: stereoFl
 	SamplingRate _ samplesPerSecond.
 	Stereo _ stereoFlag.
 	ReadyForBuffer _ Semaphore new.
+	SoundSupported _ true. "Assume so"
 	UseReadySemaphore _ true.  "set to false if ready semaphore not supported by VM"
 	self primSoundStartBufferSize: Buffer stereoSampleCount
 		rate: samplesPerSecond
 		stereo: Stereo
 		semaIndex: (Smalltalk registerExternalObject: ReadyForBuffer).
+	"Check if sound start prim was successful"
+	SoundSupported ifFalse:[^self].
 	UseReadySemaphore
 		ifTrue: [PlayerProcess _ [SoundPlayer playLoop] newProcess]
 		ifFalse: [PlayerProcess _ [SoundPlayer oldStylePlayLoop] newProcess].
