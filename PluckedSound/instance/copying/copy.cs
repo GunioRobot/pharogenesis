@@ -1,0 +1,3 @@
+copy
+
+	^ super copy copyRing
