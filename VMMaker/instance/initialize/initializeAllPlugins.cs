@@ -1,0 +1,2 @@
+initializeAllPlugins
+	allPlugins _ self providedPlugins
