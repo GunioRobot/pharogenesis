@@ -1,0 +1,1 @@
+The interface to Celeste for new users.  There is one of each kind of filter, and the ideas of "code filters" and "named filters" are combined into one mechanism.
