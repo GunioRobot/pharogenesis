@@ -1,0 +1,3 @@
+isUnicodeString
+
+	^ false.
