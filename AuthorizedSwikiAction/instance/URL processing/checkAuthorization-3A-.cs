@@ -1,2 +1,2 @@
 checkAuthorization: request
-	^authorizer user: request userID.
+	^ authorizer ifNotNil: [authorizer user: request userID].
