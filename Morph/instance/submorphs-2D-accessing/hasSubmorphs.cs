@@ -1,3 +1,2 @@
 hasSubmorphs
-
-	^ submorphs size > 0
+	^submorphs notEmpty
