@@ -4,4 +4,4 @@ maybeAddCollapseItemTo: aMenu
 	| anOwner |
 	(anOwner _ self topRendererOrSelf owner) ifNotNil:
 			[anOwner isWorldMorph ifTrue:
-				[aMenu add: #collapse target: self action: #collapse]]
+				[aMenu add: 'collapse' translated target: self action: #collapse]]
