@@ -9,6 +9,6 @@ copyOutDetails
 		].
 	].
 	namedFields at: 'projectname' ifPresent: [ :field |
-		newDetails at: 'projectname' put: field contents string
+		newDetails at: 'projectname' put: field contents string withBlanksTrimmed.
 	].
 	^newDetails
