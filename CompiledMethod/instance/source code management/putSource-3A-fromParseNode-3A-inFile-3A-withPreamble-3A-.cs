@@ -4,12 +4,17 @@ putSource: sourceStr fromParseNode: methodNode inFile: fileIndex withPreamble: p
 	temp names for decompilation at the end of the method.
 	If the fileIndex is 1, print on *.sources;  if it is 2, print on *.changes,
 	in each case, storing a 4-byte source code pointer at the method end."
-	| file remoteString |
+
+	| file remoteString  |
 	(SourceFiles == nil or: [(file _ SourceFiles at: fileIndex) == nil]) ifTrue:
 		[^ self become: (self copyWithTempNames: methodNode tempNames)].
+
+	Smalltalk assureStartupStampLogged.
 	file setToEnd.
+
 	preambleBlock value: file.  "Write the preamble"
 	remoteString _ RemoteString newString: sourceStr
 						onFileNumber: fileIndex toFile: file.
 	file nextChunkPut: ' '; flush.
+	self checkOKToAdd: sourceStr size at: remoteString position.
 	self setSourcePosition: remoteString position inFile: fileIndex
