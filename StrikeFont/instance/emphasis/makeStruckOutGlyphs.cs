@@ -3,4 +3,7 @@ makeStruckOutGlyphs
 	| g |
 	g _ glyphs deepCopy.
 	g fillBlack: (0 @ (self ascent - (self ascent//3)) extent: g width @ 1).
-	glyphs _ g
+	glyphs _ g.
+	fallbackFont ifNotNil: [
+		fallbackFont _ fallbackFont emphasized: 16
+	].
