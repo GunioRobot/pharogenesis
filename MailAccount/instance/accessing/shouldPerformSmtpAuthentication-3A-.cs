@@ -1,0 +1,2 @@
+shouldPerformSmtpAuthentication: aBoolean 
+	shouldPerformSmtpAuthentication := aBoolean
