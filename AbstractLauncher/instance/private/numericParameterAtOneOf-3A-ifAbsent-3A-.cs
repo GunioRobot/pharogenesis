@@ -5,5 +5,5 @@ numericParameterAtOneOf: alternateParameterNames ifAbsent: aBlock
 	parameterValue _ self parameterAtOneOf: alternateParameterNames.
 	parameterValue isEmpty
 		ifTrue: [^aBlock value].
-	^[Number readFrom: parameterValue] ifError: [aBlock] 
+	^[Number readFrom: parameterValue] ifError: aBlock 
 
