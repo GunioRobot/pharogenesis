@@ -1,0 +1,4 @@
+asSeconds
+
+
+	^ seconds
