@@ -1,17 +1,18 @@
-viewBox: newViewBox
+viewBox: newViewBox 
+	"I am now displayed within newViewBox; react."
 
-	| vb |
-	((vb _ self viewBox) == nil or: [vb extent ~= newViewBox extent])
-		ifTrue: [worldState canvas: nil].
-
-	worldState viewBox: newViewBox.
+	self isWorldMorph 
+		ifTrue: 
+			[(self viewBox isNil or: [self viewBox extent ~= newViewBox extent]) 
+				ifTrue: [worldState canvas: nil].
+			worldState viewBox: newViewBox].
 	super position: newViewBox topLeft.
+	fullBounds := bounds := newViewBox.
 
-"23 may 2000 - RAA - let's see if this is ok"
-
-	bounds _ newViewBox.	"0@0 extent: newViewBox extent."
-	"Paragraph problem workaround; clear selections to avoid screen droppings:"
-	self flag: #arNote. "Probably unnecessary"
-	worldState handsDo: [:h | h releaseKeyboardFocus].
-	self fullRepaintNeeded.
-
+	"Paragraph problem workaround; clear selections to avoid screen
+droppings."
+	self flag: #arNote.	"Probably unnecessary"
+	self isWorldMorph 
+		ifTrue: 
+			[worldState handsDo: [:hand | hand releaseKeyboardFocus].
+			self fullRepaintNeeded]
