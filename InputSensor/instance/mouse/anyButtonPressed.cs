@@ -1,4 +1,4 @@
 anyButtonPressed
-	"Answer whether a mouse button is being pressed."
+	"Answer whether at least one mouse button is currently being pressed."
 
-	^self buttons > 0
+	^ self primMouseButtons anyMask: 7
