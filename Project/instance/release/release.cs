@@ -1,5 +1,5 @@
 release
-	projectWindows == nil ifFalse:
-		[projectWindows release.
-		projectWindows _ nil].
+	world == nil ifFalse:
+		[world release.
+		world _ nil].
 	^ super release
