@@ -1,4 +1,5 @@
 initialize
 	super initialize.
 	self listDirection: #topToBottom.
-	self color: (Color r: 0.452 g: 0.935 b: 0.548)
+	self layoutInset: 6; cellInset: 4.
+	self hResizing: #shrinkWrap; vResizing: #shrinkWrap.
