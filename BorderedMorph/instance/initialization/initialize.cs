@@ -1,4 +1,4 @@
 initialize
 	super initialize.
 	borderColor _ Color black.
-	borderWidth _ 2.
+	borderWidth _ 2
