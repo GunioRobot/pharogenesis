@@ -4,16 +4,17 @@ metaClassIndicated: trueOrFalse
 	metaClassIndicated _ trueOrFalse.
 	self setClassOrganizer.
 	systemCategoryListIndex > 0 ifTrue:
-		[editSelection _ classListIndex = 0
+		[self editSelection: (classListIndex = 0
 			ifTrue: [metaClassIndicated
 				ifTrue: [#none]
 				ifFalse: [#newClass]]
-			ifFalse: [#editClass]].
-	messageCategoryListIndex _ 1.
+			ifFalse: [#editClass])].
+	messageCategoryListIndex _ 0.
 	messageListIndex _ 0.
 	contents _ nil.
 	self changed: #classSelectionChanged.
 	self changed: #messageCategoryList.
 	self changed: #messageList.
 	self changed: #contents.
+	self changed: #annotation.
 	self decorateButtons
