@@ -2,20 +2,20 @@ print: instruction
 	"Append to the receiver a description of the bytecode, instruction." 
 
 	| code |
-	stream print: oldPC; space.
+	stream tab: self indent; print: oldPC; space.
 	stream nextPut: $<.
-	oldPC to: pc - 1 do: 
+	oldPC to: scanner pc - 1 do: 
 		[:i | 
-		code _ (self method at: i) radix: 16.
+		code _ (method at: i) radix: 16.
 		stream nextPut: 
-			(code size < 5
+			(code size < 2
 				ifTrue: [$0]
-				ifFalse: [code at: 4]).
+				ifFalse: [code at: 1]).
 		stream nextPut: code last; space].
 	stream skip: -1.
 	stream nextPut: $>.
 	stream space.
 	stream nextPutAll: instruction.
 	stream cr.
-	oldPC _ pc
+	oldPC _ scanner pc.
 	"(InstructionPrinter compiledMethodAt: #print:) symbolic."
