@@ -1,3 +1,2 @@
 isShadowDrawing
-	"Always"
 	^true
