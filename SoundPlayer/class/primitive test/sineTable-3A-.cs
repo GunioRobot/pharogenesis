@@ -4,8 +4,8 @@ sineTable: size
 	| radiansPerStep table |
 	table _ Array new: size.
 	radiansPerStep _ (2.0 * Float pi) / table size asFloat.
-	1 to: table size do: [ :i |
+	1 to: table size do: [:i |
 		table at: i put:
-			(32767.0 * (radiansPerStep * i) sin) asInteger.
-	].
+			(32767.0 * (radiansPerStep * i) sin) asInteger].
+
 	^ table
