@@ -1,0 +1,2 @@
+automaticViewing
+	^ self hasProperty: #automaticViewing
