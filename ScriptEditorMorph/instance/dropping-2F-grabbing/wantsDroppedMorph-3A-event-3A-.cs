@@ -1,7 +1,5 @@
 wantsDroppedMorph: aMorph event: evt
+	"Answer whether the receiver would be interested in accepting the morph"
 
-	aMorph isTileLike ifFalse: [^false].
-	aMorph resultType == #command ifFalse: [^false].
-	self isTextuallyCoded ifTrue: [^false].
-	^true
-
+	^ (aMorph isTileLike and: [self isTextuallyCoded not]) and:
+		[(#(Command Unknown) includes: aMorph resultType capitalized)]
