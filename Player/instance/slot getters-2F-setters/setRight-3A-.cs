@@ -1,6 +1,8 @@
 setRight: w
 	"Set the right coordinate to the given value"
 
-	| topLeftNow  |
-	topLeftNow _ self costume cartesianBoundsTopLeft.
-	^ self costume right: self costume left - topLeftNow x + w
+	| topLeftNow cost |
+	cost _ self costume.
+	cost isWorldMorph ifTrue: [^ self].
+	topLeftNow _ cost cartesianBoundsTopLeft.
+	^ cost right: cost left - topLeftNow x + w
