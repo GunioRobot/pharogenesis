@@ -1,5 +1,5 @@
 digitLogic: arg op: op length: len
-	| result i neg1 neg2 rneg z1 z2 rz b1 b2 b |
+	| result neg1 neg2 rneg z1 z2 rz b1 b2 b |
 	neg1 _ self negative.
 	neg2 _ arg negative.
 	rneg _ 
