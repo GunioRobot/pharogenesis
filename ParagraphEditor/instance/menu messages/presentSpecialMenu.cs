@@ -5,5 +5,5 @@ presentSpecialMenu
 	self terminateAndInitializeAround:
 		[reply _ (PopUpMenu labelArray: (items _ self specialMenuItems) lines: #()) startUp.
 		reply = 0 ifTrue: [^ self].
-		Utilities evaluate: (items at: reply) in: [] to: self]
+		Compiler new evaluate: (items at: reply) in: [] to: self]
 	
