@@ -7,7 +7,7 @@ enter: returningFlag revert: revertFlag saveForRevert: saveForRevert
 	| showZoom recorderOrNil old forceRevert response seg newProcess |
 
 	(world isKindOf: StringMorph) ifTrue: [
-		self inform: 'This project is not all here. I will try to load a complete version.'.
+		self inform: 'This project is not all here. I will try to load a complete version.' translated.
 		^self loadFromServer: true	"try to get a fresh copy"
 	].
 	self isCurrentProject ifTrue: [^ self].
@@ -15,35 +15,40 @@ enter: returningFlag revert: revertFlag saveForRevert: saveForRevert
 	guards ifNotNil:
 		[guards _ guards reject: [:obj | obj isNil].
 		guards do: [:obj | obj okayToEnterProject ifFalse: [^ self]]].
+	CurrentProject world triggerEvent: #aboutToLeaveWorld.
 	forceRevert _ false.
 	CurrentProject rawParameters 
-		ifNil: [revertFlag ifTrue: [^ self inform: 'nothing to revert to']]
+		ifNil: [revertFlag ifTrue: [^ self inform: 'nothing to revert to' translated]]
 		ifNotNil: [saveForRevert ifFalse: [
 				forceRevert _ CurrentProject projectParameters 
 								at: #revertWithoutAsking ifAbsent: [false]]].
 	forceRevert not & revertFlag ifTrue: [
-		response _ SelectionMenu confirm: 'Are you sure you want to destroy this Project\ and revert to an older version?\\(From the parent project, click on this project''s thumbnail.)' withCRs
-			trueChoice: 'Revert to saved version' 
-			falseChoice: 'Cancel'.
+		response _ SelectionMenu confirm: 'Are you sure you want to destroy this Project\ and revert to an older version?\\(From the parent project, click on this project''s thumbnail.)' translated withCRs
+			trueChoice: 'Revert to saved version' translated
+			falseChoice: 'Cancel' translated.
 		response ifFalse: [^ self]].
 
 	revertFlag | forceRevert 
 		ifTrue: [seg _ CurrentProject projectParameters at: #revertToMe ifAbsent: [
-					^ self inform: 'nothing to revert to']]
+					^ self inform: 'nothing to revert to' translated]]
 		ifFalse: [
+			CurrentProject finalExitActions.
 			CurrentProject makeThumbnail.
-			returningFlag == #specialReturn ifTrue: [
-				ProjectHistory forget: CurrentProject.		"this guy is irrelevant"
-				Project forget: CurrentProject.
-			] ifFalse: [
-				ProjectHistory remember: CurrentProject.
-			].
-		].
-	(revertFlag | saveForRevert | forceRevert) ifFalse: [
-		(Preferences valueOfFlag: #projectsSentToDisk) ifTrue: [
-			self storeToMakeRoom]].
+			returningFlag == #specialReturn
+				ifTrue:
+					[ProjectHistory forget: CurrentProject.		"this guy is irrelevant"
+					Project forget: CurrentProject]
+				ifFalse:
+					[ProjectHistory remember: CurrentProject]].
 
-	Smalltalk isMorphic ifTrue: [Display bestGuessOfCurrentWorld triggerClosingScripts].
+	(revertFlag | saveForRevert | forceRevert) ifFalse:
+		[(Preferences valueOfFlag: #projectsSentToDisk) ifTrue:
+			[self storeToMakeRoom]].
+
+	CurrentProject abortResourceLoading.
+	Smalltalk isMorphic ifTrue: [CurrentProject world triggerClosingScripts].
+
+	CurrentProject saveProjectPreferences.
 
 	"Update the display depth and make a thumbnail of the current project"
 	CurrentProject displayDepth: Display depth.
@@ -59,8 +64,9 @@ enter: returningFlag revert: revertFlag saveForRevert: saveForRevert
 
 	(world isMorph and: [world hasProperty: #letTheMusicPlay])
 		ifTrue: [world removeProperty: #letTheMusicPlay]
-		ifFalse: [Smalltalk at: #ScorePlayer ifPresent: [:playerClass | 
-					playerClass allSubInstancesDo: [:player | player pause]]].
+		ifFalse: [Smalltalk at: #ScorePlayer ifPresentAndInMemory:
+					[:playerClass | playerClass allSubInstancesDo:
+						[:player | player pause]]].
 
 	returningFlag == #specialReturn ifTrue: [
 		old removeChangeSetIfPossible.	"keep this stuff from accumulating"
@@ -75,16 +81,17 @@ enter: returningFlag revert: revertFlag saveForRevert: saveForRevert
 	CurrentProject isolationHead == self isolationHead ifFalse:
 		[self invokeFrom: CurrentProject].
 	CurrentProject _ self.
-	Smalltalk newChanges: changeSet.
+	self installProjectPreferences.
+	ChangeSet  newChanges: changeSet.
 	TranscriptStream newTranscript: transcript.
 	Sensor flushKeyboard.
-	Smalltalk isMorphic ifTrue: [recorderOrNil _ Display pauseMorphicEventRecorder].
+	Smalltalk isMorphic ifTrue: [recorderOrNil _ World pauseEventRecorder].
 
 	ProjectHistory remember: CurrentProject.
 
 	world isMorph
 		ifTrue:
-			[Display changeMorphicWorldTo: world.  "Signifies Morphic"
+			[World _ world.  "Signifies Morphic"
 			world install.
 			world transferRemoteServerFrom: old world.
 			"(revertFlag | saveForRevert | forceRevert) ifFalse: [
@@ -93,7 +100,7 @@ enter: returningFlag revert: revertFlag saveForRevert: saveForRevert
 			recorderOrNil ifNotNil: [recorderOrNil resumeIn: world].
 			world triggerOpeningScripts]
 		ifFalse:
-			[Display changeMorphicWorldTo: nil.  "Signifies MVC"
+			[World _ nil.  "Signifies MVC"
 			Smalltalk at: #ScheduledControllers put: world].
 
 	saveForRevert ifTrue: [
@@ -114,6 +121,7 @@ enter: returningFlag revert: revertFlag saveForRevert: saveForRevert
 	world isMorph ifTrue: [
 		self finalEnterActions.
 		world repairEmbeddedWorlds.
+		world triggerEvent: #aboutToEnterWorld.
 		Project spawnNewProcessAndTerminateOld: true
 	] ifFalse: [
 		SystemWindow clearTopWindow.	"break external ref to this project"
