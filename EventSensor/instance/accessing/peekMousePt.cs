@@ -1,0 +1,2 @@
+peekMousePt
+	^mousePosition
