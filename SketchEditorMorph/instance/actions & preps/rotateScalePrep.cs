@@ -4,7 +4,7 @@ rotateScalePrep
 	| newBox |
 	action == #scaleOrRotate ifTrue: [^ self].	"Already doing it"
 	paintingForm width > 120 
-		ifTrue: [newBox _ paintingForm innerPixelRectFor: 0 orNot: true.
+		ifTrue: [newBox _ paintingForm rectangleEnclosingPixelsNotOfColor: Color transparent.
 			"minimum size"
 			newBox _ newBox insetBy: 
 				((18 - newBox width max: 0)//2) @ ((18 - newBox height max: 0)//2) * -1]
