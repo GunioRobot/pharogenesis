@@ -1,6 +1,6 @@
 readFromStrike2Stream: file 
 	"Build an instance from the supplied binary stream on data in strike2 format"
-	type _ file nextInt32.  type = 2 ifFalse: [file close. self halt "not strike2 format"].
+	type _ file nextInt32.  type = 2 ifFalse: [file close. self error: 'not strike2 format'].
 	minAscii _ file nextInt32.
 	maxAscii _ file nextInt32.
 	maxWidth _ file nextInt32.
@@ -14,12 +14,10 @@ readFromStrike2Stream: file
 	(minAscii + 1 to: maxAscii + 3) do:
 		[:index | xTable at: index put: file nextInt32].
 	glyphs _ Form new readFrom: file.
-	file close.
 
 	"Set up space character"
 	((xTable at: (Space asciiValue + 2))  = 0 or:
 			[(xTable at: (Space asciiValue + 2)) = (xTable at: (Space asciiValue + 1))])
 		ifTrue:	[(Space asciiValue + 2) to: xTable size do:
 					[:index | xTable at: index put: ((xTable at: index) + DefaultSpace)]].
-
-	self setStopConditions
+	characterToGlyphMap _ nil.
