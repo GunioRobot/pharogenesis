@@ -1,5 +1,6 @@
 playerClass: aPlayerClass selector: aSelector
 	"Set the playerClass and selector of the receiver"
 
-	playerClass _ aPlayerClass.
-	selector _ aSelector
+	super playerClass: aPlayerClass selector: aSelector.
+	aSelector numArgs = 1 ifTrue:
+		[argumentVariables _ {Variable new name: 'parameter' type: #Number}]
