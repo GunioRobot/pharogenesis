@@ -1,5 +1,4 @@
 primDigitMultiply: firstInteger with: secondInteger negative: neg
-	""
 	| firstLarge secondLarge |
 	self debugCode: [self msg: 'primDigitMultiply: firstInteger with: secondInteger negative: neg'].
 	self
