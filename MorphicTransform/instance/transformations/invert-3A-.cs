@@ -5,4 +5,4 @@ invert: aPoint
 	p3 _  aPoint * scale.
 	p2 _ ((p3 x * angle cos) + (p3 y * angle sin))
 		@ ((p3 y * angle cos) - (p3 x * angle sin)).
-	^ (p2 - offset) asIntegerPoint
+	^ (p2 - offset)
