@@ -10,7 +10,7 @@ extractExportDirective
 	newStatements _ OrderedCollection new: parseTree statements size.
 	parseTree statements do: [ :stmt |
 		(stmt isSend and: [stmt selector = #export:]) ifTrue: [
-			result _ stmt args first name = 'true'.
+			result _ stmt args first value = true.
 		] ifFalse: [
 			newStatements add: stmt.
 		].
