@@ -3,3 +3,5 @@ deletingProject: aProject
 
 	previousProject == aProject
 		ifTrue: [previousProject _ nil].
+	nextProject == aProject
+		ifTrue:	[nextProject _ nil]
