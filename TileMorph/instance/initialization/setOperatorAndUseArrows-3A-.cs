@@ -3,6 +3,6 @@ setOperatorAndUseArrows: aString
 
 	type _ #operator.
 	operatorOrExpression _ aString asSymbol.
- 	self line1: (ScriptingSystem wordingForOperator: aString).
+ 	self line1: (self currentVocabulary tileWordingForSelector: operatorOrExpression).
 	self addArrows; updateLiteralLabel.
 	submorphs last setBalloonText: (ScriptingSystem helpStringForOperator: operatorOrExpression)
