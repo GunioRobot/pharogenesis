@@ -1,9 +1,6 @@
 addClassVarsFor: aClass
-	"Add the class variables for the given class (and its superclasses) to the code base as constants."
+	"Add the class variables for the given class to the code base as constants."
 
-	| allClasses |
-	allClasses _ aClass allSuperclasses asOrderedCollection.
-	allClasses add: aClass.
-	allClasses do: [:c |
-		c classPool associationsDo:
-			[:assoc | constants at: assoc key put: (TConstantNode new setValue: assoc value)]].
+	aClass classPool associationsDo: [:assoc | 
+		constants at: assoc key asString
+			put: (TConstantNode new setValue: assoc value)]
