@@ -5,7 +5,7 @@ closeAndDestroy: timeoutSeconds
 		ifFalse: [
 			self isConnected ifTrue: [
 				self close.  "close this end"
-				(self waitForDisconnectionUntil: (Socket deadlineSecs: timeoutSeconds))
+				(self waitForDisconnectionFor: timeoutSeconds)
 					ifFalse: [
 						"if the other end doesn't close soon, just abort the connection"
 						self primSocketAbortConnection: socketHandle]].
