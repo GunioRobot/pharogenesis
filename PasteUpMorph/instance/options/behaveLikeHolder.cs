@@ -1,3 +1,3 @@
 behaveLikeHolder
  
-	self resizeToFit: true; autoLineLayout: true; indicateCursor: true
+	self vResizeToFit: true; autoLineLayout: true; indicateCursor: true
