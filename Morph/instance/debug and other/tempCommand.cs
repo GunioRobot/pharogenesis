@@ -4,4 +4,4 @@ tempCommand
 	self inform: 'Before calling tempCommand, you
 should first give it a definition.  To
 do this, choose "define tempCommand"
-from the debug menu.'
+from the debug menu.' translated
