@@ -8,15 +8,15 @@ displayWorld: aWorld submorphs: submorphs
 
 	deferredUpdateMode _ self doDeferredUpdatingFor: aWorld.
 	deferredUpdateMode ifFalse: [self assuredCanvas].
+	canvas roundCornersOf: aWorld during:[
+		worldDamageRects _ self drawWorld: aWorld submorphs: submorphs invalidAreasOn: canvas.  "repair world's damage on canvas"
+		"self handsDo:[:h| h noticeDamageRects: worldDamageRects]."
+		handsToDraw _ self selectHandsToDrawForDamage: worldDamageRects.
+		handDamageRects _ handsToDraw collect: [:h | h savePatchFrom: canvas].
+		allDamage _ worldDamageRects, handDamageRects.
 
-	worldDamageRects _ self drawWorld: aWorld submorphs: submorphs invalidAreasOn: canvas.  "repair world's damage on canvas"
-	"self handsDo:[:h| h noticeDamageRects: worldDamageRects]."
-	handsToDraw _ self selectHandsToDrawForDamage: worldDamageRects.
-	handDamageRects _ handsToDraw collect: [:h | h savePatchFrom: canvas].
-	allDamage _ worldDamageRects, handDamageRects.
-
-	handsToDraw reverseDo: [:h | canvas fullDrawMorph: h].  "draw hands onto world canvas"
-
+		handsToDraw reverseDo: [:h | canvas fullDrawMorph: h].  "draw hands onto world canvas"
+	].
 	"*make this true to flash damaged areas for testing*"
 	Preferences debugShowDamage ifTrue: [aWorld flashRects: allDamage color: Color black].
 
