@@ -1,10 +1,8 @@
 placeEmbeddedObject: anchoredMorph
 	(super placeEmbeddedObject: anchoredMorph) ifFalse: [^ false].
 	anchoredMorph isMorph 
-		ifTrue: [morphicOffset = (0@0) ifTrue:
-					[anchoredMorph position: (destX - width)@lineY]]
+		ifTrue: [anchoredMorph position: ((destX - anchoredMorph width)@lineY) - morphicOffset]
 		ifFalse: [destY _ lineY.
-				height _ anchoredMorph height.
 				runX _ destX.
-				anchoredMorph displayOn: destForm at: destX - width@destY].
+				anchoredMorph displayOn: bitBlt destForm at: destX - anchoredMorph width @ destY].
 	^ true
