@@ -1,0 +1,2 @@
+addLastPoint
+	self addNextPoint.
