@@ -1,4 +1,4 @@
-renameSilentlyInstVar: old  to: new
+renameSilentlyInstVar: old to: new
 	| i oldName newName |
 	oldName _ old asString.
 	newName _ new asString.
