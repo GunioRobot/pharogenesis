@@ -1,11 +1,4 @@
 inAScrollPane
+	"Answer a scroll pane in which the receiver is scrollable"
 
-	| widget |
-
-	widget _ TwoWayScrollPane new.
-	widget extent: 10@10;
-		borderWidth: 0.
-	widget scroller addMorph: self.
-	widget setScrollDeltas.
-	^widget
-
+	^ self inATwoWayScrollPane
