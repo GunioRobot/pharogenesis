@@ -1,6 +1,8 @@
 halfWordAt: byteAddress
-	| lowBits |
+    "Return the half-word at byteAddress which must be even."
+	| lowBits long |
 	lowBits _ byteAddress bitAnd: 2.
-	^((self longAt: byteAddress - lowBits)
-		bitShift: (0 - lowBits) * 8)
-		bitAnd: 16rFFFF
+	long _ self longAt: byteAddress - lowBits.
+	^lowBits = 2
+		ifTrue: [ long bitShift: -16 ]
+		ifFalse: [ long bitAnd: 16rFFFF ].
