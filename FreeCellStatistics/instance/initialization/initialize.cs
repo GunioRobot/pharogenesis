@@ -1,3 +1,3 @@
 initialize
-
-	self reset.
+	super initialize.
+	self reset
