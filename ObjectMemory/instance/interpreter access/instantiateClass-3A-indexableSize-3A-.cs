@@ -6,18 +6,18 @@ instantiateClass: classPointer indexableSize: size
 	when the split fields get merged in an (incompatible) image change.
 "
 	self inline: false.
-	checkAssertions ifTrue: [
+	DoAssertionChecks ifTrue: [
 		size < 0 ifTrue: [ self error: 'cannot have a negative indexable field count' ]].
 
 	hash _ self newObjectHash.
 	header1 _ self formatOfClass: classPointer. "Low 2 bits are 0"
 	sizeHiBits _ (header1 bitAnd: 16r60000) >> 9.
-	header1 _ (header1 bitAnd: 16r1FFFF) bitOr: (hash << 17 bitAnd: 16r1FFE0000).
+	header1 _ (header1 bitAnd: 16r1FFFF) bitOr: ((hash << HashBitsOffset) bitAnd: HashBits).
 	header2 _ classPointer.
 	header3 _ 0.
 
-	cClass _ header1 bitAnd: 16r1F000. "compact class field from format word"
-	byteSize _ (header1 bitAnd: 16rFC) + sizeHiBits. "size in bytes -- low 2 bits are 0"
+	cClass _ header1 bitAnd: CompactClassMask. "compact class field from format word"
+	byteSize _ (header1 bitAnd: SizeMask) + sizeHiBits. "size in bytes -- low 2 bits are 0"
 	format _ (header1 >> 8) bitAnd: 16rF.
 
 	format < 8 ifTrue: [
@@ -25,7 +25,7 @@ instantiateClass: classPointer indexableSize: size
 		inc _ size * 4.
 	] ifFalse: [
 		"Strings and Methods"
-		inc _ (size + 3) bitAnd: 16r1FFFFFFC. "round up"
+		inc _ (size + 3) bitAnd: AllButTypeMask. "round up"
 		binc _ 3 - ((size + 3) bitAnd: 3). "odd bytes"
 		"low bits of byte size go in format field"
 		header1 _ header1 bitOr: (binc << 8).
@@ -48,10 +48,9 @@ instantiateClass: classPointer indexableSize: size
 			ifTrue: [ hdrSize _ 2 ]
 			ifFalse: [ hdrSize _ 1 ].
 	].
-
-	format < 4  "if pointers, fill with nil oop"
+	format <= 4  "if pointers, fill with nil oop"
 		ifTrue: [ fillWord _ nilObj ]
 		ifFalse: [ fillWord _ 0 ].
 
-	newObj _ self allocate: byteSize headerSize: hdrSize h1: header1 h2: header2 h3: header3 fill: fillWord.
+	newObj _ self allocate: byteSize headerSize: hdrSize h1: header1 h2: header2 h3: header3 doFill: true with: fillWord.
 	^ newObj
