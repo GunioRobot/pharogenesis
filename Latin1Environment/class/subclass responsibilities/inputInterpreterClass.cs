@@ -1,0 +1,3 @@
+inputInterpreterClass
+
+	^ MacRomanInputInterpreter.
