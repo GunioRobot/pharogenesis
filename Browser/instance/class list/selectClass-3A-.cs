@@ -1,2 +1,2 @@
 selectClass: classNotMeta
-	self classListIndex: (self classList findFirst: [:each | each == classNotMeta name])
+	self classListIndex: (self classList indexOf: classNotMeta name)
