@@ -14,7 +14,9 @@ scanToNextMessageIn: aStream
 		line _ MailDB readStringLineFrom: aStream.
 		line size >= 7 ifTrue: [
 			dayOfWeek _ (line copyFrom: 1 to: 3) asLowercase.
-			year _ (line copyFrom: line size - 3 to: line size) asNumber.
+			year _ (line at: line size - 3) isDigit
+					ifTrue: [(line copyFrom: line size - 3 to: line size) asNumber]
+					ifFalse: [0].
 			((#('sun' 'mon' 'tue' 'wed' 'thu' 'fri' 'sat') includes: dayOfWeek) and:
 			[(year > 1900) and: [year < 2100]]) ifTrue: [
 				aStream position: msgStart.
