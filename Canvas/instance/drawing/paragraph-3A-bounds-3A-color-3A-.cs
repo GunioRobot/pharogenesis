@@ -1,2 +1,3 @@
 paragraph: paragraph bounds: bounds color: c
-	"Noop here; overridden by non-trivial canvases."
+	"Draw the given paragraph"
+	^self subclassResponsibility
