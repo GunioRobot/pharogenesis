@@ -5,4 +5,5 @@ controlLoop
 	When false is returned, the loop ends. Each time through the loop, the 
 	message Controller|controlActivity is sent."
 
-	[self isControlActive] whileTrue: [self controlActivity. Processor yield]
+	[self isControlActive] whileTrue: [
+		self interActivityPause. self controlActivity. Processor yield]
