@@ -1,0 +1,2 @@
+resetConnectionInfo
+	connectInfo _ nil
