@@ -1,8 +1,8 @@
 acceptScript: aScriptEditorMorph for: aSelector
-	"Accept the code in the script editor as the code for the given selector"
+	"Accept the tile code in the script editor as the code for the given selector.  This branch is only for the classic-tile system, 1997-2001"
 
-	self class
-		compileUnlogged: aScriptEditorMorph methodString
-		classified: 'scripts'
-		notifying: nil.
-	self class atSelector: aSelector putScriptEditor: aScriptEditorMorph
+	| aUniclassScript |
+	self class compileSilently: aScriptEditorMorph methodString
+		classified: 'scripts'.
+	aUniclassScript _ self class assuredMethodInterfaceFor: aSelector asSymbol.
+	aUniclassScript currentScriptEditor: aScriptEditorMorph
