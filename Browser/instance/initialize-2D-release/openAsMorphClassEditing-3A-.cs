@@ -10,6 +10,11 @@ openAsMorphClassEditing: editString
 			selected: #indexIsOne changeSelected: #indexIsOne:
 			menu: #classListMenu:shifted: keystroke: #classListKey:from:.
 	mySingletonClassList enableDragNDrop: dragNDropFlag.
+
+	self 
+		addLowerPanesTo: window 
+		at: (0@hSepFrac corner: 1@1) 
+		with: editString.
 	window 
 		addMorph: mySingletonClassList
 		fullFrame: (
@@ -42,9 +47,5 @@ openAsMorphClassEditing: editString
 				offsets: (0@switchHeight corner: 0@0)
 		).
 
-	self 
-		addLowerPanesTo: window 
-		at: (0@hSepFrac corner: 1@1) 
-		with: editString.
 	window setUpdatablePanesFrom: #(messageCategoryList messageList).
 	^ window
