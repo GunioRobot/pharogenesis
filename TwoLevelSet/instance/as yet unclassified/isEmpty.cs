@@ -1,0 +1,3 @@
+isEmpty
+
+	^firstLevel isEmpty
