@@ -2,11 +2,10 @@ waitForDataUntil: deadline
 	"Wait up until the given deadline for data to arrive. Return true if data arrives by the deadline, false if not."
 
 	| dataArrived |
-	dataArrived _ self primSocketReceiveDataAvailable: socketHandle.
-	[dataArrived not and:
-	 [self isConnected and:
-	 [Time millisecondClockValue < deadline]]] whileTrue: [
-		semaphore waitTimeoutMSecs: (deadline - Time millisecondClockValue).
-		dataArrived _ self primSocketReceiveDataAvailable: socketHandle].
+	[self isConnected & 
+	 (dataArrived _ self primSocketReceiveDataAvailable: socketHandle) not
+			"Connection end and final data can happen fast, so test in this order"
+		and: [Time millisecondClockValue < deadline]] whileTrue: [
+			self readSemaphore waitTimeoutMSecs: (deadline - Time millisecondClockValue)].
 
 	^ dataArrived
