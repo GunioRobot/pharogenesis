@@ -20,6 +20,7 @@ primitiveDoPrimitiveWithArgs
 
 	"Run the primitive (sets successFlag)"
 	self pushRemappableOop: argumentArray.	"prim might alloc/gc"
+	lkupClass _ nilObj.
 	self primitiveResponse.
 	argumentArray _ self popRemappableOop.
 
