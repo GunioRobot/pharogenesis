@@ -13,11 +13,29 @@ alphaBlend: sourceWord with: destinationWord
 	unAlpha _ 255 - alpha.
 	colorMask _ 16rFF.
 	result _ 0.
-	"ar 9/9/2000 - include alpha in computation"
-	1 to: 4 do:
-		[:i | shift _ (i-1)*8.
-		blend _ (((sourceWord>>shift bitAnd: colorMask) * alpha)
-					+ ((destinationWord>>shift bitAnd: colorMask) * unAlpha))
+
+	"red"
+	shift := 0.
+	blend := ((sourceWord >> shift bitAnd: colorMask) * alpha) +
+				((destinationWord>>shift bitAnd: colorMask) * unAlpha)
 			 	+ 254 // 255 bitAnd: colorMask.
-		result _ result bitOr: blend<<shift].
+	result _ result bitOr: blend << shift.
+	"green"
+	shift := 8.
+	blend := ((sourceWord >> shift bitAnd: colorMask) * alpha) +
+				((destinationWord>>shift bitAnd: colorMask) * unAlpha)
+			 	+ 254 // 255 bitAnd: colorMask.
+	result _ result bitOr: blend << shift.
+	"blue"
+	shift := 16.
+	blend := ((sourceWord >> shift bitAnd: colorMask) * alpha) +
+				((destinationWord>>shift bitAnd: colorMask) * unAlpha)
+			 	+ 254 // 255 bitAnd: colorMask.
+	result _ result bitOr: blend << shift.
+	"alpha (pre-multiplied)"
+	shift := 24.
+	blend := (alpha * 255) +
+				((destinationWord>>shift bitAnd: colorMask) * unAlpha)
+			 	+ 254 // 255 bitAnd: colorMask.
+	result _ result bitOr: blend << shift.
 	^ result
