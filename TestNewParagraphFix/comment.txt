@@ -1,0 +1,1 @@
+This class tests the same things as its superclass, but for NewParagraph which is used in the Morphic environment.
