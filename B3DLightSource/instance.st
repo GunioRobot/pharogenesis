@@ -1,6 +1,6 @@
 Object
 	subclass: #B3DLightSource
-	instanceVariableNames: 'lightColor '
+	instanceVariableNames: 'lightColor'
 	classVariableNames: ''
-	poolDictionaries: 'B3DEngineConstants '
-	category: 'Balloon3D-Lights'
+	poolDictionaries: 'B3DEngineConstants'
+	category: 'Balloon3D-Kernel-Lights'
