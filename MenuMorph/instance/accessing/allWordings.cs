@@ -1,7 +1,8 @@
 allWordings
+	"Answer a collection of the wordings of all items and subitems, omitting the window-list in the embed... branch and (unless a certain hard-coded preference is set) also omitting items from the debug menu"
+
 	| verboten |
-	"Answer a collection of the wordings of all items and subitems, omitting debug menu"
-	verboten _ Preferences debugMenuItemsInvokableFromScripts 
-		ifTrue:	[nil]
-		ifFalse:	['debug...'].
-	^ self allWordingsNotInSubMenu: verboten
+	verboten _ OrderedCollection with: 'embed into'.
+	Preferences debugMenuItemsInvokableFromScripts 
+		ifFalse:	[verboten add: 'debug...' translated].
+	^ self allWordingsNotInSubMenus: verboten
