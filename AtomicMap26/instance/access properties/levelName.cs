@@ -1,0 +1,2 @@
+levelName
+	^ 'Floating link' translated
