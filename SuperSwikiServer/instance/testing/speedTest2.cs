@@ -25,6 +25,6 @@ speedTest2
 				{tRealBegin. tRealEnd. tRealEnd - tRealBegin}.
 				answer
 			}.
-		] forkAt: 5
+		] forkAt: Processor userInterruptPriority.
 	].
 	bigAnswer inspect.
