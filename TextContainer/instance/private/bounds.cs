@@ -1,7 +1,8 @@
 bounds
-	| bounds |
+	| bounds theText |
 	self fillsOwner ifFalse: [^ textMorph textBounds].
-	bounds _ textMorph owner bounds.
-	textMorph owner submorphsBehind: textMorph do:
+	theText _ textMorph meOrMyDropShadow.
+	bounds _ theText owner bounds.
+	theText owner submorphsBehind: theText do:
 		[:m | bounds _ bounds merge: m fullBounds].
 	^ bounds
