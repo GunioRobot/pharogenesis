@@ -1,13 +1,14 @@
 keywords
 	"Answer an array of the keywords that compose the receiver."
-	| result aStream char |
-	result _ WriteStream on: (Array new: 10).
-	aStream _ WriteStream on: (String new: 16).
-	1 to: self size do:
-		[:i |
-		aStream nextPut: (char _ self at: i).
-		char = $: ifTrue: 
-				[result nextPut: aStream contents.
-				aStream reset]].
-	aStream isEmpty ifFalse: [result nextPut: aStream contents].
-	^ result contents
+
+	| answer size last |
+	answer _ OrderedCollection new.
+	size _ self size.
+	last _ 0.
+	1 to: size do:
+		[:index |
+		(self at: index) == $: ifTrue:
+			[answer add: (self copyFrom: last + 1 to: index).
+			last _ index]].
+	last = size ifFalse: [answer add: (self copyFrom: last + 1 to: size)].
+	^ answer asArray
