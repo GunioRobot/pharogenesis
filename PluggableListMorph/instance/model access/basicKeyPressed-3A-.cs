@@ -7,13 +7,13 @@ basicKeyPressed: aChar
 		lastKeystrokes _ ''].
 	lastKeystrokes _ lastKeystrokes , aChar asLowercase asString.
 	lastKeystrokeTime _ milliSeconds.
-	nextSelectionList _ OrderedCollection newFrom: (list copyFrom: oldSelection + 1 to: max).
-	nextSelectionList addAll: (list copyFrom: 1 to: oldSelection).
+	nextSelectionList _ OrderedCollection newFrom: (self getList copyFrom: oldSelection + 1 to: max).
+	nextSelectionList addAll: (self getList copyFrom: 1 to: oldSelection).
 	"Get rid of blanks and style used in some lists"
 	nextSelectionText _ nextSelectionList detect: [:a | a asString withBlanksTrimmed asLowercase beginsWith: lastKeystrokes]
 				ifNone: [^ self flash"match not found"].
 	model okToChange ifFalse: [^ self].
-	nextSelection _ list findFirst: [:a | a == nextSelectionText].
+	nextSelection _ self getList findFirst: [:a | a == nextSelectionText].
 	"No change if model is locked"
 	oldSelection == nextSelection ifTrue: [^ self flash].
 	^ self changeModelSelection: nextSelection
