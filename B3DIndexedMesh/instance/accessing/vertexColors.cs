@@ -1,0 +1,2 @@
+vertexColors
+	^vtxColors
