@@ -12,6 +12,12 @@ ellipse: evt
 		(oldExt < ext) ifFalse: ["Last draw sticks out, must erase the area"
 			oldRect _ Rectangle center: strokeOrigin extent: oldExt.
 			self restoreRect: oldRect]].
+	currentColor == Color transparent
+	ifFalse:[
 	formCanvas fillOval: rect color: currentColor 
-		borderWidth: ww borderColor: Color black.
+		borderWidth: 0 borderColor: Color transparent.]
+	ifTrue:[
+	formCanvas fillOval: rect color: currentColor 
+		borderWidth: ww borderColor: Color black].
 	self invalidRect: rect.
+
