@@ -1,7 +1,7 @@
 translate: aStream noPattern: noPattern ifFail: failBlock
 	| tree |
 	tree _ 
-		self class parserClass new
+		self parserClass new
 			parse: aStream
 			class: class
 			noPattern: noPattern
