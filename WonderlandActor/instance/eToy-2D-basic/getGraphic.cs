@@ -1,0 +1,2 @@
+getGraphic
+	^ self graphic
