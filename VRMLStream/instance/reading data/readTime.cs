@@ -1,0 +1,2 @@
+readTime
+	^self readDouble
