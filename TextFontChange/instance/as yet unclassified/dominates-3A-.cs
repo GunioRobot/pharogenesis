@@ -1,2 +1,2 @@
 dominates: other
-	^ other class == self class
+	^ other isKindOf: TextFontChange
