@@ -6,4 +6,4 @@ defsOfSelection
 	(aClass _ self object class) isVariable ifTrue: [^ self changed: #flash].
 
 	sel _ aClass allInstVarNames at: self selectionIndex - 2.
-	aClass browseAllStoresInto: sel
+	self systemNavigation  browseAllStoresInto: sel from: aClass
