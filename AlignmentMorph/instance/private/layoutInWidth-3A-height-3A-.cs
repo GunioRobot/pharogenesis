@@ -3,10 +3,8 @@ layoutInWidth: w height: h
 
 	((hResizing = #spaceFill) and: [bounds width ~= w]) ifTrue: [
 		bounds _ bounds origin extent: (w @ bounds height).
-		fullBounds _ nil.
-		layoutNeeded _ true].
+		self layoutChanged].
 
 	((vResizing = #spaceFill) and: [bounds height ~= h]) ifTrue: [
 		bounds _ bounds origin extent: (bounds width @ h).
-		fullBounds _ nil.
-		layoutNeeded _ true].
+		self layoutChanged].
