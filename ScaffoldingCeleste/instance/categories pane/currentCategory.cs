@@ -1,0 +1,3 @@
+currentCategory
+	
+	^categoryFilter category
