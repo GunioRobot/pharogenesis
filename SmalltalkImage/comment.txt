@@ -1,0 +1,10 @@
+I represent the SmalltalkImage and partly the VM. Using my current instance you can 
+	- get the value of some VM parameters, system arguments, vm profiling,
+	endianess status, external objects,....
+
+	- save the image, manage sources
+
+As you will notice browsing my code I'm a fat class having still too much responsibility.
+But this is life. sd-2 July 2003
+
+PS: if someone wants to split me go ahead.
