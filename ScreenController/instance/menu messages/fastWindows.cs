@@ -1,2 +1,4 @@
 fastWindows
-	StandardSystemView doCacheBits
+	StandardSystemView cachingBits
+		ifTrue: [StandardSystemView dontCacheBits]
+		ifFalse: [StandardSystemView doCacheBits]
