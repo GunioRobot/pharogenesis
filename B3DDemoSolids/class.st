@@ -1,0 +1,1 @@
+B3DDemoSolids class instanceVariableNames: ''
