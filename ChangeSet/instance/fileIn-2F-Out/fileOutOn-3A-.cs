@@ -1,6 +1,5 @@
 fileOutOn: stream 
-	"Write out all the changes the receiver knows about.
-	 5/15/96 sw: changed such that class headers for all changed classes go out at the beginning of the file."
+	"Write out all the changes the receiver knows about"
 
 	| classList |
 	self isEmpty ifTrue: [self notify: 'Warning: no changes to file out'].
@@ -16,5 +15,4 @@ fileOutOn: stream
 		[:aClass |
 		self fileOutPSFor: aClass on: stream].
 	classRemoves do:
-		[:aClassName |
-		stream nextChunkPut: aClassName, ' removeFromSystem'; cr].
+		[:aClassName | stream nextChunkPut: 'Smalltalk removeClassNamed: #', aClassName; cr].
