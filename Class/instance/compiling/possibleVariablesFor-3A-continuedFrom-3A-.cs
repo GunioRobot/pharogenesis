@@ -6,6 +6,6 @@ possibleVariablesFor: misspelled continuedFrom: oldResults
 		results _ misspelled correctAgainstDictionary: pool continuedFrom: results ].
 	superclass == nil
 		ifTrue: 
-			[ ^ misspelled correctAgainstDictionary: Smalltalk continuedFrom: results ]
+			[ ^ misspelled correctAgainstDictionary: self environment continuedFrom: results ]
 		ifFalse:
 			[ ^ superclass possibleVariablesFor: misspelled continuedFrom: results ]
