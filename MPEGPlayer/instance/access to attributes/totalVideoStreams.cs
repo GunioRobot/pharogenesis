@@ -1,0 +1,2 @@
+totalVideoStreams
+	^self external totalVideoStreams
