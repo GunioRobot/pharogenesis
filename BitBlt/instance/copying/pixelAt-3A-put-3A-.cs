@@ -3,6 +3,7 @@ pixelAt: aPoint put: pixelValue
 	BitBlt bitPokerToForm:.  Overwrites the pixel at aPoint."
 	destX _ aPoint x.
 	destY _ aPoint y.
+	sourceForm unhibernate. "before poking"
 	sourceForm bits at: 1 put: pixelValue.
 	self copyBits
 "
