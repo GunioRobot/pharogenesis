@@ -1,3 +1,3 @@
 declareHeaderFilesIn: aCCodeGenerator
-	self headerFile ifNotNil:[
+	self hasHeaderFile ifTrue:[
 		aCCodeGenerator addHeaderFile: '"', self moduleName,'.h"'].
