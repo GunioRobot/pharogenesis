@@ -10,11 +10,7 @@ fromBinaryStream: aBinaryStream
 	firstByte = 2 ifTrue: [
 		"new Squeak form format"
 		^ self new readFrom: aBinaryStream].
-	firstByte = $B asciiValue ifTrue: [
-		"BMP format"
-		aBinaryStream skip: - 1.
-		^ self fromBMPFile: aBinaryStream].
 
 	"Try for JPG, GIF, or PCX..."
 	"Note: The following call closes the stream."
-	^ Smalltalk imageReaderClass formFromStream: aBinaryStream
+	^ ImageReadWriter formFromStream: aBinaryStream
