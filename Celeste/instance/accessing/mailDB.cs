@@ -1,0 +1,3 @@
+mailDB
+
+	^mailDB
