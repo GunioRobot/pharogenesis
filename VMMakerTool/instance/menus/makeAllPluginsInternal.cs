@@ -1,0 +1,4 @@
+makeAllPluginsInternal
+
+
+	vmMaker makeAllModulesInternal
