@@ -1,3 +1,5 @@
 defects
-
-	^self errors, self failures
+	^OrderedCollection new
+		addAll: self errors;
+		addAll: self failures; yourself
+			
