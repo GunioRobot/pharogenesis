@@ -1,0 +1,1 @@
+AtomicOxygen class instanceVariableNames: ''
