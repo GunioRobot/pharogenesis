@@ -19,7 +19,7 @@ fixUpReturns: argCount postlog: postlog
 								newStmts addAll: (self popArgsExpr: argCount + 1).
 								newStmts addLast: (TSendNode new
 									setSelector: #pushInteger:
-									receiver: (TVariableNode new setName: 'self')
+									receiver: (TVariableNode new setName: self vmNameString)
 									arguments: (Array with: stmt expression)).
 								newStmts addLast: (TReturnNode new
 									setExpression: (TVariableNode new setName: 'null'))]]
