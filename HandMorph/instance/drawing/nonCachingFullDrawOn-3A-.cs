@@ -1,4 +1,5 @@
 nonCachingFullDrawOn: aCanvas
+	| shadowForm |
 	"A HandMorph has unusual drawing requirements:
 		1. the hand itself (i.e., the cursor) appears in front of its submorphs
 		2. morphs being held by the hand cast a shadow on the world/morphs below
@@ -6,10 +7,18 @@ nonCachingFullDrawOn: aCanvas
 	"Note: This version does not cache an image of the morphs being held by the hand.
 	 Thus, it is slower for complex morphs, but consumes less space."
 
-	| shadowCanvas |
 	submorphs isEmpty ifTrue: [^ self drawOn: aCanvas].  "just draw the hand itself"
-
-	shadowCanvas _ aCanvas copyForShadowDrawingOffset: self shadowOffset.
-	submorphs reverseDo: [:m | m fullDrawOn: shadowCanvas].  "draw shadows"
-	submorphs reverseDo: [:m | m fullDrawOn: aCanvas].  "draw morphs in front of shadows"
+	aCanvas asShadowDrawingCanvas
+		translateBy: self shadowOffset during:[:shadowCanvas|
+		"Note: We use a shadow form here to prevent drawing
+		overlapping morphs multiple times using the transparent
+		shadow color."
+		shadowForm _ self shadowForm.
+"
+shadowForm displayAt: shadowForm offset negated. Display forceToScreen: (0@0 extent: shadowForm extent).
+"
+		shadowCanvas paintImage: shadowForm at: shadowForm offset.  "draw shadows"
+	].
+	"draw morphs in front of shadows"
+	self drawSubmorphsOn: aCanvas.
 	self drawOn: aCanvas.  "draw the hand itself in front of morphs"
