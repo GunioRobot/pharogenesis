@@ -3,5 +3,5 @@ doIt: characterStream
 	2/29/96 sw: don't call selectLine; it's done by doIt now"
 
 	sensor keyboard.	
-	self doIt.
+	self terminateAndInitializeAround: [self doIt].
 	^ true
