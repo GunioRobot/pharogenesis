@@ -1,0 +1,2 @@
+vrmlProtoCopy
+	^node vrmlProtoCopy
