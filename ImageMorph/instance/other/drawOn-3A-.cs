@@ -1,3 +1,3 @@
 drawOn: aCanvas
 
-	aCanvas image: image at: bounds origin.
+	aCanvas paintImage: image at: bounds origin.
