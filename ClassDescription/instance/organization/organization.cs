@@ -3,8 +3,10 @@ organization
 	of the messages of the receiver."
 
 	organization ifNil:
-		[organization _ ClassOrganizer defaultList: 
-						self methodDict keys asSortedCollection asArray].
+		[self organization: (ClassOrganizer defaultList: self methodDict keys asSortedCollection asArray)].
 	(organization isMemberOf: Array) ifTrue:
-		[self recoverFromMDFault].
+		[self recoverFromMDFaultWithTrace].
+	
+	"Making sure that subject is set correctly. It should not be necessary."
+	organization ifNotNil: [organization setSubject: self].
 	^ organization
