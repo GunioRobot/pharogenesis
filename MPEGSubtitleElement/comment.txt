@@ -1,0 +1,5 @@
+an element of a subtitle file,
+
+this has the form
+
+{initialFrame}{endFrame} subtitle line[| next subtitle line]
