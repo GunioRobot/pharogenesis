@@ -1,6 +1,7 @@
 checkFlush
-	self buffered
-		ifTrue: [self autoFlush
-			ifTrue: [self outStream position > self bufferSize
-				ifTrue: [self flush]]]
-		ifFalse: [self flush]
+	"If autoFlush is true we flush if
+	we have reached the bufferSize
+	of data in the outBuffer."
+
+	(autoFlush and: [outNextToWrite > bufferSize])
+		ifTrue: [self flush]
