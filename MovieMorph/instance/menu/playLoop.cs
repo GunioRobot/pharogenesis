@@ -1,0 +1,3 @@
+playLoop
+
+	playMode _ #loop.
