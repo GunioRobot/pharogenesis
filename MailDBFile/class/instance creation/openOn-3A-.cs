@@ -1,4 +1,4 @@
 openOn: fileName
-	"Answer a new instance of me, backed by the file with the given name."
+	"Answer a new instance of me, backed by the file with the given name, and open it"
 
-	^(super new) openOn: fileName
+	^(self on: fileName) open; yourself
