@@ -8,7 +8,7 @@ colors: colorList
 
 	colorArray _ colorList asArray.
 	colorCount _ colorArray size.
-	newColors _ Array new: (1 bitShift: depth).
+	newColors _ Array new: (1 bitShift: self depth).
 	1 to: newColors size do: [:i |
 		i <= colorCount
 			ifTrue: [newColors at: i put: (colorArray at: i)]
