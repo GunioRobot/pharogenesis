@@ -1,0 +1,2 @@
+keepAlive: aBoolean
+	keepAlive := aBoolean
