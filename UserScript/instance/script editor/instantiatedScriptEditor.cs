@@ -3,13 +3,18 @@ instantiatedScriptEditor
 	self isAnonymous ifTrue:
 		[currentScriptEditor _ ScriptEditorMorph new playerScripted: player].
 
-	self isTextuallyCoded ifTrue: ["path thought not to be reached now"
-								^ player costume pasteUpMorph scriptorForTextualScript: selector ofPlayer: player].
+	self isTextuallyCoded ifTrue: [
+			"path thought not to be reached now"
+			^ player costume pasteUpMorph scriptorForTextualScript: selector ofPlayer: player].
 
 	currentScriptEditor ifNil:
-		[currentScriptEditor _ ScriptEditorMorph  new
-			setMorph: player costume
-			scriptName: selector.
-		status == #ticking ifTrue: [player costume startStepping]].
+		[currentScriptEditor _ (player class includesSelector: selector) 
+			ifTrue: [ScriptEditorMorph new 
+				fromExistingMethod: selector 
+				forPlayer: player]
+			ifFalse: [ScriptEditorMorph new
+				setMorph: player costume
+				scriptName: selector].
+		status == #ticking ifTrue: [player costume arrangeToStartStepping]].
 	
 	^ currentScriptEditor
