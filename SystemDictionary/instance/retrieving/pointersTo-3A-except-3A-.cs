@@ -10,15 +10,16 @@ pointersTo: anObject except: objectsToExclude
 	 method and block contexts out of the results"
 	anObj _ self someObject.
 	[0 == anObj] whileFalse: [
-		(anObj pointsTo: anObject) ifTrue: [
-			"exclude the results collector and contexts in call chain"
-			((anObj ~~ results collector) and:
-			 [(anObj ~~ objectsToExclude) and:
-			 [(anObj ~~ thisContext) and:
-			 [(anObj ~~ thisContext sender) and:
-			 [anObj ~~ thisContext sender sender]]]])
-				 ifTrue: [ results add: anObj ].
-		].
+		anObj isInMemory ifTrue: [
+			(anObj pointsTo: anObject) ifTrue: [
+				"exclude the results collector and contexts in call chain"
+				((anObj ~~ results collector) and:
+				 [(anObj ~~ objectsToExclude) and:
+				 [(anObj ~~ thisContext) and:
+				 [(anObj ~~ thisContext sender) and:
+				 [anObj ~~ thisContext sender sender]]]])
+					 ifTrue: [ results add: anObj ].
+			]].
 		anObj _ anObj nextObject.
 	].
 	objectsToExclude do: [ :obj | results removeAllSuchThat: [ :el | el == obj]].
