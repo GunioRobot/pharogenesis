@@ -1,0 +1,2 @@
+veryDeepCopyWith: deepCopier
+	^ self copy
