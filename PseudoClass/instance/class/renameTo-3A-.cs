@@ -1,7 +1,7 @@
 renameTo: aString
 
 	self hasDefinition ifTrue:[
-		self isMetaClass ifTrue:[
+		self isMeta ifTrue:[
 			self definition: (self definition
 				copyReplaceAll: name,' class'
 				with: aString, ' class').
