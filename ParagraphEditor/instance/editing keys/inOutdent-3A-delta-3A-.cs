@@ -1,14 +1,13 @@
 inOutdent: characterStream delta: delta
 	"Add/remove a tab at the front of every line occupied by the selection. Flushes typeahead.  Derived from work by Larry Tesler back in December 1985.  Now triggered by Cmd-L and Cmd-R.  2/29/96 sw"
 
-	| cr tab realStart realStop lines startLine stopLine start stop adjustStart indentation size origSize numLines inStream newString outStream |
+	| cr realStart realStop lines startLine stopLine start stop adjustStart indentation size numLines inStream newString outStream |
 	sensor keyboard.  "Flush typeahead"
 	cr _ Character cr.
-	tab _ Character tab.
 
 	"Operate on entire lines, but remember the real selection for re-highlighting later"
-	realStart _ startBlock stringIndex.
-	realStop _ stopBlock stringIndex - 1.
+	realStart _ self startIndex.
+	realStop _ self stopIndex - 1.
 
 	"Special case a caret on a line of its own, including weird case at end of paragraph"
 	(realStart > realStop and:
@@ -36,7 +35,7 @@ inOutdent: characterStream delta: delta
 		[:m :l |
 		m _ m min: (paragraph indentationOfLineIndex: l ifBlank: [:tabs | 1000])].			
 
-	size _ origSize _ stop + 1 - start.
+	size _  stop + 1 - start.
 	numLines _ stopLine + 1 - startLine.
 	inStream _ ReadStream on: paragraph string from: start to: stop.
 
