@@ -14,10 +14,11 @@ acceptDroppingMorph: aMorph event: evt
 	(aMorph isKindOf: PhraseTileMorph) ifTrue: [aMorph unbrightenTiles].
 	aMorph tileRows do: [:tileList |
 		self insertTileRow: (Array with:
-				(tileList first rowOfRightTypeFor: owner forActor: aMorph player))
+				(tileList first rowOfRightTypeFor: owner forActor: aMorph associatedPlayer))
 			after: i.
 		i _ i + 1].
 	self removeSpaces.
+	self enforceTileColorPolicy.
 	self layoutChanged.
 
 	"Now animate the move, before next Morphic update.
