@@ -1,3 +1,5 @@
 I represent an index for the messages in a mail database. I acts like a dictionary that maps unique message ID's to IndexFileEntry objects.
 
-The index file is read into memory in its entirety and kept there for the duration of a mail reading session. It should be stored back to disk at the end of the session, or after a major change, such as fetching new mail. If necessary, it can be completely recreated by scanning the messages file.
+The index file is read into memory in its entirety and kept there for the duration of a mail reading session. It should be stored back to disk at the end of the session, or after a major change, such as fetching new mail.
+
+If necessary, it can be completely recreated by scanning the messages file!
