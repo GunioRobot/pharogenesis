@@ -1,5 +1,5 @@
 makeForegroundColor
         "Make a foreground color contrasting with me"
-        ^self luminance >= "Color red luminance" 0.299
+        ^self luminance >= 0.5
                 ifTrue: [Color black]
                 ifFalse: [Color white]
