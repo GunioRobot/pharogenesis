@@ -35,7 +35,7 @@ curve
 		clippingBox: view insetDisplayBox
 		rule: Form reverse
 		fillColor: color.
-	curve _ Curve new.
+	curve _ CurveFitter new.
 	curve firstPoint: firstPoint.
 	curve secondPoint: secondPoint.
 	curve thirdPoint: thirdPoint.
