@@ -3,7 +3,7 @@ verifySignedFileNamed: aFileName
 
 	| secured signedFileStream |
 	signedFileStream _ FileStream fileNamed: aFileName.
-	secured _ CodeLoader new positionedToSecuredContentsOf: signedFileStream.
+	secured _ SecurityManager default positionToSecureContentsOf: signedFileStream.
 	signedFileStream close.
 	Transcript show: aFileName , ' verified: '; show: secured printString; cr.
 
