@@ -1,0 +1,2 @@
+protocolInstance: aProtocolInstance
+	protocolInstance _ aProtocolInstance
