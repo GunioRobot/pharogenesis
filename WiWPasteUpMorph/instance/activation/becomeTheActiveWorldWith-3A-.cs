@@ -1,4 +1,6 @@
 becomeTheActiveWorldWith: evt
+	"Make the receiver become the active world, and give its hand the event provided, if not nil"
+
 	| outerWorld |
 	World == self ifTrue: [^ self].
 	worldState resetDamageRecorder.	"since we may have moved, old data no longer valid"
@@ -7,12 +9,12 @@ becomeTheActiveWorldWith: evt
 	displayChangeSignatureOnEntry _ Display displayChangeSignature.
 
 	"Messy stuff to clear flaps from outer world"
-	Utilities globalFlapTabs do: [:f | f changed].
+	Flaps globalFlapTabsIfAny do: [:f | f changed].
 	outerWorld _ World.
 	World _ self.
-		self installFlaps.
+	self installFlaps.
 	World _ outerWorld.
-		outerWorld displayWorld.
+	outerWorld displayWorld.
 	World _ self.
 
 	self viewBox: hostWindow panelRect.
