@@ -1,4 +1,7 @@
 atAllPut: anObject 
 	"Put anObject at every one of the receiver's indices."
-	1 to: self size do:
-		[:index | self at: index put: anObject]
+
+	| size |
+	(size _ self size) > 26 "first method faster from 27 accesses and on"
+		ifTrue: [self from: 1 to: size put: anObject]
+		ifFalse: [1 to: size do: [:index | self at: index put: anObject]]
