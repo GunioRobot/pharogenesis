@@ -1,4 +1,5 @@
 push: val 
 	"Push val on the receiver's stack."
 
-	self at: (stackp _ stackp + 1) put: val
+	self stackp: stackp + 1.
+	self at: stackp put: val
