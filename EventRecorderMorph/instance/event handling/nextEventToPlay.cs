@@ -4,10 +4,11 @@ nextEventToPlay
 	Return nil if nothing has happened.
 	Return an EOF event if there are no more events to be played."
 	| nextEvent now nextTime lastP delta |
-	(tapeStream == nil or:[tapeStream atEnd]) 
+	(tapeStream isNil or:[tapeStream atEnd]) 
 		ifTrue:[^MorphicUnknownEvent new setType: #EOF argument: nil].
 	now _ Time millisecondClockValue.
 	nextEvent _ tapeStream next.
+	nextEvent isKeyboard ifTrue: [ nextEvent setPosition: self position ].
 	deltaTime ifNil:[deltaTime _ now - nextEvent timeStamp].
 	nextTime _ nextEvent timeStamp + deltaTime.
 	now < time ifTrue:["clock rollover"
