@@ -1,0 +1,3 @@
+getSoundVolume
+
+	^SoundPlayer soundVolume average
