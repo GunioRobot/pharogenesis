@@ -3,5 +3,6 @@ resetClickState
 
 	clickClient _ nil.
 	clickState _ #idle.
+	eventTransform _ MorphicTransform identity.
 	firstClickEvent _ nil.
 	firstClickTime _ nil.
