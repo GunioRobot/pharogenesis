@@ -1,0 +1,3 @@
+ioSetInputSemaphore: index
+
+	self primitiveFail
