@@ -1,8 +1,7 @@
 primNormalizeNegative
-	""
 	| rcvr |
 	self debugCode: [self msg: 'primNormalizeNegative'].
-	rcvr _ self
+	rcvr := self
 				primitive: 'primNormalizeNegative'
 				parameters: #()
 				receiver: #LargeNegativeInteger.
