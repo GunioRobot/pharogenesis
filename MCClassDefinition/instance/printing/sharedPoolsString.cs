@@ -1,0 +1,2 @@
+sharedPoolsString
+	^ self stringForVariablesOfType: #isPoolImport
