@@ -6,7 +6,7 @@ showSourceInScriptor
 	self isTextuallyCoded ifFalse: [self becomeTextuallyCoded].
 		"Mostly to fix up grandfathered ScriptEditors"
 
-	self submorphs allButFirst do: [:m | m delete].
+	self removeAllButFirstSubmorph.
 
 	aCodePane _ MethodHolder 
 		isolatedCodePaneForClass: playerScripted class 
@@ -29,7 +29,4 @@ showSourceInScriptor
 		minWidth: self width.
 
 	showingMethodPane _ true.
-	(playerScripted isUniversalTiles) ifTrue: [self useNewTilesNow].
-			"grab aCodePane, get model, and remove it" 
-
 	self currentWorld startSteppingSubmorphsOf: self
