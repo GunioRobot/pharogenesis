@@ -1,9 +1,8 @@
 initialize
 	"Default creation is for one person against Squeak."
-
 	super initialize.
-	self extent: 382@413.
-	self color: (Color r: 0.6 g: 0.4 b: 0.0).
-	self borderWidth: 2.
+	""
+	self extent: 382 @ 413.
+
 	animateMoves _ true.
-	self teams: #(2 5) autoPlay: {false. true}.
+	self teams: #(2 5 ) autoPlay: {false. true}
