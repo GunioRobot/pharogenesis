@@ -1,4 +1,4 @@
 specialNargsAt: anInteger 
 	"Answer the number of arguments for the special selector at: anInteger."
 
-	^SpecialSelectors at: anInteger * 2
+	^ (self specialObjectsArray at: 24) at: anInteger * 2
