@@ -6,4 +6,6 @@ transformBy: aDisplayTransform clippingTo: aClipRect during: aBlock smoothing: c
 		connection: connection 
 		clipRect: (aClipRect intersect: outerClipRect)
 		transform: (transform composedWith: aDisplayTransform).
+	newCanvas privateShadowColor: shadowColor.
 	aBlock value: newCanvas.
+	connection shadowColor: shadowColor.
