@@ -1,9 +1,13 @@
-oopHasOkayClass: oop
+oopHasOkayClass: signedOop
 	"Attempt to verify that the given oop has a reasonable behavior. The class must be a valid, non-integer oop and must not be nilObj. It must be a pointers object with three or more fields. Finally, the instance specification field of the behavior must match that of the instance."
 
-	| oopClass formatMask behaviorFormatBits oopFormatBits |
+	| oop oopClass formatMask behaviorFormatBits oopFormatBits |
+	self var: #oop type: 'unsigned'.
+	self var: #oopClass type: 'unsigned'.
+
+	oop := self cCoerce: signedOop to: 'unsigned'.
 	self okayOop: oop.
-	oopClass _ self fetchClassOf: oop.
+	oopClass := self cCoerce: (self fetchClassOf: oop) to: 'unsigned'.
 
 	(self isIntegerObject: oopClass)
 		ifTrue: [ self error: 'a SmallInteger is not a valid class or behavior' ].
