@@ -1,0 +1,2 @@
+classPoint
+	^Point
