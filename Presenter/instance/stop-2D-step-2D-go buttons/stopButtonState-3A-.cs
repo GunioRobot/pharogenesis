@@ -1,5 +1,5 @@
 stopButtonState: newState
-	stopButton ifNotNil:
-		[newState
-			ifTrue: [stopButton state: #on]
-			ifFalse: [stopButton state: #off]]
+	"Get all stop buttons in my scope to show the correct state"
+
+	self allStopButtons do:
+		[:aButton | aButton state: newState]
