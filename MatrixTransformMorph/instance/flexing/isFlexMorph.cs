@@ -1,0 +1,2 @@
+isFlexMorph
+	^false
