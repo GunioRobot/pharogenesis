@@ -5,8 +5,7 @@ bytecodePrimAdd
 	(self areIntegers: rcvr and: arg)
 		ifTrue: [result _ (self integerValueOf: rcvr) + (self integerValueOf: arg).
 				(self isIntegerValue: result) ifTrue:
-					[self internalPop: 2
-						thenPush: (self integerObjectOf: result).
+					[self internalPop: 2 thenPush: (self integerObjectOf: result).
 					^ self fetchNextBytecode "success"]]
 		ifFalse: [successFlag _ true.
 				self externalizeIPandSP.
