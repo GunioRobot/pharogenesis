@@ -1,3 +1,4 @@
 printOn: aStream
 
-	aStream nextPutAll: 'TMethod(', selector, ')'.
+	super printOn: aStream.
+	aStream nextPutAll: ' (', selector, ')'.
