@@ -10,4 +10,4 @@ initializeFor: aPlayer categoryChoice: aChoice
 	scriptedPlayer _ aPlayer.
 	self addHeaderMorph.
 
-	self categoryChoice: aChoice asSymbol
+	self chooseCategoryWhoseTranslatedWordingIs: aChoice
