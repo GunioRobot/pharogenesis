@@ -1,4 +1,4 @@
 year
 	"Answer the year in which the receiver falls."
 
-	^year
+	^self asGregorian last
