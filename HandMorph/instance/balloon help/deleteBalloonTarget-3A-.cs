@@ -1,5 +1,8 @@
 deleteBalloonTarget: aMorph
-	"Delete the balloon help targeting the given morph"
-	| h |
-	h _ self balloonHelp ifNil:[^self].
-	h balloonOwner == aMorph ifTrue:[self balloonHelp: nil].
+	"Delete any existing balloon help.  This is now done unconditionally, whether or not the morph supplied is the same as the current balloon target"
+	
+	self balloonHelp: nil
+
+"	| h |
+	h _ self balloonHelp ifNil: [^ self].
+	h balloonOwner == aMorph ifTrue: [self balloonHelp: nil]"
