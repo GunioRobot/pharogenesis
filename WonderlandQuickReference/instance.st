@@ -1,6 +1,6 @@
 Workspace
 	subclass: #WonderlandQuickReference
-	instanceVariableNames: 'myTextEditor '
-	classVariableNames: 'HelpText '
+	instanceVariableNames: 'myTextEditor'
+	classVariableNames: 'HelpText'
 	poolDictionaries: ''
-	category: 'Balloon3D-Wonderland Morphs'
+	category: 'Balloon3D-Wonderland-Morphs'
