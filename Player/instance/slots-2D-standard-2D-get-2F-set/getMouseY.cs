@@ -1,2 +1,2 @@
 getMouseY
-	^ costume mouseY
+	^ self costume mouseY
