@@ -8,6 +8,7 @@ processRedButton
 
 	clickPoint _ sensor cursorPoint.
 	(view containsPoint: clickPoint) ifFalse: [^ self].
+	(paragraph clickAt: clickPoint for: model controller: self) ifTrue: [^ self].
 	oldInterval _ startBlock stringIndex to: stopBlock stringIndex - 1.
 	previousStartBlock _ startBlock.
 	previousStopBlock _ stopBlock.
