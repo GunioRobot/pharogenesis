@@ -3,8 +3,8 @@ invokeMenu
 
 	| aMenu |
 	aMenu _ CustomMenu new.
-	aMenu addList:	#(
-		('set sampling rate'		setSamplingRate)
-		('set FFT size'			setFFTSize)
-		('set display type'		setDisplayType)).
+	aMenu addList:	{
+		{'set sampling rate' translated.		#setSamplingRate}.
+		{'set FFT size' translated.			#setFFTSize}.
+		{'set display type' translated.		#setDisplayType}}.
 	aMenu invokeOn: self defaultSelection: nil.
