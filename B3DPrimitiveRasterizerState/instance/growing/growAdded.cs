@@ -1,3 +1,3 @@
 growAdded
 	"Transcript cr; show:'Growing addedEdges'."
-	aet _ self grow: addedEdges.
+	addedEdges _ self grow: addedEdges.
