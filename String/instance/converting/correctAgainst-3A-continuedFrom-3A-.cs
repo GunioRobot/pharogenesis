@@ -4,5 +4,5 @@ correctAgainst: wordList continuedFrom: oldCollection
 	^ wordList isNil
 		ifTrue: [ self correctAgainstEnumerator: nil
 					continuedFrom: oldCollection ]
-		ifFalse: [ self correctAgainstEnumerator: [ :action | wordList do: action ]
+		ifFalse: [ self correctAgainstEnumerator: [ :action | wordList do: action without: nil]
 					continuedFrom: oldCollection ]
