@@ -1,4 +1,4 @@
 handlesMouseDown: evt
-	^ (evt shiftPressed and: [owner wantsKeyboardFocusFor: self])
+	^ (evt shiftPressed and: [self wantsKeyboardFocusOnShiftClick])
 		ifTrue: [self uncoveredAt: evt cursorPoint]
 		ifFalse: [super handlesMouseDown: evt].
