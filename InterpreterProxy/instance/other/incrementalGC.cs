@@ -1,0 +1,2 @@
+incrementalGC
+	Smalltalk garbageCollectMost.
