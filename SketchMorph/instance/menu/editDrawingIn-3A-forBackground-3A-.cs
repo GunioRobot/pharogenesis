@@ -1,33 +1,44 @@
-editDrawingIn: aPasteUpMorph forBackground: aBoolean
-	| oldRotation aPaintWindow oldFwdDir w boundsToUse |
+editDrawingIn: aPasteUpMorph forBackground: forBackground
+
+	| w oldRotation bnds sketchEditor pal aPaintTab aWorld aPaintBox |
+	self world assureNotPaintingElse: [^ self].
+
 	w _ aPasteUpMorph world.
 	w stopRunningAll; abandonAllHalos.
 	w displayWorld.
-	aPaintWindow _ SketchEditorMorph new.
-	aBoolean ifTrue: [aPaintWindow setProperty: #background toValue: true].
-	w addMorphFront: aPaintWindow.
 	oldRotation _ rotationDegrees.
-	oldFwdDir _ self forwardDirection.
-	self rotationDegrees: 0.
-	aBoolean
+	forBackground
 		ifTrue:
-			[aPaintWindow initializeFor: self inPasteUpMorph: aPasteUpMorph]
+			[bnds _ aPasteUpMorph boundsInWorld]
 		ifFalse:
-			[boundsToUse _ (aPasteUpMorph paintingBoundsAround: self bounds center) merge: self bounds.
-			aPaintWindow initializeFor: self inBounds: boundsToUse ofWorld: aPasteUpMorph world].
-	self rotationDegrees: oldRotation.  "while drawing is still rotated. cancel leaves it right"
-	aPaintWindow 
+			[bnds _ (self boundsInWorld expandBy: (60 @ 60)) intersect: self world bounds.
+			bnds _ (aPasteUpMorph paintingBoundsAround: bnds center) merge: bnds].
+	sketchEditor _ SketchEditorMorph new.
+	forBackground ifTrue: [sketchEditor setProperty: #background toValue: true].
+	w addMorphFront: sketchEditor.
+	sketchEditor initializeFor: self inBounds: bnds pasteUpMorph: aPasteUpMorph.
+		"self rotationDegrees: 0.  inside the init"
+	self rotationDegrees: oldRotation.  "restore old rotation so that cancel leaves it right"
+	sketchEditor
 		afterNewPicDo: [:aForm :aRect |
 			self form: aForm.
-			self position: aRect origin.
-			self forwardDirection: aPaintWindow forwardDirection.
-			self rotationDegrees: oldRotation + (aPaintWindow forwardDirection - oldFwdDir).
-				"add in any changes"
-			self rotationStyle: aPaintWindow rotationStyle.
-			aPasteUpMorph playfield ifNotNil: "Show the right viewer"
-				[self presenter drawingJustCompleted: self].
-			aBoolean ifTrue: [self goBehind].  "shouldn't be necessary"
-			owner changed]
+			self topRendererOrSelf position: aRect origin.
+			self rotationStyle: sketchEditor rotationStyle.
+			self setupAngle: sketchEditor forwardDirection.
+			self rotationDegrees: sketchEditor forwardDirection.
+			self presenter drawingJustCompleted: self.
+			forBackground ifTrue: [self goBehind]]  "shouldn't be necessary"
 		ifNoBits: ["If no bits drawn.  Must keep old pic.  Can't have no picture"
-			aPasteUpMorph standardPalette ifNotNil: [aPasteUpMorph standardPalette viewMorph: self]].
-	aPaintWindow changed.
+			aWorld _ self currentWorld.
+				"sometimes by now I'm no longer in a world myself, but we still need
+				 to get ahold of the world so that we can deal with the palette"
+			((pal _ aPasteUpMorph standardPalette) notNil and: [pal isInWorld])
+				ifTrue:
+					[(aPaintBox _ aWorld paintBox) ifNotNil: [aPaintBox delete].
+					pal viewMorph: self]
+				ifFalse:
+					[(aPaintTab _ aWorld paintingFlapTab)
+						ifNotNil:
+							[aPaintTab hideFlap]
+						ifNil:
+							[(aPaintBox _ aWorld paintBox) ifNotNil: [aPaintBox delete]]]]
