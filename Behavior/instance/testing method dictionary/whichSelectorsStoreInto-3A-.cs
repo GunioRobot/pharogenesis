@@ -3,7 +3,7 @@ whichSelectorsStoreInto: instVarName
 	instVarName, as a named instance variable."
 	| instVarIndex |
 	instVarIndex _ self allInstVarNames indexOf: instVarName ifAbsent: [^Set new].
-	^ methodDict keys select: 
-		[:sel | (methodDict at: sel) writesField: instVarIndex]
+	^ self methodDict keys select: 
+		[:sel | (self methodDict at: sel) writesField: instVarIndex]
 
 	"Point whichSelectorsStoreInto: 'x'."
