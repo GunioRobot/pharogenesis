@@ -4,7 +4,7 @@ scroll
 	savedCursor _ sensor currentCursor.
 			[self scrollBarContainsCursor]
 				whileTrue: 
-					[Processor yield.
+					[self interActivityPause.
 					sensor cursorPoint x <= self downLine
 								ifTrue: [self scrollDown]
 								ifFalse: [sensor cursorPoint x <= self upLine
