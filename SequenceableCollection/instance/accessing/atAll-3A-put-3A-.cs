@@ -1,5 +1,5 @@
-atAll: anInterval put: anObject 
-	"Put anObject at every index specified by the integer elements of 
-	anInterval."
+atAll: aCollection put: anObject 
+	"Put anObject at every index specified by the elements of aCollection."
 
-	anInterval do: [:index | self at: index put: anObject]
+	aCollection do: [:index | self at: index put: anObject].
+	^ anObject
