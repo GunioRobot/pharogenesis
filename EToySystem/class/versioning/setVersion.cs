@@ -7,5 +7,4 @@ setVersion
 					EToyVersion, '\set on ', EToyVersionDate) withCRs
  		initialAnswer: EToyVersion.
 	newName size > 0 ifTrue:
-		[EToyVersion _ newName.
-		EToyVersionDate _ Date today printString]
+		[self eToyVersion: newName date: Date today printString]
