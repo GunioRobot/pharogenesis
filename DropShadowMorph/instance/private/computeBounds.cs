@@ -4,7 +4,6 @@ computeBounds
 		fullBounds _ nil.
 		^ self].
 	self changed.
-	bounds _ (submorphs first bounds) copy.
-	fullBounds _ nil.
-	bounds _ self fullBounds translateBy: shadowOffset.
+	bounds _ (submorphs first fullBounds) copy.
+	bounds _ fullBounds _ (bounds translateBy: shadowOffset) merge: bounds.
 	self changed
