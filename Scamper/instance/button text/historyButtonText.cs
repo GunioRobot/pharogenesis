@@ -1,3 +1,2 @@
 historyButtonText
-
-	^'Return to a recent URL in history'
+	^ 'Return to a recent URL in history' translated
