@@ -7,10 +7,19 @@ squeakHeaderFile
 #include <time.h>
 
 #include "sqConfig.h"
+#include "sqVirtualMachine.h"
 
 #define true 1
 #define false 0
-#define null 0  /* using ''null'' because nil is predefined in Think C */
+#define null 0  /* using "null" because nil is predefined in Think C */
+
+/* pluggable primitives macros */
+/* Note: All pluggable primitives are defined as
+	EXPORT(int) somePrimitive(void)
+   If the platform requires special declaration modifiers
+   the EXPORT macro can be redefined
+*/
+#define EXPORT(returnType) returnType
 
 /* image save/restore macros */
 /* Note: The image file save and restore code uses these macros; they
@@ -58,44 +67,67 @@ squeakHeaderFile
 	(floatVarName) = *((double *) (i));
 #endif
 
+/* platform-dependent memory size adjustment macro */
+/* Note: This macro can be redefined to allows platforms with a
+   fixed application memory partition (notably, the Macintosh)
+   to reserve extra C heap memory for special applications that need
+   it (e.g., for a 3D graphics library). Since most platforms can
+   extend their application memory partition at run time if needed,
+   this macro is defined as a noop here and redefined if necessary
+   in sqPlatformSpecific.h.
+*/
+
+#define reserveExtraCHeapBytes(origHeapSize, bytesToReserve) origHeapSize
+
+/* platform-dependent millisecond clock macros */
+/* Note: The Squeak VM uses three different clocks functions for
+   timing. The primary one, ioMSecs(), is used to implement Delay
+   and Time millisecondClockValue. The resolution of this clock
+   determines the resolution of these basic timing functions. For
+   doing real-time control of music and MIDI, a clock with resolution
+   down to one millisecond is preferred, but a coarser clock (say,
+   1/60th second) can be used in a pinch. The VM calls a different
+   clock function, ioLowResMSecs(), in order to detect long-running
+   primitives. This function must be inexpensive to call because when
+   a Delay is active it is polled twice per primitive call. On several
+   platforms (Mac, Win32), the high-resolution system clock used in
+   ioMSecs() would incur enough overhead in this case to slow down the
+   the VM significantly. Thus, a cheaper clock with low resolution is
+   used to implement ioLowResMSecs() on these platforms. Finally, the
+   function ioMicroMSecs() is used only to collect timing statistics
+   for the garbage collector and other VM facilities. (The function
+   name is meant to suggest that the function is based on a clock
+   with microsecond accuracy, even though the times it returns are
+   in units of milliseconds.) This clock must have enough precision to
+   provide accurate timings, and normally isn''t called frequently
+   enough to slow down the VM. Thus, it can use a more expensive clock
+   that ioMSecs(). By default, all three clock functions are defined
+   here as macros based on the standard C library function clock().
+   Any of these macros can be overridden in sqPlatformSpecific.h.
+*/
+
+int ioMSecs(void);
+int ioLowResMSecs(void);
+int ioMicroMSecs(void);
+
+#define ioMSecs()		((1000 * clock()) / CLOCKS_PER_SEC)
+#define ioLowResMSecs()	((1000 * clock()) / CLOCKS_PER_SEC)
+#define ioMicroMSecs()	((1000 * clock()) / CLOCKS_PER_SEC)
+
+/* filename copy/transform macro. An opportunity to transform the filenames for
+   platforms with strange needs, anda simple encapsulation for everyone else
+*/
+#define sqFilenameFromString(dst, src, num) \
+if (1) {\
+	int i; \
+	for (i = 0; i < num; i++) { \
+		dst[i] = *((char *) (src + i)); \
+	} \
+	dst[num] = 0;\
+}
+
 /* this include file may redefine earlier definitions and macros: */
 #include "sqPlatformSpecific.h"
-
-/*** increment this version number when the image file format changes ***/
-#define CURRENT_VERSION 6502
-
-/* squeak file record; see sqFilePrims.c for details */
-typedef struct {
-	FILE	*file;
-	int		sessionID;
-	int		writable;
-	int		fileSize;
-	int		lastOp;  /* 0 = uncommitted, 1 = read, 2 = write */
-} SQFile;
-
-/* file i/o */
-int sqFileAtEnd(SQFile *f);
-int sqFileClose(SQFile *f);
-int sqFileDeleteNameSize(int sqFileNameIndex, int sqFileNameSize);
-int sqFileGetPosition(SQFile *f);
-int sqFileInit(void);
-int sqFileOpen(SQFile *f, int sqFileNameIndex, int sqFileNameSize, int writeFlag);
-int sqFileReadIntoAt(SQFile *f, int count, int byteArrayIndex, int startIndex);
-int sqFileRenameOldSizeNewSize(int oldNameIndex, int oldNameSize, int newNameIndex, int newNameSize);
-int sqFileSetPosition(SQFile *f, int position);
-int sqFileSize(SQFile *f);
-int sqFileValid(SQFile *f);
-int sqFileWriteFromAt(SQFile *f, int count, int byteArrayIndex, int startIndex);
-
-/* directories */
-int dir_Create(char *pathString, int pathStringLength);
-int dir_Delimitor(void);
-int dir_Lookup(char *pathString, int pathStringLength, int index,
-	/* outputs: */
-	char *name, int *nameLength, int *creationDate, int *modificationDate,
-	int *isDirectory, int *sizeIfFile);
-int dir_PathToWorkingDir(char *pathName, int pathNameMax);
-int dir_SetMacFileTypeAndCreator(char *filename, int filenameSize, char *fType, char *fCreator);
 
 /* interpreter entry points */
 void error(char *s);
@@ -118,25 +150,100 @@ int ioFormPrint(
 	int bitsAddr, int width, int height, int depth,
 	double hScale, double vScale, int landscapeFlag);
 int ioSetFullScreen(int fullScreen);
-int ioGetButtonState(void);
-int ioGetKeystroke(void);
-int ioMicroMSecs(void);
-int ioMSecs(void);
-int ioMousePoint(void);
-int ioPeekKeystroke(void);
-int ioProcessEvents(void);
 int ioRelinquishProcessorForMicroseconds(int microSeconds);
 int ioScreenSize(void);
 int ioSeconds(void);
 int ioSetCursor(int cursorBitsIndex, int offsetX, int offsetY);
+int ioSetCursorWithMask(int cursorBitsIndex, int cursorMaskIndex, int offsetX, int offsetY);
 int ioShowDisplay(
 	int dispBitsIndex, int width, int height, int depth,
 	int affectedL, int affectedR, int affectedT, int affectedB);
+int ioHasDisplayDepth(int depth);
+int ioSetDisplayMode(int width, int height, int depth, int fullscreenFlag);
 
-/* optional millisecond clock macro */
-#ifdef USE_CLOCK_MSECS
-# define ioMSecs() ((1000 * clock()) / CLOCKS_PER_SEC)
-#endif
+/* User input recording I:
+   In general, either set of input function can be supported,
+   depending on the platform. This (first) set is state based
+   and should be supported even on platforms that make use
+   of the newer event driven API to support older images 
+   without event support.
+*/
+int ioGetButtonState(void);
+int ioGetKeystroke(void);
+int ioMousePoint(void);
+int ioPeekKeystroke(void);
+/* Note: In an event driven architecture, ioProcessEvents is obsolete.
+   It can be implemented as a no-op since the image will check for
+   events in regular intervals. */
+int ioProcessEvents(void);
+
+
+/* User input recording II:
+   The following functions and definition can be used on
+   platform supporting events directly.
+*/
+/* types of events */
+#define EventTypeNone 0
+#define EventTypeMouse 1
+#define EventTypeKeyboard 2
+
+/* keypress state for keyboard events */
+#define EventKeyChar 0
+#define EventKeyDown 1
+#define EventKeyUp 2
+
+/* button definitions */
+#define RedButtonBit 4
+#define BlueButtonBit 2
+#define YellowButtonBit 1
+
+/* modifier definitions */
+#define ShiftKeyBit 1
+#define CtrlKeyBit 2
+#define OptionKeyBit 4
+#define CommandKeyBit 8
+
+/* generic input event definition */
+typedef struct sqInputEvent {
+	int type; /* type of event; either one of EventTypeXXX */
+	unsigned int timeStamp; /* time stamp */
+     /* the interpretation of the following fields depend on the type of the event */
+	int unused1;
+	int unused2;
+	int unused3;
+	int unused4;
+	int unused5;
+	int unused6;
+} sqInputEvent;
+
+/* mouse input event definition */
+typedef struct sqMouseEvent {
+	int type; /* EventTypeMouse */
+	unsigned int timeStamp; /* time stamp */
+	int x; /* mouse position x */
+	int y; /* mouse position y */
+	int buttons; /* combination of xxxButtonBit */
+	int modifiers; /* combination of xxxKeyBit */
+	int reserved1; /* reserved for future use */
+	int reserved2; /* reserved for future use */
+} sqMouseEvent;
+
+/* keyboard input event definition */
+typedef struct sqKeyboardEvent {
+	int type; /* EventTypeKeyboard */
+	unsigned int timeStamp; /* time stamp */
+	int charCode; /* character code in Mac Roman encoding */
+	int pressCode; /* press code; any of EventKeyXXX */
+	int modifiers; /* combination of xxxKeyBit */
+	int reserved1; /* reserved for future use */
+	int reserved2; /* reserved for future use */
+	int reserved3; /* reserved for future use */
+} sqKeyboardEvent;
+
+/* set an asynchronous input semaphore index for events */
+int ioSetInputSemaphore(int semaIndex);
+/* retrieve the next input event from the OS */
+int ioGetNextEvent(sqInputEvent *evt);
 
 /* image file and VM path names */
 extern char imageName[];
@@ -147,36 +254,24 @@ int vmPathSize(void);
 int vmPathGetLength(int sqVMPathIndex, int length);
 
 /* save/restore */
-int readImageFromFileHeapSize(sqImageFile f, int desiredHeapSize);
+/* Read the image from the given file starting at the given image offset */
+int readImageFromFileHeapSizeStartingAt(sqImageFile f, int desiredHeapSize, int imageOffset);
+/* NOTE: The following is obsolete - it is only provided for compatibility */
+#define readImageFromFileHeapSize(f, s) readImageFromFileHeapSizeStartingAt(f,s,0)
 
 /* clipboard (cut/copy/paste) */
 int clipboardSize(void);
 int clipboardReadIntoAt(int count, int byteArrayIndex, int startIndex);
 int clipboardWriteFromAt(int count, int byteArrayIndex, int startIndex);
 
-/* sound output */
-int snd_AvailableSpace(void);
-int snd_InsertSamplesFromLeadTime(int frameCount, int srcBufPtr, int samplesOfLeadTime);
-int snd_PlaySamplesFromAtLength(int frameCount, int arrayIndex, int startIndex);
-int snd_PlaySilence(void);
-int snd_Start(int frameCount, int samplesPerSec, int stereo, int semaIndex);
-int snd_Stop(void);
-
-/* sound input */
-int snd_SetRecordLevel(int level);
-int snd_StartRecording(int desiredSamplesPerSec, int stereo, int semaIndex);
-int snd_StopRecording(void);
-double snd_GetRecordingSampleRate(void);
-int snd_RecordSamplesIntoAtLength(int buf, int startSliceIndex, int bufferSizeInBytes);
-
-/* joystick support */
-int joystickInit(void);
-int joystickRead(int stickIndex);
-
-/* netscape plug-in support */
+/* browser plug-in support */
+int plugInAllowAccessToFilePath(char *pathString, int pathStringLength);
+void plugInForceTimeToReturn(void);
 int plugInInit(char *imageName);
+int plugInNotifyUser(char *msg);
+void plugInSetStartTime(void);
 int plugInShutdown(void);
-int plugInInterpretCycles(int cycleCount);
+int plugInTimeToReturn(void);
 
 /* interpreter entry points needed by compiled primitives */
 void * arrayValueOf(int arrayOop);
@@ -190,56 +285,6 @@ int pushInteger(int integerValue);
 int sizeOfSTArrayFromCPrimitive(void *cPtr);
 int storeIntegerofObjectwithValue(int fieldIndex, int objectPointer, int integerValue);
 
-/* sound generation primitives (old, for backward compatibility) */
-int primWaveTableSoundmixSampleCountintostartingAtpan(void);
-int primFMSoundmixSampleCountintostartingAtpan(void);
-int primPluckedSoundmixSampleCountintostartingAtpan(void);
-int primSampledSoundmixSampleCountintostartingAtpan(void);
-
-/* sound generation primitives */
-int primFMSoundmixSampleCountintostartingAtleftVolrightVol(void);
-int primPluckedSoundmixSampleCountintostartingAtleftVolrightVol(void);
-int primReverbSoundapplyReverbTostartingAtcount(void);
-int primSampledSoundmixSampleCountintostartingAtleftVolrightVol(void);
-
-/* squeak socket record; see sqMacNetwork.c for details */
-typedef struct {
-	int		sessionID;
-	int		socketType;  /* 0 = TCP, 1 = UDP */
-	void	*privateSocketPtr;
-}  SQSocket, *SocketPtr;
-
-/* networking primitives */
-int		sqNetworkInit(int resolverSemaIndex);
-void	sqNetworkShutdown(void);
-void	sqResolverAbort(void);
-void	sqResolverAddrLookupResult(char *nameForAddress, int nameSize);
-int		sqResolverAddrLookupResultSize(void);
-int		sqResolverError(void);
-int		sqResolverLocalAddress(void);
-int		sqResolverNameLookupResult(void);
-void	sqResolverStartAddrLookup(int address);
-void	sqResolverStartNameLookup(char *hostName, int nameSize);
-int		sqResolverStatus(void);
-void	sqSocketAbortConnection(SocketPtr s);
-void	sqSocketCloseConnection(SocketPtr s);
-int		sqSocketConnectionStatus(SocketPtr s);
-void	sqSocketConnectToPort(SocketPtr s, int addr, int port);
-void	sqSocketCreateNetTypeSocketTypeRecvBytesSendBytesSemaID(
-			SocketPtr s, int netType, int socketType,
-			int recvBufSize, int sendBufSize, int semaIndex);
-void	sqSocketDestroy(SocketPtr s);
-int		sqSocketError(SocketPtr s);
-void	sqSocketListenOnPort(SocketPtr s, int port);
-int		sqSocketLocalAddress(SocketPtr s);
-int		sqSocketLocalPort(SocketPtr s);
-int		sqSocketReceiveDataAvailable(SocketPtr s);
-int		sqSocketReceiveDataBufCount(SocketPtr s, int buf, int bufSize);
-int		sqSocketRemoteAddress(SocketPtr s);
-int		sqSocketRemotePort(SocketPtr s);
-int		sqSocketSendDataBufCount(SocketPtr s, int buf, int bufSize);
-int		sqSocketSendDone(SocketPtr s);
-
 /* profiling */
 int clearProfile(void);
 int dumpProfile(void);
@@ -250,28 +295,79 @@ int stopProfiling(void);
 int attributeSize(int id);
 int getAttributeIntoLength(int id, int byteArrayIndex, int length);
 
+/* ar 5/13/2000:
+	The following set of miscellaneous and sound primitives should
+	at some point go into named primitives. Right now there are a few
+	problems with that (related to how the distinct set of methods can
+	be defined as residing in one plugin).
+*/
 /* miscellaneous primitives */
 int primBitmapcompresstoByteArray(void);
 int primBitmapdecompressfromByteArrayat(void);
-int primStringcomparewithcollated(void);
 int primSampledSoundconvert8bitSignedFromto16Bit(void);
+int primStringcomparewithcollated(void);
+int primStringfindFirstInStringinSetstartingAt(void);
+int primStringfindSubstringinstartingAtmatchTable(void);
+int primStringindexOfAsciiinStringstartingAt(void);
+int primStringtranslatefromtotable(void);
 
-/* serial port primitives */
-int serialPortClose(int portNum);
-int serialPortOpen(
-  int portNum, int baudRate, int stopBitsType, int parityType, int dataBits,
-  int inFlowCtrl, int outFlowCtrl, int xOnChar, int xOffChar);
-int serialPortReadInto(int portNum, int count, int bufferPtr);
-int serialPortWriteFrom(int portNum, int count, int bufferPtr);
+/* sound generation primitives (old, for backward compatibility) */
+int primWaveTableSoundmixSampleCountintostartingAtpan(void);
+int primFMSoundmixSampleCountintostartingAtpan(void);
+int primPluckedSoundmixSampleCountintostartingAtpan(void);
+int primSampledSoundmixSampleCountintostartingAtpan(void);
+int oldprimSampledSoundmixSampleCountintostartingAtleftVolrightVol(void);
 
-/* MIDI primitives */
-int sqMIDIGetClock(void);
-int sqMIDIGetPortCount(void);
-int sqMIDIGetPortDirectionality(int portNum);
-int sqMIDIGetPortName(int portNum, int namePtr, int length);
-int sqMIDIClosePort(int portNum);
-int sqMIDIOpenPort(int portNum, int readSemaIndex, int interfaceClockRate);
-int sqMIDIParameter(int whichParameter, int modify, int newValue);
-int sqMIDIPortReadInto(int portNum, int count, int bufferPtr);
-int sqMIDIPortWriteFromAt(int portNum, int count, int bufferPtr, int time);
-'.
+/* sound generation primitives */
+int primFMSoundmixSampleCountintostartingAtleftVolrightVol(void);
+int primLoopedSampledSoundmixSampleCountintostartingAtleftVolrightVol(void);
+int primPluckedSoundmixSampleCountintostartingAtleftVolrightVol(void);
+int primReverbSoundapplyReverbTostartingAtcount(void);
+int primSampledSoundmixSampleCountintostartingAtleftVolrightVol(void);
+
+/*** sound compression primitives ***/
+int primADPCMCodecprivateDecodeMono(void);
+int primADPCMCodecprivateDecodeStereo(void);
+int primADPCMCodecprivateEncodeMono(void);
+int primADPCMCodecprivateEncodeStereo(void);
+
+
+/*** pluggable primitive support ***/
+/* NOTE: The following functions are those implemented by sqNamedPrims.c */
+int ioLoadExternalFunctionOfLengthFromModuleOfLength(
+  int functionNameIndex, int functionNameLength,
+  int moduleNameIndex, int moduleNameLength);
+int ioUnloadModuleOfLength(int moduleNameIndex, int moduleNameLength);
+int ioLoadFunctionFrom(char *functionName, char *pluginName);
+int ioShutdownAllModules(void);
+int ioUnloadModule(char *);
+int ioUnloadModuleOfLength(int moduleNameIndex, int moduleNameLength);
+char *ioListBuiltinModule(int moduleIndex);
+char *ioListLoadedModule(int moduleIndex);
+/* The next two are FFI entries! (implemented in sqNamedPrims.c as well) */
+int ioLoadModuleOfLength(int moduleNameIndex, int moduleNameLength);
+int ioLoadSymbolOfLengthFromModule(int functionNameIndex, int functionNameLength, int moduleHandle);
+
+/* The next three functions must be implemented by sqXYZExternalPrims.c */
+/* ioLoadModule:
+	Load a module from disk.
+	WARNING: this always loads a *new* module. Don''t even attempt to find a loaded one.
+	WARNING: never primitiveFail() within, just return 0
+*/
+int ioLoadModule(char *pluginName);
+
+/* ioFindExternalFunctionIn:
+	Find the function with the given name in the moduleHandle.
+	WARNING: never primitiveFail() within, just return 0.
+*/
+int ioFindExternalFunctionIn(char *lookupName, int moduleHandle);
+
+/* ioFreeModule:
+	Free the module with the associated handle.
+	WARNING: never primitiveFail() within, just return 0.
+*/
+int ioFreeModule(int moduleHandle);
+
+/* The Squeak version this interpreter was generated from */
+extern const char *interpreterVersion;
+'
