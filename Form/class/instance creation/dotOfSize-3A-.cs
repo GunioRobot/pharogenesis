@@ -1,24 +1,34 @@
 dotOfSize: diameter
 	"Create a form which contains a round black dot."
-	| radius form bite circle |
+	| radius form bb rect centerX centerY centerYBias centerXBias radiusSquared xOverY maxy dx |
 	radius _ diameter//2.
-	form _ Form extent: diameter@diameter offset: (0@0) - (radius@radius).	
-	diameter <= 9 ifTrue: "special case for speed"
-		[form fillBlack.
-		bite _ diameter//3.
-		form fillWhite: (0@0 extent: bite@1).
-		form fillWhite: (0@(diameter-1) extent: bite@1).
-		form fillWhite: (diameter-bite@0 extent: bite@1).
-		form fillWhite: (diameter-bite@(diameter-1) extent: bite@1).
-		form fillWhite: (0@0 extent: 1@bite).
-		form fillWhite: (0@(diameter-bite) extent: 1@bite).
-		form fillWhite: (diameter-1@0 extent: 1@bite).
-		form fillWhite: (diameter-1@(diameter-bite) extent: 1@bite).
-		^ form].
+	form _ self extent: diameter@diameter offset: (0@0) - (radius@radius).	
+	bb _ (BitBlt toForm: form)
+		sourceX: 0; sourceY: 0;
+		combinationRule: Form over;
+		fillColor: Color black.
+	rect _ form boundingBox.
+	centerX _ rect center x.
+	centerY _ rect center y.
+	centerYBias _ rect height odd ifTrue: [0] ifFalse: [1].
+	centerXBias _ rect width odd ifTrue: [0] ifFalse: [1].
+	radiusSquared _ (rect height asFloat / 2.0) squared - 0.01.
+	xOverY _ rect width asFloat / rect height asFloat.
+	maxy _ rect height - 1 // 2.
 
-	radius _ diameter-1//2.  "so circle fits entirely"
-	(Circle new center: radius@radius radius: radius) displayOn: form.
-	form convexShapeFill: form black.	"fill the circle with black"
+	"First do the inner fill, and collect x values"
+	0 to: maxy do:
+		[:dy |
+		dx _ ((radiusSquared - (dy * dy) asFloat) sqrt * xOverY) truncated.
+		bb	destX: centerX - centerXBias - dx
+			destY: centerY - centerYBias - dy
+			width: dx + dx + centerXBias + 1
+			height: 1;
+			copyBits.
+		bb	destY: centerY + dy;
+			copyBits].
 	^ form
-
-	"(Form dotOfSize: 8) displayAt: Sensor cursorPoint"
+"
+Time millisecondsToRun:
+	[1 to: 20 do: [:i | (Form dotOfSize: i) displayAt: (i*20)@(i*20)]]
+"
