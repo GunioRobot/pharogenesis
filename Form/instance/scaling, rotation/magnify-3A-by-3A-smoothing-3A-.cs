@@ -1,11 +1,11 @@
 magnify: aRectangle by: scale smoothing: cellSize
         "Answer a Form created as a scaling of the receiver.
-        Scale may be a Float, and may be greater or less than 1.0."
+        Scale may be a Float or even a Point, and may be greater or less than 1.0."
         | newForm |
         newForm _ self blankCopyOf: aRectangle scaledBy: scale.
         (WarpBlt current toForm: newForm)
                 sourceForm: self;
-                colorMap: (self colormapIfNeededForDepth: depth);
+                colorMap: (self colormapIfNeededFor: newForm);
                 cellSize: cellSize;  "installs a new colormap if cellSize > 1"
                 combinationRule: 3;
                 copyQuad: aRectangle innerCorners toRect: newForm boundingBox.
