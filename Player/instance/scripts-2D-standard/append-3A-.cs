@@ -1,13 +1,15 @@
-append: aPlayer
+append: aPlayer 
 	"Add aPlayer to the list of objects logically 'within' me.  This is visually represented by its morph becoming my costume's last submorph.   Also allow text to be appended."
 
 	| aCostume |
-	(aPlayer == nil or: [aPlayer == self]) ifTrue: [^ self].
-	(aPlayer class == Text or: [aPlayer class == String]) ifTrue: [
-		self costume class == TextFieldMorph 
-			ifTrue: [^ self costume append: aPlayer]
-			ifFalse: [^ self]].
-	(aCostume _ self costume topRendererOrSelf) addMorphNearBack:  aPlayer costume.
-	aPlayer costume goHome.  "assure it's in view"
-	(aCostume isKindOf: PasteUpMorph) ifTrue:
-		[self setCursor: (aCostume submorphs indexOf: aPlayer costume)]
+	(aPlayer isNil or: [aPlayer == self]) ifTrue: [^self].
+	(aPlayer class == Text or: [aPlayer class == String]) 
+		ifTrue: 
+			[self costume class == TextFieldMorph 
+				ifTrue: [^self costume append: aPlayer]
+				ifFalse: [^self]].
+	(aCostume := self costume topRendererOrSelf) 
+		addMorphNearBack: aPlayer costume.
+	aPlayer costume goHome.	"assure it's in view"
+	(aCostume isKindOf: PasteUpMorph) 
+		ifTrue: [self setCursor: (aCostume submorphs indexOf: aPlayer costume)]
