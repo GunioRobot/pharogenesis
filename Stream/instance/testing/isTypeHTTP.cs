@@ -1,0 +1,2 @@
+isTypeHTTP
+	^false
