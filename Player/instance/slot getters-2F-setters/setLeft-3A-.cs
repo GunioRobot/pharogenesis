@@ -1,6 +1,8 @@
 setLeft: w
 	"Set the object's left coordinate as indicated"
 
-	| topLeftNow |
-	topLeftNow _ self costume cartesianBoundsTopLeft.
-	^ self costume left: self costume left - topLeftNow x + w
+	| topLeftNow cost |
+	cost _ self costume.
+	cost isWorldMorph ifTrue: [^ self].
+	topLeftNow _ cost cartesianBoundsTopLeft.
+	^ cost left: cost left - topLeftNow x + w
