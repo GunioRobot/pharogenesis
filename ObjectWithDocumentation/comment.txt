@@ -1,0 +1,2 @@
+ObjectWithDocumentation - an abstract superclass for objects that allows maintenance of an authoring stamp, a body of documentation, and a properties dictionary.
+The Properties implementation has not happened yet -- it would closely mirror the implemenation of properties in the MorphExtension, for example.
