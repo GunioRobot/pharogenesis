@@ -1,0 +1,2 @@
+isEmpty
+	^firstFace == nil
