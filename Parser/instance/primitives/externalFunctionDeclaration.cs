@@ -16,7 +16,7 @@ externalFunctionDeclaration
 		ifFalse:[(self match:#number) ifFalse:[^self expected:'function name or index']].
 	(self matchToken:'(' asSymbol) ifFalse:[^self expected:'argument list'].
 	args _ WriteStream on: Array new.
-	[here == #)] whileFalse:[
+	[here == #')'] whileFalse:[
 		argType _ self externalType: descriptorClass.
 		argType == nil ifTrue:[^self expected:'argument'].
 		argType isVoid & argType isPointerType not ifFalse:[args nextPut: argType].
