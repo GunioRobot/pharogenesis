@@ -2,9 +2,8 @@ transformToDo: encoder
 	" var _ rcvr. L1: [var <= arg1] Bfp(L2) [block body. var _ var + inc] Jmp(L1) L2: "
 	| limit increment block initStmt test incStmt limitInit blockVar |
 	"First check for valid arguments"
-	(receiver isConstantNumber
-		and: [(arguments last isMemberOf: BlockNode)
-				and: [arguments last numberOfArguments = 1]])
+	((arguments last isMemberOf: BlockNode)
+			and: [arguments last numberOfArguments = 1])
 		ifFalse: [^ false].
 	arguments last firstArgument isVariableReference
 		ifFalse: [^ false]. "As with debugger remote vars"
@@ -24,6 +23,7 @@ transformToDo: encoder
 		ifTrue: [limitInit _ nil]
 		ifFalse:  "Need to store limit in a var"
 			[limit _ encoder autoBind: blockVar key , 'LimiT'.
+			limit scope: -2.  "Already done parsing block"
 			limitInit _ AssignmentNode new
 					variable: limit
 					value: (arguments at: 1)].
