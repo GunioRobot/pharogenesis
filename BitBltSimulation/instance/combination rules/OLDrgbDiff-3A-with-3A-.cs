@@ -8,15 +8,15 @@ OLDrgbDiff: sourceWord with: destinationWord
 	values obtained from the left and right fringes."
 	| diff pixMask |
 	self inline: false.
-	destPixSize < 16 ifTrue:
+	destDepth < 16 ifTrue:
 		["Just xor and count differing bits if not RGB"
 		diff _ sourceWord bitXor: destinationWord.
-		pixMask _ maskTable at: destPixSize.
+		pixMask _ maskTable at: destDepth.
 		[diff = 0] whileFalse:
 			[(diff bitAnd: pixMask) ~= 0 ifTrue: [bitCount _ bitCount + 1].
-			diff _ diff >> destPixSize].
+			diff _ diff >> destDepth].
 		^ destinationWord "for no effect"].
- 	destPixSize = 16
+ 	destDepth = 16
 		ifTrue:
 		[diff _ (self partitionedSub: sourceWord from: destinationWord
 						nBits: 5 nPartitions: 3).
