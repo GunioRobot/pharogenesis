@@ -1,0 +1,2 @@
+browserSupportsAPI: aBoolean
+	BrowserSupportsAPI _ aBoolean
