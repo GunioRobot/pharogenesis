@@ -8,7 +8,7 @@ mixSampleCount: n into: aSoundBuffer startingAt: startIndex leftVol: leftVol rig
 	self var: #ring declareC: 'short int *ring'.
 
 	lastIndex _ (startIndex + n) - 1.
-	scaledThisIndex _ scaledIndex.
+	scaledThisIndex _ scaledNextIndex _ scaledIndex.
 	startIndex to: lastIndex do: [:sliceIndex |
 		scaledNextIndex _ scaledThisIndex + scaledIndexIncr.
 		scaledNextIndex >= scaledIndexLimit
