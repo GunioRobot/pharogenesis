@@ -6,4 +6,4 @@
 
 	<primitive: 47>
 	aNumber isNumber ifFalse: [^ false].
-	^ self retry: #= coercing: aNumber
+	^ (aNumber adaptFloat: self) = aNumber adaptToFloat
