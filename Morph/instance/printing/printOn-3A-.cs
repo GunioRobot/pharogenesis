@@ -1,11 +1,9 @@
-printOn: aStream
-
+printOn: aStream 
 	| aName |
 	super printOn: aStream.
-
-	(aName _ self knownName) ~~ nil ifTrue:
-		[aStream nextPutAll: '<', aName, '>'].
-
+	(aName := self knownName) notNil 
+		ifTrue: [aStream nextPutAll: '<' , aName , '>'].
 	aStream nextPutAll: '('.
-	aStream print: self identityHash;
-			nextPutAll: ')'.
+	aStream
+		print: self identityHash;
+		nextPutAll: ')'
