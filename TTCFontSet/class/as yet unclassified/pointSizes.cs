@@ -1,0 +1,3 @@
+pointSizes
+
+	^ TTCFont pointSizes.
