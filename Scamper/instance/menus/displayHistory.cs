@@ -2,7 +2,7 @@ displayHistory
 	"Let the user selecet a previous page to view."
 
 	| menu |
-	menu _ MenuMorph entitled: 'Recent URLs'.
+	menu _ MenuMorph entitled: 'Recent URLs' translated.
 	menu defaultTarget: self.
 	menu addStayUpItem.
 	menu addLine.
