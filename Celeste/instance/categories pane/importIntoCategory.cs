@@ -2,8 +2,8 @@ importIntoCategory
 	"Add the messages from a Unix or Eudora format file into this category"
 
 	| inboxPath count |
-
-	currentCategory ifNil: [ ^self ].
+	mailDB ifNil: [ ^self ].
+	self category ifNil: [ ^self ].
 
 	"get the file to import from"
 	inboxPath _ ''.
@@ -14,7 +14,7 @@ importIntoCategory
 		self inform: 'file does not exist' ].
 
 	Utilities informUser: 'Fetching mail from ', inboxPath during: [
-		count _ mailDB importMailFrom: inboxPath  intoCategory: currentCategory. ].
+		count _ mailDB importMailFrom: inboxPath  intoCategory: self category. ].
 	self inform: count printString, ' messages imported'.
 
 	self updateTOC.
