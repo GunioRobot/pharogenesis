@@ -1,0 +1,2 @@
+menuColorFromWorld
+	^ self valueOfFlag: #menuColorFromWorld
