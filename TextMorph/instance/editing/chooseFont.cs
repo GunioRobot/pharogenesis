@@ -1,3 +1,3 @@
 chooseFont
-	self editor offerFontMenu.
-	self updateFromParagraph
+	self editor changeTextFont.
+	self updateFromParagraph.
