@@ -1,0 +1,2 @@
+errorObject
+	^Error
