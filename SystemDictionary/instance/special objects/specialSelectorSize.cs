@@ -1,4 +1,4 @@
 specialSelectorSize
 	"Answer the number of special selectors in the system."
 
-	^SpecialSelectors size // 2
+	^ (self specialObjectsArray at: 24) size // 2
