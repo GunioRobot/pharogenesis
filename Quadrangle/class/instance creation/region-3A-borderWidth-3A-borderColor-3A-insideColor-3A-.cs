@@ -3,7 +3,7 @@ region: aRectangle borderWidth: anInteger borderColor: aMask1 insideColor: aMask
 	inside color determined by the arguments."
 
 	^super new
-		region: aRectangle
+		setRegion: aRectangle
 		borderWidth: anInteger
 		borderColor: aMask1
 		insideColor: aMask2
