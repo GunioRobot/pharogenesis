@@ -1,22 +1,12 @@
 ifError: errorHandlerBlock
-	"Evaluate the block represented by the receiver. If an error occurs the given is evaluated with the error message and the receiver as parameters. The error handler block may return a value to be used if the receiver block gets an error. The receiver should not contain an explicit return statement as this would leave an obsolete error handler hanging around."
+	"Evaluate the block represented by the receiver, and normally return it's value.  If an error occurs, the errorHandlerBlock is evaluated, and it's value is instead returned.  The errorHandlerBlock must accept zero, one, or two parameters (the error message and the receiver)."
 	"Examples:
-		[1 whatsUpDoc] ifError: [:err :rcvr | ^ 'huh?'].
+		[1 whatsUpDoc] ifError: [:err :rcvr | 'huh?'].
 		[1 / 0] ifError: [:err :rcvr |
 			'ZeroDivide' = err
-				ifTrue: [^ Float infinity]
+				ifTrue: [Float infinity]
 				ifFalse: [self error: err]]
 "
-	| lastHandler val activeProcess |
-	activeProcess _ Processor activeProcess.
-	lastHandler _ activeProcess errorHandler.
-	activeProcess errorHandler: [:aString :aReceiver |
-		activeProcess errorHandler: lastHandler.
-		^ errorHandlerBlock value: aString value: aReceiver].
-	val _ self on: Error do: [:ex |
-		activeProcess errorHandler: lastHandler.
-		^errorHandlerBlock value: ex description value: ex receiver].
-	activeProcess errorHandler: lastHandler.
-	^ val
 
-
+	^ self on: Error do: [:ex |
+		errorHandlerBlock valueWithPossibleArgs: {ex description. ex receiver}]
