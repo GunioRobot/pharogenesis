@@ -1,8 +1,9 @@
-forMorph: aMorph
+forMorph: aMorph 
 	| it |
-	morphRepresented _ aMorph.
-	aMorph submorphs size > 0 ifTrue:
-		[self addMorphBack: (it _ aMorph submorphs first fullCopy).
-		it position: self position + (1@1).
-		it lock].
+	morphRepresented := aMorph.
+	aMorph submorphs notEmpty 
+		ifTrue: 
+			[self addMorphBack: (it := aMorph submorphs first veryDeepCopy).
+			it position: self position + (1 @ 1).
+			it lock].
 	self fitContents
