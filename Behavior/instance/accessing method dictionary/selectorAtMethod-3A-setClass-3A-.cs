@@ -8,11 +8,11 @@ selectorAtMethod: method setClass: classResultBlock
 					[superclass == nil
 						ifTrue: 
 							[classResultBlock value: self.
-							^self defaultSelectorForMethod: method].
+							^method defaultSelector].
 					sel _ superclass selectorAtMethod: method setClass: classResultBlock.
 					"Set class to be self, rather than that returned from 
 					superclass. "
-					sel == (self defaultSelectorForMethod: method) ifTrue: [classResultBlock value: self].
+					sel == method defaultSelector ifTrue: [classResultBlock value: self].
 					^sel].
 	classResultBlock value: self.
 	^sel
