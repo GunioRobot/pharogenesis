@@ -3,10 +3,12 @@ referencePlayfield
 
 	| former |
 	owner ifNotNil:
-		[owner isPlayfieldLike ifTrue: [^ owner].
-		(owner isHandMorph and: [(former _ self formerOwner) notNil])
+		[(self topRendererOrSelf owner isHandMorph and: [(former _ self formerOwner) notNil])
 			ifTrue:
-				[^ former isPlayfieldLike 
+				[former _ former renderedMorph.
+				^ former isPlayfieldLike 
 					ifTrue: [former]
 					ifFalse: [former referencePlayfield]]].
-	^ self world
+
+	self allOwnersDo: [:o | o isPlayfieldLike ifTrue: [^ o]].
+	^ ActiveWorld
