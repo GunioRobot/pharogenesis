@@ -8,4 +8,4 @@ browseClassFromIt
 	aClass ifNil: [^ view flash].
 
 	self terminateAndInitializeAround:
-		[Utilities spawnHierarchyForClass: aClass selector: nil]
+		[self systemNavigation spawnHierarchyForClass: aClass selector: nil]
