@@ -1,0 +1,2 @@
+extent
+	^ curve bounds extent
