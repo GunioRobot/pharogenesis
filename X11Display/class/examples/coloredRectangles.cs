@@ -2,7 +2,7 @@ coloredRectangles
 	"X11Display coloredRectangles"
 	| display window gc colors rnd w h pt1 pt2 r nPixels time n |
 	display _ X11Display XOpenDisplay: nil.
-	window _ display getInputFocus.
+	window _ display ourWindow.
 	gc _ X11GC on: window.
 	colors _ Color colorNames collect:[:cn| (Color perform: cn) pixelWordForDepth: 32].
 	rnd _ Random new.
