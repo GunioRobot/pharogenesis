@@ -9,12 +9,12 @@ processCharMap: assoc
 		[1 to: (cmap size min: charTable size) do:
 			[:i |
 			glyph _ glyphs at: (cmap at: i) + 1.
-			charTable at: i put: glyph]].
+			charTable at: (self macToWin: i) put: glyph]].
 
 	assoc key = 3 ifTrue: "Win encoded table"
 		[1 to: (cmap size min: charTable size) do:
 			[:i |
 			glyph _ glyphs at: (cmap at: i) + 1.
-			charTable at: (self winToMac: i) put: glyph]].
+			charTable at: i put: glyph]].
 
 	^ charTable
