@@ -1,6 +1,8 @@
 mouseY
+	"Answer the y-coordinate of the mouse, in my coordinate system"
+
 	^ self isInWorld
 		ifTrue:
-			[self bottom - (self cursorPoint y)]
+			[self cartesianOrigin y - ((self pointFromWorld: self cursorPoint) y)]
 		ifFalse:
 			[0]
