@@ -4,11 +4,11 @@ oldFileNamed: aName
 
 	answer _ self sendToSwikiProjectServer: {
 		'action: readnamedfile'.
-		'projectname: ',aName.
+		'projectname: ',aName convertToSuperSwikiServerString.
 	}.
 	(answer beginsWith: 'OK') ifFalse: [ ^nil].
 	^(SwikiPseudoFileStream with: (answer allButFirst: 3))
 		reset;
 		directory: self;
-		localName: aName;
+		localName: aName convertToSuperSwikiServerString;
 		yourself
