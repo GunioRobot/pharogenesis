@@ -8,13 +8,8 @@ adaptToWorld: aWorld
 	mouseEnterRecipient mouseLeaveRecipient mouseEnterDraggingRecipient
 	mouseLeaveDraggingRecipient clickRecipient doubleClickRecipient startDragRecipient keyStrokeRecipient valueParameter) do:
 		[:aName |
-		(value _ self instVarNamed: aName asString) ifNotNil:
-			[newValue _ nil.
-			value isMorph
-				ifTrue:
-					[value isWorldMorph ifTrue: [newValue _ aWorld].
-					value isHandMorph ifTrue: [newValue _ aWorld primaryHand]]
-				ifFalse: [(value isKindOf: Presenter) ifTrue: [newValue _ aWorld presenter]].
+		(value _ self instVarNamed: aName asString) ifNotNil:[
+			newValue _ value adaptedToWorld: aWorld.
 			(newValue notNil and: [newValue ~~ value])
 				ifTrue:
 					[self instVarNamed: aName asString put: newValue]]]
