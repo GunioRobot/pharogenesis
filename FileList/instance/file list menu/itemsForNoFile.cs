@@ -1,10 +1,11 @@
 itemsForNoFile
-	^ #(
-		('sort by name' 'sort by size' 'sort by date'
-		'browse code files'
-		'add new file' 'add new directory')
-		(3 4)
-		(sortByName sortBySize sortByDate
-		browseFiles
-		addNewFile addNewDirectory)
-		)
+
+	| services |
+	services := OrderedCollection new.
+	services add: self serviceSortByName.
+	services add: self serviceSortBySize.
+	services add: (self serviceSortByDate useLineAfter: true).
+	services addAll: (self itemsForDirectory: (self isFileSelected ifFalse: [ self directory ] ifTrue: [])).
+	^ services
+
+		
