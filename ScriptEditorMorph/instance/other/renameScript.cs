@@ -1,7 +1,13 @@
 renameScript
 	"Invoked at user menu request"
-	| reply aPosition oldSelector dflt oldStatus |
+	| reply aPosition oldSelector dflt oldStatus oldOwner aUserScript |
 	oldSelector _ self scriptName.
+	self flag: #deferred.
+	aUserScript _ playerScripted class userScriptForPlayer: self selector: oldSelector.
+	aUserScript isTextuallyCoded ifTrue:
+		[self inform: 'Sorry, for now you can only rename tiled scripts'.
+		^ self].
+
 	oldStatus _ self scriptInstantiation status.
 	dflt _ self isAnonymous ifTrue: [''] ifFalse: [self scriptTitle].
 	reply _   FillInTheBlank request: 'Script Name' initialAnswer: dflt.
@@ -19,5 +25,6 @@ renameScript
 	self addMorphFront: self buttonRowForEditor.  "up to date"
 	self install.
 	aPosition _ self position.
+	oldOwner _ self topRendererOrSelf owner.
 	self delete
-	playerScripted costume viewAfreshShowingScript: scriptName at: aPosition
+	playerScripted costume viewAfreshIn: oldOwner showingScript: scriptName at: aPosition
