@@ -1,3 +1,3 @@
 newForWorld: aWorld
 
-	^super new initializeForWorld: aWorld
+	^self basicNew initializeForWorld: aWorld
