@@ -2,7 +2,8 @@ colormapFromARGB
 	"Return a ColorMap mapping from canonical ARGB space into the receiver.
 	Note: This version is optimized for Squeak forms."
 	| map nBits |
-	self isExternalForm ifTrue:[^ColorMap mappingFromARGB: self rgbaBitMasks].
+	self hasNonStandardPalette 
+		ifTrue:[^ColorMap mappingFromARGB: self rgbaBitMasks].
 	self depth <= 8 ifTrue:[
 		map _ Color colorMapIfNeededFrom: 32 to: self depth.
 		map size = 512 ifTrue:[nBits _ 3].
