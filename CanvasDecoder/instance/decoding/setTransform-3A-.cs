@@ -1,4 +1,4 @@
-setTransform: command
+setTransform: command 
 	| transformEnc |
-	transformEnc _ command at: 2.
-	transform _ self class decodeTransform: transformEnc
+	transformEnc := command second.
+	transform := self class decodeTransform: transformEnc
