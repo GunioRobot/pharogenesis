@@ -5,4 +5,4 @@ editComment
 	self okToChange ifFalse: [^ self].
 	self messageCategoryListIndex: 0.
 	editSelection _ #editComment.
-	self changed: #editClass
+	self changed: #classSelectionChanged
