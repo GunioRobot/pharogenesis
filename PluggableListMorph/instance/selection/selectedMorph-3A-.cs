@@ -1,5 +1,7 @@
-selectedMorph: aMorph
-	self unhighlightSelection.
-	selectedMorph _ aMorph.
-	selection _ aMorph ifNil: [nil] ifNotNil: [aMorph contents].
-	self highlightSelection
+selectedMorph: aMorph 
+	"this shouldn't be used any longer"
+
+	"self isThisEverCalled ."
+
+	Beeper  beep.
+	true ifTrue: [^self]
