@@ -1,8 +1,9 @@
 fileOut
-	| f |
-	f := (FileStream newFileNamed: self name,'.st').
-	self fileOutOn: f.
+	| internalStream |
+	internalStream _ WriteStream on: (String new: 1000).
+	self fileOutOn: internalStream.
 	self needsInitialize ifTrue:[
-		f cr; nextChunkPut: self name,' initialize'.
+		internalStream cr; nextChunkPut: self name,' initialize'.
 	].
-	f close
+
+	FileStream writeSourceCodeFrom: internalStream baseName: self name isSt: true useHtml: false.
