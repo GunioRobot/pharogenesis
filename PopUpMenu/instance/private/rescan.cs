@@ -1,7 +1,9 @@
 rescan
-	"Cause me to be recreated for system changes like fonts."
+	"Cause my form to be recomputed after a font change."
 
-	labelString == nil 
-		ifFalse: [self labels: labelString font: font lines: lineArray]
+	labelString == nil ifTrue: [labelString _ 'NoText!'].
+	self labels: labelString font: (MenuStyle fontAt: 1) lines: lineArray.
+	form _ nil.
 
-	"PopUpMenu allInstancesDo: [:x | x rescan]"
+	"PopUpMenu withAllSubclasses do: [ :menuClass |
+		menuClass allInstancesDo: [ :m | m rescan ]]"
