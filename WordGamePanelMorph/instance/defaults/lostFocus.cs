@@ -1,0 +1,3 @@
+lostFocus
+
+	self unhighlight
