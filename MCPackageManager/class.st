@@ -1,0 +1,1 @@
+MCPackageManager class instanceVariableNames: 'registry'
