@@ -3,6 +3,8 @@ markMatchingClasses
 
 	| unmarkedClassList firstPartOfSelector receiverString receiver |
 
+	self flag: #mref.	"allows for old-fashioned style"
+
 	"Only 'example' queries can be marked."
 	(contents asString includes: $.) ifFalse: [^ self].
 
@@ -14,10 +16,17 @@ markMatchingClasses
 						upToAll: firstPartOfSelector.
 	receiver _ Compiler evaluate: receiverString.
 
-	unmarkedClassList do:
-		[:classAndMethod | | class |
-		class _ Compiler evaluate:
-				((ReadStream on: classAndMethod) upToAll: firstPartOfSelector).
-		(receiver isKindOf: class) ifTrue:
-			[classList add: '*', classAndMethod.
-			classList remove: classAndMethod]].
+	unmarkedClassList do: [ :classAndMethod | | class |
+		(classAndMethod isKindOf: MethodReference) ifTrue: [
+			(receiver isKindOf: classAndMethod actualClass) ifTrue: [
+				classAndMethod stringVersion: '*', classAndMethod stringVersion.
+			]
+		] ifFalse: [
+			class _ Compiler evaluate:
+					((ReadStream on: classAndMethod) upToAll: firstPartOfSelector).
+			(receiver isKindOf: class) ifTrue: [
+				classList add: '*', classAndMethod.
+				classList remove: classAndMethod
+			]
+		].
+	].
