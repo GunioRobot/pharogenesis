@@ -1,0 +1,1 @@
+placeEmbeddedObject: anchoredMorph
