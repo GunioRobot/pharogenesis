@@ -1,0 +1,2 @@
+newStandAlone
+	^self new morphicWindow
