@@ -1,0 +1,2 @@
+setSelectionSelectorIs: aSelector
+	^ aSelector == setSelectionSelector
