@@ -1,0 +1,2 @@
+projectZoom
+	^ self valueOfFlag: #projectZoom
