@@ -1,10 +1,15 @@
-unreferencedKeys		"TextConstants unreferencedKeys"
+unreferencedKeys
+	"TextConstants unreferencedKeys"
+
 	| n |
-	^ 'Scanning for references . . .'
+	^'Scanning for references . . .' 
 		displayProgressAt: Sensor cursorPoint
-		from: 0 to: self size
-		during:
-		[:bar | n _ 0.
-		self keys select:
-			[:key | bar value: (n _ n+1).
-			(Smalltalk allCallsOn: (self associationAt: key)) isEmpty]]
+		from: 0
+		to: self size
+		during: 
+			[:bar | 
+			n := 0.
+			self keys select: 
+					[:key | 
+					bar value: (n := n + 1).
+					(self systemNavigation allCallsOn: (self associationAt: key)) isEmpty]]
