@@ -3,4 +3,4 @@ fillColor: aColorOrPattern
 
 	aColorOrPattern == nil ifTrue: [halftoneForm _ nil. ^ self].
 	destForm == nil ifTrue: [self error: 'Must set destForm first'].
-	halftoneForm _ aColorOrPattern bitPatternForDepth: destForm depth
+	halftoneForm _ destForm bitPatternFor: aColorOrPattern 
