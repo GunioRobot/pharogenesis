@@ -1,0 +1,2 @@
+resetInStream
+	inStream _ nil
