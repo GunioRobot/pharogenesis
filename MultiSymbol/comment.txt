@@ -1,1 +1,1 @@
-This class represents the symbols whose slots are the MultiCharacters.  The protocol is basically the same as the one of Symbol with a few exceptions.  Some think the separated symbol tables from the ones of Symbol isn't a great idea.  I kind of disagree but would like to see a better solution.
+This class represents the symbols containing 32bit characters.
