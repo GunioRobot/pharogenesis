@@ -1,0 +1,2 @@
+initializedInstance
+	^ self new
