@@ -3,3 +3,4 @@ externalizeIPandSP
 
 	instructionPointer _ self cCoerce: localIP to: 'int'.
 	stackPointer _ self cCoerce: localSP to: 'int'.
+	theHomeContext _ localHomeContext.
