@@ -1,3 +1,2 @@
 isControlActive
-
-	^ model done not
+	^ self isControlWanted
