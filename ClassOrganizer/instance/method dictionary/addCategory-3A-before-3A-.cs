@@ -20,5 +20,6 @@ addCategory: catString before: nextCategory
 				ifTrue: [0]
 				ifFalse: [categoryStops at: index-1])).
 	"remove empty default category"
-	(self listAtCategoryNamed: Default) size = 0
+	(newCategory ~= Default
+			and: [(self listAtCategoryNamed: Default) isEmpty])
 		ifTrue: [self removeCategory: Default]
