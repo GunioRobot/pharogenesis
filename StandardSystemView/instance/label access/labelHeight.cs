@@ -1,2 +1,2 @@
 labelHeight
-	^ (LabelStyle fontAt: 2) height + 4
+	^ ((LabelStyle fontAt: 1) height + 4) max: 20
