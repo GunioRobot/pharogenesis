@@ -13,7 +13,7 @@ readFrom: stringOrStream
 	(aStream peekFor: $r)
 		ifTrue: 
 			["<base>r<integer>"
-			(base _ value * sign) < 2 ifTrue: [^self error: 'Invalid radix'].
-			sign _ (aStream peekFor: $-) ifTrue: [-1] ifFalse: [1].
+			(base _ value) < 2 ifTrue: [^self error: 'Invalid radix'].
+			(aStream peekFor: $-) ifTrue: [sign _ sign negated].
 			value _ Integer readFrom: aStream base: base].
 	^ self readRemainderOf: value from: aStream base: base withSign: sign.
