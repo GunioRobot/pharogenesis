@@ -1,0 +1,2 @@
+morphToInstall
+	^ morphToInstall
