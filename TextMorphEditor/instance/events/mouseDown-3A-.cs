@@ -2,22 +2,21 @@ mouseDown: evt
 	"An attempt to break up the old processRedButton code into threee phases"
 	| clickPoint |
 
-	oldInterval _ startBlock stringIndex to: stopBlock stringIndex - 1.
+	oldInterval _ self selectionInterval.
 	clickPoint _ evt cursorPoint.
 	(paragraph clickAt: clickPoint for: model controller: self) ifTrue: [
-		oldInterval _ pivotBlock _ nil.	"don't change selection based on this click"
+		pivotBlock _ paragraph characterBlockAtPoint: clickPoint.
+		self markBlock: pivotBlock.
+		self pointBlock: pivotBlock.
 		evt hand releaseKeyboardFocus: self.
 		^ self].
-	sensor leftShiftDown
+	evt shiftPressed
 		ifFalse:
 			[self closeTypeIn.
-			stopBlock _ startBlock _ pivotBlock _
-				paragraph characterBlockAtPoint: clickPoint]
+			pivotBlock _ paragraph characterBlockAtPoint: clickPoint.
+			self markBlock: pivotBlock.
+			self pointBlock: pivotBlock.]
 		ifTrue:
-			[(paragraph characterBlockAtPoint: clickPoint) <= startBlock
-				ifTrue: [stopBlock _ startBlock.
-						pivotBlock _ stopBlock]
-				ifFalse: [startBlock _  stopBlock.
-						pivotBlock _ startBlock].
-			self closeTypeIn].
+			[self closeTypeIn.
+			self mouseMove: evt].
 	self storeSelectionInParagraph
