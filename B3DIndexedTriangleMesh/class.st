@@ -1,0 +1,1 @@
+B3DIndexedTriangleMesh class instanceVariableNames: ''
