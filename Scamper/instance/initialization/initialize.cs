@@ -6,4 +6,4 @@ initialize
 	currentUrl _ ''.
 	pageSource _ ''.
 	document _ HtmlParser parse: (ReadStream on: '').
-	self status: 'sittin'
+	self status: 'sittin' translated
