@@ -4,9 +4,9 @@ togglexGridding
 
 	xgridOn
 		ifTrue: 
-			[grid x: 1.
+			[grid _ 1 @ grid y.
 			xgridOn _ false]
 		ifFalse: 
-			[grid x: togglegrid x.
+			[grid _ togglegrid x @ grid y.
 			xgridOn _ true].
 	tool _ previousTool
