@@ -2,7 +2,7 @@ search
 	"Search the text of all messages in the present category"
 
 	| destCat matchString msgText |
-
+	mailDB ifNil: [ ^self ].
 	destCat _ FillInTheBlank
 		request: 'In what category should the search results be filed?'
 		initialAnswer: '.search results.'.
@@ -14,7 +14,7 @@ search
 
 	self requiredCategory: destCat.
 
-	(self filteredMessagesIn: currentCategory) do:
+	(self filteredMessages) do:
 		[: msgID |
 		 msgText _ mailDB getText: msgID.
 		 ((msgText findString: matchString startingAt: 1) > 0) ifTrue:
