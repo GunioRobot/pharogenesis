@@ -7,3 +7,5 @@ displayLine: aString at: aPoint
 		clippedBy: Display boundingBox
 		rule: Form over
 		fillColor: nil
+		kernDelta: 0
+		on: (BitBlt current toForm: Display).
