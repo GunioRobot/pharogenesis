@@ -1,0 +1,2 @@
+asTurnDirection
+	^self
