@@ -1,18 +1,16 @@
 bytecodePrimBlockCopy
 
-	| rcvrClass |
-	rcvrClass _ self fetchClassOf: (self internalStackValue: 1).
+	| rcvr hdr |
+	rcvr _ self internalStackValue: 1.
 	successFlag _ true.
-	self success:
-		((rcvrClass = (self splObj: ClassBlockContext)) or:
-		 [rcvrClass = (self splObj: ClassMethodContext)]).
-	successFlag ifTrue: [
-		self externalizeIPandSP.
+	hdr _ self baseHeader: rcvr.
+	self success: (self isContextHeader: hdr).
+	successFlag ifTrue:
+		[self externalizeIPandSP.
 		self primitiveBlockCopy.
-		self internalizeIPandSP.
-	].
-	successFlag ifFalse: [
-		messageSelector _ self specialSelector: 24.
+		self internalizeIPandSP].
+	successFlag ifFalse:
+		[messageSelector _ self specialSelector: 24.
 		argumentCount _ 1.
-		^ self normalSend
-	].
+		^ self normalSend].
+	self fetchNextBytecode.
