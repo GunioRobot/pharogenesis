@@ -21,6 +21,6 @@ processFileContents
 				^self]].
 		].
 	].
-	(stream respondsTo: #close) ifTrue:[stream close].
+	stream close.
 	].
 	Transcript cr; print: time / 1000.0; show:' secs to read file'
