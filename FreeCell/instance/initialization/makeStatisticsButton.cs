@@ -1,7 +1,6 @@
 makeStatisticsButton
-
-	^self
+	^ self
 		buildButton: SimpleButtonMorph new
 		target: self
-		label: 'Statistics'
+		label: 'Statistics' translated
 		selector: #statistics
