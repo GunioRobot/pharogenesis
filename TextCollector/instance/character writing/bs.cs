@@ -1,6 +1,6 @@
 bs
-	"Backspace the Transcript.  Put in at Alan's request 1/31/96 sw"
+	"Backspace the Transcript.  Put in at Alan's request "
 	"Transcript bs"
 
-	contents _ contents copyFrom: 1 to: contents size - 1.
+	contents _ contents allButLast.
 	self changed: #update
