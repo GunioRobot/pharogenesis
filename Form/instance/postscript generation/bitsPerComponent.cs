@@ -1,2 +1,2 @@
 bitsPerComponent
-	^depth <= 8 ifTrue:[depth] ifFalse:[8].
+	^self depth <= 8 ifTrue:[self depth] ifFalse:[8].
