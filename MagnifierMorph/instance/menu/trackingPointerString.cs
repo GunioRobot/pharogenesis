@@ -1,4 +1,4 @@
 trackingPointerString
-	^trackPointer
+	^ (trackPointer
 		ifTrue: ['stop tracking pointer']
-		ifFalse: ['start tracking pointer']
+		ifFalse: ['start tracking pointer']) translated
