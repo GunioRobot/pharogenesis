@@ -1,0 +1,3 @@
+boxed
+
+	style _ #boxed
