@@ -1,5 +1,7 @@
 removeUnusedTemps 
-	| str end start | 
+	| str end start madeChanges | 
+
+	madeChanges _ false.
 	str _ requestor text string.
 	((tempsMark between: 1 and: str size)
 		and: [(str at: tempsMark) = $|]) ifFalse: [^ self].
@@ -25,8 +27,10 @@ OK to remove it?') asText makeBoldFrom: 1 to: temp size))
 				[(str at: start-1) = $  ifTrue: [start _ start-1].
 				requestor correctFrom: start to: end with: ''.
 				str _ str copyReplaceFrom: start to: end with: ''. 
+				madeChanges _ true.
 				tempsMark _ tempsMark - (end-start+1)]]
 			ifFalse:
 			[PopUpMenu notify:
 'You''ll first have to remove the
-statement where it''s stored into']]]
+statement where it''s stored into']]].
+	madeChanges ifTrue: [ParserRemovedUnusedTemps signal]
