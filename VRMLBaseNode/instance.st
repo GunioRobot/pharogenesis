@@ -1,6 +1,6 @@
 Object
 	subclass: #VRMLBaseNode
-	instanceVariableNames: 'myEvents '
+	instanceVariableNames: 'myEvents'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon3D-VRML BaseNodes'
+	category: 'Balloon3D-VRML-BaseNodes'
