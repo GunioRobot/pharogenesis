@@ -1,6 +1,6 @@
 followPath
 	| pathPoints offset |
-	(pathPoints _ self renderedMorph valueOfProperty: #pathPoints) ifNil: [^ self beep].
+	(pathPoints _ self renderedMorph valueOfProperty: #pathPoints) ifNil: [^ Beeper beep].
 	offset _ owner position - (self extent // 2).
 	pathPoints do:
 		[:aPoint |
