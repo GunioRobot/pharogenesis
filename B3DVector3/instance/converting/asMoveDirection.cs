@@ -1,0 +1,2 @@
+asMoveDirection
+	^self
