@@ -1,0 +1,2 @@
+optionalButtons
+	^ self valueOfFlag: #optionalButtons
