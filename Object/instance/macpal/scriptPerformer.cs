@@ -1,0 +1,3 @@
+scriptPerformer
+
+	^ self
