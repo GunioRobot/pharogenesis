@@ -5,4 +5,4 @@ on: aTransferMorph
 	self color: Color transparent.
 	transferMorph _ aTransferMorph.
 	transferMorph addDependent: self.
-	Display getCurrentMorphicWorld addMorph: self	"or perhaps aTransferMorph world"
+	ActiveWorld addMorph: self	"or perhaps aTransferMorph world"
