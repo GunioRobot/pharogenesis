@@ -1,2 +1,2 @@
 maximumSelection
-	^ list size
+	^ self getListSize
