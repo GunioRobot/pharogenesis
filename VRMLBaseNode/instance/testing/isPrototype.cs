@@ -1,0 +1,2 @@
+isPrototype
+	^false
