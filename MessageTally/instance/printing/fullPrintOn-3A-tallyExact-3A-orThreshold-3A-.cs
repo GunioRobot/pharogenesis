@@ -6,6 +6,7 @@ fullPrintOn: aStream tallyExact: isExact orThreshold: perCent
 		tabs: OrderedCollection new
 		thisTab: ''
 		total: tally
+		totalTime: time
 		tallyExact: isExact
 		orThreshold: threshold.
 	aStream nextPut: Character newPage; cr.
