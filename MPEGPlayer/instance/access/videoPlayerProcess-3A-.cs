@@ -1,0 +1,2 @@
+videoPlayerProcess: aProcess
+	videoPlayerProcess _ aProcess
