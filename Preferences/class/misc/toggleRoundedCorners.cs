@@ -1,0 +1,2 @@
+toggleRoundedCorners
+	self togglePreference: #roundedWindowCorners
