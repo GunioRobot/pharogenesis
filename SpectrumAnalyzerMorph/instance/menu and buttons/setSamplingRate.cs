@@ -3,7 +3,7 @@ setSamplingRate
 
 	| aMenu rate on |
 	aMenu _ CustomMenu new title:
-		'Sampling rate (currently ', soundInput samplingRate printString, ')'.
+		('Sampling rate (currently {1})' translated format:{soundInput samplingRate}).
 	#(11025 22050 44100) do:[:r | aMenu add: r printString action: r].
 	rate _ aMenu startUp.
 	rate ifNil: [^ self].
