@@ -1,9 +1,4 @@
 setOperator: aString
+	"Set the operator symbol from the string provided"
 
-	type _ #operator.
-	operatorOrExpression _ aString asSymbol.
- 	self line1: (ScriptingSystem wordingForOperator: aString).
-	(ScriptingSystem doesOperatorWantArrows: operatorOrExpression)
-		ifTrue: [self addArrows; updateLiteralLabel].
-
-	"operatorOrExpression == #heading ifTrue: [self halt]."
+	self setOperator: aString andUseWording:  (self currentVocabulary tileWordingForSelector: aString)
