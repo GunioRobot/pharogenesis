@@ -1,0 +1,2 @@
+inPoint
+	^inPoint
