@@ -2,13 +2,13 @@ declare: varString
 	"Declare class variables common to all instances. Answer whether 
 	recompilation is advisable."
 
-	| newVars conflicts assoc class |
+	| newVars conflicts |
 	newVars _ 
 		(Scanner new scanFieldNames: varString)
 			collect: [:x | x asSymbol].
 	newVars do:
-		[:var | var first isLowercase
-			ifTrue: [self error: var, ' class variable name should be capitalized; proceed to include anyway.']].
+		[:var | var first canBeGlobalVarInitial
+			ifFalse: [self error: var, ' class variable name should be capitalized; proceed to include anyway.']].
 	conflicts _ false.
 	classPool == nil 
 		ifFalse: [(classPool keys reject: [:x | newVars includes: x]) do: 
@@ -16,7 +16,7 @@ declare: varString
 	(newVars reject: [:var | self classPool includesKey: var])
 		do: [:var | "adding"
 			"check if new vars defined elsewhere"
-			(self scopeHas: var ifTrue: [:ignored | ignored])
+			(self bindingOf: var) notNil
 				ifTrue: 
 					[self error: var , ' is defined elsewhere'.
 					conflicts _ true]].
