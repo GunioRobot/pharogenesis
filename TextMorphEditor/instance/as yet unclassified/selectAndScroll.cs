@@ -1,0 +1,2 @@
+selectAndScroll
+	"Ignore scroll requests."
