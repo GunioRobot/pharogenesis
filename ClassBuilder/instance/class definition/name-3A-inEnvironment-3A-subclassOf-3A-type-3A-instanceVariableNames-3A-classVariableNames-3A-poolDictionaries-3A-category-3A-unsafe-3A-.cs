@@ -2,7 +2,7 @@ name: className inEnvironment: env subclassOf: newSuper type: type instanceVaria
 	"Define a new class in the given environment.
 	If unsafe is true do not run any validation checks.
 	This facility is provided to implement important system changes."
-	| oldClass newClass organization instVars classVars force |
+	| oldClass newClass organization instVars classVars force needNew oldCategory copyOfOldClass newCategory |
 	environ _ env.
 	instVars _ Scanner new scanFieldNames: instVarString.
 	classVars _ (Scanner new scanFieldNames: classVarString) collect: [:x | x asSymbol].
@@ -12,6 +12,7 @@ name: className inEnvironment: env subclassOf: newSuper type: type instanceVaria
 	oldClass _ env at: className ifAbsent:[nil].
 	oldClass isBehavior 
 		ifFalse:[oldClass _ nil]. "Already checked in #validateClassName:"
+	copyOfOldClass _ oldClass copy.
 
 	unsafe ifFalse:[
 		"Run validation checks so we know that we have a good chance for recompilation"
@@ -20,24 +21,42 @@ name: className inEnvironment: env subclassOf: newSuper type: type instanceVaria
 		(self validateClassvars: classVars from: oldClass forSuper: newSuper) ifFalse:[^nil].
 		(self validateSubclassFormat: type from: oldClass forSuper: newSuper extra: instVars size) ifFalse:[^nil]].
 
-	"Create a template for the new class (will return oldClass when there is no change)"
-	newClass _ self 
-		newSubclassOf: newSuper 
-		type: type 
-		instanceVariables: instVars
-		from: oldClass
-		unsafe: unsafe.
+	"See if we need a new subclass"
+	needNew _ self needsSubclassOf: newSuper type: type instanceVariables: instVars from: oldClass.
+	needNew == nil ifTrue:[^nil]. "some error"
 
-	newClass == nil ifTrue:[^nil]. "Some error"
+	(needNew and:[unsafe not]) ifTrue:[
+		"Make sure we don't redefine any dangerous classes"
+		(self tooDangerousClasses includes: oldClass name) ifTrue:[
+			self error: oldClass name, ' cannot be changed'.
+		].
+		"Check if the receiver should not be redefined"
+		(oldClass ~~ nil and:[oldClass shouldNotBeRedefined]) ifTrue:[
+			self notify: oldClass name asText allBold, 
+						' should not be redefined! \Proceed to store over it.' withCRs]].
 
-	newClass == oldClass ifFalse:[newClass setName: className].
+	needNew ifTrue:[
+		"Create the new class"
+		newClass _ self 
+			newSubclassOf: newSuper 
+			type: type 
+			instanceVariables: instVars
+			from: oldClass.
+		newClass == nil ifTrue:[^nil]. "Some error"
+		newClass setName: className.
+	] ifFalse:[
+		"Reuse the old class"
+		newClass _ oldClass.
+	].
 
 	"Install the class variables and pool dictionaries... "
 	force _ (newClass declare: classVarString) | (newClass sharing: poolString).
 
 	"... classify ..."
+	newCategory _ category asSymbol.
 	organization _ environ ifNotNil:[environ organization].
-	organization classify: newClass name under: category asSymbol.
+	oldClass isNil ifFalse: [oldCategory := (organization categoryOfElement: oldClass name) asSymbol].
+	organization classify: newClass name under: newCategory.
 	newClass environment: environ.
 
 	"... recompile ..."
@@ -45,11 +64,18 @@ name: className inEnvironment: env subclassOf: newSuper type: type instanceVaria
 
 	"... export if not yet done ..."
 	(environ at: newClass name ifAbsent:[nil]) == newClass ifFalse:[
-		environ at: newClass name put: newClass.
+		[environ at: newClass name put: newClass]
+			on: AttemptToWriteReadOnlyGlobal do:[:ex| ex resume: true].
 		Smalltalk flushClassNameCache.
 	].
-	"... and fix eventual references to obsolete globals."
-	oldClass _ nil. "So we have no references to the old class anymore"
-	self fixGlobalReferences.
+
 	self doneCompiling: newClass.
+	
+	"... notify interested clients ..."
+	oldClass isNil ifTrue: [
+		SystemChangeNotifier uniqueInstance classAdded: newClass inCategory: newCategory.
+		^ newClass].
+	SystemChangeNotifier uniqueInstance classDefinitionChangedFrom: copyOfOldClass to: newClass.
+	newCategory ~= oldCategory 
+		ifTrue: [SystemChangeNotifier uniqueInstance class: newClass recategorizedFrom: oldCategory to: category].
 	^newClass
