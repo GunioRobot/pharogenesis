@@ -1,0 +1,2 @@
+stopButtonLabel
+	^'Stop'
