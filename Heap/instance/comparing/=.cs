@@ -1,8 +1,7 @@
-= aHeap
-	"Answer true if my and aHeap's species are the same,
-	and if our blocks are the same, and if our elements are the same."
+= anObject
 
-	self species = aHeap species ifFalse: [^ false].
-	sortBlock = aHeap sortBlock
-		ifTrue: [^ super = aHeap]
-		ifFalse: [^ false]
+	^ self == anObject
+		ifTrue: [true]
+		ifFalse: [anObject isHeap
+			ifTrue: [sortBlock = anObject sortBlock and: [super = anObject]]
+			ifFalse: [super = anObject]]
