@@ -33,6 +33,7 @@ A	Advance argument
 B	Browse it in this same browser (in System browsers only)
 C	Compare argument to clipboard
 D	Duplicate
+E	Method strings containing it
 F	Insert 'ifFalse:'
 J	Again many
 K	Set style
@@ -43,33 +44,40 @@ S	Search
 T	Insert 'ifTrue:'
 W	Selectors containing it
 V	Paste author's initials
+<return>		Insert return followed by as many tabs as the previous line
+			(with a further adjustment for additional brackets in that line)
 
-esc	Select current type-in
+esc			Select current type-in
+shift-delete	Forward delete character
 
+Enclose the selection in a kind of bracket.  Each is a toggle.
+Control-(	Enclose within ( and ), or remove enclosing ( and )
 [	Enclose within [ and ], or remove enclosing [ and ]
-(	Enclose within ( and ), or remove enclosing ( and )   NB: use ctrl (
 {	Enclose within { and }, or remove enclosing { and }
 <	Enclose within < and >, or remove enclosing < and >
 '	Enclose within ' and ', or remove enclosing ' and '
 ""	Enclose within "" and "", or remove enclosing "" and ""
+(Double click just inside any of the above delimiters to select the text inside it.)
 
-0	10 point plain serif
-1	10 point bold serif
-2	10 point italic serif
+Text Emphasis...
+1	10 point font
+2	12 point font
+3	18 point font  (not in base image)
+4	24 point font  (not in base image)
+5	36 point font  (not in base image)
 
-3	12 point plain serif
-4	12 point bold serif
-5	12 point italic serif
+6	color, action-on-click, link to class comment, link to method, url
+	Brings up a menu.  To remove these properties, select
+	more than the active part and then use command-0.
 
-6	10 point plain sans-serif
-7	10 point bold sans-serif
+7	bold
+8	italic
+9	narrow (same as negative kern)
+0	plain text (resets all emphasis)
+-	underlined (toggles it)
+=	struck out (toggles it)
 
-8	10 point underline serif
-9	12 point plain sans-serif
-
+Cmd-shift
+_ (aka shift -)	negative kern (letters 1 pixel closer)
++		positive kern (letters 1 pixel larger spread)
 "
-	
-"Answer a string to be presented in a window at user request as a crib sheet for command-key mappings.  2/7/96 sw
-5/1/96 sw: modified so that the long string lives in a comment, hence doesn't take up memory.  Also, fixed up some of the actual text, and added help for parentheses-enclosing items and text-style controls.
-5/10/96 sw: added a bunch of changes at JM's suggestion
-8/11/96 sw: fixed the font sizes, added align & references to it, and help for cmd-shift-B"
