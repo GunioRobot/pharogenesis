@@ -1,5 +1,4 @@
 dstCategoryDstListMorph: dstListMorph
-	| dropMorph |
 	^(dstListMorph getListSelector == #systemCategoryList)
-		ifTrue: [(dropMorph _ dstListMorph potentialDropMorph) ifNotNil: [dropMorph contents]]
+		ifTrue: [dstListMorph potentialDropItem ]
 		ifFalse: [self selectedSystemCategoryName]
