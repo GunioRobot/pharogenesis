@@ -10,7 +10,7 @@ spawn: aString
 			[self buildClassBrowserEditString: aString]
 		ifNotNil:
 			[newBrowser _ Browser new setClass: aClass selector: self selectedMessageName.
-			newBrowser setOriginalCategoryIndexForCurrentMethod.
+			self suggestCategoryToSpawnedBrowser: newBrowser.
 			Browser openBrowserView: (newBrowser openMessageCatEditString: aString)
 		label: 'category "', aCategory, '" in ', 
 				newBrowser selectedClassOrMetaClassName]
