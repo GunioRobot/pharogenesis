@@ -1,9 +1,6 @@
 copy
 	"Answer a copy of the receiver without a list of subclasses."
 
-	| myCopy savedSubclasses |
-	savedSubclasses _ subclasses.
-	subclasses _ nil. 		
+	| myCopy |
 	myCopy _ self shallowCopy.
-	subclasses _ savedSubclasses.
-	^myCopy methodDictionary: methodDict copy
+	^myCopy methodDictionary: self methodDict copy
