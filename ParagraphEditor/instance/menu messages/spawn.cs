@@ -4,4 +4,4 @@ spawn
 	| code |
 	code _ paragraph text string.
 	self cancel.
-	model spawn: code.
+	model notNil ifTrue:[model spawn: code].
