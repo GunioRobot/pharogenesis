@@ -1,7 +1,11 @@
 browseMethodsWithSourceString: aString
 	"Smalltalk browseMethodsWithSourceString: 'SourceString' "
-	"Launch a browser on all methods whose source code contains aString as a substring.  The search is case-sensitive. This takes a long time right now.  7/23/96 di
-	 1/16/97 sw: set up the autoSelect: string"
+	"Launch a browser on all methods whose source code contains aString as a substring."
 
-	^ self browseMessageList: (self allMethodsWithSourceString: aString)
-		name: 'Methods containing ' , aString printString autoSelect: aString
+	| caseSensitive suffix |
+	(caseSensitive _ Sensor shiftPressed)
+		ifTrue: [suffix _ ' (case-sensitive)']
+		ifFalse: [suffix _ ' (use shift for case-sensitive)'].
+	^ self browseMessageList: (self allMethodsWithSourceString: aString
+									matchCase: caseSensitive)
+		name: 'Methods containing ' , aString printString , suffix autoSelect: aString
