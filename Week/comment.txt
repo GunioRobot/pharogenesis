@@ -1,1 +1,1 @@
-Weeks begin in #Monday and end in #Sunday
+I represent a week.
