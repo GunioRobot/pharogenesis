@@ -6,6 +6,6 @@ hackBits: bitThing
 	depth _ 8.
 	bitThing class isBits ifFalse: [self error: 'bitThing must be a non-pointer object'].
 	bitThing class isBytes
-		ifTrue: [height _ bitThing size // 4]
-		ifFalse: [height _ bitThing size].
+		ifTrue: [height _ bitThing basicSize // 4]
+		ifFalse: [height _ bitThing basicSize].
 	bits _ bitThing
