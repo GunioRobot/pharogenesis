@@ -1,0 +1,2 @@
+localeChanged
+	"Do nothing"
