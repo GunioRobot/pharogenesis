@@ -1,0 +1,3 @@
+getWonderland
+
+	^ myWonderland.
