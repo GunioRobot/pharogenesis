@@ -1,5 +1,5 @@
 reverseBytesFrom: startAddr to: stopAddr
-	"Byte-swap the given range of memory (not inclusive!)."
+	"Byte-swap the given range of memory (not inclusive of stopAddr!)."
 	| addr |
 	addr _ startAddr.
 	[addr < stopAddr] whileTrue:
