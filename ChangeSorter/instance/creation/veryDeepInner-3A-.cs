@@ -7,3 +7,5 @@ super veryDeepInner: deepCopier.
 currentClassName _ currentClassName veryDeepCopyWith: deepCopier.
 "currentSelector _ currentSelector.		Symbol"
 priorChangeSetList _ priorChangeSetList veryDeepCopyWith: deepCopier.
+changeSetCategory _ changeSetCategory.
+
