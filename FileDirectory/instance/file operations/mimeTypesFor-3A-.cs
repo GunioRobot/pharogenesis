@@ -6,4 +6,4 @@ mimeTypesFor: fileName
 	dot _ self class extensionDelimiter.
 	idx _ (self fullNameFor: fileName) findLast: [:ch| ch = dot].
 	idx = 0 ifFalse:[ext _ fileName copyFrom: idx+1 to: fileName size].
-	^StandardMIMEMappings at: ext ifAbsent:[nil]
+	^StandardMIMEMappings at: ext asLowercase ifAbsent:[nil]
