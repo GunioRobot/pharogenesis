@@ -1,4 +1,4 @@
 getSharedTextureDict
 	"Return the shared texture dictionary"
 
-	^ sharedTextureDict.
+	^ sharedTextureDict ifNil:[sharedTextureDict _ Dictionary new].
