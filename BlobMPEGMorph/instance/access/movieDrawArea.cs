@@ -1,0 +1,2 @@
+movieDrawArea
+	^movieDrawArea
