@@ -1,6 +1,6 @@
 Object
 	subclass: #WonderlandEvent
-	instanceVariableNames: 'actor camera cursorPoint cursorDelta key morph vertex morphicEvent '
+	instanceVariableNames: 'actor camera cursorPoint cursorDelta key morph vertex morphicEvent'
 	classVariableNames: ''
-	poolDictionaries: 'WonderlandConstants '
-	category: 'Balloon3D-Wonderland Misc'
+	poolDictionaries: 'WonderlandConstants'
+	category: 'Balloon3D-Wonderland-Misc'
