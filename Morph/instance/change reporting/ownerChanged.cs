@@ -1,3 +1,4 @@
 ownerChanged
-	"Default no-op may be overridden as for text embedded in changing shape"
-	^ self
+	"The receiver's owner, some kind of a pasteup, has changed its layout."
+
+	self snapToEdgeIfAppropriate
