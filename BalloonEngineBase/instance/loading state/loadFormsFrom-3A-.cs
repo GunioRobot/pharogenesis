@@ -1,8 +1,7 @@
 loadFormsFrom: arrayOop
 	"Check all the forms from arrayOop."
 	| formOop bmBits bmBitsSize bmWidth bmHeight bmDepth ppw bmRaster |
-	(interpreterProxy fetchClassOf: arrayOop) == interpreterProxy classArray
-		ifFalse:[^false].
+	(interpreterProxy isArray: arrayOop) ifFalse:[^false].
 	formArray _ arrayOop.
 	0 to: (interpreterProxy slotSizeOf: formArray) - 1 do:[:i|
 		formOop _ interpreterProxy fetchPointer: i ofObject: formArray.
