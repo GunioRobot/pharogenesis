@@ -1,6 +1,13 @@
 initialize
+	"initialize the state of the receiver"
 	super initialize.
-	self extent: 0@0.
+	self layoutPolicy: TableLayout new.
+	self listDirection: #leftToRight;
+		hResizing: #shrinkWrap;
+		vResizing: #shrinkWrap;
+		layoutInset: 3;
+		wrapCentering: #center;
+		cellPositioning: #leftCenter.
 	accepted _ false.
 	copy _ false.
-	self color: (Color blue alpha: 0.4)
+	self on: #keyStroke send: #keyStroke: to: self
