@@ -1,4 +1,6 @@
 nextPutAll: aString
-	"Write all the characters of aString into the receiver's file.  2/12/96 sw"
-	self primWrite: fileID from: aString startingAt: 1 count: aString size.
+	"Write all the characters of the given string to this file."
+
+	rwmode ifFalse: [^ self error: 'Cannot write a read-only file'].
+	self primWrite: fileID from: aString startingAt: 1 count: aString basicSize.
 	^ aString
