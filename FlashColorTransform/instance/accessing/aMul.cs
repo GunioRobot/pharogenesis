@@ -1,0 +1,2 @@
+aMul
+	^aMul
