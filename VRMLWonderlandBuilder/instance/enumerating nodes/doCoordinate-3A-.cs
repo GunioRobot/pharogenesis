@@ -5,7 +5,7 @@ doCoordinate: node
 		(scene targetNodes includes: node) ifTrue:[
 			interpolator _ nil.
 			scene sourceNodes do:[:n|
-				n myEvents do:[:set|
+				n actionsDo:[:set|
 					set do:[:msg| msg receiver == node ifTrue:[interpolator _ n]]]].
 			interpolator _ self mfVec3fFromInterpolator: interpolator.
 		].
