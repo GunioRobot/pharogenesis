@@ -1,15 +1,22 @@
-removeAllUnSentMessages   "Smalltalk removeAllUnSentMessages" 
+removeAllUnSentMessages   "Smalltalk removeAllUnSentMessages"
+	"[Smalltalk unusedClasses do: [:c | (Smalltalk at: c) removeFromSystem].
+		Smalltalk removeAllUnSentMessages > 0] whileTrue." 
+
 	"Remove all implementations of unsent messages."
 	| sels n |
 	sels _ self allUnSentMessages.
 
 	"The following should be preserved for doIts, etc"
-	#(dragon: hilberts: mandala: web test3 factorial benchmark benchFib
-		newDepth: restoreAfter: forgetDoIts
+	#(browseAllSelect: printSpaceAnalysis lastRemoval
+		scrollBarValue: scrollBarMenuButtonPressed: 
+		withSelectionFrom:  to: removeClassNamed:
+		dragon: hilberts: mandala: web test3 factorial tinyBenchmarks benchFib
+		newDepth: restoreAfter: forgetDoIts zapAllMethods obsoleteClasses
 		removeAllUnSentMessages abandonSources removeUnreferencedKeys
 		reclaimDependents zapOrganization condenseChanges browseObsoleteReferences
+		subclass:instanceVariableNames:classVariableNames:poolDictionaries:category:
 		methodsFor:stamp: methodsFor:stamp:prior: instanceVariableNames:
-		startTimerInterruptWatcher) do:
+		startTimerInterruptWatcher unusedClasses) do:
 		[:sel | sels remove: sel ifAbsent: []].
 	"The following may be sent by perform: in dispatchOnChar..."
 	(ParagraphEditor classPool at: #CmdActions) asSet do:
@@ -29,5 +36,4 @@ removeAllUnSentMessages   "Smalltalk removeAllUnSentMessages"
 			[:class | bar value: (n _ n+1).
 			sels do:
 				[:sel | class removeSelectorSimply: sel]]].
-	MethodDictionary allInstancesDo: [:d | d rehash].
 	^ sels size
