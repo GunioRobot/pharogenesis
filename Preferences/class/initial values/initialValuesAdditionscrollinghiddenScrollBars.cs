@@ -1,0 +1,2 @@
+initialValuesAdditionscrollinghiddenScrollBars
+	^ #((hiddenScrollBars false (scrolling ) ) )
