@@ -1,5 +1,4 @@
-addAll: anOrderedCollection 
-	"Add each element of anOrderedCollection at my end. Answer
-	anOrderedCollection."
+addAll: aCollection 
+	"Add each element of aCollection at my end. Answer	aCollection."
 
-	^self addAllLast: anOrderedCollection
+	^ self addAllLast: aCollection
