@@ -1,0 +1,3 @@
+play
+
+	self sendMessageToCostume: #playOnce.
