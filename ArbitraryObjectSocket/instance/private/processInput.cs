@@ -3,8 +3,7 @@ processInput
 	| inObjectData |
 
 	"read as much data as possible"
-	[ self isConnected and: [ socket dataAvailable ] ] whileTrue: [
-		self addToInBuf: socket getData. ].
+	self addToInBuf: socket receiveAvailableData.
 
 
 	"decode as many objects as possible"
