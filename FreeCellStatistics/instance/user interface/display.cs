@@ -11,4 +11,4 @@ display
 		color: self color;
 		addMorphBack: self makeStatistics;
 		addMorphBack: self makeControls.
-	window _ panel openInWindowLabeled: 'FreeCell Statistics'.
+	window _ panel openInWindowLabeled: 'FreeCell Statistics' translated.
