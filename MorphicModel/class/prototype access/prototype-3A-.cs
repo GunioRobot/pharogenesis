@@ -3,6 +3,6 @@ prototype: aMorph
 
 	aMorph ifNil: [prototype _ nil. ^ self].
 
-	prototype _ aMorph fullCopy.
+	prototype _ aMorph veryDeepCopy.
 	(prototype isKindOf: MorphicModel) ifTrue: 
 		[prototype model: nil slotName: nil].
