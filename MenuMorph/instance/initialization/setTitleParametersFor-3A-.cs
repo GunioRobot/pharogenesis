@@ -1,0 +1,2 @@
+setTitleParametersFor: aMenuTitle
+	aMenuTitle setColor: Preferences menuTitleColor borderWidth: Preferences menuTitleBorderWidth borderColor: Preferences menuTitleBorderColor
