@@ -1,0 +1,2 @@
+isHeader
+	^true
