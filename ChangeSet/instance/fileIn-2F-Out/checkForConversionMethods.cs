@@ -1,69 +1,65 @@
 checkForConversionMethods
 	"See if any conversion methods are needed"
+	| oldStruct newStruct tell choice list need
+sel smart restore renamed listAdd listDrop msgSet rec nn |
 
-	| needConversion oldList newList tell choice list need oldVer newVer
-sel smart restore |
-	"Check preference"
-	Preferences conversionMethodsAtFileOut ifFalse: [^ self].
+	Preferences conversionMethodsAtFileOut ifFalse: [^ self].	"Check preference"
 	structures ifNil: [^ self].
 
-	needConversion _ false.
 	list _ OrderedCollection new.
-	smart _ SmartRefStream on: (RWBinaryOrTextStream on: '12345').
+	renamed _ OrderedCollection new.
 	self changedClasses do: [:class |
 		need _ (self atClass: class includes: #new) not.
-		need ifTrue: [
-			"Also consider renamed classes."
+		need ifTrue: ["Renamed classes."
 			(self atClass: class includes: #rename) ifTrue: [
-				needConversion _ true.  list add: class].
-			need _ (self atClass: class includes: #change)].
-		need ifTrue: [oldList _ structures at: class name 
-								ifAbsent: [need _ false.  #()]].
+				rec _ changeRecords at: class name.
+				rec priorName ifNotNil: [
+					(structures includesKey: rec priorName) ifTrue: [
+						renamed add: class.  need _ false]]]].
+		need ifTrue: [need _ (self atClass: class includes: #change)].
+		need ifTrue: [oldStruct _ structures at: class name 
+									ifAbsent: [need _ false.  #()]].
 		need ifTrue: [
-			newList _ (Array with: class classVersion), (class allInstVarNames).
-			need _ (oldList ~= newList)].
-		need ifTrue: [
-			oldVer _ smart versionSymbol: oldList.
-			newVer _ smart versionSymbol: newList.
-			sel _ 'convert',oldVer,':',newVer, ':'.	
-			(Symbol hasInterned: sel ifTrue: [:ignored |]) ifFalse: [
-				need _ false.
-				needConversion _ true.
-				list add: class]].
-		need ifTrue: [sel _ sel asSymbol.
-			(#(add change) includes: (self atSelector: sel class: class))
-ifFalse: [
-				needConversion _ true.
+			newStruct _ (Array with: class classVersion), (class allInstVarNames).
+			need _ (oldStruct ~= newStruct)].
+		need ifTrue: [sel _ #convertToCurrentVersion:refStream:.
+			(#(add change) includes: (self atSelector: sel class: class)) ifFalse: [
 				list add: class]].
 		].
 
-	needConversion ifTrue: ["Ask user if want to do this"
-		tell _ 'If there might be instances of ', list asArray printString,
-		'\in a file full of objects on someone''s disk, please fill in
-conversion methods.\'
+	list isEmpty & renamed isEmpty ifTrue: [^ self].
+	"Ask user if want to do this"
+	tell _ 'If there might be instances of ', (list asArray, renamed asArray) printString,
+		'\in a project (.pr file) on someone''s disk, \please ask to write a conversion method.\'
 			withCRs,
-		'After you edit the methods, you''ll have to fileOut again.\' withCRs,
-		'The preference conversionMethodsAtFileOut controls this feature.'.
-		choice _ (PopUpMenu labels: 
+		'After you edit the conversion method, you''ll need to fileOut again.\' withCRs,
+		'The preference conversionMethodsAtFileOut in category "fileout" controls this feature.'.
+	choice _ (PopUpMenu labels: 
 'Write a conversion method by editing a prototype
 These classes are not used in any object file.  fileOut my changes now.
 I''m too busy.  fileOut my changes now.
-Don''t ever ask again.  fileOut my changes now.') startUpWithCaption:
-tell. 
-		choice = 4 ifTrue: [Preferences disable: #conversionMethodsAtFileOut].
-		choice = 2 ifTrue: [
-				list do: [:cls | cls withAllSubclassesDo: [:ccc | 
-						structures removeKey: ccc name ifAbsent: []]]].
-		choice ~= 1 ifTrue: [^ self]].
+Don''t ever ask again.  fileOut my changes now.') startUpWithCaption: tell. 
+	choice = 4 ifTrue: [Preferences disable: #conversionMethodsAtFileOut].
+	choice = 2 ifTrue: ["Don't consider this class again in the changeSet"
+			list do: [:cls | structures removeKey: cls name ifAbsent: []].
+			renamed do: [:cls | 
+				nn _ (changeRecords at: cls name) priorName.
+				structures removeKey: nn ifAbsent: []]].
+	choice ~= 1 ifTrue: [^ self].	"exit if choice 2,3,4"
 
-	list isEmpty ifTrue: [^ self].
-	smart structures: structures.	"we will test all classes in structures."
+	listAdd _ self askAddedInstVars: list.	"Go through each inst var that was added"
+	listDrop _ self askRemovedInstVars: list.	"Go through each inst var that was removed"
+	list _ (listAdd, listDrop) asSet asArray.
+
+	smart _ SmartRefStream on: (RWBinaryOrTextStream on: '12345').
+	smart structures: structures.
 	smart superclasses: superclasses.
-	(restore _ Smalltalk changes) == self ifFalse: [
-		Smalltalk newChanges: self].
-	[smart verifyStructure = 'conversion method needed'] whileTrue.
-		"new method is added to changeSet.  Then filed out with the rest."
-	restore == self ifFalse: [Smalltalk newChanges: restore].
-	"tell 'em to fileout again after modifying methods."
-	self inform: 'Remember to fileOut again after modifying these
-methods.'.
+	(restore _ self class current) == self ifFalse: [
+		self class  newChanges: self].	"if not current one"
+	msgSet _ smart conversionMethodsFor: list.
+		"each new method is added to self (a changeSet).  Then filed out with the rest."
+	self askRenames: renamed addTo: msgSet using: smart.	"renamed classes, add 2 methods"
+	restore == self ifFalse: [self class newChanges: restore].
+	msgSet messageList isEmpty ifTrue: [^ self].
+	self inform: 'Remember to fileOut again after modifying these methods.'.
+	MessageSet open: msgSet name: 'Conversion methods for ', self name.
