@@ -1,0 +1,3 @@
+privateScripts
+	"for copying"
+	^ scripts
