@@ -3,5 +3,7 @@ proceed
 	which an interruption occurred."
 
 	self controlTerminate.
-	model proceed: view topView controller.
+	Smalltalk okayToProceedEvenIfSpaceIsLow ifTrue: [
+		model proceed: view topView controller.
+	].
 	self controlInitialize
