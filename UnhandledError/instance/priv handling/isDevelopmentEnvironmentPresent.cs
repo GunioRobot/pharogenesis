@@ -1,0 +1,3 @@
+isDevelopmentEnvironmentPresent
+
+	^ Smalltalk includesKey: #Debugger
