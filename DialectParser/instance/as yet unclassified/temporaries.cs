@@ -7,7 +7,7 @@ temporaries
 				ifNil: [tempsMark _ 1]
 				ifNotNil: [tempsMark _ requestor selectionInterval first].
 			^ #()].
-		tempsMark _ prevMark + prevToken.
+		tempsMark _ prevEnd+1.
 		tempsMark > 0 ifTrue:
 			[theActualText _ source contents.
 			[tempsMark < theActualText size and: [(theActualText at: tempsMark) isSeparator]]
