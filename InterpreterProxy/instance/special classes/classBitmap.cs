@@ -1,0 +1,2 @@
+classBitmap
+	^Bitmap
