@@ -16,6 +16,7 @@ browseClassVarRefs
 			allVars add: var.
 			owningClasses add: class].
 		vars isEmpty ifFalse: [lines add: allVars size]].
+	labelStream contents isEmpty ifTrue: [^1 beep]. "handle nil superclass better"
 	labelStream skip: -1 "cut last CR".
 	index _ (PopUpMenu labels: labelStream contents lines: lines) startUp.
 	index = 0 ifTrue: [^ self].
