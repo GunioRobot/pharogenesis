@@ -2,4 +2,4 @@ instanceMessagesIndicated
 	"Answer whether the messages to be presented should come from the 
 	class."
 
-	^metaClassIndicated not
+	^metaClassIndicated not and: [self classCommentIndicated not]
