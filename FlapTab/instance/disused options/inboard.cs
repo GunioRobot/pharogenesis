@@ -1,0 +1,2 @@
+inboard
+	^ inboard == true
