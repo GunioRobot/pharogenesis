@@ -1,0 +1,2 @@
+saySomething
+	self say: #('This is my voice.' 'I am speaking.' 'Do you like my voice?' 'Listen to my voice.' 'Hello.' 'Hay. What are you doing?' 'How are you?' 'Is this my voice?' 'Are you there?' 'Help, please.' 'Howdy.' 'Ha ha he he hi.') atRandom
