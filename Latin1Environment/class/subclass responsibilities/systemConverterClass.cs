@@ -1,0 +1,3 @@
+systemConverterClass
+
+	^ Latin1TextConverter.
