@@ -1,0 +1,1 @@
+A JPEG movie file consists of a header followed by a sequence of JPEG-compressed images followed by one or more sound tracks. It responds to a subset of the protocol for MPEGFile so that a JPEG movie can be played by MPEGDisplayMorph as if it were an MPEG movie.
