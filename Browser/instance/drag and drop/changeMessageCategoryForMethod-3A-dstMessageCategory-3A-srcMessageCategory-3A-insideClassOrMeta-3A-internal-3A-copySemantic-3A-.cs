@@ -1,15 +1,25 @@
 changeMessageCategoryForMethod: methodSel dstMessageCategory: dstMessageCategorySel srcMessageCategory: srcMessageCategorySel insideClassOrMeta: classOrMeta internal: internal copySemantic: copyFlag 
-	"only move semantic"
+	"Recategorize the method named by methodSel. 
+	If the dstMessageCategorySel is the allCategory, then recategorize 
+	it from its parents."
 	| success messageCategorySel |
-	(success _ copyFlag not) ifFalse: [^ false].
-	messageCategorySel _ dstMessageCategorySel ifNil: [srcMessageCategorySel].
-	(success _ messageCategorySel notNil & (messageCategorySel ~= '-- all --' asSymbol)
-				and: [messageCategorySel ~= srcMessageCategorySel and: [classOrMeta organization categories includes: messageCategorySel]])
-		ifTrue: 
-			[classOrMeta organization
-				classify: methodSel
-				under: messageCategorySel
-				suppressIfDefault: false.
-			self changed: #messageList].
-	success & internal not ifTrue: [self setSelector: methodSel].
+	copyFlag
+		ifTrue: [^ false].
+	"only move semantic"
+	messageCategorySel := dstMessageCategorySel
+				ifNil: [srcMessageCategorySel].
+	(success := messageCategorySel notNil
+					and: [messageCategorySel ~= srcMessageCategorySel])
+		ifTrue: [success := messageCategorySel == ClassOrganizer allCategory
+						ifTrue: [self recategorizeMethodSelector: methodSel]
+						ifFalse: [(classOrMeta organization categories includes: messageCategorySel)
+								and: [classOrMeta organization
+										classify: methodSel
+										under: messageCategorySel
+										suppressIfDefault: false.
+									true]]].
+	success
+		ifTrue: [self changed: #messageList.
+			internal
+				ifFalse: [self setSelector: methodSel]].
 	^ success
