@@ -3,4 +3,4 @@ mmddyy
 
 	"Date today mmddyy"
 
-	^ self printFormat: #(2 1 3 $/ 1 99)
+	^ self printFormat: #(2 1 3 $/ 1 2)
