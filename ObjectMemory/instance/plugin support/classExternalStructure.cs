@@ -1,0 +1,2 @@
+classExternalStructure
+	^self splObj: ClassExternalStructure
