@@ -12,4 +12,4 @@ nextComment
 		paren _ self nextChar.
 		paren = $( ifTrue: [ nestLevel _ nestLevel + 1 ] ifFalse: [ nestLevel _ nestLevel - 1 ]].
 	^ MailAddressToken type: #Comment
-		text: (text copyFrom: start to: pos + 1)
+		text: (text copyFrom: start to: pos - 1)
