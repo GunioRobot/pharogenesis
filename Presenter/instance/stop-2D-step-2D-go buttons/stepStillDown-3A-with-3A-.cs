@@ -1,7 +1,8 @@
 stepStillDown: dummy with: theButton
+	(stepButton == nil or: [stepButton isInWorld not]) ifTrue: [stepButton _ theButton].
 	self stepButtonState: true.
 	self stopButtonState: false.
-	theButton world stepAll; displayWorld.
-	(Delay forMilliseconds: 200) wait.
+	associatedMorph stepAll.
+	associatedMorph world displayWorld.
 	self stepButtonState: false.
 	self stopButtonState: true
