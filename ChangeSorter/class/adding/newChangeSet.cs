@@ -7,11 +7,9 @@ newChangeSet
 	newName _ FillInTheBlank
 		request: 'Please name the new change set:'
 		initialAnswer: ChangeSet defaultName.
-	newName isEmpty ifTrue:
-		[self inform: 'nothing done'.
-		^ nil].
+	newName isEmptyOrNil ifTrue:
+		[^ nil].
 	newSet _ self basicNewChangeSet: newName.
 	newSet ifNotNil:
-		[Smalltalk newChanges: newSet.
-		Transcript cr; show: newName, ' is now the current change set'].
+		[ChangeSet  newChanges: newSet].
 	^ newSet
