@@ -1,0 +1,3 @@
+targetForm
+
+	^ myBitBlt targetForm
