@@ -5,8 +5,9 @@ showChangeSet: chgSet
 		currentClassName _ nil.
 		currentSelector _ nil].
 	self changed: #relabel.
-	self changed: #mainButtonName.
+	self changed: #currentCngSet.	"new -- list of sets"
+	self changed: #mainButtonName.	"old, button"
 	self changed: #classList.
 	self changed: #messageList.
 	self setContents.
-	self changed: #contents.
+	self contentsChanged.
