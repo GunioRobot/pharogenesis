@@ -4,7 +4,7 @@ byteLengthOf: oop
 	header _ self baseHeader: oop.
 	(header bitAnd: TypeMask) = HeaderTypeSizeAndClass
 		ifTrue: [ sz _ (self sizeHeader: oop) bitAnd: AllButTypeMask ]
-		ifFalse: [ sz _ header bitAnd: 16rFC ].
+		ifFalse: [ sz _ header bitAnd: SizeMask ].
 	fmt _ (header >> 8) bitAnd: 16rF.
 	fmt < 8
 		ifTrue: [ ^ (sz - BaseHeaderSize)]  "words"
