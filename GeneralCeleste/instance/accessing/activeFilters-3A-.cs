@@ -1,0 +1,2 @@
+activeFilters: anObject
+	activeFilters := anObject
