@@ -37,5 +37,12 @@ initializeRuleTable
 		"32" rgbDiff:with:
 		"33" tallyIntoMap:with:
 		"34" alphaBlendScaled:with:
+
+		"35" alphaBlendScaled:with:	"unused here - only used by FXBlt"
+		"36" alphaBlendScaled:with:	"unused here - only used by FXBlt"
+		"37" rgbMul:with:
+		"38" pixSwap:with:
+		"39" pixClear:with:
+		"40" fixAlpha:with:
 	).
 	OpTableSize _ OpTable size + 1.  "0-origin indexing"
