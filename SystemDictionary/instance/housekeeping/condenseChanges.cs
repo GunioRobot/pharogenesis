@@ -21,5 +21,7 @@ condenseChanges		"Smalltalk condenseChanges"
 						toBe: oldChanges name , '.old'.
 	FileDirectory default rename: f name
 						toBe: oldChanges name.
+	FileDirectory default setMacFileNamed: oldChanges name
+						type: 'STch' creator: 'FAST'.
 	SourceFiles at: 2
 			put: (StandardFileStream oldFileNamed: oldChanges name).
