@@ -1,4 +1,6 @@
 doesNotUnderstand: aMessage
 
-	(MessageNotUnderstood new message: aMessage)
+	^ MessageNotUnderstood new 
+		message: aMessage;
+		receiver: self;
 		signal
