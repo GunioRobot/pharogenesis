@@ -20,20 +20,12 @@ initialize
 	GreenShift _ 10.
 	BlueShift _ 0.
 
-	Depth16RedShift		_ (5-10) * 3.	"bits"
-	Depth16GreenShift	_ (5-10) * 2.
-	Depth16BlueShift	_ 5-10.
-
-	Depth32RedShift		_ (8-10) * 3.	"bits"
-	Depth32GreenShift	_ (8-10) * 2.
-	Depth32BlueShift	_ 8-10.
-
-	PureRed		 _ self red: 1 green: 0 blue: 0.
-	PureGreen	 _ self red: 0 green: 1 blue: 0.
-	PureBlue	 _ self red: 0 green: 0 blue: 1.
-	PureYellow	 _ self red: 1 green: 1 blue: 0.
-	PureCyan	 _ self red: 0 green: 1 blue: 1.
-	PureMagenta _ self red: 1 green: 0 blue: 1.
+	PureRed		 _ self r: 1 g: 0 b: 0.
+	PureGreen	 _ self r: 0 g: 1 b: 0.
+	PureBlue	 _ self r: 0 g: 0 b: 1.
+	PureYellow	 _ self r: 1 g: 1 b: 0.
+	PureCyan	 _ self r: 0 g: 1 b: 1.
+	PureMagenta _ self r: 1 g: 0 b: 1.
 
 	RandomStream _ Random new.
 
