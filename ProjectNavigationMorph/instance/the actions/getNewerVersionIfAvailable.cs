@@ -1,4 +1,4 @@
 getNewerVersionIfAvailable
 
-	(self world ifNil: [^1 beep]) project loadFromServer: true.
+	(self world ifNil: [^Beeper beep]) project loadFromServer: true.
 
