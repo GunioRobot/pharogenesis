@@ -3,10 +3,7 @@ translateBy: aPoint
 	affect the elements of this Path."
 
 	| newPath |
-	newPath _ Path new: self size.
+	newPath _ self species new: self size.
 	newPath form: self form.
-	collectionOfPoints do: 
-		[:element | 
-		newPath add: 
-			(element x + aPoint x) asInteger @ (element y + aPoint y) asInteger].
+	collectionOfPoints do: [:element | newPath add: (element translateBy: aPoint)].
 	^newPath
