@@ -1,5 +1,5 @@
 helpMenu
-	"Answer the help menu to be put up as a screen submenu.  7/24/96 sw"
+	"Answer the help menu to be put up as a screen submenu"
 
 	HelpMenu == nil ifTrue:
 		[HelpMenu _ SelectionMenu labelList:
@@ -8,11 +8,14 @@ helpMenu
 			'command-key help'
 			'useful expressions'
 			'set author initials...'
+			'set desktop color...'
+			'set display depth...'
 			'view GIF imports'
 			'space left'
+			'vm statistics'
 				)
-		lines: #(1 4)
-		selections: #(editPreferences  aboutThisSystem openCommandKeyHelp openStandardWorkspace setAuthorInitials viewGIFImports garbageCollect)].
+		lines: #(1 4 7)
+		selections: #(editPreferences  aboutThisSystem openCommandKeyHelp openStandardWorkspace setAuthorInitials setDesktopColor setDisplayDepth viewGIFImports garbageCollect vmStatistics)].
 	^ HelpMenu
 
 "
