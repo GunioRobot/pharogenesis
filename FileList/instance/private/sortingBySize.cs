@@ -1,0 +1,2 @@
+sortingBySize
+	^ sortMode == #size
