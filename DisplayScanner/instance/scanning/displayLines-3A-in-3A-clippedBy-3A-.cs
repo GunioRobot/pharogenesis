@@ -5,17 +5,18 @@ displayLines: linesInterval in: aParagraph clippedBy: visibleRectangle
 	handle the stop condition is run and the call on the primitive continued 
 	until a stop condition returns true (which means the line has 
 	terminated)."
-	| runLength done stopCondition leftInRun |
+	| runLength done stopCondition leftInRun startIndex string lastPos |
 	"leftInRun is the # of characters left to scan in the current run;
 		when 0, it is time to call 'self setStopConditions'"
 	leftInRun _ 0.
-	super initializeFromParagraph: aParagraph clippedBy: visibleRectangle.
+	self initializeFromParagraph: aParagraph clippedBy: visibleRectangle.
+	ignoreColorChanges _ false.
 	paragraph _ aParagraph.
 	foregroundColor _ paragraphColor _ aParagraph foregroundColor.
 	backgroundColor _ aParagraph backgroundColor.
 	aParagraph backgroundColor isTransparent
 		ifTrue: [fillBlt _ nil]
-		ifFalse: [fillBlt _ self copy.  "Blt to fill spaces, tabs, margins"
+		ifFalse: [fillBlt _ bitBlt copy.  "Blt to fill spaces, tabs, margins"
 				fillBlt sourceForm: nil; sourceOrigin: 0@0.
 				fillBlt fillColor: aParagraph backgroundColor].
 	rightMargin _ aParagraph rightMarginForDisplay.
@@ -23,7 +24,7 @@ displayLines: linesInterval in: aParagraph clippedBy: visibleRectangle
 	linesInterval do: 
 		[:lineIndex | 
 		leftMargin _ aParagraph leftMarginForDisplayForLine: lineIndex.
-		runX _ destX _ leftMargin.
+		destX _ (runX _ leftMargin).
 		line _ aParagraph lines at: lineIndex.
 		lineHeight _ line lineHeight.
 		fillBlt == nil ifFalse:
@@ -39,11 +40,16 @@ displayLines: linesInterval in: aParagraph clippedBy: visibleRectangle
 		leftInRun _ leftInRun - (runStopIndex - lastIndex + 1).
 		spaceCount _ 0.
 		done _ false.
-		[done]
-			whileFalse: 
-			[stopCondition _ self scanCharactersFrom: lastIndex to: runStopIndex
-						in: text string rightX: rightMargin stopConditions: stopConditions
-						kern: kern displaying: true.
+		string _ text string.
+		[done] whileFalse:[
+			startIndex _ lastIndex.
+			lastPos _ destX@destY.
+			stopCondition _ self scanCharactersFrom: lastIndex to: runStopIndex
+						in: string rightX: rightMargin stopConditions: stopConditions
+						kern: kern.
+			lastIndex >= startIndex ifTrue:[
+				font displayString: string on: bitBlt 
+					from: startIndex to: lastIndex at: lastPos kern: kern].
 		"see setStopConditions for stopping conditions for displaying."
 		done _ self perform: stopCondition].
 		fillBlt == nil ifFalse:
