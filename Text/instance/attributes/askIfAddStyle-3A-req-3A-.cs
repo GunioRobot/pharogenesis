@@ -8,7 +8,7 @@ askIfAddStyle: priorMethod req: requestor
 	priorMethod ifNotNil: [old _ priorMethod getSourceFromFile].
 	(old == nil or: [old unembellished])
 		ifTrue:
-			[tell _ 'This method contains style (e.g. bold) for the first time.
+			[tell _ 'This method contains style for the first time (e.g. bold or colored text).
 Do you really want to save the style info?'.
 			answ _ (PopUpMenu labels: 'Save method with style
 Save method simply')
