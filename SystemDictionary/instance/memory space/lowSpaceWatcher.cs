@@ -17,9 +17,6 @@ lowSpaceWatcher
 	LowSpaceProcess _ nil.
 	"Note: user now unprotected until the low space watcher is re-installed"
 
-	self memoryHogs do: [:hog | hog freeSomeSpace].
-	self bytesLeft > self lowSpaceThreshold ifTrue: [^ self installLowSpaceWatcher].
-
 	Smalltalk isMorphic
-			ifTrue: [Project current interruptName: 'Space is low']
+			ifTrue: [CurrentProjectRefactoring currentInterruptName: 'Space is low']
 			ifFalse: [ScheduledControllers interruptName: 'Space is low']
