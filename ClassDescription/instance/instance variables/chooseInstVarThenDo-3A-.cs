@@ -19,6 +19,7 @@ chooseInstVarThenDo: aBlock
 			startUpWithCaption: 'There are no
 instance variables.'].
 	labelStream skip: -1 "cut last CR".
-	index _ (PopUpMenu labels: labelStream contents lines: lines) startUp.
+	index _ (PopUpMenu labels: labelStream contents lines: lines) startUpWithCaption: 'Instance variables in
+', class name.
 	index = 0 ifTrue: [^ self].
 	aBlock value: (allVars at: index)
