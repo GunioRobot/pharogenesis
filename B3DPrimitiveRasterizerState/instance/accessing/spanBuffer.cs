@@ -1,0 +1,2 @@
+spanBuffer
+	^spanBuffer
