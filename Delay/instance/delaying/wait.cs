@@ -1,19 +1,5 @@
 wait
-	"Suspend the process of the caller for the amount of time specified
-	 when the receiver was created."
+	"Schedule this Delay, then wait on its semaphore. The current process will be suspended for the amount of time specified when this Delay was created."
 
-	beingWaitedOn ifTrue: [ self error: 'A process is already waiting on this Delay' ].
-	AccessProtect critical: [
-		beingWaitedOn _ true.
-		resumptionTime _ Time millisecondClockValue + delayDuration.
-		ActiveDelay == nil
-			ifTrue: [ self activate ]
-			ifFalse: [
-				resumptionTime < ActiveDelay resumptionTime
-					ifTrue: [
-						SuspendedDelays add: ActiveDelay.
-						self activate ]
-					ifFalse: [ SuspendedDelays add: self ].
-			].
-	].
+	self schedule.
 	delaySemaphore wait.
