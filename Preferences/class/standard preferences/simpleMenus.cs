@@ -1,0 +1,2 @@
+simpleMenus
+	^ self valueOfFlag: #simpleMenus
