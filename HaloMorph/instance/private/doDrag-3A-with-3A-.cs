@@ -1,3 +1,4 @@
 doDrag: evt with: dragHandle
 
-	target setConstrainedPositionFrom: evt cursorPoint - positionOffset.
+	target setConstrainedPositionFrom:
+		(target pointFromWorld: evt cursorPoint - positionOffset).
