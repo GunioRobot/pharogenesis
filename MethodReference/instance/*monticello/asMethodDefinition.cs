@@ -1,0 +1,2 @@
+asMethodDefinition
+	^ MCMethodDefinition forMethodReference: self
