@@ -9,8 +9,8 @@ generateToByDo: msgNode on: aStream indent: level
 	aStream nextPutAll: 'for (', iterationVar, ' = '.
 	self emitCExpression: msgNode receiver on: aStream.
 	aStream nextPutAll: '; ', iterationVar,
-		(((step _ msgNode args at: 2) isConstant and: [step value > 0])
-			ifTrue: [' <= '] ifFalse: [' >= ']).
+		(((step _ msgNode args at: 2) isConstant and: [step value < 0])
+			ifTrue: [' >= '] ifFalse: [' <= ']).
 	self emitCExpression: msgNode args first on: aStream.
 	aStream nextPutAll: '; ', iterationVar, ' += '.
 	self emitCExpression: step on: aStream.
