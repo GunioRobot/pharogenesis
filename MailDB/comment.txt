@@ -7,3 +7,7 @@ I am the in-memory representation of a Celeste mail database. A mail database na
 	current.categories	-- maps category names to collections of message ID's
 
 Each open mail database has a MailDB object that manages these three files. Operations such as fetching a message given its unique ID and finding out which messages are in which category are supported by the MailDB object. It also supports incorporating new messages (reading mail), message editing and deletions, and message file compaction and recovery.
+
+canRenumberMsgIDs is used only during compacting the message file.  It controls whether renumbering can happen for messages which have duplicate (and therefore not unique) messageIDs.  It is an instance variable so that it can control behaviour in subsequent compactions.  Please do not use it for other behaviour.
+
+lastIssuedMsgID contains the most recently issued message ID.  It is mostly private to nextUnusedID, though it is also cleared in the compact routine.  Otherwise, please do not read or write it.
