@@ -3,5 +3,5 @@ printIt: characterStream
 	 2/29/96 sw: don't call selectLine now, since it's called by doIt"
 
 	sensor keyboard.		"flush character"
-	self printIt.
+	self terminateAndInitializeAround: [self printIt].
 	^ true
