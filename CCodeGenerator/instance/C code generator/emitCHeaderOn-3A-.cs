@@ -4,7 +4,7 @@ emitCHeaderOn: aStream
 	aStream nextPutAll: '/* Automatically generated from Squeak on '.
 	aStream nextPutAll: Time dateAndTimeNow printString.
 	aStream nextPutAll: ' */'; cr; cr.
-
+	self emitGlobalStructFlagOn: aStream.
 	aStream nextPutAll: '#include "sq.h"'; cr.
 
 	"Additional header files"
