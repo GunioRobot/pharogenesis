@@ -1,0 +1,2 @@
+isCircular
+	^circular
