@@ -4,9 +4,9 @@ toggleyGridding
 
 	ygridOn
 		ifTrue: 
-			[grid y: 1.
+			[grid _ grid x @ 1.
 			ygridOn _ false]
 		ifFalse: 
-			[grid y: togglegrid y.
+			[grid _ grid x @ togglegrid y.
 			ygridOn _ true].
 	tool _ previousTool
