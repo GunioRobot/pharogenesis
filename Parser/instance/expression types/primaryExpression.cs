@@ -1,9 +1,11 @@
-primaryExpression
-
-	hereType == #word
+primaryExpression 
+	hereType == #word 
 		ifTrue: 
 			[parseNode _ self variable.
-			^true].
+			(parseNode isUndefTemp and: [self interactive])
+				ifTrue: [self queryUndefined].
+			parseNode nowHasRef.
+			^ true].
 	hereType == #leftBracket
 		ifTrue: 
 			[self advance.
