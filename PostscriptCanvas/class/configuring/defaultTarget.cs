@@ -1,0 +1,2 @@
+defaultTarget
+	^PostscriptEncoder stream.
