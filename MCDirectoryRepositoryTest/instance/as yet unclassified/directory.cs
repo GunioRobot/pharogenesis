@@ -1,0 +1,5 @@
+directory
+	directory ifNil:
+		[directory _ FileDirectory default directoryNamed: 'mctest'.
+		directory assureExistence].
+	^ directory
