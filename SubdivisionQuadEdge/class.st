@@ -1,0 +1,1 @@
+SubdivisionQuadEdge class instanceVariableNames: ''
