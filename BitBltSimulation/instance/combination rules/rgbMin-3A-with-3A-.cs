@@ -1,10 +1,10 @@
 rgbMin: sourceWord with: destinationWord
 	self inline: false.
-	destPixSize < 16 ifTrue:
+	destDepth < 16 ifTrue:
 		["Min each pixel separately"
 		^ self partitionedMin: sourceWord with: destinationWord
-						nBits: destPixSize nPartitions: pixPerWord].
-	destPixSize = 16 ifTrue:
+						nBits: destDepth nPartitions: destPPW].
+	destDepth = 16 ifTrue:
 		["Min RGB components of each pixel separately"
 		^ (self partitionedMin: sourceWord with: destinationWord
 						nBits: 5 nPartitions: 3)
