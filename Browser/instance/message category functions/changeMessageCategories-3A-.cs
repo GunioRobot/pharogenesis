@@ -6,8 +6,8 @@ changeMessageCategories: aString
 	and edited the message categories. Then the user issued the accept 
 	command."
 
-	self classOrMetaClassOrganizer changeFromString: aString.
 	Smalltalk changes reorganizeClass: self selectedClassOrMetaClass.
+	self classOrMetaClassOrganizer changeFromString: aString.
 	self clearUserEditFlag.
 	self editClass.
 	self classListIndex: classListIndex.
