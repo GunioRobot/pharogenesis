@@ -1,14 +1,12 @@
 nextPutAll: aCollection
-	| newEnd |
 
-	collection class == aCollection class ifFalse: [
-		^super nextPutAll: aCollection ].
+	| newEnd |
+	collection class == aCollection class ifFalse:
+		[^ super nextPutAll: aCollection ].
 
 	newEnd _ position + aCollection size.
-	newEnd > writeLimit ifTrue: [
-		collection _ collection,
-			(collection species new: (newEnd - writeLimit + (collection size max: 20)) ).
-		writeLimit _ collection size ].
+	newEnd > writeLimit ifTrue:
+		[self growTo: newEnd + 10].
 
-	collection replaceFrom: position+1 to: newEnd  with: aCollection.
+	collection replaceFrom: position+1 to: newEnd  with: aCollection startingAt: 1.
 	position _ newEnd.
