@@ -1,0 +1,2 @@
+isSpriteHolder
+	^self hasProperty: #spriteHolder
