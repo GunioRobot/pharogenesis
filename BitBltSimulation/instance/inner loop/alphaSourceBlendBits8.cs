@@ -7,14 +7,16 @@ alphaSourceBlendBits8
 	Note: This is not real blending since we don't have the source colors available.
 	"
 	| srcIndex dstIndex sourceWord srcAlpha destWord deltaX deltaY 
-	srcY dstY dstMask srcShift adjust mappingTable |
+	srcY dstY dstMask srcShift adjust mappingTable mapperFlags |
 	self inline: false. "This particular method should be optimized in itself"
 	self var: #mappingTable declareC:'unsigned int *mappingTable'.
 	mappingTable _ self default8To32Table.
+	mapperFlags _ cmFlags bitAnd: ColorMapNewStyle bitInvert32.
 	deltaY _ bbH + 1. "So we can pre-decrement"
 	srcY _ sy.
 	dstY _ dy.
-	mask1 _ 24 - ((dx bitAnd: 3) * 8).
+	mask1 _ ((dx bitAnd: 3) * 8).
+	destMSB ifTrue:[mask1 _ 24 - mask1].
 	mask2 _ AllOnes bitXor:(16rFF << mask1).
 	(dx bitAnd: 1) = 0 
 		ifTrue:[adjust _ 0]
@@ -42,20 +44,26 @@ alphaSourceBlendBits8
 					destWord _ mappingTable at: destWord.
 					sourceWord _ self alphaBlendScaled: sourceWord with: destWord.
 				].
-				sourceWord _ self rgbMap: sourceWord from: 8 to: cmBitsPerColor.
-				sourceWord _ self colormapAt: sourceWord.
+				sourceWord _ self mapPixel: sourceWord flags: mapperFlags.
 				sourceWord _ sourceWord << srcShift.
 				"Store back"
 				self dstLongAt: dstIndex put: sourceWord mask: dstMask.
 			].
 			srcIndex _ srcIndex + 4.
-			srcShift = 0 ifTrue:[
-				dstIndex _ dstIndex + 4.
-				srcShift _ 24.
-				dstMask _ 16r00FFFFFF.
+			destMSB ifTrue:[
+				srcShift = 0 
+					ifTrue:[dstIndex _ dstIndex + 4.
+							srcShift _ 24.
+							dstMask _ 16r00FFFFFF]
+					ifFalse:[srcShift _ srcShift - 8.
+							dstMask _ (dstMask >> 8) bitOr: 16rFF000000].
 			] ifFalse:[
-				srcShift _ srcShift - 8.
-				dstMask _ (dstMask >> 8) bitOr: 16rFF000000.
+				srcShift = 32
+					ifTrue:[dstIndex _ dstIndex + 4.
+							srcShift _ 0.
+							dstMask _ 16rFFFFFF00]
+					ifFalse:[srcShift _ srcShift + 8.
+							dstMask _ dstMask << 8 bitOr: 255].
 			].
 			adjust _ adjust bitXor: 16r1F1F1F1F.
 		].
