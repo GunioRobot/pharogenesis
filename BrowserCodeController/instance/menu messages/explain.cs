@@ -4,7 +4,7 @@ explain
 	the selection. Send private messages whose names begin with 'explain' 
 	that return a string if they recognize the selection, else nil."
 
-	| string tiVars cgVars selectors delimitors numbers symbol sorry reply |
+	| string tiVars cgVars selectors delimitors numbers sorry reply |
 	Cursor execute
 		showWhile: 
 			[sorry _ '"Sorry, I can''t explain that.  Please select a single token, construct, or special character.'.
