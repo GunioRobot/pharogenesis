@@ -11,6 +11,6 @@ startUp
 					self folder, '\If you have moved or renamed the image file,\' withCRs,
 					'please Quit and rename the segments folder in the same way'.
 			choice = 1 ifTrue: [FileDirectory default createDirectory: self folder].
-			choice = 2 ifTrue: [Smalltalk snapshot: false andQuit: true]]]
+			choice = 2 ifTrue: [SmalltalkImage current snapshot: false andQuit: true]]]
 
 	
