@@ -1,7 +1,5 @@
 methodString
-
-	| s |
-	s _ WriteStream on: ''.
-	s nextPutAll: scriptName; cr; cr; tab.
-	s nextPutAll: self codeString.
-	^ s contents
+	^ String streamContents:
+		[:aStream |
+			aStream nextPutAll: scriptName; cr; cr; tab.
+			aStream nextPutAll: self codeString]
