@@ -1,0 +1,2 @@
+bringUpToDate
+	self establishLabelWording
