@@ -1,4 +1,8 @@
 stepAt: millisecondClockValue
-	"Step the receiver at the given point in time.  Send it to the model, the receiver is open and if it **has* a model"
+	"If the receiver is not collapsed, step it, after first stepping the model."
 
-	isCollapsed ifFalse: [model ifNotNil: [model stepAt: millisecondClockValue in: self]]
+	(isCollapsed not or: [self wantsStepsWhenCollapsed]) ifTrue:
+		[model ifNotNil: [model stepAt: millisecondClockValue in: self].
+		super stepAt: millisecondClockValue "let player, if any, step"]
+
+"Since this method ends up calling step, the model-stepping logic should not be duplicated there."
