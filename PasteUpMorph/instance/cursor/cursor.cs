@@ -1,2 +1,2 @@
-cursor
+cursor 
 	^ cursor
