@@ -1,0 +1,3 @@
+contrastingRed
+
+	^ Color red
