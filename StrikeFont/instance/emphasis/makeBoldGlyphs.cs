@@ -7,4 +7,7 @@ makeBoldGlyphs
 	self bonk: g with: bonkForm.
 	g copyBits: g boundingBox from: g at: (1@0)
 		clippingBox: g boundingBox rule: Form under fillColor: nil.
-	glyphs _ g
+	glyphs _ g.
+	fallbackFont ifNotNil: [
+		fallbackFont _ fallbackFont emphasized: 1
+	].
