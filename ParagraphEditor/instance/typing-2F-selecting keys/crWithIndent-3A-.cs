@@ -4,7 +4,7 @@ crWithIndent: characterStream
 	| char s i tabCount |
 	sensor keyboard.		"flush character"
 	s _ paragraph string.
-	i _ stopBlock stringIndex.
+	i _ self stopIndex.
 	tabCount _ 0.
 	[(i _ i-1) > 0 and: [(char _ s at: i) ~= Character cr]]
 		whileTrue:  "Count tabs and brackets (but not a leading bracket)"
