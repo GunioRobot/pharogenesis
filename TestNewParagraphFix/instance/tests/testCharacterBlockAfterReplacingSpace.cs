@@ -1,0 +1,2 @@
+testCharacterBlockAfterReplacingSpace
+	^super testCharacterBlockAfterReplacingSpace
