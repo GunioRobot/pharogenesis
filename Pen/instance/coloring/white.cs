@@ -1,4 +1,4 @@
 white 
-	"Set the receiver's mask to the white form."
+	"Set the receiver's mask to white."
 
-	self fillColor: destForm white
+	self fillColor: Color white.
