@@ -7,7 +7,7 @@ composeFrom: startIndex inRectangle: lineRectangle
 	leftSide ifTrue: [leftMargin _ leftMargin +
 						(firstLine ifTrue: [textStyle firstIndent]
 								ifFalse: [textStyle restIndent])].
-	spaceX _ destX _ leftMargin.
+	destX _ spaceX _ leftMargin.
 	rightMargin _ lineRectangle right.
 	rightSide ifTrue: [rightMargin _ rightMargin - textStyle rightIndent].
 	lastIndex _ startIndex.	"scanning sets last index"
@@ -26,7 +26,7 @@ composeFrom: startIndex inRectangle: lineRectangle
 		whileFalse: 
 			[stopCondition _ self scanCharactersFrom: lastIndex to: runStopIndex
 				in: text string rightX: rightMargin stopConditions: stopConditions
-				kern: kern displaying: false.
+				kern: kern.
 			"See setStopConditions for stopping conditions for composing."
 			(self perform: stopCondition)
 				ifTrue: [^ line lineHeight: lineHeight + textStyle leading
