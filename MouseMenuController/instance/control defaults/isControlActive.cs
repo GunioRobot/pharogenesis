@@ -1,5 +1,5 @@
 isControlActive 
-	"Refer to the comment in Controller|isControlActive."
+	"In contrast to class Controller, only blue button but not yellow button
+	events will end the receiver's control loop."
 
-	Sensor blueButtonPressed ifTrue: [^ false].
-	^ view containsPoint: sensor cursorPoint
+	^ self viewHasCursor and: [sensor blueButtonPressed not]
