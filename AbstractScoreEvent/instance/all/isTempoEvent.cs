@@ -1,0 +1,3 @@
+isTempoEvent
+
+	^ false
