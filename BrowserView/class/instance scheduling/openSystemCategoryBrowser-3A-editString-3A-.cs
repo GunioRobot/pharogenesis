@@ -8,4 +8,4 @@ openSystemCategoryBrowser: aBrowser editString: aString
 	self openBrowserView: 
 			(BrowserView systemCategoryBrowser: aBrowser editString: aString)
 		label:
-			'System Category Browser'
+			'Classes in category ', aBrowser selectedSystemCategoryName
