@@ -5,7 +5,7 @@ receiver: rcvr selector: aSelector arguments: args precedence: p from: encoder
 	self receiver: rcvr
 		arguments: args
 		precedence: p.
-	aSelector = #:Repeat:do:
+	aSelector = #':Repeat:do:'
 		ifTrue: [theSelector _ #do:]
 		ifFalse: [theSelector _ aSelector].
 	self noteSpecialSelector: theSelector.
