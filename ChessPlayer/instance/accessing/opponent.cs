@@ -1,0 +1,2 @@
+opponent
+	^opponent
