@@ -1,4 +1,4 @@
 name: ignored key: object code: byte
 
-	key _ object.
-	code _ byte
+	self key: object.
+	self code: byte
