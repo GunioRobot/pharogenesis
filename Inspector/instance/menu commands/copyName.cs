@@ -7,4 +7,4 @@ copyName
 
 	sel _ aClass allInstVarNames at: selectionIndex - 2.
 	(self selection isKindOf: Collection) ifTrue: [sel _ '(',sel,' at: 1)'].
-	ParagraphEditor new clipboardTextPut: sel asText.	"no undo allowed"
+	ParagraphEditor clipboardTextPut: sel asText.	"no undo allowed"
