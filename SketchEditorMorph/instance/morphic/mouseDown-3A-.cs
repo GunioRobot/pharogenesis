@@ -4,7 +4,11 @@ mouseDown: evt
 	"verify that we are in a good state"
 	self verifyState: evt.		"includes prepareToPaint and #scalingOrRotate"
 	pfPen _ self get: #paintingFormPen for: evt.
-	undoBuffer _ paintingForm deepCopy.	"know we will draw something"
+	paintingForm extent = undoBuffer extent ifTrue: [
+		paintingForm displayOn: undoBuffer at: 0@0 rule: Form over.
+	] ifFalse: [
+		undoBuffer _ paintingForm deepCopy.	"know we will draw something"
+	].
 	pfPen place: (evt cursorPoint - bounds origin).
 	myAction _ self getActionFor: evt.
 	myAction == #paint: ifTrue:[
