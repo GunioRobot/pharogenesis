@@ -1,10 +1,14 @@
 browseMessageList: messageList name: labelString autoSelect: autoSelectString
-	"Create and schedule a MessageSet browser on the  message list.
-	1/22/96 sw: add message count to title.
-	1/24/96 sw: don't put the msg count in 'there-are-no' msg"
+	| title aSize |
+	"Create and schedule a MessageSet browser on the message list."
+
 	messageList size = 0 ifTrue: 
 		[^ (PopUpMenu labels: ' OK ')
 				startUpWithCaption: 'There are no
 ' , labelString].
 
-	MessageSet openMessageList: messageList name: (labelString, ' [', messageList size printString, ']') autoSelect: autoSelectString
+	title _ (aSize _ messageList size) > 1
+		ifFalse:	[labelString]
+		ifTrue:	[ labelString, ' [', aSize printString, ']'].
+
+	MessageSet openMessageList: messageList name: title autoSelect: autoSelectString
