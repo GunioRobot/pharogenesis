@@ -1,6 +1,6 @@
 condenseSources		"Smalltalk condenseSources"
 	"Move all the changes onto a compacted sources file."
-	| f name oldChanges classCount dir |
+	| f classCount dir |
 	dir _ FileDirectory default.
 
 	"Write all sources with fileIndex 1"
@@ -28,6 +28,18 @@ condenseSources		"Smalltalk condenseSources"
 		toBe: self sourcesName , '.old'.
 	dir rename: self sourcesName , '.temp'
 		toBe: self sourcesName.
+
+	"On Mac, set the file type and creator (noop on other platforms)"
+	FileDirectory default
+		setMacFileNamed: self changesName
+		type: 'STch'
+		creator: 'FAST'.
+
+	FileDirectory default
+		setMacFileNamed:  self sourcesName
+		type: 'STch'
+		creator: 'FAST'.
+
 	self openSourceFiles.
 	SelectionMenu notify: 'Source files have been rewritten!
 Check that all is well,
