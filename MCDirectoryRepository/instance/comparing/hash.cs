@@ -1,0 +1,2 @@
+hash
+	^ directory pathName hash
