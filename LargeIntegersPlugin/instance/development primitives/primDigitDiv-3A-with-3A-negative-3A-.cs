@@ -1,6 +1,6 @@
 primDigitDiv: firstInteger with: secondInteger negative: neg 
-	"Answer the result of dividing firstInteger by secondInteger.  Fail if     
-	parameters are not integers or secondInteger is zero."
+	"Answer the result of dividing firstInteger by secondInteger.
+	Fail if parameters are not integers or secondInteger is zero."
 	| firstAsLargeInteger secondAsLargeInteger |
 	self debugCode: [self msg: 'primDigitDiv: firstInteger with: secondInteger negative: neg'].
 	self
