@@ -1,6 +1,4 @@
-mouseUpEvent: event linkMorph: linkMorph browserAndUrl: browserAndUrl
-	"this is an image map area, just follow the link"
-	| browser url |
-	browser _ browserAndUrl first.
-	url _ browserAndUrl second.
-	browser jumpToUrl: url
+mouseUpEvent: arg1 linkMorph: arg2 browserAndUrl: arg3
+	"Reorder the arguments for existing event handlers"
+	(arg3 isMorph and:[arg3 eventHandler notNil]) ifTrue:[arg3 eventHandler fixReversedValueMessages].
+	^self mouseUpBrowserAndUrl: arg1 event: arg2 linkMorph: arg3
