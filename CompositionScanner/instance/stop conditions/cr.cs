@@ -4,5 +4,5 @@ cr
 
 	line stop: lastIndex.
 	spaceX _ destX.
-	line paddingWidth: rightMargin - destX.
+	line paddingWidth: rightMargin - spaceX.
 	^true
