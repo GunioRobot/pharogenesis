@@ -1,12 +1,12 @@
 computeBounds
-	| subBounds |
+	| subBounds box |
 	(submorphs isNil or:[submorphs isEmpty]) ifTrue:[^self].
-	bounds _ nil.
+	box _ nil.
 	submorphs do:[:m|
 		subBounds _ self transform localBoundsToGlobal: m bounds.
-		bounds 
-			ifNil:[bounds _ subBounds]
-			ifNotNil:[bounds _ bounds quickMerge: subBounds].
+		box 
+			ifNil:[box _ subBounds]
+			ifNotNil:[box _ box quickMerge: subBounds].
 	].
-	bounds ifNil:[bounds _ 0@0 corner: 20@20].
-	fullBounds _ bounds.
+	box ifNil:[box _ 0@0 corner: 20@20].
+	fullBounds _ bounds _ box
