@@ -9,8 +9,8 @@ initialize
 	offsets _ offsets asArray.
 	keys _ #($a $s $d $f $g $h $j $k $l $; $' $z $x $c $v $b $n $m $, $. $/ ).  "Keyboard"
 	states _ #(
-		false false true false false false true false false false false
-		false false false false false true false false false false).  "Initial button states"
+		#false #false #true #false #false #false #true #false #false #false #false
+		#false #false #false #false #false #true #false #false #false #false).  "Initial button states"
 	names _ 
 		#('select.form' 'singlecopy.form' 'repeatcopy.form' 'line.form' 'curve.form'
 		'block.form' 'over.form' 'under.form' 'reverse.form' 'erase.form' 'in.form'
