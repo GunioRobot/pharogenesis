@@ -1,2 +1,2 @@
 maximumSupportedVersion
-	^4
+	^3
