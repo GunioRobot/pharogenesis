@@ -1,0 +1,2 @@
+textHighlightColor
+	^ Parameters at: #textHighlightColor
