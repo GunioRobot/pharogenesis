@@ -10,7 +10,8 @@ scanFrom: strm
 	aa _ OrderedCollection new.	"Attributes list"
 	[(this _ strm next) == nil] whileFalse: [
 		this == $, ifTrue: [vv add: aa asArray.  aa _ OrderedCollection new].
-		this == $f ifTrue: [aa add: (TextFontChange new fontNumber: (Number readFrom: strm))].
+		this == $f ifTrue: [aa add: 
+			(TextFontChange new fontNumber: (Number readFrom: strm))].
 		this == $b ifTrue: [aa add: (TextEmphasis bold)].
 		this == $i ifTrue: [aa add: (TextEmphasis italic)].
 		this == $u ifTrue: [aa add: (TextEmphasis underlined)].
@@ -20,7 +21,9 @@ scanFrom: strm
 		this == $+ ifTrue: [aa add: (TextKern kern: 1)].
 		this == $c ifTrue: [aa add: (TextColor scanFrom: strm)]. "color"
 		this == $L ifTrue: [aa add: (TextLink scanFrom: strm)].	"L not look like 1"
-		this == $R ifTrue: [aa add: (TextURL scanFrom: strm)].	"R cap so it can follow a number"
+		this == $R ifTrue: [aa add: (TextURL scanFrom: strm)].
+				"R capitalized so it can follow a number"
+		this == $q ifTrue: [aa add: (TextSqkPageLink scanFrom: strm)].
 		this == $d ifTrue: [aa add: (TextDoIt scanFrom: strm)].
 		"space, cr do nothing"
 		].
