@@ -1,18 +1,16 @@
 changesMenu
-	"Answer a menu for changes-related items.  2/4/96 sw
-	 5/8/96 sw: divided changelist options into two
-	 5/17/96 sw: added browse recent submissions"
+	"Answer a menu for changes-related items"
+
 
 	ChangesMenu == nil ifTrue: 
 		[ChangesMenu _ SelectionMenu labelList:
 		#(	'file out changes'
+			'open changes sorter'
 			'browse changed methods'
 			'browse recent submissions'
-			'open change sorter'
-			'post-snapshot change log'
 			'recent change log')
 		lines: #(1 4)
-		selections: #(fileOutChanges browseChangedMessages browseRecentSubmissions openChangeManager browsePostSnapshotChanges browseRecentChanges)].
+		selections: #(fileOutChanges openChangeManager browseChangedMessages browseRecentSubmissions browseRecentLog)].
 
 	^ ChangesMenu
 
