@@ -1,4 +1,3 @@
-performActionSelector: actionSymbol
-
-	(target ~~ nil and: [actionSelector ~~ nil]) ifTrue: [
-		target perform: actionSelector with: actionSymbol].
+performActionSelector: actionSymbol 
+	(target notNil and: [actionSelector notNil]) 
+		ifTrue: [target perform: actionSelector with: actionSymbol]
