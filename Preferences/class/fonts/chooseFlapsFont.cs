@@ -1,2 +1,2 @@
 chooseFlapsFont
-	self chooseFontWithPrompt: 'flaps font' andSendTo: self withSelector: #setFlapsFontTo:
+	self chooseFontWithPrompt: 'Choose a flaps font' translated andSendTo: self withSelector: #setFlapsFontTo: highlight: self standardFlapFont
