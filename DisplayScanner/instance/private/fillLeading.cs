@@ -9,5 +9,5 @@ fillLeading
 		copyBits.
 
 	"Fill space below the font"
-	fillBlt destY: (destY + height); height: (lineY + lineHeight) - (destY + height);
+	fillBlt destY: (destY + font height); height: (lineY + lineHeight) - (destY + font height);
 		copyBits.
