@@ -1,4 +1,4 @@
 hours
 	"Answer the number of hours the receiver represents."
 
-	^hours
+	^seconds // 3600
