@@ -1,0 +1,2 @@
+resourceManager: aResourceManager
+	resourceManager _ aResourceManager
