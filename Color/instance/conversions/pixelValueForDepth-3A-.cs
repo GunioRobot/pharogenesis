@@ -3,7 +3,7 @@ pixelValueForDepth: d
 	"Details: For depths of 8 or less, the result is a colorMap index. For depths of 16 and 32, it is a direct color value with 5 or 8 bits per color component."
 	"Transparency: The pixel value zero is reserved for transparent. For depths greater than 8, black maps to the darkest possible blue."
 
-	| rgbBlack val rgbBlack32 |
+	| rgbBlack val |
 	d = 8 ifTrue: [^ self closestPixelValue8].  "common case"
 	d < 8 ifTrue: [
 		d = 4 ifTrue: [^ self closestPixelValue4].
@@ -20,12 +20,14 @@ pixelValueForDepth: d
 		^ val = 0 ifTrue: [rgbBlack] ifFalse: [val]].
 
 	d = 32 ifTrue: [
-		rgbBlack32 _ 16rFF000001.  "closest black for 32-bit depth, with opaque alpha"
-		"eight bits per component; top 8 bits set to all ones (opaque)"
-		val _ (((rgb bitShift: -6) bitAnd: 16rFF0000) bitOr:
-			 ((rgb bitShift: -4) bitAnd: 16r00FF00)) bitOr:
-			 ((rgb bitShift: -2) bitAnd: 16r0000FF).
-		^ val = 0 ifTrue: [rgbBlack32] ifFalse: [16rFF000000 + val]].
+		"eight bits per component; top 8 bits set to all ones (opaque alpha)"
+		val _ LargePositiveInteger new: 4.
+		val at: 3 put: ((rgb bitShift: -22) bitAnd: 16rFF).
+		val at: 2 put: ((rgb bitShift: -12) bitAnd: 16rFF).
+		val at: 1 put: ((rgb bitShift: -2) bitAnd: 16rFF).
+		val = 0 ifTrue: [val at: 1 put: 1].  "closest non-transparent black"
+		val at: 4 put: 16rFF.  "opaque alpha"
+		^ val].
 
 	d = 12 ifTrue: [  "for indexing a color map with 4 bits per color component"
 		val _ (((rgb bitShift: -18) bitAnd: 16r0F00) bitOr:
