@@ -1,0 +1,4 @@
+tearDown
+
+	Smalltalk removeClassNamed: #TUTU.
+	
