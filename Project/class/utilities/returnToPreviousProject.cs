@@ -3,4 +3,4 @@ returnToPreviousProject
 
 	| prevProj |
 	prevProj _ CurrentProject previousProject.
-	prevProj ifNotNil: [prevProj enter: true].
+	prevProj ifNotNil: [prevProj enter: true revert: false saveForRevert: false].
