@@ -1,0 +1,2 @@
+isGlobalStructureBuild
+	^false
