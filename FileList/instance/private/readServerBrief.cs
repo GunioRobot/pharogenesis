@@ -4,30 +4,30 @@ readServerBrief
 
 	listIndex = 0 ifTrue: [^ self].
 	"Get size from file list entry"
-	lString _ list at: listIndex.
-	parts _ lString findTokens: '()'.
-	sortMode = #name ifTrue: [sizeStr _ (parts second findTokens: ' ') third].
-	sortMode = #date ifTrue: [sizeStr _ (parts first findTokens: ' ') third].
-	sortMode = #size ifTrue: [sizeStr _ (parts first findTokens: ' ') first].
-	fsize _ (sizeStr copyWithout: $,) asNumber.
+	lString := list at: listIndex.
+	parts := lString findTokens: '()'.
+	sortMode = #name ifTrue: [sizeStr := (parts second findTokens: ' ') third].
+	sortMode = #date ifTrue: [sizeStr := (parts first findTokens: ' ') third].
+	sortMode = #size ifTrue: [sizeStr := (parts first findTokens: ' ') first].
+	fsize := (sizeStr copyWithout: $,) asNumber.
 
 	fsize <= 50000 ifTrue:
-		[ff _ directory oldFileOrNoneNamed: self fullName.
-		ff ifNil: [^ 'For some reason, this file cannot be read'].
-		contents _ ff contentsOfEntireFile.
-		brevityState _ #fullFile.   "don't change till actually read"
+		[ff := directory oldFileOrNoneNamed: self fullName.
+		ff ifNil: [^ 'For some reason, this file cannot be read' translated].
+		contents := ff contentsOfEntireFile.
+		brevityState := #fullFile.   "don't change till actually read"
 		^ contents].
 
 	"if brevityFlag is true, don't display long files when first selected"
-	first5000 _ directory getOnly: 3500 from: fileName.
-	contents _ 'File ''', fileName, ''' is ', sizeStr, ' bytes long.
+	first5000 := directory getOnly: 3500 from: fileName.
+	contents := 'File ''{1}'' is {2} bytes long.
 You may use the ''get'' command to read the entire file.
 
 Here are the first 3500 characters...
 ------------------------------------------
-', first5000 , '
+{3}
 ------------------------------------------
-... end of the first 3500 characters.'.
-	brevityState _ #briefFile.   "don't change till actually read"
+... end of the first 3500 characters.' translated format: {fileName. sizeStr. first5000}.
+	brevityState := #briefFile.   "don't change till actually read"
 	^ contents.
 
