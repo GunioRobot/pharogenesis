@@ -1,5 +1,6 @@
 setContents
 	"return the source code that shows in the bottom pane"
+
 	| sel class strm changeType |
 	self clearUserEditFlag.
 	currentClassName ifNil: [^ contents _ myChangeSet preambleString ifNil: ['']].
@@ -14,10 +15,10 @@ setContents
 			(class includesSelector: sel)
 				ifFalse: [^ contents _ 'Method was added, but cannot be found!'].
 			contents _ class sourceCodeAt: sel.
-			Preferences browseWithPrettyPrint ifTrue:
+			(#(prettyPrint colorPrint prettyDiffs altSyntax) includes: contentsSymbol) ifTrue:
 				[contents _ class compilerClass new
-					format: contents in: class notifying: nil decorated: Preferences colorWhenPrettyPrinting].
-			self showDiffs
+					format: contents in: class notifying: nil contentsSymbol: contentsSymbol].
+			self showingAnyKindOfDiffs
 				ifTrue: [contents _ self diffFromPriorSourceFor: contents].
 			^ contents _ contents asText makeSelectorBoldIn: class]
 		ifTrue: [strm _ WriteStream on: (String new: 100).
