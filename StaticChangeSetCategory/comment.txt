@@ -1,0 +1,1 @@
+StaticChangeSetCategory is a user-defined change-set category that has in it only those change sets specifically placed there.
