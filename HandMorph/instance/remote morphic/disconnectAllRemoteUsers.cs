@@ -2,7 +2,7 @@ disconnectAllRemoteUsers
 	"Disconnect all remote hands and stop transmitting events."
 
 	| addr |
-	self world hands do: [:h |
+	self world handsDo: [:h |
 		(h isKindOf: RemoteHandMorph) ifTrue: [
 			addr _ h remoteHostAddress.
 			addr = 0 ifFalse: [self stopTransmittingEventsTo: addr].
