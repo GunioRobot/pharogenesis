@@ -24,7 +24,11 @@ lookupMethodInDictionary: dictionary
 				newMethod _ self fetchPointer:  index - SelectorStart
 							ofObject: methodArray.
 				primitiveIndex _ self primitiveIndexOf: newMethod.
-				^true].
+				primitiveIndex > MaxPrimitiveIndex ifTrue:
+					["If primitiveIndex is out of range, set to zero before putting in cache.
+						This is equiv to primFail, and avoids the need to check on every send."
+					primitiveIndex _ 0].
+				^ true].
 		index _ index + 1.
 		index = length
 			ifTrue: [wrapAround ifTrue: [^false].
