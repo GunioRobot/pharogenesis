@@ -1,4 +1,4 @@
-A PianoRollScoreMorph displays a score such as a MIDIScore, and will scroll through it tracking the porgress of a ScorePlayerMorph (from which it is usually spawned).
+A PianoRollScoreMorph displays a score such as a MIDIScore, and will scroll through it tracking the progress of a ScorePlayerMorph (from which it is usually spawned).
 
 timeScale is in pixels per score tick.
 
