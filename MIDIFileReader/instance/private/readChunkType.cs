@@ -1,5 +1,5 @@
 readChunkType
-	"Read a 32-bit positive integer from the next 4 bytes, most significant byte first."
+	"Read a chunk ID string from the next 4 bytes."
 	"Assume: Stream has at least four bytes left."
 
 	| s |
