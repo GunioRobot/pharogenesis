@@ -1,7 +1,7 @@
 mouseMovePaintBrushMode: evt
 
         | p p2 |
-        p _ self griddedPoint: evt.
+        p _ self pointGriddedFromEvent: evt.
         lastMouse = p ifTrue: [^ self].
         lastMouse ifNil: [lastMouse _ p].  "first point in a stroke"
         "draw etch-a-sketch style-first horizontal, then vertical"
