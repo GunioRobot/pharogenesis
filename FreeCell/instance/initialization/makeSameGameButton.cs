@@ -1,7 +1,6 @@
 makeSameGameButton
-
-	^self
+	^ self
 		buildButton: SimpleButtonMorph new
 		target: self
-		label: 'Same game'
+		label: 'Same game' translated
 		selector: #sameGame
