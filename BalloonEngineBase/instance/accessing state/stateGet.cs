@@ -1,0 +1,2 @@
+stateGet
+	^workBuffer at: GWState
