@@ -4,8 +4,7 @@ fileContentsMenu: aMenu shifted: shifted
 ^ shifted 
 	ifFalse: [aMenu 
 		labels: 
-'file it in
-get entire file
+'get entire file
 view as hex
 browse changes
 find...(f)
@@ -16,18 +15,26 @@ undo (z)
 copy (c)
 cut (x)
 paste (v)
+paste...
 do it (d)
 print it (p)
 inspect it (i)
+fileIn selection
 accept (s)
 cancel (l)
 more...' 
-		lines: #(4 7 9 12 15 17)
-		selections: #(fileItIn get getHex browseChanges find findAgain setSearchString again undo copySelection cut paste doIt printIt inspectIt accept cancel shiftedYellowButtonActivity)]
+		lines: #(3 6 8 12 16 18)
+		selections: #(get getHex browseChanges
+find findAgain setSearchString
+again undo
+copySelection cut paste pasteRecent
+doIt printIt inspectIt fileItIn
+accept cancel
+shiftedYellowButtonActivity)]
 
-	ifTrue: [shiftMenu _ PluggableTextController shiftedYellowButtonMenu.
+	ifTrue: [shiftMenu _ ParagraphEditor shiftedYellowButtonMenu.
 		aMenu 
 			labels: shiftMenu labelString 
 			lines: shiftMenu lineArray
-			selections: PluggableTextController shiftedYellowButtonMessages]
+			selections: shiftMenu selections]
 
