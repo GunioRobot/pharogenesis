@@ -16,7 +16,7 @@ wasDown ifTrue: [
 			0 to: form height-1 do:
 				[:y |
 				rowStart _ location.
-				bb _ BitBlt bitPeekerFromForm: form.
+				bb _ BitBlt current bitPeekerFromForm: form.
 				pix _ RunArray newFrom:
 					((0 to: form width-1) collect: [:x | bb pixelAt: x@y]).
 				pix runs with: pix values do:
@@ -33,5 +33,5 @@ wasDown ifTrue: [
 Display restoreAfter:
 [Pen new squareNib: 2; color: Color red; turn: 45;
 	print: 'The owl and the pussycat went to sea
-in a beautiful pea green boat.' withFont: (TextStyle default fontAt: 1)]
+in a beautiful pea green boat.' withFont: TextStyle defaultFont]
 "
