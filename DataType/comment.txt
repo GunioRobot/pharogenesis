@@ -1,0 +1,1 @@
+A Vocabulary representing typed data.
