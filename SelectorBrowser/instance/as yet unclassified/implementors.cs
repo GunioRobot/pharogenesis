@@ -1,4 +1,4 @@
 implementors
 	| aSelector |
 	(aSelector _ self selectedMessageName) ifNotNil:
-		[Smalltalk browseAllImplementorsOf: aSelector]
+		[self systemNavigation browseAllImplementorsOf: aSelector]
