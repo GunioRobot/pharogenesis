@@ -9,5 +9,5 @@ computeTOCString
 	[s position < 9] whileTrue: [s space].
 	s nextPutAll: (self fromStringLimit: fromFieldSize).
 	[s position <= (9 + fromFieldSize + 2)] whileTrue: [s space].
-	s nextPutAll: subject decodeMimeHeader.
+	s nextPutAll: subject.
 	^ s contents
