@@ -1,0 +1,2 @@
+sortingByDate
+	^ sortMode == #date
