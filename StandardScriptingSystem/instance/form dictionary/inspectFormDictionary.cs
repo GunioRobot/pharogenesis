@@ -1,3 +1,3 @@
 inspectFormDictionary
 	"ScriptingSystem inspectFormDictionary"
-	self formDictionary inspectFormsWithLabel: 'Standard Graphics'
+	FormDictionary inspectFormsWithLabel: 'Standard Graphics'
