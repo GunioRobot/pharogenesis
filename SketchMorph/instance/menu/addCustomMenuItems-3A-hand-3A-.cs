@@ -1,6 +1,10 @@
 addCustomMenuItems: aCustomMenu hand: aHandMorph
+	"Add custom menu items"
+
 	super addCustomMenuItems: aCustomMenu hand: aHandMorph.
-	aCustomMenu add: 'choose new graphic...' target: self action: #chooseNewGraphic.
-	aCustomMenu add: 'set as background' target: rotatedForm action: #setAsBackground.
-	aCustomMenu addUpdating: #roundedCornersString target: self action: #toggleCornerRounding.
+	aCustomMenu add: 'restore base graphic' translated target: self action: #restoreBaseGraphicFromMenu.
+	aCustomMenu add: 'call this my base graphic' translated target: self action: #callThisBaseGraphic.
+	aCustomMenu add: 'choose new graphic...' translated target: self action: #chooseNewGraphic.
+	aCustomMenu addLine.
+	aCustomMenu add: 'set as background' translated target: rotatedForm action: #setAsBackground.
 	self addPaintingItemsTo: aCustomMenu hand: aHandMorph
