@@ -3,7 +3,7 @@ dotOfSize: diameter
 	| radius form bb rect centerX centerY centerYBias centerXBias radiusSquared xOverY maxy dx |
 	radius _ diameter//2.
 	form _ self extent: diameter@diameter offset: (0@0) - (radius@radius).	
-	bb _ (BitBlt toForm: form)
+	bb _ (BitBlt current toForm: form)
 		sourceX: 0; sourceY: 0;
 		combinationRule: Form over;
 		fillColor: Color black.
