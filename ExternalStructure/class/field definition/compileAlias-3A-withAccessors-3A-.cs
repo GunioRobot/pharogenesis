@@ -14,7 +14,7 @@ compileAlias: spec withAccessors: aBool
 		Transcript show:'(', fieldType,' is void)'.
 		externalType _ ExternalType void].
 	isPointerField ifTrue:[externalType _ externalType asPointerType].
-	(fieldName ~~ #nil and:[aBool]) ifTrue:[
+	(fieldName notNil and:[aBool]) ifTrue:[
 		self defineAliasAccessorsFor: fieldName
 			type: externalType].
 	isPointerField 
