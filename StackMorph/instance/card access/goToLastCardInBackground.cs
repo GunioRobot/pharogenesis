@@ -3,4 +3,4 @@ goToLastCardInBackground
 
 	| kind |
 	kind _ currentPage player class baseUniclass.
-	self goToCard: (cards reversed detect: [:aCard | aCard isKindOf: kind] ifNone: [^ self beep])
+	self goToCard: (self privateCards reversed detect: [:aCard | aCard isKindOf: kind] ifNone: [^ Beeper beep])
