@@ -1,5 +1,5 @@
 contents: aString
-	listIndex = 0
-		ifTrue: [self changed: #flash. ^ false]
-		ifFalse: [Cursor read showWhile: [(changeList at: listIndex) fileIn].
-				^ true]
+	listIndex = 0 ifTrue: [self changed: #flash. ^ false].
+	lostMethodPointer ifNotNil: [^ self restoreDeletedMethod].
+	(changeList at: listIndex) fileIn.
+	^ true
