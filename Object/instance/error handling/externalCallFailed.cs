@@ -1,4 +1,4 @@
 externalCallFailed
 	"A call to an external function has failed."
-
-	^ ExternalFunction externalCallFailed
+	^(Smalltalk at: #ExternalFunction ifAbsent:[^self error: 'FFI not installed'])
+		externalCallFailed
