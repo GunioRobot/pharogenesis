@@ -7,6 +7,10 @@ nextPut: anObject
 	whatIsAPrimitive."
 
 	<primitive: 66>
+	((collection class == String) and: [anObject class == MultiCharacter]) ifTrue: [
+		 collection _ (MultiString from: collection).
+		^self nextPut: anObject.
+	].
 	position >= writeLimit
 		ifTrue: [^ self pastEndPut: anObject]
 		ifFalse: 
