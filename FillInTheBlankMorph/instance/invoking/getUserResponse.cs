@@ -8,4 +8,5 @@ getUserResponse
 	done _ false.
 	[done] whileFalse: [w doOneCycle].
 	self delete.
+	w doOneCycle.
 	^ response
