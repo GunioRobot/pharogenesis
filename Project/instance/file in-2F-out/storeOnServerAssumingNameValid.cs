@@ -6,6 +6,6 @@ storeOnServerAssumingNameValid
 	self isCurrentProject ifTrue: ["exit, then do the command"
 		^ self 
 			armsLengthCommand: #storeOnServerAssumingNameValid
-			withDescription: 'Publishing'
+			withDescription: 'Publishing' translated
 	].
 	self storeOnServerWithProgressInfo.
