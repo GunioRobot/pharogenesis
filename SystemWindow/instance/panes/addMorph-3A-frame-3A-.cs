@@ -5,6 +5,6 @@ addMorph: aMorph frame: relFrame
 	paneRects _ paneRects copyReplaceFrom: 1 to: 0 with: (Array with: relFrame).
 
 	panelRect _ self panelRect.
-	aMorph borderWidth: 1;
-		color: (Color perform: model defaultBackgroundColor);
+	(aMorph isKindOf: BorderedMorph) ifTrue: [aMorph borderWidth: 1].
+	aMorph color: self paneColor;
 		bounds: ((relFrame scaleBy: panelRect extent) translateBy: panelRect topLeft) truncated.
