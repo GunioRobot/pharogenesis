@@ -1,0 +1,2 @@
+classSmallInteger
+	^SmallInteger
