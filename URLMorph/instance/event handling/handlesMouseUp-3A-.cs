@@ -1,0 +1,3 @@
+handlesMouseUp: evt
+
+	^ isBookmark
