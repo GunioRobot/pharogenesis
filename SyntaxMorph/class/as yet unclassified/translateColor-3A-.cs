@@ -1,11 +1,13 @@
 translateColor: aColorOrSymbol
 
-	aColorOrSymbol == #comment  ifTrue: [^ Color blue lighter].
-	aColorOrSymbol == #block  ifTrue: [^ Color transparent].
-	aColorOrSymbol == #text  ifTrue: [^ Color transparent].
 	aColorOrSymbol isColor  ifTrue: [^ aColorOrSymbol].
+	aColorOrSymbol == #comment  ifTrue: [^ Color blue lighter].
+	aColorOrSymbol == #block  ifTrue: [^ Color r: 0.903 g: 1.0 b: 0.903].
+	aColorOrSymbol == #method  ifTrue: [^ Color r: 0.903 g: 1.0 b: 0.903].
+	aColorOrSymbol == #text  ifTrue: [^ Color r: 0.9 g: 0.9 b: 0.9].
 
-	self noTileColor ifTrue: [^ Color transparent].	"override"
+	self noTileColor ifTrue: [^ Color r: 1.0 g: 0.839 b: 0.613].	"override"
+
 	aColorOrSymbol == #assignment  ifTrue: [^ Color paleGreen].
 	aColorOrSymbol == #keyword1  ifTrue: [^ Color paleBuff].	"binary"
 	aColorOrSymbol == #keyword2  ifTrue: [^ Color paleBuff lighter].	"multipart" 
@@ -25,4 +27,4 @@ translateColor: aColorOrSymbol
 	aColorOrSymbol == #blockarg1  ifTrue: [^ Color paleRed].	"container"
 		"yellow mixed: 0.5 with: Color white"
 
-	^aColorOrSymbol
+	^ Color tan	"has to be something!"
