@@ -1,0 +1,2 @@
+setInterruptCheckCounter: value
+	interruptCheckCounter _ value
