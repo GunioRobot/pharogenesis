@@ -9,7 +9,7 @@ nextPutImage: aForm
 	f depth < 8 ifTrue: [
 		"writeBitData: expects depth of 8"
 		newF _ f class extent: f extent depth: 8.
-		(f isKindOf: ColorForm)
+		(f isColorForm)
 			ifTrue: [
 				newF
 					copyBits: f boundingBox
@@ -21,7 +21,7 @@ nextPutImage: aForm
 				newF colors: f colors]
 			ifFalse: [f displayOn: newF].
 		f _ newF].
-	(f isKindOf: ColorForm)
+	(f isColorForm)
 		ifTrue: [
 			(f colorsUsed includes: Color transparent) ifTrue: [
 				transparentIndex _ (f colors indexOf: Color transparent) - 1]]
@@ -33,4 +33,3 @@ nextPutImage: aForm
 	interlace _ false.
 	self writeHeader.
 	self writeBitData: f bits.
-	self close.
