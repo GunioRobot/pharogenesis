@@ -6,4 +6,4 @@ fileIn
 		(type == #doIt) ifTrue:
 			[Compiler evaluate: self string].
 		(type == #classComment) ifTrue:
-			[(Smalltalk at: class asSymbol) comment: self text]]
+			[(Smalltalk at: class asSymbol) comment: self text stamp: stamp]]
