@@ -4,11 +4,12 @@ addCustomMenuItems: aCustomMenu hand: aHandMorph
 	self addLabelItemsTo: aCustomMenu hand: aHandMorph.
 	(target isKindOf: BookMorph)
 		ifTrue:
-			[aCustomMenu add: 'set page sound' action: #setPageSound:.
-			aCustomMenu add: 'set page visual' action: #setPageVisual:]
+			[aCustomMenu add: 'set page sound' translated action: #setPageSound:.
+			aCustomMenu add: 'set page visual' translated action: #setPageVisual:]
 		ifFalse:
-			[aCustomMenu add: 'change action selector' action: #setActionSelector.
-			aCustomMenu add: 'change arguments' action: #setArguments.
-			aCustomMenu add: 'change when to act' action: #setActWhen.
+			[aCustomMenu add: 'change action selector' translated action: #setActionSelector.
+			aCustomMenu add: 'change arguments' translated action: #setArguments.
+			aCustomMenu add: 'change when to act' translated action: #setActWhen.
+			aCustomMenu add: 'change target' translated action: #setTarget.
 			((self world rootMorphsAt: aHandMorph targetOffset) size > 1) ifTrue:
-				[aCustomMenu add: 'set target' action: #setTarget:]].
+				[aCustomMenu add: 'set target' translated action: #setTarget:]].
