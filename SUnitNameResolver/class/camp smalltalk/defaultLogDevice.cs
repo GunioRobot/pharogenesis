@@ -1,0 +1,2 @@
+defaultLogDevice
+	^ Transcript
