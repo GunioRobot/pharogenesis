@@ -1,0 +1,2 @@
+errorForSoundStart: aValueInMilliseconds
+	errorForSoundStart _ aValueInMilliseconds
