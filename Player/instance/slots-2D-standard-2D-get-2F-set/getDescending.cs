@@ -1,0 +1,2 @@
+getDescending
+	^  self getValueFromCostume: #descending
