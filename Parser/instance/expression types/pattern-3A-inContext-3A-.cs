@@ -17,7 +17,7 @@ pattern: fromDoit inContext: ctxt
 	(hereType == #binary or: [hereType == #verticalBar])
 		ifTrue: 
 			[selector _ self advance asSymbol.
-			args _ Array with: (encoder bindTemp: self argumentName).
+			args _ Array with: (encoder bindArg: self argumentName).
 			^Array with: selector with: args with: 2].
 	hereType == #keyword
 		ifTrue: 
@@ -26,6 +26,6 @@ pattern: fromDoit inContext: ctxt
 			[hereType == #keyword]
 				whileTrue: 
 					[selector nextPutAll: self advance.
-					args addLast: (encoder bindTemp: self argumentName)].
+					args addLast: (encoder bindArg: self argumentName)].
 			^Array with: selector contents asSymbol with: args with: 3].
 	^self expected: 'Message pattern'
