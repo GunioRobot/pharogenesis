@@ -16,7 +16,14 @@ initialize
 		self initUp.
 		self initDown.
 		self initMove.
-
+		self initBottomLeft.
+		self initBottomRight.
+		self initResizeLeft.
+		self initResizeTop.
+		self initResizeTopLeft.
+		self initResizeTopRight.
+		self initTopLeft.
+		self initTopRight.
 		self makeCursorsWithMask.
 
 		"Cursor initialize"
