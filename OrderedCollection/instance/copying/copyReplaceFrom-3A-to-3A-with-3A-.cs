@@ -4,7 +4,7 @@ copyReplaceFrom: start to: stop with: replacementCollection
 	a 1-1 map from replacementCollection to the start to stop elements, so it
 	will do an insert or append."
 
-	| newOrderedCollection delta newIndex index mySize startIndex stopIndex |
+	| newOrderedCollection delta startIndex stopIndex |
 	"if start is less than 1, ignore stop and assume this is inserting at the front. 
 	if start greater than self size, ignore stop and assume this is appending. 
 	otherwise, it is replacing part of me and start and stop have to be within my 
