@@ -1,4 +1,5 @@
 mouseDownInCollapseHandle: evt with: collapseHandle
-	evt hand obtainHalo: self.
-	self removeAllHandlesBut: collapseHandle.
-	collapseHandle color: Color tan darker
+	"The mouse went down in the collapse handle; collapse the morph"
+
+	self obtainHaloForEvent: evt andRemoveAllHandlesBut: collapseHandle.
+	self setDismissColor: evt with: collapseHandle
