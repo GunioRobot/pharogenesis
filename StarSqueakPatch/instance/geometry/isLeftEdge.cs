@@ -1,0 +1,3 @@
+isLeftEdge
+
+	^ x = 0
