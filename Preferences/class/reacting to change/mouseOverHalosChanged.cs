@@ -1,0 +1,2 @@
+mouseOverHalosChanged
+	World wantsMouseOverHalos: self mouseOverHalos
