@@ -1,6 +1,6 @@
 printOn: aStream indent: level
 
-	(key isMemberOf: Association)
+	(key isVariableBinding)
 		ifTrue:
 			[key key isNil
 				ifTrue:
