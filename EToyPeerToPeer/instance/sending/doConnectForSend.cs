@@ -7,11 +7,12 @@ doConnectForSend
 		communicatorMorph commResult: {#message -> ('could not find ',ipAddress)}.
 		^false
 	].
-	socket connectTo: addr port: self class eToyCommunicationsPort.
-	(socket waitForConnectionUntil: (Socket deadlineSecs: 15)) ifFalse: [
-		communicatorMorph commResult: {#message -> ('no connection to ',ipAddress,' (',
+	socket connectNonBlockingTo: addr port: self class eToyCommunicationsPort.
+	[socket waitForConnectionFor: 15]
+		on: ConnectionTimedOut
+		do: [:ex |
+			communicatorMorph commResult: {#message -> ('no connection to ',ipAddress,' (',
 				(NetNameResolver stringFromAddress: addr),')')}.
-		^false
-	].
+			^false].
 	^true
 
