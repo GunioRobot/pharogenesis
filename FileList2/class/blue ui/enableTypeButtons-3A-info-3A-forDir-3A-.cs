@@ -3,7 +3,7 @@ enableTypeButtons: typeButtons info: fileTypeInfo forDir: aDirectory
 	| foundSuffixes fileSuffixes firstEnabled enableIt |
 
 	firstEnabled _ nil.
-	foundSuffixes _ aDirectory fileNames collect: [ :each | (each findTokens: '.') last asLowercase].
+	foundSuffixes _ (aDirectory ifNil: [ #()] ifNotNil: [ aDirectory fileNames]) collect: [ :each | (each findTokens: '.') last asLowercase].
 	foundSuffixes _ foundSuffixes asSet.
 	fileTypeInfo with: typeButtons do: [ :info :button |
 		fileSuffixes _ info second.
