@@ -1,0 +1,1 @@
+A simple package loader that is the standard UI for SqueakMap.
