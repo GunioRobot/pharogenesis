@@ -3,9 +3,10 @@ decommissionTheAllCategory
 	"Moves all methods that are in a category named 'all' into the default 'as yet unclassified' category"
 
 	| org aCategory methodCount classCount any |
+	self flag: #ShouldBeMovedIntoClassOrganization. "sd"
 	methodCount _ 0.
 	classCount _ 0.
-	Smalltalk allBehaviorsDo:
+	self systemNavigation allBehaviorsDo:
 		[:aClass | org _ aClass organization.
 			any _ false.
 			aClass selectorsDo:
