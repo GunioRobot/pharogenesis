@@ -1,0 +1,5 @@
+I am an SUnit test of SocketStream. At this point, I am broken and do very little that is useful.
+My test fixtures are:
+alistener  - a Socket
+stream1 - a SocketStream on alistener
+
