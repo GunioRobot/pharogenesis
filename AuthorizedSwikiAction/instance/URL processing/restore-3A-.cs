@@ -5,4 +5,5 @@ restore: nameOfSwiki
 	super restore: nameOfSwiki.
 	fName _ ServerAction serverDirectory, name, (ServerAction pathSeparator), 
 				'authorizer'.
-	authorizer _ (FileStream oldFileNamed: fName) fileInObjectAndCode.
+	(FileDirectory new fileExists: fName) ifTrue: [
+		authorizer _ (FileStream oldFileNamed: fName) fileInObjectAndCode].
