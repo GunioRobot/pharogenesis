@@ -1,21 +1,25 @@
 openAsMorph: aChangeList name: labelString multiSelect: multiSelect
 	"Open a morphic view for the messageSet, whose label is labelString.
 	The listView may be either single or multiple selection type"
-	| window listView textMorph |
+	| window boundary  |
 	window _ (SystemWindow labelled: labelString) model: aChangeList.
+	Preferences optionalButtons
+		ifFalse:
+			[boundary _ 0]
+		ifTrue:
+			[boundary _ 0.08.
+			window addMorph: aChangeList buttonRowForChangeList frame: (0 @ 0 corner: 1 @ boundary)].
 
-	window addMorph: (listView _ PluggableListMorph on: aChangeList list: #list
+	window addMorph: ((multiSelect ifTrue: [PluggableListMorphOfMany]
+									ifFalse: [PluggableListMorph])
+		on: aChangeList list: #list
 		selected: #listIndex changeSelected: #toggleListIndex:
-		menu: #changeListMenu: keystroke: #messageListKey:from:)
-		frame: (0@0 corner: 1@0.3).
-"
-	multiSelect ifTrue: [listView controller: PluggableListControllerOfMany new].
-"
-	window addMorph: (textMorph _ PluggableTextMorph on: aChangeList 
+		menu: (aChangeList showsVersions ifTrue: [#versionsMenu:] ifFalse: [#changeListMenu:])
+			keystroke: nil)
+		frame: (0@boundary corner: 1@0.4).
+
+	window addMorph: (AcceptableCleanTextMorph on: aChangeList 
 			text: #contents accept: #contents:
 			readSelection: #contentsSelection menu: #codePaneMenu:shifted:)
-		frame: (0@0.3 corner: 1@1).
-"
-	textMorph controller: ReadOnlyTextController new.
-"
+		frame: (0@0.4 corner: 1@1).
 	^ window openInWorld
