@@ -1,0 +1,2 @@
+ioScreenDepth
+	^DisplayScreen actualScreenDepth.
