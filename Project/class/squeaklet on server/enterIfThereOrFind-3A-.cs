@@ -17,4 +17,4 @@ enterIfThereOrFind: aProjectName
 		].
 
 	newProject ifNotNil: [^newProject enter].
-	1 beep.
+	Beeper beep.
