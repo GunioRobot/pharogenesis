@@ -6,7 +6,7 @@ ChangeList browseRecentLog.
 ChangeList browseRecent: 2000.
 
 Preferences editAnnotations.
-Utilities reinstateDefaultFlaps. 
+Flaps reinstateDefaultFlaps. 
 Preferences resetCategoryInfo
 
 (FileStream oldFileNamed: 'Lives of the Wolves') edit.
