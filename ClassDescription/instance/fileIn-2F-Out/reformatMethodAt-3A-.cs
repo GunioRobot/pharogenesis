@@ -3,7 +3,8 @@ reformatMethodAt: selector
 	newCodeString _ (self compilerClass new)
 		format: (self sourceCodeAt: selector)
 		in: self
-		notifying: nil.
+		notifying: nil
+		decorated: false.
 	method _ self compiledMethodAt: selector.
 	method
 		putSource: newCodeString
