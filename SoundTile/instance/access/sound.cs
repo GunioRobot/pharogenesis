@@ -1,3 +1,3 @@
 sound
 
-	^ SampledSound soundNamed: literal
+	^ SoundService default soundNamed: literal
