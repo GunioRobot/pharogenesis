@@ -1,6 +1,6 @@
 rebuild
 
-	| row filler fudge people maxPerRow |
+	| row filler fudge people maxPerRow insetY |
 
 	updateCounter _ self class updateCounter.
 	self removeAllMorphs.
@@ -30,7 +30,10 @@ rebuild
 	"htsBefore _ submorphs collect: [ :each | each height]."
 
 	fudge _ 20.
-	filler extent: 4 @ (self height - filler height * 0.37 - self layoutInset - borderWidth - fudge) truncated.
+	insetY _ self layoutInset.
+	insetY isPoint ifTrue: [insetY _ insetY y].
+	filler extent: 
+		4 @ (self height - filler height * 0.37 - insetY - borderWidth - fudge) truncated.
 
 	"self fixLayout.
 	htsAfter _ submorphs collect: [ :each | each height].
