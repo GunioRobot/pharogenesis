@@ -1,0 +1,1 @@
+B3DVertexRasterizer class instanceVariableNames: ''
