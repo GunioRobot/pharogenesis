@@ -1,4 +1,6 @@
 streamBuffer: size
+	"Create a buffer of the correct class and given size."
+
 	^(self isBinary
 		ifTrue: [ByteArray]
-		ifFalse: [ByteString]) new: size
+		ifFalse: [String]) new: size
