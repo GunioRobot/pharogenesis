@@ -1,0 +1,3 @@
+allFilesAndFoldersFileFilter
+
+	^[:each | true]
