@@ -1,6 +1,6 @@
 Object
 	subclass: #UndoPositionChange
-	instanceVariableNames: 'theActor originalPosition '
+	instanceVariableNames: 'theActor originalPosition'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon3D-Wonderland Undo'
+	category: 'Balloon3D-Wonderland-Undo'
