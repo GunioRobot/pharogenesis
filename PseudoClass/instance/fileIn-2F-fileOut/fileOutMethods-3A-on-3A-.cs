@@ -11,11 +11,8 @@ fileOutMethods: aCollection on: aStream
 	].
 	categories associationsDo:[:assoc|
 		cat := assoc key.
-		aStream cr; cr; nextPut:$!; nextChunkPut:(String streamContents:[:s|
-			s nextPutAll: self fullName; nextPutAll:' methodsFor: '; print: cat asString]).
 		assoc value do:[:sel|
 			aStream cr.
-			aStream nextChunkPut: (self sourceCodeAt: sel).
+			(self sourceCode at: sel) fileOutOn: aStream.
 		].
-		aStream space; nextPut:$!.
 	].
