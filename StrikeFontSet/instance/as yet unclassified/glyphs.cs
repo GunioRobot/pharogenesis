@@ -1,0 +1,3 @@
+glyphs
+
+	^ fontArray first glyphs
