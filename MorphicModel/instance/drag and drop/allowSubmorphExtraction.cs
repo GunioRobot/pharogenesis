@@ -1,0 +1,2 @@
+allowSubmorphExtraction
+	^ self isOpen
