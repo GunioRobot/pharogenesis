@@ -1,16 +1,16 @@
 listForPattern: pat
 	"Make the list be those file names which match the pattern."
-	| newList thisName allFiles sizeStr specList maxiPad |
-	specList _ directory directoryContents.
+	| entries maxiPad newList allFiles thisName sizeStr |
+	entries _ directory entries.
 	sortMode == #size
-		ifTrue: [maxiPad _ (specList inject: 0 into:
+		ifTrue: [maxiPad _ (entries inject: 0 into:
 						[:mx :spec | mx max: (spec at: 5)])
 							asStringWithCommas size - 1].
 	newList _ sortMode == #name
 		ifTrue: [(SortedCollection new: 30) sortBlock: [:x :y | x <= y]]
 		ifFalse: [(SortedCollection new: 30) sortBlock: [:x :y | x >= y]].
 	allFiles _ pat = '*'.
-	specList do:
+	entries do:
 		[:spec | "<name><creationTime><modificationTime><dirFlag><fileSize>"
 		thisName _ (spec at: 4)
 			ifTrue: [spec first , self folderString]
