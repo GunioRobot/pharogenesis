@@ -1,0 +1,2 @@
+peekButtons
+	^self primMouseButtons
