@@ -1,0 +1,2 @@
+getRotationStyle
+	^ self getValueFromCostume: #rotationStyle
