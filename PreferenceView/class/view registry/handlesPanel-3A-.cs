@@ -1,0 +1,2 @@
+handlesPanel: aPreferencePanel
+	self subclassResponsibility 
