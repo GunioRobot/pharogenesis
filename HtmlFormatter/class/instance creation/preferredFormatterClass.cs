@@ -1,0 +1,2 @@
+preferredFormatterClass
+	^DHtmlFormatter
