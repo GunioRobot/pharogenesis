@@ -1,0 +1,2 @@
+textStyle
+	^paragraph textStyle.
