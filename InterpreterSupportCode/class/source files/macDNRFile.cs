@@ -25,6 +25,7 @@ macDNRFile
 
 	
 */
+#include "sq.h"
 
 #ifndef __OSUTILS__
 #include <OSUtils.h>
@@ -382,4 +383,4 @@ extern OSErr MXInfo(char *hostName, struct returnRec *returnRecPtr,
 	return(CallMXInfoProc(gDNRCodePtr, MXINFO, hostName, returnRecPtr, resultProc, userDataPtr));
 
 }	/* removed ; (causes syntax err in Think C 5.0 */
-	'.
+	'
