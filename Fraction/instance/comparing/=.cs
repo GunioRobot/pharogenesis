@@ -1,9 +1,8 @@
-= aFraction
-
-	aFraction isNil ifTrue: [^false].
-	(aFraction isMemberOf: Fraction)
-		ifTrue: [aFraction numerator = 0
+= aNumber
+	aNumber isNumber ifFalse: [^ false].
+	aNumber isFraction
+		ifTrue: [aNumber numerator = 0
 				ifTrue: [^numerator = 0]
-				ifFalse: [^aFraction numerator = numerator 
-							and: [aFraction denominator = denominator]]]
-		ifFalse: [^self retry: #= coercing: aFraction]
+				ifFalse: [^aNumber numerator = numerator 
+							and: [aNumber denominator = denominator]]]
+		ifFalse: [^ (aNumber adaptFraction: self) = aNumber adaptToFraction]
