@@ -1,0 +1,2 @@
+insertionPointColor
+	^ Parameters at: #insertionPointColor
