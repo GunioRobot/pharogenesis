@@ -7,7 +7,8 @@ mouseEnter: event
 		ifTrue: 
 			[Preferences soundsEnabled ifTrue: [self class playMouseEnterSound].
 			hand visible: false.
-			self world abandonAllHalos.
+			"self world abandonAllHalos."
+			"hand halo: nil."
 			self state: #pressed]
 		ifFalse:
 			[self showStampIn: hand]
