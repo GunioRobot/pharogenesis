@@ -7,6 +7,7 @@ initialize
 	frameWidth := 25.
 
 	b3DSceneMorph := AdvancedB3DSceneMorph new.
+	b3DSceneMorph color: Color black.
 	self addMorphFront: b3DSceneMorph.
 	
 	wheels := Dictionary new.
@@ -49,3 +50,7 @@ initialize
 	ctrl setBalloonText: 'x Axis'.
 	self addMorphFront: ctrl.
 	wheels at: #rotX put: ctrl.
+
+	ctrl _ self acceleratorButton.
+	self addMorphFront: ctrl.
+	wheels at: #accel put: ctrl.
