@@ -1,2 +1,2 @@
 commentString
-	^self organization classComment asString
+	^self comment asString
