@@ -2,6 +2,9 @@ accept
 	"Inform the model of text to be accepted, and return true if OK."
 	| textToAccept ok |
 	self canDiscardEdits ifTrue: [^ self flash].
+	self hasEditingConflicts ifTrue:
+		[(self confirm: 'Caution! This method has been changed elsewhere
+since you started editing it here.  Accept anyway?') ifFalse: [^ self flash]].
 	textToAccept _ textMorph asText.
 	ok _ (setTextSelector == nil) or:
 		[setTextSelector numArgs = 2
