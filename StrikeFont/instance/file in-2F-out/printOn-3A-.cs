@@ -1,3 +1,8 @@
 printOn: aStream
 	super printOn: aStream.
-	aStream nextPutAll: '(' , self name , ')'
+	aStream
+		nextPut: $(;
+		nextPutAll: self name;
+		space;
+		print: self height;
+		nextPut: $)
