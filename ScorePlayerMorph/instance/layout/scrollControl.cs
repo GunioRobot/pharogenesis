@@ -12,7 +12,7 @@ scrollControl
 		hResizing: #shrinkWrap;
 		vResizing: #rigid;
 		height: 24.
-	r addMorphBack: (StringMorph contents: 'start ').
+	r addMorphBack: (StringMorph contents: 'start ' translated).
 	r addMorphBack: scrollSlider.
-	r addMorphBack: (StringMorph contents: ' end').
+	r addMorphBack: (StringMorph contents: ' end' translated).
 	^ r
