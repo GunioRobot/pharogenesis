@@ -1,2 +1,2 @@
 radial
-	^radial
+	^radial ifNil:[false]
