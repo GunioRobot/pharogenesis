@@ -1,4 +1,2 @@
 isControlActive
-
-	^super isControlActive & sensor blueButtonPressed not 
-		& sensor keyboardPressed not
+	^ super isControlActive and: [sensor keyboardPressed not]
