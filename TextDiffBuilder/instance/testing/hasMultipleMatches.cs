@@ -1,0 +1,2 @@
+hasMultipleMatches
+	^multipleMatches == true
