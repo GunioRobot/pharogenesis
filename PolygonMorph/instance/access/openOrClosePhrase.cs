@@ -1,6 +1,8 @@
 openOrClosePhrase
 	| curveName |
-	curveName _ self isCurve ifTrue: ['curve'] ifFalse: ['polygon'].
+	curveName := (self isCurve
+				ifTrue: ['curve']
+				ifFalse: ['polygon']) translated.
 	^ closed
-		ifTrue: ['make open ' , curveName]
-		ifFalse: ['make closed ' , curveName]
+		ifTrue: ['make open {1}' translated format: {curveName}]
+		ifFalse: ['make closed {1}' translated format: {curveName}]
