@@ -1,0 +1,2 @@
+isPseudoContext
+	^false
