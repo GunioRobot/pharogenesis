@@ -896,7 +896,7 @@ int recordMouseEvent(EventRecord *theEvent, int theButtonState) {
 	/* clean up reserved */
 	evt->reserved1 = 0;
 	evt->reserved2 = 0;
-	signalSemaphoreWithIndex(inputSemaphoreIndex);
+//	signalSemaphoreWithIndex(inputSemaphoreIndex);
 	return 1;
 }
 
@@ -935,7 +935,7 @@ int recordKeyboardEvent(EventRecord *theEvent, int keyType) {
 		extra->charCode = asciiChar;
 		extra->pressCode = EventKeyChar;
 	}
-	signalSemaphoreWithIndex(inputSemaphoreIndex);
+//	signalSemaphoreWithIndex(inputSemaphoreIndex);
 	return 1;
 }
 
@@ -960,11 +960,11 @@ int ioGetNextEvent(sqInputEvent *evt) {
 		ioProcessEvents();
 	}
 	if (eventBufferGet == eventBufferPut) 
-		return 1;
+		return false;
 
 	*evt = eventBuffer[eventBufferGet];
 	eventBufferGet = (eventBufferGet+1) % MAX_EVENT_BUFFER;
-	return 1;
+	return true;
 }
 
 
