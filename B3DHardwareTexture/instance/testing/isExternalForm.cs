@@ -1,0 +1,3 @@
+isExternalForm
+	"Yup."
+	^true
