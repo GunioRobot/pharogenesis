@@ -4,5 +4,6 @@ bindTemp: name
 		"When non-interactive raise the error only if its a duplicate"
 		(node isTemp or:[requestor interactive])
 			ifTrue:[^self notify:'Name is already defined']
-			ifFalse:[Transcript show: '(', name, ' is shadowed)']].
+			ifFalse:[Transcript 
+				show: '(', name, ' is shadowed in "' , class printString, '")']].
 	^self reallyBind: name
