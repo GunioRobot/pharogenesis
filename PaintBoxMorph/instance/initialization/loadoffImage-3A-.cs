@@ -17,7 +17,7 @@ type = 'gif' ifTrue: [
 	].
 		"Use OriginalBounds as it was last time".
 type = 'bmp' ifTrue: [
-	pic16Bit _ Form fromBMPFileNamed: fileName depth: 16.
+	pic16Bit _ (Form fromBMPFileNamed: fileName) asFormOfDepth: 16.
 	getBounds = 'fromUser' ifTrue: ["Just first time, collect the bounds"
 			pic16Bit display.
 			OriginalBounds _ Rectangle fromUser].
@@ -30,11 +30,11 @@ type = 'gif' ifTrue: [
 	AllOffImage _ ColorForm extent: OriginalBounds extent depth: 8.
 	AllOffImage colors: pic16Bit colors].
 
-	blt _ BitBlt toForm: AllOffImage.
+	blt _ BitBlt current toForm: AllOffImage.
 	blt sourceForm: pic16Bit; combinationRule: Form over;
 		sourceRect: OriginalBounds; destOrigin: 0@0; copyBits.
 
-type = 'bmp' ifTrue: [AllOffImage removeZeroPixelsFromForm].
+type = 'bmp' ifTrue: [AllOffImage mapColor: Color transparent to: Color black].
 	self image: AllOffImage.
 	self invalidRect: bounds.
 
