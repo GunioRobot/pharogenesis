@@ -1,5 +1,6 @@
 fromSeconds: secondCount 
-	"Answer an instnace of me that is secondCount number of seconds since midnight."
+	"Answer an instance of me that is secondCount number of seconds since midnight."
+
 	| secondsInHour hours secs |
 	secs _ secondCount asInteger.
 	hours _ secs // 3600.
