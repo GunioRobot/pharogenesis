@@ -1,0 +1,2 @@
+slidesOtherObjects
+	^ slidesOtherObjects
