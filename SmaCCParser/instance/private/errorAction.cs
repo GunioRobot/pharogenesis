@@ -1,0 +1,2 @@
+errorAction
+	^3
