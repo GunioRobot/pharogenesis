@@ -1,19 +1,10 @@
 withBlanksTrimmed
-	"Return a copy of the receiver from which leading and trailing blanks have been trimmed.   This is a quick-and-dirty, sledge-hammer implementation; improvements welcomed.  1/18/96 sw"
+	"Return a copy of the receiver from which leading and trailing blanks 
+	have been trimmed.   Simplified by Gerardo Richarte 11/3/97"
 
-	| firstNonBlank lastNonBlank |
+	self size = 0 ifTrue: [ ^self ].
+	^ self
+		copyFrom: (self findFirst: [:eachChar | eachChar isSeparator not])
+		to: (self findLast: [:eachChar | eachChar isSeparator not])
 
-	firstNonBlank _ 1.
-	[firstNonBlank < self size and: [(self at: firstNonBlank) isSeparator]] whileTrue:
-		[firstNonBlank _ firstNonBlank + 1].
-	
-	lastNonBlank _ self size.
-	[lastNonBlank > 0 and: [(self at: lastNonBlank) isSeparator]] whileTrue:
-		[lastNonBlank _ lastNonBlank - 1].
-	^ lastNonBlank < firstNonBlank
-		ifTrue:
-			['']
-		ifFalse:
-			[self copyFrom: firstNonBlank to: lastNonBlank]
-
-"  ' abc  d   ' withBlanksTrimmed"
+	" ' abc  d   ' withBlanksTrimmed"
