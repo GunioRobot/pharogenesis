@@ -1,0 +1,3 @@
+plain
+
+	style _ #plain
