@@ -1,0 +1,3 @@
+superscript
+
+	^ fontArray first superscript
