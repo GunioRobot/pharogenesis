@@ -1,8 +1,9 @@
 stepStillDown: dummy with: theButton
-	(stepButton == nil or: [stepButton isInWorld not]) ifTrue: [stepButton _ theButton].
-	self stepButtonState: true.
-	self stopButtonState: false.
+	"The step button is still down; get temporary button feedback right and step all and then get all button feedback right again"
+
+	self stepButtonState: #pressed.
+	self stopButtonState: #off.
 	associatedMorph stepAll.
 	associatedMorph world displayWorld.
-	self stepButtonState: false.
-	self stopButtonState: true
+	self stepButtonState: #off.
+	self stopButtonState: #on
