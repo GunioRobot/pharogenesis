@@ -1,4 +1,4 @@
 atClass: class includes: changeType
 
-	^(classChanges at: class name ifAbsent: [^false])
-		includes: changeType
+	^(changeRecords at: class name ifAbsent: [^false])
+		includesChangeType: changeType
