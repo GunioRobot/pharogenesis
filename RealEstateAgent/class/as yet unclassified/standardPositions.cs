@@ -3,17 +3,17 @@ standardPositions
 
 	| anArea aList  midX midY |
 
-	anArea _ Display usableArea.
+	anArea _ self maximumUsableArea.
 
-	midX _ ScrollBarSetback +   ((anArea width - ScrollBarSetback)  // 2).
-	midY _ ScreenTopSetback + ((anArea height - ScreenTopSetback) // 2).
-	aList _ OrderedCollection with: (ScrollBarSetback @ ScreenTopSetback).
+	midX _ self scrollBarSetback +   ((anArea width - self scrollBarSetback)  // 2).
+	midY _ self screenTopSetback + ((anArea height - self screenTopSetback) // 2).
+	aList _ OrderedCollection with: (self scrollBarSetback @ self screenTopSetback).
 	self windowColumnsDesired > 1
 		ifTrue:
-			[aList add: (midX @ ScreenTopSetback)].
+			[aList add: (midX @ self screenTopSetback)].
 	self windowRowsDesired > 1
 		ifTrue:
-			[aList add: (ScrollBarSetback @ (midY+ScreenTopSetback)).
+			[aList add: (self scrollBarSetback @ (midY+self screenTopSetback)).
 			self windowColumnsDesired > 1 ifTrue:
-				[aList add: (midX @ (midY+ScreenTopSetback))]].
+				[aList add: (midX @ (midY+self screenTopSetback))]].
 	^ aList
