@@ -1,5 +1,5 @@
 cancel
 
-	model contents: ''.
+	model setResponseForCancel.
 	super cancel.
 	model done: true.
