@@ -1,4 +1,6 @@
 methodDiffFor: aString class: aPseudoClass selector: selector meta: meta 
+	"Answer the diff between the current copy of the given class/selector/meta for the string provided"
+
 	| theClass source |
 	theClass _ Smalltalk
 				at: aPseudoClass name
@@ -9,4 +11,4 @@ methodDiffFor: aString class: aPseudoClass selector: selector meta: meta
 		ifFalse: [^ aString copy].
 	source _ theClass sourceCodeAt: selector.
 	^ Cursor wait
-		showWhile: [TextDiffBuilder buildDisplayPatchFrom: source to: aString inClass: theClass]
+		showWhile: [TextDiffBuilder buildDisplayPatchFrom: source to: aString inClass: theClass prettyDiffs: self showingPrettyDiffs]
