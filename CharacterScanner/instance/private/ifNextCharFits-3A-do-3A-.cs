@@ -1,0 +1,1 @@
+ifNextCharFits: segLen do: fonCharWidthBlock
