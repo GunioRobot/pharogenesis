@@ -14,7 +14,7 @@ In case of either success or failure, the headers must be restored.  In the even
 
 	| outPointerArray segmentWordArray savedYoungStart lastOut lastIn firstIn lastSeg endSeg segOop fieldPtr fieldOop mapOop doingClass lastPtr extraSize hdrTypeBits arrayOfRoots hdrBaseIn hdrBaseOut header firstOut versionOffset |
 
-	outPointerArray _ self stackValue: 0.
+	outPointerArray _ self stackTop.
 	segmentWordArray _ self stackValue: 1.
 	arrayOfRoots _ self stackValue: 2.
 
