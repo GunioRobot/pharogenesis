@@ -18,6 +18,13 @@ rebuild
 			help: 'Print as a bitmap'.
 		(StringMorph contents: ' Bitmap') lock.
 	}.
+	self addARow: {
+		self
+			simpleToggleButtonFor: self
+			attribute: #scaleToFitPage
+			help: 'Scale printing to fill page'.
+		(StringMorph contents: ' Scale to fit') lock.
+	}.
 
 
 	self addARow: {
