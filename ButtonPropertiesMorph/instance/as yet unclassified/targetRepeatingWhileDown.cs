@@ -1,0 +1,3 @@
+targetRepeatingWhileDown
+
+	^self targetProperties delayBetweenFirings notNil
