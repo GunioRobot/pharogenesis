@@ -7,27 +7,28 @@ OLDtallyIntoMap: sourceWord with: destinationWord
 	pre-merge masking.  For accurate results, you must subtract the
 	values obtained from the left and right fringes."
 	| mapIndex pixMask shiftWord |
-	colorMap = nil
-		ifTrue: [^ destinationWord "no op"].
-	destPixSize < 16 ifTrue:
+	(cmFlags bitAnd: (ColorMapPresent bitOr: ColorMapIndexedPart)) =
+		(ColorMapPresent bitOr: ColorMapIndexedPart)
+			ifFalse: [^ destinationWord "no op"].
+	destDepth < 16 ifTrue:
 		["loop through all packed pixels."
-		pixMask _ maskTable at: destPixSize.
+		pixMask _ (maskTable at: destDepth) bitAnd: cmMask.
 		shiftWord _ destinationWord.
-		1 to: pixPerWord do:
+		1 to: destPPW do:
 			[:i |
 			mapIndex _ shiftWord bitAnd: pixMask.
-			self colormapAt: mapIndex put: (self colormapAt: mapIndex) + 1.
-			shiftWord _ shiftWord >> destPixSize].
+			self tallyMapAt: mapIndex put: (self tallyMapAt: mapIndex) + 1.
+			shiftWord _ shiftWord >> destDepth].
 		^ destinationWord].
-	destPixSize = 16 ifTrue:
+	destDepth = 16 ifTrue:
 		["Two pixels  Tally the right half..."
 		mapIndex _ self rgbMap: (destinationWord bitAnd: 16rFFFF) from: 5 to: cmBitsPerColor.
-		self colormapAt: mapIndex put: (self colormapAt: mapIndex) + 1.
+		self tallyMapAt: mapIndex put: (self tallyMapAt: mapIndex) + 1.
 		"... and then left half"
 		mapIndex _ self rgbMap: destinationWord>>16 from: 5 to: cmBitsPerColor.
-		self colormapAt: mapIndex put: (self colormapAt: mapIndex) + 1]
+		self tallyMapAt: mapIndex put: (self tallyMapAt: mapIndex) + 1]
 	ifFalse:
 		["Just one pixel."
 		mapIndex _ self rgbMap: destinationWord from: 8 to: cmBitsPerColor.
-		self colormapAt: mapIndex put: (self colormapAt: mapIndex) + 1].
+		self tallyMapAt: mapIndex put: (self tallyMapAt: mapIndex) + 1].
 	^ destinationWord  "For no effect on dest"
