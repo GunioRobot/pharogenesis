@@ -1,0 +1,2 @@
+activePlayer
+	^activePlayer
