@@ -1,4 +1,4 @@
 nextProject
 
 	Project advanceToNextProject.
-	1 beep.
+	Beeper beep.
