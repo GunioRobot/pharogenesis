@@ -1,0 +1,2 @@
+clip	
+	^target clip.
