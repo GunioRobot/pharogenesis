@@ -3,7 +3,8 @@ onSubProtocolOf: aClass
 		but excluding those inherited from Object."
 	| selectors |
 	selectors := Set new.
-	(aClass withAllSuperclasses copyWithout: Object) do:
-		[:each | selectors addAll: each selectors].
+	aClass withAllSuperclasses do:
+		[:each | (each == Object or: [each == ProtoObject]) 
+			ifFalse: [selectors addAll: each selectors]].
 	self initListFrom: selectors asSortedCollection
 		highlighting: aClass
