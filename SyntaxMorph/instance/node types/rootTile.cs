@@ -1,3 +1,3 @@
 rootTile
-	^ self orOwnerSuchThat:
-		[:m | m owner == nil or: [m owner isSyntaxMorph not]]
+	^self 
+		orOwnerSuchThat: [:m | m owner isNil or: [m owner isSyntaxMorph not]]
