@@ -1,2 +1,5 @@
 valueWithArguments: anArray
-	^ receiver perform: selector withArguments: arguments , anArray
+
+	^ receiver 
+		perform: selector 
+		withArguments: (self collectArguments: anArray)
