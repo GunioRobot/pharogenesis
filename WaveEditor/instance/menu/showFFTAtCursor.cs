@@ -6,7 +6,7 @@ showFFTAtCursor
 	availableSamples _ (data size - start) + 1.
 	nu _ 12.
 	nu > (availableSamples highBit - 1) ifTrue:
-		[^ self inform: 'Too few samples after the cursor to take an FFT.'].
+		[^ self inform: 'Too few samples after the cursor to take an FFT.' translated].
 	n _ 2 raisedTo: nu.
 	fft _ FFT new nu: nu.
 	fft realData: ((start to: start + n - 1) collect: [:i | data at: i]).
