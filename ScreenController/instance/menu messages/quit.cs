@@ -1,6 +1,6 @@
 quit
-	Smalltalk
+	SmalltalkImage current
 		snapshot:
-			(self confirm: 'Save changes before quitting?'
+			(self confirm: 'Save changes before quitting?' translated
 				orCancel: [^ self])
 		andQuit: true
