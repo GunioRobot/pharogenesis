@@ -10,6 +10,7 @@ setSelector: sel args: argList locals: localList block: aBlockNode primitive: aN
 	parseTree _ aBlockNode asTranslatorNode.
 	labels _ OrderedCollection new.
 	complete _ false.  "set to true when all possible inlining has been done"
-
+	export _ self extractExportDirective.
+	static _ self extractStaticDirective.
 	self removeFinalSelfReturn.
 	self recordDeclarations.
