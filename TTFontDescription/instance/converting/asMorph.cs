@@ -1,0 +1,2 @@
+asMorph
+	^TTSampleFontMorph font: self
