@@ -1,18 +1,9 @@
 selectionIndex: index
 	"Called internally to select the index-th item."
-	| theMorph range |
-	(index isNil or: [index > scroller submorphs size]) ifTrue: [^ self].
-	(theMorph _ index = 0 ifTrue: [nil] ifFalse: [scroller submorphs at: 
-index])
-		ifNotNil:
-		[((theMorph bounds top - scroller offset y) >= 0
-			and: [(theMorph bounds bottom - scroller offset y) <= bounds height]) 
-ifFalse:
-			["Scroll into view -- should be elsewhere"
-			range _ self leftoverScrollRange.
-			scrollBar value: (range > 0
-				ifTrue: [((index-1 * theMorph height) / self leftoverScrollRange)
-									truncateTo: scrollBar scrollDelta]
-				ifFalse: [0]).
-			scroller offset: -3 @ (range * scrollBar value)]].
-	self selectedMorph: theMorph
+	| row |
+	self unhighlightSelection.
+	row := index ifNil: [ 0 ].
+	row := row min: self getListSize.  "make sure we don't select past the end"
+	self listMorph selectedRow: row.
+	self highlightSelection.
+	self scrollSelectionIntoView.
