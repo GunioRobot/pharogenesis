@@ -6,6 +6,5 @@ isControlActive
 	is needed."
 
 	^ self viewHasCursor
-		& sensor blueButtonPressed not
-		& sensor yellowButtonPressed not
-		"& sensor cmdKeyPressed not"
+		and: [sensor blueButtonPressed not
+		and: [sensor yellowButtonPressed not]]
