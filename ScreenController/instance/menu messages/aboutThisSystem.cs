@@ -1,4 +1,3 @@
 aboutThisSystem 
-	"Identify software version.  1/17/96 sw"
-
+	"Identify software version"
 	^ self inform: Smalltalk version
