@@ -1,2 +1,4 @@
 primMousePt
-	^mousePosition
+	self fetchMoreEvents.
+	self flushNonKbdEvents.
+	^ mousePosition
