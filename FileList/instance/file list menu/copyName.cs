@@ -1,4 +1,4 @@
 copyName
 
 	listIndex = 0 ifTrue: [^ self].
-	ParagraphEditor new clipboardTextPut: self fullName asText.
+	ParagraphEditor clipboardTextPut: self fullName asText.
