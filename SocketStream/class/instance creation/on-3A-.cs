@@ -1,3 +1,4 @@
 on: socket
-	"create a socket stream on a server socket"
+	"Create a socket stream on a connected server socket."
+
 	^self basicNew initialize socket: socket
