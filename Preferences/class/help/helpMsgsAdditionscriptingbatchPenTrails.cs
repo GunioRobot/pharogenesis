@@ -1,0 +1,2 @@
+helpMsgsAdditionscriptingbatchPenTrails
+	^ #((batchPenTrails 'Ignores the detailed movement of pens between display updates.  Thus multiple line segments drawn within a script may not be seen individually.' ) )
