@@ -68,7 +68,7 @@ initTextConstants
 		[:i | TextConstants at: (varAndValue at: i - 1) put: (varAndValue at: i)].
 
 	TextConstants at: #DefaultRule	put: Form over.
-	TextConstants at: #DefaultMask	put: Form black.
+	TextConstants at: #DefaultMask	put: Color black.
 
 	width _ Display width max: 720.
 	tempArray _ Array new: width // DefaultTab.
