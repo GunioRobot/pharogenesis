@@ -1,0 +1,2 @@
+hasAttachments
+	^ attachmentSeparator notNil
