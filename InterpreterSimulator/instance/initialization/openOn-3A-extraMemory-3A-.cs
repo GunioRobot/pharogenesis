@@ -3,6 +3,7 @@ openOn: fileName extraMemory: extraBytes
 
 	| f version headerSize count oldBaseAddr bytesToShift swapBytes |
 	"open image file and read the header"
+[
 	f _ FileStream readOnlyFileNamed: fileName.
 	imageName _ f fullName.
 	f binary.
@@ -17,8 +18,12 @@ openOn: fileName extraMemory: extraBytes
 	oldBaseAddr _ self nextLongFrom: f swap: swapBytes.  "object memory base address of image"
 	specialObjectsOop _ self nextLongFrom: f swap: swapBytes.
 	lastHash _ self nextLongFrom: f swap: swapBytes.  "Should be loaded from, and saved to the image header"
-	savedWindowSize _ self nextLongFrom: f swap: swapBytes.
+	"savedWindowSize _ self nextLongFrom: f swap: swapBytes."
 	lastHash = 0 ifTrue: [lastHash _ 999].
+
+	savedWindowSize	_ self nextLongFrom: f swap: swapBytes.
+	fullScreenFlag		_ self nextLongFrom: f swap: swapBytes.
+	extraVMMemory		_ self nextLongFrom: f swap: swapBytes.
 
 	"allocate interpreter memory"
 	memoryLimit _ endOfMemory + extraBytes.
@@ -28,7 +33,7 @@ openOn: fileName extraMemory: extraBytes
 	memory _ Bitmap new: memoryLimit // 4.
 	count _ f readInto: memory startingAt: 1 count: endOfMemory // 4.
 	count ~= (endOfMemory // 4) ifTrue: [self halt].
-	f close.
+	] ensure: [f close].
 	swapBytes ifTrue: [Utilities informUser: 'Swapping bytes of foreign image...'
 								during: [self reverseBytesInImage]].
 
