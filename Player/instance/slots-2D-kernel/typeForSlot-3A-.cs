@@ -1,6 +1,4 @@
 typeForSlot: aSlotName
-	| infoDict |
-	infoDict _ self slotInfo.
-	(infoDict includesKey: aSlotName) ifTrue: [^ infoDict at: aSlotName].
+	(self slotInfo includesKey: aSlotName) ifTrue: [^ (self slotInfoAt: aSlotName) type].
 
 	^ ScriptingSystem typeForSystemSlotNamed: aSlotName
