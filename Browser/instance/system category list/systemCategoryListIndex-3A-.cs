@@ -15,4 +15,4 @@ systemCategoryListIndex: anInteger
 	self changed: #classList.
 	self changed: #messageCategoryList.
 	self changed: #messageList.
-	self changed: #contents.
+	self contentsChanged.
