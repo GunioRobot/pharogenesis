@@ -1,0 +1,5 @@
+setFaceColors: aCollection
+
+   faceColors := aCollection.
+
+  
