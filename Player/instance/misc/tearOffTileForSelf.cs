@@ -1,2 +1,2 @@
 tearOffTileForSelf
-	costume world primaryHand attachMorph: self tileReferringToSelf
+	self currentHand attachMorph: self tileReferringToSelf
