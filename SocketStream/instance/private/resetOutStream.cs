@@ -1,0 +1,2 @@
+resetOutStream
+	outStream _ nil
