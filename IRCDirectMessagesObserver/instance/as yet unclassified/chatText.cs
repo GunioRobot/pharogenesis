@@ -1,0 +1,2 @@
+chatText
+	^chatText
