@@ -1,0 +1,3 @@
+hasNonStandardPalette
+	"Quite possible."
+	^true
