@@ -1,3 +1,4 @@
-newMorphic   "ProjectView open: Project newMorphic"
+newMorphic
+	"ProjectView open: Project newMorphic"
 
-	^ super new initFromParent: CurrentProject
+	^ self basicNew initMorphic
