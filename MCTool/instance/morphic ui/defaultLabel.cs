@@ -1,0 +1,2 @@
+defaultLabel
+	^ self class name
