@@ -10,4 +10,7 @@ initializeContextIndices
 	CallerIndex _ 0.
 	BlockArgumentCountIndex _ 3.
 	InitialIPIndex _ 4.
-	HomeIndex _ 5
+	HomeIndex _ 5.
+
+	"Class BlockClosure"
+	BlockMethodIndex _ 0.
