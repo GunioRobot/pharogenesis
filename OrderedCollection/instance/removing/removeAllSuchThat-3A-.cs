@@ -1,11 +1,12 @@
 removeAllSuchThat: aBlock 
-	"Evaluate aBlock for each element and remove all that elements from
-	the receiver for that aBlock evaluates to true."
+	"Remove each element of the receiver for which aBlock evaluates to true.
+	The method in Collection is O(N^2), this is O(N)."
 
-	| index |
-	index _ firstIndex.
-	[index <= lastIndex]
-		whileTrue: 
-			[(aBlock value: (array at: index))
-				ifTrue: [self removeIndex: index]
-				ifFalse: [index _ index + 1]]
+	| n |
+	n _ firstIndex.
+	firstIndex to: lastIndex do: [:index |
+	    (aBlock value: (array at: index)) ifFalse: [
+			array at: n put: (array at: index).
+			n _ n + 1]].
+	n to: lastIndex do: [:index | array at: index put: nil].
+	lastIndex _ n - 1
