@@ -2,6 +2,8 @@ markAndTraceInterpreterOops
 	"Mark and trace all oops in the interpreter's state."
 	"Assume: All traced variables contain valid oops."
 	| oop |
+	self compilerMarkHook.
+
 	self markAndTrace: specialObjectsOop.
 		"also covers nilObj, trueObj, falseObj, and compact classes"
 
