@@ -1,7 +1,5 @@
 removeSelector: selector 
 	"Assuming that the argument, selector (a Symbol), is a message selector 
-	in the receiver's method dictionary, remove it. If the selector is not in 
-	the method dictionary, create an error notification."
+	in my method dictionary, remove it and its method."
 
-	methodDict removeKey: selector.
-	selector flushCache
+	^ self removeSelectorSimply: selector
