@@ -4,10 +4,10 @@ open: aSyntaxError
 	topView _ StandardSystemView new.
 	topView model: aSyntaxError.
 	topView label: 'Syntax Error'.
-	topView minimumSize: 180 @ 120.
+	topView minimumSize: 380 @ 220.
 	aListView _ SyntaxErrorListView new.
 	aListView model: aSyntaxError.
-	aListView window: (0 @ 0 extent: 180 @ 20).
+	aListView window: (0 @ 0 extent: 380 @ 20).
 	aListView
 		borderWidthLeft: 2
 		right: 2
@@ -16,7 +16,7 @@ open: aSyntaxError
 	topView addSubView: aListView.
 	aCodeView _ BrowserCodeView new.
 	aCodeView model: aSyntaxError.
-	aCodeView window: (0 @ 0 extent: 180 @ 100).
+	aCodeView window: (0 @ 0 extent: 380 @ 200).
 	aCodeView
 		borderWidthLeft: 2
 		right: 2
@@ -27,4 +27,5 @@ open: aSyntaxError
 		align: aCodeView viewport topLeft
 		with: aListView viewport bottomLeft.
 	topView controller openNoTerminateDisplayAt: Display extent // 2.
+	Cursor normal show.
 	Processor activeProcess suspend
