@@ -1,9 +1,9 @@
 add: newObject
-	"Add an element. User error instead of halt. go 10/1/97 09:33"
+	"Include newObject as one of the receiver's elements, but only if
+	not already present. Answer newObject."
 
 	| index |
-	newObject == nil ifTrue: [self error: 'Sets cannot meaningfully contain nil as an element'].
+	newObject ifNil: [self error: 'Sets cannot meaningfully contain nil as an element'].
 	index _ self findElementOrNil: newObject.
-	(array at: index) == nil ifTrue:
-		[self atNewIndex: index put: newObject].
+	(array at: index) ifNil: [self atNewIndex: index put: newObject].
 	^ newObject
