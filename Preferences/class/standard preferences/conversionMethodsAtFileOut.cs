@@ -1,0 +1,2 @@
+conversionMethodsAtFileOut
+	^ self valueOfFlag: #conversionMethodsAtFileOut
