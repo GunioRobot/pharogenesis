@@ -1,12 +1,11 @@
 copyExtension
 	"Copy my extensions dictionary"
-	| ext |
-	extension ifNil:[^self].
-	ext _ extension copy.
-	ext removeOtherProperties.
-	extension otherProperties ifNotNil:[
-		extension otherProperties associationsDo:[:assoc|
-			ext setProperty: assoc key toValue: assoc value copy.
-		].
-	].
-	extension _ ext.
+	| copiedExtension |
+	self hasExtension
+		ifFalse: [^ self].
+	copiedExtension _ self extension copy.
+	copiedExtension removeOtherProperties.
+	self extension otherProperties
+		ifNotNil: [self extension otherProperties
+				associationsDo: [:assoc | copiedExtension setProperty: assoc key toValue: assoc value copy]].
+	self privateExtension: copiedExtension
