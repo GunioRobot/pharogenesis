@@ -1,9 +1,13 @@
 addCloseBox
+	"If I have a labelArea, add a close box to it"
 	| frame |
-	closeBox _ SimpleButtonMorph new borderWidth: 0;
-			label: 'X' font: Preferences standardButtonFont; color: Color transparent;
-			actionSelector: #closeBoxHit; target: self; extent: 14@14.
-	frame _ LayoutFrame new.
-	frame leftFraction: 0; leftOffset: 4; topFraction: 0; topOffset: 1.
+	labelArea
+		ifNil: [^ self].
+	closeBox := self createCloseBox.
+	frame := LayoutFrame new.
+	frame leftFraction: 0;
+		 leftOffset: 2;
+		 topFraction: 0;
+		 topOffset: 0.
 	closeBox layoutFrame: frame.
-	labelArea addMorph: closeBox.
+	labelArea addMorph: closeBox
