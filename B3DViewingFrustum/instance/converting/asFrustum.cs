@@ -1,0 +1,2 @@
+asFrustum
+	^self
