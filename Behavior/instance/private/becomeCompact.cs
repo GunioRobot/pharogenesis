@@ -1,5 +1,8 @@
 becomeCompact
+	"Here are the restrictions on compact classes in order for export segments to work:  A compact class index may not be reused.  If a class was compact in a release of Squeak, no other class may use that index.  The class might not be compact later, and there should be nil in its place in the array."
 	| cct index |
+
+	self isWeak ifTrue:[^ self halt: 'You must not make a weak class compact'].
 	cct _ Smalltalk compactClassesArray.
 	(self indexIfCompact > 0 or: [cct includes: self])
 		ifTrue: [^ self halt: self name , 'is already compact'].
