@@ -24,12 +24,23 @@ longPrint: oop
 			prevVal _ val].
 		lastLong _ 256 min: (self sizeBitsOf: oop) - 4.
 		hdrType = 2
-			ifTrue: ["free" strm cr; nextPutAll: (oop+(self longAt: oop)-2) hex;
-				space; space; nextPutAll: (oop+(self longAt: oop)-2) printString]
-			ifFalse: [lastPtr+4 to: lastLong by: 4 do:
+			ifTrue:
+			["free" strm cr; nextPutAll: (oop+(self longAt: oop)-2) hex;
+			space; space; nextPutAll: (oop+(self longAt: oop)-2) printString]
+			ifFalse:
+			[(self formatOf: oop) = 3
+			ifTrue:
+				[strm cr; tab; nextPutAll: '/ next 3 fields are above SP... /'.
+				lastPtr+4 to: lastPtr+12 by: 4 do:
+					[:a | val _ self longAt: oop+a.
+					strm cr; nextPutAll: a hex; 
+						space; space; space; nextPutAll: val hex8; space; space.
+					(self validOop: val) ifTrue: [strm nextPutAll: (self shortPrint: val)]]]
+			ifFalse:
+			[lastPtr+4 to: lastLong by: 4 do:
 				[:a | val _ self longAt: oop+a.
 				strm cr; nextPutAll: (a<16 ifTrue: [' ', a hex] ifFalse: [a hex]); 
 					space; space; space.
 				strm nextPutAll: val hex8; space; space;
-						nextPutAll: (self charsOfLong: val)]].
+						nextPutAll: (self charsOfLong: val)]]].
 	]
