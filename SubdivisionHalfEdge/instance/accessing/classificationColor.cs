@@ -1,0 +1,2 @@
+classificationColor
+	^quadEdge classificationColor
