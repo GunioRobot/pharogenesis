@@ -10,7 +10,11 @@ panAndVolControlsFor: channelIndex
 		minVal: 0.0;
 		maxVal: 1.0;
 		adjustToValue: (midiSynth volumeForChannel: channelIndex).
-	panSlider _ volSlider fullCopy
+	panSlider _ SimpleSliderMorph new
+		color: color;
+		extent: 101@2;
+		target: midiSynth;
+		arguments: (Array with: channelIndex);
 		actionSelector: #panForChannel:put:;
 		minVal: 0.0;
 		maxVal: 1.0;		
