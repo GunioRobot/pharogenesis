@@ -1,0 +1,2 @@
+isSearchable
+	^true
