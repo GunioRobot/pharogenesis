@@ -2,7 +2,6 @@ processActionWaitForFrame: data
 	| length frame skip |
 	length _ data nextWord.
 	length = 3 ifFalse:["Something is wrong"
-		self halt.
 		data skip: -2.
 		^self processUnknownAction: data].
 	frame _ data nextWord.
