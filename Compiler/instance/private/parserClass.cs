@@ -1,0 +1,3 @@
+parserClass
+
+	^ parserClass
