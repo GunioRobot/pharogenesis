@@ -13,7 +13,7 @@ showFormsDictAcrossTopOfScreen: formDict
 		[:assoc | (elem _ assoc value) displayAt: (position @ ceiling).
 			box _ elem boundingBox.
 			h _ box height.
-			keyString _ (assoc key isKindOf: String) ifTrue: [assoc key] ifFalse: [assoc key printString].
+			keyString _ (assoc key isString) ifTrue: [assoc key] ifFalse: [assoc key printString].
 			keyString displayAt: (position @ (ceiling + h)).
 			labelWidth _ TextStyle default defaultFont widthOfString: keyString.
 			maxHeight _ maxHeight max: h.
