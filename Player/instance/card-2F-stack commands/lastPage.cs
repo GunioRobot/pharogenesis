@@ -1,0 +1,2 @@
+lastPage
+	self sendMessageToCostume: #lastPage
