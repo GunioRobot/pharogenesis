@@ -9,9 +9,6 @@ reclaimDependents		"Smalltalk reclaimDependents"
 	Smalltalk garbageCollect.  "If that was the only reference, they will go away"
 	"Now if any views of non-models remain,
 		they should be reinstated as dependent views..."
-	View allInstancesDo:
-		[:v | (v model==nil or: [v model isKindOf: Model])
-				ifFalse: [v model addDependent: v]].
 	View allSubInstancesDo:
 		[:v | (v model==nil or: [v model isKindOf: Model])
 				ifFalse: [v model addDependent: v]]
