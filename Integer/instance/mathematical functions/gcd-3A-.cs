@@ -1,10 +1,12 @@
 gcd: anInteger 
 	"Answer the greatest common divisor of the receiver and n. Uses Roland 
-	Silver's algorithm (see Knuth, Vol. 2)."
+	Silver's algorithm (see Knuth, Vol. 2). Fixed by Andres Valloud to allow
+	zero arguments, 01/02/98"
 
 	| m n d t |
 	m _ self abs max: anInteger abs.
-	n _ self abs min: anInteger abs.
+	(n _ self abs min: anInteger abs) = 0 ifTrue: [^m].
+	"Fix: if the smaller argument is zero, answer the other"
 	m \\ n = 0 ifTrue: [^n].
 	"easy test, speeds up rest"
 	d _ 0.
