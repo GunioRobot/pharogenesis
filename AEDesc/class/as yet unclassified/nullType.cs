@@ -1,0 +1,3 @@
+nullType
+
+	^self new createNull
