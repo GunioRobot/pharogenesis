@@ -4,7 +4,7 @@ CanvasEncoder explainTestVars
 "
 	| answer total oneBillion data putter nReps |
 
-	SimpleCounters ifNil: [^1 beep].
+	SimpleCounters ifNil: [^ Beeper beep].
 	total _ 0.
 	oneBillion _ 1000 * 1000 * 1000.
 	answer _ String streamContents: [ :strm |
