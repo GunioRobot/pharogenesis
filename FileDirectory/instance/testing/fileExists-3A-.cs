@@ -1,13 +1,14 @@
 fileExists: filenameOrPath
 	"Answer true if a file of the given name exists. The given name may be either a full path name or a local file within this directory."
+	"FileDirectory default fileExists: Smalltalk sourcesName"
 
-	| fullName |
+	| fName dir |
 	FileDirectory splitName: filenameOrPath to:
-		[:filePath :ignore |
+		[:filePath :name |
+			fName _ name.
 			filePath isEmpty
-				ifTrue: [  "file in this directory"
-					fullName _ pathName, self pathNameDelimiter asString, filenameOrPath]
-				ifFalse: [  "file has its own path"
-					fullName _ filenameOrPath]].
-
-	^ StandardFileStream isAFileNamed: fullName
+				ifTrue: [dir _ self]
+				ifFalse: [dir _ FileDirectory on: filePath]].
+	self isCaseSensitive 
+		ifTrue:[^dir fileNames includes: fName]
+		ifFalse:[^dir fileNames anySatisfy: [:name| name sameAs: fName]].	
