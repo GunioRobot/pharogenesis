@@ -1,0 +1,3 @@
+minHeightWhenEmpty
+
+	^ 2
