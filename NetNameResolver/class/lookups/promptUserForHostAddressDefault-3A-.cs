@@ -3,7 +3,6 @@ promptUserForHostAddressDefault: defaultName
 	"NetNameResolver promptUserForHostAddressDefault: ''"
 
 	| default hostName serverAddr |
-	Socket initializeNetwork.
 	defaultName isEmpty
 		ifTrue: [default _ DefaultHostName]
 		ifFalse: [default _ defaultName].
@@ -12,6 +11,5 @@ promptUserForHostAddressDefault: defaultName
 		initialAnswer: default.
 	hostName isEmpty ifTrue: [^ 0].
 	serverAddr _ NetNameResolver addressForName: hostName timeout: 15.
-	serverAddr = nil ifTrue: [self error: 'Could not find the address for ', hostName].
 	hostName size > 0 ifTrue: [DefaultHostName _ hostName].
 	^ serverAddr
