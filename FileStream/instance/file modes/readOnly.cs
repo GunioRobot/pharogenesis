@@ -1,5 +1,4 @@
 readOnly
-	"Set the receiver's mode so that pages are not flushed and reading stops at 
-	end of file."
+	"Set this file's mode to read-only."
 
-	self setMode: Read
+	self subclassResponsibility
