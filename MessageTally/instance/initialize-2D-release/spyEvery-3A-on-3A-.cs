@@ -1,7 +1,7 @@
 spyEvery: millisecs on: aBlock 
 	"Create a spy and spy on the given block at the specified rate."
 
-	| myDelay value startTime time0 |
+	| myDelay startTime time0 |
 	(aBlock isMemberOf: BlockContext)
 		ifFalse: [self error: 'spy needs a block here'].
 	self class: aBlock receiver class method: aBlock method.
@@ -9,6 +9,7 @@ spyEvery: millisecs on: aBlock
 	ObservedProcess _ Processor activeProcess.
 	myDelay := Delay forMilliseconds: millisecs.
 	time0 := Time millisecondClockValue.
+	gcStats _ SmalltalkImage current getVMParameters.
 	Timer :=
 		[[true] whileTrue: 
 			[startTime := Time millisecondClockValue.
@@ -20,8 +21,10 @@ spyEvery: millisecs on: aBlock
 	Timer priority: Processor userInterruptPriority.
 		"activate the probe and evaluate the block"
 	Timer resume.
-	value := aBlock value.
+	^ aBlock ensure:
+		["Collect gc statistics"
+		SmalltalkImage current getVMParameters keysAndValuesDo:
+			[:idx :gcVal| gcStats at: idx put: (gcVal - (gcStats at: idx))].
 		"cancel the probe and return the value"
-	Timer terminate.
-	time := Time millisecondClockValue - time0.
-	^value
+		Timer terminate.
+		time := Time millisecondClockValue - time0]
