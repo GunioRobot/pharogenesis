@@ -1,0 +1,1 @@
+B3DPickerPlugin class instanceVariableNames: ''
