@@ -7,14 +7,18 @@ printCaseOn: aStream indent: level
 	((arguments size = 1) or: [otherwise isJustCaseError])
 		ifTrue: [otherwise _ nil].
 	receiver printOn: aStream indent: level precedence: 3.
-	aStream nextPutAll: ' caseOf: {'; crtab: level+1.
+	aStream nextPutAll: ' caseOf: '.
+	braceNode isVariableReference
+		ifTrue: [braceNode printOn: aStream indent: level]
+		ifFalse:
+	[aStream nextPutAll: '{'; crtab: level+1.
 	braceNode casesForwardDo:
 		[:keyNode :valueNode :last |
 		keyNode printOn: aStream indent: level+1.
 	 	aStream nextPutAll: ' -> '.
 		extra _ valueNode isComplex ifTrue: [aStream crtab: level+2. 1] ifFalse: [0].
 	 	valueNode printOn: aStream indent: level+1+extra.
-	 	last ifTrue: [aStream nextPut: $}] ifFalse: [aStream nextPut: $.; crtab: level+1]].
+	 	last ifTrue: [aStream nextPut: $}] ifFalse: [aStream nextPut: $.; crtab: level+1]]].
 	otherwise isNil
 		ifFalse:
 			[aStream crtab: level+1; nextPutAll: 'otherwise: '.
