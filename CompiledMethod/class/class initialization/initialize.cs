@@ -4,3 +4,5 @@ initialize    "CompiledMethod initialize"
 
 	SmallFrame _ 16.	"Context range for temps+stack"
 	LargeFrame _ 56.
+
+	self classPool at: #BlockNodeCache ifAbsentPut: [nil->nil].
