@@ -4,7 +4,7 @@ test: byteCount fileName: fileName
 	| buf1 buf2 bytesWritten bytesRead |
 	buf1 _ String new: byteCount withAll: $x.
 	buf2 _ String new: byteCount.
-	self open: fileName forWrite: true.
+	self open: ( FileDirectory default fullNameFor: fileName) forWrite: true.
 	self primWriteStart: fileHandle
 		fPosition: 0
 		fromBuffer: buf1
@@ -14,7 +14,7 @@ test: byteCount fileName: fileName
 	bytesWritten _ self primWriteResult: fileHandle.
 	self close.
 	
-	self open: fileName forWrite: false.
+	self open: ( FileDirectory default fullNameFor: fileName) forWrite: false.
 	self primReadStart: fileHandle fPosition: 0 count: byteCount.
 	semaphore wait.
 	bytesRead _
