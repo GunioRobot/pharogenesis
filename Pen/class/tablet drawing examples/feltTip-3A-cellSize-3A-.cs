@@ -10,7 +10,7 @@ feltTip: width cellSize: cellSize
 	pen color: Color black.
 	warp _ (WarpBlt current toForm: Display)
 		sourceForm: bitForm;
-		colorMap: (bitForm colormapIfNeededForDepth: Display depth);
+		colorMap: (bitForm colormapIfNeededFor: Display);
 		cellSize: cellSize;
 		combinationRule: Form over.
 	Display fillColor: Color white.
