@@ -1,0 +1,2 @@
+This release builder subclass is used for the official Squeak distribution Basic, which currently is the base image of Squeak.
+Full is then built on top of Basic using a loadscript from SqueakMap. Minimal is constructed using another script from SqueakMap that removes packages that are included in Basic.
