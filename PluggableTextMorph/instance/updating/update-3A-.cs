@@ -1,10 +1,11 @@
 update: aSymbol
+	aSymbol ifNil: [^ self].
 	aSymbol == #flash ifTrue: [^ self flash].
 	aSymbol == getTextSelector ifTrue:
 			[self setText: self getText.
 			^ self setSelection: self getSelection].
 	aSymbol == getSelectionSelector ifTrue: [^ self setSelection: self getSelection].
-	aSymbol == #autoSelect ifTrue:
+	(aSymbol == #autoSelect and: [getSelectionSelector ~~ nil]) ifTrue:
 			[self handleEdit:
 				[textMorph editor setSearch: model autoSelectString;
 							againOrSame: true]].
@@ -14,7 +15,13 @@ update: aSymbol
 			^ self].
 	aSymbol == #appendEntry ifTrue:
 			[self handleEdit: [self appendEntry].
-			^ self world displayWorld].
+			^ self refreshWorld].
 	aSymbol == #clearText ifTrue:
 			[self handleEdit: [self changeText: Text new].
-			^ self world displayWorld].
+			^ self refreshWorld].
+	aSymbol == #bs ifTrue:
+			[self handleEdit: [self bsText].
+			^ self refreshWorld].
+	aSymbol == #codeChangedElsewhere ifTrue:
+			[self hasEditingConflicts: true.
+			^ self changed]
