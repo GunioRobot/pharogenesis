@@ -62,6 +62,6 @@ segmentsAbove: threshold normalizedVolume: percentOfMaxVolume
 				normalize: 1000 dcOffset: dcOffset) size - 1.
 	segments add: (RestSound dur: gapSize asFloat / samplingRate).
 	restSize _ restSize + gapSize.
-	PopUpMenu notify: ((soundSize+restSize/samplingRate) roundTo: 0.1) printString , ' secs reduced to ' , ((soundSize/samplingRate) roundTo: 0.1) printString.
+	self inform: ((soundSize+restSize/samplingRate) roundTo: 0.1) printString , ' secs reduced to ' , ((soundSize/samplingRate) roundTo: 0.1) printString.
 	recordedBuffers _ nil.
 	^ segments
