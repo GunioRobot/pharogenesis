@@ -1,0 +1,2 @@
+buttonColor
+	^ Color paleYellow darker
