@@ -1,9 +1,10 @@
 initialize
-
+	"initialize the state of the receiver"
 	super initialize.
+	""
 	damageReported _ false.
-	self extent: 400@250.
-	self color: (Color r: 0.8 g: 1.0 b: 0.8).
+	self extent: 400 @ 250.
+
 	infectionHistory _ OrderedCollection new.
 	transmitInfection _ false.
- 	self addAtoms: 30.
+	self addAtoms: 30
