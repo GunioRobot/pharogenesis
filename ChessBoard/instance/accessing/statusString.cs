@@ -1,0 +1,2 @@
+statusString
+	^searchAgent statusString
