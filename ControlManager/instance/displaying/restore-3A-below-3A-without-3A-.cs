@@ -5,7 +5,7 @@ restore: aRectangle below: index without: aView
 	view == aView ifTrue: 
 		[index >= scheduledControllers size ifTrue: [^ self].
 		^ self restore: aRectangle below: index+1 without: aView].
-	view displayOn: ((BitBlt toForm: Display) clipRect: aRectangle).
+	view displayOn: ((BitBlt current toForm: Display) clipRect: aRectangle).
 	index >= scheduledControllers size ifTrue: [^ self].
 	(aRectangle areasOutside: view windowBox) do:
 		[:rect | self restore: rect below: index + 1 without: aView]
