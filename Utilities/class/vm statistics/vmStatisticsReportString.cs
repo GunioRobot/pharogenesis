@@ -17,7 +17,7 @@ vmStatisticsReportString
 	icHits				_ params at: 17.
 	upTime _ Time millisecondClockValue.
 	sendCount _ mcMisses + mcHits + icHits.
-	tms _ TranslatedMethod allInstances.
+	tms _ TranslatedMethod allSubInstances.
 	tmSize _ tms inject: 0 into: [:sum :tm | sum + (tm size * 4)].
 	^String streamContents: [:str |
 		str	nextPutAll: 'uptime			';
