@@ -9,5 +9,5 @@ httpGif: url
 		self inform: 'The server with that GIF is not responding'.
 		^ ColorForm extent: 20@20 depth: 8].
 	doc binary; reset.
-	(ggg _ Smalltalk gifReaderClass new) setStream: doc.
+	(ggg _ GIFReadWriter new) setStream: doc.
 	^ ggg nextImage.
