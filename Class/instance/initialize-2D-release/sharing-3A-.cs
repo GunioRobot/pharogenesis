@@ -1,6 +1,6 @@
 sharing: poolString 
 	"Set up sharedPools. Answer whether recompilation is advisable."
-	| oldPools poolName pool found |
+	| oldPools found |
 	oldPools _ self sharedPools.
 	sharedPools _ OrderedCollection new.
 	(Scanner new scanFieldNames: poolString) do: 
