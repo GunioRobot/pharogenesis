@@ -4,6 +4,6 @@ veryDeepFixupWith: deepCopier
 	originals!"
 
 	super veryDeepFixupWith: deepCopier.
-	"Caller beware: it makes no sense to share pointers to existing predecessor and successor"
-	predecessor _ deepCopier references at: predecessor ifAbsent: [].
-	successor _ deepCopier references at: successor ifAbsent: []
+	"It makes no sense to share pointers to an existing predecessor and successor"
+	predecessor _ deepCopier references at: predecessor ifAbsent: [nil].
+	successor _ deepCopier references at: successor ifAbsent: [nil]
