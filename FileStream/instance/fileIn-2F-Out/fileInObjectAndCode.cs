@@ -1,8 +1,5 @@
 fileInObjectAndCode
-	"Optimization: Read entire file into memory before processing."
+	"Read the file directly, do not use an RWBinaryOrTextStream."
 
-	| s |
 	self text.
-	s _ RWBinaryOrTextStream with: (self contentsOfEntireFile).
-	s position: 0.
-	^ s fileInObjectAndCode
+	^ super fileInObjectAndCode
