@@ -5,7 +5,7 @@ gcd: anInteger
 	higher _ SmallInteger maxVal highBit.
 	u _ self abs max: (v _ anInteger abs).
 	v _ self abs min: v.
-	[u class == SmallInteger]
+	[v class == SmallInteger]
 		whileFalse: 
 			[(uHat _ u bitShift: (k _ higher - u highBit)) class == SmallInteger
 				ifFalse: 
@@ -32,4 +32,4 @@ gcd: anInteger
 					[t _ u * a + (v * b).
 					v _ u * c + (v * d).
 					u _ t]].
-	^ u gcd: v
+	^ v gcd: u
