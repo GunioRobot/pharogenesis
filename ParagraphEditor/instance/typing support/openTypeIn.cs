@@ -7,4 +7,4 @@ openTypeIn
 	beginTypeInBlock == nil ifTrue:
 		[UndoSelection _ self nullText.
 		self undoer: #noUndoer with: 0.
-		beginTypeInBlock _ startBlock stringIndex]
+		beginTypeInBlock _ self startIndex]
