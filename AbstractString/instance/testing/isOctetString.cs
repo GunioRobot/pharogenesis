@@ -1,0 +1,3 @@
+isOctetString
+
+	self subclassResponsibility.
