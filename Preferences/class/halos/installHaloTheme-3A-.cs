@@ -1,4 +1,4 @@
 installHaloTheme: themeSymbol
 	self installHaloSpecsFromArray: (self perform: themeSymbol).
-	self setParameter: #HaloTheme to: themeSymbol
+	(self preferenceAt: #haloTheme) preferenceValue: themeSymbol.
 	
