@@ -1,21 +1,21 @@
 fullControlSpecs
 
-	^ #(
-		spacer
-		variableSpacer
-		('-'			deletePage		'Delete this page')
-		spacer
-		( 'Ç'		firstPage		'First page')
-		spacer
-		( '<' 		previousPage	'Previous page')
-		spacer
-		('¥'		invokeBookMenu 'Click here to get a menu of options for this book.')
-		spacer
-		('>'			nextPage		'Next page')
-		spacer
-		( 'È'		lastPage			'Final page')
-		spacer
-		('+'			insertPage		'Add a new page after this one')
-		variableSpacer
-		('×'			fewerPageControls	'Fewer controls')
-)
+	^ {
+		#spacer.
+		#variableSpacer.
+		{'-'.		#deletePage.				'Delete this page' translated}.
+		#spacer.
+		{'Â«'.		#firstPage.				'First page' translated}.
+		#spacer.
+		{'<'. 		#previousPage.			'Previous page' translated}.
+		#spacer.
+		{'Â·'.		#invokeBookMenu. 		'Click here to get a menu of options for this book.' translated}.
+		#spacer.
+		{'>'.		#nextPage.				'Next page' translated}.
+		#spacer.
+		{ 'Â»'.		#lastPage.				'Final page' translated}.
+		#spacer.
+		{'+'.		#insertPage.				'Add a new page after this one' translated}.
+		#variableSpacer.
+		{'Â³'.		#fewerPageControls.	'Fewer controls' translated}
+}
