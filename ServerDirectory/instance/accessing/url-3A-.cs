@@ -1,2 +1,2 @@
 url: aString
-	url _ aString
+	altURL _ aString
