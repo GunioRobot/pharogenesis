@@ -2,6 +2,7 @@ textRow: aString
 
 	^AlignmentMorph newRow 
 		wrapCentering: #center; cellPositioning: #leftCenter;
+		color: Color transparent;
 		layoutInset: 0;
 		addMorph: (
 			AlignmentMorph newColumn
