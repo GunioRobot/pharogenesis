@@ -1,14 +1,12 @@
 idctMCU
 
-	| comp |
-	self useFloatingPoint
-		ifTrue:
-			[mcuMembership withIndexDo:
-				[:ci :i |
-				comp _ currentComponents at: ci.
-				self idctBlockFloat: (mcuSampleBuffer at: i) component: comp]]
-		ifFalse:
-			[mcuMembership withIndexDo:
-				[:ci :i |
-				comp _ currentComponents at: ci.
-				self idctBlockInt: (mcuSampleBuffer at: i) component: comp]]
+	| comp fp ci |
+	fp _ self useFloatingPoint.
+	1 to: mcuMembership size do:[:i|
+		ci _ mcuMembership at: i.
+		comp _ currentComponents at: ci.
+		fp ifTrue:[
+			self idctBlockFloat: (mcuSampleBuffer at: i) component: comp.
+		] ifFalse:[
+			self primIdctInt: (mcuSampleBuffer at: i)
+				qt: (qTable at: comp qTableIndex)]].
