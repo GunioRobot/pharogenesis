@@ -3,7 +3,8 @@ doMenu: evt with: menuHandle
 
 	| menu |
 	self removeAllHandlesBut: nil.  "remove all handles"
-	self world doOneCycle.
+	self world displayWorld.
 	menu _ evt hand buildMorphHandleMenuFor: innerTarget.
-	menu addTitle: innerTarget externalName.
+	target addDropShadowItemsTo: menu hand: evt hand.
+	innerTarget addTitleForHaloMenu: menu.
 	evt hand invokeMenu: menu event: evt.
