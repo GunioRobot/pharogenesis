@@ -1,11 +1,11 @@
 doOccluded: actionBlock
 	| paneRect rectSet bottomStrip |
-	view topView isCollapsed ifTrue: [^ actionBlock value].
 	paneRect _ paragraph clippingRectangle.
-	rectSet _ self visibleAreas.
 	paragraph withClippingRectangle: (paneRect withHeight: 0)
 		do: [actionBlock value.
 			self scrollIn: paneRect].
+	view topView isCollapsed ifTrue: [^ self].
+	rectSet _ self visibleAreas.
 	bottomStrip _ paneRect withTop: paragraph compositionRectangle bottom + 1.
 	rectSet do:
 		[:rect |
