@@ -1,9 +1,12 @@
 initialize
+"initialize the state of the receiver"
 	super initialize.
-	vertices _ Array with: 20@20 with: 40@30 with: 20@40.
-	borderWidth _ 2.
-	borderColor _ Color magenta.
+""
+	vertices _ Array
+				with: 5 @ 0
+				with: 20 @ 10
+				with: 0 @ 20.
 	closed _ true.
 	smoothCurve _ false.
 	arrows _ #none.
-	self computeBounds.
+	self computeBounds
