@@ -1,0 +1,2 @@
+showAttachmentsFlag
+	^ Preferences celesteShowsAttachmentsFlag
