@@ -8,9 +8,10 @@ rectanglesAt: lineY height: lineHeight
 	rects ifNotNil: [^ rects].
 
 	outerWidth _ minWidth + (2*OuterMargin).
+	self shadowForm.  "Compute the shape".
 	lineRect _ 0@(lineY - shadowForm offset y)
 					extent: shadowForm width@lineHeight.
-	lineForm _ self shadowForm copy: lineRect.
+	lineForm _ shadowForm copy: lineRect.
 
 	"Check for a full line -- frequent case"
 	(lineForm tallyPixelValues at: 2) = lineRect area
