@@ -1,0 +1,3 @@
+methodSymbol
+
+	^methodSymbol
