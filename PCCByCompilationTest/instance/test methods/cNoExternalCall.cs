@@ -1,0 +1,2 @@
+cNoExternalCall
+	^ 'Hello World!'
