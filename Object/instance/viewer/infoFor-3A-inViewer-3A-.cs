@@ -2,7 +2,7 @@ infoFor: anElement inViewer: aViewer
 	"The user made a gesture asking for info/menu relating to me.  Some of the messages dispatched here are not yet available in this image"
 
 	| aMenu elementType |
-	elementType _ self elementTypeFor: anElement.
+	elementType _ self elementTypeFor: anElement vocabulary: aViewer currentVocabulary.
 	((elementType = #systemSlot) | (elementType == #userSlot))
 		ifTrue:	[^ self slotInfoButtonHitFor: anElement inViewer: aViewer].
 	self flag: #deferred.  "Use a traditional MenuMorph, and reinstate the pacify thing"
@@ -30,7 +30,9 @@ infoFor: anElement inViewer: aViewer
 			[:pair |
 				aMenu add: pair first target: self selector: pair second argument: anElement].
 
-	aMenu items size == 0 ifTrue:
+	aMenu addLine.
+	aMenu  add: 'show categories....' target: aViewer selector: #showCategoriesFor: argument: anElement.
+	aMenu items size == 0 ifTrue:  "won't happen at the moment a/c the above"
 		[aMenu add: 'ok' action: nil].  "in case it was a slot -- weird, transitional"
 
 	aMenu addTitle: anElement asString, ' (', elementType, ')'.
