@@ -4,7 +4,8 @@ drawOn: aCanvas
 	| array |
 	vertices size < 1
 		ifTrue: [self error: 'a polygon must have at least one point'].
-	closed
-		ifTrue: [aCanvas drawPolygon: self getVertices fillStyle: self fillStyle].
+	closed ifTrue:
+		[aCanvas drawPolygon: self getVertices fillStyle: self fillStyle.
+		aCanvas isShadowDrawing ifTrue: [^ self]].
 	array _ self drawArrowsOn: aCanvas.
-	self drawBorderOn: aCanvas usingEnds: array.
+	self drawClippedBorderOn: aCanvas usingEnds: array.
