@@ -3,5 +3,7 @@
 	object (have the same object pointer) and false otherwise. Optional. See
 	Object documentation whatIsAPrimitive."
 
-	<primitive: 110>
-	^self == aCharacter
+	"<primitive: 110>"
+	^ self == aCharacter
+		or: [aCharacter class == MultiCharacter
+				and: [aCharacter asciiValue = self asciiValue]].
