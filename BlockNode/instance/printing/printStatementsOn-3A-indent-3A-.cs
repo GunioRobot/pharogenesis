@@ -15,7 +15,7 @@ printStatementsOn: aStream indent: levelOrZero
 		thisStatement _ statements at: i.
 		thisStatement printOn: aStream indent: level.
 		i < shown ifTrue: [aStream nextPut: $.; crtab: level].
-		thisStatement comment size > 0
+		(thisStatement comment ~~ nil and: [thisStatement comment size > 0])
 			ifTrue: 
 				[i = shown ifTrue: [aStream crtab: level].
 				thisStatement printCommentOn: aStream indent: level.
