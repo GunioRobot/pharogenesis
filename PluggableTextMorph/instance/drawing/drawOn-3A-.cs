@@ -3,18 +3,22 @@ drawOn: aCanvas
 
 	super drawOn: aCanvas. 
 	self wantsFrameAdornments ifTrue:
-		[self hasEditingConflicts
-			ifTrue:
-				[aCanvas frameRectangle: self innerBounds width: 3 color: Color red] 
+		[(model notNil and: [model refusesToAcceptCode])
+			ifTrue:  "Put up feedback showing that code cannot be submitted in this state"
+				[aCanvas frameRectangle: self innerBounds width: 2 color: Color tan]
 			ifFalse:
-				[self hasUnacceptedEdits
+				[self hasEditingConflicts
 					ifTrue:
-						[model showDiffs
-							ifTrue:
-								[aCanvas frameRectangle: self innerBounds width: 3 color: Color green]
-							ifFalse:
-								[aCanvas frameRectangle: self innerBounds width: 1 color: Color red]]
+						[aCanvas frameRectangle: self innerBounds width: 3 color: Color red] 
 					ifFalse:
-						[model showDiffs
+						[self hasUnacceptedEdits
 							ifTrue:
-								[aCanvas frameRectangle: self innerBounds width: 1 color: Color green]]]]
+								[model wantsDiffFeedback
+									ifTrue:
+										[aCanvas frameRectangle: self innerBounds width: 3 color: Color green]
+									ifFalse:
+										[aCanvas frameRectangle: self innerBounds width: 1 color: Color red]]
+							ifFalse:
+								[model wantsDiffFeedback
+									ifTrue:
+										[aCanvas frameRectangle: self innerBounds width: 1 color: Color green]]]]]
