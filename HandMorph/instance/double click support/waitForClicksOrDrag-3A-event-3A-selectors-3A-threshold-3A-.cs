@@ -1,11 +1,22 @@
 waitForClicksOrDrag: aMorph event: evt selectors: clickAndDragSelectors threshold: threshold
-	"Wait until the difference between click, double-click, or drag gesture is known, then inform the given morph what transpired. This message is sent when the given morph first receives a mouse-down event. If the mouse button goes up, then down again within DoubleClickTime, then 'doubleClick: evt' is sent to the morph. If the mouse button goes up but not down again within DoubleClickTime, then the message 'click: evt' is sent to the morph. Finally, if the button does not go up within DoubleClickTime, then 'drag: evt' is sent to the morph. In all cases, the event supplied is the original mouseDown event that initiated the gesture. mouseMove: and mouseUp: events are not sent to the morph until it becomes the mouse focus, which is typically done by the client in its click:, doubleClick:, or drag: methods." 
+
+	"Wait for mouse button and movement events, informing aMorph about events interesting to it via callbacks.
+	This message is typically sent to the Hand by aMorph when it first receives a mouse-down event.
+	The callback methods, named in clickAndDragSelectors and passed a copy of evt, are:
+		1 	(click) sent when the mouse button goes up within doubleClickTime.
+		2	(doubleClick) sent when the mouse goes up, down, and up again all within DoubleClickTime.
+		3	(doubleClickTimeout) sent when the mouse does not have a doubleClick within DoubleClickTime.
+		4	(startDrag) sent when the mouse moves more than threshold pixels from evt's position within DoubleClickTime.
+	Note that mouseMove: and mouseUp: events are not sent to aMorph until it becomes the mouse focus,
+	which is typically done by aMorph in its click:, doubleClick:, or drag: methods."
+	
 	mouseClickState _ 
 		MouseClickState new
 			client: aMorph 
 			click: clickAndDragSelectors first 
 			dblClick: clickAndDragSelectors second 
 			dblClickTime: DoubleClickTime 
-			drag: clickAndDragSelectors third 
+			dblClickTimeout: clickAndDragSelectors third
+			drag: clickAndDragSelectors fourth 
 			threshold: threshold 
 			event: evt.
