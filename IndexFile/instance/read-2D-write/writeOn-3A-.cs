@@ -7,3 +7,5 @@ writeOn: aStream
 		 (assoc key) printOn: aStream.		"message ID"
 		 aStream cr.
 		 (assoc value) writeOn: aStream].	"index entry"
+
+	anyRemovalsSinceLastSave := false.
