@@ -13,14 +13,14 @@ to back out with no harm done.'.
 	(reply ==  true) ifFalse:
 		[^ self inform: 'Okay - abandoned'].
 
-	aName _ self sourcesName.
+	aName _ SmalltalkImage current sourcesName.
 	(aFile _ SourceFiles first) == nil ifTrue:
 		[(FileDirectory default fileExists: aName)
 			ifFalse: [^ self halt: 'Cannot locate ', aName, ' so cannot proceed.'].
 		aFile _ FileStream readOnlyFileNamed: aName].
 	SourceFiles at: 1 put: (ReadWriteStream with: aFile contentsOfEntireFile).
 
-	aName _ self changesName.
+	aName _ SmalltalkImage current changesName.
 	(aFile _ SourceFiles last) == nil ifTrue:
 		[(FileDirectory default fileExists: aName)
 			ifFalse: [^ self halt: 'Cannot locate ', aName, ' so cannot proceed.'].
