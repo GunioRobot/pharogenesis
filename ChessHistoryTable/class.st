@@ -1,6 +1,1 @@
-Object
-	variableWordSubclass: #ChessHistoryTable
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Morphic-Games-Chess'
+ChessHistoryTable class instanceVariableNames: ''
