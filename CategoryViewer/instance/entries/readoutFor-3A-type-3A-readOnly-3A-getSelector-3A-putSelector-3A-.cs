@@ -1,16 +1,14 @@
 readoutFor: partName type: partType readOnly: readOnly getSelector: getSelector putSelector: putSelector
-	| readout |
- 	(partType == #player) ifTrue:
-		[readout _ PlayerReferenceReadout new objectToView: scriptedPlayer viewSelector: getSelector putSelector: putSelector].
+	"Answer a readout morph for the given part"
 
-	(partType == #color) ifTrue:
-		[readout _ UpdatingRectangleMorph new
-		getSelector: (ScriptingSystem getterSelectorFor: partName);
-		target: scriptedPlayer costume renderedMorph;
-		borderWidth: 1;
-		extent:  22@22.
-		putSelector == #unused ifFalse: [readout putSelector: (ScriptingSystem setterSelectorFor: partName)]].
+	| readout delta |
+	readout _ (Vocabulary vocabularyForType: partType) updatingTileForTarget: scriptedPlayer partName: partName getter: getSelector setter: putSelector.
 
-	readout ifNil: [readout _ scriptedPlayer costume updatingTileForArgType: partType partName: partName getSelector: getSelector putSelector: putSelector].
+	(partType == #Number) ifTrue:
+		[(delta _ scriptedPlayer arrowDeltaFor: getSelector) = 1
+			ifFalse:
+				[readout setProperty: #arrowDelta toValue: delta].
+		scriptedPlayer setFloatPrecisionFor: readout updatingStringMorph].
+
 	readout step.
 	^ readout
