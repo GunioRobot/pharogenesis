@@ -1,3 +1,2 @@
 literal: offset
-	^self literal: offset
-		ofMethod: method
+	^self literal: offset ofMethod: method
