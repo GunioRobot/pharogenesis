@@ -3,5 +3,5 @@ methodNamesContainingIt
 
 	self lineSelectAndEmptyCheck: [^ self].
 	Cursor wait showWhile:
-		[self terminateAndInitializeAround: [Smalltalk browseMethodsWhoseNamesContain: self selection string withBlanksTrimmed]].
+		[self terminateAndInitializeAround: [self systemNavigation browseMethodsWhoseNamesContain: self selection string withBlanksTrimmed]].
 	Cursor normal show
