@@ -1,18 +1,14 @@
 asFloat
-	"Answer a Float that represents the value of the receiver. Optimized to process only the significant digits of a LargeInteger."
+	"Answer a Float that represents the value of the receiver.
+	Optimized to process only the significant digits of a LargeInteger.
+	SqR: 11/30/1998 21:11"
 
-	| sum factor numBytes |
+	| sum firstByte shift |
+	shift _ 0.
 	sum _ 0.0.
-	factor _ self sign asFloat.
-	numBytes _ self size.
-	numBytes > 7
-		ifFalse: [
-			1 to: self size do: [:i |
-				sum _ sum + ((self digitAt: i) * factor).
-				factor _ factor * 256.0]]
-		ifTrue: [
-			(numBytes - 6) to: numBytes do: [:i |
-				sum _ sum + ((self digitAt: i) * factor).
-				factor _ factor * 256.0].
-			sum _ sum timesTwoPower: 8 * (numBytes - 7)].
-	^ sum
+	firstByte _ self size - 7 max: 1.
+	firstByte to: self size do:
+		[:byteIndex | 
+		sum _ ((self digitAt: byteIndex) asFloat timesTwoPower: shift) + sum.
+		shift _ shift + 8].
+	^sum * self sign asFloat timesTwoPower: firstByte - 1 * 8
