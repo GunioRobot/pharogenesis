@@ -19,7 +19,7 @@ doRot: evt with: rotHandle
 	target rotationDegrees: degrees.
 
 	rotHandle position: evt cursorPoint - (rotHandle extent // 2).
-	(self valueOfProperty: #commandInProgress) doIfNotNil:
+	(self valueOfProperty: #commandInProgress) ifNotNilDo:
 		[:cmd | "Update the final rotation"
 		cmd redoTarget: target selector: #rotationDegrees: argument: degrees].
 	self layoutChanged
