@@ -16,6 +16,7 @@ simpleFullHaloSpecifications
 	(addGrabHandle:			center		top				(black)							'Halo-Grab')
 	(addDragHandle:			rightCenter	top				(brown)							'Halo-Drag')
 	(addDupHandle:			right		top				(green)							'Halo-Dup')	
+	(addMakeSiblingHandle:	right		top				(green muchDarker)				'Halo-Dup')	
 	(addHelpHandle:			center		bottom			(lightBlue)						'Halo-Help')
 	(addGrowHandle:		right		bottom			(yellow)						'Halo-Scale')
 	(addScaleHandle:		right		bottom			(lightOrange)					'Halo-Scale')
