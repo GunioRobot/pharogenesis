@@ -6,7 +6,7 @@ rename: aString
 	(Smalltalk includesKey: newName)
 		ifTrue: [^self error: newName , ' already exists'].
 	(Undeclared includesKey: newName)
-		ifTrue: [^ PopUpMenu notify: 'There are references to, ' , aString printString , '
+		ifTrue: [^ SelectionMenu notify: 'There are references to, ' , aString printString , '
 from Undeclared. Check them after this change.'].
 	Smalltalk renameClass: self as: newName.
 	name _ newName.
