@@ -18,7 +18,7 @@ evaluate: textOrStream in: aContext to: receiver notifying: aRequestor ifFail: f
 	self from: textOrStream class: class context: aContext notifying: aRequestor.
 	methodNode _ self translate: sourceStream noPattern: true ifFail:
 		[^failBlock value].
-	method _ methodNode generate: #(0 0 0).
+	method _ methodNode generate: #(0 0 0 0).
 	context == nil
 		ifTrue: [class addSelector: #DoIt withMethod: method.
 				value _ receiver DoIt.
