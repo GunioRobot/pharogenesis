@@ -1,0 +1,7 @@
+I can collect celeste email addresses, storing it in a sorted collection.
+You can search in the collection, using a graphical interface.
+old - MVC is unsupported at the moment.
+Try with: 
+CelesteAddressBook openHelp; open
+
+Giovanni Giorgi (jj@celeste.objectsroot.com)
