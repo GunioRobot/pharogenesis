@@ -1,13 +1,11 @@
 defaultFloatPrecisionFor: aGetSelector
-	"Answer the float position to use in conjunction with a readout for aGetSelector"
+	"Answer the float position to use in conjunction with a readout for aGetSelector, which will be of the form 'getXXX'"
 
-	| aSlotName |
-	(#(getCursor getNumericValue getNumberAtCursor getCursorWrapped) includes: aGetSelector)
-		ifTrue:
-			[^ 0.01].
+	| aSlotName slotInfo |
 	aSlotName _ Utilities inherentSelectorForGetter: aGetSelector.
-	((self elementTypeFor: aSlotName) == #userSlot)
-		ifTrue:
-			[^ (self slotInfoAt: aSlotName) floatPrecision].
+	(slotInfo _ self slotInfoAt: aSlotName ifAbsent: [nil]) ifNotNil:
+		[^ slotInfo floatPrecision].
 
+	self costume ifNotNil:
+		[^ self costume renderedMorph defaultFloatPrecisionFor: aGetSelector].
 	^ 1
