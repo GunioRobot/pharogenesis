@@ -31,7 +31,15 @@ initialize
 	t at: String put: 17.   refTypes add: 1.	"new String format, 1 or 4 bytes of length"
 	t at: WordArray put: 18.  refTypes add: 1.	"bitmap-like"
 	t at: WordArrayForSegment put: 19.  refTypes add: 1.		"bitmap-like"
-	t at: SoundBuffer put: 20.  refTypes add: 1.		"And all other word arrays"
+	t at: SoundBuffer put: 20.  refTypes add: 1.	"And all other word arrays, both 
+		16-bit and 32-bit.  See methods in ArrayedCollection.  Overridden in SoundBuffer."
 	t at: CompiledMethod put: 21.  refTypes add: 1.	"special creation method"
 	"t at:  put: 22.  refTypes add: 0."
 	ReferenceStream refTypes: refTypes.		"save it"
+
+	"For all classes that are like WordArrays, store them the way ColorArray is stored.  As bits, and able to change endianness."
+	Smalltalk do: [:cls |
+		cls isInMemory ifTrue: [
+			cls isBehavior ifTrue: [
+				cls isPointers not & cls isVariable & cls isWords ifTrue: [
+					(t includesKey: cls) ifFalse: [t at: cls put: 20]]]]].
