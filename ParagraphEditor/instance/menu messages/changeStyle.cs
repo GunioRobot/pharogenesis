@@ -3,9 +3,9 @@ changeStyle
 	 Moved from experimentalCommand to its own method  "
 
 	| aList reply style |
-	aList _ (TextConstants select: [:thang | thang isKindOf: TextStyle])
-			keys asOrderedCollection.
-	reply _ (SelectionMenu labelList: aList selections: aList) startUp.
+	aList _ StrikeFont familyNames remove: 'DefaultTextStyle' ifAbsent: []; asOrderedCollection.
+	aList addFirst: 'DefaultTextStyle'.
+	reply _ (SelectionMenu labelList: aList lines: #(1) selections: aList) startUp.
 	reply ~~ nil ifTrue:
 		[(style _ TextStyle named: reply) ifNil: [self beep. ^ true].
 		paragraph textStyle: style copy.
