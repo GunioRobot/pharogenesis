@@ -7,7 +7,7 @@ removeFinalSelfReturn
 
 	((lastStmt isReturn) and:
 	 [(lastStmt expression isVariable) and:
-	 [lastStmt expression name = 'self']]) ifTrue: [
+	 ['self' = lastStmt expression name]]) ifTrue: [
 		stmtList removeLast.
 		parseTree setStatements: stmtList.
 	].
