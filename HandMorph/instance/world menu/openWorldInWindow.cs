@@ -1,0 +1,3 @@
+openWorldInWindow
+	
+	WorldWindow test1
