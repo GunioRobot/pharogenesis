@@ -1,0 +1,3 @@
+ioGetNextEvent: evtBuf
+
+	self primitiveFail.
