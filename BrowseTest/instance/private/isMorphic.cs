@@ -1,0 +1,2 @@
+isMorphic
+	^Smalltalk isMorphic
