@@ -1,5 +1,3 @@
 doButtonDownAction
-
-	(target ~~ nil and: [actionDownSelector ~~ nil]) ifTrue: [
-		Cursor normal showWhile: [
-			target perform: actionDownSelector]].
+	(target notNil and: [actionDownSelector notNil]) 
+		ifTrue: [Cursor normal showWhile: [target perform: actionDownSelector]]
