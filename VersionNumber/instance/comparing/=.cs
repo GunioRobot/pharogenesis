@@ -1,0 +1,3 @@
+= aVersion
+
+	^numbers = aVersion numbers
