@@ -9,6 +9,6 @@ fileIntoNewChangeSet
 		[^ self inform: 'Sorry -- cannot find that file'].
 
 	aNewChangeSet _ self class 
-			newChangesFromStream: (FileStream oldFileNamed: aFileName) 
+			newChangesFromStream: (FileStream readOnlyFileNamed: aFileName) 
 			named: aFileName.
 	aNewChangeSet ifNotNil: [self showChangeSet: aNewChangeSet]
