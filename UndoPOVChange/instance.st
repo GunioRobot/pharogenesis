@@ -1,6 +1,6 @@
 Object
 	subclass: #UndoPOVChange
-	instanceVariableNames: 'theActor originalPOV '
+	instanceVariableNames: 'theActor originalPOV'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon3D-Wonderland Undo'
+	category: 'Balloon3D-Wonderland-Undo'
