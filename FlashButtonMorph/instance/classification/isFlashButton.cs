@@ -1,0 +1,2 @@
+isFlashButton
+	^true
