@@ -11,7 +11,7 @@ forceTo: length paddingStartWith: elem
 		put: elem.
 	newCollection
 		replaceFrom: padLen + 1
-		to: padLen + self size
+		to: ((padLen + self size) min: length)
 		with: self
 		startingAt:  1.
 	^ newCollection
