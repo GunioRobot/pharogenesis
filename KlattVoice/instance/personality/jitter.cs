@@ -1,0 +1,2 @@
+jitter
+	^ self patternFrame jitter
