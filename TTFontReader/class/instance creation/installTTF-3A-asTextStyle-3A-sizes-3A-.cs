@@ -1,4 +1,5 @@
 installTTF: ttfFileName asTextStyle: textStyleName sizes: sizeArray
+	"Sizes are in pixels."
 	"TTFontReader
 		installTTF: 'F:\fonts\amazon__.TTF' 
 		asTextStyle: #Amazon
@@ -10,5 +11,5 @@ installTTF: ttfFileName asTextStyle: textStyleName sizes: sizeArray
 		[:each |
 		(ttf asStrikeFontScale: each / ttf unitsPerEm)
 			name: textStyleName;
-			pointSize: each].
+			pixelSize: each].
 	TextConstants at: textStyleName asSymbol put: (TextStyle fontArray: fontArray)
