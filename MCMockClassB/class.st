@@ -1,0 +1,1 @@
+MCMockClassB class instanceVariableNames: 'ciVar'
