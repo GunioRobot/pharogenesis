@@ -1,9 +1,10 @@
 startRot: evt with: rotHandle
 	"Initialize rotation of my target if it is rotatable.  Launch a command object to represent the action"
-	evt hand obtainHalo: self.
+
+	self obtainHaloForEvent: evt andRemoveAllHandlesBut: rotHandle.
 	target isFlexMorph ifFalse: 
 		[target isInWorld ifFalse: [self setTarget: target player costume].
-		target addFlexShell].
+		target addFlexShellIfNecessary].
 	growingOrRotating _ true.
 
 	self removeAllHandlesBut: rotHandle.  "remove all other handles"
@@ -13,6 +14,6 @@ startRot: evt with: rotHandle
 			degrees: angleOffset degrees - target rotationDegrees.
 	self setProperty: #commandInProgress toValue:
 		(Command new
-			cmdWording: 'rotating';
+			cmdWording: 'rotating' translated;
 			undoTarget: target selector: #rotationDegrees: argument: target rotationDegrees)
 
