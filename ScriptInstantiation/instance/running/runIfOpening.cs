@@ -1,5 +1,5 @@
 runIfOpening
 	| result |
 	(result _ status == #opening) ifTrue:
-		[player perform: selector].
+		[player triggerScript: selector].
 	^ result
