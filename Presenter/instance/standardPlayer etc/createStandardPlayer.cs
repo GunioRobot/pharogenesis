@@ -1,11 +1,9 @@
 createStandardPlayer
 	| aMorph |
 
-	aMorph _ ImageMorph new image: (ScriptingSystem formDictionary at: 'standardPlayer').
+	aMorph _ ImageMorph new image: (ScriptingSystem formAtKey: 'standardPlayer').
 	associatedMorph addMorphFront: aMorph.
-	standardPlayer _ aMorph assuredCostumee renameTo: '¤'.
-	aMorph setBalloonText: 'hrrumph, grr'.
+	standardPlayer _ aMorph assuredPlayer renameTo: 'dot'.
+	aMorph setBalloonText: '...'.
 	self positionStandardPlayer.
 	^ standardPlayer
-
-	"ScriptingSystem formDictionary at: 'standardPlayer' put: (GIFImports at: 'broom')"
