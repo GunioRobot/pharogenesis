@@ -9,12 +9,11 @@ acceptDroppingMorph: aMorph event: evt
 	slideMorph _ aMorph imageForm offset: 0@0.
 	p1 _ aMorph screenRectangle topLeft.
 	aMorph delete.
-	self stopStepping.
+	self stopSteppingSelector: #trackDropZones.
 	self world displayWorld.  "Clear old image prior to animation"
 
 	(aMorph isKindOf: PhraseTileMorph) ifTrue:
-		[aMorph unbrightenTiles.
-		aMorph justGrabbedFromViewer: false].
+		[aMorph justGrabbedFromViewer: false].
 	aMorph tileRows do: [:tileList |
 		self insertTileRow: (Array with:
 				(tileList first rowOfRightTypeFor: owner forActor: aMorph associatedPlayer))
