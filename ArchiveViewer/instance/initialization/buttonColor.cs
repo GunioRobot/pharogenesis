@@ -1,0 +1,2 @@
+buttonColor
+	^self defaultBackgroundColor darker
