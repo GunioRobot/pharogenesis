@@ -4,7 +4,6 @@ addCustomMenuItems: menu hand: aHandMorph
 	envelope updateSelector = #ratio: ifTrue:
 		[menu add: 'choose denominator...' action: #chooseDenominator:].
 	menu add: 'adjust scale...' action: #adjustScale:.
-	menu add: 'adjust sample pitch' action: #chooseSamplePitch:.
 	SoundPlayer isReverbOn
 		ifTrue: [menu add: 'turn reverb off' target: SoundPlayer selector: #stopReverb]
 		ifFalse: [menu add: 'turn reverb on' target: SoundPlayer selector: #startReverb].
