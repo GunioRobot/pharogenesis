@@ -1,5 +1,6 @@
 initialize
-
+	"initialize the state of the receiver"
 	super initialize.
-	color _ Color lightGray.
-	isBookmark _ false.
+	""
+	
+	isBookmark _ false
