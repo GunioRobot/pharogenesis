@@ -1,3 +1,6 @@
-mouseUpInSlider: event
-	slider color: self sliderColor.
-	sliderShadow hide.
+mouseUpInSlider: event 
+
+	slider borderStyle style == #inset
+		ifTrue: [slider borderColor: #raised].
+	
+	sliderShadow hide
