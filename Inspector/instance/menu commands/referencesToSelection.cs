@@ -6,4 +6,4 @@ referencesToSelection
 	(aClass _ self object class) isVariable ifTrue: [^ self changed: #flash].
 
 	sel _ aClass allInstVarNames at: self selectionIndex - 2.
-	aClass browseAllAccessesTo: sel
+	self systemNavigation   browseAllAccessesTo: sel from: aClass
