@@ -1,0 +1,2 @@
+noExternalCallSelector
+	^ #lNoExternalCall
