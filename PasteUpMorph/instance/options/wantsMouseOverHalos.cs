@@ -1,0 +1,2 @@
+wantsMouseOverHalos
+	^ wantsMouseOverHalos == true
