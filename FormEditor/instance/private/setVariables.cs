@@ -8,4 +8,4 @@ setVariables
 	mode _ Form over.
 	form _ Form extent: 8 @ 8.
 	form fillBlack.
-	unNormalizedColor _ color _ Form black.
+	unNormalizedColor _ color _ Color black.
