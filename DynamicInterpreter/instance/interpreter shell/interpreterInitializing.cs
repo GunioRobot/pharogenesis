@@ -1,0 +1,2 @@
+interpreterInitializing
+	^newTranslatedMethod = nilObj
