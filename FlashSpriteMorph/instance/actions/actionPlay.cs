@@ -1,0 +1,3 @@
+actionPlay
+	self startPlaying.
+	^nil
