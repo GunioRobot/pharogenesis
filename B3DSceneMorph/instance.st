@@ -1,6 +1,6 @@
 Morph
 	subclass: #B3DSceneMorph
-	instanceVariableNames: 'scene '
+	instanceVariableNames: 'scene myRenderer'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon3D-Demo Morphs'
+	category: 'Balloon3D-Morphic'
