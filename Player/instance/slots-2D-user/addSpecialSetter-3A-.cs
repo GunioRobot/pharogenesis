@@ -13,6 +13,5 @@ addSpecialSetter: selector
 		(selector endsWith: 'MultiplyBy:') ifTrue: [strm nextPut: $*].
 		strm nextPutAll: ' amount)'].
 
-	self class compileUnlogged: code
-		classified: 'access' notifying: nil.
+	self class compileSilently: code classified: 'access' notifying: nil.
 	^ true
