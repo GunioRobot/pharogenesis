@@ -3,8 +3,9 @@ processStartUpList
 
 	DisplayScreen startUp.
 	Cursor startUp.
+	Smalltalk installLowSpaceWatcher.
 	InputSensor startUp.
-	ProcessorScheduler hiddenBackgroundProcess.
+	ProcessorScheduler startUp.
 	Delay startUp.
 	Smalltalk startUp.
-	ControlManager startUp.  "NOTE: The active process terminates here."
+	ControlManager startUp.
