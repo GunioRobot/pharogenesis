@@ -1,0 +1,3 @@
+pushConstantMinusOneBytecode
+
+	self internalPush: ConstMinusOne.
