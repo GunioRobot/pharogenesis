@@ -1,9 +1,7 @@
 experimentalCommand
-	"Use for experimental command-key implementation.  using this, you can try things out without forever needing to reinitialize the ParagraphEditor. "
-	sensor keyboard.
+	"Use for experimental command-key implementation.  Using this, 
+	you can try things out without forever needing to reinitialize the 
+	ParagraphEditor."
 
-	self inform: 
-'Cmd-t is not currently used.
-To get "ifTrue: [" inserted, 
-use Cmd-SHIFT-t'.
+	self prettyPrint.
 	^ true
