@@ -1,0 +1,2 @@
+basicMoveMask
+	^BasicMoveMask
