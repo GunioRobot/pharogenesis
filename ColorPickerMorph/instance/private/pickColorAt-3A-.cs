@@ -1,7 +1,6 @@
 pickColorAt: aGlobalPoint 
 
 	| alpha selfRelativePoint pickedColor |
-
 	clickedTranslucency ifNil: [clickedTranslucency _ false].
 	selfRelativePoint _ (self globalPointToLocal: aGlobalPoint) - self topLeft.
 	(FeedbackBox containsPoint: selfRelativePoint) ifTrue: [^ self].
@@ -22,7 +21,9 @@ pickColorAt: aGlobalPoint
 
 	"pick up color, either inside or outside this world"
 	clickedTranslucency ifTrue: [^ self].  "Can't wander out of translucency control"
+	self locationIndicator visible: false. self refreshWorld.
 	pickedColor _ Display colorAt: aGlobalPoint.
+	self locationIndicator visible: true. self refreshWorld.
 	self 
 		updateColor: (
 			(selectedColor isColor and: [selectedColor isTranslucentColor])
