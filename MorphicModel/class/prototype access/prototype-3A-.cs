@@ -4,5 +4,5 @@ prototype: aMorph
 	aMorph ifNil: [prototype _ nil. ^ self].
 
 	prototype _ aMorph veryDeepCopy.
-	(prototype isKindOf: MorphicModel) ifTrue: 
+	(prototype isMorphicModel) ifTrue: 
 		[prototype model: nil slotName: nil].
