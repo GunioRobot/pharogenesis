@@ -5,7 +5,8 @@ forceChangesToDisk
 	changesFile _ SourceFiles at: 2.
 	(changesFile isKindOf: FileStream) ifTrue: [
 		changesFile flush.
-		changesFile close.
-		changesFile open: changesFile name forWrite: true.
+		SecurityManager default hasFileAccess ifTrue:[
+			changesFile close.
+			changesFile open: changesFile name forWrite: true].
 		changesFile setToEnd.
 	].
