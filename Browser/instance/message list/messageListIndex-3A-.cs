@@ -8,4 +8,4 @@ messageListIndex: anInteger
 			ifFalse: [#editMessage].
 	contents _ nil.
 	self changed: #messageListIndex.	"update my selection"
-	self changed: #contents.
+	self contentsChanged
