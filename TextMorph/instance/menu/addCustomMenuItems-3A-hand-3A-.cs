@@ -1,8 +1,10 @@
 addCustomMenuItems: aCustomMenu hand: aHandMorph
+	| outer |
 	super addCustomMenuItems: aCustomMenu hand: aHandMorph.
 	aCustomMenu add: 'add predecessor' action: #addPredecessor:.
 	aCustomMenu add: 'add successor' action: #addSuccessor:.
-	((owner isKindOf: PolygonMorph) and: [owner isOpen]) ifTrue:
+	outer _ self meOrMyDropShadow owner.
+	((outer isKindOf: PolygonMorph) and: [outer isOpen]) ifTrue:
 		[container == nil
 			ifTrue: [aCustomMenu add: 'follow owner''s curve' action: #followCurve]
 			ifFalse: [aCustomMenu add: 'reverse direction' action: #reverseCurveDirection.
