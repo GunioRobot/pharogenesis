@@ -13,61 +13,43 @@ A file on the server called updates.list has the names of the last N update file
 * Put # and exactly that name on a new line at the end of this file.
 * During the release process, fill in exactly that name in the dialog box.
 * Put this file on the server."
+"When two sets of updates need to use the same directory, one of them has a * in its 
+serverUrls description.  When that is true, the first word of the description is put on
+the front of 'updates.list', and that is the index file used."
 
-"Utilities readServerUpdatesThrough: 828 saveLocally: false updateImage: true"
-"Utilities readServerUpdatesThrough: 828 saveLocally: true updateImage: true"
+"Utilities readServerUpdatesThrough: 3922 saveLocally: true updateImage: true"
 
-	| urls failed loaded str docQueue this nextDoc docQueueSema |
+	| failed loaded str res servers triple tryAgain indexPrefix |
 	Utilities chooseUpdateList ifFalse: [^ self].	"ask the user which kind of updates"
-	Cursor wait showWhile: [
 
-	urls _ self newUpdatesOn: (Utilities serverUrls collect: [:url | url, 'updates/']) 
-				throughNumber: maxNumber.
-	loaded _ 0.
-	failed _ nil.
+	servers _ Utilities serverUrls copy.
+	indexPrefix _ (Utilities updateUrlLists first first includes: $*) 
+		ifTrue: [(Utilities updateUrlLists first first findTokens: ' ') first]
+						"special for internal updates"
+		ifFalse: ['']. 	"normal"
+	[servers isEmpty] whileFalse: [
+		triple _ self readServer: servers special: indexPrefix 
+					updatesThrough: maxNumber 
+					saveLocally: saveLocally updateImage: updateImage.
 
-	"send downloaded documents throuh this queue"
-	docQueue := SharedQueue new.
-
-	"this semaphore keeps too many documents from beeing queueed up at a time"
-	docQueueSema := Semaphore new.
-	5 timesRepeat: [ docQueueSema signal ].
-
-	"fork a process to download the updates"
-	self retrieveUrls: urls ontoQueue: docQueue withWaitSema: docQueueSema.
-
-	"process downloaded updates in the foreground"
-	[ this _ docQueue next.
-	  nextDoc _ docQueue next.  
-	  nextDoc = #failed ifTrue: [ failed _ this ].
-	  (failed isNil and: [ nextDoc ~= #finished ])
-	] whileTrue: [
-		failed ifNil: [
-			nextDoc reset; text.
-			nextDoc size = 0 ifTrue: [ failed _ this ]. ].
-		failed ifNil: [
-			nextDoc peek asciiValue = 4	"pure object file"
-				ifTrue: [failed _ this]].	"Must be fileIn, not pure object file"
-		failed ifNil: [
-			"(this endsWith: '.html') ifTrue: [doc _ doc asHtml]."
-				"HTML source code not supported here yet"
-			updateImage ifTrue:	
-				[ChangeSorter newChangesFromStream: nextDoc
-					named: (this findTokens: '/') last].
-			saveLocally ifTrue:
-				[self saveUpdate: nextDoc onFile: (this findTokens: '/') last].	"if wanted"
-			loaded _ loaded + 1].
-
-		docQueueSema signal].
+		"report to user"
+		failed _ triple first.
+		loaded _ triple second.
+		tryAgain _ false.
+		failed ifNil: ["is OK"
+			loaded = 0 ifTrue: ["found no updates"
+				servers size > 1 ifTrue: ["not the last server"
+					res _ PopUpMenu withCaption: 
+'No new updates on the server
+', servers first, '
+Would you like to try the next server?
+(Normally, all servers are identical, but sometimes a
+server won''t let us store new files, and gets out of date.)' 
+						chooseFrom: 'Stop looking\Try next server'.
+					res = 2 ifFalse: [^ self]
+						 ifTrue: [servers _ servers allButFirst.	"try the next server"
+							tryAgain _ true]]]].
+		tryAgain ifFalse: [
+			str _ loaded printString ,' new update file(s) processed.'.
+			^ self inform: str].
 	].
-
-	"report to user"
-	str _ loaded printString ,' new update file(s) processed.'.
-	failed ifNotNil: [str _ str, '\Could not load ' withCRs, 
-		(urls size - loaded) printString ,' update file(s).',
-		'\Starting with "' withCRs, failed, '".'].
-	failed ifNil: [
-		"DocLibrary external ifNotNil: [
-			DocLibrary external updateMethodVersions] are not using this yet"].
-	self inform: str.
-
