@@ -1,0 +1,3 @@
+asUnicode
+
+	^ value
