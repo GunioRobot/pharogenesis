@@ -1,12 +1,7 @@
-drawBalloonRect: command
-
+drawBalloonRect: command 
 	| aRectangle aFillStyle |
-
-	aRectangle _ self class decodeRectangle: (command at: 2).
-	aFillStyle _ self class decodeFillStyle: (command at: 3).
-
-	self drawCommand: [ :c |
-		c asBalloonCanvas 
-			fillRectangle: aRectangle 
-			fillStyle: aFillStyle.
-	].
+	aRectangle := self class decodeRectangle: (command second).
+	aFillStyle := self class decodeFillStyle: command third.
+	self drawCommand: 
+			[:c | 
+			c asBalloonCanvas fillRectangle: aRectangle fillStyle: aFillStyle]
