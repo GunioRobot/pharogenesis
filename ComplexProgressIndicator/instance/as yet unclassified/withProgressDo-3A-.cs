@@ -1,12 +1,13 @@
 withProgressDo: aBlock
 
-	| safetyFactor totals trialRect delta stageCompletedString |
+	| safetyFactor totals trialRect delta stageCompletedString targetOwner |
 
 	Smalltalk isMorphic ifFalse: [^aBlock value].
 	formerProject _ Project current.
 	formerWorld _ World.
 	formerProcess _ Processor activeProcess.
-	targetMorph ifNil: [targetMorph _ ProgressTargetRequestNotification signal].
+	targetMorph
+		ifNil: [targetMorph _ ProgressTargetRequestNotification signal].
 	targetMorph ifNil: [
 		trialRect _ Rectangle center: Sensor cursorPoint extent: 80@80.
 		delta _ trialRect amountToTranslateWithin: formerWorld bounds.
@@ -16,6 +17,7 @@ withProgressDo: aBlock
 			bounds: trialRect;
 			openInWorld: formerWorld.
 	] ifNotNil: [
+		targetOwner := targetMorph owner.
 		translucentMorph _ TranslucentProgessMorph new
 			setProperty: #morphicLayerNumber toValue: targetMorph morphicLayerNumber - 0.1;
 			bounds: targetMorph boundsInWorld;
@@ -24,6 +26,8 @@ withProgressDo: aBlock
 	stageCompleted _ 0.
 	safetyFactor _ 1.1.	"better to guess high than low"
 	translucentMorph setProperty: #progressStageNumber toValue: 1.
+	translucentMorph hide.
+	targetOwner ifNotNil: [targetOwner hide].
 	totals _ self loadingHistoryDataForKey: 'total'.
 	newRatio _ 1.0.
 	estimate _ totals size < 2 ifTrue: [
@@ -43,6 +47,9 @@ withProgressDo: aBlock
 				].
 			].
 	] on: ProgressNotification do: [ :note |
+		translucentMorph show.
+		targetOwner ifNotNil: [targetOwner show].
+		note extraParam ifNotNil:[self addProgressDecoration: note extraParam].
 		stageCompletedString _ (note messageText findTokens: ' ') first.
 		stageCompleted _ (stageCompletedString copyUpTo: $:) asNumber.
 		cumulativeStageTime _ Time millisecondClockValue - start max: 1.
