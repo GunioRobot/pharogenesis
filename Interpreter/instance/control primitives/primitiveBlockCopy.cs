@@ -2,20 +2,17 @@ primitiveBlockCopy
 
 	| context methodContext contextSize newContext initialIP |
 	context _ self stackValue: 1.
-	(self isIntegerObject: (self fetchPointer: MethodIndex ofObject: context)) ifTrue: [
-		"context is a block; get the context of its enclosing method"
-		methodContext _ self fetchPointer: HomeIndex ofObject: context.
-	] ifFalse: [
-		methodContext _ context.
-	].
+	(self isIntegerObject: (self fetchPointer: MethodIndex ofObject: context))
+		ifTrue: ["context is a block; get the context of its enclosing method"
+				methodContext _ self fetchPointer: HomeIndex ofObject: context]
+		ifFalse: [methodContext _ context].
 	contextSize _ self sizeBitsOf: methodContext.  "in bytes, including header"
 	context _ nil.  "context is no longer needed and is not preserved across allocation"
 
 	"remap methodContext in case GC happens during allocation"
 	self pushRemappableOop: methodContext.
-	newContext _ self instantiateSmallClass: (self splObj: ClassBlockContext)
-							   sizeInBytes: contextSize
-									   fill: nilObj.
+	newContext _ self instantiateContext: (self splObj: ClassBlockContext)
+							   sizeInBytes: contextSize.
 	methodContext _ self popRemappableOop.
 
 	initialIP _ self integerObjectOf: instructionPointer - method.
@@ -34,6 +31,7 @@ primitiveBlockCopy
 		withValue: (self stackValue: 0).
 	self storePointerUnchecked: HomeIndex		ofObject: newContext
 		withValue: methodContext.
+	self storePointerUnchecked: SenderIndex		ofObject: newContext
+		withValue: nilObj.
 
-	self pop: 2.  "block argument count, rcvr"
-	self push: newContext.
+	self pop: 2 thenPush: newContext.
