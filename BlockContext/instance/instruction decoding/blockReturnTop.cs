@@ -4,7 +4,7 @@ blockReturnTop
 
 	| save dest |
 	save _ home.	"Needed because return code will nil it"
-	dest _ self return: self pop to: self sender.
+	dest _ self return: self pop from: self.
 	home _ save.
 	sender _ nil.
-	^dest
+	^ dest
