@@ -1,0 +1,2 @@
+numPawns
+	^numPawns
