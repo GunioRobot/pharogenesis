@@ -1,0 +1,1 @@
+recordRemoveObject: id depth: depth
