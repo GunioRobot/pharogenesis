@@ -3,4 +3,4 @@ Object
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon3D-Wonderland Misc'
+	category: 'Balloon3D-Wonderland-Misc'
