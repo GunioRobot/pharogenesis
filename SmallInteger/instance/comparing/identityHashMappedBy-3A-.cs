@@ -1,0 +1,3 @@
+identityHashMappedBy: map
+
+	^ self
