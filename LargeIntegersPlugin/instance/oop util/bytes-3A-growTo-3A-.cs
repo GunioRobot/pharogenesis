@@ -1,6 +1,5 @@
 bytes: aBytesObject growTo: newLen 
-	"Attention: this method invalidates all oop's! Only newBytes is valid at    
-	     return."
+	"Attention: this method invalidates all oop's! Only newBytes is valid at return."
 	"Does not normalize."
 	| newBytes oldLen copyLen |
 	self remapOop: aBytesObject in: [newBytes _ interpreterProxy instantiateClass: (interpreterProxy fetchClassOf: aBytesObject)
