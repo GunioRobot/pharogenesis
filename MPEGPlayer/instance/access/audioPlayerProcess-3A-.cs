@@ -1,0 +1,2 @@
+audioPlayerProcess: aProcess
+	audioPlayerProcess _ aProcess
