@@ -1,10 +1,11 @@
-primOpen: fileName writable: aBoolean
-	"Open a file of the given name, and return the file id obtained.
-	If writable is true, then
+primOpen: fileName writable: writableFlag
+	"Open a file of the given name, and return the file ID obtained.
+	If writableFlag is true, then
 		if there is none with this name, then create one
-		else prepare to overwrite from the beginning
-	otherwise open readonly,
-		or return nil if there is no file with this name"
+		else prepare to overwrite the existing from the beginning
+	otherwise
+		if the file exists, open it read-only
+		else return nil"
 
 	<primitive: 153>
 	^ nil
