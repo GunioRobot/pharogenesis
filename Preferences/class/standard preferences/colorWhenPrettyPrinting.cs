@@ -1,0 +1,2 @@
+colorWhenPrettyPrinting
+	^ self valueOfFlag: #colorWhenPrettyPrinting
