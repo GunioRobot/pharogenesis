@@ -38,7 +38,7 @@ pageImage: otherImage at: topLeft corner: corner
 						ifFalse: [0@0])]].
 
 	"Build a solid triangle in the mask form"
-	(Pen newOnForm: maskForm) do: [:p |
+	(Pen newOnForm: maskForm) in: [:p |
 		corner even  "Draw 45-degree line"
 			ifTrue: [p place: 0@0; turn: 135; go: maskForm width*3//2]
 			ifFalse: [p place: 0@(maskForm height-1); turn: 45; go: maskForm width*3//2]].
