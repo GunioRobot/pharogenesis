@@ -6,9 +6,11 @@ copyLoopPixMap
 	delivers its destination word already properly aligned.
 	Note that pickSourcePixels could be copied in-line at the top of
 	the horizontal loop, and some of its inits moved out of the loop."
-
-	| skewWord halftoneWord mergeWord destMask srcPixPerWord scrStartBits nSourceIncs startBits endBits sourcePixMask destPixMask nullMap mergeFnwith |
-
+	"ar 12/7/1999:
+	The loop has been rewritten to use only one pickSourcePixels call.
+	The idea is that the call itself could be inlined. If we decide not
+	to inline pickSourcePixels we could optimize the loop instead."
+	| skewWord halftoneWord mergeWord srcPixPerWord scrStartBits nSourceIncs startBits endBits sourcePixMask destPixMask nullMap mergeFnwith nPix srcShift dstShift destWord words |
 	self inline: false.
 	self var: #mergeFnwith declareC: 'int (*mergeFnwith)(int, int)'.
 	mergeFnwith _ self cCoerce: (opTable at: combinationRule+1) to: 'int (*)(int, int)'.
@@ -16,72 +18,65 @@ copyLoopPixMap
 
 	"Additional inits peculiar to unequal source and dest pix size..."
 	srcPixPerWord _ 32//sourcePixSize.
-	"Check for degenerate shift values 4/28/97 ar"
-	sourcePixSize = 32 
-		ifTrue: [ sourcePixMask _ -1]
-		ifFalse: [ sourcePixMask _ (1 << sourcePixSize) - 1].
-	destPixSize = 32
-		ifTrue: [ destPixMask _ -1]
-		ifFalse: [ destPixMask _ (1 << destPixSize) - 1].
-	nullMap _ colorMap = interpreterProxy nilObject.
-	sourceIndex _ (sourceBits + 4) +
-					(sy * sourceRaster + (sx // srcPixPerWord) *4).
+	sourcePixMask _ maskTable at: sourcePixSize.
+	destPixMask _ maskTable at: destPixSize.
+	nullMap _ colorMap = nil.
+	sourceIndex _ sourceBits +
+					(sy * sourcePitch) + ((sx // srcPixPerWord) *4).
 	scrStartBits _ srcPixPerWord - (sx bitAnd: srcPixPerWord-1).
 	bbW < scrStartBits
 		ifTrue: [nSourceIncs _ 0]
 		ifFalse: [nSourceIncs _ (bbW - scrStartBits)//srcPixPerWord + 1].
-	sourceDelta _ (sourceRaster - nSourceIncs) * 4.
+	sourceDelta _ sourcePitch - (nSourceIncs * 4).
 
 	"Note following two items were already calculated in destmask setup!"
 	startBits _ pixPerWord - (dx bitAnd: pixPerWord-1).
 	endBits _ ((dx + bbW - 1) bitAnd: pixPerWord-1) + 1.
 
+	bbW < startBits ifTrue:[startBits _ bbW].
+
+	"Precomputed shifts for pickSourcePixels"
+	srcShift _ 32 - ((sx bitAnd: srcPixPerWord - 1) + 1 * sourcePixSize).
+	dstShift _ 32 - ((dx bitAnd: pixPerWord - 1) + 1 * destPixSize).
+
 	1 to: bbH do: "here is the vertical loop"
 		[ :i |
+		"*** is it possible at all that noHalftone == false? ***"
 		noHalftone
-			ifTrue: [halftoneWord _ AllOnes]
-			ifFalse: [halftoneWord _ interpreterProxy longAt: (halftoneBase + (dy+i-1 \\ halftoneHeight * 4))].
-		srcBitIndex _ (sx bitAnd: srcPixPerWord - 1)*sourcePixSize.
+			ifTrue:[halftoneWord _ AllOnes]
+			ifFalse: [halftoneWord _ self halftoneAt: dy+i-1].
+		"setup first load"
+		srcBitShift _ srcShift.
+		dstBitShift _ dstShift.
 		destMask _ mask1.
-		"pick up first word"
-		bbW < startBits
-			ifTrue: [skewWord _ self pickSourcePixels: bbW nullMap: nullMap
-									srcMask: sourcePixMask destMask: destPixMask.
-					skewWord _ skewWord   "See note below"
-							bitShift: (startBits - bbW)*destPixSize]
-			ifFalse: [skewWord _ self pickSourcePixels: startBits nullMap: nullMap
-									srcMask: sourcePixMask destMask: destPixMask]. 
-
+		nPix _ startBits.
 		"Here is the horizontal loop..."
-		1 to: nWords do: "here is the inner horizontal loop"
-			[ :word |
-			mergeWord _ self mergeFn: (skewWord bitAnd: halftoneWord)
-							with: ((interpreterProxy longAt: destIndex) bitAnd: destMask).
-			interpreterProxy longAt: destIndex
-				put: ((destMask bitAnd: mergeWord)
-					bitOr:
-					(destMask bitInvert32 bitAnd: (interpreterProxy longAt: destIndex))).
+		words _ nWords.
+			["pick up the word"
+			skewWord _ self pickSourcePixels: nPix nullMap: nullMap 
+								srcMask: sourcePixMask destMask: destPixMask.
+
+			destMask = AllOnes ifTrue:["avoid read-modify-write"
+				mergeWord _ self mergeFn: (skewWord bitAnd: halftoneWord)
+								with: (self dstLongAt: destIndex).
+				self dstLongAt: destIndex put: (destMask bitAnd: mergeWord).
+			] ifFalse:[ "General version using dest masking"
+				destWord _ self dstLongAt: destIndex.
+				mergeWord _ self mergeFn: (skewWord bitAnd: halftoneWord)
+								with: (destWord bitAnd: destMask).
+				destWord _ (destMask bitAnd: mergeWord) bitOr:
+								(destWord bitAnd: destMask bitInvert32).
+				self dstLongAt: destIndex put: destWord.
+			].
 			destIndex _ destIndex + 4.
-			word >= (nWords - 1) ifTrue:
-				[word = nWords ifFalse:
-					["set mask for last word in this row"
-					destMask _ mask2.
-					skewWord _ self pickSourcePixels: endBits nullMap: nullMap
-									srcMask: sourcePixMask destMask: destPixMask.
-					skewWord _ skewWord   "See note below"
-							bitShift: (pixPerWord-endBits)*destPixSize]]
-				ifFalse: 
-				["use fullword mask for inner loop"
-				destMask _ AllOnes.
-				skewWord _ self pickSourcePixels: pixPerWord nullMap: nullMap srcMask: sourcePixMask destMask: destPixMask]].
-
-	sourceIndex _ sourceIndex + sourceDelta.
-	destIndex _ destIndex + destDelta]
-
-"NOTE: in both noted shifts above, we are shifting the right-justified
- output of pickSourcePixels so that it is aligned with the destination word.
-  Since it gets masked anyway, we could have just picked more pixels
- (startBits in the first case and destPixSize in the second), and it would
- have been simpler, but it is slower to run the pickSourcePixels loop. 
- CopyLoopAlphaHack takes advantage of this to avoid having to shift
- full-words in its alphaSource buffer" 
+			words = 2 "e.g., is the next word the last word?"
+				ifTrue:["set mask for last word in this row"
+						destMask _ mask2.
+						nPix _ endBits]
+				ifFalse:["use fullword mask for inner loop"
+						destMask _ AllOnes.
+						nPix _ pixPerWord].
+			(words _ words - 1) = 0] whileFalse.
+		"--- end of inner loop ---"
+		sourceIndex _ sourceIndex + sourceDelta.
+		destIndex _ destIndex + destDelta]
