@@ -1,4 +1,10 @@
 contents
-	^ listIndex = 0
-		ifTrue: ['']
-		ifFalse: [(changeList at: listIndex) text]
+	^ self showDiffs
+		ifFalse:
+			[self undiffedContents]
+		ifTrue:
+			[self showsVersions
+				ifTrue:
+					[self diffedVersionContents]
+				ifFalse:
+					[self contentsDiffedFromCurrent]]
