@@ -1,0 +1,2 @@
+currentYGet
+	^workBuffer at: GWCurrentY
