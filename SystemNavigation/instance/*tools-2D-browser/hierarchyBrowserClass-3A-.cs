@@ -1,0 +1,2 @@
+hierarchyBrowserClass: aBrowserClass
+	hierarchyBrowserClass := aBrowserClass
