@@ -1,4 +1,4 @@
 isGlobalFlap
-	"Answer whether the receiver is currently a Global flap"
+	"Answer whether the receiver is currently a shared flap"
 
-	^ Utilities globalFlapTabsIfAny includes: self
+	^ Flaps globalFlapTabsIfAny includes: self
