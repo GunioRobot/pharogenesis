@@ -1,4 +1,5 @@
 editDrawing
 	| frame |
-	frame _ self currentFrame.
-	frame ~~ nil ifTrue: [frame editDrawingIn: self pasteUpMorph forBackground: false]
+	frame := self currentFrame.
+	frame notNil 
+		ifTrue: [frame editDrawingIn: self pasteUpMorph forBackground: false]
