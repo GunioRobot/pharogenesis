@@ -3,6 +3,6 @@ parse: messageString toClassAndSelector: csBlock
 	| tuple cl |
 	tuple _ messageString findTokens: ' '.
 	cl _ Smalltalk at: tuple first asSymbol.
-	tuple size = 2
-		ifTrue: [^ csBlock value: cl value: tuple last asSymbol]
-		ifFalse: [^ csBlock value: cl class value: tuple last asSymbol]
+	(tuple size = 2 or: [tuple size > 2 and: [(tuple at: 2) ~= 'class']])
+		ifTrue: [^ csBlock value: cl value: (tuple at: 2) asSymbol]
+		ifFalse: [^ csBlock value: cl class value: (tuple at: 3) asSymbol]
