@@ -1,0 +1,2 @@
+phonemes
+	^ self segments phonemes
