@@ -15,5 +15,5 @@ mouseDown: evt
 	noteMorphs do:
 		[:m | sound _ m soundOfDuration: 999.0.
 		soundsPlaying at: m put: sound.
-		sound play].
+		SoundPlayer resumePlaying: sound quickStart: false].
 
