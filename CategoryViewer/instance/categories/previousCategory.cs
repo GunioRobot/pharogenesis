@@ -2,7 +2,8 @@ previousCategory
 	"Change the receiver to point at the category preceding the one currently seen"
 
 	| aList anIndex newIndex already aChoice |
-	aList _ scriptedPlayer categoriesForViewer: self.
+	aList _ (scriptedPlayer categoriesForViewer: self) collect:
+		[:aCatSymbol | self currentVocabulary categoryWordingAt: aCatSymbol].
 	already _ self outerViewer ifNil: [#()] ifNotNil: [self outerViewer categoriesCurrentlyShowing].
 	anIndex _ aList indexOf: self currentCategory ifAbsent: [aList size + 1].
 	newIndex _ anIndex = 1
@@ -11,4 +12,4 @@ previousCategory
 	[already includes: (aChoice _ aList at: newIndex)] whileTrue:
 		[newIndex _ newIndex = 1 ifTrue: [aList size] ifFalse: [newIndex - 1]].
 
-	self categoryChoice: aChoice
+	self chooseCategoryWhoseTranslatedWordingIs: aChoice
