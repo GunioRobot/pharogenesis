@@ -4,4 +4,6 @@ acceptDroppingMorph: aMorph event: evt
 		acceptDroppingMorph: aMorph
 		event: evt
 		inMorph: self.
-	self resetPotentialDropMorph
+	self resetPotentialDropMorph.
+	evt hand releaseMouseFocus: self.
+	Cursor normal show.
