@@ -6,6 +6,5 @@ rotateBy: delta
 	m _ MatrixTransform2x3 withOffset: pt.
 	m _ m composedWithLocal: (MatrixTransform2x3 withAngle: delta).
 	m _ m composedWithLocal: (MatrixTransform2x3 withOffset: pt negated).
-	transform _ self transform composedWithLocal: m.
-	self computeBounds.
+	self transform: (transform composedWithLocal: m).
 	self changed.
