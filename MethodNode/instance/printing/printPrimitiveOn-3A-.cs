@@ -22,6 +22,7 @@ printPrimitiveOn: aStream
 						 nextPut: $']]
 		ifFalse: [aStream print: primIndex].
 	aStream nextPut: $>.
-	aStream nextPutAll: ' "'
-			, ((Interpreter classPool at: #PrimitiveTable)
-					at: primIndex + 1) , '" '.
+	Smalltalk at: #Interpreter ifPresent:[:cls|
+		aStream nextPutAll: ' "'
+				, ((cls classPool at: #PrimitiveTable)
+						at: primIndex + 1) , '" '].
