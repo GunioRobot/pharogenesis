@@ -1,0 +1,2 @@
+initializeCharacterIndex
+	CharacterValueIndex _ 0
