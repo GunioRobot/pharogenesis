@@ -1,5 +1,9 @@
 addToFormatter: formatter
 	| inputMorph |
+	formatter currentFormData ifNil: [
+		"not in a form.  It's bogus HTML but try to survive"
+		^self ].
+
 	formatter ensureNewlines: 1.
 	inputMorph _ PluggableTextMorph on: StringHolder new text: #contents accept: #acceptContents:.
 	inputMorph extent: (self columns * 5) @ (self rows * inputMorph scrollDeltaHeight).
