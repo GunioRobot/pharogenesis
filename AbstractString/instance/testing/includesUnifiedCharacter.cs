@@ -1,0 +1,3 @@
+includesUnifiedCharacter
+
+	self subclassResponsibility.
