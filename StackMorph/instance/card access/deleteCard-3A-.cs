@@ -1,7 +1,7 @@
 deleteCard: aCard
 	"Delete the current card from the stack."
 
-	cards size = 1 ifTrue: [^ self beep].
+	self privateCards size = 1 ifTrue: [^ Beeper beep].
 	(aCard == self currentCard) ifTrue: [^ self deleteCard].
 
-	cards remove: aCard ifAbsent: []
+	self privateCards remove: aCard ifAbsent: []
