@@ -1,2 +1,2 @@
 getColorUnder
-	^ costume colorUnder
+	^ self costume colorUnder
