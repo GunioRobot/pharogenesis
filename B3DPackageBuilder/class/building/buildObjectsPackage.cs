@@ -1,0 +1,2 @@
+buildObjectsPackage
+	^self new buildObjectsPackage
