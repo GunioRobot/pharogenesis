@@ -1,0 +1,1 @@
+ChessTTEntry class instanceVariableNames: ''
