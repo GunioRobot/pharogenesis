@@ -2,17 +2,24 @@ segmentsDo: aBlock
 	"Evaluate aBlock with the segments of the receiver. This may either be straight line
 	segments or quadratic bezier curves. The decision is made upon the type flags
 	in TTPoint as follows:
-	a) 	To subsequent #OnCurve points define a straight segment
-	b) 	A #OnCurve point followed by a #OffCurve point followed 
-		by a #TT_ONCURVE point defines a quadratic bezier segment
+	a) 	Two subsequent #OnCurve points define a straight segment
+	b) 	An #OnCurve point followed by an #OffCurve point followed 
+		by an #OnCurve point defines a quadratic bezier segment
 	c)	Two subsequent #OffCurve points have an implicitely defined 
 		#OnCurve point at half the distance between them"
-	| last next mid index |
+	| last next mid index i |
 	last _ points first.
-	"The first point is _always_ on the curve"
-	(last type == #OnCurve) ifFalse:[
-		Transcript cr; show:'Bad starting point OffCurve'.
-		last type: #OnCurve].
+	"Handle case where first point is off-curve"
+	(last type == #OnCurve) ifFalse: [
+		i _ points findFirst: [:pt | pt type == #OnCurve].
+		i = 0
+			ifTrue: [mid _ TTPoint new
+							type: #OnCurve;
+							x: points first x + points last x // 2;
+							y: points first y + points last y // 2.
+					points _ (Array with: mid), points]
+			ifFalse: [points _ (points copyFrom: i to: points size), (points copyFrom: 1 to: i)].
+		last _ points first].
 	index _ 2.
 	[index <= points size] whileTrue:[
 		mid _ points at: index.
