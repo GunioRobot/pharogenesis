@@ -1,0 +1,2 @@
+reset
+	textMorph setText: defaultValue
