@@ -1,0 +1,2 @@
+resourceFileSize
+	^fileSize
