@@ -1,0 +1,2 @@
+isProcessingInstruction
+	^false
