@@ -6,4 +6,4 @@ readFromStrike2: fileName  "StrikeFont new readFromStrike2: 'Palatino14.sf2'"
 	name _ fileName copyUpTo: $. .  "Drop filename extension"
 	file _ FileStream readOnlyFileNamed: fileName.
 	file binary.
-	self readFromStrike2Stream: file
+	[self readFromStrike2Stream: file] ensure: [file close]
