@@ -10,4 +10,5 @@ aboutToBeGrabbedBy: aHand
 	menu addMorphFront: self.
 	menu bounds: box.
 	menu stayUp: true.
+	self isSelected: false.
 	^menu
