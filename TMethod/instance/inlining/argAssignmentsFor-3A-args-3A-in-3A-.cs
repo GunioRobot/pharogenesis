@@ -3,11 +3,11 @@ argAssignmentsFor: meth args: argList in: aCodeGen
 	"Optimization: If the actual parameters are either constants or local variables in the target method (the receiver), substitute them directly into the body of meth. Note that global variables cannot be subsituted because the inlined method might depend on the exact ordering of side effects to the globals."
 
 	| stmtList substitutionDict |
-	stmtList _ OrderedCollection new: 16.
-	substitutionDict _ Dictionary new.
+	stmtList _ OrderedCollection new: 100.
+	substitutionDict _ Dictionary new: 100.
 	meth args with: argList do: [ :argName :exprNode |
 		(self isSubstitutableNode: exprNode intoMethod: meth in: aCodeGen) ifTrue: [
-			substitutionDict at: argName asSymbol put: exprNode.
+			substitutionDict at: argName put: exprNode.
 			locals remove: argName.
 		] ifFalse: [
 			stmtList add: (TAssignmentNode new
