@@ -1,26 +1,5 @@
-Defines the fixture to run multiple tests plus the tests using this fixture. To define a test case
+A TestCase is a Command representing the future running of a test case. Create one with the class method #selector: aSymbol, passing the name of the method to be run when the test case runs.
 
-  * implement a subclass of TestCase,
-  * define instance variables that store the state of the fixture,
-  * initialize the fixture state by overriding TestCase setUp,
-  * clean-up after a test by overriding TestCase tearDown, and
+When you discover a new fixture, subclass TestCase, declare instance variables for the objects in the fixture, override #setUp to initialize the variables, and possibly override# tearDown to deallocate any external resources allocated in #setUp.
 
-Each test runs in its own fixture so there can be no side effects among test runs.
-
-For each test in the context of this fixture set-up,
-
-  * implement a method(s) which interacts with the fixture.
-
-In the test method(s) verify the expected results with assertions specified by calling
-
-  * TestCase assert:
-  * TestCase deny:
-  * TestCase should:
-  * TestCase shouldnt:
-  * TestCase value:shouldRaise: or
-  * TestCase value:shouldntRaise:
-
-with arguments of the expected type.
-
-Instance Variables:
-	testMessage		<Symbol>
+When you are writing a test case method, send #assert: aBoolean when you want to check for an expected value. For example, you might say "self assert: socket isOpen" to test whether or not a socket is open at a point in a test.
