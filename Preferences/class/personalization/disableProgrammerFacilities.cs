@@ -9,20 +9,18 @@ disableProgrammerFacilities
 
 You will be prompted for a new image name under which to save the resulting image."
 
-	self beep.
-	(self confirm: 'CAUTION!!
+	Beeper beep.
+	(self 
+		confirm: 'CAUTION!!
 This is a drastic step!
-Do you really want to do this?')
-		ifFalse:
-			[self beep.  ^ self inform: 'whew!'].
-
-	self disable: #cmdDotEnabled.       "No user-interrupt-into-debugger"
-
-	self compileHardCodedPref: #cmdGesturesEnabled enable: false.  "No halos, etc."
-
-	self compileHardCodedPref: #cmdKeysInText enable: false.    "No user commands invokable via cmd-key combos in text editor"
-
-	self enable: #noviceMode.           "No control-menu"
+Do you really want to do this?') 
+			ifFalse: 
+				[Beeper beep.
+				^self inform: 'whew!'].
+	self disable: #cmdDotEnabled.	"No user-interrupt-into-debugger"
+	self compileHardCodedPref: #cmdGesturesEnabled enable: false.	"No halos, etc."
+	self compileHardCodedPref: #cmdKeysInText enable: false.	"No user commands invokable via cmd-key combos in text editor"
+	self enable: #noviceMode.	"No control-menu"
 	self disable: #warnIfNoSourcesFile.
 	self disable: #warnIfNoChangesFile.
-	Smalltalk saveAs
+	SmalltalkImage current saveAs
