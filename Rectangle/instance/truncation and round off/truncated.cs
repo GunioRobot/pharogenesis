@@ -1,4 +1,10 @@
 truncated
 	"Answer a Rectangle whose origin and corner have any fractional parts removed."
 
-	^Rectangle origin: origin truncated corner: corner truncated
+	(origin x isInteger and:
+	[origin y isInteger and:
+	[corner x isInteger and:
+	[corner y isInteger]]])
+		ifTrue: [^ self].
+
+	^ Rectangle origin: origin truncated corner: corner truncated
