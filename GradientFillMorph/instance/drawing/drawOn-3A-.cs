@@ -1,19 +1,23 @@
 drawOn: aCanvas
 	"Note that this could run about 4 times faster if we got hold of
 	the canvas's port and just sent it copyBits with new coords and color"
- 	| r colors step |
+ 	| style |
 	super drawOn: aCanvas.
 	(color isKindOf: Color) ifFalse: [^ self].  "An InfiniteForm, for example"
 	(color = Color transparent) ifTrue: [^ self].  "Skip the gradient attempts, which will drop into debugger"
-	r _ self innerBounds intersect: aCanvas clipRect.
-	colors _ self colorArrayForDepth: aCanvas depth.
-	step _ self stepSize.
-	gradientDirection = #vertical
-		ifTrue:
-		[r top to: r bottom-1 by: step do:
-			[:y | aCanvas fillRectangle: (r left @ y corner: r right @ (y+step min: r bottom))
-					color: (colors at: y - bounds top //step+1)]]
-		ifFalse:
-		[r left to: r right-1 by: step do:
-			[:x | aCanvas fillRectangle: (x @ r top corner: (x+step min: r right) @ r bottom)
-					color: (colors at: x - bounds left //step+1)]]
+	color = fillColor2 ifTrue: [^ self].  "same color; no gradient"
+	"Check if we can use the cached gradient fill"
+	((self valueOfProperty: #cachedGradientColor1) = color 
+		and:[(self valueOfProperty: #cachedGradientColor2) = fillColor2])
+			ifTrue:[style _ self valueOfProperty: #cachedGradientFill].
+	style ifNil:[
+		style _ GradientFillStyle ramp: {0.0 -> color. 1.0 -> fillColor2}.
+		self setProperty: #cachedGradientColor1 toValue: color.
+		self setProperty: #cachedGradientColor2 toValue: fillColor2.
+		self setProperty: #cachedGradientFill toValue: style.
+	].
+	style origin: self position.
+	style direction: (gradientDirection == #vertical 
+		ifTrue:[0@self height] 
+		ifFalse:[self width@0]).
+	aCanvas fillRectangle: self innerBounds fillStyle: style.
