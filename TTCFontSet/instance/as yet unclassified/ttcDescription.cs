@@ -1,0 +1,2 @@
+ttcDescription
+	^ fontArray first ttcDescription
