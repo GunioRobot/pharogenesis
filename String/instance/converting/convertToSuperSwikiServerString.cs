@@ -1,0 +1,2 @@
+convertToSuperSwikiServerString
+	^self.
