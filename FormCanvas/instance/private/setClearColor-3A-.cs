@@ -1,7 +1,6 @@
 setClearColor: aColor
 	"Install a new clear color - e.g., a color is used for clearing the background"
 	| clearColor |
-	port isFXBlt ifTrue:[port sourceMap: nil; destMap: nil; colorMap: nil; sourceKey: nil].
 	clearColor _ aColor ifNil:[Color transparent].
 	clearColor isColor ifFalse:[
 		(clearColor isKindOf: InfiniteForm) ifFalse:[^self error:'Cannot install color'].
@@ -12,4 +11,4 @@ setClearColor: aColor
 	port fillPattern: clearColor.
 	self depth = 8 ifTrue:[
 		"Use a stipple pattern"
-		port fillColor: (clearColor balancedPatternForDepth: 8)].
+		port fillColor: (form balancedPatternFor: clearColor)].
