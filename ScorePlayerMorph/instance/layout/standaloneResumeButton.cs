@@ -14,10 +14,10 @@ standaloneResumeButton
 			borderColor: #raised;
 			borderWidth: 2;
 			color: Color green;
-			label: 'Continue';
+			label: 'Continue' translated;
 			actionSelector: #value
 	).
-	r setBalloonText: 'Continue playing a paused presentation'.
+	r setBalloonText: 'Continue playing a paused presentation' translated.
 	^r
 
 
