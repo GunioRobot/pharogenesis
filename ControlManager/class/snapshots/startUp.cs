@@ -1,2 +1,2 @@
 startUp
-	ScheduledControllers restore
+	Smalltalk isMorphic ifFalse: [ScheduledControllers restore]
