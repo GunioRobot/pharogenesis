@@ -27,8 +27,12 @@ buildMorphicSwitches
 		label: 'class';
 		askBeforeChanging: true;
 		borderWidth: 0.
-	divider1 := SubpaneDividerMorph vertical.
-	divider2 := SubpaneDividerMorph vertical.
+	divider1 := BorderedSubpaneDividerMorph vertical.
+	divider2 := BorderedSubpaneDividerMorph vertical.
+	Preferences alternativeWindowLook ifTrue:[
+		divider1 extent: 4@4; borderWidth: 2; borderRaised; color: Color transparent.
+		divider2 extent: 4@4; borderWidth: 2; borderRaised; color: Color transparent.
+	].
 	row _ AlignmentMorph newRow
 		hResizing: #spaceFill;
 		vResizing: #spaceFill;
@@ -41,10 +45,12 @@ buildMorphicSwitches
 		addMorphBack: classSwitch.
 
 	aColor _ Color colorFrom: self defaultBackgroundColor.
+	row color: aColor duller.  "ensure matching button divider color. (see #paneColor)"
+	Preferences alternativeWindowLook ifTrue:[aColor _ aColor muchLighter].
 	{instanceSwitch. commentSwitch. classSwitch} do: [:m | 
 		m 
 			color: aColor;
-			onColor: aColor darker offColor: aColor;
+			onColor: aColor twiceDarker offColor: aColor;
 			hResizing: #spaceFill;
 			vResizing: #spaceFill.
 	].
