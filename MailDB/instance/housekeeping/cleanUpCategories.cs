@@ -1,6 +1,4 @@
 cleanUpCategories
 	"Prune the dead wood out of all categories."
 
-	categoriesFile categories do:
-		[: category |
-		 categoriesFile removeMessagesInCategory: category butNotIn: indexFile].
+	self categorizer removeAllSuchThat: [:msgID | (indexFile includesKey: msgID) not].
