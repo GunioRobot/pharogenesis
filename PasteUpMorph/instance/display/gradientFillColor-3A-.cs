@@ -3,5 +3,5 @@ gradientFillColor: aColor
 
 	self flag: #fixThis.
 	self useGradientFill.
-	self fillStyle colorRamp: {0.0 -> color. 1.0 -> aColor}.
+	self fillStyle colorRamp: {0.0 -> self fillStyle colorRamp first value. 1.0 -> aColor}.
 	self changed
