@@ -1,0 +1,2 @@
+normalized
+	^self / self length
