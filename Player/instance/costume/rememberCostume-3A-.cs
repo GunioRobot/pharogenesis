@@ -4,7 +4,7 @@ rememberCostume: aCostume
 	costumeToRemember _ aCostume renderedMorph.
 		"Remember real morphs, not their transformations"
 	costumes ifNil: [costumes _ OrderedCollection new].
-	existing _ (costumeToRemember isKindOf: SketchMorph)
+	existing _ (costumeToRemember isSketchMorph)
 		ifTrue:
 			[self knownSketchCostumeWithSameFormAs: costumeToRemember]
 		ifFalse:
