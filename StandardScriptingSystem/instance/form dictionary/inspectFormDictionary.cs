@@ -1,3 +1,4 @@
 inspectFormDictionary
 	"ScriptingSystem inspectFormDictionary"
-	FormDictionary inspectFormsWithLabel: 'Standard Graphics'
+	
+	GraphicalDictionaryMenu openOn: FormDictionary withLabel: 'Testing One Two Three'
