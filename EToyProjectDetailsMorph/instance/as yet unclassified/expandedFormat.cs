@@ -1,3 +1,4 @@
 expandedFormat
 
-	^self valueOfProperty: #expandedFormat ifAbsent: [false]
+	^ Preferences expandedPublishing
+			or: [self valueOfProperty: #expandedFormat ifAbsent: [false]]
