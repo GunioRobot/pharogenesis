@@ -1,3 +1,3 @@
 privateMoveBy: delta
 	super privateMoveBy: delta.
-	self computeCurve
+	coefficients _ nil.  "Force recomputation"
