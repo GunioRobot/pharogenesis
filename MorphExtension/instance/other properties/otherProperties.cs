@@ -1,0 +1,2 @@
+otherProperties
+	^ otherProperties
