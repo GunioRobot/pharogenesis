@@ -1,23 +1,13 @@
 doInlining: inlineFlag
 	"Inline the bodies of all methods that are suitable for inlining."
-	"Modified slightly for the translator, since the first level of inlining for the interpret
-	loop must be performed in order that the instruction implementations can easily
-	discover their addresses."
-
-	"Interpreter translate: 'InterpTest.c' doInlining: true"
+	"Modified slightly for the translator, since the first level of inlining for the interpret loop must be performed in order that the instruction implementations can easily discover their addresses."
 
 	| pass progress |
-
 	inlineFlag ifFalse: [
-		^self inlineDispatchesInMethodNamed: #interpret localizingVars: #().
-	].
+		self inlineDispatchesInMethodNamed: #interpret localizingVars: #().
+		^ self].
 
 	self collectInlineList.
-	"xxx do we need the following?"
-	Interpreter primitiveTable do: [ :sel |
-		inlineList remove: sel ifAbsent: [].
-	].
-
 	pass _ 0.
 	progress _ true.
 	[progress] whileTrue: [
@@ -26,29 +16,26 @@ doInlining: inlineFlag
 		('Inlining pass ', (pass _ pass + 1) printString, '...')
 			displayProgressAt: Sensor cursorPoint
 			from: 0 to: methods size
-			during: [ :bar |
-				methods doWithIndex: [ :m :i |
+			during: [:bar |
+				methods doWithIndex: [:m :i |
 					bar value: i.
 					(m tryToInlineMethodsIn: self)
-						ifTrue: [progress _ true]]].
-	].
+						ifTrue: [progress _ true]]]].
+
 	'Inlining bytecodes'
 		displayProgressAt: Sensor cursorPoint
-		from: 1 to: 3
-		during: [ :bar |
+		from: 1 to: 2
+		during: [:bar |
 			self inlineDispatchesInMethodNamed: #interpret
-				localizingVars: #(currentBytecode localIP localSP localCP localTP).
+				localizingVars: #(currentBytecode localIP localSP localHomeContext).
 			bar value: 1.
-"xxx
-			(methods includesKey: #translateNewMethod) ifTrue:
-				[self inlineDispatchesInMethodNamed: #translateNewMethod
-					localizingVars: #(currentByte bytePointer opPointer).
-				self removeMethodsReferingToGlobals: #(currentByte bytePointer opPointer)
-					except: #translateNewMethod.
-				].
-xxx"
-			bar value: 2.
-			self removeMethodsReferingToGlobals: #(currentBytecode localIP localSP localCP localTP)
+			self removeMethodsReferingToGlobals: #(
+					currentBytecode localIP localSP localHomeContext)
 				except: #interpret.
-			bar value: 3.
-	].
+			bar value: 2].
+
+	"make receiver on the next line false to generate code for all methods, even those that are inlined or unused"
+	true ifTrue: [
+		(methods includesKey: #interpret) ifTrue: [
+			"only prune when generating the interpreter itself"
+			self pruneUnreachableMethods]].
