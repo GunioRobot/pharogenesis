@@ -1,8 +1,7 @@
 readFromFile
-
-	| fName |
-	fName _ FillInTheBlank
+	| fileName |
+	fileName _ FillInTheBlank
 		request: 'Please enter the image file name'
 		initialAnswer: 'fileName'.
-	fName isEmpty ifTrue: [^ self].
-	self image: (Form fromFileNamed: fName).
+	fileName isEmpty ifTrue: [^ self].
+	self image: (Form fromFileNamed: fileName).
