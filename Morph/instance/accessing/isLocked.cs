@@ -1,3 +1,5 @@
 isLocked
-	extension == nil ifTrue: [^ false].
-	^ extension locked
+	"answer whether the receiver is Locked"
+	self hasExtension
+		ifFalse: [^ false].
+	^ self extension locked
