@@ -1,11 +1,13 @@
 windowSpecificationPanel
+	"Put up a panel for specifying window colors"
+
 	"Preferences windowSpecificationPanel"
-	| aPanel buttonRow aButton aRow aSwatch aColor aWindow aMiniWorld |
-	aPanel _ AlignmentMorph newColumn hResizing: #shrinkWrap; vResizing: #shrinkWrap.
+	| aPanel buttonRow aButton aRow aSwatch aColor aWindow aMiniWorld aStringMorph |
+	aPanel _ AlignmentMorph newColumn hResizing: #shrinkWrap; vResizing: #shrinkWrap;
+		layoutInset: 0.
 
 	aPanel addMorph: (buttonRow _ AlignmentMorph newRow color: (aColor _ Color tan lighter)).
 	
-	aButton _ SimpleButtonMorph new target: self.
 	buttonRow addTransparentSpacerOfSize: 2@0.
 	buttonRow addMorphBack: (SimpleButtonMorph new label: '?'; target: self; actionSelector: #windowColorHelp; setBalloonText: 'Click for an explanation of this panel'; color: Color veryVeryLightGray; yourself).
 	buttonRow addTransparentSpacerOfSize: 8@0.
@@ -17,7 +19,7 @@ windowSpecificationPanel
 					'Use white backgrounds for all standard windows.')) do:
 
 		[:quad |
-			aButton _ aButton fullCopy
+			aButton _ (SimpleButtonMorph new target: self)
 				label: quad first;
 				actionSelector: quad second;
 				color: (Color colorFrom: quad third);
@@ -26,34 +28,30 @@ windowSpecificationPanel
 			buttonRow addMorphBack: aButton.
 			buttonRow addTransparentSpacerOfSize: 10@0].
 
-	self windowColorClasses do:
-		[:aClassName | 
+	self windowColorTable do:
+		[:colorSpec | 
 			aRow _ AlignmentMorph newRow color: aColor.
 			aSwatch _ ColorSwatch new
 				target: self;
 				getSelector: #windowColorFor:;
 				putSelector: #setWindowColorFor:to:;
-				argument: aClassName;
+				argument: colorSpec classSymbol;
 				extent: (40 @ 20);
+				setBalloonText: 'Click here to change the standard color to be used for ', colorSpec wording, ' windows.';
 				yourself.
 			aRow addMorphFront: aSwatch.
 			aRow addTransparentSpacerOfSize: (12 @ 1).
-			aRow addMorphBack: (StringMorph contents: aClassName font: TextStyle defaultFont).
+			aRow addMorphBack: (aStringMorph _ StringMorph contents: colorSpec wording font: TextStyle defaultFont).
+			aStringMorph setBalloonText: colorSpec helpMessage.
 			aPanel addMorphBack: aRow].
 
 	 Smalltalk isMorphic
                 ifTrue:
-                        [buttonRow _ buttonRow fullCopy removeAllMorphs.
-					buttonRow addTransparentSpacerOfSize: 25@0.
-					aButton _ aButton fullCopy color: Color tan muchLighter.
-					aButton label: 'Update Tools Flap'; target: Utilities; actionSelector: #replaceToolsFlap.
-					buttonRow addMorphBack: aButton.
-					aButton setBalloonText: 'Press here to place tools which use the above window-color choices  into the Tools flap.'.
-					aPanel addMorphBack: buttonRow.
-
-					aWindow _ aPanel wrappedInWindowWithTitle: 'Window Colors'.
-                        self currentHand attachMorph: aWindow.
-					aWindow world startSteppingSubmorphsOf: aPanel.]
+                        [aWindow _ aPanel wrappedInWindowWithTitle: 'Window Colors'.
+					" don't allow the window to be picked up by clicking inside "
+					aPanel on: #mouseDown send: #yourself to: aPanel.
+					self currentWorld addMorphCentered: aWindow.
+					aWindow activateAndForceLabelToShow ]
                 ifFalse:
                         [(aMiniWorld _ MVCWiWPasteUpMorph newWorldForProject: nil)
 						addMorph: aPanel.
