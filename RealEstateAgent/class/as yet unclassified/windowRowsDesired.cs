@@ -4,7 +4,7 @@ windowRowsDesired
 		ifTrue:
 			[1]
 		ifFalse:
-			[(Display usableArea height > 480)
+			[(self maximumUsableArea height > 480)
 				ifTrue:
 					[2]
 				ifFalse:
