@@ -1,0 +1,64 @@
+A PrimCallController (PCC) serves for switching external prim calls (primitiveExternalCall) on and off: this is an abstract class, instantiate one of the subclasses PCCByLiterals and PCCByCompilation.
+
+External prim calls are used to access internal and external modules (plugins) as shown by
+	SmalltalkImage current listLoadedModules.
+	SmalltalkImage current listBuiltinModules.
+Note: not loaded external modules (since they have not been called so far) are not shown by these methods.
+
+Highlight: dis/en-abling prims by a PCC works for both internal and external modules!
+
+
+To help you choosing the right subclass, some properties are listed in the following table:
+
+Functionality/Property							|	PCCByLiterals	PCCByCompilation
+------------------------------------------------------------------------------------------------------
+testing plugins									|		suited			not suited
+permanent disabling of external prim calls		|		no				yes
+------------------------------------------------------------------------------------------------------
+method changes visible in changeset				|		no				yes
+enabling survives snapshot/compilation			|		yes				yes
+disabling survives snapshot/compilation			|		no				yes
+speed disabling									|		fast				medium
+speed enabling									|		fast				slow
+CompiledMethod pointer valid after en/dis-abling	|		yes				no
+									
+Important: Be careful with mixing the use of different PCCs! PCCByLiterals does not see prims disabled by PCCByCompilation and vice versa. For playing around you should start with PCCByLiterals; use PCCByCompilation only, if you know what you are doing!
+
+In protocols 'ui controlling', 'ui logging' and 'ui querying' (please look into this class) are the most important user interface methods. Thereafter the methods in 'ui testing' could be of interest.
+
+
+Useful expressions:
+
+Controlling:
+	"Factorial example"
+	| pcc tDisabled tEnabled tEnabled2 |
+	pcc _ PCCByLiterals new logStream: Transcript. "logStream set here for more info"
+	pcc disableCallsIntoModule: 'LargeIntegers'.
+	tDisabled _ [1000 factorial] timeToRun.
+	pcc enableDisabled.
+	tEnabled _ [1000 factorial] timeToRun.
+	tEnabled2 _ [1000 factorial] timeToRun.
+	{tDisabled. tEnabled. tEnabled2}
+Note: You shouldn't switch off module 'LargeIntegers' for a longer time, since this slows down your system.
+
+Querying:
+	PCCByLiterals new methodsWithCall.								"all calls"
+	PCCByLiterals new methodsWithCall: 'prim1'.						"call in all modules or without module"
+	PCCByLiterals new methodsWithCallIntoModule: nil.				"all calls without module"
+	PCCByLiterals new methodsWithCallIntoModule: 'LargeIntegers'.	"all calls into module 'LargeIntegers'"
+	PCCByLiterals new
+		methodsWithCallIntoModule: 'LargeIntegers'
+		forClass: Integer.							"all calls into module 'LargeIntegers' in class Integer"
+	PCCByLiterals new
+		methodsWithCallIntoModule: 'LargeIntegers'
+		forClasses: Integer withAllSubclasses.		"all calls into module 'LargeIntegers' in class Integer withAllSubclasses"
+
+	| pcc | (pcc _ PCCByLiterals new) methodsWithCall
+			collect: [:mRef | {mRef. pcc extractCallModuleNames: mRef}].
+
+
+Structure:
+ treatedMethods				Dictionary of MethodReferences->#disabled/#enabled
+								-- contains changed methods and how they are changed last
+ logStream					WriteStream -- shows info about changed methods ifNotNil
+ changeStatusOfFailedCalls	Boolean -- if status of failed calls should be changed, default is false
