@@ -3,7 +3,7 @@ eToyRejectDropMorph: morphToDrop event: evt
 	| tm am |
 
 	tm _ TextMorph new 
-		beAllFont: ((TextStyle named: #ComicBold) fontOfSize: 24);
+		beAllFont: ((TextStyle named: Preferences standardEToysFont familyName) fontOfSize: 24);
 		contents: 'GOT IT!'.
 	(am _ AlignmentMorph new)
 		color: Color yellow;
@@ -15,13 +15,6 @@ eToyRejectDropMorph: morphToDrop event: evt
 		fullBounds;
 		position: (self bounds center - (am extent // 2));
 		openInWorld: self world.
-	(SampledSound soundNames includes: 'yum') ifFalse: [
-		(FileDirectory default fileExists: '') ifTrue: [
-			SampledSound addLibrarySoundNamed: 'yum' fromAIFFfileNamed: 'yum.aif'
-		].
-	].
-	(SampledSound soundNames includes: 'yum') ifTrue: [
-		SampledSound playSoundNamed: 'yum'
-	].
+	SoundService default playSoundNamed: 'yum' ifAbsentReadFrom: 'yum.aif'.
 	morphToDrop rejectDropMorphEvent: evt.		"send it back where it came from"
 	am delete
