@@ -1,0 +1,2 @@
+instructionPointer
+	^self cachedInstructionPointerAt: activeCachedContext
