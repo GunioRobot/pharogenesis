@@ -1,0 +1,18 @@
+This class is deprecated. Use the chronology package classes
+
+
+RuleSelectionCodeDate instances represent dates determined by some rule but the exact day of the month varies from year to year.  Once created they must be updated for a selected year to represent the exact day of that year.
+	It has a rule that selects exact day of the month by evaluating the selection block with the list of days occurring on that day of the week in the desired month as an argument.
+
+Typical Use:
+
+	RuleSelectionCodeDate instances are suitable for representing dates such as the last day of daylight saving time (the Saturday before the last Sunday in October) in the USA.
+
+Implementation:
+
+Instance variables:
+
+	(selectionRule in super class)	- a <monadicValuable> containing
+			the selection block to be evaluated.  The argument is the list
+			of days occurring on that day of the week in the desired
+			month.  It must return the desired day of the month 			which may be any <Integer>.
