@@ -7,3 +7,4 @@ super veryDeepInner: deepCopier.
 "arguments _ arguments.		All weakly copied"
 actWhen _ actWhen veryDeepCopyWith: deepCopier.
 oldColor _ oldColor veryDeepCopyWith: deepCopier.
+mouseDownTime _ nil.
