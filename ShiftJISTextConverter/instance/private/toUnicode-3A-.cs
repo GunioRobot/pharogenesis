@@ -1,3 +1,3 @@
 toUnicode: aChar
 
-	^ MultiCharacter leadingChar: JapaneseEnvironment leadingChar code: aChar asUnicode.
+	^ Character leadingChar: JapaneseEnvironment leadingChar code: aChar asUnicode.
