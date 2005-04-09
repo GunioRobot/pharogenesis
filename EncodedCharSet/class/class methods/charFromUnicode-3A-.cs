@@ -9,5 +9,5 @@ charFromUnicode: unicode
 		^ nil.
 	].
 
-	^ MultiCharacter leadingChar: self leadingChar code: index - 1.
+	^ Character leadingChar: self leadingChar code: index - 1.
 
