@@ -22,13 +22,13 @@ initialize   "self initialize"
 	order = 255 ifFalse: [self error: 'order problem'].
 
 	"a table for translating to lower case"
-	LowercasingTable _ String withAll: (Character allCharacters collect: [:c | c asLowercase]).
+	LowercasingTable _ String withAll: (Character allByteCharacters collect: [:c | c asLowercase]).
 
 	"a table for translating to upper case"
-	UppercasingTable _ String withAll: (Character allCharacters collect: [:c | c asUppercase]).
+	UppercasingTable _ String withAll: (Character allByteCharacters collect: [:c | c asUppercase]).
 
 	"a table for testing tokenish (for fast numArgs)"
-	Tokenish _ String withAll: (Character allCharacters collect:
+	Tokenish _ String withAll: (Character allByteCharacters collect:
 									[:c | c tokenish ifTrue: [c] ifFalse: [$~]]).
 
 	"CR and LF--characters that terminate a line"
