@@ -6,4 +6,4 @@ charAtKuten: anInteger
 	(a > 94) | (b > 94) ifTrue: [
 		self error: 'character code is not valid'.
 	].
-	^ MultiCharacter leadingChar: self leadingChar code: ((b - 1) * 94) + a - 1.
+	^ Character leadingChar: self leadingChar code: ((b - 1) * 94) + a - 1.
