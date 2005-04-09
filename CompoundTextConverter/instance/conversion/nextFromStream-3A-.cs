@@ -21,14 +21,14 @@ nextFromStream: aStream
 	size = 1 ifTrue: [
 		leadingChar = 0
 			ifTrue: [^ character]
-			ifFalse: [^ MultiCharacter leadingChar: leadingChar code: character asciiValue]
+			ifFalse: [^ Character leadingChar: leadingChar code: character asciiValue]
 	].
 	size = 2 ifTrue: [
 		character2 _ aStream basicNext.
 		character2 ifNil: [^ nil. "self errorMalformedInput"].
 		character _ character asciiValue - offset.
 		character2 _ character2 asciiValue - offset.
-		result _ MultiCharacter leadingChar: leadingChar code: character * 94 + character2.
+		result _ Character leadingChar: leadingChar code: character * 94 + character2.
 		^ result asUnicodeChar.
 		"^ self toUnicode: result"
 	].
