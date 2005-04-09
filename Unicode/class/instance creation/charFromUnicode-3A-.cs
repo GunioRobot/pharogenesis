@@ -1,3 +1,3 @@
 charFromUnicode: uniCode
 
-	^ MultiCharacter leadingChar: self leadingChar code: uniCode
+	^ Character leadingChar: self leadingChar code: uniCode
