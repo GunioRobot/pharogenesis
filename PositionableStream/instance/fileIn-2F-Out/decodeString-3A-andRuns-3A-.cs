@@ -17,7 +17,7 @@ decodeString: string andRuns: runsRaw
 	index _ 1.
 	runLength with: runValues do: [:length :leadingChar |
 		index to: index + length - 1 do: [:pos |
-			newString at: pos put: (MultiCharacter leadingChar: leadingChar code: (string at: pos) charCode).
+			newString at: pos put: (Character leadingChar: leadingChar code: (string at: pos) charCode).
 		].
 		index _ index + length.
 	].
