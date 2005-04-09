@@ -1,3 +1,3 @@
 isUnicode
 
-	^ false.
+	^ ((EncodedCharSet charsetAt: self leadingChar) isKindOf: LanguageEnvironment class).
