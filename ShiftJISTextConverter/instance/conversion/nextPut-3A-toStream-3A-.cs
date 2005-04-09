@@ -1,15 +1,6 @@
 nextPut: aCharacter toStream: aStream 
 	| value leadingChar aChar |
-	aStream isBinary ifTrue: [
-		aCharacter class == Character ifTrue: [
-			aStream basicNextPut: aCharacter.
-			^ aStream.
-		].
-		aCharacter class == MultiCharacter ifTrue: [
-			aStream nextInt32Put: aCharacter value.
-			^ aStream.
-		].
-	].
+	aStream isBinary ifTrue: [^aCharacter storeBinaryOn: aStream].
 	aCharacter isUnicode ifFalse: [	
 		aChar _ aCharacter.
 		value _ aCharacter charCode.
