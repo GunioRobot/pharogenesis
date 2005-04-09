@@ -5,16 +5,13 @@ at: index put: aCharacter
 	whatIsAPrimitive."
 
 	<primitive: 64>
-	(aCharacter isMemberOf: Character) ifTrue: [	
-		index isInteger
-			ifTrue: [self errorSubscriptBounds: index]
-			ifFalse: [self errorNonIntegerIndex]
-	] ifFalse: [
-		(aCharacter isMemberOf: MultiCharacter) 
-			ifTrue: [
-				self becomeForward: (MultiString from: self).
-				self at: index put: aCharacter.
-			] ifFalse: [	
-				self error: 'Strings only store Characters'
-			]
+	aCharacter isCharacter 
+		ifFalse:[^self errorImproperStore].
+	aCharacter isOctetCharacter ifFalse:[
+		"Convert to MultiByteString"
+		self becomeForward: (MultiString from: self).
+		^self at: index put: aCharacter.
 	].
+	index isInteger
+		ifTrue: [self errorSubscriptBounds: index]
+		ifFalse: [self errorNonIntegerIndex]
