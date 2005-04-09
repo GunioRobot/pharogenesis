@@ -5,7 +5,7 @@ toSqueak: char
 
 	value < 128 ifTrue: [^ char].
 	value > 255 ifTrue: [^ char].
-	^ MultiCharacter leadingChar: GreekEnvironment leadingChar code: (#(
+	^ Character leadingChar: GreekEnvironment leadingChar code: (#(
 		16r20AC 16rFFFD 16r201A 16r0192 16r201E 16r2026 16r2020 16r2021
 		16rFFFD 16r2030 16rFFFD 16r2039 16rFFFD 16rFFFD 16rFFFD 16rFFFD
 		16rFFFD 16r2018 16r2019 16r201C 16r201D 16r2022 16r2013 16r2014
