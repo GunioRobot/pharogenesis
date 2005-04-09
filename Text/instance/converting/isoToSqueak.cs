@@ -1,2 +1,2 @@
 isoToSqueak
-	^ self class new setString: string isoToSqueak setRuns: runs copy
+	^self "no longer needed"
