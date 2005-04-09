@@ -5,6 +5,6 @@ mutateJISX0208StringToUnicode
 		c _ self at: i.
 		(c leadingChar = JISX0208 leadingChar or: [
 			c leadingChar = (JISX0208 leadingChar bitShift: 2)]) ifTrue: [
-			self basicAt: i put: (MultiCharacter leadingChar: JapaneseEnvironment leadingChar code: (c asUnicode)) asciiValue.
+			self basicAt: i put: (Character leadingChar: JapaneseEnvironment leadingChar code: (c asUnicode)) asciiValue.
 		]
 	].
