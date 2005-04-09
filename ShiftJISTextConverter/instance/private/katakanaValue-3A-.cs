@@ -1,6 +1,6 @@
 katakanaValue: code
 
-	^ MultiCharacter leadingChar: JapaneseEnvironment leadingChar code: (#(
+	^ Character leadingChar: JapaneseEnvironment leadingChar code: (#(
 	16rFFFD 16rFF61 16rFF62 16rFF63 16rFF64 16rFF65 16rFF66 16rFF67
 	16rFF68 16rFF69 16rFF6A 16rFF6B 16rFF6C 16rFF6D 16rFF6E 16rFF6F
 	16rFF70 16rFF71 16rFF72 16rFF73 16rFF74 16rFF75 16rFF76 16rFF77
