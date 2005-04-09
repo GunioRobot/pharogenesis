@@ -1,15 +1,6 @@
 nextPut: aCharacter toStream: aStream 
 	| leadingChar nBytes mask shift ucs2code |
-	aStream isBinary ifTrue: [
-		aCharacter class == Character ifTrue: [
-			aStream basicNextPut: aCharacter.
-			^ aStream.
-		].
-		aCharacter class = MultiCharacter ifTrue: [
-			aStream nextInt32Put: aCharacter value.
-			^ aStream.
-		].
-	].
+	aStream isBinary ifTrue: [^aCharacter storeBinaryOn: aStream].
 	leadingChar _ aCharacter leadingChar.
 	(leadingChar = 0 and: [aCharacter asciiValue < 128]) ifTrue: [
 		aStream basicNextPut: aCharacter.
