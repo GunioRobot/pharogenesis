@@ -1,5 +1,4 @@
 allCharacters
-	^ (0 to: 255)
-		collect: [:v | Character value: v]
-
+	"This name is obsolete since only the characters that will fit in a byte can be queried"
+	^self allByteCharacters
 	
