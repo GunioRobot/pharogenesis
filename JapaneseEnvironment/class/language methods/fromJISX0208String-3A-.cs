@@ -1,3 +1,3 @@
 fromJISX0208String: aString
 
-	^ aString collect: [:each | MultiCharacter leadingChar: JapaneseEnvironment leadingChar code: (each asUnicode)].
+	^ aString collect: [:each | Character leadingChar: JapaneseEnvironment leadingChar code: (each asUnicode)].
