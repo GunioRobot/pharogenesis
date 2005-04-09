@@ -18,5 +18,5 @@ nextFromStream: aStream
 		value1 _ value1 + 1.
 		value2 _ value2 - 158
 	] ifFalse: [value2 _ value2 - 64].
-	result _ MultiCharacter leadingChar: self leadingChar code: value1 * 94 + value2.
+	result _ Character leadingChar: self leadingChar code: value1 * 94 + value2.
 	^ self toUnicode: result
