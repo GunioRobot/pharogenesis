@@ -13,5 +13,5 @@ nextFromStream: aStream
 	(value1 < 0 or: [value1 > 93]) ifTrue: [^ nil].
 	(value2 < 0 or: [value2 > 93]) ifTrue: [^ nil].
 
-	nonUnicodeChar _ MultiCharacter leadingChar: self leadingChar code: value1 * 94 + value2.
-	^ MultiCharacter leadingChar: self languageEnvironment leadingChar code: nonUnicodeChar asUnicode.
+	nonUnicodeChar _ Character leadingChar: self leadingChar code: value1 * 94 + value2.
+	^ Character leadingChar: self languageEnvironment leadingChar code: nonUnicodeChar asUnicode.
