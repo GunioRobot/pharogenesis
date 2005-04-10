@@ -4,7 +4,7 @@ exceptions
 
 	| aSel |
 	answers first class == Symbol ifFalse: [^ self].
-	thisData first first class == String ifFalse: [^ self].
+	thisData first first isString ifFalse: [^ self].
 	aSel _ #asSymbol.
 	(self testPerfect: aSel) ifTrue: [
 		selector add: aSel.
