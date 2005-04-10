@@ -11,7 +11,7 @@ verifyStructure
 		"For missing classes, there needs to be a method in SmartRefStream like 
 			#rectangleoc2 that returns the new class."
 		newClass _ self mapClass: nm.	   "does (renamed at: nm put: newClass name)"
-		newClass class == String ifTrue: [^ newClass].  "error, fileIn needed"
+		newClass isString ifTrue: [^ newClass].  "error, fileIn needed"
 		newList _ (Array with: newClass classVersion), (newClass allInstVarNames).
 		oldList _ structures at: nm.
 		newList = oldList 
