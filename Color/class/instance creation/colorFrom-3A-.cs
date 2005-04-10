@@ -3,8 +3,8 @@ colorFrom: parm
 
 	| aColor firstParm |
 	(parm isKindOf: Color) ifTrue: [^ parm].
-	(parm isKindOf: Symbol) ifTrue: [^ self perform: parm].
-	(parm isKindOf: String) ifTrue: [^ self fromString: parm].
+	(parm isSymbol) ifTrue: [^ self perform: parm].
+	(parm isString) ifTrue: [^ self fromString: parm].
 	((parm isKindOf: SequenceableCollection) and: [parm size > 0])
 		ifTrue:
 			[firstParm := parm first.
