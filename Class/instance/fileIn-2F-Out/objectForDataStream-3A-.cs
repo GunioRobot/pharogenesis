@@ -4,8 +4,8 @@ objectForDataStream: refStrm
 
 	refStrm insideASegment
 		ifFalse: ["Normal use"
-			^ DiskProxy global: self theNonMetaClass name selector: #yourself
-				args: #()]
+			^ DiskProxy global: self theNonMetaClass name selector: #withClassVersion:
+				args: {self classVersion}]
 		ifTrue: ["recording objects to go into an ImageSegment"
 			self isSystemDefined ifFalse: [^ self].		"do trace Player classes"
 			(refStrm rootObject includes: self) ifTrue: [^ self].
