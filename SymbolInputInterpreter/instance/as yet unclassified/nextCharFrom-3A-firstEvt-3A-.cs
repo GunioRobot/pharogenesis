@@ -2,5 +2,5 @@ nextCharFrom: sensor firstEvt: evtBuf
 
 	| keyValue |
 	keyValue := evtBuf third.
-	evtBuf fifth > 1 ifTrue: [^ keyValue asCharacter squeakToIso].
+	evtBuf fifth > 1 ifTrue: [^ keyValue asCharacter macToSqueak].
 	^ (self symbolKeyValueToUnicode: keyValue) asCharacter.
