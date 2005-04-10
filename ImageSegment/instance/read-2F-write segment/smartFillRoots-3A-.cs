@@ -7,10 +7,8 @@ IdentityDictionary of objects to replace in outPointers."
 	blockers _ dummy blockers.
 	known _ (refs _ dummy references) size.
 	refs fasterKeys do: [:obj | "copy keys to be OK with removing items"
-		(obj class == Symbol) ifTrue: [refs removeKey: obj.
+		(obj isSymbol) ifTrue: [refs removeKey: obj.
 known _ known-1].
-		(obj class == MultiSymbol) ifTrue: [refs removeKey:
-obj.  known _ known-1].
 		(obj class == PasteUpMorph) ifTrue: [
 			obj isWorldMorph & (obj owner == nil) ifTrue: [
 				obj == dummy project world ifFalse: [
