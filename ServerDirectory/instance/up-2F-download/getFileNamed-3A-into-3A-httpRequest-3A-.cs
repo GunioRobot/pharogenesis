@@ -12,7 +12,7 @@ getFileNamed: fileNameOnServer into: dataStream httpRequest: requestString
 	self isTypeHTTP ifTrue: [
 		resp _ HTTPSocket httpGet: (self fullNameFor: fileNameOnServer) 
 				args: nil accept: 'application/octet-stream' request: requestString.
-		resp class == String ifTrue: [^ dataStream].	"error, no data"
+		resp isString ifTrue: [^ dataStream].	"error, no data"
 		dataStream copyFrom: resp.
 		dataStream dataIsValid.
 		^ dataStream].
