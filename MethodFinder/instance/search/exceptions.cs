@@ -3,7 +3,7 @@ exceptions
 	asSymbol -- want to be able to produce it, but do not want to make every string submitted into a Symbol!" 
 
 	| aSel |
-	answers first class == Symbol ifFalse: [^ self].
+	answers first isSymbol ifFalse: [^ self].
 	thisData first first isString ifFalse: [^ self].
 	aSel _ #asSymbol.
 	(self testPerfect: aSel) ifTrue: [
