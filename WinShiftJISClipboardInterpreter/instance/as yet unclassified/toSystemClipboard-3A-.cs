@@ -5,4 +5,4 @@ toSystemClipboard: text
 	string _ text asString.
 	string isAsciiString ifTrue: [^ string asOctetString].
 	string isOctetString ifTrue: [^ string "hmm"].
-	^ string convertToSystemString isoToSqueak.
+	^ string convertToSystemString squeakToMac.
