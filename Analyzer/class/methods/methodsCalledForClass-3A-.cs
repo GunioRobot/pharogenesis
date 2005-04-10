@@ -3,6 +3,6 @@ methodsCalledForClass: aClass
 	r := Set new.
 	aClass methodDict values 
 		do: [:cm | (cm literals
-				select: [:l | l isKindOf: Symbol])
+				select: [:l | l isSymbol])
 				do: [:ll | r add: ll]].
 	^ r
