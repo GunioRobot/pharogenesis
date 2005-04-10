@@ -2,7 +2,7 @@ drawString: s from: firstIndex to: lastIndex in: boundsRect font: fontOrNil colo
 	| fontIndex str |
 	fontIndex := self establishFont: (fontOrNil ifNil: [ TextStyle defaultFont ]).
 	str _ s asString.
-	str class = MultiString ifTrue: [
+	str isMultiByteString ifTrue: [
 		self sendCommand: {
 			String with: CanvasEncoder codeMultiText.
 			(str copyFrom: firstIndex to: lastIndex) asByteArray asString.
