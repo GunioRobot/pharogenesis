@@ -20,12 +20,12 @@ acceptSortedContentsFrom: aHolder
 							"since we came from elsewhere, cached strings are wrong"
 							self removeProperty: #allTextUrls.
 							self removeProperty: #allText]].
-			toAdd class == String 
+			toAdd isString 
 				ifTrue: 
 					["a url"
 
 					toAdd := pages detect: [:aPage | aPage url = toAdd] ifNone: [toAdd]].
-			toAdd class == String 
+			toAdd isString 
 				ifTrue: 
 					[sqPage := SqueakPageCache atURL: toAdd.
 					toAdd := sqPage contentsMorph 
