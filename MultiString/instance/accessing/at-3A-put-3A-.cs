@@ -1,6 +1,4 @@
 at: index put: aCharacter 
-
-	aCharacter isCharacter ifFalse: [
-		self error: 'MultiStrings only store (descendents of) Characters'.
-	].
-	self basicAt: index put: aCharacter asciiValue.
+	"Store the Character in the field of the receiver indicated by the index."
+	aCharacter isCharacter ifFalse:[self errorImproperStore].
+	self wordAt: index put: aCharacter asInteger.
