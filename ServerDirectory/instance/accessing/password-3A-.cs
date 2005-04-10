@@ -1,7 +1,7 @@
 password: pp
 
 	passwordHolder _ Password new.
-	pp class == String 
+	pp isString 
 		ifTrue: [passwordHolder cache: pp. ^ self].
 	pp isInteger 
 		ifTrue: [passwordHolder sequence: pp]
