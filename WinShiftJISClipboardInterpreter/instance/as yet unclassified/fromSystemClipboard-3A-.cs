@@ -1,3 +1,3 @@
 fromSystemClipboard: aString
 
-	^ aString squeakToIso convertFromSystemString
+	^ aString macToSqueak convertFromSystemString
