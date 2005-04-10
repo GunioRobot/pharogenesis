@@ -21,7 +21,7 @@ sz _ argMap size.
 		(Blocks includes: (Array with: activeSel with: num)) ifTrue: [
 			(argList at: num) class == BlockContext ifFalse: [^ false]]].
 	rec _ (AddAndRemove includes: activeSel) 
-			ifTrue: [(thisData at: ii) first class == Symbol ifTrue: [^ false].
+			ifTrue: [(thisData at: ii) first isSymbol ifTrue: [^ false].
 						"vulnerable to modification"
 				(thisData at: ii) first copyTwoLevel] 	"protect from damage"
 			ifFalse: [(thisData at: ii) first].
