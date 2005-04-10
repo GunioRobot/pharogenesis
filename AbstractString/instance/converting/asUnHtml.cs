@@ -14,9 +14,11 @@ they were in text."
 								rest = 'lt' ifTrue: [out nextPut: $<].
 								rest = 'gt' ifTrue: [out nextPut: $>].
 								rest = 'amp' ifTrue: [out nextPut: $&].
+								rest = 'deg' ifTrue: [out nextPut: $°].
+								rest = 'quot' ifTrue: [out nextPut: $"].
 								did = out position ifTrue: [
-									self error: 'new HTML char encoding'.
-									"Please add it to this code"]]
+									self error: 'unknown encoded HTML char'.
+									"Please add it to this method"]]
 						ifFalse: [out nextPut: char]].
 		].
 	^ out contents
