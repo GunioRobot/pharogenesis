@@ -3,7 +3,7 @@ contents: textOrString
 	| tm newText atts |
 
 	(tm _ self findA: TextMorph) ifNil: [^ nil].
-	textOrString class == String ifTrue: [
+	textOrString isString ifTrue: [
 		tm contents ifNotNil: ["Keep previous properties of the field"
 			newText _ textOrString asText.
 			atts _ tm contents attributesAt: 1.
