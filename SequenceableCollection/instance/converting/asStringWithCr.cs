@@ -5,7 +5,7 @@ usually strings.
 	| labelStream |
 	labelStream _ WriteStream on: (String new: 200).
 	self do: [:each |
-		(each isKindOf: AbstractString)
+		each isString
 			ifTrue: [labelStream nextPutAll: each; cr]
 			ifFalse: [each printOn: labelStream. labelStream cr]].
 	self size > 0 ifTrue: [labelStream skip: -1].
