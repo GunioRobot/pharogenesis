@@ -21,7 +21,7 @@ literalScannedAs: scannedLiteral notifying: requestor
 					ifTrue: [^ nil->assoc value class]].
 			 requestor notify: 'No such metaclass'.
 			 ^false].
-	(key isMemberOf: Symbol)
+	(key isSymbol)
 		ifTrue: "##<global var name>"
 			[(self bindingOf: key) ifNotNilDo:[:assoc | ^assoc].
 			Undeclared at: key put: nil.
