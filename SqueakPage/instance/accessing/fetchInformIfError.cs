@@ -5,7 +5,7 @@ fetchInformIfError
 	SqueakPageCache write.		"sorry about the pause"
 	Cursor wait showWhile: [
 		strm _ (ServerFile new fullPath: url) asStream].
-	strm class == String ifTrue: [self inform: 'Sorry, ',strm. ^ nil].	"<<<<< Note Diff"
+	strm isString ifTrue: [self inform: 'Sorry, ',strm. ^ nil].	"<<<<< Note Diff"
 	(url beginsWith: 'file:') ifTrue: [Transcript show: 'Fetching  ', url; cr].	
 	page _ strm fileInObjectAndCode.
 	page isMorph 
