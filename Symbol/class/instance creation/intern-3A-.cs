@@ -1,8 +1,7 @@
 intern: aStringOrSymbol 
 
-	(aStringOrSymbol class == MultiString
-			and: [aStringOrSymbol isOctetString not])
-		ifTrue: [^ MultiSymbol intern: aStringOrSymbol].
+	aStringOrSymbol isOctetString 
+		ifFalse:[^MultiSymbol intern: aStringOrSymbol].
 	^ (self lookup: aStringOrSymbol)
 		ifNil: [NewSymbols
 				add: ((aStringOrSymbol isKindOf: Symbol)
