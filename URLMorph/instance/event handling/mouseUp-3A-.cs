@@ -2,7 +2,7 @@ mouseUp: evt
 	| pg ow newPage mm bookUrl bk |
 	"If url of a book, open it to that page, or bring it in and open to that page."
 	book ifNotNil: [book == false ifFalse: [
-		(bookUrl _ book) class == String ifFalse: [
+		(bookUrl _ book) isString ifFalse: [
 			bookUrl _ (SqueakPage stemUrl: url), '.bo'].
 		(bk _ BookMorph isInWorld: self world withUrl: bookUrl) class ~~ Symbol 
 			ifTrue: [^ bk goToPageUrl: url].
