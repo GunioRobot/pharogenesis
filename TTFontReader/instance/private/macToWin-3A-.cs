@@ -1,2 +1,2 @@
 macToWin: index
-	^ (index - 1) asCharacter squeakToIso asciiValue + 1
+	^ (index - 1) asCharacter macToSqueak asciiValue + 1
