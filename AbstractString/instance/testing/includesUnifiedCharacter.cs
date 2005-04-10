@@ -1,3 +1,2 @@
 includesUnifiedCharacter
-
-	self subclassResponsibility.
+	^false
