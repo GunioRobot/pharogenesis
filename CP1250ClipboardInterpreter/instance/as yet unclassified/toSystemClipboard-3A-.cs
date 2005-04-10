@@ -8,5 +8,5 @@ toSystemClipboard: aString
 	aString do: [:each |
 		r _ converter fromSqueak: each.
 		r charCode < 255 ifTrue: [
-		result nextPut: r isoToSqueak]].
+		result nextPut: r squeakToMac]].
 	^ result contents.
