@@ -18,7 +18,7 @@ xLitQuote
 				ifFalse:
 					[(tokenType==#literal)
 						ifTrue:
-							[((token isMemberOf: Symbol) or: [token isMemberOf: MultiSymbol])
+							[(token isSymbol)
 								ifTrue: "##word"
 									[token _ token "May want to move toward ANSI here"]]
 						ifFalse:
