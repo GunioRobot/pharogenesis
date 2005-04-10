@@ -2,9 +2,9 @@ objectForDataStream: refStrm
 	"I am about to be written on an object file.  It would be bad to write a whole BookMorph out.  Store a string that is the url of the book or page in my inst var."
 
 	| clone bookUrl bb stem ind |
-	(bookMorph class == String) & (page class == String) ifTrue: [
+	(bookMorph isString) & (page isString) ifTrue: [
 		^ super objectForDataStream: refStrm].
-	(bookMorph isNil) & (page class == String) ifTrue: [
+	(bookMorph isNil) & (page isString) ifTrue: [
 		^ super objectForDataStream: refStrm].
 	(bookMorph isNil) & (page url notNil) ifTrue: [
 		^ super objectForDataStream: refStrm].
