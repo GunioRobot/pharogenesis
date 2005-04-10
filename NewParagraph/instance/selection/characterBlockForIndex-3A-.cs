@@ -2,7 +2,7 @@ characterBlockForIndex: index
 	"Answer a CharacterBlock for the character in text at index."
 	| line |
 	line _ lines at: (self lineIndexForCharacter: index).
-	^ ((text string isKindOf: MultiString) ifTrue: [
+	^ ((text string isMultiByteString) ifTrue: [
 		MultiCharacterBlockScanner new text: text textStyle: textStyle
 	] ifFalse: [
 		CharacterBlockScanner new text: text textStyle: textStyle
