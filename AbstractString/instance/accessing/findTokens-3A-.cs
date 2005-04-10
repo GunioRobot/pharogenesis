@@ -4,7 +4,7 @@ findTokens: delimiters
 	| tokens keyStart keyStop separators |
 
 	tokens _ OrderedCollection new.
-	separators _ delimiters class == Character 
+	separators _ delimiters isCharacter 
 		ifTrue: [Array with: delimiters]
 		ifFalse: [delimiters].
 	keyStop _ 1.
