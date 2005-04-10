@@ -4,7 +4,7 @@ fromURL: url
 	| strm |
 	Cursor wait showWhile: [
 		strm _ (ServerFile new fullPath: url) asStream].
-	strm class == String ifTrue: [self inform: 'Sorry, ',strm. ^ nil].
+	strm isString ifTrue: [self inform: 'Sorry, ',strm. ^ nil].
 	self setProperty: #url toValue: url.
 	self fromRemoteStream: strm.
 	^ self
