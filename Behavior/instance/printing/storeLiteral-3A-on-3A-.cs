@@ -11,7 +11,7 @@ storeLiteral: aCodeLiteral on: aStream
 		ifTrue:
 			[aStream nextPutAll: '###'; nextPutAll: value soleInstance name.
 			 ^self].
-	((key isMemberOf: Symbol) and: [(self bindingOf: key) notNil])
+	((key isSymbol) and: [(self bindingOf: key) notNil])
 		ifTrue:
 			[aStream nextPutAll: '##'; nextPutAll: key.
 			 ^self].
