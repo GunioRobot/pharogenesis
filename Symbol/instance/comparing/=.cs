@@ -1,8 +1,6 @@
-= another
-
-	"Use == between two symbols..."
-	self == another ifTrue: [^ true].  "Was == "
-	another class == Symbol ifTrue: [^ false].  "Was not == "
-
-	"Otherwise use string =..."
-	^ super = another
+= aSymbol
+	"Compare the receiver and aSymbol." 
+	self == aSymbol ifTrue: [^ true].
+	self class == aSymbol class ifTrue: [^ false].
+	"Use String comparison otherwise"
+	^ super = aSymbol
