@@ -1,2 +1,2 @@
 winToMac: index
-	^ (index - 1) asCharacter isoToSqueak asciiValue + 1
+	^ (index - 1) asCharacter squeakToMac asciiValue + 1
