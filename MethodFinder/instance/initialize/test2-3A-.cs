@@ -10,7 +10,7 @@ test2: anArray
 		].
 		sub class == Array ifTrue: [
 			sub do: [:element | 
-				element class == String ifTrue: [element first asciiValue < 32 ifTrue: [
+				element isString ifTrue: [element first asciiValue < 32 ifTrue: [
 						self error: 'store into string in data']].
 				element class == Association ifTrue: [
 					element value class == Association ifTrue: [
