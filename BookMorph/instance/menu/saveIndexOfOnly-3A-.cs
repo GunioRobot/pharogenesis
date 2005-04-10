@@ -6,10 +6,10 @@ saveIndexOfOnly: aPage
 	mine ifNil: [^ self saveIndexOnURL].
 	Cursor wait showWhile: [strm _ (ServerFile new fullPath: mine)].
 	strm ifNil: [^ self saveIndexOnURL].
-	strm class == String ifTrue: [^ self saveIndexOnURL].
+	strm isString ifTrue: [^ self saveIndexOnURL].
 	strm exists ifFalse: [^ self saveIndexOnURL].	"write whole thing if missing"
 	strm _ strm asStream.
-	strm class == String ifTrue: [^ self saveIndexOnURL].
+	strm isString ifTrue: [^ self saveIndexOnURL].
 	remote _ strm fileInObjectAndCode.
 	dict _ remote first.
 	allText _ dict at: #allText ifAbsent: [nil].	"remote, not local"
