@@ -99,8 +99,8 @@ httpGetDocument: url args: args accept: mimeType request: requestString
 					sock responseCode first = $4 ifTrue: [^header , aStream contents]].
 			sock destroy.
 			"Always OK to destroy!"
-			aStream class ~~ String 
-				ifTrue: 
+			aStream isString
+				ifFalse:
 					[^MIMEDocument 
 						contentType: type
 						content: aStream contents
