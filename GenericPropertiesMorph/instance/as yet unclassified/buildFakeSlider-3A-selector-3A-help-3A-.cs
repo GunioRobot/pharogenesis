@@ -1,7 +1,7 @@
 buildFakeSlider: nameStringOrSymbol selector: aSymbol help: helpString 
 	| col |
 	col := self inAColumn: { 
-						(nameStringOrSymbol isKindOf: Symbol) 
+						(nameStringOrSymbol isSymbol) 
 							ifTrue: 
 								[(UpdatingStringMorph new)
 									useStringFormat;
