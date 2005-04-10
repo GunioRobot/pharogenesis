@@ -10,6 +10,7 @@ spaceUsed
 		method literals do: [:lit |
 			(lit isMemberOf: Array) ifTrue: [space _ space + ((lit size + 1) * 4)].
 			(lit isMemberOf: Float) ifTrue: [space _ space + 12].
+self flag: #ByteString.
 			(lit isMemberOf: String) ifTrue: [space _ space + (lit size + 6)].
 			(lit isMemberOf: LargeNegativeInteger) ifTrue: [space _ space + ((lit size + 1) * 4)].
 			(lit isMemberOf: LargePositiveInteger) ifTrue: [space _ space + ((lit size + 1) * 4)]]].
