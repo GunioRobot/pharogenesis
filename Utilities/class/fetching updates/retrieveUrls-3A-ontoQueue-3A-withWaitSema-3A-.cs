@@ -15,7 +15,7 @@ retrieveUrls: urls ontoQueue: queue withWaitSema: waitSema
 					waitSema wait.
 					queue nextPut: url.
 					doc _ HTTPClient httpGet: url.
-					doc class == String
+					doc isString
 						ifTrue: [queue nextPut: #failed.
 							UpdateDownloader _ nil.
 							Processor activeProcess terminate]
