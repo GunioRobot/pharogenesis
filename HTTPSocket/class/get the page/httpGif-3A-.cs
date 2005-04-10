@@ -5,7 +5,7 @@ httpGif: url
 
 	| doc ggg |
 	doc _ self httpGet: url accept: 'image/gif'.
-	doc class == String ifTrue: [
+	doc isString ifTrue: [
 		self inform: 'The server with that GIF is not responding'.
 		^ ColorForm extent: 20@20 depth: 8].
 	doc binary; reset.
