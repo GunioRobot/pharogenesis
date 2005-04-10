@@ -7,8 +7,7 @@ nextPut: anObject
 	whatIsAPrimitive."
 
 	<primitive: 66>
-self flag: #ByteString.
-	((collection class == String) and: [
+	((collection class == ByteString) and: [
 		anObject isCharacter and:[anObject isOctetCharacter not]]) ifTrue: [
 			collection _ (MultiString from: collection).
 			^self nextPut: anObject.
