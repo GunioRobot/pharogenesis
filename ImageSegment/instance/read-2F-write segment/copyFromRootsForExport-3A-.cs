@@ -4,7 +4,7 @@ copyFromRootsForExport: rootArray
 	arrayOfRoots _ rootArray.
 	Smalltalk forgetDoIts.
 	"self halt."
-	symbolHolder _ Symbol allInstances, MultiSymbol allInstances.	"Hold onto Symbols with strong pointers, 
+	symbolHolder _ Symbol allSymbols.	"Hold onto Symbols with strong pointers, 
 		so they will be in outPointers"
 	(newRoots _ self rootsIncludingPlayers) ifNotNil: [
 		arrayOfRoots _ newRoots].		"world, presenter, and all Player classes"
