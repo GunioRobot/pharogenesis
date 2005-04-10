@@ -12,8 +12,7 @@ initialize
 	t at: True put: 2.   refTypes add: 0.
 	t at: False put: 3.   refTypes add: 0.
 	t at: SmallInteger put: 4.	 refTypes add: 0.
-self flag: #ByteString.
-	t at: String put: 5.   refTypes add: 1.
+	t at: ByteString put: 5.   refTypes add: 1.
 	t at: Symbol put: 6.   refTypes add: 1.
 	t at: ByteArray put: 7.   refTypes add: 1.
 	t at: Array put: 8.   refTypes add: 1.
@@ -30,7 +29,7 @@ self flag: #ByteString.
 	"type ID 16 is an instance with short header.  See beginInstance:size:"
 		refTypes add: 1.
 self flag: #ByteArray.
-	t at: String put: 17.   refTypes add: 1.	"new String format, 1 or 4 bytes of length"
+	t at: ByteString put: 17.   refTypes add: 1.	"new String format, 1 or 4 bytes of length"
 	t at: WordArray put: 18.  refTypes add: 1.	"bitmap-like"
 	t at: WordArrayForSegment put: 19.  refTypes add: 1.		"bitmap-like"
 	t at: SoundBuffer put: 20.  refTypes add: 1.	"And all other word arrays, both 
