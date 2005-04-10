@@ -1,0 +1,3 @@
+abstractStringx0
+
+	^ String
