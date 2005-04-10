@@ -4,6 +4,7 @@ initShapeDicts
 	self flag: #bobconv.	
 
 	"These must stay constant.  When structures read in, then things can change."
+self flag: #ByteString.
 	steady _ {Array. Dictionary. Association. String. SmallInteger} asSet.
 
 	renamed ifNil: [
