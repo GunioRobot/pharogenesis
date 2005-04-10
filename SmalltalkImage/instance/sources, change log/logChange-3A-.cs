@@ -4,11 +4,7 @@ logChange: aStringOrText
 	(SourceFiles isNil or: [(SourceFiles at: 2) == nil]) ifTrue: [^ self].
 	self assureStartupStampLogged.
 
-	aStringOrText isText
-		ifTrue: [aString _ aStringOrText string]
-		ifFalse: [aString _ aStringOrText].
-	(aString isKindOf: AbstractString)
-		ifFalse: [self error: 'can''t log this change'].
+	aString := aStringOrText asString.
 	(aString findFirst: [:char | char isSeparator not]) = 0
 		ifTrue: [^ self].  "null doits confuse replay"
 	(changesFile _ SourceFiles at: 2).
