@@ -20,7 +20,7 @@ answ = 1 ifTrue: [
 		ifFalse: [newName _ choice.
 			answ _ Smalltalk at: newName asSymbol 
 				ifAbsent: ['conversion method needed'].
-			answ class == String ifFalse: [renamed at: oldName asSymbol put: answ name]]].
+			answ isString ifFalse: [renamed at: oldName asSymbol put: answ name]]].
 (answ = 3) | (answ = 0) ifTrue: [self close.
 		^ 'conversion method needed'].
 answ = 2 ifTrue: [answ _ 'conversion method needed'].
