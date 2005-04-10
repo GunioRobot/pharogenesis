@@ -10,7 +10,7 @@ newDayOfWeek: dayName selectionRule: positionName
 	<RuleDate>		new
 	"
 	| daySymbol newRuleDate positionSymbol |
-	(dayName isMemberOf: String)
+	(dayName isString)
 		ifFalse: [^ Error signal: 'Day name: "' , dayName , '" is not a String.'].
 	daySymbol := dayName asLowercase.
 	daySymbol at: 1 put: (daySymbol at: 1) asUppercase.
