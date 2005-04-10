@@ -24,7 +24,7 @@ Three cases for files from older versions of the system:
 
 		anObject _ anObject readDataFrom: self size: instSize.
 		self setCurrentReference: refPosn.  "before returning to next"
-		isMultiSymbol ifTrue: [^ MultiSymbol internLoadedSymbol: anObject.].
+		isMultiSymbol ifTrue: [^ Symbol intern: anObject asString].
 		^ anObject].
 	oldInstVars _ structures at: className ifAbsent: [
 			self error: 'class is not in structures list'].	"Missing in object file"
