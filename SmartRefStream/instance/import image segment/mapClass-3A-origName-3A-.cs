@@ -8,6 +8,7 @@ mapClass: newClass origName: originalName
 		"instances in the segment have the right shape"
 	oldInstVars _ structures at: originalName ifAbsent: [
 			self error: 'class is not in structures list'].	"Missing in object file"
+	(newName == #ByteString and:[originalName == #String]) ifTrue:[^newClass].
 	fakeClass _ Object subclass: ('Fake37', originalName) asSymbol
 		instanceVariableNames: oldInstVars allButFirst
 		classVariableNames: ''
