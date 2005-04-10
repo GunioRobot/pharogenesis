@@ -4,7 +4,7 @@ fetchContentsIfAbsent: failBlock
 	SqueakPageCache write.		"sorry about the pause"
 	Cursor wait showWhile: [
 		strm _ (ServerFile new fullPath: url) asStream].
-	strm class == String ifTrue: [^ failBlock value].		
+	strm isString ifTrue: [^ failBlock value].		
 	page _ strm fileInObjectAndCode.
 	page isMorph ifTrue: [contentsMorph _ page].	"may be a bare morph"
 	"copy over the state"
