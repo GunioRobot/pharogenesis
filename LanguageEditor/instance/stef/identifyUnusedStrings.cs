@@ -5,5 +5,5 @@ identifyUnusedStrings
 			Transcript show: each.
 			Transcript show: (Smalltalk
 					allSelect: [:method | method
-							hasLiteralSuchThat: [:lit | lit class == String
+							hasLiteralSuchThat: [:lit | lit isString
 									and: [lit includesSubstring: each caseSensitive: true]]]) size printString; cr]
