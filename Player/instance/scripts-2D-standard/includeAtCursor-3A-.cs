@@ -3,7 +3,7 @@ includeAtCursor: aPlayer
 
 	| aCostume |
 	(aPlayer isNil or: [aPlayer == self]) ifTrue: [^self].
-	(aPlayer class == Text or: [aPlayer class == String]) 
+	(aPlayer isText or: [aPlayer isString]) 
 		ifTrue: 
 			[^ self costume class == TextFieldMorph 
 				ifTrue: [self costume append: aPlayer]
