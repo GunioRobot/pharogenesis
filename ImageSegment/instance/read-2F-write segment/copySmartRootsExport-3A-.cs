@@ -4,7 +4,7 @@ copySmartRootsExport: rootArray
 	Smalltalk forgetDoIts.
 
 	"self halt."
-	symbolHolder _ Symbol allInstances, MultiSymbol allInstances.	"Hold onto Symbols with strong pointers, 
+	symbolHolder _ Symbol allSymbols.	"Hold onto Symbols with strong pointers, 
 		so they will be in outPointers"
 
 	dummy _ ReferenceStream on: (DummyStream on: nil).
