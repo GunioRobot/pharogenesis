@@ -4,7 +4,7 @@ findAnySubStr: delimiters startingAt: start
 	| min ind |
 	min _ self size + 1.
 	delimiters do: [:delim |	"May be a char, a string of length 1, or a substring"
-		delim class == Character 
+		delim isCharacter 
 			ifTrue: [ind _ self indexOfSubCollection: (String with: delim) 
 						startingAt: start ifAbsent: [min]]
 			ifFalse: [ind _ self indexOfSubCollection: delim 
