@@ -11,7 +11,7 @@ writeToFileWithSymbols
 	pound _ '#' asSymbol.
 	outPointers do:
 		[:s | 
-		((s isMemberOf: Symbol) and: [s isLiteral and: [s ~~ pound]])
+		((s isSymbol) and: [s isLiteral and: [s ~~ pound]])
 			ifTrue: [symbols addLast: s]
 			ifFalse: [symbols addLast: pound.  nonSymbols addLast: s]].
 	(self class segmentDirectory newFileNamed: fileName)
