@@ -5,7 +5,7 @@ Fix up conventions that have changed."
 
 	"Yoshiki did not put MultiSymbols into outPointers in older
 images!  When all old images are gone, remove this method."
-	ms _ MultiSymbol intern: self asString.
+	ms _ Symbol intern: self asString.
 	self == ms ifFalse: ["For a project from older m17n image,
 this is necessary."
 				self becomeForward: ms.
