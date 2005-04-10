@@ -19,7 +19,7 @@ resultType
 	(value isNumber) ifTrue: [^#Number].
 	(value isKindOf: Boolean) ifTrue: [^#Boolean].
 	(value isForm) ifTrue: [^#Graphic].
-	value class == String 
+	value isString 
 		ifTrue: [(SoundService default sampledSoundChoices includes: value) ifTrue: [^#Sound]].
 	(value isPlayerLike) ifTrue: [^#Player].
 	^value class name asLowercase	"asSymbol (not needed)"
