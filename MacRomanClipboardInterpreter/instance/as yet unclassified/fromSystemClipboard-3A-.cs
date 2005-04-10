@@ -1,3 +1,3 @@
 fromSystemClipboard: aString
 
-	^ aString squeakToIso.
+	^ aString macToSqueak.
