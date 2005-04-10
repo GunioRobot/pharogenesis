@@ -15,6 +15,11 @@ cc: ind new: inTheSeg current: inTheImage fake: fakeCls refStrm: smartRefStream
 		fakeCls becomeCompactSimplyAt: ind.  ^ true].
 		"comeFullyUpOnReload: will clean up"
 
+	(inTheSeg == String and:[inTheImage == ByteString]) ifTrue:[
+		"ar 4/10/2005: Workaround after renaming String to ByteString"
+		^true
+	].
+
 	"Is the image class really the class we are expecting?  inTheSeg came in as a DiskProxy, and was mapped if it was renamed!"
 	inTheImage == inTheSeg ifFalse: [
 		self inform: 'The incoming class ', inTheSeg name, ' wants compact class \location ', ind printString, ', but that is occupied by ', inTheImage name, '.  \This file cannot be read into this system.  The author of the file \should make the class uncompact and create the file again.' withCRs.
