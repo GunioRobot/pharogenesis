@@ -5,5 +5,4 @@ compare: aString
 		3 - after.
 	The collation sequence is ascii with case differences ignored.
 	To get the effect of a <= b, but ignoring case, use (a compare: b) <= 2."
-
-	self subclassResponsibility.
+	^self compare: aString caseSensitive: false
