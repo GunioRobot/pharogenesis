@@ -1,10 +1,13 @@
 intern: aStringOrSymbol 
 
-	aStringOrSymbol isOctetString 
-		ifFalse:[^MultiSymbol intern: aStringOrSymbol].
-	^ (self lookup: aStringOrSymbol)
-		ifNil: [NewSymbols
-				add: ((aStringOrSymbol isKindOf: Symbol)
-						ifTrue: [aStringOrSymbol]
-						ifFalse: [(self new: aStringOrSymbol size)
-								string: aStringOrSymbol])].
+	^(self lookup: aStringOrSymbol) ifNil:[
+		| aClass aSymbol |
+		aStringOrSymbol isSymbol ifTrue:[
+			aSymbol _ aStringOrSymbol.
+		] ifFalse:[
+			aClass := aStringOrSymbol isOctetString ifTrue:[ByteSymbol] ifFalse:[MultiSymbol].
+			aSymbol := aClass new: aStringOrSymbol size.
+			aSymbol string: aStringOrSymbol.
+		].
+		NewSymbols add: aSymbol.
+		aSymbol].
