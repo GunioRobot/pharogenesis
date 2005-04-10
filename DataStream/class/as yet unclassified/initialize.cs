@@ -13,7 +13,7 @@ initialize
 	t at: False put: 3.   refTypes add: 0.
 	t at: SmallInteger put: 4.	 refTypes add: 0.
 	t at: ByteString put: 5.   refTypes add: 1.
-	t at: Symbol put: 6.   refTypes add: 1.
+	t at: ByteSymbol put: 6.   refTypes add: 1.
 	t at: ByteArray put: 7.   refTypes add: 1.
 	t at: Array put: 8.   refTypes add: 1.
 	"(type ID 9 is for arbitrary instances of any class, cf. typeIDFor:)"
