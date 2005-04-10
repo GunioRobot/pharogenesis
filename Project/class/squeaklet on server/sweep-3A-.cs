@@ -11,7 +11,7 @@ sweep: aServerDirectory
 
 	"Collect each name, and decide on versions"
 	list _ aServerDirectory fileNames.
-	list class == String ifTrue: [^ self inform: 'server is unavailable'].
+	list isString ifTrue: [^ self inform: 'server is unavailable'].
 	list _ list asSortedCollection asOrderedCollection.
 	parts _ list collect: [:en | Project parseProjectFileName: en].
 	parts _ parts select: [:en | en third = 'pr'].
