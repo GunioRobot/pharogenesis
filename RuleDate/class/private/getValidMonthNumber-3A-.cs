@@ -16,6 +16,6 @@ getValidMonthNumber: monthIn
 			[(monthIn between: 1 and: 12)
 				ifTrue: [^ monthIn].
 			^ Error signal: 'Month must be 1 - 12.'].
-	(monthIn isMemberOf: String)
+	(monthIn isString)
 		ifTrue: [^ self indexOfMonth: monthIn].
 	^ Error signal: 'Month must be an Integer 1 - 12 or a month name String.'
