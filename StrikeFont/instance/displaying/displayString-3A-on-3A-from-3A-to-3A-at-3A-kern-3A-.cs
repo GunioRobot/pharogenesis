@@ -2,7 +2,7 @@ displayString: aString on: aBitBlt from: startIndex to: stopIndex at: aPoint ker
 	"Draw the given string from startIndex to stopIndex 
 	at aPoint on the (already prepared) BitBlt."
 	
-	(aString class == MultiString) ifTrue: [^ self displayMultiString: aString on: aBitBlt from: startIndex to: stopIndex at: aPoint kern: kernDelta baselineY: aPoint y + self ascent.].
+	(aString isByteString) ifFalse: [^ self displayMultiString: aString on: aBitBlt from: startIndex to: stopIndex at: aPoint kern: kernDelta baselineY: aPoint y + self ascent.].
 
 	^ aBitBlt displayString: aString 
 			from: startIndex 
