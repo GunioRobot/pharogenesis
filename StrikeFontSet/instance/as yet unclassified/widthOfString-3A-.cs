@@ -2,7 +2,7 @@ widthOfString: aString
 
 	aString ifNil:[^0].
 	"Optimizing"
-	(aString isKindOf: String) ifTrue: [
+	(aString isByteString) ifTrue: [
 		^ self fontArray first widthOfString: aString from: 1 to: aString size].
 	^ self widthOfString: aString from: 1 to: aString size.
 "
