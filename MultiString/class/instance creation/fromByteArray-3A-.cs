@@ -1,8 +1,7 @@
 fromByteArray: aByteArray 
 
 	| inst |
-self flag: #ByteString.
-	aByteArray size \\ 4 = 0 ifFalse: [^ String fromByteArray: aByteArray ].
+	aByteArray size \\ 4 = 0 ifFalse: [^ ByteString fromByteArray: aByteArray ].
 	inst _ self new: aByteArray size // 4.
 	4 to: aByteArray size by: 4 do: [:i |
 		inst basicAt: i // 4
