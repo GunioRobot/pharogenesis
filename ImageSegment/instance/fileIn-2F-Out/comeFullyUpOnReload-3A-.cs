@@ -38,8 +38,8 @@ the project, except those in outPointers"
 			importedObject mutateJISX0208StringToUnicode.
 			importedObject class = MultiSymbol ifTrue: [
 				"self halt."
-				MultiSymbol hasInternedALoadedSymbol:
-importedObject ifTrue: [:multiSymbol |
+				Symbol hasInterned: 
+importedObject asString ifTrue: [:multiSymbol |
 					multiSymbol == importedObject
 ifFalse: [
 						importedObject
