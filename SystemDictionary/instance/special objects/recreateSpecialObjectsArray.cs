@@ -19,7 +19,7 @@ recreateSpecialObjectsArray
 	instantiation"
 	newArray at: 5 put: Bitmap.
 	newArray at: 6 put: SmallInteger.
-	newArray at: 7 put: String.
+	newArray at: 7 put: String. self flag: #ByteString.
 	newArray at: 8 put: Array.
 	newArray at: 9 put: Smalltalk.
 	newArray at: 10 put: Float.
