@@ -1,5 +1,3 @@
 string: aString
-
-	1 to: aString size do: [:j | super at: j put: (aString at: j)].
-	^ self
-
+	1 to: aString size do: [:j | self pvtAt: j put: (aString at: j) asInteger].
+	^self
