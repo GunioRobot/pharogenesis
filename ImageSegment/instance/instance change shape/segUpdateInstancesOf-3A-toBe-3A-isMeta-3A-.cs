@@ -8,6 +8,7 @@ segUpdateInstancesOf: oldClass toBe: newClass isMeta: isMeta
 	(outPointers includes: oldClass) ifFalse: [
 		oldClass == SmallInteger ifTrue: [^ self].	"instance not changable"
 		oldClass == Symbol ifTrue: [^ self].	"instance is never in a segment"
+		oldClass == ByteSymbol ifTrue: [^ self].	"instance is never in a segment"
 		(Smalltalk compactClassesArray includes: oldClass) ifFalse: [^ self]].
 		"For a compact class, must search the segment.  Instance does not 
 		 point outward to class"
