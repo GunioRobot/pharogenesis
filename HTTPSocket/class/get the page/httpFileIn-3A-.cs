@@ -7,7 +7,7 @@ httpFileIn: url
 
 	| doc eToyHolder |
 	doc _ self httpGet: url accept: 'application/octet-stream'.
-	doc class == String ifTrue:
+	doc isString ifTrue:
 			[self inform: 'Cannot seem to contact the web site'].
 	doc reset.
 	eToyHolder _ doc fileInObjectAndCode.
