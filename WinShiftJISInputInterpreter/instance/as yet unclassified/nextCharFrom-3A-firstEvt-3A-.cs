@@ -7,7 +7,7 @@ nextCharFrom: sensor firstEvt: evtBuf
 	pressType = EventKeyUp ifTrue: [type := #keyUp].
 	pressType = EventKeyChar ifTrue: [type := #keystroke].
 
-	char1Value _ (Character value: keyValue) squeakToIso asciiValue.
+	char1Value _ (Character value: keyValue) macToSqueak asciiValue.
 
 	(char1Value < 16r81) ifTrue: [^ keyValue asCharacter].
 	(char1Value > 16rA0 and: [char1Value < 16rE0]) ifTrue: [^ ShiftJISTextConverter basicNew katakanaValue: char1Value].
@@ -25,7 +25,7 @@ nextCharFrom: sensor firstEvt: evtBuf
 									= EventKeyChar]]])
 		ifTrue: [
 			firstCharacter _ char1Value asCharacter.
-			secondCharacter _ (peekEvent at: 3) asCharacter squeakToIso.
+			secondCharacter _ (peekEvent at: 3) asCharacter macToSqueak.
 			stream _ ReadStream on: (String with: firstCharacter with: secondCharacter).
 			multiCharacter _ converter nextFromStream: stream.
 			multiCharacter isOctetCharacter ifFalse: [
