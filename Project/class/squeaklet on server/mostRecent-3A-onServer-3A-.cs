@@ -13,7 +13,7 @@ mostRecent: projName onServer: aServerDirectory
 	stem _ triple first.
 	rawList _ aServerDirectory fileNames.
 
-	rawList class == String ifTrue: [self inform: 'server is unavailable'. ^nothingFound].
+	rawList isString ifTrue: [self inform: 'server is unavailable'. ^nothingFound].
 	list _ rawList collect: [:nnn | nnn unescapePercents].
 	max _ -1.  goodName _ nil.
 	list withIndexDo: [:aName :ind |
