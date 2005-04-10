@@ -1,5 +1,5 @@
 numberOfTimesStringIsUsed: aString
 
 	^ (self systemNavigation allSelect: [:method | method
-							hasLiteralSuchThat: [:lit | lit class == String
+							hasLiteralSuchThat: [:lit | lit isString
 									and: [lit includesSubstring: aString caseSensitive: true]]]) size
