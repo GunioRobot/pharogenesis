@@ -1,3 +1,4 @@
 asMultiString 
-
-	^ MultiString from: self.
+	self isMultiString
+		ifTrue:[^self]
+		ifFalse:[^MultiString from: self]
