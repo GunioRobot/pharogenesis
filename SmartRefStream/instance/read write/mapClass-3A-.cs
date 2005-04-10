@@ -22,6 +22,6 @@ mapClass: incoming
 			cls _ self perform: sel asSymbol]].	"This class will take responsibility"
 	cls ifNil: [cls _ self writeClassRenameMethod: sel was: nm
 					fromInstVars: (structures at: nm).
-			   cls class == String ifTrue: [cls _ nil]].
+			   cls isString ifTrue: [cls _ nil]].
 	cls ifNotNil: [renamed at: nm put: cls name].
 	^ cls
