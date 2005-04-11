@@ -10,7 +10,7 @@ isLiteralSymbol: aSymbol
 	ascii _ (aSymbol at: 1) asciiValue.
 	"TypeTable should have been origined at 0 rather than 1 ..."
 	ascii = 0 ifTrue: [^ false].
-	type _ TypeTable at: ascii.
+	type _ TypeTable at: ascii ifAbsent:[#xLetter].
 	(type == #xColon or: [type == #verticalBar or: [type == #xBinary]]) ifTrue: [
 		i = 1 ifTrue: [^ true] ifFalse: [^ false]
 	].
@@ -19,7 +19,7 @@ isLiteralSymbol: aSymbol
 				whileTrue: 
 					[ascii _ (aSymbol at: i) asciiValue.
 					ascii = 0 ifTrue: [^ false].
-					type _ TypeTable at: ascii.
+					type _ TypeTable at: ascii ifAbsent:[#xLetter].
 					(type == #xLetter or: [type == #xDigit or: [type == #xColon]])
 						ifFalse: [^ false].
 					i _ i - 1].
