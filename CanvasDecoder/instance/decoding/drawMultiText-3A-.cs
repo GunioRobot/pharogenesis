@@ -2,7 +2,7 @@ drawMultiText: command
 
 	| boundsEnc colorEnc  text bounds color fontIndexEnc fontIndex |
 
-	text := MultiString fromByteArray: (command at: 2) asByteArray.
+	text := WideString fromByteArray: (command at: 2) asByteArray.
 	"text asByteArray printString displayAt: 800@0."
 	"self halt."
 	boundsEnc := command at: 3.
