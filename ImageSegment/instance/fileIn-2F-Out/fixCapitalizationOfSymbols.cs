@@ -5,7 +5,7 @@ correctly.
 	| sym ms |
 	1 to: outPointers size do:[:i|
 		sym := outPointers at: i.
-		(sym class == MultiSymbol and:[sym size > 3]) ifTrue:[
+		(sym class == WideSymbol and:[sym size > 3]) ifTrue:[
 			((sym beginsWith: 'get')
 				and:[(sym at: 4) asInteger < 256
 				and:[(sym at: 4) isLowercase]]) ifTrue:[
