@@ -1,2 +1,2 @@
 byteSize
-	^self size
+	^self subclassResponsibility
