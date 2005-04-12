@@ -28,7 +28,7 @@ composeFrom: startIndex inRectangle: lineRectangle
 	line leftMargin: leftMargin.
 	presentationLine leftMargin: leftMargin.
 
-	presentation _ TextStream on: (Text fromString: (MultiString new: text size)).
+	presentation _ TextStream on: (Text fromString: (WideString new: text size)).
 
 	done _ false.
 	[done]
