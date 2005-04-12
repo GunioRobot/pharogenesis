@@ -24,7 +24,7 @@ composeLine: lineIndex fromCharacterIndex: startIndex inParagraph: aParagraph
 		internalSpaces: 0
 		paddingWidth: 0.
 	numOfComposition _ 0.
-	presentation _ TextStream on: (Text fromString: (MultiString new: text size)).
+	presentation _ TextStream on: (Text fromString: (WideString new: text size)).
 	spaceCount _ 0.
 	done _ false.
 	[done]
