@@ -3,7 +3,7 @@ scanCharactersFrom: startIndex to: stopIndex in: sourceString rightX: rightX sto
 	| startEncoding selector |
 	(sourceString isByteString) ifTrue: [^ self basicScanCharactersFrom: startIndex to: stopIndex in: sourceString rightX: rightX stopConditions: stops kern: kernDelta.].
 
-	(sourceString isMultiByteString) ifTrue: [
+	(sourceString isWideString) ifTrue: [
 		startIndex > stopIndex ifTrue: [lastIndex _ stopIndex. ^ stops at: EndOfRun].
 		startEncoding _  (sourceString at: startIndex) leadingChar.
 		selector _ (EncodedCharSet charsetAt: startEncoding) scanSelector.
