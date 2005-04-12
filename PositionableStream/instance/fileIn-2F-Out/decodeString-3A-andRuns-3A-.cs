@@ -13,7 +13,7 @@ decodeString: string andRuns: runsRaw
 		[runValues add: (Number readFrom: strm).
 		strm next.].
 
-	newString _ MultiString new: string size.
+	newString _ WideString new: string size.
 	index _ 1.
 	runLength with: runValues do: [:length :leadingChar |
 		index to: index + length - 1 do: [:pos |
