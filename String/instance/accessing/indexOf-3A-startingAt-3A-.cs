@@ -1,4 +1,4 @@
-indexOf: aCharacter  startingAt: start
+indexOf: aCharacter startingAt: start
 
-	(aCharacter class == Character) ifFalse: [^ 0].
-	^ String indexOfAscii: aCharacter asciiValue inString: self startingAt: start
+	(aCharacter isCharacter) ifFalse: [^ 0].
+	^ self class indexOfAscii: aCharacter asciiValue inString: self startingAt: start
