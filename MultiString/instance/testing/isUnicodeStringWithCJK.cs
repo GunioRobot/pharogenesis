@@ -1,7 +1,7 @@
 isUnicodeStringWithCJK
 
 	self do: [:c |
-		(c isUnicode and: [Unicode isUnifiedKanji: c charCode]) ifTrue: [
+		(c isTraditionalDomestic not and: [Unicode isUnifiedKanji: c charCode]) ifTrue: [
 			^ true
 		].
 	].
