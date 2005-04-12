@@ -9,9 +9,9 @@ nextPut: aCharacter toStream: aStream
 	].
 
 	(128 <= value and: [value < 256]) ifTrue: [^ aStream].
-	aCharacter isUnicode ifTrue: [
+	aCharacter isTraditionalDomestic ifFalse: [
 		nonUnicodeChar _ self nonUnicodeClass charFromUnicode: value.
-	] ifFalse: [
+	] ifTrue: [
 		nonUnicodeChar _(Character value: value)
 	].
 	nonUnicodeChar ifNotNil: [
