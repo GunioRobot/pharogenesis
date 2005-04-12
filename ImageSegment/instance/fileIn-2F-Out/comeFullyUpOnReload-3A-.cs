@@ -25,6 +25,7 @@ Substitute them in outPointers."
 compatible'].
 	endMarker _ segment nextObject. 	"for enumeration of objects"
 	endMarker == 0 ifTrue: [endMarker _ 'End' clone].
+	self fixCapitalizationOfSymbols.
 	arrayOfRoots _ self loadSegmentFrom: segment outPointers: outPointers.
 		"Can't use install.  Not ready for rehashSets"
 	mapFakeClassesToReal isEmpty ifFalse: [
