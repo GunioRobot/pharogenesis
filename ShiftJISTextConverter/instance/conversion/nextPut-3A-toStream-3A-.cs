@@ -1,10 +1,10 @@
 nextPut: aCharacter toStream: aStream 
 	| value leadingChar aChar |
 	aStream isBinary ifTrue: [^aCharacter storeBinaryOn: aStream].
-	aCharacter isUnicode ifFalse: [	
+	aCharacter isTraditionalDomestic ifTrue: [	
 		aChar _ aCharacter.
 		value _ aCharacter charCode.
-	] ifTrue: [
+	] ifFalse: [
 		value _ aCharacter charCode.
 		(16rFF61 <= value and: [value <= 16rFF9F]) ifTrue: [
 			aStream basicNextPut: (self sjisKatakanaFor: value).
