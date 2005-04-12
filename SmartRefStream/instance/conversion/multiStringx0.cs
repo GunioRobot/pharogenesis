@@ -1,0 +1,3 @@
+multiStringx0
+
+	^ WideString
