@@ -3,7 +3,7 @@ next: anInteger
 	| multiString |
 	"self halt."
 	self isBinary ifTrue: [^ (super next: anInteger) asByteArray].
-	multiString _ MultiString new: anInteger.
+	multiString _ WideString new: anInteger.
 	1 to: anInteger do: [:index |
 		| character |
 		(character _ self next) ifNotNil: [
