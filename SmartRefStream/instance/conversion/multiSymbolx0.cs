@@ -1,0 +1,3 @@
+multiSymbolx0
+
+	^ WideSymbol
