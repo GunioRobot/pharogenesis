@@ -1,7 +1,7 @@
-r: r g: g b: b for: depth
+r: r g: g b: b for: aDepth
 	"integer value according depth"
 	| val |
-	depth = 16 ifTrue: [
+	aDepth = 16 ifTrue: [
 		val _ (r << 10) + (g << 5) + b.
 	]
 	ifFalse:[
