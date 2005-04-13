@@ -1,4 +1,4 @@
-writeTrailer: pages 
+writeTrailer: somePages 
 	target
 		print: '%%Trailer';
 		cr.
@@ -11,7 +11,7 @@ writeTrailer: pages
 						space;
 						print: f].
 			target cr].
-	target print:'%%Pages: '; write: pages; cr.
+	target print:'%%Pages: '; write: somePages; cr.
 	target
 		print: '%%EOF';
 		cr
