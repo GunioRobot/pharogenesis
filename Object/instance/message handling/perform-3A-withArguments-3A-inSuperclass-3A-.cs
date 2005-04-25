@@ -6,7 +6,7 @@ perform: selector withArguments: argArray inSuperclass: lookupClass
 	Primitive. Essential. See Object documentation whatIsAPrimitive."
 
 	<primitive: 100>
-	(selector isMemberOf: Symbol)
+	(selector isSymbol)
 		ifFalse: [^ self error: 'selector argument must be a Symbol'].
 	(selector numArgs = argArray size)
 		ifFalse: [^ self error: 'incorrect number of arguments'].
