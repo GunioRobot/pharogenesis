@@ -7,7 +7,7 @@ allCallsOn: aLiteral
 	special _ Smalltalk
 				hasSpecialSelector: aLiteral
 				ifTrueSetByte: [:b | byte _ b].
-	thorough _ (aLiteral isMemberOf: Symbol)
+	thorough _ (aLiteral isSymbol)
 				and: ["Possibly search for symbols imbedded in literal arrays"
 					Preferences thoroughSenders].
 	Cursor wait
