@@ -7,12 +7,12 @@ readFrom: aText
 		[:fields :instVarBase |  
 		[tokenStream atEnd] whileFalse:
 			[token _ tokenStream next.
-			((token isMemberOf: Symbol) and: [token endsWith: ':'])
+			((token isSymbol) and: [token endsWith: ':'])
 				ifTrue: [fieldName ifNotNil:
 							[self readField: fieldName fromString: buffer contents
 								fields: fields base: instVarBase].
 						buffer reset.  fieldName _ token allButLast]
-				ifFalse: [(token isMemberOf: Symbol)
+				ifFalse: [(token isSymbol)
 							ifTrue: [buffer nextPutAll: token; space]
 							ifFalse: [buffer print: token; space]]].
 		self readField: fieldName fromString: buffer contents
