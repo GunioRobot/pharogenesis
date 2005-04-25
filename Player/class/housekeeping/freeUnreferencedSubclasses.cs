@@ -30,7 +30,7 @@ subclasses"
 	"Now reconstruct system links to subclasses with valid references."
 	"First restore any global references via associations"
 	(Association allSubInstances select:
-			[:assn | (assn key isMemberOf: Symbol)
+			[:assn | (assn key isSymbol)
 					and: [(assn key beginsWith: 'Player')
 					and: [assn key endsWithDigit]]])
 		do: [:assn | class _ assn value.
