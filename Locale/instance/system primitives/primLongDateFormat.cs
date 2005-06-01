@@ -4,3 +4,4 @@ primLongDateFormat
 	double symbol is null padded, single not padded (m=6, mm=06)
 	dddd weekday
 	mmmm month name"
+	<primitive:'primitiveLongDateFormat' module: 'LocalePlugin'>
