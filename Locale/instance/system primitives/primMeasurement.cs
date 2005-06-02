@@ -1,3 +1,4 @@
 primMeasurement
-	"Returns string denoting metric or imperial."
-	^'imperial'
+	"Returns boolean denoting metric(true) or imperial(false)."
+	<primitive:'primitiveMeasurementMetric' module: 'LocalePlugin'>
+	^true
