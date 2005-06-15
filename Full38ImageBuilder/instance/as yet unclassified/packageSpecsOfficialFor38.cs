@@ -24,8 +24,6 @@ releaseWithAutomaticVersionString: arr second]
 'a55ea3ab-f8a0-40cd-8aa9-0077369d1db8'. '3'}.
 		{"Celeste"
 '97aadf92-12b0-4db0-8da3-65041ae18f13'. '3'}.
-		{"IRCe"
-'839bb65f-8e8e-4dbc-8fe1-dc52d822dbf9'. '15'}.
 		{"VMMaker" 
 '2e7f103e-22a6-470d-affe-54b1d04ef34a'. '8'}.
 		{"Vassili's Regex"
