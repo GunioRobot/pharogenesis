@@ -5,3 +5,6 @@ Instance variables:
 	pixelRamp	<Bitmap>		A cached version of the colorRamp to avoid needless recomputations.
 	radial		<Boolean>	If true, this fill describes a radial gradient. If false, it is a linear gradient.
 	isTranslucent	<Boolean>	A (cached) flag determining if there are any translucent colors involved.
+
+Class variables:
+	PixelRampCache <LRUCache>	Recently used pixelRamps. They tend to have high temporal locality and this saves space and time.
