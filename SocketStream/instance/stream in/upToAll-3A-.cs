@@ -1,20 +1,47 @@
-upToAll: delims
-	"Answer a subcollection from the current access position to the occurrence (if any, but not inclusive) of aCollection. If aCollection is not in the stream, answer the entire rest of the stream."
-	"Optimized version using the positionOfSubCollection:. Based on a suggestion by miso"
+upToAll: aStringOrByteArray
+	"Answer a subcollection from the current access position to the occurrence (if any, but not
+	inclusive) of aStringOrByteArray. If aCollection is not in the stream, answer the entire rest of
+	the stream.
+	
+	NOTE: Does not honour timeouts if shouldSignal is false!
+	
+	This method looks a bit complicated, and this is mainly because there is no fast search method
+	in String that takes a stoppingAt: argument. This means we need to ignore getting hits in the
+	dead buffer area above inNextToWrite.
+	Another measure is that this implementation is greedy and will load data into the buffer
+	until there is nothing more available, or it has loaded 100kb - and not until then we search the buffer.
 
-	| searchBuffer index nextStartOfSearch currentContents |
-	searchBuffer _ ReadWriteStream on: (String new: 1000).
-	[nextStartOfSearch _ (searchBuffer position - delims size) max: 0.
-	searchBuffer nextPutAll: self inStream upToEnd.
-	self resetInStream.
-	searchBuffer position: nextStartOfSearch.
-	index _ searchBuffer positionOfSubCollection: delims.
-	index = 0 and: [self atEnd not]]
-		whileTrue: [self receiveData].
+	A totally non greedy variant would search on every loop."
 
-	currentContents := searchBuffer contents.
-	^index = 0 
-		ifTrue: [currentContents]
-		ifFalse: [
-			self pushBack: (currentContents copyFrom: index + delims size to: currentContents size).
-			currentContents copyFrom: 1 to: (0 max: index-1)]
+	| index sz result lastRecentlyRead searchedSoFar |
+	sz _ aStringOrByteArray size.
+	searchedSoFar _ 0.
+	lastRecentlyRead _ 0.
+	index _ 0.
+	[self atEnd not and: [
+		((lastRecentlyRead = 0 and: [self isInBufferEmpty not]) or: [self inBufferSize > 100000]) ifTrue: [
+			"Data begins at lastRead + 1, we add searchedSoFar as offset and backs up sz - 1
+			so that we can catch any borderline hits."
+			index _ inBuffer indexOfSubCollection: aStringOrByteArray
+						startingAt: lastRead + searchedSoFar - sz + 2.
+			searchedSoFar _ self inBufferSize.
+			(index > 0 and: [(index + sz) > inNextToWrite]) ifTrue: [
+				"Oops, hit partially or completely in dead buffer area.
+				This is probably due to old data, so we ignore it.
+				No point in cleaning the dead area to avoid hits - it will still search it."
+				index _ 0]].
+		index = 0]]
+				whileTrue: [
+					recentlyRead = 0
+						ifTrue: ["blocking call for now, we don't want to poll"
+							self receiveData]
+						ifFalse: [
+							self receiveAvailableData].
+					lastRecentlyRead _ recentlyRead].
+	index > 0
+		ifTrue: ["found it"
+			result _ self nextInBuffer: index - lastRead - 1.
+			self skip: sz.
+			^ result]
+		ifFalse: ["atEnd"
+			^ self nextAllInBuffer]
