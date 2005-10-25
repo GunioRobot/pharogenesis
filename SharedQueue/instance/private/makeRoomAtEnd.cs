@@ -10,5 +10,10 @@ makeRoomAtEnd
 				to: contentsSize
 				with: contentsArray
 				startingAt: readPosition.
+			"nil out remainder --bf 10/25/2005"
+			contentsArray
+				from: contentsSize+1
+				to: contentsArray size
+				put: nil.
 			readPosition _ 1.
 			writePosition _ contentsSize + 1]
