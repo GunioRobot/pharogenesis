@@ -1,8 +1,9 @@
 scanVersionsOf: method class: class meta: meta category: category selector: selector
-	| position prevPos prevFileIndex preamble tokens sourceFilesCopy stamp |
+	| position prevPos prevFileIndex preamble tokens sourceFilesCopy stamp cat |
 	selectorOfMethod _ selector.
 	currentCompiledMethod _ method.
 	classOfMethod _ meta ifTrue: [class class] ifFalse: [class].
+	cat _ category.
 	changeList _ OrderedCollection new.
 	list _ OrderedCollection new.
 	self addedChangeRecord ifNotNilDo: [ :change |
@@ -40,17 +41,19 @@ scanVersionsOf: method class: class meta: meta category: category selector: sele
 				ifFalse: ["Old format gives no stamp; prior pointer in two parts"
 						prevPos _ tokens at: tokens size-2.
 						prevFileIndex _ tokens last].
+				cat _ tokens at: tokens size-4.
 				(prevPos = 0 or: [prevFileIndex = 0]) ifTrue: [prevPos _ nil]].
 		((tokens size between: 5 and: 6)
 			and: [(tokens at: tokens size-3) = #methodsFor:])
 			ifTrue:
 				[(tokens at: tokens size-1) = #stamp:
 				ifTrue: ["New format gives change stamp and unified prior pointer"
-						stamp _ tokens at: tokens size]].
+						stamp _ tokens at: tokens size].
+				cat _ tokens at: tokens size-2].
  		self addItem:
 				(ChangeRecord new file: file position: position type: #method
 						class: class name category: category meta: meta stamp: stamp)
-			text: stamp , ' ' , class name , (meta ifTrue: [' class '] ifFalse: [' ']) , selector.
+			text: stamp , ' ' , class name , (meta ifTrue: [' class '] ifFalse: [' ']) , selector, ' {', cat, '}'.
 		position _ prevPos.
 		prevPos notNil ifTrue:
 			[file _ sourceFilesCopy at: prevFileIndex]].
