@@ -3,11 +3,11 @@ upgradeInstalledPackagesConfirm: confirmEach
 	version of Squeak. If confirmEach is true we ask for every upgrade."
 
 	| installed old myRelease toUpgrade info |
-	installed := model installedPackages.
-	old := model oldPackages.
+	installed := squeakMap installedPackages.
+	old := squeakMap oldPackages.
 	old isEmpty ifTrue: [
 			^self inform: 'All ', installed size printString, ' installed packages are up to date.'].
-	toUpgrade := model upgradeableAndOldPackages.
+	toUpgrade := squeakMap upgradeableAndOldPackages.
 	toUpgrade isEmpty ifTrue: [
 			^self inform: 'None of the ', old size printString, ' old packages of the ', installed size printString, ' installed can be automatically upgraded. You need to upgrade them manually.'].
 	old size < toUpgrade size ifTrue: [
@@ -22,13 +22,12 @@ About to upgrade the following packages:
 			myRelease := self installedReleaseOfMe.
 			[Cursor wait showWhile: [
 				confirmEach ifTrue: [
-					model upgradeOldPackagesConfirmBlock: [:p |
+					squeakMap upgradeOldPackagesConfirmBlock: [:p |
 						self confirm: 'Upgrade ', p installedRelease packageNameWithVersion, ' to ',
 							(p lastPublishedReleaseForCurrentSystemVersionNewerThan: p installedRelease) listName, '?']]
-						ifFalse: [model upgradeOldPackages].
+						ifFalse: [squeakMap upgradeOldPackages].
 				self inform: toUpgrade size printString, ' packages successfully processed.'.
-				myRelease = self installedReleaseOfMe
-					ifFalse: [self reOpen]
-					ifTrue: [self noteChanged]]
+				myRelease = self installedReleaseOfMe ifFalse: [self reOpen].
+				self noteChanged]
 			] on: Error do: [:ex |
 				self informException: ex msg: ('Error occurred when upgrading old packages:\', ex messageText, '\') withCRs]]
