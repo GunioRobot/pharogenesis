@@ -1,5 +1,6 @@
 currentPackages
-	"ScriptLoader new currentPackages"
+	"ScriptLoader new currentPackages" 
+	
 	
 	| copies |
 	copies := MCWorkingCopy allManagers asSortedCollection:
