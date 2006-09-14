@@ -15,6 +15,5 @@ repository := MCHttpRepository
 (repository loadVersionFromFileNamed:' .
 	st nextPut: $' ; nextPutAll: 'ScriptLoader', extensionAndNumber, '.mcz'') load.'; cr.
 	st nextPutAll: 'ScriptLoader new updateFrom', (updateNumber-1) asString; nextPutAll: '.' ; cr.
-	st nextPutAll: 'ChangeSet newChanges: ChangeSet new' ; cr.
 	st nextPutAll: '!'.
 	^ st contents
