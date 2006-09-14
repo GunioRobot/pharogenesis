@@ -1,2 +1,2 @@
 registry
-	^registry ifNil: [registry _ Dictionary new].
+	^registry ifNil: [registry := Dictionary new].
