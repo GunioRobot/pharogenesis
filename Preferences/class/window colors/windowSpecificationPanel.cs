@@ -3,10 +3,10 @@ windowSpecificationPanel
 
 	"Preferences windowSpecificationPanel"
 	| aPanel buttonRow aButton aRow aSwatch aColor aWindow aMiniWorld aStringMorph |
-	aPanel _ AlignmentMorph newColumn hResizing: #shrinkWrap; vResizing: #shrinkWrap;
+	aPanel := AlignmentMorph newColumn hResizing: #shrinkWrap; vResizing: #shrinkWrap;
 		layoutInset: 0.
 
-	aPanel addMorph: (buttonRow _ AlignmentMorph newRow color: (aColor _ Color tan lighter)).
+	aPanel addMorph: (buttonRow := AlignmentMorph newRow color: (aColor := Color tan lighter)).
 	
 	buttonRow addTransparentSpacerOfSize: 2@0.
 	buttonRow addMorphBack: (SimpleButtonMorph new label: '?'; target: self; actionSelector: #windowColorHelp; setBalloonText: 'Click for an explanation of this panel'; color: Color veryVeryLightGray; yourself).
@@ -19,7 +19,7 @@ windowSpecificationPanel
 					'Use white backgrounds for all standard windows.')) do:
 
 		[:quad |
-			aButton _ (SimpleButtonMorph new target: self)
+			aButton := (SimpleButtonMorph new target: self)
 				label: quad first;
 				actionSelector: quad second;
 				color: (Color colorFrom: quad third);
@@ -41,19 +41,19 @@ windowSpecificationPanel
 				yourself.
 			aRow addMorphFront: aSwatch.
 			aRow addTransparentSpacerOfSize: (12 @ 1).
-			aRow addMorphBack: (aStringMorph _ StringMorph contents: colorSpec wording font: TextStyle defaultFont).
+			aRow addMorphBack: (aStringMorph := StringMorph contents: colorSpec wording font: TextStyle defaultFont).
 			aStringMorph setBalloonText: colorSpec helpMessage.
 			aPanel addMorphBack: aRow].
 
 	 Smalltalk isMorphic
                 ifTrue:
-                        [aWindow _ aPanel wrappedInWindowWithTitle: 'Window Colors'.
+                        [aWindow := aPanel wrappedInWindowWithTitle: 'Window Colors'.
 					" don't allow the window to be picked up by clicking inside "
 					aPanel on: #mouseDown send: #yourself to: aPanel.
 					self currentWorld addMorphCentered: aWindow.
 					aWindow activateAndForceLabelToShow ]
                 ifFalse:
-                        [(aMiniWorld _ MVCWiWPasteUpMorph newWorldForProject: nil)
+                        [(aMiniWorld := MVCWiWPasteUpMorph newWorldForProject: nil)
 						addMorph: aPanel.
                            aMiniWorld startSteppingSubmorphsOf: aPanel.
                         MorphWorldView openOn: aMiniWorld
