@@ -1,0 +1,2 @@
+isCalled
+                    ^ 1
