@@ -1,8 +1,8 @@
 on: aSqueakMap 
 	"Initialize instance."
 
-	squeakMap := aSqueakMap.
-	squeakMap synchWithDisk.
+	model := aSqueakMap.
+	model synchWithDisk.
 	filters := DefaultFilters copy.
 	categoriesToFilterIds := DefaultCategoriesToFilterIds copy.
 	self askToLoadUpdates
