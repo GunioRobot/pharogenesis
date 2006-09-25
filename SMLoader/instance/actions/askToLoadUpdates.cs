@@ -3,10 +3,10 @@ askToLoadUpdates
 	if it is older than 10 days or if there is no map on disk."
 
 	| available |
-	available := squeakMap isCheckpointAvailable.
+	available := model isCheckpointAvailable.
 	(available not or: [
 		(Date today subtractDate: (Date fromSeconds:
-			(squeakMap directory directoryEntryFor: squeakMap lastCheckpointFilename)
+			(model directory directoryEntryFor: model lastCheckpointFilename)
 				modificationTime)) > 3])
 		ifTrue: [
 			(self confirm: 
