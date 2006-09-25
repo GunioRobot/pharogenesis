@@ -10,5 +10,5 @@ filterSpecs
 	#('display only published packages' #filterPublished 'display only packages that have at least one published release.'))
 		asOrderedCollection.
 	categoriesToFilterIds do: [:catId |
-		specs add: {'display only packages in ', (squeakMap object: catId) name. catId. 'display only packages that are in the category.'}].
+		specs add: {'display only packages in ', (model object: catId) name. catId. 'display only packages that are in the category.'}].
 	^ specs
