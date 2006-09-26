@@ -7,4 +7,4 @@ installInClass: aClass selector: aSymbol
 	breakMethod isNil
 		ifTrue: [^ nil].
 	self installed at: breakMethod put: aClass >> aSymbol. "old method"
-	aClass methodDictionary at: aSymbol put: breakMethod.
+	aClass class basicAddSelector: aSymbol withMethod: breakMethod.
