@@ -1,2 +1,2 @@
 addPragma: aPragma
-	self properties addPragma: aPragma.
+	self properties addPragma: aPragma
