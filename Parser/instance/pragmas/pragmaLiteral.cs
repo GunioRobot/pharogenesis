@@ -7,6 +7,6 @@ pragmaLiteral
 		ifTrue: [ ^ self advance ].
 	(here == #- and: [ tokenType == #number ])
 		ifTrue: [ ^ (self advance; advance) negated ].
-	(here = 'true' or: [ here = 'false' or: [ here = 'nil' or: [ Smalltalk hasClassNamed: here ] ] ])
+	(here = 'true' or: [ here = 'false' or: [ here = 'nil' ] ])
 		ifTrue: [ ^ Compiler evaluate: self advance ].
-	^ self expected: 'Literal constant'.
+	^ self expected: 'Literal constant'
