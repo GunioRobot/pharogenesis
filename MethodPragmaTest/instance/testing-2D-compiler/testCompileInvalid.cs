@@ -10,5 +10,14 @@ testCompileInvalid
 	self should: [ self compile: '<foo bar zork>' selector: #zork ] raise: SyntaxErrorNotification.
 	self should: [ self compile: '<foo bar 1>' selector: #zork ] raise: SyntaxErrorNotification.
 	
-self should: [ self compile: '<foo: bar:>' selector: #zork ] raise: SyntaxErrorNotification.
+	self should: [ self compile: '<foo: bar:>' selector: #zork ] raise: SyntaxErrorNotification.
 	self should: [ self compile: '<foo: #bar: zork:>' selector: #zork ] raise: SyntaxErrorNotification.
+	
+	self should: [ self compile: '<<1>' selector: #zork ] raise: SyntaxErrorNotification.
+	self should: [ self compile: '<=2>' selector: #zork ] raise: SyntaxErrorNotification.
+
+	self should: [ self compile: '< =1 = >' selector: #zork ] raise: SyntaxErrorNotification.
+	self should: [ self compile: '< =1 =2 >' selector: #zork ] raise: SyntaxErrorNotification.
+	
+	self should: [ self compile: '<foo: String>' selector: #zork ] raise: SyntaxErrorNotification.
+	self should: [ self compile: '<foo: Pragma>' selector: #zork ] raise: SyntaxErrorNotification
