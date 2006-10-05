@@ -1,2 +1,2 @@
 properties
-	^ properties ifNil: [ properties := MethodProperties new ].
+	^ properties ifNil: [ properties := MethodProperties new ]
