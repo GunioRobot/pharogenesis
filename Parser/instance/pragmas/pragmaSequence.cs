@@ -6,4 +6,4 @@ pragmaSequence
 			ifFalse: [ ^ self ].
 		self pragmaStatement.
 		(self matchToken: #>)
-			ifFalse: [ ^ self expected: '>' ] ].
+			ifFalse: [ ^ self expected: '>' ] ]
