@@ -1,5 +1,7 @@
 renameClass: aClass as: newName 
 	"Rename the class, aClass, to have the title newName."
+	"Original one I want to keep but needs to be fixed"
+	
 	| oldref i oldName category |
 	oldName := aClass name.
 	category := aClass category.
