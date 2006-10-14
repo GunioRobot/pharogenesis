@@ -1,5 +1,6 @@
 cleanOldRepositories
 	"self new cleanOldRepositories"
+	"does not work since the interface of the repository group is not made for removing a repository only based on name"
 	
 	MCWorkingCopy allManagers do: [:each | 
 		each  repositoryGroup
