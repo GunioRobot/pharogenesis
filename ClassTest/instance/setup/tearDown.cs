@@ -1,2 +1,3 @@
 tearDown
-	self deleteClass
+	self deleteClass.
+	self deleteRenamedClass
