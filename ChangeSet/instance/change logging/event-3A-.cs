@@ -10,7 +10,7 @@ event: anEvent
 		anEvent isCommented 
 			ifTrue: [self commentClass: anEvent item].
 		anEvent isRenamed 
-			ifTrue: [self renameClass: anEvent item as: anEvent newName].
+			ifTrue: [self renameClass: anEvent item from: anEvent oldName to: anEvent newName].
 		anEvent isReorganized
 			ifTrue: [self reorganizeClass: anEvent item].
 		anEvent isRecategorized
