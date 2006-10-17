@@ -1,13 +1,14 @@
 testRenaming
-	| oldName newName newMetaclassName class |
+	"self debug: #testRenaming"
+	"self run: #testRenaming"
+	
+	| oldName newMetaclassName class |
 	oldName := className.
-	newName := #RenamedTUTU.
-	newMetaclassName := (newName, #' class') asSymbol.
+	newMetaclassName := (renamedName, #' class') asSymbol.
 	class := Smalltalk at: oldName.
 	class class compile: 'dummyMeth'.
-	class rename: newName.
-	className := class name. "Important for tearDown"
-	self assert: class name = newName.
-	self assert: (ChangeSet current changedClassNames includes: newName). 
+	class rename: renamedName.
+	self assert: class name = renamedName.
+	self assert: (ChangeSet current changedClassNames includes: renamedName). 
 	self assert: (ChangeSet current changedClassNames includes: newMetaclassName).
 	
