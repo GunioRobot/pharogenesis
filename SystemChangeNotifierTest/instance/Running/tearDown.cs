@@ -1,4 +1,6 @@
 tearDown
 
+	super tearDown.
 	self capturedEvent: nil.
-	super tearDown
+	notifier releaseAll.
+	notifier := nil
