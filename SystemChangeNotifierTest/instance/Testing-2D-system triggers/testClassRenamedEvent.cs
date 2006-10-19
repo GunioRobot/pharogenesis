@@ -1,4 +1,5 @@
 testClassRenamedEvent
+	"self run: #testClassRenamedEvent"
 
 	self systemChangeNotifier notify: self ofAllSystemChangesUsing: #event:.
 	self systemChangeNotifier 
