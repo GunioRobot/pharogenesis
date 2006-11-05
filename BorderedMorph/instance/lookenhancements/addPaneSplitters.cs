@@ -14,7 +14,7 @@ addPaneSplitters
 		splitter layoutFrame: (LayoutFrame
 			fractions: (targetX @ minY corner: targetX @ maxY)
 			offsets: ((0 @ (target layoutFrame topOffset ifNil: [0]) corner: 4 @ (target layoutFrame bottomOffset ifNil: [0])) translateBy: (target layoutFrame rightOffset ifNil: [0]) @ 0)).
-		self addMorphBack: splitter.
+		self addMorphBack: (splitter position: self position).
 		remaining _ remaining copyWithoutAll: sameX].
 
 	remaining _ submorphs copy reject: [:each | each layoutFrame bottomFraction = 1].
@@ -28,7 +28,7 @@ addPaneSplitters
 			splitter layoutFrame: (LayoutFrame
 				fractions: (minX @ targetY corner: maxX @ targetY)
 				offsets: (((target layoutFrame leftOffset ifNil: [0]) @ 0 corner: (target layoutFrame rightOffset ifNil: [0]) @ 4) translateBy: 0 @ (target layoutFrame bottomOffset ifNil: [0]))).
-			self addMorphBack: splitter.
+			self addMorphBack: (splitter position: self position).
 			remaining _ remaining copyWithoutAll: sameY].
 
 	self linkSubmorphsToSplitters.
