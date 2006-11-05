@@ -10,4 +10,4 @@ addPaneVSplitterBetween: leftMorph and: rightMorphs
 		fractions: (targetX @ minY corner: targetX @ maxY)
 		offsets: ((0 @ (leftMorph layoutFrame topOffset ifNil: [0]) corner: (4@ (leftMorph layoutFrame bottomOffset ifNil: [0]))) translateBy: (leftMorph layoutFrame rightOffset ifNil: [0]) @ 0)).
 
-	self addMorphBack: splitter
+	self addMorphBack: (splitter position: self position).
