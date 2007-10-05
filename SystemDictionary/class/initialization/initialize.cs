@@ -6,11 +6,11 @@ initialize
 	StartUpList _ OrderedCollection new.
 	"These get processed from the top down..."
 	#(
+		Delay
 		DisplayScreen
 		Cursor
 		InputSensor
 		ProcessorScheduler  "Starts low space watcher and bkground."
-		Delay
 		FileDirectory  "Enables file stack dump and opens sources."
 		ShortIntegerArray
 		ShortRunArray
@@ -33,6 +33,7 @@ initialize
 	ShutDownList _ OrderedCollection new.
 	"These get processed from the bottom up..."
 	#(
+		Delay
 		DisplayScreen
 		InputSensor
 		Form
@@ -41,7 +42,6 @@ initialize
 		StrikeFont
 		Color
 		FileDirectory
-		Delay
 		SoundPlayer
 		HttpUrl
 		Password
