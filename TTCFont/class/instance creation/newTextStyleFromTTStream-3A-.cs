@@ -3,5 +3,5 @@ newTextStyleFromTTStream: readStream
 "
 
 	| description |
-	description _ TTFontDescription addFromTTStream: readStream.
+	description := TTFontDescription addFromTTStream: readStream.
 	^ self newTextStyleFromTT: description.
