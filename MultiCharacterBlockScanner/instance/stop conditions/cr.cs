@@ -10,14 +10,14 @@ cr
 			or: [(line last = text size)
 				and: [(destY + line lineHeight) < characterPoint y]])
 		ifTrue:	["When off end of string, give data for next character"
-				destY _ destY +  line lineHeight.
-				baselineY _ line lineHeight.
-				lastCharacter _ nil.
-				characterPoint _ (nextLeftMargin ifNil: [leftMargin]) @ destY.
-				lastIndex _ lastIndex + 1.
+				destY := destY +  line lineHeight.
+				baselineY := line lineHeight.
+				lastCharacter := nil.
+				characterPoint := (nextLeftMargin ifNil: [leftMargin]) @ destY.
+				lastIndex := lastIndex + 1.
 				self lastCharacterExtentSetX: 0.
 				^ true].
-		lastCharacter _ CR.
-		characterPoint _ destX @ destY.
+		lastCharacter := CR.
+		characterPoint := destX @ destY.
 		self lastCharacterExtentSetX: rightMargin - destX.
 		^true
