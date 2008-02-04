@@ -8,10 +8,10 @@ buildCharacterBlockIn: para
 								@ para compositionRectangle top
 					extent: 0 @ textStyle lineGrid].
 	"find the line"
-	lineIndex _ para lineIndexOfTop: characterPoint y.
-	destY _ para topAtLineIndex: lineIndex.
-	line _ para lines at: lineIndex.
-	rightMargin _ para rightMarginForDisplay.
+	lineIndex := para lineIndexOfTop: characterPoint y.
+	destY := para topAtLineIndex: lineIndex.
+	line := para lines at: lineIndex.
+	rightMargin := para rightMarginForDisplay.
 
 	(lineIndex = para numberOfLines and:
 		[(destY + line lineHeight) < characterPoint y])
@@ -19,27 +19,27 @@ buildCharacterBlockIn: para
 					self characterPointSetX: rightMargin]
 			ifFalse:	[characterPoint y < (para compositionRectangle) top
 						ifTrue: ["force search to first line"
-								characterPoint _ (para compositionRectangle) topLeft].
+								characterPoint := (para compositionRectangle) topLeft].
 					characterPoint x > rightMargin
 						ifTrue:	[self characterPointSetX: rightMargin]].
-	destX _ (leftMargin _ para leftMarginForDisplayForLine: lineIndex alignment: (alignment ifNil:[textStyle alignment])).
-	nextLeftMargin_ para leftMarginForDisplayForLine: lineIndex+1 alignment: (alignment ifNil:[textStyle alignment]).
-	lastIndex _ line first.
+	destX := (leftMargin := para leftMarginForDisplayForLine: lineIndex alignment: (alignment ifNil:[textStyle alignment])).
+	nextLeftMargin:= para leftMarginForDisplayForLine: lineIndex+1 alignment: (alignment ifNil:[textStyle alignment]).
+	lastIndex := line first.
 
 	self setStopConditions.		"also sets font"
-	runLength _ (text runLengthFor: line first).
+	runLength := (text runLengthFor: line first).
 	characterIndex == nil
-		ifTrue:	[lineStop _ line last  "characterBlockAtPoint"]
-		ifFalse:	[lineStop _ characterIndex  "characterBlockForIndex"].
-	(runStopIndex _ lastIndex + (runLength - 1)) > lineStop
-		ifTrue:	[runStopIndex _ lineStop].
-	lastCharacterExtent _ 0 @ line lineHeight.
-	spaceCount _ 0. done  _ false.
+		ifTrue:	[lineStop := line last  "characterBlockAtPoint"]
+		ifFalse:	[lineStop := characterIndex  "characterBlockForIndex"].
+	(runStopIndex := lastIndex + (runLength - 1)) > lineStop
+		ifTrue:	[runStopIndex := lineStop].
+	lastCharacterExtent := 0 @ line lineHeight.
+	spaceCount := 0. done  := false.
 	self handleIndentation.
 
 	[done]
 	whileFalse:
-	[stopCondition _ self scanCharactersFrom: lastIndex to: runStopIndex
+	[stopCondition := self scanCharactersFrom: lastIndex to: runStopIndex
 			in: text string rightX: characterPoint x
 			stopConditions: stopConditions kern: kern.
 
