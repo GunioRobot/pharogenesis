@@ -4,10 +4,10 @@ placeEmbeddedObject: anchoredMorph
 	| w |
 	"Workaround: The following should really use #textAnchorType"
 	anchoredMorph relativeTextAnchorPosition ifNotNil:[^true].
-	destX _ destX + (w _ anchoredMorph width).
+	destX := destX + (w := anchoredMorph width).
 	(destX > rightMargin and: [(leftMargin + w) <= rightMargin])
 		ifTrue: ["Won't fit, but would on next line"
 				^ false].
-	lastIndex _ lastIndex + 1.
+	lastIndex := lastIndex + 1.
 	self setFont.  "Force recalculation of emphasis for next run"
 	^ true
