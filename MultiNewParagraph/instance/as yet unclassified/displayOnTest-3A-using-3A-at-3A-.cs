@@ -5,13 +5,13 @@ displayOnTest: aCanvas using: displayScanner at: somePosition
 	(presentationText isNil or: [presentationLines isNil]) ifTrue: [
 		^ self displayOn: aCanvas using: displayScanner at: somePosition.
 	].
-	visibleRectangle _ aCanvas clipRect.
-	offset _ somePosition - positionWhenComposed.
-	leftInRun _ 0.
+	visibleRectangle := aCanvas clipRect.
+	offset := somePosition - positionWhenComposed.
+	leftInRun := 0.
 	(self lineIndexForPoint: visibleRectangle topLeft)
 		to: (self lineIndexForPoint: visibleRectangle bottomRight)
-		do: [:i | line _ presentationLines at: i.
+		do: [:i | line := presentationLines at: i.
 			self displaySelectionInLine: line on: aCanvas.
 			line first <= line last ifTrue:
-				[leftInRun _ displayScanner displayLine: line
+				[leftInRun := displayScanner displayLine: line
 								offset: offset leftInRun: leftInRun]].
