@@ -5,5 +5,5 @@ newTextStyleFromTTFile: fileName
 	"
 
 	| description |
-	description _ TTFontDescription addFromTTFile: fileName.
+	description := TTFontDescription addFromTTFile: fileName.
 	^ self newTextStyleFromTT: description.
