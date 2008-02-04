@@ -1,2 +1,2 @@
 lastSpaceOrTabExtentSetX: xVal
-	lastSpaceOrTabExtent _ xVal @ lastSpaceOrTabExtent y
+	lastSpaceOrTabExtent := xVal @ lastSpaceOrTabExtent y
