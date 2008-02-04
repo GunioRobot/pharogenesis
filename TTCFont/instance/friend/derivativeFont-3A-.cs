@@ -1,7 +1,7 @@
 derivativeFont: aTTCFont
 
 	| index |
-	index _ self indexOfSubfamilyName: (aTTCFont subfamilyName).
+	index := self indexOfSubfamilyName: (aTTCFont subfamilyName).
 	index < 1 ifTrue: [
 		^ self "inform: 'unknown sub family name.  This font will be skipped'".
 	].
