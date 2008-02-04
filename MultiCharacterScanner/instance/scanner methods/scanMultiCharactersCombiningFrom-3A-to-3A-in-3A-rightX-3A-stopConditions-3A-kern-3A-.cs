@@ -1,45 +1,45 @@
 scanMultiCharactersCombiningFrom: startIndex to: stopIndex in: sourceString rightX: rightX stopConditions: stops kern: kernDelta
 
 	| charCode encoding f maxAscii startEncoding combining combined combiningIndex c |
-	lastIndex _ startIndex.
-	lastIndex > stopIndex ifTrue: [lastIndex _ stopIndex. ^ stops at: EndOfRun].
-	startEncoding _ (sourceString at: startIndex) leadingChar.
-	font ifNil: [font _ (TextConstants at: #DefaultMultiStyle) fontArray at: 1].
+	lastIndex := startIndex.
+	lastIndex > stopIndex ifTrue: [lastIndex := stopIndex. ^ stops at: EndOfRun].
+	startEncoding := (sourceString at: startIndex) leadingChar.
+	font ifNil: [font := (TextConstants at: #DefaultMultiStyle) fontArray at: 1].
 	((font isMemberOf: StrikeFontSet) or: [font isKindOf: TTCFontSet]) ifTrue: [
-		[f _ font fontArray at: startEncoding + 1]
-			on: Exception do: [:ex | f _ font fontArray at: 1].
-		f ifNil: [ f _ font fontArray at: 1].
-		maxAscii _ f maxAscii.
-		spaceWidth _ font widthOf: Space.
+		[f := font fontArray at: startEncoding + 1]
+			on: Exception do: [:ex | f := font fontArray at: 1].
+		f ifNil: [ f := font fontArray at: 1].
+		maxAscii := f maxAscii.
+		spaceWidth := font widthOf: Space.
 	] ifFalse: [
-		maxAscii _ font maxAscii.
-		spaceWidth _ font widthOf: Space.
+		maxAscii := font maxAscii.
+		spaceWidth := font widthOf: Space.
 	].
 
-	combining _ nil.
+	combining := nil.
 	[lastIndex <= stopIndex] whileTrue: [
-		charCode _ (sourceString at: lastIndex) charCode.
-		c _ (sourceString at: lastIndex).
+		charCode := (sourceString at: lastIndex) charCode.
+		c := (sourceString at: lastIndex).
 		combining ifNil: [
-			combining _ CombinedChar new.
+			combining := CombinedChar new.
 			combining add: c.
-			combiningIndex _ lastIndex.
-			lastIndex _ lastIndex + 1.
+			combiningIndex := lastIndex.
+			lastIndex := lastIndex + 1.
 		] ifNotNil: [
 			(combining add: c) ifFalse: [
-				self addCharToPresentation: (combined _ combining combined).
-				combining _ CombinedChar new.
+				self addCharToPresentation: (combined := combining combined).
+				combining := CombinedChar new.
 				combining add: c.
-				charCode _ combined charCode.
-				encoding _ combined leadingChar.
-				encoding ~= startEncoding ifTrue: [lastIndex _ lastIndex - 1.
+				charCode := combined charCode.
+				encoding := combined leadingChar.
+				encoding ~= startEncoding ifTrue: [lastIndex := lastIndex - 1.
 					(encoding = 0 and: [(stopConditions at: charCode + 1) ~~ nil]) ifTrue: [
 						^ stops at: charCode + 1
 					] ifFalse: [
 						 ^ stops at: EndOfRun
 					].
 				].
-				charCode > maxAscii ifTrue: [charCode _ maxAscii].
+				charCode > maxAscii ifTrue: [charCode := maxAscii].
 				""
 				(encoding = 0 and: [(stopConditions at: charCode + 1) ~~ nil]) ifTrue: [
 					combining ifNotNil: [
@@ -52,22 +52,22 @@ scanMultiCharactersCombiningFrom: startIndex to: stopIndex in: sourceString righ
 				].		
 				destX > rightX ifTrue: [
 					destX ~= firstDestX ifTrue: [
-						lastIndex _ combiningIndex.
+						lastIndex := combiningIndex.
 						self removeLastCharFromPresentation.
 						^ stops at: CrossedX]].
-				combiningIndex _ lastIndex.
-				lastIndex _ lastIndex + 1.
+				combiningIndex := lastIndex.
+				lastIndex := lastIndex + 1.
 			] ifTrue: [
-				lastIndex _ lastIndex + 1.
-				numOfComposition _ numOfComposition + 1.
+				lastIndex := lastIndex + 1.
+				numOfComposition := numOfComposition + 1.
 			].
 		].
 	].
-	lastIndex _ stopIndex.
+	lastIndex := stopIndex.
 	combining ifNotNil: [
-		combined _ combining combined.
+		combined := combining combined.
 		self addCharToPresentation: combined.
 		"assuming that there is always enough space for at least one character".
-		destX _ destX + (self widthOf: combined inFont: font).
+		destX := destX + (self widthOf: combined inFont: font).
 	].
 	^ stops at: EndOfRun
