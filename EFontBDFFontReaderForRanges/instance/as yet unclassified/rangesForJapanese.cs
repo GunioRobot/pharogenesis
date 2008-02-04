@@ -1,7 +1,7 @@
 rangesForJapanese
 
 	| basics etc |
-	basics _ {
+	basics := {
 		Array with: 16r5C with: 16r5C.
 		Array with: 16rA2 with: 16rA3.
 		Array with: 16rA7 with: 16rA8.
@@ -12,7 +12,7 @@ rangesForJapanese
 		Array with: 16rD7 with: 16rD7.
 		Array with: 16rF7 with: 16rF7
 	}.
-	etc _ {
+	etc := {
 		Array with: 16r370 with: 16r3FF. "greek"
 		Array with: 16r400 with: 16r52F. "cyrillic"
 		Array with: 16r1D00 with: 16r1D7F. "phonetic"
