@@ -1,4 +1,4 @@
 lineGlyph: aGlyph
 
-	lineGlyph _ aGlyph.
-	contourWidth _ aGlyph calculateWidth.
+	lineGlyph := aGlyph.
+	contourWidth := aGlyph calculateWidth.
