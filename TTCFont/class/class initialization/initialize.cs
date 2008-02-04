@@ -5,7 +5,7 @@ initialize
 
 	| tt |
 	Smalltalk addToShutDownList: TTCFont.
-	tt _ TTFontDescription default.
+	tt := TTFontDescription default.
 	tt ifNotNil: [self newTextStyleFromTT: tt].
 
 	(FileList respondsTo: #registerFileReader:) ifTrue: [
