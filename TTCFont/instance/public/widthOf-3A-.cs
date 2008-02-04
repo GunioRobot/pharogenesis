@@ -7,11 +7,11 @@ widthOf: aCharacter
 		fallbackFont ifNotNil: [^ fallbackFont widthOf: aCharacter].
 		^ 1
 	].
-	assoc _ self cache at: (aCharacter charCode + 1).
+	assoc := self cache at: (aCharacter charCode + 1).
 	assoc ifNotNil: [
 		^ assoc value width
 	].
 
-	f _ self computeForm: aCharacter.
+	f := self computeForm: aCharacter.
 	self at: aCharacter charCode put: f.
 	^ f width.
