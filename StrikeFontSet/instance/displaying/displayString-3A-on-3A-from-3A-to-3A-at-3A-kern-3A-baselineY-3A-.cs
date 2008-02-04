@@ -4,14 +4,14 @@ displayString: aString on: aBitBlt from: startIndex to: stopIndex at: aPoint ker
 	
 	"Assume this is a wide string"
 	| isMulti |
-	isMulti _ true.
+	isMulti := true.
 
 	"Look for an excuse to use the fast primitive"
  	(aString isKindOf: ByteString) 
-		ifTrue:[ isMulti _ false]
+		ifTrue:[ isMulti := false]
 		ifFalse:[ (aString isKindOf: Text) 
 			ifTrue:[ (aString string isKindOf: ByteString) 
-				ifTrue:[ isMulti _ false ] 
+				ifTrue:[ isMulti := false ] 
 	]].
 
 	isMulti ifTrue:[^ self displayMultiString: aString on: aBitBlt from: startIndex to: stopIndex at: aPoint kern: kernDelta baselineY: baselineY].
