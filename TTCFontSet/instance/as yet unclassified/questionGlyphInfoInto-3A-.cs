@@ -1,8 +1,8 @@
 questionGlyphInfoInto: glyphInfoArray
 
 	| f form |
-	f _ fontArray at: 1.
-	form _ f formOf: $?.
+	f := fontArray at: 1.
+	form := f formOf: $?.
 	glyphInfoArray at: 1 put: form;
 		at: 2 put: 0;
 		at: 3 put: form width;
