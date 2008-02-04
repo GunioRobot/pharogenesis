@@ -2,5 +2,5 @@ filterTranslations: aString
 | filter |
 filter := aString ifNil:[''].
 ""
-	translationsFilter _ filter.
+	translationsFilter := filter.
 self update: #translations.
