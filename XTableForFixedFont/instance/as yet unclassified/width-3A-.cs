@@ -1,3 +1,3 @@
 width: anInteger
 
-	width _ anInteger.
+	width := anInteger.
