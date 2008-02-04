@@ -6,8 +6,8 @@ characterBlockForIndex: targetIndex in: aParagraph
 	self 
 		initializeFromParagraph: aParagraph 
 		clippedBy: aParagraph clippingRectangle.
-	characterIndex _ targetIndex.
-	characterPoint _ 
+	characterIndex := targetIndex.
+	characterPoint := 
 		aParagraph rightMarginForDisplay @ 
 			(aParagraph topAtLineIndex: 
 				(aParagraph lineIndexOfCharacterIndex: characterIndex)).
