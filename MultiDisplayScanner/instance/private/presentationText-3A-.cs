@@ -1,3 +1,3 @@
 presentationText: t
 
-	text _ t.
+	text := t.
