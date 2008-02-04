@@ -1,5 +1,5 @@
 widthOf: aCharacter
 
 	| encoding |
-	encoding _ aCharacter leadingChar.
+	encoding := aCharacter leadingChar.
 	^ (fontArray at: encoding + 1) widthOf: aCharacter.
