@@ -1,3 +1,3 @@
 initialize
 
-	foregroundColor _ Color black.
+	foregroundColor := Color black.
