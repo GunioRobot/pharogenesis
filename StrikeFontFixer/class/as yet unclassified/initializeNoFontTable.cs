@@ -1,7 +1,7 @@
 initializeNoFontTable
 
 	| n |
-	n _ #(
+	n := #(
 	16rA4 "CURRENCY SIGN"
 	16rA6 "BROKEN BAR"
 	16rA8 "DIAERESIS"
@@ -40,5 +40,5 @@ initializeNoFontTable
 	16rFD "SMALL Y WITH ACUTE"
 	16rFE "SMALL THORN"
 	).
-	NoFontTable _ n.
+	NoFontTable := n.
 
