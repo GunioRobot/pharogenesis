@@ -4,7 +4,7 @@ objectForDataStream: refStrm
 reference to a known FontSet in the other system instead."
 
 	"a path to me"
-	dp _ DiskProxy global: #TTCFontSet selector: #familyName:pointSize:
+	dp := DiskProxy global: #TTCFontSet selector: #familyName:pointSize:
 			args: {self familyName. self pointSize}.
 	refStrm replace: self with: dp.
 	^ dp.
