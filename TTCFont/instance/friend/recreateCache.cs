@@ -1,4 +1,4 @@
 recreateCache
 
-	cache _ WeakArray new: 1.
+	cache := WeakArray new: 1.
 	ascent := nil.
