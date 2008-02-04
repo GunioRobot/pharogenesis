@@ -1,3 +1,3 @@
 maxAscii: anInteger
 
-	maxCode _ anInteger.
+	maxCode := anInteger.
