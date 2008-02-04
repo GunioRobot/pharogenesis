@@ -9,24 +9,24 @@ crossedX
 		and it crosses the right margin, then locating
 		the character block after it is impossible without this hack."
 		characterIndex > text size ifTrue: [
-			lastIndex _ characterIndex.
-			characterPoint _ (nextLeftMargin ifNil: [leftMargin]) @ (destY + line lineHeight).
+			lastIndex := characterIndex.
+			characterPoint := (nextLeftMargin ifNil: [leftMargin]) @ (destY + line lineHeight).
 			^true]].
 	characterPoint x <= (destX + (lastCharacterExtent x // 2))
-		ifTrue:	[lastCharacter _ (text at: lastIndex).
-				characterPoint _ destX @ destY.
+		ifTrue:	[lastCharacter := (text at: lastIndex).
+				characterPoint := destX @ destY.
 				^true].
 	lastIndex >= line last 
-		ifTrue:	[lastCharacter _ (text at: line last).
-				characterPoint _ destX @ destY.
+		ifTrue:	[lastCharacter := (text at: line last).
+				characterPoint := destX @ destY.
 				^true].
 
 	"Pointing past middle of a character, return the next character."
-	lastIndex _ lastIndex + 1.
-	lastCharacter _ text at: lastIndex.
-	currentX _ destX + lastCharacterExtent x + kern.
+	lastIndex := lastIndex + 1.
+	lastCharacter := text at: lastIndex.
+	currentX := destX + lastCharacterExtent x + kern.
 	self lastCharacterExtentSetX: (font widthOf: lastCharacter).
-	characterPoint _ currentX @ destY.
+	characterPoint := currentX @ destY.
 	lastCharacter = Space ifFalse: [^ true].
 
 	"Yukky if next character is space or tab."
@@ -39,9 +39,9 @@ crossedX
 	"NOTE:  I find no value to the following code, and so have defeated it - DI"
 
 	"See tabForDisplay for illumination on the following awfulness."
-	leadingTab _ true.
+	leadingTab := true.
 	line first to: lastIndex - 1 do:
-		[:index | (text at: index) ~= Tab ifTrue: [leadingTab _ false]].
+		[:index | (text at: index) ~= Tab ifTrue: [leadingTab := false]].
 	(alignment ~= Justified or: [leadingTab])
 		ifTrue:	[self lastCharacterExtentSetX: (textStyle nextTabXFrom: currentX
 					leftMargin: leftMargin rightMargin: rightMargin) -
