@@ -1,4 +1,4 @@
 ttcDescription: aTTCDescription
 
-	ttcDescription _ aTTCDescription.
+	ttcDescription := aTTCDescription.
 	self recreateCache.
