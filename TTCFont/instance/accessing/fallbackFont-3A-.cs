@@ -1,3 +1,3 @@
 fallbackFont: aFontSetOrNil
 
-	fallbackFont _ aFontSetOrNil.
+	fallbackFont := aFontSetOrNil.
