@@ -5,18 +5,18 @@ codeSelectedTranslationAsMimeString
 	code := String
 				streamContents: [:aStream | self translator fileOutOn: aStream keys: keys].
 
-	tmpStream _ MultiByteBinaryOrTextStream on: ''.
+	tmpStream := MultiByteBinaryOrTextStream on: ''.
 	tmpStream converter: UTF8TextConverter new.
 	translator fileOutHeaderOn: tmpStream.
 	tmpStream nextPutAll: code.
-	s2 _ RWBinaryOrTextStream on: ''.
+	s2 := RWBinaryOrTextStream on: ''.
 	gzs := GZipWriteStream on: s2.
 	tmpStream reset.
 	gzs nextPutAll: (tmpStream binary contentsOfEntireFile asString) contents.
 	gzs close.
 	s2 reset.
 
-	cont _ String streamContents: [:strm |
+	cont := String streamContents: [:strm |
 		strm nextPutAll: '"Gzip+Base64 encoded translation for;'; cr.
 		strm nextPutAll: '#('.
 		keys do: [:each | strm  nextPutAll: '''', each, ''' '.].
