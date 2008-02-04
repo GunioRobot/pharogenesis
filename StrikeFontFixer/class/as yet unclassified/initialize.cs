@@ -5,7 +5,7 @@ initialize
 
 	| d |
 	self initializeNoFontTable.
-	d _ Array new: 256.
+	d := Array new: 256.
 	0 to: 127 do: [:i | d at: i+1 put: i].
 	16r80 to: 16r9F do: [:i | d at: i+1 put: nil].
 	d at: 16rA0+1 put: 16r20.
@@ -105,4 +105,4 @@ initialize
 	d at: 16rFE+1 put: 16r70. "SMALL THORN"
 	d at: 16rFF+1 put: 16rD8.
 
-	MappingTable _ d.
+	MappingTable := d.
