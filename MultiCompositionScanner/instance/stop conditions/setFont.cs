@@ -1,7 +1,7 @@
 setFont
 	super setFont.
-	breakAtSpace _ false.
+	breakAtSpace := false.
 	wantsColumnBreaks == true ifTrue: [
-		stopConditions _ stopConditions copy.
+		stopConditions := stopConditions copy.
 		stopConditions at: TextComposer characterForColumnBreak asciiValue + 1 put: #columnBreak.
 	].
