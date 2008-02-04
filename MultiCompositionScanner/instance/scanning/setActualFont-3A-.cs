@@ -4,9 +4,9 @@ setActualFont: aFont
 	super setActualFont: aFont.
 	"'   ', lastIndex printString, '   ' displayAt: (lastIndex * 15)@0."
 	lineHeight == nil
-		ifTrue: [descent _ font descent.
-				baseline _ font ascent.
-				lineHeight _ baseline + descent]
-		ifFalse: [descent _ lineHeight - baseline max: font descent.
-				baseline _ baseline max: font ascent.
-				lineHeight _ lineHeight max: baseline + descent]
+		ifTrue: [descent := font descent.
+				baseline := font ascent.
+				lineHeight := baseline + descent]
+		ifFalse: [descent := lineHeight - baseline max: font descent.
+				baseline := baseline max: font ascent.
+				lineHeight := lineHeight max: baseline + descent]
