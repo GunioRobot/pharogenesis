@@ -1,3 +1,3 @@
 emphasis: code
 
-	emphasis _ code.
+	emphasis := code.
