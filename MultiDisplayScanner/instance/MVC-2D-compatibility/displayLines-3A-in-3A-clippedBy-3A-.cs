@@ -8,54 +8,54 @@ displayLines: linesInterval in: aParagraph clippedBy: visibleRectangle
 	| runLength done stopCondition leftInRun startIndex string lastPos |
 	"leftInRun is the # of characters left to scan in the current run;
 		when 0, it is time to call 'self setStopConditions'"
-	morphicOffset _ 0@0.
-	leftInRun _ 0.
+	morphicOffset := 0@0.
+	leftInRun := 0.
 	self initializeFromParagraph: aParagraph clippedBy: visibleRectangle.
-	ignoreColorChanges _ false.
-	paragraph _ aParagraph.
-	foregroundColor _ paragraphColor _ aParagraph foregroundColor.
-	backgroundColor _ aParagraph backgroundColor.
+	ignoreColorChanges := false.
+	paragraph := aParagraph.
+	foregroundColor := paragraphColor := aParagraph foregroundColor.
+	backgroundColor := aParagraph backgroundColor.
 	aParagraph backgroundColor isTransparent
-		ifTrue: [fillBlt _ nil]
-		ifFalse: [fillBlt _ bitBlt copy.  "Blt to fill spaces, tabs, margins"
+		ifTrue: [fillBlt := nil]
+		ifFalse: [fillBlt := bitBlt copy.  "Blt to fill spaces, tabs, margins"
 				fillBlt sourceForm: nil; sourceOrigin: 0@0.
 				fillBlt fillColor: aParagraph backgroundColor].
-	rightMargin _ aParagraph rightMarginForDisplay.
-	lineY _ aParagraph topAtLineIndex: linesInterval first.
+	rightMargin := aParagraph rightMarginForDisplay.
+	lineY := aParagraph topAtLineIndex: linesInterval first.
 	bitBlt destForm deferUpdatesIn: visibleRectangle while: [
 		linesInterval do: 
 			[:lineIndex | 
-			leftMargin _ aParagraph leftMarginForDisplayForLine: lineIndex alignment: (alignment ifNil:[textStyle alignment]).
-			destX _ (runX _ leftMargin).
-			line _ aParagraph lines at: lineIndex.
-			lineHeight _ line lineHeight.
+			leftMargin := aParagraph leftMarginForDisplayForLine: lineIndex alignment: (alignment ifNil:[textStyle alignment]).
+			destX := (runX := leftMargin).
+			line := aParagraph lines at: lineIndex.
+			lineHeight := line lineHeight.
 			fillBlt == nil ifFalse:
 				[fillBlt destX: visibleRectangle left destY: lineY
 					width: visibleRectangle width height: lineHeight; copyBits].
-			lastIndex _ line first.
+			lastIndex := line first.
 			leftInRun <= 0
 				ifTrue: [self setStopConditions.  "also sets the font"
-						leftInRun _ text runLengthFor: line first].
-			baselineY _ lineY + line baseline.
-			destY _ baselineY - font ascent.  "Should have happened in setFont"
-			runLength _ leftInRun.
-			runStopIndex _ lastIndex + (runLength - 1) min: line last.
-			leftInRun _ leftInRun - (runStopIndex - lastIndex + 1).
-			spaceCount _ 0.
-			done _ false.
-			string _ text string.
+						leftInRun := text runLengthFor: line first].
+			baselineY := lineY + line baseline.
+			destY := baselineY - font ascent.  "Should have happened in setFont"
+			runLength := leftInRun.
+			runStopIndex := lastIndex + (runLength - 1) min: line last.
+			leftInRun := leftInRun - (runStopIndex - lastIndex + 1).
+			spaceCount := 0.
+			done := false.
+			string := text string.
 			self handleIndentation.
 			[done] whileFalse:[
-				startIndex _ lastIndex.
-				lastPos _ destX@destY.
-				stopCondition _ self scanCharactersFrom: lastIndex to: runStopIndex
+				startIndex := lastIndex.
+				lastPos := destX@destY.
+				stopCondition := self scanCharactersFrom: lastIndex to: runStopIndex
 							in: string rightX: rightMargin stopConditions: stopConditions
 							kern: kern.
 				lastIndex >= startIndex ifTrue:[
 					font displayString: string on: bitBlt 
 						from: startIndex to: lastIndex at: lastPos kern: kern baselineY: baselineY].
 				"see setStopConditions for stopping conditions for displaying."
-				done _ self perform: stopCondition].
+				done := self perform: stopCondition].
 			fillBlt == nil ifFalse:
 				[fillBlt destX: destX destY: lineY width: visibleRectangle right-destX height: lineHeight; copyBits].
-			lineY _ lineY + lineHeight]]
+			lineY := lineY + lineHeight]]
