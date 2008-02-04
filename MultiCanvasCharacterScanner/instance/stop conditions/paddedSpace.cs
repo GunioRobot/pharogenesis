@@ -4,7 +4,7 @@ paddedSpace
 	which space in the line this space is and according to the amount of 
 	space that remained at the end of the line when it was composed."
 
-	destX _ destX + spaceWidth + (line justifiedPadFor: spaceCount).
+	destX := destX + spaceWidth + (line justifiedPadFor: spaceCount).
 
-	lastIndex _ lastIndex + 1.
+	lastIndex := lastIndex + 1.
 	^ false
