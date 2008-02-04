@@ -4,7 +4,7 @@ cr
 
 	line stop: lastIndex.
 	presentationLine stop: lastIndex - numOfComposition.
-	spaceX _ destX.
+	spaceX := destX.
 	line paddingWidth: rightMargin - spaceX.
 	presentationLine paddingWidth: rightMargin - spaceX.
 	^true
