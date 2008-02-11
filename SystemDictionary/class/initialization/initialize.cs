@@ -11,7 +11,9 @@ initialize
 		Cursor
 		InputSensor
 		ProcessorScheduler  "Starts low space watcher and bkground."
+		LanguageEnvironment
 		FileDirectory  "Enables file stack dump and opens sources."
+		NaturalLanguageTranslator
 		ShortIntegerArray
 		ShortRunArray
 		CrLfFileStream
