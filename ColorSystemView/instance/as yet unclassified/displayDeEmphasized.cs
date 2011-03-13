@@ -1,4 +1,4 @@
-displayDeEmphasized
+displayDeEmphasized 
 	"Display this view with emphasis off.
 	If windowBits is not nil, then simply BLT if possible."
 	bitsValid

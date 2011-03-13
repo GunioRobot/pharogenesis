@@ -1,5 +1,5 @@
 zapSelectionWith: aText
-	"Lock model, except during typeIn, which locks at close (in case 'again' follows)"
+	"Note edit except during typeIn, which notes edits at close."
 
 	super zapSelectionWith: aText.
-	beginTypeInBlock == nil ifTrue: [self lockModel]
+	beginTypeInBlock == nil ifTrue: [self userHasEdited].

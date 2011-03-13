@@ -24,7 +24,8 @@ writeImageFile: imageBytes
 	self putLong: specialObjectsOop toFile: f.
 	self putLong: lastHash toFile: f.
 	self putLong: (self ioScreenSize) toFile: f.
-	1 to: 9 do: [:i | self putLong: 0 toFile: f].  "fill remaining header words with zeros"
+	self putLong: fullScreenFlag toFile: f.
+	1 to: 8 do: [:i | self putLong: 0 toFile: f].  "fill remaining header words with zeros"
 	successFlag ifFalse: [
 		"file write or seek failure"
 		self cCode: 'sqImageFileClose(f)'.

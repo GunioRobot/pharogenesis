@@ -1,10 +1,11 @@
 withBlanksTrimmed
-	"Return a copy of the receiver from which leading and trailing blanks 
-	have been trimmed.   Simplified by Gerardo Richarte 11/3/97"
+	"Return a copy of the receiver from which leading and trailing blanks have been trimmed."
 
-	self size = 0 ifTrue: [ ^self ].
+	| first |
+	first _ self findFirst: [:c | c isSeparator not].
+	first = 0 ifTrue: [^ ''].  "no non-separator character"
 	^ self
-		copyFrom: (self findFirst: [:eachChar | eachChar isSeparator not])
-		to: (self findLast: [:eachChar | eachChar isSeparator not])
+		copyFrom: first
+		to: (self findLast: [:c | c isSeparator not])
 
 	" ' abc  d   ' withBlanksTrimmed"

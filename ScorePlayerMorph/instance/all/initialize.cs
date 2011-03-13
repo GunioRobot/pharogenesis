@@ -8,6 +8,5 @@ initialize
 	inset _ 3.
 	color _ Color veryLightGray.
 	self borderWidth: 2.
-	self addMorph: self makeControls.
 	self onScorePlayer: (ScorePlayer new initialize) title: ' '.
 	self extent: 20@20.

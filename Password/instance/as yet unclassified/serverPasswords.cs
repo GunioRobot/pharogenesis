@@ -7,4 +7,4 @@ serverPasswords
 	raw _ (dir oldFileNamed: 'sqk.info') contentsOfEntireFile.
 		"If you don't have this file, and you really do want to release 
 		an update, contact Ted Kaehler."
-	^ (self decode: raw) findTokens: '\' withCRs.
+	^ (self decode: raw) findTokens: String cr.

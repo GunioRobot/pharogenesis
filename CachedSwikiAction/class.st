@@ -1,0 +1,1 @@
+CachedSwikiAction class instanceVariableNames: ''

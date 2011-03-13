@@ -1,7 +1,7 @@
 keyStroke: evt
 	"Handle a keystroke event. Accept change if enter key or Cmd-S is pressed."
 
-	| ch |
+	| ch contentsString |
 	ch _ evt keyCharacter.
 	ch = Character backspace ifTrue: [  "backspace"
 		contents size > 0 ifTrue: [
@@ -21,5 +21,5 @@ keyStroke: evt
 		self informTarget.
 		evt hand newKeyboardFocus: evt hand world.
 		^ self].
-
-	self contentsClipped: (contents copyWith: ch).  "append the character"
+	contentsString _ self contents ifNil: [''] ifNotNil: [contents].
+	self contentsClipped: (contentsString copyWith: ch).  "append the character"

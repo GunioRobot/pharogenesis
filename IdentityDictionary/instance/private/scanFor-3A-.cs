@@ -1,8 +1,11 @@
 scanFor: anObject
 	"Scan the key array for the first slot containing either a nil (indicating an empty slot) or an element that matches anObject. Answer the index of that slot or zero if no slot is found. This method will be overridden in various subclasses that have different interpretations for matching elements."
-	| element start finish |
-	start _ (anObject identityHash \\ array size) + 1.
+	| finish hash start element |
 	finish _ array size.
+	finish > 4096
+		ifTrue: [hash _ anObject identityHash * (finish // 4096)]
+		ifFalse: [hash _ anObject identityHash].
+	start _ (hash \\ array size) + 1.
 
 	"Search from (hash mod size) to the end."
 	start to: finish do:

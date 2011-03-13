@@ -30,7 +30,7 @@ buildScalesIn: frame
 			majorTick: env scale / 5.0 majorTickLength: 10
 			caption: env name
 			tickPrintBlock: [:v | v printString]].
-	vScale _ TransformationMorph new addMorph: vScale.
+	vScale _ TransformationMorph new asFlexOf: vScale.
 	vScale angle: Float pi / 2.0.
+	self addMorph: vScale.
 	vScale position: (frame left)@(graphArea top-1).
-	self addMorph: vScale

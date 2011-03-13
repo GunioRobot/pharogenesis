@@ -1,0 +1,2 @@
+paperSize: aPoint
+	paperSize := aPoint

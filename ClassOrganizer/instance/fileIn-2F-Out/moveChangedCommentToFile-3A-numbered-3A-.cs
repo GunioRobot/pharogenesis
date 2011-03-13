@@ -1,13 +1,5 @@
-moveChangedCommentToFile: aFileStream numbered: sourceIndex 
-	"This is part of source code compression. Move the comment about the 
-	class classified by the receiver from the file referenced by sourceIndex 
-	and to the stream, aFileStream."
+moveChangedCommentToFile: aFileStream numbered: fileIndex 
+	"If the comment is in the changes file, then move it to a new file."
 
-	(globalComment ~~ nil and: [globalComment sourceFileNumber > 1])
-		ifTrue: 
-			[aFileStream cr; cr.
-			globalComment _ 
-				RemoteString
-					newString: globalComment text
-					onFileNumber: sourceIndex
-					toFile: aFileStream]
+	(globalComment ~~ nil and: [globalComment sourceFileNumber > 1]) ifTrue: 
+		[self fileOutCommentOn: aFileStream moveSource: true toFile: fileIndex]

@@ -1,9 +1,13 @@
 step
-	| mouseDown |
+	| mouseDown hand |
 	playRemaining > 0 ifTrue:
-		[playRemaining _ playRemaining - self stepTime max: 0.
+		["Finish playing the last sample"
+		playRemaining _ playRemaining - self stepTime max: 0.
 		^ self].
-	mouseDown _ self world hands first lastEvent redButtonPressed.
+	hand _ self world hands first.
+	(bounds containsPoint: hand position) ifFalse: [^ self].
+
+	mouseDown _ hand lastEvent redButtonPressed.
 	(mouseDown and: [playMode = #duringEdits]) ifTrue:
 		[self playSample].
 	mouseDown not & prevMouseDown ifTrue:

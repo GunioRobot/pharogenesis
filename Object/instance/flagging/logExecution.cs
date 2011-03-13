@@ -1,2 +1,3 @@
 logExecution
-	^ self showInTranscript:  'Executing ', thisContext sender printString
+
+	Transcript show: 'Executing ', thisContext sender printString; cr.

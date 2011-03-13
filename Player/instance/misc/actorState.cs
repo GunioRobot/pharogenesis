@@ -1,0 +1,2 @@
+actorState
+	^ costume actorState

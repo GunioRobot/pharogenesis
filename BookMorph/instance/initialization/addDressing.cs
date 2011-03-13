@@ -6,7 +6,11 @@ addDressing
 			[color lighter]
 		ifFalse:
 			[color darker].
-	pageControls _ self makeAuthoringPageControlsColored: controlColor.
+	pageControls _ Preferences noviceMode
+		ifTrue:
+			[self makeKidsPageControlsColored: controlColor]
+		ifFalse:
+			[self makeAuthoringPageControlsColored: controlColor].
 	pageControls borderWidth: 1; inset: 4.
 			
 	self addMorph: pageControls

@@ -5,4 +5,6 @@ object: anObject
 		ifTrue: [self update]
 		ifFalse:
 			[self inspect: anObject.
-			self changed: #inspectObject]
+			self changed: #inspectObject.
+			self changed: #fieldList.
+			self changed: #contents]

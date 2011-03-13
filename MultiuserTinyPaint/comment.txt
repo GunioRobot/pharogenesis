@@ -1,0 +1,4 @@
+MultiuserTinyPaint comment:
+'A very simple paint program that handles multiple users (hands).
+Each user has their own brush size and color.
+'

@@ -1,0 +1,1 @@
+InterpreterSupportCode class instanceVariableNames: ''

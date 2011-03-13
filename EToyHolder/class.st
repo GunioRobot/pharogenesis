@@ -1,0 +1,1 @@
+EToyHolder class instanceVariableNames: ''

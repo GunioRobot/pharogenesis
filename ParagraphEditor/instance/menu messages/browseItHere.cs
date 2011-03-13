@@ -14,5 +14,6 @@ browseItHere
 			foundClass isNil ifTrue: [^ view flash].
 			(foundClass isKindOf: Class)
 				ifTrue:
-					[model systemCategoryListIndex: (model systemCategoryList indexOf: foundClass category).
+					[model systemCategoryListIndex: 
+						(model systemCategoryList indexOf: foundClass category).
 		model classListIndex: (model classList indexOf: foundClass name)]]

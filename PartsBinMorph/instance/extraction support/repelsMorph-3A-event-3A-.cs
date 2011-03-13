@@ -1,3 +1,2 @@
 repelsMorph: aMorph event: ev
-	self flag: #deferred.  "This isn't really right"
-	^ true
+	^ (aMorph isKindOf: PhraseTileMorph) or: [aMorph hasProperty: #newAnonymousScript]

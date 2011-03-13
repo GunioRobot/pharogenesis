@@ -36,12 +36,12 @@ pageWarp: otherImage at: topLeft forward: forward
 				combinationRule: Form paint.
 		warp copyQuad: sourceQuad toRect: leafRect.
 		self copy: buffer boundingBox from: buffer to: topLeft rule: Form over.
-		Smalltalk forceDisplayUpdate].
+		Display forceDisplayUpdate].
 
 	buffer copy: pageRect from: otherImage to: 0@0 rule: Form over.
 	buffer copy: oldBottom boundingBox from: oldBottom to: pageRect bottomLeft rule: Form over.
 	self copy: buffer boundingBox from: buffer to: topLeft rule: Form over.
-	Smalltalk forceDisplayUpdate.
+	Display forceDisplayUpdate.
 "
 1 to: 4 do: [:corner | Display pageWarp:
 				(Form fromDisplay: (10@10 extent: 200@300)) reverse

@@ -1,13 +1,11 @@
 initializePrimitiveTable
-	"DynamicInterpreter initializePrimitiveTable"
-	"This table generates a C switch statement."
+	"This table generates a C switch statement for primitive dispatching."
 
-	"NOTE: The real limit here is 2047, but some C compilers barf over 700"
+	"NOTE: The real limit here is 2047, but our C compiler currently barfs over 700"
 	MaxPrimitiveIndex _ 700.
-	PrimitiveTable _ Array new: MaxPrimitiveIndex+1.
+	PrimitiveTable _ Array new: MaxPrimitiveIndex + 1.
 	self table: PrimitiveTable from: 
-	#(
-		"Integer Primitives (0-19)"
+	#(	"Integer Primitives (0-19)"
 		(0 primitiveFail)
 		(1 primitiveAdd)
 		(2 primitiveSubtract)
@@ -132,12 +130,12 @@ initializePrimitiveTable
 		(123 primitiveFail)
 		(124 primitiveLowSpaceSemaphore)
 		(125 primitiveSignalAtBytesLeft)
-		(126 primitiveFail)
-		(127 primitiveFail)
 
 		"Squeak Primitives Start Here"
 
 		"Squeak Miscellaneous Primitives (128-149)"
+		(126 primitiveDeferDisplayUpdates)
+		(127 primitiveShowDisplayRect)
 		(128 primitiveArrayBecome)
 		(129 primitiveSpecialObjectsOop)
 		(130 primitiveFullGC)
@@ -234,7 +232,16 @@ initializePrimitiveTable
 		(230 primitiveRelinquishProcessor)
 		(231 primitiveForceDisplayUpdate)
 		(232 primitiveFormPrint)
-		(233 249 primitiveFail)
+		(233 primitiveSetFullScreen)
+		(234 primBitmapdecompressfromByteArrayat)
+		(235 primStringcomparewithcollated)
+		(236 primSampledSoundconvert8bitSignedFromto16Bit)
+		(237 primBitmapcompresstoByteArray)
+		(238 primitiveSerialPortOpen)
+		(239 primitiveSerialPortClose)
+		(240 primitiveSerialPortWrite)
+		(241 primitiveSerialPortRead)
+		(242 249 primitiveFail)
 
 		"VM Implementor Primitives (250-255)"
 		(250 clearProfile)
@@ -257,7 +264,18 @@ initializePrimitiveTable
 		"Quick Push Const Methods"
 		(264 519 primitiveLoadInstVar)
 
+		"MIDI Primitives (520-539)"
+		(520 primitiveFail)
+		(521 primitiveMIDIClosePort)
+		(522 primitiveMIDIGetClock)
+		(523 primitiveMIDIGetPortCount)
+		(524 primitiveMIDIGetPortDirectionality)
+		(525 primitiveMIDIGetPortName)
+		(526 primitiveMIDIOpenPort)
+		(527 primitiveMIDIParameterGetOrSet)
+		(528 primitiveMIDIRead)
+		(529 primitiveMIDIWrite)
+		(530 539 primitiveFail)  "reserved for extended MIDI primitives"
+
 		"Unassigned Primitives"
-		(520 primitiveBeep) "test of new primitive indices"
-		(521 700 primitiveFail)
-	).
+		(540 700 primitiveFail)).

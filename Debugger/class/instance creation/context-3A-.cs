@@ -1,12 +1,10 @@
 context: aContext 
-	"Answer an instance of me that models the current state of the system. 
-	The active process has determined that a debugger should be set up 
-	(often by the user issuing the command debug)."
-	| aDebugger |
-	aDebugger _ self new.
-	aDebugger
+	"Answer an instance of me for debugging the active process starting with the given context."
+
+	^ self new
 		process: Processor activeProcess
-		controller: (ScheduledControllers inActiveControllerProcess
-					ifTrue: [ScheduledControllers activeController])
-		context: aContext.
-	^aDebugger
+		controller:
+			(ScheduledControllers inActiveControllerProcess
+				ifTrue: [ScheduledControllers activeController]
+				ifFalse: [nil])
+		context: aContext

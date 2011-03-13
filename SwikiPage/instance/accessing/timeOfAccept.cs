@@ -1,7 +1,7 @@
 timeOfAccept
 	"return the Time when the text was written on the file"
 
-	| theFile pp |
+	| theFile pp theReturn |
 	theFile _ FileStream oldFileNamed: file.
 	theFile setToEnd.
 	pp _ self backupAChunk: theFile.
@@ -11,4 +11,6 @@ timeOfAccept
 	theFile upTo: $'; skip: -1.		"date"
 	theFile nextDelimited: $'.
 	theFile upTo: $'; skip: -1.		"time"
-	^ (theFile nextDelimited: $') asTime
+	theReturn := (theFile nextDelimited: $') asTime.
+	theFile close.
+	^theReturn

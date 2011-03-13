@@ -1,6 +1,6 @@
-ExternalStream
+ReadWriteStream
 	subclass: #FileStream
 	instanceVariableNames: 'rwmode closed '
-	classVariableNames: ''
-	poolDictionaries: 'FilePool '
+	classVariableNames: 'Read Shorten Write '
+	poolDictionaries: ''
 	category: 'System-Files'

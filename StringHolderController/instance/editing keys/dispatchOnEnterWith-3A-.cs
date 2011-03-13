@@ -8,5 +8,7 @@ dispatchOnEnterWith: typeAheadStream
 			[self printIt.]
 		ifFalse: 
 			[self closeTypeIn: typeAheadStream.
-			self accept].
+			self controlTerminate.
+			self accept.
+			self controlInitialize].
 	^ true

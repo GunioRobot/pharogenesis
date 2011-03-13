@@ -1,14 +1,13 @@
 simulatedKeystroke: char
-	"Accept char as if it were struck on the keyboard.   This version does not (yet) deal with command keys, and achieves update in the receiver's typically inactive window via the sledge-hammer of uncache-bits.  1/31/96 sw"
+	"Accept char as if it were struck on the keyboard. This version does not yet deal with command keys, and achieves update in the receiver's typically inactive window via the sledge-hammer of uncache-bits.  1/31/96 sw"
 
 	self deselect.
 	self openTypeIn.
-	startBlock = stopBlock ifFalse: "save highlighted characters"
-			[UndoSelection _ self selection]. 
-	self zapSelectionWith: 
+	startBlock = stopBlock ifFalse: [UndoSelection _ self selection].
+	self zapSelectionWith:
 		(Text string: char asString emphasis: emphasisHere).
-	self lockModel.
+	self userHasEdited.
 	startBlock _ stopBlock copy.
 	self selectAndScroll.
 	self updateMarker.
-	view topView uncacheBits
+	view topView uncacheBits.

@@ -1,5 +1,5 @@
 closeTypeIn
-	"Lock the model if something actually was typed."
+	"Note edit if something actually was typed."
 
-	beginTypeInBlock ~~ nil ifTrue: [self lockModel].
-	super closeTypeIn
+	beginTypeInBlock ~~ nil ifTrue: [self userHasEdited].
+	super closeTypeIn.

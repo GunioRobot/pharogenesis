@@ -20,4 +20,4 @@ fadeImage: otherImage at: topLeft
 			clippingBox: imageRect rule: Form under fillColor: maskForm.
 		self copyBits: imageRect from: resultForm at: topLeft
 				clippingBox: self boundingBox rule: Form over fillColor: nil.
-		Smalltalk forceDisplayUpdate]
+		Display forceDisplayUpdate]

@@ -1,2 +1,0 @@
-binaryValue
-	^1

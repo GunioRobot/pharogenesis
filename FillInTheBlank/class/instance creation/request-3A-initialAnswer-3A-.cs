@@ -1,12 +1,16 @@
-request: messageString initialAnswer: aString 
-	"Create an instance of me whose question is messageString. Display it 
-	centered around the cursor. Supply aString as an initial answer. Answer 
-	whatever the user accepts."
+request: queryString initialAnswer: defaultAnswer 
+	"Create an instance of me whose question is queryString with the given initial answer. Invoke it centered at the given point, and answer the string the user accepts. Answer the empty string if the user cancels."
+	"FillInTheBlank
+		request: 'What is your favorite color?'
+		initialAnswer: 'red, no blue. Ahhh!'"
 
-	self
-		request: messageString
-		displayAt: Sensor cursorPoint
-		centered: true
-		action: [:response | response]
-		initialAnswer: aString.
-	^response
+	World ifNotNil: [
+		^ FillInTheBlankMorph
+			request: queryString
+			initialAnswer: defaultAnswer
+			centerAt: Sensor cursorPoint].
+
+	^ self
+		request: queryString
+		initialAnswer: defaultAnswer
+		centerAt: Sensor cursorPoint.

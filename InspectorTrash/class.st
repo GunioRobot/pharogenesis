@@ -1,1 +1,0 @@
-InspectorTrash class instanceVariableNames: ''

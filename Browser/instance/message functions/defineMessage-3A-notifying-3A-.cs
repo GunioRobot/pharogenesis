@@ -17,9 +17,10 @@ defineMessage: aString notifying: aController
 		ifTrue: 
 			[category = ClassOrganizer nullCategory
 				ifTrue: [self changed: #classSelectionChanged.
+						self changed: #classList.
 						self messageCategoryListIndex: 1].
 			self setClassOrganizer.  "In case organization not cached"
 			(oldMessageList includes: selector)
-				ifFalse: [self changed: #messageListChanged].
+				ifFalse: [self changed: #messageList].
 			self messageListIndex: (self messageList indexOf: selector)].
 	^ true

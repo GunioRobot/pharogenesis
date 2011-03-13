@@ -1,15 +1,13 @@
 closeUnchangedWindows
-	"Close any window that doesn't have unaccepted input.  Because of lingering garbage concerns, not available unless you know the secret incantation."
+	"Close any window that doesn't have unaccepted input."
 
 	| clean |
-
-	"ScreenController indicateWindowsWithUnacceptedInput"
-
-	Sensor leftShiftDown ifFalse: [^ self notYetImplemented].
+	(SelectionMenu confirm:
+'Do you really want to close all windows
+except those with unaccepted edits?')
+		ifFalse: [^ self].
 
 	clean _ ScheduledControllers scheduledControllers select:
-		[:contr | contr modelUnchanged].
-
-	clean do:
-		[:contr | contr closeAndUnschedule].
-	self restoreDisplay
+		[:c | c model canDiscardEdits and: [(c isKindOf: ScreenController) not]].
+	clean do: [:c | c closeAndUnscheduleNoTerminate].
+	self restoreDisplay.

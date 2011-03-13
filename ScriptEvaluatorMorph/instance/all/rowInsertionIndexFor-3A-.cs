@@ -1,0 +1,2 @@
+rowInsertionIndexFor: aPoint
+	^ nil

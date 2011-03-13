@@ -1,6 +1,6 @@
 CharacterScanner
 	subclass: #CompositionScanner
-	instanceVariableNames: 'spaceX spaceIndex '
+	instanceVariableNames: 'spaceX spaceIndex lineHeight baseline lineHeightAtSpace baselineAtSpace '
 	classVariableNames: ''
 	poolDictionaries: 'TextConstants '
 	category: 'Graphics-Support'

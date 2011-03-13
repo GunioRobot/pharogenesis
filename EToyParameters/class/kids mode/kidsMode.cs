@@ -1,0 +1,2 @@
+kidsMode
+	^ KidsMode

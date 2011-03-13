@@ -1,6 +1,7 @@
 Object
 	subclass: #SoundPlayer
 	instanceVariableNames: ''
-	classVariableNames: 'Stereo SamplingRate ActiveSounds BufferReady Buffer PlayerSemaphore BufferIndex PlayerProcess '
+	classVariableNames:
+		'ActiveSounds Buffer BufferIndex BufferMSecs PlayerProcess PlayerSemaphore ReadyForBuffer ReverbState SamplingRate SoundJustStarted Stereo UseReadySemaphore UseReverb '
 	poolDictionaries: ''
-	category: 'Sound'
+	category: 'System-Sound'

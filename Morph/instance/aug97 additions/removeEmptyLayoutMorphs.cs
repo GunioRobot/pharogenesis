@@ -1,6 +1,6 @@
 removeEmptyLayoutMorphs
 	submorphs copy do: [:m |
-		m isLayoutMorph
+		m isAlignmentMorph
 			ifTrue:
 				[m submorphCount = 0
 					ifTrue:

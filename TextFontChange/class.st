@@ -1,0 +1,1 @@
+TextFontChange class instanceVariableNames: ''

@@ -1,1 +1,0 @@
-ClassListController class instanceVariableNames: ''

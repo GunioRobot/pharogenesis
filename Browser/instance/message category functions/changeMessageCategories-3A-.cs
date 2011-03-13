@@ -8,7 +8,7 @@ changeMessageCategories: aString
 
 	self classOrMetaClassOrganizer changeFromString: aString.
 	Smalltalk changes reorganizeClass: self selectedClassOrMetaClass.
-	self unlock.
+	self clearUserEditFlag.
 	self editClass.
 	self classListIndex: classListIndex.
 	^ true

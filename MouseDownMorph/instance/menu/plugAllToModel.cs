@@ -1,0 +1,2 @@
+plugAllToModel
+	self plugMouseDownToModel; plugMouseMoveToSlot

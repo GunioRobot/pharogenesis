@@ -2,7 +2,7 @@ readFromTarget
 
 	| v |
 	((target == nil) or: [getSelector == nil]) ifTrue: [^ contents].
-	v _ target perform: getSelector.
+	v _ target scriptPerformer perform: getSelector.
 	lastValue _ v.
 	format = #string ifTrue: [^ v].
 	(format = #default and: [v isNumber]) ifTrue:

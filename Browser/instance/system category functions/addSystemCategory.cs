@@ -15,8 +15,8 @@ addSystemCategory
 		before: (systemCategoryListIndex = 0
 				ifTrue: [nil]
 				ifFalse: [self selectedSystemCategoryName]).
-	self changed: #systemCategoriesChanged.
 	self systemCategoryListIndex:
 		(oldIndex = 0
 			ifTrue: [systemOrganizer categories size]
-			ifFalse: [oldIndex])
+			ifFalse: [oldIndex]).
+	self changed: #systemCategoryList.

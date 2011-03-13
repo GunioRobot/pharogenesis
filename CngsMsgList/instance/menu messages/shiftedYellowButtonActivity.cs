@@ -1,2 +1,0 @@
-shiftedYellowButtonActivity
-	^ controller shiftedYellowButtonActivity

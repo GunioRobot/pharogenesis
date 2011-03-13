@@ -10,3 +10,9 @@ addBookMenuItemsTo: aCustomMenu hand: aHandMorph
 	aCustomMenu add: 'delete this page' action: #deletePage.
 	aCustomMenu add: 'page controls' action: #pageControls:.
 	aCustomMenu add: 'sort pages' action: #sortPages:.
+	aCustomMenu add: 'save as new-page prototype' action: #setNewPagePrototype.
+	newPagePrototype ifNotNil: [
+		aCustomMenu add: 'clear new-page prototype' action: #clearNewPagePrototype].
+
+	(aHandMorph classOfPasteBuffer isKindOf: PasteUpMorph class) ifTrue:
+		[aCustomMenu add: 'paste book page'	action: #pasteBookPage]

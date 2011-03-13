@@ -1,0 +1,2 @@
+newPlayerInstance
+	^ Player newUserInstance

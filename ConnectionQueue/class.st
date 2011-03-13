@@ -1,0 +1,1 @@
+ConnectionQueue class instanceVariableNames: ''

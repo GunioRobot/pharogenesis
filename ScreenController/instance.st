@@ -1,6 +1,6 @@
 MouseMenuController
 	subclass: #ScreenController
 	instanceVariableNames: ''
-	classVariableNames: 'HelpMenu TopScreenMenu OpenMenu ChangesMenu WindowMenu ProjectScreenMenu '
+	classVariableNames: 'ChangesMenu HelpMenu OpenMenu ProjectScreenMenu TopScreenMenu WindowMenu '
 	poolDictionaries: ''
 	category: 'Interface-Support'

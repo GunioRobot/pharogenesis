@@ -1,2 +1,4 @@
 setProperty: propName toValue: aValue
-	self assuredPropertyDictionary at: propName put: aValue
+
+	aValue ifNil: [^ self removeProperty: propName].
+	self assuredPropertyDictionary at: propName put: aValue.

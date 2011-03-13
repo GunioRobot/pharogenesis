@@ -4,4 +4,5 @@ editSystemCategories
 	self okToChange ifFalse: [^ self].
 	self systemCategoryListIndex: 0.
 	editSelection _ #editSystemCategories.
-	self changed: #editSystemCategories
+	self changed: #editSystemCategories.
+	self changed: #contents

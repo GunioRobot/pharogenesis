@@ -1,0 +1,2 @@
+currentScriptEditor: anEditor
+	currentScriptEditor _ anEditor

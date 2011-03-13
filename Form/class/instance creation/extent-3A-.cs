@@ -1,4 +1,4 @@
 extent: extentPoint
-	"Answer an instance of me with blank bitmap."
+	"Answer an instance of me with a blank bitmap of depth 1."
 
-	^ self basicNew setExtent: extentPoint
+	^ self extent: extentPoint depth: 1

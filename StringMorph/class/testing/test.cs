@@ -1,7 +1,7 @@
 test
 	"Return a morph with lots of strings for testing display speed."
 	| c |
-	c _ LayoutMorph newColumn.
+	c _ AlignmentMorph newColumn.
 	SystemOrganization categories do:
 		[:cat | c addMorph: (StringMorph new contents: cat)].
 	^ c

@@ -11,4 +11,3 @@ from Undeclared. Check them after this change.'].
 	Smalltalk renameClass: self as: newName.
 	name _ newName.
 	self comment: self comment.
-	self class comment: self class comment

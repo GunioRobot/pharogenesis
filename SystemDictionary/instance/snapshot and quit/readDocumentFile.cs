@@ -3,7 +3,7 @@ readDocumentFile
 
 	| fileName object |
 	self processUpdates.
-	fileName _ Smalltalk getSystemAttribute: 1.
+	fileName _ Smalltalk getSystemAttribute: 2.
 	((fileName ~~ nil) and: [fileName size > 0])
 		ifTrue: [
 			(fileName asLowercase beginsWith: 'http://')
@@ -16,4 +16,6 @@ readDocumentFile
 
 					"if launching a .sqo document, send open to the final object"
 					(fileName endsWith: '.sqo') ifTrue: [object open]]]
-		ifFalse: [].
+		ifFalse: [
+			(Preferences valueOfFlag: #startImagineeringStudio)
+				ifTrue: [(Smalltalk at: #EToySystem) openImagineeringStudio]].

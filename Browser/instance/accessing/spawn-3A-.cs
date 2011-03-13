@@ -11,4 +11,4 @@ spawn: aString
 	classListIndex ~= 0 ifTrue: [^self buildClassBrowserEditString: aString].
 	systemCategoryListIndex ~= 0 
 		ifTrue: [^self buildSystemCategoryBrowserEditString: aString].
-	^BrowserView openBrowserEditString: aString
+	^Browser new openEditString: aString

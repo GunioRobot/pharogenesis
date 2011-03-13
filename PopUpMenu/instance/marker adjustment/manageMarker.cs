@@ -6,7 +6,7 @@ manageMarker
 	pt _ Sensor cursorPoint adhereTo: (Display boundingBox expandBy: 1).
 	(frame inside containsPoint: pt)
 		ifTrue: ["Need to cache the form for reasonable scrolling performance"
-				(Display boundingBox containsPoint: pt)
+				((Display boundingBox insetBy: 0@3) containsPoint: pt)
 					ifTrue: [CacheMenuForms ifFalse: [form _ nil]]
 					ifFalse: [form == nil ifTrue: [form _ self computeForm].
 							pt _ pt - (self scrollIntoView: pt)].

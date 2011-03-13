@@ -1,13 +1,13 @@
-fileOutClass: modelClass andObject: eToyHolder
-	"Write a file that has both code and an object as bits.  tk 6/26/97 12:25"
+fileOutClass: extraClass andObject: theObject
+	"Write a file that has both the source code for the named class and an object as bits.  Any instance-specific object will get its class written automatically."
 
-	| class refStream |
+	| class srefStream |
 	self setFileTypeToObject.
 		"Type and Creator not to be text, so can attach correctly to an email msg"
 	self header; timeStamp.
 
-	modelClass ifNotNil: [
-		class _ modelClass.	"The model class of this world"
+	extraClass ifNotNil: [
+		class _ extraClass.	"A specific class the user wants written"
 		class sharedPools size > 0 ifTrue:
 			[class shouldFileOutPools
 				ifTrue: [class fileOutSharedPoolsOn: self]].
@@ -15,11 +15,6 @@ fileOutClass: modelClass andObject: eToyHolder
 	self trailer.	"Does nothing for normal files.  HTML streams will have trouble with object data"
 
 	"Append the object's raw data"
-	self cr; cr; nextPutAll: '!SmartRefStream!'.
-	self binary.		"redundant"
-	refStream _ SmartRefStream on: self.
-	refStream nextPut: eToyHolder.  "with its morphs"
-		"Terminator, $!, is not doubled inside object data"
-	self ascii.
-	self nextPutAll: '!'; cr; cr.
-	refStream close.		"also closes me"
+	srefStream _ SmartRefStream on: self.
+	srefStream nextPut: theObject.  "and all subobjects"
+	srefStream close.		"also closes me"

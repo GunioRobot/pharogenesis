@@ -1,2 +1,0 @@
-extent
-	^ image extent

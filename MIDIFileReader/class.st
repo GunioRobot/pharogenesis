@@ -1,0 +1,1 @@
+MIDIFileReader class instanceVariableNames: ''

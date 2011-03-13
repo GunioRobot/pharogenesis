@@ -1,0 +1,3 @@
+A Socket represents a network connection point. Current sockets are designed to support the TCP/IP and UDP protocols, although UDP is not yet implemented. It should be possible to support other protocols (such as AppleTalk) sockets by extending the socket primitives.
+
+Subclasses of socket provide support for network protocols such as POP, NNTP, HTTP, and FTP. Sockets also allow you to implement your own custom services and may be used to support Remote Procedure Call or Remote Method Invocation some day.

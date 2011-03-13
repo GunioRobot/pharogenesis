@@ -1,0 +1,1 @@
+ColorPickerMorph class instanceVariableNames: ''

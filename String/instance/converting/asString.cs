@@ -1,4 +1,4 @@
 asString
-	"Answer the receiver itself."
+	"Answer this string."
 
-	^self
+	^ self

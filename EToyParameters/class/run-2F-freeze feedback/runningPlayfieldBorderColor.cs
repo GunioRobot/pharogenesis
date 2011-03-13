@@ -1,0 +1,2 @@
+runningPlayfieldBorderColor
+	^ RunningPlayfieldBorderColor

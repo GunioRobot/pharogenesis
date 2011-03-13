@@ -1,6 +1,8 @@
 fullContainsPoint: aPoint
 
 	(self fullBounds containsPoint: aPoint) ifFalse: [^ false].  "quick elimination"
-	self allMorphsDo:
-		[:m | (m containsPoint: aPoint) ifTrue: [^ true]].
+	(self containsPoint: aPoint) ifTrue: [^ true].  "quick acceptance"
+	submorphs do: [:m |
+		m allMorphsDo: [:n |
+			(n containsPoint: aPoint) ifTrue: [^ true]]].
 	^ false

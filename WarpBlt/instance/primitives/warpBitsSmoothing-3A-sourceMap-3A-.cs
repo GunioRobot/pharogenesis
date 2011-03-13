@@ -1,6 +1,15 @@
 warpBitsSmoothing: n sourceMap: sourceMap
 	| deltaP12 deltaP43 pA pB deltaPAB sp fixedPtOne picker poker pix nSteps |
 	<primitive: 147>
+
+	"Check for compressed source, destination or halftone forms"
+	((sourceForm isKindOf: Form) and: [sourceForm unhibernate])
+		ifTrue: [^ self warpBitsSmoothing: n sourceMap: sourceMap].
+	((destForm isKindOf: Form) and: [destForm unhibernate])
+		ifTrue: [^ self warpBitsSmoothing: n sourceMap: sourceMap].
+	((halftoneForm isKindOf: Form) and: [halftoneForm unhibernate])
+		ifTrue: [^ self warpBitsSmoothing: n sourceMap: sourceMap].
+
 	(width < 1) | (height < 1) ifTrue: [^ self].
 	fixedPtOne _ 16384.  "1.0 in fixed-pt representation"
 	n > 1 ifTrue:

@@ -22,4 +22,4 @@ specialNameInModel
 			"myModel _ self findA: MorphicModel.
 			myModel ifNotNil: [^ myModel slotName]"
 	
-	^ self world model nameFor: self
+	^ self world specialNameInModelFor: self

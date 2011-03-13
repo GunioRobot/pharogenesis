@@ -3,7 +3,8 @@ removeSelector: aSymbol
 	dictionary of the receiver, if it is there. Answer nil otherwise."
 
 	(methodDict includesKey: aSymbol) ifFalse: [^nil].
-	Smalltalk changes removeSelector: aSymbol class: self.
+	self wantsChangeSetLogging ifTrue:
+		[Smalltalk changes removeSelector: aSymbol class: self].
 	super removeSelector: aSymbol.
 	self organization removeElement: aSymbol.
 	self acceptsLoggingOfCompilation ifTrue:

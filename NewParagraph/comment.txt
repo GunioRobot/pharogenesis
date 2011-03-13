@@ -1,0 +1,12 @@
+NewParagraph comment:
+'A Paragraph represents text that has been laid out, or composed, in some container.
+	text 		A Text with encoded per-character emphasis.
+	textStyle	A TextStyle with font set, line height and horizontal alignment.
+	firstCharacterIndex    The starting index in text for this paragraph, allowing
+				composition of a long text into a number of containers.
+	container	A Rectangle or TextContainer that determines where text can go.
+	lines		An Array of TextLines comprising the final layout of the text
+				after it has been composed within its container.
+	positionWhenComposed   As its name implies.  Allows display at new locations
+				without the need to recompose the text.
+Lines are ordered vertically.  However, for a given y, there may be several lines in left to right order.  Lines must never be empty, even if text is empty.'

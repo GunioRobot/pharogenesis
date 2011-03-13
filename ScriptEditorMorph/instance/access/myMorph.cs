@@ -1,0 +1,2 @@
+myMorph
+	^ self playerScripted costume

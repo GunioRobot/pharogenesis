@@ -89,6 +89,28 @@ squeakMachDepFile
 # define nextOp()	_gotoLabel(*(int *)(localIP+= 4))
 # define endOp(O)	nextOp()
 
+#elif defined(ACORN)
+# define initOp(O)	_setLabel(&opcodeAddress, 0)
+# define beginOp(O)
+# define nextOp()	_gotoLabel(*(int *)(localIP+= 4))
+# define endOp(O)	nextOp()
+
+#elif defined(WIN32)
+# if defined(_MSC_VER) && defined(_M_IX86)
+   /* MS VC++ on Intel x86 machines */
+   int __fastcall set_label(int *address);
+   int __fastcall goto_label_and_patch_sender(int ip);
+   int __fastcall goto_label(int ip);
+#  define initOp(O) set_label(&opcodeAddress)
+   /* the four nops give us a label after which the opcode sequence starts */
+#  define beginOp(O) __asm nop __asm nop __asm nop __asm nop
+#  define nextOp() goto_label_and_patch_sender(*(int*) (localIP += 4))
+#  define endOp(O) nextOp()
+# else
+   /* Drop me a note for your configuration -- ar */
+#  error "your win32 processor/compiler is not supported"
+# endif
+
 #else
 # error your platform/compiler is not supported
 #endif

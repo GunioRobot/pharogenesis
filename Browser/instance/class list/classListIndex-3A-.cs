@@ -2,7 +2,7 @@ classListIndex: anInteger
 	"Set anInteger to be the index of the current class selection."
 
 	| className |
-classListIndex _ anInteger.
+	classListIndex _ anInteger.
 	self setClassOrganizer.
 	messageCategoryListIndex _ 0.
 	messageListIndex _ 0.
@@ -21,4 +21,8 @@ classListIndex _ anInteger.
 			RecentClasses addFirst: className.
 			RecentClasses size > 16
 				ifTrue: [RecentClasses removeLast]].
-	self changed: #classSelectionChanged
+	self changed: #classSelectionChanged.
+	self changed: #classListIndex.	"update my selection"
+	self changed: #messageCategoryList.
+	self changed: #messageList.
+	self changed: #contents.

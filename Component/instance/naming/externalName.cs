@@ -1,0 +1,2 @@
+externalName 
+	^ self class name

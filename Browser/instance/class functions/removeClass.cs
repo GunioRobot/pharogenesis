@@ -13,5 +13,5 @@ want to delete the class ', className, '?'.
 			[class subclasses size > 0
 				ifTrue: [self notify: 'class has subclasses: ' , message].
 			class removeFromSystem.
-			self classListIndex: 0.
-			self changed: #classListChanged]
+			self classListIndex: 0].
+	self changed: #classList.

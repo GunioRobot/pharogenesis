@@ -1,0 +1,2 @@
+autoLineLayout
+	^ autoLineLayout == true

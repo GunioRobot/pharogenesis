@@ -1,0 +1,65 @@
+DataStream comment:
+'This is the save-to-disk facility. A DataStream can store one or more objects in a persistent form.
+
+To handle objects with sharing and cycles, you must use a
+ReferenceStream instead of a DataStream.  (Or SmartRefStream.)  ReferenceStream is typically
+faster and produces smaller files because it doesn''t repeatedly write the same Symbols.
+
+Here is the way to use DataStream and ReferenceStream:
+	rr _ ReferenceStream fileNamed: ''test.obj''.
+	rr nextPut: <your object>.
+	rr close.
+
+To get it back:
+	rr _ ReferenceStream fileNamed: ''test.obj''.
+	<your object> _ rr next.
+	rr close.
+
+Each object to be stored has two opportunities to control what gets stored. The high level, more useful hook is objectToStoreOnDataStream [externalize]. The low level hook is storeDataOn:. The read-in counterparts to these messages are comeFullyUpOnReload [internalize] and (class) readDataFrom:size:. See these methods, the class DiskProxy, and the class IOWeakArray for more information about externalizing and internalizing.
+
+Public messages:
+    (class) on:
+    (class) fileNamed:
+    (class) fileTypeCode
+    atEnd
+    beginInstance:size: (for use by storeDataOn: methods)
+    beginReference: (for use by readDataFrom:size: methods)
+    close
+    next
+    next:
+    nextPut:
+    nextPutAll:
+    reset
+    setType:
+    size
+
+NOTE: A DataStream should be treated as a read-stream *or* as a
+write-stream, *not* as a read/write-stream.
+
+[TBD] We should be able to make this much faster via tight-loop
+byte-string I/O. It looks like FileStream (and WriteStream)
+nextPutAll: do a reasonable job *if* it doesn''t have to push the
+writeLimit, in which case it iterates with nextPut:. It could in many
+cases set the writeLimit and then use the fast case
+(replaceFrom:to:with:startingAt:), or fill a buffer at at time via
+the fast case working on a substring.
+    This approach would handle Strings, ByteArrays, and all other
+variable-byte classes. If(nextPutAll: aCollection) in some cases
+still reverts to (aCollection do: [:e | self nextPut: e]), then we''d
+want to make Obj respond to do:. Then we could speed up inner
+loop activities like nextPutInt32:.
+
+[TBD] Every DataStream should begin with 4 signature bytes.
+"on:" should emit or check the signature. But the current mechanism doesn''t always
+know when the stream is started or ended.
+
+[TBD] Cf. notes in DataStream>>beginInstance:size: and
+Object>>readDataFrom:size:.
+
+[TBD] We could save disk space & I/O time by using short, 1-byte size
+fields whenever possible. E.g. almost all Symbols are shorter than
+256 chars. We could do this either by (1) using different typeID codes
+to indicate when a 1-byte length follows, a scheme which could still
+read all the old files but would take more code, or (2) a
+variable-length code for sizes.
+    -- 11/15/92 jhm'

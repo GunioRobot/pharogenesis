@@ -3,4 +3,4 @@ ClassOrganizer
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Kernel-Support'
+	category: 'System-Support'

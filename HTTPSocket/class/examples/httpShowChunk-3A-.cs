@@ -7,6 +7,4 @@ httpShowChunk: url
 	doc _ (self httpGet: url accept: 'application/octet-stream').
 "	doc size = 0 ifTrue: [doc _ 'The server does not seem to be responding']."
 	doc class == String ifTrue: [text _ doc] ifFalse: [text _ doc nextChunkText].
-	StringHolderView
-		open: (StringHolder new contents: text)
-		label: url.
+	(StringHolder new contents: text) openLabel: url.

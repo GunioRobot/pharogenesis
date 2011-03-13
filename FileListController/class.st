@@ -1,1 +1,0 @@
-FileListController class instanceVariableNames: ''

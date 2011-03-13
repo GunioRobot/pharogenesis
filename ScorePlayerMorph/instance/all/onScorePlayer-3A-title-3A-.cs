@@ -2,8 +2,9 @@ onScorePlayer: aScorePlayer title: scoreName
 
 	| divider col |
 	scorePlayer _ aScorePlayer reset.
-	trackInstNames _ Array new: scorePlayer score tracks size withAll: 'oboe1'.
-	divider _ LayoutMorph new
+	self addMorph: self makeControls.
+	instrumentSelector _ Array new: scorePlayer score tracks size.
+	divider _ AlignmentMorph new
 		extent: 10@1;
 		borderWidth: 1;
 		inset: 0;
@@ -13,15 +14,9 @@ onScorePlayer: aScorePlayer title: scoreName
 		vResizing: #rigid.
 
 	self removeAllMorphs.
-	false ifTrue: [  "title"
-		scoreName size > 0 ifTrue: [
-			self addMorphBack:
-				(StringMorph
-					contents: scoreName
-					font: (TextStyle default fontOfSize: 20))]].
 	self addMorphBack: self makeControls.
 	self addMorphBack: self rateControl.
-	col _ LayoutMorph newColumn color: color; inset: 0.
+	col _ AlignmentMorph newColumn color: color; inset: 0.
 	self addMorphBack: col.
 	1 to: scorePlayer trackCount do: [:trackIndex |
 		col addMorphBack: divider fullCopy.

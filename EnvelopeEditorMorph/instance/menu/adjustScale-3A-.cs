@@ -4,7 +4,7 @@ adjustScale: evt
 	scaleString _ FillInTheBlank request: 'Enter the new full-scale value...'
 						initialAnswer: oldScale printString.
 	scaleString isEmpty ifTrue: [^ self].
-	envelope scale: (Number readFrom: scaleString).
+	envelope scale: (Number readFrom: scaleString) asFloat.
 	baseValue _ envelope updateSelector = #pitch: ifTrue: [0.5] ifFalse: [0.0].
 	envelope setPoints: (envelope points collect:
 				[:p |

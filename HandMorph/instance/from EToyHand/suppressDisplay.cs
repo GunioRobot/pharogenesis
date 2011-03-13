@@ -1,0 +1,2 @@
+suppressDisplay
+	^ suppressDrawing == true

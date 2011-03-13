@@ -49,3 +49,5 @@ initializeObjectMemory: bytesToShift
 	statIncrGCMSecs _ 0.
 	statTenures _ 0.
 	statRootTableOverflows _ 0.
+
+	displayBits _ 0.  "support for the Acorn VM; ignored if zero"

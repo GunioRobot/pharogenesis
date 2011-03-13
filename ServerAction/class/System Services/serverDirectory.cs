@@ -1,2 +1,2 @@
 serverDirectory
-	^'Guz BigDisk:Server:'.
+	^ 'Home Plate:Valentine II:Server:'

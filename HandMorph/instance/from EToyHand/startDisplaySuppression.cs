@@ -1,0 +1,2 @@
+startDisplaySuppression
+	suppressDrawing _ true

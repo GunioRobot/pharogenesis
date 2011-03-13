@@ -2,7 +2,8 @@ updateFromParagraph
 	| newStyle sel oldLast |
 	paragraph ifNil: [^ self].
 	wrapFlag ifNil: [wrapFlag _ true].
-	editor ifNotNil: [sel _ editor selectionInterval].
+	editor ifNotNil: [sel _ editor selectionInterval.
+					editor storeSelectionInParagraph].
 	paragraph textStyle = textStyle
 		ifTrue: [self fit]
 		ifFalse: ["Broadcast style changes to all morphs"

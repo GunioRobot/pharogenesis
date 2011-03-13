@@ -1,0 +1,1 @@
+TileMorph class instanceVariableNames: ''

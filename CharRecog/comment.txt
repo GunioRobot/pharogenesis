@@ -1,0 +1,8 @@
+CharRecog comment:
+'Alan Kay''s "one-page" character recognizer.  Currently hooked up to text panes, such that you can get it started by hitting cmd-r in any pane.  
+
+To reinitialize the recognition dictionary, evaluate
+
+	CharRecog reinitializeCharacterDictionary
+
+ '

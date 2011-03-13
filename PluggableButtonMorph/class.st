@@ -1,0 +1,1 @@
+PluggableButtonMorph class instanceVariableNames: ''

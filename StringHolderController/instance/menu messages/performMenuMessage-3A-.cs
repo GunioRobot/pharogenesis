@@ -1,9 +1,11 @@
 performMenuMessage: aSelector
 	"Intercept #again so the model does not get locked by keying the search text."
 
-	| locked |
-	locked _ model isLocked.
+	| hadEdits |
+	hadEdits _ view canDiscardEdits not.
 	super performMenuMessage: aSelector.
-	(locked not and: [aSelector == #again and:
-		[(UndoMessage sends: #undoAgain:andReselect:typedKey:) and: [UndoMessage arguments at: 3]]]) ifTrue:
-			[self unlockModel]
+	(hadEdits not and:
+	 [aSelector == #again and:
+	 [(UndoMessage sends: #undoAgain:andReselect:typedKey:) and:
+	 [UndoMessage arguments at: 3]]])
+		ifTrue: [self userHasNotEdited].

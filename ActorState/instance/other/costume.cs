@@ -1,0 +1,2 @@
+costume
+	^ owningPlayer costume

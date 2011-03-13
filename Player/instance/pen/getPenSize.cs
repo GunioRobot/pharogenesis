@@ -1,0 +1,2 @@
+getPenSize
+	^ self actorState getPenSize

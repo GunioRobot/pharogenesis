@@ -1,1 +1,0 @@
-IOWeakArray class instanceVariableNames: ''

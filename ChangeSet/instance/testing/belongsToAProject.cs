@@ -1,4 +1,5 @@
 belongsToAProject
-	Project allInstances do: [:each |
-		each projectChangeSet == self ifTrue: [^ true]].
+
+	Project allInstancesDo: [:proj |
+		proj projectChangeSet == self ifTrue: [^ true]].
 	^ false

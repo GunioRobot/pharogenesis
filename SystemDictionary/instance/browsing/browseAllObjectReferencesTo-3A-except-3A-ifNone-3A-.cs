@@ -8,6 +8,5 @@ browseAllObjectReferencesTo: anObject except: objectsToExclude ifNone: aBlock
 	shortName size > 12 ifTrue: [
 		shortName _ (shortName truncateTo: 12), '...'.
 	].
-	InspectorView
-		open: (InspectorView inspector: (OrderedCollectionInspector inspect: aList))
+	OrderedCollectionInspector openOn: aList withEvalPane: false
 		withLabel: 'Objects pointing to ', shortName.

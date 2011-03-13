@@ -1,3 +1,0 @@
-initializeSelection
-
-	^self

@@ -1,0 +1,1 @@
+WireMorph class instanceVariableNames: ''

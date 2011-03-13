@@ -1,0 +1,2 @@
+coloredTilesEnabled
+	^ coloredTilesEnabled == true

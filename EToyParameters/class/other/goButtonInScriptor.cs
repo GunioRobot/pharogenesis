@@ -1,0 +1,2 @@
+goButtonInScriptor
+	^ GoButtonInScriptor == true

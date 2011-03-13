@@ -1,5 +1,5 @@
 readCompressedFrom: strm
-	"Decompress a run-coded stream into this bitmap:
+	"Decompress an old-style run-coded stream into this bitmap:
 		[0 means end of runs]
 		[n = 1..127] [(n+3) copies of next byte]
 		[n = 128..191] [(n-127) next bytes as is]
@@ -18,17 +18,3 @@ readCompressedFrom: strm
 	out position = outBuff size ifFalse: [self error: 'Decompression size error'].
 	"Copy the final byteArray into self"
 	self copyFromByteArray: outBuff.
-"
-Integerity check:
- | f r |
-r _ Rectangle fromUser.
-f _ Form fromDisplay: r.
-f bits: (Bitmap decompressFromByteArray: f bits compressToByteArray).
-f bits size = f bitsSize ifFalse: [self halt].
-f displayAt: r topLeft
-
-Total Integerity check:
-Form allInstances do: [:f |
-f bits = (Bitmap decompressFromByteArray: f bits compressToByteArray)
-	ifFalse: [self halt]]
-"

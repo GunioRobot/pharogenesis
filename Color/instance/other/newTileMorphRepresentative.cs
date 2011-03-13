@@ -1,0 +1,2 @@
+newTileMorphRepresentative
+	^ ColorTileMorph new

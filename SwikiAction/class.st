@@ -1,0 +1,1 @@
+SwikiAction class instanceVariableNames: ''

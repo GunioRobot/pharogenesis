@@ -5,4 +5,5 @@ browseVersionsOf: method class: class meta: meta
 		[changeList _ self new
 			scanVersionsOf: method class: class meta: meta
 			category: category selector: selector].
-	self openVersions: changeList name: 'Recent versions of ' , selector
+	changeList ifNotNil:
+		[self open: changeList name: 'Recent versions of ' , selector multiSelect: false]

@@ -1,5 +1,5 @@
-initialize 
-	"Refer to the comment in StringHolder|initialize."
+initialize
 
 	super initialize.
-	actionTaken _ false
+	acceptOnCR _ false.
+	done _ false.

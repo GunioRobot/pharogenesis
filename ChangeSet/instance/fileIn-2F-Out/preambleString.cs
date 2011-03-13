@@ -1,8 +1,8 @@
 preambleString
-	"Answer the string representing the preamble.  "
+	"Answer the string representing the preamble"
 
 	^ preamble == nil
 		ifTrue:
 			[preamble]
 		ifFalse:
-			[preamble contents]
+			[preamble contents asString]

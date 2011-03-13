@@ -1,0 +1,1 @@
+HtmlFileStream class instanceVariableNames: ''

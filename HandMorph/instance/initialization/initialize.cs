@@ -10,4 +10,6 @@ initialize
 	gridOn _ false.
 	remoteConnections _ OrderedCollection new.
 	lastEventTransmitted _ MorphicEvent new.
-	mouseOverTimes _ Dictionary new
+	mouseOverTimes _ Dictionary new.
+	temporaryCursor _ nil.
+	temporaryCursorOffset _ 0@0.

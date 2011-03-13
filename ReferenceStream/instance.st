@@ -1,6 +1,6 @@
 DataStream
 	subclass: #ReferenceStream
-	instanceVariableNames: 'references objects currentReference fwdRefEnds transients '
+	instanceVariableNames: 'references objects currentReference fwdRefEnds blockers '
 	classVariableNames: 'RefTypes '
 	poolDictionaries: ''
-	category: 'Objects to Disk'
+	category: 'System-Object Storage'

@@ -1,0 +1,2 @@
+Magnitude comment:
+'I am an abstract representation of objects that measure something linear. Examples are dates, times, and numbers.'

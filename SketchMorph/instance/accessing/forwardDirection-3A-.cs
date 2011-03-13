@@ -1,5 +1,6 @@
-forwardDirection: degFromUp
-	"The direction I will go when issued a sent forward:.  Up is zero.
-Clockwise like a compass."
+forwardDirection: degrees
+	"Set the forward direction of the original Form. Angles are in degrees, increasing clockwise like a compass. Up is zero degrees."
 
-self setProperty: #forwardDirection toValue: degFromUp
+	(0.0 - degrees) <= 0.0001
+		ifTrue: [self removeProperty: #forwardDirection]
+		ifFalse: [self setProperty: #forwardDirection toValue: degrees].

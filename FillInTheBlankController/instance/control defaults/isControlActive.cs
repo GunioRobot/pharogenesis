@@ -1,4 +1,3 @@
 isControlActive
 
-	model actionTaken ifTrue: [^false].
-	^ true
+	^ model done not

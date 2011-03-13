@@ -1,0 +1,1 @@
+MorphWorldView class instanceVariableNames: ''

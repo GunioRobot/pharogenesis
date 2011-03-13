@@ -4,5 +4,8 @@ informTarget
 	((target ~~ nil) and: [putSelector ~~ nil]) ifTrue:
 		[newValue _ self valueFromContents.
 		newValue ifNotNil:
-			[target perform: putSelector with: newValue.
-			target isMorph ifTrue: [target changed]]]
+			[target scriptPerformer perform: putSelector with: newValue.
+			target isMorph ifTrue: [target changed]].
+			self growable ifTrue:
+				[self readFromTarget; fitContents.
+				owner updateLiteralLabel]]

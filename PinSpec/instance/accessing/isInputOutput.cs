@@ -1,0 +1,2 @@
+isInputOutput
+	^ direction = #inputOutput

@@ -2,11 +2,11 @@ makePageControls
 
 	| b c r |
 	b _ SimpleButtonMorph new target: self; borderColor: Color black.
-	c _ LayoutMorph newColumn.
+	c _ AlignmentMorph newColumn.
 	c color: b color; borderWidth: 0; inset: 0.
 	c hResizing: #shrinkWrap; vResizing: #shrinkWrap; extent: 5@5.
 
-	r _ LayoutMorph newRow.
+	r _ AlignmentMorph newRow.
 	r color: b color; borderWidth: 0; inset: 0.
 	r hResizing: #shrinkWrap; vResizing: #shrinkWrap; extent: 5@5.
 	r addMorphBack: (b fullCopy label: '<-';			actionSelector: #previousPage).

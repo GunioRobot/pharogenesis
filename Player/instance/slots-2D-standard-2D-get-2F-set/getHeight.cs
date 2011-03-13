@@ -1,0 +1,2 @@
+getHeight
+	^ self costume height

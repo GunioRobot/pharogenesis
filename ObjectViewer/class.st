@@ -1,0 +1,1 @@
+ObjectViewer class instanceVariableNames: ''

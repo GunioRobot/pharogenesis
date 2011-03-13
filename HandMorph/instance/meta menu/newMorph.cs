@@ -1,20 +1,23 @@
 newMorph
-	| morphClassList menu subMenu catDict cat |
-	menu _ MenuMorph new.
+	| menu subMenu catDict shortCat class |
+	menu _ MenuMorph entitled: 'New Morph'.
 	menu addStayUpItem.
-	menu addTitle: 'Select Morph Class'.
-	morphClassList _ Morph withAllSubclasses
-			select: [:cl | cl includeInNewMorphMenu].
 	catDict _ Dictionary new.
-	morphClassList do:
-		[:cl | cat _ cl category.
-		(cat beginsWith: 'Morphic-') ifTrue:
-			[cat _ cat copyFrom: 'Morphic-' size+1 to: cat size].
-		(catDict includesKey: cat) 
-		ifTrue: [(catDict at: cat) addLast: cl]
-		ifFalse: [catDict at: cat put: (OrderedCollection with: cl)]].
-	catDict removeKey: 'Menus';
-		 removeKey: 'Support'.
+	SystemOrganization categories do:
+		[:cat |
+		((cat beginsWith: 'Morphic-')
+				and: [(#('Morphic-Menus' 'Morphic-Support') includes: cat) not])
+		ifTrue:
+			[shortCat _ cat copyFrom: 'Morphic-' size+1 to: cat size.
+			(SystemOrganization listAtCategoryNamed: cat) do:
+				[:cName | class _ Smalltalk at: cName.
+				((class inheritsFrom: Morph)
+					and: [class includeInNewMorphMenu])
+					ifTrue:
+					[(catDict includesKey: shortCat) 
+					ifTrue: [(catDict at: shortCat) addLast: class]
+					ifFalse: [catDict at: shortCat put: (OrderedCollection with: class)]]]]].
+
 	catDict keys asSortedCollection do:
 		[:categ |
 		subMenu _ MenuMorph new.

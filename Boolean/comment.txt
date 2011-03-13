@@ -1,0 +1,2 @@
+Boolean comment:
+'I represent logical values, providing boolean operations and conditional control structures.'

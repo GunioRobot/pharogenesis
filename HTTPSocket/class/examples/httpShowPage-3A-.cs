@@ -4,6 +4,4 @@ httpShowPage: url
 	| doc |
 	doc _ (self httpGet: url accept: 'application/octet-stream') contents.
 	doc size = 0 ifTrue: [^ self error: 'Document could not be fetched'].
-	StringHolderView
-		open: (StringHolder new contents: doc)
-		label: url.
+	(StringHolder new contents: doc) openLabel: url.

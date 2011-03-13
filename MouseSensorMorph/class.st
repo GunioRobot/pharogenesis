@@ -1,0 +1,1 @@
+MouseSensorMorph class instanceVariableNames: ''

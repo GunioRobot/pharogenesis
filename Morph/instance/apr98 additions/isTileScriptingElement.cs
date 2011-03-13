@@ -1,0 +1,2 @@
+isTileScriptingElement
+	^ false

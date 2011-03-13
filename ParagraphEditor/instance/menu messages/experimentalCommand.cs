@@ -1,5 +1,6 @@
 experimentalCommand
-	"Use for experimental command-key implementation.  using this, you can try things out without forever needing to reinitialize the ParagraphEditor.  2/7/96 sw"
+	"Use for experimental command-key implementation.  using this, you can try things out without forever needing to reinitialize the ParagraphEditor. "
+	sensor keyboard.
 
 	self inform: 
 'Cmd-t is not currently used.

@@ -1,0 +1,2 @@
+inspectArgumentsCostumee
+	argument costumee inspect

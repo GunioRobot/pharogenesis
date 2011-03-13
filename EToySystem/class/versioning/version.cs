@@ -1,0 +1,4 @@
+version
+	"EToySystem version"
+
+	^ EToyVersion

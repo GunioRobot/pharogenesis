@@ -1,6 +1,7 @@
-decompressFromByteArray: b
-	| s size |
-	s _ ReadStream on: b.
-	size _ 0.
-	1 to: 4 do: [:i | size _ (size * 256) + s next].
-	^ (self new: size) readCompressedFrom: s
+decompressFromByteArray: byteArray
+	| s bitmap size |
+	s _ ReadStream on: byteArray.
+	size _ self decodeIntFrom: s.
+	bitmap _ self new: size.
+	bitmap decompress: bitmap fromByteArray: byteArray at: s position+1.
+	^ bitmap

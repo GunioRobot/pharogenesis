@@ -1,0 +1,2 @@
+PolygonMorph comment:
+'Polygons and curves use a 1-bit shape form to make display reasonably fast.  This could be further optimized by going to a 2-bit form and including the border.  It would also be simpleto compute an inner rectangle, as with ellipses. '

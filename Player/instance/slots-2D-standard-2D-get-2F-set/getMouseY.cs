@@ -1,0 +1,2 @@
+getMouseY
+	^ costume mouseY

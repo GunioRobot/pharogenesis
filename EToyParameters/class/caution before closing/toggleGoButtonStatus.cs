@@ -1,0 +1,2 @@
+toggleGoButtonStatus
+	GoButtonInScriptor _ self goButtonInScriptor not

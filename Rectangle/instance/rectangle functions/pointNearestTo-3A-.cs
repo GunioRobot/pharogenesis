@@ -9,5 +9,4 @@ pointNearestTo: aPoint
 			side == #bottom ifTrue: [^ aPoint x @ self bottom].
 			side == #top ifTrue: [^ aPoint x @ self top]]
 		ifFalse:
-			[^ ((aPoint x max: self left) min: self right) @
-				((aPoint y max: self top) min: self bottom)]
+			[^ aPoint adhereTo: self]

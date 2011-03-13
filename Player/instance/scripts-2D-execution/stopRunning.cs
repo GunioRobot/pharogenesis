@@ -1,0 +1,2 @@
+stopRunning
+	self stopProgramatically

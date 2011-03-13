@@ -1,18 +1,13 @@
 drawOn: aCanvas
-	"Draw a small view of a morph in another place.  Guard against
-infinite recursion if that morph has a thumbnail of itself inside."
+	"Draw a small view of a morph in another place. Guard against infinite recursion if that morph has a thumbnail of itself inside."
 
-	| viewedMorphBox myBox scale c shrunkForm diag actualViewee |
+	| actualViewee diag viewedMorphBox myBox scale c shrunkForm |
 	super drawOn: aCanvas.
-	morphToView ifNil: [^ self].
-	morphToView isInWorld ifFalse: [^ self].
+	actualViewee _ self actualViewee.
+	actualViewee ifNil: [^ self]. 
 
 	(RecursionDepth _ RecursionDepth + 1) > RecursionMax ifTrue: [^ self].
 
-	actualViewee _ viewSelector ifNil: [morphToView] ifNotNil: [morphToView perform: viewSelector].
-	actualViewee == 0 "Unusual return of valueAtCursor to mean empty!!"
-		ifTrue:
-			[RecursionDepth _ RecursionDepth - 1. ^ self].
 	(actualViewee isKindOf: SketchMorph)
 		ifTrue:
 			[diag _ actualViewee form extent r asInteger.

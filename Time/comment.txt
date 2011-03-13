@@ -1,0 +1,2 @@
+Time comment:
+'I represent the time of day.'

@@ -1,0 +1,2 @@
+Character comment:
+'I represent a character by storing its associated ASCII code (extended to 256 codes). My instances are created uniquely, so that all instances of a character ($R, for example) are identical.'

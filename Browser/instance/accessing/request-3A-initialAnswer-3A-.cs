@@ -1,9 +1,5 @@
 request: prompt initialAnswer: initialAnswer
-	| answer |
-	FillInTheBlank
+
+	^ FillInTheBlank
 		request: prompt
-		displayAt: Sensor cursorPoint
-		centered: true
-		action: [:a | answer _ a] 
-		initialAnswer: initialAnswer.
-	^ answer
+		initialAnswer: initialAnswer

@@ -5,3 +5,4 @@ asTMethodFromClass: aClass
 		args: arguments
 		locals: encoder tempsAndBlockArgs
 		block: block
+		primitive: primitive

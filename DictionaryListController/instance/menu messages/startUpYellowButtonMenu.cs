@@ -1,2 +1,0 @@
-startUpYellowButtonMenu
-	^ yellowButtonMenu startUp

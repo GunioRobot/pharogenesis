@@ -6,7 +6,7 @@ runStepMethods
 	now _ Time millisecondClockValue.
 	((now < lastStepTime) or: [(now - lastStepTime) > 5000])
 		 ifTrue: [self adjustWakeupTimes].  "clock slipped"
-	deletions _ OrderedCollection new.
+	deletions _ nil.
 	stepList do: [:entry |
 		wakeupTime _ entry at: 2.
 		m _ entry at: 1.
@@ -16,8 +16,12 @@ runStepMethods
 					ifTrue: [
 						m step.
 						entry at: 2 put: now + m stepTime]]
-			ifFalse: [deletions addLast: m]].
-	deletions do: [:goner |
-		self stopStepping: goner.
-		goner stopStepping].
+			ifFalse: [
+				deletions ifNil: [deletions _ OrderedCollection new].
+				deletions addLast: m]].
+
+	deletions ifNotNil: [
+		deletions do: [:deletedM |
+			self stopStepping: deletedM.
+			deletedM stopStepping]].
 	lastStepTime _ now.

@@ -12,7 +12,7 @@ insertPageLabel: labelString morphs: morphList
 			[labelAllowance _ 0].
 
 	"use a column to align the given morphs, then add them to the page"
-	c _ LayoutMorph newColumn centering: #center.
+	c _ AlignmentMorph newColumn centering: #center.
 	c addAllMorphs: morphList.
 	c position: currentPage position + (0 @ labelAllowance).
 	currentPage addAllMorphs: morphList.

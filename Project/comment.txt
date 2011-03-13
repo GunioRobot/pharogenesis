@@ -1,0 +1,7 @@
+Project comment:
+'A Project stores the state of a complete Squeak desktop, including the windows, and the currently active changeSet, as well as the parent project in which it was created.  When you change projects, whether by entering or exiting, all the global state is saved into the project being exited, and loaded from the one being entered.
+
+A project is retained by its view in the parent world.  It is effectively named by the name of its changeSet, which can be changed either by renaming in a changeSorter, or by editing the label of its view from the parent project.
+
+As the site of major context switch, Projects are the locus of swapping between the old MVC and the new Morphic worlds.  The distinction is based on whether the variable ''world'' contains a WorldMorph or a ControlManager.
+'

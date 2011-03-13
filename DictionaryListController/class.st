@@ -1,1 +1,0 @@
-DictionaryListController class instanceVariableNames: ''

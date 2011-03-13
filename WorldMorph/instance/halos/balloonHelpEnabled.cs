@@ -1,2 +1,2 @@
 balloonHelpEnabled
-	^ BalloonMorph mouseOverEnabled 
+	^ self presenter balloonHelpEnabled

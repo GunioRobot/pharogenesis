@@ -1,1 +1,0 @@
-DevelopmentSupport class instanceVariableNames: ''

@@ -1,0 +1,4 @@
+UpdatingStringMorph comment:
+'floatPrecision = 1. to round to integer.
+floatPrecision = .1 to round to 1 decimal place, etc.
+'

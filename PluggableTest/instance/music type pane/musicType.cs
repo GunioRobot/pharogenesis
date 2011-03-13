@@ -1,3 +1,3 @@
 musicType
 
-	^ selection1
+	^ musicTypeIndex

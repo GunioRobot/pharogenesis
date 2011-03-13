@@ -1,5 +1,5 @@
 garbageCollect
-	"Do a garbage collection, and report results to the user.  2/1/96 sw
-	 5/10/96 sw: nicer display, as per JM's suggestion"
+	"Do a garbage collection, and report results to the user."
 
-	self inform: Utilities garbageCollectReportString
+	self inform:
+		(Smalltalk bytesLeft asStringWithCommas, ' bytes available').

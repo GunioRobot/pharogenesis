@@ -1,0 +1,2 @@
+LargeNegativeInteger comment:
+'Just like LargePositiveInteger, but represents a negative number.'

@@ -19,12 +19,12 @@ squeakHeaderFile
 */
 #define sqImageFile FILE *
 #define sqImageFileClose(f)                  fclose(f)
-#define sqImageFileOpen(f, mode)             fopen(f, mode)
+#define sqImageFileOpen(fileName, mode)      fopen(fileName, mode)
 #define sqImageFilePosition(f)               ftell(f)
 #define sqImageFileRead(ptr, sz, count, f)   fread(ptr, sz, count, f)
 #define sqImageFileSeek(f, pos)              fseek(f, pos, SEEK_SET)
 #define sqImageFileWrite(ptr, sz, count, f)  fwrite(ptr, sz, count, f)
-#define sqAllocateMemory(bytes)              malloc(bytes)
+#define sqAllocateMemory(minHeapSize, desiredHeapSize)   malloc(desiredHeapSize)
 
 /* platform-dependent float conversion macros */
 /* Note: Second argument must be a variable name, not an expression! */
@@ -106,6 +106,7 @@ int checkedLongAtput(int byteAddress, int a32BitInteger);
 int fullDisplayUpdate(void);
 int initializeInterpreter(int bytesToShift);
 int interpret(void);
+int primitiveFail(void);
 int signalSemaphoreWithIndex(int index);
 int success(int);
 
@@ -116,9 +117,11 @@ int ioForceDisplayUpdate(void);
 int ioFormPrint(
 	int bitsAddr, int width, int height, int depth,
 	double hScale, double vScale, int landscapeFlag);
+int ioSetFullScreen(int fullScreen);
 int ioGetButtonState(void);
 int ioGetKeystroke(void);
 int ioMicroMSecs(void);
+int ioMSecs(void);
 int ioMousePoint(void);
 int ioPeekKeystroke(void);
 int ioProcessEvents(void);
@@ -130,11 +133,9 @@ int ioShowDisplay(
 	int dispBitsIndex, int width, int height, int depth,
 	int affectedL, int affectedR, int affectedT, int affectedB);
 
-/* millisecond clock */
+/* optional millisecond clock macro */
 #ifdef USE_CLOCK_MSECS
 # define ioMSecs() ((1000 * clock()) / CLOCKS_PER_SEC)
-#else
-  int ioMSecs(void);
 #endif
 
 /* image file and VM path names */
@@ -146,7 +147,7 @@ int vmPathSize(void);
 int vmPathGetLength(int sqVMPathIndex, int length);
 
 /* save/restore */
-int readImageFromFileHeapSize(FILE *f, int desiredHeapSize);
+int readImageFromFileHeapSize(sqImageFile f, int desiredHeapSize);
 
 /* clipboard (cut/copy/paste) */
 int clipboardSize(void);
@@ -185,6 +186,8 @@ double fetchFloatofObject(int fieldIndex, int objectPointer);
 int fetchIntegerofObject(int fieldIndex, int objectPointer);
 double floatValueOf(int floatOop);
 int pop(int nItems);
+int pushInteger(int integerValue);
+int sizeOfSTArrayFromCPrimitive(void *cPtr);
 int storeIntegerofObjectwithValue(int fieldIndex, int objectPointer, int integerValue);
 
 /* sound generation primitives (old, for backward compatibility) */
@@ -246,4 +249,29 @@ int stopProfiling(void);
 /* system attributes */
 int attributeSize(int id);
 int getAttributeIntoLength(int id, int byteArrayIndex, int length);
+
+/* miscellaneous primitives */
+int primBitmapcompresstoByteArray(void);
+int primBitmapdecompressfromByteArrayat(void);
+int primStringcomparewithcollated(void);
+int primSampledSoundconvert8bitSignedFromto16Bit(void);
+
+/* serial port primitives */
+int serialPortClose(int portNum);
+int serialPortOpen(
+  int portNum, int baudRate, int stopBitsType, int parityType, int dataBits,
+  int inFlowCtrl, int outFlowCtrl, int xOnChar, int xOffChar);
+int serialPortReadInto(int portNum, int count, int bufferPtr);
+int serialPortWriteFrom(int portNum, int count, int bufferPtr);
+
+/* MIDI primitives */
+int sqMIDIGetClock(void);
+int sqMIDIGetPortCount(void);
+int sqMIDIGetPortDirectionality(int portNum);
+int sqMIDIGetPortName(int portNum, int namePtr, int length);
+int sqMIDIClosePort(int portNum);
+int sqMIDIOpenPort(int portNum, int readSemaIndex, int interfaceClockRate);
+int sqMIDIParameter(int whichParameter, int modify, int newValue);
+int sqMIDIPortReadInto(int portNum, int count, int bufferPtr);
+int sqMIDIPortWriteFromAt(int portNum, int count, int bufferPtr, int time);
 '.

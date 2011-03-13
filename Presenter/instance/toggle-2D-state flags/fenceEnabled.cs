@@ -1,0 +1,2 @@
+fenceEnabled
+	^ fenceEnabled == true

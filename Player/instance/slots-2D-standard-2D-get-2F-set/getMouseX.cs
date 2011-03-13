@@ -1,0 +1,2 @@
+getMouseX
+	^ costume mouseX

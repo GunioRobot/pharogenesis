@@ -27,4 +27,7 @@ If no morph handles the mouse down, the front-most submorph is grabbed. The comp
 	coreSample do: [:subM |
 		(subM handlesMouseDown: evt) ifTrue: [^ subM]].
 	"no enclosing morph wants the event, so return the front-most submorph"
+	coreSample size = 0 ifTrue: [
+		"no morphs at the given point, so world gets it"
+		^ owner].
 	^ coreSample first

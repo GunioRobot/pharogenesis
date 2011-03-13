@@ -6,11 +6,13 @@ systemCategoryListIndex: anInteger
 	classListIndex _ 0.
 	messageCategoryListIndex _ 0.
 	messageListIndex _ 0.
-	editSelection _ 
-		anInteger = 0
-				ifTrue: [#none]
-				ifFalse: [#newClass].
+	editSelection _ anInteger = 0 ifTrue: [#none] ifFalse: [#newClass].
 	metaClassIndicated _ false.
 	self setClassOrganizer.
 	contents _ nil.
-	self changed: #systemCategorySelectionChanged
+	self changed: #systemCategorySelectionChanged.
+	self changed: #systemCategoryListIndex.	"update my selection"
+	self changed: #classList.
+	self changed: #messageCategoryList.
+	self changed: #messageList.
+	self changed: #contents.

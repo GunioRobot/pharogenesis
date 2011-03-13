@@ -7,5 +7,6 @@ spiral: n angle: a
 		self color: i * 2.
 		self go: i; turn: a]
 "
-	Display fillWhite. Pen new spiral: 200 angle: 89; home; spiral: 200 angle: -89.
+	Display restoreAfter: [
+		Display fillWhite. Pen new spiral: 200 angle: 89; home; spiral: 200 angle: -89].
 "

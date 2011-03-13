@@ -14,12 +14,12 @@ snapshot: save andQuit: quit
 		Transcript cr; show: msg].
 
 	self processShutDownList.
-	Cursor write show.
+	Smalltalk isMorphic ifFalse: [Cursor write show].
 	save
 		ifTrue: [resuming _ self snapshotPrimitive]  "<-- PC frozen here on image file"
 		ifFalse: [resuming _ false].
 	quit & resuming not ifTrue: [self quitPrimitive].
-	Cursor normal show.
+	Smalltalk isMorphic ifFalse: [Cursor normal show].
 	self processStartUpList.
 	resuming ifTrue: [
 		self clearExternalObjects.

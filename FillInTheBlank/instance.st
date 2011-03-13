@@ -1,6 +1,6 @@
 StringHolder
 	subclass: #FillInTheBlank
-	instanceVariableNames: 'actionBlock actionTaken '
+	instanceVariableNames: 'acceptOnCR done '
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Interface-Menus'

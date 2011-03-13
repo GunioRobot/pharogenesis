@@ -1,0 +1,2 @@
+isPlayfieldLike
+	^ true

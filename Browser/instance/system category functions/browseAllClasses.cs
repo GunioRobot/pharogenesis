@@ -1,6 +1,6 @@
 browseAllClasses
 	"Create and schedule a new browser on all classes alphabetically."
-	| newBrowser view |
+	| newBrowser |
 	newBrowser _ HierarchyBrowser new initAlphabeticListing.
-	BrowserView openBrowserView: (BrowserView systemCategoryBrowser: newBrowser editString: nil)
+	Browser openBrowserView: (newBrowser openSystemCatEditString: nil)
 		label: 'All Classes Alphabetically'

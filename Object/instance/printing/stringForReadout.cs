@@ -1,0 +1,2 @@
+stringForReadout
+	^ self stringRepresentation

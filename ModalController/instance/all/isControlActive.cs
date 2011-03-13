@@ -1,0 +1,3 @@
+isControlActive
+
+	^ modeActive

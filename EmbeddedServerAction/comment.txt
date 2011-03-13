@@ -1,0 +1,1 @@
+EmbeddedServerAction works like a normal ServerAction, except that it interprets any embedded Smalltalk code (within <? ?> tags, stolen from Microsoft's notation for a similar capability) and replaces the embedded code with the value returned from the execution of the code.

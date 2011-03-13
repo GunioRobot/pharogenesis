@@ -1,2 +1,0 @@
-hasEditingMenu
-	^ false

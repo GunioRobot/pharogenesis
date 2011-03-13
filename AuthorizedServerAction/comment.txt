@@ -1,0 +1,1 @@
+An EmbeddedServerAction that also has an Authorizer to verify username and password.

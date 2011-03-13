@@ -1,2 +1,0 @@
-kitCopy
-	^ self shallowCopy

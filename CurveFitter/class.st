@@ -1,0 +1,1 @@
+CurveFitter class instanceVariableNames: ''

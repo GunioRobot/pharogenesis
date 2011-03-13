@@ -1,0 +1,2 @@
+costumeDictionary
+	^ self class costumeDictionary

@@ -1,0 +1,1 @@
+DosFileDirectory class instanceVariableNames: ''

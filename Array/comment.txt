@@ -1,0 +1,2 @@
+Array comment:
+'I present an ArrayedCollection whose elements are objects.'

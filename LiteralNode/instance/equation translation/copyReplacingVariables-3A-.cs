@@ -1,2 +1,0 @@
-copyReplacingVariables: varDict 
-	^self copy

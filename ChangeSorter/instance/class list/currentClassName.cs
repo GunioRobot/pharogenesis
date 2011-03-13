@@ -1,0 +1,3 @@
+currentClassName
+
+	^ currentClassName

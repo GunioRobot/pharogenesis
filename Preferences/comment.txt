@@ -1,0 +1,2 @@
+Preferences comment:
+'A general mechanism to store preference choices.  The default setup treats any symbol as a potential boolean flag; flags unknown to the preference dictionary are always returned as false.  It is also possible to store non-boolean data in the preference table.  sw 8/91'

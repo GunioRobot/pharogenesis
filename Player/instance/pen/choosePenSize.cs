@@ -1,0 +1,2 @@
+choosePenSize
+	^ self actorState choosePenSize

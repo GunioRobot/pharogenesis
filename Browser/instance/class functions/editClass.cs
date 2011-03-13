@@ -5,4 +5,5 @@ editClass
 	self okToChange ifFalse: [^ self].
 	self messageCategoryListIndex: 0.
 	editSelection _ #editClass.
-	self changed: #editClass
+	self changed: #editClass.
+	self changed: #contents.

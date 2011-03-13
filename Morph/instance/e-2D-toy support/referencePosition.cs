@@ -1,3 +1,3 @@
 referencePosition
 
-	^ bounds origin
+	^ bounds center

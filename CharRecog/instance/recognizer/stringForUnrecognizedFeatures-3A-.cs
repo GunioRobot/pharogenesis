@@ -5,7 +5,7 @@ stringForUnrecognizedFeatures: features
 	result _ FillInTheBlank request:
 ('Not recognized. type char, or "tab", "cr" or "bs",
 or hit return to ignore 
-', features) initialAnswer: '' avoiding: (bmin rounded corner: bmax rounded).
+', features).
 
 	^ (result = '~' | result = '')
 		ifTrue:

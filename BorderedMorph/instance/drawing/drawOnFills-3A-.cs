@@ -1,2 +1,2 @@
 drawOnFills: aRectangle
-	^ (bounds containsRect: aRectangle) and: [color isTransparent not]
+	^ (bounds containsRect: aRectangle) and: [self isOpaque]

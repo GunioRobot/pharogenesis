@@ -1,4 +1,0 @@
-initializeYellowButtonMenu
-
-	self yellowButtonMenu: SyntaxErrorListYellowButtonMenu
-		yellowButtonMessages: SyntaxErrorListYellowButtonMessages

@@ -1,7 +1,6 @@
 install
 
-	"hide the hardware cursor, since hand will draw it"
-	Cursor blank show.
 	self viewBox: Display boundingBox.
 	hands do: [:h | h initForEvents].
+	SystemWindow noteTopWindowIn: self.
 	self displayWorld.

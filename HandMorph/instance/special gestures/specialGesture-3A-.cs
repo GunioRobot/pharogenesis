@@ -1,14 +1,14 @@
 specialGesture: evt
-	"Blue mouse button (cmd-mouse on the Macintosh) gestures that allow a morph to be grabbed without recourse to the meta menu or brings up a halo of handles for the morph."
+	"Special gestures (cmd-mouse on the Macintosh) allow a mouse-sensitive morph to be grabbed or bring up a halo for the morph."
 	"Summary:
 		Cmd-mouse			pop up halo
-		Cmd-shift-mouse		grab morph (for picking up buttons, etc.)"
+		Cmd-shift-mouse		grab morph"
 
 	"if carrying morphs, just drop them"
 	self hasSubmorphs ifTrue: [^ self dropMorphsEvent: evt].
 
 	targetOffset _ menuTargetOffset _ self position.
-	(argument _ self argumentOrNil) ifNil: [^ self].
+	argument _ self argumentOrNil.
 	evt shiftPressed
-		ifTrue: [self grabMorph]
-		ifFalse: [self popUpHalo: evt].
+		ifTrue: [argument ifNotNil: [self grabMorph]]
+		ifFalse: [self popUpHaloFromClick: evt].

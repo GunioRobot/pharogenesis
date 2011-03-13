@@ -1,0 +1,2 @@
+GradientFillMorph class comment:
+'GradientFills cache an array of bitpatterns for the colors across their rectangle.  It costs a bit of space, but makes display fast enough to eschew the use of a bitmap.  The array must be recomputed whenever the colors, dimensions or display depth change.'

@@ -1,0 +1,1 @@
+TrashCanMorph class instanceVariableNames: ''

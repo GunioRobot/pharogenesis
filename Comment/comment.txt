@@ -1,0 +1,11 @@
+A Comment space is like a bulletin board.  It is a web page with a list statements from many different people.  At the bottom there is a form for you to add your own statement.
+
+Anyone may start a new comment page, just by asking for a page with a new key, and there can be any number of pages.  The default Swiki has a page called 'pws' already created.
+
+The administrator must take special action to save the accumulated comments (Comment saveTo: 'aFileName').  Comments are not automatically stored on the disk like regular Swiki pages are.  So, for the moment, it is likely that Comments will get lost when the server is restarted.
+
+URLs are of the form 
+machine:80/Comment.{commentKey}
+machine:80/Comment.{commentKey}.{number}
+machine:80/Comment.{commentKey}.note   -- Does this really work???  -tk
+machine:80/Comment.{commentKey}.gif

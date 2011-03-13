@@ -4,5 +4,5 @@ linkMethod: classAndMethod
 	"Do some checks here on the user's text!!!"
 	self okToChange ifFalse: [^ self].
 	messageList add: classAndMethod.
-	self changed: #messageListChanged.
+	self changed: #messageList.
 	self messageListIndex: messageList size.

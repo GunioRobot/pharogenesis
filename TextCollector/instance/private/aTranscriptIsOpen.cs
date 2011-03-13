@@ -1,2 +1,0 @@
-aTranscriptIsOpen
-	transcriptOpen _ true

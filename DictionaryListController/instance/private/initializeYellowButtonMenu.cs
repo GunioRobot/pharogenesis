@@ -1,5 +1,0 @@
-initializeYellowButtonMenu
-
-	self 
-		yellowButtonMenu: DictionaryListYellowButtonMenu
-		yellowButtonMessages: DictionaryListYellowButtonMessages

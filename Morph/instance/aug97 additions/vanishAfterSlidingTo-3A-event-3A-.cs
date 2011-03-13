@@ -9,4 +9,4 @@ vanishAfterSlidingTo: aPosition event: evt
 	aWorld displayWorld.
 	endPoint _ aPosition + origin.
 	aForm slideFrom: startPoint  to: endPoint nSteps: 12 delay: 15.
-	aWorld soundsEnabled ifTrue: [TrashCanMorph someInstance playDeleteSound].
+	aWorld soundsEnabled ifTrue: [TrashCanMorph playDeleteSound].

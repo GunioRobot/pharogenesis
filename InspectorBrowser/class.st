@@ -1,0 +1,1 @@
+InspectorBrowser class instanceVariableNames: ''

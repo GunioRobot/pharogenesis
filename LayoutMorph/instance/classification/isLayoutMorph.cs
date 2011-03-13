@@ -1,3 +1,0 @@
-isLayoutMorph
-
-	^ true

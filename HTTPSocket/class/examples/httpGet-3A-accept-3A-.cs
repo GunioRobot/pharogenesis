@@ -18,11 +18,14 @@ httpGet: url accept: mimeType
 	self retry: [serverAddr _ NetNameResolver addressForName: serverName timeout: 20.
 				serverAddr ~~ nil] 
 		asking: 'Trouble resolving server name.  Keep trying?'
-		ifGiveUp: [^ 'Could not resolve the server named: ', serverName].
+		ifGiveUp: [Socket deadServer: serverName.
+				^ 'Could not resolve the server named: ', serverName].
 
 	s _ HTTPSocket new.
 	s connectTo: serverAddr port: HTTPPort.  "80 is normal"
-	s waitForConnectionUntil: self standardDeadline.
+	(s waitForConnectionUntil: (self deadlineSecs: 30)) ifFalse: [
+		Socket deadServer: serverName.  s destroy.
+		^ 'Server ',serverName,' is not responding'].
 	Transcript cr; show: serverName; cr.
 	s sendCommand: 'GET ', page, ' HTTP/1.0', CrLf, 
 		(mimeType ifNotNil: ['ACCEPT: ', mimeType, CrLf] ifNil: ['']),
@@ -38,7 +41,9 @@ httpGet: url accept: mimeType
 	"Find the length"
 	length _ s contentsLength: header.	"saves the headerTokens"
 	length ifNil: [
-		(newURL _ s redirect) ifNotNil: [^ self httpGet: newURL accept: mimeType].
+		(newURL _ s redirect) ifNotNil: [
+			s destroy.
+			^ self httpGet: newURL accept: mimeType].
 		Transcript cr; show: 'Some kind of Error'.
 		s destroy.   ^ header].
 	

@@ -43,8 +43,8 @@ typedef struct {
 #define ThisEndClosed			4
 
 /*** TCP Socket State ***/
-#define SendBufferSize	( 8 * 1024)
-#define RecvBufferSize	(16 * 1024)
+#define SendBufferSize	(8 * 1024)
+#define RecvBufferSize	(8 * 1024)
 typedef struct {
 	TCPiopb		tcpPB;				/* TCP parameter block for open/send (must be first) */
 	TCPiopb		closePB;			/* TCP parameter block for close */
@@ -66,7 +66,7 @@ typedef struct {
 	char		data[SendBufferSize];
 } TCPSendBuf, *TCPSendBufPtr;
 
-#define SendBufCount 2
+#define SendBufCount 8
 TCPSendBuf sendBufPool[SendBufCount];
 int nextSendBuf = 0;
 
@@ -171,14 +171,17 @@ int sqNetworkInit(int resolverSemaIndex) {
 
 	if (thisNetSession != 0) return 0;  /* noop if network is already initialized */
 
-	/* Create a session ID that is unlikely to be repeated.
-	   Zero is never used for a valid session number.
-	   Should be called once at startup time.
-	*/
+	/* open network driver */
+	macTCPRefNum = 0;
+	err = OpenDriver("\p.IPP", &macTCPRefNum);
+	if (err != noErr) {
+		return -1;
+	}
 
 	/* open resolver */
 	err = ResolverInitialize(resolverSemaIndex);
 	if (err != noErr) {
+		ResolverTerminate();
 		return -1;
 	}
 
@@ -199,6 +202,7 @@ int sqNetworkInit(int resolverSemaIndex) {
 		mtuSize = paramBlock.csParam.mtu.mtuSize;	
 	} else {
 		mtuSize = 1024;  /* guess */
+		ResolverTerminate();
 		return -1;
 	}
 
@@ -210,7 +214,9 @@ int sqNetworkInit(int resolverSemaIndex) {
 
 	InstallExitHandler();
 
-	/* success! */
+	/* Success! Create a session ID that is unlikely to be
+	   repeated. Zero is never used for a valid session number.
+	*/
 	thisNetSession = clock() + time(NULL);
 	if (thisNetSession == 0) thisNetSession = 1;  /* don''t use 0 */
 	return 0;
@@ -436,7 +442,6 @@ int sqResolverError(void) {
 
 int sqResolverLocalAddress(void) {
 	struct GetAddrParamBlock paramBlock;
-	OSErr err = noErr;
 
 	if (resolver.localAddress == 0) {
 		resolver.remoteAddress = 0;
@@ -453,6 +458,9 @@ int sqResolverLocalAddress(void) {
 			resolver.status = RESOLVER_ERROR;
 			resolver.error = paramBlock.ioResult;
 		}
+	} else {
+		resolver.status = RESOLVER_SUCCESS;
+		resolver.error = noErr;
 	}
 	return resolver.localAddress;
 }
@@ -465,7 +473,10 @@ int sqResolverNameLookupResult(void) {
 void sqResolverStartAddrLookup(int address) {
 	OSErr err;
 
+	if (resolver.status == RESOLVER_BUSY) return;
+
 	resolver.status = RESOLVER_BUSY;
+	resolver.error = noErr;
 	memset(&resolver.hostInfo, 0, sizeof(hostInfo));
 	err = AddrToName(address, &resolver.hostInfo, resolverDoneProc, (char *) &resolver);
 	if (err == noErr) {
@@ -473,7 +484,7 @@ void sqResolverStartAddrLookup(int address) {
 		resolver.status = RESOLVER_SUCCESS;
 	} else {
 		if (err != cacheFault) {
-			/* unexpected error */
+			/* real error */
 			resolver.status = RESOLVER_ERROR;
 			resolver.error = err;
 		}
@@ -485,11 +496,14 @@ void sqResolverStartNameLookup(char *hostName, int nameSize) {
 	int len; 
 	OSErr err;
 
+	if (resolver.status == RESOLVER_BUSY) return;
+
 	len = ((nameSize <= 500) ? nameSize : 500);
 	memcpy(name, hostName, len);
 	name[len] = ''\0'';
 
 	resolver.status = RESOLVER_BUSY;
+	resolver.error = noErr;
 	memset(&resolver.hostInfo, 0, sizeof(hostInfo));
 	err = StrToAddr(name, &resolver.hostInfo, resolverDoneProc, (char *) &resolver);
 	if (err == noErr) {
@@ -498,7 +512,7 @@ void sqResolverStartNameLookup(char *hostName, int nameSize) {
 		resolver.remoteAddress = resolver.hostInfo.addr[0];
 	} else {
 		if (err != cacheFault) {
-			/* unexpected error */
+			/* real error */
 			resolver.status = RESOLVER_ERROR;
 			resolver.error = err;
 		}
@@ -512,8 +526,6 @@ int sqResolverStatus(void) {
 /*** Private Resolver Functions ***/
 
 int ResolverInitialize(int resolverSemaIndex) {
-	OSErr err = noErr;
-
 	if (resolver.status != RESOLVER_UNINITIALIZED) {
 		ResolverTerminate();
 	}
@@ -521,20 +533,10 @@ int ResolverInitialize(int resolverSemaIndex) {
 	memset(&resolver, 0, sizeof(ResolverStatusRec));
 	resolver.status = RESOLVER_UNINITIALIZED;
 
-//xxx move to network init:
-	macTCPRefNum = 0;
-	err = OpenDriver("\p.IPP", &macTCPRefNum);
-	if (err != noErr) {
-		resolver.error = err;
+	resolver.error = OpenResolver(nil);
+	if (resolver.error != noErr) {
 		resolver.status = RESOLVER_ERROR;
-		return err;
-	}
-
-	err = OpenResolver(nil);
-	if (err != noErr) {
-		resolver.error = err;
-		resolver.status = RESOLVER_ERROR;
-		return err;
+		return resolver.error;
 	}
 
 	resolver.semaIndex = resolverSemaIndex;
@@ -544,6 +546,9 @@ int ResolverInitialize(int resolverSemaIndex) {
 
 static pascal void ResolverCompletionRoutine(struct hostInfo *hostInfoPtr, char *userDataPtr) {
 	ResolverStatusPtr r = (ResolverStatusPtr) userDataPtr;
+
+	if ((r == null) || (r->status != RESOLVER_BUSY)) return;
+
 	/* completion routine */
 	if (r->hostInfo.rtnCode == noErr) {
 		r->status = RESOLVER_SUCCESS;
@@ -624,15 +629,14 @@ void TCPSockDestroy(TCPSockPtr s) {
 
 int TCPSockLocalAddress(TCPSockPtr s) {
 	TCPiopb paramBlock;
-	OSErr err = noErr;
 
 	if ((s == nil) || (s->tcpStream == nil)) {
 		return 0;  /* already destroyed */
 	}
 
 	InitTCPCmd(TCPStatus, s->tcpStream, &paramBlock);
-	err = PBControlSync((ParmBlkPtr) &paramBlock);
-	if (err != noErr) {
+	s->lastError = PBControlSync((ParmBlkPtr) &paramBlock);
+	if (s->lastError != noErr) {
 		return 0;
 	}
 	return paramBlock.csParam.status.localHost;
@@ -640,15 +644,14 @@ int TCPSockLocalAddress(TCPSockPtr s) {
 
 int TCPSockLocalPort(TCPSockPtr s) {
 	TCPiopb paramBlock;
-	OSErr err = noErr;
 
 	if ((s == nil) || (s->tcpStream == nil)) {
 		return 0;  /* already destroyed */
 	}
 
 	InitTCPCmd(TCPStatus, s->tcpStream, &paramBlock);
-	err = PBControlSync((ParmBlkPtr) &paramBlock);
-	if (err != noErr) {
+	s->lastError = PBControlSync((ParmBlkPtr) &paramBlock);
+	if (s->lastError != noErr) {
 		return 0;
 	}
 	return paramBlock.csParam.status.localPort;
@@ -656,15 +659,14 @@ int TCPSockLocalPort(TCPSockPtr s) {
 
 int TCPSockRemoteAddress(TCPSockPtr s) {
 	TCPiopb paramBlock;
-	OSErr err = noErr;
 
 	if ((s == nil) || (s->tcpStream == nil)) {
 		return 0;  /* already destroyed */
 	}
 
 	InitTCPCmd(TCPStatus, s->tcpStream, &paramBlock);
-	err = PBControlSync((ParmBlkPtr) &paramBlock);
-	if (err != noErr) {
+	s->lastError = PBControlSync((ParmBlkPtr) &paramBlock);
+	if (s->lastError != noErr) {
 		return 0;
 	}
 	return paramBlock.csParam.status.remoteHost;
@@ -672,15 +674,14 @@ int TCPSockRemoteAddress(TCPSockPtr s) {
 
 int TCPSockRemotePort(TCPSockPtr s) {
 	TCPiopb paramBlock;
-	OSErr err = noErr;
 
 	if ((s == nil) || (s->tcpStream == nil)) {
 		return 0;  /* already destroyed */
 	}
 
 	InitTCPCmd(TCPStatus, s->tcpStream, &paramBlock);
-	err = PBControlSync((ParmBlkPtr) &paramBlock);
-	if (err != noErr) {
+	s->lastError = PBControlSync((ParmBlkPtr) &paramBlock);
+	if (s->lastError != noErr) {
 		return 0;
 	}
 	return paramBlock.csParam.status.remotePort;
@@ -705,8 +706,6 @@ void TCPSockRemoveFromOpenList(TCPSockPtr s) {
 }
 
 void TCPSockConnectTo(TCPSockPtr s, int addr, int port) {
-	OSErr err = noErr;
-
 	if ((s == nil) || (s->tcpStream == nil)) return;  /* socket destroyed */
 
 	InitTCPCmd(TCPActiveOpen, s->tcpStream, &s->tcpPB);
@@ -714,26 +713,22 @@ void TCPSockConnectTo(TCPSockPtr s, int addr, int port) {
 	s->tcpPB.csParam.open.remotePort = port;
 	s->connectStatus = WaitingForConnection;
 	s->tcpPB.ioCompletion = tcpConnectDoneProc;
-	err = PBControlAsync((ParmBlkPtr) &s->tcpPB);
-	if (err != noErr) {
+	s->lastError = PBControlAsync((ParmBlkPtr) &s->tcpPB);
+	if (s->lastError != noErr) {
 		s->connectStatus = Unconnected;
-		s->lastError = err;
 	}
 }
 
 void TCPSockListenOn(TCPSockPtr s, int port) {
-	OSErr err = noErr;
-
 	if ((s == nil) || (s->tcpStream == nil)) return;  /* socket destroyed */
 
 	InitTCPCmd(TCPPassiveOpen, s->tcpStream, &s->tcpPB);
 	s->tcpPB.csParam.open.localPort = port;
 	s->connectStatus = WaitingForConnection;
 	s->tcpPB.ioCompletion = tcpConnectDoneProc;
-	err = PBControlAsync((ParmBlkPtr) &s->tcpPB);
-	if (err != noErr) {
+	s->lastError = PBControlAsync((ParmBlkPtr) &s->tcpPB);
+	if (s->lastError != noErr) {
 		s->connectStatus = Unconnected;
-		s->lastError = err;
 	}
 }
 
@@ -772,6 +767,7 @@ int TCPSockRecvData(TCPSockPtr s, char *buf, int bufSize) {
 	paramBlock.csParam.receive.commandTimeoutValue = 1; /* finish in one second, data or not */
 	paramBlock.csParam.receive.rcvBuff = buf;
 	paramBlock.csParam.receive.rcvBuffLen = bufSize;
+	s->lastError = noErr;
 	err = PBControlSync((ParmBlkPtr) &paramBlock);  /* synchronous */
 	if (err == noErr) {
 		bytesRead = paramBlock.csParam.receive.rcvBuffLen;
@@ -789,7 +785,6 @@ int TCPSockRecvData(TCPSockPtr s, char *buf, int bufSize) {
 int xxxGOODTCPSockSendData(TCPSockPtr s, char *buf, int bufSize);
 int xxxGOODTCPSockSendData(TCPSockPtr s, char *buf, int bufSize) {
 	int sendCount;
-	OSErr err = noErr;
 	struct wdsEntry wds[2];
 
 	buf;  /* xxx avoid compiler complaint about unreferenced vars */
@@ -808,10 +803,9 @@ int xxxGOODTCPSockSendData(TCPSockPtr s, char *buf, int bufSize) {
 	s->tcpPB.csParam.send.pushFlag = true;
 	s->sendInProgress = true;
 	s->tcpPB.ioCompletion = tcpSendDoneProc;
-	err = PBControlAsync((ParmBlkPtr) &s->tcpPB);
-	if (err != noErr) {
+	s->lastError = PBControlAsync((ParmBlkPtr) &s->tcpPB);
+	if (s->lastError != noErr) {
 		s->sendInProgress = false;
-		s->lastError = err;
 		return 0;
 	}
 	return sendCount;
@@ -819,7 +813,6 @@ int xxxGOODTCPSockSendData(TCPSockPtr s, char *buf, int bufSize) {
 
 int TCPSockSendData(TCPSockPtr s, char *buf, int bufSize) {
 	TCPSendBufPtr sendBuf;
-	OSErr err = noErr;
 	int sendCount;
 
 	sendBuf = &sendBufPool[nextSendBuf++];
@@ -840,10 +833,9 @@ int TCPSockSendData(TCPSockPtr s, char *buf, int bufSize) {
 	sendBuf->tcpPB.csParam.send.pushFlag = true;
 	sendBuf->tcpPB.ioCompletion = tcpSendDoneProc;
 	s->sendInProgress = true;
-	err = PBControlAsync((ParmBlkPtr) &sendBuf->tcpPB);
-	if (err != noErr) {
+	s->lastError = PBControlAsync((ParmBlkPtr) &sendBuf->tcpPB);
+	if (s->lastError != noErr) {
 		s->sendInProgress = false;
-		s->lastError = err;
 		return 0;
 	}
 	return sendCount;
@@ -878,6 +870,7 @@ void InstallExitHandler(void) {
 void MyExitHandler(void) {
 	SetCurrentA5();
 	SetToolTrapAddress(oldExitHandlerProc, _ExitToShell);
+	ResolverTerminate();
 	DestroyAllOpenSockets();
 	ExitToShell();
 }

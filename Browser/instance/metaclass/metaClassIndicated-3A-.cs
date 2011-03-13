@@ -11,4 +11,7 @@ metaClassIndicated: trueOrFalse
 	messageCategoryListIndex _ 0.
 	messageListIndex _ 0.
 	contents _ nil.
-	self changed: #classSelectionChanged
+	self changed: #classSelectionChanged.
+	self changed: #messageCategoryList.
+	self changed: #messageList.
+	self changed: #contents.

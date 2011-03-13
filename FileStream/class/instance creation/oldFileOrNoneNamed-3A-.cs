@@ -1,8 +1,8 @@
 oldFileOrNoneNamed: fileName
-	"Only open the file if it exists already.  Don't get an error if not there.  "
+	"If the file exists, answer a read-only FileStream on it. If it doesn't, answer nil."
 
-| myName |
-myName _ self fullName: fileName.
-^ (self concreteStream isAFileNamed: myName) 
-	ifTrue: [self concreteStream oldFileNamed: myName]
-	ifFalse: [nil].
+	| fullName |
+	fullName _ self fullName: fileName.
+	(self concreteStream isAFileNamed: fullName)
+		ifTrue: [^ self concreteStream readOnlyFileNamed: fullName]
+		ifFalse: [^ nil].

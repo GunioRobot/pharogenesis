@@ -1,0 +1,1 @@
+StringButtonMorph class instanceVariableNames: ''

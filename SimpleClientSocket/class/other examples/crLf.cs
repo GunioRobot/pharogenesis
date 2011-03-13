@@ -1,2 +1,0 @@
-crLf
-	^CrLf

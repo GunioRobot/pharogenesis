@@ -1,3 +1,3 @@
 duration
 
-	^ (initialCount / self samplingRate asFloat) rounded
+	^ initialCount asFloat / self samplingRate asFloat

@@ -1,5 +1,6 @@
 close
-	"Close the receiver.  12/12/96 sw"
+	"Close the receiver."
 
+	closed ifTrue: [^ self].
 	self primClose: fileID.
-	closed _ true
+	closed _ true.

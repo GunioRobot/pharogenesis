@@ -1,0 +1,2 @@
+defaultPaperSize: aPoint
+	DefaultPaperSize := aPoint

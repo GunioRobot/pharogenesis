@@ -1,3 +1,0 @@
-noop
-
-	Smalltalk beep.

@@ -15,7 +15,7 @@ interruptName: labelString
 		activeController view topView deEmphasizeForDebugger].
 
 	newActiveController _
-		(DebuggerView
+		(Debugger
 			openInterrupt: labelString
 			onProcess: activeControllerProcess) controller.
 	newActiveController centerCursorInView.

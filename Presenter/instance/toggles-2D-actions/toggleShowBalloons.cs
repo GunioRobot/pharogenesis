@@ -1,0 +1,2 @@
+toggleShowBalloons
+	balloonHelpEnabled _ self balloonHelpEnabled not

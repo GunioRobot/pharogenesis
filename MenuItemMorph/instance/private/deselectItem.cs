@@ -1,9 +1,7 @@
 deselectItem
-
 	| item |
-	isSelected _ false.
-	self changed.
+	self isSelected: false.
 	subMenu ifNotNil: [subMenu deleteIfPopUp].
-	(owner isKindOf: MenuMorph) ifTrue: [
-		item _ owner popUpOwner.
+	(owner isKindOf: MenuMorph) ifTrue:
+		[item _ owner popUpOwner.
 		(item isKindOf: MenuItemMorph) ifTrue: [item deselectItem]].

@@ -1,0 +1,2 @@
+currentPalette
+	^ currentPalette

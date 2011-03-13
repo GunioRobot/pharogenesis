@@ -1,5 +1,8 @@
 postscriptString
 	"Answer the string representing the postscript.  "
 
-	self assurePostscriptExists.
-	^ postscript contents
+	^ postscript == nil
+		ifTrue:
+			[postscript]
+		ifFalse:
+			[postscript contents asString]

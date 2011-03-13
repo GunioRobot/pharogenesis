@@ -1,1 +1,0 @@
-UnsavableWorkspace class instanceVariableNames: ''

@@ -1,3 +1,0 @@
-defaultControllerClass
-
-	^InspectCodeController

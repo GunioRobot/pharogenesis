@@ -1,0 +1,4 @@
+Canvas comment:
+'A canvas is a two-dimensional medium on which morphs are drawn in a device-independent manner. Canvases keep track of the origin and clipping rectangle, as well as the underlying drawing medium (such as a window, pixmap, or postscript script).
+
+This kind of canvas does no drawing, and may be used as a "null canvas" to factor out drawing time during performance measurements.'

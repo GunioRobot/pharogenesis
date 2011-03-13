@@ -1,0 +1,2 @@
+maxPartsBankNumber
+	^ scriptedPlayer maxPartsBankNumber

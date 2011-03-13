@@ -3,5 +3,4 @@ updateSystemCategories
 	reorganize its lists based on these changes."
 
 	self okToChange ifFalse: [^ self].
-	self systemCategoryListIndex: 0.
-	self changed: #systemCategoriesChanged
+	self changed: #systemCategoryList

@@ -9,7 +9,7 @@ doesNotUnderstand: aMessage
 	errorString _ 'Message not understood: ', aMessage selector.
 	(handler _ Processor activeProcess errorHandler) notNil
 		ifTrue: [handler value: errorString value: self]
-		ifFalse: [DebuggerView openContext: thisContext
+		ifFalse: [Debugger openContext: thisContext
 					label: errorString
 					contents: thisContext shortStack].
 	^ aMessage sentTo: self

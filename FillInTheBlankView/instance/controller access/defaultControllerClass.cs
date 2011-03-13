@@ -1,3 +1,3 @@
 defaultControllerClass
 
-	^FillInTheBlankController
+	^ FillInTheBlankController

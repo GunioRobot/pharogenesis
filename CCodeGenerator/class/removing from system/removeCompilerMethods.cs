@@ -4,4 +4,5 @@ removeCompilerMethods
 	ParseNode withAllSubclasses do: [ :nodeClass |
 		nodeClass removeCategory: 'C translation'.
 	].
-	AbstractSound class removeCategory: 'primitive generation'.
+	Smalltalk at: #AbstractSound ifPresent: [:abstractSound |
+		 abstractSound class removeCategory: 'primitive generation'].

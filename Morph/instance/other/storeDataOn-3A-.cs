@@ -1,20 +1,17 @@
 storeDataOn: aDataStream
 	"Let all Morphs be written out.  DataStream.typeIDFor: catches the ones that are outside our tree (most notably, the root's owner).  For now let everthing try to write out.  "
-	| cntInstVars cntIndexedVars instVars ti got |
+	| cntInstVars cntIndexedVars ti localInstVars got |
 
-	true ifTrue: [^ super storeDataOn: aDataStream].
-
-	"keep this code in case we need to filter fields later"
-	owner ifNil: [^ super storeDataOn: aDataStream].
+	"block my owner unless he is written out by someone else"
 	got _ aDataStream references at: owner ifAbsent: [nil].
-	got ifNotNil: ["My owner has already started to go out.  I am not top"
+	got ifNotNil: ["My owner has already started to go out.  OK to point at him"
 		^ super storeDataOn: aDataStream].
-	"block my owner"
 	cntInstVars _ self class instSize.
 	cntIndexedVars _ self basicSize.
-	instVars _ self class allInstVarNames.
-	ti _ (instVars indexOf: 'owner').
-	(ti = 0) ifTrue: [self error: 'this method is out of date'].
+	localInstVars _ Morph instVarNames.
+	ti _ 2.  
+	((localInstVars at: ti) = 'owner') & (Morph superclass == Object) ifFalse:
+			[self error: 'this method is out of date'].
 	aDataStream
 		beginInstance: self class
 		size: cntInstVars + cntIndexedVars.

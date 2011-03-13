@@ -1,0 +1,2 @@
+maximumSelection
+	^ list size

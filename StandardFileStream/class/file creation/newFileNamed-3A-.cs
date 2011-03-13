@@ -15,8 +15,10 @@ already exists.'.
 			deleteFileNamed: aFileName
 			ifAbsent: [self error: 'Sorry, deletion failed'].
 		^ self new open: aFileName forWrite: true].
-	selection = 2 ifTrue:
-		[^ self newFileNamed:
+	selection = 2 ifTrue: [
+		^ self newFileNamed:
 			(FillInTheBlank request: 'Enter a new file name'
-						initialAnswer: (FileDirectory localNameFor: aFileName))].
-	self halt
+				initialAnswer: aFileName)].
+	"Return a dummy stream that will absorb all file messages and do nothing"
+	"^ RWBinaryOrTextStream on: (DummyStream on: nil)"
+	self error: 'Please close this to abort file opening'

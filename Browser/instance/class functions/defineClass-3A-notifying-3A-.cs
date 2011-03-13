@@ -12,12 +12,12 @@ defineClass: aString notifying: aController
 				logged: true.
 	(class isKindOf: Behavior)
 		ifTrue: 
-			[self changed: #classListChanged.
+			[self changed: #classList.
 			self classListIndex: 
 				(self classList indexOf: 
 					((class isKindOf: Metaclass)
 						ifTrue: [class soleInstance name]
 						ifFalse: [class name])).
-			self unlock; editClass.
+			self clearUserEditFlag; editClass.
 			^true]
 		ifFalse: [^false]

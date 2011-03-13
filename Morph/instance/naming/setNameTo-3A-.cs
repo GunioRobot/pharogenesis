@@ -1,2 +1,2 @@
 setNameTo: aName
-	self setProperty: #name toValue: aName
+	self setNamePropertyTo: aName

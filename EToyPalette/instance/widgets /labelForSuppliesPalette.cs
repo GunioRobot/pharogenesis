@@ -1,0 +1,2 @@
+labelForSuppliesPalette
+	^ 'Supplies'

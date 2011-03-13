@@ -16,21 +16,17 @@ Three cases for files from older versions of the system:
 	refPosn _ self getCurrentReference.
 	className _ self readShortRef.	"class symbol in two bytes of file pos"
 	self setCurrentReference: refPosn.  "remember pos before readDataFrom:size:"
-	(Smalltalk includesKey: className) ifTrue: [
-		newClass _ Smalltalk at: className.
-		(steady includes: newClass) ifTrue: [
-		 	anObject _ newClass isVariable "Create it here"
-				ifFalse: [newClass basicNew]
-				ifTrue: [newClass basicNew: instSize - (newClass instSize)].
-			anObject _ anObject readDataFrom: self size: instSize.
-			self setCurrentReference: refPosn.  "before returning to next"
-			^ anObject]].
 	newName _ renamed at: className ifAbsent: [className].
 	newClass _ Smalltalk at: newName.
+	(steady includes: newClass) ifTrue: [
+	 	anObject _ newClass isVariable "Create it here"
+			ifFalse: [newClass basicNew]
+			ifTrue: [newClass basicNew: instSize - (newClass instSize)].
+		anObject _ anObject readDataFrom: self size: instSize.
+		self setCurrentReference: refPosn.  "before returning to next"
+		^ anObject].
 	oldInstVars _ structures at: className ifAbsent: [
-		"self fixObjVer1: className.	HyperSqueak"
-		structures at: className ifAbsent: [
-			self error: 'class is not in structures list']].	"Missing in object file"
+			self error: 'class is not in structures list'].	"Missing in object file"
 	anObject _ newClass createFrom: self size: instSize version: oldInstVars.
 		"only create the instance"
 	self beginReference: anObject.

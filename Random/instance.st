@@ -1,6 +1,6 @@
-Stream
+Object
 	subclass: #Random
-	instanceVariableNames: 'seed '
+	instanceVariableNames: 'seed a m q r '
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Numeric-Numbers'

@@ -1,0 +1,2 @@
+documentTitle
+	^docTitle

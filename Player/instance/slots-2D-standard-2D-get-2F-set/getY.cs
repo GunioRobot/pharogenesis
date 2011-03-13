@@ -1,0 +1,2 @@
+getY
+	^ costume y

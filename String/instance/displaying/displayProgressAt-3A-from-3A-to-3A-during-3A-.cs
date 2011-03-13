@@ -17,7 +17,7 @@ The key, though, is that the block is supplied with an argument,
 named 'bar' in the example, which will update the bar image every 
 it is sent the message value: x, where x is in the from:to: range.
 "
-	| delta savedArea captionText textFrame barFrame outerFrame result range |
+	| delta savedArea captionText textFrame barFrame outerFrame result range lastW w |
 	barFrame _ aPoint - (75@10) corner: aPoint + (75@10).
 	captionText _ DisplayText text: self asText allBold.
 	captionText
@@ -36,9 +36,12 @@ it is sent the message value: x, where x is in the from:to: range.
 	Display fillBlack: textFrame; fillWhite: (textFrame insetBy: 2).
 	captionText displayOn: Display at: textFrame topLeft + (4@4).
 	range _ maxVal = minVal ifTrue: [1] ifFalse: [maxVal - minVal].  "Avoid div by 0"
+	lastW _ 0.
 	result _ workBlock value:  "Supply the bar-update block for evaluation in the work block"
 		[:barVal |
-		Display fillGray: (barFrame topLeft + (2@2) extent:
-				(((barFrame width-4) * ((barVal-minVal) asFloat / range min: 1.0)) asInteger@16))].
+		w _ ((barFrame width-4) asFloat * ((barVal-minVal) asFloat / range min: 1.0)) asInteger.
+		w ~= lastW ifTrue: [
+			Display fillGray: (barFrame topLeft + (2@2) extent: w@16).
+			lastW _ w]].
 	savedArea displayOn: Display at: outerFrame topLeft.
 	^ result

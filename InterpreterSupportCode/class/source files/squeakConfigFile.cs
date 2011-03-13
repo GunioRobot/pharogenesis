@@ -1,19 +1,52 @@
 squeakConfigFile
 
-	^ '/* Identification of, and configuration for, various types of platform. */
+	^ '/* sqConfig.h -- platform identification and configuration */
 
 #if defined(__MWERKS__) && !defined(macintosh)
   /* CodeWarrior 8 neglects to define "macintosh" */
 # define macintosh
 #endif
 
+#if defined(WIN32) || defined(_WIN32) || defined(Win32)
+  /* Some compilers use different win32 definitions.
+     Define WIN32 so we have only to check for one symbol. */
+# if !defined(WIN32)
+#  define WIN32
+# endif
+#endif
+
 #if defined(macintosh)
+# if defined(SQ_CONFIG_DONE)
+#   error configuration conflict
+# endif
+# define SQ_CONFIG_DONE
+#endif
 
+#if defined(ACORN)
+# if defined(SQ_CONFIG_DONE)
+#   error configuration conflict
+# endif
 # define USE_CLOCK_MSECS
+# define SQ_CONFIG_DONE
+#endif
 
-#else /*!macintosh*/
+#if defined(WIN32)
+# if defined(SQ_CONFIG_DONE)
+#   error configuration conflict
+# endif
+# if defined(_M_IX86) || defined(X86)
+  /* x86 systems */
+#  define DOUBLE_WORD_ALIGNMENT
+#  define DOUBLE_WORD_ORDER
+  /* Note: We include a generic sqWin32.h to override some settings */
+#  include "sqWin32.h"
+#  define SQ_CONFIG_DONE
+# else
+#  error unsupported win32 processor type (alpha?!)
+# endif
+#endif
 
-/* this file must define the following symbols as appropriate:
+/* for Unix variants, this file must define the following symbols as appropriate:
 
    HAS_D_NAMLEN
       defined if struct dirent has d_namlen field and hence directory names
@@ -241,6 +274,4 @@ squeakConfigFile
 #if !defined(SQ_CONFIG_DONE)
 # error test for, and describe, your architecture here.
 #endif
-
-#endif /*!macintosh*/
 '.

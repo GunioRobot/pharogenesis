@@ -3,7 +3,9 @@ collapse
 	label only."
 
 	self isCollapsed ifFalse:
-			[expandedViewport _ self viewport.
+			[(subViews ~~ nil and: [subViews size = 1 and: [subViews first isKindOf: MorphWorldView]])
+				ifTrue: [subViews first deEmphasizeView].
+			expandedViewport _ self viewport.
 			savedSubViews _ subViews.
 			self resetSubViews.
 			labelText isNil ifTrue: [self label: nil.  bitsValid _ false.].

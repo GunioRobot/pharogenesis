@@ -3,7 +3,7 @@ strictlyStaggeredInitialFrameFor: aStandardSystemView
 	Basically it provides for up to 4 windows, staggered from each of the 4 corners.
 	The windows are staggered so that there will always be a corner visible.
 	"
-	| allowedArea grid initialFrame allWindows cornerSel corner delta putativeCorner free maxLevel |
+	| allowedArea grid initialFrame otherFrames cornerSel corner delta putativeCorner free maxLevel |
 	allowedArea _ ScrollBarSetback @ ScreenTopSetback
 					corner: Display usableArea bottomRight.
 	"Number to be staggered at each corner (less on small screens)"
@@ -13,11 +13,14 @@ strictlyStaggeredInitialFrameFor: aStandardSystemView
 	initialFrame _ 0@0 extent: ((aStandardSystemView initialExtent
 							"min: (allowedArea extent - (grid*(maxLevel+1*2) + (grid//2))))
 							min: 600@400")).
-	allWindows _ ScheduledControllers scheduledWindowControllers
+	otherFrames _ Smalltalk isMorphic
+		ifTrue: [(SystemWindow windowsIn: World satisfying: [:w | w isCollapsed not])
+					collect: [:w | w bounds]]
+		ifFalse: [ScheduledControllers scheduledWindowControllers
 				select: [:aController | aController view ~~ nil]
 				thenCollect: [:aController | aController view isCollapsed
 								ifTrue: [aController view expandedFrame]
-								ifFalse: [aController view displayBox]].
+								ifFalse: [aController view displayBox]]].
 	0 to: maxLevel do:
 		[:level | 
 		1 to: 4 do:
@@ -28,7 +31,7 @@ strictlyStaggeredInitialFrameFor: aStandardSystemView
 			1 to: ci-1 do: [:i | delta _ delta rotateBy: #right centerAt: 0@0]. "slow way"
 			putativeCorner _ corner + delta.
 			free _ true.
-			allWindows do:
+			otherFrames do:
 				[:w |
 				free _ free & ((w perform: cornerSel) ~= putativeCorner)].
 			free ifTrue:

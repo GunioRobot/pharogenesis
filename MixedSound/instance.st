@@ -1,6 +1,6 @@
 AbstractSound
 	subclass: #MixedSound
-	instanceVariableNames: 'sounds panSettings soundDone '
+	instanceVariableNames: 'sounds leftVols rightVols soundDone '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Sound'
+	category: 'System-Sound'

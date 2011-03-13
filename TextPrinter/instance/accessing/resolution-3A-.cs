@@ -1,0 +1,2 @@
+resolution: aPoint
+	resolution := aPoint

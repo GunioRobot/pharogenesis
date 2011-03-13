@@ -4,7 +4,6 @@ arrayValueOf: arrayOop
 
 	self returnTypeC: 'void *'.
 	((self isIntegerObject: arrayOop) not and:
-	 [self isWordsOrBytes: arrayOop]) ifTrue: [
-		^ self cCode: '(void *) (arrayOop + 4)'
-	].
+	 [self isWordsOrBytes: arrayOop])
+		ifTrue: [^ self cCode: '(void *) (arrayOop + 4)'].
 	self primitiveFail.

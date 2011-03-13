@@ -1,0 +1,2 @@
+createNewCard
+	self costume createNewCard

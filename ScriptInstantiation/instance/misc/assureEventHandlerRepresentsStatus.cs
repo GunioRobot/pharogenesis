@@ -1,0 +1,2 @@
+assureEventHandlerRepresentsStatus
+	self status: self status

@@ -2,12 +2,17 @@ startPlayingImmediately: aSound
 	"Private! Start playing the given sound as soon as possible by mixing it into the sound output buffers of the underlying sound driver."
 
 	| dontInsertSamples totalSamples buf n leftover src rest |
-	dontInsertSamples _ true.  "temporary, until insert samples primitive is ported"
+	dontInsertSamples _ false.  "temporary, until insert samples primitive is ported"
 	dontInsertSamples ifTrue: [
 		ActiveSounds add: aSound.
 		^ self].
 
 	"first, fill a double-size buffer with samples"
+	"Note: The code below assumes that totalSamples contains two
+	 buffers worth of samples, and the insertSamples primitive is
+	 expected to consume at least one buffer's worth of these
+	 samples. The remaining samples are guaranteed to fit into
+	 a single buffer."
 	totalSamples _ Buffer stereoSampleCount * 2.  "two buffer's worth"
 	buf _ SoundBuffer newStereoSampleCount: totalSamples.
 	aSound playSampleCount: totalSamples into: buf startingAt: 1.

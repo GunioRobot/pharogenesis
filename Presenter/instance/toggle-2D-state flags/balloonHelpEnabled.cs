@@ -1,0 +1,2 @@
+balloonHelpEnabled
+	^ balloonHelpEnabled == true

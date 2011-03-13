@@ -1,3 +1,0 @@
-copy
-
-	^self deepCopy

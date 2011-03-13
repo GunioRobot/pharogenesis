@@ -1,4 +1,5 @@
-mouseEnter
+mouseEnter  "OBSOLETE"
 	(retractableScrollBar and: [(submorphs includes: scrollBar) not])
-		ifTrue: [self resizeScrollBar.
-				self privateAddMorph: scrollBar atIndex: 1]
+		ifTrue: [self privateAddMorph: scrollBar atIndex: 1.
+				self resizeScrollBar.
+				scrollBar changed]

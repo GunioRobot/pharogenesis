@@ -1,2 +1,0 @@
-moveVariableToFarLeft: aVariable
-	^self

@@ -1,0 +1,2 @@
+holdsDataForEachInstance
+	^ status == #field

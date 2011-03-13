@@ -2,6 +2,6 @@ StringHolder
 	subclass: #Browser
 	instanceVariableNames:
 		'systemOrganizer classOrganizer metaClassOrganizer systemCategoryListIndex classListIndex messageCategoryListIndex messageListIndex editSelection metaClassIndicated '
-	classVariableNames: 'PostOpenSuggestion '
+	classVariableNames: 'RecentClasses '
 	poolDictionaries: ''
 	category: 'Interface-Browser'

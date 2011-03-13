@@ -1,0 +1,2 @@
+initialPlayfieldColor
+	^ Color transparent

@@ -1,0 +1,8 @@
+DynamicInterpreterState
+	subclass: #DynamicContextCache
+	instanceVariableNames:
+		'contextCache lastCachedContext contextCacheEntries stackCache stackCacheFence stackCacheEntries stackOverflow activeCachedContext lowestCachedContext '
+	classVariableNames:
+		'CacheBlockArgumentCountIndex CacheCallerIndex CacheEntrySize CacheFramePointerIndex CacheHomeIndex CacheInitialIPIndex CacheInstructionPointerIndex CacheMethodIndex CachePseudoContextIndex CacheReceiverIndex CacheSenderIndex CacheStackPointerIndex CacheTempPointerIndex CacheTranslatedMethodIndex CachedContextIndex CachedContextSize ContextCacheEntries StackCacheEntries StackCacheSize StackEntrySize '
+	poolDictionaries: ''
+	category: 'Squeak-Jitter'

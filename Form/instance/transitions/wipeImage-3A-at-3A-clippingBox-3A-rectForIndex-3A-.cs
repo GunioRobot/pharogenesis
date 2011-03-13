@@ -8,4 +8,4 @@ wipeImage: otherImage at: topLeft clippingBox: clipBox rectForIndex: rectForInde
 		[thisRect do:
 			[:r | self copyBits: r from: otherImage at: topLeft + r topLeft
 				clippingBox: clipRect rule: Form over fillColor: nil.
-			Smalltalk forceDisplayUpdate]].
+			Display forceDisplayUpdate]].

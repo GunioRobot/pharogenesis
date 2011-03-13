@@ -1,2 +1,3 @@
 logEntry
-	^ self showInTranscript:  'Entered ', thisContext sender printString
+
+	Transcript show: 'Entered ', thisContext sender printString; cr.

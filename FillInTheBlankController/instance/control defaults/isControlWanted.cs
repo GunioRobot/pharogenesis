@@ -1,3 +1,3 @@
 isControlWanted
 
-	^ model actionTaken not
+	^ model done not

@@ -1,6 +1,6 @@
 Number
 	subclass: #Integer
 	instanceVariableNames: ''
-	classVariableNames: 'SinArray '
+	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Numeric-Numbers'

@@ -12,4 +12,6 @@ waitForCompletionUntil: deadline
 
 	status = ResolverReady
 		ifTrue: [^ true]
-		ifFalse: [self primAbortLookup. ^ false].
+		ifFalse: [
+			status = ResolverBusy ifTrue: [self primAbortLookup].
+			^ false].

@@ -1,0 +1,1 @@
+AcornFileDirectory class instanceVariableNames: ''

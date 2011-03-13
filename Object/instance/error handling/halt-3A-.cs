@@ -3,7 +3,7 @@ halt: aString
 	debugging. It creates and schedules a Notifier with the argument, 
 	aString, as the label."
 
-	DebuggerView
+	Debugger
 		openContext: thisContext
 		label: aString
 		contents: thisContext shortStack

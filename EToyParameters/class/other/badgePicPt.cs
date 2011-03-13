@@ -1,0 +1,2 @@
+badgePicPt
+	^ BadgePicPt

@@ -11,8 +11,10 @@ removeMessage
 
 	self selectedClassOrMetaClass removeSelector: messageName.
 	self initializeMessageList: (messageList copyWithout: self selection).
-	self messageListIndex: 0.
-	self changed: #messageListChanged.
+		"self messageListIndex: 0."
+	self changed: #messageList.
+	self changed: #messageListIndex.
+	self changed: #contents.
 
 	confirmation == 2 ifTrue:
 		[Smalltalk browseAllCallsOn: messageName]

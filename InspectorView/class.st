@@ -1,1 +1,0 @@
-InspectorView class instanceVariableNames: ''

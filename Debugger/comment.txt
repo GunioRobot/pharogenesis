@@ -1,0 +1,2 @@
+Debugger comment:
+'I represent the machine state at the time of an interrupted process. I also represent a query path into the state of the process. As a StringHolder, the string to be viewed is the interrupted method at some point in the sequence of message-sends that have been initiated but not completed.'

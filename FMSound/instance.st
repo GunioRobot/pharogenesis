@@ -1,6 +1,7 @@
-WaveTableSound
+AbstractSound
 	subclass: #FMSound
-	instanceVariableNames: 'initialModulation modulation modulationDecay offsetIncrement offsetIndex '
-	classVariableNames: ''
+	instanceVariableNames:
+		'initialCount count waveTable scaledWaveTableSize scaledIndex scaledIndexIncr modulation multiplier normalizedModulation scaledOffsetIndex scaledOffsetIndexIncr '
+	classVariableNames: 'SineTable '
 	poolDictionaries: ''
-	category: 'Sound'
+	category: 'System-Sound'

@@ -1,0 +1,3 @@
+referencePosition
+
+	^ self center

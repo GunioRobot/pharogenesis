@@ -2,6 +2,7 @@ bitPeekerFromForm: sourceForm
 	"Answer an instance to be used extract individual pixels from the given Form. The destination for a 1x1 copyBits will be the low order bits of (bits at: 1)."
 	| pixPerWord |
 	pixPerWord _ 32 // sourceForm depth.
+	sourceForm unhibernate.
 	^ self destForm: (Form extent: pixPerWord@1 depth: sourceForm depth)
 	 	sourceForm: sourceForm
 		halftoneForm: nil

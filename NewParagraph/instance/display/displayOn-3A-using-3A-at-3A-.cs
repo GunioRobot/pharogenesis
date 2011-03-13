@@ -8,6 +8,6 @@ displayOn: aCanvas using: displayScanner at: somePosition
 		to: (self lineIndexForPoint: visibleRectangle bottomRight)
 		do: [:i | line _ lines at: i.
 			self displaySelectionInLine: line on: aCanvas.
-			leftInRun _ displayScanner displayLine: line
-								offset: offset leftInRun: leftInRun.
-			].
+			line first <= line last ifTrue:
+				[leftInRun _ displayScanner displayLine: line
+								offset: offset leftInRun: leftInRun]].

@@ -3,6 +3,7 @@ putFile: fileStream named: fileNameOnServer
 
 	| so dd resp rr |
 	so _ self openFTP.	"Open passive.  Do everything up to RETR or STOR"
+	so class == String ifTrue: ["error, was reported" ^ so].
 	so sendCommand: 'STOR ', fileNameOnServer.
 	dd _ so dataSocket.
 

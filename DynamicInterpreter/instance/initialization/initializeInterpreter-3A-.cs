@@ -22,3 +22,4 @@ initializeInterpreter: bytesToShift
 	interruptKeycode _ 2094.  "cmd-."
 	interruptPending _ false.
 	semaphoresToSignalCount _ 0.
+	deferDisplayUpdates _ false.

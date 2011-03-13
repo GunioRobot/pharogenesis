@@ -1,15 +1,24 @@
 initialize
+	| aFont |
 	super initialize.
+	isCollapsed _ false.
+	activeOnlyOnTop _ true.
+	paneMorphs _ Array new.
+	paneRects _ Array new.
 	borderColor _ #raised.
-	borderWidth _ 2.
-	color _ Color r: 0.6 g: 0.2 b: 0.2.
-	paneColor _ Color r: 0.8 g: 1.0 b: 0.599.
+	borderWidth _ 1.
+	color _ Color black.
+	aFont _ Preferences fontForScriptorButtons.
+	stripes _ Array with: (RectangleMorph newBounds: bounds)  "see extent:"
+				with: (RectangleMorph newBounds: bounds).
+	self addMorph: (stripes first borderWidth: 1).
+	self addMorph: (stripes second borderWidth: 2).
 	self addMorph: (label _ StringMorph new contents: labelString;
-						font: ((TextStyle default fontAt: 2) emphasized: 1)).
-	self addMorph: (closeBox _ SimpleButtonMorph new borderWidth: 2; color: paneColor;
-							label: 'X'; actionSelector: #delete; target: self).
-	self addMorph: (collapseBox _ SimpleButtonMorph new borderWidth: 2; color: paneColor;
-							label: 'O'; actionSelector: #collapse; target: self).
-	self initPanes.
-	self allMorphsDo: [:m | m paneColor: paneColor].
-	self extent: self defaultExtent
+			font: ((TextStyle default fontAt: 2) emphasized: 1)).
+	self addMorph: (closeBox _ SimpleButtonMorph new borderWidth: 0;
+			label: 'X' font: aFont; color: Color transparent;
+			actionSelector: #delete; target: self; extent: 16@16).
+	self addMorph: (collapseBox _ SimpleButtonMorph new borderWidth: 0;
+			label: 'O' font: aFont; color: Color transparent;
+			actionSelector: #collapseOrExpand; target: self; extent: 16@16).
+	self extent: 300@200

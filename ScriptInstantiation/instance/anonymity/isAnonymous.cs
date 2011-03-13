@@ -1,0 +1,2 @@
+isAnonymous
+	^ anonymous == true

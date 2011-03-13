@@ -1,0 +1,2 @@
+storeSelectionInParagraph
+	paragraph selectionStart: startBlock selectionStop: stopBlock

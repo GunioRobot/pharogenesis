@@ -1,0 +1,2 @@
+Morph comment:
+'A morph (from the Greek "shape" or "form") is an interactive graphical object.'

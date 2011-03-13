@@ -1,3 +1,5 @@
-borderColor: colorOrNil
-	borderColor _ colorOrNil.
-	self changed
+borderColor: colorOrSymbolOrNil
+
+	borderColor = colorOrSymbolOrNil ifFalse: [
+		borderColor _ colorOrSymbolOrNil.
+		self changed].

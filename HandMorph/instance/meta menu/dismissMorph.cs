@@ -1,3 +1,3 @@
 dismissMorph
-
-	argument delete.
+	self world abandonAllHalos; stopStepping: argument.
+	argument delete

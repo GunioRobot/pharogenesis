@@ -1,0 +1,3 @@
+openMorphicProject
+
+	ProjectViewMorph newMorphicProject openInWorld.

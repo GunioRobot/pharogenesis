@@ -1,0 +1,3 @@
+toggleColoredTiles
+	coloredTilesEnabled _ self coloredTilesEnabled not.
+	self harmonizeTilesWithColorSetting

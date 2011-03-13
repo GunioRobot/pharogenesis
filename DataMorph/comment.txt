@@ -1,0 +1,1 @@
+A morph representing data to be borne by a slot encompassing pasteUpMorph, as a step toward a stack/card architecture.  This is work in progress, and should be approached with the mose extreme caution.

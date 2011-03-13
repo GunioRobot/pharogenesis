@@ -1,2 +1,0 @@
-inspectedObject
-	^ inspectedObject

@@ -1,0 +1,1 @@
+CustomMenu class instanceVariableNames: ''

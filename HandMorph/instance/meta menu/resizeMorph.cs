@@ -1,6 +1,6 @@
 resizeMorph
 	| handle minExtent |
-	argument isLayoutMorph
+	argument isAlignmentMorph
 		ifTrue: [minExtent _ argument minWidth @ argument minHeight]
 		ifFalse: [minExtent _ 1@1].
 	handle _ HandleMorph new forEachPointDo:

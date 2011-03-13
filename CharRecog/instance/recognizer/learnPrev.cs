@@ -6,7 +6,7 @@ learnPrev
 "get right char from user"	result _ FillInTheBlank request:
 						('Redefine the gesture we thought was "', old asString, '".', '
 (Letter or:  tab  cr  wrong  bs  select  caret)
-', prevFeatures) initialAnswer: '' avoiding: (bmin rounded corner: bmax rounded).
+', prevFeatures).
 
 "ignore or..."				(result = '~' | result = '') ifTrue: ['']
 "...enter new char"			ifFalse: [

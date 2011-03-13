@@ -1,4 +1,6 @@
 atID: id
 	"Return page of a given key."
 
-	^pages detect: [:page | page coreID = id] ifNone: [pages at: 'Front Page']
+	| idString |
+	idString _ id isInteger ifTrue: [id printString] ifFalse: [id].
+	^pages detect: [:page | page coreID = idString] ifNone: [pages at: 'front page']

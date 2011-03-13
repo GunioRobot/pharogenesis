@@ -1,0 +1,1 @@
+PSwikiAction class instanceVariableNames: ''

@@ -1,3 +1,3 @@
 isLayoutMorph
-
-	^ false
+	self error: 'OBSOLETE PROTOCOL -- use isAlignmentMorph'.
+	^ self isAlignmentMorph

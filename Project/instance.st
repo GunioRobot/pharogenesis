@@ -1,6 +1,7 @@
 Model
 	subclass: #Project
-	instanceVariableNames: 'projectWindows projectChangeSet projectTranscript projectHolder displayDepth '
+	instanceVariableNames:
+		'world changeSet transcript parentProject previousProject displayDepth activeProcess exitFlag viewSize thumbnail '
 	classVariableNames: 'CurrentProject '
 	poolDictionaries: ''
 	category: 'Interface-Projects'

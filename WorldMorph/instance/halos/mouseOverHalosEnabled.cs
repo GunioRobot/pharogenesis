@@ -1,2 +1,2 @@
 mouseOverHalosEnabled
-	^ BalloonMorph mouseOverEnabled 
+	^ self presenter mouseOverHalosEnabled

@@ -1,0 +1,2 @@
+liftPen
+	self actorState liftPen

@@ -1,0 +1,1 @@
+TestCClass2 class instanceVariableNames: ''

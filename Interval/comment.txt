@@ -1,0 +1,2 @@
+Interval comment:
+'I represent a finite arithmetic progression.'

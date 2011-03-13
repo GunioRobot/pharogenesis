@@ -1,0 +1,1 @@
+HTTPSocket class instanceVariableNames: ''

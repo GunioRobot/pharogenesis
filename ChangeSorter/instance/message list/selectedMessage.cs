@@ -1,2 +1,0 @@
-selectedMessage
-	^ self selectedClassOrMetaClass sourceMethodAt: self selectedMessageName

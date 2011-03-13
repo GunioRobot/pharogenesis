@@ -1,0 +1,2 @@
+holdsDataForEachInstance
+	^ false

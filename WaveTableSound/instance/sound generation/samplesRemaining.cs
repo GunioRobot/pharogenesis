@@ -1,3 +1,0 @@
-samplesRemaining
-
-	^ count

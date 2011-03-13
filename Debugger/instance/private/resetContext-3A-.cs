@@ -10,4 +10,5 @@ resetContext: aContext
 	contextStackTop _ aContext.
 	self newStack: contextStackTop stack.
 	self changed: #contextStackList.
-	self contextStackIndex: 1 oldContextWas: oldContext
+	self contextStackIndex: 1 oldContextWas: oldContext.
+	self changed: #content.

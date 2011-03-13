@@ -1,6 +1,6 @@
 Object
 	subclass: #Delay
 	instanceVariableNames: 'delayDuration resumptionTime delaySemaphore beingWaitedOn '
-	classVariableNames: 'ActiveDelayStartTime SuspendedDelays ActiveDelay AccessProtect TimingSemaphore '
+	classVariableNames: 'AccessProtect ActiveDelay ActiveDelayStartTime SuspendedDelays TimingSemaphore '
 	poolDictionaries: ''
 	category: 'Kernel-Processes'

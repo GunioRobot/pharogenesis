@@ -1,8 +1,5 @@
 writeClass: aClass
-	"PRIVATE -- For now, no classes may be written.  HyperSqueak user unique classes have not state other than methods and should be reconstructed.  Could put standard fileOut code here if necessary.  ."
-	"Just halt for now -- 9/20/96 di."
-	self error: 'Should not be trying to write a class'
-"
-	Obj classPool at: #ErrorHolder put: aClass.
-	Transcript cr; show: 'The class ', aClass printString,' is trying to be written out.  See Obj class variable ErrorHolder.'.
-"
+	"Write out a DiskProxy for the class.  It will look up the class's name in Smalltalk in the new sustem.  Never write classes or methodDictionaries as objects.  For novel classes, front part of file is a fileIn of the new class."
+
+	"This method never executed because objectToStoreOnDataStream returns a DiskProxy.  See DataStream.nextPut:"
+    ^ self error: 'Write a DiskProxy instead'

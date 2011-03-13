@@ -1,0 +1,2 @@
+methodStringsContainingit
+	textMorph editor methodStringsContainingit

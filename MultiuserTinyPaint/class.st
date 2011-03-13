@@ -1,0 +1,1 @@
+MultiuserTinyPaint class instanceVariableNames: ''

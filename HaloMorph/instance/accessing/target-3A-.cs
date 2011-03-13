@@ -1,4 +1,4 @@
 target: aMorph
 
-	target _ aMorph.
+	self setTarget: aMorph.
 	target ifNotNil: [self addHandles].

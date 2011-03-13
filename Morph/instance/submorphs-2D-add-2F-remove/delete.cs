@@ -2,8 +2,8 @@ delete
 	"Remove the receiver as a submorph of its owner and make its new owner be nil."
 
 	| aWorld |
-	aWorld _ self world.
 	owner ifNotNil:
-		[owner privateRemoveMorph: self.
+		[costumee ifNotNil: [aWorld _ self world].
+		owner privateRemoveMorph: self.
 		owner _ nil.
-		aWorld ifNotNil: [aWorld noteDeletionOf: self]].
+		costumee ifNotNil: [costumee noteDeletionOf: self fromWorld: aWorld]].

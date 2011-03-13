@@ -3,5 +3,5 @@ startStepping
 
 	super startStepping.
 	recorder isPaused ifTrue: [
-		SoundRecorder allInstances do: [:r | r stopRecording].  "stop all other sound recorders"
+		SoundRecorder allInstancesDo: [:r | r stopRecording].  "stop all other sound recorders"
 		recorder pause].  "meter is updated while paused"

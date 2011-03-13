@@ -1,0 +1,3 @@
+openMVCProject
+
+	ProjectViewMorph newMVCProject openInWorld.

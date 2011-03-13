@@ -1,2 +1,0 @@
-classMode
-	self metaClassIndicated: true

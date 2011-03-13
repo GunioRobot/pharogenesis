@@ -1,0 +1,1 @@
+TextDoIt class instanceVariableNames: ''

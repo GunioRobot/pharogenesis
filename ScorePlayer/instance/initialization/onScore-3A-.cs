@@ -8,6 +8,7 @@ onScore: aMIDIScore
 	rightVols _ Array new: n.
 	muted  _ Array new: n withAll: false.
 	rate _ 1.0.
+	repeat _ false.
 	tempo _ 120.0.
 
 	n = 0 ifTrue: [^ self].

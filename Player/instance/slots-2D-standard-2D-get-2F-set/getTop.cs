@@ -1,0 +1,2 @@
+getTop
+	^ self costume top

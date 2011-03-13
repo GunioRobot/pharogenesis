@@ -7,6 +7,8 @@ scanVersionsOf: method class: class meta: meta category: category selector: sele
 	sourceFilesCopy _ SourceFiles collect:
 		[:x | x isNil ifTrue: [ nil ]
 				ifFalse: [x readOnlyCopy]].
+	method fileIndex == 0 ifTrue: [self inform: 'Not Logged, no versions'.
+								^ nil].
 	file _ sourceFilesCopy at: method fileIndex.
 	[position notNil & file notNil]
 		whileTrue:
@@ -19,8 +21,7 @@ scanVersionsOf: method class: class meta: meta category: category selector: sele
 			for prior source position and file index"
 		prevPos _ nil.
 		stamp _ ''.
-		((file == sourceFilesCopy first) not and:
-			[(preamble findString: 'methodsFor:' startingAt: 1) > 0])
+		(preamble findString: 'methodsFor:' startingAt: 1) > 0
 			ifTrue: [tokens _ Scanner new scanTokens: preamble]
 			ifFalse: [tokens _ Array new  "ie cant be back ref"].
 		((tokens size between: 7 and: 8)

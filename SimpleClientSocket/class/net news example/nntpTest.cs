@@ -38,13 +38,11 @@ nntpTest
 	(headers ~~ nil and:
 	 [self confirm: 'show article headers from comp.lang.smalltalk?'])
 		ifTrue: [
-			StringHolderView
-				open: (StringHolder new contents: (self parseHeaderList: headers))
-				label: 'Newsgroup Headers'].
+			(StringHolder new contents: (self parseHeaderList: headers))
+				openLabel: 'Newsgroup Headers'].
 
 	(allNewsGroups ~~ nil and:
 	 [self confirm: 'show list of all newsgroups available on your server?'])
 		ifTrue: [
-			StringHolderView
-				open: (StringHolder new contents: allNewsGroups)
-				label: 'All Usenet Newsgroups'].
+			(StringHolder new contents: allNewsGroups)
+				openLabel: 'All Usenet Newsgroups'].

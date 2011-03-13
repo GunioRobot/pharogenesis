@@ -3,4 +3,4 @@ Object
 	instanceVariableNames: 'globalObjectName constructorSelector constructorArgs '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Object Storage'
+	category: 'System-Object Storage'

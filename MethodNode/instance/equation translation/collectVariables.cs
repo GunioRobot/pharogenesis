@@ -1,2 +1,0 @@
-collectVariables
-	^block collectVariables

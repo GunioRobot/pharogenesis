@@ -1,0 +1,5 @@
+The ServerAction class is the default ServerAction (if the first token in the URL does not match any in the PWS ActionTable). Instances of ServerAction act like Mac Web servers -- they parse the URL into a Mac file path (including use of default.html if no final filename is provided), then return the contents of that file as the reply. 
+
+All ServerActions get asked to process: a PWS request. This ServerAction does the processing by asking itself to checkAuthorization, to parse the request, to log the parsed request, and then to reply to the request.  Other ServerActions (like EmbeddedServerAction) can override one or more of those requests.
+
+The ServerAction class provides a ServerDirectory service.

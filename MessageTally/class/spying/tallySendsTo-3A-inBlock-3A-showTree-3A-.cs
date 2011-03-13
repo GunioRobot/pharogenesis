@@ -23,7 +23,7 @@ tallySendsTo: receiver inBlock: aBlock showTree: treeOption
 				prev _ current]].
 
 	totalTime _ Time millisecondClockValue - startTime // 1000.0 roundTo: 0.01.
-	StringHolderView open: (StringHolder new contents:
+	(StringHolder new contents:
 		(String streamContents:
 			[:s |
 			s nextPutAll: 'This simulation took ' , totalTime printString
@@ -32,4 +32,4 @@ tallySendsTo: receiver inBlock: aBlock showTree: treeOption
 				ifTrue: [tallies fullPrintOn: s tallyExact: true orThreshold: 0]
 				ifFalse: [tallies leavesPrintOn: s tallyExact: true orThreshold: 0].
 			tallies close]))
-		label: 'Spy Results'
+		openLabel: 'Spy Results'

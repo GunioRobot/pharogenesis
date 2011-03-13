@@ -1,0 +1,1 @@
+Notes are general structures for users notes.  Being used in the Comment application and others.

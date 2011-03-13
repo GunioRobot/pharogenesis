@@ -1,3 +1,0 @@
-coerce: n
-
-	^n asInteger

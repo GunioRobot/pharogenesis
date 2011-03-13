@@ -1,6 +1,13 @@
 informUser: aString during: aBlock
-	"Put a message above (or below if insufficient room) the cursor.
-	 Like informUser:while:, but end when aBlock ends.  "
+	"Display a message above (or below if insufficient room) the cursor during execution of the given block."
+	"Utilities informUser: 'Just a sec!' during: [(Delay forSeconds: 1) wait]"
 
-	(SelectionMenu labels: '') displayAt: Sensor cursorPoint
-		withCaption: aString during: [aBlock value]
+	World ifNotNil: [
+		(MVCMenuMorph from: (SelectionMenu labels: '') title: aString)
+			displayAt: Sensor cursorPoint during: [aBlock value].
+		^ self].
+
+	(SelectionMenu labels: '')
+		displayAt: Sensor cursorPoint
+		withCaption: aString
+		during: [aBlock value].

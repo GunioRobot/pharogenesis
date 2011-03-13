@@ -6,5 +6,7 @@ newOnCategory: aCategory
 	| newBrowser catList |
 	newBrowser _ Browser new.
 	catList _ newBrowser systemCategoryList.
-	newBrowser systemCategoryListIndex: (catList indexOf: aCategory asSymbol ifAbsent: [^ self inform: 'No such category']).
-	BrowserView openSystemCategoryBrowser: newBrowser label: aCategory editString: nil
+	newBrowser systemCategoryListIndex: 
+		(catList indexOf: aCategory asSymbol ifAbsent: [^ self inform: 'No such category']).
+	Browser openBrowserView: (newBrowser openSystemCatEditString: nil)
+				label: 'Classes in category ', aCategory

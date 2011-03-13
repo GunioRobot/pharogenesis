@@ -1,0 +1,2 @@
+stopRunningAll
+	self world stopRunningAll

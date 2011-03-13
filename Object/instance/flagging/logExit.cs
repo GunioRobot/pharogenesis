@@ -1,2 +1,3 @@
 logExit
-	^ self showInTranscript:  'Exitted ', thisContext sender printString
+
+	Transcript show:  'Exited ', thisContext sender printString; cr.

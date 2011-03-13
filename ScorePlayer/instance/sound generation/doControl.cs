@@ -7,4 +7,7 @@ doControl
 	t _ ticksSinceStart asInteger.
 	self processTempoMapAtTick: t.
 	self processEventsAtTick: t.
-	done _ self isDone.
+	self isDone ifTrue: [
+		repeat
+			ifTrue: [self reset]
+			ifFalse: [done _ true]].

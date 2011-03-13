@@ -11,6 +11,3 @@ text: aString
 	aFile nextChunkPut: this; skip: -1.	"undo the ! at end"
 	end _ aFile position.
 	aFile nextPutAll: (end - start) printString; nextPut: $!; cr; close.
-
-
-		ss nextPutAll: ss position printString

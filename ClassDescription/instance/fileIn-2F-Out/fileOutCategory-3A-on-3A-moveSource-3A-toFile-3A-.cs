@@ -5,6 +5,14 @@ fileOutCategory: aString on: aFileStream moveSource: moveSource toFile: fileInde
 	.sources file, and should only write one preamble per method category."
 
 	aFileStream cr.
+
+true ifTrue:
+	["Overridden to preserve author stamps in sources file regardless"
+	(self organization listAtCategoryNamed: aString)
+		do: [:sel | self printMethodChunk: sel withPreamble: true
+						on: aFileStream moveSource: moveSource toFile: fileIndex].
+	^ self].
+
 	moveSource ifTrue:
 		["Single header for condensing source files"
 		self printCategoryChunk: aString on: aFileStream].

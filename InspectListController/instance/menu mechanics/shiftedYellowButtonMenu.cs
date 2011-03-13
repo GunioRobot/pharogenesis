@@ -1,2 +1,0 @@
-shiftedYellowButtonMenu
-	^ ShiftedMenu

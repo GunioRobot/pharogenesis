@@ -1,2 +1,0 @@
-isControlWanted
-	^ modeActive

@@ -1,0 +1,2 @@
+tearOffTileForSelf
+	costume world primaryHand attachMorph: self tileReferringToSelf

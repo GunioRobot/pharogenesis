@@ -2,7 +2,7 @@ classify: element under: heading
 	"Store the argument, element, in the category named heading."
 
 	| catName catIndex elemIndex realHeading |
-	heading = NullCategory
+	((heading = NullCategory) or: [heading == nil])
 		ifTrue: [realHeading _ Default]
 		ifFalse: [realHeading _ heading asSymbol].
 	(catName _ self categoryOfElement: element) = realHeading

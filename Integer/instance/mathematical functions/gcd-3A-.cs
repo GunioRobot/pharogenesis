@@ -1,35 +1,35 @@
-gcd: anInteger 
-	"Answer the greatest common divisor of the receiver and n. Uses Roland 
-	Silver's algorithm (see Knuth, Vol. 2). Fixed by Andres Valloud to allow
-	zero arguments, 01/02/98"
-
-	| m n d t |
-	m _ self abs max: anInteger abs.
-	(n _ self abs min: anInteger abs) = 0 ifTrue: [^m].
-	"Fix: if the smaller argument is zero, answer the other"
-	m \\ n = 0 ifTrue: [^n].
-	"easy test, speeds up rest"
-	d _ 0.
-	[n even and: [m even]]
-		whileTrue: 
-			[d _ d + 1.
-			n _ n bitShift: -1.
-			m _ m bitShift: -1].
-	[n even]
-		whileTrue: [n _ n bitShift: -1].
-	[m even]
-		whileTrue: [m _ m bitShift: -1].
-	[m = n]
+gcd: anInteger
+	"See Knuth, Vol 2, 4.5.2, Algorithm L"
+	"Initialize"
+	| higher u v k uHat vHat a b c d vPrime vPrimePrime q t |
+	higher _ SmallInteger maxVal highBit.
+	u _ self abs max: (v _ anInteger abs).
+	v _ self abs min: v.
+	[u class == SmallInteger]
 		whileFalse: 
-			[m > n
-				ifTrue: 
-					[m _ m - n]
+			[(uHat _ u bitShift: (k _ higher - u highBit)) class == SmallInteger
 				ifFalse: 
-					[t _ m.
-					m _ n - m.
-					n _ t].
-			"Make sure larger gets replaced"
-			[m even]
-				whileTrue: [m _ m bitShift: -1]].
-	d = 0 ifTrue: [^m].
-	^m bitShift: d
+					[k _ k - 1.
+					uHat _ uHat bitShift: -1].
+			vHat _ v bitShift: k.
+			a _ 1.
+			b _ 0.
+			c _ 0.
+			d _ 1.
+			"Test quotient"
+			[(vPrime _ vHat + d) ~= 0
+				and: [(vPrimePrime _ vHat + c) ~= 0 and: [(q _ uHat + a // vPrimePrime) = (uHat + b // vPrime)]]]
+				whileTrue: 
+					["Emulate Euclid"
+					c _ a - (q * (a _ c)).
+					d _ b - (q * (b _ d)).
+					vHat _ uHat - (q * (uHat _ vHat))].
+			"Multiprecision step"
+			b = 0
+				ifTrue: 
+					[v _ u rem: (u _ v)]
+				ifFalse: 
+					[t _ u * a + (v * b).
+					v _ u * c + (v * d).
+					u _ t]].
+	^ u gcd: v

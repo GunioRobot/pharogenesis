@@ -1,0 +1,17 @@
+PWS is the PluggableWebServer.  Documentation for it can be found at
+http://www.cc.gatech.edu/fac/mark.guzdial/squeak/pws/.
+
+The PWS decouples the networking and HTTP translation roles of a Web Server
+from the URL translation and CGI execution roles. The latter roles are
+played by ServerActions.
+
+To record a ServerAction for the PWS, use PWS link: key to: action. Key is
+a string that will be parsed out of the incoming URL.
+
+See PWS class howToStart.
+
+PWS (and its associated files) are based on Georg Gollman's WebServer,
+extended by Mark Guzdial.  Those portions are copyright 1997 Georgia Tech
+Research Corporation and are used with permission.  Mark Guzdial's work on
+PWS was funded in part by NSF grant REC-9550458.
+

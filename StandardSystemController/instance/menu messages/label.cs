@@ -1,10 +1,7 @@
 label
+
 	| newLabel |
-	FillInTheBlank
-		request: 'Edit the label, then type RETURN.'
-		displayAt: Sensor cursorPoint - (0@8)
-		centered: true
-		action: [:x | newLabel _ x]
+	newLabel _ FillInTheBlank
+		request: 'Edit the label, then type RETURN'
 		initialAnswer: view label.
-	newLabel isEmpty ifFalse:
-		[view relabel: newLabel]
+	newLabel isEmpty ifFalse: [view relabel: newLabel].

@@ -13,16 +13,16 @@ openFTP
 	so waitForConnectionUntil: FTPSocket standardDeadline.
 
 	Transcript cr; show: server; cr.
-	(rr _ so responseOK) == true ifFalse: [^ rr].	"220 para1 Microsoft FTP Service"
+	(rr _ so lookFor: '220 ') == true ifFalse: [^ rr].	"220 para1 Microsoft FTP Service"
 	so sendCommand: 'USER ', user.
-	(rr _ so responseOK) == true ifFalse: [^ rr].	"331 Password required"
+	(rr _ so lookFor: '331 ') == true ifFalse: [^ rr].	"331 Password required"
 	so sendCommand: 'PASS ', self password.
-	(rr _ so responseOK) == true ifFalse: [^ rr].	"230 User logged in"
+	(rr _ so lookFor: '230 ') == true ifFalse: [^ rr].	"230 User logged in"
 	so sendCommand: 'CWD ', directory.
-	(rr _ so responseOK) == true ifFalse: [^ rr].	"250 CWD successful"
+	(rr _ so lookFor: '250 ') == true ifFalse: [^ rr].	"250 CWD successful"
 	"Need to ask for name of directory to make sure?"
 	so sendCommand: 'TYPE L 8'.
-	(rr _ so responseOK) == true ifFalse: [^ rr].	"200 Type set to L"
+	(rr _ so lookFor: '200 ') == true ifFalse: [^ rr].	"200 Type set to L"
 	so sendCommand: 'PASV'.
 	resp _ (so getResponseUpTo: FTPSocket crLf) first.
 		"Tells which port on server to use for data"

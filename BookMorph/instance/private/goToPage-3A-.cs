@@ -6,10 +6,6 @@ goToPage: pageNumber
 	oldPageNumber _ pages indexOf: currentPage ifAbsent: [1].
 
 	pageIndex _ pageNumber asInteger.
-
-	"pageIndex _ (pageIndex max: 1) min: pages size."
-	self flag: #deferred.  "The above rather than the below leads to the book pages of a tabbed palette complex being stacked upon one another.  Revisit this sucker!"
-
 	pageNumber < 1 ifTrue: [pageIndex _ pages size].
 	pageNumber > pages size ifTrue: [pageIndex _ 1].
 

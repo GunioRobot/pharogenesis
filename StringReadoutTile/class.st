@@ -1,0 +1,1 @@
+StringReadoutTile class instanceVariableNames: ''

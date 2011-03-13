@@ -6,4 +6,4 @@ initialize
 	SamplingRate _ 22050.
 	BufferMSecs _ 200.
 	Stereo _ true.
-	UseReverb _ true.
+	UseReverb ifNil: [UseReverb _ true].

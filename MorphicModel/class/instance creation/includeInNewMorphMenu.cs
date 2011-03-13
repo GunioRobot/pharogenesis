@@ -1,4 +1,3 @@
 includeInNewMorphMenu
-	"Only include Models that have been saved"
-	self == MorphicModel ifTrue: [^ false].
-	^ self includesSelector: #initMorph
+	"Only include Models that are appropriate"
+	^ false

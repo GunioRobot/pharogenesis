@@ -1,2 +1,0 @@
-nextPut: anObject
-	^self shouldNotImplement

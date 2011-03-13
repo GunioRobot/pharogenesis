@@ -3,4 +3,5 @@ addEntry: aKey
 	self calculateKeyArray.
 	selectionIndex _ keyArray indexOf: aKey.
 	self changed: #inspectObject.
+	self changed: #fieldList.
 	self update

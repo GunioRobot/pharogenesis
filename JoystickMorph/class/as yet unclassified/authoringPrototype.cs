@@ -1,0 +1,2 @@
+authoringPrototype
+	^ self new markAsPartsDonor

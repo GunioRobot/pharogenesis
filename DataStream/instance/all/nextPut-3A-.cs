@@ -14,8 +14,8 @@ nextPut: anObject
 	(self tryToPutReference: anObject typeID: typeID)
 		ifTrue: [^ anObject].
 
-	(objectToStore _ anObject objectToStoreOnDataStream) == anObject
-		ifFalse: [typeID _ self typeIDFor: objectToStore].
+	objectToStore _ (self objectIfBlocked: anObject) objectToStoreOnDataStream.
+	objectToStore == anObject ifFalse: [typeID _ self typeIDFor: objectToStore].
 
 	byteStream nextPut: typeID.
 	selector _ #(writeNil: writeTrue: writeFalse: writeInteger: 

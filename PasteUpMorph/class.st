@@ -1,0 +1,1 @@
+PasteUpMorph class instanceVariableNames: ''

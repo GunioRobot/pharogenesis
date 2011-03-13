@@ -1,0 +1,2 @@
+sortByName
+	self resort: #name

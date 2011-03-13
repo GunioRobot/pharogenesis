@@ -3,5 +3,5 @@ shiftedYellowButtonMessages
 	 1/24/96 sw: added unshiftedYellowButtonActivity
 	 2/1/96 sw: common requests"
 
-	^ #(editPreferences  collapseAll expandAll indicateWindowsWithUnacceptedInput closeUnchangedWindows
+	^ #(editPreferences  collapseAll expandAll chooseDirtyWindow closeUnchangedWindows
 		openProject exitProject openCommandKeyHelp garbageCollect commonRequests unshiftedYellowButtonActivity)

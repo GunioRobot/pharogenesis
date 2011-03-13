@@ -9,7 +9,9 @@ responseOK
 			resp _ all at: 1.	"150 Opening binary mode data conn"
 			readAhead _ (all at: 3) findBetweenSubStrs: (Array with: CrLf)].
 	Transcript show: resp; cr.
-	((resp at: 1) == $5) | ((resp at: 1) == $4) ifFalse: [^ true].  "All is well"
+	resp size > 0 
+		ifTrue: [((resp at: 1) == $5) | ((resp at: 1) == $4) ifFalse: [^ true]]  "All is well"
+		ifFalse: [resp _ '[timeout]'].
 	what _ (PopUpMenu labels: 'OK\ debug ' withCRs) 
 		startUpWithCaption: 'Server reported this error:\' withCRs, resp.
 	what = 2 ifTrue: [self halt].

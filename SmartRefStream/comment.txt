@@ -1,0 +1,31 @@
+SmartRefStream comment:
+'Ordinary ReferenceStreams cannot bring in objects whose instance variables have changed.  This class does that.  1/13/97 tk
+
+>>>>See SmartRefStream.aComment for details of how to transform incoming classes to newer versions.<<<< 
+
+* Allows incoming object to have fewer instance variables than the current class.
+* Recognises that conversion to new versions is only done after the fact.  Nothing special needs to be done at object file write time.  Prompts for a new version number when there are new inst vars with same initials, and tells how to make conversion work when some files have already been written.
+* Works best with only one (large) tree of objects per file.  Can nextPut: more than once, but each gets its own class structure, which is big.  Writes triplets of (version, class structure dictionary, object) on the file.  Has methods for creating the structure description for file-out.
+* Version of a class is indicated by the first letters of all instance varaibles followed by a class version number.  Form has inst vars "bits width height depth offset ", so version 2 of it has version tag #bwhdo2.
+* Methods to convert versions of objects are named 
+	Form new convertbwhdo2: aDictionary bwhdo3: aSmartRefStream.
+Note that aDictionary has (old inst var name -> value) 
+* There is a dispatch method to avoid N squared conversions when there are lots of old versions.  It can cascade calls on conversion methods. (not yet)
+* Prompts the user to write (or file in) a conversion method when needed.
+* (Does not use DiskProxy, DiskProxyQ, or IOWeakArray)
+
+writing		true if writing a file.  To avoid mixing next with nextPut:.
+structures 	Dictionary of (#Rectangle -> #(<classVersionInteger> origin corner)).  Inst 
+				var names are strings.
+steady 		Set of Classes who have the same structure now as on the incoming file.
+				Includes classes with same inst vars except some added on end now.
+reshaped 	Dictionary of Classes who have a different structure now as on the incoming file.  
+				Includes those with same inst vars but new version number.
+				(old class name -> method selector to fill in data for version to version)
+renamed	Dictionary of Classes who have a different name. 
+				(old class name symbol -> new class name).  Then look new class up in reshaped.
+topCall		Tells if next or nextPut: coming from the outside.  nil if outside, a Context if 
+				internal call.
+
+>>>>> See DataStream.typeIDFor: for where the tangle of objects is clipped, so the whole system will not be written on the file.
+ '

@@ -1,6 +1,6 @@
 Magnitude
 	subclass: #Date
 	instanceVariableNames: 'day year '
-	classVariableNames: 'SecondsInDay MonthNames FirstDayOfMonth DaysInMonth WeekDayNames '
+	classVariableNames: 'DaysInMonth FirstDayOfMonth MonthNames SecondsInDay WeekDayNames '
 	poolDictionaries: ''
 	category: 'Numeric-Magnitudes'

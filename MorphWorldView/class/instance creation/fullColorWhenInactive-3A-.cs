@@ -8,4 +8,5 @@ fullColorWhenInactive: fullColor
 	((fullColor ifTrue: [StandardSystemView] ifFalse: [ColorSystemView])
 		allInstances select:
 			[:v | v subViews notNil and: [v subViews isEmpty not and: [v firstSubView isKindOf: MorphWorldView]]])
-		do: [:v | v controller toggleTwoTone]
+		do: [:v | v uncacheBits.
+			v controller toggleTwoTone]

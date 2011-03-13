@@ -1,0 +1,2 @@
+becomeTextuallyCoded
+	currentScriptEditor _ #textuallyCoded

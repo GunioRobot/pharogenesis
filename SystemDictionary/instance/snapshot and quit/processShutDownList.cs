@@ -1,11 +1,13 @@
 processShutDownList
 	"Call the shutDown method on each object that needs to gracefully shut itself down before a snapshot."
 
-	(self includesKey: #Password) ifTrue: [Password shutDown].
+	Smalltalk at: #PWS ifPresent: [:pws | pws stopServer].
+	Smalltalk at: #Password ifPresent: [:password | password shutDown].
 	self shutDownSound.
 	Delay shutDown.
 	Smalltalk shutDown.
 	Color shutDown.
 	StrikeFont shutDown.
-	ControlManager shutDown.
+	Smalltalk isMorphic ifFalse: [ControlManager shutDown].
+	Form shutDown.
 	DisplayScreen shutDown.

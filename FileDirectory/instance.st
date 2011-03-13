@@ -1,6 +1,6 @@
 Object
 	subclass: #FileDirectory
-	instanceVariableNames: 'pathName closed '
-	classVariableNames: 'DefaultDirectory '
+	instanceVariableNames: 'pathName '
+	classVariableNames: 'DefaultDirectory DirectoryClass '
 	poolDictionaries: ''
 	category: 'System-Files'

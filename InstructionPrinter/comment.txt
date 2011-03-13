@@ -1,0 +1,2 @@
+InstructionPrinter comment:
+'My instances can print the object code of a CompiledMethod in symbolic format. They print into an instance variable, stream, and uses oldPC to determine how many bytes to print in the listing. The inherited variable, sender, is used in an ugly way to hold the method being printed.'

@@ -3,7 +3,7 @@ removeMessageCategory
 	verify that the currently selected message category should be removed
  	from the system. If so, remove it."
 
-	| warning messageCategoryName |
+	| messageCategoryName |
 	messageCategoryListIndex = 0 ifTrue: [^ self].
 	self okToChange ifFalse: [^ self].
 	messageCategoryName _ self selectedMessageCategoryName.
@@ -14,4 +14,5 @@ and all its methods?'])
 		ifTrue: 
 			[self selectedClassOrMetaClass removeCategory: messageCategoryName.
 			self messageCategoryListIndex: 0.
-			self changed: #classSelectionChanged]
+			self changed: #classSelectionChanged].
+	self changed: #messageCategoryList.

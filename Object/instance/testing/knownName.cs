@@ -1,0 +1,2 @@
+knownName
+	^ self name

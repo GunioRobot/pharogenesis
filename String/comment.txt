@@ -1,0 +1,11 @@
+A String is an indexed collection of Characters, compactly encoded as 8-bit bytes.
+
+String support a vast array of useful methods, which can best be learned by browsing and trying out examples as you find them in the code.
+
+Here are a few useful methods to look at...
+	String match:
+	String contractTo:
+
+String also inherits many useful methods from its hierarchy, such as
+	SequenceableCollection ,
+	SequenceableCollection copyReplaceAll:with:

@@ -4,11 +4,11 @@ expand
 	| newFrame |
 	self isCollapsed
 		ifTrue:
-			[newFrame _ self chooseFrame.
+			[newFrame _ self chooseFrame expandBy: borderWidth.
 			collapsedViewport _ self viewport.
 			subViews _ savedSubViews.
-			self window: self defaultWindow.
 			labelFrame borderWidthLeft: 2 right: 2 top: 2 bottom: 2.
 			savedSubViews _ nil.
+			self setWindow: nil.
 			self resizeTo: newFrame.
 			self displayDeEmphasized]

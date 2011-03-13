@@ -9,7 +9,9 @@ initializeFrom: aSocket
 	((idx _ header indexOf: 'Authorization:') ~= 0 and: [(header at: idx + 1)
 			= 'Basic'])
 		ifTrue: [userId _ header at: idx + 2].
-	peerName _ connection peerName.
+
+	peerName _ self clientName: connection remoteAddress.
+
 	log
 		nextPutAll: Time totalSeconds asString; tab;
 		nextPutAll: peerName asString; tab;

@@ -1,0 +1,1 @@
+ObjectTracer class instanceVariableNames: ''

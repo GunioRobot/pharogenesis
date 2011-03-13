@@ -8,11 +8,13 @@ buildMorphMenuFor: argMorph
 
 	menu add: 'grab' action: #grabMorph.
 	menu add: 'delete' action: #dismissMorph.
+	menu add: 'copy to paste buffer' action: #copyToPasteBuffer.
 	menu add: 'go behind' action: #goBehind.
 	menu add: 'add halo' action: #addHalo.
 	menu add: 'duplicate' action: #duplicateMorph.
-	((self world rootMorphsAt: targetOffset) size > 1)
-		ifTrue: [menu add: 'embed' action: #embedMorph].
+
+	(argument pasteUpMorph morphsAt: targetOffset) size > 2 ifTrue:
+		[menu add: 'embed...' action: #placeArgumentIn].
 
 	menu add: 'resize' action: #resizeMorph.
 	(argMorph isKindOf: SketchMorph)  ifFalse: [
@@ -24,6 +26,7 @@ buildMorphMenuFor: argMorph
 			argumentList: (Array with: argMorph with: #operateOnSubmorph:event:)].
 	menu addLine.
 	menu add: 'inspect' action: #inspectMorph.
+	menu add: 'inspect in Morphic' action: #inspectMorphInMorphic.
 	menu add: 'browse' action: #browseMorphClass.
 	menu add: 'make own subclass' action: #subclassMorph.
 	menu addLine.

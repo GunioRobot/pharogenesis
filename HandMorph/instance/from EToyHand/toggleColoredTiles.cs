@@ -1,0 +1,2 @@
+toggleColoredTiles
+	self presenter toggleColoredTiles

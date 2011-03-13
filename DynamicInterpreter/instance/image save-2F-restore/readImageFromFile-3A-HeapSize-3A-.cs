@@ -15,6 +15,7 @@ readImageFromFile: f HeapSize: desiredHeapSize
 	specialObjectsOop	_ self getLongFromFile: f swap: swapBytes.
 	lastHash			_ self getLongFromFile: f swap: swapBytes.
 	savedWindowSize	_ self getLongFromFile: f swap: swapBytes.
+	fullScreenFlag		_ self getLongFromFile: f swap: swapBytes.
 
 	lastHash = 0 ifTrue: [
 		"lastHash wasn't stored (e.g. by the cloner); use 999 as the seed"
@@ -30,7 +31,7 @@ readImageFromFile: f HeapSize: desiredHeapSize
 	actualHeapSize _ desiredHeapSize + self cacheSize.
 
 	"allocate a contiguous block of memory for the Squeak heap"
-	memory _ self cCode: '(unsigned char *) sqAllocateMemory(actualHeapSize)'.
+	memory _ self cCode: '(unsigned char *) sqAllocateMemory(minimumMemory, actualHeapSize)'.
 	memory = nil
 		ifTrue: [self error: 'Failed to allocate memory for the heap'].
 

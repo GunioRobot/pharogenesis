@@ -1,0 +1,2 @@
+landscape: aBoolean
+	landscape := aBoolean

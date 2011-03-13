@@ -21,6 +21,8 @@ reframePanesAdjoining: subView along: side to: aDisplayBox
 	"And adjust the growing pane itself"
 	subView window: subView window viewport:
 			(subView transform: (subView inverseDisplayTransform: newRect)) rounded.
+
 	"Finally force a recomposition of the whole window"
-	self window: self window viewport: self viewport.
+	viewport _ nil.
+	self resizeTo: self viewport.
 	self uncacheBits; displayEmphasized

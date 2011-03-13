@@ -11,6 +11,4 @@ browse: pageRef from: request
 					linkFor: link
 					from: request peerName
 					storingTo: OrderedCollection new]).
-	request reply: (HTMLformatter evalEmbedded: (self fileContents: source
-,'page.html')
-			with: formattedPage).
+	request reply: ((self formatterFor: 'page') format: formattedPage).

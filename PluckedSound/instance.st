@@ -1,6 +1,6 @@
 AbstractSound
 	subclass: #PluckedSound
-	instanceVariableNames: 'initialCount count amplitude ring ringSize ringIndx '
+	instanceVariableNames: 'initialCount count ring scaledIndex scaledIndexIncr scaledIndexLimit '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Sound'
+	category: 'System-Sound'

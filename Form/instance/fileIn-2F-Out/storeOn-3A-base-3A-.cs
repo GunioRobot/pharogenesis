@@ -1,6 +1,7 @@
 storeOn: aStream base: anInteger 
 	"Store the receiver out as an expression that can be evaluated to recreate a Form with the same contents as the original."
 
+	self unhibernate.
 	aStream nextPut: $(.
 	aStream nextPutAll: self species name.
 	aStream crtab: 1.

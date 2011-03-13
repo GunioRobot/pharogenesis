@@ -1,0 +1,4 @@
+versionDate
+	"EToySystem versionDate"
+
+	^ EToyVersionDate

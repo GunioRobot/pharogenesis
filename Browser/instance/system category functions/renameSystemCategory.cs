@@ -16,5 +16,5 @@ renameSystemCategory
 	systemOrganizer
 		renameCategory: oldName
 		toBe: newName.
-	self changed: #systemCategoriesChanged.
-	self systemCategoryListIndex: oldIndex
+	self systemCategoryListIndex: oldIndex.
+	self changed: #systemCategoryList.

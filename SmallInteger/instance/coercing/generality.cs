@@ -1,3 +1,0 @@
-generality
-
-	^20

@@ -30,7 +30,5 @@ pickup: actionButton action: aSelector cursor: aCursor
 	aSelector == #pickup: ifTrue: [
 		ss _ self world findA: SketchEditorMorph.
 		ss ifNotNil: [currentCursor _ aCursor]	 
-			ifNil: [PopUpMenu notify: 
-				'You are currently not painting.  Choose 
-Parts and drag out a new object.'.
+			ifNil: [self notCurrentlyPainting
 				self setAction: #paint:]].

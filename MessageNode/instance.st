@@ -1,6 +1,6 @@
 ParseNode
 	subclass: #MessageNode
 	instanceVariableNames: 'receiver selector precedence special arguments sizes pc equalNode caseErrorNode '
-	classVariableNames: 'MacroTransformers MacroSizers MacroPrinters MacroSelectors ThenFlag MacroEmitters StdTypers '
+	classVariableNames: 'MacroEmitters MacroPrinters MacroSelectors MacroSizers MacroTransformers StdTypers ThenFlag '
 	poolDictionaries: ''
 	category: 'System-Compiler'

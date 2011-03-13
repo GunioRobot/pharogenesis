@@ -1,6 +1,7 @@
 writeOn: file
 	"Write the receiver on the file in the format
 		depth, extent, offset, bits."
+	self unhibernate.
 	file nextPut: depth.
 	file nextWordPut: width.
 	file nextWordPut: height.

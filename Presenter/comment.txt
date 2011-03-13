@@ -1,0 +1,12 @@
+Optionally associated with a PasteUpMorph, provides presentation services.
+
+Holds control buttons:
+	stopButton stepButton goButton.
+
+Holds state flags:
+	balloonHelpEnabled mouseOverHalosEnabled soundsEnabled fenceEnabled coloredTilesEnabled
+
+Holds a viewerCache 
+
+Holds, optionally three standard items, idiomatic support of ongoing squeak-team internal work
+   standardPlayer standardPlayfield standardPalette 

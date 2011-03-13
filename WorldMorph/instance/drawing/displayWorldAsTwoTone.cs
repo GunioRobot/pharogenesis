@@ -10,5 +10,5 @@ displayWorldAsTwoTone
 	self fullRepaintNeeded.
 	self drawInvalidAreasOn: canvas.  "redraw on offscreen canvas"
 	canvas showAt: viewBox origin.  "copy redrawn areas to Display"
-	Smalltalk forceDisplayUpdate.
+	Display forceDisplayUpdate.
 	self canvas: nil.  "forget my canvas to save space"

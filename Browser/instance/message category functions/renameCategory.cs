@@ -18,4 +18,5 @@ renameCategory
 		toBe: newName.
 	Smalltalk changes reorganizeClass: self selectedClassOrMetaClass.
 	self classListIndex: classListIndex.
-	self messageCategoryListIndex: oldIndex
+	self messageCategoryListIndex: oldIndex.
+	self changed: #messageCategoryList.

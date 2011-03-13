@@ -1,24 +1,35 @@
-nextPutImage: anImage
+nextPutImage: aForm
 
-	| bits |
-	anImage depth > 8 ifTrue: [
-		self error: 'GIF does not support Forms deeper than 8-bits'].
-	width _ anImage width.
-	height _ anImage height.
-	bitsPerPixel _ anImage depth.
-	colorPalette _ Color indexedColors copyFrom: 1 to: (1 bitShift:
-anImage depth).
-		"Later use (anImage colorsUsed) and remap the pixels to be
-in a compact color map"
-	bits _ anImage bits.
-	bitsPerPixel < 8 ifTrue:
-		[bits _ self unpackBits: bits "BitMap, has words"
-			depthTo8From: bitsPerPixel
-			with: anImage width
-			height: anImage height
-			pad: 32].
+	| f newF |
+	aForm unhibernate.
+	f _ aForm colorReduced.  "minimize depth"
+	f depth > 8 ifTrue: [
+		self error: 'GIF cannot store images with over 256 colors'].
+	f depth < 8 ifTrue: [
+		"writeBitData: expects depth of 8"
+		newF _ f class extent: f extent depth: 8.
+		(f isKindOf: ColorForm)
+			ifTrue: [
+				newF
+					copyBits: f boundingBox
+					from: f at: 0@0
+					clippingBox: f boundingBox
+					rule: Form over
+					fillColor: nil
+					map: nil.
+				newF colors: f colors]
+			ifFalse: [f displayOn: newF].
+		f _ newF].
+	(f isKindOf: ColorForm)
+		ifTrue: [
+			(f colorsUsed includes: Color transparent) ifTrue: [
+				transparentIndex _ (f colors indexOf: Color transparent) - 1]]
+		ifFalse: [transparentIndex _ nil].
+	width _ f width.
+	height _ f height.
+	bitsPerPixel _ f depth.
+	colorPalette _ f colormapIfNeededForDepth: 32.
 	interlace _ false.
 	self writeHeader.
-	self writeBitData: bits.
+	self writeBitData: f bits.
 	self close.
-	^ anImage

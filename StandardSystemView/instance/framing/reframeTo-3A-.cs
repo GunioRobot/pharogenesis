@@ -6,7 +6,7 @@ reframeTo: newFrame
 	oldBox _ self windowBox.
 	portRect _ newFrame topLeft + self labelOffset
 				corner: newFrame corner.
-	self window: self window viewport: portRect.
+	self resizeTo: portRect.
 	self setLabelRegion.
 	newBox _ self windowBox.
 	(oldBox areasOutside: newBox) do:

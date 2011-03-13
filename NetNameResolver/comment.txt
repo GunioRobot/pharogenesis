@@ -1,0 +1,3 @@
+NetNameResolver comment:
+'This class implements TCP/IP style network name lookup and translation facilities.
+'

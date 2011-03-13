@@ -1,2 +1,0 @@
-isColor
-	^ true

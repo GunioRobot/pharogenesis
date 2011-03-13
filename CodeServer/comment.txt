@@ -1,0 +1,18 @@
+Return the source code from Smalltalk, as web page text, or as a raw Squeak file chunk.
+URLs are of the form:	
+	machine:80/smtlk.Point|min;			<-- NOTE: use ; instead of :
+	machine:80/smtlk.{Class}|{selector}
+	machine:80/chunk.{Class}|{selector}
+
+	machine:80/smtlk.{Class}|class|{selector}
+	machine:80/chunk.{Class}|class|{selector}
+
+	machine:80/smtlk.{Class}|Definition
+	machine:80/chunk.{Class}|Definition
+
+	machine:80/smtlk.{Class}|Hierarchy
+	machine:80/chunk.{Class}|Hierarchy
+
+	machine:80/smtlk.{Class}|Comment
+	machine:80/chunk.{Class}|Comment
+NOTE: use ; semicolon instead of : colon in selector names

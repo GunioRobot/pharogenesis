@@ -1,0 +1,1 @@
+ColorForm class instanceVariableNames: ''

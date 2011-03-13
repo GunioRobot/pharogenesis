@@ -1,7 +1,7 @@
 browseIt
 	"Launch a browser for the current selection, if appropriate"
 
-	| aSymbol anEntry |
+	| aSymbol anEntry brow |
 	self lineSelectAndEmptyCheck: [^ self].
 	(aSymbol _ self selectedSymbol) isNil ifTrue: [^ view flash].
 
@@ -12,7 +12,10 @@ browseIt
 				anEntry isNil ifTrue: [^ view flash].
 				(anEntry isKindOf: Class)
 					ifTrue:
-						[BrowserView browseFullForClass: anEntry method: nil from: self]
+						[brow _ Browser new.
+						brow setClass: anEntry selector: nil.
+						Browser openBrowserView: (brow openEditString: nil)
+							label: 'System Browser']
 					ifFalse:
 						[anEntry inspect]]
 			ifFalse:

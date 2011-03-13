@@ -1,0 +1,1 @@
+GIFReadWriter class instanceVariableNames: ''

@@ -19,6 +19,6 @@ removeDoIts
 			list _ newList.
 			listIndex _ 0.
 			listSelections _ Array new: list size withAll: false].
-	self changed: #list
+	self changed: #list.
 
 	

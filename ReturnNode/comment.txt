@@ -1,0 +1,2 @@
+ReturnNode comment:
+'I represent an expression of the form ^expr.'

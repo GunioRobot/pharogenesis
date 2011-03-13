@@ -1,0 +1,12 @@
+A PluggableTextView gets its content from the model. This allows the same kind of view to be used in different situations, thus avoiding a proliferation of gratuitous view and controller classes. See the class comment for PluggableListView.
+
+Selectors are:
+
+		getTextSel		fetch the original text from the model
+		setTextSel		submit new text to the model when user "accepts"
+		getSelectionSel	get the current text selection range
+		getMenuSel		get the pane-specific, 'yellow-button' menu
+
+	Any of the above selectors can be nil, meaning that the model does not supply behavior for the given action, and the default behavior should be used. For example, if setTextSel is nil then this view is consider read-only.
+
+	The model informs a pluggable view of changes by sending #changed: to itself with getTextSel as a parameter. The view informs the model of selection changes by sending setTextSel to it with the newly selected item as a parameter, and invokes menu actions on the model via getMenuSel.

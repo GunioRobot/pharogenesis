@@ -1,0 +1,2 @@
+browseIt
+	textMorph editor browseIt

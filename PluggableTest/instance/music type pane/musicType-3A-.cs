@@ -1,5 +1,8 @@
-musicType: aString
+musicType: anInteger
 
-	selection1 _ aString.
+	| oldArtist |
+	oldArtist _ self artistName.
+	musicTypeIndex _ anInteger.  "this changes artists list"
+	artistIndex _ self artistList indexOf: oldArtist.
 	self changed: #musicType.
-	self changed: #artists.
+	self changed: #artistList.

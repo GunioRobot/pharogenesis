@@ -3,3 +3,4 @@ releaseCachedState
 
 	super releaseCachedState.
 	rotatedForm _ nil.
+	originalForm hibernate

@@ -1,0 +1,6 @@
+Logger comment:
+'I am a simple stream wrapper that is used by the DynamicInterpreterSimulator to record execution traces.  I implement stream-like protocol, and either:
+	- forward the output to the Transcript;
+	- forward the output to a file;
+	- throw the output away.
+I have a unique instance, bound to the global variable InterpreterLog.'

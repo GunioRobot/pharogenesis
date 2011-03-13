@@ -1,11 +1,11 @@
 fileOutForm
-	"Ask the user for a file name and then save the current source form 
-	(form) under that name. Does not change the tool."
+	"Ask the user for a file name and save the current source form under that name. Does not change the tool."
 
-	| fileName file |
-	fileName _ self promptRequest: 'type a name for saving the source Form . . . '.
-	file _ FileStream newFileNamed: fileName.
-	file binary.
-	form writeOn: file.
-	file close.
+	| fileName |
+	fileName _ FillInTheBlank
+		request: 'File name?'
+		initialAnswer: 'Filename.form'.
+	fileName isEmpty ifTrue: [^ self].
+	Cursor normal
+		showWhile: [form writeOnFileNamed: fileName].
 	tool _ previousTool.

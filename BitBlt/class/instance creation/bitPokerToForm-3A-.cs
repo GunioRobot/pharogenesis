@@ -3,6 +3,7 @@ bitPokerToForm: destForm
 	The source for a 1x1 copyBits will be the low order of (bits at: 1)"
 	| pixPerWord |
 	pixPerWord _ 32//destForm depth.
+	destForm unhibernate.
 	^ self destForm: destForm
 	 	sourceForm: (Form extent: pixPerWord@1 depth: destForm depth)
 		halftoneForm: nil combinationRule: Form over

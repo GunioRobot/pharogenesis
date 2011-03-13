@@ -5,7 +5,7 @@ reciprocalFloorLog: radix
 	| adjust scale n |
 	adjust _ 0.
 	scale _ 1.0.
-	[(n _ radix / (self * scale)) isInf]
+	[(n _ radix / (self * scale)) isInfinite]
 		whileTrue:
 			[scale _ scale * radix.
 			adjust _ adjust + 1].

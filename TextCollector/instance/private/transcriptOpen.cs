@@ -1,2 +1,0 @@
-transcriptOpen
-	^transcriptOpen

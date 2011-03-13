@@ -1,1 +1,0 @@
-DiskProxyQ class instanceVariableNames: ''

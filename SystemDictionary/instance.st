@@ -2,6 +2,6 @@ Dictionary
 	subclass: #SystemDictionary
 	instanceVariableNames: ''
 	classVariableNames:
-		'SystemChanges LastQuitLogPosition CachedClassNames LowSpaceProcess LowSpaceSemaphore SpecialSelectors '
+		'CachedClassNames LastImageName LastQuitLogPosition LowSpaceProcess LowSpaceSemaphore SpecialSelectors SystemChanges '
 	poolDictionaries: ''
 	category: 'System-Support'

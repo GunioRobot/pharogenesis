@@ -1,0 +1,2 @@
+EToyWorld comment:
+'A Morphic World used with an EToy.  In light of the presence of EToyPlayer, EToyHolder, and EToyModel, we hardly need *another* window-wide object, but some needs have come up for World behavior for which the generic WorldMorph does not seem to do the trick, so this is added as a safety valve.'

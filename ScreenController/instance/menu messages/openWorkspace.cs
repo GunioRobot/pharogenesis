@@ -1,4 +1,4 @@
 openWorkspace 
-	"Create and schedule a StringHolderView for use as a workspace."
+	"Create and schedule workspace."
 
-	StringHolderView open
+	Workspace open

@@ -1,0 +1,2 @@
+slotInfo
+	^ self class slotInfo

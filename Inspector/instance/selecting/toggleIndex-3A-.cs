@@ -12,5 +12,9 @@ toggleIndex: anInteger
 		ifFalse:
 			["different index, new selection"
 			selectionIndex _ anInteger.
-			contents _ self selection printString].
+			(selectionIndex = 2) | (selectionIndex = 0)
+				ifTrue: [contents _ self selection]
+				ifFalse: [contents _ self selection printString]].
 	self changed: #selection.
+	self changed: #contents.
+	self changed: #selectionIndex.

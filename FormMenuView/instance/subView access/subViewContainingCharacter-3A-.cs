@@ -4,5 +4,5 @@ subViewContainingCharacter: aCharacter
 
 	self subViews reverseDo: 
 		[:aSubView |
-		(aSubView containsKey: aCharacter) ifTrue: [^aSubView]].
+		(aSubView shortcutCharacter = aCharacter) ifTrue: [^aSubView]].
 	^nil	

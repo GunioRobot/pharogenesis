@@ -1,1 +1,0 @@
-ContextStackListController class instanceVariableNames: ''

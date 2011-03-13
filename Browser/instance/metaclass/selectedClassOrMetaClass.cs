@@ -1,6 +1,7 @@
 selectedClassOrMetaClass
 	"Answer the selected class or metaclass."
 
+	| cls |
 	self metaClassIndicated
-		ifTrue: [^ self selectedClass class]
+		ifTrue: [^ (cls _ self selectedClass) ifNil: [nil] ifNotNil: [cls class]]
 		ifFalse: [^ self selectedClass]

@@ -1,0 +1,1 @@
+SimpleClientSocket class instanceVariableNames: ''

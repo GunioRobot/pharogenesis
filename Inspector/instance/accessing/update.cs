@@ -4,4 +4,5 @@ update
 	selectionIndex = 0
 		ifFalse:
 			[contents _ self selection printString.
-			self changed: #selection]
+			self changed: #selection.
+			self changed: #selectionIndex]

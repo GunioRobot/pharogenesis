@@ -1,39 +1,39 @@
 openView: topView offsetBy: offset
-	"Create change sorter on one changeSet with 0@0.
-	Two of these in a DualChangeSorter, right one is offset by 360@0."
-	| classView messageView codeView |
-	buttonView _ SwitchView new.
-	buttonView model: self controller: TriggerController new.
-	buttonView borderWidthLeft: 2 right: 2 top: 2 bottom: 0.
-	buttonView selector: #whatPolarity.
-	buttonView controller selector: #cngSetActivity.
-	buttonView window: ((0 @ 0 extent: 360 @ 20) translateBy: offset).
-	buttonView label: myChangeSet name asParagraph.
-
-	classView _ GeneralListView new.
-	classView controllerClass: GeneralListController.
-	classView model: classList.
-	classView window: (0 @ 0 extent: 180 @ 160).
-	classView borderWidthLeft: 2 right: 0 top: 2 bottom: 2.
-	classView controller yellowButtonMenu: ClassMenu 
-		yellowButtonMessages: ClassSelectors.
-	classList controller: classView controller.
-
-	messageView _ GeneralListView new.
-	messageView controllerClass: GeneralListController.
-	messageView model: messageList.
-	messageView window: (0 @ 0 extent: 180 @ 160).
-	messageView borderWidthLeft: 2 right: 2 top: 2 bottom: 2.
-	messageView controller yellowButtonMenu: MsgListMenu 
-		yellowButtonMessages: MsgListSelectors.
-	messageList controller: messageView controller.
-
-	codeView _ BrowserCodeView new.
-	codeView model: self.
-	codeView window: (0 @ 0 extent: 360 @ 180).
-	codeView borderWidthLeft: 2 right: 2 top: 0 bottom: 2.
-
+	"Add a set of change sorter views to the given top view offset by the given amount. To create a single change sorter, call this once with an offset of 0@0. To create a dual change sorter, call it twice with offsets of 0@0 and 360@0."
+	| classView messageView codeView buttonView |
+	contents _ ''.
+	self addDependent: topView.		"so it will get changed: #relabel"
+	buttonView _ PluggableButtonView
+		on: self
+		getState: #mainButtonState
+		action: #changeSetMenuStart
+		label: #mainButtonName
+		menu: #changeSetMenu:.
+	buttonView
+		label: myChangeSet name;
+		triggerOnMouseDown: true; borderWidth: 1; 
+		window: ((0 @ 0 extent: 360 @ 20) translateBy: offset).
 	topView addSubView: buttonView.
+
+	classView _ PluggableListViewByItem on: self
+		list: #classList
+		selected: #currentClassName
+		changeSelected: #currentClassName:
+		menu: #classMenu:.
+	classView window: (0 @ 0 extent: 180 @ 160).
 	topView addSubView: classView below: buttonView.
+
+	messageView _ PluggableListViewByItem on: self
+		list: #messageList
+		selected: #currentSelector
+		changeSelected: #currentSelector:
+		menu: #messageMenu:shifted:
+		keystroke: #messageListKey:from:.
+	messageView window: (0 @ 0 extent: 180 @ 160).
 	topView addSubView: messageView toRightOf: classView.
+
+	codeView _ PluggableTextView on: self 
+			text: #contents accept: #contents:notifying:
+			readSelection: #contentsSelection menu: #codePaneMenu:shifted:.
+	codeView window: (0 @ 0 extent: 360 @ 180).
 	topView addSubView: codeView below: classView.

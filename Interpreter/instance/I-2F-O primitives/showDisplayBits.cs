@@ -2,6 +2,7 @@ showDisplayBits
 	"Repaint the portion of the Smalltalk screen bounded by the affected rectangle. Used to synchronize the screen after a Bitblt to the Smalltalk Display object."
 
 	| displayObj dispBits w h affectedRectL affectedRectR affectedRectT affectedRectB dispBitsIndex d |
+	deferDisplayUpdates ifTrue: [^ nil].
 	displayObj _ self splObj: TheDisplay.
 	self targetForm = displayObj ifFalse: [^ nil].
 	self success: ((self isPointers: displayObj) and: [(self lengthOf: displayObj) >= 4]).

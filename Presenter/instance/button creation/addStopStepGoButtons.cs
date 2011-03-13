@@ -1,0 +1,2 @@
+addStopStepGoButtons
+	self addStopStepGoButtonsTo: associatedMorph

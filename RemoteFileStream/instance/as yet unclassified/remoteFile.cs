@@ -1,0 +1,2 @@
+remoteFile
+	^ remoteFile

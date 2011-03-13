@@ -1,2 +1,0 @@
-aboutToTrashColor
-	^ Color red

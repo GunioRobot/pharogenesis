@@ -3,10 +3,10 @@ howToStart
 http://www.cc.gatech.edu/fac/mark.guzdial/squeak/pws/
 Put the 'Server' folder into the folder that your image is in.
 
-Modify this method to be a path to your Server folder, select it, and fileItIn:
+Modify this method to be a path to your Server folder, select it, and choose fileItIn:
 !ServerAction class methodsFor: 'System Services' stamp: 'tk 1/19/98 12:52'!
 serverDirectory
-	^ 'Home Plate:ETSqueak1.31b:Server:'
+	^ 'Hard Disk:Squeak1.31:Server:'
 ! !
 
 Then do:
@@ -19,15 +19,38 @@ Make a folder named OurOwnArea in the Server folder.  Then do:
 
 Suppose you already have a Swiki called 'myswiki'.
 To start up:
-	SwikiAction new restore: 'myswiki'.
-	[PWS serveOnPort: 80 loggingTo: 'log.txt'] fork.
-		(when you have more Swikis, such as OurOwnArea, you must add a line to restore each one.  Whenever you start up Squeak, you must restore each swiki, before forking the process that serves pages.)
+	SwikiAction new restore: 'myswiki'.		'<- New line for each additional Swiki area'.
+	SwikiAction new restore: 'myswiki'.		'Case DOES matter in the name of Swiki here.'.
+	PWS serveOnPort: 80 loggingTo: 'log.txt'.
 
 To stop the server: 
 	PWS stopServer.
 
+-----------------------
+To purge a particular file of all except the latest version:
+	((PWS actions at: 'myswiki' asLowercase) urlmap atID: '3') condenseChanges.
 
-To convert from an old pre-Squeak1.3 Swiki to new page format: 
+To roll the entire wiki back to a previous time:
+	""This does not erase data, it just copies the older page to the end""
+	(PWS actions at: 'myswiki' asLowercase) rollBack: '1/28/98' asDate 
+			at: '1:30 am' asTime.
+
+The look of a served page is controlled by a template.  Templates live in the 'swiki' folder in the 'Server' folder.  Beware that templates are cached by HTMLformatter.  If you change a template, you will not see the effect until you reload the Swiki.
+
+To set up a Swiki with a password (same for all users), see AuthorizedSwikiAction comment.
+
+To enable a privledged user to execute code remotely (on a workspace page):
+	(PWS actions at: 'authorized') mapName: 'JSmith' password: 'hard2guess' to: 'JSmith'.
+	(URL is http://thisMachine:80/authorized.workspace.html)
+
+To backup the user data to the disk, do nothing.  All info is already inside the page files on the disk.
+
+To enable a new Swiki that evaluates Squeak code submitted by the user.
+Make a folder named SqkEval in the Server folder.  Then do:
+	ActiveSwikiAction setUp: 'SqkEval'.
+	(this is dangerous, because there are still ways a user could crash your server)
+
+To convert from an old pre-Squeak1.3 Swiki to the new page format: 
 	(In the old image, do a backup:)
 		| mine | mine _ PWS actions at: 'myswiki'.
 		mine saveTo: mine path,'backup28JanA'.
@@ -36,25 +59,8 @@ To convert from an old pre-Squeak1.3 Swiki to new page format:
 		PWS initializeAll.
 		SwikiAction restore: 'myswiki' from: 
 			(ServerAction serverDirectory), 'myswiki:backup28JanA'.
-		(PWS actions at: 'myswiki') convert.
+		(PWS actions at: 'myswiki' asLowercase) convert.
 	(do these steps for each Swiki you have)
 	(now, start the server)
-	[PWS serveOnPort: 80 loggingTo: 'log.txt'] fork.
-
-To backup (new format)
-	(do nothing.  All info is already inside the page files on the disk.)
-
-To enable a new Swiki that evaluates Squeak code submitted by the user.
-Make a folder named SqkEval in the Server folder.  Then do:
-	ActiveSwikiAction setUp: 'SqkEval'.
-	(this is dangerous, because there are still ways a user could crash your server)
-
-To purge a file of all except the latest version:
-	((PWS actions at: 'myswiki') urlmap atID: 3) condenseChanges.
-
-To roll the entire wiki back to a previous time:
-	""This does not erase data, it just moves an older page to the end""
-	(PWS actions at: 'myswiki') rollBack: '1/28/98' asDate 
-			at: '1:30 am' asTime.
-
+	PWS serveOnPort: 80 loggingTo: 'log.txt'.
 "

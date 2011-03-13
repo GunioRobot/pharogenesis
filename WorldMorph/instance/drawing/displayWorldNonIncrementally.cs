@@ -12,5 +12,4 @@ displayWorldNonIncrementally
 	hands reverseDo: [:h | h fullDrawOn: canvas].
 	canvas form displayOn: Display at: viewBox origin.
 	self fullRepaintNeeded.  "don't collect damage"
-	Smalltalk forceDisplayUpdate.
-
+	Display forceDisplayUpdate.

@@ -1,0 +1,2 @@
+sortBySize
+	self resort: #size

@@ -1,0 +1,2 @@
+BitEditor comment:
+'I am a bit-magnifying tool for editing small Forms directly on the display screen. I continue to be active until the user points outside of my viewing area.'

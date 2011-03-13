@@ -12,4 +12,4 @@ spaceUsed
 				(lit isMemberOf: Array) ifTrue: [space _ space + (lit size+1*4)]]]].
 	(self isMemberOf: Metaclass)
 		ifTrue: [^ space]
-		ifFalse: [^ space + self class space]
+		ifFalse: [^ space + self class spaceUsed]

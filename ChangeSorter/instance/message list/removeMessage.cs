@@ -1,11 +1,19 @@
 removeMessage
-	"Remove the selected message from the system"
-	| messageName confirmation |
+	"Remove the selected msg from the system.  Real work done by the parent, a ChangeSorter"
 
-	self okToChange ifFalse: [^ self].  "currently it's always ok"
-	messageName _ self selectedMessageName.
-	confirmation _ self selectedClassOrMetaClass confirmRemovalOf: messageName.
-	confirmation ~~ 3 ifTrue: 
-		[self selectedClassOrMetaClass removeSelector: messageName.
-		self launch.
-		(parent other: self) launch]
+	| confirmation sel |
+	self okToChange ifFalse: [^ self].
+	currentSelector ifNotNil: [
+		confirmation _ self selectedClassOrMetaClass 
+			confirmRemovalOf: (sel _ self selectedMessageName).
+		confirmation == 3 ifTrue: [^ self].
+		myChangeSet removeSelectorChanges: sel 
+			class: self selectedClassOrMetaClass.
+		self selectedClassOrMetaClass removeSelector: sel.
+		self update.
+	"	self changed: #messageList.
+		self setContents.
+		self changed: #contents.
+	"
+		confirmation == 2 ifTrue:
+			[Smalltalk browseAllCallsOn: sel]]

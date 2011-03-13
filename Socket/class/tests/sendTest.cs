@@ -7,7 +7,7 @@ sendTest
 	Socket initializeNetwork.
 	serverName _ FillInTheBlank
 		request: 'What is the destination server?'
-		initialAnswer: 'bobo.rd.wdi.disney.com'.
+		initialAnswer: 'create.ucsb.edu'.
 	serverAddr _ NetNameResolver addressForName: serverName timeout: 10.
 	serverAddr = nil ifTrue: [^ self inform: 'Could not find an address for ', serverName].
 

@@ -1,6 +1,7 @@
-errorInClass: aClass withCode: aString 
-	"Answer a standard system view whose model is an instance of me. The syntax error occurred in typing to add code, aString, to class, aClass. "
+errorInClass: aClass withCode: codeString
+	"Open a view whose model is a syntax error. The error occurred when trying to add the given method code to the given class."
 
-	self open: (self new setClass: aClass
-						code: aString
-						debugger: (Debugger context: thisContext))
+	self open:
+		(self new setClass: aClass
+			code: codeString
+			debugger: (Debugger context: thisContext)).

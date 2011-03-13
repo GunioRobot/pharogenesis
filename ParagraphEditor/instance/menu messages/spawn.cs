@@ -1,4 +1,7 @@
 spawn
-	"Put here as a backstop for situations where the menu command is available but a method context is not extablished.  1/24/96 sw"
-
-	view flash
+	"Create and schedule a message browser for the code of the model's 
+	selected message. Retain any edits that have not yet been accepted."
+	| code |
+	code _ paragraph text string.
+	self cancel.
+	model spawn: code.

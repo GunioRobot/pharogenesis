@@ -1,6 +1,6 @@
 Object
 	subclass: #Preferences
 	instanceVariableNames: ''
-	classVariableNames: 'FlagDictionary '
+	classVariableNames: 'DesktopColor FlagDictionary '
 	poolDictionaries: ''
 	category: 'System-Support'

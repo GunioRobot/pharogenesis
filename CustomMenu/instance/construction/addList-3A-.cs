@@ -1,5 +1,12 @@
 addList: listOfPairs
-	"Treating the input parameter as a list of the form (<what to show> <selector>), add items to the receiver for each pair"
+	"Add a menu item to the receiver for each pair in the given list of the form (<what to show> <selector>). Add a line for each dash (-) in the list."
+	"CustomMenu new addList: #(
+		('apples' buyApples)
+		('oranges' buyOranges)
+		-
+		('milk' buyMilk)); startUp"
 
-	listOfPairs do:
-		[:aPair | self add: aPair first action: aPair last]
+	listOfPairs do: [:pair |
+		#- = pair
+			ifTrue: [self addLine]
+			ifFalse: [self add: pair first action: pair last]].

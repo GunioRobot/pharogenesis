@@ -1,1 +1,0 @@
-TextCollectorView class instanceVariableNames: ''

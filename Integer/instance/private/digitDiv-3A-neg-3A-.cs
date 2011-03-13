@@ -15,8 +15,7 @@ digitDiv: arg neg: ng
 	"Last actual byte of data"
 	ql _ l.
 	dh _ div digitAt: dl.
-	dnh _
-		 dl = 1
+	dnh _ dl = 1
 			ifTrue: [0]
 			ifFalse: [div digitAt: dl - 1].
 	1 to: ql do: 
@@ -45,15 +44,13 @@ digitDiv: arg neg: ng
 				lo _ lo bitAnd: 255.
 				"Correct overestimate of q.  
 				Max of 2 iterations through loop -- see Knuth vol. 2"
-				r3 _ 
-					j < 3 ifTrue: [0]
+				r3 _ j < 3 ifTrue: [0]
 						 ifFalse: [rem digitAt: j - 2].
 				[(t < hi or: [t = hi and: [r3 < lo]]) and: 
 						["i.e. (t,r3) < (hi,lo)"
 						qlo _ qlo - 1.
 						lo _ lo - dnh.
-						lo < 0
-							ifTrue: 
+						lo < 0 ifTrue: 
 								[hi _ hi - 1.
 								lo _ lo + 256].
 						hi >= dh]]
@@ -68,15 +65,14 @@ digitDiv: arg neg: ng
 		1 to: div digitLength do: 
 			[:i | 
 			hi _ (div digitAt: i) * qhi.
-			lo _ 
-				a + (rem digitAt: l) 
+			lo _ a + (rem digitAt: l) 
 					- ((hi bitAnd: 15) bitShift: 4) 
 					- ((div digitAt: i) * qlo).
-			rem digitAt: l put: (lo bitAnd: 255).
-			a _ (lo bitShift: -8) - (hi bitShift: -4).
+			rem digitAt: l
+				put: lo - (lo // 256 * 256) "sign-tolerant form of (lo bitAnd: 255)".
+			a _ (lo // 256) - (hi bitShift: -4).
 			l _ l + 1].
-		a < 0
-			ifTrue: 
+		a < 0 ifTrue: 
 				["Add div back into rem, decrease q by 1"
 				qlo _ qlo - 1.
 				l _ j - dl.

@@ -1,4 +1,7 @@
 paintAreaFor: aSketchMorph
-	"What rectangle should the the painting arena for painting aSketchMorph.  Overridden in EToyWorld; here, we just defer to the old way that takes no account of the sketch morh"
+	"Answer the area to comprise the onion-skinned canvas for painting/repainting aSketchMorph"
+	| itsOwner |
+	((itsOwner _ aSketchMorph owner) ~~ nil and: [itsOwner isPlayfieldLike])
+		ifTrue: [^ itsOwner bounds].  "handles every plausible situation"
 
 	^ self paintArea

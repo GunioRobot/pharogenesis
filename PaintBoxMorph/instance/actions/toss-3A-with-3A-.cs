@@ -5,8 +5,5 @@ toss: cancelButton with: cancelSelector
 	owner ifNil: ["it happens"  ^ self].
 	(ss _ self world findA: SketchEditorMorph) 
 		ifNotNil: [ss cancel]
-		ifNil: [PopUpMenu notify: 
-			'You are currently not painting.  Choose 
-Parts and drag out a new object.'
-			"Later have to change this for no EToy"].
+		ifNil: [self notCurrentlyPainting].
 	cancelButton state: #off.

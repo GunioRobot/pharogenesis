@@ -4,6 +4,7 @@ macWindowFile
 #include <AppleEvents.h>
 #include <Dialogs.h>
 #include <Devices.h>
+#include <Files.h>
 #include <Fonts.h>
 #include <Gestalt.h>
 #include <Menus.h>
@@ -33,10 +34,11 @@ enum { appleID = 1, fileID, editID };
 enum { quitItem = 1 };
 
 /*** Variables -- Imported from Virtual Machine ***/
-extern unsigned char *memory;
+extern int fullScreenFlag;
 extern int interruptCheckCounter;
 extern int interruptKeycode;
 extern int interruptPending;  /* set to true by recordKeystroke if interrupt key is pressed */
+extern unsigned char *memory;
 extern int savedWindowSize;   /* set from header when image file is loaded */
 
 /*** Variables -- image and path names ***/
@@ -60,7 +62,6 @@ MenuHandle		appleMenu = nil;
 Handle			clipboardBuffer = nil;
 MenuHandle		editMenu = nil;
 MenuHandle		fileMenu = nil;
-int				runningOnPowerbook = false;
 CTabHandle		stColorTable = nil;
 PixMapHandle	stPixMap = nil;
 WindowPtr		stWindow = nil;
@@ -105,7 +106,6 @@ void SetUpClipboard(void);
 void SetUpMenus(void);
 void SetUpPixmap(void);
 void SetUpWindow(void);
-void SetWindowSize(void);
 void SetWindowTitle(char *title);
 void StoreFullPathForLocalNameInto(char *shortName, char *fullName, int length);
 
@@ -328,7 +328,7 @@ void HandleMenu(int mSelect) {
 	switch (menuID) {
 		case appleID:
 			GetPort(&savePort);
-			GetItem(appleMenu, menuItem, name);
+			GetMenuItemText(appleMenu, menuItem, name);
 			OpenDeskAcc(name);
 			SetPort(savePort);
 		break;
@@ -399,8 +399,6 @@ void HandleMouseDown(EventRecord *theEvent) {
 }
 
 void InitMacintosh(void) {
-	long powerManagerAttributes;
-
 	MaxApplZone();
 	InitGraf(&qd.thePort);
 	InitFonts();
@@ -410,16 +408,6 @@ void InitMacintosh(void) {
 	TEInit();
 	InitDialogs(NULL);
 	InitCursor();
-
-	/* find out if processor is a PowerBook */
-	if (!Gestalt(gestaltPowerMgrAttr, &powerManagerAttributes)) {
-		if (powerManagerAttributes & (1 << gestaltPMgrDispatchExists)) {
-//xxx PowerManager library is not available
-//			if (PMSelectorCount() >= 0x24) {
-//				runningOnPowerbook = true;
-//			}
-		}
-	}
 }
 
 void SetUpMenus(void) {
@@ -427,7 +415,7 @@ void SetUpMenus(void) {
 	InsertMenu(fileMenu  = NewMenu(fileID,  "\pFile"), 0);
 	InsertMenu(editMenu  = NewMenu(editID,  "\pEdit"), 0);
 	DrawMenuBar();
-	AddResMenu(appleMenu, ''DRVR'');
+	AppendResMenu(appleMenu, ''DRVR'');
 	AppendMenu(fileMenu, "\pQuit");
 	AppendMenu(editMenu, "\pUndo/Z;(-;Cut/X;Copy/C;Paste/V;Clear");
 }
@@ -530,57 +518,12 @@ void SetUpPixmap(void) {
 }
 
 void SetUpWindow(void) {
-	Rect windowBounds = { 44, 8, 408, 648 };  /* default window bounds */
-	Rect screen;
-	int right, bottom;
+	Rect windowBounds = {44, 8, 300, 500};
 
-	if (savedWindowSize != 0) {
-		right  = windowBounds.left + ((unsigned) savedWindowSize >> 16);
-		bottom = windowBounds.top  + (savedWindowSize & 0xFFFF);
-	} else {
-		right  = windowBounds.right;
-		bottom = windowBounds.bottom;
-	}
-
-	/* minimum size is 64 x 64 */
-	right  = ( right > (windowBounds.left + 64)) ?  right : (windowBounds.left + 64);
-	bottom = (bottom > (windowBounds.top  + 64)) ? bottom : (windowBounds.top  + 64);
-
-	/* maximum bottom-right is screen bottom-right */
-	screen = qd.screenBits.bounds;
-	right  = ( right <= screen.right)  ?  right : (screen.right  - 8);
-	bottom = (bottom <= screen.bottom) ? bottom : (screen.bottom - 8);
-
-	windowBounds.right = right;
-	windowBounds.bottom = bottom;
-
-	stWindow = NewCWindow(0L, &windowBounds, "\pWelcome to Squeak!", true, documentProc, (WindowPtr) -1L, true, 0);
-}
-
-void SetWindowSize(void) {
-	Rect screen;
-	int width, height, maxWidth, maxHeight;
-
-	if (savedWindowSize != 0) {
-		width  = (unsigned) savedWindowSize >> 16;
-		height = savedWindowSize & 0xFFFF;
-	} else {
-		width  = 640;
-		height = 480;
-	}
-
-	/* minimum size is 64 x 64 */
-	width  = ( width > 64) ?   width : 64;
-	height = (height > 64) ?  height : 64;
-
-	/* maximum size is screen size */
-	screen = qd.screenBits.bounds;
-	maxWidth  = (screen.right  - screen.left) - 16;
-	maxHeight = (screen.bottom - screen.top)  - 52;
-	width  = ( width <= maxWidth)  ?  width : maxWidth;
-	height = (height <= maxHeight) ? height : maxHeight;
-
-	SizeWindow(stWindow, width, height, true);
+	stWindow = NewCWindow(
+		0L, &windowBounds,
+		"\p Welcome to Squeak!  Reading Squeak image file... ",
+		true, documentProc, (WindowPtr) -1L, true, 0);
 }
 
 void SetWindowTitle(char *title) {
@@ -687,7 +630,24 @@ int ioGetKeystroke(void) {
 }
 
 int ioMicroMSecs(void) {
-	/* millisecond clock based on microsecond timer (about 60 times slower than ioMSecs!!) */
+	/* millisecond clock based on microsecond timer (about 60 times slower than clock()!!) */
+	/* Note: This function and ioMSecs() both return a time in milliseconds. The difference
+	   is that ioMicroMSecs() is called only when precise millisecond resolution is essential,
+	   and thus it can use a more expensive timer than ioMSecs, which is called frequently.
+	   However, later VM optimizations reduced the frequency of calls to ioMSecs to the point
+	   where clock performance became less critical, and we also started to want millisecond-
+	   resolution timers for real time applications such as music. Thus, on the Mac, we''ve
+	   opted to use the microsecond clock for both ioMSecs() and ioMicroMSecs(). */
+	UnsignedWide microTicks;
+
+	Microseconds(&microTicks);
+	return (microTicks.lo / 1000) + (microTicks.hi * 4294967);
+}
+
+int ioMSecs(void) {
+	/* return a time in milliseconds for use in Delays and Time millisecondClockValue */
+	/* Note: This was once a macro based on clock(); it now uses the microsecond clock for
+	   greater resolution. See the comment in ioMicroMSecs(). */
 	UnsignedWide microTicks;
 
 	Microseconds(&microTicks);
@@ -728,10 +688,6 @@ int ioProcessEvents(void) {
 
 #ifndef PLUGIN
 	if (clock() > nextPollTick) {
-//		if (runningOnPowerbook && windowActive) {
-//			UpdateSystemActivity(UsrActivity);
-//		}
-
 		/* time to process events! */
 		while (HandleEvents()) {
 			/* process all pending events */
@@ -800,6 +756,43 @@ int ioSetCursor(int cursorBitsIndex, int offsetX, int offsetY) {
 	macCursor.hotSpot.h = -offsetX;
 	macCursor.hotSpot.v = -offsetY;
 	SetCursor(&macCursor);
+}
+
+int ioSetFullScreen(int fullScreen) {
+	Rect screen = qd.screenBits.bounds;
+	int width, height, maxWidth, maxHeight;
+	int oldWidth, oldHeight;
+
+	if (fullScreen) {
+		oldWidth = stWindow->portRect.right - stWindow->portRect.left;
+		oldHeight = stWindow->portRect.bottom - stWindow->portRect.top;
+		width  = screen.right - screen.left;
+		height = (screen.bottom - screen.top) - 20;
+		if ((oldWidth < width) || (oldHeight < height)) {
+			/* save old size if it wasn''t already full-screen */ 
+			savedWindowSize = (oldWidth << 16) + (oldHeight & 0xFFFF);
+		}
+		MoveWindow(stWindow, 0, 20, true);
+		SizeWindow(stWindow, width, height, true);
+		fullScreenFlag = true;
+	} else {
+		/* get old window size */
+		width  = (unsigned) savedWindowSize >> 16;
+		height = savedWindowSize & 0xFFFF;
+
+		/* minimum size is 64 x 64 */
+		width  = (width  > 64) ?  width : 64;
+		height = (height > 64) ? height : 64;
+
+		/* maximum size is screen size inset slightly */
+		maxWidth  = (screen.right  - screen.left) - 16;
+		maxHeight = (screen.bottom - screen.top)  - 52;
+		width  = (width  <= maxWidth)  ?  width : maxWidth;
+		height = (height <= maxHeight) ? height : maxHeight;
+		MoveWindow(stWindow, 8, 44, true);
+		SizeWindow(stWindow, width, height, true);
+		fullScreenFlag = false;
+	}
 }
 
 int ioShowDisplay(
@@ -1031,17 +1024,23 @@ char * GetAttributeString(int id) {
 	/* This is a hook for getting various status strings back from
 	   the OS. In particular, it allows Squeak to be passed arguments
 	   such as the name of a file to be processed. Command line options
-	   could be reported this way as well.
+	   are reported this way as well, on platforms that support them.
 	*/
-	switch (id) {
-	case 1:
-		return documentName;
-		break;
-	default:
-		success(false);
-		return "";
-		break;
-	}
+
+	// id #0 should return the full name of VM; for now it just returns its path
+	if (id == 0) return vmPath;
+	// id #1 should return imageName, but returns empty string in this release to
+	// ease the transition (1.3x images otherwise try to read image as a document)
+	if (id == 1) return "";  /* will be imageName */
+	if (id == 2) return documentName;
+
+	if (id == 1001) return "Mac OS";
+	if (id == 1002) return "System 7 or Later";
+	if (id == 1003) return "PowerPC or 680xx";
+
+	/* attribute undefined by this platform */
+	success(false);
+	return "";
 }
 
 int attributeSize(int id) {
@@ -1066,12 +1065,74 @@ int getAttributeIntoLength(int id, int byteArrayIndex, int length) {
 	return charsToMove;
 }
 
+/*** Image File Operations ***/
+
+void sqImageFileClose(sqImageFile f) {
+	FSClose(f);
+}
+
+sqImageFile sqImageFileOpen(char *fileName, char *mode) {
+	short int err, err2, fRefNum;
+	unsigned char *pascalFileName;
+
+	pascalFileName = c2pstr(fileName);
+	err = FSOpen(pascalFileName, 0, &fRefNum);
+	if ((err != 0) && (strchr(mode, ''w'') != null)) {
+		/* creating a new file for "save as" */
+		err2 = Create(pascalFileName, 0, ''FAST'', ''STim'');
+		if (err2 == 0) {
+			err = FSOpen(pascalFileName, 0, &fRefNum);
+		}
+	}
+	p2cstr(pascalFileName);
+	if (err != 0) return null;
+
+	if (strchr(mode, ''w'') != null) {
+		/* truncate file if opening in write mode */
+		err = SetEOF(fRefNum, 0);
+		if (err != 0) {
+			FSClose(fRefNum);
+			return null;
+		}
+	}
+	return (sqImageFile) fRefNum;
+}
+
+int sqImageFilePosition(sqImageFile f) {
+	long int currentPosition = 0;
+
+	GetFPos(f, &currentPosition);
+	return currentPosition;
+}
+
+int sqImageFileRead(void *ptr, int elementSize, int count, sqImageFile f) {
+	long int byteCount = elementSize * count;
+	short int err;
+
+	err = FSRead(f, &byteCount, ptr);
+	if (err != 0) return 0;
+	return byteCount / elementSize;
+}
+
+void sqImageFileSeek(sqImageFile f, int pos) {
+	SetFPos(f, fsFromStart, pos);
+}
+
+int sqImageFileWrite(void *ptr, int elementSize, int count, sqImageFile f) {
+	long int byteCount = elementSize * count;
+	short int err;
+
+	err = FSWrite(f, &byteCount, ptr);
+	if (err != 0) return 0;
+	return byteCount / elementSize;
+}
+
 /*** Main ***/
 
 #ifndef PLUGIN
 void main(void) {
 	EventRecord theEvent;
-	FILE *f;
+	sqImageFile f;
 	int reservedMemory, availableMemory;
 
 	InitMacintosh();
@@ -1136,7 +1197,7 @@ void main(void) {
 	//printf("Move this window, then hit CR\n"); getchar();
 
 	/* read the image file and allocate memory for Squeak heap */
-	f = fopen(imageName, "rb");
+	f = sqImageFileOpen(imageName, "rb");
 	if (f == NULL) {
 		/* give a Mac-specific error message if image file is not found */
 		printf("Could not open the Squeak image file ''%s''\n\n", imageName);
@@ -1150,15 +1211,15 @@ void main(void) {
 		printf("Aborting...\n");
 		ioExit();
 	}
-	// setvbuf(f, NULL, _IONBF, 0);  // speeds up image reading, but does not work under CW8
 	readImageFromFileHeapSize(f, availableMemory);
-	fclose(f);
+	sqImageFileClose(f);
 
 	SetWindowTitle(shortImageName);
-	SetWindowSize();
+	ioSetFullScreen(fullScreenFlag);
 
 	/* run Squeak */
 	interpret();
 }
 #endif
-'.
+'
+.

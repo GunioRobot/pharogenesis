@@ -1,0 +1,2 @@
+renameSlot: aSlotName
+	self notYetImplemented

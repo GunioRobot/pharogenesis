@@ -1,0 +1,2 @@
+instantiatedUserScriptsDo: aBlock
+	self costume instantiatedUserScriptsDo: aBlock

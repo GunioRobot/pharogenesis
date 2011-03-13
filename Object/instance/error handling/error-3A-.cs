@@ -9,7 +9,7 @@ error: aString
 		ifTrue:
 			[handler  value: aString value: self]
 		ifFalse: 
-			[DebuggerView
+			[Debugger
 				openContext: thisContext
 				label: aString
 				contents: thisContext shortStack]

@@ -1,2 +1,0 @@
-fileClass
-	^ StandardFileStream

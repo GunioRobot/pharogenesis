@@ -1,0 +1,1 @@
+NetNameResolver class instanceVariableNames: ''

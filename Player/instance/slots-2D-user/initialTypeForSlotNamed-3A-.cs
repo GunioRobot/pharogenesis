@@ -1,0 +1,2 @@
+initialTypeForSlotNamed: aName
+	^ #number

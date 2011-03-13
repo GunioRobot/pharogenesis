@@ -1,0 +1,2 @@
+MessageTally comment:
+'My instances observe and report the amount of time spent in methods. Observing a method implies observing all messages it sends.'

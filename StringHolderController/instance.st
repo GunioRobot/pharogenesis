@@ -1,6 +1,6 @@
 ParagraphEditor
 	subclass: #StringHolderController
-	instanceVariableNames: 'isLockingOn '
-	classVariableNames: 'CodeYellowButtonMessages CodeYellowButtonMenu '
+	instanceVariableNames: ''
+	classVariableNames: 'CodeYellowButtonMenu CodeYellowButtonMessages '
 	poolDictionaries: ''
 	category: 'Interface-Support'

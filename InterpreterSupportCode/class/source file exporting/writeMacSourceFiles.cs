@@ -11,12 +11,16 @@ writeMacSourceFiles
 	self storeString: self macDirectoryFile	onFileNamed: 'sqMacDirectory.c'.
 	self storeString: self macJoystickFile		onFileNamed: 'sqMacJoystick.c'.
 	self storeString: self macNetworkFile		onFileNamed: 'sqMacNetwork.c'.
+	self storeString: self macSerialAndMIDIPortFile	onFileNamed: 'sqMacSerialAndMIDIPort.c'.
 	self storeString: self macSoundFile		onFileNamed: 'sqMacSound.c'.
 	self storeString: self macWindowFile		onFileNamed: 'sqMacWindow.c'.
 	self storeString: self macTCPFile			onFileNamed: 'MacTCP.h'.
 	self storeString: self macAddressXlationFile		onFileNamed: 'AddressXlation.h'.
 	self storeString: self macDNRFile					onFileNamed: 'dnr.c'.
-	self storeString: AbstractSound cCodeForSoundPrimitives
-													onFileNamed: 'sqSoundPrims.c'.
+	Smalltalk at: #AbstractSound ifPresent: [:abstractSound |
+		self storeString: abstractSound cCodeForSoundPrimitives
+													onFileNamed: 'sqSoundPrims.c'].
+	self storeString: self cCodeForMiscPrimitives
+													onFileNamed: 'sqMiscPrims.c'.
 	self storeString: self squeakOldSoundPrimsFile	onFileNamed: 'sqOldSoundPrims.c'.
 	self storeProjectArchiveOnFileNamed: 'projectArchive.sit'.

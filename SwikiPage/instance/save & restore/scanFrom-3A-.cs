@@ -5,5 +5,5 @@ scanFrom: aFile
 	self backupAChunk: aFile.
 	"extract the name"
 	Compiler evaluate: (aFile nextChunk) for: self logged: false.
-	map at: name put: self.
+	map at: name asLowercase put: self.
 	aFile close.

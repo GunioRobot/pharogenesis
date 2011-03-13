@@ -1,0 +1,1 @@
+TextContainer class instanceVariableNames: ''

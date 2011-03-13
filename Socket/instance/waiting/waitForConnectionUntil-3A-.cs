@@ -3,8 +3,9 @@ waitForConnectionUntil: deadline
 
 	| status |
 	status _ self primSocketConnectionStatus: socketHandle.
-	[(status ~= Connected) and: [Time millisecondClockValue < deadline]] whileTrue: [
-		semaphore waitTimeoutMSecs: (deadline - Time millisecondClockValue).
-		status _ self primSocketConnectionStatus: socketHandle].
+	[(status = WaitingForConnection) and: [Time millisecondClockValue < deadline]]
+		whileTrue: [
+			semaphore waitTimeoutMSecs: (deadline - Time millisecondClockValue).
+			status _ self primSocketConnectionStatus: socketHandle].
 
 	^ status = Connected

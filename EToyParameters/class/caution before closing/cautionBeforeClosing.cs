@@ -1,0 +1,2 @@
+cautionBeforeClosing
+	^ CautionBeforeClosing

@@ -1,6 +1,6 @@
 BitBlt
 	subclass: #Pen
-	instanceVariableNames: 'frame location direction penDown '
-	classVariableNames: 'Colors '
+	instanceVariableNames: 'location direction penDown '
+	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Graphics-Primitives'

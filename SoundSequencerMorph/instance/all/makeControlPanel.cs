@@ -1,7 +1,7 @@
 makeControlPanel
 	| b |
 	b _ SimpleButtonMorph new target: self; borderColor: Color black.
-	controlPanel _ LayoutMorph newRow.
+	controlPanel _ AlignmentMorph newRow.
 	controlPanel color: b color; borderWidth: 0; inset: 0.
 	controlPanel hResizing: #shrinkWrap; vResizing: #shrinkWrap; extent: 5@5.
 	controlPanel addMorphBack: (b fullCopy label: 'reset';	actionSelector: #reset).

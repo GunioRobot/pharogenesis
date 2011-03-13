@@ -6,4 +6,5 @@ withIndexCollect: elementAndIndexBlock
 		[:index | result at: index put:
 		(elementAndIndexBlock
 			value: (self at: index)
-			value: index)]
+			value: index)].
+	^ result

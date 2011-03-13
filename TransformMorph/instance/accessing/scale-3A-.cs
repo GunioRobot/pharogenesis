@@ -1,4 +1,6 @@
 scale: newScale
 
+	self changed.
 	transform _ transform withScale: newScale.
-	self changed
+	self layoutChanged.
+	self changed.

@@ -1,6 +1,6 @@
 Object
 	subclass: #ClassCategoryReader
-	instanceVariableNames: 'class category '
+	instanceVariableNames: 'class category changeStamp '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Kernel-Support'
+	category: 'Kernel-Classes'

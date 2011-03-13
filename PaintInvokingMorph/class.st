@@ -1,0 +1,1 @@
+PaintInvokingMorph class instanceVariableNames: ''

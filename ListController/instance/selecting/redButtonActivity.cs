@@ -1,11 +1,13 @@
 redButtonActivity
-	| noSelectionMovement oldSelection selection nextSelection pt scrollFlag |
+	| noSelectionMovement oldSelection selection nextSelection pt scrollFlag firstTime |
 	noSelectionMovement _ true.
 	scrollFlag _ false.
 	oldSelection _ view selection.
-	[sensor redButtonPressed]
+	firstTime _ true.
+	[sensor redButtonPressed | firstTime]
 		whileTrue: 
 			[selection _ view findSelection: (pt _ sensor cursorPoint).
+			firstTime _ false.
 			selection == nil ifTrue:  "Maybe out of box - check for auto-scroll"
 					[pt y < view insetDisplayBox top ifTrue:
 						[self scrollView: view list lineGrid.

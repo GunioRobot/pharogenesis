@@ -1,0 +1,3 @@
+stopRunningScripts
+	super stopRunningScripts.
+	self playfield borderColor: EToyParameters frozenPlayfieldBorderColor

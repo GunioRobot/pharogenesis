@@ -1,0 +1,2 @@
+getRight
+	^ self costume right

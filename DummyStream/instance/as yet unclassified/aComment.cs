@@ -1,2 +1,0 @@
-aComment
-	"The purpose of this class is to absorb all steam messages and do nothing.  This is so ReferenceStream can pretend to write on it while traversing all objects it would normally write.  We need to know what those object are.  8/17/96 tk"

@@ -1,0 +1,2 @@
+maxScriptsBankNumber
+	^ scriptedPlayer maxScriptsBankNumber

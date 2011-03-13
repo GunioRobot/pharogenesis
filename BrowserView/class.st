@@ -1,1 +1,0 @@
-BrowserView class instanceVariableNames: ''

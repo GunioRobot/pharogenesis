@@ -1,0 +1,14 @@
+Date comment:
+'I represent a date. My printing format consists of an array of six elements.
+	
+The first three elements contain the numbers 1, 2, 3, in any order. 1 indicates that the day appears in this position, 2 indicates that the month appears in this position, and 3 indicates that the year appears in this position.
+	
+The fourth element is the ascii value of the character separator or the character itself.
+	
+The fifth element is the month format, where 1 indicates print as a number, 2 indicates print the first three characters, and 3 indicates print the entire name.
+	
+The six element is the year format, where 1 indicates print as a number, and 2 indicates print the number modulo 100.
+	
+Examples:
+	#(1 2 3 32 2 1) prints as 12 Dec 1981
+	#(2 1 3 $/ 1 2) prints as 12/12/81'

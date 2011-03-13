@@ -1,0 +1,2 @@
+frozenPlayfieldColor
+	^ FrozenPlayfieldColor

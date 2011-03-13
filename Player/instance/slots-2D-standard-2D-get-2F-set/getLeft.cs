@@ -1,0 +1,2 @@
+getLeft
+	^ self costume left

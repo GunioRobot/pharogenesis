@@ -5,19 +5,17 @@ changeGridding
 	| response gridInteger gridX gridY |
 	gridX _ togglegrid x.
 	gridY _ togglegrid y.
-	response _ 
-		self promptRequest: 'Current horizontal gridding is: ' 
-						, gridX printString 
-						, '.
+	response _ FillInTheBlank
+		request:
+'Current horizontal gridding is: ', gridX printString, '.
 Type new horizontal gridding.'.
 	response isEmpty
 		ifFalse: 
 			[gridInteger _ Integer readFromString: response.
 			gridX _ ((gridInteger max: 1) min: Display extent x)].
-	response _ 
-		self promptRequest: 'Current vertical gridding is: ' 
-						, gridY printString 
-						, '.
+	response _ FillInTheBlank
+		request:
+'Current vertical gridding is: ', gridY printString, '.
 Type new vertical gridding.'.
 	response isEmpty
 		ifFalse: 

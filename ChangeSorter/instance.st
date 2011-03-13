@@ -1,7 +1,6 @@
 StringHolder
 	subclass: #ChangeSorter
-	instanceVariableNames: 'parent myChangeSet classList messageList buttonView '
-	classVariableNames:
-		'AllChangeSets CngSetSelectors MsgListMenu SingleCngSetMenu CngSetMenu MsgListSelectors ClassSelectors ClassMenu '
+	instanceVariableNames: 'parent myChangeSet currentClassName currentSelector '
+	classVariableNames: 'AllChangeSets '
 	poolDictionaries: ''
 	category: 'Interface-Changes'

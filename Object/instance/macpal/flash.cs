@@ -1,0 +1,2 @@
+flash
+	"Do nothing."

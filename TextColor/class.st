@@ -1,0 +1,1 @@
+TextColor class instanceVariableNames: ''

@@ -1,6 +1,6 @@
 StandardFileStream
 	subclass: #HtmlFileStream
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: 'FilePool '
+	instanceVariableNames: 'prevPreamble '
+	classVariableNames: 'TabThing '
+	poolDictionaries: ''
 	category: 'System-Files'

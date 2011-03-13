@@ -1,9 +1,13 @@
-open  "ChangeSorter new open"
+open
+	"ChangeSorterPluggable new open"
 	| topView |
-	self initialize.
+	World ifNotNil: [^ self openAsMorph].
+	Sensor leftShiftDown ifTrue: [^ self openAsMorph].   "testing"
+
 	topView _ StandardSystemView new.
 	topView model: self.
-	topView label: self label.
-	topView minimumSize: 360@360.
+	myChangeSet ifNil: [self myChangeSet: Smalltalk changes]. 
+	topView label: self labelString.
+	topView borderWidth: 1; minimumSize: 360@360.
 	self openView: topView offsetBy: 0@0.
-	topView controller open		"Let the show begin"
+	topView controller open.

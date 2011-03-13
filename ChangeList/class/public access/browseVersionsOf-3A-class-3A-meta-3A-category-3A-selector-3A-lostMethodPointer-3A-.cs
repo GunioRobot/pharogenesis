@@ -6,4 +6,4 @@ browseVersionsOf: method class: class meta: meta
 			scanVersionsOf: method class: class meta: meta
 			category: category selector: selector].
 	changeList setLostMethodPointer: sourcePointer.
-	self openVersions: changeList name: 'Recent versions of ' , selector
+	self open: changeList name: 'Recent versions of ' , selector multiSelect: false

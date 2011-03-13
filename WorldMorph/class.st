@@ -1,0 +1,1 @@
+WorldMorph class instanceVariableNames: ''

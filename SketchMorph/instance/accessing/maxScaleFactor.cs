@@ -1,0 +1,2 @@
+maxScaleFactor
+	^ 5

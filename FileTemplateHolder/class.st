@@ -1,1 +1,0 @@
-FileTemplateHolder class instanceVariableNames: ''

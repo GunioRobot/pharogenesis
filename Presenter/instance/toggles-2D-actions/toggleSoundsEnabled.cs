@@ -1,0 +1,2 @@
+toggleSoundsEnabled
+	soundsEnabled _ self soundsEnabled not

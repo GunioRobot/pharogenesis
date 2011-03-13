@@ -1,3 +1,3 @@
 goBehind
 
-	owner addMorphBack: self.
+	owner addMorphNearBack: self.

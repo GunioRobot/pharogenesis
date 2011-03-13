@@ -1,5 +1,5 @@
 initialize
-	"Create a new socket handle."
+	"Initialize a new socket handle. If socket creation fails, socketHandle will be set to nil."
 
 	| semaIndex |
 	semaphore _ Semaphore new.
@@ -10,3 +10,7 @@ initialize
 			receiveBufferSize: 8000
 			sendBufSize: 8000
 			semaIndex: semaIndex.
+
+	socketHandle = nil ifTrue: [  "socket creation failed"
+		Smalltalk unregisterExternalObject: semaphore.
+		semaphore _ nil].

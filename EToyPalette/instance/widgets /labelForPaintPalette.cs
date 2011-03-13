@@ -1,0 +1,2 @@
+labelForPaintPalette
+	^ 'Paint'

@@ -1,0 +1,6 @@
+Simple ServerAction that allows a primitive chat session shown as a web page.  It maintains a list of the 20 most recent submissions.  There is a form on the page for typing your contribution to the session. 
+
+The default Swiki has a chat page enabled.
+
+Get to the page by this URL:
+machine:80/chat

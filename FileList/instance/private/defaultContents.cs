@@ -1,4 +1,5 @@
 defaultContents
+
 	list == nil ifTrue: [^ String new].
 	^ String streamContents:
 		[:s | s nextPutAll: 'NO FILE SELECTED'; cr.

@@ -1,0 +1,2 @@
+eToyPalette
+	^ eToyPalette

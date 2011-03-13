@@ -1,4 +1,4 @@
 contents: aString 
 	"Set aString to be the contents of the receiver."
 
-	contents _ aString
+	contents _ aString asString

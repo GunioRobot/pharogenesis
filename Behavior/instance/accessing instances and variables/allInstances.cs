@@ -1,8 +1,7 @@
 allInstances 
-	"Answer a Set of all current instances of the receiver."
+	"Answer a collection of all current instances of the receiver."
 
-	| aCollection |
-	aCollection _ OrderedCollection new.
-	self allInstancesDo:
-		[:x | x == aCollection ifFalse: [aCollection add: x]].
-	^aCollection
+	| all |
+	all _ OrderedCollection new.
+	self allInstancesDo: [:x | x == all ifFalse: [all add: x]].
+	^ all asArray

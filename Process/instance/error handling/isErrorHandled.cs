@@ -1,2 +1,0 @@
-isErrorHandled
-    ^ errorHandler notNil

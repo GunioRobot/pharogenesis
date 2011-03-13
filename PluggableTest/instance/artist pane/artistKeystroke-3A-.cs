@@ -1,5 +1,5 @@
 artistKeystroke: aCharacter
 
-	list2 do: [ :artist |
+	self artistList doWithIndex: [:artist :i |
 		(artist first asLowercase = aCharacter asLowercase) ifTrue: [
-			self artist: artist]].
+			self artist: i]].

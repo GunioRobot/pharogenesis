@@ -1,0 +1,1 @@
+ImageReadWriter class instanceVariableNames: ''

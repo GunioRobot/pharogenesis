@@ -1,10 +1,10 @@
 example
-	"Draw a spiral in gray with a pen that is 4 pixels wide."
+	"Draw a spiral with a pen that is 2 pixels wide."
+	"Display restoreAfter: [Pen example]"
 
-	| bic |  
-	bic _ self new. 
-	bic defaultNib: 4.
-	bic combinationRule: Form under.
-	1 to: 50 do: [:i | bic go: i*4. bic turn: 89]
-
-	"Pen example"
+	| bic |
+	bic _ self new.
+	bic defaultNib: 2.
+	bic color: Color blue.
+	bic combinationRule: Form over.
+	1 to: 100 do: [:i | bic go: i*4. bic turn: 89].

@@ -1,5 +1,5 @@
 drawOn: aCanvas
-	text ifNil: [text _ 'Text' asText allBold].  "Default contents"
+	self setDefaultContentsIfNil.
 	"self drawBoundsOn: aCanvas."  "show line rects for debugging"
 	self startingIndex > text size
 	ifTrue:

@@ -2,6 +2,6 @@ Object
 	subclass: #ProcessorScheduler
 	instanceVariableNames: 'quiescentProcessLists activeProcess '
 	classVariableNames:
-		'UserBackgroundPriority UserSchedulingPriority TimingPriority SystemBackgroundPriority BackgroundProcess SystemRockBottomPriority HighIOPriority LowIOPriority UserInterruptPriority '
+		'BackgroundProcess HighIOPriority LowIOPriority SystemBackgroundPriority SystemRockBottomPriority TimingPriority UserBackgroundPriority UserInterruptPriority UserSchedulingPriority '
 	poolDictionaries: ''
 	category: 'Kernel-Processes'

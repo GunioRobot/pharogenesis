@@ -1,1 +1,0 @@
-MessageListController class instanceVariableNames: ''

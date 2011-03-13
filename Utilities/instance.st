@@ -1,6 +1,6 @@
 Object
 	subclass: #Utilities
 	instanceVariableNames: ''
-	classVariableNames: 'CommonRequestStrings RecentSubmissions AuthorInitials DirectTextToScreenPoint '
+	classVariableNames: 'AuthorInitials CommonRequestStrings RecentSubmissions UpdateUrlLists '
 	poolDictionaries: ''
 	category: 'System-Support'

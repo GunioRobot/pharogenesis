@@ -4,5 +4,7 @@ save: characterStream
 
 	sensor keyboard.		"flush character"
 	self closeTypeIn: characterStream.
+	self controlTerminate.
 	self accept.
+	self controlInitialize.
 	^ true

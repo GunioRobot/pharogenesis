@@ -1,0 +1,1 @@
+SketchEditorMorph class instanceVariableNames: ''

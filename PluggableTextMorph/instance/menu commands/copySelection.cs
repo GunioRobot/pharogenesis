@@ -1,0 +1,2 @@
+copySelection
+	textMorph editor copySelection

@@ -1,0 +1,1 @@
+When asked to process: a Web request, this ServerAction simply executes its processBlock -- the simplest possible server action. It is the responsibility of the block to send a reply: to the request.

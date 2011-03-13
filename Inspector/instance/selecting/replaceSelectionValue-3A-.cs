@@ -2,8 +2,11 @@ replaceSelectionValue: anObject
 	"The receiver has a list of variables of its inspected object. One of these 
 	is selected. The value of the selected variable is set to the value, 
 	anObject."
-	| basicIndex |
-	selectionIndex = 1 ifTrue: [^ object].
+	| basicIndex si |
+	selectionIndex <= 2 ifTrue: [
+		self toggleIndex: (si _ selectionIndex).  
+		self toggleIndex: si.
+		^ object].
 	object class isVariable
 		ifFalse: [^ object instVarAt: selectionIndex - 2 put: anObject].
 	basicIndex _ selectionIndex - 2 - object class instSize.

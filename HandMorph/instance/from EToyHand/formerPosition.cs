@@ -1,0 +1,2 @@
+formerPosition
+	^ formerPosition

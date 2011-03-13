@@ -1,0 +1,1 @@
+Base64MimeConverter class instanceVariableNames: ''

@@ -4,17 +4,12 @@ showTemporaryCursor: cursorOrNil hotSpotOffset: hotSpotOffset
 	self changed.
 	cursorOrNil == nil ifTrue: [
 		temporaryCursor _ nil.
-		temporaryCursorOffset _ 0@0.
 		bounds _ self position extent: NormalCursor extent.
+		temporaryCursorOffset _ 0@0.
 	] ifFalse: [
 		temporaryCursor _ ColorForm mappingWhiteToTransparentFrom: cursorOrNil.
-		temporaryCursorOffset _ hotSpotOffset.
-		bounds _ self position extent: temporaryCursor extent].
+		bounds _ self position - hotSpotOffset extent: temporaryCursor extent.
+		temporaryCursorOffset _ hotSpotOffset].
 	self userInitials: userInitials.
 	self layoutChanged.
 	self changed.
-
-	UseHardwareCursor ifTrue: [
-		(cursorOrNil isMemberOf: Cursor)
-			ifTrue: [cursorOrNil show]
-			ifFalse: [Cursor normal show]].

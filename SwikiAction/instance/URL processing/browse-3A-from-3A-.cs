@@ -3,11 +3,13 @@ browse: pageRef from: request
 
 	| formattedPage |
 	formattedPage _ pageRef copy.
+
 	"Make a copy, then format the text."
 	formattedPage formatted: (HTMLformatter swikify: pageRef text
 			linkhandler: [:link | urlmap
 					linkFor: link
 					from: request peerName
 					storingTo: OrderedCollection new]).
-	request reply: (HTMLformatter evalEmbedded: (self fileContents: source ,'page.html')
-			with: formattedPage).
+		
+	"format using the cached formatter"
+	request reply: ((self formatterFor: 'page') format: formattedPage). 

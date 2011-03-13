@@ -6,5 +6,6 @@ on: anObject list: getListSel selected: getSelectionSel changeSelected: setSelec
 	setSelectionSelector _ setSelectionSel.
 	getMenuSelector _ getMenuSel.
 	keystrokeActionSelector _ keyActionSel.
+	autoDeselect _ true.
 	self borderWidth: 1.
 	self list: self getList.

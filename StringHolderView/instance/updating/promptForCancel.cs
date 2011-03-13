@@ -3,7 +3,7 @@ promptForCancel
 	| okToCancel stripes |
 	self topView isCollapsed ifTrue:
 		[(self confirm: 'Changes have not been saved.
-Is it OK to cancel those changes?') ifTrue: [model unlock].
+Is it OK to cancel those changes?') ifTrue: [model clearUserEditFlag].
 		^ self].
 	stripes _ Form extent: 16@16 fromStipple: 16r36C9.
 	Display border: self insetDisplayBox width: 4
@@ -14,4 +14,4 @@ Is it OK to cancel those changes?'.
 			rule: Form reverse fillColor: stripes.
 	okToCancel ifTrue:
 		[self updateDisplayContents.
-		model unlock]
+		model clearUserEditFlag].

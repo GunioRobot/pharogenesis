@@ -8,4 +8,7 @@ messageCategoryListIndex: anInteger
 			ifTrue: [#none]
 			ifFalse: [#newMessage].
 	contents _ nil.
-	self changed: #messageCategorySelectionChanged
+	self changed: #messageCategorySelectionChanged.
+	self changed: #messageCategoryListIndex.	"update my selection"
+	self changed: #messageList.
+	self changed: #contents.

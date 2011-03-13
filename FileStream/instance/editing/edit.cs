@@ -1,7 +1,4 @@
 edit
-	"Create and schedule a FileView of the contents of the receiver. The 
-	label of the view is the name of the receiver."
+	"Create and schedule an editor on this file."
 
-	FileModel 
-		open: (FileModel fileStream: self)
-		named: self file fullName
+	FileList openEditorOn: self editString: nil.

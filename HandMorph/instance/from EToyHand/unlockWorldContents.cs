@@ -1,0 +1,2 @@
+unlockWorldContents
+	owner unlockContents

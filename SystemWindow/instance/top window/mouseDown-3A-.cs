@@ -1,0 +1,2 @@
+mouseDown: evt
+	self activate

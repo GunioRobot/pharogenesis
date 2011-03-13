@@ -1,0 +1,2 @@
+labelForStuffPalette
+	^ 'Scraps'

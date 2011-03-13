@@ -1,4 +1,4 @@
 isSystemDefined
-	"Answer whether the receiver is a system-defined class or a unique-instance user subclass"
+	"Answer true if the receiver is a system-defined class, and not a UniClass (an instance-specific lightweight class)"
 
-	^ self name endsWithDigit not
+	^ self == self officialClass

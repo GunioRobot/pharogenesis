@@ -1,3 +1,0 @@
-loudness
-
-	^ amplitude

@@ -1,6 +1,6 @@
 StringHolder
 	subclass: #SyntaxError
-	instanceVariableNames: 'class selector category selectionIndex debugger '
+	instanceVariableNames: 'class selector category debugger '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Interface-Syntax Errors'
+	category: 'Interface-Debugger'

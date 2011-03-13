@@ -1,1 +1,0 @@
-InspectListController class instanceVariableNames: ''

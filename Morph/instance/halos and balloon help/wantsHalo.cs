@@ -1,2 +1,2 @@
 wantsHalo
-	^ false
+	^ owner ~~ nil and: [owner wantsHaloFor: self]

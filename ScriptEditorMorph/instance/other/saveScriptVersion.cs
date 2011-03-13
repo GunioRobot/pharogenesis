@@ -1,0 +1,2 @@
+saveScriptVersion
+	self userScriptObject saveScriptVersion: self setTimeStamp

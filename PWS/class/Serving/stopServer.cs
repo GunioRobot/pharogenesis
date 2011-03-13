@@ -1,4 +1,7 @@
 stopServer
-	"Stop the server."
+	"Shut down the server."
 
-	ServerStatus := #quit
+	ServerProcess	ifNotNil: [ServerProcess terminate].
+	ServerPort		ifNotNil: [ServerPort destroy].
+	ServerLog		ifNotNil: [ServerLog close].
+	ServerProcess _ ServerPort _ ServerLog _ ClientNameCache _ nil.

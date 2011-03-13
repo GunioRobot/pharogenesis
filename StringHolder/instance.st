@@ -1,6 +1,6 @@
 Model
 	subclass: #StringHolder
-	instanceVariableNames: 'contents isLocked '
-	classVariableNames: 'Workspace '
+	instanceVariableNames: 'contents '
+	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Interface-Support'

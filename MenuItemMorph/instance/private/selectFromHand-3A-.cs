@@ -1,9 +1,10 @@
 selectFromHand: aHand
 
-	isSelected _ true.
-	self changed.
+	self isSelected: true.
 	aHand newMouseFocus: self.
 	subMenu ifNotNil: [
 		subMenu delete.
-		subMenu popUpAt: self bounds topRight forHand2: aHand.
-		subMenu popUpOwner: self].
+		subMenu
+			popUpAt: self bounds topRight + (10@0)
+			forHand: aHand
+			from: self].

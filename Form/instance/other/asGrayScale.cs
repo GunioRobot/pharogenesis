@@ -6,6 +6,7 @@ asGrayScale
 		f32 _ Form extent: width@height depth: 32.
 		self displayOn: f32.
 		f32 asGrayScale].
+	self unhibernate.
 	srcForm _ Form extent: (width * 4)@height depth: 8.
 	srcForm bits: bits.
 	result _ ColorForm extent: width@height depth: 8.

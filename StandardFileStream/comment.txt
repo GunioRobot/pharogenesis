@@ -1,0 +1,2 @@
+StandardFileStream comment:
+'Provides a simple, platform-independent, interface to a file system.  This initial version ignores issues of Directories etc.  The instance-variable fallbackStream at the moment holds an instance of HFSMacFileStream, to bridge us to the new world while in the old.  The instance variable rwmode, inherited from class PositionableStream, here is used to hold a Boolean -- true means opened for read-write, false means opened for read-only.  2/12/96 sw'

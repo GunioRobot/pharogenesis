@@ -1,2 +1,0 @@
-accept
-	^ super accept

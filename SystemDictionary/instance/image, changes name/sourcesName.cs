@@ -1,4 +1,3 @@
 sourcesName
-	"Answer the full path for to the sources file, which is initially assumed to be in the VM's directory."
-
-	^ self vmPath, 'SqueakV1.sources'
+	"Answer the full path to the version-stable source code"
+	^ self vmPath , 'SqueakV2' , FileDirectory dot , 'sources'

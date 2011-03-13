@@ -1,11 +1,6 @@
 fromUser
-	"Answer an instance of me obtained by requesting the user to type some 
-	characters into a prompter (a FillInTheBlank object)."
+	"Answer an instance of me obtained by requesting the user to type a string."
+	"Text fromUser"
 
-	FillInTheBlank
-		request: 'Type text followed by carriage return'
-		displayAt: (50@ Display boundingBox height//2)
-		centered: false
-		action: [:result]
-		initialAnswer: ''.
-	^self fromString: result
+	^ self fromString:
+		(FillInTheBlank request: 'Enter text followed by carriage return')

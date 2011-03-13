@@ -23,4 +23,4 @@ contextStackIndex: anInteger oldContextWas: oldContext
 					self selectedClassOrMetaClass parserClass new parseArgsAndTemps: contents notifying: nil].
 	contextVariablesInspector object: self selectedContext.
 	receiverInspector object: self receiver.
-	newMethod ifFalse: [self changed: #pc]
+	newMethod ifFalse: [self changed: #contentsSelection]

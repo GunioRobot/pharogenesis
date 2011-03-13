@@ -3,7 +3,7 @@ drawOn: aCanvas
 	super drawOn: aCanvas.
 	scale _ (self innerBounds width-1) / (stop-start) asFloat.
 	x1 _ self innerBounds left.
-	y1 _ self innerBounds bottom.
+	y1 _ self innerBounds bottom - 1.
 	y2 _ y1 - minorTickLength.
 	start to: stop by: minorTick do:
 		[:v | x _ x1 + (scale*v).

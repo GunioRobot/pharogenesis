@@ -1,0 +1,2 @@
+clippingMorphbosfcep0
+	^ PasteUpMorph

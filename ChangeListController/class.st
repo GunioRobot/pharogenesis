@@ -1,1 +1,0 @@
-ChangeListController class instanceVariableNames: ''

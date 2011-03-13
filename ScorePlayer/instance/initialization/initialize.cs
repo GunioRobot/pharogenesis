@@ -7,3 +7,4 @@ initialize
 	rightVols _ Array new.
 	muted _ Array new.
 	rate _ 1.0.
+	repeat _ false.

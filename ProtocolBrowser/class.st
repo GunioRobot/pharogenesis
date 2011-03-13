@@ -1,0 +1,1 @@
+ProtocolBrowser class instanceVariableNames: ''

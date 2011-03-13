@@ -1,16 +1,16 @@
-readFrom: aFile
-	"Reads the receiver from the file in the format:
+readFrom: aBinaryStream
+	"Reads the receiver from the given binary stream with the format:
 		depth, extent, offset, bits."
 	| offsetX offsetY |
-	depth _ aFile next.
+	depth _ aBinaryStream next.
 	(depth isPowerOfTwo and: [depth between: 1 and: 32])
-		ifFalse: [self halt  "invalid depth"].
-	width _ aFile nextWord.
-	height _ aFile nextWord.
-	offsetX  _ aFile nextWord.
-	offsetY _ aFile nextWord.
+		ifFalse: [self error: 'invalid depth; bad Form file?'].
+	width _ aBinaryStream nextWord.
+	height _ aBinaryStream nextWord.
+	offsetX  _ aBinaryStream nextWord.
+	offsetY _ aBinaryStream nextWord.
 	offsetX > 32767 ifTrue: [offsetX _ offsetX - 65536].
 	offsetY > 32767 ifTrue: [offsetY _ offsetY - 65536].
-	bits _ Bitmap newFromStream: aFile.
-	bits size = self bitsSize ifFalse: [self halt "incompatible bitmap size"].
+	bits _ Bitmap newFromStream: aBinaryStream.
+	bits size = self bitsSize ifFalse: [self error: 'wrong bitmap size; bad Form file?'].
 	^ self

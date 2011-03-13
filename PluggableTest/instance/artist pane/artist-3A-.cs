@@ -1,4 +1,4 @@
-artist: aString
+artist: anInteger
 
-	selection2 _ aString.
+	artistIndex _ anInteger.
 	self changed: #artist.

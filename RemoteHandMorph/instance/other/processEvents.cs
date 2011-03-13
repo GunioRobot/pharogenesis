@@ -8,13 +8,16 @@ processEvents
 			remoteWorldExtent _ evt cursorPoint.
 			^ self].
 
-		(evt yellowButtonPressed and:
-		 [lastEvent yellowButtonPressed not]) ifTrue: [
+		(evt anyButtonPressed and:
+		 [evt controlKeyPressed and:
+		 [lastEvent anyButtonPressed not]]) ifTrue:
+			[eventTransform _ MorphicTransform identity.
 			lastEvent _ evt.
 			^ self invokeMetaMenu: evt].
 
 		(evt blueButtonPressed and:
-		 [lastEvent blueButtonPressed not]) ifTrue: [
+		 [lastEvent blueButtonPressed not]) ifTrue:
+			[eventTransform _ MorphicTransform identity.
 			lastEvent _ evt.
 			^ self specialGesture: evt].
 

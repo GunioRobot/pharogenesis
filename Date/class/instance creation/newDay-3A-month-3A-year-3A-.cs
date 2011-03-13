@@ -2,7 +2,8 @@ newDay: day month: monthName year: year
 	"Answer an instance of me which is the day'th day of the month named 
 	 monthName in the year'th year. The year may be specified as the actual 
 	 number of years since the beginning of the Roman calendar or the 
-	 number of years since the beginning of the century."
+	 number of years since 1900.  **Note** two digit dates are always from 1900.
+		1/1/01 will NOT mean 2001."
 	"Tolerate a month index instead of a month name."
 
 	| monthIndex daysInMonth firstDayOfMonth |

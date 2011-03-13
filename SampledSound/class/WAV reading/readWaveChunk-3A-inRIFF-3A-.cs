@@ -1,19 +1,18 @@
 readWaveChunk: chunkType inRIFF: stream
-	"Search the stream for a format chunk and return its contents"
-	| dwLength fourcc |
-	"Get to binary and skip 'RIFF'"
-	stream reset; binary; skip: 4.
-	"Read length of all data"
-	dwLength := self next32BitWord: false from: stream.
-	"Get RIFF contents type "
-	fourcc := self readChunkTypeFrom: stream.
-	fourcc = 'WAVE' ifFalse:[^nil]. "We can only read WAVE files here"
-	"Search for chunk"
-	[fourcc := self readChunkTypeFrom: stream.
-	dwLength := self next32BitWord: false from: stream.
-	fourcc = chunkType] whileFalse:[
-		"Skip chunk - rounded to word boundary"
-		stream skip: (dwLength + 1 bitAnd: 16rFFFFFFFE).
-		stream atEnd ifTrue:[^'']].
-	"Return raw data"
-	^stream next: dwLength
+	"Search the stream for a format chunk of the given type and return its contents."
+
+	| id count |
+	stream reset; binary.
+	stream skip: 8.  "skip 'RIFF' and total length"
+	id _ (stream next: 4) asString.  "contents type"
+	id = 'WAVE' ifFalse: [^ ''].     "content type must be WAVE"
+
+	"search for a chunk of the given type"
+	[id _ (stream next: 4) asString.
+	 count _ self next32BitWord: false from: stream.
+	 id = chunkType] whileFalse: [
+		"skip this chunk, rounding length up to a word boundary"
+		stream skip: (count + 1 bitAnd: 16rFFFFFFFE).
+		stream atEnd ifTrue: [^ '']].
+
+	^ stream next: count  "return raw chunk data"

@@ -10,6 +10,6 @@ size24
 	See the method hackDefaultStyle to see how this can be used
 "
 	^ (StrikeFont new readFromStrike2Stream:
-		(ExternalStream on: aString asByteArray from: 1 to: aString size))
+		(ReadWriteStream on: aString asByteArray from: 1 to: aString size))
 		name: self name , (pointSize < 10 ifTrue: ['0' , pointSize printString]
 										ifFalse: [pointSize printString])

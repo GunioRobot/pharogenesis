@@ -7,7 +7,11 @@ handleMouseDown: evt
 
 	clickState ~~ #idle ifTrue: [^ self checkForDoubleClick: evt].
 
-	m _ self recipientForMouseDown: evt.
+	m _ self recipientForMouseDown:
+			(gridOn  "Don't grid when determining recipient"
+				ifTrue: ["Should really use original cursorPoint, but this should do"
+						evt copy setCursorPoint: (Sensor cursorPoint - owner viewBox topLeft)]
+				ifFalse: [evt]).
 	m ifNotNil:
 		[aHalo _ self world haloMorphOrNil.
 		(aHalo == nil or: [aHalo staysUpWhenMouseIsDownIn: m])

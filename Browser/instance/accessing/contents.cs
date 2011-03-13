@@ -24,4 +24,8 @@ contents
 		ifTrue: [^ self selectedClassOrMetaClass sourceCodeTemplate].
 	editSelection == #editMessage
 		ifTrue: [^ self selectedMessage].
+	editSelection == #byteCodes ifTrue: [
+		^ (self selectedClassOrMetaClass compiledMethodAt: 
+				self selectedMessageName) symbolic asText].
+
 	self error: 'Browser internal error: unknown edit selection.'

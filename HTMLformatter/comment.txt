@@ -1,0 +1,1 @@
+HTMLformatter class (instances don't know anything) knows alot about HTML formatting: Creating forms, pages, different widgets, etc.  It also knows how to process Smalltalk embedded within an HTML document.

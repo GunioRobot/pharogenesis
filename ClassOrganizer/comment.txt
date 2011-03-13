@@ -1,0 +1,2 @@
+ClassOrganizer comment:
+'I represent method categorization information for classes.'

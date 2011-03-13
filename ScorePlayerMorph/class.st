@@ -1,0 +1,1 @@
+ScorePlayerMorph class instanceVariableNames: ''

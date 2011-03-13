@@ -6,4 +6,4 @@ browseFile: fileName    "ChangeList browseFile: 'AutoDeclareFix.st'"
 		[changeList _ self new
 			scanFile: changesFile from: 0 to: changesFile size].
 	changesFile close.
-	self open: changeList name: fileName , ' log'
+	self open: changeList name: fileName , ' log' multiSelect: true

@@ -1,7 +1,7 @@
 write4Bytes: bits 
 	"Avoid overhead of large integers and nextWord:put:."
 	| posBits bytes |
-	bits positive
+	bits >= 0
 		ifTrue: [posBits _ bits]
 		ifFalse: ["Change rep to twos complement."
 				posBits _ 16rFFFFFFFF+(bits+1)].

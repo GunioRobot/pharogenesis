@@ -1,12 +1,13 @@
 defaultNib: widthInteger 
-	"Nib is the tip of a pen. This sets up the pen, with a nib of width
-	widthInteger. Alternatively, try
+	"Nib is the tip of a pen. This sets up the pen, with a nib of width widthInteger. You can also set the shape of the pen nib using:
 		roundNib: widthInteger, or
-		sourceForm: aForm
-	to set the shape of the tip. For example, try:
-		| bic | bic _ Pen new sourceForm: Cursor normal.
-		bic combinationRule: Form paint; turn: 90.
-		10 timesRepeat: [bic down; go: 10; up; go: 20].
-"
+		squareNib: widthInteger, or
+		sourceForm: aForm"
+"Example:
+	| bic |
+	bic _ Pen new sourceForm: Cursor normal.
+	bic combinationRule: Form paint; turn: 90.
+	10 timesRepeat: [bic down; go: 3; up; go: 10]."
+
 	self color: Color black.
-	self squareNib: widthInteger
+	self squareNib: widthInteger.

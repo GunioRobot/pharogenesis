@@ -1,3 +1,0 @@
-aReadThis
-	"When a list pane in a complex window has fairl simple action, you can use an instance of GeneralListView directly.  You don't need to make a separate class for your kind of list pane.
-	The usual reason for having a special class is to supply the default controller class.  Here we normally us GeneralListController.  However, the user can submit his own class to controllerClass: and use that."

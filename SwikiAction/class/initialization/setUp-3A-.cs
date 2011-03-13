@@ -2,7 +2,7 @@ setUp: actionName
 	"Set up a named Swiki"
 	| action map page dir |
 	action _ self new.
-	map _ URLmap new.
+	map _ self mapClass new.	"URLmap or PURLmap"
 	action map: map.
 	action name: actionName.
 	action source: 'swiki',(ServerAction pathSeparator).
@@ -24,3 +24,4 @@ actionName).
 				(ServerAction pathSeparator),'FormattingRules') contentsOfEntireFile)
 with: actionName).
 	PWS link: actionName to: action.
+	^action

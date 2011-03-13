@@ -1,6 +1,6 @@
 Object
 	subclass: #ChangeSet
-	instanceVariableNames: 'classChanges methodChanges classRemoves name '
+	instanceVariableNames: 'classChanges methodChanges classRemoves methodRemoves name preamble postscript '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Kernel-Support'
+	category: 'Interface-Changes'

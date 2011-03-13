@@ -19,6 +19,15 @@ copyBits
 	29	rgbMin: sourceWord bitInvert32 with: destinationWord
 "
 	<primitive: 96>
+
+	"Check for compressed source, destination or halftone forms"
+	((sourceForm isKindOf: Form) and: [sourceForm unhibernate])
+		ifTrue: [^ self copyBits].
+	((destForm isKindOf: Form) and: [destForm unhibernate])
+		ifTrue: [^ self copyBits].
+	((halftoneForm isKindOf: Form) and: [halftoneForm unhibernate])
+		ifTrue: [^ self copyBits].
+
 	"Check for unimplmented rules"
 	combinationRule = Form oldPaint ifTrue: [^ self paintBits].
 	combinationRule = Form oldErase1bitShape ifTrue: [^ self eraseBits].

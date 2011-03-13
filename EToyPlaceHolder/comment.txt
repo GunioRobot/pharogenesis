@@ -1,0 +1,2 @@
+EToyPlaceHolder comment:
+'A place holder for an EToyHolder for an e-toy known to be available on a server, or on disk, but not presently in memory.  When called upon to, the receiver replaces itself with a legit EToyHolder.'

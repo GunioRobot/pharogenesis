@@ -1,4 +1,0 @@
-unshiftedYellowButtonActivity
-	controller controlTerminate.
-	controller unshiftedYellowButtonActivity.
-	controller controlInitialize

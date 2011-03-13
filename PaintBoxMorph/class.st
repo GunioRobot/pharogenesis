@@ -1,0 +1,1 @@
+PaintBoxMorph class instanceVariableNames: ''

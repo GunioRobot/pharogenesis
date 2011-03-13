@@ -15,7 +15,10 @@ windowMenu
 							ifTrue: ['tile windows']
 							ifFalse: ['stagger windows']))
 		lines: #(3 5 6)
-		selections: #(findWindow chooseDirtyBrowser indicateWindowsWithUnacceptedInput collapseAll expandAll closeUnchangedWindows fastWindows changeWindowPolicy)
+		selections: #(findWindow chooseDirtyBrowser chooseDirtyWindow
+				collapseAll expandAll
+				closeUnchangedWindows
+				fastWindows changeWindowPolicy)
 
 "
 ScreenController new windowMenu startUp

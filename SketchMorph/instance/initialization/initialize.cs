@@ -1,7 +1,8 @@
 initialize
 
 	super initialize.
-	originalForm _ (Form extent: 14@10 depth: 8) fillColor: Color gray.
+	originalForm _ (ScriptingSystem formAtKey: 'Painting') deepCopy.
+	"(Form extent: 14@10 depth: 8) fillColor: Color gray."
 	rotationCenter _ 7@5.		"relative to the top-left corner of the Form"
 	rotationDegrees _ 0.0.		"clockwise angle of rotation"
 	rotationStyle _ #normal.		"styles: #normal, #leftRight, #upDown, or #none"

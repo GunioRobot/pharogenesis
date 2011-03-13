@@ -1,0 +1,3 @@
+defaultTitle
+
+	^ 'Untitled E-Toy'

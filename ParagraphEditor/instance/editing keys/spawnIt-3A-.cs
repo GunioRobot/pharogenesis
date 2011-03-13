@@ -1,6 +1,8 @@
 spawnIt: characterStream 
-	"Triggered by Cmd-o; spawn a new code window, if it makes sense.  Reimplemented by BrowserCodeController  2/1/96 sw"
+	"Triggered by Cmd-o; spawn a new code window, if it makes sense."
 
-	sensor keyboard.		"flush character"
-	view flash.
+	self controlTerminate.
+	sensor keyboard.
+	self spawn.
+	self controlInitialize.
 	^ true

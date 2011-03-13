@@ -1,0 +1,1 @@
+TextKern class instanceVariableNames: ''

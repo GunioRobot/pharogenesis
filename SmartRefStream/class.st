@@ -1,0 +1,1 @@
+SmartRefStream class instanceVariableNames: ''

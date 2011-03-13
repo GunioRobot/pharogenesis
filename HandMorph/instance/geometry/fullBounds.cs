@@ -5,4 +5,4 @@ fullBounds
 	bnds _ super fullBounds.
 	submorphs isEmpty
 		ifTrue: [^ bnds ]
-		ifFalse: [^ bnds topLeft corner: bnds  bottomRight + self shadowOffset].
+		ifFalse: [^ bnds topLeft corner: bnds bottomRight + self shadowOffset].

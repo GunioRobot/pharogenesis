@@ -1,0 +1,2 @@
+useUniformTileColor
+	self color: ScriptingSystem uniformTileInteriorColor

@@ -1,0 +1,2 @@
+inspectArgument
+	argument inspect

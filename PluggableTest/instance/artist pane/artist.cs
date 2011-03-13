@@ -1,3 +1,3 @@
 artist
 
-	^ selection2
+	^ artistIndex

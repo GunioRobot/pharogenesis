@@ -3,4 +3,4 @@ AbstractSound
 	instanceVariableNames: 'sounds currentIndex '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Sound'
+	category: 'System-Sound'

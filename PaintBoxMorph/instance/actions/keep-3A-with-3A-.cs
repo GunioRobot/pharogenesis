@@ -5,7 +5,6 @@ keep: keepButton with: keepSelector
 	keepButton ifNotNil: [keepButton state: #off].
 	(ss _ self world findA: SketchEditorMorph) 
 		ifNotNil: [ss save]
-		ifNil: [keepSelector == #silent ifTrue: [^ self].
-			PopUpMenu notify: 'You are currently not painting.  Choose 
-Parts and drag out a new object.'
-			"Later have to change wording for non EToy painting"].
+		ifNil:
+		[keepSelector == #silent ifTrue: [^ self].
+		self notCurrentlyPainting].

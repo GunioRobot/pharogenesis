@@ -1,6 +1,6 @@
 Object
 	subclass: #AbstractSound
-	instanceVariableNames: 'samplesUntilNextControl '
-	classVariableNames: ''
+	instanceVariableNames: 'envelopes mSecsSinceStart samplesUntilNextControl scaledVol scaledVolIncr scaledVolLimit '
+	classVariableNames: 'MaxScaledValue ScaleFactor Sounds '
 	poolDictionaries: ''
-	category: 'Sound'
+	category: 'System-Sound'

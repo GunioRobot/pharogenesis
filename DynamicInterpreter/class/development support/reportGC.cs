@@ -20,4 +20,4 @@ reportGC		"CacheInterpreter reportGC"
 			report nextPutAll: classAndSelector , ' --'.
 			dangerous do: [:dangerSelector | report space; nextPutAll: dangerSelector].
 			report cr]].
-	StringHolderView open: (StringHolder new contents: result) label: 'GC-unsafe sends'
+	(StringHolder new contents: result) openLabel: 'GC-unsafe sends'

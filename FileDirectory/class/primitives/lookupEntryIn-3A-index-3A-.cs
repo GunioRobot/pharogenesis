@@ -1,9 +1,0 @@
-lookupEntryIn: pathName index: index
-	"Look up the index-th entry of the directory with the given path (starting from the root of the file hierarchy) and return an array containing:
-
-	<name> <creationTime> <modificationTime> <dirFlag> <fileSize>
-
-	 The creation and modification times are in seconds since the start of the Smalltalk time epoch. DirFlag is true if the entry is a directory. FileSize the file size in bytes or zero for directories. The primitive returns nil when index is past the end of the directory. It fails if the given pathName is bad."
-
- 	<primitive: 162>
-	self primitiveFailed.

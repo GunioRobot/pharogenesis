@@ -1,0 +1,1 @@
+An in-memory stream that can be used to fileIn code from the network.  Knows its ServerFile, and thus its name, path, etc.

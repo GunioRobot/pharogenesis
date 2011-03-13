@@ -1,0 +1,2 @@
+Controller comment:
+'A Controller coordinates a View, its model, and user actions. It provides scheduling (control) behavior to determine when the user wants to communicate with the model or view.'

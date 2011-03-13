@@ -1,9 +1,9 @@
 assimilateAllChangesFoundIn: aChangeSet
-	"Make all changes in aChangeSet take effect on self as it they happened later.  *** classes renamed in aChangeSet may have have problems"
+	"Make all changes in aChangeSet take effect on self as if they happened just now.  *** classes renamed in aChangeSet may have have problems"
 
 	| cls info selector pair |
 	aChangeSet changedClassNames do: [:className |
-		(cls _ Smalltalk classNamed: className) notNil ifTrue:
+	  (cls _ Smalltalk classNamed: className) ifNotNil:
 		[info _ aChangeSet classChangeAt: className.
 		info do: [:each | self atClass: cls add: each].
 
@@ -23,6 +23,4 @@ assimilateAllChangesFoundIn: aChangeSet
 										put: pair]]
 				ifFalse: 
 					[self atSelector: assoc key class: cls put: assoc value]]]].
-	self flag: #developmentNote.  "the following cannot work, since the class will not exist; SW comments this out 8/91 because it thwarts integration!"
-"aChangeSet classRemoves do:
-		[:removed | self removeClass: (Smalltalk classNamed: removed)] "
+		classRemoves addAll: aChangeSet classRemoves.	"names of them"

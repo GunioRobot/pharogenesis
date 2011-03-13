@@ -1,0 +1,2 @@
+paintPalette
+	^ paintPalette

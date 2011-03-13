@@ -16,9 +16,8 @@ instVarInfo: anObject
 		"Note that Dictionary must not change its implementation!  If it does, how do we read this reading information?"
 	refs keysDo: [:each | 
 		cls _ each class.
-		(cls category asString = 'HyperSqueak-UserObjects') 
-			ifTrue: [structures at: cls officialClass name put: false]
- 			ifFalse: [structures at: cls name put: false]].
+		cls class == Metaclass ifFalse: [
+			structures at: cls name put: false]].
 	"Save work by only computing inst vars once for each class"
 	newSupers _ Set new.
 	structures keysDo: [:nm | 

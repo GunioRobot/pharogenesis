@@ -1,6 +1,5 @@
 lastEditTime
 	"Describe when this page was edited last"
-
 	| timeOfAccept tt timeOfReq |
 	timeOfAccept _ (tt _ self timeOfAccept) asSeconds + date asSeconds.
 	editReqDate ifNotNil: [

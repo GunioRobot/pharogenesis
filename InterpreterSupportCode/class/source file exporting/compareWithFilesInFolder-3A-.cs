@@ -44,6 +44,10 @@ compareWithFilesInFolder: folderName
 	InterpreterSupportCode macNetworkFile
 		ifFalse: [self inform: 'File sqMacNetwork.c differs from the version stored in this image.'].
 
+	(dir readOnlyFileNamed: 'sqMacSerialAndMIDIPort.c') contentsOfEntireFile =
+	InterpreterSupportCode macSerialAndMIDIPortFile
+		ifFalse: [self inform: 'File sqMacSerialAndMIDIPort.c differs from the version stored in this image.'].
+
 	(dir readOnlyFileNamed: 'sqMacSound.c') contentsOfEntireFile =
 	InterpreterSupportCode macSoundFile
 		ifFalse: [self inform: 'File sqMacSound.c differs from the version stored in this image.'].

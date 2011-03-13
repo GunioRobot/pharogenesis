@@ -3,7 +3,7 @@ destroy
 
 	socketHandle = nil
 		ifFalse: [
-			self primSocketDestroy: socketHandle.
+			self isValid ifTrue: [self primSocketDestroy: socketHandle].
 			Smalltalk unregisterExternalObject: semaphore.
 			socketHandle _ nil.
 			semaphore _ nil].

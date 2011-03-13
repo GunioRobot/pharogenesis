@@ -75,4 +75,9 @@ sweepPhase
 		ifTrue: [ self error: 'expected to find at least one free object' ]
 		ifFalse: [ compStart _ firstFree ].
 
+	displayBits = 0 ifFalse: [
+		"TPR: clear mark bit of Acorn's displayBits object, which may lie outside object space"
+		oopHeader _ self baseHeader: displayBits.
+		self longAt: displayBits put: (oopHeader bitAnd: AllButMarkBit)].	
+
 	^ survivors

@@ -4,10 +4,10 @@ primitiveError: aString
 	| context |
 	(String streamContents:
 		[:s |
-		s nextPutAll: '**System Error Handling Failed** '.
+		s nextPutAll: '**System error handling failed** '.
 		s cr; nextPutAll: aString.
 		context _ thisContext sender sender.
-		6 timesRepeat: 
+		20 timesRepeat: 
 			[context == nil ifFalse: [s cr; print: (context _ context sender)]].
 		s cr; nextPutAll: '**Type any character to restart.**'])
 		displayAt: 0@0.

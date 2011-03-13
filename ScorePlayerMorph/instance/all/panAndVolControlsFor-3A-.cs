@@ -15,7 +15,7 @@ panAndVolControlsFor: trackIndex
 		minVal: 0.0;
 		maxVal: 1.0;		
 		adjustToValue: (scorePlayer panForTrack: trackIndex).
-	c _ LayoutMorph newColumn
+	c _ AlignmentMorph newColumn
 		color: color;
 		inset: 0;
 		centering: #center;

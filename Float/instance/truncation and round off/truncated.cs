@@ -6,4 +6,6 @@ truncated
 	whatIsAPrimitive. "
 
 	<primitive: 51>
+	(self isInfinite or: [self isNaN])
+		ifTrue: [self error: 'cannot truncate'].
 	^ (self quo: 16383.0) * 16383 + (self rem: 16383.0) truncated

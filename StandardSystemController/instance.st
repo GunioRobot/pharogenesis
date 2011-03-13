@@ -1,6 +1,6 @@
 MouseMenuController
 	subclass: #StandardSystemController
 	instanceVariableNames: 'status '
-	classVariableNames: 'ScheduledBlueButtonMessages ScheduledBlueButtonMenu '
+	classVariableNames: 'HBorderCursor ScheduledBlueButtonMenu ScheduledBlueButtonMessages VBorderCursor '
 	poolDictionaries: ''
 	category: 'Interface-Support'

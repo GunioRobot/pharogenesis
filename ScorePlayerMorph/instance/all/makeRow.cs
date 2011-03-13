@@ -1,6 +1,6 @@
 makeRow
 
-	^ LayoutMorph newRow
+	^ AlignmentMorph newRow
 		color: color;
 		inset: 0;
 		centering: #center;

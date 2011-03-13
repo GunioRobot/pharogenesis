@@ -1,4 +1,5 @@
 playPageFlipSound
+
 	(self world soundsEnabled "user-controllable" and:
-		[PageFlipSoundOn])  "jhm's mechanism to supress sounds at init time"
-			ifTrue: [SampledSound playSoundNamed: 'camera'].
+		[PageFlipSoundOn])  "mechanism to suppress sounds at init time"
+			ifTrue: [self playSoundNamed: 'camera'].

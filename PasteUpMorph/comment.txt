@@ -1,0 +1,5 @@
+A morph whose submorphs comprise a paste-up of rectangular subparts which "show through".
+
+Facilities commonly needed on pages of graphical presentations and on simulation playfields, such as the painting of new objects, turtle trails, gradient fills, background paintings, parts-bin behavior, collision-detection, etc., are (or will be) provided.
+
+This class is young and still under construction, and a number of its (many) instance variables are not yet fully deployed.

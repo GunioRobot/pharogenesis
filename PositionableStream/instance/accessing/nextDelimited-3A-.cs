@@ -3,6 +3,7 @@ nextDelimited: terminator
 
 	| out ch |
 	out _ WriteStream on: (String new: 1000).
+	self atEnd ifTrue: [^ ''].
 	self next == terminator ifFalse: [self skip: -1].	"absorb initial terminator"
 	[(ch _ self next) == nil] whileFalse: [
 		(ch == terminator) ifTrue: [

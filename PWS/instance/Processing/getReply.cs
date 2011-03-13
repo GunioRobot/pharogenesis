@@ -1,11 +1,11 @@
 getReply
-  "Generate the reply."
+	"Generate a reply based on the action selected by the first word of the URL."
 
 	| key |
-	Transcript show: ('Now serving:' , url printString, ' from ', peerName) ; cr.
-	[key := message at: 1] ifError: [:r :c | key := nil].
-	(ActionTable includesKey: key asLowercase)
-	ifTrue: ["Transcript show: 'Serving from action ', key ; cr."
-		(ActionTable at: key asLowercase) process: self]
-	ifFalse: ["Transcript show: 'Serving from action default' ; cr."
-		(ActionTable at: 'default') process: self].
+	message size > 0
+		ifTrue: [key _ (message at: 1) asLowercase]
+		ifFalse: [key _ 'default'].
+	(ActionTable includesKey: key) ifFalse: [key _ 'default'].
+
+	"Transcript show: ('Request: ' , url printString, ' from: ', peerName, ' action: ', key) ; cr."
+	(ActionTable at: key) process: self.

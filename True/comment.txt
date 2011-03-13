@@ -1,0 +1,2 @@
+True comment:
+'I represent the logical value true.'

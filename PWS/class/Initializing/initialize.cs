@@ -1,7 +1,5 @@
 initialize
-	BackupJobs := OrderedCollection new.
-	self addToBackupJob: [Smalltalk garbageCollect].
+	"PWS initialize"
 
-	ActionTable := Dictionary new.
-
-
+	BackupJobs _ OrderedCollection new.
+	ActionTable _ Dictionary new.

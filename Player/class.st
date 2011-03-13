@@ -1,0 +1,1 @@
+Player class instanceVariableNames: 'scripts slotInfo costumeDictionary '

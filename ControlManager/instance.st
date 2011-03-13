@@ -1,6 +1,6 @@
 Object
 	subclass: #ControlManager
 	instanceVariableNames: 'scheduledControllers activeController activeControllerProcess screenController newTopClicked '
-	classVariableNames: ''
+	classVariableNames: 'CmdDotEnabled '
 	poolDictionaries: ''
 	category: 'Interface-Framework'

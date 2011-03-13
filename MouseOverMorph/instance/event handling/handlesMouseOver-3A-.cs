@@ -1,0 +1,3 @@
+handlesMouseOver: evt
+
+	^ model ~~ nil

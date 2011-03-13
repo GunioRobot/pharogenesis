@@ -1,2 +1,0 @@
-droppableOnPlayfield
-	^ false

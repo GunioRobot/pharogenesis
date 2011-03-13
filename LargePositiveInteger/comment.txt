@@ -1,0 +1,2 @@
+LargePositiveInteger comment:
+'I represent a positive large integer, integers greater than 2-to-the-30th (1073741824).  These are beyond the range of SmallInteger, encoded as an array of 8-bit digits.  Care must be taken, when new results are computed, that any value that COULD BE a SmallInteger IS a SmallInteger (see normalize).'

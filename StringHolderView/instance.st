@@ -1,6 +1,6 @@
 View
 	subclass: #StringHolderView
-	instanceVariableNames: 'displayContents '
+	instanceVariableNames: 'displayContents hasUnacceptedEdits askBeforeDiscardingEdits '
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Interface-Support'

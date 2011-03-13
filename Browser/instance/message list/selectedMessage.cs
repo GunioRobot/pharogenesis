@@ -23,7 +23,9 @@ selectedMessage
 				decompile: selector
 				in: class
 				method: method) decompileString.
+		contents _ contents asText makeSelectorBoldIn: self selectedClassOrMetaClass.
 		^ contents copy].
 
 	contents _ class sourceCodeAt: selector.
+	contents _ contents asText makeSelectorBoldIn: self selectedClassOrMetaClass.
 	^ contents copy

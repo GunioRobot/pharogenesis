@@ -1,0 +1,14 @@
+I am model that can be used to navigate the host file system. By omitting the volume list, file list, and template panes from the view, I can also be used as the model for an editor on an individual file.
+
+FileLists can now see FTP servers anywhere on the net.  In the volume list menu: 
+fill in server info...		Gives you a form to register a new ftp server you want to use.
+open server...		Choose a server to connect to.
+local disk			Go back to looking at your local volume.
+
+Still undone (you can contribute code):
+[ ] Using a Proxy server to get out through a firewall.  What is the convention for proxy servers with FTP?
+[ ] Fill in the date and size info in the list of remote files.  Allow sorting by it.  New smarts needed in (ServerDirectory fileNameFormattedFrom:sizePad:sortMode:).
+[ ] Deleting a remote file.  See (ServerDirectory deleteFileNamed:).
+[ ] Renaming a remote file.  See (ServerDirectory rename:toBe:).
+
+

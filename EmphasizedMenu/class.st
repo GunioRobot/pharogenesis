@@ -1,0 +1,1 @@
+EmphasizedMenu class instanceVariableNames: ''

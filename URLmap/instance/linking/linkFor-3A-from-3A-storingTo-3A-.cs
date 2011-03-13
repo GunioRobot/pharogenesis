@@ -1,7 +1,9 @@
 linkFor: string from: peer storingTo: aList
 	| uString newpage |
 	uString _ string asUppercase.
-	(uString indexOfSubCollection: 'HTTP' startingAt: 1) = 1
+	(((uString indexOfSubCollection: 'HTTP' startingAt: 1) = 1) or:
+	[((uString indexOfSubCollection: 'FTP' startingAt: 1) = 1) or:
+	[((uString indexOfSubCollection: 'MAILTO' startingAt: 1) = 1)]])
 	ifTrue:
 		[((uString endsWith: 'GIF') or: [(uString endsWith: 'JPEG') or:
 			[uString endsWith: 'JPG']])

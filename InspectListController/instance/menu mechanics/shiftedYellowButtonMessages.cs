@@ -1,2 +1,0 @@
-shiftedYellowButtonMessages
-	^ ShiftedMessages

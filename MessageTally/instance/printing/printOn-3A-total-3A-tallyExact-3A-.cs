@@ -12,5 +12,7 @@ printOn: aStream total: total tallyExact: isExact
 		ifFalse: 
 			[aSelector _ class selectorAtMethod: method setClass: [:aClass].
 			className _ aClass name contractTo: 30.
-			aStream nextPutAll: className; space;
+			aStream nextPutAll: class name;
+				nextPutAll: (aClass = class ifTrue: ['>>']
+								ifFalse: ['(' , aClass name , ')>>']);
 				nextPutAll: (aSelector contractTo: 60-className size); cr]

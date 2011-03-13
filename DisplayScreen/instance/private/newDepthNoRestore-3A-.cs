@@ -5,9 +5,13 @@ newDepthNoRestore: pixelSize
 	pixelSize < depth ifFalse:
 		["Make sure there is enough space"
 		area _ Display boundingBox area. "pixels"
-		ScheduledControllers scheduledWindowControllers do:
-			[:aController | aController view cacheBitsAsTwoTone ifFalse:
-				[area _ area + aController view windowBox area]].
+		Smalltalk isMorphic
+		ifTrue:
+			[area _ area + area "World canvas bitmap still separate"]
+		ifFalse:
+			[ScheduledControllers scheduledWindowControllers do:
+				[:aController | aController view cacheBitsAsTwoTone ifFalse:
+					[area _ area + aController view windowBox area]]].
 		need _ (area * pixelSize // 8) - (area * depth // 8)  "new bytes needed"
 				+ 80000.  "lowSpaceThreshold (should be shared)"
 		(Smalltalk garbageCollectMost <= need

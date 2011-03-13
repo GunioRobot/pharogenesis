@@ -1,6 +1,6 @@
 Stream
 	subclass: #DataStream
-	instanceVariableNames: 'byteStream '
+	instanceVariableNames: 'byteStream topCall basePos '
 	classVariableNames: 'TypeMap '
 	poolDictionaries: ''
-	category: 'Object Storage'
+	category: 'System-Object Storage'

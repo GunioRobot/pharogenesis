@@ -5,6 +5,8 @@ handleMouseOver: evt
 	mouseOverHalosEnabled _ self world mouseOverHalosEnabled & evt anyButtonPressed not.
 	p _ evt cursorPoint.
 	roots _ owner rootMorphsAt: p.  "root morphs in world"
+	(roots size > 0 and: [roots first isPlayfieldLike]) ifTrue:
+		[roots _ roots first submorphs select: [:m | m fullContainsPoint: p]].
 	roots size > 0
 		ifTrue: [mList _ roots first unlockedMorphsAt: p]
 		ifFalse: [mList _ EmptyArray].
@@ -41,7 +43,7 @@ mouseOverTimes ifNotNil:
 			["Yes we have lingered for 0.8 seconds..."
 			mouseOverTimes removeKey: m.
 			m owner ifNotNil:  "Not deleted during linger (--it happens ;--)"
-				[m wantsHalo
+				[(mouseOverHalosEnabled and: [m wantsHalo])
 					ifTrue: [oldHalo _ m world haloMorphOrNil.
 							(oldHalo == nil or: [oldHalo target ~~ m])
 								ifTrue: ["Put up halo for m"
@@ -51,7 +53,7 @@ mouseOverTimes ifNotNil:
 											mouseOverTimes at: m put: now]]
 								ifFalse: ["Halo for m is already up, so show balloon"
 										(balloonHelpEnabled and: [m wantsBalloon])
-											ifTrue: [m showBalloon]]]
+											ifTrue: [m showBalloon: m balloonText]]]
 					ifFalse:
 						[(balloonHelpEnabled and: [m wantsBalloon])
-							ifTrue: [m showBalloon]]]]]]
+							ifTrue: [m showBalloon: m balloonText]]]]]]

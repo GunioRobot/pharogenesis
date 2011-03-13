@@ -3,20 +3,11 @@ initializeCommonRequestStrings
 	 5/10/96 sw: converted over to new format of StringHolder"
 
 	CommonRequestStrings _ StringHolder new contents: 
-'Utilities emergencyCollapse
-Sensor keyboard
-Cursor normal show
------------------------------------------------------
-Utilities durableHelpMenu
-Utilities durableOpenMenu
-Utilities durableWindowMenu
-Utilities durableChangesMenu
-Utilities fontSizeSummary
------------------------------------------------------
-ProjectView open: Project newMorphic
-Form fromUser bitEdit
-Undeclared inspect
-Undeclared removeUnreferencedKeys
-Transcript clear'
+'Sensor keyboard
+Curor normal show
+Transcript cr; show: ''testing''
+Smalltalk sendersOf: #hot
+Utilities emergencyCollapse
+CharRecog reinitializeCharacterDictionary'
 
 "Utilities initializeCommonRequestStrings"

@@ -1,0 +1,5 @@
+My instances represent IEEE-754 floating-point double-precision numbers.  They have about 16 digits of accuracy and their range is between plus and minus 10^307. Some valid examples are:
+	
+	8.0 13.3 0.3 2.5e6 1.27e-30 1.27e-31 -12.987654e12
+
+Mainly: no embedded blanks, little e for tens power, and a digit on both sides of the decimal point.

@@ -1,6 +1,6 @@
 delete
 
-	model ifNil: [^ super delete].
+	(model isKindOf: MorphicModel) ifFalse: [^ super delete].
 
 	(PopUpMenu confirm:
 'Shall I remove the slot ', slotName, '

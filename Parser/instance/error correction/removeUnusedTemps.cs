@@ -17,7 +17,7 @@ OK to remove it?') asText makeBoldFrom: 1 to: temp size))
 			["Beginning at right temp marker..."
 			start _ end - temp size + 1.
 			end < temp size or: [temp = (str copyFrom: start to: end)
-								and: [(str at: start-1) isSeparator]]]
+					and: [(str at: start-1) isSeparator & (str at: end+1) isSeparator]]]
 			whileFalse:
 				["Search left for the unused temp"
 				end _ requestor nextTokenFrom: end direction: -1].

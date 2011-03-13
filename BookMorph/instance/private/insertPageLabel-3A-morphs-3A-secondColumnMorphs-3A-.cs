@@ -4,7 +4,7 @@ insertPageLabel: labelString morphs: firstColMorphs secondColumnMorphs: secondCo
 	self insertPageLabel: labelString morphs: firstColMorphs.
 
 	"use a column to align the given morphs, then add them to the page"
-	c _ LayoutMorph newColumn centering: #center.
+	c _ AlignmentMorph newColumn centering: #center.
 	c addAllMorphs: secondColMorphs.
 	c position: currentPage position + (100@40).
 	currentPage addAllMorphs: secondColMorphs.

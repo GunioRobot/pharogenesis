@@ -24,6 +24,7 @@ digitSubtract: arg
 	1 to: sl do:
 		[:i |
 		z _ z + (larger digitAt: i) - (smaller digitAt: i).
-		sum digitAt: i put: (z bitAnd: 255).
-		z _ z bitShift: -8].
+		sum digitAt: i
+			put: z - (z // 256 * 256) "sign-tolerant form of (z bitAnd: 255)".
+		z _ z // 256].
 	^ sum normalize

@@ -12,6 +12,6 @@ initialize
 	scroller offset: -3@0.
 	self addMorph: scroller.
 
-	self on: #mouseEnter send: #mouseEnter to: self.
-	self on: #mouseLeave send: #mouseLeave to: self.
+	self on: #mouseEnter send: #mouseEnter: to: self.
+	self on: #mouseLeave send: #mouseLeave: to: self.
 	self extent: 150@120

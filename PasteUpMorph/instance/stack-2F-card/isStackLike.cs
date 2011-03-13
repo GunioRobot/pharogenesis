@@ -1,0 +1,2 @@
+isStackLike
+	^ isStackLike == true

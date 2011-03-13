@@ -1,3 +1,7 @@
 balloonText
 	"NB: subclasses may override such that they programatically construct the text, for economy's sake, such as model phrases in a Viewer"
-	^ self valueOfProperty: #balloonText
+	| val |
+	(val _ self valueOfProperty: #balloonText) ifNotNil: [^ val].
+	(val _ self valueOfProperty: #balloonTextSelector) ifNotNil:
+		[^ ScriptingSystem helpStringFor: val].
+	^ nil

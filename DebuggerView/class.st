@@ -1,1 +1,0 @@
-DebuggerView class instanceVariableNames: ''

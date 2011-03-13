@@ -1,11 +1,10 @@
 lineIndexForPoint: aPoint
 	"Answer the index of the line in which to select the character nearest to aPoint."
-	| i |
-	aPoint y < lines first top ifTrue: [^ 1].
-	aPoint y >= lines last bottom ifTrue: [^ lines size].
+	| i py |
+	py _ aPoint y truncated.
 
 	"Find the first line at this y-value"
-	i _ lines findFirst: [:line | line bottom > aPoint y].
+	i _ (self fastFindFirstLineSuchThat: [:line | line bottom > py]) min: lines size.
 
 	"Now find the first line at this x-value"
 	[i < lines size and: [(lines at: i+1) top = (lines at: i) top

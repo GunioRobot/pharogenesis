@@ -1,0 +1,2 @@
+isTextuallyCoded
+	^ self userScriptObject isTextuallyCoded

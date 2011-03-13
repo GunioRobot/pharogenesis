@@ -1,0 +1,2 @@
+StrikeFont comment:
+'I represent a compact encoding of a set of Forms corresponding to characters in the ASCII character set. All the forms are placed side by side in a large form whose height is the font height, and whose width is the sum of all the character widths. The xTable variable gives the left-x coordinates of the subforms corresponding to the characters.'

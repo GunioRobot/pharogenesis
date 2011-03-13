@@ -1,6 +1,6 @@
 View
 	subclass: #FormMenuView
 	instanceVariableNames: ''
-	classVariableNames: 'BorderForm SpecialBorderForm FormButtons '
+	classVariableNames: 'BorderForm FormButtons SpecialBorderForm '
 	poolDictionaries: ''
 	category: 'Graphics-Editors'

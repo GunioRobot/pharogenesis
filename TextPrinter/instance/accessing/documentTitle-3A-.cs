@@ -1,0 +1,2 @@
+documentTitle: aString
+	docTitle := aString

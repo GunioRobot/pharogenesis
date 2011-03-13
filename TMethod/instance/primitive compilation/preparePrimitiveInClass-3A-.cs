@@ -11,53 +11,51 @@ The declarations dictionary defines the types of any non-integer variables (loca
 Undeclared variables are taken to be integers and will be converted from Smalltalk to C ints."
 
 "Current restrictions:
-	o method must not contain explicit returns
 	o method must not contain message sends
 	o method must not allocate objects
 	o method must not manipulate raw oops
 	o method cannot access class variables
-	o compiled primitives can only return self"
+	o method can only return an integer"
 
-	| prolog postlog instVarsUsed varsAssignedTo instVarList varName |
+	| prolog postlog instVarsUsed varsAssignedTo instVarList primArgCount varName endsWithReturn |
 	prolog _ OrderedCollection new.
 	postlog _ OrderedCollection new.
 	instVarsUsed _ self freeVariableReferences asSet.
 	varsAssignedTo _ self variablesAssignedTo asSet.
 	instVarList _ aClass allInstVarNames.
+	primArgCount _ args size.
 
-	"add receiver fetch to prolog"
+	"add receiver fetch and arg conversions to prolog"
 	prolog addAll: self fetchRcvrExpr.
-
-	"add arg conversions to prolog"
-	1 to: args size do: [ :argIndex |
+	1 to: args size do: [:argIndex |
 		varName _ args at: argIndex.
 		prolog addAll:
-			(self argConversionExprFor: varName stackIndex: args size - argIndex).
-	].
+			(self argConversionExprFor: varName stackIndex: args size - argIndex)].
+
+	"add success check to postlog"
+	postlog addAll: self checkSuccessExpr.
 
 	"add instance variable fetches to prolog and instance variable stores to postlog"
-	1 to: instVarList size do: [ :varIndex |
+	1 to: instVarList size do: [:varIndex |
 		varName _ instVarList at: varIndex.
 		(instVarsUsed includes: varName) ifTrue: [
 			locals add: varName.
 			prolog addAll: (self instVarGetExprFor: varName offset: varIndex - 1).
 			(varsAssignedTo includes: varName) ifTrue: [
-				postlog addAll: (self instVarPutExprFor: varName offset: varIndex - 1).
-			].
-		].
-	].
-
+				postlog addAll: (self instVarPutExprFor: varName offset: varIndex - 1)]]].
 	prolog addAll: self checkSuccessExpr.
-	postlog addAll: self popArgsExpr.
 
 	locals addAllFirst: args.
 	locals addFirst: 'rcvr'.
 	args _ args class new.
 	locals asSet size = locals size
-		ifFalse: [ self error: 'local name conflicts with instance variable name' ].
-	self hasReturn
-		ifTrue: [ self error: 'returns in primitive methods are not yet supported' ].
+		ifFalse: [self error: 'local name conflicts with instance variable name'].
+	endsWithReturn _ self endsWithReturn.
+	self fixUpReturns: primArgCount postlog: postlog.
 
 	selector _ 'prim', aClass name, selector.
-	parseTree setStatements: prolog, parseTree statements, postlog.
-	self covertToZeroBasedArrayReferences.
+	endsWithReturn
+		ifTrue: [parseTree setStatements: prolog, parseTree statements]
+		ifFalse: [
+			postlog addAll: (self popArgsExpr: primArgCount).
+			parseTree setStatements: prolog, parseTree statements, postlog].

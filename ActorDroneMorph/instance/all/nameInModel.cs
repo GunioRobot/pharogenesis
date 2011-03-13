@@ -1,0 +1,2 @@
+nameInModel
+	^ clan

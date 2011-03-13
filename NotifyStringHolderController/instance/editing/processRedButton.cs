@@ -1,2 +1,0 @@
-processRedButton
-	"no editing"

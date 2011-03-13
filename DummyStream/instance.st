@@ -3,4 +3,4 @@ Stream
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Objects to Disk'
+	category: 'System-Object Storage'

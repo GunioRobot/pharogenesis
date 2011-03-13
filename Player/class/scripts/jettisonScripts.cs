@@ -1,0 +1,2 @@
+jettisonScripts
+	scripts _ IdentityDictionary new

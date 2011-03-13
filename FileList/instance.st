@@ -1,6 +1,6 @@
-FileModel
+StringHolder
 	subclass: #FileList
-	instanceVariableNames: 'list listIndex directory pattern volList volListIndex sortMode '
+	instanceVariableNames: 'fileName directory volList volListIndex list listIndex pattern sortMode brevityState '
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Interface-FileList'

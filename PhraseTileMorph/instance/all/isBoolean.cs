@@ -1,0 +1,2 @@
+isBoolean
+	^ self booleanOperator ~~ nil

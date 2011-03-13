@@ -48,6 +48,8 @@ initializeCTranslationDictionary
 
 	#at:				#generateAt:on:indent:
 	#at:put:			#generateAtPut:on:indent:
+	#basicAt:		#generateAt:on:indent:
+	#basicAt:put:	#generateAtPut:on:indent:
 
 	#integerValueOf:	#generateIntegerValueOf:on:indent:
 	#integerObjectOf:	#generateIntegerObjectOf:on:indent:

@@ -1,25 +1,17 @@
 sideNearestTo: aPoint
-	| distToLeft itsX distToRight distToTop itsY distToBottom horizontalChoice horizontalDistance verticalChoice verticalDistance |
-	distToLeft _ (self left - (itsX _ aPoint x)) abs.
-	distToRight _ (self right - itsX) abs.
-	distToTop _ (self top - (itsY _ aPoint y)) abs.
-	distToBottom _ (self bottom - itsY) abs.
-	distToLeft < distToRight 
-		ifTrue: 
-			[horizontalChoice _ #left.  
-			horizontalDistance _ distToLeft]
-		ifFalse:
-			[horizontalChoice _ #right.
-			horizontalDistance _ distToRight].
-	distToTop < distToBottom
-		ifTrue: 
-			[verticalChoice _ #top.  
-			verticalDistance _ distToTop]
-		ifFalse:
-			[verticalChoice _ #bottom.
-			verticalDistance _ distToBottom].
-	horizontalDistance < verticalDistance
-		ifTrue:
-			[^ horizontalChoice]
-		ifFalse:
-			[^ verticalChoice]
+	| distToLeft distToRight distToTop distToBottom closest side |
+	distToLeft _ aPoint x - self left.
+	distToRight _ self right - aPoint x.
+	distToTop _ aPoint y - self top.
+	distToBottom _ self bottom - aPoint y.
+	closest _ distToLeft. side _ #left.
+	distToRight < closest ifTrue: [closest _ distToRight. side _ #right].
+	distToTop < closest ifTrue: [closest _ distToTop. side _ #top].
+	distToBottom < closest ifTrue: [closest _ distToBottom. side _ #bottom].
+	^ side
+"
+ | r | r _ Rectangle fromUser.
+Display border: r width: 1.
+[Sensor anyButtonPressed] whileFalse:
+	[(r sideNearestTo: Sensor cursorPoint) , '      ' displayAt: 0@0]
+"

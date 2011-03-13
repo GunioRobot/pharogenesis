@@ -1,2 +1,0 @@
-mouseOverEnabled
-	^ MouseOverEnabled

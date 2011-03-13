@@ -1,0 +1,3 @@
+handlesMouseDown: evt
+
+	^ model ~~ nil

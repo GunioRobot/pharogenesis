@@ -1,4 +1,0 @@
-editPreamble
-	"Allow the user to edit the receiver's change-set's preamble -- in a separate window at present.  "
-
-	myChangeSet editPreamble

@@ -21,7 +21,8 @@ subclassOf: newSuper oldClass: oldClass instanceVariableNames: newInstVarString 
 		ifTrue: 
 			["superclass changed"
 			oldSuperMeta _ superclass class.
-			superclass ifNotNil: [superclass removeSubclass: self].
+			superclass ifNotNil: [superclass removeSubclass: self.
+				"Object flushCache"		"done in removeSubclass"].
 			superclass _ newSuper.
 			superclass addSubclass: self.
 			self class superclass == oldSuperMeta 

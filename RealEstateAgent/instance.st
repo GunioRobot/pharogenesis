@@ -2,6 +2,6 @@ Object
 	subclass: #RealEstateAgent
 	instanceVariableNames: ''
 	classVariableNames:
-		'ReverseStaggerOffset StaggerOffset ScrollBarSetback ScreenTopSetback StaggerOrigin StandardWindowOrigins '
+		'ReverseStaggerOffset ScreenTopSetback ScrollBarSetback StaggerOffset StaggerOrigin StandardWindowOrigins '
 	poolDictionaries: ''
 	category: 'Interface-Support'

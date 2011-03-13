@@ -3,4 +3,5 @@ removeSubclass: aSubclass
 
 	subclasses == nil ifFalse:
 		[subclasses remove: aSubclass ifAbsent: [].
-		subclasses isEmpty ifTrue: [subclasses _ nil]]
+		subclasses isEmpty ifTrue: [subclasses _ nil]].
+	Object flushCache.

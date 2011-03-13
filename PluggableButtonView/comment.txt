@@ -1,0 +1,14 @@
+A PluggableButtonView is a combination of an indicator for a boolean value stored in its model and an action button. The action of a button is often, but not always, to toggle the boolean value that it shows. Its pluggable selectors are:
+
+		getStateSelector		fetch a boolean value from the model
+		actionSelector		invoke this button's action on the model
+
+Either of the above selectors can be nil, meaning that the model does not supply behavior for the given action, and the default behavior should be used. For example, if getStateSelector is nil, then this button shows the state of a read-only boolean that is always false.
+
+The model informs a pluggable view of changes by sending #changed: to itself with getStateSelector as a parameter. The view tells the model when the button is pressed by sending actionSelector.
+
+Options:
+	askBeforeChanging		have model ask user before allowing change that could lose edits
+	triggerOnMouseDown	do button action on mouse down (vs. up) transition
+	shortcutCharacter		a place to record an optional shortcut key
+

@@ -9,7 +9,7 @@ initialize
 	color _ Color lightGray.
 	self borderWidth: 2.
 	self addMorph: self makeControls.
-	soundColumn _ LayoutMorph newColumn.
+	soundColumn _ AlignmentMorph newColumn.
 	soundColumn openToDragNDrop: true.
 	self addMorphBack: soundColumn.
 	self extent: 118@150.

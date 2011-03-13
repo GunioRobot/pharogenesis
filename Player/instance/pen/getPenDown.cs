@@ -1,0 +1,2 @@
+getPenDown
+	^ self actorState getPenDown

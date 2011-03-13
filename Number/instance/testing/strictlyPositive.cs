@@ -1,4 +1,4 @@
 strictlyPositive
-	"Answer whether the receiver is greater than 0."
+	"Answer whether the receiver is mathematically positive."
 
-	^self > 0
+	^ self > 0

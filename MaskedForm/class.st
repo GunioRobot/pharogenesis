@@ -1,1 +1,0 @@
-MaskedForm class instanceVariableNames: ''

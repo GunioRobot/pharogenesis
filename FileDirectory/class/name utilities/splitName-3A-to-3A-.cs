@@ -1,5 +1,5 @@
 splitName: fullName to: pathAndNameBlock
-	"Take the file name and convert it to the path name of a directory and a local file name within that directory. FileName must be of the form: <dirPath><delimitor><localName>, where <dirPath><delimitor> is optional. The <dirPath> part may contain delimitors."
+	"Take the file name and convert it to the path name of a directory and a local file name within that directory. FileName must be of the form: <dirPath><delimiter><localName>, where <dirPath><delimiter> is optional. The <dirPath> part may contain delimiters."
 
 	| delimiter i dirName localName |
 	delimiter _ self pathNameDelimiter.

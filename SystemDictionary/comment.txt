@@ -1,0 +1,5 @@
+NewSystemDictionary comment:
+'I represent a special dictionary that supports protocol for asking questions about the structure of the system. Other than class names, I contain (print this)...
+	Smalltalk keys select: [:k | ((Smalltalk at: k) isKindOf: Class) not]
+			thenCollect: [:k | k -> (Smalltalk at: k) class]
+

@@ -19,8 +19,7 @@ recordInvalidRect: aRectangle
 "Note:  The totalRepaint policy has poor behavior when many local rectangles (such as parts of a text selection) force repaint of the entire screen.  As an alternative, this code performs a simple merge of all rects whenever there are more than 10."
 		mergeRect _ Rectangle merging: invalidRects.
 		self reset.
-		invalidRects addLast: mergeRect.
-		^ self].
+		invalidRects addLast: mergeRect].
 
 	"add the given rectangle to the damage list"
 	"Note: We make a deep copy of all rectangles added to the damage list,

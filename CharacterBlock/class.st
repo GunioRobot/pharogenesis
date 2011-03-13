@@ -1,1 +1,0 @@
-CharacterBlock class instanceVariableNames: ''

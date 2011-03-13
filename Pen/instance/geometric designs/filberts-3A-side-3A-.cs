@@ -8,12 +8,10 @@ filberts: n side: s
 	1 to: 4 do: 
 		[:i | 
 		self color: i - 1 * 40.
-		self
-			fillInAndFrame: 
-				[self hilbert: n side: s.
-				self go: s.
-				self hilbert: n side: s.
-				self go: s].
+		self hilbert: n side: s.
+		self go: s.
+		self hilbert: n side: s.
+		self go: s.
 		self up.
 		self go: n2 - 1 * s.
 		self turn: -90.

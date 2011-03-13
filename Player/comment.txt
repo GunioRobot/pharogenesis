@@ -1,0 +1,3 @@
+The fundamental user-scriptable entity.  Always represented by a user-specific subclass of Player; instance vars and methods relate to user-defined structures.
+
+costume  is a Morph, the primary morph I am currently wearing for graphical display.

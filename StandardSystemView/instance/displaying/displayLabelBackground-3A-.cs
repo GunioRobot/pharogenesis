@@ -8,8 +8,8 @@ displayLabelBackground: emphasized
 	r2 _ r1 insetBy: 0@2.
 	r3 _ r2 insetBy: 0@3.
 	c3 _ self labelColor.
-	c2 _ c3 darker.
-	c1 _ c2 darker darker.
+	c2 _ c3 dansDarker.
+	c1 _ c2 dansDarker.
 	Display fill: r1 fillColor: c1.
 	Display fill: r2 fillColor: c2.
 	Display fill: r3 fillColor: c3.

@@ -1,0 +1,2 @@
+basicType
+	^ #color

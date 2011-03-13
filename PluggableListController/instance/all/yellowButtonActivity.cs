@@ -3,4 +3,8 @@ yellowButtonActivity
 
 	| menu |
 	menu _ view getMenu.
-	menu == nil ifFalse: [menu invokeOn: model].
+	menu == nil
+		ifTrue: [sensor waitNoButton]
+		ifFalse: [self controlTerminate.
+				menu invokeOn: model.
+				self controlInitialize].

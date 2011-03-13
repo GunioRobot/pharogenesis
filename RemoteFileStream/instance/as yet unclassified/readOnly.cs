@@ -1,0 +1,2 @@
+readOnly
+	^ remoteFile readOnly

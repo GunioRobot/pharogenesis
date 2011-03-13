@@ -1,0 +1,10 @@
+SystemTracer comment:
+'NOTE:  The SystemTracer was invented by Ted Kaehler.  It has gone through many variations.  I have simplified it and adapted it to work with Squeak''s limited Object hashing.  It has written runnable Mac images on a Mac.  Some changes may be needed for it to produce runnables image on a bigEndian machine.  -- Dan I. 9/29/97
+
+The SystemTracer runs through the system tracing every accessible object, and writing a copy of each object onto a disk image. It does this carefully enough that the resulting clone can be started up and run, just like a snapshot.  Great care must also be taken that the tracer never sees (due to clamping) any of the structures created dynamically while writing the clone.  If this happens an infinite recursion can result.
+	
+The tracer has built-in support for clamping unwanted (or unneeded) objects out of the system. It also allows fundamental changes to, eg, object header format, compiledMethod format, number formats, etc.  The current version is fairly simple, as it just copies what is already in the system. This version does, however, reassign object hashes in order to illustrate how one must remap all the hashed structures accordingly.
+
+Squeak currently only has 12 bits of object hash.  A normal dictionary, used to map from old oop to new oop, would bog down in a system of, say, 50k objects.  This tracer has a special structure that is optimized for this purpose.  See the comment in initOopMap.  If we ever extend the object hash, this structure could be replaced by a simple IdentityDictionary.
+
+When you first start up the cloned image, you will probably get a "cannotReturn" error, a vestige of the old tracing process.  This can simply be closed (or maybe you can figure out how to fix the tracers so it doens''t happen ;-).  '

@@ -1,4 +1,4 @@
 forceDisplayUpdate
-	"On platforms that buffer screen updates, force the screen to be updated immediately. On other platforms, or if the primitive is not implemented, do nothing."
+	"Obsolete. Send this message to Display instead of Smalltalk."
 
-	<primitive: 231>
+	Display forceDisplayUpdate.

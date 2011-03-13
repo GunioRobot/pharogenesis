@@ -16,8 +16,9 @@ addCategory
 		before: (messageCategoryListIndex = 0
 				ifTrue: [nil]
 				ifFalse: [self selectedMessageCategoryName]).
-	self changed: #classSelectionChanged.
+	self changed: #messageCategoryList.
 	self messageCategoryListIndex:
 		(oldIndex = 0
-			ifTrue: [self selectedClass organization categories size]
-			ifFalse: [oldIndex])
+			ifTrue: [self classOrMetaClassOrganizer categories size]
+			ifFalse: [oldIndex]).
+	self changed: #messageCategoryList.

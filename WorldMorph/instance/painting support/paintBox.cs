@@ -3,6 +3,9 @@ paintBox
 
 	| newPaintBox |
 	self allMorphsDo: [:m | (m isKindOf: PaintBoxMorph) ifTrue: [^ m]].
-	newPaintBox _ PaintBoxMorph new position: 300@0.
+	self allMorphsDo: [:m | (m isKindOf: EToyPalette) ifTrue: [
+		^ m showPaintPaletteNoSelection]].	"Does not create an object"
+	newPaintBox _ PaintBoxMorph new.
+	newPaintBox position: (self topRight - (newPaintBox width @ 0)). 
 	self addMorph: newPaintBox.
 	^ newPaintBox

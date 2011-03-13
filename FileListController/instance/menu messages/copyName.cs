@@ -1,2 +1,0 @@
-copyName
-	model copyName.

@@ -1,0 +1,2 @@
+getBottom
+	^ self costume bottom

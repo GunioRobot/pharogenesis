@@ -2,7 +2,7 @@ obsoleteClasses   "Smalltalk obsoleteClasses inspect"
 	"NOTE:  Also try inspecting comments below"
 	| obs c |
 	obs _ OrderedCollection new.  Smalltalk garbageCollect.
-	Metaclass allInstances do:
+	Metaclass allInstancesDo:
 		[:m | c _ m soleInstance.
 		(c ~~ nil and: ['AnOb*' match: c name asString])
 			ifTrue: [obs add: c]].

@@ -3,6 +3,8 @@ drawOn: aCanvas
 	the canvas's port and just sent it copyBits with new coords and color"
  	| r colors step |
 	super drawOn: aCanvas.
+	(color isKindOf: Color) ifFalse: [^ self].  "An InfiniteForm, for example"
+	(color = Color transparent) ifTrue: [^ self].  "Skip the gradient attempts, which will drop into debugger"
 	r _ self innerBounds intersect: aCanvas clipRect.
 	colors _ self colorArrayForDepth: aCanvas depth.
 	step _ self stepSize.

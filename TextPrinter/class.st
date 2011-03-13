@@ -1,0 +1,1 @@
+TextPrinter class instanceVariableNames: ''

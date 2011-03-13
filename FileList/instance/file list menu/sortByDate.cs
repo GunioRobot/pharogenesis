@@ -1,0 +1,2 @@
+sortByDate
+	self resort: #date

@@ -1,0 +1,2 @@
+printComponent1value
+	^printComponent1value

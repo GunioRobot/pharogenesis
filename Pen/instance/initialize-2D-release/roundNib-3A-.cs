@@ -1,6 +1,5 @@
-roundNib: widthInteger 
-	"Nib is the tip of a pen. This sets up the pen, with the source form
-	 set to a round dot of diameter widthInteger."
+roundNib: diameter
+	"Makes this pen draw with a round dot of the given diameter."
 
-	self sourceForm: (Form dotOfSize: widthInteger).
-	combinationRule _ Form paint
+	self sourceForm: (Form dotOfSize: diameter).
+	combinationRule _ Form paint.

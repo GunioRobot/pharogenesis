@@ -9,7 +9,16 @@ extent: newExtent
 	w _ ((c * newExtent x) - (s * newExtent y)) / divisor.
 	h _ ((c * newExtent y) - (s * newExtent x)) / divisor.
 	origExtent _ originalForm extent.
-	scalePoint _
-		((w max: 1) / origExtent x) @
-		((h max: 1) / origExtent y).
+	rotationStyle = #normal
+		ifTrue: [
+			scalePoint _
+				((w asFloat / origExtent x) max: 0.001) @
+				((h asFloat / origExtent y) max: 0.001).
+			divisor abs < 0.5 ifTrue: [  "avoid instability near multiples of 45 degrees"
+				s _ newExtent r / (origExtent r * 2 sqrt).
+				scalePoint _ s@s]]
+		ifFalse: [  "scaling for constraint rotation styles"
+			scalePoint _
+				((newExtent x max: 1) asFloat / origExtent x) @
+				((newExtent y max: 1) asFloat / origExtent y)].
 	self layoutChanged.

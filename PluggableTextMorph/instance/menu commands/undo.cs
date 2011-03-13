@@ -1,0 +1,2 @@
+undo
+	textMorph editor undo

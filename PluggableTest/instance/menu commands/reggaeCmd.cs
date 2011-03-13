@@ -1,3 +1,3 @@
 reggaeCmd
 
-	self musicType: 'reggae'.
+	self musicType: (musicTypeList indexOf: 'reggae').

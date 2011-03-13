@@ -1,5 +1,5 @@
 < aString 
-	"Answer whether the receiver collates before aString. The collation 
-	sequence is ascii with case differences ignored."
+	"Answer whether the receiver sorts before aString.
+	The collation order is simple ascii (with case differences)."
 
-	^(self compare: aString) = 1
+	^ (self compare: self with: aString collated: AsciiOrder) = 1

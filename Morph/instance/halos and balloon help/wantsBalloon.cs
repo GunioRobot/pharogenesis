@@ -1,2 +1,2 @@
 wantsBalloon
-	^ self hasProperty: #balloonText
+	^ self balloonText ~~ nil

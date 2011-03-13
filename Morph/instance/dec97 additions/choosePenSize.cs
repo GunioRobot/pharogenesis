@@ -1,0 +1,2 @@
+choosePenSize
+	self assuredCostumee choosePenSize

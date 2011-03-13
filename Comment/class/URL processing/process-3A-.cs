@@ -2,11 +2,11 @@ process: request
 	"URLs are of the form Comment.commentKey or 
 	Comment.commentKey.note of Comment.commentKey.gif.
 	
-	If commentKey is accessed but not created, 
-	create an empty one.
+	If commentKey is accessed but not created, create an empty one.
 	If note is accessed, display it."
 	| commentKey noteIndex newNote |
-	commentKey _ request message at: 2.
+	(request message size > 1) ifTrue: [commentKey _ request message at: 2]
+	ifFalse: [commentKey _ 'comment' "Just a default comment space"].
 	(CommentsTable includesKey: commentKey)
 		ifFalse: 
 			[CommentsTable at: commentKey put: Discussion new.

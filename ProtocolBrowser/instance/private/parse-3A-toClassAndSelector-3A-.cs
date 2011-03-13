@@ -1,5 +1,5 @@
 parse: messageString toClassAndSelector: csBlock
-	"Decode strings of the form <selectorName>   (<className> [class])  "
+	"Decode strings of the form    <selectorName> (<className> [class])  "
 	| tuple cl |
 	tuple _ messageString asString findTokens: ' '.
 	cl _ tuple at: 2.

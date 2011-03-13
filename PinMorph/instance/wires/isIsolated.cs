@@ -1,0 +1,2 @@
+isIsolated
+	^ wires isEmpty

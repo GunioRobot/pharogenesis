@@ -1,5 +1,6 @@
 extent: extentPoint fromArray: anArray offset: offsetPoint 
-	"Answer an instance of me with bitmap initialized from anArray."
+	"Answer an instance of me of depth 1 with bitmap initialized from anArray."
 
-	^ (self basicNew setExtent: extentPoint offset: offsetPoint)
+	^ (self extent: extentPoint depth: 1)
+		offset: offsetPoint;
 		initFromArray: anArray

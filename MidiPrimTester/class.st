@@ -1,0 +1,1 @@
+MidiPrimTester class instanceVariableNames: ''

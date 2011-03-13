@@ -1,0 +1,2 @@
+mouseOverHalosEnabled
+	^ mouseOverHalosEnabled == true

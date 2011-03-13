@@ -1,0 +1,1 @@
+TextURL class instanceVariableNames: ''

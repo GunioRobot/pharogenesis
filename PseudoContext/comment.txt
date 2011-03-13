@@ -1,0 +1,3 @@
+PseudoContext comment:
+'I represent cached context state within the virtual machine.  I have the same format as normal method and block contexts, but my fields are never referenced directly from Smalltalk.  Whenever a message is sent to me I will magically transform myself into a real context which will respond to all the usual messages.
+	I rely on the fact that block and method contexts have exactly the same number of fixed fields.'

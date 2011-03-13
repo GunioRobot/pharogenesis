@@ -1,0 +1,1 @@
+TranscriptStream class instanceVariableNames: ''

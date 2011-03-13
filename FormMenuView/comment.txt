@@ -1,0 +1,2 @@
+FormMenuView comment:
+'I represent a View whose subViews are Switches (and Buttons and OneOnSwitches) whose actions set the mode, color, and tool for editing a Form on the screen. The default controller of my instances is FormMenuController.'

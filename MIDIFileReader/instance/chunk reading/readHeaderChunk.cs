@@ -11,6 +11,8 @@ readHeaderChunk
 	(division anyMask: 16r8000)
 		ifTrue: [self error: 'SMPTE time formats are not yet supported']
 		ifFalse: [ticksPerQuarter _ division].
+	maxNoteTicks _ 12 * 4 * ticksPerQuarter.
+		"longest acceptable note; used to detect stuck notes"
 
 	"sanity checks"
 	chunkSize = 6

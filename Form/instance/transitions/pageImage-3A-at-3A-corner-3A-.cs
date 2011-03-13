@@ -72,7 +72,7 @@ pageImage: otherImage at: topLeft corner: corner
 		"Now update Display in a single BLT."
 		self copyBits: maskRect from: resultForm at: topLeft + maskRect topLeft
 				clippingBox: self boundingBox rule: Form over fillColor: nil.
-		Smalltalk forceDisplayUpdate.
+		Display forceDisplayUpdate.
 		maskLoc _ maskLoc + (delta*stepSize)]
 "
 1 to: 4 do: [:corner | Display pageImage:

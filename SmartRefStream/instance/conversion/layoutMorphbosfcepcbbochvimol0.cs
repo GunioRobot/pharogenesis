@@ -1,0 +1,2 @@
+layoutMorphbosfcepcbbochvimol0
+	^ AlignmentMorph

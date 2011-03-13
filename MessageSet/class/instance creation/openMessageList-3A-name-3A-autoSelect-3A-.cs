@@ -6,5 +6,6 @@ openMessageList: messageList name: labelString autoSelect: autoSelectString
 
 	messageSet _ self messageList: messageList.
 	messageSet autoSelectString: autoSelectString.
+	World ifNotNil: [^ self openAsMorph: messageSet name: labelString].
 	ScheduledControllers scheduleActive: 
 					(self open: messageSet name: labelString)

@@ -1,0 +1,2 @@
+isTextuallyCoded
+	^ currentScriptEditor == #textuallyCoded

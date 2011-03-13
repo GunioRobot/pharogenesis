@@ -1,0 +1,2 @@
+SmallInteger comment:
+'My instances are 15 or 16-bit numbers, stored in twos complement form. The allowable range is from -16384 to 16383. You can type an instance of me in octal representation by typing a leading radix specification, such as in 8r377.'
