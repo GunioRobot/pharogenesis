@@ -3,9 +3,9 @@ unusedSoundNameLike: desiredName
 	"SampledSound unusedSoundNameLike: 'chirp'"
 
 	| newName i |
-	newName _ desiredName.
-	i _ 2.
+	newName := desiredName.
+	i := 2.
 	[SoundLibrary includesKey: newName] whileTrue: [
-		newName _ desiredName, i printString.
-		i _ i + 1].
+		newName := desiredName, i printString.
+		i := i + 1].
 	^ newName

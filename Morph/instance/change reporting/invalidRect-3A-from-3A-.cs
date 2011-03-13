@@ -7,4 +7,3 @@ invalidRect: aRectangle from: aMorph
 		self clipSubmorphs 
 			ifTrue:[damageRect _ aRectangle intersect: self clippingBounds]].
 	owner ifNotNil: [owner invalidRect: damageRect from: self].
-	self wonderlandTexture ifNotNil:[self isValidWonderlandTexture: false].

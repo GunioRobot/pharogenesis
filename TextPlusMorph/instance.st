@@ -1,6 +1,6 @@
 TextMorph
 	subclass: #TextPlusMorph
-	instanceVariableNames: 'scrollerOwner ignoreNextUp '
+	instanceVariableNames: 'scrollerOwner ignoreNextUp'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-GeeMail'
+	category: 'MorphicExtras-GeeMail'

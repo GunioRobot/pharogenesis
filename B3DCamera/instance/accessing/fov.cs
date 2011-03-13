@@ -1,2 +1,0 @@
-fov
-	^self fieldOfView

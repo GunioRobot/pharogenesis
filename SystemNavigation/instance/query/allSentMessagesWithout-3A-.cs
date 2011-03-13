@@ -7,27 +7,27 @@ allSentMessagesWithout: classesAndMessagesPair
 	absentSelectors _ classesAndMessagesPair second.
 	self flag: #shouldBeRewrittenUsingSmalltalkAllClassesDo:.
 	"sd 29/04/03"
-	Cursor execute
-		showWhile: [Smalltalk classNames
-				do: [:cName | ((absentClasses includes: cName)
-						ifTrue: [{}]
-						ifFalse: [{Smalltalk at: cName. (Smalltalk at: cName) class}])
-						do: [:cl | (absentSelectors isEmpty
-								ifTrue: [cl selectors]
-								ifFalse: [cl selectors copyWithoutAll: absentSelectors])
-								do: [:sel | "Include all sels, but not if sent by self"
-									(cl compiledMethodAt: sel) literals
-										do: [:m | 
-											(m isSymbol)
-												ifTrue: ["might be sent"
-													m == sel
-														ifFalse: [sent add: m]].
-											(m isMemberOf: Array)
-												ifTrue: ["might be performed"
-													m
-														do: [:x | (x isSymbol)
-																ifTrue: [x == sel
-																		ifFalse: [sent add: x]]]]]]]].
+	Cursor execute showWhile: [
+		Smalltalk classNames , Smalltalk traitNames do: [:name |
+			((absentClasses includes: name)
+				ifTrue: [{}]
+				ifFalse: [{Smalltalk at: name. (Smalltalk at: name) classSide}])
+					do: [:each | (absentSelectors isEmpty
+						ifTrue: [each selectors]
+						ifFalse: [each selectors copyWithoutAll: absentSelectors])
+						do: [:sel | "Include all sels, but not if sent by self"
+							(each compiledMethodAt: sel) literals
+								do: [:m | 
+									(m isSymbol)
+										ifTrue: ["might be sent"
+											m == sel
+												ifFalse: [sent add: m]].
+									(m isMemberOf: Array)
+										ifTrue: ["might be performed"
+											m
+												do: [:x | (x isSymbol)
+														ifTrue: [x == sel
+																ifFalse: [sent add: x]]]]]]]].
 			"The following may be sent without being in any literal frame"
 			1
 				to: Smalltalk specialSelectorSize

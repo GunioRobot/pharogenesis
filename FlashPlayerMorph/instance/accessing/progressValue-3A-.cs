@@ -1,2 +1,2 @@
 progressValue: aValueHolder
-	progressValue _ aValueHolder
+	progressValue := aValueHolder

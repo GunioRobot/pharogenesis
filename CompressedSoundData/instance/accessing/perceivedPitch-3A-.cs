@@ -1,3 +1,3 @@
 perceivedPitch: aNumber
 
-	perceivedPitch _ aNumber.
+	perceivedPitch := aNumber.

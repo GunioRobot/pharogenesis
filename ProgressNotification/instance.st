@@ -1,6 +1,6 @@
 Notification
 	subclass: #ProgressNotification
-	instanceVariableNames: ''
+	instanceVariableNames: 'amount done extra'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Exceptions Kernel'
+	category: 'Exceptions-Kernel'

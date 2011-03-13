@@ -3,7 +3,7 @@ togglePrettyDiffing
 
 	| wasShowingDiffs |
 	self okToChange ifTrue:
-		[wasShowingDiffs _ self showingPrettyDiffs.
+		[wasShowingDiffs := self showingPrettyDiffs.
 		self restoreTextualCodingPane.
 		self showPrettyDiffs: wasShowingDiffs not.
 		self setContentsToForceRefetch.

@@ -1,3 +1,3 @@
 switchBeClass
-	switch _ #class.
+	switch := #class.
 	self signalSwitchChanged.

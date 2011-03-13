@@ -1,2 +1,2 @@
 infoCache
-	^ infoCache ifNil: [infoCache _ Dictionary new]
+	^ infoCache ifNil: [infoCache := Dictionary new]

@@ -5,7 +5,8 @@ listenLoop
 
 
 	| newConnection |
-	socket _ Socket newTCP.
+
+	socket := Socket newTCP.
 	"We'll accept four simultanous connections at the same time"
 	socket listenOn: portNumber backlogSize: 4.
 	"If the listener is not valid then the we cannot use the
@@ -17,8 +18,11 @@ listenLoop
 			socket destroy.
 			(Delay forMilliseconds: 10) wait.
 			^self listenLoop ].
-		newConnection _ socket waitForAcceptFor: 10.
-		(newConnection notNil and:[newConnection isConnected]) ifTrue:
-			[accessSema critical: [connections addLast: newConnection].
-			newConnection _ nil].
+		[newConnection := socket waitForAcceptFor: 10]
+			on: ConnectionTimedOut
+			do: [:ex | newConnection := nil].
+		(newConnection notNil and: [newConnection isConnected]) ifTrue: [
+			accessSema critical: [connections addLast: newConnection.].
+			newConnection := nil.
+			self changed].
 		self pruneStaleConnections]. 

@@ -1,35 +1,37 @@
 nextPutImage: aForm
 
-	| f newF |
+	| reduced tempForm |
 	aForm unhibernate.
-	f _ aForm colorReduced.  "minimize depth"
-	f depth > 8 ifTrue: [
-		"Not enough color space; do it the hard way."
-		f _ f asFormOfDepth: 8].
-	f depth < 8 ifTrue: [
+	aForm depth > 8 ifTrue:[
+		reduced := aForm colorReduced.  "minimize depth"
+		reduced depth > 8 ifTrue: [
+			"Not enough color space; do it the hard way."
+			reduced := reduced asFormOfDepth: 8].
+	] ifFalse:[reduced := aForm].
+	reduced depth < 8 ifTrue: [
 		"writeBitData: expects depth of 8"
-		newF _ f class extent: f extent depth: 8.
-		(f isColorForm)
-			ifTrue: [
-				newF
-					copyBits: f boundingBox
-					from: f at: 0@0
-					clippingBox: f boundingBox
-					rule: Form over
-					fillColor: nil
-					map: nil.
-				newF colors: f colors]
-			ifFalse: [f displayOn: newF].
-		f _ newF].
-	(f isColorForm)
-		ifTrue: [
-			(f colorsUsed includes: Color transparent) ifTrue: [
-				transparentIndex _ (f colors indexOf: Color transparent) - 1]]
-		ifFalse: [transparentIndex _ nil].
-	width _ f width.
-	height _ f height.
-	bitsPerPixel _ f depth.
-	colorPalette _ f colormapIfNeededForDepth: 32.
-	interlace _ false.
+		tempForm := reduced class extent: reduced extent depth: 8.
+		(reduced isColorForm) ifTrue:[
+			tempForm
+				copyBits: reduced boundingBox
+				from: reduced at: 0@0
+				clippingBox: reduced boundingBox
+				rule: Form over
+				fillColor: nil
+				map: nil.
+			tempForm colors: reduced colors.
+		] ifFalse: [reduced displayOn: tempForm].
+		reduced := tempForm.
+	].
+	(reduced isColorForm) ifTrue:[
+		(reduced colorsUsed includes: Color transparent) ifTrue: [
+			transparentIndex := (reduced colors indexOf: Color transparent) - 1.
+		]
+	] ifFalse: [transparentIndex := nil].
+	width := reduced width.
+	height := reduced height.
+	bitsPerPixel := reduced depth.
+	colorPalette := reduced colormapIfNeededForDepth: 32.
+	interlace := false.
 	self writeHeader.
-	self writeBitData: f bits.
+	self writeBitData: reduced bits.

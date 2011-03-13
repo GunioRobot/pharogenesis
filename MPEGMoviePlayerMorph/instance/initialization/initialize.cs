@@ -4,11 +4,11 @@ initialize
 	""
 	self hResizing: #shrinkWrap;
 		 vResizing: #shrinkWrap.
-	borderWidth _ 2.
+	borderWidth := 2.
 	self listDirection: #topToBottom.
 	self cornerStyle: #rounded.
 	self layoutInset: 4.
-	moviePlayer _ MPEGDisplayMorph new.
+	moviePlayer := MPEGDisplayMorph new.
 	self addMorphFront: moviePlayer.
 	self addButtonRow.
 	self addVolumeSlider.

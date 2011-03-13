@@ -1,0 +1,1 @@
+ProtocolClient class instanceVariableNames: ''

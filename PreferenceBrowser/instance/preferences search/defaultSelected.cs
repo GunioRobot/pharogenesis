@@ -1,0 +1,2 @@
+defaultSelected
+	Preferences chooseInitialSettings

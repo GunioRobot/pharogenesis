@@ -8,11 +8,11 @@ acceptDroppingMorph: morphToDrop event: evt
 	self eToyRejectDropMorph: morphToDrop event: evt.		"we don't really want it"
 
 	"7 mar 2001 - remove #veryDeepCopy"
-	myCopy _ morphToDrop.	"gradient fills require doing this second"
+	myCopy := morphToDrop.	"gradient fills require doing this second"
 	myCopy setProperty: #positionInOriginatingWorld toValue: morphToDrop position.
 	self stopFlashing.
 
-	outData _ myCopy eToyStreamedRepresentationNotifying: self.
+	outData := myCopy eToyStreamedRepresentationNotifying: self.
 	self resetIndicator: #working.
 	self transmitStreamedObject: outData to: self ipAddress.
 

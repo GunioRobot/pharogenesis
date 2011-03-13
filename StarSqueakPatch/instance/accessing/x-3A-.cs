@@ -1,3 +1,3 @@
 x: anInteger
 
-	x _ anInteger.
+	x := anInteger.

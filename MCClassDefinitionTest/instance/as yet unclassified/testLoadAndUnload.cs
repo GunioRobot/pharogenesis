@@ -1,9 +1,9 @@
 testLoadAndUnload
 	| d c |
-	d _  self mockClass: 'MCMockClassC' super: 'Object'.
+	d :=  self mockClass: 'MCMockClassC' super: 'Object'.
 	d load.
 	self assert: (Smalltalk hasClassNamed: 'MCMockClassC').
-	c _ (Smalltalk classNamed: 'MCMockClassC').
+	c := (Smalltalk classNamed: 'MCMockClassC').
 	self assert: (c isKindOf: Class).
 	self assert: c superclass = Object.
 	self assert: c instVarNames isEmpty.

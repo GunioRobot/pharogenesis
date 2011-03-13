@@ -1,3 +1,3 @@
 scale: aNumber
 
-	scale _ aNumber asFloat.
+	scale := aNumber asFloat.

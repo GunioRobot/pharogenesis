@@ -1,3 +1,2 @@
 includesUnifiedCharacter
-
-	^ false.
+	^false

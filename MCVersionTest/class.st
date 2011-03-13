@@ -1,0 +1,1 @@
+MCVersionTest class instanceVariableNames: ''

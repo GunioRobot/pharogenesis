@@ -1,2 +1,2 @@
 setBitLengthTo: bl
-	bitLength _ bl
+	bitLength := bl

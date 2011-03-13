@@ -1,3 +1,3 @@
 adjustExtraButton
 	buttonInTitle ifNil: [^ self].
-	buttonInTitle align: buttonInTitle topLeft with:  self innerBounds topRight - (buttonInTitle width + 15 @ 1)
+	buttonInTitle align: buttonInTitle topLeft with:  self innerBounds topRight - (buttonInTitle width + 20 @ -3)

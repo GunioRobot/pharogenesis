@@ -1,1 +1,0 @@
-ExternalObject class instanceVariableNames: ''

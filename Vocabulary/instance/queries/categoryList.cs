@@ -3,15 +3,15 @@ categoryList
 	limitClass and lower. This variant is used when the limitClass and 
 	targetObjct are known"
 	| classToUse foundAMethod classThatImplements |
-	classToUse _ object class.
+	classToUse := object class.
 	^ categories
 		select: [:aCategory | 
-			foundAMethod _ false.
+			foundAMethod := false.
 			aCategory elementsInOrder
 				do: [:aSpec | 
-					classThatImplements _ classToUse whichClassIncludesSelector: aSpec selector.
+					classThatImplements := classToUse whichClassIncludesSelector: aSpec selector.
 					(classThatImplements notNil
 							and: [classThatImplements includesBehavior: limitClass])
-						ifTrue: [foundAMethod _ true]].
+						ifTrue: [foundAMethod := true]].
 			foundAMethod]
 		thenCollect: [:aCategory | aCategory categoryName]

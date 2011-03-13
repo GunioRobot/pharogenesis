@@ -1,2 +1,0 @@
-noTimeout
-	timeout := 0

@@ -1,3 +1,3 @@
 transitionTo: dstProjectName
 
-	^self transitionFrom: CurrentProjectRefactoring currentProjectName to: dstProjectName
+	^self transitionFrom: Project current name to: dstProjectName

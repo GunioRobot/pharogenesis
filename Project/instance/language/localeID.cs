@@ -5,5 +5,5 @@ localeID
 	^ self projectParameterAt: #localeID
 		ifAbsentPut: [
 			(prev _ self previousProject)
-				ifNotNil: [prev projectParameterAt: #localeID ifAbsent: [LocaleID default]]
-				ifNil: [LocaleID default]]
+				ifNotNil: [prev projectParameterAt: #localeID ifAbsent: [LocaleID current]]
+				ifNil: [LocaleID current]]

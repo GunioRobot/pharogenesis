@@ -1,0 +1,2 @@
+host
+	^self authority host

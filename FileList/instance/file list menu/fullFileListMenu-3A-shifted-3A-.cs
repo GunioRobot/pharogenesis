@@ -2,7 +2,7 @@ fullFileListMenu: aMenu shifted: aBoolean
 	"Fill the menu with all possible items for the file list pane, regardless of selection."
 
 	| lastProvider |
-	aMenu title: 'all possible file operations'.
+	aMenu title: 'all possible file operations' translated.
 	Smalltalk isMorphic ifTrue: [aMenu addStayUpItemSpecial].
 
 	lastProvider _ nil.

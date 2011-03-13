@@ -1,0 +1,2 @@
+fireButton
+	queries add: #fireButton.

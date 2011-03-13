@@ -1,3 +1,3 @@
 answer: anObject
-	modalValue _ anObject.
+	modalValue := anObject.
 	self close.

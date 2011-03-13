@@ -1,10 +1,11 @@
-hasLiteralThorough: literal
-	"Answer true if any literal in this method is literal,
-	even if embedded in array structure."
+hasLiteralThorough: aLiteral
+	"Answer true if any literal in this method is literal, even if embedded in array structure or within its pragmas."
 
-	| lit |
-	2 to: self numLiterals + 1 do: 
-		[:index | 
-		(lit _ self objectAt: index) == literal ifTrue: [^ true].
-		(lit class == Array and: [lit hasLiteral: literal]) ifTrue: [^ true]].
-	^ false
+	| literal |
+	self pragmas do: [ :pragma |
+		(pragma hasLiteral: aLiteral) ifTrue: [ ^ true ] ].
+	2 to: self numLiterals + 1 do: [ :index | 
+		literal := self objectAt: index.
+		literal == aLiteral  ifTrue: [ ^ true ].
+		(literal hasLiteralThorough: aLiteral) ifTrue: [ ^ true ] ].
+	^ false.

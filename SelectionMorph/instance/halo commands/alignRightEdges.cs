@@ -2,7 +2,8 @@ alignRightEdges
 	"Make the right coordinate of all my elements be the same"
 
 	| maxRight |
-	selectedItems ifEmpty: [^ self].
-	maxRight := (selectedItems collect: [:itm | itm right]) max.
+	maxRight _ (selectedItems collect: [:itm | itm right]) max.
 	selectedItems do:
-		[:itm | itm right: maxRight]
+		[:itm | itm right: maxRight].
+
+	self changed

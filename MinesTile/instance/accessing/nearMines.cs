@@ -1,3 +1,0 @@
-nearMines
-
-	^ nearMines.

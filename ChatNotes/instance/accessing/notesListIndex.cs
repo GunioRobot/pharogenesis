@@ -1,3 +1,3 @@
 notesListIndex
 
-	^notesIndex ifNil: [notesIndex _ 0]
+	^notesIndex ifNil: [notesIndex := 0]

@@ -3,7 +3,7 @@ selectedClassName
 	  bug fix for the case where name cannot be found -- return nil rather than halt"
 
 	| aName |
-	aName _ super selectedClassName.
+	aName := super selectedClassName.
 	^ aName == nil
 		ifTrue:
 			[aName]

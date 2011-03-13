@@ -5,9 +5,9 @@ CanvasEncoder showStats
 	| answer bucket |
 
 	SentTypesAndSizes ifNil: [^Beeper beep].
-	answer _ WriteStream on: String new.
+	answer := WriteStream on: String new.
 	SentTypesAndSizes keys asSortedCollection do: [ :each |
-		bucket _ SentTypesAndSizes at: each.
+		bucket := SentTypesAndSizes at: each.
 		answer nextPutAll: each printString,' ',
 				bucket first printString,'  ',
 				bucket second asStringWithCommas,' ',

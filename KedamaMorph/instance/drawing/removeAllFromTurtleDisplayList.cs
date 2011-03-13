@@ -1,0 +1,3 @@
+removeAllFromTurtleDisplayList
+
+	turtlesToDisplay _ #().

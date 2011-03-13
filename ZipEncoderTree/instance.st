@@ -1,6 +1,6 @@
 Object
 	subclass: #ZipEncoderTree
-	instanceVariableNames: 'bitLengths codes maxCode '
+	instanceVariableNames: 'bitLengths codes maxCode'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Compression'
+	category: 'Compression-Streams'

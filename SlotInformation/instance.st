@@ -1,6 +1,6 @@
 Object
 	subclass: #SlotInformation
-	instanceVariableNames: 'type documentation floatPrecision variableDock variableDefinition '
+	instanceVariableNames: 'type documentation floatPrecision variableDock variableDefinition'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Scripting'
+	category: 'EToys-Scripting'

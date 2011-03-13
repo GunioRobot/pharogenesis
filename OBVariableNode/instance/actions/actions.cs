@@ -1,0 +1,2 @@
+actions
+	^ {self browseAction}

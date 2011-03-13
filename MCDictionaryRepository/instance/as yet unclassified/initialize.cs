@@ -1,3 +1,3 @@
 initialize
 
-	dict _ Dictionary new.
+	dict := Dictionary new.

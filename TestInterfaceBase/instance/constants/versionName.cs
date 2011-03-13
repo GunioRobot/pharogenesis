@@ -1,3 +1,0 @@
-versionName
-
-	^self class versionName

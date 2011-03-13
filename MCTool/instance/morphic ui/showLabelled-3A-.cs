@@ -1,5 +1,5 @@
 showLabelled: labelString
-	modal _ false.
+	modal := false.
 	self label: labelString.
 	^(self window)
 		openInWorldExtent: self defaultExtent;

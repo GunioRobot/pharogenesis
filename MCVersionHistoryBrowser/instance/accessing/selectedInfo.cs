@@ -1,2 +1,2 @@
 selectedInfo
-	^ ancestry withAllAncestors at: self selection ifAbsent: [nil]
+	^ self infos at: self selection ifAbsent: [nil]

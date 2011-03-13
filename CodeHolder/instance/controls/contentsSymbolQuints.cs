@@ -13,7 +13,6 @@ contentsSymbolQuints
 -
 (prettyPrint		togglePrettyPrint 			prettyPrintString			'prettyPrint'			'the method source presented in a standard text format')
 (colorPrint		toggleColorPrint				colorPrintString				'colorPrint'			'the method source in a standard text format with colors to distinguish structural parts') 
-(altSyntax		toggleAltSyntax				showingAltSyntaxString		'altSyntax'			'alternative syntax')
 -
 (showDiffs		toggleRegularDiffing		showingRegularDiffsString	'showDiffs'				'the textual source diffed from its prior version')
 (prettyDiffs		togglePrettyDiffing			showingPrettyDiffsString	'prettyDiffs'		'formatted textual source diffed from formatted form of prior version')

@@ -1,0 +1,2 @@
+basicNext
+	^panel columnAfter: self

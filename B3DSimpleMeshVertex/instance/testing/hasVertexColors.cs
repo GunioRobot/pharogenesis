@@ -1,2 +1,0 @@
-hasVertexColors
-	^color notNil

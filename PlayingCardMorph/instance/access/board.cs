@@ -1,3 +1,0 @@
-board
-
-	^ owner owner owner

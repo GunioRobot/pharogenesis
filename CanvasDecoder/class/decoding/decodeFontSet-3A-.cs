@@ -1,3 +1,3 @@
 decodeFontSet: fontString
 
-	^ StrikeFontSet fontNamed: fontString
+	^ StrikeFontSet decodedFromRemoteCanvas: fontString

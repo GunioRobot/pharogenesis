@@ -1,2 +1,0 @@
-leaveScope
-	self scope leaveScope

@@ -1,2 +1,2 @@
 id: anId
-	id _ anId
+	id := anId

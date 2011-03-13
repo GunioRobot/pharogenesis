@@ -1,2 +1,0 @@
-asB3DColor
-	^self

@@ -11,3 +11,5 @@ initialize
 	handleMorph color: Color red; extent: 15@15.
 	self addMorph: handleMorph.
 	self moveHandleToCenter.
+	button1 := false.
+	button2 := false.

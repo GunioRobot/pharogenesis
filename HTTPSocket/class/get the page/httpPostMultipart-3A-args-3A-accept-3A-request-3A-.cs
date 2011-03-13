@@ -8,26 +8,26 @@ httpPostMultipart: url args: argsDict accept: mimeType request: requestString
 	Socket initializeNetwork.
 
 	"parse url"
-	bare _ (url asLowercase beginsWith: 'http://') 
+	bare := (url asLowercase beginsWith: 'http://') 
 		ifTrue: [url copyFrom: 8 to: url size]
 		ifFalse: [url].
-	serverName _ bare copyUpTo: $/.
-	specifiedServer _ serverName.
-	(serverName includes: $:) ifFalse: [ port _ self defaultPort ] ifTrue: [
-		port _ (serverName copyFrom: (serverName indexOf: $:) + 1 to: serverName size) asNumber.
-		serverName _ serverName copyUpTo: $:.
+	serverName := bare copyUpTo: $/.
+	specifiedServer := serverName.
+	(serverName includes: $:) ifFalse: [ port := self defaultPort ] ifTrue: [
+		port := (serverName copyFrom: (serverName indexOf: $:) + 1 to: serverName size) asNumber.
+		serverName := serverName copyUpTo: $:.
 	].
 
-	page _ bare copyFrom: (bare indexOf: $/) to: bare size.
-	page size = 0 ifTrue: [page _ '/'].
+	page := bare copyFrom: (bare indexOf: $/) to: bare size.
+	page size = 0 ifTrue: [page := '/'].
 	(self shouldUseProxy: serverName) ifTrue: [ 
-		page _ 'http://', serverName, ':', port printString, page.		"put back together"
-		serverName _ HTTPProxyServer.
-		port _ HTTPProxyPort].
+		page := 'http://', serverName, ':', port printString, page.		"put back together"
+		serverName := self httpProxyServer.
+		port := self httpProxyPort].
 
-	mimeBorder _ '----squeak-georgia-tech-', Time millisecondClockValue printString, '-csl-cool-stuff-----'.
+	mimeBorder := '----squeak-georgia-tech-', Time millisecondClockValue printString, '-csl-cool-stuff-----'.
 	"encode the arguments dictionary"
-	argsStream _ WriteStream on: String new.
+	argsStream := WriteStream on: String new.
 	argsDict associationsDo: [:assoc |
 		assoc value do: [ :value |
 		"print the boundary"
@@ -35,9 +35,9 @@ httpPostMultipart: url args: argsDict accept: mimeType request: requestString
 		" check if it's a non-text field "
 		argsStream nextPutAll: 'Content-disposition: multipart/form-data; name="', assoc key, '"'.
 		(value isKindOf: MIMEDocument)
-			ifFalse: [fieldValue _ value]
+			ifFalse: [fieldValue := value]
 			ifTrue: [argsStream nextPutAll: ' filename="', value url pathForFile, '"', CrLf, 'Content-Type: ', value contentType.
-				fieldValue _ (value content
+				fieldValue := (value content
 					ifNil: [(FileStream fileNamed: value url pathForFile) contentsOfEntireFile]
 					ifNotNil: [value content]) asString].
 " Transcript show: 'field=', key, '; value=', fieldValue; cr. "
@@ -46,12 +46,12 @@ httpPostMultipart: url args: argsDict accept: mimeType request: requestString
 	argsStream nextPutAll: '--', mimeBorder, '--'.
 
   	"make the request"	
-	serverAddr _ NetNameResolver addressForName: serverName timeout: 20.
+	serverAddr := NetNameResolver addressForName: serverName timeout: 20.
 	serverAddr ifNil: [
 		^ 'Could not resolve the server named: ', serverName].
 
 
-	s _ HTTPSocket new.
+	s := HTTPSocket new.
 	s connectTo: serverAddr port: port.
 	s waitForConnectionUntil: self standardDeadline.
 	Transcript cr; show: serverName, ':', port asString; cr.
@@ -69,26 +69,26 @@ httpPostMultipart: url args: argsDict accept: mimeType request: requestString
 	s sendCommand: argsStream contents.
 
 	"get the header of the reply"
-	list _ s getResponseUpTo: CrLf, CrLf.	"list = header, CrLf, CrLf, beginningOfData"
-	header _ list at: 1.
+	list := s getResponseUpTo: CrLf, CrLf.	"list = header, CrLf, CrLf, beginningOfData"
+	header := list at: 1.
 	"Transcript show: page; cr; show: argsStream contents; cr; show: header; cr."
-	firstData _ list at: 3.
+	firstData := list at: 3.
 
 	"dig out some headers"
 	s header: header.
-	length _ s getHeader: 'content-length'.
-	length ifNotNil: [ length _ length asNumber ].
-	type _ s getHeader: 'content-type'.
+	length := s getHeader: 'content-length'.
+	length ifNotNil: [ length := length asNumber ].
+	type := s getHeader: 'content-type'.
 	s responseCode first = $3 ifTrue: [
 		"redirected - don't re-post automatically"
 		"for now, just do a GET, without discriminating between 301/302 codes"
-		newUrl _ s getHeader: 'location'.
+		newUrl := s getHeader: 'location'.
 		newUrl ifNotNil: [
 			(newUrl beginsWith: 'http://')
 				ifFalse: [
 					(newUrl beginsWith: '/')
-						ifTrue: [newUrl _ (bare copyUpTo: $/), newUrl]
-						ifFalse: [newUrl _ url, newUrl. self flag: #todo
+						ifTrue: [newUrl := (bare copyUpTo: $/), newUrl]
+						ifFalse: [newUrl := url, newUrl. self flag: #todo
 							"should do a relative URL"]
 				].
 			Transcript show: 'redirecting to: ', newUrl; cr.
@@ -97,7 +97,7 @@ httpPostMultipart: url args: argsDict accept: mimeType request: requestString
 			"for some codes, may do:
 			^self httpPostMultipart: newUrl args: argsDict  accept: mimeType request: requestString"] ].
 
-	aStream _ s getRestOfBuffer: firstData totalLength: length.
+	aStream := s getRestOfBuffer: firstData totalLength: length.
 	s responseCode = '401' ifTrue: [^ header, aStream contents].
 	s destroy.	"Always OK to destroy!"
 

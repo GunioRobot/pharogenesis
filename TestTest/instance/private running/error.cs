@@ -1,3 +1,0 @@
-error
-
-	Error new signal.

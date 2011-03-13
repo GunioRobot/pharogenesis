@@ -1,7 +1,6 @@
-inAColumnForText: someMorphs
-
-	^(self inAColumn: someMorphs)
-		hResizing: #shrinkWrap; 
-		color: Color white; 
-		borderColor: Color black; 
-		borderWidth: 1
+inAColumnForText: someMorphs 
+	^ (self inAColumn: someMorphs) hResizing: #shrinkWrap;
+		 color: ColorTheme current dialogTextBoxColor;
+		 borderColor: ColorTheme current dialogTextBoxBorderColor;
+		 borderWidth: ColorTheme current dialogButtonBorderWidth;
+		 useRoundedCorners

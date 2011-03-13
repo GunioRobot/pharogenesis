@@ -1,7 +1,7 @@
 ensureListenerInCurrentWorld
 
 	| w |
-	w _ self currentWorld.
+	w := self currentWorld.
 	EToyListenerMorph allInstances 
 		detect: [ :each | each world == w]
 		ifNone: [EToyListenerMorph new open]

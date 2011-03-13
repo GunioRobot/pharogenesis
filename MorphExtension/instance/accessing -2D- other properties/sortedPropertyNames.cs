@@ -13,6 +13,5 @@ sortedPropertyNames
 	actorState isNil ifFalse: [props nextPut: #actorState].
 	player isNil ifFalse: [props nextPut: #player].
 	eventHandler isNil ifFalse: [props nextPut: #eventHandler].
-	self hasOtherProperties 
-		ifTrue: [self otherProperties associationsDo: [:a | props nextPut: a key]].
+	 otherProperties ifNotNil: [otherProperties associationsDo: [:a | props nextPut: a key]].
 	^props contents sort: [:s1 :s2 | s1 <= s2]

@@ -1,6 +1,6 @@
 MorphicEvent
 	subclass: #UserInputEvent
-	instanceVariableNames: 'type buttons position handler wasHandled '
+	instanceVariableNames: 'type buttons position handler wasHandled'
 	classVariableNames: ''
-	poolDictionaries: 'EventSensorConstants '
+	poolDictionaries: 'EventSensorConstants'
 	category: 'Morphic-Events'

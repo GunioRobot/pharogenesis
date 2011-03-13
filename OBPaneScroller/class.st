@@ -1,0 +1,1 @@
+OBPaneScroller class instanceVariableNames: ''

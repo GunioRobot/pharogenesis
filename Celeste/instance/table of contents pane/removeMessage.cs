@@ -1,2 +1,0 @@
-removeMessage
-	self removeMessage: currentMsgID

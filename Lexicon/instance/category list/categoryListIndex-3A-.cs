@@ -2,33 +2,33 @@ categoryListIndex: anIndex
 	"Set the category list index as indicated"
 
 	| categoryName aList found existingSelector |
-	existingSelector _ self selectedMessageName.
+	existingSelector := self selectedMessageName.
 
-	categoryListIndex _ anIndex.
+	categoryListIndex := anIndex.
 	anIndex > 0
 		ifTrue:
-			[categoryName _ categoryList at: anIndex]
+			[categoryName := categoryList at: anIndex]
 		ifFalse:
-			[contents _ nil].
+			[contents := nil].
 	self changed: #categoryListIndex.
 
-	found _ false.
+	found := false.
 	#(	(viewedCategoryName		selectorsVisited)
 		(queryCategoryName		selectorsRetrieved)) do:
 			[:pair |
 				categoryName = (self class perform: pair first)
 					ifTrue:
-						[aList _ self perform: pair second.
-						found _ true]].
+						[aList := self perform: pair second.
+						found := true]].
 	found ifFalse:
-		[aList _ currentVocabulary allMethodsInCategory: categoryName forInstance: self targetObject ofClass: targetClass].
-	categoryName = self class queryCategoryName ifFalse: [autoSelectString _ nil].
+		[aList := currentVocabulary allMethodsInCategory: categoryName forInstance: self targetObject ofClass: targetClass].
+	categoryName = self class queryCategoryName ifFalse: [autoSelectString := nil].
 
 	self initListFrom: aList highlighting: targetClass.
 
-	messageListIndex _ 0.
+	messageListIndex := 0.
 	self changed: #messageList.
-	contents _ nil.
+	contents := nil.
 	self contentsChanged.
 	self selectWithinCurrentCategoryIfPossible: existingSelector.
 	self adjustWindowTitle

@@ -7,6 +7,7 @@ codeSelectedTranslationAsMimeString
 
 	tmpStream _ MultiByteBinaryOrTextStream on: ''.
 	tmpStream converter: UTF8TextConverter new.
+	translator fileOutHeaderOn: tmpStream.
 	tmpStream nextPutAll: code.
 	s2 _ RWBinaryOrTextStream on: ''.
 	gzs := GZipWriteStream on: s2.
@@ -16,6 +17,10 @@ codeSelectedTranslationAsMimeString
 	s2 reset.
 
 	cont _ String streamContents: [:strm |
+		strm nextPutAll: '"Gzip+Base64 encoded translation for;'; cr.
+		strm nextPutAll: '#('.
+		keys do: [:each | strm  nextPutAll: '''', each, ''' '.].
+		strm nextPutAll: ')"'; cr; cr.
 		strm nextPutAll: 'NaturalLanguageTranslator loadForLocaleIsoString: '.
 		strm nextPut: $'.
 		strm nextPutAll: translator localeID isoString.
@@ -23,7 +28,7 @@ codeSelectedTranslationAsMimeString
 		strm nextPutAll: ' fromGzippedMimeLiteral: '.
 		strm nextPut: $'.
 		strm nextPutAll: (Base64MimeConverter mimeEncode: s2) contents.
-		strm nextPutAll: '''.!'.
+		strm nextPutAll: '''.'.
 		strm cr.
 	].
 	

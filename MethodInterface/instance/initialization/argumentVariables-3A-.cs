@@ -1,4 +1,4 @@
 argumentVariables: variableList
 	"Set the argument variables"
 
-	argumentVariables _ variableList
+	argumentVariables := variableList

@@ -1,3 +1,0 @@
-unzipped
-
-	self flag: #toBeImplemented.

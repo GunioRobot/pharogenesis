@@ -1,0 +1,2 @@
+selectedPreferenceIndex
+	^self model selectedPreferenceIndex

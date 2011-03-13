@@ -11,12 +11,12 @@ we checkpoint."
 
 "	self mutex critical: ["
 		aBlock value.
-		isDirty _ true
+		isDirty := true
 "	]"
 
 "	self mutex critical: [
-		dirtyList _ OrderedCollection new.
+		dirtyList := OrderedCollection new.
 		aBlock value.
 		dirtyList do: [:obj | obj commit].
-		dirtyList _ nil
+		dirtyList := nil
 	]"

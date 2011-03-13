@@ -5,14 +5,14 @@ openContext: aContext label: aString contents: contentsStringOrNil
 	ErrorRecursion not & Preferences logDebuggerStackToFile ifTrue:
 		[Smalltalk logError: aString inContext: aContext to: 'SqueakDebug.log'].
 	ErrorRecursion ifTrue:
-		[ErrorRecursion _ false.
-		(isolationHead _ CurrentProjectRefactoring currentIsolationHead)
+		[ErrorRecursion := false.
+		(isolationHead := Project current isolationHead)
 			ifNil: [self primitiveError: aString]
 			ifNotNil: [isolationHead revoke]].
-	ErrorRecursion _ true.
+	ErrorRecursion := true.
 	self informExistingDebugger: aContext label: aString.
 	(Debugger context: aContext isolationHead: isolationHead)
 		openNotifierContents: contentsStringOrNil
 		label: aString.
-	ErrorRecursion _ false.
+	ErrorRecursion := false.
 	Processor activeProcess suspend.

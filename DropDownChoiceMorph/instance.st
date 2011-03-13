@@ -1,6 +1,6 @@
 PopUpChoiceMorph
 	subclass: #DropDownChoiceMorph
-	instanceVariableNames: 'items border '
-	classVariableNames: 'SubMenuMarker '
+	instanceVariableNames: 'items border'
+	classVariableNames: 'SubMenuMarker'
 	poolDictionaries: ''
-	category: 'Morphic-Widgets'
+	category: 'MorphicExtras-Widgets'

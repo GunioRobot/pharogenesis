@@ -1,0 +1,2 @@
+initialize
+	possiblyAffectedPerRoot _ IdentityDictionary new.

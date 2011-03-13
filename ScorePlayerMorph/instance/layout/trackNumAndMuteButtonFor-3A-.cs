@@ -1,7 +1,7 @@
 trackNumAndMuteButtonFor: trackIndex
 
 	| muteButton instSelector pianoRollColor r |
-	muteButton _ SimpleSwitchMorph new
+	muteButton := SimpleSwitchMorph new
 		onColor: (Color r: 1.0 g: 0.6 b: 0.6);
 		offColor: color;
 		color: color;
@@ -9,7 +9,7 @@ trackNumAndMuteButtonFor: trackIndex
 		target: scorePlayer;
 		actionSelector: #mutedForTrack:put:;
 		arguments: (Array with: trackIndex).
-	instSelector _ PopUpChoiceMorph new
+	instSelector := PopUpChoiceMorph new
 		extent: 95@14;
 		contentsClipped: 'oboe1';
 		target: self;
@@ -21,9 +21,9 @@ trackNumAndMuteButtonFor: trackIndex
 	instrumentSelector at: trackIndex put: instSelector.
 
 	"select track color using same color list as PianoRollScoreMorph"
-	pianoRollColor _ (Color wheel: scorePlayer score tracks size) at: trackIndex.
+	pianoRollColor := (Color wheel: scorePlayer score tracks size) at: trackIndex.
 
-	r _ self makeRow
+	r := self makeRow
 		hResizing: #rigid;
 		vResizing: #spaceFill;
 		extent: 70@10.

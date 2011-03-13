@@ -39,7 +39,7 @@ findRogueRootsAllMorphs: rootArray
 	testRoots do: [:each | inSeg remove: each ifAbsent: []].
 	"want them to be pointed at from outside"
 	pointIn := IdentitySet new: 400.
-	inSeg do: [:ob | pointIn addAll: (PointerFinder pointersTo: ob except: inSeg)].
+	inSeg do: [:ob | pointIn addAll: (Utilities pointersTo: ob except: inSeg)].
 	testRoots do: [:each | pointIn remove: each ifAbsent: []].
 	pointIn remove: inSeg array ifAbsent: [].
 	pointIn remove: pointIn array ifAbsent: [].

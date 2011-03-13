@@ -1,6 +1,6 @@
 AlignmentMorph
 	subclass: #ViewerRow
-	instanceVariableNames: 'elementSymbol '
+	instanceVariableNames: 'elementSymbol'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Scripting Tiles'
+	category: 'EToys-Scripting Tiles'

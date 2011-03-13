@@ -1,2 +1,0 @@
-reset
-	self initialize.

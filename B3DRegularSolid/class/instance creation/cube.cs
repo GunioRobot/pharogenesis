@@ -1,3 +1,0 @@
-cube
-
-  ^self new createHexahedron

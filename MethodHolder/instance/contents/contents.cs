@@ -1,13 +1,9 @@
 contents
 	"Answer the contents, with due respect for my contentsSymbol"
 
-	contents _ methodClass sourceCodeAt: methodSelector ifAbsent: [''].
-	currentCompiledMethod _ methodClass compiledMethodAt: methodSelector ifAbsent: [nil].
+	contents := methodClass sourceCodeAt: methodSelector ifAbsent: [''].
+	currentCompiledMethod := methodClass compiledMethodAt: methodSelector ifAbsent: [nil].
 
-	self showingDecompile ifTrue:
-			[^ self decompiledSourceIntoContentsWithTempNames: Sensor leftShiftDown not ].
-
-	self showingDocumentation ifTrue:
-		[^ self commentContents].
-
-	^ contents _ self sourceStringPrettifiedAndDiffed asText makeSelectorBoldIn: methodClass
+	self showingDecompile ifTrue: [^ self decompiledSourceIntoContents].
+	self showingDocumentation ifTrue: [^ self commentContents].
+	^ contents := self sourceStringPrettifiedAndDiffed asText makeSelectorBoldIn: methodClass

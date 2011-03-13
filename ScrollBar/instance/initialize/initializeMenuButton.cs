@@ -4,7 +4,7 @@ initializeMenuButton
 	"Preferences enable: #scrollBarsWithoutMenuButton"
 	(Preferences valueOfFlag: #scrollBarsWithoutMenuButton)
 		ifTrue: [^ self].
-	menuButton := self roundedScrollbarLook
+	menuButton _ self roundedScrollbarLook
 		ifTrue: [RectangleMorph
 					newBounds: ((bounds isWide
 							ifTrue: [upButton bounds topRight]
@@ -34,5 +34,5 @@ initializeMenuButton
 		ifTrue: [menuButton color: Color veryLightGray.
 			menuButton
 				borderStyle: (BorderStyle complexRaised width: 3)]
-		ifFalse: [menuButton setBorderWidth: 1 borderColor: #raised].
+		ifFalse: [menuButton setBorderWidth: 1 borderColor: Color lightGray].
 	self addMorph: menuButton

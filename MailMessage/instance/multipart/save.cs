@@ -1,16 +1,16 @@
 save
 	"save the part to a file"
 	| fileName file |
-	fileName _ self name
+	fileName := self name
 				ifNil: ['attachment' , Utilities dateTimeSuffix].
 	(fileName includes: $.) ifFalse: [
-		self body isJpeg
-			ifTrue: [fileName _ fileName , '.jpg'].
-		self body isGif ifTrue: [fileName _ fileName, '.gif']. ].
-	fileName _ FillInTheBlank request: 'File name for save?' initialAnswer: fileName.
+		#(isJpeg 'jpg' isGif 'gif' isPng 'png' isPnm 'pnm') pairsDo: [ :s :e |
+			(self body perform: s) ifTrue: [fileName := fileName, '.', e]
+		]
+	].
+	fileName := UIManager default request: 'File name for save?' initialAnswer: fileName.
 	fileName isEmpty
 		ifTrue: [^ nil].
-	file _ FileStream newFileNamed: fileName.
-	file binary.
+	file := FileStream newFileNamed: fileName.
 	file nextPutAll: self bodyText.
 	file close

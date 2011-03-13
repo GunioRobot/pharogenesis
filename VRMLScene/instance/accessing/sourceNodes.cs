@@ -1,2 +1,0 @@
-sourceNodes
-	^sourceNodes ifNil:[#()].

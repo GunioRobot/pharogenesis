@@ -1,2 +1,2 @@
 name: aName
-	name _ aName
+	name := aName

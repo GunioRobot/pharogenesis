@@ -1,0 +1,26 @@
+defineTrait: defString notifying: aController  
+
+	| defTokens keywdIx envt oldTrait newTraitName trait |
+	oldTrait _ self selectedClassOrMetaClass.
+	defTokens _ defString findTokens: Character separators.
+	keywdIx _ defTokens findFirst: [:x | x = 'category'].
+	envt _ self selectedEnvironment.
+	keywdIx _ defTokens findFirst: [:x | x = 'named:'].
+	newTraitName _ (defTokens at: keywdIx+1) copyWithoutAll: '#()'.
+	((oldTrait isNil or: [oldTrait baseTrait name asString ~= newTraitName])
+		and: [envt includesKey: newTraitName asSymbol]) ifTrue:
+			["Attempting to define new class/trait over existing one when
+				not looking at the original one in this browser..."
+			(self confirm: ((newTraitName , ' is an existing class/trait in this system.
+Redefining it might cause serious problems.
+Is this really what you want to do?') asText makeBoldFrom: 1 to: newTraitName size))
+				ifFalse: [^ false]].
+
+	trait _ Compiler evaluate: defString notifying: aController logged: true.
+	^(trait isKindOf: TraitBehavior)
+		ifTrue: [
+			self changed: #classList.
+			self classListIndex: (self classList indexOf: trait baseTrait name).
+			self clearUserEditFlag; editClass.
+			true]
+		ifFalse: [ false ]

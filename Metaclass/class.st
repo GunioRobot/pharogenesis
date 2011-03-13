@@ -1,1 +1,0 @@
-Metaclass class instanceVariableNames: ''

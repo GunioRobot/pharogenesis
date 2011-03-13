@@ -1,2 +1,0 @@
-setPopServer
-	^self class setPopServer

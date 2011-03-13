@@ -1,2 +1,3 @@
 testMinVal
-	self should: [SmallInteger minVal = -16r40000000].
+
+	self assert: (SmallInteger minVal = -16r40000000).

@@ -8,7 +8,7 @@ testJoystick: index
 		buttons _ Sensor joystickButtons: index.
 		status _
 'xy: ', pt printString, '
-buttons: ', buttons hex.
+buttons: ', buttons printStringHex.
 		f fillWhite.
 		status displayOn: f at: 10@10.
 		f displayOn: Display at: 10@10.

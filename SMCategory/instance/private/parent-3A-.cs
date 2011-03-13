@@ -3,4 +3,4 @@ parent: aCategory
 	This method relies on that somebody else
 	updates the parent's subCategories collection."
 	
-	parent _ aCategory
+	parent := aCategory

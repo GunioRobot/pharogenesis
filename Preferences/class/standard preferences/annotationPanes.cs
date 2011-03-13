@@ -1,2 +1,0 @@
-annotationPanes
-	^ self valueOfFlag: #annotationPanes

@@ -1,8 +1,8 @@
 initialize
 
 	super initialize.
-	dimensions _ self starSqueakDimensions.  "dimensions of this StarSqueak world in patches"
-	pixelsPerPatch _ 2.
+	dimensions := self starSqueakDimensions.  "dimensions of this StarSqueak world in patches"
+	pixelsPerPatch := 2.
 	super extent: dimensions * pixelsPerPatch.
 	self evaporationRate: 6.
 	self diffusionRate: 1.

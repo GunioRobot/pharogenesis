@@ -1,1 +1,0 @@
-B3DMultiMesh class instanceVariableNames: ''

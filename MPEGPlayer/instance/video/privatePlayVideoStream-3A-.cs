@@ -6,7 +6,7 @@ privatePlayVideoStream: aStream
 		^self].
 	self checkForm: aStream.
 	self frameRate: (self videoFrameRate: aStream).
-	location _ self currentVideoFrameForStream: aStream.
+	location := self currentVideoFrameForStream: aStream.
 	self clockBiasForStream: aStream 
 		put: (1/self frameRate*location*1000) asInteger.
 	self videoLoop: aStream.

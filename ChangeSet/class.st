@@ -1,1 +1,1 @@
-ChangeSet class instanceVariableNames: ''
+ChangeSet class instanceVariableNames: 'current'

@@ -1,1 +1,0 @@
-A B3DSceneMorph with additional features.

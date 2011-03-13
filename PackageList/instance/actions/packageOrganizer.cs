@@ -1,2 +1,0 @@
-packageOrganizer
-	^ PackageOrganizer default

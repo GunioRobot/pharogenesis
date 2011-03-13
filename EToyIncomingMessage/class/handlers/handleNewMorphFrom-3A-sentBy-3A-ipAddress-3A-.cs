@@ -2,9 +2,9 @@ handleNewMorphFrom: dataStream sentBy: senderName ipAddress: ipAddressString
 
 	| newObject thumbForm targetWorld |
 
-	newObject _ self newObjectFromStream: dataStream.
+	newObject := self newObjectFromStream: dataStream.
 	EToyCommunicatorMorph playArrivalSound.
-	targetWorld _ self currentWorld.
+	targetWorld := self currentWorld.
 	(EToyMorphsWelcomeMorph morphsWelcomeInWorld: targetWorld) ifTrue: [
 		newObject position: (
 			newObject 
@@ -16,7 +16,7 @@ handleNewMorphFrom: dataStream sentBy: senderName ipAddress: ipAddressString
 		] fixTemps.
 		^self
 	].
-	thumbForm _ newObject imageForm scaledToSize: 50@50.
+	thumbForm := newObject imageForm scaledToSize: 50@50.
 	EToyListenerMorph addToGlobalIncomingQueue: {
 		thumbForm. newObject. senderName. ipAddressString
 	}.

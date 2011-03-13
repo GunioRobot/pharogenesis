@@ -6,5 +6,5 @@ setup
 	self setupTrees.
 	self setupFire.
 	self setupBorder.
-	worldDemons _ #(spreadFire consumeFuel).
+	worldDemons := #(spreadFire consumeFuel).
 

@@ -1,4 +1,0 @@
-numColumns
-
-	^10
-	

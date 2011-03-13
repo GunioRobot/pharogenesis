@@ -1,3 +1,0 @@
-sqFileAtEnd: file
-
-	^ file atEnd

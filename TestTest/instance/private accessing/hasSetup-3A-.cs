@@ -1,3 +1,0 @@
-hasSetup: aBoolean
-
-	hasSetup := aBoolean.

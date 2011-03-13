@@ -2,5 +2,5 @@ CompositionScanner
 	subclass: #SegmentScanner
 	instanceVariableNames: ''
 	classVariableNames: ''
-	poolDictionaries: 'TextConstants '
+	poolDictionaries: 'TextConstants'
 	category: 'Graphics-Text'

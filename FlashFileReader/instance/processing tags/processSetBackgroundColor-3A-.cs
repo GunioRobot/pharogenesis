@@ -1,5 +1,5 @@
 processSetBackgroundColor: data
 	| color |
-	color _ data nextColor.
+	color := data nextColor.
 	self recordBackgroundColor: color.
 	^true

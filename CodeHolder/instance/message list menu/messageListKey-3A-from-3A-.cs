@@ -6,14 +6,14 @@ messageListKey: aChar from: view
 	| sel class |
 	aChar == $D ifTrue: [^ self toggleDiffing].
 
-	sel _ self selectedMessageName.
+	sel := self selectedMessageName.
 	aChar == $m ifTrue:  "These next two put up a type in if no message selected"
 		[^ self useSelector: sel orGetSelectorAndSendQuery: #browseAllImplementorsOf: to: self systemNavigation].
 	aChar == $n ifTrue: 
 		[^ self useSelector: sel orGetSelectorAndSendQuery: #browseAllCallsOn: to: self systemNavigation].
 
 	"The following require a class selection"
-	(class _ self selectedClassOrMetaClass) ifNil: [^ self arrowKey: aChar from: view].
+	(class := self selectedClassOrMetaClass) ifNil: [^ self arrowKey: aChar from: view].
 	aChar == $b ifTrue: [^ Browser fullOnClass: class selector: sel].
 	aChar == $N ifTrue: [^ self browseClassRefs].
 	aChar == $i ifTrue: [^ self methodHierarchy].

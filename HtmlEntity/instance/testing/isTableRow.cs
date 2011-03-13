@@ -1,2 +1,0 @@
-isTableRow
-	^false

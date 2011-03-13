@@ -1,2 +1,0 @@
-loadActor
-	myWonderland loadActor

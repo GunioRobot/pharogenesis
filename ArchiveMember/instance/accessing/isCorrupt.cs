@@ -1,2 +1,2 @@
 isCorrupt
-	^isCorrupt ifNil: [ isCorrupt _ false ]
+	^isCorrupt ifNil: [ isCorrupt := false ]

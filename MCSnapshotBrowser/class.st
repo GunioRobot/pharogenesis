@@ -1,0 +1,1 @@
+MCSnapshotBrowser class instanceVariableNames: ''

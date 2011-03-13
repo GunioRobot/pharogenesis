@@ -1,2 +1,2 @@
 maxX: anInteger
-	maxX _ anInteger
+	maxX := anInteger

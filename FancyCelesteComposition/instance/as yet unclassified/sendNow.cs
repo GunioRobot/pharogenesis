@@ -1,3 +1,0 @@
-sendNow
-
-	self submit: true

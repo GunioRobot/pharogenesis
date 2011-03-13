@@ -1,2 +1,0 @@
-referencesGlobalStructMakeZero
-	globalStructureBuildMethodHasFoo _ 0

@@ -1,0 +1,1 @@
+ColoredCodeStream class instanceVariableNames: ''

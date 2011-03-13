@@ -1,7 +1,7 @@
 denyAListIncludesAnyOf: anArrayOfStrings
 	| found |
-	found _ true.
+	found := true.
 	self listMorphs 
 			detect: [:m | m getList includesAnyOf: anArrayOfStrings]
-			ifNone: [found _ false].
+			ifNone: [found := false].
 	self deny: found.

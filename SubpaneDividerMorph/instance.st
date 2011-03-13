@@ -1,6 +1,6 @@
 Morph
 	subclass: #SubpaneDividerMorph
-	instanceVariableNames: 'resizingEdge '
+	instanceVariableNames: 'resizingEdge'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Windows'

@@ -3,7 +3,7 @@ drawCompressedShape: shape transform: aTransform
 	self edgeTransform: aTransform.
 	self resetIfNeeded.
 
-	fillIndexList _ self registerFills: shape fillStyles.
+	fillIndexList := self registerFills: shape fillStyles.
 
 	self primAddCompressedShape: shape points
 		segments: shape numSegments

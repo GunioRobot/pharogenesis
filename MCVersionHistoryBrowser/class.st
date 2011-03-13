@@ -1,0 +1,1 @@
+MCVersionHistoryBrowser class instanceVariableNames: ''

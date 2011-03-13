@@ -2,7 +2,7 @@ insertAsBackground: newPage resize: doResize
 	"Make a new background for the stack.  Obtain a name for it from the user.  It starts out life empty"
 
 	| aName |
-	aName _ FillInTheBlank request: 'What should we call this new background?' initialAnswer: 'alternateBackground'.
+	aName _ FillInTheBlank request: 'What should we call this new background?' translated initialAnswer: 'alternateBackground' translated.
 	aName isEmptyOrNil ifTrue: [^ self].
 	newPage beSticky.
 	doResize ifTrue: [newPage extent: currentPage extent].

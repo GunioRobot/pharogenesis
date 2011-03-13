@@ -1,2 +1,0 @@
-classByteArray
-	^self splObj: ClassByteArray

@@ -3,9 +3,9 @@ browseVersions
 	currently selected message selector."
 
 	| class selector compiledMethod |
-	class _ self selectedClassOrMetaClass.
-	selector _ self selectedMessageName.
-	compiledMethod _ class compiledMethodAt: selector ifAbsent: [ ^self ].
+	class := self selectedClassOrMetaClass.
+	selector := self selectedMessageName.
+	compiledMethod := class compiledMethodAt: selector ifAbsent: [ ^self ].
 	VersionsBrowser
 		browseVersionsOf: compiledMethod
 		class: class theNonMetaClass

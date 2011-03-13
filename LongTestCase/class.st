@@ -1,0 +1,1 @@
+LongTestCase class instanceVariableNames: ''

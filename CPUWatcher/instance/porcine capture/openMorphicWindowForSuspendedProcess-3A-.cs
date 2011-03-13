@@ -1,8 +1,8 @@
 openMorphicWindowForSuspendedProcess: aProcess
 	| menu rules |
-	menu _ MenuMorph new.
+	menu := MenuMorph new.
 	"nickname  allow-stop  allow-debug"
-	rules _ ProcessBrowser nameAndRulesFor: aProcess.
+	rules := ProcessBrowser nameAndRulesFor: aProcess.
 	menu add: 'Dismiss this menu' target: menu selector: #delete; addLine.
 	menu add: 'Open Process Browser' target: ProcessBrowser selector: #open.
 	menu add: 'Resume'

@@ -1,7 +1,7 @@
 buildMorphicViewOn: aSyntaxError
 	"Answer an Morphic view on the given SyntaxError."
 	| window |
-	window _ (SystemWindow labelled: 'Syntax Error') model: aSyntaxError.
+	window := (SystemWindow labelled: 'Syntax Error') model: aSyntaxError.
 
 	window addMorph: (PluggableListMorph on: aSyntaxError list: #list
 			selected: #listIndex changeSelected: nil menu: #listMenu:)

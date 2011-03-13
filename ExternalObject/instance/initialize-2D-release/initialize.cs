@@ -1,2 +1,0 @@
-initialize
-	"Initialize the receiver"

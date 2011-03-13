@@ -1,2 +1,2 @@
 requiredPackages
-	^ requiredPackages ifNil: [requiredPackages _ OrderedCollection new]
+	^ requiredPackages ifNil: [requiredPackages := OrderedCollection new]

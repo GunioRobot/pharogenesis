@@ -1,13 +1,13 @@
 noteSelectionIndex: anInteger for: aSymbol
 	aSymbol == #systemCategoryList
 		ifTrue:
-			[systemCategoryListIndex _ anInteger].
+			[systemCategoryListIndex := anInteger].
 	aSymbol == #classList
 		ifTrue:
-			[classListIndex _ anInteger].
+			[classListIndex := anInteger].
 	aSymbol == #messageCategoryList
 		ifTrue:
-			[messageCategoryListIndex _ anInteger].
+			[messageCategoryListIndex := anInteger].
 	aSymbol == #messageList
 		ifTrue:
-			[messageListIndex _ anInteger].
+			[messageListIndex := anInteger].

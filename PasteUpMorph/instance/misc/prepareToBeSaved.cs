@@ -5,7 +5,9 @@ prepareToBeSaved
 	super prepareToBeSaved.
 	turtlePen _ nil.
 	self isWorldMorph
-		ifTrue: [soundKeyList _ Set new.
+		ifTrue:
+			[self removeProperty: #scriptsToResume.
+			soundKeyList _ Set new.
 			(players _ self presenter allExtantPlayers)
 				do: [:aPlayer | aPlayer slotInfo
 						associationsDo: [:assoc | assoc value type == #Sound

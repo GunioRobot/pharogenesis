@@ -4,4 +4,4 @@ close
 	fileID ifNotNil: [
 		self primClose: fileID.
 		self unregister.
-		fileID _ nil].
+		fileID := nil].

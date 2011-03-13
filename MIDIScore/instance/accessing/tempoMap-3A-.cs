@@ -1,6 +1,6 @@
 tempoMap: tempoEventList
 
 	tempoEventList ifNil: [
-		tempoMap _ #().
+		tempoMap := #().
 		^ self].
-	tempoMap _ tempoEventList asArray.
+	tempoMap := tempoEventList asArray.

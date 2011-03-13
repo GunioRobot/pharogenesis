@@ -1,2 +1,0 @@
-newCategory
-	^ self categoryPrototype copy

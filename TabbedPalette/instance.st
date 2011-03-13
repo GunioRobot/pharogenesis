@@ -1,6 +1,6 @@
 BookMorph
 	subclass: #TabbedPalette
-	instanceVariableNames: 'tabsMorph '
+	instanceVariableNames: 'tabsMorph'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Palettes'
+	category: 'MorphicExtras-Palettes'

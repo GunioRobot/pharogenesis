@@ -1,5 +1,0 @@
-setTargetColor: aColor
-	putSelector ifNotNil:
-		[self color: aColor.
-		contents _ aColor.
-		target scriptPerformer perform: self putSelector withArguments: (Array with: argument with: aColor)]

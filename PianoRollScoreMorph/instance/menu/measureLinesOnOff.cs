@@ -1,4 +1,4 @@
 measureLinesOnOff
 
-	showMeasureLines _ showMeasureLines not.
+	showMeasureLines := showMeasureLines not.
 	self changed

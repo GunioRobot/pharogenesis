@@ -4,11 +4,11 @@ copyName
 	| sel aClass variableNames |
 	self selectionUnmodifiable
 		ifTrue: [^ self changed: #flash].
-	aClass _ self object class.
-	variableNames _ aClass allInstVarNames.
+	aClass := self object class.
+	variableNames := aClass allInstVarNames.
 	(aClass isVariable and: [selectionIndex > (variableNames size + 2)])
-		ifTrue: [sel _ '(self basicAt: ' , (selectionIndex - (variableNames size + 2)) asString , ')']
-		ifFalse: [sel _ variableNames at: selectionIndex - 2].
+		ifTrue: [sel := '(self basicAt: ' , (selectionIndex - (variableNames size + 2)) asString , ')']
+		ifFalse: [sel := variableNames at: selectionIndex - 2].
 	(self selection isKindOf: Collection)
-		ifTrue: [sel _ '(' , sel , ' at: 1)'].
+		ifTrue: [sel := '(' , sel , ' at: 1)'].
 	Clipboard clipboardText: sel asText

@@ -3,6 +3,6 @@ pruneFinishedSounds
 
 	| newSnds |
 	(currentIndex > 1 and: [currentIndex < sounds size]) ifFalse: [^ self].
-	newSnds _ sounds copyFrom: currentIndex to: sounds size.
-	currentIndex _ 1.
-	sounds _ newSnds.
+	newSnds := sounds copyFrom: currentIndex to: sounds size.
+	currentIndex := 1.
+	sounds := newSnds.

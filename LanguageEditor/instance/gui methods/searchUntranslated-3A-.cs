@@ -14,10 +14,10 @@ searchUntranslated: aString
 			self selectUntranslatedPhrase: results first.
 			^ self].
 	""
-	index := (PopUpMenu
-				labelArray: (results
-						collect: [:each | each copy replaceAll: Character cr with: $\]))
-				startUpWithCaption: 'select the untranslated phrase...' translated.
+	index := (UIManager default 
+				chooseFrom: (results
+						collect: [:each | each copy replaceAll: Character cr with: $\])
+				title: 'select the untranslated phrase...' translated).
 	""
 	index isZero
 		ifTrue: [""

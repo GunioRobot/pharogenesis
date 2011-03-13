@@ -21,12 +21,11 @@ addNamePaneTo: header
 	searchButton _ SimpleButtonMorph new 
 		target: self;
 		beTransparent;
-		label: 'Search' translated;
 		actionSelector: #doSearchFrom:;
 		arguments: {plugTextMor}.
-	searchButton setBalloonText: 'Type some letters into the pane at right, and then press this Search button (or hit RETURN) and all method selectors that match what you typed will appear in the list below.' translated.
 
 	namePane addMorphFront: searchButton.
 	namePane addTransparentSpacerOfSize: 6@0.
 	namePane addMorphBack: plugTextMor.
-	header addMorphBack: namePane
+	header addMorphBack: namePane.
+	self updateSearchButtonLabel.

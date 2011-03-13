@@ -1,8 +1,0 @@
-computeBoundingBox
-	| min max |
-	min _ max _ nil.
-	self vertexPositionsDo:[:vtx|
-		min ifNil:[min _ vtx] ifNotNil:[min _ min min: vtx].
-		max ifNil:[max _ vtx] ifNotNil:[max _ max max: vtx].
-	].
-	^Rectangle origin: min corner: max

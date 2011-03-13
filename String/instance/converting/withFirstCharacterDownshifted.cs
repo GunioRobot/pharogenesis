@@ -1,12 +1,9 @@
 withFirstCharacterDownshifted
-	"Answer an object like the receiver but with first character downshifted if necesary"
-
-	"'MElViN' withFirstCharacterDownshifted"
-	"#Will withFirstCharacterDownshifted"
-
+	"Return a copy with the first letter downShifted"
+	
 	| answer |
-
-	answer _ self asString.
-	answer at: 1 put:
-		(answer at: 1) asLowercase.
-	^ answer as: self class
+	
+	self ifEmpty: [^ self copy].
+	answer _ self copy.
+	answer at: 1 put: (answer at: 1) asLowercase.
+	^ answer. 

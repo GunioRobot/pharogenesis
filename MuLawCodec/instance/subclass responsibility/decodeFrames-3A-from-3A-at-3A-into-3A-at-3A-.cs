@@ -3,8 +3,8 @@ decodeFrames: frameCount from: srcByteArray at: srcIndex into: dstSoundBuffer at
 	"Note: Assume that the sender has ensured that the given number of frames will not exhaust either the source or destination buffers."
 
 	| dst |
-	dst _ dstIndex.
+	dst := dstIndex.
 	srcIndex to: srcIndex + frameCount - 1 do: [:src |
 		dstSoundBuffer at: dst put: (DecodingTable at: (srcByteArray at: src) + 1).
-		dst _ dst + 1].
+		dst := dst + 1].
 	^ Array with: frameCount with: frameCount

@@ -5,29 +5,29 @@ storeTextWindowContentsToFileNamed: aName
 	"there is a reference to World, but this method seems to be unused"
 
 
-	aDict _ Dictionary new.
+	aDict := Dictionary new.
 	Smalltalk isMorphic
 		ifTrue:
-			[windows _ World submorphs select: [:m | m isSystemWindow].
+			[windows := World submorphs select: [:m | m isSystemWindow].
 			windows do:
-				[:w | assoc _ w titleAndPaneText.
+				[:w | assoc := w titleAndPaneText.
 				assoc ifNotNil:
 					[w holdsTranscript ifFalse:
 						[aDict add: assoc]]]]
 		ifFalse:
-			[windows _ ScheduledControllers controllersSatisfying:
-				[:c | (c model isMemberOf: StringHolder) or: [c model isKindOf: Workspace]].
+			[windows := ScheduledControllers controllersSatisfying:
+				[:c | (c model isKindOf: StringHolder)].
 			windows do:
 				[:aController | 
-					aTextView _ aController view subViews detect: [:m | m isKindOf: PluggableTextView] ifNone: [nil].
-					textToUse _ aTextView
+					aTextView := aController view subViews detect: [:m | m isKindOf: PluggableTextView] ifNone: [nil].
+					textToUse := aTextView
 						ifNil:		[aController model contents]
 						ifNotNil:	[aTextView controller text].  "The latest edits, whether accepted or not"
 					aDict at: aController view label put: textToUse]].
 
 	aDict size = 0 ifTrue: [^ self inform: 'no windows found to export.'].
 
-	aRefStream _ ReferenceStream fileNamed: aName.
+	aRefStream := ReferenceStream fileNamed: aName.
 	aRefStream nextPut: aDict.
 	aRefStream close.
 	self inform: 'Done!  ', aDict size printString, ' window(s) exported.'

@@ -1,0 +1,2 @@
+getSelectorName
+	^ self getBrowser selectedMessageName

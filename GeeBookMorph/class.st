@@ -1,0 +1,1 @@
+GeeBookMorph class instanceVariableNames: ''

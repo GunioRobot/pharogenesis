@@ -1,6 +1,6 @@
 LedMorph
 	subclass: #LedTimerMorph
-	instanceVariableNames: 'counting startSeconds '
+	instanceVariableNames: 'counting startSeconds'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Games'
+	category: 'MorphicExtras-Leds'

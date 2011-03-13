@@ -1,1 +1,0 @@
-AtomicGame class instanceVariableNames: ''

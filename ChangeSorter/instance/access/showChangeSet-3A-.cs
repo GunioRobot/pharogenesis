@@ -1,9 +1,9 @@
 showChangeSet: chgSet
 
 	myChangeSet == chgSet ifFalse: [
-		myChangeSet _ chgSet.
-		currentClassName _ nil.
-		currentSelector _ nil].
+		myChangeSet := chgSet.
+		currentClassName := nil.
+		currentSelector := nil].
 	self changed: #relabel.
 	self changed: #currentCngSet.	"new -- list of sets"
 	self changed: #mainButtonName.	"old, button"

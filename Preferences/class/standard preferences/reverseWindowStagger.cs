@@ -1,2 +1,0 @@
-reverseWindowStagger
-	^ self valueOfFlag: #reverseWindowStagger

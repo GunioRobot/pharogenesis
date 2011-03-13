@@ -1,4 +1,4 @@
 ensureInCache
-	"Makes sure the file is in the cache."
-	self isReleased ifFalse: [self error: 'There is no release for this package to download.'].
-	^self lastRelease ensureInCache 
+	"Makes sure all release files are in the cache."
+
+	self releases do: [:rel | rel ensureInCache ]

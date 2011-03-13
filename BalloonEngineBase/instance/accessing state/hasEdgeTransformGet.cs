@@ -1,2 +1,0 @@
-hasEdgeTransformGet
-	^workBuffer at: GWHasEdgeTransform

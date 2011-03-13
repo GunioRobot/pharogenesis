@@ -1,0 +1,2 @@
+browseRecentLog
+	ChangeList browseRecentLog

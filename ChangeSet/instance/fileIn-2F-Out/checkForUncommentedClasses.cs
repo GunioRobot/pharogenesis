@@ -12,4 +12,4 @@ checkForUncommentedClasses
 		ifFalse:
 			[^ self inform: 'All classes involved in this change set have class comments']
 		ifTrue:
-			[ClassListBrowser new initForClassesNamed: aList asSet asSortedArray title: 'Classes in Change Set ', self name, ': classes that lack class comments']
+			[ToolSet openClassListBrowser: aList asSet asSortedArray title: 'Classes in Change Set ', self name, ': classes that lack class comments']

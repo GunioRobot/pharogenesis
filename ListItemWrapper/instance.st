@@ -1,6 +1,6 @@
 Object
 	subclass: #ListItemWrapper
-	instanceVariableNames: 'item model '
+	instanceVariableNames: 'item model'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Tools-Explorer'
+	category: 'Morphic-Explorer'

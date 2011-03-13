@@ -1,3 +1,3 @@
 mouthPosition: anInteger
 
-	mouthPosition _ anInteger.
+	mouthPosition := anInteger.

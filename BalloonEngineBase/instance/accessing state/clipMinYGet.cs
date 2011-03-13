@@ -1,2 +1,0 @@
-clipMinYGet
-	^workBuffer at: GWClipMinY

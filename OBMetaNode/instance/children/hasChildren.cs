@@ -1,0 +1,2 @@
+hasChildren
+	^ edges isEmpty not

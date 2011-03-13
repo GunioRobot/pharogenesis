@@ -4,10 +4,10 @@ tallyCPUUsageFor: seconds every: msec
 	"ProcessBrowser tallyCPUUsageFor: 10 every: 100"
 
 	| promise |
-	promise _ Processor tallyCPUUsageFor: seconds every: msec.
+	promise := Processor tallyCPUUsageFor: seconds every: msec.
 
 	[ | tally |
-		tally _ promise value.
+		tally := promise value.
 		Smalltalk isMorphic
 			ifTrue: [ WorldState addDeferredUIMessage: [ self dumpTallyOnTranscript: tally ] ]
 			ifFalse: [ [ Transcript open ] forkAt: Processor userSchedulingPriority.

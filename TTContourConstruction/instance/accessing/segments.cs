@@ -1,6 +1,6 @@
 segments
 
 	| segments |
-	segments _ OrderedCollection new.
+	segments := OrderedCollection new.
 	self segmentsDo:[:seg| segments add: seg].
 	^segments

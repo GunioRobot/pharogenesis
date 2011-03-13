@@ -2,9 +2,9 @@ initialize
 	"initialize the state of the receiver"
 	super initialize.
 	""
-	fullDisplay _ false.
+	fullDisplay := false.
 	
-	lastFullUpdateTime _ 0.
+	lastFullUpdateTime := 0.
 	self listDirection: #topToBottom;
 		 hResizing: #shrinkWrap;
 		 vResizing: #shrinkWrap

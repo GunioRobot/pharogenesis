@@ -1,0 +1,2 @@
+initialize
+	PreferenceViewRegistry ofHaloThemePreferences register: self.

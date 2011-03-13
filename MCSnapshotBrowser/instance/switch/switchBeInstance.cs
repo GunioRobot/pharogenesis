@@ -1,3 +1,3 @@
 switchBeInstance
-	switch _ #instance.
+	switch := #instance.
 	self signalSwitchChanged.

@@ -1,3 +1,0 @@
-runButtonLabel
-
-	^self class runButtonLabel

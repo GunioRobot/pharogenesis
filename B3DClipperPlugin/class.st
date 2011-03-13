@@ -1,1 +1,0 @@
-B3DClipperPlugin class instanceVariableNames: ''

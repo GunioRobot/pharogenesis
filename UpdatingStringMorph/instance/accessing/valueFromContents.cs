@@ -23,4 +23,10 @@ valueFromContents
 
 	format = #symbol ifTrue: [^ lastValue].
 	format = #string ifTrue: [^ contents].
+	(owner notNil and: [owner isMemberOf: NumericReadoutTile]) ifTrue: [
+		^ Number readFrom: contents
+	].
+	target ifNotNil: [target owner ifNotNil: [
+		((target owner isMemberOf: TilePadMorph) and: [target owner type = #Number])
+			ifTrue: [^ Number readFrom: contents]]].
 	^ Compiler evaluate: contents

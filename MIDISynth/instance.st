@@ -1,6 +1,6 @@
 Object
 	subclass: #MIDISynth
-	instanceVariableNames: 'midiParser channels process '
+	instanceVariableNames: 'midiParser channels process'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Sound-Scores'

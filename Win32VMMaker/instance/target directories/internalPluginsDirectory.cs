@@ -1,2 +1,0 @@
-internalPluginsDirectory
-	^self pluginsDirectory

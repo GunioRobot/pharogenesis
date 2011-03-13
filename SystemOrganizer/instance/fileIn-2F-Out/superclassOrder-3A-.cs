@@ -3,8 +3,8 @@ superclassOrder: category
 	category whose name is the argument, category (a string). The classes 
 	are ordered with superclasses first so they can be filed in."
 
-	| list |
-	list _ 
-		(self listAtCategoryNamed: category asSymbol) 
+	| behaviors classes |
+	behaviors _ (self listAtCategoryNamed: category asSymbol) 
 			collect: [:title | Smalltalk at: title].
-	^ChangeSet superclassOrder: list
+	classes _ behaviors select: [:each | each isBehavior].
+	^ChangeSet superclassOrder: classes

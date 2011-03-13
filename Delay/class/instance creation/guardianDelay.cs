@@ -1,0 +1,3 @@
+guardianDelay
+	"Make a Delay with a resumption time far in the future but still a SmallInteger so that it can be used as a guardian for the active delay queue. No process will be waiting on this and when triggered it will do nothing. What it allows is very long Delays where the resumption time is a large integer; should such a delay get activated it will fail the primitive and we creat one of these guardians to make sure the delay timer keeps going and triggers the resumption time recalculations in save/restoreResumptionTime"
+	^self new beGuardianDelay

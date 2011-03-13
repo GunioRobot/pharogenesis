@@ -4,8 +4,8 @@ letUserReclassify: anElement in: aClass
 	
 
 	| currentCat newCat |
-	currentCat _ aClass organization categoryOfElement: anElement.
-	newCat _ self 
+	currentCat := aClass organization categoryOfElement: anElement.
+	newCat := self 
 				categoryFromUserWithPrompt: 'choose category (currently "', currentCat, '")' 
 				for: aClass.
 	(newCat ~~ nil and: [newCat ~= currentCat])

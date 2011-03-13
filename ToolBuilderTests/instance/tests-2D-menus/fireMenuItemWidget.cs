@@ -1,0 +1,2 @@
+fireMenuItemWidget
+	self subclassResponsibility

@@ -1,5 +1,5 @@
 assertVersionInfoPresent
 	| dict info |
-	dict _ MczInstaller versionInfo at: self mockPackage name.
-	info _ expected info.
+	dict := MczInstaller versionInfo at: self mockPackage name.
+	info := expected info.
 	self assertDict: dict matchesInfo: info.

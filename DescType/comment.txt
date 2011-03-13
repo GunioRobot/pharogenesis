@@ -1,1 +1,0 @@
-I am an ExternalData representation of a MacOS DescType or OSID

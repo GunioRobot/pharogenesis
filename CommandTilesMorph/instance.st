@@ -1,6 +1,6 @@
 TileLikeMorph
 	subclass: #CommandTilesMorph
-	instanceVariableNames: 'morph playerScripted '
+	instanceVariableNames: 'morph playerScripted'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Scripting Tiles'
+	category: 'EToys-Scripting Tiles'

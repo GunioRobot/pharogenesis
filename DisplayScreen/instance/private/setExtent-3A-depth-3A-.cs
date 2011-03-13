@@ -12,7 +12,9 @@ setExtent: aPoint depth: bitsPerPixel  "DisplayScreen startUp"
 		DisplayChangeSignature _ (DisplayChangeSignature ifNil: [0]) + 1.
 		(self supportsDisplayDepth: bitsPerPixel)
 			ifTrue:[super setExtent: aPoint depth: bitsPerPixel]
-			ifFalse:["Search for a suitable depth"
-					super setExtent: aPoint depth: self findAnyDisplayDepth].
+			ifFalse:[(self supportsDisplayDepth: bitsPerPixel negated)
+				ifTrue:[super setExtent: aPoint depth: bitsPerPixel negated]
+				ifFalse:["Search for a suitable depth"
+					super setExtent: aPoint depth: self findAnyDisplayDepth]].
 	].
 	clippingBox _ super boundingBox

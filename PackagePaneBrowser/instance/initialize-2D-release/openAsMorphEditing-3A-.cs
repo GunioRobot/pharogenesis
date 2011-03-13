@@ -4,8 +4,8 @@ openAsMorphEditing: editString
 	"PackagePaneBrowser openBrowser"
 
 	| listHeight window |
-	listHeight _ 0.4.
-	(window _ SystemWindow labelled: 'later') model: self.
+	listHeight := 0.4.
+	(window := SystemWindow labelled: 'later') model: self.
 	window
 		addMorph: (PluggableListMorph
 				on: self

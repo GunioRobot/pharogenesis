@@ -1,2 +1,0 @@
-lastExportedEdgeGet
-	^workBuffer at: GWLastExportedEdge

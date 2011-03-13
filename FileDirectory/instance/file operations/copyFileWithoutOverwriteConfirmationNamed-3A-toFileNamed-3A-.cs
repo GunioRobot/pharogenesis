@@ -4,8 +4,8 @@ copyFileWithoutOverwriteConfirmationNamed: fileName1 toFileNamed: fileName2
 
 	| file1 file2 |
 	fileName1 = fileName2 ifTrue: [^ self].
-	file1 _ (self readOnlyFileNamed: fileName1) binary.
-	file2 _ (self forceNewFileNamed: fileName2) binary.
+	file1 := (self readOnlyFileNamed: fileName1) binary.
+	file2 := (self forceNewFileNamed: fileName2) binary.
 	self copyFile: file1 toFile: file2.
 	file1 close.
 	file2 close.

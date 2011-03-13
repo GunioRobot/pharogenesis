@@ -1,1 +1,0 @@
-WonderlandControls class instanceVariableNames: ''

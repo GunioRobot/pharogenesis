@@ -1,6 +1,6 @@
 SystemWindow
 	subclass: #PreDebugWindow
-	instanceVariableNames: 'proceedButton debugButton '
+	instanceVariableNames: 'proceedButton debugButton'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Windows'

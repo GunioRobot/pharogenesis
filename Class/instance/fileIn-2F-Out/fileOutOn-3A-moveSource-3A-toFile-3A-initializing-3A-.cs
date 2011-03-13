@@ -3,7 +3,7 @@ fileOutOn: aFileStream moveSource: moveSource toFile: fileIndex initializing: aB
 	moveSource, is true, then set the trailing bytes to the position of aFileStream and
 	to fileIndex in order to indicate where to find the source code."
 
-	Transcript cr; show: name.
+	Transcript cr; show: self name.
 	super
 		fileOutOn: aFileStream
 		moveSource: moveSource

@@ -1,2 +1,0 @@
-levelName
-	^ 'Formic Acid' translated

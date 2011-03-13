@@ -1,7 +1,7 @@
 centralDirectoryHeaderSize
 
 	| systemFileName systemFileComment systemCdExtraField |
-	systemFileName _ fileName asVmPathName.
-	systemFileComment _ fileComment convertToSystemString.
-	systemCdExtraField _ cdExtraField.
+	systemFileName := fileName asVmPathName.
+	systemFileComment := fileComment convertToSystemString.
+	systemCdExtraField := cdExtraField.
 	^ 46 + systemFileName size + systemCdExtraField size + systemFileComment size

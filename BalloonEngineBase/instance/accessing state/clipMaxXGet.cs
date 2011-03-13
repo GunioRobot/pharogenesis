@@ -1,2 +1,0 @@
-clipMaxXGet
-	^workBuffer at: GWClipMaxX

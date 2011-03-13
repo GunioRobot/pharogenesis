@@ -1,0 +1,2 @@
+exitFromFullScreen
+	self toggleFullScreen

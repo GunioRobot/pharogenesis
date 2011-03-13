@@ -4,4 +4,4 @@ new: nElements
 	It is VITAL (see grow) that size gets doubled if nElements is a power of 2"
 	| size |
 	size _ 1 bitShift: nElements highBit.
-	^ (self basicNew: size) init: size
+	^ (self basicNew: size) initialize: size

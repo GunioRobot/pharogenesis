@@ -1,2 +1,0 @@
-initialValuesAdditionscriptingbatchPenTrails
-	^ #((batchPenTrails false (scripting ) ) )

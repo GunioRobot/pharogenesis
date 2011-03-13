@@ -1,3 +1,3 @@
 description: aString
 
-	description _ aString 
+	description := aString 

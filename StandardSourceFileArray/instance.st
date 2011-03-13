@@ -1,6 +1,6 @@
 SourceFileArray
 	subclass: #StandardSourceFileArray
-	instanceVariableNames: 'files '
+	instanceVariableNames: 'files'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Files'
+	category: 'Files-System'

@@ -1,0 +1,2 @@
+superSenders: anObject
+	^superSenders := anObject

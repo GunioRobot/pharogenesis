@@ -4,8 +4,8 @@ setLocalInstVarDefs
 	| instVarToProbe |
 
 	targetClass chooseInstVarThenDo:
-		[:aName | instVarToProbe _ aName].
+		[:aName | instVarToProbe := aName].
 	instVarToProbe isEmptyOrNil ifTrue: [^ self].
-	currentQuery _ #instVarDefs.
-	currentQueryParameter _ instVarToProbe.
+	currentQuery := #instVarDefs.
+	currentQueryParameter := instVarToProbe.
 	self showQueryResultsCategory

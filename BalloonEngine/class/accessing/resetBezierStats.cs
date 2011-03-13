@@ -1,2 +1,2 @@
 resetBezierStats
-	BezierStats _ WordArray new: 4.
+	BezierStats := WordArray new: 4.

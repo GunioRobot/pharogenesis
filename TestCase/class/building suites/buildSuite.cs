@@ -1,6 +1,6 @@
 buildSuite
 	| suite |
-	suite _ TestSuite new.
+	suite := TestSuite new.
 	^ self isAbstract
 		ifTrue: [
 			suite name: self name asString.

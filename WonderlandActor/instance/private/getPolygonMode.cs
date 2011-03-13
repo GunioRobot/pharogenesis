@@ -1,2 +1,0 @@
-getPolygonMode
-	^self getProperty: #polygonMode

@@ -1,6 +1,6 @@
 initialize
 	"FlashButtonMorph initialize"
-	ActionHelpText _ Dictionary new.
+	ActionHelpText := Dictionary new.
 	#(	(getURL:window: 'Jump to URL')
 		(gotoFrame: 'Continue playing')
 		(gotoLabel: 'Continue playing')

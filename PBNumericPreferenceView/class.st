@@ -1,0 +1,1 @@
+PBNumericPreferenceView class instanceVariableNames: ''

@@ -4,10 +4,10 @@ chooseCngSet
 	| changeSetsSortedAlphabetically chosen |
 	self okToChange ifFalse: [^ self].
 
-	changeSetsSortedAlphabetically _ self changeSetList asSortedCollection:
+	changeSetsSortedAlphabetically := self changeSetList asSortedCollection:
 		[:a :b | a asLowercase withoutLeadingDigits < b asLowercase withoutLeadingDigits].
 
-	chosen _ (SelectionMenu selections: changeSetsSortedAlphabetically)
+	chosen := (SelectionMenu selections: changeSetsSortedAlphabetically)
 			startUp.
 	chosen ifNil: [^ self].
 	self showChangeSet: (ChangeSorter changeSetNamed: chosen)

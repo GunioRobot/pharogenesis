@@ -5,9 +5,9 @@ fileOrDirectoryExists: filenameOrPath
 	| fName dir |
 	DirectoryClass splitName: filenameOrPath to:
 		[:filePath :name |
-			fName _ name.
+			fName := name.
 			filePath isEmpty
-				ifTrue: [dir _ self]
-				ifFalse: [dir _ FileDirectory on: filePath]].
+				ifTrue: [dir := self]
+				ifFalse: [dir := FileDirectory on: filePath]].
 
 	^ (dir includesKey: fName) or: [ fName = '' and:[ dir entries size > 1]]

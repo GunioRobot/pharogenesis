@@ -1,8 +1,8 @@
 openAsMorphOn: anObject
 	"(InspectorBrowser openAsMorphOn: SystemOrganization) openInMVC"
 	| window inspector |
-	inspector _ self inspect: anObject.
-	window _ (SystemWindow labelled: anObject defaultLabelForInspector)
+	inspector := self inspect: anObject.
+	window := (SystemWindow labelled: anObject defaultLabelForInspector)
 				model: inspector.
 
 	window addMorph: (PluggableListMorph on: inspector list: #fieldList

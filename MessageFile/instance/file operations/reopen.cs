@@ -1,2 +1,0 @@
-reopen
-	self ensureFileIsOpen.

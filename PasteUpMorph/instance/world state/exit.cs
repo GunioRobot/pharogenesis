@@ -1,3 +1,3 @@
 exit
 
-	CurrentProjectRefactoring exitCurrentProject
+	Project current exit

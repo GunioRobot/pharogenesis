@@ -1,1 +1,0 @@
-This class extends the basic Animation class for composite animations (animations built of other animations). It adds an instance variable for the component child animations, and a method for adding them to this collection.

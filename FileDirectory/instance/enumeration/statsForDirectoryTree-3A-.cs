@@ -5,18 +5,18 @@ statsForDirectoryTree: rootedPathName
 
 	| dirs files bytes todo p entries |
 	Cursor wait showWhile: [
-		dirs _ files _ bytes _ 0.
-		todo _ OrderedCollection with: rootedPathName.
+		dirs := files := bytes := 0.
+		todo := OrderedCollection with: rootedPathName.
 		[todo isEmpty] whileFalse: [
-			p _ todo removeFirst.
-			entries _ self directoryContentsFor: p.
+			p := todo removeFirst.
+			entries := self directoryContentsFor: p.
 			entries do: [:entry |
 				(entry at: 4)
 					ifTrue: [
 						todo addLast: (p, self pathNameDelimiter asString, (entry at: 1)).
-						dirs _ dirs + 1]
+						dirs := dirs + 1]
 					ifFalse: [
-						files _ files + 1.
-						bytes _ bytes + (entry at: 5)]]]].
+						files := files + 1.
+						bytes := bytes + (entry at: 5)]]]].
 
 	^ Array with: dirs with: files with: bytes

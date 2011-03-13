@@ -1,6 +1,6 @@
 BookMorph
 	subclass: #StackMorph
-	instanceVariableNames: 'cards '
+	instanceVariableNames: 'cards'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Stacks'
+	category: 'EToys-Stacks'

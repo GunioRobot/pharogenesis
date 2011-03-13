@@ -1,6 +1,6 @@
 buildSuite
 	| suite |
-	suite _ TestSuite new.
+	suite := TestSuite new.
 	DoNotRunLongTestCases ifFalse: [
 		self addToSuiteFromSelectors: suite].
 	^suite

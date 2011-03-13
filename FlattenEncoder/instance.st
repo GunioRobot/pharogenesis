@@ -3,4 +3,4 @@ NullEncoder
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Postscript Filters'
+	category: 'Morphic-Support'

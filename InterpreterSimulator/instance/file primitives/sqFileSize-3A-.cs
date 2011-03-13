@@ -1,3 +1,0 @@
-sqFileSize: file
-
-	^ file size

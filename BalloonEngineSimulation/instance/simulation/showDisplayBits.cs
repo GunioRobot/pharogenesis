@@ -1,2 +1,0 @@
-showDisplayBits
-	"Do nothing."

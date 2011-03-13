@@ -12,7 +12,7 @@ compareToOtherVersion
 	
 	"compare earlier -> later"
 	"change1 timeStamp < change2 timeStamp
-		ifFalse: [ | temp | temp _ change1. change1 _ change2. change2 _ temp ]."
+		ifFalse: [ | temp | temp := change1. change1 := change2. change2 := temp ]."
 
 	s1 := change1 string.
 	s2 := change2 string.

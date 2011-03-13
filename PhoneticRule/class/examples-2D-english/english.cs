@@ -1,7 +1,7 @@
 english
 	"Answer the english phonetic rules."
 	| answer |
-	answer _ OrderedCollection new.
+	answer := OrderedCollection new.
 	#(englishPunctuationRules
 		englishARules englishBRules englishCRules englishDRules englishERules
 		englishFRules englishGRules englishHRules englishIRules englishJRules

@@ -1,0 +1,2 @@
+dialogPaneBorderColor
+	^ Color black

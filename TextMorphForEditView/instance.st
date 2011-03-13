@@ -1,6 +1,6 @@
 TextMorph
 	subclass: #TextMorphForEditView
-	instanceVariableNames: 'editView acceptOnCR '
+	instanceVariableNames: 'editView acceptOnCR'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Text Support'

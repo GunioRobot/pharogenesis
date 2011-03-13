@@ -1,4 +1,4 @@
 tearOffFancyWatcherFor: aGetter
 	"Hand the user a labeled readout for viewing a numeric value"
 
-	(self fancyWatcherFor: aGetter) openInHand
+	(WatcherWrapper new fancyForPlayer: self getter: aGetter) openInHand

@@ -8,7 +8,7 @@ makeMyPage
 						ifTrue: [^ self  "page is already properly dimensioned."].
 					^ currentPage image: (Form extent: frameSize depth: frameDepth)]
 			ifFalse: [currentPage releaseCachedState; delete]].
-	currentPage _ ImageMorph new image: (Form extent: frameSize depth: frameDepth).
+	currentPage := ImageMorph new image: (Form extent: frameSize depth: frameDepth).
 	currentPage lock.
-	pages _ OrderedCollection with: currentPage.
+	pages := OrderedCollection with: currentPage.
 	self addMorphFront: currentPage

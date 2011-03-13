@@ -1,0 +1,1 @@
+OBCategory actor implements a number of actions useful for manipulating both class and method categories.

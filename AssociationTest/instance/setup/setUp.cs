@@ -1,4 +1,4 @@
 setUp
 
-	a _ 1 -> 'one'.
-	b _ 1 -> 'een'.
+	a := 1 -> 'one'.
+	b := 1 -> 'een'.

@@ -1,0 +1,1 @@
+MCDependencySorterTest class instanceVariableNames: ''

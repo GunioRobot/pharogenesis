@@ -10,7 +10,7 @@ removeInstVarName: aString
 	^(ClassBuilder new)
 		name: self name
 		inEnvironment: self environment
-		subclassOf: superclass
+		subclassOf: self superclass
 		type: self typeOfClass
 		instanceVariableNames: newInstVarString
 		classVariableNames: self classVariablesString

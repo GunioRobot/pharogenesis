@@ -1,9 +1,9 @@
 initialize
 
-	instrument _ FMSound default.
-	muted _ false.
-	masterVolume _ 0.5.
-	channelVolume _ 1.0.
-	pan _ 0.5.
-	pitchBend _ 0.0.
-	activeSounds _ OrderedCollection new.
+	instrument := FMSound default.
+	muted := false.
+	masterVolume := 0.5.
+	channelVolume := 1.0.
+	pan := 0.5.
+	pitchBend := 0.0.
+	activeSounds := OrderedCollection new.

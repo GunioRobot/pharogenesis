@@ -4,7 +4,7 @@ validateMessageSource: sourceString forSelector: aSelector
 	| sourcesName |
 	(self selectedClass compilerClass == Object compilerClass 
 			and: [(sourceString asString findString: aSelector keywords first ) ~= 1])
-		ifTrue: [sourcesName _ FileDirectory localNameFor: SmalltalkImage current sourcesName.
+		ifTrue: [sourcesName := FileDirectory localNameFor: SmalltalkImage current sourcesName.
 			self inform: 'There may be a problem with your sources file!
 
 The source code for every method should (usually) start with the

@@ -1,3 +1,0 @@
-<= other
-
-	^ name <= other name

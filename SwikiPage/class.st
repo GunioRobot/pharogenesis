@@ -1,1 +1,0 @@
-SwikiPage class instanceVariableNames: ''

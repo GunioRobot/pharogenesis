@@ -1,7 +1,7 @@
 fitOnScreen
 	"19 sept 2000 - allow flaps in any paste up"
 	| constrainer t l |
-	constrainer _ owner ifNil: [self].
+	constrainer _ (owner ifNil: [self]) clearArea.
 	self flapShowing "otherwise no point in doing this"
 		ifTrue:[self spanWorld].
 	self orientation == #vertical ifTrue: [

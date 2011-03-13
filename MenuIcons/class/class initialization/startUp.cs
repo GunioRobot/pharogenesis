@@ -1,2 +1,0 @@
-startUp
-	self initializeTranslations.

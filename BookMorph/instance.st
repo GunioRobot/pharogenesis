@@ -1,6 +1,6 @@
 BooklikeMorph
 	subclass: #BookMorph
-	instanceVariableNames: 'pages currentPage '
-	classVariableNames: 'MethodHolders VersionNames VersionTimes '
+	instanceVariableNames: 'pages currentPage'
+	classVariableNames: 'MethodHolders VersionNames VersionTimes'
 	poolDictionaries: ''
-	category: 'Morphic-Books'
+	category: 'MorphicExtras-Books'

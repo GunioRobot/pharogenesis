@@ -3,8 +3,6 @@ parseArgsAndTemps: aString notifying: req
         answer a two-element Array containing Arrays of strings (the argument 
         names and temporary variable names)."
 
-        (req notNil and: [RequestAlternateSyntaxSetting signal]) ifTrue:
-                [^ (self as: DialectParser) parseArgsAndTemps: aString notifying: req].
         aString == nil ifTrue: [^#()].
         doitFlag _ false.               "Don't really know if a doit or not!"
         ^self initPattern: aString

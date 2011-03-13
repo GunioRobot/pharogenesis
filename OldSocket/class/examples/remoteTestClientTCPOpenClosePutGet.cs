@@ -10,7 +10,7 @@ remoteTestClientTCPOpenClosePutGet
 	Transcript
 		show: 'ok';
 		cr.
-	serverName := FillInTheBlank request: 'What is your remote Test Server?'
+	serverName := UIManager default request: 'What is your remote Test Server?'
 				initialAnswer: ''.
 	number := 1000.
 	bytesExpected := 20000.

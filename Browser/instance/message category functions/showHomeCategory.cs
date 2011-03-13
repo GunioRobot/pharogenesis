@@ -3,6 +3,6 @@ showHomeCategory
 
 	| aSelector |
 	self okToChange ifTrue:
-		[(aSelector _ self selectedMessageName) ifNotNil:
+		[(aSelector := self selectedMessageName) ifNotNil:
 			[self selectOriginalCategoryForCurrentMethod.
 			self selectedMessageName: aSelector]]

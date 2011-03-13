@@ -13,7 +13,9 @@ removeMessage
 	confirmation _ self systemNavigation   confirmRemovalOf: messageName on: self selectedClassOrMetaClass.
 	confirmation == 3
 		ifTrue: [^ self].
-	self selectedClassOrMetaClass removeSelector: self selectedMessageName.
+	(self selectedClassOrMetaClass includesLocalSelector: messageName)
+		ifTrue: [self selectedClassOrMetaClass removeSelector: messageName]
+		ifFalse: [self removeNonLocalSelector: messageName].
 	self messageListIndex: 0.
 	self changed: #messageList.
 	self setClassOrganizer.

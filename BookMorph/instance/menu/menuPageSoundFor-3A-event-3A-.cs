@@ -2,10 +2,10 @@ menuPageSoundFor: target event: evt
 	| tSpec menu |
 	tSpec _ self transitionSpecFor: target.
 	menu _ (MenuMorph entitled: 'Choose a sound
-(it is now ' , tSpec first , ')') defaultTarget: target.
+(it is now ' translated, tSpec first translated, ')') defaultTarget: target.
 	SoundService default sampledSoundChoices do:
 		[:soundName |
-		menu add: soundName target: target
+		menu add: soundName translated target: target
 			selector: #setProperty:toValue:
 			argumentList: (Array with: #transitionSpec
 								with: (tSpec copy at: 1 put: soundName; yourself))].

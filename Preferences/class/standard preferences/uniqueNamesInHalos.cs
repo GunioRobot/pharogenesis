@@ -1,2 +1,0 @@
-uniqueNamesInHalos
-	^ self valueOfFlag: #uniqueNamesInHalos

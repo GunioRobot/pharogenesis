@@ -3,4 +3,4 @@ EmbeddedWorldBorderMorph
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Remote'
+	category: 'Nebraska-Morphic-Remote'

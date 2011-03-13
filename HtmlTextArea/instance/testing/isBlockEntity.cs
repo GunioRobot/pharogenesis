@@ -1,3 +1,0 @@
-isBlockEntity
-	"not sure...."
-	^true

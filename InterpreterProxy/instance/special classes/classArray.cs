@@ -1,2 +1,0 @@
-classArray
-	^Array

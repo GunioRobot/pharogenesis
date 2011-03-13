@@ -1,3 +1,6 @@
 initialize
+	"initialize the receiver"
 
-	self registerInFlapsRegistry.	
+	self registerInFlapsRegistry.
+
+	self initializePictures.

@@ -1,5 +1,5 @@
 on: aStream
 	aStream binary.
-	stream _ FlashFileStream on: aStream.
-	log _ Transcript.
-	log _ nil.
+	stream := FlashFileStream on: aStream.
+	log := Transcript.
+	log := nil.

@@ -1,9 +1,11 @@
 turnToward: aPlayer
-	"Turn to the direction of the given player."
-	| angle aCostume |
+	"Turn to face the given player, unless our positions coincide."
+
+	|  aCostume myPosition itsPosition |
 	(aPlayer == nil or: [aPlayer == self]) ifTrue: [^ self].
 	aCostume _ self costume.
 	aCostume isWorldMorph ifTrue: [^ self].
-	(aCostume bounds intersects: aPlayer costume bounds) ifTrue: [^ self].
-	angle _ aCostume referencePosition bearingToPoint: aPlayer costume referencePosition.
-	self setHeading: angle.
+	(self overlaps: aPlayer) ifFalse:
+		[((myPosition _ aCostume referencePosition) = (itsPosition _ aPlayer costume referencePosition))
+			ifFalse: "avoid division by zero ;-("
+				[self setHeading: (myPosition bearingToPoint: itsPosition)]]

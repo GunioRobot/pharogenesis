@@ -1,2 +1,0 @@
-skipMarkupDeclaration
-	self skipUpTo: $>

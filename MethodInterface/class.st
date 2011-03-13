@@ -1,0 +1,1 @@
+MethodInterface class instanceVariableNames: ''

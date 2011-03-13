@@ -1,2 +1,0 @@
-getRotationScale
-	^myRotationScale

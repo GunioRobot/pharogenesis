@@ -1,0 +1,1 @@
+MCHttpRepository class instanceVariableNames: ''

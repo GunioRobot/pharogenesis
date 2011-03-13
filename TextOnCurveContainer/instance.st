@@ -1,6 +1,6 @@
 Object
 	subclass: #TextOnCurveContainer
-	instanceVariableNames: 'baseline inset textDirection textSegments '
+	instanceVariableNames: 'baseline inset textDirection textSegments'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Text Support'
+	category: 'MorphicExtras-Text Support'

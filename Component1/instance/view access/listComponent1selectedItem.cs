@@ -1,2 +1,0 @@
-listComponent1selectedItem
-	^listComponent1selectedItem

@@ -1,0 +1,2 @@
+name
+	^ self theClass name

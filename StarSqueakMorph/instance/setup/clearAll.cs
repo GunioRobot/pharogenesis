@@ -1,20 +1,20 @@
 clearAll
 	"Reset this StarSqueak world. All patch variables are cleared, all turtles are removed, and all demons are turned off."
 
-	patchVariables _ Dictionary new: 10.
-	patchVariableToDisplay _ nil.
-	logPatchVariableScale _ 0.
-	patchForm _ Form extent: (dimensions * pixelsPerPatch) depth: 32.
+	patchVariables := Dictionary new: 10.
+	patchVariableToDisplay := nil.
+	logPatchVariableScale := 0.
+	patchForm := Form extent: (dimensions * pixelsPerPatch) depth: 32.
 	self createPatchFormGetterAndSetter.
-	patchVarDisplayForm _ nil.
+	patchVarDisplayForm := nil.
 	self clearPatches.
-	turtles _ #().
-	turtleDemons _ #().
-	worldDemons _ #().
-	sniffRange _ 1.
-	lastTurtleID _ -1.
-	generation _ 0.
-	running _ false.
-	stepTime _ 0.  "full speed"
-	turtlesAtPatchCache _ nil.
-	turtlesAtPatchCacheValid _ false.
+	turtles := #().
+	turtleDemons := #().
+	worldDemons := #().
+	sniffRange := 1.
+	lastTurtleID := -1.
+	generation := 0.
+	running := false.
+	stepTime := 0.  "full speed"
+	turtlesAtPatchCache := nil.
+	turtlesAtPatchCacheValid := false.

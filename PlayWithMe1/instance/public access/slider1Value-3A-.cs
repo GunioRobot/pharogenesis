@@ -1,3 +1,3 @@
-slider1Value: x
-	valuePrinter contents: x printString.
-	scrollBar1 value: x
+slider1Value: t1 
+	valuePrinter contents: t1 printString.
+	scrollBar1 value: t1

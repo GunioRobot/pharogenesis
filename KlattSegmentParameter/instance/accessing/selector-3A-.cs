@@ -1,2 +1,2 @@
 selector: aSymbol
-	selector _ aSymbol asSymbol
+	selector := aSymbol asSymbol

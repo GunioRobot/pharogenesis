@@ -1,3 +1,3 @@
 movieClipPlayer: moviePlayer
 
-	movieClipPlayer _ moviePlayer
+	movieClipPlayer := moviePlayer

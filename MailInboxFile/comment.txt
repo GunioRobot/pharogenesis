@@ -1,1 +1,0 @@
-I am a parser for mail inboxes in a form found in the Unix '/var/spool' inboxes. This is also the format used by Eudora 3.0 on the Macintosh (and perhaps by other versions of Eudora as well).

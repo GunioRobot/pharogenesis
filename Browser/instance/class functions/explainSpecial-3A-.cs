@@ -7,26 +7,26 @@ explainSpecial: string
 		ifTrue: 
 			["Selector parts in class definition"
 			string last == $: ifFalse: [^nil].
-			lits _ Array with:
+			lits := Array with:
 				#subclass:instanceVariableNames:classVariableNames:poolDictionaries:category:.
-			(whole _ lits detect: [:each | (each keywords
+			(whole := lits detect: [:each | (each keywords
 					detect: [:frag | frag = string] ifNone: []) ~~ nil]
 						ifNone: []) ~~ nil
-				ifTrue: [reply _ '"' , string , ' is one part of the message selector ' , whole , '.']
+				ifTrue: [reply := '"' , string , ' is one part of the message selector ' , whole , '.']
 				ifFalse: [^nil].
-			classes _ self systemNavigation allClassesImplementing: whole.
-			classes _ 'these classes ' , classes printString.
+			classes := self systemNavigation allClassesImplementing: whole.
+			classes := 'these classes ' , classes printString.
 			^reply , '  It is defined in ' , classes , '."
 Smalltalk browseAllImplementorsOf: #' , whole].
 
 	editSelection == #hierarchy
 		ifTrue: 
 			["Instance variables in subclasses"
-			classes _ self selectedClassOrMetaClass allSubclasses.
-			classes _ classes detect: [:each | (each instVarNames
+			classes := self selectedClassOrMetaClass allSubclasses.
+			classes := classes detect: [:each | (each instVarNames
 						detect: [:name | name = string] ifNone: []) ~~ nil]
 					ifNone: [^nil].
-			classes _ classes printString.
+			classes := classes printString.
 			^'"is an instance variable in class ' , classes , '."
 ' , classes , ' browseAllAccessesTo: ''' , string , '''.'].
 	editSelection == #editSystemCategories ifTrue: [^nil].

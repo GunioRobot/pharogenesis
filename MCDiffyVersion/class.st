@@ -1,0 +1,1 @@
+MCDiffyVersion class instanceVariableNames: ''

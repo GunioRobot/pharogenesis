@@ -23,8 +23,9 @@ addDirectionHandles
 			addMorph: (LineMorph from: (d//2)@w to: (d//2)@(d-w-1) color: crossHairColor width: 1) lock;
 			addMorph: (LineMorph from: w@(d//2) to: (d-w-1)@(d//2) color: crossHairColor width: 1) lock;
 			align: centerHandle bounds center with: directionArrowAnchor.
+	centerHandle wantsYellowButtonMenu: false.
 	self addMorph: centerHandle.
-	centerHandle setCenteredBalloonText: 'Set rotation center' translated;
+	centerHandle setCenteredBalloonText: 'Rotation center (hold down the shift key and drag from here to change it)' translated;
 			on: #mouseDown send: #prepareToTrackCenterOfRotation:with: to: self;
 			on: #mouseMove send: #trackCenterOfRotation:with: to: self;
 			on: #mouseUp send: #setCenterOfRotation:with: to: self

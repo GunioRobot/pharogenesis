@@ -3,13 +3,13 @@ addSystemCategory
 	current selection, or at the end if no current selection"
 	| oldIndex newName |
 	self okToChange ifFalse: [^ self].
-	oldIndex _ systemCategoryListIndex.
-	newName _ self
+	oldIndex := systemCategoryListIndex.
+	newName := self
 		request: 'Please type new category name'
 		initialAnswer: 'Category-Name'.
 	newName isEmpty
 		ifTrue: [^ self]
-		ifFalse: [newName _ newName asSymbol].
+		ifFalse: [newName := newName asSymbol].
 	systemOrganizer
 		addCategory: newName
 		before: (systemCategoryListIndex = 0

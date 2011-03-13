@@ -1,6 +1,6 @@
 Object
 	subclass: #MimeConverter
-	instanceVariableNames: 'dataStream mimeStream '
+	instanceVariableNames: 'dataStream mimeStream'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Collections-Streams'

@@ -1,7 +1,7 @@
 commentArchive
 	| newName |
 	archive ifNil: [ ^self ].
-	newName _ FillInTheBlankMorph
+	newName := FillInTheBlankMorph
 			request: 'New comment for archive:'
 			initialAnswer: archive zipFileComment
 			centerAt: Sensor cursorPoint

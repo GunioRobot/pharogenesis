@@ -1,2 +1,0 @@
-timeout: seconds
-	timeout := seconds

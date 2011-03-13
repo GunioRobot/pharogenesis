@@ -1,1 +1,0 @@
-ChineseCheckerPiece class instanceVariableNames: ''

@@ -2,7 +2,7 @@ initialize
 	"Initialize the Klatt synthesizer."
 
 	"Seed for noise generation:"
-	seed _ 17.
+	seed := 17.
 	"Sampling rate and millseconds per frame:"
 	self samplingRate: 22025.
 	self millisecondsPerFrame: self defaultMillisecondsPerFrame.

@@ -1,0 +1,2 @@
+buildPluggablePanel: aSpec
+	^self subclassResponsibility

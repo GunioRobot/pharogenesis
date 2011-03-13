@@ -1,12 +1,12 @@
 canInstall: aPackage
 	"Answer if this class can install/upgrade the package.
-	This installer handles .st, .cs, .st.gz and .cs.gz files."
+	This installer handles .st, .cs, .mst, .mcs (Squeak 3.9+)
+	with or without .gz suffix."
 
 	| fileName |
-	fileName _ aPackage downloadFileName.
+	fileName := aPackage downloadFileName.
 	fileName ifNil: [^false].
-	fileName _ fileName asLowercase.
-	^ FileStream sourceFileSuffixes anySatisfy: [:each | 
-		(fileName endsWith: (FileDirectory dot, each)) or: [
-			fileName endsWith: (FileDirectory dot, each, '.gz')].
-	].
+	fileName := fileName asLowercase.
+	^self sourceFileSuffixes anySatisfy: [:each | 
+			(fileName endsWith: (FileDirectory dot, each)) or: [
+				fileName endsWith: (FileDirectory dot, each, '.gz')]]

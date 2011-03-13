@@ -1,7 +1,7 @@
 Model
 	subclass: #ProcessBrowser
 	instanceVariableNames:
-		'selectedProcess selectedContext methodText processList processListIndex stackList stackListIndex sourceMap selectedClass selectedSelector searchString autoUpdateProcess deferredMessageRecipient lastUpdate '
-	classVariableNames: 'SuspendedProcesses '
+		'selectedProcess selectedContext methodText processList processListIndex stackList stackListIndex sourceMap selectedClass selectedSelector searchString autoUpdateProcess deferredMessageRecipient lastUpdate startedCPUWatcher'
+	classVariableNames: 'Browsers SuspendedProcesses WellKnownProcesses'
 	poolDictionaries: ''
-	category: 'NK-Process Browser'
+	category: 'Tools-Process Browser'

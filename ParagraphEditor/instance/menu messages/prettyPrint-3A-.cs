@@ -4,7 +4,7 @@ prettyPrint: decorated
 	| selectedClass newText |
 	model selectedMessageCategoryName ifNil: [^ view flash].
 	selectedClass _ model selectedClassOrMetaClass.
-	newText _ selectedClass compilerClass new
+	newText _ selectedClass prettyPrinterClass
 		format: self text
 		in: selectedClass
 		notifying: self

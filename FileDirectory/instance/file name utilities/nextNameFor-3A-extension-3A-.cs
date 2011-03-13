@@ -5,12 +5,12 @@ nextNameFor: baseFileName extension: extension
 
 	| files splits version |
 
-	files _ self fileNamesMatching: (baseFileName,'*', self class dot, extension).
-	splits _ files 
+	files := self fileNamesMatching: (baseFileName,'*', self class dot, extension).
+	splits := files 
 			collect: [:file | self splitNameVersionExtensionFor: file]
 			thenSelect: [:split | (split at: 1) = baseFileName].
-	splits _ splits asSortedCollection: [:a :b | (a at: 2) < (b at: 2)].
+	splits := splits asSortedCollection: [:a :b | (a at: 2) < (b at: 2)].
 	splits isEmpty 
-			ifTrue: [version _ 1]
-			ifFalse: [version _ (splits last at: 2) + 1].
+			ifTrue: [version := 1]
+			ifFalse: [version := (splits last at: 2) + 1].
 	^ (baseFileName, '.', version asString, self class dot, extension) asFileName

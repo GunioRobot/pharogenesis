@@ -1,0 +1,1 @@
+NameLookupFailure class instanceVariableNames: ''

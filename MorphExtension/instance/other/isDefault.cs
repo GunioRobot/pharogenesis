@@ -20,7 +20,5 @@ isDefault
 		ifFalse: [^ false].
 	eventHandler isNil
 		ifFalse: [^ false].
-	self hasOtherProperties
-		ifTrue: [self otherProperties isEmpty
-				ifFalse: [^ false]].
+	otherProperties ifNotNil: [otherProperties isEmpty ifFalse: [^ false]].
 	^ true

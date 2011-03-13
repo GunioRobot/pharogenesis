@@ -3,4 +3,4 @@ StringReadoutTile
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Scripting Tiles'
+	category: 'EToys-Scripting Tiles'

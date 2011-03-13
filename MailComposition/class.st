@@ -1,0 +1,1 @@
+MailComposition class instanceVariableNames: ''

@@ -1,6 +1,6 @@
 EToyCommunicatorMorph
 	subclass: #EToyProjectHistoryMorph
-	instanceVariableNames: 'changeCounter '
+	instanceVariableNames: 'changeCounter'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Experimental'
+	category: 'EToys-Experimental'

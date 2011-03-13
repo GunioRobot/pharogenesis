@@ -1,6 +1,6 @@
 Morph
 	subclass: #TilePadMorph
-	instanceVariableNames: 'type '
+	instanceVariableNames: 'type'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Scripting Tiles'
+	category: 'EToys-Scripting Tiles'

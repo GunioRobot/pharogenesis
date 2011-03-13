@@ -1,2 +1,0 @@
-resultType
-	^ #boolean

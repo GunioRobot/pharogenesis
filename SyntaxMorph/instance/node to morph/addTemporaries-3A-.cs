@@ -12,7 +12,7 @@ addTemporaries: temporaries
 	outerMorph setSpecialTempDeclarationFormat1.
 	outerMorph 
 		addMorphBack: (w2 := self noiseStringMorph: self noiseBeforeBlockArg).
-	w2 emphasis: 1.
+	w2 emphasis: TextEmphasis bold emphasisCode.
 	tempMorph := outerMorph addRow: #tempVariable on: MethodTempsNode new.
 	tempMorph setSpecialTempDeclarationFormat2.
 	temporaries do: 

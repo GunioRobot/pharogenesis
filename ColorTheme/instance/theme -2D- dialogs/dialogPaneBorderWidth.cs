@@ -1,0 +1,2 @@
+dialogPaneBorderWidth
+	^ 0

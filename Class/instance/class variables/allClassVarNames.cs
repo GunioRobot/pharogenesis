@@ -3,10 +3,10 @@ allClassVarNames
 	defined in the superclasses of the receiver."
 
 	| aSet |
-	superclass == nil
+	self superclass == nil
 		ifTrue: 
 			[^self classVarNames]  "This is the keys so it is a new Set."
 		ifFalse: 
-			[aSet _ superclass allClassVarNames.
+			[aSet _ self superclass allClassVarNames.
 			aSet addAll: self classVarNames.
 			^aSet]

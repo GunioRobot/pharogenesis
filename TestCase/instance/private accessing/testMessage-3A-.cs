@@ -1,3 +1,0 @@
-testMessage: aSymbol
-
-	testMessage := aSymbol.

@@ -1,1 +1,0 @@
-SerialPlugin class instanceVariableNames: ''

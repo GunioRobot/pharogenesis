@@ -1,2 +1,0 @@
-negated
-	^self copy negate

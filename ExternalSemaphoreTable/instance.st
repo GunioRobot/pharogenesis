@@ -1,6 +1,6 @@
 Object
 	subclass: #ExternalSemaphoreTable
 	instanceVariableNames: ''
-	classVariableNames: 'ProtectTable '
+	classVariableNames: 'ProtectTable'
 	poolDictionaries: ''
 	category: 'System-Support'

@@ -6,7 +6,17 @@ drawOn: aCanvas
 	sRect := bounds withLeft: tRect right + 4.
 	self drawToggleOn: aCanvas in: tRect.
 	colorToUse _ complexContents preferredColor ifNil: [color].
+
+	icon isNil ifFalse:[
+		aCanvas
+			translucentImage: icon
+			at: sRect left @ (self top + (self height - icon height // 2)).
+
+		sRect := sRect left: sRect left + icon width + 2.
+	].
+
 	(container columns isNil or: [(contents asString indexOf: Character tab) = 0]) ifTrue: [
+		sRect := sRect top: sRect top + sRect bottom - self fontToUse height // 2.
 		aCanvas drawString: contents asString in: sRect font: self fontToUse color: colorToUse.
 	] ifFalse: [
 		columnLeft _ sRect left.

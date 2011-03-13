@@ -1,2 +1,0 @@
-blackPlayer
-	^blackPlayer

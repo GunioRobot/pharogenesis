@@ -1,0 +1,2 @@
+getSystemCategory
+	^ self getBrowser selectedSystemCategoryName 

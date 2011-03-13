@@ -1,7 +1,7 @@
 Object
 	subclass: #View
 	instanceVariableNames:
-		'model controller superView subViews transformation viewport window displayTransformation insetDisplayBox borderWidth borderColor insideColor boundingBox '
+		'model controller superView subViews transformation viewport window displayTransformation insetDisplayBox borderWidth borderColor insideColor boundingBox'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'ST80-Framework'

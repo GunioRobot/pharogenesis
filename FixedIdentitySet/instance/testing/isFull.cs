@@ -1,0 +1,2 @@
+isFull
+	^ tally >= capacity

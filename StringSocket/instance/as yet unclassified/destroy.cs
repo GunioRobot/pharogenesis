@@ -1,6 +1,6 @@
 destroy
 
-	socketWriterProcess ifNotNil: [socketWriterProcess terminate. socketWriterProcess _ nil].
-	outputQueue _ nil.
-	bytesInOutputQueue _ 0.
-	socket ifNotNil: [socket destroy. socket _ nil.].
+	socketWriterProcess ifNotNil: [socketWriterProcess terminate. socketWriterProcess := nil].
+	outputQueue := nil.
+	bytesInOutputQueue := 0.
+	socket ifNotNil: [socket destroy. socket := nil.].

@@ -1,3 +1,3 @@
 codec: aSoundCodec
 
-	codec _ aSoundCodec
+	codec := aSoundCodec

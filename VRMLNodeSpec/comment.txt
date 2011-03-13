@@ -1,8 +1,0 @@
-This class represents the specification for a VRML node.
-
-Instance variables:
-	name		<String>		The name of the node
-	attributes	<Collection of: VRMLNodeAttribute>	All defined attributes for this node
-	vrmlClass	<Class>		The class used for constructing an instance of this spec
-	nodeId		<Integer|nil>	The index of this node in the spec list
-	attrDict		<Dictionary>	The mapping of names to attributes

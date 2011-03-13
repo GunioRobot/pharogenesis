@@ -1,0 +1,1 @@
+TestResource class instanceVariableNames: 'current'

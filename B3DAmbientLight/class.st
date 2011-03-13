@@ -1,1 +1,0 @@
-B3DAmbientLight class instanceVariableNames: ''

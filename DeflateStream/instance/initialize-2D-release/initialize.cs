@@ -1,5 +1,5 @@
 initialize
-	blockStart _ nil.
-	blockPosition _ 0.
-	hashValue _ 0.
+	blockStart := nil.
+	blockPosition := 0.
+	hashValue := 0.
 	self initializeHashTables.

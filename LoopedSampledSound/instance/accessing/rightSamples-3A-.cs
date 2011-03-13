@@ -1,3 +1,3 @@
 rightSamples: aSampleBuffer
 
-	rightSamples _ aSampleBuffer.
+	rightSamples := aSampleBuffer.

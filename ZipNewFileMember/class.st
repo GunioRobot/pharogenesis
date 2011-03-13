@@ -1,0 +1,1 @@
+ZipNewFileMember class instanceVariableNames: ''

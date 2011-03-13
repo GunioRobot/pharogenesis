@@ -1,2 +1,2 @@
 written
-	^ written ifNil: [written _ Set new]
+	^ written ifNil: [written := Set new]

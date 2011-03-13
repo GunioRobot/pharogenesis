@@ -1,2 +1,2 @@
 kept
-	^ kept ifNil: [kept _ Set new]
+	^ kept ifNil: [kept := Set new]

@@ -1,2 +1,2 @@
 bounds: aRectangle
-	bounds _ aRectangle
+	bounds := aRectangle

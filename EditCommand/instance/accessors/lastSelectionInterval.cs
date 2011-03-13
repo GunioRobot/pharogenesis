@@ -1,0 +1,2 @@
+lastSelectionInterval
+	^lastSelectionInterval

@@ -1,4 +1,4 @@
-TestCase
+MCTestCase
 	subclass: #MCChangeNotificationTest
 	instanceVariableNames: 'workingCopy'
 	classVariableNames: ''

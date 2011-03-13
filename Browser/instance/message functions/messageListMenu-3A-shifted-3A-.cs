@@ -1,13 +1,13 @@
-messageListMenu: aMenu shifted: shifted
+messageListMenu: aMenu shifted: shifted 
 	"Answer the message-list menu"
-	"Changed by emm to include menu-item for breakpoints"
-
-	shifted ifTrue: [^ self shiftedMessageListMenu: aMenu].
-
-	aMenu addList:#(
+	ServiceGui browser: self messageListMenu: aMenu.
+	ServiceGui onlyServices ifTrue: [^ aMenu].
+	shifted
+		ifTrue: [^ self shiftedMessageListMenu: aMenu].
+	aMenu addList: #(
 			('what to show...'			offerWhatToShowMenu)
-                	('toggle break on entry'		toggleBreakOnEntry)
-            		-
+			('toggle break on entry'		toggleBreakOnEntry)
+			-
 			('browse full (b)' 			browseMethodFull)
 			('browse hierarchy (h)'			classHierarchy)
 			('browse method (O)'			openSingleMessageBrowser)

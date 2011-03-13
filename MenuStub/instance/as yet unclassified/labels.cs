@@ -1,0 +1,2 @@
+labels
+	^ self items keys

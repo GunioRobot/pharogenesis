@@ -12,30 +12,30 @@ compileMessage: aText notifying: aController
 	self selectedMessageCategoryName asSymbol = ClassOrganizer allCategory
 		ifTrue:
 			[ "User tried to save a method while the ALL category was selected"
-			fallBackCategoryIndex _ messageCategoryListIndex.
-			fallBackMethodIndex _ messageListIndex.
+			fallBackCategoryIndex := messageCategoryListIndex.
+			fallBackMethodIndex := messageListIndex.
 			editSelection == #newMessage
 				ifTrue:
 					[ "Select the 'as yet unclassified' category"
-					messageCategoryListIndex _ 0.
-					(result _ self defineMessageFrom: aText notifying: aController)
+					messageCategoryListIndex := 0.
+					(result := self defineMessageFrom: aText notifying: aController)
 						ifNil:
 							["Compilation failure:  reselect the original category & method"
-							messageCategoryListIndex _ fallBackCategoryIndex.
-							messageListIndex _ fallBackMethodIndex]
+							messageCategoryListIndex := fallBackCategoryIndex.
+							messageListIndex := fallBackMethodIndex]
 						ifNotNil:
 							[self setSelector: result]]
 				ifFalse:
-					[originalSelectorName _ self selectedMessageName.
+					[originalSelectorName := self selectedMessageName.
 					self setOriginalCategoryIndexForCurrentMethod.
-					messageListIndex _ fallBackMethodIndex _ self messageList indexOf: originalSelectorName.			
-					(result _ self defineMessageFrom: aText notifying: aController)
+					messageListIndex := fallBackMethodIndex := self messageList indexOf: originalSelectorName.			
+					(result := self defineMessageFrom: aText notifying: aController)
 						ifNotNil:
 							[self setSelector: result]
 						ifNil:
 							[ "Compilation failure:  reselect the original category & method"
-							messageCategoryListIndex _ fallBackCategoryIndex.
-							messageListIndex _ fallBackMethodIndex.
+							messageCategoryListIndex := fallBackCategoryIndex.
+							messageListIndex := fallBackMethodIndex.
 							^ result notNil]].
 			self changed: #messageCategoryList.
 			^ result notNil]

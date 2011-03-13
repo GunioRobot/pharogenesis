@@ -4,9 +4,9 @@ doControl
 
 	| pitchModOrRatioChange |
 	envelopes size > 0 ifTrue: [
-		pitchModOrRatioChange _ false.
+		pitchModOrRatioChange := false.
 		1 to: envelopes size do: [:i |
 			((envelopes at: i) updateTargetAt: mSecsSinceStart)
-				ifTrue: [pitchModOrRatioChange _ true]].
+				ifTrue: [pitchModOrRatioChange := true]].
 		pitchModOrRatioChange ifTrue: [self internalizeModulationAndRatio]].
-	mSecsSinceStart _ mSecsSinceStart + (1000 // self controlRate).
+	mSecsSinceStart := mSecsSinceStart + (1000 // self controlRate).

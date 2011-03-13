@@ -1,3 +1,0 @@
-interpreterClassName
-
-	^interpreterClassName

@@ -1,0 +1,1 @@
+ResourceLocator class instanceVariableNames: ''

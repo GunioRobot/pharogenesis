@@ -1,2 +1,0 @@
-otherProperties
-	^ otherProperties

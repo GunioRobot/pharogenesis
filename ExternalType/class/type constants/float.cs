@@ -1,2 +1,0 @@
-float
-	^AtomicTypes at: 'float'

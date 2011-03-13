@@ -1,2 +1,0 @@
-moduleName
-	^'B3DAcceleratorPlugin'

@@ -6,8 +6,8 @@ removeMessage
 
 	super removeMessage.
 	"my #reformulateList method, called from the super #removeMethod method, will however try to preserve the selection, so we take pains to clobber it by the below..."
-	messageListIndex _ 0.
+	messageListIndex := 0.
 	self changed: #messageList.
 	self changed: #messageListIndex.
-	contents _ nil.
+	contents := nil.
 	self contentsChanged

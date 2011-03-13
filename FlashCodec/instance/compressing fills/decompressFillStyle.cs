@@ -1,6 +1,6 @@
 decompressFillStyle
 	| type |
-	type _ stream next.
+	type := stream next.
 	type = $S ifTrue:[^self decompressSolidFill].
 	type = $R ifTrue:[^self decompressGradientFill: true].
 	type = $L ifTrue:[^self decompressGradientFill: false].

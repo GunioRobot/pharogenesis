@@ -1,2 +1,0 @@
-classLargeNegativeInteger
-	^self splObj: ClassLargeNegativeInteger

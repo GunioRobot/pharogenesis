@@ -1,6 +1,6 @@
 currentSelector: messageName
 
-	currentSelector _ messageName.
+	currentSelector := messageName.
 	self changed: #currentSelector.
 	self setContents.
 	self contentsChanged.

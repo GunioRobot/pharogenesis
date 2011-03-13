@@ -1,6 +1,6 @@
 Object
 	subclass: #ThirtyTwoBitRegister
-	instanceVariableNames: 'hi low '
+	instanceVariableNames: 'hi low'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'System-Digital Signatures'

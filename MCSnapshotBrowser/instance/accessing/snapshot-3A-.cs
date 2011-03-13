@@ -1,3 +1,3 @@
 snapshot: aSnapshot
-	items _ aSnapshot definitions asSortedCollection.
+	items := aSnapshot definitions asSortedCollection.
 	self categorySelection: 0.

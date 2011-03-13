@@ -1,3 +1,3 @@
 dyeCount: aNumber
 
-	dyeCount _ aNumber asInteger max: 1.
+	dyeCount := aNumber asInteger max: 1.

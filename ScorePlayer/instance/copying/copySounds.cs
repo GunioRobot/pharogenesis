@@ -1,8 +1,8 @@
 copySounds
 	"Private! Support for copying."
 
-	instruments _ instruments copy.
-	leftVols _ leftVols copy.
-	rightVols _ rightVols copy.
-	muted _ muted copy.
+	instruments := instruments copy.
+	leftVols := leftVols copy.
+	rightVols := rightVols copy.
+	muted := muted copy.
 	self reset.

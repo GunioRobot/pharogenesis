@@ -4,9 +4,9 @@ extractMember
 
 	| result name |
 	self canExtractMember ifFalse: [ ^nil ].
-	result _ StandardFileMenu newFile.
+	result := StandardFileMenu newFile.
 	result ifNil: [ ^nil ].
-	name _ (result directory fullNameFor: result name).
+	name := (result directory fullNameFor: result name).
 	(archive canWriteToFileNamed: name)
 		ifFalse: [ self inform: name, ' is used by one or more members
 in your archive, and cannot be overwritten.

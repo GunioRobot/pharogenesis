@@ -1,9 +1,9 @@
 at: frameNumber put: newData
 	"Add newData to the keyframe list at the given frameNumber"
 	| kf |
-	kfList ifNil:[kfList _ OrderedCollection new].
+	kfList ifNil:[kfList := OrderedCollection new].
 	kfList isEmpty ifFalse:["Check if we can extend the last interval"
-		kf _ kfList last.
+		kf := kfList last.
 		kf stop < frameNumber 
 			ifFalse:[^self replaceData: newData at: frameNumber].
 		kf data = newData "Extend interval to include frameNumber"

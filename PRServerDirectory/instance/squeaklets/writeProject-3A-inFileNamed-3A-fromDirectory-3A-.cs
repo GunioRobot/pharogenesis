@@ -3,7 +3,6 @@ writeProject: aProject inFileNamed: fileNameString fromDirectory: localDirectory
 	fileNameString in localDirectory)"
 	| url arguments answer string |
 	url := self urlFromServer: self server directories: {'programmatic'. 'uploadproject'}.
-	
 	arguments := self
 				getPostArgsFromProject: aProject
 				fileNamed: fileNameString
@@ -11,9 +10,8 @@ writeProject: aProject inFileNamed: fileNameString fromDirectory: localDirectory
 	""
 	Cursor read
 		showWhile: [""
-			"answer := HTTPClient httpPostDocument: url args:  
-			args."
-			answer := HTTPSocket httpGetDocument: url args: arguments.
+			answer := HTTPClient httpPostDocument: url args: arguments.
+			"answer := HTTPSocket httpGetDocument: url args: arguments."
 			string := answer contents.
 			(string beginsWith: '--OK--')
 				ifTrue: [^ true]].

@@ -4,15 +4,15 @@ makeNewTextAttVersion
 
 | obj cls struct tag |
 "Note that TextFontReference and TextAnchor are forbidden."
-obj _ #(RunArray TextDoIt TextLink TextURL TextColor TextEmphasis TextFontChange TextKern TextLinkToImplementors 3 'a string') collect: [:each | 
-		cls _ Smalltalk at: each ifAbsent: [nil].
+obj := #(RunArray TextDoIt TextLink TextURL TextColor TextEmphasis TextFontChange TextKern TextLinkToImplementors 3 'a string') collect: [:each | 
+		cls := Smalltalk at: each ifAbsent: [nil].
 		cls ifNil: [each] ifNotNil: [cls new]].
-struct _ (SmartRefStream on: (RWBinaryOrTextStream on: String new)) instVarInfo: obj.
-tag _ self checkSum: struct printString.
-TextAttributeStructureVersions ifNil: [TextAttributeStructureVersions _ Dictionary new].
+struct := (SmartRefStream on: (RWBinaryOrTextStream on: String new)) instVarInfo: obj.
+tag := self checkSum: struct printString.
+TextAttributeStructureVersions ifNil: [TextAttributeStructureVersions := Dictionary new].
 (struct = CurrentTextAttStructure) & (tag = CurrentTextAttVersion) 
 	ifTrue: [^ false].
-CurrentTextAttStructure _ struct.
-CurrentTextAttVersion _ tag.
+CurrentTextAttStructure := struct.
+CurrentTextAttVersion := tag.
 TextAttributeStructureVersions at: tag put: struct.
 ^ true

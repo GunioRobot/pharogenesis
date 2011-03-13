@@ -1,4 +1,4 @@
 currentChangeSetString
 	"ChangeSet current currentChangeSetString"
 
-	^ 'Current Change Set: ', self current name
+	^ 'Current Change Set: ' translated, self current name

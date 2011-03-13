@@ -14,8 +14,9 @@ openFTPClient
 				on: LoginFailedException
 				do: [:ex | 
 					passwordHolder _ nil.
-					what _ (PopUpMenu labels: 'enter password\give up' withCRs) 
-						startUpWithCaption: 'Would you like to try another password?'.
+					what _ UIManager default 
+						chooseFrom: #('enter password' 'give up') 
+						title: 'Would you like to try another password?'.
 					what = 1 ifFalse: [self error: 'Login failed.'. ^nil].
 					loginSuccessful := false]].
 	client changeDirectoryTo: directory.

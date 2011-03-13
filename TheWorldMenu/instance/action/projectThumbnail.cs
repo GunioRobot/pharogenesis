@@ -4,8 +4,8 @@ projectThumbnail
 	| menu projName pr |
 	menu _ CustomMenu new.
 	menu 
-		add: (CurrentProjectRefactoring currentProjectName, ' (current)') 
-		action: CurrentProjectRefactoring currentProjectName.
+		add: (Project current name, ' (current)') 
+		action: Project current name.
 	menu addLine.
 	Project allNames do: [:n | menu add: n action: n].
 	projName _ menu startUpWithCaption: 'Select a project'.

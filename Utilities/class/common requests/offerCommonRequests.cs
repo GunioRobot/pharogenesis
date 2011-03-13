@@ -10,10 +10,13 @@ offerCommonRequests
 	(CommonRequestStrings == nil or: [CommonRequestStrings isKindOf: Array])
 		ifTrue:
 			[self initializeCommonRequestStrings].
+	
 	strings _ CommonRequestStrings contents.
 	normalItemCount _ strings asString lineCount.
-	aMenu _ PopUpMenu labels: (strings asString, '
-edit this menu') lines: (Array with: normalItemCount).
+	aMenu _ UIManager default 
+		chooseFrom: (((strings asString, '\edit this menu' withCRs) 
+						findTokens: Character cr) asArray)
+		lines: (Array with: normalItemCount).
 
 	index _ aMenu startUp.
 	index == 0 ifTrue: [^ self].

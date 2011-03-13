@@ -1,6 +1,7 @@
 choosePartName
 	"Pick an unused name for this morph."
 	| className |
+	self world ifNil: [^nil].
 	(self world model isKindOf: Component) ifTrue:
 		[self knownName ifNil: [^ self nameMeIn: self world]
 					ifNotNil: [^ self renameMe]].

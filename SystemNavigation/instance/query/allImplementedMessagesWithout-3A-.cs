@@ -6,10 +6,10 @@ allImplementedMessagesWithout: classesAndMessagesPair
 	messages _ IdentitySet new: CompiledMethod instanceCount.
 	absentClasses _ classesAndMessagesPair first.
 	self flag: #shouldBeRewrittenUsingSmalltalkAllClassesDo:. "sd 29/04/03" 
-	Cursor execute
-		showWhile: [Smalltalk classNames
-				do: [:cName | ((absentClasses includes: cName)
-						ifTrue: [{}]
-						ifFalse: [{Smalltalk at: cName. (Smalltalk at: cName) class}])
-						do: [:cl | messages addAll: cl selectors]]].
+	Cursor execute showWhile: [
+		Smalltalk classNames , Smalltalk traitNames
+			do: [:name | ((absentClasses includes: name)
+				ifTrue: [{}]
+				ifFalse: [{Smalltalk at: name. (Smalltalk at: name) classSide}])
+					do: [:each | messages addAll: each selectors]]].
 	^ messages

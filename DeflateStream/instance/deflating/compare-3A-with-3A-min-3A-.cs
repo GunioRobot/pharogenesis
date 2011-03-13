@@ -14,8 +14,8 @@ compare: here with: matchPos min: minLength
 	(collection at: here+2) = (collection at: matchPos+2)
 		ifFalse:[^1].
 	"Finally do the real comparison"
-	length _ 3.
+	length := 3.
 	[length <= MaxMatch and:[
 		(collection at: here+length) = (collection at: matchPos+length)]]
-			whileTrue:[length _ length + 1].
+			whileTrue:[length := length + 1].
 	^length - 1

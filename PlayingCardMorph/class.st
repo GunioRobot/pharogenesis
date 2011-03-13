@@ -1,1 +1,0 @@
-PlayingCardMorph class instanceVariableNames: ''

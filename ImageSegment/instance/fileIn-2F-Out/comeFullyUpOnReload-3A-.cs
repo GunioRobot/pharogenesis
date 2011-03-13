@@ -35,7 +35,7 @@ smartRefStream
 	"When a Project is stored, arrayOfRoots has all objects in
 the project, except those in outPointers"
 	arrayOfRoots do: [:importedObject |
-		(importedObject isKindOf: WideString) ifTrue: [
+		((importedObject isMemberOf: WideString) or: [importedObject isMemberOf: WideSymbol]) ifTrue: [
 			importedObject mutateJISX0208StringToUnicode.
 			importedObject class = WideSymbol ifTrue: [
 				"self halt."

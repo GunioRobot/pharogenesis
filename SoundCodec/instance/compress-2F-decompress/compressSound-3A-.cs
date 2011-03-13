@@ -2,11 +2,11 @@ compressSound: aSound
 	"Compress the entirety of the given sound with this codec. Answer a CompressedSoundData."
 
 	| compressed channels |
-	compressed _ CompressedSoundData new
+	compressed := CompressedSoundData new
 		codecName: self class name;
 		soundClassName: aSound class name.
 	(aSound isKindOf: SampledSound) ifTrue: [
-		channels _ Array new: 1.
+		channels := Array new: 1.
 		channels at: 1 put: (self encodeSoundBuffer: aSound samples).
 		compressed
 			channels: channels;
@@ -20,11 +20,11 @@ compressSound: aSound
 	(aSound isKindOf: LoopedSampledSound) ifTrue: [
 		aSound isStereo
 			ifTrue: [
-				channels _ Array new: 2.
+				channels := Array new: 2.
 				channels at: 1 put: (self encodeSoundBuffer: aSound leftSamples).
 				channels at: 2 put: (self encodeSoundBuffer: aSound rightSamples)]
 			ifFalse: [
-				channels _ Array new: 1.
+				channels := Array new: 1.
 				channels at: 1 put: (self encodeSoundBuffer: aSound leftSamples)].
 		compressed
 			channels: channels;

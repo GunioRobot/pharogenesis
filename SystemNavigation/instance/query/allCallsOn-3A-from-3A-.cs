@@ -6,7 +6,7 @@ allCallsOn: aSymbol from: aClass
 	special _ aClass environment hasSpecialSelector: aSymbol ifTrueSetByte: [:b | byte _ b ].
 	aClass withAllSubclassesDo: [ :class |
 		(class whichSelectorsReferTo: aSymbol special: special byte: byte) do: [:sel |
-			sel == #DoIt ifFalse: [
+			sel isDoIt ifFalse: [
 				aSortedCollection add: (
 					MethodReference new
 						setStandardClass: class 

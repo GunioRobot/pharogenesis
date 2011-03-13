@@ -8,5 +8,7 @@ upHeap: anIndex
 	[ (k > 1) and:[self sorts: value before: (tmp _ array at: (kDiv2 _ k bitShift: -1))] ] 
 		whileTrue:[
 			array at: k put: tmp.
+			self updateObjectIndex: k.
 			k _ kDiv2].
 	array at: k put: value.
+	self updateObjectIndex: k.

@@ -1,1 +1,0 @@
-PWS class instanceVariableNames: ''

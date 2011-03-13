@@ -1,6 +1,6 @@
 AlignmentMorph
 	subclass: #PhonemeRecognizerMorph
-	instanceVariableNames: 'soundInput statusLight levelMeter phonemeDisplay phonemeRecords silentPhoneme currentPhoneme '
+	instanceVariableNames: 'recognizer soundInput statusLight levelMeter phonemeDisplay currentPhoneme'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Speech-Phoneme Recognizer'

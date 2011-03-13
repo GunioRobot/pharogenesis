@@ -1,2 +1,0 @@
-fieldOfView
-	^perspective fieldOfView

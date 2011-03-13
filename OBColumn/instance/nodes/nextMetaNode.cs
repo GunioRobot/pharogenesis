@@ -1,0 +1,2 @@
+nextMetaNode
+	^ self selectedNode metaNode

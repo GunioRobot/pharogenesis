@@ -1,6 +1,6 @@
 initializeStandardMIMETypes
 	"FileDirectory initializeStandardMIMETypes"
-	StandardMIMEMappings _ Dictionary new.
+	StandardMIMEMappings := Dictionary new.
 	#(
 		(gif		('image/gif'))
 		(pdf	('application/pdf'))

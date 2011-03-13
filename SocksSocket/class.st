@@ -1,0 +1,1 @@
+SocksSocket class instanceVariableNames: ''

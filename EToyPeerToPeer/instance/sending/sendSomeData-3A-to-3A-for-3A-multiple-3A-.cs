@@ -1,12 +1,12 @@
 sendSomeData: arrayOfByteObjects to: anIPAddress for: aCommunicatorMorph multiple: aBoolean
 
 	Socket initializeNetwork.
-	socket _ Socket newTCP.
-	dataQueue _ SharedQueue new.
+	socket := Socket newTCP.
+	dataQueue := SharedQueue new.
 	dataQueue nextPut: arrayOfByteObjects.
-	communicatorMorph _ aCommunicatorMorph.
-	ipAddress _ anIPAddress.
-	process _ [
+	communicatorMorph := aCommunicatorMorph.
+	ipAddress := anIPAddress.
+	process := [
 		self doConnectForSend ifTrue: [
 			[self doSendData] whileTrue.
 			communicatorMorph commResult: {#message -> 'OK'}.

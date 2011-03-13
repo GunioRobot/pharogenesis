@@ -1,3 +1,0 @@
-successMessage
-
-	^self class successMessage

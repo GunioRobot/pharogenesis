@@ -1,3 +1,3 @@
 initialize
 	super initialize.
-	smCache _ SMSqueakMap default cache.
+	smCache := SMSqueakMap default cache.

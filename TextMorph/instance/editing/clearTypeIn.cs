@@ -1,2 +1,0 @@
-clearTypeIn
-	self newContents: ' '

@@ -1,0 +1,1 @@
+OBSelectionChanged class instanceVariableNames: ''

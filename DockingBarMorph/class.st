@@ -1,0 +1,1 @@
+DockingBarMorph class instanceVariableNames: ''

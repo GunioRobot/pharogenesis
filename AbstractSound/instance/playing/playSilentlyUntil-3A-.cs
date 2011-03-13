@@ -3,14 +3,14 @@ playSilentlyUntil: startTime
 
 	| buf startSample nextSample samplesRemaining n |
 	self reset.
-	buf _ SoundBuffer newStereoSampleCount: (self samplingRate // 10).
-	startSample _ (startTime * self samplingRate) asInteger.
-	nextSample _ 1.
+	buf := SoundBuffer newStereoSampleCount: (self samplingRate // 10).
+	startSample := (startTime * self samplingRate) asInteger.
+	nextSample := 1.
 	[self samplesRemaining > 0] whileTrue: [
 		nextSample >= startSample ifTrue: [^ self].
-		samplesRemaining _ startSample - nextSample.
+		samplesRemaining := startSample - nextSample.
 		samplesRemaining > buf stereoSampleCount
-			ifTrue: [n _ buf stereoSampleCount]
-			ifFalse: [n _ samplesRemaining].
+			ifTrue: [n := buf stereoSampleCount]
+			ifFalse: [n := samplesRemaining].
 		self playSampleCount: n into: buf startingAt: 1.
-		nextSample _ nextSample + n].
+		nextSample := nextSample + n].

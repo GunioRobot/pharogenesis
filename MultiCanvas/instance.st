@@ -1,6 +1,6 @@
 PluggableCanvas
 	subclass: #MultiCanvas
-	instanceVariableNames: 'canvases extent depth '
+	instanceVariableNames: 'canvases extent depth'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Support'

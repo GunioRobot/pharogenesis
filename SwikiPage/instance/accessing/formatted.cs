@@ -1,2 +1,0 @@
-formatted
-	^formatted

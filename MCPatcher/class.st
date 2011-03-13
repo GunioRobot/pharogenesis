@@ -1,0 +1,1 @@
+MCPatcher class instanceVariableNames: ''

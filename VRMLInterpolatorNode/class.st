@@ -1,1 +1,0 @@
-VRMLInterpolatorNode class instanceVariableNames: ''

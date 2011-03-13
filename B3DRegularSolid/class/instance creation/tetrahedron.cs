@@ -1,3 +1,0 @@
-tetrahedron
-
-  ^self new createTetrahedron

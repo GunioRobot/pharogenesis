@@ -1,2 +1,2 @@
 steady: aNumber
-	steady _ aNumber
+	steady := aNumber

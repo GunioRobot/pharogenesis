@@ -34,3 +34,5 @@ topCall == nil
 	ifFalse:
 		[super nextPut: anObject.
 		progressBar ifNotNil: [progressBar value: (objCount _ objCount + 1)]].
+		"return the argument - added by kwl"
+	^ anObject

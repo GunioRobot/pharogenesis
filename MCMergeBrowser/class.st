@@ -1,0 +1,1 @@
+MCMergeBrowser class instanceVariableNames: ''

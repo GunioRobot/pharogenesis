@@ -1,6 +1,6 @@
 ProjectNavigationMorph
 	subclass: #KidNavigationMorph
 	instanceVariableNames: ''
-	classVariableNames: 'PreExistingProjects '
+	classVariableNames: 'PreExistingProjects'
 	poolDictionaries: ''
-	category: 'Morphic-Navigators'
+	category: 'MorphicExtras-Navigators'

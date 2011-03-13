@@ -70,8 +70,3 @@ Same as Monitor>>waitWhile: (resp. Monitor>>waitWhile:for:), but the process get
 Monitor>>waitUntil: aBlock maxMilliseconds: anInteger
 Monitor>>waitUntil: aBlock for: aSymbol maxMilliseconds: anInteger
 Same as Monitor>>waitUntil: (resp. Monitor>>waitUntil:for:), but the process gets automatically woken up when the specified time has passed.
-
-
-Usage examples
-
-See code in class MBoundedCounter and compare it to the clumsy BoundedCounter that is written wihout a monitor.

@@ -1,1 +1,0 @@
-InterpolatingImageMorphs use bi-linear interpolation as provided by the Balloon 3D engine.

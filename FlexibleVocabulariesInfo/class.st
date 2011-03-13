@@ -1,0 +1,1 @@
+FlexibleVocabulariesInfo class instanceVariableNames: ''

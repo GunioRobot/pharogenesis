@@ -1,0 +1,25 @@
+ServiceAction are executable objects in various contexts.
+They can be displayed as buttons or menu items or bounded to keyboard shortcuts.
+
+ServiceActions are defined in methods in an instance of a ServiceProvider class (in the 'services' method category), using the following template:
+
+serviceIdentifierAndMethodName
+	^ ServiceAction
+		text: 'Menu item text'
+		button: 'Button text'
+		description: 'Longer text that appears in help balloons'
+		action: [:r | "Code block fetching data from the requestor instance, r, that is passed to the block"]
+		
+or, alternatively:
+
+serviceIdentifierAndMethodName
+	^ ServiceAction
+		text: 'Menu item text'
+		button: 'Button text'
+		description: 'Longer text that appears in help balloons'
+		action: [:r | "Code block fetching data from the requestor instance, r, that is passed to the block"]
+		condition: [:r | "second block returning true if the service can be used at the time being, false otherwise. Data can still be fetched from the requestor instance"]
+		
+The method name in which the service is defined becomes its identifier. To build the hierarchy of services and to assign them to shortcuts, you will need to type this names in the relevant fields of the Services Browser.
+		
+Services are arranged in a hierarchy. and bound to keyboard shortcuts using the ServicesBrowser.

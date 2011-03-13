@@ -1,0 +1,38 @@
+checkForMoreRecentUpdateThanChangeSet: updateNumberChangeSet pseudoClass: pseudoClass selector: selector
+	"Returns the source code for a conflict if a conflict is found, otherwise returns nil."
+
+	| classOrMeta allChangeSets moreRecentChangeSets conflictingChangeSets changeRecordSource classAndMethodPrintString |
+
+	classAndMethodPrintString _ pseudoClass name, (pseudoClass hasMetaclass ifTrue: [' class'] ifFalse: ['']), '>>', selector asString.
+
+	changeRecordSource _ pseudoClass sourceCode at: selector.
+	changeRecordSource isText
+		ifTrue: [changeRecordSource _ Text
+					fromString: 'method: ', classAndMethodPrintString, ' was removed']
+		ifFalse: [changeRecordSource stamp isEmptyOrNil ifTrue:
+					[self notify: 'Warning: ', classAndMethodPrintString, ' in ', self packageName, ' has no timestamp/initials!']].
+
+	pseudoClass exists ifFalse:
+		[(self classes at: pseudoClass name) hasDefinition
+			ifTrue: [^ nil  "a method was added for a newly defined class; not a conflict"]
+			ifFalse: [self class logCr; log: 'CONFLICT found for ', classAndMethodPrintString, '... class ', pseudoClass name asString, ' does not exist in the image and is not defined in the file'.
+					^ changeRecordSource]].
+
+	classOrMeta _ pseudoClass realClass.
+
+	"Only printout the replacing methods here, but we still check for removed methods too in the rest of this method."
+	(self class verboseConflicts and: [classOrMeta includesSelector: selector])
+		ifTrue: [self class logCr; log: '...checking ', classOrMeta asString, '>>', selector asString].
+
+	allChangeSets _ ChangeSorter allChangeSets.
+	moreRecentChangeSets _ allChangeSets
+				copyFrom: (allChangeSets indexOf: updateNumberChangeSet)
+				to: (allChangeSets size).
+	conflictingChangeSets _ (moreRecentChangeSets select:
+		[:cs | (cs atSelector: selector class: classOrMeta) ~~ #none]).
+	conflictingChangeSets isEmpty ifTrue: [^ nil].
+
+	self class logCr; log: 'CONFLICT found for ', classAndMethodPrintString,
+				(' with newer changeset' asPluralBasedOn: conflictingChangeSets).
+	conflictingChangeSets do: [:cs | self class log: ' ', cs name].
+	^ changeRecordSource

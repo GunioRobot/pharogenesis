@@ -1,2 +1,2 @@
 doNotAlwaysStoreDiffs
-	storeDiffs _ false
+	storeDiffs := false

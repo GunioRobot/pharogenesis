@@ -9,9 +9,9 @@ allLocalCallsOn: aSymbol
 	cls withAllSuperAndSubclassesDoGently: [ :class |
 		(class whichSelectorsReferTo: aSymbol special: special byte: byte)
 			do: [:sel |
-				sel ~~ #DoIt ifTrue: [aSet add: class name , ' ', sel]]].
+				sel isDoIt ifFalse: [aSet add: class name , ' ', sel]]].
 	cls class withAllSuperAndSubclassesDoGently: [ :class |
 		(class whichSelectorsReferTo: aSymbol special: special byte: byte)
 			do: [:sel |
-				sel ~~ #DoIt ifTrue: [aSet add: class name , ' ', sel]]].
+				sel isDoIt ifFalse: [aSet add: class name , ' ', sel]]].
 	^aSet

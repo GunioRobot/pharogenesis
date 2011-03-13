@@ -1,5 +1,0 @@
-wantsChangeSetLogging
-
-	^ self == WonderlandActor.
-
-

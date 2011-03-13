@@ -1,3 +1,3 @@
 labelDown: aString
 
-	labelDown _ aString.
+	labelDown := aString.

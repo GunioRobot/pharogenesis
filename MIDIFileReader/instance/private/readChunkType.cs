@@ -3,6 +3,6 @@ readChunkType
 	"Assume: Stream has at least four bytes left."
 
 	| s |
-	s _ String new: 4.
+	s := String new: 4.
 	1 to: 4 do: [:i | s at: i put: (stream next) asCharacter].
 	^ s

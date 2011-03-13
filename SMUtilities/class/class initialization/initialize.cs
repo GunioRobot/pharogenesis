@@ -3,4 +3,5 @@ initialize
 
 	"self initialize"
 
-	self mailServer: 'mail.bluefish.se' masterServer: 'http://localhost/sm'
+	MasterServer := nil.
+	MailServer := nil

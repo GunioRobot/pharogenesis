@@ -1,0 +1,2 @@
+setUp
+	queries := IdentitySet new.

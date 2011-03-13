@@ -4,15 +4,15 @@ readPizzInstrument: instName fromDirectory: orchestraDir
 		fromDirectory: 'Tosh:Sample Library:Orchestra'"
 
 	| sampleSetDir memBefore memAfter sampleSet snd |
-	sampleSetDir _ orchestraDir, ':', instName, ' pizz'.
-	memBefore _ Smalltalk garbageCollect.
-	sampleSet _ SampledInstrument new readSampleSetFrom: sampleSetDir.
-	memAfter _ Smalltalk garbageCollect.
+	sampleSetDir := orchestraDir, ':', instName, ' pizz'.
+	memBefore := Smalltalk garbageCollect.
+	sampleSet := SampledInstrument new readSampleSetFrom: sampleSetDir.
+	memAfter := Smalltalk garbageCollect.
 	Transcript show:
 		instName, ': ', (memBefore - memAfter) printString,
 		' bytes; ', memAfter printString, ' bytes left'; cr.
 	AbstractSound soundNamed: instName, '-pizz' put:
-		(snd _ SampledInstrument new allSampleSets: sampleSet).
+		(snd := SampledInstrument new allSampleSets: sampleSet).
 
 	"fix slow attacks"
 	snd allNotes do: [:n |

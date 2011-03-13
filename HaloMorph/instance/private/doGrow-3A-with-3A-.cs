@@ -16,4 +16,4 @@ doGrow: evt with: growHandle
 	self layoutChanged.
 	(self valueOfProperty: #commandInProgress) ifNotNilDo:  
 		[:cmd | "Update the final extent"
-		cmd redoTarget: target selector: #setExtentFromHalo: argument: extentToUse]
+			cmd redoTarget: target renderedMorph selector: #setFlexExtentFromHalo: argument: extentToUse]

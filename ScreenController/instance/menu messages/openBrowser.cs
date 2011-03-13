@@ -1,4 +1,3 @@
 openBrowser 
 	"Create and schedule a Browser view for browsing code."
-
-	Browser openBrowser
+	ToolSet browse: nil selector: nil

@@ -1,6 +1,6 @@
 Object
 	subclass: #FlashKeyframes
-	instanceVariableNames: 'kfList lastIndex '
+	instanceVariableNames: 'kfList lastIndex'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon-MMFlash Support'
+	category: 'Flash-Support'

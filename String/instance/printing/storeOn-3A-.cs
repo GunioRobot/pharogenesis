@@ -5,5 +5,5 @@ storeOn: aStream
 	1 to: self size do:
 		[:i |
 		aStream nextPut: (x _ self at: i).
-		x == $' ifTrue: [aStream nextPut: x]].
+		x = $' ifTrue: [aStream nextPut: x]].
 	aStream nextPut: $'

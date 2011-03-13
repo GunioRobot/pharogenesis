@@ -3,4 +3,4 @@ Error
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Exceptions Tests'
+	category: 'Exceptions-Tests'

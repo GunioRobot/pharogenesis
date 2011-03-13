@@ -5,12 +5,12 @@ restoreEndianness
 	| w b1 b2 b3 b4 |
 	SmalltalkImage current  isLittleEndian ifTrue: [
 		1 to: self basicSize do: [:i |
-			w _ self basicAt: i.
-			b1 _ w digitAt: 1.
-			b2 _ w digitAt: 2.
-			b3 _ w digitAt: 3.
-			b4 _ w digitAt: 4.
-			w _ (b1 << 24) + (b2 << 16) + (b3 << 8) + b4.
+			w := self basicAt: i.
+			b1 := w digitAt: 1.
+			b2 := w digitAt: 2.
+			b3 := w digitAt: 3.
+			b4 := w digitAt: 4.
+			w := (b1 << 24) + (b2 << 16) + (b3 << 8) + b4.
 			self basicAt: i put: w.
 		]
 	].

@@ -1,0 +1,2 @@
+buttonWidgetEnabled
+	^ widget isEnabled

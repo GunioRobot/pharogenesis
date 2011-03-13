@@ -7,8 +7,8 @@ doRot: evt with: rotHandle
 	degrees _ degrees - angleOffset degrees.
 	degrees _ degrees detentBy: 10.0 atMultiplesOf: 90.0 snap: false.
 	degrees = 0.0
-		ifTrue: [rotHandle color: Color lightBlue]
-		ifFalse: [rotHandle color: Color blue].
+		ifTrue: [self setColor: Color lightBlue toHandle: rotHandle]
+		ifFalse: [self setColor: Color blue toHandle: rotHandle].
 	rotHandle submorphsDo:
 		[:m | m color: rotHandle color makeForegroundColor].
 	self removeAllHandlesBut: rotHandle.
@@ -21,5 +21,5 @@ doRot: evt with: rotHandle
 	rotHandle position: evt cursorPoint - (rotHandle extent // 2).
 	(self valueOfProperty: #commandInProgress) ifNotNilDo:
 		[:cmd | "Update the final rotation"
-		cmd redoTarget: target selector: #rotationDegrees: argument: degrees].
+		cmd redoTarget: target renderedMorph selector: #heading: argument: degrees].
 	self layoutChanged

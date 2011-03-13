@@ -1,2 +1,0 @@
-useLocalViewer
-	^flags anyMask: VBUseLocalViewer

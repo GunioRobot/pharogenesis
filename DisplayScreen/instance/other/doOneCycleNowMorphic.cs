@@ -1,4 +1,0 @@
-doOneCycleNowMorphic
-
-	self getOuterMorphicWorld doOneCycleNow.
-

@@ -1,3 +1,0 @@
-hasOnlySketchCostumes
-	"Workaround"
-	^false

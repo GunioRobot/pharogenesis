@@ -5,9 +5,9 @@ object: anObject
 	anObject == object
 		ifTrue: [self update]
 		ifFalse:
-			[oldIndex _ selectionIndex <= 2 ifTrue: [selectionIndex] ifFalse: [0].
+			[oldIndex := selectionIndex <= 2 ifTrue: [selectionIndex] ifFalse: [0].
 			self inspect: anObject.
-			oldIndex _ oldIndex min: self fieldList size.
+			oldIndex := oldIndex min: self fieldList size.
 			self changed: #inspectObject.
 			oldIndex > 0
 				ifTrue: [self toggleIndex: oldIndex].

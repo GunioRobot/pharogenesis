@@ -1,3 +1,3 @@
 shape: newShape
-	shape _ newShape.
+	shape := newShape.
 	self computeBounds.

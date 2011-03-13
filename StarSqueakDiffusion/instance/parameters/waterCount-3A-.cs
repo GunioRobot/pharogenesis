@@ -1,3 +1,3 @@
 waterCount: aNumber
 
-	waterCount _ aNumber asInteger max: 1.
+	waterCount := aNumber asInteger max: 1.

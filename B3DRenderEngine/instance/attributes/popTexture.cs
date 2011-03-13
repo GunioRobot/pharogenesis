@@ -1,2 +1,0 @@
-popTexture
-	^rasterizer popTexture

@@ -3,25 +3,23 @@ openSources: sourcesName andChanges: changesName forImage: imageName
 	"Note: SourcesName and imageName are full paths; changesName is a  
 	local name."
 	| sources changes msg wmsg |
-	msg _ 'Squeak cannot locate &fileRef.
+	msg := 'Squeak cannot locate &fileRef.
 
 Please check that the file is named properly and is in the
-same directory as this image.  
-Further explanation can found
-in the startup window, ''How Squeak Finds Source Code''.'.
-	wmsg _ 'Squeak cannot write to &fileRef.
+same directory as this image.'.
+	wmsg := 'Squeak cannot write to &fileRef.
 
 Please check that you have write permission for this file.
 
 You won''t be able to save this image correctly until you fix this.'.
 
-	sources _ self openSources: sourcesName forImage: imageName.
-	changes _ self openChanges: changesName forImage: imageName.
+	sources := self openSources: sourcesName forImage: imageName.
+	changes := self openChanges: changesName forImage: imageName.
 
 	((sources == nil or: [sources atEnd])
 			and: [Preferences valueOfFlag: #warnIfNoSourcesFile])
 		ifTrue: [SmalltalkImage current platformName = 'Mac OS'
-				ifTrue: [msg _ msg , '
+				ifTrue: [msg := msg , '
 Make sure the sources file is not an Alias.'].
 self inform: (msg copyReplaceAll: '&fileRef' with: 'the sources file named ' , sourcesName)].
 
@@ -40,4 +38,4 @@ has been injured by an unpacking utility.  Crs were changed to CrLfs.
 Please set the preferences in your decompressing program to 
 "do not convert text files" and unpack the system again.']].
 
-	SourceFiles _ Array with: sources with: changes
+	SourceFiles := Array with: sources with: changes

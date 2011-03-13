@@ -1,0 +1,1 @@
+SMInstallationDeviation class instanceVariableNames: ''

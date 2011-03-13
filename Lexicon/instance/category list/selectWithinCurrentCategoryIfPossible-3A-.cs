@@ -3,7 +3,7 @@ selectWithinCurrentCategoryIfPossible: aSelector
  
 	| detectedItem messageIndex |
 	aSelector ifNil: [^ self].
-	detectedItem _ messageList detect:
+	detectedItem := messageList detect:
 		[:anItem | (anItem asString upTo: $ ) asSymbol == aSelector] ifNone: [^ self].
-	messageIndex _ messageList indexOf: detectedItem.
+	messageIndex := messageList indexOf: detectedItem.
 	self messageListIndex: messageIndex

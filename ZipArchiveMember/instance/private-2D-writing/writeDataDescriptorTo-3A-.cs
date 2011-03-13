@@ -3,7 +3,7 @@ writeDataDescriptorTo: aStream
 	Assumes that crc32, writeOffset, and uncompressedSize are
 	set correctly (they should be after a write).
 	Further, the local file header should have the
-	GPBF_HAS_DATA_DESCRIPTOR_MASK (8) bit set."
+	GPBF:=HAS:=DATA:=DESCRIPTOR:=MASK (8) bit set."
 
 	aStream nextLittleEndianNumber: 4 put: crc32.
 	aStream nextLittleEndianNumber: 4 put: compressedSize.

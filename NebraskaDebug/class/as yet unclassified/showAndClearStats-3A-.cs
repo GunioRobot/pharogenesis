@@ -4,4 +4,4 @@ showAndClearStats: queueName
 	self 
 		showStats: queueName 
 		from: DEBUG.
-	DEBUG _ nil.
+	DEBUG := nil.

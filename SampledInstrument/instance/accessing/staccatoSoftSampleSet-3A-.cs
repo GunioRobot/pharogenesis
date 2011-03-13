@@ -1,3 +1,3 @@
 staccatoSoftSampleSet: sortedNotes
 
-	staccatoSoft _ self midiKeyMapFor: sortedNotes.
+	staccatoSoft := self midiKeyMapFor: sortedNotes.

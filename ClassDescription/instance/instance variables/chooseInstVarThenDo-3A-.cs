@@ -13,7 +13,6 @@ instance variables.'].
 	allVars _ OrderedCollection new.
 	lines _ OrderedCollection new.
 	labelStream _ WriteStream on: (String new: 200).
-
 	(offerAlpha _ count > 5)
 		ifTrue:
 			[lines add: 1.
@@ -30,9 +29,8 @@ instance variables.'].
 	labelStream skip: -1 "cut last CR".
 	(lines size > 0 and: [lines last = allVars size]) ifTrue:
 		[lines removeLast].  "dispense with inelegant line beneath last item"
-	index _ (PopUpMenu labels: labelStream contents lines: lines)
-startUpWithCaption: 'Instance variables in
-', self name.
+	index _ (UIManager default chooseFrom: (labelStream contents subStrings: {Character cr}) lines: lines
+title: 'Instance variables in', self name).
 	index = 0 ifTrue: [^ self].
 	(index = 1 and: [offerAlpha]) ifTrue: [^ self
 chooseInstVarAlphabeticallyThenDo: aBlock].

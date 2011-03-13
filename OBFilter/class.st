@@ -1,0 +1,1 @@
+OBFilter class instanceVariableNames: ''

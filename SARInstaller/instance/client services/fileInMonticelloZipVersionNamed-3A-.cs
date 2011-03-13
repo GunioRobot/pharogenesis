@@ -22,6 +22,6 @@ Load it from SqueakMap?')
 			[:cs | 
 			newCS := cs.
 			(mcMczReader versionFromStream: member contentStream) load ].
-	newCS isEmpty ifTrue: [ChangeSorter removeChangeSet: newCS].
+	newCS isEmpty ifTrue: [ChangeSet removeChangeSet: newCS].
 	World doOneCycle.
 	self installed: member

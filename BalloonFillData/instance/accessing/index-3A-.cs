@@ -1,2 +1,2 @@
 index: anInteger
-	index _ anInteger
+	index := anInteger

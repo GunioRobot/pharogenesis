@@ -1,0 +1,2 @@
+classSentSelectorsAndSendersDo: aBlock
+	classSenders keysAndValuesDo: aBlock

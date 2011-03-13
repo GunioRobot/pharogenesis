@@ -1,6 +1,6 @@
 EToyCommunicatorMorph
 	subclass: #EToyFridgeMorph
-	instanceVariableNames: 'recipients incomingRow recipientRow updateCounter groupMode '
-	classVariableNames: 'FridgeRecipients NewItems TheFridgeForm UpdateCounter '
+	instanceVariableNames: 'recipients incomingRow recipientRow updateCounter groupMode'
+	classVariableNames: 'FridgeRecipients NewItems TheFridgeForm UpdateCounter'
 	poolDictionaries: ''
-	category: 'Morphic-Experimental'
+	category: 'Nebraska-Morphic-Collaborative'

@@ -1,7 +1,7 @@
 SketchMorph
 	subclass: #FatBitsPaint
 	instanceVariableNames:
-		'formToEdit magnification brush brushSize brushColor lastMouse currentTools currentSelectionMorph selectionAnchor backgroundColor '
-	classVariableNames: 'FormClipboard '
+		'formToEdit magnification brush brushSize brushColor lastMouse currentTools currentSelectionMorph selectionAnchor backgroundColor'
+	classVariableNames: 'FormClipboard'
 	poolDictionaries: ''
-	category: 'Morphic-Widgets'
+	category: 'MorphicExtras-AdditionalWidgets'

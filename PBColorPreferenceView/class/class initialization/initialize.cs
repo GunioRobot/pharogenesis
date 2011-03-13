@@ -1,0 +1,2 @@
+initialize
+	PreferenceViewRegistry ofColorPreferences register: self.

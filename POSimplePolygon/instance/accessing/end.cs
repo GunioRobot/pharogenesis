@@ -1,2 +1,0 @@
-end
-	self vertices end

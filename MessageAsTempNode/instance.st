@@ -3,4 +3,4 @@ MessageNode
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Compiler'
+	category: 'Compiler-ParseNodes'

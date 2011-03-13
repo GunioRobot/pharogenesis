@@ -5,10 +5,10 @@ floatStepToNextScanLineAt: yValue in: edgeTableEntry
 		(fwDy < -50.0 or:[fwDy > 50.0]) ifTrue:[self halt].
 		(fwDDx < -50.0 or:[fwDDx > 50.0]) ifTrue:[self halt].
 		(fwDDy < -50.0 or:[fwDDy > 50.0]) ifTrue:[self halt].
-		lastX _ lastX + fwDx.
-		lastY _ lastY + fwDy.
-		fwDx _ fwDx + fwDDx.
-		fwDy _ fwDy + fwDDy.
+		lastX := lastX + fwDx.
+		lastY := lastY + fwDy.
+		fwDx := fwDx + fwDDx.
+		fwDy := fwDy + fwDDy.
 	].
 	edgeTableEntry xValue: lastX asInteger.
 	edgeTableEntry zValue: 0.

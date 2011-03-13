@@ -1,3 +1,0 @@
-preferredColumns
-
-	^ 20

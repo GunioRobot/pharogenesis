@@ -1,0 +1,1 @@
+MacRomanTextConverter class instanceVariableNames: ''

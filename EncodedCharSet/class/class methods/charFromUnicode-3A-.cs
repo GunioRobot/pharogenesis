@@ -1,7 +1,7 @@
 charFromUnicode: unicode
 
 	| table index |
-	unicode < 256 ifTrue: [^ Character value: unicode].
+	unicode < 128 ifTrue: [^ Character value: unicode].
 
 	table _ self ucsTable.
 	index _ table indexOf: unicode.

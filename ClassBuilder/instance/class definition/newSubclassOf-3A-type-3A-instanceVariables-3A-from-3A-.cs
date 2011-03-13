@@ -2,7 +2,7 @@ newSubclassOf: newSuper type: type instanceVariables: instVars from: oldClass
 	"Create a new subclass of the given superclass with the given specification."
 	| newFormat newClass |
 	"Compute the format of the new class"
-	newFormat _ 
+	newFormat := 
 		self computeFormat: type 
 			instSize: instVars size 
 			forSuper: newSuper 
@@ -11,8 +11,8 @@ newSubclassOf: newSuper type: type instanceVariables: instVars from: oldClass
 	newFormat == nil ifTrue:[^nil].
 
 	(oldClass == nil or:[oldClass isMeta not]) 
-		ifTrue:[newClass _ self privateNewSubclassOf: newSuper from: oldClass]
-		ifFalse:[newClass _ oldClass clone].
+		ifTrue:[newClass := self privateNewSubclassOf: newSuper from: oldClass]
+		ifFalse:[newClass := oldClass clone].
 
 	newClass 
 		superclass: newSuper
@@ -25,6 +25,12 @@ newSubclassOf: newSuper type: type instanceVariables: instVars from: oldClass
 		"Recompile the new class"
 		oldClass hasMethods 
 			ifTrue:[newClass compileAllFrom: oldClass].
+
+		oldClass hasTraitComposition ifTrue: [
+			newClass setTraitComposition: oldClass traitComposition copyTraitExpression ].
+		oldClass class hasTraitComposition ifTrue: [
+			newClass class setTraitComposition: oldClass class traitComposition copyTraitExpression ].
+		
 		self recordClass: oldClass replacedBy: newClass.
 	].
 

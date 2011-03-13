@@ -20,7 +20,6 @@ installPreferences
 
 		(externalServerDefsOnly true)
 		(expandedFormat false)
-		(allowCelesteTell false)
 		(eToyFriendly true)
 		(eToyLoginEnabled true)
 		(magicHalos true)

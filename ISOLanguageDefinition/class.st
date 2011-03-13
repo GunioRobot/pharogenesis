@@ -1,0 +1,1 @@
+ISOLanguageDefinition class instanceVariableNames: ''

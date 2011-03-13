@@ -1,0 +1,1 @@
+RulerMorph class instanceVariableNames: ''

@@ -4,8 +4,8 @@ convertStringFromCr: aString
 	lineEndConvention == #cr ifTrue: [^ aString].
 	lineEndConvention == #lf ifTrue: [^ aString copy replaceAll: Cr with: Lf].
 	"lineEndConvention == #crlf"
-	inStream _ ReadStream on: aString.
-	outStream _ WriteStream on: (String new: aString size).
+	inStream := ReadStream on: aString.
+	outStream := WriteStream on: (String new: aString size).
 	[inStream atEnd]
 		whileFalse: 
 			[outStream nextPutAll: (inStream upTo: Cr).

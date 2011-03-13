@@ -1,2 +1,2 @@
 lowers: aDictionary
-	lowers _ aDictionary
+	lowers := aDictionary

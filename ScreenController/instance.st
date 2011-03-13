@@ -1,6 +1,6 @@
 Controller
 	subclass: #ScreenController
 	instanceVariableNames: ''
-	classVariableNames: 'LastScreenModeSelected '
+	classVariableNames: 'LastScreenModeSelected'
 	poolDictionaries: ''
-	category: 'Kernel-ST80 Remnants'
+	category: 'ST80-Kernel-Remnants'

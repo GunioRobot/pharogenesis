@@ -2,7 +2,7 @@ viewContentsInWorkspace
 	"View the contents of my selected file in a new workspace"
 	
 	| aString aFileStream aName |
-	aString _ (aFileStream _ directory readOnlyFileNamed: self fullName) contentsOfEntireFile.
-	aName _ aFileStream localName.
+	aString := (aFileStream := directory readOnlyFileNamed: self fullName) setConverterForCode contentsOfEntireFile.
+	aName := aFileStream localName.
 	aFileStream close.
-	(Workspace new contents: aString) openLabel: 'Workspace from ', aName
+	UIManager default edit: aString label: 'Workspace from ', aName

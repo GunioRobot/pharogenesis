@@ -1,0 +1,1 @@
+OBMessageNode class instanceVariableNames: ''

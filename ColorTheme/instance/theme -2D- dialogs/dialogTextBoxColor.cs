@@ -1,0 +1,2 @@
+dialogTextBoxColor
+	^ Color white

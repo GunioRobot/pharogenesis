@@ -1,0 +1,2 @@
+selectorsToUpdateIn: aClass 
+	^originalSinsPerSelector keys

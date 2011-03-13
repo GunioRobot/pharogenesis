@@ -1,2 +1,0 @@
-bookmark: aDictionary
-	bookmark := aDictionary.

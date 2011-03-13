@@ -1,1 +1,0 @@
-An AbsoluteAnimation is any animation where the final state of the animation is always the same. Every time this animation runs we store the initial state, so that when the animation is reversed and run we can determine what that end point should be.

@@ -9,7 +9,7 @@ buildMorphicCategoriesList
 		changeSelected: #selectedCategoryWrapper:
 		menu: #categoriesMenu:
 		keystroke: nil)
-		autoDeselect: false;
+		autoDeselect: true;
 		enableDrag: false;
 		enableDrop: true;
 		yourself.

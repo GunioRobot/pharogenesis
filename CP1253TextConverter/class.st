@@ -1,0 +1,1 @@
+CP1253TextConverter class instanceVariableNames: ''

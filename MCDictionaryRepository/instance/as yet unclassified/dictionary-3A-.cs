@@ -1,3 +1,3 @@
 dictionary: aDictionary
 
-	dict _ aDictionary
+	dict := aDictionary

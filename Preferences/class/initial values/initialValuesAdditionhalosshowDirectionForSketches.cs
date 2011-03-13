@@ -1,2 +1,0 @@
-initialValuesAdditionhalosshowDirectionForSketches
-	^ #((showDirectionForSketches false (halos ) ) )

@@ -1,0 +1,2 @@
+wantsButton
+	^ self buttonLabel notNil

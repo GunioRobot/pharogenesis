@@ -1,10 +1,10 @@
 encodeRectangle: rectangle
 	| x y encoded cornerX cornerY |
 
-	x _ rectangle origin x asInteger.
-	y _ rectangle origin y asInteger.
-	cornerX _ rectangle corner x asInteger.
-	cornerY _ rectangle corner y asInteger.
+	x := rectangle origin x asInteger.
+	y := rectangle origin y asInteger.
+	cornerX := rectangle corner x asInteger.
+	cornerY := rectangle corner y asInteger.
 
 	CanvasEncoder at: 2 count:  1.
 	encoded := String new: 16.

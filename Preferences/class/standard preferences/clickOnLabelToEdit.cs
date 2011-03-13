@@ -1,2 +1,0 @@
-clickOnLabelToEdit
-	^ self valueOfFlag: #clickOnLabelToEdit

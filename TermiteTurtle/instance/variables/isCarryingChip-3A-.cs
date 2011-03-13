@@ -1,3 +1,3 @@
 isCarryingChip: aBoolean
 
-	isCarryingChip _ aBoolean.
+	isCarryingChip := aBoolean.

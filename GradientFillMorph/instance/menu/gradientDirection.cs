@@ -1,2 +1,0 @@
-gradientDirection
-	^ gradientDirection

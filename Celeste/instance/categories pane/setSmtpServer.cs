@@ -1,2 +1,0 @@
-setSmtpServer
-	^self class setSmtpServer

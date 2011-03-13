@@ -1,5 +1,5 @@
-assert: aBoolean description: aString
-	aBoolean ifFalse: [
+assert: aBooleanOrBlock description: aString
+	aBooleanOrBlock value ifFalse: [
 		self logFailure: aString.
-		TestResult failure sunitSignalWith: aString]
+		TestResult failure signal: aString]
 			

@@ -1,1 +1,0 @@
-This class builds a Wonderland representation from a given scene.

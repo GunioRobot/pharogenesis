@@ -1,1 +1,0 @@
-AtomicFluor class instanceVariableNames: ''

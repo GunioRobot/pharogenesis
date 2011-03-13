@@ -1,6 +1,6 @@
 Object
 	subclass: #Exception
-	instanceVariableNames: 'messageText initialContext resignalException handlerContext tag activeHandler '
+	instanceVariableNames: 'messageText tag signalContext handlerContext outerContext'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Exceptions Kernel'
+	category: 'Exceptions-Kernel'

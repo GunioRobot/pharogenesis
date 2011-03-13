@@ -1,3 +1,0 @@
-asListItem
-
-	^ name

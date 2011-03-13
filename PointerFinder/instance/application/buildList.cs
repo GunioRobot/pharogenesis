@@ -30,6 +30,7 @@ buildList
 					key == nil ifTrue: [1 to: parent basicSize do: [:i | key == nil ifTrue: [(parent basicAt: i)
 									== object ifTrue: [key := i printString]]]].
 					key == nil ifTrue: [(parent isMorph and: [object isKindOf: Array]) ifTrue: [key := 'submorphs?']].
+					key == nil ifTrue: [(parent isCompiledMethod and: [object isVariableBinding]) ifTrue: [key := 'literals?']].
 					key == nil ifTrue: [key := '???'].
 					pointerList add: key , ': ' , object class name].
 			objectList add: object.

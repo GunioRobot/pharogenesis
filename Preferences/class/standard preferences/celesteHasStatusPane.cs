@@ -1,2 +1,0 @@
-celesteHasStatusPane
-	^ self valueOfFlag: #celesteHasStatusPane

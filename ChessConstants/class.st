@@ -1,1 +1,0 @@
-ChessConstants class instanceVariableNames: ''

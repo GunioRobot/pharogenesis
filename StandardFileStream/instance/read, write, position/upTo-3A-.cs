@@ -1,9 +1,9 @@
 upTo: delim 
 	"Fast version to speed up nextChunk"
 	| pos buffer count |
-	pos _ self position.
-	buffer _ self next: 2000.
-	(count _ buffer indexOf: delim) > 0 ifTrue: 
+	pos := self position.
+	buffer := self next: 2000.
+	(count := buffer indexOf: delim) > 0 ifTrue: 
 		["Found the delimiter part way into buffer"
 		self position: pos + count.
 		^ buffer copyFrom: 1 to: count - 1].

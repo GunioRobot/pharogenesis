@@ -1,0 +1,1 @@
+ClipboardMorph class instanceVariableNames: ''

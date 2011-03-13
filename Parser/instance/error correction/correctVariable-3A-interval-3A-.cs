@@ -53,8 +53,8 @@ correctVariable: proposedVariable interval: spot
 	labels add: 'cancel'.
 
 	"Display the pop-up menu"
-	choice _ (PopUpMenu labelArray: labels asArray lines: lines asArray)
-		startUpWithCaption: 'Unknown variable: ', proposedVariable, ' please correct, or cancel:'.
+	choice _ (UIManager default chooseFrom: labels asArray lines: lines asArray
+		title:  'Unknown variable: ', proposedVariable, ' please correct, or cancel:').
 	action _ actions at: choice ifAbsent: [ ^self fail ].
 
 	"Execute the selected action"

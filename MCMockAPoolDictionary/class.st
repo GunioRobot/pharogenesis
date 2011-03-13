@@ -1,0 +1,1 @@
+MCMockAPoolDictionary class instanceVariableNames: ''

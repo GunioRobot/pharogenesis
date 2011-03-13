@@ -4,3 +4,4 @@ superclass: aClass methodDictionary: mDict format: fmt
 	superclass _ aClass.
 	format _ fmt.
 	methodDict _ mDict.
+	self traitComposition: nil

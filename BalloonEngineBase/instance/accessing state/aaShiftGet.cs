@@ -1,2 +1,0 @@
-aaShiftGet
-	^workBuffer at: GWAAShift

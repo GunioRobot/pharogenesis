@@ -1,4 +1,4 @@
 failureLog	
-	^SUnitNameResolver defaultLogDevice
+	^Transcript
 
 			

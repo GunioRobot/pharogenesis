@@ -1,6 +1,6 @@
 RectangleMorph
 	subclass: #UpdatingRectangleMorph
-	instanceVariableNames: 'target lastValue getSelector putSelector contents '
+	instanceVariableNames: 'target lastValue getSelector putSelector contents'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Scripting Support'
+	category: 'EToys-Scripting Support'

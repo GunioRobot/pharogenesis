@@ -1,1 +1,1 @@
-CardPlayer class instanceVariableNames: 'variableDocks '
+CardPlayer class instanceVariableNames: 'variableDocks'

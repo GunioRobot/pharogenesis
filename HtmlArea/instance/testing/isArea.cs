@@ -1,2 +1,0 @@
-isArea
-	^true

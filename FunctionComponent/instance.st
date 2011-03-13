@@ -1,6 +1,6 @@
 TextComponent
 	subclass: #FunctionComponent
-	instanceVariableNames: 'inputSelectors functionSelector outputSelector outputValue '
+	instanceVariableNames: 'inputSelectors functionSelector outputSelector outputValue'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Components'
+	category: 'MorphicExtras-Components'

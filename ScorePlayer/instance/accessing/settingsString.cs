@@ -1,7 +1,7 @@
 settingsString
 
 	| s |
-	s _ WriteStream on: (String new: 1000).
+	s := WriteStream on: (String new: 1000).
 	s nextPutAll: 'player'; cr.
 	s tab; nextPutAll: 'rate: ', self rate printString, ';'; cr.
 	s tab; nextPutAll: 'overallVolume: ', self overallVolume printString, ';'; cr.

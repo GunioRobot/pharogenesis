@@ -1,1 +1,0 @@
-WonderlandWrapperMorph class instanceVariableNames: ''

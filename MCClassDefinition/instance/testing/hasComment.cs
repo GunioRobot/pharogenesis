@@ -1,2 +1,2 @@
 hasComment
-	^ comment notNil and: [comment ~= '']
+	^ comment isEmptyOrNil not

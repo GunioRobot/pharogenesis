@@ -1,3 +1,0 @@
-asString
-
-	^MultiString with: self.

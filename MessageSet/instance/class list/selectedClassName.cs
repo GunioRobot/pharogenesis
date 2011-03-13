@@ -3,5 +3,5 @@ selectedClassName
 	exists."
 
 	| cls |
-	(cls _ self selectedClass) ifNil: [^ nil].
+	(cls := self selectedClass) ifNil: [^ nil].
 	^ cls name

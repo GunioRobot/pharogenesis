@@ -1,5 +1,5 @@
 archive: aZipArchive
-	archive _ aZipArchive.
+	archive := aZipArchive.
 	self model: aZipArchive.
 	self setLabel: 'New Zip Archive'.
 	self memberIndex: 0.

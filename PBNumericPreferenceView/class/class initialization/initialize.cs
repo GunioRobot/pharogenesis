@@ -1,0 +1,2 @@
+initialize
+	PreferenceViewRegistry ofNumericPreferences register: self.

@@ -1,6 +1,6 @@
 ReadWriteStream
 	subclass: #FileStream
-	instanceVariableNames: 'rwmode '
+	instanceVariableNames: 'rwmode'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Files'
+	category: 'Files-Kernel'

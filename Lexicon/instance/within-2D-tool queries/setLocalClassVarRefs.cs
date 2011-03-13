@@ -3,7 +3,7 @@ setLocalClassVarRefs
 
 	| aName |
 
-	(aName _ targetClass theNonMetaClass chooseClassVarName) ifNil: [^ self].
-	currentQuery _ #classVarRefs.
-	currentQueryParameter _ aName.
+	(aName := targetClass theNonMetaClass chooseClassVarName) ifNil: [^ self].
+	currentQuery := #classVarRefs.
+	currentQueryParameter := aName.
 	self showQueryResultsCategory

@@ -2,28 +2,28 @@ condenseSources
 	"Move all the changes onto a compacted sources file."
 	"Smalltalk condenseSources"
 
-	| f classCount dir newVersionString |
+	| f dir newVersionString count |
 	Utilities fixUpProblemsWithAllCategory.
 	"The above removes any concrete, spurious '-- all --' categories, which mess up the process."
-	dir _ FileDirectory default.
-	newVersionString _ FillInTheBlank request: 'Please designate the version
-for the new source code file...' initialAnswer: SourceFileVersionString.
+	dir := FileDirectory default.
+	newVersionString := UIManager default request: 'Please designate the version
+for the new source code file...' initialAnswer: SmalltalkImage current sourceFileVersionString.
 	newVersionString ifNil: [^ self].
-	newVersionString = SourceFileVersionString ifTrue:
+	newVersionString = SmalltalkImage current sourceFileVersionString ifTrue:
 		[^ self error: 'The new source file must not be the same as the old.'].
-	SourceFileVersionString _ newVersionString.
+	SmalltalkImage current sourceFileVersionString: newVersionString.
 
 	"Write all sources with fileIndex 1"
-	f _ FileStream newFileNamed: SmalltalkImage current sourcesName.
+	f := FileStream newFileNamed: SmalltalkImage current sourcesName.
 	f header; timeStamp.
 'Condensing Sources File...'
 	displayProgressAt: Sensor cursorPoint
-	from: 0 to: Smalltalk classNames size
+	from: 0 to: self classNames size + self traitNames size
 	during:
-		[:bar | classCount _ 0.
-		Smalltalk allClassesDo:
-			[:class | bar value: (classCount _ classCount + 1).
-			class fileOutOn: f moveSource: true toFile: 1]].
+		[:bar | count := 0.
+		Smalltalk allClassesAndTraitsDo:
+			[:classOrTrait | bar value: (count := count + 1).
+			classOrTrait fileOutOn: f moveSource: true toFile: 1]].
 	f trailer; close.
 
 	"Make a new empty changes file"

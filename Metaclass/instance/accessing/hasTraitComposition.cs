@@ -1,0 +1,2 @@
+hasTraitComposition
+	^traitComposition notNil

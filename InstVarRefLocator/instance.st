@@ -1,6 +1,6 @@
-AbstractInstructionPrinter
+InstructionClient
 	subclass: #InstVarRefLocator
-	instanceVariableNames: ''
+	instanceVariableNames: 'bingo'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Kernel-Methods'

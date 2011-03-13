@@ -1,3 +1,3 @@
 repository: aRepository
-	repository _ aRepository.
+	repository := aRepository.
 	workingCopy ifNotNil: [self defaults at: workingCopy put: aRepository]

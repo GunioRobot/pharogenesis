@@ -2,7 +2,7 @@ makeAPauseEvent: evt
 
 	| newWidget |
 
-	newWidget _ AlignmentMorph newRow.
+	newWidget := AlignmentMorph newRow.
 	newWidget 
 		color: Color orange; 
 		borderWidth: 0; 

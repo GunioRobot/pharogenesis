@@ -1,2 +1,2 @@
 hash
-	^ name hash
+	^ name asLowercase hash

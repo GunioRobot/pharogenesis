@@ -1,3 +1,3 @@
 SMPersonalObject is the abstract base class for things that belong/are owned by a user account in SqueakMap. Most things are personal objects - but the SMCategories aren't for example.
 
-A personal object has a reference to the SMAccount owning it. It also has a potential list of maintainers - other accounts that also can modify the object.
+A personal object has a reference to the SMAccount owning it.

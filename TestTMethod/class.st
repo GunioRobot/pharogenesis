@@ -1,1 +1,0 @@
-TestTMethod class instanceVariableNames: ''

@@ -1,1 +1,0 @@
-AtomicComponent class instanceVariableNames: ''

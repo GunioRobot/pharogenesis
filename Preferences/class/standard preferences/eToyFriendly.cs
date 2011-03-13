@@ -1,2 +1,0 @@
-eToyFriendly
-	^ self valueOfFlag: #eToyFriendly

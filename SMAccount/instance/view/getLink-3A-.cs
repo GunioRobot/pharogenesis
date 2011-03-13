@@ -1,4 +1,5 @@
 getLink: aBuilder
-	"Return a link for using on the web."
+	"Return a link for using on the web.
+	Always from the top."
 
-	^aBuilder getLinkLocal: '/accountbyid/', id asString text: self nameWithInitials
+	^aBuilder getLinkTop: 'accountbyid/', id asString text: self nameWithInitials

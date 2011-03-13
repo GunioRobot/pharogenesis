@@ -1,6 +1,6 @@
 SimpleButtonMorph
 	subclass: #ScriptActivationButton
-	instanceVariableNames: ''
+	instanceVariableNames: 'uniclassScript'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Scripting'
+	category: 'EToys-Scripting'

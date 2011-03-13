@@ -2,7 +2,7 @@ addLowerPanesTo: window at: nominalFractions with: editString
 
 	| verticalOffset row codePane infoPane infoHeight divider |
 
-	row _ AlignmentMorph newColumn
+	row := AlignmentMorph newColumn
 		hResizing: #spaceFill;
 		vResizing: #spaceFill;
 		layoutInset: 0;
@@ -10,20 +10,20 @@ addLowerPanesTo: window at: nominalFractions with: editString
 		borderColor: Color black;
 		layoutPolicy: ProportionalLayout new.
 
-	codePane _ MorphicTextEditor default on: self text: #contents accept: #contents:notifying:
+	codePane := MorphicTextEditor default on: self text: #contents accept: #contents:notifying:
 			readSelection: #contentsSelection menu: #codePaneMenu:shifted:.
-	infoPane _ PluggableTextMorph on: self text: #infoViewContents accept: nil
+	infoPane := PluggableTextMorph on: self text: #infoViewContents accept: nil
 			readSelection: nil menu: nil.
 	infoPane askBeforeDiscardingEdits: false.
-	verticalOffset _ 0.
+	verticalOffset := 0.
 
 ">>not with this browser--- at least not yet ---
-	innerFractions _ 0@0 corner: 1@0.
-	verticalOffset _ self addOptionalAnnotationsTo: row at: innerFractions plus: verticalOffset.
-	verticalOffset _ self addOptionalButtonsTo: row  at: innerFractions plus: verticalOffset.
+	innerFractions := 0@0 corner: 1@0.
+	verticalOffset := self addOptionalAnnotationsTo: row at: innerFractions plus: verticalOffset.
+	verticalOffset := self addOptionalButtonsTo: row  at: innerFractions plus: verticalOffset.
 <<<<"
 
-	infoHeight _ 20.
+	infoHeight := 20.
 	row 
 		addMorph: (codePane borderWidth: 0)
 		fullFrame: (
@@ -31,10 +31,8 @@ addLowerPanesTo: window at: nominalFractions with: editString
 				fractions: (0@0 corner: 1@1) 
 				offsets: (0@verticalOffset corner: 0@infoHeight negated)
 		).
-	divider _ BorderedSubpaneDividerMorph forTopEdge.
-	Preferences alternativeWindowLook ifTrue:[
-		divider extent: 4@4; color: Color transparent; borderColor: #raised; borderWidth: 2.
-	].
+	divider := BorderedSubpaneDividerMorph forTopEdge.
+	divider extent: 4@4; color: Color transparent; borderColor: #raised; borderWidth: 2.
 	row 
 		addMorph: divider
 		fullFrame: (

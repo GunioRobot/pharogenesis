@@ -20,6 +20,6 @@ Would you like to browse it? ?']
 Transcript or other ''slips'' in them.
 Would you like to browse them?'].
 
-	(PopUpMenu withCaption: msg chooseFrom: 'Ignore\Browse slips') = 2
+	(UIManager default  chooseFrom: #('Ignore' 'Browse slips') title: msg) = 2
 		ifTrue: [self systemNavigation  browseMessageList: slips
 							name: 'Possible slips in ', name]

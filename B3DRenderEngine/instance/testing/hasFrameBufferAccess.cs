@@ -1,2 +1,0 @@
-hasFrameBufferAccess
-	^true

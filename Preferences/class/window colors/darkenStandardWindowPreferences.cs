@@ -1,10 +1,9 @@
 darkenStandardWindowPreferences
 	"Make all window-color preferences one shade darker"
 
-	| windowColorDict |
-	windowColorDict _ self parameterAt: #windowColors ifAbsentPut: [IdentityDictionary new].
-
-	windowColorDict associationsDo:
-		[:assoc | windowColorDict at: assoc key put: assoc value darker]
+	(self allPreferenceObjects 
+		select: [:aPref | (aPref name endsWith: 'WindowColor')
+								and: [aPref preferenceValue isColor]])
+		do: [:aPref | aPref preferenceValue: aPref preferenceValue darker].
 
 "Preferences darkenStandardWindowPreferences"

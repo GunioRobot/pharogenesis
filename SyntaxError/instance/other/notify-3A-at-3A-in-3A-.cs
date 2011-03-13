@@ -2,8 +2,8 @@ notify: error at: location in: source
 	"Open a syntax error view, inserting the given error message into the given source at the given location. This message is sent to the 'requestor' when the parser or compiler finds a syntax error."
 
 	| aClass aString |
-	aClass _ thisContext sender receiver encoder classEncoding.
-	aString _
+	aClass := thisContext sender receiver encoder classEncoding.
+	aString :=
 		source contents
 			copyReplaceFrom: location
 			to: location - 1

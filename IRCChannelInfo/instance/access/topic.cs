@@ -1,2 +1,0 @@
-topic
-	^topic ifNil: ['']

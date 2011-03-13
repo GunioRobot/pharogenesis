@@ -1,2 +1,0 @@
-isDefinitionListElement
-	^true

@@ -1,3 +1,0 @@
-primitiveWaveTableSoundMix
-	self export: true.
-	^self primWaveTableSoundmixSampleCountintostartingAtpan

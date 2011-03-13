@@ -1,3 +1,0 @@
-getKey
-
-	^ key.

@@ -3,7 +3,7 @@ playFile: aFileName
 
      | wrapper |
 	aFileName ifNil: [^ Beeper beep].
-     wrapper _ self openOn: aFileName.
+     wrapper := self openOn: aFileName.
      wrapper moviePlayer startPlaying. 
      "wrapper openInWindow."
 	wrapper openInWorld.

@@ -1,7 +1,7 @@
-add: aPackage 
-	"Conditionally download the package into the cache.
+add: aDownloadable 
+	"Conditionally download the downloadable object into the cache.
 	Return true on success, otherwise false."
 
-	^(self includes: aPackage)
+	^(self includes: aDownloadable)
 		ifTrue: [true]
-		ifFalse: [self download: aPackage]
+		ifFalse: [self download: aDownloadable]

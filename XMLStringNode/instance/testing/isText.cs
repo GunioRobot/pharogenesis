@@ -1,2 +1,0 @@
-isText
-	^true

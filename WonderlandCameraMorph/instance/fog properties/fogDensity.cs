@@ -1,2 +1,0 @@
-fogDensity
-	^myCamera getFogDensity

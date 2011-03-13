@@ -1,2 +1,2 @@
 setUp
-	visited _ OrderedCollection new.
+	visited := OrderedCollection new.

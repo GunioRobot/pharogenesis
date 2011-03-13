@@ -1,7 +1,7 @@
 initialize
 	"SoundRecorder new"
 
-	stereo _ false.
-	samplingRate _ 11025.
-	recordLevel _ 0.5.
+	stereo := false.
+	samplingRate := 11025.
+	recordLevel := 0.5.
 	self initializeRecordingState.

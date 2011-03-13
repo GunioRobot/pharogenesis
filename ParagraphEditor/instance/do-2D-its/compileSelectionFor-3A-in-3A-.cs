@@ -9,5 +9,5 @@ compileSelectionFor: anObject in: evalContext
 		ifFail: [^nil]]
 			on: OutOfScopeNotification
 			do: [:ex | ex resume: true].
-	method _ methodNode generate: #(0 0 0 0).
+	method _ methodNode generate.
 	^method copyWithTempNames: methodNode tempNames

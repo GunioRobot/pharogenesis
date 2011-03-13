@@ -7,7 +7,7 @@ unreferencedInstanceVariables
 		[:ivn | any _ false.
 		self withAllSubclasses do:
 			[:class |  (class whichSelectorsAccess: ivn) do: 
-					[:sel | sel ~~ #DoIt ifTrue: [any _ true]]].
+					[:sel | sel isDoIt ifFalse: [any _ true]]].
 		any]
 
 "Ob unreferencedInstanceVariables"

@@ -1,4 +1,4 @@
 refresh
-	packages _ repository packages.
+	packages := repository packages.
 	self changed: #packageList.
 	self packageSelection: self packageSelection.

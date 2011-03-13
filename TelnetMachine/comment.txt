@@ -1,4 +1,0 @@
-The beginnings of a telnet terminal, for telnetting to other hosts. 
-
-
-NOTE - it should separate out the VT100 code to a separate class some time....

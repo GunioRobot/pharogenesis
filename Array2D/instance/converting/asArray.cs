@@ -1,2 +1,0 @@
-asArray
-	^ contents copy

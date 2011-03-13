@@ -1,1 +1,0 @@
-I represent a quad-edge within a subdivision.

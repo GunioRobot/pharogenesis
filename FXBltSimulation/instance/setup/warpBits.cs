@@ -1,3 +1,0 @@
-warpBits
-	"obsolete"
-	self copyBits.

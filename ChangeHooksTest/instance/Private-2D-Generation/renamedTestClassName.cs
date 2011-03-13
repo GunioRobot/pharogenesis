@@ -1,0 +1,4 @@
+renamedTestClassName
+
+
+	^#'AutoRenamedClassForTestingSystemChanges'

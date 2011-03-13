@@ -1,2 +1,2 @@
 contours
-	^contours ifNil:[contours _ self computeContours]
+	^contours ifNil:[contours := self computeContours]

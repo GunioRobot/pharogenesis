@@ -1,6 +1,6 @@
 SystemWindow
 	subclass: #CollapsedMorph
-	instanceVariableNames: 'uncollapsedMorph '
+	instanceVariableNames: 'uncollapsedMorph'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Windows'

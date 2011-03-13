@@ -4,7 +4,7 @@ retryWithGC: execBlock until: testBlock forFileNamed: fullName
 	blockValue := execBlock value.
 	(testBlock value: blockValue) ifTrue:[^blockValue].
 	"See if we have a file with the given name"
-	foundIt _ Registry keys "hold on strongly for now" 
+	foundIt := Registry keys "hold on strongly for now" 
 		anySatisfy:[:file| file name sameAs: fullName].
 	foundIt ifFalse:[^blockValue].
 	Smalltalk garbageCollectMost.

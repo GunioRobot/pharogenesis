@@ -1,1 +1,0 @@
-Vertex representation in Pooh.

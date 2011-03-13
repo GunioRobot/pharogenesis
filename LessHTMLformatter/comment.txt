@@ -1,1 +1,0 @@
-The LessHTMLformatter provides a few more plaintext notations to swikify, to avoid typing HTML a bit more.  Used in rendering -- see FileList renderFile

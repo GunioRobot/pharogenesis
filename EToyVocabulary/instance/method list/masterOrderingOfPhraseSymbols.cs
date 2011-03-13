@@ -15,4 +15,10 @@ masterOrderingOfPhraseSymbols
 
 		getGraphic getBaseGraphic
 
-		#getAutoExpansion #getAutoLineLayout #getBatchPenTrails #getFenceEnabled #getIndicateCursor #getIsOpenForDragNDrop #getIsPartsBin #getMouseOverHalos #getOriginAtCenter #getShowThumbnail)
+		getAllowEtoyUserCustomEvents 
+
+		#getAutoExpansion #getAutoLineLayout #getBatchPenTrails getDropProducesWatcher #getFenceEnabled #getIndicateCursor #getIsOpenForDragNDrop #getIsPartsBin #getMouseOverHalos #getOriginAtCenter #getShowThumbnail
+
+	 getFenceEnabled getKeepTickingWhilePainting getOliveHandleForScriptedObjects  getUseVectorVocabulary 
+
+)

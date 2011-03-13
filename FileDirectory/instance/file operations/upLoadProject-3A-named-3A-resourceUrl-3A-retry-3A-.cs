@@ -2,7 +2,7 @@ upLoadProject: projectFile named: destinationFileName resourceUrl: resUrl retry:
 	"Copy the contents of the existing fileStream into the file destinationFileName in this directory.  fileStream can be anywhere in the fileSystem.  No retrying for local file systems."
 
 	| result |
-	result _ self putFile: projectFile named: destinationFileName.
+	result := self putFile: projectFile named: destinationFileName.
 	[self
 		setMacFileNamed: destinationFileName
 		type: 'SOBJ'

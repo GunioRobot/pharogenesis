@@ -1,2 +1,2 @@
 initialize
-	members _ OrderedCollection new.
+	members := OrderedCollection new.

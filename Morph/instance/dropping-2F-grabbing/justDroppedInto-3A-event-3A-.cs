@@ -2,6 +2,8 @@ justDroppedInto: aMorph event: anEvent
 	"This message is sent to a dropped morph after it has been dropped on -- and been accepted by -- a drop-sensitive morph"
 
 	| aWindow partsBinCase cmd aStack |
+	(self formerOwner notNil and: [self formerOwner ~~ aMorph])
+		ifTrue: [self removeHalo].
 	self formerOwner: nil.
 	self formerPosition: nil.
 	cmd _ self valueOfProperty: #undoGrabCommand.

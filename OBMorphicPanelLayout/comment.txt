@@ -1,0 +1,1 @@
+OBMorphicPanelLayout implements a somewhat hairy algorithm for layoung out panels in a morphic SystemWindow. It is the default layout strategy used by OBBrowser. Subclasses of OBBrowser may use other layout strategies to customize their appearance.

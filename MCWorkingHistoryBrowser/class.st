@@ -1,0 +1,1 @@
+MCWorkingHistoryBrowser class instanceVariableNames: ''

@@ -14,7 +14,7 @@ buildJumpToMenu: menu
 	[(prev ~~ nil and: [(listed includes: prev) not])] whileTrue:
 	  [i _ i + 1.
 		listed add: prev.
-		self 	addItem: prev name , ' (back ' , i printString , ')'
+		self 	addItem: prev name , ' (', ('back {1}' translated format:{i}  ), ')'
 				toMenu: menu 
 				selection: ('%back' , i printString) 
 				project: prev.
@@ -24,7 +24,7 @@ buildJumpToMenu: menu
 
 	"Then the next Project"
 	(((next _ CurrentProject nextProject) ~~ nil) and: [(listed includes: next) not]) ifTrue:
-		[self	addItem: (next name, ' (forward 1)') 
+		[self	addItem: (next name, ' (', ('forward {1}' translated format:{1}), ')') 
 				toMenu: menu 
 				selection: next name 
 				project: next]. 
@@ -32,7 +32,7 @@ buildJumpToMenu: menu
 
 	"Then the parent"
 	CurrentProject isTopProject ifFalse: 
-		[self	addItem: CurrentProject parent name , ' (parent)' 
+		[self	addItem: CurrentProject parent name , ' (', 'parent' translated, ')' 
 				toMenu: menu 
 				selection: #parent 
 				project: CurrentProject parent.
@@ -48,7 +48,7 @@ buildJumpToMenu: menu
 		[:aPair | 
 			toAdd _ aPair last isCurrentProject
 				ifTrue:
-				  [aPair first, ' (current)']
+				  [aPair first, ' (', 'current' translated, ')']
 				ifFalse:
 				  [aPair first].
 			self	addItem: toAdd 

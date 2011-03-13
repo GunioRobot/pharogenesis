@@ -1,6 +1,6 @@
 readColorFrom: aStream
 	| pv |
-	pv _ stream next asciiValue +
+	pv := stream next asciiValue +
 			(stream next asciiValue bitShift: 8) +
 				(stream next asciiValue bitShift: 16) +
 					(stream next asciiValue bitShift: 24).

@@ -1,6 +1,6 @@
 Object
 	subclass: #ObjectWithDocumentation
-	instanceVariableNames: 'authoringStamp documentation properties '
+	instanceVariableNames: 'authoringStamp properties elementSymbol naturalLanguageTranslations'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Protocols'
+	category: 'Protocols-Kernel'

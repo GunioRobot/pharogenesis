@@ -1,7 +1,7 @@
 on: aCollectionOrStream
 	aCollectionOrStream isStream 
 		ifTrue:[	aCollectionOrStream binary.
-				sourceStream _ aCollectionOrStream.
+				sourceStream := aCollectionOrStream.
 				self getFirstBuffer]
-		ifFalse:[source _ aCollectionOrStream].
+		ifFalse:[source := aCollectionOrStream].
 	^self on: source from: 1 to: source size.

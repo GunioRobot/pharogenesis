@@ -1,3 +1,3 @@
 unregisterType: aMessageType
 
-	MessageTypes _ self allTypes copyWithout: aMessageType
+	MessageTypes := self allTypes copyWithout: aMessageType

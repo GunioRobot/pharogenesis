@@ -1,0 +1,2 @@
+classesToUpdate: anObject
+	classesToUpdate := anObject

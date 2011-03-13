@@ -1,2 +1,0 @@
-primStringtranslatefromtotable
-	^ self primitiveFail

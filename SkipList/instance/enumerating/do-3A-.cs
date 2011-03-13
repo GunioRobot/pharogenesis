@@ -1,2 +1,2 @@
 do: aBlock
-	self nodesDo: [:node | aBlock value: node object]
+        self nodesDo: [:node | aBlock value: node value]

@@ -2,15 +2,15 @@ genericMenu: aMenu
 	"Borrow a menu from my inspector"
 	| insideObject menu parentObject |
 	currentSelection
-		ifNil: [menu _ aMenu.
+		ifNil: [menu := aMenu.
 			menu
 				add: '*nothing selected*'
 				target: self
 				selector: #yourself]
-		ifNotNil: [insideObject _ self object.
-			parentObject _ self parentObject.
+		ifNotNil: [insideObject := self object.
+			parentObject := self parentObject.
 			inspector
-				ifNil: [inspector _ Inspector new].
+				ifNil: [inspector := Inspector new].
 			inspector inspect: parentObject;
 				 object: insideObject.
 			aMenu defaultTarget: inspector.

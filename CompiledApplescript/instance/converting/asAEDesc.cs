@@ -1,3 +1,0 @@
-asAEDesc
-
-	^AEDesc scptTypeOn: self

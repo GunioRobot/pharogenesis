@@ -1,6 +1,9 @@
 fatDefForClass: class
 
 	| newDef oldDef oldStrm newStrm outStrm oldVars newVars addedVars |
+	
+	class isBehavior ifFalse: [^class definition].
+	
 	newDef _ class definition.
 	oldDef _ (self changeRecorderFor: class) priorDefinition.
 	oldDef ifNil: [^ newDef].

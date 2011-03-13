@@ -1,1 +1,0 @@
-B3DPrimitiveVertexArray class instanceVariableNames: ''

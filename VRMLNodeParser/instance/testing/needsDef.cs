@@ -1,2 +1,0 @@
-needsDef
-	^defName notNil

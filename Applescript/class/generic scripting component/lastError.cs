@@ -1,3 +1,0 @@
-lastError
-
-	^self generic lastError

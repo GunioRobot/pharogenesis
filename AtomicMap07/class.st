@@ -1,1 +1,0 @@
-AtomicMap07 class instanceVariableNames: ''

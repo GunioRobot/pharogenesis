@@ -1,6 +1,6 @@
 randomHairColor
 	| hairColors |
-	hairColors _ {Color r: 0.613 g: 0.161 b: 0.0. "red"
+	hairColors := {Color r: 0.613 g: 0.161 b: 0.0. "red"
 		Color r: 0.323 g: 0.226 b: 0.0. "dark brown"
 		Color r: 0.774 g: 0.548 b: 0.0. "light brown"
 		Color r: 0.968 g: 0.871 b: 0.0. "yellow"

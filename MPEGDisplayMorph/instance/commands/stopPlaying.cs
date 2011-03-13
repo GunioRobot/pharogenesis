@@ -1,5 +1,5 @@
 stopPlaying
 	"Stop playing the movie."
 
-	running _ false.
+	running := false.
 	soundTrack ifNotNil: [soundTrack pause].

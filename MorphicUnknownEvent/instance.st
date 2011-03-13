@@ -1,6 +1,6 @@
 MorphicEvent
 	subclass: #MorphicUnknownEvent
-	instanceVariableNames: 'type argument '
+	instanceVariableNames: 'type argument'
 	classVariableNames: ''
-	poolDictionaries: 'EventSensorConstants '
+	poolDictionaries: 'EventSensorConstants'
 	category: 'Morphic-Events'

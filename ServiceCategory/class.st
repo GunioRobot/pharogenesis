@@ -1,0 +1,1 @@
+ServiceCategory class instanceVariableNames: ''

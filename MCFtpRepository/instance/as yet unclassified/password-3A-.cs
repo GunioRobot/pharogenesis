@@ -1,2 +1,2 @@
 password: passwordString
-	password _ passwordString
+	password := passwordString

@@ -3,29 +3,28 @@ addOptionalAnnotationsTo: window at: fractions plus: verticalOffset
 
 	| aTextMorph divider delta |
 	self wantsAnnotationPane ifFalse: [^ verticalOffset].
-	aTextMorph _ PluggableTextMorph 
+	aTextMorph := PluggableTextMorph 
 		on: self
 		text: #annotation 
-		accept: nil
+		accept: #annotation:
 		readSelection: nil
 		menu: #annotationPaneMenu:shifted:.
 	aTextMorph
-		askBeforeDiscardingEdits: false;
+		askBeforeDiscardingEdits: true;
+		acceptOnCR: true;
 		borderWidth: 0;
 		hideScrollBarsIndefinitely.
-	divider _ BorderedSubpaneDividerMorph forBottomEdge.
-	Preferences alternativeWindowLook ifTrue:[
-		divider extent: 4@4; color: Color transparent; borderColor: #raised; borderWidth: 2.
-	].
-	delta _ self defaultAnnotationPaneHeight.
+	divider := BorderedSubpaneDividerMorph forBottomEdge.
+	divider extent: 4@4; color: Color transparent; borderColor: #raised; borderWidth: 2.
+	delta := self defaultAnnotationPaneHeight.
 	window 
 		addMorph: aTextMorph 
 		fullFrame: (LayoutFrame 
 				fractions: fractions 
-				offsets: (0@verticalOffset corner: 0@(verticalOffset + delta - 1))).
+				offsets: (0@verticalOffset corner: 0@(verticalOffset + delta - 2))).
 	window 
 		addMorph: divider
 		fullFrame: (LayoutFrame 
 				fractions: fractions 
-				offsets: (0@(verticalOffset + delta - 1) corner: 0@(verticalOffset + delta))).
+				offsets: (0@(verticalOffset + delta - 2) corner: 0@(verticalOffset + delta))).
 	^ verticalOffset + delta

@@ -1,2 +1,0 @@
-materialColor
-	^shader materialColor

@@ -10,4 +10,5 @@ defaultImageHandler
 				addResource: image 
 				url: (FileDirectory urlForFileNamed: stream name) asString.
 			sketch _ World drawingClass withForm: image.
-			pasteUp addMorph: sketch centeredNear: event position] fixTemps
+			pasteUp addMorph: sketch centeredNear: event position.
+			image _ sketch _ nil] fixTemps

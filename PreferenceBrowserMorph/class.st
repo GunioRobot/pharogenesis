@@ -1,0 +1,1 @@
+PreferenceBrowserMorph class instanceVariableNames: ''

@@ -3,10 +3,10 @@ fileInMCVersion: member withBootstrap: mcBootstrap
 	| newCS |
 	self class withCurrentChangeSetNamed: member localFileName
 		do: [ :cs | 
-			newCS _ cs.
+			newCS := cs.
 			mcBootstrap loadStream: member contentStream ascii ].
 
-	newCS isEmpty ifTrue: [ ChangeSorter removeChangeSet: newCS ].
+	newCS isEmpty ifTrue: [ ChangeSet removeChangeSet: newCS ].
 
 	World doOneCycle.
 

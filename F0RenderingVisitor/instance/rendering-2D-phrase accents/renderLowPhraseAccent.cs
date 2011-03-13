@@ -1,8 +1,8 @@
 renderLowPhraseAccent
 	"Render a L- accent."
 	| start stop |
-	start _ self phraseAccentStartTime.
-	stop _ self phraseAccentStopTime.
+	start := self phraseAccentStartTime.
+	stop := self phraseAccentStopTime.
 	self time: start
 		startingF0: (contour at: start)
 		amplitude: (contour at: start) - self lowPitch

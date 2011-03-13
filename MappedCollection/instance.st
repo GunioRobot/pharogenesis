@@ -1,6 +1,6 @@
 SequenceableCollection
 	subclass: #MappedCollection
-	instanceVariableNames: 'domain map '
+	instanceVariableNames: 'domain map'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Collections-Sequenceable'

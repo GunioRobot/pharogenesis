@@ -1,2 +1,2 @@
 name: aString
-	name _ aString
+	name := aString

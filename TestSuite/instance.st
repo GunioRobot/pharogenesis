@@ -1,6 +1,6 @@
 Object
 	subclass: #TestSuite
-	instanceVariableNames: 'tests '
+	instanceVariableNames: 'tests resources name'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'SUnit-Framework'
+	category: 'SUnit-Kernel'

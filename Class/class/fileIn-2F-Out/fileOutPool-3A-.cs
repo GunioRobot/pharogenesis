@@ -1,5 +1,6 @@
 fileOutPool: aString
 	"file out the global pool named aString"
+	
 	| internalStream |
 	internalStream _ WriteStream on: (String new: 1000).
 	self new fileOutPool: (self environment at: aString asSymbol) onFileStream: internalStream.

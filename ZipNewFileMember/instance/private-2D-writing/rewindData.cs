@@ -1,4 +1,4 @@
 rewindData
 	super rewindData.
-	readDataRemaining _ stream size.
+	readDataRemaining := stream size.
 	stream position: 0.

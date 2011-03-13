@@ -3,10 +3,10 @@ meterFrom: start count: count in: buffer
 
 	| last max sample |
 	count = 0 ifTrue: [^ self].  "no new samples"
-	last _ start + count - 1.
-	max _ 0.
+	last := start + count - 1.
+	max := 0.
 	start to: last do: [:i |
-		sample _ buffer at: i.
-		sample < 0 ifTrue: [sample _ sample negated].
-		sample > max ifTrue: [max _ sample]].
-	meterLevel _ max.
+		sample := buffer at: i.
+		sample < 0 ifTrue: [sample := sample negated].
+		sample > max ifTrue: [max := sample]].
+	meterLevel := max.

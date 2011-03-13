@@ -1,1 +1,0 @@
-B3DRegularSolid class instanceVariableNames: ''

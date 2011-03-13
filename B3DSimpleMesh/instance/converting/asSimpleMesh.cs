@@ -1,2 +1,0 @@
-asSimpleMesh
-	^self

@@ -1,2 +1,0 @@
-removeAssertions
-	parseTree removeAssertions

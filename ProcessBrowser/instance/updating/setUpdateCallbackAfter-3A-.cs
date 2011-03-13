@@ -1,9 +1,9 @@
 setUpdateCallbackAfter: seconds
 
 		deferredMessageRecipient ifNotNil: [ | d |
-			d _ Delay forSeconds: seconds.
+			d := Delay forSeconds: seconds.
 			[  d wait.
-				d _ nil.
+				d := nil.
 				deferredMessageRecipient addDeferredUIMessage: [self updateProcessList]
 			] fork
 		]

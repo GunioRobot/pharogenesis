@@ -1,0 +1,7 @@
+Actions represent commands for manipulating the graph domain. They can be made available through menus or buttons in the browser. They carry information on how they should be presented to the user, and are responsible for handling exceptions generated when they are triggered. Actions are created by Actors.
+
+iVars: 
+
+label 		a string which describes the action for the user.
+monitor  	when the action is triggered, any notifications raised 
+			will be passed to this object for processing

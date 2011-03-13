@@ -1,3 +1,0 @@
-classPattern
-
-	^classPattern

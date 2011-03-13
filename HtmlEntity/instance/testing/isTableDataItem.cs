@@ -1,2 +1,0 @@
-isTableDataItem
-	^false

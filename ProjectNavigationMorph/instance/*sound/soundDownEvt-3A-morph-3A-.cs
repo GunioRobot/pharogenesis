@@ -1,7 +1,7 @@
 soundDownEvt: a morph: b
 
 	soundSlider ifNotNil: [soundSlider delete].
-	(soundSlider _ RectangleMorph new)
+	(soundSlider := RectangleMorph new)
 		setProperty: #morphicLayerNumber toValue: 1;
 		extent: b width @ (b width * 3);
 		color: self colorForButtons;

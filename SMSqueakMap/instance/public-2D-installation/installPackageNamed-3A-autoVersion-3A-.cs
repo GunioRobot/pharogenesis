@@ -5,8 +5,8 @@ installPackageNamed: aString autoVersion: version
 	automatic version name."
 
 	| p r |
-	p _ self packageWithNameBeginning: aString.
+	p := self packageWithNameBeginning: aString.
 	p ifNil: [self error: 'No package found with name beginning with ', aString].
-	r _ p releaseWithAutomaticVersionString: version.
+	r := p releaseWithAutomaticVersionString: version.
 	r ifNil: [self error: 'No package release found with automatic version ', version].
 	^self installPackageRelease: r

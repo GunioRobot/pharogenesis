@@ -1,2 +1,2 @@
 destForm: aForm
-	destForm _ aForm
+	destForm := aForm

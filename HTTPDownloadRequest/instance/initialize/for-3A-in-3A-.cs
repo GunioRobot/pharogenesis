@@ -1,4 +1,4 @@
 for: aUrl in: aLoader
-	url _ self httpEncodeSafely: aUrl.
+	url _ aUrl.
 	loader _ aLoader.
 	semaphore _ Semaphore new.

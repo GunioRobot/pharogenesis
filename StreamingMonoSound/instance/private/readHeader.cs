@@ -3,7 +3,7 @@ readHeader
 
 	| id |
 	stream position: headerStart.
-	id _ (stream next: 4) asString.
+	id := (stream next: 4) asString.
 	stream position: headerStart.
 	id = '.snd' ifTrue: [^ self readSunAudioHeader].
 	id = 'FORM' ifTrue: [^ self readAIFFHeader].

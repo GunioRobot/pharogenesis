@@ -5,9 +5,9 @@ stopGracefully
 	envelopes isEmpty
 		ifTrue: [
 			self adjustVolumeTo: 0 overMSecs: 10.
-			decayInMs _ 10]
+			decayInMs := 10]
 		ifFalse: [
-			env _ envelopes first.
-			decayInMs _ env attackTime + env decayTime].
+			env := envelopes first.
+			decayInMs := env attackTime + env decayTime].
 	self duration: (mSecsSinceStart + decayInMs) / 1000.0.
 	self stopAfterMSecs: decayInMs.

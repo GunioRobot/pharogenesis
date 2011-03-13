@@ -1,2 +1,0 @@
-isZero
-	^self alpha isZero

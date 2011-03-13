@@ -1,1 +1,1 @@
-MorphicModel class instanceVariableNames: 'prototype '
+MorphicModel class instanceVariableNames: 'prototype'

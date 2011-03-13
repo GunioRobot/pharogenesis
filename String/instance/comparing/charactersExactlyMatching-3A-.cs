@@ -4,6 +4,6 @@ charactersExactlyMatching: aString
 	| count |
 	count _ self size min: aString size.
 	1 to: count do: [:i | 
-		(self at: i) == (aString at: i) ifFalse: [
+		(self at: i) = (aString at: i) ifFalse: [
 			^ i - 1]].
 	^ count

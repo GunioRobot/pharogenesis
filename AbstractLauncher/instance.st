@@ -1,6 +1,6 @@
 Object
 	subclass: #AbstractLauncher
-	instanceVariableNames: 'parameters '
+	instanceVariableNames: 'parameters'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'System-Support'

@@ -1,6 +1,6 @@
 Object
 	subclass: #NebraskaClient
-	instanceVariableNames: 'connection encoder hand canvas '
+	instanceVariableNames: 'connection encoder hand canvas'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Remote'
+	category: 'Nebraska-Morphic-Remote'

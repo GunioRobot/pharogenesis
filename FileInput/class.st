@@ -1,1 +1,0 @@
-FileInput class instanceVariableNames: ''

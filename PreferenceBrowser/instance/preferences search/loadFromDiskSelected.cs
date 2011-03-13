@@ -1,0 +1,2 @@
+loadFromDiskSelected 
+	preferences restorePreferencesFromDisk

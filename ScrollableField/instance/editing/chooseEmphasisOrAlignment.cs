@@ -1,0 +1,2 @@
+chooseEmphasisOrAlignment
+	textMorph chooseEmphasisOrAlignment

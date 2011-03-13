@@ -3,7 +3,7 @@ useShortBuffer
 	"SoundPlayer useShortBuffer"
 
 	self shutDown.
-	BufferMSecs _ 15.
+	BufferMSecs := 15.
 	SoundPlayer
 		startPlayerProcessBufferSize: (BufferMSecs * SamplingRate) // 1000
 		rate: SamplingRate

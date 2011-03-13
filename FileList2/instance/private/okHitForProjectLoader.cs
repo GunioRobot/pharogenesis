@@ -1,6 +1,7 @@
 okHitForProjectLoader
 
 	| areaOfProgress |
+	fileName ifNil: [^ self].
 	ok _ true.
 	areaOfProgress _ modalView firstSubmorph.
 	[

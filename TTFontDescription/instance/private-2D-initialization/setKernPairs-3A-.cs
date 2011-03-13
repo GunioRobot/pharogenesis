@@ -1,2 +1,2 @@
 setKernPairs: array
-	kernPairs _ array
+	kernPairs := array

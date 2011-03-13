@@ -1,2 +1,0 @@
-soundQuickStart
-	^ self valueOfFlag: #soundQuickStart

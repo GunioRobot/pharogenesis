@@ -1,2 +1,0 @@
-isParagraph
-	^true

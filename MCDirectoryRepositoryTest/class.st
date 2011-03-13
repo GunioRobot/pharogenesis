@@ -1,0 +1,1 @@
+MCDirectoryRepositoryTest class instanceVariableNames: ''

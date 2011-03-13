@@ -1,3 +1,3 @@
 iterationCount: aNumber
 
-	iterationCount _ aNumber.
+	iterationCount := aNumber.

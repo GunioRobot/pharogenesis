@@ -1,3 +1,0 @@
-B3DHardwareEngine is a render engine specifically designed to deal with HW accellerated implementations. The (currently only) difference to the generic render engine is that a HW accellerated engine automatically clips the virtual viewport specified by client. This is necessary since HW accellerated rasterizers can usually not render outside the actual display surface.
-
-Note: If the viewport clipping proves to be efficient enough it might be promoted to the general render engine since there is no point in rendering outside the clipping rectangle.

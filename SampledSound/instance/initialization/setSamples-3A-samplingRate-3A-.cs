@@ -8,13 +8,13 @@ setSamples: anArray samplingRate: rate
 
 	"copy the array into a SoundBuffer if necessary"
 	anArray class isWords
-		ifTrue: [samples _ anArray]
-		ifFalse: [samples _ SoundBuffer fromArray: anArray].
+		ifTrue: [samples := anArray]
+		ifFalse: [samples := SoundBuffer fromArray: anArray].
 
-	samplesSize _ samples size.
+	samplesSize := samples size.
 	samplesSize >= SmallInteger maxVal ifTrue: [  "this is unlikely..."
 		self error: 'sample count must be under ',  SmallInteger maxVal printString].
-	originalSamplingRate _ rate.
-	initialCount _ (samplesSize * self samplingRate) // originalSamplingRate.
+	originalSamplingRate := rate.
+	initialCount := (samplesSize * self samplingRate) // originalSamplingRate.
 	self loudness: 1.0.
 	self reset.

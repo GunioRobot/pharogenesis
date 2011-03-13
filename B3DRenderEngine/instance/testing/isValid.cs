@@ -1,2 +1,0 @@
-isValid
-	^true

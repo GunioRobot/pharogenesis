@@ -5,7 +5,7 @@ rotateBy: deg magnify: scale smoothing: cellSize
 	| side rot warp r1 pts p bigSide |
 	side _ 1 + self extent r asInteger.
 	bigSide _ (side asPoint * scale) rounded.
-	rot _ self class extent: bigSide depth: self depth.
+	rot := self blankCopyOf: self boundingBox scaledBy: ( bigSide / self extent ).
 	warp _ (WarpBlt current toForm: rot)
 		sourceForm: self;
 		colorMap: (self colormapIfNeededFor: rot);

@@ -1,6 +1,6 @@
 JPEGReadWriter
 	subclass: #FlashJPEGDecoder
-	instanceVariableNames: 'eoiSeen streaming '
+	instanceVariableNames: 'eoiSeen streaming'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon-MMFlash Import'
+	category: 'Flash-Import'

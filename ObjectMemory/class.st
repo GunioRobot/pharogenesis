@@ -1,1 +1,0 @@
-ObjectMemory class instanceVariableNames: ''

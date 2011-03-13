@@ -1,5 +1,5 @@
 methods
-	^ self mockClassA selectors
+	^ MCMockClassA selectors
 		select: [:ea | ea beginsWith: 'ordinal']
 		thenCollect:
 			[:ea | 

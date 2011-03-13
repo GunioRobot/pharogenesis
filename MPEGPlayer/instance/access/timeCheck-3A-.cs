@@ -1,2 +1,2 @@
 timeCheck: aNumber
-	timeCheck _ aNumber
+	timeCheck := aNumber

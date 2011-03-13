@@ -2,9 +2,9 @@ classListIndex: newIndex
 	"Cause system organization to reflect appropriate category"
 	| newClassName ind |
 	newIndex ~= 0 ifTrue:
-		[newClassName _ (classList at: newIndex) copyWithout: $ .
-		systemCategoryListIndex _
+		[newClassName := (classList at: newIndex) copyWithout: $ .
+		systemCategoryListIndex :=
 			systemOrganizer numberOfCategoryOfElement: newClassName].
-	ind _ super classListIndex: newIndex.
+	ind := super classListIndex: newIndex.
 	self changed: #systemCategorySingleton.
 	^ ind

@@ -4,6 +4,6 @@ soundPosition: fraction
 	| sampleIndex |
 	self mpegFileIsOpen ifFalse: [^ self].
 	mpegFile hasAudio ifTrue: [
-		sampleIndex _ ((totalSamples * fraction) truncated max: 0) min: totalSamples.
+		sampleIndex := ((totalSamples * fraction) truncated max: 0) min: totalSamples.
 		mpegFile audioSetSample: 0 stream: 0.  "work around for library bug: first seek to zero"
 		mpegFile audioSetSample: sampleIndex stream: 0].

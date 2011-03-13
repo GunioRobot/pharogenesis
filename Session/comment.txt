@@ -1,5 +1,0 @@
-A Session can provide server-side storage of state/data between HTML pages. After creating a new session (which can be manipulated using at: and at:put:), it can be saved on the Sessions list by asking the Session class to store: the session. A random integer is returned as a key to the session, and the key can be stored in an HTML page in a hidden field.
-
-A session can be retrieved by ID by asking Session to recall: an ID. A session can be retired when it is no longer useful.
-
-Each recall: or use at:/at:put: "touches" (updates) the Session's last use time. A Session that is older than a certain period (default 30 minutes, in viableTime instance method) will generate an error. Every hour, the PWS, as part of its backup procedures, will clear out old sessions.

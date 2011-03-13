@@ -1,0 +1,1 @@
+MCVersionDependency class instanceVariableNames: ''

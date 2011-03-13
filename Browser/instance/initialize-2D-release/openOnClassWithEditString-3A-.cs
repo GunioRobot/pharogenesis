@@ -4,11 +4,11 @@ openOnClassWithEditString: aString
 
 	Smalltalk isMorphic ifTrue: [^ self openAsMorphClassEditing: aString].
 
-	topView _ (StandardSystemView new) model: self.
+	topView := (StandardSystemView new) model: self.
 	topView borderWidth: 1.
 		"label and minSize taken care of by caller"
 
-	classListView _ PluggableListView on: self
+	classListView := PluggableListView on: self
 		list: #classListSingleton
 		selected: #indexIsOne 
 		changeSelected: #indexIsOne:
@@ -17,7 +17,7 @@ openOnClassWithEditString: aString
 	classListView window: (0 @ 0 extent: 100 @ 12).
 	topView addSubView: classListView.
 
-	messageCategoryListView _ PluggableListView on: self
+	messageCategoryListView := PluggableListView on: self
 		list: #messageCategoryList
 		selected: #messageCategoryListIndex
 		changeSelected: #messageCategoryListIndex:
@@ -25,7 +25,7 @@ openOnClassWithEditString: aString
 	messageCategoryListView window: (0 @ 0 extent: 100 @ 70).
 	topView addSubView: messageCategoryListView below: classListView.
 
-	messageListView _ PluggableListView on: self
+	messageListView := PluggableListView on: self
 		list: #messageList
 		selected: #messageListIndex
 		changeSelected: #messageListIndex:
@@ -35,7 +35,7 @@ openOnClassWithEditString: aString
 	messageListView window: (0 @ 0 extent: 100 @ 70).
 	topView addSubView: messageListView toRightOf: messageCategoryListView.
 
-	switchView _ self buildInstanceClassSwitchView.
+	switchView := self buildInstanceClassSwitchView.
 	switchView borderWidth: 1.
 	switchView 
 		window: switchView window 
@@ -45,25 +45,25 @@ openOnClassWithEditString: aString
 
 	 self wantsAnnotationPane
 		ifTrue:
-			[annotationPane _ PluggableTextView on: self
+			[annotationPane := PluggableTextView on: self
 				text: #annotation accept: nil
 				readSelection: nil menu: nil.
 			annotationPane window: (0@0 extent: 200@self optionalAnnotationHeight).
 			topView addSubView: annotationPane below: messageCategoryListView.
-			underPane _ annotationPane.
-			y _ (200-12-70) - self optionalAnnotationHeight]
+			underPane := annotationPane.
+			y := (200-12-70) - self optionalAnnotationHeight]
 		ifFalse:
-			[underPane _ messageCategoryListView.
-			y _ (200-12-70)].
+			[underPane := messageCategoryListView.
+			y := (200-12-70)].
 
 	self wantsOptionalButtons ifTrue:
-		[optionalButtonsView _ self buildOptionalButtonsView.
+		[optionalButtonsView := self buildOptionalButtonsView.
 		optionalButtonsView borderWidth: 1.
 		topView addSubView: optionalButtonsView below: underPane.
-		underPane _ optionalButtonsView.
-		y _ y - self optionalButtonHeight].
+		underPane := optionalButtonsView.
+		y := y - self optionalButtonHeight].
 
-	browserCodeView _ MvcTextEditor default on: self 
+	browserCodeView := MvcTextEditor default on: self 
 			text: #contents accept: #contents:notifying:
 			readSelection: #contentsSelection menu: #codePaneMenu:shifted:.
 	browserCodeView window: (0@0 extent: 200@y).

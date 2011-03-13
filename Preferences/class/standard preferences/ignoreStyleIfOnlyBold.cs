@@ -1,2 +1,0 @@
-ignoreStyleIfOnlyBold
-	^ self valueOfFlag: #ignoreStyleIfOnlyBold

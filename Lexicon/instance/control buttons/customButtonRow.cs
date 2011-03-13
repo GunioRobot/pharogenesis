@@ -2,7 +2,7 @@ customButtonRow
 	"Answer a custom row of widgets, which pertain primarily to within-tool navigation"
 
 	| aRow aButton aLabel |
-	aRow _ AlignmentMorph newRow.
+	aRow := AlignmentMorph newRow.
 	aRow setNameTo: 'navigation controls'.
 	aRow beSticky.
 	aRow hResizing: #spaceFill.
@@ -12,7 +12,7 @@ customButtonRow
 
 	self customButtonSpecs  do:
 		[:triplet |
-			aButton _ PluggableButtonMorph
+			aButton := PluggableButtonMorph
 				on: self
 				getState: nil
 				action: triplet second.
@@ -21,7 +21,7 @@ customButtonRow
 				hResizing: #spaceFill;
 				vResizing: #spaceFill;
 				onColor: Color transparent offColor: Color transparent.
-			aLabel _ Preferences abbreviatedBrowserButtons 
+			aLabel := Preferences abbreviatedBrowserButtons 
 				ifTrue: [self abbreviatedWordingFor: triplet second]
 				ifFalse: [nil].
 			aButton label: (aLabel ifNil: [triplet first asString])

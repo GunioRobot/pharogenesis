@@ -1,4 +1,4 @@
 setAuthorName
-	AuthorName _ FillInTheBlank 
+	AuthorName := UIManager default 
 			request: 'Please type your name:' translated
-			initialAnswer: 'Your Name'
+			initialAnswer: 'Your Name' translated

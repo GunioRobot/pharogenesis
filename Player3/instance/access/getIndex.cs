@@ -1,2 +1,0 @@
-getIndex
-	^ index

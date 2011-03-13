@@ -1,2 +1,0 @@
-doInterpolator: aVRMLNode
-	^self

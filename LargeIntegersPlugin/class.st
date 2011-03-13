@@ -1,1 +1,0 @@
-LargeIntegersPlugin class instanceVariableNames: ''

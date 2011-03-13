@@ -1,2 +1,0 @@
-availableModules
-	^vmMaker availablePlugins

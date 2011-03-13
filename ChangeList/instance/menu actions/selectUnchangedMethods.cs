@@ -3,10 +3,10 @@ selectUnchangedMethods
 	| change class |
 	Cursor read showWhile: 
 	[1 to: changeList size do:
-		[:i | change _ changeList at: i.
+		[:i | change := changeList at: i.
 		listSelections at: i put:
 			((change type = #method and:
-				[(class _ change methodClass) notNil]) and:
+				[(class := change methodClass) notNil]) and:
 					[(class includesSelector: change methodSelector) and:
 						[change string withBlanksCondensed = (class sourceCodeAt: change methodSelector) asString withBlanksCondensed ]])]].
 	self changed: #allSelections

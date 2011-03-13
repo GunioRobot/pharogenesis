@@ -1,0 +1,1 @@
+RemovedEvent class instanceVariableNames: ''

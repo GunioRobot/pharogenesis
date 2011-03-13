@@ -5,8 +5,8 @@ initListFrom: selectorCollection highlighting: aClass
 	messageList := OrderedCollection new.
 	selectorCollection do: [ :selector |  
 		defClass := aClass whichClassIncludesSelector: selector.
-		item _ selector, '     (' , defClass name , ')'.
-		defClass == aClass ifTrue: [item _ item asText allBold].
+		item := selector, '     (' , defClass name , ')'.
+		defClass == aClass ifTrue: [item := item asText allBold].
 		messageList add: (
 			MethodReference new
 				setClass: defClass 
@@ -14,4 +14,4 @@ initListFrom: selectorCollection highlighting: aClass
 				stringVersion: item
 		)
 	].
-	selectedClass _ aClass.
+	selectedClass := aClass.

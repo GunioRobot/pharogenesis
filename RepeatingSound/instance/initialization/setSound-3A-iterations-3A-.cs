@@ -4,6 +4,6 @@ setSound: aSound iterations: anIntegerOrSymbol
 	"(RepeatingSound repeatForever: PluckedSound lowMajorScale) play"
 
 	super initialize.
-	sound _ aSound.
-	iterationCount _ anIntegerOrSymbol.
+	sound := aSound.
+	iterationCount := anIntegerOrSymbol.
 	self reset.

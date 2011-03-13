@@ -1,8 +1,7 @@
-hasLiteralSuchThat: litBlock
-	"Answer true if litBlock returns true for any literal in this array, even if imbedded in further array structure.  This method is only intended for private use by CompiledMethod hasLiteralSuchThat:"
+hasLiteralSuchThat: testBlock
+	"Answer true if testBlock returns true for any literal in this array, even if imbedded in 	further Arrays or CompiledMethods.  This method is only intended for private use by 	CompiledMethod 	hasLiteralSuchThat:"
 	| lit |
-	1 to: self size do:
-		[:index | lit _ self at: index.
-		(litBlock value: lit) ifTrue: [^ true].
-		(lit class == Array and: [lit hasLiteralSuchThat: litBlock]) ifTrue: [^ true]].
-	^false
+	1 to: self size do: [:index |
+		(testBlock value: (lit _ self at: index)) ifTrue: [^ true].
+		(lit hasLiteralSuchThat: testBlock) ifTrue: [^ true]].
+	^ false

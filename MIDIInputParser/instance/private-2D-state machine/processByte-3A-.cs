@@ -17,22 +17,22 @@ processByte: aByte
 				"the previous line put us into a new state; we now 'fall through'
 				 to process the data byte given this new state."]].
 
-	#ignore1 = state ifTrue: [^ state _ #idle].
-	#ignore2 = state ifTrue: [^ state _ #ignore1].
+	#ignore1 = state ifTrue: [^ state := #idle].
+	#ignore2 = state ifTrue: [^ state := #ignore1].
 
 	#want1of2 = state ifTrue: [
-		argByte1 _ aByte.
-		^ state _ #want2of2].
+		argByte1 := aByte.
+		^ state := #want2of2].
 
 	#want2of2 = state ifTrue: [
-		argByte2 _ aByte.
+		argByte2 := aByte.
 		received addLast: (Array with: timeNow with: lastCmdByte with: argByte1 with: argByte2).
-		^ state _ #idle].
+		^ state := #idle].
 
 	#want1only = state ifTrue: [
-		argByte1 _ aByte.
+		argByte1 := aByte.
 		received addLast: (Array with: timeNow with: lastCmdByte with: argByte1).
-		^ state _ #idle].
+		^ state := #idle].
 
 	#sysExclusive = state ifTrue: [
 		aByte < 128 ifTrue: [
@@ -44,7 +44,7 @@ processByte: aByte
 				"a system exclusive message is terminated by any non-real-time command byte"
 				ignoreSysEx ifFalse: [
 					received addLast: (Array with: timeNow with: lastCmdByte with: sysExBuffer contents)].
-				state _ #idle.
+				state := #idle.
 				aByte = 247
 					ifTrue: [^ self]							"endSysExclusive command, nothing left to do"
 					ifFalse: [^ self processByte: aByte]]]].  	"no endSysExclusive; just start the next command"

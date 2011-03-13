@@ -1,7 +1,7 @@
 channelNumAndMuteButtonFor: channelIndex
 
 	| muteButton instSelector r |
-	muteButton _ SimpleSwitchMorph new
+	muteButton := SimpleSwitchMorph new
 		onColor: (Color r: 1.0 g: 0.6 b: 0.6);
 		offColor: color;
 		color: color;
@@ -9,7 +9,7 @@ channelNumAndMuteButtonFor: channelIndex
 		target: midiSynth;
 		actionSelector: #mutedForChannel:put:;
 		arguments: (Array with: channelIndex).
-	instSelector _ PopUpChoiceMorph new
+	instSelector := PopUpChoiceMorph new
 		extent: 95@14;
 		contentsClipped: 'oboe1';
 		target: self;
@@ -20,7 +20,7 @@ channelNumAndMuteButtonFor: channelIndex
 		(Array with: channelIndex with: instSelector).
 	instrumentSelector at: channelIndex put: instSelector.
 
-	r _ self makeRow
+	r := self makeRow
 		hResizing: #rigid;
 		vResizing: #spaceFill;
 		extent: 70@10.

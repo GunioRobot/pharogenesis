@@ -1,0 +1,3 @@
+hasNoTurtleBreed
+
+	^ turtlesDict isEmpty.

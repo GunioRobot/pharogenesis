@@ -4,7 +4,7 @@ forPackageRelease: aPackageRelease
 
 	| class |
 	aPackageRelease ifNil: [self error: 'No package release specified to find installer for.'].
-	class _ self classForPackageRelease: aPackageRelease.
+	class := self classForPackageRelease: aPackageRelease.
 	^class
 		ifNil: [self error: 'No installer found for package ', aPackageRelease name, '.']
 		ifNotNil: [class new packageRelease: aPackageRelease]

@@ -2,6 +2,6 @@ Form
 	subclass: #Cursor
 	instanceVariableNames: ''
 	classVariableNames:
-		'BlankCursor CornerCursor CrossHairCursor CurrentCursor DownCursor MarkerCursor MenuCursor MoveCursor NormalCursor OriginCursor ReadCursor RightArrowCursor SquareCursor UpCursor WaitCursor WriteCursor XeqCursor '
+		'BlankCursor BottomLeftCursor BottomRightCursor CornerCursor CrossHairCursor CurrentCursor DownCursor MarkerCursor MenuCursor MoveCursor NormalCursor OriginCursor ReadCursor ResizeLeftCursor ResizeTopCursor ResizeTopLeftCursor ResizeTopRightCursor RightArrowCursor SquareCursor TargetCursor TopLeftCursor TopRightCursor UpCursor WaitCursor WebLinkCursor WriteCursor XeqCursor'
 	poolDictionaries: ''
 	category: 'Graphics-Display Objects'

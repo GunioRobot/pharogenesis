@@ -5,9 +5,4 @@ installedVersionOf: aPackage
 	If package is not installed - return nil. If you want it to work without the map loaded you
 	should instead use #installedVersionOfPackageWithId:."
 
-	| versionOrString |
-	versionOrString _ self installedVersionOfPackageWithId: aPackage id.
-	versionOrString ifNil: [^nil].
-	^versionOrString isString
-		ifTrue: [versionOrString]
-		ifFalse: [versionOrString versionString]
+	^self registry installedVersionOf: aPackage

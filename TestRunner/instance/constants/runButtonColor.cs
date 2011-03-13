@@ -1,2 +1,0 @@
-runButtonColor
-	^ Color green lighter

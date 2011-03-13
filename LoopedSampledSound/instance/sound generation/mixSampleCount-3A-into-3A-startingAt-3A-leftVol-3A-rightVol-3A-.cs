@@ -8,54 +8,54 @@ mixSampleCount: n into: aSoundBuffer startingAt: startIndex leftVol: leftVol rig
 	self var: #leftSamples declareC: 'short int *leftSamples'.
 	self var: #rightSamples declareC: 'short int *rightSamples'.
 
-	isInStereo _ leftSamples ~~ rightSamples.
-	compositeLeftVol _ (leftVol * scaledVol) // ScaleFactor.
-	compositeRightVol _  (rightVol * scaledVol) // ScaleFactor.
+	isInStereo := leftSamples ~~ rightSamples.
+	compositeLeftVol := (leftVol * scaledVol) // ScaleFactor.
+	compositeRightVol :=  (rightVol * scaledVol) // ScaleFactor.
 
-	i _ (2 * startIndex) - 1.
-	lastIndex _ (startIndex + n) - 1.
+	i := (2 * startIndex) - 1.
+	lastIndex := (startIndex + n) - 1.
 	startIndex to: lastIndex do: [:sliceIndex |
-		sampleIndex _ (scaledIndex _ scaledIndex + scaledIndexIncr) // LoopIndexScaleFactor.
+		sampleIndex := (scaledIndex := scaledIndex + scaledIndexIncr) // LoopIndexScaleFactor.
 		((sampleIndex > loopEnd) and: [count > releaseCount]) ifTrue: [
 			"loop back if not within releaseCount of the note end"
 			"note: unlooped sounds will have loopEnd = lastSample"
-			sampleIndex _ (scaledIndex _ scaledIndex - scaledLoopLength) // LoopIndexScaleFactor].
-		(nextSampleIndex _ sampleIndex + 1) > lastSample ifTrue: [
-			sampleIndex > lastSample ifTrue: [count _ 0. ^ nil].  "done!"
+			sampleIndex := (scaledIndex := scaledIndex - scaledLoopLength) // LoopIndexScaleFactor].
+		(nextSampleIndex := sampleIndex + 1) > lastSample ifTrue: [
+			sampleIndex > lastSample ifTrue: [count := 0. ^ nil].  "done!"
 			scaledLoopLength = 0
-				ifTrue: [nextSampleIndex _ sampleIndex]
-				ifFalse: [nextSampleIndex _ ((scaledIndex - scaledLoopLength) // LoopIndexScaleFactor) + 1]].
+				ifTrue: [nextSampleIndex := sampleIndex]
+				ifFalse: [nextSampleIndex := ((scaledIndex - scaledLoopLength) // LoopIndexScaleFactor) + 1]].
 
-		m _ scaledIndex bitAnd: LoopIndexFractionMask.
-		rightVal _ leftVal _
+		m := scaledIndex bitAnd: LoopIndexFractionMask.
+		rightVal := leftVal :=
 			(((leftSamples at: sampleIndex) * (LoopIndexScaleFactor - m)) +
 			 ((leftSamples at: nextSampleIndex) * m)) // LoopIndexScaleFactor.
 		isInStereo ifTrue: [
-			rightVal _
+			rightVal :=
 				(((rightSamples at: sampleIndex) * (LoopIndexScaleFactor - m)) +
 				 ((rightSamples at: nextSampleIndex) * m)) // LoopIndexScaleFactor].
 
 		leftVol > 0 ifTrue: [
-			s _ (aSoundBuffer at: i) + ((compositeLeftVol * leftVal) // ScaleFactor).
-			s >  32767 ifTrue: [s _  32767].  "clipping!"
-			s < -32767 ifTrue: [s _ -32767].  "clipping!"
+			s := (aSoundBuffer at: i) + ((compositeLeftVol * leftVal) // ScaleFactor).
+			s >  32767 ifTrue: [s :=  32767].  "clipping!"
+			s < -32767 ifTrue: [s := -32767].  "clipping!"
 			aSoundBuffer at: i put: s].
-		i _ i + 1.
+		i := i + 1.
 		rightVol > 0 ifTrue: [
-			s _ (aSoundBuffer at: i) + ((compositeRightVol * rightVal) // ScaleFactor).
-			s >  32767 ifTrue: [s _  32767].  "clipping!"
-			s < -32767 ifTrue: [s _ -32767].  "clipping!"
+			s := (aSoundBuffer at: i) + ((compositeRightVol * rightVal) // ScaleFactor).
+			s >  32767 ifTrue: [s :=  32767].  "clipping!"
+			s < -32767 ifTrue: [s := -32767].  "clipping!"
 			aSoundBuffer at: i put: s].
-		i _ i + 1.
+		i := i + 1.
 
 		scaledVolIncr ~= 0 ifTrue: [  "update volume envelope if it is changing"
-			scaledVol _ scaledVol + scaledVolIncr.
+			scaledVol := scaledVol + scaledVolIncr.
 			((scaledVolIncr > 0 and: [scaledVol >= scaledVolLimit]) or:
 			 [scaledVolIncr < 0 and: [scaledVol <= scaledVolLimit]])
 				ifTrue: [  "reached the limit; stop incrementing"
-					scaledVol _ scaledVolLimit.
-					scaledVolIncr _ 0].
-			compositeLeftVol _ (leftVol * scaledVol) // ScaleFactor.
-			compositeRightVol _  (rightVol * scaledVol) // ScaleFactor]].
+					scaledVol := scaledVolLimit.
+					scaledVolIncr := 0].
+			compositeLeftVol := (leftVol * scaledVol) // ScaleFactor.
+			compositeRightVol :=  (rightVol * scaledVol) // ScaleFactor]].
 
-	count _ count - n.
+	count := count - n.

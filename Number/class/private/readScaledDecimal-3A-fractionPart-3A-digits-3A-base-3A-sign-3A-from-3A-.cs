@@ -7,7 +7,7 @@ readScaledDecimal: integerPart fractionPart: fractionPart digits: fractionDigits
 	aStream atEnd ifTrue: [^ nil].
 	(aStream next == $s) ifFalse: [^ nil].
 	"<number>s<scale>"
-	(aStream peek digitValue between: 0 and: 10)
+	(aStream atEnd not and: [aStream peek digitValue between: 0 and: 9])
 		ifTrue: [scale := Integer readFrom: aStream]
 		ifFalse: [^ nil].
 	scale isNil

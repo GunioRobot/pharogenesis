@@ -19,7 +19,7 @@ remoteTestClientTCP
 		show: 'ok';
 		cr.
 	socket := self newTCP.
-	serverName := FillInTheBlank request: 'What is your remote Test Server?'
+	serverName := UIManager default request: 'What is your remote Test Server?'
 				initialAnswer: ''.
 	socket connectTo: (NetNameResolver addressFromString: serverName)
 		port: 54321.

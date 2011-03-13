@@ -1,0 +1,1 @@
+MCFtpRepository class instanceVariableNames: ''

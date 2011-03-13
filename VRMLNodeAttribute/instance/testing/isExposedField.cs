@@ -1,2 +1,0 @@
-isExposedField
-	^self attrClass = 'exposedField'

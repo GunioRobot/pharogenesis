@@ -1,3 +1,3 @@
 compress
 	super compress.
-	activeMorphs _ activeMorphs asOrderedCollection
+	activeMorphs := activeMorphs asOrderedCollection

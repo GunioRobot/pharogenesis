@@ -1,0 +1,1 @@
+ServiceShortcuts class instanceVariableNames: 'map'

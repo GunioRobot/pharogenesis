@@ -4,11 +4,11 @@ categoryWithNameBeginning: aString
 	ignore case in both <aString> and the names."
 
 	| candidates shortest answer searchString |
-	searchString _ (aString asLowercase) copyWithout: Character space.
-	candidates _ self categories select: [:cat |
+	searchString := (aString asLowercase) copyWithout: Character space.
+	candidates := self categories select: [:cat |
 		((cat name asLowercase) copyWithout: Character space)
 			beginsWith: searchString ].
-	shortest _ 1000.
+	shortest := 1000.
 	candidates do: [:ca |
-		ca name size < shortest ifTrue:[answer _ ca. shortest _ ca name size]].
+		ca name size < shortest ifTrue:[answer := ca. shortest := ca name size]].
 	^answer	

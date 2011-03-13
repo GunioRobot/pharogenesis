@@ -1,3 +1,2 @@
 on: element level: maxLevel 
-	^ (self new: maxLevel)
-		object: element
+        ^ self key: element value: element level: maxLevel

@@ -3,6 +3,6 @@ samplesRemaining
 	We know it is done playing when samplesRemaining=0."
 
 	| samplesRemaining |
-	samplesRemaining _ cachedSound samplesRemaining.
-	samplesRemaining <= 0 ifTrue: [cachedSound _ nil].
+	samplesRemaining := cachedSound samplesRemaining.
+	samplesRemaining <= 0 ifTrue: [cachedSound := nil].
 	^ samplesRemaining

@@ -8,3 +8,5 @@ veryDeepInner: deepCopier
 	playerScripted _ playerScripted.		"Weakly copied"
 	handWithTile _ nil.  "Just a cache"
 	showingMethodPane _ showingMethodPane.	"boolean"
+	threadPolygon _ nil. "Just a cache".
+

@@ -3,8 +3,8 @@ directoryForResource: aResource
 	resource file. This also ensures that the path exists."
 
 	| slash path dir |
-	slash _ FileDirectory slash.
-	path _ 'resources' , slash , aResource id asString36.
-	dir _ FileDirectory default on: self directory fullName, slash, path.
+	slash := FileDirectory slash.
+	path := 'resources' , slash , aResource id asString36.
+	dir := FileDirectory default on: self directory fullName, slash, path.
 	dir assureExistence.
 	^dir

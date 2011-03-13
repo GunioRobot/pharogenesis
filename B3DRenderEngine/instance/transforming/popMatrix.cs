@@ -1,2 +1,0 @@
-popMatrix
-	^transformer popMatrix

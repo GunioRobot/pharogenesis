@@ -2,8 +2,8 @@ openAsMorphMsgCatEditing: editString
 	"Create a pluggable version a Browser on just a message category."
 
 	| window hSepFrac |
-	window _ (SystemWindow labelled: 'later') model: self.
-	hSepFrac _ 0.3.
+	window := (SystemWindow labelled: 'later') model: self.
+	hSepFrac := 0.3.
 	window 
 		addMorph: ((PluggableListMorph on: self list: #messageCatListSingleton
 			selected: #indexIsOne changeSelected: #indexIsOne:

@@ -1,0 +1,2 @@
+newTextInterval
+	^newTextInterval

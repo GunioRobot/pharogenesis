@@ -5,7 +5,7 @@ contents: aString notifying: aController
 
 	| category selector class oldSelector |
 	self okayToAccept ifFalse: [^ false].
-	self setClassAndSelectorIn: [:c :os | class _ c.  oldSelector _ os].
+	self setClassAndSelectorIn: [:c :os | class := c.  oldSelector := os].
 	class ifNil: [^ false].
 	(oldSelector ~~ nil and: [oldSelector first isUppercase]) ifTrue:
 		[oldSelector = #Comment ifTrue:
@@ -25,14 +25,14 @@ contents: aString notifying: aController
 			[self inform: 'To change the hierarchy, edit the class definitions'. 
 			^ false]].
 	"Normal method accept"
-	category _ class organization categoryOfElement: oldSelector.
-	selector _ class compile: aString
+	category := class organization categoryOfElement: oldSelector.
+	selector := class compile: aString
 				classified: category
 				notifying: aController.
 	selector == nil ifTrue: [^ false].
 	self noteAcceptanceOfCodeFor: selector.
 	selector == oldSelector ifFalse:
 		[self reformulateListNoting: selector].
-	contents _ aString copy.
+	contents := aString copy.
 	self changed: #annotation.
 	^ true

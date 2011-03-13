@@ -1,0 +1,2 @@
+isEnabled
+	^ self isEnabledFor: nil

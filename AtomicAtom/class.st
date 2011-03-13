@@ -1,1 +1,0 @@
-AtomicAtom class instanceVariableNames: ''

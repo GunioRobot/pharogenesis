@@ -1,2 +1,0 @@
-headLightIsOn
-	^(headLightStatus = #on)

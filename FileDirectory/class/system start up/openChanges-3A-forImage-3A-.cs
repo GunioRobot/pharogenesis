@@ -5,26 +5,26 @@ b) the DefaultDirectory (which will normally be the directory derived from the i
 If an old file is not found in either place, check for a read-only file in the same places. If that fails, return nil"
 	| changes fd |
 	"look for the changes file or an alias to it in the image directory"
-	fd _ FileDirectory on: (FileDirectory dirPathFor: imageName).
+	fd := FileDirectory on: (FileDirectory dirPathFor: imageName).
 	(fd fileExists: changesName)
-		ifTrue: [changes _ fd oldFileNamed: changesName].
+		ifTrue: [changes := fd oldFileNamed: changesName].
 	changes ifNotNil:[^changes].
 
 	"look for the changes in the default directory"
-	fd _ DefaultDirectory.
+	fd := DefaultDirectory.
 	(fd fileExists: changesName)
-		ifTrue: [changes _ fd oldFileNamed: changesName].
+		ifTrue: [changes := fd oldFileNamed: changesName].
 	changes ifNotNil:[^changes].
 
 	"look for read-only changes in the image directory"
-	fd _ FileDirectory on: (FileDirectory dirPathFor: imageName).
+	fd := FileDirectory on: (FileDirectory dirPathFor: imageName).
 	(fd fileExists: changesName)
-		ifTrue: [changes _ fd readOnlyFileNamed: changesName].
+		ifTrue: [changes := fd readOnlyFileNamed: changesName].
 	changes ifNotNil:[^changes].
 
 	"look for read-only changes in the default directory"
-	fd _ DefaultDirectory.
+	fd := DefaultDirectory.
 	(fd fileExists: changesName)
-		ifTrue: [changes _ fd readOnlyFileNamed: changesName].
+		ifTrue: [changes := fd readOnlyFileNamed: changesName].
 	"this may be nil if the last try above failed to open a file"
 	^changes

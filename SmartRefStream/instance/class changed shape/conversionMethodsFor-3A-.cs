@@ -11,4 +11,4 @@ conversionMethodsFor: classList
 		list add: cls name, ' convertToCurrentVersion:refStream:'.
 		].
 
-	^ MessageSet new initializeMessageList: list.
+	^list.

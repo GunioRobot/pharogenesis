@@ -1,2 +1,0 @@
-setBigTest
-	smallTest _ false

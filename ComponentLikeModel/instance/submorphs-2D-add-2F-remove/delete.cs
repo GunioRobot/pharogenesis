@@ -4,7 +4,7 @@ delete
 	(model isKindOf: Component) ifTrue: [^self deleteComponent].
 	(model isMorphicModel) ifFalse: [^super delete].
 	slotName ifNotNil: 
-			[(PopUpMenu confirm: 'Shall I remove the slot ' , slotName 
+			[(self confirm: 'Shall I remove the slot ' , slotName 
 						, '
 	along with all associated methods?') 
 				ifTrue: 
@@ -13,7 +13,7 @@ delete
 					(model class instVarNames includes: slotName) 
 						ifTrue: [model class removeInstVarName: slotName]]
 				ifFalse: 
-					[(PopUpMenu 
+					[(self 
 						confirm: '...but should I at least dismiss this morph?
 	[choose no to leave everything unchanged]') 
 							ifFalse: [^self]]].

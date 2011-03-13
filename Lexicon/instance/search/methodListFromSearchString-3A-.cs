@@ -2,14 +2,14 @@ methodListFromSearchString: fragment
 	"Answer a method list of methods whose selectors match the given fragment"
 
 	|  aList searchFor |
-	currentQueryParameter _ fragment.
-	currentQuery _ #selectorName.
-	autoSelectString _ fragment.
-	searchFor _ fragment asString asLowercase withBlanksTrimmed.
+	currentQueryParameter := fragment.
+	currentQuery := #selectorName.
+	autoSelectString := fragment.
+	searchFor := fragment asString asLowercase withBlanksTrimmed.
 
-	aList _ targetClass allSelectors select:
+	aList := targetClass allSelectors select:
 		[:aSelector | currentVocabulary includesSelector: aSelector forInstance: self targetObject ofClass: targetClass limitClass: limitClass].
 	searchFor size > 0 ifTrue:
-		[aList _ aList select:
+		[aList := aList select:
 			[:aSelector | aSelector includesSubstring: searchFor caseSensitive: false]].
 	^ aList asSortedArray

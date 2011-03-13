@@ -1,0 +1,1 @@
+SpaceTallyItem class instanceVariableNames: ''

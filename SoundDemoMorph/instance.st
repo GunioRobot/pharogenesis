@@ -1,6 +1,6 @@
 AlignmentMorph
 	subclass: #SoundDemoMorph
-	instanceVariableNames: 'soundColumn '
+	instanceVariableNames: 'soundColumn'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Sound-Interface'
+	category: 'MorphicExtras-SoundInterface'

@@ -1,12 +1,4 @@
-I am experimental phoneme recognizer. My approach to phoneme recognition is fairly crude, but the goal is not full speech recognition, but merely a close enough approximation to drive the mouth of an animated character from speech input.
-
-How it works:
-
-The phoneme recognizer has a collection of phoneme examples that were recorded in advance. Each of these phomemes has a "features vector" that describes that phoneme. Currently, feature vectors are basically a simplified version of the frequency spectrum measuring the sound energy in about two dozen frequency bands up to around 4000 Hz. The exact parameters are described in the class initialization method of PhonemeRecord and can be tweaked.
-
-To do phoneme recognition, a short window of sound is analyzed via FFT, and its feature vector is extracted. This feature vector is then compared to the feature vectors of all phonemes in the example set. The phoneme that matches most closely is considered the currently sounding phoneme. This phoneme's name is presented in the PhonemeRecognizer display. On a reasonably fast machine, the current phoneme can be watched by a program and used to drive real-time mouth animation . This phoneme matching approach is similar to some of the earliest speech recognition work. However, current speech recognition software is generally driven by features derived from a linear predictive or vocal tract model of speech, rather than the raw spectrum data.
-
-How to Use It
+I provide a morph for controlling a phoneme recognizer.
 
 The first step is to plan how many different mouth positions will be used by the animation, and which phonemes map to which mouth positions. Traditional animators might draw four mouth positions for vowels and four to six for consonants.
 
@@ -18,4 +10,4 @@ A phoneme can be reviewed with the "play phoneme" menu command. If it contains n
 
 Once you have recorded your phoneme examples, you can try them by clicking the "run" button and speaking into the microphone. You should see the phoneme display update to report the current match. The "match sound file" menu command can be used to analyze an entire AIFF or a WAV sound file at once. The resulting phoneme stream is currently reported by opening an inspector on the phoneme list. There is one phoneme in this list for each 1/24th of a second window of sound in the sound file.
 
-To allow use of the phoneme recognizer in tile scripts, the "mouth position tile" menu command creates a tile that reports the current phonemes mouth position index. This can be used to set the cursor of a holder containing the set of mouth position drawings. A two-line tile script can thus drive the mouth of an animated character.
+To allow use of the phoneme recognizer in tile scripts, the "mouth position tile" menu command creates a tile that reports the current phonemes mouth position index. This can be used to set the cursor of a holder containing the set of mouth position drawings. A two-line tile script can thus drive the mouth of an animated character. On a reasonably fast machine, the current phoneme can be watched by a program and used to drive real-time mouth animation.

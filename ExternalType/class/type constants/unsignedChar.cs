@@ -1,2 +1,0 @@
-unsignedChar
-	^AtomicTypes at: 'char'

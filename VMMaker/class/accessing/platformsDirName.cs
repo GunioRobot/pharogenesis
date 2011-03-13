@@ -1,2 +1,0 @@
-platformsDirName
-	^DirNames at: #platformsDir

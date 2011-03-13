@@ -1,1 +1,0 @@
-an instance keeps a spacial point, a surface normal at that spacial point, and optionally its color and the texture coordinates. Instances are used in B3DSimpleMeshFace to form polygons.

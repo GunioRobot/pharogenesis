@@ -1,4 +1,0 @@
-printPSToFile
-	
-	self printPSToFileNamed: 'MyMorph'
-

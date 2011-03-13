@@ -1,2 +1,0 @@
-openView
-	^self openAsMorph

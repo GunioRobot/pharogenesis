@@ -1,7 +1,7 @@
 Canvas
 	subclass: #PostscriptCanvas
 	instanceVariableNames:
-		'origin clipRect currentColor currentFont morphLevel gstateStack fontMap usedFonts psBounds topLevelMorph initialScale savedMorphExtent currentTransformation '
-	classVariableNames: ''
+		'origin clipRect currentColor shadowColor currentFont morphLevel gstateStack fontMap usedFonts psBounds topLevelMorph initialScale savedMorphExtent currentTransformation printSpecs pages'
+	classVariableNames: 'FontMap'
 	poolDictionaries: ''
-	category: 'Morphic-Postscript Canvases'
+	category: 'MorphicExtras-Postscript Canvases'

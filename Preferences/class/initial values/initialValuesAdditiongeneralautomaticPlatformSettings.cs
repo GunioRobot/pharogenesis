@@ -1,2 +1,0 @@
-initialValuesAdditiongeneralautomaticPlatformSettings
-	^ #((automaticPlatformSettings true (general ) ) )

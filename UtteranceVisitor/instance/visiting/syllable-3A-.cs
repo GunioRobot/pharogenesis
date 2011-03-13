@@ -1,2 +1,2 @@
 syllable: aSyllable
-	syllable _ aSyllable
+	syllable := aSyllable

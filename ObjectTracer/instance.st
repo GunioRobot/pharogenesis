@@ -1,6 +1,6 @@
-nil
+ProtoObject
 	subclass: #ObjectTracer
-	instanceVariableNames: 'tracedObject recursionFlag '
+	instanceVariableNames: 'tracedObject recursionFlag'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Kernel-Objects'

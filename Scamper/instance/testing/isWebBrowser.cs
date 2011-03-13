@@ -1,2 +1,0 @@
-isWebBrowser
-	^true

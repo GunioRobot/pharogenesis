@@ -1,0 +1,2 @@
+isInTypeRun
+	^beginTypeInBlock ~~ nil

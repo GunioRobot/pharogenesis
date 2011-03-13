@@ -1,6 +1,6 @@
 PluggableTextMorph
 	subclass: #PluggableTextMorphWithModel
-	instanceVariableNames: 'myContents '
+	instanceVariableNames: 'myContents'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Windows'
+	category: 'Morphic-Pluggable Widgets'

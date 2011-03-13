@@ -3,6 +3,6 @@ readFromFile: fileName mergeIfStereo: mergeFlag skipDataChunk: skipDataFlag
 	"AIFFFileReader new readFromFile: 'test.aiff' mergeIfStereo: false skipDataChunk: true"
 
 	| f |
-	f _ (FileStream readOnlyFileNamed: fileName) binary.
+	f := (FileStream readOnlyFileNamed: fileName) binary.
 	self readFromStream: f mergeIfStereo: mergeFlag skipDataChunk: skipDataFlag.
 	f close.

@@ -1,2 +1,0 @@
-doSensor: aVRMLNode
-	^self

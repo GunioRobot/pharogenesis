@@ -3,7 +3,7 @@ addInstVarName: aString
 	^(ClassBuilder new)
 		name: self name
 		inEnvironment: self environment
-		subclassOf: superclass
+		subclassOf: self superclass
 		type: self typeOfClass
 		instanceVariableNames: self instanceVariablesString, ' ', aString
 		classVariableNames: self classVariablesString

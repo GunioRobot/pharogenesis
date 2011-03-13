@@ -1,0 +1,1 @@
+PCCByLiteralsTest class instanceVariableNames: ''

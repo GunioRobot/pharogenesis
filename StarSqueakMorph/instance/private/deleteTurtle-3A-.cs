@@ -1,4 +1,4 @@
 deleteTurtle: aTurtle
 	"Delete the given turtle from this world."
 
-	turtles _ turtles copyWithout: aTurtle.
+	turtles := turtles copyWithout: aTurtle.

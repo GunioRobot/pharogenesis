@@ -1,2 +1,0 @@
-trackAmbientColor
-	^vertexBuffer trackAmbientColor

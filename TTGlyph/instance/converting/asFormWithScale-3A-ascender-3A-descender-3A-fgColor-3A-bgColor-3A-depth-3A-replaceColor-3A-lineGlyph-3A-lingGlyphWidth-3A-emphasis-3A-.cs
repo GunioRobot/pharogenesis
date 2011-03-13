@@ -1,9 +1,9 @@
 asFormWithScale: scale ascender: ascender descender: descender fgColor: fgColor bgColor: bgColor depth: depth replaceColor: replaceColorFlag lineGlyph: lineGlyph lingGlyphWidth: lWidth emphasis: code
 
 	| form canvas newScale |
-	form _ Form extent: (advanceWidth @ (ascender - descender) * scale) rounded depth: depth.
+	form := Form extent: (advanceWidth @ (ascender - descender) * scale) rounded depth: depth.
 	form fillColor: bgColor.
-	canvas _ BalloonCanvas on: form.
+	canvas := BalloonCanvas on: form.
 	canvas aaLevel: 4.
 	canvas transformBy: (MatrixTransform2x3 withScale: scale asPoint * (1 @ -1)).
 	canvas transformBy: (MatrixTransform2x3 withOffset: 0 @ ascender negated).
@@ -13,7 +13,7 @@ asFormWithScale: scale ascender: ascender descender: descender fgColor: fgColor 
 		borderWidth: 0 
 		borderColor: fgColor.
 	((code bitAnd: 4) ~= 0 or: [(code bitAnd: 16) ~= 0]) ifTrue: [
-		newScale _ (form width + 1) asFloat / lineGlyph calculateWidth asFloat.
+		newScale := (form width + 1) asFloat / lineGlyph calculateWidth asFloat.
 		canvas transformBy: (MatrixTransform2x3 withScale: (newScale / scale)@1.0).
 
 		(code bitAnd: 4) ~= 0 ifTrue: [

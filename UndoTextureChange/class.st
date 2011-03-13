@@ -1,1 +1,0 @@
-UndoTextureChange class instanceVariableNames: ''

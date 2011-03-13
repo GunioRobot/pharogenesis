@@ -8,4 +8,4 @@ processAllAtTick: scoreTick
 	self isDone ifTrue: [
 		repeat
 			ifTrue: [self reset]
-			ifFalse: [done _ true]].
+			ifFalse: [done := true]].

@@ -1,7 +1,7 @@
 buildCommentSwitchView
 
 	| aSwitchView |
-	aSwitchView _ PluggableButtonView
+	aSwitchView := PluggableButtonView
 		on: self
 		getState: #classCommentIndicated
 		action: #plusButtonHit.

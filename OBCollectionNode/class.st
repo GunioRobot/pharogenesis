@@ -1,0 +1,1 @@
+OBCollectionNode class instanceVariableNames: ''

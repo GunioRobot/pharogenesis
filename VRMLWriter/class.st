@@ -1,1 +1,0 @@
-VRMLWriter class instanceVariableNames: ''

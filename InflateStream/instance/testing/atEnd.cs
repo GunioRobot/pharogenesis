@@ -9,5 +9,5 @@ atEnd
 	will never move data to the beginning of the buffer it is safe to
 	skip back the read position afterwards"
 	self next == nil ifTrue:[^true].
-	position _ position - 1.
+	position := position - 1.
 	^false

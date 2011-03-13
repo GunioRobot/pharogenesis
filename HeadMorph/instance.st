@@ -1,6 +1,6 @@
 EllipseMorph
 	subclass: #HeadMorph
-	instanceVariableNames: 'face queue '
+	instanceVariableNames: 'face queue'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Speech-Gestures'

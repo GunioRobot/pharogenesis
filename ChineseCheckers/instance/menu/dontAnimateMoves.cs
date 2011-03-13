@@ -1,3 +1,0 @@
-dontAnimateMoves
-
-	animateMoves _ false

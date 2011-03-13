@@ -1,2 +1,0 @@
-pointLightClass
-	^self specAt: #pointLight

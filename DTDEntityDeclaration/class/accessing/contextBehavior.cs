@@ -1,2 +1,0 @@
-contextBehavior
-	^contextBehavior

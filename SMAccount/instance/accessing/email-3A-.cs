@@ -1,2 +1,2 @@
 email: address
-	email _ address
+	email := address

@@ -1,3 +1,3 @@
 beginStats
 
-	SentTypesAndSizes _ Dictionary new.
+	SentTypesAndSizes := Dictionary new.

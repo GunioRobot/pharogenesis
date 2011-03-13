@@ -1,2 +1,0 @@
-destination
-	^self symmetric origin

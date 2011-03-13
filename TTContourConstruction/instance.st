@@ -1,6 +1,6 @@
 Object
 	subclass: #TTContourConstruction
-	instanceVariableNames: 'points '
+	instanceVariableNames: 'points'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon-TrueType Support'
+	category: 'TrueType-Support'

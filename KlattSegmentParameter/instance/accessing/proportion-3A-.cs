@@ -1,2 +1,2 @@
 proportion: aNumber
-	proportion _ aNumber
+	proportion := aNumber

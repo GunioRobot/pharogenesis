@@ -1,2 +1,0 @@
-popMaterial
-	^shader popMaterial.

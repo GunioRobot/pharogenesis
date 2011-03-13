@@ -1,2 +1,2 @@
 samplingRate: aNumber
-	samplingRate _ aNumber
+	samplingRate := aNumber

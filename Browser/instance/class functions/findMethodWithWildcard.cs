@@ -8,7 +8,7 @@ findMethodWithWildcard
 	selectors := aClass selectors asSortedArray.
 	selectors isEmpty ifTrue: [self inform: aClass name, ' has no methods.'. ^ self].
 
-	reply := FillInTheBlank request: 'Enter partial method name:'.
+	reply := UIManager default request: 'Enter partial method name:'.
 	(reply isNil or: [reply isEmpty])
 		ifTrue: [^self].
 	(reply includes: $*)

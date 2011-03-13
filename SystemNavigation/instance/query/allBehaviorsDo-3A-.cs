@@ -1,6 +1,6 @@
 allBehaviorsDo: aBlock 
 	"Evaluate the argument, aBlock, for each kind of Behavior in the system 
-	(that is, Object and its subclasses).
+	(that is, Object and its subclasses and Traits).
 	ar 7/15/1999: The code below will not enumerate any obsolete or anonymous
 	behaviors for which the following should be executed:
 
@@ -19,3 +19,6 @@ allBehaviorsDo: aBlock
 			["Enumerate the non-meta class and its subclasses"
 			aBlock value: aClass soleInstance.
 			aClass soleInstance allSubclassesDoGently: aBlock]].
+	
+	Trait allInstances , ClassTrait allInstances do: [:trait |
+		aBlock value: trait]

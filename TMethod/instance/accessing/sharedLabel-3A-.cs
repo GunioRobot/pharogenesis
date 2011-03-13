@@ -1,2 +1,0 @@
-sharedLabel: aString
-	sharedLabel := aString

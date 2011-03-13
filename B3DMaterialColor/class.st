@@ -1,1 +1,0 @@
-B3DMaterialColor class instanceVariableNames: ''

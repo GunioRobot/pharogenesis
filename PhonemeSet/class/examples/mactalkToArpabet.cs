@@ -3,7 +3,7 @@ mactalkToArpabet
 	as keys and ARPAbet phonemes as values."
 
 	| answer |
-	answer _ Dictionary new.
+	answer := Dictionary new.
 	#(	
 		('IY'	'iy')
 		('IH'	'ih')

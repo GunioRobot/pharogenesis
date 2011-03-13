@@ -1,3 +1,3 @@
 resetStats
-	Times _ WordArray new: 10.
-	Counts _ WordArray new: 10.
+	Times := WordArray new: 10.
+	Counts := WordArray new: 10.

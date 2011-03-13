@@ -1,6 +1,6 @@
 Morph
 	subclass: #TransferMorphAnimation
-	instanceVariableNames: 'transferMorph '
+	instanceVariableNames: 'transferMorph'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Support'

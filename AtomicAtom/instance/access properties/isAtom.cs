@@ -1,2 +1,0 @@
-isAtom
-	^ true

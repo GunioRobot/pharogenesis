@@ -2,14 +2,14 @@ popTest
 	"SimpleClientSocket popTest"
 
 	| addr userName userPassword s msgs header |
-	addr _ NetNameResolver promptUserForHostAddress.
-	userName _ FillInTheBlank
+	addr := NetNameResolver promptUserForHostAddress.
+	userName := UIManager default
 		request: 'What is your email name?'
 		initialAnswer: 'johnm'.
-	userPassword _ FillInTheBlank
+	userPassword := UIManager default
 		request: 'What is your email password?'.
 
-	s _ OldSimpleClientSocket new.
+	s := OldSimpleClientSocket new.
 	Transcript show: '---------- Connecting ----------'; cr.
 	s connectTo: addr port: 110.  "110 is the POP3 port number"
 	s waitForConnectionUntil: self standardDeadline.
@@ -21,11 +21,11 @@ popTest
 	s sendCommand: 'LIST'.
 
 	"the following should be tweaked to handle an empy mailbox:"
-	msgs _ self parseIntegerList: s getMultilineResponse.
+	msgs := self parseIntegerList: s getMultilineResponse.
 
 	1 to: (msgs size min: 5) do: [ :i |
 		s sendCommand: 'TOP ', (msgs at: i) printString, ' 0'.
-		header _ s getMultilineResponse.
+		header := s getMultilineResponse.
 		Transcript show: (self extractDateFromAndSubjectFromHeader: header); cr].
 
 	msgs size > 0 ifTrue: [

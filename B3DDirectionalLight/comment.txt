@@ -1,9 +1,0 @@
-This light has a color and a direction. The position of the light source is at infinity; the light rays are parallel. The intensity of such a light does not diminish with increasing distance. Three differently colored directional lights from different directions are often a good initial choice to color a scene with lights.
-
-Creation of a directional light:
-
-    light := B3DDirectionalLight new.
-    light direction: 10 @ 0 @ 10.	
-    light lightColor: (B3DMaterialColor color: (Color r: 0.1 g: 0.2 b: 0.0)).
-    scene lights add: light.
-

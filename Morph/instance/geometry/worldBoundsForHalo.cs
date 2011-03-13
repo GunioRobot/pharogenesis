@@ -6,5 +6,5 @@ worldBoundsForHalo
 	r _ (Preferences haloEnclosesFullBounds)
 		ifFalse: [ self boundsIn: nil ]
 		ifTrue: [ self fullBoundsInWorld ].
-	Preferences showBoundsInHalo ifTrue: [ ^r outsetBy: 1 ].
+	Preferences showBoundsInHalo ifTrue: [ ^r outsetBy: 2 ].
 	^r

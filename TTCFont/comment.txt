@@ -8,3 +8,4 @@ Structure:
  foregroundColor	Color -- So far, this font need to know the glyph color in cache.
  cache			WeakArray of <Color -> <Array(256) of glyph>>
  derivatives		Array -- stores the fonts in the same family but different emphasis.
+ ascent Number -- The height of the font above the baseline. Cached.

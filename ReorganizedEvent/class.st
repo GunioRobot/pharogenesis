@@ -1,0 +1,1 @@
+ReorganizedEvent class instanceVariableNames: ''

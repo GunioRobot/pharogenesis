@@ -1,6 +1,6 @@
 Set
 	subclass: #WeakSet
-	instanceVariableNames: 'flag '
+	instanceVariableNames: 'flag'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Collections-Weak'

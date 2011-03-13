@@ -1,2 +1,0 @@
-isListItem
-	^true

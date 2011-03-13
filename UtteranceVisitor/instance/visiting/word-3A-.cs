@@ -1,4 +1,4 @@
 word: aWord
-	word _ aWord.
+	word := aWord.
 	word syllables do: [ :each | each accept: self].
-	syllable _ nil
+	syllable := nil

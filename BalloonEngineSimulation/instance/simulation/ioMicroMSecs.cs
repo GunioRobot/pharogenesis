@@ -1,2 +1,0 @@
-ioMicroMSecs
-	^Time millisecondClockValue

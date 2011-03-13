@@ -3,9 +3,9 @@ viewGZipContents
 
 	| stringContents |
 	self binary.
-	stringContents _ self contentsOfEntireFile.
-	Cursor wait showWhile: [stringContents _ (GZipReadStream on: stringContents) upToEnd].
-	stringContents _ stringContents asString withSqueakLineEndings.
+	stringContents := self contentsOfEntireFile.
+	Cursor wait showWhile: [stringContents := (GZipReadStream on: stringContents) upToEnd].
+	stringContents := stringContents asString withSqueakLineEndings.
 
 	Workspace new
 		contents: stringContents;

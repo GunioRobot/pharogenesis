@@ -1,6 +1,6 @@
 Object
 	subclass: #ParseStack
-	instanceVariableNames: 'position length '
+	instanceVariableNames: 'position length'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Compiler'
+	category: 'Compiler-Support'

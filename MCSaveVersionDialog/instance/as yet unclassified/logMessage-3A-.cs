@@ -1,3 +1,3 @@
 logMessage: aString
-	message _ aString.
+	message := aString.
 	self changed: #logMessage

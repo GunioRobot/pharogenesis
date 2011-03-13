@@ -1,6 +1,14 @@
 addDefinition: aDefinition
 	index
 		definitionLike: aDefinition
-		ifPresent: [:other | other = aDefinition
-								ifFalse: [self addConflictWithOperation: (MCModification of: other to: aDefinition)]]
+		ifPresent: [:other |
+			(self removalForDefinition: aDefinition)
+				ifNotNilDo:
+					[:op |
+					self addOperation: (MCModification of: other to: aDefinition).
+					self removeOperation: op.
+					^ self].
+			other = aDefinition
+				ifFalse: [self addConflictWithOperation: (MCModification of: other to: aDefinition)]
+				ifTrue: [self redundantAdds add: aDefinition]]
 		ifAbsent: [self addOperation: (MCAddition of: aDefinition)]

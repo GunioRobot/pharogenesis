@@ -1,3 +1,0 @@
-preferredMines
-
-	^ 99

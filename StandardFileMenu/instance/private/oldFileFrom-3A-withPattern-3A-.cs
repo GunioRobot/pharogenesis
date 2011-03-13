@@ -1,5 +1,5 @@
 oldFileFrom: aDirectory withPattern: aPattern
 
-	canTypeFileName _ false.
-	pattern _ aPattern.
+	canTypeFileName := false.
+	pattern := {aPattern}.
 	^self makeFileMenuFor: aDirectory

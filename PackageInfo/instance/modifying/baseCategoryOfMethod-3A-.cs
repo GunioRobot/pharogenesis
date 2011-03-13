@@ -1,14 +1,14 @@
 baseCategoryOfMethod: aMethodReference
 	| oldCat oldPrefix tokens | 
-	oldCat _ aMethodReference category.
-	({ 'as yet unclassified'. 'all' } includes: oldCat) ifTrue: [ oldCat _ '' ].
-	tokens _ oldCat findTokens: '*-' keep: '*'.
+	oldCat := aMethodReference category.
+	({ 'as yet unclassified'. 'all' } includes: oldCat) ifTrue: [ oldCat := '' ].
+	tokens := oldCat findTokens: '*-' keep: '*'.
 
 	"Strip off any old prefixes"
 	((tokens at: 1 ifAbsent: [ '' ]) = '*') ifTrue: [
 		[ ((tokens at: 1 ifAbsent: [ '' ]) = '*') ]
 			whileTrue: [ tokens removeFirst ].
-		oldPrefix _ tokens removeFirst asLowercase.
+		oldPrefix := tokens removeFirst asLowercase.
 		[ (tokens at: 1 ifAbsent: [ '' ]) asLowercase = oldPrefix ]
 			whileTrue: [ tokens removeFirst ].
 	].

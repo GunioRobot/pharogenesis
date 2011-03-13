@@ -1,7 +1,7 @@
 Object
 	subclass: #ChangeSet
 	instanceVariableNames:
-		'name preamble postscript revertable isolationSet isolatedProject changeRecords structures superclasses '
-	classVariableNames: ''
+		'name preamble postscript revertable isolationSet isolatedProject changeRecords structures superclasses'
+	classVariableNames: 'AllChangeSets PreviousSet'
 	poolDictionaries: ''
-	category: 'Tools-Changes'
+	category: 'System-Changes'

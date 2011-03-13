@@ -1,2 +1,0 @@
-initialValuesAdditionscriptingcapitalizedReferences
-	^ #((capitalizedReferences false (scripting ) ) )

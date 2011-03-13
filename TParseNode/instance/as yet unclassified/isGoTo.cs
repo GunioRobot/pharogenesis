@@ -1,3 +1,0 @@
-isGoTo
-
-	^false

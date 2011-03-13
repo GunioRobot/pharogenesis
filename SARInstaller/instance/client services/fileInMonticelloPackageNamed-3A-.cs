@@ -4,12 +4,12 @@ fileInMonticelloPackageNamed: memberName
 
 	| member file mcPackagePanel mcRevisionInfo mcSnapshot mcFilePackageManager mcPackage info snapshot newCS mcBootstrap |
 
-	mcPackagePanel _ Smalltalk at: #MCPackagePanel ifAbsent: [ ].
-	mcRevisionInfo _ Smalltalk at: #MCRevisionInfo ifAbsent: [ ].
-	mcSnapshot _ Smalltalk at: #MCSnapshot ifAbsent: [ ].
-	mcFilePackageManager _ Smalltalk at: #MCFilePackageManager ifAbsent: [ ].
-	mcPackage _ Smalltalk at: #MCPackage ifAbsent: [ ].
-	member _ self memberNamed: memberName.
+	mcPackagePanel := Smalltalk at: #MCPackagePanel ifAbsent: [ ].
+	mcRevisionInfo := Smalltalk at: #MCRevisionInfo ifAbsent: [ ].
+	mcSnapshot := Smalltalk at: #MCSnapshot ifAbsent: [ ].
+	mcFilePackageManager := Smalltalk at: #MCFilePackageManager ifAbsent: [ ].
+	mcPackage := Smalltalk at: #MCPackage ifAbsent: [ ].
+	member := self memberNamed: memberName.
 	member ifNil: [ ^self errorNoSuchMember: memberName ].
 
 	"We are missing MCInstaller, Monticello and/or MonticelloCVS.
@@ -26,22 +26,22 @@ Load it from SqueakMap?'))
 				ifFalse: [ ^false ] ].
 
 	member extractToFileNamed: member localFileName inDirectory: self directory.
-	file _ (Smalltalk at: #MCFile)
+	file := (Smalltalk at: #MCFile)
 				name: member localFileName
 				directory: self directory.
 
 	self class withCurrentChangeSetNamed: file name do: [ :cs |
-		newCS _ cs.
+		newCS := cs.
 		file readStreamDo: [ :stream |
-			info _ mcRevisionInfo readFrom: stream nextChunk.
-			snapshot _ mcSnapshot fromStream: stream ].
+			info := mcRevisionInfo readFrom: stream nextChunk.
+			snapshot := mcSnapshot fromStream: stream ].
 			snapshot install.
 			(mcFilePackageManager forPackage:
 				(mcPackage named: info packageName))
 					file: file
 		].
 
-	newCS isEmpty ifTrue: [ ChangeSorter removeChangeSet: newCS ].
+	newCS isEmpty ifTrue: [ ChangeSet removeChangeSet: newCS ].
 
 	mcPackagePanel allSubInstancesDo: [ :ea | ea refresh ].
 	World doOneCycle.

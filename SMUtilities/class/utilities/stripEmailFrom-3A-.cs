@@ -5,11 +5,11 @@ stripEmailFrom: aString
 	(case insensitive) will be filtered out."
 
 	| lessThan moreThan email pos |
-	lessThan _ aString indexOf: $<.
-	moreThan _ aString indexOf: $>.
+	lessThan := aString indexOf: $<.
+	moreThan := aString indexOf: $>.
 	(lessThan * moreThan = 0) ifTrue: [^ aString].
-	email _ (aString copyFrom: lessThan + 1 to: moreThan - 1) asLowercase.
+	email := (aString copyFrom: lessThan + 1 to: moreThan - 1) asLowercase.
 	#('no_spam' 'no_canned_ham' 'spam_block') do: [:block |
-		pos _ email findString: block.
-		pos = 0 ifFalse:[email _ (email copyFrom: 1 to: pos - 1), (email copyFrom: pos + block size to: email size)]].
+		pos := email findString: block.
+		pos = 0 ifFalse:[email := (email copyFrom: 1 to: pos - 1), (email copyFrom: pos + block size to: email size)]].
 	^email

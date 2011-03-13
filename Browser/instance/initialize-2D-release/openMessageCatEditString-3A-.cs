@@ -4,11 +4,11 @@ openMessageCatEditString: aString
 
         self couldOpenInMorphic ifTrue: [^ self openAsMorphMsgCatEditing: aString].
 
-        topView _ (StandardSystemView new) model: self.
+        topView := (StandardSystemView new) model: self.
         topView borderWidth: 1.
                 "label and minSize taken care of by caller"
 
-        messageCategoryListView _ PluggableListView on: self
+        messageCategoryListView := PluggableListView on: self
                 list: #messageCatListSingleton
                 selected: #indexIsOne 
                 changeSelected: #indexIsOne:
@@ -16,7 +16,7 @@ openMessageCatEditString: aString
         messageCategoryListView window: (0 @ 0 extent: 200 @ 12).
         topView addSubView: messageCategoryListView.
 
-        messageListView _ PluggableListView on: self
+        messageListView := PluggableListView on: self
                 list: #messageList
                 selected: #messageListIndex
                 changeSelected: #messageListIndex:
@@ -28,25 +28,25 @@ openMessageCatEditString: aString
 
         self wantsAnnotationPane
                 ifTrue:
-                        [annotationPane _ PluggableTextView on: self
+                        [annotationPane := PluggableTextView on: self
                                 text: #annotation accept: nil
                                 readSelection: nil menu: nil.
                         annotationPane window: (0@0 extent: 200@self optionalAnnotationHeight).
                         topView addSubView: annotationPane below: messageListView.
-                        underPane _ annotationPane.
-                        y _ (200 - 12 - 70) - self optionalAnnotationHeight]
+                        underPane := annotationPane.
+                        y := (200 - 12 - 70) - self optionalAnnotationHeight]
                 ifFalse:
-                        [underPane _ messageListView.
-                        y _ (200 - 12 - 70)].
+                        [underPane := messageListView.
+                        y := (200 - 12 - 70)].
 
         self wantsOptionalButtons ifTrue:
-                [optionalButtonsView _ self buildOptionalButtonsView.
+                [optionalButtonsView := self buildOptionalButtonsView.
                 optionalButtonsView borderWidth: 1.
                 topView addSubView: optionalButtonsView below: underPane.
-                underPane _ optionalButtonsView.
-                y _ y - self optionalButtonHeight].
+                underPane := optionalButtonsView.
+                y := y - self optionalButtonHeight].
 
-        browserCodeView _ MvcTextEditor default on: self 
+        browserCodeView := MvcTextEditor default on: self 
                         text: #contents accept: #contents:notifying:
                         readSelection: #contentsSelection menu: #codePaneMenu:shifted:.
         browserCodeView window: (0@0 extent: 200@y).

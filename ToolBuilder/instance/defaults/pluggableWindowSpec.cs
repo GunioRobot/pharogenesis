@@ -1,0 +1,2 @@
+pluggableWindowSpec
+	^PluggableWindowSpec

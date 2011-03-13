@@ -14,3 +14,4 @@ veryDeepInner: deepCopier
 	successor _ successor.
 	backgroundColor _ backgroundColor veryDeepCopyWith: deepCopier.
 	margins _ margins veryDeepCopyWith: deepCopier.
+	editHistory _ editHistory veryDeepCopyWith: deepCopier.

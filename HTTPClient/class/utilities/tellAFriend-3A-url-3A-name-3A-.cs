@@ -7,12 +7,10 @@ tellAFriend: emailAddressOrNil url: urlForLoading name: projectName
 	HTTPClient shouldUsePluginAPI
 		ifTrue: [
 			self composeMailTo: recipient subject: subject body: body , (linkToInclude copyReplaceAll: '%' with: '%25')]
-		ifFalse: [Preferences allowCelesteTell
-			ifTrue: [FancyMailComposition new
+		ifFalse: [FancyMailComposition new
 				celeste: nil 
 				to: recipient
 				subject: subject
 				initialText: body
 				theLinkToInclude: linkToInclude;
-				open]
-			ifFalse: [self inform: 'You need to run inside a web browser to use the tell function.']]
+				open].

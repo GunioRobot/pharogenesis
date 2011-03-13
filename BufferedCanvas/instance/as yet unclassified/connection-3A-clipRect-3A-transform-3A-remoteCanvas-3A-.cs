@@ -1,4 +1,4 @@
 connection: connection clipRect: newClipRect transform: transform remoteCanvas: remoteCanvas
 
-	remote _ remoteCanvas.
-	lastTick _ 0.
+	remote := remoteCanvas.
+	lastTick := 0.

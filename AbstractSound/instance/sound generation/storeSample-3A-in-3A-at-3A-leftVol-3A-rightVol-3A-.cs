@@ -3,14 +3,14 @@ storeSample: sample in: aSoundBuffer at: sliceIndex leftVol: leftVol rightVol: r
 
 	| i s |
 		leftVol > 0 ifTrue: [
-			i _ (2 * sliceIndex) - 1.
-			s _ (aSoundBuffer at: i) + ((sample * leftVol) // ScaleFactor).
-			s >  32767 ifTrue: [s _  32767].  "clipping!"
-			s < -32767 ifTrue: [s _ -32767].  "clipping!"
+			i := (2 * sliceIndex) - 1.
+			s := (aSoundBuffer at: i) + ((sample * leftVol) // ScaleFactor).
+			s >  32767 ifTrue: [s :=  32767].  "clipping!"
+			s < -32767 ifTrue: [s := -32767].  "clipping!"
 			aSoundBuffer at: i put: s].
 		rightVol > 0 ifTrue: [
-			i _ 2 * sliceIndex.
-			s _ (aSoundBuffer at: i) + ((sample * rightVol) // ScaleFactor).
-			s >  32767 ifTrue: [s _  32767].  "clipping!"
-			s < -32767 ifTrue: [s _ -32767].  "clipping!"
+			i := 2 * sliceIndex.
+			s := (aSoundBuffer at: i) + ((sample * rightVol) // ScaleFactor).
+			s >  32767 ifTrue: [s :=  32767].  "clipping!"
+			s < -32767 ifTrue: [s := -32767].  "clipping!"
 			aSoundBuffer at: i put: s].

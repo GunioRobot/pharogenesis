@@ -21,8 +21,7 @@ printOn: aStream
 		ifNotNil: [aStream nextPutAll: ' [player = ' , player printString , '] '].
 	eventHandler
 		ifNotNil: [aStream nextPutAll: ' [eventHandler = ' , eventHandler printString , '] '].
-	(self hasOtherProperties not or: [ self otherProperties isEmpty ])
-		ifTrue: [^ self].
+	(otherProperties isNil or: [otherProperties isEmpty ]) ifTrue: [^ self].
 	aStream nextPutAll: ' [other: '.
 	self otherProperties
 		keysDo: [:aKey | aStream nextPutAll: ' (' , aKey , ' -> ' , (self otherProperties at: aKey) printString , ')'].

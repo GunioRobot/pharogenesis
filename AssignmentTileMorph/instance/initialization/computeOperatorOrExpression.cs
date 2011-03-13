@@ -10,6 +10,6 @@ computeOperatorOrExpression
 	(anInterface notNil and: [(doc _ anInterface documentation) notNil])
 		ifTrue:
 			[self setBalloonText: doc].
-	operatorReadoutString _ wording, ' ', aSuffix.
+	operatorReadoutString _ wording translated, ' ', aSuffix.
  	self line1: operatorReadoutString.
 	self addArrowsIfAppropriate

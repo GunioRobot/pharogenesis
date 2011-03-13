@@ -1,2 +1,0 @@
-allocationRateMax
-	^1

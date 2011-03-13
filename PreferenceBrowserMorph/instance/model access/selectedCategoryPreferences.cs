@@ -1,0 +1,2 @@
+selectedCategoryPreferences
+	^self model selectedCategoryPreferences

@@ -7,8 +7,10 @@ startGrow: evt with: growHandle
 	positionOffset _ (self world viewBox containsPoint: botRt)
 		ifTrue: [evt cursorPoint - botRt]
 		ifFalse: [0@0].
+
 	self setProperty: #commandInProgress toValue:
 		(Command new
-			cmdWording: 'resizing' translated;
-			undoTarget: target selector: #setExtentFromHalo: argument: target extent).
+			cmdWording: ('resize ' translated, target nameForUndoWording);
+			undoTarget: target renderedMorph selector: #setFlexExtentFromHalo: argument: target extent).
+
 	originalExtent _ target extent

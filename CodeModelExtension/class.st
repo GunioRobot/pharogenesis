@@ -1,0 +1,1 @@
+CodeModelExtension class instanceVariableNames: ''

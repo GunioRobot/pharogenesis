@@ -1,4 +1,5 @@
-getLink: aView
-	"Return a link for using on the web."
+getLink: aBuilder
+	"Return a link for using on the web.
+	Always from the top."
 
-	^aView linklocal: '/category/', id asString text: name
+	^aBuilder getLinkTop: 'category/', id asString text: name

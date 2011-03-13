@@ -1,0 +1,2 @@
+objectFromPasteBuffer
+	ActiveHand 	pasteMorph

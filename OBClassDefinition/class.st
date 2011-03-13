@@ -1,0 +1,1 @@
+OBClassDefinition class instanceVariableNames: ''

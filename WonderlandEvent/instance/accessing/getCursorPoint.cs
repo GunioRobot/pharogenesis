@@ -1,3 +1,0 @@
-getCursorPoint
-
-	^ cursorPoint.

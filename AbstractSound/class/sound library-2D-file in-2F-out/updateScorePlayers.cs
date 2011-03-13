@@ -5,6 +5,6 @@ updateScorePlayers
 	ScorePlayer allSubInstancesDo:
 		[:p | p pause].
 	SoundPlayer shutDown.
-	soundsBeingEdited _ EnvelopeEditorMorph allSubInstances collect: [:ed | ed soundBeingEdited].
+	soundsBeingEdited := EnvelopeEditorMorph allSubInstances collect: [:ed | ed soundBeingEdited].
 	ScorePlayerMorph allSubInstancesDo:
 		[:p | p updateInstrumentsFromLibraryExcept: soundsBeingEdited].

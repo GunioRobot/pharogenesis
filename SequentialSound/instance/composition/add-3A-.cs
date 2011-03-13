@@ -1,3 +1,3 @@
 add: aSound
 
-	sounds _ sounds copyWith: aSound.
+	sounds := sounds copyWith: aSound.

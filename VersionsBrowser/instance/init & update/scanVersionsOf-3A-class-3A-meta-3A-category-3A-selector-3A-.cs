@@ -3,7 +3,7 @@ scanVersionsOf: method class: class meta: meta category: category selector: sele
 	selectorOfMethod _ selector.
 	currentCompiledMethod _ method.
 	classOfMethod _ meta ifTrue: [class class] ifFalse: [class].
-	cat _ category.
+	cat _ category ifNil: [''].
 	changeList _ OrderedCollection new.
 	list _ OrderedCollection new.
 	self addedChangeRecord ifNotNilDo: [ :change |

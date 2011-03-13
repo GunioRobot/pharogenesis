@@ -1,0 +1,2 @@
+text
+	^ organizer asString

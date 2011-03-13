@@ -1,2 +1,2 @@
 updated: c
-	updated _ c
+	updated := c

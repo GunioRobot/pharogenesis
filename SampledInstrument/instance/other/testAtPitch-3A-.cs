@@ -2,7 +2,7 @@ testAtPitch: aPitch
 	"SampledInstrument testAtPitch: 'c4'"
 
 	| pattern |
-	pattern _ (#(
+	pattern := (#(
 		(c4 0.64 100) 
 		(c4 0.64 200) 
 		(c4 0.64 400) 

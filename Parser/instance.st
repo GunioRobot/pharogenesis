@@ -1,7 +1,7 @@
 Scanner
 	subclass: #Parser
 	instanceVariableNames:
-		'here hereType hereMark prevToken prevMark encoder requestor parseNode failBlock requestorOffset tempsMark doitFlag '
+		'here hereType hereMark hereEnd prevMark prevEnd encoder requestor parseNode failBlock requestorOffset tempsMark doitFlag properties category'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Compiler'
+	category: 'Compiler-Kernel'

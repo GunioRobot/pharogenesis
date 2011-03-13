@@ -6,6 +6,6 @@ cleanUpChanges
 	| projectChangeSetNames |
 
 	"Delete all changesets except those currently used by existing projects."
-	projectChangeSetNames _ Project allSubInstances collect: [:proj | proj changeSet name].
-	ChangeSorter removeChangeSetsNamedSuchThat:
+	projectChangeSetNames := Project allSubInstances collect: [:proj | proj changeSet name].
+	ChangeSet removeChangeSetsNamedSuchThat:
 		[:cs | (projectChangeSetNames includes: cs) not].

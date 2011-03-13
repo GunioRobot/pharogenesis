@@ -4,11 +4,11 @@ categoryWithNameIn: categoryNames thatIncludesSelector: aSelector forInstance: t
 	the category designated by the implementing class is acceptable it is the 
 	one returned"
 	| aClass catName result |
-	(aClass _ targetClass whichClassIncludesSelector: aSelector)
-		ifNotNil: [(categoryNames includes: (catName _ aClass whichCategoryIncludesSelector: aSelector))
+	(aClass := targetClass whichClassIncludesSelector: aSelector)
+		ifNotNil: [(categoryNames includes: (catName := aClass whichCategoryIncludesSelector: aSelector))
 				ifTrue: [catName ~~ #'as yet unclassified'
 						ifTrue: [^ catName]]].
-	result _ super
+	result := super
 				categoryWithNameIn: categoryNames
 				thatIncludesSelector: aSelector
 				forInstance: targetInstance

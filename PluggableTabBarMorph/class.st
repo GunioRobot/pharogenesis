@@ -1,0 +1,1 @@
+PluggableTabBarMorph class instanceVariableNames: ''

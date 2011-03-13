@@ -1,6 +1,6 @@
 ReadWriteStream
 	subclass: #Transcripter
-	instanceVariableNames: 'frame para '
+	instanceVariableNames: 'frame para'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Collections-Streams'

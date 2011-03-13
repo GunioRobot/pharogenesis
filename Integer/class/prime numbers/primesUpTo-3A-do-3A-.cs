@@ -8,7 +8,7 @@ primesUpTo: max do: aBlock
 	the alternative will only requre 1/154th of the amount we need here and is almost as fast."
 	limit > 25000 ifTrue:[^self largePrimesUpTo: max do: aBlock].
 	flags _ (Array new: limit) atAllPut: true.
-	1 to: limit do: [:i |
+	1 to: limit - 1 do: [:i |
 		(flags at: i) ifTrue: [
 			prime _ i + 1.
 			k _ i + prime.

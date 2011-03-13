@@ -1,3 +1,3 @@
 length: aNumber
 
-	length _ aNumber.
+	length := aNumber.

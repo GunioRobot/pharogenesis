@@ -4,11 +4,12 @@ readExponent: baseValue base: base from: aStream
 	<number>(e|d|q)<exponent>>"
 
 	| sign exp value |
-	aStream next. "skip e|d|q"
-	sign _ ((aStream peek) == $-)
+	('edq' includes: aStream next) ifFalse: [^ nil].
+	sign := ((aStream peek) == $-)
 		ifTrue: [aStream next. -1]
 		ifFalse: [1].
-	(aStream peek digitValue between: 0 and: 9) ifFalse: [^ nil]. "Avoid throwing an error"
-	exp _ (Integer readFrom: aStream base: 10) * sign.
+	(aStream atEnd or: [(aStream peek digitValue between: 0 and: 9) not])
+		ifTrue: [^ nil]. "Avoid throwing an error"
+	exp := (Integer readFrom: aStream base: 10) * sign.
 	value := baseValue * (base raisedTo: exp).
 	^ value

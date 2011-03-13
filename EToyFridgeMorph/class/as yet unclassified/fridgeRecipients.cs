@@ -1,3 +1,3 @@
 fridgeRecipients
 
-	^FridgeRecipients ifNil: [FridgeRecipients _ OrderedCollection new]
+	^FridgeRecipients ifNil: [FridgeRecipients := OrderedCollection new]

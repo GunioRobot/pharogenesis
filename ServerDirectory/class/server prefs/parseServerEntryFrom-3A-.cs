@@ -29,4 +29,5 @@ parseServerEntryFrom: stream
 	entries at: 'loaderUrl' ifPresent: [:value | server loaderUrl: value].
 	entries at: 'acceptsUploads' ifPresent: [:value | server acceptsUploads: value asLowercase = 'true'].
 	entries at: 'userListUrl' ifPresent:[:value | server eToyUserListUrl: value].
+	entries at: 'encodingName' ifPresent:[:value | server encodingName: value].
 	ServerDirectory addServer: server named: serverName.

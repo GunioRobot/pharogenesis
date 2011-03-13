@@ -1,2 +1,2 @@
 features: aCollection
-	features _ aCollection
+	features := aCollection

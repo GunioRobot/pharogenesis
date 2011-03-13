@@ -1,2 +1,2 @@
 recordFillStyle0: fillIndex
-	fillIndex0 _ fillIndex.
+	fillIndex0 := fillIndex.

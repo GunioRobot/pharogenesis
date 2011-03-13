@@ -1,0 +1,1 @@
+MCStWriter class instanceVariableNames: ''

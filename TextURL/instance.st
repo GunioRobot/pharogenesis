@@ -1,6 +1,6 @@
 TextAction
 	subclass: #TextURL
-	instanceVariableNames: 'url '
+	instanceVariableNames: 'url'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Collections-Text'

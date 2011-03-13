@@ -1,0 +1,2 @@
+defaultRootNode
+	^ OBEnvironmentNode forImage

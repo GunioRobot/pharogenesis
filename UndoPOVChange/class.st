@@ -1,1 +1,0 @@
-UndoPOVChange class instanceVariableNames: ''

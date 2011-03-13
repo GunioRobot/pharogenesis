@@ -1,3 +1,0 @@
-isReturn
-
-	^false

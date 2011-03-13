@@ -1,2 +1,0 @@
-isNullable
-	^false

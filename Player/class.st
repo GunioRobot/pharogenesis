@@ -1,1 +1,1 @@
-Player class instanceVariableNames: 'scripts slotInfo '
+Player class instanceVariableNames: 'scripts slotInfo'

@@ -1,2 +1,0 @@
-helpMsgsAdditionbrowsingsourceCommentToggleInBrowsers
-	^ #((sourceCommentToggleInBrowsers 'If true, then optional button panes in code browsers in morphic will exhibit a checkbox labeled "source" which allows the user to toggle between viewing source code and just viewing method comments' ) )

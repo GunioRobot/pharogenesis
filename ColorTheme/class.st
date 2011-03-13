@@ -1,0 +1,1 @@
+ColorTheme class instanceVariableNames: ''

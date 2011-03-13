@@ -1,3 +1,0 @@
-switchState
-
-	^ switchState

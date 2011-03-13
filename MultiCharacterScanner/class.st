@@ -1,0 +1,1 @@
+MultiCharacterScanner class instanceVariableNames: ''

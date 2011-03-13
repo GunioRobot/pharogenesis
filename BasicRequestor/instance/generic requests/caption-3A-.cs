@@ -1,0 +1,2 @@
+caption: aString
+	caption := aString

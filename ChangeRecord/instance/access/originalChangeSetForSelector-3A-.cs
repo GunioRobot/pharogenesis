@@ -4,7 +4,7 @@ originalChangeSetForSelector: methodSelector
 	| likelyChangeSets originalChangeSet |
 	(file localName findTokens: '.') last = 'sources'
 		ifTrue: [^ #sources].
-	likelyChangeSets _ ChangeSorter allChangeSets select: 
+	likelyChangeSets _ ChangeSet allChangeSets select: 
 		[:cs | (cs atSelector: methodSelector class: self methodClass) ~~ #none].
 	originalChangeSet _ likelyChangeSets
 		detect: [:cs | cs containsMethodAtPosition: position]

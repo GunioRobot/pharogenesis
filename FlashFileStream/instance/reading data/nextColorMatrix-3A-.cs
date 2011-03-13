@@ -1,7 +1,7 @@
 nextColorMatrix: usingAlpha
 	| hadAlpha transform |
-	hadAlpha _ hasAlpha.
-	hasAlpha _ usingAlpha.
-	transform _ self nextColorMatrix.
-	hasAlpha _ hadAlpha.
+	hadAlpha := hasAlpha.
+	hasAlpha := usingAlpha.
+	transform := self nextColorMatrix.
+	hasAlpha := hadAlpha.
 	^transform

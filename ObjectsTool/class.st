@@ -1,0 +1,1 @@
+ObjectsTool class instanceVariableNames: ''

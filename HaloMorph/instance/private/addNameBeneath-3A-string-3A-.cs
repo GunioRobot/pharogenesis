@@ -4,6 +4,7 @@ addNameBeneath: outerRectangle string: aString
 	| nameMorph namePosition w |
 	w _ self world ifNil:[target world].
 	nameMorph _ NameStringInHalo contents: aString font: Preferences standardHaloLabelFont.
+	nameMorph wantsYellowButtonMenu: false.
 	nameMorph color: Color black.
 	nameMorph useStringFormat; target: innerTarget; putSelector: #tryToRenameTo:.
 	namePosition _ outerRectangle bottomCenter -

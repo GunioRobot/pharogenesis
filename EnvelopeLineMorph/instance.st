@@ -1,6 +1,6 @@
 PolygonMorph
 	subclass: #EnvelopeLineMorph
-	instanceVariableNames: 'editor '
+	instanceVariableNames: 'editor'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Sound-Interface'
+	category: 'MorphicExtras-SoundInterface'

@@ -1,2 +1,0 @@
-renderNodes
-	^self nodes

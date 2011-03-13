@@ -3,9 +3,9 @@ explorerKey: aChar from: view
 	"Similar to #genericMenu:..."
 	| insideObject parentObject |
 	currentSelection ifNotNil: [
-		insideObject _ self object.
-		parentObject _ self parentObject.
-		inspector ifNil: [inspector _ Inspector new].
+		insideObject := self object.
+		parentObject := self parentObject.
+		inspector ifNil: [inspector := Inspector new].
 		inspector
 			inspect: parentObject;
 			object: insideObject.

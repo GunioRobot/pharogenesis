@@ -1,6 +1,6 @@
 ParseNode
 	subclass: #CascadeNode
-	instanceVariableNames: 'receiver messages '
+	instanceVariableNames: 'receiver messages'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Compiler'
+	category: 'Compiler-ParseNodes'

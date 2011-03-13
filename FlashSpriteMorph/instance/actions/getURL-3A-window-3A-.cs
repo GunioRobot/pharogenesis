@@ -2,12 +2,12 @@ getURL: urlString window: windowString
 	"Load the given url in display it in the window specified by windowString.
 	Ignored for now."
 	| browser |
-	browser _ self getWebBrowser.
+	browser := self getWebBrowser.
 	browser ifNotNil:[
 		browser jumpToUrl: urlString.
 		^nil].
 	"(self confirm: ('open a browser to view\',urlString,' ?') withCRs) ifTrue: [
-		browser _ Scamper new.
+		browser := Scamper new.
 		browser jumpToUrl: urlString.
 		browser openAsMorph
 	]."

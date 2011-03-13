@@ -1,11 +1,11 @@
 getTypedFileName: aResult
 
 	| name |
-	name _ FillInTheBlank 
+	name := UIManager default 
 		request: 'Enter a new file name' 
 		initialAnswer: ''.
 	name = '' ifTrue: [^self startUpWithCaption: 'Select a File:' translated].
-	name _ aResult directory fullNameFor: name.
+	name := aResult directory fullNameFor: name.
 	^ StandardFileMenuResult
 			directory: (FileDirectory forFileName: name)
 			name: (FileDirectory localNameFor: name)

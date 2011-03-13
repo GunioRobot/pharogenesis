@@ -1,2 +1,2 @@
 initialize
-	repositories _ OrderedCollection new
+	repositories := OrderedCollection new

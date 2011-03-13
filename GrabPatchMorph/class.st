@@ -1,0 +1,1 @@
+GrabPatchMorph class instanceVariableNames: ''

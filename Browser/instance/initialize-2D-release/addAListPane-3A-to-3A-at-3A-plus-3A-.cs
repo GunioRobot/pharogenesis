@@ -2,13 +2,13 @@ addAListPane: aListPane to: window at: nominalFractions plus: verticalOffset
 
 	| row switchHeight divider |
 
-	row _ AlignmentMorph newColumn
+	row := AlignmentMorph newColumn
 		hResizing: #spaceFill;
 		vResizing: #spaceFill;
-		layoutInset: 0;
+		layoutInset: 1;
 		borderWidth: 1;
 		layoutPolicy: ProportionalLayout new.
-	switchHeight _ 25.
+	switchHeight := 25.
 	self 
 		addMorphicSwitchesTo: row 
 		at: (
@@ -17,10 +17,8 @@ addAListPane: aListPane to: window at: nominalFractions plus: verticalOffset
 				offsets: (0@(1-switchHeight)  corner: 0@0)
 		).
 
-	divider _ BorderedSubpaneDividerMorph forTopEdge.
-	Preferences alternativeWindowLook ifTrue:[
-		divider extent: 4@4; color: Color transparent; borderColor: #raised; borderWidth: 2.
-	].
+	divider := BorderedSubpaneDividerMorph forTopEdge.
+	divider extent: 4@4; color: Color transparent; borderColor: #raised; borderWidth: 0.
 	row 
 		addMorph: divider
 		fullFrame: (

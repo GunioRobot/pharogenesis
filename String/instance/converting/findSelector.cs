@@ -3,8 +3,9 @@ findSelector
 	| sel possibleParens level n |
 	sel _ self withBlanksTrimmed.
 	(sel includes: $:) ifTrue:
-		[possibleParens _ sel findTokens: Character separators.
-		sel _ String streamContents:
+		[sel _ sel copyReplaceAll: ':' with: ': '.	"for the style (aa max:bb) with no space"
+		possibleParens _ sel findTokens: Character separators.
+		sel _ self class streamContents:
 			[:s | level _ 0.
 			possibleParens do:
 				[:token |
@@ -16,6 +17,7 @@ findSelector
 							(n _ token occurrencesOf: $) ) > 0 ifTrue: [level _ level - n]]]]].
 
 	sel isEmpty ifTrue: [^ nil].
+	sel isOctetString ifTrue: [sel _ sel asOctetString].
 	Symbol hasInterned: sel ifTrue:
 		[:aSymbol | ^ aSymbol].
 	^ nil

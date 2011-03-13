@@ -1,2 +1,0 @@
-reloadButtonText
-	^ 'Reload page' translated

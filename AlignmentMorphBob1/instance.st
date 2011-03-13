@@ -3,4 +3,4 @@ AlignmentMorph
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Network-Mail Reader'
+	category: 'MorphicExtras-AdditionalSupport'

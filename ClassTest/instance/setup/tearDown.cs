@@ -1,4 +1,2 @@
 tearDown
-
-	Smalltalk removeClassNamed: #TUTU.
-	
+	self deleteClass

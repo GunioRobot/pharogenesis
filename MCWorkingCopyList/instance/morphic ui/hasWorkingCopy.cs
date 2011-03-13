@@ -1,2 +1,0 @@
-hasWorkingCopy
-	^ workingCopy notNil

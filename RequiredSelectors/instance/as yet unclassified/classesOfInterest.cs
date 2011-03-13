@@ -1,0 +1,2 @@
+classesOfInterest
+	^interests asIdentitySet

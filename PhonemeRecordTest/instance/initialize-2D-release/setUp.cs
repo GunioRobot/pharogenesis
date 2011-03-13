@@ -1,0 +1,2 @@
+setUp
+	phoneme := PhonemeRecordTest sampleOne.

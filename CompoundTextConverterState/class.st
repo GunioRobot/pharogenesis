@@ -1,0 +1,1 @@
+CompoundTextConverterState class instanceVariableNames: ''

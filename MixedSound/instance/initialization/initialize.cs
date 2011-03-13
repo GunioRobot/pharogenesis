@@ -1,6 +1,6 @@
 initialize
 
 	super initialize.
-	sounds _ Array new.
-	leftVols _ Array new.
-	rightVols _ Array new.
+	sounds := Array new.
+	leftVols := Array new.
+	rightVols := Array new.

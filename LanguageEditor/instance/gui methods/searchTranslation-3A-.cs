@@ -16,13 +16,13 @@ searchTranslation: aString
 			self selectTranslationPhrase: results first.
 			^ self].
 	""
-	index := (PopUpMenu
-				labelArray: (results
+	index := (UIManager default 
+				chooseFrom: (results
 						collect: [:each | ""
 							(each copy replaceAll: Character cr with: $\)
 								, ' -> '
-								, ((self translator translationFor: each) copy replaceAll: Character cr with: $\)]))
-				startUpWithCaption: 'select the translation...' translated.
+								, ((self translator translationFor: each) copy replaceAll: Character cr with: $\)])
+				title: 'select the translation...' translated).
 	""
 	index isZero
 		ifTrue: [""

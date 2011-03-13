@@ -1,7 +1,7 @@
 buttonFillStyle
 
 	| fill |
-	fill _ GradientFillStyle ramp: {
+	fill := GradientFillStyle ramp: {
 		0.0->(Color r: 0.742 g: 0.903 b: 1.0).
 		1.0->(Color r: 0.516 g: 0.71 b: 1.0)
 	}.

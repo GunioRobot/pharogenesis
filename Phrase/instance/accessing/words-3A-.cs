@@ -1,2 +1,2 @@
 words: aCollection
-	words _ aCollection
+	words := aCollection

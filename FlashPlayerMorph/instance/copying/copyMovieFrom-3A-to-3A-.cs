@@ -1,8 +1,8 @@
 copyMovieFrom: firstFrame to: lastFrame
 	"Create a copy of the receiver containing the given frames"
 	| player delta actionList newMorphs |
-	delta _ firstFrame - 1.
-	player _ FlashPlayerMorph new.
+	delta := firstFrame - 1.
+	player := FlashPlayerMorph new.
 	player bounds: self bounds.
 	player localBounds: self localBounds.
 	player maxFrames: lastFrame - firstFrame + 1.
@@ -15,7 +15,7 @@ copyMovieFrom: firstFrame to: lastFrame
 			sndAssoc value do:[:snd|
 				player addSound: snd at: sndAssoc key - delta]]].
 	actions associationsDo:[:action|
-		actionList _ action value collect:[:a|
+		actionList := action value collect:[:a|
 			a selector == #gotoFrame: 
 				ifTrue:[Message selector: a selector argument: (a argument - delta)]
 				ifFalse:[a]].
@@ -25,7 +25,7 @@ copyMovieFrom: firstFrame to: lastFrame
 		(label value between: firstFrame and: lastFrame)
 			ifTrue:[player addLabel: label key atFrame: label value - delta]].
 	"Finally, copy the morphs"
-	newMorphs _ submorphs 
+	newMorphs := submorphs 
 					select:[:m| m isVisibleBetween: firstFrame and: lastFrame]
 					thenCollect:[:m| m copyMovieFrom: firstFrame to: lastFrame].
 	player addAllMorphs: newMorphs.

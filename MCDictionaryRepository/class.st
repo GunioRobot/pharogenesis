@@ -1,0 +1,1 @@
+MCDictionaryRepository class instanceVariableNames: ''

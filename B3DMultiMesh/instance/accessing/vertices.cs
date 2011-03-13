@@ -1,2 +1,0 @@
-vertices
-	^meshes first vertices

@@ -1,5 +1,0 @@
-I represent a viewport for the Ballon 3D graphics engine. Since all positions are computed in the unit-coordinate system (-1,-1,-1) (1,1,1) after the render pipeline has completed, I am used to map these positions into the physical (pixel) coordinates of the output device before rasterization takes place.
-
-Instance variables:
-	center 	<Point>	The center of the viewport
-	scale 	<Point>	The scale for points

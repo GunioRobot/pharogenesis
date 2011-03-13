@@ -1,2 +1,0 @@
-hotSpotMaxCosine
-	^maxCos

@@ -1,0 +1,1 @@
+OBSystemBrowserAdaptor class instanceVariableNames: ''

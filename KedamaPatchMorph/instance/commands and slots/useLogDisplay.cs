@@ -1,0 +1,3 @@
+useLogDisplay
+
+	^ displayType == #logScale.

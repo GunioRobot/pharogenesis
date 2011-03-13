@@ -5,7 +5,7 @@ customButtonSpecs
 			selector to send
 			help message"
 	| aa |
-	aa _ contentsSymbol == #tiles ifTrue: [{   "Consult Ted Kaehler regarding this bit"
+	aa := contentsSymbol == #tiles ifTrue: [{   "Consult Ted Kaehler regarding this bit"
 	{'tiles'.				#tilesMenu.					'tiles for assignment and constants'. 	true}.
 	{'vars'.				#varTilesMenu.	'tiles for instance variables and a new temporary'. 	true}
 		}] ifFalse: [#()].	"true in 4th place means act on mouseDown"

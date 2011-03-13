@@ -1,2 +1,0 @@
-zeroBasedFaceGroup
-	^meshes first zeroBasedFaceGroup

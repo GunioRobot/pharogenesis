@@ -2,7 +2,7 @@ stackListMenu: aMenu
 	| menu |
 	selectedContext
 		ifNil: [^ aMenu].
-	menu _ aMenu
+	menu := aMenu
 				labels: 'inspect context (c)
 explore context (C)
 inspect receiver (i)

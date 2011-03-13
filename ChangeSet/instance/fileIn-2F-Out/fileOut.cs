@@ -9,13 +9,6 @@ fileOut
 	nameToUse := Preferences changeSetVersionNumbers
 				ifTrue: [self defaultChangeSetDirectory nextNameFor: self name extension: FileStream cs]
 				ifFalse: [self name , FileDirectory dot , Utilities dateTimeSuffix, FileDirectory dot , FileStream cs].
-	(Preferences warningForMacOSFileNameLength
-			and: [nameToUse size > 30])
-		ifTrue: [nameToUse := FillInTheBlank
-						request: (nameToUse , '\has ' , nameToUse size asString , ' letters - too long for Mac OS.\Suggested replacement is:') withCRs
-						initialAnswer: (nameToUse contractTo: 30).
-			nameToUse = ''
-				ifTrue: [^ self]].
 	nameToUse := self defaultChangeSetDirectory fullNameFor: nameToUse.
 	Cursor write showWhile: [
 			internalStream _ WriteStream on: (String new: 10000).

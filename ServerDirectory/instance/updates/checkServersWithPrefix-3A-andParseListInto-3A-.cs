@@ -15,8 +15,8 @@ checkServersWithPrefix: prefix andParseListInto: listBlock
 		updateLists at: updateServer put: listContents]
 			on: Error
 			do: [:ex | 
-				(PopUpMenu labels: 'Cancel entire update' withCRs)
-					startUpWithCaption: 'Server ', updateServer moniker,
+				UIManager default chooseFrom: #('Cancel entire update')
+					title: 'Server ', updateServer moniker,
 					' is unavailable.\Please consider phoning the administator.\' withCRs, listContents.
 				^Array new]].
 

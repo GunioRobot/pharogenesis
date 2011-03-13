@@ -1,2 +1,2 @@
 points: aCollection
-	points _ aCollection
+	points := aCollection

@@ -3,18 +3,18 @@ setEndFrameNumber: frameOrNil tickTime: timeOrNil
 	in which case the other will br computed."
 
 	| pianoRoll frame time |
-	pianoRoll _ movieClipPlayer pianoRoll.
-	frame _ frameOrNil ifNil:
+	pianoRoll := movieClipPlayer pianoRoll.
+	frame := frameOrNil ifNil:
 		[frameNumber + 
 			((timeOrNil - self startTime)
 			* (pianoRoll scorePlayer secsPerTick*1000.0)
 			/ moviePlayerMorph msPerFrame) asInteger - 1].
-	time _ timeOrNil ifNil:
+	time := timeOrNil ifNil:
 		[self startTime +   "in ticks"
 			(pianoRoll scorePlayer ticksForMSecs:
 			(frameOrNil - frameNumber) * moviePlayerMorph msPerFrame)].
 	endMorph ifNil:
-		[endMorph _ MovieClipEndMorph new
+		[endMorph := MovieClipEndMorph new
 			movieFileName: movieClipFileName
 			image: (moviePlayerMorph pageFormForFrame: frame)
 			player: movieClipPlayer
@@ -26,5 +26,5 @@ setEndFrameNumber: frameOrNil tickTime: timeOrNil
 	endMorph scoreEvent time: time.
 	pianoRoll score removeAmbientEventWithMorph: endMorph;
 		addAmbientEvent: endMorph scoreEvent.
-	soundTrackMorph _ nil.  "Force it to be recomputed."
+	soundTrackMorph := nil.  "Force it to be recomputed."
 	pianoRoll rebuildFromScore

@@ -1,1 +1,0 @@
-B3DSceneExplorerMorph class instanceVariableNames: ''

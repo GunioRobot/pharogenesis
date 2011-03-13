@@ -1,6 +1,6 @@
 FlapTab
 	subclass: #ViewerFlapTab
-	instanceVariableNames: 'scriptedPlayer '
+	instanceVariableNames: 'scriptedPlayer'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Palettes'
+	category: 'MorphicExtras-Flaps'

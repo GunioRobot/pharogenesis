@@ -6,7 +6,7 @@ createLabels
 	1 to: 12 do:
 		[:hour |
 		numeral _ romanNumerals
-			ifTrue: [hour romanString]
+			ifTrue: [hour printStringRoman]
 			ifFalse: [hour asString].
 		self addMorphBack: ((StringMorph contents: numeral font: font emphasis: 1)
 			center: (self radius: r hourAngle: hour)) lock]

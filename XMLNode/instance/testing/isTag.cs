@@ -1,2 +1,0 @@
-isTag
-	^false

@@ -4,12 +4,12 @@ replaceSelectionValue: anObject
 	anObject."
 	| basicIndex si |
 	selectionIndex <= 2 ifTrue: [
-		self toggleIndex: (si _ selectionIndex).  
+		self toggleIndex: (si := selectionIndex).  
 		self toggleIndex: si.
 		^ object].
 	object class isVariable
 		ifFalse: [^ object instVarAt: selectionIndex - 2 put: anObject].
-	basicIndex _ selectionIndex - 2 - object class instSize.
+	basicIndex := selectionIndex - 2 - object class instSize.
 	(object basicSize <= (self i1 + self i2)  or: [basicIndex <= self i1])
 		ifTrue: [^object basicAt: basicIndex put: anObject]
 		ifFalse: [^object basicAt: object basicSize - (self i1 + self i2) + basicIndex

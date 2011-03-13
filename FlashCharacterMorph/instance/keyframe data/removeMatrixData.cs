@@ -1,3 +1,3 @@
 removeMatrixData
-	mData _ FlashKeyframes new.
+	mData := FlashKeyframes new.
 	"^self removeKeyframeData: #matrixData"

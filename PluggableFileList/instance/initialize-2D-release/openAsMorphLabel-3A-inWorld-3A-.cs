@@ -72,4 +72,7 @@ openAsMorphLabel: aString inWorld: aWorld
 
 	self changed: #getSelectionSel.
 
-	windowMorph openInWorld
+    windowMorph openInWorld: aWorld.
+    [windowMorph model notNil]
+       whileTrue: [aWorld doOneCycle].
+    ^self result

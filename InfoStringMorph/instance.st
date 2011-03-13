@@ -1,6 +1,6 @@
 StringMorph
 	subclass: #InfoStringMorph
-	instanceVariableNames: 'stepTime block '
+	instanceVariableNames: 'stepTime block'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Demo'
+	category: 'MorphicExtras-Demo'

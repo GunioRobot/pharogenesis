@@ -1,2 +1,0 @@
-stopReasonGet
-	^workBuffer at: GWStopReason

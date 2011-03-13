@@ -1,4 +1,5 @@
 fileInDefinition
+	self hasDefinition ifFalse:[^self].
 	(self makeSureSuperClassExists: (definition copyUpTo: Character space)) ifFalse:[^self].
 	self hasDefinition ifTrue:[
 		Transcript cr; show:'Defining ', self name.

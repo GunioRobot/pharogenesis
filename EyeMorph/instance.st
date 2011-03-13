@@ -1,6 +1,6 @@
 EllipseMorph
 	subclass: #EyeMorph
-	instanceVariableNames: 'iris '
+	instanceVariableNames: 'iris'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Speech-Gestures'

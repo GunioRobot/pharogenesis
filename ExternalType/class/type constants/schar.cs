@@ -1,2 +1,0 @@
-schar
-	^self signedChar

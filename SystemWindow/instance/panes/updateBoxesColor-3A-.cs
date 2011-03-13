@@ -2,9 +2,7 @@ updateBoxesColor: aColor
 	| opaqueColor |
 	aColor isNil
 		ifTrue: [^ self].
-	Preferences alternativeWindowLook
-		ifFalse: [^ self].
-Preferences alternativeWindowBoxesLook ifFalse:[^ self].
+	Preferences alternativeWindowBoxesLook ifFalse:[^ self].
 	
 	opaqueColor := aColor asNontranslucentColor.
 	

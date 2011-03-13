@@ -1,11 +1,11 @@
 verticesString
 	| stream first |
-	stream _ WriteStream with: ''.
+	stream := WriteStream with: ''.
 	stream nextPut: ${.
-	first _ true.
+	first := true.
 	vertices do: [ :each |
 		first ifFalse: [stream nextPutAll: '. '].
 		stream print: (each - self position) rounded.
-		first _ false].
+		first := false].
 	stream nextPut: $}.
 	^ stream contents

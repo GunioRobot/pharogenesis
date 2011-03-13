@@ -1,5 +1,5 @@
 openOn: aFileName
 	| newMe |
-	newMe _ self new.
+	newMe := self new.
 	newMe createWindow; fileName: aFileName; openInWorld.
 	^newMe

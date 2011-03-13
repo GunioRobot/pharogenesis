@@ -3,12 +3,12 @@ compressFile: aFileStream
 	
 	| zipped buffer |
 	aFileStream binary.
-	zipped _ self directory newFileNamed: (aFileStream name, 'gz').
+	zipped := StandardFileStream newFileNamed: (self directory fullNameFor: (aFileStream name, 'gz')).
 	zipped binary; setFileTypeToObject.
 	"Type and Creator not to be text, so can be enclosed in an email"
-	zipped _ GZipWriteStream on: zipped.
-	buffer _ ByteArray new: 50000.
+	zipped := GZipWriteStream on: zipped.
+	buffer := ByteArray new: 50000.
 	[[aFileStream atEnd] whileFalse: [
 		zipped nextPutAll: (aFileStream nextInto: buffer)]]
-		ensure: [zipped close.aFileStream close].
+		ensure: [zipped close. aFileStream close].
 	self directory deleteFileNamed: aFileStream name

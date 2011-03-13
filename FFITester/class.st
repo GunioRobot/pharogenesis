@@ -1,1 +1,0 @@
-FFITester class instanceVariableNames: ''

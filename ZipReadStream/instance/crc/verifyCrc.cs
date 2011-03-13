@@ -4,7 +4,7 @@ verifyCrc
 	Note that the CRC-32 used in Zip files is actually the bit inverse of the calculated value, so that is what is returned."
 
 	| invertedCrc |
-	invertedCrc _ crc bitXor: 16rFFFFFFFF.
+	invertedCrc := crc bitXor: 16rFFFFFFFF.
 	(expectedCrc notNil and: [ expectedCrc ~= invertedCrc ])
-		ifTrue: [ ^ self crcError: ('Wrong CRC-32 (expected {1} got {2}) (proceed to ignore)' translated format: { expectedCrc hex. invertedCrc hex }) ].
+		ifTrue: [ ^ self crcError: ('Wrong CRC-32 (expected {1} got {2}) (proceed to ignore)' translated format: { expectedCrc printStringHex. invertedCrc printStringHex }) ].
 	^invertedCrc

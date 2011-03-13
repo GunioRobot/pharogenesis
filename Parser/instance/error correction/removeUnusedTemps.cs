@@ -8,11 +8,10 @@ removeUnusedTemps
 		and: [(str at: tempsMark) = $|]) ifFalse: [^ self].
 	encoder unusedTempNames do:
 		[:temp |
-		((PopUpMenu labels: 'yes\no' withCRs) startUpWithCaption:
-			((temp , ' appears to be
-unused in this method.
-OK to remove it?') asText makeBoldFrom: 1 to: temp size))
-			= 1
+		((UIManager default 
+				chooseFrom: #('yes' 'no') 
+				title: ((temp , ' appears to be\unused in this method.\OK to remove it?') 
+						withCRs asText makeBoldFrom: 1 to: temp size)) = 1)
 		ifTrue:
 		[(encoder encodeVariable: temp) isUndefTemp
 			ifTrue:

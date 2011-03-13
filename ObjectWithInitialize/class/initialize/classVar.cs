@@ -1,3 +1,0 @@
-classVar
-
-	^ ClassVar

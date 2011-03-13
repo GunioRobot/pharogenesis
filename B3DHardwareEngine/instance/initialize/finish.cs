@@ -1,2 +1,0 @@
-finish
-	self primFinish: handle.

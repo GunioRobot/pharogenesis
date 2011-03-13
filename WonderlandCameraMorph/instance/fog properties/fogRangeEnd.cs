@@ -1,2 +1,0 @@
-fogRangeEnd
-	^myCamera getFogRangeEnd

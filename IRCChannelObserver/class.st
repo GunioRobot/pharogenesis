@@ -1,1 +1,0 @@
-IRCChannelObserver class instanceVariableNames: ''

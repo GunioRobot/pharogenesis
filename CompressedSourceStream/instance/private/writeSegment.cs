@@ -2,7 +2,7 @@ writeSegment
 	"The current segment must be the last in the file."
 	| compressedSegment |
 	segmentFile position: (segmentTable at: segmentIndex).
-	compressedSegment _ ByteArray streamContents:
+	compressedSegment := ByteArray streamContents:
 		[:strm | (GZipWriteStream on: strm) nextPutAll: collection asByteArray; close].
 	segmentFile nextPutAll: compressedSegment.
 	segmentTable at: segmentIndex + 1 put: segmentFile position.
@@ -11,4 +11,4 @@ writeSegment
 	segmentFile nextNumber: 4 put: endOfFile.
 	segmentFile position: (segmentIndex + 3) * 4.
 	segmentFile nextNumber: 4 put: (segmentTable at: segmentIndex + 1).
-	dirty _ false
+	dirty := false

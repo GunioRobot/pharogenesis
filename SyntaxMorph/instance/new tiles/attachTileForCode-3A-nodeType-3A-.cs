@@ -16,7 +16,7 @@ attachTileForCode: expression nodeType: nodeClass
 
 	expression = '<assignment>' ifTrue: ["do something really special"
 		master _ self class new.
-		master addNoiseString: '  _  ' emphasis: 1.
+		master addNoiseString: '  _  ' emphasis: TextEmphasis bold emphasisCode.
 		tile _ master firstSubmorph.
 		^ (tile parseNode: AssignmentNode new) attachToHand].	"special marker"
 		"When this is dropped on a variable, enclose it in 

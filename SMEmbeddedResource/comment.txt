@@ -1,4 +1,4 @@
-An embedded resource is simply a String resource, held in instvar #content, that is stored inside the map. No download is needed.
-This means that embedded resources should be "small" and typically only be used for resources that
-are needed to be available at all times without downloading. A typical example is meta data for other SMObjects.
+An embedded resource is a resource that is stored inside the map. No download is needed.
+This means that embedded resources should be "small" and typically only be used for information that
+is needed to be available at all times without downloading. A typical example is meta data for other SMObjects.
 

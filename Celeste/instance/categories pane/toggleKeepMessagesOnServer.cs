@@ -1,2 +1,0 @@
-toggleKeepMessagesOnServer
-	DeleteInboxAfterFetching _ DeleteInboxAfterFetching not

@@ -1,0 +1,1 @@
+ProportionalSplitterMorph class instanceVariableNames: ''

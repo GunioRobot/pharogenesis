@@ -1,3 +1,0 @@
-balloonRunButton
-
-	^self class balloonRunButton

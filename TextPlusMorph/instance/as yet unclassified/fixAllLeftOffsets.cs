@@ -4,7 +4,7 @@ fixAllLeftOffsets
 
 	text runs withStartStopAndValueDo: [:start :stop :attributes |
 		attributes do: [:att |
-			(att isMemberOf: TextAnchorPlus) ifTrue: [
+			(att isMemberOf: TextAnchor) ifTrue: [
 				am _ att anchoredMorph.
 				(am isNil or: [am world isNil]) ifFalse: [
 					am 

@@ -1,3 +1,0 @@
-"Testbed for TestInterpreterPlugin, TestCodeGenerator and TestTMethod"
-
-TIPTestPlugin translate

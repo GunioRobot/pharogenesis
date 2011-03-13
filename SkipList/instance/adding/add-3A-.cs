@@ -1,3 +1,4 @@
 add: element 
-	self add: element ifPresent: nil.
-	^ element
+        "Add an association or key on to the skiplist"
+        ^self add: element ifPresent: [].
+        

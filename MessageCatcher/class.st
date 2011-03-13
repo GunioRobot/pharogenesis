@@ -1,0 +1,1 @@
+MessageCatcher class instanceVariableNames: ''

@@ -1,6 +1,6 @@
 TTGlyph
 	subclass: #TTCompositeGlyph
-	instanceVariableNames: 'glyphs '
+	instanceVariableNames: 'glyphs'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon-TrueType Fonts'
+	category: 'TrueType-Fonts'

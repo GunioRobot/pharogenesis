@@ -1,0 +1,2 @@
+classHierarchy
+	^ self nodeHierarchyWithClass: OBClassNode

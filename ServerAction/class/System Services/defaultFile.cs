@@ -1,2 +1,0 @@
-defaultFile
-	^'default.html'

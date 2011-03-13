@@ -6,7 +6,9 @@ repositoryListMenu: aMenu
 		   ('add to package...' #addRepositoryToPackage)
 		   ('remove repository' #removeRepository)	
 		   ('load repositories' #loadRepositories)	
-		   ('save repositories' #saveRepositories)	).
+		   ('save repositories' #saveRepositories)
+		   ('flush cached versions' #flushAllCaches)	
+		).
 		aMenu
 		add: (self repository alwaysStoreDiffs
 					ifTrue: ['store full versions']

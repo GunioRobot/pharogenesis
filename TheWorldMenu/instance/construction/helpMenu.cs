@@ -29,7 +29,6 @@ helpMenu
                 nil.
                 {'telemorphic...' . {self. #remoteDo}.  'commands for doing multi-machine "telemorphic" experiments'}.
                 {#soundEnablingString . { Preferences . #toggleSoundEnabling}. 'turning sound off will completely disable Squeak''s use of sound.'}.
-                {'definition for...' . { Utilities . #lookUpDefinition}.  'if connected to the internet, use this to look up the definition of an English word.'}.
                 nil.
 
                 {'set author initials...' . { Utilities . #setAuthorInitials }. 'supply initials to be used to identify the author of code and other content.'}.

@@ -1,1 +1,0 @@
-WordGameLetterMorph class instanceVariableNames: ''

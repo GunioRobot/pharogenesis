@@ -1,0 +1,2 @@
+textMorphEditor
+	^textMorph editor

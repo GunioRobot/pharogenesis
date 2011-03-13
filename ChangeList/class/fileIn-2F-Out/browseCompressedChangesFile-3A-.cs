@@ -4,8 +4,9 @@ browseCompressedChangesFile: fullName
 	| zipped unzipped stream |
 	fullName ifNil: [^Beeper beep].
 	stream := FileStream readOnlyFileNamed: fullName.
-	stream converter: Latin1TextConverter new.
+	[stream converter: Latin1TextConverter new.
 	zipped := GZipReadStream on: stream.
-	unzipped := zipped contents asString.
+	unzipped := zipped contents asString]
+		ensure: [stream close].
 	stream := (MultiByteBinaryOrTextStream with: unzipped) reset.
 	ChangeList browseStream: stream

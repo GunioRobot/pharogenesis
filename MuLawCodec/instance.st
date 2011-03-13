@@ -1,6 +1,6 @@
 SoundCodec
 	subclass: #MuLawCodec
 	instanceVariableNames: ''
-	classVariableNames: 'DecodingTable '
+	classVariableNames: 'DecodingTable'
 	poolDictionaries: ''
 	category: 'Sound-Synthesis'

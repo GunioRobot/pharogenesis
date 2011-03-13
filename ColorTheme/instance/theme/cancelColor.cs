@@ -1,0 +1,2 @@
+cancelColor
+	^ Color lightRed

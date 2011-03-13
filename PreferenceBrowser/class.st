@@ -1,0 +1,1 @@
+PreferenceBrowser class instanceVariableNames: ''

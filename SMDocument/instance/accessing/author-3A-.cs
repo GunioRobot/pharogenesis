@@ -1,2 +1,2 @@
 author: aString
-	author _ aString
+	author := aString

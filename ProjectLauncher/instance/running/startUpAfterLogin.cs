@@ -8,6 +8,7 @@ startUpAfterLogin
 			CodeLoader defaultBaseURL: (self parameterAt: 'Base').
 		] ifFalse:[
 			scriptName _ (SmalltalkImage current getSystemAttribute: 2) ifNil:[''].
+			scriptName _ scriptName convertFromSystemString.
 			scriptName isEmpty ifFalse:[
 				"figure out if script name is a URL by itself"
 				isUrl _ (scriptName asLowercase beginsWith:'http://') or:[

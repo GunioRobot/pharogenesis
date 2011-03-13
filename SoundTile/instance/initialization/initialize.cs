@@ -4,7 +4,7 @@ initialize
 	
 	| soundChoices startingSoundName |
 	super initialize.
-	soundChoices _ SoundService default sampledSoundChoices.
+	soundChoices _ self soundChoices.
 	startingSoundName _ (soundChoices includes: 'croak')
 							ifTrue: ['croak']
 							ifFalse: [[soundChoices anyOne] ifError: ['silence']].

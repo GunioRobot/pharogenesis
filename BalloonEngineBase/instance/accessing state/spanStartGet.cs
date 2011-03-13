@@ -1,2 +1,0 @@
-spanStartGet
-	^workBuffer at: GWSpanStart

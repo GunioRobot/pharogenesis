@@ -1,0 +1,3 @@
+getChildren
+	queries add: #getChildren.
+	^#()

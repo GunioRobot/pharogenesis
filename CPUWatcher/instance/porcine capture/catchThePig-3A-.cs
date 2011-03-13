@@ -1,7 +1,7 @@
 catchThePig: aProcess
 	| rules |
 	"nickname, allow-stop, allow-debug"
-	rules _ ProcessBrowser nameAndRulesFor: aProcess.
+	rules := ProcessBrowser nameAndRulesFor: aProcess.
 
 	(ProcessBrowser isUIProcess: aProcess)
 		ifTrue: [ "aProcess debugWithTitle: 'Interrupted from the CPUWatcher'." ]

@@ -1,2 +1,0 @@
-classByteArray
-	^ByteArray

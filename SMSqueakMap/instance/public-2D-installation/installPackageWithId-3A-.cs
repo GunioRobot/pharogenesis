@@ -5,6 +5,6 @@ installPackageWithId: anUUIDString
 	Better to specify a specific release."
 
 	| package |
-	package _ self packageWithId: anUUIDString.
+	package := self packageWithId: anUUIDString.
 	package ifNil: [self error: 'No package available with id: ''', anUUIDString, ''''].
 	^self installPackage: package

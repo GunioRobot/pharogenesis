@@ -1,0 +1,3 @@
+getPatchesList
+
+	^ self getValueFromCostume: #patchesToDisplayAsString.

@@ -2,7 +2,7 @@ addModelItemsToWindowMenu: aMenu
 	"Add model-related items to the given window menu"
 
 	| oldTarget |
-	oldTarget _ aMenu defaultTarget.
+	oldTarget := aMenu defaultTarget.
 	aMenu defaultTarget: self.
 	aMenu addLine.
 	aMenu add: 'rename change set' action: #rename.

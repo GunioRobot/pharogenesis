@@ -1,3 +1,3 @@
 control: midiControl
 
-	control _ midiControl.
+	control := midiControl.

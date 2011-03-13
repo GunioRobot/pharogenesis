@@ -2,7 +2,8 @@ alignLeftEdges
 	"Make the left coordinate of all my elements be the same"
 
 	| minLeft |
-	selectedItems ifEmpty: [^ self].
-	minLeft := (selectedItems collect: [:itm | itm left]) min.
+	minLeft _ (selectedItems collect: [:itm | itm left]) min.
 	selectedItems do:
-		[:itm | itm left: minLeft]
+		[:itm | itm left: minLeft].
+
+	self changed

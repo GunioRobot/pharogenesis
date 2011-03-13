@@ -1,8 +1,8 @@
 createSoundFrom: aStream 
 	| snds channels |
 	
-	snds _ OrderedCollection new.
-	channels _ self audioChannels: 0.
+	snds := OrderedCollection new.
+	channels := self audioChannels: 0.
 	1 to: channels do: [:c | snds add: (self readSoundChannel: c - 1 stream: aStream)].
 	channels = 1
 		ifTrue:[^ MixedSound new

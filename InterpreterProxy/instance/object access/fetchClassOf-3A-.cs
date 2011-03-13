@@ -1,2 +1,0 @@
-fetchClassOf: oop
-	^oop class

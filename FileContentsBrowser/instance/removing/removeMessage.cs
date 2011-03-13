@@ -4,7 +4,7 @@ removeMessage
 		ifTrue: [^ self].
 	self okToChange
 		ifFalse: [^ self].
-	messageName _ self selectedMessageName.
+	messageName := self selectedMessageName.
 	(self selectedClass confirmRemovalOf: messageName)
 		ifFalse: [^ false].
 	self selectedClassOrMetaClass removeMethod: self selectedMessageName.

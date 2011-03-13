@@ -1,0 +1,2 @@
+widgetColor
+	^ widget color

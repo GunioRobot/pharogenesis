@@ -3,17 +3,17 @@ categoryListForInstance: targetObject ofClass: aClass limitClass: mostGenericCla
 	given class, considering only code implemented in mostGenericClass and 
 	lower "
 	| classToUse foundAMethod classThatImplements |
-	classToUse _ targetObject
+	classToUse := targetObject
 				ifNil: [aClass]
 				ifNotNil: [targetObject class].
 	^ categories
 		select: [:aCategory | 
-			foundAMethod _ false.
+			foundAMethod := false.
 			aCategory elementsInOrder
 				do: [:aSpec | 
-					classThatImplements _ classToUse whichClassIncludesSelector: aSpec selector.
+					classThatImplements := classToUse whichClassIncludesSelector: aSpec selector.
 					(classThatImplements notNil
 							and: [classThatImplements includesBehavior: mostGenericClass])
-						ifTrue: [foundAMethod _ true]].
+						ifTrue: [foundAMethod := true]].
 			foundAMethod]
 		thenCollect: [:aCategory | aCategory categoryName]

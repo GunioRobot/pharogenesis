@@ -1,6 +1,6 @@
 RectangleMorph
 	subclass: #ThumbnailMorph
-	instanceVariableNames: 'objectToView viewSelector lastSketchForm lastFormShown drawTime '
-	classVariableNames: 'RecursionDepth RecursionMax '
+	instanceVariableNames: 'objectToView viewSelector lastSketchForm lastFormShown drawTime'
+	classVariableNames: 'EccentricityThreshhold RecursionDepth RecursionMax'
 	poolDictionaries: ''
-	category: 'Morphic-Widgets'
+	category: 'MorphicExtras-Widgets'

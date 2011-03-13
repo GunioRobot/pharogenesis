@@ -1,2 +1,2 @@
 load
-	self version load
+	Cursor wait showWhile: [self version load]

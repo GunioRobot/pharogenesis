@@ -4,8 +4,7 @@ select: evt
 	subMenu ifNotNil: [
 		subMenu delete.
 		subMenu
-			popUpAdjacentTo: (Array with: self bounds topRight + (10@0)
-									with: self bounds topLeft)
+			popUpAdjacentTo: self adjacentTo
 			forHand: evt hand
 			from: self.
 		subMenu selectItem: nil event: evt].

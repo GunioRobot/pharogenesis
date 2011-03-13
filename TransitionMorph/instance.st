@@ -1,7 +1,7 @@
 Morph
 	subclass: #TransitionMorph
 	instanceVariableNames:
-		'startMorph endMorph startBlock completionBlock stepNumber nSteps stepTime startForm endForm effect direction '
+		'startMorph endMorph startBlock completionBlock stepNumber nSteps stepTime startForm endForm effect direction'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Widgets'
+	category: 'MorphicExtras-Widgets'

@@ -2,12 +2,8 @@ rebuildOptionalButtons
 
 	| answer |
 
-	answer _ {
-		self transparentSpacerOfSize: 20@3.
-		self 
-			buttonNamed: 'Button' translated action: #doButtonProperties color: color lighter 
-			help: 'open a button properties panel for the morph' translated.
-	}.
+	answer _ #() .
+	
 	myTarget isTextMorph ifTrue: [
 		answer _ answer, {
 			self 

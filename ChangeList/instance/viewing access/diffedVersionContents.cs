@@ -5,12 +5,12 @@ diffedVersionContents
 	(listIndex = 0
 			or: [changeList size < listIndex])
 		ifTrue: [^ ''].
-	change _ changeList at: listIndex.
-	later _ change text.
-	class _ change methodClass.
+	change := changeList at: listIndex.
+	later := change text.
+	class := change methodClass.
 	(listIndex == changeList size or: [class == nil])
 		ifTrue: [^ later].
 
-	earlier _ (changeList at: listIndex + 1) text.
+	earlier := (changeList at: listIndex + 1) text.
 
 	^ TextDiffBuilder buildDisplayPatchFrom: earlier to: later inClass: class prettyDiffs: self showingPrettyDiffs

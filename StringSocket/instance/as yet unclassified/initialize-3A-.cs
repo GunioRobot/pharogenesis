@@ -1,12 +1,12 @@
 initialize: aSocket
 
-	transmissionError _ false.
+	transmissionError := false.
 	super initialize: aSocket.
-	outputQueue _ SharedQueue new.
-	extraUnsentBytes _ bytesInOutputQueue _ 0.
-	socketWriterProcess _ [
+	outputQueue := SharedQueue new.
+	extraUnsentBytes := bytesInOutputQueue := 0.
+	socketWriterProcess := [
 		[self transmitQueueNext] whileTrue.
-		socketWriterProcess _ nil.
-		outputQueue _ nil.
-		bytesInOutputQueue _ 0.
+		socketWriterProcess := nil.
+		outputQueue := nil.
+		bytesInOutputQueue := 0.
 	] forkAt: Processor lowIOPriority.

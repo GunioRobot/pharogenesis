@@ -1,6 +1,6 @@
 AbstractHierarchicalList
 	subclass: #EToyHierarchicalTextGizmo
-	instanceVariableNames: 'topNode '
+	instanceVariableNames: 'topNode'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Outliner'
+	category: 'EToys-Outliner'

@@ -1,0 +1,1 @@
+MCPreambleDefinition class instanceVariableNames: ''

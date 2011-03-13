@@ -5,11 +5,11 @@ pointersTo: anObject except: objectsToExclude
 	| results anObj |
 	Smalltalk garbageCollect.
 	"big collection shouldn't grow, so it's contents array is always the same"
-	results _ OrderedCollection new: 1000.
+	results := OrderedCollection new: 1000.
 
 	"allObjectsDo: is expanded inline to keep spurious
 	 method and block contexts out of the results"
-	anObj _ self someObject.
+	anObj := self someObject.
 	[0 == anObj] whileFalse: [
 		anObj isInMemory ifTrue: [
 			(anObj pointsTo: anObject) ifTrue: [
@@ -21,7 +21,7 @@ pointersTo: anObject except: objectsToExclude
 				 [anObj ~~ thisContext sender sender]]]])
 					 ifTrue: [ results add: anObj ].
 			]].
-		anObj _ anObj nextObject.
+		anObj := anObj nextObject.
 	].
 	objectsToExclude do: [ :obj | results removeAllSuchThat: [ :el | el == obj]].
 

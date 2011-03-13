@@ -4,9 +4,9 @@ printCmd: cmdByte with: arg1 with: arg2
 	| cmd ch bend |
 	cmdByte < 240
 		ifTrue: [  "channel message" 
-			cmd _ cmdByte bitAnd: 2r11110000.
-			ch _ (cmdByte bitAnd: 2r00001111) + 1]
-		ifFalse: [cmd _ cmdByte].  "system message"
+			cmd := cmdByte bitAnd: 2r11110000.
+			ch := (cmdByte bitAnd: 2r00001111) + 1]
+		ifFalse: [cmd := cmdByte].  "system message"
 
 	cmd = 128 ifTrue: [
 		^ Transcript show: ('key up ', arg1 printString, ' vel: ', arg2 printString, ' chan: ', ch printString); cr].
@@ -21,7 +21,7 @@ printCmd: cmdByte with: arg1 with: arg2
 	cmd = 208 ifTrue: [
 		^ Transcript show: ('channel pressure ', arg1 printString, ' chan: ', ch printString); cr].
 	cmd = 224 ifTrue: [
-		bend _ ((arg2 bitShift: 7) + arg1) - 8192.
+		bend := ((arg2 bitShift: 7) + arg1) - 8192.
 		^ Transcript show: ('bend: ', bend printString, ' chan: ', ch printString); cr].
 
 	cmd = 240 ifTrue: [

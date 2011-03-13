@@ -1,2 +1,2 @@
 rank: aNumber
-	rank _ aNumber
+	rank := aNumber

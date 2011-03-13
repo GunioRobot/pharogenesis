@@ -1,0 +1,1 @@
+OBAnnouncer class instanceVariableNames: ''

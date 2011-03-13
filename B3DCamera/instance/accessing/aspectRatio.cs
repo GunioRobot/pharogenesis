@@ -1,2 +1,0 @@
-aspectRatio
-	^perspective aspectRatio

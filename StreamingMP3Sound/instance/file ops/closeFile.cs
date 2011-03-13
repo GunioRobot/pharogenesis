@@ -4,5 +4,5 @@ closeFile
 	self pause.
 	mpegFile ifNil: [^ self].
 	mpegFile closeFile.
-	mpegFile _ nil.
-	mixer _ nil.
+	mpegFile := nil.
+	mixer := nil.

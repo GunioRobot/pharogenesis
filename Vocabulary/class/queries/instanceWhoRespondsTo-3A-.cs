@@ -18,7 +18,7 @@ instanceWhoRespondsTo: aSelector
 					includesSelector: aSelector)
 				ifTrue: ["Ask Scott how to get a prototypical instance"
 					^ (Smalltalk at: nn) new]].
-	mthRefs _ self systemNavigation allImplementorsOf: aSelector.
+	mthRefs := self systemNavigation allImplementorsOf: aSelector.
 	"every one who implements the selector"
 	mthRefs
 		sortBlock: [:a :b | (Smalltalk at: a classSymbol) allSuperclasses size < (Smalltalk at: b classSymbol) allSuperclasses size].

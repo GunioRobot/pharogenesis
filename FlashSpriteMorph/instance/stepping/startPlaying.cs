@@ -3,7 +3,7 @@ startPlaying
 	playing ifTrue:[^self].
 	loadedFrames = 0 ifTrue:[^nil].
 	frameNumber >= maxFrames ifTrue:[self frameNumber: 1].
-	playing _ true.
+	playing := true.
 	self playSoundsAt: frameNumber.
 	self executeActionsAt: frameNumber.
-	lastStepTime _ Time millisecondClockValue.
+	lastStepTime := Time millisecondClockValue.

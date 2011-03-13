@@ -1,2 +1,0 @@
-addToFormatter: formatter
-	"do nothing"

@@ -2,7 +2,7 @@ fromAIFFFileNamed: fileName mergeIfStereo: mergeFlag
 	"Initialize this sound from the data in the given AIFF file. If mergeFlag is true and the file is stereo, its left and right channels are mixed together to produce a mono sampled sound."
 
 	| aiffFileReader |
-	aiffFileReader _ AIFFFileReader new.
+	aiffFileReader := AIFFFileReader new.
 	aiffFileReader readFromFile: fileName
 		mergeIfStereo: mergeFlag
 		skipDataChunk: false.
@@ -21,9 +21,9 @@ fromAIFFFileNamed: fileName mergeIfStereo: mergeFlag
 	"the following must be done second, since the initialization above sets
 	 leftSamples and rightSamples to the same sample data"
 	aiffFileReader isStereo
-		ifTrue: [rightSamples _ aiffFileReader rightSamples].
+		ifTrue: [rightSamples := aiffFileReader rightSamples].
 
-	initialCount _ (leftSamples size * self samplingRate) // originalSamplingRate.
+	initialCount := (leftSamples size * self samplingRate) // originalSamplingRate.
 	self loudness: 1.0.
 
 	self addReleaseEnvelope.

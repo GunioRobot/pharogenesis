@@ -1,6 +1,8 @@
-image: aForm at: aPoint sourceRect: sourceRect rule: rule
+image: aForm at: aPoint sourceRect: sourceRect rule: argRule
 
-	| cacheID cacheNew cacheReply formToSend cacheEntry destRect visRect aFormArea d2 |
+	| cacheID cacheNew cacheReply formToSend cacheEntry destRect visRect aFormArea d2 rule |
+
+	rule _ argRule.
 
 	"first if we are only going to be able to draw a small part of the form,
 	it may be faster just to send the part of the form that will actually show up"
@@ -18,6 +20,7 @@ image: aForm at: aPoint sourceRect: sourceRect rule: rule
 				at: #bigImageReduced 
 				add: {lastClipRect. aPoint. sourceRect extent. lastTransform}."
 			formToSend _ aForm copy: (visRect translateBy: sourceRect origin - aPoint).
+			formToSend depth = 32 ifTrue: [formToSend _ formToSend asFormOfDepth: 16. rule = 24 ifTrue: [rule _ 25]].
 			^self 
 				image: formToSend 
 				at: visRect origin 
@@ -41,6 +44,7 @@ image: aForm at: aPoint sourceRect: sourceRect rule: rule
 		].
 		cacheEntry at: 4 put: (aForm isStatic ifTrue: [aForm] ifFalse: [aForm deepCopy]).
 	].
+	(formToSend notNil and: [formToSend depth = 32]) ifTrue: [formToSend _ formToSend asFormOfDepth: 16. rule = 24 ifTrue: [rule _ 25]].
 	self
 		image: formToSend 
 		at: aPoint 

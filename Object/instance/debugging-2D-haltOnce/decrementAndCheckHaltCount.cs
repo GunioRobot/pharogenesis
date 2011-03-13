@@ -1,0 +1,3 @@
+decrementAndCheckHaltCount
+	self decrementHaltCount.
+	^self checkHaltCountExpired

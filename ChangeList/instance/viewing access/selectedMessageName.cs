@@ -1,3 +1,3 @@
 selectedMessageName
 	| c |
-	^ (c _ self currentChange) ifNotNil: [c methodSelector]
+	^ (c := self currentChange) ifNotNil: [c methodSelector]

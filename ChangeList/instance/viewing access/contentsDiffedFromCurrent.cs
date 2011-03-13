@@ -4,8 +4,8 @@ contentsDiffedFromCurrent
 	| aChange aClass |
 	listIndex = 0
 		ifTrue: [^ ''].
-	aChange _ changeList at: listIndex.
-	^ ((aChange type == #method and: [(aClass _ aChange methodClass) notNil]) and: [aClass includesSelector: aChange methodSelector])
+	aChange := changeList at: listIndex.
+	^ ((aChange type == #method and: [(aClass := aChange methodClass) notNil]) and: [aClass includesSelector: aChange methodSelector])
 		ifTrue:
 			 [Utilities methodDiffFor: aChange text class: aClass selector: aChange methodSelector prettyDiffs: self showingPrettyDiffs]
 		ifFalse:

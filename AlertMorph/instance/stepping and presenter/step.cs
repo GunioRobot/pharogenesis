@@ -1,7 +1,7 @@
 step
 
 	super step.
-	offColor ifNil: [offColor _ self onColor mixed: 0.5 with: Color black].
+	offColor ifNil: [offColor := self onColor mixed: 0.5 with: Color black].
 	socketOwner objectsInQueue = 0 ifTrue: [
 		color = offColor ifFalse: [super color: offColor].
 	] ifFalse: [

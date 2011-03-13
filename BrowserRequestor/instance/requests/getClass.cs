@@ -1,0 +1,2 @@
+getClass
+	^ self getBrowser selectedClassOrMetaClass

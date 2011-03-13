@@ -1,0 +1,2 @@
+makeNewDrawing
+	self doNewPainting

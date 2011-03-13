@@ -5,5 +5,3 @@ delete
 	super delete.
 	self removeFromObjects; removeFromParent.
 	self subCategories do: [:c | c delete ]
-	
-	

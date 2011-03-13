@@ -1,3 +1,3 @@
 isCarryingFood: aBoolean
 
-	isCarryingFood _ aBoolean.
+	isCarryingFood := aBoolean.

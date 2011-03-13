@@ -1,1 +1,0 @@
-SoundCodecPlugin class instanceVariableNames: ''

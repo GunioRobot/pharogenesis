@@ -1,6 +1,6 @@
 ProjectNavigationMorph
 	subclass: #NebraskaNavigationMorph
-	instanceVariableNames: 'nebraskaBorder nebraskaTerminal '
+	instanceVariableNames: 'nebraskaBorder nebraskaTerminal'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Navigators'
+	category: 'Nebraska-Morphic-Remote'

@@ -1,2 +1,0 @@
-nodeSpec
-	^nodeSpec

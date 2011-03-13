@@ -9,8 +9,7 @@ printCaseOn: aStream indent: level
 		printOn: aStream
 		indent: level
 		precedence: 3.
-	aStream dialect = #SQ00 ifTrue: [aStream nextPutAll: ' caseOf (']
-		ifFalse: [aStream nextPutAll: ' caseOf: '].
+	aStream nextPutAll: ' caseOf: '.
 	braceNode isVariableReference ifTrue: [braceNode printOn: aStream indent: level]
 		ifFalse: 
 			[aStream nextPutAll: '{';
@@ -29,17 +28,13 @@ printCaseOn: aStream indent: level
 					last ifTrue: [aStream nextPut: $}]
 						ifFalse: [aStream nextPut: $.;
 								 crtab: level + 1]]].
-	aStream dialect = #SQ00 ifTrue: [aStream nextPutAll: ')'].
 	otherwise isNil
 		ifFalse: 
-			[aStream dialect = #SQ00 ifTrue: [aStream crtab: level + 1;
-					 nextPutAll: ' otherwise (']
-				ifFalse: [aStream crtab: level + 1;
-						 nextPutAll: ' otherwise: '].
+			[aStream crtab: level + 1;
+			nextPutAll: ' otherwise: '.
 			otherwise isComplex
 				ifTrue: 
 					[aStream crtab: level + 2.
 					extra _ 1]
 				ifFalse: [extra _ 0].
-			otherwise printOn: aStream indent: level + 1 + extra.
-			aStream dialect = #SQ00 ifTrue: [aStream nextPutAll: ')']]
+			otherwise printOn: aStream indent: level + 1 + extra.]

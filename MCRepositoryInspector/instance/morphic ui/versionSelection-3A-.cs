@@ -1,6 +1,6 @@
 versionSelection: aNumber
 	aNumber isZero 
-		ifTrue: [ selectedVersion _ nil ]
+		ifTrue: [ selectedVersion := nil ]
 		ifFalse: [ 
-			selectedVersion _ versions at: aNumber].
+			selectedVersion := versions at: aNumber].
 	self changed: #versionSelection; changed: #summary

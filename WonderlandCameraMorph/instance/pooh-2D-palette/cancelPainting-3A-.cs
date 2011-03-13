@@ -1,2 +1,0 @@
-cancelPainting: aPaintBoxMorph
-	^self cancel

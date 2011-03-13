@@ -1,26 +1,26 @@
 makeControls
 
 	| bb r reverbSwitch repeatSwitch |
-	r _ AlignmentMorph newRow.
+	r := AlignmentMorph newRow.
 	r color: color; borderWidth: 0; layoutInset: 0.
 	r hResizing: #shrinkWrap; vResizing: #shrinkWrap; extent: 5@5.
-	bb _ SimpleButtonMorph new target: self; borderColor: #raised;
+	bb := SimpleButtonMorph new target: self; borderColor: #raised;
 			borderWidth: 2; color: color.
 	r addMorphBack: (bb label: '<>'; actWhen: #buttonDown;
 												actionSelector: #invokeMenu).
-	bb _ SimpleButtonMorph new target: self; borderColor: #raised;
+	bb := SimpleButtonMorph new target: self; borderColor: #raised;
 			borderWidth: 2; color: color.
 	r addMorphBack: (bb label: 'Piano Roll' translated;		actionSelector: #makePianoRoll).
-	bb _ SimpleButtonMorph new target: self; borderColor: #raised;
+	bb := SimpleButtonMorph new target: self; borderColor: #raised;
 			borderWidth: 2; color: color.
 	r addMorphBack: (bb label: 'Rewind' translated;		actionSelector: #rewind).
-	bb _ SimpleButtonMorph new target: scorePlayer; borderColor: #raised;
+	bb := SimpleButtonMorph new target: scorePlayer; borderColor: #raised;
 			borderWidth: 2; color: color.
 	r addMorphBack: (bb label: 'Play' translated;			actionSelector: #resumePlaying).
-	bb _ SimpleButtonMorph new target: scorePlayer; borderColor: #raised;
+	bb := SimpleButtonMorph new target: scorePlayer; borderColor: #raised;
 			borderWidth: 2; color: color.
 	r addMorphBack: (bb label: 'Pause' translated;			actionSelector: #pause).
-	reverbSwitch _ SimpleSwitchMorph new
+	reverbSwitch := SimpleSwitchMorph new
 		offColor: color;
 		onColor: (Color r: 1.0 g: 0.6 b: 0.6);
 		borderWidth: 2;
@@ -30,7 +30,7 @@ makeControls
 		setSwitchState: SoundPlayer isReverbOn not.
 	r addMorphBack: reverbSwitch.
 	scorePlayer ifNotNil:
-		[repeatSwitch _ SimpleSwitchMorph new
+		[repeatSwitch := SimpleSwitchMorph new
 			offColor: color;
 			onColor: (Color r: 1.0 g: 0.6 b: 0.6);
 			borderWidth: 2;

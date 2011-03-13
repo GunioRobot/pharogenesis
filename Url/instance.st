@@ -1,6 +1,6 @@
 Object
 	subclass: #Url
-	instanceVariableNames: 'fragment '
+	instanceVariableNames: 'fragment'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Network-Url'

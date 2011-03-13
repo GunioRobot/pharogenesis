@@ -1,0 +1,6 @@
+This class is the root of the Requestor hierarchy.
+
+Requestors are interfaces between services and the system. ServiceActions are given an instance
+of a Requestor, and they ask it for the data they need. The requestor is determined by the model of the application. A class used as a model can implement the #requestor message to return the most suited requestor. A requestor knows how to query its model and the user if needed.
+
+Requestor are defined in hierarchies so that the protocol they rely on (methods starting with 'get') can be easily reused.

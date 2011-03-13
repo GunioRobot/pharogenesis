@@ -1,3 +1,3 @@
 openBrowser: aClass
 
-	Browser newOnClass: aClass
+	ToolSet browse: aClass selector: nil

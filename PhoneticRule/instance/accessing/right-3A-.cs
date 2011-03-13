@@ -1,2 +1,2 @@
 right: aString
-	right _ aString
+	right := aString

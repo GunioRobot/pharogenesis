@@ -3,4 +3,4 @@ PseudoClass
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Tools-File Contents Browser'
+	category: 'System-FilePackage'

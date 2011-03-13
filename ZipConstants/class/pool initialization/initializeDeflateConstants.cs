@@ -1,12 +1,12 @@
 initializeDeflateConstants
 
-	WindowSize _ 16r8000.
-	WindowMask _ WindowSize - 1.
-	MaxDistance _ WindowSize.
+	WindowSize := 16r8000.
+	WindowMask := WindowSize - 1.
+	MaxDistance := WindowSize.
 
-	MinMatch _ 3.
-	MaxMatch _ 258.
+	MinMatch := 3.
+	MaxMatch := 258.
 
-	HashBits _ 15.
-	HashMask _ (1 << HashBits) - 1.
-	HashShift _ (HashBits + MinMatch - 1) // MinMatch.
+	HashBits := 15.
+	HashMask := (1 << HashBits) - 1.
+	HashShift := (HashBits + MinMatch - 1) // MinMatch.

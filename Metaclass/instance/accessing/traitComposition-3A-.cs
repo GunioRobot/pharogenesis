@@ -1,0 +1,2 @@
+traitComposition: aTraitComposition
+	traitComposition _ aTraitComposition

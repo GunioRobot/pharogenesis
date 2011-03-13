@@ -1,0 +1,1 @@
+ISO88592TextConverter class instanceVariableNames: ''

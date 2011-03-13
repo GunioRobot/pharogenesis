@@ -3,7 +3,7 @@ recordWithLevel: recordLevel
 
 	| recorder |
 	"record the sound"
-	recorder _ SoundRecorder new
+	recorder := SoundRecorder new
 		samplingRate: samplingRate;
 		recordLevel: recordLevel;
 		clearRecordedSound.
@@ -16,8 +16,8 @@ recordWithLevel: recordLevel
 	Utilities
 		informUser: 'Removing leading/trailing silence...'
 		during: [
-			samples _ recorder condensedSamples.
+			samples := recorder condensedSamples.
 			samples size > 0 ifTrue: [
-				samples _ self trimAndNormalize: samples]].
+				samples := self trimAndNormalize: samples]].
 
 	self clearFeatures.

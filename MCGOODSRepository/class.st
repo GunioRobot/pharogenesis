@@ -1,0 +1,1 @@
+MCGOODSRepository class instanceVariableNames: ''

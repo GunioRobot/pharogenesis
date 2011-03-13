@@ -1,1 +1,0 @@
-TTCompositeGlyph class instanceVariableNames: ''

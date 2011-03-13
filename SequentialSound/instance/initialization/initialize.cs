@@ -1,5 +1,5 @@
 initialize
 
 	super initialize.
-	sounds _ Array new.
-	currentIndex _ 0.
+	sounds := Array new.
+	currentIndex := 0.

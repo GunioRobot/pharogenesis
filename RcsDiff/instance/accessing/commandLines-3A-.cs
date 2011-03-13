@@ -1,2 +1,2 @@
 commandLines: aString
-	commandLines _ aString
+	commandLines := aString

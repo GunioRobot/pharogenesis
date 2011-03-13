@@ -1,1 +1,0 @@
-fromSpec: aNodeSpec

@@ -1,1 +1,0 @@
-This class undoes the resizing of an actor.

@@ -1,6 +1,6 @@
 UpdatingSimpleButtonMorph
 	subclass: #ScriptableButton
-	instanceVariableNames: 'scriptSelector '
+	instanceVariableNames: 'scriptSelector'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Scripting'
+	category: 'EToys-Scripting'

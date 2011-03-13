@@ -1,1 +1,0 @@
-createLightsForScene5: aScene

@@ -1,6 +1,7 @@
 mouseDown: evt
 
 	super mouseDown: evt.
+	evt yellowButtonPressed ifTrue: [ ^self ] .
 	mouseDownTime _ Time millisecondClockValue.
 	oldColor _ self fillStyle. 
 	actWhen == #buttonDown

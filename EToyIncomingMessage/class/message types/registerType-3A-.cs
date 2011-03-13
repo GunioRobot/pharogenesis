@@ -1,3 +1,3 @@
 registerType: aMessageType
 
-	MessageTypes _ self allTypes copyWith: aMessageType
+	MessageTypes := self allTypes copyWith: aMessageType

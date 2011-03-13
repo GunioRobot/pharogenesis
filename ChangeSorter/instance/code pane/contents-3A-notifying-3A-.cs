@@ -5,7 +5,7 @@ contents: aString notifying: aController
 	created a new method, deselect the current selection. Then answer true."
 	| category selector class oldSelector |
 
-	(class _ self selectedClassOrMetaClass) ifNil:
+	(class := self selectedClassOrMetaClass) ifNil:
 		[(myChangeSet preambleString == nil or: [aString size == 0]) ifTrue: [ ^ false].
 		(aString count: [:char | char == $"]) odd 
 			ifTrue: [self inform: 'unmatched double quotes in preamble']
@@ -16,9 +16,9 @@ To put a double-quote inside a comment, type two double-quotes in a row.
 		myChangeSet preambleString: aString.
 		self currentSelector: nil.  "forces update with no 'unsubmitted chgs' feedback"
 		^ true].
-	oldSelector _ self selectedMessageName.
-	category _ class organization categoryOfElement: oldSelector.
-	selector _ class compile: aString
+	oldSelector := self selectedMessageName.
+	category := class organization categoryOfElement: oldSelector.
+	selector := class compile: aString
 				classified: category
 				notifying: aController.
 	selector ifNil: [^ false].

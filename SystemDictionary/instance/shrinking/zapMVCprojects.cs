@@ -1,30 +1,28 @@
 zapMVCprojects
 	"Smalltalk zapMVCprojects"
 	| window |
-	self flag: #bob.
-	"zapping projects"
-	self garbageCollect.
+
+	self flag: #bob. "zapping projects"
+
+	Smalltalk garbageCollect.
 	"So allInstances is precise"
 	Project
 		allSubInstancesDo: [:proj | proj isTopProject
 				ifTrue: [proj isMorphic
-						ifFalse: ["Root project is MVC -- we must become
-							the root"
-							CurrentProjectRefactoring currentBeParentToCurrent]]
+						ifFalse: ["Root project is MVC -- we must become the root"
+							Project current setParent: Project current.]]
 				ifFalse: [proj parent isMorphic
 						ifFalse: [proj isMorphic
-								ifTrue: ["Remove Morphic projects from
-									MVC 
-									views"
+								ifTrue: ["Remove Morphic projects from MVC 
+									views "
 									"... and add them back here."
-									window := (SystemWindow labelled: proj name)
+									window _ (SystemWindow labelled: proj name)
 												model: proj.
 									window
 										addMorph: (ProjectViewMorph on: proj)
 										frame: (0 @ 0 corner: 1.0 @ 1.0).
 									window openInWorld.
-									CurrentProjectRefactoring currentBeParentTo: proj]].
+									proj setParent: Project current]].
 					proj isMorphic
-						ifFalse: ["Remove MVC projects from Morphic
-							views "
+						ifFalse: ["Remove MVC projects from Morphic views"
 							Project deletingProject: proj]]]

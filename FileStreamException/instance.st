@@ -1,6 +1,6 @@
 Error
 	subclass: #FileStreamException
-	instanceVariableNames: 'fileName '
+	instanceVariableNames: 'fileName'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Exceptions Kernel'
+	category: 'Exceptions-Kernel'

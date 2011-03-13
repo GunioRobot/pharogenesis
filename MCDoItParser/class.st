@@ -1,0 +1,1 @@
+MCDoItParser class instanceVariableNames: ''

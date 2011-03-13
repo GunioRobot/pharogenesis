@@ -2,7 +2,7 @@ convertToSqueakMovieFileNamed: fileName
 	"convert the receiver to a squeak-format movie"
 	" 
 	(MPEGFile openFile:
-	'/H/squeak/Small-Land/Demo/media/mazinger_z_spanish_op.mpg') 
+	'/H/squeak/Small-Land/Demo/media/mazinger:=z:=spanish:=op.mpg') 
 	convertToSqueakMovieFileNamed: 'MazingerZ.squeakmovie' 
 	"
 	| movieFile max w h d frameBuffer |

@@ -1,0 +1,1 @@
+BDFFontReader class instanceVariableNames: ''

@@ -1,0 +1,2 @@
+scrollBarHeight
+	^ 12

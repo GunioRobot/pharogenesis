@@ -1,1 +1,0 @@
-Matrix2x3Plugin class instanceVariableNames: ''

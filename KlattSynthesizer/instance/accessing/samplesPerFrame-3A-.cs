@@ -1,2 +1,2 @@
 samplesPerFrame: anInteger
-	samplesPerFrame _ anInteger
+	samplesPerFrame := anInteger

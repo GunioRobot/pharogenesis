@@ -1,6 +1,6 @@
 MCRepository
 	subclass: #MCFileBasedRepository
-	instanceVariableNames: 'cache'
+	instanceVariableNames: 'cache allFileNames'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Monticello-Repositories'

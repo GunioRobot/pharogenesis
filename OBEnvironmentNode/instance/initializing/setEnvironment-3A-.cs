@@ -1,0 +1,2 @@
+setEnvironment: anEnvironment
+	environment := anEnvironment

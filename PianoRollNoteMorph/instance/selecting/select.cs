@@ -1,5 +1,5 @@
 select
 
 	selected ifTrue: [^ self].
-	selected _ true.
+	selected := true.
 	self changed

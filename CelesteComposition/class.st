@@ -1,1 +1,0 @@
-CelesteComposition class instanceVariableNames: ''

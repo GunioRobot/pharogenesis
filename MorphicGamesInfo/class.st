@@ -1,1 +1,0 @@
-MorphicGamesInfo class instanceVariableNames: ''

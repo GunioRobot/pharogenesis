@@ -3,7 +3,7 @@ descriptionForPartsBin
 
 	^ self partName: 	'Audio chat'
 		categories:		#('Collaborative')
-		documentation:	'A tool for talking to other Squeak uers'
+		documentation:	'A tool for talking to other Squeak users'
 		sampleImageForm: (Form
 	extent: 110@70
 	depth: 8

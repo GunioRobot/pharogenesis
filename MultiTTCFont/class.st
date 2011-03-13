@@ -1,0 +1,1 @@
+MultiTTCFont class instanceVariableNames: ''

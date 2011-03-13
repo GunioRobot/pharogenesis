@@ -1,0 +1,2 @@
+browserEnvironment
+	^ Smalltalk classNamed: #BrowserEnvironment.

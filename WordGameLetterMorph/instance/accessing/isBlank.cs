@@ -1,2 +1,0 @@
-isBlank
-	^indexInQuote isNil

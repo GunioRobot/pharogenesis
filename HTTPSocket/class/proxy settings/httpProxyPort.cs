@@ -1,3 +1,4 @@
 httpProxyPort
 	"answer the httpProxyPort"
-	^ HTTPProxyPort
+	self checkHTTPProxyPreferences.
+	^Preferences valueOfPreference: #httpProxyPort.

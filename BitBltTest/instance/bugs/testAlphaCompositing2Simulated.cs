@@ -1,6 +1,7 @@
 testAlphaCompositing2Simulated
-	| bb f1 f2 mixColor result eps |
+	"self run: #testAlphaCompositing2Simulated"
 
+	| bb f1 f2 mixColor result eps |
 	Smalltalk at: #BitBltSimulation ifPresent: [:bitblt|
 	f1 := Form extent: 1@1 depth: 32.
 	f2 := Form extent: 1@1 depth: 32.

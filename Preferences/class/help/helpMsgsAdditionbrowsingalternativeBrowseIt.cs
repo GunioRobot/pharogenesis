@@ -1,2 +1,0 @@
-helpMsgsAdditionbrowsingalternativeBrowseIt
-	^ #((alternativeBrowseIt 'if true, then the "browse it" (cmd-b) feature in the text editor will offer you a list of class names matching the selection, if appropriate' ) )

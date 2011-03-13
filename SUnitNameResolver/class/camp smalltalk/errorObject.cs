@@ -1,2 +1,0 @@
-errorObject
-	^Error

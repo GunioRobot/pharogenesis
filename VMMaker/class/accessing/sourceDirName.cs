@@ -1,2 +1,0 @@
-sourceDirName
-	^DirNames at: #sourceDir

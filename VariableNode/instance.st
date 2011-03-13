@@ -1,6 +1,6 @@
 LeafNode
 	subclass: #VariableNode
-	instanceVariableNames: 'name '
+	instanceVariableNames: 'name'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Compiler'
+	category: 'Compiler-ParseNodes'

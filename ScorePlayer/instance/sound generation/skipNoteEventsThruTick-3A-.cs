@@ -3,8 +3,8 @@ skipNoteEventsThruTick: startTick
 
 	| j evt |
 	1 to: score tracks size do: [:i |
-		j _ trackEventIndex at: i.
-		[evt _ score eventForTrack: i after: j ticks: startTick.
+		j := trackEventIndex at: i.
+		[evt := score eventForTrack: i after: j ticks: startTick.
 		 evt == nil] whileFalse: [
 			evt isNoteEvent
 				ifTrue: [
@@ -12,5 +12,5 @@ skipNoteEventsThruTick: startTick
 						self startNote: evt forStartTick: startTick trackIndex: i]]
 				ifFalse: [
 					midiPort == nil ifFalse: [evt outputOnMidiPort: midiPort]].
-			j _ j + 1].
+			j := j + 1].
 		trackEventIndex at: i put: j].

@@ -1,3 +1,6 @@
 versionFromFileNamed: aString
-	cache ifNil: [cache _ Dictionary new].
-	^ cache at: aString ifAbsentPut: [self loadVersionFromFileNamed: aString]
+	| v |
+	v := self cache at: aString ifAbsent: [self loadVersionFromFileNamed: aString].
+	self resizeCache: cache.
+	(v notNil and: [v isCacheable]) ifTrue: [cache at: aString put: v].
+	^ v

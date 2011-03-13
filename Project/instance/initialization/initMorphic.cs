@@ -9,6 +9,5 @@ initMorphic
 	isolatedHead := false.
 	world := PasteUpMorph newWorldForProject: self.
 	Locale switchToID: CurrentProject localeID.
-	self initializeProjectPreferences "Do this *after* a world is installed so that the project will be recognized as a morphic one."
-
-
+	self initializeProjectPreferences. "Do this *after* a world is installed so that the project will be recognized as a morphic one."
+	Preferences useVectorVocabulary ifTrue: [world installVectorVocabulary]

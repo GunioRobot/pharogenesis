@@ -1,7 +1,7 @@
 translatePhrase: aString 
 	"translate aString"
 	| translation |
-	translation := FillInTheBlank
+	translation := UIManager default
 				multiLineRequest: 'translation for: ' translated , '''' , aString , ''''
 				centerAt: Sensor cursorPoint
 				initialAnswer: aString

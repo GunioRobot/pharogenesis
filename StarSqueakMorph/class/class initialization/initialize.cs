@@ -1,4 +1,4 @@
 initialize
 	"StarSqueakMorph initialize"
 
-	RandomSeed _ 17.
+	RandomSeed := 17.

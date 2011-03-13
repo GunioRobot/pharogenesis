@@ -1,8 +1,8 @@
 on: aCollectionOrStream
-	crc _ 16rFFFFFFFF.
-	crcPosition _ 1.
-	bytesWritten _ 0.
-	encoder _ ZipEncoder on: aCollectionOrStream.
+	crc := 16rFFFFFFFF.
+	crcPosition := 1.
+	bytesWritten := 0.
+	encoder := ZipEncoder on: aCollectionOrStream.
 	encoder isBinary
 		ifTrue:[super on: ByteArray new]
 		ifFalse:[super on: String new].

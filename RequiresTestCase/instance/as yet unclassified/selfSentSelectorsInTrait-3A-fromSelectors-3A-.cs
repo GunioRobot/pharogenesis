@@ -1,0 +1,2 @@
+selfSentSelectorsInTrait: composedTrait fromSelectors: interestingSelectors 
+	^composedTrait selfSentSelectorsFromSelectors: interestingSelectors 

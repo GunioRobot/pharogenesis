@@ -1,3 +1,0 @@
-isMine
-
-	^ isMine

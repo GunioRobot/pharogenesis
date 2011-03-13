@@ -1,4 +1,4 @@
 editCustomHalos
 
-	Browser openMessageBrowserForClass: Preferences class
-		selector: #customHaloSpecs editString: nil
+	ToolSet browse: Preferences class
+		selector: #customHaloSpecs

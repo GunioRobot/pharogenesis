@@ -1,2 +1,0 @@
-spamTokens
-	^ categorizer categoryNamed: 'spam'

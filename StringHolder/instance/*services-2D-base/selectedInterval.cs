@@ -1,0 +1,2 @@
+selectedInterval
+	^self codeTextMorph selectionInterval

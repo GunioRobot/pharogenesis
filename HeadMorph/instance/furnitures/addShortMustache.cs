@@ -1,6 +1,6 @@
 addShortMustache
 	| mustache |
-	mustache _ CurveMorph
+	mustache := CurveMorph
 		vertices: {29@1. 54@14. 30@11. 1@15}
 		color: self randomHairColor
 		borderWidth: 1

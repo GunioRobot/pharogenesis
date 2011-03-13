@@ -13,6 +13,7 @@ blueButtonDown: anEvent
 
 	"cmd-drag on flexed morphs works better this way"
 	h _ self addHalo: (anEvent transformedBy: tfm).
+	h ifNil: [^ self].
 	doNotDrag ifTrue:[^self].
 	"Initiate drag transition if requested"
 	anEvent hand 

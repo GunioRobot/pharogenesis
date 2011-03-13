@@ -1,0 +1,2 @@
+isShadowDrawing
+	^ self shadowColor notNil

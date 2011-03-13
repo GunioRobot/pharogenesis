@@ -1,6 +1,6 @@
 classDefinitionString
 	| defs |
-	defs _ items select: [:ea | (ea isClassDefinition or: [ea isClassDefinitionExtension])
+	defs := items select: [:ea | (ea isClassDefinition or: [ea isClassDefinitionExtension])
 			and: [ea className = classSelection]].
 
 	defs isEmpty ifTrue: [^ 'This class is defined elsewhere.'].

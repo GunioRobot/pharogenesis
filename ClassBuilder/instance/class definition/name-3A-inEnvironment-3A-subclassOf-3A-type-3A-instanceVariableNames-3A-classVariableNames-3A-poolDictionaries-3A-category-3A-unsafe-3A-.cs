@@ -3,18 +3,22 @@ name: className inEnvironment: env subclassOf: newSuper type: type instanceVaria
 	If unsafe is true do not run any validation checks.
 	This facility is provided to implement important system changes."
 	| oldClass newClass organization instVars classVars force needNew oldCategory copyOfOldClass newCategory |
-	environ _ env.
-	instVars _ Scanner new scanFieldNames: instVarString.
-	classVars _ (Scanner new scanFieldNames: classVarString) collect: [:x | x asSymbol].
+ 
+	environ := env.
+	instVars := Scanner new scanFieldNames: instVarString.
+	classVars := (Scanner new scanFieldNames: classVarString) collect: [:x | x asSymbol].
 
 	"Validate the proposed name"
 	unsafe ifFalse:[(self validateClassName: className) ifFalse:[^nil]].
-	oldClass _ env at: className ifAbsent:[nil].
+	oldClass := env at: className ifAbsent:[nil].
 	oldClass isBehavior 
-		ifFalse:[oldClass _ nil]. "Already checked in #validateClassName:"
-	copyOfOldClass _ oldClass copy.
-
-	unsafe ifFalse:[
+		ifFalse: [oldClass := nil]  "Already checked in #validateClassName:"
+		ifTrue: [
+			copyOfOldClass := oldClass copy.
+			copyOfOldClass superclass addSubclass: copyOfOldClass].
+	
+	
+	[unsafe ifFalse:[
 		"Run validation checks so we know that we have a good chance for recompilation"
 		(self validateSuperclass: newSuper forSubclass: oldClass) ifFalse:[^nil].
 		(self validateInstvars: instVars from: oldClass forSuper: newSuper) ifFalse:[^nil].
@@ -22,7 +26,7 @@ name: className inEnvironment: env subclassOf: newSuper type: type instanceVaria
 		(self validateSubclassFormat: type from: oldClass forSuper: newSuper extra: instVars size) ifFalse:[^nil]].
 
 	"See if we need a new subclass"
-	needNew _ self needsSubclassOf: newSuper type: type instanceVariables: instVars from: oldClass.
+	needNew := self needsSubclassOf: newSuper type: type instanceVariables: instVars from: oldClass.
 	needNew == nil ifTrue:[^nil]. "some error"
 
 	(needNew and:[unsafe not]) ifTrue:[
@@ -33,11 +37,11 @@ name: className inEnvironment: env subclassOf: newSuper type: type instanceVaria
 		"Check if the receiver should not be redefined"
 		(oldClass ~~ nil and:[oldClass shouldNotBeRedefined]) ifTrue:[
 			self notify: oldClass name asText allBold, 
-						' should not be redefined! \Proceed to store over it.' withCRs]].
+						' should not be redefined. \Proceed to store over it.' withCRs]].
 
 	needNew ifTrue:[
 		"Create the new class"
-		newClass _ self 
+		newClass := self 
 			newSubclassOf: newSuper 
 			type: type 
 			instanceVariables: instVars
@@ -46,21 +50,21 @@ name: className inEnvironment: env subclassOf: newSuper type: type instanceVaria
 		newClass setName: className.
 	] ifFalse:[
 		"Reuse the old class"
-		newClass _ oldClass.
+		newClass := oldClass.
 	].
 
 	"Install the class variables and pool dictionaries... "
-	force _ (newClass declare: classVarString) | (newClass sharing: poolString).
+	force := (newClass declare: classVarString) | (newClass sharing: poolString).
 
 	"... classify ..."
-	newCategory _ category asSymbol.
-	organization _ environ ifNotNil:[environ organization].
+	newCategory := category asSymbol.
+	organization := environ ifNotNil:[environ organization].
 	oldClass isNil ifFalse: [oldCategory := (organization categoryOfElement: oldClass name) asSymbol].
 	organization classify: newClass name under: newCategory.
 	newClass environment: environ.
 
 	"... recompile ..."
-	newClass _ self recompile: force from: oldClass to: newClass mutate: false.
+	newClass := self recompile: force from: oldClass to: newClass mutate: false.
 
 	"... export if not yet done ..."
 	(environ at: newClass name ifAbsent:[nil]) == newClass ifFalse:[
@@ -69,13 +73,17 @@ name: className inEnvironment: env subclassOf: newSuper type: type instanceVaria
 		Smalltalk flushClassNameCache.
 	].
 
-	self doneCompiling: newClass.
-	
+
+	newClass doneCompiling.
 	"... notify interested clients ..."
 	oldClass isNil ifTrue: [
 		SystemChangeNotifier uniqueInstance classAdded: newClass inCategory: newCategory.
 		^ newClass].
-	SystemChangeNotifier uniqueInstance classDefinitionChangedFrom: copyOfOldClass to: newClass.
 	newCategory ~= oldCategory 
-		ifTrue: [SystemChangeNotifier uniqueInstance class: newClass recategorizedFrom: oldCategory to: category].
+		ifTrue: [SystemChangeNotifier uniqueInstance class: newClass recategorizedFrom: oldCategory to: category]
+		ifFalse: [SystemChangeNotifier uniqueInstance classDefinitionChangedFrom: copyOfOldClass to: newClass.].
+] ensure: 
+		[copyOfOldClass ifNotNil: [copyOfOldClass superclass removeSubclass: copyOfOldClass].
+		Behavior flushObsoleteSubclasses.
+		].
 	^newClass

@@ -1,6 +1,6 @@
 Object
 	subclass: #AsyncFile
-	instanceVariableNames: 'name writeable semaphore fileHandle '
-	classVariableNames: 'Busy Error '
+	instanceVariableNames: 'name writeable semaphore fileHandle'
+	classVariableNames: 'Busy ErrorCode'
 	poolDictionaries: ''
-	category: 'System-Files'
+	category: 'Files-Kernel'

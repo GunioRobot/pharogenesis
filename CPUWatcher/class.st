@@ -1,0 +1,1 @@
+CPUWatcher class instanceVariableNames: ''

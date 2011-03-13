@@ -1,0 +1,13 @@
+A data structures implementing a simple form of keyboard shortucts is defined on the class side.
+
+Available keyboard shortcuts are: 
+
+command-0 to command-9 (command is also called alt on some systems).
+control-0 to control-0
+command-control-0 to command-control-9 (command is also alt)
+control-command-left arrow
+control-command-up arrow
+control-command-right arrow
+control-command-down arrow
+
+Using the Services Browser (see class ServicePreferences), these shortcuts can be bound to service identifiers.

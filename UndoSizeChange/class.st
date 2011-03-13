@@ -1,1 +1,0 @@
-UndoSizeChange class instanceVariableNames: ''

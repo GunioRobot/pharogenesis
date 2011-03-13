@@ -13,9 +13,9 @@ makeSqueaklandReleasePhasePrepare
 	"Set new look so we don't need older fonts later"
 	StandardScriptingSystem applyNewEToyLook.
 
-	Browser initialize.
+	Smalltalk at: #Browser ifPresent:[:br| br initialize].
 	ScriptingSystem deletePrivateGraphics.
-	ChangeSorter removeChangeSetsNamedSuchThat:
+	ChangeSet removeChangeSetsNamedSuchThat:
 		[:cs| cs name ~= ChangeSet current name].
 	ChangeSet current clear.
 	ChangeSet current name: 'Unnamed1'.
@@ -26,5 +26,5 @@ makeSqueaklandReleasePhasePrepare
 	References keys do:[:k| References removeKey: k].
 
 	Smalltalk garbageCollect.
-	ScheduledControllers _ nil.
+	ScheduledControllers := nil.
 	Smalltalk garbageCollect.

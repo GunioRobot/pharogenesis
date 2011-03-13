@@ -1,2 +1,0 @@
-enpassantSquare
-	^enpassantSquare

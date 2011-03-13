@@ -1,2 +1,2 @@
 lexicon: aDictionary
-	lexicon _ aDictionary
+	lexicon := aDictionary

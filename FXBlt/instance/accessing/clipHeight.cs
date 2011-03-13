@@ -1,2 +1,0 @@
-clipHeight
-	^clipHeight

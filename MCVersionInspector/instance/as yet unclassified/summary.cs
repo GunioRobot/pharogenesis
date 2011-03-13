@@ -1,4 +1,4 @@
 summary
 	^self hasVersion
-		ifTrue: [ self version summary ]
+		ifTrue: [ self versionSummary ]
 		ifFalse: [ String new ]

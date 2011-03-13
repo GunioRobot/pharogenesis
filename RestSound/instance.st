@@ -1,6 +1,6 @@
 AbstractSound
 	subclass: #RestSound
-	instanceVariableNames: 'initialCount count '
+	instanceVariableNames: 'initialCount count'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Sound-Synthesis'

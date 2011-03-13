@@ -1,10 +1,8 @@
 editRepository
-	| oldTemplate newRepo |
+	| newRepo |
 	
-	oldTemplate _ self repository creationTemplate.
-	oldTemplate ifNotNil: [ newRepo _ self repository openAndEditTemplateCopy ].
+	newRepo := self repository openAndEditTemplateCopy.
 	newRepo ifNotNil: [ 
-		self removeRepository.
-		self addRepository: newRepo.
-		self addRepositoryToWorkingCopy.
-	].
+		newRepo class = self repository class
+			ifTrue: [self repository copyFrom: newRepo]
+			ifFalse: [self inform: 'Must not change repository type!']]

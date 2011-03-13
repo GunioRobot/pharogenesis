@@ -1,2 +1,2 @@
 colorSwatchColor: aColor
-	colorSwatch color: aColor
+	colorSwatch color: aColor.

@@ -1,0 +1,1 @@
+This is a wrapper for showing the SqueakMap categories (SMCategory) using the SimpleHierarchicalListMorph in the SMLoader, see SMLoader>>categoryWrapperList.

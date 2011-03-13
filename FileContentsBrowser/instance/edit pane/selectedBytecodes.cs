@@ -2,12 +2,12 @@ selectedBytecodes
 	"Compile the source code for the selected message selector and extract and return
 	the bytecode listing."
 	| class selector |
-	class _ self selectedClassOrMetaClass.
-	selector _ self selectedMessageName.
-	contents _ class sourceCodeAt: selector.
-	contents _ Compiler new
+	class := self selectedClassOrMetaClass.
+	selector := self selectedMessageName.
+	contents := class sourceCodeAt: selector.
+	contents := Compiler new
 					parse: contents
 					in: class
 					notifying: nil.
-	contents _ contents generate: #(0 0 0 0).
+	contents := contents generate.
 	^ contents symbolic asText

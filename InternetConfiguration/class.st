@@ -1,0 +1,1 @@
+InternetConfiguration class instanceVariableNames: ''

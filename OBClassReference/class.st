@@ -1,0 +1,1 @@
+OBClassReference class instanceVariableNames: ''

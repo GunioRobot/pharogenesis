@@ -1,0 +1,1 @@
+SunAudioFileWriter class instanceVariableNames: ''

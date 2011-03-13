@@ -3,17 +3,17 @@ directoryContentsFor: fullPath
 	"FileDirectory default directoryContentsFor: ''"
 
 	| entries index done entryArray f |
-	entries _ OrderedCollection new: 200.
-	index _ 1.
-	done _ false.
-	f _ fullPath asVmPathName.
+	entries := OrderedCollection new: 200.
+	index := 1.
+	done := false.
+	f := fullPath asVmPathName.
 	[done] whileFalse: [
-		entryArray _ self primLookupEntryIn: f index: index.
+		entryArray := self primLookupEntryIn: f index: index.
 		#badDirectoryPath = entryArray ifTrue: [
 			^(InvalidDirectoryError pathName: pathName asSqueakPathName) signal].
 		entryArray == nil
-			ifTrue: [done _ true]
+			ifTrue: [done := true]
 			ifFalse: [entries addLast: (DirectoryEntry fromArray: entryArray)].
-		index _ index + 1].
+		index := index + 1].
 
 	^ entries asArray collect: [:s | s convertFromSystemName].

@@ -1,2 +1,0 @@
-asVRMLStream
-	^self

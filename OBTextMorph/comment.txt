@@ -1,0 +1,1 @@
+This is a trivial subclass of TextMorph. It overrides editor creation to use OBTextMorphEditor rather than a regular TextMorphEditor.

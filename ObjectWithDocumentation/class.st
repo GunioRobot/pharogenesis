@@ -1,1 +1,0 @@
-ObjectWithDocumentation class instanceVariableNames: ''

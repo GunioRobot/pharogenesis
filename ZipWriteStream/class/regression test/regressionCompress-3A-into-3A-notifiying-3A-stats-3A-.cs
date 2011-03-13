@@ -4,9 +4,9 @@ regressionCompress: aFile into: tempFile notifiying: progressBar stats: stats
 	aFile binary.
 	aFile position: 0.
 	tempFile binary.
-	buffer _ ByteArray new: 4096.
-	zip _ self on: (ByteArray new: 10000).
-	encoded _ zip encodedStream.
+	buffer := ByteArray new: 4096.
+	zip := self on: (ByteArray new: 10000).
+	encoded := zip encodedStream.
 	[aFile atEnd] whileFalse:[
 		progressBar value: aFile position.
 		zip nextPutAll: (aFile nextInto: buffer).

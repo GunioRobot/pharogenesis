@@ -1,6 +1,6 @@
 RectangleMorph
 	subclass: #GradientFillMorph
-	instanceVariableNames: 'fillColor2 gradientDirection colorArray colorDepth '
+	instanceVariableNames: 'fillColor2 gradientDirection colorArray colorDepth'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Widgets'
+	category: 'MorphicExtras-Widgets'

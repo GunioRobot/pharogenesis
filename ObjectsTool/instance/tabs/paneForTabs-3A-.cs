@@ -7,6 +7,7 @@ paneForTabs: tabList
 				borderColor: Color black].
 
 	aPane := AlignmentMorph newRow
+				color: ColorTheme current dialogColor;
 				listDirection: #leftToRight;
 				wrapDirection: #topToBottom;
 				vResizing: #spaceFill;

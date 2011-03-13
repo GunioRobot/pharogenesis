@@ -1,2 +1,0 @@
-relativeAttribute
-	^ TextEmphasis bold

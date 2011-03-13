@@ -1,2 +1,0 @@
-levelName
-	^ 'Nitro-Glycerin' translated

@@ -1,2 +1,0 @@
-helpMsgsAdditiongeneralmodalColorPickers
-	^ #((modalColorPickers 'If true, color choices in Morphic will be made via color-pickers that take control of the mouse and immediately return the color selected upon mouseup' ) )

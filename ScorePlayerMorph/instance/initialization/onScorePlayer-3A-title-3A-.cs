@@ -1,15 +1,15 @@
 onScorePlayer: aScorePlayer title: scoreName
 	| divider col r |
-	scorePlayer _ aScorePlayer.
+	scorePlayer := aScorePlayer.
 	scorePlayer ifNotNil:
 		[scorePlayer  reset.
-		instrumentSelector _ Array new: scorePlayer score tracks size].
+		instrumentSelector := Array new: scorePlayer score tracks size].
 
 	self removeAllMorphs.
 	self addMorphBack: self makeControls.
 	scorePlayer ifNil: [^ self].
 
-	r _ self makeRow
+	r := self makeRow
 		hResizing: #shrinkWrap;
 		vResizing: #shrinkWrap.
 	r addMorphBack: self rateControl;
@@ -18,10 +18,10 @@ onScorePlayer: aScorePlayer title: scoreName
 	self addMorphBack: r.
 	self addMorphBack: self scrollControl.
 
-	col _ AlignmentMorph newColumn color: color; layoutInset: 0.
+	col := AlignmentMorph newColumn color: color; layoutInset: 0.
 	self addMorphBack: col.
 	1 to: scorePlayer trackCount do: [:trackIndex |
-		divider _ AlignmentMorph new
+		divider := AlignmentMorph new
 			extent: 10@1;
 			borderWidth: 1;
 			layoutInset: 0;

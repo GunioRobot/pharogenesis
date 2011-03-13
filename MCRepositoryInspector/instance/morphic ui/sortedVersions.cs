@@ -1,5 +1,5 @@
 sortedVersions
 	| sorter |
-	sorter _ MCVersionSorter new.
+	sorter := MCVersionSorter new.
 	sorter addAllVersionInfos: versions.
 	^ sorter sortedVersionInfos select: [:ea | versions includes: ea]

@@ -1,0 +1,1 @@
+MCOrganizationDefinition class instanceVariableNames: ''

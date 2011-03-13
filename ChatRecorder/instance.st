@@ -3,4 +3,4 @@ SoundRecorder
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Audio-Chat'
+	category: 'Nebraska-Audio Chat'

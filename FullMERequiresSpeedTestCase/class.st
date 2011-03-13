@@ -1,0 +1,1 @@
+FullMERequiresSpeedTestCase class instanceVariableNames: ''

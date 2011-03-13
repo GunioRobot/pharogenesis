@@ -1,7 +1,0 @@
-WordGamePanelMorph provides some default support for clicking and typing in a panel with letterMorphs.
-
-letterMorphs		a collection of LetterMorphs
-					Useful in referring specifically to active letterMorphs
-					when submorphs may contain other morphs
-
-haveTypedHere		a Boolean used to determine how backspace should be handled

@@ -1,2 +1,2 @@
 provisions
-	^ provisions ifNil: [provisions _ Set withAll: Smalltalk keys]
+	^ provisions ifNil: [provisions := Set withAll: Smalltalk keys]

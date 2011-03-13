@@ -1,1 +1,0 @@
-IRCChannelUsersBrowser class instanceVariableNames: ''

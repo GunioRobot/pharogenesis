@@ -1,6 +1,6 @@
 Object
 	subclass: #TestCase
-	instanceVariableNames: 'testMessage '
+	instanceVariableNames: 'testSelector'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'SUnit-Framework'
+	category: 'SUnit-Kernel'

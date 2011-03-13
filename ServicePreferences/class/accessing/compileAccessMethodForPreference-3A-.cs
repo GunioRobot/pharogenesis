@@ -1,0 +1,2 @@
+compileAccessMethodForPreference: aPreference
+	"do nothing"

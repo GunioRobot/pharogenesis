@@ -1,2 +1,0 @@
-minZ
-	^minZ

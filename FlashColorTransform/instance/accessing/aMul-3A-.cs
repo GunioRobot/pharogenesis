@@ -1,2 +1,2 @@
 aMul: aFixed
-	aMul _ aFixed
+	aMul := aFixed

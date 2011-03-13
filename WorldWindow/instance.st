@@ -3,4 +3,4 @@ SystemWindow
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Worlds'
+	category: 'MorphicExtras-AdditionalWorlds'

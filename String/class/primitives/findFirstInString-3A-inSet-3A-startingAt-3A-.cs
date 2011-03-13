@@ -1,15 +1,15 @@
-findFirstInString: aString  inSet: inclusionMap  startingAt: start
-	| i stringSize |
-	<primitive: 'primitiveFindFirstInString' module: 'MiscPrimitivePlugin'>
-	self var: #aString declareC: 'unsigned char *aString'.
-	self var: #inclusionMap  declareC: 'char *inclusionMap'.
-
-	inclusionMap size ~= 256 ifTrue: [ ^0 ].
-
-	i _ start.
+findFirstInString: aString inSet: inclusionMap startingAt: start
+	"Trivial, non-primitive version"
+	| i stringSize ascii more |
+	inclusionMap size ~= 256 ifTrue: [^ 0].
 	stringSize _ aString size.
-	[ i <= stringSize and: [ (inclusionMap at: (aString at: i) asciiValue+1) = 0 ] ] whileTrue: [ 
-		i _ i + 1 ].
+	more _ true.
+	i _ start - 1.
+	[more and: [i + 1 <= stringSize]] whileTrue: [
+		i _ i + 1.
+		ascii _ (aString at: i) asciiValue.
+		more _ ascii < 256 ifTrue: [(inclusionMap at: ascii + 1) = 0] ifFalse: [true].
+	].
 
-	i > stringSize ifTrue: [ ^0 ].
-	^i
+	i + 1 > stringSize ifTrue: [^ 0].
+	^ i

@@ -1,6 +1,6 @@
 PluggableListMorph
 	subclass: #PluggableListMorphOfMany
-	instanceVariableNames: 'dragOnOrOff '
+	instanceVariableNames: 'dragOnOrOff getSelectionListSelector setSelectionListSelector'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Windows'
+	category: 'Morphic-Pluggable Widgets'

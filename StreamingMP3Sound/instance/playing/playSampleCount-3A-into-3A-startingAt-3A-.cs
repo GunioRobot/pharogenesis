@@ -3,11 +3,11 @@ playSampleCount: n into: aSoundBuffer startingAt: startIndex
 
 	| current |
 	self repeat ifTrue: [  "loop if necessary"
-		current _ mpegFile audioGetSample: mpegStreamIndex.
+		current := mpegFile audioGetSample: mpegStreamIndex.
 		(totalSamples - current) < n ifTrue: [
 			mpegFile audioSetSample: 0 stream: mpegStreamIndex]].
 
 	mutex critical: [
-		lastBufferMSecs _ Time millisecondClockValue.
+		lastBufferMSecs := Time millisecondClockValue.
 		self loadBuffersForSampleCount: (n * streamSamplingRate) // SoundPlayer samplingRate.
 		mixer playSampleCount: n into: aSoundBuffer startingAt: startIndex].

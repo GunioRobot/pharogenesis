@@ -1,11 +1,13 @@
 pathForDirectory
-	"Path using local file system's delimiter.  $\ or $:
+	"Path using local file system's pathname delimiter.
 	DOS paths with drive letters should not
-	be prepended with a pathNameDelimiter even though
+	be prepended with a delimiter even though
 	they are absolute. Filename is left out."
 
+	| delimiter |
+	delimiter _  FileDirectory default pathNameDelimiter.
 	^String streamContents: [ :s |
 		(self isAbsolute and: [self firstPartIsDriveLetter not])
-			ifTrue: [ s nextPut: $/ ].
+			ifTrue: [ s nextPut: delimiter ].
 		1 to: self path size - 1 do: [ :ii |
-			s nextPutAll: (path at: ii); nextPut: FileDirectory default pathNameDelimiter]]
+			s nextPutAll: (path at: ii); nextPut: delimiter]]

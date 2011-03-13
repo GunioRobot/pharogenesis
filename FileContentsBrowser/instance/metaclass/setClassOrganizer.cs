@@ -1,8 +1,8 @@
 setClassOrganizer
 	"Install whatever organization is appropriate"
 	| theClass |
-	classOrganizer _ nil.
-	metaClassOrganizer _ nil.
+	classOrganizer := nil.
+	metaClassOrganizer := nil.
 	classListIndex = 0 ifTrue: [^ self].
-	classOrganizer _ (theClass _ self selectedClass) organization.
-	metaClassOrganizer _ theClass metaClass organization.
+	classOrganizer := (theClass := self selectedClass) organization.
+	metaClassOrganizer := theClass metaClass organization.

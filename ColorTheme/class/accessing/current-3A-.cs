@@ -1,0 +1,2 @@
+current: aColorTheme
+	Current := aColorTheme

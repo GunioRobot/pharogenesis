@@ -1,0 +1,1 @@
+MCWorkingCopy class instanceVariableNames: ''

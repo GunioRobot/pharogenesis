@@ -1,8 +1,8 @@
 setRepository: aFileBasedRepository workingCopy: aWorkingCopy
-	order _ self class order.
-	repository _ aFileBasedRepository.
+	order := self class order.
+	repository := aFileBasedRepository.
 	self refresh.
 	aWorkingCopy
-		ifNil: [selectedPackage _ self packageList first]
-		ifNotNil: [ selectedPackage _ aWorkingCopy ancestry ancestorString copyUpToLast: $- ].
+		ifNil: [selectedPackage := self packageList isEmpty ifFalse: [self packageList first]]
+		ifNotNil: [ selectedPackage := aWorkingCopy ancestry ancestorString copyUpToLast: $- ].
 	MCWorkingCopy addDependent: self.

@@ -1,0 +1,3 @@
+getPixelsPerPatch
+
+	^ self getValueFromCostume: #pixelsPerPatch.

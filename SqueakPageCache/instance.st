@@ -1,6 +1,6 @@
 Object
 	subclass: #SqueakPageCache
 	instanceVariableNames: ''
-	classVariableNames: 'GlobalPolicy PageCache '
+	classVariableNames: 'GlobalPolicy PageCache'
 	poolDictionaries: ''
-	category: 'Network-SqueakPage'
+	category: 'MorphicExtras-SqueakPage'

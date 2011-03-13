@@ -6,10 +6,10 @@ indexForDeltaFrom: thisSample to: nextSample
 	| diff bestIndex |
 	self inline: true.
 
-	diff _ nextSample - thisSample.
-	diff < 0 ifTrue: [diff _ 0 - diff].
-	bestIndex _ 63.
+	diff := nextSample - thisSample.
+	diff < 0 ifTrue: [diff := 0 - diff].
+	bestIndex := 63.
 	1 to: 62 do: [:j |
 		bestIndex = 63 ifTrue: [
-			(stepSizeTable at: j) >= diff ifTrue: [bestIndex _ j]]].
+			(stepSizeTable at: j) >= diff ifTrue: [bestIndex := j]]].
 	^ bestIndex

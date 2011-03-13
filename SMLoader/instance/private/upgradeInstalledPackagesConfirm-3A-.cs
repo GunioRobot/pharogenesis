@@ -3,23 +3,23 @@ upgradeInstalledPackagesConfirm: confirmEach
 	version of Squeak. If confirmEach is true we ask for every upgrade."
 
 	| installed old myRelease toUpgrade info |
-	installed _ squeakMap installedPackages.
-	old _ squeakMap oldPackages.
+	installed := squeakMap installedPackages.
+	old := squeakMap oldPackages.
 	old isEmpty ifTrue: [
 			^self inform: 'All ', installed size printString, ' installed packages are up to date.'].
-	toUpgrade _ squeakMap upgradeableAndOldPackages.
+	toUpgrade := squeakMap upgradeableAndOldPackages.
 	toUpgrade isEmpty ifTrue: [
 			^self inform: 'None of the ', old size printString, ' old packages of the ', installed size printString, ' installed can be automatically upgraded. You need to upgrade them manually.'].
 	old size < toUpgrade size ifTrue: [
-		info _ 'Of the ', old size printString, ' old packages only ', toUpgrade size printString, ' can be upgraded.
+		info := 'Of the ', old size printString, ' old packages only ', toUpgrade size printString, ' can be upgraded.
 The following packages will not be upgraded:
 ',  (String streamContents: [:s | (old removeAll: toUpgrade; yourself)
 	do: [:p | s nextPutAll: p nameWithVersionLabel; cr]])]
-		ifFalse: [info _ 'All old packages upgradeable.'].
+		ifFalse: [info := 'All old packages upgradeable.'].
 	(self confirm: info, '
 About to upgrade the following packages:
 ', (String streamContents: [:s | toUpgrade do: [:p | s nextPutAll: p nameWithVersionLabel; cr]]), 'Proceed?') ifTrue: [
-			myRelease _ self installedReleaseOfMe.
+			myRelease := self installedReleaseOfMe.
 			[Cursor wait showWhile: [
 				confirmEach ifTrue: [
 					squeakMap upgradeOldPackagesConfirmBlock: [:p |

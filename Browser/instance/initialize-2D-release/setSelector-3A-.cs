@@ -3,8 +3,8 @@ setSelector: aSymbol
 
 	| aClass messageCatIndex |
 	aSymbol ifNil: [^ self].
-	(aClass _ self selectedClassOrMetaClass) ifNil: [^ self].
-	messageCatIndex _ aClass organization numberOfCategoryOfElement: aSymbol.
+	(aClass := self selectedClassOrMetaClass) ifNil: [^ self].
+	messageCatIndex := aClass organization numberOfCategoryOfElement: aSymbol.
 	self messageCategoryListIndex: messageCatIndex + 1.
 	messageCatIndex = 0 ifTrue: [^ self].
 	self messageListIndex:

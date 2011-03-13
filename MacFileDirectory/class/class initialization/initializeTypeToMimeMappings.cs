@@ -1,6 +1,6 @@
 initializeTypeToMimeMappings
 	"MacFileDirectory initializeTypeToMimeMappings"
-	TypeToMimeMappings _ Dictionary new.
+	TypeToMimeMappings := Dictionary new.
 	#(
 		"format"
 		"(abcd		('image/gif'))"

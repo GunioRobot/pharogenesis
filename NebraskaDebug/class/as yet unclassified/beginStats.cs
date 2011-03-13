@@ -1,3 +1,3 @@
 beginStats
 
-	DEBUG _ OrderedCollection new
+	DEBUG := OrderedCollection new

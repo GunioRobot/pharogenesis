@@ -8,12 +8,12 @@ extractInDirectory: aDirectory overwrite: overwriteAll
 	file := [fileDir newFileNamed: localName] on: FileExistsException do:[:ex| ex return: nil].
 	file ifNil:[
 		overwriteAll ifFalse:[
-			[index := (PopUpMenu labelArray:{
+			[index := UIManager default chooseFrom: {
 						'Yes, overwrite'. 
 						'No, don''t overwrite'. 
 						'Overwrite ALL files'.
 						'Cancel operation'
-					} lines: #(2)) startUpWithCaption: fileName, ' already exists. Overwrite?'.
+					} lines: #(2) title: fileName, ' already exists. Overwrite?'.
 			index == nil] whileTrue.
 			index = 4 ifTrue:[^#abort].
 			index = 3 ifTrue:[^#retryWithOverwrite].

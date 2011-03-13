@@ -1,7 +1,7 @@
 currentClassName: aString
 
-	currentClassName _ aString.
-	currentSelector _ nil.	"fix by wod"
+	currentClassName := aString.
+	currentSelector := nil.	"fix by wod"
 	self changed: #currentClassName.
 	self changed: #messageList.
 	self setContents.

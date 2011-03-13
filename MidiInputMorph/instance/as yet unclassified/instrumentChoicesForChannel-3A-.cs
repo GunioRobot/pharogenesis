@@ -1,9 +1,9 @@
 instrumentChoicesForChannel: channelIndex
 
 	| names inst |
-	names _ AbstractSound soundNames asOrderedCollection.
-	names _ names collect: [:n |
-		inst _ AbstractSound soundNamed: n.
+	names := AbstractSound soundNames asOrderedCollection.
+	names := names collect: [:n |
+		inst := AbstractSound soundNamed: n.
 		(inst isKindOf: UnloadedSound)
 			ifTrue: [n, '(out)']
 			ifFalse: [n]].

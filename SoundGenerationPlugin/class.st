@@ -1,1 +1,0 @@
-SoundGenerationPlugin class instanceVariableNames: ''

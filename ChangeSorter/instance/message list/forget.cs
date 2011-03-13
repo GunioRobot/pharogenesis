@@ -5,5 +5,5 @@ forget
 	currentSelector ifNotNil: [
 		myChangeSet removeSelectorChanges: self selectedMessageName 
 			class: self selectedClassOrMetaClass.
-		currentSelector _ nil.
+		currentSelector := nil.
 		self showChangeSet: myChangeSet]

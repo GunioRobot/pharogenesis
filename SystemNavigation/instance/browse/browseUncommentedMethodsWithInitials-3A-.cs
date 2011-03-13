@@ -2,7 +2,7 @@ browseUncommentedMethodsWithInitials: targetInitials
 	"Browse uncommented methods whose initials (in the time-stamp, as logged to disk) match the given initials.  Present them in chronological order.  CAUTION: It will take several minutes for this to complete."
 	"Time millisecondsToRun: [SystemNavigation default browseUncommentedMethodsWithInitials: 'jm']"
 
-	| initials timeStamp methodReferences cm aMessageSet |
+	| initials timeStamp methodReferences cm |
 	methodReferences _ OrderedCollection new.
 	self  allBehaviorsDo:
 		[:aClass | aClass selectors do: [:sel |
@@ -17,8 +17,7 @@ browseUncommentedMethodsWithInitials: targetInitials
 								setStandardClass: aClass 
 								methodSymbol: sel)]]]]].
 
-	aMessageSet _ MessageSet new initializeMessageList: methodReferences.
-	aMessageSet sortByDate.
-	MessageSet 
-		openMessageList: aMessageSet 
-		messageList name: 'Uncommented methods with initials ', targetInitials
+	ToolSet
+		browseMessageSet: methodReferences 
+		name: 'Uncommented methods with initials ', targetInitials
+		autoSelect: nil

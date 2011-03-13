@@ -1,7 +1,7 @@
 rateControl
 
 	| rateSlider middleLine r |
-	rateSlider _ SimpleSliderMorph new
+	rateSlider := SimpleSliderMorph new
 		color: color;
 		sliderColor: Color gray;
 		extent: 180@2;
@@ -10,12 +10,12 @@ rateControl
 		minVal: -1.0;
 		maxVal: 1.0;
 		adjustToValue: 0.0.
-	middleLine _ Morph new  "center indicator for pan slider"
+	middleLine := Morph new  "center indicator for pan slider"
 		color: (Color r: 0.4 g: 0.4 b: 0.4);
 		extent: 1@(rateSlider height - 4);
 		position: rateSlider center x@(rateSlider top + 2).
 	rateSlider addMorphBack: middleLine.
-	r _ self makeRow
+	r := self makeRow
 		hResizing: #shrinkWrap;
 		vResizing: #rigid;
 		height: 24.

@@ -9,5 +9,5 @@ allUnreferencedInstanceVariables
 		definingClass withAllSubclasses do:
 			[:class |  any ifFalse:
 				[(class whichSelectorsAccess: ivn asSymbol) do: 
-					[:sel | sel ~~ #DoIt ifTrue: [any _ true]]]].
+					[:sel | sel isDoIt ifFalse: [any _ true]]]].
 			any]

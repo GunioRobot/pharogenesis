@@ -1,6 +1,6 @@
 clearCachesFor: anObject 
 	"Clear the valid caches."
 
-	anObject isPackage ifTrue:[packages _ nil].
-	anObject isAccount ifTrue:[accounts _ users _ nil].
-	anObject isCategory ifTrue:[categories _ nil]
+	anObject isPackage ifTrue:[packages := nil].
+	anObject isAccount ifTrue:[accounts := users := nil].
+	anObject isCategory ifTrue:[categories := nil]

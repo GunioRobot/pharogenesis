@@ -1,6 +1,6 @@
 AlignmentMorph
 	subclass: #EmbeddedWorldBorderMorph
-	instanceVariableNames: 'heights minWidth minHeight '
+	instanceVariableNames: 'heights minWidth minHeight'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Basic'
+	category: 'MorphicExtras-AdditionalSupport'

@@ -1,7 +1,7 @@
 AlignmentMorph
 	subclass: #WaveEditor
 	instanceVariableNames:
-		'graph samplingRate perceivedFrequency loopEnd loopLength loopCycles possibleLoopStarts keyboard '
+		'graph samplingRate perceivedFrequency loopEnd loopLength loopCycles possibleLoopStarts keyboard'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Sound-Interface'
+	category: 'MorphicExtras-SoundInterface'

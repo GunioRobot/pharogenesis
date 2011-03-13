@@ -1,2 +1,0 @@
-trackSpecularColor
-	^vertexBuffer trackSpecularColor

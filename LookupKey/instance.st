@@ -1,6 +1,6 @@
 Magnitude
 	subclass: #LookupKey
-	instanceVariableNames: 'key '
+	instanceVariableNames: 'key'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Collections-Support'

@@ -1,0 +1,2 @@
+lastExecutedSearch
+	^lastExecutedSearch

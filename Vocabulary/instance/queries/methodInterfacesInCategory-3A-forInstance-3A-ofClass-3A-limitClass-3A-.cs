@@ -6,5 +6,5 @@ methodInterfacesInCategory: categoryName forInstance: anObject ofClass: aClass l
 		[:sel | methodInterfaces at: sel ifAbsent:
 			[MethodInterface new conjuredUpFor: sel class: aClass]]) select:
 				[:aMethodInterface |
-					defClass _ aClass whichClassIncludesSelector: aMethodInterface selector.
+					defClass := aClass whichClassIncludesSelector: aMethodInterface selector.
 					(defClass notNil and: [defClass includesBehavior: aLimitClass])]

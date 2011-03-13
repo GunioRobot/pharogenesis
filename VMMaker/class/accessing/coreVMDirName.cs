@@ -1,2 +1,0 @@
-coreVMDirName
-	^DirNames at: #coreVMDir

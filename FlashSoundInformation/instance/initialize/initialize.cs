@@ -1,6 +1,6 @@
 initialize
-	syncFlags _ 0.
-	inPoint _ -1.
-	outPoint _ -1.
-	loopCount _ 0.
-	envelopes _ #().
+	syncFlags := 0.
+	inPoint := -1.
+	outPoint := -1.
+	loopCount := 0.
+	envelopes := #().

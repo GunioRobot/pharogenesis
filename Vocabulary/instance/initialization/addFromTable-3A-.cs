@@ -16,12 +16,12 @@ addFromTable: aTable
 	| aMethodCategory aMethodInterface aSelector doc wording |
 	aTable do:
 		[:tuple |   tuple fifth do: [:aCategorySymbol |
-			(aMethodCategory _ self categoryAt: aCategorySymbol) ifNil: [ 
-					aMethodCategory _ ElementCategory new categoryName: aCategorySymbol.
+			(aMethodCategory := self categoryAt: aCategorySymbol) ifNil: [ 
+					aMethodCategory := ElementCategory new categoryName: aCategorySymbol.
 					self addCategory: aMethodCategory].		
 		
-			aMethodInterface _ MethodInterface new.
-			aSelector _ tuple first.
+			aMethodInterface := MethodInterface new.
+			aSelector := tuple first.
 			aMethodInterface selector: aSelector type: tuple fourth setter: tuple second.
 			aMethodCategory elementAt: aSelector put: aMethodInterface.
 			self atKey: aSelector putMethodInterface: aMethodInterface.
@@ -31,12 +31,12 @@ addFromTable: aTable
 						[:pair | Variable new name: pair first type: pair second])].
 
 		
-			doc _ (tuple size >= 6 and: [(#(nil none unused) includes: tuple sixth) not])
+			doc := (tuple size >= 6 and: [(#(nil none unused) includes: tuple sixth) not])
 				ifTrue:
 					[tuple sixth]
 				ifFalse:
 					[nil].
-			wording _ (tuple size >= 7 and: [(#(nil none unused) includes: tuple seventh) not])
+			wording := (tuple size >= 7 and: [(#(nil none unused) includes: tuple seventh) not])
 				ifTrue:
 					[tuple seventh]
 				ifFalse:

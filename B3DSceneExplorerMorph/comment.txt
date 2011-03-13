@@ -1,1 +1,0 @@
-B3DSceneExplorerMorph displays a B3DScene.

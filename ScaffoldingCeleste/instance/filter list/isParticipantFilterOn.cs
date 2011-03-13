@@ -1,2 +1,0 @@
-isParticipantFilterOn 
-	^participantFilter notNil

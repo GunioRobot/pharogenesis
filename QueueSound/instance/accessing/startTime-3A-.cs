@@ -1,2 +1,2 @@
 startTime: anInteger
-	startTime _ anInteger
+	startTime := anInteger

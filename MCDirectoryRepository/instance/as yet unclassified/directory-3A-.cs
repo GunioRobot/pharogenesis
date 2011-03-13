@@ -1,2 +1,2 @@
 directory: aDirectory
-	directory _ aDirectory
+	directory := aDirectory

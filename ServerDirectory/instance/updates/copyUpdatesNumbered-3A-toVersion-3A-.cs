@@ -41,7 +41,7 @@ copyUpdatesNumbered: selectList toVersion: otherVersion
 				ifTrue: [additions addLast: fileName]
 				ifFalse: [outOfOrder addLast: seq]]].
 	outOfOrder isEmpty ifFalse:
-		[PopUpMenu notify: 'Updates numbered ' , outOfOrder asArray printString,
+		[UIManager default inform: 'Updates numbered ' , outOfOrder asArray printString,
 		' are out of order.\ The last update in ' withCRs,
 		otherVersion, ' is ', lastNum printString,
 		'.\No update will take place.' withCRs.

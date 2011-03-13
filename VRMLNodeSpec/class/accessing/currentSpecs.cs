@@ -1,2 +1,0 @@
-currentSpecs
-	^CurrentSpecs

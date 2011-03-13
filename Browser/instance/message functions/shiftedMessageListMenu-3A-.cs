@@ -34,6 +34,5 @@ shiftedMessageListMenu: aMenu
 		('add to current change set'				adoptMessageInCurrentChangeset)
 		('copy up or copy down...'				copyUpOrCopyDown)
 		-
-		('fetch documentation'					fetchDocPane)
 		('more...' 								unshiftedYellowButtonActivity)).
 	^ aMenu

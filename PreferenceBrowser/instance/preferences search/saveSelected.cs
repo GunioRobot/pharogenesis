@@ -1,0 +1,2 @@
+saveSelected
+	preferences savePersonalPreferences 

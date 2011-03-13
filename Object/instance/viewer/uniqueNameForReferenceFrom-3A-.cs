@@ -14,6 +14,6 @@ uniqueNameForReferenceFrom: proposedName
 		[:jinaLake |
 			nameSym _ jinaLake asSymbol.
 			okay _ true.
-			self class scopeHas: nameSym ifTrue: [:x | okay _ false "don't use it"].
+			(self class bindingOf: nameSym) ifNotNil: [okay _ false "don't use it"].
 			okay].
 	^ aName asSymbol

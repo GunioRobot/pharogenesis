@@ -5,7 +5,7 @@ buildSystemCategoryBrowserEditString: aString
 	| newBrowser |
 	systemCategoryListIndex > 0
 		ifTrue: 
-			[newBrowser _ self class new.
+			[newBrowser := self class new.
 			newBrowser systemCategoryListIndex: systemCategoryListIndex.
 			newBrowser setClass: self selectedClassOrMetaClass selector: self selectedMessageName.
 			self class openBrowserView: (newBrowser openSystemCatEditString: aString)

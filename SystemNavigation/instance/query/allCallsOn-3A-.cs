@@ -23,7 +23,7 @@ allCallsOn: aLiteral
 										special: special
 										byte: byte].
 					aList
-						do: [:sel | sel == #DoIt
+						do: [:sel | sel isDoIt
 								ifFalse: [aCollection
 										add: (MethodReference new setStandardClass: class methodSymbol: sel)]]]].
 	^ aCollection

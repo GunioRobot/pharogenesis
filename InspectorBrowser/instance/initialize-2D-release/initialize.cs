@@ -1,6 +1,6 @@
 initialize
 
 	super initialize.
-	fieldList _ nil.
-	msgListIndex _ 0.
+	fieldList := nil.
+	msgListIndex := 0.
 	self changed: #msgText

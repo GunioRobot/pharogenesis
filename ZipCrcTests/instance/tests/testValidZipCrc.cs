@@ -9,20 +9,20 @@ testValidZipCrc
 
 	reader := ZipReadStream on: bytes.
 	reader expectedCrc: writer crc.
-	self shouldnt:[ readBytes _ reader upToEnd] raise: CRCError.
+	self shouldnt:[ readBytes := reader upToEnd] raise: CRCError.
 	self assert: readBytes = 'Hello World'.
 
 	reader := ZipReadStream on: bytes.
 	reader expectedCrc: writer crc.
-	self shouldnt:[ readBytes _ reader contents] raise: CRCError.
+	self shouldnt:[ readBytes := reader contents] raise: CRCError.
 	self assert: readBytes = 'Hello World'.
 
 	reader := ZipReadStream on: bytes.
 	reader expectedCrc: writer crc.
-	self shouldnt:[ readBytes _ reader next: 11 ] raise: CRCError.
+	self shouldnt:[ readBytes := reader next: 11 ] raise: CRCError.
 	self assert: readBytes = 'Hello World'.
 	
 	reader := ZipReadStream on: bytes.
 	reader expectedCrc: writer crc.
-	self shouldnt:[ readBytes _ reader next: 100 ] raise: CRCError.
+	self shouldnt:[ readBytes := reader next: 100 ] raise: CRCError.
 	self assert: readBytes = 'Hello World'.

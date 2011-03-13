@@ -16,8 +16,8 @@ loadPageWithProgress
 			historyCategory: 'project loading' translated;
 			withProgressDo: [
 				[
-					loadedProject _ CurrentProjectRefactoring 
-							currentFromMyServerLoad: projectName
+					loadedProject _ Project current 
+							fromMyServerLoad: projectName
 				] 
 					on: ProjectViewOpenNotification
 					do: [ :ex | ex resume: false]		

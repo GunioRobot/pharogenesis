@@ -2,5 +2,5 @@ diff
 	| ancestorVersion |
 	self pickAncestor ifNotNilDo:
 		[:ancestor |
-		ancestorVersion _ self version workingCopy repositoryGroup versionWithInfo: ancestor.
-		(version asDiffAgainst: ancestorVersion) open]
+		ancestorVersion := self version workingCopy repositoryGroup versionWithInfo: ancestor.
+		(self version asDiffAgainst: ancestorVersion) open]

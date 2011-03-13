@@ -4,6 +4,6 @@ actionUpSelector: aSymbolOrString
 	(nil = aSymbolOrString or:
 	 ['nil' = aSymbolOrString or:
 	 [aSymbolOrString isEmpty]])
-		ifTrue: [^ actionUpSelector _ nil].
+		ifTrue: [^ actionUpSelector := nil].
 
-	actionUpSelector _ aSymbolOrString asSymbol.
+	actionUpSelector := aSymbolOrString asSymbol.

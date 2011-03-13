@@ -1,6 +1,6 @@
 FormCanvas
 	subclass: #MultiResolutionCanvas
-	instanceVariableNames: 'deferredMorphs '
+	instanceVariableNames: 'deferredMorphs'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Support'
+	category: 'MorphicExtras-Support'

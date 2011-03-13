@@ -1,2 +1,0 @@
-contentsSize
-	^self contentsClass numElements

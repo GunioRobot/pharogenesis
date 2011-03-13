@@ -1,3 +1,3 @@
 updateCounter
 
-	^UpdateCounter ifNil: [UpdateCounter _ 0]
+	^UpdateCounter ifNil: [UpdateCounter := 0]

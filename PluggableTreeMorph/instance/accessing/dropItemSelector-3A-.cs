@@ -1,0 +1,2 @@
+dropItemSelector: aSymbol
+	dropItemSelector := aSymbol

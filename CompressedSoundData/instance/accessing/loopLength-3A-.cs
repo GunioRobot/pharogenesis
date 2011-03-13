@@ -1,3 +1,3 @@
 loopLength: anInteger
 
-	loopLength _ anInteger.
+	loopLength := anInteger.

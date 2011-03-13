@@ -1,7 +1,7 @@
 processRemoveObject: data
 	| id depth |
-	id _ data nextWord.
-	depth _ data nextWord.
+	id := data nextWord.
+	depth := data nextWord.
 	log ifNotNil:[
 		log nextPutAll:' (id = ', id printString,' depth = ', depth printString, ')'.
 		self flushLog].

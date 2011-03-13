@@ -3,6 +3,6 @@ fileStream
 
 	| theFile |
 	(sourceFileNumber == nil or: [(SourceFiles at: sourceFileNumber) == nil]) ifTrue: [^ nil].
-	theFile _ SourceFiles at: sourceFileNumber.
+	theFile := SourceFiles at: sourceFileNumber.
 	theFile position: filePositionHi.
 	^ theFile

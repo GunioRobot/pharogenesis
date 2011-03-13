@@ -1,0 +1,1 @@
+X11Encoding class instanceVariableNames: ''

@@ -1,0 +1,1 @@
+BMPReadWriter class instanceVariableNames: ''

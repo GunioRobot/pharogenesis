@@ -16,3 +16,4 @@ for ' translated, slotName, '
 		[:anInst | anInst instVarNamed: slotName asString put: 
 			(anInst valueOfType: typeChosen from: (anInst instVarNamed: slotName))].
 	self updateAllViewers.	"does siblings too"
+	self changeTypesInWatchersOf: slotName  "does siblings too"

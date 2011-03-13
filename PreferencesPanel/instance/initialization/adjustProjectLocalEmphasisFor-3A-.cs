@@ -4,8 +4,8 @@ adjustProjectLocalEmphasisFor: aSymbol
 	| aWindow toFixUp allMorphs emphasis |
 	(aWindow _ self containingWindow) ifNil: [^ self].
 	emphasis _ (Preferences preferenceAt: aSymbol ifAbsent: [^ self]) localToProject
-		ifTrue:	[1 "bold for local-to-project"]
-		ifFalse:	[0 "plain for global"].
+		ifTrue:	[TextEmphasis bold emphasisCode "bold for local-to-project"]
+		ifFalse:	[TextEmphasis normal emphasisCode "normal for global"].
 	allMorphs _ IdentitySet new.
 	aWindow allMorphsAndBookPagesInto: allMorphs.
 	toFixUp _ allMorphs select:

@@ -1,6 +1,6 @@
 fileOut
 	| fileName stream |
-	fileName := FillInTheBlank request: 'Enter the file name' initialAnswer:''.
+	fileName := UIManager default request: 'Enter the file name' initialAnswer:''.
 	stream := FileStream newFileNamed: fileName.
 	sourceSystem isEmpty ifFalse:[
 		stream nextChunkPut: sourceSystem printString;cr ].

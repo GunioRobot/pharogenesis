@@ -1,3 +1,3 @@
 gain: aNumber
 
-	gain _ aNumber asFloat.
+	gain := aNumber asFloat.

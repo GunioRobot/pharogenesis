@@ -1,2 +1,0 @@
-primitiveDirectoryLookup
-	^interpreterProxy primitiveDirectoryLookup

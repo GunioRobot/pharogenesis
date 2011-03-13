@@ -1,6 +1,6 @@
 ThreadNavigationMorph
 	subclass: #InternalThreadNavigationMorph
-	instanceVariableNames: 'threadName '
-	classVariableNames: 'KnownThreads '
+	instanceVariableNames: 'threadName preferredIndex'
+	classVariableNames: 'CachedThumbnails KnownThreads'
 	poolDictionaries: ''
-	category: 'Morphic-Navigators'
+	category: 'MorphicExtras-Navigators'

@@ -6,9 +6,9 @@ checkParameters
 		ifFalse: [^ self error: 'the point list must contain at least two points'].
 	points first x = 0
 		ifFalse: [^ self error: 'the time of the first point must be zero'].
-	lastT _ points first x.
+	lastT := points first x.
 	2 to: points size do: [:i |
-		t _ (points at: i) x.
+		t := (points at: i) x.
 		t >= lastT
 			ifFalse: [^ self error: 'the points must be in ascending time order']].
 

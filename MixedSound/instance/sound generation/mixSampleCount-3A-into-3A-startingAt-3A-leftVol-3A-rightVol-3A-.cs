@@ -4,9 +4,9 @@ mixSampleCount: n into: aSoundBuffer startingAt: startIndex leftVol: leftVol rig
 	| snd left right |
 	1 to: sounds size do: [:i |
 		(soundDone at: i) ifFalse: [
-			snd _ sounds at: i.
-			left _ (leftVol * (leftVols at: i)) // ScaleFactor.
-			right _ (rightVol * (rightVols at: i)) // ScaleFactor.
+			snd := sounds at: i.
+			left := (leftVol * (leftVols at: i)) // ScaleFactor.
+			right := (rightVol * (rightVols at: i)) // ScaleFactor.
 			snd samplesRemaining > 0
 				ifTrue: [
 					snd mixSampleCount: n into: aSoundBuffer startingAt: startIndex leftVol: left rightVol: right]

@@ -1,7 +1,7 @@
 playURLNamed: urlString
 
 	| titleString |
-	titleString _ urlString
+	titleString := urlString
 		copyFrom: (urlString findLast: [:c | c=$/]) + 1
 		to: urlString size.
 	ScorePlayerMorph

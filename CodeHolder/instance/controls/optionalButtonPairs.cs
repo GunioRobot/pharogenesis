@@ -6,7 +6,7 @@ optionalButtonPairs
 
 	| aList |
 
-	aList _ #(
+	aList := #(
 	('browse'			browseMethodFull			'view this method in a browser')
 	('senders' 			browseSendersOfMessages	'browse senders of...')
 	('implementors'		browseMessages				'browse implementors of...')

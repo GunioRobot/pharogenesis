@@ -5,8 +5,8 @@ conjuredUpFor: aSelector class: aClass
 	self initializeFor: aSelector.
 	self wording: aSelector.
 
-	receiverType _ #unknown.
-	parts _ aClass formalHeaderPartsFor: aSelector.
-	argumentVariables _ (1 to: selector numArgs) collect:
+	receiverType := #unknown.
+	parts := aClass formalHeaderPartsFor: aSelector.
+	argumentVariables := (1 to: selector numArgs) collect:
 		[:anIndex | Variable new name: (parts at: (4 * anIndex)) type: #Object].
 	parts last isEmptyOrNil ifFalse: [self documentation: parts last].

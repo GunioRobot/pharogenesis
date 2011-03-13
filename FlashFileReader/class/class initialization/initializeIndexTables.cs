@@ -1,5 +1,5 @@
 initializeIndexTables
-	IndexTables _ Array new: 4.
+	IndexTables := Array new: 4.
 	IndexTables at: 1 put:
 		#(-1 2).
 	IndexTables at: 2 put:

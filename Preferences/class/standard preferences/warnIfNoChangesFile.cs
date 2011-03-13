@@ -1,2 +1,0 @@
-warnIfNoChangesFile
-	^ self valueOfFlag: #warnIfNoChangesFile

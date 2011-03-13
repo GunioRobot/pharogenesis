@@ -1,2 +1,2 @@
 classModified: anEvent
-	(self packageInfo includesClass: anEvent item) ifTrue: [self modified: true]
+	"obsolete - remove this later"

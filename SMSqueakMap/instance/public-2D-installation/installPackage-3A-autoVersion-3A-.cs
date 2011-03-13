@@ -3,6 +3,6 @@ installPackage: aPackage autoVersion: version
 	<version> is the automatic version name."
 
 	| r |
-	r _ aPackage releaseWithAutomaticVersionString: version.
+	r := aPackage releaseWithAutomaticVersionString: version.
 	r ifNil: [self error: 'No package release found with automatic version ', version].
 	^self installPackageRelease: r

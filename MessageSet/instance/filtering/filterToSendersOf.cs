@@ -3,13 +3,13 @@ filterToSendersOf
 
 	| aFragment inputWithBlanksTrimmed aMethod |
 
-	aFragment _ FillInTheBlank request: 'type selector:' initialAnswer: ''.
+	aFragment := UIManager default request: 'type selector:' initialAnswer: ''.
 	aFragment  isEmptyOrNil ifTrue: [^ self].
-	inputWithBlanksTrimmed _ aFragment withBlanksTrimmed.
+	inputWithBlanksTrimmed := aFragment withBlanksTrimmed.
 	Symbol hasInterned: inputWithBlanksTrimmed ifTrue:
 		[:aSymbol | 
 			self filterFrom:
 				[:aClass :aSelector |
-					(aMethod _ aClass compiledMethodAt: aSelector) notNil and:
+					(aMethod := aClass compiledMethodAt: aSelector) notNil and:
 						[aMethod hasLiteralThorough: aSymbol]]]
 

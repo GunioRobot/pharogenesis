@@ -1,2 +1,2 @@
 inspectInMorphic
-	self currentHand attachMorph: ((Inspector openAsMorphOn: self) extent: 300@200)
+	self currentHand attachMorph: ((ToolSet inspect: self) extent: 300@200)

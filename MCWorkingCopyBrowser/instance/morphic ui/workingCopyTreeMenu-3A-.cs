@@ -7,6 +7,7 @@ workingCopyTreeMenu: aMenu
 			('view changes' #viewChanges)
 			('view history' #viewHistory)
 			('recompile package' #recompilePackage)
+			('revert package...' #revertPackage)
 			('unload package' #unloadPackage)
 			('delete working copy' #deleteWorkingCopy)
 			('inspect working copy' #inspectWorkingCopy)).

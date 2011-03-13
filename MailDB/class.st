@@ -1,1 +1,0 @@
-MailDB class instanceVariableNames: ''

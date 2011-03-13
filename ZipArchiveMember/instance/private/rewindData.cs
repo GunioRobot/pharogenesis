@@ -1,5 +1,5 @@
 rewindData
-	readDataRemaining _  (desiredCompressionMethod = CompressionDeflated
+	readDataRemaining :=  (desiredCompressionMethod = CompressionDeflated
 		and: [ compressionMethod = CompressionDeflated ])
 			ifTrue: [ compressedSize ]
 			ifFalse: [ uncompressedSize ].

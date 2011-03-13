@@ -1,6 +1,6 @@
 Object
 	subclass: #FlashCodec
-	instanceVariableNames: 'stream '
+	instanceVariableNames: 'stream'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon-MMFlash Support'
+	category: 'Flash-Support'

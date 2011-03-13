@@ -1,15 +1,16 @@
-setWidth: aWidth
+setWidth: aWidth 
 	"Set the width"
-
+	
 	| cost widthToUse |
-	cost _ self costume.
-	cost isWorldMorph ifTrue: [^ self].
-	cost isLineMorph
-		ifTrue:
-			[^ cost unrotatedWidth: aWidth].
-	widthToUse _ cost isRenderer
-		ifTrue:
-			[aWidth / cost scaleFactor]
-		ifFalse:
-			[aWidth].
-	cost renderedMorph width: widthToUse
+
+	self hasCostumeThatIsAWorld
+		ifTrue: [^ self].
+
+	(cost := self costume) isLineMorph
+		ifTrue: [^ cost unrotatedWidth: aWidth].
+
+	widthToUse := cost isRenderer
+				ifTrue: [aWidth / cost scaleFactor]
+				ifFalse: [aWidth].
+
+	cost renderedMorph width: widthToUse.

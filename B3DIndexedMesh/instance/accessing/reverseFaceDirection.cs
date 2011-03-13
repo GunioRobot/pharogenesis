@@ -1,2 +1,0 @@
-reverseFaceDirection
-	faces reverseDirection.

@@ -1,2 +1,2 @@
 sourceUrl: urlString
-	sourceUrl _ urlString
+	sourceUrl := urlString

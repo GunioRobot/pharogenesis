@@ -1,3 +1,0 @@
-mailDB
-
-	^celeste mailDB

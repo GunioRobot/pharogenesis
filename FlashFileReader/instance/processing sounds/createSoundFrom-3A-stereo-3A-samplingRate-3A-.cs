@@ -1,7 +1,7 @@
 createSoundFrom: soundBuffers stereo: stereo samplingRate: samplingRate
 
 	| snds |
-	snds _ soundBuffers collect: [:buf |
+	snds := soundBuffers collect: [:buf |
 		(SampledSound samples: buf samplingRate: samplingRate) loudness: 1.0].
 	stereo
 		ifTrue:[

@@ -11,8 +11,7 @@ updateBox: anIconMorph color: aColor
 	fill direction: anIconMorph extent.
 
 	anIconMorph fillStyle: fill.
-	anIconMorph borderWidth: ((Preferences alternativeWindowLook
-					and: [Preferences alternativeWindowBoxesLook])
+	anIconMorph borderWidth: (Preferences alternativeWindowBoxesLook
 				ifTrue: [1]
 				ifFalse: [0]);
 		borderColor: aColor darker

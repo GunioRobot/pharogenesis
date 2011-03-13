@@ -6,8 +6,8 @@ filterMessageList
 	messageList size <= 1 ifTrue: [^ self inform: 'this is not a propitious filtering situation'].
 
 	"would like to get the evt coming in but thwarted by the setInvokingView: circumlocution"
-	evt _ self currentWorld activeHand lastEvent.
-	aMenu _ MenuMorph new defaultTarget: self.
+	evt := self currentWorld activeHand lastEvent.
+	aMenu := MenuMorph new defaultTarget: self.
 	aMenu addTitle: 'Filter by only showing...'.
 	aMenu addStayUpItem.
 

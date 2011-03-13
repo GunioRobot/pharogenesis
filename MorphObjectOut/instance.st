@@ -3,4 +3,4 @@ ObjectOut
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Kernel-Objects'
+	category: 'MorphicExtras-SqueakPage'

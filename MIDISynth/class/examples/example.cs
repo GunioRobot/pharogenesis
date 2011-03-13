@@ -3,10 +3,10 @@ example
 	"MIDISynth example"
 
 	| portNum synth |
-	portNum _ SimpleMIDIPort inputPortNumFromUser.
+	portNum := SimpleMIDIPort inputPortNumFromUser.
 	portNum ifNil: [^ self].
 	SoundPlayer useShortBuffer.
-	synth _ MIDISynth new
+	synth := MIDISynth new
 		midiPort: (SimpleMIDIPort openOnPortNumber: portNum).
 	synth midiParser ignoreCommand: 224.  "filter out pitch bends"
 	1 to: 16 do: [:i |

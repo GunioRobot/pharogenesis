@@ -1,2 +1,0 @@
-source: aString
-    source := aString

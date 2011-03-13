@@ -6,11 +6,14 @@ retrieveUrls: urls ontoQueue: queue withWaitSema: waitSema
 	waited on every time before a new document is downloaded; this keeps 
 	the downloader from getting too far  ahead of the main process"
 	"kill the existing downloader if there is one"
-	| doc canPeek front |
+	| doc canPeek front updateCounter |
 	UpdateDownloader
 		ifNotNil: [UpdateDownloader terminate].
+	updateCounter _ 0.
 	"fork a new downloading process"
-	UpdateDownloader _ [urls
+	UpdateDownloader _ [
+		'Downloading updates' displayProgressAt: Sensor cursorPoint from: 0 to: urls size during: [:bar |
+			urls
 				do: [:url | 
 					waitSema wait.
 					queue nextPut: url.
@@ -26,7 +29,7 @@ retrieveUrls: urls ontoQueue: queue withWaitSema: waitSema
 									queue nextPut: #failed.
 									UpdateDownloader _ nil.
 									Processor activeProcess terminate]]].
-						UpdateDownloader ifNotNil: [queue nextPut: doc]].
+						UpdateDownloader ifNotNil: [queue nextPut: doc. updateCounter _ updateCounter + 1. bar value: updateCounter]]].
 			queue nextPut: ''.
 			queue nextPut: #finished.
 			UpdateDownloader _ nil] newProcess.

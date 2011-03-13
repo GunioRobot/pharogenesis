@@ -1,2 +1,0 @@
-initialValuesAdditionpublishingshowFlapsWhenPublishing
-	^ #((showFlapsWhenPublishing false (publishing ) ) )

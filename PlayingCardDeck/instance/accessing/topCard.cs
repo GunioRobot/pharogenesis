@@ -1,3 +1,0 @@
-topCard
-
-	^self firstSubmorph

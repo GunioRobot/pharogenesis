@@ -6,10 +6,10 @@ restart
 	| ctxt noUnwindError |
 	self okToChange ifFalse: [^ self].
 	self checkContextSelection.
-	ctxt _ interruptedProcess popTo: self selectedContext.
-	noUnwindError _ false.
+	ctxt := interruptedProcess popTo: self selectedContext.
+	noUnwindError := false.
 	ctxt == self selectedContext ifTrue: [
-		noUnwindError _ true.
+		noUnwindError := true.
 		interruptedProcess restartTop; stepToSendOrReturn].
 	self resetContext: ctxt.
 	(Preferences restartAlsoProceeds and: [noUnwindError]) ifTrue: [self proceed].

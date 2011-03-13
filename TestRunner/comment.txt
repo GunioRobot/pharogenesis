@@ -1,2 +1,2 @@
-This is a user interface for the SUnit TestCase and TestSuite classes.
-It lets you run tests in the background, and you can select subsets to run.
+<lint: #ignore rule: #classNotReferenced rational: 'this view is only accessed from menus'>
+

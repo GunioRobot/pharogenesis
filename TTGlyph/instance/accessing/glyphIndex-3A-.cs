@@ -1,2 +1,2 @@
 glyphIndex: anInteger
-	glyphIndex _ anInteger
+	glyphIndex := anInteger

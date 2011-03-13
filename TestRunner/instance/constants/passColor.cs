@@ -1,2 +1,0 @@
-passColor
-	^ Color green lighter

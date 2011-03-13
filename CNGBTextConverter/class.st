@@ -1,0 +1,1 @@
+CNGBTextConverter class instanceVariableNames: ''

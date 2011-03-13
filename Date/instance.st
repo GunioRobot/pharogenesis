@@ -1,6 +1,6 @@
-Magnitude
+Timespan
 	subclass: #Date
-	instanceVariableNames: 'julianDayNumber '
-	classVariableNames: 'DaysInMonth FirstDayOfMonth MonthNames SecondsInDay WeekDayNames '
-	poolDictionaries: ''
-	category: 'Kernel-Magnitudes'
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: 'ChronologyConstants'
+	category: 'Kernel-Chronology'

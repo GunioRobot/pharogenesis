@@ -6,11 +6,11 @@ readServer: serverList special: indexPrefix updatesThrough: maxNumber saveLocall
 	| urls failed loaded docQueue this nextDoc docQueueSema str updateName |
 	Cursor wait showWhile: [
 
-	urls _ self newUpdatesOn: (serverList collect: [:url | url, 'updates/']) 
+	urls := self newUpdatesOn: (serverList collect: [:url | url, 'updates/']) 
 				special: indexPrefix
 				throughNumber: maxNumber.
-	loaded _ 0.
-	failed _ nil.
+	loaded := 0.
+	failed := nil.
 
 	"send downloaded documents throuh this queue"
 	docQueue := SharedQueue new.
@@ -23,35 +23,37 @@ readServer: serverList special: indexPrefix updatesThrough: maxNumber saveLocall
 	self retrieveUrls: urls ontoQueue: docQueue withWaitSema: docQueueSema.
 
 	"process downloaded updates in the foreground"
-	[ this _ docQueue next.
-	  nextDoc _ docQueue next.  
-	  nextDoc = #failed ifTrue: [ failed _ this ].
+	'Processing updates' displayProgressAt: Sensor cursorPoint from: 0 to: urls size during: [:bar |
+	[ this := docQueue next.
+	  nextDoc := docQueue next.  
+	  nextDoc = #failed ifTrue: [ failed := this ].
 	  (failed isNil and: [ nextDoc ~= #finished ])
 	] whileTrue: [
 		failed ifNil: [
 			nextDoc reset; text.
-			nextDoc size = 0 ifTrue: [ failed _ this ]. ].
+			nextDoc size = 0 ifTrue: [ failed := this ]. ].
 		failed ifNil: [
 			nextDoc peek asciiValue = 4	"pure object file"
-				ifTrue: [failed _ this]].	"Must be fileIn, not pure object file"
+				ifTrue: [failed := this]].	"Must be fileIn, not pure object file"
 		failed ifNil: [
 			"(this endsWith: '.html') ifTrue: [doc _ doc asHtml]."
 				"HTML source code not supported here yet"
 			updateImage
 				ifTrue: [
-					updateName _ (this findTokens: '/') last.
-					ChangeSorter newChangesFromStream: nextDoc named: updateName.
+					updateName := (this findTokens: '/') last.
+					ChangeSet newChangesFromStream: nextDoc named: updateName.
 					SystemVersion current registerUpdate: updateName initialIntegerOrNil].
 			saveLocally ifTrue:
 				[self saveUpdate: nextDoc onFile: (this findTokens: '/') last].	"if wanted"
-			loaded _ loaded + 1].
+			loaded := loaded + 1.
+			bar value: loaded].
 
 		docQueueSema signal].
-	].
+	]].
 
 	failed ~~ nil & (urls size - loaded > 0) ifTrue: [
-		str _ loaded printString ,' new update file(s) processed.'.
-		str _ str, '\Could not load ' withCRs, 
+		str := loaded printString ,' new update file(s) processed.'.
+		str := str, '\Could not load ' withCRs, 
 			(urls size - loaded) printString ,' update file(s).',
 			'\Starting with "' withCRs, failed, '".'.
 		self inform: str].

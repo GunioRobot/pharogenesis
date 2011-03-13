@@ -1,9 +1,9 @@
 samplesRemaining
 
 	| remaining r |
-	remaining _ 0.
+	remaining := 0.
 	1 to: sounds size do: [:i |
-		r _ (sounds at: i) samplesRemaining.
-		r > remaining ifTrue: [remaining _ r]].
+		r := (sounds at: i) samplesRemaining.
+		r > remaining ifTrue: [remaining := r]].
 
 	^ remaining

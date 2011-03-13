@@ -1,3 +1,0 @@
-showResult
-
-	self subclassResponsibility.

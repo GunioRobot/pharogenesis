@@ -1,4 +1,4 @@
 testRunning
 
-	(SUnitDelay forSeconds: 2) wait
+	(Delay forSeconds: 2) wait
 			

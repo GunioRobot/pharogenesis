@@ -1,2 +1,0 @@
-needsClip
-	^true

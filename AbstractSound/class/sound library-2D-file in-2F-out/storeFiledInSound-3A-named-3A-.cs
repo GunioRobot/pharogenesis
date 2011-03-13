@@ -12,14 +12,14 @@ storeFiledInSound: snd named: sndName
 		^ self].
 
 	"the given sound name is already used"
-	menu _ SelectionMenu selections:
+	menu := SelectionMenu selections:
 		#('replace the existing sound' 'rename the new sound' 'skip it').
-	choice _ menu startUpWithCaption:
+	choice := menu startUpWithCaption:
 		'"', sndName, '" has the same name as an existing sound'.
 	(choice beginsWith: 'replace') ifTrue: [
 		Sounds at: sndName put: snd.
 		^ self].
 	(choice beginsWith: 'rename') ifTrue: [
-		i _ 2.
-		[Sounds includesKey: (sndName, ' v', i printString)] whileTrue: [i _ i + 1].
+		i := 2.
+		[Sounds includesKey: (sndName, ' v', i printString)] whileTrue: [i := i + 1].
 		Sounds at: (sndName, ' v', i printString) put: snd].

@@ -13,9 +13,9 @@ registerFill: aFillStyle
 			radial: aFillStyle isRadialFill
 		].
 	aFillStyle isBitmapFill ifTrue:[
-		theForm _ aFillStyle form.
+		theForm := aFillStyle form asSourceForm.
 		theForm unhibernate.
-		forms _ forms copyWith: theForm.
+		forms := forms copyWith: theForm.
 		^self primAddBitmapFill: theForm
 				colormap: (theForm colormapIfNeededForDepth: 32)
 				tile: aFillStyle isTiled

@@ -1,1 +1,0 @@
-ExceptionSet class instanceVariableNames: ''

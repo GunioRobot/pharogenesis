@@ -1,5 +1,5 @@
 useLastBuffer: aBool
 	Buffer ifNil:[^self].
 	aBool 
-		ifTrue:[LastBuffer _ SoundBuffer basicNew: Buffer basicSize]
-		ifFalse:[LastBuffer _ nil]	
+		ifTrue:[LastBuffer := SoundBuffer basicNew: Buffer basicSize]
+		ifFalse:[LastBuffer := nil]	

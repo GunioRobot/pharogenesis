@@ -1,0 +1,2 @@
+shutDown
+	self myDependents: nil

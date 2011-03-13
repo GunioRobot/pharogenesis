@@ -1,6 +1,6 @@
 ArrayedCollection
 	subclass: #DirectoryEntry
-	instanceVariableNames: 'name creationTime modificationTime dirFlag fileSize '
+	instanceVariableNames: 'name creationTime modificationTime dirFlag fileSize'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Files'
+	category: 'Files-Directories'

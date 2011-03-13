@@ -1,6 +1,6 @@
 Browser
 	subclass: #PackagePaneBrowser
-	instanceVariableNames: 'package packageListIndex packageList '
+	instanceVariableNames: 'package packageListIndex packageList'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Tools-Browser'

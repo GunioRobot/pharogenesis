@@ -1,0 +1,2 @@
+buildPluggableWindow: aSpec
+	^self subclassResponsibility

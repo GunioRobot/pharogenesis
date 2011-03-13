@@ -2,7 +2,7 @@ doReceiveData
 
 	| answer |
 
-	[answer _ self doReceiveOneMessage] 
+	[answer := self doReceiveOneMessage] 
 		on: Error
 		do: [ :ex | 
 			communicatorMorph commResult: {#message -> (ex description,' ',socket printString)}.

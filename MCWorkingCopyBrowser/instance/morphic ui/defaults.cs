@@ -1,2 +1,2 @@
 defaults
-	^ defaults ifNil: [defaults _ Dictionary new]
+	^ defaults ifNil: [defaults := Dictionary new]

@@ -1,2 +1,0 @@
-isFrame
-	^false

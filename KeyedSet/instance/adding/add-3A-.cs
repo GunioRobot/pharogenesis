@@ -5,6 +5,5 @@ add: newObject
 	| index |
 	newObject ifNil: [self error: 'Sets cannot meaningfully contain nil as an element'].
 	index _ self findElementOrNil: (keyBlock value: newObject).
-	(array at: index) ifNotNil: [^ self errorKeyAlreadyExists: (array at: index)].
-	self atNewIndex: index put: newObject.
+	(array at: index) ifNil: [self atNewIndex: index put: newObject].
 	^ newObject

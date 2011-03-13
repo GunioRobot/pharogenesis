@@ -1,4 +1,5 @@
 allTestSelectors
 
-	^self sunitAllSelectors select: [:each | 'test*' sunitMatch: each]
+	^self allSelectors asSortedCollection asOrderedCollection select: [:each | 
+		('test*' match: each) and: [each numArgs isZero]]
 			

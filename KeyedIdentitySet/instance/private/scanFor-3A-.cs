@@ -2,8 +2,9 @@ scanFor: anObject
 	"Same as super except change = to ==, and hash to identityHash"
 
 	| element start finish |
-	start _ (anObject identityHash \\ array size) + 1.
 	finish _ array size.
+	start _ (anObject identityHash \\ finish) + 1.
+	
 
 	"Search from (hash mod size) to the end."
 	start to: finish do:

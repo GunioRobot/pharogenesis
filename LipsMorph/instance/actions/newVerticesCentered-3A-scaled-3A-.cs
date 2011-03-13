@@ -1,3 +1,3 @@
 newVerticesCentered: anArray scaled: aNumber
-	newVertices _ anArray.
-	newScale _ aNumber
+	newVertices := anArray.
+	newScale := aNumber

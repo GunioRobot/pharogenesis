@@ -1,2 +1,2 @@
 breathiness: aNumber
-	breathiness _ aNumber
+	breathiness := aNumber

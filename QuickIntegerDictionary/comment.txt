@@ -1,0 +1,1 @@
+This implementation serves as a very quick dictionary under the assumption that the keys are small natural numbers.

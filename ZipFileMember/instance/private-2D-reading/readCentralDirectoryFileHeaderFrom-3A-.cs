@@ -3,29 +3,29 @@ readCentralDirectoryFileHeaderFrom: aStream
 
 	| fileNameLength extraFieldLength fileCommentLength |
 
-	versionMadeBy _ aStream nextLittleEndianNumber: 1.
-	fileAttributeFormat _ aStream nextLittleEndianNumber: 1.
+	versionMadeBy := aStream nextLittleEndianNumber: 1.
+	fileAttributeFormat := aStream nextLittleEndianNumber: 1.
 
-	versionNeededToExtract _ aStream nextLittleEndianNumber: 2.
-	bitFlag _ aStream nextLittleEndianNumber: 2.
-	compressionMethod _ aStream nextLittleEndianNumber: 2.
+	versionNeededToExtract := aStream nextLittleEndianNumber: 2.
+	bitFlag := aStream nextLittleEndianNumber: 2.
+	compressionMethod := aStream nextLittleEndianNumber: 2.
 
-	lastModFileDateTime _ aStream nextLittleEndianNumber: 4.
-	crc32 _ aStream nextLittleEndianNumber: 4.
-	compressedSize _ aStream nextLittleEndianNumber: 4.
-	uncompressedSize _ aStream nextLittleEndianNumber: 4.
+	lastModFileDateTime := aStream nextLittleEndianNumber: 4.
+	crc32 := aStream nextLittleEndianNumber: 4.
+	compressedSize := aStream nextLittleEndianNumber: 4.
+	uncompressedSize := aStream nextLittleEndianNumber: 4.
 
-	fileNameLength _ aStream nextLittleEndianNumber: 2.
-	extraFieldLength _ aStream nextLittleEndianNumber: 2.
-	fileCommentLength _ aStream nextLittleEndianNumber: 2.
+	fileNameLength := aStream nextLittleEndianNumber: 2.
+	extraFieldLength := aStream nextLittleEndianNumber: 2.
+	fileCommentLength := aStream nextLittleEndianNumber: 2.
 	aStream nextLittleEndianNumber: 2. 	"disk number start"
-	internalFileAttributes _ aStream nextLittleEndianNumber: 2.
+	internalFileAttributes := aStream nextLittleEndianNumber: 2.
 
-	externalFileAttributes _ aStream nextLittleEndianNumber: 4.
-	localHeaderRelativeOffset _ aStream nextLittleEndianNumber: 4.
+	externalFileAttributes := aStream nextLittleEndianNumber: 4.
+	localHeaderRelativeOffset := aStream nextLittleEndianNumber: 4.
 
-	fileName _ (aStream next: fileNameLength) asString asSqueakPathName.
-	cdExtraField _ (aStream next: extraFieldLength) asByteArray asString.
-	fileComment _ (aStream next: fileCommentLength) asString convertFromSystemString.
+	fileName := (aStream next: fileNameLength) asString asSqueakPathName.
+	cdExtraField := (aStream next: extraFieldLength) asByteArray asString.
+	fileComment := (aStream next: fileCommentLength) asString convertFromSystemString.
 
 	self desiredCompressionMethod: compressionMethod

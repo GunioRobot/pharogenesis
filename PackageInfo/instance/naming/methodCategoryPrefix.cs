@@ -1,2 +1,2 @@
 methodCategoryPrefix
-	^ methodCategoryPrefix ifNil: [methodCategoryPrefix _ '*', self packageName asLowercase]
+	^ methodCategoryPrefix ifNil: [methodCategoryPrefix := '*', self packageName asLowercase]

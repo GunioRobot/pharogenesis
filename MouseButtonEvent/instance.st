@@ -1,6 +1,6 @@
 MouseEvent
 	subclass: #MouseButtonEvent
-	instanceVariableNames: 'whichButton '
+	instanceVariableNames: 'whichButton'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Events'

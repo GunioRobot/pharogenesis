@@ -1,0 +1,7 @@
+A dependency engine is used to perform one or more installation, upgrade or uninstallation tasks.
+After creation it is typically configured according to different strategies, policies etc based on the preferences of the user.
+Then it is used to calculate what installations, uninstallations or upgrades are needed and in which order to reach certain stated goals, like installing a set of wanted packages or upgrading the installed packages.
+
+The engine instantiates different SMInstallationTask subclasses depending on what it should calculate.
+
+Todo: both the installation information for the image and the engine should probably be kept outside of the SMSqueakMap instance.

@@ -3,7 +3,7 @@ keyboardFocusForAMorph: aMorph
 	| left bottom pos |
 	aMorph ifNil: [^ self].
 	[
-		pos _ aMorph prefereredKeyboardPosition.
+		pos _ aMorph preferredKeyboardPosition.
 		left _ (pos x min: Display width max: 0) asInteger.
 		bottom _ (pos y min: Display height max: 0) asInteger
 			 + (aMorph paragraph

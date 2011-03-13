@@ -1,2 +1,0 @@
-signedChar
-	^AtomicTypes at: 'schar'

@@ -1,0 +1,3 @@
+restrictedIndex
+
+	^ restrictedIndex.

@@ -2,18 +2,18 @@ newFrom: aCollection
 	"Compress aCollection into a ShortRunArray"
 	| lastValue lastRun runs values |
 	aCollection isEmpty ifTrue:[^self runs:#() values: #()].
-	runs _ WriteStream on: (WordArray new: 100).
-	values _ WriteStream on: (ShortIntegerArray new: 100).
-	lastValue _ aCollection first.
-	lastRun _ 0.
+	runs := WriteStream on: (WordArray new: 100).
+	values := WriteStream on: (ShortIntegerArray new: 100).
+	lastValue := aCollection first.
+	lastRun := 0.
 	aCollection do:[:item|
 		(item = lastValue and:[lastRun < 16r8000]) ifTrue:[
-			lastRun _ lastRun + 1.
+			lastRun := lastRun + 1.
 		] ifFalse:[
 			runs nextPut: lastRun.
 			values nextPut: lastValue.
-			lastRun _ 1.
-			lastValue _ item.
+			lastRun := 1.
+			lastValue := item.
 		].
 	].
 	runs nextPut: lastRun.

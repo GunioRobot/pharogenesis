@@ -1,2 +1,0 @@
-getInterruptPending
-	^interruptPending

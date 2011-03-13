@@ -1,2 +1,0 @@
-inboardScrollbars
-	^ self valueOfFlag: #inboardScrollbars

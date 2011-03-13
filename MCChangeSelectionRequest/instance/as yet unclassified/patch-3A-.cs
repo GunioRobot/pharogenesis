@@ -1,2 +1,2 @@
 patch: aPatch
-	patch _ aPatch
+	patch := aPatch

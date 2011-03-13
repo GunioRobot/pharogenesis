@@ -1,2 +1,0 @@
-runButtonLabel
-        ^ 'Run All'

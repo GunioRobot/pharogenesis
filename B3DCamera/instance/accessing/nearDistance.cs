@@ -1,2 +1,0 @@
-nearDistance
-	^perspective nearDistance

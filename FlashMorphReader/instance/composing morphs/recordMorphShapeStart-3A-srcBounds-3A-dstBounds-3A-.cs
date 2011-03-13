@@ -1,6 +1,6 @@
 recordMorphShapeStart: shapeId srcBounds: bounds1 dstBounds: bounds2
-	morphedFillStyles _ Dictionary new.
-	morphedLineStyles _ Dictionary new.
-	location _ 0@0.
-	self logShapes ifFalse:[log _ nil].
+	morphedFillStyles := Dictionary new.
+	morphedLineStyles := Dictionary new.
+	location := 0@0.
+	self logShapes ifFalse:[log := nil].
 	self beginShape.

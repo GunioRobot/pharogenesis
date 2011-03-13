@@ -1,0 +1,1 @@
+MCConfigurationBrowser class instanceVariableNames: ''

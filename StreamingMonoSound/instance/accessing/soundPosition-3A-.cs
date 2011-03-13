@@ -3,8 +3,8 @@ soundPosition: fraction
 
 	| desiredSampleIndex |
 	(stream isNil or: [stream closed]) ifTrue: [^ self].
-	desiredSampleIndex _ ((totalSamples * fraction) truncated max: 0) min: totalSamples.
+	desiredSampleIndex := ((totalSamples * fraction) truncated max: 0) min: totalSamples.
 	codec
 		ifNil: [stream position: audioDataStart + (desiredSampleIndex * 2)]
 		ifNotNil: [self positionCodecTo: desiredSampleIndex].
-	leftoverSamples _ SoundBuffer new.
+	leftoverSamples := SoundBuffer new.

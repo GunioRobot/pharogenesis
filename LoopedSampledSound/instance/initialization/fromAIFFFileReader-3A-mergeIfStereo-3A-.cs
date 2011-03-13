@@ -16,9 +16,9 @@ fromAIFFFileReader: aiffFileReader mergeIfStereo: mergeFlag
 	"the following must be done second, since the initialization above sets
 	 leftSamples and rightSamples to the same sample data"
 	aiffFileReader isStereo
-		ifTrue: [rightSamples _ aiffFileReader rightSamples].
+		ifTrue: [rightSamples := aiffFileReader rightSamples].
 
-	initialCount _ (leftSamples size * self samplingRate) // originalSamplingRate.
+	initialCount := (leftSamples size * self samplingRate) // originalSamplingRate.
 	self loudness: 1.0.
 
 	self addReleaseEnvelope.

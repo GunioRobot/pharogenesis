@@ -2,9 +2,9 @@ addNewObject: newObject thumbForm: aForm sentBy: senderName ipAddress: ipAddress
 
 	| thumb row |
 
-	thumb _ aForm asMorph.
+	thumb := aForm asMorph.
 	thumb setProperty: #depictedObject toValue: newObject.
-	row _ self addARow: {
+	row := self addARow: {
 		thumb. 
 		self inAColumn: {
 			StringMorph new contents: senderName; lock.

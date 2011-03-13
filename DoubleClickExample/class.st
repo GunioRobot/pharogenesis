@@ -1,0 +1,1 @@
+DoubleClickExample class instanceVariableNames: ''

@@ -5,6 +5,6 @@ playSampleCount: n into: aSoundBuffer startingAt: startIndex
 		(totalSamples - self currentSampleIndex) < n ifTrue: [self startOver]].
 
 	mutex critical: [
-		lastBufferMSecs _ Time millisecondClockValue.
+		lastBufferMSecs := Time millisecondClockValue.
 		self loadBuffersForSampleCount: (n * streamSamplingRate) // SoundPlayer samplingRate.
 		mixer playSampleCount: n into: aSoundBuffer startingAt: startIndex].

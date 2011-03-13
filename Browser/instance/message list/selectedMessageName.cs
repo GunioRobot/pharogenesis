@@ -4,7 +4,7 @@ selectedMessageName
 
 	| aList |
 	messageListIndex = 0 ifTrue: [^ nil].
-	^ (aList _ self messageList) size >= messageListIndex
+	^ (aList := self messageList) size >= messageListIndex
 		ifTrue:
 			[aList at: messageListIndex]
 		ifFalse:

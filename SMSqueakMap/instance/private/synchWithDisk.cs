@@ -11,7 +11,7 @@ synchWithDisk
 	 "If there is no checkpoint, save one from me."
 	(self isCheckpointAvailable) ifFalse: [^self createCheckpointNumber: checkpointNumber].
 	"If the one on disk is newer, load it"
-	checkpointNumberOnDisk _ self lastCheckpointNumberOnDisk.
+	checkpointNumberOnDisk := self lastCheckpointNumberOnDisk.
 	(checkpointNumber < checkpointNumberOnDisk)
 		ifTrue: [^self reload].
 	"If I am newer, recreate me on disk"

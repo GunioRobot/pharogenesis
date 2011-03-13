@@ -1,2 +1,0 @@
-spamFilter
-	^ mailDB spamFilter

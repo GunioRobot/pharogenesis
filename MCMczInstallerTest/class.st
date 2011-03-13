@@ -1,0 +1,1 @@
+MCMczInstallerTest class instanceVariableNames: ''

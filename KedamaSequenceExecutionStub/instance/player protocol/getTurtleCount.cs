@@ -1,0 +1,3 @@
+getTurtleCount
+
+	^ exampler getTurtleCount.

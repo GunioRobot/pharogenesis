@@ -1,3 +1,0 @@
-summaryText
-
-	^summaryText

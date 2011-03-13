@@ -2,7 +2,7 @@ spyOnProcess: aProcess forMilliseconds: msecDuration
 	"Run aProcess for msecDuration milliseconds, then open a TimeProfileBrowser on the results."
 
 	"| p |  
-	p _ [100000 timesRepeat: [3.14159 printString]] fork.  
+	p := [100000 timesRepeat: [3.14159 printString]] fork.  
 	(Delay forMilliseconds: 100) wait.  
 	TimeProfileBrowser spyOnProcess: p forMilliseconds: 1000"
 

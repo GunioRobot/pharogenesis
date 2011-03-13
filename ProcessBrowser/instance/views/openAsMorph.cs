@@ -1,10 +1,10 @@
 openAsMorph
 	"Create a pluggable version of me, answer a window"
 	| window aTextMorph |
-	window _ (SystemWindow labelled: 'later')
+	window := (SystemWindow labelled: 'later')
 				model: self.
 
-	deferredMessageRecipient _ WorldState.
+	deferredMessageRecipient := WorldState.
 	window
 		addMorph: ((PluggableListMorph
 				on: self
@@ -25,7 +25,7 @@ openAsMorph
 				keystroke: #stackListKey:from:)
 				enableDragNDrop: false)
 		frame: (0.5 @ 0.0 extent: 0.5 @ 0.5).
-	aTextMorph _ PluggableTextMorph
+	aTextMorph := PluggableTextMorph
 				on: self
 				text: #selectedMethod
 				accept: nil

@@ -1,0 +1,3 @@
+getDisplayScaleMax
+
+	^ self getValueFromCostume: #displayMax.

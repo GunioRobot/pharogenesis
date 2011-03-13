@@ -1,6 +1,6 @@
 Object
 	subclass: #CanvasDecoder
-	instanceVariableNames: 'drawingCanvas clipRect transform connection fonts '
-	classVariableNames: 'CachedForms '
+	instanceVariableNames: 'drawingCanvas clipRect transform connection fonts'
+	classVariableNames: 'CachedForms DecodeTable'
 	poolDictionaries: ''
-	category: 'Morphic-Remote'
+	category: 'Nebraska-Morphic-Remote'

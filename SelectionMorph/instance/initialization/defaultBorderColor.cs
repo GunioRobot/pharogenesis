@@ -1,3 +1,3 @@
 defaultBorderColor
 	"answer the default border color/fill style for the receiver"
-	^ Color blue twiceDarker alpha: 0.7
+	^ (Preferences menuSelectionColor ifNil: [Color blue]) twiceDarker alpha: 0.75

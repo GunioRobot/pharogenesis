@@ -1,7 +1,7 @@
 initializeActionTable
 	"Create and return a new SWF action table"
 	"FlashFileReader initializeActionTable"
-	ActionTable _ Array new: 12.
+	ActionTable := Array new: 12.
 	ActionTable atAllPut: #processUnknownAction:.
 	#(
 		(processActionGotoFrame:	1)

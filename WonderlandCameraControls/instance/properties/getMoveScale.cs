@@ -1,2 +1,0 @@
-getMoveScale
-	^myMoveScale

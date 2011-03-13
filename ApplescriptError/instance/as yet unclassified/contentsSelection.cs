@@ -1,3 +1,0 @@
-contentsSelection
-
-	^from to: to

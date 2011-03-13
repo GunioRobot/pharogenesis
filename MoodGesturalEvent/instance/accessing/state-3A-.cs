@@ -1,2 +1,2 @@
 state: aSymbol
-	state _ aSymbol asSymbol
+	state := aSymbol asSymbol

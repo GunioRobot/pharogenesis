@@ -1,15 +1,15 @@
 drawRect: command 
 	| verb rectEnc fillColorEnc borderWidthEnc borderColorEnc rect fillColor borderWidth borderColor |
-	verb _ command first.
-	rectEnc _ command second.
-	fillColorEnc _ command third.
-	borderWidthEnc _ command fourth.
-	borderColorEnc _ command fifth.
+	verb := command first.
+	rectEnc := command second.
+	fillColorEnc := command third.
+	borderWidthEnc := command fourth.
+	borderColorEnc := command fifth.
 	""
-	rect _ self class decodeRectangle: rectEnc.
-	fillColor _ self class decodeColor: fillColorEnc.
-	borderWidth _ self class decodeInteger: borderWidthEnc.
-	borderColor _ self class decodeColor: borderColorEnc.
+	rect := self class decodeRectangle: rectEnc.
+	fillColor := self class decodeColor: fillColorEnc.
+	borderWidth := self class decodeInteger: borderWidthEnc.
+	borderColor := self class decodeColor: borderColorEnc.
 	""
 	self
 		drawCommand: [:c | c

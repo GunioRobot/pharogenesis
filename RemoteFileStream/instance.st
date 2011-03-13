@@ -1,6 +1,6 @@
 RWBinaryOrTextStream
 	subclass: #RemoteFileStream
-	instanceVariableNames: 'remoteFile localDataValid '
+	instanceVariableNames: 'remoteFile localDataValid'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Network-Kernel'
+	category: 'Network-RemoteDirectory'

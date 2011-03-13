@@ -1,0 +1,1 @@
+MCRepositoryInspector class instanceVariableNames: ''

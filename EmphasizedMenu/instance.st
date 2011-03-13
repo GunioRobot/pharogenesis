@@ -1,6 +1,6 @@
 SelectionMenu
 	subclass: #EmphasizedMenu
-	instanceVariableNames: 'emphases '
+	instanceVariableNames: 'emphases'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Tools-Menus'
+	category: 'ST80-Menus'

@@ -1,2 +1,0 @@
-classArray
-	^self splObj: ClassArray

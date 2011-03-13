@@ -1,3 +1,3 @@
 basicStoreVersion: aVersion
-	(self allFileNames includes: aVersion fileName)
+	(aVersion isCacheable and: [self allFileNames includes: aVersion fileName])
 		ifFalse: [super basicStoreVersion: aVersion]

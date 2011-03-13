@@ -1,6 +1,6 @@
 initialize
 	super initialize.
-	synthesizer _ KlattSynthesizer new cascade: 0.
+	synthesizer := KlattSynthesizer new cascade: 0.
 	self segments: KlattSegmentSet arpabet.
 	self patternFrame: self defaultPatternFrame.
 	self breathiness: 0.0.

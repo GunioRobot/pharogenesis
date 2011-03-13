@@ -3,7 +3,7 @@ reconstituteList
 
 	| newMembers |
 	"First determine newMembers and check if they have not changed..."
-	newMembers _ ChangeSorter allChangeSets select:
+	newMembers := ChangeSorter allChangeSets select:
 		[:aChangeSet | ChangeSorter perform: membershipSelector with: aChangeSet].
 	(newMembers collect: [:cs | cs name]) = keysInOrder ifTrue: [^ self  "all current"].
 

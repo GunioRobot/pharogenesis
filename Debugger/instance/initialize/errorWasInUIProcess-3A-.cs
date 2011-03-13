@@ -1,3 +1,3 @@
 errorWasInUIProcess: boolean
 
-	errorWasInUIProcess _ boolean
+	errorWasInUIProcess := boolean

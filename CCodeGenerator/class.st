@@ -1,1 +1,0 @@
-CCodeGenerator class instanceVariableNames: ''

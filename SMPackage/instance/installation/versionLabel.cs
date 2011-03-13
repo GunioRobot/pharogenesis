@@ -9,11 +9,11 @@ versionLabel
 	If a version name is in parenthesis it is not published."
 
 	| installedVersion r r2 |
-	r _ self installedRelease.
+	r := self installedRelease.
 	r ifNotNil: [
-		installedVersion _ r smartVersion.
-		r2 _ self lastPublishedReleaseForCurrentSystemVersionNewerThan: r]
+		installedVersion := r smartVersion.
+		r2 := self lastPublishedReleaseForCurrentSystemVersionNewerThan: r]
 	ifNil: [
-		installedVersion _ ''.
-		r2 _ self lastPublishedReleaseForCurrentSystemVersion ].
+		installedVersion := ''.
+		r2 := self lastPublishedReleaseForCurrentSystemVersion ].
 	^r2 ifNil: [installedVersion ] ifNotNil: [installedVersion, '->', r2 smartVersion].

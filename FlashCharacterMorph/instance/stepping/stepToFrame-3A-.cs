@@ -1,13 +1,13 @@
 stepToFrame: frameNumber
 	| m wasVisible isVisible noTransform cm |
-	wasVisible _ self visible.
+	wasVisible := self visible.
 	self visible: (self visibleAtFrame: frameNumber).
-	isVisible _ self visible.
-	frame _ frameNumber.
+	isVisible := self visible.
+	frame := frameNumber.
 	isVisible ifTrue:[
-		m _ self matrixAtFrame: frame.
-		cm _ self colorTransformAtFrame: frame.
-		noTransform _ (m = transform) and:[colorTransform = cm].
+		m := self matrixAtFrame: frame.
+		cm := self colorTransformAtFrame: frame.
+		noTransform := (m = transform) and:[colorTransform = cm].
 		(noTransform and:[isVisible = wasVisible]) ifTrue:[^self]. "No change"
 		((noTransform not) and:[wasVisible]) ifTrue:[
 			"Invalidate with old transform"

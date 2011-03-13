@@ -1,6 +1,6 @@
 recordBeginSprite: id frames: frameCount
 	| sprite |
-	sprite _ FlashSpriteMorph new.
+	sprite := FlashSpriteMorph new.
 	sprite maxFrames: frameCount.
 	sprite stepTime: stepTime.
 	spriteOwners at: sprite put: (
@@ -8,7 +8,7 @@ recordBeginSprite: id frames: frameCount
 			with: frame
 			with: activeMorphs
 			with: passiveMorphs).
-	player _ sprite.
-	frame _ 1.
-	activeMorphs _ Dictionary new: 100.
-	passiveMorphs _ Dictionary new: 100.
+	player := sprite.
+	frame := 1.
+	activeMorphs := Dictionary new: 100.
+	passiveMorphs := Dictionary new: 100.

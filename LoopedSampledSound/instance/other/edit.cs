@@ -2,8 +2,8 @@ edit
 	"Open a WaveEditor on this sound."
 
 	| loopLen ed |
-	loopLen _ scaledLoopLength asFloat / LoopIndexScaleFactor.
-	ed _ WaveEditor new
+	loopLen := scaledLoopLength asFloat / LoopIndexScaleFactor.
+	ed := WaveEditor new
 		data: leftSamples;
 		samplingRate: originalSamplingRate;
 		loopEnd: loopEnd;

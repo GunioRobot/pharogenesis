@@ -9,6 +9,7 @@ contents: input notifying: aController
 	self changed: #annotation.
 	aString _ input asString.
 	aText _ input asText.
+	editSelection == #newTrait ifTrue: [^self defineTrait: input asString notifying: aController].
 	editSelection == #editSystemCategories ifTrue: [^ self changeSystemCategories: aString].
 	editSelection == #editClass | (editSelection == #newClass) ifTrue: [^ self defineClass: aString notifying: aController].
 	editSelection == #editComment

@@ -1,0 +1,2 @@
+isBrowseRequest
+	^ false

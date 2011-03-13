@@ -1,2 +1,2 @@
 data: anObject
-	data _ anObject
+	data := anObject

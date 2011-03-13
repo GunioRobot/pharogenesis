@@ -13,6 +13,8 @@ transferHalo: event from: formerHaloOwner
 		].
 		^target transferHalo: localEvt from: target].
 
+"	formerHaloOwner == self ifTrue:[^ self removeHalo]."
+
 	"Never transfer halo to top-most world"
 	(self isWorldMorph and:[owner isNil]) ifFalse:[
 		(self wantsHaloFromClick and:[formerHaloOwner ~~ self]) 
@@ -32,6 +34,9 @@ transferHalo: event from: formerHaloOwner
 	].
 	"We're at the bottom most level; throw the event back up to the root to find recipient"
 	formerHaloOwner removeHalo.
-	(w _ self world) ifNil: [ ^self ].
-	localEvt _ event transformedBy: (self transformedFrom: w) inverseTransformation.
-	^w processEvent: localEvt resetHandlerFields.
+
+	Preferences maintainHalos ifFalse:[
+		(w _ self world) ifNil: [ ^self ].
+		localEvt _ event transformedBy: (self transformedFrom: w) inverseTransformation.
+		^w processEvent: localEvt resetHandlerFields.
+	].

@@ -3,8 +3,7 @@ redButtonActivity
 	view isCollapsed ifTrue: [^ super redButtonActivity].
 	(view insetDisplayBox containsPoint: Sensor cursorPoint)
 		ifFalse: [^ super redButtonActivity].
-	index _ (PopUpMenu labelArray: #('enter' 'jump to project...') lines: #()) 
-		startUpCenteredWithCaption: nil.
+	index _ (UIManager default chooseFrom: #('enter' 'jump to project...') lines: #()).
 	index = 0 ifTrue: [^ self].
 
 	"save size on enter for thumbnail on exit"

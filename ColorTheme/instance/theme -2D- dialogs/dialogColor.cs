@@ -1,0 +1,2 @@
+dialogColor
+	^ Color paleYellow

@@ -1,0 +1,1 @@
+SystemNavigation class instanceVariableNames: ''

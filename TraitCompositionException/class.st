@@ -1,0 +1,1 @@
+TraitCompositionException class instanceVariableNames: ''

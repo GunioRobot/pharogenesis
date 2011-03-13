@@ -1,7 +1,7 @@
 renameMember
 	| newName |
 	self canRenameMember ifFalse: [ ^self ].
-	newName _ FillInTheBlankMorph
+	newName := FillInTheBlankMorph
 		request: 'New name for member:'
 		initialAnswer: self selectedMember fileName.
 	newName notEmpty ifTrue: [

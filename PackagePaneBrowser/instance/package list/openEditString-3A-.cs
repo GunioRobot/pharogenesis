@@ -57,23 +57,23 @@ openEditString: aString
 
 	self wantsAnnotationPane
 		ifTrue:
-			[annotationPane _ PluggableTextView on: self
+			[annotationPane := PluggableTextView on: self
 				text: #annotation accept: nil
 				readSelection: nil menu: nil.
 			annotationPane window: (0@0 extent: 200@self optionalAnnotationHeight).
 			topView addSubView: annotationPane below: packageListView.
-			underPane _ annotationPane.
-			y _ 110 - self optionalAnnotationHeight]
+			underPane := annotationPane.
+			y := 110 - self optionalAnnotationHeight]
 		ifFalse:
-			[underPane _ packageListView.
-			y _ 110].
+			[underPane := packageListView.
+			y := 110].
 
 	self wantsOptionalButtons ifTrue:
-		[optionalButtonsView _ self buildOptionalButtonsView.
+		[optionalButtonsView := self buildOptionalButtonsView.
 		optionalButtonsView borderWidth: 1.
 		topView addSubView: optionalButtonsView below: underPane.
-		underPane _ optionalButtonsView.
-		y _ y - self optionalButtonHeight].
+		underPane := optionalButtonsView.
+		y := y - self optionalButtonHeight].
 
 	browserCodeView := MvcTextEditor default on: self 
 			text: #contents accept: #contents:notifying:

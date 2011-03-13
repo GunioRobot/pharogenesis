@@ -1,3 +1,0 @@
-summaryTextM: aPluggableTextMorph
-
-	summaryTextM := aPluggableTextMorph.

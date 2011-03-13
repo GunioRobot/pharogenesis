@@ -1,6 +1,6 @@
 StandardSystemController
 	subclass: #DeferredActionStandardSystemController
-	instanceVariableNames: 'queue '
+	instanceVariableNames: 'queue'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'NK-Process Browser'
+	category: 'Tools-Process Browser'

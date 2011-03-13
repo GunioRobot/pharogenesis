@@ -1,4 +1,4 @@
 fileNumber: fileNumber position: position 
 
-	sourceFileNumber _ fileNumber.
-	filePositionHi _ position
+	sourceFileNumber := fileNumber.
+	filePositionHi := position

@@ -2,7 +2,7 @@ createAcceptButton
 	"create the [accept] button"
 	| result frame |
 	result := SimpleButtonMorph new target: self;
-				 color: Color lightGreen.
+				 color: ColorTheme current okColor.
 	result
 		borderColor: (Preferences menuAppearance3d
 				ifTrue: [#raised]

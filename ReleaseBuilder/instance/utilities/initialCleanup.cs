@@ -8,7 +8,7 @@ initialCleanup
 	(Object classPool at: #DependentsFields) size > 1 ifTrue: [self error:'Still have dependents'].
 	Undeclared isEmpty ifFalse: [self error:'Please clean out Undeclared'].
 
-	Browser initialize.
+	Smalltalk at: #Browser ifPresent:[:br| br initialize].
 	ScriptingSystem deletePrivateGraphics.  "?"
 	
 	self cleanUpChanges.
@@ -20,7 +20,7 @@ initialCleanup
 	DataStream initialize.
 
 	Smalltalk garbageCollect.
-	ScheduledControllers _ nil.
+	ScheduledControllers := nil.
 	Smalltalk garbageCollect.
 	
 	SMSqueakMap default purge.

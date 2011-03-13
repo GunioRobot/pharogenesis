@@ -5,6 +5,9 @@ tallyPath: context by: count
 		[:aMessageTally | 
 		aMessageTally method == aMethod ifTrue: [path _ aMessageTally]].
 	path == nil ifTrue: 
-		[path _ MessageTally new class: context receiver class method: aMethod.
+		[path _ MessageTally new class: context receiver class method: aMethod;
+			maxClassNameSize: maxClassNameSize;
+			maxClassPlusSelectorSize: maxClassPlusSelectorSize;
+			maxTabs: maxTabs.
 		receivers _ receivers copyWith: path].
 	^ path bumpBy: count

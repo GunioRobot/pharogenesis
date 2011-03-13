@@ -1,15 +1,15 @@
 rebuild
 
 	| earMorph |
-	updateCounter _ UpdateCounter.
+	updateCounter := UpdateCounter.
 	self removeAllMorphs.
 	self addGateKeeperMorphs.
 	GlobalListener ifNil: [
-		earMorph _ (self class makeListeningToggleNew: false) asMorph.
+		earMorph := (self class makeListeningToggleNew: false) asMorph.
 		earMorph setBalloonText: 'Click to START listening for messages'.
 		earMorph on: #mouseUp send: #startListening to: self.
 	] ifNotNil: [
-		earMorph _ (self class makeListeningToggleNew: true) asMorph.
+		earMorph := (self class makeListeningToggleNew: true) asMorph.
 		earMorph setBalloonText: 'Click to STOP listening for messages'.
 		earMorph on: #mouseUp send: #stopListening to: self.
 	].

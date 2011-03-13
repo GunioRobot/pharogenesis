@@ -1,2 +1,0 @@
-primStringfindSubstringinstartingAtmatchTable
-	^self primitiveFail

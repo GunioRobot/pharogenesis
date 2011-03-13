@@ -1,2 +1,0 @@
-primGetFailureReason
-	^BalloonEnginePlugin doPrimitive: 'gePrimitiveGetFailureReason'

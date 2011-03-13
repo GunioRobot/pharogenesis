@@ -1,4 +1,6 @@
 testPeekerUnhibernateBug
+	"self run: #testPeekerUnhibernateBug"
+
 	| bitBlt |
 	bitBlt := BitBlt bitPeekerFromForm: Display.
 	bitBlt destForm hibernate.

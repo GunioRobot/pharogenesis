@@ -1,3 +1,3 @@
 requires: anArray
 
-	requires _ anArray
+	requires := anArray

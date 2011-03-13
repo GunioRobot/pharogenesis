@@ -2,7 +2,7 @@ invokeMenu
 	"Invoke a menu of additonal commands."
 
 	| aMenu |
-	aMenu _ CustomMenu new.
+	aMenu := CustomMenu new.
 	aMenu add: 'add channel' translated action: #addChannel.
 	aMenu add: 'reload instruments' translated target: AbstractSound selector: #updateScorePlayers.
 	midiSynth isOn ifFalse: [

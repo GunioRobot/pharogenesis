@@ -3,7 +3,7 @@ annotation
 
 	| aCategoryName |
 	self selectedMessageName ifNotNil: [^ super annotation].
-	(aCategoryName _ self selectedCategoryName) ifNil:
+	(aCategoryName := self selectedCategoryName) ifNil:
 		[^ self hasSearchPane
 			ifTrue:
 				['type a message name or fragment in the top pane and hit RETURN or ENTER']

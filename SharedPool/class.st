@@ -1,0 +1,1 @@
+SharedPool class instanceVariableNames: ''

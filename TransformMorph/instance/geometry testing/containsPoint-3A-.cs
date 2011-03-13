@@ -1,8 +1,9 @@
 containsPoint: aPoint
 	(bounds containsPoint: aPoint) ifFalse: [^ false].
 	self hasSubmorphs
-		ifTrue: [self submorphsDo: 
-					[:m | (m containsPoint: (transform globalPointToLocal: aPoint))
+		ifTrue: [ | localPoint |  localPoint := (transform globalPointToLocal: aPoint) .
+				self submorphsDo: 
+					[:m | (m containsPoint: localPoint)
 							ifTrue: [^ true]].
 				^ false]
 		ifFalse: [^ true]

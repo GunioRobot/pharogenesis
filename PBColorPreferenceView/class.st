@@ -1,0 +1,1 @@
+PBColorPreferenceView class instanceVariableNames: ''

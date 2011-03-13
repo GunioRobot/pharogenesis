@@ -1,2 +1,0 @@
-falseObject
-	^falseObj

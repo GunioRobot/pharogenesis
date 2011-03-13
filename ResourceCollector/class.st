@@ -1,0 +1,1 @@
+ResourceCollector class instanceVariableNames: ''

@@ -1,0 +1,1 @@
+OBNodeChanged class instanceVariableNames: ''

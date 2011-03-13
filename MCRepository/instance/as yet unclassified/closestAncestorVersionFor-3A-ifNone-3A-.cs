@@ -1,5 +1,5 @@
 closestAncestorVersionFor: anAncestry ifNone: errorBlock
-	anAncestry allAncestors do:
+	anAncestry breadthFirstAncestorsDo:
 		[:ancestorInfo |
 		(self versionWithInfo: ancestorInfo) ifNotNilDo: [:v | ^ v]].
 	^ errorBlock value

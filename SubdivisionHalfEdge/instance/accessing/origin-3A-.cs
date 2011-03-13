@@ -1,2 +1,0 @@
-origin: aPoint
-	point := aPoint

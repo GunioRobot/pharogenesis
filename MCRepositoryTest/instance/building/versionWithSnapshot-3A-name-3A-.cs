@@ -1,6 +1,6 @@
 versionWithSnapshot: aSnapshot name: aString
 	| info |
-	info _ self mockVersionInfo: aString. 
+	info := self mockVersionInfo: aString. 
 	^ MCVersion 
 		package: (MCPackage new name: aString)
 		info: info

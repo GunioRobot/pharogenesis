@@ -5,5 +5,9 @@ mouseUp: evt
 		self contents: self contentString withMarkers: true inverse: true.
 		self refreshWorld.
 		(Delay forMilliseconds: 200) wait].
-	self deselect: evt.
+
+	self isInDockingBar
+		ifTrue:[ owner rootMenu selectItem: nil event: evt ]
+		ifFalse:[ self deselect: evt ].
+
 	self invokeWithEvent: evt.		

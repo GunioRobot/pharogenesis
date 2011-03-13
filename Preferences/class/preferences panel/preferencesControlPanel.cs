@@ -5,7 +5,7 @@ preferencesControlPanel
 	| window playfield aPanel |
 
 	aPanel _ PreferencesPanel new.
-	playfield _ PasteUpMorph new width: 325.
+	playfield _ PasteUpMorph new width: 385.
 	playfield dropEnabled: false.
 	window _ (SystemWindow labelled: 'Preferences') model: aPanel.
 	self initializePreferencePanel: aPanel in: playfield.

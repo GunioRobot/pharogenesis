@@ -1,2 +1,0 @@
-checkForSlips
-	^ self valueOfFlag: #checkForSlips

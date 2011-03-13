@@ -1,0 +1,3 @@
+defaultNameStemForInstances
+
+	^ 'patch' translated.

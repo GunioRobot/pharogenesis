@@ -1,7 +1,7 @@
 recordTextChange: fontId color: color xOffset: xOffset yOffset: yOffset height: height
 
-	fontId ifNotNil:[activeFont _ fonts at: fontId].
-	height ifNotNil:[textHeight _ height].
-	xOffset ifNotNil:[textOffset _ xOffset @ textOffset x].
-	yOffset ifNotNil:[textOffset _ textOffset x @ yOffset].
+	fontId ifNotNil:[activeFont := fonts at: fontId].
+	height ifNotNil:[textHeight := height].
+	xOffset ifNotNil:[textOffset := xOffset @ textOffset x].
+	yOffset ifNotNil:[textOffset := textOffset x @ yOffset].
 	color ifNotNil:[textMorph color: color].

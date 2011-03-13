@@ -1,2 +1,0 @@
-boundsMap
-	^boundsMap

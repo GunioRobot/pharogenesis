@@ -1,2 +1,0 @@
-method: aTMethod
-	method := aTMethod

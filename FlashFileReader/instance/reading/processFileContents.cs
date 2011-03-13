@@ -2,7 +2,7 @@ processFileContents
 	"Process the contents of the flash file.
 	Assume that the header has been read before."
 	| time |
-	time _ Time millisecondsToRun:[
+	time := Time millisecondsToRun:[
 	self isStreaming ifTrue:[
 		"Don't show progress for a streaming connection.
 		Note: Yielding is done someplace else."

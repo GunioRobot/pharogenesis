@@ -1,2 +1,0 @@
-characterTable
-	^self splObj: CharacterTable

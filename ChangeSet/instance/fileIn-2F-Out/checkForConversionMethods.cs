@@ -34,11 +34,11 @@ sel smart restore renamed listAdd listDrop msgSet rec nn |
 			withCRs,
 		'After you edit the conversion method, you''ll need to fileOut again.\' withCRs,
 		'The preference conversionMethodsAtFileOut in category "fileout" controls this feature.'.
-	choice _ (PopUpMenu labels: 
+	choice _ UIManager default chooseFrom:
 'Write a conversion method by editing a prototype
 These classes are not used in any object file.  fileOut my changes now.
 I''m too busy.  fileOut my changes now.
-Don''t ever ask again.  fileOut my changes now.') startUpWithCaption: tell. 
+Don''t ever ask again.  fileOut my changes now.' withCRs title: tell. 
 	choice = 4 ifTrue: [Preferences disable: #conversionMethodsAtFileOut].
 	choice = 2 ifTrue: ["Don't consider this class again in the changeSet"
 			list do: [:cls | structures removeKey: cls name ifAbsent: []].
@@ -60,6 +60,6 @@ Don''t ever ask again.  fileOut my changes now.') startUpWithCaption: tell.
 		"each new method is added to self (a changeSet).  Then filed out with the rest."
 	self askRenames: renamed addTo: msgSet using: smart.	"renamed classes, add 2 methods"
 	restore == self ifFalse: [self class newChanges: restore].
-	msgSet messageList isEmpty ifTrue: [^ self].
+	msgSet isEmpty ifTrue: [^ self].
 	self inform: 'Remember to fileOut again after modifying these methods.'.
-	MessageSet open: msgSet name: 'Conversion methods for ', self name.
+	ToolSet browseMessageSet: msgSet name: 'Conversion methods for ', self name autoSelect: false.

@@ -1,6 +1,6 @@
 EToyProjectRenamerMorph
 	subclass: #EToyProjectDetailsMorph
-	instanceVariableNames: 'projectDetails '
+	instanceVariableNames: 'projectDetails'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Experimental'
+	category: 'EToys-Experimental'

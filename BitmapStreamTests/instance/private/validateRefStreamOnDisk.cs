@@ -2,14 +2,14 @@ validateRefStreamOnDisk
 	"array is set up with an array."
 	| other filename |
 
-	filename _ 'bitmapStreamTest.ref'.
+	filename := 'bitmapStreamTest.ref'.
 	FileDirectory default deleteFileNamed: filename ifAbsent: [ ].
 
-	stream _ ReferenceStream fileNamed: filename.
+	stream := ReferenceStream fileNamed: filename.
 	stream nextPut: array; close.
 
-	stream _ ReferenceStream fileNamed: filename.
-	other _ stream next.
+	stream := ReferenceStream fileNamed: filename.
+	other := stream next.
 	stream close.
 
 	self assert: array = other

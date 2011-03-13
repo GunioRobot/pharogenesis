@@ -1,3 +1,3 @@
 updateSelector: aSymbol
 
-	updateSelector _ aSymbol.
+	updateSelector := aSymbol.

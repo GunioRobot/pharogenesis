@@ -1,0 +1,2 @@
+hasSelection
+	^ false

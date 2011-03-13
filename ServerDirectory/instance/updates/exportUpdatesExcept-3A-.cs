@@ -21,8 +21,9 @@ exportUpdatesExcept: skipList
 		[self inform: 'There is no section in updates.list for your version'.
 		self closeGroup.  ^ nil].	"abort"
 	versIndex < listContents size ifTrue:
-		[response _ (PopUpMenu labels: 'Make update from an older version\Cancel update' withCRs)
-			startUpWithCaption: 'This system, ', SystemVersion current version,
+		[response _ UIManager default 
+			chooseFrom: #('Make update from an older version' 'Cancel update')
+			title: 'This system, ', SystemVersion current version,
 				' is not the latest version'.
 		response = 1 ifFalse: [self closeGroup.  ^ nil]].	"abort"
 

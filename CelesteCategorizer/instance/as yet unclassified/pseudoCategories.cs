@@ -1,2 +1,0 @@
-pseudoCategories
-	^ pseudoCategories ifNil: [{}]

@@ -1,6 +1,6 @@
 AlignmentMorph
 	subclass: #AllScriptsTool
-	instanceVariableNames: 'presenter showingOnlyActiveScripts showingAllInstances '
+	instanceVariableNames: 'showingOnlyActiveScripts showingAllInstances showingOnlyTopControls'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Scripting'
+	category: 'EToys-Scripting'

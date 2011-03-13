@@ -1,3 +1,0 @@
-useGlobalFlapsString
-
-	^ Utilities useGlobalFlapsString

@@ -5,24 +5,24 @@ pvtOpenFileNamed: fName
 	self stopRunning.
 	fName = movieFileName ifTrue: [^ self].  "No reopen necessary on same file"
 
-	movieFileName _ fName.
+	movieFileName := fName.
 	"Read movie file parameters from 128-byte header...
 		(records follow as {N=int32, N words}*)"
-	f _ (FileStream oldFileNamed: movieFileName) binary.
+	f := (FileStream oldFileNamed: movieFileName) binary.
 		f nextInt32.
-		w _ f nextInt32.
-		h _ f nextInt32.
-		d _ f nextInt32.
-		n _ f nextInt32.
-		m _ f nextInt32.
+		w := f nextInt32.
+		h := f nextInt32.
+		d := f nextInt32.
+		n := f nextInt32.
+		m := f nextInt32.
 		f close.
-	pageSize _ frameSize _ w@h.
-	frameDepth _ d.
-	frameCount _ n.
-	frameNumber _ 1.
-	playDirection _ 0.
-	msAtLastSync _ 0.
-	msPerFrame _ m/1000.0.
+	pageSize := frameSize := w@h.
+	frameDepth := d.
+	frameCount := n.
+	frameNumber := 1.
+	playDirection := 0.
+	msAtLastSync := 0.
+	msPerFrame := m/1000.0.
 	self makeMyPage.
 	(SmalltalkImage current platformName = 'Mac OS') ifTrue:[
 		(SmalltalkImage current extraVMMemory < self fileByteCountPerFrame) ifTrue:

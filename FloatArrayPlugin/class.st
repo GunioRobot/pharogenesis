@@ -1,1 +1,0 @@
-FloatArrayPlugin class instanceVariableNames: ''

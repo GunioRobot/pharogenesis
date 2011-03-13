@@ -1,2 +1,0 @@
-alternativeBrowseIt
-	^ self valueOfFlag: #alternativeBrowseIt

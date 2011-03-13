@@ -1,6 +1,6 @@
-Date
+Timespan
 	subclass: #Week
 	instanceVariableNames: ''
-	classVariableNames: 'StartMonday '
-	poolDictionaries: ''
-	category: 'Kernel-Magnitudes'
+	classVariableNames: 'StartDay'
+	poolDictionaries: 'ChronologyConstants'
+	category: 'Kernel-Chronology'

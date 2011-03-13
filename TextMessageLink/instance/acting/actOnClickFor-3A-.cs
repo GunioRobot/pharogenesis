@@ -3,7 +3,8 @@ actOnClickFor: evt
 	viewMsg _ message containsViewableImage
 		ifTrue: ['view this image attachment']
 		ifFalse: ['view this attachment'].
-	choice _ (PopUpMenu labels: viewMsg, '\save this attachment' withCRs) startUp.
+	choice _ UIManager default chooseFrom: (Array with: viewMsg 
+													with: 'save this attachment' ).
 	choice = 1
 		ifTrue: ["open a new viewer"
 			message viewBody].

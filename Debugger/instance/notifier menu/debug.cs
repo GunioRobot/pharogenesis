@@ -1,7 +1,7 @@
 debug
 	"Open a full DebuggerView."
 	| topView |
-	topView _ self topView.
+	topView := self topView.
 	topView model: nil.  "so close won't release me."
 	Smalltalk isMorphic
 		ifTrue:

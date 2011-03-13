@@ -20,11 +20,11 @@ initialize
 (enumerating		'Passing over the letters'
 		(collect: collectWithIndex: do: from:to:do: reverseDo: select: withIndexDo: detect: detect:ifNone:))
 ) do: [:item | 
-			aMethodCategory _ ElementCategory new categoryName: item first.
+			aMethodCategory := ElementCategory new categoryName: item first.
 			aMethodCategory documentation: item second.
 			item third do:
 				[:aSelector | 
-					aMethodInterface _ MethodInterface new initializeFor: aSelector.
+					aMethodInterface := MethodInterface new initializeFor: aSelector.
 					self atKey: aSelector putMethodInterface: aMethodInterface.
 					aMethodCategory elementAt: aSelector put: aMethodInterface].
 			self addCategory: aMethodCategory].

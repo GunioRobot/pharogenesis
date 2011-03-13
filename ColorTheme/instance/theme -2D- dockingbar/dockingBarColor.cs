@@ -1,0 +1,2 @@
+dockingBarColor
+	^ self subclassResponsibility

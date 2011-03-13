@@ -1,6 +1,6 @@
 Object
 	subclass: #FileDirectory
-	instanceVariableNames: 'pathName '
-	classVariableNames: 'DefaultDirectory DirectoryClass StandardMIMEMappings '
+	instanceVariableNames: 'pathName'
+	classVariableNames: 'DefaultDirectory DirectoryClass StandardMIMEMappings'
 	poolDictionaries: ''
-	category: 'System-Files'
+	category: 'Files-Directories'

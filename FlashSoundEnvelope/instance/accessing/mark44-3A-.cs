@@ -1,2 +1,2 @@
 mark44: anInteger
-	mark44 _ anInteger
+	mark44 := anInteger

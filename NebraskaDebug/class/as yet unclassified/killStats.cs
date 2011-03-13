@@ -1,3 +1,3 @@
 killStats
 
-	DEBUG _ nil.
+	DEBUG := nil.

@@ -1,1 +1,0 @@
-I am a vertex transformer that uses some primitive level support.

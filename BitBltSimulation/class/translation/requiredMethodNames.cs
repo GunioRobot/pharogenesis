@@ -1,2 +1,0 @@
-requiredMethodNames
-	^self opTable asSet

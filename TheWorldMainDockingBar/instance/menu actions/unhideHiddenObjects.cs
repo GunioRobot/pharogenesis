@@ -1,0 +1,2 @@
+unhideHiddenObjects
+	self world showHiders

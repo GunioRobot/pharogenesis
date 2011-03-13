@@ -1,2 +1,2 @@
 signalFailure: aString
-	TestResult failure sunitSignalWith: aString
+	TestResult failure signal: aString

@@ -1,0 +1,2 @@
+moveObjectsOnscreen
+	self world roundUpStrays

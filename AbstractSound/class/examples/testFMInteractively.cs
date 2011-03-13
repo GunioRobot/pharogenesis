@@ -4,18 +4,18 @@ testFMInteractively
 
 	| s mousePt lastVal status mod ratio |
 	SoundPlayer startPlayerProcessBufferSize: 1100 rate: 11025 stereo: false.
-	s _ FMSound pitch: 440.0 dur: 200.0 loudness: 0.2.
+	s := FMSound pitch: 440.0 dur: 200.0 loudness: 0.2.
 
 	SoundPlayer playSound: s.
-	lastVal _ nil.
+	lastVal := nil.
 	[Sensor anyButtonPressed] whileFalse: [
-		mousePt _ Sensor cursorPoint.
+		mousePt := Sensor cursorPoint.
 		mousePt ~= lastVal ifTrue: [
-			mod _ mousePt x asFloat / 20.0.
-			ratio _ mousePt y asFloat / 20.0.
+			mod := mousePt x asFloat / 20.0.
+			ratio := mousePt y asFloat / 20.0.
 			s modulation: mod ratio: ratio.
-			lastVal _ mousePt.
-			status _
+			lastVal := mousePt.
+			status :=
 'mod: ', mod printString, '
 ratio: ', ratio printString.
 			status displayOn: Display at: 10@10]].

@@ -1,6 +1,6 @@
 ObjectWithDocumentation
 	subclass: #ElementCategory
-	instanceVariableNames: 'categoryName keysInOrder elementDictionary '
+	instanceVariableNames: 'categoryName keysInOrder elementDictionary'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Protocols'
+	category: 'Protocols-Kernel'

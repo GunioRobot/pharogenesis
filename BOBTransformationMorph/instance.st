@@ -1,6 +1,6 @@
 TransformationMorph
 	subclass: #BOBTransformationMorph
-	instanceVariableNames: 'worldBoundsToShow useRegularWarpBlt '
+	instanceVariableNames: 'worldBoundsToShow useRegularWarpBlt'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Basic'
+	category: 'MorphicExtras-AdditionalSupport'

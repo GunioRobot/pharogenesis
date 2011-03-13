@@ -1,0 +1,1 @@
+ShiftJISTextConverter class instanceVariableNames: ''

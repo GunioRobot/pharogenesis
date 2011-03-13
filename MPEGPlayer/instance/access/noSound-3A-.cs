@@ -1,2 +1,2 @@
 noSound: flag
-	noSound _ flag
+	noSound := flag

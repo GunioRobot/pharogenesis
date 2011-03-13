@@ -5,7 +5,7 @@ valueAt: parameter
 				t^2 * p3.
 	"
 	| t1 t2 t3 |
-	t1 _ (1.0 - parameter) squared.
-	t2 _ 2 * parameter * (1.0 - parameter).
-	t3 _ parameter squared.
+	t1 := (1.0 - parameter) squared.
+	t2 := 2 * parameter * (1.0 - parameter).
+	t3 := parameter squared.
 	^(start * t1) + (via * t2) + (end * t3)

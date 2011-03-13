@@ -68,7 +68,7 @@ fullDescription
 	self describeCategoriesOn: s indent: 1.
 
 	s cr.
-	publishedRelease _ self lastPublishedRelease.
+	publishedRelease := self lastPublishedRelease.
 	self
 		describe: (self publishedVersion ifNil: ['<not published>'])
 		withBoldLabel: 'Published version: '

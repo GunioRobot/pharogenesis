@@ -1,2 +1,3 @@
 asExplorerString
-	^ self asString
+
+	^ self printString

@@ -2,7 +2,7 @@ buildMorphicClassList
 
 	| myClassList |
 
-	(myClassList _ PluggableListMorph new) 
+	(myClassList := PluggableListMorph new) 
 			setProperty: #highlightSelector toValue: #highlightClassList:with:;
 
 			on: self list: #classList
@@ -11,5 +11,7 @@ buildMorphicClassList
 	myClassList borderWidth: 0.
 	myClassList enableDragNDrop: Preferences browseWithDragNDrop.
 	myClassList doubleClickSelector: #browseSelectionInPlace.
+	"For doubleClick to work best disable autoDeselect"
+	myClassList autoDeselect: false .
 	^myClassList
 

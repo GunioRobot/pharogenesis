@@ -1,5 +1,5 @@
 scoreFromStream: binaryStream
 
 	|  score |
-	score _ (self new readMIDIFrom: binaryStream) asScore.
+	score := (self new readMIDIFrom: binaryStream) asScore.
 	^ score

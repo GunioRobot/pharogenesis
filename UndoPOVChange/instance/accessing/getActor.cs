@@ -1,2 +1,0 @@
-getActor
-	^theActor

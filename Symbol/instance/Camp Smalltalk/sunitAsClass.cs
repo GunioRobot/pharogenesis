@@ -1,3 +1,0 @@
-sunitAsClass
- 
-        ^SUnitNameResolver classNamed: self

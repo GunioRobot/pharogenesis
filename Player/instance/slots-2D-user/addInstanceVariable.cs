@@ -16,8 +16,8 @@ addInstanceVariable
 	self slotInfo at: itsName put: (SlotInformation new initialize type: typeChosen).
 	initialValue _ self initialValueForSlotOfType: typeChosen.
 	self addInstanceVarNamed: itsName withValue: initialValue.
-	self class compileAccessorsFor: itsName.
+	self compileInstVarAccessorsFor: itsName.
 	setterSelector _ Utilities setterSelectorFor: itsName.
-	(self class allSubInstances copyWithout: self) do:
+	((self class allSubInstances copyWithout: self) reject: [:e | e isSequentialStub]) do:
 		[:anInstance | anInstance perform: setterSelector with: initialValue].
 	self updateAllViewersAndForceToShow: ScriptingSystem nameForInstanceVariablesCategory

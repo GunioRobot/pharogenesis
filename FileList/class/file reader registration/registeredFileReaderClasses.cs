@@ -1,6 +1,4 @@
 registeredFileReaderClasses
-	
-	FileReaderRegistry ifNil: [FileReaderRegistry _ OrderedCollection new].
-	^ FileReaderRegistry
-
+	FileReaderRegistry := nil. "wipe it out"
+	^FileServices registeredFileReaderClasses
 	

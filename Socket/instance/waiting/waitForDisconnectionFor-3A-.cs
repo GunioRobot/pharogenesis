@@ -1,17 +1,17 @@
 waitForDisconnectionFor: timeout
-	"Wait up until the given deadline for the the connection to be broken. Return true if it is broken by the deadline, false if not."
-	"Note: The client should know the the connect is really going to be closed (e.g., because he has called 'close' to send a close request to the other end) before calling this method.
-JMM 00/5/17 note that other end can close which will terminate wait"
+	"Wait for the given nr of seconds for the connection to be broken.
+	Return true if it is broken by the deadline, false if not.
+	The client should know the connection is really going to be closed
+	(e.g., because he has called 'close' to send a close request to the other end)
+	before calling this method."
 
-	| extraBytes status deadline |
-	extraBytes _ 0.
+	| status deadline |
 	status _ self primSocketConnectionStatus: socketHandle.
 	deadline := Socket deadlineSecs: timeout.
-	[((status = Connected) or: [(status = ThisEndClosed)]) and:
+	[((status == Connected) or: [(status == ThisEndClosed)]) and:
 	 [Time millisecondClockValue < deadline]] whileTrue: [
-		self dataAvailable
-			ifTrue: [extraBytes _ extraBytes + self discardReceivedData].
-		semaphore waitTimeoutMSecs: (deadline - Time millisecondClockValue).
+		self discardReceivedData.
+		self readSemaphore waitTimeoutMSecs: (deadline - Time millisecondClockValue).
 		status _ self primSocketConnectionStatus: socketHandle].
 
 	^ status ~= Connected

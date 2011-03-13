@@ -1,8 +1,8 @@
 soundForEvent: noteEvent inTrack: trackIndex
 
 	| sound player |
-	player _ pianoRoll scorePlayer.
-	sound _ MixedSound new.
+	player := pianoRoll scorePlayer.
+	sound := MixedSound new.
 	sound add: ((player instrumentForTrack: trackIndex)
 					soundForMidiKey: noteEvent midiKey
 					dur: noteEvent duration / (pianoRoll scorePlayer ticksForMSecs: 1000)

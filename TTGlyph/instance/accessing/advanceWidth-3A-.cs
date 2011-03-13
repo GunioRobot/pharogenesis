@@ -1,2 +1,2 @@
 advanceWidth: aNumber
-	advanceWidth _ aNumber.
+	advanceWidth := aNumber.

@@ -1,3 +1,0 @@
-nullType
-
-	^self new createNull

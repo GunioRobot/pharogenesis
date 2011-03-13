@@ -1,14 +1,14 @@
 buildSoundTrackMorphFor: pianoRoll
 	| stopTime soundTrackForm startTime samplesPerTick samplesPerMs |
-	soundTrackTimeScale _ pianoRoll timeScale.  "pixels per tick"
-	samplesPerTick _ moviePlayerMorph scorePlayer originalSamplingRate   "Samples per sec"
+	soundTrackTimeScale := pianoRoll timeScale.  "pixels per tick"
+	samplesPerTick := moviePlayerMorph scorePlayer originalSamplingRate   "Samples per sec"
 						* pianoRoll scorePlayer secsPerTick.  "secs per tick"
-	samplesPerMs _ moviePlayerMorph scorePlayer originalSamplingRate / 1000.0.
-	startTime _ frameNumber * moviePlayerMorph msPerFrame.  "ms"
-	stopTime _ endMorph frameNumber * moviePlayerMorph msPerFrame.
-	soundTrackForm _ moviePlayerMorph scorePlayer
+	samplesPerMs := moviePlayerMorph scorePlayer originalSamplingRate / 1000.0.
+	startTime := frameNumber * moviePlayerMorph msPerFrame.  "ms"
+	stopTime := endMorph frameNumber * moviePlayerMorph msPerFrame.
+	soundTrackForm := moviePlayerMorph scorePlayer
 		volumeForm: self soundTrackHeight
 		from: (startTime * samplesPerMs) rounded
 		to: (stopTime * samplesPerMs) rounded
 		nSamplesPerPixel: samplesPerTick / soundTrackTimeScale.
-	^ soundTrackMorph _ ImageMorph new image: soundTrackForm
+	^ soundTrackMorph := ImageMorph new image: soundTrackForm

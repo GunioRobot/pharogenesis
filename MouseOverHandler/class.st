@@ -1,1 +1,0 @@
-MouseOverHandler class instanceVariableNames: ''

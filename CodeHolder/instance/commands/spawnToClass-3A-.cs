@@ -2,13 +2,13 @@ spawnToClass: aClass
 	"Used to copy down code from a superclass to a subclass in one easy step, if you know what you're doing.  Spawns a new message-category browser for the indicated class, populating it with the source code seen in the current tool."
 
 	| aCategory newBrowser org |	
-	(aCategory _ self categoryOfCurrentMethod)
+	(aCategory := self categoryOfCurrentMethod)
 		ifNil:
 			[self buildClassBrowserEditString: self contents]
 		ifNotNil:
-			[((org _ aClass organization) categories includes: aCategory)
+			[((org := aClass organization) categories includes: aCategory)
 				ifFalse:	[org addCategory: aCategory].
-			newBrowser _ Browser new setClass: aClass selector: nil.
+			newBrowser := Browser new setClass: aClass selector: nil.
 			newBrowser selectMessageCategoryNamed: aCategory.
 			Browser openBrowserView: (newBrowser openMessageCatEditString: self contents)
 		label: 'category "', aCategory, '" in ', 

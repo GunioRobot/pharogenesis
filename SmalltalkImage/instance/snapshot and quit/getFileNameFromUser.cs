@@ -1,7 +1,7 @@
 getFileNameFromUser
 
 	| newName |
-	newName := FillInTheBlank
+	newName := UIManager default
 		request: 'New File Name?' translated
 		initialAnswer: (FileDirectory localNameFor: self imageName).
 	newName isEmpty ifTrue: [^nil].

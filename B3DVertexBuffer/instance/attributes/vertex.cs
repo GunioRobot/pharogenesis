@@ -1,2 +1,0 @@
-vertex
-	^current position

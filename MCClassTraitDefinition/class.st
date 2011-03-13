@@ -1,0 +1,1 @@
+MCClassTraitDefinition class instanceVariableNames: ''

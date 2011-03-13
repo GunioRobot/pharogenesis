@@ -1,3 +1,3 @@
 path
-	"return an ordered collection of the decoded path elements, as strings"
+	"return a collection of the decoded path elements, as strings"
 	^path

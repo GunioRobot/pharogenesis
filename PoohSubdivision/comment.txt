@@ -1,1 +1,0 @@
-Delauney triangulation in Pooh.

@@ -1,2 +1,0 @@
-doItReceiver
-	^nil

@@ -1,6 +1,6 @@
-Error
+Exception
 	subclass: #TestFailure
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'SUnit-Framework'
+	category: 'SUnit-Kernel'

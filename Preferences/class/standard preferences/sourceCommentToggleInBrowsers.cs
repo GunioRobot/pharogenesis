@@ -1,2 +1,0 @@
-sourceCommentToggleInBrowsers
-	^ self valueOfFlag: #sourceCommentToggleInBrowsers

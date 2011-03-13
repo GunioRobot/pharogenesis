@@ -2,7 +2,7 @@ setArgumentNamed: aName toValue: aValue
 	"Set the argument of the given name to the given value"
 
 	| anIndex |
-	anIndex _ self methodInterface argumentVariables findFirst:
+	anIndex := self methodInterface argumentVariables findFirst:
 		[:aVariable | aVariable variableName = aName].
 	anIndex > 0
 		ifTrue:

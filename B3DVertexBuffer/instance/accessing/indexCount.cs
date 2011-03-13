@@ -1,2 +1,0 @@
-indexCount
-	^indexCount

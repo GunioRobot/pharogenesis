@@ -1,2 +1,2 @@
 rightSideBearing: aNumber
-	rightSideBearing _ aNumber.
+	rightSideBearing := aNumber.

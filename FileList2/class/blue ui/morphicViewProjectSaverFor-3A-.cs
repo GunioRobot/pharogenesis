@@ -13,37 +13,35 @@ morphicViewProjectSaverFor: aProject
 	window
 		setProperty: #FileList toValue: aFileList;
 		wrapCentering: #center; cellPositioning: #topCenter;
-		borderWidth: 4;
-		borderColor: (Color r: 0.355 g: 0.516 b: 1.0);
+		borderWidth: ColorTheme current dialogBorderWidth;
+		borderColor: ColorTheme current dialogBorderColor;
 		useRoundedCorners.
-	buttonData _ Preferences enableLocalSave
-		ifTrue: [#( 
-			('Save' okHit 'Save in the place specified below, and in the 
-	Squeaklets folder on your local disk') 
-			('Save on local disk only' saveLocalOnlyHit 'saves in the Squeaklets folder')
-			('Cancel' cancelHit 'return without saving') 
-			)]
-		ifFalse: [#( 
-			('Save' okHit 'Save in the place specified below, and in the 
-	Squeaklets folder on your local disk') 
-			('Cancel' cancelHit 'return without saving') 
-			)].
+
+	buttonData := Preferences enableLocalSave
+				ifTrue: [{
+							{'Save'. #okHit. 'Save in the place specified below, and in the Squeaklets folder on your local disk'. ColorTheme current okColor}.
+							{'Save on local disk only'. #saveLocalOnlyHit. 'saves in the Squeaklets folder'. ColorTheme current okColor}.
+							{'Cancel'. #cancelHit. 'return without saving'. ColorTheme current cancelColor}
+						}]
+				ifFalse: [{
+							{'Save'. #okHit. 'Save in the place specified below, and in the Squeaklets folder on your local disk'. ColorTheme current okColor}.
+							{'Cancel'. #cancelHit. 'return without saving'. ColorTheme current cancelColor}
+						}].
 	buttons _ buttonData collect: [ :each |
-		(self blueButtonText: each first translated textColor: textColor1 inWindow: window)
+		(self blueButtonText: each first textColor: textColor1 color: each fourth inWindow: window)
 			setBalloonText: each third translated;
 			hResizing: #shrinkWrap;
 			on: #mouseUp send: each second to: aFileList
 	].
+
 	option _ aProject world 
 		valueOfProperty: #SuperSwikiPublishOptions 
 		ifAbsent: [#initialDirectoryList].
 	aProject world removeProperty: #SuperSwikiPublishOptions.
 
-	World height < 500 ifTrue: [
-		treeExtent _ 350@150.
-	] ifFalse: [
-		treeExtent _ 350@300.
-	].
+	treeExtent _ World height < 500
+						ifTrue: [ 350@150 ]
+						ifFalse: [ 350@300 ].
 
 	(treePane _ aFileList morphicDirectoryTreePaneFiltered: option) 
 		extent: treeExtent; 
@@ -51,7 +49,7 @@ morphicViewProjectSaverFor: aProject
 		borderWidth: 0.
 	window
 		addARowCentered: {
-			window fancyText: 'Publish This Project' translated ofSize: 21 color: textColor1
+			window fancyText: 'Publish This Project' translated font: Preferences standardEToysTitleFont color: textColor1
 		}.
 	buttonRow _ OrderedCollection new.
 	buttons do: [:button | buttonRow add: button] separatedBy: [buttonRow add: ((Morph new extent: 30@5) color: Color transparent)].
@@ -67,22 +65,27 @@ morphicViewProjectSaverFor: aProject
 		addARowCentered: buttonRow;
 		addARowCentered: { (window inAColumn: {(ProjectViewMorph on: aProject) lock}) layoutInset: 4};
 		addARowCentered: {
-			window fancyText: 'Please select a folder' translated ofSize: 21 color: Color blue
+			window fancyText: 'Please select a folder' translated font: Preferences standardEToysFont color: textColor1
 		};
 		addARow: {
 			(
 				window inAColumn: {
 					(pane2 _ window inARow: {window inAColumn: {treePane}}) 
-						useRoundedCorners; layoutInset: 6
+						useRoundedCorners;
+						layoutInset: 0;
+						borderWidth: ColorTheme current dialogPaneBorderWidth;
+						borderColor: ColorTheme current dialogPaneBorderColor
 				}
 			) layoutInset: 10
 		}.
 	window fullBounds.
-	window fillWithRamp: self blueRamp1 oriented: 0.65.
-	pane2 fillWithRamp: self blueRamp3 oriented: (0.7 @ 0.35).
+	window fillWithRamp: ColorTheme current dialogRampOrColor oriented: 0.65.
+	pane2 fillWithRamp: ColorTheme current dialogPaneRampOrColor oriented: (0.7 @ 0.35).
+"
 	buttons do: [ :each |
-		each fillWithRamp: self blueRamp2 oriented: (0.75 @ 0).
+		each fillWithRamp: ColorTheme current dialogButtonsRampOrColor oriented: (0.75 @ 0).
 	].
+"
 	window setProperty: #morphicLayerNumber toValue: 11.
 	aFileList postOpen.
 	window adoptPaneColor: (Color r: 0.548 g: 0.677 b: 1.0).

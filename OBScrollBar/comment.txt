@@ -1,0 +1,1 @@
+This class is a relic. It was originally created to work around bugs in ScrollBar which prevented it from working correctly in horizontal orientation. At some point the bugs should be fixed, and ScrollBar should be used instead.

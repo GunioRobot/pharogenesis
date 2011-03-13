@@ -1,6 +1,6 @@
 composedWithLocal: aColorTransform
 	| cm |
-	cm _ self clone.
+	cm := self clone.
 	cm rAdd: self rAdd + (aColorTransform rAdd * self rMul).
 	cm rMul: self rMul * aColorTransform rMul.
 	cm gAdd: self gAdd + (aColorTransform gAdd * self gMul).

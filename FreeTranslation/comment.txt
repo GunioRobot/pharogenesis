@@ -1,5 +1,0 @@
-Squeak interface to the translation server at www.freetranslation.com.  Invoke it in any Squeak text pane by choosing 'translate it' from the shift-menu.  Languages are set by the 'choose language; menu item of the shift menu.  Or by changing (Preferences valueOfFlag: #languageTranslateFrom) and (Preferences valueOfFlag: #languageTranslateTo).   
-	See class method openScamperOn:.
-
-	FreeTranslation openScamperOn: 'Why don''t you ever write anymore?'
-

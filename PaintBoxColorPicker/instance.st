@@ -1,6 +1,6 @@
 ImageMorph
 	subclass: #PaintBoxColorPicker
-	instanceVariableNames: 'currentColor locOfCurrent '
+	instanceVariableNames: 'currentColor locOfCurrent'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Support'
+	category: 'MorphicExtras-Support'

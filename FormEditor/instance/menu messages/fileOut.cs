@@ -1,8 +1,8 @@
 fileOut
 
 	| fileName |
-	fileName _ FillInTheBlank
-		request: 'File name?'
+	fileName := UIManager default
+		request: 'File name?' translated
 		initialAnswer: 'Filename.form'.
 	fileName isEmpty ifTrue: [^ self].
 	Cursor normal

@@ -1,2 +1,2 @@
 tract: aNumber
-	tract _ aNumber
+	tract := aNumber

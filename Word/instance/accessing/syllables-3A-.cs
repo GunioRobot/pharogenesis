@@ -1,2 +1,2 @@
 syllables: aCollection
-	syllables _ aCollection
+	syllables := aCollection

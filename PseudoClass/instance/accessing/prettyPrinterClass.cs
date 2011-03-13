@@ -1,0 +1,2 @@
+prettyPrinterClass
+	^self class prettyPrinterClass

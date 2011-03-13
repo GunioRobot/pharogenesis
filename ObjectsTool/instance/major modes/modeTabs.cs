@@ -3,13 +3,12 @@ modeTabs
 
 	| buttonList aButton tupleList |
 	tupleList _  #(
-
-		('alphabetic'	alphabetic	showAlphabeticTabs		'A separate tab for each letter of the alphabet')
-		('find'		search		showSearchPane		'Provides a type-in pane allowing you to match')
+		('alphabetic'		alphabetic	showAlphabeticTabs	'A separate tab for each letter of the alphabet')
+		('find'				search			showSearchPane			'Provides a type-in pane allowing you to match')
 		('categories'		categories	showCategories			'Grouped by category')
 
-		"('standard'		standard	showStandardPane		'Standard Squeak tools supplies for building')"
-).
+		"('standard'		standard		showStandardPane		'Standard Squeak tools supplies for building')"
+	).
 				
 	buttonList _ tupleList collect:
 		[:tuple |
@@ -18,6 +17,7 @@ modeTabs
 			aButton setProperty: #modeSymbol toValue: tuple second.
 			aButton target: self; actionSelector: tuple third.
 			aButton setBalloonText: tuple fourth translated.
+			aButton borderWidth: 0.
 			aButton].
 	^ buttonList
 

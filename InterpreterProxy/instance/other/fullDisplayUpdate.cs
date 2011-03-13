@@ -1,2 +1,0 @@
-fullDisplayUpdate
-	Display display

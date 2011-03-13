@@ -4,20 +4,20 @@ briefContents
 
 	| stream subContents errorMessage |
 	self selectedMember ifNil: [^ ''].
-	errorMessage _ ''.
-	stream _ WriteStream on: (String new: (self selectedMember uncompressedSize min: 5500)).
+	errorMessage := ''.
+	stream := WriteStream on: (String new: (self selectedMember uncompressedSize min: 5500)).
 
 	[ self selectedMember uncompressedSize > 5000
 		ifTrue: [ |  lastLineEndingIndex tempIndex |
-			subContents _ self selectedMember contentsFrom: 1 to: 5000.
-			lastLineEndingIndex _ subContents lastIndexOf: Character cr.
-			tempIndex _ subContents lastIndexOf: Character lf.
-			tempIndex > lastLineEndingIndex ifTrue: [lastLineEndingIndex _ tempIndex].
+			subContents := self selectedMember contentsFrom: 1 to: 5000.
+			lastLineEndingIndex := subContents lastIndexOf: Character cr.
+			tempIndex := subContents lastIndexOf: Character lf.
+			tempIndex > lastLineEndingIndex ifTrue: [lastLineEndingIndex := tempIndex].
 			lastLineEndingIndex = 0
-				ifFalse: [subContents _ subContents copyFrom: 1 to: lastLineEndingIndex]]
-		ifFalse: [ subContents _ self selectedMember contents ]]
+				ifFalse: [subContents := subContents copyFrom: 1 to: lastLineEndingIndex]]
+		ifFalse: [ subContents := self selectedMember contents ]]
 			on: CRCError do: [ :ex |
-				errorMessage _ String streamContents: [ :s |
+				errorMessage := String streamContents: [ :s |
 					s nextPutAll: '[ ';
 						nextPutAll: (ex messageText copyUpToLast: $( );
 						nextPutAll: ' ]' ].

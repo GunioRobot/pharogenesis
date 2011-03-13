@@ -1,1 +1,0 @@
-setupGStateForMorph:aMorph.

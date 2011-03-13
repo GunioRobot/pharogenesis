@@ -1,2 +1,0 @@
-browse
-	Browser newOnClass: self

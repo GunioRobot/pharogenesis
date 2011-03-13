@@ -1,6 +1,6 @@
 CodeHolder
 	subclass: #MethodHolder
-	instanceVariableNames: 'methodClass methodSelector '
+	instanceVariableNames: 'methodClass methodSelector'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Kernel-ST80 Remnants'
+	category: 'Tools-Base'

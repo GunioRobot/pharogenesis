@@ -1,5 +1,5 @@
 memberIndex: n
-	memberIndex _ n.
-	viewAllContents _ false.
+	memberIndex := n.
+	viewAllContents := false.
 	self changed: #memberIndex.
 	self changed: #contents.

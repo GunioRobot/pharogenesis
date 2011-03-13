@@ -10,3 +10,5 @@ initWithContents: anObject prior: priorMorph forList: hostList indentLevel: newL
 		priorMorph nextSibling: self.
 	].
 	indentLevel _ newLevel.
+	icon := anObject icon.
+	self extent: self minWidth @ self minHeight

@@ -2,7 +2,7 @@ checkForRebuild
 	| lastScreenMode flapsSuppressed |
 
 	lastScreenMode _ ScreenController lastScreenModeSelected ifNil: [false].
-	flapsSuppressed _ CurrentProjectRefactoring currentFlapsSuppressed.
+	flapsSuppressed _ Project current flapsSuppressed.
 	((self valueOfProperty: #currentNavigatorVersion) = self currentNavigatorVersion
 			and: [lastScreenMode = self inFullScreenMode
 			and: [flapsSuppressed = self inFlapsSuppressedMode

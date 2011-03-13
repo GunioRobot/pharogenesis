@@ -1,2 +1,0 @@
-pluginsDirName
-	^DirNames at: #pluginsDir

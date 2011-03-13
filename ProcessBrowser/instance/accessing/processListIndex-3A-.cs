@@ -1,6 +1,6 @@
 processListIndex: index 
-	processListIndex _ index.
-	selectedProcess _ processList
+	processListIndex := index.
+	selectedProcess := processList
 				at: index
 				ifAbsent: [].
 	self updateStackList.

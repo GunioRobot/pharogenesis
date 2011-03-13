@@ -1,10 +1,10 @@
 withoutTrailingDigits
 	"Answer the portion of the receiver that precedes any trailing series of digits and blanks.  If the receiver consists entirely of digits and blanks, return an empty string"
 	| firstDigit |
-	firstDigit _ (self findFirst: [:m | m isDigit or: [m == $ ]]).
+	firstDigit _ (self findFirst: [:m | m isDigit or: [m = $ ]]).
 	^ firstDigit > 0
 		ifTrue:
-			[self copyFrom: 1   to: firstDigit-1]
+			[self copyFrom: 1 to: firstDigit-1]
 		ifFalse:
 			[self]
 

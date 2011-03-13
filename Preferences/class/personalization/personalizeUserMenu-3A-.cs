@@ -8,12 +8,8 @@ personalizeUserMenu: aMenu
 	aMenu add: 'previous project' translated action: #goBack.
 	aMenu add: 'load latest code updates' translated target: Utilities action: #updateFromServer.
 	aMenu add: 'about this system...' translated target: SmalltalkImage current action: #aboutThisSystem.
-	Preferences isFlagship ifTrue:
-		"For benefit of Alan"
-		[aMenu addLine.
-		aMenu add: 'start using vectors' translated target: ActiveWorld action: #installVectorVocabulary.
-		aMenu add: 'stop using vectors' translated target: ActiveWorld action: #abandonVocabularyPreference].
+	
 	aMenu addLine.
 				
-	aMenu addUpdating: #suppressFlapsString target: CurrentProjectRefactoring action: #currentToggleFlapsSuppressed.
+	aMenu addUpdating: #suppressFlapsString target: Project current action: #toggleFlapsSuppressed.
 	aMenu balloonTextForLastItem: 'Whether prevailing flaps should be shown in the project right now or not.' translated

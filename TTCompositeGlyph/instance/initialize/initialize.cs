@@ -1,2 +1,2 @@
 initialize
-	glyphs _ #().
+	glyphs := #().

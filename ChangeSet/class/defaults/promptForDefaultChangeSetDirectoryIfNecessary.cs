@@ -17,7 +17,7 @@ Create it or use the default directory ({2})?' translated format: { directoryNam
 			choice = 1
 				ifTrue: [dir assureExistence ].
 			choice = 3
-				ifTrue: [dir := FileList2 modalFolderSelector.
+				ifTrue: [dir := UIManager default chooseDirectory.
 					directoryName := dir
 					ifNil: [ '' ]
 						ifNotNil: [dir pathName ]]].

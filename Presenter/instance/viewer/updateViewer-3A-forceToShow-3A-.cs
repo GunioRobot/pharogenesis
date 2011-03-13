@@ -1,7 +1,7 @@
 updateViewer: aViewer forceToShow: aCategorySymbol
 	"Update the given viewer to make sure it is in step with various possible changes in the outside world, and when reshowing it be sure it shows the given category"
 
-	| aPlayer aPosition newViewer oldOwner wasSticky barHeight itsVocabulary aCategory categoryInfo |
+	| aPlayer aPosition newViewer oldOwner wasSticky barHeight itsVocabulary aCategory categoryInfo restrictedIndex |
 	aCategory _ aCategorySymbol ifNotNil: [aViewer currentVocabulary translatedWordingFor: aCategorySymbol].
 	categoryInfo _ aViewer categoryMorphs  asOrderedCollection collect:
 		[:aMorph | aMorph categoryRestorationInfo].
@@ -12,6 +12,8 @@ updateViewer: aViewer forceToShow: aCategorySymbol
 	aPosition _ aViewer position.
 	wasSticky _ aViewer isSticky.
 	newViewer _ aViewer species new visible: false.
+	(aViewer isMemberOf: KedamaStandardViewer)
+		ifTrue: [restrictedIndex _ aViewer restrictedIndex].
 	barHeight _ aViewer submorphs first listDirection == #topToBottom
 		ifTrue:
 			[aViewer submorphs first submorphs first height]
@@ -23,6 +25,10 @@ updateViewer: aViewer forceToShow: aCategorySymbol
 	newViewer rawVocabulary: itsVocabulary.
 	newViewer limitClass: aViewer limitClass.
 	newViewer initializeFor: aPlayer barHeight: barHeight includeDismissButton: aViewer hasDismissButton showCategories: categoryInfo.
+	(newViewer isMemberOf: KedamaStandardViewer)
+		ifTrue: [
+			newViewer providePossibleRestrictedView: 0.
+			newViewer providePossibleRestrictedView: restrictedIndex].
 	wasSticky ifTrue: [newViewer beSticky].
 	oldOwner _ aViewer owner.
 	oldOwner ifNotNil:

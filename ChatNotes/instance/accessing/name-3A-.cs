@@ -1,3 +1,3 @@
 name: aString
-	name _ aString.
+	name := aString.
 	self changed: #name.

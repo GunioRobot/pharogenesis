@@ -1,2 +1,2 @@
 ancestorInfo
-	^ ancestorInfo ifNil: [ancestorInfo _ version info commonAncestorWith: version workingCopy ancestry]
+	^ ancestorInfo ifNil: [ancestorInfo := version info commonAncestorWith: version workingCopy ancestry]

@@ -1,0 +1,1 @@
+SARInstaller class instanceVariableNames: ''

@@ -1,5 +1,0 @@
-The mapper engine computes 2D bounding rectangles for arbitrary objects.
-
-Instance variables:
-	bounds	<Rectangle>	The currently recorded bounds for any object.
-	boundsMap	<IdentityDictionary of: (Object -> Rectangle)> The bounds of all objects.

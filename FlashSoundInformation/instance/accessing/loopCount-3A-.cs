@@ -1,2 +1,2 @@
 loopCount: anInteger
-	loopCount _ anInteger
+	loopCount := anInteger

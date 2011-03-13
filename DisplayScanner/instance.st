@@ -1,7 +1,7 @@
 CharacterScanner
 	subclass: #DisplayScanner
 	instanceVariableNames:
-		'bitBlt lineY runX foregroundColor backgroundColor fillBlt lineHeight paragraph paragraphColor morphicOffset ignoreColorChanges '
+		'bitBlt lineY runX foregroundColor backgroundColor fillBlt lineHeight paragraph paragraphColor morphicOffset ignoreColorChanges'
 	classVariableNames: ''
-	poolDictionaries: 'TextConstants '
+	poolDictionaries: ''
 	category: 'Graphics-Text'

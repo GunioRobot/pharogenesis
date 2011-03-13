@@ -1,6 +1,6 @@
 AlignmentMorph
 	subclass: #MidiInputMorph
-	instanceVariableNames: 'midiPortNumber midiSynth instrumentSelector '
+	instanceVariableNames: 'midiPortNumber midiSynth instrumentSelector'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Sound-Scores'

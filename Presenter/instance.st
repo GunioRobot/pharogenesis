@@ -1,7 +1,6 @@
 Object
 	subclass: #Presenter
-	instanceVariableNames:
-		'associatedMorph stopButton stepButton goButton standardPlayer standardPlayfield standardPalette playerList '
+	instanceVariableNames: 'associatedMorph standardPlayer standardPlayfield standardPalette playerList'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Scripting'
+	category: 'EToys-Scripting'

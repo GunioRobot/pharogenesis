@@ -1,2 +1,0 @@
-levelName
-	^ 'Water' translated

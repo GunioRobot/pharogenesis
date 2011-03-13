@@ -1,0 +1,2 @@
+isWorking
+	^status == #working

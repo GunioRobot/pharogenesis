@@ -1,0 +1,2 @@
+setUp
+	method := Object >> #halt.

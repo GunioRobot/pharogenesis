@@ -1,4 +1,6 @@
 testAlphaCompositing
+	"self run: #testAlphaCompositing"
+
 	| bb f1 f2 mixColor result eps |
 	f1 := Form extent: 1@1 depth: 32.
 	f2 := Form extent: 1@1 depth: 32.

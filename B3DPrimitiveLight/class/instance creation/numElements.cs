@@ -1,2 +1,0 @@
-numElements
-	^PrimLightSize

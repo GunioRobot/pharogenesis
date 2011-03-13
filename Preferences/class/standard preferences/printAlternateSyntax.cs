@@ -1,2 +1,0 @@
-printAlternateSyntax
-	^ self valueOfFlag: #printAlternateSyntax

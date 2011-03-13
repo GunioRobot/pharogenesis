@@ -3,9 +3,9 @@ contents
 	self selectedMember ifNil: [^ ''].
 	viewAllContents ifFalse: [^ self briefContents].
 
- 	[ contents _ self selectedMember contents ]
+ 	[ contents := self selectedMember contents ]
 		on: CRCError
-		do: [ :ex | errorMessage _ String streamContents: [ :stream |
+		do: [ :ex | errorMessage := String streamContents: [ :stream |
 			stream nextPutAll: '********** WARNING! Member is corrupt! [ ';
 			nextPutAll: (ex messageText copyUpToLast: $( );
 			nextPutAll: '] **********'; cr ].

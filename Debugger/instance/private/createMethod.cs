@@ -4,8 +4,8 @@ createMethod
 	missing and proceed into it."
 	
 	| msg chosenClass |
-	msg _ contextStackTop tempAt: 1.
-	chosenClass _ self
+	msg := contextStackTop tempAt: 1.
+	chosenClass := self
 		askForSuperclassOf: contextStackTop receiver class
 		toImplement: msg selector
 		ifCancel: [^self].

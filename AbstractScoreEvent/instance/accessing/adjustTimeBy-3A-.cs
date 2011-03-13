@@ -1,3 +1,3 @@
 adjustTimeBy: delta
 
-	time _ time + delta
+	time := time + delta

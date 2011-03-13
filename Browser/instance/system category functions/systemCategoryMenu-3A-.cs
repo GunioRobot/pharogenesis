@@ -1,6 +1,8 @@
 systemCategoryMenu: aMenu
-
-^ aMenu labels:
+		
+	ServiceGui browser: self classCategoryMenu: aMenu.
+	ServiceGui onlyServices ifTrue: [^aMenu].
+	^ aMenu labels:
 'find class... (f)
 recent classes... (r)
 browse all

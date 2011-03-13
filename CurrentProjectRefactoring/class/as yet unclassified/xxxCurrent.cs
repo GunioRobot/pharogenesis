@@ -1,3 +1,0 @@
-xxxCurrent
-
-	^Project current

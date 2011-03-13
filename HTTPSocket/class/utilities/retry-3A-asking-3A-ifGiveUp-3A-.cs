@@ -6,8 +6,8 @@ retry: tryBlock asking: troubleString ifGiveUp: abortActionBlock
 		| sema |
 		sema _ Semaphore new.
 		WorldState addDeferredUIMessage: [
-			response _ (PopUpMenu labels: 'Retry\Give Up' withCRs)
-				startUpWithCaption: troubleString.
+			response _ UIManager default chooseFrom: #('Retry' 'Give Up')
+				title: troubleString.
 			sema signal.
 		].
 		sema wait.

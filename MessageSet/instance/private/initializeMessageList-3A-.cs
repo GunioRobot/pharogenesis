@@ -2,7 +2,7 @@ initializeMessageList: anArray
 	"Initialize my messageList from the given list of MethodReference or string objects.  NB: special handling for uniclasses."
 
 	| s |
-	messageList _ OrderedCollection new.
+	messageList := OrderedCollection new.
 	anArray do: [ :each |
 		MessageSet 
 			parse: each  
@@ -10,14 +10,14 @@ initializeMessageList: anArray
 				class ifNotNil:
 					[class isUniClass
 						ifTrue:
-							[s _ class typicalInstanceName, ' ', sel]
+							[s := class typicalInstanceName, ' ', sel]
 						ifFalse:
-							[s _ class name , ' ' , sel , ' {' , 
+							[s := class name , ' ' , sel , ' {' , 
 								((class organization categoryOfElement: sel) ifNil: ['']) , '}'].
 					messageList add: (
 						MethodReference new
 							setClass: class  
 							methodSymbol: sel 
 							stringVersion: s)]]].
-	messageListIndex _ messageList isEmpty ifTrue: [0] ifFalse: [1].
-	contents _ ''
+	messageListIndex := messageList isEmpty ifTrue: [0] ifFalse: [1].
+	contents := ''

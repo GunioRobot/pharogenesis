@@ -1,3 +1,3 @@
 readNextUpdateFromServer
 	"Utilities readNextUpdateFromServer"
-	self updateFromServerThroughUpdateNumber: (ChangeSorter highestNumberedChangeSet + 1)
+	self updateFromServerThroughUpdateNumber: (ChangeSet highestNumberedChangeSet + 1)

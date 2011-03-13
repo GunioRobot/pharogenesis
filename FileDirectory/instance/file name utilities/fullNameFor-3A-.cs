@@ -6,10 +6,10 @@ fullNameFor: fileName
 	fileName ifNil: [^ nil].
 	DirectoryClass splitName: fileName to:
 		[:filePath :localName |
-			correctedLocalName _ localName isEmpty 
+			correctedLocalName := localName isEmpty 
 				ifFalse: [self checkName: localName fixErrors: true]
 				ifTrue: [localName].
-			prefix _ self fullPathFor: filePath].
+			prefix := self fullPathFor: filePath].
 	prefix isEmpty
 		ifTrue: [^correctedLocalName].
 	prefix last = self pathNameDelimiter

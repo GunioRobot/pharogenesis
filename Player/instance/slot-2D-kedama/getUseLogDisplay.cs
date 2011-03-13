@@ -1,0 +1,3 @@
+getUseLogDisplay
+
+	^ self getValueFromCostume: #useLogDisplay.

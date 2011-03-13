@@ -1,2 +1,0 @@
-initialValuesAdditionprintingpostscriptStoredAsEPS
-	^ #((postscriptStoredAsEPS false (printing ) ) )

@@ -1,2 +1,2 @@
 frameNumber: aNumber
-	frameNumber _ aNumber
+	frameNumber := aNumber

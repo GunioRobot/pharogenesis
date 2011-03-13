@@ -1,0 +1,1 @@
+AbstractFont class instanceVariableNames: ''

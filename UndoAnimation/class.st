@@ -1,1 +1,0 @@
-UndoAnimation class instanceVariableNames: ''

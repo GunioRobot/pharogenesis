@@ -1,2 +1,2 @@
-includes: element
-	^ (self search: element updating: nil) notNil
+includes: key
+        ^ (self search: key updating: nil) notNil

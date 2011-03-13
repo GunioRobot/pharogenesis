@@ -3,5 +3,5 @@ download
 	even if it is in the cache already."
 
 	packageRelease download ifTrue: [
-		fileName _ packageRelease downloadFileName.
-		dir _ packageRelease cacheDirectory]
+		fileName := packageRelease downloadFileName.
+		dir := packageRelease cacheDirectory]

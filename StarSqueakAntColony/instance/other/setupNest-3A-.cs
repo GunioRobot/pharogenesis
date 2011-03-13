@@ -2,7 +2,7 @@ setupNest: aPatch
 	"Create a nest of radius 5 centered at 50@50."
 
 	| distanceToNest |
-	distanceToNest _ aPatch distanceTo: 50@50.
+	distanceToNest := aPatch distanceTo: 50@50.
 	distanceToNest <= 4
 		ifTrue: [
 			aPatch set: 'isNest' to: 1.

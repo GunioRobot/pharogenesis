@@ -1,0 +1,2 @@
+pathComponents
+	^self path findTokens: $/

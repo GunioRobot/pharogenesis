@@ -1,5 +1,5 @@
 run: aResult 
 	self tests do: [:each | 
-		self sunitChanged: each.
+		self changed: each.
 		each run: aResult]
 			

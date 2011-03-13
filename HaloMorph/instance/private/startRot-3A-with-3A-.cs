@@ -14,6 +14,6 @@ startRot: evt with: rotHandle
 			degrees: angleOffset degrees - target rotationDegrees.
 	self setProperty: #commandInProgress toValue:
 		(Command new
-			cmdWording: 'rotating' translated;
-			undoTarget: target selector: #rotationDegrees: argument: target rotationDegrees)
+			cmdWording: ('rotate ' translated, target nameForUndoWording);
+			undoTarget: target renderedMorph selector: #heading: argument: target rotationDegrees)
 

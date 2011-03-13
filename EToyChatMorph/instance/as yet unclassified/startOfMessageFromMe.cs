@@ -1,9 +1,9 @@
 startOfMessageFromMe
 
 	myForm ifNil: [
-		myForm _ EToySenderMorph pictureForIPAddress: NetNameResolver localAddressString.
+		myForm := EToySenderMorph pictureForIPAddress: NetNameResolver localAddressString.
 		myForm ifNotNil: [
-			myForm _ myForm scaledToSize: 20@20
+			myForm := myForm scaledToSize: 20@20
 		].
 	].
 	myForm ifNil: [

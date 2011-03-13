@@ -1,0 +1,2 @@
+evaluate
+	Compiler evaluate: script

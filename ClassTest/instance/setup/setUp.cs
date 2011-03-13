@@ -1,8 +1,8 @@
 setUp
-
-	Smalltalk removeClassNamed: #TUTU.
-	Object subclass: #TUTU
+	className := #TUTU.
+	self deleteClass.
+	Object subclass: className
 		instanceVariableNames: ''
 		classVariableNames: ''
 		poolDictionaries: ''
-		category: 'Tests-Kernel-Classes'
+		category: 'KernelTests-Classes'

@@ -1,1 +1,0 @@
-WordGamePanelMorph class instanceVariableNames: ''

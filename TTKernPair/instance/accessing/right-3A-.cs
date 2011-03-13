@@ -1,3 +1,3 @@
 right: aNumber
 
-	right _ aNumber
+	right := aNumber

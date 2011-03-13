@@ -1,0 +1,2 @@
+captionPane
+	^captionPane

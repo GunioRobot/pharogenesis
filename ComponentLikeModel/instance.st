@@ -1,6 +1,6 @@
 MorphicModel
 	subclass: #ComponentLikeModel
-	instanceVariableNames: 'pinSpecs '
+	instanceVariableNames: 'pinSpecs'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Components'

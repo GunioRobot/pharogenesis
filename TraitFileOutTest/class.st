@@ -1,0 +1,1 @@
+TraitFileOutTest class instanceVariableNames: ''

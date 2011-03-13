@@ -4,8 +4,8 @@ refreshLocalFileHeaderTo: aStream
 	Assumes that fileName and localExtraField sizes didn't change since last written."
 
 	| here systemFileName |
-	here _ aStream position.
-	systemFileName _ fileName asVmPathName.
+	here := aStream position.
+	systemFileName := fileName asVmPathName.
 	aStream position: writeLocalHeaderRelativeOffset.
 
 	aStream nextPutAll: LocalFileHeaderSignature.

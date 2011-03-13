@@ -4,11 +4,11 @@ setPitch: pitchNameOrNumber dur: d loudness: vol
 
 	| p |
 	super setPitch: pitchNameOrNumber dur: d loudness: vol.
-	p _ self nameOrNumberToPitch: pitchNameOrNumber.
-	samples _ DefaultSampleTable.
-	samplesSize _ samples size.
-	initialCount _ (d * self samplingRate asFloat) rounded.
-	originalSamplingRate _
+	p := self nameOrNumberToPitch: pitchNameOrNumber.
+	samples := DefaultSampleTable.
+	samplesSize := samples size.
+	initialCount := (d * self samplingRate asFloat) rounded.
+	originalSamplingRate :=
 		((self samplingRate asFloat * p asFloat) / NominalSamplePitch asFloat) asInteger.
 	self loudness: vol.
 	self reset.

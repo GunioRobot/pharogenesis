@@ -1,21 +1,21 @@
 updateProcessList
 	| oldSelectedProcess newIndex now |
-	now _ Time millisecondClockValue.
+	now := Time millisecondClockValue.
 	now - lastUpdate < 500
 		ifTrue: [^ self].
 	"Don't update too fast"
-	lastUpdate _ now.
-	oldSelectedProcess _ selectedProcess.
-	processList _ selectedProcess _ selectedSelector _ nil.
+	lastUpdate := now.
+	oldSelectedProcess := selectedProcess.
+	processList := selectedProcess := selectedSelector := nil.
 	Smalltalk garbageCollectMost.
 	"lose defunct processes"
 
-	processList _ Process allSubInstances
+	processList := Process allSubInstances
 				reject: [:each | each isTerminated].
-	processList _ processList
+	processList := processList
 				sortBy: [:a :b | a priority >= b priority].
-	processList _ WeakArray withAll: processList.
-	newIndex _ processList
+	processList := WeakArray withAll: processList.
+	newIndex := processList
 				indexOf: oldSelectedProcess
 				ifAbsent: [0].
 	self changed: #processNameList.

@@ -1,1 +1,1 @@
-PhonemeSet class instanceVariableNames: 'arpabet '
+PhonemeSet class instanceVariableNames: 'arpabet'

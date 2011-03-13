@@ -5,9 +5,7 @@ drawOn: aCanvas
 			(((scroller transformFrom: self) invertBoundsRect: selectedMorph bounds)
 						intersect: scroller bounds)
 				color: color blacker].
-
-	Preferences showLinesInHierarchyViews ifTrue:[
-		self drawLinesOn: aCanvas.
-	].
+	self drawLinesOn: aCanvas.
+	
 
 

@@ -1,10 +1,10 @@
 rotateBy: direction centerAt: aPoint
 	"Return a rotated copy of the receiver. 
 	direction = #none, #right, #left, or #pi"
-	| newForm quad rot |
+	| newForm quad rot scale |
 	direction == #none ifTrue: [^ self].
-	newForm _ self class extent: (direction = #pi ifTrue: [width@height]
-											ifFalse: [height@width]) depth: depth.
+	scale :=  (direction = #pi ifTrue: [width@height] ifFalse: [height@width]) / self extent .
+	newForm := self blankCopyOf: self boundingBox scaledBy: scale.
 	quad _ self boundingBox innerCorners.
 	rot _ #(right pi left) indexOf: direction.
 	(WarpBlt current toForm: newForm)

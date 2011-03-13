@@ -1,3 +1,0 @@
-balloonErrorList
-
-	^self class balloonErrorList

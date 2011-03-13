@@ -10,9 +10,9 @@ baseNameFor: fileName
 	| delim i leaf |
 	self splitName: fileName to: [:path : fn|
 		
-		delim _ DirectoryClass extensionDelimiter.
-		i _ fn findLast: [:c | c = delim].
-		leaf _ i = 0
+		delim := DirectoryClass extensionDelimiter.
+		i := fn findLast: [:c | c = delim].
+		leaf := i = 0
 			ifTrue: [fn]
 			ifFalse: [fn copyFrom: 1 to: i - 1].
 		path isEmpty ifTrue:[^leaf].

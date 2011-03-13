@@ -3,6 +3,6 @@ releaseWithId: anIdString
 	They are few so we just do a #select:."
 
 	| anId |
-	anId _ UUID fromString: anIdString.
+	anId := UUID fromString: anIdString.
 	releases detect: [:rel | rel id = anId ].
 	^nil

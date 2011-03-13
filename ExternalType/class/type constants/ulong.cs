@@ -1,2 +1,0 @@
-ulong
-	^self unsignedLong

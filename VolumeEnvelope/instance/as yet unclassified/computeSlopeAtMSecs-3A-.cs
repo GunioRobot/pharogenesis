@@ -3,39 +3,39 @@ computeSlopeAtMSecs: mSecs
 
 	| t i |
 	((loopEndMSecs ~~ nil) and: [mSecs >= loopEndMSecs]) ifTrue: [  "decay phase"
-		t _ (points at: loopEndIndex) x + (mSecs - loopEndMSecs).
-		i _ self indexOfPointAfterMSecs: t startingAt: loopEndIndex.
+		t := (points at: loopEndIndex) x + (mSecs - loopEndMSecs).
+		i := self indexOfPointAfterMSecs: t startingAt: loopEndIndex.
 		i == nil ifTrue: [  "past end"
-			targetVol _ points last y * decayScale.
-			mSecsForChange _ 0.
-			nextRecomputeTime _ mSecs + 1000000.
+			targetVol := points last y * decayScale.
+			mSecsForChange := 0.
+			nextRecomputeTime := mSecs + 1000000.
 			^ self].
-		targetVol _ (points at: i) y * decayScale.
-		mSecsForChange _ (((points at: i) x - t) min: (endMSecs - mSecs)) max: 4.
-		nextRecomputeTime _ mSecs + mSecsForChange.
+		targetVol := (points at: i) y * decayScale.
+		mSecsForChange := (((points at: i) x - t) min: (endMSecs - mSecs)) max: 4.
+		nextRecomputeTime := mSecs + mSecsForChange.
 		^ self].
 
 	mSecs < loopStartMSecs ifTrue: [  "attack phase"
-		i _ self indexOfPointAfterMSecs: mSecs startingAt: 1.
-		targetVol _ (points at: i) y.
-		mSecsForChange _ ((points at: i) x - mSecs) max: 4.
-		nextRecomputeTime _ mSecs + mSecsForChange.
+		i := self indexOfPointAfterMSecs: mSecs startingAt: 1.
+		targetVol := (points at: i) y.
+		mSecsForChange := ((points at: i) x - mSecs) max: 4.
+		nextRecomputeTime := mSecs + mSecsForChange.
 		((loopEndMSecs ~~ nil) and: [nextRecomputeTime > loopEndMSecs])
-			ifTrue: [nextRecomputeTime _ loopEndMSecs].
+			ifTrue: [nextRecomputeTime := loopEndMSecs].
 		^ self].
 
 	"sustain and loop phase"
 	noChangesDuringLoop ifTrue: [
-		targetVol _ (points at: loopEndIndex) y.
-		mSecsForChange _ 10.
+		targetVol := (points at: loopEndIndex) y.
+		mSecsForChange := 10.
 		loopEndMSecs == nil
-			ifTrue: [nextRecomputeTime _ mSecs + 10]  "unknown end time"
-			ifFalse: [nextRecomputeTime _ loopEndMSecs].
+			ifTrue: [nextRecomputeTime := mSecs + 10]  "unknown end time"
+			ifFalse: [nextRecomputeTime := loopEndMSecs].
 		^ self].
 
 	loopMSecs = 0 ifTrue: [^ (points at: loopEndIndex) y].  "looping on a single point"
-	t _ loopStartMSecs + ((mSecs - loopStartMSecs) \\ loopMSecs).
-	i _ self indexOfPointAfterMSecs: t startingAt: loopStartIndex.
-	targetVol _ (points at: i) y.
-	mSecsForChange _ ((points at: i) x - t) max: 4.
-	nextRecomputeTime _ (mSecs + mSecsForChange) min: loopEndMSecs.
+	t := loopStartMSecs + ((mSecs - loopStartMSecs) \\ loopMSecs).
+	i := self indexOfPointAfterMSecs: t startingAt: loopStartIndex.
+	targetVol := (points at: i) y.
+	mSecsForChange := ((points at: i) x - t) max: 4.
+	nextRecomputeTime := (mSecs + mSecsForChange) min: loopEndMSecs.

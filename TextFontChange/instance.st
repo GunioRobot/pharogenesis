@@ -1,6 +1,6 @@
 TextAttribute
 	subclass: #TextFontChange
-	instanceVariableNames: 'fontNumber '
+	instanceVariableNames: 'fontNumber'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Collections-Text'

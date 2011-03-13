@@ -1,5 +1,0 @@
-Test cases testing the testing framework ;)
-
-Instance Variables:
-	hasRun		<Boolean>
-	hasSetup	<Boolean>

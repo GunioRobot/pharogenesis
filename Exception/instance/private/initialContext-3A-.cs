@@ -1,3 +1,0 @@
-initialContext: aContext
-
-	initialContext := aContext

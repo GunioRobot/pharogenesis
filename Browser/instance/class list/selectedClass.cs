@@ -3,6 +3,6 @@ selectedClass
 	exists."
 
 	| name envt |
-	(name _ self selectedClassName) ifNil: [^ nil].
-	(envt _ self selectedEnvironment) ifNil: [^ nil].
+	(name := self selectedClassName) ifNil: [^ nil].
+	(envt := self selectedEnvironment) ifNil: [^ nil].
 	^ envt at: name

@@ -1,2 +1,0 @@
-helpMsgsAdditiongeneralcheckForUnsavedProjects
-	^ #((checkForUnsavedProjects 'If enabled, then ask before quitting Squeak if there are unsaved projects (the definition of unsaved is fuzzy at the moment and this preference may not be honored everywhere)' ) )

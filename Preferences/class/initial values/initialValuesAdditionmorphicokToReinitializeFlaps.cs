@@ -1,2 +1,0 @@
-initialValuesAdditionmorphicokToReinitializeFlaps
-	^ #((okToReinitializeFlaps true (morphic ) ) )

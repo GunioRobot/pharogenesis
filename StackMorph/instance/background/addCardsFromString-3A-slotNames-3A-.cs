@@ -12,4 +12,4 @@ addCardsFromString: aString slotNames: slotNames
 						insertCardOfBackground: self currentPage
 						withDataFrom: aLine
 						forInstanceVariables: slotNames]].
-	self inform: count asString , ' card(s) added'
+	self inform: count asString , ' card(s) added' translated

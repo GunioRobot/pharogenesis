@@ -2,6 +2,11 @@ slotInfoButtonHitFor: aGetterSymbol inViewer: aViewer
 	"The user made a gesture asking for slot menu for the given getter symbol in a viewer; put up the menu."
 
 	| aMenu slotSym aType typeVocab interface selector |
+
+	 (#(+ - * /) includes: aGetterSymbol)
+		ifTrue:
+			 [^ self inform: aGetterSymbol, ' is used for vector operations'].
+
 	slotSym _ Utilities inherentSelectorForGetter: aGetterSymbol.
 	aType _ self typeForSlotWithGetter: aGetterSymbol asSymbol.
 	aMenu _ MenuMorph new defaultTarget: self.
@@ -10,6 +15,14 @@ slotInfoButtonHitFor: aGetterSymbol inViewer: aViewer
 		ifTrue: [slotSym asString]
 		ifFalse: [interface selector].
 	aMenu addTitle: (selector, ' (', (aType asString translated), ')').
+
+	aType = #Patch ifTrue: [
+		aMenu add: 'grab morph' translated
+			target: (self perform: aGetterSymbol)
+			selector: #grabPatchMorph
+			argument: #().
+			aMenu addLine.
+	].
 
 	(typeVocab _ Vocabulary vocabularyForType: aType) addWatcherItemsToMenu: aMenu forGetter: aGetterSymbol.
 

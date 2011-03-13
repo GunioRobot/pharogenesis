@@ -5,7 +5,7 @@ interpretNextInstructionFor: client
 "Change false here will trace all state in Transcript."
 true ifTrue: [^ super interpretNextInstructionFor: client].
 
-	varNames _ Decompiler allInstVarNames.
+	varNames _ self class allInstVarNames.
 	code _ (self method at: pc) radix: 16.
 	Transcript cr; cr; print: pc; space;
 		nextPutAll: '<' , code, '>'.

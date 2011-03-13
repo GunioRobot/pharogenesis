@@ -3,6 +3,6 @@ actionDownSelector: aSymbolOrString
 	(nil = aSymbolOrString or:
 	['nil' = aSymbolOrString or:
 	[aSymbolOrString isEmpty]])
-		ifTrue: [^actionDownSelector _ nil].
+		ifTrue: [^actionDownSelector := nil].
 
-	actionDownSelector _ aSymbolOrString asSymbol.
+	actionDownSelector := aSymbolOrString asSymbol.

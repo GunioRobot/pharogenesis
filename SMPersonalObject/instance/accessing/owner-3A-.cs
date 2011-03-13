@@ -1,2 +1,2 @@
 owner: anAccount
-	owner _ anAccount
+	owner := anAccount

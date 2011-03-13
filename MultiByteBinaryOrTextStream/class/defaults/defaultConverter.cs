@@ -1,2 +1,2 @@
 defaultConverter
-	^TextConverter defaultSystemConverter
+	^ Latin1TextConverter new.

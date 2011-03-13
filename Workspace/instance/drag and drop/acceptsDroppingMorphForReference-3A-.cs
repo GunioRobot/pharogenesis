@@ -1,4 +1,4 @@
 acceptsDroppingMorphForReference: trueFalse
 
-	acceptDroppedMorphs _ trueFalse
+	acceptDroppedMorphs := trueFalse
 		

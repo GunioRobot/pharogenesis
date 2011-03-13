@@ -4,10 +4,7 @@ fileContentsMenu: aMenu shifted: shifted
 	| shiftMenu services maybeLine extraLines |
 	shifted ifTrue:
 		[shiftMenu _ ParagraphEditor shiftedYellowButtonMenu.
-		^ aMenu 
-			labels: shiftMenu labelString 
-			lines: shiftMenu lineArray
-			selections: shiftMenu selections].
+		^ aMenu addAllFrom: shiftMenu].
 	fileName ifNotNil:
 		[services _ OrderedCollection new.
 		(#(briefHex briefFile needToGetBriefHex needToGetBrief) includes: brevityState) ifTrue:

@@ -1,1 +1,0 @@
-WonderlandPositionalLight class instanceVariableNames: ''

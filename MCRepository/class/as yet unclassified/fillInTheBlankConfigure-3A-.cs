@@ -2,7 +2,7 @@ fillInTheBlankConfigure: aTemplateString
 	| chunk repo |
 	
 	aTemplateString ifNil: [ ^ false ].
-	chunk _ FillInTheBlankMorph 
+	chunk := FillInTheBlankMorph 
 			request: self fillInTheBlankRequest
 			initialAnswer: aTemplateString
 			centerAt: Sensor cursorPoint
@@ -13,7 +13,7 @@ fillInTheBlankConfigure: aTemplateString
 			
 	chunk 
 		ifNotNil: [ 
-			repo _ self readFrom: chunk readStream.
+			repo := self readFrom: chunk readStream.
 			repo creationTemplate: chunk. 
 	].
 

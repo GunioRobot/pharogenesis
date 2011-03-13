@@ -3,7 +3,7 @@ openFor: aChangeSet
 
 	| messageSet |
 
-	messageSet _ aChangeSet changedMessageListAugmented select: [ :each | each isValid].
+	messageSet := aChangeSet changedMessageListAugmented select: [ :each | each isValid].
 	self 
 		openMessageList: messageSet 
 		name: 'Methods in Change Set ', aChangeSet name

@@ -1,4 +1,4 @@
 on: aSourceStream
-	stream _ aSourceStream.
-	bitBuffer _ bitPosition _ 0.
-	hasAlpha _ false. "Turn on if needed"
+	stream := aSourceStream.
+	bitBuffer := bitPosition := 0.
+	hasAlpha := false. "Turn on if needed"

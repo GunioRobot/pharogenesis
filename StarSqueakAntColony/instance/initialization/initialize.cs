@@ -1,4 +1,4 @@
 initialize
 
-	antCount _ 50.
+	antCount := 50.
 	super initialize.

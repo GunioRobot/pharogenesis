@@ -20,9 +20,9 @@ initialize
 	DirectoryAttrib 					:= 8r040000.
 	FileAttrib 						:= 8r0100000.
 
-	CentralDirectoryFileHeaderSignature _ 
+	CentralDirectoryFileHeaderSignature := 
 		(ByteArray with: 16r50 with: 16r4B with: 16r01 with: 16r02).
-	LocalFileHeaderSignature _
+	LocalFileHeaderSignature :=
 		(ByteArray with: 16r50 with: 16r4B with: 16r03 with: 16r04).
-	EndOfCentralDirectorySignature _
+	EndOfCentralDirectorySignature :=
 		(ByteArray with: 16r50 with: 16r4B with: 16r05 with: 16r06).

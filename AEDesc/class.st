@@ -1,1 +1,0 @@
-AEDesc class instanceVariableNames: ''

@@ -1,19 +1,19 @@
 initHierarchyForClass: aClassOrMetaClass
 	| tab stab index nonMetaClass |
-	centralClass _ aClassOrMetaClass.
-	nonMetaClass _ aClassOrMetaClass theNonMetaClass.
+	centralClass := aClassOrMetaClass.
+	nonMetaClass := aClassOrMetaClass theNonMetaClass.
 	self systemOrganizer: SystemOrganization.
-	metaClassIndicated _ aClassOrMetaClass isMeta.
-	classList _ OrderedCollection new.
-	tab _ ''.
+	metaClassIndicated := aClassOrMetaClass isMeta.
+	classList := OrderedCollection new.
+	tab := ''.
 	nonMetaClass allSuperclasses reverseDo: 
 		[:aClass | 
 		classList add: tab , aClass name.
-		tab _ tab , '  '].
-	index _ classList size + 1.
+		tab := tab , '  '].
+	index := classList size + 1.
 	nonMetaClass allSubclassesWithLevelDo:
 		[:aClass :level |
-		stab _ ''.  1 to: level do: [:i | stab _ stab , '  '].
+		stab := ''.  1 to: level do: [:i | stab := stab , '  '].
 		classList add: tab , stab , aClass name]
 	 	startingLevel: 0.
 	self classListIndex: index

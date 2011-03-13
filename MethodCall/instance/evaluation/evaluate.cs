@@ -2,11 +2,11 @@ evaluate
 	"Evaluate the receiver, and if value has changed, signal value-changed"
 
 	| result |
-	result _ arguments isEmptyOrNil
+	result := arguments isEmptyOrNil
 		ifTrue: [self receiver perform: selector]
 		ifFalse: [self receiver perform: selector withArguments: arguments asArray].
-	timeStamp _ Time dateAndTimeNow.
+	timeStamp := Time dateAndTimeNow.
 	result ~= lastValue ifTrue:
-		[lastValue _ result.
+		[lastValue := result.
 		self changed: #value]
 	

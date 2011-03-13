@@ -1,7 +1,7 @@
 versionSelection: aNumber
 	aNumber isZero 
-		ifTrue: [ selectedVersion _ version _ nil ]
+		ifTrue: [ selectedVersion := version := versionInfo := nil ]
 		ifFalse: [ 
-			selectedVersion _ self versionList at: aNumber.
-			version _ repository versionFromFileNamed: selectedVersion ].
-	self changed: #versionSelection; changed: #summary
+			selectedVersion := (self versionList at: aNumber) asString.
+			version := versionInfo := nil].
+	self changed: #versionSelection; changed: #summary; changed: #hasVersion

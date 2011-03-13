@@ -1,6 +1,6 @@
-Exception
+Error
 	subclass: #BlockCannotReturn
-	instanceVariableNames: 'result '
+	instanceVariableNames: 'result deadHome'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Exceptions Kernel'
+	category: 'Exceptions-Kernel'

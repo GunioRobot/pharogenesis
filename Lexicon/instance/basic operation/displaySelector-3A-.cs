@@ -3,7 +3,7 @@ displaySelector: aSelector
 
 	| detectedItem messageIndex |
 	self chooseCategory: (self categoryDefiningSelector: aSelector).
-	detectedItem _ messageList detect:
+	detectedItem := messageList detect:
 		[:anItem | (anItem asString upTo: $ ) asSymbol == aSelector] ifNone: [^ Beeper beep].
-	messageIndex _ messageList indexOf: detectedItem.
+	messageIndex := messageList indexOf: detectedItem.
 	self messageListIndex: messageIndex

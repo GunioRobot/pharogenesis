@@ -4,7 +4,7 @@ startNote: noteEvent forStartTick: startTick trackIndex: trackIndex
 	| snd |
 	midiPort
 		ifNil: [
-			snd _ (instruments at: trackIndex)
+			snd := (instruments at: trackIndex)
 				soundForMidiKey: noteEvent midiKey
 				dur: secsPerTick * (noteEvent endTime - startTick)
 				loudness: noteEvent velocity asFloat / 127.0.

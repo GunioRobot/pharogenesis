@@ -1,1 +1,0 @@
-UndoAction class instanceVariableNames: ''

@@ -3,5 +3,5 @@ primFlush: id
 	| p |
 	<primitive: 'primitiveFileFlush' module: 'FilePlugin'>
 	"In some OS's seeking to 0 and back will do a flush"
-	p _ self position.
+	p := self position.
 	self position: 0; position: p

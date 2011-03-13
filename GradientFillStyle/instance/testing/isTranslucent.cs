@@ -1,2 +1,2 @@
 isTranslucent
-	^isTranslucent ifNil:[isTranslucent _ self checkTranslucency]
+	^isTranslucent ifNil:[isTranslucent := self checkTranslucency]

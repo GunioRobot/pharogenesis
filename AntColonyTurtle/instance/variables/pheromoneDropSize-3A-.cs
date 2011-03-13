@@ -1,3 +1,3 @@
 pheromoneDropSize: aNumber
 
-	pheromoneDropSize _ aNumber.
+	pheromoneDropSize := aNumber.

@@ -1,1 +1,0 @@
-B3DPrimitiveEdgeList class instanceVariableNames: ''

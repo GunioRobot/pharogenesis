@@ -3,5 +3,5 @@ selectedClassOrMetaClass
 
 	| cls |
 	self metaClassIndicated
-		ifTrue: [^ (cls _ self selectedClass) ifNotNil: [cls metaClass]]
+		ifTrue: [^ (cls := self selectedClass) ifNotNil: [cls metaClass]]
 		ifFalse: [^ self selectedClass]

@@ -1,3 +1,3 @@
 clearExtraFields
-	cdExtraField _ ''.
-	localExtraField _ ''.
+	cdExtraField := ''.
+	localExtraField := ''.

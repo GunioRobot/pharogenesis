@@ -1,7 +1,7 @@
 Object
 	subclass: #JPEGColorComponent
 	instanceVariableNames:
-		'id hSampleFactor vSampleFactor dctSize qTableIndex dcTableIndex acTableIndex widthInBlocks heightInBlocks mcuWidth mcuHeight mcuBlocks currentX currentY priorDCValue '
+		'currentX currentY hSampleFactor vSampleFactor mcuBlocks widthInBlocks heightInBlocks dctSize mcuWidth mcuHeight priorDCValue id qTableIndex dcTableIndex acTableIndex'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Graphics-Files'

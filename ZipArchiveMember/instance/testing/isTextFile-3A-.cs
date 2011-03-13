@@ -4,6 +4,6 @@ isTextFile: aBoolean
 	upon extraction or storage.
 	That is, bytes are stored in native format whether or not they came
 	from a text file."
-	internalFileAttributes _ aBoolean
+	internalFileAttributes := aBoolean
 		ifTrue: [ internalFileAttributes bitOr: 1 ]
 		ifFalse: [ internalFileAttributes bitAnd: 1 bitInvert ]

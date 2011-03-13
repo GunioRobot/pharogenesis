@@ -1,2 +1,2 @@
 initialize
-	zip _ ZipArchive new.
+	zip := ZipArchive new.

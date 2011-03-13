@@ -1,4 +1,4 @@
 closeMIDIPort
 
 	scorePlayer closeMIDIPort.
-	LastMIDIPort _ nil.
+	LastMIDIPort := nil.

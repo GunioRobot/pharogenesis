@@ -1,0 +1,2 @@
+buttonLabel: anObject
+	shortLabel := anObject

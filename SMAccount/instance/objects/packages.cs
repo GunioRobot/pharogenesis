@@ -1,4 +1,4 @@
 packages
 	"Return all owned packages."
 
-	^objects select: [:o | o isPackage].
+	^objects select: [:o | o isPackage]

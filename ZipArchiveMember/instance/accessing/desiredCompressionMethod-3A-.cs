@@ -10,10 +10,10 @@ desiredCompressionMethod: aNumber
 	desiredCompressionLevel to CompressionLevelDefault."
 
 	| old |
-	old _ desiredCompressionMethod.
-	desiredCompressionMethod _ aNumber.
-	desiredCompressionLevel _ (aNumber = CompressionDeflated)
+	old := desiredCompressionMethod.
+	desiredCompressionMethod := aNumber.
+	desiredCompressionLevel := (aNumber = CompressionDeflated)
 			ifTrue: [ CompressionLevelDefault ]
 			ifFalse: [ CompressionLevelNone ].
-	compressionMethod = CompressionStored ifTrue: [ compressedSize _ uncompressedSize ].
+	compressionMethod = CompressionStored ifTrue: [ compressedSize := uncompressedSize ].
 	^old.

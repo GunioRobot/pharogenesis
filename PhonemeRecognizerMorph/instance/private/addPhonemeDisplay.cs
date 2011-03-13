@@ -2,9 +2,9 @@ addPhonemeDisplay
 	"Add a display to show the currently matching phoneme."
 
 	| font r |
-	font _ StrikeFont familyName: 'Helvetica' size: 36.
-	phonemeDisplay _ StringMorph contents: '...' font: font.
-	r _ AlignmentMorph newColumn
+	font := StrikeFont familyName: 'Helvetica' size: 36.
+	phonemeDisplay := StringMorph contents: '...' font: font.
+	r := AlignmentMorph newColumn
 		color: color;
 		layoutInset: 0;
 		wrapCentering: #center; cellPositioning: #topCenter;

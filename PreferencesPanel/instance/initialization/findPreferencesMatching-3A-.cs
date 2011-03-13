@@ -1,7 +1,7 @@
 findPreferencesMatching: incomingTextOrString
 	"find all preferences matching incomingTextOrString"
 
-	| result aList aPalette controlPage cc |
+	| result aList aPalette controlPage  |
 	result := incomingTextOrString asString asLowercase.
 	result := result asLowercase withBlanksTrimmed.
 	result isEmptyOrNil ifTrue: [^ self].
@@ -17,13 +17,11 @@ findPreferencesMatching: incomingTextOrString
 	controlPage := aPalette currentPage.
 	controlPage removeAllMorphs.
 	controlPage addMorph: (StringMorph contents: ('Preferences matching "', self searchString, '"') font: Preferences standardButtonFont).
-	Preferences alternativeWindowLook ifTrue:[
-		cc := Color transparent.
-		controlPage color: cc].
+	controlPage color: Color transparent.
 	aList := aList asSortedCollection:
 		[:a :b | a name < b name].
 	aList do:
 		[:aPreference | | button |
-			button _ aPreference representativeButtonWithColor: cc inPanel: self.
+			button _ aPreference representativeButtonWithColor:  Color transparent inPanel: self.
 			button ifNotNil: [controlPage addMorphBack: button]].
 	aPalette world startSteppingSubmorphsOf: aPalette

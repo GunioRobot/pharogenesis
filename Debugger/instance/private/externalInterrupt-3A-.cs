@@ -1,3 +1,3 @@
 externalInterrupt: aBoolean
 
-	externalInterrupt _ aBoolean 
+	externalInterrupt := aBoolean 

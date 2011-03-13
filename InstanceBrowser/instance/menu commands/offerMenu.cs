@@ -2,7 +2,7 @@ offerMenu
 	"Offer a menu to the user, in response to the hitting of the menu button on the tool pane"
 
 	| aMenu |
-	aMenu _ MenuMorph new defaultTarget: self.
+	aMenu := MenuMorph new defaultTarget: self.
 	aMenu title: 'Messages of ', objectViewed nameForViewer.
 	aMenu addStayUpItem.
 	aMenu addList: #(

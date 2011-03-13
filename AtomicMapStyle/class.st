@@ -1,1 +1,0 @@
-AtomicMapStyle class instanceVariableNames: ''

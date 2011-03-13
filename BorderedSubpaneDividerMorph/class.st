@@ -1,0 +1,1 @@
+BorderedSubpaneDividerMorph class instanceVariableNames: ''

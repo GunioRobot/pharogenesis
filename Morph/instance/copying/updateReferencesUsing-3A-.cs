@@ -19,5 +19,4 @@ updateReferencesUsing: aDictionary
 						put: (aDictionary
 								at: old
 								ifAbsent: [old])]].
-	self hasExtension
-		ifTrue: [self extension updateReferencesUsing: aDictionary]
+	extension ifNotNil: [extension updateReferencesUsing: aDictionary]

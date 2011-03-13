@@ -1,6 +1,6 @@
 updateInstVars
 	ancestry ifNil:
-		[ancestry _ MCWorkingAncestry new.
+		[ancestry := MCWorkingAncestry new.
 		versionInfo ifNotNil:
 			[versionInfo ancestors do: [:ea | ancestry addAncestor: ea].
-			versionInfo _ nil]]
+			versionInfo := nil]]

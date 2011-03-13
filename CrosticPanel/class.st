@@ -1,1 +1,0 @@
-CrosticPanel class instanceVariableNames: ''

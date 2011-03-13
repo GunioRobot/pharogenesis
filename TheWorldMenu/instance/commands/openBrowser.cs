@@ -1,3 +1,3 @@
-openBrowser
-	"For opening the default SystemBrowser. To set a new default use the AppRegistry SystemBrowser"
-	SystemBrowser default openBrowser.
+openBrowser 
+	"Create and schedule a Browser view for browsing code."
+	ToolSet browse: nil selector: nil

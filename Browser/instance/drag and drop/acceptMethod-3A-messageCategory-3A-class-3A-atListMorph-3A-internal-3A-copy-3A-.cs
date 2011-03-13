@@ -3,7 +3,7 @@ acceptMethod: methodSel messageCategory: srcMessageCategorySel class: srcClassOr
 	dstClass _ self dstClassDstListMorph: dstListMorph.
 	dstClassOrMeta _ dstClass
 				ifNotNil: [self metaClassIndicated
-						ifTrue: [dstClass class]
+						ifTrue: [dstClass classSide]
 						ifFalse: [dstClass]].
 	dstMessageCategorySel _ self dstMessageCategoryDstListMorph: dstListMorph.
 	success _ (dstClassOrMeta notNil

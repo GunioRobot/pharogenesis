@@ -3,8 +3,8 @@ writeForExportOn: fileStream
 
 	| temp |
 	state = #activeCopy ifFalse: [self error: 'wrong state'].
-	temp _ endMarker.
-	endMarker _ nil.
+	temp := endMarker.
+	endMarker := nil.
 	fileStream fileOutClass: nil andObject: self.
 		"remember extra structures.  Note class names."
-	endMarker _ temp.
+	endMarker := temp.

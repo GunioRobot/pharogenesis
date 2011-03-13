@@ -1,6 +1,6 @@
 readIndexedBmpFile: colors
 	"Read uncompressed pixel data of depth d from the given BMP stream, where d is 1, 4, 8, or 16"
-	| form bytesPerRow pixelData pixelLine startIndex cm word formBits |
+	| form bytesPerRow pixelData pixelLine startIndex map bitBlt mask |
 	colors 
 		ifNil:[form _ Form extent: biWidth@biHeight depth: biBitCount]
 		ifNotNil:[form _ ColorForm extent: biWidth@biHeight depth: biBitCount.
@@ -17,17 +17,24 @@ readIndexedBmpFile: colors
 			startingAt: 1].
 	form bits copyFromByteArray: pixelData.
 	biBitCount = 16 ifTrue:[
-		"swap red and blue components"
-		cm _ Bitmap new: (1 << 15).
-		word _ 0.
-		0 to: 31 do:[:r| 0 to: 31 do:[:g| 0 to: 31 do:[:b|
-			cm at: (word _ word + 1) put: (b bitShift: 10) + (g bitShift: 5) + r]]].
-		cm at: 1 put: 1.
-		formBits _ form bits.
-		1 to: formBits size do:[:i|
-			word _ formBits at: i.
-			word _ (cm at: (word bitAnd: 16r7FFF) + 1) + ((cm at: ((word bitShift: -16) bitAnd: 16r7FFF) +1) bitShift: 16).
-			formBits at: i put: word.
-		].
+		map := ColorMap shifts: #(8 -8 0 0) masks: #(16rFF 16rFF00 0 0).
+		mask := 16r80008000.
+	].
+	biBitCount = 32 ifTrue:[
+		map := ColorMap shifts: #(24 8 -8 -24) masks: #(16rFF 16rFF00 16rFF0000 16rFF000000).
+		mask := 16rFF000000.
+	].
+	map ifNotNil:[
+		bitBlt := BitBlt toForm: form.
+		bitBlt sourceForm: form.
+		bitBlt colorMap: map.
+		bitBlt combinationRule: Form over.
+		bitBlt copyBits.
+	].
+	mask ifNotNil:[
+		bitBlt := BitBlt toForm: form.
+		bitBlt combinationRule: 7 "bitOr:with:".
+		bitBlt halftoneForm: (Bitmap with: mask).
+		bitBlt copyBits.
 	].
 	^ form

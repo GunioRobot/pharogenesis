@@ -1,0 +1,1 @@
+TTSampleStringMorph class instanceVariableNames: ''

@@ -7,41 +7,41 @@ mixSampleCount: n into: aSoundBuffer startingAt: startIndex leftVol: leftVol rig
 	self var: #aSoundBuffer declareC: 'short int *aSoundBuffer'.
 	self var: #waveTable declareC: 'short int *waveTable'.
 
-	doingFM _ (normalizedModulation ~= 0) and: [scaledOffsetIndexIncr ~= 0].
-	lastIndex _ (startIndex + n) - 1.
+	doingFM := (normalizedModulation ~= 0) and: [scaledOffsetIndexIncr ~= 0].
+	lastIndex := (startIndex + n) - 1.
 	startIndex to: lastIndex do: [:sliceIndex |
-		sample _ (scaledVol * (waveTable at: (scaledIndex // ScaleFactor) + 1)) // ScaleFactor.
+		sample := (scaledVol * (waveTable at: (scaledIndex // ScaleFactor) + 1)) // ScaleFactor.
 		doingFM
 			ifTrue: [
-				offset _ normalizedModulation * (waveTable at: (scaledOffsetIndex // ScaleFactor) + 1).
-				scaledOffsetIndex _ (scaledOffsetIndex + scaledOffsetIndexIncr) \\ scaledWaveTableSize.
+				offset := normalizedModulation * (waveTable at: (scaledOffsetIndex // ScaleFactor) + 1).
+				scaledOffsetIndex := (scaledOffsetIndex + scaledOffsetIndexIncr) \\ scaledWaveTableSize.
 				scaledOffsetIndex < 0
-					ifTrue: [scaledOffsetIndex _ scaledOffsetIndex + scaledWaveTableSize].
-				scaledIndex _ (scaledIndex + scaledIndexIncr + offset) \\ scaledWaveTableSize.
+					ifTrue: [scaledOffsetIndex := scaledOffsetIndex + scaledWaveTableSize].
+				scaledIndex := (scaledIndex + scaledIndexIncr + offset) \\ scaledWaveTableSize.
 				scaledIndex < 0
-					ifTrue: [scaledIndex _ scaledIndex + scaledWaveTableSize]]
+					ifTrue: [scaledIndex := scaledIndex + scaledWaveTableSize]]
 			ifFalse: [
-				scaledIndex _ (scaledIndex + scaledIndexIncr) \\ scaledWaveTableSize].
+				scaledIndex := (scaledIndex + scaledIndexIncr) \\ scaledWaveTableSize].
 
 		leftVol > 0 ifTrue: [
-			i _ (2 * sliceIndex) - 1.
-			s _ (aSoundBuffer at: i) + ((sample * leftVol) // ScaleFactor).
-			s >  32767 ifTrue: [s _  32767].  "clipping!"
-			s < -32767 ifTrue: [s _ -32767].  "clipping!"
+			i := (2 * sliceIndex) - 1.
+			s := (aSoundBuffer at: i) + ((sample * leftVol) // ScaleFactor).
+			s >  32767 ifTrue: [s :=  32767].  "clipping!"
+			s < -32767 ifTrue: [s := -32767].  "clipping!"
 			aSoundBuffer at: i put: s].
 		rightVol > 0 ifTrue: [
-			i _ 2 * sliceIndex.
-			s _ (aSoundBuffer at: i) + ((sample * rightVol) // ScaleFactor).
-			s >  32767 ifTrue: [s _  32767].  "clipping!"
-			s < -32767 ifTrue: [s _ -32767].  "clipping!"
+			i := 2 * sliceIndex.
+			s := (aSoundBuffer at: i) + ((sample * rightVol) // ScaleFactor).
+			s >  32767 ifTrue: [s :=  32767].  "clipping!"
+			s < -32767 ifTrue: [s := -32767].  "clipping!"
 			aSoundBuffer at: i put: s].
 
 		scaledVolIncr ~= 0 ifTrue: [
-			scaledVol _ scaledVol + scaledVolIncr.
+			scaledVol := scaledVol + scaledVolIncr.
 			((scaledVolIncr > 0 and: [scaledVol >= scaledVolLimit]) or:
 			 [scaledVolIncr < 0 and: [scaledVol <= scaledVolLimit]])
 				ifTrue: [  "reached the limit; stop incrementing"
-					scaledVol _ scaledVolLimit.
-					scaledVolIncr _ 0]]].
+					scaledVol := scaledVolLimit.
+					scaledVolIncr := 0]]].
 
-	count _ count - n.
+	count := count - n.

@@ -3,7 +3,7 @@ categoryWithNameIn: categoryNames thatIncludesSelector: aSelector forInstance: t
 
 	| itsName |
 	self categories do:
-		[:aCategory | ((categoryNames includes: (itsName _ aCategory categoryName)) and:  [aCategory includesKey: aSelector])
+		[:aCategory | ((categoryNames includes: (itsName := aCategory categoryName)) and:  [aCategory includesKey: aSelector])
 			ifTrue:
 				[^ itsName]].
 	^ nil

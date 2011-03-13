@@ -1,2 +1,0 @@
-initialize
-	CelesteAddressBook openHelp; open.

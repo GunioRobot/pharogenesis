@@ -3,8 +3,8 @@ browseVersions
 	currently selected message selector."
 
 	| class selector |
-	class _ self selectedClassOrMetaClass.
-	selector _ self selectedMessageName.
+	class := self selectedClassOrMetaClass.
+	selector := self selectedMessageName.
 	VersionsBrowser
 		browseVersionsOf: (class compiledMethodAt: selector)
 		class: self selectedClass theNonMetaClass

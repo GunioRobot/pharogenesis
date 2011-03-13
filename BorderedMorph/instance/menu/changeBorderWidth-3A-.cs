@@ -22,5 +22,5 @@ changeBorderWidth: evt
 	handle showBalloon:
 'Move cursor farther from
 this point to increase border width.
-Click when done.' hand: evt hand.
+Click when done.' translated hand: evt hand.
 	handle startStepping

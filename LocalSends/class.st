@@ -1,0 +1,1 @@
+LocalSends class instanceVariableNames: ''

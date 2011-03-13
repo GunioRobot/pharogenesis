@@ -1,2 +1,0 @@
-enterScope
-	self scope enterScope

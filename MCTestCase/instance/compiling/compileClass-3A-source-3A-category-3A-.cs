@@ -1,2 +1,2 @@
 compileClass: aClass source: source category: category
-	aClass compileInobtrusively: source classified: category
+	aClass compileSilently: source classified: category

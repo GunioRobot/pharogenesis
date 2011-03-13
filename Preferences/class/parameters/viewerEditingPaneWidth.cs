@@ -1,2 +1,0 @@
-viewerEditingPaneWidth
-	^ 400

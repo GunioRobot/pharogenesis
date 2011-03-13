@@ -1,2 +1,0 @@
-colorTilesEnabled
-	^ false

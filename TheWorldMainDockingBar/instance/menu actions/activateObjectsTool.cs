@@ -1,0 +1,2 @@
+activateObjectsTool
+	self world activateObjectsTool

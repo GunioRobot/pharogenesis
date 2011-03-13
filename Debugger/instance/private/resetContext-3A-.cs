@@ -6,8 +6,8 @@ resetContext: aContext
 	recomposing all that text (by editing the paragraph instead of recreating it)."
 
 	| oldContext |
-	oldContext _ self selectedContext.
-	contextStackTop _ aContext.
+	oldContext := self selectedContext.
+	contextStackTop := aContext.
 	self newStack: contextStackTop contextStack.
 	self changed: #contextStackList.
 	self contextStackIndex: 1 oldContextWas: oldContext.

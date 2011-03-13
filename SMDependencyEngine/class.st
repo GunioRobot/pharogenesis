@@ -1,0 +1,1 @@
+SMDependencyEngine class instanceVariableNames: ''

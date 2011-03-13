@@ -1,0 +1,2 @@
+windowIsClosing
+	SystemChangeNotifier uniqueInstance noMoreNotificationsFor: self

@@ -3,15 +3,15 @@ sendDataCautiously: aStringOrByteArray bytesToSend: bytesToSend
 
 	| bytesSent count |
 
-	bytesSent _ 0.
+	bytesSent := 0.
 	[bytesSent < bytesToSend] whileTrue: [
-		extraUnsentBytes _ bytesToSend - bytesSent.
-		count _ socket 
+		extraUnsentBytes := bytesToSend - bytesSent.
+		count := socket 
 			sendSomeData: aStringOrByteArray 
 			startIndex: bytesSent + 1  
 			count: (bytesToSend - bytesSent min: 6000).
-		bytesSent _ bytesSent + count.
+		bytesSent := bytesSent + count.
 		(Delay forMilliseconds: 1) wait.
 	].
-	extraUnsentBytes _ 0.
+	extraUnsentBytes := 0.
 	^ bytesSent

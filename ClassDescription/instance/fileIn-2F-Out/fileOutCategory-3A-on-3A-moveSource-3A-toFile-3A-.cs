@@ -11,6 +11,9 @@ fileOutCategory: aSymbol on: aFileStream moveSource: moveSource toFile: fileInde
 				ifTrue: [ self organization allMethodSelectors ]
 				ifFalse: [ self organization listAtCategoryNamed: aSymbol ].
 
+	selectors _ selectors select: [:each | 
+		(self includesLocalSelector: each) or: [(self methodDict at: each) sendsToSuper]].
+	
 	"Overridden to preserve author stamps in sources file regardless"
 	selectors do: [:sel |
 		self printMethodChunk: sel 

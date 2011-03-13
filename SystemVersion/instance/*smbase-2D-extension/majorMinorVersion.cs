@@ -7,6 +7,7 @@ majorMinorVersion
 	stream := ReadStream on: version, 'x'.
 	stream upTo: $..
 	char := stream next.
+	char ifNil: [^ version].	"eg: 'Jasmine-rc1' has no $. in it."
 	[char isDigit]
 		whileTrue: [char := stream next].
 	^ version copyFrom: 1 to: stream position - 1

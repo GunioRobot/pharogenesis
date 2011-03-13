@@ -1,6 +1,6 @@
 ImageMorph
 	subclass: #SoundMorph
-	instanceVariableNames: 'sound '
+	instanceVariableNames: 'sound'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Sound-Interface'
+	category: 'MorphicExtras-SoundInterface'

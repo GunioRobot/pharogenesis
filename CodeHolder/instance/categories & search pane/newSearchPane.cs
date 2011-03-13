@@ -2,7 +2,7 @@ newSearchPane
 	"Answer a new search pane for the receiver"
 
 	| aTextMorph |
-	aTextMorph _ PluggableTextMorph on: self
+	aTextMorph := PluggableTextMorph on: self
 					text: #lastSearchString accept: #lastSearchString:
 					readSelection: nil menu: nil.
 	aTextMorph setProperty: #alwaysAccept toValue: true.

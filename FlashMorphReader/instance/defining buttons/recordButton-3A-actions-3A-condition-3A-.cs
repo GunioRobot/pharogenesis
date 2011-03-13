@@ -1,6 +1,6 @@
 recordButton: buttonId actions: actionList condition: condition
 	| button |
-	button _ buttons at: buttonId ifAbsent:[^self halt].
+	button := buttons at: buttonId ifAbsent:[^self halt].
 	(condition anyMask: 1) ifTrue:[
 		button on: #mouseEnter sendAll: actionList.
 	].

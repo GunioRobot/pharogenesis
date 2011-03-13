@@ -15,4 +15,5 @@ getFullInfoFor: aProject ifValid: aBlock expandedFormat: expandedFormat
 		];
 
 		initialize;
+		becomeModal;
 		openCenteredInWorld

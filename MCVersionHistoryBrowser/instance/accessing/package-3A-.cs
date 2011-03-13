@@ -1,2 +1,2 @@
 package: aMCPackage
-	package _ aMCPackage
+	package := aMCPackage

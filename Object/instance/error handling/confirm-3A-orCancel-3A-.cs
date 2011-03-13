@@ -3,4 +3,4 @@ confirm: aString orCancel: cancelBlock
 	the response is yes, false if no. If cancel is chosen, evaluate  
 	cancelBlock. This is a modal question--the user must respond yes or no."
 
-	^ PopUpMenu confirm: aString orCancel: cancelBlock
+	^ UIManager default confirm: aString orCancel: cancelBlock

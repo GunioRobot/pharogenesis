@@ -1,4 +1,4 @@
 initialize
-	passed _ OrderedCollection new.
-	failures _ Set new.
-	errors _ OrderedCollection new.
+	passed := OrderedCollection new.
+	failures := Set new.
+	errors := OrderedCollection new.

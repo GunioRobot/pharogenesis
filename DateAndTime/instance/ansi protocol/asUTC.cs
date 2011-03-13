@@ -1,4 +1,4 @@
 asUTC
-
-
-	^ self utcOffset: 0
+	^ offset isZero
+		ifTrue: [self]
+		ifFalse: [self utcOffset: 0]

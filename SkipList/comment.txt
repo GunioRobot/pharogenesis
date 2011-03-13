@@ -1,8 +1,5 @@
-From "Skip Lists: A Probabilistic Alternative to Balanced Trees" by William Pugh ( http://epaperpress.com/sortsearch/download/skiplist.pdf ):
+A skiplist is a sorted data structure that allows one to search for any element in o(log n) time.
 
-"Skip lists are a data structure that can be used in place of balanced trees.  Skip lists use probabilistic balancing rather than strictly enforcing balancing and as a result the algorithms for insertion and deletion in skip lists are much simpler and significantly faster than equivalent algorithms for balanced trees."
+It also allows one to enumerate forward to the next element. Basically, its a tree-like algorithm, except it doesn't use trees.
 
-Notes:
-
-The elements of the skip list must implement #< or you must provide a sort block.
-
+The implementation here is similar to a Dictionary, in that it indexes (a subclass of) Associations. Thus, you can do    foo at: key put: value   You can also search for a key, if the key does not exist, it will report the first key greater than the search, or nil.

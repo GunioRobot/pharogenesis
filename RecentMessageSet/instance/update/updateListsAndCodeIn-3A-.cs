@@ -6,7 +6,7 @@ updateListsAndCodeIn: aWindow
 	self flag: #mref.	"in second pass, use simpler test"
 
 	self canDiscardEdits ifFalse: [^ self].
-	recentFromUtilities _ Utilities mostRecentlySubmittedMessage,' '.
+	recentFromUtilities := Utilities mostRecentlySubmittedMessage,' '.
 	(messageList first asStringOrText asString beginsWith: recentFromUtilities)
 		ifFalse:
 			[self reformulateList]

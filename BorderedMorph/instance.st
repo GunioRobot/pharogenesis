@@ -1,6 +1,6 @@
 Morph
 	subclass: #BorderedMorph
-	instanceVariableNames: 'borderWidth borderColor '
+	instanceVariableNames: 'borderWidth borderColor'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Kernel'

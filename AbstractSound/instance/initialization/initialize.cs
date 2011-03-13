@@ -1,8 +1,8 @@
 initialize
 
-	envelopes _ #().
-	mSecsSinceStart _ 0.
-	samplesUntilNextControl _ 0.
-	scaledVol _ (1.0 * ScaleFactor) rounded.
-	scaledVolIncr _ 0.
-	scaledVolLimit _ scaledVol.
+	envelopes := #().
+	mSecsSinceStart := 0.
+	samplesUntilNextControl := 0.
+	scaledVol := (1.0 * ScaleFactor) rounded.
+	scaledVolIncr := 0.
+	scaledVolLimit := scaledVol.

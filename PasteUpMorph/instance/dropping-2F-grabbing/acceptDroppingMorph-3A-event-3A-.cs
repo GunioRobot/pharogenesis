@@ -30,4 +30,6 @@ acceptDroppingMorph: dropped event: evt
 
 	self showingListView ifTrue:
 		[self sortSubmorphsBy: (self valueOfProperty: #sortOrder).
-		self currentWorld abandonAllHalos]
+		self currentWorld abandonAllHalos].
+
+	self bringTopmostsToFront.

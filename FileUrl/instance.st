@@ -1,6 +1,6 @@
 Url
 	subclass: #FileUrl
-	instanceVariableNames: 'path isAbsolute '
+	instanceVariableNames: 'host path isAbsolute'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Network-Url'

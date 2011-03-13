@@ -1,2 +1,0 @@
-cardNumber
-	^cardNumber

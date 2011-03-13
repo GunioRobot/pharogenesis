@@ -1,3 +1,8 @@
-activeSubmenu: aSubmenu
-	activeSubMenu ifNotNil:[activeSubMenu delete].
-	activeSubMenu _ aSubmenu.
+activeSubmenu: aSubmenu 
+	activeSubMenu
+		ifNotNil: [activeSubMenu delete].
+	activeSubMenu := aSubmenu.
+	aSubmenu
+		ifNotNil: [
+			activeSubMenu activatedFromDockingBar: nil.
+]

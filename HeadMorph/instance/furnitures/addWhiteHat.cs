@@ -1,13 +1,13 @@
 addWhiteHat
 	| stage1 stage2 |
-	stage1 _ CurveMorph
+	stage1 := CurveMorph
 		vertices: {18@1. 93@18. 91@45. 8@40}
 		color: (Color r: 1.0 g: 0.968 b: 0.935)
 		borderWidth: 1
 		borderColor: Color black.
 	stage1 extent: (stage1 extent * (self width / stage1 width * 1.20)) rounded.
 
-	stage2 _ CurveMorph
+	stage2 := CurveMorph
 		vertices: {27@7. 81@5. 111@34. 11@28}
 		color: stage1 color
 		borderWidth: 1

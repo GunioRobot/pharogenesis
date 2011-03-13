@@ -1,6 +1,6 @@
 TextAction
 	subclass: #TextLink
-	instanceVariableNames: 'classAndMethod '
+	instanceVariableNames: 'classAndMethod'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Collections-Text'

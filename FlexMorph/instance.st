@@ -1,6 +1,6 @@
 SketchMorph
 	subclass: #FlexMorph
-	instanceVariableNames: 'originalMorph borderWidth borderColor '
+	instanceVariableNames: 'originalMorph borderWidth borderColor'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Basic'
+	category: 'MorphicExtras-AdditionalMorphs'

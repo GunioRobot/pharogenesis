@@ -5,7 +5,7 @@ lineCount
 	cr _ Character cr.
 	count _ 1  min: self size..
 	1 to: self size do:
-		[:i | (self at: i) == cr ifTrue: [count _ count + 1]].
+		[:i | (self at: i) = cr ifTrue: [count _ count + 1]].
 	^ count
 
 "

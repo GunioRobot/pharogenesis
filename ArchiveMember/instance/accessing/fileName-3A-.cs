@@ -1,2 +1,2 @@
 fileName: aName
-	fileName _ aName
+	fileName := aName

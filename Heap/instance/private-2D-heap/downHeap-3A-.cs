@@ -17,6 +17,8 @@ downHeap: anIndex
 					n _ k - 1]
 			ifFalse:[	"no -> make room at j by moving j-th element to k-th position"
 					array at: k put: (array at: j).
+					self updateObjectIndex: k.
 					"and try again with j"
 					k _ j]].
 	array at: k put: value.
+	self updateObjectIndex: k.

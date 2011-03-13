@@ -1,2 +1,0 @@
-compressFlashImages
-	^ self valueOfFlag: #compressFlashImages

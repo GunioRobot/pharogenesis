@@ -1,6 +1,6 @@
 testRepositoryFallback
 	| version |
-	version _ self snapshot.
+	version := self snapshot.
 	self assert: (repositoryGroup versionWithInfo: version info) == version.
 	versions removeKey: version info.
 	versions2 at: version info put: version.

@@ -4,7 +4,5 @@ modalFileSelector
 
 	window _ self morphicViewFileSelector.
 	window openCenteredInWorld.
-	[window world notNil] whileTrue: [
-		window outermostWorldMorph doOneCycle.
-	].
+	self modalLoopOn: window.
 	^(window valueOfProperty: #fileListModel) getSelectedFile

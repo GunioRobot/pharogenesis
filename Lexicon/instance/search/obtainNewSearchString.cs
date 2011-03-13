@@ -3,11 +3,11 @@ obtainNewSearchString
 
 	| fragment |
 	
-	fragment _ FillInTheBlank request: 'type method name or fragment: ' initialAnswer: self currentQueryParameter.
+	fragment := UIManager default request: 'type method name or fragment: ' initialAnswer: self currentQueryParameter.
 	fragment ifNil: [^ self].
-	(fragment _ fragment copyWithout: $ ) size == 0  ifTrue: [^ self].
-	currentQueryParameter _ fragment.
-	fragment _ fragment asLowercase.
-	currentQuery _ #selectorName.
+	(fragment := fragment copyWithout: $ ) size == 0  ifTrue: [^ self].
+	currentQueryParameter := fragment.
+	fragment := fragment asLowercase.
+	currentQuery := #selectorName.
 	self showQueryResultsCategory.
 	self messageListIndex: 0

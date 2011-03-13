@@ -1,0 +1,1 @@
+MCPackage class instanceVariableNames: ''

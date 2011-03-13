@@ -1,6 +1,6 @@
 Object
 	subclass: #TTKernPair
-	instanceVariableNames: 'left right value mask '
+	instanceVariableNames: 'left right value mask'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon-TrueType Fonts'
+	category: 'TrueType-Fonts'

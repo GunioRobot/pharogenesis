@@ -7,5 +7,5 @@ resultType
 			(literal isString) ifTrue: [^#String].
 			(literal isKindOf: Boolean) ifTrue: [^#Boolean]].
 	type == #expression ifTrue: [^#Number].
-	type == #objRef ifTrue: [^#Player].
+	type == #objRef ifTrue: [(actualObject costume renderedMorph isMemberOf: KedamaPatchMorph) ifTrue: [^ #Patch] ifFalse: [^#Player]].
 	^#unknown

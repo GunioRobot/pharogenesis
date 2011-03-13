@@ -1,2 +1,0 @@
-debugShowDamage
-	^ self valueOfFlag: #debugShowDamage

@@ -1,20 +1,41 @@
 renameScript: oldSelector newSelector: newSelector
 	"Rename the given script to have the new selector"
 
-	|  aUserScript aScriptEditor anInstantiation |
+	|  aUserScript anInstantiation aDict |
+	oldSelector = newSelector ifTrue: [^ self].
+
+	oldSelector numArgs == 0
+		ifTrue:
+			[self class allSubInstancesDo:
+				[:aPlayer | | itsCostume |
+					anInstantiation _ aPlayer scriptInstantiationForSelector: oldSelector.
+					anInstantiation ifNotNil: [
+						newSelector numArgs == 0
+							ifTrue:
+								[anInstantiation changeSelectorTo: newSelector].
+						aDict _ aPlayer costume actorState instantiatedUserScriptsDictionary.
+						itsCostume _ aPlayer costume renderedMorph.
+						itsCostume renameScriptActionsFor: aPlayer from: oldSelector to: newSelector.
+						self currentWorld renameScriptActionsFor: aPlayer from: oldSelector to: newSelector.
+						aDict removeKey: oldSelector.
+
+						newSelector numArgs  == 0 ifTrue:
+							[aDict at: newSelector put: anInstantiation.
+							anInstantiation assureEventHandlerRepresentsStatus]]]]
+		ifFalse:
+			[newSelector numArgs == 0 ifTrue:
+				[self class allSubInstancesDo:
+					[:aPlayer |
+						anInstantiation _ aPlayer scriptInstantiationForSelector: newSelector.
+						anInstantiation ifNotNil: [anInstantiation assureEventHandlerRepresentsStatus]]]].
+
 	aUserScript _ self class userScriptForPlayer: self selector: oldSelector.
-	aScriptEditor _ aUserScript instantiatedScriptEditor.
-	aScriptEditor renameScriptTo: newSelector.
-	aUserScript bringUpToDate.
+
+	aUserScript renameScript: newSelector fromPlayer: self.
+		"updates all script editors, and inserts the new script in my scripts directory"
+
 	self class removeScriptNamed: oldSelector.
-	self class atSelector: newSelector putScriptEditor: aScriptEditor.
-	self class allSubInstancesDo:
-		[:aPlayer |
-			anInstantiation _ aPlayer scriptInstantiationForSelector: oldSelector.
-			anInstantiation changeSelectorTo: newSelector.
-			aPlayer costume actorState instantiatedUserScriptsDictionary
-				removeKey: oldSelector;
-				at: newSelector put: anInstantiation.
-			anInstantiation assureEventHandlerRepresentsStatus].
-	
+	((self existingScriptInstantiationForSelector: newSelector) notNil and:
+		[newSelector numArgs > 0]) ifTrue: [self error: 'ouch'].
+		
 	self updateAllViewersAndForceToShow: 'scripts'

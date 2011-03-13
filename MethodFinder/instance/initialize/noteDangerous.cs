@@ -7,7 +7,7 @@ noteDangerous
 		do: [:sel | Dangerous add: sel].
 
 "Object error handling"
-	#(cannotInterpret: caseError confirm: confirm:orCancel: doesNotUnderstand: error: halt halt: notify: notify:at: primitiveFailed shouldNotImplement subclassResponsibility tryToDefineVariableAccess:)
+	#(cannotInterpret: caseError confirm: confirm:orCancel: doesNotUnderstand: error: halt halt: notify: notify:at: primitiveFailed shouldNotImplement subclassResponsibility)
 		do: [:sel | Dangerous add: sel].
 
 "Object user interface"
@@ -55,7 +55,7 @@ noteDangerous
 
 	#(    fileOutPrototype addSpareFields makeFileOutFile )
 		do: [:sel | Dangerous add: sel].
-	#(recompile:from: recompileAllFrom: recompileChanges asPrototypeWithFields: asPrototype addInstanceVarNamed:withValue: addInstanceVariable addClassVarName: removeClassVarName: findOrAddClassVarName: tryToDefineVariableAccess: instanceVariableNames: )
+	#(recompile:from: recompileAllFrom: recompileChanges asPrototypeWithFields: asPrototype addInstanceVarNamed:withValue: addInstanceVariable addClassVarName: removeClassVarName: findOrAddClassVarName: instanceVariableNames: )
 		do: [:sel | Dangerous add: sel].
 
  

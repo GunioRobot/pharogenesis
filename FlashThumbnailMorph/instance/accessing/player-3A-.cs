@@ -1,2 +1,2 @@
 player: aFlashPlayerMorph
-	player _ aFlashPlayerMorph.
+	player := aFlashPlayerMorph.

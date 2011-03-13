@@ -1,5 +1,0 @@
-This class is a shell that includes all the ancillary C code for supporting Squeak in the Macintosh operating environment.  Executing
-
-	InterpreterSupportCode writeMacSourceFiles
-
-will cause the creation of a number of files in your working directory which, together with the one large interpreter file (see CCodeGenerator) should be adequate to compile a complete running interpreter.

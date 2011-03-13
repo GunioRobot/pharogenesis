@@ -1,3 +1,0 @@
-launchCustomPartsBin
-
-	myHand presenter launchCustomPartsBin

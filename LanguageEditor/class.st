@@ -1,0 +1,1 @@
+LanguageEditor class instanceVariableNames: ''

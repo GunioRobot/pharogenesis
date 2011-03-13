@@ -1,2 +1,0 @@
-vrmlProtoCopy
-	^self shallowCopy

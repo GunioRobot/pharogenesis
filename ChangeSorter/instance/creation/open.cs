@@ -3,7 +3,7 @@ open
 	| topView |
 	Smalltalk isMorphic | Sensor leftShiftDown ifTrue: [^ self openAsMorph].
 
-	topView _ StandardSystemView new.
+	topView := StandardSystemView new.
 	topView model: self.
 	myChangeSet ifNil: [self myChangeSet: ChangeSet current]. 
 	topView label: self labelString.

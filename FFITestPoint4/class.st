@@ -1,1 +1,0 @@
-FFITestPoint4 class instanceVariableNames: ''

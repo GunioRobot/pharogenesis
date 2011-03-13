@@ -1,0 +1,1 @@
+TimeStamp class instanceVariableNames: ''

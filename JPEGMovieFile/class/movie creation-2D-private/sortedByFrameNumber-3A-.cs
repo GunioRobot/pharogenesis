@@ -3,10 +3,10 @@ sortedByFrameNumber: fileNames
 
 	| filtered pairs |
 	"select the file names contain at least one digit"
-	filtered _ fileNames select: [:fn | fn anySatisfy: [:c | c isDigit]].
+	filtered := fileNames select: [:fn | fn anySatisfy: [:c | c isDigit]].
 
 	"make array of number, name pairs"
-	pairs _ filtered asArray collect: [:fn |
+	pairs := filtered asArray collect: [:fn |
 		Array with: (self extractFrameNumberFrom: fn) with: fn].
 
 	"sort the pairs, then answer a collection containing the second element of every pair"

@@ -1,6 +1,6 @@
 openMovieFile
 	| fileName |
-	fileName _ Utilities chooseFileWithSuffixFromList: #('.movie')
+	fileName := Utilities chooseFileWithSuffixFromList: #('.movie')
 					withCaption: 'Choose a movie file to open'.
 	fileName ifNotNil:
 		[self openFileNamed: fileName.

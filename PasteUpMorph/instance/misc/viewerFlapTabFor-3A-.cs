@@ -26,4 +26,5 @@ viewerFlapTabFor: anObject
 		ifTrue:	[aFlapTab makeFlapCompact: true].
 	self addMorphFront: aFlapTab.
 	aFlapTab adaptToWorld: self.
+	aFlapTab setProperty: #isEToysFlap toValue: true.
 	^ aFlapTab

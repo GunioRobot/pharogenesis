@@ -1,1 +1,0 @@
-AliceUpdateable class instanceVariableNames: ''

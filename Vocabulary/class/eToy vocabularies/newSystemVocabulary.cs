@@ -2,7 +2,7 @@ newSystemVocabulary
 	"Answer a Vocabulary object representing significant requests one can make to the Smalltalk object"
 
 	| aVocabulary |
-	aVocabulary _ self new.
+	aVocabulary := self new.
 
 	aVocabulary vocabularyName: #System.
 	aVocabulary documentation: 'Useful messages you might want to send to the current Smalltalk image'.

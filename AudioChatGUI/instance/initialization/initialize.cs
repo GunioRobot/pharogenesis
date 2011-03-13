@@ -2,11 +2,11 @@ initialize
 	"initialize the state of the receiver"
 	super initialize.
 	""
-	transmitWhileRecording _ false.
-	handsFreeTalking _ false.
-	mycodec _ GSMCodec new.
-	myrecorder _ ChatNotes new.
-	mytargetip _ ''.
+	transmitWhileRecording := false.
+	handsFreeTalking := false.
+	mycodec := GSMCodec new.
+	myrecorder := ChatNotes new.
+	mytargetip := ''.
 	
 	self start2.
 	self changeTalkButtonLabel

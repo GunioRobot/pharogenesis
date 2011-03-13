@@ -1,2 +1,2 @@
 binary
-	buffer1 _ ByteArray new: 1
+	buffer1 := ByteArray new: 1

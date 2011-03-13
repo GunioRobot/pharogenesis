@@ -1,0 +1,1 @@
+WidgetStub class instanceVariableNames: ''

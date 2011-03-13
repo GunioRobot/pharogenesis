@@ -1,7 +1,7 @@
 refreshView
 	| i |
-	i _ selectionIndex.
+	i := selectionIndex.
 	self calculateKeyArray.
-	selectionIndex _ i.
+	selectionIndex := i.
 	self changed: #fieldList.
 	self changed: #contents.

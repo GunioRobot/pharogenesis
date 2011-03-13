@@ -1,10 +1,10 @@
 calculateWidth
 
 	| min max |
-	min _ SmallInteger maxVal.
-	max _ SmallInteger minVal.
+	min := SmallInteger maxVal.
+	max := SmallInteger minVal.
 	self contours do: [:a | a do: [:p |
-		p x > max ifTrue: [max _ p x].
-		p x < min ifTrue: [min _ p x].
+		p x > max ifTrue: [max := p x].
+		p x < min ifTrue: [min := p x].
 	]].
 	^ max - min.

@@ -1,6 +1,7 @@
 Magnitude
 	subclass: #MessageTally
-	instanceVariableNames: 'class method tally receivers senders time '
-	classVariableNames: 'ObservedProcess Timer '
+	instanceVariableNames:
+		'class method tally receivers senders time gcStats maxClassNameSize maxClassPlusSelectorSize maxTabs'
+	classVariableNames: 'DefaultPollPeriod ObservedProcess Timer'
 	poolDictionaries: ''
-	category: 'Tools-Debugger'
+	category: 'System-Tools'

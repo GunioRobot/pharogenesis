@@ -1,0 +1,1 @@
+UCSTable class instanceVariableNames: ''

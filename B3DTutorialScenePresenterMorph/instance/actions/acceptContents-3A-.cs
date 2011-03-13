@@ -1,3 +1,0 @@
-acceptContents: xx
-
-  ^true

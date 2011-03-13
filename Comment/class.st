@@ -1,1 +1,0 @@
-Comment class instanceVariableNames: ''

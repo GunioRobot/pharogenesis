@@ -1,13 +1,13 @@
 buildMVCNotifierButtonView
 
 	| aView bHeight priorButton buttonView |
-	aView _ View new model: self.
-	bHeight _ self notifierButtonHeight.
+	aView := View new model: self.
+	bHeight := self notifierButtonHeight.
 	aView window: (0@0 extent: 350@bHeight).
-	priorButton _ nil.
+	priorButton := nil.
 	self preDebugButtonQuads do:
 		[:aSpec |
-			buttonView _ PluggableButtonView
+			buttonView := PluggableButtonView
 				on: self
 				getState: nil
 				action: aSpec second.
@@ -21,5 +21,5 @@ buildMVCNotifierButtonView
 					[aView addSubView: buttonView]
 				ifNotNil:
 					[aView addSubView: buttonView toRightOf: priorButton].
-			priorButton _ buttonView].
+			priorButton := buttonView].
 	^ aView

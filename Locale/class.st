@@ -1,0 +1,1 @@
+Locale class instanceVariableNames: ''

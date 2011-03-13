@@ -1,2 +1,0 @@
-caseSensitiveFinds
-	^ self valueOfFlag: #caseSensitiveFinds

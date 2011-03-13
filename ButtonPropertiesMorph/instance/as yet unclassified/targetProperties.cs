@@ -1,3 +1,0 @@
-targetProperties
-
-	^myTarget ensuredButtonProperties

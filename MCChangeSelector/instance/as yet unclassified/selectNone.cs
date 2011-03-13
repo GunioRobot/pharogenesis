@@ -1,3 +1,3 @@
 selectNone
-	kept _ Set new.
+	kept := Set new.
 	self changed: #list

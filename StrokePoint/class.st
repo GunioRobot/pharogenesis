@@ -1,1 +1,0 @@
-StrokePoint class instanceVariableNames: ''

@@ -2,6 +2,6 @@ A resource is a document that is NOT a package. Thus, it is used for all the thi
 
 - A resource keeps no track of version history like packages do with package releases. It only has a field for the current version.
 - A resource can be embedded inside the map instead of being a document reached by a URL.
-- A resource can be associated with another SMObject, the subject.
+- A resource can be associated with another SMObject, the instvar object.
 
 However, resources respond to some of the same actions as PackageReleases.

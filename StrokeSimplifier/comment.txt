@@ -1,1 +1,0 @@
-I represent a very simple algorithm for simplifying an input stroke. See class side for an example.

@@ -4,12 +4,12 @@ initialize
 	""
 	
 	self loopFrames: true.
-	localBounds _ bounds.
-	activationKeys _ #().
-	activeMorphs _ SortedCollection new: 50.
+	localBounds := bounds.
+	activationKeys := #().
+	activeMorphs := SortedCollection new: 50.
 	activeMorphs
 		sortBlock: [:m1 :m2 | m1 depth > m2 depth].
-	progressValue _ ValueHolder new.
+	progressValue := ValueHolder new.
 	progressValue contents: 0.0.
 	self defaultAALevel: 2.
 	self deferred: true

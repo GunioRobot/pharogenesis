@@ -1,2 +1,0 @@
-An IndexFileEntry contains enough information to present a table-of-contents entry for the message and to support simple filtering based on a subset of the mail header information. The IndexFile maps unique message ID's to IndexFileEntries.
-

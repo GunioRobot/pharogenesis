@@ -1,3 +1,0 @@
-printPSToFile
-
-	thePasteUp printer doPages

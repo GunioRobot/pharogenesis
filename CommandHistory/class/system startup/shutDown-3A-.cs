@@ -1,3 +1,4 @@
-shutDown: aboutToQuit
-
-	aboutToQuit ifTrue: [self resetAllHistory].
+shutDown: aboutToQuit 
+	Preferences purgeUndoOnQuit ifTrue: [
+		aboutToQuit ifTrue: [self resetAllHistory].
+	].

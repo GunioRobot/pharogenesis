@@ -3,7 +3,7 @@ next16BitWord: msbFirst from: stream
 	"Assume: Stream has at least two bytes left."
 
 	| n |
-	n _ stream next: 2.
+	n := stream next: 2.
 	^msbFirst
 		ifTrue:[(n at: 1) * 256 + (n at: 2)]
 		ifFalse:[(n at: 2) * 256 + (n at: 1)]

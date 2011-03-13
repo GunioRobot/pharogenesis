@@ -2,7 +2,7 @@ tooDangerousClasses
 	"Return a list of class names which will not be modified in the public interface"
 	^#(
 		"Object will break immediately"
-		Object
+		ProtoObject Object
 		"Contexts and their superclasses"
 		InstructionStream ContextPart BlockContext MethodContext
 		"Superclasses of basic collections"
@@ -12,5 +12,5 @@ tooDangerousClasses
 		"Basic Numbers"
 		Magnitude Number SmallInteger Float
 		"Misc other"
-		LookupKey Association Link Point Rectangle Behavior PositionableStream UndefinedObject
+		LookupKey Association Link Point Rectangle PositionableStream UndefinedObject
 	)

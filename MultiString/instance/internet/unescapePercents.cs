@@ -1,3 +1,0 @@
-unescapePercents
-
-	self flag: #toBeImplemented.

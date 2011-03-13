@@ -1,2 +1,0 @@
-zero
-	^self new

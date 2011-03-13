@@ -1,2 +1,2 @@
 edgeTransform: aTransform
-	edgeTransform _ aTransform.
+	edgeTransform := aTransform.

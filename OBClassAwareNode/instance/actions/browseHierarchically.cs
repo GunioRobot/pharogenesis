@@ -1,0 +1,2 @@
+browseHierarchically
+	OBHierarchyBrowser openOnClass: self theNonMetaClass

@@ -18,9 +18,8 @@ initializePreferencePanel: aPanel in: aPasteUpMorph
 			controlPage := AlignmentMorph newColumn beSticky color: aColor.
 			controlPage on: #mouseDown send: #yourself to: #().
 			controlPage dropEnabled: false.
-			Preferences alternativeWindowLook ifTrue:
-				[cc := Color transparent.
-				controlPage color: cc].
+			cc := Color transparent.
+			controlPage color: cc.
 			controlPage borderColor: aColor;
 				 layoutInset: 4.
 			(prefObjects := self preferenceObjectsInCategory: aCat) do:

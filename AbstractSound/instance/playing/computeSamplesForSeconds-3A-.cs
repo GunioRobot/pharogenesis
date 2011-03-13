@@ -3,6 +3,6 @@ computeSamplesForSeconds: seconds
 
 	| buf |
 	self reset.
-	buf _ SoundBuffer newStereoSampleCount: (self samplingRate * seconds) asInteger.
+	buf := SoundBuffer newStereoSampleCount: (self samplingRate * seconds) asInteger.
 	self playSampleCount: buf stereoSampleCount into: buf startingAt: 1.
 	^ buf

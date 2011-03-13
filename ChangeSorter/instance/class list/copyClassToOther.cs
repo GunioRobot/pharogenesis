@@ -5,8 +5,8 @@ copyClassToOther
 	self checkThatSidesDiffer: [^ self].
 	self okToChange ifFalse: [^ Beeper beep].
 	currentClassName ifNil: [^ Beeper beep].
-	otherSorter _ parent other: self.
-	otherChangeSet _ otherSorter changeSet.
+	otherSorter := parent other: self.
+	otherChangeSet := otherSorter changeSet.
 
 	otherChangeSet absorbClass: self selectedClassOrMetaClass name from: myChangeSet.
 	otherSorter showChangeSet: otherChangeSet.

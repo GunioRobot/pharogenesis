@@ -4,15 +4,15 @@ defineMessage: aString notifying: aController
 	the currently selected message category name. Answer true if 
 	compilation succeeds, false otherwise."
 	| selectedMessageName selector category oldMessageList |
-	selectedMessageName _ self selectedMessageName.
-	oldMessageList _ self messageList.
-	contents _ nil.
-	selector _ self selectedClassOrMetaClass
+	selectedMessageName := self selectedMessageName.
+	oldMessageList := self messageList.
+	contents := nil.
+	selector := self selectedClassOrMetaClass
 				compile: aString
-				classified: (category _ self selectedMessageCategoryName)
+				classified: (category := self selectedMessageCategoryName)
 				notifying: aController.
 	selector == nil ifTrue: [^ false].
-	contents _ aString copy.
+	contents := aString copy.
 	selector ~~ selectedMessageName
 		ifTrue: 
 			[category = ClassOrganizer nullCategory

@@ -1,1 +1,0 @@
-B3DEngineConstants class instanceVariableNames: ''

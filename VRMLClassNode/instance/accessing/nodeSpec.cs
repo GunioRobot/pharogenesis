@@ -1,2 +1,0 @@
-nodeSpec
-	^self class nodeSpec

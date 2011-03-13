@@ -1,6 +1,5 @@
 parameterData
 	"This is a table describing the Klatt parameters. The columns are: parameter name, minimum value, maximum, parameter description, unit."
- 
 	^ #(
 	"Excitation source (voice, aspiration and friction):"
 		(f0 20 1000 'Fundamental frequency (hz)' hz)
@@ -9,9 +8,9 @@ parameterData
 		(shimmer 0 1 'Amount of shimmer' value)
 		(diplophonia 0 1 'Amount of diplophonia' value)
 		(voicing 0 80 'Amplitude of voicing' hz)
-		(ro 0 1 'Relative duration of open phase of voicing waveform = Te/T0 (0 - 1)' value)
-		(ra 0 0.2 'Relative duration of return phase of voicing waveform = Ta/T0 (0 - 1)' value)
-		(rk 0 1 'Simmetry of the glottal pulse = (Te-Tp)/Tp (0 - 1)' value)
+		(ro 0.01 1 'Relative duration of open phase of voicing waveform = Te/T0 (0.01 - 1)' value)
+		(ra 0.01 0.2 'Relative duration of return phase of voicing waveform = Ta/T0 (0.01 - 1)' value)
+		(rk 0.01 1 'Simmetry of the glottal pulse = (Te-Tp)/Tp (0.01 - 1)' value)
 		(aspiration 0 80 'Amplitude of aspiration' dB)
 		(friction 0 80 'Amplitude of friction' dB)
 		(turbulence 0 80 'Amplitude of turbulence (in open glottal phase)' dB)

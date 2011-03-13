@@ -3,14 +3,14 @@ extractFrom: startSecs to: endSecs
 
 	| emptySound first last sampleCount byteStream sndBuf |
 	codec ifNotNil: [^ self error: 'only works on uncompressed sounds'].
-	emptySound _ SampledSound samples: SoundBuffer new samplingRate: streamSamplingRate.
-	first _ (startSecs * streamSamplingRate) truncated max: 0.
-	last _ ((endSecs * streamSamplingRate) truncated min: totalSamples) - 1.
+	emptySound := SampledSound samples: SoundBuffer new samplingRate: streamSamplingRate.
+	first := (startSecs * streamSamplingRate) truncated max: 0.
+	last := ((endSecs * streamSamplingRate) truncated min: totalSamples) - 1.
 	first >= last ifTrue: [^ emptySound].
 	codec ifNotNil: [self error: 'extracting from compressed sounds is not supported'].
-	sampleCount _ last + 1 - first.
+	sampleCount := last + 1 - first.
 	stream position: audioDataStart + (2 * first).
-	byteStream _ ReadStream on: (stream next: 2 * sampleCount).
-	sndBuf _ SoundBuffer newMonoSampleCount: sampleCount.
+	byteStream := ReadStream on: (stream next: 2 * sampleCount).
+	sndBuf := SoundBuffer newMonoSampleCount: sampleCount.
 	1 to: sampleCount do: [:i | sndBuf at: i put: byteStream int16].
 	^ SampledSound samples: sndBuf samplingRate: streamSamplingRate

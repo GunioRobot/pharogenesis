@@ -1,2 +1,0 @@
-animationIndex
-	^index

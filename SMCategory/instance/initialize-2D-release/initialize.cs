@@ -1,4 +1,4 @@
 initialize
 	super initialize.
-	name _ summary _ url _ ''.
-	objects _ OrderedCollection new
+	name := summary := url := ''.
+	objects := OrderedCollection new

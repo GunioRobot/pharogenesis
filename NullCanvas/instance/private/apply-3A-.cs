@@ -1,2 +1,0 @@
-apply: aBlock
-	"do nothing"

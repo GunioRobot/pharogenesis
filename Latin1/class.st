@@ -1,0 +1,1 @@
+Latin1 class instanceVariableNames: 'RightHalfSequence'

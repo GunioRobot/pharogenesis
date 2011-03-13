@@ -1,1 +1,0 @@
-AbsoluteAnimation class instanceVariableNames: ''

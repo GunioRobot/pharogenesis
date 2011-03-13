@@ -1,5 +1,7 @@
 editPreamble
 	"edit the receiver's preamble, in a separate window.  "
-
 	self assurePreambleExists.
-	preamble openLabel: 'Preamble for ChangeSet named ', name
+	UIManager default
+		edit: self preamble 
+		label: 'Preamble for ChangeSet named ', name
+		accept:[:aString| self preamble: aString]

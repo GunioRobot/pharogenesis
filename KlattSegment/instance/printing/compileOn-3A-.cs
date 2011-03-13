@@ -1,5 +1,5 @@
 compileOn: aClass
 	| stream |
-	stream _ WriteStream on: ''.
+	stream := WriteStream on: ''.
 	self methodPrintOn: stream.
 	aClass compile: stream contents classified: 'default segments'

@@ -1,6 +1,6 @@
 Object
 	subclass: #GeePrinter
-	instanceVariableNames: 'pasteUp printSpecs '
+	instanceVariableNames: 'pasteUp printSpecs geeMail computedBounds'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-GeeMail'
+	category: 'MorphicExtras-GeeMail'

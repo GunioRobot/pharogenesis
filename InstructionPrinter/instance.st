@@ -1,6 +1,6 @@
-InstructionStream
+InstructionClient
 	subclass: #InstructionPrinter
-	instanceVariableNames: 'stream oldPC '
+	instanceVariableNames: 'method scanner stream oldPC indent'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Kernel-Methods'

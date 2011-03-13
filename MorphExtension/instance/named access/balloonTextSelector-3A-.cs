@@ -1,2 +1,0 @@
-balloonTextSelector: newValue
-	balloonTextSelector _ newValue

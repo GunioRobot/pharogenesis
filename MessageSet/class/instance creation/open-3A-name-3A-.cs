@@ -4,13 +4,13 @@ open: aMessageSet name: aString
 
 	Smalltalk isMorphic ifTrue: [^ self openAsMorph: aMessageSet name: aString].
 
-	winWidth _ 200.
-	topView _ (StandardSystemView new) model: aMessageSet.
+	winWidth := 200.
+	topView := (StandardSystemView new) model: aMessageSet.
 	topView label: aString.
 	topView minimumSize: winWidth @ 120.
 	topView borderWidth: 1.
 
-	aListView _ PluggableListView on: aMessageSet
+	aListView := PluggableListView on: aMessageSet
 		list: #messageList
 		selected: #messageListIndex
 		changeSelected: #messageListIndex:
@@ -22,25 +22,25 @@ open: aMessageSet name: aString
 
 	aMessageSet  wantsAnnotationPane
 		ifTrue:
-			[aTextView _ PluggableTextView on: aMessageSet 
+			[aTextView := PluggableTextView on: aMessageSet 
 			text: #annotation accept: nil
 			readSelection: nil menu: nil.
 			aTextView window: (0 @ 0 extent: winWidth @ 24).
 			topView addSubView: aTextView below: aListView.
-			underPane _ aTextView.
-			y _ 300 - 24.
+			underPane := aTextView.
+			y := 300 - 24.
 			aTextView askBeforeDiscardingEdits: false]
 		ifFalse:
-			[underPane _ aListView.
-			y _ 300].
+			[underPane := aListView.
+			y := 300].
 
 	aMessageSet wantsOptionalButtons ifTrue:
-		[buttonsView _ aMessageSet buildOptionalButtonsView.
+		[buttonsView := aMessageSet buildOptionalButtonsView.
 		topView addSubView: buttonsView below: underPane.
-		underPane _ buttonsView.
-		y _ y - aMessageSet optionalButtonHeight].
+		underPane := buttonsView.
+		y := y - aMessageSet optionalButtonHeight].
 
-	aBrowserCodeView _ PluggableTextView on: aMessageSet 
+	aBrowserCodeView := PluggableTextView on: aMessageSet 
 			text: #contents accept: #contents:notifying:
 			readSelection: #contentsSelection menu: #codePaneMenu:shifted:.
 	aBrowserCodeView window: (0 @ 0 extent: winWidth @ y).

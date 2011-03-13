@@ -30,14 +30,15 @@ findText: wants
 					^ true]]]
 		ifFalse: [fromHereOn _ here to: pages size].	"do search this page"
 	"other pages"
-	fromHereOn do: [:pageNum |
-		(self findText: wants inStrings: (allText at: pageNum) startAt: 1 container: nil 
-				pageNum: pageNum) 
+	allText ifNotEmpty: [
+		fromHereOn do: [:pageNum |
+			(self findText: wants inStrings: (allText at: pageNum) startAt: 1 container: nil 
+					pageNum: pageNum) 
 					ifTrue: [^ true]].
-	startToHere do: [:pageNum |
-		(self findText: wants inStrings: (allText at: pageNum) startAt: 1 container: nil 
-				pageNum: pageNum) 
-					ifTrue: [^ true]].
+		startToHere do: [:pageNum |
+			(self findText: wants inStrings: (allText at: pageNum) startAt: 1 container: nil 
+					pageNum: pageNum) 
+						ifTrue: [^ true]]].
 	"if fail"
 	self setProperty: #searchContainer toValue: nil.
 	self setProperty: #searchOffset toValue: nil.

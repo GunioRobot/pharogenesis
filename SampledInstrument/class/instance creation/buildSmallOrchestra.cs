@@ -4,7 +4,7 @@ buildSmallOrchestra
 
 	| dir |
 	AbstractSound unloadSampledTimbres.
-	dir _ 'Tosh:Not Backed Up:Sample Library:Orchestra'.
+	dir := 'Tosh:Not Backed Up:Sample Library:Orchestra'.
 	#(clarinet oboe bassoon trombone tympani) do: [:instName |
 		SampledInstrument
 			readSimpleInstrument: instName

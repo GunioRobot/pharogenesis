@@ -1,14 +1,14 @@
 testChange
 	"self debug: #testChange"
 
-	| behavior browser |
+	| behavior model |
 	behavior := Behavior new.
-	behavior superclass: Browser.
-	behavior setFormat: Browser format.
-	browser := Browser new.
-	browser primitiveChangeClassTo: behavior new.
+	behavior superclass: Model.
+	behavior setFormat: Model format.
+	model := Model new.
+	model primitiveChangeClassTo: behavior new.
 	behavior compile: 'thisIsATest  ^ 2'.
-	self assert: browser thisIsATest = 2.
-	self should: [Browser new thisIsATest] raise: MessageNotUnderstood.
+	self assert: model thisIsATest = 2.
+	self should: [Model new thisIsATest] raise: MessageNotUnderstood.
 
 

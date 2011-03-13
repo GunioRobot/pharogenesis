@@ -1,2 +1,2 @@
 rules: aCollection
-	rules _ aCollection
+	rules := aCollection

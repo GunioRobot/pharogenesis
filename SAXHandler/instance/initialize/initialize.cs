@@ -1,2 +1,0 @@
-initialize
-	eod _ false

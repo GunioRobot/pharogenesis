@@ -1,3 +1,3 @@
 initialize
-	fileName _ ''.
-	isCorrupt _ false.
+	fileName := ''.
+	isCorrupt := false.

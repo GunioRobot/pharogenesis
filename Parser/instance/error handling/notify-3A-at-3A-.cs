@@ -3,6 +3,7 @@ notify: string at: location
 		ifTrue: [(encoder == self or: [encoder isNil]) ifTrue: [^ self fail  "failure setting up syntax error"].
 				SyntaxErrorNotification
 					inClass: encoder classEncoding
+					category: encoder classEncoding category
 					withCode: 
 						(source contents
 							copyReplaceFrom: location

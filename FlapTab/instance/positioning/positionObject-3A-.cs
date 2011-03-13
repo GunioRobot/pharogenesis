@@ -5,6 +5,9 @@ positionObject: anObject
 
 	"19 sept 2000 - going for all paste ups"
 
+	| pum |
+	pum _ self pasteUpMorph ifNil: [^ self].
+
 	^self 
 		positionObject: anObject 
-		atEdgeOf: (self pasteUpMorph ifNil: [^ self])
+		atEdgeOf: pum clearArea

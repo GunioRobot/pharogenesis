@@ -1,3 +1,3 @@
 initialize
 	super initialize.
-	ancestry _ MCWorkingAncestry new
+	ancestry := MCWorkingAncestry new

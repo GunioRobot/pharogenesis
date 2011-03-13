@@ -1,2 +1,0 @@
-ImageBuilder new do
-

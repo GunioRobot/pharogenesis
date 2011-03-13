@@ -2,7 +2,7 @@ initialize
 	"
 	PhonemeSet initialize
 	"
-	arpabet _ self new name: 'ARPAbet'; description: 'This is the ARPAbet phonetic alphabet.'.
+	arpabet := self new name: 'ARPAbet'; description: 'This is the ARPAbet phonetic alphabet.'.
 	#("Name"	"Example"	"Features"
 		('iy'	'heed'		#(continuant vowel front))
 		('ih'	'hid'		#(continuant vowel front))

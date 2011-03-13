@@ -1,3 +1,0 @@
-timeDisplay
-
-	^ timeDisplay

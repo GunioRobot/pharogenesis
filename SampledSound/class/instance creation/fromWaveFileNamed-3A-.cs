@@ -5,7 +5,7 @@ fromWaveFileNamed: fileName
 	fd fileNames do: [:n |
 		(n asLowercase endsWith: '.wav')
 			ifTrue: [
-				snd _ SampledSound fromWaveFileNamed: (fd pathName,n).
+				snd := SampledSound fromWaveFileNamed: (fd pathName,n).
 				snd play.
 				SoundPlayer waitUntilDonePlaying: snd]]."
 

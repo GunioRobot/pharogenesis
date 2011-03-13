@@ -1,4 +1,4 @@
-ClassOrganizer
+Categorizer
 	subclass: #SystemOrganizer
 	instanceVariableNames: ''
 	classVariableNames: ''

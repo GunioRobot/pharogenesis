@@ -1,6 +1,0 @@
-makePickGameButton
-	^ self
-		buildButton: SimpleButtonMorph new
-		target: self
-		label: 'Pick game' translated
-		selector: #pickGame

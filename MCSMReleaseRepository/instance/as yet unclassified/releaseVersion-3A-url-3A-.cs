@@ -1,6 +1,6 @@
 releaseVersion: aVersion url: urlString
 	| result |
-	result _ HTTPSocket
+	result := HTTPSocket
 		httpPost: self squeakMapUrl, '/packagebyname/', packageName, '/newrelease'
 		args: {'version' -> {(aVersion info name copyAfter: $.) extractNumber asString}.
 			   'note' -> {aVersion info message}.

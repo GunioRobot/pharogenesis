@@ -3,4 +3,4 @@ Halt
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Exceptions Extensions'
+	category: 'Exceptions-Extensions'

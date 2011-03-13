@@ -4,7 +4,7 @@ discardReceivedData
 	| buf totalBytesDiscarded |
 	buf _ String new: 10000.
 	totalBytesDiscarded _ 0.
-	[self isConnected and: [self dataAvailable]] whileTrue: [
+	[self isConnected] whileTrue: [
 		totalBytesDiscarded _
 			totalBytesDiscarded + (self receiveDataInto: buf)].
 	^ totalBytesDiscarded

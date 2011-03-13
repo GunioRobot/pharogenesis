@@ -1,0 +1,1 @@
+BrowserProvider class instanceVariableNames: ''

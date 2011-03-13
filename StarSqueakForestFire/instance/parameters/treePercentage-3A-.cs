@@ -1,3 +1,3 @@
 treePercentage: aNumber
 
-	treePercentage _ aNumber.
+	treePercentage := aNumber.

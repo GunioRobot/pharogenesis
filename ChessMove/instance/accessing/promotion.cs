@@ -1,2 +1,0 @@
-promotion
-	^type bitShift: ExtractPromotionShift

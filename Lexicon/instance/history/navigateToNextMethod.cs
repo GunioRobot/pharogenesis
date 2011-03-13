@@ -3,7 +3,7 @@ navigateToNextMethod
 
 	| anIndex aSelector |
 	self selectorsVisited size == 0 ifTrue: [^ self].
-	anIndex _ (aSelector _ self selectedMessageName) notNil ifTrue: [selectorsVisited indexOf: aSelector ifAbsent: [selectorsVisited size]] ifFalse: [1].
+	anIndex := (aSelector := self selectedMessageName) notNil ifTrue: [selectorsVisited indexOf: aSelector ifAbsent: [selectorsVisited size]] ifFalse: [1].
 	self selectedCategoryName == self class viewedCategoryName 
 		ifTrue:
 			[self selectWithinCurrentCategory: (selectorsVisited atWrap: (anIndex + 1))]

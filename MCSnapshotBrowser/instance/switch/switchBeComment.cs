@@ -1,3 +1,3 @@
 switchBeComment
-	switch _ #comment.
+	switch := #comment.
 	self signalSwitchChanged.

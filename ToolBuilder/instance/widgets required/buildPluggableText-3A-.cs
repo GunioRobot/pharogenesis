@@ -1,0 +1,2 @@
+buildPluggableText: aSpec
+	^self subclassResponsibility

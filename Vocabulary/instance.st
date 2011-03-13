@@ -1,6 +1,6 @@
 ObjectWithDocumentation
 	subclass: #Vocabulary
-	instanceVariableNames: 'vocabularyName categories methodInterfaces '
-	classVariableNames: 'AllMethodInterfaces AllVocabularies '
+	instanceVariableNames: 'vocabularyName categories methodInterfaces object limitClass translationTable'
+	classVariableNames: 'AllStandardVocabularies LanguageSymbols LanguageTable'
 	poolDictionaries: ''
-	category: 'System-Protocols'
+	category: 'Protocols-Kernel'

@@ -1,0 +1,1 @@
+OBTextMorphEditor overrides the TextMorphEditors handling of command keys, passing them along to its model for processing, rather than hard-coding their implementations.

@@ -2,4 +2,4 @@ maybeDuplicateMorph
 	"Maybe duplicate the morph"
 
 	self okayToDuplicate ifTrue:
-		[self duplicate openInHand]
+		[self topRendererOrSelf duplicate openInHand]

@@ -3,7 +3,7 @@ processListMenu: menu
 
 	selectedProcess
 		ifNotNil: [| nameAndRules | 
-			nameAndRules _ self nameAndRulesForSelectedProcess.
+			nameAndRules := self nameAndRulesForSelectedProcess.
 			menu addList: {{'inspect (i)'. #inspectProcess}. {'explore (I)'. #exploreProcess}. {'inspect Pointers (P)'. #inspectPointers}}.
 	(Smalltalk includesKey: #PointerFinder)
 		ifTrue: [ menu add: 'chase pointers (c)' action: #chasePointers.  ].
@@ -30,7 +30,7 @@ processListMenu: menu
 		action: #toggleAutoUpdate.
 	menu add: 'update list (u)' action: #updateProcessList.
 
-	pw _ Smalltalk at: #CPUWatcher ifAbsent: [].
+	pw := Smalltalk at: #CPUWatcher ifAbsent: [].
 	pw ifNotNil: [
 		menu addLine.
 		pw isMonitoring

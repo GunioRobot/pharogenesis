@@ -3,7 +3,7 @@ drawGeneralBezierShape: contours fill: fillStyle borderWidth: borderWidth border
 	| fills |
 	self edgeTransform: aTransform.
 	self resetIfNeeded.
-	fills _ self registerFill: fillStyle and: borderFill.
+	fills := self registerFill: fillStyle and: borderFill.
 	contours do:[:points|
 		self primAddBezierShape: points
 			segments: (points size // 3)

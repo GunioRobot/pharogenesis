@@ -1,3 +1,0 @@
-stSize
-
-	^self size

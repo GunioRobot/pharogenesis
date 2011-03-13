@@ -1,6 +1,6 @@
 PopUpMenu
 	subclass: #SelectionMenu
-	instanceVariableNames: 'selections '
+	instanceVariableNames: 'selections'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Tools-Menus'
+	category: 'ST80-Menus'

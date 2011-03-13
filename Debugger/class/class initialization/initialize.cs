@@ -1,6 +1,6 @@
 initialize
-	ErrorRecursion _ false.
-	ContextStackKeystrokes _ Dictionary new
+	ErrorRecursion := false.
+	ContextStackKeystrokes := Dictionary new
 		at: $e put: #send;
 		at: $t put: #doStep;
 		at: $T put: #stepIntoBlock;

@@ -3,5 +3,5 @@ bufferCount
 
 	| n |
 	mutex ifNil: [^ 0].  "not recording"
-	mutex critical: [n _ recordedBuffers size].
+	mutex critical: [n := recordedBuffers size].
 	^ n

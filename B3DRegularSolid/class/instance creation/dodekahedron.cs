@@ -1,3 +1,0 @@
-dodekahedron
-
-  ^self new createDodekahedron

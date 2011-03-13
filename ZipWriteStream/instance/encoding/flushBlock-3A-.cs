@@ -4,24 +4,24 @@ flushBlock: lastBlock
 	storedLength fixedLength dynamicLength 
 	blTree lTree dTree blBits blFreq |
 
-	lastFlag _ lastBlock ifTrue:[1] ifFalse:[0].
+	lastFlag := lastBlock ifTrue:[1] ifFalse:[0].
 
 	"Compute the literal/length and distance tree"
-	lTree _ ZipEncoderTree buildTreeFrom: literalFreq maxDepth: MaxBits.
-	dTree _ ZipEncoderTree buildTreeFrom: distanceFreq maxDepth: MaxBits.
+	lTree := ZipEncoderTree buildTreeFrom: literalFreq maxDepth: MaxBits.
+	dTree := ZipEncoderTree buildTreeFrom: distanceFreq maxDepth: MaxBits.
 
 	"Compute the bit length tree"
-	blBits _ lTree bitLengths, dTree bitLengths.
-	blFreq _ WordArray new: MaxBitLengthCodes.
+	blBits := lTree bitLengths, dTree bitLengths.
+	blFreq := WordArray new: MaxBitLengthCodes.
 	self scanBitLengths: blBits into: blFreq.
-	blTree _ ZipEncoderTree buildTreeFrom: blFreq maxDepth: MaxBitLengthBits.
+	blTree := ZipEncoderTree buildTreeFrom: blFreq maxDepth: MaxBitLengthBits.
 
 	"Compute the bit length for the current block.
 	Note: Most of this could be computed on the fly but it's getting
 	really ugly in this case so we do it afterwards."
-	storedLength _ self storedBlockSize.
-	fixedLength _ self fixedBlockSizeFor: lTree and: dTree.
-	dynamicLength _ self dynamicBlockSizeFor: lTree and: dTree 
+	storedLength := self storedBlockSize.
+	fixedLength := self fixedBlockSizeFor: lTree and: dTree.
+	dynamicLength := self dynamicBlockSizeFor: lTree and: dTree 
 							using: blTree and: blFreq.
 	VerboseLevel > 1 ifTrue:[
 		Transcript cr; show:'Block sizes (S/F/D):';
@@ -30,33 +30,33 @@ flushBlock: lastBlock
 			nextPut:$/; print: dynamicLength // 8; space; endEntry].
 
 	"Check which method to use"
-	method _ self forcedMethod.
+	method := self forcedMethod.
 	method == nil ifTrue:[
-		method _ (storedLength < fixedLength and:[storedLength < dynamicLength]) 
+		method := (storedLength < fixedLength and:[storedLength < dynamicLength]) 
 			ifTrue:[#stored]
 			ifFalse:[fixedLength < dynamicLength ifTrue:[#fixed] ifFalse:[#dynamic]]].
 	(method == #stored and:[blockStart < 0]) ifTrue:[
 		"Cannot use #stored if the block is not available"
-		method _ fixedLength < dynamicLength ifTrue:[#fixed] ifFalse:[#dynamic]].
+		method := fixedLength < dynamicLength ifTrue:[#fixed] ifFalse:[#dynamic]].
 
-	bitsSent _ encoder bitPosition. "# of bits sent before this block"
-	bitsRequired _ nil.
+	bitsSent := encoder bitPosition. "# of bits sent before this block"
+	bitsRequired := nil.
 
 	(method == #stored) ifTrue:[
 		VerboseLevel > 0 ifTrue:[Transcript show:'S'].
-		bitsRequired _ storedLength.
+		bitsRequired := storedLength.
 		encoder nextBits: 3 put: StoredBlock << 1 + lastFlag.
 		self sendStoredBlock].
 
 	(method == #fixed) ifTrue:[
 		VerboseLevel > 0 ifTrue:[Transcript show:'F'].
-		bitsRequired _ fixedLength.
+		bitsRequired := fixedLength.
 		encoder nextBits: 3 put: FixedBlock << 1 + lastFlag.
 		self sendFixedBlock].
 
 	(method == #dynamic) ifTrue:[
 		VerboseLevel > 0 ifTrue:[Transcript show:'D'].
-		bitsRequired _ dynamicLength.
+		bitsRequired := dynamicLength.
 		encoder nextBits: 3 put: DynamicBlock << 1 + lastFlag.
 		self sendDynamicBlock: blTree 
 			literalTree: lTree 

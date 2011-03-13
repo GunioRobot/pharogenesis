@@ -1,5 +1,4 @@
 startDay
 
-	^ StartDay
-ifNil: [ StartDay
+	^ StartDay ifNil: [ StartDay
  _ DayNames first ]

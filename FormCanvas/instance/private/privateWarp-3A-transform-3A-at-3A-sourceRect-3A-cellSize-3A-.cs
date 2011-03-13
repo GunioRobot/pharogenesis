@@ -7,7 +7,7 @@ privateWarp: aForm transform: aTransform at: extraOffset sourceRect: sourceRect 
 	extraOffset ifNotNil:[globalRect _ globalRect translateBy: extraOffset].
      warp _ (WarpBlt current toForm: port destForm)
                 combinationRule: Form paint;
-                sourceQuad: sourceQuad destRect: globalRect;
+                sourceQuad: sourceQuad destRect: (globalRect origin corner: globalRect corner+(1@1));
                 clipRect: port clipRect.
 	warp cellSize: cellSize.
 	warp sourceForm: aForm.

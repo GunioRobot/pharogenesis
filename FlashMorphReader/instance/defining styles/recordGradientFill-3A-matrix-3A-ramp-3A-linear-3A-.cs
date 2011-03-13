@@ -1,10 +1,10 @@
 recordGradientFill: fillIndex matrix: gradientMatrix ramp: colorRampArray linear: aBoolean
 	| fillStyle ramp origin direction normal |
-	ramp _ colorRampArray collect:[:assoc| (assoc key / 255.0) -> assoc value].
-	origin _ gradientMatrix localPointToGlobal: (aBoolean ifFalse:[0@0] ifTrue:[-16384@0]).
-	direction _ (gradientMatrix localPointToGlobal: (16384@0)) - origin.
-	normal _ (gradientMatrix localPointToGlobal: (0@16384)) - origin.
-	fillStyle _ GradientFillStyle ramp: ramp.
+	ramp := colorRampArray collect:[:assoc| (assoc key / 255.0) -> assoc value].
+	origin := gradientMatrix localPointToGlobal: (aBoolean ifFalse:[0@0] ifTrue:[-16384@0]).
+	direction := (gradientMatrix localPointToGlobal: (16384@0)) - origin.
+	normal := (gradientMatrix localPointToGlobal: (0@16384)) - origin.
+	fillStyle := GradientFillStyle ramp: ramp.
 	fillStyle origin: origin.
 	fillStyle direction: direction.
 	fillStyle normal: normal.

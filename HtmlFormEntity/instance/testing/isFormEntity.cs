@@ -1,2 +1,0 @@
-isFormEntity
-	^true

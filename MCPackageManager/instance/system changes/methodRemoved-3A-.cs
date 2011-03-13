@@ -1,2 +1,2 @@
 methodRemoved: anEvent
-	self methodModified: anEvent
+	"obsolete - remove this later"

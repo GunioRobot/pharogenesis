@@ -1,2 +1,0 @@
-lastExportedFillGet
-	^workBuffer at: GWLastExportedFill

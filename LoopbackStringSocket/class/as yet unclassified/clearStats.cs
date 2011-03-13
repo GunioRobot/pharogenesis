@@ -1,3 +1,3 @@
 clearStats
 
-	WRITESTRINGSIZES _ nil
+	WRITESTRINGSIZES := nil

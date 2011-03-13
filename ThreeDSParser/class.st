@@ -1,1 +1,0 @@
-ThreeDSParser class instanceVariableNames: ''

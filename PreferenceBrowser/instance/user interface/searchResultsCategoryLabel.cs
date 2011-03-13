@@ -1,0 +1,2 @@
+searchResultsCategoryLabel
+	^'-- search results --' translated

@@ -1,2 +1,0 @@
-isAccelerated
-	^true

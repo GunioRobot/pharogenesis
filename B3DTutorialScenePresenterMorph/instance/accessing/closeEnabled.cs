@@ -1,3 +1,0 @@
-closeEnabled
-
-  ^true

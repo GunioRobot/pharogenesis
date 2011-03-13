@@ -4,7 +4,7 @@ copyName
 	| sel |
 	self selectionIndex <= (2 + object class instSize)
 		ifTrue: [super copyName]
-		ifFalse: [sel _ '(self array at: '
+		ifFalse: [sel := '(self array at: '
 						, (String streamContents: 
 							[:strm | self arrayIndexForSelection storeOn: strm]) , ')'.
 			Clipboard clipboardText: sel asText]

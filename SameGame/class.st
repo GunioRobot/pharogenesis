@@ -1,1 +1,0 @@
-SameGame class instanceVariableNames: ''

@@ -2,7 +2,7 @@ chooseLimitClass
 	"Put up a menu allowing the user to choose the most generic class to show"
 
 	| aMenu |
-	aMenu _ MenuMorph new defaultTarget: self.
+	aMenu := MenuMorph new defaultTarget: self.
 	targetClass withAllSuperclasses do:
 		[:aClass | 
 			aClass == ProtoObject

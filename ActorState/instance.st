@@ -1,6 +1,7 @@
 Object
 	subclass: #ActorState
-	instanceVariableNames: 'owningPlayer penDown penSize penColor fractionalPosition instantiatedUserScriptsDictionary '
+	instanceVariableNames:
+		'owningPlayer penDown penSize penColor fractionalPosition instantiatedUserScriptsDictionary penArrowheads trailStyle'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Scripting Support'
+	category: 'EToys-Scripting Support'

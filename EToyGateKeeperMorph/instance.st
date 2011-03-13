@@ -1,6 +1,6 @@
 EToyCommunicatorMorph
 	subclass: #EToyGateKeeperMorph
-	instanceVariableNames: 'counter '
-	classVariableNames: 'KnownIPAddresses UpdateCounter '
+	instanceVariableNames: 'counter'
+	classVariableNames: 'KnownIPAddresses UpdateCounter'
 	poolDictionaries: ''
-	category: 'Morphic-Experimental'
+	category: 'Nebraska-Morphic-Experimental'

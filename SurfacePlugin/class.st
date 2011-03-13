@@ -1,1 +1,0 @@
-SurfacePlugin class instanceVariableNames: ''

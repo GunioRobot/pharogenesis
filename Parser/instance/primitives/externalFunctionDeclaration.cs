@@ -2,9 +2,9 @@ externalFunctionDeclaration
 	"Parse the function declaration for a call to an external library."
 	| descriptorClass callType retType externalName args argType module fn |
 	descriptorClass _ Smalltalk at: #ExternalFunction ifAbsent:[nil].
-	descriptorClass == nil ifTrue:[^0].
+	descriptorClass == nil ifTrue:[^false].
 	callType _ descriptorClass callingConventionFor: here.
-	callType == nil ifTrue:[^0].
+	callType == nil ifTrue:[^false].
 	"Parse return type"
 	self advance.
 	retType _ self externalType: descriptorClass.
@@ -16,7 +16,7 @@ externalFunctionDeclaration
 		ifFalse:[(self match:#number) ifFalse:[^self expected:'function name or index']].
 	(self matchToken:'(' asSymbol) ifFalse:[^self expected:'argument list'].
 	args _ WriteStream on: Array new.
-	[here == #')'] whileFalse:[
+	[here == ')' asSymbol] whileFalse:[
 		argType _ self externalType: descriptorClass.
 		argType == nil ifTrue:[^self expected:'argument'].
 		argType isVoid & argType isPointerType not ifFalse:[args nextPut: argType].
@@ -34,4 +34,5 @@ externalFunctionDeclaration
 				argumentTypes: args contents.
 		self allocateLiteral: fn.
 	].
-	^120
+	self addPragma: (Pragma keyword: #primitive: arguments: #(120)).
+	^true

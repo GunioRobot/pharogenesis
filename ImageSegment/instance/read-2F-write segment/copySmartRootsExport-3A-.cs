@@ -4,7 +4,7 @@ copySmartRootsExport: rootArray
 	Smalltalk forgetDoIts.
 
 	"self halt."
-	symbolHolder _ Symbol allSymbols.	"Hold onto Symbols with strong pointers, 
+	symbolHolder _ Symbol allInstances.	"Hold onto Symbols with strong pointers, 
 		so they will be in outPointers"
 
 	dummy _ ReferenceStream on: (DummyStream on: nil).
@@ -33,15 +33,15 @@ copySmartRootsExport: rootArray
 	"since the caller switched ActiveWorld, put the real one back temporarily"
 	naughtyBlocks isEmpty ifFalse: [
 		World becomeActiveDuring: [
-			goodToGo _ PopUpMenu
-				confirm: 
+			goodToGo _ UIManager default
+					chooseFrom: #('keep going' 'stop and take a look') 
+					title: 
 'Some block(s) which reference instance variables 
 are included in this segment. These may fail when
 the segment is loaded if the class has been reshaped.
 What would you like to do?' 
-				trueChoice: 'keep going' 
-				falseChoice: 'stop and take a look'.
-			goodToGo ifFalse: [
+.
+			(goodToGo = 1) ifFalse: [
 				naughtyBlocks inspect.
 				self error: 'Here are the bad blocks'].
 		].

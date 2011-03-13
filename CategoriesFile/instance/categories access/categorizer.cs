@@ -1,2 +1,0 @@
-categorizer
-	^ categorizer

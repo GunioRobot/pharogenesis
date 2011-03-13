@@ -1,3 +1,0 @@
-runCount: aSmallInteger
-
-	runCount := aSmallInteger.

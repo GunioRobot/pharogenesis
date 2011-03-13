@@ -5,7 +5,7 @@ allMethodsNoDoitsSelect: aBlock
 	Cursor execute
 		showWhile: [self
 				allBehaviorsDo: [:class | class
-						selectorsDo: [:sel | (sel ~~ #DoIt
+						selectorsDo: [:sel | (sel isDoIt not
 									and: [aBlock
 											value: (class compiledMethodAt: sel)])
 								ifTrue: [aCollection

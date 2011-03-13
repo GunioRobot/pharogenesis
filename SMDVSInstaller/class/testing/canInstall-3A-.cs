@@ -6,9 +6,9 @@ canInstall: aPackage
 
 	| fileName |
 	Smalltalk at: #StreamPackageLoader ifPresentAndInMemory: [ :loader |
-		fileName _ aPackage downloadFileName.
+		fileName := aPackage downloadFileName.
 		fileName ifNil: [^false].
-		fileName _ fileName asLowercase.
+		fileName := fileName asLowercase.
 		^((fileName endsWith: '.st') or: [fileName endsWith: '.st.gz'])
 			and: [aPackage categories includes: "The DVS format category"
 					(SMSqueakMap default

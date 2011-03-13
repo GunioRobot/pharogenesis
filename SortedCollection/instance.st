@@ -1,6 +1,6 @@
 OrderedCollection
 	subclass: #SortedCollection
-	instanceVariableNames: 'sortBlock '
+	instanceVariableNames: 'sortBlock'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Collections-Sequenceable'

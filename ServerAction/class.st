@@ -1,1 +1,0 @@
-ServerAction class instanceVariableNames: ''

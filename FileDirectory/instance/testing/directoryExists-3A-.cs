@@ -5,10 +5,10 @@ directoryExists: filenameOrPath
 	| fName dir |
 	DirectoryClass splitName: filenameOrPath to:
 		[:filePath :name |
-			fName _ name.
+			fName := name.
 			filePath isEmpty
-				ifTrue: [dir _ self]
-				ifFalse: [dir _ self directoryNamed: filePath]].
+				ifTrue: [dir := self]
+				ifFalse: [dir := self directoryNamed: filePath]].
 
 	^dir exists and: [
 		self isCaseSensitive 

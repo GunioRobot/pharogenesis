@@ -3,14 +3,14 @@ sendDataCautiously: aStringOrByteArray
 
 	| bytesSent bytesToSend count |
 
-	bytesToSend _ aStringOrByteArray size.
-	bytesSent _ 0.
+	bytesToSend := aStringOrByteArray size.
+	bytesSent := 0.
 	[bytesSent < bytesToSend] whileTrue: [
-		count _ socket 
+		count := socket 
 			sendSomeData: aStringOrByteArray 
 			startIndex: bytesSent + 1  
 			count: (bytesToSend - bytesSent min: 4000).
-		bytesSent _ bytesSent + count.
+		bytesSent := bytesSent + count.
 		communicatorMorph commResult: {#commFlash -> true}.
 		(Delay forMilliseconds: 10) wait.
 	].

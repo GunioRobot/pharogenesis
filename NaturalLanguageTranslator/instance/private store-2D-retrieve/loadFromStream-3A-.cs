@@ -6,5 +6,5 @@ loadFromStream: stream
 				= header.
 	stream reset.
 	isFileIn
-		ifTrue: [stream fileInAnnouncing: 'Loading ' , stream localName]
+		ifTrue: [stream fileInAnnouncing: 'Loading ' translated, stream localName]
 		ifFalse: [self loadFromRefStream: stream]

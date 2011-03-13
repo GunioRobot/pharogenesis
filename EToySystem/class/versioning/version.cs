@@ -1,4 +1,0 @@
-version
-	"EToySystem version"
-
-	^ EToyVersion

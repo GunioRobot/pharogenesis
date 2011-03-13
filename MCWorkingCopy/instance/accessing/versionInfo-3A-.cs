@@ -1,2 +1,2 @@
 versionInfo: aVersionInfo
-	ancestry _ MCWorkingAncestry new addAncestor: aVersionInfo
+	ancestry := MCWorkingAncestry new addAncestor: aVersionInfo

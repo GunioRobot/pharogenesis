@@ -9,10 +9,14 @@ addAndEnableEToyFlaps
 	aSuppliesFlap _ self newSuppliesFlapFromQuads: self quadsDefiningPlugInSuppliesFlap positioning: #right.
 	aSuppliesFlap referent setNameTo: 'Supplies Flap' translated.  "Per request from Kim Rose, 7/19/02"
 	SharedFlapTabs add: aSuppliesFlap.  "The #center designation doesn't quite work at the moment"
-	SharedFlapTabs add: self newNavigatorFlap.
+
+	Preferences showProjectNavigator
+		ifTrue:[ SharedFlapTabs add: self newNavigatorFlap ].
 
 	self enableGlobalFlapWithID: 'Supplies' translated.
-	self enableGlobalFlapWithID: 'Navigator' translated.
+
+	Preferences showProjectNavigator
+		ifTrue:[ self enableGlobalFlapWithID: 'Navigator' translated ].
 
 	SharedFlapsAllowed _ true.
 	Project current flapsSuppressed: false.

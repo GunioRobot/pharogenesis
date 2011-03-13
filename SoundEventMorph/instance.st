@@ -1,6 +1,6 @@
 AbstractMediaEventMorph
 	subclass: #SoundEventMorph
-	instanceVariableNames: 'sound '
+	instanceVariableNames: 'sound'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Demo'
+	category: 'MorphicExtras-SoundInterface'

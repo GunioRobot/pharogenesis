@@ -1,3 +1,0 @@
-asHtml
-
-	self flag: #toBeImplemented.

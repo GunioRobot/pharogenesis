@@ -8,9 +8,9 @@ initialize
 	  hResizing: #spaceFill;
 	  vResizing: #spaceFill;
 	  layoutInset: 3.
-	midiPortNumber _ nil.
-	midiSynth _ MIDISynth new.
-	instrumentSelector _ Array new: 16.
+	midiPortNumber := nil.
+	midiSynth := MIDISynth new.
+	instrumentSelector := Array new: 16.
 	self removeAllMorphs.
 	self addMorphBack: self makeControls.
 	self addMorphBack: (AlignmentMorph newColumn color: color;

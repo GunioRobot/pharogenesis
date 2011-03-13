@@ -7,10 +7,10 @@ fullNameFor: fileName
 	fileName isEmptyOrNil ifTrue: [^ fileName].
 	DirectoryClass splitName: fileName to:
 		[:filePath :localName |
-			correctedLocalName _ localName isEmpty 
+			correctedLocalName := localName isEmpty 
 				ifFalse: [self checkName: localName fixErrors: true]
 				ifTrue: [localName].
-			prefix _ (DirectoryClass isAbsolute: fileName)
+			prefix := (DirectoryClass isAbsolute: fileName)
 						ifTrue: [filePath]
 						ifFalse: [self fullPathFor: filePath]].
 	prefix isEmpty

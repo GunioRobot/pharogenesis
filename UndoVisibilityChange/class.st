@@ -1,1 +1,0 @@
-UndoVisibilityChange class instanceVariableNames: ''

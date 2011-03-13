@@ -1,5 +1,6 @@
 testEndsWith
 	"We can't test SequenceableCollection directly. However, we can test a sampling of its descendants."
+
 	| la oc suffix |
 	la := #(1 2 3 4 5 6).
 	oc := OrderedCollection new.

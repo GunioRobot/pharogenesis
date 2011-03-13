@@ -4,13 +4,13 @@ morphicViewImageViewer
 
 	dir _ FileDirectory default.
 	aFileList _ self new directory: dir.
-	aFileList optionalButtonSpecs: self specsForImageViewer.
+	aFileList optionalButtonSpecs: aFileList specsForImageViewer.
 	aFileList fileSelectionBlock: [ :entry :myPattern |
 		entry isDirectory ifTrue: [
 			false
 		] ifFalse: [
-			#('bmp' 'gif' 'jpg' 'form' suffix = 'png') includes: 
-					(aFileList getSuffix: entry name asLowercase)
+			#('bmp' 'gif' 'jpg' 'form' 'png') includes: 
+					 (FileDirectory extensionFor: entry name asLowercase)
 		]
 	] fixTemps.
 	window _ (SystemWindow labelled: dir pathName) model: aFileList.

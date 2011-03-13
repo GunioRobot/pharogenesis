@@ -3,4 +3,4 @@ ByteEncoder
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Postscript Filters'
+	category: 'MorphicExtras-Postscript Filters'

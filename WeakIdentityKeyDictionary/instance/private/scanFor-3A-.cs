@@ -6,7 +6,7 @@ scanFor: anObject
 	finish > 4096
 		ifTrue: [hash _ anObject identityHash * (finish // 4096)]
 		ifFalse: [hash _ anObject identityHash].
-	start _ (hash \\ array size) + 1.
+	start _ (hash \\ finish) + 1.
 
 	"Search from (hash mod size) to the end."
 	start to: finish do:

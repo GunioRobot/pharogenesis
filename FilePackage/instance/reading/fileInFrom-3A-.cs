@@ -1,7 +1,6 @@
 fileInFrom: aStream
 	| chgRec changes |
-	changes := (ChangeList new scanFile: aStream from: 0
-to: aStream size) changeList.
+	changes := ChangeSet scanFile: aStream from: 0 to: aStream size.
 	aStream close.
 	('Processing ', self packageName) 
 		displayProgressAt: Sensor cursorPoint

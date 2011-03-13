@@ -7,7 +7,7 @@ lineCorrespondingToIndex: anIndex
 	1 to: self size do:
 		[:i | 
 			aChar _ self at: i.
-			aChar == cr
+			aChar = cr
 				ifTrue:
 					[i > anIndex
 						ifTrue:

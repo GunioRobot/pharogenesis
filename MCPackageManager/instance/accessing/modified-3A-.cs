@@ -1,6 +1,6 @@
 modified: aBoolean
      modified = aBoolean ifTrue: [^ self].
-	modified _ aBoolean.
+	modified := aBoolean.
 	self changed: #modified.
 	
 	modified ifFalse:

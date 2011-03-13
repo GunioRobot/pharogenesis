@@ -5,9 +5,9 @@ open: aSyntaxError
 	Smalltalk isMorphic
 		ifTrue:
 			[self buildMorphicViewOn: aSyntaxError.
-			CurrentProjectRefactoring newProcessIfUI: Processor activeProcess.
+			Project spawnNewProcessIfThisIsUI: Processor activeProcess.
 			^ Processor activeProcess suspend].
-	topView _ self buildMVCViewOn: aSyntaxError.
+	topView := self buildMVCViewOn: aSyntaxError.
 	topView controller openNoTerminateDisplayAt: Display extent // 2.
 	Cursor normal show.
 	Processor activeProcess suspend.

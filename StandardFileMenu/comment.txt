@@ -9,3 +9,7 @@ Try for example, the following:
 	StandardFileMenu newFile inspect
 
 	StandardFileMenu newFileStream inspect
+	
+	(StandardFileMenu oldFileMenu: FileDirectory default withPattern: '*') startUpWithCaption: 'Select a file:'
+	
+	(StandardFileMenu oldFileMenu: (FileDirectory default) withPatternList: {'*.txt'. '*.changes'}) startUpWithCaption: 'Select a file:'

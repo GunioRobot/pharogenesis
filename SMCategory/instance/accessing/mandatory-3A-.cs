@@ -1,2 +1,2 @@
 mandatory: aSet
-	mandatory _ aSet
+	mandatory := aSet

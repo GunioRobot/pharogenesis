@@ -1,3 +1,0 @@
-isExternalForm
-	"Sorta. Kinda."
-	^true

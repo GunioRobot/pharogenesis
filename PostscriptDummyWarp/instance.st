@@ -1,6 +1,6 @@
 Object
 	subclass: #PostscriptDummyWarp
-	instanceVariableNames: 'canvas subCanvas transform '
+	instanceVariableNames: 'canvas subCanvas transform'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Postscript Canvases'
+	category: 'MorphicExtras-Postscript Canvases'

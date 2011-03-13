@@ -1,3 +1,3 @@
 toText
-	"give a String representation of the Url, suitable for printing, etc."
-	^self subclassResponsibility
+	self deprecated: 'Use Url>>asText instead'.
+	^ self asString.

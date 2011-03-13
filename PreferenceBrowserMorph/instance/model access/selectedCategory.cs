@@ -1,0 +1,2 @@
+selectedCategory
+	^self model selectedCategory

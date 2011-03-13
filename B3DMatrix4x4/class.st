@@ -1,1 +1,0 @@
-B3DMatrix4x4 class instanceVariableNames: ''

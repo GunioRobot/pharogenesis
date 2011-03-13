@@ -1,1 +1,0 @@
-HtmlTokenizer class instanceVariableNames: ''

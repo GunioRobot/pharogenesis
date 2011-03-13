@@ -3,6 +3,6 @@ silentlyDo: aBlock
 	This is a crude way of avoiding user interaction
 	during batch operations, like loading updates."
 
-	[silent _ true.
+	[silent := true.
 	aBlock value]
-		ensure: [silent _ nil]
+		ensure: [silent := nil]

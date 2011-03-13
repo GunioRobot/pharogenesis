@@ -1,2 +1,2 @@
 tileFlag: aBoolean
-	tileFlag _ aBoolean
+	tileFlag := aBoolean

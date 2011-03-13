@@ -3,26 +3,25 @@ newFileNamed: fullName
 
 	| file remoteStrm selection |
 
-	file _ self asServerFileNamed: fullName.
+	file := self asServerFileNamed: fullName.
 	file readWrite.
 	file isTypeFile ifTrue: [
 		^ FileStream newFileNamed: (file fileNameRelativeTo: self)].
 	file exists 
 		ifTrue: [
-			selection _ (PopUpMenu labels: 'overwrite that file
-choose another name
-cancel')
-				startUpWithCaption: (file fullNameFor: file fileName) , '
+			selection := UIManager default 
+				chooseFrom: #('overwrite that file' 'choose another name' 'cancel')
+				title: (file fullNameFor: file fileName) , '
 already exists.']
-		ifFalse: [selection _ 1].
+		ifFalse: [selection := 1].
 
 	selection = 1 ifTrue:
-		[remoteStrm _ RemoteFileStream on: (String new: 2000).
+		[remoteStrm := RemoteFileStream on: (String new: 2000).
 		remoteStrm remoteFile: file.
 		remoteStrm dataIsValid.	"empty stream is the real contents!"
 		^ remoteStrm].	"no actual writing till close"
 	selection = 2 ifTrue: [
 		^ self newFileNamed:
-			(FillInTheBlank request: 'Enter a new file name'
+			(UIManager default request: 'Enter a new file name'
 				initialAnswer: file fileName)].
 	^ nil	"cancel"

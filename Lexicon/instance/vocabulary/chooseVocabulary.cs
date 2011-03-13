@@ -2,7 +2,7 @@ chooseVocabulary
 	"Put up a dialog affording the user a chance to choose a different vocabulary to be installed in the receiver"
 
 	| aMenu |
-	aMenu _ MenuMorph new defaultTarget: self.
+	aMenu := MenuMorph new defaultTarget: self.
 	aMenu addTitle: 'Choose a vocabulary
 blue = current
 red = imperfect' translated.

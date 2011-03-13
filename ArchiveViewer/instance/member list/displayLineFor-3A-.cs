@@ -1,7 +1,7 @@
 displayLineFor: aMember
 	| stream dateTime |
-	stream _ WriteStream on: (String new: 60).
-	dateTime _ Time dateAndTimeFromSeconds: aMember lastModTime. 
+	stream := WriteStream on: (String new: 60).
+	dateTime := Time dateAndTimeFromSeconds: aMember lastModTime. 
 	stream
 		nextPutAll: (aMember uncompressedSize printString padded: #left to: 8 with: $  );
 		space;

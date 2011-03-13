@@ -1,2 +1,2 @@
 new: anInteger 
-	^super new init: anInteger
+	^super new initialize: anInteger

@@ -1,2 +1,2 @@
 removeRatioData
-	rData _ FlashKeyframes new.
+	rData := FlashKeyframes new.

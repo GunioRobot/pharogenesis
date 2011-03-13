@@ -1,6 +1,6 @@
 EToyChatMorph
 	subclass: #EToyMultiChatMorph
-	instanceVariableNames: 'targetIPAddresses '
+	instanceVariableNames: 'targetIPAddresses'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Experimental'
+	category: 'Nebraska-Morphic-Collaborative'

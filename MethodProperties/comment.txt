@@ -1,0 +1,3 @@
+I am class holding state for compiled methods. All my instance variables should be actually part of the CompiledMethod itself, but the current implementation of the VM doesn't allow this.
+
+I am a compact class and optimized for size and speed, since every CompiledMethod points onto an instance of myself. I am mostly polymorphic to the protocol of an identity-dictionary, so that key-value pairs can be easily stored and retreived without the need to add new variables. However keep in mind that instantiating a dictionary consumes much more memory than adding an instance-variable, so it might be clever to add a new variable if the property is going to be used by every compiled method.

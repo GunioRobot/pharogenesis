@@ -1,2 +1,0 @@
-rotationAngle: aNumber
-	rotationAngle := aNumber

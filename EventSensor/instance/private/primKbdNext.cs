@@ -2,6 +2,7 @@ primKbdNext
 	"Allows for use of old Sensor protocol to get at the keyboard,
 	as when running kbdTest or the InterpreterSimulator in Morphic"
 	| evtBuf |
+	self wait2ms.
 	self fetchMoreEvents.
 	keyboardBuffer isEmpty ifFalse:[^ keyboardBuffer next].
 	eventQueue ifNotNil:

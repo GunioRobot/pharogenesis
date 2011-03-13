@@ -1,2 +1,0 @@
-fromSpec: aSpec
-	protoSpec := aSpec

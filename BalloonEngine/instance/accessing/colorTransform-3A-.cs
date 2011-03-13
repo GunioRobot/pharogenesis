@@ -1,2 +1,2 @@
 colorTransform: aColorTransform
-	colorTransform _ aColorTransform
+	colorTransform := aColorTransform

@@ -1,2 +1,2 @@
 direction: aPoint
-	direction _ aPoint
+	direction := aPoint

@@ -1,12 +1,12 @@
 example2
 	"draws a cubic bezier on the screen"
 	| c canvas |
-	c _ Bezier3Segment new
+	c := Bezier3Segment new
 				from: 0 @ 0
 				via: 0 @ 100
 				and: 100 @ 0
 				to: 100 @ 100.
-	canvas _ BalloonCanvas on: Display.
+	canvas := BalloonCanvas on: Display.
 	canvas aaLevel: 4.
 	canvas
 		drawBezier3Shape: c asPointArray

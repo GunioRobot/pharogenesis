@@ -1,6 +1,8 @@
 asByteArray
-	| ba sz |
-	sz := self byteSize.
-	ba := ByteArray new: sz.
-	ba replaceFrom: 1 to: sz with: self startingAt: 1.
-	^ba
+	"Convert to a ByteArray with the ascii values of the string."
+	| b |
+	b _ ByteArray new: self byteSize.
+	1 to: self size * 4 do: [:i |
+		b at: i put: (self byteAt: i).
+	].
+	^ b.

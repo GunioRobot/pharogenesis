@@ -1,2 +1,2 @@
 merger: aMerger
-	merger _ aMerger
+	merger := aMerger

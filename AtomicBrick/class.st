@@ -1,1 +1,0 @@
-AtomicBrick class instanceVariableNames: ''

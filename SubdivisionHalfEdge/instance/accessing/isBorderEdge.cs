@@ -1,2 +1,0 @@
-isBorderEdge
-	^quadEdge isBorderEdge

@@ -1,9 +1,9 @@
 analyze
 	| sorter |
-	sorter _ self sorterForItems: additions.
-	additions _ sorter orderedItems.
-	requirements _ sorter externalRequirements.
-	unloadableDefinitions _ sorter itemsWithMissingRequirements asSortedCollection.
+	sorter := self sorterForItems: additions.
+	additions := sorter orderedItems.
+	requirements := sorter externalRequirements.
+	unloadableDefinitions := sorter itemsWithMissingRequirements asSortedCollection.
 	
-	sorter _ self sorterForItems: removals.
-	removals _ sorter orderedItems reversed.
+	sorter := self sorterForItems: removals.
+	removals := sorter orderedItems reversed.

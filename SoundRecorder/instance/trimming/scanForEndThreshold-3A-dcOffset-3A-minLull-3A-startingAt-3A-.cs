@@ -4,19 +4,19 @@ scanForEndThreshold: threshold dcOffset: dcOffset minLull: lull startingAt: star
 	If no end of sound is found, return endPlace."
 
 	| buf s iStart jStart nThreshold n |
-	nThreshold _ threshold negated.
-	iStart _ startPlace first.
-	jStart _ startPlace second.
-	n _ 0.
+	nThreshold := threshold negated.
+	iStart := startPlace first.
+	jStart := startPlace second.
+	n := 0.
 	iStart to: recordedBuffers size do:
-		[:i | buf _ recordedBuffers at: i.
+		[:i | buf := recordedBuffers at: i.
 		jStart to: buf size do:
-			[:j | s _ (buf at: j) - dcOffset.
+			[:j | s := (buf at: j) - dcOffset.
 			(s < nThreshold or: [s > threshold])
 				ifTrue: ["found a sample over threshold"
-						n _ 0]
+						n := 0]
 				ifFalse: ["still not over threshold"
-						n _ n + 1.
+						n := n + 1.
 						n >= lull ifTrue: [^ Array with: i with: j]]].
-		jStart _ 1].
+		jStart := 1].
 	^ self endPlace

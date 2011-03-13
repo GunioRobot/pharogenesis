@@ -4,7 +4,7 @@ drawOn: aCanvas
 	shape ifNil:[^aCanvas frameRectangle: self bounds color: Color black.].
 	aCanvas asBalloonCanvas preserveStateDuring:[:balloonCanvas|
 		balloonCanvas transformBy: self transform.
-		aaLevel _ self defaultAALevel.
+		aaLevel := self defaultAALevel.
 		aaLevel ifNotNil:[balloonCanvas aaLevel: aaLevel].
 		balloonCanvas drawCompressedShape: shape.
 	].

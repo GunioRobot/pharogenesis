@@ -1,6 +1,6 @@
 ParseNode
 	subclass: #AssignmentNode
-	instanceVariableNames: 'variable value '
+	instanceVariableNames: 'variable value'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Compiler'
+	category: 'Compiler-ParseNodes'

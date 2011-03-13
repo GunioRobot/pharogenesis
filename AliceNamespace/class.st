@@ -1,1 +1,0 @@
-AliceNamespace class instanceVariableNames: ''

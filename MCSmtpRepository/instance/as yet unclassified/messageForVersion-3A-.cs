@@ -11,7 +11,7 @@ messageForVersion: aVersion
 			content: (self bodyForVersion: aVersion)).
 
 	"Prepare the gzipped data"
-	data _ RWBinaryOrTextStream on: String new.
+	data := RWBinaryOrTextStream on: String new.
 	aVersion fileOutOn: data.
 	message addAttachmentFrom: data reset withName: aVersion fileName.
 	^ message

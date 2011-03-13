@@ -1,0 +1,1 @@
+JPEGReadStream class instanceVariableNames: ''

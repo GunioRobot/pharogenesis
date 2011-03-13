@@ -1,3 +1,0 @@
-isoToSqueak
-
-	^ self.

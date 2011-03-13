@@ -1,9 +1,9 @@
 nextContext
 	| initialProcessIndex initialStackIndex found |
 	searchString isEmpty ifTrue: [ ^false ].
-	initialProcessIndex _ self processListIndex.
-	initialStackIndex _ self stackListIndex.
-	found _ false.
+	initialProcessIndex := self processListIndex.
+	initialStackIndex := self stackListIndex.
+	found := false.
 	initialProcessIndex
 		to: self processList size
 		do: [:pi | found
@@ -14,7 +14,7 @@ nextContext
 											or: [si > initialStackIndex]])
 								ifTrue: [(name includesSubString: searchString)
 										ifTrue: [self stackListIndex: si.
-											found _ true]]]]].
+											found := true]]]]].
 	found
 		ifFalse: [self processListIndex: initialProcessIndex.
 			self stackListIndex: initialStackIndex].

@@ -1,2 +1,0 @@
-normal
-	^vertexBuffer normal

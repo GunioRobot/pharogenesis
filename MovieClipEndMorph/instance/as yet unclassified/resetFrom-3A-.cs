@@ -1,3 +1,0 @@
-resetFrom: scorePlayer
-
-	"Ignored"

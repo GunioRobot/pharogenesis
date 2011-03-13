@@ -1,6 +1,6 @@
 PluggableListMorph
 	subclass: #ListComponent
-	instanceVariableNames: 'selectedItem setSelectionSelector '
+	instanceVariableNames: 'selectedItem setSelectionSelector'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Components'
+	category: 'MorphicExtras-Components'

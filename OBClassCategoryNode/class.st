@@ -1,0 +1,1 @@
+OBClassCategoryNode class instanceVariableNames: ''

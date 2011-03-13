@@ -1,7 +1,7 @@
 openFile: aPath
-	pathToFile _ aPath.
-	fileBits _ self primFileOpen: aPath.
+	pathToFile := aPath.
+	fileBits := self primFileOpen: aPath.
 	fileBits notNil ifTrue: 
-		[fileIndex _ Smalltalk registerExternalObject: fileBits.
+		[fileIndex := Smalltalk registerExternalObject: fileBits.
 		self register.]
 	

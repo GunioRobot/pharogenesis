@@ -1,10 +1,10 @@
 writeCentralDirectoryTo: aStream
 	| offset |
-	offset _ writeCentralDirectoryOffset.
+	offset := writeCentralDirectoryOffset.
 	members do: [ :member |
 		member writeCentralDirectoryFileHeaderTo: aStream.
-		offset _ offset + member centralDirectoryHeaderSize.
+		offset := offset + member centralDirectoryHeaderSize.
 	].
-	writeEOCDOffset _ offset.
+	writeEOCDOffset := offset.
 	self writeEndOfCentralDirectoryTo: aStream.
 

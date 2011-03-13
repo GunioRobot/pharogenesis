@@ -1,34 +1,37 @@
 quickList
 	"Compute the selectors for the single example of receiver and args, in the very top pane" 
 
-	| data result resultArray newExp dataStrings mf dataObjects aa |
-	data _ contents asString.
-	"delete trailing period. This should be fixed in the Parser!"
- 	[data last isSeparator] whileTrue: [data _ data allButLast]. 
-	data last = $. ifTrue: [data _ data allButLast]. 	"Eval"
-	mf _ MethodFinder new.
-	data _ mf cleanInputs: data.	"remove common mistakes"
-	dataObjects _ Compiler evaluate: '{', data, '}'. "#( data1 data2 result )"
- 	dataStrings _ (Compiler new parse: 'zort ' , data in: Object notifying: nil)
-				block statements allButLast collect:
+	| data result resultArray newExp dataStrings mf dataObjects aa statements |
+	data := contents asString.
+	"delete t
+ railing period. This should be fixed in the Parser!"
+ 	[data last isSeparator] whileTrue: [data := data allButLast]. 
+	data last = $. ifTrue: [data := data allButLast]. 	"Eval"
+	mf := MethodFinder new.
+	data := mf cleanInputs: data.	"remove common mistakes"
+	dataObjects := Compiler evaluate: '{', data, '}'. "#( data1 data2 result )"
+	statements := (Compiler new parse: 'zort ' , data in: Object notifying: nil)
+				body statements select: [:each | (each isKindOf: ReturnNode) not].
+ 	dataStrings := statements collect:
 				[:node | String streamContents:
-					[:strm | (node isKindOf: MessageNode) ifTrue: [strm nextPut: $(].
-					node printOn: strm indent: 0.
-					(node isKindOf: MessageNode) ifTrue: [strm nextPut: $)].]].
+					[:strm | (node isMessage) ifTrue: [strm nextPut: $(].
+					node shortPrintOn: strm.
+					(node isMessage) ifTrue: [strm nextPut: $)].]].
 	dataObjects size < 2 ifTrue: [self inform: 'If you are giving an example of receiver, \args, and result, please put periods between the parts.\Otherwise just type one selector fragment' withCRs. ^#()].
- 	dataObjects _ Array with: dataObjects allButLast with: dataObjects last. "#( (data1 data2) result )" 
-	result _ mf load: dataObjects; findMessage.
+ 	dataObjects := Array with: dataObjects allButLast with: dataObjects last. "#( (data1
+  data2) result )" 
+	result := mf load: dataObjects; findMessage.
 	(result first beginsWith: 'no single method') ifFalse: [
-		aa _ self testObjects: dataObjects strings: dataStrings.
-		dataObjects _ aa second.  dataStrings _ aa third].
-	resultArray _ self listFromResult: result. 
+		aa := self testObjects: dataObjects strings: dataStrings.
+		dataObjects := aa second.  dataStrings := aa third].
+	resultArray := self listFromResult: result. 
 	resultArray isEmpty ifTrue: [self inform: result first].
 
 	dataStrings size = (dataObjects first size + 1) ifTrue:
-		[resultArray _ resultArray collect: [:expression |
-		newExp _ expression.
+		[resultArray := resultArray collect: [:expression |
+		newExp := expression.
 		dataObjects first withIndexDo: [:lit :i |
-			newExp _ newExp copyReplaceAll: 'data', i printString
+			newExp := newExp copyReplaceAll: 'data', i printString
 							with: (dataStrings at: i)].
 		newExp, ' --> ', dataStrings last]].
 

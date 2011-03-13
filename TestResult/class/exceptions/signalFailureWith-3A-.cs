@@ -1,3 +1,3 @@
 signalFailureWith: aString 
-	self failure sunitSignalWith: aString
+	self failure signal: aString
 			

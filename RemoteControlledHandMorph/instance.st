@@ -1,6 +1,6 @@
 HandMorph
 	subclass: #RemoteControlledHandMorph
-	instanceVariableNames: 'eventDecoder viewExtent nebraskaClient '
+	instanceVariableNames: 'eventDecoder viewExtent nebraskaClient'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Remote'
+	category: 'Nebraska-Morphic-Remote'

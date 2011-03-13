@@ -4,8 +4,8 @@ legacyHelpMessage
 	| untranslated |
 	naturalLanguageTranslations isEmptyOrNil  "only in legacy (pre-3.8) projects"
 		ifTrue: [^ nil].
-	untranslated _ naturalLanguageTranslations first helpMessage ifNil: [^ nil].
+	untranslated := naturalLanguageTranslations first helpMessage ifNil: [^ nil].
 	self propertyAt: #helpMessage put: untranslated.
 	naturalLanguageTranslations removeFirst.
-	naturalLanguageTranslations isEmpty ifTrue: [naturalLanguageTranslations _ nil].
+	naturalLanguageTranslations isEmpty ifTrue: [naturalLanguageTranslations := nil].
 	^ untranslated translated

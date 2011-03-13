@@ -1,2 +1,0 @@
-getColor
-	^ self color

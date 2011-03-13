@@ -1,2 +1,2 @@
 start: aPoint
-	start _ aPoint
+	start := aPoint

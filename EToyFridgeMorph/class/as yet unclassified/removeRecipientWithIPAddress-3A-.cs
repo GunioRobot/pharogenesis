@@ -1,6 +1,6 @@
 removeRecipientWithIPAddress: ipString
 
-	FridgeRecipients _ self fridgeRecipients reject: [ :each |
+	FridgeRecipients := self fridgeRecipients reject: [ :each |
 		ipString = each ipAddress
 	].
-	UpdateCounter _ self updateCounter + 1
+	UpdateCounter := self updateCounter + 1

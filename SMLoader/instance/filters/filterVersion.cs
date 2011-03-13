@@ -3,7 +3,5 @@ filterVersion
 
 	Not used anymore."
 
-	^
-	[:package | 
-	package categories 
-		anySatisfy: [:cat | cat name , '*' match: (SystemVersion current version copyWithout: $ )]]
+	^[:package | package categories anySatisfy:  
+		[:cat | (cat name, '*') match: (Smalltalk version copyWithout: $ ) ]]

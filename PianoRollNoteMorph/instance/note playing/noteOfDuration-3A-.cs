@@ -1,7 +1,7 @@
 noteOfDuration: duration
 
 	| note |
-	note _ self noteInScore.
+	note := self noteInScore.
 	^ (owner scorePlayer instrumentForTrack: trackIndex)
 			soundForMidiKey: note midiKey
 			dur: duration

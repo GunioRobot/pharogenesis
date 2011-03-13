@@ -2,19 +2,19 @@ discardOddsAndEnds
 	"This method throws out lots of classes that are not frequently
 	used."
 	"Smalltalk discardOddsAndEnds"
-	SystemOrganization removeSystemCategory: 'System-Serial Port'.
-	SystemOrganization removeSystemCategory: 'ST80-Symbols'.
-	SystemOrganization removeSystemCategory: 'Tools-File Contents Browser'.
-	SystemOrganization removeSystemCategory: 'System-Compression'.
-	SystemOrganization removeSystemCategory: 'Tools-Explorer'.
-	SystemOrganization removeSystemCategory: 'System-Digital Signatures'.
+	self organization removeSystemCategory: 'System-Serial Port'.
+	self organization removeSystemCategory: 'ST80-Symbols'.
+	self organization removeSystemCategory: 'Tools-File Contents Browser'.
+	self organization removeSystemCategory: 'System-Compression'.
+	self organization removeSystemCategory: 'Tools-Explorer'.
+	self organization removeSystemCategory: 'System-Digital Signatures'.
 	Form removeSelector: #edit.
 	self
 		at: #FormView
 		ifPresent: [:c | c compile: 'defaultControllerClass  ^ NoController' classified: 'controller access'].
 	self removeClassNamed: #FormEditorView.
 	self removeClassNamed: #FormEditor.
-	SystemOrganization removeSystemCategory: 'ST80-Paths'.
+	self organization removeSystemCategory: 'ST80-Paths'.
 	"bit editor (remove Form editor first):"
 	Form removeSelector: #bitEdit.
 	Form removeSelector: #bitEditAt:scale:.
@@ -29,11 +29,6 @@ discardOddsAndEnds
 	ScreenController removeSelector: #viewImageImports.
 	self removeClassNamed: #FormHolderView.
 	self removeClassNamed: #FormInspectView.
-	"experimental hand-drawn character recoginizer:"
-	ParagraphEditor removeSelector: #recognizeCharacters.
-	ParagraphEditor removeSelector: #recognizer:.
-	ParagraphEditor removeSelector: #recognizeCharactersWhileMouseIn:.
-	self removeClassNamed: #CharRecog.
 	"experimental updating object viewer:"
 	Object removeSelector: #evaluate:wheneverChangeIn:.
 	self removeClassNamed: #ObjectViewer.
@@ -45,7 +40,6 @@ discardOddsAndEnds
 	self removeClassNamed: #FindTheLight.
 	self removeClassNamed: #PluggableTest.
 	self removeClassNamed: #SystemMonitor.
-	self removeClassNamed: #DocLibrary.
 	self removeClassNamed: #ProtocolBrowser.
 	self removeClassNamed: #ObjectExplorerWrapper.
 	self removeClassNamed: #HierarchyBrowser.

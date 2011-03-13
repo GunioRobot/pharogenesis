@@ -1,1 +1,0 @@
-highlightMessageList: list with: morphList

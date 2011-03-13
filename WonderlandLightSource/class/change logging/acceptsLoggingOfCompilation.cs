@@ -1,3 +1,0 @@
-acceptsLoggingOfCompilation
-
-	^ true.

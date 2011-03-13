@@ -3,4 +3,4 @@ contents
 	Not yet tested, this resource returns the stream and not its contents."
 
 	map cache add: self.
-	^self cacheDirectory readOnlyFileNamed: self downloadFileName
+	^(self cacheDirectory readOnlyFileNamed: self downloadFileName) binary; yourself

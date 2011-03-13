@@ -1,1 +1,0 @@
-This is a variable class: instances may differ in size. An instance of size n  represents a polygon with n vertices. Every vertex is required to be an instance of B3DSimpleMeshVertex.

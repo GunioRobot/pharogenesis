@@ -3,7 +3,7 @@ initializeToStandAlone
 	| buttonPane aBin aColor heights tabsPane |
 	self basicInitialize.
 
-	self layoutInset: 6;
+	self layoutInset: 0;
 		layoutPolicy: ProportionalLayout new;
 		useRoundedCorners;
 		hResizing: #rigid;
@@ -12,22 +12,24 @@ initializeToStandAlone
 
 	"mode buttons"
 	buttonPane := self paneForTabs: self modeTabs.
+	buttonPane color: ColorTheme current dialogColor.
 	buttonPane
 		vResizing: #shrinkWrap;
 		setNameTo: 'ButtonPane';
 		addMorphFront: self dismissButton;
 		addMorphBack: self helpButton;
 		color: (aColor := buttonPane color) darker;
-		layoutInset: 6;
+		layoutInset: 5;
 		wrapDirection: nil;
 		width: self width;
 		layoutChanged; fullBounds.
 
 	"Place holder for a tabs or text pane"
-	tabsPane := Morph new
+	tabsPane := Morph new.
+	tabsPane
+		color: ColorTheme current dialogColor;
 		setNameTo: 'TabPane';
-		hResizing: #spaceFill;
-		yourself.
+		hResizing: #spaceFill.
 
 	heights := { buttonPane height. 40 }.
 
@@ -59,6 +61,9 @@ initializeToStandAlone
 				fractions: (0 @ 0 corner: 1 @ 1)
 				offsets: (0 @ (heights first + heights second) corner: 0 @ 0)).
 
-	self color: (Color r: 0.0 g: 0.839 b: 0.226);
+	self
+		borderWidth: ColorTheme current dialogBorderWidth;
+		borderColor: ColorTheme current dialogBorderColor;
+		color: ColorTheme current dialogColor;
 		setNameTo: 'Objects' translated;
 		showCategories.

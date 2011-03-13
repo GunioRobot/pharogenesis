@@ -1,1 +1,0 @@
-SystemMonitor class instanceVariableNames: ''

@@ -10,4 +10,4 @@ addCloseBox
 		 topFraction: 0;
 		 topOffset: 0.
 	closeBox layoutFrame: frame.
-	labelArea addMorph: closeBox
+	labelArea addMorphBack: closeBox

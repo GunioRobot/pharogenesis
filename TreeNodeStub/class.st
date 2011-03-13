@@ -1,0 +1,1 @@
+TreeNodeStub class instanceVariableNames: ''

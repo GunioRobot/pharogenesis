@@ -1,6 +1,6 @@
 addShortHair
 	| hair |
-	hair _ CurveMorph
+	hair := CurveMorph
 		vertices: {81@3. 101@22. 105@48. 93@65. 76@32. 54@32. 28@35. 11@64. 2@52. 10@15. 45@2}
 		color: self randomHairColor
 		borderWidth: 1

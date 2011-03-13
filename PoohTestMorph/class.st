@@ -1,1 +1,0 @@
-PoohTestMorph class instanceVariableNames: ''

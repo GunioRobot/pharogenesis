@@ -1,2 +1,2 @@
 stop: stopValue
-	stop _ stopValue
+	stop := stopValue

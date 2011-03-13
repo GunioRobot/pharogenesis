@@ -3,6 +3,6 @@ users
 	keyed by their developer initials."
 
 	users ifNotNil: [^users].
-	users _ Dictionary new.
+	users := Dictionary new.
 	self accounts do: [:a | users at: a initials put: a].
 	^users

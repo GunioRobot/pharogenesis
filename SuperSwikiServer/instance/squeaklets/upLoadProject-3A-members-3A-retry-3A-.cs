@@ -3,7 +3,7 @@ upLoadProject: projectName members: archiveMembers retry: aBool
 	archiveMembers do:[:entry|
 		ProgressNotification signal: '4:uploadingFile' extra:'(uploading ' translated, entry fileName convertFromSystemString , '...)' translated.
 		answer _ self sendToSwikiProjectServer: {
-			'uploadproject2: ', entry fileName convertFromSystemString convertToSuperSwikiServerString.
+			'uploadproject2: ', entry fileName convertFromSystemString convertToEncoding: self encodingName.
 			'password: ',ProjectPasswordNotification signal.
 			entry contents.
 		}.

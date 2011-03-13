@@ -1,3 +1,3 @@
 playOnArrival
 
-	^PlayOnArrival ifNil: [PlayOnArrival _ false]
+	^PlayOnArrival ifNil: [PlayOnArrival := false]

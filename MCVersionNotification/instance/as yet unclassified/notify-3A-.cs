@@ -1,6 +1,6 @@
 notify: aString
 	| message |
-	message _ self messageTo: aString.
+	message := self messageTo: aString.
 	SMTPClient
 		deliverMailFrom: message from
 		to: (Array with: message to)

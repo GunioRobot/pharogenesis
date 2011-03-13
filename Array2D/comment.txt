@@ -1,3 +1,0 @@
-A simple 2D-Array implementation. 
-
-Neither storing nor sorting (otherwise inherited from ArrayedCollection) will work. Neither comparing nor most accessing mehods inherited from Sequenceable collection will work.  Actually, it's a bad idea to inherit this class from collection at all!

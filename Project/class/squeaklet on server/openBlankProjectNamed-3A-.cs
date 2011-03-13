@@ -10,7 +10,7 @@ openBlankProjectNamed: projName
 			color: Color red;
 			contents: 'Welcome to a new project - ',projName
 	).
-	CurrentProjectRefactoring currentBeParentTo: proj.
+	proj setParent: self current.
 	projViewer _ (CurrentProject findProjectView: projName) ifNil: [^proj].
 	(projViewer owner isSystemWindow) ifTrue: [
 			projViewer owner model: proj].

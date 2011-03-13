@@ -1,2 +1,2 @@
 packageName
-	^ packageName ifNil: [packageName _ self categoryName]
+	^ packageName ifNil: [packageName := self categoryName]

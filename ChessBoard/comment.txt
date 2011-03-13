@@ -1,1 +1,0 @@
-This class represents the chess board itself.

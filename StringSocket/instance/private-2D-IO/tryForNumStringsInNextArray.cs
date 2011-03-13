@@ -7,7 +7,11 @@ tryForNumStringsInNextArray
 	"(numStringsInNextArray > 100 or: [numStringsInNextArray < 1]) ifTrue: [self barf]."
 	inBufIndex := inBufIndex + 4.
 
-	stringsForNextArray _ Array new: numStringsInNextArray.
-	stringCounter _ 0.
-	nextStringSize _ nil. 
+	numStringsInNextArray < 0 ifTrue: [
+		socket disconnect.
+		^false ].
+	
+	stringsForNextArray := Array new: numStringsInNextArray.
+	stringCounter := 0.
+	nextStringSize := nil. 
 	^true

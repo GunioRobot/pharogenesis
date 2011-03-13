@@ -1,2 +1,0 @@
-kingAttack
-	^kingAttack

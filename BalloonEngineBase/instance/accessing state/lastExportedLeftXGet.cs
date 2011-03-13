@@ -1,2 +1,0 @@
-lastExportedLeftXGet
-	^workBuffer at: GWLastExportedLeftX

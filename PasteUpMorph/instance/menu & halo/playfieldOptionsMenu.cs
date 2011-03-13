@@ -6,10 +6,10 @@ playfieldOptionsMenu
 	aMenu _ MenuMorph new defaultTarget: self.
 	aMenu addStayUpItem.
 	aMenu add: 'save on file...' translated action: #saveOnFile.
-	aMenu add: 'save as SqueakPage at url...' translated action: #saveOnURL.
-	aMenu add: 'update all from resources' translated action: #updateAllFromResources.
-	(self valueOfProperty: #classAndMethod) ifNotNil:
-		[aMenu add: 'broadcast as documentation' translated action: #saveDocPane].
+	Preferences eToyFriendly ifFalse: [
+		aMenu add: 'save as SqueakPage at url...' translated action: #saveOnURL.
+		aMenu add: 'update all from resources' translated action: #updateAllFromResources].
+
 	aMenu add: 'round up strays' translated action: #roundUpStrays.
 	aMenu balloonTextForLastItem:  'Bring back all objects whose current coordinates keep them from being visible, so that at least a portion of each of my interior objects can be seen.' translated.
 	aMenu add: 'show all players' translated action: #showAllPlayers.

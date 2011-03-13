@@ -1,2 +1,2 @@
 width: aNumber
-	width _ aNumber
+	width := aNumber

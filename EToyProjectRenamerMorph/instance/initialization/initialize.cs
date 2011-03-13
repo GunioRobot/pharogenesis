@@ -3,7 +3,7 @@ initialize
 	super initialize.
 	""
 	self vResizing: #shrinkWrap;
-	  hResizing: #shrinkWrap;
-	  layoutInset: 4;
-	  useRoundedCorners;
-	  rebuild
+		 hResizing: #shrinkWrap;
+		 layoutInset: 4;
+		 useRoundedCorners;
+		 rebuild

@@ -1,6 +1,6 @@
 StandardScriptingSystem
 	subclass: #EToySystem
 	instanceVariableNames: ''
-	classVariableNames: 'EToyVersion EToyVersionDate '
+	classVariableNames: 'EToyVersion EToyVersionDate'
 	poolDictionaries: ''
-	category: 'Morphic-Experimental'
+	category: 'EToys-Experimental'

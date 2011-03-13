@@ -4,6 +4,6 @@ forgetClass
 	self okToChange ifFalse: [^ self].
 	currentClassName ifNotNil: [
 		myChangeSet removeClassChanges: currentClassName.
-		currentClassName _ nil.
-		currentSelector _ nil.
+		currentClassName := nil.
+		currentSelector := nil.
 		self showChangeSet: myChangeSet].

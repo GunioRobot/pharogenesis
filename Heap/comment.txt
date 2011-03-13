@@ -4,8 +4,17 @@ b) Elements are added with arbitrary sort order.
 The sort time for a heap is O(n log n) in all cases.
 
 Instance variables:
-	array		<Array>		the data repository
-	tally		<Integer>	the number of elements in the heap
-	sortBlock	<Block|nil>	a two-argument block defining the sort order,
+	array		<Array>		The data repository
+	tally		<Integer>	The number of elements in the heap
+	sortBlock	<Block|nil>	A two-argument block defining the sort order,
 							or nil in which case the default sort order is
 								[:element1 :element2| element1 <= element2]
+	indexUpdateBlock 	<Block|nil> 
+							A two-argument block of the form [:data :index | ... ]
+							which allows an application object to keep track of its
+							index within the heap.  Useful for quick heap update
+							when object's sort value changes (for example, when an
+							object in a priority queue has its priority increased
+							by an external event, you don't want to have to search
+							through the whole heap to find the index before fixing
+							the heap).  No update occurs if nil.

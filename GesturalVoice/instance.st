@@ -1,6 +1,6 @@
 Voice
 	subclass: #GesturalVoice
-	instanceVariableNames: 'head '
+	instanceVariableNames: 'head'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Speech-Gestures'

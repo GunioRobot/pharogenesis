@@ -1,2 +1,0 @@
-flag: aFlagString streamLog: aBlockWithStreamArgument
-	

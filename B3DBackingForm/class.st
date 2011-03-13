@@ -1,1 +1,0 @@
-B3DBackingForm class instanceVariableNames: ''

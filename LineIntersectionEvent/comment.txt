@@ -1,7 +1,0 @@
-I represent an event that occurs during the computation of line segment intersections.
-
-Instance variables:
-	position		<Point>	The position of where this event occurs
-	type		<Symbol>	The type of the event
-	edge		<LineIntersectionSegment>	The edge associated with this event.
-	crossedEdge	<LineIntersectionSegment>	The crossing edge of a #cross event.

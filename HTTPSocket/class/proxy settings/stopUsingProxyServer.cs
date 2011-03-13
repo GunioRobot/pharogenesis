@@ -1,6 +1,6 @@
 stopUsingProxyServer
 	"Stop directing HTTP request through a proxy server."
 
-	HTTPProxyServer _ nil.
-	HTTPProxyPort _ 80.
-	HTTPProxyCredentials _ ''
+	self httpProxyServer: nil.
+	self httpProxyPort: 80.
+	HTTPProxyCredentials := ''

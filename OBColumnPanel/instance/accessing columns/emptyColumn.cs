@@ -1,0 +1,2 @@
+emptyColumn
+	^ OBColumn inPanel: self

@@ -2,14 +2,14 @@ createViews
 	"Create a pluggable version of all the views for a Browser, including views and controllers."
 
 	| hasSingleFile width topView packageListView classListView switchView messageCategoryListView messageListView browserCodeView infoView |
-	contentsSymbol _ self defaultDiffsSymbol.  "#showDiffs or #prettyDiffs"
+	contentsSymbol := self defaultDiffsSymbol.  "#showDiffs or #prettyDiffs"
 	Smalltalk isMorphic ifTrue: [^ self openAsMorph].
 
-	(hasSingleFile _ self packages size = 1)
-		ifTrue: [width _ 150]
-		ifFalse: [width _ 200].
+	(hasSingleFile := self packages size = 1)
+		ifTrue: [width := 150]
+		ifFalse: [width := 200].
 
-	(topView _ StandardSystemView new) 
+	(topView := StandardSystemView new) 
 		model: self;
 		borderWidth: 1.
 		"label and minSize taken care of by caller"
@@ -17,7 +17,7 @@ createViews
 	hasSingleFile 
 		ifTrue: [
 			self systemCategoryListIndex: 1.
-			packageListView _ PluggableListView on: self
+			packageListView := PluggableListView on: self
 				list: #systemCategorySingleton
 				selected: #indexIsOne 
 				changeSelected: #indexIsOne:
@@ -25,7 +25,7 @@ createViews
 				keystroke: #packageListKey:from:.
 			packageListView window: (0 @ 0 extent: width @ 12)]
 		ifFalse: [
-			packageListView _ PluggableListView on: self
+			packageListView := PluggableListView on: self
 				list: #systemCategoryList
 				selected: #systemCategoryListIndex
 				changeSelected: #systemCategoryListIndex:
@@ -34,7 +34,7 @@ createViews
 			packageListView window: (0 @ 0 extent: 50 @ 70)].
 	topView addSubView: packageListView.
 
-	classListView _ PluggableListView on: self
+	classListView := PluggableListView on: self
 		list: #classList
 		selected: #classListIndex
 		changeSelected: #classListIndex:
@@ -45,11 +45,11 @@ createViews
 		ifTrue: [topView addSubView: classListView below: packageListView]
 		ifFalse: [topView addSubView: classListView toRightOf: packageListView].
 
-	switchView _ self buildInstanceClassSwitchView.
+	switchView := self buildInstanceClassSwitchView.
 	switchView borderWidth: 1.
 	topView addSubView: switchView below: classListView.
 
-	messageCategoryListView _ PluggableListView on: self
+	messageCategoryListView := PluggableListView on: self
 		list: #messageCategoryList
 		selected: #messageCategoryListIndex
 		changeSelected: #messageCategoryListIndex:
@@ -57,7 +57,7 @@ createViews
 	messageCategoryListView window: (0 @ 0 extent: 50 @ 70).
 	topView addSubView: messageCategoryListView toRightOf: classListView.
 
-	messageListView _ PluggableListView on: self
+	messageListView := PluggableListView on: self
 		list: #messageList
 		selected: #messageListIndex
 		changeSelected: #messageListIndex:
@@ -66,7 +66,7 @@ createViews
 	messageListView window: (0 @ 0 extent: 50 @ 70).
 	topView addSubView: messageListView toRightOf: messageCategoryListView.
 
-	browserCodeView _ MvcTextEditor default on: self 
+	browserCodeView := MvcTextEditor default on: self 
 			text: #contents accept: #contents:notifying:
 			readSelection: #contentsSelection menu: #codePaneMenu:shifted:.
 	browserCodeView window: (0@0 extent: width@110).
@@ -76,7 +76,7 @@ createViews
 			ifTrue: [switchView]
 			ifFalse: [packageListView]).
 
-	infoView _ StringHolderView new
+	infoView := StringHolderView new
 		model: self infoString;
 		window: (0@0 extent: width@12);
 		borderWidth: 1.

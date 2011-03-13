@@ -1,6 +1,6 @@
-ServerDirectory
+ProjectSwikiServer
 	subclass: #SuperSwikiServer
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Network-Kernel'
+	category: 'Network-RemoteDirectory'

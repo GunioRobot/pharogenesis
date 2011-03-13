@@ -1,5 +1,5 @@
 previousProject
 
 	Project returnToPreviousProject.
-	CurrentProjectRefactoring exitCurrentProject.	"go to parent if no previous"
+	Project current exit.	"go to parent if no previous"
 	Beeper beep.

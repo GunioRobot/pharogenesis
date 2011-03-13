@@ -6,7 +6,7 @@ chooseInstVarAlphabeticallyThenDo: aBlock
 	allVars isEmpty ifTrue: [^ self inform: 'There are no
 instance variables'].
 
-	index _ (PopUpMenu labelArray: allVars lines: #()) startUpWithCaption: 'Instance variables in
-', self name.
+	index _ (UIManager default chooseFrom: allVars lines: #() title: 'Instance variables in
+', self name).
 	index = 0 ifTrue: [^ self].
 	aBlock value: (allVars at: index)

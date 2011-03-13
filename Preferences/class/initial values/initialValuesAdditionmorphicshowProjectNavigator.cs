@@ -1,2 +1,0 @@
-initialValuesAdditionmorphicshowProjectNavigator
-	^ #((showProjectNavigator true (morphic ) ) )

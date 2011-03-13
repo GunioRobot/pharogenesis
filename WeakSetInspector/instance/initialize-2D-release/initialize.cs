@@ -1,3 +1,3 @@
 initialize
 	super initialize.
-	flagObject _ object instVarNamed: 'flag'. 
+	flagObject := object instVarNamed: 'flag'. 

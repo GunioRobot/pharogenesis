@@ -1,2 +1,2 @@
 checkCacheDirectory
-	default notNil and: [default directory exists ifFalse: [default _ nil]]
+	default notNil and: [default directory exists ifFalse: [default := nil]]

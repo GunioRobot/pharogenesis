@@ -1,1 +1,0 @@
-I provide clipping capabilities for rasterizers needing explicit clipping.

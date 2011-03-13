@@ -1,1 +1,0 @@
-WonderlandActorViewer class instanceVariableNames: ''

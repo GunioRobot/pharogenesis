@@ -1,3 +1,3 @@
 delta: aNumber
 
-	delta _ aNumber.
+	delta := aNumber.

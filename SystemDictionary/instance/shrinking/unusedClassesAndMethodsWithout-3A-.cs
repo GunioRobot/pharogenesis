@@ -23,5 +23,5 @@ unusedClassesAndMethodsWithout: classesAndMessagesPair
 					classRemovals
 						addAll: (self systemNavigation allUnusedClassesWithout: {classRemovals. messageRemovals}).
 					messageRemovals
-						addAll: (self allUnSentMessagesWithout: {classRemovals. messageRemovals})]].
-	^ {classRemovals. self allUnSentMessagesWithout: {classRemovals. messageRemovals}}
+						addAll: (self systemNavigation allUnSentMessagesWithout: {classRemovals. messageRemovals})]].
+	^ {classRemovals. self systemNavigation allUnSentMessagesWithout: {classRemovals. messageRemovals}}

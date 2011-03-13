@@ -8,10 +8,10 @@ reorderChangeSets
 	"ChangeSorter reorderChangeSets"
 
 	| newHead newMid newTail |
-	newHead _ OrderedCollection new.
-	newMid _ OrderedCollection new.
-	newTail _ OrderedCollection new.
-	AllChangeSets do:
+	newHead := OrderedCollection new.
+	newMid := OrderedCollection new.
+	newTail := OrderedCollection new.
+	ChangeSet allChangeSets do:
 		[:aChangeSet |
 			(self belongsInProjectsInRelease: aChangeSet)
 				ifTrue:
@@ -22,5 +22,5 @@ reorderChangeSets
 							[newMid add: aChangeSet]
 						ifFalse:
 							[newTail add: aChangeSet]]].
-	AllChangeSets _ newHead, newMid, newTail.
+	ChangeSet allChangeSets: newHead, newMid, newTail.
 	Smalltalk isMorphic ifTrue: [SystemWindow wakeUpTopWindowUponStartup]

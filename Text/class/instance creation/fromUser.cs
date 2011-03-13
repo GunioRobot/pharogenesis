@@ -3,4 +3,4 @@ fromUser
 	"Text fromUser"
 
 	^ self fromString:
-		(FillInTheBlank request: 'Enter text followed by carriage return')
+		(UIManager default request: 'Enter text followed by carriage return')

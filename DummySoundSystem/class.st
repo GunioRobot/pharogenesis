@@ -1,0 +1,1 @@
+DummySoundSystem class instanceVariableNames: ''

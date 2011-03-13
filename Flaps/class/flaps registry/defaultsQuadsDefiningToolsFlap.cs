@@ -7,7 +7,7 @@ defaultsQuadsDefiningToolsFlap
 	(Browser 				prototypicalToolWindow		'Browser'			'A Browser is a tool that allows you to view all the code of all the classes in the system')
 	(TranscriptStream		openMorphicTranscript				'Transcript'			'A Transcript is a window usable for logging and debugging; browse references to #Transcript for examples of how to write to it.')
 	(Workspace			prototypicalToolWindow		'Workspace'			'A Workspace is a simple window for editing text.  You can later save the contents to a file if you desire.'));
-		add: { Preferences useFileList2 ifTrue: [ #FileList2 ] ifFalse: [ #FileList ].
+		add: {   FileList2 .
 				#prototypicalToolWindow.
 				'File List'.
 				'A File List is a tool for browsing folders and files on disks and FTP servers.' };

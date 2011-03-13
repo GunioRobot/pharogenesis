@@ -1,5 +1,5 @@
 initialize
-	events _ OrderedCollection new.
-	pitches _ OrderedCollection new.
-	time _ 0.0.
-	phonemes _ PhonemeSet sampaToArpabet
+	events := OrderedCollection new.
+	pitches := OrderedCollection new.
+	time := 0.0.
+	phonemes := PhonemeSet sampaToArpabet

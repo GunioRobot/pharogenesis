@@ -1,6 +1,6 @@
 ParseNode
 	subclass: #BlockArgsNode
-	instanceVariableNames: 'temporaries '
+	instanceVariableNames: 'temporaries'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Compiler'
+	category: 'Compiler-ParseNodes'

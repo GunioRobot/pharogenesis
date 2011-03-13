@@ -1,6 +1,6 @@
 TTSampleFontMorph
 	subclass: #TTSampleStringMorph
-	instanceVariableNames: 'string ttBounds '
+	instanceVariableNames: 'string ttBounds'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon-TrueType Support'
+	category: 'Morphic-TrueType'

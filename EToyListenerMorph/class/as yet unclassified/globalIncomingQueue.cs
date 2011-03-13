@@ -1,3 +1,3 @@
 globalIncomingQueue
 
-	^GlobalIncomingQueue ifNil: [GlobalIncomingQueue _ OrderedCollection new].
+	^GlobalIncomingQueue ifNil: [GlobalIncomingQueue := OrderedCollection new].

@@ -1,1 +1,0 @@
-This class implements undo for reparenting operations.

@@ -8,6 +8,9 @@ updatingTileForTarget: aTarget partName: partName getter: getter setter: setter
 		target: aTarget;
 		borderWidth: 1;
 		extent:  22@22.
+	((aTarget isKindOf: KedamaExamplerPlayer) and: [getter = #getColor]) ifTrue: [
+		readout getSelector: #getColorOpaque.
+	].
 	(setter isNil or: [#(unused none #nil) includes: setter]) ifFalse:
 		[readout putSelector: setter].
 	^ readout

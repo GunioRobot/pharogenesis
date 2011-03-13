@@ -4,7 +4,7 @@ insertStringAt: here
 	all strings before have already been inserted into the hash table
 	(and the hash value is updated as well)."
 	| prevEntry |
-	hashValue _ self updateHashAt: (here + MinMatch).
-	prevEntry _ hashHead at: hashValue+1.
+	hashValue := self updateHashAt: (here + MinMatch).
+	prevEntry := hashHead at: hashValue+1.
 	hashHead at: hashValue+1 put: here.
 	hashTail at: (here bitAnd: WindowMask)+1 put: prevEntry.

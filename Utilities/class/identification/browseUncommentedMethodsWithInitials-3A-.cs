@@ -1,4 +1,0 @@
-browseUncommentedMethodsWithInitials: targetInitials
-
-	self deprecated: 'Use SystemNavigation default browseUncommentedMethodsWithInitials: targetInitials'. 
-	SystemNavigation default browseUncommentedMethodsWithInitials: targetInitials

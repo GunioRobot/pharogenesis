@@ -1,2 +1,0 @@
-projectViewsInWindows
-	^ self valueOfFlag: #projectViewsInWindows

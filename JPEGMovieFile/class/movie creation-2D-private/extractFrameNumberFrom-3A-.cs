@@ -3,8 +3,8 @@ extractFrameNumberFrom: aString
 	"Assume: The given string contains at least one digit."
 
 	| end start |
-	end _ aString size.
-	[(aString at: end) isDigit not] whileTrue: [end _ end - 1].
-	start _ end.
-	[(start > 1) and: [(aString at: start - 1) isDigit]] whileTrue: [start _ start - 1].
+	end := aString size.
+	[(aString at: end) isDigit not] whileTrue: [end := end - 1].
+	start := end.
+	[(start > 1) and: [(aString at: start - 1) isDigit]] whileTrue: [start := start - 1].
 	^ (aString copyFrom: start to: end) asNumber

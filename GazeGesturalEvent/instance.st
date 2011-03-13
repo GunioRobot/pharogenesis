@@ -1,6 +1,6 @@
 GesturalEvent
 	subclass: #GazeGesturalEvent
-	instanceVariableNames: 'point '
+	instanceVariableNames: 'point'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Speech-Events'

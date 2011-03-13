@@ -1,2 +1,2 @@
 deferred: aBoolean
-	deferred _ aBoolean.
+	deferred := aBoolean.

@@ -1,0 +1,1 @@
+ZLibWriteStream class instanceVariableNames: ''

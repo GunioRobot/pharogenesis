@@ -1,8 +1,8 @@
 fullDuration
 
 	| num denom |
-	num _ denom _ 1.
-	durationModifier == #dotted ifTrue: [num _ 3.  denom _ 2].
-	durationModifier == #triplets ifTrue: [num _ 2.  denom _ 3].
-	durationModifier == #quints ifTrue: [num _ 2.  denom _ 5].
+	num := denom := 1.
+	durationModifier == #dotted ifTrue: [num := 3.  denom := 2].
+	durationModifier == #triplets ifTrue: [num := 2.  denom := 3].
+	durationModifier == #quints ifTrue: [num := 2.  denom := 5].
 	^ pianoRoll score ticksPerQuarterNote * 4 * num // duration // denom

@@ -1,0 +1,9 @@
+I am a requestor specialized to fetch information in a Browser.
+I can ask a browser its selected class and selected method for example.
+If the RB is installed too, I can also fetch ast nodes in the browser's selected
+method.
+
+I am the default requestor for CodeHolder and it's subclasses.
+
+To be integrated with services, alternative browsers, such as the OmniBrowser and Whisker should define a specialized requestor subclassing this one. A few core messages would need to be redefined, such as getClass, getMessage ... to be adapted to the browser's data structures. 
+Only a few of them have to be overridden, the majority of the requests rely on a few base ones.

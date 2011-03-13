@@ -12,7 +12,7 @@ and address it to the list with the appropriate subject prefix."
 	Cursor write
 		showWhile: 
 			["Prepare the message"
-			messageStrm _ WriteStream on: (String new: 1500).
+			messageStrm := WriteStream on: (String new: 1500).
 			messageStrm nextPutAll: 'From: ';
 			 nextPutAll: MailSender userName;
 			 cr;

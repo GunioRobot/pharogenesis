@@ -3,4 +3,4 @@ initialize
 	Voice initialize
 	"
 
-	Voices _ Set new
+	Voices := Set new

@@ -2,7 +2,7 @@ chooseChangeSetCategoryInMorphic
 	"Present the user with a list of change-set-categories and let her choose one.  In this morphic variant, we include balloon help"
 
 	|  aMenu |
-	aMenu _ MenuMorph new defaultTarget: self.
+	aMenu := MenuMorph new defaultTarget: self.
 	aMenu title: 
 'Choose the category of
 change sets to show in

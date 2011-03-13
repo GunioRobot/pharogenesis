@@ -4,4 +4,4 @@ installedPackagesDictionary
 	The arrays have the smartVersion of the package, the time of the
 	installation in seconds and the sequence number (installCounter)."
 
-	^installedPackages ifNil: [Dictionary new]
+	^self registry installedPackagesDictionary

@@ -1,5 +1,6 @@
 fullNameForChangesNamed: aName
 
-	| newName |
-	newName := FileDirectory baseNameFor: (FileDirectory default fullNameFor: aName).
+	| imgDir newName |
+	imgDir := FileDirectory on: self imagePath.
+	newName := FileDirectory baseNameFor: (imgDir fullNameFor: aName).
 	^newName , FileDirectory dot, FileDirectory changeSuffix.

@@ -1,7 +1,7 @@
 readDataFromFile
 
 	| fileName |
-	fileName _ FillInTheBlank
+	fileName := FillInTheBlank
 		request: 'File name?' translated
 		initialAnswer: ''.
 	fileName isEmpty ifTrue: [^ self].

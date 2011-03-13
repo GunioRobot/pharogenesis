@@ -1,1 +1,0 @@
-DialectParser class instanceVariableNames: ''

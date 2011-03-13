@@ -1,2 +1,0 @@
-ensureExistenceOfCategory: categoryName ifPseudo: pseudoBlock ifNew: newBlock
-	^ self at: categoryName ifAbsent: [(self pseudoCategories includes: categoryName) ifTrue: [pseudoBlock value] ifFalse: [newBlock value: (categories at: categoryName put: self newCategory)]]

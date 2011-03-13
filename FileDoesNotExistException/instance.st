@@ -1,6 +1,6 @@
 FileStreamException
 	subclass: #FileDoesNotExistException
-	instanceVariableNames: 'readOnly '
+	instanceVariableNames: 'readOnly'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Exceptions Kernel'
+	category: 'Exceptions-Kernel'

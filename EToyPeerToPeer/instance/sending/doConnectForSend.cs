@@ -2,7 +2,7 @@ doConnectForSend
 
 	| addr |
 
-	addr _ NetNameResolver addressForName: ipAddress.
+	addr := NetNameResolver addressForName: ipAddress.
 	addr ifNil: [
 		communicatorMorph commResult: {#message -> ('could not find ',ipAddress)}.
 		^false

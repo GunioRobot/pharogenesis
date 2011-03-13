@@ -1,2 +1,2 @@
 parseEndOfInput
-	eoiSeen _ true.
+	eoiSeen := true.

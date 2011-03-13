@@ -1,0 +1,1 @@
+SMObject class instanceVariableNames: ''

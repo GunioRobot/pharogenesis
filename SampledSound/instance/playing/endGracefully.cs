@@ -5,8 +5,8 @@ endGracefully
 	envelopes isEmpty
 		ifTrue: [
 			self adjustVolumeTo: 0 overMSecs: 10.
-			decayInMs _ 10]
+			decayInMs := 10]
 		ifFalse: [
-			env _ envelopes first.
-			decayInMs _ env attackTime + env decayTime].
-	count _ decayInMs * self samplingRate // 1000.
+			env := envelopes first.
+			decayInMs := env attackTime + env decayTime].
+	count := decayInMs * self samplingRate // 1000.

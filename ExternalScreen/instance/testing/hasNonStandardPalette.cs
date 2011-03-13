@@ -1,3 +1,0 @@
-hasNonStandardPalette
-	"Quite possible."
-	^true

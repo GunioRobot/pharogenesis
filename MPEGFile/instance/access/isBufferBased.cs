@@ -1,0 +1,2 @@
+isBufferBased
+	^(buffer == nil) not 

@@ -1,6 +1,6 @@
 AlignmentMorphBob1
 	subclass: #ProjectNavigationMorph
-	instanceVariableNames: 'mouseInside '
-	classVariableNames: 'LastManualPlacement '
+	instanceVariableNames: 'mouseInside soundSlider'
+	classVariableNames: 'LastManualPlacement'
 	poolDictionaries: ''
-	category: 'Morphic-Navigators'
+	category: 'MorphicExtras-Navigators'

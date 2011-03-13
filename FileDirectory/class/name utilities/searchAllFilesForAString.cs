@@ -6,10 +6,10 @@ searchAllFilesForAString
 
 	| searchString dir |
 
-	searchString _ FillInTheBlank request: 'Enter search string'.
+	searchString := FillInTheBlank request: 'Enter search string'.
 	searchString isEmpty ifTrue: [^nil].
 	Transcript cr; show: 'Searching for ', searchString printString, ' ...'.
-	(dir _ PluggableFileList getFolderDialog open) ifNotNil:
+	(dir := PluggableFileList getFolderDialog open) ifNotNil:
 		[(dir filesContaining: searchString caseSensitive: false) do:
 				[:pathname | Transcript cr; show: pathname]].
 	Transcript cr; show: 'Finished searching for ', searchString printString

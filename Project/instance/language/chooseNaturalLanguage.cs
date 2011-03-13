@@ -13,7 +13,7 @@ chooseNaturalLanguage
 
 	availableLanguages do:
 		[:localeID |
-			aMenu addUpdating: #stringForLanguageNameIs: target: Locale selector:  #switchToID: argumentList: {localeID}].
+			aMenu addUpdating: #stringForLanguageNameIs: target: Locale selector:  #switchAndInstallFontToID: argumentList: {localeID}].
 	aMenu popUpInWorld
 
 "Project current chooseNaturalLanguage"

@@ -1,2 +1,0 @@
-readVMParameters
-	vmParameters _ Smalltalk getVMParameters.

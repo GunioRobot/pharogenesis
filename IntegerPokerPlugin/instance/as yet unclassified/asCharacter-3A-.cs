@@ -1,2 +1,0 @@
-asCharacter: anInteger
-	^anInteger 

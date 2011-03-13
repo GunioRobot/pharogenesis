@@ -3,15 +3,15 @@ sumOutput into: outData
 	"insert zeros between each element of the input sequence and
 	   convolve with the filter to interpolate the data"
 	| outi filtLen oddTerm evenTerm j |
-	outi _ 1.
-	filtLen _ filter size.
+	outi := 1.
+	filtLen := filter size.
 
 	"every other dot product interpolates the data"
 	filtLen // 2 to: inLen + filtLen - 2 do:
 		[:i |
-		oddTerm _ self dotpData: inData endIndex: i filter: filter
+		oddTerm := self dotpData: inData endIndex: i filter: filter
 									start: 2 stop: filter size inc: 2.
-		evenTerm _ self dotpData: inData endIndex: i+1 filter: filter
+		evenTerm := self dotpData: inData endIndex: i+1 filter: filter
 									start: 1 stop: filter size inc: 2.
 		sumOutput
 			ifTrue:
@@ -22,11 +22,11 @@ sumOutput into: outData
 				["first convolution of pair if false"
 				outData at: outi put: oddTerm.
 				outData at: outi+1 put: evenTerm].
-		outi _ outi + 2].
+		outi := outi + 2].
 
 	"Ought to be able to fit this last term into the above loop."
-	j _ inLen + filtLen - 1.
-	oddTerm _ self dotpData: inData endIndex: j filter: filter
+	j := inLen + filtLen - 1.
+	oddTerm := self dotpData: inData endIndex: j filter: filter
 									start: 2 stop: filter size inc: 2.
 	sumOutput
 		ifTrue: [outData at: outi put: (outData at: outi) + oddTerm]

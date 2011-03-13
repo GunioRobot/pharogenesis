@@ -1,2 +1,2 @@
 timedEvents: aCollection
-	timedEvents _ aCollection
+	timedEvents := aCollection

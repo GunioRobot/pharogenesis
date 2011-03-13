@@ -5,10 +5,10 @@ file sound track."
 
         | snd buf |
         1 to: mixer sounds size do: [:i |
-                snd _ mixer sounds at: i.
-                buf _ snd samples.
+                snd := mixer sounds at: i.
+                buf := snd samples.
                 buf monoSampleCount = count ifFalse: [
-                        buf _ SoundBuffer newMonoSampleCount: count.
+                        buf := SoundBuffer newMonoSampleCount: count.
                         snd setSamples: buf samplingRate:
 streamSamplingRate].
                 i = 1 ifTrue: [  "first channel"

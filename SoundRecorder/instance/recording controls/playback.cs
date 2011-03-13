@@ -2,5 +2,5 @@ playback
 	"Playback the sound that has been recorded."
 
 	self pause.
-	soundPlaying _ self recordedSound.
+	soundPlaying := self recordedSound.
 	soundPlaying play.

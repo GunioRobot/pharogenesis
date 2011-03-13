@@ -2,7 +2,7 @@ trulyFlashIndicator: aSymbol
 
 	| state |
 
-	state _ (self 
+	state := (self 
 		valueOfProperty: #fridgeFlashingState
 		ifAbsent: [false]) not.
 	self setProperty: #fridgeFlashingState toValue: state.

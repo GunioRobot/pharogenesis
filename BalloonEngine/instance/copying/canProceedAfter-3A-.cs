@@ -8,9 +8,9 @@ canProceedAfter: failureReason
 		^true].
 	failureReason = GErrorNoMoreSpace ifTrue:[
 		"Work buffer is too small"
-		newBuffer _ workBuffer species new: workBuffer size * 2.
+		newBuffer := workBuffer species new: workBuffer size * 2.
 		self primCopyBufferFrom: workBuffer to: newBuffer.
-		workBuffer _ newBuffer.
+		workBuffer := newBuffer.
 		^true].
 	"Not handled"
 	^false

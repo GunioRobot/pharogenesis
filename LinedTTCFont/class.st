@@ -1,0 +1,1 @@
+LinedTTCFont class instanceVariableNames: ''

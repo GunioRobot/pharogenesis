@@ -1,0 +1,1 @@
+ObjectOut class instanceVariableNames: ''

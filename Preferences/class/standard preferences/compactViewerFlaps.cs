@@ -1,2 +1,0 @@
-compactViewerFlaps
-	^ self valueOfFlag: #compactViewerFlaps

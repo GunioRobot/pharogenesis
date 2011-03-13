@@ -1,0 +1,1 @@
+TraitExclusion class instanceVariableNames: ''

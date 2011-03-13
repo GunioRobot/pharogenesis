@@ -1,3 +1,3 @@
 token: aString
 
-	token _ aString
+	token := aString

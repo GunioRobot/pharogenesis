@@ -1,0 +1,2 @@
+iEditCommand
+	^true

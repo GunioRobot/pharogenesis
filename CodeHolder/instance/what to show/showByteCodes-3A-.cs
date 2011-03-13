@@ -4,7 +4,7 @@ showByteCodes: aBoolean
 	self okToChange ifFalse: [^ self changed: #flash].
 	aBoolean
 		ifTrue:
-			[contentsSymbol _ #byteCodes]
+			[contentsSymbol := #byteCodes]
 		ifFalse:
-			[contentsSymbol == #byteCodes ifTrue: [contentsSymbol _ #source]].
+			[contentsSymbol == #byteCodes ifTrue: [contentsSymbol := #source]].
 	self contentsChanged

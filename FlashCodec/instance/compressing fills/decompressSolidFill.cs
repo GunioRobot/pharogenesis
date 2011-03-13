@@ -1,4 +1,4 @@
 decompressSolidFill
 	| color |
-	color _ self readColorFrom: stream.
+	color := self readColorFrom: stream.
 	^SolidFillStyle color: color

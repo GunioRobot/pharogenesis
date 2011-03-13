@@ -1,6 +1,6 @@
 StringButtonMorph
 	subclass: #TabMorph
-	instanceVariableNames: 'morphToInstall '
+	instanceVariableNames: 'morphToInstall'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Palettes'
+	category: 'MorphicExtras-Palettes'

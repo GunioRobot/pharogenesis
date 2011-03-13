@@ -15,9 +15,7 @@ sliderColor: aColor
 	self updateUpButtonImage.
 	self updateDownButtonImage.
 	
-	self alternativeScrollbarLook
-		ifTrue: [
-			self roundedScrollbarLook
+	self roundedScrollbarLook
 				ifTrue: [
 					self color: Color transparent.
 					pagingArea color: aColor muchLighter.
@@ -27,4 +25,4 @@ sliderColor: aColor
 				ifFalse: [
 					pagingArea
 						color: (aColor alphaMixed: 0.3 with: Color white).
-					self borderWidth: 0]]
+					self borderWidth: 0]

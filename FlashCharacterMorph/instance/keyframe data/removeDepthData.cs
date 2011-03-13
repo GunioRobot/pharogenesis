@@ -1,3 +1,3 @@
 removeDepthData
-	dData _ FlashKeyframes new.
+	dData := FlashKeyframes new.
 	"^self removeKeyframeData: #depthData"

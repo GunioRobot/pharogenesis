@@ -1,6 +1,6 @@
 messageCatListSingleton
 
 	| name |
-	name _ self selectedMessageCategoryName.
+	name := self selectedMessageCategoryName.
 	^ name ifNil: [Array new]
 		ifNotNil: [Array with: name]

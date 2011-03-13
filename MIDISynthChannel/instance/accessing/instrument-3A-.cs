@@ -1,3 +1,3 @@
 instrument: aSound
 
-	instrument _ aSound.
+	instrument := aSound.

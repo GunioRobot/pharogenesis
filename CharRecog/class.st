@@ -1,1 +1,0 @@
-CharRecog class instanceVariableNames: ''

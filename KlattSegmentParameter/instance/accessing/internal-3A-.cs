@@ -1,2 +1,2 @@
 internal: aNumber
-	internal _ aNumber
+	internal := aNumber

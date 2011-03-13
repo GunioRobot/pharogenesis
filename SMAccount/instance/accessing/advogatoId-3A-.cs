@@ -1,2 +1,2 @@
 advogatoId: aString
-	advogatoId _ aString
+	advogatoId := aString

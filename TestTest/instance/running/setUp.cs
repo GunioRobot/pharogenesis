@@ -1,3 +1,0 @@
-setUp
-
-	self hasSetup: true.

@@ -1,4 +1,4 @@
 initialize
 
-	cachingEnabled _ true.
+	cachingEnabled := true.
 	fontCache := FontCache new: 5.

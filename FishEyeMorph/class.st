@@ -1,0 +1,1 @@
+FishEyeMorph class instanceVariableNames: ''

@@ -1,0 +1,1 @@
+OBNodeDeleted class instanceVariableNames: ''

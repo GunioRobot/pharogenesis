@@ -3,7 +3,7 @@ convertVelocity: valueByte
 	"Details: A quadratic function seems to give a good keyboard feel."
 
 	| r |
-	r _ (valueByte * valueByte) / 12000.0.
+	r := (valueByte * valueByte) / 12000.0.
 	r > 1.0 ifTrue: [^ 1.0].
 	r < 0.08 ifTrue: [^ 0.08].
 	^ r

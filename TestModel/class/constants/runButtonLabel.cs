@@ -1,3 +1,0 @@
-runButtonLabel
-
-	^'RUN!' copy

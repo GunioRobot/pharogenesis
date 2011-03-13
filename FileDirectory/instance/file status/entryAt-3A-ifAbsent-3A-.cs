@@ -4,6 +4,6 @@ entryAt: fileName ifAbsent: aBlock
 
 	| comparisonBlock |
 	self isCaseSensitive
-		ifTrue: [comparisonBlock _ [:entry | (entry at: 1) = fileName]]
-		ifFalse: [comparisonBlock _ [:entry | (entry at: 1) sameAs: fileName]].
+		ifTrue: [comparisonBlock := [:entry | (entry at: 1) = fileName]]
+		ifFalse: [comparisonBlock := [:entry | (entry at: 1) sameAs: fileName]].
 	^ self entries detect: comparisonBlock ifNone: [aBlock value]

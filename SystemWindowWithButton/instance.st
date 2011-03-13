@@ -1,6 +1,6 @@
 SystemWindow
 	subclass: #SystemWindowWithButton
-	instanceVariableNames: 'buttonInTitle '
+	instanceVariableNames: 'buttonInTitle'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Windows'

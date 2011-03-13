@@ -24,11 +24,11 @@ initialize
 ) do:
 
 		[:item | 
-			aMethodCategory _ ElementCategory new categoryName: item first.
+			aMethodCategory := ElementCategory new categoryName: item first.
 			aMethodCategory documentation: item second.
 			item third do:
 				[:aSelector | 
-					aMethodInterface _ MethodInterface new conjuredUpFor: aSelector class: (Number whichClassIncludesSelector: aSelector).
+					aMethodInterface := MethodInterface new conjuredUpFor: aSelector class: (Number whichClassIncludesSelector: aSelector).
 					aMethodInterface argumentVariables do:
 							[:var | var variableType: #Number].
 

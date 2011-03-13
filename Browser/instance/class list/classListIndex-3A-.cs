@@ -3,10 +3,10 @@ classListIndex: anInteger
 
 	| className |
 
-	classListIndex _ anInteger.
+	classListIndex := anInteger.
 	self setClassOrganizer.
-	messageCategoryListIndex _ 0.
-	messageListIndex _ 0.
+	messageCategoryListIndex := 0.
+	messageListIndex := 0.
 	self classCommentIndicated
 		ifTrue: []
 		ifFalse: [self editSelection: (anInteger = 0
@@ -14,9 +14,9 @@ classListIndex: anInteger
 						ifTrue: [#none]
 						ifFalse: [#newClass]]
 					ifFalse: [#editClass])].
-	contents _ nil.
+	contents := nil.
 	self selectedClass isNil
-		ifFalse: [className _ self selectedClass name.
+		ifFalse: [className := self selectedClass name.
 					(RecentClasses includes: className)
 				ifTrue: [RecentClasses remove: className].
 			RecentClasses addFirst: className.

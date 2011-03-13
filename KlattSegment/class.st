@@ -1,1 +1,0 @@
-KlattSegment class instanceVariableNames: ''

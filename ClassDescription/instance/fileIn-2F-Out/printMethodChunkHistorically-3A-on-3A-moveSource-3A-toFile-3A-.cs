@@ -11,17 +11,15 @@ printMethodChunkHistorically: selector on: outStream moveSource: moveSource toFi
 	or: [method filePosition = 0])
 	ifTrue: [
 		outStream cr; nextPut: $!; nextChunkPut: preamble; cr.
-		outStream nextChunkPut: (
-			self decompilerClass new 
-				decompile: selector in: self method: method) decompileString.
+		outStream nextChunkPut: method decompileString.
 		outStream nextChunkPut: ' '; cr]
 	ifFalse: [
-		changeList _ (VersionsBrowser new 
+		changeList _ ChangeSet 
 			scanVersionsOf: method 
 			class: self 
 			meta: self isMeta
 			category: category 
-			selector: selector) changeList.
+			selector: selector.
 		newPos _ nil.
 		sourceFile _ SourceFiles at: method fileIndex.
 		changeList reverseDo: [ :chgRec |

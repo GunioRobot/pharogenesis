@@ -1,0 +1,1 @@
+TelnetProtocolClient class instanceVariableNames: ''

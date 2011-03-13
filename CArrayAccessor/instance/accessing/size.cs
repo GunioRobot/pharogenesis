@@ -1,3 +1,0 @@
-size
-
-	^object size

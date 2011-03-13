@@ -3,7 +3,7 @@ receiveData: nBytes
 	in the inBuffer or we reach the end. This method
 	does not return data, but can be used to make sure
 	data has been read into the buffer from the Socket
-	before actually reading it from the SocketStream.
+	before actually reading it from the FastSocketStream.
 	Mainly used internally. We could also adjust the buffer
 	to the expected amount of data and avoiding several
 	incremental grow operations.

@@ -1,2 +1,2 @@
 n0: anInteger
-	n0 _ anInteger
+	n0 := anInteger

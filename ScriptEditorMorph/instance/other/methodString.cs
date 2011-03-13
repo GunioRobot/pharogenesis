@@ -1,10 +1,18 @@
 methodString
 	"Answer the source-code string for the receiver.  This is for use by classic tiles, but is also used in universal tiles to formulate an initial method declaration for a nascent user-defined script; in universalTiles mode, the codeString (at present anyway) is empty -- the actual code derives from the SyntaxMorph in that case"
 
-	^ String streamContents:
+	| k methodNode string |
+	playerScripted class compileSilently: (string _ String streamContents:
 		[:aStream |
 			aStream nextPutAll: scriptName.
-			scriptName numArgs > 0 ifTrue:
+			scriptName endsWithAColon ifTrue:
 				[aStream nextPutAll: ' parameter'].
 			aStream cr; cr; tab.
-			aStream nextPutAll: self codeString]
+			aStream nextPutAll: self codeString.
+	]) classified: 'temporary'.
+
+	k _ KedamaVectorizer new initialize.
+	(k includesTurtlePlayer: (playerScripted class decompile: scriptName) for: playerScripted) ifFalse: [^ string].
+
+	methodNode _ k vectorize: (playerScripted class decompile: scriptName) 	object: playerScripted.
+	^ methodNode decompileString.

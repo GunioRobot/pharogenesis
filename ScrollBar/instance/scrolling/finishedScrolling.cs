@@ -5,7 +5,7 @@ finishedScrolling
 		upButton borderStyle: (BorderStyle complexRaised width: upButton borderWidth).
 		downButton borderStyle: (BorderStyle complexRaised width: downButton borderWidth).
 	] ifFalse:[
-		downButton borderRaised.
-		upButton borderRaised.
+		downButton borderStyle: BorderStyle thinGray.
+		upButton borderStyle: BorderStyle thinGray.
 	].
 

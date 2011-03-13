@@ -1,6 +1,7 @@
-TestInterfaceBase
+Object
 	subclass: #TestRunner
-	instanceVariableNames: ''
+	instanceVariableNames:
+		'categories categoriesSelected classes classesSelected failedList failedSelected errorList errorSelected lastUpdate result'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'SUnit-Interface'
+	category: 'SUnitGUI'

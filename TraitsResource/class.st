@@ -1,0 +1,1 @@
+TraitsResource class instanceVariableNames: ''

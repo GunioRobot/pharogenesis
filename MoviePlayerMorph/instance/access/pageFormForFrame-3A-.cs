@@ -1,14 +1,14 @@
 pageFormForFrame: frameNo
 
 	| f form oldFrame |
-oldFrame _ frameNumber.
+oldFrame := frameNumber.
 self goToPage: frameNo.
-form _ currentPage image deepCopy.
+form := currentPage image deepCopy.
 self goToPage: oldFrame.
 true ifTrue: [^ form].
 
-	f _ FileStream readOnlyFileNamed: movieFileName.
-	form _ Form extent: frameSize depth: frameDepth.
+	f := FileStream readOnlyFileNamed: movieFileName.
+	form := Form extent: frameSize depth: frameDepth.
 
 	"For some weird reason, the next line does not work..."
 	f position: (self filePosForFrameNo: frameNo).

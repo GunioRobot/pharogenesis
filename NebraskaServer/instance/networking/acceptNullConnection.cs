@@ -2,6 +2,6 @@ acceptNullConnection
 
 	| twins |
 
-	twins _ LoopbackStringSocket newPair.
+	twins := LoopbackStringSocket newPair.
 	self addClientFromConnection: twins first.
 	(NullTerminalMorph new connection: twins second) openInWorld.

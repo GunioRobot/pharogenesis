@@ -1,3 +1,3 @@
 setUp
-	message _ ReadWriteStream on: (String new: 10).
+	message := ReadWriteStream on: (String new: 10).
 	message nextPutAll: 'Hi There!'.

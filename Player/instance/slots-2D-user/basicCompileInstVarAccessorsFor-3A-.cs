@@ -1,0 +1,2 @@
+basicCompileInstVarAccessorsFor: varName
+	self class compileInstVarAccessorsFor: varName

@@ -15,7 +15,7 @@ addTempVar: aMorph
 	tempHolder ifNil: [
 		tempHolder _ owner addRow: #tempVariable on: MethodTempsNode new.
 		tempHolder addNoiseString: self noiseBeforeBlockArg.
-		tempHolder submorphs last firstSubmorph emphasis: 1.
+		tempHolder submorphs last firstSubmorph emphasis: TextEmphasis bold emphasisCode.
 		tempHolder useRoundedCorners.
 
 		owner addMorph: tempHolder inFrontOf: self.

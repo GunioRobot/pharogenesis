@@ -1,0 +1,1 @@
+MCPostscriptDefinition class instanceVariableNames: ''

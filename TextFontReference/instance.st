@@ -1,6 +1,6 @@
 TextFontChange
 	subclass: #TextFontReference
-	instanceVariableNames: 'font '
+	instanceVariableNames: 'font'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Collections-Text'

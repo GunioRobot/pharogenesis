@@ -1,0 +1,3 @@
+undo
+	^super undoLastCommand
+

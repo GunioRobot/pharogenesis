@@ -1,2 +1,0 @@
-smtpPassword
-	^ self popPassword

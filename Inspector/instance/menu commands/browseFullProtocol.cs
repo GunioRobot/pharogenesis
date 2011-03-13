@@ -4,5 +4,5 @@ browseFullProtocol
 	| objectToRepresent |
 	Smalltalk isMorphic ifFalse: [^ self spawnProtocol].
 
-	objectToRepresent _ self selectionIndex == 0 ifTrue: [object] ifFalse: [self selection].
+	objectToRepresent := self selectionIndex == 0 ifTrue: [object] ifFalse: [self selection].
 	InstanceBrowser new openOnObject: objectToRepresent inWorld: ActiveWorld showingSelector: nil

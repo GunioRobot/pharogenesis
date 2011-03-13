@@ -1,9 +1,9 @@
 collectActivationKeys: frame
 	"Note: Must only be called after a frame has been completed"
 	| vis lastKey |
-	vis _ Array new: frame.
+	vis := Array new: frame.
 	vis atAllPut: #().
-	lastKey _ activationKeys size.
+	lastKey := activationKeys size.
 	vis replaceFrom: 1 to: lastKey with: activationKeys startingAt: 1.
 	submorphs do:[:m|
 		(m isFlashMorph and:[m isFlashCharacter]) ifTrue:[

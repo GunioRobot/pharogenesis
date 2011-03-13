@@ -1,0 +1,1 @@
+OBMethodVerison represents a version of a method found in the .sources or .changes files. It provides methods for parsing the method definition referenced by a source pointer, and for filing in the source to replace the current version of the method.

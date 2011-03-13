@@ -4,12 +4,12 @@ renameClass
 		ifTrue: [^ self].
 	self okToChange
 		ifFalse: [^ self].
-	oldName _ self selectedClass name.
-	newName _ self request: 'Please type new class name' initialAnswer: oldName.
+	oldName := self selectedClass name.
+	newName := self request: 'Please type new class name' initialAnswer: oldName.
 	newName = ''
 		ifTrue: [^ self].
 	"Cancel returns ''"
-	newName _ newName asSymbol.
+	newName := newName asSymbol.
 	newName = oldName
 		ifTrue: [^ self].
 	(Smalltalk includesKey: newName)
@@ -19,7 +19,7 @@ renameClass
 	self
 		classListIndex: ((systemOrganizer listAtCategoryNamed: self selectedSystemCategoryName)
 				indexOf: newName).
-	obs _ self systemNavigation
+	obs := self systemNavigation
 				allCallsOn: (Smalltalk associationAt: newName).
 	obs isEmpty
 		ifFalse: [self systemNavigation

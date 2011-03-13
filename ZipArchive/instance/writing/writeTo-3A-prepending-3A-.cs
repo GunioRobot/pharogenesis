@@ -5,6 +5,6 @@ writeTo: stream prepending: aString
 		member writeTo: stream.
 		member endRead.
 	].
-	writeCentralDirectoryOffset _ stream position.
+	writeCentralDirectoryOffset := stream position.
 	self writeCentralDirectoryTo: stream.
 	

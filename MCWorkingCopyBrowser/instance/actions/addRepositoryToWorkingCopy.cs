@@ -5,4 +5,5 @@ addRepositoryToWorkingCopy
 			self
 				changed: #workingCopySelection;
 				changed: #repositoryList;
-				changed: #repositorySelection]
+				changed: #repositorySelection.
+			self changedButtons]

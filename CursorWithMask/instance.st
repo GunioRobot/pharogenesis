@@ -1,6 +1,6 @@
 Cursor
 	subclass: #CursorWithMask
-	instanceVariableNames: 'maskForm '
+	instanceVariableNames: 'maskForm'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Graphics-Display Objects'

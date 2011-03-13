@@ -1,0 +1,2 @@
+pluggableCheckBoxSpec
+	^PluggableCheckBoxSpec

@@ -1,2 +1,0 @@
-tearOffTile
-	^ myActor tearOffTileForSelf

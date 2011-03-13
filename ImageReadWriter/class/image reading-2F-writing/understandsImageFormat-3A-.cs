@@ -1,2 +1,2 @@
-understandsImageFormat: aStream
-	^(self new on: aStream) understandsImageFormat
+understandsImageFormat: aStream 
+	^[(self new on: aStream) understandsImageFormat] on: Error do:[:ex| ex return: false]

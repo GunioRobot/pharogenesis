@@ -5,5 +5,5 @@ encodeDoublingQuoteOn: aStream
 	1 to: self size do:
 		[:i |
 		aStream print: (x _ self at: i).
-		x == $' ifTrue: [aStream print: x]].
+		x = $' ifTrue: [aStream print: x]].
 	aStream print: $'

@@ -1,0 +1,2 @@
+I abstract all the UI-related behaviors for the services framework.
+In the future I could be changed to be compatible with ToolBuilder

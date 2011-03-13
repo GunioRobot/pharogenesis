@@ -1,2 +1,0 @@
-isGeneratingPluginCode
-	^false

@@ -4,5 +4,5 @@ You will then be able to invoke it from the standard debugging menus.  If invoke
 
 Note that you can indeed reimplement tempCommand in an individual morph's class if you wish"
 
-	Browser openMessageBrowserForClass: Morph
-		selector: #tempCommand editString: nil
+	ToolSet browse: Morph
+		selector: #tempCommand

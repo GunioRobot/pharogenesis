@@ -3,11 +3,11 @@ updateBackgroundForm
 
 	| drawingForm |
 
-	drawingForm _ decoder drawingForm.
+	drawingForm := decoder drawingForm.
 	(drawingForm extent = backgroundForm extent and: [
 		drawingForm depth = backgroundForm depth ]) ifTrue: [
 			"they match just fine"
 			^self ].
 
-	backgroundForm _ drawingForm deepCopy.		"need copy to capture the moment"
+	backgroundForm := drawingForm deepCopy.		"need copy to capture the moment"
 	self extent: backgroundForm extent.

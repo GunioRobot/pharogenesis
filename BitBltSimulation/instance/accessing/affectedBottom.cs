@@ -1,3 +1,0 @@
-affectedBottom
-
-	^affectedB

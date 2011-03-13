@@ -1,5 +1,5 @@
 playSound: aSoundOrNil
 
 	SoundPlaying ifNotNil: [SoundPlaying stopGracefully].
-	SoundPlaying _ aSoundOrNil.
+	SoundPlaying := aSoundOrNil.
 	SoundPlaying ifNotNil: [SoundPlaying play].

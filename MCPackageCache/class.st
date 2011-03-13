@@ -1,0 +1,1 @@
+MCPackageCache class instanceVariableNames: ''

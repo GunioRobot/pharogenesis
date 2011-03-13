@@ -1,1 +1,0 @@
-B3DVertexClipper class instanceVariableNames: ''

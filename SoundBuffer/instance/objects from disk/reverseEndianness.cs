@@ -2,8 +2,8 @@ reverseEndianness
 	"Swap the bytes of each 16-bit word, using a fast BitBlt hack."
 
 	| hack blt |
-	hack _ Form new hackBits: self.
-	blt _ (BitBlt toForm: hack) sourceForm: hack.
+	hack := Form new hackBits: self.
+	blt := (BitBlt toForm: hack) sourceForm: hack.
 	blt combinationRule: Form reverse.  "XOR"
 	blt sourceY: 0; destY: 0; height: self size; width: 1.
 	blt sourceX: 0; destX: 1; copyBits.  "Exchange bytes 0 and 1"

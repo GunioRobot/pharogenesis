@@ -1,2 +1,2 @@
 monitorList
-	^monitorList ifNil: [ monitorList _ WeakIdentityKeyDictionary new ].
+	^monitorList ifNil: [ monitorList := WeakIdentityKeyDictionary new ].

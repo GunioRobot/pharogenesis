@@ -9,9 +9,9 @@ numberOfHMetrics   USHORT         Number hMetric entries in the HTMX
 "
 	| asc desc lGap numHMetrics |
 	entry skip: 4. "Skip table version"
-	asc _ entry nextShort.
-	desc _ entry nextShort.
-	lGap _ entry nextShort.
+	asc := entry nextShort.
+	desc := entry nextShort.
+	lGap := entry nextShort.
 	entry skip: 2. "Skip advanceWidthMax"
 	entry skip: 2. "Skip minLeftSideBearing"
 	entry skip: 2. "Skip minRightSideBearing"
@@ -21,7 +21,7 @@ numberOfHMetrics   USHORT         Number hMetric entries in the HTMX
 	entry skip: 10. "Skip 5 reserved shorts"
 	entry skip: 2. "Skip metricDataFormat"
 
-	numHMetrics _ entry nextUShort.
+	numHMetrics := entry nextUShort.
 
 	fontDescription setAscender: asc descender: desc lineGap: lGap.
 	^numHMetrics

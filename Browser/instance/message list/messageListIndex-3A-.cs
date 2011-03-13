@@ -1,7 +1,7 @@
 messageListIndex: anInteger
 	"Set the selected message selector to be the one indexed by anInteger."
 
-	messageListIndex _ anInteger.
+	messageListIndex := anInteger.
 	self editSelection: (anInteger > 0
 		ifTrue: [#editMessage]
 		ifFalse: [self messageCategoryListIndex > 0
@@ -9,7 +9,7 @@ messageListIndex: anInteger
 			ifFalse: [self classListIndex > 0
 				ifTrue: [#editClass]
 				ifFalse: [#newClass]]]).
-	contents _ nil.
+	contents := nil.
 	self changed: #messageListIndex. "update my selection"
 	self contentsChanged.
 	self decorateButtons.

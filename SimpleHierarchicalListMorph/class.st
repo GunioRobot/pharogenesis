@@ -1,1 +1,1 @@
-SimpleHierarchicalListMorph class instanceVariableNames: ''
+SimpleHierarchicalListMorph class instanceVariableNames: 'expandedForm notExpandedForm'

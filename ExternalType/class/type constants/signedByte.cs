@@ -1,2 +1,0 @@
-signedByte
-	^AtomicTypes at: 'sbyte'

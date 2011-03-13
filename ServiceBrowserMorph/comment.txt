@@ -1,0 +1,1 @@
+I subclass the PreferenceBrowserMorph to adapt the interface to services. So far the changes are minimal.

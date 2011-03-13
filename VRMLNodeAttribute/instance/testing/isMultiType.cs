@@ -1,2 +1,0 @@
-isMultiType
-	^type first = $M

@@ -1,0 +1,2 @@
+menuTitleColor
+	^ self subclassResponsibility

@@ -1,6 +1,6 @@
 Voice
 	subclass: #CompositeVoice
-	instanceVariableNames: 'voices '
+	instanceVariableNames: 'voices'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Speech-Events'

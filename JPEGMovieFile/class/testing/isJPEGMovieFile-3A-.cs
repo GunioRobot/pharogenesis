@@ -3,7 +3,7 @@ isJPEGMovieFile: fileName
 
 	| f tag |
 	(FileDirectory default fileExists: fileName) ifFalse: [^ false].
-	f _ (FileStream readOnlyFileNamed: fileName) binary.
-	tag _ (f next: 10) asString.
+	f := (FileStream readOnlyFileNamed: fileName) binary.
+	tag := (f next: 10) asString.
 	f close.
 	^ tag = 'JPEG Movie'

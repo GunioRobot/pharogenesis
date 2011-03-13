@@ -1,6 +1,6 @@
 ObjectRepresentativeMorph
 	subclass: #ClassRepresentativeMorph
-	instanceVariableNames: 'classRepresented '
+	instanceVariableNames: 'classRepresented'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Scripting'
+	category: 'EToys-Scripting'

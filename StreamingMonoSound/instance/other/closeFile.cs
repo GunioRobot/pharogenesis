@@ -3,5 +3,5 @@ closeFile
 
 	stream ifNotNil: [
 		(stream respondsTo: #close) ifTrue: [stream close]].
-	mixer _ nil.
-	codec _ nil.
+	mixer := nil.
+	codec := nil.

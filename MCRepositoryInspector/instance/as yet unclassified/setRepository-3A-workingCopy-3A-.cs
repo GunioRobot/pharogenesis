@@ -1,4 +1,4 @@
 setRepository: aRepository workingCopy: aWorkingCopy
-	repository _ aRepository.
-	aWorkingCopy isNil ifFalse: [ selectedPackage _ aWorkingCopy package].
+	repository := aRepository.
+	aWorkingCopy isNil ifFalse: [ selectedPackage := aWorkingCopy package].
 	self refresh

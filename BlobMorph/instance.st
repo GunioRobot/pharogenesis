@@ -1,6 +1,6 @@
 PolygonMorph
 	subclass: #BlobMorph
-	instanceVariableNames: 'random velocity sneaky '
-	classVariableNames: 'AllBlobs '
+	instanceVariableNames: 'random velocity sneaky'
+	classVariableNames: 'AllBlobs'
 	poolDictionaries: ''
-	category: 'Morphic-Demo'
+	category: 'MorphicExtras-Demo'

@@ -1,0 +1,2 @@
+metaNode
+	^ self

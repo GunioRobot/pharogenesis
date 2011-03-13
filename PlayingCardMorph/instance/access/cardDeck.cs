@@ -1,3 +1,0 @@
-cardDeck
-
-	^self owner

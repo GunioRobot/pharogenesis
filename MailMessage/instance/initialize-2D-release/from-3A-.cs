@@ -3,7 +3,6 @@ from: aString
 
 	| parseStream contentType bodyText contentTransferEncoding |
 
-	tokens _ nil.
 	text _ aString withoutTrailingBlanks, String cr.
 	parseStream _ ReadStream on: text.
 	contentType _ 'text/plain'.
@@ -27,5 +26,5 @@ from: aString
 		ifTrue: 
 			[bodyText _ Base64MimeConverter mimeDecodeToChars: (ReadStream on: bodyText).
 			bodyText _ bodyText contents].
-	contentTransferEncoding = 'quoted-printable' ifTrue: [bodyText _ QuotedPrintableMimeConverter  mimeDecode: bodyText as: String].
+	contentTransferEncoding = 'quoted-printable' ifTrue: [bodyText _ bodyText decodeQuotedPrintable].
 	body _ MIMEDocument contentType: contentType content: bodyText

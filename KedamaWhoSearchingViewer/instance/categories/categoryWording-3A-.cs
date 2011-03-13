@@ -1,0 +1,2 @@
+categoryWording: aCategoryWording
+	"okay, thanks"

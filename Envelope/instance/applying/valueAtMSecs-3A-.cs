@@ -3,6 +3,6 @@ valueAtMSecs: mSecs
 
 	mSecs < 0 ifTrue: [^ 0.0].
 	mSecs < nextRecomputeTime
-		ifTrue: [currValue _ currValue + valueIncr]
-		ifFalse: [currValue _ self incrementalComputeValueAtMSecs: mSecs].
+		ifTrue: [currValue := currValue + valueIncr]
+		ifFalse: [currValue := self incrementalComputeValueAtMSecs: mSecs].
 	^ currValue

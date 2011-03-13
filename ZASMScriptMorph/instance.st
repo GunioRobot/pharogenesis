@@ -1,6 +1,6 @@
 PasteUpMorph
 	subclass: #ZASMScriptMorph
-	instanceVariableNames: 'somethingChanged '
+	instanceVariableNames: 'somethingChanged'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Demo'
+	category: 'MorphicExtras-Demo'

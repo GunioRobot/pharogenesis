@@ -1,6 +1,6 @@
 ModalSystemWindowView
 	subclass: #PluggableFileListView
-	instanceVariableNames: 'acceptButtonView '
+	instanceVariableNames: 'acceptButtonView'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Tools-FileList'
+	category: 'Morphic-FileList'

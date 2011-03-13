@@ -1,6 +1,6 @@
 Object
 	subclass: #LimitingLineStreamWrapper
-	instanceVariableNames: 'stream line limitingBlock position '
+	instanceVariableNames: 'stream line limitingBlock position'
 	classVariableNames: ''
-	poolDictionaries: 'TextConstants '
+	poolDictionaries: 'TextConstants'
 	category: 'Collections-Streams'

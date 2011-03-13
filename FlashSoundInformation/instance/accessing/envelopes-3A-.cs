@@ -1,2 +1,2 @@
 envelopes: aCollection
-	envelopes _ aCollection
+	envelopes := aCollection

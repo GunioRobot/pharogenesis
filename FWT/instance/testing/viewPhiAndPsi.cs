@@ -5,7 +5,7 @@ viewPhiAndPsi  "(FWT new nSamples: 256 nLevels: 6) viewPhiAndPsi"
 	Display border: (0@0 extent: 300@300) width: 2.
 	[Sensor anyButtonPressed] whileFalse:
 		["Move mouse around in the outer rectangle to explore"
-		p _ Sensor cursorPoint min: 300@300.
+		p := Sensor cursorPoint min: 300@300.
 		self setAlpha: (p x - 150) / 150.0 * Float pi
 				beta: (p y - 150) / 150.0 * Float pi.
 		'alpha=', (alpha roundTo: 0.01) printString, '   ',

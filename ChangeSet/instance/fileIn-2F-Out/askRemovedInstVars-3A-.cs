@@ -14,13 +14,15 @@ askRemovedInstVars: classList
 				pairClasses add: cls]]].
 
 	pairList isEmpty ifTrue: [^ #()].
-	[index _ PopUpMenu withCaption: 'These instance variables were removed.
+	[index _ UIManager default 
+		chooseFrom: pairList, #('all of these need a conversion method'
+						'all of these have old values that can be erased')
+			title:
+'These instance variables were removed.
 When an old project comes in, instance variables 
 that have been removed will lose their contents.
 Click on items to remove them from the list.
-Click on any whose value is unimportant and need not be saved.'
-		chooseFrom: pairList, #('all of these need a conversion method'
-						'all of these have old values that can be erased').
+Click on any whose value is unimportant and need not be saved.'.
 	(index <= (pls _ pairList size)) & (index > 0) ifTrue: [
 		pairList removeAt: index.
 		pairClasses removeAt: index].

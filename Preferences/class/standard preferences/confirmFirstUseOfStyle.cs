@@ -1,2 +1,0 @@
-confirmFirstUseOfStyle
-	^ self valueOfFlag: #confirmFirstUseOfStyle

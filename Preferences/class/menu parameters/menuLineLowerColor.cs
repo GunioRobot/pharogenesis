@@ -1,2 +1,0 @@
-menuLineLowerColor
-	^ Parameters at: #menuLineLowerColor

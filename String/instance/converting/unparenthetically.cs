@@ -3,7 +3,7 @@ unparenthetically
 
 	| curr |
 	curr _ self.
-	[((curr first == $() and: [curr last == $)])] whileTrue:
+	[((curr first = $() and: [curr last = $)])] whileTrue:
 		[curr _ curr copyFrom: 2 to: (curr size - 1)].
 
 	^ curr

@@ -1,0 +1,1 @@
+MCVersionMerger class instanceVariableNames: ''

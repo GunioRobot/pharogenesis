@@ -1,0 +1,1 @@
+MCSnapshot class instanceVariableNames: ''

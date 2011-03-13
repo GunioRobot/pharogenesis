@@ -1,3 +1,3 @@
 leftSamples: aSampleBuffer
 
-	leftSamples _ aSampleBuffer.
+	leftSamples := aSampleBuffer.

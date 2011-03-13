@@ -1,0 +1,2 @@
+keyboardFocusColor
+	^ self subclassResponsibility

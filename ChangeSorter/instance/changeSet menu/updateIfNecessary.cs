@@ -9,10 +9,10 @@ updateIfNecessary
 		[self changed: #changeSetList.
 		^ self showChangeSet: self changeSetCategory defaultChangeSetToShow].
 
-	newList _ self changeSetList.
+	newList := self changeSetList.
 
 	(priorChangeSetList == nil or: [priorChangeSetList ~= newList])
 		ifTrue:
-			[priorChangeSetList _ newList.
+			[priorChangeSetList := newList.
 			self changed: #changeSetList].
 	self showChangeSet: myChangeSet

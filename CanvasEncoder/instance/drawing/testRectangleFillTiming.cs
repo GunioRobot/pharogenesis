@@ -3,11 +3,11 @@ testRectangleFillTiming
 "
 CanvasEncoder new testRectangleFillTiming
 "
-	r _ 100@100 extent: 300@300.
-	fillColor _ Color blue.
-	borderWidth _ 1.
-	borderColor _ Color red.
-	t _ Time millisecondsToRun: [
+	r := 100@100 extent: 300@300.
+	fillColor := Color blue.
+	borderWidth := 1.
+	borderColor := Color red.
+	t := Time millisecondsToRun: [
 		1000 timesRepeat: [
 		{
 		String with: CanvasEncoder codeRect.

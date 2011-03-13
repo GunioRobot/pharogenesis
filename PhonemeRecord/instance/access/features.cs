@@ -3,6 +3,6 @@ features
 
 	features ifNil: [
 		AverageFeatures
-			ifTrue: [features _ self averageFeatures]
-			ifFalse: [features _ self featuresAtCenter]].
+			ifTrue: [features := self averageFeatures]
+			ifFalse: [features := self featuresAtCenter]].
 	^ features

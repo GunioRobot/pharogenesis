@@ -1,0 +1,2 @@
+dialogTextBoxBorderColor
+	^ Color black

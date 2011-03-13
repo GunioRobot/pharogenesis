@@ -1,4 +1,4 @@
 critical: aBlock
 
-	QueueSemaphore ifNil: [QueueSemaphore _ Semaphore forMutualExclusion].
+	QueueSemaphore ifNil: [QueueSemaphore := Semaphore forMutualExclusion].
 	^QueueSemaphore critical: aBlock

@@ -1,6 +1,6 @@
 Viewer
 	subclass: #StandardViewer
-	instanceVariableNames: 'firstPanel '
+	instanceVariableNames: 'firstPanel'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Scripting'
+	category: 'EToys-Scripting'

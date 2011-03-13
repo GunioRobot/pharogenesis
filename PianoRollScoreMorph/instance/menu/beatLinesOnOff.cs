@@ -1,4 +1,4 @@
 beatLinesOnOff
 
-	showBeatLines _ showBeatLines not.
+	showBeatLines := showBeatLines not.
 	self changed

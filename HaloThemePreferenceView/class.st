@@ -1,0 +1,1 @@
+HaloThemePreferenceView class instanceVariableNames: ''

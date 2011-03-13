@@ -1,3 +1,3 @@
 shadowColor: x
 
-	connection shadowColor: (shadowColor _ x).
+	connection shadowColor: (shadowColor := x).

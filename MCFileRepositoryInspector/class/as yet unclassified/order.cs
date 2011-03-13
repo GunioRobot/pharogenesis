@@ -1,4 +1,4 @@
 order
 	Order isNil
-		ifTrue: [ Order _ 5 ].
+		ifTrue: [ Order := 5 ].
 	^Order

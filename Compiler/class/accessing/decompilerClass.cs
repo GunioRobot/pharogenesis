@@ -1,0 +1,2 @@
+decompilerClass
+	^Decompiler

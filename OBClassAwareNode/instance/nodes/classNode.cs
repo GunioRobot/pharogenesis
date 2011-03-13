@@ -1,0 +1,2 @@
+classNode
+	^self theClass asNode

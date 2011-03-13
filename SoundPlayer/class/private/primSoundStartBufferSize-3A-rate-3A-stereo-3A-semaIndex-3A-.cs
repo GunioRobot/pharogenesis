@@ -3,5 +3,5 @@ primSoundStartBufferSize: bufferSize rate: samplesPerSecond stereo: stereoFlag s
 	"Details: If this primitive fails, this method tries to use the older version instead."
 
 	<primitive: 'primitiveSoundStartWithSemaphore' module: 'SoundPlugin'>
-	UseReadySemaphore _ false.
+	UseReadySemaphore := false.
 	self primSoundStartBufferSize: bufferSize rate: samplesPerSecond stereo: stereoFlag.

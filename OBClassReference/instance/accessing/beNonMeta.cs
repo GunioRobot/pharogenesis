@@ -1,0 +1,2 @@
+beNonMeta
+	isMeta := false

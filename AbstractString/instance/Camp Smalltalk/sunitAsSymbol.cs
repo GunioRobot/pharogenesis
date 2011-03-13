@@ -1,3 +1,0 @@
-sunitAsSymbol
-
-        ^self asSymbol

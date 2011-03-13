@@ -1,6 +1,6 @@
 UserInputEvent
 	subclass: #KeyboardEvent
-	instanceVariableNames: 'keyValue '
+	instanceVariableNames: 'keyValue'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Events'

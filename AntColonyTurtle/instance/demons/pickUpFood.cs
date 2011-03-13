@@ -2,11 +2,11 @@ pickUpFood
 
 	| newFood |
 	(isCarryingFood not and: [(self get: 'food') > 0]) ifTrue: [
-		newFood _ (self get: 'food') - 1.
+		newFood := (self get: 'food') - 1.
 		self set: 'food' to: newFood.
 		newFood = 0 ifTrue: [self patchColor: world backgroundColor].
-		isCarryingFood _ true.
-		pheromoneDropSize _ 800.
+		isCarryingFood := true.
+		pheromoneDropSize := 800.
 		self color: Color red.
 
 		"drop a blob of pheromone on the side of the food farthest from nest"

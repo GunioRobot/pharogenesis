@@ -4,7 +4,7 @@ endAllNotesAt: endTicks
 
 	| dur |
 	activeEvents do: [:e |
-		dur _ endTicks - e time.
-		dur > maxNoteTicks ifTrue: [dur _ ticksPerQuarter].  "truncate long note"
+		dur := endTicks - e time.
+		dur > maxNoteTicks ifTrue: [dur := ticksPerQuarter].  "truncate long note"
 		e duration: dur].
-	activeEvents _ activeEvents species new.
+	activeEvents := activeEvents species new.

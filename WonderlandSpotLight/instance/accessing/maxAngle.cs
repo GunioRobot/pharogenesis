@@ -1,2 +1,0 @@
-maxAngle
-	^maxCos arcCos radiansToDegrees

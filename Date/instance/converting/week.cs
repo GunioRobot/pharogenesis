@@ -1,2 +1,0 @@
-week
-	^ Week fromDate: self

@@ -1,5 +1,5 @@
 initialize
 	super initialize.
-	sounds _ SharedQueue new.
-	done _ false.
-	startTime _ Time millisecondClockValue
+	sounds := SharedQueue new.
+	done := false.
+	startTime := Time millisecondClockValue

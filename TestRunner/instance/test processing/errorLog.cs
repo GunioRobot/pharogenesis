@@ -1,2 +1,0 @@
-errorLog
-	^SUnitNameResolver defaultLogDevice

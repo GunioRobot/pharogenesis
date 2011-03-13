@@ -1,3 +1,0 @@
-An ExternalTexture is a B3DTexture which is allocated on a specific (hopefully hardware accelerated) display. External textures are resources that are exclusively managed on the Display - no external textures should be manually allocated. This is because the texture format provided by the display may severely differ from our internal format. Therefore we always keep an 'original' B3DTexture and the external textures are allocated on demand.
-
-Because of the above, external textures will never be kept inbetween sessions.

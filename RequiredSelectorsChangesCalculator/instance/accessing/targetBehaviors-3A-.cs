@@ -1,0 +1,2 @@
+targetBehaviors: anObject
+	targetBehaviors := anObject

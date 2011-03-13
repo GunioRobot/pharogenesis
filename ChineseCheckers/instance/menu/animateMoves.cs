@@ -1,3 +1,0 @@
-animateMoves
-
-	animateMoves _ true

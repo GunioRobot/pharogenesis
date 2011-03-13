@@ -4,7 +4,7 @@ asClassDefinition
 		superclassName: self superclass name
 		category: self category 
 		instVarNames: self instVarNames
-		classVarNames: self classVarNames
+		classVarNames: self classVarNames asSortedCollection
 		poolDictionaryNames: self poolDictionaryNames
 		classInstVarNames: self class instVarNames
 		type: self typeOfClass

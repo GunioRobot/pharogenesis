@@ -7,5 +7,5 @@ browseCacheDirectory
 	dir := item isPackage
 				ifTrue: [squeakMap cache directoryForPackage: item]
 				ifFalse: [squeakMap cache directoryForPackageRelease: item].
-	win _ FileList2 morphicViewOnDirectory: dir. " withLabel: item name, ' cache directory'."
+	win := FileList2 morphicViewOnDirectory: dir. " withLabel: item name, ' cache directory'."
 	win openInWorld

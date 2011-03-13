@@ -1,2 +1,0 @@
-eq
-	self stream nextPut: $=

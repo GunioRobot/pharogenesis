@@ -1,12 +1,10 @@
 windowColorFor: aModelClassName
-	| classToCheck windowColors |
-	(Parameters includesKey: #windowColors) ifFalse:
-		[Parameters at: #windowColors put: IdentityDictionary new.
-		self installBrightWindowColors].
-	classToCheck _ Smalltalk at: aModelClassName.
-	windowColors _ Parameters at: #windowColors.
-	[windowColors includesKey: classToCheck name]
-		whileFalse:
-			[classToCheck _ classToCheck superclass].
-	^ windowColors at: classToCheck name ifAbsent: [Color white]
-	
+	| classToCheck prefSymbol |
+	self checkForWindowColors.
+	classToCheck := Smalltalk at: aModelClassName.
+	prefSymbol := self windowColorPreferenceForClassNamed: classToCheck name.
+	[(classToCheck ~~ Object) and: [(self preferenceAt: prefSymbol) isNil]]
+		whileTrue: 
+				[classToCheck := classToCheck superclass.
+				prefSymbol := self windowColorPreferenceForClassNamed: classToCheck name].
+	^self valueOfPreference: prefSymbol ifAbsent: [Color white].

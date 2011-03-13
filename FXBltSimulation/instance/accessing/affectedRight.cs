@@ -1,3 +1,0 @@
-affectedRight
-
-	^affectedR

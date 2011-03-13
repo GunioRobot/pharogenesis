@@ -1,2 +1,2 @@
 zipFileComment: aString
-	zipFileComment _ aString
+	zipFileComment := aString

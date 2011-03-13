@@ -1,3 +1,0 @@
-The WonderlandCamera class extends the WonderlandActor functionality with the methods for specifying the viewing parameters.  Every view into the 3D world is assigned a camera, and each camera renders into a different morph.
-
-WonderlandCamera also know how to transform points on the 2D desktop into the 3D wonderland.

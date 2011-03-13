@@ -1,0 +1,1 @@
+KedamaTurtleMorph class instanceVariableNames: ''

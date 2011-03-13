@@ -9,12 +9,12 @@ unpack
 	| unzipped zipped buffer |
 	(fileName endsWith: '.gz')
 		ifTrue:[
-			unpackedFileName _ fileName copyUpToLast: FileDirectory extensionDelimiter.
+			unpackedFileName := fileName copyUpToLast: FileDirectory extensionDelimiter.
 			(dir fileExists: unpackedFileName) ifTrue:[ dir deleteFileNamed: unpackedFileName ].
-			unzipped _ dir newFileNamed: unpackedFileName.
+			unzipped := dir newFileNamed: unpackedFileName.
 			unzipped binary.
-			zipped _ GZipReadStream on: (dir readOnlyFileNamed: fileName).
-			buffer _ ByteArray new: 50000.
+			zipped := GZipReadStream on: ((dir readOnlyFileNamed: fileName) binary; yourself).
+			buffer := ByteArray new: 50000.
 			'Extracting ' , fileName
 				displayProgressAt: Sensor cursorPoint
 				from: 0
@@ -26,4 +26,4 @@ unpack
 							unzipped nextPutAll: (zipped nextInto: buffer)].
 					zipped close.
 					unzipped close]]
-		ifFalse:[unpackedFileName _ fileName]
+		ifFalse:[unpackedFileName := fileName]

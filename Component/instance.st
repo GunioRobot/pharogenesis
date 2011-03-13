@@ -1,6 +1,6 @@
 Player
 	subclass: #Component
-	instanceVariableNames: 'model pinSpecs '
+	instanceVariableNames: 'model pinSpecs'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Components'
+	category: 'MorphicExtras-Components'

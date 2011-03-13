@@ -3,5 +3,5 @@ fileIn: fullName
 
 	| ff |
 	fullName ifNil: [^ Beeper beep].
-	ff _ self readOnlyFileNamed: (GZipReadStream uncompressedFileName: fullName).
+	ff := self readOnlyFileNamed: (GZipReadStream uncompressedFileName: fullName).
 	ff fileIn.

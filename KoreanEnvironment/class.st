@@ -1,0 +1,1 @@
+KoreanEnvironment class instanceVariableNames: ''

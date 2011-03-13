@@ -10,7 +10,7 @@ askIfAddStyle: priorMethod req: requestor
 		ifTrue:
 			[tell _ 'This method contains style for the first time (e.g. bold or colored text).
 Do you really want to save the style info?'.
-			answ _ (PopUpMenu labels: 'Save method with style
-Save method simply')
-						startUpWithCaption: tell.
+			answ _ (UIManager default 
+						chooseFrom: #('Save method with style' 'Save method simply')
+						title: tell).
 			answ = 2 ifTrue: [^ self asString]]

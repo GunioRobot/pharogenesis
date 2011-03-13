@@ -1,0 +1,2 @@
+asNode
+	^OBClassNode on: self

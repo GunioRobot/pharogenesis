@@ -1,2 +1,2 @@
 stereo: aBool
-	stereo _ aBool
+	stereo := aBool

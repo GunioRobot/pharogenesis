@@ -1,1 +1,0 @@
-PDARecurringEvent class instanceVariableNames: ''

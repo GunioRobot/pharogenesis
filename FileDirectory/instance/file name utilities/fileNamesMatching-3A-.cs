@@ -5,7 +5,7 @@ fileNamesMatching: pat
 	"
 	
 	| files |
-	files _ OrderedCollection new.
+	files := OrderedCollection new.
 	
 	(pat findTokens: ';', String crlf) do: [ :tok | 
 		files addAll: (self fileNames select: [:name | tok match: name]) ].

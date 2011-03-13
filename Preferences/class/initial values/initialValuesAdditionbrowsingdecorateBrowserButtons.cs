@@ -1,2 +1,0 @@
-initialValuesAdditionbrowsingdecorateBrowserButtons
-	^ #((decorateBrowserButtons true (browsing ) ) )

@@ -1,2 +1,2 @@
 hasAlpha: aBoolean
-	hasAlpha _ aBoolean
+	hasAlpha := aBoolean

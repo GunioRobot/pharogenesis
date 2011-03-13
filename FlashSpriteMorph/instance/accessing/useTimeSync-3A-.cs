@@ -1,2 +1,2 @@
 useTimeSync: aBool
-	useTimeSync _ aBool
+	useTimeSync := aBool

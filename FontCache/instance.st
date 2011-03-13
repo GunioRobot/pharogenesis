@@ -1,6 +1,6 @@
 Object
 	subclass: #FontCache
-	instanceVariableNames: 'fonts '
+	instanceVariableNames: 'fonts'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Remote'
+	category: 'Nebraska-Morphic-Remote'

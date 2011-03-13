@@ -1,1 +1,0 @@
-X11Drawable class instanceVariableNames: ''

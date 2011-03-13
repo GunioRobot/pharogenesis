@@ -1,0 +1,1 @@
+DummyToolWorkingWithFileList class instanceVariableNames: ''

@@ -2,8 +2,8 @@ testDeleteDirectory
 	"Test deletion of a directory"
 	
 	| aContainingDirectory preTestItems |
-	aContainingDirectory _ self myDirectory containingDirectory.
-	preTestItems _ aContainingDirectory fileAndDirectoryNames.
+	aContainingDirectory := self myDirectory containingDirectory.
+	preTestItems := aContainingDirectory fileAndDirectoryNames.
 	
 	self assert: self myAssuredDirectory exists.
 	aContainingDirectory deleteDirectory: self myLocalDirectoryName.

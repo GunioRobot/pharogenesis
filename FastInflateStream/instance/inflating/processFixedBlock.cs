@@ -1,5 +1,5 @@
 processFixedBlock
-	litTable _ FixedLitTable.
-	distTable _ FixedDistTable.
-	state _ state bitOr: BlockProceedBit.
+	litTable := FixedLitTable.
+	distTable := FixedDistTable.
+	state := state bitOr: BlockProceedBit.
 	self proceedFixedBlock.

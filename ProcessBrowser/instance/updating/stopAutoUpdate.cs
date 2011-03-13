@@ -1,5 +1,5 @@
 stopAutoUpdate
 	autoUpdateProcess ifNotNil: [
 		autoUpdateProcess terminate.
-		autoUpdateProcess _ nil].
+		autoUpdateProcess := nil].
 	self updateProcessList

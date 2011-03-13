@@ -3,6 +3,6 @@ showOnlyImplementedSelectors
 	shows selectors that are actually implemented somewhere in the system."
 	self okToChange
 		ifTrue: [Cursor wait
-				showWhile: [selectorList _ self systemNavigation allSelectorsWithAnyImplementorsIn: selectorList.
+				showWhile: [selectorList := self systemNavigation allSelectorsWithAnyImplementorsIn: selectorList.
 					self changed: #selectorList.
 					self changed: #messageList]]

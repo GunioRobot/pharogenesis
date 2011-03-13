@@ -1,0 +1,3 @@
+A package installation task is to install one or more given SMPackages (not specified releases) into the image.
+
+First it tries to calculate the ideal releases of the given packages that it will try to install given the policy and preferences set by the user. Then it runs an analysis to find how to install those wanted releases. This typically results in zero, one or more possible scenarios.

@@ -1,7 +1,7 @@
 reformulateCategoryList
 	"Reformulate the category list"
 
-	categoryList _ nil.
+	categoryList := nil.
 	self categoryListIndex: 0.
 	self changed: #categoryList.
 	self contentsChanged

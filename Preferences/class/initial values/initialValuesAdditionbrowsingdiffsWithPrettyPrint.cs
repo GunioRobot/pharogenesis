@@ -1,2 +1,0 @@
-initialValuesAdditionbrowsingdiffsWithPrettyPrint
-	^ #((diffsWithPrettyPrint false (browsing ) ) )

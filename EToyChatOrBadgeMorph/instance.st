@@ -3,4 +3,4 @@ EToyCommunicatorMorph
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Experimental'
+	category: 'Nebraska-Morphic-Experimental'

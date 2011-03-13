@@ -1,1 +1,0 @@
-VRMLStandardNode class instanceVariableNames: ''

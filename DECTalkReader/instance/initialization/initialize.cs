@@ -1,10 +1,10 @@
 initialize
-	phonemes _ PhonemeSet dectalkToArpabet.
-	events _ CompositeEvent new.
-	currentDuration _ 80.
-	currentPitch _ 100.
-	f0Contour _ CosineInterpolator new.
-	durations _ Dictionary new.
+	phonemes := PhonemeSet dectalkToArpabet.
+	events := CompositeEvent new.
+	currentDuration := 80.
+	currentPitch := 100.
+	f0Contour := CosineInterpolator new.
+	durations := Dictionary new.
 	#(
 	('ae'	230.0	80.0)
 	('aa'	240.0	100.0)

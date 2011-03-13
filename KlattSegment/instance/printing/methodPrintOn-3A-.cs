@@ -6,7 +6,7 @@ methodPrintOn: aStream
 		tab; tab; nextPutAll: '#('; print: self name; tab; tab; print: self rank; tab; tab; print: self duration; tab; tab; tab; print: (self features ifNil: [#()]); cr;
 		tab; tab; nextPutAll: '"selector		steady	fixed	prop	extern	intern"'.
 	KlattFrame parameterNames do: [ :each |
-		(param _ self parameters at: (each, ':') asSymbol ifAbsent: [])
+		(param := self parameters at: (each, ':') asSymbol ifAbsent: [])
 			ifNotNil: [aStream cr; tab; tab.
 					param methodPrintOn: aStream]].
 	aStream nextPut: $)

@@ -5,7 +5,7 @@ setClassAndSelectorIn: csBlock
 
 	self flag: #mref.	"fix for faster references to methods"
 
-	[string _ self selection asString.
+	[string := self selection asString.
 	string first == $* ifTrue: [^contents := nil].		"Ignore lines starting with *"
 	parens := string includes: $(.					"Does it have open-paren?"
 	strm := ReadStream on: string.
@@ -26,4 +26,4 @@ setClassAndSelectorIn: csBlock
 			strm next.
 			sel := strm upToEnd].
 	^ MessageSet parse: (class, ' ', sel) toClassAndSelector: csBlock]
-		on: Error do: [:ex | ^ contents _ nil]
+		on: Error do: [:ex | ^ contents := nil]

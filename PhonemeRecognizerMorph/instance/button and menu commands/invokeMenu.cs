@@ -2,7 +2,8 @@ invokeMenu
 	"Invoke the settings menu."
 
 	| aMenu |
-	aMenu _ CustomMenu new.
+	aMenu := CustomMenu new.
+	aMenu title: 'Phoneme Recognizer'.
 	aMenu addList:	#(
 		('add phoneme'				addPhoneme)
 		('play phoneme'				playPhoneme)
@@ -12,8 +13,11 @@ invokeMenu
 		('delete phoneme'			deletePhoneme)
 		-
 		('mouth position tile'		makeTile)
+		('phoneme name tile'		makePhonemeNameTile)
 		('match sound file'			matchSoundFile)
 		-
 		('save phonemes to file'		savePhonemes)
-		('read phoneme from file'	readPhonemes)).
+		('read phonemes from file'	readPhonemes)
+		-
+		('help'						presentHelp)).
 	aMenu invokeOn: self defaultSelection: nil.

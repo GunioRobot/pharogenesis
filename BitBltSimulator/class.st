@@ -1,1 +1,0 @@
-BitBltSimulator class instanceVariableNames: ''

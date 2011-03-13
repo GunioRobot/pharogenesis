@@ -2,9 +2,9 @@ chatWindowForIP: ipAddress name: senderName picture: aForm inWorld: aWorld
 
 	| makeANewOne aSenderBadge existing |
 
-	existing _ self instanceForIP: ipAddress inWorld: aWorld.
+	existing := self instanceForIP: ipAddress inWorld: aWorld.
 	existing ifNotNil: [^existing].
-	makeANewOne _ [
+	makeANewOne := [
 		self new
 			recipientForm: aForm; 
 			open; 
@@ -12,16 +12,16 @@ chatWindowForIP: ipAddress name: senderName picture: aForm inWorld: aWorld
 	].
 	EToyCommunicatorMorph playArrivalSound.
 	self doChatsInternalToBadge ifTrue: [
-		aSenderBadge _ EToySenderMorph instanceForIP: ipAddress inWorld: aWorld.
+		aSenderBadge := EToySenderMorph instanceForIP: ipAddress inWorld: aWorld.
 		aSenderBadge ifNotNil: [
 			aSenderBadge startChat: false.
 			^aSenderBadge 
 				findDeepSubmorphThat: [ :x | x isKindOf: EToyChatMorph] 
 				ifAbsent: makeANewOne
 		].
-		aSenderBadge _ EToySenderMorph instanceForIP: ipAddress.
+		aSenderBadge := EToySenderMorph instanceForIP: ipAddress.
 		aSenderBadge ifNotNil: [
-			aSenderBadge _ aSenderBadge veryDeepCopy.
+			aSenderBadge := aSenderBadge veryDeepCopy.
 			aSenderBadge 
 				killExistingChat;
 				openInWorld: aWorld;
@@ -30,7 +30,7 @@ chatWindowForIP: ipAddress name: senderName picture: aForm inWorld: aWorld
 				findDeepSubmorphThat: [ :x | x isKindOf: EToyChatMorph] 
 				ifAbsent: makeANewOne
 		].
-		(aSenderBadge _ EToySenderMorph new)
+		(aSenderBadge := EToySenderMorph new)
 			userName: senderName 
 			userPicture: aForm
 			userEmail: 'unknown' 

@@ -1,2 +1,0 @@
-edgeClass
-	^SubdivisionHalfEdge

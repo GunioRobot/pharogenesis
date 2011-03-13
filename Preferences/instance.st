@@ -1,6 +1,6 @@
 Object
 	subclass: #Preferences
 	instanceVariableNames: ''
-	classVariableNames: 'CategoryInfo DesktopColor FlagDictionary HelpDictionary Parameters SyntaxColorsAndStyles '
+	classVariableNames: 'DesktopColor DictionaryOfPreferences Parameters'
 	poolDictionaries: ''
 	category: 'System-Support'

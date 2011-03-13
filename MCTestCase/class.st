@@ -1,0 +1,1 @@
+MCTestCase class instanceVariableNames: ''

@@ -5,4 +5,4 @@ confirm: queryString
 
 	"nil confirm: 'Are you hungry?'"
 
-	^ PopUpMenu confirm: queryString
+	^ UIManager default confirm: queryString

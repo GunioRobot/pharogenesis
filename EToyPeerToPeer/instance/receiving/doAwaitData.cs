@@ -1,7 +1,7 @@
 doAwaitData
 
 	[true] whileTrue: [
-		socket _ connectionQueue getConnectionOrNilLenient.
+		socket := connectionQueue getConnectionOrNilLenient.
 		socket ifNil: [
 			(Delay forMilliseconds: 50) wait
 		] ifNotNil: [

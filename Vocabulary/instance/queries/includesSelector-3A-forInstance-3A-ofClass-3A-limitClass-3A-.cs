@@ -4,8 +4,8 @@ includesSelector: aSelector forInstance: anInstance ofClass: aTargetClass limitC
 	| classToUse aClass |
 
 	(methodInterfaces includesKey: aSelector) ifFalse: [^ false].
-	classToUse _ self classToUseFromInstance: anInstance ofClass: aTargetClass.
-	^ (aClass _ classToUse whichClassIncludesSelector: aSelector)
+	classToUse := self classToUseFromInstance: anInstance ofClass: aTargetClass.
+	^ (aClass := classToUse whichClassIncludesSelector: aSelector)
 		ifNil:
 			[false]
 		ifNotNil:

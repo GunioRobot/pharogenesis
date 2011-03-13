@@ -3,7 +3,8 @@ activate
 
 	ActiveDelay _ self.
 	ActiveDelayStartTime _ Time millisecondClockValue.
-	ActiveDelayStartTime > resumptionTime ifTrue:[
+	ActiveDelayStartTime >= resumptionTime ifTrue:[
+		"if my time is now or in the past, trigger me and get the next in line activated"
 		ActiveDelay signalWaitingProcess.
 		SuspendedDelays isEmpty ifTrue:[
 			ActiveDelay _ nil.

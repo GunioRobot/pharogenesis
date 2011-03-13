@@ -1,2 +1,0 @@
-destOffsetYGet
-	^workBuffer at: GWDestOffsetY

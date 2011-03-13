@@ -1,3 +1,3 @@
 isRecording
 
-	^isRecording ifNil: [isRecording _ false]
+	^isRecording ifNil: [isRecording := false]

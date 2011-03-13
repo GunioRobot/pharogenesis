@@ -1,6 +1,6 @@
 addMorphicSwitchesTo: window at: aLayoutFrame
 
 	window 
-		addMorph: (self buildMorphicSwitches borderWidth: 0)
+		addMorph: self buildMorphicSwitches
 		fullFrame: aLayoutFrame.
 

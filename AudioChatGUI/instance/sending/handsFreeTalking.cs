@@ -1,3 +1,3 @@
 handsFreeTalking
 
-	^handsFreeTalking ifNil: [handsFreeTalking _ false].
+	^handsFreeTalking ifNil: [handsFreeTalking := false].

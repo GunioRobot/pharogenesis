@@ -1,0 +1,1 @@
+MCWorkingCopyTest class instanceVariableNames: ''

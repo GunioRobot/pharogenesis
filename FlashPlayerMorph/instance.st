@@ -1,6 +1,6 @@
 FlashSpriteMorph
 	subclass: #FlashPlayerMorph
-	instanceVariableNames: 'activationKeys activeMorphs localBounds sourceUrl progressValue '
+	instanceVariableNames: 'activationKeys activeMorphs localBounds sourceUrl progressValue'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon-MMFlash Morphs'
+	category: 'Flash-Morphs'

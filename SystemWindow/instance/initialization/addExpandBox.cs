@@ -10,4 +10,4 @@ addExpandBox
 		 topFraction: 0;
 		 topOffset: 0.
 	expandBox layoutFrame: frame.
-	labelArea addMorph: expandBox
+	labelArea addMorphBack: expandBox

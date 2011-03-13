@@ -1,6 +1,6 @@
 nextByte
 
 	| value |
-	value _ fontData byteAt: offset.
-	offset _ offset + 1.
+	value := fontData byteAt: offset.
+	offset := offset + 1.
 	^value

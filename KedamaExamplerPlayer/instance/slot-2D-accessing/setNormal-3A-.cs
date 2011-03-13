@@ -1,0 +1,2 @@
+setNormal: degree
+

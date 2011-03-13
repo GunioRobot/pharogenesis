@@ -5,14 +5,14 @@ addLibrarySoundNamed: aString fromAIFFfileNamed: fileName
 		fromAIFFfileNamed: '7.aif'"
 	"Add all .aif files in the current directory to the sound library:
 	| fileNames |
-	fileNames _ FileDirectory default fileNamesMatching: '*.aif'.
+	fileNames := FileDirectory default fileNamesMatching: '*.aif'.
 	fileNames do: [:fName |
 		SampledSound
 			addLibrarySoundNamed: (fName copyUpTo: $.)
 			fromAIFFfileNamed: fName]"
 
 	| snd |
-	snd _ self fromAIFFfileNamed: fileName.
+	snd := self fromAIFFfileNamed: fileName.
 	self addLibrarySoundNamed: aString
 		samples: snd samples
 		samplingRate: snd originalSamplingRate.

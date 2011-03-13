@@ -2,7 +2,7 @@ initialize
 	"initialize the state of the receiver"
 	super initialize.
 	""
-	groupMode _ true.
+	groupMode := true.
 	self listDirection: #topToBottom;
 		 layoutInset: 10;
 		 hResizing: #shrinkWrap;

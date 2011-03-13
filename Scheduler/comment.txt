@@ -1,1 +1,0 @@
-The Scheduler manages time for a Wonderland. As part of this responsibility, it manages active alarms, actions, and animations in the Wonderland.

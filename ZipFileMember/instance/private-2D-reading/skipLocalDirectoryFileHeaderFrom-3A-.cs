@@ -3,8 +3,8 @@ skipLocalDirectoryFileHeaderFrom: aStream
 
 	|  extraFieldLength fileNameLength |
 	aStream next: 22.
-	fileNameLength _ aStream nextLittleEndianNumber: 2.
-	extraFieldLength _ aStream nextLittleEndianNumber: 2.
+	fileNameLength := aStream nextLittleEndianNumber: 2.
+	extraFieldLength := aStream nextLittleEndianNumber: 2.
 	aStream next: fileNameLength.
 	aStream next: extraFieldLength.
-	dataOffset _ aStream position.
+	dataOffset := aStream position.

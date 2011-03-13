@@ -1,4 +1,0 @@
-makeAllPluginsExternal
-
-
-	vmMaker makeAllModulesExternal

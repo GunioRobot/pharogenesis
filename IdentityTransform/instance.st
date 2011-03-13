@@ -1,6 +1,6 @@
 DisplayTransform
 	subclass: #IdentityTransform
 	instanceVariableNames: ''
-	classVariableNames: 'Default '
+	classVariableNames: 'Default'
 	poolDictionaries: ''
 	category: 'Graphics-Transformations'

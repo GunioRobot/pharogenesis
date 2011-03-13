@@ -1,3 +1,5 @@
 methods
-	^ (self extensionMethods, self coreMethods)
-		select: [:method | method isValid and: [(#(DoIt DoItIn:) includes: method methodSymbol) not]]
+	^ (self extensionMethods, self coreMethods) select: [:method |
+		method isValid
+			and: [method isLocalSelector]
+			and: [method methodSymbol isDoIt not]]

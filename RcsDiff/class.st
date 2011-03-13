@@ -1,0 +1,1 @@
+RcsDiff class instanceVariableNames: ''

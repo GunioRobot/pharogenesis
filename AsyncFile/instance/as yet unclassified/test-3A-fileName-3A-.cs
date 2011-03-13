@@ -2,8 +2,8 @@ test: byteCount fileName: fileName
 	"AsyncFile new test: 10000 fileName: 'testData'"
 
 	| buf1 buf2 bytesWritten bytesRead |
-	buf1 _ String new: byteCount withAll: $x.
-	buf2 _ String new: byteCount.
+	buf1 := String new: byteCount withAll: $x.
+	buf2 := String new: byteCount.
 	self open: ( FileDirectory default fullNameFor: fileName) forWrite: true.
 	self primWriteStart: fileHandle
 		fPosition: 0
@@ -11,13 +11,13 @@ test: byteCount fileName: fileName
 		at: 1
 		count: byteCount.
 	semaphore wait.
-	bytesWritten _ self primWriteResult: fileHandle.
+	bytesWritten := self primWriteResult: fileHandle.
 	self close.
 	
 	self open: ( FileDirectory default fullNameFor: fileName) forWrite: false.
 	self primReadStart: fileHandle fPosition: 0 count: byteCount.
 	semaphore wait.
-	bytesRead _
+	bytesRead :=
 		self primReadResult: fileHandle
 			intoBuffer: buf2
 			at: 1

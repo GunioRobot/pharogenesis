@@ -3,13 +3,13 @@ togglePlainSource
 	
 	| wasShowingPlainSource |
 	self okToChange ifTrue:
-		[wasShowingPlainSource _ self showingPlainSource.
+		[wasShowingPlainSource := self showingPlainSource.
 		self restoreTextualCodingPane.
 		wasShowingPlainSource
 			ifTrue:
 				[self showDocumentation: true]
 			ifFalse:
-				[contentsSymbol _ #source].
+				[contentsSymbol := #source].
 		self setContentsToForceRefetch.
 		self changed: #contents]
 

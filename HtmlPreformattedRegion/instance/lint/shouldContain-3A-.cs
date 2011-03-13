@@ -1,2 +1,0 @@
-shouldContain: anEntity
-	^anEntity isTextualEntity

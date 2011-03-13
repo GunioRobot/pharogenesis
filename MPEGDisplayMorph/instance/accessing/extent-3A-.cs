@@ -3,6 +3,6 @@ extent: aPoint
 
 	| scale |
 	frameBuffer ifNil: [^ super extent: aPoint].
-	scale _ (aPoint x / frameBuffer width) max: (aPoint y / frameBuffer height).
-	scale _ scale max: (16 / frameBuffer width).
+	scale := (aPoint x / frameBuffer width) max: (aPoint y / frameBuffer height).
+	scale := scale max: (16 / frameBuffer width).
 	super extent: (frameBuffer extent * scale) rounded.

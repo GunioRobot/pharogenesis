@@ -1,6 +1,6 @@
-Error
+ArithmeticError
 	subclass: #ZeroDivide
-	instanceVariableNames: 'dividend '
+	instanceVariableNames: 'dividend'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Exceptions Kernel'
+	category: 'Exceptions-Kernel'

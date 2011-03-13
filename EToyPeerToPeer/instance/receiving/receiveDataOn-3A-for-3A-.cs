@@ -1,10 +1,10 @@
 receiveDataOn: aSocket for: aCommunicatorMorph
 
-	socket _ aSocket.
-	remoteSocketAddress _ socket remoteAddress.
-	communicatorMorph _ aCommunicatorMorph.
-	process _ [
-		leftOverData _ ''.
+	socket := aSocket.
+	remoteSocketAddress := socket remoteAddress.
+	communicatorMorph := aCommunicatorMorph.
+	process := [
+		leftOverData := ''.
 		[self doReceiveData] whileTrue.
 		socket closeAndDestroy.
 	] newProcess.

@@ -1,2 +1,0 @@
-currentActor
-	^currentActor

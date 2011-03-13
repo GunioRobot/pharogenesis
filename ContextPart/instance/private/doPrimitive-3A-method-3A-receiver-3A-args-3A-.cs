@@ -7,8 +7,8 @@ doPrimitive: primitiveIndex method: meth receiver: receiver args: arguments
 	"If successful, push result and return resuming context,
 		else ^ PrimitiveFailToken"
 	(primitiveIndex = 19) ifTrue:[
-		Debugger 
-			openContext: self
+		ToolSet 
+			debugContext: self
 			label:'Code simulation error'
 			contents: nil].
 
@@ -27,6 +27,32 @@ doPrimitive: primitiveIndex method: meth receiver: receiver args: arguments
 		ifTrue: [^ self send: arguments first to: receiver
 					with: (arguments at: 2)
 					super: false].
+	primitiveIndex = 186 ifTrue: [ "closure value"
+		| m |
+		m _ receiver method.
+		arguments size = m numArgs ifFalse: [^ PrimitiveFailToken].
+		^ self activateMethod: m
+			withArgs: arguments
+			receiver: receiver
+			class: receiver class].
+	primitiveIndex = 187 ifTrue: [ "closure valueWithArguments:"
+		| m args |
+		m _ receiver method.
+		args _ arguments first.
+		args size = m numArgs ifFalse: [^ PrimitiveFailToken].
+		^ self activateMethod: m
+			withArgs: args
+			receiver: receiver
+			class: receiver class].
+	primitiveIndex = 188 ifTrue: [ "object withArgs:executeMethod:"
+		| m args |
+		args _ arguments first.
+		m _ arguments second.
+		args size = m numArgs ifFalse: [^ PrimitiveFailToken].
+		^ self activateMethod: m
+			withArgs: args
+			receiver: receiver
+			class: receiver class].
 	arguments size > 6 ifTrue: [^ PrimitiveFailToken].
 	primitiveIndex = 117 
 		ifTrue:[value _ self tryNamedPrimitiveIn: meth for: receiver withArgs: arguments]

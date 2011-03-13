@@ -1,2 +1,0 @@
-platformName
-	^platformName

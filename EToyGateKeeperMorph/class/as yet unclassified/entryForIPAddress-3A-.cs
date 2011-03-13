@@ -2,10 +2,10 @@ entryForIPAddress: ipAddressString
 
 	| known entry |
 
-	UpdateCounter _ self updateCounter + 1.
-	known _ self knownIPAddresses.
-	entry _ known at: ipAddressString ifAbsentPut: [
-		entry _ EToyGateKeeperEntry new.
+	UpdateCounter := self updateCounter + 1.
+	known := self knownIPAddresses.
+	entry := known at: ipAddressString ifAbsentPut: [
+		entry := EToyGateKeeperEntry new.
 		entry ipAddress: ipAddressString.
 		entry
 	].

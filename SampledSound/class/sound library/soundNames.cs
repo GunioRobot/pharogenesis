@@ -3,7 +3,7 @@ soundNames
 	"| s |
 	 SampledSound soundNames asSortedCollection do: [:n |
 		n asParagraph display.
-		s _ SampledSound soundNamed: n.
+		s := SampledSound soundNamed: n.
 		s ifNotNil: [s playAndWaitUntilDone]]"
 
 	^ SoundLibrary keys asArray

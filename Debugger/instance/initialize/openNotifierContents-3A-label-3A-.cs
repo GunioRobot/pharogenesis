@@ -3,30 +3,30 @@ openNotifierContents: msgString label: label
 	"NOTE: When this method returns, a new process has been scheduled to run the windows, and thus this notifier, but the previous active porcess has not been suspended.  The sender will do this."
 	| msg topView p |
 	Sensor flushKeyboard.
-	savedCursor _ Sensor currentCursor.
+	savedCursor := Sensor currentCursor.
 	Sensor currentCursor: Cursor normal.
 	(label beginsWith: 'Space is low')
-		ifTrue: [msg _ self lowSpaceChoices, (msgString ifNil: [''])]
-		ifFalse: [msg _ msgString].
+		ifTrue: [msg := self lowSpaceChoices, (msgString ifNil: [''])]
+		ifFalse: [msg := msgString].
 	isolationHead ifNotNil:
 		["We have already revoked the isolation layer -- now jump to the parent project."
-		msg _ self isolationRecoveryAdvice, msgString.
-		failedProject _ Project current.
+		msg := self isolationRecoveryAdvice, msgString.
+		failedProject := Project current.
 		isolationHead parent enterForEmergencyRecovery].
 
 	Smalltalk isMorphic ifTrue: [
 		self buildMorphicNotifierLabelled: label message: msg.
-		errorWasInUIProcess _ CurrentProjectRefactoring newProcessIfUI: interruptedProcess.
+		errorWasInUIProcess := Project spawnNewProcessIfThisIsUI: interruptedProcess.
 		^self
 	].
 
 	Display fullScreen.
-	topView _ self 
+	topView := self 
 		buildMVCNotifierViewLabel: label 
 		message: thisContext sender sender shortStack 
 		minSize: 350@((14 * 5) + 16 + self optionalButtonHeight).
 	ScheduledControllers activeController
-		ifNil: [p _ Display boundingBox center]
-		ifNotNil: [p _ ScheduledControllers activeController view displayBox center].
+		ifNil: [p := Display boundingBox center]
+		ifNotNil: [p := ScheduledControllers activeController view displayBox center].
 	topView controller openNoTerminateDisplayAt: (p max: (200@60)).
 	^ topView

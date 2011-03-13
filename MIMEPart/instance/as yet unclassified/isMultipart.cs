@@ -1,2 +1,0 @@
-isMultipart
-	^ self mainType = 'multipart'

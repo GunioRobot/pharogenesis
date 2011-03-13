@@ -1,2 +1,2 @@
 initialize: anInteger
-	timedEvents _ SortedCollection new: anInteger
+	timedEvents := SortedCollection new: anInteger

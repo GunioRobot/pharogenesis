@@ -1,6 +1,6 @@
 VoiceEvent
 	subclass: #CompositeEvent
-	instanceVariableNames: 'timedEvents '
+	instanceVariableNames: 'timedEvents'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Speech-Events'

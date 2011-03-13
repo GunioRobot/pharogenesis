@@ -1,4 +1,3 @@
 setUp
-	workingCopy _ MCWorkingCopy new 
-					initializeWithPackage: (MCPackage named: 'Monticello').
+	workingCopy := MCWorkingCopy forPackage: self mockPackage.
 	

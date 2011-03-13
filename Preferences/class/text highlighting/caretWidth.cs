@@ -1,0 +1,2 @@
+caretWidth
+	^ Parameters at: #caretWidth

@@ -1,2 +1,0 @@
-showBoundsInHalo
-	^ self valueOfFlag: #showBoundsInHalo

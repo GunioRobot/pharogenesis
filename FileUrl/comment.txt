@@ -39,9 +39,9 @@ The path is stored as a SequenceableCollection of path parts.
 
 Notes regarding non RFC features in this class:
 
-- If the last path part is the empty string, then the FileUrl is referring to a directory. This is also shown when sent #toText with a trailing slash.
+- If the last path part is the empty string, then the FileUrl is referring to a directory. This is also shown with a trailing slash when converted to a String.
 
-- The FileUrl has an attribute isAbsolute which refers to if the path should be considered absolute or relative to the current directory. This distinction is not visible in the String representation of FileUrl, since the RFC does not have that.
+- The FileUrl has an attribute isAbsolute which signals if the path should be considered absolute or relative to the current directory. This distinction is not visible in the String representation of FileUrl, since the RFC does not have that.
 
 - Fragment is supported (kept for historical reasons)
 

@@ -1,6 +1,6 @@
 PluggableListView
 	subclass: #PluggableListViewByItem
-	instanceVariableNames: 'itemList '
+	instanceVariableNames: 'itemList'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'ST80-Pluggable Views'

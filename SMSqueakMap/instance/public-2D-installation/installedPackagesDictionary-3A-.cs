@@ -1,4 +1,4 @@
 installedPackagesDictionary: aDict
 	"Set dictionary directly."
 
-	installedPackages _ aDict
+	^self registry installedPackagesDictionary: aDict

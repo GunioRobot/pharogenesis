@@ -1,0 +1,3 @@
+getColorOpaque
+
+	^ self getColor.

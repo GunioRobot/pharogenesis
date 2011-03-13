@@ -1,7 +1,7 @@
 rootsIncludingPlayers
 	"Return a new roots array with more objects.  (Caller should store into rootArray.) Player (non-systemDefined) gets its class and metaclass put into the Roots array.  Then ask for the segment again."
 
-| extras havePresenter players morphs env existing |
+| extras havePresenter players morphs existing |
 userRootCnt ifNil: [userRootCnt _ arrayOfRoots size].
 extras _ OrderedCollection new.
 arrayOfRoots do: [:root | 
@@ -18,23 +18,12 @@ havePresenter ifNotNil: [
 	players _ players select: [:ap | (arrayOfRoots includes: ap class) not
 		& (ap class isSystemDefined not)].
 	extras addAll: (players collect: [:each | each class]).
-	(env _ havePresenter world project environment) ifNil: [
-		extras addAll: (players collect: [:each | each class class])].
+	extras addAll: (players collect: [:each | each class class]).
 	extras addAll: morphs.	"Make then ALL roots!"
 	].
 existing _ arrayOfRoots asIdentitySet.
 extras _ extras reject: [ :each | existing includes: each].
 extras isEmpty ifTrue: [^ nil].	"no change"
-env 
-	ifNil: ["old pre-environment"
+	
 		havePresenter _ players _ morphs _ nil.
-		^ arrayOfRoots, extras]	"will contain multiples of some, but reduced later"
-	ifNotNil: [
-		(env includesKey: #Object) ifTrue: [self error: 'only look in local env, not up chain'].
-			"If get error, use a message other than includesKey:"
-		extras do: [:cls | 
-			(env includesKey: cls name) ifFalse: [
-				env declare: cls name from: Smalltalk]].
-		havePresenter _ players _ morphs _ env _ nil.
-		^ arrayOfRoots, extras	"still need in roots in case outside pointers"
-		]
+		^ arrayOfRoots, extras	"will contain multiples of some, but reduced later"

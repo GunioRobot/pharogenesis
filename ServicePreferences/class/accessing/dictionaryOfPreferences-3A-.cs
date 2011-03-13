@@ -1,0 +1,2 @@
+dictionaryOfPreferences: aDictionary
+	ServiceDictionaryOfPreferences := aDictionary

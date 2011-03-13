@@ -1,0 +1,2 @@
+insertionPointColor
+	^ self subclassResponsibility

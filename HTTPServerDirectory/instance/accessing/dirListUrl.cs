@@ -1,6 +1,7 @@
 dirListUrl
 	| listURL |
-	listURL _ self altUrl.
-	listURL last ~= $/
-		ifTrue: [listURL _ listURL , '/'].
-	^ listURL
+	listURL := self altUrl
+				ifNil: [^ nil].
+	^ listURL last ~= $/
+		ifTrue: [listURL , '/']
+		ifFalse: [listURL]

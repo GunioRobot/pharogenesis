@@ -1,1 +1,0 @@
-HtmlEmbedded class instanceVariableNames: ''

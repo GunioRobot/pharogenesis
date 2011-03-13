@@ -1,3 +1,3 @@
 nebraskaClient: aNebraskaClient
 
-	nebraskaClient _ aNebraskaClient
+	nebraskaClient := aNebraskaClient

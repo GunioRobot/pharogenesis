@@ -1,1 +1,0 @@
-AliceActor class instanceVariableNames: ''

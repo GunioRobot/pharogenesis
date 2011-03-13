@@ -1,6 +1,6 @@
 DamageRecorder
 	subclass: #FlashDamageRecorder
-	instanceVariableNames: 'fullDamageRect '
+	instanceVariableNames: 'fullDamageRect'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon-MMFlash Morphs'
+	category: 'Flash-Morphs'

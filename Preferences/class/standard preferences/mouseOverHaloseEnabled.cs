@@ -1,2 +1,0 @@
-mouseOverHaloseEnabled
-	^ self valueOfFlag: #mouseOverHaloseEnabled

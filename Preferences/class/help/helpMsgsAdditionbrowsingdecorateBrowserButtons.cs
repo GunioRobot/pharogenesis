@@ -1,2 +1,0 @@
-helpMsgsAdditionbrowsingdecorateBrowserButtons
-	^ #((decorateBrowserButtons 'Governs whether certain buttons, such as the Inheritance button, should bear colors that provide user feedback on their applicability' ) )

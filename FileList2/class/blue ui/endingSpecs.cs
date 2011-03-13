@@ -7,17 +7,20 @@ endingSpecs
 		('Art' ('bmp' 'gif' 'jpg' 'jpeg' 'form' 'png' 'pcx' 'xbm' 'xpm' 'ppm' 'pbm'))
 		('Morphs' ('morph' 'morphs' 'sp'))
 		('Projects' ('extseg' 'project' 'pr'))
-		('Books' ('bo'))
-		('Music' ('mid'))
+		('MIDI' ('mid' 'midi'))
+		('Music' ('mp3'))
 		('Movies' ('movie' 'mpg' 'mpeg' 'qt' 'mov'))
-		"('Code' ('st' 'cs'))"
 		('Flash' ('swf'))
-		('TrueType' ('ttf'))
-		('3ds' ('3ds'))
-		('Tape' ('tape'))
-		('Wonderland' ('wrl'))
-		('HTML' ('htm' 'html'))
 	).
+
+		"('Books' ('bo'))"
+		"('Code' ('st' 'cs'))"
+		"('TrueType' ('ttf'))"
+		"('3ds' ('3ds'))"
+		"('Tape' ('tape'))"
+		"('Wonderland' ('wrl'))"
+		"('HTML' ('htm' 'html'))"
+
 	categories first at: 2 put: ImageReadWriter allTypicalFileExtensions.
 	specs _ OrderedCollection new.
 	categories do: [ :cat | | catSpecs catServices okExtensions |
@@ -32,7 +35,7 @@ endingSpecs
 				services at: i label put: i ]]].
 		services do: [ :svc | catServices add: svc ].
 		services isEmpty ifFalse: [ 
-			catSpecs at: 1 put: cat first translated;
+			catSpecs at: 1 put: cat first;
 				at: 2 put: okExtensions;
 				at: 3 put: catServices.
 			specs add: catSpecs ]

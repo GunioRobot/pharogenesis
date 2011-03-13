@@ -5,13 +5,13 @@ lookInUsualPlaces: fileName
 	(FileDirectory default fileExists: fileName)
 		ifTrue: [^ FileDirectory default fileNamed: fileName].
 
-	((vmp _ FileDirectory on: SmalltalkImage current imagePath) fileExists: fileName)
+	((vmp := FileDirectory on: SmalltalkImage current imagePath) fileExists: fileName)
 		ifTrue: [^ vmp fileNamed: fileName].
 
-	((vmp _ FileDirectory on: SmalltalkImage current vmPath) fileExists: fileName)
+	((vmp := FileDirectory on: SmalltalkImage current vmPath) fileExists: fileName)
 		ifTrue: [^ vmp fileNamed: fileName].
 
-	((vmp _ vmp containingDirectory) fileExists: fileName)
+	((vmp := vmp containingDirectory) fileExists: fileName)
 		ifTrue: [^ vmp fileNamed: fileName].
 
 	^ nil

@@ -1,6 +1,6 @@
 TextAttribute
 	subclass: #TextAnchor
-	instanceVariableNames: 'anchoredMorph '
+	instanceVariableNames: 'anchoredMorph'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Text Support'

@@ -1,2 +1,0 @@
-normalize
-	self /= self length

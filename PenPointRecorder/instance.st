@@ -1,6 +1,6 @@
 Pen
 	subclass: #PenPointRecorder
-	instanceVariableNames: 'points '
+	instanceVariableNames: 'points'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Graphics-Primitives'

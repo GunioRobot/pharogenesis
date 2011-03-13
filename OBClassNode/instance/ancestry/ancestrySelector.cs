@@ -1,0 +1,2 @@
+ancestrySelector
+	^ #isDescendantOfClass:

@@ -10,7 +10,7 @@ Choose "send all pages to server" from the book's menu (press the <> part of the
 To load an existing book, find its ".bo" file in the file list browser.  Choose "load as book".
 
 To load an existing book from its url, execute:
-Ã(URLMorph grabURL: 'ftp://aServer/folder/myBook1.sp') book: true.
+Â¦(URLMorph grabURL: 'ftp://aServer/folder/myBook1.sp') book: true.
 
 Multiple people may modify a book.  If other people may have changed a book you have on your screen, choose "reload all from server".
 

@@ -1,3 +1,3 @@
 clearInstances
 	WeakArray removeWeakDependent: Instances.
-	Instances _ nil
+	Instances := nil

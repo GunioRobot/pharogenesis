@@ -2,5 +2,11 @@ playPhoneme
 	"Play a phoneme specified by the user."
 
 	| phoneme |
-	phoneme _ self selectPhonemeFromMenu: 'Phoneme to play'.
-	phoneme ifNotNil: [phoneme play].
+	
+	phoneme := self selectPhonemeFromMenu: 'Phoneme to play'.
+	phoneme ifNotNil: [
+		"Stop recognizing otherwise I can't play the phoneme"
+		self stopRecognizing.
+		"Play the phoneme"
+		phoneme play.
+	].

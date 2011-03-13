@@ -1,1 +1,0 @@
-UndoColorChange class instanceVariableNames: ''

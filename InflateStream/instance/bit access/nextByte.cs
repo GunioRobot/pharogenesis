@@ -1,2 +1,2 @@
 nextByte
-	^source byteAt: (sourcePos _ sourcePos + 1)
+	^source byteAt: (sourcePos := sourcePos + 1)

@@ -4,6 +4,6 @@ testEnumerating
 	days := OrderedCollection new.
 	0 to: 6 do: [ :i | days add: ('28 June 1998' asDate addDays: i) ].
 
-	week do: [ :d | days remove: d ].
+	week datesDo: [ :d | days remove: d ].
 	
 	self assert: days isEmpty.

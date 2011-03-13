@@ -1,7 +1,7 @@
 makeCapitalized: characterStream 
-	"Force the current selection to uppercase.  Triggered by Cmd-X."
+	"Force the current selection to be capitalized. Triggered by Cmd-Z."
 	| prev |
-	sensor keyboard.		"flush the triggering cmd-key character"
+	sensor keyboard.		"Flush the triggering cmd-key character"
 	prev _ $-.  "not a letter"
 	self replaceSelectionWith: (Text fromString:
 			(self selection string collect:

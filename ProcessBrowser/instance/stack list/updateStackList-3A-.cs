@@ -3,11 +3,11 @@ updateStackList: depth
 	selectedProcess
 		ifNil: [^ self changeStackListTo: nil].
 	(stackList notNil and: [ stackListIndex > 0 ])
-		ifTrue: [oldHighlight _ stackList at: stackListIndex].
+		ifTrue: [oldHighlight := stackList at: stackListIndex].
 	selectedProcess == Processor activeProcess
 		ifTrue: [self
 				changeStackListTo: (thisContext stackOfSize: depth)]
-		ifFalse: [suspendedContext _ selectedProcess suspendedContext.
+		ifFalse: [suspendedContext := selectedProcess suspendedContext.
 			suspendedContext
 				ifNil: [self changeStackListTo: nil]
 				ifNotNil: [self

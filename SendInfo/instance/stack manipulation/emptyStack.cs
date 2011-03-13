@@ -1,0 +1,2 @@
+emptyStack
+	stack becomeEmpty

@@ -1,1 +1,0 @@
-POVertex class instanceVariableNames: ''

@@ -1,4 +1,7 @@
 decompile
 	"Return the decompiled parse tree that represents self"
 
-	^ self decompileClass: nil selector: nil
+	|  class selector |
+	class := self methodClass ifNil: [Object].
+	selector := self selector ifNil: [self defaultSelector].
+	^class decompilerClass new decompile: selector in: class method: self.

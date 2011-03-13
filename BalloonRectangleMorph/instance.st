@@ -3,4 +3,4 @@ RectangleMorph
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon-Geometry'
+	category: 'Morphic-Balloon'

@@ -1,2 +1,0 @@
-initialValuesAdditiongeneralcheckForUnsavedProjects
-	^ #((checkForUnsavedProjects true (general ) ) )

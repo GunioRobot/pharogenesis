@@ -1,4 +1,0 @@
-This is a variable class: Its instances may vary in size.
-The elements of an instance are required to be instances of B3DSimpleMeshFace, which are polygones.
-
-B3DSimpleMesh is the class of choice to model polyhedra.

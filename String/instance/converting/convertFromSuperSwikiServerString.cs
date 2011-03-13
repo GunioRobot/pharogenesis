@@ -1,2 +1,2 @@
 convertFromSuperSwikiServerString
-	^self
+	^self convertFromEncoding: 'shift_jis'

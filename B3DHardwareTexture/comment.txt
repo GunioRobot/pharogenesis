@@ -1,3 +1,0 @@
-This class represents a texture managed by the hardware. Depending on the underlying 3D implementation, the texture may be directly accessible for blitting operations or it may not. If it is directly accessible, then the 'bits' will provide a surface handle for BitBlt. If not, the bits will shadow the upload contents in the format that matches what the underlying implementation requires. In other words: The format of the texture is always identical with the hardware's assumption so that we can perform dithering etc. to achieve the best effect from within Squeak.
-
-WARNING: This class is private to the B3DHardwareEngine; use outside of this context (in particular in client applications) is *STRONGLY* discouraged. Client applications should use regular B3DTextures.

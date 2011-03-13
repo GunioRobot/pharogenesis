@@ -1,2 +1,0 @@
-oneOverArea
-	^oneOverArea

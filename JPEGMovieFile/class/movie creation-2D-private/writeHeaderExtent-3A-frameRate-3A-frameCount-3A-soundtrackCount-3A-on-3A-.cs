@@ -7,7 +7,7 @@ writeHeaderExtent: movieExtent frameRate: frameRate frameCount: frameCount sound
 	aBinaryStream uint16: movieExtent x.
 	aBinaryStream uint16: movieExtent y.
 	aBinaryStream uint32: (frameRate * 10000) rounded.
-	offsetCount _ frameCount + 1.
+	offsetCount := frameCount + 1.
 	aBinaryStream uint32: offsetCount.
 	aBinaryStream skip: (offsetCount * 4).  "leave room for frame offsets"
 	aBinaryStream uint16: soundtrackCount.

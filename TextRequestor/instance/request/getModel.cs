@@ -1,0 +1,2 @@
+getModel
+	^ model first

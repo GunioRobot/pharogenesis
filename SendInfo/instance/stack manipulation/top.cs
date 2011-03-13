@@ -1,0 +1,2 @@
+top
+	^ stack last

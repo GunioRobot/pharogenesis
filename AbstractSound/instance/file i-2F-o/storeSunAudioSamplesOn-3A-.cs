@@ -3,12 +3,12 @@ storeSunAudioSamplesOn: aBinaryStream
 
 
 	| samplesToStore channelCount dataByteCount |
-	samplesToStore _ (self duration * self samplingRate) ceiling.
-	channelCount _ self isStereo ifTrue: [2] ifFalse: [1].
-	dataByteCount _ samplesToStore * channelCount * 2.
+	samplesToStore := (self duration * self samplingRate) ceiling.
+	channelCount := self isStereo ifTrue: [2] ifFalse: [1].
+	dataByteCount := samplesToStore * channelCount * 2.
 
 	"write Sun audio file header"
-	channelCount _ self isStereo ifTrue: [2] ifFalse: [1].
+	channelCount := self isStereo ifTrue: [2] ifFalse: [1].
 	aBinaryStream nextPutAll: '.snd' asByteArray.
 	aBinaryStream uint32: 24.	"header size in bytes"
 	aBinaryStream uint32: dataByteCount.

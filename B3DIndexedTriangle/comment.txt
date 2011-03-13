@@ -1,1 +1,0 @@
-I define a triangle in space. My three indexed instance variables are integers. These integers are indices of a collection of spacial points.  I am the contents class of B3DIndexedTriangleArray.

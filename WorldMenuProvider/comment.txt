@@ -1,0 +1,4 @@
+I define services and categories:
+- The world menu category (identifier:  world), where services and categories can be put to be displayed in the world menu.
+- The preferencesMenu category, where services about services and preferences can be put
+- th open menu

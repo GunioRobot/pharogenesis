@@ -2,4 +2,4 @@ next
 
 	(position >= readLimit and: [self atEnd])
 		ifTrue: [^nil]
-		ifFalse: [^collection at: (position _ position + 1)]
+		ifFalse: [^collection at: (position := position + 1)]

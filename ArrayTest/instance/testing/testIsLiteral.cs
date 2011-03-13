@@ -1,6 +1,7 @@
 testIsLiteral
-	
-	self assert: example1 isLiteral.
-	example1 at: 1 put: self class.
-	self deny: example1 isLiteral.
-	example1 at: 1 put: 1.
+	"We work with a copy of literalArray, to avoid corrupting the code."
+	| l |
+	l := literalArray copy.
+	self assert: l isLiteral.
+	l at: 1 put: self class.
+	self deny: l isLiteral

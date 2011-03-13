@@ -1,2 +1,0 @@
-xValue
-	^xValue

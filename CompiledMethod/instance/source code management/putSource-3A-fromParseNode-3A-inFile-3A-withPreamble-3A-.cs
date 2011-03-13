@@ -5,7 +5,7 @@ putSource: sourceStr fromParseNode: methodNode inFile: fileIndex withPreamble: p
 	If the fileIndex is 1, print on *.sources;  if it is 2, print on *.changes,
 	in each case, storing a 4-byte source code pointer at the method end."
 
-	| file remoteString  st80str |
+	| file remoteString  |
 	(SourceFiles == nil or: [(file _ SourceFiles at: fileIndex) == nil]) ifTrue:
 		[^ self become: (self copyWithTempNames: methodNode tempNames)].
 
@@ -13,17 +13,8 @@ putSource: sourceStr fromParseNode: methodNode inFile: fileIndex withPreamble: p
 	file setToEnd.
 
 	preambleBlock value: file.  "Write the preamble"
-	(methodNode isKindOf: DialectMethodNode)
-		ifTrue:
-		["This source was parsed from an alternate syntax.
-		We must convert to ST80 before logging it."
-		st80str _ (DialectStream dialect: #ST80 contents: [:strm | methodNode printOn: strm])
-						asString.
-		remoteString _ RemoteString newString: st80str
-						onFileNumber: fileIndex toFile: file]
-		ifFalse:
-		[remoteString _ RemoteString newString: sourceStr
-						onFileNumber: fileIndex toFile: file].
+	remoteString _ RemoteString newString: sourceStr
+						onFileNumber: fileIndex toFile: file.
 
 	file nextChunkPut: ' '.
 	InMidstOfFileinNotification signal ifFalse: [file flush].

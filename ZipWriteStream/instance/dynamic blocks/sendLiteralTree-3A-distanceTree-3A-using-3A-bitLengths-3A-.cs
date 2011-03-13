@@ -5,13 +5,13 @@ sendLiteralTree: lTree distanceTree: dTree using: blTree bitLengths: bits
 	encoder nextBits: 5 put: (dTree maxCode).
 	self sendBitLengthTree: blTree.
 	bits size = 0 ifTrue:[^self].
-	lastValue _ bits at: 1.
-	lastCount _ 1.
+	lastValue := bits at: 1.
+	lastCount := 1.
 	2 to: bits size do:[:i|
-		value _ bits at: i.
+		value := bits at: i.
 		value = lastValue 
-			ifTrue:[lastCount _ lastCount + 1]
+			ifTrue:[lastCount := lastCount + 1]
 			ifFalse:[self sendBitLength: lastValue repeatCount: lastCount tree: blTree.
-					lastValue _ value.
-					lastCount _ 1]].
+					lastValue := value.
+					lastCount := 1]].
 	self sendBitLength: lastValue repeatCount: lastCount tree: blTree.

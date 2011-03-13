@@ -5,7 +5,7 @@ inputPortNumFromUser
 	| portCount aMenu dir |
 	portCount _ self primPortCount.
 	portCount = 0 ifTrue: [^ nil].
-	aMenu _ CustomMenu new title: 'MIDI port for input:'.
+	aMenu _ CustomMenu new title: 'MIDI port for input:' translated.
 	0 to: portCount - 1 do:[:i |
 		dir _ self primPortDirectionalityOf: i.
 		(dir = 1) | (dir = 3) ifTrue:[

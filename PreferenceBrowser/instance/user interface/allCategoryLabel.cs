@@ -1,0 +1,2 @@
+allCategoryLabel
+	^'-- all --' translated

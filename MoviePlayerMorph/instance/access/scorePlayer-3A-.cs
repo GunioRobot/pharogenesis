@@ -1,3 +1,3 @@
 scorePlayer: aScorePlayer
 
-	scorePlayer _ aScorePlayer
+	scorePlayer := aScorePlayer

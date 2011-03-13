@@ -17,7 +17,7 @@ abstractAModel
 	instVarNames := ''.
 	holdsSepData do: 
 			[:ea | 
-			iVarName := Utilities wellFormedInstanceVariableNameFrom: ea knownName.
+			iVarName := Scanner wellFormedInstanceVariableNameFrom: ea knownName.
 			iVarName = ea knownName ifFalse: [ea name: iVarName].
 			instVarNames := instVarNames , iVarName , ' '].
 	unnamed := twoListsOfMorphs second.	"have default names"

@@ -6,29 +6,30 @@ writeClassRenameMethod: sel was: oldName fromInstVars: oldList
 	self flag: #bobconv.	
 
 
-tell _ 'Reading an instance of ', oldName, '.
+tell := 'Reading an instance of ', oldName, '.
 Which modern class should it translate to?'.
-answ _ (PopUpMenu labels: 'Let me type the name now
-Let me think about it
-Let me find a conversion file on the disk') startUpWithCaption: tell. 
+answ := (UIManager default 
+		chooseFrom: #('Let me type the name now' 'Let me think about it'
+'Let me find a conversion file on the disk') 
+		title: tell). 
 
 answ = 1 ifTrue: [
 	tell := 'Name of the modern class {1} should translate to:' translated format: {oldName}.
-	choice _ FillInTheBlank request: tell.		"class name"
+	choice := UIManager default request: tell.		"class name"
 	(choice size = 0) 
-		ifTrue: [answ _ 'conversion method needed']
-		ifFalse: [newName _ choice.
-			answ _ Smalltalk at: newName asSymbol 
+		ifTrue: [answ := 'conversion method needed']
+		ifFalse: [newName := choice.
+			answ := Smalltalk at: newName asSymbol 
 				ifAbsent: ['conversion method needed'].
 			answ isString ifFalse: [renamed at: oldName asSymbol put: answ name]]].
 (answ = 3) | (answ = 0) ifTrue: [self close.
 		^ 'conversion method needed'].
-answ = 2 ifTrue: [answ _ 'conversion method needed'].
+answ = 2 ifTrue: [answ := 'conversion method needed'].
 answ = 'conversion method needed' ifTrue: [
 		self close.  
-		newName _ 'PutNewClassHere'].
+		newName := 'PutNewClassHere'].
 
-code _ WriteStream on: (String new: 500).
+code := WriteStream on: (String new: 500).
 code nextPutAll: sel; cr.
 code cr; tab; nextPutAll: '^ ', newName.	"Return new class"
 

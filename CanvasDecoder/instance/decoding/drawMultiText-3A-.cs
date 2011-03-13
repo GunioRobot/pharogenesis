@@ -10,9 +10,9 @@ drawMultiText: command
 	colorEnc := command at: 5.
 
 
-	bounds _ self class decodeRectangle: boundsEnc.
+	bounds := self class decodeRectangle: boundsEnc.
 	fontIndex := self class decodeInteger: fontIndexEnc.
-	color _ self class decodeColor: colorEnc.
+	color := self class decodeColor: colorEnc.
 
 	self drawCommand: [ :c |
 		c drawString: text in: bounds font: (fonts at: fontIndex) color: color ]

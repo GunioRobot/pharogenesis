@@ -3,7 +3,7 @@ stepAt: nowTick
 	self isTicking 
 		ifTrue: 
 			[(lastTick isNil or: [nowTick < lastTick]) ifTrue: [lastTick := nowTick].
-			delta := (nowTick - lastTick) // stepTime.
+			delta := (nowTick - lastTick) // self stepTime.
 			delta > 0 
 				ifTrue: 
 					[index := index + delta.

@@ -1,0 +1,1 @@
+MCMergeResolutionRequest class instanceVariableNames: ''

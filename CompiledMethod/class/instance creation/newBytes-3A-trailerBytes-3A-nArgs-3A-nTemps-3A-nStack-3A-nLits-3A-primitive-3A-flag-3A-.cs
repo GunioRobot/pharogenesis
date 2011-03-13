@@ -2,8 +2,10 @@ newBytes: numberOfBytes trailerBytes: trailer nArgs: nArgs nTemps: nTemps nStack
 	"Answer an instance of me. The header is specified by the message 
 	arguments. The remaining parts are not as yet determined."
 	| largeBit primBits method flagBit |
-	nTemps > 64 ifTrue:
+	nTemps > 63 ifTrue:
 		[^ self error: 'Cannot compile -- too many temporary variables'].	
+	nLits > 255 ifTrue:
+		[^ self error: 'Cannot compile -- too many literals variables'].	
 	largeBit _ (nTemps + stackSize) > SmallFrame ifTrue: [1] ifFalse: [0].
 
 	"For now the high bit of the primitive no. is in a high bit of the header"

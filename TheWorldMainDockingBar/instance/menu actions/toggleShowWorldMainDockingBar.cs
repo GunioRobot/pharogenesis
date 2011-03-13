@@ -1,0 +1,2 @@
+toggleShowWorldMainDockingBar
+	self world toggleShowWorldMainDockingBar

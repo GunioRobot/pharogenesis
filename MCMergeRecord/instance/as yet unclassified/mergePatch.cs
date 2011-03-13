@@ -1,2 +1,2 @@
 mergePatch
-	^ mergePatch ifNil: [mergePatch _ version snapshot patchRelativeToBase: self ancestorSnapshot]
+	^ mergePatch ifNil: [mergePatch := version snapshot patchRelativeToBase: self ancestorSnapshot]

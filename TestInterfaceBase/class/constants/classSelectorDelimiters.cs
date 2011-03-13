@@ -1,3 +1,0 @@
-classSelectorDelimiters
-
-	^'. |' copy

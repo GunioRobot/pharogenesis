@@ -1,7 +1,6 @@
 Object
 	subclass: #StandardScriptingSystem
 	instanceVariableNames: ''
-	classVariableNames:
-		'ClassVarNamesInUse CustomPartsBin FormDictionary HelpStrings ReservedScriptNames StandardPartsBin StandardSlotInfo SystemSlotDictionary TypeColorDictionary '
+	classVariableNames: 'ClassVarNamesInUse FormDictionary HelpStrings StandardPartsBin'
 	poolDictionaries: ''
-	category: 'Morphic-Scripting'
+	category: 'Morphic-Refactoring Candidates'

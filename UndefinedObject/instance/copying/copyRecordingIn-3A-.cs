@@ -1,2 +1,0 @@
-copyRecordingIn: aDictionary
-	^ self

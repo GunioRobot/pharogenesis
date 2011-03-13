@@ -1,0 +1,1 @@
+MCFileBasedRepository class instanceVariableNames: ''

@@ -3,4 +3,4 @@ reset
 
 	super reset.
 	target initialVolume: points first y * scale.
-	nextRecomputeTime _ 0.
+	nextRecomputeTime := 0.

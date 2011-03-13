@@ -1,2 +1,2 @@
 flushCache
-	cache _ nil
+	cache := nil

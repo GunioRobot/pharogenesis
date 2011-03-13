@@ -1,6 +1,6 @@
 createButtonBar
 	| bar button narrowFont registeredFonts |
-	registeredFonts _ OrderedCollection new.
+	registeredFonts := OrderedCollection new.
 	TextStyle knownTextStylesWithoutDefault do:
 		[:st | (TextStyle named: st) fonts do: [:f | registeredFonts addLast: f]].		
 	narrowFont := registeredFonts detectMin:

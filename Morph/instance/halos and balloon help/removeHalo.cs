@@ -1,4 +1,4 @@
 removeHalo
-	| h |
-	h _ self halo.
-	h ifNotNil: [h delete]
+	"remove the surrounding halo (if any)"
+	self halo isNil
+		ifFalse: [self primaryHand removeHalo]

@@ -15,11 +15,11 @@ installReleaseSpecifics
 	SystemVersion current resetHighestUpdate.
 
 	"Add the squeakalpha update stream"
-	serverName _ 'Squeakalpha'.
-	serverURL _ 'squeakalpha.org'.
-	serverDir _ serverURL , '/'.
+	serverName := 'Squeakalpha'.
+	serverURL := 'squeakalpha.org'.
+	serverDir := serverURL , '/'.
 
-	updateServer _ ServerDirectory new.
+	updateServer := ServerDirectory new.
 	updateServer
 		server: serverURL;
 		directory: 'updates/';
@@ -29,11 +29,11 @@ installReleaseSpecifics
 	Utilities updateUrlLists addFirst: {serverName. {serverDir. }.}.
 
 	"Add the squeakland update stream"
-	serverName _ 'Squeakland'.
-	serverURL _ 'squeakland.org'.
-	serverDir _ serverURL , '/'.
+	serverName := 'Squeakland'.
+	serverURL := 'squeakland.org'.
+	serverDir := serverURL , '/'.
 
-	updateServer _ ServerDirectory new.
+	updateServer := ServerDirectory new.
 	updateServer
 		server: serverURL;
 		directory: 'public_html/updates/';

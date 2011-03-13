@@ -3,8 +3,8 @@ methodConflictsWithOppositeCategory
 
 	| aList otherCategory |
 
-	otherCategory _ (parent other: self) changeSetCategory.
-	aList _ myChangeSet 
+	otherCategory := (parent other: self) changeSetCategory.
+	aList := myChangeSet 
 		messageListForChangesWhich: [ :aClass :aSelector |
 			aClass notNil and: 
 				[otherCategory 

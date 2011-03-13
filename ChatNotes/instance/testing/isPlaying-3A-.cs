@@ -1,5 +1,5 @@
 isPlaying: aBoolean
 
 	isPlaying = aBoolean ifTrue: [^self].
-	isPlaying _ aBoolean.
+	isPlaying := aBoolean.
 	self changed: #isPlaying	

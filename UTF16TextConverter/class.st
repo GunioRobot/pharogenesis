@@ -1,0 +1,1 @@
+UTF16TextConverter class instanceVariableNames: ''

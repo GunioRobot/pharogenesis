@@ -1,3 +1,0 @@
-targetWantsRollover
-
-	^self targetProperties wantsRolloverIndicator

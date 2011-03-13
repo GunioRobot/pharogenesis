@@ -19,7 +19,7 @@ addBlockArg: aMorph
 	tempHolder ifNil: ["make new row"
 		tempHolder _ self addRow: #blockarg1 on: (BlockArgsNode new).
 		tempHolder addNoiseString: self noiseBeforeBlockArg.
-		tempHolder submorphs last firstSubmorph emphasis: 1.
+		tempHolder submorphs last firstSubmorph emphasis: TextEmphasis bold emphasisCode.
 		tempHolder useRoundedCorners.
 
 		self addMorphFront: tempHolder.

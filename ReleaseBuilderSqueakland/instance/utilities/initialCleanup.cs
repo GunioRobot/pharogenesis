@@ -1,8 +1,8 @@
 initialCleanup
 	"ReleaseBuilder new initialCleanup"
 
-	Browser initialize.
-	ChangeSorter removeChangeSetsNamedSuchThat:
+	Smalltalk at: #Browser ifPresent:[:br| br initialize].
+	ChangeSet removeChangeSetsNamedSuchThat:
 		[:cs| cs name ~= ChangeSet current name].
 
 	super initialCleanup

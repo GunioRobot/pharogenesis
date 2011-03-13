@@ -1,14 +1,14 @@
 recordPlaceObject: objectIndex name: aString depth: depth matrix: matrix colorMatrix: colorTransform ratio: ratio
 	| cached active doLoad |
-	cached _ passiveMorphs at: objectIndex ifAbsent:[#()].
+	cached := passiveMorphs at: objectIndex ifAbsent:[#()].
 	cached size >= 1 
 		ifTrue:["Got an old morph. Re-use it"
-				doLoad _ false.
-				active _ cached first.
+				doLoad := false.
+				active := cached first.
 				passiveMorphs at: objectIndex put: (cached copyWithout: active)]
 		ifFalse:["Need a new morph"
-				doLoad _ true.
-				active _ self newMorphFromShape: objectIndex.
+				doLoad := true.
+				active := self newMorphFromShape: objectIndex.
 				active isNil ifTrue:[^self].
 				active reset.
 				active visible: false atFrame: frame - 1].
@@ -20,7 +20,7 @@ recordPlaceObject: objectIndex name: aString depth: depth matrix: matrix colorMa
 	doLoad ifTrue:[
 		active loadInitialFrame.
 		player addMorph: active].
-	cached _ (activeMorphs at: objectIndex ifAbsent:[#()]) copyWith: active.
+	cached := (activeMorphs at: objectIndex ifAbsent:[#()]) copyWith: active.
 	activeMorphs at: objectIndex put: cached.
 	aString ifNotNil:[active setNameTo: aString].
 	ratio ifNotNil:[active ratio: ratio atFrame: frame].

@@ -3,8 +3,8 @@ removeSelections
 
 	| newChangeList newList |
 
-	newChangeList _ OrderedCollection new.
-	newList _ OrderedCollection new.
+	newChangeList := OrderedCollection new.
+	newList := OrderedCollection new.
 
 	1 to: changeList size do:
 		[:i | (listSelections at: i) ifFalse:
@@ -12,10 +12,10 @@ removeSelections
 			newList add: (list at: i)]].
 	newChangeList size < changeList size
 		ifTrue:
-			[changeList _ newChangeList.
-			list _ newList.
-			listIndex _ 0.
-			listSelections _ Array new: list size withAll: false].
+			[changeList := newChangeList.
+			list := newList.
+			listIndex := 0.
+			listSelections := Array new: list size withAll: false].
 	self changed: #list
 
 	

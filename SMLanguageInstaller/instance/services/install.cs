@@ -3,6 +3,8 @@ install
 	unpack it if necessary and install it into the image. 
 	The package is notified of the installation."
 
+	| translator |
 	self cache; unpack.
-	[NaturalLanguageTranslator mergeTranslationFileNamed: unpackedFileName]
+	translator := Smalltalk at: #Language ifAbsent: [Smalltalk at: #NaturalLanguageTranslator].
+	[translator mergeTranslationFileNamed: unpackedFileName]
 			ensure: [packageRelease noteInstalled]

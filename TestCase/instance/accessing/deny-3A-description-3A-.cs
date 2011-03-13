@@ -1,3 +1,3 @@
-deny: aBoolean description: aString
-	self assert: aBoolean not description: aString
+deny: aBooleanOrBlock description: aString
+	self assert: aBooleanOrBlock value not description: aString
 			

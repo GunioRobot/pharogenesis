@@ -3,10 +3,10 @@ isolatedCodePaneForClass: aClass selector: aSelector
 
 	| aCodePane aMethodHolder |
 
-	aMethodHolder _ self new.
+	aMethodHolder := self new.
 	aMethodHolder methodClass: aClass methodSelector: aSelector.
 
-	aCodePane _ MethodMorph on: aMethodHolder text: #contents accept: #contents:notifying:
+	aCodePane := MethodMorph on: aMethodHolder text: #contents accept: #contents:notifying:
 			readSelection: #contentsSelection menu: #codePaneMenu:shifted:.
 	aMethodHolder addDependent: aCodePane.
 	aCodePane borderWidth: 2; color: Color white.

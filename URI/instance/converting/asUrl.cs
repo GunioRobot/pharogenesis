@@ -1,0 +1,3 @@
+asUrl
+
+	^self asString asUrl

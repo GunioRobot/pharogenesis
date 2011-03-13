@@ -1,0 +1,2 @@
+onlyServices
+	^ ServicePreferences valueOfPreference: #useOnlyServicesInMenu

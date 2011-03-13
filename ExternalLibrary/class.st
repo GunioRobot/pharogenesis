@@ -1,1 +1,0 @@
-ExternalLibrary class instanceVariableNames: ''

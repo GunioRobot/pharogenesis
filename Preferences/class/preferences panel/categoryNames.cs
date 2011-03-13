@@ -1,6 +1,8 @@
 categoryNames
 	| aSet |
-	aSet := Set new.
-	DictionaryOfPreferences do: [:aPreference |
-		aSet addAll: (aPreference categoryList collect: [:aCategory | aCategory asSymbol])].
-	^aSet.
+	aSet _ Set new.
+	self dictionaryOfPreferences  do:
+			[:aPreference | 
+			aSet  addAll:(aPreference categoryList 
+						 collect:[:aCategory | aCategory asSymbol])].
+	^ aSet

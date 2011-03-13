@@ -1,1 +1,0 @@
-ChessTranspositionTable class instanceVariableNames: ''

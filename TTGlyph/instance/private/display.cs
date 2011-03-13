@@ -1,6 +1,6 @@
 display
 	| canvas |
-	canvas _ Display getCanvas.
+	canvas := Display getCanvas.
 	self contours do:[:ptArray|
 		1 to: ptArray size by: 3 do:[:i|
 			canvas line: (ptArray at: i) // 10

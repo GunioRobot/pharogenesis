@@ -1,6 +1,6 @@
 StringHolder
 	subclass: #Workspace
-	instanceVariableNames: 'bindings acceptDroppedMorphs '
+	instanceVariableNames: 'bindings acceptDroppedMorphs acceptAction mustDeclareVariables'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Kernel-ST80 Remnants'
+	category: 'Tools-Base'

@@ -1,2 +1,2 @@
 quadNumber: aNumber
-	quadNumber _ aNumber
+	quadNumber := aNumber

@@ -1,0 +1,2 @@
+maxPanes
+	^ 2

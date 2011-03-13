@@ -1,0 +1,1 @@
+MCNoChangesException class instanceVariableNames: ''

@@ -1,2 +1,5 @@
 initialize
-	self allSubInstancesDo: [:ea | ea registerForNotifications]
+	"Remove this later"
+	Smalltalk at: #SystemChangeNotifier ifPresent:[:cls|
+		(cls uniqueInstance) noMoreNotificationsFor: self.
+	].

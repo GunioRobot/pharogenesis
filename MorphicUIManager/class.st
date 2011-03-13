@@ -1,0 +1,1 @@
+MorphicUIManager class instanceVariableNames: ''

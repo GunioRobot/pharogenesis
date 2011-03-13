@@ -7,5 +7,5 @@ makeSelectorBold
 	i _ 0.
 	[(string at: (i _ i + 1)) isSeparator] whileTrue.
 	(string at: i) = $[ ifTrue: [^ self].  "block, no selector"
-	(parser _ Compiler parserClass new) parseSelector: string.
+	[(parser _ Compiler parserClass new) parseSelector: string] on: Error do: [^ self].
 	self makeBoldFrom: 1 to: (parser endOfLastToken min: string size)

@@ -1,1 +1,0 @@
-AtomicMap21 class instanceVariableNames: ''

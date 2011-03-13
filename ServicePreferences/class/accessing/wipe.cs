@@ -1,0 +1,2 @@
+wipe
+	self dictionaryOfPreferences: nil

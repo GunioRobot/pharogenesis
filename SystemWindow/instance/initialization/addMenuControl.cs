@@ -13,4 +13,4 @@ addMenuControl
 		 topFraction: 0;
 		 topOffset: 0.
 	menuBox layoutFrame: frame.
-	labelArea addMorph: menuBox
+	labelArea addMorphBack: menuBox

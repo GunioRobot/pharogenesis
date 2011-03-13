@@ -1,0 +1,2 @@
+isEnabled: aButton
+	^ true

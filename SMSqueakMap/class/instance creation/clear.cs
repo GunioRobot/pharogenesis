@@ -11,4 +11,4 @@ clear
 
 	"SMSqueakMap clear"
 
-	DefaultMap _ nil
+	DefaultMap := nil

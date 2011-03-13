@@ -13,4 +13,4 @@ parseNextMarker
 			ifAbsent:
 				[(self okToIgnoreMarker: byte)
 					ifTrue: [#skipMarker]
-					ifFalse: [self error: 'marker ', byte hex , ' cannot be handled']])
+					ifFalse: [self error: 'marker ', byte printStringHex , ' cannot be handled']])

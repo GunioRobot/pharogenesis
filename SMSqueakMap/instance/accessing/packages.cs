@@ -3,5 +3,5 @@ packages
 
 	packages ifNotNil: [^packages].
 	objects ifNil: [^#()].
-	packages _ objects select: [:o | o isPackage].
+	packages := objects select: [:o | o isPackage].
 	^packages

@@ -1,6 +1,6 @@
 Player
 	subclass: #CardPlayer
-	instanceVariableNames: 'privateMorphs '
+	instanceVariableNames: 'privateMorphs'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Stacks'
+	category: 'EToys-Stacks'

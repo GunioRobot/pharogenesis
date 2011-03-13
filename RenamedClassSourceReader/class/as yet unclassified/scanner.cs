@@ -1,3 +1,0 @@
-scanner
-
-	^self new

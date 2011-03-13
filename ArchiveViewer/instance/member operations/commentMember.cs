@@ -1,6 +1,6 @@
 commentMember
 	| newName |
-	newName _ FillInTheBlankMorph
+	newName := FillInTheBlankMorph
 			request: 'New comment for member:'
 			initialAnswer: self selectedMember fileComment
 			centerAt: Sensor cursorPoint

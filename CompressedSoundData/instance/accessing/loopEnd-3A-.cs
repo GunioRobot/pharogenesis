@@ -1,3 +1,3 @@
 loopEnd: anInteger
 
-	loopEnd _ anInteger.
+	loopEnd := anInteger.

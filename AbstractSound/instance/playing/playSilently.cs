@@ -3,8 +3,8 @@ playSilently
 
 	| bufSize buf |
 	self reset.
-	bufSize _ self samplingRate // 10.
-	buf _ SoundBuffer newStereoSampleCount: bufSize.
+	bufSize := self samplingRate // 10.
+	buf := SoundBuffer newStereoSampleCount: bufSize.
 	[self samplesRemaining > 0] whileTrue: [
 		buf primFill: 0.
 		self playSampleCount: bufSize into: buf startingAt: 1].

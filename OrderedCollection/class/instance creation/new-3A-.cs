@@ -1,2 +1,2 @@
 new: anInteger 
-	^ super new setCollection: (Array new: anInteger)
+	^ super basicNew setCollection: (Array new: anInteger)

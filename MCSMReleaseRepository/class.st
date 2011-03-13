@@ -1,0 +1,1 @@
+MCSMReleaseRepository class instanceVariableNames: ''

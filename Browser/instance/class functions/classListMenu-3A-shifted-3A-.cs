@@ -1,6 +1,8 @@
 classListMenu: aMenu shifted: shifted
 	"Set up the menu to apply to the receiver's class list, honoring the #shifted boolean"
 
+	ServiceGui browser: self classMenu: aMenu.
+	ServiceGui onlyServices  ifTrue: [^aMenu].
 	shifted
 		ifTrue:
 			[^ self shiftedClassListMenu: aMenu].
@@ -29,7 +31,7 @@ classListMenu: aMenu shifted: shifted
 		('remove class (x)'			removeClass)
 		-
 		('find method...'				findMethod)
-		('find method wildcard...'				findMethodWithWildcard)
+		('find method wildcard...'	findMethodWithWildcard)
 		-
 		('more...'					offerShiftedClassListMenu)).
 	^ aMenu

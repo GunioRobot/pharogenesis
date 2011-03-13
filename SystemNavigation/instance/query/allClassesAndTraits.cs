@@ -1,0 +1,5 @@
+allClassesAndTraits
+	
+	^ Smalltalk allClassesAndTraits
+
+	

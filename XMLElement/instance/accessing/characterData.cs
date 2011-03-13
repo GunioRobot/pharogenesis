@@ -1,2 +1,0 @@
-characterData
-	^self contentString

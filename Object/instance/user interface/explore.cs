@@ -1,3 +1,2 @@
 explore
-
-	^ObjectExplorer new openExplorerFor: self
+	^ToolSet explore: self

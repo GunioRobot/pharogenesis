@@ -1,0 +1,1 @@
+InstructionClient class instanceVariableNames: ''

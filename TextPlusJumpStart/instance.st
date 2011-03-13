@@ -1,6 +1,6 @@
 TextAction
 	subclass: #TextPlusJumpStart
-	instanceVariableNames: 'jumpLabel '
+	instanceVariableNames: 'jumpLabel'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-GeeMail'
+	category: 'MorphicExtras-GeeMail'

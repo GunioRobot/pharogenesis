@@ -7,7 +7,7 @@ search
 		[[toDo isEmpty or: [self followObject: toDo removeFirst]] whileFalse.
 		toDo isEmpty and: [toDoNext isEmpty not]]
 			whileTrue: 
-				[toDo _ toDoNext.
-				toDoNext _ OrderedCollection new: 5000]].
+				[toDo := toDoNext.
+				toDoNext := OrderedCollection new: 5000]].
 
 	self buildList

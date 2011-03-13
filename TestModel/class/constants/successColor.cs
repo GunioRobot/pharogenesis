@@ -1,3 +1,0 @@
-successColor
-
-	^Color green

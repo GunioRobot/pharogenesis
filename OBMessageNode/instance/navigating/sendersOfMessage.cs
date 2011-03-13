@@ -1,0 +1,2 @@
+sendersOfMessage
+	^ self sendersOf: message

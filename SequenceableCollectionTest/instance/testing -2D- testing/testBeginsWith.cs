@@ -1,12 +1,10 @@
 testBeginsWith
 	"We can't test SequenceableCollection directly. However, we can test a sampling of its descendants."
+
 	| la prefix oc |
 	la := #(1 2 3 4 5 6).
 	oc := OrderedCollection new.
-	oc
-		add: 1;
-		add: 2;
-		add: 3.
+	oc add: 1; add: 2; add: 3.
 
 	self assert: (la beginsWith: #(1)).
 	self assert: (la beginsWith: #(1 2)).

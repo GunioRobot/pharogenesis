@@ -1,9 +1,9 @@
 playEvent: event frames: frames at: time
 	| frame breathyAspiration formantScale |
-	breathyAspiration _ self dBFromLinear: (self linearFromdB: 68) * self breathiness.
-	formantScale _ self formantScale.
+	breathyAspiration := self dBFromLinear: (self linearFromdB: 68) * self breathiness.
+	formantScale := self formantScale.
 	1 to: frames size do: [ :each |
-		frame _ frames at: each.
+		frame := frames at: each.
 		frame gain: (self dBFromLinear: (self linearFromdB: frame gain) * event loudness).
 		frame f0: (event pitchAt: each - 1 * event duration / frames size).
 		frame voicing: (self dBFromLinear: (self linearFromdB: frame voicing) * (1.0 - self breathiness)).

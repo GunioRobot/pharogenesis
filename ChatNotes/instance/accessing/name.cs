@@ -1,3 +1,3 @@
 name
 
-	^name ifNil: [name _ '']
+	^name ifNil: [name := '']

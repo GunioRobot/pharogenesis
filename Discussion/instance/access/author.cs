@@ -1,2 +1,0 @@
-author
-	^self description

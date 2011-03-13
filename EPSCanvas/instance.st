@@ -3,4 +3,4 @@ PostscriptCanvas
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Postscript Canvases'
+	category: 'MorphicExtras-Postscript Canvases'

@@ -6,7 +6,7 @@ readBDFFromFile: fileName name: aString
 	"StrikeFont new readBDFFromFile: 'helvR12' name: 'Helvetica12'."
 
 	| fontReader stream |
-	fontReader := BDFFontReader oldFileNamed: fileName.
+	fontReader := BDFFontReader openFileNamed: fileName.
 	stream := ReadStream on: fontReader read.
 	xTable := stream next.
 	glyphs := stream next.

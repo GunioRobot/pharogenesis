@@ -2,12 +2,12 @@ contents: aString notifying: aController
 	"Accept the string as new source for the current method, and make certain the annotation pane gets invalidated"
 
 	| existingSelector existingClass superResult newSelector |
-	existingSelector _ self selectedMessageName.
-	existingClass _ self selectedClassOrMetaClass.
+	existingSelector := self selectedMessageName.
+	existingClass := self selectedClassOrMetaClass.
 
-	superResult _ super contents: aString notifying: aController.
+	superResult := super contents: aString notifying: aController.
 	superResult ifTrue:  "succeeded"
-		[newSelector _ Parser new parseSelector: aString.
+		[newSelector := existingClass parserClass new parseSelector: aString.
 		newSelector ~= existingSelector
 			ifTrue:   "Selector changed -- maybe an addition"
 				[self reformulateList.

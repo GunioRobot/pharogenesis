@@ -1,2 +1,0 @@
-openViewerForArgument
-	myActor beViewed.

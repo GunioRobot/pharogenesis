@@ -1,8 +1,0 @@
-This is a Class supporting debugging the ThreeDSParser. It's not needed for the actual parsing process. Instances are automatically created from the chunk documentation for each chunk (see ThreeDSParser class  'utilities' protocol) and stored in the Dictionary ChunkDescriptions. They act as Associations by itself.
-
-Instance Variables:
-	id			<Integer>  the chunk id
-	name		<String>  an identifier
-	comment	<String>  a comment, if available
-	
-The printOn: method is sensitive to the Shift key -- only if pressed, the comment is shown.

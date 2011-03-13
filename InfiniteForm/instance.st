@@ -1,6 +1,6 @@
 DisplayObject
 	subclass: #InfiniteForm
-	instanceVariableNames: 'patternForm '
+	instanceVariableNames: 'patternForm'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Graphics-Display Objects'

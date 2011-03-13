@@ -13,13 +13,9 @@ buttonToTriggerIn: aFileList
 		color: Color transparent;
 		hResizing: #spaceFill;
 		vResizing: #spaceFill;
-		useRoundedCorners;
 		label: self buttonLabel;
 		askBeforeChanging: true;
-		onColor: Color transparent offColor: Color transparent.
+		onColor: Color white offColor: Color white.
 		aButton setBalloonText: self description.
 
-		Preferences alternativeWindowLook
-			ifTrue:
-				[aButton borderWidth: 2; borderColor: #raised].
 	^ aButton

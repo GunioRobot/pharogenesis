@@ -1,0 +1,1 @@
+MultiByteBinaryOrTextStream class instanceVariableNames: ''

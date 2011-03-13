@@ -5,18 +5,18 @@ setClass: aBehavior selector: aSymbol
 	aBehavior ifNil: [^ self].
 	(aBehavior isKindOf: Metaclass)
 		ifTrue: [
-			isMeta _ true.
-			aClass _ aBehavior soleInstance]
+			isMeta := true.
+			aClass := aBehavior soleInstance]
 		ifFalse: [
-			isMeta _ false.
-			aClass _ aBehavior].
+			isMeta := false.
+			aClass := aBehavior].
 	self selectCategoryForClass: aClass.
 	self classListIndex: (
-		(SystemOrganization listAtCategoryNamed: self selectedSystemCategoryName)
+		(systemOrganizer listAtCategoryNamed: self selectedSystemCategoryName)
 			indexOf: aClass name).
 	self metaClassIndicated: isMeta.
 	aSymbol ifNil: [^ self].
-	messageCatIndex _ aBehavior organization numberOfCategoryOfElement: aSymbol.
+	messageCatIndex := aBehavior organization numberOfCategoryOfElement: aSymbol.
 	self messageCategoryListIndex: (messageCatIndex > 0
 		ifTrue: [messageCatIndex + 1]
 		ifFalse: [0]).

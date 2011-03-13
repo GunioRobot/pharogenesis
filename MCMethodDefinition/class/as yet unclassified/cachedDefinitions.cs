@@ -1,3 +1,3 @@
 cachedDefinitions
-	Definitions ifNil: [Definitions _ WeakIdentityKeyDictionary new.  WeakArray addWeakDependent: Definitions].
+	Definitions ifNil: [Definitions := WeakIdentityKeyDictionary new.  WeakArray addWeakDependent: Definitions].
 	^ Definitions

@@ -1,2 +1,2 @@
 outPoint: anInteger
-	outPoint _ anInteger
+	outPoint := anInteger

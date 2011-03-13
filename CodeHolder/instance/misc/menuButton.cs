@@ -2,7 +2,7 @@ menuButton
 	"Answer a button that brings up a menu.  Useful when adding new features, but at present is between uses"
 
 	| aButton |
-	aButton _ IconicButton new target: self;
+	aButton := IconicButton new target: self;
 		borderWidth: 0;
 		labelGraphic: (ScriptingSystem formAtKey: #TinyMenu);
 		color: Color transparent; 

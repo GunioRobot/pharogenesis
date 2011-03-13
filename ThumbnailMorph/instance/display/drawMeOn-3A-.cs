@@ -1,7 +1,7 @@
 drawMeOn: aCanvas 
 	"Draw a small view of a morph in another place.  Guard against infinite recursion if that morph has a thumbnail of itself inside.  Now also works if the thing to draw is a plain Form rather than a morph."
 
-	| viewedMorphBox myBox scale c shrunkForm aWorld aFormOrMorph scaleX scaleY ratio factor  |
+	| viewedMorphBox scale c shrunkForm aWorld aFormOrMorph  |
 	super drawOn: aCanvas.
 	((aFormOrMorph := self formOrMorphToView) isForm) 
 		ifTrue: [^self drawForForm: aFormOrMorph on: aCanvas].
@@ -11,21 +11,8 @@ drawMeOn: aCanvas
 			ifTrue: 
 				[RecursionDepth := RecursionDepth + 1.
 				viewedMorphBox := aFormOrMorph fullBounds.
-				myBox := self innerBounds.
-				scaleX _ myBox width asFloat / viewedMorphBox width.
-				scaleY _ myBox height asFloat / viewedMorphBox height.
-				ratio _ scaleX / scaleY.
-				factor _ 1.0 / EccentricityThreshhold.
-				ratio < factor
-					ifTrue:
-						[scale _ (scaleX) @ (factor * scaleY)]
-					ifFalse:
-						[ratio > EccentricityThreshhold
-							ifTrue:
-								[scale _ (factor * scaleX) @ scaleY]
-							ifFalse:
-								[scale _ scaleX min: scaleY]].
-				c _ Display defaultCanvasClass extent: viewedMorphBox extent
+			scale :=  self scaleFor: viewedMorphBox in: self innerBounds.
+				c := Display defaultCanvasClass extent: viewedMorphBox extent
 							depth: aCanvas depth.
 				c translateBy: viewedMorphBox topLeft negated
 					during: 

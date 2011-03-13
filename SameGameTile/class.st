@@ -1,1 +1,0 @@
-SameGameTile class instanceVariableNames: ''

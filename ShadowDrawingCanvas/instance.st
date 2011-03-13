@@ -1,6 +1,6 @@
-Canvas
+ColorMappingCanvas
 	subclass: #ShadowDrawingCanvas
-	instanceVariableNames: 'myCanvas shadowColor '
+	instanceVariableNames: 'shadowColor'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Support'

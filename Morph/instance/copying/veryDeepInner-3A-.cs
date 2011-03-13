@@ -10,5 +10,4 @@ veryDeepInner: deepCopier
 	"fullBounds _ fullBounds.	fullBounds is shared with original!"
 	color _ color veryDeepCopyWith: deepCopier.
 	"color, if simple, will return self. may be complex"
-	self
-		privateExtension: (self extension veryDeepCopyWith: deepCopier)
+	extension := (extension veryDeepCopyWith: deepCopier)

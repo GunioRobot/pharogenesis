@@ -1,0 +1,2 @@
+openDualChangeSorter
+	DualChangeSorter new morphicWindow openInWorld

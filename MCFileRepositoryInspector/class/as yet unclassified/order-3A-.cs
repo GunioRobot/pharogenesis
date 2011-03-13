@@ -1,2 +1,2 @@
 order: anInteger
-	Order _ anInteger
+	Order := anInteger

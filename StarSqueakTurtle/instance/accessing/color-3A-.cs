@@ -1,3 +1,3 @@
 color: aColor
 
-	color _ aColor.
+	color := aColor.

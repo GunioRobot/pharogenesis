@@ -1,2 +1,0 @@
-levelName
-	^ 'Acetone' translated

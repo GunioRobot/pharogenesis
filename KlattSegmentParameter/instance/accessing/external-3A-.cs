@@ -1,2 +1,2 @@
 external: aNumber
-	external _ aNumber
+	external := aNumber

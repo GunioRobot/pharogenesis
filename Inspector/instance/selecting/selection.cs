@@ -7,7 +7,7 @@ selection
 	selectionIndex = 2 ifTrue: [^ object longPrintStringLimitedTo: 20000].
 	(selectionIndex - 2) <= object class instSize
 		ifTrue: [^ object instVarAt: selectionIndex - 2].
-	basicIndex _ selectionIndex - 2 - object class instSize.
+	basicIndex := selectionIndex - 2 - object class instSize.
 	(object basicSize <= (self i1 + self i2)  or: [basicIndex <= self i1])
 		ifTrue: [^ object basicAt: basicIndex]
 		ifFalse: [^ object basicAt: object basicSize - (self i1 + self i2) + basicIndex]

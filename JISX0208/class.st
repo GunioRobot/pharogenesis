@@ -1,0 +1,1 @@
+JISX0208 class instanceVariableNames: ''

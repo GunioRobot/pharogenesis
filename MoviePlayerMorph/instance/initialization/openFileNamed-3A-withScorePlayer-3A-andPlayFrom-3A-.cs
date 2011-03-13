@@ -4,8 +4,8 @@ openFileNamed: fName withScorePlayer: playerReady andPlayFrom: frameNo
 	happen in startRunning."
 
 	self pvtOpenFileNamed: fName.
-	scorePlayer _ playerReady.
-	frameNumber _ frameNo.
-	frameAtLastSync _ frameNo.
-	msAtLastSync _ frameAtLastSync * msPerFrame.
+	scorePlayer := playerReady.
+	frameNumber := frameNo.
+	frameAtLastSync := frameNo.
+	msAtLastSync := frameAtLastSync * msPerFrame.
 	self playForward.

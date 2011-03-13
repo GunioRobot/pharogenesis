@@ -1,2 +1,4 @@
 defaultNameStemForInstances
-	^ 'button'
+	^ self = SimpleButtonMorph
+		ifTrue: ['Button']
+		ifFalse: [^ super defaultNameStemForInstances]

@@ -1,6 +1,6 @@
 Object
 	subclass: #TTFontTableDirEntry
-	instanceVariableNames: 'tag fontData offset length checkSum '
+	instanceVariableNames: 'tag fontData offset length checkSum'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon-TrueType Support'
+	category: 'TrueType-Support'

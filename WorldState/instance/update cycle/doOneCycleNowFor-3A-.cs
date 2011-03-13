@@ -5,7 +5,7 @@ doOneCycleNowFor: aWorld
 	| capturingGesture |
 	DisplayScreen checkForNewScreenSize.
 	capturingGesture _ false.
-	self flag: #bob.		"need to consider remote hands in lower worlds"
+	"self flag: #bob.	"	"need to consider remote hands in lower worlds"
 
 	"process user input events"
 	LastCycleTime _ Time millisecondClockValue.

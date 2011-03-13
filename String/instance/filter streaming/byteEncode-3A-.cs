@@ -1,2 +1,3 @@
 byteEncode:aStream
-	^aStream writeString:self.
+
+	^aStream writeString: self.

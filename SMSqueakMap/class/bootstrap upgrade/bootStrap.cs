@@ -5,9 +5,9 @@ bootStrap
 	own changeset management."
 
 	| server url |
-	server _ self findServer.
+	server := self findServer.
 	server ifNotNil: ["Ok, found a SqueakMap server"
-		url _ (('http://', server, '/sm/packagebyname/squeakmap/downloadurl')
+		url := (('http://', server, '/packagebyname/squeakmap/downloadurl')
 				asUrl retrieveContents content) asUrl.
 		(url retrieveContents content unzipped readStream)
 				fileInAnnouncing: 'Upgrading SqueakMap...']

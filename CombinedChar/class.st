@@ -1,0 +1,1 @@
+CombinedChar class instanceVariableNames: ''

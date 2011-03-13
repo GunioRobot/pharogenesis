@@ -3,5 +3,5 @@ next16BitWord
 	"Assume: Stream has at least two bytes left."
 
 	| n |
-	n _ stream next.
+	n := stream next.
 	^ (n bitShift: 8) + stream next

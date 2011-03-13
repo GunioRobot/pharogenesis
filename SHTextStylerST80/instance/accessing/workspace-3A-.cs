@@ -1,2 +1,0 @@
-workspace: aWorkspace
-	workspace := aWorkspace

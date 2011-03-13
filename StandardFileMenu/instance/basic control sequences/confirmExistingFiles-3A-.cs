@@ -3,13 +3,10 @@ confirmExistingFiles: aResult
 	|choice|
 	(aResult directory fileExists: aResult name) ifFalse: [^aResult].
 	
-	choice _ (PopUpMenu
-		labels:
-'overwrite that file
-choose another name
-cancel')
-		startUpWithCaption: aResult name, '
-already exists.'.
+	choice _ (UIManager default chooseFrom: #('overwrite that file' 'choose another name'
+ 'cancel')
+		title: aResult name, '
+already exists.').
 
 	choice = 1 ifTrue: [
 		aResult directory 

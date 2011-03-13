@@ -1,0 +1,1 @@
+OBHierarchyBrowser class instanceVariableNames: ''

@@ -1,2 +1,0 @@
-magicNumberGet
-	^workBuffer at: GWMagicIndex

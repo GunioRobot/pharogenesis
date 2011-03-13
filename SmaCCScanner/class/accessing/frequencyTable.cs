@@ -1,0 +1,2 @@
+frequencyTable
+	^#(1)

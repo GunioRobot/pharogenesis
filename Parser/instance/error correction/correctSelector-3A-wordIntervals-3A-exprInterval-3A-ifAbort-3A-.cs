@@ -20,10 +20,10 @@ correctSelector: proposedKeyword wordIntervals: spots exprInterval: expInt ifAbo
 	aStream nextPutAll: 'cancel'.
 	lines _ Array with: firstLine with: (alternatives size + firstLine).
 	
-	choice _ (PopUpMenu labels: aStream contents lines: lines)
-		startUpWithCaption: 
-'Unknown selector, please 
-confirm, correct, or cancel'.
+	choice _ (UIManager default 
+			chooseFrom: (aStream contents substrings)
+			lines: lines
+			title: 'Unknown selector, please\confirm, correct, or cancel' withCRs).
 
 	(choice = 0) | (choice > (lines at: 2))
 		ifTrue: [ ^ abortAction value ].

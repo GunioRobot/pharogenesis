@@ -1,2 +1,0 @@
-definingClass
-	^definingClass

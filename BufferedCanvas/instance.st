@@ -1,6 +1,6 @@
 PluggableCanvas
 	subclass: #BufferedCanvas
-	instanceVariableNames: 'remote previousVersion lastTick dirtyRect mirrorOfScreen '
+	instanceVariableNames: 'remote previousVersion lastTick dirtyRect mirrorOfScreen'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Remote'
+	category: 'Nebraska-Morphic-Remote'

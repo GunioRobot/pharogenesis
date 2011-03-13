@@ -15,7 +15,7 @@ primMapFrom: srcBitmap to: dstBitmap width: w height: h patchSize: patchSize rgb
 				do: 
 					[:x | 
 					level := (srcBitmap at: (srcIndex := srcIndex + 1)) bitShift: shiftAmount.
-					level _ level min: 255.
+					level := level min: 255.
 					pixel := level <= 0 
 								ifTrue: 
 									["non-transparent black"

@@ -1,6 +1,6 @@
 Object
 	subclass: #DECTalkReader
-	instanceVariableNames: 'stream phonemes durations events currentDuration currentPitch f0Contour '
+	instanceVariableNames: 'stream phonemes durations events currentDuration currentPitch f0Contour'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Speech-Support'

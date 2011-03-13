@@ -1,10 +1,10 @@
-assert: aBoolean description: aString resumable: resumableBoolean 
+assert: aBooleanOrBlock description: aString resumable: resumableBoolean 
 	| exception |
-	aBoolean
+	aBooleanOrBlock value
 		ifFalse: 
 			[self logFailure: aString.
 			exception := resumableBoolean
 						ifTrue: [TestResult resumableFailure]
 						ifFalse: [TestResult failure].
-			exception sunitSignalWith: aString]
+			exception signal: aString]
 			

@@ -4,7 +4,7 @@ perform: selector orSendTo: otherTarget
 	| result |
 	(#(debug proceed) includes: selector)		"When I am a notifier window"
 		ifTrue: [^ self perform: selector]
-		ifFalse: [result _ super perform: selector orSendTo: otherTarget.
+		ifFalse: [result := super perform: selector orSendTo: otherTarget.
 				selector == #doIt ifTrue: [
 					result ~~ #failedDoit ifTrue: [self proceedValue: result]].
 				^ result]

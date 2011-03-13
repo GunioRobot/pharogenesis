@@ -1,2 +1,0 @@
-stackFillEntryLength
-	^3

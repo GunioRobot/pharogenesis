@@ -1,2 +1,0 @@
-wantsOptionalButtons
-	^ Preferences optionalButtons

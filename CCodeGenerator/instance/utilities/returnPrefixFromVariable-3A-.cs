@@ -1,2 +1,0 @@
-returnPrefixFromVariable: aName
-	^aName

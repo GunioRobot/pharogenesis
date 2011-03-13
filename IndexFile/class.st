@@ -1,1 +1,0 @@
-IndexFile class instanceVariableNames: ''

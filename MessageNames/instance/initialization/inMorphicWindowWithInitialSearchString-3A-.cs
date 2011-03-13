@@ -4,15 +4,15 @@ inMorphicWindowWithInitialSearchString: initialString
 "MessageNames openMessageNames"
 
 	| window selectorListView firstDivider secondDivider horizDivider typeInPane searchButton plugTextMor |
-	window _ (SystemWindow labelled: 'Message Names') model: self.
-	firstDivider _ 0.07.
-	secondDivider _ 0.5.
-	horizDivider _ 0.5.
-	typeInPane _ AlignmentMorph newRow vResizing: #spaceFill; height: 14.
+	window := (SystemWindow labelled: 'Message Names') model: self.
+	firstDivider := 0.07.
+	secondDivider := 0.5.
+	horizDivider := 0.5.
+	typeInPane := AlignmentMorph newRow vResizing: #spaceFill; height: 14.
 	typeInPane hResizing: #spaceFill.
 	typeInPane listDirection: #leftToRight.
 
-	plugTextMor _ PluggableTextMorph on: self
+	plugTextMor := PluggableTextMorph on: self
 					text: #searchString accept: #searchString:notifying:
 					readSelection: nil menu: nil.
 	plugTextMor setProperty: #alwaysAccept toValue: true.
@@ -24,9 +24,9 @@ inMorphicWindowWithInitialSearchString: initialString
 	plugTextMor hideScrollBarsIndefinitely.
 	plugTextMor setTextMorphToSelectAllOnMouseEnter.
 
-	searchButton _ SimpleButtonMorph new 
+	searchButton := SimpleButtonMorph new 
 		target: self;
-		beTransparent;
+		color: Color white;
 		label: 'Search';
 		actionSelector: #doSearchFrom:;
 		arguments: {plugTextMor}.
@@ -40,7 +40,7 @@ inMorphicWindowWithInitialSearchString: initialString
 
 	window addMorph: typeInPane frame: (0@0 corner: horizDivider @ firstDivider).
 
-	selectorListView _ PluggableListMorph on: self
+	selectorListView := PluggableListMorph on: self
 		list: #selectorList
 		selected: #selectorListIndex
 		changeSelected: #selectorListIndex:

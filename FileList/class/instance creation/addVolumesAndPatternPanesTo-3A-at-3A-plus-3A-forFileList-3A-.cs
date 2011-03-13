@@ -22,14 +22,13 @@ addVolumesAndPatternPanesTo: window at: upperFraction plus: offset forFileList: 
 	patternMorph hideScrollBarsIndefinitely.
 	divider _ BorderedSubpaneDividerMorph horizontal.
 	dividerDelta _ 0.
-	Preferences alternativeWindowLook
-		ifTrue: [divider extent: 4 @ 4;
-				 color: Color transparent;
-				 borderColor: #raised;
-				 borderWidth: 2.
-			volumeListMorph borderColor: Color transparent.
-			patternMorph borderColor: Color transparent.
-			dividerDelta _ 3].
+	divider extent: 4 @ 4;
+			color: Color transparent;
+			borderColor: #raised;
+			borderWidth: 2.
+		volumeListMorph borderColor: Color transparent.
+		patternMorph borderColor: Color transparent.
+		dividerDelta _ 3.
 	row
 		addMorph: (volumeListMorph autoDeselect: false)
 		fullFrame: (LayoutFrame
@@ -50,5 +49,4 @@ addVolumesAndPatternPanesTo: window at: upperFraction plus: offset forFileList: 
 		fullFrame: (LayoutFrame
 				fractions: upperFraction
 				offsets: (0 @ offset corner: 0 @ 0)).
-	Preferences alternativeWindowLook
-		ifTrue: [row borderWidth: 2] ifFalse: [row borderWidth: 0]
+	row borderWidth: 2

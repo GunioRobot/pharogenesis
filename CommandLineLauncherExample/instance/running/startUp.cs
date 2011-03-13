@@ -1,4 +1,4 @@
 startUp
 	| className |
-	className _ self parameterAt: 'class'.
-	Browser newOnClass: (Smalltalk at: className asSymbol ifAbsent: [Object])
+	className := self parameterAt: 'class'.
+	ToolSet browse: (Smalltalk at: className asSymbol ifAbsent: [Object]) selector: nil

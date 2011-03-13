@@ -1,1 +1,0 @@
-OSAID class instanceVariableNames: ''

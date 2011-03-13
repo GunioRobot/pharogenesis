@@ -1,7 +1,7 @@
 buildMorphicSystemCatList
 	| dragNDropFlag myCatList |
-	dragNDropFlag _ Preferences browseWithDragNDrop.
-	(myCatList _ PluggableListMorph new) 
+	dragNDropFlag := Preferences browseWithDragNDrop.
+	(myCatList := PluggableListMorph new) 
 			setProperty: #highlightSelector toValue: #highlightSystemCategoryList:with:;
 
 			on: self list: #systemCategoryList

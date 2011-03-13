@@ -1,3 +1,0 @@
-runButtonColor
-
-	^self class runButtonColor

@@ -1,2 +1,0 @@
-fraction
-	^fraction

@@ -1,0 +1,2 @@
+openSelectorBrowser
+	SelectorBrowser new morphicWindow openInWorld

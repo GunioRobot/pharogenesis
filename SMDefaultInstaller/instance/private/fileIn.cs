@@ -6,21 +6,17 @@ fileIn
 	the name derived from the filename already exists."
 	
 	| fileStream |
-	((unpackedFileName endsWith: (FileDirectory dot, FileStream st))
-		or: [unpackedFileName endsWith: (FileDirectory dot, FileStream cs)])
+	(self class nonMultiSuffixes anySatisfy: [:each | unpackedFileName endsWith: (FileDirectory dot, each)])
 		ifTrue:[
-			fileStream _ dir readOnlyFileNamed: unpackedFileName.
-			fileStream setConverterForCode.
-			self fileIntoChangeSetNamed: (fileStream localName sansPeriodSuffix)
-				fromStream: fileStream.
-			^ self].
-"	((unpackedFileName endsWith: (FileDirectory dot, FileStream multiSt))
-		or: [unpackedFileName endsWith: (FileDirectory dot, FileStream multiCs)])
+			fileStream := dir readOnlyFileNamed: unpackedFileName.
+			(fileStream respondsTo: #setConverterCode) ifTrue: [fileStream setConverterForCode].
+			self fileIntoChangeSetNamed: (fileStream localName sansPeriodSuffix) fromStream: fileStream.
+			^self].
+	(self class multiSuffixes anySatisfy: [:each | unpackedFileName endsWith: (FileDirectory dot, each)])
 		ifTrue:[
-			fileStream _ dir readOnlyFileNamed: unpackedFileName.
-			fileStream converter: UTF8TextConverter new.
-			self fileIntoChangeSetNamed: (fileStream localName sansPeriodSuffix)
-				fromStream: fileStream.
-			^ self].
-"
+			fileStream := dir readOnlyFileNamed: unpackedFileName.
+			"Only images with converters should have multi suffixes"
+			fileStream converter: (Smalltalk at: #UTF8TextConverter) new.
+			self fileIntoChangeSetNamed: (fileStream localName sansPeriodSuffix) fromStream: fileStream.
+			^self].
 	self error: 'Filename should end with a proper extension'.

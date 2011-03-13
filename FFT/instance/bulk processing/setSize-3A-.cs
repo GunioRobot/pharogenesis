@@ -3,8 +3,8 @@ setSize: anIntegerPowerOfTwo
 
 	self nu: (anIntegerPowerOfTwo log: 2) asInteger.
 	n = anIntegerPowerOfTwo ifFalse: [self error: 'size must be a power of two'].
-	sinTable _ sinTable asFloatArray.
-	permTable _ permTable asWordArray.
-	realData _ FloatArray new: n.
-	imagData _ FloatArray new: n.
+	sinTable := sinTable asFloatArray.
+	permTable := permTable asWordArray.
+	realData := FloatArray new: n.
+	imagData := FloatArray new: n.
 	self initializeHammingWindow: 0.54.  "0.54 for Hamming, 0.5 for hanning"

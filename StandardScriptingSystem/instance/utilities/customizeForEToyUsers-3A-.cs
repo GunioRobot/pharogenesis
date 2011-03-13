@@ -1,7 +1,8 @@
 customizeForEToyUsers: aBoolean
-	"If aBoolean is true, set things up for etoy users.  If it's false, unset some of those things.  Some things are set when switching into etoy mode but not reversed when switching out of etoy mode"
+	"If aBoolean is true, set things up for etoy users.  If it's false, unset some of those things.  Some things are set when switching into etoy mode but not reversed when switching out of etoy mode."
  
 	#(	
+		(allowEtoyUserCustomEvents	no		reverse)
 		(balloonHelpEnabled			yes		dontReverse)
 		(debugHaloHandle			no		reverse)
 		(modalColorPickers			yes		dontReverse)

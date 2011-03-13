@@ -1,6 +1,6 @@
 SelectionMenu
 	subclass: #StandardFileMenu
-	instanceVariableNames: 'canTypeFileName pattern '
+	instanceVariableNames: 'canTypeFileName pattern'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Tools-FileList'
+	category: 'Morphic-FileList'

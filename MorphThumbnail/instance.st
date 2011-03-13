@@ -1,6 +1,6 @@
 SketchMorph
 	subclass: #MorphThumbnail
-	instanceVariableNames: 'morphRepresented '
+	instanceVariableNames: 'morphRepresented'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Books'
+	category: 'MorphicExtras-Books'

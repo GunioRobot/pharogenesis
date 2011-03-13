@@ -1,4 +1,9 @@
 initialize
 	super initialize.
-	self	borderWidth: 1; color: Color white.
-	barSize _ 0.
+
+	self
+		borderWidth: 1;
+		borderColor: Preferences menuBorderColor;
+		color: Preferences menuColor muchLighter.
+		
+	barSize := 0.

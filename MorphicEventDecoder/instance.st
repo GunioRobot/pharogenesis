@@ -1,6 +1,6 @@
 Object
 	subclass: #MorphicEventDecoder
-	instanceVariableNames: 'connection '
+	instanceVariableNames: 'connection'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Remote'
+	category: 'Nebraska-Morphic-Remote'

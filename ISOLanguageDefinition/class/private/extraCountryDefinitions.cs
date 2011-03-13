@@ -1,3 +1,4 @@
 extraCountryDefinitions
-	^self readISOCountriesFrom: 'KIDS	Kids
-' readStream
+	^{
+	{'Kids'. 'KIDS'. 'KIDS'.}.
+	}

@@ -2,7 +2,7 @@ chatFrom: ipAddress name: senderName text: text
 
 	| chatWindow |
 
-	chatWindow _ self 
+	chatWindow := self 
 		chatWindowForIP: ipAddress 
 		name: senderName 
 		picture: (EToySenderMorph pictureForIPAddress: ipAddress) 

@@ -1,2 +1,0 @@
-initialValuesAdditionwindowsdismissAllOnOptionClose
-	^ #((dismissAllOnOptionClose false (windows ) ) )

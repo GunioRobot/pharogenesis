@@ -14,7 +14,7 @@ newSuppliesFlapFromQuads: quads positioning: positionSymbol
 	aFlapTab position: (hPosition @ (self currentWorld height - aFlapTab height)).
 	aFlapTab setBalloonText: aFlapTab balloonTextForFlapsMenu.
 
-	aStrip extent: self currentWorld width @ 78.
+	aStrip extent: self currentWorld width @ 136.
 	aStrip beFlap: true.
 	aStrip autoLineLayout: true.
 	

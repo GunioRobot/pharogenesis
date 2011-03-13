@@ -4,16 +4,16 @@ splitNameVersionExtensionFor: fileName
 
 	| baseName version extension i j |
 
-	baseName _ self class baseNameFor: fileName.
-	extension _ self class extensionFor: fileName.
-	i _ j _ baseName findLast: [:c | c isDigit not].
+	baseName := self class baseNameFor: fileName.
+	extension := self class extensionFor: fileName.
+	i := j := baseName findLast: [:c | c isDigit not].
 	i = 0
-		ifTrue: [version _ 0]
+		ifTrue: [version := 0]
 		ifFalse:
 			[(baseName at: i) = $.
 				ifTrue:
-					[version _ (baseName copyFrom: i+1 to: baseName size) asNumber.
-					j _ j - 1]
-				ifFalse: [version _ 0].
-			baseName _ baseName copyFrom: 1 to: j].
+					[version := (baseName copyFrom: i+1 to: baseName size) asNumber.
+					j := j - 1]
+				ifFalse: [version := 0].
+			baseName := baseName copyFrom: 1 to: j].
 	^ Array with: baseName with: version with: extension

@@ -1,3 +1,0 @@
-sunitName
- 
-        ^self name

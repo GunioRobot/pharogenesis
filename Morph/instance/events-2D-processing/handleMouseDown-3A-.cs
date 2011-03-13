@@ -18,7 +18,9 @@ handleMouseDown: anEvent
 		ifTrue: [^ self gestureStart: anEvent].
 
 	self mouseDown: anEvent.
-	anEvent hand removeHaloFromClick: anEvent on: self.
+
+	Preferences maintainHalos
+		ifFalse:[ anEvent hand removeHaloFromClick: anEvent on: self ].
 
 	(self handlesMouseStillDown: anEvent) ifTrue:[
 		self startStepping: #handleMouseStillDown: 

@@ -1,0 +1,1 @@
+MCMczReader class instanceVariableNames: ''

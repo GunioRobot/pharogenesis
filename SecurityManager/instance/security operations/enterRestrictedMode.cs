@@ -3,12 +3,12 @@ enterRestrictedMode
 	self isInRestrictedMode ifTrue:[^true].
 	Preferences securityChecksEnabled ifFalse:[^true]. "it's been your choice..."
 	Preferences warnAboutInsecureContent ifTrue:[
-		(PopUpMenu confirm:
+		( UIManager default chooseFrom: #('Load it anyways' 'Do not load it')
+			title: 
 'You are about to load some insecure content.
 If you continue, access to files as well as
-some other capabilities will be limited.'
-			trueChoice:'Load it anyways'
-			falseChoice:'Do not load it') ifFalse:[
+some other capabilities will be limited.')
+			 = 1 ifFalse:[
 				"user doesn't really want it"
 				^false.
 			].

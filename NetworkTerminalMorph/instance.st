@@ -1,6 +1,6 @@
 Morph
 	subclass: #NetworkTerminalMorph
-	instanceVariableNames: 'connection decoder eventEncoder backgroundForm enteringHand '
+	instanceVariableNames: 'connection decoder eventEncoder backgroundForm enteringHand'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Remote'
+	category: 'Nebraska-Morphic-Remote'

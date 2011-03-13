@@ -1,0 +1,2 @@
+clearPanes
+	transform removeAllMorphs

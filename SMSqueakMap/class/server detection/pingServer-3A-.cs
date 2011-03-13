@@ -9,7 +9,7 @@ pingServer: aServerName
 	after the rewrite it works."
 	[(SystemVersion current highestUpdate < 5252)
 		ifTrue: [NetNameResolver addressForName: (aServerName upTo: $:) timeout: 5].
-	url _ 'http://', aServerName, '/sm/ping'.
-	answer _ HTTPSocket httpGet: url]
+	url := 'http://', aServerName, '/ping'.
+	answer := HTTPSocket httpGet: url]
 				on: Error do: [:ex | ^false].
 	^answer isString not and: [answer contents = 'pong']

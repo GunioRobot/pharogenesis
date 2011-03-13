@@ -5,5 +5,5 @@ bytesPerEncodedFrame
 	| bitCount |
 	frameSizeMask = 0 ifTrue: [^ bitsPerSample].
 	"Following assumes mono:"
-	bitCount _ 16 + 6 + ((self samplesPerFrame - 1) * bitsPerSample).
+	bitCount := 16 + 6 + ((self samplesPerFrame - 1) * bitsPerSample).
 	^ (bitCount + 7) // 8

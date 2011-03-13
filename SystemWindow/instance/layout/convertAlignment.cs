@@ -22,7 +22,7 @@ convertAlignment
 						m
 							hResizing: #spaceFill;
 							vResizing: #spaceFill]].
-	(labelArea isNil and: [self wantsLabel]) 
+	labelArea isNil 
 		ifTrue: 
 			[self addLabelArea.
 			self putLabelItemsInLabelArea.

@@ -2,14 +2,14 @@ rebuild
 
 	| myServer toggle closeBox font |
 
-	font _ StrikeFont familyName: #Palatino size: 14.
+	font := StrikeFont familyName: #Palatino size: 14.
 	self removeAllMorphs.
 	self setColorsAndBorder.
 	self updateCurrentStatusString.
-	toggle _ SimpleHierarchicalListMorph new perform: (
+	toggle := SimpleHierarchicalListMorph new perform: (
 		fullDisplay ifTrue: [#expandedForm] ifFalse: [#notExpandedForm]
 	).
-	closeBox _ SimpleButtonMorph new borderWidth: 0;
+	closeBox := SimpleButtonMorph new borderWidth: 0;
 			label: 'X' font: Preferences standardButtonFont; color: Color transparent;
 			actionSelector: #delete; target: self; extent: 14@14;
 			setBalloonText: 'End Nebrasks session'.
@@ -32,7 +32,7 @@ rebuild
 				setBalloonText: 'Show more or less of Nebraska Status'
 		}.
 	}.
-	myServer _ self server.
+	myServer := self server.
 	(myServer isNil or: [fullDisplay not]) ifTrue: [
 		^World startSteppingSubmorphsOf: self
 	].

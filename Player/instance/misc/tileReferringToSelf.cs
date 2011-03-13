@@ -14,4 +14,5 @@ tileReferringToSelf
 		^ tile].
 
 	aTile _ TileMorph new setToReferTo: self.
+	aTile updateWordingToMatchVocabulary.
 	^ aTile

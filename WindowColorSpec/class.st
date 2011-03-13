@@ -1,0 +1,1 @@
+WindowColorSpec class instanceVariableNames: ''

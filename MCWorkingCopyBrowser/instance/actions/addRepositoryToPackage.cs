@@ -3,10 +3,11 @@ addRepositoryToPackage
 		[:repos |
 		(self pickWorkingCopySatisfying: [ :p | (p repositoryGroup includes: repos) not ]) ifNotNilDo:
 			[:wc |
-			workingCopy _ wc.
+			workingCopy := wc.
 			workingCopy repositoryGroup addRepository: repos.
 			self repository: repos.	
 			self
 				changed: #workingCopySelection;
 				changed: #repositoryList;
-				changed: #repositorySelection]]
+				changed: #repositorySelection.
+			self changedButtons]]

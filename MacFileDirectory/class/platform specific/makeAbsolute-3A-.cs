@@ -4,7 +4,7 @@ makeAbsolute: path
 	(self isAbsolute: path)
 		ifTrue: [ ^path ].
 	"If a path begins with a colon, it is relative."
-	absolutePath _ (path first = $:)
+	absolutePath := (path first = $:)
 		ifTrue: [ path copyWithoutFirst ]
 		ifFalse: [ path ].
 	(self isAbsolute: absolutePath)

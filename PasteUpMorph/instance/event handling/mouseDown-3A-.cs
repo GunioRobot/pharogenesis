@@ -2,6 +2,10 @@ mouseDown: evt
 	"Handle a mouse down event."
 	| grabbedMorph handHadHalos |
 
+	(Preferences generalizedYellowButtonMenu
+			and: [evt yellowButtonPressed])
+		ifTrue: [^ self yellowButtonActivity: evt shiftPressed].
+
 	grabbedMorph _ self morphToGrab: evt.
 	grabbedMorph ifNotNil:[
 		grabbedMorph isSticky ifTrue:[^self].
@@ -21,9 +25,20 @@ mouseDown: evt
 	evt hand removeHalo. "shake off halos"
 	evt hand releaseKeyboardFocus. "shake of keyboard foci"
 
+	self submorphs
+		select:[:each | each hasProperty: #morphHierarchy]
+		thenDo:[:each | each delete].
+
+	Preferences noviceMode
+		ifTrue:[
+			self submorphs
+				select:[:each | (each isKindOf: MenuMorph) and:[each stayUp not]]
+				thenDo:[:each | each delete].
+		].
+
 	(evt shiftPressed not
 			and:[ self isWorldMorph not ]
-			and:[ Preferences easySelection not ])
+			and:[ self wantsEasySelection not ])
 	ifTrue:[
 		"explicitly ignore the event if we're not the world and we'll not select,
 		so that we could be picked up if need be"
@@ -31,7 +46,7 @@ mouseDown: evt
 		^ self.
 	].
 
-	( evt shiftPressed or: [ Preferences easySelection ] ) ifTrue:[
+	( evt shiftPressed or: [ self wantsEasySelection ] ) ifTrue:[
 		"We'll select on drag, let's decide what to do on click"
 		| clickSelector |
 

@@ -1,2 +1,2 @@
 testHash
-	self assert: aDateAndTime hash =     29855404
+	self assert: aDateAndTime hash =     131156085

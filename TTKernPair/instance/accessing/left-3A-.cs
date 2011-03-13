@@ -1,3 +1,3 @@
 left: aNumber
 
-	left _ aNumber
+	left := aNumber

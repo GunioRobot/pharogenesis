@@ -1,1 +1,0 @@
-A Swiki with the potential for a password on each page.  Requires the special folder 'pswiki' from the swiki web site.

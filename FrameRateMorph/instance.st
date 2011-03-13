@@ -1,6 +1,6 @@
 StringMorph
 	subclass: #FrameRateMorph
-	instanceVariableNames: 'lastDisplayTime framesSinceLastDisplay '
+	instanceVariableNames: 'lastDisplayTime framesSinceLastDisplay'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Demo'
+	category: 'MorphicExtras-Demo'

@@ -7,19 +7,19 @@ open
 	| selectorListView typeInView topView classListView exampleView |
 	Smalltalk isMorphic ifTrue: [^ self openAsMorph].
 
-	selectorIndex _ classListIndex _ 0.
-	topView _ (StandardSystemView new) model: self.
+	selectorIndex := classListIndex := 0.
+	topView := (StandardSystemView new) model: self.
 	topView borderWidth: 1.
 		"label and minSize taken care of by caller"
 
-	typeInView _ PluggableTextView on: self 
+	typeInView := PluggableTextView on: self 
 			text: #contents accept: #contents:notifying:
 			readSelection: #contentsSelection menu: #codePaneMenu:shifted:.
 	typeInView window: (0@0 extent: 50@14);
 		askBeforeDiscardingEdits: false.
 	topView addSubView: typeInView.
 
-	selectorListView _ PluggableListView on: self
+	selectorListView := PluggableListView on: self
 		list: #messageList
 		selected: #messageListIndex
 		changeSelected: #messageListIndex:
@@ -29,7 +29,7 @@ open
 	selectorListView window: (0 @ 0 extent: 50 @ 46).
 	topView addSubView: selectorListView below: typeInView.
 
-	classListView _ PluggableListView on: self
+	classListView := PluggableListView on: self
 		list: #classList
 		selected: #classListIndex
 		changeSelected: #classListIndex:
@@ -39,7 +39,7 @@ open
 	classListView window: (0 @ 0 extent: 50 @ 60).
 	topView addSubView: classListView toRightOf: typeInView.
 
-	exampleView _ PluggableTextView on: self 
+	exampleView := PluggableTextView on: self 
 			text: #byExample accept: #byExample:
 			readSelection: #contentsSelection menu: #codePaneMenu:shifted:.
 	exampleView window: (0@0 extent: 100@40);

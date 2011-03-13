@@ -4,11 +4,11 @@ convertFromFolderOfFramesNamed: folderName toJPEGMovieNamed: jpegFileName frameR
 	| jpegFile dir fileNames frameCount frameForm frameOffsets |
 	(FileDirectory default directoryExists: folderName)
 		ifFalse: [^ self inform: 'Folder not found: ', folderName].
-	jpegFile _ (FileStream newFileNamed: jpegFileName) binary.
-	dir _ FileDirectory default on: folderName.
-	fileNames _ self sortedByFrameNumber: dir fileNames.
-	frameCount _ fileNames size.
-	frameForm _ Form fromFileNamed: (dir fullNameFor: fileNames first).
+	jpegFile := (FileStream newFileNamed: jpegFileName) binary.
+	dir := FileDirectory default on: folderName.
+	fileNames := self sortedByFrameNumber: dir fileNames.
+	frameCount := fileNames size.
+	frameForm := Form fromFileNamed: (dir fullNameFor: fileNames first).
 
 	"write header"
 	self writeHeaderExtent: frameForm extent
@@ -18,10 +18,10 @@ convertFromFolderOfFramesNamed: folderName toJPEGMovieNamed: jpegFileName frameR
 		on: jpegFile.
 
 	"convert and write frames"
-	frameOffsets _ Array new: frameCount + 1.
+	frameOffsets := Array new: frameCount + 1.
 	1 to: frameCount do: [:i |
 		frameOffsets at: i put: jpegFile position.
-		frameForm _ Form fromFileNamed: (dir fullNameFor: (fileNames at: i)).
+		frameForm := Form fromFileNamed: (dir fullNameFor: (fileNames at: i)).
 		self writeFrame: frameForm on: jpegFile quality: quality displayFlag: true].
 	frameOffsets at: (frameCount + 1) put: jpegFile position.
 	self updateFrameOffsets: frameOffsets on: jpegFile.

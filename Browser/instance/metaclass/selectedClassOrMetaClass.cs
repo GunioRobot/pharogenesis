@@ -1,7 +1,7 @@
 selectedClassOrMetaClass
-	"Answer the selected class or metaclass."
+	"Answer the selected class/trait or metaclass/classTrait."
 
 	| cls |
-	self metaClassIndicated
-		ifTrue: [^ (cls _ self selectedClass) ifNil: [nil] ifNotNil: [cls class]]
-		ifFalse: [^ self selectedClass]
+	^self metaClassIndicated
+		ifTrue: [(cls _ self selectedClass) ifNil: [nil] ifNotNil: [cls classSide]]
+		ifFalse: [self selectedClass]

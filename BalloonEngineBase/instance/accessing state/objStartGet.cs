@@ -1,2 +1,0 @@
-objStartGet
-	^workBuffer at: GWObjStart

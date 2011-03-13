@@ -1,0 +1,1 @@
+QuickIntegerDictionary class instanceVariableNames: ''

@@ -4,9 +4,9 @@ showRegularDiffs: aBoolean
 	self showingRegularDiffs
 		ifFalse:
 			[aBoolean ifTrue:
-				[contentsSymbol _ #showDiffs]]
+				[contentsSymbol := #showDiffs]]
 		ifTrue:
 			[aBoolean ifFalse:
-				[contentsSymbol _ #source]].
+				[contentsSymbol := #source]].
 	self setContentsToForceRefetch.
 	self contentsChanged

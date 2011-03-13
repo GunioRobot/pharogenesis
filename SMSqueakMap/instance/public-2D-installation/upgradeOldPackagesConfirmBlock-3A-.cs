@@ -6,7 +6,7 @@ upgradeOldPackagesConfirmBlock: aBlock
 	and the value being the result of the upgrade, true or false."
 
 	| result |
-	result _ Dictionary new.
+	result := Dictionary new.
 	self upgradeableAndOldPackages
 		do: [:package |
 			(aBlock value: package)

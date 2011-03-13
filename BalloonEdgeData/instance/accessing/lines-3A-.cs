@@ -1,2 +1,2 @@
 lines: anInteger
-	^lines _ anInteger
+	^lines := anInteger

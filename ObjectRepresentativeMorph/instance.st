@@ -1,6 +1,6 @@
 AlignmentMorph
 	subclass: #ObjectRepresentativeMorph
-	instanceVariableNames: 'objectRepresented '
+	instanceVariableNames: 'objectRepresented'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Scripting'
+	category: 'EToys-Scripting'

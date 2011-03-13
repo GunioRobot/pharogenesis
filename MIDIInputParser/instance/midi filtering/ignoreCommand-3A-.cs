@@ -6,8 +6,8 @@ ignoreCommand: midiCmd
 		ifTrue: [^ self error: 'bad MIDI command'].
 
 	midiCmd < 240 ifTrue: [  "channel commands; ignore on all channels"
-		cmd _ midiCmd bitAnd: 2r11110000.
-		sel _ (#(128 144 160 176 224) includes: cmd)
+		cmd := midiCmd bitAnd: 2r11110000.
+		sel := (#(128 144 160 176 224) includes: cmd)
 			ifTrue: [#ignoreTwo:]
 			ifFalse: [#ignoreOne:].
 		 1 to: 16 do: [:ch | cmdActionTable at: (cmd bitOr: ch - 1) put: sel].

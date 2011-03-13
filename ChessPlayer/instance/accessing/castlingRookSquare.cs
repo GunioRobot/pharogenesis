@@ -1,2 +1,0 @@
-castlingRookSquare
-	^castlingRookSquare

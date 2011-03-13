@@ -5,10 +5,10 @@ midiDoUntilMouseDown: midiActionBlock
 	self clearBuffers.
 	[Sensor anyButtonPressed] whileFalse: [
 		self midiDo: [:item |
-			time _ item at: 1.
-			cmd _ item at: 2.
-			arg1 _ arg2 _ nil.
+			time := item at: 1.
+			cmd := item at: 2.
+			arg1 := arg2 := nil.
 			item size > 2 ifTrue: [
-				arg1 _ item at: 3.
-				item size > 3 ifTrue: [arg2 _ item at: 4]].
+				arg1 := item at: 3.
+				item size > 3 ifTrue: [arg2 := item at: 4]].
 				midiActionBlock value: cmd value: arg1 value: arg2]].

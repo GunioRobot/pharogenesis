@@ -2,7 +2,7 @@ jumpWithinThread
 
 	| aMenu me weHaveOthers myIndex |
 
-	me _ CurrentProjectRefactoring currentProjectName.
+	me _ Project current name.
 	aMenu _ MenuMorph new defaultTarget: self.
 	weHaveOthers _ false.
 	myIndex _ self currentIndex.

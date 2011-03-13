@@ -1,6 +1,6 @@
 selectClass: classNotMeta
 	| name |
-	name _ classNotMeta name.
+	name := classNotMeta name.
 	self classListIndex: (self classList findFirst:
 			[:each | (each endsWith: name)
 					and: [each size = name size

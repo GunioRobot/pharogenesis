@@ -8,13 +8,13 @@ markMatchingClasses
 	"Only 'example' queries can be marked."
 	(contents asString includes: $.) ifFalse: [^ self].
 
-	unmarkedClassList _ classList copy.
+	unmarkedClassList := classList copy.
 
 	"Get the receiver object of the selected statement in the message list."
-	firstPartOfSelector _ (Scanner new scanTokens: (selectorList at: selectorIndex)) second.
-	receiverString _ (ReadStream on: (selectorList at: selectorIndex))
+	firstPartOfSelector := (Scanner new scanTokens: (selectorList at: selectorIndex)) second.
+	receiverString := (ReadStream on: (selectorList at: selectorIndex))
 						upToAll: firstPartOfSelector.
-	receiver _ Compiler evaluate: receiverString.
+	receiver := Compiler evaluate: receiverString.
 
 	unmarkedClassList do: [ :classAndMethod | | class |
 		(classAndMethod isKindOf: MethodReference) ifTrue: [
@@ -22,7 +22,7 @@ markMatchingClasses
 				classAndMethod stringVersion: '*', classAndMethod stringVersion.
 			]
 		] ifFalse: [
-			class _ Compiler evaluate:
+			class := Compiler evaluate:
 					((ReadStream on: classAndMethod) upToAll: firstPartOfSelector).
 			(receiver isKindOf: class) ifTrue: [
 				classList add: '*', classAndMethod.

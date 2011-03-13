@@ -3,7 +3,7 @@ presentSpecialMenu
 
 	| reply items |
 	self terminateAndInitializeAround:
-		[reply _ (PopUpMenu labelArray: (items _ self specialMenuItems) lines: #()) startUp.
+		[reply _ (UIManager default chooseFrom: (items _ self specialMenuItems) lines: #()).
 		reply = 0 ifTrue: [^ self].
 		Compiler new evaluate: (items at: reply) in: [] to: self]
 	

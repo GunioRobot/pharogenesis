@@ -1,0 +1,2 @@
+pEditor
+	^textMorph editor

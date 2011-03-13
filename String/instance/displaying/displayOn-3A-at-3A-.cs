@@ -1,6 +1,4 @@
 displayOn: aDisplayMedium at: aPoint 
-	"Show a representation of the receiver as a DisplayText at location
-	aPoint on aDisplayMedium."
+	"Show a representation of the receiver as a DisplayText at location aPoint on aDisplayMedium, using black-colored text."
 
-	(self asDisplayText foregroundColor: Color black backgroundColor: Color white)
-		displayOn: aDisplayMedium at: aPoint
+	self displayOn: aDisplayMedium at: aPoint textColor: Color black

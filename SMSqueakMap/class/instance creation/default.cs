@@ -3,4 +3,4 @@ default
 
 	"SMSqueakMap default"
 
-	^DefaultMap ifNil: [DefaultMap _ self new]
+	^DefaultMap ifNil: [DefaultMap := self new]

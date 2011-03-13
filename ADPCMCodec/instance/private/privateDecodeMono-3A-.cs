@@ -10,31 +10,31 @@ privateDecodeMono: count
 	1 to: count do: [:i |
 		(i bitAnd: frameSizeMask) = 1
 			ifTrue: [  "start of frame; read frame header"
-				predicted _ self nextBits: 16.
-				predicted > 32767 ifTrue: [predicted _ predicted - 65536].
-				index _ self nextBits: 6.
-				samples at: (sampleIndex _ sampleIndex + 1) put: predicted]
+				predicted := self nextBits: 16.
+				predicted > 32767 ifTrue: [predicted := predicted - 65536].
+				index := self nextBits: 6.
+				samples at: (sampleIndex := sampleIndex + 1) put: predicted]
 			ifFalse: [
-				delta _ self nextBits: bitsPerSample.
-				step _ stepSizeTable at: index + 1.
-				predictedDelta _ 0.
-				bit _ deltaValueHighBit.
+				delta := self nextBits: bitsPerSample.
+				step := stepSizeTable at: index + 1.
+				predictedDelta := 0.
+				bit := deltaValueHighBit.
 				[bit > 0] whileTrue: [
-					(delta bitAnd: bit) > 0 ifTrue: [predictedDelta _ predictedDelta + step].
-					step _ step bitShift: -1.
-					bit _ bit bitShift: -1].
-				predictedDelta _ predictedDelta + step.
+					(delta bitAnd: bit) > 0 ifTrue: [predictedDelta := predictedDelta + step].
+					step := step bitShift: -1.
+					bit := bit bitShift: -1].
+				predictedDelta := predictedDelta + step.
 
 				(delta bitAnd: deltaSignMask) > 0
-					ifTrue: [predicted _ predicted - predictedDelta]
-					ifFalse: [predicted _ predicted + predictedDelta].
+					ifTrue: [predicted := predicted - predictedDelta]
+					ifFalse: [predicted := predicted + predictedDelta].
 				predicted > 32767
-					ifTrue: [predicted _ 32767]
-					ifFalse: [predicted < -32768 ifTrue: [predicted _ -32768]].
+					ifTrue: [predicted := 32767]
+					ifFalse: [predicted < -32768 ifTrue: [predicted := -32768]].
 
-				index _ index + (indexTable at: (delta bitAnd: deltaValueMask) + 1).
+				index := index + (indexTable at: (delta bitAnd: deltaValueMask) + 1).
 				index < 0
-					ifTrue: [index _ 0]
-					ifFalse: [index > 88 ifTrue: [index _ 88]].
+					ifTrue: [index := 0]
+					ifFalse: [index > 88 ifTrue: [index := 88]].
 
-				samples at: (sampleIndex _ sampleIndex + 1) put: predicted]].
+				samples at: (sampleIndex := sampleIndex + 1) put: predicted]].

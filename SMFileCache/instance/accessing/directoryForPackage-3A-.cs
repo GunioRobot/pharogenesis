@@ -3,8 +3,8 @@ directoryForPackage: aPackage
 	This also ensures that the path exists."
 
 	| slash path dir |
-	slash _ FileDirectory slash.
-	path _ 'packages' , slash , aPackage id asString36 , slash.
-	dir _ FileDirectory default on: self directory fullName, slash, path.
+	slash := FileDirectory slash.
+	path := 'packages' , slash , aPackage id asString36 , slash.
+	dir := FileDirectory default on: self directory fullName, slash, path.
 	dir assureExistence.
 	^dir

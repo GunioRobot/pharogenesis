@@ -1,2 +1,2 @@
 stopPosition
-	^ start + value size - 1
+	^ start ifNotNil: [start + value size - 1].

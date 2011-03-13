@@ -12,7 +12,6 @@ shiftedClassListMenu: aMenu
 			('inspect instances'			inspectInstances			'open an inspector on all the extant instances of this class')
 			('inspect subinstances'		inspectSubInstances		'open an inspector on all the extant instances of this class and of all of its subclasses')
 			-
-			('fetch documentation'		fetchClassDocPane		'once, and maybe again someday, fetch up-to-date documentation for this class from the Squeak documentation repository')
 			('add all meths to current chgs'		addAllMethodsToCurrentChangeSet
 																'place all the methods defined by this class into the current change set')
 			('create inst var accessors'	createInstVarAccessors	'compile instance-variable access methods for any instance variables that do not yet have them')

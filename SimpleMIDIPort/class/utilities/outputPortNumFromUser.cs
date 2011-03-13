@@ -3,11 +3,11 @@ outputPortNumFromUser
 	"SimpleMIDIPort outputPortNumFromUser"
 
 	| portCount aMenu dir |
-	portCount _ self primPortCount.
+	portCount := self primPortCount.
 	portCount = 0 ifTrue: [^ nil].
-	aMenu _ CustomMenu new title: 'MIDI port for output:' translated.
+	aMenu := CustomMenu new title: 'MIDI port for output:' translated.
 	0 to: portCount - 1 do:[:i |
-		dir _ self primPortDirectionalityOf: i.
+		dir := self primPortDirectionalityOf: i.
 		(dir = 2) | (dir = 3) ifTrue:[
 			aMenu add: (self portDescription: i) action: i]].
 	 ^ aMenu startUp

@@ -1,1 +1,3 @@
-A simple package loader that is the standard UI for SqueakMap.
+A simple package loader that is currently the standard UI for SqueakMap (the model is an SMSqueakMap instance), you can open one with:
+
+	SMLoader open

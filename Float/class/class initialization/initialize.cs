@@ -11,6 +11,7 @@ initialize
 	Pi _ 3.14159265358979323846264338327950288.
 	Halfpi _ Pi / 2.0.
 	Twopi _ Pi * 2.0.
+	ThreePi _ Pi * 3.0.
 	RadiansPerDegree _ Pi / 180.0.
 
 	Ln2 _ 0.69314718055994530941723212145817657.

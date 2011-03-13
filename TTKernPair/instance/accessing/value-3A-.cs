@@ -1,3 +1,3 @@
 value: aNumber
 
-	value _ aNumber
+	value := aNumber

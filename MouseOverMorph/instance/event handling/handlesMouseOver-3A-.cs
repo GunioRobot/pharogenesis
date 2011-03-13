@@ -1,2 +1,0 @@
-handlesMouseOver: evt 
-	^model notNil

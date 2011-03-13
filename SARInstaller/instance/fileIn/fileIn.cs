@@ -3,5 +3,5 @@ fileIn
 	| stream newCS |
 	stream := directory readOnlyFileNamed: fileName.
 	self class withCurrentChangeSetNamed: fileName
-		do: [:cs | newCS _ cs. self fileInFrom: stream].
-	newCS isEmpty ifTrue: [ ChangeSorter removeChangeSet: newCS ]
+		do: [:cs | newCS := cs. self fileInFrom: stream].
+	newCS isEmpty ifTrue: [ ChangeSet removeChangeSet: newCS ]

@@ -4,12 +4,12 @@ stepAt: millisecondClockValue in: aWindow
 	(Preferences smartUpdating and: [(millisecondClockValue - self timeOfLastListUpdate) > 8000]) "Not more often than once every 8 seconds"
 		ifTrue:
 			[self updateListsAndCodeIn: aWindow.
-			timeOfLastListUpdate _ millisecondClockValue].
+			timeOfLastListUpdate := millisecondClockValue].
 
-	newText _ self contentsIsString
+	newText := self contentsIsString
 		ifTrue: [self selection]
 		ifFalse: ["keep it short to reduce time to compute it"
 			self selectionPrintString ].
 	newText = contents ifFalse:
-		[contents _ newText.
+		[contents := newText.
 		self changed: #contents]

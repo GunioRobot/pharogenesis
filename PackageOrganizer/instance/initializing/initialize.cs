@@ -1,2 +1,2 @@
 initialize
-	packages _ Dictionary new
+	packages := Dictionary new

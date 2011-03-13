@@ -6,7 +6,7 @@ saveChangeNotificationAsSARFileWithNumber: aNumber
 
 	| filename changesText readmeText dumper |
 	filename := 'SystemchangeNotification'.
-	dumper _ self class environment at: #SARChangeSetDumper ifAbsent: [ ^self ].
+	dumper := self class environment at: #SARChangeSetDumper ifAbsent: [ ^self ].
 	changesText := 
 '
 0.6 Version for Squeak 3.7 (no longer for 3.6!!) Changed one hook method to make this version work in Squeak3.7. Download version 5 from http://www.iam.unibe.ch/~wuyts/SystemchangeNotification5.sar if you are working with Squeak 3.6.
@@ -27,7 +27,7 @@ VERY IMPORTANT: This version is for Squeak 3.7 only. It will not work in Squeak 
 
 	(dumper
 		on: Project current changeSet
-		including: (ChangeSorter allChangeSetNames
+		including: (ChangeSet allChangeSetNames
 				select: [:ea | 'SystemChangeHooks' match: ea])) changesText: changesText;
 		 readmeText: readmeText;
 		 fileOutAsZipNamed: filename , aNumber printString , '.sar'

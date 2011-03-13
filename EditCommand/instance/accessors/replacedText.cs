@@ -1,0 +1,2 @@
+replacedText
+	^replacedText

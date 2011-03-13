@@ -1,0 +1,1 @@
+MCAncestry class instanceVariableNames: ''

@@ -1,6 +1,6 @@
 UtteranceVisitor
 	subclass: #IntonationVisitor
-	instanceVariableNames: 'functionWords '
+	instanceVariableNames: 'functionWords'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Speech-TTS'

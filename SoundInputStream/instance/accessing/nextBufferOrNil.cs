@@ -5,6 +5,6 @@ nextBufferOrNil
 	mutex ifNil: [^ nil].  "not recording"
 	mutex critical: [
 		recordedBuffers size > 0
-			ifTrue: [result _ recordedBuffers removeFirst]
-			ifFalse: [result _ nil]].
+			ifTrue: [result := recordedBuffers removeFirst]
+			ifFalse: [result := nil]].
 	^ result

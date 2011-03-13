@@ -4,6 +4,6 @@ Vocabulary initialize
 "
 
 	super initialize.
-	vocabularyName _ #Object.
+	vocabularyName := #Object.
 	self documentation: '"Object" is all-encompassing vocabulary that embraces all methods understood by an object'.
 	self rigAFewCategories

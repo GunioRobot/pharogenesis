@@ -1,0 +1,1 @@
+RequiresOriginalTestCase class instanceVariableNames: ''

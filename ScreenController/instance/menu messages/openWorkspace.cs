@@ -1,4 +1,4 @@
 openWorkspace 
 	"Create and schedule workspace."
 
-	Workspace open
+	UIManager default edit:'' label: 'Workspace'

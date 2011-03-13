@@ -1,6 +1,6 @@
 computeContours
 	| out |
-	out _ WriteStream on: (Array new: glyphs size * 4).
+	out := WriteStream on: (Array new: glyphs size * 4).
 	self glyphsAndTransformationsDo:[:glyph :transform|
 		glyph contours do:[:ptArray|
 			out nextPut: (transform localPointsToGlobal: ptArray).

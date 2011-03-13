@@ -7,14 +7,14 @@ reconstructChanges
 	f header; timeStamp.
 'Condensing Changes File...'
 	displayProgressAt: Sensor cursorPoint
-	from: 0 to: Smalltalk classNames size
+	from: 0 to: self classNames size + self traitNames size
 	during:
 		[:bar | classCount _ 0.
-		Smalltalk allClassesDo:
-			[:class | bar value: (classCount _ classCount + 1).
-			class moveChangesWithVersionsTo: f.
-			class putClassCommentToCondensedChangesFile: f.
-			class class moveChangesWithVersionsTo: f]].
+		Smalltalk allClassesAndTraitsDo:
+			[:classOrTrait | bar value: (classCount _ classCount + 1).
+			classOrTrait moveChangesWithVersionsTo: f.
+			classOrTrait putClassCommentToCondensedChangesFile: f.
+			classOrTrait classSide moveChangesWithVersionsTo: f]].
 	SmalltalkImage current lastQuitLogPosition: f position.
 	f trailer; close.
 	oldChanges _ SourceFiles at: 2.

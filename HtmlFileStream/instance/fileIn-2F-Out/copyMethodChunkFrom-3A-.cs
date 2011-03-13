@@ -1,10 +1,10 @@
 copyMethodChunkFrom: aStream
 	"Overridden to bolden the first line (presumably a method header)"
 	| terminator code firstLine |
-	terminator _ $!.
+	terminator := $!.
 	aStream skipSeparators.
-	code _ aStream upTo: terminator.
-	firstLine _ code copyUpTo: Character cr.
+	code := aStream upTo: terminator.
+	firstLine := code copyUpTo: Character cr.
 	firstLine size = code size
 		ifTrue: [self nextPutAll: code]
 		ifFalse: [self command: 'b'; nextPutAll: firstLine; command: '/b'.

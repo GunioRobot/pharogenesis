@@ -2,7 +2,7 @@ addPriorVersionsCountForSelector: aSelector ofClass: aClass to: aStream
 	"add an annotation detailing the prior versions count"
 	| versionsCount |
 
-	versionsCount _ VersionsBrowser versionCountForSelector: aSelector class: aClass.
+	versionsCount := VersionsBrowser versionCountForSelector: aSelector class: aClass.
 	aStream nextPutAll: 
 				((versionsCount > 1
 					ifTrue:

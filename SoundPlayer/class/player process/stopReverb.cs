@@ -1,4 +1,4 @@
 stopReverb
 
-	UseReverb _ false.
-	ReverbState _ nil.
+	UseReverb := false.
+	ReverbState := nil.

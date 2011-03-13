@@ -3,7 +3,7 @@ readColorMap
 	| colorCount colors maxLevel b g r ccStream |
 	colorCount _ (bfOffBits - 54) // 4.
 	"Note: some programs (e.g. Photoshop 4.0) apparently do not set colorCount; assume that any data between the end of the header and the start of the pixel data is the color map"
-	biBitCount = 16 ifTrue:[^nil].
+	biBitCount >= 16 ifTrue:[^nil].
 	colorCount = 0 ifTrue: [ "this BMP file does not have a color map"
 		"default monochrome color map"
 		biBitCount = 1 ifTrue: [^ Array with: Color white with: Color black].

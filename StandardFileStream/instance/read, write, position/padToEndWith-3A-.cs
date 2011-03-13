@@ -3,7 +3,7 @@ padToEndWith: aChar
 
 	| pad |
 	self atEnd ifTrue: [^ self].
-	pad _ self isBinary 
+	pad := self isBinary 
 		ifTrue: [aChar asCharacter asciiValue]	"ok for char or number"
 		ifFalse: [aChar asCharacter].
 	self nextPutAll: (buffer1 class new: ((self size - self position) min: 20000) 

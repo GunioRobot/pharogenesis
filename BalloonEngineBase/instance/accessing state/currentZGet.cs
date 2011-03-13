@@ -1,2 +1,0 @@
-currentZGet
-	^workBuffer at: GWCurrentZ

@@ -1,2 +1,0 @@
-leftLeg
-	^ leftLeg

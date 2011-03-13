@@ -1,2 +1,2 @@
 returnPlusOne: anInteger
-	^anInteger + 1.
+	^anInteger + 1. 

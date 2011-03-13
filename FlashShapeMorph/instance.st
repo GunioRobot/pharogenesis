@@ -1,6 +1,6 @@
 FlashMorph
 	subclass: #FlashShapeMorph
-	instanceVariableNames: 'shape '
+	instanceVariableNames: 'shape'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon-MMFlash Morphs'
+	category: 'Flash-Morphs'

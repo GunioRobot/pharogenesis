@@ -1,6 +1,6 @@
 Rectangle
 	subclass: #CharacterBlock
-	instanceVariableNames: 'stringIndex text textLine '
+	instanceVariableNames: 'stringIndex text textLine'
 	classVariableNames: ''
-	poolDictionaries: 'TextConstants '
+	poolDictionaries: 'TextConstants'
 	category: 'Graphics-Text'

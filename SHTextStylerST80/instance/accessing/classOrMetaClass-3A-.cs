@@ -1,2 +1,0 @@
-classOrMetaClass: aBehavior
-	classOrMetaClass := aBehavior

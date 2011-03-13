@@ -1,3 +1,0 @@
-A Pixmap is like a Bitmap. The only difference is that it stores the pixels in reverse order. Where a Bitmap stores the left most pixel in the most significant bits of a word, a Pixmap stores its left most pixel in the least significant bits. That's all.
-
-Why do we need Pixmaps?! They optimize certain drawing routines if it is known that the host OS is itself in Pixmap format. Copy-and-reverse operations of bits (which are supported by FXBlt) are much more expensive than simple copy operations where the bits are already in the same order. 

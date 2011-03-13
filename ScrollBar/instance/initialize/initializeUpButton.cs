@@ -1,6 +1,6 @@
 initializeUpButton
 "initialize the receiver's upButton"
-	upButton := self roundedScrollbarLook
+	upButton _ self roundedScrollbarLook
 		ifTrue: [RectangleMorph
 						newBounds: (self innerBounds topLeft extent: self buttonExtent)]
 		ifFalse: [RectangleMorph
@@ -24,5 +24,5 @@ initializeUpButton
 		ifTrue: [upButton color: Color veryLightGray.
 			upButton
 				borderStyle: (BorderStyle complexRaised width: 3)]
-		ifFalse: [upButton setBorderWidth: 1 borderColor: #raised].
+		ifFalse: [upButton setBorderWidth: 1 borderColor: Color lightGray].
 	self addMorph: upButton

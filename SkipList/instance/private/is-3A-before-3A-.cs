@@ -1,8 +1,8 @@
 is: node before: element 
-	| object |
-	node ifNil: [^ false].
-	object _ node object.
-	^ sortBlock
-		ifNil: [object < element]
-		ifNotNil: [(self is: object equalTo: element) ifTrue: [^ false].
-			sortBlock value: object value: element]
+        | key |
+        node ifNil: [^ false].
+        key _ node key.
+        ^ sortBlock
+                ifNil: [key < element]
+                ifNotNil: [(self is: key equalTo: element) ifTrue: [^ false].
+                        sortBlock value: key value: element]

@@ -5,4 +5,4 @@ durMod: durMod onOff: ignored    "durMod = eg, #dotted, #normal, #triplets, #qui
 		[:m | ((m isMemberOf: SimpleSwitchMorph)
 				and: [m actionSelector == #durMod:onOff:])
 				ifTrue: [m setSwitchState: m arguments first = durMod]].
-	durationModifier _ durMod
+	durationModifier := durMod

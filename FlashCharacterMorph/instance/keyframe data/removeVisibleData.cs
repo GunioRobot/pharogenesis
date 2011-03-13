@@ -1,3 +1,3 @@
 removeVisibleData
-	vData _ FlashKeyframes new.
+	vData := FlashKeyframes new.
 	"^self removeKeyframeData: #visibilityData"

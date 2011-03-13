@@ -1,2 +1,2 @@
 minX: anInteger
-	minX _ anInteger
+	minX := anInteger

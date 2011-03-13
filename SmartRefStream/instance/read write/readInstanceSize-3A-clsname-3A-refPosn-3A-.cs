@@ -15,7 +15,8 @@ Three cases for files from older versions of the system:
 
 	self setCurrentReference: refPosn.  "remember pos before readDataFrom:size:"
 	newName _ renamed at: className ifAbsent: [className].
-	isMultiSymbol _ newName = #MultiSymbol.
+	isMultiSymbol _ newName = #MultiSymbol or: [newName = #WideSymbol].
+	"isMultiSymbol ifTrue: [self halt]."
 	newClass _ Smalltalk at: newName asSymbol.
 	(steady includes: newClass) & (newName == className) ifTrue: [
 	 	anObject _ newClass isVariable "Create it here"
@@ -41,4 +42,5 @@ Three cases for files from older versions of the system:
 	anObject _ self applyConversionMethodsTo: anObject className: className varMap: dict.
 
 	self setCurrentReference: refPosn.  "before returning to next"
+	isMultiSymbol ifTrue: [^ Symbol intern: anObject asString].
 	^ anObject

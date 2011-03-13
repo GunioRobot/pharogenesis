@@ -1,2 +1,2 @@
 initialize: nFiles
-	files _ Array new: nFiles
+	files := Array new: nFiles

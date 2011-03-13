@@ -1,1 +1,0 @@
-B3DShaderPlugin class instanceVariableNames: ''

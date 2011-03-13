@@ -1,2 +1,0 @@
-dragPositionOffset
-	^self valueOfProperty: #dragPositionOffset.

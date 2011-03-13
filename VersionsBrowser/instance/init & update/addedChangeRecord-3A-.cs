@@ -1,3 +1,3 @@
 addedChangeRecord: aChangeRecord
-	addedChangeRecord _ aChangeRecord.
+	addedChangeRecord := aChangeRecord.
 	self reformulateList.

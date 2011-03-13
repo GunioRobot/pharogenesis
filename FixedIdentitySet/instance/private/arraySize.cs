@@ -1,0 +1,2 @@
+arraySize
+	^ super size

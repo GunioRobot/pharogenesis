@@ -1,2 +1,0 @@
-updateSavesFile
-	^ self valueOfFlag: #updateSavesFile

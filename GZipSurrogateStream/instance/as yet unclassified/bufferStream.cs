@@ -1,3 +1,3 @@
 bufferStream
 
-	^bufferStream ifNil: [bufferStream _ RWBinaryOrTextStream on: (ByteArray new: 5000)].
+	^bufferStream ifNil: [bufferStream := RWBinaryOrTextStream on: (ByteArray new: 5000)].

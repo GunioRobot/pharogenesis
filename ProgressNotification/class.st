@@ -1,0 +1,1 @@
+ProgressNotification class instanceVariableNames: ''

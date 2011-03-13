@@ -1,0 +1,1 @@
+MCFileRepositoryInspector class instanceVariableNames: ''

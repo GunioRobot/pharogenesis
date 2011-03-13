@@ -3,13 +3,13 @@ proceedStoredBlock
 	| length decoded |
 	"Literal table must be nil for a stored block"
 	litTable == nil ifFalse:[^self error:'Bad state'].
-	length _ distTable.
+	length := distTable.
 	[length > 0 and:[readLimit < collection size and:[sourcePos < sourceLimit]]] 
 		whileTrue:[
-			collection at: (readLimit _ readLimit + 1) put: 
-				(source at: (sourcePos _ sourcePos + 1)).
-			length _ length - 1].
-	length = 0 ifTrue:[state _ state bitAnd: StateNoMoreData].
-	decoded _ length - distTable.
-	distTable _ length.
+			collection at: (readLimit := readLimit + 1) put: 
+				(source at: (sourcePos := sourcePos + 1)).
+			length := length - 1].
+	length = 0 ifTrue:[state := state bitAnd: StateNoMoreData].
+	decoded := length - distTable.
+	distTable := length.
 	^decoded

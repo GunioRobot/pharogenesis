@@ -1,2 +1,2 @@
 ra: aNumber
-	ra _ aNumber
+	ra := aNumber

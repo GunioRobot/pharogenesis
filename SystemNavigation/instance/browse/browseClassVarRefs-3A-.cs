@@ -18,7 +18,7 @@ browseClassVarRefs: aClass
 		vars isEmpty ifFalse: [lines add: allVars size]].
 	labelStream contents isEmpty ifTrue: [^Beeper beep]. "handle nil superclass better"
 	labelStream skip: -1 "cut last CR".
-	index _ (PopUpMenu labels: labelStream contents lines: lines) startUp.
+	index _ (UIManager default chooseFrom: (labelStream contents substrings) lines: lines).
 	index = 0 ifTrue: [^ self].
 	self browseAllCallsOn:
 		((owningClasses at: index) classPool associationAt: (allVars at: index))

@@ -1,3 +1,0 @@
-startUp
-	
-	self default startUp.

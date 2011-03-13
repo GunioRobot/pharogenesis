@@ -1,1 +1,0 @@
-This class extends CompositeAnimations for composite animations (an animation built of 2 or more animations) that all run in parallel.

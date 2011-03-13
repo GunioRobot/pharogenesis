@@ -4,7 +4,8 @@ offerStackDebugMenu
 	| aMenu |
 	aMenu _ MenuMorph new defaultTarget: self.
 	aMenu addTitle: 'Stack debugging'.
-	aMenu addStayUpItem.
+	Preferences noviceMode
+		ifFalse: [aMenu addStayUpItem].
 	aMenu addList: #(
 		('reassess'								reassessBackgroundShape)
 		('relax grip on variable names'			relaxGripOnVariableNames)

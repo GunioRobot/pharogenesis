@@ -5,22 +5,23 @@ initializeShiftCmdKeyShortcuts
 	capitalized versions of the letters.
 	TPR 2/18/99: add the plain ascii values back in for those VMs that don't return the shifted values."
 
-	| cmdMap cmds |
+	| cmdMap |
 
 	"shift-command and control shortcuts"
 	cmdMap _ Array new: 256 withAll: #noop:.  "use temp in case of a crash"
-	cmdMap at: ( 1 + 1) put: #cursorHome:.			"home key"
-	cmdMap at: ( 4 + 1) put: #cursorEnd:.			"end key"
-	cmdMap at: ( 8 + 1) put: #forwardDelete:.		"ctrl-H or delete key"
-	cmdMap at: (11 + 1) put: #cursorPageUp:.		"page up key"
+
+	cmdMap at: ( 1 + 1) put: #cursorHome:.				"home key"
+	cmdMap at: ( 4 + 1) put: #cursorEnd:.				"end key"
+	cmdMap at: ( 8 + 1) put: #forwardDelete:.			"ctrl-H or delete key"
+	cmdMap at: (11 + 1) put: #cursorPageUp:.			"page up key"
 	cmdMap at: (12 + 1) put: #cursorPageDown:.		"page down key"
 	cmdMap at: (13 + 1) put: #crWithIndent:.			"ctrl-Return"
 	cmdMap at: (27 + 1) put: #offerMenuFromEsc:.	"escape key"
-	cmdMap at: (28 + 1) put: #cursorLeft:.			"left arrow key"
-	cmdMap at: (29 + 1) put: #cursorRight:.			"right arrow key"
-	cmdMap at: (30 + 1) put: #cursorUp:.			"up arrow key"
+	cmdMap at: (28 + 1) put: #cursorLeft:.				"left arrow key"
+	cmdMap at: (29 + 1) put: #cursorRight:.				"right arrow key"
+	cmdMap at: (30 + 1) put: #cursorUp:.				"up arrow key"
 	cmdMap at: (31 + 1) put: #cursorDown:.			"down arrow key"
-	cmdMap at: (32 + 1) put: #selectWord:.			"space bar key"
+	cmdMap at: (32 + 1) put: #selectWord:.				"space bar key"
 	cmdMap at: (45 + 1) put: #changeEmphasis:.		"cmd-sh-minus"
 	cmdMap at: (61 + 1) put: #changeEmphasis:.		"cmd-sh-plus"
 	cmdMap at: (127 + 1) put: #forwardDelete:.		"del key"
@@ -34,35 +35,38 @@ initializeShiftCmdKeyShortcuts
 
 	"'""''(' do: [ :char | cmdMap at: (char asciiValue + 1) put: #enclose:]."
 
-	cmds _ #(
-		$a	argAdvance:
-		$b	browseItHere:
-		$c	compareToClipboard:
-		$d	duplicate:
-		$e	methodStringsContainingIt:
-		$f	displayIfFalse:
-		$g	fileItIn:
-		$h	cursorTopHome:
-		$i	exploreIt:
-		$j	doAgainMany:
-		$k	changeStyle:
-		$l	outdent:
-		$m	selectCurrentTypeIn:
-		$n	referencesToIt:
-		$p	makeProjectLink:
-		$r	indent:
-		$s	search:
-		$t	displayIfTrue:
-		$u	changeLfToCr:
-		$v	pasteInitials:
-		$w	methodNamesContainingIt:
-		$x	makeLowercase:
-		$y	makeUppercase:
-		$z	makeCapitalized:
-	).
-	1 to: cmds size by: 2 do: [ :i |
-		cmdMap at: ((cmds at: i) asciiValue + 1) put: (cmds at: i + 1).		"plain keys"
-		cmdMap at: ((cmds at: i) asciiValue - 32 + 1) put: (cmds at: i + 1).		"shifted keys"
-		cmdMap at: ((cmds at: i) asciiValue - 96 + 1) put: (cmds at: i + 1).		"ctrl keys"
-	].
+	"triplet = {character. comment selector. novice appropiated}"
+	#(
+		($a		argAdvance:						false)
+		($b		browseItHere:					false)
+		($c		compareToClipboard:			false)
+		($d		duplicate:							true)
+		($e		methodStringsContainingIt:	false)
+		($f		displayIfFalse:					false)
+		($g		fileItIn:							false)
+		($h		cursorTopHome:					true)
+		($i		exploreIt:							false)
+		($j		doAgainMany:					true)
+		($k		changeStyle:						true)
+		($l		outdent:							true)
+		($m	selectCurrentTypeIn:			true)
+		($n		referencesToIt:					false)
+		($p		makeProjectLink:				true)
+		($r		indent:							true)
+		($s		search:							true)
+		($t		displayIfTrue:					false)
+		($u		changeLfToCr:					false)
+		($v		pasteInitials:						false)
+		($w	methodNamesContainingIt:	false)
+		($x		makeLowercase:					true)
+		($y		makeUppercase:					true)
+		($z		makeCapitalized:				true)
+	)
+		select:[:triplet | Preferences noviceMode not or:[triplet third]]
+		thenDo:[:triplet |
+			cmdMap at: (triplet first asciiValue         + 1) put: triplet second.		"plain keys"
+			cmdMap at: (triplet first asciiValue - 32 + 1) put: triplet second.		"shifted keys"
+			cmdMap at: (triplet first asciiValue - 96 + 1) put: triplet second.		"ctrl keys"
+		].
+
 	ShiftCmdActions _ cmdMap

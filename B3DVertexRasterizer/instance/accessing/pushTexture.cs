@@ -1,2 +1,0 @@
-pushTexture
-	textureStack addLast: texture

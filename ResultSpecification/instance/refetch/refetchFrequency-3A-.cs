@@ -1,4 +1,4 @@
 refetchFrequency: aFrequency
 	"Set the refetch frequency"
 
-	refetchFrequency _ aFrequency
+	refetchFrequency := aFrequency

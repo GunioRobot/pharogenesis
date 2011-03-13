@@ -3,4 +3,4 @@ MovieClipStartMorph
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Demo'
+	category: 'Movies-Player'

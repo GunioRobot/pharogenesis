@@ -1,0 +1,1 @@
+MultiDisplayScanner class instanceVariableNames: ''

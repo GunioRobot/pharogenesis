@@ -1,6 +1,6 @@
 MorphicAlarm
 	subclass: #StepMessage
-	instanceVariableNames: 'stepTime '
+	instanceVariableNames: 'stepTime'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Events'

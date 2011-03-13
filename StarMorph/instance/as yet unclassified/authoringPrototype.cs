@@ -1,2 +1,0 @@
-authoringPrototype
-	^ super authoringPrototype removeHandles

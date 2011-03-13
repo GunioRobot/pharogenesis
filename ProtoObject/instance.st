@@ -1,4 +1,4 @@
-nil
+ProtoObject
 	subclass: #ProtoObject
 	instanceVariableNames: ''
 	classVariableNames: ''

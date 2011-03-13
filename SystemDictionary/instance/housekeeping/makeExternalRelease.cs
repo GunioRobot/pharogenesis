@@ -8,7 +8,7 @@ If not, choose no, and fix it.')
 	self reclaimDependents.
 	Preferences enable: #mvcProjectsAllowed.
 	Preferences enable: #fastDragWindowForMorphic.
-	Browser initialize.
+	Smalltalk at: #Browser ifPresent:[:br| br initialize].
 	Undeclared isEmpty
 		ifFalse: [self halt].
 	ScriptingSystem deletePrivateGraphics.

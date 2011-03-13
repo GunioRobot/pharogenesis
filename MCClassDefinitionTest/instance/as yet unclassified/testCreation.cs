@@ -1,6 +1,6 @@
 testCreation
 	| d |
-	d _  self mockClassA asClassDefinition.
+	d :=  self mockClassA asClassDefinition.
 	self assert: d className = #MCMockClassA.
 	self assert: d superclassName = #MCMock.
 	self assert: d type = #normal.

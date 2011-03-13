@@ -5,16 +5,16 @@ directoryContentsFor: fullPath
 	"FileDirectory default directoryContentsFor: ''"
 
 	| entries extraPath |
-	entries _ super directoryContentsFor: fullPath.
+	entries := super directoryContentsFor: fullPath.
 	fullPath isNullPath
 		ifTrue: [
 			"For Acorn we also make sure that at least the parent of the current dir 
 			is added - sometimes this is in a filing system that has not been (or 
 			cannot be) polled for disc root names"
-			extraPath _ self class default containingDirectory.
+			extraPath := self class default containingDirectory.
 			"Only add the extra path if we haven't already got the root of the current dir in the list"
 			entries detect: [:ent | extraPath fullName beginsWith: ent name] 
-				ifNone: [entries _ entries
+				ifNone: [entries := entries
 								copyWith: (DirectoryEntry
 										name: extraPath fullName
 										creationTime: 0

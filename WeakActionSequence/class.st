@@ -1,0 +1,1 @@
+WeakActionSequence class instanceVariableNames: ''

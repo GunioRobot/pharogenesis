@@ -1,0 +1,1 @@
+I am an implementation of BasicRequestor with some requests already implemented.

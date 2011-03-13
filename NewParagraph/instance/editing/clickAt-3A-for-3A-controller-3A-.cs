@@ -6,7 +6,7 @@ clickAt: clickPoint for: model controller: editor
 	(text attributesAt: startBlock stringIndex forStyle: textStyle) 
 		do: [:att | att mayActOnClick ifTrue:
 				[(target _ model) ifNil: [target _ editor morph].
-				range _ text rangeOf: att startingAt: startBlock stringIndex forStyle: textStyle.
+				range _ text rangeOf: att startingAt: startBlock stringIndex.
 				boxes _ self selectionRectsFrom: (self characterBlockForIndex: range first) 
 							to: (self characterBlockForIndex: range last+1).
 				box _ boxes detect: [:each | each containsPoint: clickPoint] ifNone: [nil].

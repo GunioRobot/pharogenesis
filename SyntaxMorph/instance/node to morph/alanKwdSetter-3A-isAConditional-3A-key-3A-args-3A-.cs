@@ -7,7 +7,7 @@ alanKwdSetter: aNode isAConditional: template key: key args: args
 		borderWidth: 1;
 		parseNode: (nodeWithNilReceiver as: MessageNode);
 		borderColor: row stdBorderColor.
-	row addNoiseString: '''s' emphasis: 1.
+	row addNoiseString: '''s' emphasis: TextEmphasis bold emphasisCode.
 	kwdHolder _ row
 		addToken: key
 		type: #keywordGetz
@@ -16,8 +16,8 @@ alanKwdSetter: aNode isAConditional: template key: key args: args
 		setProperty: #syntacticReformatting toValue: #keywordGetz;
 		setProperty: #syntacticallyCorrectContents toValue: key asString;
 		contents: (self splitAtCapsAndDownshifted: (key asString allButLast: 5));
-		emphasis: 1.
-	row addNoiseString: '_' emphasis: 1.
+		emphasis: TextEmphasis bold emphasisCode.
+	row addNoiseString: '_' emphasis: TextEmphasis bold emphasisCode.
 
 	(args first asMorphicSyntaxIn: row) setConditionalPartStyle
 			

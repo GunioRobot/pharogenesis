@@ -1,2 +1,2 @@
 downloadUrl
-	^self toText
+	^self asString

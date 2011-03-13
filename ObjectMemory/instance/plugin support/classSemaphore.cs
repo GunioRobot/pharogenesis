@@ -1,2 +1,0 @@
-classSemaphore
-	^self splObj: ClassSemaphore

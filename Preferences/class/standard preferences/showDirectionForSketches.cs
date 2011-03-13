@@ -1,2 +1,0 @@
-showDirectionForSketches
-	^ self valueOfFlag: #showDirectionForSketches

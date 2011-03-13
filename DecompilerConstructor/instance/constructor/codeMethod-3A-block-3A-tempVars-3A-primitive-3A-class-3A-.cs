@@ -1,5 +1,4 @@
 codeMethod: selector block: block tempVars: vars primitive: primitive class: class
-
 	| node methodTemps |
 	node _ self codeSelector: selector code: nil.
 	tempVars _ vars.
@@ -15,3 +14,4 @@ codeMethod: selector block: block tempVars: vars primitive: primitive class: cla
 					literals: literalValues
 					class: class)
 		primitive: primitive
+		properties: method properties.

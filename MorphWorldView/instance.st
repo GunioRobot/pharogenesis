@@ -1,6 +1,6 @@
 View
 	subclass: #MorphWorldView
 	instanceVariableNames: ''
-	classVariableNames: 'FullColorWhenInactive '
+	classVariableNames: 'FullColorWhenInactive'
 	poolDictionaries: ''
-	category: 'ST80-Morphic'
+	category: 'MorphicExtras-ST80'

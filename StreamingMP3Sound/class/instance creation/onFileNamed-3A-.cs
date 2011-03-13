@@ -3,5 +3,5 @@ onFileNamed: fileName
 
 	| mpegFile |
 	(MPEGFile isFileValidMPEG: fileName) ifFalse: [^ nil].
-	mpegFile _ MPEGFile openFile: fileName.
+	mpegFile := MPEGFile openFile: fileName.
 	^ self new initMPEGFile: mpegFile streamIndex: 0  "assume sound track is in stream 0"

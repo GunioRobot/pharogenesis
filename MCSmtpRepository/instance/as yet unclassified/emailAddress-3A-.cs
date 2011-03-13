@@ -1,2 +1,2 @@
 emailAddress: aString
-	email _ aString	
+	email := aString	

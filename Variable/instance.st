@@ -1,6 +1,6 @@
 ObjectWithDocumentation
 	subclass: #Variable
-	instanceVariableNames: 'defaultValue floatPrecision variableName variableType '
+	instanceVariableNames: 'defaultValue floatPrecision variableName variableType'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Protocols'
+	category: 'Protocols-Kernel'

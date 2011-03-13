@@ -1,0 +1,3 @@
+isInWorld
+
+	^ world isInWorld.

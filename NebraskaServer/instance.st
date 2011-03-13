@@ -1,6 +1,6 @@
 Model
 	subclass: #NebraskaServer
-	instanceVariableNames: 'worldDepth world clients listenQueue '
+	instanceVariableNames: 'worldDepth world clients listenQueue'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Remote'
+	category: 'Nebraska-Morphic-Remote'

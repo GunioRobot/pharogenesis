@@ -1,6 +1,6 @@
 buildSearchPane
 	| typeInView |
-	typeInView _ PluggableTextMorph on: self 
+	typeInView := PluggableTextMorph on: self 
 		text: nil accept: #findPackage:notifying:
 		readSelection: nil menu: nil.
 	typeInView setBalloonText:'To find a package type in a fragment of its name and hit return'.

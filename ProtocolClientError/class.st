@@ -1,0 +1,1 @@
+ProtocolClientError class instanceVariableNames: ''

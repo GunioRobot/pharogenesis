@@ -3,4 +3,4 @@ FlashMorph
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon-MMFlash Morphs'
+	category: 'Flash-Morphs'

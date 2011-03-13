@@ -3,25 +3,25 @@ changeGridding
 	grid modules. Does not change the primary tool."
 
 	| response gridInteger gridX gridY |
-	gridX _ togglegrid x.
-	gridY _ togglegrid y.
-	response _ FillInTheBlank
+	gridX := togglegrid x.
+	gridY := togglegrid y.
+	response := UIManager default
 		request:
 'Current horizontal gridding is: ', gridX printString, '.
 Type new horizontal gridding.'.
 	response isEmpty
 		ifFalse: 
-			[gridInteger _ Integer readFromString: response.
-			gridX _ ((gridInteger max: 1) min: Display extent x)].
-	response _ FillInTheBlank
+			[gridInteger := Integer readFromString: response.
+			gridX := ((gridInteger max: 1) min: Display extent x)].
+	response := UIManager default
 		request:
 'Current vertical gridding is: ', gridY printString, '.
 Type new vertical gridding.'.
 	response isEmpty
 		ifFalse: 
-			[gridInteger _ Integer readFromString: response.
-			gridY _ ((gridInteger max: 1) min: Display extent y)].
-	xgridOn ifTrue: [grid _ gridX @ grid y].
-	ygridOn ifTrue: [grid _ grid x @ gridY].
-	togglegrid _ gridX @ gridY.
-	tool _ previousTool
+			[gridInteger := Integer readFromString: response.
+			gridY := ((gridInteger max: 1) min: Display extent y)].
+	xgridOn ifTrue: [grid := gridX @ grid y].
+	ygridOn ifTrue: [grid := grid x @ gridY].
+	togglegrid := gridX @ gridY.
+	tool := previousTool

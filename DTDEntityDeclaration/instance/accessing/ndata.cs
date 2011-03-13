@@ -1,2 +1,0 @@
-ndata
-	^ndata

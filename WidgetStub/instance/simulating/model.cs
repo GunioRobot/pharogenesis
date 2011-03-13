@@ -1,0 +1,2 @@
+model
+	^ spec model

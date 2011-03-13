@@ -1,6 +1,6 @@
 ArrayedCollection
 	subclass: #Text
-	instanceVariableNames: 'string runs '
+	instanceVariableNames: 'string runs'
 	classVariableNames: ''
-	poolDictionaries: 'TextConstants '
+	poolDictionaries: 'TextConstants'
 	category: 'Collections-Text'

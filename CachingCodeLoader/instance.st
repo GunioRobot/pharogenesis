@@ -1,6 +1,6 @@
 CodeLoader
 	subclass: #CachingCodeLoader
-	instanceVariableNames: 'cacheDir '
+	instanceVariableNames: 'cacheDir'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Framework-Download'
+	category: 'System-Download'

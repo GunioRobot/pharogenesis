@@ -1,2 +1,2 @@
 source: aString
-	source _ aString
+	source := aString

@@ -1,0 +1,1 @@
+ServicePreferences class instanceVariableNames: ''

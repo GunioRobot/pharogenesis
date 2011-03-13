@@ -1,2 +1,2 @@
 sampleRate: aRate
-	sampleRate _ aRate
+	sampleRate := aRate

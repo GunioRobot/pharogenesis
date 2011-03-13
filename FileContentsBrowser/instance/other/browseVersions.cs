@@ -2,8 +2,8 @@ browseVersions
 	"Create and schedule a message set browser on all versions of the 
 	currently selected message selector."
 	| class selector |
-	(selector _ self selectedMessageName) ifNotNil:
-		[class _ self selectedClassOrMetaClass.
+	(selector := self selectedMessageName) ifNotNil:
+		[class := self selectedClassOrMetaClass.
 		(class exists and: [class realClass includesSelector: selector]) ifTrue:
 			[VersionsBrowser
 				browseVersionsOf: (class realClass compiledMethodAt: selector)

@@ -1,0 +1,6 @@
+OBActor
+	subclass: #OBImplementorsViewActor
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'OB-Standard-Services'

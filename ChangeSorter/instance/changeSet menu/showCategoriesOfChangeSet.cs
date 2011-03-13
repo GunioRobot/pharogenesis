@@ -10,7 +10,7 @@ It would not take much to make this
 also work in mvc, so if you are
 inclined to do that, thanks in advance...']
 		ifTrue:
-			[aMenu _ MenuMorph new defaultTarget: self.
+			[aMenu := MenuMorph new defaultTarget: self.
 	aMenu title: 
 'Categories which
 contain change set

@@ -1,7 +1,6 @@
 ObjectWithDocumentation
 	subclass: #MethodInterface
-	instanceVariableNames:
-		'selector argumentSpecifications resultSpecification userLevel attributeKeywords defaultStatus defaultFiresPerTick '
+	instanceVariableNames: 'selector argumentVariables resultSpecification receiverType attributeKeywords defaultStatus'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Protocols'
+	category: 'Protocols-Kernel'

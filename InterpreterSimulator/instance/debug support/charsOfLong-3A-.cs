@@ -1,2 +1,0 @@
-charsOfLong: long
-	^self subclassResponsibility

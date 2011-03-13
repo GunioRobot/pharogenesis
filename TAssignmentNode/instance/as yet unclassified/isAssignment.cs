@@ -1,3 +1,0 @@
-isAssignment
-
-	^true

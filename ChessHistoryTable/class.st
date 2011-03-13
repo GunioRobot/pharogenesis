@@ -1,1 +1,0 @@
-ChessHistoryTable class instanceVariableNames: ''

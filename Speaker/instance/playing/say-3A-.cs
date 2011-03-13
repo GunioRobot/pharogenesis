@@ -26,5 +26,5 @@ say: aString
 							events addAll: (self eventsFromString: string).
 							events playOn: self voice delayed: delay.
 							delay := delay + (events duration * 1000).
-							string _ ''  ]]].
+							string := ''  ]]].
 	self voice flush

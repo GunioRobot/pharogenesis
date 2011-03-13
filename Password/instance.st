@@ -1,6 +1,6 @@
 Object
 	subclass: #Password
-	instanceVariableNames: 'cache sequence '
+	instanceVariableNames: 'cache sequence'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Network-Kernel'

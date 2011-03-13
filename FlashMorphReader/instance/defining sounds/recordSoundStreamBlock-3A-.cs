@@ -3,7 +3,7 @@ recordSoundStreamBlock: data
 	| newBufs |
 	streamingSound frameNumber + 1 = frame 
 		ifFalse: [self flushStreamingSound].
-	newBufs _ ADPCMCodec new
+	newBufs := ADPCMCodec new
 		decodeFlash: data
 		sampleCount: streamingSound sampleCount
 		stereo: streamingSound stereo.

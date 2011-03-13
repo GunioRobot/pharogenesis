@@ -1,1 +1,0 @@
-B3DVector4 class instanceVariableNames: ''

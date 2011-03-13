@@ -1,10 +1,10 @@
 selectedMethod
-	^ methodText ifNil: [methodText _ selectedContext
+	^ methodText ifNil: [methodText := selectedContext
 						ifNil: ['']
 						ifNotNil: [| pcRange | 
-							methodText _ [ selectedContext sourceCode ]
+							methodText := [ selectedContext sourceCode ]
 								ifError: [ :err :rcvr | 'error getting method text' ].
-							pcRange _ self pcRange.
+							pcRange := self pcRange.
 							methodText asText
 								addAttribute: TextColor red
 								from: pcRange first

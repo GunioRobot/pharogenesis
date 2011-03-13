@@ -1,4 +1,4 @@
 record
 
-	queueForMultipleSends _ nil.
+	queueForMultipleSends := nil.
 	myrecorder record.

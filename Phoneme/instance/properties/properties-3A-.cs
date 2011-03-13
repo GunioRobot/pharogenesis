@@ -1,2 +1,2 @@
 properties: anIdentityDictionary
-	properties _ anIdentityDictionary
+	properties := anIdentityDictionary

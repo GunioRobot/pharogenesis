@@ -1,1 +1,0 @@
-SoundPlugin class instanceVariableNames: ''

@@ -1,2 +1,2 @@
 playerProcessPriority: aNumber
-	playerProcessPriority _ aNumber
+	playerProcessPriority := aNumber

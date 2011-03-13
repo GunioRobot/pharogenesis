@@ -3,7 +3,7 @@ categoryOfCurrentMethod
 
 	| aCategory |
 	^ super categoryOfCurrentMethod ifNil:
-		[(aCategory _ self messageCategoryListSelection) == ClassOrganizer allCategory
+		[(aCategory := self messageCategoryListSelection) == ClassOrganizer allCategory
 					ifTrue:
 						[nil]
 					ifFalse:

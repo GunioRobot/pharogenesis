@@ -1,5 +1,5 @@
 runCaseAsFailure: aSemaphore
 	[self setUp.
-	self openDebuggerOnFailingTestMethod] sunitEnsure: [
+	self openDebuggerOnFailingTestMethod] ensure: [
 		self tearDown.
 		aSemaphore signal]

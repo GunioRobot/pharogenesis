@@ -1,1 +1,0 @@
-ExternalTexture class instanceVariableNames: ''

@@ -1,6 +1,6 @@
 ProtoObject
 	subclass: #Object
 	instanceVariableNames: ''
-	classVariableNames: 'DependentsFields EventsFields '
+	classVariableNames: 'DependentsFields'
 	poolDictionaries: ''
 	category: 'Kernel-Objects'

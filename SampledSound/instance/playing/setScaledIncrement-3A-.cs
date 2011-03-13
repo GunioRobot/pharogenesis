@@ -1,4 +1,4 @@
 setScaledIncrement: aNumber
 
-	scaledIncrement _ (aNumber * IncrementScaleFactor) rounded.
+	scaledIncrement := (aNumber * IncrementScaleFactor) rounded.
 

@@ -1,2 +1,2 @@
 phrases: aCollection
-	phrases _ aCollection
+	phrases := aCollection

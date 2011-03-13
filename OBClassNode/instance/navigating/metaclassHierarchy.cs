@@ -1,0 +1,2 @@
+metaclassHierarchy
+	^ self nodeHierarchyWithClass: OBMetaclassNode

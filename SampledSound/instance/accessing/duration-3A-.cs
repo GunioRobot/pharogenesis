@@ -1,4 +1,4 @@
 duration: seconds
 
 	super duration: seconds.
-	count _ initialCount _ (seconds * self samplingRate) rounded.
+	count := initialCount := (seconds * self samplingRate) rounded.

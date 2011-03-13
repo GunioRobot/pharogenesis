@@ -1,1 +1,0 @@
-HtmlParser class instanceVariableNames: ''

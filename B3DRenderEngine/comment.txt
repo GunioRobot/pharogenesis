@@ -1,8 +1,0 @@
-I represent a facade for all Balloon 3D operations. Clients should only interact with me, not with any of the parts of the engine directly. However, clients may configure me to use certain parts in the 3D rendering pipeline.
-
-Instance variables: 
-	vertexBuffer 	<B3DVertexBuffer>	The vertex buffer passed on through the entire pipeline
-	transformer 	<B3DEnginePart>		The part performing transform operations
-	shader 			<B3DEnginePart>		The part performing vertex shading operations
-	clipper 			<B3DEnginePart>		The part performing view frustum clipping
-	rasterizer		<B3DEnginePart>		The part performing final pixel rasterization

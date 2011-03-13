@@ -1,29 +1,34 @@
 refresh
-	| name latest av |
-	versions _ repository readableFileNames collect: [ :each |
-		name _ each copyUpToLast: $..
+	| packageNames name latest av |
+	packageNames := Set new.
+	versions := repository readableFileNames collect: [ :each |
+		name := (each copyUpToLast: $.) copyUpTo: $(.
 		name last isDigit ifFalse: [Array with: name with: '' with: '' with: each]
 			ifTrue:
 				[Array
-					with: (name copyUpToLast:  $-)
-					with: ((name copyAfterLast: $-) upTo: $.)
-					with: ((name copyAfterLast: $-) copyAfter: $.)
+					with: (packageNames add: (name copyUpToLast:  $-))		"pkg name"
+					with: ((name copyAfterLast: $-) copyUpTo: $.)				"user"
+					with: ((name copyAfterLast: $-) copyAfter: $.) asInteger	"version"
 					with: each]].
-	newer _ Set new.
-	older _ Set new.
-	loaded _ MCWorkingCopy allManagers 
-		inject: Set new
-		into: [ :result :each |
+	newer := Set new.
+	inherited := Set new.
+	loaded := Set new.
+	(MCWorkingCopy allManagers 
+"		select: [ :each | packageNames includes: each packageName]")
+		do: [:each |
 			each ancestors do: [ :ancestor |
-				result add: ancestor name , '.mcz'].
-			each ancestry allAncestors do: [:ea | older add: (ea name, '.mcz')].
-			latest _ (versions select: [:v | v first = each package name])	
-				detectMax: [:v | v third asNumber].
+				loaded add: ancestor name.
+				ancestor ancestorsDoWhileTrue: [:heir |
+					(inherited includes: heir name)
+						ifTrue: [false]
+						ifFalse: [inherited add: heir name. true]]].
+			latest := (versions select: [:v | v first = each package name])	
+				detectMax: [:v | v third].
 			(latest notNil and: [
 				each ancestors allSatisfy: [:ancestor |
-					av _ ((ancestor name copyAfterLast: $-) copyAfter: $.) asNumber.
-					av < latest third asNumber or: [
-						av = latest third asNumber and: [ancestor name, '.mcz' ~= latest fourth]]]])
-				ifTrue: [newer add: each package name ].
-			result ].
+					av := ((ancestor name copyAfterLast: $-) copyAfter: $.) asInteger.
+					av < latest third or: [
+						av = latest third and: [((ancestor name copyAfterLast: $-) copyUpTo: $.) ~= latest second]]]])
+				ifTrue: [newer add: each package name ]].
+
 	self changed: #packageList; changed: #versionList

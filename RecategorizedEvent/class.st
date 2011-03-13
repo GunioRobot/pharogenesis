@@ -1,0 +1,1 @@
+RecategorizedEvent class instanceVariableNames: ''

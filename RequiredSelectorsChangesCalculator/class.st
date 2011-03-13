@@ -1,0 +1,1 @@
+RequiredSelectorsChangesCalculator class instanceVariableNames: ''

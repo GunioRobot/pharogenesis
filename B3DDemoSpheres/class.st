@@ -1,1 +1,0 @@
-B3DDemoSpheres class instanceVariableNames: ''

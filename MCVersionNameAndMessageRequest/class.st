@@ -1,0 +1,1 @@
+MCVersionNameAndMessageRequest class instanceVariableNames: ''

@@ -1,0 +1,2 @@
+dragEnabled
+	^ true

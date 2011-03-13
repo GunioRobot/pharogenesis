@@ -3,7 +3,7 @@ writeOn: aStream
 	aStream nextInt32Put: self basicSize.
 
 	1 to: self basicSize do: [ :i | | w |
-		w _ self basicAt: i.
+		w := self basicAt: i.
 		SmalltalkImage current  isLittleEndian
 			ifFalse: [ aStream nextNumber: 4 put:  w ]
 			ifTrue: [ aStream

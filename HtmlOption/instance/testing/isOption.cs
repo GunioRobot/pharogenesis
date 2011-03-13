@@ -1,2 +1,0 @@
-isOption
-	^true

@@ -1,0 +1,2 @@
+helpColor
+	^ self subclassResponsibility

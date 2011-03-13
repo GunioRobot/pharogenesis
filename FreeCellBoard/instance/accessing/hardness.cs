@@ -1,2 +1,0 @@
-hardness
-	^ hardness

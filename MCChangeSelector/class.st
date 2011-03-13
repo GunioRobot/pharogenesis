@@ -1,0 +1,1 @@
+MCChangeSelector class instanceVariableNames: ''

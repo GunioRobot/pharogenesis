@@ -24,7 +24,7 @@ sendMail: aString
 	].
 
 	Smalltalk at: #AdHocComposition ifPresent: [ :adHocComposition |
-		server _  FillInTheBlank request: 'What is your mail server for outgoing mail?'.
+		server := UIManager default request: 'What is your mail server for outgoing mail?'.
 		^adHocComposition 
 			openForCeleste: server
 			initialText: aString

@@ -1,4 +1,0 @@
-makeAllPluginsAvailable
-
-
-	vmMaker makeAllModulesAvailable

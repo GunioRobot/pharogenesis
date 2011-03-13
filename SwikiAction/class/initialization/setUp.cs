@@ -1,2 +1,0 @@
-setUp
-	self setUp: 'myswiki'

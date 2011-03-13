@@ -1,3 +1,0 @@
-listIndex
-
-	^1

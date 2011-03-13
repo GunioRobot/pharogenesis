@@ -1,6 +1,6 @@
 ListItemWrapper
 	subclass: #EToyTextNodeWrapper
-	instanceVariableNames: 'parentWrapper '
+	instanceVariableNames: 'parentWrapper'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Outliner'
+	category: 'EToys-Outliner'

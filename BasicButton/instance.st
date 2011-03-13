@@ -3,4 +3,4 @@ RectangleMorph
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Scripting'
+	category: 'MorphicExtras-Widgets'

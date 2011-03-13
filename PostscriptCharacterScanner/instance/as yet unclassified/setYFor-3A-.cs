@@ -1,1 +1,0 @@
-setYFor: anchoredMorph

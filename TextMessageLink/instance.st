@@ -1,6 +1,6 @@
 TextAttribute
 	subclass: #TextMessageLink
-	instanceVariableNames: 'message '
+	instanceVariableNames: 'message'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Network-Mail Reader'
+	category: 'Network-Url'

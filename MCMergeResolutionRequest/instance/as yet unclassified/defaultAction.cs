@@ -1,2 +1,4 @@
 defaultAction
-	^ (MCMergeBrowser new merger: merger) showModally
+	^ (MCMergeBrowser new
+		merger: merger;
+		label: messageText) showModally

@@ -1,6 +1,6 @@
 Model
 	subclass: #Player
-	instanceVariableNames: 'costume costumes '
-	classVariableNames: 'BiggestSubclassNumber TimeOfError '
-	poolDictionaries: 'References '
-	category: 'Morphic-Scripting'
+	instanceVariableNames: 'costume costumes'
+	classVariableNames: 'BiggestSubclassNumber TimeOfError'
+	poolDictionaries: 'References'
+	category: 'EToys-Scripting'

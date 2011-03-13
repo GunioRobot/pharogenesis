@@ -1,6 +1,6 @@
 Object
 	subclass: #SyntaxAttribute
-	instanceVariableNames: 'color emphasis attributeList '
+	instanceVariableNames: 'color emphasis attributeList'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Compiler'
+	category: 'Compiler-Support'

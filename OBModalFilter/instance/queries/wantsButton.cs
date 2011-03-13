@@ -1,0 +1,2 @@
+wantsButton
+	^ true

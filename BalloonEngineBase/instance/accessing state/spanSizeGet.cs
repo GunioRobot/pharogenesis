@@ -1,2 +1,0 @@
-spanSizeGet
-	^workBuffer at: GWSpanSize

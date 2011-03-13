@@ -3,9 +3,9 @@ purgeCacheInner
 	| cachedObject totalSize thisSize |
 
 	cachedObjects ifNil: [^0].
-	totalSize _ 0.
+	totalSize := 0.
 	cachedObjects withIndexDo: [ :each :index |
-		cachedObject _ each first first.
+		cachedObject := each first first.
 		cachedObject ifNil: [
 			each second ifNotNil: [
 				2 to: each size do: [ :j | each at: j put: nil].
@@ -15,13 +15,13 @@ purgeCacheInner
 				}.
 			].
 		] ifNotNil: [
-			thisSize _ cachedObject depth * cachedObject width * cachedObject height // 8.
-			totalSize _ totalSize + thisSize.
+			thisSize := cachedObject depth * cachedObject width * cachedObject height // 8.
+			totalSize := totalSize + thisSize.
 		].
 	].
 	^totalSize
 	"---
-	newEntry _ {
+	newEntry := {
 		WeakArray with: anObject.
 		1.
 		Time millisecondClockValue.

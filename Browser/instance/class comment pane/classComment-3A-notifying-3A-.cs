@@ -12,6 +12,6 @@ classComment: aText notifying: aPluggableTextMorph
 						removeAttribute: TextColor red
 						from: 1
 						to: redRange last ].
-			theClass classComment: aText].
+			theClass comment: aText stamp: Utilities changeStamp].
 	self changed: #classCommentText.
 	^ true

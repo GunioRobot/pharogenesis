@@ -13,8 +13,8 @@ the front of 'updates.list', and that index file is used."
 you know that this is okay (e.g. the file contains raw binary data).'].
 	fileStrm reset.
 	(self checkNames: {localName}) ifFalse: [^ nil].	"illegal characters"
-	response _ (PopUpMenu labels: 'Install update\Cancel update' withCRs)
-		startUpWithCaption: 'Do you really want to broadcast the file ', localName, 
+	response _ UIManager default chooseFrom: #('Install update' 'Cancel update')
+		title: 'Do you really want to broadcast the file ', localName, 
 			'\to every Squeak user who updates from ' withCRs, self groupName, '?'.
 	response = 1 ifFalse: [^ nil].	"abort"
 

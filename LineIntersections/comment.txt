@@ -1,1 +1,0 @@
-This class computes all intersections of a set of line segments. The input segments must be integer coordinates. The intersections returned will be accurate, meaning that fractional points describing the intersections will be reported. It is up to the client to convert these fractional points if required.

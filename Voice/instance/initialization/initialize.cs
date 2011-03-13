@@ -1,2 +1,2 @@
 initialize
-	name _ 'anonymous'
+	name := 'anonymous'

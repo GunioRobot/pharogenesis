@@ -1,1 +1,0 @@
-InterpreterProxy class instanceVariableNames: ''

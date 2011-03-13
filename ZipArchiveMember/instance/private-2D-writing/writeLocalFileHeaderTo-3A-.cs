@@ -4,7 +4,7 @@ writeLocalFileHeaderTo: aStream
 	writeLocalHeaderRelativeOffset member."
 
 	| systemFileName |
-	systemFileName _ fileName asVmPathName.
+	systemFileName := fileName asVmPathName.
 	aStream nextPutAll: LocalFileHeaderSignature.
 	aStream nextLittleEndianNumber: 2 put: versionNeededToExtract.
 	aStream nextLittleEndianNumber: 2 put: bitFlag.

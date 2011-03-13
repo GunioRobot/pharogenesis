@@ -2,5 +2,5 @@ flushInput
 	"Read any lingering MIDI data from this port's input buffer."
 
 	| buf |
-	buf _ ByteArray new: 1000.
+	buf := ByteArray new: 1000.
 	[(self readInto: buf) > 0] whileTrue.

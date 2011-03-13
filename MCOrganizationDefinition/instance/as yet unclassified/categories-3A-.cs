@@ -1,2 +1,2 @@
 categories: anArray
-	categories _ anArray
+	categories := anArray

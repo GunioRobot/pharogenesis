@@ -21,6 +21,10 @@ fontConfigurationMenu
 	aMenu lastItem font: Preferences standardEToysFont.
 	aMenu balloonTextForLastItem: 'Choose the font to be used on eToys environment' translated.
 
+	aMenu add: 'eToys title font...' translated action: #chooseEToysTitleFont.
+	aMenu lastItem font: Preferences standardEToysTitleFont.
+	aMenu balloonTextForLastItem: 'Choose the font to be used in titles on eToys environment' translated.
+
 	aMenu add: 'halo label font...' translated action: #chooseHaloLabelFont.
 	aMenu lastItem font: Preferences standardHaloLabelFont.
 	aMenu balloonTextForLastItem: 'Choose the font to be used on labels ih halo' translated.
@@ -40,7 +44,15 @@ fontConfigurationMenu
 	aMenu add: 'code font...' translated action: #chooseCodeFont. 
 	aMenu lastItem font: Preferences standardCodeFont. 
 	aMenu balloonTextForLastItem: 'Choose the font to be used in code panes.' translated.
-	
+
+	aMenu add: 'button font...' translated action: #chooseStandardButtonFont.
+	aMenu lastItem font: Preferences standardButtonFont.
+	aMenu balloonTextForLastItem: 'Choose the font to be used in buttons.' translated.
+
+	aMenu addLine.
+	aMenu add: 'demo mode' translated action: #setDemoFonts.
+	aMenu balloonTextForLastItem: 'Set Fonts usable for giving a presentation' translated.
+
 	aMenu addLine.
 	aMenu add: 'restore default font choices' translated action: #restoreDefaultFonts.
 	aMenu balloonTextForLastItem: 'Use the standard system font defaults' translated.

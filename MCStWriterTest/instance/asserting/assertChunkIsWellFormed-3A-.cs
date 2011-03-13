@@ -1,5 +1,5 @@
 assertChunkIsWellFormed: chunk
-	Parser new
+	self class parserClass new
 		parse: chunk readStream 
 		class: UndefinedObject 
 		noPattern: true

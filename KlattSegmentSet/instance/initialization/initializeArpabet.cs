@@ -1,6 +1,6 @@
 initializeArpabet
-	phonemes _ PhonemeSet arpabet.
-	segments _ Dictionary new.
+	phonemes := PhonemeSet arpabet.
+	segments := Dictionary new.
 	#(('p'	(p py pz))
 	('t'		(t ty tz))
 	('k'		(k ky kz))

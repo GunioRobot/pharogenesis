@@ -1,2 +1,0 @@
-windowLabel
-	^ 'SUnit Test Runner'

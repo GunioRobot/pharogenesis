@@ -3,7 +3,7 @@ startUp: resuming
 	resuming
 		ifFalse: [^ self].
 	""
-	defaultID := LocaleID default.
+	defaultID := LocaleID current.
 	self cachedTranslations
 		at: defaultID
 		ifAbsent: [self localeID: defaultID].

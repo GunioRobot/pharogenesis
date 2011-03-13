@@ -6,14 +6,14 @@ mouseDown: evt
 				^ self invokeScoreMenu: evt].
 
 	"Clicked near (but not on) a note, so play all notes at the cursor time"
-	noteMorphs _ self notesInRect: ((evt cursorPoint extent: 1@0) expandBy: 0@self height).
-	chordRect _ (self innerBounds withLeft: evt cursorPoint x) withWidth: 1.
-	soundsPlayingMorph _ Morph newBounds: chordRect color: Color green.
+	noteMorphs := self notesInRect: ((evt cursorPoint extent: 1@0) expandBy: 0@self height).
+	chordRect := (self innerBounds withLeft: evt cursorPoint x) withWidth: 1.
+	soundsPlayingMorph := Morph newBounds: chordRect color: Color green.
 	self addMorphBack: soundsPlayingMorph.
 	
-	soundsPlaying _ IdentityDictionary new.
+	soundsPlaying := IdentityDictionary new.
 	noteMorphs do:
-		[:m | sound _ m soundOfDuration: 999.0.
+		[:m | sound := m soundOfDuration: 999.0.
 		soundsPlaying at: m put: sound.
 		SoundPlayer resumePlaying: sound quickStart: false].
 

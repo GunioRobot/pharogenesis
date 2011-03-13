@@ -1,2 +1,0 @@
-prototypicalToolWindow
-	^self new morphicWindow

@@ -1,0 +1,3 @@
+trivialToInstall
+	^trivialToInstall
+	

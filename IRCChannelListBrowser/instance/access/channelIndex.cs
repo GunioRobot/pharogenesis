@@ -1,2 +1,0 @@
-channelIndex
-	^channelIndex

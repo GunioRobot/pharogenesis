@@ -2,6 +2,8 @@ storeHtmlPageIn: aFileDirectory
 	"Prepare the HTML wrapper for the current project"
 	| file page |
 	file _ aFileDirectory forceNewFileNamed: (self name, FileDirectory dot,'html').
+	file ifNil: [^self].
+	file converter: UTF8TextConverter new.
 	page _ self htmlPagePrototype.
 	page _ page copyReplaceAll: '$$PROJECT$$' with: self versionedFileName.
 	page _ page copyReplaceAll: '$$WIDTH$$' with: world bounds width printString.

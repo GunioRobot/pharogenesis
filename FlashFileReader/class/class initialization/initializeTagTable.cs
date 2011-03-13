@@ -1,7 +1,7 @@
 initializeTagTable
 	"Create and return a new SWF tag table"
 	"FlashFileReader initializeTagTable"
-	TagTable _ Array new: 50.
+	TagTable := Array new: 50.
 	TagTable atAllPut: #processUnknown:.
 	#(
 	(processEnd:					0)

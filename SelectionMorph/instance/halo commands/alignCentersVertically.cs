@@ -6,4 +6,6 @@ alignCentersVertically
 	minTop _ (selectedItems collect: [:itm | itm top]) min.
 	topMost _ selectedItems detect: [:m | m top = minTop].
 	selectedItems do:
-		[:itm | itm center: (topMost center x @ itm center y)]
+		[:itm | itm center: (topMost center x @ itm center y)].
+
+	self changed

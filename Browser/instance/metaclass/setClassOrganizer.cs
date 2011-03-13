@@ -4,5 +4,6 @@ setClassOrganizer
 	classOrganizer _ nil.
 	metaClassOrganizer _ nil.
 	classListIndex = 0 ifTrue: [^ self].
-	classOrganizer _ (theClass _ self selectedClass) organization.
-	metaClassOrganizer _ theClass class organization.
+	theClass _ self selectedClass ifNil: [ ^self ].
+	classOrganizer _ theClass organization.
+	metaClassOrganizer _ theClass classSide organization.

@@ -1,0 +1,1 @@
+SyntaxErrorNotification class instanceVariableNames: ''

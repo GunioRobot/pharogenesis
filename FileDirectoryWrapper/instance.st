@@ -1,6 +1,6 @@
 ListItemWrapper
 	subclass: #FileDirectoryWrapper
-	instanceVariableNames: 'itemName balloonText '
+	instanceVariableNames: 'itemName balloonText hasContents'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Tools-Explorer'
+	category: 'Morphic-Explorer'

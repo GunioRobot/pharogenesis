@@ -3,21 +3,24 @@ updateColor
 	Preferences gradientMenu
 		ifFalse: [^ self].
 	""
-	fill := GradientFillStyle ramp: {0.0 -> self color lighter. 1 -> self color darker}.
+	fill _ GradientFillStyle ramp: {0.0 -> Color white. 1 -> self color}.
 	""
-	fill origin: self topLeft.
-	fill direction: self width @ 0.
+	fill
+		radial: false;
+		origin: self topLeft;
+		direction: 0 @ self height.
 	""
 	self fillStyle: fill.
 	" 
 	update the title color"
-	title := self allMorphs
+	title _ self allMorphs
 				detect: [:each | each hasProperty: #titleString]
 				ifNone: [^ self].
 	""
-	fill := GradientFillStyle ramp: {0.0 -> title color twiceLighter. 1 -> title color twiceDarker}.
+	fill _ GradientFillStyle ramp: {0.0 -> title color twiceLighter. 1 -> title color twiceDarker}.
 	""
-	fill origin: title topLeft.
-	fill direction: title width @ 0.
+	fill
+		origin: title topLeft;
+		direction: title width @ 0.
 	""
 	title fillStyle: fill

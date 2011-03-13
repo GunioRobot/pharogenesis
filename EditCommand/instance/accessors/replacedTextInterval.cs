@@ -1,0 +1,2 @@
+replacedTextInterval
+	^replacedTextInterval

@@ -1,2 +1,0 @@
-localName
-	^ name

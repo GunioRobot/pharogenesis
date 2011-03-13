@@ -7,6 +7,7 @@ workingCopyListMenu: aMenu
 			('view changes' #viewChanges)
 			('view history' #viewHistory)
 			('recompile package' #recompilePackage)
+			('revert package...' #revertPackage)
 			('unload package' #unloadPackage)
 			('delete working copy' #deleteWorkingCopy)).
 	(Smalltalk includesKey: #SARMCPackageDumper) ifTrue: [

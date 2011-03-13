@@ -1,0 +1,1 @@
+AbstractEvent class instanceVariableNames: ''

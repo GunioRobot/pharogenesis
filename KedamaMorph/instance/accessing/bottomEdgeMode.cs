@@ -1,0 +1,3 @@
+bottomEdgeMode
+
+	^ bottomEdgeMode.

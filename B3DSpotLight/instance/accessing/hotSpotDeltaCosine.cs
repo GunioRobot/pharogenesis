@@ -1,2 +1,0 @@
-hotSpotDeltaCosine
-	^deltaCos

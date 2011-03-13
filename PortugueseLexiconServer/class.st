@@ -1,1 +1,0 @@
-PortugueseLexiconServer class instanceVariableNames: ''

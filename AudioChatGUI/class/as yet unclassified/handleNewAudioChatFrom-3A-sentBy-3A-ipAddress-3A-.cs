@@ -2,7 +2,7 @@ handleNewAudioChatFrom: dataStream sentBy: senderName ipAddress: ipAddressString
 
 	| compressed |
 
-	compressed _ self newCompressedSoundFrom: dataStream.
+	compressed := self newCompressedSoundFrom: dataStream.
 DebugLog ifNotNil: [
 	DebugLog add: {compressed}.
 ].

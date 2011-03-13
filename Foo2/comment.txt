@@ -1,1 +1,0 @@
-Demonstrator class using FooPlugin2

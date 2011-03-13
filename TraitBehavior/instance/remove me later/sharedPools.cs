@@ -1,0 +1,2 @@
+sharedPools
+	^ Dictionary new

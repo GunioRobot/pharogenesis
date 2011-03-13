@@ -1,2 +1,0 @@
-useNamespaces: aBoolean
-	useNamespaces := aBoolean

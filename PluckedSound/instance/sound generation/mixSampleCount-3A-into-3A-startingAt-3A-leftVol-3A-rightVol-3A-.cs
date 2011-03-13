@@ -7,39 +7,39 @@ mixSampleCount: n into: aSoundBuffer startingAt: startIndex leftVol: leftVol rig
 	self var: #aSoundBuffer declareC: 'short int *aSoundBuffer'.
 	self var: #ring declareC: 'short int *ring'.
 
-	lastIndex _ (startIndex + n) - 1.
-	scaledThisIndex _ scaledNextIndex _ scaledIndex.
+	lastIndex := (startIndex + n) - 1.
+	scaledThisIndex := scaledNextIndex := scaledIndex.
 	startIndex to: lastIndex do: [:sliceIndex |
-		scaledNextIndex _ scaledThisIndex + scaledIndexIncr.
+		scaledNextIndex := scaledThisIndex + scaledIndexIncr.
 		scaledNextIndex >= scaledIndexLimit
-			ifTrue: [scaledNextIndex _ ScaleFactor + (scaledNextIndex - scaledIndexLimit)].
-		average _
+			ifTrue: [scaledNextIndex := ScaleFactor + (scaledNextIndex - scaledIndexLimit)].
+		average :=
 			((ring at: scaledThisIndex // ScaleFactor) +
 			 (ring at: scaledNextIndex // ScaleFactor)) // 2.
 		ring at: scaledThisIndex // ScaleFactor put: average.
-		sample _ (average * scaledVol) // ScaleFactor.  "scale by volume"
-		scaledThisIndex _ scaledNextIndex.
+		sample := (average * scaledVol) // ScaleFactor.  "scale by volume"
+		scaledThisIndex := scaledNextIndex.
 
 		leftVol > 0 ifTrue: [
-			i _ (2 * sliceIndex) - 1.
-			s _ (aSoundBuffer at: i) + ((sample * leftVol) // ScaleFactor).
-			s >  32767 ifTrue: [s _  32767].  "clipping!"
-			s < -32767 ifTrue: [s _ -32767].  "clipping!"
+			i := (2 * sliceIndex) - 1.
+			s := (aSoundBuffer at: i) + ((sample * leftVol) // ScaleFactor).
+			s >  32767 ifTrue: [s :=  32767].  "clipping!"
+			s < -32767 ifTrue: [s := -32767].  "clipping!"
 			aSoundBuffer at: i put: s].
 		rightVol > 0 ifTrue: [
-			i _ 2 * sliceIndex.
-			s _ (aSoundBuffer at: i) + ((sample * rightVol) // ScaleFactor).
-			s >  32767 ifTrue: [s _  32767].  "clipping!"
-			s < -32767 ifTrue: [s _ -32767].  "clipping!"
+			i := 2 * sliceIndex.
+			s := (aSoundBuffer at: i) + ((sample * rightVol) // ScaleFactor).
+			s >  32767 ifTrue: [s :=  32767].  "clipping!"
+			s < -32767 ifTrue: [s := -32767].  "clipping!"
 			aSoundBuffer at: i put: s].
 
 		scaledVolIncr ~= 0 ifTrue: [
-			scaledVol _ scaledVol + scaledVolIncr.
+			scaledVol := scaledVol + scaledVolIncr.
 			((scaledVolIncr > 0 and: [scaledVol >= scaledVolLimit]) or:
 			 [scaledVolIncr < 0 and: [scaledVol <= scaledVolLimit]])
 				ifTrue: [  "reached the limit; stop incrementing"
-					scaledVol _ scaledVolLimit.
-					scaledVolIncr _ 0]]].
+					scaledVol := scaledVolLimit.
+					scaledVolIncr := 0]]].
 
-	scaledIndex _ scaledNextIndex.
-	count _ count - n.
+	scaledIndex := scaledNextIndex.
+	count := count - n.

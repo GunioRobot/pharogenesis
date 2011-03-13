@@ -1,0 +1,2 @@
+eventAccessors
+	^ super eventAccessors, #(label)

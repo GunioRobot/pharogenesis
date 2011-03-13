@@ -1,3 +1,3 @@
 setUp
-	stream _ RWBinaryOrTextStream on: String new.
-	writer _ MCStWriter on: stream.
+	stream := RWBinaryOrTextStream on: String new.
+	writer := MCStWriter on: stream.

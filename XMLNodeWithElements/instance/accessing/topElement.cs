@@ -1,2 +1,0 @@
-topElement
-	^self elements first

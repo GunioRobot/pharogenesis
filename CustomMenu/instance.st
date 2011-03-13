@@ -1,6 +1,6 @@
 SelectionMenu
 	subclass: #CustomMenu
-	instanceVariableNames: 'labels dividers lastDivider title '
+	instanceVariableNames: 'labels dividers lastDivider title targets arguments'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Tools-Menus'
+	category: 'ST80-Menus'

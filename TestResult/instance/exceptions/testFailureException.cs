@@ -1,3 +1,0 @@
-testFailureException
-
-	^self class testFailureException

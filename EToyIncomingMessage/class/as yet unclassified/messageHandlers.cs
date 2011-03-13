@@ -1,3 +1,3 @@
 messageHandlers
 
-	^MessageHandlers ifNil: [MessageHandlers _ Dictionary new].
+	^MessageHandlers ifNil: [MessageHandlers := Dictionary new].

@@ -1,6 +1,6 @@
 ParseNode
 	subclass: #ReturnNode
-	instanceVariableNames: 'expr pc '
+	instanceVariableNames: 'expr'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Compiler'
+	category: 'Compiler-ParseNodes'

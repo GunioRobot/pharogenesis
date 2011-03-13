@@ -2,7 +2,7 @@ initialize
 	"initialize the state of the receiver"
 	super initialize.
 	""
-	acceptOnCR _ true.
+	acceptOnCR := true.
 	self listDirection: #topToBottom;
 		 layoutInset: 0;
 		 hResizing: #shrinkWrap;

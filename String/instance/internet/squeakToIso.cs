@@ -1,2 +1,2 @@
 squeakToIso
-	^self collect: [:c | c squeakToIso ]
+	^self "no longer needed"

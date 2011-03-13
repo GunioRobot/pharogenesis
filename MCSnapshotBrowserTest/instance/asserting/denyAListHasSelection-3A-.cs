@@ -1,7 +1,7 @@
 denyAListHasSelection: aString
 	| found |
-	found _ true.
+	found := true.
 	self listMorphs 
 			detect: [:m | m selection = aString]
-			ifNone: [found _ false].
+			ifNone: [found := false].
 	self deny: found.

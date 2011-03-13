@@ -1,3 +1,3 @@
 pointerListIndex: anInteger
-	pointerListIndex _ anInteger.
+	pointerListIndex := anInteger.
 	self changed: #pointerListIndex

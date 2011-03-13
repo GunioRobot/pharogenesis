@@ -1,4 +1,4 @@
 cellCount: aNumber
 
-	cellCount _ aNumber asInteger.
+	cellCount := aNumber asInteger.
 

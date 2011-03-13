@@ -1,3 +1,0 @@
-errors: anOrderedCollection
-
-	errors := anOrderedCollection.

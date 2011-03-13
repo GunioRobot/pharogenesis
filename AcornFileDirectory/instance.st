@@ -1,6 +1,6 @@
 FileDirectory
 	subclass: #AcornFileDirectory
 	instanceVariableNames: ''
-	classVariableNames: ''
+	classVariableNames: 'LegalCharMap'
 	poolDictionaries: ''
-	category: 'System-Files'
+	category: 'Files-Directories'

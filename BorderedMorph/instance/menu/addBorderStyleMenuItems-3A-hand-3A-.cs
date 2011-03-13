@@ -3,7 +3,7 @@ addBorderStyleMenuItems: aMenu hand: aHandMorph
 
 	| subMenu |
 	subMenu _ MenuMorph new defaultTarget: self.
-	subMenu addTitle: 'border' translated.
+	"subMenu addTitle: 'border' translated."
 	subMenu addStayUpItemSpecial.
 	subMenu addList: 
 		{{'border color...' translated. #changeBorderColor:}.
@@ -13,4 +13,4 @@ addBorderStyleMenuItems: aMenu hand: aHandMorph
 		[:sym | (self borderStyleForSymbol: sym)
 			ifNotNil:
 				[subMenu add: sym translated target: self selector: #setBorderStyle: argument: sym]].
-	aMenu add: 'border style...' translated subMenu: subMenu
+	aMenu add: 'border style' translated subMenu: subMenu

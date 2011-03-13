@@ -1,2 +1,0 @@
-removeAssertions
-	expression removeAssertions

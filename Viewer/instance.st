@@ -1,6 +1,6 @@
 AlignmentMorph
 	subclass: #Viewer
-	instanceVariableNames: 'scriptedPlayer '
+	instanceVariableNames: 'scriptedPlayer'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Scripting'
+	category: 'EToys-Scripting'

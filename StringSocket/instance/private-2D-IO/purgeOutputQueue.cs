@@ -1,4 +1,4 @@
 purgeOutputQueue
 
-	bytesInOutputQueue _ 0.
+	bytesInOutputQueue := 0.
 	[outputQueue nextOrNil notNil] whileTrue.

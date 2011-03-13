@@ -4,7 +4,7 @@ processInput
 
 	self flag: #XXX.  "should have resource limits here--no more than X objects and Y bytes"
 
-	chunkOfData _ socket receiveAvailableData.
+	chunkOfData _ socket receiveAvailableDataIntoBuffer: self readBuffer.
 	self addToInBuf: chunkOfData.
 	totalReceived _ chunkOfData size.
 

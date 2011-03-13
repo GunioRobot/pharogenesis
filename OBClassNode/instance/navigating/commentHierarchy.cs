@@ -1,0 +1,2 @@
+commentHierarchy
+	^ self nodeHierarchyWithClass: OBClassCommentNode

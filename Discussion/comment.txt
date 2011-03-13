@@ -1,1 +1,0 @@
-A Discussion has some header information and a collection of related notes.

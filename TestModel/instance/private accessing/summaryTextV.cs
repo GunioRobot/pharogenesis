@@ -1,3 +1,0 @@
-summaryTextV
-
-	^summaryTextV

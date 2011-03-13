@@ -1,2 +1,2 @@
 inPoint: anInteger
-	inPoint _ anInteger
+	inPoint := anInteger

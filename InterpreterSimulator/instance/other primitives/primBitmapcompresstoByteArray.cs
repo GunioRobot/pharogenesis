@@ -1,2 +1,0 @@
-primBitmapcompresstoByteArray
-	^ self primitiveFail

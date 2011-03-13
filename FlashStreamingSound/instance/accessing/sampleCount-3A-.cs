@@ -1,2 +1,2 @@
 sampleCount: aNumber
-	sampleCount _ aNumber
+	sampleCount := aNumber

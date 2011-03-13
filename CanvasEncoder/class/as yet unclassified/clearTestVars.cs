@@ -2,5 +2,5 @@ clearTestVars
 "
 CanvasEncoder clearTestVars
 "
-	SimpleCounters _ nil
+	SimpleCounters := nil
 

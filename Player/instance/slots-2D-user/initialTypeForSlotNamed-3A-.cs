@@ -1,2 +1,0 @@
-initialTypeForSlotNamed: aName
-	^ #number

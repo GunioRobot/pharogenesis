@@ -1,2 +1,2 @@
 normal: aPoint
-	normal _ aPoint
+	normal := aPoint

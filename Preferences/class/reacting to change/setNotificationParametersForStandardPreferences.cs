@@ -16,7 +16,9 @@ setNotificationParametersForStandardPreferences
 		(showProjectNavigator	showProjectNavigatorChanged)
 		(smartUpdating			smartUpdatingChanged)
 		(universalTiles			universalTilesSettingToggled)
-		(showSharedFlaps		sharedFlapsSettingChanged))  do:
+		(showSharedFlaps		sharedFlapsSettingChanged)
+		(noviceMode		noviceModeSettingChanged)
+	)  do:
 
 			[:pair |
 				aPreference _ self preferenceAt: pair first.

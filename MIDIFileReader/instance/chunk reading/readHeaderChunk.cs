@@ -1,17 +1,17 @@
 readHeaderChunk
 
 	| chunkType chunkSize division |
-	chunkType _ self readChunkType.
-	chunkType = 'RIFF' ifTrue:[chunkType _ self riffSkipToMidiChunk].
+	chunkType := self readChunkType.
+	chunkType = 'RIFF' ifTrue:[chunkType := self riffSkipToMidiChunk].
 	chunkType = 'MThd' ifFalse: [self scanForMIDIHeader].
-	chunkSize _ self readChunkSize.
-	fileType _ self next16BitWord.
-	trackCount _ self next16BitWord.
-	division _ self next16BitWord.
+	chunkSize := self readChunkSize.
+	fileType := self next16BitWord.
+	trackCount := self next16BitWord.
+	division := self next16BitWord.
 	(division anyMask: 16r8000)
 		ifTrue: [self error: 'SMPTE time formats are not yet supported']
-		ifFalse: [ticksPerQuarter _ division].
-	maxNoteTicks _ 12 * 4 * ticksPerQuarter.
+		ifFalse: [ticksPerQuarter := division].
+	maxNoteTicks := 12 * 4 * ticksPerQuarter.
 		"longest acceptable note; used to detect stuck notes"
 
 	"sanity checks"

@@ -15,14 +15,14 @@ obsoleteMethodReferences
 			obsClasses keysAndValuesDo: 
 					[:index :each | 
 					bar value: index.
-					obsRefs := PointerFinder pointersTo: each except: obsClasses.
+					obsRefs := Utilities pointersTo: each except: obsClasses.
 					obsRefs do: 
 							[:ref | 
 							"Figure out if it may be a global"
 
 							(ref isVariableBinding and: [ref key isString	"or Symbol"]) 
 								ifTrue: 
-									[(PointerFinder pointersTo: ref) do: 
+									[(Utilities pointersTo: ref) do: 
 											[:meth | 
 											(meth isKindOf: CompiledMethod) 
 												ifTrue: [meth methodReference ifNotNilDo: [:mref | references nextPut: mref]]]]]]].

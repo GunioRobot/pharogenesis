@@ -1,6 +1,6 @@
 Object
 	subclass: #GZipSurrogateStream
-	instanceVariableNames: 'gZipStream zippedFileStream bufferStream positionThusFar '
+	instanceVariableNames: 'gZipStream zippedFileStream bufferStream positionThusFar'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Compression'
+	category: 'Compression-Streams'

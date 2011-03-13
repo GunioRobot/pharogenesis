@@ -4,5 +4,5 @@ browseFullProtocol
 	| aClass |
 
 	(Smalltalk isMorphic and: [Smalltalk includesKey: #Lexicon]) ifFalse: [^ self spawnFullProtocol].
-	(aClass _ self selectedClassOrMetaClass) ifNotNil:
+	(aClass := self selectedClassOrMetaClass) ifNotNil:
 		[(Smalltalk at: #Lexicon) new openOnClass: aClass inWorld: ActiveWorld showingSelector: self selectedMessageName]

@@ -5,4 +5,4 @@ jumpToTick: startTick
 	self processTempoMapAtTick: startTick.
 	self skipNoteEventsThruTick: startTick.
 	self skipAmbientEventsThruTick: startTick.
-	ticksSinceStart _ startTick.
+	ticksSinceStart := startTick.

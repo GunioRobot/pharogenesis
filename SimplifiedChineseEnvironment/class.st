@@ -1,0 +1,1 @@
+SimplifiedChineseEnvironment class instanceVariableNames: ''

@@ -1,6 +1,6 @@
 Controller
 	subclass: #MouseMenuController
-	instanceVariableNames: 'redButtonMenu redButtonMessages '
+	instanceVariableNames: 'redButtonMenu redButtonMessages'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Kernel-ST80 Remnants'
+	category: 'ST80-Kernel-Remnants'

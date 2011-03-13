@@ -1,0 +1,2 @@
+buildPluggableTree: aSpec
+	^self subclassResponsibility

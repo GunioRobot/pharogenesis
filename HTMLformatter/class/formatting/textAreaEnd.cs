@@ -1,2 +1,0 @@
-textAreaEnd
-	^ '</TEXTAREA>'

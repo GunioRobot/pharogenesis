@@ -7,26 +7,26 @@ fullName          CHARPTR     The font's full name (a combination of
                                           familyName and subfamilyName).
 versionName       CHARPTR     The font's version string.
 "	| nRecords initialOffset storageOffset pID sID lID nID length offset multiBytes string strings |
-	strings _ Array new: 8.
+	strings := Array new: 8.
 	strings atAllPut:''.
-	initialOffset _ entry offset.
+	initialOffset := entry offset.
 	entry skip: 2. "Skip format selector"
 	"Get the number of name records"
-	nRecords _ entry nextUShort.
+	nRecords := entry nextUShort.
 	"Offset from the beginning of this table"
-	storageOffset _ entry nextUShort + initialOffset.
+	storageOffset := entry nextUShort + initialOffset.
 	1 to: nRecords do:[:i|
-		pID _ entry nextUShort.
-		sID _ entry nextUShort.
-		lID _ entry nextUShort.
-		nID _ entry nextUShort.
-		length _ entry nextUShort.
-		offset _ entry nextUShort.
+		pID := entry nextUShort.
+		sID := entry nextUShort.
+		lID := entry nextUShort.
+		nID := entry nextUShort.
+		length := entry nextUShort.
+		offset := entry nextUShort.
 		"Read only Macintosh or Microsoft strings"
 		(pID = 1 or:[pID = 3 and:[sID = 1]]) ifTrue:[
 			"MS uses Unicode all others single byte"
-			multiBytes _ pID = 3.
-			string _ entry stringAt: storageOffset + offset length: length multiByte: multiBytes.
+			multiBytes := pID = 3.
+			string := entry stringAt: storageOffset + offset length: length multiByte: multiBytes.
 			"Put the name at the right location.
 			Note: We prefer Macintosh strings about everything else."
 			nID < strings size ifTrue:[

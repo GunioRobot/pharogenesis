@@ -2,6 +2,8 @@ alphabeticTabs
 	"Answer a list of buttons which, when hit, will trigger the choice of a morphic category"
 
 	| buttonList aButton tabLabels |
+
+	self flag: #todo. "includes non-english characters"
 	tabLabels _ (($a to: $z) collect: [:ch | ch asString]) asOrderedCollection.
 
 	buttonList _ tabLabels collect:

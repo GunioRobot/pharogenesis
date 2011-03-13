@@ -1,4 +1,4 @@
 fromString: aString
-	"Answer an instance of created from a string with format dd.mm.yyyy."
+	"Answer an instance of created from a string with format mm.dd.yyyy."
 
 	^ self readFrom: aString readStream.

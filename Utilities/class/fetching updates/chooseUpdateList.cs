@@ -4,9 +4,10 @@ chooseUpdateList
 	| index him |
 	((UpdateUrlLists size > 1) and: [Preferences promptForUpdateServer])
 		ifTrue:
-			[index _ (PopUpMenu labelArray: (UpdateUrlLists collect: [:each | each first]) lines: #()) 
-				startUpWithCaption: 'Choose a group of servers
-from which to fetch updates.'.
+			[index _ UIManager default 
+				chooseFrom: (UpdateUrlLists collect: [:each | each first]) 
+				lines: #()
+				title: 'Choose a group of servers\from which to fetch updates.' translated withCRs.
 			index > 0 ifTrue:
 				[him _ UpdateUrlLists at: index.
 				UpdateUrlLists removeAt: index.

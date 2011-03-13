@@ -1,5 +1,5 @@
 isSaving: aBoolean
 
 	isSaving = aBoolean ifTrue: [^self].
-	isSaving _ aBoolean.
+	isSaving := aBoolean.
 	self changed: #isSaving

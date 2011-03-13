@@ -1,3 +1,0 @@
-RPLEndOfBanList
-	""
-	^368

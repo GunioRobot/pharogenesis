@@ -1,2 +1,3 @@
 decodeFont: fontString
-	^StrikeFont decodedFromRemoteCanvas: fontString
+
+	^StrikeFont decodedFromRemoteCanvas: fontString.

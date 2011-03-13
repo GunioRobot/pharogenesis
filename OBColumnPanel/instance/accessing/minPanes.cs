@@ -1,0 +1,2 @@
+minPanes
+	^ minPanes

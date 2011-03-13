@@ -1,3 +1,3 @@
 newAudioMessages
 
-	^NewAudioMessages ifNil: [NewAudioMessages _ SharedQueue new].
+	^NewAudioMessages ifNil: [NewAudioMessages := SharedQueue new].

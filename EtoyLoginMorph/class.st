@@ -1,0 +1,1 @@
+EtoyLoginMorph class instanceVariableNames: ''

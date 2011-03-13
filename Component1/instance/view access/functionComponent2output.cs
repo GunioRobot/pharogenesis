@@ -1,2 +1,0 @@
-functionComponent2output
-	^functionComponent2output

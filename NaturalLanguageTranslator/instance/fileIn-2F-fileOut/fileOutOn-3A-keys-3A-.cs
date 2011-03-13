@@ -1,6 +1,5 @@
 fileOutOn: aStream keys: keys 
 	"self current fileOutOn: Transcript. Transcript endEntry"
-	self fileOutHeaderOn: aStream.
 	(keys
 		ifNil: [generics keys asSortedCollection])
 		do: [:key | self

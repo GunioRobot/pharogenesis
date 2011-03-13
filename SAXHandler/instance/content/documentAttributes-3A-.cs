@@ -1,1 +1,0 @@
-documentAttributes: attributeList

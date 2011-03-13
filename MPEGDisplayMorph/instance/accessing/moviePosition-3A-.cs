@@ -5,9 +5,9 @@ moviePosition: fraction
 	self mpegFileIsOpen ifFalse: [^ self].
 	self stopPlaying.
 	mpegFile hasVideo ifTrue: [
-		frameCount _ mpegFile videoFrames: 0.
-		frameIndex _ (frameCount * fraction) truncated - 1.
-		frameIndex _ (frameIndex max: 0) min: (frameCount - 3).
+		frameCount := mpegFile videoFrames: 0.
+		frameIndex := (frameCount * fraction) truncated - 1.
+		frameIndex := (frameIndex max: 0) min: (frameCount - 3).
 		mpegFile videoSetFrame: frameIndex stream: 0.
 		^ self nextFrame].
 

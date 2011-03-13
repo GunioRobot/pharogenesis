@@ -1,6 +1,6 @@
 Object
 	subclass: #KeyboardBuffer
-	instanceVariableNames: 'event eventUsed '
+	instanceVariableNames: 'event eventUsed'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Text Support'

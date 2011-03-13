@@ -31,5 +31,6 @@ reorganizeForNewFontArray: array name: styleName
 	].
 
 	style newFontArray: regular.
+	self register: regular at: styleName.
 	self recreateCache.	
 	^ style.

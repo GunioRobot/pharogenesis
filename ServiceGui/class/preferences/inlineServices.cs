@@ -1,0 +1,2 @@
+inlineServices
+	^ ServicePreferences valueOfPreference: #inlineServicesInMenu 

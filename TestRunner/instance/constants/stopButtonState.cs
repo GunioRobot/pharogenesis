@@ -1,2 +1,0 @@
-stopButtonState
-	^self runButtonState not

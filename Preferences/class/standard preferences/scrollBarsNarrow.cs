@@ -1,2 +1,0 @@
-scrollBarsNarrow
-	^ self valueOfFlag: #scrollBarsNarrow

@@ -1,6 +1,6 @@
 EToyChatOrBadgeMorph
 	subclass: #EToyChatMorph
-	instanceVariableNames: 'listener receivingPane myForm recipientForm acceptOnCR sendingPane '
+	instanceVariableNames: 'listener receivingPane myForm recipientForm acceptOnCR sendingPane'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Experimental'
+	category: 'Nebraska-Morphic-Collaborative'

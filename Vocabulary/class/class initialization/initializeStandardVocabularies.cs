@@ -3,8 +3,7 @@ initializeStandardVocabularies
 
 	AllStandardVocabularies _ nil.
 
-	
-self addStandardVocabulary: EToyVocabulary new.
+	self addStandardVocabulary: EToyVocabulary new.
 	self addStandardVocabulary: EToyVectorVocabulary new.
 
 	self addStandardVocabulary: self newPublicVocabulary.
@@ -39,5 +38,9 @@ self addStandardVocabulary: EToyVocabulary new.
 	self numberVocabulary.  		"creates and adds it"
 	self wonderlandVocabulary.  	"creates and adds it"
 	self vocabularyForClass: Time.   "creates and adds it"
+
+	self addStandardVocabulary: (KedamaPatchType new vocabularyName: #Patch; yourself).
+	self addStandardVocabulary: (SymbolListType new symbols: #(wrap stick bouncing); vocabularyName: #EdgeMode; yourself).
+	self addStandardVocabulary: (SymbolListType new symbols: #(logScale linear color); vocabularyName: #PatchDisplayMode; yourself).
 
 	"Vocabulary initialize"

@@ -1,0 +1,2 @@
+openChangeSorter
+	ChangeSorter new morphicWindow openInWorld

@@ -1,7 +1,7 @@
 decompressFills
 	| fills n |
-	n _ Integer readFrom: stream.
-	fills _ Array new: n.
+	n := Integer readFrom: stream.
+	fills := Array new: n.
 	1 to: n do:[:i|
 		fills at: i put: self decompressFillStyle.
 	].

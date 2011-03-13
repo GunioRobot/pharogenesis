@@ -18,8 +18,8 @@ start2
 			}.
 		}.
 		self inAColumn: {
-			theConnectButton _ self connectButton.
+			theConnectButton := self connectButton.
 			self playButton.
-			theTalkButton _ self talkButton.
+			theTalkButton := self talkButton.
 		}.
 	}.

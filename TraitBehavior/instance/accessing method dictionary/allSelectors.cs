@@ -1,0 +1,2 @@
+allSelectors
+	^ self selectors

@@ -1,1 +1,0 @@
-TelnetMachine class instanceVariableNames: ''

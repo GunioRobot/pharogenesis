@@ -1,0 +1,1 @@
+MCPackageTest class instanceVariableNames: ''

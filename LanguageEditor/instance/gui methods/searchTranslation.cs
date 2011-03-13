@@ -1,6 +1,6 @@
 searchTranslation
 	| search |
-	search := FillInTheBlank request: 'search for' translated initialAnswer: ''.
+	search := UIManager default request: 'search for' translated initialAnswer: ''.
 	(search isNil
 			or: [search isEmpty])
 		ifTrue: [""

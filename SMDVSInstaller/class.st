@@ -1,0 +1,1 @@
+SMDVSInstaller class instanceVariableNames: ''

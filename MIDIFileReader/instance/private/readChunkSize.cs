@@ -3,6 +3,6 @@ readChunkSize
 	"Assume: Stream has at least four bytes left."
 
 	| n |
-	n _ 0.
-	1 to: 4 do: [:ignore | n _ (n bitShift: 8) + stream next].
+	n := 0.
+	1 to: 4 do: [:ignore | n := (n bitShift: 8) + stream next].
 	^ n

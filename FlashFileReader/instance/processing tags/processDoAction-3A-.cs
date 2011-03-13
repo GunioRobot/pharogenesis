@@ -1,5 +1,5 @@
 processDoAction: data
 	| actions |
-	actions _ self processActionRecordsFrom: data.
+	actions := self processActionRecordsFrom: data.
 	self recordFrameActions: actions.
 	^true

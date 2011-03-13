@@ -1,9 +1,9 @@
 showMethodsWithInitials: initials
 	"Make the current query be for methods stamped with the given initials"
 
-	currentQuery _ #methodsWithInitials.
-	currentQueryParameter _ initials.
+	currentQuery := #methodsWithInitials.
+	currentQueryParameter := initials.
 	self showQueryResultsCategory.
-	autoSelectString _ nil.
+	autoSelectString := nil.
 	self changed: #messageList.
 	self adjustWindowTitle

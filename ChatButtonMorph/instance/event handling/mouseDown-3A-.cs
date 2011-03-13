@@ -1,6 +1,6 @@
 mouseDown: evt
 
-	oldColor _ self fillStyle.
+	oldColor := self fillStyle.
 	self label: labelDown.
 	self doButtonDownAction.
 

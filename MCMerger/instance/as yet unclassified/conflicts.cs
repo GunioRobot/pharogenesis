@@ -1,2 +1,2 @@
 conflicts
-	^ conflicts ifNil: [conflicts _ OrderedCollection new]
+	^ conflicts ifNil: [conflicts := OrderedCollection new]

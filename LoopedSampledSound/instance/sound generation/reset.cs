@@ -1,5 +1,5 @@
 reset
 
 	super reset.
-	count _ initialCount.
-	scaledIndex _ firstSample * LoopIndexScaleFactor.
+	count := initialCount.
+	scaledIndex := firstSample * LoopIndexScaleFactor.

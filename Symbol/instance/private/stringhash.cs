@@ -1,3 +1,0 @@
-stringhash
-
-	^super hash

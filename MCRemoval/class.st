@@ -1,0 +1,1 @@
+MCRemoval class instanceVariableNames: ''

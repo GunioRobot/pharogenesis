@@ -1,3 +1,3 @@
 binary
 	super binary.
-	lineEndConvention _ nil
+	lineEndConvention := nil

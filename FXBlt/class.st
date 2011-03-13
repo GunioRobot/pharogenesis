@@ -1,1 +1,0 @@
-FXBlt class instanceVariableNames: ''

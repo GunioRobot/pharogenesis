@@ -1,0 +1,2 @@
+basicLocalSelectors: aSetOrNil
+	self subclassResponsibility 

@@ -1,4 +1,4 @@
 initialize
 	super initialize.
-	writeEOCDOffset _ writeCentralDirectoryOffset _ 0.
-	zipFileComment _ ''.
+	writeEOCDOffset := writeCentralDirectoryOffset := 0.
+	zipFileComment := ''.

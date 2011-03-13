@@ -1,6 +1,6 @@
 Object
 	subclass: #DamageRecorder
-	instanceVariableNames: 'invalidRects totalRepaint '
+	instanceVariableNames: 'invalidRects totalRepaint'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Support'

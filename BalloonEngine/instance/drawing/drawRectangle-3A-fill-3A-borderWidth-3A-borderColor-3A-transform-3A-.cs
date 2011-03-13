@@ -3,7 +3,7 @@ drawRectangle: rect fill: fillStyle borderWidth: borderWidth borderColor: border
 	| fills |
 	self edgeTransform: aMatrix.
 	self resetIfNeeded.
-	fills _ self registerFill: fillStyle and: borderColor.
+	fills := self registerFill: fillStyle and: borderColor.
 	self primAddRectFrom: rect origin 
 			to: rect corner
 			fillIndex: (fills at: 1)

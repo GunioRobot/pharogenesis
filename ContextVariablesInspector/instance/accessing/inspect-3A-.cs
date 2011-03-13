@@ -5,6 +5,6 @@ inspect: anObject
 	Because no object's inspectorClass method answers this class, it is OK for this method to
 	override Inspector >> inspect: "
 
-	object _ anObject.
+	object := anObject.
 	self initialize
 	

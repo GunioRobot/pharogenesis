@@ -4,9 +4,9 @@ selectNewMethods
 	| change class |
 	Cursor read showWhile: 
 		[1 to: changeList size do:
-			[:i | change _ changeList at: i.
+			[:i | change := changeList at: i.
 			listSelections at: i put:
 				((change type = #method and:
-					[((class _ change methodClass) isNil) or:
+					[((class := change methodClass) isNil) or:
 						[(class includesSelector: change methodSelector) not]]))]].
 	self changed: #allSelections

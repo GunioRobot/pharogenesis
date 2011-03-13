@@ -1,6 +1,6 @@
 BorderedMorph
 	subclass: #ReferenceMorph
-	instanceVariableNames: 'referent isHighlighted '
+	instanceVariableNames: 'referent isHighlighted'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Palettes'
+	category: 'MorphicExtras-Palettes'

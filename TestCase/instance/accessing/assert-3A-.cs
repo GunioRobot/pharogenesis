@@ -1,4 +1,4 @@
-assert: aBoolean
+assert: aBooleanOrBlock
 
-	aBoolean ifFalse: [self signalFailure: 'Assertion failed']
+	aBooleanOrBlock value ifFalse: [self signalFailure: 'Assertion failed']
 			

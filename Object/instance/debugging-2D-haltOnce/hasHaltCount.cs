@@ -1,0 +1,3 @@
+hasHaltCount
+	^Smalltalk
+				includesKey: #HaltCount

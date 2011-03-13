@@ -1,0 +1,1 @@
+MCClassVariableDefinition class instanceVariableNames: ''

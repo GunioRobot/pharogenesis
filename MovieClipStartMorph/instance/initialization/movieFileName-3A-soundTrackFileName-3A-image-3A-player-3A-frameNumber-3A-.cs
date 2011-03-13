@@ -1,8 +1,8 @@
 movieFileName: movieFileName soundTrackFileName: soundFileName
 			image: aForm player: aMoviePlayer frameNumber: n
-	movieClipFileName _ movieFileName.
-	soundTrackFileName _ soundFileName.
+	movieClipFileName := movieFileName.
+	soundTrackFileName := soundFileName.
 	self image: aForm frameNumber: n.
-	moviePlayerMorph _ aMoviePlayer.
-	soundTrackPlayerReady _ moviePlayerMorph scorePlayer copy.
-	scoreEvent _ AmbientEvent new morph: self.
+	moviePlayerMorph := aMoviePlayer.
+	soundTrackPlayerReady := moviePlayerMorph scorePlayer copy.
+	scoreEvent := AmbientEvent new morph: self.

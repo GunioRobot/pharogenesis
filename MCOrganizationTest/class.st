@@ -1,0 +1,1 @@
+MCOrganizationTest class instanceVariableNames: ''

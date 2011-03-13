@@ -1,0 +1,2 @@
+unload
+	ToolSet unregister: self.

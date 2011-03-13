@@ -1,0 +1,1 @@
+MCVersionReader class instanceVariableNames: ''

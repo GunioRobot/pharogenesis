@@ -1,7 +1,7 @@
 loadedFrames: aNumber 
 	self isStreaming
 		ifTrue: 
-			[activationKeys _ self collectActivationKeys: aNumber.
+			[activationKeys := self collectActivationKeys: aNumber.
 			aNumber = 1
 				ifTrue: 
 					[activeMorphs addAll: activationKeys first.
@@ -11,4 +11,4 @@ loadedFrames: aNumber
 			Smalltalk isMorphic
 				ifTrue: [World doOneCycle]
 				ifFalse: [Processor yield]].
-	loadedFrames _ aNumber
+	loadedFrames := aNumber

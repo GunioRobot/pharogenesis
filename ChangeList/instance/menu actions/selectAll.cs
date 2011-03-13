@@ -1,4 +1,4 @@
 selectAll
-	listIndex _ 0.
+	listIndex := 0.
 	listSelections atAllPut: true.
 	self changed: #allSelections

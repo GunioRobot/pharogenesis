@@ -1,1 +1,0 @@
-VRMLClassNode class instanceVariableNames: 'nodeSpec'

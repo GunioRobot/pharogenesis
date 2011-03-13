@@ -1,6 +1,6 @@
 Object
 	subclass: #MethodChangeRecord
-	instanceVariableNames: 'changeType currentMethod infoFromRemoval '
+	instanceVariableNames: 'changeType currentMethod infoFromRemoval'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Tools-Changes'
+	category: 'System-Changes'

@@ -11,5 +11,5 @@ browseMethodsWhoseNamesContain: aString
 				[self browseAllImplementorsOfList: aList asSortedCollection title: 'Methods whose names contain ''', aString, '''']]
 
 		ifTrue:
-			[(MessageNames methodBrowserSearchingFor: aString) openInWorld]
+			[ToolSet browseMessageNames: aString]
 	

@@ -3,4 +3,4 @@ MessageNode
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Tile Scriptors'
+	category: 'EToys-Tile Scriptors'

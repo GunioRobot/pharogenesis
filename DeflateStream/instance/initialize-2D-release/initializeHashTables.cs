@@ -1,3 +1,3 @@
 initializeHashTables
-	hashHead _ WordArray new: 1 << HashBits.
-	hashTail _ WordArray new: WindowSize.
+	hashHead := WordArray new: 1 << HashBits.
+	hashTail := WordArray new: WindowSize.

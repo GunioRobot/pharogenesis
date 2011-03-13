@@ -4,4 +4,4 @@ debug: context title: title full: bool
 	| topCtxt |
 	topCtxt _ self isActiveProcess ifTrue: [thisContext] ifFalse: [self suspendedContext].
 	(topCtxt hasContext: context) ifFalse: [^ self error: 'context not in process'].
-	Debugger openOn: self context: context label: title contents: nil fullView: bool.
+	ToolSet debug: self context: context label: title contents: nil fullView: bool.

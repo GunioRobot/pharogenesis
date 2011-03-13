@@ -3,16 +3,16 @@ downSampledLowPassFiltering: doFiltering
 	"Details: The simple low-pass filter in the current implementation could be improved, at some additional cost."
 
 	| n resultBuf j |
-	n _ self monoSampleCount.
-	resultBuf _ SoundBuffer newMonoSampleCount: n // 2.
-	j _ 0.
+	n := self monoSampleCount.
+	resultBuf := SoundBuffer newMonoSampleCount: n // 2.
+	j := 0.
 	doFiltering
 		ifTrue: [
 			1 to: n by: 2 do: [:i |
-				resultBuf at: (j _ j + 1) put:
+				resultBuf at: (j := j + 1) put:
 					(((self at: i) + (self at: i + 1)) bitShift: -1)]]
 		ifFalse: [
 			1 to: n by: 2 do: [:i |
-				resultBuf at: (j _ j + 1) put: (self at: i)]].
+				resultBuf at: (j := j + 1) put: (self at: i)]].
 
 	^ resultBuf

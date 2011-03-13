@@ -1,1 +1,0 @@
-WonderlandReaction class instanceVariableNames: ''

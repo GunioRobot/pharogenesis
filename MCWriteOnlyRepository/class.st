@@ -1,0 +1,1 @@
+MCWriteOnlyRepository class instanceVariableNames: ''

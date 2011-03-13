@@ -1,1 +1,0 @@
-B3DRasterizerPlugin class instanceVariableNames: ''

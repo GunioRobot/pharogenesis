@@ -1,9 +1,9 @@
 openAsMVC
 	"Create a pluggable version of me, answer a window"
 	| window processListView stackListView methodTextView |
-	window _ StandardSystemView new model: self controller: (deferredMessageRecipient _ DeferredActionStandardSystemController new).
+	window := StandardSystemView new model: self controller: (deferredMessageRecipient := DeferredActionStandardSystemController new).
 	window borderWidth: 1.
-	processListView _ PluggableListView
+	processListView := PluggableListView
 				on: self
 				list: #processNameList
 				selected: #processListIndex
@@ -13,7 +13,7 @@ openAsMVC
 	processListView
 		window: (0 @ 0 extent: 300 @ 200).
 	window addSubView: processListView.
-	stackListView _ PluggableListView
+	stackListView := PluggableListView
 				on: self
 				list: #stackNameList
 				selected: #stackListIndex
@@ -23,7 +23,7 @@ openAsMVC
 	stackListView
 		window: (300 @ 0 extent: 300 @ 200).
 	window addSubView: stackListView toRightOf: processListView.
-	methodTextView _ PluggableTextView
+	methodTextView := PluggableTextView
 				on: self
 				text: #selectedMethod
 				accept: nil

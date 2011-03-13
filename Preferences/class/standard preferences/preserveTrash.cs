@@ -1,2 +1,0 @@
-preserveTrash
-	^ self valueOfFlag: #preserveTrash

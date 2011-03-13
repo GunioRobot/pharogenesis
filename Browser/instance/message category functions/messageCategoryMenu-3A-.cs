@@ -1,6 +1,7 @@
 messageCategoryMenu: aMenu
-
-^ aMenu labels:
+	ServiceGui browser: self messageCategoryMenu: aMenu.
+	ServiceGui onlyServices ifTrue: [^aMenu].
+	^ aMenu labels:
 'browse
 printOut
 fileOut
@@ -11,8 +12,8 @@ categorize all uncategorized
 new category...
 rename...
 remove'
-	lines: #(3 8)
-	selections:
+		lines: #(3 8)
+		selections:
 		#(buildMessageCategoryBrowser printOutMessageCategories fileOutMessageCategories
 		editMessageCategories alphabetizeMessageCategories removeEmptyCategories
 		categorizeAllUncategorizedMethods addCategory renameCategory removeMessageCategory)

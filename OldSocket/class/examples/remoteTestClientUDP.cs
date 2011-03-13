@@ -19,7 +19,7 @@ remoteTestClientUDP
 	Transcript
 		show: 'ok';
 		cr.
-	serverName := FillInTheBlank request: 'What is your remote Test Server?'
+	serverName := UIManager default request: 'What is your remote Test Server?'
 				initialAnswer: ''.
 	socket := self newUDP.
 	socket setPeer: (NetNameResolver addressFromString: serverName) port: 54321.

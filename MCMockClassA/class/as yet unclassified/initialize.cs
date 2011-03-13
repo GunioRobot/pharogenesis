@@ -1,2 +1,2 @@
 initialize
-	CVar _ #initialized
+	CVar := #initialized

@@ -1,13 +1,13 @@
 decodeImage: string
 	| bitsStart depth width height bits rs numColors colorArray |
 
-	bitsStart _ string indexOf: $|.
+	bitsStart := string indexOf: $|.
 	bitsStart = 0 ifTrue: [^nil].
 	rs := ReadStream on: string.
 	rs peek == $C ifTrue: [
 		rs next.
-		numColors _ Integer readFromString: (rs upTo: $,).
-		colorArray _ Array new: numColors.
+		numColors := Integer readFromString: (rs upTo: $,).
+		colorArray := Array new: numColors.
 		1 to: numColors do: [ :i |
 			colorArray at: i put: (self decodeColor: (rs next: 12))
 		].
@@ -16,7 +16,7 @@ decodeImage: string
 	width :=  Integer readFromString: (rs upTo: $,).
 	height :=  Integer readFromString: (rs upTo: $|).
 
-	bits _ Bitmap newFromStream: (RWBinaryOrTextStream with: rs upToEnd) binary reset.
+	bits := Bitmap newFromStream: (RWBinaryOrTextStream with: rs upToEnd) binary reset.
 
 	colorArray ifNil: [
 		^Form extent: width@height depth: depth bits: bits

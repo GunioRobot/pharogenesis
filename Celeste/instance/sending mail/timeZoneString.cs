@@ -1,2 +1,0 @@
-timeZoneString
-	^Celeste userTimeZone

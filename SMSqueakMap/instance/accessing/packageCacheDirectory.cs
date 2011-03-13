@@ -3,8 +3,8 @@ packageCacheDirectory
 	Creates it if it is missing."
 
 	| dirName baseDir |
-	dirName _ self packageCacheDirectoryName.
-	baseDir _ self directory.
+	dirName := self packageCacheDirectoryName.
+	baseDir := self directory.
 	(baseDir fileOrDirectoryExists: dirName)
 		ifFalse:[baseDir createDirectory: dirName].
 	^baseDir directoryNamed: dirName

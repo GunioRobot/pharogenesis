@@ -1,0 +1,3 @@
+removeAllFromPatchDisplayList
+
+	costume renderedMorph removeAllFromPatchDisplayList.

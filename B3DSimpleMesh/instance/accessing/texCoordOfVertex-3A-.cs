@@ -1,2 +1,0 @@
-texCoordOfVertex: vtx
-	^vtx texCoord

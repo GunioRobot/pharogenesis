@@ -6,5 +6,6 @@ originalColor: colorOrSymbol
 				ifFalse: [Color lightGreen].
 	originalForm fill: RevertBox fillColor: originalColor.
 	selectedColor := originalColor.
+	self updateAlpha: originalColor alpha.
 	self locationIndicator 
 		center: self topLeft + (self positionOfColor: originalColor)

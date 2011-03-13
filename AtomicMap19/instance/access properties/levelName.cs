@@ -1,2 +1,0 @@
-levelName
-	^ 'Malic Acid' translated

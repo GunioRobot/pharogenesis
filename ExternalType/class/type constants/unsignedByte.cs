@@ -1,2 +1,0 @@
-unsignedByte
-	^AtomicTypes at: 'byte'

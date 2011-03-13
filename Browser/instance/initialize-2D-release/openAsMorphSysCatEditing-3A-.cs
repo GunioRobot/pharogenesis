@@ -2,10 +2,10 @@ openAsMorphSysCatEditing: editString
 	"Create a pluggable version of all the views for a Browser, including views and controllers."
 	| window hSepFrac switchHeight mySingletonList nextOffsets |
 
-	window _ (SystemWindow labelled: 'later') model: self.
-	hSepFrac _ 0.30.
-	switchHeight _ 25.
-	mySingletonList _ PluggableListMorph on: self list: #systemCategorySingleton
+	window := (SystemWindow labelled: 'later') model: self.
+	hSepFrac := 0.30.
+	switchHeight := 25.
+	mySingletonList := PluggableListMorph on: self list: #systemCategorySingleton
 			selected: #indexIsOne changeSelected: #indexIsOne:
 			menu: #systemCatSingletonMenu: keystroke: #systemCatSingletonKey:from:.
  	mySingletonList enableDragNDrop: Preferences browseWithDragNDrop.
@@ -23,7 +23,7 @@ openAsMorphSysCatEditing: editString
 		at: (0@0 corner: 0.3333@hSepFrac)
 		plus: switchHeight.
 
-	nextOffsets _ 0@switchHeight corner: 0@0.
+	nextOffsets := 0@switchHeight corner: 0@0.
 	window 
 		addMorph: self buildMorphicMessageCatList
 		fullFrame: (

@@ -1,2 +1,2 @@
 computeInitialStateFrom: source with: aColorTransform
-	color _ source asColor.
+	color := source asColor.

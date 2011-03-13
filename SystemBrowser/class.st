@@ -1,0 +1,1 @@
+SystemBrowser class instanceVariableNames: ''

@@ -13,19 +13,19 @@ indexToLocFormat	SHORT       Used when processing the Index To Loc Table."
 	entry skip: 4. "Skip magic number"
 	entry skip: 2. "Skip flags"
 
-	units _ entry nextUShort.
+	units := entry nextUShort.
 
 	entry skip: 8. "Skip creation date"
 	entry skip: 8. "Skip modification date"
 
 	"Get min/max values of all glyphs"
-	origin _ entry nextShort @ entry nextShort.
-	corner _ entry nextShort @ entry nextShort.
+	origin := entry nextShort @ entry nextShort.
+	corner := entry nextShort @ entry nextShort.
 
 	entry skip: 2. "Skip mac style"
 	entry skip: 2. "Skip lowest rec PPEM"
 	entry skip: 2. "Skip font direction hint"
-	indexToLocFormat _ entry nextShort.
+	indexToLocFormat := entry nextShort.
 
 	fontDescription setBounds: (origin corner: corner) unitsPerEm: units.
 	^indexToLocFormat

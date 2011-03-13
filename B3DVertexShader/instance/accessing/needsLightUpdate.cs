@@ -1,2 +1,0 @@
-needsLightUpdate
-	^needsLightUpdate

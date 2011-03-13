@@ -1,1 +1,0 @@
-MacRect class instanceVariableNames: ''

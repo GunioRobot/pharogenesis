@@ -3,7 +3,7 @@ addInstanceVariableNamed: nameSymbol type: typeChosen value: aValue
 
 	| initialValue setterSelector |
 	self assureUniClass.
-	self slotInfo at: nameSymbol put: (SlotInformation new initialize type: typeChosen).
+	self slotInfo at: nameSymbol put: (SlotInformation new type: typeChosen).
 	initialValue _ self initialValueForSlotOfType: typeChosen.
 	self addInstanceVarNamed: nameSymbol withValue: aValue.
 	self class compileAccessorsFor: nameSymbol.

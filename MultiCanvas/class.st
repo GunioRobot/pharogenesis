@@ -1,1 +1,0 @@
-MultiCanvas class instanceVariableNames: ''

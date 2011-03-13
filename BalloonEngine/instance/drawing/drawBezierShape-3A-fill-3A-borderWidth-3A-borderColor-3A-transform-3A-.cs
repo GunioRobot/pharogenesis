@@ -2,7 +2,7 @@ drawBezierShape: points fill: fillStyle borderWidth: borderWidth borderColor: bo
 	| fills |
 	self edgeTransform: aTransform.
 	self resetIfNeeded.
-	fills _ self registerFill: fillStyle and: borderFill.
+	fills := self registerFill: fillStyle and: borderFill.
 	self primAddBezierShape: points
 		segments: (points size) // 3
 		fill: (fills at: 1)

@@ -1,6 +1,6 @@
 BookMorph
 	subclass: #StoryboardBookMorph
-	instanceVariableNames: 'alansSliders panAndTiltFactor zoomFactor zoomController '
+	instanceVariableNames: 'alansSliders panAndTiltFactor zoomFactor zoomController'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Books'
+	category: 'MorphicExtras-Books'

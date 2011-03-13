@@ -6,7 +6,7 @@ blockNodeCollect: aNode arguments: arguments statements: statements
 	arguments notEmpty 
 		ifTrue: 
 			[row := column addRow: #blockarg1 on: BlockArgsNode new.
-			row addNoiseString: 'collect using' emphasis: 1.
+			row addNoiseString: 'collect using' emphasis: TextEmphasis bold emphasisCode.
 			r3 := row addRow: #blockarg1b on: nil.	"aNode"
 			r3 setConditionalPartStyle.
 			arguments do: 
@@ -17,7 +17,7 @@ blockNodeCollect: aNode arguments: arguments statements: statements
 						on: arg]].
 	r2 := column addRow: #block on: aNode.
 	r2 setProperty: #ignoreNodeWhenPrinting toValue: true.
-	r2 addNoiseString: self noiseBeforeBlockArg emphasis: 1.
+	r2 addNoiseString: self noiseBeforeBlockArg emphasis: TextEmphasis bold emphasisCode.
 	c2 := r2 addColumn: #block on: aNode.
 	c2 setProperty: #ignoreNodeWhenPrinting toValue: true.
 	statements do: 

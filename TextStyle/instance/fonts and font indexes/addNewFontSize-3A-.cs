@@ -1,6 +1,6 @@
 addNewFontSize: pointSize
 	"Add a font in specified size to the array of fonts."
-	| f d newArray t isSet |
+	| f d newArray t isSet fallbackStyle |
 	fontArray first emphasis ~= 0 ifTrue: [
 		t _ TextConstants at: self fontArray first familyName asSymbol.
 		t fonts first emphasis = 0 ifTrue: [
@@ -48,9 +48,16 @@ addNewFontSize: pointSize
 			].
 		].
 	].
+	isSet ifFalse: [
+		fallbackStyle _ TextStyle named: (fontArray first fallbackFont textStyleName).
+	].
 	newArray _ ((fontArray copyWith: f) asSortedCollection: [:a :b | a pointSize <= b pointSize]) asArray.
 	self newFontArray: newArray.
 	isSet ifTrue: [
 		TTCFontSet register: newArray at: newArray first familyName asSymbol.
+	].
+	isSet ifFalse: [
+		f setupDefaultFallbackFontTo: fallbackStyle.
+		f derivativeFonts do: [:g | g setupDefaultFallbackFontTo: fallbackStyle].
 	].
 	^ self fontOfPointSize: pointSize

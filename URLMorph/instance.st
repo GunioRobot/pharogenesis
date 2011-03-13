@@ -1,6 +1,6 @@
 BasicButton
 	subclass: #URLMorph
-	instanceVariableNames: 'url page isBookmark book '
+	instanceVariableNames: 'url page isBookmark book'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Network-SqueakPage'
+	category: 'MorphicExtras-SqueakPage'

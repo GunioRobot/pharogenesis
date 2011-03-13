@@ -1,0 +1,1 @@
+OBColumnPanel class instanceVariableNames: ''

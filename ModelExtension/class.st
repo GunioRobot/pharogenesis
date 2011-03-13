@@ -1,0 +1,1 @@
+ModelExtension class instanceVariableNames: 'current'

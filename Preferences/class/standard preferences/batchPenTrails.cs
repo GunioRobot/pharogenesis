@@ -1,2 +1,0 @@
-batchPenTrails
-	^ self valueOfFlag: #batchPenTrails

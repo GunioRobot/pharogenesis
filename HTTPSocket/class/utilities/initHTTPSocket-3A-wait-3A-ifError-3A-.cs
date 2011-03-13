@@ -4,19 +4,19 @@ initHTTPSocket: httpUrl wait: timeout ifError: aBlock
 	| serverName port serverAddr s |
 	Socket initializeNetwork.
 
-	serverName _ httpUrl authority.
-	port _ httpUrl port ifNil: [self defaultPort].
+	serverName := httpUrl authority.
+	port := httpUrl port ifNil: [self defaultPort].
 
 	(self shouldUseProxy: serverName) ifTrue: [ 
-		serverName _ HTTPProxyServer.
-		port _ HTTPProxyPort].
+		serverName := self httpProxyServer.
+		port := self httpProxyPort].
 
   	"make the request"	
-	serverAddr _ NetNameResolver addressForName: serverName timeout: 20.
+	serverAddr := NetNameResolver addressForName: serverName timeout: 20.
 	serverAddr ifNil: [
 		aBlock value: 'Error: Could not resolve the server named: ', serverName].
 
-	s _ HTTPSocket new.
+	s := HTTPSocket new.
 	s connectTo: serverAddr port: port.
 	(s waitForConnectionUntil: timeout) ifFalse: [
 		Socket deadServer: httpUrl authority.

@@ -1,6 +1,6 @@
 TileLikeMorph
 	subclass: #CompoundTileMorph
-	instanceVariableNames: 'type testPart yesPart noPart '
+	instanceVariableNames: 'type testPart yesPart noPart'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Scripting Tiles'
+	category: 'EToys-Scripting Tiles'

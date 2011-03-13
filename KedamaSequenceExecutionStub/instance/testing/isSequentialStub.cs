@@ -1,0 +1,3 @@
+isSequentialStub
+
+	^ true.

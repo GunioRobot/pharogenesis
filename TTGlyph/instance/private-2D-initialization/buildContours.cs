@@ -4,10 +4,10 @@ buildContours
 	form each contour into an absolute value and then
 	compressing the contours into PointArrays."
 	| tx ty points |
-	tx _ ty _ 0.
-	contours _ contours collect:[:contour|
-		points _ contour points.
+	tx := ty := 0.
+	contours := contours collect:[:contour|
+		points := contour points.
 		points do:[:pt|
-			pt x: (tx _ tx + pt x).
-			pt y: (ty _ ty + pt y)].
+			pt x: (tx := tx + pt x).
+			pt y: (ty := ty + pt y)].
 		contour asCompressedPoints].

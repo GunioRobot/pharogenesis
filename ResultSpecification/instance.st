@@ -1,6 +1,6 @@
-ValueSpecification
+ObjectWithDocumentation
 	subclass: #ResultSpecification
-	instanceVariableNames: 'companionSetterSelector refetchFrequency '
+	instanceVariableNames: 'type companionSetterSelector refetchFrequency'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Protocols'
+	category: 'Protocols-Kernel'

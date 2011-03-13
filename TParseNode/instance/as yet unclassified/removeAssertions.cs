@@ -1,2 +1,0 @@
-removeAssertions
-	"default: do nothing"

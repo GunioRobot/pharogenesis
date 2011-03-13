@@ -1,3 +1,0 @@
-isLeaf
-
-	^true

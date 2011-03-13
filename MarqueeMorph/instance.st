@@ -1,6 +1,6 @@
 BorderedMorph
 	subclass: #MarqueeMorph
-	instanceVariableNames: 'colors count '
+	instanceVariableNames: 'colors count'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Widgets'
+	category: 'MorphicExtras-AdditionalWidgets'

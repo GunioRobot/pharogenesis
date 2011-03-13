@@ -1,3 +1,3 @@
 computeBounds
-	bounds _ self transform localBoundsToGlobal: (shape bounds).
-	fullBounds _ nil.
+	bounds := self transform localBoundsToGlobal: (shape bounds).
+	fullBounds := nil.

@@ -1,0 +1,2 @@
+dialogBorderWidth
+	^ 4

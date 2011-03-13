@@ -1,2 +1,2 @@
 accent: aString
-	accent _ aString
+	accent := aString

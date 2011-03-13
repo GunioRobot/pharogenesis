@@ -1,2 +1,2 @@
 addGlyph: aGlyph transformation: aMatrix
-	glyphs _ glyphs copyWith: (aMatrix -> aGlyph)
+	glyphs := glyphs copyWith: (aMatrix -> aGlyph)

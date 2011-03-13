@@ -9,7 +9,7 @@ browseAllStoresInto: instVarName from: aClass
 	Cursor wait showWhile: [
 		aClass withAllSubAndSuperclassesDo: [:class | 
 			(class whichSelectorsStoreInto: instVarName) do: [:sel |
-				sel == #DoIt ifFalse: [
+				sel isDoIt ifFalse: [
 					coll add: (
 						MethodReference new
 							setStandardClass: class 

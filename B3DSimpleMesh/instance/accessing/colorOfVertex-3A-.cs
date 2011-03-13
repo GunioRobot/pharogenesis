@@ -1,2 +1,0 @@
-colorOfVertex: vtx
-	^vtx color

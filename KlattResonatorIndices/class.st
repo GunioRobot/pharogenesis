@@ -1,0 +1,1 @@
+KlattResonatorIndices class instanceVariableNames: ''

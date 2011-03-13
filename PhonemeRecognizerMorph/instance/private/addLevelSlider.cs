@@ -2,13 +2,13 @@ addLevelSlider
 	"Create and add a slider to set the sound input level. This level is used both when recognizing and adding phonemes."
 
 	| levelSlider r |
-	levelSlider _ SimpleSliderMorph new
+	levelSlider := SimpleSliderMorph new
 		color: color;
 		extent: 100@2;
 		target: soundInput;
 		actionSelector: #recordLevel:;
 		adjustToValue: soundInput recordLevel.
-	r _ AlignmentMorph newRow
+	r := AlignmentMorph newRow
 		color: color;
 		layoutInset: 0;
 		wrapCentering: #center; cellPositioning: #leftCenter;

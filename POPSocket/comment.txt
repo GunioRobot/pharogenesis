@@ -1,1 +1,0 @@
-Post Office Protocol.  This is used to download email over the network, usually from an intermittent connection.  To see how to use it, see POPSocket classe>>example.

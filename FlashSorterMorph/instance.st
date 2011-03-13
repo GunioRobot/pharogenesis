@@ -1,6 +1,6 @@
 TransformMorph
 	subclass: #FlashSorterMorph
-	instanceVariableNames: 'player '
+	instanceVariableNames: 'player'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon-MMFlash Morphs'
+	category: 'Flash-Morphs'

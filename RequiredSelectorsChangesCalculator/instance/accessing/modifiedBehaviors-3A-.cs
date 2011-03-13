@@ -1,0 +1,2 @@
+modifiedBehaviors: anObject 
+	modifiedBehaviors := anObject

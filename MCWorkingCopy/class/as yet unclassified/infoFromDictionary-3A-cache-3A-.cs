@@ -1,6 +1,6 @@
 infoFromDictionary: aDictionary cache: cache
 	| id |
-	id _ aDictionary at: #id.
+	id := aDictionary at: #id.
 	^ cache at: id ifAbsentPut:
 		[MCVersionInfo
 			name: (aDictionary at: #name)

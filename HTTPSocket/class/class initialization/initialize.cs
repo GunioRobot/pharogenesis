@@ -1,10 +1,10 @@
 initialize
 	"HTTPSocket initialize"
 
-	ParamDelimiters _ ' ', CrLf.
-	HTTPPort _ 80.
-	HTTPProxyServer _ nil.
-	HTTPBlabEmail _ ''.  "	'From: somebody@no.where', CrLf	"
-	HTTPProxyCredentials _ ''.
+	ParamDelimiters := ' ', CrLf.
+	HTTPPort := 80.
+	self httpProxyServer: nil.
+	HTTPBlabEmail := ''.  "	'From: somebody@no.where', CrLf	"
+	HTTPProxyCredentials := ''.
 
 	ExternalSettings registerClient: self

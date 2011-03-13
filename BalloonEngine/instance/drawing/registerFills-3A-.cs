@@ -5,14 +5,14 @@ registerFills: fills
 		fills anySatisfy: [:any| any notNil and:[any isTranslucent]]])
 			ifTrue:[	self flush.
 					self reset.
-					postFlushNeeded _ true].
-	fillIndexList _ WordArray new: fills size.
-	index _ 1.
+					postFlushNeeded := true].
+	fillIndexList := WordArray new: fills size.
+	index := 1.
 	[index <= fills size] whileTrue:[
-		fillIndex _ self registerFill: (fills at: index).
+		fillIndex := self registerFill: (fills at: index).
 		fillIndex == nil 
-			ifTrue:[index _ 1] "Need to start over"
+			ifTrue:[index := 1] "Need to start over"
 			ifFalse:[fillIndexList at: index put: fillIndex.
-					index _ index+1]
+					index := index+1]
 	].
 	^fillIndexList

@@ -3,8 +3,8 @@ versionFrom: secsSince1901
 	"Return changeRecord of the version in effect at that time.  Accept in the VersionsBrowser does not use this code."
 
 	changeList do: [:cngRec |
-		(strings _ cngRec stamp findTokens: ' ') size > 2 ifTrue: [
-				vTime _ strings second asDate asSeconds + 
+		(strings := cngRec stamp findTokens: ' ') size > 2 ifTrue: [
+				vTime := strings second asDate asSeconds + 
 							strings third asTime asSeconds.
 				vTime <= secsSince1901 ifTrue: ["this one"
 					^ cngRec == changeList first ifTrue: [nil] ifFalse: [cngRec]]]].

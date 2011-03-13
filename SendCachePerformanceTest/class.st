@@ -1,0 +1,1 @@
+SendCachePerformanceTest class instanceVariableNames: ''

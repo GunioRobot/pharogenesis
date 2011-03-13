@@ -1,6 +1,6 @@
 SimpleButtonMorph
 	subclass: #SimpleButtonDelayedMenuMorph
-	instanceVariableNames: 'didMenu mouseDownTime '
+	instanceVariableNames: 'didMenu'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Widgets'

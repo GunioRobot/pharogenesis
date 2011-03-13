@@ -1,0 +1,1 @@
+MCSmtpRepository class instanceVariableNames: ''

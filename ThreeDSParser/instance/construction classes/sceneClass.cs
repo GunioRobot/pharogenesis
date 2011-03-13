@@ -1,2 +1,0 @@
-sceneClass
-	^self specAt: #scene

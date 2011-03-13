@@ -25,11 +25,9 @@ methodsWithDisabledCall
 							[src := class sourceCodeAt: sel]
 								valueAt: self higherPriority.
 							(src
-									findString: string
-									startingAt: 1
-									caseSensitive: true)
-									> 0
-								ifTrue: [sel == #DoIt
-										ifFalse: [list
-												add: (MethodReference new setStandardClass: class methodSymbol: sel)]]]]].
+								findString: string
+								startingAt: 1
+								caseSensitive: true) > 0
+								ifTrue: [sel isDoIt ifFalse: [
+											list add: (MethodReference new setStandardClass: class methodSymbol: sel)]]]]].
 	^ list asSortedCollection

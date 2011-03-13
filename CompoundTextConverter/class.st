@@ -1,0 +1,1 @@
+CompoundTextConverter class instanceVariableNames: ''

@@ -1,2 +1,0 @@
-unlock
-	lockFlag _ false.

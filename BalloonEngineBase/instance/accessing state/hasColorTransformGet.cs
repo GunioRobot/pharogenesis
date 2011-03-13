@@ -1,2 +1,0 @@
-hasColorTransformGet
-	^workBuffer at: GWHasColorTransform

@@ -1,2 +1,0 @@
-helpMsgsAdditionmorphicokToReinitializeFlaps
-	^ #((okToReinitializeFlaps 'if true, then then code in updates will feel free to reinitialize the global flaps; if false, flaps will never be reinitialized by updates -- thus, set it to false if you have a serious investment in the content of the global flaps in your configuration, strong enough that you don''t want your flaps modernized when advances would otherwise indicate a need to' ) )

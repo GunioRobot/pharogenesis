@@ -1,2 +1,0 @@
-bool
-	^AtomicTypes at: 'bool'

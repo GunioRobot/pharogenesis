@@ -3,5 +3,5 @@ newChangeSet: aName
 	ensure a unique change set name."
 
 	| newName |
-	newName _ aName , FileDirectory dot , Utilities authorInitials.
+	newName := aName , FileDirectory dot , Utilities authorInitials.
 	^ self basicNewChangeSet: newName

@@ -5,11 +5,11 @@ videoReadFrameInto: aForm stream: aStream
 	((aForm depth = 16) | (aForm depth = 32)) ifFalse: [self error: 'must use 16- or 32-bit Form'].
 	aForm depth = 16
 		ifTrue: [
-			colorModel _ self endianness = #big ifTrue: [14] ifFalse: [16].
-			bytesPerRow _ 2 * (aForm width roundUpTo: 2)]
+			colorModel := self endianness = #big ifTrue: [14] ifFalse: [16].
+			bytesPerRow := 2 * (aForm width roundUpTo: 2)]
 		ifFalse: [
-			colorModel _ self endianness = #big ifTrue: [13] ifFalse: [1].
-			bytesPerRow _ 4 * aForm width].
+			colorModel := self endianness = #big ifTrue: [13] ifFalse: [1].
+			bytesPerRow := 4 * aForm width].
  	^ self
 		videoReadNextFrameInto: aForm bits
 		x: 0 y: 0

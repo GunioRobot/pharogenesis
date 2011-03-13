@@ -1,3 +1,3 @@
 ipAddress: aString
 
-	ipAddress _ aString
+	ipAddress := aString

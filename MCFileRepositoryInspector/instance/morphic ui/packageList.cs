@@ -1,15 +1,16 @@
 packageList
 	| result |
-	result _ versions
+	result := versions
 		inject: Set new
 		into: [ :set :each | set add: each first; yourself ].
 
 	"sort loaded packages first, then alphabetically"
-	^result asSortedCollection: [:a :b |
+	result := result asSortedCollection: [:a :b |
 		| loadedA loadedB |
-		loadedA _ loaded anySatisfy: [:each | (each copyUpToLast: $-) = a].
-		loadedB _ loaded anySatisfy: [:each | (each copyUpToLast: $-) = b].
+		loadedA := loaded anySatisfy: [:each | (each copyUpToLast: $-) = a].
+		loadedB := loaded anySatisfy: [:each | (each copyUpToLast: $-) = b].
 		loadedA = loadedB 
 			ifTrue: [a < b]
-			ifFalse: [loadedA]]
+			ifFalse: [loadedA]].
 
+	^result collect: [:each | self packageHighlight: each]

@@ -1,4 +1,0 @@
-beNotDigit
-	self
-		beDigit;
-		negate

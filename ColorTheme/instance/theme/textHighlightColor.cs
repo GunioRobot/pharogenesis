@@ -1,0 +1,2 @@
+textHighlightColor
+	^ self subclassResponsibility

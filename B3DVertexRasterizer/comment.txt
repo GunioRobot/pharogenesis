@@ -1,5 +1,0 @@
-I am the superclass for all rasterizers in the Balloon 3D engine. Rasterizers perform the final pixel generation of the primitives and are the most time-critical part of the engine. Rasterizers keep a viewport, defining the destination rectangle and a dirtyRect, defining the actual affected 2D region of the rasterization process.
-
-Instance variables:
-	viewport	<B3DViewport>	the destination rectangle
-	dirtyRect	<Rectangle>		the affected region of all rasterization operations performed

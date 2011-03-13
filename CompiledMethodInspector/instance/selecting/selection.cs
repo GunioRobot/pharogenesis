@@ -7,5 +7,5 @@ selection
 	selectionIndex = 3 ifTrue: [^ object headerDescription].
 	selectionIndex <= (object numLiterals + 3) 
 		ifTrue: [ ^ object objectAt: selectionIndex - 2 ].
-	bytecodeIndex _ selectionIndex - object numLiterals - 3.
+	bytecodeIndex := selectionIndex - object numLiterals - 3.
 	^ object at: object initialPC + bytecodeIndex - 1

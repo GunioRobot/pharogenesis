@@ -1,2 +1,2 @@
 via2: aPoint
-	via2 _ aPoint
+	via2 := aPoint

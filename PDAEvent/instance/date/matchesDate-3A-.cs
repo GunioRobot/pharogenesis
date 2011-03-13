@@ -1,3 +1,0 @@
-matchesDate: aDate
-
-	^ date = aDate

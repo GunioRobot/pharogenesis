@@ -9,4 +9,4 @@ readPhonemes
 	s := FileStream readOnlyFileNamed: fname.
 	newPhonemes := s fileInObjectAndCode.
 	s close.
-	phonemeRecords := newPhonemes
+	recognizer phonemes: newPhonemes

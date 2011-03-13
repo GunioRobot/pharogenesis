@@ -24,7 +24,7 @@ initialize
 "converting" as: asOrderedCollection asString 
 "casing" caseOf: caseOf:otherwise: 
 "binding" bindingOf: 
-"macpal" contentsChanged currentEvent currentHand currentWorld flash ifKindOf:thenDo: instanceVariableValues scriptPerformer 
+"macpal" contentsChanged currentEvent currentHand currentWorld flash instanceVariableValues scriptPerformer 
 "flagging" flag: 
 "translation support" "objects from disk" "finalization" ) do: [:sel | Approved add: sel].
 	#(at:add: at:modify: at:put: basicAt:put: "NOT instVar:at:"
@@ -50,7 +50,7 @@ initialize
 "accessing method dictionary" allSelectors changeRecordsAt: compiledMethodAt: compiledMethodAt:ifAbsent: firstCommentAt: lookupSelector: selectors selectorsDo: selectorsWithArgs: "slow but useful ->" sourceCodeAt: sourceCodeAt:ifAbsent: sourceMethodAt: sourceMethodAt:ifAbsent:
 "accessing instances and variables" allClassVarNames allInstVarNames allSharedPools classVarNames instVarNames instanceCount sharedPools someInstance subclassInstVarNames
 "testing class hierarchy" inheritsFrom: kindOfSubclass
-"testing method dictionary" canUnderstand: classThatUnderstands: hasMethods includesSelector: scopeHas:ifTrue: whichClassIncludesSelector: whichSelectorsAccess: whichSelectorsReferTo: whichSelectorsReferTo:special:byte: whichSelectorsStoreInto:
+"testing method dictionary" canUnderstand: classThatUnderstands: hasMethods includesSelector: whichClassIncludesSelector: whichSelectorsAccess: whichSelectorsReferTo: whichSelectorsReferTo:special:byte: whichSelectorsStoreInto:
 "enumerating"
 "user interface"
 "private" indexIfCompact) do: [:sel | Approved add: sel].
@@ -88,7 +88,7 @@ initialize
 
 "Context, BlockContext"
 	#(receiver client method receiver tempAt: 
-"debugger access" mclass pc selector sender shortStack sourceCode tempNames tempsAndValues
+"debugger access" pc selector sender shortStack sourceCode tempNames tempsAndValues
 "controlling"  "printing" "system simulation" 
 "initialize-release" 
 "accessing" hasMethodReturn home numArgs
@@ -114,8 +114,8 @@ initialize
 "comparing"
 "inquiries" dayOfMonth daysInMonth daysInYear daysLeftInYear firstDayOfMonth previous:
 "converting" asSeconds
-"printing" mmddyy mmddyyyy printFormat: 
-"private" firstDayOfMonthIndex: weekdayIndex 
+"printing"  mmddyyyy printFormat: 
+"private" weekdayIndex 
 	"in class, instance creation" fromSeconds: now 
 	"in class, general inquiries" dateAndTimeFromSeconds: dateAndTimeNow millisecondClockValue millisecondsToRun: totalSeconds
 "accessing" hours minutes seconds
@@ -123,7 +123,7 @@ initialize
 "comparing"
 "printing" intervalString print24 
 "converting") do: [:sel | Approved add: sel].
-	#("private" hours: hours:minutes:seconds: day:year: 
+	#("private" 
 		 ) do: [:sel | AddAndRemove add: sel].
 
 "Number"

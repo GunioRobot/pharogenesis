@@ -1,2 +1,2 @@
 offset: newOffset
-	offset _ newOffset
+	offset := newOffset

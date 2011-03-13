@@ -1,7 +1,7 @@
 addTranslation
 	"translate a phrase"
 	| phrase |
-	phrase := FillInTheBlank
+	phrase := UIManager default
 				request: 'enter the original:'
 				initialAnswer: ''.
 

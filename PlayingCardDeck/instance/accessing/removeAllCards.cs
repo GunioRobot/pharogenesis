@@ -1,2 +1,0 @@
-removeAllCards
-	self removeAllMorphs

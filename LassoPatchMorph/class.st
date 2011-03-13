@@ -1,0 +1,1 @@
+LassoPatchMorph class instanceVariableNames: ''

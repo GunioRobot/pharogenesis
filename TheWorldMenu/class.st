@@ -1,0 +1,1 @@
+TheWorldMenu class instanceVariableNames: ''

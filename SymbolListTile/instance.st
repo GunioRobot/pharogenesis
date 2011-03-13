@@ -1,6 +1,6 @@
 TileMorph
 	subclass: #SymbolListTile
-	instanceVariableNames: 'choices dataType '
+	instanceVariableNames: 'choices dataType'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Scripting Tiles'
+	category: 'EToys-Scripting Tiles'

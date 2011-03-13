@@ -8,3 +8,6 @@ installKeyDecodeTable
 	Preferences swapControlAndAltKeys 
 		ifTrue: [ self defaultCrossPlatformKeys do:
 				[ :c | self installSwappedKeyEntryFor: c ] ].
+	Preferences duplicateAllControlAndAltKeys
+		ifTrue: [ (Character allCharacters select: [:ea | ea isAlphaNumeric]) do:
+				[ :c | self installDuplicateKeyEntryFor: c ] ].

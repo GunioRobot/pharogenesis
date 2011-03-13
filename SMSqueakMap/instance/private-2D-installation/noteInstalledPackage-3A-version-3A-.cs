@@ -6,14 +6,4 @@ noteInstalledPackage: uuidString version: version
 	count starting from -10000 and upwards. This should keep
 	the sorting order correct."
 
-	"Find the lowest installed count."
-	| lowest |
-	lowest _ 0.
-	installedPackages ifNotNil: [
-		installedPackages valuesDo: [:oc |
-			oc do: [:array |
-				array last < lowest ifTrue: [lowest _ array last]]]]
-		ifNil: [lowest _ -10000].
-	lowest negative ifFalse: [lowest _ -10000].
-	^self noteInstalledPackage: uuidString version: version
-		atSeconds: Time totalSeconds number: lowest + 1
+	^self registry noteInstalledPackage: uuidString version: version

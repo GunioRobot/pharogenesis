@@ -1,0 +1,3 @@
+getPatchValueIn: aPatch
+
+	^ 0.

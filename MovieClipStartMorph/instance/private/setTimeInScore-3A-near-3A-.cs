@@ -6,10 +6,10 @@ setTimeInScore: score near: dropTime
 	so I end right before that clip."
 
 	| startTime endTime delta endFrame |
-	startTime _ dropTime.
-	endMorph ifNil: [endFrame _ moviePlayerMorph frameCount]
-			ifNotNil: [endFrame _ endMorph frameNumber].
-	endTime _ startTime   "in ticks"
+	startTime := dropTime.
+	endMorph ifNil: [endFrame := moviePlayerMorph frameCount]
+			ifNotNil: [endFrame := endMorph frameNumber].
+	endTime := startTime   "in ticks"
 		+ (movieClipPlayer pianoRoll scorePlayer ticksForMSecs:
 			(endFrame - frameNumber)
 			* moviePlayerMorph msPerFrame).
@@ -19,12 +19,12 @@ setTimeInScore: score near: dropTime
 					or: [startTime between: m endTime and: m endTime+50])
 					ifTrue: ["If I start in the middle of another clip, or a little
 							past its end, move me exactly to the end of it"
-							delta _ (m endTime + 1) - startTime.
-							startTime _ startTime + delta.
-							endTime _ endTime + delta].
+							delta := (m endTime + 1) - startTime.
+							startTime := startTime + delta.
+							endTime := endTime + delta].
 				(endTime between: m startTime and: m endTime)
 					ifTrue: ["If my end goes overlaps another clip, shorten me so I fit."
-							endTime _ m startTime - 1].
+							endTime := m startTime - 1].
 				]].
 	scoreEvent time: startTime.
 	score removeAmbientEventWithMorph: self;

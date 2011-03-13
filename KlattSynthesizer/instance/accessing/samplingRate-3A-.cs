@@ -1,3 +1,3 @@
 samplingRate: anInteger
-	samplingRate _ anInteger.
+	samplingRate := anInteger.
 	self initializeState

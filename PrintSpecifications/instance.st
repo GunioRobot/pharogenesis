@@ -1,6 +1,6 @@
 Object
 	subclass: #PrintSpecifications
-	instanceVariableNames: 'landscapeFlag drawAsBitmapFlag '
-	classVariableNames: 'DefaultSpecs '
+	instanceVariableNames: 'landscapeFlag drawAsBitmapFlag scaleToFitPage'
+	classVariableNames: 'DefaultSpecs'
 	poolDictionaries: ''
-	category: 'Morphic-GeeMail'
+	category: 'MorphicExtras-GeeMail'

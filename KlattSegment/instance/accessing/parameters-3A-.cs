@@ -1,2 +1,2 @@
 parameters: aDictionary
-	parameters _ aDictionary
+	parameters := aDictionary

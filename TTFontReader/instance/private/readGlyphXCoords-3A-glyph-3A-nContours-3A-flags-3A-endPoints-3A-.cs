@@ -1,15 +1,15 @@
 readGlyphXCoords:entry glyph: glyph nContours: nContours flags: flags endPoints: endPts
 	"Read the x coordinates for the given glyph from the font file."
 	| startPoint endPoint flagBits xValue contour ttPoint |
-	startPoint _ 1.
+	startPoint := 1.
 	1 to: nContours do:[:i|
-		contour _ glyph contours at: i.
+		contour := glyph contours at: i.
 		"Get the end point"
-		endPoint _ (endPts at: i) + 1.
+		endPoint := (endPts at: i) + 1.
 		"Store number of points"
 		startPoint to: endPoint do:[:j|
-			ttPoint _ contour points at: (j - startPoint + 1).
-			flagBits _ flags at: j.
+			ttPoint := contour points at: (j - startPoint + 1).
+			flagBits := flags at: j.
 			"If bit zero in the flag is set then this point is an on-curve
 			point, if not, then it is an off-curve point."
 			(flagBits bitAnd: 1) = 1 
@@ -19,8 +19,8 @@ readGlyphXCoords:entry glyph: glyph nContours: nContours flags: flags endPoints:
 			the corresponding coordinate data in the table is 1 byte long.
 			If the bit is not set, then the coordinate data is 2 bytes long."
 			(flagBits bitAnd: 2) = 2 ifTrue:[ "one byte"
-				xValue _ entry nextByte.
-				xValue _ (flagBits bitAnd: 16)=16 ifTrue:[xValue] ifFalse:[xValue negated].
+				xValue := entry nextByte.
+				xValue := (flagBits bitAnd: 16)=16 ifTrue:[xValue] ifFalse:[xValue negated].
 				ttPoint x: xValue.
 			] ifFalse:[ "two byte"
 				"If bit four is set, then this coordinate is the same as the
@@ -28,6 +28,6 @@ readGlyphXCoords:entry glyph: glyph nContours: nContours flags: flags endPoints:
 				is not set, then read in two bytes and store it as a signed value."
 				(flagBits bitAnd: 16) = 16 ifTrue:[ ttPoint x: 0 ]
 				ifFalse:[
-					xValue _ entry nextShort.
+					xValue := entry nextShort.
 					ttPoint x: xValue]]].
-		startPoint _ endPoint + 1]
+		startPoint := endPoint + 1]

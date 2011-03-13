@@ -1,2 +1,0 @@
-clipMinXGet
-	^workBuffer at: GWClipMinX

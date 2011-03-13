@@ -1,5 +1,5 @@
 from: startPoint to: endPoint
 	"Initialize the receiver as straight line"
-	start _ startPoint.
-	end _ endPoint.
-	via _ (start + end) // 2.
+	start := startPoint.
+	end := endPoint.
+	via := (start + end) // 2.

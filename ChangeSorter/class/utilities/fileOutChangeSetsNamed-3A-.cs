@@ -3,10 +3,10 @@ fileOutChangeSetsNamed: nameList
      "ChangeSorter fileOutChangeSetsNamed: #('New Changes' 'miscTidies-sw')"
 
 	| notFound aChangeSet infoString empty |
-	notFound _ OrderedCollection new.
-	empty _ OrderedCollection new.
+	notFound := OrderedCollection new.
+	empty := OrderedCollection new.
 	nameList do:
-		[:aName | (aChangeSet _ self changeSetNamed: aName)
+		[:aName | (aChangeSet := self changeSetNamed: aName)
 			ifNotNil:
 				[aChangeSet isEmpty
 					ifTrue:
@@ -16,19 +16,19 @@ fileOutChangeSetsNamed: nameList
 			ifNil:
 				[notFound add: aName]].
 
-	infoString _ (nameList size - notFound size) printString, ' change set(s) filed out'.
+	infoString := (nameList size - notFound size) printString, ' change set(s) filed out'.
 	notFound size > 0 ifTrue:
-		[infoString _ infoString, '
+		[infoString := infoString, '
 
 ', notFound size printString, ' change set(s) not found:'.
 		notFound do:
-			[:aName | infoString _ infoString, '
+			[:aName | infoString := infoString, '
 ', aName]].
 	empty size > 0 ifTrue:
-		[infoString _ infoString, '
+		[infoString := infoString, '
 ', empty size printString, ' change set(s) were empty:'.
 		empty do:
-			[:aName | infoString _ infoString, '
+			[:aName | infoString := infoString, '
 ', aName]].
 
 	self inform: infoString

@@ -1,2 +1,2 @@
 user: userString
-	user _ userString
+	user := userString

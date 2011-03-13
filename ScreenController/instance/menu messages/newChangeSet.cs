@@ -1,2 +1,2 @@
 newChangeSet
-	ChangeSorter newChangeSet
+	ChangeSet newChangeSet

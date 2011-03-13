@@ -1,3 +1,0 @@
-correspondingSymbolClass
-
-	^ self subclassResponsibility.

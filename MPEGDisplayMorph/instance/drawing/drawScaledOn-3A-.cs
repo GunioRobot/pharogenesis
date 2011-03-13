@@ -4,12 +4,12 @@ drawScaledOn: aCanvas
 	| outForm destPoint warpBlt |
 	((aCanvas isKindOf: FormCanvas) and: [aCanvas form = Display])
 		ifTrue: [  "optimization: when canvas is the Display, Warpblt directly to it"
-			outForm _ Display.
-			destPoint _ bounds origin + aCanvas origin]
+			outForm := Display.
+			destPoint := bounds origin + aCanvas origin]
 		ifFalse: [
-			outForm _ Form extent: self extent depth: aCanvas form depth.
-			destPoint _ 0@0].
-	warpBlt _ (WarpBlt current toForm: outForm)
+			outForm := Form extent: self extent depth: aCanvas form depth.
+			destPoint := 0@0].
+	warpBlt := (WarpBlt current toForm: outForm)
 		sourceForm: frameBuffer;
 		colorMap: (frameBuffer colormapIfNeededForDepth: outForm depth);
 		cellSize: 1;  "installs a new colormap if cellSize > 1"

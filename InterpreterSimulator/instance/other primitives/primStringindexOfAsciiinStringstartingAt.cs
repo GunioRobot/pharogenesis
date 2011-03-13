@@ -1,2 +1,0 @@
-primStringindexOfAsciiinStringstartingAt
-	^ self primitiveFail

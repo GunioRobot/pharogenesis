@@ -5,6 +5,6 @@ startMIDITracking
 	midiParser midiPort ensureOpen.
 	self stopMIDITracking.
 	SoundPlayer useShortBuffer.
-	process _ [self midiTrackingLoop] newProcess.
+	process := [self midiTrackingLoop] newProcess.
 	process priority: Processor userInterruptPriority.
 	process resume.

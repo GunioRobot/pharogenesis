@@ -1,4 +1,4 @@
-& alternativeObject 
-	"Evaluating conjunction -- answer alternativeObject since receiver is true."
+& aBoolean 
+	"Evaluating conjunction -- answer aBoolean since receiver is true."
 
-	^alternativeObject
+	^aBoolean

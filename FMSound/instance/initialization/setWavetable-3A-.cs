@@ -4,12 +4,12 @@ setWavetable: anArray
 	| samples p dur vol |
 	"copy the array into a SoundBuffer if necessary"
 	anArray class isPointers
-		ifTrue: [samples _ SoundBuffer fromArray: anArray]
-		ifFalse: [samples _ anArray].
+		ifTrue: [samples := SoundBuffer fromArray: anArray]
+		ifFalse: [samples := anArray].
 
-	p _ self pitch.
-	dur _ self duration.
-	vol _ self loudness.
-	waveTable _ samples.
-	scaledWaveTableSize _ waveTable size * ScaleFactor.
+	p := self pitch.
+	dur := self duration.
+	vol := self loudness.
+	waveTable := samples.
+	scaledWaveTableSize := waveTable size * ScaleFactor.
 	self setPitch: p dur: dur loudness: vol.

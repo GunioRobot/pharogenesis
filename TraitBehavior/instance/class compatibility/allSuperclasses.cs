@@ -1,0 +1,2 @@
+allSuperclasses
+	^ OrderedCollection new

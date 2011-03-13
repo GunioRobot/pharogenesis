@@ -4,5 +4,5 @@ correctPassword: aPassword
 
 	| try |
 	aPassword isEmptyOrNil ifTrue:[^false].
-	try _ SecureHashAlgorithm new hashMessage: aPassword.
+	try := SecureHashAlgorithm new hashMessage: aPassword.
 	^password = try or: [newPassword = try]

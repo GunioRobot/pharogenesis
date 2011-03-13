@@ -1,1 +1,0 @@
-LineIntersections class instanceVariableNames: ''

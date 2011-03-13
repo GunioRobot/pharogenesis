@@ -1,0 +1,2 @@
+selectedCategoryIndex
+	^self model selectedCategoryIndex

@@ -3,6 +3,7 @@ phraseForCommandFrom: aMethodInterface
 
 	| aRow resultType cmd names argType argTile selfTile aPhrase balloonTextSelector stat inst aDocString universal tileBearingHelp |
 	aDocString _ aMethodInterface documentation.
+	aDocString = 'no help available' ifTrue: [aDocString _ nil].
 	names _ scriptedPlayer class namedTileScriptSelectors.
 
 	resultType _ aMethodInterface resultType.
@@ -21,15 +22,25 @@ phraseForCommandFrom: aMethodInterface
 				with a selector with > 1 arg, results will be very strange"
 				argType _ aMethodInterface typeForArgumentNumber: 1.
 				aPhrase _ PhraseTileMorph new vocabulary: self currentVocabulary.
-				aPhrase setOperator: cmd
-					type: resultType
-					rcvrType: #Player
-					argType: argType.
-				argTile _ ScriptingSystem tileForArgType: argType.
+				(self isSpecialPatchReceiver: scriptedPlayer and: cmd) ifTrue: [
+					aPhrase setOperator: cmd
+						type: resultType
+						rcvrType: #Patch
+						argType: argType.
+				] ifFalse: [
+					aPhrase setOperator: cmd
+						type: resultType
+						rcvrType: #Player
+						argType: argType.
+				].
+				(self isSpecialPatchCase: scriptedPlayer and: cmd) ifTrue: [
+					argTile _ (Vocabulary vocabularyForType: argType) defaultArgumentTileFor: scriptedPlayer.
+				] ifFalse: [
+					argTile _ ScriptingSystem tileForArgType: argType.
+				].
 				(#(bounce: wrap:) includes: cmd) ifTrue:
 					["help for the embattled bj"
-					argTile setLiteral: #silence translated].
-
+					argTile setLiteral: 'silence'; updateLiteralLabel].
 				argTile position: aPhrase lastSubmorph position.
 				aPhrase lastSubmorph addMorph: argTile]].
 

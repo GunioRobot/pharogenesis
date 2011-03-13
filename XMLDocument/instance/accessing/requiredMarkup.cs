@@ -1,2 +1,0 @@
-requiredMarkup	
-	^requiredMarkup

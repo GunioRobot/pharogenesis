@@ -1,3 +1,3 @@
 sound: aSound
 
-	sound _ aSound.
+	sound := aSound.

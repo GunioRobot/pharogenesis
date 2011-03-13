@@ -1,2 +1,0 @@
-undo
-	self restoreTextureFrom: backup

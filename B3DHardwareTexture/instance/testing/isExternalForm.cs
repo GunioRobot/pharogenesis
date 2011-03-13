@@ -1,3 +1,0 @@
-isExternalForm
-	"Yup."
-	^true

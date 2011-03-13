@@ -1,4 +1,5 @@
 getLink: aBuilder
-	"Return a link for using on the web."
+	"Return a link for using on the web.
+	Relative to the current view."
 
-	^aBuilder getLinkLocal: '/package/', id asString text: name
+	^self getLink: aBuilder view: aBuilder view

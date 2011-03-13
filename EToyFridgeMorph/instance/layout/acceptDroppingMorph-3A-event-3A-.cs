@@ -12,7 +12,7 @@ acceptDroppingMorph: morphToDrop event: evt
 	].
 	self stopFlashing.
 	"7 mar 2001 - remove #veryDeepCopy"
-	outData _ morphToDrop eToyStreamedRepresentationNotifying: self.
+	outData := morphToDrop eToyStreamedRepresentationNotifying: self.
 	self resetIndicator: #working.
 	self class fridgeRecipients do: [ :each |
 		self transmitStreamedObject: outData to: each ipAddress

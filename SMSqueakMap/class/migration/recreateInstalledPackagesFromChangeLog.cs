@@ -12,10 +12,10 @@ recreateInstalledPackagesFromChangeLog
 
 	| changesFile chunk |
 	SMSqueakMap default clearInstalledPackages.
-	changesFile _ (SourceFiles at: 2) readOnlyCopy.
+	changesFile := (SourceFiles at: 2) readOnlyCopy.
 	[changesFile atEnd]
 		whileFalse: [
-			chunk _ changesFile nextChunk.
+			chunk := changesFile nextChunk.
 			((chunk beginsWith: '"Installed') and: [
 				(chunk indexOfSubCollection: 'SMSqueakMap noteInstalledPackage:'
 					startingAt: 10) > 0])

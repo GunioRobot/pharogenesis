@@ -1,0 +1,1 @@
+ZipFileConstants class instanceVariableNames: ''

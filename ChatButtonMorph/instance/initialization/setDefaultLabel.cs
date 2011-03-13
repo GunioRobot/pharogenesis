@@ -1,2 +1,0 @@
-setDefaultLabel
-	self label: 'Flash'.

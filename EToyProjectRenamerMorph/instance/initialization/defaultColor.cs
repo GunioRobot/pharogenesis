@@ -1,3 +1,3 @@
 defaultColor
 	"answer the default color/fill style for the receiver"
-	^ Color paleYellow
+	^ ColorTheme current dialogColor

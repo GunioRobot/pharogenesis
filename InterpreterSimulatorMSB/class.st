@@ -1,1 +1,0 @@
-InterpreterSimulatorMSB class instanceVariableNames: ''

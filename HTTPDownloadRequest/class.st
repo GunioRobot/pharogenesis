@@ -1,0 +1,1 @@
+HTTPDownloadRequest class instanceVariableNames: ''

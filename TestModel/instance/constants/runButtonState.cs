@@ -1,3 +1,0 @@
-runButtonState
-
-	^self class runButtonState

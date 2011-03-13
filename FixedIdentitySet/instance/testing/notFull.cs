@@ -1,0 +1,2 @@
+notFull
+	^ tally < capacity

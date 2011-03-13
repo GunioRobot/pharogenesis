@@ -1,11 +1,11 @@
 saveContents: fullFileName
 	"Save the contents of a gzipped file"
 	| zipped buffer unzipped newName |
-	newName _ fullFileName copyUpToLast: FileDirectory extensionDelimiter.
-	unzipped _ FileStream newFileNamed: newName.
+	newName := fullFileName copyUpToLast: FileDirectory extensionDelimiter.
+	unzipped := FileStream newFileNamed: newName.
 	unzipped binary.
-	zipped _ GZipReadStream on: (FileStream readOnlyFileNamed: fullFileName).
-	buffer _ ByteArray new: 50000.
+	zipped := GZipReadStream on: (FileStream readOnlyFileNamed: fullFileName).
+	buffer := ByteArray new: 50000.
 	'Extracting ' , fullFileName
 		displayProgressAt: Sensor cursorPoint
 		from: 0

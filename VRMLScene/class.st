@@ -1,1 +1,0 @@
-VRMLScene class instanceVariableNames: ''

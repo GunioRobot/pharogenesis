@@ -1,2 +1,2 @@
 localeChanged
-	"Backstop for notifications"
+	self shouldBeImplemented

@@ -1,5 +1,5 @@
 bitBlt: aBitBlt
-	bitBlt _ aBitBlt.
+	bitBlt := aBitBlt.
 	bitBlt isNil ifTrue:[^self].
 	self class primitiveSetBitBltPlugin: bitBlt getPluginName.
 	self clipRect: bitBlt clipRect.

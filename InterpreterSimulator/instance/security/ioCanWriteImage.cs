@@ -1,2 +1,0 @@
-ioCanWriteImage
-	^true

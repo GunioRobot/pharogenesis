@@ -1,2 +1,0 @@
-packageSpecs
-	^Full38ImageBuilder new packageSpecs

@@ -1,1 +1,0 @@
-FreeTranslation class instanceVariableNames: ''

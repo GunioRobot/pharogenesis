@@ -1,2 +1,2 @@
 initialize
-	directory _ FileDirectory default
+	directory := FileDirectory default

@@ -1,0 +1,1 @@
+SystemProgressMorph class instanceVariableNames: ''

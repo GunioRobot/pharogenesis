@@ -1,6 +1,6 @@
 AlignmentMorph
 	subclass: #ViewerEntry
-	instanceVariableNames: 'helpPane '
+	instanceVariableNames: 'helpPane'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Scripting Tiles'
+	category: 'EToys-Scripting Tiles'

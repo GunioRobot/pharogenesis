@@ -1,3 +1,3 @@
 currentSound
-	currentSound isNil ifTrue: [currentSound _ self nextSound].
+	currentSound isNil ifTrue: [currentSound := self nextSound].
 	^ currentSound

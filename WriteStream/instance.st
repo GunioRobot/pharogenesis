@@ -1,6 +1,6 @@
 PositionableStream
 	subclass: #WriteStream
-	instanceVariableNames: 'writeLimit '
+	instanceVariableNames: 'writeLimit'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Collections-Streams'

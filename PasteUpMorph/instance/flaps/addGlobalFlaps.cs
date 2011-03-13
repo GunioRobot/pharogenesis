@@ -3,7 +3,7 @@ addGlobalFlaps
 
 	| use thisWorld |
 	use _ Flaps sharedFlapsAllowed.
-	CurrentProjectRefactoring currentFlapsSuppressed ifTrue: [use _ false].
+	Project current flapsSuppressed ifTrue: [use _ false].
 	"Smalltalk isMorphic ifFalse: [use _ false]."
 	thisWorld _ use 
 		ifTrue: [self]
@@ -13,7 +13,7 @@ addGlobalFlaps
 					viewBox: (0@0 extent: 4000@4000)].
 	
 	Flaps globalFlapTabsIfAny do: [:aFlapTab |
-		(CurrentProjectRefactoring isFlapEnabled: aFlapTab) ifTrue:
+		(Project current isFlapEnabled: aFlapTab) ifTrue:
 			[(aFlapTab world == thisWorld) ifFalse:
 				[thisWorld addMorphFront: aFlapTab.
 				aFlapTab adaptToWorld: thisWorld].	"always do"

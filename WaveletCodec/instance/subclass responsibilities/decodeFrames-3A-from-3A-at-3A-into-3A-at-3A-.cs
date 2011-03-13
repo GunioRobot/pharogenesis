@@ -3,42 +3,42 @@ decodeFrames: frameCount from: srcByteArray at: srcIndex into: dstSoundBuffer at
 	"Note: Assume that the sender has ensured that the given number of frames will not exhaust either the source or destination buffers."
 
 	| frameBase coeffArray scale i c nullCount samples sourceFrameEnd frameSize inStream val |
-	inStream _ ReadStream on: srcByteArray from: srcIndex to: srcByteArray size.
-	"frameCount _ " inStream nextNumber: 4.
-	samplesPerFrame _ inStream nextNumber: 4.
-	nLevels _ inStream nextNumber: 4.
-	alpha _ Float fromIEEE32Bit: (inStream nextNumber: 4).
-	beta _ Float fromIEEE32Bit: (inStream nextNumber: 4).
+	inStream := ReadStream on: srcByteArray from: srcIndex to: srcByteArray size.
+	"frameCount := " inStream nextNumber: 4.
+	samplesPerFrame := inStream nextNumber: 4.
+	nLevels := inStream nextNumber: 4.
+	alpha := Float fromIEEE32Bit: (inStream nextNumber: 4).
+	beta := Float fromIEEE32Bit: (inStream nextNumber: 4).
 	fwt ifNil:
 		["NOTE: This should read parameters from the encoded data"
-		fwt _ FWT new.
+		fwt := FWT new.
 		fwt nSamples: samplesPerFrame nLevels: nLevels.
 		fwt setAlpha: alpha beta: beta].
-	frameBase _ dstIndex.
-	coeffArray _ fwt coeffs.  "A copy that we can modify"
+	frameBase := dstIndex.
+	coeffArray := fwt coeffs.  "A copy that we can modify"
 
 	1 to: frameCount do:
 		[:frame | 
 
 		"Decode the scale for this frame"
-		frameSize _ inStream nextNumber: 2.
-		sourceFrameEnd _ frameSize + inStream position.
-		scale _ Float fromIEEE32Bit: (inStream nextNumber: 4).
+		frameSize := inStream nextNumber: 2.
+		sourceFrameEnd := frameSize + inStream position.
+		scale := Float fromIEEE32Bit: (inStream nextNumber: 4).
 
 		"Expand run-coded samples to scaled float values."
-		i _ 5.
+		i := 5.
 		[i <= coeffArray size]
 			whileTrue:
-			[c _ inStream next.
+			[c := inStream next.
 			c < 128
-				ifTrue: [nullCount _ c < 112
+				ifTrue: [nullCount := c < 112
 							ifTrue: [c + 1]
 							ifFalse: [(c-112)*256 + inStream next + 1].
 						i to: i + nullCount - 1 do: [:j | coeffArray at: j put: 0.0].
-						i _ i + nullCount]
-				ifFalse: [val _ (c*256 + inStream next) - 32768 - 16384.
+						i := i + nullCount]
+				ifFalse: [val := (c*256 + inStream next) - 32768 - 16384.
 						coeffArray at: i put: val * scale.
-						i _ i + 1]].
+						i := i + 1]].
 
 		"Copy float values into the wavelet sample array"		
 			fwt coeffs: coeffArray.
@@ -47,13 +47,13 @@ decodeFrames: frameCount from: srcByteArray at: srcIndex into: dstSoundBuffer at
 		fwt transformForward: false.
 
 		"Determine the scale for this frame"
-		samples _ fwt samples.
+		samples := fwt samples.
 		samples size = samplesPerFrame ifFalse: [self error: 'frame size error'].
 		1 to: samples size do:
 			[:j | dstSoundBuffer at: frameBase + j - 1 put: (samples at: j) asInteger].
 
 		inStream position = sourceFrameEnd ifFalse: [self error: 'frame size error'].
-		frameBase _ frameBase + samplesPerFrame].
+		frameBase := frameBase + samplesPerFrame].
 
 	^ Array with: inStream position + 1 - srcIndex
 			with: frameBase - dstIndex

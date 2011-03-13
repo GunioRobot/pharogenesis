@@ -1,8 +1,8 @@
 default
 	| phonemes inherents lowers |
-	phonemes _ PhonemeSet arpabet.
-	inherents _ Dictionary new.
-	lowers _ Dictionary new.
+	phonemes := PhonemeSet arpabet.
+	inherents := Dictionary new.
+	lowers := Dictionary new.
 	#(
 	('ae'	230.0	80.0)
 	('aa'	240.0	100.0)

@@ -5,10 +5,10 @@ sideOfPoint: aPoint
 		+1: if a point is right
 	of the receiver."
 	| dx dy px py |
-	dx _ end x - start x.
-	dy _ end y - start y.
-	px _ aPoint x - start x.
-	py _ aPoint y - start y.
+	dx := end x - start x.
+	dy := end y - start y.
+	px := aPoint x - start x.
+	py := aPoint y - start y.
 	^((dx * py) - (px * dy)) sign
 "
 	(LineSegment from: 0@0 to: 100@0) sideOfPoint: 50@-50.

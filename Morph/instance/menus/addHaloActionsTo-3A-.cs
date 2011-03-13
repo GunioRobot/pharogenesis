@@ -22,8 +22,9 @@ addHaloActionsTo: aMenu
 	subMenu balloonTextForLastItem: 'Hand me a copy of this object' translated.
 	"Note that this allows access to the non-instancing duplicate even when this is a uniclass instance"
 
-	subMenu add: 'make a sibling' translated action: #handUserASibling.
-	subMenu balloonTextForLastItem: 'Make a new sibling of this object and hand it to me' translated.
+	self couldMakeSibling ifTrue:
+		[subMenu add: 'make a sibling' translated action: #handUserASibling.
+		subMenu balloonTextForLastItem: 'Make a new sibling of this object and hand it to me' translated].
 
 	subMenu addLine.
 	subMenu add: 'property sheet' translated target: self renderedMorph action: #openAPropertySheet.

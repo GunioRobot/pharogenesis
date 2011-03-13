@@ -5,4 +5,4 @@ setNewPassword: aString
 	anonymously. Note that the password is stored as a secured
 	hash large integer."
 
-	newPassword _ SecureHashAlgorithm new hashMessage: aString
+	newPassword := SecureHashAlgorithm new hashMessage: aString

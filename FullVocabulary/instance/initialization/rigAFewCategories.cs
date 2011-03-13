@@ -11,6 +11,6 @@ rigAFewCategories
 
 		do:
 			[:pair |
-				aMethodCategory _ ElementCategory new categoryName: pair first.
+				aMethodCategory := ElementCategory new categoryName: pair first.
 				aMethodCategory documentation: pair second.
 				self addCategory: aMethodCategory]

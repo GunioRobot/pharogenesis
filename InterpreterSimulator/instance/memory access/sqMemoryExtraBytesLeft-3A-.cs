@@ -1,2 +1,0 @@
-sqMemoryExtraBytesLeft: includingSwap
-	^0

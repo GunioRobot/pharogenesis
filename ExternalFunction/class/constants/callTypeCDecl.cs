@@ -1,2 +1,0 @@
-callTypeCDecl
-	^FFICallTypeCDecl

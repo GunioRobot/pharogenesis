@@ -1,6 +1,6 @@
 GesturalEvent
 	subclass: #MoodGesturalEvent
-	instanceVariableNames: 'state '
+	instanceVariableNames: 'state'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Speech-Events'

@@ -1,0 +1,2 @@
+getSymbol
+	^ self getString asSymbol

@@ -17,7 +17,7 @@ testNaming
 	self assertNameWhenSavingTo: repos is: 'foo-abc.37'.
 	version info instVarNamed: 'name' put: 'foo-abc.10'.
 	repos storeVersion: version.
-	self assertNameWhenSavingTo: repos is: 'foo-abc.11'.
+	self assertNameWhenSavingTo: repos is: 'foo-abc.38'.
 	version info instVarNamed: 'name' put: 'foo2-ab.40'.
 	version load.
 	self assertNameWhenSavingTo: repos is: 'foo2-abc.41'.

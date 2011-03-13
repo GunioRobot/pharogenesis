@@ -5,14 +5,14 @@ encodeMatch: length distance: dist
 		ifFalse:[^self error:'Distance must be positive'].
 	length < MinMatch 
 		ifTrue:[^self error:'Match length must be at least ', MinMatch printString].
-	litCount _ litCount + 1.
-	matchCount _ matchCount + 1.
+	litCount := litCount + 1.
+	matchCount := matchCount + 1.
 	literals at: litCount put: length - MinMatch.
 	distances at: litCount put: dist.
-	literal _ (MatchLengthCodes at: length - MinMatch + 1).
+	literal := (MatchLengthCodes at: length - MinMatch + 1).
 	literalFreq at: literal+1 put: (literalFreq at: literal+1) + 1.
 	dist < 257
-		ifTrue:[distance _ DistanceCodes at: dist]
-		ifFalse:[distance _ DistanceCodes at: 257 + (dist - 1 bitShift: -7)].
+		ifTrue:[distance := DistanceCodes at: dist]
+		ifFalse:[distance := DistanceCodes at: 257 + (dist - 1 bitShift: -7)].
 	distanceFreq at: distance+1 put: (distanceFreq at: distance+1) + 1.
 	^self shouldFlush

@@ -1,10 +1,10 @@
 modelWakeUpIn: aWindow
 	| newText |
 	self updateListsAndCodeIn: aWindow.
-	newText _ self contentsIsString
-		ifTrue: [newText _ self selection]
+	newText := self contentsIsString
+		ifTrue: [newText := self selection]
 		ifFalse: ["keep it short to reduce time to compute it"
 			self selectionPrintString ].
 	newText = contents ifFalse:
-		[contents _ newText.
+		[contents := newText.
 		self changed: #contents]

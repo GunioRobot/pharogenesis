@@ -1,6 +1,6 @@
 Form
 	subclass: #ColorForm
-	instanceVariableNames: 'colors cachedDepth cachedColormap '
+	instanceVariableNames: 'colors cachedDepth cachedColormap'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Graphics-Display Objects'

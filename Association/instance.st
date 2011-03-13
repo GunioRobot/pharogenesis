@@ -1,6 +1,6 @@
 LookupKey
 	subclass: #Association
-	instanceVariableNames: 'value '
+	instanceVariableNames: 'value'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Collections-Support'

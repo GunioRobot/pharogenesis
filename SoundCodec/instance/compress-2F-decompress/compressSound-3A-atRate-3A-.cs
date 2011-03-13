@@ -3,24 +3,24 @@ compressSound: aSound atRate: desiredSampleRate
 
 	| compressed channels samples newRate ratio buffer |
 
-	compressed _ CompressedSoundData new
+	compressed := CompressedSoundData new
 		codecName: self class name;
 		soundClassName: aSound class name.
 	(aSound isKindOf: SampledSound) ifTrue: [
 		(desiredSampleRate isNil or: 
-				[(ratio _ aSound originalSamplingRate // desiredSampleRate) <= 1]) ifTrue: [
-			samples _ aSound samples.
-			newRate _ aSound originalSamplingRate.
+				[(ratio := aSound originalSamplingRate // desiredSampleRate) <= 1]) ifTrue: [
+			samples := aSound samples.
+			newRate := aSound originalSamplingRate.
 		] ifFalse: [
-			buffer _ aSound samples.
-			samples _ SoundBuffer 
+			buffer := aSound samples.
+			samples := SoundBuffer 
 				averageEvery: ratio 
 				from: buffer 
 				upTo: buffer monoSampleCount.
-			newRate _ aSound originalSamplingRate / ratio.
+			newRate := aSound originalSamplingRate / ratio.
 		].
 
-		channels _ Array new: 1.
+		channels := Array new: 1.
 		channels at: 1 put: (self encodeSoundBuffer: samples).
 		compressed
 			channels: channels;
@@ -34,11 +34,11 @@ compressSound: aSound atRate: desiredSampleRate
 	(aSound isKindOf: LoopedSampledSound) ifTrue: [
 		aSound isStereo
 			ifTrue: [
-				channels _ Array new: 2.
+				channels := Array new: 2.
 				channels at: 1 put: (self encodeSoundBuffer: aSound leftSamples).
 				channels at: 2 put: (self encodeSoundBuffer: aSound rightSamples)]
 			ifFalse: [
-				channels _ Array new: 1.
+				channels := Array new: 1.
 				channels at: 1 put: (self encodeSoundBuffer: aSound leftSamples)].
 		compressed
 			channels: channels;

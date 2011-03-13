@@ -1,3 +1,0 @@
-styler: anObject
-	
-	styler := anObject

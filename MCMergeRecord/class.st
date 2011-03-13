@@ -1,0 +1,1 @@
+MCMergeRecord class instanceVariableNames: ''

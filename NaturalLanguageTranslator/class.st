@@ -1,0 +1,1 @@
+NaturalLanguageTranslator class instanceVariableNames: ''

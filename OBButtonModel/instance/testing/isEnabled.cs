@@ -1,0 +1,2 @@
+isEnabled
+	^ bar isEnabled: self

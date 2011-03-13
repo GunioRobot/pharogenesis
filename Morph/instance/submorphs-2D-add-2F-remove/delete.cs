@@ -3,6 +3,7 @@ delete
 	new owner be nil."
 
 	| aWorld |
+	self removeHalo.
 	aWorld := self world ifNil: [World].
 	"Terminate genie recognition focus"
 	"I encountered a case where the hand was nil, so I put in a little 

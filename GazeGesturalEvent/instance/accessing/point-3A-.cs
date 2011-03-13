@@ -1,2 +1,2 @@
 point: aPoint
-	point _ aPoint
+	point := aPoint

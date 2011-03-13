@@ -1,2 +1,0 @@
-nodeSpecs
-	^VRMLNodeSpec currentSpecs

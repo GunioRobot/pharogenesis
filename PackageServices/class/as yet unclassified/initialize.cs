@@ -1,2 +1,2 @@
 initialize
-	ServiceClasses _ Set new
+	ServiceClasses := Set new

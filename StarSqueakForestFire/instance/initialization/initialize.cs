@@ -1,4 +1,4 @@
 initialize
 
-	treePercentage _ 70.
+	treePercentage := 70.
 	super initialize.

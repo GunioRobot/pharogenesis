@@ -10,11 +10,16 @@ addStandardFlaps
 	SharedFlapTabs add: self newToolsFlap.
 	SharedFlapTabs add: self newWidgetsFlap.
 	SharedFlapTabs add: self newStackToolsFlap.
-	SharedFlapTabs add: self newNavigatorFlap.
+
+	Preferences showProjectNavigator
+		ifTrue:[SharedFlapTabs add: self newNavigatorFlap].
+
 	SharedFlapTabs add: self newPaintingFlap.
 	SharedFlapTabs add: self newObjectsFlap.
 	self disableGlobalFlapWithID: 'Stack Tools' translated.
 	self disableGlobalFlapWithID: 'Painting' translated.
-	self disableGlobalFlapWithID: 'Navigator' translated.
-	self disableGlobalFlapWithID: 'Objects' translated.
+
+	Preferences showProjectNavigator
+		ifTrue:[self disableGlobalFlapWithID: 'Navigator' translated].
+
 	^ SharedFlapTabs

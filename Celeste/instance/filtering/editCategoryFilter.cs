@@ -1,2 +1,0 @@
-editCategoryFilter
-	self editFilterNamed: currentCategory

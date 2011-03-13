@@ -1,0 +1,4 @@
+getTurtleOf: aBreedPlayer
+
+	^ self.
+

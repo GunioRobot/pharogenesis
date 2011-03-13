@@ -6,7 +6,7 @@ removeMessageCategory
 	| messageCategoryName |
 	messageCategoryListIndex = 0 ifTrue: [^ self].
 	self okToChange ifFalse: [^ self].
-	messageCategoryName _ self selectedMessageCategoryName.
+	messageCategoryName := self selectedMessageCategoryName.
 	(self messageList size = 0
 		or: [self confirm: 'Are you sure you want to
 remove this method category 

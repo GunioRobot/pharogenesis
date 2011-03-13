@@ -1,8 +1,0 @@
-This is a light that has only a color. When this light is used, it colors the entire scene in a very special way: The ambient light has everywhere the same intensity. It is not recommended to add more than one ambient light to a scene.
-
-Creation of an ambient light:
-
-    ambientLight :=B3DAmbientLight new.
-    ambientLight lightColor: (B3DMaterialColor color: (Color r: 0.0 g: 0.1 b: 0.0)).
-    scene lights add: ambientLight.
-

@@ -3,7 +3,12 @@ tryForNextStringSize
 
 	self inBufSize >= 4 ifFalse: [^false].
 
-	nextStringSize _ inBuf getInteger32: inBufIndex.
+	nextStringSize := inBuf getInteger32: inBufIndex.
 	"nextStringSize > 100000 ifTrue: [self barf]."
 	inBufIndex := inBufIndex + 4.
+	
+	nextStringSize < 0 ifTrue: [
+		socket disconnect.
+		^false ].
+	
 	^true

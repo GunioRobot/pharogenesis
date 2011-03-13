@@ -1,0 +1,1 @@
+MCStReaderTest class instanceVariableNames: ''

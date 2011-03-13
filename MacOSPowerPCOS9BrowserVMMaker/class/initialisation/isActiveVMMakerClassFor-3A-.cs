@@ -1,2 +1,0 @@
-isActiveVMMakerClassFor: platformName
-	^false

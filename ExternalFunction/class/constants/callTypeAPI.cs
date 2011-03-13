@@ -1,2 +1,0 @@
-callTypeAPI
-	^FFICallTypeApi

@@ -14,13 +14,15 @@ askAddedInstVars: classList
 				pairClasses add: cls]]].
 
 	pairList isEmpty ifTrue: [^ #()].
-	[index _ PopUpMenu withCaption: 'These instance variables were added.
+	[index _ UIManager default 
+		chooseFrom: pairList, #('all of these need a non-nil value'
+						'all of these are OK with a nil value')
+		title:
+'These instance variables were added.
 When an old project comes in, newly added 
 instance variables will have the value nil.
 Click on items to remove them from the list.
-Click on any for which nil is an OK value.'
-		chooseFrom: pairList, #('all of these need a non-nil value'
-						'all of these are OK with a nil value').
+Click on any for which nil is an OK value.'.
 	(index <= (pls _ pairList size)) & (index > 0) ifTrue: [
 		pairList removeAt: index.
 		pairClasses removeAt: index].

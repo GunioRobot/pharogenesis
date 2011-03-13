@@ -1,0 +1,1 @@
+OBMetaEdge class instanceVariableNames: ''

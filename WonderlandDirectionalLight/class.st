@@ -1,1 +1,0 @@
-WonderlandDirectionalLight class instanceVariableNames: ''

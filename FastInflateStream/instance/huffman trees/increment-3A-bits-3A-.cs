@@ -5,15 +5,15 @@ increment: value bits: nBits
 		001 / 101 / 011 / 111
 	See the class comment why we need this."
 	| result bit |
-	result _ value.
+	result := value.
 	"Test the lowest bit first"
-	bit _ 1 << (nBits - 1).
+	bit := 1 << (nBits - 1).
 	"If the currently tested bit is set then we need to
 	turn this bit off and test the next bit right to it"
 	[(result bitAnd: bit) = 0] whileFalse:[ 
 		"Turn off current bit"
-		result _ result bitXor: bit.
+		result := result bitXor: bit.
 		"And continue testing the next bit"
-		bit _ bit bitShift: -1].
+		bit := bit bitShift: -1].
 	"Turn on the right-most bit that we haven't touched in the loop above"
 	^result bitXor: bit

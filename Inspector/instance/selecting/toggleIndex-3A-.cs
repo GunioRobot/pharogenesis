@@ -4,18 +4,18 @@ toggleIndex: anInteger
 	Otherwise, make the variable whose index is anInteger be the selected 
 	item."
 
-	selectionUpdateTime _ 0.
+	selectionUpdateTime := 0.
 	selectionIndex = anInteger
 		ifTrue: 
 			["same index, turn off selection"
-			selectionIndex _ 0.
-			contents _ '']
+			selectionIndex := 0.
+			contents := '']
 		ifFalse:
 			["different index, new selection"
-			selectionIndex _ anInteger.
+			selectionIndex := anInteger.
 			self contentsIsString
-				ifTrue: [contents _ self selection]
-				ifFalse: [contents _ self selectionPrintString]].
+				ifTrue: [contents := self selection]
+				ifFalse: [contents := self selectionPrintString]].
 	self changed: #selection.
 	self changed: #contents.
 	self changed: #selectionIndex.

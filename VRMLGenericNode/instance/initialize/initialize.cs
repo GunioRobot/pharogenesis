@@ -1,2 +1,0 @@
-initialize
-	attributes := Dictionary new.

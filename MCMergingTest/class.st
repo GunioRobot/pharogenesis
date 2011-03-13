@@ -1,0 +1,1 @@
+MCMergingTest class instanceVariableNames: ''

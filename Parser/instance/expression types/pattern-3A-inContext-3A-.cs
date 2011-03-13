@@ -20,10 +20,10 @@ pattern: fromDoit inContext: ctxt
 		ifTrue: 
 			[selector _ WriteStream on: (String new: 32).
 			args _ OrderedCollection new.
-			[hereType == #keyword]
-				whileTrue: 
-					[selector nextPutAll: self advance.
-					args addLast: (encoder bindArg: self argumentName)].
+			[hereType == #keyword] whileTrue:[
+				selector nextPutAll: self advance.
+				args addLast: (encoder bindArg: self argumentName).
+			].
 			^ {selector contents asSymbol. args. 3}].
 
 	^ self expected: 'Message pattern'

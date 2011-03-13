@@ -1,1 +1,0 @@
-AtomicNitrogen class instanceVariableNames: ''

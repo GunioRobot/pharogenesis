@@ -1,0 +1,2 @@
+initialize
+	semaphore := Semaphore forMutualExclusion.

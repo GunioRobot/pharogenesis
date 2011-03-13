@@ -1,3 +1,0 @@
-createStandardPartsBin
-
-	myHand presenter createStandardPartsBin

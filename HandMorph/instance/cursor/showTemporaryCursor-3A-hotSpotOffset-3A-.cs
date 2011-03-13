@@ -6,10 +6,11 @@ showTemporaryCursor: cursorOrNil hotSpotOffset: hotSpotOffset
 	temporaryCursorOffset 
 		ifNotNil: [bounds := bounds translateBy: temporaryCursorOffset negated].
 	cursorOrNil isNil 
-		ifTrue: [temporaryCursor := temporaryCursorOffset := nil]
+		ifTrue: [temporaryCursor := temporaryCursorOffset := hardwareCursor := nil]
 		ifFalse: 
 			[temporaryCursor := cursorOrNil asCursorForm.
-			temporaryCursorOffset := temporaryCursor offset - hotSpotOffset].
+			temporaryCursorOffset := temporaryCursor offset - hotSpotOffset.
+			(cursorOrNil isKindOf: Cursor) ifTrue: [hardwareCursor := cursorOrNil]].
 	bounds := self cursorBounds.
 	self
 		userInitials: userInitials andPicture: self userPicture;

@@ -1,2 +1,2 @@
 timeOfLastListUpdate
-	^ timeOfLastListUpdate ifNil: [timeOfLastListUpdate _ 0]
+	^ timeOfLastListUpdate ifNil: [timeOfLastListUpdate := 0]

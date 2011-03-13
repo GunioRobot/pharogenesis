@@ -6,7 +6,7 @@ If not, choose no, and fix it.')
 		ifFalse: [^ self].
 	(Object classPool at: #DependentsFields) size > 1
 		ifTrue: [self halt].
-	Browser initialize.
+	Smalltalk at: #Browser ifPresent:[:br| br initialize].
 	Undeclared isEmpty
 		ifFalse: [self halt].
 	self garbageCollect.

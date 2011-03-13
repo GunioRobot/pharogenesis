@@ -5,6 +5,7 @@ additionsToViewerCategoryColorAndBorder
 		#'color & border' 
 		(
 			(slot color 'The color of the object' Color readWrite Player getColor  Player  setColor:)
+			(slot opacity '0 means completely transparent, 1 means completely opaque' Number readWrite Player getAlpha Player setAlpha:)
 			(slot borderStyle 'The style of the object''s border' BorderStyle readWrite Player getBorderStyle player setBorderStyle:)
 			(slot borderColor 'The color of the object''s border' Color readWrite Player getBorderColor Player  setBorderColor:)
 			(slot borderWidth 'The width of the object''s border' Number readWrite Player getBorderWidth Player setBorderWidth:)

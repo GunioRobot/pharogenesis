@@ -1,3 +1,3 @@
 codecName: aStringOrSymbol
 
-	codecName _ aStringOrSymbol asSymbol.
+	codecName := aStringOrSymbol asSymbol.

@@ -1,1 +1,0 @@
-B3DColor4Array class instanceVariableNames: ''

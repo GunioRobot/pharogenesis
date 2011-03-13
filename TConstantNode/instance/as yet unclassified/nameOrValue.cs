@@ -1,3 +1,0 @@
-nameOrValue
-
-	^value

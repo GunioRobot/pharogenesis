@@ -1,0 +1,3 @@
+setupLanguageSpecifics
+	"ReleaseBuilderSqueakland new setupLanguageSpecifics"
+	Locale current languageEnvironment setupSqueaklandSpecifics

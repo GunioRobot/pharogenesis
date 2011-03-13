@@ -1,2 +1,2 @@
 port: aNumber
-	port _ aNumber
+	port := aNumber

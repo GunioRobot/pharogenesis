@@ -1,6 +1,6 @@
 AlignmentMorph
 	subclass: #SpectrumAnalyzerMorph
-	instanceVariableNames: 'soundInput statusLight levelMeter graphMorph sonogramMorph fft displayType '
+	instanceVariableNames: 'soundInput statusLight levelMeter graphMorph sonogramMorph fft displayType'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Sound-Interface'
+	category: 'MorphicExtras-SoundInterface'

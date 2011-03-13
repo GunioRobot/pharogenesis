@@ -6,9 +6,9 @@ withAllFilesDo: fileStreamBlock andDirectoriesDo: directoryBlock
 
 	| todo dir |
 
-	todo _ OrderedCollection with: self.
+	todo := OrderedCollection with: self.
 	[todo size > 0] whileTrue: [
-		dir _ todo removeFirst.
+		dir := todo removeFirst.
 		directoryBlock value: dir.
 		dir fileNames do: [: n | 
 			fileStreamBlock value: 

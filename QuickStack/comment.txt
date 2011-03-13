@@ -1,0 +1,4 @@
+This class is a quick and dirty implementation of a stack, designed to be used in the
+SendsInfo abstract interpreter.  As opposed to using an OrderedCollection, this stack is quick because it can be emptied in a single assignment, and dirty because elements above the logical top of the stack (i.e., those that have been popped off) are not nil'ed out.  For our application, these are important optimizations with no ill effects.
+
+QuickStacks will expand beyond their initial size if required, but we intend that the initial size will always be sufficient, so the efficiency of this feature is not important.

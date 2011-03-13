@@ -1,3 +1,3 @@
 setUp
-	expected _ self mockSnapshot.
-	stream _ RWBinaryOrTextStream on: String new.
+	expected := self mockSnapshot.
+	stream := RWBinaryOrTextStream on: String new.

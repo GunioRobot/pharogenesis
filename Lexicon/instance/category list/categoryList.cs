@@ -3,9 +3,9 @@ categoryList
 
 	| specialCategoryNames |
 	categoryList ifNil:
-		[specialCategoryNames _ #(queryCategoryName  viewedCategoryName "searchCategoryName sendersCategoryName  changedCategoryName activeCategoryName")  collect:
+		[specialCategoryNames := #(queryCategoryName  viewedCategoryName "searchCategoryName sendersCategoryName  changedCategoryName activeCategoryName")  collect:
 			[:sym | self class perform: sym].
-		categoryList _
+		categoryList :=
 			(currentVocabulary categoryListForInstance: self targetObject ofClass: targetClass limitClass: limitClass),
 			specialCategoryNames,
 			(Array with: self class allCategoryName)].

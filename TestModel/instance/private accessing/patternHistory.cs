@@ -1,3 +1,0 @@
-patternHistory
-
-	^patternHistory

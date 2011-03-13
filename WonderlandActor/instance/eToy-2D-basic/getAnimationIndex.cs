@@ -1,3 +1,0 @@
-getAnimationIndex
-
-	^ self getMeshAnimationIndex

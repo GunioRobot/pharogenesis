@@ -10,7 +10,5 @@ FileList2 modalFolderSelectorForProject: Project current
 	window position: w topLeft + (w extent - window extent // 2).
 	w addMorphInLayer: window.
 	w startSteppingSubmorphsOf: window.
-	[window world notNil] whileTrue: [
-		window outermostWorldMorph doOneCycle.
-	].
+	self modalLoopOn: window.
 	^fileModel getSelectedDirectory withoutListWrapper

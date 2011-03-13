@@ -1,4 +1,4 @@
 rewindData
 	super rewindData.
-	stream _ ReadStream on: contents.
-	readDataRemaining _ contents size.
+	stream := ReadStream on: contents.
+	readDataRemaining := contents size.

@@ -1,6 +1,6 @@
 EllipseMorph
 	subclass: #AtomMorph
-	instanceVariableNames: 'velocity '
+	instanceVariableNames: 'velocity'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Demo'
+	category: 'MorphicExtras-Demo'

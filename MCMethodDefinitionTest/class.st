@@ -1,0 +1,1 @@
+MCMethodDefinitionTest class instanceVariableNames: ''

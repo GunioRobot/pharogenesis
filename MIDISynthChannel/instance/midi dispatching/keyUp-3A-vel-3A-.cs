@@ -4,6 +4,6 @@ keyUp: key vel: vel
 	| snd |
 	activeSounds copy do: [:entry |
 		(entry at: 1) = key ifTrue: [
-			snd _ entry at: 2.
+			snd := entry at: 2.
 			snd stopGracefully.
 			activeSounds remove: entry]].

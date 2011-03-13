@@ -6,4 +6,6 @@ nextPut: char
 	self adjustOutBuffer: 1.
 	outBuffer at: outNextToWrite put: toPut.
 	outNextToWrite _ outNextToWrite + 1.
-	self checkFlush
+	self checkFlush.
+	"return the argument - added by kwl"
+	^ char

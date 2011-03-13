@@ -1,0 +1,2 @@
+senders
+	^ self sendersOf: selector

@@ -1,6 +1,6 @@
 fileReaderServicesForFile: fullName suffix: suffix
 	| services |
-	services _ OrderedCollection new.
+	services := OrderedCollection new.
 	(FileStream isSourceFileSuffix: suffix) | (suffix = '*')
 		ifTrue: [ services add: self serviceBrowseChangeFile ].
 	(suffix = 'changes') | (suffix = '*')

@@ -1,1 +1,0 @@
-I represent a general 4x4 transformation matrix commonly used in computer graphics.

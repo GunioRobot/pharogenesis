@@ -23,7 +23,8 @@ showMenuForProjectView
 		action: [^ self expungeProject].
 
 	selection _ menu build startUpCenteredWithCaption: 
-'Project Named "\{1}"' translated withCRs.
+('Project Named \"{1}"' translated withCRs format: {project name}).
+
 	selection
 		ifNil: [^ self].
 	selection value

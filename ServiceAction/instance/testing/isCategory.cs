@@ -1,0 +1,2 @@
+isCategory
+	^ false

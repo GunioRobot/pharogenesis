@@ -1,2 +1,2 @@
 done: aBoolean
-	done _ aBoolean
+	done := aBoolean

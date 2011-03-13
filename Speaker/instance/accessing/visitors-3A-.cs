@@ -1,2 +1,2 @@
 visitors: aCollection
-	visitors _ aCollection
+	visitors := aCollection

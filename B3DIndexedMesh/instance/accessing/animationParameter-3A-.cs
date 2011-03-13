@@ -1,1 +1,0 @@
-animationParameter: param

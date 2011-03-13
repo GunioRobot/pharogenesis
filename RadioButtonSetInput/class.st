@@ -1,1 +1,0 @@
-RadioButtonSetInput class instanceVariableNames: ''

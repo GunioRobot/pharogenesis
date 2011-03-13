@@ -1,0 +1,1 @@
+WindowColorRegistry class instanceVariableNames: 'registry'

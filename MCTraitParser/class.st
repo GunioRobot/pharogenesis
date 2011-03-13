@@ -1,0 +1,1 @@
+MCTraitParser class instanceVariableNames: ''

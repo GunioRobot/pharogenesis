@@ -1,2 +1,0 @@
-contentsSize
-	^3

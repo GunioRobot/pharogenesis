@@ -1,1 +1,0 @@
-HaloMorph class instanceVariableNames: ''

@@ -1,0 +1,5 @@
+doCommand
+
+	^self redoCommand
+
+	

@@ -1,13 +1,8 @@
 installMissingWindowColors
-	"Install the factory-provided bright window colors for tools not yet in the dictionary -- a one-time bootstrap"
-
+	"Install the factory-provided bright window colors  -- a one-time bootstrap"
 	"Preferences installMissingWindowColors"
-	| windowColorDict |
-	(Parameters includesKey: #windowColors) ifFalse:
-		[Parameters at: #windowColors put: IdentityDictionary new].
-	windowColorDict _ Parameters at: #windowColors.
-
+	| color |
 	self windowColorTable do:
-		[:colorSpec |
-			(windowColorDict includesKey: colorSpec classSymbol) ifFalse:
-				[windowColorDict at: colorSpec classSymbol put: (Color colorFrom: colorSpec brightColor)]]
+		[:aColorSpec |
+			color := (Color colorFrom: aColorSpec brightColor).
+			self setWindowColorFor: aColorSpec classSymbol to: color]

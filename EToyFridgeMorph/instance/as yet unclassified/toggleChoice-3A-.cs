@@ -1,4 +1,4 @@
 toggleChoice: aString
 
-	updateCounter _ nil.		"force rebuild"
-	aString = 'group' ifTrue: [^groupMode _ (groupMode ifNil: [true]) not].
+	updateCounter := nil.		"force rebuild"
+	aString = 'group' ifTrue: [^groupMode := (groupMode ifNil: [true]) not].

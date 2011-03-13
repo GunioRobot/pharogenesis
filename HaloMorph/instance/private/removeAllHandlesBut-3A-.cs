@@ -1,4 +1,8 @@
 removeAllHandlesBut: h
 	"Remove all handles except h."
-	submorphs copy do:
-		[:m | m == h ifFalse: [m delete]].
+	(Preferences maintainHalos and:[h isNil])
+		ifTrue:[self removeHalo]
+		ifFalse:[
+			submorphs copy do:
+				[:m | m == h ifFalse: [m delete]]
+		].

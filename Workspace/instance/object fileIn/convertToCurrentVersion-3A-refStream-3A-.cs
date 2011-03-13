@@ -1,5 +1,5 @@
 convertToCurrentVersion: varDict refStream: smartRefStrm
 	
-	acceptDroppedMorphs ifNil: [acceptDroppedMorphs _ false].
+	acceptDroppedMorphs ifNil: [acceptDroppedMorphs := false].
 	^super convertToCurrentVersion: varDict refStream: smartRefStrm.
 

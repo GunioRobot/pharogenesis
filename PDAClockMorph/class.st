@@ -1,1 +1,0 @@
-PDAClockMorph class instanceVariableNames: ''

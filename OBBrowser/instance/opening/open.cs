@@ -1,0 +1,2 @@
+open
+	^ OBBrowseRequest signal: self

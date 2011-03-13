@@ -1,0 +1,1 @@
+PCCByCompilationTest class instanceVariableNames: ''

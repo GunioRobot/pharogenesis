@@ -1,14 +1,14 @@
 processTagFrom: aStream
 	"Read and process the next tag from the input stream."
 	| tag data result |
-	tag _ aStream nextTag.
+	tag := aStream nextTag.
 	log ifNotNil:[
 		log cr; nextPutAll:'Tag #'; print: tag key.
 		log nextPutAll:' ('; nextPutAll: (TagTable at: tag key + 1); space; print: tag value size;
 			nextPutAll:' bytes)'.
 		self flushLog].
-	data _ FlashFileStream on: (ReadStream on: tag value).
-	result _ self dispatch: data on: tag key+1 in: TagTable ifNone:[self processUnknown: data].
+	data := FlashFileStream on: (ReadStream on: tag value).
+	result := self dispatch: data on: tag key+1 in: TagTable ifNone:[self processUnknown: data].
 	(log isNil or:[data atEnd]) ifFalse:[
 		log 
 			nextPutAll:'*** ';

@@ -8,6 +8,6 @@ installPackageNamed: aString
 	Better to specify a specific release."
 
 	| p |
-	p _ self packageWithNameBeginning: aString.
+	p := self packageWithNameBeginning: aString.
 	p ifNil: [self error: 'No package found with name beginning with ', aString].
 	^self installPackage: p

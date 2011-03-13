@@ -1,7 +1,7 @@
 Object
 	subclass: #TextStyle
 	instanceVariableNames:
-		'fontArray fontFamilySize lineGrid baseline alignment firstIndent restIndent rightIndent tabsArray marginTabsArray leading defaultFontIndex '
+		'fontArray fontFamilySize lineGrid baseline alignment firstIndent restIndent rightIndent tabsArray marginTabsArray leading defaultFontIndex'
 	classVariableNames: ''
-	poolDictionaries: 'TextConstants '
+	poolDictionaries: 'TextConstants'
 	category: 'Graphics-Text'

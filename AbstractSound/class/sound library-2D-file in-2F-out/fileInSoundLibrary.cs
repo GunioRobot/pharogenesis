@@ -3,7 +3,7 @@ fileInSoundLibrary
 	"AbstractSound fileInSoundLibrary"
 
 	| fileName |
-	fileName _ FillInTheBlank request: 'Sound library file name?'.
+	fileName := UIManager default request: 'Sound library file name?'.
 	fileName isEmptyOrNil ifTrue: [^ self].
-	(fileName endsWith: '.sounds') ifFalse: [fileName _ fileName, '.sounds'].
+	(fileName endsWith: '.sounds') ifFalse: [fileName := fileName, '.sounds'].
 	self fileInSoundLibraryNamed: fileName.

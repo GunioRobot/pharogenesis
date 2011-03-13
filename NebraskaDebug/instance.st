@@ -1,6 +1,6 @@
 Object
 	subclass: #NebraskaDebug
 	instanceVariableNames: ''
-	classVariableNames: 'DEBUG Details '
+	classVariableNames: 'DEBUG Details'
 	poolDictionaries: ''
-	category: 'Morphic-Remote'
+	category: 'Nebraska-Morphic-Remote'

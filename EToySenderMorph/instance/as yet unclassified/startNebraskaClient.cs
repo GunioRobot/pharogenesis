@@ -3,7 +3,7 @@ startNebraskaClient
 	| newMorph |
 	[
 		[
-			newMorph _ NetworkTerminalMorph connectTo: self ipAddress.
+			newMorph := NetworkTerminalMorph connectTo: self ipAddress.
 			WorldState addDeferredUIMessage: [newMorph openInStyle: #scaled] fixTemps.
 		]
 			on: Error

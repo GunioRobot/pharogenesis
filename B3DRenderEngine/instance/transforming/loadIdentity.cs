@@ -1,2 +1,0 @@
-loadIdentity
-	^transformer loadIdentity

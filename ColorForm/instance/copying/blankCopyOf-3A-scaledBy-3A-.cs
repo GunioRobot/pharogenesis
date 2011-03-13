@@ -1,6 +1,2 @@
 blankCopyOf: aRectangle scaledBy: scale
-
-        | newForm |
-        newForm _ super blankCopyOf: aRectangle scaledBy: scale.
-        colors ifNotNil: [newForm colors: colors copy].
-        ^ newForm
+	^Form extent: (aRectangle extent * scale) truncated depth: 32

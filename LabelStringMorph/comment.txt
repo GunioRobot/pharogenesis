@@ -1,0 +1,1 @@
+I am the stringMorph label for a system window. When a user   tries to edit me (shift-click's me) I call >>relabel in my SystemWindow.  In this way the SystemWindow is informed of the change.

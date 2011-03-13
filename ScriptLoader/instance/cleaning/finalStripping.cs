@@ -1,0 +1,2 @@
+finalStripping
+	"self new finalStripping"

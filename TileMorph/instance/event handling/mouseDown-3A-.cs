@@ -1,6 +1,9 @@
 mouseDown: evt 
 	self setProperty: #previousLiteral toValue: self literalFromContents.
-	self setProperty: #previousPoint toValue: evt position.
+	(upArrow notNil
+			and: [(upArrow containsPoint: evt position)
+					or: [downArrow containsPoint: evt position]])
+		ifTrue: [self setProperty: #previousPoint toValue: evt position].
 	self currentHand releaseKeyboardFocus.
 	evt hand
 		waitForClicksOrDrag: self

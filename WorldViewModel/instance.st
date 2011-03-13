@@ -1,6 +1,6 @@
 Object
 	subclass: #WorldViewModel
-	instanceVariableNames: 'initialExtent '
+	instanceVariableNames: 'initialExtent'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'ST80-Morphic'
+	category: 'MorphicExtras-ST80'

@@ -1,1 +1,0 @@
-FXBltSimulator class instanceVariableNames: ''

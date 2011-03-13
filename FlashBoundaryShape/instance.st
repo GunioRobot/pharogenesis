@@ -3,4 +3,4 @@ CompressedBoundaryShape
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon-MMFlash Support'
+	category: 'Flash-Support'

@@ -1,8 +1,8 @@
 createPatchFormGetterAndSetter
 	"Create BitBlt's for getting and setting patch colors."
 
-	patchColorGetter _ BitBlt bitPeekerFromForm: patchForm.
-	patchColorSetter _
+	patchColorGetter := BitBlt bitPeekerFromForm: patchForm.
+	patchColorSetter :=
 		(BitBlt toForm: patchForm)
 			combinationRule: Form over;
 			clipRect: patchForm boundingBox;

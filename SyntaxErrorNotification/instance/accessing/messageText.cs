@@ -1,3 +1,3 @@
 messageText
 	^ super messageText
-		ifNil: [messageText _ self syntaxError contents]
+		ifNil: [messageText := code]

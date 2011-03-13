@@ -1,2 +1,0 @@
-readmeText
- ^CelesteAddressBook helpText.

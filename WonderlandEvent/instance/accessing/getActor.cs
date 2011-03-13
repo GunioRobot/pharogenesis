@@ -1,3 +1,0 @@
-getActor
-
-	^ actor.

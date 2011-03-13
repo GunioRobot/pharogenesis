@@ -1,2 +1,2 @@
 level1: anInteger
-	level1 _ anInteger
+	level1 := anInteger

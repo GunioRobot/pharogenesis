@@ -40,7 +40,7 @@ snapshot: save andQuit: quit embedded: embeddedFlag
 	Smalltalk processStartUpList: resuming == true.
 	resuming == true ifTrue:[
 		self setPlatformPreferences.
-		self readDocumentFile].
+		self recordStartupStamp].
 	Smalltalk isMorphic ifTrue: [SystemWindow wakeUpTopWindowUponStartup].
 	"Now it's time to raise an error"
 	resuming == nil ifTrue: [self error:'Failed to write image file (disk full?)'].

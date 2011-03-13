@@ -23,7 +23,10 @@ storeCodeOn: aStream indent: tabCount
 
 					aStream nextPutAll: 'self']
 				ifFalse: 
-					[Preferences capitalizedReferences 
+					[(actualObject isPlayerLike and: [actualObject isSequentialStub]) ifTrue: [
+						actualObject storeCodeOn: aStream indent: tabCount.
+					] ifFalse: [
+						 Preferences capitalizedReferences 
 						ifTrue: 
 							["Global dictionary References"
 
@@ -35,7 +38,7 @@ storeCodeOn: aStream indent: tabCount
 
 							aStream nextPutAll: 'self class '.
 							aStream 
-								nextPutAll: (playerBearingCode class referenceSelectorFor: actualObject)]]].
+								nextPutAll: (playerBearingCode class referenceSelectorFor: actualObject)]]]].
 	type = #operator 
 		ifTrue: 
 			[op := ((UpdatingOperators includesKey: operatorOrExpression) 

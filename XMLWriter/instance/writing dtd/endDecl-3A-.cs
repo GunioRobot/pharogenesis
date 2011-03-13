@@ -1,2 +1,0 @@
-endDecl: type
-	self endTag

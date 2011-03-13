@@ -1,11 +1,11 @@
 midiPlayLoop
 
 	| mSecsPerStep tStart mSecs |
-	mSecsPerStep _ 5.
+	mSecsPerStep := 5.
 	[done] whileFalse: [
-		tStart _ Time millisecondClockValue.
+		tStart := Time millisecondClockValue.
 		self processAllAtTick: ticksSinceStart asInteger.
 		(Delay forMilliseconds: mSecsPerStep) wait.
-		mSecs _ Time millisecondClockValue - tStart.
-		mSecs < 0 ifTrue: [mSecs _ mSecsPerStep].  "clock wrap"
-		ticksSinceStart _ ticksSinceStart + (mSecs asFloat / (1000.0 * secsPerTick))].
+		mSecs := Time millisecondClockValue - tStart.
+		mSecs < 0 ifTrue: [mSecs := mSecsPerStep].  "clock wrap"
+		ticksSinceStart := ticksSinceStart + (mSecs asFloat / (1000.0 * secsPerTick))].

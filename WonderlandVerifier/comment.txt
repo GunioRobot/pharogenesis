@@ -1,1 +1,0 @@
-This class implements methods for verifying the parameters passed to methods.  The intention is that each parameter is verified, and if it's not of the expected type then an error message is constructed and displayed to the user. This provides a gentler method of informing the user of errors than throwing them into the debugger.

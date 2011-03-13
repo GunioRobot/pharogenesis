@@ -2,7 +2,7 @@ invokeScoreMenu: evt
 	"Invoke the score's edit menu."
 
 	| menu subMenu |
-	menu _ MenuMorph new defaultTarget: self.
+	menu := MenuMorph new defaultTarget: self.
 	menu addList:
 		{{'cut' translated.		#cutSelection}.
 		{'copy' translated.		#copySelection}.
@@ -18,10 +18,10 @@ invokeScoreMenu: evt
 		{{'expand time' translated.		#expandTime}.
 		{'contract time' translated.		#contractTime}}.
 	menu addLine.
-	subMenu _ MenuMorph new defaultTarget: self.
+	subMenu := MenuMorph new defaultTarget: self.
 		(2 to: 12) do: [:i | subMenu add: i printString selector: #beatsPerMeasure: argument: i].
 		menu add: 'time   ' translated, beatsPerMeasure printString subMenu: subMenu.
-	subMenu _ MenuMorph new defaultTarget: self.
+	subMenu := MenuMorph new defaultTarget: self.
 		#(2 4 8) do: [:i | subMenu add: i printString selector: #notePerBeat: argument: i].
 		menu add: 'sig     ' translated, notePerBeat printString subMenu: subMenu.
 	menu addLine.

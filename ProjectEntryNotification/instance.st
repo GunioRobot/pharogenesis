@@ -1,6 +1,6 @@
 Notification
 	subclass: #ProjectEntryNotification
-	instanceVariableNames: 'projectToEnter '
+	instanceVariableNames: 'projectToEnter'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Exceptions Kernel'
+	category: 'Exceptions-Kernel'

@@ -1,8 +1,8 @@
 addMemberFromClipboard
 	| string newName |
 	self canAddMember ifFalse: [ ^self ].
-	string _ Clipboard clipboardText asString.
-	newName _ FillInTheBlankMorph
+	string := Clipboard clipboardText asString.
+	newName := FillInTheBlankMorph
 		request: 'New name for member:'
 		initialAnswer: 'clipboardText'.
 	newName notEmpty ifTrue: [

@@ -12,13 +12,16 @@ loadFromServer: newerAutomatically
 	self currentVersionNumber > pair second ifTrue: [
 		^ self inform: ('That server has an older version of the project.' translated)].
 	version = (Project parseProjectFileName: pair first) second ifTrue: [
-		resp _ (PopUpMenu labels: 'Reload anyway\Cancel' translated withCRs) startUpWithCaption: 
-					'The only changes are the ones you made here.' translated.
+		resp _ (UIManager default chooseFrom: 
+				(Array with: 'Reload anyway' translated 
+						with: 'Cancel' translated withCRs) 
+				title:  'The only changes are the ones you made here.' translated).
 		resp ~= 1 ifTrue: [^ nil]
 	] ifFalse: [
 		newerAutomatically ifFalse: [
-			resp _ (PopUpMenu labels: 'Load it\Cancel' translated withCRs) startUpWithCaption: 
-						'A newer version exists on the server.' translated.
+			resp _ (UIManager default 
+						chooseFrom: #('Load it' 'Cancel') 
+						title:  'A newer version exists on the server.').
 			resp ~= 1 ifTrue: [^ nil]
 		].
 	].

@@ -1,0 +1,2 @@
+buttonBarServices
+	^ ServicePreferences valueOfPreference: #useServicesInBrowserButtonBar 

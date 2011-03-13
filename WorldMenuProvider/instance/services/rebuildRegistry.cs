@@ -1,0 +1,2 @@
+rebuildRegistry
+	^ ServiceAction text: 'Rebuild service registry' button: 'rebuild registry' description: 'Rebuilds the service registry to scan for newly defined services' action: [ServiceRegistry rebuild].

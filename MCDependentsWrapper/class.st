@@ -1,0 +1,1 @@
+MCDependentsWrapper class instanceVariableNames: ''

@@ -6,6 +6,4 @@ noteInstalledPackageWithId: uuidString autoVersion: version atSeconds: time numb
 	This method is typically called from a doIt in the changelog
 	in order to try to keep track of packages installed."
 
-	num negative ifFalse: ["Not an emulated count from prior SM1.07"
-		installCounter _ num max: installCounter].
-	self markInstalled: (UUID fromString: uuidString) version: version time: time counter: num
+	^self registry noteInstalledPackageWithId: uuidString autoVersion: version atSeconds: time number: num

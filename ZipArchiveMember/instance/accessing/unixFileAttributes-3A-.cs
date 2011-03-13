@@ -1,8 +1,8 @@
 unixFileAttributes: perms
 	| oldPerms newPerms |
-	oldPerms _ self mapPermissionsToUnix: externalFileAttributes.
-	newPerms _  self isDirectory
+	oldPerms := self mapPermissionsToUnix: externalFileAttributes.
+	newPerms :=  self isDirectory
 			ifTrue: [ (perms bitAnd: FileAttrib bitInvert) bitOr: DirectoryAttrib ]
 			ifFalse: [ (perms bitAnd: DirectoryAttrib bitInvert) bitOr: FileAttrib ].
-	externalFileAttributes _ self mapPermissionsFromUnix: newPerms.
+	externalFileAttributes := self mapPermissionsFromUnix: newPerms.
 	^oldPerms.

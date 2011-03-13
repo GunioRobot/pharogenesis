@@ -1,2 +1,0 @@
-hiddenScrollBars
-	^ self valueOfFlag: #hiddenScrollBars

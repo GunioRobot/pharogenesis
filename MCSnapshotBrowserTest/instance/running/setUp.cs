@@ -1,3 +1,3 @@
 setUp
-	model _ MCSnapshotBrowser forSnapshot: MCSnapshotResource current snapshot.
-	morph _ model buildWindow.
+	model := MCSnapshotBrowser forSnapshot: MCSnapshotResource current snapshot.
+	morph := model buildWindow.

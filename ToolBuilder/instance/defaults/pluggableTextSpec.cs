@@ -1,0 +1,2 @@
+pluggableTextSpec
+	^PluggableTextSpec

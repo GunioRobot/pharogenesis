@@ -1,10 +1,10 @@
 videoLoop: aStream
 	| location oneTime | 
 
-	oneTime _ true.
+	oneTime := true.
 	[self external videoReadFrameInto: self form stream: aStream.
 	oneTime ifTrue: 
-			[oneTime _ false.
+			[oneTime := false.
 			self noSound ifFalse: 
 				[self playAudioStreamNoSeek: aStream.
 				semaphoreForSound wait.
@@ -15,7 +15,7 @@ videoLoop: aStream
 				ifTrue: [Display forceToScreen]
 				ifFalse: [self form displayOn: Display]].
 	self changed.
-		location _ (self currentVideoFrameForStream: aStream)+1.
+		location := (self currentVideoFrameForStream: aStream)+1.
 	true 
 			ifTrue: [self calculateDelayGivenFrame: location stream: aStream]
 			ifFalse: [self calculateDelayToSoundGivenFrame: location stream: aStream].

@@ -1,2 +1,0 @@
-getObject
-	^object

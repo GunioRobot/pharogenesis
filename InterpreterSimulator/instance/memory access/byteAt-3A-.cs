@@ -1,2 +1,0 @@
-byteAt: byteAddress
-	^self subclassResponsibility

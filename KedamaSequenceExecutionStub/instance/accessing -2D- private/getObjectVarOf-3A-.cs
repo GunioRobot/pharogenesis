@@ -1,0 +1,3 @@
+getObjectVarOf: var
+
+	^ var.

@@ -1,0 +1,3 @@
+heading
+
+	^ self getHeading.

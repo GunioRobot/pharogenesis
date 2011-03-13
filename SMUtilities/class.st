@@ -1,0 +1,1 @@
+SMUtilities class instanceVariableNames: ''

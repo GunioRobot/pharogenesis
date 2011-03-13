@@ -3,7 +3,7 @@ packageReleaseWithId: anIdString
 	Raise error if it is not a package release."
 
 	| r |
-	r _ self objectWithId: anIdString.
+	r := self objectWithId: anIdString.
 	r ifNil: [^nil].
 	r isPackageRelease ifTrue:[^r].
 	self error: 'UUID did not map to a package release.'

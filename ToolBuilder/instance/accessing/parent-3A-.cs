@@ -1,0 +1,2 @@
+parent: aWidget
+	parent := aWidget

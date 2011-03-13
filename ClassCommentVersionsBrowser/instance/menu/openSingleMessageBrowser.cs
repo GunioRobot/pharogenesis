@@ -2,7 +2,7 @@ openSingleMessageBrowser
 	| mr |
 	"Create and schedule a message list browser populated only by the currently selected message"
 
-	mr _ MethodReference new
+	mr := MethodReference new
 				setStandardClass: self selectedClass
 				methodSymbol: #Comment.
 

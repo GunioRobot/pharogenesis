@@ -6,4 +6,4 @@ recordTextEnd: id
 		textMorph stepTime: stepTime.
 		textMorph lockChildren.
 		shapes at: id put: textMorph].
-	self doLog ifTrue:[log _ Transcript].
+	self doLog ifTrue:[log := Transcript].

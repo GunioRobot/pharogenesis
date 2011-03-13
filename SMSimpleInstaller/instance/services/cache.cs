@@ -3,5 +3,5 @@ cache
 	Set the directory and fileName for subsequent unpacking and install."
 
 	packageRelease ensureInCache ifTrue: [
-		fileName _ packageRelease downloadFileName.
-		dir _ packageRelease cacheDirectory]
+		fileName := packageRelease downloadFileName.
+		dir := packageRelease cacheDirectory]

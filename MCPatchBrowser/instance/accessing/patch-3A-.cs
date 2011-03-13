@@ -1,2 +1,2 @@
 patch: aPatch
-	items _ aPatch operations asSortedCollection
+	items := aPatch operations asSortedCollection

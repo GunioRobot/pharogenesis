@@ -1,6 +1,6 @@
 PluggableListMorph
 	subclass: #PluggableMultiColumnListMorph
-	instanceVariableNames: 'lists selectedIndex '
+	instanceVariableNames: 'lists'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Windows'
+	category: 'Morphic-Pluggable Widgets'

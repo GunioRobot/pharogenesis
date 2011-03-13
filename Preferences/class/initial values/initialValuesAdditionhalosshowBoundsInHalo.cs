@@ -1,2 +1,0 @@
-initialValuesAdditionhalosshowBoundsInHalo
-	^ #((showBoundsInHalo false (halos ) ) )

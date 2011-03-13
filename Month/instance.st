@@ -1,6 +1,6 @@
-Date
+Timespan
 	subclass: #Month
 	instanceVariableNames: ''
 	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Kernel-Magnitudes'
+	poolDictionaries: 'ChronologyConstants'
+	category: 'Kernel-Chronology'

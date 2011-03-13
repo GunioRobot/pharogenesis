@@ -3,7 +3,7 @@ processHeader
 	Return true if successful, false otherwise."
 	| twipsFrameSize frameRate frameCount |
 	self processSignature ifFalse:[^false].
-	version _ stream nextByte.
+	version := stream nextByte.
 	"Check for the version supported"
 	version > self maximumSupportedVersion ifTrue:[
 		(self confirm:('This file''s version ({1}) is higher than 
@@ -12,14 +12,14 @@ It may contain features that are not supported
 and it may not display correctly.
 Do you want to continue?' translated format:{version. self maximumSupportedVersion})) ifFalse:[^false]].
 
-	dataSize _ stream nextLong.
+	dataSize := stream nextLong.
 	"Check for the minimal file size"
 	dataSize < 21 ifTrue:[^false].
-	twipsFrameSize _ stream nextRect.
+	twipsFrameSize := stream nextRect.
 	self recordGlobalBounds: twipsFrameSize.
-	frameRate _ stream nextWord / 256.0.
+	frameRate := stream nextWord / 256.0.
 	self recordFrameRate: frameRate.
-	frameCount _ stream nextWord.
+	frameCount := stream nextWord.
 	self recordFrameCount: frameCount.
 	log ifNotNil:[
 		log cr; nextPutAll:'------------- Header information --------------'.

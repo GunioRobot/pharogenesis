@@ -1,2 +1,2 @@
 phoneme: aPhoneme
-	phoneme _ aPhoneme
+	phoneme := aPhoneme

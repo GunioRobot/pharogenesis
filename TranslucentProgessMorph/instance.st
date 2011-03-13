@@ -1,6 +1,6 @@
 Morph
 	subclass: #TranslucentProgessMorph
-	instanceVariableNames: 'opaqueBackgroundColor '
+	instanceVariableNames: 'opaqueBackgroundColor'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Windows'

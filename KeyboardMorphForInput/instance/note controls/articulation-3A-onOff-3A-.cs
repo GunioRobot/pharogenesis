@@ -5,4 +5,4 @@ articulation: artic onOff: ignored    "artic = eg, #legato, #normal, #staccato."
 		[:m | ((m isMemberOf: SimpleSwitchMorph)
 				and: [m actionSelector == #articulation:onOff:])
 				ifTrue: [m setSwitchState: m arguments first == artic]].
-	articulation _ artic
+	articulation := artic

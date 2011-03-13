@@ -3,7 +3,7 @@ drawPolygon: points fill: fillStyle borderWidth: borderWidth borderColor: border
 	| fills |
 	self edgeTransform: aTransform.
 	self resetIfNeeded.
-	fills _ self registerFill: fillStyle and: borderFill.
+	fills := self registerFill: fillStyle and: borderFill.
 	self primAddPolygon: points
 		segments: points size
 		fill: (fills at: 1)

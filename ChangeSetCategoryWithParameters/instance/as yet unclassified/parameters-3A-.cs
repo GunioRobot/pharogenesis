@@ -1,2 +1,2 @@
 parameters: anArray
-	parameters _ anArray
+	parameters := anArray

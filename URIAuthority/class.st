@@ -1,0 +1,1 @@
+URIAuthority class instanceVariableNames: ''

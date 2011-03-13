@@ -1,2 +1,0 @@
-prevObj
-	^prev

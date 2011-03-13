@@ -1,2 +1,0 @@
-stepTime: aNumber
-	stepTime := aNumber

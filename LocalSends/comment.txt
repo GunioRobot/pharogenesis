@@ -1,0 +1,1 @@
+This class provide the model extension describing local sends for a given class. These are described in the comment for SendInfo, which is the class that actually computes this information.

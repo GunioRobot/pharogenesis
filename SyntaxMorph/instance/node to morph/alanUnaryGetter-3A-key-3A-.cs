@@ -11,4 +11,4 @@ alanUnaryGetter: aNode key: key
 	wordy _ self translateToWordyGetter: key.
 	wordy = key asString ifFalse: [
 		usm setProperty: #syntacticallyCorrectContents toValue: key asString].
-	usm contents: wordy; emphasis: 1.
+	usm contents: wordy; emphasis: TextEmphasis bold emphasisCode.

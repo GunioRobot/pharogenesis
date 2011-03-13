@@ -1,6 +1,6 @@
 BookPageSorterMorph
 	subclass: #TabSorterMorph
-	instanceVariableNames: 'originalTabs '
+	instanceVariableNames: 'originalTabs'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Palettes'
+	category: 'MorphicExtras-Palettes'

@@ -1,2 +1,0 @@
-ushort
-	^self unsignedShort

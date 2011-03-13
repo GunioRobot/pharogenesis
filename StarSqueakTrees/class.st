@@ -1,0 +1,1 @@
+StarSqueakTrees class instanceVariableNames: ''

@@ -1,6 +1,6 @@
 MatrixTransformMorph
 	subclass: #FlashMorph
-	instanceVariableNames: 'colorTransform '
-	classVariableNames: 'FlashSoundVolume '
+	instanceVariableNames: 'colorTransform'
+	classVariableNames: 'FlashSoundVolume'
 	poolDictionaries: ''
-	category: 'Balloon-MMFlash Morphs'
+	category: 'Flash-Morphs'

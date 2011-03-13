@@ -1,0 +1,1 @@
+GSMCodec class instanceVariableNames: ''

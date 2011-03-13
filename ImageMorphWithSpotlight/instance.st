@@ -1,6 +1,6 @@
 ImageMorph
 	subclass: #ImageMorphWithSpotlight
-	instanceVariableNames: 'spotImage spotShape spotBuffer spotOn '
+	instanceVariableNames: 'spotImage spotShape spotBuffer spotOn'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Demo'
+	category: 'MorphicExtras-Demo'

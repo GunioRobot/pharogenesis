@@ -1,6 +1,6 @@
 Morph
 	subclass: #MouseActionIndicatorMorph
-	instanceVariableNames: 'siblings '
+	instanceVariableNames: 'siblings'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Widgets'
+	category: 'MorphicExtras-Widgets'

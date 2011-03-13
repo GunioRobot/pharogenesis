@@ -1,2 +1,2 @@
 packageName: aString
-	packageName _ aString
+	packageName := aString

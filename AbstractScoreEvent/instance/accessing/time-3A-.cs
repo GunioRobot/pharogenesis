@@ -1,3 +1,3 @@
 time: aNumber
 
-	time _ aNumber.
+	time := aNumber.

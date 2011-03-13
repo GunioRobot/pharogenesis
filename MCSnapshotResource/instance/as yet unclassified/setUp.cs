@@ -1,2 +1,2 @@
 setUp
-	snapshot _ self class takeSnapshot.
+	snapshot := self class takeSnapshot.

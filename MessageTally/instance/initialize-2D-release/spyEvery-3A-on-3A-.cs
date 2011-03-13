@@ -3,8 +3,8 @@ spyEvery: millisecs on: aBlock
 
 	| myDelay startTime time0 |
 	(aBlock isMemberOf: BlockContext)
-		ifFalse: [self error: 'spy needs a block here'].
-	self class: aBlock receiver class method: aBlock method.
+		ifTrue: [self class: aBlock receiver class method: aBlock method]
+		ifFalse: [self class: aBlock class method: aBlock method].
 		"set up the probe"
 	ObservedProcess _ Processor activeProcess.
 	myDelay := Delay forMilliseconds: millisecs.

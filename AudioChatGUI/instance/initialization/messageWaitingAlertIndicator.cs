@@ -1,8 +1,8 @@
 messageWaitingAlertIndicator
 
 	| messageCounter |
-	myalert _ AlertMorph new socketOwner: self.
-	messageCounter _ UpdatingStringMorph on: self selector: #objectsInQueue.
+	myalert := AlertMorph new socketOwner: self.
+	messageCounter := UpdatingStringMorph on: self selector: #objectsInQueue.
 	myalert addMorph: messageCounter.
 	messageCounter contents: '0'; color: Color white.
 	messageCounter align: messageCounter center with: myalert center.

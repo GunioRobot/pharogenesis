@@ -1,1 +1,0 @@
-ChessPlayerAI class instanceVariableNames: ''

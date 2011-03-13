@@ -1,3 +1,3 @@
 spawn: contentsString
 
-	(Workspace new contents: contentsString) openLabel: 'Workspace'
+	UIManager default edit: contentsString label: 'Workspace'

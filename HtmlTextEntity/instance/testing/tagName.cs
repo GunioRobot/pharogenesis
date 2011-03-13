@@ -1,3 +1,0 @@
-tagName
-	"bogus"
-	^'x-text'  

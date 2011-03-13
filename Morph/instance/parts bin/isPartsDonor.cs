@@ -1,5 +1,4 @@
 isPartsDonor
 	"answer whether the receiver is PartsDonor"
-	self hasExtension
-		ifFalse: [^ false].
-	^ self extension isPartsDonor
+	extension ifNil: [^ false].
+	^ extension isPartsDonor

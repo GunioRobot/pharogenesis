@@ -1,1 +1,0 @@
-WonderlandActorData class instanceVariableNames: ''

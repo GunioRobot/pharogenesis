@@ -1,3 +1,0 @@
-RPLWhoIsOperator
-	""
-	^313

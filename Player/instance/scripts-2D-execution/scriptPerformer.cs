@@ -1,2 +1,0 @@
-scriptPerformer
-	^ self

@@ -1,0 +1,2 @@
+dockingBarGradientRamp
+	^ self subclassResponsibility

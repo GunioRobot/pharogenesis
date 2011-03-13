@@ -1,3 +1,3 @@
 muted: aBoolean
 
-	muted _ aBoolean.
+	muted := aBoolean.

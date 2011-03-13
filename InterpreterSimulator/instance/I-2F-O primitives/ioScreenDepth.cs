@@ -1,2 +1,0 @@
-ioScreenDepth
-	^DisplayScreen actualScreenDepth.

@@ -1,3 +1,3 @@
 value: aString
 
-	^ self value: aString start: nil id: nil
+	^ self value: aString start: 0 id: nil

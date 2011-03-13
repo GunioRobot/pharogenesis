@@ -1,5 +1,5 @@
 updateCrc
 	crcPosition <= position ifTrue:[
-		bytesWritten _ bytesWritten + position - crcPosition + 1.
-		crc _ self updateCrc: crc from: crcPosition to: position in: collection.
-		crcPosition _ position + 1].
+		bytesWritten := bytesWritten + position - crcPosition + 1.
+		crc := self updateCrc: crc from: crcPosition to: position in: collection.
+		crcPosition := position + 1].

@@ -1,4 +1,4 @@
 processFileAsync: aPlayer
 	"Read and process the entire file"
-	player _ aPlayer.
+	player := aPlayer.
 	super processFile.

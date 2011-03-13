@@ -8,7 +8,7 @@ testMissingZipCrc
 	bytes := writer encodedStream contents.
 
 	reader := ZipReadStream on: bytes.
-	self shouldnt:[readBytes _ reader upToEnd] raise: CRCError.
+	self shouldnt:[readBytes := reader upToEnd] raise: CRCError.
 	self assert: readBytes = 'Hello World'.
 
 	reader := ZipReadStream on: bytes.

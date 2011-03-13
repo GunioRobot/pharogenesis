@@ -1,3 +1,0 @@
-getActorViewer
-
-	^ myActorViewer.

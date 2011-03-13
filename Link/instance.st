@@ -1,6 +1,6 @@
 Object
 	subclass: #Link
-	instanceVariableNames: 'nextLink '
+	instanceVariableNames: 'nextLink'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Collections-Support'

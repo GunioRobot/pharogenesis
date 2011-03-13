@@ -1,0 +1,3 @@
+kedamaWorld
+
+	^ kedamaWorld.

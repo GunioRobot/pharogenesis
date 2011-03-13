@@ -1,4 +1,4 @@
-deny: aBoolean
+deny: aBooleanOrBlock
 
-	self assert: aBoolean not
+	self assert: aBooleanOrBlock value not
 			

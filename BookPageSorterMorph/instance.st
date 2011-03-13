@@ -1,6 +1,6 @@
 AlignmentMorph
 	subclass: #BookPageSorterMorph
-	instanceVariableNames: 'book pageHolder '
+	instanceVariableNames: 'book pageHolder'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Books'
+	category: 'MorphicExtras-Books'

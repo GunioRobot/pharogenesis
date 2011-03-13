@@ -1,1 +1,0 @@
-DescType class instanceVariableNames: ''

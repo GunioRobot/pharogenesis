@@ -1,2 +1,0 @@
-hasYellowButtonMenu
-	^getMenuSelector notNil

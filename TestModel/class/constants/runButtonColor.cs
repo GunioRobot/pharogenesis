@@ -1,3 +1,0 @@
-runButtonColor
-
-	^Color yellow

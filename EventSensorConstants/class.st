@@ -1,0 +1,1 @@
+EventSensorConstants class instanceVariableNames: ''

@@ -7,9 +7,10 @@ httpPostDocument: url  args: argsDict accept: mimeType request: requestString
 	page _ httpUrl fullPath.
 	"add arguments"
 	argString _ argsDict
-		ifNotNil: [argString _ self argString: argsDict]
+		ifNotNil: [
+			argString _ self argString: argsDict.
+			argString first = $? ifTrue: [ argString _ argString copyFrom: 2 to: argString size]]
 		ifNil: [''].
-	page _ page, argString.
 
 	s _ HTTPSocket new. 
 	s _ self initHTTPSocket: httpUrl wait: (self deadlineSecs: 30) ifError: [:errorString | ^errorString].
@@ -24,7 +25,6 @@ httpPostDocument: url  args: argsDict accept: mimeType request: requestString
 		'Content-length: ', argString size printString, CrLf,
 		'Host: ', httpUrl authority, CrLf.  "blank line automatically added"
 
-	argString first = $? ifTrue: [ argString _ argString copyFrom: 2 to: argString size].
 	"umur - IE sends argString without a $? and swiki expects so"
 	s sendCommand: argString.
 

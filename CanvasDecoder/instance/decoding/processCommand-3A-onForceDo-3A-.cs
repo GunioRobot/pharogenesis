@@ -5,10 +5,10 @@ processCommand: command  onForceDo: forceBlock
 	| verb verbCode selector |
 	command isEmpty ifTrue: [ ^self ].
 
-	verb _ command first.
+	verb := command first.
 	verbCode := verb first.
 
-	selector _ DecodeTable
+	selector := DecodeTable
 		at: (verbCode asciiValue + 1)
 		ifAbsent: [ self error: 'unknown command: ', verb ].
 

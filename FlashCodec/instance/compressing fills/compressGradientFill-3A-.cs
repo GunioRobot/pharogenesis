@@ -7,10 +7,10 @@ compressGradientFill: aFillStyle
 	self printPoint: aFillStyle origin on: stream.
 	self printPoint: aFillStyle direction on: stream.
 	self printPoint: aFillStyle normal on: stream.
-	ramp _ aFillStyle colorRamp.
+	ramp := aFillStyle colorRamp.
 	stream nextPut: $+; print: ramp size.
 	ramp do:[:assoc|
-		key _ (assoc key * 255) truncated.
+		key := (assoc key * 255) truncated.
 		stream nextPut: (Character value: key).
 		self storeColor: assoc value on: stream].
 	stream nextPut:$X. "Terminator"

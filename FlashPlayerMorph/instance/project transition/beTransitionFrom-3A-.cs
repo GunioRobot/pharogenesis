@@ -1,3 +1,3 @@
 beTransitionFrom: srcProjectName
 
-	^self beTransitionFrom: srcProjectName to: CurrentProjectRefactoring currentProjectName
+	^self beTransitionFrom: srcProjectName to: Project current name

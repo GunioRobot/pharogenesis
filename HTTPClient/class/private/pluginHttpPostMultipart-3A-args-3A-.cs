@@ -29,7 +29,7 @@ pluginHttpPostMultipart: url args: argsDict
 			'Content-type: multipart/form-data; boundary=', mimeBorder, crLf,
 			'Content-length: ', argsStream contents size printString, crLf, crLf, 
 			argsStream contents)
-		url: url ifError: [^'Error in post ' url toText].
+		url: url ifError: [^'Error in post ' url asString].
 	"get the header of the reply"
 	result _ resultStream
 		ifNil: ['']

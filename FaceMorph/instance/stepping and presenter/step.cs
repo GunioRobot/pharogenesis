@@ -12,7 +12,7 @@ step
 				 2 atRandom = 1 ifTrue: [self lookAtFront]] fork.
 				^ self].
 	"20 atRandom = 1 ifTrue: [(self perform: #(leftEye rightEye) atRandom) closeEyelid]."
-	20 atRandom = 1 ifTrue: [amount _ (0.2 to: 1.0 by: 0.01) atRandom.
+	20 atRandom = 1 ifTrue: [amount := (0.2 to: 1.0 by: 0.01) atRandom.
 							 self leftEye openness: amount. self rightEye openness: amount].
 	3 atRandom = 1 ifTrue: [self lookAtHand. ^ self].
 	3 atRandom = 1 ifTrue: [self lookAtFront. ^ self].

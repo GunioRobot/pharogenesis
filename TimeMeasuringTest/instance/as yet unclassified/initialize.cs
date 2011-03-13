@@ -1,0 +1,2 @@
+initialize
+	shouldProfile _ false.

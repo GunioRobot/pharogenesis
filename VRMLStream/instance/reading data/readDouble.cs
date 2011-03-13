@@ -1,2 +1,0 @@
-readDouble
-	^self readFloat

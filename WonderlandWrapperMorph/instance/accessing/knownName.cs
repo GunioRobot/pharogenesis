@@ -1,2 +1,0 @@
-knownName
-	^myActor getName

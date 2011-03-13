@@ -1,0 +1,2 @@
+asNode
+	^OBMethodNode on: self

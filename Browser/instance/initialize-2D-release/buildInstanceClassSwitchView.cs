@@ -1,12 +1,12 @@
 buildInstanceClassSwitchView
 	| aView aSwitchView instSwitchView comSwitchView |
 
-	aView _ View new model: self.
+	aView := View new model: self.
 	aView window: (0 @ 0 extent: 50 @ 8).
-	instSwitchView _ self buildInstanceSwitchView.
+	instSwitchView := self buildInstanceSwitchView.
 	aView addSubView: instSwitchView.
-	comSwitchView _ self buildCommentSwitchView.
+	comSwitchView := self buildCommentSwitchView.
 	aView addSubView: comSwitchView toRightOf: instSwitchView.
-	aSwitchView _ self buildClassSwitchView.
+	aSwitchView := self buildClassSwitchView.
 	aView addSubView: aSwitchView toRightOf: comSwitchView.
 	^aView

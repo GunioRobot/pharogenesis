@@ -1,1 +1,0 @@
-WonderlandAmbientLight class instanceVariableNames: ''

@@ -2,7 +2,7 @@ invokeMenu
 	"Invoke a menu of additonal functions for this ScorePlayer."
 
 	| aMenu |
-	aMenu _ MenuMorph new defaultTarget: self.
+	aMenu := MenuMorph new defaultTarget: self.
 	aMenu add: 'open a MIDI file' translated action: #openMIDIFile.
 	aMenu addList: {
 		#-.

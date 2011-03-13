@@ -1,1 +1,0 @@
-SystemTracer class instanceVariableNames: ''

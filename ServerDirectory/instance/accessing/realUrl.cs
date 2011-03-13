@@ -3,7 +3,7 @@ realUrl
 
 	self isTypeFile ifTrue: [
 		self fileNameRelativeTo: self.
-		^ urlObject toText
+		^ urlObject asString
 	].
 	^ self typeWithDefault asString, '://', self pathName
 	

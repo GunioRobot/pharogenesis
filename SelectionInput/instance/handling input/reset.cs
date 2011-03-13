@@ -1,2 +1,0 @@
-reset
-	listMorph selection: defaultValue

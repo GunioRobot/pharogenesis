@@ -1,2 +1,0 @@
-debugButtonLabel
-        ^ 'Debug'

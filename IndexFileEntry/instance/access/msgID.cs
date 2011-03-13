@@ -1,3 +1,0 @@
-msgID
-
-	^msgID

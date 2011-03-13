@@ -1,7 +1,7 @@
 CharacterScanner
 	subclass: #CharacterBlockScanner
 	instanceVariableNames:
-		'characterPoint characterIndex lastCharacter lastCharacterExtent lastSpaceOrTabExtent nextLeftMargin specialWidth '
+		'characterPoint characterIndex lastCharacter lastCharacterExtent lastSpaceOrTabExtent nextLeftMargin specialWidth'
 	classVariableNames: ''
-	poolDictionaries: 'TextConstants '
+	poolDictionaries: ''
 	category: 'Graphics-Text'

@@ -1,2 +1,2 @@
 recordLineStyle: styleIndex
-	lineStyleIndex _ styleIndex.
+	lineStyleIndex := styleIndex.

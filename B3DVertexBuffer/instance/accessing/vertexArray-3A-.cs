@@ -1,2 +1,0 @@
-vertexArray: aB3DVertexArray
-	vertexArray _ aB3DVertexArray

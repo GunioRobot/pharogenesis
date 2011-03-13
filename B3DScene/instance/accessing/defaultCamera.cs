@@ -1,2 +1,0 @@
-defaultCamera
-	^defaultCamera

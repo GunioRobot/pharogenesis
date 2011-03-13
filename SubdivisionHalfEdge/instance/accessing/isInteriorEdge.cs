@@ -1,2 +1,0 @@
-isInteriorEdge
-	^quadEdge isInteriorEdge

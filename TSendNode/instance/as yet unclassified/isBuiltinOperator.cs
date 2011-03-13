@@ -1,3 +1,0 @@
-isBuiltinOperator
-
-	^ isBuiltinOperator

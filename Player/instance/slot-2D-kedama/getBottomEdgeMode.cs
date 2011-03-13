@@ -1,0 +1,3 @@
+getBottomEdgeMode
+
+	^ self getValueFromCostume: #bottomEdgeMode.

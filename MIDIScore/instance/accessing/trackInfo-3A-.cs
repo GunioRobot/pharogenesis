@@ -1,3 +1,3 @@
 trackInfo: trackInfoList
 
-	trackInfo _ trackInfoList asArray.
+	trackInfo := trackInfoList asArray.

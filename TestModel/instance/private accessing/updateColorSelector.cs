@@ -1,3 +1,0 @@
-updateColorSelector
-
-	^updateColorSelector

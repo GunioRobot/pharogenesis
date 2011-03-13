@@ -1,6 +1,6 @@
 AlignmentMorph
 	subclass: #SyntaxMorph
-	instanceVariableNames: 'parseNode markerMorph '
-	classVariableNames: ''
+	instanceVariableNames: 'parseNode markerMorph'
+	classVariableNames: 'AllSpecs ContrastFactor DownRightArrow SelfTile SizeScaleFactor'
 	poolDictionaries: ''
-	category: 'Morphic-Tile Scriptors'
+	category: 'EToys-Tile Scriptors'

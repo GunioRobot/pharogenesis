@@ -1,0 +1,2 @@
+getBrowser
+	^ self getModel

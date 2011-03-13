@@ -3,19 +3,19 @@ sendOneOfMany: aSampledSound
 	| null message aCompressedSound ratio resultBuf oldSamples newCount t fromIndex val maxVal |
 
 	self samplingRateForTransmission = aSampledSound originalSamplingRate ifTrue: [
-		aCompressedSound _ mycodec compressSound: aSampledSound.
+		aCompressedSound := mycodec compressSound: aSampledSound.
 	] ifFalse: [
-		t _ [
-			ratio _ aSampledSound originalSamplingRate // self samplingRateForTransmission.
-			oldSamples _ aSampledSound samples.
-			newCount _ oldSamples monoSampleCount // ratio.
-			resultBuf _ SoundBuffer newMonoSampleCount: newCount.
-			fromIndex _ 1.
-			maxVal _ 0.
+		t := [
+			ratio := aSampledSound originalSamplingRate // self samplingRateForTransmission.
+			oldSamples := aSampledSound samples.
+			newCount := oldSamples monoSampleCount // ratio.
+			resultBuf := SoundBuffer newMonoSampleCount: newCount.
+			fromIndex := 1.
+			maxVal := 0.
 			1 to: newCount do: [ :i |
-				maxVal _ maxVal max: (val _ oldSamples at: fromIndex).
+				maxVal := maxVal max: (val := oldSamples at: fromIndex).
 				resultBuf at: i put: val.
-				fromIndex _ fromIndex + ratio.
+				fromIndex := fromIndex + ratio.
 			].
 		] timeToRun.
 		NebraskaDebug at: #soundReductionTime add: {t. maxVal}.
@@ -23,22 +23,22 @@ sendOneOfMany: aSampledSound
 			NebraskaDebug at: #soundReductionTime add: {'---dropped---'}.
 			^self
 		].		"awfully quiet"
-		aCompressedSound _ mycodec compressSound: (
+		aCompressedSound := mycodec compressSound: (
 			SampledSound new 
 				setSamples: resultBuf 
 				samplingRate: aSampledSound originalSamplingRate // ratio
 		).
 	].
 
-	null _ String with: 0 asCharacter.
-	message _ {
+	null := String with: 0 asCharacter.
+	message := {
 		EToyIncomingMessage typeAudioChatContinuous,null. 
 		Preferences defaultAuthorName,null.
 		aCompressedSound samplingRate asInteger printString,null.
 		aCompressedSound channels first.
 	}.
 	queueForMultipleSends ifNil: [
-		queueForMultipleSends _ EToyPeerToPeer new 
+		queueForMultipleSends := EToyPeerToPeer new 
 			sendSomeData: message
 			to: mytargetip
 			for: self

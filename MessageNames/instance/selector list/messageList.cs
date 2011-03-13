@@ -2,7 +2,7 @@ messageList
 	"Answer the receiver's message list, computing it if necessary. The way 
 	to force a recomputation is to set the messageList to nil"
 	messageList
-		ifNil: [messageList _ selectorListIndex == 0
+		ifNil: [messageList := selectorListIndex == 0
 						ifTrue: [#()]
 						ifFalse: [self systemNavigation
 								allImplementorsOf: (selectorList at: selectorListIndex)].

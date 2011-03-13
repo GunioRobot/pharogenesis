@@ -1,0 +1,1 @@
+SmaCCParser class instanceVariableNames: ''

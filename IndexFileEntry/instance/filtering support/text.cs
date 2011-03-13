@@ -1,2 +1,0 @@
-text
-	^self getMessage text

@@ -1,1 +1,0 @@
-TetrisBoard class instanceVariableNames: ''

@@ -5,12 +5,12 @@ fromAIFFfileNamed: fileName
 	 FileDirectory default fileNames do: [:n |
 		(n endsWith: '.aif')
 			ifTrue: [
-				snd _ SampledSound fromAIFFfileNamed: n.
+				snd := SampledSound fromAIFFfileNamed: n.
 				snd play.
 				SoundPlayer waitUntilDonePlaying: snd]]."
 
 	| aiffFileReader |
-	aiffFileReader _ AIFFFileReader new.
+	aiffFileReader := AIFFFileReader new.
 	aiffFileReader readFromFile: fileName
 		mergeIfStereo: true
 		skipDataChunk: false.

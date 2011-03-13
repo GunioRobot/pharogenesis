@@ -1,2 +1,0 @@
-setMorphicEvent: aMorphicEvent
-	morphicEvent _ aMorphicEvent

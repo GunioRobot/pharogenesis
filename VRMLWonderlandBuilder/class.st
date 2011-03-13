@@ -1,1 +1,0 @@
-VRMLWonderlandBuilder class instanceVariableNames: ''

@@ -1,6 +1,6 @@
 SketchMorph
 	subclass: #BookPageThumbnailMorph
-	instanceVariableNames: 'page pageNumber bookMorph flipOnClick '
+	instanceVariableNames: 'page pageNumber bookMorph flipOnClick'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Books'
+	category: 'MorphicExtras-Books'

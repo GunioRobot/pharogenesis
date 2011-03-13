@@ -1,0 +1,1 @@
+TraitAlias class instanceVariableNames: ''

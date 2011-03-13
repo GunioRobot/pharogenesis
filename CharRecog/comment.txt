@@ -1,7 +1,0 @@
-Alan Kay's "one-page" character recognizer.  Currently hooked up to text panes and to text morphs, such that you can get it started by hitting cmd-r in such text area that currently has focus.  
-
-To reinitialize the recognition dictionary, evaluate
-
-	CharRecog reinitializeCharacterDictionary
-
- 

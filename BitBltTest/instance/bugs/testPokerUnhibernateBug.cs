@@ -1,4 +1,6 @@
 testPokerUnhibernateBug
+	"self run: #testPokerUnhibernateBug"
+
 	| bitBlt |
 	bitBlt := BitBlt bitPokerToForm: Display.
 	bitBlt sourceForm hibernate.

@@ -1,1 +1,0 @@
-Subdivision class instanceVariableNames: ''

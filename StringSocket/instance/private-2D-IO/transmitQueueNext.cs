@@ -2,8 +2,8 @@ transmitQueueNext
 
 	| bufTuple |
 
-	bufTuple _ outputQueue next.
-	bytesInOutputQueue _ bytesInOutputQueue - bufTuple second max: 0.
+	bufTuple := outputQueue next.
+	bytesInOutputQueue := bytesInOutputQueue - bufTuple second max: 0.
 	[
 		self 
 			sendDataCautiously: bufTuple first 
@@ -11,7 +11,7 @@ transmitQueueNext
 	]
 		on: Error
 		do: [ :ex |
-			transmissionError _ true.
+			transmissionError := true.
 		].
 	^transmissionError not
 

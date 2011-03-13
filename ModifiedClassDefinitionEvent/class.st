@@ -1,0 +1,1 @@
+ModifiedClassDefinitionEvent class instanceVariableNames: ''

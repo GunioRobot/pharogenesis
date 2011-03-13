@@ -2,7 +2,7 @@ addButtonRows
 	"Create and add my button row."
 
 	| r |
-	r _ AlignmentMorph newRow vResizing: #shrinkWrap.
+	r := AlignmentMorph newRow vResizing: #shrinkWrap.
 	r addMorphBack: ((self buttonName: 'Menu' action: #invokeMenu)
 		actWhen: #buttonDown).
 	r addMorphBack: (Morph new extent: 4@1; color: Color transparent).

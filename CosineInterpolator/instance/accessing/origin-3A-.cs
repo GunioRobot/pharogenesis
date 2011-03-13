@@ -1,2 +1,2 @@
 origin: aNumber
-	origin _ aNumber
+	origin := aNumber

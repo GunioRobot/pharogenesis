@@ -1,3 +1,3 @@
 value: anObject
 
-	value _ anObject
+	value := anObject

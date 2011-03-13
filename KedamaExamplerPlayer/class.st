@@ -1,0 +1,1 @@
+KedamaExamplerPlayer class instanceVariableNames: ''

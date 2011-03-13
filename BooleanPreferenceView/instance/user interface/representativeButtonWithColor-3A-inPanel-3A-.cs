@@ -17,7 +17,7 @@ representativeButtonWithColor: aColor inPanel: aPreferencesPanel
 	str := StringMorph contents: self preference name font: (StrikeFont familyName: 'NewYork' size: 12).
 
 	self preference localToProject ifTrue:
-		[str emphasis: 1].
+		[str emphasis: TextEmphasis bold emphasisCode].
 
 	miniWrapper := AlignmentMorph newRow hResizing: #shrinkWrap; vResizing: #shrinkWrap.
 	miniWrapper beTransparent addMorphBack: str lock.

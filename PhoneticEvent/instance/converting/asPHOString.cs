@@ -1,6 +1,6 @@
 asPHOString
 	| stream |
-	stream _ WriteStream on: String new.
+	stream := WriteStream on: String new.
 	stream
 		nextPutAll: (PhonemeSet arpabetToSampa at: self phoneme); space;
 		print: (self duration * 1000) rounded.

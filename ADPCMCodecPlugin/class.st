@@ -1,1 +1,0 @@
-ADPCMCodecPlugin class instanceVariableNames: ''

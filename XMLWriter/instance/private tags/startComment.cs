@@ -1,2 +1,0 @@
-startComment
-	self stream nextPutAll: '<-- '

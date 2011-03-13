@@ -1,4 +1,4 @@
 initialize
-	points _ SortedCollection new.
-	stack _ SortedCollection new.
-	origin _ 0
+	points := SortedCollection new.
+	stack := SortedCollection new.
+	origin := 0

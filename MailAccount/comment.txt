@@ -1,5 +1,0 @@
-I store Account for Celeste.
- Starting with Celeste 1.24 you can have multile instances of me, for storing your accounts.
-Probably I was done by ads.
-Giovanni Giorgi (gg) added this comment.
-

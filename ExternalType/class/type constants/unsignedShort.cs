@@ -1,2 +1,0 @@
-unsignedShort
-	^AtomicTypes at: 'ushort'

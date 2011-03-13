@@ -1,2 +1,0 @@
-primitiveIndexOf: methodPointer
-	^methodPointer primitive

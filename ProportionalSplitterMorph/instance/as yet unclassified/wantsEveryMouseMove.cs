@@ -1,0 +1,3 @@
+wantsEveryMouseMove
+
+	^ true

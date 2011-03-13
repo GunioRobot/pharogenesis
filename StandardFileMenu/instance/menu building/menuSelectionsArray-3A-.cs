@@ -2,7 +2,7 @@ menuSelectionsArray: aDirectory
 "Answer a menu selections object corresponding to aDirectory.  The object is an array corresponding to each item, each element itself constituting a two-element array, the first element of which contains a selector to operate on and the second element of which contains the parameters for that selector."
 
 	|dirSize|
-	dirSize _ aDirectory pathParts size.
+	dirSize := aDirectory pathParts size.
 	^Array streamContents: [:s |
 		canTypeFileName ifTrue:
 			[s nextPut: (StandardFileMenuResult
@@ -22,7 +22,7 @@ menuSelectionsArray: aDirectory
 						directory: (FileDirectory on: (aDirectory fullNameFor: dn))
 						name: '')].
 		aDirectory fileNames do: 
-			[:fn | (pattern match: fn) ifTrue: [
+			[:fn | pattern do: [:pat | (pat match: fn) ifTrue: [
 					s nextPut: (StandardFileMenuResult
 						directory: aDirectory
-						name: fn)]]]
+						name: fn)]]]]

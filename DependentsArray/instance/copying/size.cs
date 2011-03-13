@@ -1,2 +1,2 @@
 size
-	^self inject: 0 into: [ :count :dep | dep ifNotNil: [ count _ count + 1 ]]
+	^self inject: 0 into: [ :count :dep | dep ifNil: [ count ] ifNotNil: [ count + 1 ]]

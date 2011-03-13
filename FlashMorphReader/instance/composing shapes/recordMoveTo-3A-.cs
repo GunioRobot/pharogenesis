@@ -1,2 +1,2 @@
 recordMoveTo: aPoint
-	location _ aPoint.
+	location := aPoint.

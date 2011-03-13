@@ -1,5 +1,5 @@
 processFrameLabel: data
 	| label |
-	label _ data nextString.
+	label := data nextString.
 	self recordFrameLabel: label.
 	^true

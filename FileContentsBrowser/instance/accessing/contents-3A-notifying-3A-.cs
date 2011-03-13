@@ -6,11 +6,11 @@ contents: input notifying: aController
 	Answer the result of updating the source."
 
 	| aString aText theClass |
-	aString _ input asString.
-	aText _ input asText.
+	aString := input asString.
+	aText := input asText.
 
 	editSelection == #editComment 
-		ifTrue: [theClass _ self selectedClass.
+		ifTrue: [theClass := self selectedClass.
 				theClass ifNil: [self inform: 'You must select a class
 before giving it a comment.'.
 				^ false].

@@ -7,7 +7,7 @@ initialize
 	hasFocus _ false.
 	self initializeScrollBars.
 	""
-	self extent: 150 @ 120.
+	self extent: self defaultExtent.
 	self hideOrShowScrollBars.
 
 

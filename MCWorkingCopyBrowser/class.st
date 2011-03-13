@@ -1,0 +1,1 @@
+MCWorkingCopyBrowser class instanceVariableNames: ''

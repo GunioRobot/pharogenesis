@@ -1,0 +1,3 @@
+map: aMap
+
+	map := aMap

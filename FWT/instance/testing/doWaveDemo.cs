@@ -6,7 +6,7 @@ doWaveDemo  "FWT new doWaveDemo"
 
 	"Install a sine wave as sample data"
 	self samples: ((1 to: nSamples) collect: [:i | ((i-1) * 0.02 * Float pi) sin]).
-	originalData _ samples copy.
+	originalData := samples copy.
 	FFT new plot: (samples copyFrom: 1 to: nSamples) in: (0@0 extent: nSamples@100).
 
 	"Transform forward and plot the decomposition"

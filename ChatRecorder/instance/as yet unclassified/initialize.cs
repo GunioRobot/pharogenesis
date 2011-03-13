@@ -4,5 +4,5 @@ initialize
 	I'm still trying to understand it all, but there it is for now"
 
 	super initialize.
-	samplingRate _ 44100.
+	samplingRate := 44100.
 

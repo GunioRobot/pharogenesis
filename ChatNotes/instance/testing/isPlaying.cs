@@ -1,3 +1,3 @@
 isPlaying
 
-	^isPlaying ifNil: [isPlaying _ false]
+	^isPlaying ifNil: [isPlaying := false]

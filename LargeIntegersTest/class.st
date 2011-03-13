@@ -1,1 +1,0 @@
-LargeIntegersTest class instanceVariableNames: ''

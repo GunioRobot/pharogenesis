@@ -1,4 +1,4 @@
 selectedItemWrapper: aWrapper
-	selectedItemWrapper _ aWrapper.
+	selectedItemWrapper := aWrapper.
 	self changed: #selectedItemWrapper.
 	self contentsChanged

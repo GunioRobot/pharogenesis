@@ -6,4 +6,6 @@ alignCentersHorizontally
 	minLeft _ (selectedItems collect: [:itm | itm left]) min.
 	leftMost _ selectedItems detect: [:m | m left = minLeft].
 	selectedItems do:
-		[:itm | itm center: (itm center x @ leftMost center y)]
+		[:itm | itm center: (itm center x @ leftMost center y)].
+
+	self changed

@@ -1,6 +1,0 @@
-This class shows how a scene can be built from blocks.
-
-To see the examples, execute these statements one by one:
-
- B3DDemoBlockWorld example1.
- B3DDemoBlockWorld example2.

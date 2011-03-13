@@ -1,0 +1,3 @@
+getEvaporationRate
+
+	^ self getValueFromCostume: #evaporationRate.

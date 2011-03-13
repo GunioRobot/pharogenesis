@@ -4,8 +4,8 @@ newOnCategory: aCategory
 	"Browser newOnCategory: 'Interface-Browser'"
 
 	| newBrowser catList |
-	newBrowser _ self new.
-	catList _ newBrowser systemCategoryList.
+	newBrowser := self new.
+	catList := newBrowser systemCategoryList.
 	newBrowser systemCategoryListIndex: 
 		(catList indexOf: aCategory asSymbol ifAbsent: [^ self inform: 'No such category']).
 	^ self 

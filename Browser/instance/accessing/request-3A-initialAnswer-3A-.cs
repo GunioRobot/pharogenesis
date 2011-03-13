@@ -1,5 +1,5 @@
 request: prompt initialAnswer: initialAnswer
 
-	^ FillInTheBlank
+	^ UIManager default
 		request: prompt
 		initialAnswer: initialAnswer

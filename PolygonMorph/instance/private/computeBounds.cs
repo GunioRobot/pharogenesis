@@ -5,7 +5,7 @@ computeBounds
 	self changed.
 	oldBounds _ bounds.
 	self releaseCachedState.
-	bounds _ self curveBounds truncated.
+	bounds _ self curveBounds expanded.
 	self arrowForms do:
 		[:f | bounds _ bounds merge: (f offset extent: f extent)].
 	handles ifNotNil: [self updateHandles].

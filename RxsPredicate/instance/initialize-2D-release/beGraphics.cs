@@ -1,4 +1,0 @@
-beGraphics
-	self
-		beControl;
-		negate

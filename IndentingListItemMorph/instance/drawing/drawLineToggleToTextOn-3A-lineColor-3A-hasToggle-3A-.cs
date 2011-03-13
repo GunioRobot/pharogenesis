@@ -8,9 +8,7 @@ drawLineToggleToTextOn: aCanvas lineColor: lineColor hasToggle: hasToggle
 	myBounds := self toggleBounds.
 	myCenter := myBounds center.
 	hLineY := myCenter y.
-	hasToggle
-		ifTrue: [hLineLeft := myBounds right - 3]
-		ifFalse: [hLineLeft := myCenter x - 1].
+	hLineLeft := myCenter x - 1.
 	"Draw line from toggle to text"
 	aCanvas
 		line: hLineLeft @ hLineY

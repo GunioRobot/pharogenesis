@@ -3,8 +3,8 @@ decodeTTCFont: fontString
 	"Decode a string that consists of <familyName> <pointSize> <emphasis> (e.g. 'ComicSansMS 12 0') into a proper instance."
 
 	| first second |
-	first _ fontString indexOf: $  startingAt: 1.
-	second _ fontString indexOf: $  startingAt: first + 1.
+	first := fontString indexOf: $  startingAt: 1.
+	second := fontString indexOf: $  startingAt: first + 1.
 
 	(first ~= 0 and: [second ~= 0]) ifTrue: [
 		^ (TTCFont family: (fontString copyFrom: 1 to: (first - 1))

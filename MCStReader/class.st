@@ -1,0 +1,1 @@
+MCStReader class instanceVariableNames: ''

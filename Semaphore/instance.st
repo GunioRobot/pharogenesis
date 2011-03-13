@@ -1,6 +1,6 @@
 LinkedList
 	subclass: #Semaphore
-	instanceVariableNames: 'excessSignals '
+	instanceVariableNames: 'excessSignals'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Kernel-Processes'

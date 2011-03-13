@@ -1,6 +1,6 @@
 PluggableListMorph
 	subclass: #PluggableMessageCategoryListMorph
-	instanceVariableNames: 'getRawListSelector priorRawList '
+	instanceVariableNames: 'getRawListSelector priorRawList'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Windows'
+	category: 'Morphic-Pluggable Widgets'

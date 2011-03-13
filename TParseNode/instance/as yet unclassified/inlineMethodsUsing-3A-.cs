@@ -1,3 +1,0 @@
-inlineMethodsUsing: aDictionary
-
-	self

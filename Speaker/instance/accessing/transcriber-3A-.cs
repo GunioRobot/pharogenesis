@@ -1,2 +1,2 @@
 transcriber: aPhoneticTranscriber
-	transcriber _ aPhoneticTranscriber
+	transcriber := aPhoneticTranscriber

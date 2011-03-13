@@ -1,0 +1,3 @@
+Instances of this class are used to keep track of selectors that are sent to self, sent to super, and sent to the class-side in any of the methods of a certain class. It also keeps track of the requirements of a class.
+
+It's important to understand that this class just serves as storage for these sets of selectors. It does not contain any logic to actually compute them. In particular, it cannot compute the requirements.

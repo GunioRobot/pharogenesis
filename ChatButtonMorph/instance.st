@@ -1,6 +1,6 @@
 SimpleButtonMorph
 	subclass: #ChatButtonMorph
-	instanceVariableNames: 'actionDownSelector actionUpSelector labelDown labelUp '
+	instanceVariableNames: 'actionDownSelector actionUpSelector labelDown labelUp'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Audio-Chat'
+	category: 'Nebraska-Audio Chat'

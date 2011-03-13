@@ -1,0 +1,1 @@
+MCMockPackageInfo class instanceVariableNames: ''

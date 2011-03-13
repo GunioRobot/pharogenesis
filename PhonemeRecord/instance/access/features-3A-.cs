@@ -1,3 +1,3 @@
 features: anObject
 
-	features _ anObject.
+	features := anObject.

@@ -1,6 +1,6 @@
 initialize
 
 	super initialize.
-	depth _ 8.
-	treeTypeSelector _ #tree1.
+	depth := 8.
+	treeTypeSelector := #tree1.
 	self setup.

@@ -1,2 +1,0 @@
-extractFlashInHighQuality
-	^ self valueOfFlag: #extractFlashInHighQuality

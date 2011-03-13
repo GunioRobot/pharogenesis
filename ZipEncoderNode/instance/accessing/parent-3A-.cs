@@ -1,2 +1,2 @@
 parent: aNode
-	parent _ aNode
+	parent := aNode

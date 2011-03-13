@@ -1,6 +1,6 @@
 BorderedMorph
 	subclass: #TTSampleFontMorph
-	instanceVariableNames: 'font transform smoothing '
+	instanceVariableNames: 'font transform smoothing'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon-TrueType Support'
+	category: 'Morphic-TrueType'

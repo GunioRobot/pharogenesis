@@ -1,6 +1,6 @@
 ListController
 	subclass: #PluggableListController
-	instanceVariableNames: 'terminateDuringSelect '
+	instanceVariableNames: 'terminateDuringSelect'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'ST80-Pluggable Views'

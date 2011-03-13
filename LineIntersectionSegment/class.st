@@ -1,1 +1,0 @@
-LineIntersectionSegment class instanceVariableNames: ''

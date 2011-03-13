@@ -1,1 +1,0 @@
-MiscPrimitivePlugin class instanceVariableNames: ''

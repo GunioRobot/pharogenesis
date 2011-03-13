@@ -1,2 +1,4 @@
 haloTheme
-	^ Parameters at: #HaloTheme ifAbsent: [Parameters at: #HaloTheme put: #iconic]
+	^ self
+		valueOfFlag: #haloTheme
+		ifAbsent: [#iconicHaloSpecifications]

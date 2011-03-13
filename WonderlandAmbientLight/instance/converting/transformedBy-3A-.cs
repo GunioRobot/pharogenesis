@@ -1,2 +1,0 @@
-transformedBy: aTransformer
-	^self

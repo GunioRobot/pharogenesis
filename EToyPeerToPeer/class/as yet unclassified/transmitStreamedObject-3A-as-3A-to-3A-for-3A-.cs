@@ -1,7 +1,7 @@
 transmitStreamedObject: outData as: objectCategory to: anIPAddress for: aCommunicator
 
 	| null |
-	null _ String with: 0 asCharacter.
+	null := String with: 0 asCharacter.
 	self new 
 		sendSomeData: {
 			objectCategory,null. 

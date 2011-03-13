@@ -1,2 +1,2 @@
 clearChoice
-	chooseRemote _ nil
+	chooseRemote := nil

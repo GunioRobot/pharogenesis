@@ -11,9 +11,9 @@ desiredCompressionLevel: aNumber
 	desiredCompressionMethod to CompressionDeflated."
 
 	| old |
-	old _ desiredCompressionLevel.
-	desiredCompressionLevel _ aNumber.
-	desiredCompressionMethod _ (aNumber > 0)
+	old := desiredCompressionLevel.
+	desiredCompressionLevel := aNumber.
+	desiredCompressionMethod := (aNumber > 0)
 		ifTrue: [ CompressionDeflated ]
 		ifFalse: [ CompressionStored ].
 	^old

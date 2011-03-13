@@ -1,3 +1,0 @@
-windowLabel
-
-	^self class windowLabel

@@ -1,0 +1,2 @@
+replayPreferences
+	ServicePreferences replayPreferences: self savedPreferences

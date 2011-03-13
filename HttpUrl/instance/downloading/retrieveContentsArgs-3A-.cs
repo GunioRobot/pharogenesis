@@ -1,2 +1,2 @@
 retrieveContentsArgs: args
-	^self retrieveContentsArgs: args accept: 'application/octet-stream'
+	^self retrieveContentsArgs: args accept: '*/*; q=1'

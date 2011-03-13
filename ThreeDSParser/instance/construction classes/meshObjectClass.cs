@@ -1,2 +1,0 @@
-meshObjectClass
-	^self specAt: #meshObject

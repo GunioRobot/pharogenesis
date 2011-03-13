@@ -1,0 +1,3 @@
+serveWorld
+
+	^ self serveWorld: ActiveWorld.

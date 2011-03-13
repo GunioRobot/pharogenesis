@@ -8,11 +8,8 @@ selectedMessage
 	self setClassAndSelectorIn: [:class :selector | 
 		class ifNil: [^ 'here would go the documentation for the protocol category, if any.'].
 
-		self showingDecompile ifTrue:
-			[^ self decompiledSourceIntoContentsWithTempNames: Sensor leftShiftDown not ].
+		self showingDecompile ifTrue: [^ self decompiledSourceIntoContents].
+		self showingDocumentation ifTrue: [^ self commentContents].
 
-		self showingDocumentation ifTrue:
-			[^ self commentContents].
-
-		currentCompiledMethod _ class compiledMethodAt: selector ifAbsent: [nil].
+		currentCompiledMethod := class compiledMethodAt: selector ifAbsent: [nil].
 		^ self sourceStringPrettifiedAndDiffed asText makeSelectorBoldIn: class]

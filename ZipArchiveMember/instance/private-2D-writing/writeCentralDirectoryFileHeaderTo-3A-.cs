@@ -2,9 +2,9 @@ writeCentralDirectoryFileHeaderTo: aStream
 	"C2 v3 V4 v5 V2"
 
 	| systemFileName systemFileComment systemCdExtraField |
-	systemFileName _ fileName asVmPathName.
-	systemFileComment _ fileComment convertToSystemString.
-	systemCdExtraField _ cdExtraField.
+	systemFileName := fileName asVmPathName.
+	systemFileComment := fileComment convertToSystemString.
+	systemCdExtraField := cdExtraField.
 	aStream nextPutAll: CentralDirectoryFileHeaderSignature.
 	aStream nextLittleEndianNumber: 1 put: versionMadeBy.
 	aStream nextLittleEndianNumber: 1 put: fileAttributeFormat.

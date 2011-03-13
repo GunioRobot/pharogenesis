@@ -1,2 +1,2 @@
 bitsPerSample: aNumber
-	bitsPerSample _ aNumber
+	bitsPerSample := aNumber

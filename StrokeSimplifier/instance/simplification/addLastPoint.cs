@@ -1,2 +1,0 @@
-addLastPoint
-	self addNextPoint.

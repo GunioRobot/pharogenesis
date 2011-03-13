@@ -1,3 +1,3 @@
 antCount: aNumber
 
-	antCount _ aNumber.
+	antCount := aNumber.

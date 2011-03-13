@@ -1,2 +1,0 @@
-argumentCountOf: methodPointer
-	^methodPointer numArgs

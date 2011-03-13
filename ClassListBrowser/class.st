@@ -1,0 +1,1 @@
+ClassListBrowser class instanceVariableNames: ''

@@ -1,4 +1,4 @@
 initialize
 
-	cellCount _ 200.
+	cellCount := 200.
 	super initialize.

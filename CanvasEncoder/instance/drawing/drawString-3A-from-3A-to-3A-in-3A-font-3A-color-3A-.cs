@@ -1,11 +1,11 @@
 drawString: s from: firstIndex to: lastIndex in: boundsRect font: fontOrNil color: c
 	| fontIndex str |
 	fontIndex := self establishFont: (fontOrNil ifNil: [ TextStyle defaultFont ]).
-	str _ s asString.
+	str _ s asString copyFrom: firstIndex to: lastIndex.
 	str isWideString ifTrue: [
 		self sendCommand: {
 			String with: CanvasEncoder codeMultiText.
-			(str copyFrom: firstIndex to: lastIndex) asByteArray asString.
+			str asByteArray asString.
 			self class encodeRectangle: boundsRect.
 			self class encodeInteger: fontIndex.
 			self class encodeColor: c
@@ -13,7 +13,7 @@ drawString: s from: firstIndex to: lastIndex in: boundsRect font: fontOrNil colo
 	] ifFalse: [
 		self sendCommand: {
 			String with: CanvasEncoder codeText.
-			s asString copyFrom: firstIndex to: lastIndex.
+			str.
 			self class encodeRectangle: boundsRect.
 			self class encodeInteger: fontIndex.
 			self class encodeColor: c

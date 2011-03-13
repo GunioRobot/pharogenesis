@@ -1,0 +1,1 @@
+BlobMPEGMorph class instanceVariableNames: ''

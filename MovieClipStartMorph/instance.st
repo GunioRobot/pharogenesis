@@ -1,7 +1,7 @@
 MovieFrameSyncMorph
 	subclass: #MovieClipStartMorph
 	instanceVariableNames:
-		'movieClipPlayer movieClipFileName soundTrackFileName soundTrackPlayerReady soundTrackMorph soundTrackTimeScale scoreEvent endMorph clipColor colorMorph '
+		'movieClipPlayer movieClipFileName soundTrackFileName soundTrackPlayerReady soundTrackMorph soundTrackTimeScale scoreEvent endMorph clipColor colorMorph'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Demo'
+	category: 'Movies-Player'

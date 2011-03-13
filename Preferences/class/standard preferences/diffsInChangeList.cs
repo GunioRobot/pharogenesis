@@ -1,2 +1,0 @@
-diffsInChangeList
-	^ self valueOfFlag: #diffsInChangeList

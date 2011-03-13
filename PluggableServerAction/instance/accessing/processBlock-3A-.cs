@@ -1,2 +1,0 @@
-processBlock: aBlock
-	processBlock := aBlock.

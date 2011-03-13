@@ -1,2 +1,0 @@
-smtpUserName
-	^ self popUserName

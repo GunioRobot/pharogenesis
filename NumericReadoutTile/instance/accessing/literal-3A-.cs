@@ -1,4 +1,5 @@
 literal: anObject 
-	literal _ anObject.
+	literal := anObject.
 	self updateLiteralLabel.
-	submorphs last informTarget
+	self labelMorph
+		ifNotNilDo: [:label | label informTarget]

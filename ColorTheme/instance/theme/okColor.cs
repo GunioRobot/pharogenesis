@@ -1,0 +1,2 @@
+okColor
+	^ Color lightGreen

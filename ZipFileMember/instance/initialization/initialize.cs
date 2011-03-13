@@ -1,5 +1,5 @@
 initialize
 	super initialize.
-	crc32 _ 0.
-	localHeaderRelativeOffset _ 0.
-	dataOffset _ 0.
+	crc32 := 0.
+	localHeaderRelativeOffset := 0.
+	dataOffset := 0.

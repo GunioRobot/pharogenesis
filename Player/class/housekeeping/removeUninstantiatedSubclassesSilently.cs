@@ -5,8 +5,11 @@ removeUninstantiatedSubclassesSilently
 	| candidatesForRemoval  oldFree |
 
 	oldFree _ Smalltalk garbageCollect.
+	candidatesForRemoval _ OrderedCollection new.
+	self allSubclassesWithLevelDo: [:e :l | candidatesForRemoval add: e] startingLevel: 2.
+	candidatesForRemoval _ candidatesForRemoval reverse.
 	candidatesForRemoval _
-		self subclasses select: [:c |
+		candidatesForRemoval select: [:c |
 			(c instanceCount = 0) and: [c subclasses size = 0]].
 	candidatesForRemoval _ candidatesForRemoval select:
 		[:aClass | aClass isSystemDefined not].

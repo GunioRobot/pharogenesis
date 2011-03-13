@@ -1,0 +1,2 @@
+defaultMetaNode
+	^self hierarchicalMetaNode

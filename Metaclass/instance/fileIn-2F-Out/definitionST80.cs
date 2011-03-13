@@ -3,7 +3,13 @@ definitionST80
 
 	^ String streamContents: 
 		[:strm |
-		strm print: self;
+		strm print: self.
+		(self hasTraitComposition and: [self traitComposition notEmpty]) ifTrue: [
+			strm
+				crtab;
+				nextPutAll: 'uses: ';
+				print: self traitComposition].
+		strm
 			crtab;
 			nextPutAll: 'instanceVariableNames: ';
 			store: self instanceVariablesString]

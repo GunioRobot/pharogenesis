@@ -1,6 +1,6 @@
 Color
 	subclass: #TranslucentColor
-	instanceVariableNames: 'alpha '
+	instanceVariableNames: 'alpha'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Graphics-Primitives'

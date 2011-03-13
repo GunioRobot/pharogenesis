@@ -1,4 +1,7 @@
 deleteAllHalos
-	self haloMorphs do:
-		[:m | (m target isKindOf: SelectionMorph) ifTrue: [m target delete].
-		m delete].
+
+	self haloMorphs
+		do: [:each | (each target isKindOf: SelectionMorph)
+				ifTrue: [each target delete]].
+	self hands
+		do: [:each | each removeHalo]

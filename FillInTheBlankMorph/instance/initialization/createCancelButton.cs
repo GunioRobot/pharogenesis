@@ -2,7 +2,7 @@ createCancelButton
 	"create the [cancel] button"
 	| result frame |
 	result := SimpleButtonMorph new target: self;
-				 color: Color lightRed.
+				 color: ColorTheme current cancelColor.
 	result
 		borderColor: (Preferences menuAppearance3d
 				ifTrue: [#raised]

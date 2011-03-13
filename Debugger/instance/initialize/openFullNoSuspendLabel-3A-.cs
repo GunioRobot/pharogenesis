@@ -5,9 +5,9 @@ openFullNoSuspendLabel: aString
 
 	Smalltalk isMorphic ifTrue: [
 		self openFullMorphicLabel: aString.
-		errorWasInUIProcess _ CurrentProjectRefactoring newProcessIfUI: interruptedProcess.
+		errorWasInUIProcess := Project spawnNewProcessIfThisIsUI: interruptedProcess.
 		^self
 	].
-	topView _ self buildMVCDebuggerViewLabel: aString minSize: 300@200.
+	topView := self buildMVCDebuggerViewLabel: aString minSize: 300@200.
 	topView controller openNoTerminate.
 	^ topView

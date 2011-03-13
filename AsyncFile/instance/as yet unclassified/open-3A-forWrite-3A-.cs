@@ -10,12 +10,12 @@ open: fullFileName forWrite: aBoolean
 	"Note: On some platforms (e.g., Mac), a file can only have one writer at a time."
 
 	| semaIndex |
-	name _ fullFileName.
-	writeable _ aBoolean.
-	semaphore _ Semaphore new.
-	semaIndex _ Smalltalk registerExternalObject: semaphore.
-	fileHandle _ self primOpen: name forWrite: writeable semaIndex: semaIndex.
+	name := fullFileName.
+	writeable := aBoolean.
+	semaphore := Semaphore new.
+	semaIndex := Smalltalk registerExternalObject: semaphore.
+	fileHandle := self primOpen: name forWrite: writeable semaIndex: semaIndex.
 	fileHandle ifNil: [
 		Smalltalk unregisterExternalObject: semaphore.
-		semaphore _ nil.
+		semaphore := nil.
 		^ nil].

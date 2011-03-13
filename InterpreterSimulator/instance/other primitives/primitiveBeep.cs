@@ -1,3 +1,0 @@
-primitiveBeep
-
-	Beeper beep.

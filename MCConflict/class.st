@@ -1,0 +1,1 @@
+MCConflict class instanceVariableNames: ''

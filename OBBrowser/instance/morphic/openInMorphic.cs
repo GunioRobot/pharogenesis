@@ -1,0 +1,2 @@
+openInMorphic
+	^ self morph openInWorld

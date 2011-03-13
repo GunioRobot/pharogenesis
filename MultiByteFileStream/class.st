@@ -1,0 +1,1 @@
+MultiByteFileStream class instanceVariableNames: ''

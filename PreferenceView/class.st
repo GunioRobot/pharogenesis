@@ -1,0 +1,1 @@
+PreferenceView class instanceVariableNames: 'registeredClasses'

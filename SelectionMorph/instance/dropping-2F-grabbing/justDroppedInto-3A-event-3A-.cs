@@ -9,6 +9,4 @@ justDroppedInto: newOwner event: evt
 			[m referencePosition: (newOwner localPointToGlobal: m referencePosition).
 			newOwner handleDropMorph:
 				(DropEvent new setPosition: evt cursorPoint contents: m hand: evt hand)] fixTemps].
-	selectedItems _ nil.
-	self removeHalo; delete.
 	evt wasHandled: true

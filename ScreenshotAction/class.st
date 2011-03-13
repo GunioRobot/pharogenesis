@@ -1,1 +1,0 @@
-ScreenshotAction class instanceVariableNames: ''

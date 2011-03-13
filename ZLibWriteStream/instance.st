@@ -3,4 +3,4 @@ ZipWriteStream
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Compression'
+	category: 'Compression-Streams'

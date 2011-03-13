@@ -1,6 +1,6 @@
 sendNotificationsForVersion: aVersion
 	| notification notifyList |
-	notifyList _ self notifyList.
+	notifyList := self notifyList.
 	notifyList isEmpty ifFalse:
-		[notification _ self notificationForVersion: aVersion.
+		[notification := self notificationForVersion: aVersion.
 		notifyList do: [:ea | notification notify: ea]]

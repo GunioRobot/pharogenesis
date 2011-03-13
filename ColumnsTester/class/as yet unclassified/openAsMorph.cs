@@ -1,2 +1,0 @@
-openAsMorph
-	^ self new openAsMorph

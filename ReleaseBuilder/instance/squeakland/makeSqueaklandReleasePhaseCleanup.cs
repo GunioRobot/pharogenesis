@@ -1,8 +1,8 @@
 makeSqueaklandReleasePhaseCleanup
 	"ReleaseBuilder new makeSqueaklandReleasePhaseCleanup"
 
-	Browser initialize.
-	ChangeSorter 
+	Smalltalk at: #Browser ifPresent:[:br| br initialize].
+	ChangeSet 
 		removeChangeSetsNamedSuchThat: [:cs | cs name ~= ChangeSet current name].
 	ChangeSet current clear.
 	ChangeSet current name: 'Unnamed1'.

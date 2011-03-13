@@ -2,7 +2,7 @@ readSignatureFrom: stream
 	"Returns next signature from given stream, leaves stream positioned afterwards."
 
 	| signatureData | 
-	signatureData _ ByteArray new: 4.
+	signatureData := ByteArray new: 4.
 	stream next: 4 into: signatureData.
 	({ CentralDirectoryFileHeaderSignature . LocalFileHeaderSignature . EndOfCentralDirectorySignature }
 		includes: signatureData)

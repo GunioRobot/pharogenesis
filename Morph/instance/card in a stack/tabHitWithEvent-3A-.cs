@@ -6,6 +6,8 @@ tabHitWithEvent: anEvent
 	fieldList _ self allMorphs select:
 		[:aMorph | (aMorph wouldAcceptKeyboardFocusUponTab) and: [aMorph isLocked not]].
 
+	fieldList isEmpty ifTrue:[^ self].
+
 	variableBearingMorphs _ self player isNil
 										ifTrue:[#()]
 										ifFalse:[self player class variableDocks collect: [:vd | vd definingMorph] thenSelect: [:m | m isInWorld]].

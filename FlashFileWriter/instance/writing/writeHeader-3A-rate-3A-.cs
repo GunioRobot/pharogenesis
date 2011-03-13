@@ -4,6 +4,6 @@ writeHeader: bounds rate: frameRate
 	self halt.
 	self writeSignature.
 	stream nextBytePut: 3. "Always write flash3"
-	dataSize _ stream nextLongPut: 0.	"Place holder for data size"
+	dataSize := stream nextLongPut: 0.	"Place holder for data size"
 	stream nextRectPut: bounds.
 	stream nextWordPut: (frameRate * 256) truncated.

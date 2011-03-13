@@ -3,7 +3,7 @@ crc16
 
 	| crc |
 	crc := 0.
-	self do: [:c |
+	1 to: self byteSize do: [:i |
 		crc := (crc bitShift: -8) bitXor: (
 		 #(	16r0000	16rC0C1	16rC181	16r0140	16rC301	16r03C0	16r0280	16rC241
 			16rC601	16r06C0	16r0780	16rC741	16r0500	16rC5C1	16rC481	16r0440
@@ -37,5 +37,5 @@ crc16
 			16r4E00	16r8EC1	16r8F81	16r4F40	16r8D01	16r4DC0	16r4C80	16r8C41
 			16r4400	16r84C1	16r8581	16r4540	16r8701	16r47C0	16r4680	16r8641
 			16r8201	16r42C0	16r4380	16r8341	16r4100	16r81C1	16r8081	16r4040)
-			 at: ((crc bitXor: c asciiValue) bitAnd: 16rFF) + 1) ].
+			 at: ((crc bitXor: (self byteAt: i)) bitAnd: 16rFF) + 1) ].
 	^crc

@@ -4,5 +4,5 @@ stripNameFrom: aString
 	"
 
 	| lessThan |
-	lessThan _ aString indexOf: $<.
+	lessThan := aString indexOf: $<.
 	^(aString copyFrom: 1 to: lessThan - 1) withBlanksTrimmed 

@@ -1,0 +1,1 @@
+KSX1001 class instanceVariableNames: ''

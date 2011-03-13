@@ -1,0 +1,2 @@
+minPanes
+	^ self paneCount

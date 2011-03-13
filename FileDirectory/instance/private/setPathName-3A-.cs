@@ -1,3 +1,3 @@
 setPathName: pathString
 
-	pathName _ FilePath pathName: pathString.
+	pathName := FilePath pathName: pathString.

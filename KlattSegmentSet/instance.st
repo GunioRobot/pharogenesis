@@ -1,6 +1,6 @@
 Object
 	subclass: #KlattSegmentSet
-	instanceVariableNames: 'phonemes segments '
+	instanceVariableNames: 'phonemes segments'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Speech-Klatt'

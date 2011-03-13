@@ -1,8 +1,7 @@
 browseIt
 	"Launch a browser for the current selection, if appropriate"
 
-	| aSymbol anEntry brow |
-
+	| aSymbol anEntry |
 	self flag: #yoCharCases.
 
 	Preferences alternativeBrowseIt ifTrue: [^ self browseClassFromIt].
@@ -19,12 +18,7 @@ browseIt
 						[ self systemNavigation browseAllImplementorsOf: aSymbol.
 						^ nil]).
 				anEntry isNil ifTrue: [^ view flash].
-				(anEntry isKindOf: Class)
-					ifFalse:	[anEntry _ anEntry class].
-				brow _ SystemBrowser default new.
-				brow setClass: anEntry selector: nil.
-				brow class
-					openBrowserView: (brow openEditString: nil)
-					label: 'System Browser']
-			ifFalse:
-				[ self systemNavigation browseAllImplementorsOf: aSymbol]]
+				(anEntry isBehavior or: [ anEntry isTrait ])
+					ifFalse: [ anEntry := anEntry class ].
+				ToolSet browse: anEntry selector: nil.
+		] ifFalse:[ self systemNavigation browseAllImplementorsOf: aSymbol]]

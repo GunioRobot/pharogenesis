@@ -3,10 +3,10 @@ reset
 
 	| seed n |
 	super reset.
-	seed _ 17.
-	n _ ring monoSampleCount.
+	seed := 17.
+	n := ring monoSampleCount.
 	1 to: n do: [:i |
-		seed _ ((seed * 1309) + 13849) bitAnd: 65535.
+		seed := ((seed * 1309) + 13849) bitAnd: 65535.
 		ring at: i put: seed - 32768].
-	count _ initialCount.
-	scaledIndex _ ScaleFactor.
+	count := initialCount.
+	scaledIndex := ScaleFactor.

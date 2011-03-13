@@ -1,0 +1,2 @@
+isDescendantOf: aNode
+	^ false

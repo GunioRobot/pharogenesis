@@ -2,7 +2,7 @@ threadOfNoProjects
 
 	| nameList nav |
 
-	nameList _ { {CurrentProjectRefactoring currentProjectName} }.
+	nameList _ { {Project current name} }.
 	nav _ self class basicNew.
 	nav
 		listOfPages: nameList;

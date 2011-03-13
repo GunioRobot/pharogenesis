@@ -1,0 +1,2 @@
+currentNode
+	^self navigationPanel currentNode

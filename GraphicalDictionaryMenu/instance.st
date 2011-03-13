@@ -1,6 +1,6 @@
 GraphicalMenu
 	subclass: #GraphicalDictionaryMenu
-	instanceVariableNames: 'baseDictionary entryNames '
+	instanceVariableNames: 'baseDictionary entryNames lastSearchString'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Menus'
+	category: 'MorphicExtras-AdditionalWidgets'

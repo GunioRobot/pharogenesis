@@ -3,10 +3,10 @@ userName: aString userPicture: aFormOrNil userEmail: emailString userIPAddress: 
 	| dropZoneRow |
 
 	self setProperty: #currentBadgeVersion toValue: self currentBadgeVersion.
-	userPicture _ aFormOrNil ifNil: [
+	userPicture := aFormOrNil ifNil: [
 		(TextStyle default fontOfSize: 26) emphasized: 1; characterFormAt: $?
 	].
-	userPicture _ userPicture scaledToSize: 61@53.
+	userPicture := userPicture scaledToSize: 61@53.
 	self killExistingChat.
 	self removeAllMorphs.
 	self useRoundedCorners.
@@ -14,7 +14,7 @@ userName: aString userPicture: aFormOrNil userEmail: emailString userIPAddress: 
 		addARow: {
 			self inAColumn: {(StringMorph contents: aString) lock}
 		}.
-	dropZoneRow _ self
+	dropZoneRow := self
 		addARow: {
 			self inAColumn: {userPicture asMorph lock}
 		}.

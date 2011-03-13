@@ -3,10 +3,10 @@ averageFeatures
 
 	| startI endI featureVectors |
 	"skip the first and last bits"
-	startI _ (samplingRate // 5).
-	endI _ samples monoSampleCount - (samplingRate // 5).
+	startI := (samplingRate // 5).
+	endI := samples monoSampleCount - (samplingRate // 5).
 	endI - startI < FFTSize ifTrue: [^ self extractFeaturesAt: endI].
 
-	featureVectors _ (startI to: endI by: FFTSize)
+	featureVectors := (startI to: endI by: FFTSize)
 		collect: [:i | (self extractFeaturesAt: i)].
 	^ self prunedAverageFeatures: featureVectors

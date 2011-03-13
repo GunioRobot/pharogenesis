@@ -1,0 +1,1 @@
+SharedQueue2 class instanceVariableNames: ''

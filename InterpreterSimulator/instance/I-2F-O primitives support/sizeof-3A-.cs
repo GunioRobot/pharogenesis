@@ -1,3 +1,0 @@
-sizeof: var
-
-	^ 4

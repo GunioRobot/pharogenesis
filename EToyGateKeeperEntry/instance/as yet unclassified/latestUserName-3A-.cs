@@ -1,3 +1,3 @@
 latestUserName: aString
 
-	latestUserName _ aString
+	latestUserName := aString

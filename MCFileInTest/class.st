@@ -1,0 +1,1 @@
+MCFileInTest class instanceVariableNames: ''

@@ -3,7 +3,7 @@ next: n into: aString startingAt: startIndex
 	Return aString or a partial copy if less than
 	n elements have been read."
 	| count |
-	count _ self primRead: fileID into: aString
+	count := self primRead: fileID into: aString
 				startingAt: startIndex count: n.
 	count = n
 		ifTrue:[^aString]

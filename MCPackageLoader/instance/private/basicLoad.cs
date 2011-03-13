@@ -1,5 +1,5 @@
 basicLoad
-	errorDefinitions _ OrderedCollection new.
+	errorDefinitions := OrderedCollection new.
 	[[additions do: [:ea | self tryToLoad: ea] displayingProgress: 'Loading...'.
 	removals do: [:ea | ea unload] displayingProgress: 'Cleaning up...'.
 	self shouldWarnAboutErrors ifTrue: [self warnAboutErrors].

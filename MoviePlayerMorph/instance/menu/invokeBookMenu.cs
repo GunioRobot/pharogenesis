@@ -1,7 +1,7 @@
 invokeBookMenu
 	"Invoke the book's control panel menu."
 	| aMenu |
-	aMenu _ MVCMenuMorph new defaultTarget: self.
+	aMenu := MVCMenuMorph new defaultTarget: self.
 	aMenu add:	'make a new movie' translated action: #makeAMovie.
 	aMenu add:	'open movie file' translated action: #openMovieFile.
 	aMenu add:	'add sound track' translated action: #addSoundTrack.

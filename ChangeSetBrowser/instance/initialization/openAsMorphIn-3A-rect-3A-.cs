@@ -2,8 +2,8 @@ openAsMorphIn: window rect: rect
 	"Add a set of changeSetBrowser views to the given top view offset by the given amount"
 
 	| aHeight |
-	contents _ ''.
-	aHeight _ 0.25.
+	contents := ''.
+	aHeight := 0.25.
 	self addDependent: window.		"so it will get changed: #relabel"
 
 

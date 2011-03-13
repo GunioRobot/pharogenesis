@@ -2,7 +2,7 @@ valueOfArgumentNamed: aName
 	"Answer the value of the given arguement variable"
 
 	| anIndex |
-	anIndex _ self methodInterface argumentVariables findFirst:
+	anIndex := self methodInterface argumentVariables findFirst:
 		[:aVariable | aVariable variableName = aName].
 	^ anIndex > 0
 		ifTrue:

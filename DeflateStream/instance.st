@@ -1,6 +1,6 @@
 WriteStream
 	subclass: #DeflateStream
-	instanceVariableNames: 'hashHead hashTail hashValue blockPosition blockStart '
+	instanceVariableNames: 'hashHead hashTail hashValue blockPosition blockStart'
 	classVariableNames: ''
-	poolDictionaries: 'ZipConstants '
-	category: 'System-Compression'
+	poolDictionaries: 'ZipConstants'
+	category: 'Compression-Streams'

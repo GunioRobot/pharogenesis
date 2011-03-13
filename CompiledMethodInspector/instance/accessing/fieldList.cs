@@ -1,7 +1,7 @@
 fieldList
 
 	| keys |
-	keys _ OrderedCollection new.
+	keys := OrderedCollection new.
 	keys add: 'self'.
 	keys add: 'all bytecodes'.
 	keys add: 'header'.

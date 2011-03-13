@@ -1,0 +1,2 @@
+hasNewPropertyFormat
+	^self properties isMethodProperties.

@@ -1,2 +1,2 @@
 yValue: anInteger
-	yValue _ anInteger
+	yValue := anInteger

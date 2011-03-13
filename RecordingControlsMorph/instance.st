@@ -1,6 +1,6 @@
 AlignmentMorph
 	subclass: #RecordingControlsMorph
-	instanceVariableNames: 'recorder recordingStatusLight recordMeter '
+	instanceVariableNames: 'recorder recordingStatusLight recordMeter'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Sound-Interface'
+	category: 'MorphicExtras-SoundInterface'

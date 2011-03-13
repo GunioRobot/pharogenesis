@@ -1,0 +1,1 @@
+ClosureEnvironment class instanceVariableNames: ''

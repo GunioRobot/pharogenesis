@@ -6,19 +6,19 @@ copyUpOrCopyDown
 'Sorry, for the moment you have to be in
 Morphic to use this feature.'].
 
-	((aClass _ self selectedClassOrMetaClass) isNil or: [(aSelector _ self selectedMessageName) == nil]) 
+	((aClass := self selectedClassOrMetaClass) isNil or: [(aSelector := self selectedMessageName) == nil]) 
 		ifTrue:	[^ Beeper beep].
 
-	allClasses _ self systemNavigation hierarchyOfClassesSurrounding: aClass.
-	implementors _ self systemNavigation hierarchyOfImplementorsOf: aSelector forClass: aClass.
-	aMenu _ MenuMorph new defaultTarget: self.
+	allClasses := self systemNavigation hierarchyOfClassesSurrounding: aClass.
+	implementors := self systemNavigation hierarchyOfImplementorsOf: aSelector forClass: aClass.
+	aMenu := MenuMorph new defaultTarget: self.
 	aMenu title: 
 aClass name, '.', aSelector, '
 Choose where to insert a copy of this method
 (blue = current, black = available, red = other implementors'.
 	allClasses do:
 		[:cl |
-			aColor _ cl == aClass
+			aColor := cl == aClass
 				ifTrue:	[#blue]
 				ifFalse:
 					[(implementors includes: cl)

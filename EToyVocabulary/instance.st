@@ -3,4 +3,4 @@ Vocabulary
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Protocols'
+	category: 'EToys-Protocols'

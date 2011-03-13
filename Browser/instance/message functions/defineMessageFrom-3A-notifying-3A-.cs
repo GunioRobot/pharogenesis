@@ -1,10 +1,10 @@
 defineMessageFrom: aString notifying: aController
 	"Compile the expressions in aString. Notify aController if a syntax error occurs. Install the compiled method in the selected class classified under  the currently selected message category name. Answer the selector obtained if compilation succeeds, nil otherwise."
 	| selectedMessageName selector category oldMessageList |
-	selectedMessageName _ self selectedMessageName.
-	oldMessageList _ self messageList.
-	contents _ nil.
-	selector _ (Parser new parseSelector: aString).
+	selectedMessageName := self selectedMessageName.
+	oldMessageList := self messageList.
+	contents := nil.
+	selector := (self selectedClassOrMetaClass parserClass new parseSelector: aString).
 	(self metaClassIndicated
 		and: [(self selectedClassOrMetaClass includesSelector: selector) not
 		and: [Metaclass isScarySelector: selector]])
@@ -13,12 +13,12 @@ defineMessageFrom: aString notifying: aController
 Overriding it could cause serious problems.
 Is this really what you want to do?') asText makeBoldFrom: 1 to: selector size))
 				ifFalse: [^nil]].
-	selector _ self selectedClassOrMetaClass
+	selector := self selectedClassOrMetaClass
 				compile: aString
-				classified: (category _ self selectedMessageCategoryName)
+				classified: (category := self selectedMessageCategoryName)
 				notifying: aController.
 	selector == nil ifTrue: [^ nil].
-	contents _ aString copy.
+	contents := aString copy.
 	selector ~~ selectedMessageName
 		ifTrue: 
 			[category = ClassOrganizer nullCategory

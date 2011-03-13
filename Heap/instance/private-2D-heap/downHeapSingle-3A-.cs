@@ -11,7 +11,9 @@ downHeapSingle: anIndex
 		(j < tally and:[self sorts: (array at: j+1) before: (array at: j)])
 				ifTrue:[	j _ j + 1].
 		array at: k put: (array at: j).
+		self updateObjectIndex: k.
 		"and try again with j"
 		k _ j].
 	array at: k put: value.
+	self updateObjectIndex: k.
 	self upHeap: k

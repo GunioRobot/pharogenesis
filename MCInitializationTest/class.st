@@ -1,0 +1,1 @@
+MCInitializationTest class instanceVariableNames: ''

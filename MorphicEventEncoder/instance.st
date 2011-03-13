@@ -1,6 +1,6 @@
 Object
 	subclass: #MorphicEventEncoder
-	instanceVariableNames: 'connection lastEventSent '
+	instanceVariableNames: 'connection lastEventSent'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Remote'
+	category: 'Nebraska-Morphic-Remote'

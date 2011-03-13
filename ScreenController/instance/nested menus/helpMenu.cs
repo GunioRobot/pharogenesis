@@ -18,14 +18,13 @@ helpMenu
 							ifFalse: ['turn sound on']
 							ifTrue: ['turn sound off'])) ,
 
-		#(	'definition for...'
-			'set author initials...'
+		#(	'set author initials...'
 			'vm statistics'
 			'space left')
 		lines: #(1 4 6 11)
 		selections: #(durableHelpMenu aboutThisSystem absorbUpdatesFromServer
 editPreferences  openCommandKeyHelp fontSizeSummary openStandardWorkspace viewImageImports
-standardGraphicsLibrary soundOnOrOff  lookUpDefinition setAuthorInitials vmStatistics garbageCollect)
+standardGraphicsLibrary soundOnOrOff setAuthorInitials vmStatistics garbageCollect)
 "
 ScreenController new helpMenu startUp
 "

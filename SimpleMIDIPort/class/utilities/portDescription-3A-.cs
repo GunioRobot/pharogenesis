@@ -4,7 +4,7 @@ portDescription: portNum
 		[:i | SimpleMIDIPort portDescription: i]"
 
 	| portName dir |
-	portName _ self primPortNameOf: portNum.
+	portName _ (self primPortNameOf: portNum) convertFromSystemString.
 	dir _ self primPortDirectionalityOf: portNum.
 	dir = 1 ifTrue: [^ portName, ' (in)'].
 	dir = 2 ifTrue: [^ portName, ' (out)'].

@@ -1,2 +1,0 @@
-destination
-	^ self opposite origin

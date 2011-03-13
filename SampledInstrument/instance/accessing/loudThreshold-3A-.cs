@@ -1,3 +1,3 @@
 loudThreshold: aNumber
 
-	loudThreshold _ aNumber asFloat.
+	loudThreshold := aNumber asFloat.

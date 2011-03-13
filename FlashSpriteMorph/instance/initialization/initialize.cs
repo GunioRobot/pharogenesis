@@ -2,12 +2,12 @@ initialize
 "initialize the state of the receiver"
 	super initialize.
 ""
-	playing _ false.
-	loadedFrames _ 0.
-	maxFrames _ 1.
-	frameNumber _ 1.
-	sounds _ Dictionary new.
-	actions _ Dictionary new.
-	labels _ Dictionary new.
-	stepTime _ 1.
-	useTimeSync _ true
+	playing := false.
+	loadedFrames := 0.
+	maxFrames := 1.
+	frameNumber := 1.
+	sounds := Dictionary new.
+	actions := Dictionary new.
+	labels := Dictionary new.
+	stepTime := 1.
+	useTimeSync := true

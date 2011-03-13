@@ -1,2 +1,0 @@
-initialValuesAdditiongeneralcelesteHasStatusPane
-	^ #((celesteHasStatusPane false (general ) ) )

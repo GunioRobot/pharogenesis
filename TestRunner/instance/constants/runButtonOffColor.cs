@@ -1,2 +1,0 @@
-runButtonOffColor
-	^ Color yellow lighter

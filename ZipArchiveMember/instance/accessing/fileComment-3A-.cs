@@ -1,2 +1,2 @@
 fileComment: aString
-	fileComment _ aString
+	fileComment := aString

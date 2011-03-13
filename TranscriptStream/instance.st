@@ -1,6 +1,6 @@
 WriteStream
 	subclass: #TranscriptStream
 	instanceVariableNames: ''
-	classVariableNames: ''
+	classVariableNames: 'AccessSema'
 	poolDictionaries: ''
 	category: 'Collections-Streams'

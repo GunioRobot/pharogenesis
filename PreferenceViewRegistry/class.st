@@ -1,0 +1,1 @@
+PreferenceViewRegistry class instanceVariableNames: 'registries'

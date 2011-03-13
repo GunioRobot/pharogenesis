@@ -1,6 +1,6 @@
 SoundCodec
 	subclass: #GSMCodec
-	instanceVariableNames: 'encodeState decodeState '
+	instanceVariableNames: 'encodeState decodeState'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Sound-Synthesis'

@@ -1,1 +1,0 @@
-ExternalFunction class instanceVariableNames: ''

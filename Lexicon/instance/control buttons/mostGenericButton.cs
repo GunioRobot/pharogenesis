@@ -2,7 +2,7 @@ mostGenericButton
 	"Answer a button that reports on, and allow the user to modify, the most generic class to show"
 
 	| aButton |
-	aButton _ UpdatingSimpleButtonMorph newWithLabel: 'All'.
+	aButton := UpdatingSimpleButtonMorph newWithLabel: 'All'.
 	aButton setNameTo: 'limit class'.
 	aButton target: self; wordingSelector: #limitClassString; actionSelector: #chooseLimitClass.
 	aButton setBalloonText: 

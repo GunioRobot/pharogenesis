@@ -4,7 +4,7 @@ embraceAddedTypeVocabularies
 	| vocabulary |
 	DataType allSubclasses do:
 		[:dataType |
-			vocabulary _ dataType new.
+			vocabulary := dataType new.
 			vocabulary representsAType
 				ifTrue: [(self allStandardVocabularies includesKey: vocabulary vocabularyName)
 					ifFalse: 	[self addStandardVocabulary: vocabulary]]]

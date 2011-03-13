@@ -1,0 +1,1 @@
+LanguageEnvironment class instanceVariableNames: ''

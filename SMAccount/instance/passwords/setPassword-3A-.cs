@@ -1,5 +1,5 @@
 setPassword: aString
 	"We also clear the random extra password."
 
-	password _ SecureHashAlgorithm new hashMessage: aString.
-	newPassword _ nil
+	password := SecureHashAlgorithm new hashMessage: aString.
+	newPassword := nil

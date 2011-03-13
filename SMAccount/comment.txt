@@ -1,11 +1,11 @@
-SMAccount is the object representing a user account in SqueakMap.
+SMAccount is the object representing a user account in SqueakMap - a Squeaker that owns information in SqueakMap.
 
 It keeps track of the email address, developer initials and two passwords used to access the account. There is also an advogatoId (people.squeakfoundation.org username) and a signature field (not used yet). The flag isAdmin is a crude way of marking a user as a superuser, this will possibly be changed in the future and instead expressed using a category.
 
 Passwords are stored as secure hashes. The extra password (newPassword) is used when the regular password is forgotten - it is then randomly set and an email is sent out containing it to the registered email. This enables the original password to still work. When logging in, the user gets a chance to enter a new regular password overwriting the old one and clearing the random new password in the process.
 
-The instvar objects holds all SMPersonalObjects that this account "owns" - these are typically instances of SMPackages and SMResources, but are not limited to be.
+The instvar objects holds all SMPersonalObjects (instances of subclasses) that this account "owns" - these are typically instances of SMPackages and SMResources, but are not limited to be.
 
 The instvar coObjects holds all SMPersonalObjects that this account is co-maintaining - these are typically instances of SMPackages and SMResources.
 
-Finally the account also maintains a directory with uploaded files on the server. This directory has the UUID of the account as its name and it located under sm/accounts
+Finally the account also maintains a directory with uploaded files on the server. This directory has the UUID of the account as its name and it is located under sm/accounts

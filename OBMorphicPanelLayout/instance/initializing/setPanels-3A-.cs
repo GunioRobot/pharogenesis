@@ -1,0 +1,2 @@
+setPanels: aCollection 
+	panels := aCollection

@@ -1,1 +1,0 @@
-TestModel class instanceVariableNames: ''

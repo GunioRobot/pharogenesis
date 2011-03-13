@@ -1,6 +1,6 @@
 AlignmentMorphBob1
 	subclass: #EToyGenericDialogMorph
-	instanceVariableNames: 'namedFields '
+	instanceVariableNames: 'namedFields'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Experimental'
+	category: 'EToys-Experimental'

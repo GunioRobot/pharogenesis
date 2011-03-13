@@ -1,7 +1,7 @@
 privatePlayAudioStream: aStream
 	| number |
 
-	number _ 5.
+	number := 5.
 	self soundQueue: (QueueSound new startTime: 0).
 	[number + 2 timesRepeat: [self soundQueue add: (self createSoundFrom: aStream)].
 	self soundQueue play.

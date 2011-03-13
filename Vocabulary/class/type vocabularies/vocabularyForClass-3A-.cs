@@ -5,10 +5,10 @@ vocabularyForClass: aClass
 	(self allStandardVocabularies includesKey: aClass name)
 		ifTrue: [^self allStandardVocabularies at: aClass name].
 
-	initMsgName _ ('new', aClass name, 'Vocabulary') asSymbol.
+	initMsgName := ('new', aClass name, 'Vocabulary') asSymbol.
 	^(self respondsTo: initMsgName)
 		 ifTrue:	[
-			newTypeVocab _ self perform: initMsgName.
+			newTypeVocab := self perform: initMsgName.
 			self addStandardVocabulary: newTypeVocab.
 			newTypeVocab]
 		ifFalse: [nil]

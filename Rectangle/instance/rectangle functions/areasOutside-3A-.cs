@@ -4,7 +4,7 @@ areasOutside: aRectangle
 
 	| areas yOrigin yCorner |
 	"Make sure the intersection is non-empty"
-	(origin <= aRectangle corner and: [aRectangle origin <= corner])
+     (self intersects: aRectangle)
 		ifFalse: [^Array with: self].
 	areas _ OrderedCollection new.
 	aRectangle origin y > origin y

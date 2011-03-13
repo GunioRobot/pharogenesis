@@ -1,6 +1,7 @@
 makeUnixSeed
 	| strm answer |
 	[strm := (FileStream readOnlyFileNamed: '/dev/urandom') binary.
+	strm converter: Latin1TextConverter new.
 	answer := Integer
 		byte1: strm next
 		byte2: strm next

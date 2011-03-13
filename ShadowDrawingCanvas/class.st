@@ -1,1 +1,0 @@
-ShadowDrawingCanvas class instanceVariableNames: ''

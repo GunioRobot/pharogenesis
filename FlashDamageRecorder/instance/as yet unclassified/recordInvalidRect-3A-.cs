@@ -1,8 +1,8 @@
 recordInvalidRect: rect
 	totalRepaint ifTrue:[^self].
 	self updateIsNeeded ifTrue:[
-		fullDamageRect _ fullDamageRect merge: rect.
+		fullDamageRect := fullDamageRect merge: rect.
 	] ifFalse:[
-		fullDamageRect _ rect copy.
+		fullDamageRect := rect copy.
 	].
 	^super recordInvalidRect: rect

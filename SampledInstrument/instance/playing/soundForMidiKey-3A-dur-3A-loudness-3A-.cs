@@ -5,14 +5,14 @@ soundForMidiKey: midiKey dur: d loudness: l
 	l >= loudThreshold
 		ifTrue: [
 			d >= sustainedThreshold
-				ifTrue: [keymap _ sustainedLoud]
-				ifFalse: [keymap _ staccatoLoud]]
+				ifTrue: [keymap := sustainedLoud]
+				ifFalse: [keymap := staccatoLoud]]
 		ifFalse: [
 			d >= sustainedThreshold
-				ifTrue: [keymap _ sustainedSoft]
-				ifFalse: [keymap _ staccatoSoft]].
-	keymap ifNil: [keymap _ sustainedLoud].
-	note _ (keymap at: midiKey) copy.
+				ifTrue: [keymap := sustainedSoft]
+				ifFalse: [keymap := staccatoSoft]].
+	keymap ifNil: [keymap := sustainedLoud].
+	note := (keymap at: midiKey) copy.
 	^ note
 		setPitch: (AbstractSound pitchForMIDIKey: midiKey)
 		dur: d

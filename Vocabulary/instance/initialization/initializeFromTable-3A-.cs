@@ -13,17 +13,17 @@ initializeFromTable: aTable
 	Consult Vocabulary class.initializeTestVocabulary for an example of use"
 				
 	|  aMethodCategory categoryList aMethodInterface aSelector doc wording |
-	categoryList _ Set new.
+	categoryList := Set new.
 	aTable do:
 		[:tuple | categoryList addAll: tuple fifth].
-	categoryList _ categoryList asSortedArray.
+	categoryList := categoryList asSortedArray.
 	categoryList do:
 		[:aCategorySymbol |
-			aMethodCategory _ ElementCategory new categoryName: aCategorySymbol.
+			aMethodCategory := ElementCategory new categoryName: aCategorySymbol.
 			aTable do:
 				[:tuple | (tuple fifth includes: aCategorySymbol) ifTrue:
-					[aMethodInterface _ MethodInterface new.
-					aSelector _ tuple first.
+					[aMethodInterface := MethodInterface new.
+					aSelector := tuple first.
 					aMethodInterface selector: aSelector type: tuple fourth setter: tuple second.
 					aMethodCategory elementAt: aSelector put: aMethodInterface.
 					self atKey: aSelector putMethodInterface: aMethodInterface.
@@ -31,12 +31,12 @@ initializeFromTable: aTable
 						ifTrue:
 							[aMethodInterface argumentVariables: (tuple third collect:
 								[:pair | Variable new name: pair first type: pair second])].
-					doc _ (tuple size >= 6 and: [(#(nil none unused) includes: tuple sixth) not])
+					doc := (tuple size >= 6 and: [(#(nil none unused) includes: tuple sixth) not])
 						ifTrue:
 							[tuple sixth]
 						ifFalse:
 							[nil].
- 					wording _ (tuple size >= 7 and: [(#(nil none unused) includes: tuple seventh) not])
+ 					wording := (tuple size >= 7 and: [(#(nil none unused) includes: tuple seventh) not])
 						ifTrue:
 							[tuple seventh]
 						ifFalse:

@@ -1,4 +1,4 @@
 packageSelection: aNumber
-	selectedPackage _ aNumber isZero ifFalse: [ packages at: aNumber ].
-	versions _ repository versionsAvailableForPackage: selectedPackage.
+	selectedPackage := aNumber isZero ifFalse: [ packages at: aNumber ].
+	versions := repository versionsAvailableForPackage: selectedPackage.
 	self changed: #packageSelection; changed: #versionList

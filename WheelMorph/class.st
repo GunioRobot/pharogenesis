@@ -1,1 +1,0 @@
-WheelMorph class instanceVariableNames: ''

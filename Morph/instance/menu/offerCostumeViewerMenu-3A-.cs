@@ -1,0 +1,2 @@
+offerCostumeViewerMenu: aMenu
+	"do nothing"

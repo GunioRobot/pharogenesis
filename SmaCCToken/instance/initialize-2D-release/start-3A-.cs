@@ -1,3 +1,3 @@
 start: startPositionInteger
 
-	start _ startPositionInteger
+	start := startPositionInteger

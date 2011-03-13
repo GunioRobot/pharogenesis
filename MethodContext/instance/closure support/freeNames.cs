@@ -1,0 +1,3 @@
+freeNames
+
+	^ self methodNode freeNames

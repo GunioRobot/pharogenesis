@@ -1,2 +1,2 @@
 id: aNumber
-	id _ aNumber
+	id := aNumber

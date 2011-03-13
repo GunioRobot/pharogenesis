@@ -6,18 +6,18 @@ open: aChangeList name: aString multiSelect: multiSelect
 	Smalltalk isMorphic
 		ifTrue: [^ self openAsMorph: aChangeList name: aString multiSelect: multiSelect].
 
-	listHeight _ 70.
-	annoHeight _ 10.
-	optButtonHeight _ aChangeList optionalButtonHeight.
-	codeHeight _ 110.
+	listHeight := 70.
+	annoHeight := 10.
+	optButtonHeight := aChangeList optionalButtonHeight.
+	codeHeight := 110.
 
-	topView _ (StandardSystemView new)
+	topView := (StandardSystemView new)
 		model: aChangeList;
 		label: aString;
 		minimumSize: 200 @ 120;
 		borderWidth: 1.
 
-	aListView _ (multiSelect
+	aListView := (multiSelect
 			ifTrue: [PluggableListViewOfMany
 						on: aChangeList
 						list: #list
@@ -39,10 +39,10 @@ open: aChangeList name: aString multiSelect: multiSelect
 	aListView window: (0 @ 0 extent: 200 @ listHeight).
 	topView addSubView: aListView.
 
-	underPane _ aListView.
+	underPane := aListView.
 	aChangeList wantsAnnotationPane
 		ifTrue:
-			[annotationPane _ PluggableTextView
+			[annotationPane := PluggableTextView
 				on: aChangeList
 				text: #annotation
 				accept: nil
@@ -50,18 +50,18 @@ open: aChangeList name: aString multiSelect: multiSelect
 				menu: nil.
 			annotationPane window: (0 @ 0 extent: 200 @ 10).
 			topView addSubView: annotationPane below: underPane.
-			underPane _ annotationPane.
-			codeHeight _ codeHeight - annoHeight].
+			underPane := annotationPane.
+			codeHeight := codeHeight - annoHeight].
 
 	aChangeList wantsOptionalButtons
 		ifTrue:
-			[buttonsView _ aChangeList optionalButtonsView.
+			[buttonsView := aChangeList optionalButtonsView.
 			buttonsView borderWidth: 1.
 			topView addSubView: buttonsView below: underPane.
-			underPane _ buttonsView.
-			codeHeight _ codeHeight - optButtonHeight].
+			underPane := buttonsView.
+			codeHeight := codeHeight - optButtonHeight].
 
-	aBrowserCodeView _ PluggableTextView
+	aBrowserCodeView := PluggableTextView
 			on: aChangeList
 			text: #contents
 			accept: #contents:

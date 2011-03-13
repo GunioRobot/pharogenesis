@@ -11,7 +11,7 @@ remoteTestClientTCPOpenClose1000
 		show: 'ok';
 		cr.
 	number := 1000.
-	serverName := FillInTheBlank request: 'What is your remote Test Server?'
+	serverName := UIManager default request: 'What is your remote Test Server?'
 				initialAnswer: ''.
 	t1 := Time millisecondsToRun: 
 					[number timesRepeat: 

@@ -1,2 +1,2 @@
 window
-	^ morph ifNil: [morph _ self buildWindow]
+	^ morph ifNil: [morph := self buildWindow]

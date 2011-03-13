@@ -4,8 +4,8 @@ update
 	selectionIndex = 0
 		ifFalse:
 			[self contentsIsString
-				ifTrue: [contents _ self selection]
-				ifFalse: [contents _ self selectionPrintString].
+				ifTrue: [contents := self selection]
+				ifFalse: [contents := self selectionPrintString].
 			self changed: #contents.
 			self changed: #selection.
 			self changed: #selectionIndex]

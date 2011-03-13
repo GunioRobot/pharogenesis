@@ -2,6 +2,7 @@ primKbdPeek
 	"Allows for use of old Sensor protocol to get at the keyboard,
 	as when running kbdTest or the InterpreterSimulator in Morphic"
 	| char |
+	self wait2ms.
 	self fetchMoreEvents.
 	keyboardBuffer isEmpty ifFalse: [^ keyboardBuffer peek].
 	char _ nil.

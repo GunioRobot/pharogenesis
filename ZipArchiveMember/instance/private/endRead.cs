@@ -1,2 +1,2 @@
 endRead
-	readDataRemaining _ 0.
+	readDataRemaining := 0.

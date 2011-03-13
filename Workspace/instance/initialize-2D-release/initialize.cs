@@ -1,4 +1,5 @@
 initialize
-
+	
 	super initialize.
-	acceptDroppedMorphs _ false
+	acceptDroppedMorphs := false.
+	mustDeclareVariables := false

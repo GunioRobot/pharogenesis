@@ -1,0 +1,2 @@
+hasClassTrait
+	self subclassResponsibility

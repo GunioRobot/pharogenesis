@@ -1,6 +1,6 @@
-Object
+BasicClassOrganizer
 	subclass: #ClassOrganizer
-	instanceVariableNames: 'globalComment categoryArray categoryStops elementArray commentStamp '
-	classVariableNames: 'Default NullCategory '
+	instanceVariableNames: ''
+	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Kernel-Classes'

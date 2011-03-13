@@ -1,2 +1,0 @@
-- decrement
-	^self clone -= decrement

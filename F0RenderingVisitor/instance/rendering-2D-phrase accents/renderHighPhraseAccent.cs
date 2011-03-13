@@ -1,8 +1,8 @@
 renderHighPhraseAccent
 	"Render a H- accent."
 	| start stop |
-	start _ self phraseAccentStartTime.
-	stop _ self phraseAccentStopTime.
+	start := self phraseAccentStartTime.
+	stop := self phraseAccentStopTime.
 	self time: start
 		startingF0: (contour at: start)
 		amplitude: self highPitch - (contour at: start)

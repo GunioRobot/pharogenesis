@@ -1,6 +1,6 @@
 Paragraph
 	subclass: #ListParagraph
 	instanceVariableNames: ''
-	classVariableNames: 'ListStyle '
+	classVariableNames: 'ListStyle'
 	poolDictionaries: ''
 	category: 'ST80-Support'

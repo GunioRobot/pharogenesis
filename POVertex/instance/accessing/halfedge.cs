@@ -1,2 +1,0 @@
-halfedge
-	^ halfedge

@@ -3,7 +3,7 @@ drawOval: rect fill: fillStyle borderWidth: borderWidth borderColor: borderColor
 	| fills |
 	self edgeTransform: aMatrix.
 	self resetIfNeeded.
-	fills _ self registerFill: fillStyle and: borderColor.
+	fills := self registerFill: fillStyle and: borderColor.
 	self primAddOvalFrom: rect origin 
 			to: rect corner
 			fillIndex: (fills at: 1)

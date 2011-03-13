@@ -1,0 +1,3 @@
+newPlayerInstance
+
+	^ (KedamaExamplerPlayer newUserInstance).

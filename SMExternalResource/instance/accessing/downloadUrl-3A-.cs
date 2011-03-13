@@ -1,2 +1,2 @@
 downloadUrl: anUrl
-	downloadUrl _ anUrl
+	downloadUrl := anUrl

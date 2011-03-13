@@ -1,5 +1,5 @@
 editSelection: aSelection
 	"Set the editSelection as requested."
 
-	editSelection _ aSelection.
+	editSelection := aSelection.
 	self changed: #editSelection.

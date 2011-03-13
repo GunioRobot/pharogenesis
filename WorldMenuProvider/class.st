@@ -1,0 +1,1 @@
+WorldMenuProvider class instanceVariableNames: ''

@@ -1,2 +1,0 @@
-updateAllViewersAndForceToShow: mumble
-	"Ugh."

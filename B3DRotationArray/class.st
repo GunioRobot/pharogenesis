@@ -1,1 +1,0 @@
-B3DRotationArray class instanceVariableNames: ''

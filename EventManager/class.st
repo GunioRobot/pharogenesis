@@ -1,0 +1,1 @@
+EventManager class instanceVariableNames: ''

@@ -1,6 +1,6 @@
 MessageSet
 	subclass: #ChangedMessageSet
-	instanceVariableNames: 'changeSet '
+	instanceVariableNames: 'changeSet'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Tools-Browser'

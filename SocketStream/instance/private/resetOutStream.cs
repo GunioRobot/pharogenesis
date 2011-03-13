@@ -1,2 +1,0 @@
-resetOutStream
-	outStream _ nil

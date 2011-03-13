@@ -6,12 +6,12 @@ selectOriginalCategoryForCurrentMethod
 	 
 	 Returns: true on success, false on failure."
 	| aSymbol selectorName |
-	aSymbol _ self categoryOfCurrentMethod.
-	selectorName _ self selectedMessageName.
+	aSymbol := self categoryOfCurrentMethod.
+	selectorName := self selectedMessageName.
 	(aSymbol notNil and: [aSymbol ~= ClassOrganizer allCategory])
 		ifTrue: 
-			[messageCategoryListIndex _ (self messageCategoryList indexOf: aSymbol).
-			messageListIndex _ (self messageList indexOf: selectorName).
+			[messageCategoryListIndex := (self messageCategoryList indexOf: aSymbol).
+			messageListIndex := (self messageList indexOf: selectorName).
 			self changed: #messageCategorySelectionChanged.
 			self changed: #messageCategoryListIndex.	"update my selection"
 			self changed: #messageList.

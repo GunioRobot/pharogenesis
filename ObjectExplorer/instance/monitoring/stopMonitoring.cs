@@ -1,3 +1,3 @@
 stopMonitoring
-	monitorList _ nil.
+	monitorList := nil.
 	self world stopStepping: self selector: #step

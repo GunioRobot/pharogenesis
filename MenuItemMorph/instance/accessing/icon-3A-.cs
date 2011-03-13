@@ -1,3 +1,5 @@
 icon: aForm 
 	"change the the receiver's icon"
-	icon := aForm
+	icon := aForm.
+	self height: self minHeight.
+self width: self minWidth

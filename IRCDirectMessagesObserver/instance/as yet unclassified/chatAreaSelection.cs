@@ -1,2 +1,0 @@
-chatAreaSelection 
-	^self chatTextSelection

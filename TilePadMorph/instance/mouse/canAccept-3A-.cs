@@ -1,7 +1,8 @@
 canAccept: aMorph
 	"Answer whether this pad can accept the given morph"
 
+	| itsType myType |
 	((aMorph isKindOf: PhraseTileMorph) or: [aMorph isKindOf: TileMorph orOf: WatcherWrapper]) 		ifTrue:
-			[^ (aMorph resultType capitalized = self type capitalized "for bkwd compat") "or:
-				[(aMorph resultType == #unknown) and: [type == #Player]]"].
+			[^ ((itsType _ aMorph resultType capitalized) = (myType _ self type capitalized)) or:
+				[(myType = #Graphic) and: [itsType = #Player]]].
 	^ false

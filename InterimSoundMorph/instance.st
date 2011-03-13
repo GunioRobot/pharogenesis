@@ -1,6 +1,6 @@
 RectangleMorph
 	subclass: #InterimSoundMorph
-	instanceVariableNames: 'graphic sound '
+	instanceVariableNames: 'graphic sound'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Sound-Interface'
+	category: 'MorphicExtras-SoundInterface'

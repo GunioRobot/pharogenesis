@@ -1,0 +1,1 @@
+SMDefaultInstaller class instanceVariableNames: ''

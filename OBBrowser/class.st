@@ -1,0 +1,1 @@
+OBBrowser class instanceVariableNames: ''

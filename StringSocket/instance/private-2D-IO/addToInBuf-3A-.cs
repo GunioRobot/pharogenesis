@@ -1,7 +1,7 @@
 addToInBuf: aString
 
 	| newAlloc |
-	newAlloc _ aString size * 2 max: 8000.
+	newAlloc _ aString size * 2 max: 80000.
 	inBuf ifNil: [
 		inBuf _ String new: newAlloc.
 		inBufIndex _ 1.

@@ -1,2 +1,0 @@
-portAsString
-	^port printString

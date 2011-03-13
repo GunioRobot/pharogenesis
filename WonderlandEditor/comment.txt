@@ -1,1 +1,0 @@
-This class implements the tabbed palette that includes the script editor and the actor browser.

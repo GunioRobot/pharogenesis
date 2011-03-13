@@ -1,1 +1,0 @@
-AbstractAnimation class instanceVariableNames: ''

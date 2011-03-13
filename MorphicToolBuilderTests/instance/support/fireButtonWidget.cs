@@ -1,0 +1,2 @@
+fireButtonWidget
+	widget performAction.

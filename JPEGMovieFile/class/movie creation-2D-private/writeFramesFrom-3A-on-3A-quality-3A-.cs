@@ -3,9 +3,9 @@ writeFramesFrom: mpegFile on: aBinaryStream quality: quality
 
 	| frameCount frameOffsets frameForm |
 	mpegFile hasVideo ifFalse: [^ Array with: aBinaryStream position].
-	frameCount _ mpegFile videoFrames: 0.
-	frameOffsets _ OrderedCollection new: frameCount + 1.
-	frameForm _ Form
+	frameCount := mpegFile videoFrames: 0.
+	frameOffsets := OrderedCollection new: frameCount + 1.
+	frameForm := Form
 		extent: (mpegFile videoFrameWidth: 0)@(mpegFile videoFrameHeight: 0)
 		depth: 32.
 

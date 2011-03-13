@@ -1,2 +1,0 @@
-atEnd
-	^theStream atEnd

@@ -1,6 +1,6 @@
 Object
 	subclass: #MailAddressToken
-	instanceVariableNames: 'type text '
+	instanceVariableNames: 'type text'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Network-RFC822'

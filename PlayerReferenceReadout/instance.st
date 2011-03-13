@@ -1,6 +1,6 @@
 ThumbnailMorph
 	subclass: #PlayerReferenceReadout
-	instanceVariableNames: 'putSelector '
+	instanceVariableNames: 'putSelector'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Scripting Support'
+	category: 'EToys-Scripting Support'

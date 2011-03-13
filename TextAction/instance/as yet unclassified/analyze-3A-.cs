@@ -11,6 +11,7 @@ Click Here<3+4>
 	b2 _ aString indexOf: $>.
 	(b1 < b2) & (b1 > 0) ifFalse: ["only one part"
 		param _ self validate: aString.
+		param ifNil: [ ^{ nil. nil } ].
 		^ Array with: param with: (param size = 0 ifTrue: [nil] ifFalse: [param])].
 	"Two parts"
 	trim _ aString withBlanksTrimmed.

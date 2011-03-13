@@ -1,2 +1,2 @@
 volume: aVolume
-	volume _ aVolume
+	volume := aVolume

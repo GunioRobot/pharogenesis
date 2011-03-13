@@ -1,2 +1,0 @@
-classFloat
-	^self splObj: ClassFloat

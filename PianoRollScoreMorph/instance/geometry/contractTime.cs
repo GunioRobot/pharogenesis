@@ -1,4 +1,4 @@
 contractTime
 
-	timeScale _ timeScale / 1.5.
+	timeScale := timeScale / 1.5.
 	self rebuildFromScore.

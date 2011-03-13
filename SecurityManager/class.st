@@ -1,0 +1,1 @@
+SecurityManager class instanceVariableNames: ''

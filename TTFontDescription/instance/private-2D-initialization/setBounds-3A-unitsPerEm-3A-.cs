@@ -1,3 +1,3 @@
 setBounds: aRect unitsPerEm: aNumber
-	bounds _ aRect.
-	unitsPerEm _ aNumber.
+	bounds := aRect.
+	unitsPerEm := aNumber.

@@ -13,7 +13,7 @@ alanKwdSetter2: aNode isAConditional: template key: key args: args
 	kwdHolder firstSubmorph 
 		setProperty: #syntacticReformatting toValue: #keywordSetter;
 		contents: wordy;
-		emphasis: 1.
+		emphasis: TextEmphasis bold emphasisCode.
 	wordy = key asString ifFalse: [
 		kwdHolder firstSubmorph 
 			setProperty: #syntacticallyCorrectContents toValue: key asString].

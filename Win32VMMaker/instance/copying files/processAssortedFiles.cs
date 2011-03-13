@@ -1,2 +1,0 @@
-processAssortedFiles
-	"Do nothing."

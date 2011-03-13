@@ -10,5 +10,5 @@ compilePrototype: aSymbol in: aClass
 		ifFail: [self error: '[breakpoint] unable to install breakpoint'].
 	node isNil ifTrue: [^nil].
 	"dunno what the arguments mean..."
-	method := node generate: #(0 0 0 0).
+	method := node generate.
 	^method

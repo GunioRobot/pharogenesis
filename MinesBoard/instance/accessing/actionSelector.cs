@@ -1,3 +1,0 @@
-actionSelector
-
-	^ actionSelector

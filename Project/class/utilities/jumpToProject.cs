@@ -1,4 +1,8 @@
-jumpToProject		"Project jumpToProject"
+jumpToProject
+	"Project jumpToProject"
 	"Present a list of potential projects and enter the one selected."
-
-	self jumpToSelection: (self buildJumpToMenu: CustomMenu new) startUpLeftFlush
+	| menu |
+menu_MenuMorph new.
+menu defaultTarget: self.
+	menu := self buildJumpToMenu: menu.
+	menu popUpInWorld

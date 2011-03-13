@@ -1,0 +1,2 @@
+getPackageName
+	^ self getPackage packageName

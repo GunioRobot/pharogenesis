@@ -3,5 +3,5 @@ vocabularyForType: aType
 
 	| ucSym |
 	(aType isKindOf: Vocabulary) ifTrue: [^ aType].
-	ucSym _ aType capitalized asSymbol.
+	ucSym := aType capitalized asSymbol.
 	^self allStandardVocabularies at: ucSym ifAbsent: [self vocabularyNamed: #unknown]

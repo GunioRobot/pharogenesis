@@ -1,1 +1,0 @@
-A PluggableServerAction instance has two blocks in instance variables. The processBlock is executed with the web request to do any input processing that is needed. The returnBlock is executed with the web request, and its return value is sent as the output of the CGI processing.

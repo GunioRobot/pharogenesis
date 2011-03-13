@@ -3,6 +3,6 @@ annotation
 
 	|  aSelector aClass |
 
-	((aSelector _ self selectedMessageName) == nil or: [(aClass _ self selectedClassOrMetaClass) == nil])
+	((aSelector := self selectedMessageName) == nil or: [(aClass := self selectedClassOrMetaClass) == nil])
 		ifTrue: [^ '------'].
 	^ self annotationForSelector: aSelector ofClass: aClass

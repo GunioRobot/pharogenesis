@@ -1,8 +1,8 @@
 lastSearchString: aString
 	"Make a note of the last string searched for in the receiver"
 
-	currentQueryParameter _ aString asString.
-	currentQuery _ #selectorName.
-	autoSelectString _ aString.
+	currentQueryParameter := aString asString.
+	currentQuery := #selectorName.
+	autoSelectString := aString.
 	self setMethodListFromSearchString.
 	^ true

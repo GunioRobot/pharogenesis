@@ -1,3 +1,3 @@
 knownIPAddresses
 
-	^KnownIPAddresses ifNil: [KnownIPAddresses _ Dictionary new]
+	^KnownIPAddresses ifNil: [KnownIPAddresses := Dictionary new]

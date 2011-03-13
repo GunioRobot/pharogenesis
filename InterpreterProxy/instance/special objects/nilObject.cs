@@ -1,2 +1,0 @@
-nilObject
-	^nil

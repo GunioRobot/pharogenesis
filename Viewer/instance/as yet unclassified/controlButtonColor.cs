@@ -1,2 +1,0 @@
-controlButtonColor
-	^ Color blue muchLighter

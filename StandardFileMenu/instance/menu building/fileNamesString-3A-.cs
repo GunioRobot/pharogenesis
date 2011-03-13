@@ -5,5 +5,6 @@ fileNamesString: aDirectory
 		[:s | 
 			aDirectory fileNames do: 
 				[:fn |
-					(pattern match: fn) ifTrue: [
-						s nextPutAll: fn withBlanksTrimmed; cr]]]
+					pattern do:[:each | (each match: fn) ifTrue: [
+						s nextPutAll: fn withBlanksTrimmed; cr]]]]
+		

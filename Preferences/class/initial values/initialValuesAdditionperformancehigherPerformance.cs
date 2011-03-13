@@ -1,2 +1,0 @@
-initialValuesAdditionperformancehigherPerformance
-	^ #((higherPerformance false (performance ) ) )

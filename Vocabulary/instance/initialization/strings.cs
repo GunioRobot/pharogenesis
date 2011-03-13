@@ -7,7 +7,7 @@ and copy the text from the transcript to the method you are building."
 
 	"selector		wording			documentation"
 
-strm _ WriteStream on: (String new: 400).
+strm := WriteStream on: (String new: 400).
 methodInterfaces keys asSortedCollection do: [:sel |
 	strm cr; nextPut: $(;
 		nextPutAll: sel; tab; tab; tab; nextPut: $';

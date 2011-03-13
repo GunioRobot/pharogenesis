@@ -1,2 +1,0 @@
-helpMsgsAdditionscriptingcapitalizedReferences
-	^ #((capitalizedReferences 'if true, then object references in scripts will appear as capitalized names, a scheme which makes scripts look ''right'' but which still requires some engineering' ) )

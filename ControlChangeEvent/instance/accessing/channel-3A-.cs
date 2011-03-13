@@ -1,3 +1,3 @@
 channel: midiChannel
 
-	channel _ midiChannel.
+	channel := midiChannel.

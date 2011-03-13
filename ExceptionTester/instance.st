@@ -1,6 +1,6 @@
 Object
 	subclass: #ExceptionTester
-	instanceVariableNames: 'log suiteLog '
+	instanceVariableNames: 'log suiteLog iterationsBeforeTimeout'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Exceptions Tests'
+	category: 'Exceptions-Tests'

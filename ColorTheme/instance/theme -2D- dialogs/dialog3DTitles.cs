@@ -1,0 +1,2 @@
+dialog3DTitles
+	^ true

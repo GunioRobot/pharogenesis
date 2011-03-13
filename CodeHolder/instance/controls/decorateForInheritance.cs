@@ -2,18 +2,18 @@ decorateForInheritance
 	"Check to see if the currently-viewed method has a super send or an override, and if so, change screen feedback, unless the #decorateBrowserButtons says not to."
 
 	| aColor aButton flags |
-	(aButton _ self inheritanceButton) ifNil: [^ self].
+	(aButton := self inheritanceButton) ifNil: [^ self].
 
 	((currentCompiledMethod isKindOf: CompiledMethod) and: [Preferences decorateBrowserButtons])
 		ifFalse: [^aButton offColor: Color transparent].
 
 	"This table duplicates the old logic, but adds two new colors for the cases where there is a superclass definition, but this method doesn't call it."
 
-	flags _ 0.
-	self isThisAnOverride ifTrue: [ flags _ flags bitOr: 4 ].
-	currentCompiledMethod sendsToSuper ifTrue: [ flags _ flags bitOr: 2 ].
-	self isThereAnOverride ifTrue: [ flags _ flags bitOr: 1 ].
-	aColor _ {
+	flags := 0.
+	self isThisAnOverride ifTrue: [ flags := flags bitOr: 4 ].
+	currentCompiledMethod sendsToSuper ifTrue: [ flags := flags bitOr: 2 ].
+	self isThereAnOverride ifTrue: [ flags := flags bitOr: 1 ].
+	aColor := {
 		Color transparent.
 		Color tan lighter.
 		Color green muchLighter.

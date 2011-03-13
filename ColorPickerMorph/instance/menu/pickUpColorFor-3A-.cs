@@ -1,7 +1,7 @@
 pickUpColorFor: aMorph
 	"Show the eyedropper cursor, and modally track the mouse through a mouse-down and mouse-up cycle"
 
-      | aHand localPt delay |
+      | aHand localPt c |
 	aHand _ aMorph ifNil: [self activeHand] ifNotNil: [aMorph activeHand].
 	aHand ifNil: [aHand _ self currentHand].
 	self addToWorld: aHand world near: (aMorph ifNil: [aHand world]) fullBounds.
@@ -11,10 +11,9 @@ pickUpColorFor: aMorph
 			hotSpotOffset: 6 negated @ 4 negated.    "<<<< the form was changed a bit??"
 
 	self updateContinuously: false.
-	delay _ Delay forMilliseconds: 50.
 	[Sensor anyButtonPressed]
 		whileFalse: 
-			 [self trackColorUnderMouse. delay wait].
+			 [self trackColorUnderMouse].
 	self deleteAllBalloons.
 
 	localPt _ Sensor cursorPoint - self topLeft.
@@ -30,6 +29,8 @@ pickUpColorFor: aMorph
 	[Sensor anyButtonPressed]
 		whileTrue:
 			 [self updateTargetColorWith: self indicateColorUnderMouse].
+	c _ self getColorFromKedamaWorldIfPossible: Sensor cursorPoint.
+	c ifNotNil: [selectedColor _ c].
 	aHand newMouseFocus: nil;
 		showTemporaryCursor: nil;
 		flushEvents.

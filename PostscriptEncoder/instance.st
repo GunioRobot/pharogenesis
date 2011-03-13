@@ -1,6 +1,6 @@
 PrintableEncoder
 	subclass: #PostscriptEncoder
 	instanceVariableNames: ''
-	classVariableNames: 'MacToPSCharacterMappings '
+	classVariableNames: 'MacToPSCharacterMappings'
 	poolDictionaries: ''
-	category: 'Morphic-Postscript Canvases'
+	category: 'MorphicExtras-Postscript Canvases'

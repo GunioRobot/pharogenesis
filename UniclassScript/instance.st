@@ -1,6 +1,6 @@
-MethodInterface
+MethodWithInterface
 	subclass: #UniclassScript
-	instanceVariableNames: 'playerClass currentScriptEditor formerScriptingTiles isTextuallyCoded '
+	instanceVariableNames: 'currentScriptEditor formerScriptingTiles isTextuallyCoded lastSourceString'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Scripting'
+	category: 'EToys-Scripting'

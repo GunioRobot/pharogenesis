@@ -1,0 +1,1 @@
+A requestor for text areas, able for example to fetch the current selected text.

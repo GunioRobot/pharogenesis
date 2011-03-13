@@ -1,0 +1,2 @@
+newRequirementsObject
+	^ IdentitySet new.

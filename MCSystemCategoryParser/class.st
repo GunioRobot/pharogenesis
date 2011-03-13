@@ -1,0 +1,1 @@
+MCSystemCategoryParser class instanceVariableNames: ''

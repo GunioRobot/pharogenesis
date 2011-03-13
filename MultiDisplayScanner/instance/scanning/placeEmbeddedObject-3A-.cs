@@ -17,5 +17,7 @@ placeEmbeddedObject: anchoredMorph
 			displayOn: bitBlt destForm 
 			at: destX - anchoredMorph width @ destY
 			clippingBox: bitBlt clipRect
+			rule: Form blend
+			fillColor: Color white 
 	].
 	^ true

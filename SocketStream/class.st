@@ -1,0 +1,1 @@
+SocketStream class instanceVariableNames: ''

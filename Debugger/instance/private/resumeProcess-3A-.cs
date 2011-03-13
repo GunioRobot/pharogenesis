@@ -6,7 +6,7 @@ resumeProcess: aTopView
 	isolationHead
 		ifNotNil: [failedProject enterForEmergencyRecovery.
 			isolationHead invoke.
-			isolationHead _ nil].
+			isolationHead := nil].
 	interruptedProcess isTerminated ifFalse: [
 		Smalltalk isMorphic
 			ifTrue: [errorWasInUIProcess
@@ -14,7 +14,7 @@ resumeProcess: aTopView
 					ifFalse: [interruptedProcess resume]]
 			ifFalse: [ScheduledControllers activeControllerNoTerminate: interruptedController andProcess: interruptedProcess]].
 	"if old process was terminated, just terminate current one"
-	interruptedProcess _ nil.
+	interruptedProcess := nil.
 	"Before delete, so release doesn't terminate it"
 	Smalltalk isMorphic
 		ifTrue: [aTopView delete.

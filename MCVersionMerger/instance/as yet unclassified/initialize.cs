@@ -1,3 +1,3 @@
 initialize
-	records _ OrderedCollection new.
-	merger _ MCThreeWayMerger new.
+	records := OrderedCollection new.
+	merger := MCThreeWayMerger new.

@@ -1,3 +1,3 @@
 switchIsInstance
-	switch ifNil: [switch _ #instance].
+	switch ifNil: [switch := #instance].
 	^ switch = #instance.

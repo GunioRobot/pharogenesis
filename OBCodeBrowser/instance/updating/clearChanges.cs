@@ -1,0 +1,2 @@
+clearChanges
+	hasChanges := false

@@ -1,2 +1,3 @@
 testInMemory
- self should: [false isInMemory = true].
+
+	self assert: (false isInMemory = true).

@@ -5,5 +5,5 @@ mpegFileIsOpen
 	mpegFile fileHandle ifNil: [
 		"try to reopen the file, which may have been saved in a snapshot"
 		mpegFile openFile: mpegFile fileName.
-		mpegFile fileHandle ifNil: [mpegFile _ nil]].
+		mpegFile fileHandle ifNil: [mpegFile := nil]].
 	^ mpegFile notNil

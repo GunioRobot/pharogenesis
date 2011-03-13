@@ -2,6 +2,7 @@ addPlayerItemsTo: aMenu
 	"Add player-related items to the menu if appropriate"
 
 	| aPlayer subMenu |
+	self couldMakeSibling ifFalse: [^ self].
 	aPlayer _ self topRendererOrSelf player.
 	subMenu _ MenuMorph new defaultTarget: self.
 	subMenu add: 'make a sibling instance' translated target: self action: #makeNewPlayerInstance:.

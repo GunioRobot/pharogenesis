@@ -1,8 +1,8 @@
 explorerFor: anObject
 	| window listMorph |
-	rootObject _ anObject.
-	window _ (SystemWindow labelled: self label) model: self.
-	window addMorph: (listMorph _ SimpleHierarchicalListMorph 
+	rootObject := anObject.
+	window := (SystemWindow labelled: self label) model: self.
+	window addMorph: (listMorph := SimpleHierarchicalListMorph 
 			on: self
 			list: #getList
 			selected: #getCurrentSelection
@@ -14,5 +14,6 @@ explorerFor: anObject
 				readSelection: #contentsSelection menu: #codePaneMenu:shifted:)
 					askBeforeDiscardingEdits: false)
 		frame: (0@0.8 corner: 1@1).
-	listMorph autoDeselect: false.
+	listMorph
+		autoDeselect: false.
      ^ window

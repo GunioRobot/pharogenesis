@@ -6,5 +6,8 @@ mouseUp: evt
 		to avoid triggering the action!"
 		self color: oldColor.
 		oldColor _ nil.
-		(actWhen == #buttonUp and: [self containsPoint: evt cursorPoint])
-			ifTrue: [self doButtonAction]].
+		(self containsPoint: evt cursorPoint) 
+				ifTrue: [ actWhen == #buttonUp 
+							ifTrue: [self doButtonAction]  ]
+				ifFalse: [ self mouseLeave: evt "This is a balk. Note that we have left." ]]
+		

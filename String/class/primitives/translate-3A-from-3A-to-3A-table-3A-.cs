@@ -1,8 +1,7 @@
 translate: aString from: start  to: stop  table: table
-	"translate the characters in the string by the given table, in place"
-	<primitive: 'primitiveTranslateStringWithTable' module: 'MiscPrimitivePlugin'>
-	self var: #table  declareC: 'unsigned char *table'.
-	self var: #aString  declareC: 'unsigned char *aString'.
-
-	start to: stop do: [ :i |
-		aString at: i put: (table at: (aString at: i) asciiValue+1) ]
+	"Trivial, non-primitive version"
+	| char |
+	start to: stop do: [:i |
+		char _ (aString at: i) asInteger.
+		char < 256 ifTrue: [aString at: i put: (table at: char+1)].
+	].

@@ -5,15 +5,15 @@ adjustVolumeTo: vol overMSecs: mSecs
 
 	self flag: #bob.		"I removed the upper limit to allow making sounds louder. hmm..."
 
-	newScaledVol _ (32768.0 * vol) truncated.
+	newScaledVol := (32768.0 * vol) truncated.
 	newScaledVol = scaledVol ifTrue: [^ self].
-	scaledVolLimit _ newScaledVol.
-	"scaledVolLimit > ScaleFactor ifTrue: [scaledVolLimit _ ScaleFactor]."
-	scaledVolLimit < 0 ifTrue: [scaledVolLimit _ 0].
+	scaledVolLimit := newScaledVol.
+	"scaledVolLimit > ScaleFactor ifTrue: [scaledVolLimit := ScaleFactor]."
+	scaledVolLimit < 0 ifTrue: [scaledVolLimit := 0].
 	mSecs = 0
 		ifTrue: [  "change immediately"
-			scaledVol _ scaledVolLimit.
-			scaledVolIncr _ 0]
+			scaledVol := scaledVolLimit.
+			scaledVolIncr := 0]
 		ifFalse: [
-			scaledVolIncr _
+			scaledVolIncr :=
 				((scaledVolLimit - scaledVol) * 1000) // (self samplingRate * mSecs)].

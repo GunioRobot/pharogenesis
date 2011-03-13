@@ -1,2 +1,2 @@
 bMul: aFixed
-	bMul _ aFixed
+	bMul := aFixed

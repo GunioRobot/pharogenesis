@@ -1,2 +1,2 @@
 currentSound: aSound
-	currentSound _ aSound
+	currentSound := aSound

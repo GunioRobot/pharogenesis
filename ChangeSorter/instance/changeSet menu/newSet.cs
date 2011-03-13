@@ -3,7 +3,7 @@ newSet
 
 	| aSet |
 	self okToChange ifFalse: [^ self].
-	aSet _ self class newChangeSet.
+	aSet := self class newChangeSet.
 	aSet ifNotNil:
 		[self changeSetCategory acceptsManualAdditions ifTrue:
 			[changeSetCategory addChangeSet: aSet].

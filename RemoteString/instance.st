@@ -1,6 +1,6 @@
 Object
 	subclass: #RemoteString
-	instanceVariableNames: 'sourceFileNumber filePositionHi '
-	classVariableNames: 'CurrentTextAttStructure CurrentTextAttVersion TextAttributeStructureVersions '
+	instanceVariableNames: 'sourceFileNumber filePositionHi'
+	classVariableNames: 'CurrentTextAttStructure CurrentTextAttVersion TextAttributeStructureVersions'
 	poolDictionaries: ''
-	category: 'System-Files'
+	category: 'Files-System'

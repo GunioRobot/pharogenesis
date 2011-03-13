@@ -1,2 +1,2 @@
 initialize
-	kfList _ OrderedCollection new.
+	kfList := OrderedCollection new.

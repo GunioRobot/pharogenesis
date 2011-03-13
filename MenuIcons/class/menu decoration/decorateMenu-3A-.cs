@@ -1,15 +1,31 @@
 decorateMenu: aMenu 
 	"decorate aMenu with icons"
-	| numberAdded |
-	Preferences menuWithIcons
-		ifFalse: [^ self].
-	numberAdded := 0.
-	aMenu items do: [ :item | | icon |
-		item icon isNil ifTrue:[
-			icon _ self iconForMenuItem: item.
-			icon ifNotNil: [
-				item icon: icon.
-				numberAdded := numberAdded + 1. ]]].
 
-	numberAdded isZero ifTrue: [^ self].
-	aMenu addBlankIconsIfNecessary: self blankIcon
+	| maxWidth |
+
+	Preferences menuWithIcons ifFalse: [^ self].
+	Preferences tinyDisplay ifTrue:[^ self].
+
+	maxWidth := 0.
+
+	aMenu items do: [:item | 
+		item icon isNil ifTrue: [
+			| icon | 
+			icon := self iconForMenuItem: item.
+			icon isNil ifFalse: [
+				item icon: icon.
+				maxWidth := maxWidth max: item icon width.
+			]
+		]
+		ifFalse: [
+			maxWidth := maxWidth max: item icon width
+		].
+
+		item hasSubMenu ifTrue: [
+			self decorateMenu: item subMenu.
+		].
+	].
+
+	maxWidth isZero ifFalse: [
+		aMenu addBlankIconsIfNecessary: (self blankIconOfWidth: maxWidth).
+	].

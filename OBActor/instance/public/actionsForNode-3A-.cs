@@ -1,0 +1,2 @@
+actionsForNode: aNode
+	^#()

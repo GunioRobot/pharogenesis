@@ -1,2 +1,0 @@
-growPositionOffset
-	^self valueOfProperty: #growPositionOffset.

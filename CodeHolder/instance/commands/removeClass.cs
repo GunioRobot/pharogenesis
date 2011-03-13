@@ -3,13 +3,13 @@ removeClass
 
 	| message  className classToRemove result |
 	self okToChange ifFalse: [^ false].
-	classToRemove _ self selectedClassOrMetaClass ifNil: [Beeper beep. ^ false].
-	classToRemove _ classToRemove theNonMetaClass.
-	className _ classToRemove name.
-	message _ 'Are you certain that you
+	classToRemove := self selectedClassOrMetaClass ifNil: [Beeper beep. ^ false].
+	classToRemove := classToRemove theNonMetaClass.
+	className := classToRemove name.
+	message := 'Are you certain that you
 want to REMOVE the class ', className, '
 from the system?'.
-	(result _ self confirm: message)
+	(result := self confirm: message)
 		ifTrue: 
 			[classToRemove subclasses size > 0
 				ifTrue: [(self confirm: 'class has subclasses: ' , message)

@@ -3,7 +3,7 @@ contentStream
 	Default is no conversion, since we don't know what the bytes mean."
 
 	| s |
-	s _ MultiByteBinaryOrTextStream on: (String new: self uncompressedSize).
+	s := MultiByteBinaryOrTextStream on: (String new: self uncompressedSize).
 	s converter: Latin1TextConverter new.
 	self extractTo: s.
 	s reset.

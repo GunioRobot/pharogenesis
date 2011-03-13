@@ -1,0 +1,2 @@
+menuTitleBorderWidth
+	^ self subclassResponsibility

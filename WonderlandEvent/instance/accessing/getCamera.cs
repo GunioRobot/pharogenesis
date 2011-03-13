@@ -1,3 +1,0 @@
-getCamera
-
-	^ camera.

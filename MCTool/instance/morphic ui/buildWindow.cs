@@ -1,12 +1,12 @@
 buildWindow
 	| window |
-	window _ SystemWindow labelled: self label.
+	window := SystemWindow labelled: self label.
 	window model: self.
 	self widgetSpecs do:
 		[:pair | |send fractions offsets|
-		send _ pair first.
-		fractions _ pair at: 2 ifAbsent: [#(0 0 1 1)].
-		offsets _ pair at: 3 ifAbsent: [#(0 0 0 0)].
+		send := pair first.
+		fractions := pair at: 2 ifAbsent: [#(0 0 1 1)].
+		offsets := pair at: 3 ifAbsent: [#(0 0 0 0)].
 		window
 			addMorph: (self perform: send first withArguments: send allButFirst )
 			fullFrame:

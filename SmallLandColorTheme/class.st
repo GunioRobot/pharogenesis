@@ -1,0 +1,1 @@
+SmallLandColorTheme class instanceVariableNames: ''

@@ -1,0 +1,3 @@
+This class sets some performance requirements for the requirements algorithm. Subclasses set up and test different caching strategies.
+
+Test methods are prefixed with "performance" to exclude them from normal test runs.

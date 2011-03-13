@@ -2,7 +2,7 @@ asPrototypeInWindow
 	"Create a pluggable version of me, answer a window"
 
 	| window aTextMorph |
-	window _ (SystemWindow labelled: 'later') model: self.
+	window := (SystemWindow labelled: 'later') model: self.
 	window
 		addMorph: ((PluggableListMorph
 				on: self
@@ -23,7 +23,7 @@ asPrototypeInWindow
 				keystroke: #stackListKey:from:)
 				enableDragNDrop: false)
 		frame: (0.5 @ 0.0 extent: 0.5 @ 0.5).
-	aTextMorph _ PluggableTextMorph
+	aTextMorph := PluggableTextMorph
 				on: self
 				text: #selectedMethod
 				accept: nil

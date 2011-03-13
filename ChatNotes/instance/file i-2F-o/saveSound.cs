@@ -4,13 +4,13 @@ saveSound
 	
 	recorder recordedSound ifNil: [^self].
 	self isSaving: true.
-	fname _ self getNextName.
+	fname := self getNextName.
 	"Create .name file"
-	file _ self audioDirectory newFileNamed: (fname, 'name').
+	file := self audioDirectory newFileNamed: (fname, 'name').
 	file nextPutAll: self textMorphString.
 	file close.
 	"Create .aiff file"
-	file _ (self audioDirectory newFileNamed: (fname, 'aiff')) binary.
+	file := (self audioDirectory newFileNamed: (fname, 'aiff')) binary.
 	self storeAIFFOnFile: file.
 	file close.
 	"Add to names and notes"
@@ -19,6 +19,6 @@ saveSound
 	self changed: #notesList.
 	self notesListIndex: (notes size).
 	"Clear Recorder"
-	recorder _ SoundRecorder new.
+	recorder := SoundRecorder new.
 	"Stop Button"
 	self isSaving: false

@@ -1,0 +1,2 @@
+hasButton
+	^ button notNil

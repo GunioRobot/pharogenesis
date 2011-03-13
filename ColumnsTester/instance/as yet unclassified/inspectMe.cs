@@ -1,2 +1,0 @@
-inspectMe
-	self inspect

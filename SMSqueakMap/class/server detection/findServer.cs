@@ -7,19 +7,19 @@ findServer
 
 	| notAnswering deafServers |
 	Socket initializeNetwork.
-	notAnswering _ OrderedCollection new.
+	notAnswering := OrderedCollection new.
 	Cursor wait
 		showWhile: [ServerList
 				do: [:server | (self pingServer: server)
 						ifTrue: [notAnswering isEmpty
-								ifFalse: [deafServers _ String
+								ifFalse: [deafServers := String
 												streamContents: [:str | notAnswering
 														do: [:srvr | str nextPutAll: srvr printString;
 																 nextPut: Character cr]].
 									Transcript show: ('These SqueakMap master servers did not respond:\' , deafServers , 'Falling back on ' , server printString , '.') withCRs].
 							^ server]
 						ifFalse: [notAnswering add: server]]].
-	deafServers _ String
+	deafServers := String
 				streamContents: [:str | notAnswering
 						do: [:srvr | str nextPutAll: srvr printString;
 								 nextPut: Character cr]].

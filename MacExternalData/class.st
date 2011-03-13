@@ -1,1 +1,0 @@
-MacExternalData class instanceVariableNames: ''

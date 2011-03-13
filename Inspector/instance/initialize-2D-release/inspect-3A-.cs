@@ -10,12 +10,12 @@ inspect: anObject
 	the class of these embedded inspectors are changed back."
 
 	| c |
-	c _ anObject inspectorClass.
+	c := anObject inspectorClass.
 	(self class ~= c and: [self class format = c format]) ifTrue: [
 		self primitiveChangeClassTo: c basicNew].
 	
 	"Set 'object' before sending the initialize message, because some implementations
 	of initialize (e.g., in DictionaryInspector) require 'object' to be non-nil."
 	
-	object _ anObject. 
+	object := anObject. 
 	self initialize

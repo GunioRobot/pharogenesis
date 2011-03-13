@@ -1,0 +1,1 @@
+MPEGSubtitleElement class instanceVariableNames: ''

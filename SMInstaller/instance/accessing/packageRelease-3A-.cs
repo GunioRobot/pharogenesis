@@ -1,2 +1,2 @@
 packageRelease: aPackageRelease
-	packageRelease _ aPackageRelease
+	packageRelease := aPackageRelease

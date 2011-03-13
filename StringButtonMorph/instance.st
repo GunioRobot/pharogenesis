@@ -1,6 +1,6 @@
 StringMorph
 	subclass: #StringButtonMorph
-	instanceVariableNames: 'target actionSelector arguments actWhen oldColor '
+	instanceVariableNames: 'target actionSelector arguments actWhen oldColor'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Widgets'
+	category: 'MorphicExtras-Widgets'

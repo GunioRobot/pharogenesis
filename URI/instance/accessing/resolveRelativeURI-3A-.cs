@@ -1,0 +1,2 @@
+resolveRelativeURI: relativeURI
+	self shouldNotImplement

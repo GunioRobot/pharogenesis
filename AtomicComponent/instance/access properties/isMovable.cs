@@ -1,2 +1,0 @@
-isMovable
-	^ mapStyle isPreview not

@@ -1,6 +1,6 @@
-AlansTextPlusMorph
+ScrollPane
 	subclass: #GeeMailMorph
-	instanceVariableNames: ''
+	instanceVariableNames: 'theTextMorph thePasteUp'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-GeeMail'
+	category: 'MorphicExtras-GeeMail'

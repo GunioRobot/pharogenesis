@@ -1,2 +1,0 @@
-aaScanMaskGet
-	^workBuffer at: GWAAScanMask

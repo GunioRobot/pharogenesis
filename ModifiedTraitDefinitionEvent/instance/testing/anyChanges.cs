@@ -1,0 +1,2 @@
+anyChanges
+	^ self isTraitCompositionModified

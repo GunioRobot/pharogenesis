@@ -1,0 +1,1 @@
+ThumbnailImageMorph class instanceVariableNames: ''

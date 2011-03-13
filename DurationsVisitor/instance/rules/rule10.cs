@@ -2,13 +2,13 @@ rule10
 	"Rule 10: Shortening in clusters."
 	| current next previous stream |
 	phrase lastSyllable == syllable ifTrue: [^ self].
-	stream _ ReadStream on: syllable events.
-	current _ nil.
-	next _ stream next.
+	stream := ReadStream on: syllable events.
+	current := nil.
+	next := stream next.
 	[stream atEnd]
-		whileFalse: [previous _ current.
-					current _ next.
-					next _ stream next.
+		whileFalse: [previous := current.
+					current := next.
+					next := stream next.
 					current phoneme isVowel
 						ifTrue: [next phoneme isVowel
 									ifTrue: [current stretch: 1.2]

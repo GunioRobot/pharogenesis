@@ -3,7 +3,7 @@ dumpTallyOnTranscript: tally
 	Dumps lines with percentage of time, hash of process, and a friendly name"
 
 	tally sortedCounts do: [ :assoc | | procName |
-		procName _ (self nameAndRulesFor: assoc value) first.
+		procName := (self nameAndRulesFor: assoc value) first.
 		Transcript print: (((assoc key / tally size) * 100.0) roundTo: 1);
 			nextPutAll: '%   ';
 			print: assoc value identityHash; space;

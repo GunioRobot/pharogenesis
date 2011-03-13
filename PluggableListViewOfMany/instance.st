@@ -1,6 +1,6 @@
 PluggableListView
 	subclass: #PluggableListViewOfMany
-	instanceVariableNames: 'selections '
+	instanceVariableNames: 'getSelectionListSelector setSelectionListSelector'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'ST80-Pluggable Views'

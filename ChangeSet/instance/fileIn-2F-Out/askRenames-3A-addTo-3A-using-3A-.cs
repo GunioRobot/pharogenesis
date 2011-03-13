@@ -6,12 +6,13 @@ askRenames: renamed addTo: msgSet using: smart
 	renamed do: [:cls |
 		rec _ changeRecords at: cls name.
 		rec priorName ifNotNil: [
-			ans _ PopUpMenu withCaption: 'You renamed class ', rec priorName, 
+			ans _ UIManager default chooseFrom: 
+					#('Yes, write code to convert those instances'
+					'No, no instances are in projects')
+				title: 'You renamed class ', rec priorName, 
 				' to be ', rec thisName,
 				'.\Could an instance of ', rec priorName, 
-				' be in a project on someone''s disk?'
-			chooseFrom: #('Yes, write code to convert those instances'
-				'No, no instances are in projects').
+				' be in a project on someone''s disk?'.
 			ans = 1 ifTrue: [
 					oldStruct _ structures at: rec priorName ifAbsent: [nil].
 					newStruct _ (Array with: cls classVersion), (cls allInstVarNames).

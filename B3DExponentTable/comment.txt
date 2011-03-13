@@ -1,1 +1,0 @@
-I represent a lookup table for several exponents during lighting. Values are computed based on linear interpolation between the stored elements. New tables are created by providing a one argument initialization block from  which I am created.

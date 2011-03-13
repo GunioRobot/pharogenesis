@@ -1,2 +1,2 @@
 summary: aString
-	summary _ aString
+	summary := aString

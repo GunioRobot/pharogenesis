@@ -4,14 +4,14 @@ renameCategory
 	| oldIndex oldName newName |
 	classListIndex = 0 ifTrue: [^ self].
 	self okToChange ifFalse: [^ self].
-	(oldIndex _ messageCategoryListIndex) = 0 ifTrue: [^ self].
-	oldName _ self selectedMessageCategoryName.
-	newName _ self
+	(oldIndex := messageCategoryListIndex) = 0 ifTrue: [^ self].
+	oldName := self selectedMessageCategoryName.
+	newName := self
 		request: 'Please type new category name'
 		initialAnswer: oldName.
 	newName isEmpty
 		ifTrue: [^ self]
-		ifFalse: [newName _ newName asSymbol].
+		ifFalse: [newName := newName asSymbol].
 	newName = oldName ifTrue: [^ self].
 	self classOrMetaClassOrganizer
 		renameCategory: oldName

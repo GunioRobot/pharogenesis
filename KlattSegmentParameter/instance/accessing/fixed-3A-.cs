@@ -1,2 +1,2 @@
 fixed: aNumber
-	fixed _ aNumber
+	fixed := aNumber

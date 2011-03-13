@@ -4,13 +4,13 @@ updateInstrumentsFromLibraryExcept: soundsBeingEdited
 	"soundsBeingEdited is a collection of sounds being edited (by an EnvelopeEditor).  If any of my instruments share one of these, then they will be left alone so as not to disturb that dynamic linkage."
 
 	| unloadPostfix myInstruments name displaysAsUnloaded isUnloaded |
-	unloadPostfix _ '(out)'.
-	myInstruments _ Dictionary new.
+	unloadPostfix := '(out)'.
+	myInstruments := Dictionary new.
 	1 to: instrumentSelector size do: [:i |
-		name _ (instrumentSelector at: i) contents.
-		displaysAsUnloaded _ name endsWith: unloadPostfix.
+		name := (instrumentSelector at: i) contents.
+		displaysAsUnloaded := name endsWith: unloadPostfix.
 		displaysAsUnloaded ifTrue: [
-			name _ name copyFrom: 1 to: name size - unloadPostfix size].
+			name := name copyFrom: 1 to: name size - unloadPostfix size].
 		(myInstruments includesKey: name) ifFalse: [
 			myInstruments at: name put:
 				(name = 'clink'
@@ -29,7 +29,7 @@ updateInstrumentsFromLibraryExcept: soundsBeingEdited
 			scorePlayer instrumentForTrack: i put: (myInstruments at: name)].
 
 		"update loaded/unloaded status in instrumentSelector if necessary"
-		isUnloaded _ (myInstruments at: name) isKindOf: UnloadedSound.
+		isUnloaded := (myInstruments at: name) isKindOf: UnloadedSound.
 		(displaysAsUnloaded and: [isUnloaded not])
 			ifTrue: [(instrumentSelector at: i) contentsClipped: name].
 		(displaysAsUnloaded not and: [isUnloaded])

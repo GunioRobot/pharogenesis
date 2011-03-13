@@ -1,2 +1,0 @@
-protoValues
-	^protoValues

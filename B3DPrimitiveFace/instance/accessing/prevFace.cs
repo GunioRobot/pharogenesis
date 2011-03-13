@@ -1,2 +1,0 @@
-prevFace
-	^prevFace

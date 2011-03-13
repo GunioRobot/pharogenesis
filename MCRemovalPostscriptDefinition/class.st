@@ -1,0 +1,1 @@
+MCRemovalPostscriptDefinition class instanceVariableNames: ''

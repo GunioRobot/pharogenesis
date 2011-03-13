@@ -6,11 +6,10 @@ getInteger32: location
 	"the following is about 7x faster than interpreting the plugin if not compiled"
 
 	integer := 
-		((self byteAt: location) bitShift: 24) +
-		((self byteAt: location+1) bitShift: 16) +
-		((self byteAt: location+2) bitShift: 8) +
-		(self byteAt: location+3).
+		((self at: location) asInteger bitShift: 24) +
+		((self at: location+1) asInteger bitShift: 16) +
+		((self at: location+2) asInteger bitShift: 8) +
+		(self at: location+3) asInteger.
 
-	integer > 1073741824 ifTrue: [
-		^1073741824 - integer ].
+	integer > 1073741824 ifTrue: [^1073741824 - integer ].
 	^integer

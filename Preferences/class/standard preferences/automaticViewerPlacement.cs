@@ -1,2 +1,0 @@
-automaticViewerPlacement
-	^ self valueOfFlag: #automaticViewerPlacement

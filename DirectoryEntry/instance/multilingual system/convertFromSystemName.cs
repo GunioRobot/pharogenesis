@@ -1,3 +1,3 @@
 convertFromSystemName
 
-	name _ (FilePath pathName: name isEncoded: true) asSqueakPathName
+	name := (FilePath pathName: name isEncoded: true) asSqueakPathName

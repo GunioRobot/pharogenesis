@@ -1,2 +1,2 @@
 myChangeSet: anObject
-	myChangeSet _ anObject
+	myChangeSet := anObject

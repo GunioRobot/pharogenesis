@@ -1,3 +1,3 @@
 isSaving
 
-	^isSaving ifNil: [isSaving _ false]
+	^isSaving ifNil: [isSaving := false]

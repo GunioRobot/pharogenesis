@@ -1,0 +1,2 @@
+pushReceiver
+	self push: #self.

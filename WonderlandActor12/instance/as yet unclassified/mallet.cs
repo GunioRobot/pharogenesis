@@ -1,2 +1,0 @@
-mallet
-	^ mallet

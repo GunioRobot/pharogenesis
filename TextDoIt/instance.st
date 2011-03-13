@@ -1,6 +1,6 @@
 TextAction
 	subclass: #TextDoIt
-	instanceVariableNames: 'evalString '
+	instanceVariableNames: 'evalString'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Collections-Text'

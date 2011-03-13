@@ -1,0 +1,1 @@
+TranslatedReceiverFinder class instanceVariableNames: ''

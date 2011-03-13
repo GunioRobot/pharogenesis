@@ -4,9 +4,9 @@ selectAllConflicts
 	|  aClass aChange |
 	Cursor read showWhile: 
 		[1 to: changeList size do:
-			[:i | aChange _ changeList at: i.
+			[:i | aChange := changeList at: i.
 			listSelections at: i put:
 				(aChange type = #method
-				and: [(aClass _ aChange methodClass) notNil
+				and: [(aClass := aChange methodClass) notNil
 				and: [ChangeSorter doesAnyChangeSetHaveClass: aClass andSelector:  aChange methodSelector]])]].
 	self changed: #allSelections

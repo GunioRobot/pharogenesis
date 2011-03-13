@@ -1,0 +1,1 @@
+SMMcInstaller class instanceVariableNames: ''

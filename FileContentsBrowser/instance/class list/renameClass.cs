@@ -2,8 +2,8 @@ renameClass
 	| oldName newName |
 	classListIndex = 0 ifTrue: [^ self].
 	self okToChange ifFalse: [^ self].
-	oldName _ self selectedClass name.
-	newName _ (self request: 'Please type new class name'
+	oldName := self selectedClass name.
+	newName := (self request: 'Please type new class name'
 						initialAnswer: oldName) asSymbol.
 	(newName isEmpty or:[newName = oldName]) ifTrue: [^ self].
 	(self selectedPackage classes includesKey: newName)

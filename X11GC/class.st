@@ -1,1 +1,0 @@
-X11GC class instanceVariableNames: ''

@@ -1,4 +1,4 @@
 testShortRunArrayWithImageSegment
-	array _ self createSampleShortRunArray.
+	array := self createSampleShortRunArray.
 	self validateImageSegment 
 	

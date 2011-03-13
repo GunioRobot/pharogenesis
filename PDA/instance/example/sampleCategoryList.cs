@@ -1,3 +1,0 @@
-sampleCategoryList
-
-	^ { 'home'. 'work'. 'services' }

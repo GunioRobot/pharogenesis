@@ -6,6 +6,6 @@ allMethodsInCategory: categoryName forInstance: anObject ofClass: aClass
 	categoryName = self allCategoryName ifTrue:
 		[^ methodInterfaces collect: [:anInterface | anInterface selector]].
 
-	aCategory _ categories detect: [:cat | cat categoryName == categoryName asSymbol] ifNone: [^ OrderedCollection new].
+	aCategory := categories detect: [:cat | cat categoryName == categoryName asSymbol] ifNone: [^ OrderedCollection new].
 	^ aCategory elementsInOrder collect: [:anElement | anElement selector] thenSelect:
 			[:aSelector | aClass canUnderstand: aSelector]

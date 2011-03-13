@@ -16,4 +16,6 @@ initializeFor: aPlayer barHeight: anInteger includeDismissButton: aBoolean showC
 		ifTrue:  "starting fresh"
 			[self addSearchPane. 
 			self addCategoryViewer.
-			self addCategoryViewer].
+			self addCategoryViewer.
+			(scriptedPlayer costume isMemberOf: KedamaMorph) ifTrue: [self addCategoryViewer].
+		].

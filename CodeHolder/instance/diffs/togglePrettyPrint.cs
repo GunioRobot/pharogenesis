@@ -5,9 +5,9 @@ togglePrettyPrint
 	self okToChange ifTrue:
 		[self showingPrettyPrint
 			ifTrue:
-				[contentsSymbol _ #source]
+				[contentsSymbol := #source]
 			ifFalse:
-				[contentsSymbol _ #prettyPrint].
+				[contentsSymbol := #prettyPrint].
 		self setContentsToForceRefetch.
 		self contentsChanged]
 

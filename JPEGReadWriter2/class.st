@@ -1,0 +1,1 @@
+JPEGReadWriter2 class instanceVariableNames: ''

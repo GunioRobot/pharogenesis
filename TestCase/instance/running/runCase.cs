@@ -1,5 +1,5 @@
 runCase
 
 	[self setUp.
-	self performTest] sunitEnsure: [self tearDown]
+	self performTest] ensure: [self tearDown]
 			

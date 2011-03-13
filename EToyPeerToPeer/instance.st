@@ -1,7 +1,7 @@
 Object
 	subclass: #EToyPeerToPeer
 	instanceVariableNames:
-		'socket communicatorMorph process ipAddress connectionQueue dataQueue remoteSocketAddress leftOverData '
-	classVariableNames: 'DEBUG PREVTICK '
+		'socket communicatorMorph process ipAddress connectionQueue dataQueue remoteSocketAddress leftOverData'
+	classVariableNames: 'DEBUG PREVTICK'
 	poolDictionaries: ''
-	category: 'Network-EToy Communications'
+	category: 'Nebraska-Network-EToy Communications'

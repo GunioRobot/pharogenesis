@@ -1,3 +1,3 @@
 initialize
-	sorter _ MCVersionSorter new.
-	fileNames _ Dictionary new.
+	sorter := MCVersionSorter new.
+	fileNames := Dictionary new.

@@ -1,2 +1,0 @@
-isThinking
-	^myProcess notNil

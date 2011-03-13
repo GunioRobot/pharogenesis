@@ -3,6 +3,6 @@ inspect: anObject
 	current selection."
 
 	self initialize.
-	object _ anObject.
-	selectionIndex _ 0.
-	contents _ ''
+	object := anObject.
+	selectionIndex := 0.
+	contents := ''

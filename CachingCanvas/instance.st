@@ -1,6 +1,6 @@
 PluggableCanvas
 	subclass: #CachingCanvas
-	instanceVariableNames: 'cacheCanvas mainCanvas '
+	instanceVariableNames: 'cacheCanvas mainCanvas'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Support'
+	category: 'MorphicExtras-Support'

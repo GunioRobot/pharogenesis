@@ -1,6 +1,6 @@
 ServerDirectory
 	subclass: #ServerFile
-	instanceVariableNames: 'fileName rwmode '
+	instanceVariableNames: 'fileName rwmode'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Network-Kernel'
+	category: 'Network-RemoteDirectory'

@@ -3,5 +3,7 @@ handUserASibling
 
 	| topRend |
 	topRend _ self topRendererOrSelf.
+	topRend couldMakeSibling ifFalse: [^ Beeper beep].
+
 	topRend assuredPlayer assureUniClass.
 	(topRend makeSiblings: 1) first openInHand

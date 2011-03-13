@@ -1,6 +1,6 @@
 Object
 	subclass: #ExceptionSet
-	instanceVariableNames: 'exceptions '
+	instanceVariableNames: 'exceptions'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Exceptions Kernel'
+	category: 'Exceptions-Kernel'

@@ -1,2 +1,0 @@
-isLinear
-	^circular not

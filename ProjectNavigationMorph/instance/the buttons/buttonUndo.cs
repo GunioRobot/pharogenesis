@@ -1,3 +1,5 @@
 buttonUndo
+	"Build and return a fresh Undo button for me."
 
-	^self makeButton: 'Undo' balloonText: 'Undo the last command' for: #undoLastCommand
+	^ self makeUpdatingButtonWithBalloonText:  'Undo or redo the last undoable action' actionSelector: #undoOrRedoLastCommand wordingSelector: #undoButtonWording
+

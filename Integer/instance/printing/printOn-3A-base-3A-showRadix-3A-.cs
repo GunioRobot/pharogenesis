@@ -5,6 +5,7 @@ printOn: outputStream base: baseInteger showRadix: flagBoolean
 	| tempString startPos |
 	#Numeric.
 	"2000/03/04  Harmon R. Added ANSI <integer> protocol"
+
 	tempString := self printStringRadix: baseInteger.
 	flagBoolean ifTrue: [^ outputStream nextPutAll: tempString].
 	startPos := (tempString indexOf: $r ifAbsent: [self error: 'radix indicator not found.'])

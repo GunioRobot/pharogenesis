@@ -1,0 +1,1 @@
+GZipConstants class instanceVariableNames: ''

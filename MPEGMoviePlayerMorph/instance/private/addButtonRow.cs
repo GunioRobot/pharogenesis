@@ -2,7 +2,7 @@ addButtonRow
 	"private - add the button row"
 
 	| r |
-	r _ AlignmentMorph newRow vResizing: #shrinkWrap; color: Color transparent; listCentering: #center.
+	r := AlignmentMorph newRow vResizing: #shrinkWrap; color: Color transparent; listCentering: #center.
 	r addMorphBack: (self buttonName: 'Menu' translated action: #invokeMenu).
 	r addMorphBack: (Morph new extent: 3@1; color: Color transparent).
 	r addMorphBack: (self buttonName: 'Open' translated action: #openMPEGFile).

@@ -1,0 +1,3 @@
+getDisplayShiftAmount
+
+	^ self getValueFromCostume: #displayShiftAmount.

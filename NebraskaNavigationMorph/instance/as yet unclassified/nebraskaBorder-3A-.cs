@@ -1,3 +1,3 @@
 nebraskaBorder: aNebraskaBorder
 
-	nebraskaBorder _ aNebraskaBorder
+	nebraskaBorder := aNebraskaBorder

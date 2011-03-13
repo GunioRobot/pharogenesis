@@ -1,4 +1,4 @@
 defaultAction
-	(Smalltalk isMorphic and: [Preferences valueOfFlag: #morphicProgressStyle])
+	Smalltalk isMorphic
 		ifTrue: [self defaultMorphicAction]
 		ifFalse: [self defaultMVCAction].

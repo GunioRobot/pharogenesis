@@ -1,4 +1,4 @@
 colorRamp: anArray
-	colorRamp _ anArray.
-	pixelRamp _ nil.
-	isTranslucent _ nil.
+	colorRamp := anArray.
+	pixelRamp := nil.
+	isTranslucent := nil.

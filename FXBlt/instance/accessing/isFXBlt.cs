@@ -1,2 +1,0 @@
-isFXBlt
-	^true

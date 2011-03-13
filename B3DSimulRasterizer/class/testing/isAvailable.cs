@@ -1,2 +1,0 @@
-isAvailable
-	^true "Always"

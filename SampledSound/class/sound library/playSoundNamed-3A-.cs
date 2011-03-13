@@ -3,6 +3,6 @@ playSoundNamed: aString
 	"SampledSound playSoundNamed: 'croak'"
 
 	| snd |
-	snd _ self soundNamed: aString.
+	snd := self soundNamed: aString.
 	snd ifNotNil: [snd play].
 	^ snd

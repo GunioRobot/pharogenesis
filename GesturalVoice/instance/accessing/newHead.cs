@@ -1,6 +1,6 @@
 newHead
 	| m |
-	m _ HeadMorph new.
+	m := HeadMorph new.
 	self head: m.
 	m openInWorld.
 	^ m

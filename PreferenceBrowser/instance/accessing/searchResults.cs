@@ -1,0 +1,2 @@
+searchResults
+	^searchResults ifNil: [searchResults := #()]

@@ -1,3 +1,3 @@
 on: aStream
 	aStream binary.
-	stream _ FlashFileStream on: aStream.
+	stream := FlashFileStream on: aStream.

@@ -3,7 +3,7 @@ checkName: aFileName fixErrors: fixing
 
 	| maxLength |
 	aFileName size = 0 ifTrue: [self error: 'zero length file name'].
-	maxLength _ self class maxFileNameLength.
+	maxLength := self class maxFileNameLength.
 	aFileName size > maxLength ifTrue: [
 		fixing
 			ifTrue: [^ aFileName contractTo: maxLength]

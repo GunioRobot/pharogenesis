@@ -3,18 +3,18 @@ morphicWindow
 	SelectorBrowser new open "
 
 	| window typeInView selectorListView classListView |
-	window _ (SystemWindow labelled: 'later') model: self.
+	window := (SystemWindow labelled: 'later') model: self.
 	window setStripeColorsFrom: self defaultBackgroundColor.
-	selectorIndex _ classListIndex _ 0.
+	selectorIndex := classListIndex := 0.
 
-	typeInView _ PluggableTextMorph on: self 
+	typeInView := PluggableTextMorph on: self 
 		text: #contents accept: #contents:notifying:
 		readSelection: #contentsSelection menu: #codePaneMenu:shifted:.
 	typeInView acceptOnCR: true.
 	typeInView hideScrollBarsIndefinitely.
 	window addMorph: typeInView frame: (0@0 corner: 0.5@0.14).
 
-	selectorListView _ PluggableListMorph on: self
+	selectorListView := PluggableListMorph on: self
 		list: #messageList
 		selected: #messageListIndex
 		changeSelected: #messageListIndex:
@@ -23,7 +23,7 @@ morphicWindow
 	selectorListView menuTitleSelector: #selectorMenuTitle.
 	window addMorph: selectorListView frame: (0@0.14 corner: 0.5@0.6).
 
-	classListView _ PluggableListMorph on: self
+	classListView := PluggableListMorph on: self
 		list: #classList
 		selected: #classListIndex
 		changeSelected: #classListIndex:

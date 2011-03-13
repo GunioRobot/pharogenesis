@@ -1,3 +1,0 @@
-setSmallTest
-
-	smallTest _ true

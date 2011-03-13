@@ -1,1 +1,0 @@
-AtomicMap25 class instanceVariableNames: ''

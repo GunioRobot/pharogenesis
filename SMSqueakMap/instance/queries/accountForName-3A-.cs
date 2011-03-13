@@ -5,15 +5,15 @@ accountForName: name
 	this is just for migrating accounts properly."
 
 	| lowerName size aName |
-	lowerName _ name asLowercase.
-	size _ lowerName size.
+	lowerName := name asLowercase.
+	size := lowerName size.
 	^self accounts
 		detect: [:a |
-			aName _ a name asLowercase.
+			aName := a name asLowercase.
 			(aName size = size) and: [| errors |
-				errors _ 0.
+				errors := 0.
 				aName with: lowerName do: [:c1 :c2 |
-					c1 ~= c2 ifTrue: [errors _ errors + 1]].
+					c1 ~= c2 ifTrue: [errors := errors + 1]].
 				errors < 3
 			]]
 		ifNone: [nil]

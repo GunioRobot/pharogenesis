@@ -2,8 +2,8 @@ selectorsToBeIgnored
 
 	| deprecated private special |
 
-	deprecated := #( #<= #>= #> ).
-	private := #( #date: #time: #printOn: ).
-	special := #( #< #= ).
+	deprecated := #().
+	private := #( #printOn: ).
+	special := #().
 
 	^ super selectorsToBeIgnored, deprecated, private, special.

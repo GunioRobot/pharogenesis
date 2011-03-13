@@ -5,7 +5,7 @@ canInstall: aPackage
 	present in the image to handle the install."
 
 	| fileName |
-	fileName _ aPackage downloadFileName.
+	fileName := aPackage downloadFileName.
 	fileName ifNil: [^false].
 	Smalltalk at: #SARInstaller ifPresentAndInMemory: [ :installer |
 			^'sar' = (FileDirectory extensionFor: fileName) asLowercase].

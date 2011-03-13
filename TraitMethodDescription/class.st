@@ -1,0 +1,1 @@
+TraitMethodDescription class instanceVariableNames: ''

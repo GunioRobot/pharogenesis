@@ -1,3 +1,0 @@
-okHit
-
-	modalView delete.

@@ -1,2 +1,0 @@
-poolName
-	^#B3DEngineConstants

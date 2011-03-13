@@ -1,0 +1,1 @@
+EUCKRTextConverter class instanceVariableNames: ''

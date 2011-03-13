@@ -1,0 +1,2 @@
+textMorphString
+	^textMorph text string 

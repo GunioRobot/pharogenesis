@@ -1,5 +1,5 @@
 allAncestorsOf: aVersionInfo
 	| all |
-	all _ Set new.
+	all := Set new.
 	self addAllAncestorsOf: aVersionInfo to: all.
 	^ all

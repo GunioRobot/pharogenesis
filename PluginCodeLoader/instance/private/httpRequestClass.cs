@@ -1,2 +1,0 @@
-httpRequestClass
-	^PluginHTTPRequest

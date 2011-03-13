@@ -1,0 +1,2 @@
+menuTitleBorderWidth
+	^ 6

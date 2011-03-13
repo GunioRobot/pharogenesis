@@ -1,6 +1,6 @@
 Collection
 	subclass: #Bag
-	instanceVariableNames: 'contents '
+	instanceVariableNames: 'contents'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Collections-Unordered'

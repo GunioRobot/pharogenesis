@@ -1,6 +1,6 @@
 FlashCharacterMorph
 	subclass: #FlashButtonMorph
-	instanceVariableNames: 'events sounds target '
-	classVariableNames: 'ActionHelpText '
+	instanceVariableNames: 'events sounds target'
+	classVariableNames: 'ActionHelpText'
 	poolDictionaries: ''
-	category: 'Balloon-MMFlash Morphs'
+	category: 'Flash-Morphs'

@@ -1,3 +1,0 @@
-isSymbol
-
-	^ true.

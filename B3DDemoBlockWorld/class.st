@@ -1,1 +1,0 @@
-B3DDemoBlockWorld class instanceVariableNames: ''

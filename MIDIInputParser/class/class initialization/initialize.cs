@@ -2,7 +2,7 @@ initialize
 	"Build the default MIDI command-byte action table. This table maps MIDI command bytes to the action to be performed when that is received. Note that MIDI data bytes (bytes whose value is < 128) are never used to index into this table."
 	"MIDIInputParser initialize"
 
-	DefaultMidiTable _ Array new: 255 withAll: #undefined:.
+	DefaultMidiTable := Array new: 255 withAll: #undefined:.
 	128 to: 143 do: [:i | DefaultMidiTable at: i put: #recordTwo:].		"key off"
 	144 to: 159 do: [:i | DefaultMidiTable at: i put: #recordTwo:].		"key on"
 	160 to: 175 do: [:i | DefaultMidiTable at: i put: #recordTwo:].		"polyphonic after-touch"

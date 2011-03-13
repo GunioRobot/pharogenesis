@@ -1,0 +1,1 @@
+This is a trivial subclass of PluggableTextMorph. It overrides initialization methods to use an OBTextMorph rather than a regular TextMorph

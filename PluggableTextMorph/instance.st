@@ -1,7 +1,7 @@
 ScrollPane
 	subclass: #PluggableTextMorph
 	instanceVariableNames:
-		'textMorph getTextSelector setTextSelector getSelectionSelector hasUnacceptedEdits askBeforeDiscardingEdits selectionInterval hasEditingConflicts '
+		'textMorph getTextSelector setTextSelector getSelectionSelector hasUnacceptedEdits askBeforeDiscardingEdits selectionInterval hasEditingConflicts'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Windows'
+	category: 'Morphic-Pluggable Widgets'

@@ -4,17 +4,17 @@ infoViewContents
 	| theClass stamp exists |
 	editSelection == #newClass ifTrue: [^ self packageInfo: self selectedPackage].
 	self selectedClass isNil ifTrue: [^ ''].
-	theClass _ Smalltalk at: self selectedClass name asSymbol ifAbsent: [].
+	theClass := Smalltalk at: self selectedClass name asSymbol ifAbsent: [].
 	editSelection == #editClass ifTrue:
 		[^ theClass notNil
 			ifTrue: ['Class exists already in the system' translated]
 			ifFalse: ['New class' translated]].
 	editSelection == #editMessage ifFalse: [^ ''].
 	(theClass notNil and: [self metaClassIndicated])
-		ifTrue: [theClass _ theClass class].
+		ifTrue: [theClass := theClass class].
 
-	stamp _ self selectedClassOrMetaClass stampAt: self selectedMessageName.
-	exists _ theClass notNil and: [theClass includesSelector: self selectedMessageName].
+	stamp := self selectedClassOrMetaClass stampAt: self selectedMessageName.
+	exists := theClass notNil and: [theClass includesSelector: self selectedMessageName].
 	^ stamp = 'methodWasRemoved'
 		ifTrue:
 			[exists

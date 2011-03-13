@@ -1,0 +1,2 @@
+atMergePoint
+	^ savedStacks includesKey: pc

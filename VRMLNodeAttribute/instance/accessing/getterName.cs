@@ -1,2 +1,0 @@
-getterName
-	^self selectorString asSymbol

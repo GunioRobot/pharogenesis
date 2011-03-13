@@ -3,4 +3,4 @@ AbstractLauncher
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Framework-Download'
+	category: 'System-Download'

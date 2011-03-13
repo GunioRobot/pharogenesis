@@ -1,2 +1,2 @@
 backgroundColorForMorphicProject
-	^ Color lightOrange
+	^ Preferences defaultWorldColor

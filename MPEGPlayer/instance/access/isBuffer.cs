@@ -1,0 +1,2 @@
+isBuffer
+	^isBuffer == true

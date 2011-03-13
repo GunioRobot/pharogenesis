@@ -1,2 +1,3 @@
 testMaxVal
-	self should: [SmallInteger maxVal = 16r3FFFFFFF].
+
+	self assert: (SmallInteger maxVal = 16r3FFFFFFF).

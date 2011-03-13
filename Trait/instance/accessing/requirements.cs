@@ -1,0 +1,2 @@
+requirements
+	^self requiredSelectors

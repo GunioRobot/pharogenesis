@@ -1,1 +1,0 @@
-CipherPanel class instanceVariableNames: ''

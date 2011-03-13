@@ -1,2 +1,0 @@
-createStandardPartsBin
-	associatedMorph primaryHand attachMorph: self standardPartsWindow 

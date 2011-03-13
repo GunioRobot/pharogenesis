@@ -1,3 +1,3 @@
 ascii
 	"opposite of binary"
-	buffer1 _ String new: 1
+	buffer1 := String new: 1

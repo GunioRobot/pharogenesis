@@ -1,7 +1,7 @@
 renameClassUsing: aBlock
 
-	| originalName createdClass newClassName foundClasses |
-	originalName := self newUniqueClassName.
+	| createdClass foundClasses  |
+	originalName := self newUniqueClassName. 
 	createdClass := Object 
 		subclass: originalName
 		instanceVariableNames: ''

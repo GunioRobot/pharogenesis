@@ -1,3 +1,3 @@
 duration: aNumber
 
-	duration _ aNumber.
+	duration := aNumber.

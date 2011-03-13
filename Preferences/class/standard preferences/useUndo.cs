@@ -1,2 +1,0 @@
-useUndo
-	^ self valueOfFlag: #useUndo

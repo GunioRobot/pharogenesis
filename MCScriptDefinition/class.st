@@ -1,0 +1,1 @@
+MCScriptDefinition class instanceVariableNames: ''

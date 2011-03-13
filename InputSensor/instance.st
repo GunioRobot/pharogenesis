@@ -1,6 +1,6 @@
 Object
 	subclass: #InputSensor
 	instanceVariableNames: ''
-	classVariableNames: 'InterruptSemaphore InterruptWatcherProcess '
+	classVariableNames: 'ButtonDecodeTable InterruptSemaphore InterruptWatcherProcess KeyDecodeTable'
 	poolDictionaries: ''
 	category: 'Kernel-Processes'

@@ -2,12 +2,12 @@ image: aFormOrNil at: aPoint sourceRect: sourceRect rule: rule cacheID: cacheID 
 
 	| t destRect d2 |
 
-	destRect _ aPoint extent: sourceRect extent.
-	d2 _ (lastTransform invertBoundsRect: destRect) expandBy: 1.
+	destRect := aPoint extent: sourceRect extent.
+	d2 := (lastTransform invertBoundsRect: destRect) expandBy: 1.
 	(d2 intersects: lastClipRect) ifFalse: [
 		^NebraskaDebug at: #bigImageSkipped add: {lastClipRect. d2}.
 	].
-	t _ Time millisecondsToRun: [
+	t := Time millisecondsToRun: [
 		self sendCommand: {
 			String with: CanvasEncoder codeImage.
 			self class encodeImage: aFormOrNil.

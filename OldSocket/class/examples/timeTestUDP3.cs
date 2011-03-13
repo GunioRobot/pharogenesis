@@ -7,7 +7,7 @@ timeTestUDP3
 	Transcript
 		show: 'ok';
 		cr.
-	serverName := FillInTheBlank request: 'What is your time server?'
+	serverName := UIManager default request: 'What is your time server?'
 				initialAnswer: 'localhost'.
 	serverName isEmpty 
 		ifTrue: 

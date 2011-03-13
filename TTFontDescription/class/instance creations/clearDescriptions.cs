@@ -3,5 +3,5 @@ clearDescriptions
 	self clearDescriptions
 "
 
-	Descriptions _ Set new.
+	Descriptions := Set new.
 	Default ifNotNil: [Descriptions add: Default].

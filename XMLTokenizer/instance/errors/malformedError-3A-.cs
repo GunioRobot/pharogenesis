@@ -1,2 +1,0 @@
-malformedError: errorString
-	SAXMalformedException signal: errorString

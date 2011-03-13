@@ -1,7 +1,7 @@
 editBalloonHelpContent: aString
 	| reply |
 	reply _ FillInTheBlank
-		multiLineRequest: 'Edit the balloon help text for ' , self externalName
+		multiLineRequest: 'Edit the balloon help text for ' translated, self externalName
 		centerAt: Sensor cursorPoint
 		initialAnswer: (aString ifNil: [self noHelpString] ifNotNil: [aString])
 		answerHeight: 200.

@@ -1,0 +1,3 @@
+show
+
+	visible _ true.

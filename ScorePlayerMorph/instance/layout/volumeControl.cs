@@ -1,14 +1,14 @@
 volumeControl
 
 	| volumeSlider r |
-	volumeSlider _ SimpleSliderMorph new
+	volumeSlider := SimpleSliderMorph new
 		color: color;
 		sliderColor: Color gray;
 		extent: 80@2;
 		target: scorePlayer;
 		actionSelector: #overallVolume:;
 		adjustToValue: scorePlayer overallVolume.
-	r _ self makeRow
+	r := self makeRow
 		hResizing: #shrinkWrap;
 		vResizing: #rigid;
 		height: 24.

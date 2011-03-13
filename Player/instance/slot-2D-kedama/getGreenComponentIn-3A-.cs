@@ -1,0 +1,1 @@
+getGreenComponentIn: aPatch

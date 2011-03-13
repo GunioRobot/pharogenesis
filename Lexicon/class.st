@@ -1,0 +1,1 @@
+Lexicon class instanceVariableNames: ''

@@ -1,2 +1,2 @@
 start: startValue
-	start _ startValue
+	start := startValue

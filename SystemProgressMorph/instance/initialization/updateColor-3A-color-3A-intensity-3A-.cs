@@ -1,16 +1,11 @@
 updateColor: aMorph color: aColor intensity: anInteger 
 	"update the apareance of aMorph"
-	| fill fromColor toColor |
+	| fill |
 	Preferences gradientMenu
 		ifFalse: [^ self].
-	fromColor := aColor.
-	toColor := aColor.
-	anInteger
-		timesRepeat: [
-			fromColor := fromColor lighter.
-			toColor := toColor darker].
-	fill := GradientFillStyle ramp: {0.0 -> fromColor. 1 -> toColor}.
-	fill origin: aMorph topLeft.
-	fill direction: aMorph width @ 0.
-	fill radial: true.
+
+	fill _ GradientFillStyle ramp: {0.0 -> Color white. 1 ->aColor}.
+	fill radial: false;
+		origin: aMorph topLeft;
+		direction: 0 @ aMorph height.
 	aMorph fillStyle: fill

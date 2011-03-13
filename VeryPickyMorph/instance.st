@@ -1,6 +1,6 @@
 Morph
 	subclass: #VeryPickyMorph
-	instanceVariableNames: 'passengerMorph '
+	instanceVariableNames: 'passengerMorph'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Tools-Explorer'
+	category: 'Morphic-Explorer'

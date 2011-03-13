@@ -1,6 +1,6 @@
 summary
 	| selInfo |
-	selInfo _ self selectedInfo.
+	selInfo := self selectedInfo.
 	^ selInfo 
 		ifNil: ['']
 		ifNotNil: [selInfo summary]

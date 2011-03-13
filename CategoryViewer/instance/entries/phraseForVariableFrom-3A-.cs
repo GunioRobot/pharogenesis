@@ -1,24 +1,20 @@
 phraseForVariableFrom: aMethodInterface
 	"Return a structure consisting of tiles and controls and a readout representing a 'variable' belonging to the player, complete with an appropriate readout when indicated.  Functions in both universalTiles mode and classic mode.  Slightly misnamed in that this path is used for any methodInterface that indicates an interesting resultType."
 
-	| anArrow slotName getterButton cover inner aRow doc setter tryer universal hotTileForSelf spacer buttonFont |
-
+	| anArrow slotName getterButton cover inner aRow doc setter tryer universal hotTileForSelf spacer buttonFont varName |
 	aRow _ ViewerLine newRow
 		color: self color;
 		beSticky;
 		elementSymbol: (slotName _ aMethodInterface selector);
 		wrapCentering: #center;
 		cellPositioning: #leftCenter.
-
 	(universal _ scriptedPlayer isUniversalTiles) ifFalse:
 		[buttonFont _ Preferences standardEToysFont.
 			aRow addMorphBack: (Morph new color: self color;
 					 extent: (((buttonFont widthOfString: '!') + 8) @ (buttonFont height + 6));
 					 yourself)].  "spacer"
-
 	aRow addMorphBack: (self infoButtonFor: slotName).
-	aRow addMorphBack: (Morph new color: self color; extent: 0@10).  " spacer"
-
+	aRow addMorphBack: (Morph new color: self color; extent: 0@10).  " vertical spacer"
 	universal
 		ifTrue:
 			[inner _ scriptedPlayer universalTilesForGetterOf: aMethodInterface.
@@ -34,7 +30,6 @@ phraseForVariableFrom: aMethodInterface
 			hotTileForSelf  on: #mouseDown send: #makeGetter:event:from:
 				to: self
 				withValue: (Array with: aMethodInterface selector with: aMethodInterface resultType).
-
 			aRow addMorphBack: hotTileForSelf.
 			aRow addMorphBack: (spacer _ Morph new color: self color; extent: 2@10).
 			spacer on: #mouseEnter send: #addGetterFeedback to: aRow.
@@ -46,16 +41,18 @@ phraseForVariableFrom: aMethodInterface
 			hotTileForSelf on: #mouseEnter send: #addGetterFeedback to: aRow.
 			hotTileForSelf on: #mouseLeave send: #removeHighlightFeedback to: aRow.
 			hotTileForSelf on: #mouseLeaveDragging send: #removeHighlightFeedback to: aRow.
-
 			getterButton _ self getterButtonFor: aMethodInterface selector type: aMethodInterface resultType].
-
 	aRow addMorphBack: getterButton.
 	getterButton on: #mouseEnter send: #addGetterFeedback to: aRow.
 	getterButton on: #mouseLeave send: #removeHighlightFeedback to: aRow.
 	getterButton on: #mouseLeaveDragging send: #removeHighlightFeedback to: aRow.
-
 	(doc _ aMethodInterface documentation) ifNotNil:
 		[getterButton setBalloonText: doc].
+
+	(scriptedPlayer slotInfo includesKey: (varName _ Utilities inherentSelectorForGetter: slotName)) "user slot"
+		ifTrue:
+			["aRow addTransparentSpacerOfSize: 3@0.
+			aRow addMorphBack: (self slotTypeMenuButtonFor: varName)"].
 
 	universal ifFalse:
 		[(slotName == #seesColor:) ifTrue:
@@ -67,7 +64,6 @@ phraseForVariableFrom: aMethodInterface
 		(slotName == #overlaps: or: [ slotName == #overlapsAny:]) ifTrue:
 			[self addOverlapsDetailTo: aRow.
 			^ aRow]].
-
 	aRow addMorphBack: (AlignmentMorph new beTransparent).  "flexible spacer"
 	(setter _ aMethodInterface companionSetterSelector) ifNotNil:
 		[aRow addMorphBack: (Morph new color: self color; extent: 2@10).  " spacer"
@@ -81,12 +77,10 @@ phraseForVariableFrom: aMethodInterface
 			[anArrow on: #mouseEnter send: #addSetterFeedback to: aRow.
 			anArrow on: #mouseLeave send: #removeHighlightFeedback to: aRow.
 			anArrow on: #mouseLeaveDragging send: #removeHighlightFeedback to: aRow].
-
 		aRow addMorphBack: anArrow].
-	(#(color:sees: playerSeeingColor copy touchesA: overlaps:) includes: slotName) ifFalse:
+	(#(color:sees: playerSeeingColor copy touchesA: overlaps: getTurtleAt: getTurtleOf:) includes: slotName) ifFalse:
  		[(universal and: [slotName == #seesColor:]) ifFalse:
 			[aMethodInterface wantsReadoutInViewer ifTrue: 
 				[aRow addMorphBack: (self readoutFor: slotName type: aMethodInterface resultType readOnly: setter isNil getSelector: aMethodInterface selector putSelector: setter)]]].
-
 	anArrow ifNotNil: [anArrow step].
 	^ aRow

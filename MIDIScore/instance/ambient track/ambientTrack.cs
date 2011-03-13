@@ -1,2 +1,2 @@
 ambientTrack
-	^ ambientTrack ifNil: [ambientTrack _ Array new]
+	^ ambientTrack ifNil: [ambientTrack := Array new]

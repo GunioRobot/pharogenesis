@@ -3,4 +3,4 @@ sourceSelector
 
 	| sourceString |
 	sourceString _ self getSourceFromFile ifNil: [^ nil].
-	^ Compiler parserClass new parseSelector: sourceString
+	^self methodClass parserClass new parseSelector: sourceString

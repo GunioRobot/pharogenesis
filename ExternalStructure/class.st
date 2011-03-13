@@ -1,1 +1,0 @@
-ExternalStructure class instanceVariableNames: 'compiledSpec '

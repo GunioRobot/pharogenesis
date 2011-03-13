@@ -1,4 +1,4 @@
 toggleFull
 
-	fullDisplay _ fullDisplay not.
+	fullDisplay := fullDisplay not.
 	self rebuild.

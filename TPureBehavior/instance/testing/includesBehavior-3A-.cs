@@ -1,0 +1,2 @@
+includesBehavior: aBehavior
+	^self == aBehavior

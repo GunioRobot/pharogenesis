@@ -3,4 +3,4 @@ EToyProjectDetailsMorph
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Experimental'
+	category: 'EToys-Experimental'

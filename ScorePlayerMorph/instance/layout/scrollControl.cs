@@ -1,14 +1,14 @@
 scrollControl
 
 	| r |
-	scrollSlider _ SimpleSliderMorph new
+	scrollSlider := SimpleSliderMorph new
 		color: color;
 		sliderColor: Color gray;
 		extent: 360@2;
 		target: scorePlayer;
 		actionSelector: #positionInScore:;
 		adjustToValue: scorePlayer positionInScore.
-	r _ self makeRow
+	r := self makeRow
 		hResizing: #shrinkWrap;
 		vResizing: #rigid;
 		height: 24.

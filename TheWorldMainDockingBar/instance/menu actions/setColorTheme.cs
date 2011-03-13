@@ -1,0 +1,2 @@
+setColorTheme
+		SmallLandColorTheme chooseTheme.  

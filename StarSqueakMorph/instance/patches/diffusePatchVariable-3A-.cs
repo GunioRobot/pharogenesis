@@ -3,8 +3,8 @@ diffusePatchVariable: patchVarName
 
 	| v newV |
 	diffusionRate = 0 ifTrue: [^ self].  "no diffusion"
-	v _ patchVariables at: patchVarName ifAbsent: [^ self].
-	newV _ Bitmap new: v size.
+	v := patchVariables at: patchVarName ifAbsent: [^ self].
+	newV := Bitmap new: v size.
 	self primDiffuseFrom: v
 		to: newV
 		width: dimensions x

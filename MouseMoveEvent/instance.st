@@ -1,6 +1,6 @@
 MouseEvent
 	subclass: #MouseMoveEvent
-	instanceVariableNames: 'startPoint trail '
+	instanceVariableNames: 'startPoint trail'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Events'

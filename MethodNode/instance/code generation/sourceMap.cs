@@ -9,5 +9,5 @@ sourceMap
 			parse: self decompileString
 			class: self methodClass
 	].
-	methNode generateNative: #(0 0 0 0).  "set bytecodes to map to"
+	methNode generate.  "set bytecodes to map to"
 	^ methNode encoder sourceMap

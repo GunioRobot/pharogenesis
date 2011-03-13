@@ -1,0 +1,1 @@
+CompressedSourceStream class instanceVariableNames: ''

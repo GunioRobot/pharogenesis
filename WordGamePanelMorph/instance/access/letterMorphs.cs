@@ -1,3 +1,0 @@
-letterMorphs
-
-	^ letterMorphs

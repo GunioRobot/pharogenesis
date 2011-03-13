@@ -1,2 +1,0 @@
-attributeClass
-	^'field'

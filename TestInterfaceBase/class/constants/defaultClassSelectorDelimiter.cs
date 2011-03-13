@@ -1,3 +1,0 @@
-defaultClassSelectorDelimiter
-
-	^self classSelectorDelimiters first asString

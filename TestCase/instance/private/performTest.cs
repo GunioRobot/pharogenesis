@@ -1,4 +1,4 @@
 performTest
 
-	self perform: testSelector sunitAsSymbol
+	self perform: testSelector asSymbol
 			

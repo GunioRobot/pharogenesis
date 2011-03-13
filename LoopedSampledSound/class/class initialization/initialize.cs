@@ -1,6 +1,6 @@
 initialize
 	"LoopedSampledSound initialize"
 
-	LoopIndexScaleFactor _ 512.
-	FloatLoopIndexScaleFactor _ LoopIndexScaleFactor asFloat.
-	LoopIndexFractionMask _ LoopIndexScaleFactor - 1.
+	LoopIndexScaleFactor := 512.
+	FloatLoopIndexScaleFactor := LoopIndexScaleFactor asFloat.
+	LoopIndexFractionMask := LoopIndexScaleFactor - 1.

@@ -1,2 +1,0 @@
-flush
-	self stream flush

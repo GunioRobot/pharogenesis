@@ -1,0 +1,1 @@
+Monitor class instanceVariableNames: ''

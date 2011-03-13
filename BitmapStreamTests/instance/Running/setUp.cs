@@ -1,2 +1,2 @@
 setUp
-	random _ Random new.
+	random := Random new.

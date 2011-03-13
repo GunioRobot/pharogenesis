@@ -10,7 +10,7 @@ initializeFromEToySlotSpec: tuple
 	receiverType _ #Player.
 	resultSpecification _ ResultSpecification new.
 	resultSpecification resultType: tuple fourth.
-	(#(getNewClone "seesColor: isOverColor:") includes: selector)
+	(#(getNewClone getTurtleAt: getTurtleOf: "seesColor: isOverColor:") includes: selector)
 		ifTrue:
 			[self setNotToRefresh]  "actually should already be nil"
 		ifFalse:

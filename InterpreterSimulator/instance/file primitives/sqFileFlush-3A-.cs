@@ -1,3 +1,0 @@
-sqFileFlush: file
-
-	^ file flush

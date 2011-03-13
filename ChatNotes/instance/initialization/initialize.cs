@@ -1,6 +1,6 @@
 initialize
 
 	self loadNotes.
-	notesIndex _ 0.
-	recorder _ ChatRecorder new.
+	notesIndex := 0.
+	recorder := ChatRecorder new.
 	recorder initialize.

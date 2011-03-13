@@ -1,3 +1,0 @@
-hasCards
-
-	^self hasSubmorphs

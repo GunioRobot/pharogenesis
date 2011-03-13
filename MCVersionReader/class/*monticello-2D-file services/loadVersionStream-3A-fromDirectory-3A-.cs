@@ -1,6 +1,6 @@
 loadVersionStream: stream fromDirectory: directory
 	| version |
-	version _ self versionFromStream: stream.
+	version := self versionFromStream: stream.
 	directory isRemoteDirectory ifFalse: [
 	version workingCopy repositoryGroup addRepository:
 		(MCDirectoryRepository new directory: directory). ].

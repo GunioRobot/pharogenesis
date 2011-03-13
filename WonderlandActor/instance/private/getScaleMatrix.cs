@@ -1,2 +1,0 @@
-getScaleMatrix
-	^scaleMatrix

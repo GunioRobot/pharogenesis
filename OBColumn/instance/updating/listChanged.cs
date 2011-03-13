@@ -1,0 +1,2 @@
+listChanged
+	self refreshAndSignal: true

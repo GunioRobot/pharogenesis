@@ -1,0 +1,1 @@
+OBClassActor provides basic actions for manipulating classes.

@@ -1,2 +1,0 @@
-isSystemDefined
-	^ name endsWithDigit not

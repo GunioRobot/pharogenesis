@@ -1,1 +1,0 @@
-B3DVector2Array class instanceVariableNames: ''

@@ -3,8 +3,8 @@ loadFullFrom: aServerName
 	and load a full map from scratch."
 
 	| url  zipped |
-	url _ 'http://', aServerName, '/sm/loadgz?mapversion=', SMSqueakMap version, '&checkpoint=', checkpointNumber asString.
-	Transcript show: 'Fetch: ', (Time millisecondsToRun: [ zipped _ (HTTPSocket httpGet: url) contents]) asString, ' ms';cr.
+	url := 'http://', aServerName, '/loadgz?mapversion=', SMSqueakMap version, '&checkpoint=', checkpointNumber asString.
+	Transcript show: 'Fetch: ', (Time millisecondsToRun: [ zipped := (HTTPSocket httpGet: url) contents]) asString, ' ms';cr.
 	Transcript show: 'Size: ', zipped size asString, ' bytes';cr.
 	((self checkVersion: zipped) and: [zipped ~= 'UPTODATE'])
 		ifTrue:[

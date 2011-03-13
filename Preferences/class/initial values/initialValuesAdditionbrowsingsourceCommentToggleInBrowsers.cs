@@ -1,2 +1,0 @@
-initialValuesAdditionbrowsingsourceCommentToggleInBrowsers
-	^ #((sourceCommentToggleInBrowsers false (browsing ) ) )

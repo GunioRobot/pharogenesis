@@ -1,2 +1,0 @@
-restoreState: aBlock
-	aBlock value

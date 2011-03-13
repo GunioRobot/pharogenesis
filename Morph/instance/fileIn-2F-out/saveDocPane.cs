@@ -1,3 +1,3 @@
 saveDocPane
 
-	DocLibrary external saveDocCheck: self
+	Smalltalk at: #DocLibrary ifPresent:[:dl| dl external saveDocCheck: self]

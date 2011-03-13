@@ -20,10 +20,13 @@ initialize
 	(codeStencil drawStencil:)
 	(codeForce forceToScreen:)
 	(codeFont addFontToCache:)
+	(codeFontSet addFontSetToCache:)
+	(codeMultiText drawMultiText:) 
 	(codeTTCFont addTTCFontToCache:)
 	(codeExtentDepth extentDepth:)
 	(codeShadowColor shadowColor:))
 		do: [ :arr |
+			(DecodeTable at: ((CanvasEncoder perform: arr first) asciiValue + 1)) ifNotNil: [self error: 'duplicated code'].
 			DecodeTable
 				at: ((CanvasEncoder perform: arr first) asciiValue + 1)
 				put: arr second

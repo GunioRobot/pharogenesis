@@ -3,12 +3,12 @@ turnOffActiveMIDINotesAt: scoreTick
 
 	| evt someNoteEnded |
 	midiPort ifNil: [^ self].
-	someNoteEnded _ false. 
+	someNoteEnded := false. 
 	activeMIDINotes do: [:pair |
-		evt _ pair first.
+		evt := pair first.
 		evt endTime <= scoreTick ifTrue: [
 			evt endNoteOnMidiPort: midiPort.
-			someNoteEnded _ true]].
+			someNoteEnded := true]].
 
 	someNoteEnded ifTrue: [
-		activeMIDINotes _ activeMIDINotes select: [:p | p first endTime > scoreTick]].
+		activeMIDINotes := activeMIDINotes select: [:p | p first endTime > scoreTick]].

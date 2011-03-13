@@ -8,6 +8,12 @@ fileOutChangedMessages: aSet on: aFileStream moveSource: moveSource toFile: file
 	(org _ self organization) categories do: 
 		[:cat | 
 		sels _ (org listAtCategoryNamed: cat) select: [:sel | aSet includes: sel].
-		sels do:
-			[:sel |  self printMethodChunk: sel withPreamble: true on: aFileStream
-							moveSource: moveSource toFile: fileIndex]]
+		((cat beginsWith: '*') and: [cat endsWith: '-override'])
+			ifTrue: [
+				sels do:
+					[:sel |  self printMethodChunkHistorically: sel on: aFileStream
+						moveSource: moveSource toFile: fileIndex]]
+			ifFalse: [
+				sels do:
+					[:sel |  self printMethodChunk: sel withPreamble: true on: aFileStream
+						moveSource: moveSource toFile: fileIndex]]]

@@ -1,0 +1,2 @@
+openDockingBar
+	^ self createDockingBar openInWorld 

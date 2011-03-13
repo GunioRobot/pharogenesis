@@ -1,2 +1,0 @@
-selectedContactItem
-	^selectedContact

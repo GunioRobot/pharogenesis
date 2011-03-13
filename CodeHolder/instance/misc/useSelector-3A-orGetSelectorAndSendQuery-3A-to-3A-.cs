@@ -6,7 +6,7 @@ useSelector: incomingSelector orGetSelectorAndSendQuery: querySelector to: query
 		ifNotNil:
 			[queryPerformer perform: querySelector with: incomingSelector]
 		ifNil:
-			[aSelector _FillInTheBlank request: 'Type selector:' initialAnswer: 'flag:'.
+			[aSelector :=UIManager default request: 'Type selector:' initialAnswer: 'flag:'.
 			aSelector isEmptyOrNil ifFalse:
 				[(Symbol hasInterned: aSelector ifTrue:
 					[:aSymbol | queryPerformer perform: querySelector with: aSymbol])

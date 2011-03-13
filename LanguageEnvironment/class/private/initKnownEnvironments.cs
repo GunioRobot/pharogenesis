@@ -1,11 +1,12 @@
 initKnownEnvironments
 	"LanguageEnvironment initKnownEnvironments"
 
-	| env known |
+	| env known id |
 	known := Dictionary new.
 	self allSubclassesDo: [:subClass | 
 		subClass supportedLanguages do: [:language | 
 			env := subClass new.
-			env localeID: (LocaleID isoString: language).
-			known at: env localeID put: env]].
+			id _ LocaleID isoString: language.
+			env localeID: id.
+			known at: id put: env]].
 	^known

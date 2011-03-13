@@ -1,6 +1,7 @@
 TileLikeMorph
 	subclass: #PhraseTileMorph
-	instanceVariableNames: 'resultType brightenedOnEnter userScriptSelector justGrabbedFromViewer '
+	instanceVariableNames:
+		'resultType brightenedOnEnter userScriptSelector justGrabbedFromViewer vocabulary vocabularySymbol'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Scripting Tiles'
+	category: 'EToys-Scripting Tiles'

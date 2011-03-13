@@ -1,5 +1,5 @@
 addVersion: aVersion
 	| file |
-	file _ FileStream newFileNamed: (directory fullNameFor: aVersion fileName).
+	file := FileStream newFileNamed: (directory fullNameFor: aVersion fileName).
 	aVersion fileOutOn: file.
 	file close.

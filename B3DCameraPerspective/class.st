@@ -1,1 +1,0 @@
-B3DCameraPerspective class instanceVariableNames: ''

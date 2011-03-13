@@ -1,1 +1,0 @@
-I am a collection of word-aligned external data.  My instances are very helpful for interacting with plugin routines.

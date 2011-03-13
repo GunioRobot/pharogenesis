@@ -1,3 +1,0 @@
-moduleName
-	"FXBltScanner translateLocally"
-	^'FXBltPlugin'

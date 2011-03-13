@@ -1,17 +1,24 @@
 spanWorld
-	| container |
+	| container area |
+	
+	container := self pasteUpMorph
+				ifNil: [self currentWorld].
 
-	container _ self pasteUpMorph ifNil: [self currentWorld].
-	(self orientation == #vertical) ifTrue: [
-		referent vResizing == #rigid 
-			ifTrue:[referent height: container height].
-		referent hResizing == #rigid 
-			ifTrue:[referent width: (referent width min: container width - self width)].
-		referent top: container top.
-	] ifFalse: [
-		referent hResizing == #rigid
-			ifTrue:[referent width: container width].
+	area := container clearArea.
+
+	self orientation == #vertical ifTrue: [
 		referent vResizing == #rigid
-			ifTrue:[referent height: (referent height min: container height - self height)].
-		referent left: container left.
-	] 
+			ifTrue: [referent height: area height].
+		referent hResizing == #rigid
+			ifTrue: [referent width: (referent width min: area width - self width)].
+		referent top: area top.
+		referent bottom: (area bottom min: referent bottom)
+	]
+	ifFalse: [
+		referent hResizing == #rigid
+			ifTrue: [referent width: area width].
+		referent vResizing == #rigid
+			ifTrue: [referent height: (referent height min: area height - self height)].
+		referent left: area left.
+		referent right: (area right min: referent right)
+	].

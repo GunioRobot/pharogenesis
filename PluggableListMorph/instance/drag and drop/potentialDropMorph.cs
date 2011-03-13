@@ -1,2 +1,0 @@
-potentialDropMorph
-	^potentialDropMorph

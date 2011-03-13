@@ -1,0 +1,2 @@
+registeredWindowColorSpecs
+	^self registry values

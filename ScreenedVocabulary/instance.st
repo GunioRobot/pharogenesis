@@ -1,6 +1,6 @@
 FullVocabulary
 	subclass: #ScreenedVocabulary
-	instanceVariableNames: 'methodScreeningBlock categoryScreeningBlock '
+	instanceVariableNames: 'methodScreeningBlock categoryScreeningBlock'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Protocols'
+	category: 'Protocols-Kernel'

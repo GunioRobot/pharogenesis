@@ -1,2 +1,0 @@
-leftEar
-	^ leftEar

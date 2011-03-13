@@ -1,1 +1,0 @@
-HTMLformatter class instanceVariableNames: ''

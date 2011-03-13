@@ -1,2 +1,2 @@
 contours: aCollection
-	contours _ aCollection asArray.
+	contours := aCollection asArray.

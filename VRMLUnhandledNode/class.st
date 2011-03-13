@@ -1,1 +1,0 @@
-VRMLUnhandledNode class instanceVariableNames: ''

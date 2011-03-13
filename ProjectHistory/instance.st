@@ -1,6 +1,6 @@
 Model
 	subclass: #ProjectHistory
-	instanceVariableNames: 'mostRecent '
-	classVariableNames: 'ChangeCounter CurrentHistory '
+	instanceVariableNames: 'mostRecent'
+	classVariableNames: 'ChangeCounter CurrentHistory'
 	poolDictionaries: ''
 	category: 'System-Support'

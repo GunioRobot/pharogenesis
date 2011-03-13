@@ -3,9 +3,12 @@ tweakAppearanceAfterModeShift
 
 	self buttonPane submorphs do:
 		[:aButton | 
-			aButton borderWidth: 0.
-			(aButton valueOfProperty: #modeSymbol) = modeSymbol
-				ifTrue:
-					[aButton firstSubmorph color: Color red]
-				ifFalse:
-					[aButton firstSubmorph color: Color black]].
+			| aColor |
+			"aButton borderWidth: 1."
+			aColor := (aButton valueOfProperty: #modeSymbol) = modeSymbol
+				ifTrue: [Color red]
+				ifFalse: [Color black].
+
+			aButton firstSubmorph color: aColor.
+			aButton borderColor: aColor.
+		].

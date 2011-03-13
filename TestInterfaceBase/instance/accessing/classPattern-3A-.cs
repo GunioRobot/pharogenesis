@@ -1,3 +1,0 @@
-classPattern: aString
-
-	classPattern := aString.

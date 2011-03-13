@@ -1,7 +1,0 @@
-I represent a perspective projection.
-
-Instance variables:
-	nearDistance 	<Float>	Near clipping plane distance
-	farDistance 		<Float>	Far clipping plane distance
-	fieldOfView 	<Float>	The field of view covered by the perspective
-	aspectRatio		<Float> 	The aspect ratio to be included 

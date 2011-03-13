@@ -1,2 +1,0 @@
-diffsWithPrettyPrint
-	^ self valueOfFlag: #diffsWithPrettyPrint

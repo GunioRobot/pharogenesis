@@ -1,0 +1,2 @@
+basicLocalSelectors
+	self explicitRequirement

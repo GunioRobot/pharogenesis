@@ -1,0 +1,2 @@
+traitsToUpdate: anObject
+	traitsToUpdate := anObject

@@ -1,2 +1,2 @@
 goal: anObject
-	goal _ anObject
+	goal := anObject

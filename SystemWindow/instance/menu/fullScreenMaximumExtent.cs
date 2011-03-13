@@ -16,7 +16,7 @@ fullScreenMaximumExtent
 	self maximumExtent ifNotNil:
 		[possibleBounds _ possibleBounds origin extent: ( self maximumExtent min: ( possibleBounds extent ))].
 	((Flaps sharedFlapsAllowed
-				and: [CurrentProjectRefactoring currentFlapsSuppressed not])
+				and: [Project current flapsSuppressed not])
 			or: [Preferences fullScreenLeavesDeskMargins])
 		ifTrue: [possibleBounds _ possibleBounds insetBy: 22].
 	self bounds: possibleBounds

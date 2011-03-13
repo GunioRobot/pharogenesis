@@ -3,25 +3,26 @@ likelyCategoryToShow
 
 	| possible all aCat currVocab |
 	all := (scriptedPlayer categoriesForViewer: self) asOrderedCollection.
-	possible := all copy.
+	possible _ all copy.
+
 	currVocab := self currentVocabulary.
 	self categoryMorphs do: 
 			[:m | 
 			aCat := currVocab categoryWhoseTranslatedWordingIs: m currentCategory.
 			aCat ifNotNil: [possible remove: aCat wording ifAbsent: []]].
+
+	(possible includes: ScriptingSystem nameForInstanceVariablesCategory translated) ifTrue:
+		[^ ScriptingSystem nameForInstanceVariablesCategory].
+
 	(currVocab isEToyVocabulary) 
 		ifTrue: 
-			["hateful!"
-
-			((possible includes: ScriptingSystem nameForInstanceVariablesCategory translated) 
-				and: [scriptedPlayer hasUserDefinedSlots]) ifTrue: [^ ScriptingSystem nameForInstanceVariablesCategory].
-			((possible includes: ScriptingSystem nameForScriptsCategory translated) and: [scriptedPlayer hasUserDefinedScripts]) 
+			[(possible includes: ScriptingSystem nameForScriptsCategory translated) 
 				ifTrue: [^ ScriptingSystem nameForScriptsCategory]].
-	{#basic translated} 
-		do: [:preferred | (possible includes: preferred) ifTrue: [^preferred]].
+	{'kedama' translated. #basic translated} 
+		do: [:preferred | (possible includes: preferred) ifTrue: [^ preferred]].
 	((scriptedPlayer isPlayerLike) 
 		and: [scriptedPlayer hasOnlySketchCostumes]) 
 			ifTrue: [(possible includes: #tests translated) ifTrue: [^#tests translated]].
 	{#'color & border' translated. #tests translated. #color translated. #flagging translated. #comparing translated.} 
-		do: [:preferred | (possible includes: preferred) ifTrue: [^preferred]].
-	^possible isEmpty ifFalse: [possible first] ifTrue: [all first]
+		do: [:preferred | (possible includes: preferred) ifTrue: [^ preferred]].
+	^ possible isEmpty ifFalse: [possible first] ifTrue: [all first]

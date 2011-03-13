@@ -1,1 +1,0 @@
-ExternalFormRegistry class instanceVariableNames: ''

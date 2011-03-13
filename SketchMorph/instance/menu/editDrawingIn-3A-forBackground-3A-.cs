@@ -1,5 +1,7 @@
-editDrawingIn: aPasteUpMorph forBackground: forBackground 
-	| w bnds sketchEditor pal aPaintTab aWorld aPaintBox tfx |
+editDrawingIn: aPasteUpMorph forBackground: forBackground
+	"Edit an existing sketch."
+
+	| w bnds sketchEditor pal aPaintTab aWorld aPaintBox tfx rotCenter |
 	self world assureNotPaintingElse: [^self].
 	w := aPasteUpMorph world.
 	w prepareToPaint.
@@ -18,6 +20,8 @@ editDrawingIn: aPasteUpMorph forBackground: forBackground
 		initializeFor: self
 		inBounds: bnds
 		pasteUpMorph: aPasteUpMorph.
+	rotCenter _ self rotationCenter.
+
 	sketchEditor afterNewPicDo: 
 			[:aForm :aRect | 
 			self visible: true.
@@ -26,10 +30,13 @@ editDrawingIn: aPasteUpMorph forBackground: forBackground
 			self topRendererOrSelf position: (tfx globalPointToLocal: aRect origin).
 			self rotationStyle: sketchEditor rotationStyle.
 			self forwardDirection: sketchEditor forwardDirection.
+			(rotCenter notNil and: [(rotCenter = (0.5 @ 0.5)) not]) ifTrue:
+				[self rotationCenter: rotCenter].
 			(aPaintTab := (aWorld := self world) paintingFlapTab) 
 				ifNotNil: [aPaintTab hideFlap]
 				ifNil: [(aPaintBox := aWorld paintBox) ifNotNil: [aPaintBox delete]].
 			self presenter drawingJustCompleted: self.
+
 			forBackground ifTrue: [self goBehind	"shouldn't be necessary"]]
 		ifNoBits: 
 			["If no bits drawn.  Must keep old pic.  Can't have no picture"

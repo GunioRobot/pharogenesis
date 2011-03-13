@@ -1,3 +1,0 @@
-isComment
-
-	^false

@@ -1,6 +1,6 @@
 Morph
 	subclass: #TransformMorph
-	instanceVariableNames: 'transform smoothing '
+	instanceVariableNames: 'transform smoothing localBounds'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Basic'

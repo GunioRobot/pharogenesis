@@ -3,7 +3,7 @@ sampaToArpabet
 	as keys and ARPAbet phonemes as values."
 
 	| answer |
-	answer _ Dictionary new.
+	answer := Dictionary new.
 	#(	('p'		'p')
 		('b'		'b')
 		('t'		't')

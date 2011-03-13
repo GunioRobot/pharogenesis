@@ -1,6 +1,6 @@
 Object
 	subclass: #GraphicSymbolInstance
-	instanceVariableNames: 'transformation graphicSymbol '
+	instanceVariableNames: 'transformation graphicSymbol'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'ST80-Symbols'

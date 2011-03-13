@@ -1,0 +1,1 @@
+MCModification class instanceVariableNames: ''

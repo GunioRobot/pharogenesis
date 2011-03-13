@@ -2,7 +2,7 @@ currentIndex
 
 	| currentName |
 
-	currentName _ CurrentProjectRefactoring currentProjectName.
+	currentName _ Project current name.
 	listOfPages withIndexDo: [ :each :index |
 		(each first = currentName and: [preferredIndex = index]) ifTrue: [^currentIndex _ index]
 	].

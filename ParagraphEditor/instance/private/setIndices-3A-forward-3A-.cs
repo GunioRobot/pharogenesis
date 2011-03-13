@@ -2,8 +2,7 @@ setIndices: shiftPressed forward: forward
 	"Little helper method that sets the moving and fixed indices according to some flags."
 	| indices |
 	indices _ Dictionary new.
-	(shiftPressed and:[Preferences selectionsMayShrink])
-		ifTrue: [
+	shiftPressed ifTrue: [
 			indices at: #moving put: self pointIndex.
 			indices at: #fixed put: self markIndex
 		] ifFalse: [

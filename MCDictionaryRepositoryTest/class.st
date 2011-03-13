@@ -1,0 +1,1 @@
+MCDictionaryRepositoryTest class instanceVariableNames: ''

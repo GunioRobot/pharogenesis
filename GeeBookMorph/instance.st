@@ -1,6 +1,6 @@
 BookMorph
 	subclass: #GeeBookMorph
-	instanceVariableNames: 'geeMail '
+	instanceVariableNames: 'geeMail'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-GeeMail'
+	category: 'MorphicExtras-GeeMail'

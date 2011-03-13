@@ -1,0 +1,1 @@
+SqNumberParser class instanceVariableNames: ''

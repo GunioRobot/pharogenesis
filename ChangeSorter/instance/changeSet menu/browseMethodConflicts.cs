@@ -3,7 +3,7 @@ browseMethodConflicts
 
 	| aList |
 
-	aList _ myChangeSet 
+	aList := myChangeSet 
 		messageListForChangesWhich: [ :aClass :aSelector |
 			(ChangeSorter allChangeSetsWithClass: aClass selector: aSelector) size > 1
 		]

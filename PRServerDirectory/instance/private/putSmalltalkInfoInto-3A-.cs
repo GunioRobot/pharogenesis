@@ -8,4 +8,4 @@ putSmalltalkInfoInto: args
 		do: [:each | 
 			| value | 
 			value := SmalltalkImage current perform: each.
-			args at: 'extra-' , each asString put: {value asString}]
+			args at: 'extra-' , each asString put: {value asString isoToSqueak}]

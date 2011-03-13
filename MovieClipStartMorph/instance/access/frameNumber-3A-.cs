@@ -1,3 +1,3 @@
 frameNumber: newFrame
 
-	frameNumber _ newFrame
+	frameNumber := newFrame

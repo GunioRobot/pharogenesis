@@ -1,0 +1,1 @@
+TraitComposition class instanceVariableNames: ''

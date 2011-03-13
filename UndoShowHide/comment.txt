@@ -1,1 +1,0 @@
-This class shows a hidden object and hides a shown actor.

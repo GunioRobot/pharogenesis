@@ -1,2 +1,0 @@
-spanEndGet
-	^workBuffer at: GWSpanEnd

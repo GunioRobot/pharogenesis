@@ -1,10 +1,10 @@
 nextColorMatrix
 	"Read a (possibly compressed) color transformation"
 	| transform nBits flags |
-	transform _ FlashColorTransform new.
+	transform := FlashColorTransform new.
 	self initBits.
-	flags _ self nextBits: 2.
-	nBits _ self nextBits: 4.
+	flags := self nextBits: 2.
+	nBits := self nextBits: 4.
 	(flags anyMask: 1) ifTrue:["Read multiplication factors"
 		transform rMul: (self nextSignedBits: nBits) / 256.0.
 		transform gMul: (self nextSignedBits: nBits) / 256.0.

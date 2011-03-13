@@ -2,10 +2,10 @@ decompressSound: aCompressedSound
 	"Decompress the entirety of the given compressed sound with this codec and answer the resulting sound."
 
 	| channels sound |
-	channels _ aCompressedSound channels
+	channels := aCompressedSound channels
 		collect: [:compressed | self decodeCompressedData: compressed].
 	'SampledSound' = aCompressedSound soundClassName ifTrue: [
-		sound _ SampledSound
+		sound := SampledSound
 			samples: channels first
 			samplingRate: (aCompressedSound samplingRate).
 		sound loudness: aCompressedSound gain.
@@ -13,12 +13,12 @@ decompressSound: aCompressedSound
 	'LoopedSampledSound' = aCompressedSound soundClassName ifTrue: [
 		aCompressedSound loopLength = 0
 			ifTrue: [
-				sound _ LoopedSampledSound
+				sound := LoopedSampledSound
 					unloopedSamples: channels first
 					pitch: aCompressedSound perceivedPitch
 					samplingRate: aCompressedSound samplingRate]
 			ifFalse: [
-				sound _ LoopedSampledSound
+				sound := LoopedSampledSound
 					samples: channels first
 					loopEnd: aCompressedSound loopEnd
 					loopLength: aCompressedSound loopLength

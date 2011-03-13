@@ -1,2 +1,0 @@
-fullyLinked
-^ false

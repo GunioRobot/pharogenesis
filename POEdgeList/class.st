@@ -1,1 +1,0 @@
-POEdgeList class instanceVariableNames: ''

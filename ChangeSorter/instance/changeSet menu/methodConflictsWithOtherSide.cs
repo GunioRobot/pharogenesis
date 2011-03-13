@@ -4,8 +4,8 @@ methodConflictsWithOtherSide
 	| aList other |
 
 	self checkThatSidesDiffer: [^ self].
-	other _ (parent other: self) changeSet.
-	aList _ myChangeSet 
+	other := (parent other: self) changeSet.
+	aList := myChangeSet 
 		messageListForChangesWhich: [ :aClass :aSelector |
 			aClass notNil and: [(other methodChangesAtClass: aClass name) includesKey: aSelector]
 		]

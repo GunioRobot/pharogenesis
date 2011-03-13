@@ -3,10 +3,12 @@ reload
 	The opposite of #purge."
 
 	| fname stream map |
-	fname _ self lastCheckpointFilename.
+	fname := self lastCheckpointFilename.
 	fname ifNil: [self error: 'No checkpoint available!'].
-	stream _ (self directory oldFileNamed: fname) asUnZippedStream.
+	"Code below uses good ole StandardFileStream to avoid m17n issues (this is binary data) and
+	also uses #unzipped since it works in older Squeaks"
+	stream := (StandardFileStream oldFileNamed: (self directory fullNameFor: fname)) asUnZippedStream.
+	"stream := (RWBinaryOrTextStream with: contents) reset."
 	stream ifNil: [self error: 'Couldn''t open stream on checkpoint file!'].
-	stream converter: Latin1TextConverter new.
-	[map _ (stream reset fileInObjectAndCode) install arrayOfRoots first] ensure: [stream close].
+	[map := (stream fileInObjectAndCode) install arrayOfRoots first] ensure: [stream close].
 	self copyFrom: map

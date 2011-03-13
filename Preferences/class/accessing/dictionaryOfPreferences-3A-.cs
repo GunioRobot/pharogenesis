@@ -1,0 +1,2 @@
+dictionaryOfPreferences: anObject
+	DictionaryOfPreferences := anObject

@@ -1,2 +1,0 @@
-methodPrimitiveIndex
-	^method primitive

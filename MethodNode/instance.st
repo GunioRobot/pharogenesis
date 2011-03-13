@@ -1,6 +1,7 @@
 ParseNode
 	subclass: #MethodNode
-	instanceVariableNames: 'selectorOrFalse precedence arguments block literals primitive encoder temporaries '
+	instanceVariableNames:
+		'selectorOrFalse precedence arguments block literals primitive encoder temporaries properties sourceText'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Compiler'
+	category: 'Compiler-ParseNodes'

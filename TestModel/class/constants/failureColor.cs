@@ -1,3 +1,0 @@
-failureColor
-
-	^Color red

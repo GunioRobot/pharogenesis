@@ -3,17 +3,17 @@ browseVersions
 	selected message."
 	| class selector method category pair sourcePointer |
 
-	(selector _ self selectedMessageName) ifNil: [^ self].
-	class _ self selectedClassOrMetaClass.
+	(selector := self selectedMessageName) ifNil: [^ self].
+	class := self selectedClassOrMetaClass.
 	(class includesSelector: selector)
-		ifTrue: [method _ class compiledMethodAt: selector.
-				category _ class whichCategoryIncludesSelector: selector.
-				sourcePointer _ nil]
-		ifFalse: [pair _ myChangeSet methodInfoFromRemoval: {class name. selector}.
+		ifTrue: [method := class compiledMethodAt: selector.
+				category := class whichCategoryIncludesSelector: selector.
+				sourcePointer := nil]
+		ifFalse: [pair := myChangeSet methodInfoFromRemoval: {class name. selector}.
 				pair ifNil: [^ nil].
-				sourcePointer _ pair first.
-				method _ CompiledMethod toReturnSelf setSourcePointer: sourcePointer.
-				category _ pair last].
+				sourcePointer := pair first.
+				method := CompiledMethod toReturnSelf setSourcePointer: sourcePointer.
+				category := pair last].
 	VersionsBrowser
 		browseVersionsOf: method
 		class: self selectedClass meta: class isMeta

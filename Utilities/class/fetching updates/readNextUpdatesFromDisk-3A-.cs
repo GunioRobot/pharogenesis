@@ -3,5 +3,5 @@ readNextUpdatesFromDisk: n
 	Utilities readNextUpdatesFromDisk: 7
 will read the next seven updates from disk"
 
-	self applyUpdatesFromDiskToUpdateNumber: ChangeSorter highestNumberedChangeSet + n
+	self applyUpdatesFromDiskToUpdateNumber: ChangeSet highestNumberedChangeSet + n
 		stopIfGap: false

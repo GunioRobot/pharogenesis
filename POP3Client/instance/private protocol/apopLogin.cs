@@ -20,9 +20,9 @@ and then send only the MD5 hash of that to the server.  Thus the password never 
 
 	(Smalltalk includesKey: #MD5)
 		ifTrue: [
-			hash _ ((Smalltalk at: #MD5) hashMessage: ('<', timestamp, '>', self password)) hex asLowercase.
+			hash _ ((Smalltalk at: #MD5) hashMessage: ('<', timestamp, '>', self password)) storeStringHex asLowercase.
 			"trim starting 16r and zero pad it to 32 characters if needed"
-			hash _ (hash allButFirst: 3) padded: #left to: 32 with: $0]
+			hash _ hash  padded: #left to: 32 with: $0]
 		ifFalse: [(POP3LoginError protocolInstance: self) signal: 'APOP (MD5) not supported.'].
 
 	self sendCommand: 'APOP ', self user, ' ', hash.

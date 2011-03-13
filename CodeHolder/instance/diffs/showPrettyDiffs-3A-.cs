@@ -4,9 +4,9 @@ showPrettyDiffs: aBoolean
 	self showingPrettyDiffs
 		ifFalse:
 			[aBoolean ifTrue:
-				[contentsSymbol _ #prettyDiffs]]
+				[contentsSymbol := #prettyDiffs]]
 		ifTrue:
 			[aBoolean ifFalse:
-				[contentsSymbol _ #source]].
+				[contentsSymbol := #source]].
 	self setContentsToForceRefetch.
 	self contentsChanged

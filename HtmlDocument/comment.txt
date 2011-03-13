@@ -1,1 +1,0 @@
-an entire HTML document.  It should have exactly two sub-entities when completed: a HEAD and a BODY

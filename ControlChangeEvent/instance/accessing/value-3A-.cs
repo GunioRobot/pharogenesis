@@ -1,3 +1,3 @@
 value: midiControlValue
 
-	value _ midiControlValue.
+	value := midiControlValue.

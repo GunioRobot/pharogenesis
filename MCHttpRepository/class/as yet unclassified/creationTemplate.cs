@@ -1,7 +1,4 @@
 creationTemplate
-	^
-'MCHttpRepository
-	location: ''http://foo.com/bar''
-	user: ''squeak''
-	password: ''squeak'''
-	
+	^self creationTemplateLocation: 'http://foo.com/bar'
+		user: 'squeak'
+		password: 'squeak'

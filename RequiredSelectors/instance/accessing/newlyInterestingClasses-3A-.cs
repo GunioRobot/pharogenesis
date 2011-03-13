@@ -1,0 +1,2 @@
+newlyInterestingClasses: anObject
+	newlyInterestingClasses := anObject

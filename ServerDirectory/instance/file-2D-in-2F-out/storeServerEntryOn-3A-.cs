@@ -16,4 +16,6 @@ storeServerEntryOn: stream
 	self loaderUrl
 		ifNotNil: [stream nextPutAll: 'loaderUrl:'; tab; nextPutAll: self loaderUrl; cr].
 	self acceptsUploads
-		ifTrue: [stream nextPutAll: 'acceptsUploads:'; tab; nextPutAll: 'true'; cr]
+		ifTrue: [stream nextPutAll: 'acceptsUploads:'; tab; nextPutAll: 'true'; cr].
+	self encodingName
+		ifNotNil: [stream nextPutAll: 'encodingName:'; tab; nextPutAll: self encodingName; cr].

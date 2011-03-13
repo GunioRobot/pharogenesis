@@ -6,7 +6,7 @@ insertCardOfBackground
 		[self inform: 
 'At this time, there IS only one kind of
 background in this stack, so that''s
-what you''ll get'.
+what you''ll get' translated.
 		^ self insertCard].
 	aMenu _ SelectionMenu
 		labels: 		(bgs collect: [:bg | bg externalName])

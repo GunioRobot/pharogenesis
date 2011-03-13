@@ -1,6 +1,6 @@
 BorderedMorph
 	subclass: #SorterTokenMorph
-	instanceVariableNames: 'morphRepresented '
+	instanceVariableNames: 'morphRepresented'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Palettes'
+	category: 'MorphicExtras-Palettes'

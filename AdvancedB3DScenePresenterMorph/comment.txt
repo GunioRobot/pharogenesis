@@ -1,1 +1,0 @@
-This is a slightly simplified copy of AdvancedB3DSceneMorph.

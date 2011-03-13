@@ -1,4 +1,7 @@
-tryToRenameTo: aNewName
+tryToRenameTo: newLabel
 	"Triggered eg by typing a new name in the halo"
 
-	self setLabel: aNewName
+	newLabel isEmpty ifTrue: [^self].
+	(model windowReqNewLabel: newLabel)
+		ifTrue: [self setLabel: newLabel]
+	

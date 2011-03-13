@@ -1,2 +1,0 @@
-inspectList
-	theList inspect

@@ -1,0 +1,1 @@
+Latin1TextConverter class instanceVariableNames: ''

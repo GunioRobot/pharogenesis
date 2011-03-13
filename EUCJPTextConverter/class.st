@@ -1,0 +1,1 @@
+EUCJPTextConverter class instanceVariableNames: ''

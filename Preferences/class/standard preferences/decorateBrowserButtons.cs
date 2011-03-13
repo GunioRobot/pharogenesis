@@ -1,2 +1,0 @@
-decorateBrowserButtons
-	^ self valueOfFlag: #decorateBrowserButtons

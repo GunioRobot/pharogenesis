@@ -1,1 +1,1 @@
-I represent a the model of a Preferences window.
+I represent the model of a Preferences window.

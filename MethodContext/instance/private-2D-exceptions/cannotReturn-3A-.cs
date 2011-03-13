@@ -1,6 +1,6 @@
 cannotReturn: result
 
-	Debugger
-		openContext: thisContext
+	ToolSet
+		debugContext: thisContext
 		label: 'computation has been terminated'
 		contents: nil

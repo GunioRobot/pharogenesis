@@ -1,2 +1,2 @@
 postscriptHasDependents
-	^ postscript dependents size > 0
+	^false

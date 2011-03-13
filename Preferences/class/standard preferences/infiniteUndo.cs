@@ -1,2 +1,0 @@
-infiniteUndo
-	^ self valueOfFlag: #infiniteUndo

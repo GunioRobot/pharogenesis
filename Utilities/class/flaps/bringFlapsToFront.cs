@@ -1,2 +1,0 @@
-bringFlapsToFront
-	self currentWorld bringFlapTabsToFront

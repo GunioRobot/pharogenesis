@@ -1,2 +1,0 @@
-clearStroke
-	self outline: nil

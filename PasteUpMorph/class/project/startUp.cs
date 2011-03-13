@@ -1,3 +1,0 @@
-startUp
-	
-	Display restoreMorphicDisplay.

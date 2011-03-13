@@ -1,0 +1,1 @@
+Beeper class instanceVariableNames: 'default'

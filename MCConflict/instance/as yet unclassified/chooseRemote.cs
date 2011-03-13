@@ -1,2 +1,2 @@
 chooseRemote
-	chooseRemote _ true
+	chooseRemote := true

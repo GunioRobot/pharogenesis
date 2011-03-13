@@ -1,2 +1,2 @@
 setUp
-	repository _ MCDirectoryRepository new directory: self directory
+	repository := MCDirectoryRepository new directory: self directory

@@ -3,7 +3,7 @@ testEvaporatePrim
 	"StarSqueakMorph new testEvaporatePrim"
 
 	| data |
-	data _ Bitmap new: 10.
+	data := Bitmap new: 10.
 	1 to: data size do: [:i | data at: i put: (10000 * i)].
 	self primEvaporate: data rate: (75 * 1024) // 100.
 	^ data asArray

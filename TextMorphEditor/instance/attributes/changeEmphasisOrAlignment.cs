@@ -1,10 +1,11 @@
 changeEmphasisOrAlignment
-	| aList reply  code align menuList startIndex |
+	| aList reply  code align menuList startIndex alignSymbol |
 	self flag: #arNote. "Move this up once we get rid of MVC"
 	startIndex _ self startIndex.
 	aList _ #(normal bold italic narrow underlined struckOut leftFlush centered rightFlush justified).	
 	align _ paragraph text alignmentAt: startIndex 
 		ifAbsent:[paragraph textStyle alignment].
+	alignSymbol _ TextAlignment alignmentSymbol: align.
 	code _ paragraph text emphasisAt: startIndex.
 	menuList _ WriteStream on: Array new.
 	menuList nextPut: (code isZero ifTrue:['<on>'] ifFalse:['<off>']), 'normal' translated.
@@ -16,8 +17,8 @@ changeEmphasisOrAlignment
 		anySatisfy:[:attr| attr isKern and:[attr kern < 0]]) 
 			ifTrue:[menuList nextPut:'<on>', 'narrow' translated]
 			ifFalse:[menuList nextPut:'<off>', 'narrow' translated].
-	menuList nextPutAll: (#(leftFlush centered rightFlush justified) collectWithIndex:[:type :i|
-		align = (i-1)
+	menuList nextPutAll: (#(leftFlush centered rightFlush justified) collect:[:type|
+		type == alignSymbol
 			ifTrue:['<on>',type asString translated]
 			ifFalse:['<off>',type asString translated]]).
 	aList _ #(normal bold italic underlined struckOut narrow leftFlush centered rightFlush justified).

@@ -1,7 +1,7 @@
 spanish
 	"Answer the spanish phonetic rules."
 	| phonemes |
-	phonemes _ PhonemeSet spanish.
+	phonemes := PhonemeSet spanish.
 	^ #(
 		(''		'a'		''		'a')
 		(''		'b'		''		'b')

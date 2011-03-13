@@ -1,6 +1,6 @@
 Object
 	subclass: #AbstractScoreEvent
-	instanceVariableNames: 'time '
+	instanceVariableNames: 'time'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Sound-Scores'

@@ -1,6 +1,6 @@
 Number
 	subclass: #Fraction
-	instanceVariableNames: 'numerator denominator '
+	instanceVariableNames: 'numerator denominator'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Kernel-Numbers'

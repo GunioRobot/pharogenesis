@@ -1,2 +1,0 @@
-initialValuesAdditionscriptingcompactViewerFlaps
-	^ #((compactViewerFlaps false (scripting ) ) )

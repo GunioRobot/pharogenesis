@@ -5,9 +5,9 @@ balloonText
 	a Viewer"
 
 	| text balloonSelector aString |
-	self hasExtension ifFalse: [^nil].
-	(text := self extension balloonText) ifNotNil: [^text].
-	(balloonSelector := self extension balloonTextSelector) ifNotNil: 
+	extension ifNil: [^nil].
+	(text := extension balloonText) ifNotNil: [^text].
+	(balloonSelector := extension balloonTextSelector) ifNotNil: 
 			[aString := ScriptingSystem helpStringOrNilFor: balloonSelector.
 			(aString isNil and: [balloonSelector == #methodComment]) 
 				ifTrue: [aString := self methodCommentAsBalloonHelp].

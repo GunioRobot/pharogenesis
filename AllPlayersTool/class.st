@@ -1,0 +1,1 @@
+AllPlayersTool class instanceVariableNames: ''

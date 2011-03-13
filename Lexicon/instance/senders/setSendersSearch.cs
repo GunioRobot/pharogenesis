@@ -5,28 +5,28 @@ setSendersSearch
 	category-list pane"
 	| selectorSet aSelector aString |
 	self selectedMessageName
-		ifNil: [aString _ FillInTheBlank request: 'Type selector to search for' initialAnswer: 'flag:'.
+		ifNil: [aString := UIManager default request: 'Type selector to search for' initialAnswer: 'flag:'.
 			aString isEmptyOrNil
 				ifTrue: [^ self].
 			Symbol
 				hasInterned: aString
-				ifTrue: [:sel | aSelector _ sel]]
+				ifTrue: [:sel | aSelector := sel]]
 		ifNotNil: [self
-				selectMessageAndEvaluate: [:sel | aSelector _ sel]].
+				selectMessageAndEvaluate: [:sel | aSelector := sel]].
 	aSelector
 		ifNil: [^ self].
-	selectorSet _ Set new.
+	selectorSet := Set new.
 	(self systemNavigation allCallsOn: aSelector)
 		do: [:anItem | selectorSet add: anItem methodSymbol].
-	selectorSet _ selectorSet
+	selectorSet := selectorSet
 				select: [:sel | currentVocabulary
 						includesSelector: sel
 						forInstance: self targetObject
 						ofClass: targetClass
 						limitClass: limitClass].
 	selectorSet size > 0
-		ifTrue: [currentQuery _ #senders.
-			currentQueryParameter _ aSelector.
+		ifTrue: [currentQuery := #senders.
+			currentQueryParameter := aSelector.
 			self
 				categoryListIndex: (categoryList indexOf: self class queryCategoryName).
 			self messageListIndex: 0]

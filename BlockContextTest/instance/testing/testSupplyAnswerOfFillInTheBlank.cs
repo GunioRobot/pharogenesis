@@ -1,4 +1,4 @@
 testSupplyAnswerOfFillInTheBlank
 
-	self should: ['blue' = ([FillInTheBlank request: 'Your favorite color?'] 
+	self should: ['blue' = ([UIManager default request: 'Your favorite color?'] 
 		valueSupplyingAnswer: #('Your favorite color?' 'blue'))]

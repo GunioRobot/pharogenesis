@@ -1,2 +1,3 @@
 postload
-	self isInitializer ifTrue: [self actualClass theNonMetaClass initialize]
+	(self isInitializer and: [ self actualClass isTrait not ]) ifTrue: [
+		self actualClass theNonMetaClass initialize]

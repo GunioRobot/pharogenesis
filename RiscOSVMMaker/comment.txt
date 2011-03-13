@@ -1,1 +1,0 @@
-Special VMMaker class for Acorn RiscOS - add generation of a configuration file for each plugin, required by the dynamic loading libraries

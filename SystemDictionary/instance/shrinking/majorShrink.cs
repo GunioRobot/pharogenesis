@@ -60,7 +60,6 @@ Shall we proceed to discard most of the content in this image?')
 	self removeClassNamed: #ProjectController.
 	self removeClassNamed: #ProjectView.
 	"Smalltalk removeClassNamed: #Project."
-	self removeClassNamed: #Environment.
 	self removeClassNamed: #Component1.
 	self removeClassNamed: #FormSetFont.
 	self removeClassNamed: #FontSet.
@@ -91,7 +90,7 @@ Shall we proceed to discard most of the content in this image?')
 	PopUpMenu initialize.
 	StandardSystemView initialize.
 	ChangeSet noChanges.
-	ChangeSorter classPool
+	ChangeSet classPool
 		at: #AllChangeSets
 		put: (OrderedCollection with: ChangeSet current).
 	SystemDictionary removeSelector: #majorShrink.

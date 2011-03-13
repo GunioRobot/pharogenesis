@@ -3,15 +3,15 @@ resumePlaying: aSound quickStart: quickStart
 
 	| doQuickStart |
 	Preferences soundsEnabled ifFalse: [^ self].
-	doQuickStart _ quickStart.
-	Preferences soundQuickStart ifFalse: [doQuickStart _ false].
+	doQuickStart := quickStart.
+	Preferences soundQuickStart ifFalse: [doQuickStart := false].
 	PlayerProcess == nil ifTrue: [
 		self canStartPlayer ifFalse: [^ self].
 		^self startUpWithSound: aSound].
 
 	PlayerSemaphore critical: [
 		(ActiveSounds includes: aSound)
-			ifTrue: [doQuickStart _ false]
+			ifTrue: [doQuickStart := false]
 			ifFalse: [
 				doQuickStart ifFalse: [ActiveSounds add: aSound]]].
 

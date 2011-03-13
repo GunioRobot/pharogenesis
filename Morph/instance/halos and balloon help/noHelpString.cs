@@ -1,2 +1,2 @@
 noHelpString
-	^ 'Help not yet supplied'
+	^ 'Help not yet supplied' translated

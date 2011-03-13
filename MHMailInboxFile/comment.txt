@@ -1,1 +1,0 @@
-I am a parser for mail files in the format output by the Unix 'mh' program.

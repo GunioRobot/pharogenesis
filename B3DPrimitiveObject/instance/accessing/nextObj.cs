@@ -1,2 +1,0 @@
-nextObj
-	^next

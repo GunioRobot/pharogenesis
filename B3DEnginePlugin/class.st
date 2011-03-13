@@ -1,1 +1,0 @@
-B3DEnginePlugin class instanceVariableNames: ''

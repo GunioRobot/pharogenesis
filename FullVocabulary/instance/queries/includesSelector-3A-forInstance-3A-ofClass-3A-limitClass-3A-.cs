@@ -2,8 +2,8 @@ includesSelector: aSelector forInstance: anInstance ofClass: aTargetClass limitC
 	"Answer whether the vocabulary includes the given selector for the given class, only considering method implementations in mostGenericClass and lower"
 
 	| classToUse aClass |
-	classToUse _ self classToUseFromInstance: anInstance ofClass: aTargetClass.
-	^ (aClass _ classToUse whichClassIncludesSelector: aSelector)
+	classToUse := self classToUseFromInstance: anInstance ofClass: aTargetClass.
+	^ (aClass := classToUse whichClassIncludesSelector: aSelector)
 		ifNil:
 			[false]
 		ifNotNil:

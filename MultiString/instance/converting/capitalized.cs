@@ -1,3 +1,0 @@
-capitalized
-
-	self flag: #toBeImplemented.

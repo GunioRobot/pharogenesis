@@ -1,2 +1,0 @@
-innerBounds
-	^ bounds insetBy: borderWidth

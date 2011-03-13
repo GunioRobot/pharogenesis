@@ -1,2 +1,2 @@
 source: anObject
-	source _ anObject
+	source := anObject

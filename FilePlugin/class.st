@@ -1,1 +1,0 @@
-FilePlugin class instanceVariableNames: ''

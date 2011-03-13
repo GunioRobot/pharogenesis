@@ -1,0 +1,1 @@
+MCRepository class instanceVariableNames: ''

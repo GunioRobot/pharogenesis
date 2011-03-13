@@ -7,10 +7,10 @@ openEditString: aString
         "Sensor leftShiftDown ifTrue: [^ self openAsMorphEditing: aString].
                 uncomment-out for testing morphic browser embedded in mvc project"
 
-        topView _ StandardSystemView new model: self.
+        topView := StandardSystemView new model: self.
         topView borderWidth: 1. "label and minSize taken care of by caller"
 
-        systemCategoryListView _ PluggableListView on: self
+        systemCategoryListView := PluggableListView on: self
                 list: #systemCategoryList
                 selected: #systemCategoryListIndex
                 changeSelected: #systemCategoryListIndex:
@@ -19,7 +19,7 @@ openEditString: aString
         systemCategoryListView window: (0 @ 0 extent: 50 @ 70).
         topView addSubView: systemCategoryListView.
 
-        classListView _ PluggableListView on: self
+        classListView := PluggableListView on: self
                 list: #classList
                 selected: #classListIndex
                 changeSelected: #classListIndex:
@@ -28,11 +28,11 @@ openEditString: aString
         classListView window: (0 @ 0 extent: 50 @ 62).
         topView addSubView: classListView toRightOf: systemCategoryListView.
 
-        switchView _ self buildInstanceClassSwitchView.
+        switchView := self buildInstanceClassSwitchView.
         switchView borderWidth: 1.
         topView addSubView: switchView below: classListView.
 
-        messageCategoryListView _ PluggableListView on: self
+        messageCategoryListView := PluggableListView on: self
                 list: #messageCategoryList
                 selected: #messageCategoryListIndex
                 changeSelected: #messageCategoryListIndex:
@@ -41,7 +41,7 @@ openEditString: aString
         messageCategoryListView window: (0 @ 0 extent: 50 @ 70).
         topView addSubView: messageCategoryListView toRightOf: classListView.
 
-        messageListView _ PluggableListView on: self
+        messageListView := PluggableListView on: self
                 list: #messageList
                 selected: #messageListIndex
                 changeSelected: #messageListIndex:
@@ -53,25 +53,25 @@ openEditString: aString
 
        self wantsAnnotationPane
                 ifTrue:
-                        [annotationPane _ PluggableTextView on: self
+                        [annotationPane := PluggableTextView on: self
                                 text: #annotation accept: nil
                                 readSelection: nil menu: nil.
                         annotationPane window: (0@0 extent: 200@self optionalAnnotationHeight).
                         topView addSubView: annotationPane below: systemCategoryListView.
-                        underPane _ annotationPane.
-                        y _ 110 - self optionalAnnotationHeight]
+                        underPane := annotationPane.
+                        y := 110 - self optionalAnnotationHeight]
                 ifFalse: [
-                        underPane _ systemCategoryListView.
-                        y _ 110].
+                        underPane := systemCategoryListView.
+                        y := 110].
 
         self wantsOptionalButtons ifTrue:
-                [optionalButtonsView _ self buildOptionalButtonsView.
+                [optionalButtonsView := self buildOptionalButtonsView.
                 optionalButtonsView borderWidth: 1.
                 topView addSubView: optionalButtonsView below: underPane.
-                underPane _ optionalButtonsView.
-                y _ y - self optionalButtonHeight].
+                underPane := optionalButtonsView.
+                y := y - self optionalButtonHeight].
 
-        browserCodeView _ MvcTextEditor default on: self 
+        browserCodeView := MvcTextEditor default on: self 
                         text: #contents accept: #contents:notifying:
                         readSelection: #contentsSelection menu: #codePaneMenu:shifted:.
         browserCodeView window: (0@0 extent: 200@y).

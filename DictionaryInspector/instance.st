@@ -1,6 +1,6 @@
 Inspector
 	subclass: #DictionaryInspector
-	instanceVariableNames: 'keyArray '
+	instanceVariableNames: 'keyArray'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Tools-Inspector'

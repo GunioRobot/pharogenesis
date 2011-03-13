@@ -2,7 +2,7 @@ standaloneResumeButton
 
 	| r |
 
-	r _ AlignmentMorph newRow.
+	r := AlignmentMorph newRow.
 	r color: Color red; borderWidth: 0; layoutInset: 6; useRoundedCorners.
 	r hResizing: #shrinkWrap; vResizing: #shrinkWrap; extent: 5@5.
 	r addMorphBack: (

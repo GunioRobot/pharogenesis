@@ -1,4 +1,4 @@
 initializeMessageList: anArray
-	messageList _ anArray.
-	messageListIndex _ 0.
-	contents _ ''
+	messageList := anArray.
+	messageListIndex := 0.
+	contents := ''

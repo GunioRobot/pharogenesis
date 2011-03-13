@@ -5,7 +5,7 @@ retrieveContentsArgs: args accept: mimeType
 		"Why doesn't Netscape send the name of the realm instead of Basic?"
 
 	contents _ (HTTPSocket
-		httpGetDocument: self withoutFragment toText
+		httpGetDocument: self withoutFragment asString
 		args: args
 		accept: mimeType
 		request: request).

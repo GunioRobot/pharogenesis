@@ -2,7 +2,7 @@ nameForIPAddress: ipString
 
 	| senderMorphs |
 
-	senderMorphs _ EToySenderMorph allInstances select: [ :x | 
+	senderMorphs := EToySenderMorph allInstances select: [ :x | 
 		x userName notNil and: [x ipAddress = ipString]
 	].
 	senderMorphs isEmpty ifTrue: [^nil].

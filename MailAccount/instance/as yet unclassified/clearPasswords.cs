@@ -1,2 +1,0 @@
-clearPasswords
-	popPassword := nil.

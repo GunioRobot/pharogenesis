@@ -1,0 +1,2 @@
+buildPluggableButton: aSpec
+	^self subclassResponsibility

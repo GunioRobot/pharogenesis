@@ -1,7 +1,7 @@
 allTypes
 
 	^MessageTypes ifNil: [
-		MessageTypes _ {
+		MessageTypes := {
 			self typeKeyboardChat.
 			self typeMorph.
 			self typeFridge.

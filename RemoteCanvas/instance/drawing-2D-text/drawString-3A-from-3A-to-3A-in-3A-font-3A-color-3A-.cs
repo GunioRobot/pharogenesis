@@ -4,4 +4,4 @@ drawString: s from: firstIndex to: lastIndex in: boundsRect font: fontOrNil colo
 		"clip rectangles seem to be all screwed up...."
 	s isAllSeparators ifTrue: [ ^self ].   "is this correct??  it sure does speed things up!"
 	self drawCommand: [ :executor |
-		executor drawString: s from: firstIndex to: lastIndex in: boundsRect font: fontOrNil color: c]
+		executor drawString: s from: firstIndex to: lastIndex in: boundsRect font: fontOrNil color: (self isShadowDrawing ifTrue: [self shadowColor] ifFalse: [c])]

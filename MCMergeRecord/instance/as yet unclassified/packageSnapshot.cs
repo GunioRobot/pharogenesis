@@ -1,2 +1,2 @@
 packageSnapshot
-	^ packageSnapshot ifNil: [packageSnapshot _ version package snapshot]
+	^ packageSnapshot ifNil: [packageSnapshot := version package snapshot]

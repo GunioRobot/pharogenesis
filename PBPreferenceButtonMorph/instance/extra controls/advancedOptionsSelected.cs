@@ -1,0 +1,2 @@
+advancedOptionsSelected
+	self preferenceView offerPreferenceNameMenu: self model

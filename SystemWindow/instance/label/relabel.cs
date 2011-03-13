@@ -1,6 +1,6 @@
 relabel
 	| newLabel |
-	newLabel _ FillInTheBlank 
+	newLabel := UIManager default 
 		request: 'New title for this window' translated
 		initialAnswer: labelString.
 	newLabel isEmpty ifTrue: [^self].

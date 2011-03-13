@@ -1,3 +1,0 @@
-getReactionsTo: evtType
-
-	^ nil.

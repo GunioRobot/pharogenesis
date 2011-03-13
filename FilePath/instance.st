@@ -3,4 +3,4 @@ Object
 	instanceVariableNames: 'squeakPathName vmPathName converter'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Files'
+	category: 'Files-Directories'

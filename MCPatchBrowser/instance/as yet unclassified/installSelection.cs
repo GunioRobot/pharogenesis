@@ -1,6 +1,6 @@
 installSelection
 	| loader |
 	selection ifNotNil:
-		[loader _ MCPackageLoader new.
+		[loader := MCPackageLoader new.
 		selection applyTo: loader.
 		loader loadWithName: self changeSetNameForInstall ]

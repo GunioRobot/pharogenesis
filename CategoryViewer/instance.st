@@ -1,6 +1,6 @@
 Viewer
 	subclass: #CategoryViewer
-	instanceVariableNames: 'namePane '
+	instanceVariableNames: 'namePane chosenCategorySymbol'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Scripting'
+	category: 'EToys-Scripting'

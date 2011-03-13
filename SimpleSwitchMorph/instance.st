@@ -1,6 +1,6 @@
 SimpleButtonMorph
 	subclass: #SimpleSwitchMorph
-	instanceVariableNames: 'onColor offColor '
+	instanceVariableNames: 'onColor offColor'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Widgets'
+	category: 'MorphicExtras-Widgets'

@@ -1,3 +1,0 @@
-primitiveAtPut
-
-	self commonAtPut: false.

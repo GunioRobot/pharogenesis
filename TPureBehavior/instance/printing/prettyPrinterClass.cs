@@ -1,0 +1,2 @@
+prettyPrinterClass
+	^self compilerClass

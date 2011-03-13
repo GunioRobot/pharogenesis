@@ -1,11 +1,11 @@
 recordButton: buttonId character: characterId state: state layer: layer matrix: matrix colorTransform: cxForm
 	| button children shape |
-	button _ buttons at: buttonId ifAbsent:[^self error: 'button missing'].
+	button := buttons at: buttonId ifAbsent:[^self error: 'button missing'].
 	button id: buttonId.
-	shape _ self oldMorphFromShape: characterId.
+	shape := self oldMorphFromShape: characterId.
 	shape isNil ifTrue:[^nil].
-	children _ shape submorphs collect:[:m| m veryDeepCopy].
-	shape _ FlashMorph withAll: children.
+	children := shape submorphs collect:[:m| m veryDeepCopy].
+	shape := FlashMorph withAll: children.
 	shape lockChildren.
 	shape depth: layer.
 	shape transform: matrix.

@@ -1,0 +1,2 @@
+noteWindowClosed
+	queries add: #noteWindowClosed.

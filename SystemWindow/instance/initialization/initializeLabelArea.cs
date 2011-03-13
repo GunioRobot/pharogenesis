@@ -1,9 +1,10 @@
 initializeLabelArea
 	"Initialize the label area (titlebar) for the window."
-	label := StringMorph new
+	label := LabelStringMorph new
 				contents: labelString;
 				font: Preferences windowTitleFont
-				emphasis: (Preferences windowTitleFont isTTCFont ifTrue: [0] ifFalse: [1]).
+				emphasis: (Preferences windowTitleFont isTTCFont ifTrue: [0] ifFalse: [1]);
+				mySystemWindow: self.
 	"Add collapse box so #labelHeight will work"
 	collapseBox := self createCollapseBox.
 	stripes := Array

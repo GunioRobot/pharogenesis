@@ -3,4 +3,4 @@ StrikeFont
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Graphics-Text'
+	category: 'Graphics-Fonts'

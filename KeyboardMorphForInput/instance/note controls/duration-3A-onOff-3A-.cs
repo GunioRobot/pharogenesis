@@ -5,5 +5,5 @@ duration: denom onOff: ignored    "denom = eg, 1, 2, 4, 8, 16"
 		[:m | ((m isMemberOf: SimpleSwitchMorph)
 				and: [m actionSelector == #duration:onOff:])
 				ifTrue: [m setSwitchState: m arguments first = denom]].
-	duration _ denom.
+	duration := denom.
 	self durMod: #normal onOff: true

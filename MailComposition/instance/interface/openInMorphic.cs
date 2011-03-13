@@ -7,7 +7,9 @@ openInMorphic
 	textEditor _ textMorph _ PluggableTextMorph
 						on: self
 						text: #messageText
-						accept: #messageText:.
+						accept: #messageText:
+						readSelection: nil
+						menu: #menuGet:shifted:.
 	morphicWindow addMorph: textMorph frame: (0 @ 0.1 corner: 1 @ 1).
 	buttonsList _ AlignmentMorph newRow.
 	sendButton _ PluggableButtonMorph
@@ -18,7 +20,7 @@ openInMorphic
 		hResizing: #spaceFill;
 		vResizing: #spaceFill;
 		label: 'send message';
-		setBalloonText: 'add this to the queue of messages to be sent';
+		setBalloonText: 'Accept any unaccepted edits and add this to the queue of messages to be sent';
 		onColor: Color white offColor: Color white.
 	buttonsList addMorphBack: sendButton.
 	

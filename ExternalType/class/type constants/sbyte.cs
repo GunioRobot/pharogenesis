@@ -1,2 +1,0 @@
-sbyte
-	^self signedByte

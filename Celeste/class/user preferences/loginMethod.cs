@@ -1,2 +1,0 @@
-loginMethod
-	^ #clearText

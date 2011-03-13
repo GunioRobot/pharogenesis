@@ -1,3 +1,0 @@
-RPLWhoisChannels
-	""
-	^319

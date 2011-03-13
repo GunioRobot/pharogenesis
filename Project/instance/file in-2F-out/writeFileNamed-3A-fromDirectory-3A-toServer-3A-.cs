@@ -9,7 +9,7 @@ writeFileNamed: localFileName fromDirectory: localDirectory toServer: primarySer
 		"abandon resources that would've been stored with the project"
 		self resourceManager abandonResourcesThat:
 			[:loc| loc urlString beginsWith: self resourceUrl].
-		self inform: 'the primary server of this project seems to be down (',
+		self error: 'the primary server of this project seems to be down (',
 							resp printString,')'. 
 		^ self
 	].

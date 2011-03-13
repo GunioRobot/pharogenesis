@@ -1,1 +1,0 @@
-ExternalForm class instanceVariableNames: ''

@@ -1,2 +1,0 @@
-showProjectNavigator
-	^ self valueOfFlag: #showProjectNavigator

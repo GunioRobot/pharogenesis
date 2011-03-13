@@ -1,2 +1,2 @@
 initialize
-	definitions _ Dictionary new
+	definitions := Dictionary new

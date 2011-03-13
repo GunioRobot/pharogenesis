@@ -1,3 +1,3 @@
 loadDependencies
-	dependencies _ (self zip membersMatching: 'dependencies/*') collect: [:m | self extractDependencyFrom: m].
-	dependencies _ dependencies asArray.
+	dependencies := (self zip membersMatching: 'dependencies/*') collect: [:m | self extractDependencyFrom: m].
+	dependencies := dependencies asArray.

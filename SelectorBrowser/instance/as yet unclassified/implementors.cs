@@ -1,4 +1,4 @@
 implementors
 	| aSelector |
-	(aSelector _ self selectedMessageName) ifNotNil:
+	(aSelector := self selectedMessageName) ifNotNil:
 		[self systemNavigation browseAllImplementorsOf: aSelector]

@@ -1,0 +1,39 @@
+A ServiceProvider references services that are relevant to a given application.
+
+Each application that wishes to use the Services framework must subclass a ServiceProvider.
+This class must define a 'services' method category.
+Each method implemented in this category will be automatically called by the framework.
+Each of these method should be a unary message (taking no argument), and return a fully initialised instance of ServiceAction or ServiceCategory. There are three possible patterns:
+
+1)
+
+serviceIdentifierAndMethodName
+	^ ServiceAction
+		text: 'Menu item text'
+		button: 'Button text'
+		description: 'Longer text that appears in help balloons'
+		action: [:r | "Code block fetching data from the requestor instance, r, that is passed to the block"]
+		
+
+2)
+
+serviceIdentifierAndMethodName
+	^ ServiceAction
+		text: 'Menu item text'
+		button: 'Button text'
+		description: 'Longer text that appears in help balloons'
+		action: [:r | "Code block fetching data from the requestor instance, r, that is passed to the block"]
+		condition: [:r | "second block returning true if the service can be used at the time being, false otherwise. Data can still be fetched from the requestor instance"]
+		
+3)
+
+methodNameAndServiceCategoryId
+	^ ServiceCategory 
+		text: 'Menu text' 
+		button: 'Button  text' 
+		description: 'Longer descriptive text appearing in help balloons'
+	
+
+The organisation of services into categories, and the services bound to keyboard shortcuts are
+specified using the Services Browser (see the comment on the class ServicesPreferences for more details). When editing preferences, they are saved as methods on the ServiceProvider, all defined
+in the 'saved preferences' method category. Each of thesse methods stores preferences that the provider can replay.

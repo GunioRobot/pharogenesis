@@ -1,3 +1,0 @@
-getSelectedDirectory
-
-	^ currentDirectorySelected

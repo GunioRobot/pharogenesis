@@ -3,5 +3,4 @@ initialize
 
 	text _ String cr.
 	fields := Dictionary new.
-	body _ MIMEDocument contentType: 'text/plain' content: String cr.
-	tokens _ nil.
+	body _ MIMEDocument contentType: 'text/plain' content: String cr

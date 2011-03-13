@@ -1,2 +1,0 @@
-settingsFileName
-	^ 'CelesteSettings.txt'

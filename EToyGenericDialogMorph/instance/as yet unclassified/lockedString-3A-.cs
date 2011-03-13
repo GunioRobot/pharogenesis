@@ -1,3 +1,2 @@
-lockedString: aString
-
-	^self inAColumn: {(StringMorph contents: aString font: self myFont) lock}.
+lockedString: aString 
+	^ self lockedString: aString font: self myFont

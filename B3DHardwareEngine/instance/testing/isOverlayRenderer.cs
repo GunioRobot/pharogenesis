@@ -1,3 +1,0 @@
-isOverlayRenderer
-	"Return true if the renderer is associated with a target that is always in front of Squeak's host window (such as when the renderer is bound to a separate OS window). If this is the case, then the renderer must be destroyed prior to actions that may result in somebody else attempting to draw in the occupied area. As an example, dragging a morph around that contains such an overlay renderer would not restore the original region of this renderer."
-	^self primRenderIsOverlay: handle

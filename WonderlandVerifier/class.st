@@ -1,1 +1,0 @@
-WonderlandVerifier class instanceVariableNames: ''

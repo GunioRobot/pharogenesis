@@ -1,2 +1,2 @@
 ne: anInteger
-	ne _ anInteger
+	ne := anInteger

@@ -1,15 +1,15 @@
 processPlaceObject2: data
 	| id flags depth matrix cxForm ratio name move |
-	flags _ data nextByte.
-	depth _ data nextWord.
+	flags := data nextByte.
+	depth := data nextWord.
 
-	move _ (flags anyMask: 1).
-	(flags anyMask: 2) ifTrue:[id _ data nextWord].
-	(flags anyMask: 4) ifTrue:[matrix _ data nextMatrix].
-	(flags anyMask: 8) ifTrue:[cxForm _ data nextColorMatrix: version >= 3].
+	move := (flags anyMask: 1).
+	(flags anyMask: 2) ifTrue:[id := data nextWord].
+	(flags anyMask: 4) ifTrue:[matrix := data nextMatrix].
+	(flags anyMask: 8) ifTrue:[cxForm := data nextColorMatrix: version >= 3].
 	self flag: #checkThis.
-	(flags anyMask: 16) ifTrue:["self halt." ratio _ data nextWord / 65536.0].
-	(flags anyMask: 32) ifTrue:["self halt." name _ data nextString].
+	(flags anyMask: 16) ifTrue:["self halt." ratio := data nextWord / 65536.0].
+	(flags anyMask: 32) ifTrue:["self halt." name := data nextString].
 	(flags anyMask: 64) ifTrue:["self halt:'Clip shape encountered'." ^true].
 	log ifNotNil:[
 		log nextPutAll:' (id = ', id printString,' name = ', name printString,' depth = ', depth printString, ' move: ', move printString, ')'.

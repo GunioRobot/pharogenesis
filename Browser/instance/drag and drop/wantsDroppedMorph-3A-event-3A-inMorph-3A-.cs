@@ -8,8 +8,8 @@ wantsDroppedMorph: transferMorph event: anEvent inMorph: destinationLM
 	"only want drops on lists (not, for example, on pluggable texts)"
 	(destinationLM isKindOf: PluggableListMorph) ifFalse: [^ false].
 
-	srcType _ transferMorph dragTransferType.
-	dstType _ destinationLM getListSelector.
+	srcType := transferMorph dragTransferType.
+	dstType := destinationLM getListSelector.
 
 	(srcType == #messageList
 		and: [dstType == #messageCategoryList or: [dstType == #classList]])

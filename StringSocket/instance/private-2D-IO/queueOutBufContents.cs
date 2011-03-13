@@ -1,8 +1,8 @@
 queueOutBufContents
 
-	bytesInOutputQueue _ bytesInOutputQueue + outBufIndex - 1.
+	bytesInOutputQueue := bytesInOutputQueue + outBufIndex - 1.
 	outputQueue nextPut: {outBuf. outBufIndex - 1}.
 	NebraskaDebug at: #queuedbufferSizes add: {outBufIndex - 1}.
-	outBufIndex _ 1.
-	outBuf _ String new: 11000.
+	outBufIndex := 1.
+	outBuf := String new: 11000.
 	

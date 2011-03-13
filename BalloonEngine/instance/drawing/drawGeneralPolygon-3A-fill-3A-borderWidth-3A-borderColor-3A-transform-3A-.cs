@@ -3,7 +3,7 @@ drawGeneralPolygon: contours fill: fillStyle borderWidth: borderWidth borderColo
 	| fills |
 	self edgeTransform: aTransform.
 	self resetIfNeeded.
-	fills _ self registerFill: fillStyle and: borderFill.
+	fills := self registerFill: fillStyle and: borderFill.
 	contours do:[:points|
 		self primAddPolygon: points
 			segments: points size

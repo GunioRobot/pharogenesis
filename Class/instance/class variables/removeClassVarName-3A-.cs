@@ -12,6 +12,9 @@ removeClassVarName: aString
 		(Array with: subclass with: subclass class) do:[:classOrMeta |
 			(classOrMeta whichSelectorsReferTo: (classPool associationAt: aSymbol))
 				isEmpty ifFalse: [
+					InMidstOfFileinNotification signal ifTrue: [
+						Transcript cr; show: self name, ' (' , aString , ' is Undeclared) '.
+						^Undeclared declare: aSymbol from: classPool].
 					(self confirm: (aString,' is still used in code of class ', classOrMeta name,
 						'.\Is it okay to move it to Undeclared?') withCRs)
 						ifTrue:[^Undeclared declare: aSymbol from: classPool]

@@ -1,2 +1,2 @@
 list
-	^ ancestry withAllAncestors collect: [:ea | ea name]
+	^ self infos collect: [:ea | ea name]

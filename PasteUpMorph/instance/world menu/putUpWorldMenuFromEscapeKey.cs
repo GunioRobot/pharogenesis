@@ -1,3 +1,3 @@
 putUpWorldMenuFromEscapeKey
-
-	^ self putUpWorldMenu: ActiveEvent
+	Preferences noviceMode
+		ifFalse: [self putUpWorldMenu: ActiveEvent]

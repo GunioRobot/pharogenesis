@@ -5,7 +5,7 @@ removeMessage
 	self okToChange
 		ifFalse: [^ self].
 	currentSelector
-		ifNotNil: [confirmation _ self systemNavigation   confirmRemovalOf: (sel _ self selectedMessageName) on: self selectedClassOrMetaClass.
+		ifNotNil: [confirmation := self systemNavigation   confirmRemovalOf: (sel := self selectedMessageName) on: self selectedClassOrMetaClass.
 			confirmation == 3
 				ifTrue: [^ self].
 			self selectedClassOrMetaClass removeSelector: sel.

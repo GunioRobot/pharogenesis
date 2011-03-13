@@ -1,2 +1,2 @@
 suggestedName: aString
-	suggestion _ aString
+	suggestion := aString

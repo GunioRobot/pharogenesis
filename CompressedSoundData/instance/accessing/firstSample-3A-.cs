@@ -1,3 +1,3 @@
 firstSample: anInteger
 
-	firstSample _ anInteger.
+	firstSample := anInteger.

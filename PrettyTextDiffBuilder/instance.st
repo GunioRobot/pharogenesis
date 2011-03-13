@@ -1,6 +1,6 @@
 TextDiffBuilder
 	subclass: #PrettyTextDiffBuilder
-	instanceVariableNames: 'sourceClass '
+	instanceVariableNames: 'sourceClass'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'NK-PrettyDiffs'
+	category: 'System-FilePackage'

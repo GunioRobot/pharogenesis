@@ -1,7 +1,7 @@
 initialize
 
-	name _ ''.
-	mouthPosition _ 1.
-	samples _ SoundBuffer new.
-	samplingRate _ 22050.
-	features _ nil.
+	name := ''.
+	mouthPosition := 1.
+	samples := SoundBuffer new.
+	samplingRate := 22050.
+	features := nil.

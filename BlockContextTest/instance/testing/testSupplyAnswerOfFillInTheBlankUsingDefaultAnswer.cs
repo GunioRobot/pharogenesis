@@ -1,4 +1,4 @@
 testSupplyAnswerOfFillInTheBlankUsingDefaultAnswer
 
-	self should: ['red' = ([FillInTheBlank request: 'Your favorite color?' initialAnswer: 'red'] 
+	self should: ['red' = ([UIManager default  request: 'Your favorite color?' initialAnswer: 'red'] 
 		valueSupplyingAnswer: #('Your favorite color?' #default))]

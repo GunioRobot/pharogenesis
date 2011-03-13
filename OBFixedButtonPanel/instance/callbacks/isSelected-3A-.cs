@@ -1,0 +1,2 @@
+isSelected: aModel
+	^ true

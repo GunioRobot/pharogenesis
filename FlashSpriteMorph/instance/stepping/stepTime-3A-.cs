@@ -1,2 +1,2 @@
 stepTime: time
-	stepTime _ time.
+	stepTime := time.

@@ -2,7 +2,7 @@ newFileNamed: fileName
  	"Create a new file with the given name, and answer a stream opened for writing on that file. If the file already exists, ask the user what to do."
 
 	| fullName |
-	fullName _ self fullName: fileName.
+	fullName := self fullName: fileName.
 
 	^(self isAFileNamed: fullName)
 		ifTrue: ["file already exists:"

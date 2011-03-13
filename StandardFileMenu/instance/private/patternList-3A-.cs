@@ -1,0 +1,3 @@
+patternList: aPatternList
+
+	pattern := aPatternList

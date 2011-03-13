@@ -1,3 +1,0 @@
-next: aDelauneyEdge
-
-	next := aDelauneyEdge.

@@ -1,1 +1,0 @@
-B3DSTriangleMesh class instanceVariableNames: ''

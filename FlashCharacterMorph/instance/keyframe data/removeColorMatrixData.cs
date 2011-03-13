@@ -1,3 +1,3 @@
 removeColorMatrixData
-	cmData _ FlashKeyframes new.
+	cmData := FlashKeyframes new.
 	"^self removeKeyframeData: #colorMatrixData"

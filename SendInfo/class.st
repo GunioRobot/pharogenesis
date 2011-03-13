@@ -1,0 +1,1 @@
+SendInfo class instanceVariableNames: ''

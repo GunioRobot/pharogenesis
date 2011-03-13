@@ -2,8 +2,8 @@ openAsMorphEditing: editString
 	"Create a pluggable version of all the morphs for a Browser in Morphic"
 	| window hSepFrac |
 
-	hSepFrac _ 0.4.
-	window _ (SystemWindow labelled: 'later') model: self.
+	hSepFrac := 0.4.
+	window := (SystemWindow labelled: 'later') model: self.
 
 "The method SystemWindow>>addMorph:fullFrame: checks scrollBarsOnRight, then adds the morph at the back if true, otherwise it is added in front. But flopout hScrollbars need the lowerpanes to be behind the upper ones in the draw order. Hence the value of scrollBarsOnRight affects the order in which the lowerpanes are added. "
 	Preferences scrollBarsOnRight ifFalse:

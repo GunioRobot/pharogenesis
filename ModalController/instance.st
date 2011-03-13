@@ -1,6 +1,6 @@
 Controller
 	subclass: #ModalController
-	instanceVariableNames: 'modeActive '
+	instanceVariableNames: 'modeActive'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'ST80-Framework'

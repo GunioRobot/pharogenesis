@@ -1,6 +1,6 @@
 RectangleMorph
 	subclass: #SoundSequencerMorph
-	instanceVariableNames: 'controlPanel '
+	instanceVariableNames: 'controlPanel'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Sound-Interface'
+	category: 'MorphicExtras-SoundInterface'

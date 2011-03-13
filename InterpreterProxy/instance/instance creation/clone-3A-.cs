@@ -1,2 +1,0 @@
-clone: oop
-	^oop clone

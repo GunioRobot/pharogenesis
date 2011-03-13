@@ -1,4 +1,4 @@
 copyEnvelopes
 	"Private! Support for copying. Copy my envelopes."
 
-	envelopes _ envelopes collect: [:e | e copy target: self].
+	envelopes := envelopes collect: [:e | e copy target: self].

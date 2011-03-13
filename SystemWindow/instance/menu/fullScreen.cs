@@ -13,7 +13,7 @@ fullScreen
 	possibleBounds _ (RealEstateAgent maximumUsableAreaInWorld: self world)
 				insetBy: (left @ 0 corner: right @ 0).
 	((Flaps sharedFlapsAllowed
-				and: [CurrentProjectRefactoring currentFlapsSuppressed not])
+				and: [Project current flapsSuppressed not])
 			or: [Preferences fullScreenLeavesDeskMargins])
 		ifTrue: [possibleBounds _ possibleBounds insetBy: 22].
 	self bounds: possibleBounds

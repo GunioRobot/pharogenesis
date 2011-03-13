@@ -1,7 +1,7 @@
 messageTally
 	| secString secs |
-	secString _ FillInTheBlank request: 'Profile for how many seconds?' initialAnswer: '4'.
-	secs _ secString asNumber asInteger.
+	secString := UIManager default request: 'Profile for how many seconds?' initialAnswer: '4'.
+	secs := secString asNumber asInteger.
 	(secs isNil
 			or: [secs isZero])
 		ifTrue: [^ self].

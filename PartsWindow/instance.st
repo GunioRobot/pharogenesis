@@ -1,6 +1,6 @@
 SystemWindow
 	subclass: #PartsWindow
-	instanceVariableNames: 'book prevButton nextButton menuButton openForEditing '
+	instanceVariableNames: 'book prevButton nextButton menuButton openForEditing'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Windows'
+	category: 'MorphicExtras-PartsBin'

@@ -4,7 +4,7 @@ returnValue
 	| previous selectedContext expression value |
 	contextStackIndex = 0 ifTrue: [^Beeper beep].
 	selectedContext := self selectedContext.
-	expression := FillInTheBlank request: 'Enter expression for return value:'.
+	expression := UIManager default request: 'Enter expression for return value:'.
 	value := Compiler new 
 				evaluate: expression
 				in: selectedContext

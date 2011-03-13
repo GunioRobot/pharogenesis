@@ -1,0 +1,4 @@
+unload
+	self 
+		unregisterFromOpenMenu;
+		unregisterFromFlaps.

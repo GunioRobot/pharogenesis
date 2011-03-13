@@ -5,7 +5,7 @@ uniqueInstanceVariableNameLike: aString excluding: takenNames
 	usedNames _ self class allInstVarNamesEverywhere.
 	usedNames removeAllFoundIn: self class instVarNames.
 	usedNames addAll: takenNames.
-	okBase _ Utilities wellFormedInstanceVariableNameFrom: aString.
+	okBase _ Scanner wellFormedInstanceVariableNameFrom: aString.
 
 	uniqueName _ Utilities keyLike: okBase satisfying: 
 		[:aKey | (usedNames includes: aKey) not].

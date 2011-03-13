@@ -1,1 +1,0 @@
-WordNet class instanceVariableNames: ''

@@ -1,2 +1,0 @@
-isRadioButtonSetInput
-	^false

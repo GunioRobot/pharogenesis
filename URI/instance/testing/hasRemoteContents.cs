@@ -1,0 +1,2 @@
+hasRemoteContents
+	self halt

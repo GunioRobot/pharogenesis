@@ -3,8 +3,8 @@ processMIDIEventsAtTick: scoreTick
 
 	| j evt |
 	1 to: score tracks size do: [:i |
-		j _ trackEventIndex at: i.
-		[evt _ score eventForTrack: i after: j ticks: scoreTick.
+		j := trackEventIndex at: i.
+		[evt := score eventForTrack: i after: j ticks: scoreTick.
 		 evt ~~ nil] whileTrue: [
 			evt isNoteEvent
 				ifTrue: [
@@ -12,6 +12,6 @@ processMIDIEventsAtTick: scoreTick
 						evt startNoteOnMidiPort: midiPort.
 						activeMIDINotes add: (Array with: evt with: i)]]
 				ifFalse: [evt outputOnMidiPort: midiPort].
-			j _ j + 1.
+			j := j + 1.
 			trackEventIndex at: i put: j]].
 	self turnOffActiveMIDINotesAt: scoreTick.

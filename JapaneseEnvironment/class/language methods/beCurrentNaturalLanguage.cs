@@ -1,4 +1,0 @@
-beCurrentNaturalLanguage
-
-	super beCurrentNaturalLanguage.
-	Preferences restoreDefaultFontsForJapanese.

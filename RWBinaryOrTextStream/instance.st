@@ -1,6 +1,6 @@
 ReadWriteStream
 	subclass: #RWBinaryOrTextStream
-	instanceVariableNames: 'isBinary '
+	instanceVariableNames: 'isBinary'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Collections-Streams'

@@ -4,6 +4,6 @@ startOver
 	stream reopen; binary.
 	self readHeader.
 	stream position: audioDataStart.
-	leftoverSamples _ SoundBuffer new.
-	lastBufferMSecs _ 0.
-	mutex _ Semaphore forMutualExclusion.
+	leftoverSamples := SoundBuffer new.
+	lastBufferMSecs := 0.
+	mutex := Semaphore forMutualExclusion.

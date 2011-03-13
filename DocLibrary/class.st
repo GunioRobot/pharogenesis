@@ -1,1 +1,0 @@
-DocLibrary class instanceVariableNames: ''

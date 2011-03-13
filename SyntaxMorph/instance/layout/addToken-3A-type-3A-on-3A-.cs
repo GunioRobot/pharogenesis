@@ -32,7 +32,7 @@ addToken: aString type: aColorOrSymbol on: aNode
 			font: (self fontToUseForSpecialWord: modifiedString).
 	].
 	(#(keyword2 unary assignmentArrow methodHeader1 methodHeader2) includes: aColorOrSymbol) ifTrue: [
-		sMorph emphasis: 1.
+		sMorph emphasis: TextEmphasis bold emphasisCode.
 	].
 	aColorOrSymbol == #blockarg1 ifTrue: [
 	].

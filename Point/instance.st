@@ -1,6 +1,6 @@
 Object
 	subclass: #Point
-	instanceVariableNames: 'x y '
+	instanceVariableNames: 'x y'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Graphics-Primitives'

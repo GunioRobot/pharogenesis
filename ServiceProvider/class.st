@@ -1,0 +1,1 @@
+ServiceProvider class instanceVariableNames: ''

@@ -1,6 +1,6 @@
 Path
 	subclass: #Spline
-	instanceVariableNames: 'coefficients '
+	instanceVariableNames: 'coefficients'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'ST80-Paths'

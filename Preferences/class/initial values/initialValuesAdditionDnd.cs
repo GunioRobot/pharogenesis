@@ -1,2 +1,0 @@
-initialValuesAdditionDnd
-	^ #( (dragNDropWithAnimation false (browsing ) ) )

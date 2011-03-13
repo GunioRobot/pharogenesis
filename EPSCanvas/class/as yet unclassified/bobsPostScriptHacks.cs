@@ -1,3 +1,0 @@
-bobsPostScriptHacks
-
-	^true

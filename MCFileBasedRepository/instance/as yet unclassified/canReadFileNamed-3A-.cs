@@ -1,4 +1,4 @@
 canReadFileNamed: aString
 	| reader |
-	reader _ MCVersionReader readerClassForFileNamed: aString.
+	reader := MCVersionReader readerClassForFileNamed: aString.
 	^ reader notNil

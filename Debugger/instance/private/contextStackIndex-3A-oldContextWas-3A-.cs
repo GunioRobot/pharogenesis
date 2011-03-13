@@ -1,7 +1,7 @@
 contextStackIndex: anInteger oldContextWas: oldContext 
 	"Change the context stack index to anInteger, perhaps in response to user selection."
 
-	| newMethod |
+	| newMethod c |
 	contextStackIndex := anInteger.
 	anInteger = 0
 		ifTrue: [currentCompiledMethod := theMethodNode := tempNames := sourceMap := contents := nil.
@@ -9,7 +9,7 @@ contextStackIndex: anInteger oldContextWas: oldContext
 			self decorateButtons.
 			self contentsChanged.
 			contextVariablesInspector object: nil.
-			receiverInspector object: self receiver.
+			self receiverInspectorObject: self receiver context: nil.
 			^ self].
 	(newMethod := oldContext == nil
 					or: [oldContext method ~~ (currentCompiledMethod := self selectedContext method)])
@@ -25,7 +25,7 @@ contextStackIndex: anInteger oldContextWas: oldContext
 	self decorateButtons.
 	tempNames == nil
 		ifTrue: [tempNames := self selectedClassOrMetaClass parserClass new parseArgsAndTemps: contents notifying: nil].
-	contextVariablesInspector object: self selectedContext.
-	receiverInspector object: self receiver.
+	contextVariablesInspector object: (c _ self selectedContext).
+	self receiverInspectorObject: self receiver context: c.
 	newMethod
 		ifFalse: [self changed: #contentsSelection]

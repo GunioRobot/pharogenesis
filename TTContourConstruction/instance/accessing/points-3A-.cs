@@ -1,2 +1,2 @@
 points: anArray
-	points _ anArray asArray.
+	points := anArray asArray.

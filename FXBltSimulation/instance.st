@@ -1,8 +1,0 @@
-InterpreterPlugin
-	subclass: #FXBltSimulation
-	instanceVariableNames:
-		'bitBltOop destForm sourceForm halftoneForm combinationRule destX destY sourceX sourceY width height clipX clipY clipWidth clipHeight destBits destWidth destHeight destDepth destPitch destPPW destMSB destIndex destDelta sourceBits sourceWidth sourceHeight sourceDepth sourcePitch sourcePPW sourceMSB sourceIndex sourceDelta noColorMap colorMap cmMask cmShiftTable cmMaskTable noDestMap destMap dmMask dmShiftTable dmMaskTable noSourceMap sourceMap smMask smShiftTable smMaskTable tallyMap tallyMapSize sourceAlpha sourceAlphaKey destAlphaKey srcKeyMode dstKeyMode bitCount skew mask1 mask2 preload nWords destMask hDir vDir sx sy dx dy bbW bbH halftoneHeight noSource noHalftone halftoneBase srcBitShift dstBitShift pixelDepth cmCache affectedL affectedR affectedT affectedB opTable maskTable ditherMatrix4x4 ditherThresholds16 ditherValues16 hasSurfaceLock noWarp warpQuad warpQuality warpSrcShift warpSrcMask warpAlignShift warpAlignMask warpBitShiftTable unlockSurfaceFn querySurfaceFn lockSurfaceFn '
-	classVariableNames:
-		'AllOnes AlphaIndex BBClipHeightIndex BBClipWidthIndex BBClipXIndex BBClipYIndex BBColorMapIndex BBDestFormIndex BBDestXIndex BBDestYIndex BBHalftoneFormIndex BBHeightIndex BBRuleIndex BBSourceFormIndex BBSourceXIndex BBSourceYIndex BBWidthIndex BinaryPoint BlueIndex ColorCacheMask ColorCacheSize FXDestKeyIndex FXDestMapIndex FXSourceAlphaIndex FXSourceKeyIndex FXSourceMapIndex FXTallyMapIndex FXWarpQuadIndex FXWarpQualityIndex FixedPt1 FormBitsIndex FormDepthIndex FormHeightIndex FormWidthIndex GreenIndex InvalidColorCacheEntry OpTable OpTableSize RedIndex '
-	poolDictionaries: ''
-	category: 'Graphics-FXBlt'

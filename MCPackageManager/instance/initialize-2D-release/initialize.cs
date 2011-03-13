@@ -1,3 +1,3 @@
 initialize
-	modified _ false.
+	modified := false.
 	self registerForNotifications.

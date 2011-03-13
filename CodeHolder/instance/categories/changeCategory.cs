@@ -3,8 +3,8 @@ changeCategory
 	and let the user choose a new category for the current message"
 
 	| aClass aSelector |
-	(aClass _ self selectedClassOrMetaClass) ifNotNil:
-		[(aSelector _ self selectedMessageName) ifNotNil:
+	(aClass := self selectedClassOrMetaClass) ifNotNil:
+		[(aSelector := self selectedMessageName) ifNotNil:
 			[(self letUserReclassify: aSelector in: aClass) ifTrue:
 				["ChangeSet current reorganizeClass: aClass."
 				"Decided on further review that the above, when present, could cause more

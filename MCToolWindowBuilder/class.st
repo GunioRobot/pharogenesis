@@ -1,0 +1,1 @@
+MCToolWindowBuilder class instanceVariableNames: ''

@@ -1,0 +1,1 @@
+AppRegistry class instanceVariableNames: 'registeredClasses default'

@@ -5,8 +5,7 @@ hasInstVarRef
 
 	home ifNil: [^false].
 	method _ self method.
-	"Determine end of block from long jump preceding it"
-	end _ (method at: startpc-2)\\16-4*256 + (method at: startpc-1) + startpc - 1.
+	end _ self endPC.
 	scanner _ InstructionStream new method: method pc: startpc.
 	printer _ InstVarRefLocator new.
 

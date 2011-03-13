@@ -1,0 +1,2 @@
+releaseParagraph
+	textMorph releaseParagraph 

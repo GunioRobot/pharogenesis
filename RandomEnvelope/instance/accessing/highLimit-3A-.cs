@@ -1,3 +1,3 @@
 highLimit: aNumber
 
-	highLimit _ aNumber.
+	highLimit := aNumber.

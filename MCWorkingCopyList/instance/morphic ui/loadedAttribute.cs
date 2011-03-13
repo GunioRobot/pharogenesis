@@ -1,2 +1,0 @@
-loadedAttribute
-	^ TextEmphasis narrow

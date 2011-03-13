@@ -6,7 +6,7 @@ canInstall: aPackage
 	((Smalltalk includesKey: #MCMczReader) or: [
 		 Smalltalk includesKey: #MczInstaller])
 			ifTrue: [
-				fileName _ aPackage downloadFileName.
+				fileName := aPackage downloadFileName.
 				fileName ifNil: [^false].
 				^ 'mcz' = (FileDirectory extensionFor: fileName) asLowercase].
 	^false

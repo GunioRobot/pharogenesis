@@ -12,9 +12,9 @@ readContentsHex: brevity
 
 	s := WriteStream on: (String new: data size*4).
 	0 to: data size-1 by: 16 do:
-		[:loc | s nextPutAll: loc hex; space;
+		[:loc | s nextPutAll: loc printStringHex; space;
 			nextPut: $(; print: loc; nextPut: $); space; tab.
-		loc+1 to: (loc+16 min: data size) do: [:i | s nextPutAll: (data at: i) hex; space].
+		loc+1 to: (loc+16 min: data size) do: [:i | s nextPutAll: (data at: i) printStringHex; space].
 		s cr].
 	hexData := s contents.
 

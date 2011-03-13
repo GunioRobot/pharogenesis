@@ -1,3 +1,0 @@
-recompile
-
-	self on: source

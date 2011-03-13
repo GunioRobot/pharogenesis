@@ -3,7 +3,7 @@ toggleDecompile
 
 	| wasShowing |
 	self okToChange ifTrue:
-		[wasShowing _ self showingDecompile.
+		[wasShowing := self showingDecompile.
 		self restoreTextualCodingPane.
 		self showDecompile: wasShowing not.
 		self setContentsToForceRefetch.

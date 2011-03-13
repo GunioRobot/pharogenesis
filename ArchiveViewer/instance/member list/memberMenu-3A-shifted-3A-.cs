@@ -13,7 +13,7 @@ memberMenu: menu shifted: shifted
 			add: 'Comment member' target: self selector: #commentMember;
 			balloonTextForLastItem: 'Add a comment for the selected member';
 			addLine.
-		services _ FileList itemsForFile: member fileName.
+		services := FileList itemsForFile: member fileName.
 		menu addServices2: services for: self extraLines: #().
 	].
 

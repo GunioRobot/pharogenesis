@@ -5,7 +5,7 @@ objectForDataStream: refStrm
 
 	"try to write reference for me"
 	^ DiskProxy 
-		global: #ChangeSorter
+		global: #ChangeSet
 		selector: #existingOrNewChangeSetNamed: 
 		args: (Array with: self name)
 "===

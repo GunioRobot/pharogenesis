@@ -1,5 +1,0 @@
-This class provides the abstract super class for the original String (that represents an array of 8-bit Characters) and MultiString (that represents an array of  32-bit MultiCharacters).  In the similar manner of LargeInteger and SmallInteger, those subclasses are chosen accordingly for a string; namely as long as the system can figure out so, the String is used to represent the given string.
-
-	The methods of this class were copied from String. Most of the methods only use #at: and #at:put: to access the elements and don't care about the actual type, so they work ok with proper accessors to the slots.
-
-	Some of the methods of this class call #subclassResponsibility, and some other provides the default behavior and MultiString overrides the default behavior.  Probably there should be a clearer organization in this regard.

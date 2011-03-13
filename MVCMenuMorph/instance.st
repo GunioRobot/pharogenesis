@@ -1,6 +1,6 @@
 MenuMorph
 	subclass: #MVCMenuMorph
-	instanceVariableNames: 'done mvcSelection '
+	instanceVariableNames: 'done mvcSelection'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Menus'

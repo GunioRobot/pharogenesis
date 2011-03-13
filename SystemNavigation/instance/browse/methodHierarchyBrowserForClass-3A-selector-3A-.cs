@@ -7,6 +7,7 @@ methodHierarchyBrowserForClass: aClass selector: sel
 	
 	| list tab stab aClassNonMeta isMeta theClassOrMeta |
 	aClass ifNil: [^ self].
+	aClass isTrait ifTrue: [^ self].
 	sel ifNil: [^ self].
 	aClassNonMeta _ aClass theNonMetaClass.
 	isMeta _ aClassNonMeta ~~ aClass.

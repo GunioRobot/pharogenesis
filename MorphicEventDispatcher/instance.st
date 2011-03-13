@@ -1,6 +1,6 @@
 Object
 	subclass: #MorphicEventDispatcher
-	instanceVariableNames: 'lastType lastDispatch '
+	instanceVariableNames: 'lastType lastDispatch'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Events'

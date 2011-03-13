@@ -1,2 +1,0 @@
-referencesGlobalStructIncrementBy: value
-	globalStructureBuildMethodHasFoo _ globalStructureBuildMethodHasFoo + value.

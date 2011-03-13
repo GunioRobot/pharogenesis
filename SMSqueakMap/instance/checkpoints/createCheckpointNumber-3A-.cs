@@ -8,16 +8,16 @@ createCheckpointNumber: number
 	I didn't bother."
 
 	| is fname stream oldMutex |
-	fname _ self filename, '.', number asString, '.s'.
+	fname := self filename, '.', number asString, '.s'.
 	(self directory fileExists: fname) ifTrue: [self error: 'Checkpoint already exists!'].
-	stream _ StandardFileStream newFileNamed: (self directory fullNameFor: fname).
-	checkpointNumber _ number.
-	oldMutex _ mutex.
-	mutex _ nil. self clearCaches.
-	[is _ ImageSegment new.
+	stream := StandardFileStream newFileNamed: (self directory fullNameFor: fname).
+	checkpointNumber := number.
+	oldMutex := mutex.
+	mutex := nil. self clearCaches.
+	[is := ImageSegment new.
 	is copyFromRoots: (Array with: self) sizeHint: 1000000 areUnique: true.
 	is writeForExportOn: stream.
 	self compressFile: (StandardFileStream oldFileNamed: (self directory fullNameFor: fname)).
-	isDirty _ false]
-		ensure: [mutex _ oldMutex].
+	isDirty := false]
+		ensure: [mutex := oldMutex].
 	^is

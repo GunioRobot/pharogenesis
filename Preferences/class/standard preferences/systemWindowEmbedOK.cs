@@ -1,2 +1,0 @@
-systemWindowEmbedOK
-	^ self valueOfFlag: #systemWindowEmbedOK

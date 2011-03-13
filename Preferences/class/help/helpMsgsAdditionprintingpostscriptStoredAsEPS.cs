@@ -1,2 +1,0 @@
-helpMsgsAdditionprintingpostscriptStoredAsEPS
-	^ #((postscriptStoredAsEPS 'When printing a morph as PostScript, offers the choice of (true) an EPS file suitable for incorporating in a larger job or (false) a DSC file that is a standalone file' ) )

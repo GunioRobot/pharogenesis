@@ -1,2 +1,2 @@
 localBounds
-	^localBounds ifNil:[localBounds _ self transform globalBoundsToLocal: self bounds]
+	^localBounds ifNil:[localBounds := self transform globalBoundsToLocal: self bounds]

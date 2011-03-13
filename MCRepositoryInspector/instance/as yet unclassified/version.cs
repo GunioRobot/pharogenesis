@@ -1,2 +1,2 @@
 version
-	^ version ifNil: [version _ repository versionWithInfo: selectedVersion]
+	^ version ifNil: [version := repository versionWithInfo: selectedVersion]

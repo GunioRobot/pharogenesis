@@ -1,2 +1,0 @@
-asInteger: aChar
-	^aChar 

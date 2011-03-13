@@ -1,1 +1,0 @@
-This class implements a cube with individually colored faces. This example demonstrates how geometric entities that cannot easily be represented by a mesh are implemented by dedicated classes.  

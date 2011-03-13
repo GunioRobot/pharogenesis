@@ -1,2 +1,0 @@
-crossedEdge
-	^crossedEdge

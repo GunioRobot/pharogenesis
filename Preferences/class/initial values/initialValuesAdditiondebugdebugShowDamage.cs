@@ -1,2 +1,0 @@
-initialValuesAdditiondebugdebugShowDamage
-	^ #((debugShowDamage false (debug ) ) )

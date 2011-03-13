@@ -1,3 +1,0 @@
-initialColor
-
-	^Color red lighter

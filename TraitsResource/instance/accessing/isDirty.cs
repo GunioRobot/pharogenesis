@@ -1,0 +1,2 @@
+isDirty
+	^dirty

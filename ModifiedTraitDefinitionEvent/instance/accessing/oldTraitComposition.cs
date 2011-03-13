@@ -1,0 +1,2 @@
+oldTraitComposition
+	^ oldItem traitComposition

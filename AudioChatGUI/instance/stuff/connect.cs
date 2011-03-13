@@ -1,8 +1,8 @@
 connect
 
-	mytargetip _ FillInTheBlank 
+	mytargetip := FillInTheBlank 
 		request: 'Connect to?' 
 		initialAnswer: (mytargetip ifNil: ['']).
-	mytargetip _ NetNameResolver stringFromAddress: (
-		(NetNameResolver addressFromString: mytargetip) ifNil: [^mytargetip _ '']
+	mytargetip := NetNameResolver stringFromAddress: (
+		(NetNameResolver addressFromString: mytargetip) ifNil: [^mytargetip := '']
 	)

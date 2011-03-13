@@ -1,2 +1,0 @@
-dismissAllOnOptionClose
-	^ self valueOfFlag: #dismissAllOnOptionClose

@@ -1,0 +1,3 @@
+readoutPlayer
+
+	^ self.

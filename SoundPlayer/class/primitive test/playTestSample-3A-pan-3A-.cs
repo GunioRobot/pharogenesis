@@ -9,17 +9,17 @@ playTestSample: s pan: pan
 				whileFalse. "wait for space to be available"
 			self primSoundPlaySamples: Buffer stereoSampleCount from: Buffer startingAt: 1.
 			Buffer primFill: 0.
-			BufferIndex _ 1].
+			BufferIndex := 1].
 
-	sample _ s.
-	sample >  32767 ifTrue: [ sample _  32767 ]. 
-	sample < -32767 ifTrue: [ sample _ -32767 ].
+	sample := s.
+	sample >  32767 ifTrue: [ sample :=  32767 ]. 
+	sample < -32767 ifTrue: [ sample := -32767 ].
 
 	Stereo
 		ifTrue: [
-			leftSample _ (sample * pan) // 1000.
+			leftSample := (sample * pan) // 1000.
 			Buffer at: BufferIndex		put: sample - leftSample.
 			Buffer at: BufferIndex + 1	put: leftSample]
 		ifFalse: [
 			Buffer at: BufferIndex + 1 put: sample].
-	BufferIndex _ BufferIndex + 2.
+	BufferIndex := BufferIndex + 2.

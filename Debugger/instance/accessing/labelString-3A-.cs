@@ -1,3 +1,3 @@
 labelString: aString
-	labelString _ aString.
+	labelString := aString.
 	self changed: #relabel

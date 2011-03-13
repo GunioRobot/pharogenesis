@@ -4,7 +4,7 @@ recent
 	 : dont fall into debugger in empty case"
 
 	| className class recentList |
-	recentList _ RecentClasses select: [:n | Smalltalk includesKey: n].
+	recentList := RecentClasses select: [:n | Smalltalk includesKey: n].
 	recentList size == 0 ifTrue: [^ Beeper beep].
 	className := (SelectionMenu selections: recentList) startUp.
 	className == nil ifTrue: [^ self].

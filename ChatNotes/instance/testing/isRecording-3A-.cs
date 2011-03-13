@@ -1,5 +1,5 @@
 isRecording: aBoolean
 	
 	isRecording = aBoolean ifTrue: [^self].
-	isRecording _ aBoolean.
+	isRecording := aBoolean.
 	self changed: #isRecording	

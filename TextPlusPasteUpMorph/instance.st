@@ -1,6 +1,6 @@
 PasteUpMorph
 	subclass: #TextPlusPasteUpMorph
-	instanceVariableNames: 'theTextMorph showPageBreaks '
+	instanceVariableNames: 'theTextMorph showPageBreaks'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-GeeMail'
+	category: 'MorphicExtras-GeeMail'

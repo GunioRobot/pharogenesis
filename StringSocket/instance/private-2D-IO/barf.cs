@@ -1,4 +1,0 @@
-barf
-
-	self halt.
-	

@@ -1,6 +1,6 @@
 ImageMorph
 	subclass: #MovieFrameSyncMorph
-	instanceVariableNames: 'moviePlayerMorph frameNumber '
-	classVariableNames: 'ColorIndex '
+	instanceVariableNames: 'moviePlayerMorph frameNumber'
+	classVariableNames: 'ColorIndex'
 	poolDictionaries: ''
-	category: 'Morphic-Demo'
+	category: 'Movies-Player'

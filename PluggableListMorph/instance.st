@@ -1,7 +1,7 @@
 ScrollPane
 	subclass: #PluggableListMorph
 	instanceVariableNames:
-		'list selectedMorph selection getListSelector getIndexSelector setIndexSelector keystrokeActionSelector autoDeselect font lastKeystrokeTime lastKeystrokes lastClickTime doubleClickSelector potentialDropMorph '
+		'list getListSelector getListSizeSelector getListElementSelector getIndexSelector setIndexSelector keystrokeActionSelector autoDeselect lastKeystrokeTime lastKeystrokes lastClickTime doubleClickSelector handlesBasicKeys potentialDropRow listMorph hScrollRangeCache'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Windows'
+	category: 'Morphic-Pluggable Widgets'

@@ -1,6 +1,6 @@
 FormView
 	subclass: #FormInspectView
-	instanceVariableNames: 'offset '
+	instanceVariableNames: 'offset'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'ST80-Views'

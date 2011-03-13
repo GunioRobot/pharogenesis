@@ -1,7 +1,7 @@
 Object
 	subclass: #Command
 	instanceVariableNames:
-		'phase cmdWording undoTarget undoSelector undoArguments redoTarget redoSelector redoArguments parameters '
+		'phase cmdWording undoTarget undoSelector undoArguments redoTarget redoSelector redoArguments parameters'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Undo'
+	category: 'MorphicExtras-Undo'

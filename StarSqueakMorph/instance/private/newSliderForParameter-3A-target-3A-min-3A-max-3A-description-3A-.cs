@@ -1,13 +1,13 @@
 newSliderForParameter: parameter target: target min: min max: max description: description
 
 	| c slider r s |
-	c _ (AlignmentMorph newColumn)
+	c := (AlignmentMorph newColumn)
 		color: Color lightBlue;
 		borderWidth: 2;
 		hResizing: #shrinkWrap;
 		vResizing: #shrinkWrap;
 		useRoundedCorners.
-	slider _ SimpleSliderMorph new
+	slider := SimpleSliderMorph new
 		color: (Color r: 0.065 g: 0.548 b: 0.645);
 		extent: 150@2;
 		target: target;
@@ -16,13 +16,13 @@ newSliderForParameter: parameter target: target min: min max: max description: d
 		maxVal: max;
 		adjustToValue: (target perform: parameter asSymbol).
 	c addMorphBack: slider.
-	r _ (AlignmentMorph newRow)
+	r := (AlignmentMorph newRow)
 		color: Color lightBlue;
 		hResizing: #spaceFill;
 		vResizing: #spaceFill.
-	s _ StringMorph new contents: parameter, ': '.
+	s := StringMorph new contents: parameter, ': '.
 	r addMorphBack: s.
-	s _ UpdatingStringMorph new
+	s := UpdatingStringMorph new
 		target: target;
 		getSelector: parameter asSymbol;
 		putSelector: (parameter, ':') asSymbol;

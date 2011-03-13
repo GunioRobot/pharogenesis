@@ -1,2 +1,2 @@
 directory: dirPath
-	directory _ dirPath
+	directory := dirPath

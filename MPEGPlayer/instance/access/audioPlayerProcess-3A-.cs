@@ -1,2 +1,2 @@
 audioPlayerProcess: aProcess
-	audioPlayerProcess _ aProcess
+	audioPlayerProcess := aProcess

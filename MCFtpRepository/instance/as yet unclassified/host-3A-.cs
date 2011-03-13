@@ -1,2 +1,2 @@
 host: hostname
-	host _ hostname
+	host := hostname

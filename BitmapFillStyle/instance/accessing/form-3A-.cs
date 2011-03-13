@@ -1,2 +1,2 @@
 form: aForm
-	form _ aForm
+	form := aForm

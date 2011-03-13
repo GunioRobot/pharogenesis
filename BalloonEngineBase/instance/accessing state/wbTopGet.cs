@@ -1,2 +1,0 @@
-wbTopGet
-	^workBuffer at: GWBufferTop

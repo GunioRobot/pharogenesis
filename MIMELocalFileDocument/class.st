@@ -1,0 +1,1 @@
+MIMELocalFileDocument class instanceVariableNames: ''

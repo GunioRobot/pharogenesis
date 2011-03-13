@@ -1,6 +1,6 @@
 openOn: aFile
 	"Open the receiver."
-	segmentFile _ aFile.
+	segmentFile := aFile.
 	segmentFile binary.
 	segmentFile size > 0
 	ifTrue:

@@ -14,7 +14,7 @@ allMethodsInCategory: aCategoryName forInstance: anObject ofClass: aClass
 		ifTrue:
 			[methodInterfaces collect: [:anInterface | anInterface selector]]
 		ifFalse:
-			[aCategory _ categories detect: [:cat | cat categoryName == aCategoryName] 
+			[aCategory _ categories detect: [:cat | cat categoryName = aCategoryName] 
 							ifNone: [^ OrderedCollection new].
 			aCategory elementsInOrder collect: [:anElement | anElement selector]].
 

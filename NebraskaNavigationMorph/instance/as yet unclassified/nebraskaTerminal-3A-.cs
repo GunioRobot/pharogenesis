@@ -1,3 +1,3 @@
 nebraskaTerminal: aNebraskaTerminal
 
-	nebraskaTerminal _ aNebraskaTerminal
+	nebraskaTerminal := aNebraskaTerminal

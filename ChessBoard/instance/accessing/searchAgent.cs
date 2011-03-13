@@ -1,2 +1,0 @@
-searchAgent
-	^searchAgent

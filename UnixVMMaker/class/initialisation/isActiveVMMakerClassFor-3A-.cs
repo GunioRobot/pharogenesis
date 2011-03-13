@@ -1,3 +1,0 @@
-isActiveVMMakerClassFor: platformName
-
-	^platformName = 'unix'

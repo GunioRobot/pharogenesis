@@ -5,9 +5,9 @@ toggleColorPrint
 	self okToChange ifTrue:
 		[self showingColorPrint
 			ifTrue:
-				[contentsSymbol _ #source]
+				[contentsSymbol := #source]
 			ifFalse:
-				[contentsSymbol _ #colorPrint].
+				[contentsSymbol := #colorPrint].
 		self setContentsToForceRefetch.
 		self contentsChanged]
 

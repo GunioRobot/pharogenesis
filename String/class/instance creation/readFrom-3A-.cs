@@ -3,7 +3,7 @@ readFrom: inStream
 	inStream. Embedded double quotes become the quote Character."
 
 	| outStream char done |
-	outStream _ WriteStream on: (String new: 16).
+	outStream _ WriteStream on: (self new: 16).
 	"go to first quote"
 	inStream skipTo: $'.
 	done _ false.

@@ -1,10 +1,10 @@
 reverseBits: code length: length
 	"Bit reverse the given code"
 	| result bit bits |
-	result _ 0.
-	bits _ code.
+	result := 0.
+	bits := code.
 	1 to: length do:[:i|
-		bit _ bits bitAnd: 1.
-		result _ result << 1 bitOr: bit.
-		bits _ bits >> 1].
+		bit := bits bitAnd: 1.
+		result := result << 1 bitOr: bit.
+		bits := bits >> 1].
 	^result

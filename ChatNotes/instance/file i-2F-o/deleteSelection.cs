@@ -3,7 +3,7 @@ deleteSelection
 	| dir |
 
 	notesIndex <= 0 ifTrue: [^self].
-	dir _ self audioDirectory.
+	dir := self audioDirectory.
 	dir deleteFileNamed: ((notes at: notesIndex), 'name') ifAbsent: [].
 	dir deleteFileNamed: ((notes at: notesIndex), 'aiff') ifAbsent: [].
 	names removeAt: notesIndex.

@@ -3,4 +3,4 @@ make: newURLString relativeTo: oldURLString
 	^((oldURLString includesSubString: '://') not
 		and: [(newURLString includesSubString: '://') not])
 		ifTrue: [oldURLString , (UnixFileDirectory localNameFor: newURLString)]
-		ifFalse: [(newURLString asUrlRelativeTo: oldURLString asUrl) toText]
+		ifFalse: [(newURLString asUrlRelativeTo: oldURLString asUrl) asString]

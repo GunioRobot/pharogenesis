@@ -1,3 +1,0 @@
-balloonDetailsText
-
-	^self class balloonDetailsText

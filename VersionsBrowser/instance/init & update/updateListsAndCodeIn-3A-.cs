@@ -1,6 +1,6 @@
 updateListsAndCodeIn: aWindow
 	| aMethod |
-	aMethod _ classOfMethod compiledMethodAt: selectorOfMethod ifAbsent: [^ false].
+	aMethod := classOfMethod compiledMethodAt: selectorOfMethod ifAbsent: [^ false].
 	aMethod == currentCompiledMethod
 		ifFalse:
 			["Do not attempt to formulate if there is no source pointer.

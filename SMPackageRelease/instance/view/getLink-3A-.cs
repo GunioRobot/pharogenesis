@@ -1,6 +1,4 @@
 getLink: aBuilder
+	"Return a link for using on the web."
 
-	^aBuilder
-		getLinkLocal: '/package/', self package id asString, '/autoversion/',
-					self automaticVersion versionString
-		text: self packageNameWithVersion
+	^self getLink: aBuilder view: aBuilder view

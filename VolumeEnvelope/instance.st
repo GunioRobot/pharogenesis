@@ -1,6 +1,6 @@
 Envelope
 	subclass: #VolumeEnvelope
-	instanceVariableNames: 'currentVol targetVol mSecsForChange '
+	instanceVariableNames: 'currentVol targetVol mSecsForChange'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Sound-Synthesis'

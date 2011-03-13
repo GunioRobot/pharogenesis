@@ -1,2 +1,0 @@
-fieldOfView
-	^fieldOfView

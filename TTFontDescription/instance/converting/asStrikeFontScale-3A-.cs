@@ -2,7 +2,7 @@ asStrikeFontScale: scale
 	"Generate a StrikeFont (actually a FormSetFont) for this TTF font at a given scale."
 
 	| forms |
-	forms _ (0 to: 255) collect:
+	forms := (0 to: 255) collect:
 		[:i |
 		(self at: i)
 			asFormWithScale: scale

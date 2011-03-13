@@ -1,7 +1,6 @@
 StringHolder
 	subclass: #ChatNotes
-	instanceVariableNames:
-		'name notesIndex names notes recorder player sound isPlaying isRecording isSaving nameTextMorph '
+	instanceVariableNames: 'name notesIndex names notes recorder player sound isPlaying isRecording isSaving nameTextMorph'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Audio-Chat'
+	category: 'Nebraska-Audio Chat'

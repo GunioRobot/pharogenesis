@@ -1,0 +1,2 @@
+purgeUndoRecords
+	 CommandHistory resetAllHistory

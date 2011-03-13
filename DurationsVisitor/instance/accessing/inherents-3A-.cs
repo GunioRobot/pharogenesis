@@ -1,2 +1,2 @@
 inherents: aDictionary
-	inherents _ aDictionary
+	inherents := aDictionary

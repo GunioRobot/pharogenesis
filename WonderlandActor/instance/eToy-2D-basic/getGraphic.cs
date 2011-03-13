@@ -1,2 +1,0 @@
-getGraphic
-	^ self graphic

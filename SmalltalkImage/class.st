@@ -1,0 +1,1 @@
+SmalltalkImage class instanceVariableNames: 'current'

@@ -2,18 +2,18 @@ unloopedSamples: aSoundBuffer pitch: perceivedPitchInHz samplingRate: samplingRa
 	"Make this sound play the given samples unlooped. The samples have the given perceived pitch when played at the given sampling rate. By convention, unpitched sounds such as percussion sounds should specify a pitch of nil or 100 Hz."
 
 	super initialize.
-	leftSamples _ rightSamples _ aSoundBuffer.
-	originalSamplingRate _ samplingRateInHz asFloat.
+	leftSamples := rightSamples := aSoundBuffer.
+	originalSamplingRate := samplingRateInHz asFloat.
 	perceivedPitchInHz
-		ifNil: [perceivedPitch _ 100.0]
-		ifNotNil: [perceivedPitch _ perceivedPitchInHz asFloat].
-	gain _ 1.0.
-	firstSample _ 1.
-	lastSample _ leftSamples size.
+		ifNil: [perceivedPitch := 100.0]
+		ifNotNil: [perceivedPitch := perceivedPitchInHz asFloat].
+	gain := 1.0.
+	firstSample := 1.
+	lastSample := leftSamples size.
 	lastSample >= (SmallInteger maxVal // LoopIndexScaleFactor) ifTrue: [
 		self error: 'cannot handle more than ',
 			(SmallInteger maxVal // LoopIndexScaleFactor) printString, ' samples'].
-	loopEnd _ leftSamples size.
-	scaledLoopLength _ 0.  "zero length means unlooped"
-	scaledIndexIncr _ (samplingRateInHz * LoopIndexScaleFactor) // self samplingRate.
+	loopEnd := leftSamples size.
+	scaledLoopLength := 0.  "zero length means unlooped"
+	scaledIndexIncr := (samplingRateInHz * LoopIndexScaleFactor) // self samplingRate.
 	self computeSampleCountForRelease.

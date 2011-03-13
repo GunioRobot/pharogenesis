@@ -1,0 +1,1 @@
+SimpleServiceEntry class instanceVariableNames: ''

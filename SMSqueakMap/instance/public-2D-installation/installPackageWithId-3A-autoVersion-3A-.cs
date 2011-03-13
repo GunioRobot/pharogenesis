@@ -3,6 +3,6 @@ installPackageWithId: anUUIDString autoVersion: version
 	<version> is the automatic version name."
 
 	| p |
-	p _ self packageWithId: anUUIDString.
+	p := self packageWithId: anUUIDString.
 	p ifNil: [self error: 'No package available with id: ''', anUUIDString, ''''].
 	^self installPackage: p autoVersion: version

@@ -3,17 +3,17 @@ openOnClass: aTargetClass inWorld: aWorld showingSelector: aSelector
 
 	| window aListMorph catListFraction |
 
-	currentVocabulary ifNil: [currentVocabulary _ Vocabulary fullVocabulary].
-	targetClass _ aTargetClass.
+	currentVocabulary ifNil: [currentVocabulary := Vocabulary fullVocabulary].
+	targetClass := aTargetClass.
 	self initialLimitClass.
 	
-	window _ self windowWithLabel: self startingWindowTitle.
+	window := self windowWithLabel: self startingWindowTitle.
 
-	catListFraction _ 0.20.
+	catListFraction := 0.20.
 	
 	window addMorph: self newCategoryPane frame: (0 @ 0 corner: 0.5 @ catListFraction).
 
-	aListMorph _ PluggableListMorph new.
+	aListMorph := PluggableListMorph new.
 	aListMorph 	setProperty: #balloonTextSelectorForSubMorphs toValue: #balloonTextForLexiconString.
 	aListMorph on: self list: #messageList
 			selected: #messageListIndex changeSelected: #messageListIndex:

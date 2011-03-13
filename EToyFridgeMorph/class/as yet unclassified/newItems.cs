@@ -1,3 +1,3 @@
 newItems
 
-	^NewItems ifNil: [NewItems _ OrderedCollection new]
+	^NewItems ifNil: [NewItems := OrderedCollection new]

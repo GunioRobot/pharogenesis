@@ -1,3 +1,0 @@
-errorListSelectionIndex
-
-	^0

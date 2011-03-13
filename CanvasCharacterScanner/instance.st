@@ -1,6 +1,6 @@
 CharacterScanner
 	subclass: #CanvasCharacterScanner
-	instanceVariableNames: 'canvas fillBlt foregroundColor runX lineY '
+	instanceVariableNames: 'canvas fillBlt foregroundColor runX lineY defaultTextColor'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Support'
+	category: 'MorphicExtras-Support'

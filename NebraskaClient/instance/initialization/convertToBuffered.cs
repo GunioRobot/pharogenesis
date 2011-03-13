@@ -1,4 +1,4 @@
 convertToBuffered
 
 	canvas purgeOutputQueue.
-	canvas _ canvas asBufferedCanvas.
+	canvas := canvas asBufferedCanvas.

@@ -1,6 +1,6 @@
-ClassOrganizer
+BasicClassOrganizer
 	subclass: #PseudoClassOrganizer
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Tools-File Contents Browser'
+	category: 'System-FilePackage'

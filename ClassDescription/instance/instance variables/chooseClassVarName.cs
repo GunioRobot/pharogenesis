@@ -15,6 +15,7 @@ chooseClassVarName
 		vars isEmpty ifFalse: [lines add: allVars size]].
 	labelStream contents isEmpty ifTrue: [^Beeper beep]. "handle nil superclass better"
 	labelStream skip: -1 "cut last CR".
+	index _ (UIManager default chooseFrom: (labelStream contents substrings) lines: lines).
 	index _ (PopUpMenu labels: labelStream contents lines: lines) startUp.
 	index = 0 ifTrue: [^ nil].
 	^ allVars at: index

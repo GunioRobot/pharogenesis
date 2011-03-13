@@ -2,7 +2,8 @@ noteClassStructure: aClass
 	"Save the instance variable names of this class and all of its superclasses.  Later we can tell how it changed and write a conversion method.  The conversion method is used when old format objects are brought in from the disk from ImageSegment files (.extSeg) or SmartRefStream files (.obj .morph .bo .sp)."
 
 	| clsName |
-	aClass ifNil: [^ self].
+	aClass isBehavior ifFalse: [^ self].
+	
 	structures ifNil: [structures _ Dictionary new.
 				superclasses _ Dictionary new].
 	clsName _ (aClass name asLowercase beginsWith: 'anobsolete') 

@@ -3,8 +3,8 @@ searchString
 
 	| pane |
 	searchString isEmptyOrNil ifTrue:
-		[searchString _ 'type here, then hit Search'.
-		pane _ self containingWindow findDeepSubmorphThat:
+		[searchString := 'type here, then hit Search'.
+		pane := self containingWindow findDeepSubmorphThat:
 			[:m | m knownName = 'Search'] ifAbsent: ["this happens during window creation" ^ searchString].
 			pane setText: searchString.
 			pane setTextMorphToSelectAllOnMouseEnter.

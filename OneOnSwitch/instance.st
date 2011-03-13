@@ -1,6 +1,6 @@
 Switch
 	subclass: #OneOnSwitch
-	instanceVariableNames: 'connection '
+	instanceVariableNames: 'connection'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Tools-Menus'
+	category: 'ST80-Menus'

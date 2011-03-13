@@ -1,2 +1,0 @@
-stackFillSize
-	^self wbStackSize

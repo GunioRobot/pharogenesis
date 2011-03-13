@@ -1,2 +1,0 @@
-newDeck
-	^self new newDeck

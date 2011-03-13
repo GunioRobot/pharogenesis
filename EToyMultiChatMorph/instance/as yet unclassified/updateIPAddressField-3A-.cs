@@ -1,6 +1,6 @@
 updateIPAddressField: newAddresses
 	
-	targetIPAddresses _ (
+	targetIPAddresses := (
 		newAddresses copyWithout: NetNameResolver localAddressString
 	) 
 		asSet 

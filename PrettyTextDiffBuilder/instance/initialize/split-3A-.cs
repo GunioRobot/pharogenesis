@@ -1,8 +1,10 @@
 split: aString 
-	| formatted |
-	formatted _ sourceClass compilerClass new
-format: aString
+	| formatted trimmed |
+	trimmed := aString asString withBlanksTrimmed.
+	trimmed isEmpty ifTrue: [ ^super split: '' ].
+	formatted := [ sourceClass prettyPrinterClass
+				format: trimmed
 				in: sourceClass
 				notifying: nil
-				decorated: false.
-	^super split: formatted
+				decorated: false ] on: Error do: [ :ex | trimmed ].
+	^ super split: formatted

@@ -1,3 +1,3 @@
 provides: anArray
 
-	provides _ anArray
+	provides := anArray

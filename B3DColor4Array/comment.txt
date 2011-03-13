@@ -1,1 +1,0 @@
-I am an inplace storage area for B3DColor4 items used during lighting and shading.

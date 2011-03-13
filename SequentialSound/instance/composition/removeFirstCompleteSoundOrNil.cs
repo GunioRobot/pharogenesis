@@ -4,6 +4,6 @@ removeFirstCompleteSoundOrNil
 	| firstSound |
 
 	sounds size > 0 ifFalse: [^ nil].
-	firstSound _ sounds first.
-	sounds _ sounds copyFrom: 2 to: sounds size.
+	firstSound := sounds first.
+	sounds := sounds copyFrom: 2 to: sounds size.
 	^firstSound

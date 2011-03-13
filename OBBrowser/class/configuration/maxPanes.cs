@@ -1,0 +1,2 @@
+maxPanes
+	^ self paneCount

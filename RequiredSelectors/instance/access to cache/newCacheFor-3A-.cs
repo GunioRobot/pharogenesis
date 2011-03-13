@@ -1,0 +1,2 @@
+newCacheFor: aClass 
+	^RequirementsCache new

@@ -1,6 +1,6 @@
 Canvas
 	subclass: #RemoteCanvas
-	instanceVariableNames: 'innerClipRect outerClipRect transform connection '
+	instanceVariableNames: 'innerClipRect outerClipRect transform connection shadowColor'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Remote'
+	category: 'Nebraska-Morphic-Remote'

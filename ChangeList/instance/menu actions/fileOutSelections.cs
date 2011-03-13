@@ -1,7 +1,7 @@
 fileOutSelections 
 	| fileName internalStream |
-	fileName _ FillInTheBlank request: 'Enter the base of file name' initialAnswer: 'Filename'.
-	internalStream _ WriteStream on: (String new: 1000).
+	fileName := UIManager default request: 'Enter the base of file name' initialAnswer: 'Filename'.
+	internalStream := WriteStream on: (String new: 1000).
 	internalStream header; timeStamp.
 	listSelections with: changeList do: 
 		[:selected :item | selected ifTrue: [item fileOutOn: internalStream]].

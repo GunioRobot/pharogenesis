@@ -1,0 +1,1 @@
+Latin2Environment class instanceVariableNames: ''

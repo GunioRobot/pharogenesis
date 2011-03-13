@@ -1,2 +1,2 @@
 frameRate: aRate
-	frameRate _ aRate
+	frameRate := aRate

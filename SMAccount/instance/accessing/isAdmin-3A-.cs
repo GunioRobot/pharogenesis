@@ -1,2 +1,2 @@
 isAdmin: aBoolean
-	isAdmin _ aBoolean
+	isAdmin := aBoolean

@@ -3,5 +3,4 @@ clearInstalledPackages
 	Might be good if things get corrupted etc. Also see
 	SMSqueakMap class>>recreateInstalledPackagesFromChangeLog"
 
-	installedPackages _ nil.
-	installCounter _ 0
+	^self registry clearInstalledPackages

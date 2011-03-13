@@ -1,2 +1,0 @@
-doFirstPersonControl
-	^firstPersonControls == true

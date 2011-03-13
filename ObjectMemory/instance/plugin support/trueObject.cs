@@ -1,2 +1,0 @@
-trueObject
-	^trueObj

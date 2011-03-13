@@ -1,0 +1,1 @@
+ScaledDecimal class instanceVariableNames: ''

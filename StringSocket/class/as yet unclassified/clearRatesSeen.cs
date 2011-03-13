@@ -2,4 +2,4 @@ clearRatesSeen
 "
 StringSocket clearRatesSeen
 "
-	MaxRatesSeen _ nil 
+	MaxRatesSeen := nil 

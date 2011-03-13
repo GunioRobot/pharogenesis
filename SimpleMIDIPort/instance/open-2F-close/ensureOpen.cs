@@ -4,5 +4,5 @@ ensureOpen
 	portNumber ifNil: [^ self error: 'Use "openOn:" to open a MIDI port initially'].
 	self primMIDIClosePort: portNumber.
 	self primMIDIOpenPort: portNumber readSemaIndex: 0 interfaceClockRate: InterfaceClockRate.
-	accessSema _ Semaphore forMutualExclusion.
-	lastCommandByteOut _ Array new: 16 withAll: 0.  "clear running status"
+	accessSema := Semaphore forMutualExclusion.
+	lastCommandByteOut := Array new: 16 withAll: 0.  "clear running status"

@@ -5,10 +5,10 @@ doStep
 	| currentContext newContext |
 	self okToChange ifFalse: [^ self].
 	self checkContextSelection.
-	currentContext _ self selectedContext.
-	newContext _ interruptedProcess completeStep: currentContext.
+	currentContext := self selectedContext.
+	newContext := interruptedProcess completeStep: currentContext.
 	newContext == currentContext ifTrue: [
-		newContext _ interruptedProcess stepToSendOrReturn].
+		newContext := interruptedProcess stepToSendOrReturn].
 	self contextStackIndex > 1
 		ifTrue: [self resetContext: newContext]
 		ifFalse: [newContext == currentContext

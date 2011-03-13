@@ -26,7 +26,7 @@ findRogueRootsRefStrm: rootArray
 			"shared #() in submorphs of all Morphs"
 			ok ifTrue: [goodInSeg add: obj]].
 	goodInSeg 
-		do: [:ob | pointIn addAll: (PointerFinder pointersTo: ob except: #())].
+		do: [:ob | pointIn addAll: (Utilities pointersTo: ob except: #())].
 	inSeg do: [:each | pointIn remove: each ifAbsent: []].
 	rootArray do: [:each | pointIn remove: each ifAbsent: []].
 	pointIn remove: inSeg array ifAbsent: [].

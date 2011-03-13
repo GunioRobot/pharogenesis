@@ -1,0 +1,2 @@
+defaultBackgroundColor
+	^ Color gray veryMuchLighter

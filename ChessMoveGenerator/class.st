@@ -1,1 +1,0 @@
-ChessMoveGenerator class instanceVariableNames: ''

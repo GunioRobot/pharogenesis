@@ -1,2 +1,2 @@
 mixFmt: aNumber
-	mixFmt _ aNumber
+	mixFmt := aNumber

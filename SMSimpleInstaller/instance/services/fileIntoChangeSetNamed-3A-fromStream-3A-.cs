@@ -7,7 +7,7 @@ fileIntoChangeSetNamed: aString fromStream: stream
 	newName := aString.
 	changeSet := SMInstaller changeSetNamed: newName.
 	changeSet ifNotNil: [
-		newName := self silent ifNil: [FillInTheBlank
+		newName := self silent ifNil: [UIManager default
 									request: 'ChangeSet already present, just confirm to overwrite or enter a new name:' 
 									initialAnswer: newName]
 						ifNotNil: [newName].

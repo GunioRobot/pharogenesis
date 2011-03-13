@@ -1,2 +1,0 @@
-This is the superclass of all classes that represent geometric entites having a visible representation in a 3d scene.
-Subclasses are required to implement the instance messages boundingBox, and renderOn:. It is desirable that subclasses implement also the transformation protocol of geometric objects.

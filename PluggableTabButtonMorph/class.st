@@ -1,0 +1,1 @@
+PluggableTabButtonMorph class instanceVariableNames: ''

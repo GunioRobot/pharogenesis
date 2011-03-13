@@ -1,1 +1,0 @@
-B3DRenderEngine class instanceVariableNames: ''

@@ -1,5 +1,5 @@
 stepToNext
-		lastX _ lastX + fwDx.
-		lastY _ lastY + fwDy.
-		fwDx _ fwDx + fwDDx.
-		fwDy _ fwDy + fwDDy.
+		lastX := lastX + fwDx.
+		lastY := lastY + fwDy.
+		fwDx := fwDx + fwDDx.
+		fwDy := fwDy + fwDDy.

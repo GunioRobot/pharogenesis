@@ -1,2 +1,2 @@
 player: flashPlayer
-	player _ flashPlayer
+	player := flashPlayer

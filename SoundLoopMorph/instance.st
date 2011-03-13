@@ -1,6 +1,6 @@
 RectangleMorph
 	subclass: #SoundLoopMorph
-	instanceVariableNames: 'samplesUntilNextControl seqSound cursor controlIndex '
+	instanceVariableNames: 'samplesUntilNextControl seqSound cursor controlIndex'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Sound-Interface'
+	category: 'MorphicExtras-SoundInterface'

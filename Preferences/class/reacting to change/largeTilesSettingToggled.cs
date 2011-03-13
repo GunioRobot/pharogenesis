@@ -7,6 +7,6 @@ largeTilesSettingToggled
 				[self inform: 
 'note that this will only have a noticeable
 effect if the universalTiles preference is
-set to true, which it currently is not']
+set to true, which it currently is not' translated]
 			ifTrue:
 				[World recreateScripts]]

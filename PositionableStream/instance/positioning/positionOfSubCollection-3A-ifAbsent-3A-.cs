@@ -8,7 +8,9 @@ positionOfSubCollection: subCollection ifAbsent: exceptionBlock
 	[pattern atEnd] whileFalse: 
 		[self atEnd ifTrue: [^exceptionBlock value].
 		self next = pattern next
-			ifFalse: [pattern reset]].
+			ifFalse: [
+				self position: self position-pattern position+1.
+				pattern reset]].
 	currentPosition := self position.
 	self position: startPosition.
 	^pattern atEnd

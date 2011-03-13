@@ -1,2 +1,0 @@
-fogColor
-	^myCamera getFogColor

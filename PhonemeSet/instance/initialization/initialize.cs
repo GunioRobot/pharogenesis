@@ -1,3 +1,3 @@
 initialize
-	phonemes _ Dictionary new.
-	specials _ Dictionary new
+	phonemes := Dictionary new.
+	specials := Dictionary new

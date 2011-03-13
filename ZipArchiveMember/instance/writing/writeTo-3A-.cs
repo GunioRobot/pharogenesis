@@ -1,6 +1,6 @@
 writeTo: aStream
 	self rewindData.
-	writeLocalHeaderRelativeOffset _ aStream position.
+	writeLocalHeaderRelativeOffset := aStream position.
 	self writeLocalFileHeaderTo: aStream.
 	self writeDataTo: aStream.
 	self refreshLocalFileHeaderTo: aStream.

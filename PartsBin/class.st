@@ -1,0 +1,1 @@
+PartsBin class instanceVariableNames: ''

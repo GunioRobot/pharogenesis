@@ -1,2 +1,0 @@
-faces: aCollection
-	^self shouldNotImplement

@@ -1,4 +1,4 @@
 program: midiProgramChange channel: midiChannel
 
-	program _ midiProgramChange.
-	channel _ midiChannel.
+	program := midiProgramChange.
+	channel := midiChannel.

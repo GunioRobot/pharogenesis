@@ -1,2 +1,2 @@
 host: aString
-	hostname _ aString
+	hostname := aString

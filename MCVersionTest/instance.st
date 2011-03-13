@@ -1,6 +1,6 @@
 MCTestCase
 	subclass: #MCVersionTest
-	instanceVariableNames: 'version'
+	instanceVariableNames: 'version visited'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Monticello-Tests'

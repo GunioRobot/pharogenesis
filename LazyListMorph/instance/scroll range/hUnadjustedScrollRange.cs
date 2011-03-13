@@ -1,21 +1,25 @@
 hUnadjustedScrollRange
-"Ok, this is a bit messed up. We need to return the width of the widest item in the list. If we grab every item in the list, it defeats the purpose of LazyListMorph. If we don't, then we don't know the size. This is a compromise -- if the list is less then 30 items, we grab them all. If not, we grab currently visible ones, until we've checked itemsToCheck of them, then take the max width out of that 'sampling', then double it. If you know a better way, please chime in."
+"Ok, this is a bit messed up. We need to return the width of the widest item in the list. If we grab every item in the list, it defeats the purpose of LazyListMorph. If we don't, then we don't know the size. 
 
-	| maxW count itemsToCheck item |
+This is a compromise -- find the widest of the first 30 items, then double it, This width will be updated as new items are installed, so it will always be correct for the visible items. If you know a better way, please chime in."
 
-	itemsToCheck _ 30.
-	maxW _ 0. 
-	count _ 0.
-	listItems do: 
-		[ :each |
-			each ifNotNil: 
-				[maxW _ maxW max: (self widthToDisplayItem: each contents)]].
-				
-	(count < itemsToCheck) ifTrue:
-		[1 to: listItems size do: 
-			[:i | (listItems at: i) ifNil: 
-							[item _ self item: i.
-							maxW _ maxW max: (self widthToDisplayItem: item contents).
-							((count _ count + 1) > itemsToCheck) ifTrue:[ ^maxW * 2]]]].
-	
-	^maxW 
+	| itemsToCheck item index |
+	"Check for a cached value"
+	maxWidth ifNotNil:[^maxWidth].
+
+	"Compute from scratch"
+	itemsToCheck := 30 min: (listItems size).
+	maxWidth := 0. 
+
+	"Check the first few items to get a representative sample of the rest of the list."
+	index := 1.
+	[index < itemsToCheck] whileTrue:
+		[ item := self getListItem: index. "Be careful not to actually install this item"
+		maxWidth := maxWidth max: (self widthToDisplayItem: item contents).
+		index:= index + 1.
+		].
+
+	"Add some initial fudge if we didn't check all the items."
+	(itemsToCheck < listItems size) ifTrue:[maxWidth := maxWidth*2].
+
+	^maxWidth

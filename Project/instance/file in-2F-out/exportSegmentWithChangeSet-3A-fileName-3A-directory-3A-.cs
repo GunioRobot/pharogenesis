@@ -100,6 +100,7 @@ Debug' translated) startUpWithCaption: str.
 	collector forgetObsolete.
 	self storeResourceList: collector in: fd.
 	self storeHtmlPageIn: fd.
+	self storeManifestFileIn: fd.
 	self writeStackText: stacks in: fd registerIn: collector.
 	"local proj.005.myStack.t"
 	self compressFilesIn: fd to: aFileName in: aDirectory

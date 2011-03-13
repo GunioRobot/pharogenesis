@@ -3,10 +3,10 @@ initialize
 Basic rule is that any char legal for use in filenames will have a non-nil entry in this array; except for space, this is the same character. Space is transcoded to a char 160 to be a 'hard space' "
 "AcornFileDirectory initialize"
 	| aVal |
-	LegalCharMap _ Array new: 256.
+	LegalCharMap := Array new: 256.
 	Character alphabet do:[:c|
 		LegalCharMap at: c asciiValue +1  put: c.
-		LegalCharMap at: (aVal _ c asUppercase) asciiValue +1 put: aVal].
+		LegalCharMap at: (aVal := c asUppercase) asciiValue +1 put: aVal].
 	'`!()-_=+[{]};~,./1234567890' do:[:c|
 			LegalCharMap at: c asciiValue + 1 put: c].
 	LegalCharMap at: Character space asciiValue +1 put: (Character value:160 "hardspace").

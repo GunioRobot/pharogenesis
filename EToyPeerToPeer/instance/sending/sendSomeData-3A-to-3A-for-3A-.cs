@@ -1,6 +1,6 @@
 sendSomeData: arrayOfByteObjects to: anIPAddress for: aCommunicatorMorph
 
-	dataQueue _ self 
+	dataQueue := self 
 		sendSomeData: arrayOfByteObjects 
 		to: anIPAddress 
 		for: aCommunicatorMorph 

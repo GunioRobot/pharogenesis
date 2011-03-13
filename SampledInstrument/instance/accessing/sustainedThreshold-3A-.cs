@@ -1,3 +1,3 @@
 sustainedThreshold: aNumber
 
-	sustainedThreshold _ aNumber asFloat.
+	sustainedThreshold := aNumber asFloat.

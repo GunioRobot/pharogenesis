@@ -3,4 +3,4 @@ FileDirectory
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Files'
+	category: 'Files-Directories'

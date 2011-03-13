@@ -3,5 +3,5 @@ pause
 
 	score pauseFrom: self.
 	super pause.
-	activeSounds _ activeSounds species new.
+	activeSounds := activeSounds species new.
 	midiPort ifNotNil: [self stopMIDIPlaying].

@@ -1,2 +1,0 @@
-includesUnifiedCharacter
-	^false

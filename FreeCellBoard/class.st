@@ -1,1 +1,0 @@
-FreeCellBoard class instanceVariableNames: ''

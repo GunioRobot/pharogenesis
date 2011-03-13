@@ -1,3 +1,0 @@
-patternTextV: aPluggableTextView
-
-	patternTextV := aPluggableTextView.

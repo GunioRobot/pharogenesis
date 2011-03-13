@@ -6,7 +6,7 @@ inspectElement
 				startUpWithCaption: 'Inspect which property?'.
 	key
 		ifNil: [^ self].
-	obj _ self otherProperties
+	obj _ otherProperties
 				at: key
 				ifAbsent: ['nOT a vALuE'].
 	obj = 'nOT a vALuE'

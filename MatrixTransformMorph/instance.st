@@ -1,6 +1,6 @@
 Morph
 	subclass: #MatrixTransformMorph
-	instanceVariableNames: 'transform '
+	instanceVariableNames: 'transform'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon-Geometry'
+	category: 'Morphic-Balloon'

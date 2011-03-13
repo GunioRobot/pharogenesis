@@ -3,4 +3,4 @@ FileDirectoryWrapper
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Tools-Explorer'
+	category: 'Morphic-Explorer'

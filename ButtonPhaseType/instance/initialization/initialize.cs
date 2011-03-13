@@ -3,4 +3,4 @@ initialize
 
 	super initialize.
 	self vocabularyName: #ButtonPhase.
-	symbols _ #(buttonDown whilePressed buttonUp)
+	symbols := #(buttonDown whilePressed buttonUp)

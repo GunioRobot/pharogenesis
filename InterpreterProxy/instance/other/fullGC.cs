@@ -1,2 +1,0 @@
-fullGC
-	Smalltalk garbageCollect.

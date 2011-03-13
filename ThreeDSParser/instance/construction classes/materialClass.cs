@@ -1,2 +1,0 @@
-materialClass
-	^self specAt: #material

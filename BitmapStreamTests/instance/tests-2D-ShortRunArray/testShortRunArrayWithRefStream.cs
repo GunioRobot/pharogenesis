@@ -1,4 +1,4 @@
 testShortRunArrayWithRefStream
-	array _ self createSampleShortRunArray.
+	array := self createSampleShortRunArray.
 	self validateRefStream 
 	

@@ -1,0 +1,1 @@
+ServiceGui class instanceVariableNames: 'bars'

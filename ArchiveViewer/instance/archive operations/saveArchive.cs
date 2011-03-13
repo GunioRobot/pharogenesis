@@ -1,9 +1,9 @@
 saveArchive
 	| result name |
 	self canSaveArchive ifFalse: [ ^self ].
-	result _ StandardFileMenu newFile.
+	result := StandardFileMenu newFile.
 	result ifNil: [ ^self ].
-	name _ result directory fullNameFor: result name.
+	name := result directory fullNameFor: result name.
 	(archive canWriteToFileNamed: name)
 		ifFalse: [ self inform: name, ' is used by one or more members
 in your archive, and cannot be overwritten.

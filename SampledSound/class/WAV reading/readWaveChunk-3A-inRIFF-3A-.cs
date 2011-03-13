@@ -4,12 +4,12 @@ readWaveChunk: chunkType inRIFF: stream
 	| id count |
 	stream reset; binary.
 	stream skip: 8.  "skip 'RIFF' and total length"
-	id _ (stream next: 4) asString.  "contents type"
+	id := (stream next: 4) asString.  "contents type"
 	id = 'WAVE' ifFalse: [^ ''].     "content type must be WAVE"
 
 	"search for a chunk of the given type"
-	[id _ (stream next: 4) asString.
-	 count _ self next32BitWord: false from: stream.
+	[id := (stream next: 4) asString.
+	 count := self next32BitWord: false from: stream.
 	 id = chunkType] whileFalse: [
 		"skip this chunk, rounding length up to a word boundary"
 		stream skip: (count + 1 bitAnd: 16rFFFFFFFE).

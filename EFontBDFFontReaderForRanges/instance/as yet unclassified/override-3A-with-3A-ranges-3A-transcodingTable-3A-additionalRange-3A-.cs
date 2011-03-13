@@ -12,7 +12,7 @@ override: chars with: otherFileName ranges: pairArray transcodingTable: table ad
 
 	other readChars do: [:array | 
 		code _ array at: 2.
-		code hex printString displayAt: 0@0.
+		"code printStringHex printString displayAt: 0@0."
 		code > currentRange last ifTrue: [
 			[rangeStream atEnd not and: [currentRange _ rangeStream next. currentRange last < code]] whileTrue.
 			rangeStream atEnd ifTrue: [

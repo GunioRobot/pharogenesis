@@ -1,2 +1,0 @@
-fillOffsetYGet
-	^workBuffer at: GWFillOffsetY

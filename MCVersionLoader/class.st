@@ -1,0 +1,1 @@
+MCVersionLoader class instanceVariableNames: ''

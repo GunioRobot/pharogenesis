@@ -7,6 +7,8 @@ contents
 	latestCompiledMethod _ currentCompiledMethod.
 	currentCompiledMethod _ nil.
 
+	editSelection == #newTrait
+		ifTrue: [^Trait newTemplateIn: self selectedSystemCategoryName].
 	editSelection == #none ifTrue: [^ ''].
 	editSelection == #editSystemCategories 
 		ifTrue: [^ systemOrganizer printString].
@@ -17,8 +19,7 @@ contents
 			ifNotNil:
 				[Class templateForSubclassOf: theClass category: self selectedSystemCategoryName]].
 	editSelection == #editClass 
-		ifTrue:
-			[^ self classDefinitionText ].
+		ifTrue: [^self classDefinitionText].
 	editSelection == #editComment 
 		ifTrue:
 			[(theClass _ self selectedClass) ifNil: [^ ''].
@@ -28,7 +29,10 @@ contents
 				ifTrue: ['This class has not yet been commented.']
 				ifFalse: [comment]].
 	editSelection == #hierarchy 
-		ifTrue: [^ self selectedClassOrMetaClass printHierarchy].
+		ifTrue: [
+			self selectedClassOrMetaClass isTrait
+				ifTrue: [^'']
+				ifFalse: [^self selectedClassOrMetaClass printHierarchy]].
 	editSelection == #editMessageCategories 
 		ifTrue: [^ self classOrMetaClassOrganizer printString].
 	editSelection == #newMessage

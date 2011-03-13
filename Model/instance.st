@@ -1,6 +1,6 @@
 Object
 	subclass: #Model
-	instanceVariableNames: 'dependents '
+	instanceVariableNames: 'dependents'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Kernel-Objects'

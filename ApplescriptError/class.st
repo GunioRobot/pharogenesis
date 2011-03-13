@@ -1,1 +1,0 @@
-ApplescriptError class instanceVariableNames: ''

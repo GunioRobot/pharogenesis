@@ -1,2 +1,0 @@
-hasVertexTexCoords
-	^flags anyMask: VBVtxHasTexCoords

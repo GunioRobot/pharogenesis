@@ -1,6 +1,6 @@
 Interval
 	subclass: #TextLineInterval
-	instanceVariableNames: 'internalSpaces paddingWidth lineHeight baseline '
+	instanceVariableNames: 'internalSpaces paddingWidth lineHeight baseline'
 	classVariableNames: ''
-	poolDictionaries: 'TextConstants '
+	poolDictionaries: 'TextConstants'
 	category: 'Graphics-Text'

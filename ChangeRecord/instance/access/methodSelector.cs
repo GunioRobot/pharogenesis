@@ -1,3 +1,4 @@
 methodSelector
-	type == #method ifFalse: [^ nil].
-	^ Parser new parseSelector: self string
+	type == #method
+		ifFalse: [^ nil].
+	^ self class parserClass new parseSelector: self string

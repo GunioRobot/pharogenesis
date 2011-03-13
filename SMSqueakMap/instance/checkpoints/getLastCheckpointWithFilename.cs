@@ -6,9 +6,8 @@ getLastCheckpointWithFilename
 
 	| directory fname |
 	isDirty ifTrue: [self createCheckpoint].
-	directory _ self directory.
-	fname _ self lastCheckpointFilename.
+	directory := self directory.
+	fname := self lastCheckpointFilename.
 	fname ifNil: [self error: 'No checkpoint available'].
-	^((directory oldFileNamed: fname)
-		converter: Latin1TextConverter new;
-	 	contentsOfEntireFile), ':', fname
+	^((StandardFileStream oldFileNamed: (directory fullNameFor: fname))
+		contentsOfEntireFile), ':', fname

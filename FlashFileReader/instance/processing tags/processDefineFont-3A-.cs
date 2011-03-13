@@ -1,9 +1,9 @@
 processDefineFont: data
 	| fontId firstOffset offsets nShapes |
-	fontId _ data nextWord.
-	firstOffset _ data nextWord.
-	nShapes _ firstOffset // 2.
-	offsets _ Array new: nShapes.
+	fontId := data nextWord.
+	firstOffset := data nextWord.
+	nShapes := firstOffset // 2.
+	offsets := Array new: nShapes.
 	offsets at: 1 put: firstOffset.
 	2 to: nShapes do:[:i| offsets at: i put: data nextWord].
 	self recordFontBegin: fontId with: nShapes.

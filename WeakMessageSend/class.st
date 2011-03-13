@@ -1,0 +1,1 @@
+WeakMessageSend class instanceVariableNames: ''

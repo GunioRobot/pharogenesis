@@ -1,0 +1,1 @@
+MCPoolImportDefinition class instanceVariableNames: ''

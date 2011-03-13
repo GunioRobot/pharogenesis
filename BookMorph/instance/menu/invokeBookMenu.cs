@@ -3,7 +3,8 @@ invokeBookMenu
 	| aMenu |
 	aMenu _ MenuMorph new defaultTarget: self.
 	aMenu addTitle: 'Book' translated.
-	aMenu addStayUpItem.
+	Preferences noviceMode
+		ifFalse:[aMenu addStayUpItem].
 	aMenu add: 'find...' translated action: #textSearch.
 	aMenu add: 'go to page...' translated action: #goToPage.
 	aMenu addLine.

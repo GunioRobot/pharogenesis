@@ -1,6 +1,6 @@
 GesturalEvent
 	subclass: #TalkGesturalEvent
-	instanceVariableNames: 'phoneme '
+	instanceVariableNames: 'phoneme'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Speech-Events'

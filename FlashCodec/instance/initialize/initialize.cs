@@ -1,2 +1,2 @@
 initialize
-	stream _ WriteStream on: (String new: 1000).
+	stream := WriteStream on: (String new: 1000).

@@ -1,0 +1,1 @@
+ModifiedTraitDefinitionEvent class instanceVariableNames: ''

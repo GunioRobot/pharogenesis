@@ -2,6 +2,7 @@ setDecimalPlacesFromTypeIn: typeIn
 	"The user has typed in a number as the new value of the receiver.  Glean off decimal-places-preference from the type-in"
 
 	| decimalPointPosition tail places |
+	(typeIn includes: $e) ifTrue: [^ self].
 	decimalPointPosition _ typeIn indexOf: $. ifAbsent: [nil].
 	places _ 0.
 	decimalPointPosition

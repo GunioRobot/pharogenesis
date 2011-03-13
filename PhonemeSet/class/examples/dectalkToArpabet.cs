@@ -3,7 +3,7 @@ dectalkToArpabet
 	as keys and ARPAbet phonemes as values."
 
 	| answer |
-	answer _ Dictionary new.
+	answer := Dictionary new.
 	self arpabet do: [ :each | answer at: each name put: each].
 	#(
 		('nx'	'ng')

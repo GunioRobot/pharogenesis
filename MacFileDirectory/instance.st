@@ -1,6 +1,6 @@
 FileDirectory
 	subclass: #MacFileDirectory
 	instanceVariableNames: ''
-	classVariableNames: 'TypeToMimeMappings '
+	classVariableNames: 'TypeToMimeMappings'
 	poolDictionaries: ''
-	category: 'System-Files'
+	category: 'Files-Directories'

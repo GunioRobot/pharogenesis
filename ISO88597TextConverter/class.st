@@ -1,0 +1,1 @@
+ISO88597TextConverter class instanceVariableNames: ''

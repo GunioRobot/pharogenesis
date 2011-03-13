@@ -1,3 +1,0 @@
-color
-
-	^Color green darker

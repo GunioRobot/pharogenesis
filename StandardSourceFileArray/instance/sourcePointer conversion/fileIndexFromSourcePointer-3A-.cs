@@ -3,7 +3,7 @@ fileIndexFromSourcePointer: anInteger
 	"This implements the recent 32M source file algorithm"
 
 	| hi |
-	hi _ anInteger // 16r1000000.
+	hi := anInteger // 16r1000000.
 	^hi < 3
 		ifTrue: [hi]
 		ifFalse: [hi - 2]

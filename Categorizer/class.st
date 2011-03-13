@@ -1,0 +1,1 @@
+Categorizer class instanceVariableNames: ''

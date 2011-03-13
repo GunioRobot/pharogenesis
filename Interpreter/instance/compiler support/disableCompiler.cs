@@ -1,2 +1,0 @@
-disableCompiler
-	compilerInitialized _ false

@@ -1,5 +1,5 @@
 initialize
 	"Initialize the receiver."
 
-	updated _ created _ TimeStamp current asSeconds.
-	name _ summary _ url _ ''.
+	updated := created := TimeStamp current asSeconds.
+	name := summary := url := ''.

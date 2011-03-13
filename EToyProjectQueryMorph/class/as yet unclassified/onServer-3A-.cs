@@ -13,4 +13,5 @@ onServer: aProjectServer
 			aProjectServer queryProjectsAndShow: criteria];
 
 		initialize;
+		becomeModal;
 		openCenteredInWorld

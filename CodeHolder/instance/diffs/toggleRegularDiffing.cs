@@ -3,7 +3,7 @@ toggleRegularDiffing
 
 	| wasShowingDiffs |
 	self okToChange ifTrue:
-		[wasShowingDiffs _ self showingRegularDiffs.
+		[wasShowingDiffs := self showingRegularDiffs.
 		self restoreTextualCodingPane.
 		self showRegularDiffs: wasShowingDiffs not.
 		self setContentsToForceRefetch.

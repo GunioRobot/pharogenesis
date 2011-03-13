@@ -2,9 +2,9 @@ addTitle
 	"Add a title."
 
 	| font title r |
-	font _ StrikeFont familyName: Preferences standardEToysFont familyName size: 20.
-	title _ StringMorph contents: 'Phoneme Recognizer' font: font.
-	r _ AlignmentMorph newColumn
+	font := StrikeFont familyName: Preferences standardEToysFont familyName size: 20.
+	title := StringMorph contents: 'Phoneme Recognizer' font: font.
+	r := AlignmentMorph newColumn
 		color: color;
 		layoutInset: 0;
 		wrapCentering: #center; cellPositioning: #topCenter;

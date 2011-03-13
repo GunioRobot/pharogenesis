@@ -1,0 +1,2 @@
+selectorAndMessages
+	^ Array with: self

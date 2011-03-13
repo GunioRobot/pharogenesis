@@ -1,2 +1,0 @@
-actorState
-	^ actorState

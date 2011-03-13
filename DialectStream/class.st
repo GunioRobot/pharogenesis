@@ -1,1 +1,0 @@
-DialectStream class instanceVariableNames: ''

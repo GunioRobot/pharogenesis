@@ -29,7 +29,7 @@ fastParseEntriesFrom: aString
 			xFileSize _ (strm upTo: $ ) asNumber.
 
 			c add: (DirectoryEntry 
-				name: xEntryName convertFromSuperSwikiServerString
+				name: (xEntryName convertFromEncoding: self encodingName)
 				creationTime: xCreationTime 
 				modificationTime: xModificationTime 
 				isDirectory: xIsDirectory 

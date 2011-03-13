@@ -1,0 +1,2 @@
+selfSenders: anObject
+	^selfSenders := anObject

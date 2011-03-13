@@ -2,7 +2,7 @@ buildMorphicMessageList
 	"Build a morphic message list, with #messageList as its list-getter"
 
 	| aListMorph |
-	(aListMorph _ PluggableListMorph new) 
+	(aListMorph := PluggableListMorph new) 
 			setProperty: #highlightSelector toValue: #highlightMessageList:with:;
 			setProperty: #balloonTextSelectorForSubMorphs toValue: #balloonTextForMethodString;
 			on: self list: #messageList

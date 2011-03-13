@@ -1,2 +1,2 @@
 isoToSqueak
-	^ self collect: [:each | each isoToSqueak]
+	^self "no longer needed"

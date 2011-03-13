@@ -1,3 +1,3 @@
 midiKey: midiKeyNum
 
-	midiKey _ midiKeyNum.
+	midiKey := midiKeyNum.

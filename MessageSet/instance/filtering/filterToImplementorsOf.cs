@@ -3,9 +3,9 @@ filterToImplementorsOf
 
 	| aFragment inputWithBlanksTrimmed |
 
-	aFragment _ FillInTheBlank request: 'type selector:' initialAnswer: ''.
+	aFragment := UIManager default request: 'type selector:' initialAnswer: ''.
 	aFragment  isEmptyOrNil ifTrue: [^ self].
-	inputWithBlanksTrimmed _ aFragment withBlanksTrimmed.
+	inputWithBlanksTrimmed := aFragment withBlanksTrimmed.
 	Symbol hasInterned: inputWithBlanksTrimmed ifTrue:
 		[:aSymbol | 
 			self filterFrom:

@@ -1,3 +1,0 @@
-successor
-
-	^ successor

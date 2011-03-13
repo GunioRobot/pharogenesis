@@ -2,7 +2,7 @@ removeFromCategory
 	"Add the current change set to the category viewed on the opposite side, if it's of the sort to accept things like that"
 
 	| aCategory |
-	(aCategory _ self changeSetCategory) acceptsManualAdditions
+	(aCategory := self changeSetCategory) acceptsManualAdditions
 		ifTrue:
 			[aCategory removeElementAt: myChangeSet name.
 			aCategory reconstituteList.

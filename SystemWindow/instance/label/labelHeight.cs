@@ -6,5 +6,5 @@ labelHeight
 		[(aHeight _ model desiredWindowLabelHeightIn: self) ifNotNil: [^ aHeight]].
 
 	^ label ifNil: [0] ifNotNil:
-		 [(label height + 1) max:
+		 [(label height + (self class borderWidth * 2)) max:
 			(collapseBox ifNotNil: [collapseBox height] ifNil: [10])]

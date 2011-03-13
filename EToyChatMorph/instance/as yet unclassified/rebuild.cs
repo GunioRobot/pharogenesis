@@ -1,7 +1,7 @@
 rebuild
 	| r1 r2 |
 
-	r1 _ self addARow: {
+	r1 := self addARow: {
 		self simpleToggleButtonFor: self attribute: #acceptOnCR help: 'Send with Return?'.
 		self inAColumn: {StringMorph new contents: 'Your message to:'; lock}.
 		self textEntryFieldNamed: #ipAddress with: ''
@@ -10,15 +10,15 @@ rebuild
 	recipientForm ifNotNil: [
 		r1 addMorphBack: recipientForm asMorph lock
 	].
-	sendingPane _ PluggableTextMorph
+	sendingPane := PluggableTextMorph
 				on: self
 				text: nil
 				accept: #acceptTo:forMorph:.
 	sendingPane hResizing: #spaceFill; vResizing: #spaceFill.
 	self
 		addMorphBack: sendingPane.
-	r2 _ self addARow: {self inAColumn: {StringMorph new contents: 'Replies'; lock}}.
-	receivingPane _ PluggableTextMorph
+	r2 := self addARow: {self inAColumn: {StringMorph new contents: 'Replies'; lock}}.
+	receivingPane := PluggableTextMorph
 				on: self
 				text: nil
 				accept: nil.
@@ -31,4 +31,4 @@ rebuild
 			vResizing: #shrinkWrap; minHeight: 18;
 			color: Color veryLightGray.
 	].
-	sendingPane acceptOnCR: (acceptOnCR ifNil: [acceptOnCR _ true])
+	sendingPane acceptOnCR: (acceptOnCR ifNil: [acceptOnCR := true])

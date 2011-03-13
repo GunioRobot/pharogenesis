@@ -1,2 +1,0 @@
-classSmallInteger
-	^self splObj: ClassInteger

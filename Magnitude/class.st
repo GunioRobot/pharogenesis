@@ -1,0 +1,1 @@
+Magnitude class instanceVariableNames: ''

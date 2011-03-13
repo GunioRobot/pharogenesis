@@ -1,2 +1,0 @@
-isPrototype
-	^true

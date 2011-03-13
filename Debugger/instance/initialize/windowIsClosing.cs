@@ -3,10 +3,10 @@ windowIsClosing
 
 	interruptedProcess == nil ifTrue: [^ self].
 	interruptedProcess terminate.
-	interruptedProcess _ nil.
-	interruptedController _ nil.
-	contextStack _ nil.
-	contextStackTop _ nil.
-	receiverInspector _ nil.
-	contextVariablesInspector _ nil.
+	interruptedProcess := nil.
+	interruptedController := nil.
+	contextStack := nil.
+	contextStackTop := nil.
+	receiverInspector := nil.
+	contextVariablesInspector := nil.
 	Smalltalk installLowSpaceWatcher.  "restart low space handler"

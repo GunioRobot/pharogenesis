@@ -4,8 +4,8 @@ computeSampleCountForRelease
 
 	(scaledLoopLength > 0 and: [lastSample > loopEnd])
 		ifTrue: [
-			sampleCountForRelease _ (lastSample - loopEnd) +
+			sampleCountForRelease := (lastSample - loopEnd) +
 				(self loopLength min: (originalSamplingRate / 10.0)) asInteger]
-		ifFalse: [sampleCountForRelease _ 0].
+		ifFalse: [sampleCountForRelease := 0].
 
-	releaseCount _ sampleCountForRelease.
+	releaseCount := sampleCountForRelease.

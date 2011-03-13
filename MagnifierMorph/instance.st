@@ -1,6 +1,6 @@
 BorderedMorph
 	subclass: #MagnifierMorph
-	instanceVariableNames: 'magnification trackPointer lastPos srcExtent '
-	classVariableNames: 'RecursionLock '
+	instanceVariableNames: 'magnification trackPointer srcExtent showPointer'
+	classVariableNames: 'RecursionLock'
 	poolDictionaries: ''
-	category: 'Morphic-Demo'
+	category: 'MorphicExtras-Demo'

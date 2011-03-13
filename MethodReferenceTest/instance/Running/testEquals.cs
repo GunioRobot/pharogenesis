@@ -1,7 +1,7 @@
 testEquals
 	| aMethodReference anotherMethodReference |
-	aMethodReference _ MethodReference new.
-	anotherMethodReference _ MethodReference new.
+	aMethodReference := MethodReference new.
+	anotherMethodReference := MethodReference new.
 	" 
 	two fresh instances should be equals between them"
 	self

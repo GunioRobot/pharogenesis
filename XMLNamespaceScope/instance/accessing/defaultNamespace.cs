@@ -1,2 +1,0 @@
-defaultNamespace
-	^self currentScope first

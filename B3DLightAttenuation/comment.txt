@@ -1,3 +1,0 @@
-I represent the attenuation for any given light source, e.g., how the intensity of the light is reduced with increasing distance from the object. I consist of three parts, a constant part, a linear part and a squared part. The resulting intensity for any given distance d is computed by:
-
-	intensity _ 1.0 / (constantPart + (distance * linearPart) + (distance^2 * squaredPart)).

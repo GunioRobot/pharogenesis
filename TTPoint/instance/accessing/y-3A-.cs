@@ -1,2 +1,2 @@
 y: aNumber
-	y _ aNumber
+	y := aNumber

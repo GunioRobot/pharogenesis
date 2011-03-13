@@ -1,10 +1,10 @@
 initialize: aSocket
-	socket _ aSocket.
-	inBuf _ String new: 1000.
-	inBufIndex _ 1.
+	socket := aSocket.
+	inBuf := String new: 1000.
+	inBufIndex := 1.
 	inBufLastIndex := 0.
 
-	outBuf _ nil.
+	outBuf := nil.
 
-	inObjects _ OrderedCollection new.
-	outObjects _ OrderedCollection new.
+	inObjects := OrderedCollection new.
+	outObjects := OrderedCollection new.

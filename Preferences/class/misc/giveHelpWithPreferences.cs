@@ -2,7 +2,7 @@ giveHelpWithPreferences
 	"Open up a workspace with explanatory info in it about Preferences"
 
 	| aString aHelpString |
-	aString _ String streamContents: [:aStream | 
+	aString := String streamContents: [:aStream | 
 		aStream nextPutAll:
 
 'Many aspects of the system are governed by the settings of various "Preferences".  
@@ -25,14 +25,14 @@ Also, you can use "themes" to set multiple preferences all at once; click on the
    (Preferences allPreferenceObjects asSortedCollection: [:a :b | a name < b name]) do:
 	[:pref |
 		aStream nextPutAll: pref name; cr.
-		aHelpString _ pref helpString translated.
+		aHelpString := pref helpString translated.
 		(aHelpString beginsWith: pref name) ifTrue:
-			[aHelpString _ aHelpString copyFrom: (pref name size + 3) to: aHelpString size].
-		aHelpString _ (aHelpString copyReplaceAll: String cr with: ' ')  copyWithout: Character tab.
+			[aHelpString := aHelpString copyFrom: (pref name size + 3) to: aHelpString size].
+		aHelpString := (aHelpString copyReplaceAll: String cr with: ' ')  copyWithout: Character tab.
 		aStream nextPutAll: aHelpString capitalized.
 		(aHelpString last == $.) ifFalse: [aStream nextPut: $.].
         aStream cr; cr]].
 
-	(Workspace new contents: aString) openLabel: 'About Preferences' translated
+	UIManager default edit: aString label: 'About Preferences' translated
 
 "Preferences giveHelpWithPreferences"

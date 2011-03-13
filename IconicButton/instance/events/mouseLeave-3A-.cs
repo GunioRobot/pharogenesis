@@ -1,0 +1,3 @@
+mouseLeave: evt
+
+	self borderNormal

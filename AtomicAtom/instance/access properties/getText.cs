@@ -1,2 +1,0 @@
-getText
-self subclassResponsibility

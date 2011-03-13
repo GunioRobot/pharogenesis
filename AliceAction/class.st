@@ -1,1 +1,0 @@
-AliceAction class instanceVariableNames: ''

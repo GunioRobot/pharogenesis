@@ -1,5 +1,5 @@
 methodString
 	| stream |
-	stream _ WriteStream on: ''.
+	stream := WriteStream on: ''.
 	self methodPrintOn: stream.
 	^ stream contents

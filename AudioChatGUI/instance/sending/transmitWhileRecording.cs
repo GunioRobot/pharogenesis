@@ -1,3 +1,3 @@
 transmitWhileRecording
 
-	^transmitWhileRecording ifNil: [transmitWhileRecording _ false]
+	^transmitWhileRecording ifNil: [transmitWhileRecording := false]

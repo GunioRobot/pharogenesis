@@ -1,7 +1,7 @@
 findOriginalChangeSet
 	| changeSet |
 	self currentChange ifNil: [^ self].
-	changeSet _ self currentChange originalChangeSetForSelector: self selectedMessageName.
+	changeSet := self currentChange originalChangeSetForSelector: self selectedMessageName.
 	changeSet = #sources ifTrue:
 		[^ self inform: 'This version is in the .sources file.'].
 	changeSet ifNil:

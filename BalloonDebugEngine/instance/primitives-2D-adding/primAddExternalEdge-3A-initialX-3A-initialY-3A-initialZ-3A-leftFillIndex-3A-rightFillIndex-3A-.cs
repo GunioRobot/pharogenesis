@@ -1,2 +1,0 @@
-primAddExternalEdge: index initialX: initialX initialY: initialY initialZ: initialZ leftFillIndex: leftFillIndex rightFillIndex: rightFillIndex
-	^BalloonEnginePlugin doPrimitive: 'gePrimitiveRegisterExternalEdge'

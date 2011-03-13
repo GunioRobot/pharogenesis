@@ -3,4 +3,4 @@ ScriptEditorMorph
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Scripting Support'
+	category: 'EToys-Scripting Support'

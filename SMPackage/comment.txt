@@ -1,19 +1,4 @@
-An SMCard is a library card describing a Squeak code package. It is the object representing a particular
-package and currently it has information about the current version available of the package.
+An SMPackage represents a named piece of an installable "thing" in the image. Typically it is a code package, but it can be other things too.
+It owns a collection of SMPackageReleases. Each release represents a version of the package, and each release has a URL that refers to the actual content that can be installed.
 
-It contains a minimal amount of information as follows:
-
-name			A String with a name for the package. The card has an id too so the name is not what makes the card unique.
-currentVersion	A String with the readable version of the package. This can follow whatever style the author wants.
-summary		A oneline String describing shortly what the package is in one sentence.
-description		A 5-10 lines String describing the package in full.
-url				A String with the url to the WWW homepage of the package if it has one.
-downloadUrl		A String with the url to a download of the package.
-author			A String with the original author in format 'Joe Schmoe <joe@schmoe.com>'.
-maintainer		A String with the current package maintainer in format 'Joe Schmoe <joe@schmoe.com>'.
-registrator		A String with the the person registrating the card in format 'Joe Schmoe <joe@schmoe.com>'.
-password		A String with the password that the registrator selected when registering the card.
-versionComment	A String describing the specific version of the package.
-categories		An OrderedCollection with the SMCategories that this card belongs to.
-
-Of all these variables only the last one - categories is not a simple String. When being stored or transmitted we use the UUIDs of the SMCategory objects instead and then "reconnect" them using real references.
+An SMPackage also knows its packageInfoName which can tie it into the image.

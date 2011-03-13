@@ -14,13 +14,10 @@ updateLocaleDependents
 	(Project current isFlapIDEnabled: 'Navigator' translated)
 		ifFalse: [Flaps enableDisableGlobalFlapWithID: 'Navigator' translated].
 
-	ParagraphEditor initializeTextEditorMenus.
 	Utilities emptyScrapsBook.
 	MenuIcons initializeTranslations.
 
 	LanguageEnvironment localeChanged.
 
-	#(PartsBin ParagraphEditor BitEditor FormEditor StandardSystemController) 
-		do: [ :key | Smalltalk at: key ifPresent: [ :class | class initialize ]].
 	"self setFlaps.
 	self setPaletteFor: aLanguageSymbol."

@@ -1,3 +1,0 @@
-matchReturn
-
-	^ self matchToken: 'Answer'

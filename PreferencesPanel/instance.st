@@ -1,6 +1,6 @@
 Model
 	subclass: #PreferencesPanel
-	instanceVariableNames: ''
+	instanceVariableNames: 'searchString'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Support'
+	category: 'MorphicExtras-Palettes'

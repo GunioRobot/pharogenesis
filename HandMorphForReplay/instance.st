@@ -1,6 +1,6 @@
 HandMorph
 	subclass: #HandMorphForReplay
-	instanceVariableNames: 'recorder '
+	instanceVariableNames: 'recorder'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Kernel'
+	category: 'MorphicExtras-AdditionalSupport'

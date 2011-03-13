@@ -1,0 +1,1 @@
+PluggableTextAttribute class instanceVariableNames: ''

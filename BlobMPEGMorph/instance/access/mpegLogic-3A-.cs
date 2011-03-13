@@ -1,2 +1,2 @@
 mpegLogic: aValue
-	mpegLogic _ aValue
+	mpegLogic := aValue

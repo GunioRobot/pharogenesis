@@ -1,7 +1,7 @@
 nextPhoneme
 	| try try2 phon |
-	try _ stream next asString.
+	try := stream next asString.
 	(',.;-' includes: try first) ifTrue: [^ phonemes at: 'sil'].
-	try2 _ try, stream peek asString.
-	(phon _ phonemes at: try2 ifAbsent: []) notNil ifTrue: [stream next. ^ phon].
+	try2 := try, stream peek asString.
+	(phon := phonemes at: try2 ifAbsent: []) notNil ifTrue: [stream next. ^ phon].
 	^ phonemes at: try

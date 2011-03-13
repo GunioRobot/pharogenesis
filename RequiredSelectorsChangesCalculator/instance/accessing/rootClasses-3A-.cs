@@ -1,0 +1,2 @@
+rootClasses: anObject
+	rootClasses := anObject

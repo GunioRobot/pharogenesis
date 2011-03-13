@@ -1,8 +1,0 @@
-CachedSwikiAction caches SwikiAction pages so that they can be served as plain HTML files (no embedded Squeak code) even by a native webServer. 
-
-You must edit three class methods in CachedSwikiAction to get it to serve appropriately.
-
-* CachedSwikiAction class defaultCacheDirectory is where to store cached pages
-* CachedSwikiAction class defaultCacheURL is the URL to precede cached pages
-* CachedSwikiAction class defaultPWSURL is where the PWS is that can handle editing and searching.
-

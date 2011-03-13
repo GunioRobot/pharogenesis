@@ -17,5 +17,7 @@ headerDescription
 	self frameSize printOn: s.
 	s cr; nextPutAll: ' isClosureCompiled: '.
 	self isClosureCompiled printOn: s.
+	s cr; nextPutAll: ' isBlockMethod: '.
+	self isBlockMethod printOn: s.
 	s nextPut: $"; cr.
 	^ s contents

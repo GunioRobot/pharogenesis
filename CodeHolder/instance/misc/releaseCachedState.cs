@@ -1,3 +1,3 @@
 releaseCachedState
 	"Can always be found again.  Don't write on a file."
-	currentCompiledMethod _ nil.
+	currentCompiledMethod := nil.

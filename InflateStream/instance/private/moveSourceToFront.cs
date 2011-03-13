@@ -7,9 +7,9 @@ moveSourceToFront
 			to: source size - sourcePos
 			with: source 
 			startingAt: sourcePos + 1.
-		source _ sourceStream 
+		source := sourceStream 
 			next: sourcePos 
 			into: source 
 			startingAt: source size - sourcePos + 1.
-		sourcePos _ 0.
-		sourceLimit _ source size].
+		sourcePos := 0.
+		sourceLimit := source size].

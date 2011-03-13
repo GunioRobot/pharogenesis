@@ -2,7 +2,7 @@ buildPackagePane
 	"Create the text area to the right in the loader."
 
 	| ptm |
-	ptm _ PluggableTextMorph 
+	ptm := PluggableTextMorph 
 		on: self 
 		text: #contents
 		accept: nil

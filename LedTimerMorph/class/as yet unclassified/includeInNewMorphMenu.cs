@@ -1,3 +1,0 @@
-includeInNewMorphMenu
-
-	^false

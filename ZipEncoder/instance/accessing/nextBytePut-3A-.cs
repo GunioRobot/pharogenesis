@@ -10,5 +10,5 @@ nextBytePut: anObject
 	position >= writeLimit
 		ifTrue: [^ self pastEndPut: anObject]
 		ifFalse: 
-			[position _ position + 1.
+			[position := position + 1.
 			^collection byteAt: position put: anObject]

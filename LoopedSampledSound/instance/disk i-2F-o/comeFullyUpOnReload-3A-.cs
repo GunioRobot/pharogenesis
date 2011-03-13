@@ -3,9 +3,9 @@ comeFullyUpOnReload: smartRefStream
 
 	leftSamples == rightSamples
 		ifTrue: [
-			leftSamples _ SoundBuffer fromByteArray: self leftSamples.
-			rightSamples _ leftSamples]
+			leftSamples := SoundBuffer fromByteArray: self leftSamples.
+			rightSamples := leftSamples]
 		ifFalse: [
-			leftSamples _ SoundBuffer fromByteArray: self leftSamples.
-			rightSamples _ SoundBuffer fromByteArray: self rightSamples].
+			leftSamples := SoundBuffer fromByteArray: self leftSamples.
+			rightSamples := SoundBuffer fromByteArray: self rightSamples].
 

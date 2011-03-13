@@ -1,6 +1,6 @@
 Object
 	subclass: #FlashKeyframe
-	instanceVariableNames: 'start stop data '
+	instanceVariableNames: 'start stop data'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Balloon-MMFlash Support'
+	category: 'Flash-Support'

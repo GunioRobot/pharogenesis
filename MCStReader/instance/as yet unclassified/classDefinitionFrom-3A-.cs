@@ -1,14 +1,24 @@
 classDefinitionFrom: aPseudoClass
-	| tokens |
-	tokens _ Scanner new scanTokens: aPseudoClass definition.
-	tokens size = 11 ifFalse: [self error: 'Unrecognized class definition'].
+	| tokens traitCompositionString lastIndex classTraitCompositionString |
+	tokens := Scanner new scanTokens: aPseudoClass definition.
+	traitCompositionString := ((ReadStream on: aPseudoClass definition)
+		match: 'uses:';
+		upToAll: 'instanceVariableNames:') withBlanksTrimmed.
+	classTraitCompositionString := ((ReadStream on: aPseudoClass metaClass definition asString)
+		match: 'uses:';
+		upToAll: 'instanceVariableNames:') withBlanksTrimmed.
+	traitCompositionString isEmpty ifTrue: [traitCompositionString := '{}'].
+	classTraitCompositionString isEmpty ifTrue: [classTraitCompositionString := '{}'].
+	lastIndex := tokens size.
 	^ MCClassDefinition
 		name: (tokens at: 3)
 		superclassName: (tokens at: 1)
-		category: (tokens at: 11)
-		instVarNames: ((tokens at: 5) findTokens: ' ')
-		classVarNames: ((tokens at: 7) findTokens: ' ')
-		poolDictionaryNames: ((tokens at: 9) findTokens: ' ')
+		traitComposition: traitCompositionString
+		classTraitComposition: classTraitCompositionString
+		category: (tokens at: lastIndex)
+		instVarNames: ((tokens at: lastIndex - 6) findTokens: ' ')
+		classVarNames: ((tokens at: lastIndex - 4) findTokens: ' ')
+		poolDictionaryNames: ((tokens at: lastIndex - 2) findTokens: ' ')
 		classInstVarNames: (self classInstVarNamesFor: aPseudoClass)
 		type: (self typeOfSubclass: (tokens at: 2))
 		comment: (self commentFor: aPseudoClass)

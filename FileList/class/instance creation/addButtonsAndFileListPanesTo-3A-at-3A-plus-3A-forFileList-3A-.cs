@@ -11,8 +11,7 @@ addButtonsAndFileListPanesTo: window at: upperFraction plus: offset forFileList:
 		ifTrue: [buttons _ aFileList optionalButtonRow.
 			divider _ BorderedSubpaneDividerMorph forBottomEdge.
 			dividerDelta _ 0.
-			Preferences alternativeWindowLook
-				ifTrue: [buttons color: Color transparent.
+			buttons color: Color transparent.
 					buttons
 						submorphsDo: [:m | m borderWidth: 2;
 								 borderColor: #raised].
@@ -21,7 +20,7 @@ divider extent: 4 @ 4;
 						 borderColor: #raised;
 						 borderWidth: 2.
 					fileListMorph borderColor: Color transparent.
-					dividerDelta _ 3].
+					dividerDelta _ 3.
 			row _ AlignmentMorph newColumn hResizing: #spaceFill;
 						 vResizing: #spaceFill;
 						 layoutInset: 0;
@@ -48,9 +47,7 @@ divider extent: 4 @ 4;
 				fullFrame: (LayoutFrame
 						fractions: upperFraction
 						offsets: (0 @ offset corner: 0 @ 0)).
-			Preferences alternativeWindowLook
-				ifTrue: [row borderWidth: 2]
-				ifFalse: [row borderWidth: 0]]
+			row borderWidth: 2]
 		ifFalse: [fileListTop _ 0.
 			window
 				addMorph: fileListMorph

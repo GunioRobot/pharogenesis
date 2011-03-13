@@ -5,6 +5,6 @@ installPackage: aPackage
 	to specify a specific release."
 
 	| rel |
-	rel _ aPackage lastPublishedReleaseForCurrentSystemVersion
+	rel := aPackage lastPublishedReleaseForCurrentSystemVersion
 			ifNil: [self error: 'No published release for this system version found to install.'].
 	^self installPackageRelease: rel

@@ -1,7 +1,7 @@
 removeUnmodifiedCategories
 	| theClass |
 	self okToChange ifFalse: [^self].
-	theClass _ self selectedClass.
+	theClass := self selectedClass.
 	theClass isNil ifTrue: [^self].
 	Cursor wait showWhile:
 		[theClass removeUnmodifiedMethods: theClass selectors.

@@ -3,9 +3,9 @@ valuesCollect: aBlock
 	Collect the resulting values into a collection like the receiver. Answer 
 	the new collection."
 	| newArray newValue |
-	newArray _ self class basicNew: self basicSize.
+	newArray := self class basicNew: self basicSize.
 	1 to: self runSize do:[:i|
-		newValue _ aBlock value: (self valueAtRun: i).
+		newValue := aBlock value: (self valueAtRun: i).
 		newArray setRunAt: i toLength: (self lengthAtRun: i) value: newValue.
 	].
 	^newArray

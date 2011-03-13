@@ -1,2 +1,0 @@
-fillMinYGet
-	^workBuffer at: GWFillMinY

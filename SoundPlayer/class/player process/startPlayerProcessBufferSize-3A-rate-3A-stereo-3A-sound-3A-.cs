@@ -4,16 +4,16 @@ startPlayerProcessBufferSize: bufferSize rate: samplesPerSecond stereo: stereoFl
 
 	self stopPlayerProcess.
 	aSound
-		ifNil:[ActiveSounds _ OrderedCollection new]
-		ifNotNil:[ActiveSounds _ OrderedCollection with: aSound].
-	Buffer _ SoundBuffer newStereoSampleCount: (bufferSize // 4) * 4.
-	LastBuffer ifNotNil:[LastBuffer _ SoundBuffer basicNew: Buffer basicSize].
-	PlayerSemaphore _ Semaphore forMutualExclusion.
-	SamplingRate _ samplesPerSecond.
-	Stereo _ stereoFlag.
-	ReadyForBuffer _ Semaphore new.
-	SoundSupported _ true. "Assume so"
-	UseReadySemaphore _ true.  "set to false if ready semaphore not supported by VM"
+		ifNil:[ActiveSounds := OrderedCollection new]
+		ifNotNil:[ActiveSounds := OrderedCollection with: aSound].
+	Buffer := SoundBuffer newStereoSampleCount: (bufferSize // 4) * 4.
+	LastBuffer ifNotNil:[LastBuffer := SoundBuffer basicNew: Buffer basicSize].
+	PlayerSemaphore := Semaphore forMutualExclusion.
+	SamplingRate := samplesPerSecond.
+	Stereo := stereoFlag.
+	ReadyForBuffer := Semaphore new.
+	SoundSupported := true. "Assume so"
+	UseReadySemaphore := true.  "set to false if ready semaphore not supported by VM"
 	self primSoundStartBufferSize: Buffer stereoSampleCount
 		rate: samplesPerSecond
 		stereo: Stereo
@@ -21,8 +21,8 @@ startPlayerProcessBufferSize: bufferSize rate: samplesPerSecond stereo: stereoFl
 	"Check if sound start prim was successful"
 	SoundSupported ifFalse:[^self].
 	UseReadySemaphore
-		ifTrue: [PlayerProcess _ [SoundPlayer playLoop] newProcess]
-		ifFalse: [PlayerProcess _ [SoundPlayer oldStylePlayLoop] newProcess].
+		ifTrue: [PlayerProcess := [SoundPlayer playLoop] newProcess]
+		ifFalse: [PlayerProcess := [SoundPlayer oldStylePlayLoop] newProcess].
 	UseReverb ifTrue: [self startReverb].
 
 	PlayerProcess priority: Processor userInterruptPriority.

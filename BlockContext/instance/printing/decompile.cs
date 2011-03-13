@@ -1,2 +1,2 @@
 decompile
-	^ Decompiler new decompileBlock: self
+	^ home method decompilerClass new decompileBlock: self

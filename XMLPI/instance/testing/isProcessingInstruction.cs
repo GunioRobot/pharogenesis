@@ -1,2 +1,0 @@
-isProcessingInstruction
-	^true

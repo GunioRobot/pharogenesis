@@ -39,13 +39,15 @@ the front of 'updates.list', and that is the index file used."
 		failed ifNil: ["is OK"
 			loaded = 0 ifTrue: ["found no updates"
 				servers size > 1 ifTrue: ["not the last server"
-					res _ PopUpMenu withCaption: 
+					res _ UIManager default 
+							chooseFrom: #('Stop looking' 'Try next server')
+							title: 
 'No new updates on the server
 ', servers first, '
 Would you like to try the next server?
 (Normally, all servers are identical, but sometimes a
 server won''t let us store new files, and gets out of date.)' 
-						chooseFrom: 'Stop looking\Try next server'.
+						.
 					res = 2 ifFalse: [^ self]
 						 ifTrue: [servers _ servers allButFirst.	"try the next server"
 							tryAgain _ true]]]].

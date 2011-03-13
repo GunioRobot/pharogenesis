@@ -1,11 +1,11 @@
 browseRecent: charCount on: origChangesFile 
 	"Opens a changeList on the end of the specified changes log file"
 	| changeList end changesFile |
-	changesFile _ origChangesFile readOnlyCopy.
+	changesFile := origChangesFile readOnlyCopy.
 	changesFile setConverterForCode.
-	end _ changesFile size.
+	end := changesFile size.
 	Cursor read
-		showWhile: [changeList _ self new
+		showWhile: [changeList := self new
 						scanFile: changesFile
 						from: (0 max: end - charCount)
 						to: end].

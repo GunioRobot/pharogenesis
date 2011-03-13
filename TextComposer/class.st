@@ -1,0 +1,1 @@
+TextComposer class instanceVariableNames: ''

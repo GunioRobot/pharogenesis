@@ -1,8 +1,6 @@
 A categorizable object can be associated with one or more SMCategories.
 The relation between the categories and the SMCategorizableObject is bidirectional.
-A categorizable object can also have attached resources, SMResource.
+A categorizable object can also have attached resources, see SMResource.
 
 The categories are used to classify the categorizable object for different purposes.
 Package and package releases are classified in different ways, but so can resources and accounts be.
-
-Accounts can be given various roles using categories.

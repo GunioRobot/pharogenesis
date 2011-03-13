@@ -1,3 +1,3 @@
 centerPitch: aNumber
 
-	centerPitch _ aNumber.
+	centerPitch := aNumber.

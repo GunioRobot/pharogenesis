@@ -6,28 +6,28 @@ nextEventToPlay
 	| nextEvent now nextTime lastP delta |
 	(tapeStream isNil or:[tapeStream atEnd]) 
 		ifTrue:[^MorphicUnknownEvent new setType: #EOF argument: nil].
-	now _ Time millisecondClockValue.
-	nextEvent _ tapeStream next.
-	nextEvent isKeyboard ifTrue: [ nextEvent setPosition: self position ].
-	deltaTime ifNil:[deltaTime _ now - nextEvent timeStamp].
-	nextTime _ nextEvent timeStamp + deltaTime.
+	now := Time millisecondClockValue.
+	nextEvent := tapeStream next.
+	"nextEvent isKeyboard ifTrue: [ nextEvent setPosition: self position ]."
+	deltaTime ifNil:[deltaTime := now - nextEvent timeStamp].
+	nextTime := nextEvent timeStamp + deltaTime.
 	now < time ifTrue:["clock rollover"
-		time _ now.
-		deltaTime _ nil.
+		time := now.
+		deltaTime := nil.
 		^nil "continue it on next cycle"].
-	time _ now.
+	time := now.
 	(now >= nextTime) ifTrue:[
-		nextEvent _ nextEvent copy setTimeStamp: nextTime.
-		nextEvent isMouse ifTrue:[lastEvent _ nextEvent] ifFalse:[lastEvent _ nil].
+		nextEvent := nextEvent copy setTimeStamp: nextTime.
+		nextEvent isMouse ifTrue:[lastEvent := nextEvent] ifFalse:[lastEvent := nil].
 		^nextEvent].
 	tapeStream skip: -1.
 	"Not time for the next event yet, but interpolate the mouse.
 	This allows tapes to be compressed when velocity is fairly constant."
 	lastEvent ifNil: [^ nil].
-	lastP _ lastEvent position.
-	delta _ (nextEvent position - lastP) * (now - lastEvent timeStamp) // (nextTime - lastEvent timeStamp).
+	lastP := lastEvent position.
+	delta := (nextEvent position - lastP) * (now - lastEvent timeStamp) // (nextTime - lastEvent timeStamp).
 	delta = lastDelta ifTrue: [^ nil]. "No movement"
-	lastDelta _ delta.
+	lastDelta := delta.
 	^MouseMoveEvent new
 		setType: #mouseMove 
 		startPoint: lastEvent position endPoint: lastP + delta

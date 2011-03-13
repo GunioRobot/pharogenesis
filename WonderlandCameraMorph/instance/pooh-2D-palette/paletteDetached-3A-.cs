@@ -1,2 +1,0 @@
-paletteDetached: aPaintBoxMorph
-	self cancel	

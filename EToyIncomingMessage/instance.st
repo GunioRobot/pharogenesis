@@ -1,6 +1,6 @@
 Object
 	subclass: #EToyIncomingMessage
 	instanceVariableNames: ''
-	classVariableNames: 'MessageHandlers MessageTypes '
+	classVariableNames: 'MessageHandlers MessageTypes'
 	poolDictionaries: ''
-	category: 'Morphic-Experimental'
+	category: 'Nebraska-Morphic-Experimental'

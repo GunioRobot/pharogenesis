@@ -3,9 +3,9 @@ scanFor: anObject
 
 	| element start finish |
 
-	start _ (anObject hash \\ array size) + 1.
 	finish _ array size.
-
+	start _ (anObject hash \\ finish) + 1.
+	
 	"Search from (hash mod size) to the end."
 	start to: finish do:
 		[:index | ((element _ array at: index) == flag or: [element = anObject])

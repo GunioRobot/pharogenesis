@@ -1,0 +1,2 @@
+getHelpOf: item
+	^'help'

@@ -1,2 +1,0 @@
-nullCategory
-	^ NullCategory

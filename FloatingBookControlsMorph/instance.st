@@ -3,4 +3,4 @@ AlignmentMorph
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Navigators'
+	category: 'MorphicExtras-Navigators'

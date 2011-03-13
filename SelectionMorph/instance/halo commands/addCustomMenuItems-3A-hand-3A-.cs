@@ -16,9 +16,13 @@ addCustomMenuItems: aMenu hand: aHandMorph
 		#-.
 		{'align centers vertically' translated. #alignCentersVertically}.
 		{'align centers horizontally' translated. #alignCentersHorizontally}.
-		#-.
-		{'distribute vertically' translated. #distributeVertically}.
-		{'distribute horizontally' translated. #distributeHorizontally}.
-		}
+		}.
 
-
+	self selectedItems size > 2
+		ifTrue:[
+			aMenu addList: {
+				#-.
+				{'distribute vertically' translated. #distributeVertically}.
+				{'distribute horizontally' translated. #distributeHorizontally}.
+				}.
+		].

@@ -2,9 +2,9 @@ chasePointers
 	| saved |
 	selectedProcess
 		ifNil: [^ self].
-	saved _ selectedProcess.
-	[selectedProcess _ nil.
+	saved := selectedProcess.
+	[selectedProcess := nil.
 	(Smalltalk includesKey: #PointerFinder)
 		ifTrue: [PointerFinder on: saved]
 		ifFalse: [self inspectPointers]]
-		ensure: [selectedProcess _ saved]
+		ensure: [selectedProcess := saved]

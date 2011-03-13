@@ -1,21 +1,21 @@
 condenseChanges
 	"Move all the changes onto a compacted sources file."
 	"Smalltalk condenseChanges"
-	| f oldChanges classCount |
+	| f oldChanges count |
 	f := FileStream fileNamed: 'ST80.temp'.
 	f header; timeStamp.
 	'Condensing Changes File...'
 		displayProgressAt: Sensor cursorPoint
 		from: 0
-		to: self classNames size
+		to: self classNames size + self traitNames size
 		during: [:bar | 
-			classCount := 0.
+			count := 0.
 			self
-				allClassesDo: [:class | 
-					bar value: (classCount := classCount + 1).
-					class moveChangesTo: f.
-					class putClassCommentToCondensedChangesFile: f.
-					class class moveChangesTo: f]].
+				allClassesAndTraitsDo: [:classOrTrait | 
+					bar value: (count := count + 1).
+					classOrTrait moveChangesTo: f.
+					classOrTrait putClassCommentToCondensedChangesFile: f.
+					classOrTrait classSide moveChangesTo: f]].
 	SmalltalkImage current lastQuitLogPosition: f position.
 	f trailer; close.
 	oldChanges := SourceFiles at: 2.

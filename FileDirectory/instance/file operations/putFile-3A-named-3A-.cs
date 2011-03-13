@@ -3,7 +3,7 @@ putFile: file1 named: destinationFileName
 
 	| file2 |
 	file1 binary.
-	(file2 _ self newFileNamed: destinationFileName) ifNil: [^ false].
+	(file2 := self newFileNamed: destinationFileName) ifNil: [^ false].
 	file2 binary.
 	self copyFile: file1 toFile: file2.
 	file1 close.

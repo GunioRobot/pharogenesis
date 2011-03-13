@@ -3,6 +3,6 @@ updateTargetAt: mSecs
 
 	mSecs < nextRecomputeTime ifTrue: [^ false].
 	self computeSlopeAtMSecs: mSecs.
-	mSecsForChange < 5 ifTrue: [mSecsForChange _ 5].  "don't change instantly to avoid clicks"
+	mSecsForChange < 5 ifTrue: [mSecsForChange := 5].  "don't change instantly to avoid clicks"
 	target adjustVolumeTo: targetVol * scale overMSecs: mSecsForChange.
 	^ false

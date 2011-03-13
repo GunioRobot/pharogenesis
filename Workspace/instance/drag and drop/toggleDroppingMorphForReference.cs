@@ -1,4 +1,4 @@
 toggleDroppingMorphForReference
 
-	acceptDroppedMorphs _ acceptDroppedMorphs not.
+	acceptDroppedMorphs := acceptDroppedMorphs not.
 		

@@ -4,10 +4,10 @@ initListFrom: selectorCollection highlighting: aClass
 	| defClass item |
 	messageList := OrderedCollection new.
 	selectorCollection do: 
-		[:selector |  defClass _ aClass whichClassIncludesSelector: selector.
+		[:selector |  defClass := aClass whichClassIncludesSelector: selector.
 		(defClass notNil and: [defClass includesBehavior: self limitClass]) ifTrue:
-			[item _ selector, '     (' , defClass name , ')'.
-			item _ item asText.
+			[item := selector, '     (' , defClass name , ')'.
+			item := item asText.
 			defClass == aClass ifTrue: [item allBold].
 			"(self isThereAnOverrideOf: selector) ifTrue: [item addAttribute: TextEmphasis struckOut]."
 			"The above has a germ of a good idea but could be very slow"

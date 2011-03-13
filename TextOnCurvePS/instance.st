@@ -3,4 +3,4 @@ TextOnCurve
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Text Support'
+	category: 'MorphicExtras-Text Support'

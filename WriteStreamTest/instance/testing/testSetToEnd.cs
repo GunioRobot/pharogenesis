@@ -1,7 +1,8 @@
 testSetToEnd
+
 	| string stream |
-	string _ 'hello'.
-	stream _ WriteStream with: ''.
+	string := 'hello'.
+	stream := WriteStream with: ''.
 	stream nextPutAll: string.
 	self assert: stream position = string size.
 	stream setToEnd.

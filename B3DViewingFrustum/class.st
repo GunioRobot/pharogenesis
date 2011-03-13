@@ -1,1 +1,0 @@
-B3DViewingFrustum class instanceVariableNames: ''

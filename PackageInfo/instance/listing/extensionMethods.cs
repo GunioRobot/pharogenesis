@@ -1,2 +1,2 @@
 extensionMethods
-	^ self externalClasses gather: [:class | self extensionMethodsForClass: class]
+	^ self externalBehaviors gather: [:classOrTrait | self extensionMethodsForClass: classOrTrait]

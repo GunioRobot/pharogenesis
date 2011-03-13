@@ -1,2 +1,0 @@
-isAlphabetic
-	^ self isLetter

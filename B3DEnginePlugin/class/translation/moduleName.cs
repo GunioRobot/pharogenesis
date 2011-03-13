@@ -1,2 +1,0 @@
-moduleName
-	^'Squeak3D'

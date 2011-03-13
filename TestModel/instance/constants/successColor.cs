@@ -1,3 +1,0 @@
-successColor
-
-	^self class successColor

@@ -1,11 +1,11 @@
 makeAMovie
 	| scoreController score |
-	frameSize _ 640@480.  frameDepth _ 16.  self makeMyPage; changed.
+	frameSize := 640@480.  frameDepth := 16.  self makeMyPage; changed.
 
-	(score _ MIDIScore new initialize) "addAmbientEvent: (AmbientEvent new time: 200*60)".
-	scoreController _ ScorePlayerMorph new
+	(score := MIDIScore new initialize) "addAmbientEvent: (AmbientEvent new time: 200*60)".
+	scoreController := ScorePlayerMorph new
 			onScorePlayer: (ScorePlayer onScore: score) title: 'sMovie'.
-	pianoRoll _ PianoRollScoreMorph new on: scoreController scorePlayer.
+	pianoRoll := PianoRollScoreMorph new on: scoreController scorePlayer.
 	self pianoRoll: pianoRoll.  "back link"
 	pianoRoll enableDragNDrop;
 		useRoundedCorners;

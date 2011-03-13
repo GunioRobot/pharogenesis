@@ -1,7 +1,7 @@
 ScrollPane
 	subclass: #SimpleHierarchicalListMorph
 	instanceVariableNames:
-		'selectedMorph getListSelector keystrokeActionSelector autoDeselect expandedForm notExpandedForm columns sortingSelector getSelectionSelector setSelectionSelector potentialDropMorph '
+		'selectedMorph getListSelector keystrokeActionSelector autoDeselect columns sortingSelector getSelectionSelector setSelectionSelector potentialDropMorph lineColor'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Tools-Explorer'
+	category: 'Morphic-Explorer'

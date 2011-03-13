@@ -21,7 +21,8 @@ printOn: aStream total: total totalTime: totalTime tallyExact: isExact
 				nextPutAll: 'primitives';
 				cr]
 		ifFalse: 
-			[aSelector := class selectorAtMethod: method setClass: [:c | aClass := c].
+			[aSelector := method selector.
+			aClass := method methodClass.
 			className := aClass name contractTo: self maxClassNameSize.
 			aStream
 				nextPutAll: class name;

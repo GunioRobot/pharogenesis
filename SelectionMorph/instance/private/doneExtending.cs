@@ -4,9 +4,10 @@ doneExtending
 		[selectedItems _ otherSelection selectedItems , selectedItems.
 		otherSelection delete.
 		self setOtherSelection: nil].
-	self changed; layoutChanged.
+	self changed.
+	self layoutChanged.
 	super privateBounds:
-		((Rectangle merging: (selectedItems collect: [:m | m bounds]))
+		((Rectangle merging: (selectedItems collect: [:m | m fullBounds]))
 			expandBy: 8).
 	self changed.
 	self addHalo.

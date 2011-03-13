@@ -1,0 +1,1 @@
+MCFrontier class instanceVariableNames: ''

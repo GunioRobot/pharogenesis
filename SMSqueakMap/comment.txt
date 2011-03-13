@@ -1,16 +1,17 @@
-A SqueakMap is a Squeak code package metacatalog - a catalog of all available Squeak packages. SMSqueakMap is the class for the domain model.
+SqueakMap is a Squeak meta catalog, primarily a catalog of all available Squeak packages.
+SMSqueakMap is the class for the domain model.
 
-One master instance lives on a server on the Internet at map1.squeakfoundation.org (but there are fallback servers too). Then each Squeak connected to the Internet has one instance that is synchronized incrementally against the master. This way every user can have an updated catalog of all available Squeak software on the planet locally on their machine. :-)
+One master instance lives on a server on the Internet at map1.squeakfoundation.org (but there are fallback servers too). Then each Squeak connected to the Internet has one instance that is synchronized against the master. This way every user can have an updated catalog of all available Squeak software on the planet locally on their machine. :-)
 
-Typically you only need one instance of SMSqueakMap per image and it is held by a singleton class variable reached with "SMSqueakMap default". If it is not there it will then be created together with it's own filelog on disk by default in the "sm" directory created in your default directory.
+Typically you only need one instance of SMSqueakMap per image and it is held by a singleton class variable reached with "SMSqueakMap default". If it is not there it will then be created together with it's own directory on disk by default the "sm" directory created in your default directory.
 
-The map is continously mirrored in a log-file and every operation on the map open and close the log-file to ensure nothing is lost. Synching with the master is the only action that affects the map so you can actually use the same map from multiple images (they will by default use the same logfile if the images have the same default directory) and multiple tools (SMLoader, SMBrowser or others) as long as you always do a "SMSqueakMap default reloadLog" before anything else when you switch image!
+Synching with the master is the only action that affects the map so you can actually use the same map from multiple images (they will by default use the same snapshot files if the images have the same default directory) and multiple tools (SMLoader, SMBrowser or others).
 
-An instance of SMSqueakMap contains instances of SMCard which are "library cards" for Squeak packages and SMCategories which are centrally registered values that can be included as attributes in an SMCard. An example of such a category would be different kinds of licenses, topic etc. etc.
+An instance of SMSqueakMap contains instances of SMPackage which which represent Squeak packages and SMCategories which are centrally registered values that can be included as attributes in an SMPackage. An example of such a category would be different kinds of licenses, topic etc. etc.
 
-It also contains instances of SMRepository which are registered Squeak module repositories and their respective top module. This way the SqueakMap can resolve a module path to the correct repository. Note: this is for 3.3a Modules which is not really used yet.
+It also contains instances of SMAccount which are registered Squeak developers, the maintainers of the packages.
 
-Finally SMSqueakMap also contains "in image only" state (not logged in logfile) about what packages and versions of them have been installed in the image. This is the Dictionary installedPackages.
+Finally SMSqueakMap also refers to a registry object (SMInstallationRegistry) which records what packages and releases of them have been installed in the image
 --------------------
 "Simplest use of SMSqueakMap - this will create a map if you don't have one and open a simple UI""
 SMLoader open
@@ -23,8 +24,8 @@ Smalltalk at: #AnotherSqueakMap put: (SMSqueakMap newIn: 'slavemap')
 "Update the default map by synching it with the master - check Transcript for some numbers."
 SMSqueakMap default loadUpdates
 
-"If the map is broken in some way, reload it from the log"
-SMSqueakMap default reloadLog
+"If the map is broken in some way, reload it from disk"
+SMSqueakMap default reload
 
-"If you want to rotate the log and save the current SqueakMap in the new log"
-SMSqueakMap default saveNewLog
+"Clear out the contents of the map to save image space, this does not remove the registry."
+SMSqueakMap default purge

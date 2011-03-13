@@ -1,2 +1,0 @@
-dragNDropWithAnimation
-	^ self valueOfFlag: #dragNDropWithAnimation

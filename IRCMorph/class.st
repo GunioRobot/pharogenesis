@@ -1,1 +1,0 @@
-IRCMorph class instanceVariableNames: ''

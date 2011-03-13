@@ -3,7 +3,7 @@ startMIDIPlaying
 
 	midiPort ensureOpen.
 	midiPlayerProcess ifNotNil: [midiPlayerProcess terminate].
-	midiPlayerProcess _ [self midiPlayLoop] newProcess.
+	midiPlayerProcess := [self midiPlayLoop] newProcess.
 	midiPlayerProcess
 		priority: Processor userInterruptPriority;
 		resume.

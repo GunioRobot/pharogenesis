@@ -1,0 +1,1 @@
+WideString class instanceVariableNames: ''

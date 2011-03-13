@@ -1,6 +1,6 @@
 MouseMenuController
 	subclass: #ScrollController
-	instanceVariableNames: 'scrollBar marker savedArea menuBar savedMenuBarArea '
+	instanceVariableNames: 'scrollBar marker savedArea menuBar savedMenuBarArea'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Kernel-ST80 Remnants'
+	category: 'ST80-Kernel-Remnants'

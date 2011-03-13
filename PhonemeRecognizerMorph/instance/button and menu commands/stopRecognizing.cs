@@ -2,4 +2,4 @@ stopRecognizing
 	"Stop listening."
 
 	soundInput stopRecording.
-	currentPhoneme _ silentPhoneme.
+	currentPhoneme := recognizer silentPhoneme.

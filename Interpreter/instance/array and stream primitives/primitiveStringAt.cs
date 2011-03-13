@@ -1,3 +1,0 @@
-primitiveStringAt
-
-	self commonAt: true.

@@ -1,1 +1,0 @@
-IRCProtocolMessage class instanceVariableNames: ''

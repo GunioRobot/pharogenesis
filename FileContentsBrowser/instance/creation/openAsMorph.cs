@@ -1,12 +1,12 @@
 openAsMorph
 	"Create a pluggable version of all the views for a Browser, including views and controllers."
 	| window aListExtent next mySingletonList |
-	window _ (SystemWindow labelled: 'later') model: self.
+	window := (SystemWindow labelled: 'later') model: self.
 	self packages size = 1
 		ifTrue: [
-			aListExtent _ 0.333333 @ 0.34.
+			aListExtent := 0.333333 @ 0.34.
 			self systemCategoryListIndex: 1.
-			mySingletonList _ PluggableListMorph on: self list: #systemCategorySingleton
+			mySingletonList := PluggableListMorph on: self list: #systemCategorySingleton
 					selected: #indexIsOne changeSelected: #indexIsOne:
 					menu: #packageListMenu:
 					keystroke: #packageListKey:from:.
@@ -14,7 +14,7 @@ openAsMorph
 			window addMorph: mySingletonList frame: (0@0 extent: 1.0@0.06).
 			next := 0@0.06]
 		ifFalse: [
-			aListExtent _ 0.25 @ 0.4.
+			aListExtent := 0.25 @ 0.4.
 			window addMorph: (PluggableListMorph on: self list: #systemCategoryList
 					selected: #systemCategoryListIndex changeSelected: #systemCategoryListIndex:
 					menu: #packageListMenu:

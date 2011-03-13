@@ -1,3 +1,3 @@
 channels: anArray
 
-	channels _ anArray.
+	channels := anArray.

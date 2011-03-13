@@ -6,7 +6,7 @@ storeSampleCount: samplesToStore bigEndian: bigEndianFlag on: aBinaryStream
 		^ super storeSampleCount: samplesToStore bigEndian: bigEndianFlag on: aBinaryStream].
 
 	"optimization: if I'm not stereo and sampling rates match, just store my buffer"
-	reverseBytes _ bigEndianFlag ~= SmalltalkImage current  isBigEndian.
+	reverseBytes := bigEndianFlag ~= SmalltalkImage current  isBigEndian.
 	reverseBytes ifTrue: [leftSamples reverseEndianness].
 	(aBinaryStream isKindOf: StandardFileStream)
 		ifTrue: [  "optimization for files: write sound buffer directly to file"

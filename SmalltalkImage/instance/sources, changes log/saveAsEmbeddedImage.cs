@@ -3,7 +3,7 @@ saveAsEmbeddedImage
 
 	| dir newName newImageName newImageSegDir oldImageSegDir haveSegs |
 	dir := FileDirectory default.
-	newName := FillInTheBlank request: 'Select existing VM file'
+	newName := UIManager default request: 'Select existing VM file'
 				initialAnswer: (FileDirectory localNameFor: '').
 	newName = '' ifTrue: [^Smalltalk].
 	newName := FileDirectory baseNameFor: newName asFileName.

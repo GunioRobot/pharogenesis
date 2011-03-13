@@ -3,14 +3,14 @@ annotation
 
 	| annot aChange aClass |
 
-	annot _ super annotation.
+	annot := super annotation.
 	annot asString = '------' ifTrue: [^ annot].
 
-	^ ((aChange _ self currentChange) notNil and: [aChange methodSelector notNil])
+	^ ((aChange := self currentChange) notNil and: [aChange methodSelector notNil])
 		ifFalse:
 			[annot]
 		ifTrue:
-			[((aClass _ aChange methodClass) isNil or: [(aClass includesSelector: aChange methodSelector) not])
+			[((aClass := aChange methodClass) isNil or: [(aClass includesSelector: aChange methodSelector) not])
 				ifTrue:
 					[aChange methodClassName, ' >> ', aChange methodSelector, ' is not present in the current image.']
 				ifFalse:

@@ -3,5 +3,5 @@ closeAllPorts
 	"SimpleMIDIPort closeAllPorts"
 
 	| lastPortNum |
-	lastPortNum _ self primPortCount - 1.
+	lastPortNum := self primPortCount - 1.
 	0 to: lastPortNum do: [:portNum | self basicNew primMIDIClosePort: portNum].

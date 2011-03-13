@@ -1,0 +1,1 @@
+MCDefinitionIndex class instanceVariableNames: ''

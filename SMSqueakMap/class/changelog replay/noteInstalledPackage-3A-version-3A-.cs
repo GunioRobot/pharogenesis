@@ -7,9 +7,10 @@ noteInstalledPackage: uuidString version: version
 	DefaultMap
 		ifNotNil: [DefaultMap noteInstalledPackage: uuidString version: version]
 		ifNil: [
-			[choice _ PopUpMenu withCaption:
+			[choice := UIManager default chooseFrom: #('Yes' 'No' 'More info')
+				title:
 'There is no SqueakMap in this image,
-do you wish to create/recreate it? (typical answer is Yes)' chooseFrom: 'Yes\No\More info'.
+do you wish to create/recreate it? (typical answer is Yes)' .
 			choice = 3] whileTrue: [self inform:
 'When packages are installed using SqueakMap a little mark is made
 in the change log. When an image is reconstructed from the changelog

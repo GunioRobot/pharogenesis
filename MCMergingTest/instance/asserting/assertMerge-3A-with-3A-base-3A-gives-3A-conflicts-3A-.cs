@@ -1,7 +1,7 @@
 assertMerge: local with: remote base: ancestor gives: result conflicts: conflictResult
 	| merger |
-	conflicts _ #().
-	merger _ MCThreeWayMerger
+	conflicts := #().
+	merger := MCThreeWayMerger
 				base: (self snapshotWithElements: local)
 				target: (self snapshotWithElements: remote)
 				ancestor: (self snapshotWithElements: ancestor).

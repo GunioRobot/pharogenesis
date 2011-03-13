@@ -1,1 +1,0 @@
-I represent simple 3D coordinates, used throughout the entire Balloon 3D engine.

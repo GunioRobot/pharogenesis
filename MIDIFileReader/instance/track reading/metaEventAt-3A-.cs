@@ -2,12 +2,12 @@ metaEventAt: ticks
 	"Read a meta event. Event types appear roughly in order of expected frequency."
 
 	| type length tempo |
-	type _ trackStream next.
-	length _ self readVarLengthIntFrom: trackStream.
+	type := trackStream next.
+	length := self readVarLengthIntFrom: trackStream.
 
 	type = 16r51 ifTrue: [  "tempo"
-		tempo _ 0.
-		length timesRepeat: [tempo _ (tempo bitShift: 8) + trackStream next].
+		tempo := 0.
+		length timesRepeat: [tempo := (tempo bitShift: 8) + trackStream next].
 		track add: (TempoEvent new tempo: tempo; time: ticks).
 		^ self].
 

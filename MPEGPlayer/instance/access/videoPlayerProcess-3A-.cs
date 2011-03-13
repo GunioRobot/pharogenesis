@@ -1,2 +1,2 @@
 videoPlayerProcess: aProcess
-	videoPlayerProcess _ aProcess
+	videoPlayerProcess := aProcess

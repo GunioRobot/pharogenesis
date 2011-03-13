@@ -1,6 +1,6 @@
 Collection
 	subclass: #Set
-	instanceVariableNames: 'tally array '
+	instanceVariableNames: 'tally array'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Collections-Unordered'

@@ -7,3 +7,4 @@ selectedItem _ selectedItem veryDeepCopyWith: deepCopier.
 stayUp _ stayUp veryDeepCopyWith: deepCopier.
 popUpOwner _ popUpOwner.		"Weakly copied"
 activeSubMenu _ activeSubMenu. "Weakly copied"
+activatorDockingBar _ activatorDockingBar.  "Weakly copied"

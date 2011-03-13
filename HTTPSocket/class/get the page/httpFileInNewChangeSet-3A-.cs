@@ -4,9 +4,9 @@ httpFileInNewChangeSet: url
 	"	HTTPSocket httpFileInNewChangeSet: '206.18.68.12/squeak/updates/83tk_test.cs'	 "
 
 	| doc |
-	doc _ self httpGet: url accept: 'application/octet-stream'.
+	doc := self httpGet: url accept: 'application/octet-stream'.
 	doc isString ifTrue:
 			[self inform: 'Cannot seem to contact the web site'].
 	doc reset.
-	ChangeSorter newChangesFromStream: doc
+	ChangeSet newChangesFromStream: doc
 				named: (url findTokens: '/') last.

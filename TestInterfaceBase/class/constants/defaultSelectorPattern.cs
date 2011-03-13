@@ -1,3 +1,0 @@
-defaultSelectorPattern
-
-	^'test*' copy

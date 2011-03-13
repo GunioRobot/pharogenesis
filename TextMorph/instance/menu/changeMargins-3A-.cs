@@ -14,9 +14,10 @@ changeMargins: evt
 			[:newPoint | handle deleteBalloon.
 			self halo ifNotNilDo: [:halo | halo addHandles].
 			self rememberCommand:
-				(Command new cmdWording: 'margin change' translated;
+				(Command new cmdWording: ('margin change for ' translated,self nameForUndoWording);
 					undoTarget: self selector: #margins: argument: oldMargin;
-					redoTarget: self selector: #margins: argument: newMargin)].
+					redoTarget: self selector: #margins: argument: newMargin;
+					yourself)].
 	aHand attachMorph: handle.
 	handle setProperty: #helpAtCenter toValue: true.
 	handle showBalloon:

@@ -1,7 +1,7 @@
 nameForCode: aStringOrChar
 
 	| ch |
-	ch _ (aStringOrChar isString) ifTrue: [aStringOrChar first] ifFalse: [aStringOrChar].
+	ch := (aStringOrChar isString) ifTrue: [aStringOrChar first] ifFalse: [aStringOrChar].
 	ch == self codeBalloonOval ifTrue: [^'balloon oval'].
 	ch == self codeBalloonRect ifTrue: [^'balloon rectangle'].
 	ch == self codeClip ifTrue: [^'clip'].

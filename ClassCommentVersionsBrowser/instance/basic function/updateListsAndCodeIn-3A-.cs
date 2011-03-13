@@ -1,6 +1,6 @@
 updateListsAndCodeIn: aWindow
 	| aComment |
-	aComment _ classOfMethod organization commentRemoteStr.
+	aComment := classOfMethod organization commentRemoteStr.
 	aComment == currentCompiledMethod
 		ifFalse:
 			["Do not attempt to formulate if there is no source pointer.

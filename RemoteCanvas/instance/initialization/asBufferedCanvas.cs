@@ -2,7 +2,7 @@ asBufferedCanvas
 
 	| bufferedCanvas |
 
-	bufferedCanvas _ BufferedCanvas new.
+	bufferedCanvas := BufferedCanvas new.
 	connection cachingEnabled: false.
 	bufferedCanvas
 		connection: connection

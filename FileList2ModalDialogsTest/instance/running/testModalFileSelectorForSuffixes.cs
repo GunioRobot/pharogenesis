@@ -1,8 +1,8 @@
 testModalFileSelectorForSuffixes
 	| window fileList2 |
-	window _ FileList2 morphicViewFileSelectorForSuffixes: nil.
+	window := FileList2 morphicViewFileSelectorForSuffixes: nil.
 	window openCenteredInWorld.
-	fileList2 _ window valueOfProperty: #fileListModel.
+	fileList2 := window valueOfProperty: #fileListModel.
 	fileList2 fileListIndex: 1.
 	window delete.
 	self assert: fileList2 getSelectedFile isNil.

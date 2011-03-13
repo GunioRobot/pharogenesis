@@ -1,2 +1,0 @@
-isEmpty
-	^stop = 0

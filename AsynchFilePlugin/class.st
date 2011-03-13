@@ -1,1 +1,0 @@
-AsynchFilePlugin class instanceVariableNames: ''

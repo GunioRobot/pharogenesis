@@ -1,6 +1,6 @@
 nextShort
 
 	| value |
-	value _ fontData shortAt: offset bigEndian: true.
-	offset _ offset + 2.
+	value := fontData shortAt: offset bigEndian: true.
+	offset := offset + 2.
 	^value

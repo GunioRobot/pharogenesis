@@ -1,6 +1,6 @@
 WriteStream
 	subclass: #ZipEncoder
-	instanceVariableNames: 'bitBuffer bitPosition encodedStream '
+	instanceVariableNames: 'bitBuffer bitPosition encodedStream'
 	classVariableNames: ''
-	poolDictionaries: 'ZipConstants '
-	category: 'System-Compression'
+	poolDictionaries: 'ZipConstants'
+	category: 'Compression-Streams'

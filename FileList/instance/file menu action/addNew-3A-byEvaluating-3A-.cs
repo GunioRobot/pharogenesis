@@ -5,7 +5,7 @@ addNew: aString byEvaluating: aBlock
 
 	| response newName index ending |
 	self okToChange ifFalse: [^ self].
-	(response := FillInTheBlank
+	(response := UIManager default
 						request: ('New {1} Name?' translated format: {aString translated})
 						initialAnswer: ('{1}Name' translated format: {aString translated}))
 		isEmpty ifTrue: [^ self].

@@ -5,13 +5,13 @@ CanvasEncoder explainTestVars
 	| answer total oneBillion data putter nReps |
 
 	SimpleCounters ifNil: [^ Beeper beep].
-	total _ 0.
-	oneBillion _ 1000 * 1000 * 1000.
-	answer _ String streamContents: [ :strm |
-		data _ SimpleCounters copy.
-		putter _ [ :msg :index :nSec |
-			nReps _ data at: index.
-			total _ total + (nSec * nReps).
+	total := 0.
+	oneBillion := 1000 * 1000 * 1000.
+	answer := String streamContents: [ :strm |
+		data := SimpleCounters copy.
+		putter := [ :msg :index :nSec |
+			nReps := data at: index.
+			total := total + (nSec * nReps).
 			strm nextPutAll: nReps asStringWithCommas,' * ',nSec printString,' ',
 					(nSec * nReps / oneBillion roundTo: 0.01) printString,' secs for ',msg; cr
 		].

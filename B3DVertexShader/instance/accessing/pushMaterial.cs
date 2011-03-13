@@ -1,2 +1,0 @@
-pushMaterial
-	materialStack addLast: material.

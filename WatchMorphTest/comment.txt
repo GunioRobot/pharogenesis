@@ -1,0 +1,3 @@
+A WatchMorphTest is a a sunit test of WatchMorpht.  It was first implemented when fixing some broken functionality.
+
+My fixtures are morph, a WatchMorph.  

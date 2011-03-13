@@ -1,2 +1,0 @@
-specialCharacter: someCharacter
-	specialCharacter _ someCharacter

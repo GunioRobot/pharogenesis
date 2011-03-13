@@ -1,2 +1,0 @@
-endParsingMarkup
-	parsingMarkup _ false

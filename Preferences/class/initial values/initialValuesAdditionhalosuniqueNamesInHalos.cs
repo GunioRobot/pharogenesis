@@ -1,2 +1,0 @@
-initialValuesAdditionhalosuniqueNamesInHalos
-	^ #((uniqueNamesInHalos false (halos ) ) )

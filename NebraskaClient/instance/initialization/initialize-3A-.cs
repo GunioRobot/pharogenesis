@@ -5,9 +5,9 @@ initialize: aConnection
 	connection := aConnection.
 	hand := RemoteControlledHandMorph on: (MorphicEventDecoder on: aConnection).
 	hand nebraskaClient: self.
-	remoteAddress _ connection remoteAddress.
-	remoteAddress ifNotNil: [remoteAddress _ NetNameResolver stringFromAddress: remoteAddress].
-	userPicture _ EToySenderMorph pictureForIPAddress: remoteAddress.
+	remoteAddress := connection remoteAddress.
+	remoteAddress ifNotNil: [remoteAddress := NetNameResolver stringFromAddress: remoteAddress].
+	userPicture := EToySenderMorph pictureForIPAddress: remoteAddress.
 	hand
 		userInitials: ((EToySenderMorph nameForIPAddress: remoteAddress) ifNil: ['???'])
 		andPicture: (userPicture ifNotNil: [userPicture scaledToSize: 16@20]).

@@ -4,7 +4,7 @@ addAlansAnchorFor: aMorph
 
 	self removeAlansAnchorFor: aMorph.
 	ed _ self editor.
-	attribute _ TextAnchorPlus new anchoredMorph: aMorph.
+	attribute _ TextAnchor new anchoredMorph: aMorph.
 	aMorph setProperty: #geeMailLeftOffset toValue: aMorph left - self left.
 	ed replaceSelectionWith: (ed selection addAttribute: attribute).
 	selRects _ self paragraph selectionRects.

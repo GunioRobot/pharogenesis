@@ -1,7 +1,7 @@
 trackControlsFor: trackIndex
 
 	| r |
-	r _ self makeRow
+	r := self makeRow
 		hResizing: #shrinkWrap;
 		vResizing: #shrinkWrap.
 	r addMorphBack: (self trackNumAndMuteButtonFor: trackIndex).

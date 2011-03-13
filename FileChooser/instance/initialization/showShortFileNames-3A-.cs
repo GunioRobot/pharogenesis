@@ -1,0 +1,2 @@
+showShortFileNames: aBoolean 
+	showShortFileNames := aBoolean

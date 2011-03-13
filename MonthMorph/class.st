@@ -1,1 +1,0 @@
-MonthMorph class instanceVariableNames: ''

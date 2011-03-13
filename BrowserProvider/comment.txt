@@ -1,0 +1,7 @@
+I define the default categories of services dealing with browsing:
+- the class category menu (service identifier: browserClassCategoryMenu)
+- the class menu (browserClassMenu)
+- the method category menu (browserMethodCategoryMenu)
+- the browser method menu (browserMethodMenu)
+- the browser button bar (browserButtonBar)
+- the browser code pane/selection menu (browserCodePaneMenu)

@@ -1,2 +1,0 @@
-isEmpty
-	^tally = 0

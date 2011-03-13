@@ -3,4 +3,4 @@ movieClipPlayer: aMoviePlayerMorph
 	as a cue point for a short clip in a longer score.
 	To a cue point, this method provides a reference to the clip player."
 
-	movieClipPlayer _ aMoviePlayerMorph
+	movieClipPlayer := aMoviePlayerMorph

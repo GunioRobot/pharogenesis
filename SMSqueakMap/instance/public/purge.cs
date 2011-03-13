@@ -5,4 +5,4 @@ purge
 	to disk. Use #reload to get it back from the latest checkpoint on disk."
 
 	objects := accounts := users := packages := categories := nil.
-	checkpointNumber _ 0.
+	checkpointNumber := 0.

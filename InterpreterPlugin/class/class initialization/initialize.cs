@@ -1,2 +1,0 @@
-initialize
-	"Nothing to do ..."

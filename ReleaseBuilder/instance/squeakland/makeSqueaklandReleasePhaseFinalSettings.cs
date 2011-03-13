@@ -28,7 +28,6 @@ makeSqueaklandReleasePhaseFinalSettings
 
 		(externalServerDefsOnly true)
 		(expandedFormat false)
-		(allowCelesteTell false)
 		(eToyFriendly true)
 		(eToyLoginEnabled true)
 		(magicHalos true)
@@ -52,11 +51,11 @@ makeSqueaklandReleasePhaseFinalSettings
 	SystemVersion current resetHighestUpdate.
 
 	"Add the squeakalpha update stream"
-	serverName _ 'Squeakalpha'.
-	serverURL _ 'squeakalpha.org'.
-	serverDir _ serverURL , '/'.
+	serverName := 'Squeakalpha'.
+	serverURL := 'squeakalpha.org'.
+	serverDir := serverURL , '/'.
 
-	updateServer _ ServerDirectory new.
+	updateServer := ServerDirectory new.
 	updateServer
 		server: serverURL;
 		directory: 'updates/';
@@ -66,22 +65,22 @@ makeSqueaklandReleasePhaseFinalSettings
 	Utilities updateUrlLists addFirst: {serverName. {serverDir. }.}.
 
 	"Add the squeakland update stream"
-	serverName _ 'Squeakland'.
-	serverURL _ 'squeakland.org'.
-	serverDir _ serverURL , '/'.
+	serverName := 'Squeakland'.
+	serverURL := 'squeakland.org'.
+	serverDir := serverURL , '/'.
 
-	updateServer _ ServerDirectory new.
+	updateServer := ServerDirectory new.
 	updateServer
 		server: serverURL;
 		directory: 'public_html/updates/';
 		altUrl: serverDir.
 	Utilities updateUrlLists addFirst: {serverName. {serverDir. }.}.
 
-	highestUpdate _ SystemVersion current highestUpdate.
+	highestUpdate := SystemVersion current highestUpdate.
 	(self confirm: 'Reset highest update (' , highestUpdate printString , ')?')
 		ifTrue: [SystemVersion current highestUpdate: 0].
 
-	newVersion _ FillInTheBlank request: 'New version designation:' initialAnswer: 'Squeakland 3.8.' , highestUpdate printString. 
+	newVersion := UIManager default request: 'New version designation:' initialAnswer: 'Squeakland 3.8.' , highestUpdate printString. 
 	SystemVersion newVersion: newVersion.
 	(self confirm: self version , '
 Is this the correct version designation?

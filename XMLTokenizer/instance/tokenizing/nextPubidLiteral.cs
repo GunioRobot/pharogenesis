@@ -1,2 +1,0 @@
-nextPubidLiteral
-	^self nextAttributeValue

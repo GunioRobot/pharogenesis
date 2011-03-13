@@ -3,7 +3,7 @@ copyExtension
 	| copiedExtension |
 	self hasExtension
 		ifFalse: [^ self].
-	copiedExtension _ self extension copy.
+	copiedExtension := self extension copy.
 	copiedExtension removeOtherProperties.
 	self extension otherProperties
 		ifNotNil: [self extension otherProperties

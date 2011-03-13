@@ -1,3 +1,0 @@
-primitivePluckedSoundMix
-	self export: true.
-	^self primPluckedSoundmixSampleCountintostartingAtpan

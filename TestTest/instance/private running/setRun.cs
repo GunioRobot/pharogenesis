@@ -1,3 +1,0 @@
-setRun
-
-	self hasRun: true.

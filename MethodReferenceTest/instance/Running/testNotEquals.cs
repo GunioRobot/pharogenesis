@@ -1,7 +1,7 @@
 testNotEquals
 	| aMethodReference anotherMethodReference |
-	aMethodReference _ MethodReference new.
-	anotherMethodReference _ MethodReference new.
+	aMethodReference := MethodReference new.
+	anotherMethodReference := MethodReference new.
 	""
 	aMethodReference setStandardClass: String methodSymbol: #foo.
 	anotherMethodReference setStandardClass: String class methodSymbol: #foo.

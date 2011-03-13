@@ -3,15 +3,15 @@ measureMaxFrameRate
 
 	| oldFrameRate oldFrameDropping t |
 	self rewindMovie.
-	oldFrameRate _ desiredFrameRate.
-	oldFrameDropping _ allowFrameDropping.
-	desiredFrameRate _ 1000.0.
-	allowFrameDropping _ false.
+	oldFrameRate := desiredFrameRate.
+	oldFrameDropping := allowFrameDropping.
+	desiredFrameRate := 1000.0.
+	allowFrameDropping := false.
 
 	self startPlaying.
-	t _ [[running] whileTrue: [self world doOneCycleNow]] timeToRun.
+	t := [[running] whileTrue: [self world doOneCycleNow]] timeToRun.
 
-	desiredFrameRate _ oldFrameRate.
-	allowFrameDropping _ oldFrameDropping.
+	desiredFrameRate := oldFrameRate.
+	allowFrameDropping := oldFrameDropping.
 
 	^ (mpegFile videoFrames: 0) / (t / 1000.0)

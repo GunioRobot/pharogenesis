@@ -7,8 +7,8 @@ rewindMovie
 	self stopPlaying.
 
 	"re-open the movie, retaining current extent and frame rate"
-	savedExtent _ self extent.
-	savedRate _ desiredFrameRate.
+	savedExtent := self extent.
+	savedRate := desiredFrameRate.
 	self openFileNamed: mpegFile fileName.  "recomputes rate and extent"
 	self extent: savedExtent.
-	desiredFrameRate _ savedRate.
+	desiredFrameRate := savedRate.

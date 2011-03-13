@@ -1,1 +1,0 @@
-I represent a polygon that is defined by a sequence of vertices. Every vertex is connected to two other vertices.

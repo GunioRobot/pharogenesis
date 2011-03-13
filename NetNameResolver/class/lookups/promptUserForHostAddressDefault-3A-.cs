@@ -4,12 +4,12 @@ promptUserForHostAddressDefault: defaultName
 
 	| default hostName serverAddr |
 	defaultName isEmpty
-		ifTrue: [default _ DefaultHostName]
-		ifFalse: [default _ defaultName].
-	hostName _ FillInTheBlank
+		ifTrue: [default := DefaultHostName]
+		ifFalse: [default := defaultName].
+	hostName := UIManager default
 		request: 'Host name or address?'
 		initialAnswer: default.
 	hostName isEmpty ifTrue: [^ 0].
-	serverAddr _ NetNameResolver addressForName: hostName timeout: 15.
-	hostName size > 0 ifTrue: [DefaultHostName _ hostName].
+	serverAddr := NetNameResolver addressForName: hostName timeout: 15.
+	hostName size > 0 ifTrue: [DefaultHostName := hostName].
 	^ serverAddr

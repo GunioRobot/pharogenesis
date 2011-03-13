@@ -1,6 +1,6 @@
 EToyGenericDialogMorph
 	subclass: #EToyProjectRenamerMorph
-	instanceVariableNames: 'actionBlock theProject '
+	instanceVariableNames: 'actionBlock theProject'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Experimental'
+	category: 'EToys-Experimental'

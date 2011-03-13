@@ -1,0 +1,1 @@
+MCMcmWriter class instanceVariableNames: ''

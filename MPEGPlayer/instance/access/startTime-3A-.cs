@@ -1,2 +1,2 @@
 startTime: aArray
-	startTime _ aArray
+	startTime := aArray

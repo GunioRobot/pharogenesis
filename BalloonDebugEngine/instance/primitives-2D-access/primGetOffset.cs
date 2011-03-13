@@ -1,2 +1,0 @@
-primGetOffset
-	^BalloonEnginePlugin doPrimitive: 'gePrimitiveGetOffset'

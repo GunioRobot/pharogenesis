@@ -1,0 +1,1 @@
+PNMReadWriter class instanceVariableNames: ''

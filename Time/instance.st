@@ -1,6 +1,6 @@
 Magnitude
 	subclass: #Time
-	instanceVariableNames: 'seconds '
+	instanceVariableNames: 'seconds nanos'
 	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Kernel-Magnitudes'
+	poolDictionaries: 'ChronologyConstants'
+	category: 'Kernel-Chronology'

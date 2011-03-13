@@ -1,0 +1,3 @@
+getNumberVarOf: val
+
+	^ val.

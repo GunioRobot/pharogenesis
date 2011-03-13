@@ -1,2 +1,3 @@
 putOn:aStream
-	^aStream nextPutAll:self.
+
+	^aStream nextPutAll: self.

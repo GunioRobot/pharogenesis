@@ -1,0 +1,3 @@
+clonedSequentialStub
+
+	^ sequentialStub clone.

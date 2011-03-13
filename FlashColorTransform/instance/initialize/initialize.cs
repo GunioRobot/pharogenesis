@@ -1,3 +1,3 @@
 initialize
-	rMul _ bMul _ gMul _ aMul _ 1.0.
-	rAdd _ bAdd _ gAdd _ aAdd _ 0.0.
+	rMul := bMul := gMul := aMul := 1.0.
+	rAdd := bAdd := gAdd := aAdd := 0.0.

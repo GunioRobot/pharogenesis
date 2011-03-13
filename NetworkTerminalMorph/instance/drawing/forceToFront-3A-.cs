@@ -2,7 +2,7 @@ forceToFront: aRegion
 	| highQuality |
 	"force the given region from the drawing form onto the background form"
 
-	highQuality _ false.		"highQuality is slower"
+	highQuality := false.		"highQuality is slower"
 
 	self updateBackgroundForm.
 	backgroundForm

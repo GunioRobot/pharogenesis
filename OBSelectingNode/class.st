@@ -1,0 +1,1 @@
+OBSelectingNode class instanceVariableNames: ''

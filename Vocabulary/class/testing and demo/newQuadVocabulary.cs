@@ -2,7 +2,7 @@ newQuadVocabulary
 	"Answer a Quad vocabulary -- something to mess with, to illustrate and explore ideas.  Applies to Quadrangles only."
 
 	| aVocabulary  |
-	aVocabulary _ Vocabulary new vocabularyName: #Quad.
+	aVocabulary := Vocabulary new vocabularyName: #Quad.
 	aVocabulary documentation: 'A highly restricted test vocabulary that can be used with Quadrangle objects'.
 	aVocabulary initializeFromTable:  #(
 (borderColor borderColor: () Color (basic color) 'The color of the border' unused updating)

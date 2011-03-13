@@ -3,9 +3,9 @@ updateVolume
 	"This method is provided for documentation. To gain 10% more speed when running sound generation in Smalltalk, it is hand-inlined into all sound generation methods that use it."
 
 		scaledVolIncr ~= 0 ifTrue: [
-			scaledVol _ scaledVol + scaledVolIncr.
+			scaledVol := scaledVol + scaledVolIncr.
 			((scaledVolIncr > 0 and: [scaledVol >= scaledVolLimit]) or:
 			 [scaledVolIncr < 0 and: [scaledVol <= scaledVolLimit]])
 				ifTrue: [  "reached the limit; stop incrementing"
-					scaledVol _ scaledVolLimit.
-					scaledVolIncr _ 0]].
+					scaledVol := scaledVolLimit.
+					scaledVolIncr := 0]].

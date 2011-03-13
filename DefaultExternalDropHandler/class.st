@@ -1,0 +1,1 @@
+DefaultExternalDropHandler class instanceVariableNames: ''

@@ -1,9 +1,9 @@
 processActionGetURL: data
 	| length position urlString winString |
-	length _ data nextWord.
-	position _ data position.
-	urlString _ data nextString.
-	winString _ data nextString.
+	length := data nextWord.
+	position := data position.
+	urlString := data nextString.
+	winString := data nextString.
 	data position = (position + length) ifFalse:[
 		self halt.
 		data position: position.

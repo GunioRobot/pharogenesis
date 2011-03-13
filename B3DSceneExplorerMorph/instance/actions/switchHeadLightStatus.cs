@@ -1,2 +1,0 @@
-switchHeadLightStatus
-	b3DSceneMorph switchHeadLightStatus

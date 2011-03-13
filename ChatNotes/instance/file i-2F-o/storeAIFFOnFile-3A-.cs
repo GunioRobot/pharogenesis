@@ -4,7 +4,7 @@ storeAIFFOnFile: file
 	be implemented at that time."
 	| sampleCount s |
 
-	sampleCount _ recorder recordedSound sounds inject: 0 into: [ :sum :rsound |
+	sampleCount := recorder recordedSound sounds inject: 0 into: [ :sum :rsound |
 		sum + rsound samples monoSampleCount
 	].
 	file nextPutAll: 'FORM' asByteArray.
@@ -22,6 +22,6 @@ storeAIFFOnFile: file
 	file nextInt32Put: 0.
 	(recorder recordedSound sounds) do: [:rsound |
 		1 to: (rsound samples monoSampleCount) do: [:i |
-			s _ rsound samples at: i.
+			s := rsound samples at: i.
 			file nextPut: ((s bitShift: -8) bitAnd: 16rFF).
 			file nextPut: (s bitAnd: 16rFF)]].

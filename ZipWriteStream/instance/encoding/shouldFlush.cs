@@ -12,6 +12,6 @@ shouldFlush
 	"Try to adapt to the input data.
 	We flush if the ratio between matches and literals
 	changes beyound a certain threshold"
-	nLits _ litCount - matchCount.
+	nLits := litCount - matchCount.
 	nLits <= matchCount ifTrue:[^false]. "whow! so many matches"
 	^nLits * 4 <= matchCount

@@ -1,6 +1,6 @@
 StandardFileStream
 	subclass: #CrLfFileStream
-	instanceVariableNames: 'lineEndConvention '
-	classVariableNames: 'Cr CrLf Lf LineEndDefault LineEndStrings LookAheadCount '
+	instanceVariableNames: 'lineEndConvention'
+	classVariableNames: 'Cr CrLf Lf LineEndDefault LineEndStrings LookAheadCount'
 	poolDictionaries: ''
-	category: 'System-Files'
+	category: 'Files-Kernel'

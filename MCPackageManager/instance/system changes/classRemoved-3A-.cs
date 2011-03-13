@@ -1,2 +1,2 @@
 classRemoved: anEvent
-	self classModified: anEvent
+	"obsolete - remove this later"

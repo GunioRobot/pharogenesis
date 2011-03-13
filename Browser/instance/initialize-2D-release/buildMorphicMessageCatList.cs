@@ -2,7 +2,7 @@ buildMorphicMessageCatList
 
 	| myMessageCatList |
 
-	(myMessageCatList _ PluggableMessageCategoryListMorph new) 
+	(myMessageCatList := PluggableMessageCategoryListMorph new) 
 			setProperty: #highlightSelector toValue: #highlightMessageCategoryList:with:;
 
 			on: self list: #messageCategoryList

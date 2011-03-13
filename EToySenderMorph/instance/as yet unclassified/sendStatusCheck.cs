@@ -1,7 +1,7 @@
 sendStatusCheck
 
 	| null |
-	null _ String with: 0 asCharacter.
+	null := String with: 0 asCharacter.
 	EToyPeerToPeer new 
 		sendSomeData: {
 			EToyIncomingMessage typeStatusRequest,null. 

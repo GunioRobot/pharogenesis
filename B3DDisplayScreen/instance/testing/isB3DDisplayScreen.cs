@@ -1,2 +1,0 @@
-isB3DDisplayScreen
-	^true

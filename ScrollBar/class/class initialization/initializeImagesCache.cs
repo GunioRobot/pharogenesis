@@ -8,6 +8,5 @@ initializeImagesCache
 	ScrollBar initializeImagesCache.
 	"
 
-
 	ArrowImagesCache := self createArrowImagesCache.
 	BoxesImagesCache := self createBoxImagesCache

@@ -2,11 +2,11 @@ setLimitClass: aClass
 	"Set aClass as the limit class for this browser"
 
 	| currentClass currentSelector |
-	currentClass _ self selectedClassOrMetaClass.
-	currentSelector _ self selectedMessageName.
+	currentClass := self selectedClassOrMetaClass.
+	currentSelector := self selectedMessageName.
 
 	self limitClass: aClass.
-	categoryList _ nil.
+	categoryList := nil.
 	self categoryListIndex: 0.
 	self changed: #categoryList.
 	self changed: #methodList.

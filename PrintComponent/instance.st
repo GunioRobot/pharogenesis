@@ -3,4 +3,4 @@ TextComponent
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Components'
+	category: 'MorphicExtras-Components'

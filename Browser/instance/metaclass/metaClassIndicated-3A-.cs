@@ -1,7 +1,7 @@
 metaClassIndicated: trueOrFalse 
 	"Indicate whether browsing instance or class messages."
 
-	metaClassIndicated _ trueOrFalse.
+	metaClassIndicated := trueOrFalse.
 	self setClassOrganizer.
 	systemCategoryListIndex > 0 ifTrue:
 		[self editSelection: (classListIndex = 0
@@ -9,9 +9,9 @@ metaClassIndicated: trueOrFalse
 				ifTrue: [#none]
 				ifFalse: [#newClass]]
 			ifFalse: [#editClass])].
-	messageCategoryListIndex _ 0.
-	messageListIndex _ 0.
-	contents _ nil.
+	messageCategoryListIndex := 0.
+	messageListIndex := 0.
+	contents := nil.
 	self changed: #classSelectionChanged.
 	self changed: #messageCategoryList.
 	self changed: #messageList.

@@ -1,0 +1,1 @@
+MCPackageLoader class instanceVariableNames: ''

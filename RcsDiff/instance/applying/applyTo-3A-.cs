@@ -2,22 +2,22 @@ applyTo: aString
 	"Apply me to given String and return the patched String."
 
 	| space commandStream originalStream nextCommand nextLine lineCount currentLine |
-	space _ Character space.
-	commandStream _ ReadStream on: commandLines.
-	originalStream _ ReadStream on: aString.
-	currentLine _ 1.
+	space := Character space.
+	commandStream := ReadStream on: commandLines.
+	originalStream := ReadStream on: aString.
+	currentLine := 1.
 	^String streamContents: [:stream |
-		[nextCommand _ commandStream next.
+		[nextCommand := commandStream next.
 		nextCommand isNil] whileFalse: [ 
-			nextLine _ (commandStream upTo: space) asNumber.
-			lineCount _ commandStream nextLine asNumber.
+			nextLine := (commandStream upTo: space) asNumber.
+			lineCount := commandStream nextLine asNumber.
 			[currentLine = nextLine]
-				whileFalse: [stream nextPutAll: originalStream nextLine; cr. currentLine _ currentLine + 1].
+				whileFalse: [stream nextPutAll: originalStream nextLine; cr. currentLine := currentLine + 1].
 			nextCommand = $d
-				ifTrue:[ lineCount timesRepeat: [originalStream nextLine. currentLine _ currentLine + 1]]
+				ifTrue:[ lineCount timesRepeat: [originalStream nextLine. currentLine := currentLine + 1]]
 				ifFalse:[ nextCommand = $a
 							ifTrue:[ stream nextPutAll: originalStream nextLine; cr.
-									currentLine _ currentLine + 1.
+									currentLine := currentLine + 1.
 									lineCount timesRepeat: [
 										stream nextPutAll: commandStream nextLine; cr]]]].
 		stream nextPutAll: originalStream upToEnd]

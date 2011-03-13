@@ -4,7 +4,8 @@ invokeBookMenu
 	| aMenu |
 	aMenu _ MenuMorph new defaultTarget: self.
 	aMenu addTitle: 'Stack' translated.
-	aMenu addStayUpItem.
+	Preferences noviceMode
+		ifFalse: [aMenu addStayUpItem].
 	aMenu addList: {
 		{'find...' translated.					#textSearch}.
 		{'find via this template' translated.			#findViaTemplate}.

@@ -1,3 +1,0 @@
-correspondingSymbolClass
-
-	^ MultiSymbol

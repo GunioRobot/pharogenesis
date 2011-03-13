@@ -1,0 +1,2 @@
+traitComposition
+	^ item traitComposition

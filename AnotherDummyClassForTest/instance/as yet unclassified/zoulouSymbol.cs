@@ -1,3 +1,0 @@
-zoulouSymbol
-
-	self callingAThirdMethod

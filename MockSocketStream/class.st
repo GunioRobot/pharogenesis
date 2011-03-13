@@ -1,0 +1,1 @@
+MockSocketStream class instanceVariableNames: ''

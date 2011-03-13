@@ -1,6 +1,6 @@
 RectangleMorph
 	subclass: #AbstractMediaEventMorph
-	instanceVariableNames: 'startTimeInScore endTimeInScore '
+	instanceVariableNames: 'startTimeInScore endTimeInScore'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Demo'
+	category: 'MorphicExtras-Demo'

@@ -1,0 +1,2 @@
+isNavigation
+	^ true

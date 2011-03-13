@@ -1,0 +1,1 @@
+SMFileCache class instanceVariableNames: ''

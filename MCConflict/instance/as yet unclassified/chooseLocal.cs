@@ -1,2 +1,2 @@
 chooseLocal
-	chooseRemote _ false
+	chooseRemote := false

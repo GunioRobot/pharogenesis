@@ -1,2 +1,0 @@
-helpMsgsAdditiongeneralinfiniteUndo
-	^ #((infiniteUndo 'if true, then where supported you will be able to roll back to prior states via repeated uses of undo.  Undo history will be purged at save/quit' ) )

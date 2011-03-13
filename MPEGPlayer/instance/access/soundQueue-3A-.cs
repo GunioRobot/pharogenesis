@@ -1,2 +1,2 @@
 soundQueue: aQueue
-	soundQueue _ aQueue
+	soundQueue := aQueue

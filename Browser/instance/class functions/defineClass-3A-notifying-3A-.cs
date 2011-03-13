@@ -5,12 +5,17 @@ defineClass: defString notifying: aController
 	| oldClass class newClassName defTokens keywdIx envt |
 	oldClass _ self selectedClassOrMetaClass.
 	defTokens _ defString findTokens: Character separators.
+	
+	((defTokens first = 'Trait' and: [defTokens second = 'named:'])
+		or: [defTokens second = 'classTrait'])
+		ifTrue: [^self defineTrait: defString notifying: aController].
+		
 	keywdIx _ defTokens findFirst: [:x | x beginsWith: 'category'].
-	envt _ Smalltalk environmentForCategory: ((defTokens at: keywdIx+1) copyWithout: $').
+	envt _ Smalltalk.
 	keywdIx _ defTokens findFirst: [:x | '*subclass*' match: x].
 	newClassName _ (defTokens at: keywdIx+1) copyWithoutAll: '#()'.
 	((oldClass isNil or: [oldClass theNonMetaClass name asString ~= newClassName])
-		and: [envt includesKeyOrAbove: newClassName asSymbol]) ifTrue:
+		and: [envt includesKey: newClassName asSymbol]) ifTrue:
 			["Attempting to define new class over existing one when
 				not looking at the original one in this browser..."
 			(self confirm: ((newClassName , ' is an existing class in this system.

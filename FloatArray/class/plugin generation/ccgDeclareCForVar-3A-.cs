@@ -1,3 +1,0 @@
-ccgDeclareCForVar: aSymbolOrString
-
-	^'float *', aSymbolOrString

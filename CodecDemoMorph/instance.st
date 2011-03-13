@@ -1,6 +1,6 @@
 RectangleMorph
 	subclass: #CodecDemoMorph
-	instanceVariableNames: 'codecClassName '
+	instanceVariableNames: 'codecClassName'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Sound-Interface'
+	category: 'MorphicExtras-SoundInterface'

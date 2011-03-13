@@ -2,8 +2,8 @@ readOnlyFileNamed: fileName
 	"Open an existing file with the given name for reading."
 
 	| fullName f |
-	fullName _ self fullName: fileName.
-	f _ self new open: fullName forWrite: false.
+	fullName := self fullName: fileName.
+	f := self new open: fullName forWrite: false.
 	^ f isNil
 		ifFalse: [f]
 		ifTrue: ["File does not exist..."

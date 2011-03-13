@@ -8,7 +8,7 @@ morphToDropInPasteUp: aPasteUp
 		[^ (Preferences dropProducesWatcher and: [(#(unknown command) includes: self resultType) not] and:
 			[(op _ self operatorTile operatorOrExpression) notNil] and: [op numArgs = 0] and: [(Vocabulary gettersForbiddenFromWatchers includes: op) not])
 			ifTrue:
-				[aWatcher _ self associatedPlayer fancyWatcherFor: op.
+				[aWatcher _ WatcherWrapper new fancyForPlayer: self associatedPlayer getter: op.
 				aWatcher position: self position]
 			ifFalse:
 				[self]].

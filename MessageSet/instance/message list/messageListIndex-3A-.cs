@@ -1,8 +1,8 @@
 messageListIndex: anInteger 
 	"Set the index of the selected item to be anInteger."
 
-	messageListIndex _ anInteger.
-	contents _ 
+	messageListIndex := anInteger.
+	contents := 
 		messageListIndex ~= 0
 			ifTrue: [self selectedMessage]
 			ifFalse: [''].

@@ -2,11 +2,11 @@ commentContents
 	"documentation for the selected method"
 
 	| poss aClass aSelector |
-	^ (poss _ (aClass _ self selectedClassOrMetaClass)
+	^ (poss := (aClass := self selectedClassOrMetaClass)
 						ifNil:
 							['----']
 						ifNotNil:
-							[(aSelector _ self selectedMessageName)
+							[(aSelector := self selectedMessageName)
 								ifNil:
 									['---']
 								ifNotNil:

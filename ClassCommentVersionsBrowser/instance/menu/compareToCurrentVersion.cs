@@ -4,9 +4,9 @@ compareToCurrentVersion
 	| change s1 s2 |
 	listIndex = 0
 		ifTrue: [^ self].
-	change _ changeList at: listIndex.
-	s1 _ classOfMethod organization classComment.
-	s2 _ change string.
+	change := changeList at: listIndex.
+	s1 := classOfMethod organization classComment.
+	s2 := change string.
 	s1 = s2
 		ifTrue: [^ self inform: 'Exact Match'].
 			(StringHolder new

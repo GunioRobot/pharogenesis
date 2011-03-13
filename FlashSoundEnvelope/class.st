@@ -1,1 +1,0 @@
-FlashSoundEnvelope class instanceVariableNames: ''

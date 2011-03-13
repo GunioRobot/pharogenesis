@@ -1,1 +1,0 @@
-B3DHardwareRasterizer class instanceVariableNames: ''

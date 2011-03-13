@@ -1,0 +1,2 @@
+browser
+	^ panel browser

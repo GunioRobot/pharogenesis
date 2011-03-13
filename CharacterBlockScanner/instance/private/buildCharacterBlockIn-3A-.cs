@@ -12,9 +12,10 @@ buildCharacterBlockIn: para
 	destY _ para topAtLineIndex: lineIndex.
 	line _ para lines at: lineIndex.
 	lastIndex _ line first.
-     self setStopConditions.  " also loads the font and loads all emphasis attributes "
 
 	rightMargin _ para rightMarginForDisplay.
+     self setStopConditions.  " also loads the font and loads all emphasis attributes "
+
 
 	(lineIndex = para numberOfLines and:
 		[(destY + line lineHeight) < characterPoint y])

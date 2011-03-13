@@ -1,5 +1,5 @@
 showQueryAsPVM: resultStream
-	| answer gif whatToShow projectName fileName firstURL wrapper currX currY maxX maxY |
+	| answer gif whatToShow projectName fileName firstURL wrapper currX currY maxX maxY rawProjectName |
 "SuperSwikiServer testOnlySuperSwiki queryProjectsAndShow"
 
 	resultStream reset; nextLine.
@@ -10,9 +10,10 @@ showQueryAsPVM: resultStream
 		color: Color paleBlue.
 	currX _ currY _ maxX _ maxY _ 10.
 	[resultStream atEnd] whileFalse: [
-		projectName _ resultStream nextLine.
-		fileName _ resultStream nextLine.
-		gif _ self oldFileOrNoneNamed: projectName,'.gif'.
+		rawProjectName _ resultStream nextLine.
+		projectName _ rawProjectName convertFromEncoding: self encodingName.
+		fileName _ resultStream nextLine convertFromEncoding: self encodingName.
+		gif _ self oldFileOrNoneNamed: rawProjectName,'.gif'.
 		gif ifNotNil: [gif _ GIFReadWriter formFromStream: gif].
 		currX > 600 ifTrue: [
 			currX _ 10.
@@ -55,6 +56,7 @@ showQueryAsPVM: resultStream
 	wrapper color: Color white.
 	wrapper scroller addMorph: answer.
 	wrapper 
+		becomeModal;
 		openCenteredInWorld;
 		useRoundedCorners;
 		setScrollDeltas.

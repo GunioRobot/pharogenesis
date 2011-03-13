@@ -4,7 +4,7 @@ initialize
 
 	| samples |
 	super initialize.
-	samples _ FMSound sineTable.
+	samples := FMSound sineTable.
 	self samples: samples
 		loopEnd: samples size
 		loopLength: samples size

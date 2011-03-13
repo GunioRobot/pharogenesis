@@ -1,2 +1,0 @@
-returnBlock: aBlock
-	returnBlock := aBlock.

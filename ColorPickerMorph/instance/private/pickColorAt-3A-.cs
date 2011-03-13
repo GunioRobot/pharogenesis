@@ -1,6 +1,6 @@
 pickColorAt: aGlobalPoint 
 
-	| alpha selfRelativePoint pickedColor |
+	| alpha selfRelativePoint pickedColor c |
 	clickedTranslucency ifNil: [clickedTranslucency _ false].
 	selfRelativePoint _ (self globalPointToLocal: aGlobalPoint) - self topLeft.
 	(FeedbackBox containsPoint: selfRelativePoint) ifTrue: [^ self].
@@ -23,6 +23,8 @@ pickColorAt: aGlobalPoint
 	clickedTranslucency ifTrue: [^ self].  "Can't wander out of translucency control"
 	self locationIndicator visible: false. self refreshWorld.
 	pickedColor _ Display colorAt: aGlobalPoint.
+	c _ self getColorFromKedamaWorldIfPossible: aGlobalPoint.
+	c ifNotNil: [pickedColor _ c].
 	self locationIndicator visible: true. self refreshWorld.
 	self 
 		updateColor: (

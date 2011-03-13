@@ -1,0 +1,1 @@
+PCXReadWriter class instanceVariableNames: ''

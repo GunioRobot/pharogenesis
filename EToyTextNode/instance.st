@@ -1,6 +1,6 @@
 TextMorph
 	subclass: #EToyTextNode
-	instanceVariableNames: 'children firstDisplay '
+	instanceVariableNames: 'children firstDisplay'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Outliner'
+	category: 'EToys-Outliner'

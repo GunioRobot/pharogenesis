@@ -1,0 +1,2 @@
+category: aString
+	self subclassResponsibility

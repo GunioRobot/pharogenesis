@@ -4,14 +4,14 @@ incrementalComputeValueAtMSecs: mSecs
 
 	| t i |
 	((loopEndMSecs ~~ nil) and: [mSecs >= loopEndMSecs]) ifTrue: [  "decay phase"
-		t _ (points at: loopEndIndex) x + (mSecs - loopEndMSecs).
-		i _ self indexOfPointAfterMSecs: t startingAt: loopEndIndex.
+		t := (points at: loopEndIndex) x + (mSecs - loopEndMSecs).
+		i := self indexOfPointAfterMSecs: t startingAt: loopEndIndex.
 		i == nil ifTrue: [  "past end"
-			currValue _ points last y * scale * decayScale.
-			valueIncr _ 0.0.
-			nextRecomputeTime _ mSecs + 1000000.
+			currValue := points last y * scale * decayScale.
+			valueIncr := 0.0.
+			nextRecomputeTime := mSecs + 1000000.
 			^ currValue].
-		nextRecomputeTime _ mSecs + ((points at: i) x - t).
+		nextRecomputeTime := mSecs + ((points at: i) x - t).
 		^ self computeIncrementAt: t
 			between: (points at: i - 1)
 			and: (points at: i)
@@ -19,20 +19,20 @@ incrementalComputeValueAtMSecs: mSecs
 
 	mSecs < loopStartMSecs
 		ifTrue: [  "attack phase"
-			t _ mSecs.
-			i _ self indexOfPointAfterMSecs: t startingAt: 1.
-			nextRecomputeTime _ mSecs + ((points at: i) x - t)]
+			t := mSecs.
+			i := self indexOfPointAfterMSecs: t startingAt: 1.
+			nextRecomputeTime := mSecs + ((points at: i) x - t)]
 		ifFalse: [  "sustain (looping) phase"
 			noChangesDuringLoop ifTrue: [
-				currValue _ (points at: loopEndIndex) y * scale.
-				valueIncr _ 0.0.
+				currValue := (points at: loopEndIndex) y * scale.
+				valueIncr := 0.0.
 				loopEndMSecs == nil
-					ifTrue: [nextRecomputeTime _ mSecs + 10]  "unknown end time"
-					ifFalse: [nextRecomputeTime _ loopEndMSecs].
+					ifTrue: [nextRecomputeTime := mSecs + 10]  "unknown end time"
+					ifFalse: [nextRecomputeTime := loopEndMSecs].
 				^ currValue].
-			t _ loopStartMSecs + ((mSecs - loopStartMSecs) \\ loopMSecs).
-			i _ self indexOfPointAfterMSecs: t startingAt: loopStartIndex.
-			nextRecomputeTime _ (mSecs + ((points at: i) x - t)) min: loopEndMSecs].
+			t := loopStartMSecs + ((mSecs - loopStartMSecs) \\ loopMSecs).
+			i := self indexOfPointAfterMSecs: t startingAt: loopStartIndex.
+			nextRecomputeTime := (mSecs + ((points at: i) x - t)) min: loopEndMSecs].
 
 	^ self computeIncrementAt: t
 		between: (points at: i - 1)

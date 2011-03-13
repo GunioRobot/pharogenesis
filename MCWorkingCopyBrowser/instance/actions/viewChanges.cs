@@ -1,7 +1,7 @@
 viewChanges
 	| patch |
 	self canSave ifTrue:
-		[patch _ workingCopy changesRelativeToRepository: self repository.
+		[patch := workingCopy changesRelativeToRepository: self repository.
 		patch isNil ifTrue: [^ self].
 		patch isEmpty
 			ifTrue: [ workingCopy modified: false.

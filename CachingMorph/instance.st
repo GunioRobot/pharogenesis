@@ -1,6 +1,6 @@
 Morph
 	subclass: #CachingMorph
-	instanceVariableNames: 'damageRecorder cacheCanvas '
+	instanceVariableNames: 'damageRecorder cacheCanvas'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Kernel'
+	category: 'MorphicExtras-Kernel'

@@ -1,6 +1,6 @@
 Model
 	subclass: #Switch
-	instanceVariableNames: 'on onAction offAction '
+	instanceVariableNames: 'on onAction offAction'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Tools-Menus'
+	category: 'ST80-Menus'

@@ -1,1 +1,0 @@
-B3DPrimitiveTransformer class instanceVariableNames: ''

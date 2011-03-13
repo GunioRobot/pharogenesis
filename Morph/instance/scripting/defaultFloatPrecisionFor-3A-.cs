@@ -3,7 +3,7 @@ defaultFloatPrecisionFor: aGetSelector
 
 	(self renderedMorph decimalPlacesForGetter: aGetSelector) ifNotNilDo: [:places | ^ (Utilities floatPrecisionForDecimalPlaces: places)].
 
-	(#(getCursor getNumericValue getNumberAtCursor getCursorWrapped getScaleFactor) includes: aGetSelector)
+	(#(getCursor getNumericValue getNumberAtCursor getCursorWrapped getScaleFactor getUnitVector getAlpha) includes: aGetSelector)
 		ifTrue:
 			[^ 0.01].
 	^ 1

@@ -1,2 +1,0 @@
-initialValuesRecordWhilePlaying
-	^ #((canRecordWhilePlaying false (media ) ) )

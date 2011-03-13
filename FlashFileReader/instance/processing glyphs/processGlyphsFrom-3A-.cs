@@ -1,11 +1,11 @@
 processGlyphsFrom: data
 	| id bounds matrix |
-	id _ data nextWord.
-	bounds _ data nextRect.
-	matrix _ data nextMatrix.
+	id := data nextWord.
+	bounds := data nextRect.
+	matrix := data nextMatrix.
 	self recordTextStart: id bounds: bounds matrix: matrix.
-	nGlyphBits _ data nextByte.
-	nAdvanceBits _ data nextByte.
+	nGlyphBits := data nextByte.
+	nAdvanceBits := data nextByte.
 	log ifNotNil:[
 		log	nextPutAll:'(nGlyphBits = '; 
 			print: nGlyphBits; 

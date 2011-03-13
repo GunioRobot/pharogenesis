@@ -3,5 +3,5 @@ moniker
 
 	moniker ifNotNil: [^ moniker].
 	directory ifNotNil: [^ self server].
-	urlObject ifNotNil: [^ urlObject toText].
+	urlObject ifNotNil: [^ urlObject asString].
 	^ ''

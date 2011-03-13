@@ -4,17 +4,17 @@ nextPutAll: aCollection
 		ifFalse:[
 			aCollection do:[:ch| self nextPut: ch].
 			^aCollection].
-	start _ 1.
-	count _ aCollection size.
+	start := 1.
+	count := aCollection size.
 	[count = 0] whileFalse:[
 		position = writeLimit ifTrue:[self deflateBlock].
-		max _ writeLimit - position.
-		max > count ifTrue:[max _ count].
+		max := writeLimit - position.
+		max > count ifTrue:[max := count].
 		collection replaceFrom: position+1
 			to: position+max
 			with: aCollection
 			startingAt: start.
-		start _ start + max.
-		count _ count - max.
-		position _ position + max].
+		start := start + max.
+		count := count - max.
+		position := position + max].
 	^aCollection

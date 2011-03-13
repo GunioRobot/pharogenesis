@@ -5,11 +5,11 @@ lastNameFor: baseFileName extension: extension
 
 	| files splits |
 
-	files _ self fileNamesMatching: (baseFileName,'*', self class dot, extension).
-	splits _ files 
+	files := self fileNamesMatching: (baseFileName,'*', self class dot, extension).
+	splits := files 
 			collect: [:file | self splitNameVersionExtensionFor: file]
 			thenSelect: [:split | (split at: 1) = baseFileName].
-	splits _ splits asSortedCollection: [:a :b | (a at: 2) < (b at: 2)].
+	splits := splits asSortedCollection: [:a :b | (a at: 2) < (b at: 2)].
 	^splits isEmpty 
 			ifTrue: [nil]
 			ifFalse: [(baseFileName, '.', (splits last at: 2) asString, self class dot, extension) asFileName]

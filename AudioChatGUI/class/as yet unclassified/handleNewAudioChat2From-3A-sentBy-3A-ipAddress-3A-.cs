@@ -2,16 +2,16 @@ handleNewAudioChat2From: dataStream sentBy: senderName ipAddress: ipAddressStrin
 
 	| newSound seqSound compressed |
 
-	compressed _ self newCompressedSoundFrom: dataStream.
-	newSound _ compressed asSound.
+	compressed := self newCompressedSoundFrom: dataStream.
+	newSound := compressed asSound.
 "-------an experiment to try
 newSound adjustVolumeTo: 7.0 overMSecs: 10
 --------"
 DebugLog ifNotNil: [
 	DebugLog add: {compressed. newSound}.
 ].
-	LiveMessages ifNil: [LiveMessages _ Dictionary new].
-	seqSound _ LiveMessages at: ipAddressString ifAbsentPut: [SequentialSound new].
+	LiveMessages ifNil: [LiveMessages := Dictionary new].
+	seqSound := LiveMessages at: ipAddressString ifAbsentPut: [SequentialSound new].
 	seqSound isPlaying ifTrue: [
 		seqSound
 			add: newSound;

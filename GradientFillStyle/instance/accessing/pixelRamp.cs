@@ -7,5 +7,5 @@ pixelRamp
 	PixelRampCache ifNil:[ self class initPixelRampCache  ].
 
 	"Ask my cache for an existing instance if one is available"
-	pixelRamp _ PixelRampCache at: colorRamp	
+	pixelRamp := PixelRampCache at: colorRamp	
 ].

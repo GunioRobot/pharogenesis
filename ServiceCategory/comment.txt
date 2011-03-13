@@ -1,0 +1,16 @@
+I represent a category of services that can be added to a menu.
+I can be displayed as a menu or button bar containing my services.
+I am also a subclass of ServiceAction, so I can form a subcategory of another service category.
+
+Like services, I am created in methods of a ServiceProvider, in the 'services' method protocol.
+The template to create a service category is the following:
+
+methodNameAndServiceCategoryId
+	^ ServiceCategory 
+		text: 'Menu text' 
+		button: 'Button  text' 
+		description: 'Longer descriptive text appearing in help balloons'
+	
+To put services in a service category, you have to use the Service Browser, located in the word menu, under the 'Preferences and Services' menu item.
+In it, you can look up for the name of your category, and enter service identifiers as children
+of the category in the associatedd text field, separating them with spaces.

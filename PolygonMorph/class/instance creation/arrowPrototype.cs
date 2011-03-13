@@ -7,7 +7,8 @@ arrowPrototype
 		color: Color black 
 		borderWidth: 2 
 		borderColor: Color black.
-	aa setProperty: #noNewVertices toValue: true.
+	"aa setProperty: #noNewVertices toValue: true."
+	"Revert to expected behavior. Remove vestigial code."
 	aa makeForwardArrow.		"is already open"
 	aa computeBounds.
 	^ aa

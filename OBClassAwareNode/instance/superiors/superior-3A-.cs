@@ -1,0 +1,2 @@
+superior: other 
+	superior := other

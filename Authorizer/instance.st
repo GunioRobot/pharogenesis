@@ -1,6 +1,6 @@
 Object
 	subclass: #Authorizer
-	instanceVariableNames: 'users realm '
+	instanceVariableNames: 'users realm'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Network-Pluggable Web Server'
+	category: 'Network-Url'

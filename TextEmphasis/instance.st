@@ -1,6 +1,6 @@
 TextAttribute
 	subclass: #TextEmphasis
-	instanceVariableNames: 'emphasisCode setMode '
+	instanceVariableNames: 'emphasisCode setMode'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Collections-Text'

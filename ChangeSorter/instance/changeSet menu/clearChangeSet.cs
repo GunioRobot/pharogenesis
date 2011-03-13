@@ -4,7 +4,7 @@ clearChangeSet
 
 	self okToChange ifFalse: [^ self].
 	myChangeSet isEmpty ifFalse:
-		[message _ 'Are you certain that you want to\forget all the changes in this set?' withCRs.
+		[message := 'Are you certain that you want to\forget all the changes in this set?' withCRs.
 		(self confirm: message) ifFalse: [^ self]].
 	myChangeSet clear.
 	self changed: #classList.

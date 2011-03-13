@@ -5,15 +5,15 @@ getGlyphFlagsFrom: entry size: nPts
 	to repeat the last flag.  The inner loop does this, incrementing the
 	outer loops index each time."
 	| flags index repCount flagBits |
-	flags _ ByteArray new: nPts.
-	index _ 1.
+	flags := ByteArray new: nPts.
+	index := 1.
 	[index <= nPts] whileTrue:[
-		flagBits _ entry nextByte.
+		flagBits := entry nextByte.
 		flags at: index put: flagBits.
 		(flagBits bitAnd: 8) = 8 ifTrue:[
-			repCount _ entry nextByte.
+			repCount := entry nextByte.
 			repCount timesRepeat:[
-				index _ index + 1.
+				index := index + 1.
 				flags at: index put: flagBits]].
-		index _ index + 1].
+		index := index + 1].
 	^flags

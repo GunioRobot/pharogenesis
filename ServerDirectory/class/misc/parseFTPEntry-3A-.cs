@@ -2,7 +2,8 @@ parseFTPEntry: ftpEntry
 	| tokens longy dateInSeconds thisYear thisMonth |
 	thisYear _ Date today year.
 	thisMonth _ Date today monthIndex.
-	tokens _ ftpEntry findTokens: ' '.
+	tokens _ ftpEntry findTokens: ' '. 
+
 	tokens size = 8 ifTrue:
 		[((tokens at: 6) size ~= 3 and: [(tokens at: 5) size = 3]) ifTrue:
 			["Fix for case that group is blank (relies on month being 3 chars)"
@@ -22,9 +23,10 @@ parseFTPEntry: ftpEntry
 		month: (tokens at: 6) 
 		yearOrTime: (tokens at: 8) 
 		thisMonth: thisMonth 
-		thisYear: thisYear.
-	^DirectoryEntry name: (tokens at: 9)  "file name"
+		thisYear: thisYear. 
+
+	^DirectoryEntry name: (tokens last)  "file name"
 		creationTime: dateInSeconds "creation date"
 		modificationTime: dateInSeconds "modification time"
-		isDirectory: tokens first first = $d "is-a-directory flag"
+		isDirectory:( (tokens first first) = $d or: [tokens first first =$l]) "is-a-directory flag"
 		fileSize: tokens fifth asNumber "file size"

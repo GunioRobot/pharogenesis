@@ -1,2 +1,0 @@
-logDebuggerStackToFile
-	^ self valueOfFlag: #logDebuggerStackToFile

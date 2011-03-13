@@ -1,13 +1,18 @@
 goHome
-	| box |
-	(owner isInMemory and: [owner notNil]) 
-		ifTrue: 
-			[self visible 
-				ifTrue: 
-					[box := owner.
-					self left < box left ifTrue: [self position: box left @ self position y].
-					self right > box right 
-						ifTrue: [self position: (box right - self width) @ self position y].
-					self top < box top ifTrue: [self position: self position x @ box top].
-					self bottom > box bottom 
-						ifTrue: [self position: self position x @ (box bottom - self height)]]]
+	| box fb |
+	owner isInMemory ifFalse: [^ self].
+	owner isNil ifTrue: [^ self].
+	self visible ifFalse: [^ self].
+
+	box := owner visibleClearArea.
+	fb := self fullBounds.
+
+	fb left < box left
+		ifTrue: [self left: box left - fb left + self left].
+	fb right > box right
+		ifTrue: [self right: box right - fb right + self right].
+
+	fb top < box top
+		ifTrue: [self top: box top - fb top + self top].
+	fb bottom > box bottom
+		ifTrue: [self bottom: box bottom - fb bottom + self bottom].

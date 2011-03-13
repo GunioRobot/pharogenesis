@@ -1,6 +1,6 @@
 PluggableCanvas
 	subclass: #ClippingCanvas
-	instanceVariableNames: 'canvas clipRect '
+	instanceVariableNames: 'canvas clipRect'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Support'

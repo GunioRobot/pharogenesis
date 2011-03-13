@@ -3,7 +3,7 @@ defsOfSelection
 	| aClass sel |
 
 	self selectionUnmodifiable ifTrue: [^ self changed: #flash].
-	(aClass _ self object class) isVariable ifTrue: [^ self changed: #flash].
+	(aClass := self object class) isVariable ifTrue: [^ self changed: #flash].
 
-	sel _ aClass allInstVarNames at: self selectionIndex - 2.
+	sel := aClass allInstVarNames at: self selectionIndex - 2.
 	self systemNavigation  browseAllStoresInto: sel from: aClass

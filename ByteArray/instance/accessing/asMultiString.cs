@@ -1,3 +1,0 @@
-asMultiString
-
-	^ MultiString fromByteArray: self.

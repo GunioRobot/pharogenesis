@@ -12,10 +12,7 @@ replacePane: oldPane with: newPane
 		[:each |
 		each == oldPane ifTrue: [newPane] ifFalse: [each]].
 	aLayoutFrame ifNotNil: [newPane layoutFrame: aLayoutFrame].
-	Preferences alternativeWindowLook
-		ifTrue:[newPane color: Color transparent]
-		ifFalse:[oldPane color = self paneColor ifTrue: [newPane color: self paneColor]].
-	
+	newPane color: Color transparent.
 	hadDep ifTrue: [model removeDependent: oldPane. model addDependent: newPane].
 
 	self changed

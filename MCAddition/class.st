@@ -1,0 +1,1 @@
+MCAddition class instanceVariableNames: ''

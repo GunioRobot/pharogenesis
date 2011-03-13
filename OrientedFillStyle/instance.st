@@ -1,6 +1,6 @@
 FillStyle
 	subclass: #OrientedFillStyle
-	instanceVariableNames: 'origin direction normal '
+	instanceVariableNames: 'origin direction normal'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Balloon-Fills'

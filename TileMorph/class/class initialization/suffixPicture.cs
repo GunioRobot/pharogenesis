@@ -1,2 +1,0 @@
-suffixPicture
-	^ SuffixPicture

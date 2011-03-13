@@ -4,7 +4,7 @@ newTimeVocabulary
 	"Vocabulary newTimeVocabulary"
 	"Vocabulary addStandardVocabulary: Vocabulary newTimeVocabulary"
 
-	aVocabulary _ self new vocabularyName: #Time.
+	aVocabulary := self new vocabularyName: #Time.
 	aVocabulary documentation: 'Time knows about hours, minutes, and seconds.  For long time periods, use Date'.
 
 #((accessing 			'The basic info'
@@ -22,11 +22,11 @@ newTimeVocabulary
 (copying 				'Make another one like me'
 		(copy))
 ) do: [:item | 
-			aMethodCategory _ ElementCategory new categoryName: item first.
+			aMethodCategory := ElementCategory new categoryName: item first.
 			aMethodCategory documentation: item second.
 			item third do:
 				[:aSelector | 
-					aMethodInterface _ MethodInterface new initializeFor: aSelector.
+					aMethodInterface := MethodInterface new initializeFor: aSelector.
 					aVocabulary atKey: aSelector putMethodInterface: aMethodInterface.
 					aMethodCategory elementAt: aSelector put: aMethodInterface].
 			aVocabulary addCategory: aMethodCategory].

@@ -8,4 +8,4 @@ setDismissColor: evt with: dismissHandle
 			[Color red muchLighter]
 		ifTrue:
 			[Color lightGray].
-	dismissHandle color: colorToUse
+	self setColor: colorToUse toHandle: dismissHandle.

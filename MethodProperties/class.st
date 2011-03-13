@@ -1,0 +1,1 @@
+MethodProperties class instanceVariableNames: ''

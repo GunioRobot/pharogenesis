@@ -44,13 +44,13 @@ installReleaseSpecifics
 		keepAlive: false) named: 'Squeakland Projects'.
 
 "Add the update streams here just as Squeakland does?
-	serverName _ 'Squeakland'.
-	serverURL _ 'squeakland.org'.
-	serverDir _ serverURL , '/'.
-	updateServer _ ServerDirectory new.
+	serverName := 'Squeakland'.
+	serverURL := 'squeakland.org'.
+	serverDir := serverURL , '/'.
+	updateServer := ServerDirectory new.
 	updateServer
 		server: serverURL;
-		directory: 'public_html/updates/';
+		directory: 'public:=html/updates/';
 		altUrl: serverDir.
 	Utilities updateUrlLists addFirst: {serverName. {serverDir. }.}.
 "

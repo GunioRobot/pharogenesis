@@ -7,7 +7,7 @@ returnNode: aNode expression: expr
 		aNoiseString _ ' Reply '.
 		sMorph _ self aSimpleStringMorphWith: aNoiseString.
 		sMorph 
-			emphasis: 1;
+			emphasis: TextEmphasis bold emphasisCode;
 			setProperty: #syntacticallyCorrectContents toValue: '^'.
 
 		row addMorphBack: sMorph.

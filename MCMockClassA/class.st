@@ -1,0 +1,1 @@
+MCMockClassA class instanceVariableNames: ''

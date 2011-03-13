@@ -6,17 +6,17 @@ displayString: aString on: aBitBlt from: startIndex to: stopIndex at: aPoint ker
 	startIndex to: stopIndex do: [:charIndex |
 		self glyphInfoOf: (aString at: charIndex) into: glyphInfo.
 		form _ glyphInfo first.
-		(glyphInfo fifth ~= aBitBlt lastFont) ifTrue: [
-			glyphInfo fifth installOn: aBitBlt.
+		((glyphInfo at:5) ~= aBitBlt lastFont) ifTrue: [
+			(glyphInfo at:5) installOn: aBitBlt.
 		].
-		destY _ baselineY - glyphInfo fourth. 
+		destY _ baselineY - (glyphInfo at:4). 
 		aBitBlt sourceForm: form.
 		aBitBlt destX: destPoint x.
 		aBitBlt destY: destY.
-		aBitBlt sourceOrigin: (glyphInfo second) @ 0.
+		aBitBlt sourceOrigin: (glyphInfo at:2) @ 0.
 		aBitBlt width: glyphInfo third - glyphInfo second.
 		aBitBlt height: form height.
 		aBitBlt copyBits.
-		destPoint _ destPoint + ((glyphInfo third - glyphInfo second) + kernDelta @ 0).
+		destPoint _ destPoint + (((glyphInfo at:3) - (glyphInfo at:2)) + kernDelta @ 0).
 	].
 	^ destPoint.

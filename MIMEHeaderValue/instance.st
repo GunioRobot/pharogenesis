@@ -1,6 +1,6 @@
 Object
 	subclass: #MIMEHeaderValue
-	instanceVariableNames: 'mainValue parameters '
+	instanceVariableNames: 'mainValue parameters'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Network-Mail Reader'
+	category: 'Network-Url'

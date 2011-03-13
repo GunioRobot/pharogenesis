@@ -1,2 +1,0 @@
-targetNodes
-	^targetNodes ifNil:[#()].

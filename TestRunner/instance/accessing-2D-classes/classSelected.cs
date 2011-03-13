@@ -1,0 +1,2 @@
+classSelected
+	^ 0

@@ -1,6 +1,6 @@
 Object
 	subclass: #CommandHistory
-	instanceVariableNames: 'lastCommand history excursions '
+	instanceVariableNames: 'lastCommand history excursions'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Undo'
+	category: 'MorphicExtras-Undo'

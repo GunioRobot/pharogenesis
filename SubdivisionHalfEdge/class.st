@@ -1,1 +1,0 @@
-SubdivisionHalfEdge class instanceVariableNames: ''

@@ -5,5 +5,4 @@ addCustomMenuItems: aCustomMenu hand: aHandMorph
 	aCustomMenu add: 'change action selector' translated action: #setActionSelector.
 	aCustomMenu add: 'change arguments' translated action: #setArguments.
 	aCustomMenu add: 'change when to act' translated action: #setActWhen.
-	((self world rootMorphsAt: aHandMorph targetOffset) size > 1) ifTrue: [
-		aCustomMenu add: 'set target' translated action: #setTarget:].
+	self addTargetingMenuItems: aCustomMenu hand: aHandMorph .

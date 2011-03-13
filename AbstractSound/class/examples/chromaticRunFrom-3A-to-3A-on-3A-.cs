@@ -3,15 +3,15 @@ chromaticRunFrom: startPitch to: endPitch on: aSound
 	"(AbstractSound chromaticRunFrom: 'c3' to: 'c#5' on: FMSound oboe1) play"
 
 	| scale halfStep pEnd p |
-	scale _ SequentialSound new.
-	halfStep _ 2.0 raisedTo: (1.0 / 12.0).
+	scale := SequentialSound new.
+	halfStep := 2.0 raisedTo: (1.0 / 12.0).
 	endPitch isNumber
-		ifTrue: [pEnd _ endPitch asFloat]
-		ifFalse: [pEnd _ AbstractSound pitchForName: endPitch].
+		ifTrue: [pEnd := endPitch asFloat]
+		ifFalse: [pEnd := AbstractSound pitchForName: endPitch].
 	startPitch isNumber
-		ifTrue: [p _ startPitch asFloat]
-		ifFalse: [p _ AbstractSound pitchForName: startPitch].
+		ifTrue: [p := startPitch asFloat]
+		ifFalse: [p := AbstractSound pitchForName: startPitch].
 	[p <= pEnd] whileTrue: [
 		scale add: (aSound soundForPitch: p dur: 0.2 loudness: 0.5).
-		p _ p * halfStep].
+		p := p * halfStep].
 	^ scale

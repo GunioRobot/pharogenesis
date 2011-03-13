@@ -1,1 +1,0 @@
-This class does a color change to an object.

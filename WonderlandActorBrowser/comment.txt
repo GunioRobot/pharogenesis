@@ -1,4 +1,0 @@
-This class implements the actor browser.  The name of every actor in the Wonderland namespace is listed. The formatting is determined by the parent-child hierarchy.  Children of an actor are listed below and to the right of that actor.  The scene is at the root of the actor tree, and so is at the top left of the hierarchy.
-
-Any actor listed in the actor browser can be addressed by that name in the script editor.
-

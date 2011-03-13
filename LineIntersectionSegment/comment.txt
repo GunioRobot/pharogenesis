@@ -1,4 +1,0 @@
-I represent a line segment used during the computation of intersections.
-
-Instance variables:
-	referentEdge	<LineSegment>	The line segment this segment originated from.

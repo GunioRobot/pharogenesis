@@ -1,2 +1,0 @@
-isComment
-	^true

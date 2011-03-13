@@ -1,2 +1,2 @@
 addStepChild: aVersionInfo
-	stepChildren _ stepChildren copyWith: aVersionInfo
+	stepChildren := stepChildren copyWith: aVersionInfo

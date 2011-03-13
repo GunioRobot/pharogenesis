@@ -1,0 +1,1 @@
+EncodedCharSet class instanceVariableNames: 'CompoundTextSequence'

@@ -1,6 +1,6 @@
 addPreamble
 	myChangeSet assurePreambleExists.
 	self okToChange ifTrue:
-		[currentClassName _ nil.
-		currentSelector _ nil.
+		[currentClassName := nil.
+		currentSelector := nil.
 		self showChangeSet: myChangeSet]

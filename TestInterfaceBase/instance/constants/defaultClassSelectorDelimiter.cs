@@ -1,3 +1,0 @@
-defaultClassSelectorDelimiter
-
-	^self class defaultClassSelectorDelimiter

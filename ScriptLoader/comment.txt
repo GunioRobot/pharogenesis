@@ -1,0 +1,3 @@
+I'm a dummy class that is used to load packages to create release.
+I should be merged into ReleaseBuilder in the future and ReleaseBuilder should be moved
+out of system-support so that we do not create a new version of it each time

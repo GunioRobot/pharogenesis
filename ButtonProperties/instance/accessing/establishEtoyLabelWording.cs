@@ -7,7 +7,4 @@ establishEtoyLabelWording
 	itsName _ target externalName.
 	self addTextToButton: itsName, ' ', arguments first.
 	visibleMorph setBalloonText: 
-		'click to run the script "', 
-		arguments first, 
-		'" in player named "', 
-		itsName, '"'
+		('click to run the script "{1}" in player named "{2}"' translated format: {arguments first. itsName}).

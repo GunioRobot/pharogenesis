@@ -6,7 +6,7 @@ findViaTemplate
 	list _ self templateMatches.
 	list isEmpty ifTrue: [^ self inform: 'No matches were found.
 Be sure the current card is mostly blank
-and only has text you want to match.']. 
+and only has text you want to match.' translated]. 
 	"put up a PluggableListMorph"
 	cardInst _ self currentCard.
 	cardInst matchIndex: 0.	"establish entries"

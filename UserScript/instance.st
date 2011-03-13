@@ -1,6 +1,6 @@
 ScriptInstantiation
 	subclass: #UserScript
-	instanceVariableNames: 'currentScriptEditor formerScriptEditors '
+	instanceVariableNames: 'currentScriptEditor formerScriptEditors'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Scripting'
+	category: 'EToys-Scripting'

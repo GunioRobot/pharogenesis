@@ -1,2 +1,0 @@
-isPreview
-	^ mapStyle isPreview

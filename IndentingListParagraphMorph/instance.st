@@ -3,4 +3,4 @@ IndentingListItemMorph
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Outliner'
+	category: 'EToys-Outliner'

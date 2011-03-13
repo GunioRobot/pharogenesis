@@ -5,6 +5,7 @@ buttonNamed: aString action: aSymbol color: aColor help: helpString
 		target: self;
 		label: aString;
 		color: aColor;
+		borderColor: aColor muchDarker;
 		actionSelector: aSymbol;
 		setBalloonText: helpString.
 	self field: aSymbol is: f.

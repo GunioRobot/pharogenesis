@@ -1,2 +1,2 @@
 syncFlags: anInteger
-	syncFlags _ anInteger
+	syncFlags := anInteger

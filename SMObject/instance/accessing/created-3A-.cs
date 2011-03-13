@@ -1,2 +1,2 @@
 created: c
-	created _ c
+	created := c

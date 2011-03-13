@@ -1,0 +1,3 @@
+I represent a pragma instance found in a compiled method. I can provide information about the defining class, method, its selector, as well as the information about the pragma keyword and its arguments. See the two 'accessing' protocols for details. 'accessing-method' provides information about the method the pragma is found in, while 'accessing-pragma' is about the pragma itself.
+
+Instances are retreived using one of the pragma search methods of the 'finding' protocol on the class side.

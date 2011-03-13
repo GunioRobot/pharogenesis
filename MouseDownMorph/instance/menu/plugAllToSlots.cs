@@ -1,2 +1,0 @@
-plugAllToSlots
-	self plugMouseDownToSlot; plugMouseMoveToSlot.

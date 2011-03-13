@@ -1,6 +1,6 @@
 CrLfFileStream
 	subclass: #HtmlFileStream
-	instanceVariableNames: 'prevPreamble '
-	classVariableNames: 'TabThing '
+	instanceVariableNames: 'prevPreamble'
+	classVariableNames: 'TabThing'
 	poolDictionaries: ''
-	category: 'System-Files'
+	category: 'Files-Kernel'

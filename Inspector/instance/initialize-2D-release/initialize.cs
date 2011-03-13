@@ -1,4 +1,4 @@
 initialize
 	
-	selectionIndex _ 0.
+	selectionIndex := 0.
 	super initialize

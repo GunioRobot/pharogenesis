@@ -1,3 +1,3 @@
 tempo: anInteger
 
-	tempo _ anInteger.
+	tempo := anInteger.

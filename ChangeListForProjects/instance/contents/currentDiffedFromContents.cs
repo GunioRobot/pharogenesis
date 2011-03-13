@@ -4,9 +4,9 @@ currentDiffedFromContents
 	| aChange aClass |
 	listIndex = 0
 		ifTrue: [^ ''].
-	aChange _ changeList at: listIndex.
+	aChange := changeList at: listIndex.
 	^ ((aChange type == #method
-				and: [(aClass _ aChange methodClass) notNil])
+				and: [(aClass := aChange methodClass) notNil])
 			and: [aClass includesSelector: aChange methodSelector])
 		ifTrue: [TextDiffBuilder
 				buildDisplayPatchFrom: aChange text

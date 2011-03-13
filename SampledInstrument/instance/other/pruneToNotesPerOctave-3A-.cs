@@ -1,11 +1,11 @@
 pruneToNotesPerOctave: notesPerOctave
 	"Prune all my keymaps to the given number of notes per octave."
 
-	sustainedLoud _ self midiKeyMapFor:
+	sustainedLoud := self midiKeyMapFor:
 		(self pruneNoteList: sustainedLoud notesPerOctave: notesPerOctave).
-	sustainedSoft _ self midiKeyMapFor:
+	sustainedSoft := self midiKeyMapFor:
 		(self pruneNoteList: sustainedSoft notesPerOctave: notesPerOctave).
-	staccatoLoud _ self midiKeyMapFor:
+	staccatoLoud := self midiKeyMapFor:
 		(self pruneNoteList: staccatoLoud notesPerOctave: notesPerOctave).
-	staccatoSoft _ self midiKeyMapFor:
+	staccatoSoft := self midiKeyMapFor:
 		(self pruneNoteList: staccatoSoft notesPerOctave: notesPerOctave).

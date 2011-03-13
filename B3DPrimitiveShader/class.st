@@ -1,1 +1,0 @@
-B3DPrimitiveShader class instanceVariableNames: ''

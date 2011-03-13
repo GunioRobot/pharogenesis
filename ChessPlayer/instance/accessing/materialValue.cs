@@ -1,2 +1,0 @@
-materialValue
-	^materialValue

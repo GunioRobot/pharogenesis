@@ -1,0 +1,1 @@
+RenamedEvent class instanceVariableNames: ''

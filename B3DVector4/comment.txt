@@ -1,1 +1,0 @@
-I represent 3D points in homogenous coordinates.

@@ -1,3 +1,3 @@
 image: aForm
-	image _ aForm.
+	image := aForm.
 	self changed.

@@ -6,7 +6,7 @@ retrieveContents
 	file ifNotNil: [
 		type _ file mimeTypes.
 		type ifNotNil:[type _ type first].
-		type ifNil:[MIMEDocument guessTypeFromName: self path last].
+		type ifNil:[type _ MIMEDocument guessTypeFromName: self path last].
 		^MIMELocalFileDocument 
 			contentType: type
 			contentStream: file].

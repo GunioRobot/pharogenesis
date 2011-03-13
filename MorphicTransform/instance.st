@@ -1,6 +1,6 @@
 DisplayTransform
 	subclass: #MorphicTransform
-	instanceVariableNames: 'offset angle scale '
+	instanceVariableNames: 'offset angle scale'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Graphics-Transformations'

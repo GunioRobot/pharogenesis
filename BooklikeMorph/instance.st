@@ -1,6 +1,6 @@
 AlignmentMorph
 	subclass: #BooklikeMorph
-	instanceVariableNames: 'pageSize newPagePrototype '
-	classVariableNames: 'PageFlipSoundOn '
+	instanceVariableNames: 'pageSize newPagePrototype'
+	classVariableNames: 'PageFlipSoundOn'
 	poolDictionaries: ''
-	category: 'Morphic-Books'
+	category: 'MorphicExtras-Books'

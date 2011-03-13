@@ -1,0 +1,2 @@
+removeEmptyCategoriesIn: anOrganizer 
+	anOrganizer removeEmptyCategories

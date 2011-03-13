@@ -2,4 +2,4 @@ ninth
 	"Answer the ninth element of the receiver.
 	Raise an error if there are not enough elements."
 
-	^ self checkedAt: 9
+	^ self at: 9

@@ -1,6 +1,6 @@
 TextAttribute
 	subclass: #TextColor
-	instanceVariableNames: 'color '
+	instanceVariableNames: 'color'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Collections-Text'

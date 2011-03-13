@@ -1,2 +1,0 @@
-standardPaletteIsAlready: aPalette
-	^ standardPalette == aPalette

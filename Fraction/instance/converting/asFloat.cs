@@ -1,22 +1,53 @@
 asFloat
 	"Answer a Float that closely approximates the value of the receiver.
-	Ideally, answer the Float that most closely approximates the receiver."
-
-	| nScaleBits dScaleBits nScaled dScaled |
-
-	"Scale the numerator by throwing away all but the
-	top 8 digits (57 to 64 significant bits) then making that a Float.
-	This keeps all of the precision of a Float (53 significand bits) but
-	guarantees that we do not exceed the range representable as a Float
-	(about 2 to the 1024th)"
-
-	nScaleBits _ 8 * ((numerator digitLength - 8) max: 0).
-	nScaled _ (numerator bitShift: nScaleBits negated) asFloat.
-
-	"Scale the denominator the same way."
-	dScaleBits _ 8 * ((denominator digitLength - 8) max: 0).
-	dScaled _ (denominator bitShift: dScaleBits negated) asFloat.
-
-	"Divide the scaled numerator and denominator to make the 
-right mantissa, then scale to correct the exponent."
-	^ (nScaled / dScaled) timesTwoPower: (nScaleBits - dScaleBits).
+	This implementation will answer the closest floating point number to
+	the receiver.
+	It uses the IEEE 754 round to nearest even mode
+	(can happen in case denominator is a power of two)"
+	
+	| a b q r exponent floatExponent n ha hb hq q1 |
+	a := numerator abs.
+	b := denominator abs.
+	ha := a highBit.
+	hb := b highBit.
+	
+	"If both numerator and denominator are represented exactly in floating point number,
+	then fastest thing to do is to use hardwired float division"
+	(ha < 54 and: [hb < 54]) ifTrue: [^numerator asFloat / denominator asFloat].
+	
+	"Try and obtain a mantissa with 54 bits.
+	First guess is rough, we might get one more bit or one less"
+	exponent := ha - hb - 54.
+	exponent > 0
+		ifTrue: [b := b bitShift: exponent]
+		ifFalse: [a := a bitShift: exponent negated].
+	q := a quo: b.
+	r := a - (q * b).
+	hq := q highBit.
+	
+	"check for gradual underflow, in which case we should use less bits"
+	floatExponent := exponent + hq - 1.
+	n := floatExponent > -1023
+		ifTrue: [54]
+		ifFalse: [54 + floatExponent + 1022].
+	
+	hq > n
+		ifTrue: [exponent := exponent + hq - n.
+			r := (q bitAnd: (1 bitShift: n - hq) - 1) * b + r.
+			q := q bitShift: n - hq].
+	hq < n
+		ifTrue: [exponent := exponent + hq - n.
+			q1 := (r bitShift: n - hq) quo: b.
+			q := (q bitShift: n - hq) bitAnd: q1.
+			r := r - (q1 * b)].
+		
+	"check if we should round upward.
+	The case of exact half (q bitAnd: 1) isZero not & (r isZero)
+	will be handled by Integer>>asFloat"
+	((q bitAnd: 1) isZero or: [r isZero])
+		ifFalse: [q := q + 1].
+		
+	^ (self positive
+		ifTrue: [q asFloat]
+		ifFalse: [q asFloat negated])
+		timesTwoPower: exponent

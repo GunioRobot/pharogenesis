@@ -1,6 +1,4 @@
 packagesByName
 	"Return the packages sorted by their name."
 
-	^(SortedCollection sortBlock: [:x :y | x name <= y name])
-		addAll: self packages;
-		yourself
+	^self packages asSortedCollection: [:x :y | x name caseInsensitiveLessOrEqual: y name]

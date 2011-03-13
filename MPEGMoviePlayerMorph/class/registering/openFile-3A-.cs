@@ -3,6 +3,6 @@ openFile: aFileName
 
      | wrapper |
 	aFileName ifNil: [^ Beeper beep].
-     wrapper _ self openOn: aFileName.
+     wrapper := self openOn: aFileName.
  	wrapper openInWorld.
      ^ wrapper

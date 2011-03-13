@@ -1,2 +1,0 @@
-height
-	^self cardSize y

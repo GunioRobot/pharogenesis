@@ -1,9 +1,9 @@
 initialize
 	"BalloonEngine initialize"
-	BufferCache _ WeakArray new: 1.
+	BufferCache := WeakArray new: 1.
 	Smalltalk garbageCollect. "Make the cache old"
-	CacheProtect _ Semaphore forMutualExclusion.
-	Times _ WordArray new: 10.
-	Counts _ WordArray new: 10.
-	BezierStats _ WordArray new: 4.
-	Debug ifNil:[Debug _ false].
+	CacheProtect := Semaphore forMutualExclusion.
+	Times := WordArray new: 10.
+	Counts := WordArray new: 10.
+	BezierStats := WordArray new: 4.
+	Debug ifNil:[Debug := false].

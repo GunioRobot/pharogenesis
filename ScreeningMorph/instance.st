@@ -1,6 +1,6 @@
 Morph
 	subclass: #ScreeningMorph
-	instanceVariableNames: 'screenForm displayMode passingColor passElseBlock '
+	instanceVariableNames: 'screenForm displayMode passingColor passElseBlock'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Demo'
+	category: 'MorphicExtras-Demo'

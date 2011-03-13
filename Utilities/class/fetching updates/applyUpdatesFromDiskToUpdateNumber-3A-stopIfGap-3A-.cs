@@ -8,30 +8,30 @@ applyUpdatesFromDiskToUpdateNumber: lastUpdateNumber stopIfGap: stopIfGapFlag
 	and all numbered updates <= lastUpdateNumber not yet in the image will 
 	be loaded in numerical order."
 	| previousHighest currentUpdateNumber done fileNames aMessage updateDirectory loaded |
-	updateDirectory _ self getUpdateDirectoryOrNil.
+	updateDirectory := self getUpdateDirectoryOrNil.
 	updateDirectory ifNil: [^ self].
-	previousHighest _ SystemVersion current highestUpdate.
-	currentUpdateNumber _ previousHighest.
-	done _ false.
-	loaded _ 0.
+	previousHighest := SystemVersion current highestUpdate.
+	currentUpdateNumber := previousHighest.
+	done := false.
+	loaded := 0.
 	[done]
-		whileFalse: [currentUpdateNumber _ currentUpdateNumber + 1.
+		whileFalse: [currentUpdateNumber := currentUpdateNumber + 1.
 			currentUpdateNumber > lastUpdateNumber
-				ifTrue: [done _ true]
-				ifFalse: [fileNames _ updateDirectory fileNamesMatching: currentUpdateNumber printString , '*'.
+				ifTrue: [done := true]
+				ifFalse: [fileNames := updateDirectory fileNamesMatching: currentUpdateNumber printString , '*'.
 					fileNames size > 1
 						ifTrue: [^ self inform: 'ambiguity -- two files both start with ' , currentUpdateNumber printString , '
 (at this point it is probably best to remedy
 the situation on disk, then try again.)'].
 					fileNames size == 0
 						ifTrue: [Transcript cr; show: 'gap in updates from disk for update number '; print: currentUpdateNumber; show: ' found...'.
-							done _ stopIfGapFlag]
-						ifFalse: [ChangeSorter
+							done := stopIfGapFlag]
+						ifFalse: [ChangeSet
 								newChangesFromStream: (updateDirectory readOnlyFileNamed: fileNames first)
 								named: fileNames first.
 							SystemVersion current registerUpdate: currentUpdateNumber.
-							loaded _ loaded + 1]]].
-	aMessage _ loaded = 0
+							loaded := loaded + 1]]].
+	aMessage := loaded = 0
 				ifTrue: ['No new updates found.']
 				ifFalse: [loaded printString , ' update(s) loaded.'].
 	self inform: aMessage , '

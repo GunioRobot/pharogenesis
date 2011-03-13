@@ -1,3 +1,0 @@
-balloonFailureList
-
-	^self class balloonFailureList

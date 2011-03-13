@@ -1,2 +1,0 @@
-isFlap
-	^self hasProperty: #flap

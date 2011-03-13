@@ -1,6 +1,6 @@
 summary
 	| attribute |
-	attribute _ 
+	attribute := 
 		self isResolved
 			ifTrue: [self remoteChosen ifTrue: [#underlined] ifFalse: [#struckOut]]
 			ifFalse: [#bold].

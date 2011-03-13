@@ -1,6 +1,6 @@
 StandardSystemView
 	subclass: #ModalSystemWindowView
-	instanceVariableNames: 'modalBorder '
+	instanceVariableNames: 'modalBorder'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Tools-FileList'
+	category: 'Morphic-FileList'

@@ -13,7 +13,7 @@ classFromPattern: pattern withCaption: aCaption
 			[:maybeClass | (maybeClass isKindOf: Class) ifTrue: [^ maybeClass]]].
 
 	toMatch _ (toMatch copyWithout: $.) asLowercase.
-	potentialClassNames _ Smalltalk classNames asOrderedCollection.
+	potentialClassNames _ (Smalltalk classNames , Smalltalk traitNames) asOrderedCollection.
 	classNames _ pattern last = $. 
 		ifTrue: [potentialClassNames select:
 					[:nm |  nm asLowercase = toMatch]]
@@ -25,15 +25,16 @@ classFromPattern: pattern withCaption: aCaption
 	index _ classNames size = 1
 		ifTrue:	[1]
 		ifFalse:	[exactMatch
-			ifNil: [(PopUpMenu labelArray: classNames lines: #()) startUpWithCaption: aCaption]
+			ifNil: [UIManager default chooseFrom: classNames lines: #() title: aCaption]
 			ifNotNil: [classNames addFirst: exactMatch.
-				(PopUpMenu labelArray: classNames lines: #(1)) startUpWithCaption: aCaption]].
+				UIManager default chooseFrom: classNames lines: #(1) title: aCaption]].
 	index = 0 ifTrue: [^ nil].
 	^ Smalltalk at: (classNames at: index) asSymbol
 
 "
-	Utilities classFromPattern: 'CharRecog'
-	Utilities classFromPattern: 'rRecog'
-	Utilities classFromPattern: 'znak'
-	Utilities classFromPattern: 'orph'
+	self classFromPattern: 'CharRecog' withCaption: ''
+	self classFromPattern: 'rRecog' withCaption: ''
+	self classFromPattern: 'znak' withCaption: ''
+	self classFromPattern: 'orph' withCaption: ''
+	self classFromPattern: 'TCompil' withCaption: ''
 "

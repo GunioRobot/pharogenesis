@@ -1,0 +1,1 @@
+MCMockDependentItem class instanceVariableNames: ''

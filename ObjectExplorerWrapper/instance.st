@@ -1,6 +1,6 @@
 ListItemWrapper
 	subclass: #ObjectExplorerWrapper
-	instanceVariableNames: 'itemName '
+	instanceVariableNames: 'itemName parent'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Tools-Explorer'
+	category: 'Morphic-Explorer'

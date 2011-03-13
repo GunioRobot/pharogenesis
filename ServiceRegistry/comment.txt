@@ -1,0 +1,4 @@
+The ServiceRegistry is the repository in which services are stored. They are stored in
+a dictionary, and keyed by their identifier (which is the name of the method they were defined in).
+
+The registry handles the intialization, building and referencing processes as well.

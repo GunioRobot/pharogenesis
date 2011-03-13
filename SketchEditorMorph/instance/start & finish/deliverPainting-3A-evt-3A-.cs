@@ -10,7 +10,7 @@ deliverPainting: result evt: evt
 what you just painted?' translated 
 				chooseFrom: 'throw it away\keep painting it' translated.
 		^ ans = 1 ifTrue: [self cancelOutOfPainting]
-				ifFalse: [nil]].	"for Morphic"
+				ifFalse: [nil]].	"cancelled out of cancelling."
 
 	"hostView rotationStyle: rot."		"rotate with heading, or turn to and fro"
 	newBox _ paintingForm rectangleEnclosingPixelsNotOfColor: Color transparent.
@@ -28,3 +28,5 @@ what you just painted?' translated
 	self delete.	"so won't find me again"
 	dimForm ifNotNil: [dimForm delete].
 	newPicBlock value: newForm value: (newBox copy translateBy: bounds origin).
+	ActiveWorld resumeScriptsPausedByPainting
+

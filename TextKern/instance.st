@@ -1,6 +1,6 @@
 TextAttribute
 	subclass: #TextKern
-	instanceVariableNames: 'kern active '
+	instanceVariableNames: 'kern active'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Collections-Text'

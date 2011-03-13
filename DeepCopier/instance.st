@@ -1,6 +1,6 @@
 Object
 	subclass: #DeepCopier
-	instanceVariableNames: 'references uniClasses '
-	classVariableNames: 'NextVariableCheckTime '
+	instanceVariableNames: 'references uniClasses newUniClasses'
+	classVariableNames: 'NextVariableCheckTime'
 	poolDictionaries: ''
 	category: 'System-Object Storage'

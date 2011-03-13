@@ -1,3 +1,0 @@
-reopen
-
-	^self generic reopen

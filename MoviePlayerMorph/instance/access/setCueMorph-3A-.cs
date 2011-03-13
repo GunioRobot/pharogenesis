@@ -1,2 +1,2 @@
 setCueMorph: aMorph
-	cueMorph _ aMorph
+	cueMorph := aMorph

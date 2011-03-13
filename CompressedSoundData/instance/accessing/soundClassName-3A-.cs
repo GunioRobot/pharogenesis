@@ -1,3 +1,3 @@
 soundClassName: aStringOrSymbol
 
-	soundClassName _ aStringOrSymbol asSymbol.
+	soundClassName := aStringOrSymbol asSymbol.

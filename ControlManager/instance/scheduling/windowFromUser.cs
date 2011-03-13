@@ -9,7 +9,7 @@ windowFromUser
 				[controllers addLast: controller.
 				strm nextPutAll: (controller view label contractTo: 40); cr]].
 		strm skip: -1  "drop last cr"].
-	index _ (PopUpMenu labels: labels) startUp.
+	index _ (UIManager default chooseFrom: (labels findTokens: Character cr) asArray).
 	^ index > 0
 		ifTrue:
 			[controllers at: index]

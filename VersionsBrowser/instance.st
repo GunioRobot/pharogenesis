@@ -1,6 +1,6 @@
 ChangeList
 	subclass: #VersionsBrowser
-	instanceVariableNames: 'classOfMethod selectorOfMethod '
+	instanceVariableNames: 'classOfMethod selectorOfMethod addedChangeRecord'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Tools-Changes'

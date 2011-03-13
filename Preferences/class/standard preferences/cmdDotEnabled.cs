@@ -1,2 +1,0 @@
-cmdDotEnabled
-	^ self valueOfFlag: #cmdDotEnabled

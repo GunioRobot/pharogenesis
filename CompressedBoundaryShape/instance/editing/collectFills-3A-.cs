@@ -1,2 +1,2 @@
 collectFills: aBlock
-	fillStyles _ fillStyles collect: aBlock.
+	fillStyles := fillStyles collect: aBlock.

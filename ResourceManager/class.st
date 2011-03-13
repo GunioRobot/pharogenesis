@@ -1,0 +1,1 @@
+ResourceManager class instanceVariableNames: ''

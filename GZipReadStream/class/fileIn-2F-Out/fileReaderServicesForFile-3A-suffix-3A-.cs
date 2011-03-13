@@ -2,7 +2,7 @@ fileReaderServicesForFile: fullName suffix: suffix
 	| services |
 	(suffix = 'gz') | (suffix = '*')
 		ifFalse: [^ #()].
-	services _ OrderedCollection new.
+	services := OrderedCollection new.
 	(suffix = '*') | (fullName asLowercase endsWith: '.cs.gz') | (fullName asLowercase endsWith: '.mcs.gz')
 		ifTrue: [services add: self serviceFileIn.
 			(Smalltalk includesKey: #ChangeSorter)

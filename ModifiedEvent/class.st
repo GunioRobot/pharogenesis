@@ -1,0 +1,1 @@
+ModifiedEvent class instanceVariableNames: ''

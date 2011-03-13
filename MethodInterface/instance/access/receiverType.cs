@@ -1,4 +1,4 @@
 receiverType
 	"Answer the receiver type"
 
-	^ receiverType ifNil: [receiverType _ #unknown]
+	^ receiverType ifNil: [receiverType := #unknown]

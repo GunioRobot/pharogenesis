@@ -8,7 +8,7 @@ buildMessageCategoryBrowserEditString: aString
 	| newBrowser |
 	messageCategoryListIndex ~= 0
 		ifTrue: 
-			[newBrowser _ Browser new.
+			[newBrowser := Browser new.
 			newBrowser systemCategoryListIndex: systemCategoryListIndex.
 			newBrowser classListIndex: (newBrowser classList indexOf: self selectedClassName).
 			newBrowser metaClassIndicated: metaClassIndicated.

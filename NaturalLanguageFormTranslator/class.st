@@ -1,0 +1,1 @@
+NaturalLanguageFormTranslator class instanceVariableNames: ''

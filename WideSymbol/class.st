@@ -1,0 +1,1 @@
+WideSymbol class instanceVariableNames: ''

@@ -1,8 +1,8 @@
 removeSelection
 	(selectionIndex <= object class instSize) ifTrue: [^ self changed: #flash].
 	object remove: self selection.
-	selectionIndex _ 0.
-	contents _ ''.
+	selectionIndex := 0.
+	contents := ''.
 	self changed: #inspectObject.
 	self changed: #fieldList.
 	self changed: #selection.

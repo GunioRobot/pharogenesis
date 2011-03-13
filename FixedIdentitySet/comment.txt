@@ -1,0 +1,6 @@
+This is a fast but lazy implementation of fixed size identity sets. The two main difference to regular identity sets are:
+
+1) These identity sets have a fixed size. If they are full, adding another element doesn't have any effect.
+2) No rehashing. If two elements were to be stored on the same position in the underlying array, one of them is simply discarded.
+
+As a consequence of (1) and (2), these identity sets are very fast! Note that this class inherits form Array. This is not clean but reduces memory overhead when instances are created.

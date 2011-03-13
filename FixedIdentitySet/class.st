@@ -1,0 +1,1 @@
+FixedIdentitySet class instanceVariableNames: ''

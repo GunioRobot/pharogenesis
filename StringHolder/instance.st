@@ -1,6 +1,6 @@
 Model
 	subclass: #StringHolder
-	instanceVariableNames: 'contents '
+	instanceVariableNames: 'contents'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Kernel-ST80 Remnants'
+	category: 'ST80-Kernel-Remnants'

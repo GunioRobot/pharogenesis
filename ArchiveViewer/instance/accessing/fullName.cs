@@ -5,7 +5,7 @@ fullName
 
 	| fullName dir |
 	self canExtractMember ifFalse: [ ^nil ].
-	dir _ FileDirectory default directoryNamed: '.archiveViewerTemp'.
-	fullName _ dir fullNameFor: self selectedMember localFileName.
+	dir := FileDirectory default directoryNamed: '.archiveViewerTemp'.
+	fullName := dir fullNameFor: self selectedMember localFileName.
 	self selectedMember extractInDirectory: dir.
 	^fullName

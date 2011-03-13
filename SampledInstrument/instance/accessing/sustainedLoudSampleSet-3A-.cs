@@ -1,3 +1,3 @@
 sustainedLoudSampleSet: sortedNotes
 
-	sustainedLoud _ self midiKeyMapFor: sortedNotes.
+	sustainedLoud := self midiKeyMapFor: sortedNotes.

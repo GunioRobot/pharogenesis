@@ -40,18 +40,9 @@ copyBits
 		colorMap _ colorMap colors.
 		^self copyBits].
 	"Check if clipping gots us way out of range"
-	self clipRange ifTrue:[^self copyBits].
+	self clipRange ifTrue:[self roundVariables. ^self copyBitsAgain].
 
 	self error: 'Bad BitBlt arg (Fraction?); proceed to convert.'.
 	"Convert all numeric parameters to integers and try again."
-	destX _ destX asInteger.
-	destY _ destY asInteger.
-	width _ width asInteger.
-	height _ height asInteger.
-	sourceX _ sourceX asInteger.
-	sourceY _ sourceY asInteger.
-	clipX _ clipX asInteger.
-	clipY _ clipY asInteger.
-	clipWidth _ clipWidth asInteger.
-	clipHeight _ clipHeight asInteger.
+	self roundVariables.
 	^ self copyBitsAgain

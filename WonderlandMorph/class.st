@@ -1,1 +1,0 @@
-WonderlandMorph class instanceVariableNames: ''

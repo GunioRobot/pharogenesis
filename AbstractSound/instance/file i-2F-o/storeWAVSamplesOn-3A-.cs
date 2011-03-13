@@ -2,11 +2,11 @@ storeWAVSamplesOn: aBinaryStream
 	"Store this sound as a 16-bit Windows WAV file at the current SoundPlayer sampling rate. Store both channels if self isStereo is true; otherwise, store the left channel only as a mono sound."
 
 	| samplesToStore channelCount dataByteCount samplesPerSec bytesPerSec |
-	samplesToStore _ (self duration * self samplingRate) ceiling.
-	channelCount _ self isStereo ifTrue: [2] ifFalse: [1].
-	dataByteCount _ samplesToStore * channelCount * 2.
-	samplesPerSec _ self samplingRate rounded.
-	bytesPerSec _ samplesPerSec * channelCount * 2.
+	samplesToStore := (self duration * self samplingRate) ceiling.
+	channelCount := self isStereo ifTrue: [2] ifFalse: [1].
+	dataByteCount := samplesToStore * channelCount * 2.
+	samplesPerSec := self samplingRate rounded.
+	bytesPerSec := samplesPerSec * channelCount * 2.
 
 	"file header"
 	aBinaryStream

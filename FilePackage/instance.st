@@ -1,6 +1,6 @@
 Object
 	subclass: #FilePackage
-	instanceVariableNames: 'fullName sourceSystem classes doIts classOrder '
-	classVariableNames: ''
+	instanceVariableNames: 'fullName sourceSystem classes doIts classOrder'
+	classVariableNames: 'LogFileStream'
 	poolDictionaries: ''
-	category: 'Tools-File Contents Browser'
+	category: 'System-FilePackage'

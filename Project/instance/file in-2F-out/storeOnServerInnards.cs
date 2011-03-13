@@ -5,9 +5,9 @@ storeOnServerInnards
 	self assureIntegerVersion.
 
 	"Find out what version"
-	primaryServerDirectory _ self primaryServerIfNil: [
-		(primaryServerDirectory _ self findAFolderToStoreProjectIn) ifNil: [^self].
-		oldResourceUrl _ self resourceUrl.
+	primaryServerDirectory := self primaryServerIfNil: [
+		(primaryServerDirectory := self findAFolderToStoreProjectIn) ifNil: [^self].
+		oldResourceUrl := self resourceUrl.
 		primaryServerDirectory == #localOnly ifTrue: [
 			self storeNewPrimaryURL: FileDirectory default url.
 			nil
@@ -17,51 +17,53 @@ storeOnServerInnards
 		].
 	].
 
-	localDirectory _ self squeakletDirectory.
-	serverVersionPair _ self class mostRecent: self name onServer: primaryServerDirectory.
-	localVersionPair _ self class mostRecent: self name onServer: localDirectory.
-	maxNumber _ myVersionNumber _ self currentVersionNumber.
+	localDirectory := self squeakletDirectory.
+	serverVersionPair := self class mostRecent: self name onServer: primaryServerDirectory.
+	localVersionPair := self class mostRecent: self name onServer: localDirectory.
+	maxNumber := myVersionNumber := self currentVersionNumber.
 
 	ProgressNotification signal: '2:versionsDetected'.
 
-	warning _ ''.
+	warning := ''.
 	myVersionNumber < serverVersionPair second ifTrue: [
-		warning _ warning,'\There are newer version(s) on the server' translated.
-		maxNumber _ maxNumber max: serverVersionPair second.
+		warning := warning,'\There are newer version(s) on the server' translated.
+		maxNumber := maxNumber max: serverVersionPair second.
 	].
 	myVersionNumber < localVersionPair second ifTrue: [
-		warning _ warning,'\There are newer version(s) in the local directory' translated.
-		maxNumber _ maxNumber max: localVersionPair second.
+		warning := warning,'\There are newer version(s) in the local directory' translated.
+		maxNumber := maxNumber max: localVersionPair second.
 	].
 	"8 Nov 2000 - only check on the first attempt to publish"
 	myVersionNumber = 0 ifTrue: [
 		warning isEmpty ifFalse: [
 			myVersionNumber = 0 ifTrue: [
-				warning _ warning,'\THIS PROJECT HAS NEVER BEEN SAVED' translated.
+				warning := warning,'\THIS PROJECT HAS NEVER BEEN SAVED' translated.
 			].
-			warning _ 'WARNING' translated, '\Project: ' translated, self name,warning.
-			resp _ (PopUpMenu labels: 'Store anyway\Cancel' translated withCRs) startUpWithCaption: 
-				(warning, '\Please cancel, rename this project, and see what is there.' translated) withCRs.
+			warning := 'WARNING' translated, '\Project: ' translated, self name,warning.
+			resp := (UIManager default 
+					chooseFrom: (Array with: 'Store anyway' translated 
+										with: 'Cancel' translated)
+  					title: (warning, '\Please cancel, rename this project, and see what is there.' translated) withCRs).
 				resp ~= 1 ifTrue: [^ nil]
 		].
 	].
-	version _ self bumpVersion: maxNumber.
+	version := self bumpVersion: maxNumber.
 
 	oldResourceUrl
 		ifNotNil: [self resourceManager adjustToNewServer: self resourceUrl from: oldResourceUrl].
 
 	"write locally - now zipped automatically"
-	newName _ self versionedFileName.
-	lastSavedAtSeconds _ Time totalSeconds.
+	newName := self versionedFileName.
+	lastSavedAtSeconds := Time totalSeconds.
 	self exportSegmentFileName: newName directory: localDirectory.
 	(localDirectory readOnlyFileNamed: newName) setFileTypeToObject; close.
 
 	ProgressNotification signal: '4:localSaveComplete'.	"3 is deep in export logic"
 
 	primaryServerDirectory ifNotNil: [
-		suppliedPassword _ ''.
+		suppliedPassword := ''.
 		Preferences passwordsOnPublish ifTrue: [
-			suppliedPassword _ FillInTheBlank requestPassword: 'Project password' translated
+			suppliedPassword := UIManager default requestPassword: 'Project password' translated
 		].
 		[
 		primaryServerDirectory

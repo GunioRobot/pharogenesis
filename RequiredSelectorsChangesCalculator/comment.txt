@@ -1,0 +1,5 @@
+Nathanael implemented an efficient algorithm for updating the requirement status of a single selector for an inheritance subtree. However, the algorithm is not efficient enough to use as is for displaying abstractness of all the classes in a few class categories. 
+
+To get to that performance level:
+1. The RequiredSelectors class coordinates recalculation requests and tracks what classes have changed, and what classes are interesting. 
+2. The current class handles a such request, by running the algorithm only on classes and selectors that may potentially be requirements.

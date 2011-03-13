@@ -4,7 +4,5 @@ modalFolderSelector: aDir
 	window _ self morphicViewFolderSelector: aDir.
 	fileModel _ window model.
 	window openInWorld: self currentWorld extent: 300@400.
-	[window world notNil] whileTrue: [
-		window outermostWorldMorph doOneCycle.
-	].
+	self modalLoopOn: window.
 	^fileModel getSelectedDirectory withoutListWrapper

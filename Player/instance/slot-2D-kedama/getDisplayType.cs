@@ -1,0 +1,3 @@
+getDisplayType
+
+	^ self getValueFromCostume: #displayType.

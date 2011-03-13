@@ -1,3 +1,0 @@
-yellowButtonMessages
-
-	^ TextEditorYellowButtonMenu selections

@@ -1,0 +1,1 @@
+ClassCommentReader class instanceVariableNames: ''

@@ -1,1 +1,0 @@
-MacPoint class instanceVariableNames: ''

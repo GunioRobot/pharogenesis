@@ -1,4 +1,4 @@
 mergeVersion: aVersion
 	self new
 		addVersion: aVersion;
-		merge
+		mergeWithNameLike: aVersion info name

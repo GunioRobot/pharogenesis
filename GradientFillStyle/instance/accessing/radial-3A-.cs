@@ -1,2 +1,2 @@
 radial: aBoolean
-	radial _ aBoolean
+	radial := aBoolean

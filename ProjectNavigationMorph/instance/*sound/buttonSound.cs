@@ -2,7 +2,7 @@ buttonSound
 
 	| myButton m |
 
-	myButton _ RectangleMorph new 
+	myButton := RectangleMorph new 
 		borderWidth: 1;
 		cornerStyle: #rounded;
 		borderColor: #raised;
@@ -13,7 +13,7 @@ buttonSound
 		on: #mouseUp send: #soundUpEvt:morph: to: self;
 		yourself.
 
-	myButton addMorph: (m _ self speakerIcon lock).
+	myButton addMorph: (m := self speakerIcon lock).
 	myButton extent: m extent + (myButton borderWidth + 6).
 	m position: myButton center - (m extent // 2).
 	^myButton

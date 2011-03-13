@@ -1,4 +1,4 @@
 bitLengths: blArray codes: codeArray
-	bitLengths _ blArray as: WordArray.
-	codes _ codeArray as: WordArray.
+	bitLengths := blArray as: WordArray.
+	codes := codeArray as: WordArray.
 	self assert:[(self bitLengthAt: maxCode) > 0].

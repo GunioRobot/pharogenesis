@@ -33,9 +33,9 @@ actOnClickFor: anObject
 
 	"couldn't display in a browser.  Offer to put up just the source"
 
-	response _ (PopUpMenu labels: 'View web page as source
-Cancel' translated)
-		startUpWithCaption: 'Couldn''t find a web browser.  View
-page as source?' translated.
+	response _ (UIManager default 
+				chooseFrom: (Array with: 'View web page as source' translated
+									with: 'Cancel' translated)
+				title:  'Couldn''t find a web browser. View\page as source?' withCRs translated).
 	response = 1 ifTrue: [HTTPSocket httpShowPage: url].
 	^ true

@@ -1,1 +1,0 @@
-VRMLCompositeNode class instanceVariableNames: ''

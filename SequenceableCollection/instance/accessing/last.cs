@@ -1,7 +1,4 @@
 last
-	"Answer the last element of the receiver.
-	Raise an error if the collection is empty."
+	"Answer the last element of the receiver"
 
-	| size |
-	(size _ self size) = 0 ifTrue: [self errorEmptyCollection].
-	^ self at: size
+	^ self at: self size

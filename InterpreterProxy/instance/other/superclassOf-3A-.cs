@@ -1,2 +1,0 @@
-superclassOf: classPointer
-	^classPointer superclass

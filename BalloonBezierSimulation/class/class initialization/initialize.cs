@@ -1,6 +1,6 @@
 initialize
 	"GraphicsBezierSimulation initialize"
-	HeightSubdivisions _ 0.
-	LineConversions _ 0.
-	MonotonSubdivisions _ 0.
-	OverflowSubdivisions _ 0.
+	HeightSubdivisions := 0.
+	LineConversions := 0.
+	MonotonSubdivisions := 0.
+	OverflowSubdivisions := 0.

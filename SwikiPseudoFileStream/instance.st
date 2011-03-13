@@ -1,6 +1,6 @@
 RWBinaryOrTextStream
 	subclass: #SwikiPseudoFileStream
-	instanceVariableNames: 'directoryUrl localName directory '
+	instanceVariableNames: 'directoryUrl localName directory'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Network-Kernel'
+	category: 'Network-RemoteDirectory'

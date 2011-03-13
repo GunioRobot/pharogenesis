@@ -1,6 +1,6 @@
 Envelope
 	subclass: #PitchEnvelope
-	instanceVariableNames: 'centerPitch '
+	instanceVariableNames: 'centerPitch'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Sound-Synthesis'

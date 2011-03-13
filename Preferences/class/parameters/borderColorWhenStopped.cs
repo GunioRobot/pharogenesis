@@ -1,2 +1,0 @@
-borderColorWhenStopped
-	^ Color red

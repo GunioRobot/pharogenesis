@@ -1,0 +1,1 @@
+MCEmptyPackageInfo class instanceVariableNames: ''

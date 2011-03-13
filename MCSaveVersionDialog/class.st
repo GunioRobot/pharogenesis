@@ -1,0 +1,1 @@
+MCSaveVersionDialog class instanceVariableNames: ''

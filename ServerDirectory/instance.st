@@ -1,6 +1,7 @@
 Object
 	subclass: #ServerDirectory
-	instanceVariableNames: 'server directory type user passwordHolder group moniker altURL urlObject socket loaderUrl '
-	classVariableNames: 'Servers '
+	instanceVariableNames:
+		'server directory type user passwordHolder group moniker altURL urlObject client loaderUrl eToyUserListUrl eToyUserList keepAlive encodingName'
+	classVariableNames: 'LocalEToyBaseFolderSpecs LocalEToyUserListUrls LocalProjectDirectories Servers'
 	poolDictionaries: ''
-	category: 'Network-Kernel'
+	category: 'Network-RemoteDirectory'

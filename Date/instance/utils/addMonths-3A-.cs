@@ -1,5 +1,12 @@
 addMonths: monthCount 
+	|year month maxDaysInMonth day |
+	year := self year + (monthCount + self monthIndex - 1 // 12).
+	month := self monthIndex + monthCount - 1 \\ 12 + 1.
+	maxDaysInMonth := Month daysInMonth: month forYear: year.
+	day := self dayOfMonth > maxDaysInMonth
+				ifTrue: [maxDaysInMonth]
+				ifFalse: [self dayOfMonth].
 	^ Date
-		newDay: self dayOfMonth
-		month: self month + monthCount - 1 \\ 12 + 1
-		year: self year + (monthCount + self month - 1 // 12)
+		newDay: day
+		month: month
+		year: year

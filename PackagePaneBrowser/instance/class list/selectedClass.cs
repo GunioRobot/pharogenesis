@@ -3,7 +3,7 @@ selectedClass
 	exists."
 
 	| name envt |
-	(name _ self selectedClassName) ifNil: [^ nil].
-	"(envt _ self selectedEnvironment) ifNil: [^ nil]."
-	envt_(Smalltalk environmentForCategory: self selectedSystemCategoryName).
+	(name := self selectedClassName) ifNil: [^ nil].
+	"(envt := self selectedEnvironment) ifNil: [^ nil]."
+	envt:= Smalltalk.
 	^ envt at: name

@@ -3,8 +3,8 @@ flushStreamingSound
 	| bufs sound |
 	streamingSound buffers ifNil: [^ self].
 	streamingSound buffers first position = 0 ifFalse: [
-		bufs _ streamingSound buffers collect: [:b | b contents].
-		sound _ self createSoundFrom: bufs
+		bufs := streamingSound buffers collect: [:b | b contents].
+		sound := self createSoundFrom: bufs
 					stereo: streamingSound stereo
 					samplingRate: streamingSound samplingRate.
 		player addSound: sound at: streamingSound firstFrame].

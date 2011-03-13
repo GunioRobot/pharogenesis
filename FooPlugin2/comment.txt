@@ -1,3 +1,0 @@
-"TestInterpreter Example: Squeak Swiki named primitive documentation primitives"
-
-FooPlugin2 translate

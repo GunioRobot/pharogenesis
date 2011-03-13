@@ -2,8 +2,8 @@ selectorsToBeIgnored
 
 	| deprecated private special |
 
-	deprecated := #( #startMonday #toggleStartMonday).
-	private := #( #indexInMonth: #printOn: ).
+	deprecated := #().
+	private := #( #printOn: ).
 	special := #( #next #do: ).
 
 	^ super selectorsToBeIgnored, deprecated, private, special.

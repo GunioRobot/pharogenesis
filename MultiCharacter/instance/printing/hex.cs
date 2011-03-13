@@ -1,3 +1,0 @@
-hex
-
-	^ value hex.

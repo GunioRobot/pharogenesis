@@ -1,0 +1,1 @@
+UUIDGenerator class instanceVariableNames: ''

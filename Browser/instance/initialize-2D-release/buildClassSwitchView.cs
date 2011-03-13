@@ -1,7 +1,7 @@
 buildClassSwitchView
 
 	| aSwitchView |
-	aSwitchView _ PluggableButtonView
+	aSwitchView := PluggableButtonView
 		on: self
 		getState: #classMessagesIndicated
 		action: #indicateClassMessages.

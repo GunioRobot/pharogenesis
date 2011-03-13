@@ -1,6 +1,6 @@
 ObjectSocket
 	subclass: #ArbitraryObjectSocket
-	instanceVariableNames: 'encodingOfLastEncodedObject lastEncodedObject '
+	instanceVariableNames: 'encodingOfLastEncodedObject lastEncodedObject'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Network-ObjectSocket'
+	category: 'Nebraska-Network-ObjectSocket'

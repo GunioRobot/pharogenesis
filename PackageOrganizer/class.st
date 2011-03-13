@@ -1,0 +1,1 @@
+PackageOrganizer class instanceVariableNames: 'default'

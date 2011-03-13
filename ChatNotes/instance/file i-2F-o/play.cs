@@ -7,8 +7,8 @@ play
 		self isPlaying: false.
 		^self
 	].
-	separator _ FileDirectory pathNameDelimiter asString.
-	sound _ (AIFFFileReader new readFromFile: (
+	separator := FileDirectory pathNameDelimiter asString.
+	sound := (AIFFFileReader new readFromFile: (
 		FileDirectory default pathName, 
 		separator, 'audio', separator, (notes at: notesIndex), 'aiff')) sound.
 	[

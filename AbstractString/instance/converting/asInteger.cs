@@ -1,2 +1,0 @@
-asInteger 
-	^self asSignedInteger

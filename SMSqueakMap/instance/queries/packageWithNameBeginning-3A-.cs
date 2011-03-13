@@ -4,11 +4,11 @@ packageWithNameBeginning: aString
 	ignore case in both <aString> and the names."
 
 	| candidates shortest answer searchString |
-	searchString _ (aString asLowercase) copyWithout: Character space.
-	candidates _ self packages select: [:package |
+	searchString := (aString asLowercase) copyWithout: Character space.
+	candidates := self packages select: [:package |
 		((package name asLowercase) copyWithout: Character space)
 			beginsWith: searchString ].
-	shortest _ 1000.
+	shortest := 1000.
 	candidates do: [:package |
-		package name size < shortest ifTrue:[answer _ package. shortest _ package name size]].
+		package name size < shortest ifTrue:[answer := package. shortest := package name size]].
 	^answer	

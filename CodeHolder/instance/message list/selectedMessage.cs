@@ -4,15 +4,14 @@ selectedMessage
 	| class selector method |
 	contents ifNotNil: [^ contents copy].
 
-	self showingDecompile ifTrue:
-		[^ self decompiledSourceIntoContentsWithTempNames: Sensor leftShiftDown not ].
+	self showingDecompile ifTrue:[^ self decompiledSourceIntoContents].
 
-	class _ self selectedClassOrMetaClass.
-	(class isNil or: [(selector _ self selectedMessageName) isNil]) ifTrue: [^ ''].
-	method _ class compiledMethodAt: selector ifAbsent: [^ ''].	"method deleted while in another project"
-	currentCompiledMethod _ method.
+	class := self selectedClassOrMetaClass.
+	(class isNil or: [(selector := self selectedMessageName) isNil]) ifTrue: [^ ''].
+	method := class compiledMethodAt: selector ifAbsent: [^ ''].	"method deleted while in another project"
+	currentCompiledMethod := method.
 
-	^ contents _ (self showComment
+	^ contents := (self showComment
 		ifFalse: [self sourceStringPrettifiedAndDiffed]
 		ifTrue:	[ self commentContents])
 			copy asText makeSelectorBoldIn: class

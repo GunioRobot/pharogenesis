@@ -1,6 +1,6 @@
 Morph
 	subclass: #LedMorph
-	instanceVariableNames: 'digits value flashing flash '
+	instanceVariableNames: 'digits chars value flashing flash string scroller scrollLoop'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Games'
+	category: 'MorphicExtras-Leds'

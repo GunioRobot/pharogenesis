@@ -1,1 +1,0 @@
-SequentialAnimation class instanceVariableNames: ''

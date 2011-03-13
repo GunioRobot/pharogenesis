@@ -1,2 +1,2 @@
 clipRect: aRect
-	clipRect _ aRect truncated
+	clipRect := aRect truncated

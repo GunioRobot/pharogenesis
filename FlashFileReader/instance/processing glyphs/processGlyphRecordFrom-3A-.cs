@@ -1,6 +1,6 @@
 processGlyphRecordFrom: data
 	| flags |
-	flags _ data nextByte.
+	flags := data nextByte.
 	flags = 0 ifTrue:[^false].
 	self flag: #wrongSpec.
 	"From news://forums.macromedia.com/macromedia.open-swf
@@ -11,7 +11,7 @@ is always followed by the info in a 'text record type 2'. Note the high bit
 of 'text record type 1' is reserved and should always be zero.
 "
 	self processGlyphStateChange: flags from: data.
-	flags _ data nextByte.
+	flags := data nextByte.
 	flags = 0 ifTrue:[^false].
 	self processGlyphEntries: flags from: data.
 	"Old stuff - which is according to the f**cking spec"

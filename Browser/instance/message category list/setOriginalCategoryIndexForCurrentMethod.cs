@@ -4,5 +4,5 @@ setOriginalCategoryIndexForCurrentMethod
 	 Note:  This should only be called when somebody tries to save  
 	 a method that they are modifying while ALL is selected."
 
-	messageCategoryListIndex _ self messageCategoryList indexOf: self categoryOfCurrentMethod
+	messageCategoryListIndex := self messageCategoryList indexOf: self categoryOfCurrentMethod
 	

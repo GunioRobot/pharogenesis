@@ -2,14 +2,14 @@ process: aProcess controller: aController context: aContext isolationHead: proje
 
 	super initialize.
 	Smalltalk at: #MessageTally ifPresentAndInMemory: [:c | c new close].
-	contents _ nil. 
-	interruptedProcess _ aProcess.
-	interruptedController _ aController.
-	contextStackTop _ aContext.
+	contents := nil. 
+	interruptedProcess := aProcess.
+	interruptedController := aController.
+	contextStackTop := aContext.
 	self newStack: (contextStackTop stackOfSize: 1).
-	contextStackIndex _ 1.
-	externalInterrupt _ false.
-	selectingPC _ true.
-	isolationHead _ projectOrNil.
+	contextStackIndex := 1.
+	externalInterrupt := false.
+	selectingPC := true.
+	isolationHead := projectOrNil.
 	Smalltalk isMorphic ifTrue:
-		[errorWasInUIProcess _ false]
+		[errorWasInUIProcess := false]

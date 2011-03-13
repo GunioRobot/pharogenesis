@@ -3,11 +3,11 @@ soundNamed: aString ifAbsent: aBlock
 	"(SampledSound soundNamed: 'shutterClick') play"
 
 	| entry samples |
-	entry _ SoundLibrary
+	entry := SoundLibrary
 		at: aString
 		ifAbsent:
 			[^ aBlock value].
 	entry ifNil: [^ aBlock value].
-	samples _ entry at: 1.
-	samples class isBytes ifTrue: [samples _ self convert8bitSignedTo16Bit: samples].
+	samples := entry at: 1.
+	samples class isBytes ifTrue: [samples := self convert8bitSignedTo16Bit: samples].
 	^ self samples: samples samplingRate: (entry at: 2)

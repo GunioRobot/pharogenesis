@@ -1,6 +1,6 @@
 messageTo: aString
 	| message |
-	message _ MailMessage empty.
+	message := MailMessage empty.
 	message setField: 'from' toString: self fromAddress.
 	message setField: 'to' toString: aString.
 	message setField: 'subject' toString: '[MC] ', version info name.

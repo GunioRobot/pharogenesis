@@ -2,10 +2,10 @@ openAsMorphName: labelString multiSelect: multiSelect
 	"Open a morphic view for the messageSet, whose label is labelString. 
 	The listView may be either single or multiple selection type"
 	| window listHeight listPane |
-	listHeight _ 0.4.
-	window _ (SystemWindow labelled: labelString)
+	listHeight := 0.4.
+	window := (SystemWindow labelled: labelString)
 				model: self.
-	listPane _ multiSelect
+	listPane := multiSelect
 				ifTrue: [PluggableListMorphOfMany
 						on: self
 						list: #list

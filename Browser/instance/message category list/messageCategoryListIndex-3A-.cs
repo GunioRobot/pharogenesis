@@ -1,8 +1,8 @@
 messageCategoryListIndex: anInteger
 	"Set the selected message category to be the one indexed by anInteger."
 
-	messageCategoryListIndex _ anInteger.
-	messageListIndex _ 0.
+	messageCategoryListIndex := anInteger.
+	messageListIndex := 0.
 	self changed: #messageCategorySelectionChanged.
 	self changed: #messageCategoryListIndex. "update my selection"
 	self changed: #messageList.
@@ -11,5 +11,5 @@ messageCategoryListIndex: anInteger
 		ifFalse: [self classListIndex > 0
 			ifTrue: [#editClass]
 			ifFalse: [#newClass]]).
-	contents _ nil.
+	contents := nil.
 	self contentsChanged.

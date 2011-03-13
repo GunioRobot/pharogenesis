@@ -1,0 +1,2 @@
+objectCatalog
+	self activateObjectsTool

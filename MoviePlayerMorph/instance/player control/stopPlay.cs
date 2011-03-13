@@ -1,4 +1,4 @@
 stopPlay
 
-	playDirection _ 0.
+	playDirection := 0.
 	self step

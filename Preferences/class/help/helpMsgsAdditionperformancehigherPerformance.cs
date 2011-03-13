@@ -1,2 +1,0 @@
-helpMsgsAdditionperformancehigherPerformance
-	^ #((higherPerformance 'May offer higer performance at the expense of other applications on your computer. See the comment in EventSensor>>higherPerformanceNotes for more details. NOT advised when running in MVC!' ) )

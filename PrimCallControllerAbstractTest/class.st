@@ -1,0 +1,1 @@
+PrimCallControllerAbstractTest class instanceVariableNames: ''

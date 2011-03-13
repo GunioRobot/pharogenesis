@@ -11,6 +11,8 @@ finalEnterActions
 				Project deletingProject: each.
 				each removeChangeSetIfPossible]].
 
+	Locale switchAndInstallFontToID: self localeID.
+
 	thingsToUnhibernate _ world valueOfProperty: #thingsToUnhibernate ifAbsent: [#()].
 	(thingsToUnhibernate anySatisfy:[:each| 
 		each isMorph and:[each hasProperty: #needsLayoutFixed]]) 
@@ -40,6 +42,7 @@ finalEnterActions
 		armsLengthCmd openInWorld: world].
 	Smalltalk isMorphic ifTrue:
 		[world reformulateUpdatingMenus.
-		world presenter positionStandardPlayer].
+		world presenter positionStandardPlayer.
+		self assureMainDockingBarPresenceMatchesPreference].
 
 	WorldState addDeferredUIMessage: [self startResourceLoading].

@@ -1,0 +1,1 @@
+MCChangeSelectionRequest class instanceVariableNames: ''

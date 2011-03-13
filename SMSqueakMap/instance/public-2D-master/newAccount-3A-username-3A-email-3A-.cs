@@ -3,7 +3,7 @@ newAccount: name username: username email: email
 	To add the account to the map, use SMSqueakMap>>addObject:"
 
 	| account |
-	account _ self newAccount
+	account := self newAccount
 					name: name;
 					initials: username;
 					email: email.

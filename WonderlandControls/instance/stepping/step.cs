@@ -1,3 +1,0 @@
-step
-
-	myScheduler tick.

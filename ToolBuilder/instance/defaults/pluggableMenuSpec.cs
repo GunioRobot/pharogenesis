@@ -1,0 +1,2 @@
+pluggableMenuSpec
+	^ PluggableMenuSpec

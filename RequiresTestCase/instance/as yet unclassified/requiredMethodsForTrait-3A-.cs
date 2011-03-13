@@ -1,0 +1,2 @@
+requiredMethodsForTrait: aTrait 
+	^aTrait requiredSelectors

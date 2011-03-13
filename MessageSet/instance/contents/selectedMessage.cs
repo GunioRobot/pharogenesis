@@ -6,21 +6,19 @@ selectedMessage
 		class ifNil: [^ 'Class vanished'].
 		selector first isUppercase ifTrue:
 			[selector == #Comment ifTrue:
-				[currentCompiledMethod _ class organization commentRemoteStr.
+				[currentCompiledMethod := class organization commentRemoteStr.
 				^ class comment].
 			selector == #Definition ifTrue:
-				[^ class definitionST80: Preferences printAlternateSyntax not].
+				[^ class definitionST80].
 			selector == #Hierarchy ifTrue: [^ class printHierarchy]].
-		source _ class sourceMethodAt: selector ifAbsent:
-			[currentCompiledMethod _ nil.
+		source := class sourceMethodAt: selector ifAbsent:
+			[currentCompiledMethod := nil.
 			^ 'Missing'].
 
-		self showingDecompile ifTrue:
-			[^ self decompiledSourceIntoContentsWithTempNames: Sensor leftShiftDown not ].
+		self showingDecompile ifTrue: [^ self decompiledSourceIntoContents].
 
-		currentCompiledMethod _ class compiledMethodAt: selector ifAbsent: [nil].
-		self showingDocumentation ifTrue:
-			[^ self commentContents].
+		currentCompiledMethod := class compiledMethodAt: selector ifAbsent: [nil].
+		self showingDocumentation ifTrue: [^ self commentContents].
 
-	source _ self sourceStringPrettifiedAndDiffed.
+	source := self sourceStringPrettifiedAndDiffed.
 	^ source asText makeSelectorBoldIn: class]

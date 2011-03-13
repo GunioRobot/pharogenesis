@@ -1,0 +1,2 @@
+saveToDiskSelected 
+	preferences storePreferencesToDisk

@@ -1,2 +1,0 @@
-resetColor
-        ^ Color white

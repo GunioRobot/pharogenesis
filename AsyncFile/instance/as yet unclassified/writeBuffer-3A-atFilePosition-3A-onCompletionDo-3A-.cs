@@ -10,10 +10,10 @@ writeBuffer: buffer atFilePosition: fPosition onCompletionDo: aBlock
 	"here's the process that awaits the results:"
 	[
 		[	semaphore wait.
-		  	n _ self primWriteResult: fileHandle.
+		  	n := self primWriteResult: fileHandle.
 		  	n = Busy.
 		] whileTrue.  "loop while busy in case the semaphore had excess signals"
-		n = Error ifTrue: [^ self error: 'asynchronous write operation failed'].
+		n = ErrorCode ifTrue: [^ self error: 'asynchronous write operation failed'].
 		n = buffer size ifFalse: [^ self error: 'did not write the entire buffer'].
 		aBlock value.
 	] forkAt: Processor userInterruptPriority.

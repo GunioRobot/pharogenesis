@@ -1,1 +1,0 @@
-IRCChannelListBrowser class instanceVariableNames: ''

@@ -1,2 +1,0 @@
-fullName
-	^fullName

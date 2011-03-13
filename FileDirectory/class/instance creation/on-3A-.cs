@@ -4,6 +4,6 @@ on: pathString
 	| pathName |
 	DirectoryClass ifNil: [self setDefaultDirectoryClass].
 	"If path ends with a delimiter (: or /) then remove it"
-	((pathName _ pathString) endsWith: self pathNameDelimiter asString) ifTrue: [
-		pathName _ pathName copyFrom: 1 to: pathName size - 1].
+	((pathName := pathString) endsWith: self pathNameDelimiter asString) ifTrue: [
+		pathName := pathName copyFrom: 1 to: pathName size - 1].
 	^ DirectoryClass new setPathName: pathName

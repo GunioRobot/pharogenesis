@@ -1,2 +1,0 @@
-colorWhenRunning
-	^ ScriptingSystem colorBehindTiles

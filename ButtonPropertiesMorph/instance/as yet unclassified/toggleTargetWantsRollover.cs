@@ -1,3 +1,0 @@
-toggleTargetWantsRollover
-
-	self targetProperties wantsRolloverIndicator: self targetProperties wantsRolloverIndicator not

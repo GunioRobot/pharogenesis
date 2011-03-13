@@ -1,3 +1,0 @@
-B3DPackageBuilder buildStandardPackage.
-
-B3DPackageBuilder buildObjectsPackage.

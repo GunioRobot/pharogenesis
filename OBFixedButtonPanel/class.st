@@ -1,0 +1,1 @@
+OBFixedButtonPanel class instanceVariableNames: ''

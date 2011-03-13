@@ -4,23 +4,23 @@ readInstrumentChunk: chunkSize
 	  sustainMode sustainStartID sustainEndID
 	  releaseMode releaseStartID releaseEndID |
 
-	midiKey _ in next.
-	detune _ in next.
-	lowNote _ in next.
-	highNote _ in next.
-	lowVelocity _ in next.
-	highVelocity _ in next.
-	gain _ in nextNumber: 2.
-	sustainMode _ in nextNumber: 2.
-	sustainStartID _ in nextNumber: 2.
-	sustainEndID _ in nextNumber: 2.
-	releaseMode _ in nextNumber: 2.
-	releaseStartID _ in nextNumber: 2.
-	releaseEndID _ in nextNumber: 2.
-	isLooped _ sustainMode = 1.
+	midiKey := in next.
+	detune := in next.
+	lowNote := in next.
+	highNote := in next.
+	lowVelocity := in next.
+	highVelocity := in next.
+	gain := in nextNumber: 2.
+	sustainMode := in nextNumber: 2.
+	sustainStartID := in nextNumber: 2.
+	sustainEndID := in nextNumber: 2.
+	releaseMode := in nextNumber: 2.
+	releaseStartID := in nextNumber: 2.
+	releaseEndID := in nextNumber: 2.
+	isLooped := sustainMode = 1.
 	(isLooped and: [markers notNil]) ifTrue: [
 		((markers first last > frameCount) or:
 		 [markers last last > frameCount]) ifTrue: [
 			"bad loop data; some sample CD files claim to be looped but aren't"
-			isLooped _ false]].
-	pitch _ self pitchForKey: midiKey.
+			isLooped := false]].
+	pitch := self pitchForKey: midiKey.

@@ -1,0 +1,2 @@
+selfSentSelectorsAndSendersDo: aBlock
+	selfSenders keysAndValuesDo: aBlock
