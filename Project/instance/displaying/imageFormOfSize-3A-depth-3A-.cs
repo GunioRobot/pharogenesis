@@ -3,7 +3,7 @@ imageFormOfSize: extentPoint depth: d
 	newDisplay _ DisplayScreen extent: extentPoint depth: d.
 	Display replacedBy: newDisplay do:[
 		world isMorph 
-			ifTrue:[world fullDrawOn: (Display getCanvas)] "Morphic"
+			ifTrue:[Display getCanvas fullDrawMorph: world] "Morphic"
 			ifFalse:[world restore]. "MVC"
 	].
 	^newDisplay

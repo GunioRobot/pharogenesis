@@ -4,4 +4,4 @@ AbstractSound
 		'initialCount count waveTable scaledWaveTableSize scaledIndex scaledIndexIncr modulation multiplier normalizedModulation scaledOffsetIndex scaledOffsetIndexIncr '
 	classVariableNames: 'SineTable '
 	poolDictionaries: ''
-	category: 'System-Sound'
+	category: 'Sound-Synthesis'

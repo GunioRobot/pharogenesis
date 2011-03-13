@@ -18,7 +18,7 @@ copyBits
 	28	rgbMin: sourceWord with: destinationWord
 	29	rgbMin: sourceWord bitInvert32 with: destinationWord
 "
-	<primitive: 96>
+	<primitive: 'primitiveCopyBits' module: 'BitBltPlugin'>
 
 	"Check for compressed source, destination or halftone forms"
 	(combinationRule >= 30 and: [combinationRule <= 31]) ifTrue:

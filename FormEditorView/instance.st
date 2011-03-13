@@ -3,4 +3,4 @@ StandardSystemView
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Graphics-Editors'
+	category: 'ST80-Editors'

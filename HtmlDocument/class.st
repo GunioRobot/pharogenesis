@@ -1,0 +1,1 @@
+HtmlDocument class instanceVariableNames: ''

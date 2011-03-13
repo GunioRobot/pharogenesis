@@ -1,3 +1,3 @@
 forgetOtherCostumes
-	costumes _ nil.
+	self resetCostumeList.
 	self updateAllViewers

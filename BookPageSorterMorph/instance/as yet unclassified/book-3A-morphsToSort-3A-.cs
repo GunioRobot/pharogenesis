@@ -7,4 +7,3 @@ book: aBookMorph morphsToSort: morphList
 	pageHolder extent: pageHolder width@pageHolder fullBounds height.
 	innerBounds _ Rectangle merging: (morphList collect: [:m | m bounds]).
 	pageHolder extent: innerBounds extent + pageHolder borderWidth + 6.
-	self resizeIfNeeded

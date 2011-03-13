@@ -1,6 +1,6 @@
 initializeFor: aTarget fromDictionary: aDictionary
 	|  imageWrapper anIndex aButton controlsWrapper asm |
-	self orientation: #vertical.
+	self listDirection: #topToBottom.
 	self addMorphBack: (controlsWrapper _ AlignmentMorph newRow).
 	self baseDictionary: aDictionary.
 	target _ aTarget.
@@ -11,8 +11,8 @@ initializeFor: aTarget fromDictionary: aDictionary
 
 	self hResizing: #shrinkWrap; vResizing: #shrinkWrap.
 
-	controlsWrapper borderWidth: 0; inset: 0; hResizing: #shrinkWrap; vResizing: #shrinkWrap; extent: 5@5.
-	controlsWrapper centering: #topLeft; color: Color white; vResizing: #spaceFill.
+	controlsWrapper borderWidth: 0; layoutInset: 0; hResizing: #shrinkWrap; vResizing: #shrinkWrap; extent: 5@5.
+	controlsWrapper wrapCentering: #topLeft; color: Color white; vResizing: #spaceFill.
 	controlsWrapper addTransparentSpacerOfSize: (18@0).
 	controlsWrapper addMorphBack: (IconicButton new borderWidth: 0;
 			labelGraphic: (ScriptingSystem formAtKey: 'Menu'); color: Color transparent; 

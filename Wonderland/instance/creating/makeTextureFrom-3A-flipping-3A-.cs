@@ -3,7 +3,7 @@ makeTextureFrom: filename flipping: aBool
 	| tex |
 	filename == nil ifTrue:[^nil].
 	^self getSharedTextureDict at: filename ifAbsentPut:[
-		tex _ (Form fromBMPFileNamed: filename) asTexture.
+		tex _ (Form fromFileNamed: filename) asTexture.
 		aBool ifTrue:[tex flipVertically].
 		tex wrap: true.
 		tex interpolate: true.

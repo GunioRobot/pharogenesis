@@ -1,3 +1,3 @@
 clipPostscript
-	^Smalltalk clipboardText:self asPostscript.
+	^Clipboard clipboardText: self asPostscript.
 

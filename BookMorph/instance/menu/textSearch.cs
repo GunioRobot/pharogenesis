@@ -4,7 +4,7 @@ textSearch
 	| wanted wants list str |
 	list _ self valueOfProperty: #searchKey ifAbsent: [#()].
 	str _ String streamContents: [:strm | 
-			list do: [:each | strm nextPutAll: each]].
+			list do: [:each | strm nextPutAll: each; space]].
 	wanted _ FillInTheBlank request: 'words to search for.  Order is not important.
 Beginnings of words are OK.'
 		initialAnswer: str.

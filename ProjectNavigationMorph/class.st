@@ -1,0 +1,1 @@
+ProjectNavigationMorph class instanceVariableNames: ''

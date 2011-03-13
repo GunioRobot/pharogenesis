@@ -1,0 +1,1 @@
+AliceWorld class instanceVariableNames: ''

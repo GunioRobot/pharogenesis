@@ -13,7 +13,6 @@ initialize
 	CtxtTempFrameStart _ 6.  "Copy of TempFrameStart in Interp"
 	NilContext _ 1.  "the oop for the integer 0; used to mark the end of context lists"
 
-	MinimumForwardTableBytes _ 16000.  "bytes reserved for forwarding table (8 bytes/entry)"
 	RemapBufferSize _ 25.
 	RootTableSize _ 2500.  "number of root table entries (4 bytes/entry)"
 

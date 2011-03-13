@@ -1,2 +1,0 @@
-keyboardPressed
-	^ eventUsed not

@@ -1,0 +1,3 @@
+The CipherPanel, as its name suggests, is a tool for decoding simple substitution codes, such as are presented on the puzzle pages of many Sunday newspapers.  Most of the capability is inherited from the two WordGame classes used.  To try it out, choose newMorph/Games/CipherPanel in a morphic project, or execute, in any project:
+
+	CipherPanel new openInWorld

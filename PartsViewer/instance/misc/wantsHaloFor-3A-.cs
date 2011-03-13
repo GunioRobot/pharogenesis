@@ -1,2 +1,0 @@
-wantsHaloFor: aSubmoph
-	^ false

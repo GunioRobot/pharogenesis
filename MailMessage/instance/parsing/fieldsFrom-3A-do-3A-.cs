@@ -1,5 +1,5 @@
 fieldsFrom: aStream do: aBlock
-	"Invoke the given block with each of the header fields from the given stream. The block arguments are the field name and value."
+	"Invoke the given block with each of the header fields from the given stream. The block arguments are the field name and value. The streams position is left right after the empty line separating header and body."
 
 	| savedLine line s |
 	savedLine _ MailDB readStringLineFrom: aStream.
@@ -10,7 +10,7 @@ fieldsFrom: aStream do: aBlock
 		 (savedLine size > 0) and: [savedLine first isSeparator]] whileTrue: [
 			"lines starting with white space are continuation lines"
 			s _ ReadStream on: savedLine.
-			s skipSeparators; skip: -1.
+			s skipSeparators.
 			line _ line, s upToEnd].
 		self reportField: line withBlanksTrimmed to: aBlock].
 

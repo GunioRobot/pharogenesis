@@ -1,2 +1,0 @@
-handlesDoubleClick: evt
-	^ doubleClickRecipient notNil

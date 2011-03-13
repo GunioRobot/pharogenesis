@@ -1,4 +1,4 @@
 oldFileMenu: aDirectory withPattern: aPattern
 
-	World ifNil: [^PluggableFileList oldFileMenu: aDirectory].
+	Smalltalk isMorphic ifFalse: [^PluggableFileList oldFileMenu: aDirectory].
 	^super new oldFileFrom: aDirectory withPattern: aPattern

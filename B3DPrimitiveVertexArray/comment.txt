@@ -1,0 +1,1 @@
+I store Balloon 3D primitive vertices in place. I am used to pass data efficiently to the primitive level during high-bandwidth operations.

@@ -1,2 +1,0 @@
-wantsRoundedCorners
-	^ self isCurrentlyTextual

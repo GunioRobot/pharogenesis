@@ -1,3 +1,0 @@
-minWidthWhenEmpty
-
-	^ 2

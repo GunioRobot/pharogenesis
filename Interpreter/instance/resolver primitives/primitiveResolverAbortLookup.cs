@@ -1,3 +1,0 @@
-primitiveResolverAbortLookup
-
-	self sqResolverAbort.

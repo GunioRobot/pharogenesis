@@ -5,7 +5,7 @@ getBestLocation: vertices for: morph corner: cornerName
 	rect _ vertices first rect: (vertices at: 5).
 	maxArea _ -1.
 	verts _ vertices.
-	usableArea _ morph world viewBox.
+	usableArea _ (morph world ifNil: [self currentWorld]) viewBox.
 	1 to: 4 do: [:i |
 		dir _ #(vertical horizontal) atWrap: i.
 		verts _ verts collect: [:p | p flipBy: dir centerAt: rect center].
@@ -13,7 +13,7 @@ getBestLocation: vertices for: morph corner: cornerName
 		morphPoint _ #(topCenter topCenter bottomCenter bottomCenter) at: i.
 		a _ ((rect
 			align: (rect perform: rectCorner)
-			with: (mbc _ morph boundsInWorld perform: morphPoint))
+			with: (mbc _ morph boundsForBalloon perform: morphPoint))
 				intersect: usableArea) area.
 		(a > maxArea or: [a = rect area and: [rectCorner = cornerName]]) ifTrue:
 			[maxArea _ a.

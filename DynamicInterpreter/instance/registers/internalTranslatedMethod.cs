@@ -1,2 +1,0 @@
-internalTranslatedMethod
-	^self cachedTranslatedMethodAt: localCP

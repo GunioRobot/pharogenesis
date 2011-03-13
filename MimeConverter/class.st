@@ -1,0 +1,1 @@
+MimeConverter class instanceVariableNames: ''

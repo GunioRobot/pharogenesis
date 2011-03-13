@@ -5,8 +5,8 @@ closeButtonOnly
 	self firstSubmorph delete.  "remove old control panel"
 	b _ SimpleButtonMorph new target: self; borderColor: Color black.
 	r _ AlignmentMorph newRow.
-	r color: b color; borderWidth: 0; inset: 0.
+	r color: b color; borderWidth: 0; layoutInset: 0.
 	r hResizing: #shrinkWrap; vResizing: #shrinkWrap; extent: 5@5.
-	r centering: #topLeft.
+	r wrapCentering: #topLeft.
 	r addMorphBack: (b fullCopy label: 'Close'; actionSelector: #delete).
 	self addMorphFront: r.

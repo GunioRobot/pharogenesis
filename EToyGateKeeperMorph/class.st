@@ -1,0 +1,1 @@
+EToyGateKeeperMorph class instanceVariableNames: ''

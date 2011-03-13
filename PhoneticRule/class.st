@@ -1,0 +1,1 @@
+PhoneticRule class instanceVariableNames: ''

@@ -1,8 +1,8 @@
 storeSegment
 	"Store my project out on the disk as an ImageSegment.  Keep the outPointers in memory.  Name it <project name>.seg.  *** Caller must be holding (Project alInstances) to keep subprojects from going out. ***"
 
-| is response sizeHint |
-world == World ifTrue: [^ false]. 
+| is sizeHint |
+(Display isCurrentMorphicWorld: world) ifTrue: [^ false]. 
 	"self inform: 'Can''t send the current world out'."
 world isInMemory ifFalse: [^ false].  "already done"
 world isMorph ifFalse: [
@@ -11,11 +11,7 @@ world isMorph ifFalse: [
 world ifNil: [^ false].  world presenter ifNil: [^ false].
 
 Utilities emptyScrapsBook.
-World currentHand objectToPaste ifNotNil: [
-	response _ (PopUpMenu labels: 'Delete\Keep' withCRs)
-		startUpWithCaption: 'Hand is holding a Morph in its paste buffer:\' withCRs,
-			World currentHand objectToPaste printString.
-	response = 1 ifTrue: [World currentHand clearPasteBuffer]].
+Display checkCurrentHandForObjectToPaste.
 world releaseSqueakPages.
 sizeHint _ self projectParameters at: #segmentSize ifAbsent: [0].
 

@@ -1,0 +1,4 @@
+This is an abstract superclass for models which want to use the #when:send:to: event system in an efficient way. Instances of this class keep their own list of event symbols and registered events instead of using the global class variable EventsFields in class Object.
+
+Structure:
+ myEvents		Dictionary -- set of event symbols and registered listeners

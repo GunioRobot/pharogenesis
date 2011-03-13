@@ -1,2 +1,2 @@
 hasHalo
-	self halo ifNil: [^ false] ifNotNil: [^ true]
+	^self hasProperty: #hasHalo.

@@ -1,6 +1,5 @@
 primNextFillEntryInto: fillEntry
 	"Store the next fill entry of the active edge table in fillEntry.
 	Return false if there is no such entry, true otherwise"
-	<primitive: 'gePrimitiveNextFillEntry'>
-	Debug ifTrue:[^BalloonEnginePlugin doPrimitive: 'gePrimitiveNextFillEntry'].
+	<primitive: 'primitiveNextFillEntry' module: 'B2DPlugin'>
 	^self primitiveFailed

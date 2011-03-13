@@ -35,4 +35,4 @@ invokeScoreMenu: evt
 	menu addLine.
 	menu add: 'add keyboard' action: #addKeyboard.
 
-	evt hand invokeMenu: menu event: evt.
+	menu popUpEvent: evt in: self world.

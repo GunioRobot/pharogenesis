@@ -1,0 +1,3 @@
+noTileColor
+
+	^ true

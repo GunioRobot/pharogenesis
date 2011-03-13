@@ -1,5 +1,6 @@
 selectedMessage
-	"Answer a copy of the source code for the selected message selector."
+	"Answer a copy of the source code for the selected message."
+
 	| class selector method tempNames |
 	contents == nil ifFalse: [^ contents copy].
 	class _ self selectedClassOrMetaClass.
@@ -27,14 +28,18 @@ selectedMessage
 		contents _ contents asText makeSelectorBoldIn: class.
 		^ contents copy].
 
-	contents _ class sourceCodeAt: selector.
-	self validateMessageSource: selector.
+	self showComment
+		ifFalse:
+			[contents _ class sourceCodeAt: selector.
+			self validateMessageSource: selector.
 
-	Preferences browseWithPrettyPrint ifTrue:
-		[contents _ class compilerClass new
-			format: contents in: class notifying: nil decorated: Preferences colorWhenPrettyPrinting].
-	self showDiffs ifTrue:
-		[contents _ self diffFromPriorSourceFor: contents].
+			Preferences browseWithPrettyPrint ifTrue:
+				[contents _ class compilerClass new
+					format: contents in: class notifying: nil decorated: Preferences colorWhenPrettyPrinting].
+			self showDiffs ifTrue:
+				[contents _ self diffFromPriorSourceFor: contents].
 
-	contents _ contents asText makeSelectorBoldIn: class.
+			contents _ contents asText makeSelectorBoldIn: class]
+		ifTrue:
+			[contents _ self commentContents].
 	^ contents copy

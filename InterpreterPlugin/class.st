@@ -1,0 +1,1 @@
+InterpreterPlugin class instanceVariableNames: ''

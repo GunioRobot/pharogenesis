@@ -1,0 +1,1 @@
+LayoutProperties class instanceVariableNames: ''

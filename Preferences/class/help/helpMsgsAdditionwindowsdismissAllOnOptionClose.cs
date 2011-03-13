@@ -1,0 +1,2 @@
+helpMsgsAdditionwindowsdismissAllOnOptionClose
+	^ #((dismissAllOnOptionClose 'Mac-specific: if true, then a click on a morphic SystemWindow''s close-box while the mac option is held down will result in a dismissal of all unchanged windows' ) )

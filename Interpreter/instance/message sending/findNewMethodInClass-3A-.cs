@@ -6,8 +6,6 @@ findNewMethodInClass: class
 	ok ifFalse: [
 		"entry was not found in the cache; look it up the hard way"
 		self lookupMethodInClass: class.
-		self addToMethodCacheSel: messageSelector
-			class: class
-			method: newMethod
-			primIndex: primitiveIndex.
+		lkupClass _ class.
+		self addNewMethodToCache.
 	].

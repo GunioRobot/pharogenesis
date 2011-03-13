@@ -7,8 +7,7 @@ shifts |
 		ifTrue: [
 			b _ BitBlt current bitPokerToForm: form.
 			startX to: width-1 by: incX do: [ :x |
-				b pixelAt: x@y put: 255 - (thisScanline at:
-(x//incX<<1)+1).
+				b pixelAt: x@y put: 255 - (thisScanline at: (x//incX<<1)+1).
 				].
 			^ self
 			].
@@ -20,8 +19,7 @@ shifts |
 			b _ 3- (x \\ 4) * 8.
 			pixel _ (thisScanline at: x // incX + 1)<<b.
 			mask _ (255<<b) bitInvert32.
-			bits at: w put: (((bits at: w) bitAnd: mask) bitOr:
-pixel)
+			bits at: w put: (((bits at: w) bitAnd: mask) bitOr: pixel)
 		].
 		^ self
 	].
@@ -45,8 +43,7 @@ pixel)
 	pixelNumber _ 0.
 	startX to: width-1 by: incX do: [ :x |
 		rawByte _ thisScanline at: (pixelNumber // pixPerByte) + 1.
-		pixel _ (rawByte >> (shifts at: (pixelNumber \\ pixPerByte)
-+ 1)) bitAnd: mask.
+		pixel _ (rawByte >> (shifts at: (pixelNumber \\ pixPerByte) + 1)) bitAnd: mask.
 		blitter pixelAt: (x@y) put: pixel.
 		pixelNumber _ pixelNumber + 1.
 	].

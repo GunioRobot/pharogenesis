@@ -1,0 +1,2 @@
+My instances are phoneme sets, i.e. phonetic alphabets.
+There are several "standard" phoneme sets used among phoneticians. We choosed ARPABET to be the default phoneme set in this system, but other examples are implemented, such as DARPA (radio), MRPA and SAMPA. As well, mappings from those phoneme sets to ARPABET are provided.

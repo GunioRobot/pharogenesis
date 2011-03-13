@@ -1,0 +1,1 @@
+SimpleSliderMorph class instanceVariableNames: ''

@@ -1,1 +1,0 @@
-EToyPlayer class instanceVariableNames: ''

@@ -1,2 +1,3 @@
-Time comment:
-'I represent the time of day.'
+I represent the time of day.
+
+Internally I store the number of seconds since midnight.

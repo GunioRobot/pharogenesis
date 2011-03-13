@@ -1,6 +1,8 @@
 showThumbnailString
+	"Answer the string to be shown in a menu to represent the show-thumbnails status"
+
 	^( self hasProperty: #alwaysShowThumbnail)
 		ifTrue:
-			['stop showing thumbnails']
+			['<on>show thumbnails']
 		ifFalse:
-			['start showing thumbnails']
+			['<off>show thumbnails']

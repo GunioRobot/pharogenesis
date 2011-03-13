@@ -1,0 +1,3 @@
+An ExternalForm is just like any other form. It's only difference is that it is allocated on a specific display and can be used for accelerated blts on the particular display.
+
+Upon shutdown of the system ExternalForms will be deallocated from the display and be kept in their internalized form.

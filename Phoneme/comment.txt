@@ -1,0 +1,1 @@
+My instances are phonemes. See also PhonemeSet class.

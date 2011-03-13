@@ -10,6 +10,7 @@ objectForDataStream: refStrm
 		bb _ SimpleButtonMorph new.	"write out a dummy"
 		bb label: self label.
 		bb bounds: bounds.
+		refStrm replace: self with: bb.
 		^ bb].
 
 	(thatPage _ arguments first) url ifNil: [
@@ -31,4 +32,5 @@ objectForDataStream: refStrm
 	um isBookmark: true; label: self label.
 	um borderWidth: borderWidth; borderColor: borderColor.
 	um color: color.
+	refStrm replace: self with: um.
 	^ um

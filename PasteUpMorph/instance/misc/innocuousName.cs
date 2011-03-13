@@ -1,5 +1,5 @@
 innocuousName
-	^ (self hasProperty: #flap)
+	^ (self isFlap)
 		ifTrue:
 			['flap']
 		ifFalse:

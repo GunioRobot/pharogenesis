@@ -1,0 +1,3 @@
+wantsSteps
+
+	^actionBlock notNil

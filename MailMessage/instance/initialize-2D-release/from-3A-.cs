@@ -12,20 +12,21 @@ from: aString
 
 	self fieldsFrom: parseStream do: 
 		[:fName :fValue | 
-		fName = 'date' ifTrue: [time _ (self timeFrom: fValue) ifNil: [ 0 ]].
-		fName = 'from' ifTrue: [from _ fValue].
-		fName = 'to'
+		(fName asLowercase) = 'date' ifTrue: 
+			[time _ (self timeFrom: fValue) ifNil: [ 0 ]].
+		(fName asLowercase) = 'from' ifTrue: [from _ fValue].
+		(fName asLowercase) = 'to'
 			ifTrue: [to isEmpty
 					ifTrue: [to _ fValue]
 					ifFalse: [to _ to , ', ' , fValue]].
-		fName = 'cc'
+		(fName asLowercase)  = 'cc'
 			ifTrue: [cc isEmpty
 					ifTrue: [cc _ fValue]
 					ifFalse: [cc _ cc , ', ' , fValue]].
-		fName = 'subject' ifTrue: [subject _ fValue].
-		fName = 'mime-version' ifTrue: [isMime _ true].
-		fName = 'content-type' ifTrue: [contentType _ (fValue copyUpTo: $;) asLowercase].
-		fName = 'content-transfer-encoding' ifTrue: [contentTransferEncoding _ fValue asLowercase].
+		(fName asLowercase) = 'subject' ifTrue: [subject _ fValue].
+		(fName asLowercase) = 'mime-version' ifTrue: [isMime _ true].
+		(fName asLowercase) = 'content-type' ifTrue: [contentType _ (fValue copyUpTo: $;) asLowercase].
+		(fName asLowercase) = 'content-transfer-encoding' ifTrue: [contentTransferEncoding _ fValue asLowercase].
 
 		fields at: fName put: (MIMEHeaderValue fromString: fValue)].
 	bodyText _ parseStream upToEnd.

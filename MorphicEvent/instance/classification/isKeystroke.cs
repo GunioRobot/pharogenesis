@@ -1,3 +1,0 @@
-isKeystroke
-
-	^ type == #keystroke

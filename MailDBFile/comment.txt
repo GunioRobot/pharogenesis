@@ -1,0 +1,1 @@
+I am an abstract class that collects some of the operations common to all mail database files.

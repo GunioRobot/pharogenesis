@@ -4,8 +4,9 @@ onBlock: block
 	"TimeProfileBrowser onBlock: [20 timesRepeat: 
 			[Transcript show: 100 factorial printString]]"
 
-	| inst |
+	| inst result |
 	inst := self new.
 	inst block: block.
-	inst runBlock.
-	self open: inst name: 'Time Profile'
+	result _ inst runBlock.
+	self open: inst name: 'Time Profile'.
+	^ result

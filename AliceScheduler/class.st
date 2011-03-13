@@ -1,0 +1,1 @@
+AliceScheduler class instanceVariableNames: ''

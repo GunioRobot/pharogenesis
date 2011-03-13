@@ -1,3 +1,7 @@
 updateStatus
-	(self topEditor == self) ifTrue:
-		[self updateStatusMorph: (submorphs first submorphNamed: 'trigger')]
+	"Update that status in the receiver's header"
+
+	(self topEditor == self) ifTrue: [
+		(self firstSubmorph findA: ScriptStatusControl) ifNil: [self replaceRow1].
+		self updateStatusMorph: (self firstSubmorph findA: ScriptStatusControl)
+	]

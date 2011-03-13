@@ -20,13 +20,9 @@ openAsMorph
 					keystroke: #packageListKey:from:)
 				frame: (0@0 extent: aListExtent).
 			next := aListExtent x @ 0].
-	window addMorph: (PluggableListMorph on: self list: #classList
-			selected: #classListIndex changeSelected: #classListIndex:
-			menu: #classListMenu:
-			keystroke: #classListKey:from:)
-		frame: (next extent: aListExtent - (0.0 @ 0.05)).
-	window addMorph: self buildMorphicSwitches
-		frame: (next + (0 @ (aListExtent y - 0.05)) extent: aListExtent x @ 0.05).
+
+	self addClassAndSwitchesTo: window at: (next extent: aListExtent) plus: 0.
+
 	next := next + (aListExtent x @ 0).
 	window addMorph: (PluggableListMorph on: self list: #messageCategoryList
 			selected: #messageCategoryListIndex changeSelected: #messageCategoryListIndex:
@@ -38,10 +34,6 @@ openAsMorph
 			menu: #messageListMenu:
 			keystroke: #messageListKey:from:)
 		frame: (next extent: aListExtent).
-	window addMorph: (PluggableTextMorph on: self text: #contents accept: #contents:notifying:
-			readSelection: #contentsSelection menu: #codePaneMenu:shifted:)
-		frame: (0@0.4 corner: 1@0.94).
-	window addMorph: (PluggableTextMorph on: self text: #infoViewContents accept: nil
-			readSelection: nil menu: nil)
-		frame: (0@0.94 corner: 1@1).
+
+	self addLowerPanesTo: window at: (0@0.4 corner: 1@1) with: nil.
 	^ window

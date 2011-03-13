@@ -1,0 +1,1 @@
+UndoPositionChange class instanceVariableNames: ''

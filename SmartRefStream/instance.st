@@ -1,6 +1,7 @@
 ReferenceStream
 	subclass: #SmartRefStream
-	instanceVariableNames: 'writing structures steady reshaped renamed superclasses progressBar objCount '
+	instanceVariableNames:
+		'structures steady reshaped renamed renamedConv superclasses progressBar objCount classInstVars '
 	classVariableNames: 'ScannedObject '
 	poolDictionaries: ''
 	category: 'System-Object Storage'

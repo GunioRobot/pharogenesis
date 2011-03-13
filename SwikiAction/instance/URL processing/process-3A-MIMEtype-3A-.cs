@@ -10,6 +10,6 @@ process: request MIMEtype: imageGif
 	(FileDirectory default fileExists: fName) 
 		ifTrue: ["maybe send out content-length?"
 			request reply: (PWS success),(PWS content: imageGif), PWS crlf.
-			request reply: (FileStream oldFileNamed: fName) contentsOfEntireFile]
+			request reply: (FileStream readOnlyFileNamed: fName) contentsOfEntireFile]
 		ifFalse: [
 			request reply: ( 'HTTP/1.0 400 Bad Request', PWS crlfcrlf, 'file not found')].

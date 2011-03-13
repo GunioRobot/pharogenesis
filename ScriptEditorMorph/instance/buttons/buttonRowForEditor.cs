@@ -1,9 +1,13 @@
 buttonRowForEditor
-	| r aString aButtonMorph buttonFont aStatusMorph aStatus |
-	buttonFont _ Preferences standardButtonFont.
-	r _ AlignmentMorph newRow color: Color transparent; inset: 0.
+	"Answer a row of buttons that comprise the header at the top of the Scriptor"
 
-	r addMorphFront:
+	| aRow aString aButtonMorph buttonFont aStatusMorph aButton aColumn |
+	buttonFont _ Preferences standardButtonFont.
+	aRow _ AlignmentMorph newRow color: Color transparent; layoutInset: 0.
+	aRow hResizing: #shrinkWrap.
+	aRow vResizing: #shrinkWrap.
+
+	aRow addMorphFront:
 		(SimpleButtonMorph new
 			label: '!' font: (StrikeFont familyName: #ComicBold size: 16);
 			target: self;
@@ -12,29 +16,34 @@ buttonRowForEditor
 			actWhen: #whilePressed;
 			actionSelector: #tryMe;
 			balloonTextSelector: #tryMe).
-	r addTransparentSpacerOfSize: 6@10.
+	aRow addTransparentSpacerOfSize: 6@10.
+	self addDismissButtonTo: aRow.
+	aRow addTransparentSpacerOfSize: 6@1.
+	aColumn _ AlignmentMorph newColumn beTransparent.
+	aColumn addTransparentSpacerOfSize: 0@4.
+	aButton _ UpdatingThreePhaseButtonMorph checkBox.
+	aButton
+		target: self;
+		actionSelector: #toggleWhetherShowingTiles;
+		getSelector: #showingMethodPane.
+	aButton setBalloonText: 'toggle between showing tiles and showing textual code'.
+	aColumn addMorphBack: aButton.
+	aRow addMorphBack: aColumn.
+
+	aRow addTransparentSpacerOfSize: 6@10.
 
 	aString _ playerScripted externalName, ' ', self scriptTitle.
-	r addMorphBack:
+	aRow addMorphBack:
 		(aButtonMorph _ SimpleButtonMorph new useSquareCorners label: aString font: buttonFont; target: self; setNameTo: 'title').
 	aButtonMorph actWhen: #buttonDown; actionSelector: #offerScriptorMenu.
 	aButtonMorph borderColor: (Color fromRgbTriplet: #(0.065 0.258 1.0)).
-	aButtonMorph color: (self isAnonymous ifTrue: [Color blue muchLighter] ifFalse: [ScriptingSystem uniformTileInteriorColor]).
+	aButtonMorph color: ScriptingSystem uniformTileInteriorColor.
 	aButtonMorph balloonTextSelector: #offerScriptorMenu.
-	r addTransparentSpacerOfSize: 6@10.
+	aRow addMorphBack: (aStatusMorph _ self scriptInstantiation statusControlMorph).
 
-	aStatus _ self scriptInstantiation status.
-	r addMorphBack:
-			(aStatusMorph _ SimpleButtonMorph new useSquareCorners label: aStatus font: buttonFont;
-				setNameTo: 'trigger';
-				target: self;
-				actWhen: #buttonDown;
-				actionSelector: #chooseTrigger;
-				setBalloonText: (ScriptingSystem helpStringFor: #chooseTrigger) maxLineLength: 65;
-				balloonTextSelector: #chooseTrigger).
+	aRow addTransparentSpacerOfSize: 6@1.
 
-	r addTransparentSpacerOfSize: 10@10.
-	r addMorphBack:
+	aRow addMorphBack:
 		(IconicButton new borderWidth: 0;
 			labelGraphic: (ScriptingSystem formAtKey: 'AddTest'); color: Color transparent; 
 			actWhen: #buttonDown;
@@ -42,7 +51,7 @@ buttonRowForEditor
 			actionSelector: #addYesNoToHand;
 			shedSelvedge;
 			balloonTextSelector: #addYesNoToHand).
-	r addTransparentSpacerOfSize: 12@10.
-	self addDismissButtonTo: r.
-	self updateStatusMorph: aStatusMorph.
-	^ r
+	aRow addTransparentSpacerOfSize: 12@10.
+	self addDestroyButtonTo: aRow.
+	self scriptInstantiation updateStatusMorph: aStatusMorph.
+	^ aRow

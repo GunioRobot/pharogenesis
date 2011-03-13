@@ -1,3 +1,0 @@
-categoryContributions
-
-	^ #(('paintbox' ((script makeNewDrawingIn:))))

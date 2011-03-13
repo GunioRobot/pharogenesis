@@ -1,0 +1,3 @@
+cameraPointRounded
+
+	^self cameraPoint rounded

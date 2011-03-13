@@ -1,7 +1,7 @@
 edit
 	| answer buttons |
 	answer _ (self findAVoice: KlattVoice) editor.
-	buttons _ AlignmentMorph new orientation: #horizontal; color: answer color.
+	buttons _ AlignmentMorph new listDirection: #leftToRight; color: answer color.
 	buttons
 		addMorphFront: (SimpleButtonMorph new target: self; actWhen: #buttonDown; actionSelector:  #newHead; labelString: 'new head');
 		addMorphFront: (SimpleButtonMorph new target: self; actWhen: #buttonDown; actionSelector:  #saySomething; labelString: 'test').

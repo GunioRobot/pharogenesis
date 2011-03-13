@@ -28,17 +28,9 @@ compareWithFilesInFolder: folderName
 	InterpreterSupportCode squeakPlatSpecFile
 		ifFalse: [self inform: 'File sqPlatformSpecific.h differs from the version stored in this image.'].
 
-	(dir readOnlyFileNamed: 'sqADPCMPrims.c') contentsOfEntireFile =
-	InterpreterSupportCode squeakADPCMCodecPrimsFile
-		ifFalse: [self inform: 'File sqADPCMPrims.c differs from the version stored in this image.'].
-
 	(dir readOnlyFileNamed: 'sqFilePrims.c') contentsOfEntireFile =
 	InterpreterSupportCode squeakFilePrimsFile
 		ifFalse: [self inform: 'File sqFilePrims.c differs from the version stored in this image.'].
-
-	(dir readOnlyFileNamed: 'sqGSMCodecPlugin.c') contentsOfEntireFile =
-	InterpreterSupportCode squeakGSMCodecPluginFile
-		ifFalse: [self inform: 'File sqGSMCodecPlugin.c differs from the version stored in this image.'].
 
 	(dir readOnlyFileNamed: 'sqMacAsyncFilePrims.c') contentsOfEntireFile =
 	InterpreterSupportCode macAsyncFilePrimsFile
@@ -51,6 +43,10 @@ compareWithFilesInFolder: folderName
 	(dir readOnlyFileNamed: 'sqMacDirectory.c') contentsOfEntireFile =
 	InterpreterSupportCode macDirectoryFile
 		ifFalse: [self inform: 'File sqMacDirectory.c differs from the version stored in this image.'].
+
+	(dir readOnlyFileNamed: 'sqMacDragDrop.c') contentsOfEntireFile =
+	InterpreterSupportCode macDragDropFile
+		ifFalse: [self inform: 'File sqMacDragDrop.c differs from the version stored in this image.'].
 
 	(dir readOnlyFileNamed: 'sqMacJoystickAndTablet.c') contentsOfEntireFile =
 	InterpreterSupportCode macJoystickAndTabletFile
@@ -79,10 +75,6 @@ compareWithFilesInFolder: folderName
 	(dir readOnlyFileNamed: 'sqNamedPrims.c') contentsOfEntireFile =
 	InterpreterSupportCode squeakNamedPrimsFile
 		ifFalse: [self inform: 'File sqNamedPrims.c differs from the version stored in this image.'].
-
-	(dir readOnlyFileNamed: 'sqOldSoundPrims.c') contentsOfEntireFile =
-	InterpreterSupportCode squeakOldSoundPrimsFile
-		ifFalse: [self inform: 'File sqOldSoundPrims.c differs from the version stored in this image.'].
 
 	(dir readOnlyFileNamed: 'sqVirtualMachine.h') contentsOfEntireFile =
 	InterpreterSupportCode squeakVirtualMachineHeaderFile

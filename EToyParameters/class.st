@@ -1,1 +1,0 @@
-EToyParameters class instanceVariableNames: ''

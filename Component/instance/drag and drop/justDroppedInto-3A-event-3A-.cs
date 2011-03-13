@@ -5,6 +5,7 @@ justDroppedInto: aMorph event: anEvent
 		and: [theModel isKindOf: Component]) ifFalse:
 		["Disconnect prior to removal by move"
 		(theModel isKindOf: Component) ifTrue: [self unwire.  model _ nil].
-		^ self].
+		^ super justDroppedInto: aMorph event: anEvent].
 	theModel == model ifTrue: [^ self  "Presumably just a move"].
-	self initComponentIn: aMorph
+	self initComponentIn: aMorph.
+	super justDroppedInto: aMorph event: anEvent.

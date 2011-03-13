@@ -11,5 +11,5 @@ primTabletGetParameters: cursorIndex
 	11. presure threshold needed close pen tip switch 
 	12. number of pen tilt angles"
 
-	<primitive: 548>
+	<primitive: 'primitiveGetTabletParameters' module: 'JoystickTabletPlugin'>
 	^ nil

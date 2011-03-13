@@ -1,0 +1,1 @@
+MIDISynth class instanceVariableNames: ''

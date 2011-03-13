@@ -1,0 +1,2 @@
+sharedWorld
+	^world

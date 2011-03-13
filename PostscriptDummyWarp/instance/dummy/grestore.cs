@@ -1,4 +1,0 @@
-grestore
-	canvas grestore.
-
-

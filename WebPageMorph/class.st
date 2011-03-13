@@ -1,0 +1,1 @@
+WebPageMorph class instanceVariableNames: ''

@@ -9,26 +9,26 @@ menuFlap
 	aFlapTab edgeToAdhereTo: #top; inboard: false.
 
 	aFlapTab position: ((Display width - aFlapTab width) // 2) @ 0.
-	aFlap setProperty: #flap toValue: true.
+	aFlap beFlap: true.
 	aFlap color: (Color blue muchLighter alpha: 0.6).
 	aFlap extent: self currentWorld width @ 267.
-	aHolder _ AlignmentMorph newRow beSticky beTransparent.
+	aHolder _ AlignmentMorph newRow beSticky beTransparent hResizing: #shrinkWrap; vResizing: #shrinkWrap; cellPositioning: #topLeft.
 
 	#(openMenu helpMenu windowsMenu (changesMenu debugMenu ) (playfieldMenu scriptingMenu )) do:
 		[:elem |
 			(elem isKindOf: Array)
 				ifTrue:
 					[verticalHolder _ AlignmentMorph newColumn beSticky beTransparent.
-					verticalHolder hResizing: #shrinkWrap; inset: 0; centering: #center.
+					verticalHolder hResizing: #shrinkWrap; layoutInset: 0; wrapCentering: #center; cellPositioning: #topCenter.
 					elem do:
 						[:aMenuSymbol |
-							verticalHolder addMorphBack: ((aMenu _ self currentHand perform: aMenuSymbol) beSticky; stayUp: true).
+							verticalHolder addMorphBack: ((aMenu _ self currentWorld getWorldMenu: aMenuSymbol) beSticky; stayUp: true).
 							aMenu beSticky.
 							aMenu borderWidth: 1.
 							aMenu submorphs second delete].
 					aHolder addMorphBack: verticalHolder]
 				ifFalse:
-					[aHolder addMorphBack: ((aMenu _ self currentHand perform: elem) beSticky; stayUp: true).
+					[aHolder addMorphBack: ((aMenu _ self currentWorld getWorldMenu: elem) beSticky; stayUp: true).
 					aMenu submorphs second delete.
 					aMenu beSticky.
 					aMenu borderWidth: 1]].

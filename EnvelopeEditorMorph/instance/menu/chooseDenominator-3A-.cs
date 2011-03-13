@@ -8,4 +8,4 @@ chooseDenominator: evt
 			argument: i].
 	menu addLine.
 	menu add: 'none' target: self selector: #setDenominator: argument: 9999.
-	menu popUpEvent: evt
+	menu popUpEvent: evt in: self world

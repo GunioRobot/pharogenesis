@@ -1,9 +1,10 @@
 changeColor
+	"Change the color of the receiver -- triggered, e.g. from a menu"
 
 	ColorPickerMorph new
+		choseModalityFromPreference;
 		sourceHand: self activeHand;
 		target: self;
-		selector: #color:;
+		selector: #fillStyle:;
 		originalColor: self color;
-		addToWorld: self world
-			near: self fullBounds
+		putUpFor: self near: self fullBoundsInWorld

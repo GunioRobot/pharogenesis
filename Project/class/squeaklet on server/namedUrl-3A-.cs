@@ -1,7 +1,9 @@
 namedUrl: urlString
-	| serverFile |
+	| projName |
 	"Return project if in, else nil"
 
-	serverFile _ ServerFile new fullPath: urlString.
-	^ Project named: (serverFile fileName findTokens: '|.') first
+	"Ted's fix for unreachable projects"
 
+	projName _ (urlString findTokens: '/') last.
+	projName _ (Project parseProjectFileName: projName unescapePercents) first.
+	^ Project named: projName

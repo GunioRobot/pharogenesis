@@ -1,2 +1,0 @@
-internalReceiver
-	^self cachedReceiverAt: localCP

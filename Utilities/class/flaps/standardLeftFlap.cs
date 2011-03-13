@@ -9,7 +9,7 @@ standardLeftFlap
 	aFlapTab setToPopOutOnMouseOver: true.
 
 	aFlapTab position: (0 @ ((Display height - aFlapTab height) // 2)).
-	aFlap setProperty: #flap toValue: true.
+	aFlap beFlap: true.
 	aFlap color: (Color brown muchLighter lighter "alpha: 0.3").
 	aFlap extent: 200 @ self currentWorld height.
 

@@ -1,4 +1,8 @@
 newMorphic
+	| new |
 	"ProjectView open: Project newMorphic"
 
-	^ self basicNew initMorphic
+	new _ self basicNew.
+	self addingProject: new.
+	new initMorphic.
+	^new

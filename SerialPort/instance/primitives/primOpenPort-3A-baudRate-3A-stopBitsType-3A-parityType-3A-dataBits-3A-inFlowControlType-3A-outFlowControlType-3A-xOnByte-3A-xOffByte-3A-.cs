@@ -3,5 +3,5 @@ primOpenPort: portNumber baudRate: baud stopBitsType: stop
 	inFlowControlType: inFlowCtrl outFlowControlType: outFlowCtrl
 	xOnByte: xOn xOffByte: xOff
 
-	<primitive: 238>
-	self primitiveFailed.
+	<primitive: 'primitiveSerialPortOpen' module: 'SerialPlugin'>
+	^ nil  "(DNS)"

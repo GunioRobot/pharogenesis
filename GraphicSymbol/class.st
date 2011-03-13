@@ -3,4 +3,4 @@ OrderedCollection
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Graphics-Symbols'
+	category: 'ST80-Symbols'

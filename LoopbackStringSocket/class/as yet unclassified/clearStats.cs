@@ -1,0 +1,3 @@
+clearStats
+
+	WRITESTRINGSIZES _ nil

@@ -1,1 +1,0 @@
-QuickPrint class instanceVariableNames: ''

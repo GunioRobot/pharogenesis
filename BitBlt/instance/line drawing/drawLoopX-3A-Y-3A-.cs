@@ -6,7 +6,7 @@ drawLoopX: xDelta Y: yDelta
 	first and last points, so that these can be called for as needed in client code.
 	Optional. See Object documentation whatIsAPrimitive."
 	| dx dy px py P |
-	<primitive: 104>
+	<primitive: 'primitiveDrawLoop' module: 'BitBltPlugin'>
 	dx _ xDelta sign.
 	dy _ yDelta sign.
 	px _ yDelta abs.

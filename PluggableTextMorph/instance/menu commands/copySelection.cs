@@ -1,2 +1,2 @@
 copySelection
-	textMorph editor copySelection
+	self handleEdit: [textMorph editor copySelection]

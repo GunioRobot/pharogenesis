@@ -1,0 +1,2 @@
+isMethodNode
+	^ parseNode class == MethodNode

@@ -1,0 +1,2 @@
+resetCostumeList
+	costumes _ nil

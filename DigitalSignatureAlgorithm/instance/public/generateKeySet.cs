@@ -9,11 +9,11 @@ generateKeySet
 	p _ qAndPandS second.
 	exp _ (p - 1) / q.
 	h _ 2.
-	[g _ self raise: h to: exp mod: p. g = 1] whileTrue: [h _ h + 1].
+	[g _ h raisedTo: exp modulo: p. g = 1] whileTrue: [h _ h + 1].
 	Transcript show: 'done.'; cr.
 	Transcript show: 'Computing x and y...'.
 	x _ self nextRandom160.
-	y _ self raise: g to: x mod: p.
+	y _ g raisedTo: x modulo: p.
 	Transcript show: 'done.'; cr.
 	Transcript show: 'Key generation complete!'; cr.
 	^ Array

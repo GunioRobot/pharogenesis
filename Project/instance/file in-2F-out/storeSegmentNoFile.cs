@@ -2,7 +2,7 @@ storeSegmentNoFile
 	"For testing.  Make an ImageSegment.  Keep the outPointers in memory.  Also useful if you want to enumerate the objects in the segment afterwards (allObjectsDo:)"
 
 | is str |
-world == World ifTrue: [^ self].		" inform: 'Can''t send the current world out'."
+(Display isCurrentMorphicWorld: world) ifTrue: [^ self].		" inform: 'Can''t send the current world out'."
 world isInMemory ifFalse: [^ self].  "already done"
 world isMorph ifFalse: [
 	self projectParameters at: #isMVC put: true.
@@ -10,7 +10,7 @@ world isMorph ifFalse: [
 world ifNil: [^ self].  world presenter ifNil: [^ self].
 
 "Do this on project enter"
-World flapTabs do: [:ft | ft referent adaptToWorld: World].
+Display bestGuessOfCurrentWorld flapTabs do: [:ft | ft referent adaptToWorld: Display bestGuessOfCurrentWorld].
 	"Hack to keep the Menu flap from pointing at my project"
 "Preferences setPreference: #useGlobalFlaps toValue: false."
 "Utilities globalFlapTabsIfAny do:
@@ -19,9 +19,7 @@ Utilities clobberFlapTabList.	"
 "project world deleteAllFlapArtifacts."
 "self currentWorld deleteAllFlapArtifacts.	"
 Utilities emptyScrapsBook.
-World currentHand objectToPaste ifNotNil: [
-	self inform: 'Hand is holding a Morph in its paste buffer:\' withCRs,
-		World currentHand objectToPaste printString].
+Display checkCurrentHandForObjectToPaste2.
 
 is _ ImageSegment new copyFromRootsLocalFileFor: 
 		(Array with: world presenter with: world)	"world, and all Players"

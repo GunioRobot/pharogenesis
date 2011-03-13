@@ -19,8 +19,8 @@ panAndVolControlsFor: trackIndex
 		adjustToValue: (scorePlayer panForTrack: trackIndex).
 	c _ AlignmentMorph newColumn
 		color: color;
-		inset: 0;
-		centering: #center;
+		layoutInset: 0;
+		wrapCentering: #center; cellPositioning: #topCenter;
 		hResizing: #spaceFill;
 		vResizing: #shrinkWrap.
 	middleLine _ Morph new  "center indicator for pan slider"

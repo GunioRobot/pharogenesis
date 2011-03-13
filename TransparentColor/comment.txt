@@ -1,6 +1,0 @@
-TransparentColor class comment:
-'An instance of me is the transparent color.  My pixel value is 0 in any depth.  A NullColor is also used when no fill color is desired, as with the background of transparent text.  It will produce all zeroes in any color map entry initialized from it.  In combination with BitBlt paint mode (which does not store zeroes), this will result in transparency.  Note that when this approach is being used in RGB, true black will look the same as a null color, unless you put something in the alpha bits, or use an off-color black.
-
-Transparent _ NullColor r: 0 g: 0 b: 0.
-Color transparent
-'

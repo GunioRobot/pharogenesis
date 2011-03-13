@@ -4,6 +4,9 @@ findProjectView: projectDescription
 	Need to fix this if Projects have subclasses, or if a class other than ProjectViewMorph can officially hold onto a project.  (Buttons, links, etc)
 	If parent is an MVC world, return the ProjectController."
 
+	self flag: #bob.		"read the comment"
+
+
 	pName _ (projectDescription isKindOf: String) 
 		ifTrue: [projectDescription]
 		ifFalse: [projectDescription name].
@@ -16,7 +19,7 @@ findProjectView: projectDescription
 					pvm project class == DiskProxy ifTrue: [ 
 						dpName _ pvm project constructorArgs first.
 						dpName _ (dpName findTokens: '/') last.
-						dpName _ (dpName findTokens: '.|') first.
+						dpName _ (Project parseProjectFileName: dpName) first.
 						dpName = pName ifTrue: [^ pvm]]]]]
 		ifFalse: [world scheduledControllers do: [:cont |
 				(cont isKindOf: ProjectController) ifTrue: [
@@ -26,7 +29,7 @@ findProjectView: projectDescription
 					proj class == DiskProxy ifTrue: [ 
 						dpName _ proj constructorArgs first.
 						dpName _ (dpName findTokens: '/') last.
-						dpName _ (dpName findTokens: '.|') first.
+						dpName _ (Project parseProjectFileName: dpName) first.
 						dpName = pName ifTrue: [^ cont view]]]]
 			].
 	^ nil

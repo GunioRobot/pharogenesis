@@ -1,0 +1,1 @@
+This class implements the alarms for Wonderlands. The user specifies the time the alarm should go off (either in a certain amount of time or at a specific moment) and the task the system should execute when the alarm goes off.

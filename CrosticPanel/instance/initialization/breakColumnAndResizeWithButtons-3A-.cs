@@ -1,11 +1,12 @@
 breakColumnAndResizeWithButtons: buttonRow
-	| placeToSplit indexToSplit |
+	| indexToSplit yToSplit |
 	"The column of clues has been laid out, and the crostic panel has been resized to that width and embedded as a submorph.  This method breaks the clues in two, placing the long part to the left of the crostic and the short one below it."
 
-	placeToSplit _ (self left + 5) @ (cluesPanel height + quotePanel height // 2 + self top).
-	indexToSplit _ cluesPanel submorphs findFirst: [:m | m containsPoint: placeToSplit].
+	yToSplit _ cluesPanel height + quotePanel height // 2 + self top.
+	indexToSplit _ cluesPanel submorphs findFirst: [:m | m bottom > yToSplit].
 	cluesCol2 _ AlignmentMorph newColumn color: self color;
-		hResizing: #shrinkWrap; vResizing: #shrinkWrap; inset: 0.
+		hResizing: #shrinkWrap; vResizing: #shrinkWrap; layoutInset: 0;
+		cellPositioning: #topLeft.
 	cluesCol2 addAllMorphs: (cluesPanel submorphs copyFrom: indexToSplit + 1
 							to: cluesPanel submorphs size).
 	cluesPanel position: self position + self borderWidth + (0 @ 4).

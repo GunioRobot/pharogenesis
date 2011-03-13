@@ -6,7 +6,9 @@ frameAndFillRectangle: r fillColor: fillColor borderWidth: borderWidth topLeftCo
 		fillColor: fillColor
 		borderWidth: borderWidth
 		borderColor: bottomRightColor.
-	bw _ borderWidth asPoint.
-	pt _ r topLeft + (bw // 2).
-	self line: pt to: pt + ((r extent x - bw x)@0) width: borderWidth color: topLeftColor.
-	self line: pt to: pt + (0@(r extent y - bw y)) width: borderWidth color: topLeftColor.
+	bottomRightColor = topLeftColor ifFalse: [
+		bw _ borderWidth asPoint.
+		pt _ r topLeft + (bw // 2).
+		self line: pt to: pt + ((r extent x - bw x)@0) width: borderWidth color: topLeftColor.
+		self line: pt to: pt + (0@(r extent y - bw y)) width: borderWidth color: topLeftColor.
+	].

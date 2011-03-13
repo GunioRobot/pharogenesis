@@ -1,2 +1,0 @@
-partsBank
-	^ partsBank

@@ -1,0 +1,1 @@
+I represent a mesh from Autodesk 3D Studio.

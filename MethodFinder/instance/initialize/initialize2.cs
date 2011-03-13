@@ -147,7 +147,7 @@ next:put: nextPut: nextPutAll: "printing" print: printHtml:
 "access" alpha blue brightness green hue luminance red saturation
 "equality"
 "queries" isBitmapFill isBlack isGray isSolidFill isTranslucent isTranslucentColor
-"transformations" alpha: dansDarker darker lighter mixed:with: muchLighter slightlyDarker slightlyLighter veryMuchLighter
+"transformations" alpha: dansDarker darker lighter mixed:with: muchLighter slightlyDarker slightlyLighter veryMuchLighter alphaMixed:with:
 "groups of shades" darkShades: lightShades: mix:shades: wheel:
 "printing" shortPrintString
 "other" colorForInsets rgbTriplet

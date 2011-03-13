@@ -1,7 +1,42 @@
-Project comment:
-'A Project stores the state of a complete Squeak desktop, including the windows, and the currently active changeSet, as well as the parent project in which it was created.  When you change projects, whether by entering or exiting, all the global state is saved into the project being exited, and loaded from the one being entered.
+A Project stores the state of a complete Squeak desktop, including the windows, and the currently active changeSet.  A project knows who its parent project is.  When you change projects, whether by entering or exiting, the screen state of the project being exited is saved in that project.
 
 A project is retained by its view in the parent world.  It is effectively named by the name of its changeSet, which can be changed either by renaming in a changeSorter, or by editing the label of its view from the parent project.
 
-As the site of major context switch, Projects are the locus of swapping between the old MVC and the new Morphic worlds.  The distinction is based on whether the variable ''world'' contains a WorldMorph or a ControlManager.
-'
+As the site of major context switch, Projects are the locus of swapping between the old MVC and the new Morphic worlds.  The distinction is based on whether the variable 'world' contains a WorldMorph or a ControlManager.
+
+Saving and Loading
+Projects may be stored on the disk in external format.  (Project named: 'xxx') exportSegment, or choose 'store project on file...'.  
+Projects may be loaded from a server and stored back.  Storing on a server never overwrites;  it always makes a new version.  A project remembers the url of where it lives in urlList.  The list is length one, for now.  The url may point to a local disk instead of a server.  All projects that the user looks at, are cached in the Squeaklet folder.  Sorted by server.  The cache holds the most recent version only.  
+
+Isolation
+When you accept a method, the entire system feels the change, except projects that are "isolated".  In an isolated project, all new global variables (including new classes) are stored in the project-local environment, and all changes to preexisting classes are revoked when you leave the project.  When you enter another project, that project's changes are invoked.  Invocation and revocation are handled efficiently by swapping pointers.  To make a project be isolated, choose 'isolate changes of this project' from the 'changes...' section of the screen menu.  You can use an isolated project for making dangerous change to a system, and you can get out if it crashes.  A foreign application can have the separate environment it wants.  Also, you can freeze part of the system for a demo that you don't want to disturb.  An isolated project shares methods with all subprojects inside it, unless they are isolated themselves.   Each isolated project is the head of a tree of projects with which it shares all methods.
+
+You may 'assert' all changes ever made in the current project to take effect above this project.  This amounts to exporting all the globals in the current environment, and zapping the revocation lists to that the current state of the world will remain in force upon exit from this project.
+
+[Later: A project may be 'frozen'.  Asserts do not apply to it after that.  (Great for demos.)  You should be informed when an assert was blocked in a frozen project.]
+
+Class definitions are layered by the isolation mechanism.  You are only allowed to change the shape of a class in projects that lie within its isolation scope.  All versions of the methods are recompiled, in all projects.  If you remove an inst var that is in use in an isolated project, it will become an Undeclared global.  It is best not to remove an inst var when it is being used in another isolated project. [If we recompile them all, why can't we diagnose the problem before allowing the change??]
+
+Senders and Implementors do not see versions of a method in isolated projects.  [again, we might want to make this possible at a cost].  When you ask for versions of a method, you will not get the history in other isolated projects.
+
+Moving methods and classes between changeSets, and merging changeSets has no effect on which methods are in force.  But, when you look at a changeSet from a different isolated project, the methods will contain code that is not in force.  A changeSet is just a list of method names, and does not keep separate copies of any code.
+
+When finer grained assertion is needed, use the method (aProject assertClass: aClass from: thisProject warn: warnConflicts).
+
+How isolated changes work: The first time a class changes, store its MethodDictionary object.  Keep parallel arrays of associations to Classes and MethodDictionaries.  Traverse these and install them when you enter an "ioslated project".  When you leave, store this project's own MethodDictionaries there.
+	To do an assert, we must discover which methods changed here, and which changed only in the project we are asserting into.  There is one copy of the 'virgin' method dictionaries in the system.  It is always being temporarily stored by the currently inForce isolated project.
+
+isolatedHead - true for the top project, and for each isolated project.  false or nil for any subproject that shares all methods with its parent project.
+
+inForce -  true if my methods are installed now.  false if I am dormant. [is this equivalent to self == Project Current?]
+
+classArray - list of associations to classes 
+
+methodDictArray - the method dictionaries of those classes before we started changing methods.  They hang onto the original compiledMethods.  (If this project is dormant, it contains the method dictionaries of those classes as they will be here, in this project).
+
+orgArray - the class organizations of the classes in classArray.
+
+UsingIsolation (class variable) - No longer used.
+
+When you want to save a project in export format from within that very project, it gets tricky.  We set two flags in parentProject, exit to it, and let parentProject write the project.  ProjectViewMorph in parentProject checks in its step method, does the store, clears the flags, and reenters the subProject.
+

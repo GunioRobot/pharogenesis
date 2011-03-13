@@ -1,4 +1,4 @@
 primMIDIGetPortName: portNum
 
-	<primitive: 525>
+	<primitive: 'primitiveMIDIGetPortName' module: 'MIDIPlugin'>
 	self primitiveFailed.

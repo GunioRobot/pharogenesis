@@ -1,12 +1,8 @@
 okToChange
-	| ok hasSubProjects itsName is list |
-	hasSubProjects _ world isMorph
-		ifTrue: [(world submorphs select:
-						[:m | (m isKindOf: SystemWindow)
-								and: [m model isKindOf: Project]]) size > 0]
-		ifFalse: [(world controllerWhoseModelSatisfies:
-						[:m | m isKindOf: Project]) notNil].
-	hasSubProjects ifTrue:
+	"Answer whether the window in which the project is housed can be dismissed -- which is destructive. We never clobber a project without confirmation"
+
+	| ok is list |
+	self subProjects size  >0 ifTrue:
 		[PopUpMenu notify: 
 'The project ', self name printString, '
 contains sub-projects.  You must remove these
@@ -14,7 +10,7 @@ explicitly before removing their parent.'.
 		^ false].
 	ok _ world isMorph not and: [world scheduledControllers size <= 1].
 	ok ifFalse: [self isMorphic ifTrue: [
-		self parent == Project current 
+		self parent == CurrentProject 
 			ifFalse: [^true]]].  "view from elsewhere.  just delete it."
 	ok _ (self confirm:
 'Really delete the project
@@ -23,17 +19,6 @@ and all its windows?').
 		
 	ok ifFalse: [^ false].
 
-	"about to delete this project; clear previous links to it from other Projects:"
-	ImageSegment allSubInstancesDo: [:seg |
-		seg ifOutPointer: self thenAllObjectsDo: [:obj |
-			(obj isKindOf: ProjectViewMorph) ifTrue: [
-				obj deletingProject: self.  obj abandon].
-			obj class == Project ifTrue: [obj deletingProject: self]]].
-	Project allProjects do: [:p | p deletingProject: self].	"ones that are in"
-	ProjectViewMorph allSubInstancesDo: [:p | 
-		p deletingProject: self.
-		p project == self ifTrue: [p abandon]].
-
 	world isMorph 
 		ifTrue: [world submorphs do:   "special release for wonderlands"
 						[:m | (m isKindOf: WonderlandCameraMorph)
@@ -41,14 +26,12 @@ and all its windows?').
 			"Remove Player classes and metaclasses owned by project"
 			is _ ImageSegment new arrayOfRoots: (Array with: self).
 			(list _ is rootsIncludingPlayers) ifNotNil: [
-				(list copyWithout: self) do: [:playerCls | 
-					playerCls isMeta ifFalse: [
-						playerCls removeFromSystemUnlogged]]]].
+				list do: [:playerCls | 
+					(playerCls respondsTo: #isMeta) ifTrue: [
+						playerCls isMeta ifFalse: [
+							playerCls removeFromSystemUnlogged]]]]].
 
-	(changeSet isEmpty and: [(changeSet projectsBelongedTo copyWithout: self) isEmpty])
-		ifTrue:
-			[itsName _ changeSet name.
-			ChangeSorter removeChangeSet: changeSet.
-			Transcript cr; show: 'project change set ', itsName, ' deleted.'].
-
+	self removeChangeSetIfPossible.
+	"do this last since it will render project inaccessible to #allProjects and their ilk"
+	Project deletingProject: self.
 	^ true

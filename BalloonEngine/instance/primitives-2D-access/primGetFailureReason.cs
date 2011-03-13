@@ -1,4 +1,3 @@
 primGetFailureReason
-	<primitive: 'gePrimitiveGetFailureReason'>
-	Debug ifTrue:[^BalloonEnginePlugin doPrimitive: 'gePrimitiveGetFailureReason'].
+	<primitive: 'primitiveGetFailureReason' module: 'B2DPlugin'>
 	^0

@@ -1,0 +1,3 @@
+bestGuessOfCurrentWorld
+
+	^World

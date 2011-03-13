@@ -1,0 +1,2 @@
+primMouseButtons
+	^mouseButtons

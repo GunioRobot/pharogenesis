@@ -5,11 +5,11 @@ scrapsBook
 		ScrapsBook color: Color yellow muchLighter.
 		ScrapsBook borderColor: Color darkGray; borderWidth: 2.
 		ScrapsBook removeEverything; showPageControls; insertPage.
-		header _ AlignmentMorph newRow centering: #center.
+		header _ AlignmentMorph newRow wrapCentering: #center; cellPositioning: #leftCenter.
 		header setProperty: #header toValue: true.
-		header addMorph: (aButton _ SimpleButtonMorph new label: 'X' font: Preferences standardButtonFont).
-		aButton target: ScrapsBook; color:  Color lightRed; actionSelector: #delete;
-				setBalloonText: 'Remove
+		header addMorph: (aButton _ SimpleButtonMorph new label: 'O' font: Preferences standardButtonFont).
+		aButton target: ScrapsBook; color:  Color tan; actionSelector: #delete;
+				setBalloonText: 'Close the trashcan.
 (to view again later, click on any trashcan).'.
 
 		header addMorphBack: AlignmentMorph newVariableTransparentSpacer beSticky.

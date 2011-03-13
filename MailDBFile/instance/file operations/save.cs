@@ -5,10 +5,8 @@ save
 	succeeds, the .bak file is deleted."
 	"create the file if it doesn't already exist"
 	| f dir shortName |
-	(StandardFileStream isAFileNamed: filename)
-		ifFalse: 
-			[f _ StandardFileStream new open: filename forWrite: true.
-			f close].
+
+	(StandardFileStream fileNamed: filename) close.	"ensure it exists"
 	shortName _ FileDirectory localNameFor: filename.
 	dir _ FileDirectory forFileName: filename.
 	dir rename: shortName toBe: shortName , '.bak'.

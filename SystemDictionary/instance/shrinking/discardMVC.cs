@@ -2,11 +2,14 @@ discardMVC
    "Smalltalk discardMVC"
 
 	| keepers |
+
+	self flag: #bob.		"zapping projects"
+
 	Smalltalk isMorphic ifFalse:
 		[PopUpMenu notify: 'You must be in a Morphic project to discard MVC.'.
 		^ self].
 	"Check that there are no MVC Projects"
-	(Project allInstances inject: true into: [:ok :proj | ok & proj isMorphic]) ifFalse:
+	(Project allProjects allSatisfy: [ :proj | proj isMorphic]) ifFalse:
 		[(self confirm: 'Would you like a chance to remove your
 MVC projects in an orderly manner?')
 					ifTrue: [^ self].

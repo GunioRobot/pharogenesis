@@ -1,4 +1,6 @@
 mouseUp: evt
-	(self containsPoint: evt cursorPoint) ifTrue:
+
+	((self containsPoint: evt cursorPoint) and: 
+				[(self hasProperty: #wasOpenedAsSubproject) not]) ifTrue:
 		[^ self enter].
-	self showBorderAs: Color gray
+	self showMouseState: 3.

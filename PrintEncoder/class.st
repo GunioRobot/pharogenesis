@@ -1,0 +1,1 @@
+PrintEncoder class instanceVariableNames: ''

@@ -1,2 +1,0 @@
-currentPalette
-	^ currentPalette

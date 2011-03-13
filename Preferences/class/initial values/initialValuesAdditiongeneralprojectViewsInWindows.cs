@@ -1,0 +1,2 @@
+initialValuesAdditiongeneralprojectViewsInWindows
+	^ #((projectViewsInWindows true (general ) ) )

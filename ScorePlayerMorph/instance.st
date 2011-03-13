@@ -1,6 +1,6 @@
 AlignmentMorph
 	subclass: #ScorePlayerMorph
-	instanceVariableNames: 'scorePlayer trackInstNames instrumentSelector '
-	classVariableNames: ''
+	instanceVariableNames: 'scorePlayer trackInstNames instrumentSelector scrollSlider '
+	classVariableNames: 'LastMIDIPort '
 	poolDictionaries: ''
-	category: 'Morphic-Demo'
+	category: 'Sound-Scores'

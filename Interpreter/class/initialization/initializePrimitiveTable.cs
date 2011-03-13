@@ -94,7 +94,7 @@ initializePrimitiveTable
 		(91 primitiveTestDisplayDepth)			"Blue Book: primitiveCursorLocPut"
 		(92 primitiveSetDisplayMode)				"Blue Book: primitiveCursorLink"
 		(93 primitiveInputSemaphore)
-		(94 primitiveFail)						"Blue Book: primitiveSampleInterval"
+		(94 primitiveGetNextEvent)				"Blue Book: primitiveSampleInterval"
 		(95 primitiveInputWord)
 		(96 primitiveObsoleteIndexedPrimitive)	"primitiveCopyBits"
 		(97 primitiveSnapshot)
@@ -161,29 +161,18 @@ initializePrimitiveTable
 		(148 primitiveClone)
 		(149 primitiveGetAttribute)
 
-		"File Primitives (150-169)"
-		(150 163 primitiveObsoleteIndexedPrimitive)
-		(164 168 primitiveFail)
+		"File Primitives (150-169) - NO LONGER INDEXED"
+		(150 164 primitiveObsoleteIndexedPrimitive)
+		(165 168 primitiveFail)
 		(169 primitiveObsoleteIndexedPrimitive)
 
-		"Sound Primitives (170-199)"
-		(170 175 primitiveObsoleteIndexedPrimitive)
-		(176 primWaveTableSoundmixSampleCountintostartingAtpan)
-		(177 primFMSoundmixSampleCountintostartingAtpan)
-		(178 primPluckedSoundmixSampleCountintostartingAtpan)
-		(179 primSampledSoundmixSampleCountintostartingAtpan)
-		(180 primFMSoundmixSampleCountintostartingAtleftVolrightVol)
-		(181 primPluckedSoundmixSampleCountintostartingAtleftVolrightVol)
-		(182 oldprimSampledSoundmixSampleCountintostartingAtleftVolrightVol)
-		(183 primReverbSoundapplyReverbTostartingAtcount)
-		(184 primLoopedSampledSoundmixSampleCountintostartingAtleftVolrightVol)
-		(185 primSampledSoundmixSampleCountintostartingAtleftVolrightVol)
-
+		"Sound Primitives (170-199) - NO LONGER INDEXED"
+		(170 185 primitiveObsoleteIndexedPrimitive)
 		(186 188 primitiveFail)
 		(189 194 primitiveObsoleteIndexedPrimitive)
 		(195 199 primitiveFail)
 
-		"Networking Primitives (200-229)"
+		"Networking Primitives (200-229) - NO LONGER INDEXED"
 		(200 225 primitiveObsoleteIndexedPrimitive)
 		(226 229 primitiveFail)
 
@@ -192,17 +181,18 @@ initializePrimitiveTable
 		(231 primitiveForceDisplayUpdate)
 		(232 primitiveFormPrint)
 		(233 primitiveSetFullScreen)
-		(234 primBitmapdecompressfromByteArrayat)
-		(235 primStringcomparewithcollated)
-		(236 primSampledSoundconvert8bitSignedFromto16Bit)
-		(237 primBitmapcompresstoByteArray)
-		(238 241 primitiveObsoleteIndexedPrimitive)
+		(234 primitiveObsoleteIndexedPrimitive) "primBitmapdecompressfromByteArrayat"
+		(235 primitiveObsoleteIndexedPrimitive) "primStringcomparewithcollated"
+		(236 primitiveObsoleteIndexedPrimitive) "primSampledSoundconvert8bitSignedFromto16Bit"
+		(237 primitiveObsoleteIndexedPrimitive) "primBitmapcompresstoByteArray"
+		(238 241 primitiveObsoleteIndexedPrimitive) "serial port primitives"
 		(242 primitiveFail)
-		(243 primStringtranslatefromtotable)
-		(244 primStringfindFirstInStringinSetstartingAt)
-		(245 primStringindexOfAsciiinStringstartingAt)
-		(246 primStringfindSubstringinstartingAtmatchTable)
-		(247 249 primitiveFail)
+		(243 primitiveObsoleteIndexedPrimitive) "primStringtranslatefromtotable"
+		(244 primitiveObsoleteIndexedPrimitive) "primStringfindFirstInStringinSetstartingAt"
+		(245 primitiveObsoleteIndexedPrimitive) "primStringindexOfAsciiinStringstartingAt"
+		(246 primitiveObsoleteIndexedPrimitive) "primStringfindSubstringinstartingAtmatchTable"
+		(247 primitiveSnapshotEmbedded)
+		(248 249 primitiveFail)
 
 		"VM Implementor Primitives (250-255)"
 		(250 clearProfile)
@@ -225,24 +215,21 @@ initializePrimitiveTable
 		"Quick Push Const Methods"
 		(264 519 primitiveLoadInstVar)
 
-		"MIDI Primitives (520-539)"
+		"MIDI Primitives (520-539) - NO LONGER INDEXED"
 		(520 529 primitiveObsoleteIndexedPrimitive)
 		(530 539 primitiveFail)  "reserved for extended MIDI primitives"
 
-		"Experimental Asynchrous File Primitives"
+		"Experimental Asynchrous File Primitives - NO LONGER INDEXED"
 		(540 545 primitiveObsoleteIndexedPrimitive)
 		(546 547 primitiveFail)
 
-		"Pen Tablet Primitives"
+		"Pen Tablet Primitives - NO LONGER INDEXED"
 		(548 primitiveObsoleteIndexedPrimitive)
 		(549 primitiveObsoleteIndexedPrimitive)
 
-		"Sound Codec Primitives"
-		(550 primADPCMCodecprivateDecodeMono)	
-		(551 primADPCMCodecprivateDecodeStereo)	
-		(552 primADPCMCodecprivateEncodeMono)	
-		(553 primADPCMCodecprivateEncodeStereo)	
-		(554 569 primitiveFail)  "reserved for additional codec primitives"
+		"Sound Codec Primitives - NO LONGER INDEXED"
+		(550 553 primitiveObsoleteIndexedPrimitive)
+		(554 569 primitiveFail)
 
 		"External primitive support primitives"
 		(570 primitiveFlushExternalPrimitives)

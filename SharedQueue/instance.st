@@ -3,4 +3,4 @@ Object
 	instanceVariableNames: 'contentsArray readPosition writePosition accessProtect readSynch '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Kernel-Processes'
+	category: 'Collections-Sequenceable'

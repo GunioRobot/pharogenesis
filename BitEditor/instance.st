@@ -1,6 +1,6 @@
 MouseMenuController
 	subclass: #BitEditor
 	instanceVariableNames: 'scale squareForm color transparent '
-	classVariableNames: 'ColorButtons YellowButtonMenu YellowButtonMessages '
+	classVariableNames: 'YellowButtonMenu '
 	poolDictionaries: ''
-	category: 'Graphics-Editors'
+	category: 'ST80-Editors'

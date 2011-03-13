@@ -1,2 +1,1 @@
-Symbol comment:
-'I represent Strings that are created uniquely. Thus, someString asSymbol == someString asSymbol.'
+I represent Strings that are created uniquely. Thus, someString asSymbol == someString asSymbol.

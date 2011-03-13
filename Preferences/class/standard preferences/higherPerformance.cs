@@ -1,0 +1,2 @@
+higherPerformance
+	^ self valueOfFlag: #higherPerformance

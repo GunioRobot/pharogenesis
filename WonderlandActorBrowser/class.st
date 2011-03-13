@@ -1,0 +1,1 @@
+WonderlandActorBrowser class instanceVariableNames: ''

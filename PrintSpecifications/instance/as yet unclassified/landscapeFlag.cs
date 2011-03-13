@@ -1,0 +1,3 @@
+landscapeFlag
+
+	^landscapeFlag ifNil: [false]

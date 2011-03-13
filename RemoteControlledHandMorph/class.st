@@ -1,0 +1,1 @@
+RemoteControlledHandMorph class instanceVariableNames: ''

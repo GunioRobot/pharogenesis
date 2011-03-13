@@ -1,2 +1,2 @@
 undo
-	textMorph editor undo
+	self handleEdit: [textMorph editor undo]

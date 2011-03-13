@@ -1,0 +1,1 @@
+The Interpolateable class is a wrapper for instances that don't have interpolation methods provided for them (like Numbers).

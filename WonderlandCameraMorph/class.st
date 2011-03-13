@@ -1,0 +1,1 @@
+WonderlandCameraMorph class instanceVariableNames: ''

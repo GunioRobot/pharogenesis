@@ -1,28 +1,19 @@
 tilePhrasesSpecsForCategory: aCategory
-	"Return an array of slot and script names and info for use in a viewer on the receiver.  These can be of two flavors - script and slot.
+	"Return an array of slot and script names and info for use in a viewer on the receiver.  These can be of two flavors - command and slot."
 
-		(slot		heading		number				readWrite	getHeading		setHeading:)
-		(script		command 	wearCostumeOf: 	player)"
+	| categorySymbol |
+	categorySymbol _ aCategory asSymbol.
 
-	| aList nameString categoryString |
-	categoryString _ aCategory asString.
-	(categoryString = 'instance variables') ifTrue:
-		[^ self slotNames collect: [:aName |
-		nameString _ aName asString capitalized.
-		Array
-			with:	#slot
-			with: 	aName asSymbol					"name"
-			with: 	(self typeForSlot: aName asSymbol)	"type"
-			with:	#readWrite							"r/w"
-			with:	('get', nameString) asSymbol		"get selector"
-			with:	('set', nameString, ':') asSymbol]].	"set selector"
+	(categorySymbol == #'instance variables') ifTrue:		"user-defined instance variables"
+		[^ self tilePhrasesSpecsInstanceVariablesCategory].
 
-	(categoryString = 'scripts') ifTrue:
+	(categorySymbol == #scripts) ifTrue:						"user-defined scripts"
 		[^ self tileScriptCommands].
-	self hasCostumeThatIsAWorld ifTrue: [^ self worldTilePhrasesSpecsForCategory: aCategory].
-	aList _ ScriptingSystem categoryElementsFor: categoryString.
-	aList ifNil: [self error: 'oops, missing category info for ', categoryString].
-	aList _ self usablePhraseSpecsIn: aList.
 
-	^ aList collect: [:aPair | self phraseSpecFor: aPair]
+	^ (self usablePhraseSpecsIn: (costume categoryElementsFor: categorySymbol))   "all others"
+
+
+"The format of the specs is illustrated by:
+	(slot heading 'the direction'	number	 readWrite player getHeading player setHeading:)
+	(command wearCostumeOf: 'change appearance to look like' player)"
 

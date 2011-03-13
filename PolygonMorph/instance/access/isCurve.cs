@@ -1,2 +1,2 @@
 isCurve
-	^ false
+	^ smoothCurve

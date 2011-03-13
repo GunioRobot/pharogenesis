@@ -1,0 +1,9 @@
+I am the in-memory representation of a Celeste mail database. A mail database named "current" consists of three files:
+
+	current.messages	-- an append-only file containing the full content of all messages
+	current.index		-- an index of all messages in the messages file that maps unique
+						   message ID's to index entries containing some header information
+						   and the offset of the full message in the .messages file
+	current.categories	-- maps category names to collections of message ID's
+
+Each open mail database has a MailDB object that manages these three files. Operations such as fetching a message given its unique ID and finding out which messages are in which category are supported by the MailDB object. It also supports incorporating new messages (reading mail), message editing and deletions, and message file compaction and recovery.

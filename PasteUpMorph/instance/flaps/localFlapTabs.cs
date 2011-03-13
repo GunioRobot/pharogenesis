@@ -3,12 +3,12 @@ localFlapTabs
 	globalList _ Utilities globalFlapTabsIfAny.
 	aList _ OrderedCollection new.
 	submorphs do:
-		[:m | ((m isKindOf: FlapTab) and: [(globalList includes: m) not])
+		[:m | ((m isFlapTab) and: [(globalList includes: m) not])
 			ifTrue:
 				[aList add: m]
 			ifFalse:
-				[((m hasProperty: #flap) and:
-					[(aFlapTab _ m submorphs detect: [:n | n isKindOf: FlapTab] ifNone: [nil]) notNil])
+				[((m isFlap) and:
+					[(aFlapTab _ m submorphs detect: [:n | n isFlapTab] ifNone: [nil]) notNil])
 						ifTrue:
 							[aList add: aFlapTab]]].
 	^ aList

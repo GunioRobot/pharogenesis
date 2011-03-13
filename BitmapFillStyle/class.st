@@ -1,0 +1,1 @@
+BitmapFillStyle class instanceVariableNames: ''

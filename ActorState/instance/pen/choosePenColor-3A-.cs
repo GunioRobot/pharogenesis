@@ -1,2 +1,2 @@
 choosePenColor: evt
-	evt hand changeColorTarget: owningPlayer costume selector: #penColor: originalColor: owningPlayer penColor.
+	owningPlayer costume changeColorTarget: owningPlayer costume selector: #penColor: originalColor: owningPlayer penColor hand: evt hand.

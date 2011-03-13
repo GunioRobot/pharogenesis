@@ -101,6 +101,9 @@ void startMIDICommand(int cmdByte);
 int serialPortCount(void) {
   /* Return the number of serial ports available on this machine */
 
+#if TARGET_API_MAC_CARBON
+    return false;
+#else
  	CRMRec		commRec;
  	CRMRecPtr	thisRecPtr;
  	int			count = 0;
@@ -116,6 +119,7 @@ int serialPortCount(void) {
     }
     if (count > MAX_PORTS) count = MAX_PORTS;
  	return count;
+#endif
  }
 
 int portIsOpen(int portNum) {
@@ -127,6 +131,9 @@ int portNames(int portNum, char *portName, char *inName, char *outName) {
 /* Fill in the user name and input and output port names for the given
    port number. Note that ports are numbered starting with zero. */
 
+#if TARGET_API_MAC_CARBON
+    return false;
+#else
  	CRMRec			commRec;
  	CRMRecPtr		thisRecPtr;
  	CRMSerialPtr	serialPtr;
@@ -148,11 +155,15 @@ int portNames(int portNum, char *portName, char *inName, char *outName) {
 		commRec.crmDeviceID = thisRecPtr->crmDeviceID;
 		thisRecPtr = (CRMRecPtr) CRMSearch(&commRec);
     }
+#endif
  }
 
 int setHandshakeOptions(
   int portNum, int inFlowCtrl, int outFlowCtrl, int xOnChar, int xOffChar) {
 /* Set the given port''s handshaking parameters. */
+#if TARGET_API_MAC_CARBON
+    return false;
+#else
 
 	SerShk handshakeOptions;
 	int osErr;
@@ -180,12 +191,16 @@ int setHandshakeOptions(
 	if (osErr != noErr) {
 		success(false);
 	}
+#endif
 }
 
 int setMidiClockRate(int portNum, int interfaceClockRate) {
 /* Put the given port into MIDI mode, which uses a clock supplied
    by an external MIDI interface adaptor to determine the baud rate.
    Possible external clock rates: 31.25 KHz, 0.5 MHz, 1 MHz, or 2 MHz. */
+#if TARGET_API_MAC_CARBON
+    return false;
+#else
 
 	char midiParam = 15;  /* dummy value */
 	int osErr;
@@ -206,11 +221,15 @@ int setMidiClockRate(int portNum, int interfaceClockRate) {
 	if (osErr != noErr) {
 		return success(false);
 	}
+#endif
 }
 
 /*** Serial Port Functions ***/
 
 int serialPortClose(int portNum) {
+#if TARGET_API_MAC_CARBON
+    return false;
+#else
 	int osErr;
 
 	if ((portNum < 0) || (portNum > 1)) {
@@ -234,6 +253,7 @@ int serialPortClose(int portNum) {
 
 	inRefNum[portNum] = 0;
 	outRefNum[portNum] = 0;
+#endif
 }
 
 int serialPortOpen(
@@ -242,6 +262,9 @@ int serialPortOpen(
 /* Open the given serial port using the given settings. The baud rate can be
    any number between about 224 and 57600; the driver will pick a clock
    divisor that will generate the closest available baud rate. */
+#if TARGET_API_MAC_CARBON
+    return false;
+#else
 
 	short int options, baudRateParam;
 	char userName[256], inName[256], outName[256];
@@ -338,6 +361,7 @@ int serialPortOpen(
 		inRefNum[portNum] = 0;
 		outRefNum[portNum] = 0;
 	}
+#endif
 }
 
 int serialPortReadInto(int portNum, int count, int bufferPtr) {
@@ -345,6 +369,9 @@ int serialPortReadInto(int portNum, int count, int bufferPtr) {
    Read only up to the number of bytes in the port''s input buffer; if fewer bytes
    than count have been received, do not wait for additional data to arrive.
    Return zero if no data is available. */
+#if TARGET_API_MAC_CARBON
+    return false;
+#else
 
 	long int byteCount;
 	int osErr;
@@ -364,6 +391,7 @@ int serialPortReadInto(int portNum, int count, int bufferPtr) {
 		return success(false);
 	}
 	return byteCount;
+#endif
 }
 
 int serialPortWriteFrom(int portNum, int count, int bufferPtr) {

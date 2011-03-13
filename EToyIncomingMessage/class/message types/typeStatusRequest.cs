@@ -1,0 +1,3 @@
+typeStatusRequest
+
+	^'statusrequest'

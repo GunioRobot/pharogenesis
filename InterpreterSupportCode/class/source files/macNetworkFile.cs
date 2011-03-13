@@ -1,10 +1,7 @@
 macNetworkFile
 
 	^ '#include <ConditionalMacros.h>
-#if TARGET_CPU_PPC || GENERATINGPOWERPC
-#if TARGET_API_MAC_CARBON
-	#define OTCARBONAPPLICATION 1
-#endif
+#if TARGET_CPU_PPC
 #include <OpenTransport.h>
 #include <OpenTptInternet.h>
 #include <OpenTptClient.h>
@@ -23,6 +20,7 @@ macNetworkFile
 
 #include "sq.h"
 #include "SocketPlugin.h"
+//#define OTSERVER
 
 /*  May 1st 2000
 	An Open Transport 2.0 version of source code for TCP/IP & UDP support
@@ -55,6 +53,11 @@ macNetworkFile
 	V1.3.5 Jun 9th 2000, JMM Dan Ingalls found some interesting bugs with a T_GODATA on T_CONNECT.
 	V1.3.6 Jun 10th 2000, JMM fix a fatal but in close/close pattern I made on the 9th.
 	V1.3.7 Aug 1st 2000, JMM Some carbon work, reviewed open non-existent port logic fix so unavailable port causes immediate failure
+	V1.3.8 Aug 29th 2000, JMM Fix problem with recusion on make me an EP.
+	v1.3.9 Sept 28th 2000, JMM Problem with accept somewhere (so harden code)
+	v1.3.10 Oct 4th 2000, JMM Issue with destory and free buffers, and disconnect on read with buffer restriction
+	v1.3.11 Nov 11th 2000, JMM extra buffer for server version
+	v1.3.12 Jan 2001, Karl Goiser Carbon changes
 	
 	Notes beware semaphore''s lurk for socket support. Three semaphores lives in Smalltalk, waiting for
 	connect/disconnect/listen, sending data, and receiving data. When to tap the semaphore is based on
@@ -136,7 +139,8 @@ enum
 enum
 {
     kKeepAliveOptionNeeded          = 0,
-    kSleepKilledMe                  = 1
+    kSleepKilledMe                  = 1,
+    kWaitingForBind                 = 2
 }; 
 
 enum
@@ -148,8 +152,11 @@ enum
 };
 
 const kTCPKeepAliveInMinutes		= 10;		// 10 minutes  keep alive
+#ifdef OTSERVER
+const kReadBuffersToAllocate	    = 256;		// Memory Allocation issue how big, this means 256x mtu size * 4 But for 68K we do 1/2 size
+#else
 const kReadBuffersToAllocate	    = 50;		// Memory Allocation issue how big, this means 50x mtu size * 4 But for 68K we do 1/2 size
-
+#endif
 
 	// Endpoint Info Structure
 
@@ -230,13 +237,14 @@ OTConfigurationRef	gCfgMasterListener			= NULL;
 
 OTLIFO				gFreeReadBuffersLIFO;    	//  Buffers that are free to read into
 OTLIFO*				gFreeReadBuffers			= &gFreeReadBuffersLIFO;
-
+SInt32				gFreeReadBuffersCounter		= 0;
+SInt32				gSocketsAllocated			= 0;
 UInt32				gmtuSize 					= 1024; //This gets changed at startup time.
 SInt32				gthisNetSession 			= 0;    //This gets changed at startup time.
 SInt32				gMaxConnections				= 0;    //This gets changed at startup time.
 UInt32				gOTVersion;                         //Gets set to OT version, to help us with special cases.
 SInt32				gProgramState				= 0;    //This gets changed at startup time.
-
+OTClientContextPtr     gClientContext;
 
 OTLIFO				gIdleEPLIFO[3];
 OTLIFO*				gIdleEPs[3];
@@ -267,7 +275,7 @@ static void        makeEPIdle(EPInfo *epi);
 static void        purgeReadBuffers(EPInfo *epi);
 static void        makeEPBrokenThenIdle(EPInfo* epi,OTResult error);
 static void        makeEPBroken(EPInfo* epi,OTResult error);
-static EPInfo*     getOrMakeMeAnEP(UInt8 aSocketType);
+static EPInfo*     getOrMakeMeAnEP(UInt8 aSocketType,short counter);
 static Boolean     makeMeAnEP(UInt8 aSocketType);
 static void        attemptToCloseAndDeleteThisEP (EPInfo *epi);
 static void		   makeEPUnconnected(EPInfo* epi);
@@ -281,7 +289,7 @@ static pascal void  DNSNotifier(void* context, OTEventCode event, OTResult resul
 static pascal void  NotifierSocket(void* context, OTEventCode event, OTResult result, void* cookie);
 static pascal void  NotifierSocketUDP(void* context, OTEventCode event, OTResult result, void* cookie);
 static pascal void  NotifierSocketListener(void* context, OTEventCode event, OTResult result, void* cookie);
-static void         internalSocketCreate(SocketPtr s, SInt32 netType, SInt32  socketType, SInt32 recvBufSize, SInt32 sendBufSize, SInt32 semaIndex, SInt32 readSemaIndex, SInt32 writeSemaIndex, UInt8 aExtraSocketHint);
+static SInt32       internalSocketCreate(SocketPtr s, SInt32 netType, SInt32  socketType, SInt32 recvBufSize, SInt32 sendBufSize, SInt32 semaIndex, SInt32 readSemaIndex, SInt32 writeSemaIndex, UInt8 aExtraSocketHint);
 static Boolean		EPOpen(EPInfo* epi);
 static Boolean 		EPClose(EPInfo*);
 static void         DoListenAccept(EPInfo* acceptor,EPInfo* theServer);
@@ -336,10 +344,14 @@ int sqNetworkInit(int resolverSemaIndex) {
 	    
 	if (gthisNetSession != 0) return 0;  /* noop if network is already initialized */
 	
+
+#if TARGET_API_MAC_CARBON
+	err = InitOpenTransportInContext (kInitOTForExtensionMask, &gClientContext);
+#else
 	err = InitOpenTransport(); 
-	if (err) {
-		return -1;
-	}
+#endif
+	if (err) return -1;
+
 		
 	err = Gestalt(gestaltOpenTptVersions, (long*) &gOTVersion);
 	
@@ -377,7 +389,11 @@ int sqNetworkInit(int resolverSemaIndex) {
     NotifierSocketListenerUPP = NewOTNotifyUPP(NotifierSocketListener);
 
 	
+#if TARGET_API_MAC_CARBON
+	gDNSResolver = (EPInfo*) OTAllocMemInContext(sizeof(EPInfo), gClientContext);
+#else
 	gDNSResolver = (EPInfo*) OTAllocMem(sizeof(EPInfo));
+#endif
 	if (gDNSResolver == NULL) return -1;
 		
 	gDNSResolverSemaIndex = resolverSemaIndex;
@@ -410,12 +426,22 @@ int sqNetworkInit(int resolverSemaIndex) {
 		aSocketType = ++aSocketType > 2 ? TCPSocketType : aSocketType;
 	} 
 	
+#ifdef OTSERVER
+	for (i = 0; i < 256; i++)	{
+		makeMeAnEP(TCPSocketType);
+	} 
+#endif
+
 	//
 	//Build storage objects for read buffers
 	//How much memory to allocate still is a mystery
 	//
     for (i=0;i<kReadBuffersToAllocate ;i++) { 
+#if TARGET_API_MAC_CARBON
+        readBufferObject = OTAllocMemInContext(sizeof(ReadBuffer), gClientContext);
+#else
         readBufferObject = OTAllocMem(sizeof(ReadBuffer));
+#endif
         if (readBufferObject == nil) {
        	    interpreterProxy->success(false);
             return -25;
@@ -427,13 +453,18 @@ int sqNetworkInit(int resolverSemaIndex) {
         else
         	readBufferObject->readBufferOriginalSize = (gmtuSize > 0) ? gmtuSize*4 : 1024;
         
-        readBufferObject->readBufferData = readBufferObject->readBufferPtr = OTAllocMem(readBufferObject->readBufferOriginalSize);
+#if TARGET_API_MAC_CARBON
+       readBufferObject->readBufferData = readBufferObject->readBufferPtr = OTAllocMemInContext(readBufferObject->readBufferOriginalSize, gClientContext);
+#else
+       readBufferObject->readBufferData = readBufferObject->readBufferPtr = OTAllocMem(readBufferObject->readBufferOriginalSize);
+#endif
         if ( readBufferObject->readBufferData == nil) {
        	    interpreterProxy->success(false);
             return -25;
         }
 
         OTLIFOEnqueue(gFreeReadBuffers, &readBufferObject->fNext);
+		gFreeReadBuffersCounter++;
     }
 
 
@@ -460,7 +491,11 @@ void sqNetworkShutdown(void) {
 	gthisNetSession = 0;
 	gProgramState = kProgramDone;
 	DestroyAllOpenSockets();
+#if TARGET_API_MAC_CARBON
+	CloseOpenTransportInContext(gClientContext); 
+#else
 	CloseOpenTransport(); 
+#endif
 }
 
 
@@ -477,7 +512,11 @@ static void	ResolverInitialize()
 	//
 	
 	OTMemzero(gDNSResolver, sizeof(EPInfo));	
+#if TARGET_API_MAC_CARBON
+    gDNSResolver->erf = OTOpenInternetServicesInContext(kDefaultInternetServicesPath, 0, &err, gClientContext);
+#else
     gDNSResolver->erf = OTOpenInternetServices(kDefaultInternetServicesPath, 0, &err);
+#endif
     gDNSResolver->semaIndex = gDNSResolverSemaIndex;
 	
 	if (err != kOTNoError) {
@@ -641,17 +680,25 @@ void	sqSocketCreateNetTypeSocketTypeRecvBytesSendBytesSemaID(
 void sqSocketCreateNetTypeSocketTypeRecvBytesSendBytesSemaIDReadSemaIDWriteSemaID(
   SocketPtr s, int netType, int socketType,
   int recvBufSize, int sendBufSize, int semaIndex, int readSemaIndex, int writeSemaIndex)	{
-    netType; recvBufSize; sendBufSize;
+     OSErr error; 
+     netType; recvBufSize; sendBufSize;
+    
+    
     //
     //Create a socket given the supplied information
     //We don''t bind the socket to a local port  until 
     //we do the connection. This of course could change? 
     //
     
-    internalSocketCreate( s, netType, socketType, recvBufSize,  sendBufSize, semaIndex, readSemaIndex, writeSemaIndex, (UInt8) socketType);
+    error = internalSocketCreate( s, netType, socketType, recvBufSize,  sendBufSize, semaIndex, readSemaIndex, writeSemaIndex, (UInt8) socketType);
+    if (error != noErr) {
+		interpreterProxy->success(false); 
+        return;   
+    }
+
 }
 
-static void internalSocketCreate(
+static SInt32 internalSocketCreate(
   SocketPtr s, SInt32 netType, SInt32 socketType,
   SInt32 recvBufSize, SInt32 sendBufSize, SInt32 semaIndex, SInt32 readSemaIndex, SInt32 writeSemaIndex, UInt8 aExtraSocketHint)	{
   //
@@ -669,13 +716,13 @@ static void internalSocketCreate(
 	s->sessionID = 0;
 	if (gProgramState != kProgramRunning ) {		
 	    interpreterProxy->success(false);
-        return;
+        return -1;
     }
 
-	epi = getOrMakeMeAnEP(aExtraSocketHint);
+	epi = getOrMakeMeAnEP(aExtraSocketHint,0);
 	if (epi == NULL) {
 		interpreterProxy->success(false);
-		return;
+		return -1;
 	}
 
 	epi->outstandingSends   = 0;
@@ -699,6 +746,8 @@ static void internalSocketCreate(
  	s->sessionID            = gthisNetSession;
 	s->socketType           = (aExtraSocketHint == UDPSocketType) ? UDPSocketType : TCPSocketType;
 	s->privateSocketPtr     = epi;
+	gSocketsAllocated++;
+	return 0;
 }
 
 void sqSocketListenOnPort(SocketPtr s, int port) {
@@ -726,6 +775,7 @@ void sqSocketListenOnPort(SocketPtr s, int port) {
 void	sqSocketListenOnPortBacklogSize(SocketPtr s, int port, int backlogSize) {
     EPInfo* epi;
 	SInt32 sema,readSema,writeSema;
+	OSErr error;
     //
     //Listen on port for a connection, this is the best method if you are
     //a server. Works in conjunction with accept. Shouldn''t drop connections
@@ -738,8 +788,12 @@ void	sqSocketListenOnPortBacklogSize(SocketPtr s, int port, int backlogSize) {
 	    makeEPIdle(epi); //Special case really need a listener EP, so put this EP back on the queue
 	    				 //This may seem odd but the epi is allocated before we know what type it is.
 	    				 //Would need to change Squeak to indicate type at creation!
-		internalSocketCreate( s, 0, TCPSocketType, 0,  0, sema, readSema, writeSema, TCPListenerSocketType);
-		epi = (EPInfo *) s->privateSocketPtr;
+		error = internalSocketCreate( s, 0, TCPSocketType, 0,  0, sema, readSema, writeSema, TCPListenerSocketType);
+		if (error != noErr) {
+            interpreterProxy->success(false); 
+            return;   
+		}
+        epi = (EPInfo *) s->privateSocketPtr;
 		DoBind(epi,0,(InetPort) port,TCPListenerSocketType,(OTQLen) backlogSize);
 		if (epi->localAddress.fPort != port) {//The port we wanted must match, otherwise we die
 		    sqSocketDestroy(s);
@@ -774,12 +828,24 @@ void	sqSocketAcceptFromRecvBytesSendBytesSemaIDReadSemaIDWriteSemaID(
     EPInfo* epiSocket;
     EPInfo* epiServerSocket;
     Boolean	doLeave;
-
+    OSErr   error;
+    long	count=0;
+    
 	if (!SocketValid(serverSocket)) return;
 	if (serverSocket->socketType == TCPSocketType) {
-            internalSocketCreate( s, 0, TCPSocketType, recvBufSize,  sendBufSize, semaIndex, readSemaIndex, writeSemaIndex, TCPSocketType);
+            error = internalSocketCreate( s, 0, TCPSocketType, recvBufSize,  sendBufSize, semaIndex, readSemaIndex, writeSemaIndex, TCPSocketType);
+		    if (error != noErr) {
+        		interpreterProxy->success(false); 
+		        return;   
+		    }
 		    epiSocket = (EPInfo *) s->privateSocketPtr;
     		DoBind(epiSocket,0,0,TCPSocketType,0); // interrupt driven to  T_TBINDCOMPLETE
+    		while (count++ < 100 && (OTAtomicTestBit(&epiSocket->stateFlags3, kWaitingForBind) == true)) {
+#ifndef TARGET_API_MAC_CARBON
+			    SystemTask();
+#endif
+			    OTIdle();
+            }
 		    OTAtomicSetBit(&epiSocket->stateFlags2, kPassconNeeded);
 		    epiServerSocket = (EPInfo *) serverSocket->privateSocketPtr;
 			OTAtomicSetBit(&epiServerSocket->stateFlags, kWaitingForConnection);
@@ -846,12 +912,20 @@ int sqSocketSendDataBufCount(SocketPtr s, int buf, int bufSize) {
         adjustedBufSize = (adjustedBufSize > epi->UDPMaximumSize) ?   epi->UDPMaximumSize : adjustedBufSize;
      }
 
+#if TARGET_API_MAC_CARBON
+	buffer = OTAllocMemInContext(adjustedBufSize, gClientContext);
+#else
 	buffer = OTAllocMem(adjustedBufSize);
+#endif
 	if (buffer == nil) {
 		//Well maybe we back off and wait awhile? 
 		//If we run out of memory and stress the box, well death lurks.
 		adjustedBufSize = 256;
+#if TARGET_API_MAC_CARBON
+		buffer = OTAllocMemInContext(adjustedBufSize, gClientContext);
+#else
 		buffer = OTAllocMem(adjustedBufSize);
+#endif
 		if (buffer == nil) {
 		    interpreterProxy->success(false); //Death did lurk
 	        SetEPLastError(epi, -1);
@@ -1020,9 +1094,12 @@ void sqSocketDestroy(SocketPtr s) {
 
     JMMWriteLog(); //Diagnostics, turned off, must fiddle recompile to turn on.
     
-    if (!SocketValid(s)) return; 
+  
+    if (!SocketValid(s)) {
+    	return; 
+    }
 	epi = (EPInfo *) s->privateSocketPtr;
-    OTAtomicSetBit(&epi->stateFlags2, kMakeEPIdle); 
+   OTAtomicSetBit(&epi->stateFlags2, kMakeEPIdle); 
 	epState = OTGetEndpointState(epi->erf);
 	if (epState == T_UNINIT || epState == T_UNBND ) {
 	    makeEPIdle(epi); //Unbound already so make him idle.
@@ -1036,11 +1113,12 @@ void sqSocketDestroy(SocketPtr s) {
 		    makeEPBrokenThenIdle(epi,err);
 		}
 	}
-
+	purgeReadBuffers(epi); //JMM Oct 4th 2000 (bug?)
 	s->sessionID = 0;
 	s->socketType = -1;
 	s->privateSocketPtr = nil;
-}
+	gSocketsAllocated--;
+ }
 
 //
 //Check to see if bytes are available
@@ -1431,6 +1509,7 @@ static void DoBind(EPInfo* epi,InetHost addr, InetPort port,UInt8 aExtraSocketHi
         OTAtomicSetBit(&epi->stateFlags2, kTapSemaphore);
     }
 	
+	OTAtomicSetBit(&epi->stateFlags3, kWaitingForBind);
 	err = OTBind(epi->erf, &bindReq, &bindResult); // resume at T_BINDCOMPLETE
 	
 	// for bindReq on listen what is queueDepth now? 
@@ -1518,6 +1597,10 @@ static void DoListenAccept(EPInfo* acceptor,EPInfo* theServer)
         	err = OTRcvDisconnect(theServer->erf, NULL);
 		else 
 		    SetEPLastError(theServer,lookResult);
+		
+		//JMM Sept28th,2000 ? ok accept it, if we don''t does this cause blockage?
+		acceptor->remoteAddress = caddr;
+		err = OTAccept(theServer->erf, acceptor->erf, &call);
 		return;	
 	}
 	
@@ -1560,17 +1643,29 @@ static Boolean EPOpen(EPInfo* epi)
     
 	switch (epi->socketType) {
 	    case TCPSocketType: {
+#if TARGET_API_MAC_CARBON
+		    err = OTAsyncOpenEndpointInContext(OTCloneConfiguration(gCfgMastertcp), 0, NULL, NotifierSocketUPP, epi, gClientContext); 
+#else
 		    err = OTAsyncOpenEndpoint(OTCloneConfiguration(gCfgMastertcp), 0, NULL, NotifierSocketUPP, epi); 
+#endif
 	        break;
 	    }
 	    case UDPSocketType: {
 	        TEndpointInfo endPointInformation;
+#if TARGET_API_MAC_CARBON
+		    err = OTAsyncOpenEndpointInContext(OTCloneConfiguration(gCfgMasterudp), 0, &endPointInformation, NotifierSocketUDPUPP, epi, gClientContext); 
+#else
 		    err = OTAsyncOpenEndpoint(OTCloneConfiguration(gCfgMasterudp), 0, &endPointInformation, NotifierSocketUDPUPP, epi); 
+#endif
 		    epi->UDPMaximumSize = (endPointInformation.tsdu == T_INFINITE) ? 64*1024 : endPointInformation.tsdu;
 	        break;
 	    }
 	    case TCPListenerSocketType: {
+#if TARGET_API_MAC_CARBON
+		    err = OTAsyncOpenEndpointInContext(OTCloneConfiguration(gCfgMasterListener), 0, NULL, NotifierSocketListenerUPP, epi, gClientContext); 
+#else
 		    err = OTAsyncOpenEndpoint(OTCloneConfiguration(gCfgMasterListener), 0, NULL, NotifierSocketListenerUPP, epi); 
+#endif
 	        break;
 	    }
 	}
@@ -1694,12 +1789,15 @@ static void attemptToCloseAndDeleteThisEP (EPInfo *epi) {
 	} else 
 	    OTFreeMem((char*)epi);
 }
-static EPInfo* getOrMakeMeAnEP(UInt8 aSocketType) {
+static EPInfo* getOrMakeMeAnEP(UInt8 aSocketType,short counter) {
 	EPInfo      *epi;
     OTLink		*link;
     SInt32      i;
     
     Recycle();  //Ensure broken EP get fixed up
+    
+    if (counter > 25) 
+        return nil;  // End recursion John 2000/8/29
 
     if (gIdleEPCounter[aSocketType] < 5)   //Magic Number ensure we have at least 5 EP available.
         makeMeAnEP(aSocketType);
@@ -1707,7 +1805,7 @@ static EPInfo* getOrMakeMeAnEP(UInt8 aSocketType) {
     link = OTLIFODequeue(gIdleEPs[aSocketType]);
 	if (link == NULL) {
 		for(i=0;i<10;i++) {OTIdle();};
-		return getOrMakeMeAnEP(aSocketType); //JMM recursive bug lurks
+		return getOrMakeMeAnEP(aSocketType,counter+1); //Watch for recursive failure
 	}
 	
    	OTAtomicAdd32(-1, &gIdleEPCounter[aSocketType]);
@@ -1723,7 +1821,7 @@ static EPInfo* getOrMakeMeAnEP(UInt8 aSocketType) {
 	//This continues until we get a good one
 	//
   	    makeEPIdle(epi);
-	    return getOrMakeMeAnEP(aSocketType);
+	    return getOrMakeMeAnEP(aSocketType,counter);  //Not a recursion issue. 
 	}
     return epi;
 }
@@ -1736,7 +1834,11 @@ static EPInfo* getOrMakeMeAnEP(UInt8 aSocketType) {
 static Boolean makeMeAnEP (UInt8 aSocketType) {
 	EPInfo      *epi;
 	
+#if TARGET_API_MAC_CARBON
+	epi = (EPInfo*) OTAllocMemInContext(sizeof(EPInfo), gClientContext);
+#else
 	epi = (EPInfo*) OTAllocMem(sizeof(EPInfo));
+#endif
 	if (epi == NULL) return false;   //Death lurks
 	OTMemzero(epi, sizeof(EPInfo));  //zero it out which makes all the pointers null
     epi->socketType = aSocketType;
@@ -1799,11 +1901,11 @@ static void SetEPLastError(EPInfo* epi,OTResult error) {
 static UInt32 ReadData(EPInfo* epi,char *specialReadBuffer,UInt32 specialReadSize) {
 	OTResult  	res;
 	OTFlags	  	flags;
-	OTResult	epState;
+	OTResult	epState,err;
 	OTLink		*link;
     ReadBuffer 	*readBufferObject,simulatedReadBuffer;
     InetAddress UDPdataFromAddress;
-
+	
     if (OTAtomicClearBit(&epi->stateFlags2, kTapSemaphoreReadData)) //tap to clear waitfordata Data Data Data
         interpreterProxy->signalSemaphoreWithIndex(epi->readSemaIndex);
         
@@ -1819,6 +1921,7 @@ static UInt32 ReadData(EPInfo* epi,char *specialReadBuffer,UInt32 specialReadSiz
            	OTAtomicSetBit(&epi->stateFlags2, kReadFlowControl);  //NO free buffers we are flow controled
         	return; 
     	}
+		gFreeReadBuffersCounter--;
     	readBufferObject = OTGetLinkObject(link, ReadBuffer, fNext);
         OTAtomicClearBit(&epi->stateFlags2, kReadFlowControl);  
     }
@@ -1881,12 +1984,15 @@ static UInt32 ReadData(EPInfo* epi,char *specialReadBuffer,UInt32 specialReadSiz
                	OTAtomicSetBit(&epi->stateFlags2, kReadFlowControl); //Our read flow control, OT will block lower down
             	return; 
         	}
+			gFreeReadBuffersCounter--;
         	readBufferObject = OTGetLinkObject(link, ReadBuffer, fNext);
    			continue; //Loop around and get more bytes if available
 		}
 		else {
-            if (specialReadSize == 0) 
+            if (specialReadSize == 0) {
                 OTLIFOEnqueue(gFreeReadBuffers, &readBufferObject->fNext); //Read above didn''t work so put it back on free queue
+				gFreeReadBuffersCounter++;
+			}
 		}
 		
 		if (res == kOTNoDataErr) {
@@ -1908,6 +2014,11 @@ static UInt32 ReadData(EPInfo* epi,char *specialReadBuffer,UInt32 specialReadSiz
 				//	Upon getting it, we will notice we still need to send data and do so.
 				//	The T_ORDREL has to be cleared before we can send. 
 				//
+				if (specialReadSize > 0 && res == T_DISCONNECT) {
+					//Special case? need to get disconnect 
+					err = OTRcvDisconnect(epi->erf, NULL);
+					makeEPUnconnected(epi);
+				}
 				return 0 ;
 			}
 			if (res == T_GODATA) {
@@ -1917,6 +2028,7 @@ static UInt32 ReadData(EPInfo* epi,char *specialReadBuffer,UInt32 specialReadSiz
                        	OTAtomicSetBit(&epi->stateFlags2, kReadFlowControl);
                     	return 0 ; 
                 	}
+					gFreeReadBuffersCounter--;
                 	readBufferObject = OTGetLinkObject(link, ReadBuffer, fNext);
             	} else {
             	    return 0;
@@ -1938,6 +2050,10 @@ static UInt32 ReadData(EPInfo* epi,char *specialReadBuffer,UInt32 specialReadSiz
 				//	to the client.
 				//
 				break;
+			}
+			if (res == kOTOutStateErr && (epState == T_UNBND || epState == T_IDLE ) && specialReadSize > 0) {
+				  interpreterProxy->success(false); //JMM Oct 4th 2000 special case fail if read on unbound
+				  return 0;
 			}
 		break; //Ok error so break out of loop
 		}
@@ -1963,14 +2079,14 @@ static void NoCopyReceiveWalkingBufferChain(EPInfo *epi,OTBufferInfo *bufferInfo
     while (err == noErr && thisBuffer != nil) {
         count = thisBuffer->fLen;
     	OTAtomicAdd32(count, &epi->bytesPendingToRead);
-		readBufferObject = OTAllocMem(sizeof(ReadBuffer));
+		readBufferObject = OTAllocMemInContext(sizeof(ReadBuffer), gClientContext);
         if (readBufferObject == nil) {
 			SysBeep(5);
             err = -1;
             break;
         } 
         OTMemzero(readBufferObject,sizeof(ReadBuffer));
-        readBufferObject->readBufferData = readBufferObject->readBufferPtr = OTAllocMem(count);
+        readBufferObject->readBufferData = readBufferObject->readBufferPtr = OTAllocMemInContext(count, gClientContext);
         if ( readBufferObject->readBufferData == nil) {
 			SysBeep(5);
              err = -1;
@@ -2027,6 +2143,7 @@ static UInt32  readBytes(EPInfo* epi,char *buf,UInt32 adjustedBufSize)
        	OTAtomicAdd32(-bytesRead, &epi->bytesPendingToRead);
         OTMemcpy(buf,aBuffer->readBufferPtr,bytesRead);
         OTLIFOEnqueue(gFreeReadBuffers, &aBuffer->fNext);
+		gFreeReadBuffersCounter++;
         increment = readBytes(epi,buf+bytesRead,adjustedBufSize-bytesRead);
         bytesRead += increment;
         return bytesRead;
@@ -2067,6 +2184,7 @@ static UInt32  readBytesUDP(EPInfo* epi,InetAddress *fromAddress, int * moreFlag
         OTMemcpy(fromAddress,&aBuffer->UDPAddress,sizeof(InetAddress));
         *moreFlag = aBuffer->UDPMoreFlag;
         OTLIFOEnqueue(gFreeReadBuffers, &aBuffer->fNext);
+		gFreeReadBuffersCounter++;
         return bytesRead;
    }
 }
@@ -2084,6 +2202,7 @@ static void purgeReadBuffers(EPInfo *epi) {
     
     while (aBuffer != NULL) {
         OTLIFOEnqueue(gFreeReadBuffers, &aBuffer->fNext);
+		gFreeReadBuffersCounter++;
         aBuffer = (ReadBuffer *) OTRemoveFirst(&epi->readBuffers);
     }
     epi->bytesPendingToRead = 0;
@@ -2140,7 +2259,11 @@ static SInt32 SendData(EPInfo* epi,char* buffer, UInt32 size)
     	//
     	
     	if (gOTVersion < kOTVersion113) {
+#if TARGET_API_MAC_CARBON
+    		dataPtr = OTAllocMemInContext(sizeof(OTData), gClientContext);
+#else
     		dataPtr = OTAllocMem(sizeof(OTData));
+#endif
     		if (dataPtr == NULL) { //Death lurks I''m sure
     		    OTAtomicAdd32(-1, &epi->outstandingSends);
                 OTFreeMem(buffer);
@@ -2697,6 +2820,7 @@ static pascal void NotifierSocket(void* context, OTEventCode event, OTResult res
 		case T_BINDCOMPLETE:
 		{
             SetEPLastError(epi,result);
+			OTAtomicClearBit(&epi->stateFlags3, kWaitingForBind);
 			if (result != kOTNoError) {
             	makeEPUnconnected(epi);
 				return;
@@ -3287,6 +3411,7 @@ static pascal void NotifierSocketListener(void* context, OTEventCode event, OTRe
 		case T_BINDCOMPLETE:
 		{
             SetEPLastError(epi,result);
+			OTAtomicClearBit(&epi->stateFlags3, kWaitingForBind);
 			if (result != kOTNoError)
    				makeEPUnconnected(epi);
       
@@ -3393,6 +3518,7 @@ static pascal void NotifierSocketUDP(void* context, OTEventCode event, OTResult 
 		case T_BINDCOMPLETE:
 		{
             SetEPLastError(epi,result);
+			OTAtomicClearBit(&epi->stateFlags3, kWaitingForBind);
 			if (result != kOTNoError) {
    				makeEPUnconnected(epi);
 				return;
@@ -3474,11 +3600,19 @@ void JMMLogMessage(Str255 input) {
 	timeStringLength = (unsigned char) timeString[0];
 	inputLength = (unsigned char) input[0];
 	
+#if TARGET_API_MAC_CARBON
+	readBufferObject = OTAllocMemInContext(sizeof(ReadBuffer), gClientContext);
+#else
 	readBufferObject = OTAllocMem(sizeof(ReadBuffer));
+#endif
 	if (readBufferObject == NULL) return;
 	OTMemzero(readBufferObject,sizeof(ReadBuffer));
 	
+#if TARGET_API_MAC_CARBON
+	readBufferObject->readBufferData = OTAllocMemInContext(60, gClientContext);
+#else
 	readBufferObject->readBufferData = OTAllocMem(60);
+#endif
 	if (readBufferObject->readBufferData == NULL) {
 	    OTFreeMem(readBufferObject);
 	    return;

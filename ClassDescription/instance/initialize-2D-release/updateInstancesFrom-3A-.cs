@@ -8,11 +8,14 @@ updateInstancesFrom: oldClass
 	See bottom below for a simple example:"
 	| oldInstances |
 
+	Smalltalk garbageCollect.	"ensure that allInstances is correct"
 	oldInstances _ oldClass allInstances asArray.
-	self updateInstances: oldInstances from: oldClass isMeta: false.
+	self updateInstances: oldInstances from: oldClass isMeta: self isMeta.
 	"Now fix up instances in segments that are out on the disk."
 	ImageSegment allSubInstancesDo: [:seg |
-		seg segUpdateInstancesOf: oldClass toBe: self isMeta: false].
+		seg segUpdateInstancesOf: oldClass toBe: self isMeta: self isMeta].
+	oldInstances _ nil.
+	Smalltalk garbageCollect.	"ensure that old instances are gone"
 
 
 "	| crashingBlock class |

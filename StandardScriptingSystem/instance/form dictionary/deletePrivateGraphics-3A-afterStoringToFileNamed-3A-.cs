@@ -3,7 +3,7 @@ deletePrivateGraphics: nameList afterStoringToFileNamed: aFileName
 
 	|  replacement toRemove aReferenceStream keySymbol |
 	toRemove _ Dictionary new.
-	replacement _ FormDictionary formAtKey: #Gets.
+	replacement _ FormDictionary at: #Gets.
 
 	nameList do:
 		[:aKey |

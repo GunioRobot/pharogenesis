@@ -1,0 +1,3 @@
+failureColor
+
+	^self class failureColor

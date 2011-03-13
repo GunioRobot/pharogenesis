@@ -1,4 +1,5 @@
 goToRightOf: aPlayer
+	"Place the object so that it lies directly to the right of the given object"
 
 	| hisCostume aCostume |
 	(aPlayer == nil or: [aPlayer == self]) ifTrue: [^ self].

@@ -1,8 +1,25 @@
-lastRemoval  "Smalltalk lastRemoval" 
-	#(abandonSources browseAllSelect: printSpaceAnalysis browseObsoleteReferences  lastRemoval) do:
-		[:sel | SystemDictionary removeSelector: sel].
+lastRemoval			"Smalltalk lastRemoval"
+
+	 | oldDicts newDicts |
+
+	"Some explicit removals - add unwanted methods keeping other methods."
+	#(abandonSources printSpaceAnalysis)
+		do: [:each | self class removeSelector: each].
+
+	"Get rid of all unsent methods."
 	[self removeAllUnSentMessages > 0] whileTrue.
-	Set withAllSubclassesDo:
-		[:cls | cls allInstances do: [:s | s rehash]].
+
+	"Shrink method dictionaries."
+	Smalltalk garbageCollect.
+	oldDicts _ MethodDictionary allInstances.
+	newDicts _ Array new: oldDicts size.
+	oldDicts withIndexDo: [:d :index | 
+		newDicts at: index put: d rehashWithoutBecome.
+	].
+	oldDicts elementsExchangeIdentityWith: newDicts.
+	oldDicts _ newDicts _ nil.
+
 	Smalltalk allClassesDo: [:c | c zapOrganization].
-	Smalltalk changes initialize.
+	SystemOrganization _ nil.
+
+	Smalltalk changes initialize

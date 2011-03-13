@@ -1,2 +1,2 @@
 choosePenColor: evt
-	evt hand changeColorTarget:  self costume  selector: #penColor: originalColor: self getPenColor
+	self costume changeColorTarget:  self costume  selector: #penColor: originalColor: self getPenColor hand: evt hand

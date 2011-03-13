@@ -1,7 +1,7 @@
 resetBoard
 
-	self 
-		resetFreeCells;
+	self purgeAllCommands.
+	self resetFreeCells;
 		resetHomeCells;
 		resetStacks;
 		changed.

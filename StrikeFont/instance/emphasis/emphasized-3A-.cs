@@ -1,6 +1,6 @@
 emphasized: code 
 	"Answer a copy of the receiver with emphasis set to include code."
-	| derivative addedEmphasis base g r safeCode |
+	| derivative addedEmphasis base safeCode |
 	code = 0 ifTrue: [^ self].
 	(derivativeFonts == nil or: [derivativeFonts size = 0]) ifTrue: [^ self].
 	derivative _ derivativeFonts at: (safeCode _ code min: derivativeFonts size).
@@ -10,7 +10,7 @@ emphasized: code
 	addedEmphasis _ 1 bitShift: safeCode highBit - 1.
 	base _ self emphasized: safeCode - addedEmphasis.  "Order is Bold, Ital, Under, Narrow"
 	addedEmphasis = 1 ifTrue:   "Compute synthetic bold version of the font"
-		[derivative _ (base copy name: base name , 'B') makeBoldGlyphs].
+		[derivative _ (base copy ensureCleanBold name: base name , 'B') makeBoldGlyphs].
 	addedEmphasis = 2 ifTrue:   "Compute synthetic italic version of the font"
 		[ derivative _ (base copy name: base name , 'I') makeItalicGlyphs].
 	addedEmphasis = 4 ifTrue:   "Compute underlined version of the font"

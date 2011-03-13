@@ -1,0 +1,1 @@
+I am a parser for news files in the format output by the Unix 'rn' program.

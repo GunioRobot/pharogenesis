@@ -1,0 +1,1 @@
+DualChangeSorter class instanceVariableNames: ''

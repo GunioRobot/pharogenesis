@@ -1,3 +1,0 @@
-defaultBackgroundColor
-
-	^ #lightMagenta

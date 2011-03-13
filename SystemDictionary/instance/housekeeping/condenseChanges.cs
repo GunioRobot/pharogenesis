@@ -16,12 +16,10 @@ condenseChanges		"Smalltalk condenseChanges"
 	f trailer; close.
 	oldChanges _ SourceFiles at: 2.
 	oldChanges close.
-	FileDirectory default deleteFileNamed: oldChanges name , '.old'.
-	FileDirectory default rename: oldChanges name
-						toBe: oldChanges name , '.old'.
-	FileDirectory default rename: f name
-						toBe: oldChanges name.
-	FileDirectory default setMacFileNamed: oldChanges name
-						type: 'STch' creator: 'FAST'.
+	FileDirectory default 
+		deleteFileNamed: oldChanges name , '.old';
+		rename: oldChanges name toBe: oldChanges name , '.old';
+		rename: f name toBe: oldChanges name.
+	self setMacFileInfoOn: oldChanges name.
 	SourceFiles at: 2
 			put: (StandardFileStream oldFileNamed: oldChanges name).

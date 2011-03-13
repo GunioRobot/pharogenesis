@@ -40,9 +40,10 @@ initializeShiftCmdKeyShortcuts
 		$i	exploreIt:
 		$j	doAgainMany:
 		$k	changeStyle:
-		$n	referencesToIt:
-		$r	indent:
 		$l	outdent:
+		$n	referencesToIt:
+		$p	makeProjectLink:
+		$r	indent:
 		$s	search:
 		$t	displayIfTrue:
 		$u	changeLfToCr:

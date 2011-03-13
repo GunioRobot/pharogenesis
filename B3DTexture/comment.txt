@@ -1,0 +1,9 @@
+I represent a simple 2D texture.
+
+Instance variables:
+	wrap		<Boolean>	If true, wrap the texture - otherwise clamp it.
+	interpolate	<Boolean>	If true, interpolate the pixels of the texture.
+	envMode	<Integer>	How we combine colors with the texture.
+		Possible values:
+			0 - OpenGL style modulate texture
+			1 - OpenGL style decal texture

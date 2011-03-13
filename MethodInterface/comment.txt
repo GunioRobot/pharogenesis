@@ -1,0 +1,12 @@
+A MethodInterface describes the interface for a single method.  The most generic form is not bound to any particular class or object but rather describes an idealized interface.
+
+	selector					A symbol - the selector being described
+	argumentSpecifications	A list of specifications for the formal arguments of the method
+	resultSpecification 		A characterization of the return value of the method
+	userLevel				
+	attributeKeywords		A list of symbols, comprising keywords that the user wishes to
+								associate with this method
+	defaultStatus			The status to apply to new instances of the class by default
+	defaultFiresPerTick		How many fires per tick, by default, should be allowed if ticking.
+
+

@@ -1,0 +1,3 @@
+detailsText
+
+	^detailsText

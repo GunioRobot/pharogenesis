@@ -1,10 +1,13 @@
 messageListMenu: aMenu shifted: shifted
-	| aList |
-	aList _ shifted
-		ifFalse: [#(
+	"Answer the message-list menu"
+
+	shifted ifTrue: [^ self shiftedMessageListMenu: aMenu].
+
+	aMenu addList:#(
 			('browse full (b)' 						browseMethodFull)
 			('browse hierarchy (h)'					classHierarchy)
 			('browse method (O)'					openSingleMessageBrowser)
+			('browse protocol (p)'					browseFullProtocol)
 			-
 			('fileOut'								fileOutMessage)
 			('printOut'								printOutMessage)
@@ -12,6 +15,7 @@ messageListMenu: aMenu shifted: shifted
 			('senders of... (n)'						browseSendersOfMessages)
 			('implementors of... (m)'					browseMessages)
 			('inheritance (i)'						methodHierarchy)
+			('tile scriptor'							openSyntaxView)
 			('versions (v)'							browseVersions)
 			-
 			('inst var refs...'						browseInstVarRefs)
@@ -22,25 +26,5 @@ messageListMenu: aMenu shifted: shifted
 			-
 			('remove method (x)'					removeMessage)
 			-
-			('more...'								shiftedYellowButtonActivity))]
-		ifTrue: [#(
-			('method pane' 							makeIsolatedCodePane)
-			"('make a scriptor'						makeScriptor)"
-			('toggle diffing'							toggleDiffing)
-			('implementors of sent messages'			browseAllMessages)
-			-
-			('sample instance'						makeSampleInstance)
-			('inspect instances'						inspectInstances)
-			('inspect subinstances'					inspectSubInstances)
-			-
-			('remove from this browser'				removeMessageFromBrowser)
-			('change category...'					changeCategory)
-			-
-			('change sets with this method'			findMethodInChangeSets)
-			('revert to previous version'				revertToPreviousVersion)
-			('remove from current change set'		removeFromCurrentChanges)
-			('revert and forget'						revertAndForget)
-			-
-			('fetch documentation'					fetchDocPane)
-			('more...' 								unshiftedYellowButtonActivity))].
-	^ aMenu addList: aList
+			('more...'								shiftedYellowButtonActivity)).
+	^ aMenu

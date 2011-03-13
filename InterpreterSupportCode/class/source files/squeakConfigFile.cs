@@ -2,7 +2,7 @@ squeakConfigFile
 
 	^ '/* sqConfig.h -- platform identification and configuration */
 
-#if defined(__MWERKS__) && !defined(macintosh)
+#if defined(__MWERKS__) && !defined(macintosh)  && !defined(__be_os) && !defined(__BEOS__)
   /* CodeWarrior 8 neglects to define "macintosh" */
 # define macintosh
 #endif
@@ -45,6 +45,23 @@ squeakConfigFile
 #  define SQ_CONFIG_DONE
 # else
 #  error unsupported win32 processor type (alpha?!)
+# endif
+#endif
+
+#if defined(__be_os) || defined(__BEOS__)
+# if defined(SQ_CONFIG_DONE)
+#   error configuration conflict
+# endif
+# include <ByteOrder.h>
+# if B_HOST_IS_LENDIAN /* Intel, etc. */
+#  define JUMP_ALIGN_BYTE
+#  define DOUBLE_WORD_ALIGNMENT
+#  define DOUBLE_WORD_ORDER
+#  define HAS_LSB_FIRST
+#  define SQ_CONFIG_DONE
+# else  /* PPC, etc. */
+#  define HAS_MSB_FIRST
+#  define SQ_CONFIG_DONE
 # endif
 #endif
 

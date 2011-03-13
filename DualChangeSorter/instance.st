@@ -3,4 +3,4 @@ Model
 	instanceVariableNames: 'leftCngSorter rightCngSorter '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Interface-Changes'
+	category: 'Tools-Changes'

@@ -1,0 +1,3 @@
+directoryObject
+
+	^self

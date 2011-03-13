@@ -1,2 +1,0 @@
-internalInstructionPointer
-	^self cachedInstructionPointerAt: localCP

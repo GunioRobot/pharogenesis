@@ -1,0 +1,3 @@
+toggleFlapsSuppressed
+
+	CurrentProjectRefactoring currentToggleFlapsSuppressed

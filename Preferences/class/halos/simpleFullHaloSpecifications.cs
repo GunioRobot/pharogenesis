@@ -25,5 +25,7 @@ simpleFullHaloSpecifications
 	(addRepaintHandle:		right		center			(lightGray)						'Halo-Paint')
 	(addFontSizeHandle:		leftCenter	bottom			(lightGreen)						'Halo-FontSize')
 	(addFontStyleHandle:		center		bottom			(lightRed)						'Halo-FontStyle')
-	(addFontEmphHandle:	rightCenter	bottom			(lightBrown darker)				'Halo-FontEmph')
+	(addFontEmphHandle:	rightCenter	bottom			(lightBrown darker)		  'Halo-FontEmph')
+	(addRecolorHandle:		right		bottomCenter	(magenta darker)				'Halo-Recolor')
+
 		) 

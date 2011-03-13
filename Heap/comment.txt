@@ -1,0 +1,11 @@
+Class Heap implements a special data structure commonly referred to as 'heap'. Heaps are more efficient than SortedCollections if:
+a) Elements are only removed at the beginning
+b) Elements are added with arbitrary sort order.
+The sort time for a heap is O(n log n) in all cases.
+
+Instance variables:
+	array		<Array>		the data repository
+	tally		<Integer>	the number of elements in the heap
+	sortBlock	<Block|nil>	a two-argument block defining the sort order,
+							or nil in which case the default sort order is
+								[:element1 :element2| element1 <= element2]

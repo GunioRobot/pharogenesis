@@ -1,7 +1,9 @@
 removeFlexShell
 	"Remove the shell used to make a morph rotatable and scalable."
 
-	| oldHalo unflexed pensDown player |
+	| oldHalo unflexed pensDown player myWorld refPos |
+	refPos _ self referencePosition.
+	myWorld _ self world.
 	oldHalo _ self halo.
 	submorphs isEmpty ifTrue: [^ self delete].
 	unflexed _ self firstSubmorph.
@@ -17,7 +19,7 @@ removeFlexShell
 	unflexed absorbStateFromRenderer: self.
 	pensDown do: [:p | p setPenDown: true].
 	oldHalo ifNotNil: [oldHalo setTarget: unflexed].
-	self currentWorld startSteppingSubmorphsOf: unflexed.
+	myWorld ifNotNil: [myWorld startSteppingSubmorphsOf: unflexed].
 	self delete.
-
+	unflexed referencePosition: refPos.
 	^ unflexed

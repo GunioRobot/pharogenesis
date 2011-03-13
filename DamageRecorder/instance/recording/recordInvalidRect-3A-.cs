@@ -1,5 +1,5 @@
 recordInvalidRect: aRectangle
-	"Record the given rectangle in my damage list, a list of rectagular areas of the display that should be redraw on the next display cycle."
+	"Record the given rectangle in my damage list, a list of rectangular areas of the display that should be redraw on the next display cycle."
 	"Details: Damaged rectangles are often identical or overlap significantly. In these cases, we merge them to reduce the number of damage rectangles that must be processed when the display is updated. Moreover, above a certain threshold, we ignore the individual rectangles completely, and simply do a complete repaint on the next cycle."
 
 	| mergeRect |

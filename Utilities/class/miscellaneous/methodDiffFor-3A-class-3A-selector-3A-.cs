@@ -1,6 +1,7 @@
-methodDiffFor: aString class: aClass selector: aSelector
+methodDiffFor: aString class: aClass selector: aSelector 
 	^ (aClass includesSelector: aSelector)
-		ifFalse:
-			[aString copy]
-		ifTrue:
-			[TextDiffBuilder buildDisplayPatchFrom: (aClass sourceCodeAt: aSelector) to: aString]
+		ifTrue: [TextDiffBuilder
+				buildDisplayPatchFrom: (aClass sourceCodeAt: aSelector)
+				to: aString
+inClass: aClass]
+		ifFalse: [aString copy]

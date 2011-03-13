@@ -1,5 +1,5 @@
 primSize: id
 	"Answer the size of this file."
 
-	<primitive: 157>
+	<primitive: 'primitiveFileSize' module: 'FilePlugin'>
 	self primitiveFailed

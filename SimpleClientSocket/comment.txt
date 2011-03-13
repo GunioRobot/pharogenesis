@@ -1,11 +1,11 @@
-SimpleClientSocket comment:
-'This class supports client for simple network protocols based on sending textual commands and responses. Examples of such protocols include POP3 (mail retrieval), SMTP (mail posting), HTTP (web browsing), and NTTP (network news). Some simple examples are presented as class methods, but a full-service client of some service should be implemented as a subclass.
+This class supports client for simple network protocols based on sending textual commands and responses. Examples of such protocols include POP3 (mail retrieval), SMTP (mail posting), HTTP (web browsing), and NTTP (network news). Some simple examples are presented as class methods, but a full-service client of some service should be implemented as a subclass.
 
 The basic services provided by this class are:
 	sendCommand:			-- sends a command line terminate with <CR><LF>
-	getResponse				-- gets a (typically) single-line response to a command
+	getResponse				-- gets a single-line response to a command
 	getMultilineResponse	-- gets a multiple line response terminated by a period
 							-- on a line by itself
 
 There are variants of the getResponse commands that display lines on the screen as they are being received. Linefeeds are stripped out of all responses.
-'
+
+The 'get' commands above make use of an internal buffer.  So intermixing these two commands and regular Socket recieve commands can cause problems.

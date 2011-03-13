@@ -1,2 +1,0 @@
-handlesStartDrag: evt
-	^ startDragRecipient notNil

@@ -1,0 +1,5 @@
+A reference to a local file.  The url itself uses the UNIX notation of %20 for space.  
+
+path has the tokens translated to ascii, except if we have a UNIX file system. 
+
+path is OC of path parts.  If last is empty string, then referring to a directory.

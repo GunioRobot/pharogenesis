@@ -3,4 +3,4 @@ RectangleMorph
 	instanceVariableNames: 'graphic sound '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Widgets'
+	category: 'Sound-Interface'

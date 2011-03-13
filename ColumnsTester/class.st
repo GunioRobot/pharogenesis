@@ -1,0 +1,1 @@
+ColumnsTester class instanceVariableNames: ''

@@ -1,2 +1,0 @@
-blueButtonActivity
-	self yellowButtonActivity

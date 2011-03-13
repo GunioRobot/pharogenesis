@@ -1,7 +1,7 @@
 isolationRecoveryAdvice
 	"Return a notifier message string to be presented in case of recovery from recursive error by revoking the changes in an isolation layer.  This surely ranks as one of Squeak's longer help messages."
 
-	^ 'Warning! You have encountered a recursive eror situation.
+	^ 'Warning! You have encountered a recursive error situation.
 
 Don''t panic, but do read the following advice.  If you were just fooling around, the simplest thing to do is to quit and NOT save, and restart Squeak.  If you care about recovery, then read on...
 

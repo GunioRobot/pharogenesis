@@ -1,7 +1,7 @@
 rootsIncludingPlayers
 	"Return a new roots array with more objects.  (Caller should store into rootArray.) Player (non-systemDefined) gets its class and metaclass put into the Roots array.  Then ask for the segment again."
 
-| extras havePresenter players morphs env |
+| extras havePresenter players morphs env existing |
 userRootCnt ifNil: [userRootCnt _ arrayOfRoots size].
 extras _ OrderedCollection new.
 arrayOfRoots do: [:root | 
@@ -20,7 +20,10 @@ havePresenter ifNotNil: [
 	extras addAll: (players collect: [:each | each class]).
 	(env _ havePresenter world project environment) ifNil: [
 		extras addAll: (players collect: [:each | each class class])].
+	extras addAll: morphs.	"Make then ALL roots!"
 	].
+existing _ arrayOfRoots asIdentitySet.
+extras _ extras reject: [ :each | existing includes: each].
 extras isEmpty ifTrue: [^ nil].	"no change"
 env 
 	ifNil: ["old pre-environment"

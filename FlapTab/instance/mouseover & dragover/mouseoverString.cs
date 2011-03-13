@@ -1,6 +1,8 @@
 mouseoverString
+	"Answer the string to be shown in a menu to represent the mouseover status"
+
 	^ popOutOnMouseOver
 		ifTrue:
-			['cease popping out on mouseover']
+			['<yes>pop out on mouseover']
 		ifFalse:
-			['start popping out on mouseover']
+			['<no>pop out on mouseover']

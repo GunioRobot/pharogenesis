@@ -23,7 +23,7 @@ drawOn: aCanvas
 										ifFalse: [color darker])].
 
 	borderColor == #inset ifTrue: [
-		insetColor _ owner colorForInsets.
+		insetColor _ owner ifNil: [Color black] ifNotNil: [owner colorForInsets].
 		aCanvas fillRectangle: self bounds fillStyle: self fillStyle.
 		^ aCanvas frameAndFillRectangle: bounds
 			fillColor: Color transparent

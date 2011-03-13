@@ -1,0 +1,1 @@
+MethodMorph class instanceVariableNames: ''

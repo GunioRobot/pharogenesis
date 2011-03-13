@@ -5,11 +5,16 @@ squeakPlatformExportsFile
    should be listed in the internal primitive table. As an example, two extra
    definitions required by the Unix VM would look like:
 
-   XFN(SetSocketPollingFunction)
-   XFN(SetSoundPollingFunction)
+   XFN(setSocketPollFunction)
+   XFN(setSoundPollFunction)
 */
 
 #ifdef macintosh
+
+	XFN(getSTWindow)
+	XFN(setMessageHook)
+	XFN(setPostMessageHook)
+	
 //#define PLUGIN
 #ifdef PLUGIN
 /* Plugin support primitives
@@ -18,9 +23,20 @@ squeakPlatformExportsFile
 XFN(primitivePluginBrowserReady)
 XFN(primitivePluginRequestURLStream)
 XFN(primitivePluginRequestURL)
+XFN(primitivePluginPostURL)
 XFN(primitivePluginRequestFileHandle)
 XFN(primitivePluginDestroyRequest)
 XFN(primitivePluginRequestState)
 #endif
 #endif /* macintosh */
+
+#ifdef UNIX
+   XFN(setSocketPollFunction)
+   XFN(setSoundPollFunction)
+#endif
+
+#ifdef ACORN
+   XFN(setSocketPollFunction)
+#endif
+
 '

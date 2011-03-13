@@ -3,6 +3,6 @@ rowForButtons
 	^AlignmentMorph newRow
 		color: color;
 		borderWidth: 0;
-		inset: 3;
+		layoutInset: 3;
 		vResizing: #shrinkWrap;
-		centering: #center
+		wrapCentering: #center

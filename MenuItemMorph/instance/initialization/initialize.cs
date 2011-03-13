@@ -12,3 +12,4 @@ initialize
 	selector _ nil.
 	arguments _ nil.
 	font _ Preferences standardMenuFont.
+	self hResizing: #spaceFill; vResizing: #shrinkWrap.

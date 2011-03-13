@@ -1,3 +1,0 @@
-OpaqueMaskColor class comment:
-'The pixel value of an OpaqueMaskColor is all-ones in any depth. This allows it to be used in combination with the AND mode of BitBlt to create masks that work at any depth. Clients typically use "Color opaqueMask" to get an instance of me.
-'

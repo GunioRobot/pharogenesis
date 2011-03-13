@@ -19,5 +19,5 @@ mouseDown: event onItem: aMorph
 	"Need to restore the old one, due to how model works, and set new one."
 	oldIndex ~= 0 ifTrue: [model listSelectionAt: oldIndex put: oldVal].
 	model listSelectionAt: index put: dragOnOrOff.
-
+	event hand releaseMouseFocus: aMorph.
 	aMorph changed

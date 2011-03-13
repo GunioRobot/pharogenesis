@@ -3,4 +3,4 @@ HTTPSocket
 	instanceVariableNames: 'portNum dataSocket readAhead '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Network'
+	category: 'Network-Protocols'

@@ -7,6 +7,6 @@ primLookupEntryIn: fullPath index: index
 
 	The creation and modification times are in seconds since the start of the Smalltalk time epoch. DirFlag is true if the entry is a directory. FileSize the file size in bytes or zero for directories. The primitive returns nil when index is past the end of the directory. It fails if the given path is bad."
 
- 	<primitive: 162>
+ 	<primitive: 'primitiveDirectoryLookup' module: 'FilePlugin'>
 	^ #badDirectoryPath
 

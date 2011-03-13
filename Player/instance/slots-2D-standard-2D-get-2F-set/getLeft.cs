@@ -1,2 +1,0 @@
-getLeft
-	^ self costume left

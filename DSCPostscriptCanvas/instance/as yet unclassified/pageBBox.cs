@@ -1,8 +1,14 @@
 pageBBox
-	| pageSize offset bbox |
+
+	| pageSize offset bbox trueExtent |
+
+	EPSCanvas bobsPostScriptHacks ifTrue: [
+		trueExtent _ savedMorphExtent	"this one has been rotated"
+	] ifFalse: [
+		trueExtent _ psBounds extent
+	].
 	pageSize _ self defaultImageableArea.
-	offset _ (pageSize extent x - psBounds extent x) / 2 @ 
-			((pageSize extent y - psBounds extent y) /2 ).
-	offset _ offset + self defaultMargin.
-	bbox _ offset extent:psBounds extent.
+	offset _ ((pageSize extent - trueExtent) / 2 max: 0@0) + self defaultMargin.
+	bbox _ offset extent: psBounds extent.
+
 	^bbox

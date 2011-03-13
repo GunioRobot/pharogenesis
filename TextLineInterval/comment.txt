@@ -1,2 +1,1 @@
-TextLineInterval comment:
-'My instances specify the starting and stopping points in a String of a composed line. The step is always 1.'
+My instances specify the starting and stopping points in a String of a composed line. The step is always 1.

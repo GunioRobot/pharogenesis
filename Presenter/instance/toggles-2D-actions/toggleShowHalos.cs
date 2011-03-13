@@ -1,2 +1,0 @@
-toggleShowHalos
-	mouseOverHalosEnabled _ self mouseOverHalosEnabled not

@@ -7,7 +7,7 @@ acceptDroppingMorph: aMorph event: evt
 			ifTrue:
 				[self class playDeleteSound]].
 
-	evt hand endDisplaySuppression.
+	evt hand visible: true.
 	self state: #off.
 	aMorph delete.
 	aMorph == Utilities scrapsBook ifFalse:

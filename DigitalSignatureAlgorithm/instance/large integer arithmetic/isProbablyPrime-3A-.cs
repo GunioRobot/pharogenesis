@@ -22,7 +22,7 @@ isProbablyPrime: p
 		Transcript show: i printString; space.
 		a _ (r next * 16rFFFFFF) truncated.
 		j _ 0.
-		z _ (self raise: a to: m mod: p) normalize.
+		z _ (a raisedTo: m modulo: p) normalize.
 		couldBePrime _ z = 1.
 		[couldBePrime] whileFalse: [
 			z = 1 ifTrue: [Transcript show: 'failed!'; cr. ^ false].  "not prime"

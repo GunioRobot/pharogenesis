@@ -1,2 +1,0 @@
-methodRemoves
-	^methodRemoves

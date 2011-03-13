@@ -1,3 +1,0 @@
-buttonOnColor
-
-	^ Color yellow

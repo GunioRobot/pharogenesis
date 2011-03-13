@@ -2,10 +2,11 @@ initialize
 
 	super initialize.
 	color _ ScriptingSystem colorBehindTiles.
-	orientation _ #vertical.
-	hResizing _ #spaceFill.
-	vResizing _ #shrinkWrap.
+	self listDirection: #topToBottom.
+	self hResizing: #shrinkWrap.
+	self vResizing: #shrinkWrap.
 
 	self setDefaultBorderCharacteristics.
 	firstTileRow _ 1.  "index of first tile-carrying submorph"
-	self addNewRow
+	self addNewRow.
+	showingMethodPane _ false.

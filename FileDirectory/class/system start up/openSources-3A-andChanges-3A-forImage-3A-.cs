@@ -51,8 +51,14 @@ You won''t be able to save this image correctly until you fix this.'.
 		and: [Preferences valueOfFlag: #warnIfNoSourcesFile])
 		ifTrue: 
 			[PopUpMenu notify: (msg copyReplaceAll: '&fileRef' with: 'the sources file named ' , sourcesName).
-			(Smalltalk getSystemAttribute: 1001)
-				= 'Mac OS' ifTrue: [PopUpMenu notify: 'Make sure the sources file is not an Alias.']].
+			Smalltalk platformName = 'Mac OS'
+				ifTrue: [PopUpMenu notify: 'Make sure the sources file is not an Alias.']].
 	(changes == nil and: [Preferences valueOfFlag: #warnIfNoChangesFile])
 		ifTrue: [PopUpMenu notify: (msg copyReplaceAll: '&fileRef' with: 'the changes file named ' , changesName)].
+	(Preferences valueOfFlag: #warnIfNoChangesFile) ifTrue: [
+		((changes next: 200) includesSubString: String crlf) ifTrue: [
+			PopUpMenu notify: 'The changes file named ' , changesName, '
+has been injured by an unpacking utility.  Crs were changed to CrLfs.
+Please set the preferences in your decompressing program to 
+"do not convert text files" and unpack the system again.']].
 	SourceFiles _ Array with: sources with: changes

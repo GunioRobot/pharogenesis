@@ -1,5 +1,4 @@
-MorphWorldController comment:
-'I am a controller for SceneViews. I support gestures for scrolling, click-selection, and area selection of scene glyphs. (See the class comment in GestureController for more details about gestures.) I also support construction operations such as inserting new glyphs and merging glyphs to make them share a common point.
+I am a controller for SceneViews. I support gestures for scrolling, click-selection, and area selection of scene glyphs. (See the class comment in GestureController for more details about gestures.) I also support construction operations such as inserting new glyphs and merging glyphs to make them share a common point.
 
 The mapping of gestures to actions is as follows (see GestureController comment for more about gestures):
 
@@ -15,4 +14,3 @@ The mapping of gestures to actions is as follows (see GestureController comment 
 	drag (up/left movement)		scrolling hand
 	sweep (down/right movement)	select glyphs in region
 	shift-sweep					toggle selection of glyphs in region
-'

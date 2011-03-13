@@ -1,2 +1,0 @@
-getBottom
-	^ self costume bottom

@@ -8,6 +8,6 @@ imageFormWithout: stopMorph andStopThere: stopThere
 	canvas _ ColorPatchCanvas extent: rect extent depth: Display depth.
 	canvas stopMorph: stopMorph.
 	canvas doStop: stopThere.
-	canvas translateBy: rect topLeft negated during:[:tempCanvas| self fullDrawOn: tempCanvas].
+	canvas translateBy: rect topLeft negated during:[:tempCanvas| tempCanvas fullDrawMorph: self].
 	^ Array with: (canvas form offset: rect topLeft)
 			with: canvas foundMorph

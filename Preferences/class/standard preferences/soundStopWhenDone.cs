@@ -1,0 +1,2 @@
+soundStopWhenDone
+	^ self valueOfFlag: #soundStopWhenDone

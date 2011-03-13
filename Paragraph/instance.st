@@ -4,4 +4,4 @@ DisplayText
 		'clippingRectangle compositionRectangle destinationForm rule mask marginTabsLevel lines lastLine '
 	classVariableNames: ''
 	poolDictionaries: 'TextConstants '
-	category: 'Graphics-Display Objects'
+	category: 'ST80-Support'

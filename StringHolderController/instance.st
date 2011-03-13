@@ -3,4 +3,4 @@ ParagraphEditor
 	instanceVariableNames: ''
 	classVariableNames: 'CodeYellowButtonMenu CodeYellowButtonMessages '
 	poolDictionaries: ''
-	category: 'Interface-Support'
+	category: 'ST80-Support'

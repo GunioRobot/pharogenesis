@@ -8,12 +8,14 @@ currentWorld
 	This method will never return nil, it will always return its best effort at returning a relevant world morph, but if need be -- if there are no worlds anywhere, it will create a new one."
 
 	| aView aSubview |
-	World ifNotNil: [^ World].
-	aView _ ScheduledControllers controllerSatisfying:
-		[:ctrl | (aSubview _ ctrl view firstSubView) notNil and:
-			[aSubview model isMorph and: [aSubview model isWorldMorph]]].
-	^ aView
-		ifNotNil:
-			[aSubview model]
-		ifNil:
-			[MVCWiWPasteUpMorph newWorldForProject: nil]
+	
+	^Display getCurrentMorphicWorld ifNil: [
+		aView _ ScheduledControllers controllerSatisfying:
+			[:ctrl | (aSubview _ ctrl view firstSubView) notNil and:
+				[aSubview model isMorph and: [aSubview model isWorldMorph]]].
+		aView
+			ifNotNil:
+				[aSubview model]
+			ifNil:
+				[MVCWiWPasteUpMorph newWorldForProject: nil]
+	].

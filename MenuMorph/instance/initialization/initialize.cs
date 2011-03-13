@@ -1,12 +1,12 @@
 initialize
 	super initialize.
+	bounds _ 0@0 corner: 40@10.
 	self setDefaultParameters.
-	orientation _ #vertical.
-	hResizing _ #shrinkWrap.
-	vResizing _ #shrinkWrap.
+	self listDirection: #topToBottom.
+	self hResizing: #shrinkWrap.
+	self vResizing: #shrinkWrap.
 	defaultTarget _ nil.
-	lastSelection _ nil.
+	selectedItem _ nil.
 	stayUp _ false.
-	originalEvent _ nil.
 	popUpOwner _ nil.
 	Preferences roundedMenuCorners ifTrue: [self useRoundedCorners]

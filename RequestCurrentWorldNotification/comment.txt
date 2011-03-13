@@ -1,0 +1,13 @@
+I provide a way to alter the "currentWorld" in which non-specific things happen. Code which says:
+
+	aMorph openInWorld
+
+for example, will try to open in this "currentWorld" (whose precise definition is still a bit fuzzy). By writing something like:
+
+	[
+		someAnonymousStuff happen
+	]
+		on: RequestCurrentWorldNotification
+		do: [ :ex | ex resume: aParticularWorld ]
+
+you can ensure that <aParticularWorld> is used for any non-specific world request during the execution of the block.

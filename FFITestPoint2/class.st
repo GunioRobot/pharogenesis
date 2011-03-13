@@ -1,0 +1,1 @@
+FFITestPoint2 class instanceVariableNames: ''

@@ -1,7 +1,7 @@
 outer
 	"Evaluate the enclosing exception action for the receiver and return."
 
-	self isResumable
+	^self isResumable
 		ifTrue:
 			[self setHandlerFrom: handlerContext sender.
 			handlerContext == nil

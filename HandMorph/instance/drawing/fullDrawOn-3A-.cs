@@ -7,7 +7,7 @@ fullDrawOn: aCanvas
 	 better performance. This cache is invalidated if one of those morphs changes."
 
 	| disableCaching subBnds |
-	self suppressDisplay ifTrue: [^ self].
+	self visible ifFalse:[^self].
 
 	disableCaching _ false.
 	disableCaching ifTrue: [self nonCachingFullDrawOn: aCanvas. ^ self].

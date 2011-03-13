@@ -1,0 +1,3 @@
+failures: anOrderedCollection
+
+	failures := anOrderedCollection.

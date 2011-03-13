@@ -1,0 +1,1 @@
+DSCPostscriptCanvasToDisk class instanceVariableNames: ''

@@ -1,12 +1,12 @@
 printCallStack
 
-	| ctxt home methodClass methodSel |
+	| ctxt home methClass methodSel |
 	ctxt _ activeContext.
 	[ctxt = nilObj] whileFalse: [
 		(self fetchClassOf: ctxt) = (self splObj: ClassBlockContext)
 			ifTrue: [ home _ self fetchPointer: HomeIndex ofObject: ctxt ]
 			ifFalse: [ home _ ctxt ].
-		methodClass _
+		methClass _
 			self findClassOfMethod: (self fetchPointer: MethodIndex ofObject: home)
 					   forReceiver: (self fetchPointer: ReceiverIndex ofObject: home).
 		methodSel _
@@ -15,7 +15,7 @@ printCallStack
 		self printNum: ctxt.
 		self print: ' '.
 		ctxt = home ifFalse: [ self print: '[] in ' ].
-		self printNameOfClass: methodClass count: 5.
+		self printNameOfClass: methClass count: 5.
 		self print: '>'.
 		self printStringOf: methodSel.
 		self cr.

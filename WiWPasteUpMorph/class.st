@@ -1,0 +1,1 @@
+WiWPasteUpMorph class instanceVariableNames: ''

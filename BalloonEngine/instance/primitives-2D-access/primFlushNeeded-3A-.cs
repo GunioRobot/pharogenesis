@@ -1,3 +1,3 @@
 primFlushNeeded: aBoolean
-	<primitive:'gePrimitiveNeedsFlushPut'>
+	<primitive: 'primitiveNeedsFlushPut' module: 'B2DPlugin'>
 	^self primitiveFailed

@@ -5,7 +5,7 @@ initialize
  
 	"ParagraphEditor initialize"
 
-	CurrentSelection _ UndoSelection _ FindText _ ChangeText _ Text new.
+	UndoSelection _ FindText _ ChangeText _ Text new.
 	UndoMessage _ Message selector: #halt.
 
 	self initializeCmdKeyShortcuts.

@@ -1,5 +1,4 @@
-MessageNode comment:
-'I represent a receiver and its message.
+I represent a receiver and its message.
 	
 Precedence codes:
 	1 unary
@@ -7,4 +6,4 @@ Precedence codes:
 	3 keyword
 	4 other
 	
-If special>0, I compile special code in-line instead of sending messages with literal methods as remotely copied contexts.'
+If special>0, I compile special code in-line instead of sending messages with literal methods as remotely copied contexts.

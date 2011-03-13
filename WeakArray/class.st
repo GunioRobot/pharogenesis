@@ -1,0 +1,1 @@
+WeakArray class instanceVariableNames: ''

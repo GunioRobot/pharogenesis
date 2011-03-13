@@ -1,0 +1,1 @@
+SimpleMIDIPort class instanceVariableNames: ''

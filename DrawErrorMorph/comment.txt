@@ -1,0 +1,1 @@
+This morph simply invokes errors during drawing and stepping.

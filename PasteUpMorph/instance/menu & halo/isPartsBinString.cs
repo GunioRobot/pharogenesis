@@ -1,6 +1,8 @@
 isPartsBinString
+	"Answer the string to be shown in a menu to represent the parts-bin status"
+
 	^ self isPartsBin
 		ifTrue:
-			['stop being a parts bin']
+			['<on>parts bin']
 		ifFalse:
-			['start being a parts bin']
+			['<off>parts bin']

@@ -10,7 +10,7 @@ computeSignatureForMessageHash: hash privateKey: privateKey
 	r _ s _ 0.
 	[r = 0 or: [s = 0]] whileTrue: [
 		k _ self nextRandom160 \\ q.
-		r _ (self raise: g to: k mod: p) \\ q.
+		r _ (g raisedTo: k modulo: p) \\ q.
 		tmp _ (hash + (x * r)) \\ q.
 		s _ ((self inverseOf: k mod: q) * tmp) \\ q].
 

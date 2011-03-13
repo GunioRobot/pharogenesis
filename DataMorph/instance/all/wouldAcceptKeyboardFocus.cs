@@ -1,2 +1,0 @@
-wouldAcceptKeyboardFocus
-	^ self inPartsBin not

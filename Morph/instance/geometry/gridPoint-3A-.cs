@@ -1,0 +1,3 @@
+gridPoint: ungriddedPoint
+
+	^ ungriddedPoint

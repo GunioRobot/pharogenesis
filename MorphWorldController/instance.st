@@ -3,4 +3,4 @@ Controller
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Support'
+	category: 'ST80-Morphic'

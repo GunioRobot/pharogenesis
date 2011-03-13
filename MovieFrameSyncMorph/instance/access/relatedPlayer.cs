@@ -1,0 +1,3 @@
+relatedPlayer
+ 
+	^ moviePlayerMorph

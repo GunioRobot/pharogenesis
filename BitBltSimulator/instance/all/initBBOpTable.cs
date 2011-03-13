@@ -1,2 +1,0 @@
-initBBOpTable
-	opTable _ OpTable

@@ -18,6 +18,5 @@ tilesPagesForPartsBin
 			aPage addMorphBack: aPhrase].
 
 	aPage enforceTileColorPolicy.
-	aPage fixLayout.
 	aPage replaceTallSubmorphsByThumbnails.
 	^ OrderedCollection with: aPage  "room to grow"

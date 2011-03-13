@@ -1,0 +1,2 @@
+Contributed by Bob Arning as part of the ObjectExplorer package.
+Don't blame him if it's not perfect.  We wanted to get it out for people to play with.

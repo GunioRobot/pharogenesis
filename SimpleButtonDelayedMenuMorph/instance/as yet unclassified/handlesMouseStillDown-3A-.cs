@@ -1,0 +1,3 @@
+handlesMouseStillDown: evt
+
+	^true

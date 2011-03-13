@@ -1,6 +1,6 @@
 InstructionStream
 	subclass: #ContextPart
 	instanceVariableNames: 'stackp '
-	classVariableNames: 'TryPrimitiveMethods TryPrimitiveSelectors '
+	classVariableNames: 'PrimitiveFailToken '
 	poolDictionaries: ''
 	category: 'Kernel-Methods'

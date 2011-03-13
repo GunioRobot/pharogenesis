@@ -1,2 +1,0 @@
-isAnonymous
-	^ anonymous == true

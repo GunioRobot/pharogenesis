@@ -1,0 +1,2 @@
+forwardDirection
+	^self renderedMorph forwardDirection

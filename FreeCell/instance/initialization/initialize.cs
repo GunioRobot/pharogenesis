@@ -3,10 +3,10 @@ initialize
 	super initialize.
 	Statistics newSession.
 	autoMoveRecursionCount _ 0.
-	orientation _ #vertical.
-	centering _ #center.
-	vResizing _ #shrinkWrap.
-	hResizing _ #shrinkWrap.
+	self listDirection: #topToBottom.
+	self wrapCentering: #center; cellPositioning: #topCenter.
+	self vResizing: #shrinkWrap.
+	self hResizing: #shrinkWrap.
 	self
 		color: self colorNearTop;
 		borderWidth: 2;

@@ -9,4 +9,4 @@ promptForFont: aPrompt andSendTo: aTarget withSelector: aSelector
                 menu add: styleName subMenu: subMenu.
                 menu lastItem font: ((TextStyle named: styleName) fontOfSize: 18)].
 
-        menu popUpForHand: self currentHand
+        menu popUpInWorld: self currentWorld

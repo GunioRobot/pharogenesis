@@ -30,7 +30,7 @@ toothpaste: diam		"Display restoreAfter: [Form toothpaste: 30]"
 		Sensor yellowButtonPressed ifTrue: [^ self].
 		filter _ Sensor cursorPoint.
 		colr _ colors atWrap: (color _ color + 5).  "choose increment relatively prime to colors size"
-		colr2 _ colr mixed: 0.3 with: Color white.
+		colr2 _ colr alphaMixed: 0.3 with: Color white.
 		[Sensor redButtonPressed or: [queue size > 0]] whileTrue:
 			[filter _ filter * 4 + Sensor cursorPoint // 5.
 			point _ Sensor redButtonPressed

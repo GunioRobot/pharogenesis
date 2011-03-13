@@ -1,6 +1,7 @@
 Interpreter
 	subclass: #InterpreterSimulator
-	instanceVariableNames: 'byteCount sendCount traceOn myBitBlt displayForm filesOpen imageName '
+	instanceVariableNames:
+		'byteCount sendCount traceOn myBitBlt displayForm filesOpen imageName pluginList mappedPluginEntries '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Squeak-Interpreter'
+	category: 'VMConstruction-Interpreter'

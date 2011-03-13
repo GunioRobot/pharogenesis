@@ -1,6 +1,8 @@
 AbstractSound
 	subclass: #SampledSound
-	instanceVariableNames: 'initialCount count samples originalSamplingRate samplesSize incrementTimes1000 indexTimes1000 '
-	classVariableNames: 'CoffeeCupClink DefaultSampleTable NominalSamplePitch SoundLibrary '
+	instanceVariableNames:
+		'initialCount count samples originalSamplingRate samplesSize scaledIndex indexHighBits scaledIncrement '
+	classVariableNames:
+		'CoffeeCupClink DefaultSampleTable IncrementFractionBits IncrementScaleFactor NominalSamplePitch ScaledIndexOverflow SoundLibrary '
 	poolDictionaries: ''
-	category: 'System-Sound'
+	category: 'Sound-Synthesis'

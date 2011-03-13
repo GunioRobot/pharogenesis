@@ -1,5 +1,6 @@
 wantsSteps
-	"Return true if the model wants its view to be stepped."
+	"Return true if the model wants its view to be stepped.  For an open system window, we give the model to offer an opinion"
+
 	self isPartsDonor ifTrue: [^ false].
 	self player wantsSteps ifTrue: [^ true].
-	^ model wantsStepsIn: self
+	^ isCollapsed not and: [model wantsStepsIn: self]

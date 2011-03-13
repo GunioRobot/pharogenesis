@@ -1,0 +1,1 @@
+AlicePoolDefiner class instanceVariableNames: ''

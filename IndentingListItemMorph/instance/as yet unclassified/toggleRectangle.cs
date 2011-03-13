@@ -2,4 +2,4 @@ toggleRectangle
 
 	| h |
 	h _ bounds height.
-	^(bounds left + (h * indentLevel)) @ bounds top extent: h@h
+	^(bounds left + (12 * indentLevel)) @ bounds top extent: 12@h

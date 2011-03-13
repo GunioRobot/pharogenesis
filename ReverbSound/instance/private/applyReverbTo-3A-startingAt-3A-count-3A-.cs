@@ -1,7 +1,7 @@
 applyReverbTo: aSoundBuffer startingAt: startIndex count: n
 
 	| delayedLeft delayedRight i tapGain j out |
-	<primitive: 183>
+	<primitive: 'primitiveApplyReverb' module:'SoundGenerationPlugin'>
 	self var: #aSoundBuffer declareC: 'short int *aSoundBuffer'.
 	self var: #tapDelays declareC: 'int *tapDelays'.
 	self var: #tapGains declareC: 'int *tapGains'.

@@ -4,5 +4,6 @@ aboutToBeGrabbedBy: aHand
 	     that should be added to the hand."
 	"Since this morph has been initialized automatically with bounds origin   
 	     0@0, we have to move it to aHand position."
+	super aboutToBeGrabbedBy: aHand.
 	self draggedMorph.
 	self align: self bottomLeft with: aHand position

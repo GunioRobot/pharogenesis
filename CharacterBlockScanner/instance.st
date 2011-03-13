@@ -4,4 +4,4 @@ CharacterScanner
 		'characterPoint characterIndex lastCharacter lastCharacterExtent lastSpaceOrTabExtent nextLeftMargin specialWidth '
 	classVariableNames: ''
 	poolDictionaries: 'TextConstants '
-	category: 'Graphics-Support'
+	category: 'Graphics-Text'

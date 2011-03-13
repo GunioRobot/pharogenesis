@@ -1,0 +1,1 @@
+MorphicEventDecoder class instanceVariableNames: ''

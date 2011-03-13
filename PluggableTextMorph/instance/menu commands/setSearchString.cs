@@ -1,2 +1,2 @@
 setSearchString
-	textMorph editor setSearchString
+	self handleEdit: [textMorph editor setSearchString]

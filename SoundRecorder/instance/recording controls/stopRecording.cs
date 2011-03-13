@@ -4,6 +4,7 @@ stopRecording
 	recordProcess ifNotNil: [recordProcess terminate].
 	recordProcess _ nil.
 	self primStopRecording.
+	RecorderActive _ false.
 	Smalltalk unregisterExternalObject: bufferAvailableSema.
 	((currentBuffer ~~ nil) and: [nextIndex > 1])
 		ifTrue: [self emitPartialBuffer].

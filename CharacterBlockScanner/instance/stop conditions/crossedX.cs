@@ -4,7 +4,7 @@ crossedX
 	or before one."
 
 	| leadingTab currentX |
-	characterPoint x <= (destX + ((lastCharacterExtent x) // 2))
+	characterPoint x <= (destX + (lastCharacterExtent x // 2))
 		ifTrue:	[lastCharacter _ (text at: lastIndex).
 				characterPoint _ destX @ destY.
 				^true].
@@ -12,31 +12,33 @@ crossedX
 		ifTrue:	[lastCharacter _ (text at: line last).
 				characterPoint _ destX @ destY.
 				^true].
+
 	"Pointing past middle of a character, return the next character."
 	lastIndex _ lastIndex + 1.
 	lastCharacter _ text at: lastIndex.
-	currentX _ destX + lastCharacterExtent x.
+	currentX _ destX + lastCharacterExtent x + kern.
 	self lastCharacterExtentSetX: (font widthOf: lastCharacter).
 	characterPoint _ currentX @ destY.
+	lastCharacter = Space ifFalse: [^ true].
 
 	"Yukky if next character is space or tab."
-	(lastCharacter = Space and: [textStyle alignment = Justified])
-		ifTrue:	[self lastCharacterExtentSetX:
-					(lastCharacterExtent x + 	(line justifiedPadFor: (spaceCount + 1))).
-				^ true].
-	lastCharacter = Space
-		ifTrue:
-			["See tabForDisplay for illumination on the following awfulness."
-			leadingTab _ true.
-			(line first to: lastIndex - 1) do:
-			[:index |
-			(text at: index) ~= Tab
-				ifTrue: [leadingTab _ false]].
-			(textStyle alignment ~= Justified or: [leadingTab])
-				ifTrue:	[self lastCharacterExtentSetX: (textStyle nextTabXFrom: currentX
-							leftMargin: leftMargin rightMargin: rightMargin) -
-								currentX]
-				ifFalse:	[self lastCharacterExtentSetX:  (((currentX + (textStyle tabWidth -
-								(line justifiedTabDeltaFor: spaceCount))) -
-									currentX) max: 0)]].
+	textStyle alignment = Justified ifTrue:
+		[self lastCharacterExtentSetX:
+			(lastCharacterExtent x + 	(line justifiedPadFor: (spaceCount + 1))).
+		^ true].
+
+	true ifTrue: [^ true].
+	"NOTE:  I find no value to the following code, and so have defeated it - DI"
+
+	"See tabForDisplay for illumination on the following awfulness."
+	leadingTab _ true.
+	line first to: lastIndex - 1 do:
+		[:index | (text at: index) ~= Tab ifTrue: [leadingTab _ false]].
+	(textStyle alignment ~= Justified or: [leadingTab])
+		ifTrue:	[self lastCharacterExtentSetX: (textStyle nextTabXFrom: currentX
+					leftMargin: leftMargin rightMargin: rightMargin) -
+						currentX]
+		ifFalse:	[self lastCharacterExtentSetX:  (((currentX + (textStyle tabWidth -
+						(line justifiedTabDeltaFor: spaceCount))) -
+							currentX) max: 0)].
 	^ true

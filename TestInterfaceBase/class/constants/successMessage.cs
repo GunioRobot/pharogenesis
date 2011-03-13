@@ -1,0 +1,3 @@
+successMessage
+
+	^'*** PASS ***' copy

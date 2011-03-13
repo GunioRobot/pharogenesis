@@ -1,0 +1,1 @@
+ZipWriteStream class instanceVariableNames: ''

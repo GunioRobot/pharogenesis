@@ -1,0 +1,1 @@
+DeflateStream class instanceVariableNames: ''

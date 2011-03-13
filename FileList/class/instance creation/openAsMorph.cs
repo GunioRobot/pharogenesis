@@ -10,7 +10,7 @@ openAsMorph
 		frame: (0@0 corner: 0.3@0.2).
 	window addMorph: (PluggableTextMorph on: aFileList text: #pattern accept: #pattern:)
 		frame: (0@0.2 corner: 0.3@0.3).
-	Preferences optionalButtons
+	aFileList wantsOptionalButtons
 		ifTrue:
 			[window addMorph: aFileList optionalButtonRow frame: (0.3 @ 0 corner: 1 @ 0.08).
 			fileListTop _ 0.08]

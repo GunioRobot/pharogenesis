@@ -1,3 +1,3 @@
-copyClipRect: aRectangle
+copyClipRect: newClipRect
 
-	^ self copyOrigin: origin clipRect: (aRectangle translateBy: origin)
+	^ ClippingCanvas canvas: self clipRect: newClipRect

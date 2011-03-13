@@ -1,0 +1,11 @@
+I represent the vertex buffer passed on throughout the entire Balloon 3D rendering pipeline. I store all information that may be needed by either part of the pipeline.
+
+Instance variables:
+	current 		<B3DPrimitiveVertex>	Tracking the current attributes of vertices
+	vertexArray 	<B3DPrimitiveVertexArray>	Container for all primitive vertices
+	vertexCount 	<Integer>	The number of vertices in the vertex array
+	indexArray 		<WordArray>	Stores the indexes for indexed primitives
+	indexCount 		<Integer>	Number of indexes in the index array
+	primitive 		<Integer>	The type of primitive currently in the buffer
+	clipFlags 		<Integer>	The clip mask of the vertices in the buffer
+	flags			<Integer>	Various state flags 

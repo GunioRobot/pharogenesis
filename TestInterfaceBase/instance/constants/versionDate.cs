@@ -1,0 +1,3 @@
+versionDate
+
+	^self class versionDate

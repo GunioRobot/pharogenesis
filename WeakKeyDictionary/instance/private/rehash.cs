@@ -1,7 +1,13 @@
 rehash
-	"Overriden to copy the size also - we may have lost any number of elements"
-	| newSelf |
-	newSelf := self species new: self size.
-	self associationsDo:[:each| newSelf noCheckAdd: each].
-	array := newSelf array.
-	tally := newSelf size.
+	"Rehash the receiver. Reimplemented to allow for multiple nil keys"
+	| oldArray assoc newIndex |
+	oldArray _ array.
+	array _ Array new: oldArray size.
+	tally _ 0.
+	1 to: array size do:[:i|
+		assoc _ oldArray at: i.
+		assoc ifNotNil:[
+			newIndex _ self scanForNil: assoc key.
+			self atNewIndex: newIndex put: assoc.
+		].
+	].

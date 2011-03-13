@@ -1,0 +1,3 @@
+testError
+
+	Error new signal.

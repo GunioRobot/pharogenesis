@@ -1,0 +1,2 @@
+primKbdPeek
+	^keyboardBuffer peek

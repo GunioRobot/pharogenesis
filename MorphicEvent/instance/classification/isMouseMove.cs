@@ -1,3 +1,0 @@
-isMouseMove
-
-	^ type == #mouseMove

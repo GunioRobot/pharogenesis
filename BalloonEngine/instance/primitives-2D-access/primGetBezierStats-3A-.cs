@@ -1,4 +1,3 @@
 primGetBezierStats: statsArray
-	<primitive:'gePrimitiveGetBezierStats'>
-	Debug ifTrue:[^BalloonEnginePlugin doPrimitive: 'gePrimitiveGetBezierStats'].
+	<primitive: 'primitiveGetBezierStats' module: 'B2DPlugin'>
 	^self primitiveFailed

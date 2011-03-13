@@ -3,11 +3,11 @@ wrapPanel: anLedPanel label: aLabel
 
 	| a |
 	a _ AlignmentMorph newRow
-		centering: #center;
+		wrapCentering: #center; cellPositioning: #leftCenter;
 		hResizing: #shrinkWrap;
 		vResizing: #shrinkWrap;
 		borderWidth: 0;
-		inset: 3;
+		layoutInset: 3;
 		color: color lighter.
 	a addMorph: anLedPanel.
 	a addMorph: (StringMorph contents: aLabel). 

@@ -1,11 +1,9 @@
 reportField: aString to: aBlock
-	"Evaluate the given block with the field name a value in the given field. Do nothing if the field has an empty value part."
+	"Evaluate the given block with the field name a value in the given field. Do nothing if the field is malformed."
 
 	| s fieldName fieldValue |
+	(aString includes: $:) ifFalse: [^self].
 	s _ ReadStream on: aString.
-	fieldName _ (s upTo: $:) asLowercase.
-	s skipSeparators.
-	(s atEnd) ifFalse: [
-		"field is not empty"
-		fieldValue _ s upToEnd.
-		aBlock value: fieldName value: fieldValue].
+	fieldName _ s upTo: $:.
+	fieldValue _ s upToEnd withBlanksTrimmed.
+	fieldValue isEmpty ifFalse: [aBlock value: fieldName value: fieldValue].

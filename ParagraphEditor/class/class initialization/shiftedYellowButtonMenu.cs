@@ -1,17 +1,31 @@
 shiftedYellowButtonMenu
+	| ww |
 	"Answer the menu to be presented when the yellow button is pressed while the shift key is down"
 
-	^ SelectionMenu fromArray: #(
+^ SelectionMenu fromArray: (Array streamContents: [:strm | 
+	strm nextPutAll: #(
 		('set font... (k)'					offerFontMenu)
 		('set style... (K)'					changeStyle)
 		('set alignment...'				chooseAlignment)
-		-
+		-								).
+	(ww _ World) isMorph ifTrue: [
+		(ww valueOfProperty: #universalTiles ifAbsent: [false]) ifTrue: [
+			strm nextPutAll: #(
+				('tiles from it'			selectionAsTiles))]].
+
+	strm nextPutAll: #(
 		('explain'						explain)
 		('pretty print'					prettyPrint)
 		('pretty print with color'		prettyPrintWithColor)
 		('file it in'						fileItIn)
 		('recognizer (r)'					recognizeCharacters)
 		('spawn (o)'						spawn)
+		-
+		('definition of word'				wordDefinition)
+		('verify spelling of word'		verifyWordSpelling)
+"		('spell check it'					spellCheckIt)	"
+		('translate it'					translateIt)
+		('choose language'				languagePrefs)
 		-
 		('browse it (b)'					browseIt)
 		('senders of it (n)'				sendersOfIt)
@@ -26,4 +40,5 @@ shiftedYellowButtonMenu
 		('printer setup'					printerSetup)
 		-
 		('special menu...'				presentSpecialMenu)
-		('more...'						yellowButtonActivity))
+		('more...'						yellowButtonActivity))]).
+

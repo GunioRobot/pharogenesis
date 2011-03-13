@@ -5,4 +5,6 @@ dropVertex: evt fromHandle: handle vertIndex: ix
 		[((vertices atWrap: ix+1) dist: p) < 3])
 		ifTrue: ["Drag a vertex onto its neighbor means delete"
 				self setVertices: (vertices copyReplaceFrom: ix to: ix with: Array new)].
-	self addHandles
+	evt shiftPressed
+		ifTrue: [self removeHandles]
+		ifFalse: [self addHandles "remove then add to recreate"]

@@ -1,4 +1,3 @@
 primGetOffset
-	<primitive: 'gePrimitiveGetOffset'>
-	Debug ifTrue:[^BalloonEnginePlugin doPrimitive: 'gePrimitiveGetOffset'].
+	<primitive: 'primitiveGetOffset' module: 'B2DPlugin'>
 	^self primitiveFailed

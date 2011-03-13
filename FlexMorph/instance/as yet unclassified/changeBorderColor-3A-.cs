@@ -1,4 +1,4 @@
 changeBorderColor: evt
 	| aHand |
 	aHand _ evt ifNotNil: [evt hand] ifNil: [self primaryHand].
-	aHand changeColorTarget: self selector: #borderColor: originalColor: self borderColor.
+	self changeColorTarget: self selector: #borderColor: originalColor: self borderColor hand: aHand.

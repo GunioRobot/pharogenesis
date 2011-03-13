@@ -24,7 +24,9 @@ outPointers withIndexDo: [:anOut :ind |
 	(anOut isKindOf: Dictionary) ifTrue: ["Pools pointed at directly"
 		(key _ Smalltalk keyAtIdentityValue: anOut ifAbsent: [nil]) ifNotNil: [
 			outPointers at: ind put: 
-				(DiskProxy global: key selector: #yourself args: #())]]
+				(DiskProxy global: key selector: #yourself args: #())]].
+	anOut isMorph ifTrue: [outPointers at: ind put: 
+		(StringMorph contents: anOut printString, ' that was not counted')]
 	].
 left _ outIndexes keys asSet.
 left size > 0 ifTrue: ["Globals"

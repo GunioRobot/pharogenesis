@@ -1,0 +1,2 @@
+formatLine: aString
+	^aString

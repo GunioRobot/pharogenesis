@@ -1,0 +1,1 @@
+MIMEPart class instanceVariableNames: ''

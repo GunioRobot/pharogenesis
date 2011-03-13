@@ -1,0 +1,1 @@
+TestInterpreterPlugin class instanceVariableNames: ''

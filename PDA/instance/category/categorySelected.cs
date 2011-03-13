@@ -1,0 +1,3 @@
+categorySelected
+
+	^ category ifNil: ['all']

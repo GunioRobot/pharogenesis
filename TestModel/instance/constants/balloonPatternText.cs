@@ -1,0 +1,3 @@
+balloonPatternText
+
+	^self class balloonPatternText

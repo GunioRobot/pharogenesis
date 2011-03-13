@@ -4,6 +4,7 @@ newSpacer: aColor
 	^ self new
 		hResizing: #spaceFill;
 		vResizing: #spaceFill;
-		inset: 0;
+		layoutInset: 0;
 		borderWidth: 0;
+		extent: 1@1;
 		color: aColor.

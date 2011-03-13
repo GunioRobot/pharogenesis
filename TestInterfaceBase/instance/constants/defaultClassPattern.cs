@@ -1,0 +1,3 @@
+defaultClassPattern
+
+	^self class defaultClassPattern

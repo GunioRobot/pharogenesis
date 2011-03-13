@@ -1,2 +1,2 @@
-defaultMargin
-	^ 0.25.
+defaultMargin  "In Points"
+	^ (0.25 * 72) asInteger.

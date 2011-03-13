@@ -3,4 +3,4 @@ TileMorph
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Scripting-Tiles'
+	category: 'Morphic-Scripting Tiles'

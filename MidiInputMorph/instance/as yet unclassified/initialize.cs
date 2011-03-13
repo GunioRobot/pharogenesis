@@ -1,11 +1,11 @@
 initialize
 
 	super initialize.
-	orientation _ #vertical.
-	centering _ #center.
-	hResizing _ #spaceFill.
-	vResizing _ #spaceFill.
-	inset _ 3.
+	self listDirection: #topToBottom.
+	self wrapCentering: #center; cellPositioning: #topCenter.
+	self hResizing: #spaceFill.
+	self vResizing: #spaceFill.
+	self layoutInset: 3.
 	color _ Color veryLightGray.
 	self borderWidth: 2.
 
@@ -16,6 +16,6 @@ initialize
 	self removeAllMorphs.
 	self addMorphBack: self makeControls.
 	self addMorphBack:
-		(AlignmentMorph newColumn color: color; inset: 0).
+		(AlignmentMorph newColumn color: color; layoutInset: 0).
 	self addChannelControlsFor: 1.
 	self extent: 20@20.

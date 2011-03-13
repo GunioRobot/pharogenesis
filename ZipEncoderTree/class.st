@@ -1,0 +1,1 @@
+ZipEncoderTree class instanceVariableNames: ''

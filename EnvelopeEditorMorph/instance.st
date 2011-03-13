@@ -1,7 +1,7 @@
 RectangleMorph
 	subclass: #EnvelopeEditorMorph
 	instanceVariableNames:
-		'sound soundName envelope hScale vScale graphArea pixPerTick limits limitXs limitHandles line playMode whatToPlay playRemaining prevMouseDown samplePitch showAllEnvelopes denominator '
+		'sound soundName envelope hScale vScale graphArea pixPerTick limits limitXs limitHandles line prevMouseDown sampleDuration showAllEnvelopes denominator keyboard '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Demo'
+	category: 'Sound-Interface'

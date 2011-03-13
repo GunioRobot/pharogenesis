@@ -1,2 +1,0 @@
-playfieldMenu
-	^ self world playfieldOptionsMenu

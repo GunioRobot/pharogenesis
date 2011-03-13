@@ -1,0 +1,2 @@
+This class implements the undo stack for Wonderlands.  Every user action is added to the undo stack, and the user can then undo each action one at a time. This stack is intended to be "infinite" so that the user can always roll back to a safe state.  In practice the stack is actually depth limited (to 100 actions), but the user can adjust this depth using the setMaxDepth: message.
+

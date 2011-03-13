@@ -1,0 +1,1 @@
+HiddenInput class instanceVariableNames: ''

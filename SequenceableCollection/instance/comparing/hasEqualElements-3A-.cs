@@ -5,6 +5,7 @@ hasEqualElements: otherCollection
 	This should probably replace the current definition of #= ."
 
 	| size |
+	(otherCollection isKindOf: SequenceableCollection) ifFalse: [^ false].
 	(size _ self size) = otherCollection size ifFalse: [^ false].
 	1 to: size do:
 		[:index |

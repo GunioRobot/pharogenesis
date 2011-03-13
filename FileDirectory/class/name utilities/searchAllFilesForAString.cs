@@ -6,7 +6,7 @@ searchAllFilesForAString
 
 	| searchString dir |
 
-	searchString _ FillInTheBlankMorph request: 'Enter search string'.
+	searchString _ FillInTheBlank request: 'Enter search string'.
 	searchString isEmpty ifTrue: [^nil].
 	Transcript cr; show: 'Searching for ', searchString printString, ' ...'.
 	(dir _ PluggableFileList getFolderDialog open) ifNotNil:

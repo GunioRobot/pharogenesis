@@ -15,7 +15,7 @@ compress: bm toByteArray: ba
 			224-254	(0-30)*256 + next byte (0-7935)
 			255		next 4 bytes"		
 	| size k word j lowByte eqBytes i |
-	<primitive: 237>
+	<primitive: 'primitiveCompressToByteArray' module: 'MiscPrimitivePlugin'>
 	self var: #bm declareC: 'int *bm'.
 	self var: #ba declareC: 'unsigned char *ba'.
 	size _ bm size.

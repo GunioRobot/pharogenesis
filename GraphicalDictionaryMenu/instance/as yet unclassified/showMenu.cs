@@ -9,4 +9,4 @@ showMenu
 		('find...'			findEntry)
 		-
 		('hand me one'		handMeOne)).
-	aMenu popUpNearHand
+	aMenu popUpInWorld: self currentWorld.

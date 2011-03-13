@@ -3,4 +3,4 @@ AlignmentMorph
 	instanceVariableNames: 'book pageHolder '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Widgets'
+	category: 'Morphic-Books'

@@ -9,3 +9,6 @@ stop
 	tapeStream _ nil.
 	state _ nil.
 	statusLight color: Color green.
+	recordMeter ifNotNil: [recordMeter width: 1].
+
+	self checkTape.

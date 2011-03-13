@@ -14,5 +14,6 @@ decompressGradientFill: radial
 		rampColor _ self readColorFrom: stream.
 		ramp at: i put: (rampIndex -> rampColor)].
 	fs colorRamp: ramp.
+	fs pixelRamp. "Force computation"
 	stream next = $X ifFalse:[^self error:'Compressio problem'].
 	^fs

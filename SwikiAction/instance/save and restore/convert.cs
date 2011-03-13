@@ -8,5 +8,5 @@ convert
 			ifFalse: [self error: 'May not be an old style page']
 			ifTrue: [new _ old copyFrom: 1 to: nn-2.	"knock off .4"
 				page file: new.
-				page text: (FileStream oldFileNamed: old) contentsOfEntireFile]].
+				page text: (FileStream readOnlyFileNamed: old) contentsOfEntireFile]].
 	

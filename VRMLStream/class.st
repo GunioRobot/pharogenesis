@@ -1,0 +1,1 @@
+VRMLStream class instanceVariableNames: ''

@@ -4,7 +4,7 @@ addButtons
 	caption ifNotNil:
 		["Special setup for play-only interface"
 		r _ AlignmentMorph newRow vResizing: #shrinkWrap;
-			 centering: #center;
+			 wrapCentering: #center; cellPositioning: #leftCenter;
 			 minCellSize: 4;
 			 color: Color blue.
 		r addMorphBack: (SimpleButtonMorph new target: self;
@@ -40,7 +40,7 @@ addButtons
 
 	"rewind - light - reset"
 	r _ AlignmentMorph newRow vResizing: #shrinkWrap;
-			 centering: #center;
+			 wrapCentering: #center; cellPositioning: #leftCenter;
 			 minCellSize: 4;
 			 color: Color blue.
 	r addMorphBack: (b _ self buttonFor: #shrink).

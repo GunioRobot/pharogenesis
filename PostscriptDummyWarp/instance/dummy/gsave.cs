@@ -1,3 +1,0 @@
-gsave
-	canvas gsave.
-

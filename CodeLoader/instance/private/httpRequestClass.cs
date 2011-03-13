@@ -1,0 +1,2 @@
+httpRequestClass
+	^HTTPRequest

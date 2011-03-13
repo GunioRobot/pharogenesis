@@ -3,4 +3,5 @@ allRecipients
 	| aList |
 	aList _ OrderedCollection with: mouseDownRecipient with: mouseStillDownRecipient with: mouseUpRecipient with: mouseEnterRecipient with: mouseLeaveRecipient.
 	aList addAll: (OrderedCollection with:  mouseEnterDraggingRecipient with: mouseLeaveDraggingRecipient with: doubleClickRecipient with: keyStrokeRecipient).
+	aList add: mouseMoveRecipient.
 	^ (aList copyWithout: nil) asSet asArray

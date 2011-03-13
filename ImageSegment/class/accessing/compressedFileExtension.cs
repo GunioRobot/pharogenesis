@@ -1,0 +1,2 @@
+compressedFileExtension
+	^'sqz'

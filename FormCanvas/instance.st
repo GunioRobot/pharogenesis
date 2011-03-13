@@ -1,6 +1,6 @@
 Canvas
 	subclass: #FormCanvas
-	instanceVariableNames: 'form port shadowStipple '
+	instanceVariableNames: 'origin clipRect form port shadowColor '
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Support'

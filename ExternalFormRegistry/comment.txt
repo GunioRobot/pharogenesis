@@ -1,0 +1,1 @@
+The ExternalFormRegistry needs to be synchronized with rendering to prevent forms from being destroyed during rendering. Only at certain points (that is after a rendering cycle is completed) the texture registry may be cleaned up.

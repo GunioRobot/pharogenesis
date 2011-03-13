@@ -1,0 +1,1 @@
+RemoteCanvas class instanceVariableNames: ''

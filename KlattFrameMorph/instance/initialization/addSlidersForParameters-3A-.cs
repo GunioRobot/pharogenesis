@@ -2,8 +2,8 @@ addSlidersForParameters: params
 	| left right container current slider |
 	params size < 10
 		ifTrue: [left _ right _ self]
-		ifFalse: [container _ AlignmentMorph new color: self color; orientation: #horizontal.
-				left _ container clone orientation: #vertical.
+		ifFalse: [container _ AlignmentMorph new color: self color; listDirection: #leftToRight.
+				left _ container clone listDirection: #topToBottom.
 				right _ left clone.
 				container addMorphBack: left; addMorphBack: right.
 				self addMorphBack: container].

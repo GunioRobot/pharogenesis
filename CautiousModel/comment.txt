@@ -1,0 +1,1 @@
+A model for a morphic world view which will ask for confirmation before being closed, unless the corresponding preference is set to false. 

@@ -1,9 +1,9 @@
 fixGlobalReferences
 	"Fix all the references to globals which are now outdated.
 	Care must be taken that we do not accidentally 'fix' dangerous stuff."
-	| oldClasses newClasses condition |
+	| oldClasses newClasses condition any |
 	classMap == nil ifTrue:[^self].
-	(self retryWithGC: [condition _ classMap anySatisfy: [:any| any notNil and:[any
+	(self retryWithGC: [condition _ classMap anySatisfy: [:any0 | any _ any0. any0 _ nil. any notNil and:[any
 isObsolete]]. any_nil. condition]
 		until:[:obsRef| obsRef = false])
 		ifFalse:[^self]. "GC cleaned up the remaining refs"

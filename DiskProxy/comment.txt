@@ -1,5 +1,4 @@
-DiskProxy comment:
-'A DiskProxy is an externalized form of an object to write on a
+A DiskProxy is an externalized form of an object to write on a
 DataStream. It contains a "constructor" message to regenerate
 the object, in context, when sent a comeFullyUpOnReload message
 (i.e. "internalize").
@@ -56,4 +55,3 @@ My instance variables:
     constructor message.
 
 -- 11/9/92 Jerry Morrison
-'

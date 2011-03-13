@@ -3,4 +3,4 @@ Model
 	instanceVariableNames: 'contents '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Interface-Support'
+	category: 'Kernel-ST80 Remnants'

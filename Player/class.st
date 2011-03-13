@@ -1,1 +1,1 @@
-Player class instanceVariableNames: 'scripts slotInfo costumeDictionary '
+Player class instanceVariableNames: 'scripts slotInfo '

@@ -1,0 +1,2 @@
+undoGrabCommand
+	^nil

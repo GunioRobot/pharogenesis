@@ -1,3 +1,0 @@
-isOpaqueMask
-
-	^ false

@@ -1,0 +1,2 @@
+turnOffPowerManager
+	^ self valueOfFlag: #turnOffPowerManager

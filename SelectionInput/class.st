@@ -1,0 +1,1 @@
+SelectionInput class instanceVariableNames: ''

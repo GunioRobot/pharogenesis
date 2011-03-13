@@ -1,2 +1,0 @@
-suppressDisplay
-	^ suppressDrawing == true

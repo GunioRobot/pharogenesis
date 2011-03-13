@@ -15,7 +15,7 @@ lookupMethodInClass: class
 			messageSelector _ self splObj: SelectorCannotInterpret.
 			^ self lookupMethodInClass: (self superclassOf: currentClass)].
 		found _ self lookupMethodInDictionary: dictionary.
-		found ifTrue: [^ currentClass].
+		found ifTrue: [^ methodClass _ currentClass].
 		currentClass _ self superclassOf: currentClass].
 
 	"Could not find #doesNotUnderstand: -- unrecoverable error."

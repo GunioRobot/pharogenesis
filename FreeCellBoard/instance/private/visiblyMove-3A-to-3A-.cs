@@ -1,6 +1,6 @@
 visiblyMove: aCard to: aCell
 	| p1 p2 nSteps |
-	"Should be tweaked with graduated motion"
+	self inAutoMove ifFalse: [self captureStateBeforeGrab].
 	owner owner addMorphFront: aCard.
 	p1 _ aCard position.
 	p2 _ aCell position.

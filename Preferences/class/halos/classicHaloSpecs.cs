@@ -22,5 +22,8 @@ classicHaloSpecs
 	(addFontEmphHandle:	rightCenter	bottom			(lightBrown darker)				none)
 	(addFontStyleHandle:		center		bottom			(lightRed)						none)
 	(addFontSizeHandle:		leftCenter	bottom			(lightGreen)						none)
+
+	(addRecolorHandle:		right		bottomCenter	(magenta darker)				none)
+
 	(addRotateHandle:		left			bottom			(blue)							none))
 

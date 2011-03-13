@@ -4,6 +4,6 @@ initialize
 	borderWidth _ 2.
 	borderColor _ Color magenta.
 	closed _ true.
-	quickFill _ true.
+	smoothCurve _ false.
 	arrows _ #none.
 	self computeBounds.

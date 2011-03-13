@@ -1,4 +1,3 @@
 primGetCounts: statsArray
-	<primitive:'gePrimitiveGetCounts'>
-	Debug ifTrue:[^BalloonEnginePlugin doPrimitive: 'gePrimitiveGetCounts'].
+	<primitive: 'primitiveGetCounts' module: 'B2DPlugin'>
 	^self primitiveFailed

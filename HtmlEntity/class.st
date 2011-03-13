@@ -1,0 +1,1 @@
+HtmlEntity class instanceVariableNames: ''

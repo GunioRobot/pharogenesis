@@ -1,2 +1,0 @@
-classRemoves
-	^ classRemoves

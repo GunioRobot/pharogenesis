@@ -1,7 +1,7 @@
-BitBlt
+Object
 	subclass: #CharacterScanner
 	instanceVariableNames:
-		'lastIndex xTable stopConditions text textStyle leftMargin rightMargin font line runStopIndex spaceCount spaceWidth emphasisCode kern '
-	classVariableNames: ''
+		'destX lastIndex xTable map destY stopConditions text textStyle alignment leftMargin rightMargin font line runStopIndex spaceCount spaceWidth emphasisCode kern indentationLevel '
+	classVariableNames: 'DefaultStopConditions '
 	poolDictionaries: 'TextConstants '
-	category: 'Graphics-Support'
+	category: 'Graphics-Text'

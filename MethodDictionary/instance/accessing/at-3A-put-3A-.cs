@@ -5,7 +5,9 @@ at: key put: value
 	(self basicAt: index) == nil
 		ifTrue: 
 			[tally _ tally + 1.
-			self basicAt: index put: key].
+			self basicAt: index put: key]
+		ifFalse:
+			[(array at: index) flushCache].
 	array at: index put: value.
 	self fullCheck.
 	^ value

@@ -3,4 +3,4 @@ Object
 	instanceVariableNames: 'time '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Music-Scores'
+	category: 'Sound-Scores'

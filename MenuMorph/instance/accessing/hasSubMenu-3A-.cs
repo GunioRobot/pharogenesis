@@ -1,9 +1,3 @@
 hasSubMenu: aMenuMorph
-
-	| sub |
-	self items do: [:each |
-		sub _ each subMenu.
-		sub ifNotNil: [
-			sub == aMenuMorph ifTrue: [^ true].
-			(sub hasSubMenu: aMenuMorph) ifTrue: [^ true]]].
+	self items do: [:each | (each hasSubMenu: aMenuMorph) ifTrue:[^true]].
 	^ false

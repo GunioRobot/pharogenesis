@@ -1,0 +1,3 @@
+bottom
+
+	^textMorph owner bottom

@@ -1,8 +1,15 @@
 arrowKey: aChar from: view
 	"Process the up and down arrows in a list pane.  Note that the listView tells us what index variable, how to get the list, and how to move the index.  Derived from a Martin Pammer submission, 02/98"
-     | keyEvent oldSelection nextSelection max min howMany |
 
-     (keyEvent := aChar asciiValue) > 31 ifTrue: [^ self].	"Quick return, out of range"
+     | keyEvent oldSelection nextSelection max min howMany anEvent |
+
+	(#(1 4 11 12 30 31) includes: (keyEvent _ aChar asciiValue)) ifFalse:
+		[(Smalltalk isMorphic and: [false]) ifTrue:
+			[((anEvent _ view currentEvent) isKindOf: KeyboardEvent) ifTrue: [self currentWorld keystrokeInWorld: anEvent]].
+			self flag: #deferred.
+			"Would like to pass all command-keys that pass through the hands of the model via this protocol but are not in fact interecepted here on to the desktop, where they might be quite relevant.  But when we obtain the event this way we are not getting the keyboard event"
+			^ self].
+
      oldSelection := view getCurrentSelectionIndex.
      nextSelection := oldSelection.
      max := view maximumSelection.

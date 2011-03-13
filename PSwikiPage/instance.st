@@ -3,4 +3,4 @@ SwikiPage
 	instanceVariableNames: 'username password privs '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'PluggableWebServer'
+	category: 'Network-Pluggable Web Server'

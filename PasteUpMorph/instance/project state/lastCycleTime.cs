@@ -1,3 +1,0 @@
-lastCycleTime
-
-	^ worldState lastCycleTime

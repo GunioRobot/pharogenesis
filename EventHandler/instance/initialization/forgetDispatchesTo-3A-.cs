@@ -2,6 +2,8 @@ forgetDispatchesTo: aSelector
 	"aSelector is no longer implemented by my corresponding Player, so don't call it any more"
 	mouseDownSelector == aSelector
 		ifTrue: [mouseDownRecipient _ mouseDownSelector _ nil].
+	mouseMoveSelector == aSelector
+		ifTrue: [mouseMoveRecipient _ mouseMoveSelector _ nil].
 	mouseStillDownSelector == aSelector
 		ifTrue: [mouseStillDownRecipient _ mouseStillDownSelector _ nil].
 	mouseUpSelector == aSelector
@@ -14,6 +16,8 @@ forgetDispatchesTo: aSelector
 		ifTrue: [mouseEnterDraggingRecipient _ mouseEnterDraggingSelector _ nil].
 	mouseLeaveDraggingSelector == aSelector
 		ifTrue: [mouseLeaveDraggingRecipient _ mouseLeaveDraggingSelector _ nil].
+	clickSelector == aSelector
+		ifTrue: [clickRecipient _ clickSelector _ nil].
 	doubleClickSelector == aSelector
 		ifTrue: [doubleClickRecipient _ doubleClickSelector _ nil].
 	keyStrokeSelector == aSelector

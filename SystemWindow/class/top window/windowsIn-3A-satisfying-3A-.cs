@@ -1,6 +1,8 @@
 windowsIn: aWorld satisfying: windowBlock
 	| windows s |
+
 	windows _ OrderedCollection new.
+	aWorld ifNil: [^windows].	"opening MVC in Morphic - WOW!"
 	aWorld submorphs do:
 		[:m |
 		((m isKindOf: SystemWindow) and: [windowBlock value: m])

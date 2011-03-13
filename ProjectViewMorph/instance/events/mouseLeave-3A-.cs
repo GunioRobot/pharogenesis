@@ -1,2 +1,3 @@
 mouseLeave: evt
-	self showBorderAs: Color gray
+
+	self showMouseState: 3.

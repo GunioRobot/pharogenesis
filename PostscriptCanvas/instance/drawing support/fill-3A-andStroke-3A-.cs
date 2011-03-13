@@ -1,5 +1,3 @@
-fill:fillColor andStroke:strokeColor
-	self gsave;
-		fill:fillColor;
-		grestore;
-		stroke:strokeColor.
+fill: fillColor andStroke: strokeColor
+	self preserveStateDuring: [:inner | inner fill: fillColor];
+		stroke: strokeColor.

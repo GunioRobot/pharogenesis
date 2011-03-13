@@ -3,4 +3,4 @@ Object
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Numeric-Magnitudes'
+	category: 'Kernel-Magnitudes'

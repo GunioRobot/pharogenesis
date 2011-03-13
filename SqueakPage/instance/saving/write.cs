@@ -17,6 +17,7 @@ write
 		lastChangeTime _ Time totalSeconds.
 		Cursor wait showWhile: [
 			remoteFile _ sf fileNamed: url.	"no notification when overwriting"
+			remoteFile dataIsValid.
 			remoteFile fileOutClass: nil andObject: self.
 			"remoteFile close"].
 		contentsMorph setProperty: #pageDirty toValue: nil.

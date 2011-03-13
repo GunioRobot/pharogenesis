@@ -5,4 +5,4 @@ enter: returningFlag revert: revertFlag saveForRevert: saveForRevert
 		^ ((Smalltalk at: globalObjectName) perform: #fromUrl:
 					withArguments: constructorArgs) ].
 	constructorSelector == #named: ifTrue: [
-		Project current fromMyServerLoad: constructorArgs first].	"name"
+		CurrentProjectRefactoring currentFromMyServerLoad: constructorArgs first].	"name"

@@ -1,10 +1,11 @@
 atSelector: aSelector putScriptEditor: aScriptEditor
-	| selSym  aUserScript |
+	"Place the given script editor in my directory of script editors, at the given selector"
 
+	| selSym  aUniclassScript |
 	selSym _ aSelector asSymbol.
 	scripts ifNil: [scripts _ IdentityDictionary new].
-	aUserScript _ scripts at: selSym ifAbsent: [nil].
-	aUserScript ifNil:
-		[aUserScript _ UserScript new player: self flagshipInstance selector: selSym.
-		scripts at: selSym put: aUserScript].
-	aUserScript currentScriptEditor: aScriptEditor
+	aUniclassScript _ scripts at: selSym ifAbsent: [nil].
+	aUniclassScript ifNil:
+		[aUniclassScript _ UniclassScript new playerClass: aScriptEditor playerScripted class selector: selSym.
+		scripts at: selSym put: aUniclassScript].
+	aUniclassScript currentScriptEditor: aScriptEditor

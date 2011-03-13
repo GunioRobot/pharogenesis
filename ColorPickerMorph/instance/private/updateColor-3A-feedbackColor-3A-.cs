@@ -3,6 +3,7 @@ updateColor: aColor feedbackColor: feedbackColor
 
 	selectedColor = aColor ifTrue: [^ self].  "do nothing if color doesn't change"
 
+	self updateAlpha: aColor alpha.
 	originalForm fill: FeedbackBox fillColor: feedbackColor.
 	self form: originalForm.
 	selectedColor _ aColor.

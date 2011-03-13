@@ -1,0 +1,1 @@
+HttpUrl class instanceVariableNames: ''

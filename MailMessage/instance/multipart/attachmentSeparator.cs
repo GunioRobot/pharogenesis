@@ -1,2 +1,2 @@
 attachmentSeparator
-	^(self fields at: 'content-type') parameters at: 'boundary' 
+	^(self fields at: 'Content-Type') parameters at: 'boundary' 

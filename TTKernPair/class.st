@@ -1,0 +1,1 @@
+TTKernPair class instanceVariableNames: ''

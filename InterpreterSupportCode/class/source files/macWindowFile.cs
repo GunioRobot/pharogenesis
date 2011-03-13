@@ -1,6 +1,8 @@
 macWindowFile
 
-	^ '#include <AppleEvents.h>
+	^ '#include "sq.h"
+
+#include <AppleEvents.h>
 #include <Dialogs.h>
 #include <Devices.h>
 #include <Files.h>
@@ -20,9 +22,13 @@ macWindowFile
 #include <profiler.h>
 #include <sound.h>
 #include <Math64.h>
+#include <cstddef>
+#include <processes.h>
+#include <OpenTransport.h>
 
-#include "sq.h"
-#include <DriverServices.h>
+#include <stddef.h>
+
+
 
 /*** Compilation Options:
 *
@@ -33,8 +39,21 @@ macWindowFile
 
 //#define PLUGIN
 //#define MAKE_PROFILE
+//#define IHAVENOHEAD
 
 //Aug 7th 2000,JMM Added logic for interrupt driven dispatching
+//Sept 1st 2000, JMM fix problem with modifier information being passed back incorrectly.
+//Sept 1st 2000, JMM use floating point for time versus 64bit math (faster!)
+//Sept 1st 2000, JMM watch mouse movement foreground only, ignore when squeak in background.
+//Sept 18th 2000, JMM fix to cmpSize 
+//Sept 19th 2000, JMM Sept 1st fix to keyboard modifier info broke cmd shift
+//Sept 27 2000, JMM fix to documentPath
+//Nov 13 2000, JMM logic to read/write image from VM. 
+//Nov 22 2000, JMM Bob Arning found a bug with the duplicate mouse event logic (we were altering the event then recording the altered value)
+//Nov 30 2000, JMM Use Open Transport clock versus upTime, solves some issues for jitter and it''s faster
+//Dec 5th 2000, JMM poll 60 times a second... do event polling via checkForInterrupts and drive semaphore
+//Dec 6th 2000, JMM added logic to interface with power manger (1997 was there but dropped..., back again for ibooks)
+//Jan 14th 2001, KG Did some carbon porting.
 
 #if TARGET_API_MAC_CARBON
     #define EnableMenuItemCarbon(m1,v1)  EnableMenuItem(m1,v1);
@@ -95,7 +114,11 @@ MenuHandle		fileMenu = nil;
 CTabHandle		stColorTable = nil;
 PixMapHandle	stPixMap = nil;
 WindowPtr		stWindow = nil;
-
+OTTimeStamp     timeStart;
+Boolean         gTapPowerManager=false;
+Boolean         gDisablePowerManager=false;
+const long      gDisableIdleTickCount=60*10;
+long            gDisableIdleTickLimit=0;
 
 /*** Variables -- Event Recording ***/
 #define MAX_EVENT_BUFFER 1024
@@ -104,6 +127,12 @@ int inputSemaphoreIndex = 0;/* if non-zero the event semaphore index */
 sqInputEvent eventBuffer[MAX_EVENT_BUFFER];
 int eventBufferGet = 0;
 int eventBufferPut = 0;
+
+/* declaration of the event message hook */
+typedef int (*eventMessageHook)(EventRecord* event);
+eventMessageHook messageHook = NULL;
+eventMessageHook postMessageHook = NULL;
+
 
 #define KEYBUF_SIZE 64
 int keyBuf[KEYBUF_SIZE];	/* circular buffer */
@@ -146,7 +175,7 @@ int  IsImageName(char *name);
 CFragConnectionID LoadLibViaPath(char *libName, char *pluginDirPath);
 void MenuBarHide(void);
 void MenuBarRestore(void);
-int PathToWorkingDir(char *pathName, int pathNameMax);
+int PathToWorkingDir(char *pathName, int pathNameMax, short volumeNumber,long directoryID);
 int PrefixPathWith(char *pathName, int pathNameSize, int pathNameMax, char *prefix);
 void SetColorEntry(int index, int red, int green, int blue);
 void SetUpClipboard(void);
@@ -154,10 +183,29 @@ void SetUpMenus(void);
 void SetUpPixmap(void);
 void SetUpWindow(void);
 void SetWindowTitle(char *title);
-void StoreFullPathForLocalNameInto(char *shortName, char *fullName, int length);
+void StoreFullPathForLocalNameInto(char *shortName, char *fullName, int length, short VolumeNumber,long directoryID);
 void SqueakTerminate();
 void ExitCleanup();
+int calculateStartLocationForImage();
+extern int dropInit(void);
+Boolean RunningOnCarbonX(void);
 
+OSStatus GetApplicationDirectory(short *vRefNum, long *dirID);
+pascal	OSErr	GetFullPath(short vRefNum,
+							long dirID,
+							ConstStr255Param name,
+							short *fullPathLength,
+							Handle *fullPath);
+pascal	OSErr	FSpGetFullPath(const FSSpec *spec,
+							   short *fullPathLength,
+							   Handle *fullPath);
+pascal OSErr FSpLocationFromFullPath(short fullPathLength,
+									 const void *fullPath,
+									 FSSpec *spec);
+pascal	OSErr	FSMakeFSSpecCompat(short vRefNum,
+								   long dirID,
+								   ConstStr255Param fileName,
+								   FSSpec *spec);
 
 /* event capture */
 sqInputEvent *nextEventPut(void);
@@ -166,14 +214,20 @@ int recordKeystroke(EventRecord *theEvent);
 int recordModifierButtons(EventRecord *theEvent);
 int recordMouseDown(EventRecord *theEvent);
 int recordMouseEvent(EventRecord *theEvent, int theButtonState);
+int recordDragDropEvent(EventRecord *theEvent, int theButtonState, int numberOfItems, int dragType);
 int recordKeyboardEvent(EventRecord *theEvent, int keyType);
 int MouseModifierState(EventRecord *theEvent);
+WindowPtr getSTWindow(void);
+int setMessageHook(eventMessageHook theHook);
+int setPostMessageHook(eventMessageHook theHook);
+void PowerMgrCheck(void);
+
 
 /*** Apple Event Handlers ***/
-static pascal OSErr HandleOpenAppEvent(const AEDescList *aevt,  AEDescList *reply, UInt32 refCon);
-static pascal OSErr HandleOpenDocEvent(const AEDescList *aevt,  AEDescList *reply, UInt32 refCon);
-static pascal OSErr HandlePrintDocEvent(const AEDescList *aevt, AEDescList *reply, UInt32 refCon);
-static pascal OSErr HandleQuitAppEvent(const AEDescList *aevt,  AEDescList *reply, UInt32 refCon);
+static pascal OSErr HandleOpenAppEvent(const AEDescList *aevt,  AEDescList *reply, long refCon);
+static pascal OSErr HandleOpenDocEvent(const AEDescList *aevt,  AEDescList *reply, long refCon);
+static pascal OSErr HandlePrintDocEvent(const AEDescList *aevt, AEDescList *reply, long refCon);
+static pascal OSErr HandleQuitAppEvent(const AEDescList *aevt,  AEDescList *reply, long refCon);
 
 /*** Apple Event Handling ***/
 
@@ -191,20 +245,43 @@ void InstallAppleEventHandlers() {
 	}
 }
 
-pascal OSErr HandleOpenAppEvent(const AEDescList *aevt,  AEDescList *reply, UInt32 refCon) {
+pascal OSErr HandleOpenAppEvent(const AEDescList *aevt,  AEDescList *reply, long refCon) {
 	/* User double-clicked application; look for "squeak.image" in same directory */
+    int                 checkValueForEmbeddedImage;
+    OSErr               err;
+	FSSpec		        fileSpec;
+	Str32                name; 
+	
+/* record path to VM''s home folder */
+	short vRefNum;
+	long dirID;
 
-	aevt; reply; refCon;  /* reference args to avoid compiler warnings */
+	// Get the Volume ref and Directory id of the Application''s directory.
+    err = GetApplicationDirectory(&vRefNum, &dirID);
+    if (err != noErr) return err;
 
-	/* record path to VM''s home folder */
-	PathToWorkingDir(vmPath, VMPATH_SIZE);
+	// Convert that to a full path string.
+	PathToWorkingDir(vmPath, VMPATH_SIZE, vRefNum, dirID);
 
-	/* use default image name in same directory as the VM */
-	strcpy(shortImageName, "squeak.image");
-	return noErr;
+	checkValueForEmbeddedImage = calculateStartLocationForImage();
+	if (checkValueForEmbeddedImage == 0) {
+	    /* use default image name in same directory as the VM */
+	    strcpy(shortImageName, "squeak.image");
+	    return noErr;
+	}
+
+	if (err != noErr) {
+		strcpy(shortImageName, "squeak.image");
+	    return noErr;
+	}
+	
+	CopyPascalStringToC(name,shortImageName);
+	StoreFullPathForLocalNameInto(shortImageName, imageName, IMAGE_NAME_SIZE, vRefNum, dirID);
+
+    return noErr;
 }
 
-pascal OSErr HandleOpenDocEvent(const AEDescList *aevt, AEDescList *reply, UInt32 refCon) {
+pascal OSErr HandleOpenDocEvent(const AEDescList *aevt, AEDescList *reply, long refCon) {
 	/* User double-clicked an image file. Record the path to the VM''s directory,
 	   then set the default directory to the folder containing the image and
 	   record the image name. Fail if mullitple image files were selected. */
@@ -217,12 +294,18 @@ pascal OSErr HandleOpenDocEvent(const AEDescList *aevt, AEDescList *reply, UInt3
 	FSSpec		fileSpec;
 	WDPBRec		pb;
 	FInfo		finderInformation;
+	char 		tempShortName[SHORTIMAGE_NAME_SIZE + 1];	
+	short vRefNum;
+	long dirID;
 	
 	reply; refCon;  /* reference args to avoid compiler warnings */
 
 	/* record path to VM''s home folder */
-	PathToWorkingDir(vmPath, VMPATH_SIZE);
-
+    err = GetApplicationDirectory(&vRefNum, &dirID);
+    if (err != noErr) return err;
+    
+	PathToWorkingDir(vmPath, VMPATH_SIZE, vRefNum, dirID);
+	
 	/* copy document list */
 	err = AEGetKeyDesc(aevt, keyDirectObject, typeAEList, &fileList);
 	if (err) return errAEEventNotHandled;;
@@ -232,6 +315,21 @@ pascal OSErr HandleOpenDocEvent(const AEDescList *aevt, AEDescList *reply, UInt3
 	if (err) goto done;
 	
 	if (shortImageName[0] != 0) {
+#ifdef IHAVENOHEAD
+		/* get image name */
+		err = AEGetNthPtr(&fileList, 1, typeFSS,
+						  &keyword, &type, (Ptr) &fileSpec, sizeof(fileSpec), &size);
+		if (err) goto done;
+		
+		err = FSpGetFInfo(&fileSpec,&finderInformation);
+		if (err) goto done;
+			
+		CopyPascalStringToC(fileSpec.name,tempShortName);
+
+		if (finderInformation.fdType == ''SOBJ'') {
+			StoreFullPathForLocalNameInto(tempShortName, documentName, DOCUMENT_NAME_SIZE,fileSpec.vRefNum,fileSpec.parID);
+		}
+#endif
 		goto done;
 	}
 
@@ -248,9 +346,10 @@ pascal OSErr HandleOpenDocEvent(const AEDescList *aevt, AEDescList *reply, UInt3
 	if (!(IsImageName(shortImageName) || finderInformation.fdType == ''STim'') || finderInformation.fdType == ''STch'') {
 		/* record the document name, but run the default image in VM directory */
 		if (finderInformation.fdType == ''SOBJ'')
-			StoreFullPathForLocalNameInto(shortImageName, documentName, DOCUMENT_NAME_SIZE);
+			StoreFullPathForLocalNameInto(shortImageName, documentName, DOCUMENT_NAME_SIZE,fileSpec.vRefNum,fileSpec.parID);
+
 		strcpy(shortImageName, "squeak.image");
-		StoreFullPathForLocalNameInto(shortImageName, imageName, IMAGE_NAME_SIZE);
+		StoreFullPathForLocalNameInto(shortImageName, imageName, IMAGE_NAME_SIZE, vRefNum, dirID);
 	}
 	/* make the image or document directory the working directory */
 	pb.ioNamePtr = NULL;
@@ -263,12 +362,12 @@ done:
 	return err;
 }
 
-pascal OSErr HandlePrintDocEvent(const AEDescList *aevt,  AEDescList *reply, UInt32 refCon) {
+pascal OSErr HandlePrintDocEvent(const AEDescList *aevt,  AEDescList *reply, long refCon) {
 	aevt; reply; refCon;  /* reference args to avoid compiler warnings */
 	return errAEEventNotHandled;
 }
 
-pascal OSErr HandleQuitAppEvent(const AEDescList *aevt,  AEDescList *reply, UInt32 refCon) {
+pascal OSErr HandleQuitAppEvent(const AEDescList *aevt,  AEDescList *reply, long refCon) {
 	aevt; reply; refCon;  /* reference args to avoid compiler warnings */
 	return errAEEventNotHandled;
 }
@@ -325,23 +424,30 @@ void AdjustMenus(void) {
 
 int HandleEvents(void) {
 	EventRecord		theEvent;
+	static EventRecord oldEvent;
 	int				ok;
 	Rect    bounds;
 
 	ok = WaitNextEvent(everyEvent, &theEvent,0,null);
+	if((messageHook) && (messageHook(&theEvent))) {
+        return ok;
+    }
 	if (ok) {
 		switch (theEvent.what) {
 			case mouseDown:
 				HandleMouseDown(&theEvent);
+				if(postMessageHook) postMessageHook(&theEvent);
 				return false;
 			break;
 
 			case mouseUp:
 				if(inputSemaphoreIndex) {
 					recordMouseEvent(&theEvent,MouseModifierState(&theEvent));
+    				if(postMessageHook) postMessageHook(&theEvent);
 					return false;
 				}
 				recordModifierButtons(&theEvent);
+				if(postMessageHook) postMessageHook(&theEvent);
 				return false;
 			break;
 
@@ -365,6 +471,7 @@ int HandleEvents(void) {
 				}
 			break;
 
+#ifndef IHAVENOHEAD
 			case updateEvt:
 				BeginUpdate(stWindow);
 				fullDisplayUpdate();  /* this makes VM call ioShowDisplay */
@@ -381,6 +488,7 @@ int HandleEvents(void) {
 				GetPortBounds(GetWindowPort(stWindow),&bounds);
 				InvalWindowRect(stWindow,&bounds);
 			break;
+#endif
 
 			case kHighLevelEvent:
 				AEProcessAppleEvent(&theEvent);
@@ -405,10 +513,18 @@ int HandleEvents(void) {
 		}
 	}
 	else {
-		if(inputSemaphoreIndex) {
+		if(inputSemaphoreIndex && windowActive && 
+		    !((oldEvent.what == theEvent.what) && 
+ 		    (oldEvent.message == theEvent.message) &&
+ 		    ((oldEvent.where.v == theEvent.where.v) && (oldEvent.where.h == theEvent.where.h)) &&
+ 		    (oldEvent.modifiers == theEvent.modifiers))) {
+    		oldEvent = theEvent; //JMM Nov 11th 2000 bug fix 
 			recordMouseEvent(&theEvent,MouseModifierState(&theEvent));
-		}
+ 		}
+ 		else
+		 oldEvent = theEvent;
 	}
+	if(postMessageHook) postMessageHook(&theEvent); 
 	return ok;
 }
 
@@ -464,6 +580,7 @@ void HandleMouseDown(EventRecord *theEvent) {
 			HandleMenu(MenuSelect(theEvent->where));
 		break;
 
+#ifndef IHAVENOHEAD
 		case inDrag:
 
 			GetQDGlobalsScreenBits(&bmap);
@@ -500,6 +617,7 @@ void HandleMouseDown(EventRecord *theEvent) {
 					/* HideWindow(stWindow); noop for now */
 			}
 		break;
+#endif
 	}
 }
 
@@ -795,16 +913,20 @@ void SetUpPixmap(void) {
 void SetUpWindow(void) {
 	Rect windowBounds = {44, 8, 300, 500};
 
+#ifndef IHAVENOHEAD
 	stWindow = NewCWindow(
 		0L, &windowBounds,
 		"\p Welcome to Squeak!  Reading Squeak image file... ",
 		true, documentProc, (WindowPtr) -1L, false, 0);
+#endif
 }
 
 void SetWindowTitle(char *title) {
     Str255 tempTitle;
 	CopyCStringToPascal(title,tempTitle);
+#ifndef IHAVENOHEAD
 	SetWTitle(stWindow, tempTitle);
+#endif
 }
 
 /*** Event Recording Functions ***/
@@ -900,6 +1022,28 @@ int recordMouseEvent(EventRecord *theEvent, int theButtonState) {
 	return 1;
 }
 
+int recordDragDropEvent(EventRecord *theEvent, int theButtonState, int numberOfItems, int dragType) {
+	sqDragDropFilesEvent *evt;
+	
+	evt = (sqDragDropFilesEvent*) nextEventPut();
+
+	/* first the basics */
+	evt->type = EventTypeDragDropFiles;
+	evt->timeStamp = ioMSecs(); 
+	GlobalToLocal((Point *) &theEvent->where);
+	evt->x = theEvent->where.h;
+	evt->y = theEvent->where.v;
+	evt->numFiles = numberOfItems;
+	evt->dragType = dragType;
+	
+	/* then the modifiers */
+	evt->modifiers = theButtonState >> 3;
+	/* clean up reserved */
+	evt->reserved1 = 0;
+//	signalSemaphoreWithIndex(inputSemaphoreIndex);
+	return 1;
+}
+
 int recordKeyboardEvent(EventRecord *theEvent, int keyType) {
 	int stButtons = 0;
 	int asciiChar, modifierBits;
@@ -910,7 +1054,7 @@ int recordKeyboardEvent(EventRecord *theEvent, int keyType) {
 	/* keystate: low byte is the ascii character; next 4 bits are modifier bits */
 	asciiChar = theEvent->message & charCodeMask;
 	modifierBits = MouseModifierState(theEvent); //Capture mouse/option states
-	if ((modifierBits & 0x9) == 0x9) {  /* command and shift */
+	if (((modifierBits >> 3) & 0x9) == 0x9) {  /* command and shift */
 		if ((asciiChar >= 97) && (asciiChar <= 122)) {
 			/* convert ascii code of command-shift-letter to upper case */
 			asciiChar = asciiChar - 32;
@@ -924,7 +1068,7 @@ int recordKeyboardEvent(EventRecord *theEvent, int keyType) {
 	/* press code must differentiate */
 	evt->charCode = (theEvent->message & keyCodeMask) >> 8;
 	evt->pressCode = keyType;
-	evt->modifiers = modifierBits;
+	evt->modifiers = modifierBits >> 3;
 	/* clean up reserved */
 	evt->reserved1 = 0;
 	evt->reserved2 = 0;
@@ -1155,34 +1299,24 @@ int ioMicroMSecsExpensive(void) {
 	return (microTicks.lo / 1000) + (microTicks.hi * 4294967);
 }
 
-#if TARGET_CPU_PPC || GENERATINGPOWERPC
-Boolean HasUpTime (void);
-
-Boolean HasUpTime (void)
-{
-    return ( (Ptr) UpTime != (Ptr) kUnresolvedCFragSymbolAddress);
-}
-
+#if TARGET_CPU_PPC
 int ioMicroMSecs(void) {
-	/* millisecond clock based on microsecond timer (about 60 times slower than clock()!!) */
 	/* Note: This function and ioMSecs() both return a time in milliseconds. The difference
 	   is that ioMicroMSecs() is called only when precise millisecond resolution is essential,
 	   and thus it can use a more expensive timer than ioMSecs, which is called frequently.
 	   However, later VM optimizations reduced the frequency of calls to ioMSecs to the point
 	   where clock performance became less critical, and we also started to want millisecond-
-	   resolution timers for real time applications such as music. Thus, on the Mac, we''ve
-	   opted to use the microsecond clock for both ioMSecs() and ioMicroMSecs(). */
+	   resolution timers for real time applications such as music. */
 	
-	UInt32		  valueLong;
+	register long check;
 	
-	if (HasUpTime()) {
-		valueLong = (UInt32 )  U64Div(UnsignedWideToUInt64(AbsoluteToNanoseconds(UpTime())), (UInt64) 1000000);
-		if (valueLong > 0x7FFFFFFF) 
-			return (long) (valueLong - 0x7FFFFFFF);
-		else
-			return (long) valueLong;
-			
-    } else {
+	if((Ptr)OTElapsedMilliseconds!=(Ptr)kUnresolvedCFragSymbolAddress){
+    	check = OTElapsedMilliseconds(&timeStart);
+    	if (check != -1) 
+    	    return check;
+    	OTGetTimeStamp(&timeStart);
+	    return ioMicroMSecs();
+	}else {
 	    return ioMicroMSecsExpensive();
 	}
 }
@@ -1228,18 +1362,33 @@ int ioPeekKeystroke(void) {
 
 int ioProcessEvents(void) {
 	/* This is a noop when running as a plugin; the browser handles events. */
-	const int nextPollOffsetCheck = (CLOCKS_PER_SEC/30);
-	static clock_t nextPollTick = 0;
+	const int nextPollOffsetCheck = CLOCKS_PER_SEC/60, nextPowerCheckOffset=CLOCKS_PER_SEC/2; 
+	static clock_t nextPollTick = 0, nextPowerCheck;
+	long    clockTime;
 
 #ifndef PLUGIN
-	if (clock() > nextPollTick) {
+	if (clock() >= nextPollTick) {
 		/* time to process events! */
 		while (HandleEvents()) {
 			/* process all pending events */
 		}
-
+		
+        clockTime = clock();
+        
+        if (gDisablePowerManager && gTapPowerManager) {
+            if (clockTime > gDisableIdleTickLimit)
+                gDisableIdleTickLimit = IdleUpdate() + gDisableIdleTickCount;
+                
+#if TARGET_CPU_PPC
+            if (clockTime > nextPowerCheck) {
+                 UpdateSystemActivity(UsrActivity);
+                 nextPowerCheck = clockTime + nextPowerCheckOffset;
+            }
+#endif
+        }
+        
 		/* wait a while before trying again */
-		nextPollTick = clock() + nextPollOffsetCheck;
+		nextPollTick = clockTime + nextPollOffsetCheck;
 	}
 #endif
 	return interruptPending;
@@ -1249,8 +1398,8 @@ int ioRelinquishProcessorForMicroseconds(int microSeconds) {
 	/* This operation is platform dependent. On the Mac, it simply calls
 	 * ioProcessEvents(), which gives other applications a chance to run.
 	 */
+   
     microSeconds;
-    
 	ioProcessEvents();  /* process all pending events */
 }
 
@@ -1259,11 +1408,13 @@ int ioScreenSize(void) {
 	int w = 10, h = 10;
     Rect portRect;
     
+#ifndef IHAVENOHEAD
 	if (stWindow != nil) {
         GetPortBounds(GetWindowPort(stWindow),&portRect);
 		w =  portRect.right -  portRect.left;
 		h =  portRect.bottom - portRect.top;
 	}
+#endif
 	return (w << 16) | (h & 0xFFFF);  /* w is high 16 bits; h is low 16 bits */
 }
 #endif
@@ -1335,10 +1486,12 @@ int ioSetDisplayMode(int width, int height, int depth, int fullscreenFlag) {
 	   displays (which display''s depth should be changed?). */
 
 	depth;
+#ifndef IHAVENOHEAD
 	ioSetFullScreen(fullscreenFlag);
 	if (!fullscreenFlag) {
 		SizeWindow(stWindow, width, height, true);
 	}
+#endif
 }
 
 #ifndef PLUGIN
@@ -1388,6 +1541,7 @@ int ioSetFullScreen(int fullScreen) {
 }
 #endif
 
+
 int ioShowDisplay(
 	int dispBitsIndex, int width, int height, int depth,
 	int affectedL, int affectedR, int affectedT, int affectedB) {
@@ -1415,7 +1569,17 @@ int ioShowDisplay(
 	(*stPixMap)->rowBytes = (((((width * depth) + 31) / 32) * 4) & 0x1FFF) | 0x8000;
 	(*stPixMap)->bounds = srcRect;
 	(*stPixMap)->pixelSize = depth;
-	(*stPixMap)->cmpSize = depth;
+
+    if (depth<=8) { /*Duane Maxwell <dmaxwell@exobox.com> fix cmpSize Sept 18,2000 */
+    	(*stPixMap)->cmpSize = depth;
+    	(*stPixMap)->cmpCount = 1;
+    } else if (depth==16) {
+    	(*stPixMap)->cmpSize = 5;
+    	(*stPixMap)->cmpCount = 3;
+    } else if (depth==32) {
+    	(*stPixMap)->cmpSize = 8;
+    	(*stPixMap)->cmpCount = 3;
+    }
 
 	/* create a mask region so that only the affected rectangle is copied */
 	maskRect = NewRgn();
@@ -1423,15 +1587,19 @@ int ioShowDisplay(
 
 	SetPortWindowPort(stWindow);
 	CopyBits((BitMap *) *stPixMap, GetPortBitMapForCopyBits(GetWindowPort(stWindow)), &srcRect, &dstRect, srcCopy, maskRect);
+#if TARGET_API_MAC_CARBON
+	QDFlushPortBuffer (GetWindowPort(stWindow), maskRect);
+#endif
 	DisposeRgn(maskRect);
 }
 
+
 /*** Image File Naming ***/
 
-void StoreFullPathForLocalNameInto(char *shortName, char *fullName, int length) {
+void StoreFullPathForLocalNameInto(char *shortName, char *fullName, int length, short volumeNumber,long directoryID) {
 	int offset, sz, i;
 
-	offset = PathToWorkingDir(fullName, length);
+	offset = PathToWorkingDir(fullName, length, volumeNumber, directoryID);
 
 	/* copy the file name into a null-terminated C string */
 	sz = strlen(shortName);
@@ -1485,9 +1653,46 @@ int imageNamePutLength(int sqImageNameIndex, int length) {
 	return count;
 }
 
+/*****************************************************************************************
+GetApplicationDirectory
+
+Get the volume reference number and directory id of this application.
+Code taken from Apple:
+	Technical Q&As: FL 14 - Finding your application''s directory (19-June-2000)
+
+Karl Goiser 14/01/01
+*****************************************************************************************/
+
+        /* GetApplicationDirectory returns the volume reference number
+        and directory ID for the current application''s directory. */
+
+    OSStatus GetApplicationDirectory(short *vRefNum, long *dirID) {
+        ProcessSerialNumber PSN;
+        ProcessInfoRec pinfo;
+        FSSpec pspec;
+        OSStatus err;
+            /* valid parameters */
+        if (vRefNum == NULL || dirID == NULL) return paramErr;
+            /* set up process serial number */
+        PSN.highLongOfPSN = 0;
+        PSN.lowLongOfPSN = kCurrentProcess;
+            /* set up info block */
+        pinfo.processInfoLength = sizeof(pinfo);
+        pinfo.processName = NULL;
+        pinfo.processAppSpec = &pspec;
+            /* grab the vrefnum and directory */
+        err = GetProcessInformation(&PSN, &pinfo);
+        if (err == noErr) {
+            *vRefNum = pspec.vRefNum;
+            *dirID = pspec.parID;
+        }
+        return err;
+    }
+
+
 /*** Initializing the path to Working Dir ***/
 
-int PathToWorkingDir(char *pathName, int pathNameMax) {
+int PathToWorkingDir(char *pathName, int pathNameMax, short volumeNumber,long directoryID) {
 	/* Fill in the given string with the full path from a root volume to
 	   to current working directory. (At startup time, the working directory
 	   is set to the application''s directory. Fails if the given string is not
@@ -1495,39 +1700,220 @@ int PathToWorkingDir(char *pathName, int pathNameMax) {
 	   be safe.)
 	*/
 
-	Str255 thisName;
-	CInfoPBRec pb;
-	int nextDirRefNum, pathLen;
+	short	fullPathLength;
+	Handle	fullPathHandle;
 
-	/* initialize string copying state */
-	pathName[0] = 0;
-	pathLen = 0;
-
-	/* get refNum of working directory */
-	strcpy((char *) thisName, ":");
-	CopyCStringToPascal((const char *)thisName,thisName);
-	pb.hFileInfo.ioNamePtr = thisName;
-	pb.hFileInfo.ioVRefNum = 0;
-	pb.hFileInfo.ioFDirIndex = 0;
-	pb.hFileInfo.ioDirID = 0;
-	if (PBGetCatInfoSync(&pb) != noErr) {
-		nextDirRefNum = 0;
+	if (GetFullPath(volumeNumber, directoryID, nil, &fullPathLength, &fullPathHandle) != noErr) {
+		//Some sort of random guff for failure:
+		pathName[0] = 1;
+		pathName[1] = (char)":";
+		return 1;
 	}
-	nextDirRefNum = pb.hFileInfo.ioDirID;
 
-	while (true) {
-		thisName[0] = 0;
-		pb.hFileInfo.ioFDirIndex = -1; /* map ioDirID -> name */
-		pb.hFileInfo.ioVRefNum = 0;
-		pb.hFileInfo.ioDirID = nextDirRefNum;
-		if (PBGetCatInfoSync(&pb) != noErr) {
-			break;  /* we''ve reached the root */
+	strncpy((char *) pathName, (char *) *fullPathHandle, fullPathLength);
+	DisposeHandle(fullPathHandle);
+	return fullPathLength;
+}
+
+pascal	OSErr	GetFullPath(short vRefNum,
+							long dirID,
+							ConstStr255Param name,
+							short *fullPathLength,
+							Handle *fullPath)
+{
+	OSErr		result;
+	FSSpec		spec;
+	
+	*fullPathLength = 0;
+	*fullPath = NULL;
+	
+	result = FSMakeFSSpecCompat(vRefNum, dirID, name, &spec);
+	if ( (result == noErr) || (result == fnfErr) )
+	{
+		result = FSpGetFullPath(&spec, fullPathLength, fullPath);
+	}
+	
+	return ( result );
+}
+
+pascal	OSErr	FSpGetFullPath(const FSSpec *spec,
+							   short *fullPathLength,
+							   Handle *fullPath)
+{
+	OSErr		result;
+	OSErr		realResult;
+	FSSpec		tempSpec;
+	CInfoPBRec	pb;
+	
+	*fullPathLength = 0;
+	*fullPath = NULL;
+	
+	
+	/* Default to noErr */
+	realResult = result = noErr;
+	
+#if 0
+//The following code doesn''t seem to work in OS X, the BloackMoveData crashes the
+// machine, the the FSMakeFSSpecCompat works, so go figure...  KG 4/1/01
+
+	/* work around Nav Services "bug" (it returns invalid FSSpecs with empty names) */
+	if ( spec->name[0] == 0 )
+	{
+		result = FSMakeFSSpecCompat(spec->vRefNum, spec->parID, spec->name, &tempSpec);
+	}
+	else
+	{
+		/* Make a copy of the input FSSpec that can be modified */
+		BlockMoveData(spec, &tempSpec, sizeof(FSSpec));
+	}
+#endif 0
+
+	result = FSMakeFSSpecCompat(spec->vRefNum, spec->parID, spec->name, &tempSpec);
+
+
+	if ( result == noErr )
+	{
+		if ( tempSpec.parID == fsRtParID )
+		{
+			/* The object is a volume */
+			
+			/* Add a colon to make it a full pathname */
+			++tempSpec.name[0];
+			tempSpec.name[tempSpec.name[0]] = '':'';
+			
+			/* We''re done */
+			result = PtrToHand(&tempSpec.name[1], fullPath, tempSpec.name[0]);
+			*fullPathLength = tempSpec.name[0];
 		}
-    	CopyPascalStringToC((unsigned char *)thisName,(char *) thisName);
-		pathLen = PrefixPathWith(pathName, pathLen, pathNameMax,(char *) thisName);
-		nextDirRefNum = pb.dirInfo.ioDrParID;
+		else
+		{
+			/* The object isn''t a volume */
+			
+			/* Is the object a file or a directory? */
+			pb.dirInfo.ioNamePtr = tempSpec.name;
+			pb.dirInfo.ioVRefNum = tempSpec.vRefNum;
+			pb.dirInfo.ioDrDirID = tempSpec.parID;
+			pb.dirInfo.ioFDirIndex = 0;
+			result = PBGetCatInfoSync(&pb);
+			// Allow file/directory name at end of path to not exist.
+			realResult = result;
+			if ( (result == noErr) || (result == fnfErr) )
+			{
+				/* if the object is a directory, append a colon so full pathname ends with colon */
+				if ( (result == noErr) && (pb.hFileInfo.ioFlAttrib & kioFlAttribDirMask) != 0 )
+				{
+					++tempSpec.name[0];
+					tempSpec.name[tempSpec.name[0]] = '':'';
+				}
+				
+				/* Put the object name in first */
+				result = PtrToHand(&tempSpec.name[1], fullPath, tempSpec.name[0]);
+				*fullPathLength = tempSpec.name[0];
+				if ( result == noErr )
+				{
+					/* Get the ancestor directory names */
+					pb.dirInfo.ioNamePtr = tempSpec.name;
+					pb.dirInfo.ioVRefNum = tempSpec.vRefNum;
+					pb.dirInfo.ioDrParID = tempSpec.parID;
+					do	/* loop until we have an error or find the root directory */
+					{
+						pb.dirInfo.ioFDirIndex = -1;
+						pb.dirInfo.ioDrDirID = pb.dirInfo.ioDrParID;
+						result = PBGetCatInfoSync(&pb);
+						if ( result == noErr )
+						{
+							/* Append colon to directory name */
+							++tempSpec.name[0];
+							tempSpec.name[tempSpec.name[0]] = '':'';
+							
+							/* Add directory name to beginning of fullPath */
+							(void) Munger(*fullPath, 0, NULL, 0, &tempSpec.name[1], tempSpec.name[0]);
+							*fullPathLength += tempSpec.name[0];
+							result = MemError();
+						}
+					} while ( (result == noErr) && (pb.dirInfo.ioDrDirID != fsRtDirID) );
+				}
+			}
+		}
 	}
-	return pathLen;
+	
+	if ( result == noErr )
+	{
+		/* Return the length */
+///		*fullPathLength = GetHandleSize(*fullPath);
+		result = realResult;	// return realResult in case it was fnfErr
+	}
+	else
+	{
+		/* Dispose of the handle and return NULL and zero length */
+		if ( *fullPath != NULL )
+		{
+			DisposeHandle(*fullPath);
+		}
+		*fullPath = NULL;
+		*fullPathLength = 0;
+	}
+	
+	return ( result );
+}
+
+/*****************************************************************************/
+
+pascal OSErr FSpLocationFromFullPath(short fullPathLength,
+									 const void *fullPath,
+									 FSSpec *spec)
+{
+	AliasHandle	alias;
+	OSErr		result;
+	Boolean		wasChanged;
+	Str32		nullString;
+	
+	/* Create a minimal alias from the full pathname */
+	nullString[0] = 0;	/* null string to indicate no zone or server name */
+	result = NewAliasMinimalFromFullPath(fullPathLength, fullPath, nullString, nullString, &alias);
+	if ( result == noErr )
+	{
+		/* Let the Alias Manager resolve the alias. */
+		result = ResolveAlias(NULL, alias, spec, &wasChanged);
+		
+		/* work around Alias Mgr sloppy volume matching bug */
+		if ( spec->vRefNum == 0 )
+		{
+			/* invalidate wrong FSSpec */
+			spec->parID = 0;
+			spec->name[0] =  0;
+			result = nsvErr;
+		}
+		DisposeHandle((Handle)alias);	/* Free up memory used */
+	}
+	return ( result );
+}
+/*****************************************************************************/
+
+/*
+**	File Manager FSp calls
+*/
+
+/*****************************************************************************/
+
+pascal	OSErr	FSMakeFSSpecCompat(short vRefNum,
+								   long dirID,
+								   ConstStr255Param fileName,
+								   FSSpec *spec)
+{
+	OSErr	result;
+	
+	/* Let the file system create the FSSpec if it can since it does the job */
+	/* much more efficiently than I can. */
+	result = FSMakeFSSpec(vRefNum, dirID, fileName, spec);
+
+	/* Fix a bug in Macintosh PC Exchange''s MakeFSSpec code where 0 is */
+	/* returned in the parID field when making an FSSpec to the volume''s */
+	/* root directory by passing a full pathname in MakeFSSpec''s */
+	/* fileName parameter. Fixed in Mac OS 8.1 */
+	if ( (result == noErr) && (spec->parID == 0) )
+		spec->parID = fsRtParID;
+	return ( result );
 }
 
 int PrefixPathWith(char *pathName, int pathNameSize, int pathNameMax, char *prefix) {
@@ -1602,8 +1988,15 @@ int plugInInit(char *fullImagePath) {
 	/* clear all path and file names */
 	imageName[0] = shortImageName[0] = documentName[0] = vmPath[0] = 0;
 
+#if TARGET_CPU_PPC
+	if((Ptr)OTGetTimeStamp!=(Ptr)kUnresolvedCFragSymbolAddress)
+ 	    OTGetTimeStamp(&timeStart);
+#endif
+
+	PowerMgrCheck();
 	SetUpClipboard();
 	SetUpPixmap();
+	dropInit();
 }
 
 int plugInShutdown(void) {
@@ -1704,7 +2097,8 @@ void sqImageFileClose(sqImageFile f) {
 
 sqImageFile sqImageFileOpen(char *fileName, char *mode) {
 	short int err, err2, fRefNum;
-	Str255 tempPascalFileName;
+	Str255 tempPascalFileName; 
+    FInfo fileInfo;
 
 	CopyCStringToPascal(fileName,tempPascalFileName);
 	if (strchr(mode, ''w'') != null) 
@@ -1723,12 +2117,19 @@ sqImageFile sqImageFileOpen(char *fileName, char *mode) {
 	if (err != 0) return null;
 
 	if (strchr(mode, ''w'') != null) {
-		/* truncate file if opening in write mode */
-		err = SetEOF(fRefNum, 0);
-		if (err != 0) {
-			FSClose(fRefNum);
-			return null;
-		}
+        err = HGetFInfo(0,0,tempPascalFileName,&fileInfo);
+        if (err != noErr) return 0; //This should not happen
+        
+        //On the mac we start at location 0 if this isn''t an VM
+        
+    	if (!(fileInfo.fdType == ''APPL'' && fileInfo.fdCreator == ''FAST'')){
+    		/* truncate non-VM file if opening in write mode */
+    		err = SetEOF(fRefNum, 0);
+    		if (err != 0) {
+    			FSClose(fRefNum);
+    			return null;
+    		}
+	    }
 	}
 	return (sqImageFile) fRefNum;
 }
@@ -1762,14 +2163,164 @@ int sqImageFileWrite(void *ptr, int elementSize, int count, sqImageFile f) {
 	return byteCount / elementSize;
 }
 
+int calculateStartLocationForImage() { 
+
+	Handle cfrgResource;  
+	long	memberCount,i;
+	CFragResourceMember *target;
+	Str255 tempPascalFileName;
+	OSErr   err;
+    int     resFileRef;
+	
+	cfrgResource = GetResource(kCFragResourceType,0); 
+	if (cfrgResource == nil || ResError() != noErr) { return 0;};  
+	
+	memberCount = ((CFragResource *)(*cfrgResource))->memberCount;
+	if (memberCount <= 1) {
+        ReleaseResource(cfrgResource);
+	    return 0; //Need FAT to get counters right
+	}
+	
+	target = &((CFragResource *)(*cfrgResource))->firstMember;
+	for(i=0;i<memberCount;i++) {
+		if (target->architecture == ''FAST'') {			
+		    ReleaseResource(cfrgResource);
+		    return target->offset;
+		}
+		target = NextCFragResourceMemberPtr(target); 
+	}
+    ReleaseResource(cfrgResource);
+	return 0;
+}
+
+int sqImageFileStartLocation(int fileRef, char *filename, int imageSize){
+    FInfo fileInfo;
+	Str255 tempPascalFileName;
+	OSErr   err; 
+    int     resFileRef;
+	Handle  cfrgResource,newcfrgResource;  
+	UInt32	maxOffset=0,maxOffsetLength,targetOffset;
+	long    memberCount,i;
+	CFragResourceMember *target;
+  
+    
+	CopyCStringToPascal(filename,tempPascalFileName);
+    err = HGetFInfo(0,0,tempPascalFileName,&fileInfo);
+    if (err != noErr) return 0; //This should not happen
+    
+    //On the mac we start at location 0 if this isn''t an VM
+    
+	if (!(fileInfo.fdType == ''APPL'' && fileInfo.fdCreator == ''FAST'')) return 0;
+    
+    //Ok we have an application file, open the resource part and attempt to find the crfg
+    
+    resFileRef = HOpenResFile(0,0,tempPascalFileName,fsWrPerm);
+    if (resFileRef == -1) return 0;
+    
+	cfrgResource = GetResource(kCFragResourceType,0);
+	if (cfrgResource == nil || ResError() != noErr) {CloseResFile(resFileRef); return 0;};  
+	
+	memberCount = ((CFragResource *)(*cfrgResource))->memberCount;
+	if (memberCount <= 1) {ReleaseResource(cfrgResource); CloseResFile(resFileRef); return 0;};  //Need FAT to get counters right
+	
+	target = &((CFragResource *)(*cfrgResource))->firstMember;
+	for(i=0;i<memberCount;i++) {
+		if (target->architecture == ''FAST'') {
+		    targetOffset = target->offset;
+		    target->length = imageSize;
+		    ChangedResource(cfrgResource);
+        	if (ResError() != noErr) {ReleaseResource(cfrgResource); CloseResFile(resFileRef); return 0;}; 
+		    UpdateResFile(resFileRef);
+        	if (ResError() != noErr) {ReleaseResource(cfrgResource); CloseResFile(resFileRef); return 0;}; 
+            ReleaseResource(cfrgResource); 
+		    CloseResFile(resFileRef);
+			return targetOffset;
+		}
+		if (target->offset > maxOffset) {
+			maxOffset = target->offset;
+			maxOffsetLength = target->length;
+		}
+		target = NextCFragResourceMemberPtr(target);
+	}
+	
+	//Ok at this point we need to alter the crfg to add the new tag for the image part
+	
+	newcfrgResource = cfrgResource;
+	err = HandToHand(&newcfrgResource);
+	if (err != noErr || MemError() != noErr)  {ReleaseResource(cfrgResource); CloseResFile(resFileRef); return 0;}; 
+	SetHandleSize(newcfrgResource,GetHandleSize(cfrgResource)+AlignToFour(kBaseCFragResourceMemberSize + 1));
+	if (MemError() != noErr)  {ReleaseResource(cfrgResource); CloseResFile(resFileRef); return 0;}; 
+	
+	target = &((CFragResource *)(*newcfrgResource))->firstMember; 
+	for(i=0;i<memberCount;i++) {
+		target = NextCFragResourceMemberPtr(target); 
+	}
+
+    target->architecture = ''FAST'';
+    target->reservedA = 0;                  /* ! Must be zero!*/
+    target->reservedB = 0;                  /* ! Must be zero!*/
+    target->updateLevel = 0;
+    target->currentVersion = 0;
+    target->oldDefVersion = 0;
+    target->uUsage1.appStackSize = 0;
+    target->uUsage2.appSubdirID = 0;
+    target->uUsage2.libFlags = 0;
+    target->usage = kApplicationCFrag;
+    target->where = kDataForkCFragLocator;
+    target->offset = maxOffset + maxOffsetLength;
+    targetOffset = target->offset;
+    target->length = imageSize;
+    target->uWhere1.spaceID = 0;
+    target->extensionCount = 0;             /* The number of extensions beyond the name.*/
+    target->memberSize = AlignToFour(kBaseCFragResourceMemberSize + 1);   /* Size in bytes, includes all extensions.*/
+    target->name[0] = 0x00;
+
+	((CFragResource *)(*newcfrgResource))->memberCount = memberCount+1;
+	RemoveResource(cfrgResource);
+	if (ResError() != noErr) {CloseResFile(resFileRef); return 0;}; 
+ 	AddResource(newcfrgResource,kCFragResourceType,0,nil);
+	if (ResError() != noErr) {CloseResFile(resFileRef); return 0;}; 
+    UpdateResFile(resFileRef);
+	if (ResError() != noErr) {CloseResFile(resFileRef); return 0;}; 
+    CloseResFile(resFileRef);
+    
+	return targetOffset;
+}
+
 #ifndef PLUGIN
 void * sqAllocateMemory(int minHeapSize, int desiredHeapSize) {
-	/* Application allocates Squeak object heap memory from its own heap. */
+	/* Application allocates Squeak object heap memory from its own heap. */	
 	minHeapSize;
-	MaxBlock();
-	return NewPtr(desiredHeapSize);
+	return NewPtr(desiredHeapSize);;
 }
 #endif
+
+void PowerMgrCheck(void) {
+	long pmgrAttributes;
+	
+	gTapPowerManager = false;
+	gDisablePowerManager = false;
+	if (! Gestalt(gestaltPowerMgrAttr, &pmgrAttributes))
+		if ((pmgrAttributes & (1<<gestaltPMgrExists)) 
+		    && (pmgrAttributes & (1<<gestaltPMgrDispatchExists))
+		    && (PMSelectorCount() >= 0x24)) {
+		    gTapPowerManager = true;
+			gDisableIdleTickLimit = clock();
+		}
+}
+
+int ioDisablePowerManager(int disableIfNonZero) {
+    gDisablePowerManager = disableIfNonZero;
+}
+
+Boolean RunningOnCarbonX(void)
+{
+    UInt32 response;
+    
+    return (Gestalt(gestaltSystemVersion, 
+                    (SInt32 *) &response) == noErr)
+                && (response >= 0x01000);
+}
 
 /*** Main ***/
 
@@ -1779,12 +2330,24 @@ void main(void) {
 	sqImageFile f;
 	int reservedMemory, availableMemory;
 
+	short vRefNum;
+	long dirID;
+	OSErr err;
+
 	InitMacintosh();
+	PowerMgrCheck();
+	
 	SetUpMenus();
 	SetUpClipboard();
 	SetUpWindow();
 	SetUpPixmap();
+	dropInit();
 	SetEventMask(everyEvent); // also get key up events
+	
+#if TARGET_CPU_PPC
+	if((Ptr)OTGetTimeStamp!=(Ptr)kUnresolvedCFragSymbolAddress)
+ 	    OTGetTimeStamp(&timeStart);
+#endif 
 
 	/* install apple event handlers and wait for open event */
 	imageName[0] = shortImageName[0] = documentName[0] = vmPath[0] = 0;
@@ -1796,7 +2359,9 @@ void main(void) {
 		}
 	}
 	if (imageName[0] == 0) {
-		StoreFullPathForLocalNameInto(shortImageName, imageName, IMAGE_NAME_SIZE);
+		err = GetApplicationDirectory(&vRefNum, &dirID);
+		if (err != noErr) error("Could not obtain default directory");
+		StoreFullPathForLocalNameInto(shortImageName, imageName, IMAGE_NAME_SIZE, vRefNum, dirID);
 	}
 
 	/* check the interpreter''s size assumptions for basic data types */
@@ -1818,7 +2383,11 @@ void main(void) {
 
 	/* compute the desired memory allocation */
 	reservedMemory = 500000;
-	availableMemory = MaxBlock() - reservedMemory;
+	if (RunningOnCarbonX())
+	    availableMemory = 100*1024*1024 - reservedMemory;
+	else 
+    	availableMemory = MaxBlock() - reservedMemory;
+	
 	/******
 	  Note: This is platform-specific. On the Mac, the user specifies the desired
 	    memory partition for each application using the Finder''s Get Info command.
@@ -1856,12 +2425,13 @@ void main(void) {
 		printf("Aborting...\n");
 		ioExit();
 	}
-	readImageFromFileHeapSizeStartingAt(f, availableMemory, 0);
+	readImageFromFileHeapSizeStartingAt(f, availableMemory, calculateStartLocationForImage());
 	sqImageFileClose(f);
 
+#ifndef IHAVENOHEAD
 	SetWindowTitle(shortImageName);
 	ioSetFullScreen(fullScreenFlag);
-
+#endif
 	/* run Squeak */
 	interpret();
 }
@@ -1873,6 +2443,18 @@ void SqueakTerminate() {
 #else
 	ioShutdownAllModules();
 #endif
+}
+
+WindowPtr getSTWindow(void) {
+    return stWindow;
+}
+
+int setMessageHook(eventMessageHook theHook) {
+    messageHook = theHook;
+}
+
+int setPostMessageHook(eventMessageHook theHook) {
+    postMessageHook = theHook;
 }
 
 #if !TARGET_API_MAC_CARBON

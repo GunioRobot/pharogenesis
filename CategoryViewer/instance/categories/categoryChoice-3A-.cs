@@ -11,7 +11,7 @@ categoryChoice: aCategory
 				ifFalse:
 					[actualPane selection: (scriptedPlayer categories indexOf: aCategory)]].
 
-	bin _ PhraseWrapperMorph new borderWidth: 0; orientation: #vertical.
+	bin _ PhraseWrapperMorph new borderWidth: 0; listDirection: #topToBottom.
 	bin addAllMorphs:
 		((scriptedPlayer tilePhrasesForCategory: aCategory inViewer: self) collect:
 			[:aViewerRow | self viewerEntryFor: aViewerRow]).

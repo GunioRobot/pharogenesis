@@ -1,0 +1,1 @@
+Represents a collection of test cases that are supposed to generate failures and errors to be able to test the generation of failures and errors to be reported in the user interfaces. If this reporting of failures and errors in the user interfaces has to be tested, TestFailureErrorList must be a subclass of TestCase.

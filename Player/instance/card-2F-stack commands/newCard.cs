@@ -1,2 +1,0 @@
-newCard
-	self costume newCard

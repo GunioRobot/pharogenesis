@@ -2,7 +2,7 @@ initializeSlider
 	slider := RectangleMorph newBounds: self totalSliderArea color: self sliderColor.
 	sliderShadow := RectangleMorph newBounds: self totalSliderArea
 						color: self pagingArea color.
-	slider on: #mouseStillDown send: #scrollAbsolute: to: self.
+	slider on: #mouseMove send: #scrollAbsolute: to: self.
 	slider on: #mouseDown send: #mouseDownInSlider: to: self.
 	slider on: #mouseUp send: #mouseUpInSlider: to: self.
 	slider setBorderWidth: 1 borderColor: #raised.

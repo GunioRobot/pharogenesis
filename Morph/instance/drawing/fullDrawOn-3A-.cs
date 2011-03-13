@@ -3,7 +3,16 @@ fullDrawOn: aCanvas
 
 	self visible ifFalse: [^ self].
 	(self hasProperty: #errorOnDraw) ifTrue:[^self drawErrorOn: aCanvas].
-	aCanvas drawMorph: self.
-	self drawSubmorphsOn:aCanvas.
-	self drawDropHighlightOn: aCanvas.
-	self drawMouseDownHiglightOn: aCanvas
+	"Note: At some point we should generalize this into some sort of 
+	multi-canvas so that we can cross-optimize some drawing operations."
+	"Pass 1: Draw eventual drop-shadow"
+	self hasDropShadow ifTrue: [self drawDropShadowOn: aCanvas].
+	(self hasRolloverBorder and: [(aCanvas seesNothingOutside: self bounds) not])
+		ifTrue: [self drawRolloverBorderOn: aCanvas].
+
+	"Pass 2: Draw receiver itself"
+	aCanvas roundCornersOf: self during:[
+		aCanvas drawMorph: self.
+		self drawSubmorphsOn:aCanvas.
+		self drawDropHighlightOn: aCanvas.
+		self drawMouseDownHighlightOn: aCanvas].

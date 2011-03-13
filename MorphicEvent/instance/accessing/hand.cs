@@ -1,4 +1,3 @@
 hand
-	"Return the hand that originated this event."
-
-	^ sourceHand
+	"Return the source that generated the event"
+	^source

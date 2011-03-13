@@ -3,4 +3,4 @@ ServerAction
 	instanceVariableNames: 'processBlock returnBlock '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'PluggableWebServer'
+	category: 'Network-Pluggable Web Server'

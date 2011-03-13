@@ -1,0 +1,2 @@
+partRepresented
+	^self

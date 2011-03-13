@@ -1,0 +1,1 @@
+B3DIndexedQuad class instanceVariableNames: ''

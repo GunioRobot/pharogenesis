@@ -29,16 +29,16 @@ open
 	templateView window: (0@0 extent: 80@15).
 	topView addSubView: templateView below: volListView.
 
-	Preferences optionalButtons
-		ifTrue: [
-			underPane _ aFileList optionalButtonView.
+	aFileList wantsOptionalButtons
+		ifTrue:
+			[underPane _ aFileList optionalButtonView.
 			underPane isNil
 				ifTrue: [pHeight _ 60]
 				ifFalse: [
 					topView addSubView: underPane toRightOf: volListView.
 					pHeight _ 60 - aFileList optionalButtonHeight]]
-		ifFalse: [
-			underPane _ nil.
+		ifFalse:
+			[underPane _ nil.
 			pHeight _ 60].
 
 	fileListView _ PluggableListView on: aFileList
@@ -58,4 +58,4 @@ open
 	fileContentsView window: (0@0 extent: 200@140).
 	topView addSubView: fileContentsView below: templateView.
 
-	topView controller open.
+	topView controller open

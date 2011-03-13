@@ -3,4 +3,4 @@ Object
 	instanceVariableNames: 'seed a m q r '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Numeric-Numbers'
+	category: 'Kernel-Numbers'

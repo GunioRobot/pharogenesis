@@ -1,0 +1,2 @@
+helpMsgsAdditionhalosshowDirectionForSketches
+	^ #((showDirectionForSketches 'If enabled, direction handles are always shown for SketchMorphs.  If disabled, direction handles can be shown by the ''show direction handles'' command in the red menu.' ) )

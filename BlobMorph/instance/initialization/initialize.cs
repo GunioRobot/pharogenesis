@@ -1,6 +1,7 @@
 initialize
 
 	super initialize.
+	self beSmoothCurve.
 
 	random _ Random new.
 	sneaky _ random next < 0.75.

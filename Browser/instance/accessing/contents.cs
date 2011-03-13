@@ -10,13 +10,13 @@ contents
 	editSelection == #editSystemCategories 
 		ifTrue: [^ systemOrganizer printString].
 	editSelection == #newClass 
-		ifTrue: [^ (theClass _ self selectedClassOrMetaClass)
+		ifTrue: [^ (theClass _ self selectedClass)
 			ifNil:
 				[Class template: self selectedSystemCategoryName]
 			ifNotNil:
 				[Class templateForSubclassOf: theClass category: self selectedSystemCategoryName]].
 	editSelection == #editClass 
-		ifTrue: [^ self selectedClassOrMetaClass definition].
+		ifTrue: [^ self selectedClassOrMetaClass definitionST80: Preferences printAlternateSyntax not].
 	editSelection == #editComment 
 		ifTrue: [(theClass _ self selectedClass) ifNil: [^ ''].
 				comment _ theClass comment.

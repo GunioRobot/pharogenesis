@@ -1,0 +1,3 @@
+classSelectorDelimiters
+
+	^self class classSelectorDelimiters

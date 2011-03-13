@@ -1,4 +1,5 @@
 updatingTileForArgType: typeSymbol partName: partName getSelector: getSelector putSelector: putSelector
+	"Answer a readout tile representing the given part's value, given the putter, getter, and type information"
 
 	| aColor aTile displayer |
 	aColor _ Color lightGray lighter.
@@ -10,17 +11,22 @@ updatingTileForArgType: typeSymbol partName: partName getSelector: getSelector p
 				ifTrue:
 					[SoundReadoutTile new typeColor: aColor]
 				ifFalse:
-					[StringReadoutTile new typeColor: aColor]].
+					[typeSymbol == #buttonPhase
+						ifTrue:
+							[SymbolListTile new choices: #(buttonDown whilePressed buttonUp) dataType:  typeSymbol]
+						ifFalse:
+							[StringReadoutTile new typeColor: aColor]]].
 
  	displayer _ UpdatingStringMorph new
 		getSelector: getSelector;
 		target: self player;
 		growable: true;
+		minimumWidth: 24;
 		putSelector: ((putSelector == #unused) ifTrue: [nil] ifFalse: [putSelector]).
 
 	(typeSymbol == #number)
 		ifTrue:
-			 [(#(cursorWrapped  "etc...") includes: partName)
+			 [((#(cursor  "etc...") includes: partName) and: [self isKindOf: GraphMorph])
 				ifTrue:
 					[displayer floatPrecision: 0.1]
 				ifFalse:
@@ -36,6 +42,6 @@ updatingTileForArgType: typeSymbol partName: partName getSelector: getSelector p
 				ifTrue: 	[displayer useStringFormat]
 				ifFalse:	[displayer useDefaultFormat]].
 	aTile addMorphBack: displayer.
-	((putSelector ~~ #unused) and: [#(number sound boolean) includes: typeSymbol])  ifTrue: [aTile addArrows].
-	aTile literal: (self scriptPerformer perform: getSelector).
+	((putSelector ~~ #unused) and: [#(number sound boolean buttonPhase) includes: typeSymbol])  ifTrue: [aTile addArrows].
+	aTile setLiteralInitially: (self scriptPerformer perform: getSelector).
 	^ aTile

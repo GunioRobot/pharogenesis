@@ -1,2 +1,1 @@
-DisplayTextView comment:
-'I represent a view of an instance of DisplayText.'
+I represent a view of an instance of DisplayText.

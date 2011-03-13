@@ -3,4 +3,4 @@ StandardScriptingSystem
 	instanceVariableNames: ''
 	classVariableNames: 'EToyVersion EToyVersionDate '
 	poolDictionaries: ''
-	category: 'Experimental-EToy'
+	category: 'Morphic-Experimental'

@@ -1,0 +1,1 @@
+AbstractLauncher class instanceVariableNames: ''

@@ -1,4 +1,13 @@
 text: s at:point font: fontOrNil color: c justified:justify parwidth:parwidth
+
+	self flag: #bob.		"deprecated in favor of #textStyled......."
+
+
+
+
+
+
+
 	self setFont:(fontOrNil ifNil:[self defaultFont]).
 	self comment:' text color: ',c printString.
 	self setColor:c.

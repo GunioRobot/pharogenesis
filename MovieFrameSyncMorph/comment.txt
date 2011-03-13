@@ -1,0 +1,7 @@
+This class and its subclasses act to syncronize movie players with the progress of a MIDI score and further background can be found in the comment for MoviePlayerMorph.
+
+There are two main forms of synchroniztion.
+
+MovieFrameSyncMorphs are used where you have a MIDI score open with a piano roll, and a separate MoviePlayer Morph.  A MovieFrameSyncMorph can be torn off from the MoviePlayer with a shift-drag gesture or menu command, and can then be dropped into a MIDI score.  They are used to start a movie player at a given place in the score, and then to stretch or compress the movie frame rate so that certain frames are synchronized with the corresponding points in the score.
+
+MovieClipStartMorphs (q.v.) and MovieClipEndMorphs are used for the other kind of synchronization, namely where you wish to assemble a number of movie clips in a sequence.

@@ -1,0 +1,5 @@
+currentPropagateChanges
+"
+CurrentProjectRefactoring currentPropagateChanges
+"
+	^self xxxCurrent propagateChanges

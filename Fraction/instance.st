@@ -3,4 +3,4 @@ Number
 	instanceVariableNames: 'numerator denominator '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Numeric-Numbers'
+	category: 'Kernel-Numbers'

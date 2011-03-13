@@ -1,17 +1,21 @@
-addCustomMenuItems: aCustomMenu hand: aHandMorph
-	super addCustomMenuItems: aCustomMenu hand: aHandMorph.
-	handles == nil
-		ifTrue: [aCustomMenu add: 'show handles' action: #addHandles]
-		ifFalse: [aCustomMenu add: 'hide handles' action: #removeHandles].
-	closed
-		ifTrue:
-		[aCustomMenu add: 'open polygon' action: #makeOpen.
-		quickFill
-			ifTrue: [aCustomMenu add: 'proper fill' selector: #quickFill: argument: false]
-			ifFalse: [aCustomMenu add: 'quick fill' selector: #quickFill: argument: true]]
-		ifFalse:
-		[aCustomMenu add: 'close polygon' action: #makeClosed.
-		arrows == #none ifFalse: [aCustomMenu add: '---' action: #makeNoArrows].
-		arrows == #forward ifFalse: [aCustomMenu add: '-->' action: #makeForwardArrow].
-		arrows == #back ifFalse: [aCustomMenu add: '<--' action: #makeBackArrow].
-		arrows == #both ifFalse: [aCustomMenu add: '<-->' action: #makeBothArrows]]
+addCustomMenuItems: aMenu hand: aHandMorph
+	| lineName |
+	super addCustomMenuItems: aMenu hand: aHandMorph.
+	aMenu addUpdating: #handlesShowingPhrase target: self action: #showOrHideHandles.
+	vertices size > 2 ifTrue:
+		[aMenu addUpdating: #openOrClosePhrase target: self action: #makeOpenOrClosed.
+		lineName _ closed ifTrue: ['outline'] ifFalse: ['line'].
+		self isCurve
+			ifTrue: [aMenu add: 'make segmented ', lineName action: #toggleSmoothing]
+			ifFalse: [aMenu add: 'make smooth ', lineName action: #toggleSmoothing]]. 
+	aMenu add: 'specify dashed line' action:  #specifyDashedLine.
+
+	self isOpen ifTrue:
+		[aMenu addLine.
+		aMenu addWithLabel: '---' enablement: [self isOpen and: [arrows ~~ #none]] action:  #makeNoArrows.
+		aMenu addWithLabel: '-->' enablement: [self isOpen and: [arrows ~~ #forward]] action:  #makeForwardArrow.
+		aMenu addWithLabel: '<--' enablement: [self isOpen and: [arrows ~~ #back]] action:  #makeBackArrow.
+		aMenu addWithLabel: '<->' enablement: [self isOpen and: [arrows ~~ #both]] action:  #makeBothArrows.
+		aMenu add: 'customize arrows' action: #customizeArrows:.
+		(self hasProperty: #arrowSpec)
+			ifTrue: [aMenu add: 'standard arrows' action: #standardArrows]].

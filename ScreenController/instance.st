@@ -1,6 +1,6 @@
-MouseMenuController
+Controller
 	subclass: #ScreenController
 	instanceVariableNames: ''
-	classVariableNames: 'ChangesMenu HelpMenu OpenMenu ProjectScreenMenu TopScreenMenu WindowMenu '
+	classVariableNames: 'LastScreenModeSelected '
 	poolDictionaries: ''
-	category: 'Interface-Support'
+	category: 'Kernel-ST80 Remnants'

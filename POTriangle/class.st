@@ -1,0 +1,1 @@
+POTriangle class instanceVariableNames: ''

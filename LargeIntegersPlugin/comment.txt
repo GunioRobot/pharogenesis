@@ -1,0 +1,40 @@
+LargeIntegersPlugin provides functions for speeding up LargeInteger arithmetics.
+
+Inst vars:
+	andOpIndex			C constant
+	orOpIndex			C constant
+	xorOpIndex 			C constant
+Used like an enum, in ST one would use symbols instead.
+
+Class vars:
+	none
+
+
+Evaluations
+-------------
+
+Try
+
+	LargeIntegersTest getModuleName.
+
+If it is nil, you probably have an older LargeInteger module or none at all; it works for version number 'v1.1' or higher.
+
+
+History
+--------
+
+v1.2
+
+- fix: >>anyBitOfBytes: aBytesOop from: start to: stopArg
+
+v1.1
+
+- >>primGetModuleName for checking the version of the plugin;
+
+- >>primDigitBitShiftMagnitude and >>primAnyBitFrom:to: for supporting - not installing! - unification of shift semantics of negative Integers;
+
+v1.0
+
+- speeds up digitDiv:neg: at about 20%.
+	In >>cCoreDigitDivDiv:len:rem:len:quo:len: the 'nibble' arithmetic is removed.
+

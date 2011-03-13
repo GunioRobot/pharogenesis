@@ -1,0 +1,5 @@
+I represent a player piece for Chinese Checkers.  Mostly I act as an ellipse, but my special methods ensure that I cannot be picked up or dropped except in the proper circumstances.
+
+Structure:
+ myBoard		a ChineseCheckers morph
+ boardLoc		my current logical position on the board.

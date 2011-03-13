@@ -1,2 +1,0 @@
-isPartsBin
-	^ true

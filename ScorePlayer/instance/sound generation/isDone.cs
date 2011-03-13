@@ -6,4 +6,5 @@ isDone
 	1 to: score tracks size do: [:i |
 		track _ score tracks at: i.
 		(trackEventIndex at: i) <= track size ifTrue: [^ false]].
+	(trackEventIndex last) <= score ambientTrack size ifTrue: [^ false].
 	^ true

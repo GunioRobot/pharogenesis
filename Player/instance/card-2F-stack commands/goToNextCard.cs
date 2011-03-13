@@ -1,2 +1,0 @@
-goToNextCard
-	self costume goToNextCard

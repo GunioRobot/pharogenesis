@@ -1,5 +1,7 @@
 addCustomMenuItems: aMenu hand: aHandMorph
+	"Add further items to the menu as appropriate"
 
+	aMenu addUpdating: #edgeString action: #setEdgeToAdhereTo.
 	aMenu addLine.
 	aMenu addUpdating: #textualTabString action: #textualTab.
 	aMenu addUpdating: #graphicalTabString action: #graphicalTab.
@@ -10,9 +12,14 @@ addCustomMenuItems: aMenu hand: aHandMorph
 		[aMenu addUpdating: #partsBinString action: #togglePartsBinMode].
 	aMenu addUpdating: #dragoverString action: #toggleDragOverBehavior.
 	aMenu addUpdating: #mouseoverString action: #toggleMouseOverBehavior.
-	"aMenu addUpdating: #slideString action: #toggleSlideBehavior.
-	aMenu addUpdating: #inboardString action: #toggleInboardness."
-	"aMenu addUpdating: #thicknessString ('thickness... (current: ', self thickness printString, ')') action: #setThickness."
-	aMenu addUpdating: #edgeString action: #setEdgeToAdhereTo.
+	aMenu addLine.
+	aMenu addUpdating: #isGlobalFlapString action: #toggleIsGlobalFlap.
+	aMenu balloonTextForLastItem: 'If checked, this flap will be available in all morphic projects; if not, it will be private to this project.,'.
+
 	aMenu addLine.
 	aMenu add: 'destroy this flap' action: #destroyFlap.
+
+	"aMenu addUpdating: #slideString action: #toggleSlideBehavior.
+	aMenu addUpdating: #inboardString action: #toggleInboardness.
+	aMenu addUpdating: #thicknessString ('thickness... (current: ', self thickness printString, ')') action: #setThickness."
+

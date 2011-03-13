@@ -19,4 +19,6 @@ int snd_StartRecording(int desiredSamplesPerSec, int stereo, int semaIndex);
 int snd_StopRecording(void);
 double snd_GetRecordingSampleRate(void);
 int snd_RecordSamplesIntoAtLength(int buf, int startSliceIndex, int bufferSizeInBytes);
+void snd_Volume(double *left, double *right); //johnmci@smalltalkconsulting.com Nov 6th 2000
+void snd_SetVolume(double left, double right);//johnmci@smalltalkconsulting.com Nov 6th 2000
 '

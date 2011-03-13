@@ -8,7 +8,7 @@ editAnnotations
 project to use this feature.'].
 	aPanel _ AlignmentMorph newRow extent: 300 @ 100.
 	ins _ AlignmentMorph newColumn extent: 150 @ 100.
-	ins enableDragNDrop; beSticky.
+	ins enableDrop: true; beSticky.
 	ins color: Color green muchLighter.
 	outs _ ins fullCopy.
 	outs color: Color red muchLighter.
@@ -20,6 +20,11 @@ project to use this feature.'].
 		[:sym | pair _ info detect: [:aPair | aPair first == sym].
 		aMorph _ StringMorph new contents: pair first.
 		aMorph setBalloonText: pair last.
+		aMorph enableDrag: true.
+		aMorph
+			on: #startDrag
+			send: #startDrag:with:
+			to: aMorph.
 		ins addMorphBack: aMorph].
 	info do:
 		[:aPair | 
@@ -27,6 +32,11 @@ project to use this feature.'].
 				ifFalse:
 					[aMorph _ StringMorph new contents: aPair first.
 					aMorph setBalloonText: aPair last.
+					aMorph enableDrag: true.
+					aMorph
+						on: #startDrag
+						send: #startDrag:with:
+						to: aMorph.
 					outs addMorph: aMorph]].
 	aPanel layoutChanged.
 	aWindow _ SystemWindowWithButton new setLabel: 'Annotations'.

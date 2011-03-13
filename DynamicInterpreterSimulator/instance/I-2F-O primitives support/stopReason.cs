@@ -1,3 +1,0 @@
-stopReason
-
-	^ myBitBlt stopReason

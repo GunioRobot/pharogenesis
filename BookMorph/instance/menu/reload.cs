@@ -4,10 +4,12 @@ reload
 
 	| url onServer onPgs sq which |
 	(url _ self valueOfProperty: #url) ifNil: ["for .bo index file"
-		url _ FillInTheBlank 
-			request: 'url of the place where this book''s index is stored.
+		[
+			url _ FillInTheBlank 
+				request: 'url of the place where this book''s index is stored.
 Must begin with file:// or ftp://' 
-			initialAnswer: (self getStemUrl, '.bo').
+				initialAnswer: (self getStemUrl, '.bo').
+		] valueWithWorld: self world.
 		url size > 0 ifTrue: [self setProperty: #url toValue: url]
 			ifFalse: [^ self]].
 	onServer _ self class new fromURL: url.

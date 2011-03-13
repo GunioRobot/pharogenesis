@@ -1,0 +1,1 @@
+TransferMorphAnimation class instanceVariableNames: ''

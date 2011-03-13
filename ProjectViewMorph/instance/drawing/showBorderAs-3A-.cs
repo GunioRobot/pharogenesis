@@ -1,4 +1,5 @@
 showBorderAs: aColor
-	image border: image boundingBox width: 1 fillColor: aColor.
+
+	"image border: image boundingBox width: 1 fillColor: aColor.
 	currentBorderColor _ aColor.
-	self changed
+	self changed"

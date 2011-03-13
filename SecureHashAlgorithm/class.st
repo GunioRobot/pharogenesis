@@ -1,0 +1,1 @@
+SecureHashAlgorithm class instanceVariableNames: ''

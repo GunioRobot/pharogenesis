@@ -7,7 +7,7 @@ initializeFontMap
 		'Palatino'  'Palatino-Roman'
 		'NewYork' 'Helvetica'
 		'NewYork-Bold' 'Helvetica-Bold'
-		'ComicBold' 'VAGRounded-Black'
+		'ComicBold' 'Helvetica-Narrow-Bold'
 	).
 
 	1 to: pairs size by: 2 do: [:i |

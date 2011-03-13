@@ -1,0 +1,1 @@
+FlashPlayerModel class instanceVariableNames: ''

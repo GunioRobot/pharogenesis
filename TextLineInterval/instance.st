@@ -3,4 +3,4 @@ Interval
 	instanceVariableNames: 'internalSpaces paddingWidth lineHeight baseline '
 	classVariableNames: ''
 	poolDictionaries: 'TextConstants '
-	category: 'Graphics-Support'
+	category: 'Graphics-Text'

@@ -1,0 +1,3 @@
+getPartsBinStatus
+
+	^pageHolder isPartsBin

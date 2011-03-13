@@ -1,0 +1,3 @@
+binary
+
+	self bufferStream binary

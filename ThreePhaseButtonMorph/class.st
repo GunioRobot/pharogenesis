@@ -1,0 +1,1 @@
+ThreePhaseButtonMorph class instanceVariableNames: ''

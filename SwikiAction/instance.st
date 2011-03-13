@@ -1,6 +1,6 @@
 ServerAction
 	subclass: #SwikiAction
-	instanceVariableNames: 'urlmap source name lastPageMethod formatters '
+	instanceVariableNames: 'urlmap source name formatters formatter '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'PluggableWebServer'
+	category: 'Network-Pluggable Web Server'

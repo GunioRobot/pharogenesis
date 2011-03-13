@@ -1,0 +1,1 @@
+MacPixPatPtr class instanceVariableNames: ''

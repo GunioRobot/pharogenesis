@@ -1,0 +1,2 @@
+initialValuesAdditiongeneralmodalColorPickers
+	^ #((modalColorPickers true (general ) ) )

@@ -1,0 +1,2 @@
+emptyScript
+	"The empty script"

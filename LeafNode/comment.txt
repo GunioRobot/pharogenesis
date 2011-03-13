@@ -1,5 +1,4 @@
-LeafNode comment:
-'I represent a leaf node of the compiler parse tree. I am abstract.
+I represent a leaf node of the compiler parse tree. I am abstract.
 	
 Types (defined in class ParseNode):
 	1 LdInstType (which uses class VariableNode)
@@ -26,4 +25,4 @@ bytecode 132 has been redefined as DoubleExtendedDoAnything:
 	This has allowed bytecode 134 also to be redefined as a second extended send
 	that can access literals up to 64 for nargs up to 3 without needing three bytes.
 	It is just like 131, except that the extension byte is aallllll instead of aaalllll,
-	where aaa are bits of argument count, and lll are bits of literal index.'
+	where aaa are bits of argument count, and lll are bits of literal index.

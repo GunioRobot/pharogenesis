@@ -17,4 +17,4 @@ browseFiles: fileList
 			packages: packageDict].
 	self
 		openBrowserView: browser createViews
-		label: 'Package Browser'.
+		label: 'File Contents Browser'.

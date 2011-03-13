@@ -21,7 +21,7 @@ openSystemCatEditString: aString
 		list: #classList
 		selected: #classListIndex
 		changeSelected: #classListIndex:
-		menu: #classListMenu:
+		menu: #classListMenu:shifted:
 		keystroke: #classListKey:from:.
 	classListView window: (0 @ 0 extent: 67 @ 62).
 	topView addSubView: classListView below: systemCategoryListView.
@@ -52,20 +52,20 @@ openSystemCatEditString: aString
 	messageListView window: (0 @ 0 extent: 67 @ 70).
 	topView addSubView: messageListView toRightOf: messageCategoryListView.
 
-	Preferences useAnnotationPanes
-		ifTrue: [
-			annotationPane _ PluggableTextView on: self
+	 self wantsAnnotationPane
+		ifTrue:
+			[annotationPane _ PluggableTextView on: self
 				text: #annotation accept: nil
 				readSelection: nil menu: nil.
 			annotationPane window: (0@0 extent: 200@self optionalAnnotationHeight).
 			topView addSubView: annotationPane below: switchView.
 			y _ 110 - 12 - self optionalAnnotationHeight.
 			underPane _ annotationPane]
-		ifFalse: [
-			y _ 110 - 12.
+		ifFalse:
+			[y _ 110 - 12.
 			underPane _ switchView].
 
-	Preferences optionalButtons ifTrue:
+	self wantsOptionalButtons ifTrue:
 		[optionalButtonsView _ self buildOptionalButtonsView.
 		optionalButtonsView borderWidth: 1.
 		topView addSubView: optionalButtonsView below: underPane.

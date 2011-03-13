@@ -1,2 +1,3 @@
-PolygonMorph comment:
-'Polygons and curves use a 1-bit shape form to make display reasonably fast.  This could be further optimized by going to a 2-bit form and including the border.  It would also be simpleto compute an inner rectangle, as with ellipses. '
+This class combines the old Polygon and Curve classes.
+
+The 1-bit fillForm to make display and containment tests reasonably fast.  However, this functionality is in the process of being supplanted by balloon capabilities, which should eventually provide anti-aliasing as well.

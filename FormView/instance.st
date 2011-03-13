@@ -3,4 +3,4 @@ View
 	instanceVariableNames: 'rule mask '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Graphics-Views'
+	category: 'ST80-Views'

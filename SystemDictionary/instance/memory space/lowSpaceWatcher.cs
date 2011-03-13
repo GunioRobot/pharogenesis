@@ -1,6 +1,7 @@
 lowSpaceWatcher
 	"Wait until the low space semaphore is signalled, then take appropriate actions."
 
+	| free |
 	self garbageCollectMost <= self lowSpaceThreshold ifTrue: [
 		self garbageCollect <= self lowSpaceThreshold ifTrue: [
 			"free space must be above threshold before starting low space watcher"
@@ -16,6 +17,11 @@ lowSpaceWatcher
 	self primLowSpaceSemaphore: nil.
 	LowSpaceProcess _ nil.
 	"Note: user now unprotected until the low space watcher is re-installed"
+
+	self memoryHogs isEmpty ifFalse: [
+		free := self bytesLeft.
+		self memoryHogs do: [ :hog | hog freeSomeSpace ].
+		self bytesLeft > free ifTrue: [ ^ self installLowSpaceWatcher ]].
 
 	Smalltalk isMorphic
 			ifTrue: [CurrentProjectRefactoring currentInterruptName: 'Space is low']

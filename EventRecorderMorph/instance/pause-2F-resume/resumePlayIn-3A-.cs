@@ -1,10 +1,10 @@
 resumePlayIn: aWorld
 
 	playHand _ HandMorphForReplay new recorder: self.
-	playHand position: tapeStream peek value cursorPoint.
+	playHand position: tapeStream peek position.
 	aWorld addHand: playHand.
 	playHand newKeyboardFocus: aWorld.
-	playHand userInitials: 'play'.
+	playHand userInitials: 'play' andPicture: nil.
 
 	lastEvent _ nil.
 	lastDelta _ 0@0.

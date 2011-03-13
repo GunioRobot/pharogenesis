@@ -1,0 +1,2 @@
+hasRemoteServer
+	^self remoteServer notNil

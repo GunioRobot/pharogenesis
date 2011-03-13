@@ -21,7 +21,7 @@ addProjectNavigationButtonsTo: aMorph
 	aMorph addMorph: aButton.
 
 	aButton _ aButton fullCopy actWhen: #buttonDown.
-	aButton actionSelector: #jumpToProject; target: self currentHand.
+	aButton actionSelector: #jumpToProject; target: Project.
 	aButton label: 'Go...' font: (StrikeFont familyName: #ComicBold size: 19); borderWidth: 0.
 	aButton position: 78 @ 16.
 	aButton firstSubmorph color: Color red lighter.

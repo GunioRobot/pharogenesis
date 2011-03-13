@@ -1,0 +1,3 @@
+matchesDate: aDate
+
+	^ date = aDate

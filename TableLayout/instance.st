@@ -1,0 +1,6 @@
+LayoutPolicy
+	subclass: #TableLayout
+	instanceVariableNames: 'properties minExtentCache '
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Morphic-Layouts'

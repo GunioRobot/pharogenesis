@@ -3,7 +3,8 @@ undo
 	 If another ParagraphEditor instance did that edit, UndoInterval is invalid;
 	 just recover the contents of the undo-buffer at the start of the paragraph."
 
-	[sensor keyboardPressed] whileTrue: [sensor keyboard]. "a way to flush stuck keys"
+	sensor flushKeyboard. "a way to flush stuck keys"
+	self closeTypeIn.
 
 	UndoParagraph == paragraph ifFalse: "Can't undo another paragraph's edit"
 		[UndoMessage _ Message selector: #undoReplace.

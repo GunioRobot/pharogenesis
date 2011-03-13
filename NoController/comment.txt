@@ -1,2 +1,1 @@
-NoController comment:
-'I represent a controller that never wants control. I am the controller for views that are non-interactive.'
+I represent a controller that never wants control. I am the controller for views that are non-interactive.

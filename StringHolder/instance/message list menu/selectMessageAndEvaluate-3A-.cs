@@ -3,7 +3,7 @@ selectMessageAndEvaluate: aBlock
 
 	| selector method messages |
 	(selector _ self selectedMessageName) ifNil: [^ self].
-	method _ self selectedClassOrMetaClass 
+	method _ (self selectedClassOrMetaClass ifNil: [^ self])
 		compiledMethodAt: selector
 		ifAbsent: [].
 	(method isNil or: [(messages _ method messages) size == 0])

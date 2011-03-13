@@ -5,4 +5,4 @@ step
 	newBoolean _ target perform: getSelector.
 	newBoolean == self isOn
 		ifFalse:
-			[self state: (newBoolean ifTrue: [#on] ifFalse: [#off])]
+			[self state: (newBoolean == true ifTrue: [#on] ifFalse: [#off])]

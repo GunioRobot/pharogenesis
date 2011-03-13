@@ -1,4 +1,4 @@
 setInitialState
 	super setInitialState.
-	inset _ 0.
+	self layoutInset: 0.
 	pageSize _ 156 @ 232

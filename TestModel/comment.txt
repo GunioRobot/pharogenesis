@@ -1,0 +1,13 @@
+A simple graphical user interface to run all the test cases that exist in this image within the SUnit framework by Kent Beck and Erich Gamma (SUnit release 2, November 1998). A window can be opened via TestModel openAsMorph in a morphic environment, or via TestModel open in a MVC environment. A selection pattern history keeps track of all valid patterns used. The pattern history as well as its management operations are accessible via the yellow button menu of the pattern text entry field.
+
+Instance Variables:
+	summaryText		<String>
+	detailsText			<String>
+	failureList			<OrderedCollection of: String>
+	errorList			<OrderedCollection of: String>
+	patternHistory		<OrderedCollection of: String>
+	summaryTextM		<PluggableTextMorph | nil>
+	summaryTextV		<PluggableTextView | nil>
+	updateColorSelector	<Symbol>
+	patternTextM		<PluggableTextMorph | nil>
+	patternTextV		<PluggableTextView | nil>

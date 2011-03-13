@@ -6,7 +6,7 @@ interActivityPause
 			currentTime _ Time millisecondClockValue.
 			wait _ lastActivityTime + MinActivityLapse - currentTime.
 			wait > 0 ifTrue: [ 
-				wait < MinActivityLapse  "big waits happen after a snapshot"
+				wait <= MinActivityLapse  "big waits happen after a snapshot"
 					ifTrue: [DisplayScreen checkForNewScreenSize.
 							(Delay forMilliseconds: wait) wait ]. ]. ]. ].
 

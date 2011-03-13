@@ -1,3 +1,3 @@
 primSetColorTransform: transform
-	<primitive:'gePrimitiveSetColorTransform'>
+	<primitive: 'primitiveSetColorTransform' module: 'B2DPlugin'>
 	^self primitiveFailed

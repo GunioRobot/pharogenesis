@@ -1,0 +1,1 @@
+InterpreterSimulator class instanceVariableNames: ''

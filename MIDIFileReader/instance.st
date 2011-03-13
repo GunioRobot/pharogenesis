@@ -4,4 +4,4 @@ Object
 		'stream fileType trackCount ticksPerQuarter tracks trackInfo tempoMap strings track trackStream activeEvents maxNoteTicks '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Music-Scores'
+	category: 'Sound-Scores'

@@ -1,41 +1,40 @@
 offerScriptorMenu
-	| aMenu result  aList lines title |
-	self isAnonymous
-		ifTrue:
-			[^ self inform: 'ancient structure!
-please modernize!']
-		ifFalse:
-			[title _ scriptName asString.
-			self isTextuallyCoded
-				ifTrue:
-					[title _ title, ' (textually coded)'.
-					aList _ #(
-						('revert to tile version...'		revertScriptVersion)
-						('modify textual script'			editScriptTextually)
-						('stand-alone script pane'		makeIsolatedCodePane)
-						('fires per tick...'				chooseFrequency)
-				"		('view all scripts'				browseScripts)"
-						('destroy this script'				destroyScript)
-						('rename this script'				renameScript)
-						('explain status alternatives' 	explainStatusAlternatives)
-						('button to fire this script'		tearOfButtonToFireScript)).
-					lines _ #(3 4 6)]
-				ifFalse:
-					[aList _ #(
-						('save this version'				saveScriptVersion)
-						('revert to prior version...'		revertScriptVersion)
-						('edit this script textually'		editScriptTextually)
-						('stand-alone script pane'		makeIsolatedCodePane)
-						('fires per tick...'				chooseFrequency)
-					"	('view all scripts'				browseScripts)"
-						('destroy this script'				destroyScript)
-						('rename this script'				renameScript)
-						('explain status alternatives' 	explainStatusAlternatives)
-						('button to fire this script'		tearOfButtonToFireScript)).
-					lines _ #(4 5 7)]].
+	"Put up a menu in response to the user's clicking in the menu-request area of the scriptor's heaer"
 
-	aMenu _ SelectionMenu labelList: (aList collect: [:pair | pair first]) lines: lines selections: (aList collect: [:pair | pair second]).
-	result _ aMenu startUpWithCaption: title.
-	result ifNotNil: [self perform: result]
+	| aMenu  count |
 
-"		('add parameter to this script'	addParameter)"
+	self modernize.
+	aMenu _ MenuMorph new defaultTarget: self.
+	aMenu addTitle: scriptName asString.
+	count _ self savedTileVersionsCount.
+
+	self showingMethodPane
+		ifFalse:				"currently showing tiles"
+			[aMenu add: 'show code textually' action: #showSourceInScriptor.
+			count > 0 ifTrue: 
+				[aMenu add: 'revert to tile version...' action:	 #revertScriptVersion].
+			aMenu add: 'save this version'	action: #saveScriptVersion]
+
+		ifTrue:				"current showing textual source"
+			[count >= 1 ifTrue:
+				[aMenu add: 'revert to tile version' action: #revertToTileVersion].
+			aMenu add: 'make tiles from this code' action: #recreateTileVersion].
+	Preferences noviceMode ifFalse: ["just for now, not for kids"
+		aMenu add: 'use new universal tiles' action: #useNewTiles].
+			
+
+	aMenu addList: #(
+		-
+		('destroy this script'					destroyScript)
+		('rename this script'					renameScript)
+		-
+		('fires per tick...'					chooseFrequency)
+		('explain status alternatives' 		explainStatusAlternatives)
+		('hand me a tile for self'			tileForSelf)
+		('edit balloon help for this script'	editMethodDescription)
+		('button to fire this script'			tearOfButtonToFireScript)
+		 ).
+
+	aMenu popUpInWorld: self currentWorld.
+
+	"		('add parameter to this script'	addParameter)"

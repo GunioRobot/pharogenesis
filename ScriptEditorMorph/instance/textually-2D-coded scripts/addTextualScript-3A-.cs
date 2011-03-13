@@ -19,7 +19,7 @@ addTextualScript: aBrowser
 	codePane bounds: (window topLeft extent: 200@120).	"will get moved"
 	window addMorphBack: codePane.
 	codePane borderWidth: 1; retractableOrNot; "make it stay"
-		color: (Color perform: aBrowser defaultBackgroundColor).
+		color: aBrowser defaultBackgroundColor.
 
 
 "	self addMorph: aMorph.

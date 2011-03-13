@@ -1,0 +1,6 @@
+CardPlayer
+	Instance variables of the Uniclass represent the data in the "fields" of each card in the stack.
+	Each Instance variable is some kind of value holder.
+
+	The code for the *buttons* on the background resides in the CardPlayer uniclass.
+	

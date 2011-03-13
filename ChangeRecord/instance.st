@@ -3,4 +3,4 @@ Object
 	instanceVariableNames: 'file position type class category meta stamp '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Interface-Changes'
+	category: 'Tools-Changes'

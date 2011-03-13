@@ -1,4 +1,4 @@
 primReadPort: portNumber into: byteArray startingAt: startIndex count: count
 
-	<primitive: 241>
+	<primitive: 'primitiveSerialPortRead' module: 'SerialPlugin'>
 	self primitiveFailed.

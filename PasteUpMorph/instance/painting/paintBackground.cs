@@ -5,7 +5,7 @@ paintBackground
 	pic _ self backgroundSketch.
 	pic ifNotNil: [pic editDrawingIn: self forBackground: true]		"need to resubmit it? (tck comment)"
 		ifNil: [rect _ self bounds.
-			pic _ self world firstHand drawingClass new form: 
+			pic _ self world drawingClass new form: 
 				(Form extent: rect extent depth: Display depth).
 			pic bounds: rect.
 			"self world addMorphBack: pic.  done below"

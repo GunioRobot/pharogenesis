@@ -1,0 +1,2 @@
+clipRect
+	^innerClipRect

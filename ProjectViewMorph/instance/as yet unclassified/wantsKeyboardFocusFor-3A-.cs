@@ -1,0 +1,3 @@
+wantsKeyboardFocusFor: aSubmorph
+
+	^true

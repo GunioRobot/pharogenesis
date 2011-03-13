@@ -3,6 +3,6 @@ initialize
 
 	CurrentProject ifNil:
 		[CurrentProject _ super new initialProject.
-		CurrentProject spawnNewProcessAndTerminateOld: true].
+		Project spawnNewProcessAndTerminateOld: true].
 
 	"Project initialize"

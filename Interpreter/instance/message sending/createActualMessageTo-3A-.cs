@@ -1,7 +1,8 @@
 createActualMessageTo: aClass
 	"Bundle up the selector, arguments and lookupClass into a Message object.
 	In the process it pops the arguments off the stack, and pushes the message object.
-	This can then be presented as the argument of eg, doesNotUnderstand:"
+	This can then be presented as the argument of e.g. #doesNotUnderstand:.
+	ikp 11/20/1999 03:59 -- added hook for external runtime compilers."
 
 	| argumentArray message lookupClass |
 	"remap lookupClass in case GC happens during allocation"
@@ -15,9 +16,16 @@ createActualMessageTo: aClass
 	lookupClass _ self popRemappableOop.
 
 	self beRootIfOld: argumentArray.
-	self transfer: argumentCount
-		from: stackPointer - ((argumentCount - 1) * 4)
-		to: argumentArray + BaseHeaderSize.
+
+	compilerInitialized
+		ifTrue:
+			[self compilerCreateActualMessage: message storingArgs: argumentArray]
+		ifFalse:
+			[self transfer: argumentCount
+				from: stackPointer - ((argumentCount - 1) * 4)
+				to: argumentArray + BaseHeaderSize.
+			 self pop: argumentCount thenPush: message].
+	argumentCount _ 1.
 
 	self storePointer: MessageSelectorIndex ofObject: message
 		withValue: messageSelector.
@@ -27,6 +35,3 @@ createActualMessageTo: aClass
 	["Only store lookupClass if message has 3 fields (old images don't)"
 	self storePointer: MessageLookupClassIndex ofObject: message
 		withValue: lookupClass].
-
-	self pop: argumentCount thenPush: message.
-	argumentCount _ 1.

@@ -1,0 +1,1 @@
+FlashLineStyle class instanceVariableNames: ''

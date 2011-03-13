@@ -1,0 +1,1 @@
+ExternalSemaphoreTable class instanceVariableNames: ''

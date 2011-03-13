@@ -1,6 +1,6 @@
 StringHolder
 	subclass: #FileList
 	instanceVariableNames: 'fileName directory volList volListIndex list listIndex pattern sortMode brevityState '
-	classVariableNames: ''
+	classVariableNames: 'RecentDirs '
 	poolDictionaries: ''
-	category: 'Interface-FileList'
+	category: 'Tools-FileList'

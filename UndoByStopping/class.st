@@ -1,0 +1,1 @@
+UndoByStopping class instanceVariableNames: ''

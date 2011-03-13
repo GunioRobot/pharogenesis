@@ -1,0 +1,1 @@
+WaveEditor class instanceVariableNames: ''

@@ -1,0 +1,1 @@
+XBMReadWriter class instanceVariableNames: ''

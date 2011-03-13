@@ -1,7 +1,7 @@
 printCommentOn: aStream indent: indent 
 	| thisComment |
 	comment == nil ifTrue: [^ self].
-	aStream withAttributes: (Preferences syntaxAttributesFor: #comment)
+	aStream withStyleFor: #comment
 		do: [1 to: comment size do: 
 				[:index | 
 				index > 1 ifTrue: [aStream crtab: indent].

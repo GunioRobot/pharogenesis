@@ -1,0 +1,1 @@
+PostscriptEncoder class instanceVariableNames: ''

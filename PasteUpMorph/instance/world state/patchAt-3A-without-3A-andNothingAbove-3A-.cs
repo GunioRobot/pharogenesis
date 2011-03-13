@@ -14,5 +14,5 @@ patchAt: patchRect without: stopMorph andNothingAbove: stopThere
 		^ c form].
 	c fillRectangle: self bounds color: color.  "Fill bounds with world color."
 	self drawSubmorphsOn: c.
-	self hands reverseDo: [:h | h drawSubmorphsOn: c].
+	worldState handsReverseDo: [:h | h drawSubmorphsOn: c].
 	^c form

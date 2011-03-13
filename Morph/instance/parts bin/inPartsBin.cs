@@ -1,9 +1,5 @@
 inPartsBin
-	| o |
-	self isPartsDonor ifTrue: [^ true].
 
-	o _ self owner.
-	[o == nil] whileFalse:
-		[o isPartsBin ifTrue: [^ true].
-		o _ o owner].
+	self isPartsDonor ifTrue: [^ true].
+	self allOwnersDo: [:m | m isPartsBin ifTrue: [^ true]].
 	^ false

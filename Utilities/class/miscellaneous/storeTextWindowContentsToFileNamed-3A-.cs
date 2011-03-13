@@ -1,10 +1,14 @@
 storeTextWindowContentsToFileNamed: aName
 	"Utilities storeTextWindowContentsToFileNamed: 'TextWindows'"
 	| windows aDict assoc aRefStream textToUse aTextView |
+
+	"there is a reference to World, but this method seems to be unused"
+
+
 	aDict _ Dictionary new.
 	Smalltalk isMorphic
 		ifTrue:
-			[windows _ World submorphs select: [:m | m isKindOf: SystemWindow].
+			[windows _ Display bestGuessOfCurrentWorld submorphs select: [:m | m isKindOf: SystemWindow].
 			windows do:
 				[:w | assoc _ w titleAndPaneText.
 				assoc ifNotNil:

@@ -1,0 +1,3 @@
+primitiveSampledSoundMix
+	self export: true.
+	^self primSampledSoundmixSampleCountintostartingAtpan

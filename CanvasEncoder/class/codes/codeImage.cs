@@ -1,0 +1,2 @@
+codeImage
+	^$G

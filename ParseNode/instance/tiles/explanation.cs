@@ -1,0 +1,3 @@
+explanation
+
+	^self class printString

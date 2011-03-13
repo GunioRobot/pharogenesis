@@ -1,0 +1,1 @@
+PrettyTextDiffBuilder class instanceVariableNames: ''

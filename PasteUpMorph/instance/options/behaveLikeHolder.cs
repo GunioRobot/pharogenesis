@@ -1,5 +1,3 @@
 behaveLikeHolder
  
-	self resizeToFit: true; autoLineLayout: true; indicateCursor: true;
-		fixLayout; layoutChanged
-	
+	self resizeToFit: true; autoLineLayout: true; indicateCursor: true

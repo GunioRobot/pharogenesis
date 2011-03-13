@@ -6,11 +6,11 @@ initialize
 	loopCycles _ 1.
 	perceivedFrequency _ 0.  "zero means unknown"
 	self extent: 5@5;
-		orientation: #vertical;
-		centering: #topLeft;
+		listDirection: #topToBottom;
+		wrapCentering: #topLeft;
 		hResizing: #shrinkWrap;
 		vResizing: #shrinkWrap;
-		inset: 3;
+		layoutInset: 3;
 		color: Color lightGray;
 		borderWidth: 2.
 	graph _ GraphMorph new extent: 450@100.

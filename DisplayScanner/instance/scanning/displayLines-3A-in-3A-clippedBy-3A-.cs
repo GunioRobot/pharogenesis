@@ -1,5 +1,5 @@
 displayLines: linesInterval in: aParagraph clippedBy: visibleRectangle
-	"The central display routine. The call on the primitive 
+	"The central display routine [MVC only]. The call on the primitive 
 	(scanCharactersFrom:to:in:rightX:) will be interrupted according to an 
 	array of stop conditions passed to the scanner at which time the code to 
 	handle the stop condition is run and the call on the primitive continued 
@@ -29,7 +29,7 @@ displayLines: linesInterval in: aParagraph clippedBy: visibleRectangle
 		lineHeight _ line lineHeight.
 		fillBlt == nil ifFalse:
 			[fillBlt destX: visibleRectangle left destY: lineY
-				width: leftMargin - visibleRectangle left height: lineHeight; copyBits].
+				width: visibleRectangle width height: lineHeight; copyBits].
 		lastIndex _ line first.
 		leftInRun <= 0
 			ifTrue: [self setStopConditions.  "also sets the font"
@@ -52,6 +52,4 @@ displayLines: linesInterval in: aParagraph clippedBy: visibleRectangle
 					from: startIndex to: lastIndex at: lastPos kern: kern].
 		"see setStopConditions for stopping conditions for displaying."
 		done _ self perform: stopCondition].
-		fillBlt == nil ifFalse:
-			[fillBlt destX: destX destY: lineY width: visibleRectangle right-destX height: lineHeight; copyBits].
 		lineY _ lineY + lineHeight]

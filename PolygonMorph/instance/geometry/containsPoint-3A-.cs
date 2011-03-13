@@ -6,7 +6,7 @@ containsPoint: aPoint
 
 	self lineSegmentsDo:
 		[:p1 :p2 |
-		(aPoint onLineFrom: p1 to: p2 within: (2 max: borderWidth+1//2) asFloat)
+		(aPoint onLineFrom: p1 to: p2 within: (3 max: borderWidth+1//2) asFloat)
 				ifTrue: [^ true]].
 
 	self arrowForms do:

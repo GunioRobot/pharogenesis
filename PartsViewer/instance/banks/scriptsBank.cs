@@ -1,2 +1,0 @@
-scriptsBank
-	^ scriptsBank

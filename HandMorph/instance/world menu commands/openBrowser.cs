@@ -1,2 +1,0 @@
-openBrowser
-	Browser openBrowser

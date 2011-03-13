@@ -10,4 +10,4 @@ menuPageSoundFor: target event: evt
 			argumentList: (Array with: #transitionSpec
 								with: (tSpec copy at: 1 put: soundName; yourself))].
 
-	menu popUpEvent: evt
+	menu popUpEvent: evt in: self world

@@ -1,14 +1,23 @@
 comeFullyUpOnReload: smartRefStream
 	"Internalize myself into a fully alive object after raw loading from a DataStream. (See my class comment.)  DataStream will substitute the object from this eval for the DiskProxy."
-	| globalObj symbol pr nn |
+	| globalObj symbol pr nn arrayIndex |
 
 	symbol _ globalObjectName.
 	"See if class is mapped to another name"
 	(smartRefStream respondsTo: #renamed) ifTrue: [
-		symbol _ smartRefStream renamed at: symbol ifAbsent: [symbol]].
+		"If in outPointers in an ImageSegment, remember original class name.  
+		 See mapClass:installIn:.  Would be lost otherwise."
+		((thisContext sender sender sender sender sender sender 
+			sender sender receiver class == ImageSegment) and: [ 
+		thisContext sender sender sender sender method == 
+			(DataStream compiledMethodAt: #readArray)]) ifTrue: [
+				arrayIndex _ (thisContext sender sender sender sender) tempAt: 4.
+					"index var in readArray.  Later safer to find i on stack of context."
+				smartRefStream renamedConv at: arrayIndex put: symbol].	"save original name"
+		symbol _ smartRefStream renamed at: symbol ifAbsent: [symbol]].	"map"
 	globalObj _ Smalltalk at: symbol 
-		ifAbsent: [^ self halt: 'Global not found'].
-	((symbol == #World) and: [World == nil]) ifTrue: [
+		ifAbsent: [^ self error: 'Global not found'].
+	((symbol == #World) and: [Smalltalk isMorphic not]) ifTrue: [
 		self inform: 'These objects will work better if opened in a Morphic World.
 Dismiss and reopen all menus.'].
 

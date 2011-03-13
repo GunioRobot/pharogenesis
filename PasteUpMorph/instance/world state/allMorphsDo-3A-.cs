@@ -3,4 +3,4 @@ allMorphsDo: aBlock
 
 	super allMorphsDo: aBlock.
 	self isWorldMorph
-		ifTrue: [self hands reverseDo: [:h | h allMorphsDo: aBlock]].
+		ifTrue: [worldState handsReverseDo: [:h | h allMorphsDo: aBlock]].

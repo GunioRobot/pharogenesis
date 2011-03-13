@@ -1,2 +1,2 @@
 lastEvent
-	^ lastEvent
+	^ lastMouseEvent

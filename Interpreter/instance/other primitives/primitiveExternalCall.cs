@@ -3,13 +3,13 @@ primitiveExternalCall
 		* The module name (String | Symbol)
 		* The function name (String | Symbol)
 		* The session ID (SmallInteger) [OBSOLETE]
-		* The function address (Integer)
+		* The function index (Integer) in the externalPrimitiveTable
 	For fast failures the primitive index of any method where the external prim is not found is rewritten in the method cache with zero. This allows for ultra fast responses as long as the method stays in the cache.
 	The fast failure response relies on lkupClass being properly set. This is done in #addToMethodCacheSel:class:method:primIndex: to compensate for execution of methods that are looked up in a superclass (such as in primitivePerformAt).
 	With the latest modifications (e.g., actually flushing the function addresses from the VM), the session ID is obsolete. But for backward compatibility it is still kept around. Also, a failed lookup is reported specially. If a method has been looked up and not been found, the function address is stored as -1 (e.g., the SmallInteger -1 to distinguish from 16rFFFFFFFF which may be returned from the lookup).
 	It is absolutely okay to remove the rewrite if we run into any problems later on. It has an approximate speed difference of 30% per failed primitive call which may be noticable but if, for any reasons, we run into problems (like with J3) we can always remove the rewrite.
 	"
-	| lit functionAddress addr moduleName functionName moduleLength functionLength index |
+	| lit addr moduleName functionName moduleLength functionLength index |
 	"Fetch the first literal of the method"
 	self success: (self literalCountOf: newMethod) > 0."@@: Could this be omitted for speed?!"
 	successFlag ifFalse:[^nil].
@@ -20,11 +20,13 @@ primitiveExternalCall
 					and:[(self lengthOf: lit) = 4]).
 	successFlag ifFalse:[^nil].
 
-	"Look at the function address in case it has been loaded before"
-	addr _ self fetchPointer: 3 ofObject: lit.
+	"Look at the function index in case it has been loaded before"
+	index _ self fetchPointer: 3 ofObject: lit.
+	(self isIntegerObject: index) ifFalse:[^self success: false].
+	index _ self integerValueOf: index.
 
 	"Check if we have already looked up the function and failed."
-	addr = (self integerObjectOf: -1) ifTrue:[
+	index < 0 ifTrue:[
 		"Function address was not found in this session,
 		Rewrite the mcache entry with a zero primitive index."
 		self
@@ -33,14 +35,16 @@ primitiveExternalCall
 			primIndex: 0.		
 		^self success: false].
 
-	addr _ self positive32BitValueOf: addr.
-	successFlag ifFalse: [^ nil].
-
 	"Try to call the function directly"
-	addr ~= 0 ifTrue:[^self cCode:' ((int (*) (void)) addr) ()' 
+	(index > 0 and:[index <= MaxExternalPrimitiveTableSize]) ifTrue:[
+		addr _ externalPrimitiveTable at: index-1.
+		addr ~= 0 ifTrue:[^self cCode:' ((int (*) (void)) addr) ()' 
 							inSmalltalk:[self callExternalPrimitive: addr]].
+		"if we come here, then an index to the external prim was kept
+		on the ST side although the underlying prim table was already flushed"
+		^self success: false].
 
-	"Clean up session id and function address"
+	"Clean up session id and external primitive index"
 	self storeInteger: 2 ofObject: lit withValue: 0.
 	self storeInteger: 3 ofObject: lit withValue: 0.
 
@@ -77,15 +81,18 @@ primitiveExternalCall
 					FromModule: moduleName + 4
 					OfLength: moduleLength.
 	].
-
-	self success: addr ~= 0.
-	"Store the address (either actual function address or -1 for failure) back in the literal"
-	self pushRemappableOop: lit.
-	successFlag
-		ifTrue:[functionAddress _ self positive32BitIntegerFor: addr]
-		ifFalse:[functionAddress _ self integerObjectOf: -1].
-	lit _ self popRemappableOop.
-	self storePointer: 3 ofObject: lit withValue: functionAddress.
+	addr = 0 ifTrue:[
+		index _ -1. "remember we failed"
+	] ifFalse:[
+		"add the function to the external primitive table"
+		index _ self addToExternalPrimitiveTable: addr.
+		"if no space, index will be zero so we will look it up again.
+		although slow it makes sure we will find the prim in case
+		it's needed."
+	].
+	self success: index >= 0.
+	"Store the index (or -1 if failure) back in the literal"
+	self storePointer: 3 ofObject: lit withValue: (self integerObjectOf: index).
 
 	"If the function has been successfully loaded process it"
 	(successFlag and:[addr ~= 0])

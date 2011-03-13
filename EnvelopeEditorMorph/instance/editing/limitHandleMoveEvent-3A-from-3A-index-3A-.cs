@@ -14,8 +14,7 @@ limitHandleMoveEvent: evt from: handle index: index
 	"Update the handle, the vertex and the line being edited"
 	x _ self xFromMs: ms.
 	handle position: (x @ graphArea top) - (self handleOffset: handle).
-	line vertices at: ix put: x @ (line vertices at: ix) y.
-	line computeBounds.
+	line verticesAt: ix put: x @ (line vertices at: ix) y.
 
 	sound envelopes do:
 		[:env | limIx _ env perform:

@@ -1,6 +1,8 @@
 autoExpansionString
+	"Answer the string to be shown in a menu to represent the auto-phrase-expansion status"
+
 	^ (self hasProperty: #automaticPhraseExpansion)
 		ifTrue:
-			['stop auto-phrase-expansion']
+			['<on>auto-phrase-expansion']
 		ifFalse:
-			['start auto-phrase-expansion']
+			['<off>auto-phrase-expansion']

@@ -21,6 +21,7 @@ Do you wish to extend it permanently to handle values up to ' , ascii printStrin
 			from: rightX@0 in: glyphs rule: Form over.
 		glyphs _ newGlyphs.
 		"adjust further entries on xTable"
+		xTable _ xTable copy.
 		ascii+2 to: xTable size
 			do: [:i | xTable at: i put: (xTable at: i) + widthDif]].
 	glyphs copy: (leftX @ 0 extent: characterForm extent)

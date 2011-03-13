@@ -9,8 +9,8 @@ addLevelSlider
 		adjustToValue: soundInput recordLevel.
 	r _ AlignmentMorph newRow
 		color: color;
-		inset: 0;
-		centering: #center;
+		layoutInset: 0;
+		wrapCentering: #center; cellPositioning: #leftCenter;
 		hResizing: #shrinkWrap;
 		vResizing: #rigid;
 		height: 24.

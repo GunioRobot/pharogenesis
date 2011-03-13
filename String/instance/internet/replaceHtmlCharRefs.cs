@@ -28,7 +28,7 @@ replaceHtmlCharRefs
                         scIndex _ self indexOf: $; startingAt: ampIndex ifAbsent: [ self size + 1 ].
 
                         special _ self copyFrom: ampIndex+1 to: scIndex-1.       
-                        specialValue _ String valueOfHtmlEntity: special. 
+                        specialValue _ HtmlEntity valueOfHtmlEntity: special. 
 
                         specialValue
                                 ifNil: [

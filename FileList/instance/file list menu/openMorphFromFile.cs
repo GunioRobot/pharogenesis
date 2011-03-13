@@ -5,11 +5,11 @@ openMorphFromFile
  	| aFileStream morphOrList |
 	Smalltalk verifyMorphicAvailability ifFalse: [^ self].
 
-	aFileStream _ directory oldFileNamed: self fullName.
+	aFileStream _ directory readOnlyFileNamed: self fullName.
 	morphOrList _ aFileStream fileInObjectAndCode.
 	(morphOrList isKindOf: SqueakPage) ifTrue: [morphOrList _ morphOrList contentsMorph].
 	Smalltalk isMorphic
-		ifTrue: [World addMorphsAndModel: morphOrList]
+		ifTrue: [Display getCurrentMorphicWorld addMorphsAndModel: morphOrList]
 		ifFalse:
 			[morphOrList isMorph ifFalse: [^ self errorMustBeMorph].
 			morphOrList openInWorld]

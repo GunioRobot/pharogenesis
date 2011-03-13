@@ -8,7 +8,7 @@ selectedMessage
 			currentCompiledMethod _ class compiledMethodAt: selector ifAbsent: [nil]..
 			^ source asText makeSelectorBoldIn: self selectedClassOrMetaClass].
 		selector = #Comment ifTrue: [^ class comment].
-		selector = #Definition ifTrue: [^ class definition].
+		selector = #Definition ifTrue: [^ class definitionST80: Preferences printAlternateSyntax not].
 		selector = #Hierarchy ifTrue: [^ class printHierarchy].
 		source _ class sourceMethodAt: selector.
 		currentCompiledMethod _ class compiledMethodAt: selector ifAbsent: [nil].

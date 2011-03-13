@@ -1,1 +1,0 @@
-DataMorph class instanceVariableNames: ''

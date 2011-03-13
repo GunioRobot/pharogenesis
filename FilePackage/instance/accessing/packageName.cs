@@ -1,2 +1,2 @@
 packageName
-	^packageName
+	^FileDirectory localNameFor: self fullPackageName

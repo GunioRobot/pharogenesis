@@ -4,5 +4,4 @@ veryDeepInner: deepCopier
 	super veryDeepInner: deepCopier.
 	project _ project.		"Weakly copied"
 	lastProjectThumbnail _ lastProjectThumbnail veryDeepCopyWith: deepCopier.
-	currentBorderColor _ currentBorderColor veryDeepCopyWith: deepCopier.
 	mouseDownTime _ nil.

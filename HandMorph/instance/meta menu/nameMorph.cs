@@ -1,3 +1,0 @@
-nameMorph
-
-	argument choosePartName.

@@ -1,2 +1,0 @@
-balloonHelpEnabled
-	^ self presenter balloonHelpEnabled

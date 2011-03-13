@@ -1,0 +1,6 @@
+currentSpawnNewProcessAndTerminateOld: aBoolean
+"
+CurrentProjectRefactoring currentSpawnNewProcessAndTerminateOld:
+"
+	^Project spawnNewProcessAndTerminateOld: aBoolean
+

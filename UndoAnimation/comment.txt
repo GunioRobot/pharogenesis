@@ -1,0 +1,1 @@
+Undo an Animation.  Currently Wonderlands undo animations by running them in reverse with a compressed duration.

@@ -1,0 +1,1 @@
+BalloonCanvas class instanceVariableNames: ''

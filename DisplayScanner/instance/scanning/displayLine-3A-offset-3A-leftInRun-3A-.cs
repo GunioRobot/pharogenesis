@@ -11,7 +11,7 @@ displayLine: textLine offset: offset leftInRun: leftInRun
 	fillBlt == nil ifFalse:
 		["Not right"
 		fillBlt destX: line left destY: lineY
-			width: leftMargin - line left height: lineHeight; copyBits].
+			width: line width left height: lineHeight; copyBits].
 	lastIndex _ line first.
 	leftInRun <= 0
 		ifTrue: [self setStopConditions.  "also sets the font"
@@ -33,7 +33,4 @@ displayLine: textLine offset: offset leftInRun: leftInRun
 				from: startIndex to: lastIndex at: lastPos kern: kern].
 		"see setStopConditions for stopping conditions for displaying."
 		done _ self perform: stopCondition].
-	fillBlt == nil ifFalse:
-		[fillBlt destX: destX destY: lineY width: line right-destX height: lineHeight;
-				copyBits].
 	^ runStopIndex - lastIndex   "Number of characters remaining in the current run"

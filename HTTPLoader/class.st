@@ -1,0 +1,1 @@
+HTTPLoader class instanceVariableNames: ''

@@ -1,0 +1,3 @@
+privateCheckForBrowserPrimitives
+	<primitive:'primitivePluginBrowserReady'>
+	^false

@@ -1,4 +1,4 @@
 primMIDIReadPort: portNum into: byteArray
 
-	<primitive: 528>
+	<primitive: 'primitiveMIDIRead' module: 'MIDIPlugin'>
 	self primitiveFailed.

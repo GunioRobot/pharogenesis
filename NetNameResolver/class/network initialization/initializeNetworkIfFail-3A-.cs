@@ -16,7 +16,7 @@ initializeNetworkIfFail: errorBlock
 'Initializing the network drivers; this may
 take up to 30 seconds and can''t be interrupted'
 		during: [result _ self primInitializeNetwork: semaIndex].
-	Smalltalk isMorphic ifTrue: [World displayWorld].  "take the informer down"
+	Display repaintMorphicDisplayNow.  "take the informer down"
 
 	"result is nil if network initialization failed, self if it succeeds"
 	result ifNil: [errorBlock value]

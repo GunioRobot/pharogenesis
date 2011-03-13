@@ -1,0 +1,1 @@
+PreDebugWindow class instanceVariableNames: ''

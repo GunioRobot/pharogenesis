@@ -4,6 +4,10 @@ wantsDroppedMorph: transferMorph event: anEvent inMorph: destinationLM
 	determined later in >>acceptDroppingMorph:event:."
 
 	| srcType dstType |
+
+	"only want drops on lists (not, for example, on pluggable texts)"
+	(destinationLM isKindOf: PluggableListMorph) ifFalse: [^ false].
+
 	srcType _ transferMorph dragTransferType.
 	dstType _ destinationLM getListSelector.
 

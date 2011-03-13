@@ -1,19 +1,20 @@
 addHeaderMorph
+	"Add the header at the top of the viewer, with a control for choosing the category, etc."
+
 	| header aFont aButton wrpr |
-	header _ AlignmentMorph newRow color: self color; centering: #center.
+	header _ AlignmentMorph newRow color: self color; wrapCentering: #center; cellPositioning: #leftCenter.
 	aFont _ Preferences standardButtonFont.
-	header addMorph: (aButton _ SimpleButtonMorph new label: 'X' font: aFont).
+	header addMorph: (aButton _ SimpleButtonMorph new label: 'O' font: aFont).
 	aButton target: self;
-			color:  Color lightRed;
+			color:  Color tan;
 			actionSelector: #delete;
-			setBalloonText: 'Delete this pane'.
+			setBalloonText: 'remove this pane from the screen
+don''t worry -- nothing will be lost!.'.
 	header addTransparentSpacerOfSize: 5@5.
 
-	Preferences useCategoryListsInViewers
-		ifFalse:
-			[header addUpDownArrowsFor: self.
-			(wrpr _ header submorphs last) submorphs second setBalloonText: 'previous category'.	
-			wrpr submorphs first  setBalloonText: 'next category'].
+	header addUpDownArrowsFor: self.
+	(wrpr _ header submorphs last) submorphs second setBalloonText: 'previous category'.	
+	wrpr submorphs first  setBalloonText: 'next category'.
 	header beSticky.
 	self addMorph: header.
 
@@ -30,6 +31,6 @@ addHeaderMorph
 	header addMorphBack: namePane.
 	(namePane isKindOf: RectangleMorph) ifTrue:
 		[namePane addDropShadow.
-		namePane owner color: Color gray].
+		namePane shadowColor: Color gray].
 
-	self categoryChoice: 'basic'
+	self categoryChoice: #basic

@@ -1,14 +1,12 @@
 spawn: aString 
-	"Create and schedule a new browser as though the command browse were 
-	issued with respect to one of the browser's lists. The initial textual 
-	contents is aString, which is the (modified) textual contents of the 
-	receiver."
+	"Create and schedule a fresh browser and place aString in its code pane.  This method is called when the user issues the #spawn command (cmd-o) in any code pane.  Whatever text was in the original code pane comes in to this method as the aString argument; the changes in the original code pane have already been cancelled by the time this method is called, so aString is the only copy of what the user had in his code pane."
 
-	messageListIndex ~= 0 
-		ifTrue: [^self buildMessageBrowserEditString: aString].
-	messageCategoryListIndex ~= 0 
-		ifTrue: [^self buildMessageCategoryBrowserEditString: aString].
-	classListIndex ~= 0 ifTrue: [^self buildClassBrowserEditString: aString].
-	systemCategoryListIndex ~= 0 
-		ifTrue: [^self buildSystemCategoryBrowserEditString: aString].
-	^Browser new openEditString: aString
+	self selectedClassOrMetaClass ifNotNil: [^ super spawn: aString].
+
+	systemCategoryListIndex ~= 0
+		ifTrue:
+			["This choice is slightly useless but is the historical implementation"
+			^ self buildSystemCategoryBrowserEditString: aString].
+		
+	^ super spawn: aString  
+	"This bail-out at least saves the text being spawned, which would otherwise be lost"

@@ -1,5 +1,5 @@
 primClose: id
 	"Close this file."
 
-	<primitive: 151>
+	<primitive: 'primitiveFileClose' module: 'FilePlugin'>
 	self primitiveFailed

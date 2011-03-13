@@ -186,7 +186,7 @@ initialize
 "accessing" allButFirst allButLast at:ifAbsent: atAll: atPin: atRandom: atWrap: fifth first fourth identityIndexOf: identityIndexOf:ifAbsent: indexOf: indexOf:ifAbsent: indexOf:startingAt:ifAbsent: indexOfSubCollection:startingAt: indexOfSubCollection:startingAt:ifAbsent: last second sixth third
 "removing"
 "copying" , copyAfterLast: copyAt:put: copyFrom:to: copyReplaceAll:with: copyReplaceFrom:to:with: copyUpTo: copyUpToLast: copyWith: copyWithout: copyWithoutAll: forceTo:paddingWith: shuffled sortBy:
-"enumerating" collectWithIndex: findFirst: findLast: pairsCollect: with:collect: withIndexCollect: 
+"enumerating" collectWithIndex: findFirst: findLast: pairsCollect: with:collect: withIndexCollect: polynomialEval:
 "converting" asArray asDictionary asFloatArray asIntegerArray asStringWithCr asWordArray reversed
 "private" copyReplaceAll:with:asTokens: ) do: [:sel | Approved add: sel].
 	#( swap:with:) do: [:sel | AddAndRemove add: sel].

@@ -1,0 +1,1 @@
+VRMLGenericNode class instanceVariableNames: ''

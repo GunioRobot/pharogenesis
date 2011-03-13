@@ -1,0 +1,1 @@
+Win32Window class instanceVariableNames: ''

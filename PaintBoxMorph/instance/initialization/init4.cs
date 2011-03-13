@@ -21,38 +21,38 @@ self submorphsDo: [:button | button position: button position + (10@10)].
 	im position: im position + (2@0)].	"color picker"
 "exercise it once"
 
-(bb _ self findButton: #keep:) position: bb position + (0@25).
-(bb _ self findButton: #toss:) position: bb position + (0@25).
-(bb _ self findButton: #undo:) position: bb position + (0@-25).
-(bb _ self findButton: #clear:) position: bb position + (0@-25).
-(bb _ self findButton: #undo:) position: bb position + (0@-69).
-(bb _ self findButton: #clear:) position: bb position + (0@-69).
+(bb _ self submorphNamed: #keep:) position: bb position + (0@25).
+(bb _ self submorphNamed: #toss:) position: bb position + (0@25).
+(bb _ self submorphNamed: #undo:) position: bb position + (0@-25).
+(bb _ self submorphNamed: #clear:) position: bb position + (0@-25).
+(bb _ self submorphNamed: #undo:) position: bb position + (0@-69).
+(bb _ self submorphNamed: #clear:) position: bb position + (0@-69).
 self submorphsDo: [:button | 
 	button class == AlignmentMorph ifTrue: [
 		button position: button position + (0@25)].
 	(button printString includesSubString: 'stamp:') ifTrue: [
 		button position: button position + (0@25)]].
-(bb _ self findButton: #prevStamp:) position: bb position + (0@25).
-(bb _ self findButton: #nextStamp:) position: bb position + (0@25).
+(bb _ self submorphNamed: #prevStamp:) position: bb position + (0@25).
+(bb _ self submorphNamed: #nextStamp:) position: bb position + (0@25).
 
-bb _ self findButton: #keep:.
+bb _ self submorphNamed: #keep:.
 newImage _ bb pressedImage copy: (0@4 corner: (bb pressedImage boundingBox extent)).
 bb onImage: newImage.  bb pressedImage: newImage.  bb extent: newImage extent.
 bb position: bb position + (4@1).
 
-pp _ (bb _ self findButton: #toss:) pressedImage.
+pp _ (bb _ self submorphNamed: #toss:) pressedImage.
 newImage _ pp copy: (0@4 corner: (bb pressedImage extent - (3@0))).
 bb onImage: newImage.  bb pressedImage: newImage.  
 bb extent: newImage extent.
 bb position: bb position + (3@1).
 
-pp _ (bb _ self findButton: #undo:) pressedImage.
+pp _ (bb _ self submorphNamed: #undo:) pressedImage.
 newImage _ pp copy: (0@0 corner: (bb pressedImage extent - (3@5))).
 bb onImage: newImage.  bb pressedImage: newImage.  
 bb extent: newImage extent.
 bb position: bb position + (3@-1).
 
-pp _ (bb _ self findButton: #clear:) pressedImage.
+pp _ (bb _ self submorphNamed: #clear:) pressedImage.
 newImage _ pp copy: (0@0 corner: (bb pressedImage extent - (0@5))).
 bb onImage: newImage.  bb pressedImage: newImage.  
 bb extent: newImage extent.
@@ -63,7 +63,7 @@ picNewBit _ Form extent: pic24Bit extent depth: 16.
 pic24Bit displayOn: picNewBit.
 newImage _ picNewBit as8BitColorForm.
 newImage transparentColor: (Color r: 0 g: 0 b: 0).
-(bb _ self findButton: #erase:) pressedImage: newImage; onImage: newImage;
+(bb _ self submorphNamed: #erase:) pressedImage: newImage; onImage: newImage;
 	extent: newImage extent.
 
 bb position: bb position + (-11@-1).

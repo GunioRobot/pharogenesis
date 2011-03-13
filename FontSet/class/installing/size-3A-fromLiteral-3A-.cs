@@ -11,8 +11,10 @@ size24
 	"This method is old and for backward compatibility only.
 	please use fontNamed:fromLiteral: instead."
 
+	self flag: #bob.		"used in Alan's projects"
+
 	^ StrikeFont new 
 		name: self fontName , (pointSize < 10
 			ifTrue: ['0' , pointSize printString]
 			ifFalse: [pointSize printString]);
-		readFromStrike2Stream: (ReadStream on: aString)
+		readFromStrike2Stream: ((RWBinaryOrTextStream with: aString) reset; binary)

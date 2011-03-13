@@ -1,4 +1,3 @@
 minHeight
-	"Return the minimum width for this morph. Ordinary morphs just answer their current height."
-
-	^ self fullBounds height
+	extension == nil ifTrue:[^2].
+	^self valueOfProperty: #minHeight ifAbsent:[2]

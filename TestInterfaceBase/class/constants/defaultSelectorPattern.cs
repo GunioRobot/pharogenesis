@@ -1,0 +1,3 @@
+defaultSelectorPattern
+
+	^'test*' copy

@@ -1,2 +1,0 @@
-unlockOneSubpart
-	argument unlockOneSubpart

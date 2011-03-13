@@ -1,8 +1,7 @@
 copyPixelsIndexed: y at: startX by: incX
 	"Handle interlaced indexed color mode (colorType = 3)"
 
-	| offset b bits w pixel mask pixPerByte shifts blitter pixelNumber
-rawByte |
+	| offset b bits w pixel mask pixPerByte shifts blitter pixelNumber rawByte |
 	offset _ y*rowSize+1.
 	bits _ form bits.
 	bitsPerChannel = 8
@@ -12,8 +11,7 @@ rawByte |
 				b _ 3 - (x \\ 4) * 8.
 				pixel _ (thisScanline at: x // incX + 1)<<b.
 				mask _ (255<<b) bitInvert32.
-				bits at: w put: (((bits at: w) bitAnd:
-mask) bitOr: pixel)].
+				bits at: w put: (((bits at: w) bitAnd: mask) bitOr: pixel)].
 			^ self ].
 	bitsPerChannel = 1 ifTrue: [
 		pixPerByte _ 8.
@@ -35,8 +33,7 @@ mask) bitOr: pixel)].
 	pixelNumber _ 0.
 	startX to: width-1 by: incX do: [ :x |
 		rawByte _ thisScanline at: (pixelNumber // pixPerByte) + 1.
-		pixel _ (rawByte >> (shifts at: (pixelNumber \\ pixPerByte)
-+ 1)) bitAnd: mask.
+		pixel _ (rawByte >> (shifts at: (pixelNumber \\ pixPerByte) + 1)) bitAnd: mask.
 		blitter pixelAt: (x@y) put: pixel.
 		pixelNumber _ pixelNumber + 1.
 	].

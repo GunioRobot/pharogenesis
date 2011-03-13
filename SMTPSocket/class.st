@@ -1,0 +1,1 @@
+SMTPSocket class instanceVariableNames: ''

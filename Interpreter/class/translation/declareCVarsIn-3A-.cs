@@ -26,3 +26,6 @@ declareCVarsIn: aCCodeGenerator
 	aCCodeGenerator
 		var: #obsoleteNamedPrimitiveTable
 		declareC: 'const char* obsoleteNamedPrimitiveTable[][3] = ', self obsoleteNamedPrimitiveTableString.
+	aCCodeGenerator
+		var: #externalPrimitiveTable
+		declareC: 'int externalPrimitiveTable[', (MaxExternalPrimitiveTableSize + 1) printString, ']'.

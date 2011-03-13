@@ -1,6 +1,6 @@
 Object
 	subclass: #MorphicEvent
-	instanceVariableNames: 'type cursorPoint buttons keyValue sourceHand '
+	instanceVariableNames: 'timeStamp source '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Support'
+	category: 'Morphic-Events'

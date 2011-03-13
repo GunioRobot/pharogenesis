@@ -1,0 +1,1 @@
+SqueakPage class instanceVariableNames: ''

@@ -1,0 +1,2 @@
+initialValuesAdditionmediasoundStopWhenDone
+	^ #((soundStopWhenDone false (media ) ) )

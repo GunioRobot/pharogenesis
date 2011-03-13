@@ -1,2 +1,0 @@
-noviceMode
-	^ false

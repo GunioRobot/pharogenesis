@@ -1,7 +1,7 @@
 addControls
 	| chooser |
 	chooser _ PopUpChoiceMorph new extent: 110@14;
-		contentsClipped: 'editing ' , envelope name;
+		contentsClipped: 'Editing: ' , envelope name;
 		target: self;
 		actionSelector: #chooseFrom:envelopeItem:;
 		getItemsSelector: #curveChoices.
@@ -9,11 +9,11 @@ addControls
 	self addMorph: chooser.
 	chooser align: chooser bounds topLeft with: graphArea bounds bottomLeft + (0@5).
 
-	chooser _ PopUpChoiceMorph new extent: 110@14;
-		contentsClipped: 'duration: ' , self durationName;
+	chooser _ PopUpChoiceMorph new extent: 130@14;
+		contentsClipped: 'Timbre: ' , soundName;
 		target: self;
-		actionSelector: #chooseFrom:durationItem:;
-		getItemsSelector: #durationChoices.
+		actionSelector: #chooseFrom:soundItem:;
+		getItemsSelector: #soundChoices.
 	chooser arguments: (Array with: chooser).
 	self addMorph: chooser.
 	chooser align: chooser bounds topRight with: graphArea bounds bottomRight + (-50@5).

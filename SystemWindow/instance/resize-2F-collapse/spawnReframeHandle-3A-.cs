@@ -6,8 +6,6 @@ spawnReframeHandle: event
 	(self isActive not or: [self isCollapsed]) ifTrue:  [^ self].
 	((self world ifNil: [^ self]) firstSubmorph isKindOf: NewHandleMorph) ifTrue:
 		[^ self  "Prevent multiple handles"].
-	paneMorphs do: [:p | ((p fullBounds insetBy: 1) containsPoint: event cursorPoint)
-			ifTrue: [^ self  "Don't activate resizer if in a scrollbar"]].
 	pt _ event cursorPoint.
 	self bounds forPoint: pt closestSideDistLen:
 		[:side :dist :len |  "Check for window side adjust"
@@ -44,5 +42,5 @@ spawnReframeHandle: event
 					self invalidRect: (self bounds bottomRight - (6@6) extent: 7@7)]]]
 		lastPointDo:
 			[:p | ].
-	event hand world addMorph: resizer.
+	event hand world addMorphInLayer: resizer.
 	resizer startStepping

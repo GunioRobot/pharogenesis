@@ -3,4 +3,4 @@ RectangleMorph
 	instanceVariableNames: 'target lastValue getSelector putSelector contents '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Scripting-Support'
+	category: 'Morphic-Scripting Support'

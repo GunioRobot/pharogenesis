@@ -1,6 +1,6 @@
-Object
+MimeConverter
 	subclass: #Base64MimeConverter
-	instanceVariableNames: 'dataStream mimeStream data '
+	instanceVariableNames: 'data '
 	classVariableNames: 'FromCharTable ToCharTable '
 	poolDictionaries: ''
 	category: 'Collections-Streams'

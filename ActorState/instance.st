@@ -3,4 +3,4 @@ Object
 	instanceVariableNames: 'owningPlayer penDown penSize penColor fractionalPosition instantiatedUserScriptsDictionary '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Scripting-Support'
+	category: 'Morphic-Scripting Support'

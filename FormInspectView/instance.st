@@ -3,4 +3,4 @@ FormView
 	instanceVariableNames: 'offset '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Graphics-Views'
+	category: 'ST80-Views'

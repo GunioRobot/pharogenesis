@@ -1,6 +1,6 @@
 Socket
 	subclass: #SimpleClientSocket
-	instanceVariableNames: ''
+	instanceVariableNames: 'buffer bufferPos '
 	classVariableNames: 'CR CrLf LF '
 	poolDictionaries: ''
-	category: 'System-Network'
+	category: 'Network-Kernel'

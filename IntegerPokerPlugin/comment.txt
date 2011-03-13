@@ -1,0 +1,4 @@
+a plugin that sticks the 4 bytes of a small integer into a string.  and read them back....
+
+
+IntegerPokerPlugin translate.

@@ -1,3 +1,0 @@
-rewind
-
-	scorePlayer reset.

@@ -7,5 +7,5 @@ fileInSoundLibraryNamed: fileName
 	s close.
 	newSounds associationsDo:
 		[:assoc | self storeFiledInSound: assoc value named: assoc key].
-	ScorePlayerMorph allSubInstances do: [:p | p updateInstrumentsFromLibrary].
-	Smalltalk garbageCollect.
+	AbstractSound updateScorePlayers.
+	Smalltalk garbageCollect.  "Large objects may have been released"

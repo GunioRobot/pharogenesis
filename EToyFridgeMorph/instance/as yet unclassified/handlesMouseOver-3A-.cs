@@ -1,0 +1,3 @@
+handlesMouseOver: globalEvt
+
+	^true

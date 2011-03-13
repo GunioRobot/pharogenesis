@@ -1,6 +1,6 @@
-StrikeFont
+Object
 	subclass: #FontSet
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Graphics-Support'
+	category: 'Graphics-Text'

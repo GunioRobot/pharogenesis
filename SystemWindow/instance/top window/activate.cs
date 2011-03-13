@@ -10,6 +10,7 @@ activate
 		ifFalse: ["Bring me (with any flex) to the top if not already"
 				outerMorph owner addMorphFront: outerMorph].
 	self submorphsDo: [:m | m unlock].
+	labelArea submorphsDo: [:m | m unlock].
 	self setStripeColorsFrom: self paneColorToUse.
 	self isCollapsed ifFalse:
 		[model modelWakeUpIn: self.
@@ -18,4 +19,4 @@ activate
 	(sketchEditor _ self extantSketchEditor) ifNotNil:
 		[sketchEditor comeToFront.
 		(pal _ self world findA: PaintBoxMorph) ifNotNil:
-			[pal comeToFront]]
+			[pal comeToFront]].

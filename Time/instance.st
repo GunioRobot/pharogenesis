@@ -1,6 +1,6 @@
 Magnitude
 	subclass: #Time
-	instanceVariableNames: 'hours minutes seconds '
+	instanceVariableNames: 'seconds '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Numeric-Magnitudes'
+	category: 'Kernel-Magnitudes'

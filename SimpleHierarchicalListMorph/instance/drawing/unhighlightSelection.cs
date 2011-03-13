@@ -1,2 +1,2 @@
 unhighlightSelection
-	selectedMorph ifNotNil: [selectedMorph color: Color black; changed]
+	selectedMorph ifNotNil: [selectedMorph unhighlight]

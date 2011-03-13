@@ -1,10 +1,14 @@
 methodFor: dataAndAnswers
-	"Return an expression that computes these answers."
+	"Return a Squeak expression that computes these answers.  (This method is called by the comment in the bottom pane of a MethodFinder.  Do not delete this method.)"
 
-	| result selFinder |
-	result _ (self new) load: dataAndAnswers; findMessage.
+	| resultOC selFinder resultString |
+	resultOC _ (self new) load: dataAndAnswers; findMessage.
+	resultString _ String streamContents: [:strm |
+		resultOC do: [:exp | strm nextPut: $(; nextPutAll: exp; nextPut: $); space]].
 	Smalltalk isMorphic ifTrue: [
-		((selFinder _ World submorphs first model) 
-			isKindOf: SelectorBrowser) ifTrue: [
-	 			selFinder searchResult: result]].
-	^result
+		selFinder _ (Display bestGuessOfCurrentWorld 
+				submorphThat: [:mm | mm class == SystemWindow and: 
+									[mm model isKindOf: SelectorBrowser]] 
+				ifNone: [^ resultString]) model.
+		selFinder searchResult: resultOC].
+	^ resultString

@@ -1,7 +1,9 @@
 showFlap
-	| aWorld thicknessToUse |
+	| thicknessToUse flapOwner |
 
-	aWorld _ self world.
+	"19 sept 2000 - going for all paste ups"
+
+	flapOwner _ self pasteUpMorph.
 	self referentThickness <= 0
 		ifTrue:
 			[thicknessToUse _ lastReferentThickness ifNil: [100].
@@ -12,15 +14,15 @@ showFlap
 					[referent width: thicknessToUse]].
 	inboard ifTrue:
 		[self stickOntoReferent].  "makes referent my owner, and positions me accordingly"
-	referent world == aWorld
+	referent pasteUpMorph == flapOwner
 		ifFalse:
-			[aWorld accommodateFlap: self.  "Make room if needed"
-			aWorld addMorphFront: referent.
-			aWorld startSteppingSubmorphsOf: referent.
+			[flapOwner accommodateFlap: self.  "Make room if needed"
+			flapOwner addMorphFront: referent.
+			flapOwner startSteppingSubmorphsOf: referent.
 			self positionReferent.
-			referent adaptToWorld: aWorld].
+			referent adaptToWorld: flapOwner].
 	inboard  ifFalse:
 		[self adjustPositionVisAVisFlap].
 	flapShowing _ true.
 	
-	aWorld bringFlapTabsToFront
+	flapOwner bringFlapTabsToFront

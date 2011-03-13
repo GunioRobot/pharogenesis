@@ -1,6 +1,6 @@
 StringHolder
 	subclass: #FillInTheBlank
-	instanceVariableNames: 'acceptOnCR done '
+	instanceVariableNames: 'acceptOnCR done responseUponCancel '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Interface-Menus'
+	category: 'Tools-Menus'

@@ -1,6 +1,6 @@
 StandardSystemView
 	subclass: #ProjectView
 	instanceVariableNames: ''
-	classVariableNames: ''
+	classVariableNames: 'ArmsLengthCmd '
 	poolDictionaries: ''
-	category: 'Interface-Projects'
+	category: 'ST80-Support'

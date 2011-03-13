@@ -1,0 +1,1 @@
+IRCDirectMessagesObserver class instanceVariableNames: ''

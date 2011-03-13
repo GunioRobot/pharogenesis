@@ -3,7 +3,7 @@ initialize
 	| r |
 	super initialize.
 	borderWidth _ 2.
-	orientation _ #vertical.
+	self listDirection: #topToBottom.
 	soundInput _ SoundInputStream new samplingRate: 22050.
 	phonemeRecords _ OrderedCollection new.
 	silentPhoneme _ PhonemeRecord new initialize name: '...'.

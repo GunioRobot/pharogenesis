@@ -1,0 +1,1 @@
+TTContourConstruction class instanceVariableNames: ''

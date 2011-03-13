@@ -2,21 +2,22 @@ makeExternalRelease		"Smalltalk makeExternalRelease"
 	(self confirm: self version , '
 Is this the correct version designation?
 If not, choose no, and fix it.') ifFalse: [^ self].
-	(Object classPool at: #DependentsFields) size > 1 ifTrue: [self halt].
+	"Object classPool at: #DependentsFields"
+	Smalltalk reclaimDependents.
+	Preferences enable: #allowMVCprojects.
+	Preferences enable: #fastDragWindowForMorphic.
 	Browser initialize.
 	Undeclared isEmpty ifFalse: [self halt].
+	ScriptingSystem deletePrivateGraphics.
+	#(Helvetica Palatino Courier) do:
+		[:n | TextConstants removeKey: n ifAbsent: []].
+	(Utilities classPool at: #UpdateUrlLists) copy do:
+		[:pair | (pair first includesSubstring: 'Disney' caseSensitive: false) ifTrue: [
+			(Utilities classPool at: #UpdateUrlLists) remove: pair]].
+	(ServerDirectory serverNames copyWithoutAll: #('UCSBCreateArchive' 'UIUCArchive' 'UpdatesExtUIUC' 'UpdatesExtWebPage'))
+		do: [:sn | ServerDirectory removeServerNamed: sn].
 	Smalltalk garbageCollect.
-	self obsoleteClasses isEmpty ifFalse: [self halt].
-	Display newDepth: 8.
-	Project allInstancesDo: [:p | p displayDepth: 8].
-	EToySystem prepareForExternalReleaseNamed: 'Squeak2.0'.
-	Utilities removeDisney.
-	EToySystem class removeSelector: #serverUrls.
-	Utilities removeDisney.
-	#(Helvetica Palatino ComicAll) do:
-		[:k | TextConstants removeKey: k].
-	EToySystem class removeSelector: #serverUrls.
-	SystemDictionary removeSelector: #makeExternalRelease.
+	Smalltalk obsoleteClasses isEmpty ifFalse: [self halt].
 	Symbol rehash.
-	self halt: 'Ready to condense sources'.
-	Smalltalk condenseSources
+	self halt: 'Ready to condense changes or sources'.
+	SystemDictionary removeSelector: #makeExternalRelease.

@@ -6,6 +6,7 @@ setStream: aStream reading: isReading
 	references _ IdentityDictionary new: 4096 * 5.
 	isReading ifTrue: [
 		objects _ IdentityDictionary new: 4096 * 5.
-		skipping _ false.
+		skipping _ IdentitySet new.
+		insideASegment _ false.
 		fwdRefEnds _ IdentityDictionary new].
 	blockers ifNil: [blockers _ IdentityDictionary new].	"keep blockers we just passed in"

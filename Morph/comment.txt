@@ -1,2 +1,7 @@
-Morph comment:
-'A morph (from the Greek "shape" or "form") is an interactive graphical object.'
+A morph (from the Greek "shape" or "form") is an interactive graphical object.
+
+All morphs owned by a morph are held in submorphs.  
+
+All coordinates are global screen coordinates.  (Except those that are flexed, contained inside a FlexMorph.)
+
+All show on the screen unless they are 'hidden'.  Hidden morphs have the property #hidden set to true.

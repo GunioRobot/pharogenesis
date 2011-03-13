@@ -1,0 +1,1 @@
+Bezier3Segment class instanceVariableNames: ''

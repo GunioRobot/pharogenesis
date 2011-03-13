@@ -1,2 +1,0 @@
-vmPathSize
-	^ Smalltalk vmPath size

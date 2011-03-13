@@ -1,0 +1,1 @@
+highlightMessageCategoryList: list with: morphList

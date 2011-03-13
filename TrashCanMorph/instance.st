@@ -1,6 +1,6 @@
 ThreePhaseButtonMorph
 	subclass: #TrashCanMorph
-	instanceVariableNames: 'containsHands handsOverMe '
+	instanceVariableNames: ''
 	classVariableNames: 'TrashPic TrashPicOn '
 	poolDictionaries: ''
 	category: 'Morphic-Widgets'

@@ -1,0 +1,2 @@
+initialValuesAdditionpublishingshowFlapsWhenPublishing
+	^ #((showFlapsWhenPublishing false (publishing ) ) )

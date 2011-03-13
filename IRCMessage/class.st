@@ -1,0 +1,1 @@
+IRCMessage class instanceVariableNames: ''

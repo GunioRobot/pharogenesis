@@ -1,0 +1,2 @@
+lastWorldExtent
+	^self valueOfProperty: #lastWorldExtent

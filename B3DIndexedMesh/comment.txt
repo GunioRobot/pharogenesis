@@ -1,0 +1,1 @@
+I represent a generic indexed face mesh. My subclasses define what kind of primitive objects I can represent. 

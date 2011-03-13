@@ -1,8 +1,8 @@
 newSliderForParameter: parameter target: target min: min max: max description: description
 	| r slider m |
 	r _ AlignmentMorph newRow.
-	r color: self color; borderWidth: 0; inset: 0.
-	r hResizing: #spaceFill; vResizing: #rigid; extent: 5@20; centering: #center.
+	r color: self color; borderWidth: 0; layoutInset: 0.
+	r hResizing: #spaceFill; vResizing: #rigid; extent: 5@20; wrapCentering: #center; cellPositioning: #leftCenter.
 
 	slider _ SimpleSliderMorph new
 		color: (Color r: 0.065 g: 0.548 b: 0.645);

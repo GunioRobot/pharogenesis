@@ -1,0 +1,5 @@
+currentFlapsSuppressed
+"
+CurrentProjectRefactoring currentFlapsSuppressed
+"
+	^self xxxCurrent flapsSuppressed

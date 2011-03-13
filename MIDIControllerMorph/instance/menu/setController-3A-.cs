@@ -7,4 +7,4 @@ setController: evt
 			selector: #controller:
 			argumentList: (Array with: pair first)].
 
-	menu popUpEvent: evt
+	menu popUpEvent: evt in: self world

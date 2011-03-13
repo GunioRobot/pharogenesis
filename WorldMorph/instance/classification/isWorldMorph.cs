@@ -1,3 +1,0 @@
-isWorldMorph
-
-	^ true

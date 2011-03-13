@@ -1,2 +1,0 @@
-openTranscript
-	Transcript open

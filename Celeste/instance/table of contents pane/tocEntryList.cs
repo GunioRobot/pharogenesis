@@ -1,6 +1,6 @@
 tocEntryList
-	"Answer a collection of table-of-contents entries for the currently selected category or an empty collection if no category is selected."
-
-	currentCategory
-		ifNil: [^ #()]
-		ifNotNil: [^ currentTOC].
+	currentCategory isNil
+		ifTrue: [self initializeTocLists].
+	self tocLists == nil
+		ifTrue: [self initializeTocLists].
+	^ self tocLists

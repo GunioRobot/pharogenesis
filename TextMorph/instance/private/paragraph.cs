@@ -4,7 +4,7 @@ paragraph
 	self setDefaultContentsIfNil.
 
 	"...Code here to recreate the paragraph..."
-	paragraph _ (self paragraphClass new textOwner: self meOrMyDropShadow owner)
+	paragraph _ (self paragraphClass new textOwner: self owner)
 					compose: text style: textStyle copy
 					from: self startingIndex in: self container.
 	wrapFlag ifFalse:

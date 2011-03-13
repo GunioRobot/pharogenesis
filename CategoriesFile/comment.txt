@@ -1,0 +1,3 @@
+I represent the organization of the mail database into set of message lists called "categories". Each category contains a collection of message ID's. The same message may be cross-filed quite cheaply by storing it's ID in multiple categories.
+
+The categories information is kept in a binary file on the disk. It is read into memory in its entirety when the mail database is opened. To make changes persist, the categories information must be saved out to disk. This should be done after fetching new mail and when the mail database is closed. It could also be done periodically by some sort of background process. Note that the categories file, unlike the index file, cannot be re-created from the messages file.

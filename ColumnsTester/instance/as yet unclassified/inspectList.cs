@@ -1,0 +1,2 @@
+inspectList
+	theList inspect

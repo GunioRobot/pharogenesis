@@ -2,9 +2,10 @@ addVoiceControls
 
 	| levelSlider r meterBox |
 	voiceRecorder _ SoundRecorder new
-		samplingRate: 11025.0;
-		codec: (ADPCMCodec new initializeForBitsPerSample: 4 samplesPerFrame: 0).
-.
+		desiredSampleRate: 11025.0;		"<==try real hard to get the low rate"
+		codec: (GSMCodec new).		"<--this should compress better than ADPCM.. is it too slow?"
+		"codec: (ADPCMCodec new initializeForBitsPerSample: 4 samplesPerFrame: 0)."
+
 	levelSlider _ SimpleSliderMorph new
 		color: color;
 		extent: 100@2;
@@ -13,8 +14,8 @@ addVoiceControls
 		adjustToValue: voiceRecorder recordLevel.
 	r _ AlignmentMorph newRow
 		color: color;
-		inset: 0;
-		centering: #center;
+		layoutInset: 0;
+		wrapCentering: #center; cellPositioning: #leftCenter;
 		hResizing: #shrinkWrap;
 		vResizing: #rigid;
 		height: 24.

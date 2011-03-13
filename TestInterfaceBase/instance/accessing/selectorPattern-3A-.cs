@@ -1,0 +1,3 @@
+selectorPattern: aString
+
+	selectorPattern := aString.

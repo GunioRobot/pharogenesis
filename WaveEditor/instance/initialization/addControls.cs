@@ -3,9 +3,9 @@ addControls
 	| slider b r m |
 	b _ SimpleButtonMorph new target: self; borderColor: Color black.
 	r _ AlignmentMorph newRow.
-	r color: b color; borderWidth: 0; inset: 0.
+	r color: b color; borderWidth: 0; layoutInset: 0.
 	r hResizing: #shrinkWrap; vResizing: #shrinkWrap; extent: 5@5.
-	r centering: #topLeft.
+	r wrapCentering: #topLeft.
 	r addMorphBack: (b fullCopy label: 'X';					actionSelector: #delete).
 	r addMorphBack: (b fullCopy label: '<>'; actWhen: #buttonDown;
 															actionSelector: #invokeMenu).
@@ -21,8 +21,8 @@ addControls
 	self addMorphBack: r.
 
 	r _ AlignmentMorph newRow.
-	r color: self color; borderWidth: 0; inset: 0.
-	r hResizing: #spaceFill; vResizing: #rigid; extent: 5@20; centering: #center.
+	r color: self color; borderWidth: 0; layoutInset: 0.
+	r hResizing: #spaceFill; vResizing: #rigid; extent: 5@20; wrapCentering: #center; cellPositioning: #leftCenter.
 
 	m _ StringMorph new contents: 'Index: '.
 	r addMorphBack: m.

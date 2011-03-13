@@ -1,5 +1,7 @@
 initializeFor: aPlayer categoryChoice: aChoice
-	self orientation: #vertical;
+	"Initialize the receiver to be associated with the player and category specified"
+
+	self listDirection: #topToBottom;
 		hResizing: #spaceFill;
 		vResizing: #spaceFill;
 		borderWidth: 1;
@@ -8,4 +10,4 @@ initializeFor: aPlayer categoryChoice: aChoice
 	scriptedPlayer _ aPlayer.
 	self addHeaderMorph.
 
-	self categoryChoice: aChoice
+	self categoryChoice: aChoice asSymbol

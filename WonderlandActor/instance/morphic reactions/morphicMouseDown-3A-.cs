@@ -10,5 +10,5 @@ morphicMouseDown: event
 				"Set an additional flag to avoid inbetween shift key changes"
 				^self setProperty: #userTransition toValue: true].
 	myTexture isMorph ifTrue:[
-		self dispatchEvent: event using:[:evt :hand| hand handleMouseDown: evt].
+		self dispatchEvent: event to: myTexture.
 	].

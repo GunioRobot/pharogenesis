@@ -1,2 +1,0 @@
-UncheckedDynamicInterpreterSimulator comment:
-'I am a subclass of DynamicInterpreterSimulator.  I override the various assertions defined in my superclass in order to speed up execution of the interpreter simulator.  This extra speed comes at the expense of safety, since the (many) assertions in the interpreter implementation are effectively disabled.'

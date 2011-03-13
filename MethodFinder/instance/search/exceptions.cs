@@ -8,11 +8,10 @@ exceptions
 	aSel _ #asSymbol.
 	(self testPerfect: aSel) ifTrue: [
 		selector add: aSel.
-		expressions nextPut: $(.
-		expressions nextPutAll: 'data', argMap first printString.
-		aSel keywords doWithIndex: [:key :ind |
-			expressions nextPutAll: ' ',key.
-			(key last == $:) | (key first isLetter not)
-				ifTrue: [expressions nextPutAll: ' data', 
-					(argMap at: ind+1) printString]].
-		expressions nextPut: $); space].
+		expressions add: (String streamContents: [:strm | 
+			strm nextPutAll: 'data', argMap first printString.
+			aSel keywords doWithIndex: [:key :ind |
+				strm nextPutAll: ' ',key.
+				(key last == $:) | (key first isLetter not)
+					ifTrue: [strm nextPutAll: ' data', 
+						(argMap at: ind+1) printString]]])].

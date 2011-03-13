@@ -4,10 +4,10 @@ newFromStrike: fileName
 
 	| strike startName raster16 |
 	name _ fileName copyUpTo: $..	"assumes extension (if any) is '.strike'".
-	strike _ FileStream oldFileNamed: name, '.strike.'.
+	strike _ FileStream readOnlyFileNamed: name, '.strike.'.
 	strike binary.
-	strike readOnly.
-		"strip off direcory name if any"
+
+	"strip off direcory name if any"
 	startName _ name size.
 	[startName > 0 and: [((name at: startName) ~= $>) & ((name at: startName) ~= $])]]
 		whileTrue: [startName _ startName - 1].

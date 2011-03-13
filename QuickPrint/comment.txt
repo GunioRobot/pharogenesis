@@ -1,2 +1,0 @@
-QuickPrint comment:
-'This class supports fast, single-line string display. It is significantly faster than using a Paragraph for the same purpose.'

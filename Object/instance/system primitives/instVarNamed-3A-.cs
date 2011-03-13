@@ -1,4 +1,6 @@
 instVarNamed: aString
-	"Return the value of the instance variabvle in me with that name.  Slow and unclean, but very useful.  "
+	"Return the value of the instance variable in me with that name.  Slow and unclean, but very useful. "
 
-	^ self instVarAt: ((self class allInstVarNames) indexOf: aString)
+	^ self instVarAt: (self class allInstVarNames indexOf: aString asString)
+
+

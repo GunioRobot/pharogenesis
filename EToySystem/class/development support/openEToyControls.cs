@@ -1,2 +1,0 @@
-openEToyControls
-	EToyParameters open

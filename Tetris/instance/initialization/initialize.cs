@@ -3,11 +3,11 @@ initialize
 	super initialize.
 	board _ TetrisBoard new game: self.
 	color _ Color lightGray.
-	orientation _ #vertical.
-	centering _ #center.
-	vResizing _ #shrinkWrap.
-	hResizing _ #spaceFill.
-	inset _ 3.
+	self listDirection: #topToBottom.
+	self wrapCentering: #center.
+	self vResizing: #shrinkWrap.
+	self hResizing: #shrinkWrap.
+	self layoutInset: 3.
 	self 
 		addMorphBack: self makeGameControls;
 		addMorphBack: self makeMovementControls;

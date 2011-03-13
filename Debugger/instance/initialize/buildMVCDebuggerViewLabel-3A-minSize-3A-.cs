@@ -1,7 +1,12 @@
 buildMVCDebuggerViewLabel: aString minSize: aPoint
+	"Build an MVC debugger view around the receiver, and return the StandardSystemView thus created."
 
-	| topView stackListView stackCodeView rcvrVarView rcvrValView ctxtVarView ctxtValView deltaY underPane annotationPane buttonsView |
-	self expandStack.
+	| topView stackListView stackCodeView rcvrVarView rcvrValView ctxtVarView ctxtValView deltaY underPane annotationPane buttonsView oldContextStackIndex |
+
+	oldContextStackIndex _ contextStackIndex.
+	self expandStack. "Sets contextStackIndex to zero."
+	contextStackIndex _ oldContextStackIndex.
+
 	topView _ StandardSystemView new model: self.
 	topView borderWidth: 1.
 	stackListView _ PluggableListView on: self
@@ -14,7 +19,7 @@ buildMVCDebuggerViewLabel: aString minSize: aPoint
 		stackListView window: (0 @ 0 extent: 150 @ 50).
 		topView addSubView: stackListView.
 	deltaY _ 0.
-	Preferences useAnnotationPanes
+	 self wantsAnnotationPane
 		ifTrue:
 			[annotationPane _ PluggableTextView on: self
 				text: #annotation accept: nil readSelection: nil menu: nil.
@@ -24,7 +29,8 @@ buildMVCDebuggerViewLabel: aString minSize: aPoint
 			underPane _ annotationPane]
 		ifFalse:
 			[underPane _ stackListView].
-	Preferences optionalButtons ifTrue:
+	self wantsOptionalButtons
+		ifTrue:
 			[buttonsView _ self buildMVCOptionalButtonsButtonsView.
 			buttonsView borderWidth: 1.
 			topView addSubView: buttonsView below: underPane.

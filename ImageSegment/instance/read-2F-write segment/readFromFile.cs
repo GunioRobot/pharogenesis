@@ -3,7 +3,7 @@ readFromFile
 
 	| ff realName |
 	realName _ self class folder, FileDirectory slash, self localName.
-	ff _ FileStream oldFileNamed: realName.
+	ff _ FileStream readOnlyFileNamed: realName.
 	segment _ ff nextWordsInto: (WordArrayForSegment new: ff size//4).
 	endMarker _ segment nextObject. 	"for enumeration of objects"
 	endMarker == 0 ifTrue: [endMarker _ 'End' clone].

@@ -1,5 +1,4 @@
-Decompiler comment:
-'I decompile a method in three phases:
+I decompile a method in three phases:
 	Reverser: postfix byte codes -> prefix symbolic codes (nodes and atoms)
 	Parser: prefix symbolic codes -> node tree (same as the compiler)
-	Printer: node tree -> text (done by the nodes)'
+	Printer: node tree -> text (done by the nodes)

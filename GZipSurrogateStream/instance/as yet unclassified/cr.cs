@@ -1,0 +1,3 @@
+cr
+
+	self bufferStream cr

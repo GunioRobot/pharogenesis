@@ -1,2 +1,0 @@
-openImagineeringStudio
-	EToyPlayer openFrontCoverFor: EToyHolder new

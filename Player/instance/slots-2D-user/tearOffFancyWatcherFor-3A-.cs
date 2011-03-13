@@ -1,7 +1,8 @@
 tearOffFancyWatcherFor: aSlotName
 	| aWatcher aTile getSel aLine aColor aTower precision |
-	aColor _ Color r: 0.903 g: 0.903 b: 1.0.
+	aColor _ Color r: 0.387 g: 0.581 b: 1.0.
 	aLine _ AlignmentMorph newRow vResizing: #shrinkWrap; color: aColor.
+	aLine layoutInset: -1.
 	aLine borderWidth: 1; borderColor: aColor darker.
 	aLine addMorphBack: (self tileReferringToSelf borderWidth: 0; typeColor: aColor; color: aColor; bePossessive).
 	aLine addTransparentSpacerOfSize: (4@0).

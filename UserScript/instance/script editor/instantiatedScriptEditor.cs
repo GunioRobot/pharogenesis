@@ -1,11 +1,8 @@
 instantiatedScriptEditor
-	"return the current script editor, creating it if necessary"
-	self isAnonymous ifTrue:
-		[currentScriptEditor _ ScriptEditorMorph new playerScripted: player].
+	"Return the current script editor, creating it if necessary"
 
-	self isTextuallyCoded ifTrue: [
-			"path thought not to be reached now"
-			^ player costume pasteUpMorph scriptorForTextualScript: selector ofPlayer: player].
+	self isTextuallyCoded ifTrue:
+			[^ (player costume pasteUpMorph ifNil: [player costume "the world, backstop"]) scriptorForTextualScript: selector ofPlayer: player].
 
 	currentScriptEditor ifNil:
 		[currentScriptEditor _ (player class includesSelector: selector) 

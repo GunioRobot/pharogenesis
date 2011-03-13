@@ -4,6 +4,9 @@ drawOn: aCanvas
 	pHour _ self radius: 0.6 hourAngle: time hours + (time minutes/60.0).
 	pMin _ self radius: 0.72 hourAngle: (time minutes / 5.0).
 	pSec _ self radius: 0.8 hourAngle: (time seconds / 5.0).
+	time hours < 12
+		ifTrue: [self centerColor: Color veryLightGray]
+		ifFalse: [self centerColor: Color darkGray].
 
 	antialias ifTrue: [
 		aCanvas asBalloonCanvas

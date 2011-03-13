@@ -1,0 +1,1 @@
+AliceAlarm class instanceVariableNames: ''

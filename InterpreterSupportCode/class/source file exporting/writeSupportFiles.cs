@@ -11,13 +11,4 @@ writeSupportFiles
 	self storeString: self squeakVirtualMachineFile	onFileNamed: 'sqVirtualMachine.c'.
 	self storeString: self squeakNamedPrimsFile onFileNamed:'sqNamedPrims.c'.
 
-	self storeString: self squeakADPCMCodecPrimsFile	 onFileNamed: 'sqADPCMPrims.c'.
 	self storeString: self squeakFilePrimsFile	onFileNamed:  'sqFilePrims.c'.
-	self storeString: self squeakGSMCodecPluginFile	onFileNamed: 'sqGSMCodecPlugin.c'.
-
-	Smalltalk at: #AbstractSound ifPresent: [:abstractSound |
-		self storeString: abstractSound cCodeForSoundPrimitives
-													onFileNamed: 'sqSoundPrims.c'].
-	self storeString: self cCodeForMiscPrimitives		onFileNamed: 'sqMiscPrims.c'.
-	self storeString: self squeakOldSoundPrimsFile	onFileNamed: 'sqOldSoundPrims.c'.
-

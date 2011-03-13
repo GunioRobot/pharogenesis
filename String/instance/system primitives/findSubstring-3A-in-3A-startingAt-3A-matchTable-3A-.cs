@@ -3,7 +3,7 @@ findSubstring: key in: body startingAt: start matchTable: matchTable
 
 	The algorithm below is not optimum -- it is intended to be translated to C which will go so fast that it wont matter."
 	| index |
-	<primitive: 246>
+	<primitive: 'primitiveFindSubstring' module: 'MiscPrimitivePlugin'>
 	self var: #key declareC: 'unsigned char *key'.
 	self var: #body declareC: 'unsigned char *body'.
 	self var: #matchTable declareC: 'unsigned char *matchTable'.

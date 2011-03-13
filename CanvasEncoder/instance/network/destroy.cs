@@ -1,0 +1,2 @@
+destroy
+	self disconnect.

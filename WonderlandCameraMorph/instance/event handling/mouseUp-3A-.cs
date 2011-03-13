@@ -2,6 +2,12 @@ mouseUp: evt
 	"When the user clicks in a camera window, determine which actor the    
 	user clicked on and have that actor respond to the event"
 	| newEvent reactions |
+	firstPersonControls == true ifTrue:[
+		myControls mouseUp: evt.
+		myControls setCenter: nil.
+		evt hand needsToBeDrawn ifFalse:[Cursor normal show].
+		^self
+	].
 	self mode = #stroke ifTrue: [self createPoohActor. ^ self mode: nil].
 	newEvent _ self convertEvent: evt.
 	newEvent ifNil: [^ self].

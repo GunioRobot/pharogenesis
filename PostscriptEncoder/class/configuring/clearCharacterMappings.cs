@@ -1,0 +1,3 @@
+clearCharacterMappings
+
+	MacToPSCharacterMappings _ nil.

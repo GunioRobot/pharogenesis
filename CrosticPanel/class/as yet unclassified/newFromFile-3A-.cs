@@ -1,6 +1,11 @@
 newFromFile: aStream  "World addMorph: CrosticPanel new"
+	"World addMorph: (CrosticPanel newFromFile: (FileStream readOnlyFileNamed: 'first.crostic'))"
 
 	| quoteWithBlanks citation clue numberLine numbers clues answers indexableQuote quotePanel crosticPanel buttonRow quoteWidth |
+	(aStream next asciiValue = 16r1F) & (aStream next asciiValue = 16r8B) ifTrue:
+		["It's gzipped..."  aStream skip: -2.
+		^ self newFromFile: aStream asUnZippedStream ascii].
+	aStream skip: -2.
 	quoteWithBlanks _ aStream nextLine.
 	quoteWithBlanks _ quoteWithBlanks asUppercase select: [:c | c isLetter or: [' -' includes: c]].
 	indexableQuote _ quoteWithBlanks select: [:c | c isLetter].
@@ -15,6 +20,7 @@ newFromFile: aStream  "World addMorph: CrosticPanel new"
 		numberLine _ aStream nextLine.
 		numbers _ Scanner new scanTokens: numberLine.
 		answers addLast: numbers].
+	aStream close.
 
 	"Consistency check: "
 	(citation asUppercase select: [:c | c isLetter]) =

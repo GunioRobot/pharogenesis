@@ -7,4 +7,5 @@ justDroppedInto: aMorph event: anEvent
 		(theModel isKindOf: Component) ifTrue: [self unwire.  model _ nil].
 		^ super justDroppedInto: aMorph event: anEvent].
 	theModel == model ifTrue: [^ self  "Presumably just a move"].
-	self initComponentIn: aMorph
+	self initComponentIn: aMorph.
+	super justDroppedInto: aMorph event: anEvent

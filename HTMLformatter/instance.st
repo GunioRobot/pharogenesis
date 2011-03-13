@@ -1,6 +1,6 @@
 Object
 	subclass: #HTMLformatter
-	instanceVariableNames: 'formattingBlock '
+	instanceVariableNames: 'formattingBlock specialCharacter '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'PluggableWebServer'
+	category: 'Network-Pluggable Web Server'

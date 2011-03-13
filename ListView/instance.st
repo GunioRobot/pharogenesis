@@ -1,6 +1,6 @@
 View
 	subclass: #ListView
-	instanceVariableNames: 'list selection topDelimiter bottomDelimiter lineSpacing isEmpty '
+	instanceVariableNames: 'list selection topDelimiter bottomDelimiter isEmpty textStyle '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Interface-Support'
+	category: 'ST80-Support'

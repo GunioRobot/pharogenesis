@@ -16,8 +16,9 @@ goToPageMorph: newPage transitionSpec: transitionSpec
 		[newPage valueOfProperty: #transitionSpec  " ... then consult new page"
 			ifAbsent: [self transitionSpecFor: self  " ... otherwise this is the default"]].
 
+	self flag: #arNote. "Probably unnecessary"
 	(aWorld _ self world) ifNotNil:
-		[self primaryHand newKeyboardFocus: nil].
+		[self primaryHand releaseKeyboardFocus].
 
 	currentPage ifNotNil: [currentPage updateCachedThumbnail].
 	self currentPage ~~ nil
@@ -40,7 +41,8 @@ goToPageMorph: newPage transitionSpec: transitionSpec
 				whenStart: [self playPageFlipSound: tSpec first]
 				whenDone:
 					[currentPage delete; fullReleaseCachedState.
-					self addMorphBack: (currentPage _ pages at: pageIndex).
+					self insertPageMorphInCorrectSpot: (pages at: pageIndex).
+					self adjustCurrentPageForFullScreen.
 					self snapToEdgeIfAppropriate.
 					aWorld ifNotNil: [self world startSteppingSubmorphsOf: currentPage].
 					self currentPlayerDo: [:aPlayer | aPlayer runAllOpeningScripts].
@@ -52,7 +54,8 @@ goToPageMorph: newPage transitionSpec: transitionSpec
 		"No transition, but at least decommission current page"
 		currentPage delete; fullReleaseCachedState].
 
-	self addMorphBack: (currentPage _ pages at: pageIndex).
+	self insertPageMorphInCorrectSpot: (pages at: pageIndex).
+	self adjustCurrentPageForFullScreen.
 	self snapToEdgeIfAppropriate.
 	aWorld ifNotNil: [self world startSteppingSubmorphsOf: currentPage].
 	self currentPlayerDo: [:aPlayer | aPlayer runAllOpeningScripts].

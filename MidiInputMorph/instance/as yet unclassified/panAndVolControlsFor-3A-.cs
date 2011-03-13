@@ -17,8 +17,8 @@ panAndVolControlsFor: channelIndex
 		adjustToValue: (midiSynth panForChannel: channelIndex).
 	c _ AlignmentMorph newColumn
 		color: color;
-		inset: 0;
-		centering: #center;
+		layoutInset: 0;
+		wrapCentering: #center; cellPositioning: #topCenter;
 		hResizing: #spaceFill;
 		vResizing: #shrinkWrap.
 	middleLine _ Morph new  "center indicator for pan slider"

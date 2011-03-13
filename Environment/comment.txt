@@ -1,0 +1,17 @@
+Environments are used to provide separate name spaces in Squeak.  Each one operates pretty much the same way that the Smalltalk systemDictionary is used in a non-partitioned Squeak.
+
+Each class has a direct-access environment in which it is compiled.  Its environment slot points to an instance of this class, and it is there where the bindings of global variables are sought.  The compiler looks up these bindings using normal dictionary protocol (at:, etc).  If a binding is not found, then the name is looked up in the environment from which that one inherits, if any.  In this way a class may be compiled in a context that consists of several nested name spaces, and direct reference may be made to any of the objects resident in those spaces.
+
+Various methods may need to refer to objects that reside in environnments that are not a part of their direct-access environment.  For these references, a simple global reference,
+	Thing
+may not be used, and instead the construct,
+	Envt Thing
+must be used.  In this case Envt is a gloabl reference to another environment, and the global name, Thing, is sent as a message to that environment.
+
+Obviously, such a foreign reference cannot be resolved unless the environment in question implements a method of that name.  This is how environmental variables are exported.
+
+Each environment has its own unique class.  With this structure, each environment can have its own instance-specific messeages to provide access to its exported symbols.  Note that this mechanism provides much faster runtime access than the Dictionary at: protocol.  Also note that inheritance provides a trivial implementation of nested name scope by the same token.
+
+In the early stages of installing partitioned environments in Squeak, interpreted access will be provided in several ways.  To begin with, environments will intercept the doesNotUnderstand: message and, if the message begins with a capital letter, it will look up the corresponding name using #at:, and return the value if found.  A refinement to this feature will be to compile an export method on the spot, so that subsequent accesses to that variable run much faster.
+
+Note that there is no Environmental access pattern analogous to 'Envt Thing'.  If an implementor wishes to store into environmental variables, he must do so by defining, eg, a SetThingTo: method and using a call to that method in his code.  We may choose to only allow one certain pattern of access to be compiled in any subclass of Environment to enforce some understandable style of coding.

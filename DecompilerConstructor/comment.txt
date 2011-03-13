@@ -1,2 +1,1 @@
-DecompilerConstructor comment:
-'I construct the node tree for a Decompiler.'
+I construct the node tree for a Decompiler.

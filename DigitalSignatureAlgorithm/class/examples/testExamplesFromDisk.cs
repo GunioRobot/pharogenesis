@@ -5,7 +5,7 @@ testExamplesFromDisk
 
 	| msg  sig file publicKey |
 
-	file _ FileStream oldFileNamed: 'dsa.test.out'.
+	file _ FileStream readOnlyFileNamed: 'dsa.test.out'.
 	[
 		[file atEnd] whileFalse: [
 			sig _ file nextChunk.

@@ -1,2 +1,2 @@
 pageNamed: aName
-	^ pages detect: [:p | p externalName = aName] ifNone: [nil]
+	^ pages detect: [:p | p knownName = aName] ifNone: [nil]

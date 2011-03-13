@@ -1,6 +1,6 @@
 Object
 	subclass: #ControlManager
 	instanceVariableNames: 'scheduledControllers activeController activeControllerProcess screenController newTopClicked '
-	classVariableNames: 'CmdDotEnabled '
+	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Interface-Framework'
+	category: 'Kernel-ST80 Remnants'

@@ -1,0 +1,4 @@
+mouseLeaveEither: evt
+
+	self deleteAnyMouseActionIndicators.
+

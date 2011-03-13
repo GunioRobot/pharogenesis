@@ -1,2 +1,0 @@
-absorbUpdatesFromServer
-	Utilities updateFromServer

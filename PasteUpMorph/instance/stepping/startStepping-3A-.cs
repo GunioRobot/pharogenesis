@@ -1,7 +1,3 @@
 startStepping: aMorph
 	"Add the given morph to the step list. Do nothing if it is already being stepped."
-
-	self stepList do: [:entry | entry first = aMorph ifTrue: [^ self]].  "already stepping"
-	self adjustWakeupTimesIfNecessary.
-	self stepList add:
-		(Array with: aMorph with: Time millisecondClockValue).
+	^self startStepping: aMorph at: Time millisecondClockValue selector: #stepAt: arguments: nil stepTime: nil

@@ -1,2 +1,1 @@
-OrderedCollection comment:
-'I represent a collection of objects ordered by the collector.'
+I represent a collection of objects ordered by the collector.

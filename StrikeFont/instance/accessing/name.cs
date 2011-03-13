@@ -1,4 +1,4 @@
 name
 	"Answer the receiver's name."
 
-	^name
+	^name ifNil: ['(unnamed)']

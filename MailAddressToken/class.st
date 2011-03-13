@@ -1,0 +1,1 @@
+MailAddressToken class instanceVariableNames: ''

@@ -1,4 +1,6 @@
 playfieldOptionsMenu
+	"Answer an auxiliary menu with options specific to playfields -- too many to be housed in the main menu"
+
 	| aMenu isWorld |
 	isWorld _ self isWorldMorph.
 	aMenu _ MenuMorph new defaultTarget: self.
@@ -10,6 +12,21 @@ playfieldOptionsMenu
 		[aMenu add: 'broadcast as documentation' action: #saveDocPane].
 	aMenu add: 'round up strays' action: #roundUpStrays.
 	aMenu balloonTextForLastItem:  'Bring back all objects whose current coordinates keep them from being visible, so that at least a portion of each of my interior objects can be seen.'.
+	aMenu add: 'show all players' action: #showAllPlayers.
+	aMenu balloonTextForLastItem:  'Make visible the viewers for all players which have user-written scripts in this playfield.'.
+	aMenu add: 'hide all players' action: #hideAllPlayers.
+	aMenu balloonTextForLastItem:  'Make invisible the viewers for all players in this playfield. This will save space before you publish this project'.
+
+
+	aMenu addLine.
+	aMenu add: 'shuffle contents' action: #shuffleSubmorphs.
+	aMenu balloonTextForLastItem: 'Rearranges my contents in random order'.
+	self griddingOn
+		ifTrue: [aMenu add: 'turn gridding off' action: #griddingOnOff.
+				aMenu add: (self gridVisible ifTrue: ['hide'] ifFalse: ['show']) , ' grid'
+						action: #gridVisibleOnOff.
+				aMenu add: 'set grid spacing...' action: #setGridSpec]
+		ifFalse: [aMenu add: 'turn gridding on' action: #griddingOnOff].
 	aMenu addLine.
 
 	#(	(autoLineLayoutString	toggleAutoLineLayout
@@ -27,22 +44,30 @@ playfieldOptionsMenu
 		(originAtCenterString	toggleOriginAtCenter
 			'whether the cartesian origin of the playfield should be at its lower-left corner or at the center of the playfield')
 		(showThumbnailString	toggleAlwaysShowThumbnail
-			'whether large objects should be represented by thumbnail miniatures of themselves')) do:
+			'whether large objects should be represented by thumbnail miniatures of themselves')
+		(fenceEnabledString	toggleFenceEnabled
+			'whether moving objects should stop at the edge of their container')
+		(batchPenTrailsString	toggleBatchPenTrails 
+			'if true, detailed movement of pens between display updates is ignored.  Thus multiple line segments drawn within a script may not be seen individually.')
+
+	) do:
 
 			[:triplet |
 				(isWorld and: [#(toggleAutoLineLayout toggleIndicateCursor toggleIsPartsBin toggleAlwaysShowThumbnail) includes: triplet second]) ifFalse:
 					[aMenu addUpdating: triplet first action: triplet second.
 					aMenu balloonTextForLastItem: triplet third]]. 
 
-	isWorld ifFalse:
-		[aMenu add: 'set thumbnail height...' action: #setThumbnailHeight.
-		aMenu balloonTextForLastItem: 'if currently showing thumbnails governs the standard height for them'].
-
 	aMenu addUpdating: #autoViewingString action: #toggleAutomaticViewing.
 	aMenu balloonTextForLastItem:  'governs whether, when an object is touched inside me, a viewer should automatically be launched for it.'.
 
+	((isWorld not or: [self backgroundSketch notNil]) or: [presenter isNil])
+		ifTrue:
+			[aMenu addLine].
+
 	isWorld ifFalse:
-		[aMenu add: 'behave like a Holder' action: #becomeLikeAHolder.
+		[aMenu add: 'set thumbnail height...' action: #setThumbnailHeight.
+		aMenu balloonTextForLastItem: 'if currently showing thumbnails governs the standard height for them'.
+		aMenu add: 'behave like a Holder' action: #becomeLikeAHolder.
 		aMenu balloonTextForLastItem: 'Set properties to make this object nicely set up to hold frames of a scripted animation.'].
 
 	self backgroundSketch ifNotNil:

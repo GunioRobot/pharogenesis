@@ -1,0 +1,1 @@
+PhoneticTranscriber class instanceVariableNames: ''

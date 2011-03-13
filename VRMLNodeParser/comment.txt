@@ -1,0 +1,13 @@
+A VRMLNodeParser creates a generic tree of VRMLNodes from a VRML file. These nodes are not intended to be used directly in a 3D system; they should be used to create a retained mode description for the 3D rendering system.
+
+Instance variables:
+	nodeTypes 	<Collection of: VRMLNodeSpec>	The specs used for construction the VRML nodes
+	scene 		<VRMLScene>					The scene which will be defined by the parser
+	protoList 	<Collection of: VRMLNodeSpec>	Prototypes currently under construction
+	infoBar 	<BlockContext>					Progress indicator
+
+Class variables:
+	VRMLFieldTypes 			<Dictionary>		Basic VRML field types
+	VRMLRuntimeFieldTypes 	<Dictionary>		The field types in a valid VRML file
+	VRMLScriptFieldTypes 		<Dictionary>		The field types for node definitions
+	VRMLStatements 			<Dictionary>		The valid statements in a VRML file

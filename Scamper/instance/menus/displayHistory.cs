@@ -9,4 +9,4 @@ displayHistory
 	recentDocuments reverseDo:
 		[:doc |
 		menu add: doc url toText selector: #displayDocument: argument: doc].
-	menu popUpForHand: self currentHand
+	menu popUpInWorld: self currentWorld

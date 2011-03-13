@@ -1,0 +1,1 @@
+holds some subset of the messages coming in from an IRC connection.  subclasses define specific criteria for filtering the messages.

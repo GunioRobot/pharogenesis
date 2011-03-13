@@ -1,2 +1,0 @@
-fileForRecentLog
-	Smalltalk writeRecentToFile

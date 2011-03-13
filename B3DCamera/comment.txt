@@ -1,0 +1,7 @@
+I represent a simple perspective camera.
+
+Instance variables:
+	position		<B3DVector3>		where the camera is located
+	target 		<B3DVector3>		where the camera is aiming at
+	up 			<B3DVector3>		what is considered to be 'up' on screen
+	perspective	<B3DCameraPerspective>	the actual camera perspective

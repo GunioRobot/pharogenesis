@@ -1,0 +1,1 @@
+LedTimerMorph class instanceVariableNames: ''

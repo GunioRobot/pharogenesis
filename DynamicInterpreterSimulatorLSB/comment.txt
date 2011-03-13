@@ -1,2 +1,0 @@
-DynamicInterpreterSimulatorLSB comment:
-'I am a version of DynamicInterpreterSimulator tweaked to run on little-endian machines.'

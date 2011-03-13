@@ -2,13 +2,13 @@ startDrag: evt
 	"We'll get a mouseDown first, some mouseMoves, and a mouseUp event last"
 	| oldCenter |
 	evt isMouseDown ifTrue:
-		[self showBalloon: 'drag (mouse down)'.
+		[self showBalloon: 'drag (mouse down)' hand: evt hand.
 		self world displayWorld.
 		(Delay forMilliseconds: 750) wait].
 	evt isMouseUp ifTrue:
-		[self showBalloon: 'drag (mouse up)'].
+		[self showBalloon: 'drag (mouse up)' hand: evt hand].
 	(evt isMouseUp or: [evt isMouseDown]) ifFalse:
-		[self showBalloon: 'drag (mouse still down)'].
+		[self showBalloon: 'drag (mouse still down)' hand: evt hand].
 	(self containsPoint: evt cursorPoint)
 		ifFalse: [^ self].
 

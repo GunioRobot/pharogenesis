@@ -1,0 +1,1 @@
+CornerRounder class instanceVariableNames: ''

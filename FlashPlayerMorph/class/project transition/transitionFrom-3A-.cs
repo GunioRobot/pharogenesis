@@ -1,2 +1,3 @@
 transitionFrom: srcProjectName
-	^self transitionFrom: srcProjectName to: Project current name
+
+	^self transitionFrom: srcProjectName to: CurrentProjectRefactoring currentProjectName

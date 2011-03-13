@@ -4,7 +4,7 @@ serverPasswords
 	| dir encodedPasswords |
 	dir _ FileDirectory on: Smalltalk vmPath.
 	(dir fileExists: 'sqk.info') ifFalse: [^ nil].	"Caller will ask user for password"
-	encodedPasswords _ (dir oldFileNamed: 'sqk.info') contentsOfEntireFile.
+	encodedPasswords _ (dir readOnlyFileNamed: 'sqk.info') contentsOfEntireFile.
 		"If you don't have this file, and you really do want to release 
 		an update, contact Ted Kaehler."
 	^ (self decode: encodedPasswords) findTokens: String cr

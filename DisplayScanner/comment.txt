@@ -1,2 +1,1 @@
-DisplayScanner comment:
-'My instances are used to scan text and display it on the screen or in a hidden form.'
+My instances are used to scan text and display it on the screen or in a hidden form.

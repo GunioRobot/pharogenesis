@@ -3,7 +3,7 @@ storeAllInSegments
 	Project storeAllInSegments.		"
 
 	| all ff ll |
-all _ Project allInstances.
+all _ Project allProjects.
 Transcript show: 'Initial Space Left: ', (ff _ Smalltalk garbageCollect) printString; cr.
 all do: [:proj |
 	Transcript show: proj name; cr.

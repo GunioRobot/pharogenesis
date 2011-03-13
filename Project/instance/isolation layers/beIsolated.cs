@@ -3,7 +3,7 @@ beIsolated
 	This requires clearing the current changeSet or installing a new one."
 
 	isolatedHead ifTrue: [^ self error: 'Already isolated'].
-	Project current == self ifFalse:
+	self isCurrentProject ifFalse:
 		[^ self inform: 'Must be in this project to isolate it'.].
 	changeSet isEmpty ifFalse: [changeSet _ ChangeSorter newChangeSet].
 	changeSet beIsolationSetFor: self.

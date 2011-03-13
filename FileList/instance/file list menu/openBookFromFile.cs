@@ -6,14 +6,14 @@ openBookFromFile
 	| book aFileStream |
 	Smalltalk verifyMorphicAvailability ifFalse: [^ self].
 
-	aFileStream _ directory oldFileNamed: self fullName.
+	aFileStream _ directory readOnlyFileNamed: self fullName.
 	book _ BookMorph new.
 	book setProperty: #url toValue: aFileStream url.
 	book fromRemoteStream: aFileStream.
 	aFileStream close.
 
 	Smalltalk isMorphic 
-		ifTrue: [World addMorphsAndModel: book]
+		ifTrue: [Display getCurrentMorphicWorld addMorphsAndModel: book]
 		ifFalse:
 			[book isMorph ifFalse: [^ self errorMustBeMorph].
 			book openInWorld].

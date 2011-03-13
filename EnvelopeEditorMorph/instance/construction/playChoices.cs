@@ -1,2 +1,0 @@
-playChoices
-	^ #(now afterEdits duringEdits)

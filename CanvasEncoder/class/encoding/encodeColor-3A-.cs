@@ -1,0 +1,3 @@
+encodeColor: color
+	
+	^color encodeForRemoteCanvas

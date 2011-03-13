@@ -1,0 +1,2 @@
+helpMsgsAdditionhalosuniqueNamesInHalos
+	^ #((uniqueNamesInHalos 'if true, then when you put up a halo for any morph, it is assigned a unique name (if it doesn''t already have one) which will stick with it.' ) )

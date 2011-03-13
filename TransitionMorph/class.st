@@ -1,0 +1,1 @@
+TransitionMorph class instanceVariableNames: ''

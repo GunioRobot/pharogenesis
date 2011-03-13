@@ -3,4 +3,4 @@ SketchMorph
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Scripting-Support'
+	category: 'Morphic-Scripting Support'

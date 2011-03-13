@@ -1,4 +1,4 @@
 primMIDIGetPortDirectionality: portNum
 
-	<primitive: 524>
+	<primitive: 'primitiveMIDIGetPortDirectionality' module: 'MIDIPlugin'>
 	self primitiveFailed.

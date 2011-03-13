@@ -1,3 +1,3 @@
 privateClipVB: vb
-	"Clip the objects in the vertex buffer."
+	"OBSOLETE. Clip the objects in the vertex buffer."
 	^clipper processVertexBuffer: vb

@@ -6,8 +6,9 @@ messageListIndex: anInteger
 		messageListIndex ~= 0
 			ifTrue: [self selectedMessage]
 			ifFalse: [''].
-	self changed: #messageListIndex.	"update my selection"
+	self changed: #messageListIndex.	 "update my selection"
 	editSelection _ #editMessage.
 	self contentsChanged.
 	(messageListIndex ~= 0 and: [autoSelectString notNil])
 		ifTrue: [self changed: #autoSelect].
+	self decorateButtons

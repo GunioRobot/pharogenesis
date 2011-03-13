@@ -1,0 +1,1 @@
+FFIPlugin class instanceVariableNames: ''

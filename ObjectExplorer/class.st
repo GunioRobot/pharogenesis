@@ -1,0 +1,1 @@
+ObjectExplorer class instanceVariableNames: ''

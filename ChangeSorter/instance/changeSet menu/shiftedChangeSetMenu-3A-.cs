@@ -1,4 +1,9 @@
 shiftedChangeSetMenu: aMenu
+	"Set up aMenu to hold items relating to the change-set-list pane when the shift key is down"
+
+	Smalltalk isMorphic ifTrue:
+		[aMenu title: 'Change set (shifted)'.
+		aMenu addStayUpItemSpecial].
 	aMenu add: 'conflicts with other change sets' action: #browseMethodConflicts.
 	aMenu balloonTextForLastItem: 
 'Browse all methods that occur both in this change set and in at least one other change set.'.
@@ -16,6 +21,16 @@ shiftedChangeSetMenu: aMenu
 	aMenu add: 'check for unsent messages' action: #checkForUnsentMessages.
 	aMenu balloonTextForLastItem:
 'Check this change set for messages that are not sent anywhere in the system'.
+
+	aMenu add: 'check for uncommented methods' action: #checkForUncommentedMethods.
+	aMenu balloonTextForLastItem:
+'Check this change set for methods that do not have comments'.
+
+	Utilities authorInitialsPerSe isEmptyOrNil ifFalse:
+		[aMenu add: 'check for other authors' action: #checkForAlienAuthorship.
+		aMenu balloonTextForLastItem:
+'Check this change set for methods whose current authoring stamp does not start with "', Utilities authorInitials, '"'].
+
 	aMenu addLine.
 
 	aMenu add: 'inspect change set' action: #inspectChangeSet.
@@ -53,6 +68,10 @@ shiftedChangeSetMenu: aMenu
 	aMenu add: 'file into new...' action: #fileIntoNewChangeSet.
 	aMenu balloonTextForLastItem: 
 'Load a fileout from disk and place its changes into a new change set (seldom needed -- much better to do this from a file-list browser these days.)'.
+
+	aMenu add: 'file out all change sets' action: #fileOutUnnumberedChangeSets.
+	aMenu balloonTextForLastItem:
+'File out every change set in the system whose name does not begin with a digit, except those that are empty or whose names start with "Play with me".  The usual checks for slips are suppressed when this command is done.'.
 
 	aMenu addLine.
 	aMenu add: 'more...' action: #unshiftedYellowButtonActivity.

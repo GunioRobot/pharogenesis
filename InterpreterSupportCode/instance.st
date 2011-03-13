@@ -3,4 +3,4 @@ Object
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Squeak-Interpreter'
+	category: 'VMConstruction-Interpreter'

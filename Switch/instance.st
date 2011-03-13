@@ -3,4 +3,4 @@ Model
 	instanceVariableNames: 'on onAction offAction '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Interface-Menus'
+	category: 'Tools-Menus'

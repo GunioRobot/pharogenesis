@@ -5,27 +5,28 @@ commandKeyMappings
 (use with Cmd key on Mac and Alt key on other platforms)
 
 a	Select all
-b	Browse it (selection is a class name)
+b	Browse it (selection is a class name or cursor is over a class-list or message-list)
 c	Copy selection
 d	Do it (selection is a valid expression)
 e	Exchange selection with prior selection
 f	Find
 g	Find again
 h	Set selection as search string for find again
-i	Inspect it (selection is a valid expression)
-j	Again once
+i	Inspect it (selection is a valid expression, or selection is over an inspect-ilst)
+j	Again once (do the last text-related operation again)
 k	Set font
 l	Cancel
-m	Implementors of it (selection is a message selector)
-n	Senders of it (selection is a message selector)
+m	Implementors of it (selection is a message selector or cursor is over a class-list or message-list)
+n	Senders of it (selection is a message selector or cursor is over a class-list or message-list)
 o	Spawn current method
 p	Print it (selection is a valid expression)
 q	Query symbol (toggle all possible completion for a given prefix)
 r	Recognizer
 s	Save (i.e. accept)
+t	Finds a Transcript (when cursor is over the desktop)
 u	Toggle alignment
 v	Paste
-w	Delete preceding word
+w	Delete preceding word (over text);  Close-window (over morphic desktop)
 x	Cut selection
 y	Swap characters
 z	Undo
@@ -43,17 +44,18 @@ D	Duplicate
 E	Method strings containing it
 F	Insert 'ifFalse:'
 I	Inspect via Object Explorer
-J	Again many
+J	Again many (apply the previous text command repeatedly until the end of the text)
 K	Set style
 L	Outdent (move selection one tab-stop left)
-N	References to it
-O	Open single-message browser (in selector lists)
+N	References to it (selection is a class name, or cursor is over a class-list or message-list)
+O	Open single-message browser (in message lists)
+P	Make project link
 R	Indent (move selection one tab-stap right)
 S	Search
 T	Insert 'ifTrue:'
 U	Convert linefeeds to carriage returns in selection
 V	Paste author's initials
-W	Selectors containing it
+W	Selectors containing it (in text); show-world-menu (when issued with cursor over desktop)
 X	Force selection to lowercase
 Y	Force selection to uppercase
 Z	Capitalize all words in selection
@@ -65,6 +67,8 @@ Del			Forward delete character
 Shift-Bcksp	Backward delete word
 Shift-Del	Forward delete word
 Esc			Select current type-in
+
+\			Send top window to back
 
 Cursor keys
 left, right,

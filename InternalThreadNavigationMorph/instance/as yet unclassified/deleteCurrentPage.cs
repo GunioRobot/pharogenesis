@@ -1,0 +1,3 @@
+deleteCurrentPage
+
+	"no-op here"

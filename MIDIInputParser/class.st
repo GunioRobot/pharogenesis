@@ -1,0 +1,1 @@
+MIDIInputParser class instanceVariableNames: ''

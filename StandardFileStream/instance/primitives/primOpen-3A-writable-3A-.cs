@@ -7,5 +7,5 @@ primOpen: fileName writable: writableFlag
 		if the file exists, open it read-only
 		else return nil"
 
-	<primitive: 153>
+	<primitive: 'primitiveFileOpen' module: 'FilePlugin'>
 	^ nil

@@ -1,0 +1,1 @@
+InflateStream class instanceVariableNames: ''

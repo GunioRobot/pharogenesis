@@ -1,0 +1,3 @@
+contents
+	semaphore wait.
+	^content

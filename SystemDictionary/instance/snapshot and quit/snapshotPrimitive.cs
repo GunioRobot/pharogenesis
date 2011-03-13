@@ -5,4 +5,4 @@ snapshotPrimitive
 	Essential. See Object documentation whatIsAPrimitive."
 
 	<primitive: 97>
-	self primitiveFailed
+	^nil "indicates error writing image file"

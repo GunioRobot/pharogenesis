@@ -1,3 +1,4 @@
 showDiffs
-	"For backward compatibility during transition only, lest browsers be unusable for a spell"
+	"Answer whether the receiver is showing differences.  When it is, pluggableTextMorphs will show a green border"
+
 	^ false

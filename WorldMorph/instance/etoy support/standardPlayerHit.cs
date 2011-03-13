@@ -1,3 +1,0 @@
-standardPlayerHit
-
-	self playSoundNamed: #peaks.

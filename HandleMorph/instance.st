@@ -1,6 +1,6 @@
 EllipseMorph
 	subclass: #HandleMorph
-	instanceVariableNames: 'pointBlock '
+	instanceVariableNames: 'pointBlock lastPointBlock '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Support'
+	category: 'Morphic-Widgets'

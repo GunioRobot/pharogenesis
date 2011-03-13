@@ -1,10 +1,6 @@
 macBrowserPluginFile
 
-	^ '//Thing busted 2000 July 26th
-// squeak quit restart has issues with change file open
-//
-
-/********** Notes on Browser Plugin VM ************
+	^ '/********** Notes on Browser Plugin VM ************
 How it Works:
 
 The browser plugin VM allows Squeak to be run as a plug-in under
@@ -41,8 +37,20 @@ Here is a list of the functions overridden:
 In addition, ioProcessEvents() becomes a noop and main() is completely
 omitted when sqMacWindow.c is compiled for use in the browser plugin VM.
 
+ Thing busted 2000 July 26th
+ squeak quit restart has issues with change file open
+ 
+
 June/July 2000 johnmci@smalltalkconsulting.com Reviewed code readded comments, added FullScreen Support
 				fixed issues with Carbon, general code cleaning.
+
+Sept 27th 2000 johnmci@smalltalkconsulting.com added logic to have more flexibility in memory size.
+				Fix issue with volume ID, don''t use 0
+				Fix issue were IE lies about the frame size as it figures out the frame size in real time durning rendering
+				Added check for file: in URL logic to disallow
+				Fixed problem in NPP_URLNotify, must call notify complete logic
+				Ensure NP_memFree is called for plugin arguments
+				Add logic for URLPosting
 **********/
 
 #include "sq.h"
@@ -56,6 +64,8 @@ June/July 2000 johnmci@smalltalkconsulting.com Reviewed code readded comments, a
 #include <MacWindows.h>
 #include <Movies.h>
 #include <Folders.h>
+#include <string.h>
+#include <ctype.h>
 
 #if TARGET_API_MAC_CARBON
     #define EnableMenuItemCarbon(m1,v1)  EnableMenuItem(m1,v1);
@@ -100,6 +110,7 @@ int primitivePluginRequestFileHandle(void);
 int primitivePluginRequestState(void);
 int primitivePluginRequestURL(void);
 int primitivePluginRequestURLStream(void);
+int primitivePluginPostURL(void);
 #pragma export off
 #endif
 
@@ -112,7 +123,7 @@ int primitivePluginRequestURLStream(void);
 #define STATUS_IN_PROGRESS 1
 #define STATUS_FAILED 2
 #define STATUS_SUCCEEDED 3
-#define STARTINGsqueakHeapMBytes 20
+#define STARTINGsqueakHeapMBytes 20*1024*1024
 
 /*** Imported Variables ***/
 
@@ -149,6 +160,7 @@ int			squeakHeapMBytes = STARTINGsqueakHeapMBytes;  /* default heap size, overri
 char		squeakPluginImageName[] = IMAGE_NAME;
 NPP			thisInstance	= nil;
 WindowPtr gAFullscreenWindow = nil;
+char        rememberMemoryString[128]="";
 
 
 #define URL_REQUEST_COUNT 100
@@ -158,6 +170,7 @@ typedef struct {
 	int status;
 	int semaIndex;
 	char fileName[MAX_STRING_LENGTH + 1];
+	char *buffer;
 } URLRequestRecord;
 
 URLRequestRecord urlRequests[URL_REQUEST_COUNT];
@@ -170,6 +183,11 @@ int recordModifierButtons(EventRecord *theEvent);
 int recordMouseDown(EventRecord *theEvent);
 void ioSetFullScreenRestore();
 int PrefixPathWith(char *pathName, int pathNameSize, int pathNameMax, char *prefix);
+
+/*** From VM ***/
+int checkImageVersionFromstartingAt(sqImageFile f, int imageOffset);
+int getLongFromFileswap(sqImageFile f, int swapFlag);
+
 
 /*** Local Functions ***/
 
@@ -191,6 +209,9 @@ void URLRequestDestroy(int requestHandle);
 void URLRequestFailed(int notifyData, int reason);
 char * URLRequestFileName(int requestHandle);
 int  URLRequestStatus(int requestHandle);
+int parseMemorySize(int baseSize, char *src);
+int AbortIfFileURL(char *url);
+int URLPostCreate(char *url, char *buffer, char * window,int semaIndex);
 
 /*** Initialize/Shutdown ***/
 
@@ -209,7 +230,6 @@ NPError NPP_Initialize(void) {
 	needsUpdate = false;
 	netscapeWindow = nil;
 	pluginArgCount = 0;
-	squeakHeapMBytes = STARTINGsqueakHeapMBytes;
 	thisInstance = nil;
 	InitURLRequestTable();
 	return NPERR_NO_ERROR;
@@ -273,7 +293,7 @@ NPError NPP_New(NPMIMEType pluginType, NPP instance, uint16 mode,
 		pluginArgValue[i] = (char *) NPN_MemAlloc(strlen(argv[i]) + 1);
 		strcpy(pluginArgValue[i], argv[i]);
 		if (CaseInsensitiveMatch(pluginArgName[i], "memory")) {
-			squeakHeapMBytes = StringToInteger(pluginArgValue[i]);
+			strcpy(rememberMemoryString,pluginArgValue[i]);
 		}
 	}
 
@@ -299,7 +319,16 @@ NPError NPP_New(NPMIMEType pluginType, NPP instance, uint16 mode,
  * NPP_Destroy as the instance''s window is no longer guaranteed to be valid. 
  +++++++++++++++++++++++++++++++++++++++++++++++++*/
 NPError NPP_Destroy(NPP instance, NPSavedData** save) {
+	long i;
+	
 	ExitCleanup();
+	if (pluginArgCount != 0) {
+		for(i=0;i<pluginArgCount;i++) {
+			NPN_MemFree(pluginArgName[i]);
+			NPN_MemFree(pluginArgValue[i]);
+		}
+		pluginArgCount = 0;
+	}
 	return NPERR_NO_ERROR;
 }
 
@@ -320,6 +349,7 @@ NPError NPP_SetWindow(NPP instance, NPWindow* window) {
 	NP_Port* port;
 
 	if (window == NULL) return NPERR_NO_ERROR;
+	if (window->window == NULL) return NPERR_NO_ERROR;
 	
 	netscapeWindow = window;
 	port = (NP_Port *) netscapeWindow->window;
@@ -442,6 +472,9 @@ int32 NPP_Write(NPP instance, NPStream *stream, int32 offset, int32 len, void *b
 void NPP_URLNotify(NPP instance, const char* url, NPReason reason, void* notifyData) {
 	if (reason != NPRES_DONE) 
 		URLRequestFailed((int) notifyData, reason);
+	else
+		URLRequestCompleted((int) notifyData, null);
+
 }
 
 /*** Printing ***/
@@ -560,6 +593,9 @@ void StartDraw(void) {
 	clipRect.left   = netscapeWindow->clipRect.left   + port->portx;
 	clipRect.bottom = netscapeWindow->clipRect.bottom + port->porty;
 	clipRect.right  = netscapeWindow->clipRect.right  + port->portx;
+	if (clipRect.top == 0 && clipRect.left ==0 && clipRect.bottom==0 && clipRect.right==0) {
+		// Not sure what to do IE is lying... this gets the full screen, not a table cell GetPortBounds(GetWindowPort(stWindow),&clipRect);
+	}
 	ClipRect(&clipRect);
 	BackColor(whiteColor);  /* needed to avoid funny colors */
 }
@@ -569,7 +605,12 @@ void StartDraw(void) {
 void ReadSqueakImage(void) {
 	sqImageFile f;
 	char msg[500];
-
+    int swapBytes;
+    int dataSize;
+    int headerStart;
+    int headerSize;
+    int heapSize;
+    
 	plugInInit(squeakPluginImageName);
 	InitFilePaths();
 
@@ -582,7 +623,24 @@ void ReadSqueakImage(void) {
 		plugInNotifyUser(msg);
 		return;
 	}
-	readImageFromFileHeapSizeStartingAt(f, squeakHeapMBytes * 1024*1024, 0);
+	
+	//Cheat and peek ahead to get the image size so we can calculate the memory required 
+	
+	swapBytes = checkImageVersionFromstartingAt(f, 0);
+	headerStart = (sqImageFilePosition(f)) - 4;
+	headerSize = getLongFromFileswap(f, swapBytes);
+	dataSize = getLongFromFileswap(f, swapBytes);
+	
+	//Close then reopen to reset file position
+	
+	sqImageFileClose(f);  
+	f = sqImageFileOpen(imageName, "rb");
+
+	squeakHeapMBytes = parseMemorySize(dataSize, rememberMemoryString);
+	if (squeakHeapMBytes == 0) 
+	    squeakHeapMBytes = STARTINGsqueakHeapMBytes;
+	    
+	readImageFromFileHeapSizeStartingAt(f, squeakHeapMBytes, 0);
 	sqImageFileClose(f);
 	interruptKeycode = 515;  /* ctrl-C, since Netscape blocks cmd-. */
 	fullScreenFlag=false; //Note image can be saved with true
@@ -603,6 +661,7 @@ int URLRequestCreate(char *url, char *target, int semaIndex) {
 	urlRequests[handle].id = nextRequestID++;
 	urlRequests[handle].status = STATUS_IN_PROGRESS;
 	urlRequests[handle].semaIndex = semaIndex;
+	urlRequests[handle].buffer = null;
 
 	/* temporarily return the grafPort to Netscape so it can display feedback: */
 	EndDraw();
@@ -616,6 +675,41 @@ int URLRequestCreate(char *url, char *target, int semaIndex) {
 	return handle;
 }
 
+int URLPostCreate(char *url, char *buffer, char * window,int semaIndex) {
+  /* Start a URL request and return its index. Return -1 if there were
+     no idle request handles. */
+
+	int handle, notifyData;
+	long junk;
+	NPError error;
+	
+	handle = FindIdleURLRequest();
+	if (handle < 0) return handle;
+	urlRequests[handle].id = nextRequestID++;
+	urlRequests[handle].status = STATUS_IN_PROGRESS;
+	urlRequests[handle].semaIndex = semaIndex;
+	urlRequests[handle].buffer = buffer;
+
+	/* temporarily return the grafPort to Netscape so it can display feedback: */
+	EndDraw();
+	notifyData = (urlRequests[handle].id << 8) + handle;
+	error = NPN_PostURLNotify(thisInstance, url, window, strlen(buffer)+1, buffer, false, (void *) notifyData);
+	if (error != NPERR_NO_ERROR) {
+		StartDraw();
+		return -1;
+	}
+	
+	Delay(120, (unsigned long *) &junk);  /* workaround for a bug in Mac Netscape 4.7--
+						  back-to-back requests to a server sometimes fail
+						  when the server was heavily loaded Question is this value too long!*/
+	StartDraw();
+	if (window[0] == 0x00) {
+		//Bug? unsure, but if window is null, then no notification give so trigger semaphore
+		URLRequestCompleted(notifyData,null);
+	}	
+	return handle;
+}
+
 void URLRequestDestroy(int requestHandle) {
   /* Clear the url request with the given handle. */
 
@@ -626,6 +720,7 @@ void URLRequestDestroy(int requestHandle) {
 	urlRequests[requestHandle].status = STATUS_IDLE;
 	urlRequests[requestHandle].semaIndex = 0;
 	urlRequests[requestHandle].fileName[0] = 0;
+	urlRequests[requestHandle].buffer = null;
 }
 
 char * URLRequestFileName(int requestHandle) {
@@ -674,7 +769,12 @@ void URLRequestCompleted(int notifyData, const char* fileName) {
 		return;
 	}
 	if (urlRequests[handle].id == (notifyData >> 8)) {
-		strncpy(urlRequests[handle].fileName, fileName, MAX_STRING_LENGTH);
+		if (fileName != null) 
+		    strncpy(urlRequests[handle].fileName, fileName, MAX_STRING_LENGTH);
+		if (urlRequests[handle].buffer != null) {
+			NPN_MemFree(urlRequests[handle].buffer);
+			urlRequests[handle].buffer = null;
+		}
 		urlRequests[handle].status = STATUS_SUCCEEDED;
 		signalSemaphoreWithIndex(urlRequests[handle].semaIndex);
 	}
@@ -689,6 +789,10 @@ void URLRequestFailed(int notifyData, int reason) {
 		return;
 	}
 	if (urlRequests[handle].id == (notifyData >> 8)) {
+		if (urlRequests[handle].buffer != null) {
+			NPN_MemFree(urlRequests[handle].buffer);
+			urlRequests[handle].buffer = null;
+		}
 		/* Note: For local files, we''re informed that there was a network
 		   error (but only after NPP_StreamAsFile has reported success).
 		   We could allow local files to be read through the URL request
@@ -724,13 +828,20 @@ int ioExit(void) {
 }
 
 int ioScreenSize(void) {
-	int w = 10, h = 10;
+	int w = 0, h = 0;
+	Rect bounds;
 	
 	if (netscapeWindow != nil) {
 		w = netscapeWindow->clipRect.right - netscapeWindow->clipRect.left;
 		h = netscapeWindow->clipRect.bottom - netscapeWindow->clipRect.top;
 	}
-
+	    
+	if (w == 0 && h == 0) { 
+	    GetPortBounds(GetWindowPort(stWindow),&bounds);
+		w = bounds.right - bounds.left;
+		h = bounds.bottom - bounds.top;
+	}
+	
 	return (w << 16) | (h & 0xFFFF);  /* w is high 16 bits; h is low 16 bits */
 }
 
@@ -868,10 +979,10 @@ int PathToPreferenceDir(char *pathName, long pathNameMax, long volumeID, long di
 	while (true) {
 		thisName[0] = 0;
 		pb.hFileInfo.ioFDirIndex = -1; /* map ioDirID -> name */
-		pb.hFileInfo.ioVRefNum = 0;
+		pb.hFileInfo.ioVRefNum = volumeID;
 		pb.hFileInfo.ioDirID = nextDirRefNum;
-		if (PBGetCatInfoSync(&pb) != noErr) {
-			break;  /* we''ve reached the root */
+    	if (PBGetCatInfoSync(&pb) != noErr) {
+ 			break;  /* we''ve reached the root */
 		}
     	CopyPascalStringToC((unsigned char *)thisName,(char *) thisName);
 		pathLen = PrefixPathWith(pathName, pathLen, pathNameMax,(char *) thisName);
@@ -909,7 +1020,11 @@ int plugInAllowAccessToFilePath(char *pathString, int pathStringLength) {
 			return false;
 		}
 	}
-	return IsPrefixedBy(path, vmPath);
+	/* check for directory, thus we need to check directory otherwise fallback to default directory */
+	for (i = 0; i < pathStringLength; i++)
+	    if (path[i] == '':'') return IsPrefixedBy(path, vmPath);
+	
+    return false;  //Sigh default is where browser is not preference folder
 }
 
 /*** Optional URL Fetch Primitives ***/
@@ -1048,6 +1163,11 @@ int primitivePluginRequestURL(void) {
 	}
 	url[urlSize] = 0;
 
+	interpreterProxy->success(AbortIfFileURL(url));
+	if (interpreterProxy->failed()) {
+		return null;
+	}
+	
 	/* copy target into a C string */
 	if (targetSize > MAX_STRING_LENGTH) targetSize = MAX_STRING_LENGTH;
 	for (i = 0; i < targetSize; i++) {
@@ -1062,6 +1182,80 @@ int primitivePluginRequestURL(void) {
 		return null;
 	}
 	interpreterProxy->pop(4);
+	interpreterProxy->pushInteger(handle);
+}
+
+int primitivePluginPostURL(void) {
+	/* Args: url, target, semaphoreIndex.
+	   Start a URL request to post the given URL to the given target.
+	   (See the Netscape Plugin programmer''s manual for possible targets.)
+	   Return a handle that can be used to identify this request. Fail if
+	   there are already too many outstanding requests. */
+
+	char *urlPtr;
+	char *targetPtr;
+	char *bufferPtr,*buffer;
+	int semaIndex;
+	int urlObj, urlSize;
+	int targetObj, targetSize;
+	int bufferObj, bufferSize;
+	char url[MAX_STRING_LENGTH + 1];
+	char target[MAX_STRING_LENGTH + 1];
+	int i;
+	int handle;
+
+	semaIndex = interpreterProxy->stackIntegerValue(0);
+	bufferObj = interpreterProxy->stackObjectValue(1);
+	targetObj = interpreterProxy->stackObjectValue(2);
+	urlObj = interpreterProxy->stackObjectValue(3);
+	
+	interpreterProxy->success(interpreterProxy->isBytes(targetObj));
+	interpreterProxy->success(interpreterProxy->isBytes(urlObj));
+	interpreterProxy->success(interpreterProxy->isBytes(bufferObj));
+	if (interpreterProxy->failed()) {
+		return null;
+	}
+	urlSize = interpreterProxy->stSizeOf(urlObj);
+	urlPtr = interpreterProxy->firstIndexableField(urlObj);
+	targetSize = interpreterProxy->stSizeOf(targetObj);
+	targetPtr = interpreterProxy->firstIndexableField(targetObj);
+	bufferSize = interpreterProxy->stSizeOf(bufferObj);
+	bufferPtr = interpreterProxy->firstIndexableField(bufferObj);
+
+	/* copy url into a C string */
+	if (urlSize > MAX_STRING_LENGTH) urlSize = MAX_STRING_LENGTH;
+	for (i = 0; i < urlSize; i++) {
+		url[i] = urlPtr[i];
+	}
+	url[urlSize] = 0;
+
+	interpreterProxy->success(AbortIfFileURL(url));
+	if (interpreterProxy->failed()) {
+		return null;
+	}
+	
+	/* copy target into a C string */
+	if (targetSize > MAX_STRING_LENGTH) targetSize = MAX_STRING_LENGTH;
+	for (i = 0; i < targetSize; i++) {
+		target[i] = targetPtr[i];
+	}
+	target[targetSize] = 0;
+
+	/* copy over the post buffer which might be large*/
+	
+	buffer = (char *) NPN_MemAlloc(bufferSize+1);
+	for (i = 0; i < bufferSize; i++) {
+		buffer[i] = bufferPtr[i];
+	}
+	buffer[bufferSize] = 0;
+
+	handle = URLPostCreate(url, buffer,target,semaIndex) ;
+	interpreterProxy->success(handle >= 0);
+
+	if (interpreterProxy->failed()) {
+		return null;
+	}
+	interpreterProxy->pop(5);
 	interpreterProxy->pushInteger(handle);
 }
 
@@ -1091,6 +1285,12 @@ int primitivePluginRequestURLStream(void) {
 		url[i] = urlPtr[i];
 	}
 	url[urlSize] = 0;
+
+	interpreterProxy->success(AbortIfFileURL(url));
+	if (interpreterProxy->failed()) {
+		return null;
+	}
+
 	handle = URLRequestCreate(url, null, semaIndex);
 	interpreterProxy->success(handle >= 0);
 
@@ -1229,5 +1429,60 @@ int plugInTimeToReturn(void) {
     return false;
 }
 
+int parseMemorySize(int baseSize, char *src)
+{
+	char buf[50], *tmp;
+	int imageSize = 0, requestedSize;
 
-'
+	while(*src) {
+		switch(*src) {
+			case '' '': /* white spaces; ignore */
+			case ''"'':
+				src++; break;
+			case ''*'': /* multiple of image size */
+				tmp = buf; src++;
+				while(*src && isdigit(*src)) *(tmp++) = *(src++); /* integer part */
+				if(*src == ''.'') { /* fraction part */
+					*(tmp++) = *(src++);
+					while(*src && isdigit(*src)) *(tmp++) = *(src++);
+				}
+				*(tmp++) = 0;
+				imageSize += (int) (baseSize * atof(buf));
+				break;
+			case ''+'': /* additional space in bytes */
+				tmp = buf; src++;
+				while(*src && isdigit(*src)) *(tmp++) = *(src++);
+				*(tmp++) = 0;
+				if (imageSize == 0) 
+					imageSize = baseSize;
+				requestedSize = atoi(buf);
+				imageSize += (requestedSize <= 1000) ? requestedSize*1024*1024 : requestedSize;
+				break;
+			default: /* absolute size */
+				tmp = buf;
+				*(tmp++) = *(src++);
+				while(*src && isdigit(*src)) *(tmp++) = *(src++);
+				*(tmp++) = 0;
+				requestedSize = atoi(buf);
+				imageSize = (requestedSize <= 1000) ? requestedSize*1024*1024 : requestedSize;
+		}
+	}
+	return imageSize;
+}
+
+int AbortIfFileURL(char *url)
+{   char lookFor[6];
+	int i=0,placement=0;
+	
+	lookFor[5] = 0x00;
+	while (true) {
+		if (*url == 0x00) break;
+		if (*url == '' '') {
+			url++;
+		} else {
+		  lookFor[placement++] = *url++;
+		  if (placement == 5) break;
+		}
+	}
+	return !CaseInsensitiveMatch(lookFor,"file:");
+}'

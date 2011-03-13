@@ -1,0 +1,1 @@
+InterpreterSimulatorLSB class instanceVariableNames: ''

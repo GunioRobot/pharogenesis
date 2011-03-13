@@ -7,4 +7,5 @@ acceptDroppingMorph: aMorph event: evt
 	aMorph position: self position.
 	self addMorph: aMorph.
 	wasPossessive ifTrue: [aMorph bePossessive].
+	aMorph lastTile addRetractArrow.	"if can"
 	(editor _ self topEditor) ifNotNil: [editor install]

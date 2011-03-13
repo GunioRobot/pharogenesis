@@ -1,6 +1,7 @@
 Object
 	subclass: #CCodeGenerator
-	instanceVariableNames: 'translationDict inlineList constants variables variableDeclarations methods variablesSetCache '
-	classVariableNames: ''
+	instanceVariableNames:
+		'translationDict inlineList constants variables variableDeclarations methods variablesSetCache headerFiles pluginPrefix extraDefs postProcesses isCPP '
+	classVariableNames: 'UseRightShiftForDivide '
 	poolDictionaries: ''
-	category: 'Squeak-Translation to C'
+	category: 'VMConstruction-Translation to C'

@@ -1,14 +1,14 @@
-defineClass: defString notifying: aController 
-	"The receiver's textual content is a request to define a new class. The 
-	source code is defString. If any errors occur in compilation, notify 
+defineClass: defString notifying: aController  
+	"The receiver's textual content is a request to define a new class. The
+	source code is defString. If any errors occur in compilation, notify
 	aController."
 	| oldClass class newClassName defTokens keywdIx envt |
 	oldClass _ self selectedClassOrMetaClass.
 	defTokens _ defString findTokens: Character separators.
-	keywdIx _ defTokens indexOf: 'category:'.
+	keywdIx _ defTokens findFirst: [:x | x beginsWith: 'category'].
 	envt _ Smalltalk environmentForCategory: ((defTokens at: keywdIx+1) copyWithout: $').
-	keywdIx _ defTokens findFirst: [:x | x endsWith: 'ubclass:'].
-	newClassName _ (defTokens at: keywdIx+1) copyWithout: $#.
+	keywdIx _ defTokens findFirst: [:x | '*subclass*' match: x].
+	newClassName _ (defTokens at: keywdIx+1) copyWithoutAll: '#()'.
 	((oldClass isNil or: [oldClass name asString ~= newClassName])
 		and: [envt includesKeyOrAbove: newClassName asSymbol]) ifTrue:
 			["Attempting to define new class over existing one when
@@ -25,13 +25,12 @@ Is this really what you want to do?') asText makeBoldFrom: 1 to: newClassName si
 				notifying: aController
 				logged: true.
 	(class isKindOf: Behavior)
-		ifTrue: 
-			[self changed: #classList.
-			self classListIndex: 
-				(self classList indexOf: 
-					((class isKindOf: Metaclass)
-						ifTrue: [class soleInstance name]
-						ifFalse: [class name])).
-			self clearUserEditFlag; editClass.
-			^true]
-		ifFalse: [^false]
+		ifTrue: [self changed: #classList.
+				self classListIndex: 
+					(self classList indexOf: 
+						((class isKindOf: Metaclass)
+							ifTrue: [class soleInstance name]
+							ifFalse: [class name])).
+				self clearUserEditFlag; editClass.
+				^ true]
+		ifFalse: [^ false]

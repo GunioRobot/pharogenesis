@@ -6,23 +6,35 @@ initialize
 	isCollapsed _ false.
 	activeOnlyOnTop _ true.
 	paneMorphs _ Array new.
-	paneRects _ Array new.
 	borderColor _ #raised.
 	borderWidth _ 1.
 	color _ Color black.
+	self layoutPolicy: ProportionalLayout new.
+
+	label _ StringMorph new contents: labelString;
+			font: Preferences windowTitleFont emphasis: 1.
+
+	"Add collapse box so #labelHeight will work"
 	aFont _ Preferences standardButtonFont.
+	collapseBox _ SimpleButtonMorph new borderWidth: 0;
+			label: 'O' font: aFont; color: Color transparent;
+			actionSelector: #collapseOrExpand; target: self; extent: 14@14.
+
 	stripes _ Array with: (RectangleMorph newBounds: bounds)  "see extent:"
 				with: (RectangleMorph newBounds: bounds).
-	self addMorph: (stripes first borderWidth: 1).
-	self addMorph: (stripes second borderWidth: 2).
-	self addMorph: (label _ StringMorph new contents: labelString;
-			font: Preferences windowTitleFont emphasis: 1).
+
+	self addLabelArea.
+
+	labelArea addMorph: (stripes first borderWidth: 1).
+	labelArea addMorph: (stripes second borderWidth: 2).
 	self setLabelWidgetAllowance.
 	self addCloseBox.
 	self addMenuControl.
-	self addMorph: (collapseBox _ SimpleButtonMorph new borderWidth: 0;
-			label: 'O' font: aFont; color: Color transparent;
-			actionSelector: #collapseOrExpand; target: self; extent: 14@14).
+	labelArea addMorph: label.
+	labelArea addMorph: collapseBox.
+
+	self setFramesForLabelArea.
+
 	Preferences noviceMode ifTrue:
 		[closeBox ifNotNil: [closeBox setBalloonText: 'close window'].
 		menuBox ifNotNil: [menuBox setBalloonText: 'window menu'].

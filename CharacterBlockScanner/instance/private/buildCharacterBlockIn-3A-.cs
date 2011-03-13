@@ -28,9 +28,9 @@ buildCharacterBlockIn: para
 
 	self setStopConditions.		"also sets font"
 	runLength _ (text runLengthFor: line first).
-	characterIndex ~~ nil
-		ifTrue:	[lineStop _ characterIndex	"scanning for index"]
-		ifFalse:	[lineStop _ line last].
+	characterIndex == nil
+		ifTrue:	[lineStop _ line last  "characterBlockAtPoint"]
+		ifFalse:	[lineStop _ characterIndex  "characterBlockForIndex"].
 	(runStopIndex _ lastIndex + (runLength - 1)) > lineStop
 		ifTrue:	[runStopIndex _ lineStop].
 	lastCharacterExtent _ 0 @ line lineHeight.
@@ -44,6 +44,13 @@ buildCharacterBlockIn: para
 
 	"see setStopConditions for stopping conditions for character block 	operations."
 	self lastCharacterExtentSetX: (font widthOf: (text at: lastIndex)).
-	(self perform: stopCondition)
-		ifTrue:	[^ CharacterBlock new stringIndex: lastIndex text: text
-					topLeft: characterPoint extent: lastCharacterExtent]]
+	(self perform: stopCondition) ifTrue:
+		[characterIndex == nil
+			ifTrue: ["characterBlockAtPoint"
+					^ CharacterBlock new stringIndex: lastIndex text: text
+						topLeft: characterPoint + (font descentKern @ 0)
+						extent: lastCharacterExtent]
+			ifFalse: ["characterBlockForIndex"
+					^ CharacterBlock new stringIndex: lastIndex text: text
+						topLeft: characterPoint + ((font descentKern) - kern @ 0)
+						extent: lastCharacterExtent]]]

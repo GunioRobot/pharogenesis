@@ -3,4 +3,4 @@ PolygonMorph
 	instanceVariableNames: 'editor '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Demo'
+	category: 'Sound-Interface'

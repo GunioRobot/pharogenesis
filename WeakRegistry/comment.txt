@@ -1,0 +1,6 @@
+I am a registry for objects needing finalization. When an object is added the object as well as its executor is stored. When the object is garbage collected, the executor can take the appropriate action for any resources associated with the object.
+
+See also:
+	Object executor
+	Object actAsExecutor
+	Object finalize

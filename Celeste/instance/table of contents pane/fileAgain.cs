@@ -6,4 +6,3 @@ fileAgain
 		ifTrue: [newCatName _ lastCategory]
 		ifFalse: [newCatName _ self getCategoryNameIfNone: [^self]].
 	mailDB file: currentMsgID inCategory: newCatName.
-	self updateTOC.

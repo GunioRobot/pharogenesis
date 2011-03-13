@@ -3,4 +3,4 @@ Object
 	instanceVariableNames: 'pages directory action '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'PluggableWebServer'
+	category: 'Network-Pluggable Web Server'

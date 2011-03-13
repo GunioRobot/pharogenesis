@@ -4,5 +4,5 @@ shadowForm
 	canvas _ (Display defaultCanvasClass extent: bounds extent depth: 1)
 				asShadowDrawingCanvas: Color black. "Color black represents one for 1bpp"
 	canvas translateBy: bounds topLeft negated
-		during:[:tempCanvas| self fullDrawOn: tempCanvas].
+		during:[:tempCanvas| tempCanvas fullDrawMorph: self].
 	^ canvas form offset: bounds topLeft

@@ -1,0 +1,1 @@
+FlashSoundInformation class instanceVariableNames: ''

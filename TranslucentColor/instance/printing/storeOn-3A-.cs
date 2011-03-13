@@ -5,5 +5,5 @@ storeOn: aStream
 	aStream
 		skip: -1;	  "get rid of trailing )"
 		nextPutAll: ' alpha: ';
-		nextPutAll: self alpha printString;
+		print: (self alpha roundTo: 0.001);
 		nextPutAll: ')'.

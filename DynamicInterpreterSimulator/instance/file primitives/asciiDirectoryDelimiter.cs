@@ -1,2 +1,0 @@
-asciiDirectoryDelimiter
-	^ FileDirectory pathNameDelimiter asciiValue

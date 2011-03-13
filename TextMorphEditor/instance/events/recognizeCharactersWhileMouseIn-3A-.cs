@@ -12,6 +12,6 @@ recognizeCharactersWhileMouseIn: box
 					ifFalse:
 						[self simulatedKeystroke: char]] fromEvent: nil.
 			morph updateFromParagraph.
-			morph world doOneCycle]
+			Display doOneCycleMorphic]
 		until:
 			[(box containsPoint: Sensor cursorPoint) not]]

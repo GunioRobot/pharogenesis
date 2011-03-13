@@ -12,13 +12,13 @@ addSimpleHandlesTo: aHaloMorph box: aBox
 		on: #mouseDown send: #addFullHandles to: self.
 
 	aHandle _ self addGraphicalHandle: #Rotate at: aBox bottomLeft on: #mouseDown send: #startRot:with: to: self.
-	aHandle on: #mouseStillDown send: #doRot:with: to: self.
+	aHandle on: #mouseMove send: #doRot:with: to: self.
 
 	target isFlexMorph
 		ifTrue: [(self addGraphicalHandle: #Scale at: aBox bottomRight  on: #mouseDown send: #startScale:with: to: self)
-				on: #mouseStillDown send: #doScale:with: to: self]
+				on: #mouseMove send: #doScale:with: to: self]
 		ifFalse: [(self addGraphicalHandle: #Scale at: aBox bottomRight on: #mouseDown send: #startGrow:with: to: self)
-				on: #mouseStillDown send: #doGrow:with: to: self].
+				on: #mouseMove send: #doGrow:with: to: self].
 
 	(innerTarget isMemberOf: SketchMorph) ifTrue:  "isMemberOf: used advisedly here"
 		[self addSimpleSketchMorphHandlesInBox: aBox].

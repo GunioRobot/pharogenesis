@@ -1,0 +1,3 @@
+wantsSlot
+
+	^false

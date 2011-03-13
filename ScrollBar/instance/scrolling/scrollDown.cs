@@ -1,3 +1,6 @@
 scrollDown
-	(self waitForDelay1: 300 delay2: 50) ifFalse: [^ self].
-	self setValue: (value + scrollDelta + 0.000001 min: 1.0)
+	self flag: #obsolete.
+	downButton eventHandler: nil.
+	downButton on: #mouseDown send: #scrollDownInit to: self.
+	downButton on: #mouseUp send: #finishedScrolling to: self.
+	^self scrollDownInit

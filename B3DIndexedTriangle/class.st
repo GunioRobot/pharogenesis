@@ -1,0 +1,1 @@
+B3DIndexedTriangle class instanceVariableNames: ''

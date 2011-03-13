@@ -4,4 +4,4 @@ yellowButtonActivity
 	(menu _ self getMenu: false) ifNotNil:
 		["Set up to use perform:orSendTo: for model/view dispatch"
 		menu setInvokingView: self.
-		menu popUpEvent: self currentEvent]
+		menu popUpEvent: self currentEvent in: self world]

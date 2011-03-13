@@ -1,0 +1,1 @@
+Win32HBrush class instanceVariableNames: ''

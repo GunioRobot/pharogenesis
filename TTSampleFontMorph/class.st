@@ -1,0 +1,1 @@
+TTSampleFontMorph class instanceVariableNames: ''

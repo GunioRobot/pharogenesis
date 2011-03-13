@@ -1,0 +1,1 @@
+WonderlandScene class instanceVariableNames: ''

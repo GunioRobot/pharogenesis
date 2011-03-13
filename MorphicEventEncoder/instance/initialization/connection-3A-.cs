@@ -1,0 +1,2 @@
+connection: aConnection
+	connection := aConnection

@@ -4,10 +4,10 @@ saveState
 	changeSet _ Smalltalk changes.
 	Smalltalk isMorphic
 		ifTrue:
-			[world _ World.
+			[world _ Display bestGuessOfCurrentWorld.
 			world sleep]
 		ifFalse:
 			[world _ ScheduledControllers.
 			ScheduledControllers unCacheWindows].
+	Sensor eventQueue: nil. "Will be reinstalled by World>>install"
 	transcript _ Transcript.
-	activeProcess _ nil

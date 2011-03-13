@@ -2,6 +2,12 @@ mouseDown: evt
 	"When the user clicks in a camera window, determine which actor the    
 	         user clicked on and have that actor respond to the event"
 	| newEvent reactions |
+	firstPersonControls == true ifTrue:[
+		myControls setCenter: evt position.
+		myControls mouseDown: evt.
+		evt hand needsToBeDrawn ifFalse:[Cursor crossHair show].
+		^self
+	].
 	newEvent _ self convertEvent: evt.
 	newEvent
 		ifNotNil: 

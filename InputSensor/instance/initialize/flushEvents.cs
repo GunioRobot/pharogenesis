@@ -1,0 +1,2 @@
+flushEvents
+	"Do nothing"

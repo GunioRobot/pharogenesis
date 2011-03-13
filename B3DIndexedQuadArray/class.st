@@ -1,0 +1,1 @@
+B3DIndexedQuadArray class instanceVariableNames: ''

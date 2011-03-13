@@ -1,0 +1,1 @@
+TTFontTableDirEntry class instanceVariableNames: ''

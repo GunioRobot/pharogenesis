@@ -1,6 +1,7 @@
 Object
 	subclass: #ChangeSet
-	instanceVariableNames: 'classChanges methodChanges classRemoves methodRemoves name preamble postscript '
+	instanceVariableNames:
+		'name preamble postscript revertable isolationSet isolatedProject changeRecords structures superclasses '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Interface-Changes'
+	category: 'Tools-Changes'

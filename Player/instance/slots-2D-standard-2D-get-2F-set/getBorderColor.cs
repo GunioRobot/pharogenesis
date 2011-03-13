@@ -1,2 +1,0 @@
-getBorderColor
-	^ self getValueFromCostume: #borderColor

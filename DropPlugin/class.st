@@ -1,0 +1,1 @@
+DropPlugin class instanceVariableNames: ''

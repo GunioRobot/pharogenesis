@@ -1,9 +1,9 @@
 becomeTheActiveWorldWith: evt
 	| outerWorld |
 	World == self ifTrue: [^ self].
-	self damageRecorder reset.	"since we may have moved, old data no longer valid"
+	worldState resetDamageRecorder.	"since we may have moved, old data no longer valid"
 	hostWindow setStripeColorsFrom: Color green.
-	self canvas: nil.	"safer to start from scratch"
+	worldState canvas: nil.	"safer to start from scratch"
 	displayChangeSignatureOnEntry _ Display displayChangeSignature.
 
 	"Messy stuff to clear flaps from outer world"

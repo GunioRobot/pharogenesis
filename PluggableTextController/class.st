@@ -1,1 +1,0 @@
-PluggableTextController class instanceVariableNames: ''

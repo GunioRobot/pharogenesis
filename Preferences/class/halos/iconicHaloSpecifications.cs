@@ -1,4 +1,5 @@
 iconicHaloSpecifications
+	"Answer an array that characterizes the locations, colors, icons, and selectors of the halo handles that may be used in the iconic halo scheme"
 
 	"Preferences resetHaloSpecifications"
 
@@ -19,10 +20,13 @@ iconicHaloSpecifications
 	(addHelpHandle:			center		bottom			(lightBlue)						'Halo-Help')
 	(addGrowHandle:		right		bottom			(yellow)						'Halo-Scale')
 	(addScaleHandle:		right		bottom			(lightOrange)					'Halo-Scale')
-	(addScriptHandle:		right		bottomCenter	(green muchLighter)			'Halo-Script')
+	(addScriptHandle:		rightCenter	bottom			(green muchLighter)			'Halo-Script')
 	(addPaintBgdHandle:		right		center			(lightGray)						'Halo-Paint')
+	(addViewingHandle:		leftCenter	bottom			(lightGreen lighter)				'Halo-View')
 	(addRepaintHandle:		right		center			(lightGray)						'Halo-Paint')
 	(addFontSizeHandle:		leftCenter	bottom			(lightGreen)						'Halo-FontSize')
 	(addFontStyleHandle:		center		bottom			(lightRed)						'Halo-FontStyle')
 	(addFontEmphHandle:	rightCenter	bottom			(lightBrown darker)				'Halo-FontEmph')
+	(addRecolorHandle:		right		bottomCenter	(magenta darker)				'Halo-Recolor')
+	(addChooseGraphicHandle:	right	bottomCenter	(green muchLighter)			'Halo-ChooseGraphic')
 		) 

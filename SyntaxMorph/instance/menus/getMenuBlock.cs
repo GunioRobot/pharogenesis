@@ -1,0 +1,3 @@
+getMenuBlock
+
+	^ nil

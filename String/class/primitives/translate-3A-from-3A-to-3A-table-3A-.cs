@@ -1,6 +1,6 @@
 translate: aString from: start  to: stop  table: table
 	"translate the characters in the string by the given table, in place"
-	<primitive: 243>
+	<primitive: 'primitiveTranslateStringWithTable' module: 'MiscPrimitivePlugin'>
 	self var: #table  declareC: 'unsigned char *table'.
 	self var: #aString  declareC: 'unsigned char *aString'.
 

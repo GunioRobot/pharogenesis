@@ -1,0 +1,1 @@
+EToyGateKeeperEntry class instanceVariableNames: ''

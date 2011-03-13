@@ -15,7 +15,8 @@ addHandlesTo: aHaloMorph box: box
 		color: Color red muchLighter icon: 'Halo-Dismiss'
 		on: #mouseDown send: #mouseDownInDimissHandle:with: to: aHaloMorph.
 	dismissHandle on: #mouseUp send: #maybeDismiss:with: to: aHaloMorph.
-	dismissHandle on: #mouseStillDown send: #setDismissColor:with: to: aHaloMorph.
+	dismissHandle on: #mouseDown send: #setDismissColor:with: to: aHaloMorph.
+	dismissHandle on: #mouseMove send: #setDismissColor:with: to: aHaloMorph.
 
 	aHaloMorph addHandleAt: box leftCenter color: Color cyan icon: 'Halo-View'
 		on: #mouseDown send: #yourself "#openViewerForArgument" to: self.
@@ -26,12 +27,12 @@ addHandlesTo: aHaloMorph box: box
 	(aHaloMorph addHandleAt: (box topCenter + ((s+2)@0) min: box topCenter + box topRight // 2)
 		color: Color brown icon: 'Halo-Drag'
 		on: #mouseDown send: #dragStartFromHalo:with: to: self)
-		on: #mouseStillDown send: #dragMoveFromHalo:with: to: self;
+		on: #mouseMove send: #dragMoveFromHalo:with: to: self;
 		on: #mouseUp send: #dragEndFromHalo:with: to: self.
 
 	(aHaloMorph addHandleAt: box topRight color: Color green icon: 'Halo-Dup'
 		on: #mouseDown send: #dupStartFromHalo:with: to: self)
-		on: #mouseStillDown send: #dupMoveFromHalo:with: to: self;
+		on: #mouseMove send: #dupMoveFromHalo:with: to: self;
 		on: #mouseUp send: #dupEndFromHalo:with: to: self.
 
 	Preferences showDebugHaloHandle ifTrue:
@@ -41,12 +42,12 @@ addHandlesTo: aHaloMorph box: box
 
 	(aHaloMorph addHandleAt: box bottomLeft color: Color blue icon: 'Halo-Rotate'
 		on: #mouseDown send: #rotateStartFromHalo:with: to: self)
-		on: #mouseStillDown send: #rotateMoveFromHalo:with: to: self;
+		on: #mouseMove send: #rotateMoveFromHalo:with: to: self;
 		on: #mouseUp send: #rotateEndFromHalo:with: to: self.
 
 	(aHaloMorph addHandleAt: box bottomRight color: Color yellow icon: 'Halo-Scale'
 		on: #mouseDown send: #growStartFromHalo:with: to: self)
-		on: #mouseStillDown send: #growMoveFromHalo:with: to: self;
+		on: #mouseMove send: #growMoveFromHalo:with: to: self;
 		on: #mouseUp send: #growEndFromHalo:with: to: self.
 
 	myActor isHandmade

@@ -3,4 +3,4 @@ Object
 	instanceVariableNames: 'transformation graphicSymbol '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Graphics-Symbols'
+	category: 'ST80-Symbols'

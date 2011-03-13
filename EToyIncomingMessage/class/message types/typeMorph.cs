@@ -1,0 +1,3 @@
+typeMorph
+
+	^'morph'

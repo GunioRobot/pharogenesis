@@ -1,6 +1,6 @@
-Object
+WorldViewModel
 	subclass: #CautiousModel
-	instanceVariableNames: 'initialExtent '
+	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Support'
+	category: 'ST80-Morphic'

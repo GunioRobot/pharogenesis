@@ -8,7 +8,5 @@ local disk			Go back to looking at your local volume.
 Still undone (you can contribute code):
 [ ] Using a Proxy server to get out through a firewall.  What is the convention for proxy servers with FTP?
 [ ] Fill in the date and size info in the list of remote files.  Allow sorting by it.  New smarts needed in (ServerDirectory fileNameFormattedFrom:sizePad:sortMode:).
-[ ] Deleting a remote file.  See (ServerDirectory deleteFileNamed:).
-[ ] Renaming a remote file.  See (ServerDirectory rename:toBe:).
-
+[ ] Currently the FileList has no way to delete a directory.  Since you can't select a directory without going into it, it would have to be deleting the current directory.  Which would usually be empty.
 

@@ -3,7 +3,7 @@ setupMorphs
 	self initProgressMorph.
 	container _ AlignmentMorph newColumn.
 	container
-		centering: #center;
+		wrapCentering: #center; cellPositioning: #topCenter;
 		hResizing: #shrinkWrap;
 		vResizing: #shrinkWrap;
 		color: Color transparent.

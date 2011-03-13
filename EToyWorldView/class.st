@@ -1,1 +1,0 @@
-EToyWorldView class instanceVariableNames: ''

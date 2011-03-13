@@ -8,7 +8,7 @@ readPhonemes
 	fname == nil ifTrue: [^ self].
 	fname ifNil: [^ self].
 
-	s _ FileStream oldFileNamed: fname.
+	s _ FileStream readOnlyFileNamed: fname.
 	newPhonemes _ s fileInObjectAndCode.
 	s close.
 	phonemeRecords _ newPhonemes.

@@ -5,13 +5,14 @@ keyStroke: evt
 	| char priorEditor oldSel newSel |
 	(((char _ evt keyCharacter) = Character enter) or: [(char = Character cr)
 			or: [char = $s and: [evt commandKeyPressed]]])
-				ifTrue: [owner acceptContents; doneWithEdits.
-						evt hand newKeyboardFocus: nil.
+				ifTrue: [owner doneWithEdits; acceptContents.
+	self flag: #arNote. "Probably unnecessary"
+						evt hand releaseKeyboardFocus.
 						^ self delete].
 	
 	(char = $l and: [evt commandKeyPressed]) ifTrue:   "cancel"
 		[owner cancelEdits.
-		evt hand newKeyboardFocus: nil.
+		evt hand releaseKeyboardFocus.
 		^ self delete].
 
 	oldSel _ self editor selectionInterval.

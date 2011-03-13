@@ -1,0 +1,1 @@
+My instances are sets of KlattSegments, and they map phonemes to actual KlattSegments. The default segments are adapted from rsynth 2.0, a public domain TTS.

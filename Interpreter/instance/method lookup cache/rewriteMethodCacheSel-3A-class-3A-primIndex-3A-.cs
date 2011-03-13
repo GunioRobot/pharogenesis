@@ -1,4 +1,4 @@
-rewriteMethodCacheSel: selector class: class primIndex: primIndex 
+rewriteMethodCacheSel: selector class: class primIndex: localPrimIndex 
 	"Rewrite an existing entry in the method cache with a new primitive   
 	index."
 	| probe hash |
@@ -11,5 +11,5 @@ rewriteMethodCacheSel: selector class: class primIndex: primIndex
 			= selector and: [(methodCache at: probe + MethodCacheClass)
 				= class])
 			ifTrue: 
-				[methodCache at: probe + MethodCachePrim put: primIndex.
+				[methodCache at: probe + MethodCachePrim put: localPrimIndex.
 				^ nil]]

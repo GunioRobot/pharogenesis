@@ -4,9 +4,11 @@ mailOut
 	unique numeric tag, depending on the preference
 	'sequentialChangeSetRevertableFileNames'."
 
-	| slips messageStrm message compressBuffer compressStream data compressedStream compressTarget |
+	| subjectPrefix slips messageStrm message compressBuffer compressStream data compressedStream compressTarget |
 	(Smalltalk includesKey: #Celeste)
 		ifFalse: [^ self notify: 'no mail reader present'].
+
+	subjectPrefix _ self chooseSubjectPrefixForEmail.
 
 	self checkForConversionMethods.
 	Cursor write
@@ -18,7 +20,8 @@ mailOut
 			 cr;
 			 nextPutAll: 'To: squeak@cs.uiuc.edu';
 			 cr;
-			 nextPutAll: 'Subject: [CS] ';
+			 nextPutAll: 'Subject: ';
+			 nextPutAll: subjectPrefix;
 			 nextPutAll: name;
 			 cr;
 			 nextPutAll: 'from preamble:';

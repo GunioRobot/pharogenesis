@@ -1,2 +1,0 @@
-isFloat
-	^ false

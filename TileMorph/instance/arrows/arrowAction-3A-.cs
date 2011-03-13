@@ -1,6 +1,6 @@
 arrowAction: delta
-	"Figure out what to do when the up or down arrow is pressed.
-	May be overridden in subclasses"
+	"Do what is appropriate when an arrow on the tile is pressed; delta will be +1 or -1"
+
 	| index aList |
 	owner ifNil: [^ self].
 	(type == #literal and: [literal isNumber])
@@ -23,5 +23,6 @@ arrowAction: delta
 				ifTrue: [self setOperator: (aList atWrap: index + delta)]
 				ifFalse: [self setOperator: (#(= ~=) atWrap: index - 2 + delta)]].
 						"Color does not understand <"
+			submorphs last setBalloonText: (ScriptingSystem helpStringForOperator: operatorOrExpression).
 			^ self acceptNewLiteral]
 	

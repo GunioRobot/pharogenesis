@@ -1,0 +1,9 @@
+This class implements the basic functionality of Animations for Wonderlands. All animations pass through 4 specific stages:
+
+Waiting - this is the state animations are in when they are just started, before they run their prologue (perform any tasks they need to do before the animation actually starts)
+
+Running - this is the state animations are in when they are actually running
+
+Stopped - this is the state animations are in after they stop running but before they execute their prologue
+
+Finished - this is the state animations are in after they finish their epilogue (perform any tasks they need to do after the animation completes).

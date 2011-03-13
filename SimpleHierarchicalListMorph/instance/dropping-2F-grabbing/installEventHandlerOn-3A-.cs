@@ -4,7 +4,7 @@ installEventHandlerOn: morphList
 	handler on: #mouseDown send: #mouseDown:onItem: to: self.
 	self dragEnabled
 		ifTrue: [handler
-				on: #mouseStillDown
+				on: #mouseMove
 				send: #mouseStillDown:onItem:
 				to: self].
 	self dropEnabled

@@ -10,5 +10,5 @@ primTabletRead: cursorIndex
 	11. cursor pressure, tangential
 	12. flags"
 
-	<primitive: 549>
+	<primitive: 'primitiveReadTablet' module: 'JoystickTabletPlugin'>
 	self primitiveFailed

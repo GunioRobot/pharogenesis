@@ -3,4 +3,4 @@ Rectangle
 	instanceVariableNames: 'stringIndex text textLine '
 	classVariableNames: ''
 	poolDictionaries: 'TextConstants '
-	category: 'Graphics-Support'
+	category: 'Graphics-Text'

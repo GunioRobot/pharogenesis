@@ -1,2 +1,2 @@
 colorWhenPrettyPrinting
-	^ self valueOfFlag: #colorWhenPrettyPrinting
+	^ self printAlternateSyntax or: [self valueOfFlag: #colorWhenPrettyPrinting]

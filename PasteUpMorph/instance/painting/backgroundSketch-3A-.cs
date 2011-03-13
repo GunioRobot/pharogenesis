@@ -1,4 +1,5 @@
 backgroundSketch: aSketchMorphOrNil
+	"Set the receiver's background graphic as indicated.  If nil is supplied, remove any existing background graphic.  In any case, delete any preexisting background graphic."
 
 	backgroundMorph ifNotNil: [backgroundMorph delete].  "replacing old background"
 
@@ -9,4 +10,5 @@ backgroundSketch: aSketchMorphOrNil
 	self addMorphBack: backgroundMorph.
 	aSketchMorphOrNil delete.
 	backgroundMorph lock.
+	backgroundMorph setProperty: #shared toValue: true.
 	^ backgroundMorph

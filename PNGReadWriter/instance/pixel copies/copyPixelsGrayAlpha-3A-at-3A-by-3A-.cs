@@ -8,8 +8,7 @@ copyPixelsGrayAlpha: y at: startX by: incX
 			startX to: width-1 by: incX do: [ :x |
 				i _ (x // incX << 1) + 1.
 				gray _ thisScanline at: i.
-				pixel _ ((thisScanline at: i+1)<<24)
-					+ (gray<<16) + (gray<<8) + gray.
+				pixel _ ((thisScanline at: i+1)<<24) + (gray<<16) + (gray<<8) + gray.
 				b pixelAt: x@y put: pixel.
 				]
 			]
@@ -17,8 +16,7 @@ copyPixelsGrayAlpha: y at: startX by: incX
 			startX to: width-1 by: incX do: [ :x |
 				i _ (x // incX << 2) + 1.
 				gray _ thisScanline at: i.
-				pixel _ ((thisScanline at: i+2)<<24)
-					+ (gray<<16) + (gray<<8) + gray.
+				pixel _ ((thisScanline at: i+2)<<24) + (gray<<16) + (gray<<8) + gray.
 				b pixelAt: x@y put: pixel.
 				]
 			]

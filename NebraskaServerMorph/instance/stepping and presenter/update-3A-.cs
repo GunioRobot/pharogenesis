@@ -1,0 +1,3 @@
+update: aSymbol
+
+	self rebuild.

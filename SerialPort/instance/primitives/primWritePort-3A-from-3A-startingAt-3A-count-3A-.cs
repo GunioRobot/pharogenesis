@@ -1,4 +1,4 @@
 primWritePort: portNumber from: byteArray startingAt: startIndex count: count
 
-	<primitive: 240>
+	<primitive: 'primitiveSerialPortWrite' module: 'SerialPlugin'>
 	self primitiveFailed.

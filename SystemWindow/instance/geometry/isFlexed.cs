@@ -1,3 +1,0 @@
-isFlexed
-
-	^ owner isKindOf: TransformationMorph

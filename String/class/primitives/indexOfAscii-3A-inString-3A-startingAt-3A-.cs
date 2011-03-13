@@ -1,7 +1,7 @@
 indexOfAscii: anInteger inString: aString startingAt: start
 
 	| stringSize |
-	<primitive: 245>
+	<primitive: 'primitiveIndexOfAsciiInString' module: 'MiscPrimitivePlugin'>
 
 	self var: #aCharacter declareC: 'int anInteger'.
 	self var: #aString declareC: 'unsigned char *aString'.

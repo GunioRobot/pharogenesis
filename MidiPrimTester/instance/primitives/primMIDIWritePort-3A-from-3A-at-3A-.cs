@@ -1,4 +1,4 @@
 primMIDIWritePort: portNum from: byteArray at: midiClockValue
 
-	<primitive: 529>
+	<primitive: 'primitiveMIDIWrite' module: 'MIDIPlugin'>
 	self primitiveFailed.

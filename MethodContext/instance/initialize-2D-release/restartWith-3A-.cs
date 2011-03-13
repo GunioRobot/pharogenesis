@@ -4,4 +4,5 @@ restartWith: aCompiledMethod
 	recompiled."
 
 	method _ aCompiledMethod.
+	receiverMap _ nil.
 	^self restart

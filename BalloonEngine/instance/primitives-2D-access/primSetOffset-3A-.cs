@@ -1,4 +1,3 @@
 primSetOffset: point
-	<primitive: 'gePrimitiveSetOffset'>
-	Debug ifTrue:[^BalloonEnginePlugin doPrimitive: 'gePrimitiveSetOffset'].
+	<primitive: 'primitiveSetOffset' module: 'B2DPlugin'>
 	^self primitiveFailed

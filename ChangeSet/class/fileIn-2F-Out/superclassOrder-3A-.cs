@@ -1,24 +1,20 @@
-superclassOrder: classes 
+superclassOrder: classes
 	"Arrange the classes in the collection, classes, in superclass order so the 
-	classes can be properly filed in."
+	classes can be properly filed in. Do it in sets instead of ordered collections.
+	SqR 4/12/2000 22:04"
 
-	| all list i aClass |
-	list _ classes copy. 			"list is indexable"
+	| all list aClass inclusionSet aClassIndex cache |
+
+	list _ classes copy. "list is indexable"
+	inclusionSet _ list asSet. cache _ Dictionary new.
 	all _ OrderedCollection new: list size.
-	[list size > 0] whileTrue: [
-		i _ 0.
+	list size timesRepeat:
 		[
-			i _ i + 1.
-			aClass _ list at: i.
-			(list includesAnyOf: aClass allSuperclasses) or: [
-				aClass isMeta and: [
-					(list includes: aClass soleInstance) or: [
-						list includesAnyOf: aClass soleInstance allSuperclasses
-					] 
-				].
-			].
-		] whileTrue.
-		all addLast: aClass.
-		list _ list copyWithout: aClass
-	].
+			aClassIndex _ list findFirst: [:one | one isNil not and: 
+				[self doWeFileOut: one given: inclusionSet cache: cache]].
+			aClass _ list at: aClassIndex.
+			all addLast: aClass.
+			inclusionSet remove: aClass.
+			list at: aClassIndex put: nil
+		].
 	^all

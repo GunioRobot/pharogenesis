@@ -1,2 +1,0 @@
-categoryContributions
-	^ #(('speaker' ((slot conePosition))))

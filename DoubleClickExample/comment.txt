@@ -1,0 +1,13 @@
+Illustrates the double-click capabilities of Morphic.
+
+If you have a kind of morph you wish to have respond specially to a double-click, it should:
+
+(1)  Respond "true" to #handlesMouseDown:
+
+(2)  In its mouseDown: method, send #waitForClicksOrDrag:event: to the hand.
+
+(3)  Reimplement #click: to react to single-clicked mouse-down.
+
+(4)  Reimplement #doubleClick: to make the appropriate response to a double-click.
+
+(5)  Reimplement #drag: to react to non-clicks.  This message is sent continuously until the button is released.  You can check the event argument to react differently on the first, intermediate, and last calls.

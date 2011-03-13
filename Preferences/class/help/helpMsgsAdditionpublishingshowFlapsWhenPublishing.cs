@@ -1,0 +1,2 @@
+helpMsgsAdditionpublishingshowFlapsWhenPublishing
+	^ #((showFlapsWhenPublishing 'If true, show global flaps and project navigator -- otherwise suppress both to give the illusion that we are still in the same project' ) )

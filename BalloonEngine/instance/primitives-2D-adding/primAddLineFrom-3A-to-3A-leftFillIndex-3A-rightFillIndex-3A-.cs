@@ -1,5 +1,5 @@
 primAddLineFrom: start to: end leftFillIndex: leftFillIndex rightFillIndex: rightFillIndex
-	<primitive: 'gePrimitiveAddLine'>
+	<primitive: 'primitiveAddLine' module: 'B2DPlugin'>
 	(self canProceedAfter: self primGetFailureReason) ifTrue:[
 		^self primAddLineFrom: start to: end leftFillIndex: leftFillIndex rightFillIndex: rightFillIndex
 	].

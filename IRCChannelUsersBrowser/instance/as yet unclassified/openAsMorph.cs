@@ -7,7 +7,10 @@ openAsMorph
 	win addMorph: listView  frame: (0@0 extent: 1@0.9).
 
 	talkToButton _ PluggableButtonMorph on: self getState: nil action: #talkTo.
-	talkToButton label: 'talk to selected user'.
+	talkToButton
+		hResizing: #spaceFill;
+		vResizing: #spaceFill;
+		label: 'talk to selected user'.
 	win addMorph: talkToButton  frame: (0@0.9 extent: 1@0.1).
 
 	win openInWorld

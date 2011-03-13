@@ -1,4 +1,6 @@
 addScriptHandle: haloSpec
-	(Preferences valueOfFlag: #nascentScriptHaloHandle) ifTrue:
+	"If the halo's innerTarget claims it wants a Script handle, add one to the receiver, forming it as per haloSpec"
+
+	innerTarget wantsScriptorHaloHandle ifTrue:
 		[self addHandle: haloSpec
-				on: #mouseDown send: #makeNascentScript to: innerTarget].
+				on: #mouseUp send: #editButtonsScript to: innerTarget]

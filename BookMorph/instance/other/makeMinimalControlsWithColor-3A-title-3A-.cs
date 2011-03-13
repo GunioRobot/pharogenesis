@@ -3,11 +3,11 @@ makeMinimalControlsWithColor: aColor title: aString
 	| aButton aColumn aRow but |
 	aButton _ SimpleButtonMorph new target: self; borderColor: Color black; color: aColor; borderWidth: 0.
 	aColumn _ AlignmentMorph newColumn.
-	aColumn color: aButton color; borderWidth: 0; inset: 0.
+	aColumn color: aButton color; borderWidth: 0; layoutInset: 0.
 	aColumn hResizing: #shrinkWrap; vResizing: #shrinkWrap; extent: 5@5.
 
 	aRow _ AlignmentMorph newRow.
-	aRow color: aButton color; borderWidth: 0; inset: 0.
+	aRow color: aButton color; borderWidth: 0; layoutInset: 0.
 	aRow hResizing: #shrinkWrap; vResizing: #shrinkWrap; extent: 5@5.
 	aRow addTransparentSpacerOfSize: 40@0.
 	aRow addMorphBack: (but _ aButton fullCopy label: ' < ' ; actionSelector: #previousPage).

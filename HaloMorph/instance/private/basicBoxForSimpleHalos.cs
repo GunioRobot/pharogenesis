@@ -1,4 +1,5 @@
 basicBoxForSimpleHalos
-
+	| w |
+	w _ self world ifNil:[target outermostWorldMorph].
 	^ (target topRendererOrSelf worldBoundsForHalo expandBy: self handleAllowanceForIconicHalos)
-			intersect: (self world bounds insetBy: 8@8)
+			intersect: (w bounds insetBy: 8@8)

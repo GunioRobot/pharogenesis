@@ -1,6 +1,6 @@
 Controller
 	subclass: #PluggableButtonController
-	instanceVariableNames: 'selector arguments '
+	instanceVariableNames: 'selector arguments shownAsComplemented '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Interface-Pluggable'
+	category: 'ST80-Pluggable Views'

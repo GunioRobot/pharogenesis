@@ -10,7 +10,4 @@ internalFindNewMethod
 		self externalizeIPandSP.
 		self lookupMethodInClass: lkupClass.
 		self internalizeIPandSP.
-		self addToMethodCacheSel: messageSelector
-			class: lkupClass
-			method: newMethod
-			primIndex: primitiveIndex].
+		self addNewMethodToCache].

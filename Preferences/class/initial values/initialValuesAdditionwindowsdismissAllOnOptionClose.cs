@@ -1,0 +1,2 @@
+initialValuesAdditionwindowsdismissAllOnOptionClose
+	^ #((dismissAllOnOptionClose false (windows ) ) )

@@ -2,10 +2,7 @@ storeOn: aStream
 
 	aStream
 		nextPutAll: '(' , self class name;
-		nextPutAll: ' r: ';
-		nextPutAll: (self red roundTo: 0.001) printString;
-		nextPutAll: ' g: ';
-		nextPutAll: (self green roundTo: 0.001) printString;
-		nextPutAll: ' b: ';
-		nextPutAll: (self blue roundTo: 0.001) printString;
+		nextPutAll: ' r: '; print: (self red roundTo: 0.001);
+		nextPutAll: ' g: '; print: (self green roundTo: 0.001);
+		nextPutAll: ' b: '; print: (self blue roundTo: 0.001);
 		nextPutAll: ')'.

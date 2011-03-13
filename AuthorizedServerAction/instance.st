@@ -3,4 +3,4 @@ EmbeddedServerAction
 	instanceVariableNames: 'authorizer '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'PluggableWebServer'
+	category: 'Network-Pluggable Web Server'

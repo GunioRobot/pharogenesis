@@ -1,7 +1,7 @@
-Object
+AbstractFont
 	subclass: #StrikeFont
 	instanceVariableNames:
-		'xTable glyphs name stopConditions type minAscii maxAscii maxWidth strikeLength ascent descent xOffset raster subscript superscript emphasis derivativeFonts pointSize '
+		'characterToGlyphMap xTable glyphs name type minAscii maxAscii maxWidth strikeLength ascent descent xOffset raster subscript superscript emphasis derivativeFonts pointSize '
 	classVariableNames: ''
 	poolDictionaries: 'TextConstants '
-	category: 'Graphics-Support'
+	category: 'Graphics-Text'

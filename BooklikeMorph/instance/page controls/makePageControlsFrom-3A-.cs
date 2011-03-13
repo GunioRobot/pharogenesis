@@ -1,14 +1,15 @@
 makePageControlsFrom: controlSpecs
+	"From the controlSpecs, create a set of page control and return them -- this method does *not* add the controls to the receiver."
 
-	| c aButton col row b |
+	| c aButton col row b lastGuy |
 	c _ (color saturation > 0.1) ifTrue: [color slightlyLighter] ifFalse: [color slightlyDarker].
 	aButton _ SimpleButtonMorph new target: self; borderWidth: 1; borderColor: Color veryLightGray; color: c.
 	col _ AlignmentMorph newColumn.
-	col color: c; borderWidth: 0; inset: 0.
+	col color: c; borderWidth: 0; layoutInset: 0.
 	col hResizing: #spaceFill; vResizing: #shrinkWrap; extent: 5@5.
 
 	row _ AlignmentMorph newRow.
-	row color: c; borderWidth: 0; inset: 0.
+	row color: c; borderWidth: 0; layoutInset: 0.
 	row hResizing: #spaceFill; vResizing: #shrinkWrap; extent: 5@5.
 	controlSpecs do: [:spec |
 		spec == #spacer
@@ -25,7 +26,8 @@ makePageControlsFrom: controlSpecs
 						borderWidth: 0;
 	 					setBalloonText: spec third.
 						row addMorphBack: b.
-						(spec last asLowercase includesSubString: 'menu')
+						(((lastGuy _ spec last asLowercase) includesSubString: 'menu') or:
+								[lastGuy includesSubString: 'designations'])
 							ifTrue: [b actWhen: #buttonDown]]]].  "pop up menu on mouseDown"
 		col addMorphBack: row.
 	^ col

@@ -1,0 +1,3 @@
+stopButtonText
+
+	^'Stop loading page'

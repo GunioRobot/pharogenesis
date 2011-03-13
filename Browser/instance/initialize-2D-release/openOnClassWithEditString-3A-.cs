@@ -12,7 +12,7 @@ openOnClassWithEditString: aString
 		list: #classListSingleton
 		selected: #indexIsOne 
 		changeSelected: #indexIsOne:
-		menu: #classListMenu:
+		menu: #classListMenu:shifted:
 		keystroke: #classListKey:from:.
 	classListView window: (0 @ 0 extent: 100 @ 12).
 	topView addSubView: classListView.
@@ -43,7 +43,7 @@ openOnClassWithEditString: aString
 					corner: messageListView viewport topRight).
 	topView addSubView: switchView toRightOf: classListView.
 
-	Preferences useAnnotationPanes
+	 self wantsAnnotationPane
 		ifTrue:
 			[annotationPane _ PluggableTextView on: self
 				text: #annotation accept: nil
@@ -56,7 +56,7 @@ openOnClassWithEditString: aString
 			[underPane _ messageCategoryListView.
 			y _ (200-12-70)].
 
-	Preferences optionalButtons ifTrue:
+	self wantsOptionalButtons ifTrue:
 		[optionalButtonsView _ self buildOptionalButtonsView.
 		optionalButtonsView borderWidth: 1.
 		topView addSubView: optionalButtonsView below: underPane.

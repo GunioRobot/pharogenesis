@@ -1,6 +1,6 @@
-nil
+ProtoObject
 	subclass: #Object
 	instanceVariableNames: ''
-	classVariableNames: 'DependentsFields '
+	classVariableNames: 'DependentsFields EventsFields '
 	poolDictionaries: ''
 	category: 'Kernel-Objects'

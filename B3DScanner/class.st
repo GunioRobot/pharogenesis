@@ -1,0 +1,1 @@
+B3DScanner class instanceVariableNames: ''

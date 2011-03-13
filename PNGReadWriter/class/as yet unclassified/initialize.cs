@@ -2,10 +2,6 @@ initialize
 	"
 	PNGReadWriter initialize
 	"
-	IHDR _ 'IHDR' asPacked.
-	IEND _ 'IEND' asPacked.
-	PLTE _ 'PLTE' asPacked.
-	IDAT _ 'IDAT' asPacked.
 
 	BPP _ {	#(1 2 4 8 16).
 			#(0 0 0 0 0).

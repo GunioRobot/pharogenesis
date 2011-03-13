@@ -1,0 +1,3 @@
+wantsRoundedCorners
+
+	^ self hasProperty: #roundedCorners

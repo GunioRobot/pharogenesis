@@ -1,0 +1,3 @@
+hasSetup: aBoolean
+
+	hasSetup := aBoolean.

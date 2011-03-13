@@ -1,0 +1,3 @@
+typeFridge
+
+	^'fridge'

@@ -11,6 +11,7 @@ writeMacSourceFiles
 	self storeString: self macJoystickAndTabletFile  onFileNamed: 'sqMacJoystickAndTablet.c'.
 	self storeString: self macMinimal		onFileNamed: 'sqMacMinimal.c'.
 	self storeString: self macNetworkFile		onFileNamed: 'sqMacNetwork.c'.
+	self storeString: self macDragDropFile	onFileNamed: 'sqMacDragDrop.c'.
 	self storeString: self macSerialAndMIDIPortFile	onFileNamed: 'sqMacSerialAndMIDIPort.c'.
 	self storeString: self macSoundFile		onFileNamed: 'sqMacSound.c'.
 	self storeString: self macWindowFile		onFileNamed: 'sqMacWindow.c'.

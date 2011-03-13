@@ -1,2 +1,2 @@
 initialize
-	self pitch: 100.0; range: 0.3; loudness: 1.0; speed: 0.6; "normalizer: TextNormalizer new;" transcriber: PhoneticTranscriber default; voice: KlattVoice new; visitors: {IntonationVisitor default. DurationsVisitor default. F0RenderingVisitor default}
+	self pitch: 100.0; range: 0.3; loudness: 1.0; speed: 0.6; "normalizer: TextNormalizer new;" transcriber: PhoneticTranscriber default; visitors: {IntonationVisitor default. DurationsVisitor default. F0RenderingVisitor default}

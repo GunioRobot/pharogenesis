@@ -1,0 +1,2 @@
+defaultBrowserReadyWait
+	^5000

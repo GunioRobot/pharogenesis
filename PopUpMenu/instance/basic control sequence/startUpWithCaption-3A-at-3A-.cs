@@ -15,7 +15,9 @@ startUpWithCaption: captionOrNil at: location
 	Smalltalk isMorphic
 		ifTrue:
 			[selection _ Cursor normal showWhile:
-				[(MVCMenuMorph from: self title: captionOrNil) invokeAt: location in: World].
+				[(MVCMenuMorph from: self title: captionOrNil) 
+					invokeAt: location 
+					in: (Display morphicWorldAt: location)].
 			^ selection].
 
 	frame ifNil: [self computeForm].

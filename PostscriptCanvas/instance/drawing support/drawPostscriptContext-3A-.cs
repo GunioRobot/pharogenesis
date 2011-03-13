@@ -1,10 +1,7 @@
-drawPostscriptContext:subCanvas
+drawPostscriptContext: subCanvas
 	| contents |
-	contents _ subCanvas contents.
-	contents ifNotNil:[
-		^target comment:' sub-canvas start';
-			gsave;
-			print:subCanvas contents;
-			grestore;
-			comment:'sub-canvas stop'.	
-	].
+	(contents _ subCanvas contents) ifNil: [^ self].
+	^ target comment: ' sub-canvas start';
+		preserveStateDuring: [:inner | inner print: contents];
+		comment: ' sub-canvas stop'.	
+

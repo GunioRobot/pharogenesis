@@ -1,0 +1,2 @@
+contents
+	^ costume contents

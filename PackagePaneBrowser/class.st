@@ -1,0 +1,1 @@
+PackagePaneBrowser class instanceVariableNames: ''

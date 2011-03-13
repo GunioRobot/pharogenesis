@@ -4,9 +4,12 @@ list: aCollection
 	wereExpanded _ self currentlyExpanded.
 	scroller removeAllMorphs.
 	(aCollection isNil or: [aCollection isEmpty]) ifTrue: [^ self selectedMorph: nil].
-	morphList _ self 
-			morphsFromCollection: aCollection 
-			allowSorting: false
-			withExpandedItems: wereExpanded.
+	morphList _ OrderedCollection new.
+	self 
+		addMorphsTo: morphList
+		from: aCollection 
+		allowSorting: false
+		withExpandedItems: wereExpanded
+		atLevel: 0.
 	self insertNewMorphs: morphList.
 	self installEventHandlerOn: morphList

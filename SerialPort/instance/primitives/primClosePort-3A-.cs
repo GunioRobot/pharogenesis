@@ -1,4 +1,5 @@
 primClosePort: portNumber
 
-	<primitive: 239>
-	self primitiveFailed.
+	<primitive: 'primitiveSerialPortClose' module: 'SerialPlugin'>
+	^ nil  "(DNS)"
+	"self primitiveFailed."

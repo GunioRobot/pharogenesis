@@ -5,8 +5,8 @@ addTitle: aString updatingSelector: aSelector updateTarget: aTarget
 	title _ AlignmentMorph new.
 	self setTitleParametersFor: title.
 	title vResizing: #shrinkWrap.
-	title orientation: #vertical.
-	title centering: #center.
+	title listDirection: #topToBottom.
+	title wrapCentering: #center; cellPositioning: #topCenter.
 	aSelector
 		ifNotNil:
 			[title addMorphBack: (UpdatingStringMorph new lock; useStringFormat; target: aTarget; getSelector: aSelector)]

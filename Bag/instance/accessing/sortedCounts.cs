@@ -7,4 +7,4 @@ sortedCounts
 	contents associationsDo:
 		[:assn |
 		counts add: (Association key: assn value value: assn key)].
-	^counts
+	^ counts

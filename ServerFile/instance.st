@@ -3,4 +3,4 @@ ServerDirectory
 	instanceVariableNames: 'fileName rwmode '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Network'
+	category: 'Network-Kernel'

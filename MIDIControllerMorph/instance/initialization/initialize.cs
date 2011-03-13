@@ -2,9 +2,10 @@ initialize
 
 	| slider |
 	super initialize.
-	orientation _ #vertical.
-	centering _ #center.
-	hResizing _ vResizing _ #shrinkWrap.
+	self listDirection: #topToBottom.
+	self wrapCentering: #center; cellPositioning: #topCenter.
+	self hResizing: #shrinkWrap.
+	self vResizing: #shrinkWrap.
 	self color: (Color r: 0.484 g: 0.613 b: 0.0).
 	self borderWidth: 1.
 	channel _ 0.

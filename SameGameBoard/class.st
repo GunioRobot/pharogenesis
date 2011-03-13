@@ -1,0 +1,1 @@
+SameGameBoard class instanceVariableNames: ''

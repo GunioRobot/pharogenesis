@@ -9,4 +9,4 @@ setPenSize: evt
 			selector: #penSize:
 			argumentList: (Array with: w).
 		(brushSize // magnification) = w ifTrue: [menu lastSubmorph color: Color red]].
-	menu popUpEvent: evt
+	menu popUpEvent: evt in: self world

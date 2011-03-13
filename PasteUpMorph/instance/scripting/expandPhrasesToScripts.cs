@@ -1,2 +1,0 @@
-expandPhrasesToScripts
-	^ self hasProperty: #automaticPhraseExpansion

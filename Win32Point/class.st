@@ -1,0 +1,1 @@
+Win32Point class instanceVariableNames: ''

@@ -1,7 +1,7 @@
 extent: aPoint
 
-	bounds extent = aPoint ifFalse: [
-		self changed.
-		bounds _ bounds topLeft extent: aPoint.
-		self layoutChanged.
-		self changed].
+	bounds extent = aPoint ifTrue: [^ self].
+	self changed.
+	bounds _ bounds topLeft extent: aPoint.
+	self layoutChanged.
+	self changed.

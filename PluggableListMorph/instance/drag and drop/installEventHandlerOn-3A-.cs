@@ -1,10 +1,14 @@
 installEventHandlerOn: morphList
+
 	| handler |
+
 	handler _ EventHandler new.
 	handler
 		on: #mouseDown send: #mouseDown:onItem: to: self;
-		on: #mouseUp send: #mouseUp:onItem: to: self;
-		on: #doubleClick send: #doubleClick:onItem: to: self.
+		on: #mouseUp send: #mouseUp:onItem: to: self.
+	doubleClickSelector ifNotNil: [
+		handler on: #doubleClick send: #doubleClick:onItem: to: self.
+	].
 	self dragEnabled
 		ifTrue: [handler
 				on: #startDrag

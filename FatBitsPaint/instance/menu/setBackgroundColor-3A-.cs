@@ -1,6 +1,7 @@
 setBackgroundColor: evt
 
-        evt hand 
-                changeColorTarget: self 
-                selector: #backgroundColor: 
-                originalColor: backgroundColor
+	self
+		changeColorTarget: self 
+		selector: #backgroundColor: 
+		originalColor: backgroundColor
+		hand: evt hand

@@ -6,11 +6,11 @@ label: aStringOrTextOrMorph
 	"nest label in a row for centering"
 	r _ AlignmentMorph newRow
 		borderWidth: 0;
-		inset: 0;
+		layoutInset: 0;
 		color: Color transparent;
 		hResizing: #shrinkWrap;
 		vResizing: #spaceFill;
-		centering: #center.
+		wrapCentering: #center; cellPositioning: #leftCenter.
 	aStringOrTextOrMorph isMorph
 		ifTrue: [
 			label _ aStringOrTextOrMorph.

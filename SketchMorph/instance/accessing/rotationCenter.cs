@@ -1,3 +1,0 @@
-rotationCenter
-
-	^ rotationCenter

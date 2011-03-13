@@ -1,5 +1,5 @@
 isStepping: aMorph
 	"Return true if the given morph is in the step list."
-
-	stepList do: [:entry | entry first == aMorph ifTrue: [^ true]].  "already stepping"
+	lastStepMessage ifNotNil:[(lastStepMessage receiver == aMorph) ifTrue:[^true]].
+	stepList do:[:entry| entry receiver == aMorph ifTrue:[^true]].
 	^ false

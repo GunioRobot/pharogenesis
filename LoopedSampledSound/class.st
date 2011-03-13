@@ -1,0 +1,1 @@
+LoopedSampledSound class instanceVariableNames: ''

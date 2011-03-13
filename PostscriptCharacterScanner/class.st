@@ -1,0 +1,1 @@
+PostscriptCharacterScanner class instanceVariableNames: ''

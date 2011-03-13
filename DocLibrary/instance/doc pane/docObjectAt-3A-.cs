@@ -26,7 +26,7 @@ docObjectAt: classAndMethod
 	"check that it is really there -- let user respecify"
 	fileNames do: [:aVersion | 
 		(local includesKey: aVersion) ifTrue: [
-			strm _ local oldFileNamed: aVersion.
+			strm _ local readOnlyFileNamed: aVersion.
 			obj _ strm fileInObjectAndCode asMorph.
 			(obj valueOfProperty: #classAndMethod) = classAndMethod ifFalse: [
 				self inform: 'suspicious object'.

@@ -1,0 +1,3 @@
+isTypeHTTP
+
+	^self typeWithDefault == #http

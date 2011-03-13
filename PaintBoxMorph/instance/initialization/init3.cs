@@ -6,9 +6,9 @@ self allMorphsDo: [:button |
 	(button isKindOf: ThreePhaseButtonMorph) 
 		ifTrue: [button offImage: nil]
 		ifFalse: [button position: button position + (100@0)]].
-(bb _ self findButton: #keep:) position: bb position + (100@0).
-(bb _ self findButton: #toss:) position: bb position + (100@0).
-(bb _ self findButton: #undo:) position: bb position + (100@0).
+(bb _ self submorphNamed: #keep:) position: bb position + (100@0).
+(bb _ self submorphNamed: #toss:) position: bb position + (100@0).
+(bb _ self submorphNamed: #undo:) position: bb position + (100@0).
 "Transparent is (Color r: 1.0 g: 0 b: 1.0)"
 
 self moveButtons.
@@ -56,15 +56,15 @@ stampHolder stampButtons do: [:button |
 			].
 	self invalidRect: bounds.
 
-((self findButton: #erase:) arguments at: 3) offset: (12@35).
-((self findButton: #eyedropper:) arguments at: 3) offset: (0@0).
-((self findButton: #fill:) arguments at: 3) offset: (10@44).
-((self findButton: #paint:) arguments at: 3) offset: (3@3). "unused"
-((self findButton: #rect:) arguments at: 3) offset: (6@17).
-((self findButton: #ellipse:) arguments at: 3) offset: (5@4).
-((self findButton: #polygon:) arguments at: 3) offset: (5@4).
-((self findButton: #line:) arguments at: 3) offset: (5@17).
-((self findButton: #star:) arguments at: 3) offset: (2@5).
+((self submorphNamed: #erase:) arguments at: 3) offset: (12@35).
+((self submorphNamed: #eyedropper:) arguments at: 3) offset: (0@0).
+((self submorphNamed: #fill:) arguments at: 3) offset: (10@44).
+((self submorphNamed: #paint:) arguments at: 3) offset: (3@3). "unused"
+((self submorphNamed: #rect:) arguments at: 3) offset: (6@17).
+((self submorphNamed: #ellipse:) arguments at: 3) offset: (5@4).
+((self submorphNamed: #polygon:) arguments at: 3) offset: (5@4).
+((self submorphNamed: #line:) arguments at: 3) offset: (5@17).
+((self submorphNamed: #star:) arguments at: 3) offset: (2@5).
 thumbnail delete.
 thumbnail _ nil.
 (submorphs select: [:e | e class == RectangleMorph]) first bounds: 

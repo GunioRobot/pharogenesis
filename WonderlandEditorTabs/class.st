@@ -1,0 +1,1 @@
+WonderlandEditorTabs class instanceVariableNames: ''

@@ -1,0 +1,2 @@
+initialValuesAdditionhalosshowDirectionHandles
+	^ #((showDirectionHandles false (halos ) ) )

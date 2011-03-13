@@ -11,8 +11,10 @@ true."
 	selector _ class compile: aString
 				classified: category
 				notifying: aController.
-	selector == nil ifTrue: [^false].
-	selector == oldSelector ifFalse: [self messageListIndex: 0].
+	selector == nil ifTrue: [^ false].
+	self noteAcceptanceOfCodeFor: selector.
+	selector == oldSelector ifFalse:
+		[self reformulateListNoting: selector].
 	contents _ aString copy.
 	self changed: #annotation.
 	^ true

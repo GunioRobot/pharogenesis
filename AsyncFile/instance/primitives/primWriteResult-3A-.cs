@@ -3,5 +3,5 @@ primWriteResult: fHandle
 		-1 the last operation is still in progress
 		-2 the last operation encountered an error"
 
-	<primitive: 544>
+	<primitive: 'primitiveAsyncFileWriteResult' module: 'AsynchFilePlugin'>
 	self primitiveFailed

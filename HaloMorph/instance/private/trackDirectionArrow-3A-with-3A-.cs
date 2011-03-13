@@ -1,2 +1,4 @@
-trackDirectionArrow: anEvent with: directionHandle
-	self completeDisplayFor: directionHandle centeringTipAt: anEvent cursorPoint
+trackDirectionArrow: anEvent with: shaft
+	anEvent hand obtainHalo: self.
+	shaft setVertices: {directionArrowAnchor. anEvent cursorPoint}.
+	self layoutChanged

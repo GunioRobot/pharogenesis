@@ -6,4 +6,4 @@ restore: nameOfSwiki
 	fName _ ServerAction serverDirectory, name, (ServerAction pathSeparator), 
 				'authorizer'.
 	(FileDirectory new fileExists: fName) ifTrue: [
-		authorizer _ (FileStream oldFileNamed: fName) fileInObjectAndCode].
+		authorizer _ (FileStream readOnlyFileNamed: fName) fileInObjectAndCode].

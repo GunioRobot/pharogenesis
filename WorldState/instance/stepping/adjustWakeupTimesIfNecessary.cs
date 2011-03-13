@@ -4,4 +4,4 @@ adjustWakeupTimesIfNecessary
 	| now |
 	now _ Time millisecondClockValue.
 	((now < lastStepTime) or: [(now - lastStepTime) > 5000])
-		 ifTrue: [self adjustWakeupTimes].  "clock slipped"
+		 ifTrue: [self adjustWakeupTimes: now].  "clock slipped"

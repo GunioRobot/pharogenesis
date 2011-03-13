@@ -48,7 +48,7 @@ open
 
 
 	topView label: 'Method Finder'.
-	topView minimumSize: 350@250; maximumSize: 350@250.
+	"topView minimumSize: 350@250; maximumSize: 350@250."
 	topView subViews do: [:each | each controller].
 	topView controller open.
 

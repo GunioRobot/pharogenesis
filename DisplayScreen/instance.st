@@ -1,6 +1,6 @@
 Form
 	subclass: #DisplayScreen
 	instanceVariableNames: 'clippingBox '
-	classVariableNames: 'ScreenSave '
+	classVariableNames: 'DisplayChangeSignature OuterMorphicWorld ScreenSave '
 	poolDictionaries: ''
 	category: 'Graphics-Display Objects'

@@ -1,0 +1,1 @@
+NebraskaServerMorph class instanceVariableNames: ''

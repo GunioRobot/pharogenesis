@@ -1,3 +1,3 @@
 clipboardTextPut: text
 
-	^ self class clipboardTextPut: text
+	^ Clipboard clipboardText: text

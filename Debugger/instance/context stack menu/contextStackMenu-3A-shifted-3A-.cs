@@ -1,4 +1,6 @@
 contextStackMenu: aMenu shifted: shifted
+	"Set up the menu appropriately for the context-stack-list, either shifted or unshifted as per the parameter provided"
+
 	^ shifted ifFalse: [aMenu labels: 
 'fullStack (f)
 restart (r)
@@ -18,13 +20,14 @@ class variables
 class refs (N)
 browse full (b)
 file out 
+mail out bug report
 more...'
-	lines: #(7 11 13 16 18)
+	lines: #(7 11 13 16 19)
 	selections: #(fullStack restart proceed doStep send where peelToFirst
 browseSendersOfMessages browseMessages methodHierarchy browseVersions
 browseInstVarRefs browseInstVarDefs
 browseClassVarRefs browseClassVariables browseClassRefs
-browseMethodFull fileOutMessage
+browseMethodFull fileOutMessage mailOutBugReport
 shiftedYellowButtonActivity)]
 
 	ifTrue: [aMenu labels: 
@@ -37,7 +40,7 @@ inspect instances
 inspect subinstances
 revert to previous version
 remove from current change set
-revert and forget
+revert & remove from changes
 more...' 
 	lines: #(5 7 10)
 	selections: #(classHierarchy browseClass 

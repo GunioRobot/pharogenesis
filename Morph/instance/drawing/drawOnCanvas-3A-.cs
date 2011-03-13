@@ -1,2 +1,2 @@
-drawOnCanvas:aCanvas
-	^aCanvas fullDraw:self.
+drawOnCanvas: aCanvas
+	^aCanvas fullDraw: self.

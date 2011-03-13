@@ -1,0 +1,1 @@
+This class implements Actions for Wonderlands. An Action is some task that should be executed every frame either forever, until a specified amount of time has elapsed, or until a specified condition holds true.

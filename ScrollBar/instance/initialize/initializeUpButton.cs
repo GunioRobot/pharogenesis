@@ -6,9 +6,18 @@ initializeUpButton
 					extent: self buttonExtent)
 		color: Color lightGray.
 	upButton on: #mouseDown send: #scrollUpInit to: self.
-	upButton on: #mouseStillDown send: #scrollUp to: self.
-	upButton on: #mouseUp send: #borderRaised to: upButton.
-	upButton addMorphCentered: (ImageMorph new image: 
-		(bounds isWide ifTrue: [UpArrow rotateBy: #left centerAt: 0@0] ifFalse: [UpArrow])).
+	upButton on: #mouseUp send: #finishedScrolling to: self.
+	upButton addMorphCentered: (ImageMorph new image:
+		(self 
+			cachedImageAt: (bounds isWide ifTrue: ['left'] ifFalse: ['up'])
+			ifAbsentPut: [
+				bounds isWide ifTrue: [
+					self upArrow8Bit rotateBy: #left centerAt: 0@0
+				] ifFalse: [
+					self upArrow8Bit
+				]
+			]
+		)
+	).
 	upButton setBorderWidth: 1 borderColor: #raised.
 	self addMorph: upButton

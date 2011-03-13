@@ -3,4 +3,4 @@ StandardSystemController
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Interface-Projects'
+	category: 'ST80-Support'

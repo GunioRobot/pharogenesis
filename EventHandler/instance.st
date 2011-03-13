@@ -1,7 +1,7 @@
 Object
 	subclass: #EventHandler
 	instanceVariableNames:
-		'mouseDownRecipient mouseDownSelector mouseStillDownRecipient mouseStillDownSelector mouseUpRecipient mouseUpSelector mouseEnterRecipient mouseEnterSelector mouseLeaveRecipient mouseLeaveSelector keyStrokeRecipient keyStrokeSelector valueParameter '
+		'mouseDownRecipient mouseDownSelector mouseMoveRecipient mouseMoveSelector mouseStillDownRecipient mouseStillDownSelector mouseUpRecipient mouseUpSelector mouseEnterRecipient mouseEnterSelector mouseLeaveRecipient mouseLeaveSelector mouseEnterDraggingRecipient mouseEnterDraggingSelector mouseLeaveDraggingRecipient mouseLeaveDraggingSelector keyStrokeRecipient keyStrokeSelector valueParameter startDragRecipient startDragSelector doubleClickSelector doubleClickRecipient clickSelector clickRecipient '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Support'
+	category: 'Morphic-Events'

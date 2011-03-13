@@ -2,6 +2,13 @@ tilesFrom: msgNode in: aScriptor
 	"Construct a single line of tiles from a MessageNode of a parse tree.  For a single message send."
 
 	| tile pm sel instVar suff argNode selType |
+
+	self flag: #noteToTed.  "Ted: this is your code from 8/6/99, which is now broken before it could ever get used.  The method #scriptInfoFor: which it formerly called is gone; I've included its old content at the end in comments as a pointer.  sw 9/8/2000 09:44"
+	"latter-day note: sw 10/10/2000 11:25 - this is now reached by the from a menu item in the Scriptor menu, so this is where the capability needs to be revived"
+	true ifTrue: [^ self inform: 'Under Construction!
+Not yet released!.
+(sorry)'].
+
 	sel _ msgNode selector key.
 	(sel beginsWith: 'assign') ifTrue: [	"assignment"
 		instVar _ msgNode arguments first literalValue.
@@ -36,3 +43,14 @@ tilesFrom: msgNode in: aScriptor
 		argNode _ msgNode arguments last.
 		tile _ TileMorph new tilesFrom: argNode type: selType in: aScriptor.
 		self addMorphBack: tile].
+
+
+"Old code from Player, now superseded by an entirely new mechanism...
+phraseSpecFor: aPair
+	| info prefix |
+	info _ (prefix _ aPair first) == #slot
+		ifTrue:
+			[ScriptingSystem slotInfoFor: aPair second]
+		ifFalse:
+			[ScriptingSystem scriptInfoFor: aPair second].
+	^ (Array with: prefix), info"

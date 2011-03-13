@@ -8,4 +8,4 @@ valueWithArguments: anArray
 	<primitive: 82>
 	self numArgs = anArray size
 		ifTrue: [self error: 'Attempt to evaluate a block that is already being evaluated.']
-		ifFalse: [self error: 'This block requires ' , self numArgs printString , ' arguments.']
+		ifFalse: [self error: 'This block requires ' , self numArgs printString , ' arguments and is being evaluated with ', anArray size printString]

@@ -4,5 +4,4 @@ parse: textOrStream in: aClass notifying: req
 	Notify the argument, req, if an error occurs. The failBlock is defaulted to 
 	an empty block."
 
-	self from: textOrStream class: aClass context: nil notifying: req.
-	^self translate: sourceStream noPattern: false ifFail: []
+	^ self parse: textOrStream in: aClass notifying: req dialect: false

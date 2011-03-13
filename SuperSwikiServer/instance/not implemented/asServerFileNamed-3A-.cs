@@ -1,0 +1,3 @@
+asServerFileNamed: x
+
+	self halt.

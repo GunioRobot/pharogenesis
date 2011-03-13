@@ -1,3 +1,3 @@
 fileByteCountPerFrame
 	
-	^ currentPage image bits size * 4
+	^ (frameBufferIfScaled ifNil: [currentPage image]) bits size * 4

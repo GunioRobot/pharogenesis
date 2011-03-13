@@ -1,0 +1,1 @@
+This subclass of PasteUpMorph provides special support for viewing of a world in an inner window (WorldWindow).

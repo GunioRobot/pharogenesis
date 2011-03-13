@@ -3,3 +3,6 @@ setTarget: aMorph
 
 	target _ aMorph topRendererOrSelf.
 	innerTarget _ target renderedMorph.
+	innerTarget wantsDirectionHandles
+		ifTrue: [self showDirectionHandles: true addHandles: false].
+

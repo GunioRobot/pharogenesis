@@ -1,10 +1,9 @@
 moveAll
 	"Move all visible messages in the current category to another category."
 
-	| newCatName msgList |
+	| newCatName |
 	newCatName _ self getCategoryNameIfNone: [^self].
-	msgList _ self filteredMessagesIn: currentCategory.
-	mailDB removeAll: msgList fromCategory: currentCategory.
-	mailDB fileAll: msgList inCategory: newCatName.
-	currentMsgID _ nil.
-	self updateTOC.
+	newCatName = currentCategory ifTrue:[ ^self ].
+	mailDB fileAll: currentMessages inCategory: newCatName.
+
+	self removeAll.

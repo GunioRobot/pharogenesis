@@ -1,0 +1,1 @@
+MIDIPlugin class instanceVariableNames: ''

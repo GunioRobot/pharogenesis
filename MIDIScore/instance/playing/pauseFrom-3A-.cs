@@ -1,2 +1,2 @@
 pauseFrom: scorePlayer
-	self otherPlayersDo: [:p | p pauseFrom: scorePlayer]
+	self eventMorphsDo: [:p | p pauseFrom: scorePlayer]

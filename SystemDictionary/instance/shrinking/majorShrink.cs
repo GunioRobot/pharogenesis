@@ -1,4 +1,8 @@
-majorShrink    "Smalltalk majorShrink; abandonSources; lastRemoval"
+majorShrink    
+
+	| oldDicts newDicts |
+
+"Smalltalk majorShrink; abandonSources; lastRemoval"
 	"This method throws out lots of the system that is not needed for, eg, operation in a hand-held PC.  majorShrink produces a 999k image in Squeak 2.8"
 
 	Smalltalk isMorphic ifTrue: [^ self error: 'You can only run majorShrink in MVC'].
@@ -17,6 +21,9 @@ Shall we proceed to discard most of the content in this image?')
 	Player freeUnreferencedSubclasses.
 	MorphicModel removeUninstantiatedModels.
 	Utilities classPool at: #ScrapsBook put: nil.
+	Utilities zapUpdateDownloader.
+	ProjectHistory currentHistory initialize.
+	Project rebuildAllProjects.
 
 	Smalltalk discardVMConstruction.  "755k"
 	Smalltalk discardSoundSynthesis.  "544k"
@@ -84,6 +91,27 @@ Shall we proceed to discard most of the content in this image?')
 		[Smalltalk unusedClasses do: [:c | (Smalltalk at: c) removeFromSystem]].
 	SystemOrganization removeEmptyCategories.
 	Smalltalk allClassesDo: [:c | c zapOrganization].
-	MethodDictionary allInstances do: [:d | d rehash].
+	Smalltalk garbageCollect.
+
+	'Rehashing method dictionaries . . .'
+		displayProgressAt: Sensor cursorPoint
+		from: 0 to: MethodDictionary instanceCount
+		during: [:bar |
+			oldDicts _ MethodDictionary allInstances.
+			newDicts _ Array new: oldDicts size.
+			oldDicts withIndexDo: [:d :index | 
+				bar value: index.
+				newDicts at: index put: d rehashWithoutBecome.
+			].
+			oldDicts elementsExchangeIdentityWith: newDicts.
+		].
+	oldDicts _ newDicts _ nil.
+	Project rebuildAllProjects.
 	Smalltalk changes initialize.
-	Symbol rehash.
+
+	"seems to take more than one try to gc all the weak refs in SymbolTable"
+
+	3 timesRepeat: [
+		Smalltalk garbageCollect.
+		Symbol compactSymbolTable.
+	].

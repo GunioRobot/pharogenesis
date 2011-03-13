@@ -1,3 +1,3 @@
 primSetEdgeTransform: transform
-	<primitive:'gePrimitiveSetEdgeTransform'>
+	<primitive: 'primitiveSetEdgeTransform' module: 'B2DPlugin'>
 	^self primitiveFailed

@@ -1,6 +1,0 @@
-morphsAt: aPoint addTo: mList
-	"Return a collection of all morphs in this morph structure that contain the given point, possibly including the receiver itself.  Must do this recursively because of transforms.  "
-	submorphs size > 0 ifTrue:
-		[submorphs do: [:m | m morphsAt: aPoint addTo: mList]].
-	(self containsPoint: aPoint) ifTrue: [mList addLast: self].
-	^ mList

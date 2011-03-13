@@ -6,3 +6,4 @@ super veryDeepInner: deepCopier.
 viewSelector _ viewSelector veryDeepCopyWith: deepCopier.
 lastSketchForm _ lastSketchForm veryDeepCopyWith: deepCopier.
 lastFormShown _ lastFormShown veryDeepCopyWith: deepCopier.
+drawTime _ drawTime veryDeepCopyWith: deepCopier.

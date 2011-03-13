@@ -1,6 +1,7 @@
 forward: dist 
+	"Move forward (viz. in the direction of my heading) by the given amount"
 
-	| rho radians delta didStray p fractionalP newP aCostume |
+	| rho radians delta didStray p aCostume |
 	(aCostume _ self costume) isInWorld ifFalse: [^ self].
 	aCostume isWorldOrHandMorph ifTrue: [^ self].
 
@@ -9,7 +10,7 @@ forward: dist
 	delta _ (radians cos @ radians sin) * rho.
 
 	((aCostume owner isHandMorph not) and:
-	 [Preferences fenceEnabled]) ifTrue:
+	 [aCostume owner fenceEnabled]) ifTrue:
 		[(aCostume owner bounds containsRect: aCostume bounds) ifFalse:
 			["If I stray out of the bounds of my owner, pull me back, but
 			 without changing my heading as bounce would. Do nothing if
@@ -26,14 +27,5 @@ forward: dist
 			didStray ifTrue: [aCostume makeFenceSound]]].
 
 	"use and record the fractional position"
-	p _ aCostume referencePosition.
-	fractionalP _ aCostume actorState fractionalPosition.
-	(fractionalP == nil or: [fractionalP asIntegerPoint ~= p])
-		ifTrue: [newP _ p asFloatPoint + delta]
-		ifFalse: [newP _ fractionalP + delta].
-"
-Transcript cr; print: p; space; print: fractionalP;
-cr; cr; print: newP asIntegerPoint; space; print: newP; show: ''.
-"
-	aCostume actorState fractionalPosition: newP.
-	aCostume referencePosition: newP asIntegerPoint.
+	p _ aCostume referencePosition + delta.
+	aCostume referencePosition: p.

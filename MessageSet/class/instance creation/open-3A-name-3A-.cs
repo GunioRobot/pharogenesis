@@ -20,9 +20,9 @@ open: aMessageSet name: aString
 	aListView window: (0 @ 0 extent: winWidth @ 100).
 	topView addSubView: aListView.
 
-	Preferences useAnnotationPanes
-		ifTrue: [
-			aTextView _ PluggableTextView on: aMessageSet 
+	aMessageSet  wantsAnnotationPane
+		ifTrue:
+			[aTextView _ PluggableTextView on: aMessageSet 
 			text: #annotation accept: nil
 			readSelection: nil menu: nil.
 			aTextView window: (0 @ 0 extent: winWidth @ 24).
@@ -30,12 +30,12 @@ open: aMessageSet name: aString
 			underPane _ aTextView.
 			y _ 300 - 24.
 			aTextView askBeforeDiscardingEdits: false]
-		ifFalse: [
-			underPane _ aListView.
+		ifFalse:
+			[underPane _ aListView.
 			y _ 300].
 
-	Preferences optionalButtons ifTrue: [
-		buttonsView _ aMessageSet buildOptionalButtonsView.
+	aMessageSet wantsOptionalButtons ifTrue:
+		[buttonsView _ aMessageSet buildOptionalButtonsView.
 		topView addSubView: buttonsView below: underPane.
 		underPane _ buttonsView.
 		y _ y - aMessageSet optionalButtonHeight].

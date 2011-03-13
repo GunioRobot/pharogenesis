@@ -5,15 +5,9 @@ categories
 	(self hasCostumeThatIsAWorld)
 		ifTrue:	[^ self categoriesForWorld].
 
-	aList _ #('basic' ) asOrderedCollection.
+	aList _ OrderedCollection new.
 	self slotNames size > 0 ifTrue:
-		[aList add: 'instance variables'].
-	self class scripts size > 0 ifTrue:
-		[aList add: 'scripts'].
-
-	aList addAll: #( 'color & border' 'tests' 'geometry' 'motion' 'pen use' 'miscellaneous' ).
-
-	self costumesDo:
-		[:aCostume | aCostume addCostumeSpecificCategoriesTo: aList].
-
+		[aList add: #'instance variables'].
+	aList addAll: costume categoriesForViewer.
+	aList add: #scripts after: aList first.
 	^ aList

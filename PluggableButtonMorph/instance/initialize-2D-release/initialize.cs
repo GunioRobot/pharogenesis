@@ -1,9 +1,10 @@
 initialize
 
  	super initialize.
-	orientation _ #vertical.
-	hResizing _ vResizing _ #spaceFill.
-	centering _ #center.
+	self listDirection: #topToBottom.
+	self hResizing: #shrinkWrap.	"<--so naked buttons work right"
+	self vResizing: #shrinkWrap.
+	self wrapCentering: #center; cellPositioning: #topCenter.
 	borderWidth _ 1.
 	model _ nil.
 	label _ nil.

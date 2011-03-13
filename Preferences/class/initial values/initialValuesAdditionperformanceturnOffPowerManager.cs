@@ -1,0 +1,2 @@
+initialValuesAdditionperformanceturnOffPowerManager
+	^ #((turnOffPowerManager false (performance ) ) )

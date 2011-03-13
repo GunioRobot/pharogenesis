@@ -1,0 +1,1 @@
+FlashFileStream class instanceVariableNames: ''

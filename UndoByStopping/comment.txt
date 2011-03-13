@@ -1,0 +1,1 @@
+This class undoes some action by stopping it.  If the action is already stopped then the next undo action is popped off the stack and evaluated.

@@ -1,0 +1,1 @@
+AllScriptsTool class instanceVariableNames: ''

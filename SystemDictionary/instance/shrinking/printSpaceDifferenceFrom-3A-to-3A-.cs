@@ -7,11 +7,11 @@ printSpaceDifferenceFrom: fileName1 to: fileName2
 		Smalltalk printSpaceDifferenceFrom: 'STspace.text1' to: 'STspace.text2'
 "
 	| f coll1 coll2 item |
-	f _ FileStream oldFileNamed: fileName1.
+	f _ FileStream readOnlyFileNamed: fileName1.
 	coll1 _ OrderedCollection new.
 	[f atEnd] whileFalse: [coll1 add: (f upTo: Character cr)].
 	f close.
-	f _ FileStream oldFileNamed: fileName2.
+	f _ FileStream readOnlyFileNamed: fileName2.
 	coll2 _ OrderedCollection new.
 	[f atEnd] whileFalse:
 		[item _ (f upTo: Character cr).

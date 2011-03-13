@@ -1,6 +1,6 @@
 PolygonMorph
 	subclass: #CurveMorph
-	instanceVariableNames: 'coefficients ntfPoint ntlPoint '
+	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Basic'

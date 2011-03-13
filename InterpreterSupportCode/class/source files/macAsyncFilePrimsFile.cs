@@ -210,7 +210,11 @@ int asyncFileOpen(AsyncFile *f, int fileNamePtr, int fileNameSize, int writeFlag
 
 	/* build complete routine descriptor, if necessary */
 	if (asyncFileCompletionProc == nil) {
+#if TARGET_API_MAC_CARBON
+		asyncFileCompletionProc = NewIOCompletionUPP((pascal void (*) (union ParamBlockRec *) )asyncFileCompletionRoutine);
+#else
 		asyncFileCompletionProc = NewIOCompletionProc((pascal void (*) (union ParamBlockRec *) )asyncFileCompletionRoutine);
+#endif
 	}
 
 	/* copy the file name into a null-terminated C string */

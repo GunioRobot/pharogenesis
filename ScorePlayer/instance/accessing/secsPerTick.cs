@@ -1,0 +1,3 @@
+secsPerTick
+
+	^ secsPerTick

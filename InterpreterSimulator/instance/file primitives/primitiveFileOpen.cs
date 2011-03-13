@@ -8,8 +8,8 @@ primitiveFileOpen
 		filesOpen addLast: (writeFlag
 			ifTrue: [(FileStream fileNamed: fileName) binary]
 			ifFalse: [(StandardFileStream isAFileNamed: fileName)
-				ifTrue: [f _ (FileStream oldFileNamed: fileName).
-						f ifNil:[^self primitiveFail] ifNotNil:[f readOnly; binary]]
+				ifTrue: [f _ (FileStream readOnlyFileNamed: fileName).
+						f ifNil:[^self primitiveFail] ifNotNil:[f binary]]
 				ifFalse: [^ self primitiveFail]]).
 		self pop: 3.  "rcvr, name, write"
 		self pushInteger: filesOpen size]

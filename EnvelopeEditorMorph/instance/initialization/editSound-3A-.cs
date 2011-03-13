@@ -1,6 +1,11 @@
 editSound: aSound
 
 	| p |
+	(aSound respondsTo: #envelopes)
+		ifFalse: [
+			PopUpMenu inform: 'You selected a ', aSound class name, '.', String cr,
+				'I can''t handle these kinds of sounds.'.
+			^self ].
 	sound _ aSound.
 	sound envelopes isEmpty ifTrue: [
 		"provide a default volume envelope"

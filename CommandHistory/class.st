@@ -1,0 +1,1 @@
+CommandHistory class instanceVariableNames: ''

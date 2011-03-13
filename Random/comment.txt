@@ -1,2 +1,1 @@
-Random comment:
-'This Random Number Generator graciously contributed by David N. Smith.  It is an adaptation of the Park-Miller RNG which uses Floats to avoid the need for LargeInteger arithmetic.'
+This Random Number Generator graciously contributed by David N. Smith.  It is an adaptation of the Park-Miller RNG which uses Floats to avoid the need for LargeInteger arithmetic.

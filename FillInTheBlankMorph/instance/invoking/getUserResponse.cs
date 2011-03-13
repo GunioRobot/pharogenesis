@@ -6,7 +6,7 @@ getUserResponse
 	w _ self world.
 	w ifNil: [^ response].
 	done _ false.
-	[done] whileFalse: [w doOneCycle].
+	[done] whileFalse: [Display doOneCycleMorphic].
 	self delete.
-	w doOneCycle.
+	Display doOneCycleMorphic.
 	^ response

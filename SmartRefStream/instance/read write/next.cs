@@ -8,8 +8,9 @@ next
 			version _ super next.
 			version class == SmallInteger ifFalse: [^ version].	
 				"version number, else just a regular object, not in our format, "
+			self checkCrLf.
 			ss _ super next.
-			ss class == Array ifFalse: [^ ss].  "just a regualr object"
+			ss class == Array ifFalse: [^ ss].  "just a regular object"
 			(ss at: 1) = 'class structure' ifFalse: [^ ss].
 			structures _ ss at: 2.
 			superclasses _ (ss size > 3 and: [(ss at: 3) = 'superclasses']) 

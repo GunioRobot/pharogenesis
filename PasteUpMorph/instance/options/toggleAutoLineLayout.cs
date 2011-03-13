@@ -1,4 +1,5 @@
 toggleAutoLineLayout
-	autoLineLayout _ self autoLineLayout not.
-	self fixLayout.
-	self layoutChanged
+	"Toggle the auto-line-layout setting"
+
+	self autoLineLayout: self autoLineLayout not.
+	self autoLineLayout ifFalse: [self restoreBoundsOfSubmorphs].

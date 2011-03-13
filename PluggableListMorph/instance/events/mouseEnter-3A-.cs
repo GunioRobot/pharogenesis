@@ -1,3 +1,4 @@
 mouseEnter: event
 	super mouseEnter: event.
-	event hand newKeyboardFocus: self
+	self flag: #arNote. "remove this - keyboard input automatically goes right"
+	event hand newKeyboardFocus: self. 

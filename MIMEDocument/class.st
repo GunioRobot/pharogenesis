@@ -1,0 +1,1 @@
+MIMEDocument class instanceVariableNames: ''

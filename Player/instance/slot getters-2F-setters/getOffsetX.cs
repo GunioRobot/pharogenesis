@@ -1,0 +1,3 @@
+getOffsetX
+
+	^ self costume offsetX

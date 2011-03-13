@@ -14,9 +14,9 @@ initializeFor: aTarget withForms: formList coexist: aBoolean
 	b _ SimpleButtonMorph new target: self; borderColor: Color black.
 
 	buttons _ AlignmentMorph newRow.
-	buttons borderWidth: 0; inset: 0.
+	buttons borderWidth: 0; layoutInset: 0.
 	buttons hResizing: #shrinkWrap; vResizing: #shrinkWrap; extent: 5@5.
-	buttons centering: #topLeft.
+	buttons wrapCentering: #topLeft.
 	buttonCage _ AlignmentMorph newColumn.
 	buttonCage hResizing: #shrinkWrap; vResizing: #spaceFill.
 	buttonCage addTransparentSpacerOfSize: (0 @ 10).

@@ -4,23 +4,23 @@ enterForEmergencyRecovery
 	It is assumed that the old changeSet has already been revoked.
 	No new process gets spawned here.  This will happen in the debugger."
 
-	self == CurrentProject ifTrue: [^ self].
+	self isCurrentProject ifTrue: [^ self].
 	CurrentProject saveState.
 	CurrentProject _ self.
 	Display newDepthNoRestore: displayDepth.
 	Smalltalk newChanges: changeSet.
 	TranscriptStream newTranscript: transcript.
-	Smalltalk isMorphic ifTrue: [World pauseEventRecorder].
+	Display pauseMorphicEventRecorder.
 
 	world isMorph
 		ifTrue:
 			["Entering a Morphic project"
-			World _ world.
+			Display changeMorphicWorldTo: world.
 			world install.
 			world triggerOpeningScripts]
 		ifFalse:
 			["Entering an MVC project"
-			World _ nil.
+			Display changeMorphicWorldTo: nil.
 			Smalltalk at: #ScheduledControllers put: world.
 			ScheduledControllers restore].
-	activeProcess _ Processor activeProcess.
+	UIProcess _ Processor activeProcess.

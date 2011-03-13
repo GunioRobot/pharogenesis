@@ -1,6 +1,7 @@
 Object
 	subclass: #Socket
-	instanceVariableNames: 'semaphore socketHandle '
-	classVariableNames: 'Connected DeadServer InvalidSocket OtherEndClosed ThisEndClosed Unconnected WaitingForConnection '
+	instanceVariableNames: 'semaphore socketHandle readSemaphore writeSemaphore primitiveOnlySupportsOneSemaphore '
+	classVariableNames:
+		'Connected DeadServer InvalidSocket OtherEndClosed Registry TCPSocketType ThisEndClosed UDPSocketType Unconnected WaitingForConnection '
 	poolDictionaries: ''
-	category: 'System-Network'
+	category: 'Network-Kernel'

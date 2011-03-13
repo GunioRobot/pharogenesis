@@ -1,9 +1,14 @@
 simpleResumeTest
 
+	"see if we can resume twice"
+
 	| it |
 	[self doSomething.
 	it := MyResumableTestError signal.
-	it = 3 ifTrue: [self doSomethingElse]]
+	it = 3 ifTrue: [self doSomethingElse].
+	it := MyResumableTestError signal.
+	it = 3 ifTrue: [self doSomethingElse].
+	]
 		on: MyResumableTestError
 		do:
 			[:ex |

@@ -1,0 +1,2 @@
+patternHistory: anOrderedCollection
+	patternHistory := anOrderedCollection.

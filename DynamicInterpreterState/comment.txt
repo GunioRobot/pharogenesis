@@ -1,4 +1,0 @@
-DynamicInterpreterState comment:
-'This class provides the state that is owned by DynamicInterpreter, but which (for various reasons) is referred to from its superclasses.  This class will disappear in a puff of rationalisation one day, when things settle down a little.
-
-See DynamicInterpreter class>>checkScopes for a list of the problem cases.'

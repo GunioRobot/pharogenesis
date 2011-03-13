@@ -1,0 +1,1 @@
+Transcripter class instanceVariableNames: ''

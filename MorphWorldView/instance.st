@@ -3,4 +3,4 @@ View
 	instanceVariableNames: ''
 	classVariableNames: 'FullColorWhenInactive '
 	poolDictionaries: ''
-	category: 'Morphic-Support'
+	category: 'ST80-Morphic'

@@ -1,14 +1,17 @@
 processNonInterlaced
-	| z filter |
+	| z filter temp |
 	z _ ZLibReadStream on: chunk from: 1 to: chunk size.
 	prevScanline _ ByteArray new: bytesPerScanline.
+	thisScanline := ByteArray new: bytesPerScanline.
 	0 to: height-1 do: [ :y |
-		filter _ z next.
+		filter _ (z next: 1) first.
+		filtersSeen add: filter.
 		(filter isNil or: [(filter between: 0 and: 4) not])
 			ifTrue: [^ self].
-		thisScanline _ z next: bytesPerScanline.
+		thisScanline _ z next: bytesPerScanline into: thisScanline startingAt: 1.
 		self filterScanline: filter count: bytesPerScanline.
 		self copyPixels: y.
-		prevScanline replaceFrom: 1 to: bytesPerScanline with:
-			thisScanline startingAt: 1
+		temp := prevScanline.
+		prevScanline := thisScanline.
+		thisScanline := temp.
 		]

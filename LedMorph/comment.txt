@@ -1,0 +1,1 @@
+I am a collection of LED digits that can display a decimal value.  The display can be set to flash by sending flash: true.

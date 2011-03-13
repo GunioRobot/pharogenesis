@@ -1,7 +1,7 @@
 Morph
 	subclass: #HandMorph
 	instanceVariableNames:
-		'eventSubscribers keyboardFocus mouseDownMorph mouseOverMorphs mouseOverTimes clickClient clickState firstClickEvent firstClickTime userInitials lastEvent eventTransform argument targetOffset damageRecorder cacheCanvas cachedCanvasHasHoles temporaryCursor temporaryCursorOffset grid gridOn remoteConnections transmitBuffer lastEventTransmitted lastWorldExtent menuTargetOffset hasChanged savedPatch suppressDrawing formerOwner formerPosition '
-	classVariableNames: 'DoubleClickTime NormalCursor PasteBuffer '
-	poolDictionaries: ''
+		'mouseFocus keyboardFocus eventListeners mouseListeners keyboardListeners mouseClickState mouseOverHandler lastMouseEvent targetOffset damageRecorder cacheCanvas cachedCanvasHasHoles temporaryCursor temporaryCursorOffset hasChanged savedPatch userInitials lastEventBuffer '
+	classVariableNames: 'DoubleClickTime EventStats NewEventRules NormalCursor PasteBuffer ShowEvents '
+	poolDictionaries: 'EventSensorConstants '
 	category: 'Morphic-Kernel'

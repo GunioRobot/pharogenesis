@@ -1,0 +1,2 @@
+messageCountLimit: anInteger
+	MessageCountLimit _ anInteger

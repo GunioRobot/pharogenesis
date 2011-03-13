@@ -1,1 +1,0 @@
-DynamicInterpreterState class instanceVariableNames: ''

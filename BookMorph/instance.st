@@ -1,6 +1,6 @@
-AlignmentMorph
+BooklikeMorph
 	subclass: #BookMorph
-	instanceVariableNames: 'pageSize pages currentPage copyContents newPagePrototype '
-	classVariableNames: 'PageFlipSoundOn '
+	instanceVariableNames: 'pages currentPage '
+	classVariableNames: 'MethodHolders VersionNames VersionTimes '
 	poolDictionaries: ''
-	category: 'Morphic-Widgets'
+	category: 'Morphic-Books'

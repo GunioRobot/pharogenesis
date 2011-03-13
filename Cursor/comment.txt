@@ -1,2 +1,1 @@
-Cursor comment:
-'I am a 16 x 16 dot matrix suitable for use as the Alto hardware cursor.'
+I am a 16 x 16 dot matrix suitable for use as the Alto hardware cursor.

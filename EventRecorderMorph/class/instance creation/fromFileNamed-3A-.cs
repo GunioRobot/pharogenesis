@@ -1,6 +1,6 @@
 fromFileNamed: aFileName
 	| file answer |
-	file _ FileStream oldFileNamed: aFileName.
+	file _ FileStream readOnlyFileNamed: aFileName.
 	answer _ self readFrom: file.
 	file close.
 	^ answer

@@ -1,6 +1,6 @@
 Object
 	subclass: #MIDIScore
-	instanceVariableNames: 'tracks trackInfo tempoMap ticksPerQuarterNote '
+	instanceVariableNames: 'tracks trackInfo ambientTrack tempoMap ticksPerQuarterNote '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Music-Scores'
+	category: 'Sound-Scores'

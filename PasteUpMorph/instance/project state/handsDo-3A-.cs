@@ -1,3 +1,3 @@
 handsDo: aBlock
 
-	^ worldState hands do: aBlock
+	^ worldState handsDo: aBlock

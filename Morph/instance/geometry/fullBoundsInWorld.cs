@@ -1,4 +1,2 @@
 fullBoundsInWorld
-
-	owner ifNil: [^ self fullBounds].
-	^ (owner transformFrom: self world) localBoundsToGlobal: self fullBounds.
+	^self bounds: self fullBounds in: self world

@@ -1,0 +1,1 @@
+ProgressInitiationException class instanceVariableNames: ''

@@ -1,0 +1,1 @@
+A relative animation is any animation where the final state is relative to the initial state (for example, moving forward 1 meter). To reverse these animations we essentially use the same initial state and just reverse the vector to the final state (ex. we move back one meter).

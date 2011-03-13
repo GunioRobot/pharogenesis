@@ -1,0 +1,1 @@
+POObject class instanceVariableNames: ''

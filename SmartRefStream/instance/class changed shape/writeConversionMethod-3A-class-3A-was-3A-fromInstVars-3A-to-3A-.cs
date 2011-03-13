@@ -3,6 +3,8 @@ writeConversionMethod: sel class: newClass was: oldName fromInstVars: oldList to
 
 	| code keywords newOthers oldOthers copied |
 
+	self flag: #bobconv.	
+
 	code _ WriteStream on: (String new: 500).
 	keywords _ sel keywords.
 	code nextPutAll: (keywords at: 1); nextPutAll: ' varDict '; 

@@ -1,0 +1,3 @@
+failureMessage
+
+	^self class failureMessage

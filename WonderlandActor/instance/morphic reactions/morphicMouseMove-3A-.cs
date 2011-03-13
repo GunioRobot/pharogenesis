@@ -4,5 +4,5 @@ morphicMouseMove: event
 		ifTrue:[^self]. "Reserved for navigation"
 	(self getProperty: #userTransition) == true ifTrue:[^true]. "Shift key went up"
 	myTexture isMorph ifTrue:[
-		self dispatchEvent: event using:[:evt :hand| hand handleMouseMove: evt].
+		self dispatchEvent: event to: myTexture.
 	].

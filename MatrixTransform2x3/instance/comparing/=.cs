@@ -1,6 +1,6 @@
 = aMatrixTransform2x3 
 	| length |
-	<primitive: 'primitiveFloatArrayEqual'>
+	<primitive: 'primitiveEqual' module: 'FloatArrayPlugin'>
 	self class = aMatrixTransform2x3 class ifFalse: [^ false].
 	length _ self size.
 	length = aMatrixTransform2x3 size ifFalse: [^ false].

@@ -1,3 +1,0 @@
-yellowButtonMenu
-
-	^ CodeYellowButtonMenu

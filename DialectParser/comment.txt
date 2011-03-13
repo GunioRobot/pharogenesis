@@ -1,0 +1,18 @@
+This Parser is part of a package designed to allow for experiments with alternatives to ST-80 syntax.  The particular alternative offered by this parser eliminates colons, left-arrows and up-arrows, and adds prefix keywords for common control constructs.
+
+ST-80									SQ-00
+-------									-------
+a + b between: c and: c + 4				a + b between (c) and (c + 4)
+a _ 3.0									Set a to 3.0
+^ self size + 3							Return self size + 3
+a > b									Test (a > b)
+	ifTrue: ['greater']						ifTrue ['greater']
+	ifFalse: ['less']							ifFalse ['less']
+1 to: 9 do:								Repeat (1) to (9) do
+	[:i | Transcript cr; show: i]				[Set i. | Transcript cr; show (i)]
+
+The use of prefix keywords is currently ad-hoc;  in other words they are built into the parser, and there is not a way to define a method pattern to include a prefix keyword.  Most of the work has been done to support this, though, as selectors can now have the form
+	#:prefix:kwd1:kwd2:
+and they will respond appropriately to #keywords and #numArgs.
+
+A test method in the class ensures that every method in the system can be pretty-printed in the alternative syntax, and that compiling the resulting text produces exactly the same bytecodes as the original method.

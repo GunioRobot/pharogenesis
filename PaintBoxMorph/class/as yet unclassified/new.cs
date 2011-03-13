@@ -6,7 +6,7 @@ new
 	pb stampHolder normalize.	"Get the stamps to show"
 	"Get my own copies of the brushes so I can modify them"
 	#(brush1: brush2: brush3: brush4: brush5: brush6:) do: [:sel |
-		button _ pb findButton: sel.
+		button _ pb submorphNamed: sel.
 		button offImage: button offImage deepCopy.
 		dualUse _ button onImage == button pressedImage.	"sometimes shared"
 		button onImage: button onImage deepCopy.
@@ -29,4 +29,5 @@ new
 			borderWidth: 2 borderColor: (Color r: 0.599 g: 0.8 b: 1.0).
 		].
 	pb showColor.
+	pb fixUpRecentColors.
 	^ pb

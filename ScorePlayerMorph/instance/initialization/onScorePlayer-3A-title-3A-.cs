@@ -7,7 +7,7 @@ onScorePlayer: aScorePlayer title: scoreName
 	divider _ AlignmentMorph new
 		extent: 10@1;
 		borderWidth: 1;
-		inset: 0;
+		layoutInset: 0;
 		borderColor: #raised;
 		color: color;
 		hResizing: #spaceFill;
@@ -26,7 +26,7 @@ onScorePlayer: aScorePlayer title: scoreName
 	self addMorphBack: r.
 	self addMorphBack: self scrollControl.
 
-	col _ AlignmentMorph newColumn color: color; inset: 0.
+	col _ AlignmentMorph newColumn color: color; layoutInset: 0.
 	self addMorphBack: col.
 	1 to: scorePlayer trackCount do: [:trackIndex |
 		col addMorphBack: divider fullCopy.

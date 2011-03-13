@@ -1,2 +1,0 @@
-renamed
-	^ renamed

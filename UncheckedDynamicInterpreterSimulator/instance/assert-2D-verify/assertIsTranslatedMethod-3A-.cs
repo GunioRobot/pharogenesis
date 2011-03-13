@@ -1,1 +1,0 @@
-assertIsTranslatedMethod: anObject

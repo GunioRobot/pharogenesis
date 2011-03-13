@@ -1,9 +1,8 @@
 alphabetizeMessageCategories
-	classListIndex = 0
-		ifTrue: [^ false].
+	classListIndex = 0 ifTrue: [^ false].
 	self okToChange ifFalse: [^ false].
 	Smalltalk changes reorganizeClass: self selectedClassOrMetaClass.
-	self classOrMetaClassOrganizer categories: self rawMessageCategoryList asSortedCollection asArray.
+	self classOrMetaClassOrganizer sortCategories.
 	self clearUserEditFlag.
 	self editClass.
 	self classListIndex: classListIndex.

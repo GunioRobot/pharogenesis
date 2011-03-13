@@ -1,0 +1,3 @@
+Implement the socket and resolver primitives.
+
+I really think it wouldbe worth a minor rewrite to avoid the sq{plat}Socket.c files refering directly back t the VM -- TPR 

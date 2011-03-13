@@ -1,0 +1,1 @@
+MailAddressTokenizer class instanceVariableNames: ''

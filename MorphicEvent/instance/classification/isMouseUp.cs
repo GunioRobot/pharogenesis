@@ -1,3 +1,0 @@
-isMouseUp
-
-	^ type == #mouseUp

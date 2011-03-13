@@ -1,0 +1,2 @@
+amountToShowWhenSmall
+	^49

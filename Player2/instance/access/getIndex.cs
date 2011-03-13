@@ -1,0 +1,2 @@
+getIndex
+	^ index

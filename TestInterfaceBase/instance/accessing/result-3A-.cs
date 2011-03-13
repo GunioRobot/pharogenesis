@@ -1,0 +1,3 @@
+result: aTestResult
+
+	result := aTestResult.

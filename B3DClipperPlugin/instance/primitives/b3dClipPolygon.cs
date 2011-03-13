@@ -17,5 +17,5 @@ b3dClipPolygon
 	vtxArray _ vtxArray - PrimVertexSize.
 	tempVtxArray _ tempVtxArray - PrimVertexSize.
 	count _ self clipPolygon: vtxArray count: vtxCount with: tempVtxArray mask: outMask.
-	interpreterProxy pop: 4.
+	interpreterProxy pop: 5.
 	interpreterProxy pushInteger: count.

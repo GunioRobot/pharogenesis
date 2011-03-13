@@ -1,4 +1,4 @@
-codeStringForPrimitives: classAndSelectorList
-	"add the code for the setInterpreter() to the list"
-
-	^super codeStringForPrimitives: (classAndSelectorList copyWith: #(InterpreterPlugin setInterpreter:))
+codeStringForPrimitives: classAndSelectorList 
+	self addClass: InterpreterPlugin.
+	InterpreterPlugin declareCVarsIn: self.
+	^super codeStringForPrimitives: classAndSelectorList 

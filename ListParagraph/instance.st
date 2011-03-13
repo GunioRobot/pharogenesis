@@ -3,4 +3,4 @@ Paragraph
 	instanceVariableNames: ''
 	classVariableNames: 'ListStyle '
 	poolDictionaries: ''
-	category: 'Graphics-Display Objects'
+	category: 'ST80-Support'

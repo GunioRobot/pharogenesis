@@ -1,0 +1,1 @@
+DeflatePlugin class instanceVariableNames: ''

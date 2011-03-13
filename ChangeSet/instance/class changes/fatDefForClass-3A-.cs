@@ -11,8 +11,12 @@ fatDefForClass: class
 	outStrm _ WriteStream on: (String new: newDef size * 2).
 
 	"Merge inst vars from old and new defs..."
-	oldStrm upToAll: 'instanceVariableNames:'; upTo: $'.
-	outStrm nextPutAll: (newStrm upToAll: 'instanceVariableNames:'); nextPutAll: 'instanceVariableNames:';
+	oldStrm upToAll: 'instanceVariableNames'; upTo: $'.
+	outStrm 
+		nextPutAll: (newStrm upToAll: 'instanceVariableNames'); 
+		nextPutAll: 'instanceVariableNames:'.
+	newStrm peek = $: ifTrue: [newStrm next].	"may or may not be there, but already written"
+	outStrm
 		nextPutAll: (newStrm upTo: $'); nextPut: $'.
 	oldVars _ (oldStrm upTo: $') findTokens: Character separators.
 	newVars _ (newStrm upTo: $') findTokens: Character separators.

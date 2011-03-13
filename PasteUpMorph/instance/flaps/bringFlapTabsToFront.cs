@@ -1,3 +1,2 @@
 bringFlapTabsToFront
-	self flapTabs do:
-		[:m | self addMorphFront: m]
+	(submorphs select:[:m| m isFlapOrTab]) do:[:m| self addMorphInLayer: m].

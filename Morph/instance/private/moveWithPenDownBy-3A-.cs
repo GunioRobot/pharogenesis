@@ -1,11 +1,11 @@
 moveWithPenDownBy: delta
+	"If this is a costume for a player with its pen down, draw a line."
 
 	| trailMorph tfm start tfmEnd |
-	"If this is a costume for a player with its pen down, draw a line."
 	(trailMorph _ self trailMorph) ifNotNil:
 		[tfm _ self owner transformFrom: trailMorph.
 		start _  self referencePosition.
-		Preferences batchPenTrails
+		trailMorph batchPenTrails
 			ifTrue: [trailMorph notePenDown: true
 								forPlayer: self player
 								at: (tfm localPointToGlobal: start)]

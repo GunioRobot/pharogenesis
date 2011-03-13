@@ -7,5 +7,6 @@ openOnDatabase: aMailDB
 	lastCategory _ ''.
 	subjectFilter _ ''.
 	fromFilter _ ''.
+	participantFilter _ ''.
 	dateFilter _ nil.
 	self setCategory: currentCategory.

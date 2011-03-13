@@ -4,9 +4,7 @@ cleanupsForRelease
 
 	Socket deadServer: ''.  "Don't reveal any specific server name"
 	HandMorph initialize.  "free cached ColorChart"
-	PaintBoxMorph releaseTemporaryForms.
-	PaintBoxMorph prototype stampHolder clear.  "clear stamps"
-	PaintBoxMorph prototype delete.  "break link to world, if any"
+	PaintBoxMorph initialize.	"forces Prototype to let go of extra things it might hold"
 	Smalltalk removeKey: #AA ifAbsent: [].
 	Smalltalk removeKey: #BB ifAbsent: [].
 	Smalltalk removeKey: #CC ifAbsent: [].

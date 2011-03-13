@@ -1,4 +1,5 @@
 initialize
+	"Initialize the receiver's graphics, name, and balloon-help"
 
 	super initialize.
 	self image: TrashPicOn;
@@ -6,4 +7,4 @@ initialize
 		pressedImage: TrashPicOn.
 	self setNameTo: 'Trash'.
 	self setBalloonText:
-'To remove an object, drop it on this trash can.'.
+'To remove an object, drop it on a trash can.'.

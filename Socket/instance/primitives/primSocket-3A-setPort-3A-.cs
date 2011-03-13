@@ -4,5 +4,5 @@ primSocket: socketID setPort: port
 	the effects will not be what was desired.  Best solution would be to split Socket into
 	two subclasses, TCPSocket and UDPSocket."
 
-	<primitive: 218>
+	<primitive: 'primitiveSocketListenWithOrWithoutBacklog' module: 'SocketPlugin'>
 	self primitiveFailed

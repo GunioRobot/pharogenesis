@@ -5,7 +5,7 @@ openInWindowLabeled: aString inWorld: aWorld
 	window _ (SystemWindow labelled: aString) model: nil.
 	window 
 		" guess at initial extent"
-		bounds:  (RealEstateAgent initialFrameFor: window initialExtent: self fullBounds extent);
+		bounds:  (RealEstateAgent initialFrameFor: window initialExtent: self fullBounds extent world: aWorld);
 		addMorph: self frame: (0@0 extent: 1@1);
 		updatePaneColors.
 	" calculate extent after adding in case any size related attributes were changed.  Use

@@ -1,7 +1,8 @@
 storeToMakeRoom
-	| params memoryEnd goalFree cnt gain proj skip tried |
-	"Write out enough projects to fulfill the space goals.  Include the size of the project about to come in."
+	"Write out enough projects to fulfill the space goals.
+	Include the size of the project about to come in."
 
+	| params memoryEnd goalFree cnt gain proj skip tried |
 	GoalFreePercent ifNil: [GoalFreePercent _ 33].
 	GoalNotMoreThan ifNil: [GoalNotMoreThan _ 20000000].
 	params _ Smalltalk getVMParameters.
@@ -27,6 +28,6 @@ storeToMakeRoom
 		proj storeSegment ifTrue: ["Yes, did send its morphs to the disk"
 			gain _ gain + (proj projectParameters at: #segmentSize 
 						ifAbsent: [20000]).	"a guess"
-			(PluckedSound pitch: 261.625*4 dur: 1 loudness: 0.1) play.
+			self beep.
 			(cnt _ cnt + 1) > 5 ifTrue: [^ self]].	"put out 5 at most"
 		(tried _ tried + 1) > 23 ifTrue: [^ self]].	"don't get stuck in a loop"

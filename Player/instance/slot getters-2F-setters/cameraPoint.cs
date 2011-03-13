@@ -1,0 +1,3 @@
+cameraPoint
+
+	^ self costume cameraPoint

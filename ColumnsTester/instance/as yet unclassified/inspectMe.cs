@@ -1,0 +1,2 @@
+inspectMe
+	self inspect

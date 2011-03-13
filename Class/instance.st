@@ -1,6 +1,6 @@
 ClassDescription
 	subclass: #Class
-	instanceVariableNames: 'name classPool sharedPools '
+	instanceVariableNames: 'subclasses name classPool sharedPools environment category '
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Kernel-Classes'

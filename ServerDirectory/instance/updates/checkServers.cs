@@ -30,7 +30,7 @@ Warn user when can't write to a server that can still be read."
 		decided not ifTrue: [myUpdates _ this contentsOfEntireFile.
 			myUpdates = theUpdates
 				ifTrue: [final add: aServer]
-				ifFalse: [abort _ self outOfDate: this]].
+				ifFalse: [abort _ self outOfDate: aServer]].
 		abort ifTrue: [^ Array new].
 		].
 	^ final

@@ -1,6 +1,6 @@
 StringHolder
 	subclass: #Inspector
-	instanceVariableNames: 'object selectionIndex '
+	instanceVariableNames: 'object selectionIndex timeOfLastListUpdate selectionUpdateTime '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Interface-Inspector'
+	category: 'Tools-Inspector'

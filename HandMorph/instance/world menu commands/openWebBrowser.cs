@@ -1,2 +1,0 @@
-openWebBrowser
-	Scamper openAsMorph 

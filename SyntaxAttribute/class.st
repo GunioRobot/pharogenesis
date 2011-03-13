@@ -1,0 +1,1 @@
+SyntaxAttribute class instanceVariableNames: ''

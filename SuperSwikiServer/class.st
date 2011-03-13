@@ -1,0 +1,1 @@
+SuperSwikiServer class instanceVariableNames: ''

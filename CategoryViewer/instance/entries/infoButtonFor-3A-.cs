@@ -1,7 +1,9 @@
 infoButtonFor: aScriptOrSlotSymbol
+	"Answer a fully-formed morph that will serve as the 'info button' alongside an entry corresponding to the given slot or script symbol"
+
 	| aButton balloonTextSelector |
 	balloonTextSelector _ nil.
-	(scriptedPlayer slotInfo includesKey: aScriptOrSlotSymbol asSymbol)
+	((scriptedPlayer isKindOf: Player) and: [scriptedPlayer slotInfo includesKey: aScriptOrSlotSymbol asSymbol])
 		ifTrue: [balloonTextSelector _ #userSlot].
 
 	(scriptedPlayer belongsToUniClass and:
@@ -16,5 +18,7 @@ infoButtonFor: aScriptOrSlotSymbol
 		color: Color transparent;
 		borderWidth: 0;
 		actWhen: #buttonDown.
-	aButton balloonTextSelector: (balloonTextSelector ifNil: [aScriptOrSlotSymbol]).
+	balloonTextSelector
+		ifNotNil:	[aButton balloonTextSelector: balloonTextSelector]
+		ifNil:		[aButton setBalloonText: 'Press here to get a menu'].
 	^ aButton

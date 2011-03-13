@@ -4,6 +4,7 @@ readDocumentFile
 	| fileName object |
 	StartupStamp _ '----STARTUP----', Time dateAndTimeNow printString, ' as ', Smalltalk imageName.
 	self processUpdates.
+	(Preferences valueOfFlag: #readDocumentAtStartup) ifFalse: [^ self].
 	fileName _ Smalltalk getSystemAttribute: 2.
 	((fileName ~~ nil) and: [fileName size > 0])
 		ifTrue: [
@@ -13,10 +14,10 @@ readDocumentFile
 					HTTPSocket httpFileIn: fileName]
 				ifFalse: [
 					"read local file"
-					object _ (FileStream oldFileNamed: fileName) fileInObjectAndCode.
+					object _ (FileStream readOnlyFileNamed: fileName) fileInObjectAndCode.
 
 					"if launching a .sqo document, send open to the final object"
 					(fileName endsWith: '.sqo') ifTrue: [object open]]]
 		ifFalse: [
 			(Preferences valueOfFlag: #startImagineeringStudio)
-				ifTrue: [ScriptingSystem openImagineeringStudio]].
+				ifTrue: [ScriptingSystem openImagineeringStudio]]

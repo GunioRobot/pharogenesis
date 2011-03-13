@@ -1,3 +1,3 @@
 minHeight
 
-	^ self extent y
+	^ self fontToUse height

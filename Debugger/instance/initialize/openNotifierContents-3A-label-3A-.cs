@@ -13,10 +13,11 @@ openNotifierContents: msgString label: label
 		failedProject _ Project current.
 		isolationHead parent enterForEmergencyRecovery].
 
-	Smalltalk isMorphic
-		ifTrue:
-			[self buildMorphicNotifierLabelled: label message: msg.
-			^ Project current spawnNewProcessIfThisIsUI: interruptedProcess].
+	Smalltalk isMorphic ifTrue: [
+		self buildMorphicNotifierLabelled: label message: msg.
+		errorWasInUIProcess _ CurrentProjectRefactoring newProcessIfUI: interruptedProcess.
+		^self
+	].
 
 	Display fullScreen.
 	topView _ self buildMVCNotifierViewLabel: label message: msg minSize: 350@((14 * 5) + 16 + self optionalButtonHeight).

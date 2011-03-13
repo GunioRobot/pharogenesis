@@ -1,2 +1,0 @@
-morphToGrabFrom: m
-	^ m

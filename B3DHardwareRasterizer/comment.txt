@@ -1,0 +1,4 @@
+WICHTIG:
+
+	Viewport muss an den renderer gebunden sein.
+	Viewport kann multiple sein.

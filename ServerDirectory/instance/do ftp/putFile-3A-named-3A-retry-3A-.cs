@@ -1,7 +1,7 @@
 putFile: fileStream named: fileNameOnServer retry: aBool
 	"ar 11/24/1998 Do the usual putFile:named: operation but retry if some error occurs and aBool is set. Added due to having severe transmission problems on shell.webpage.com."
 	| resp |
-	type == #file ifTrue: [
+	self isTypeFile ifTrue: [
 		^ (FileDirectory on: urlObject pathForDirectory)
 			putFile: fileStream named: fileNameOnServer].
 

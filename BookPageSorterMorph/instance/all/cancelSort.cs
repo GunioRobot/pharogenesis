@@ -1,3 +1,0 @@
-cancelSort
-
-	self delete.

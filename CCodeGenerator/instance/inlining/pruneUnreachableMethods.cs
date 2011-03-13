@@ -4,12 +4,19 @@ pruneUnreachableMethods
 	| retain |
 	"Build a set of selectors for methods that should be output even though they have no apparent callers. Some of these are stored in tables for indirect lookup, some are called by the C support code or by primitives."
 	retain _ BitBltSimulation opTable asSet.
-	#(checkedLongAt: fullDisplayUpdate interpret nullCompilerHook printCallStack readImageFromFile:HeapSize:StartingAt: setCompilerInitialized: success:
+	#(checkedLongAt: fullDisplayUpdate interpret printCallStack
+	   readImageFromFile:HeapSize:StartingAt: success:
 		"Windows needs the following two for startup and debug"
-		readableFormat: getCurrentBytecode
-		"Acorn needs this for display setup"
-		splObj:)
-		do: [:sel | retain add: sel].
+	   readableFormat: getCurrentBytecode
+		"Jitter reuses all of these"
+	   allocateChunk: characterForAscii:
+	   findClassOfMethod:forReceiver: findSelectorOfMethod:forReceiver:
+	   firstAccessibleObject loadInitialContext noteAsRoot:headerLoc:
+	   nullCompilerHook
+	   primitiveFloatAdd primitiveFloatDivide primitiveFloatMultiply
+	   primitiveFloatSubtract primitiveFlushExternalPrimitives
+	   setCompilerInitialized: splObj:)
+			do: [:sel | retain add: sel].
 	InterpreterProxy organization categories do: [:cat |
 		((cat ~= 'initialize') and: [cat ~= 'private']) ifTrue: [
 			retain addAll: (InterpreterProxy organization listAtCategoryNamed: cat)]].

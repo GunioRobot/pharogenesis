@@ -1,0 +1,1 @@
+This class extends the basic Balloon 3D mesh class with the ability to parse OBJ and VFB (used with Alice MDL files) files.

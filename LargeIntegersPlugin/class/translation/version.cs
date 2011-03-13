@@ -1,4 +1,4 @@
 version
 	"Answer the receiver's version info as String."
 
-	^ 'v1.1'
+	^ 'v1.2'

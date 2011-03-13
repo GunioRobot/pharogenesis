@@ -4,7 +4,7 @@ collectionFromFileNamed: fileName
 
 	| formList f fileCode |
 	formList _ OrderedCollection new.
-	f _ (FileStream oldFileNamed: fileName) readOnly; binary.
+	f _ (FileStream readOnlyFileNamed: fileName) binary.
 	fileCode _ f next.
 	fileCode = 1
 		ifTrue: [

@@ -3,4 +3,4 @@ Object
 	instanceVariableNames: 'offset form value initialState '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Graphics-Editors'
+	category: 'ST80-Editors'

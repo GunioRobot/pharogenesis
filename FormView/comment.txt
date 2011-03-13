@@ -1,2 +1,1 @@
-FormView comment:
-'I represent a view of a Form.'
+I represent a view of a Form.

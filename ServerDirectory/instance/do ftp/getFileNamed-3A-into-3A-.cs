@@ -2,22 +2,20 @@ getFileNamed: fileNameOnServer into: dataStream
 	"Just FTP a file from a server.  Return a stream.  (Later -- Use a proxy server if one has been registered.)"
 
 	| so dd resp rr |
-	type == #file ifTrue: [
+	self isTypeFile ifTrue: [
 		dataStream nextPutAll: 
 			(resp _ FileStream oldFileNamed: server,(self serverDelimiter asString), 
 				self bareDirectory, (self serverDelimiter asString),
 				fileNameOnServer) contentsOfEntireFile.
 		dataStream dataIsValid.
 		^ resp].
-	type == #http ifTrue: [
+	self isTypeHTTP ifTrue: [
 		resp _ HTTPSocket httpGet: (self fullNameFor: fileNameOnServer) 
 				accept: 'application/octet-stream'.
 		resp class == String ifTrue: [^ dataStream].	"error, no data"
 		dataStream copyFrom: resp.
 		dataStream dataIsValid.
 		^ dataStream].
-	type ifNil: [type _ #ftp].
-	"type == #ftp"
 	so _ self openFTP.	"Open passive.  Do everything up to RETR or STOR"
 	so class == String ifTrue: ["error, was reported" ^ so].
 	so sendCommand: 'RETR ', fileNameOnServer.

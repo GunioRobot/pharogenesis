@@ -11,5 +11,7 @@ addUpDownArrowsFor: aMorph
 	holder addMorph: upArrow.
 	holder addMorph: downArrow.
 	self addMorphBack: holder.
+	upArrow on: #mouseDown send: #upArrowHit to: aMorph.
 	upArrow on: #mouseStillDown send: #upArrowHit to: aMorph.
+	downArrow on: #mouseDown send: #downArrowHit to: aMorph.
 	downArrow on: #mouseStillDown send: #downArrowHit to: aMorph.

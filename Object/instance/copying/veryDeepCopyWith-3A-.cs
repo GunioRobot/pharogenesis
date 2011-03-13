@@ -7,7 +7,7 @@ veryDeepCopyWith: deepCopier
 	new _ self clone.
 	class isSystemDefined ifFalse: [
 		uc _ deepCopier uniClasses at: class ifAbsent: [nil].
-		uc ifNil: [deepCopier uniClasses at: class put: (uc _ self copyUniClass)].
+		uc ifNil: [deepCopier uniClasses at: class put: (uc _ self copyUniClassWith: deepCopier)].
 		new _ uc new].
 	deepCopier references at: self put: new.	"remember"
 	(class isVariable and: [class isPointers]) ifTrue: 

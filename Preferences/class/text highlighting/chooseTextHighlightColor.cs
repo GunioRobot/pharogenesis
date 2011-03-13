@@ -1,8 +1,10 @@
 chooseTextHighlightColor
+	"Let the user choose the text-highlight color"
+
 	ColorPickerMorph new
+		choseModalityFromPreference;
 		sourceHand: self currentHand;
 		target: self;
 		selector: #textHighlightColor:;
 		originalColor: self textHighlightColor;
-		addToWorld: self currentWorld
-			near: self currentHand cursorBounds
+		putUpFor: self currentHand near: self currentHand cursorBounds

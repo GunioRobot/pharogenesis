@@ -1,5 +1,4 @@
 makeNewDrawingWithin
-
-	| bnds |
-	bnds _ self paintingBoundsAround: self boundsInWorld center.
-	self primaryHand makeNewDrawingInBounds: bnds pasteUpMorph: self.
+	| evt |
+	evt _ MouseEvent new setType: nil position: self center buttons: 0 hand: self world activeHand.
+	self primaryHand makeNewDrawing: evt

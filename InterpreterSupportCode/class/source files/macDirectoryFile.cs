@@ -43,7 +43,6 @@ int  lastVolNum = 0;
 /*** Functions ***/
 int convertToSqueakTime(int macTime);
 int equalsLastPath(char *pathString, int pathStringLength);
-int lookupDirectory(int volRefNum, int folderRefNum, char *name, int *refNumPtr);
 int lookupPath(char *pathString, int pathStringLength, int *refNumPtr, int *volNumPtr);
 int lookupVolume(char *volName, int *refNumPtr);
 int recordPath(char *pathString, int pathStringLength, int refNum, int volNum);
@@ -217,6 +216,29 @@ dir_SetMacFileTypeAndCreator(char *filename, int filenameSize, char *fType, char
 	return true;
 }
 
+dir_GetMacFileTypeAndCreator(char *filename, int filenameSize, char *fType, char *fCreator) {
+	/* Get the Macintosh type and creator of the given file. */
+	/* Note: On other platforms, this is just a noop. */
+
+	Str255 name;
+	FInfo finderInfo;
+	int i;
+
+	/* copy file name into a Pascal string */
+	if (filenameSize > 255) return false;
+	name[0] = filenameSize;
+	for (i = 1; i <= filenameSize; i++) {
+		name[i] = filename[i - 1];
+	}
+
+	if (HGetFInfo(0,0,name,  &finderInfo) != noErr) return false;
+	*((int *) fType) = finderInfo.fdType;
+	*((int *) fCreator) = finderInfo.fdCreator;
+
+	return true;
+}
+
+
 int equalsLastPath(char *pathString, int pathStringLength) {
 	/* Return true if the lastPath cache is valid and the
 	   given Squeak string equals it. */
@@ -235,83 +257,79 @@ int equalsLastPath(char *pathString, int pathStringLength) {
 	return lastPath[i] == 0;
 }
 
-int lookupDirectory(int volRefNum, int folderRefNum, char *name, int *refNumPtr) {
-	/* Look up the next directory in a path starting from the folder and volume
-	   with the given reference numbers and setting *refNumPtr to the reference
-	   number of the resulting folder. Return true if this succeeds. */
 
-	CInfoPBRec pb;
-	Str255 tempName;
+/*
+Note:
+The previous version of lookupPath checks each folder in the path
+hierarchy.  Given a parent folder id of 0, the Carbon version wants
+to look in the default directory rather than the root level.  So, rather
+than fix it up, I chose to rewrite the function, first looking for the
+volume, then the directory (they are the system calls offered anyway).
 
-	CopyCStringToPascal((const char *) name,tempName);
-	pb.hFileInfo.ioNamePtr = tempName;
-	pb.hFileInfo.ioFVersNum = 0;
-	pb.hFileInfo.ioFDirIndex = 0;
-	pb.hFileInfo.ioVRefNum = volRefNum;
-	pb.hFileInfo.ioDirID = folderRefNum;
+The function only needs to return false for failure otherwise the volume
+and folder id numbers - not details of a full examination of the path.
 
-	if (PBGetCatInfoSync(&pb) == noErr) {
-		*refNumPtr = pb.hFileInfo.ioDirID;
-		return true;
-	}
-	return false;
-}
+Karl Goiser 14/01/01
+*/
 
 int lookupPath(char *pathString, int pathStringLength, int *refNumPtr, int *volNumPtr) {
 	/* Resolve the given path and return the resulting folder or volume
 	   reference number in *refNumPtr. Return false if the path is bad. */
 
-	char chunk[100];
-	int stIndex, chunkIndex, ch;
-	int okay, thisVolNum = 0, thisRefNum = 0;
-	int firstChunk = true, hasLeadingDelimitors = false;
 
-	stIndex = 0;
-	while (stIndex < pathStringLength) {
-		chunkIndex = 0;
+	Str255		tempName;
+	CInfoPBRec	pb;
+	OSErr		err;
+    FSSpec		volumeSpec;
+    long        i;
 
-		while ((stIndex < pathStringLength) && (pathString[stIndex] == DELIMITOR)) {
-			/* copy any leading delimitors */
-			chunk[chunkIndex++] = pathString[stIndex++];
-			hasLeadingDelimitors = true;
-		}
+	// Set up for failure...
+		*refNumPtr = 0;
+		*volNumPtr = 0;
 
-		while ((stIndex < pathStringLength) && (pathString[stIndex] != DELIMITOR)) {
-			/* copy up to the next delimitor */
-			ch = chunk[chunkIndex++] = pathString[stIndex++];
-		}
 
-		if (firstChunk && (chunk[chunkIndex] != DELIMITOR)) {
-			/* Add a trailing delimiter to the first chunk of the
-			   path to indicate that it is a volume name. If the
-			   path starts with an initial delimitor, it will be
-			   interpreted as a path relative to the current working
-			   directory even with a trailing delimitor, which is
-			   exactly the behavior we want. */
-			chunk[chunkIndex++] = DELIMITOR;
-			if ((stIndex < pathStringLength) && (pathString[stIndex] == DELIMITOR)) {
-				stIndex++;
-			}
-			firstChunk = false;
-		}
-		chunk[chunkIndex] = 0;  /* terminate this chunk */
+// --------------
+// Find the volume reference number:
 
-		if ((thisVolNum == 0) && !hasLeadingDelimitors) {
-			okay = lookupVolume(chunk, &thisVolNum);
-			thisRefNum = 0;
-		} else {
-			okay = lookupDirectory(thisVolNum, thisRefNum, chunk, &thisRefNum);
-		}
-		if (!okay) {
-			*refNumPtr = 0;
-			*volNumPtr = 0;
-			return false;
-		}
+	/* copy file name into a Pascal string */
+	if (pathStringLength > 255) return false;
+	
+	tempName[0] = pathStringLength;
+	for (i = 1; i <= pathStringLength; i++)
+		tempName[i] = pathString[i - 1];
+
+
+	err = FSMakeFSSpec (0, 0, tempName, &volumeSpec);
+	if (err == -43) {
+	    err = lookupVolume(pathString, refNumPtr);
+	    return err;
 	}
-	*refNumPtr = thisRefNum;
-	*volNumPtr = thisVolNum;
+	
+	if (err != noErr) {
+	    return false;
+	}
+
+
+// --------------
+// Find the directory id:
+
+	pb.hFileInfo.ioFDirIndex = 0;
+	pb.hFileInfo.ioNamePtr = tempName;
+	pb.hFileInfo.ioVRefNum = 0;
+	pb.hFileInfo.ioDirID = 0;
+	pb.hFileInfo.ioACUser = 0; /* ioACUser used to be filler2 */
+	pb.hFileInfo.ioCompletion = nil;
+	pb.hFileInfo.ioFVersNum = 0;
+
+	err = PBGetCatInfoSync(&pb);
+	if (err != noErr) return false;
+
+	*refNumPtr = pb.hFileInfo.ioDirID;
+	*volNumPtr = volumeSpec.vRefNum;
+
 	return true;
 }
+
 
 int lookupVolume(char *volName, int *refNumPtr) {
 	/* Look up the volume with the given name and set *refNumPtr

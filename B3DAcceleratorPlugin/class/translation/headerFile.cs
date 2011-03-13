@@ -34,6 +34,6 @@ int b3dxFormColorMasks(int handle, int masks[4]);  /* return true on success, fa
 /* Rasterizer support primitives */
 int b3dxSetViewport(int x, int y, int w, int h); /* return true on success, false on error */
 int b3dxClearDepthBuffer(void); /* return true on success, false on error */
-int b3dxRasterizeVertexBuffer(int primType, int texHandle, float *vtxArray, int vtxSize, int *idxArray, int idxSize); /* return true on success, false on error */
+int b3dxRasterizeVertexBuffer(int primType, int texHandle, float *vtxArray, int vtxSize, int *idxArray, int idxSize, int *bounds); /* return true on success, false on error */
 
 '.

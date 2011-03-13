@@ -1,2 +1,0 @@
-referencePlayfield
-	^ self submorphNamed: 'playfield'

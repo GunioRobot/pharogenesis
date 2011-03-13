@@ -1,0 +1,1 @@
+StoreEncoder class instanceVariableNames: ''

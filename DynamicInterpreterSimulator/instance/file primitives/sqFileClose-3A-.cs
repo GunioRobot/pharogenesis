@@ -1,3 +1,0 @@
-sqFileClose: file
-
-	file close.

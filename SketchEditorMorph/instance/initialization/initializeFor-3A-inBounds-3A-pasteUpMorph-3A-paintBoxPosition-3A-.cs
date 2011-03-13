@@ -5,8 +5,10 @@ initializeFor: aSketchMorph inBounds: boundsToUse pasteUpMorph: aPasteUpMorph pa
 	enclosingPasteUpMorph _ aPasteUpMorph.
 	hostView _ aSketchMorph.  "may be ownerless"
 	self bounds: boundsToUse.
-	canvasRectangle _ bounds.
 	palette _ w paintBox focusMorph: self.
+	palette beStatic.		"give Nebraska whatever help we can"
+	palette fixupButtons.
+	palette addWeakDependent: self.
 	aPosition ifNotNil:
 		[w addMorphFront: palette.  "bring to front"
 		palette position: aPosition].
@@ -14,10 +16,10 @@ initializeFor: aSketchMorph inBounds: boundsToUse pasteUpMorph: aPasteUpMorph pa
 	self dimTheWindow.
 	self addRotationScaleHandles.
 	aSketchMorph ifNotNil:
-		[aSketchMorph rotationDegrees: 0.
+		[
 		aSketchMorph form
 			displayOn: paintingForm
-			at: (hostView boundsInWorld origin - bounds origin)
+			at: (hostView boundsInWorld origin - bounds origin - hostView form offset)
 			clippingBox: (0@0 extent: paintingForm extent)
 			rule: Form over
 			fillColor: nil.  "assume they are the same depth"

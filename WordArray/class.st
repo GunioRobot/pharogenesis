@@ -1,0 +1,1 @@
+WordArray class instanceVariableNames: ''

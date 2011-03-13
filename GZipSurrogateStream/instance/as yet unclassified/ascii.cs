@@ -1,0 +1,3 @@
+ascii
+
+	self bufferStream ascii

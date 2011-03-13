@@ -1,4 +1,5 @@
 setPenDown: penDown
+	"Set the penDown state as indicated, to true or false"
 
 	| morph trailMorph tfm |
 	self actorState setPenDown: penDown.

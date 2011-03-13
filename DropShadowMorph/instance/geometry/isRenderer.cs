@@ -1,2 +1,0 @@
-isRenderer
-	^ true

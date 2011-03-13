@@ -4,3 +4,4 @@ initMorphic
 	Smalltalk verifyMorphicAvailability ifFalse: [^ nil].
 	self initialize.
 	world _ PasteUpMorph newWorldForProject: self.
+

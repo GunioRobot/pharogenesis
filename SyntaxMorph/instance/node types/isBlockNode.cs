@@ -1,0 +1,2 @@
+isBlockNode
+	^ parseNode class == BlockNode

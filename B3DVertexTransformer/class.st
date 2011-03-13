@@ -1,0 +1,1 @@
+B3DVertexTransformer class instanceVariableNames: ''

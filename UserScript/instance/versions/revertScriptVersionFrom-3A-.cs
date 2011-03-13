@@ -1,12 +1,14 @@
 revertScriptVersionFrom: anEditor
-	| aMenu result aPosition oldOwner |
+	"Let user choose which prior tile version to revert to, and revert to it"
+
+	| aMenu result |
 	formerScriptEditors isEmptyOrNil ifTrue: [^ self beep].
-	aMenu _ SelectionMenu labelList: (formerScriptEditors collect: [:e | e timeStamp])
-		selections: formerScriptEditors.
-	result _ aMenu startUp.
+	formerScriptEditors size == 1
+		ifTrue:
+			[result _ formerScriptEditors first]
+		ifFalse:
+			[aMenu _ SelectionMenu labelList: (formerScriptEditors collect: [:e | e timeStamp])
+				selections: formerScriptEditors.
+			result _ aMenu startUp].
 	result ifNotNil:
-		[aPosition _ anEditor position.
-		oldOwner _ anEditor topRendererOrSelf owner.
-		anEditor delete.
-		currentScriptEditor _ result bringUpToDate install.
-		player costume viewAfreshIn: oldOwner showingScript: selector at: aPosition]
+		[self revertScriptVersionFrom: anEditor installing: result]

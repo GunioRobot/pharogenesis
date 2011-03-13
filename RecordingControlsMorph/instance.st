@@ -3,4 +3,4 @@ AlignmentMorph
 	instanceVariableNames: 'recorder recordingStatusLight recordMeter '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Widgets'
+	category: 'Sound-Interface'

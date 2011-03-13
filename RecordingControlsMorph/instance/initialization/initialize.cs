@@ -2,8 +2,9 @@ initialize
 
 	| r |
 	super initialize.
+	self hResizing: #shrinkWrap; vResizing: #shrinkWrap.
 	borderWidth _ 2.
-	orientation _ #vertical.
+	self listDirection: #topToBottom.
 	recorder _ SoundRecorder new.
 	self addButtonRows.
 	self addRecordLevelSlider.

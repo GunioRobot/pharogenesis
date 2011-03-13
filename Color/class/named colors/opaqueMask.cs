@@ -1,2 +1,0 @@
-opaqueMask
-	^OpaqueMask

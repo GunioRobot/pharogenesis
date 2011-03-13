@@ -1,11 +1,12 @@
-initializeCaches 
+initializeCaches
 	| atCacheEntrySize |
 	MethodCacheEntries _ 512. 
 	MethodCacheSelector _ 1.
 	MethodCacheClass _ 2.
 	MethodCacheMethod _ 3.
 	MethodCachePrim _ 4.
-	MethodCacheEntrySize _ 4.  "Must be power of two for masking scheme."
+	MethodCacheNative _ 5.
+	MethodCacheEntrySize _ 8.  "Must be power of two for masking scheme."
 	MethodCacheMask _ (MethodCacheEntries - 1) * MethodCacheEntrySize.
 	MethodCacheSize _ MethodCacheEntries * MethodCacheEntrySize.
 	CacheProbeMax _ 3.

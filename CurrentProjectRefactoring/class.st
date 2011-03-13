@@ -1,0 +1,1 @@
+CurrentProjectRefactoring class instanceVariableNames: ''

@@ -1,2 +1,3 @@
 mouseEnter: evt
-	self showBorderAs: Color blue
+
+	self showMouseState: 1

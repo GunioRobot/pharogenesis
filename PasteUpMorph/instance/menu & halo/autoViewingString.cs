@@ -1,6 +1,8 @@
 autoViewingString
+	"Answer the string to be shown in a menu to represent the automatic-viewing status"
+
 	^ self automaticViewing
 		ifTrue:
-			['stop automatic viewing']
+			['<on>automatic viewing']
 		ifFalse:
-			['start automatic viewing']
+			['<off>automatic viewing']

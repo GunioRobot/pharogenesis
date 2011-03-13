@@ -1,0 +1,3 @@
+morphicButtonsClass
+
+	^PluggableButtonMorph

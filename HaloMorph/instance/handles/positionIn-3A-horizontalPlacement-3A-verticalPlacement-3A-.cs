@@ -23,4 +23,4 @@ positionIn: aBox horizontalPlacement: horiz verticalPlacement: vert
 	vert == #bottom
 		ifTrue:	[yCoord _ aBox bottom].
 
-	^ xCoord @ yCoord
+	^ xCoord asInteger @ yCoord asInteger

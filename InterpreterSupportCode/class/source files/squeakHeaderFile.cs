@@ -1,6 +1,5 @@
 squeakHeaderFile
-
-	^ '#include <math.h>
+	^'#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -33,6 +32,7 @@ squeakHeaderFile
 #define sqImageFileRead(ptr, sz, count, f)   fread(ptr, sz, count, f)
 #define sqImageFileSeek(f, pos)              fseek(f, pos, SEEK_SET)
 #define sqImageFileWrite(ptr, sz, count, f)  fwrite(ptr, sz, count, f)
+#define sqImageFileStartLocation(fileRef, fileName, size)  0
 #define sqAllocateMemory(minHeapSize, desiredHeapSize)   malloc(desiredHeapSize)
 
 /* platform-dependent float conversion macros */
@@ -118,7 +118,7 @@ int ioMicroMSecs(void);
    platforms with strange needs, anda simple encapsulation for everyone else
 */
 #define sqFilenameFromString(dst, src, num) \
-if (1) {\
+if (1) { \
 	int i; \
 	for (i = 0; i < num; i++) { \
 		dst[i] = *((char *) (src + i)); \
@@ -161,6 +161,10 @@ int ioShowDisplay(
 int ioHasDisplayDepth(int depth);
 int ioSetDisplayMode(int width, int height, int depth, int fullscreenFlag);
 
+/* Power Management */
+
+int ioDisablePowerManager(int disableIfNonZero);
+
 /* User input recording I:
    In general, either set of input function can be supported,
    depending on the platform. This (first) set is state based
@@ -186,6 +190,7 @@ int ioProcessEvents(void);
 #define EventTypeNone 0
 #define EventTypeMouse 1
 #define EventTypeKeyboard 2
+#define EventTypeDragDropFiles 3
 
 /* keypress state for keyboard events */
 #define EventKeyChar 0
@@ -239,6 +244,28 @@ typedef struct sqKeyboardEvent {
 	int reserved2; /* reserved for future use */
 	int reserved3; /* reserved for future use */
 } sqKeyboardEvent;
+
+/* drop files event definition:
+   DragEnter - drag operation from OS entered Squeak window
+   DragMove  - drag operation from OS moved within Squeak window
+   DragLeave - drag operation from OS left Squeak window
+   DragDrop  - drag operation dropped contents onto Squeak.
+*/
+#define DragEnter 1
+#define DragMove  2
+#define DragLeave 3
+#define DragDrop  4
+typedef struct sqDragDropFilesEvent {
+	int type; /* EventTypeDropFiles */
+	unsigned int timeStamp; /* time stamp */
+	int dragType; /* one of the DragXXX constants */
+	int x; /* mouse position x */
+	int y; /* mouse position y */
+	int modifiers; /* combination of xxxKeyBit */
+	int numFiles; /* number of files in transaction */
+	int reserved1; /* reserved for future use */
+} sqDragDropFilesEvent;
+
 
 /* set an asynchronous input semaphore index for events */
 int ioSetInputSemaphore(int semaIndex);
@@ -294,43 +321,6 @@ int stopProfiling(void);
 /* system attributes */
 int attributeSize(int id);
 int getAttributeIntoLength(int id, int byteArrayIndex, int length);
-
-/* ar 5/13/2000:
-	The following set of miscellaneous and sound primitives should
-	at some point go into named primitives. Right now there are a few
-	problems with that (related to how the distinct set of methods can
-	be defined as residing in one plugin).
-*/
-/* miscellaneous primitives */
-int primBitmapcompresstoByteArray(void);
-int primBitmapdecompressfromByteArrayat(void);
-int primSampledSoundconvert8bitSignedFromto16Bit(void);
-int primStringcomparewithcollated(void);
-int primStringfindFirstInStringinSetstartingAt(void);
-int primStringfindSubstringinstartingAtmatchTable(void);
-int primStringindexOfAsciiinStringstartingAt(void);
-int primStringtranslatefromtotable(void);
-
-/* sound generation primitives (old, for backward compatibility) */
-int primWaveTableSoundmixSampleCountintostartingAtpan(void);
-int primFMSoundmixSampleCountintostartingAtpan(void);
-int primPluckedSoundmixSampleCountintostartingAtpan(void);
-int primSampledSoundmixSampleCountintostartingAtpan(void);
-int oldprimSampledSoundmixSampleCountintostartingAtleftVolrightVol(void);
-
-/* sound generation primitives */
-int primFMSoundmixSampleCountintostartingAtleftVolrightVol(void);
-int primLoopedSampledSoundmixSampleCountintostartingAtleftVolrightVol(void);
-int primPluckedSoundmixSampleCountintostartingAtleftVolrightVol(void);
-int primReverbSoundapplyReverbTostartingAtcount(void);
-int primSampledSoundmixSampleCountintostartingAtleftVolrightVol(void);
-
-/*** sound compression primitives ***/
-int primADPCMCodecprivateDecodeMono(void);
-int primADPCMCodecprivateDecodeStereo(void);
-int primADPCMCodecprivateEncodeMono(void);
-int primADPCMCodecprivateEncodeStereo(void);
-
 
 /*** pluggable primitive support ***/
 /* NOTE: The following functions are those implemented by sqNamedPrims.c */

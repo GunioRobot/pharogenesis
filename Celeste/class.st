@@ -1,0 +1,1 @@
+Celeste class instanceVariableNames: ''

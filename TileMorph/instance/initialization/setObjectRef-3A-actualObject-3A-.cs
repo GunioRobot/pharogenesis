@@ -1,5 +1,6 @@
-setObjectRef: aString actualObject: anObject.
+setObjectRef: aString actualObject: anObject
+	"Set the receiver to bear an object reference to the given object.  aString is historical and no longer used"
+
 	type _ #objRef.
-	"aString is historical and no longer used"
 	actualObject _ anObject.
-	self line1: anObject externalName
+	self line1: anObject nameForViewer

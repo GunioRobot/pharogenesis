@@ -1,0 +1,3 @@
+newMethodNode
+
+	^ MethodNode new

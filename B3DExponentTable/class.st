@@ -1,0 +1,1 @@
+B3DExponentTable class instanceVariableNames: ''

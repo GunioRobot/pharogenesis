@@ -8,14 +8,19 @@ renderPrimitive
 	"Step 2: Transform vertices, normals, texture coords of the mesh"
 	self privateTransformVB: vertexBuffer.
 
+	"Step 4a: Pre-clip the mesh if needed so that we can reject invisible meshes before shading"
+	(self privateNeedsClipVB: visible)
+		ifTrue:[visible _ self privatePreClipVB: vertexBuffer]
+		ifFalse:[visible _ true]. "don't bother clipping below"
+	visible == false ifTrue:[^nil].
+
 	"Step 3: Light the vertices of the mesh."
 	self privateNeedsShadingVB
 		ifTrue:[self privateShadeVB: vertexBuffer].
 
 	"Step 4: Clip the mesh if necessary"
-	(self privateNeedsClipVB: visible)
-		ifTrue:[visible _ self privateClipVB: vertexBuffer].
-	visible == false ifTrue:[^nil].
+	(visible == nil)
+		ifTrue:[visible _ self privatePostClipVB: vertexBuffer].
 
 	"Step 5: Rasterize the mesh"
 	^self privateRasterizeVB: vertexBuffer.

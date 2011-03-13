@@ -1,0 +1,3 @@
+transmittedObjectCategory
+
+	^EToyIncomingMessage typeMultiChat

@@ -3,14 +3,14 @@ contents: aText notifying: aController
 	updated. In this case, the retrieved information is the method of the 
 	selected context."
 	| selector classOfMethod category method priorMethod parseNode |
-	contextStackIndex = 0 ifTrue: [^self].
+	contextStackIndex = 0 ifTrue: [^ false].
 	(self selectedContext isKindOf: MethodContext)
 		ifFalse:
 			[(self confirm:
 'I will have to revert to the method from
 which this block originated.  Is that OK?')
 				ifTrue: [self resetContext: self selectedContext home]
-				ifFalse: [^self]].
+				ifFalse: [^ false]].
 	classOfMethod _ self selectedClass.
 	category _ self selectedMessageCategoryName.
 	Cursor execute showWhile:

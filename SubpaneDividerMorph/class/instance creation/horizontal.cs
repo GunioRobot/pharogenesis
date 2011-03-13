@@ -1,0 +1,2 @@
+horizontal
+	^self new horizontal

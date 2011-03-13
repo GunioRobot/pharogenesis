@@ -1,0 +1,3 @@
+soundEnablingString
+
+	^ Preferences soundEnablingString

@@ -1,0 +1,1 @@
+PhonemeSet class instanceVariableNames: 'arpabet '

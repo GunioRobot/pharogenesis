@@ -4,8 +4,8 @@ makeControls
 	row _ AlignmentMorph newRow
 		color: color;
 		borderWidth: 0;
-		inset: 3.
-	row hResizing: #spaceFill; vResizing: #shrinkWrap; centering: #center; extent: 5@5.
+		layoutInset: 3.
+	row hResizing: #spaceFill; vResizing: #shrinkWrap; wrapCentering: #center; cellPositioning: #leftCenter; extent: 5@5.
 	row addMorph:
 		(self
 			buildButton: SimpleSwitchMorph new

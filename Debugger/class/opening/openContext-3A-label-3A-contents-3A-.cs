@@ -6,7 +6,7 @@ openContext: aContext label: aString contents: contentsString
 		[Smalltalk logError: aString inContext: aContext to: 'SqueakDebug.log'].
 	ErrorRecursion ifTrue:
 		[ErrorRecursion _ false.
-		(isolationHead _ Project current isolationHead)
+		(isolationHead _ CurrentProjectRefactoring currentIsolationHead)
 			ifNil: [self primitiveError: aString]
 			ifNotNil: [isolationHead revoke]].
 	ErrorRecursion _ true.

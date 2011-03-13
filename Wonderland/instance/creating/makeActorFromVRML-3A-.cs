@@ -16,6 +16,7 @@ makeActorFromVRML: filename
 		ifFalse:[(builderClass on: scene) 
 					baseActor: baseActor;
 					buildActorsFor: self].
+	scene _ nil.
 	myUndoStack openStack.
 
 	"Ensure that the new actor's name is unique"

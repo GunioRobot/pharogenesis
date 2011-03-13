@@ -1,0 +1,6 @@
+inspectTestVars
+"
+CanvasEncoder inspectTestVars
+"
+	^SimpleCounters
+

@@ -1,0 +1,3 @@
+apply: aBlock
+
+	"self checkIfTimeToDisplay"

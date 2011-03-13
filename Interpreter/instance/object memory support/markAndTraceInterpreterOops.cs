@@ -7,11 +7,19 @@ markAndTraceInterpreterOops
 	self markAndTrace: specialObjectsOop.
 		"also covers nilObj, trueObj, falseObj, and compact classes"
 
-	self markAndTrace: activeContext.  "traces entire stack"
-		"also covers theHomeContext, receiver, method"
+	compilerInitialized
+		ifTrue:
+			[self markAndTrace: receiver.
+			 self markAndTrace: method]
+		ifFalse:
+			[self markAndTrace: activeContext.  "traces entire stack"
+				"also covers theHomeContext, receiver, method"].
 
 	self markAndTrace: messageSelector.
 	self markAndTrace: newMethod.
+	self markAndTrace: methodClass.
+	self markAndTrace: lkupClass.
+	self markAndTrace: receiverClass.
 
 	1 to: remapBufferCount do: [ :i |
 		oop _ remapBuffer at: i.

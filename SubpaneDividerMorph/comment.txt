@@ -1,0 +1,5 @@
+A morph which presents a visible separator between subpanes of a SystemWindow which have zero edgeWidth.  Subpanes are submorphs of a SystemWindow's paneMorphs.
+
+A SubpaneDividerMorph may also initiate reframe handles for the subpanes.  For resizing, it is expected that the main paneMorph has a ProportionalLayout LayoutPolicy, and that the subpanes to be resized have LayoutFrames with equal topFractions and bottomFractions, but different topOffsets and bottomOffsets.  It is the offsets that are changed, and the change is propagated through sibling morphs up to the first resizable morph (with different nominal frame fractions).
+
+The direction of propagation is determined by the value of resizingEdge, which is one of: nil (for non-adjustible subpane divisions), #bottom or #top (which acts a though the divider is the corresponding edge of the subpane directly above or below it).  Does not currently support #left or #right binding, or subpanes in a TableLayout.

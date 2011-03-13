@@ -1,5 +1,5 @@
 initializeFor: aSketchMorph inBounds: boundsToUse pasteUpMorph: aPasteUpMorph
-	| aPaintBox newPaintBoxBounds worldBounds requiredWidth newOrigin aPosition aPal aTab |
+	| aPaintBox newPaintBoxBounds worldBounds requiredWidth newOrigin aPosition aPal aTab paintBoxFullBounds |
 	(aTab _ self world paintingFlapTab) ifNotNil:
 		[aTab showFlap.
 		^ self initializeFor: aSketchMorph inBounds: boundsToUse pasteUpMorph: aPasteUpMorph paintBoxPosition: nil].
@@ -20,7 +20,12 @@ initializeFor: aSketchMorph inBounds: boundsToUse pasteUpMorph: aPasteUpMorph
 				[aPosition]
 			ifFalse:  "won't fit to right, try left"
 				[boundsToUse topLeft - (requiredWidth @ 0)].
-	newPaintBoxBounds _ (newOrigin extent: aPaintBox extent) translatedToBeWithin: worldBounds.
+	paintBoxFullBounds _ aPaintBox maxBounds.
+	paintBoxFullBounds _ (newOrigin - aPaintBox offsetFromMaxBounds) extent: 
+					paintBoxFullBounds extent.
+	newPaintBoxBounds _ paintBoxFullBounds translatedToBeWithin: worldBounds.
 	
 
-	self initializeFor: aSketchMorph inBounds: boundsToUse pasteUpMorph: aPasteUpMorph paintBoxPosition: newPaintBoxBounds origin
+	self initializeFor: aSketchMorph inBounds: boundsToUse 
+		pasteUpMorph: aPasteUpMorph 
+		paintBoxPosition: newPaintBoxBounds origin + aPaintBox offsetFromMaxBounds.

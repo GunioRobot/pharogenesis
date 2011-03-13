@@ -1,0 +1,1 @@
+SketchMorph class instanceVariableNames: ''

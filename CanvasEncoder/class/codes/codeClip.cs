@@ -1,0 +1,2 @@
+codeClip
+	^$A

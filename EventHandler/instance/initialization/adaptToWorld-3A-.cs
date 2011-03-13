@@ -6,7 +6,7 @@ adaptToWorld: aWorld
 	| value newValue |
 	#(mouseDownRecipient mouseStillDownRecipient mouseUpRecipient
 	mouseEnterRecipient mouseLeaveRecipient mouseEnterDraggingRecipient
-	mouseLeaveDraggingRecipient doubleClickRecipient startDragRecipient keyStrokeRecipient valueParameter) do:
+	mouseLeaveDraggingRecipient clickRecipient doubleClickRecipient startDragRecipient keyStrokeRecipient valueParameter) do:
 		[:aName |
 		(value _ self instVarNamed: aName asString) ifNotNil:
 			[newValue _ nil.

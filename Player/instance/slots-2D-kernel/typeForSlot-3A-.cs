@@ -1,4 +1,7 @@
 typeForSlot: aSlotName
-	(self slotInfo includesKey: aSlotName) ifTrue: [^ (self slotInfoAt: aSlotName) type].
+	"Answer the data type for values of the instance variable of the given name"
 
-	^ ScriptingSystem typeForSystemSlotNamed: aSlotName
+	(self slotInfo includesKey: aSlotName) ifTrue: [^ (self slotInfoAt: aSlotName) type].
+	^ (ScriptingSystem typeForSystemSlotNamed: aSlotName)
+		ifNil:
+			[self error: 'no type for slot named ', aSlotName]

@@ -1,0 +1,1 @@
+ColorMap class instanceVariableNames: ''

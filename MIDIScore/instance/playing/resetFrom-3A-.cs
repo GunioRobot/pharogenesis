@@ -1,2 +1,2 @@
 resetFrom: scorePlayer
-	self otherPlayersDo: [:p | p resetFrom: scorePlayer]
+	self eventMorphsDo: [:p | p resetFrom: scorePlayer]

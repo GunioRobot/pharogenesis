@@ -2,8 +2,10 @@ writeOn: aStream
 	| reversed convertToBytes |
 	"Store the array of bits onto the argument, aStream.  (leading byte ~= 16r80) identifies this as raw bits (uncompressed).  Always store in Big Endian (Mac) byte order.  Do the writing at BitBlt speeds."
 
+	self flag: #bob.		"clean up the first part of this"
 	convertToBytes _ aStream originalContents "collection" class isBytes.
-	(aStream isKindOf: FileStream) ifTrue: [convertToBytes _ false].	"knows how"
+	((aStream isKindOf: FileStream) or: 
+		[aStream isKindOf: GZipSurrogateStream]) ifTrue: [convertToBytes _ false].	"knows how"
 
 	aStream nextInt32Put: self size.
 	Smalltalk endianness == #big 

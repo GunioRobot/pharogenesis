@@ -3,6 +3,7 @@ aboutToBeGrabbedBy: aHand
 	If they're grabbed and moved outside the player
 	they should keep their position."
 	| player |
+	super aboutToBeGrabbedBy: aHand.
 	player _ self flashPlayer.
 	player ifNotNil:[player noticeRemovalOf: self].
 	self transform: (self transformFrom: self world).

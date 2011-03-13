@@ -1,0 +1,3 @@
+currentStatusString
+
+	^currentStatusString

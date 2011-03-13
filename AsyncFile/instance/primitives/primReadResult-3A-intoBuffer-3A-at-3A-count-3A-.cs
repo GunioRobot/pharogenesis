@@ -3,5 +3,5 @@ primReadResult: fHandle intoBuffer: buffer at: startIndex count: count
 		-1 the last operation is still in progress
 		-2 the last operation encountered an error"
 
-	<primitive: 542>
+	<primitive: 'primitiveAsyncFileReadResult' module: 'AsynchFilePlugin'>
 	self primitiveFailed

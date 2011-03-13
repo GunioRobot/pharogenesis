@@ -6,6 +6,10 @@ list do: [:local |
 		self inform: 'File name ',local,'
 may not have more than one period'.
 	^ false].
+	local size > 26 ifTrue: ["allows for 5 digit update numbers"
+		self inform: 'File name ',local,'
+is too long.  Please rename it.'.
+	^ false].
 	(local at: 1) isDigit ifTrue: [
 		self inform: 'File name ',local,'
 may not begin with a number'.

@@ -36,8 +36,8 @@ findText: keys inStrings: rawStrings	startAt: startIndex container: oldContainer
 						container _ self highlightText: (keys at: 1) at: place 
 							in: insideOf]
 					ifTrue: [(container isKindOf: TextMorph) ifTrue: [
-						container editor selectFrom: index to: 
-								(keys at: 1) size - 1 + index.
+						container editor selectFrom: place to: 
+								(keys at: 1) size - 1 + place.
 						container changed].
 						]].
 		self setProperty: #searchContainer toValue: container.

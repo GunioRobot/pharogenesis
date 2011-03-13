@@ -1,0 +1,3 @@
+testFailureException
+
+	^TestFailure

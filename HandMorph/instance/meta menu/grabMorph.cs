@@ -1,3 +1,0 @@
-grabMorph
-
-	self grabMorphFromMenu: argument.

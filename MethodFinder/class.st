@@ -1,0 +1,1 @@
+MethodFinder class instanceVariableNames: ''

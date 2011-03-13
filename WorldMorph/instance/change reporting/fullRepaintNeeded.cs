@@ -1,3 +1,0 @@
-fullRepaintNeeded
-
-	damageRecorder doFullRepaint.

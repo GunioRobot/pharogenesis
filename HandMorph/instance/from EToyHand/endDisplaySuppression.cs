@@ -1,2 +1,0 @@
-endDisplaySuppression
-	suppressDrawing _ false

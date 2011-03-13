@@ -1,0 +1,1 @@
+Every Wonderland contains an instance of the WonderlandScene.  The scene is at the top of the object hierarchy: all objects are (directly or indirectly) children of the scene.  The scene also defines the global coordinate system for the 3D world.

@@ -1,0 +1,1 @@
+LedMorph class instanceVariableNames: ''

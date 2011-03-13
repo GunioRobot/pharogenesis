@@ -1,2 +1,4 @@
-MessageTally comment:
-'My instances observe and report the amount of time spent in methods. Observing a method implies observing all messages it sends.'
+My instances observe and report the amount of time spent in methods. Observing a method implies observing all messages it sends.
+
+Q: How do you interpret MessageTally>>tallySends
+A: The methods #tallySends and #spyOn: measure two very different quantities, but broken down in the same who-called-who format.  #spyOn: is approximate, but more indicative of real time spent, whereas #tallySends is exact and a precise record of how many times each method got executed.

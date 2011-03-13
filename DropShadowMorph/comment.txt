@@ -1,2 +1,0 @@
-DropShadowMorph comment:
-'DropShadows display all their submorphs at a given offset and in given color.'

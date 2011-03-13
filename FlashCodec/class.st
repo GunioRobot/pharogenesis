@@ -1,0 +1,1 @@
+FlashCodec class instanceVariableNames: ''

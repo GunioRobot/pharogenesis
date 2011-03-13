@@ -1,0 +1,3 @@
+suppressFlapsString
+
+	^ Utilities suppressFlapsString

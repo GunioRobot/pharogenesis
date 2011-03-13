@@ -1,0 +1,1 @@
+RandomEnvelope class instanceVariableNames: ''

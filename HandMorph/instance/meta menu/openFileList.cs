@@ -1,2 +1,0 @@
-openFileList
-	FileList openAsMorph openInWorld

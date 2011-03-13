@@ -1,8 +1,8 @@
 addDismissButtonTo: aRowMorph
 	aRowMorph addMorphBack:
-		((SimpleButtonMorph new label: 'X' font: Preferences standardButtonFont)
+		((SimpleButtonMorph new label: 'O' font: Preferences standardButtonFont)
 			target: self;
-			color:  Color lightRed;
+			color:  Color tan;
 			actionSelector: #dismiss;
 			setBalloonText: 
 'Remove this script

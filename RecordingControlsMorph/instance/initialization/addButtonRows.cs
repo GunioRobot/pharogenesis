@@ -2,6 +2,10 @@ addButtonRows
 
 	| r |
 	r _ AlignmentMorph newRow vResizing: #shrinkWrap.
+
+
+	r addMorphBack: (self buttonName: 'Morph' action: #makeSoundMorph).
+	r addMorphBack: (Morph new extent: 4@1; color: Color transparent).
 	r addMorphBack: (self buttonName: 'Tile' action: #makeTile).
 	r addMorphBack: (Morph new extent: 4@1; color: Color transparent).
 	r addMorphBack: (self buttonName: 'Trim' action: #trim).

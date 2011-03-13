@@ -1,2 +1,0 @@
-isTemp
-	^ false

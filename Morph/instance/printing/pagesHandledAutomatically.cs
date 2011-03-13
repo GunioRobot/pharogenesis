@@ -1,0 +1,3 @@
+pagesHandledAutomatically
+
+	^false

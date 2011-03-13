@@ -1,0 +1,2 @@
+handlerForMouseDown: anEvent
+	^self

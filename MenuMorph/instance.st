@@ -1,6 +1,6 @@
 AlignmentMorph
 	subclass: #MenuMorph
-	instanceVariableNames: 'defaultTarget lastSelection stayUp originalEvent popUpOwner '
+	instanceVariableNames: 'defaultTarget selectedItem stayUp popUpOwner activeSubMenu '
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Menus'

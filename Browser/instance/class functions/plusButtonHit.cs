@@ -1,5 +1,6 @@
 plusButtonHit
-	"Cycle between definition, comment, and hierachy"
+	"Cycle among definition, comment, and hierachy"
+
 	editSelection == #editComment
 		ifTrue: [self hierarchy. ^ self].
 	editSelection == #hierarchy
@@ -14,4 +15,5 @@ plusButtonHit
 	self messageCategoryListIndex: 0.
 	editSelection := #editComment.
 	self changed: #classSelectionChanged.
+	self decorateButtons.
 	self contentsChanged.

@@ -1,0 +1,3 @@
+isTypeFile
+
+	^self typeWithDefault == #file

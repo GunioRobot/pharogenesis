@@ -4,4 +4,4 @@ View
 		'label getStateSelector actionSelector getLabelSelector getMenuSelector shortcutCharacter askBeforeChanging triggerOnMouseDown complemented '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Interface-Pluggable'
+	category: 'ST80-Pluggable Views'

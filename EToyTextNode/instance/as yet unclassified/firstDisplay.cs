@@ -1,0 +1,3 @@
+firstDisplay
+
+	^firstDisplay ifNil: [false]

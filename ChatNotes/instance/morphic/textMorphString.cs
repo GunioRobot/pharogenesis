@@ -1,0 +1,3 @@
+textMorphString
+
+	^nameTextMorph text string

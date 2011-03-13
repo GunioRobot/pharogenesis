@@ -1,2 +1,3 @@
 asCursorForm
-	^ self
+
+	^ self as: StaticForm

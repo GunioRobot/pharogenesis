@@ -1,0 +1,3 @@
+updateColorSelector: aSymbol
+
+	updateColorSelector := aSymbol.

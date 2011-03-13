@@ -1,0 +1,1 @@
+UndoRotationChange class instanceVariableNames: ''

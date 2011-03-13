@@ -2,11 +2,11 @@ title
 	"Answer a title with the names of the days."
 	| title extent days |
 	title _ AlignmentMorph new
-		inset: 0;
+		layoutInset: 0;
 		color: Color red;
-		orientation: #horizontal;
+		listDirection: #leftToRight;
 		vResizing: #shrinkWarp;
-		height: 19.
+		height: tileRect height.
 		extent _ self tile extent.
 	days _ Week startMonday
 		ifTrue: [7 to: 1 by: -1]       "Original code, Mon-Sun."
@@ -15,7 +15,6 @@ title
 		[:each |
 		title addMorph:
 			((self tileLabeled: (each copyFrom: 1 to: 2))
-				extent: extent;
-				setBalloonText: each printString)].
+				extent: extent)].
 	^ title
 	

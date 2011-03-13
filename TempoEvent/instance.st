@@ -3,4 +3,4 @@ AbstractScoreEvent
 	instanceVariableNames: 'tempo '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Music-Scores'
+	category: 'Sound-Scores'

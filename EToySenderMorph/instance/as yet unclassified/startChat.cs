@@ -1,0 +1,3 @@
+startChat
+
+	self startChat: true

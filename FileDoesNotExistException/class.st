@@ -1,0 +1,1 @@
+FileDoesNotExistException class instanceVariableNames: ''

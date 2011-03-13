@@ -1,10 +1,10 @@
 addMorph: aMorph frame: relFrame
-	| panelRect |
-	self addMorph: aMorph.
-	paneMorphs _ paneMorphs copyReplaceFrom: 1 to: 0 with: (Array with: aMorph).
-	paneRects _ paneRects copyReplaceFrom: 1 to: 0 with: (Array with: relFrame).
+	| frame |
+	frame _ LayoutFrame new.
+	frame 
+		leftFraction: relFrame left; 
+		rightFraction: relFrame right; 
+		topFraction: relFrame top; 
+		bottomFraction: relFrame bottom.
+	self addMorph: aMorph fullFrame: frame.
 
-	panelRect _ self panelRect.
-	(aMorph isKindOf: BorderedMorph) ifTrue: [aMorph borderWidth: 1].
-	aMorph color: self paneColor;
-		bounds: ((relFrame scaleBy: panelRect extent) translateBy: panelRect topLeft) truncated.

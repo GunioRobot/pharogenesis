@@ -12,6 +12,6 @@ map _ Color indexedColors copy.	"just in case"
 	PopUpMenu notify: 'Rectangle for ',sel.
 	cursor _ ColorForm fromUser.
 	cursor colors: map.	"share it"
-	button _ self findButton: sel.
+	button _ self submorphNamed: sel.
 	button arguments at: 3 put: cursor.
 	].

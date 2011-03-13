@@ -1,6 +1,4 @@
 deleteAllFlapArtifacts
 	"self currentWorld deleteAllFlapArtifacts"
 
-	self submorphs do:
-		[:m | (m hasProperty: #flap) ifTrue: [m delete].
-			(m isKindOf: FlapTab) ifTrue: [ m delete]]
+	self submorphs do:[:m | m isFlapOrTab ifTrue:[m delete]]

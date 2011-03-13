@@ -10,7 +10,7 @@ finalizeValues
 					ifTrue:[finiObjects := OrderedCollection with: assoc value]
 					ifFalse:[finiObjects add: assoc value]]
 		].
-		finiObjects isNil ifFalse:[valueDictionary finalizeValues].
+		finiObjects isNil ifFalse:[valueDictionary finalizeValues: finiObjects asArray].
 	].
 	"Then do the finalization"
 	finiObjects isNil ifTrue:[^self].

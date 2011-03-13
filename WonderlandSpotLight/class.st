@@ -1,0 +1,1 @@
+WonderlandSpotLight class instanceVariableNames: ''

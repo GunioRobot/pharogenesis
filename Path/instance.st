@@ -3,4 +3,4 @@ DisplayObject
 	instanceVariableNames: 'form collectionOfPoints '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Graphics-Display Objects'
+	category: 'ST80-Paths'

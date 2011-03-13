@@ -1,2 +1,0 @@
-mouseOverHalosEnabled
-	^ self presenter mouseOverHalosEnabled

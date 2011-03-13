@@ -1,4 +1,4 @@
-extent: newExtent
+extent: newExtent 
 	"Lay out with word wrap, alternating bewteen decoded and encoded lines."
 	"Currently not tolerant of narrow (less than a word) margins"
 
@@ -25,4 +25,4 @@ extent: newExtent
 	row _ self buttonRow.
 	self addMorph: row.
 	super extent: (corner - topLeft) + (self borderWidth * 2) + (0@row height+10).
-	row align: row bounds bottomCenter with: self bounds bottomCenter - (0@2).
+	row align: row fullBounds bottomCenter with: self fullBounds bottomCenter - (0@2).

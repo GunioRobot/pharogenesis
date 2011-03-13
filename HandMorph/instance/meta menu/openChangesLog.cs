@@ -1,2 +1,0 @@
-openChangesLog
-	ChangeList browseRecentLog

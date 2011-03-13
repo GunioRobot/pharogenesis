@@ -1,2 +1,0 @@
-liftPen
-	self assuredCostumee liftPen

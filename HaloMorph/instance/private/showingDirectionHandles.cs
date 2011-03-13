@@ -1,0 +1,3 @@
+showingDirectionHandles
+
+	^ directionArrowAnchor ~~ nil

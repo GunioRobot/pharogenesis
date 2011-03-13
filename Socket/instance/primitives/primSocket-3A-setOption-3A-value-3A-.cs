@@ -6,4 +6,4 @@ primSocket: socketID setOption: aString value: aStringValue
 	returns an array containing the error code and the negotiated value"
 
 	<primitive: 'primitiveSocketSetOptions' module: 'SocketPlugin'>
-	self primitiveFailed
+	^nil

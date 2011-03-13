@@ -13,8 +13,7 @@ filledForm
 										to: p2 asIntegerPoint-origin].
 
 	"Fill it in..."
-	quickFill ifTrue: [filledForm convexShapeFill: Color black]
-			ifFalse: [filledForm _ filledForm anyShapeFill].
+	filledForm convexShapeFill: Color black.
 
 	(borderColor isColor and: [borderColor isTranslucentColor]) ifTrue:
 		["If border is stored as a form, then erase any overlap now."

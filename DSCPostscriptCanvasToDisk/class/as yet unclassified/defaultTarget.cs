@@ -1,0 +1,3 @@
+defaultTarget
+
+	^PostscriptEncoderToDisk stream.

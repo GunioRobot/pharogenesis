@@ -24,6 +24,17 @@ void aioPollForIO(int microSeconds, int extraFd);
 #endif /* UNIX */
 
 #ifdef macintosh
+
+// CARBON
+
+/*#ifdef TARGET_API_MAC_CARBON  
+    #undef TARGET_API_MAC_CARBON
+    #define TARGET_API_MAC_CARBON 1
+#else
+    #define TARGET_API_MAC_CARBON 1
+#endif */
+
+
 /* replace the image file manipulation macros with functions */
 #undef sqImageFile
 #undef sqImageFileClose
@@ -32,6 +43,7 @@ void aioPollForIO(int microSeconds, int extraFd);
 #undef sqImageFileRead
 #undef sqImageFileSeek
 #undef sqImageFileWrite
+#undef sqImageFileStartLocation
 #undef sqAllocateMemory
 
 typedef int sqImageFile;
@@ -41,6 +53,7 @@ int         sqImageFilePosition(sqImageFile f);
 int         sqImageFileRead(void *ptr, int elementSize, int count, sqImageFile f);
 void        sqImageFileSeek(sqImageFile f, int pos);
 int         sqImageFileWrite(void *ptr, int elementSize, int count, sqImageFile f);
+int         sqImageFileStartLocation(int fileRef, char *filename, int imageSize);
 void *						sqAllocateMemory(int minHeapSize, int desiredHeapSize);
 
 /* override reserveExtraCHeapBytes() macro to reduce Squeak object heap size on Mac */
@@ -53,12 +66,12 @@ void *						sqAllocateMemory(int minHeapSize, int desiredHeapSize);
 
 /* macro to return from interpret() loop in browser plugin VM */
 #define ReturnFromInterpret() return
-#endif /* macintosh */
 
 /* prototypes missing from CW11 headers */
 #include <textutils.h>
 void CopyPascalStringToC(ConstStr255Param src, char* dst);
 void CopyCStringToPascal(const char* src, Str255 dst);
+#endif /* macintosh */
 
 
 #ifdef ACORN
@@ -131,5 +144,20 @@ __declspec(dllimport) unsigned long __stdcall GetTickCount(void);
 #define ioLowResMSecs() GetTickCount()
 
 #endif /* WIN32 */
+
+#if defined(__be_os) || defined(__BEOS__) // BeOS support
+
+void AsyncSignalSemaphoreWithIndex(int semaIndex); // external SYNCHRONIZED signaling of semaphores
+void SignalSqSemaphores(); // signal semaphores signalled with
+
+/* undefine clock macros that are implemented as functions */
+#undef ioMSecs
+#undef ioMicroMSecs
+
+/* pluggable primitive support */
+# undef EXPORT
+# define EXPORT(returnType) __declspec( dllexport ) returnType
+
+#endif /* BeOS */    
 
 '

@@ -1,0 +1,5 @@
+I am a view for a Modal System Window.  I vary from StandardSystemView, of which I am a subclass in a few ways:
+
+	(1) I use ModalController as my default controller;
+	(2) When asked to update with the symbol #close, I direct the controller to close;
+	(3) I display a slightly different title bar with no control boxes.

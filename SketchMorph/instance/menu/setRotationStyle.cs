@@ -1,9 +1,8 @@
 setRotationStyle
-
-	| menu newStyle |
-	menu _ CustomMenu new.
-	#('rotate smoothly' 'left-right flip only' 'top-down flip only' 'don''t rotate')
-		with: #(normal leftRight upDown none)
-		 do: [:name :action | menu add: name action: action].
-	newStyle _ menu startUp.
-	newStyle ifNotNil: [self rotationStyle: newStyle].
+	| selections labels sel reply |
+	selections _ #(normal leftRight upDown none).
+	labels _ #('rotate smoothly' 'left-right flip only' 'top-down flip only' 'don''t rotate').
+	sel _ labels at: (selections indexOf: self rotationStyle ifAbsent:[1]).
+	labels _ labels collect:[:lbl| sel = lbl ifTrue:['<on>',lbl] ifFalse:['<off>',lbl]].
+	reply _ (SelectionMenu labelList: labels selections: selections) startUp.
+	reply ifNotNil: [self rotationStyle: reply].

@@ -7,16 +7,18 @@ initializeObjectMemory: bytesToShift
 		specialObjectsOop
 		lastHash
 	"
-
+	"di 11/18/2000 fix slow full GC"
 	self inline: false.
 
 	"set the start of the young object space"
 	youngStart _ endOfMemory.
+
+	"image may be at a different address; adjust oops for new location"
+	totalObjectFoundAtStartup _ (self adjustAllOopsBy: bytesToShift) bitAnd: 16rFFFFFFFC.
+
 	self initializeMemoryFirstFree: endOfMemory.
 		"initializes endOfMemory, freeBlock"
 
-	"image may be at a different address; adjust oops for new location"
-	self adjustAllOopsBy: bytesToShift.
 	specialObjectsOop _ specialObjectsOop + bytesToShift.
 
 	"heavily used special objects"

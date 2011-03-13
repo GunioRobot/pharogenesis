@@ -1,2 +1,0 @@
-mimeStream
-	^mimeStream

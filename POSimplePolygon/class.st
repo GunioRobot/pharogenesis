@@ -1,0 +1,1 @@
+POSimplePolygon class instanceVariableNames: ''

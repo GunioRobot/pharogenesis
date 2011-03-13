@@ -2,7 +2,9 @@ deleteDirectory: localName
 	"Delete the sub directory within the current one.  Call needs to ask user to confirm."
 
 	| so rr |
-	type == #file ifTrue: [FileDirectory deleteFileNamed: localName].
+	self isTypeFile ifTrue: [
+		^FileDirectory deleteFileNamed: localName
+	].
 		"Is this the right command???"
 
 	so _ self openNoDataFTP.

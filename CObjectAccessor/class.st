@@ -1,0 +1,1 @@
+CObjectAccessor class instanceVariableNames: ''

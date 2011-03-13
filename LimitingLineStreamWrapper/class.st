@@ -1,0 +1,1 @@
+LimitingLineStreamWrapper class instanceVariableNames: ''

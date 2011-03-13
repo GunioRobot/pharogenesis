@@ -1,2 +1,0 @@
-recentlySubmittedMessages
-	^ RecentSubmissions copy reversed

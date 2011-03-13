@@ -1,4 +1,3 @@
 layoutChanged
 	self fitOnScreen.
-	self adaptToWorld.
-	super layoutChanged
+	^super layoutChanged

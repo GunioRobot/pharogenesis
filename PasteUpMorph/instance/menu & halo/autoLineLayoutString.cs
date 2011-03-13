@@ -1,6 +1,8 @@
 autoLineLayoutString
+	"Answer the string to be shown in a menu to represent the auto-line-layout status"
+
 	^ self autoLineLayout
 		ifTrue:
-			['stop doing auto-line-layout']
+			['<on>auto-line-layout']
 		ifFalse:
-			['start doing auto-line-layout']
+			['<off>auto-line-layout']

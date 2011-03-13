@@ -1,7 +1,10 @@
 optionalButtonRow
+	"Answer a button pane affording the user one-touch access to certain functions; the pane is given the formal name 'buttonPane' by which it can be retrieved by code wishing to send messages to widgets residing on the pane"
+
 	| aRow aButton |
 	aRow _ AlignmentMorph newRow beSticky.
-	aRow setProperty: #clipToOwnerWidth toValue: true.
+	aRow setNameTo: 'buttonPane'.
+	aRow clipSubmorphs: true.
 	aButton _ SimpleButtonMorph new target: self.
 	aButton color: Color lightRed; borderWidth: 1; borderColor: Color red darker.
 	aRow addTransparentSpacerOfSize: (5@0).
@@ -11,7 +14,10 @@ optionalButtonRow
 					on: self
 					getState: nil
 					action: pair second.
-				aButton useRoundedCorners;
+				aButton
+					hResizing: #spaceFill;
+					vResizing: #spaceFill;
+					useRoundedCorners;
 					label: pair first asString;
 					askBeforeChanging: true;
 					onColor: Color transparent offColor: Color transparent.

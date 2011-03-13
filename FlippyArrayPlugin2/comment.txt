@@ -1,0 +1,4 @@
+"TestInterpreterPlugin Example: primitives for reversing an array"
+
+FlippyArrayPlugin2 translate
+Smalltalk garbageCollect

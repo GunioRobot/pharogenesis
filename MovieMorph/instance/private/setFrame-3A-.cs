@@ -12,7 +12,6 @@ setFrame: newFrameIndex
 	currentFrameIndex < 1
 		ifTrue: [currentFrameIndex _ 1].
 	newFrame _ frameList at: currentFrameIndex.
-	newFrame rotationDegrees: rotationDegrees scalePoint: scalePoint.
 	newFrame referencePosition: p.
 	oldFrame delete.
 	self addMorph: newFrame.

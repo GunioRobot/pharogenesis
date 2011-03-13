@@ -1,1 +1,1 @@
-A composite transform provides the effect of several levels of coordinate transformations.  This class is a subclass of MorphicTransform, only to inherit some generic transformation methods.  It would be better for both classes to inherit these methods from a common superclass.
+A composite transform provides the effect of several levels of coordinate transformations.

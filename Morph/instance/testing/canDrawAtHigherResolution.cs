@@ -1,0 +1,3 @@
+canDrawAtHigherResolution
+
+	^false

@@ -1,7 +1,7 @@
 newCard
+	"Create a new card for the receiver and return it"
+
 	| aNewInstance |
-	self isStackLike ifFalse: [^ self beep].
-	aNewInstance _ currentDataInstance class new.
-	dataInstances add: aNewInstance after: currentDataInstance.
-	self installAsCurrent: aNewInstance.
-	self changed
+	self isStackBackground ifFalse: [^ self beep].  "bulletproof against deconstruction"
+	aNewInstance _ self player class baseUniclass new.
+	^ aNewInstance

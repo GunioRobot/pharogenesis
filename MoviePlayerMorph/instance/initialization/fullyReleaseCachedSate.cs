@@ -1,3 +1,0 @@
-fullyReleaseCachedSate
-
-	scorePlayer _ nil

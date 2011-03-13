@@ -1,31 +1,32 @@
-pickColorAt: aPoint 
+pickColorAt: aGlobalPoint 
 
-	"RAA 27 Nov 99 - aPoint is global, so no need to add viewbox topleft"
+	| alpha selfRelativePoint pickedColor |
 
-	| worldBox globalP c alpha localPt |
-
-	localPt _ aPoint - self topLeft.
-	(FeedbackBox containsPoint: localPt) ifTrue: [^ self].
-	(RevertBox containsPoint: localPt)
+	clickedTranslucency ifNil: [clickedTranslucency _ false].
+	selfRelativePoint _ (self globalPointToLocal: aGlobalPoint) - self topLeft.
+	(FeedbackBox containsPoint: selfRelativePoint) ifTrue: [^ self].
+	(RevertBox containsPoint: selfRelativePoint)
 		ifTrue: [^ self updateColor: originalColor feedbackColor: originalColor].
 
-	"pick up color, either inside or outside this world"
-	worldBox _ self world viewBox.
-	globalP _ aPoint 		"+ worldBox topLeft".
-	"get point in screen coordinates"
-	(worldBox containsPoint: globalP)
-		ifTrue: [c _ self world colorAt: aPoint belowMorph: Morph new]
-		ifFalse: [c _ Display colorAt: globalP].
-
 	"check for transparent color and update using appropriate feedback color "
-	(TransparentBox containsPoint: localPt)
-		ifTrue: [alpha _ (aPoint x - bounds left - TransparentBox left - 10) asFloat /
+	(TransparentBox containsPoint: selfRelativePoint) ifTrue:
+		[clickedTranslucency ifFalse: [^ self].  "Can't wander into translucency control"
+		alpha _ (selfRelativePoint x - TransparentBox left - 10) asFloat /
 							(TransparentBox width - 20)
 							min: 1.0 max: 0.0.
 					"(alpha roundTo: 0.01) printString , '   ' displayAt: 0@0." " -- debug"
-					self updateColor: (selectedColor alpha: alpha)
-						feedbackColor: (selectedColor alpha: alpha)]
-		ifFalse: [self updateColor: ((selectedColor isColor and: [selectedColor isTranslucentColor])
-					ifTrue: [c alpha: selectedColor alpha]
-					ifFalse: [c])
-				feedbackColor: c]
+		self 
+			updateColor: (selectedColor alpha: alpha)
+			feedbackColor: (selectedColor alpha: alpha).
+		^ self].
+
+	"pick up color, either inside or outside this world"
+	clickedTranslucency ifTrue: [^ self].  "Can't wander out of translucency control"
+	pickedColor _ Display colorAt: aGlobalPoint.
+	self 
+		updateColor: (
+			(selectedColor isColor and: [selectedColor isTranslucentColor])
+						ifTrue: [pickedColor alpha: selectedColor alpha]
+						ifFalse: [pickedColor]
+		)
+		feedbackColor: pickedColor

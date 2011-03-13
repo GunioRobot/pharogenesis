@@ -1,2 +1,0 @@
-saveAs
-	^ Smalltalk saveAs

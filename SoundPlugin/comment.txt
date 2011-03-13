@@ -1,0 +1,3 @@
+Implements the main sound related primiives. 
+
+NB: I really think it would be a good cleanup to mildly rewrite the sq{plat}Sound.c files to NOT refer directly back to the VM -- TPR.

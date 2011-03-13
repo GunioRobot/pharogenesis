@@ -1,0 +1,1 @@
+B3DSimpleMeshFace class instanceVariableNames: ''

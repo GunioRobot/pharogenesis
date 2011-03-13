@@ -1,0 +1,1 @@
+PluggableTextMorphWithModel class instanceVariableNames: ''

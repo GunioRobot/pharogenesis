@@ -3,6 +3,8 @@ preserveDetails
 
 	self isCurrentlyTextual
 		ifTrue:
-			[self setProperty: #priorWording toValue: self existingWording]
+			[self setProperty: #priorWording toValue: self existingWording.
+			self setProperty: #priorColor toValue: color.
+			self setProperty: #priorBorderWidth toValue: borderWidth]
 		ifFalse:
 			[self setProperty: #priorGraphic toValue: submorphs first form]

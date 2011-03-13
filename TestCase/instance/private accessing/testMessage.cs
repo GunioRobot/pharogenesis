@@ -1,0 +1,3 @@
+testMessage
+
+	^testMessage

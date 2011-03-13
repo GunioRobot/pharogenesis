@@ -1,2 +1,3 @@
 presentPlayfieldMenu
-	self playfieldOptionsMenu popUpForHand: self activeHand
+
+	self playfieldOptionsMenu popUpForHand: self activeHand in: self world

@@ -7,4 +7,4 @@ setChannel: evt
 			selector: #channel:
 			argumentList: (Array with: chan - 1)].
 
-	menu popUpEvent: evt
+	menu popUpEvent: evt in: self world

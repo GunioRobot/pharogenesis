@@ -1,3 +1,0 @@
-hResizing
-
-	^ #spaceFill

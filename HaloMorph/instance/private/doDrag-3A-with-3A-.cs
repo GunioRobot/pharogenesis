@@ -1,4 +1,5 @@
 doDrag: evt with: dragHandle
-
-	target setConstrainedPositionFrom:
-		(target pointFromWorld: evt cursorPoint - positionOffset).
+	| thePoint |
+	evt hand obtainHalo: self.
+	thePoint _ target point: evt position - positionOffset from: owner.
+	target setConstrainedPositionFrom:(target griddedPoint: thePoint).

@@ -1,0 +1,3 @@
+defaultClassPattern
+
+	^'*' copy

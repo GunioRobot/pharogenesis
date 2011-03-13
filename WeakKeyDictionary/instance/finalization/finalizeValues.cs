@@ -1,4 +1,8 @@
 finalizeValues
-	"default action is to re-hash the receiver and to remove nil-keys"
+	"remove all nil keys and rehash the receiver afterwards"
+	| assoc |
+	1 to: array size do:[:i|
+		assoc _ array at: i.
+		(assoc notNil and:[assoc key == nil]) ifTrue:[array at: i put: nil].
+	].
 	self rehash.
-	self removeKey: nil ifAbsent:[].

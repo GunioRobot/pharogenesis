@@ -3,6 +3,8 @@ openProjectFromFile
 	a Morph saved via the SmartRefStream mechanism, and open it in an
 	appropriate Morphic world."
 
- 	| preStream |
-	preStream _ directory oldFileNamed: self fullName.
-	ProjectViewMorph openFromFile: preStream
+	fileName ifNil: [^self].
+	Project canWeLoadAProjectNow ifFalse: [^ self].
+	ProjectLoading 
+		openFromDirectory: directory 
+		andFileName: fileName

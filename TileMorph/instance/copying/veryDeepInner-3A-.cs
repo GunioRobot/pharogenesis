@@ -14,4 +14,5 @@ typeColor _ typeColor veryDeepCopyWith: deepCopier.
 lastArrowTick _ lastArrowTick veryDeepCopyWith: deepCopier.
 nArrowTicks _ nArrowTicks veryDeepCopyWith: deepCopier.
 operatorReadoutString _ operatorReadoutString veryDeepCopyWith: deepCopier.
-possessive _ possessive veryDeepCopyWith: deepCopier.            
+possessive _ possessive veryDeepCopyWith: deepCopier.
+retractArrow _ retractArrow veryDeepCopyWith: deepCopier.

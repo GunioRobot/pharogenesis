@@ -1,0 +1,2 @@
+automaticPlatformSettings
+	^ self valueOfFlag: #automaticPlatformSettings

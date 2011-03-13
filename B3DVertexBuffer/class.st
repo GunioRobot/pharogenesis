@@ -1,0 +1,1 @@
+B3DVertexBuffer class instanceVariableNames: ''

@@ -3,4 +3,4 @@ Object
 	instanceVariableNames: ''
 	classVariableNames: 'CommentsTable '
 	poolDictionaries: ''
-	category: 'PluggableWebServer'
+	category: 'Network-Pluggable Web Server'

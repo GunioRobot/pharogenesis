@@ -4,24 +4,24 @@ createButtons
 
 | rect button nib |
 #(erase: eyedropper: fill: paint: rect: ellipse: polygon: line: star: pickup: "pickup: pickup: pickup:" stamp: "stamp: stamp: stamp:" undo: keep: toss: prevStamp: nextStamp:) do: [:sel |
-	(self findButton: sel) ifNil: [
+	(self submorphNamed: sel) ifNil: [
 		PopUpMenu notify: 'Rectangle for ',sel.
 		rect _ Rectangle fromUser.
 		button _ ThreePhaseButtonMorph new.
 		button onImage: nil; bounds: rect.
 		self addMorph: button.
-		button actionSelector: #tool:action:cursor:; arguments: (Array with: button with: sel with: nil).
+		button actionSelector: #tool:action:cursor:evt:; arguments: (Array with: button with: sel with: nil).
 		button actWhen: #buttonUp; target: self.
 		]].
 #(brush1: brush2: brush3: brush4: brush5: brush6: ) doWithIndex: [:sel :ind |
-	(self findButton: sel) ifNil: [
+	(self submorphNamed: sel) ifNil: [
 		PopUpMenu notify: 'Rectangle for ',sel.
 		rect _ Rectangle fromUser.
 		button _ ThreePhaseButtonMorph new.
 		button onImage: nil; bounds: rect.
 		self addMorph: button.
 		nib _ Form dotOfSize: (#(1 2 3 6 11 26) at: ind).
-		button actionSelector: #brush:action:nib:; 
+		button actionSelector: #brush:action:nib:evt:; 
 				arguments: (Array with: button with: sel with: nib).
 		button actWhen: #buttonUp; target: self.
 		]].

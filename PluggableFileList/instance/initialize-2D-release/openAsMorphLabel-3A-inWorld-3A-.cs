@@ -33,6 +33,8 @@ openAsMorphLabel: aString inWorld: aWorld
 		getState: #leftButtonState
 		action: #leftButtonPressed.
 	leftButtonMorph
+		hResizing: #spaceFill;
+		vResizing: #spaceFill;
 		label: 'Cancel';
 		onColor: Color red offColor: Color red;
 		feedbackColor: Color orange;
@@ -43,6 +45,8 @@ openAsMorphLabel: aString inWorld: aWorld
 		getState: nil
 		action: nil.
 	middleButtonMorph
+		hResizing: #spaceFill;
+		vResizing: #spaceFill;
 		label: prompt;
 		onColor: Color lightYellow offColor: Color lightYellow;
 		feedbackColor: Color lightYellow;
@@ -53,6 +57,8 @@ openAsMorphLabel: aString inWorld: aWorld
 		getState: #rightButtonState
 		action: #rightButtonPressed.
 	rightButtonMorph
+		hResizing: #spaceFill;
+		vResizing: #spaceFill;
 		label: 'Accept';
 		onColor: Color green offColor: Color lightYellow;
 		feedbackColor: Color black;

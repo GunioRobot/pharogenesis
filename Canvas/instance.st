@@ -1,6 +1,6 @@
-Object
+FlattenEncoder
 	subclass: #Canvas
-	instanceVariableNames: 'origin clipRect shadowDrawing '
+	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Support'

@@ -1,0 +1,1 @@
+IntegerArray class instanceVariableNames: ''

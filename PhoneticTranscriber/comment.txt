@@ -1,0 +1,7 @@
+My instances perform automatic words-to-phonemes transcription. (See the PhoneticRule class comment too.)
+
+Each transcriber must have a collection of PhoneticRules, and optionally a lexicon. When a transcriber is asked for the transcription of a word, it searches for the word in the lexicon first, and if the word is not found then the rules are used.
+
+Rules are made up of four parts: (1) left context pattern, (2) the text to match, (3) the right context pattern, and (4) the phonemes to substitute for the matched text.
+
+The transcription procedure begins when a text is provided to a transcriber. For each unmatched letter in the word, look through the rules where the text to match starts with the letter in the word. If one matching rule is found, then the rule is applied, writing the corresponding phonemes in the output and moving forward to the next unmatched position. If no rule is found for a position in the text, then the unmatched position is logged. At the end of the transcription, the phonemes extracted are provided in a collection and so are the unmatched positions.

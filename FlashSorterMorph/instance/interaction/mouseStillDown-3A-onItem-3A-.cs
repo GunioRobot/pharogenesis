@@ -6,11 +6,9 @@ mouseStillDown: evt onItem: aMorph
 	yOffset _ self offset y.
 	index _ aMorph frameNumber. "What a fake hack@!"
 	pt y - yOffset < 0 ifTrue:[
-		owner scrollBy: 0@owner scrollDeltaHeight.
-		evt hand eventTransform: (aMorph transformFrom: evt hand)].
+		owner scrollBy: 0@owner scrollDeltaHeight].
 	pt y - yOffset > self extent y ifTrue:[
-		owner scrollBy: 0@owner scrollDeltaHeight negated.
-		evt hand eventTransform: (aMorph transformFrom: evt hand)].
+		owner scrollBy: 0@owner scrollDeltaHeight negated].
 	(aMorph bounds containsPoint: pt) ifTrue:[^self].
 	(pt y > aMorph bottom or:[pt x > aMorph right]) ifTrue:[
 		"Select all morphs forward."

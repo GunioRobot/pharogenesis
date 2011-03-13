@@ -1,5 +1,5 @@
 primLocalAddress
 	"Return the local address of this host."
 
-	<primitive: 206>
+	<primitive: 'primitiveResolverLocalAddress' module: 'SocketPlugin'>
 	self primitiveFailed

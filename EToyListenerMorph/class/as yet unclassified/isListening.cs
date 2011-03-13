@@ -1,0 +1,3 @@
+isListening
+
+	^GlobalListener notNil

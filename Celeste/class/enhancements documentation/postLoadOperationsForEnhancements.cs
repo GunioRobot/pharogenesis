@@ -1,0 +1,4 @@
+postLoadOperationsForEnhancements
+	"Celeste postLoadOperationsForEnhancements."
+	Preferences addPreferenceForOptionalCelesteStatusPane.
+	true ifFalse: [Celeste postReadMeEnhancements]

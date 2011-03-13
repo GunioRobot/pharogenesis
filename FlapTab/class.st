@@ -1,0 +1,1 @@
+FlapTab class instanceVariableNames: ''

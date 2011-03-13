@@ -1,0 +1,1 @@
+FileUrl class instanceVariableNames: ''

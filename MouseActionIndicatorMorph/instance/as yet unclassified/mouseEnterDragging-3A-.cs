@@ -1,0 +1,3 @@
+mouseEnterDragging: evt
+
+	self deleteWithSiblings

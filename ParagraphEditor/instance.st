@@ -3,6 +3,6 @@ ScrollController
 	instanceVariableNames:
 		'paragraph startBlock stopBlock beginTypeInBlock emphasisHere initialText selectionShowing otherInterval '
 	classVariableNames:
-		'ChangeText CmdActions CurrentSelection FindText Keyboard ShiftCmdActions TextEditorYellowButtonMenu TextEditorYellowButtonMessages UndoInterval UndoMessage UndoParagraph UndoSelection Undone '
+		'ChangeText CmdActions FindText Keyboard ShiftCmdActions TextEditorYellowButtonMenu UndoInterval UndoMessage UndoParagraph UndoSelection Undone '
 	poolDictionaries: 'TextConstants '
-	category: 'Graphics-Editors'
+	category: 'Kernel-ST80 Remnants'

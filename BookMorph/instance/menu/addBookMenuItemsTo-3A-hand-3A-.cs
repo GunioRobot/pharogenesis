@@ -14,7 +14,11 @@ addBookMenuItemsTo: aMenu hand: aHandMorph
 			subMenu add: 'fewer page controls' action: #fewerPageControls]
 		ifFalse:
 			[subMenu add: 'show page controls' action: #showPageControls].
-
+	self isInFullScreenMode ifTrue: [
+		subMenu add: 'exit full screen' action: #exitFullScreen.
+	] ifFalse: [
+		subMenu add: 'show full screen' action: #goFullScreen.
+	].
 	subMenu addLine.
 	subMenu add: 'sound effect for all pages' action: #menuPageSoundForAll:.
 	subMenu add: 'sound effect this page only' action: #menuPageSoundForThisPage:.
@@ -30,7 +34,7 @@ addBookMenuItemsTo: aMenu hand: aHandMorph
 
 	subMenu addLine.
 	subMenu add: 'search for text' action: #textSearch.
-	(aHandMorph classOfPasteBuffer isKindOf: PasteUpMorph class) ifTrue:
+	(aHandMorph pasteBuffer class isKindOf: PasteUpMorph class) ifTrue:
 		[subMenu add: 'paste book page'	action: #pasteBookPage].
 
 	subMenu add: 'send all pages to server' action: #savePagesOnURL.

@@ -1,30 +1,11 @@
 listForPattern: pat
 	"Make the list be those file names which match the pattern."
-	| entries sizePad newList allFiles sortBlock |
+	| entries sizePad newList allFiles |
 	entries _ directory entries select: fileFilterBlock.
 	sizePad _ (entries inject: 0 into: [:mx :entry | mx max: (entry at: 5)])
 					asStringWithCommas size - 1.
 
-	"create block to decide what order to display the entries"
-	sortBlock _ [ :x :y |
-			(x isDirectory = y isDirectory) 
-				ifTrue: [  
-					"sort by user-specified criterion"
-					sortMode = #name 
-						ifTrue: [(x name compare: y name) <= 2]
-						ifFalse: [ sortMode = #date
-							ifTrue: [ x modificationTime = y modificationTime
-									ifTrue: [ (x name compare: y name) <= 2 ]
-									ifFalse: [ x modificationTime > y modificationTime ] ]
-							ifFalse: [ "size"
-								x fileSize = y fileSize 
-									ifTrue: [ (x name compare: y name) <= 2 ]
-									ifFalse: [ x fileSize > y fileSize ] ] ] ]
-				ifFalse: [
-					"directories always precede files"
-					x isDirectory ] ].
-
-	newList _ (SortedCollection new: 30) sortBlock: sortBlock.
+	newList _ (SortedCollection new: 30) sortBlock: self sortBlock.
 
 	allFiles _ pat = '*'.
 	entries do:

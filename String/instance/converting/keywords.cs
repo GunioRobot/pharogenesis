@@ -1,14 +1,20 @@
 keywords
 	"Answer an array of the keywords that compose the receiver."
-
-	| answer size last |
-	answer _ OrderedCollection new.
-	size _ self size.
-	last _ 0.
-	1 to: size do:
-		[:index |
-		(self at: index) == $: ifTrue:
-			[answer add: (self copyFrom: last + 1 to: index).
-			last _ index]].
-	last = size ifFalse: [answer add: (self copyFrom: last + 1 to: size)].
-	^ answer asArray
+	| kwd char keywords |
+	keywords _ Array streamContents:
+		[:kwds | kwd _ WriteStream on: (String new: 16).
+		1 to: self size do:
+			[:i |
+			kwd nextPut: (char _ self at: i).
+			char = $: ifTrue: 
+					[kwds nextPut: kwd contents.
+					kwd reset]].
+		kwd isEmpty ifFalse: [kwds nextPut: kwd contents]].
+	(keywords size >= 1 and: [(keywords at: 1) = ':']) ifTrue:
+		["Has an initial keyword, as in #:if:then:else:"
+		keywords _ keywords allButFirst].
+	(keywords size >= 2 and: [(keywords at: keywords size - 1) = ':']) ifTrue:
+		["Has a final keyword, as in #nextPut::andCR"
+		keywords _ keywords copyReplaceFrom: keywords size - 1
+								to: keywords size with: {':' , keywords last}].
+	^ keywords

@@ -1,2 +1,0 @@
-holdsDataForEachInstance
-	^ false

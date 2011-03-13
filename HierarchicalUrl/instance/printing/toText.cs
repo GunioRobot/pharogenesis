@@ -4,6 +4,7 @@ toText
 	ans nextPutAll: self schemeName.
 	ans nextPutAll: '://'.
 	ans nextPutAll: self authority.
+	port ifNotNil: [ans nextPut: $:; print: port].
 	path do: [ :pathElem |
 		ans nextPut: $/.
 		ans nextPutAll: pathElem encodeForHTTP. ].

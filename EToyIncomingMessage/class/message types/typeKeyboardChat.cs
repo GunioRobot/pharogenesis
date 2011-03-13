@@ -1,0 +1,3 @@
+typeKeyboardChat
+
+	^'chat'

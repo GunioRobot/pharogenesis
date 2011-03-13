@@ -1,6 +1,6 @@
 Browser
 	subclass: #MessageSet
-	instanceVariableNames: 'messageList autoSelectString '
+	instanceVariableNames: 'messageList autoSelectString growable '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Interface-Browser'
+	category: 'Tools-Browser'

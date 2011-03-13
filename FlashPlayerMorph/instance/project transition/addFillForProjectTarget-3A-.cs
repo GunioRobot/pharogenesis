@@ -4,5 +4,5 @@ addFillForProjectTarget: aFillStyle
 	(fillStyles includesKey: aFillStyle) ifTrue:[^self].
 	fillStyles at: aFillStyle put: aFillStyle form.
 	self setProperty: #projectTargetFills toValue: fillStyles.
-	self updateProjectFillsFrom: Project current.
+	CurrentProjectRefactoring updateProjectFillsIn: self.
 	self changed.

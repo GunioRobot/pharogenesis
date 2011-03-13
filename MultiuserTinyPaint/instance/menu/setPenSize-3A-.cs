@@ -9,4 +9,4 @@ setPenSize: evt
 			selector: #penSize:hand:
 			argumentList: (Array with: w with: evt hand)].
 
-	menu popUpEvent: evt
+	menu popUpEvent: evt in: self world

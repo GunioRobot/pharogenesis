@@ -7,5 +7,7 @@ initialize
 	UpdatingOperators at: #decr: put: #-.
 	UpdatingOperators at: #set: put: ''.
 
-	SuffixArrowAllowance _ 12.
+	RetractPicture ifNil: [
+		RetractPicture _ (SuffixPicture flipBy: #horizontal centerAt: (SuffixPicture center))].
+	SuffixArrowAllowance _ 5 + SuffixPicture width + RetractPicture width.
 	UpArrowAllowance _ 10.

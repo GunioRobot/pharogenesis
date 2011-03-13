@@ -1,0 +1,1 @@
+BlobMorph class instanceVariableNames: ''

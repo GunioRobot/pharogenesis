@@ -5,4 +5,4 @@ mouseDownOnHelpHandle: anEvent
 	anEvent shiftPressed ifTrue: [^ self editBalloonHelpText].
 	str _ self balloonText.
 	str ifNil: [str _ self noHelpString].
-	self showBalloon: str
+	self showBalloon: str hand: anEvent hand.

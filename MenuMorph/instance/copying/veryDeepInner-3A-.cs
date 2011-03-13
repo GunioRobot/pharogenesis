@@ -3,7 +3,7 @@ veryDeepInner: deepCopier
 
 super veryDeepInner: deepCopier.
 "defaultTarget _ defaultTarget.		Weakly copied"
-lastSelection _ lastSelection veryDeepCopyWith: deepCopier.
+selectedItem _ selectedItem veryDeepCopyWith: deepCopier.
 stayUp _ stayUp veryDeepCopyWith: deepCopier.
-originalEvent _ originalEvent veryDeepCopyWith: deepCopier.
 popUpOwner _ popUpOwner.		"Weakly copied"
+activeSubMenu _ activeSubMenu. "Weakly copied"

@@ -1,5 +1,6 @@
 mutedForTrack: trackIndex put: aBoolean
 
+	trackIndex > muted size ifTrue: [^ self].
 	muted at: trackIndex put: aBoolean.
 	aBoolean ifFalse: [^ self].
 

@@ -88,3 +88,7 @@ beginningOfData"
 	aStream = 'server aborted early' ifFalse: [
 		]
 	].
+
+{'HTTPSocket class>>httpGetDocument:args:accept:request:'. aStream. url} inspect.
+
+	^'some other bad thing happened!'

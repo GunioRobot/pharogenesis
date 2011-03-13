@@ -3,6 +3,8 @@ hideOrShowScrollBar
 
 	"Don't do anything with the retractable scrollbar unless we have focus"
 	retractableScrollBar & self hasFocus not ifTrue: [^self].
+	"Don't show it if we were told not to."
+	(self valueOfProperty: #noScrollBarPlease ifAbsent: [false]) ifTrue: [^self].
 
 	self isScrollable not & self isScrolledFromTop not ifTrue: [self hideScrollBar].
 	self isScrollable | self isScrolledFromTop ifTrue: [self showScrollBar].

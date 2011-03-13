@@ -1,5 +1,5 @@
 copyFromRootsForExport: rootArray 
-	"Add to roots:  Any methods pointed to from the outside by blocks."
+	"When possible, use copySmartRootsExport:.  This way may not copy a complete tree of objects.  Add to roots: all of the methods pointed to from the outside by blocks."
 	| newRoots list segSize symbolHolder |
 	arrayOfRoots _ rootArray.
 	Smalltalk forgetDoIts.  

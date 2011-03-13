@@ -1,7 +1,6 @@
 findFirstInString: aString  inSet: inclusionMap  startingAt: start
 	| i stringSize |
-	<primitive: 244>
-
+	<primitive: 'primitiveFindFirstInString' module: 'MiscPrimitivePlugin'>
 	self var: #aString declareC: 'unsigned char *aString'.
 	self var: #inclusionMap  declareC: 'char *inclusionMap'.
 

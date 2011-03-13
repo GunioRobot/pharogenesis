@@ -6,6 +6,9 @@ chooseCngSet
 	changeSetsSortedAlphabetically _ AllChangeSets asSortedCollection:
 		[:a :b | a name asLowercase withoutLeadingDigits < b name asLowercase withoutLeadingDigits].
 
-	index _ (PopUpMenu labels: 
-		(changeSetsSortedAlphabetically collect: [:each | each name]) asStringWithCr) startUp.
-	index = 0 ifFalse: [self showChangeSet: (changeSetsSortedAlphabetically at: index)].
+	index _ (PopUpMenu labels: Smalltalk changes name , ' (active)' , Character cr asString ,
+				(changeSetsSortedAlphabetically collect: [:each | each name]) asStringWithCr)
+			startUp.
+	index = 0 ifTrue: [^ self].
+	index = 1 ifTrue: [^ self showChangeSet: Smalltalk changes].
+	self showChangeSet: (changeSetsSortedAlphabetically at: index-1).

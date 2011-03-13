@@ -13,7 +13,7 @@ drawMeasureLinesOn: aCanvas
 			by: ticksPerMeas
 			do: [:tickTime | x _ self xForTime: tickTime.
 				aCanvas fillRectangle: (x @ inner top extent: 1 @ inner height)
-						color: measureLineColor]].
+					color: measureLineColor]].
 
 	showMeasureLines ifTrue:
 		[measureLineColor _ Color gray: 0.7.
@@ -24,4 +24,4 @@ drawMeasureLinesOn: aCanvas
 			by: ticksPerMeas
 			do: [:tickTime | x _ self xForTime: tickTime.
 				aCanvas fillRectangle: (x @ inner top extent: 1 @ inner height)
-						color: measureLineColor]].
+						color: (tickTime = 0 ifTrue: [Color black] ifFalse: [measureLineColor])]].

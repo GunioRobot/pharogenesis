@@ -1,0 +1,1 @@
+ProjectEntryNotification class instanceVariableNames: ''

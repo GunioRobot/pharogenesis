@@ -1,0 +1,3 @@
+testFailure
+
+	self assert: false.

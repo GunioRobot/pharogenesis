@@ -1,18 +1,9 @@
 mouseUp: evt
-	"Handle a mouse up event. Menu items get activated when the mouse is over them."
-
-	| mouseInMe |
-	mouseInMe _ self containsPoint: evt cursorPoint.
-	self deselectItem.
-	self isInMenu
-		ifTrue:
-			[(mouseInMe and: [self selector = #toggleStayUp:])
-				ifFalse: [owner deleteIfPopUpFrom: self event: evt].
-			subMenu ifNil:
-				[mouseInMe ifTrue:
-					[evt hand world displayWorld.
-					owner invokeItem: self event: evt]]]
-		ifFalse:  
-			[self invokeWithEvent: evt]
-			
-			
+	"Handle a mouse up event. Menu items get activated when the mouse is over them. Do nothing if we're not in a 'valid menu transition', meaning that the current hand focus must be aimed at the owning menu."
+	evt hand mouseFocus == owner ifFalse:[^self].
+	self contentString ifNotNil:[
+		self contents: self contentString withMarkers: true inverse: true.
+		self refreshWorld.
+		(Delay forMilliseconds: 200) wait].
+	self deselect: evt.
+	self invokeWithEvent: evt.		

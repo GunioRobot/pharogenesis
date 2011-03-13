@@ -1,2 +1,0 @@
-tearOffTile
-	self assuredCostumee tearOffTileForSelf

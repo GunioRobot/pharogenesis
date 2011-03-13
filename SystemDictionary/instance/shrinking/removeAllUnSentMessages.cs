@@ -7,7 +7,10 @@ removeAllUnSentMessages   "Smalltalk removeAllUnSentMessages"
 	sels _ self allUnSentMessages.
 
 	"The following should be preserved for doIts, etc"
-	#(browseAllSelect: printSpaceAnalysis lastRemoval
+	#(
+		rehashWithoutBecome compactSymbolTable rebuildAllProjects	"needed even after #majorShrink is pulled"
+			
+		browseAllSelect: printSpaceAnalysis lastRemoval
 		scrollBarValue: scrollBarMenuButtonPressed: 
 		withSelectionFrom:  to: removeClassNamed:
 		dragon: hilberts: mandala: web test3 factorial tinyBenchmarks benchFib

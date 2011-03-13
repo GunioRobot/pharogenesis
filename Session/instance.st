@@ -3,4 +3,4 @@ Object
 	instanceVariableNames: 'lastAccess data '
 	classVariableNames: 'Sessions '
 	poolDictionaries: ''
-	category: 'PluggableWebServer'
+	category: 'Network-Pluggable Web Server'

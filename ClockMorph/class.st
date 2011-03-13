@@ -1,0 +1,1 @@
+ClockMorph class instanceVariableNames: ''

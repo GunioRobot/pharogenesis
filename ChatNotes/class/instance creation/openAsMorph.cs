@@ -1,0 +1,3 @@
+openAsMorph
+
+	^self new openAsMorph

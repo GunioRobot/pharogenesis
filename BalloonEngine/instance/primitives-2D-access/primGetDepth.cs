@@ -1,3 +1,3 @@
 primGetDepth
-	<primitive:'gePrimitiveGetDepth'>
+	<primitive: 'primitiveGetDepth' module: 'B2DPlugin'>
 	^self primitiveFailed

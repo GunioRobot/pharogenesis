@@ -1,0 +1,1 @@
+ByteEncoder class instanceVariableNames: ''

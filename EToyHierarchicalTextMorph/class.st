@@ -1,0 +1,1 @@
+EToyHierarchicalTextMorph class instanceVariableNames: ''

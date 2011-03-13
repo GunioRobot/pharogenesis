@@ -19,8 +19,7 @@ A file on the server called updates.list has the names of the last N update file
 
 	| urls failed loaded str docQueue this nextDoc docQueueSema |
 	Utilities chooseUpdateList ifFalse: [^ self].	"ask the user which kind of updates"
-	Cursor wait showWhile: [(Smalltalk includesKey: #EToySystem)
-		ifTrue: [ScriptingSystem guessDOLProxy].
+	Cursor wait showWhile: [
 
 	urls _ self newUpdatesOn: (Utilities serverUrls collect: [:url | url, 'updates/']) 
 				throughNumber: maxNumber.

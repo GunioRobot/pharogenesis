@@ -1,0 +1,3 @@
+patternTextM: aPluggableTextMorph
+
+	patternTextM := aPluggableTextMorph.

@@ -1,5 +1,5 @@
 stepTime
 	"If we're syncing with time step at double speed."
-	^UseTimeSync
+	^self useTimeSync
 		ifTrue:[stepTime // 2]
 		ifFalse:[stepTime]

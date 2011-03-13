@@ -1,0 +1,2 @@
+capitalizedReferences
+	^ self valueOfFlag: #capitalizedReferences

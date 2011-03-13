@@ -1,20 +1,10 @@
 drawOn: aCanvas 
-	"Display the receiver, a spline curve, approximated by straight line segments."
-	vertices size < 1 ifTrue: [self error: 'a polygon must have at least one point'].
-	closed ifTrue:[
-		quickFill
-			ifTrue:[aCanvas drawPolygon: self getVertices fillStyle: self fillStyle]
-			ifFalse:[aCanvas stencil: self filledForm at: bounds topLeft - 1 color: color]].
-	self drawBorderOn: aCanvas.
-	self drawArrowsOn: aCanvas.
-	"Old code:
-	closed & color isTransparent not
-		ifTrue: [aCanvas stencil: self filledForm at: bounds topLeft - 1 color: color].
-	(borderColor isColor and: [borderColor isTranslucentColor])
-		ifTrue: [aCanvas stencil: self borderForm at: bounds topLeft
-						color: borderColor]
-		ifFalse: [self drawBorderOn: aCanvas].
-	self arrowForms do:
-		[:f | aCanvas stencil: f at: f offset
-			color: (borderColor isColor ifTrue: [borderColor] ifFalse: [color])]
-	"
+	"Display the receiver, a spline curve, approximated by straight 
+	line segments."
+	| array |
+	vertices size < 1
+		ifTrue: [self error: 'a polygon must have at least one point'].
+	closed
+		ifTrue: [aCanvas drawPolygon: self getVertices fillStyle: self fillStyle].
+	array _ self drawArrowsOn: aCanvas.
+	self drawBorderOn: aCanvas usingEnds: array.

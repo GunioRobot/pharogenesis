@@ -1,4 +1,6 @@
 lookForSlips
+	"Scan the receiver for changes that the user may regard as slips to be remedied"
+
 	| slips nameLine msg |
 	nameLine _ '
 "', self name, '"
@@ -18,6 +20,6 @@ Would you like to browse it? ?']
 Transcript or other ''slips'' in them.
 Would you like to browse them?'].
 
-	(self confirm: msg)
+	(PopUpMenu withCaption: msg chooseFrom: 'Ignore\Browse slips') = 2
 		ifTrue: [Smalltalk browseMessageList: slips
 							name: 'Possible slips in ', name]

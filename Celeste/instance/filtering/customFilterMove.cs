@@ -1,13 +1,11 @@
 customFilterMove
 	"Select or define and activate a custom filter."
-	| filterList filterName filterExpr msgList |
-	filterList _ CustomFilters keys asSortedCollection asOrderedCollection select: [:e | self categoryList includes: e].
-	filterName _ (CustomMenu selections: filterList)
-				startUpWithCaption: 'Select a move filter:'.
-	filterName ifNil: [^ self].
-	filterExpr _ CustomFilters at: filterName.
-	filterExpr isEmpty ifTrue: [^ self].
-	customFilterBlock _ Compiler evaluate: '[ :m | ' , filterExpr , ']'.
+	| filterList filterName msgList |
+	filterList _ CustomFilters keys select: [:e | self categoryList includes: e].
+
+	filterName _ currentMsgID ifNil: [self selectFilterFrom: filterList] ifNotNil: [self chooseFilterFor: currentMsgID from: filterList].
+	((filterName isNil or: [filterName isEmpty]) or: [filterName = 'none']) ifTrue: [^ self].
+	customFilterBlock _ self customFilterNamed: filterName.
 	msgList _ self filteredMessagesIn: currentCategory.
 	mailDB removeAll: msgList fromCategory: currentCategory.
 	mailDB fileAll: msgList inCategory: filterName.

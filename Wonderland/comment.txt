@@ -1,0 +1,14 @@
+What is Squeak-Alice?
+
+Alice (http://www.alice.org) is an authoring tool designed to allow people without programming experience to build interactive 3D worlds. The Stage 3 Research Group (Randy Pausch director) started the Alice project at the University of Virginia, and is continuing their work at Carnegie Mellon University (http://www.cs.cmu.edu/~stage). Squeak-Alice brings the ideas and the ideals of Alice to Squeak, with the goal of introducing even more people to 3D graphics and allowing them to author in the medium.
+
+Wonderlands are the basic building blocks of Squeak-Alice; a Wonderland is an interactive 3D world.
+
+To create a Wonderland, evaluate:
+
+Wonderland new
+
+This creates a script editor, a control panel, and a window into the 3D world. From here you're ready to start building your world.
+
+Jeff Pierce
+jpierce@cs.cmu.edu

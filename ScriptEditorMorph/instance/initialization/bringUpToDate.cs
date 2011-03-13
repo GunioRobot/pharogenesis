@@ -1,15 +1,15 @@
 bringUpToDate
-	"Make certain that the script name and the names of actors within are up to date"
+	"Make certain that the script name and the names of players within are up to date"
 
-	| currentName titleMorph newName |
+	| currentName titleMorph |
 	playerScripted ifNil: ["likely a naked test/yes/no fragment!" ^ self].
 
 	currentName _ playerScripted externalName.
-	titleMorph _ self findDeepSubmorphThat: [:m | m externalName = 'title'] ifAbsent: [nil].
+	submorphs size = 0 ifTrue: [^ self].
+	self firstSubmorph "align" submorphsDo: [:m | "try quick way"
+				m knownName = 'title' ifTrue: [titleMorph _ m]].
+	titleMorph ifNil: [
+		titleMorph _ self firstSubmorph findDeepSubmorphThat: [:m | m knownName = 'title'] 
+								ifAbsent: [nil]].
 	titleMorph ifNotNil:
-		[newName _ self isAnonymous
-			ifTrue:
-				['script']
-			ifFalse:
-				[self scriptName].
-		titleMorph label: currentName, ' ', newName font: ScriptingSystem fontForTiles]
+		[titleMorph label: currentName, ' ', self scriptName font: ScriptingSystem fontForTiles]

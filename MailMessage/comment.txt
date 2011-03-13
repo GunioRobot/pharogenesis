@@ -1,0 +1,2 @@
+I represent a mail or news message. I parse the message header and keep certain header fields in instance variables for rapid access.
+

@@ -6,4 +6,4 @@ asPostscript
 	temp _ temp copyReplaceAll: '
 ' 
 			with: ''.
-	^ temp
+	^ PostscriptEncoder mapMacStringToPS: temp

@@ -4,7 +4,8 @@ nextPutImage: aForm
 	aForm unhibernate.
 	f _ aForm colorReduced.  "minimize depth"
 	f depth > 8 ifTrue: [
-		self error: 'GIF cannot store images with over 256 colors'].
+		"Not enough color space; do it the hard way."
+		f _ f asFormOfDepth: 8].
 	f depth < 8 ifTrue: [
 		"writeBitData: expects depth of 8"
 		newF _ f class extent: f extent depth: 8.

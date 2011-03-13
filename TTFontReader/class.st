@@ -1,0 +1,1 @@
+TTFontReader class instanceVariableNames: ''

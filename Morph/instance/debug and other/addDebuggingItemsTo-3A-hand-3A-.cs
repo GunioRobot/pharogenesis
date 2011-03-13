@@ -1,2 +1,2 @@
 addDebuggingItemsTo: aMenu hand: aHandMorph
-	aMenu add: 'debug...' subMenu:  (self debuggingMenuFor: aHandMorph)
+	aMenu add: 'debug...' subMenu:  (self buildDebugMenu: aHandMorph)

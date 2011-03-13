@@ -1,0 +1,1 @@
+WonderlandLightSource class instanceVariableNames: ''

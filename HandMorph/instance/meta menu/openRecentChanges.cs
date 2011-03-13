@@ -1,2 +1,0 @@
-openRecentChanges
-	Utilities browseRecentSubmissions

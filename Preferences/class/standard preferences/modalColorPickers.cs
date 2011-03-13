@@ -1,0 +1,2 @@
+modalColorPickers
+	^ self valueOfFlag: #modalColorPickers

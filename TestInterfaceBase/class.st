@@ -1,0 +1,1 @@
+TestInterfaceBase class instanceVariableNames: ''

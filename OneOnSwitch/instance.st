@@ -3,4 +3,4 @@ Switch
 	instanceVariableNames: 'connection '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Interface-Menus'
+	category: 'Tools-Menus'

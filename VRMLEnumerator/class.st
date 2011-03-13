@@ -1,0 +1,1 @@
+VRMLEnumerator class instanceVariableNames: ''

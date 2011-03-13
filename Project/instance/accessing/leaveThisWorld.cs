@@ -1,2 +1,0 @@
-leaveThisWorld
-	exitFlag _ true

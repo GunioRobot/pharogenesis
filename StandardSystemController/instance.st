@@ -3,4 +3,4 @@ MouseMenuController
 	instanceVariableNames: 'status '
 	classVariableNames: 'HBorderCursor ScheduledBlueButtonMenu ScheduledBlueButtonMessages VBorderCursor '
 	poolDictionaries: ''
-	category: 'Interface-Support'
+	category: 'ST80-Support'

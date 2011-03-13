@@ -1,13 +1,13 @@
 mouseEnter: event
 	"Present feedback for potential deletion."
-	| hand |
+	| hand firstSub |
 	hand _ event hand.
-	((hand submorphCount > 0) and:
-	 [hand submorphs first ~~ self])
-		ifTrue: [
-			Preferences soundsEnabled ifTrue: [self class playMouseEnterSound].
-			hand startDisplaySuppression.
+	(((hand submorphCount > 0) and: [(firstSub _ hand submorphs first) ~~ self]) and:
+			[self wantsDroppedMorph: firstSub event: event])
+		ifTrue: 
+			[Preferences soundsEnabled ifTrue: [self class playMouseEnterSound].
+			hand visible: false.
 			self world abandonAllHalos.
 			self state: #pressed]
-		ifFalse: [
-			self showStampIn: hand].
+		ifFalse:
+			[self showStampIn: hand]

@@ -10,7 +10,7 @@ statements: argNodes innerBlock: inner
 	[more]
 		whileTrue: 
 		[start _ self startOfNextToken.
-		(returns _ self match: #upArrow)
+		(returns _ self matchReturn)
 			ifTrue: 
 				[self expression
 					ifFalse: [^self expected: 'Expression to return'].

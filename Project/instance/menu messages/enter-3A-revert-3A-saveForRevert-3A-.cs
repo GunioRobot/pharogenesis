@@ -4,8 +4,13 @@ enter: returningFlag revert: revertFlag saveForRevert: saveForRevert
 	If revertFlag is true, make stubs for the world of the project being left.
 	If revertWithoutAsking is true in the project being left, then always revert."
 
-	| showZoom recorderOrNil old forceRevert response seg |
-	self == CurrentProject ifTrue: [^ self].
+	| showZoom recorderOrNil old forceRevert response seg newProcess |
+
+	(world isKindOf: StringMorph) ifTrue: [
+		self inform: 'This project is not all here. I will try to load a complete version.'.
+		^self loadFromServer: true	"try to get a fresh copy"
+	].
+	self isCurrentProject ifTrue: [^ self].
 	"Check the guards"
 	guards ifNotNil:
 		[guards _ guards reject: [:obj | obj isNil].
@@ -25,12 +30,20 @@ enter: returningFlag revert: revertFlag saveForRevert: saveForRevert
 	revertFlag | forceRevert 
 		ifTrue: [seg _ CurrentProject projectParameters at: #revertToMe ifAbsent: [
 					^ self inform: 'nothing to revert to']]
-		ifFalse: [CurrentProject makeThumbnail].
+		ifFalse: [
+			CurrentProject makeThumbnail.
+			returningFlag == #specialReturn ifTrue: [
+				ProjectHistory forget: CurrentProject.		"this guy is irrelevant"
+				Project forget: CurrentProject.
+			] ifFalse: [
+				ProjectHistory remember: CurrentProject.
+			].
+		].
 	(revertFlag | saveForRevert | forceRevert) ifFalse: [
 		(Preferences valueOfFlag: #projectsSentToDisk) ifTrue: [
 			self storeToMakeRoom]].
 
-	Smalltalk isMorphic ifTrue: [World triggerClosingScripts].
+	Smalltalk isMorphic ifTrue: [Display bestGuessOfCurrentWorld triggerClosingScripts].
 
 	"Update the display depth and make a thumbnail of the current project"
 	CurrentProject displayDepth: Display depth.
@@ -41,7 +54,6 @@ enter: returningFlag revert: revertFlag saveForRevert: saveForRevert
 		so that eventual errors can be handled accordingly"
 	displayDepth == nil ifTrue: [displayDepth _ Display depth].
 	self installNewDisplay: Display extent depth: displayDepth.
-
 	(showZoom _ self showZoom) ifTrue: [
 		self displayZoom: CurrentProject parent ~~ self].
 
@@ -50,9 +62,14 @@ enter: returningFlag revert: revertFlag saveForRevert: saveForRevert
 		ifFalse: [Smalltalk at: #ScorePlayer ifPresent: [:playerClass | 
 					playerClass allSubInstancesDo: [:player | player pause]]].
 
-	returningFlag
-		ifTrue: [nextProject _ CurrentProject]
-		ifFalse: [previousProject _ CurrentProject].
+	returningFlag == #specialReturn ifTrue: [
+		old removeChangeSetIfPossible.	"keep this stuff from accumulating"
+		nextProject _ nil
+	] ifFalse: [
+		returningFlag
+			ifTrue: [nextProject _ CurrentProject]
+			ifFalse: [previousProject _ CurrentProject].
+	].
 
 	CurrentProject saveState.
 	CurrentProject isolationHead == self isolationHead ifFalse:
@@ -61,19 +78,22 @@ enter: returningFlag revert: revertFlag saveForRevert: saveForRevert
 	Smalltalk newChanges: changeSet.
 	TranscriptStream newTranscript: transcript.
 	Sensor flushKeyboard.
-	Smalltalk isMorphic ifTrue: [recorderOrNil _ World pauseEventRecorder].
+	Smalltalk isMorphic ifTrue: [recorderOrNil _ Display pauseMorphicEventRecorder].
+
+	ProjectHistory remember: CurrentProject.
 
 	world isMorph
 		ifTrue:
-			[World _ world.  "Signifies Morphic"
+			[Display changeMorphicWorldTo: world.  "Signifies Morphic"
 			world install.
+			world transferRemoteServerFrom: old world.
 			"(revertFlag | saveForRevert | forceRevert) ifFalse: [
 				(Preferences valueOfFlag: #projectsSentToDisk) ifTrue: [
 					self storeSomeSegment]]."
-			recorderOrNil ifNotNil: [recorderOrNil resumeIn: World].
+			recorderOrNil ifNotNil: [recorderOrNil resumeIn: world].
 			world triggerOpeningScripts]
 		ifFalse:
-			[World _ nil.  "Signifies MVC"
+			[Display changeMorphicWorldTo: nil.  "Signifies MVC"
 			Smalltalk at: #ScheduledControllers put: world].
 
 	saveForRevert ifTrue: [
@@ -91,9 +111,17 @@ enter: returningFlag revert: revertFlag saveForRevert: saveForRevert
 	self removeParameter: #exportState.
 
 	"Complete the enter: by launching a new process"
-	world isMorph
-		ifTrue:
-			[self spawnNewProcessAndTerminateOld: true]
-		ifFalse:
-			[showZoom ifFalse: [ScheduledControllers restore].
-			ScheduledControllers searchForActiveController]
+	world isMorph ifTrue: [
+		self finalEnterActions.
+		world repairEmbeddedWorlds.
+		Project spawnNewProcessAndTerminateOld: true
+	] ifFalse: [
+		SystemWindow clearTopWindow.	"break external ref to this project"
+		newProcess _ [	
+			ScheduledControllers resetActiveController.	"in case of walkback in #restore"
+			showZoom ifFalse: [ScheduledControllers restore].
+			ScheduledControllers searchForActiveController
+		] fixTemps newProcess priority: Processor userSchedulingPriority.
+		newProcess resume.		"lose the current process and its referenced morphs"
+		Processor terminateActive.
+	]

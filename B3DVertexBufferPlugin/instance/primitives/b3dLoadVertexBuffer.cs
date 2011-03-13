@@ -64,5 +64,5 @@ b3dLoadVertexBuffer
 		texPtr = nil ifFalse:[defaultTexCoords _ defaultTexCoords + 2].
 	].
 	"Clean up stack"
-	interpreterProxy pop: 8. "Pop args+rcvr"
+	interpreterProxy pop: 9. "Pop args+rcvr"
 	interpreterProxy pushInteger: count.

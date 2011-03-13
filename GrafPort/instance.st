@@ -1,6 +1,6 @@
 BitBlt
 	subclass: #GrafPort
-	instanceVariableNames: ''
+	instanceVariableNames: 'alpha fillPattern '
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Support'

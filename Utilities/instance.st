@@ -1,6 +1,7 @@
 Object
 	subclass: #Utilities
 	instanceVariableNames: ''
-	classVariableNames: 'AuthorInitials CommonRequestStrings RecentSubmissions UpdateUrlLists '
+	classVariableNames:
+		'AuthorInitials AuthorName CommonRequestStrings FlapTabs LastStats RecentSubmissions ScrapsBook UpdateDownloader UpdateUrlLists '
 	poolDictionaries: ''
 	category: 'System-Support'

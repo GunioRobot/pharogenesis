@@ -1,9 +1,6 @@
 initialize
-	super initialize.
-	self
-		inset: 0;
-		color: Color transparent;
-		orientation: #horizontal;
-		disableDragNDrop;
-		height: 19;
-		week: Date today week month: Date today month
+
+	^ self initializeForWeek: Date today week
+		month: Date today month
+		tileRect: (0@0 extent: 23@19)
+		model: nil

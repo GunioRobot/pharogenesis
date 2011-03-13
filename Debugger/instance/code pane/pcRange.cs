@@ -7,9 +7,8 @@ pcRange
 		ifFalse: [^1 to: 0].
 	sourceMap == nil ifTrue:
 		[methodNode _ self selectedClass compilerClass new
-			parse: contents
-			in: self selectedClass
-			notifying: nil.
+			parse: contents in: self selectedClass
+			notifying: nil dialect: true.
 		sourceMap _ methodNode sourceMap.
 		tempNames _ methodNode tempNames.
 		self selectedContext method cacheTempNames: tempNames].

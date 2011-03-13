@@ -1,3 +1,3 @@
 minWidth
 
-	^ super minWidth max: 160
+	^160

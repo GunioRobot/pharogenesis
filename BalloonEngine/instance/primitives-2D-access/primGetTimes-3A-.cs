@@ -1,4 +1,3 @@
 primGetTimes: statsArray
-	<primitive:'gePrimitiveGetTimes'>
-	Debug ifTrue:[^BalloonEnginePlugin doPrimitive: 'gePrimitiveGetTimes'].
+	<primitive: 'primitiveGetTimes' module: 'B2DPlugin'>
 	^self primitiveFailed

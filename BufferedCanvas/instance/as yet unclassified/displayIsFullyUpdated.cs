@@ -1,0 +1,3 @@
+displayIsFullyUpdated
+
+	self checkIfTimeToDisplay

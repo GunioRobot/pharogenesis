@@ -1,0 +1,1 @@
+IndexTabs class instanceVariableNames: ''

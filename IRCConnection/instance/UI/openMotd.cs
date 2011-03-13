@@ -8,7 +8,10 @@ openMotd
 	win addMorph: textView  frame: (0@0 extent: 1@0.9).
 
 	updateButton _ PluggableButtonMorph on: self getState: nil action: #requestMotd.
-	updateButton label: 'update'.
+	updateButton
+		hResizing: #spaceFill;
+		vResizing: #spaceFill;
+		label: 'update'.
 	win addMorph: updateButton  frame: (0@0.9 extent: 1@0.1).
 
 	win openInWorld.

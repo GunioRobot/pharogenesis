@@ -3,4 +3,4 @@ AbstractScoreEvent
 	instanceVariableNames: 'duration midiKey velocity channel '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Music-Scores'
+	category: 'Sound-Scores'

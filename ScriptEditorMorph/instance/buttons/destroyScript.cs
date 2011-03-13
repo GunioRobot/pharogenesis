@@ -1,17 +1,14 @@
 destroyScript
-	| aMenu reply |
-	true ifTrue: [^ playerScripted removeScript: scriptName].
+	"At user request, and only after confirmation, destroy the script, thus removing it from the uniclass's method dictionary and removing its instantiations from all instances of uniclass, etc."
+
+	(self confirm: 'Caution -- this destroys this script
+permanently; are you sure you want to do this?') ifFalse: [^ self].
+	true ifTrue: [^ playerScripted removeScript: scriptName fromWorld: self world].
 
 	self flag: #deferred.  "revisit"
 	(playerScripted okayToDestroyScriptNamed: scriptName)
 		ifFalse:
 			[^ self inform: 'Sorry, this script is being called
 from another script.'].
-
-	(self isAnonymous not and: [submorphs size > 1]) ifTrue:
-		[aMenu _ SelectionMenu selections: #('destroy it' 'oops, no, don''t destroy').
-		reply _ aMenu startUpWithCaption: 'Do you really want to
-destroy this script?'.
-		(reply = 'destroy it') ifFalse: [^ self]].
 
 	self actuallyDestroyScript

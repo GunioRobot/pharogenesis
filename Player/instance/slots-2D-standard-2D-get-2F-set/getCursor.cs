@@ -1,2 +1,0 @@
-getCursor
-	^ self getValueFromCostume: #cursor

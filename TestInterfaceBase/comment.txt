@@ -1,0 +1,7 @@
+ABSTRACT base class for user interfaces to the SUnit framework.
+
+Instance Variables:
+	result			<TestResult>
+	classPattern		<String>
+	selectorPattern	<String>
+	duration		<Integer> [ms]

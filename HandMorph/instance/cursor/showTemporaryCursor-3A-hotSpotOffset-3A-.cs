@@ -9,6 +9,6 @@ showTemporaryCursor: cursorOrNil hotSpotOffset: hotSpotOffset
 				temporaryCursorOffset _ temporaryCursor offset - hotSpotOffset].
 	bounds _ self cursorBounds.
 	self 
-		userInitials: userInitials;
+		userInitials: userInitials andPicture: (self userPicture);
 		layoutChanged;
 		changed

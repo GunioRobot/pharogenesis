@@ -1,0 +1,1 @@
+TextDiffBuilder class instanceVariableNames: ''

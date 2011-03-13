@@ -1,0 +1,9 @@
+Vocabulary
+
+  vocabularyName	a Symbol -- the formal name by which this vocabulary is known.
+  categories			a list of MethodCategory objects: the categories that comprise the vocabulary
+  methodInterfaces 	an IdentityDictionary; keys are method selectors, values are MethodInterfaces
+
+  AllMethodInterfaces		This class variable is available to hold on to all method interfaces
+							defined in the system, regardless of class.  Not deployed in 
+							the first version of this code to be circulated externally.

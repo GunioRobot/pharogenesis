@@ -3,4 +3,4 @@ MessageSet
 	instanceVariableNames: 'selectedClass selectedSelector '
 	classVariableNames: 'TextMenu '
 	poolDictionaries: ''
-	category: 'Interface-Browser'
+	category: 'Tools-Browser'

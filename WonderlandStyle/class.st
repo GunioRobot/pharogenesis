@@ -1,0 +1,1 @@
+WonderlandStyle class instanceVariableNames: ''

@@ -17,8 +17,9 @@ from: aPopupMenu title: titleStringOrNil
 	lines _ aPopupMenu lineArray.
 	lines ifNil: [lines _ #()].
 	menu cancelValue: 0.
+	menu defaultTarget: menu.
 	selections _ (1 to: items size) asArray.
 	1 to: items size do: [:i |
-		menu add: (items at: i) action: (selections at: i).
+		menu add: (items at: i) selector: #selectMVCItem: argument: (selections at: i).
 		(lines includes: i) ifTrue: [menu addLine]].
 	^ menu

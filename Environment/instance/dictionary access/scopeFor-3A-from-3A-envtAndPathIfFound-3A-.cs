@@ -21,6 +21,6 @@ scopeFor: varName from: prior envtAndPathIfFound: envtAndPathBlock
 	"If not found, traverse outer environment."
 	outerEnvt ifNil: [^ nil].
 	outerEnvt == prior ifTrue: [^ nil].
-	subEnvt _ outerEnvt scopeFor: varName from: self envtAndPathIfFound:
+	outerEnvt scopeFor: varName from: self envtAndPathIfFound:
 						[:subEnvt :subPath |
 						^ envtAndPathBlock value: subEnvt value: subPath].

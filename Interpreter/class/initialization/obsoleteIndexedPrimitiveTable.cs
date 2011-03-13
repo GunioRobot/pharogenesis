@@ -26,6 +26,7 @@ obsoleteIndexedPrimitiveTable
 		(161 (FilePlugin primitiveDirectoryDelimitor))
 		(162 (FilePlugin primitiveDirectoryLookup))
 		(163 (FilePlugin primitiveDirectoryDelete))
+		(164 (FilePlugin primitiveDirectoryGetMacTypeAndCreator))
 		(169 (FilePlugin primitiveDirectorySetMacTypeAndCreator))
 
 		"Sound Primitives (170-199)"
@@ -35,6 +36,18 @@ obsoleteIndexedPrimitiveTable
 		(173 (SoundPlugin primitiveSoundAvailableSpace))
 		(174 (SoundPlugin primitiveSoundPlaySamples))
 		(175 (SoundPlugin primitiveSoundPlaySilence))
+
+		(176 (SoundGenerationPlugin primitiveWaveTableSoundMix))
+		(177 (SoundGenerationPlugin primitiveFMSoundMix))
+		(178 (SoundGenerationPlugin primitivePluckedSoundMix))
+		(179 (SoundGenerationPlugin primitiveSampledSoundMix))
+		(180 (SoundGenerationPlugin primitiveMixFMSound))
+		(181 (SoundGenerationPlugin primitiveMixPluckedSound))
+		(182 (SoundGenerationPlugin primitiveOldSampledSoundMix))
+		(183 (SoundGenerationPlugin primitiveApplyReverb))
+		(184 (SoundGenerationPlugin primitiveMixLoopedSampledSound))
+		(185 (SoundGenerationPlugin primitiveMixSampledSound))
+
 		(189 (SoundPlugin primitiveSoundInsertSamples))
 		(190 (SoundPlugin primitiveSoundStartRecording))
 		(191 (SoundPlugin primitiveSoundStopRecording))
@@ -71,10 +84,19 @@ obsoleteIndexedPrimitiveTable
 		(225 (SocketPlugin primitiveSocketAccept))
 
 		"Other Primitives (230-249)"
+		(234 (MiscPrimitivePlugin primitiveDecompressFromByteArray))
+		(235 (MiscPrimitivePlugin primitiveCompareString))
+		(236 (MiscPrimitivePlugin primitiveConvert8BitSigned))
+		(237 (MiscPrimitivePlugin primitiveCompressToByteArray))
 		(238 (SerialPlugin primitiveSerialPortOpen))
 		(239 (SerialPlugin primitiveSerialPortClose))
 		(240 (SerialPlugin primitiveSerialPortWrite))
 		(241 (SerialPlugin primitiveSerialPortRead))
+
+		(243 (MiscPrimitivePlugin primitiveTranslateStringWithTable))
+		(244 (MiscPrimitivePlugin primitiveFindFirstInString))
+		(245 (MiscPrimitivePlugin primitiveIndexOfAsciiInString))
+		(246 (MiscPrimitivePlugin primitiveFindSubstring))
 
 		"MIDI Primitives (520-539)"
 		(521 (MIDIPlugin primitiveMIDIClosePort))
@@ -100,10 +122,11 @@ obsoleteIndexedPrimitiveTable
 		(549 (JoystickTabletPlugin primitiveReadTablet))
 
 		"Sound Codec Primitives"
-		"(550 primADPCMCodecprivateDecodeMono)	
-		(551 primADPCMCodecprivateDecodeStereo)	
-		(552 primADPCMCodecprivateEncodeMono)	
-		(553 primADPCMCodecprivateEncodeStereo)"
+
+		(550 (ADPCMCodecPlugin primitiveDecodeMono))
+		(551 (ADPCMCodecPlugin primitiveDecodeStereo))	
+		(552 (ADPCMCodecPlugin primitiveEncodeMono))	
+		(553 (ADPCMCodecPlugin primitiveEncodeStereo))
 
 	) do:[:spec| table at: spec first+1 put: spec second].
 	^table

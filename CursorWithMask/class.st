@@ -1,0 +1,1 @@
+CursorWithMask class instanceVariableNames: ''

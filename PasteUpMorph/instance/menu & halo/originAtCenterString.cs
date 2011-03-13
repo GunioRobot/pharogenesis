@@ -1,6 +1,8 @@
 originAtCenterString
+	"Answer the string to be shown in a menu to represent the origin-at-center status"
+
 	^ (self hasProperty: #originAtCenter)
 		ifTrue:
-			['stop origin-at-center']
+			['<on>origin-at-center']
 		ifFalse:
-			['start origin-at-center']
+			['<off>origin-at-center']

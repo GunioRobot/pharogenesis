@@ -10,5 +10,6 @@ keyStroke: evt
 	"Special case for return"
 	keyValue = 13 ifTrue:[
 		"Drop the receiver and be done"
-		owner newKeyboardFocus: nil.
+	self flag: #arNote. "Probably unnecessary"
+		owner releaseKeyboardFocus: self.
 		self delete].

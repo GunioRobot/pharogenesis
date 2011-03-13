@@ -1,2 +1,0 @@
-isCurve
-	^ true

@@ -1,0 +1,3 @@
+resetFrom: scorePlayer
+
+	"Ignored"

@@ -6,4 +6,8 @@ request: queryString initialAnswer: defaultAnswer centerAt: aPoint
 		initialAnswer: 'yo ho ho!'
 		centerAt: Display center"
 
-	 ^ self request: queryString initialAnswer: defaultAnswer centerAt: aPoint inWorld: World
+	 ^ self 
+		request: queryString 
+		initialAnswer: defaultAnswer 
+		centerAt: aPoint 
+		inWorld: Display getCurrentMorphicWorld

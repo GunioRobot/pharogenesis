@@ -1,0 +1,3 @@
+encodePoint: point
+	
+	^point encodeForRemoteCanvas

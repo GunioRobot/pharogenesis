@@ -1,2 +1,2 @@
 directionArrowLength
-	^ 20
+	^ 25

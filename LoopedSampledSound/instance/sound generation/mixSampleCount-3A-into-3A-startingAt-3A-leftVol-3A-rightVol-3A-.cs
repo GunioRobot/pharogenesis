@@ -3,7 +3,7 @@ mixSampleCount: n into: aSoundBuffer startingAt: startIndex leftVol: leftVol rig
 	"(LoopedSampledSound pitch: 440.0 dur: 5.0 loudness: 0.5) play"
 
 	| lastIndex sampleIndex i s compositeLeftVol compositeRightVol nextSampleIndex m isInStereo rightVal leftVal |
-	<primitive: 184>
+	<primitive:'primitiveMixLoopedSampledSound' module:'SoundGenerationPlugin'>
 	self var: #aSoundBuffer declareC: 'short int *aSoundBuffer'.
 	self var: #leftSamples declareC: 'short int *leftSamples'.
 	self var: #rightSamples declareC: 'short int *rightSamples'.

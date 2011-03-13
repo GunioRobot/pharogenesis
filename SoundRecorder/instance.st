@@ -1,7 +1,7 @@
 Object
 	subclass: #SoundRecorder
 	instanceVariableNames:
-		'stereo samplingRate recordedBuffers recordProcess bufferAvailableSema paused meteringBuffer meterLevel soundPlaying currentBuffer nextIndex '
-	classVariableNames: 'CanRecordWhilePlaying '
+		'stereo samplingRate recordLevel recordedBuffers recordedSound recordProcess bufferAvailableSema paused meteringBuffer meterLevel soundPlaying currentBuffer nextIndex codec desiredSampleRate '
+	classVariableNames: 'CanRecordWhilePlaying RecorderActive '
 	poolDictionaries: ''
-	category: 'System-Sound'
+	category: 'Sound-Synthesis'

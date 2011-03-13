@@ -3,4 +3,4 @@ Path
 	instanceVariableNames: 'quadrant radius center '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Graphics-Paths'
+	category: 'ST80-Paths'

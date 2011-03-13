@@ -1,3 +1,3 @@
 clipboardText
 
-	^ self class clipboardText
+	^ Clipboard clipboardText

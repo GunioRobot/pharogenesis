@@ -35,12 +35,18 @@ small method bodies are inlined to reduce procedure call overhead. On the PPC, t
 
 		"I/O subsystems"
 		FilePlugin.
-		SocketPlugin. 
-		SoundPlugin. 
+		SocketPlugin.
 		MIDIPlugin. 
 		SerialPlugin. 
 		JoystickTabletPlugin. 
 		AsynchFilePlugin. 
+
+		"Sound"
+		SoundPlugin. 
+		SoundGenerationPlugin.
+		ADPCMCodecPlugin.
+		KlattSynthesizerPlugin.
+		SoundCodecPlugin.
 
 	 	"Numerics"
 		LargeIntegersPlugin.
@@ -52,14 +58,14 @@ small method bodies are inlined to reduce procedure call overhead. On the PPC, t
 		DeflatePlugin.
 
 		"Others"
-		KlattSynthesizerPlugin.
-		SoundCodecPlugin.
 		B3DEnginePlugin.
-		FFIPlugin.
+		DSAPlugin.
+		DropPlugin. 
+		MiscPrimitivePlugin.
 
 		"Note: Optionally, you can translate the following as builtins.
 		As of Squeak 2.7 they are not builtins by default:
-			DSAPlugin.
+			FFIPlugin.
 		"
 	} do:[:plugin|
 		cg _ plugin translate: plugin moduleName, '.c'

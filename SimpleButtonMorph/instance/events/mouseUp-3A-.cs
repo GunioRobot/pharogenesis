@@ -6,4 +6,4 @@ mouseUp: evt
 		self color: oldColor.
 		oldColor _ nil.
 		(actWhen == #buttonUp and: [self containsPoint: evt cursorPoint])
-			ifTrue: [self doButtonAction]]
+			ifTrue: [self doButtonAction]].

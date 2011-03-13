@@ -6,8 +6,8 @@ addTitle
 	title _ StringMorph contents: 'Phoneme Recognizer' font: font.
 	r _ AlignmentMorph newColumn
 		color: color;
-		inset: 0;
-		centering: #center;
+		layoutInset: 0;
+		wrapCentering: #center; cellPositioning: #topCenter;
 		hResizing: #spaceFill;
 		vResizing: #rigid;
 		height: 20.

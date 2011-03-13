@@ -1,12 +1,20 @@
 renameScript: oldSelector newSelector: newSelector
-	|  oldStatus aUserScript aScriptEditor |
+	"Rename the given script to have the new selector"
+
+	|  aUserScript aScriptEditor anInstantiation |
 	aUserScript _ self class userScriptForPlayer: self selector: oldSelector.
 	aScriptEditor _ aUserScript instantiatedScriptEditor.
-	oldStatus _ aScriptEditor scriptInstantiation status.
-	aScriptEditor renameScript: newSelector.
-	aScriptEditor bringUpToDate.
+	aScriptEditor renameScriptTo: newSelector.
+	aUserScript bringUpToDate.
 	self class removeScriptNamed: oldSelector.
 	self class atSelector: newSelector putScriptEditor: aScriptEditor.
-	aScriptEditor scriptInstantiation status: oldStatus.
-	self actorState instantiatedUserScriptsDictionary removeKey: oldSelector.
+	self class allSubInstancesDo:
+		[:aPlayer |
+			anInstantiation _ aPlayer scriptInstantiationForSelector: oldSelector.
+			anInstantiation changeSelectorTo: newSelector.
+			aPlayer costume actorState instantiatedUserScriptsDictionary
+				removeKey: oldSelector;
+				at: newSelector put: anInstantiation.
+			anInstantiation assureEventHandlerRepresentsStatus].
+	
 	self updateAllViewersAndForceToShow: 'scripts'

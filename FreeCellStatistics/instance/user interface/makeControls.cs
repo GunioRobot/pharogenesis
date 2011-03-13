@@ -3,7 +3,7 @@ makeControls
 
 	row _ AlignmentMorph newRow.
 	row
-		centering: #center;
+		wrapCentering: #center; cellPositioning: #leftCenter;
 		hResizing: #spaceFill;
 		vResizing: #shrinkWrap;
 		color: self color;

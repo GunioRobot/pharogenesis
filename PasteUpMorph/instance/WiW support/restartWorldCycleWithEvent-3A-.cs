@@ -4,4 +4,4 @@ restartWorldCycleWithEvent: evt
 	evt ifNotNil: [
 		self primaryHand handleEvent: (evt setHand: self primaryHand).
 	].
-	Project current spawnNewProcessAndTerminateOld: true
+	CurrentProjectRefactoring currentSpawnNewProcessAndTerminateOld: true

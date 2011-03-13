@@ -1,3 +1,3 @@
 defaultPageSize
-	" This is European A4 size in points.  Letter is 612 @ 792 "
-	^ 0 @ 0 extent: 595 @ 842.
+	" This is Letter size in points.  European A4 is 595 @ 842 "
+	^ 0 @ 0 extent: ((8.5 @ 11.0) * 72) asIntegerPoint.

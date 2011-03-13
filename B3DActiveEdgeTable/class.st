@@ -1,0 +1,1 @@
+B3DActiveEdgeTable class instanceVariableNames: ''

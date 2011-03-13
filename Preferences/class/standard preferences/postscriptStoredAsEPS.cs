@@ -1,0 +1,2 @@
+postscriptStoredAsEPS
+	^ self valueOfFlag: #postscriptStoredAsEPS

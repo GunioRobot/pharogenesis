@@ -1,9 +1,9 @@
 asTexture
 	"Represent the receiver as a Wonderland texture."
-	| canvas texture dirty hqTexture texExtent tempForm |
+	| canvas texture hqTexture texExtent tempForm valid |
 	hqTexture _ self valueOfProperty: #highQualityTexture ifAbsent:[false].
-	dirty _ self valueOfProperty: #textureIsDirty ifAbsent:[false].
-	texture _ self valueOfProperty: #wonderlandTexture.
+	valid _ self isValidWonderlandTexture.
+	texture _ self wonderlandTexture.
 	"Determine the size we expect the texture to be.
 	Note: This size must never be less than the receiver's since
 	this will lead to (unwanted) clipping."
@@ -19,12 +19,12 @@ asTexture
 		texture interpolate: false.
 		texture wrap: false.
 		texture envMode: 0.
-		dirty _ true].
-	dirty ifTrue:[
+		valid _ false].
+	valid ifFalse:[
 		canvas _ texture getCanvas.
 		canvas translateBy: self topLeft negated
-			during:[:tempCanvas| self fullDrawOn: tempCanvas].
-		self removeProperty: #textureIsDirty.
+			during:[:tempCanvas| tempCanvas fullDrawMorph: self].
+		self isValidWonderlandTexture: true.
 		"High quality textures need an extra pass here"
 		(texExtent ~= self extent) ifTrue:[
 			tempForm _ texture contentsOfArea: (0@0 extent: self extent).

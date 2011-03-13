@@ -1,5 +1,4 @@
 handlesMouseDown: evt
 	(owner wantsKeyboardFocusFor: self)
-		ifTrue:
-			[^ self uncoveredAt: evt cursorPoint].
+		ifTrue:[^true].
 	^ super handlesMouseDown: evt

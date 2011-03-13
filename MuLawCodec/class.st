@@ -1,0 +1,1 @@
+MuLawCodec class instanceVariableNames: ''

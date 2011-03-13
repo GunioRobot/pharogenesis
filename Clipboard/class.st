@@ -1,0 +1,1 @@
+Clipboard class instanceVariableNames: ''

@@ -1,0 +1,1 @@
+B3DRotation class instanceVariableNames: ''

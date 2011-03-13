@@ -1,3 +1,0 @@
-stepList
-
-	^ worldState stepList

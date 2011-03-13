@@ -5,5 +5,5 @@ useUpMemory
 	| lst |
 	lst _ nil.
 	[true] whileTrue: [
-		lst _ Link new nextLink: lst; yourself.
+		lst _ Link nextLink: lst.
 	].

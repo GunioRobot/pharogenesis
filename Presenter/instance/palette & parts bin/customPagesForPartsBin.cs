@@ -19,7 +19,7 @@ customPagesForPartsBin
 	aWindow setLabel: 'System Browser'.
 	aPage addMorphBack: aWindow applyModelExtent.
 
-	aWindow _ PackageBrowser new openAsMorphEditing: nil.
+	aWindow _ PackagePaneBrowser new openAsMorphEditing: nil.
 	aWindow setLabel: 'Package Browser'.
 	aPage addMorphBack: aWindow applyModelExtent.
 
@@ -42,9 +42,6 @@ customPagesForPartsBin
 	aPage addMorphBack: ((pu _ PasteUpMorph newSticky) embeddedInMorphicWindowLabeled: 'assembly').
 	pu color: (Color r: 0.839 g: 1.0 b: 0.935).
 
-	pageList do:
-		[:page |
-			page  replaceTallSubmorphsByThumbnails.
-			page fixLayout].
+	pageList do:[:page | page  replaceTallSubmorphsByThumbnails].
 
 	^ pageList

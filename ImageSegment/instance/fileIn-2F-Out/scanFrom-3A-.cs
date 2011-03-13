@@ -8,7 +8,7 @@ scanFrom: aStream
 			ifTrue: ["Move (aStream nextChunk), find the method or class 
 						comment, and install the file location bytes"
 					(Compiler evaluate: aStream nextChunk logged: false)
-						scanFromNoCompile: aStream]
+						scanFromNoCompile: aStream forSegment: self]
 			ifFalse: [chunk _ aStream nextChunk.
 					aStream checkForPreamble: chunk.
 					Compiler evaluate: chunk logged: true].

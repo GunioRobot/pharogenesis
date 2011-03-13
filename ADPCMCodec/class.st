@@ -1,0 +1,1 @@
+ADPCMCodec class instanceVariableNames: ''

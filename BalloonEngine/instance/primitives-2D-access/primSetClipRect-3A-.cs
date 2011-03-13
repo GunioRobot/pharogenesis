@@ -1,4 +1,3 @@
 primSetClipRect: rect
-	<primitive: 'gePrimitiveSetClipRect'>
-	Debug ifTrue:[^BalloonEnginePlugin doPrimitive: 'gePrimitiveSetClipRect'].
+	<primitive: 'primitiveSetClipRect' module: 'B2DPlugin'>
 	^self primitiveFailed

@@ -1,0 +1,1 @@
+GraphicalDictionaryMenu class instanceVariableNames: ''

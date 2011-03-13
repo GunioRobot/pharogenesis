@@ -1,0 +1,3 @@
+soundBeingEdited
+
+	^ sound

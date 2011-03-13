@@ -1,0 +1,1 @@
+SpeakerMorph class instanceVariableNames: ''

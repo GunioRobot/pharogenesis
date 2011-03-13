@@ -1,4 +1,5 @@
 setScrollDeltas
+	"Set the ScrollBar deltas, value and interval, based on the current scroll pane size, offset and range."
 	| range delta |
 	self hideOrShowScrollBar.
 	scroller hasSubmorphs ifFalse: [scrollBar interval: 1.0.  ^ self].
@@ -10,3 +11,4 @@ setScrollDeltas
 	scrollBar scrollDelta: (delta / range) asFloat 
 			pageDelta: ((self innerBounds height - delta) / range) asFloat.
 	scrollBar interval: ((self innerBounds height - delta) / self totalScrollRange) asFloat.
+	scrollBar value: (scroller offset y / self leftoverScrollRange) asFloat.

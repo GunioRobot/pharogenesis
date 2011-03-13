@@ -1,3 +1,0 @@
-- aColor
-
-	^ self

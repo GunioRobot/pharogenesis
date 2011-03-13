@@ -3,7 +3,7 @@ privateDecodeStereo: count
 	| predictedLeft predictedRight indexLeft indexRight deltaLeft deltaRight
 	 stepLeft stepRight predictedDeltaLeft predictedDeltaRight bit |
 
-	<primitive: 551>
+	<primitive: 'primitiveDecodeStereo' module: 'ADPCMPlugin'>
 	self var: #stepSizeTable declareC: 'short int *stepSizeTable'.
 	self var: #indexTable declareC: 'short int *indexTable'.
 	self var: #samples declareC: 'short int *samples'.

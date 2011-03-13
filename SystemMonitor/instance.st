@@ -5,4 +5,4 @@ Object
 	classVariableNames:
 		'ActiveClock ActiveMonitor BackgroundColor BarBackgroundColor BarBorderColor BarBorderWidth BarColors BarForegroundColor BarWidth BorderColor BorderWidth DefaultBarHeight ForegroundColor Inset MonitorDelay '
 	poolDictionaries: ''
-	category: 'Squeak-Interpreter'
+	category: 'VMConstruction-Interpreter'

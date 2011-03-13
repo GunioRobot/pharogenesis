@@ -1,0 +1,1 @@
+FlashColorTransform class instanceVariableNames: ''

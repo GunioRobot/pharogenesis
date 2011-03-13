@@ -1,2 +1,0 @@
-menuTargetOffset
-	^ menuTargetOffset

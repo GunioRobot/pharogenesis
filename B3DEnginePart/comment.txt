@@ -1,0 +1,4 @@
+I am the superclass for all separate parts of the Balloon 3D engine. I define the basic interface each part of the engine must respond to.
+
+Instance variables:
+	engine	<B3DRenderEngine>	The 3D engine I am associated with

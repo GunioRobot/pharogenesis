@@ -3,4 +3,4 @@ headerFieldsNamed: fieldName do: aBlock
 
 	self fieldsFrom: (ReadStream on: text) do:
 		[: fName : fValue |
-			fieldName = fName ifTrue: [aBlock value: fValue]].
+			(fieldName sameAs: fName) ifTrue: [aBlock value: fValue]].

@@ -1,0 +1,1 @@
+IRCConnection class instanceVariableNames: ''

@@ -1,6 +1,6 @@
 Object
 	subclass: #TextPrinter
 	instanceVariableNames: 'form para paperSize landscape resolution depth offset columns docTitle noHeader noFooter '
-	classVariableNames: 'DefaultPaperSize '
+	classVariableNames: 'DefaultPaperSize DefaultTextPrinter '
 	poolDictionaries: ''
-	category: 'Graphics-Support'
+	category: 'Graphics-Text'

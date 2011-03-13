@@ -1,0 +1,14 @@
+This is a port of JTetris.java 1.0.0.
+
+How to start:
+choose new morph.../Games/Tetris
+
+How to play:
+1) using buttons
+2) using keyboard:
+	drop - spacebar
+	move to left - left arrow
+	move to right - right arrow
+	rotate clockwise - up arrow
+	rotate anticlockwise - down arrow
+NOTE: mouse must be over Tetris

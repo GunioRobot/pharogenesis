@@ -1,0 +1,5 @@
+This class implements the SMTP (mail sending) protocol specified in RFC 821.
+
+Note that it does not look up DNS MX records when sending to the specified host, so it will not work correctly to send directly to large structured domain names like "intel.com" or "microsoft.com", but it will work fine for talking with your local mail server which will then pass along the mail to the real destination.
+
+Note also that the error reporting is done with error: and so an exception handler must be wrapped around the sending call in case it fails.

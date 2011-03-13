@@ -2,11 +2,11 @@ fillRectangle: aRectangle fillStyle: aFillStyle
 	"Fill the given rectangle."
 	| pattern |
 	self shadowColor ifNotNil:
-		[^self fillRectangle: aRectangle color: self shadowColor].
+		[^self fillRectangle: aRectangle color: aFillStyle asColor].
 
-	(aFillStyle isBitmapFill and:[aFillStyle isKindOf: InfiniteForm]) ifTrue:[
-		self flag: #fixThis.
-		^self fillRectangle: aRectangle color: aFillStyle].
+	(aFillStyle isKindOf: InfiniteForm) ifTrue: [
+		^self infiniteFillRectangle: aRectangle fillStyle: aFillStyle
+	].
 
 	(aFillStyle isSolidFill) 
 		ifTrue:[^self fillRectangle: aRectangle color: aFillStyle asColor].
@@ -19,4 +19,4 @@ fillRectangle: aRectangle fillStyle: aFillStyle
 				^self fillRectangle: aRectangle color: (InfiniteForm with: pattern)].
 	].
 	"Use a BalloonCanvas instead"
-	self asBalloonCanvas fillRectangle: aRectangle fillStyle: aFillStyle.
+	self balloonFillRectangle: aRectangle fillStyle: aFillStyle.

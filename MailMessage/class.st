@@ -1,0 +1,1 @@
+MailMessage class instanceVariableNames: ''

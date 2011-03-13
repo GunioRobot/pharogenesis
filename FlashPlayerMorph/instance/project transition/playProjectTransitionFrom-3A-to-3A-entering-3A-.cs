@@ -20,12 +20,12 @@ playProjectTransitionFrom: oldProject to: newProject entering: aBoolean
 	self comeToFront.
 	self startStepping.
 	self startPlaying.
-	[playing] whileTrue:[World doOneCycleNow].
+	[playing] whileTrue: [Display doOneCycleNowMorphic].
 	self stopPlaying.
 	self stopStepping.
 	owner privateRemoveMorph: self.
 	owner _ nil.
 	self removeProperty: #transitionBackground.
 	Display deferUpdates: true.
-	World fullDrawOn: (Display getCanvas).
+	Display bestGuessOfCurrentWorld fullDrawOn: (Display getCanvas).
 	Display deferUpdates: false.

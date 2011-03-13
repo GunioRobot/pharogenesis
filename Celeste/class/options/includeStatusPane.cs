@@ -1,0 +1,3 @@
+includeStatusPane
+
+	^Preferences celesteHasStatusPane

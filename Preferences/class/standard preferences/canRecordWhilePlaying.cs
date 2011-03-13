@@ -1,0 +1,2 @@
+canRecordWhilePlaying
+	^ self valueOfFlag: #canRecordWhilePlaying

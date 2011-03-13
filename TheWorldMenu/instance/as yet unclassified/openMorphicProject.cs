@@ -1,0 +1,3 @@
+openMorphicProject
+
+	Project newMorphicOn: nil

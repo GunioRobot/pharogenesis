@@ -1,6 +1,6 @@
 ImageMorph
 	subclass: #ProjectViewMorph
-	instanceVariableNames: 'project lastProjectThumbnail '
+	instanceVariableNames: 'project lastProjectThumbnail mouseDownTime '
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Windows'

@@ -1,0 +1,3 @@
+wantsDirectionHandles
+
+	^ Preferences showDirectionHandles 

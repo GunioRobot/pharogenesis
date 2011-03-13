@@ -1,0 +1,3 @@
+summaryTextV: aPluggableTextView
+
+	summaryTextV := aPluggableTextView.

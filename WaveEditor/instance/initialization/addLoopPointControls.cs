@@ -2,8 +2,8 @@ addLoopPointControls
 
 	| r m |
 	r _ AlignmentMorph newRow.
-	r color: self color; borderWidth: 0; inset: 0.
-	r hResizing: #spaceFill; vResizing: #rigid; extent: 5@20; centering: #center.
+	r color: self color; borderWidth: 0; layoutInset: 0.
+	r hResizing: #spaceFill; vResizing: #rigid; extent: 5@20; wrapCentering: #center; cellPositioning: #leftCenter.
 
 	m _ StringMorph new contents: 'Loop end: '.
 	r addMorphBack: m.

@@ -1,2 +1,0 @@
-ActorDroneMorph comment:
-'I am a class of ActorMorphs that all share the same behavior methods.  OnTicks defined for one of me is used for all of me as long as we are of the same clan.  Clan is a symbol that is our name.'

@@ -1,6 +1,6 @@
 updateHashTable: table delta: delta
 	| pos |
-	<primitive:'primitiveDeflateUpdateHashTable'>
+	<primitive: 'primitiveDeflateUpdateHashTable' module: 'ZipPlugin'>
 	1 to: table size do:[:i|
 		"Discard entries that are out of range"
 		(pos _ table at: i) >= delta

@@ -1,2 +1,0 @@
-unlockContents
-	argument unlockContents

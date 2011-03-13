@@ -1,0 +1,3 @@
+compiledMethod
+
+	^ methodClass compiledMethodAt: methodSelector

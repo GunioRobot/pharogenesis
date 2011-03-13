@@ -1,0 +1,2 @@
+isFlapTab
+	^true

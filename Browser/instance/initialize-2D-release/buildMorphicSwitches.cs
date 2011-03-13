@@ -1,6 +1,6 @@
 buildMorphicSwitches
 
-	| instanceSwitch commentSwitch classSwitch row aColor |
+	| instanceSwitch divider1 divider2 commentSwitch classSwitch row aColor |
 
 	instanceSwitch _ PluggableButtonMorph
 		on: self
@@ -8,7 +8,8 @@ buildMorphicSwitches
 		action: #indicateInstanceMessages.
 	instanceSwitch
 		label: 'instance';
-		askBeforeChanging: true.
+		askBeforeChanging: true;
+		borderWidth: 0.
 	commentSwitch _ PluggableButtonMorph
 		on: self
 		getState: #classCommentIndicated
@@ -16,26 +17,36 @@ buildMorphicSwitches
 	commentSwitch
 		label: '?' asText allBold;
 		askBeforeChanging: true;
-		setBalloonText: 'class comment'.
+		setBalloonText: 'class comment';
+		borderWidth: 0.
 	classSwitch _ PluggableButtonMorph
 		on: self
 		getState: #classMessagesIndicated
 		action: #indicateClassMessages.
 	classSwitch
 		label: 'class';
-		askBeforeChanging: true.
+		askBeforeChanging: true;
+		borderWidth: 0.
+	divider1 := SubpaneDividerMorph vertical.
+	divider2 := SubpaneDividerMorph vertical.
 	row _ AlignmentMorph newRow
 		hResizing: #spaceFill;
 		vResizing: #spaceFill;
-		inset: 0;
-		borderColor: Color transparent;
+		layoutInset: 0;
+		borderWidth: 0;
 		addMorphBack: instanceSwitch;
+		addMorphBack: divider1;
 		addMorphBack: commentSwitch;
+		addMorphBack: divider2;
 		addMorphBack: classSwitch.
 
 	aColor _ Color colorFrom: self defaultBackgroundColor.
-	row submorphs do:
-		[:m | m color: aColor.
-		m onColor: aColor darker offColor: aColor].
+	{instanceSwitch. commentSwitch. classSwitch} do: [:m | 
+		m 
+			color: aColor;
+			onColor: aColor darker offColor: aColor;
+			hResizing: #spaceFill;
+			vResizing: #spaceFill.
+	].
 
 	^ row

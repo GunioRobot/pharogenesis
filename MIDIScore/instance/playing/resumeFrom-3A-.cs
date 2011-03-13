@@ -1,2 +1,2 @@
 resumeFrom: scorePlayer
-	self otherPlayersDo: [:p | p resumeFrom: scorePlayer]
+	self eventMorphsDo: [:p | p resumeFrom: scorePlayer]

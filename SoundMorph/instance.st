@@ -3,4 +3,4 @@ ImageMorph
 	instanceVariableNames: 'sound '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Demo'
+	category: 'Sound-Interface'

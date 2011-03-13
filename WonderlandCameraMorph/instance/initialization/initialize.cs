@@ -1,7 +1,7 @@
 initialize
 	super initialize.
 	lastCursorPoint _ 0 @ 0.
-	Project current addGuard: self.
+	CurrentProjectRefactoring currentAddGuard: self.
 
 	"Teddy"
 	self mode: #view.

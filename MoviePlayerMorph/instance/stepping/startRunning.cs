@@ -1,6 +1,7 @@
 startRunning
 
 	| ms |
+	(frameBufferIfScaled ifNil: [currentPage image]) unhibernate.
 	movieFile _ AsyncFile new open: movieFileName forWrite: false.
 	movieFile primReadStart: movieFile fileHandle
 			fPosition: (self filePosForFrameNo: frameNumber)
@@ -11,10 +12,10 @@ startRunning
 				msAtLastSync _ ms - msAtStart.
 				frameAtLastSync _ frameNumber]
 		ifFalse: [(playDirection > 0 and: [scorePlayer isKindOf: SampledSound]) ifTrue:
-					[frameNumber <= 1
-						ifTrue: [scorePlayer play]
-						ifFalse: [scorePlayer reset;
-									playSilentlyUntil: frameNumber - 1 * msPerFrame / 1000.0;
-									resumePlaying]].
+					[scorePlayer reset;
+							playSilentlyUntil: (frameNumber - 1 * msPerFrame / 1000.0);						initialVolume: 1.0.
+					[scorePlayer resumePlaying.
+					msAtLastSync _ scorePlayer millisecondsSinceStart]
+						forkAt: Processor userInterruptPriority].
 				msAtLastSync _ scorePlayer millisecondsSinceStart.
 				frameAtLastSync _ frameNumber]

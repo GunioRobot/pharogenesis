@@ -1,0 +1,3 @@
+isTypeFTP
+
+	^self typeWithDefault == #ftp

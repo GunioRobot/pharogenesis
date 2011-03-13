@@ -11,6 +11,5 @@ addPartsTab
 	aPage addMorphBack: ScriptingSystem prototypicalHolder.
 	aPage replaceTallSubmorphsByThumbnails.
 	aPage setPartsBinStatusTo: true.
-	aPage fixLayout.
 	partsBook insertPage: aPage pageSize: pageSize.
 	self addTabForBook: partsBook withBalloonText: 'parts bin'

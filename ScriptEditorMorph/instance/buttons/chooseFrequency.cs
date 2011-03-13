@@ -8,4 +8,4 @@ chooseFrequency
 	
 	aMenu add: 'other...' action: #typeInFrequency.
 	aMenu addTitle: 'Choose frequency (current: ', currentFrequency printString, ')'.
-	aMenu  popUpEvent: self currentEvent
+	aMenu  popUpEvent: self currentEvent in: self world

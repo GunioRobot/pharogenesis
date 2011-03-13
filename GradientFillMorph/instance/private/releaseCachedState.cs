@@ -1,2 +1,0 @@
-releaseCachedState
-	colorArray _ nil

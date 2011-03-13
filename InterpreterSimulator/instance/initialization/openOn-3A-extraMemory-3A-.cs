@@ -3,9 +3,9 @@ openOn: fileName extraMemory: extraBytes
 
 	| f version headerSize count oldBaseAddr bytesToShift swapBytes |
 	"open image file and read the header"
-	f _ FileStream oldFileNamed: fileName.
+	f _ FileStream readOnlyFileNamed: fileName.
 	imageName _ f fullName.
-	f binary; readOnly.
+	f binary.
 	version _ self nextLongFrom: f.  "current version: 16r1966 (=6502)"
 	(self readableFormat: version)
 		ifTrue: [swapBytes _ false]

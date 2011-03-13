@@ -1,12 +1,12 @@
 editDrawingIn: aPasteUpMorph forBackground: forBackground
 
-	| w oldRotation bnds sketchEditor pal aPaintTab aWorld aPaintBox |
+	| w bnds sketchEditor pal aPaintTab aWorld aPaintBox tfx |
 	self world assureNotPaintingElse: [^ self].
 
 	w _ aPasteUpMorph world.
 	w stopRunningAll; abandonAllHalos.
 	w displayWorld.
-	oldRotation _ rotationDegrees.
+	self visible: false.
 	forBackground
 		ifTrue:
 			[bnds _ aPasteUpMorph boundsInWorld]
@@ -17,18 +17,18 @@ editDrawingIn: aPasteUpMorph forBackground: forBackground
 	forBackground ifTrue: [sketchEditor setProperty: #background toValue: true].
 	w addMorphFront: sketchEditor.
 	sketchEditor initializeFor: self inBounds: bnds pasteUpMorph: aPasteUpMorph.
-		"self rotationDegrees: 0.  inside the init"
-	self rotationDegrees: oldRotation.  "restore old rotation so that cancel leaves it right"
 	sketchEditor
 		afterNewPicDo: [:aForm :aRect |
+			self visible: true.
 			self form: aForm.
-			self topRendererOrSelf position: aRect origin.
+			tfx _ aPasteUpMorph transformFrom: aPasteUpMorph world.
+			self topRendererOrSelf position: (tfx globalPointToLocal: aRect origin).
 			self rotationStyle: sketchEditor rotationStyle.
-			self setupAngle: sketchEditor forwardDirection.
-			self rotationDegrees: sketchEditor forwardDirection.
+			self forwardDirection: sketchEditor forwardDirection.
 			self presenter drawingJustCompleted: self.
 			forBackground ifTrue: [self goBehind]]  "shouldn't be necessary"
 		ifNoBits: ["If no bits drawn.  Must keep old pic.  Can't have no picture"
+			self visible: true.
 			aWorld _ self currentWorld.
 				"sometimes by now I'm no longer in a world myself, but we still need
 				 to get ahold of the world so that we can deal with the palette"
@@ -41,4 +41,4 @@ editDrawingIn: aPasteUpMorph forBackground: forBackground
 						ifNotNil:
 							[aPaintTab hideFlap]
 						ifNil:
-							[(aPaintBox _ aWorld paintBox) ifNotNil: [aPaintBox delete]]]]
+							[(aPaintBox _ aWorld paintBox) ifNotNil: [aPaintBox delete]]]].

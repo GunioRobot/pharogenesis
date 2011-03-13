@@ -1,0 +1,3 @@
+authorNamePerSe
+
+	^ AuthorName

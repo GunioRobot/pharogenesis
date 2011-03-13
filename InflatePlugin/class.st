@@ -1,0 +1,1 @@
+InflatePlugin class instanceVariableNames: ''

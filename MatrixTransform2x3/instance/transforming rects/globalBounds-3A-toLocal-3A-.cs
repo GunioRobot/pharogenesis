@@ -1,4 +1,4 @@
 globalBounds: srcRect toLocal: dstRect
 	"Transform aRectangle from global coordinates into local coordinates"
-	<primitive:'m23PrimitiveInvertRectInto'>
+	<primitive: 'primitiveInvertRectInto' module: 'Matrix2x3Plugin'>
 	^super globalBoundsToLocal: srcRect

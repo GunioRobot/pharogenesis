@@ -1,2 +1,0 @@
-getBorderWidth
-	^ self getValueFromCostume: #borderWidth

@@ -1,6 +1,6 @@
 warpBitsSmoothing: n sourceMap: sourceMap
 	| deltaP12 deltaP43 pA pB deltaPAB sp fixedPtOne picker poker pix nSteps |
-	<primitive: 147>
+	<primitive: 'primitiveWarpBits' module: 'BitBltPlugin'>
 
 	"Check for compressed source, destination or halftone forms"
 	((sourceForm isKindOf: Form) and: [sourceForm unhibernate])
@@ -42,8 +42,7 @@ warpBitsSmoothing: n sourceMap: sourceMap
 			[:x | 
 			n = 1
 			ifTrue:
-				[Transcript cr; print: sp // fixedPtOne asPoint.
-				poker pixelAt: x@y
+				[poker pixelAt: x@y
 						put: (picker pixelAt: sp // fixedPtOne asPoint)]
 			ifFalse:
 				[0 to: n-1 do:

@@ -1,3 +1,5 @@
-activeHand: x
+activeHand: aHandMorph
 
-	activeHand _ x
+	"still needed until event loop with old code goes away"
+
+	activeHand _ aHandMorph

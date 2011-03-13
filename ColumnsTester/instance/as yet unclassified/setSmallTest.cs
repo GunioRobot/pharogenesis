@@ -1,0 +1,3 @@
+setSmallTest
+
+	smallTest _ true

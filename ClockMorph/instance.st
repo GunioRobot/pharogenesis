@@ -1,6 +1,6 @@
 StringMorph
 	subclass: #ClockMorph
-	instanceVariableNames: ''
+	instanceVariableNames: 'showSeconds '
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Demo'

@@ -1,19 +1,19 @@
 updateTOC
 	"Update the table of contents after a moving, removing, or deleting a message. Select a message near the removed message in the table of contents if possible."
 
-	| currentMsgIndex |
-	(currentCategory isNil or:
-	 [currentMsgID isNil or:
-	 [currentMessages size < 2]])
-		ifTrue: [currentMsgIndex _ 1]
-		ifFalse: [currentMsgIndex _ currentMessages indexOf: currentMsgID].
+	| savedMsgID |
+	"remember the currently selected message"
+	savedMsgID _ currentMsgID.
+
+	"update the TOC listing"
 	currentMsgID _ nil.
 	self setCategory: currentCategory.  "update currentMessages, currentTOC"
+
+	"try to select the previously selected message; if impossible, select the first message"
 	currentMessages isEmptyOrNil ifFalse: [
-		(currentMsgIndex <= currentMessages size)
-			ifTrue: [currentMsgID _ currentMessages at: currentMsgIndex]
-			ifFalse: [currentMsgID _ currentMessages last].
-	].
+		(currentMessages includes: savedMsgID) 
+			ifTrue: [ currentMsgID _ savedMsgID ]
+			ifFalse: [ currentMsgID _ currentMessages first ] ].
 
 	"NB: self changed: #tocEntryList  is already done above by setCategory: and can be slow"
 	self changed: #tocEntry.

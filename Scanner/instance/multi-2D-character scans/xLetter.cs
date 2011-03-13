@@ -11,9 +11,12 @@ xLetter
 			source atEnd
 				ifTrue: [aheadChar _ 30 asCharacter "doit"]
 				ifFalse: [aheadChar _ source next]].
-	(type == #colon or: [type = #xColon and: [aheadChar ~= $=]])
+	(type == #colon or: [type == #xColon and: [aheadChar ~= $=]])
 		ifTrue: 
 			[buffer nextPut: self step.
+			["Allow any number of embedded colons in literal symbols"
+			(typeTable at: hereChar asciiValue) == #xColon]
+				whileTrue: [buffer nextPut: self step].
 			tokenType _ #keyword]
 		ifFalse: 
 			[tokenType _ #word].

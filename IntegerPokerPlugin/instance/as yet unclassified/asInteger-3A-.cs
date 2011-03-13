@@ -1,0 +1,2 @@
+asInteger: aChar
+	^aChar 

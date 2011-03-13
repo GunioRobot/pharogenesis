@@ -1,7 +1,5 @@
 warpBits
-	canvas gsave.
-	transform ~= nil ifTrue: [ canvas transformBy:transform ].
-	canvas drawPostscriptContext:subCanvas.
-	canvas grestore.
-
-	^self. 
+	canvas preserveStateDuring:
+		[:inner | 
+		transform ifNotNil: [inner transformBy: transform].
+		inner drawPostscriptContext:subCanvas].

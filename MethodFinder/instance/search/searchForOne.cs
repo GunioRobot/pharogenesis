@@ -1,7 +1,7 @@
 searchForOne
 	"Look for and return just one answer"
 
-	expressions _ WriteStream on: (String new: 400).
+	expressions _ OrderedCollection new.
 	self search: false.	"non-multi"
-	^ expressions contents
+	^ expressions
 			

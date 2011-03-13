@@ -31,6 +31,12 @@ privateInitializeFromText: aString
 		authority _ remainder.
 		remainder _ ''. ].
 
+	"Extract the port"
+	(authority includes: $:)
+		ifTrue: [
+			port _ (authority copyFrom: (authority indexOf: $:) + 1 to: authority size) asNumber.
+			authority _ authority copyUpTo: $:].
+
 	"get the path"
 	path _ OrderedCollection new.
 	s _ ReadStream on: remainder.

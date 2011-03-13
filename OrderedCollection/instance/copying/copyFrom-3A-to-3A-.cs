@@ -5,5 +5,5 @@ copyFrom: startIndex to: endIndex
 	| targetCollection |
 	endIndex < startIndex ifTrue: [^self species new: 0].
 	targetCollection _ self species new: endIndex + 1 - startIndex.
-	startIndex to: endIndex do: [:index | targetCollection add: (self at: index)].
+	startIndex to: endIndex do: [:index | targetCollection addLast: (self at: index)].
 	^ targetCollection

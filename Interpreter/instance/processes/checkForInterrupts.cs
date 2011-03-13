@@ -5,7 +5,7 @@ checkForInterrupts
 	self inline: false.
 
 	"Mask so same wrap as primitiveMillisecondClock"
-	now _ self ioMSecs bitAnd: 16r1FFFFFFF. 
+	now _ self ioMSecs bitAnd: MillisecondClockMask. 
 
 	now < lastTick ifTrue: [
 		"millisecond clock wrapped"

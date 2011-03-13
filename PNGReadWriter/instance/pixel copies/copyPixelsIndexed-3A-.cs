@@ -4,8 +4,7 @@ copyPixelsIndexed: y
 	blitter _ BitBlt current bitPokerToForm: form.
 	bitsPerChannel = 8
 		ifTrue:
-			[1 to: width do: [:x | blitter pixelAt: x - 1 @ y
-put: (thisScanline at: x)].
+			[1 to: width do: [:x | blitter pixelAt: x - 1 @ y put: (thisScanline at: x)].
 			^ self].
 	bitsPerChannel = 1
 		ifTrue:
@@ -26,7 +25,6 @@ put: (thisScanline at: x)].
 	0 to: width - 1 do:
 		[:x |
 		rawByte _ thisScanline at: pixelNumber // pixPerByte + 1.
-		pixel _ rawByte >> (shifts at: pixelNumber \\ pixPerByte +
-1) bitAnd: mask.
+		pixel _ rawByte >> (shifts at: pixelNumber \\ pixPerByte + 1) bitAnd: mask.
 		blitter pixelAt: x @ y put: pixel.
 		pixelNumber _ pixelNumber + 1]

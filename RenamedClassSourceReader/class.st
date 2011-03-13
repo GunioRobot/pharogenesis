@@ -1,0 +1,1 @@
+RenamedClassSourceReader class instanceVariableNames: ''

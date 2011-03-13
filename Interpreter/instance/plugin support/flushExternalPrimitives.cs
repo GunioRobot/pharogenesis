@@ -19,3 +19,4 @@ flushExternalPrimitives
 	].
 	self flushMethodCache.
 	self flushObsoleteIndexedPrimitives.
+	self flushExternalPrimitiveTable.

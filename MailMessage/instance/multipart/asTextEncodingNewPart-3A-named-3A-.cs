@@ -4,7 +4,7 @@ asTextEncodingNewPart: aStream named: aName
 	| strm |
 	strm _ WriteStream on: (String new: 100).
 	strm nextPutAll: self asMultipartText;
-	 cr;
+	" cr; this bungled changeset mailouts. don't restore unless you know what you're doing."
 	 nextPutAll: 'Content-Type: application/octet-stream; name="' , aName , '"';
 	 cr;
 	 nextPutAll: 'Content-Disposition: attachment; filename="' , aName , '"';

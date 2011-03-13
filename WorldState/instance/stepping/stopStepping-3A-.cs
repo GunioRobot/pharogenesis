@@ -1,5 +1,5 @@
 stopStepping: aMorph
 	"Remove the given morph from the step list."
-
-	stepList copy do: [:entry |
-		entry first == aMorph ifTrue: [stepList remove: entry ifAbsent: []]].
+	lastStepMessage ifNotNil:[
+		(lastStepMessage receiver == aMorph) ifTrue:[lastStepMessage _ nil]].
+	stepList removeAll: (stepList select:[:stepMsg| stepMsg receiver == aMorph]).

@@ -7,7 +7,7 @@ makeControls
 		borderWidth: 2;
 		color: color.
 	r _ AlignmentMorph newRow.
-	r color: b color; borderWidth: 0; inset: 0.
+	r color: b color; borderWidth: 0; layoutInset: 0.
 	r hResizing: #shrinkWrap; vResizing: #shrinkWrap; extent: 5@5.
 	r addMorphBack: (b fullCopy label: '<>'; actWhen: #buttonDown;
 														actionSelector: #invokeMenu).

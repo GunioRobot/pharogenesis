@@ -1,0 +1,1 @@
+FFT class instanceVariableNames: ''

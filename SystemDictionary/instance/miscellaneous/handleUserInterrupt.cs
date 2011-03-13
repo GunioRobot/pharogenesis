@@ -1,5 +1,5 @@
 handleUserInterrupt
 	Preferences cmdDotEnabled ifTrue:
 		[Smalltalk isMorphic
-			ifTrue: [[Project current interruptName: 'User Interrupt'] fork]
+			ifTrue: [[CurrentProjectRefactoring currentInterruptName: 'User Interrupt'] fork]
 			ifFalse: [[ScheduledControllers interruptName: 'User Interrupt'] fork]]

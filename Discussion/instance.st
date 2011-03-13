@@ -3,4 +3,4 @@ Object
 	instanceVariableNames: 'notes title description relatedURL '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'PluggableWebServer'
+	category: 'Network-Pluggable Web Server'

@@ -1,0 +1,3 @@
+close
+
+	^target close.

@@ -1,6 +1,6 @@
-StringHolder
+CodeHolder
 	subclass: #ChangeList
-	instanceVariableNames: 'changeList list listIndex listSelections file lostMethodPointer '
+	instanceVariableNames: 'changeList list listIndex listSelections file lostMethodPointer showsVersions '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Interface-Changes'
+	category: 'Tools-Changes'

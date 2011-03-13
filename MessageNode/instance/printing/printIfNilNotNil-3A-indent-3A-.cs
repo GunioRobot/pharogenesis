@@ -1,7 +1,7 @@
 printIfNilNotNil: aStream indent: level
 
-	receiver ifNotNil:
-		[receiver ifNilReceiver printOn: aStream indent: level precedence: precedence].
+	self printReceiver: receiver ifNilReceiver on: aStream indent: level.
+
 	(arguments first isJust: NodeNil) ifTrue:
 		[^ self printKeywords: #ifNotNil:
 				arguments: { arguments second }

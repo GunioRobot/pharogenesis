@@ -1,0 +1,1 @@
+PlayingCard class instanceVariableNames: ''

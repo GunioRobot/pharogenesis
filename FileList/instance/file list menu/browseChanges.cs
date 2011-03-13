@@ -3,6 +3,6 @@ browseChanges
 
 	fileName
 		ifNotNil:
-			[ChangeList browseStream: (directory oldFileNamed: fileName)]
+			[ChangeList browseStream: (directory readOnlyFileNamed: fileName)]
 		ifNil:
 			[self beep].

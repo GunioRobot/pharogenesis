@@ -3,4 +3,4 @@ MessageSet
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Interface-Browser'
+	category: 'Tools-Browser'

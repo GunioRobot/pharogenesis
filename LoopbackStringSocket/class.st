@@ -1,0 +1,1 @@
+LoopbackStringSocket class instanceVariableNames: ''

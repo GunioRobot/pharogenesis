@@ -4,8 +4,8 @@ messageCategoryListIndex: anInteger
 	messageCategoryListIndex _ anInteger.
 	messageListIndex _ 0.
 	editSelection _ 
-		anInteger = 0
-			ifTrue: [#none]
+		anInteger <= 1
+			ifTrue: [#editClass]
 			ifFalse: [#newMessage].
 	contents _ nil.
 	self changed: #messageCategorySelectionChanged.

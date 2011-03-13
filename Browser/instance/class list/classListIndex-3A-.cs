@@ -4,7 +4,7 @@ classListIndex: anInteger
 	| className |
 	classListIndex _ anInteger.
 	self setClassOrganizer.
-	messageCategoryListIndex _ 0.
+	messageCategoryListIndex _ 1.
 	messageListIndex _ 0.
 	self classCommentIndicated
 		ifTrue: []

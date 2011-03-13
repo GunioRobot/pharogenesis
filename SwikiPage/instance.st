@@ -1,6 +1,7 @@
 Object
 	subclass: #SwikiPage
-	instanceVariableNames: 'url map formatted address file date coreID name user editReqDate editReqTime '
-	classVariableNames: ''
+	instanceVariableNames:
+		'url map formatted address file date time coreID name user editReqDate editReqTime temp pageStatus '
+	classVariableNames: 'OutputFormat '
 	poolDictionaries: ''
-	category: 'PluggableWebServer'
+	category: 'Network-Pluggable Web Server'

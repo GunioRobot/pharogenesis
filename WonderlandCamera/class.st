@@ -1,0 +1,1 @@
+WonderlandCamera class instanceVariableNames: ''

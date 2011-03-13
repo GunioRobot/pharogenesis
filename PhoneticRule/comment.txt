@@ -1,0 +1,16 @@
+My instances are letter-to-sound rules for perform automatic text-to-phonemes transcription. (See the PhoneticTranscriber class comment too.)
+
+Rules are made up of four parts: (1) left context pattern, (2) the text to match, (3) the right context pattern, and (4) the phonemes to substitute for the matched text.
+
+The transcription procedure begins separating each block of letters (apostrophes included) and adding a space on each side. For each unmatched letter in the word, look through the rules where the text to match starts with the letter in the word. If the text to match if found and the right and left contexts patterns also match, output the phonemes for that rule and skip to the next unmatched letter.
+
+Context patterns special characters:
+	#	One or more vowels
+	:	Zero or more consonants
+	^	One consonant
+	.	One of B, D, V, G, J, L, M, N, R, W, or Z (voiced consonants)
+	%	One of ER, E, ES, ED, ING, ELY (a suffix)	[ONLY FOR RIGHT CONTEXT]
+	+	One of E, I or Y (a "front" vowel)
+Furthermore, the space character means any separator (space, comma, colon, etc), and any other character means that character it self.
+
+The english example is derived from: "Automatic Translation of English Text to Phonetics by Means of Letter-To-Sound Rules", NRL Report 7948, January 21st, 1976, Naval Research Laboratory, Washington, D.C. Published by the National Technical Information Service as document "AD/A021 929".

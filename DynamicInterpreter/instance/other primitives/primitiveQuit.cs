@@ -1,3 +1,0 @@
-primitiveQuit
-
-	self ioExit.

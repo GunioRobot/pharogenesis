@@ -1,0 +1,1 @@
+The vocabulary that it all-encompassing.  Its categories consist of the union of all categories of a class and all its superclasses.  The methods in each category consist of those with selectors that are associated with that category.

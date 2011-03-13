@@ -1,0 +1,3 @@
+currentCameraVersion
+
+	^2

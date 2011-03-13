@@ -1,0 +1,1 @@
+EToyProjectDetailsMorph class instanceVariableNames: ''

@@ -1,14 +1,11 @@
 deleteFileNamed: fullName
 	"Detete a remote file.  fullName is directory path, and does include name of the server.  Or it can just be a fileName."
 	| file so rr |
-	file _ self as: ServerFile.
-	(fullName includes: self pathNameDelimiter)
-		ifTrue: [file fullPath: fullName]		"sets server, directory(path), fileName"
-		ifFalse: [file fileName: fullName].	"JUST a single NAME, rest is here"
-			"Mac files that include / in name, must encode it as %2F "
-	file type == #file ifTrue: [
+	file _ self asServerFileNamed: fullName.
+	file isTypeFile ifTrue: [
 		^ (FileDirectory forFileName: (file fileNameRelativeTo: self)) 
-			deleteFileNamed: file fileName].
+			deleteFileNamed: file fileName
+	].
 	
 	so _ file openNoDataFTP.
 	so class == String ifTrue: ["error, was reported" ^ so].

@@ -1,7 +1,7 @@
 addPenMenuItems: menu hand: aHandMorph
+	"Add a pen-trails-within submenu to the given menu"
+
 	| subMenu |
 	subMenu _ MenuMorph new defaultTarget: self.
-	subMenu add: 'clear pen trails' action: #clearTurtleTrails.
-	subMenu add: 'all pens up' action: #liftAllPens.
-	subMenu add: 'all pens down' action: #lowerAllPens.
+	self addPenTrailsMenuItemsTo: subMenu.
 	menu add: 'pens trails within...' subMenu: subMenu

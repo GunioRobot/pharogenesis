@@ -1,5 +1,3 @@
 storeOn: aStream
 
-	aStream nextPutAll: '(', self class name, ' readFromString: ';
-		print: self printString;
-		nextPut: $)
+	aStream print: self printString; nextPutAll: ' asTime'

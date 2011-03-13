@@ -2,6 +2,7 @@ mouseMove: evt
 	"When the user clicks in a camera window, determine which actor the    
 	    user clicked on and have that actor respond to the event"
 	| newEvent reactions |
+	firstPersonControls == true ifTrue:[^self].
 	newEvent _ self convertEvent: evt.
 	mode = #stroke
 		ifTrue: [self recordStroke: evt cursorPoint]

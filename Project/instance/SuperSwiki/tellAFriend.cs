@@ -1,0 +1,3 @@
+tellAFriend
+
+	self tellAFriend: nil

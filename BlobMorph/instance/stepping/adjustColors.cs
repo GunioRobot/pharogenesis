@@ -8,7 +8,7 @@ adjustColors
 		degrees _ (each - center) degrees.
 		r _ (each - center) r.
 		Display colorAt: (Point r: r + 6 degrees: degrees) + center].
-		self color: ((self color mixed: 0.95 with: (Color
+		self color: ((self color alphaMixed: 0.95 with: (Color
 			r: (nearbyColors collect: [:each | each red]) average
 			g: (nearbyColors collect: [:each | each green]) average
 			b: (nearbyColors collect: [:each | each blue]) average))

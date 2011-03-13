@@ -16,7 +16,7 @@ openMessageEditString: aString
 	messageListView window: (0 @ 0 extent: 200 @ 12).
 	topView addSubView: messageListView.
 
-	Preferences useAnnotationPanes
+	 self wantsAnnotationPane
 		ifTrue:
 			[annotationPane _ PluggableTextView on: self
 				text: #annotation accept: nil

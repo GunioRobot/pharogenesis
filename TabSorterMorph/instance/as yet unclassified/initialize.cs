@@ -4,7 +4,7 @@ initialize
 
 	self extent: 300@100.
 	pageHolder _ PasteUpMorph new.
-	pageHolder resizeToFit: true; autoLineLayout: true; fixLayout; layoutChanged.
+	pageHolder resizeToFit: true; autoLineLayout: true.
 	pageHolder extent: self extent - borderWidth.
 	pageHolder padding: 8.
 	pageHolder cursor: 0.

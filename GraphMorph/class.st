@@ -1,0 +1,1 @@
+GraphMorph class instanceVariableNames: ''

@@ -3,4 +3,4 @@ PluggableListView
 	instanceVariableNames: 'selections '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Interface-Pluggable'
+	category: 'ST80-Pluggable Views'

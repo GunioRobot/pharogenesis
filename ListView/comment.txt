@@ -1,2 +1,1 @@
-ListView comment:
-'I am an abstract View of a list of items. I provide support for storing a selection of one item, as well as formatting the list for presentation on the screen. My instances'' default controller is ListController.'
+I am an abstract View of a list of items. I provide support for storing a selection of one item, as well as formatting the list for presentation on the screen. My instances' default controller is ListController.

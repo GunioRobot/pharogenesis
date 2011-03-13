@@ -1,0 +1,1 @@
+A VRMLStream supports reading/writing of UTF8 characters and the basic VRML types such as Int32, Float, Bool, and String.

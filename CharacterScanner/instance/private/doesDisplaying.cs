@@ -1,3 +1,0 @@
-doesDisplaying
-
-	^false

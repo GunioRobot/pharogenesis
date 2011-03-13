@@ -9,6 +9,6 @@ newSubclass
 		instanceVariableNames: ''
 		classVariableNames: ''
 		poolDictionaries: ''
-		category: 'UserObjects'
+		category: Object categoryForUniclasses
 
 "Point newSubclass new"

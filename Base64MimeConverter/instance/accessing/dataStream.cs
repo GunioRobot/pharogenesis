@@ -1,2 +1,0 @@
-dataStream
-	^dataStream

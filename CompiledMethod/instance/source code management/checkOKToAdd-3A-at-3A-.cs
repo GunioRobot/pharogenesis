@@ -8,7 +8,7 @@ checkOKToAdd: size at: filePosition
 		[:i | margin _ i*100000.
 		(filePosition + size + margin) > fileSizeLimit
 			ifTrue: [(filePosition + margin) > fileSizeLimit ifFalse:
-						[self notify: 'WARNING: your changes file is within
+						[self inform: 'WARNING: your changes file is within
 ' , margin printString , ' characters of its size limit.
 You should take action soon to reduce its size.
 You may proceed.']]

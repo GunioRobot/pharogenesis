@@ -1,0 +1,3 @@
+I represent a hardware accelerated 3D display. Usually, this means some sort of offscreen buffer (so that we can do efficient compositing for the 2D case) but it might be different.
+
+The first implementation uses Direct3D on Windows where compositing is trivially achieved by using DirectDrawSurfaces which can be accessed by either 2D or 3D operations.

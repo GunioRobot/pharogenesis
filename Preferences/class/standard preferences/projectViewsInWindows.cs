@@ -1,0 +1,2 @@
+projectViewsInWindows
+	^ self valueOfFlag: #projectViewsInWindows

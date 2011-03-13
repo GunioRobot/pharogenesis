@@ -1,0 +1,2 @@
+encodeFont: aFont
+	^aFont encodedForRemoteCanvas

@@ -6,7 +6,7 @@ delete
 		ifTrue: [owner privateRemoveMorph: self.
 				owner _ nil]
 		ifFalse: ["Player must be notified"
-				aWorld _ self world.
+				aWorld _ self world ifNil: [World].	"or some proper of getting the World"
 				owner privateRemoveMorph: self.
 				owner _ nil.
 				self player noteDeletionOf: self fromWorld: aWorld]

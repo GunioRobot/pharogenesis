@@ -1,0 +1,1 @@
+ImageSegmentRootStub class instanceVariableNames: ''

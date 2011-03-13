@@ -6,5 +6,4 @@ crossedX
 	the normal case not visible and is in any case appropriately clipped by 
 	the scanner."
 
-	self fillLeading.
 	^ true 

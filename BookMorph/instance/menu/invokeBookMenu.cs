@@ -17,6 +17,7 @@ invokeBookMenu
 		#(('make bookmark'		bookmarkForThisPage)
 		('make thumbnail'		thumbnailForThisPage)).
 	aMenu addUpdating: #showingPageControlsString action: #toggleShowingOfPageControls.
+	aMenu addUpdating: #showingFullScreenString action: #toggleFullScreen.
 
 	aMenu addLine.
 	aMenu add: 'sound effect for all pages' action: #menuPageSoundForAll:.
@@ -25,7 +26,7 @@ invokeBookMenu
 	aMenu add: 'visual effect this page only' action: #menuPageVisualForThisPage:.
 
 	aMenu addLine.
-	(self primaryHand classOfPasteBuffer isKindOf: PasteUpMorph class) ifTrue:
+	(self primaryHand pasteBuffer class isKindOf: PasteUpMorph class) ifTrue:
 		[aMenu add: 'paste book page'   action: #pasteBookPage].
 
 	aMenu add: 'save as new-page prototype' action: #setNewPagePrototype.
@@ -44,5 +45,6 @@ invokeBookMenu
 	aMenu addLine.
 	aMenu add: 'load PPT images from slide #1' action: #loadImagesIntoBook.
 	aMenu add: 'background color for all pages...' action: #setPageColor.
+	aMenu add: 'make a thread of projects in this book' action: #buildThreadOfProjects.
 
-	aMenu popUpEvent: self world activeHand lastEvent
+	aMenu popUpEvent: self world activeHand lastEvent in: self world

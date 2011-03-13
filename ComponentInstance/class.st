@@ -1,0 +1,1 @@
+ComponentInstance class instanceVariableNames: ''

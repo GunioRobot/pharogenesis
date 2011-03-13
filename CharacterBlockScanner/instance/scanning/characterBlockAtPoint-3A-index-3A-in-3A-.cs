@@ -1,4 +1,6 @@
 characterBlockAtPoint: aPoint index: index in: textLine
+	"This method is the Morphic characterBlock finder.  It combines
+	MVC's characterBlockAtPoint:, -ForIndex:, and buildCharcterBlock:in:"
 	| runLength lineStop done stopCondition |
 	line _ textLine.
 	characterIndex _ index.  " == nil means scanning for point"
@@ -33,7 +35,14 @@ characterBlockAtPoint: aPoint index: index in: textLine
 			ifTrue: [font widthOf: (text at: lastIndex)]
 			ifFalse: [specialWidth]).
 		(self perform: stopCondition) ifTrue:
-			[^ (CharacterBlock new
-				stringIndex: (characterIndex==nil ifTrue: [lastIndex] ifFalse: [characterIndex])
-				text: text topLeft: characterPoint extent: lastCharacterExtent)
-				textLine: line]]
+			[characterIndex == nil
+				ifTrue: ["Result for characterBlockAtPoint: "
+						^ (CharacterBlock new stringIndex: lastIndex
+							text: text topLeft: characterPoint + (font descentKern @ 0)
+							extent: lastCharacterExtent - (font baseKern @ 0))
+									textLine: line]
+				ifFalse: ["Result for characterBlockForIndex: "
+						^ (CharacterBlock new stringIndex: characterIndex
+							text: text topLeft: characterPoint + ((font descentKern) - kern @ 0)
+							extent: lastCharacterExtent)
+									textLine: line]]]

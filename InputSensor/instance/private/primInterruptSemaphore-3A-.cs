@@ -3,3 +3,4 @@ primInterruptSemaphore: aSemaphore
 
 	<primitive: 134>
 	^self primitiveFailed
+"Note: This primitive is obsolete with the new event driven architecture in which EventSensor can handle the interrupts itself. However, for supporting older images running on newer VMs the primitive must still be implemented."

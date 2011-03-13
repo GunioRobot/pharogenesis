@@ -1,7 +1,6 @@
 Morph
 	subclass: #SketchMorph
-	instanceVariableNames:
-		'originalForm rotationCenter rotationDegrees rotationStyle scalePoint framesToDwell rotatedForm offsetWhenRotated '
+	instanceVariableNames: 'originalForm rotationStyle scalePoint framesToDwell rotatedForm '
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Basic'

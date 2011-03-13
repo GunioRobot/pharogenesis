@@ -1,0 +1,5 @@
+I represent the messages file of a mail database. This file is treated as (mostly) append-only. All new messages or edited messages are appended to the end of this file.
+
+Messages are stored as ASCII text with seperator strings and some additional information between each message. If necessary, this file can be inspected or edited with a text editor; after editing, the index file should be recreated using the "compact" command. (This is necessary because the offsets kept in the index file will probably be different after the edits.)
+
+When a message is deleted, its delimiter is changed to mark it as deleted, but it is left in the mail file until the next time "compact" command is executed. Generally, the reduction in disk fragmentation resulting from keeping the messages in a single file more than offsets the temporary space lost by having a few deleted messages hanging around between compactions. Compaction is done into a new copy of the file, followed by a renaming operation. Thus, if compaction fails, the original messages file will not be lost.

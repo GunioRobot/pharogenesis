@@ -1,0 +1,1 @@
+DSAPlugin class instanceVariableNames: ''

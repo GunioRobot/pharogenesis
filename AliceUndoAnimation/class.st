@@ -1,0 +1,1 @@
+AliceUndoAnimation class instanceVariableNames: ''

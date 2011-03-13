@@ -1,0 +1,3 @@
+newMorphicEventts0
+
+	^ MorphicEvent

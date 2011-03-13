@@ -1,0 +1,3 @@
+testMessage: aSymbol
+
+	testMessage := aSymbol.

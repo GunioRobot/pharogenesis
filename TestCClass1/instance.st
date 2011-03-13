@@ -3,4 +3,4 @@ Object
 	instanceVariableNames: 'x y '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Squeak-Translation to C'
+	category: 'VMConstruction-Translation to C'

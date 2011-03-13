@@ -5,6 +5,7 @@ privateRemoveAt: index
 	array at: index put: (array at: tally).
 	array at: tally put: nil.
 	tally _ tally - 1.
-	"Use #downHeapSingle: since only one element has been removed"
-	self downHeapSingle: index.
+	index > tally ifFalse:[
+		"Use #downHeapSingle: since only one element has been removed"
+		self downHeapSingle: index].
 	^removed

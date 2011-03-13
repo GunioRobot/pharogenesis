@@ -1,4 +1,4 @@
 primMIDIParameterSet: whichParameter to: newValue
 
-	<primitive: 527>
+	<primitive: 'primitiveMIDIParameterGetOrSet' module: 'MIDIPlugin'>
 	self primitiveFailed.

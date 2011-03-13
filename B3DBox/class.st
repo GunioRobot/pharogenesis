@@ -1,0 +1,1 @@
+B3DBox class instanceVariableNames: ''

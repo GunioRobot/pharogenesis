@@ -4,7 +4,7 @@ moveCamera
 	myMoveScale == nil ifTrue:[myMoveScale _ 0.1].
 	myRotationScale == nil ifTrue:[myRotationScale _ 0.01].
 	dt _ myScheduler getElapsedTime.
-	offset _ (self center) - (0@8) - (Sensor mousePoint).
+	offset _ (self getCenter) - (0@8) - (Sensor mousePoint).
 
 	(Sensor shiftPressed)
 		ifTrue: [ (Sensor controlKeyPressed)

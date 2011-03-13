@@ -1,0 +1,1 @@
+AlansTextPlusMorph class instanceVariableNames: ''

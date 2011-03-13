@@ -5,6 +5,6 @@ mouseDown: evt
 	upArrow ifNotNil:
 		[(upArrow boundsInWorld containsPoint: aPoint) ifTrue: [^ self].
 		(downArrow boundsInWorld containsPoint: aPoint) ifTrue: [^ self]].
-	aMenu _ SelectionMenu selections: (self ownerThatIsA: PhraseTileMorph) associatedPlayer costume allMenuWordings.
+	aMenu _ SelectionMenu selections: ((self ownerThatIsA: PhraseTileMorph) associatedPlayer costume allMenuWordings).
 	reply _ aMenu startUp.
 	reply ifNotNil: [self literal: reply; layoutChanged]

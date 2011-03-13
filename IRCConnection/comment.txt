@@ -1,0 +1,6 @@
+A connection to an IRC server.  This handles spooling messages in and out, and converts between network commands and more convenient data structures.
+
+Start up an instance along with an interface with:
+
+		IRCConnection new openView
+

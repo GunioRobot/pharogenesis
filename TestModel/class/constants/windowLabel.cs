@@ -1,0 +1,3 @@
+windowLabel
+
+	^self versionName

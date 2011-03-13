@@ -1,0 +1,2 @@
+initialValuesAdditionscriptingeToyFriendly
+	^ #((eToyFriendly false (scripting ) ) )

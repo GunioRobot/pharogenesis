@@ -1,8 +1,14 @@
-usablePhraseSpecsIn: aListOfPairs
-	"Filter the list given by aListOfPairs if appropriate"
-	self hasAnyBorderedCostumes ifTrue: [^ aListOfPairs].
+usablePhraseSpecsIn: aListOfTuples
+	"Filter the list given by aListOfTuples, to remove items inappropriate to the receiver"
+
+	self hasCostumeThatIsAWorld ifTrue:
+		[^ aListOfTuples select: [:tuple |
+			#(beep doMenuItem color startScript: stopScript: pauseScript: liftAllPens lowerAllPens clearTurtleTrails initiatePainting cursor valueAtCursor mouseX mouseY roundUpStrays unhideHiddenObjects) includes: tuple second]].
+
+	self hasAnyBorderedCostumes ifTrue: [^ aListOfTuples].
+
 	^ self hasOnlySketchCostumes
 		ifTrue:
-			[aListOfPairs select: [:pr | (#(color borderColor borderWidth) includes: pr second) not]]
+			[aListOfTuples select: [:tuple | (#(color borderColor borderWidth) includes: tuple second) not]]
 		ifFalse:
-			[aListOfPairs select: [:pr | (#(borderColor borderWidth) includes: pr second) not]]
+			[aListOfTuples select: [:tuple | (#(borderColor borderWidth) includes: tuple second) not]]

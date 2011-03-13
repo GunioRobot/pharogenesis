@@ -1,7 +1,8 @@
 grabAddresses
 	"grab all the addresses in the string"
 	| token |
-
+	"remove comments"
+	tokens removeAllSuchThat: [:t | t type == #Comment].
 	"grab one address or address group each time through this loop"
 	[ 
 		"remove commas"

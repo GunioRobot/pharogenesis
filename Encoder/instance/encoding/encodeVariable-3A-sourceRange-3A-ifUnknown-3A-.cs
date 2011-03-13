@@ -6,6 +6,10 @@ encodeVariable: name sourceRange: range ifUnknown: action
 					ifFound: [:assoc | varNode _ self global: assoc name: name])
 					ifTrue: [varNode]
 					ifFalse: [action value]].
-	name first isUppercase ifTrue:
-		[globalSourceRanges addLast: { name. range. false }].
+	range ifNotNil: [
+		name first isUppercase ifTrue:
+			[globalSourceRanges addLast: { name. range. false }]. ].
+
+	(varNode isTemp and: [varNode scope < 0]) ifTrue: [^self notify: 'out of scope'].
+
 	^ varNode

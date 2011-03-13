@@ -1,0 +1,1 @@
+DirectoryEntry class instanceVariableNames: ''

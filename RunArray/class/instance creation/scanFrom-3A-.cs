@@ -24,6 +24,7 @@ scanFrom: strm
 		this == $R ifTrue: [aa add: (TextURL scanFrom: strm)].
 				"R capitalized so it can follow a number"
 		this == $q ifTrue: [aa add: (TextSqkPageLink scanFrom: strm)].
+		this == $p ifTrue: [aa add: (TextSqkProjectLink scanFrom: strm)].
 		this == $d ifTrue: [aa add: (TextDoIt scanFrom: strm)].
 		"space, cr do nothing"
 		].

@@ -1,6 +1,7 @@
 insertPageSilentlyAtEnd
 	"Create a new page at the end of the book.  Do not turn to it."
-	| sz newPage bw bc cc |
+
+	| sz newPage bw bc cc | 
 	currentPage == nil
 		ifTrue: [sz _ pageSize.
 			bw _ 0.
@@ -15,9 +16,9 @@ insertPageSilentlyAtEnd
 			newPage borderWidth: bw; borderColor: bc]
 		ifNotNil: [Cursor wait showWhile: 
 				[newPage _ newPagePrototype veryDeepCopy]].
-	newPage setNameTo: 'page'.
+	newPage setNameTo: self defaultNameStemForNewPages.
 	newPage resizeToFit: false.
 	pages isEmpty
-		ifTrue: [pages add: (currentPage _ newPage)]	"was none"
+		ifTrue: [pages add: (currentPage _ newPage)]	"had been none"
 		ifFalse: [pages add: newPage after: pages last].
 	^ newPage

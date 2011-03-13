@@ -1,6 +1,0 @@
-The file-able entity representing the etoy.  Also is subclassable by the author of a particular etoy, with the intent being to centralize all the needs authors may have to subclass our generic e-toy-related classes in one place; consult, for example, the "hooks" and "scaffolding" categories, and look at the DriveACar subclass for an examples of a particular etoy customizing behavior. 
-
-After making a new subclass of EToyHolder, start building in it by executing:
-	EToyPlayer openOn: YourClass new.
-
-For writing on the disk, notInPlayfield contains the objects held in the world that are not in the playfield, that do not have the property 'eToyControls'.  standardPlayer is one.

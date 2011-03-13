@@ -1,11 +1,10 @@
-LinkedMessageSet comment:
-'An instance of me holds a list of methods (or class comment, class defintion, class hierarchy).  When a user clicks on a HyperText link, the place referred to is displayed in me.  The non-method contents are not meant to be edited and accepted.
+An instance of me holds a list of methods (or class comment, class defintion, class hierarchy).  When a user clicks on a HyperText link, the place referred to is displayed in me.  The non-method contents are not meant to be edited and accepted.
 
 To create a link to a class comment:
 In any piece of text, type the name of a class.
 Select it.
 Command-6.
-Choose ''go to comment of class''
-Then a user can click on that text later and she will be transported to the class''s comment.
+Choose 'go to comment of class'
+Then a user can click on that text later and she will be transported to the class's comment.
 
-To create a link to a method, class definition, or class hierarchy: Do the same as above, but choose the appropriate menu item. '
+To create a link to a method, class definition, or class hierarchy: Do the same as above, but choose the appropriate menu item. 

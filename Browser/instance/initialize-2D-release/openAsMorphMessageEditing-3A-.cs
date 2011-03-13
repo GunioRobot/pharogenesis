@@ -1,36 +1,32 @@
 openAsMorphMessageEditing: editString
 	"Create a pluggable version a Browser that shows just one message"
-	| window codePane baseline aTextMorph |
+	| window mySingletonMessageList verticalOffset nominalFractions |
 	window _ (SystemWindow labelled: 'later') model: self.
 
-	window addMorph: ((PluggableListMorph on: self list: #messageListSingleton
+	mySingletonMessageList _ PluggableListMorph on: self list: #messageListSingleton
 			selected: #indexIsOne changeSelected: #indexIsOne:
 			menu: #messageListMenu:shifted:
-			keystroke: #messageListKey:from:) enableDragNDrop: Preferences browseWithDragNDrop)
-		frame: (0@0 extent: 1.0@0.06).
+			keystroke: #messageListKey:from:.
+	mySingletonMessageList enableDragNDrop: Preferences browseWithDragNDrop.
+	verticalOffset _ 25.
+	nominalFractions _ 0@0 corner: 1@0.
+	window 
+		addMorph: mySingletonMessageList
+		fullFrame: (
+			LayoutFrame 
+				fractions: nominalFractions 
+				offsets: (0@0 corner: 0@verticalOffset)
+		).
 
-	Preferences useAnnotationPanes
-		ifFalse:
-			[baseline _ 0.06]
-		ifTrue:
-			[aTextMorph _ PluggableTextMorph on: self
-					text: #annotation accept: nil
-					readSelection: nil menu: nil.
-			aTextMorph askBeforeDiscardingEdits: false.
-			window addMorph: aTextMorph
-				frame: (0@0.06 corner: 1@0.11).
-			baseline _ 0.11].
+	verticalOffset _ self addOptionalAnnotationsTo: window at: nominalFractions plus: verticalOffset.
+	verticalOffset _ self addOptionalButtonsTo: window  at: nominalFractions plus: verticalOffset.
 
-	Preferences optionalButtons
-		ifTrue:
-			[window addMorph: self optionalButtonRow frame: ((0@baseline corner: 1 @ (baseline + 0.08))).
-			baseline _ baseline + 0.08].
-
-	codePane _ PluggableTextMorph on: self text: #contents accept: #contents:notifying:
-			readSelection: #contentsSelection menu: #codePaneMenu:shifted:.
-	editString ifNotNil: [codePane editString: editString.
-					codePane hasUnacceptedEdits: true].
-	window addMorph: codePane
-		frame: (0@baseline corner: 1@1).
+	window 
+		addMorph: (self buildMorphicCodePaneWith: editString)
+		fullFrame: (
+			LayoutFrame 
+				fractions: (0@0 corner: 1@1) 
+				offsets: (0@verticalOffset corner: 0@0)
+		).
 
 	^ window

@@ -2,7 +2,7 @@ revertToParentWorldWithEvent: evt
 
 	"RAA 27 Nov 99 - if the display changed while we were in charge, parent may need to redraw"
 
-	self damageRecorder reset.	"Terminate local display"
+	worldState resetDamageRecorder.	"Terminate local display"
 	World _ parentWorld.
 	World assuredCanvas.
 	World installFlaps.

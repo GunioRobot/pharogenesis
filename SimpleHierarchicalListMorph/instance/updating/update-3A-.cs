@@ -6,3 +6,7 @@ update: aSymbol
 	aSymbol == getListSelector ifTrue: 
 		[self list: self getList.
 		^ self].
+	((aSymbol isKindOf: Array) and: [aSymbol size > 0 and: [aSymbol first == #openPath]]) ifTrue: [
+		^(scroller submorphs at: 1 ifAbsent: [^self]) openPath: aSymbol allButFirst
+	].
+

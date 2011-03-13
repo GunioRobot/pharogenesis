@@ -1,5 +1,5 @@
 copy: charForm toClipBoardAs: char ascent: ascent
-	ParagraphEditor clipboardTextPut:
+	Clipboard clipboardText:
 		(Text string: char asString
 			attribute: (TextFontReference toFont: 
 				(FormSetFont new

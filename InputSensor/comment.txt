@@ -1,2 +1,1 @@
-InputSensor comment:
-'I represent an interface to the user input devices. There is at least one instance of me named Sensor in the system.'
+I represent an interface to the user input devices. There is at least one instance of me named Sensor in the system.

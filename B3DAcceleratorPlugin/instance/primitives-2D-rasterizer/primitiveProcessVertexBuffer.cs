@@ -1,8 +1,9 @@
 primitiveProcessVertexBuffer
-	| idxCount vtxCount vtxArray idxArray texHandle primType result |
+	| idxCount vtxCount vtxArray idxArray texHandle primType result box array |
 	self export: true.
 	self var: #idxArray type: 'int *'.
 	self var: #vtxArray type: 'float *'.
+	self var: #box declareC:'int box[4] = { 0, 0, 0, 0 }'.
 	interpreterProxy methodArgumentCount = 6
 		ifFalse:[^interpreterProxy primitiveFail].
 	idxCount _ interpreterProxy stackIntegerValue: 0.
@@ -17,6 +18,13 @@ primitiveProcessVertexBuffer
 			or:[interpreterProxy failed]]]])
 				ifTrue:[^interpreterProxy primitiveFail].
 
-	result _ self cCode:'b3dxRasterizeVertexBuffer(primType, texHandle, vtxArray, vtxCount, idxArray, idxCount)' inSmalltalk:[false].
+	result _ self cCode:'b3dxRasterizeVertexBuffer(primType, texHandle, vtxArray, vtxCount, idxArray, idxCount, box)' inSmalltalk:[false].
 	result ifFalse:[^interpreterProxy primitiveFail].
-	interpreterProxy pop: 6. "pop args; return rcvr"
+	array _ interpreterProxy instantiateClass: interpreterProxy classArray indexableSize: 4.
+	interpreterProxy storeInteger: 0 ofObject: array withValue: (box at: 0).
+	interpreterProxy storeInteger: 1 ofObject: array withValue: (box at: 1).
+	interpreterProxy storeInteger: 2 ofObject: array withValue: (box at: 2).
+	interpreterProxy storeInteger: 3 ofObject: array withValue: (box at: 3).
+	interpreterProxy failed ifTrue:[^nil].
+	interpreterProxy pop: 7. "pop args + rcvr"
+	interpreterProxy push: array.

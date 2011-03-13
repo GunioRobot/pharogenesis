@@ -3,4 +3,4 @@ View
 	instanceVariableNames: 'displayContents hasUnacceptedEdits askBeforeDiscardingEdits '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Interface-Support'
+	category: 'ST80-Support'

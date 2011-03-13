@@ -3,4 +3,4 @@ StringHolderView
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Interface-Menus'
+	category: 'ST80-Support'

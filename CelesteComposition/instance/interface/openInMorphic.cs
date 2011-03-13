@@ -14,18 +14,24 @@ openInMorphic
 				on: self
 				getState: nil
 				action: #submit.
-	sendButton label: 'send message'.
-	sendButton setBalloonText: 'add this to the queue of messages to be sent'.
-	sendButton onColor: Color white offColor: Color white.
+	sendButton
+		hResizing: #spaceFill;
+		vResizing: #spaceFill;
+		label: 'send message';
+		setBalloonText: 'add this to the queue of messages to be sent';
+		onColor: Color white offColor: Color white.
 	buttonsList addMorphBack: sendButton.
 	
 	attachmentButton _ PluggableButtonMorph
 				on: self
 				getState: nil
 				action: #addAttachment.
-	attachmentButton label: 'add attachment'.
-	attachmentButton setBalloonText: 'Send a file with the message'.
-	attachmentButton onColor: Color white offColor: Color white.
+	attachmentButton
+		hResizing: #spaceFill;
+		vResizing: #spaceFill;
+		label: 'add attachment';
+		setBalloonText: 'Send a file with the message';
+		onColor: Color white offColor: Color white.
 	buttonsList addMorphBack: attachmentButton.
 	
 	morphicWindow addMorph: buttonsList frame: (0 @ 0 extent: 1 @ 0.1).

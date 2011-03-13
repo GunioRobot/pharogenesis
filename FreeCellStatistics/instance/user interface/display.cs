@@ -4,7 +4,7 @@ display
 	(window notNil and: [window owner notNil]) ifTrue: [window activate. ^nil].
 	panel _ AlignmentMorph newColumn.
 	panel
-		centering: #center;
+		wrapCentering: #center; cellPositioning: #topCenter;
 		hResizing: #rigid;
 		vResizing: #rigid;
 		extent: 250@150;

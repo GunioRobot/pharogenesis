@@ -9,7 +9,7 @@ addRecordingControls
 
 	"Add chord, rest and delete buttons"
 	playRow _ AlignmentMorph newRow.
-	playRow color: color; borderWidth: 0; inset: 0.
+	playRow color: color; borderWidth: 0; layoutInset: 0.
 	playRow hResizing: #shrinkWrap; vResizing: #shrinkWrap; extent: 5@5.
 	playRow addMorphBack: (switch fullCopy label: 'chord'; actionSelector: #buildChord:).
 	playRow addMorphBack: (button fullCopy label: '          rest          '; actionSelector: #emitRest).
@@ -20,7 +20,7 @@ addRecordingControls
 
 	"Add note duration buttons"
 	durRow _ AlignmentMorph newRow.
-	durRow color: color; borderWidth: 0; inset: 0.
+	durRow color: color; borderWidth: 0; layoutInset: 0.
 	durRow hResizing: #shrinkWrap; vResizing: #shrinkWrap; extent: 5@5.
 	durRow addMorphBack: (switch fullCopy label: 'whole';
 				actionSelector: #duration:onOff:; arguments: #(1)).
@@ -38,7 +38,7 @@ addRecordingControls
 
 	"Add note duration modifier buttons"
 	modRow _ AlignmentMorph newRow.
-	modRow color: color; borderWidth: 0; inset: 0.
+	modRow color: color; borderWidth: 0; layoutInset: 0.
 	modRow hResizing: #shrinkWrap; vResizing: #shrinkWrap; extent: 5@5.
 	modRow addMorphBack: (switch fullCopy label: 'dotted';
 				actionSelector: #durMod:onOff:; arguments: #(dotted)).
@@ -54,7 +54,7 @@ addRecordingControls
 
 	"Add articulation buttons"
 	articRow _ AlignmentMorph newRow.
-	articRow color: color; borderWidth: 0; inset: 0.
+	articRow color: color; borderWidth: 0; layoutInset: 0.
 	articRow hResizing: #shrinkWrap; vResizing: #shrinkWrap; extent: 5@5.
 	articRow addMorphBack: (switch fullCopy label: 'legato';
 				actionSelector: #articulation:onOff:; arguments: #(legato)).

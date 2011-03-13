@@ -3,4 +3,4 @@ Color
 	instanceVariableNames: 'alpha '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Graphics-Display Objects'
+	category: 'Graphics-Primitives'

@@ -1,0 +1,2 @@
+defaultBaseURL
+	^DefaultBaseURL ifNil: ['']

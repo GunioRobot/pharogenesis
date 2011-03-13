@@ -5,4 +5,5 @@ asTranslationMethodOfClass: aClass
 		args: arguments
 		locals: encoder tempsAndBlockArgs
 		block: block
-		primitive: primitive
+		primitive: primitive;
+		comment: comment

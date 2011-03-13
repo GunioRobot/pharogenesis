@@ -1,6 +1,6 @@
-MorphicTransform
+DisplayTransform
 	subclass: #CompositeTransform
 	instanceVariableNames: 'globalTransform localTransform '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Support'
+	category: 'Graphics-Transformations'

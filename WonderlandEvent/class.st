@@ -1,0 +1,1 @@
+WonderlandEvent class instanceVariableNames: ''

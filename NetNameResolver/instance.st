@@ -1,6 +1,7 @@
 Object
 	subclass: #NetNameResolver
 	instanceVariableNames: ''
-	classVariableNames: 'DefaultHostName ResolverBusy ResolverError ResolverReady ResolverSemaphore ResolverUninitialized '
+	classVariableNames:
+		'DefaultHostName HaveNetwork LastContact ResolverBusy ResolverError ResolverReady ResolverSemaphore ResolverUninitialized '
 	poolDictionaries: ''
-	category: 'System-Network'
+	category: 'Network-Kernel'

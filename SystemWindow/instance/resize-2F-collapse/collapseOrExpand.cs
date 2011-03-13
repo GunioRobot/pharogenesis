@@ -19,7 +19,7 @@ collapseOrExpand
 			"First save latest fullFrame"
 			paneMorphs do: [:m | m delete; releaseCachedState].
 			model modelSleep.
-			collapsedFrame _ (RealEstateAgent assignCollapseFrameFor: self).
-						
+			collapsedFrame ifNil:
+				[collapsedFrame _ RealEstateAgent assignCollapseFrameFor: self].
 			self setBoundsWithFlex: collapsedFrame].
 	self layoutChanged

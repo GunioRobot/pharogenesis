@@ -4,4 +4,4 @@ hint
 	| tile |
 	self deselectSelection.
 	tile _ self findSelection.
-	tile ifNotNil: [tile mouseDown: MorphicEvent new]
+	tile ifNotNil: [tile mouseDown: MouseButtonEvent new]

@@ -10,7 +10,7 @@ buildButton: aButton target: aTarget label: aLabel selector: aSelector
 		borderWidth: 2;
 		color: color.
 	a _ AlignmentMorph newColumn
-		centering: #center;
+		wrapCentering: #center; cellPositioning: #topCenter;
 		hResizing: #spaceFill;
 		vResizing: #shrinkWrap;
 		color: color.

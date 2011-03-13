@@ -3,4 +3,4 @@ Object
 	instanceVariableNames: 'scale translation '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Interface-Framework'
+	category: 'ST80-Framework'

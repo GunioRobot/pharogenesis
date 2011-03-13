@@ -1,2 +1,0 @@
-formalCostumeName
-	^ self class name

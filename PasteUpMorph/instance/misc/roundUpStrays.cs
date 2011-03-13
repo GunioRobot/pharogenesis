@@ -1,7 +1,7 @@
 roundUpStrays
 	self submorphsDo:
 		[:m |
-			((m hasProperty: #flap) or: [m isKindOf: FlapTab])
+			(m isFlapOrTab)
 				ifFalse:
 					[m goHome.
 					m isPlayfieldLike ifTrue: [m roundUpStrays]]]

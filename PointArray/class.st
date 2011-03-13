@@ -1,0 +1,1 @@
+PointArray class instanceVariableNames: ''

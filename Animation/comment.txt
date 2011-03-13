@@ -1,0 +1,1 @@
+The Animation class extends the AbstractAnimation class with methods designed for simple (non-composite) animations.

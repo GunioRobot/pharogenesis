@@ -1,0 +1,2 @@
+initialValuesAdditiongeneralinfiniteUndo
+	^ #((infiniteUndo true (general ) ) )

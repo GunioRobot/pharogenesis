@@ -3,4 +3,4 @@ SwikiAction
 	instanceVariableNames: 'cacheDirectory cacheURL pwsURL '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'PluggableWebServer'
+	category: 'Network-Pluggable Web Server'

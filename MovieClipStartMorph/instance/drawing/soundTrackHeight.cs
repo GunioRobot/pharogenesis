@@ -1,0 +1,3 @@
+soundTrackHeight
+
+	^ 40

@@ -4,7 +4,7 @@ wantsHaloFor: aSubMorph
 	^ wantsMouseOverHalos == true and:
 		 [self visible and:
 			[isPartsBin ~~ true and:
-				[self dragNDropEnabled and:
+				[self dropEnabled and:
 					[self isWorldMorph not or: [aSubMorph renderedMorph isLikelyRecipientForMouseOverHalos]]]]]
 
 	"The odd logic at the end of the above says...

@@ -1,2 +1,3 @@
 beTransitionTo: dstProjectName
-	^self beTransitionFrom: Project current name to: dstProjectName
+
+	^self beTransitionFrom: CurrentProjectRefactoring currentProjectName to: dstProjectName

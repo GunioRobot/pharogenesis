@@ -1,5 +1,4 @@
-TextAttribute comment:
-'Tells a piece of text to be a certain way.
+Tells a piece of text to be a certain way.
 
 Select text, press Command-6, choose a attribute.  If selected text is of the form 
 	Hi There<Smalltalk beep>
@@ -14,5 +13,4 @@ TextURL -- Show the web page. <www.disney.com>
 
 These attributes of text need to be stored on the disk in a regular file-out.  It is done in this form: 	(ascii 2)<!do Smalltalk beep(ascii 3)>Hi There(ascii 3)<!>
 	(ascii 2)<!li Point extent:(ascii 3)>Click here to see the extent: method(ascii 3)<!>
-The brackets are for people to see in fileOuts.  The wierd ascii are for the scanner to pick up easily.
-'
+The brackets are for people to see in fileOuts.  The wierd ascii are for the scanner to pick up easily.  See RunArray class scanFrom: where decoding is done.

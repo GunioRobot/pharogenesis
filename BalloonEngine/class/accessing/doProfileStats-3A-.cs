@@ -4,5 +4,5 @@ doProfileStats: aBool
 	accuracy timer for measuring."
 	"BalloonEngine doProfileStats: true"
 	"BalloonEngine doProfileStats: false"
-	<primitive: 'gePrimitiveDoProfileStats'>
+	<primitive: 'primitiveDoProfileStats' module: 'B2DPlugin'>
 	^false

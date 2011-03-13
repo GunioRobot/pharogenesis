@@ -4,6 +4,7 @@ toggleIndex: anInteger
 	Otherwise, make the variable whose index is anInteger be the selected 
 	item."
 
+	selectionUpdateTime _ 0.
 	selectionIndex = anInteger
 		ifTrue: 
 			["same index, turn off selection"

@@ -1,0 +1,3 @@
+scale
+
+	^self myTransformMorph scale

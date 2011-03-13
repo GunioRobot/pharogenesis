@@ -11,7 +11,10 @@ openMorphicView
 	win addMorph: topicArea frame: (0@0 extent: 0.9@0.1).
 
 	usersButton _ PluggableButtonMorph on: channel  getState: nil  action: #openUserList.
-	usersButton label: 'users'.
+	usersButton
+		hResizing: #spaceFill;
+		vResizing: #spaceFill;
+		label: 'users'.
 	win addMorph: usersButton frame: (0.9@0 extent: 0.1@0.1).
 
 	textArea _ PluggableTextMorph on: self text: #chatText accept: nil readSelection: #chatTextSelection menu: nil.

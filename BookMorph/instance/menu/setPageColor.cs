@@ -3,9 +3,9 @@ setPageColor
 
 	self currentPage ifNil: [^ self].
 	ColorPickerMorph new
+		choseModalityFromPreference;
 		sourceHand: self activeHand;
 		target: self;
 		selector: #setAllPagesColor:;
 		originalColor: self currentPage color;
-		addToWorld: self world
-			near: self fullBounds
+		putUpFor: self near: self fullBoundsInWorld

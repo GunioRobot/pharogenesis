@@ -15,7 +15,6 @@ initialize
 	t at: String put: 5.   refTypes add: 1.
 	t at: Symbol put: 6.   refTypes add: 1.
 	t at: ByteArray put: 7.   refTypes add: 1.
-		"CompiledMethod is handled by Object (type 9)"
 	t at: Array put: 8.   refTypes add: 1.
 	"(type ID 9 is for arbitrary instances of any class, cf. typeIDFor:)"
 		refTypes add: 1.
@@ -33,5 +32,6 @@ initialize
 	t at: WordArray put: 18.  refTypes add: 1.	"bitmap-like"
 	t at: WordArrayForSegment put: 19.  refTypes add: 1.		"bitmap-like"
 	t at: SoundBuffer put: 20.  refTypes add: 1.		"And all other word arrays"
-	"t at:  put: 21.  refTypes add: 0."
+	t at: CompiledMethod put: 21.  refTypes add: 1.	"special creation method"
+	"t at:  put: 22.  refTypes add: 0."
 	ReferenceStream refTypes: refTypes.		"save it"

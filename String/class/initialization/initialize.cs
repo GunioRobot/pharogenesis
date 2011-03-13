@@ -1,4 +1,5 @@
-initialize  "String initialize"
+initialize   "String initialize"
+
 	| order |
 	AsciiOrder _ (0 to: 255) as: ByteArray.
 
@@ -21,9 +22,14 @@ initialize  "String initialize"
 	order = 255 ifFalse: [self error: 'order problem'].
 
 	"a table for translating to lower case"
-	LowercasingTable _ String new: 256.
-	Character allCharacters do: [ :c |
-		LowercasingTable at: (c asciiValue+1) put: c asLowercase ].	
+	LowercasingTable _ String withAll: (Character allCharacters collect: [:c | c asLowercase]).
+
+	"a table for translating to upper case"
+	UppercasingTable _ String withAll: (Character allCharacters collect: [:c | c asUppercase]).
+
+	"a table for testing tokenish (for fast numArgs)"
+	Tokenish _ String withAll: (Character allCharacters collect:
+									[:c | c tokenish ifTrue: [c] ifFalse: [$~]]).
 
 	"CR and LF--characters that terminate a line"
 	CSLineEnders _ CharacterSet empty.

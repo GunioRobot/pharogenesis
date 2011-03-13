@@ -1,0 +1,2 @@
+inspectListMorph
+	listMorph inspect

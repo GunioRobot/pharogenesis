@@ -1,4 +1,3 @@
 forwardDirection
-	"Default implementation."
-
-	^ 0.0
+	"Return the receiver's forward direction (in eToy terms)"
+	^self valueOfProperty: #forwardDirection ifAbsent:[0.0]

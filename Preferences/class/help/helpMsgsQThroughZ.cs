@@ -1,4 +1,5 @@
 helpMsgsQThroughZ
+	"Answer a list of <symbol> <string> pairs that give the balloon help corresponding to various symbols"
 
 	^ #(	
 (reverseWindowStagger

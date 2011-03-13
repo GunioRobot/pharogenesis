@@ -7,4 +7,4 @@ invokeNoteMenu: evt
 		#(('grid to next quarter'		gridToNextQuarter)
 		('grid to prev quarter'		gridToPrevQuarter)).
 
-	evt hand invokeMenu: menu event: evt.
+	menu popUpEvent: evt in: self world.

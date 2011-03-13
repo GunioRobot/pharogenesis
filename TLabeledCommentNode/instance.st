@@ -1,6 +1,6 @@
 TParseNode
 	subclass: #TLabeledCommentNode
-	instanceVariableNames: 'label comment '
+	instanceVariableNames: 'label '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Squeak-Translation to C'
+	category: 'VMConstruction-Translation to C'

@@ -4,7 +4,7 @@ addSampleWindowsTo: aPage
 	aWindow _ Browser new openAsMorphEditing: nil.
 	aWindow setLabel: 'System Browser'.
 	aPage addMorphBack: aWindow applyModelExtent.
-	aWindow _ PackageBrowser new openAsMorphEditing: nil.
+	aWindow _ PackagePaneBrowser new openAsMorphEditing: nil.
 	aWindow setLabel: 'Package Browser'.
 	aPage addMorphBack: aWindow applyModelExtent.
 	aWindow _ Workspace new embeddedInMorphicWindowLabeled: 'Workspace'.

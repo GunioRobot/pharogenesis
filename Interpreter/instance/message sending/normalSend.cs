@@ -8,7 +8,7 @@ normalSend
 	self sharedCodeNamed: 'commonSend' inCase: 131.
 
 	rcvr _ self internalStackValue: argumentCount.
-	lkupClass _ self fetchClassOf: rcvr.
+	receiverClass _ lkupClass _ self fetchClassOf: rcvr.
 	self internalFindNewMethod.
 	self internalExecuteNewMethod.
 	self fetchNextBytecode.

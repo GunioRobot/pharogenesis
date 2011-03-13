@@ -1,0 +1,16 @@
+Allows anyone to read the pages of this Swiki, but only authorized users can edit or change pages.  Can have multiple users, each with a different password.  Each can modify the whole Swiki area.
+
+To restart an existing Authorized Swiki:
+
+	AuthorizedWriteSwiki new restore: 'SWSecure'.
+
+The front page URL is:  http://serverMachine:80/SWSecure.1
+
+To make a completely new one:
+	| a s |
+	a := Authorizer new.
+	a realm: 'SwikiArea'.
+	a mapName: 'viki' password: 'hard2guess' to: 'viki'.
+	AuthorizedWriteSwiki setUp: 'SWSecure'.
+	s := AuthorizedWriteSwiki new restore: 'SWSecure'.
+	s authorizer: a.

@@ -1,0 +1,1 @@
+MacRGBColor class instanceVariableNames: ''

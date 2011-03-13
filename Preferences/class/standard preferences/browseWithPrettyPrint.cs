@@ -1,2 +1,0 @@
-browseWithPrettyPrint
-	^ self valueOfFlag: #browseWithPrettyPrint

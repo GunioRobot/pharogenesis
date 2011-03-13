@@ -1,0 +1,3 @@
+defaultSelectorPattern
+
+	^self class defaultSelectorPattern

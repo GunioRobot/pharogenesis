@@ -15,6 +15,7 @@ initialize
 	semaphoresUseBufferA _ true.
 	semaphoresToSignalA _ Array new: SemaphoresToSignalSize.
 	semaphoresToSignalB _ Array new: SemaphoresToSignalSize.
+	externalPrimitiveTable _ CArrayAccessor on: (Array new: MaxExternalPrimitiveTableSize size).
 
 	obsoleteNamedPrimitiveTable _ 
 		CArrayAccessor on: self class obsoleteNamedPrimitiveTable.

@@ -1,0 +1,2 @@
+heading
+	^self renderedMorph heading

@@ -1,0 +1,7 @@
+This class defines a generic attribute of a VRML node.
+
+Instance variables:
+	type		<String>	The type of the attribute (e.g., 'SFFloat', 'MFString')
+	name		<String>	The name of the attribute (e.g., 'children')
+	value		<Object>	The (default or current) value of the attribute
+	attrClass	<String>	The attribute class (e.g., 'exposedField', 'field', 'eventIn', 'eventOut')

@@ -4,4 +4,4 @@ MouseMenuController
 	classVariableNames:
 		'BitEditKey BlackKey BlockKey ChangeGridsKey CurveKey DarkGrayKey EraseKey FlashCursor GrayKey InKey LightGrayKey LineKey OutKey OverKey RepeatCopyKey ReverseKey SelectKey SingleCopyKey TogglexGridKey ToggleyGridKey UnderKey WhiteKey YellowButtonMenu YellowButtonMessages YgridKey '
 	poolDictionaries: ''
-	category: 'Graphics-Editors'
+	category: 'ST80-Editors'

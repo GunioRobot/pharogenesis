@@ -1,0 +1,1 @@
+UnscriptedPlayer class instanceVariableNames: 'ephemeralPlayerRef '

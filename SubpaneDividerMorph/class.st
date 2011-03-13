@@ -1,0 +1,1 @@
+SubpaneDividerMorph class instanceVariableNames: ''

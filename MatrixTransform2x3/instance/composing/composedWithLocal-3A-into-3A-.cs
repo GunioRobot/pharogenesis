@@ -2,7 +2,7 @@ composedWithLocal: aTransformation into: result
 	"Return the composition of the receiver and the local transformation passed in.
 	Store the composed matrix into result."
 	| a11 a12 a13 a21 a22 a23 b11 b12 b13 b21 b22 b23 matrix |
-	<primitive: 'm23PrimitiveComposeMatrix'>
+	<primitive: 'primitiveComposeMatrix' module: 'Matrix2x3Plugin'>
 	matrix _ aTransformation asMatrixTransform2x3.
 	a11 _ self a11.		b11 _ matrix a11.
 	a12 _ self a12.		b12 _ matrix a12.

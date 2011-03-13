@@ -1,2 +1,0 @@
-isAnonymous
-	^ self scriptInstantiation isAnonymous

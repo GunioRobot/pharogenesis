@@ -1,25 +1,21 @@
 pattern: fromDoit inContext: ctxt 
-	" unarySelector | binarySelector arg | keyword arg {keyword arg} => 
+	" unarySelector | binarySelector arg | keyword arg {keyword arg} =>  
 	{selector, arguments, precedence}."
-
 	| args selector |
 	doitFlag _ fromDoit.
-	fromDoit 
-		ifTrue: 
+	fromDoit ifTrue:
 			[ctxt == nil
-				ifTrue: [^Array with: #DoIt with: #() with: 1]
-				ifFalse: [^Array 
-							with: #DoItIn: 
-							with: (Array 
-									with: (encoder encodeVariable: 'homeContext')) 
-									with: 3]].
-	hereType == #word 
-		ifTrue: [^Array with: self advance asSymbol with: #() with: 1].
+				ifTrue: [^ {#DoIt. {}. 1}]
+				ifFalse: [^ {#DoItIn:. {encoder encodeVariable: 'homeContext'}. 3}]].
+
+	hereType == #word ifTrue: [^ {self advance asSymbol. {}. 1}].
+
 	(hereType == #binary or: [hereType == #verticalBar])
 		ifTrue: 
 			[selector _ self advance asSymbol.
 			args _ Array with: (encoder bindArg: self argumentName).
-			^Array with: selector with: args with: 2].
+			^ {selector. args. 2}].
+
 	hereType == #keyword
 		ifTrue: 
 			[selector _ WriteStream on: (String new: 32).
@@ -28,5 +24,6 @@ pattern: fromDoit inContext: ctxt
 				whileTrue: 
 					[selector nextPutAll: self advance.
 					args addLast: (encoder bindArg: self argumentName)].
-			^Array with: selector contents asSymbol with: args with: 3].
-	^self expected: 'Message pattern'
+			^ {selector contents asSymbol. args. 3}].
+
+	^ self expected: 'Message pattern'

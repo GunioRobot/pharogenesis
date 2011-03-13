@@ -1,0 +1,2 @@
+isSuspended
+	^myList isNil

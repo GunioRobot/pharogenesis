@@ -1,2 +1,3 @@
 startUp
-	Smalltalk isMorphic ifTrue: [World restoreDisplay]
+	
+	Display restoreMorphicDisplay.

@@ -1,0 +1,1 @@
+ToggleButtonMorph class instanceVariableNames: ''

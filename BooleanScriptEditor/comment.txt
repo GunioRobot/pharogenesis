@@ -1,2 +1,1 @@
-BooleanScriptEditor class comment:
-'A ScriptEditor required to hold a Boolean'
+A ScriptEditor required to hold a Boolean

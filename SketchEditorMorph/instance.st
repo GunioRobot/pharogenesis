@@ -1,7 +1,7 @@
 Morph
 	subclass: #SketchEditorMorph
 	instanceVariableNames:
-		'hostView stampForm canvasRectangle palette currentColor ticksToDwell rotationCenter registrationPoint newPicBlock emptyPicBlock action paintingForm dimForm buff brush paintingFormPen formCanvas picToBuff brushToBuff buffToBuff buffToPic rotationButton scaleButton strokeOrigin cumRot cumMag undoBuffer lastEvent currentNib enclosingPasteUpMorph '
-	classVariableNames: ''
+		'hostView palette ticksToDwell rotationCenter registrationPoint newPicBlock emptyPicBlock paintingForm dimForm formCanvas rotationButton scaleButton cumRot cumMag undoBuffer enclosingPasteUpMorph forEachHand '
+	classVariableNames: 'SketchTimes '
 	poolDictionaries: ''
 	category: 'Morphic-Support'

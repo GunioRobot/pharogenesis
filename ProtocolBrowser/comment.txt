@@ -1,2 +1,1 @@
-ProtocolBrowser comment:
-'An instance of ProtocolBrowser shows the methods a class understands--inherited or implemented at this level--as a "flattened" list.'
+An instance of ProtocolBrowser shows the methods a class understands--inherited or implemented at this level--as a "flattened" list.

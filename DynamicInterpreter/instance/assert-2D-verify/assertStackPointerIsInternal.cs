@@ -1,2 +1,0 @@
-assertStackPointerIsInternal
-	^ self

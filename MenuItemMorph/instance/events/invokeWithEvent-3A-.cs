@@ -1,10 +1,16 @@
 invokeWithEvent: evt
 	"Perform the action associated with the given menu item."
 
-	| selArgCount |
+	| selArgCount w |
 	self isEnabled ifFalse: [^ self].
-	(owner isKindOf: MenuMorph) ifTrue: [owner lastSelection: selector].
-
+	target class == HandMorph ifTrue: [(self notObsolete) ifFalse: [^ self]].
+	owner ifNotNil:[self isStayUpItem ifFalse:[
+		self flag: #workAround. "The tile system invokes menus straightforwardly so the menu might not be in the world."
+		(w _ self world) ifNotNil:[
+			owner deleteIfPopUp: evt.
+			"Repair damage before invoking the action for better feedback"
+			w displayWorldSafely]]].
+	selector ifNil:[^self].
 	Cursor normal showWhile: [  "show cursor in case item opens a new MVC window"
 		(selArgCount _ selector numArgs) = 0
 			ifTrue:
@@ -12,4 +18,4 @@ invokeWithEvent: evt
 			ifFalse:
 				[selArgCount = arguments size
 					ifTrue: [target perform: selector withArguments: arguments]
-					ifFalse: [target perform: selector withArguments: (arguments copyWith: evt)]]]
+					ifFalse: [target perform: selector withArguments: (arguments copyWith: evt)]]].

@@ -1,15 +1,15 @@
 displayWorldNonIncrementally
 	"Display the morph world non-incrementally. Used for testing."
 
-	(self canvas == nil or:
-	 [(self canvas extent ~= self viewBox extent) or:
-	 [self canvas form depth ~= Display depth]]) ifTrue: [
+	(worldState canvas == nil or:
+	 [(worldState canvas extent ~= self viewBox extent) or:
+	 [worldState canvas form depth ~= Display depth]]) ifTrue: [
 		"allocate a new offscreen canvas the size of the window"
-		self canvas: (Display defaultCanvasClass extent: self viewBox extent)].
+		worldState canvas: (Display defaultCanvasClass extent: self viewBox extent)].
 
-	self canvas fillColor: color.
-	submorphs reverseDo: [:m | m fullDrawOn: self canvas].
-	self hands reverseDo: [:h | h fullDrawOn: self canvas].
-	self canvas form displayOn: Display at: self viewBox origin.
+	worldState canvas fillColor: color.
+	submorphs reverseDo: [:m | worldState canvas fullDrawMorph: m].
+	worldState handsReverseDo: [:h | worldState canvas fullDrawMorph: h].
+	worldState canvas form displayOn: Display at: self viewBox origin.
 	self fullRepaintNeeded.  "don't collect damage"
 	Display forceDisplayUpdate.

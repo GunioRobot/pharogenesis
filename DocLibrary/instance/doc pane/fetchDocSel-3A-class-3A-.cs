@@ -14,7 +14,7 @@ Would you like to write some?' withCRs.
 			docPane color: Color white; borderWidth: 2; borderColor: Color green.
 			docPane setProperty: #classAndMethod toValue: key.
 			docPane setProperty: #initialExtent toValue: (ext _ 200@200).
-			docPane topLeft: (RealEstateAgent initialFrameFor: docPane) origin.
+			docPane topLeft: (RealEstateAgent initialFrameFor: docPane world: Smalltalk currentWorld) origin.
 			docPane extent: ext.
 			docPane addMorph: (TextMorph new topLeft: docPane topLeft + (10@10);
 					extent: docPane width - 15 @ 30).

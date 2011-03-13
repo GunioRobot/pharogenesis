@@ -1,3 +1,0 @@
-asExplorerString
-
-	^self asString

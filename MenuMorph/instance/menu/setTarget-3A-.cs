@@ -10,5 +10,5 @@ setTarget: evt
 	self items do: [:item |
 		old _ item target.
 		old isHandMorph
-			ifTrue: [item target: evt hand. evt hand setArgument: defaultTarget]
+			ifTrue: [item target: evt hand]
 			ifFalse: [item target: defaultTarget]].

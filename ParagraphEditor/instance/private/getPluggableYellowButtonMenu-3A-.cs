@@ -1,6 +1,6 @@
 getPluggableYellowButtonMenu: shiftKeyState
 	| customMenu |
-	^(customMenu _ view getMenu: shiftKeyState) notNil
+	^ ((view ~~ nil) and: [(customMenu _ view getMenu: shiftKeyState) notNil])
 		ifTrue: [customMenu]
 		ifFalse:
 			[shiftKeyState

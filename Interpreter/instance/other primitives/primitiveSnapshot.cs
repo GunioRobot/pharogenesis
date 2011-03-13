@@ -1,14 +1,19 @@
 primitiveSnapshot
 
 	| activeProc dataSize rcvr |
-	self compilerPreSnapshotHook.
-	"save the state of the current process and save it on the scheduler queue"
-	self storeContextRegisters: activeContext.
-	activeProc _
-		self fetchPointer: ActiveProcessIndex ofObject: self schedulerPointer.
-	self storePointer: SuspendedContextIndex
-		    ofObject: activeProc
-		  withValue: activeContext.
+
+	"update state of active context"
+	compilerInitialized
+		ifTrue: [self compilerPreSnapshot]
+		ifFalse: [self storeContextRegisters: activeContext].
+
+	"update state of active process"
+	activeProc _ self
+		fetchPointer: ActiveProcessIndex
+		ofObject: self schedulerPointer.
+	self	storePointer: SuspendedContextIndex
+		ofObject: activeProc
+		withValue: activeContext.
 
 	"compact memory and compute the size of the memory actually in use"
 	self cleanUpContexts.
@@ -27,4 +32,6 @@ primitiveSnapshot
 	successFlag
 		ifTrue: [ self push: falseObj ]
 		ifFalse: [ self push: rcvr ].
-	self compilerPostSnapshotHook.
+
+	compilerInitialized
+		ifTrue: [self compilerPostSnapshot].

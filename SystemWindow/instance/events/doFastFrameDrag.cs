@@ -1,9 +1,10 @@
 doFastFrameDrag
 
-	| offset newBounds |
+	| offset newBounds outerWorldBounds |
 
-	offset _ self position - Sensor cursorPoint.
-	newBounds _ self bounds newRectFrom: [:f | 
-		Sensor cursorPoint + offset extent: self extent
+	outerWorldBounds _ self boundsIn: nil.
+	offset _ outerWorldBounds origin - Sensor cursorPoint.
+	newBounds _ outerWorldBounds newRectFrom: [:f | 
+		Sensor cursorPoint + offset extent: outerWorldBounds extent
 	].
-	^ self position: newBounds topLeft
+	^ self position: (self globalPointToLocal: newBounds topLeft) 

@@ -1,0 +1,8 @@
+InflatePlugin
+	subclass: #DeflatePlugin
+	instanceVariableNames:
+		'zipHashHead zipHashTail zipHashValue zipBlockPos zipBlockStart zipLiterals zipDistances zipLiteralFreq zipDistanceFreq zipLiteralCount zipLiteralSize zipMatchCount zipMatchLengthCodes zipDistanceCodes zipCrcTable zipExtraLengthBits zipExtraDistanceBits zipBaseLength zipBaseDistance '
+	classVariableNames:
+		'DeflateHashBits DeflateHashMask DeflateHashShift DeflateHashTableSize DeflateMaxDistance DeflateMaxDistanceCodes DeflateMaxLiteralCodes DeflateMaxMatch DeflateMinMatch DeflateWindowMask DeflateWindowSize '
+	poolDictionaries: ''
+	category: 'VMConstruction-Plugins'

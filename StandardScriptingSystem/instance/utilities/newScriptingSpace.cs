@@ -2,6 +2,10 @@ newScriptingSpace
 	"Answer a complete scripting space"
 
 	| aTemplate  palette aPlayfield aWindow itsModel |
+
+	"19 sept 2000 - experiment for Alan"
+	1 = 1 ifTrue: [^self newScriptingSpace2].
+
 	aWindow _ (SystemWindow labelled: 'scripting area') model: (itsModel _ ScriptingDomain new).
 	aWindow setStripeColorsFrom: itsModel defaultBackgroundColor.
 	aWindow extent: 640 @ 480.

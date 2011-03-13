@@ -1,0 +1,3 @@
+successColor
+
+	^Color green

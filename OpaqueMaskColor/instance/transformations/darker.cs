@@ -1,3 +1,0 @@
-darker
-
-	^ self

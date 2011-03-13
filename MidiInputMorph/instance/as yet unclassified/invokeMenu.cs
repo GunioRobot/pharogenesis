@@ -4,7 +4,7 @@ invokeMenu
 	| aMenu |
 	aMenu _ CustomMenu new.
 	aMenu add: 'add channel' action: #addChannel.
-	aMenu add: 'reload instruments' action: #updateInstrumentsFromLibrary.
+	aMenu add: 'reload instruments' target: AbstractSound selector: #updateScorePlayers.
 	midiSynth isOn ifFalse: [
 		aMenu add: 'set MIDI port' action: #setMIDIPort.
 		midiSynth midiPort

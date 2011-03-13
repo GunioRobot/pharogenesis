@@ -1,4 +1,2 @@
 integerSet
-	"A stopgap, until we get the pluggable init code."
-
-	^ Set new: 500
+	^self new hashBlock: [:integer | integer hash \\ 1064164 * 1009]

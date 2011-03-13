@@ -15,6 +15,5 @@ pageOfSampleWindowsOfExtent: aPoint
 	pu color: (Color r: 0.839 g: 1.0 b: 0.935).
 
 	aPage  replaceTallSubmorphsByThumbnails.
-	aPage fixLayout.
 
 	^ aPage

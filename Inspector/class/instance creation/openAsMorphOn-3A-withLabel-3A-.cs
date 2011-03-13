@@ -3,12 +3,17 @@ openAsMorphOn: anObject withLabel: aLabel
 	| window inspector |
 	inspector _ self inspect: anObject.
 	window _ (SystemWindow labelled: aLabel) model: inspector.
-	window addMorph: ((PluggableListMorph on: inspector list: #fieldList
-				selected: #selectionIndex changeSelected: #toggleIndex:
-				menu: ((inspector isMemberOf: DictionaryInspector)
-						ifTrue: [#dictionaryMenu:]
-						ifFalse: [#fieldListMenu:])
-				keystroke: #inspectorKey:from:) doubleClickSelector: #inspectSelection)
+	window addMorph: (
+		PluggableListMorph new
+			doubleClickSelector: #inspectSelection;
+
+			on: inspector list: #fieldList
+			selected: #selectionIndex
+			changeSelected: #toggleIndex:
+			menu: ((inspector isMemberOf: DictionaryInspector)
+					ifTrue: [#dictionaryMenu:]
+					ifFalse: [#fieldListMenu:])
+			keystroke: #inspectorKey:from:)
 		frame: (0@0 corner: self horizontalDividerProportion @ self verticalDividerProportion).
 	window addMorph: (PluggableTextMorph on: inspector text: #contents accept: #accept:
 				readSelection: #contentsSelection menu: #codePaneMenu:shifted:)

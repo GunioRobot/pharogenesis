@@ -1,0 +1,15 @@
+The instance variables of interest here -- some are presently inherited from PasteupMoprh --
+
+
+dataInstances            this is the stack's entire data-base
+backgrounds
+currentDataInstance    Points to an element of dataInstances
+
+userFrameRectangle
+
+
+
+The primary abstraction here iis the Background and its instances.  I'd like to call this thing, which is kind of a Stack and a kind of database, 
+
+The Background definition is the Playfield
+We swap playfields in a Book.  Therefore, a Stack is like a book and a Playfield is like a background.

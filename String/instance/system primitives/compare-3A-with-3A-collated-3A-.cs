@@ -2,7 +2,7 @@ compare: string1 with: string2 collated: order
 	"Return 1, 2 or 3, if string1 is <, =, or > string2, with the collating order of characters given by the order array."
 
 	| len1 len2 c1 c2 |
-	<primitive: 235>
+	<primitive: 'primitiveCompareString' module: 'MiscPrimitivePlugin'>
 	self var: #string1 declareC: 'unsigned char *string1'.
 	self var: #string2 declareC: 'unsigned char *string2'.
 	self var: #order declareC: 'unsigned char *order'.

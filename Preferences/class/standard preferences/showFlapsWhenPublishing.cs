@@ -1,0 +1,2 @@
+showFlapsWhenPublishing
+	^ self valueOfFlag: #showFlapsWhenPublishing

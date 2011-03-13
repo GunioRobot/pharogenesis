@@ -1,4 +1,4 @@
 hash
 	"Hash is reimplemented because = is implemented."
 
-	^numerator bitXor: denominator
+	^numerator hash bitXor: denominator hash

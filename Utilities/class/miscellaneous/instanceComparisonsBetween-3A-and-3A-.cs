@@ -9,7 +9,7 @@ instanceComparisonsBetween: fileName1 and: fileName2
 	| instCountDict report f aString items className newInstCount oldInstCount newSpace oldPair oldSpace |
 	instCountDict _ Dictionary new.
 	report _ ReadWriteStream on: ''.
-	f _ FileStream oldFileNamed: fileName1.
+	f _ FileStream readOnlyFileNamed: fileName1.
 	[f atEnd] whileFalse:
 		[aString _ f upTo: Character cr.
 		items _ aString findTokens: ' '.
@@ -17,7 +17,7 @@ instanceComparisonsBetween: fileName1 and: fileName2
 			[instCountDict at: items first put: (Array with: items third asNumber with: items fourth asNumber)]].
 	f close.
 
-	f _ FileStream oldFileNamed: fileName2.
+	f _ FileStream readOnlyFileNamed: fileName2.
 	[f atEnd] whileFalse:
 		[aString _ f upTo: Character cr.
 		items _ aString findTokens: ' '.

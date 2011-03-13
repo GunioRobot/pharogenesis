@@ -12,4 +12,5 @@ asTranslatorNode
 	].
 	^TStmtListNode new
 		setArguments: (arguments asArray collect: [ :arg | arg key ])
-		statements: statementList
+		statements: statementList;
+		comment: comment

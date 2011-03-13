@@ -1,0 +1,5 @@
+My job is to make it easier to scan bytecodes for specific actions, e.g. any instance variable reference.
+
+BlockContext allInstances collect: [ :x |
+	{x. x hasInstVarRef}
+].

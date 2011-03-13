@@ -1,0 +1,1 @@
+IRCChannelInfo class instanceVariableNames: ''

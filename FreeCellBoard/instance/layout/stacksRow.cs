@@ -4,7 +4,8 @@ stacksRow
 	row := (AlignmentMorph newRow)
 		vResizing: #spaceFill;
 		hResizing: #spaceFill;
-		centering: #topLeft;
+		wrapCentering: #topLeft;
+		cellPositioning: #topLeft;
 		color: Color transparent;
 		yourself.
 	self stacks do: [:stack |

@@ -1,6 +1,6 @@
 privateEncodeStereo: count
 
-	<primitive: 553>
+	<primitive: 'primitiveEncodeStereo' module: 'ADPCMPlugin'>
 	"not yet implemented"
 	self inline: false.
 	self success: false.

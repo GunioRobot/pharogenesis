@@ -3,7 +3,7 @@ startRecording
 
 	| semaIndex |
 	recordLevel ifNil: [recordLevel _ 0.5].  "lazy initialization"
-	CanRecordWhilePlaying ifFalse: [SoundPlayer shutDown].
+	Preferences canRecordWhilePlaying ifFalse: [SoundPlayer shutDown].
 	recordProcess ifNotNil: [self stopRecording].
 	paused _ true.
 	meteringBuffer _ SoundBuffer newMonoSampleCount: 1024.
@@ -14,6 +14,7 @@ startRecording
 	self primStartRecordingDesiredSampleRate: samplingRate asInteger
 		stereo: stereo
 		semaIndex: semaIndex.
+	RecorderActive _ true.
 	samplingRate _ self primGetActualRecordingSampleRate.
 	self primSetRecordLevel: (1000.0 * recordLevel) asInteger.
 	recordProcess _ [self recordLoop] newProcess.

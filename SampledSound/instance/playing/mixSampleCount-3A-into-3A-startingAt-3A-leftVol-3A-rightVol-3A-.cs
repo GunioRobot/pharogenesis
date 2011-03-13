@@ -2,7 +2,7 @@ mixSampleCount: n into: aSoundBuffer startingAt: startIndex leftVol: leftVol rig
 	"Mix the given number of samples with the samples already in the given buffer starting at the given index. Assume that the buffer size is at least (index + count) - 1."
 
 	| lastIndex outIndex sampleIndex sample i s overflow |
-	<primitive: 185>
+	<primitive:'primitiveMixSampledSound' module:'SoundGenerationPlugin'>
 	self var: #aSoundBuffer declareC: 'short int *aSoundBuffer'.
 	self var: #samples declareC: 'short int *samples'.
 

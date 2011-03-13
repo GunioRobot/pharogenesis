@@ -6,7 +6,6 @@ veryDeepInner: deepCopier
 	"innerTarget _ innerTarget.		Weakly copied"
 	positionOffset _ positionOffset veryDeepCopyWith: deepCopier.
 	angleOffset _ angleOffset veryDeepCopyWith: deepCopier.
-	minExtent _ minExtent veryDeepCopyWith: deepCopier.
 	growingOrRotating _ growingOrRotating veryDeepCopyWith: deepCopier.
 	directionArrowAnchor _ directionArrowAnchor.
 	simpleMode _ simpleMode.

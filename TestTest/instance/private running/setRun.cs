@@ -1,0 +1,3 @@
+setRun
+
+	self hasRun: true.

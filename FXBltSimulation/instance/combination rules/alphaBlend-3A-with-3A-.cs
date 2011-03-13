@@ -8,10 +8,13 @@ alphaBlend: sourceWord with: destinationWord
 	| alpha unAlpha colorMask result blend shift |
 	self inline: false.
 	alpha _ sourceWord >> 24.  "High 8 bits of source pixel"
+	alpha = 0 ifTrue: [ ^ destinationWord ].
+	alpha = 255 ifTrue: [ ^ sourceWord ].
 	unAlpha _ 255 - alpha.
 	colorMask _ 16rFF.
 	result _ 0.
-	1 to: 3 do:
+	"ar 9/9/2000 - include alpha in computation"
+	1 to: 4 do:
 		[:i | shift _ (i-1)*8.
 		blend _ (((sourceWord>>shift bitAnd: colorMask) * alpha)
 					+ ((destinationWord>>shift bitAnd: colorMask) * unAlpha))

@@ -1,5 +1,5 @@
 example
-	"PluggableButtonMorph example"
+	"PluggableButtonMorph example openInWorld"
 
 	| s1 s2 s3 b1 b2 b3 row |
 	s1 _ Switch new.
@@ -10,6 +10,16 @@ example
 	b1 _ (PluggableButtonMorph on: s1 getState: #isOn action: #switch) label: 'S1'.
 	b2 _ (PluggableButtonMorph on: s2 getState: #isOn action: #turnOn) label: 'S2'.
 	b3 _ (PluggableButtonMorph on: s3 getState: #isOn action: #turnOn) label: 'S3'.
+	b1
+		hResizing: #spaceFill;
+		vResizing: #spaceFill.
+	b2
+		hResizing: #spaceFill;
+		vResizing: #spaceFill.
+	b3
+		hResizing: #spaceFill;
+		vResizing: #spaceFill.
+
 	row _ AlignmentMorph newRow
 		hResizing: #spaceFill;
 		vResizing: #spaceFill;

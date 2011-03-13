@@ -1,0 +1,1 @@
+A displaying scanner which draws its output to a Morphic canvas.

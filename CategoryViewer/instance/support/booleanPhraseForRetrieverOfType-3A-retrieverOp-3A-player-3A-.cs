@@ -1,4 +1,6 @@
 booleanPhraseForRetrieverOfType: retrieverType retrieverOp: retrieverOp player: aPlayer
+	"Answer a boolean-valued phrase derived from a retriever (e.g. 'car's heading'); this is in order to assure that tiles laid down in a TEST area will indeed produce a boolean result"
+
 	| outerPhrase getterPhrase receiverTile  rel finalTile |
 	rel _ (retrieverType == #number)
 		ifTrue:		[#<]
@@ -11,7 +13,7 @@ booleanPhraseForRetrieverOfType: retrieverType retrieverOp: retrieverOp player: 
 	getterPhrase firstSubmorph addMorph: receiverTile.
 
 	outerPhrase firstSubmorph addMorph: getterPhrase.
-	finalTile _ aPlayer tileForArgType: retrieverType.
-	retrieverType == #number ifTrue: [finalTile addArrows].
+	finalTile _ aPlayer tileForArgType: retrieverType.	"comes with arrows"
 	outerPhrase submorphs last addMorph: finalTile.
+	outerPhrase submorphs second submorphs last setBalloonText: (ScriptingSystem helpStringForOperator: rel).    
 	^ outerPhrase

@@ -34,4 +34,5 @@ int dir_Lookup(char *pathString, int pathStringLength, int index,
 	int *isDirectory, int *sizeIfFile);
 int dir_PathToWorkingDir(char *pathName, int pathNameMax);
 int dir_SetMacFileTypeAndCreator(char *filename, int filenameSize, char *fType, char *fCreator);
+int dir_GetMacFileTypeAndCreator(char *filename, int filenameSize, char *fType, char *fCreator);
 '.

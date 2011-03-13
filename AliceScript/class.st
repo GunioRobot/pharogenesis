@@ -1,0 +1,1 @@
+AliceScript class instanceVariableNames: ''

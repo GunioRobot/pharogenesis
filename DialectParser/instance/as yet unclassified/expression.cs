@@ -1,0 +1,3 @@
+expression
+
+	^ self expressionWithInitialKeyword: ''

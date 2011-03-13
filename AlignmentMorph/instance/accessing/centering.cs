@@ -1,3 +1,0 @@
-centering
-
-	^ centering

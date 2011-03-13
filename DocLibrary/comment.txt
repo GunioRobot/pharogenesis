@@ -1,0 +1,75 @@
+Method and Class shared documentation.  Pane in browser.  url for each official version of each method. Each update server group have a prefix (i=internal, e=external).  Point.x;.738.sp  Pane holds a pasteupmorph with comments and examples.  
+	Must be very careful to give the right options for when to look for docs.  Could be annoying.  Look on disk.  If there, bring it in in background.  If not there, and network has been active this session, or within 15 mins, get from server (in background) and cache on disk.  
+	When get updates, check for latest version of all comments in the cache.  
+	Need quick registration of version of inst vars (less bulky and quick to check.)  If all inst var lists are the same as a certain release, mark it as that.  Each release (or update?) have an automatic known registration.
+	Get doc, Get all docs for this class. //  Net: When you ask, If net has been used, Always (always gets in background) // From disk:  When you ask, always (laptop users do the former).
+  	Security: Squeakers can write anything, including players.  Users can only add Morphic objects, not players.  (No new code)
+	Mech:  Users write file to a server with open drop box.  Our server in Alan's office (the librarian) grabs the files once every two minutes, and scans them.  Code must be same as before.  Saves a copy.  Writes on official directory on two outside servers.
+	Any combo of objects of existing classes that can crash the system, or deny service?  Should the librarian try all buttons first?  If it crashes, won't post it.
+	Need another machine to check if the librarian is up, and beep Ted.  Could check a time stamp on the main server.  Users could also tell if librarian is up.  Number of docs in the queue.
+	If we had mime really down, could have squeak email the page to the librarian.  What if the user does not know his pop server?  Use a standard one?  How keep spam out?
+-----
+[ ] set up folders, get reader going (no good interface yet)
+group		Name of group of servers (internal/external)
+lastUpdate	Number of last update we have.
+lastUpdateName		File name without number for checking against ChangeSets.
+methodVersions	Dictionary (class.method -> #(45 secs 120 secs 198 secs)) updates 
+	that this method  appeared in.  From my version, check backwards till find a doc file on server.  secs is (Time totalSeconds) of file on the server (by its directory) of last version I have.  so can tell if have most recent one.  (use one day slop for older ones)
+	point.x;.205.sp
+	rectangle.205.sp
+Names of this form that are too long are run through a dictionary and given a serial number.  It is (first two letters of class name), (crc16 of first half), (crc16 of second half).205.sp.  
+	Can't store over a file in the drop box, so append random number to end of name.  Look at times to figure out which one is most recent when empty drop box.
+			
+localCachePath 	name of cache directory on local disk.  (Is shared between Squeaks on this machine, so might have things too new.)  In the form of a url 'file://disk/folder/'
+
+Algorithm for finding the doc file:  
+	Find my version
+	Find version of current def of method relative to me.
+	make file name.
+	look locally
+	check server, might have changed.
+
+When put new update, no extra work needed.
+When put a new version of the system, include External with methodVersions filled in.  If methods changed and not in a numbered update, must run a method to put them in the database.
+
+When get updates, add new entries as we read updates.
+
+Default method update number is 0.
+
+AA _ DocLibrary new initialize.
+AA scanFolder: 'file://Ted''s/Updates 328-/' from: 595.
+DocLibrary classPool at: #External put: AA.
+
+DocLibrary new setUp.
+
+[How use internal updates, but do documentation for external?  Disable feature of adding to table when get updates.  Point to UIUC external directory and scan the latest ext updates.]
+	When a docPane comes in, store property: #classAndMethod.  To put out, menu item "Broadcast Documentation" in PasteUpMorph that has the property.  DocLibrary puts out this morph.  Writes to drop box and local cache.
+	In codePane, on more menu, "Fetch Documentation" (if none, ask if want blank one).  Creates a new pasteUpMorph after verifying that it doesn't have one.
+	Later need preference and do fetch always and in the background.
+
+	Crude review process -- a method here that brings up each pane that is in drop box (10 at a time).  First just shows code and text, not bring in.  Then bring in.  And a way for me to store it in the official directory.  (Do as menu items in file list?)  And archives and deletes for drop box.  (I do manually twice a day?)
+
+	When write a file, take lastUpdateName and look for it in ChangeSet names.  When find, see if this method occurs in any newer changeSet.  If so, writing to an older version.  "The documentation will be attached to the version of this method in xxx.cs.  You have a newer version of that method in yyy.cs.  If what you are storing applies only to the newer version, please do not broadcast it!  Wait until the new version is in an external update." Broadcast to all Squeak users \ Cancel.  (Otherwise "Make this documentation available to all Squeak users?")
+
+When fetch any updates, look for "latest.ix"  Has format:
+External   407   'aChangeSet.cs'
+376.ix
+'class method:' updateNumber
+'class method' updateNumber
+'class' updateNumber
+	Keep local copy of updates.list and read it for files not mentioned yet in latest.ix.
+
+¥Warn the user if the method he is documenting is too new to be on the External updates server.
+¥Correcting the database of method versions when new External Updates are released.
+¥Create the file to put on the server with the database info for a new update.
+¥Methods to help the reviewer (me) scan files.  It will show me all the code, all the doits in text, and all the text.
+¥Allow documentation for classes, as opposed to methods. (written in file, in dict, just need interface)
+
+self scanUpdatesIn: (ServerDirectory serverNamed: 'UpdatesExtUIUC') realUrl, '/'.
+
+self updateMethodVersions.
+
+[ ] When write, write to cache also.
+[ ] If can't write to server, tell user to store again later.
+[ ] Sparse database to tell if method has a docPane -- user fetches it explicitly.
+[ ] Write to both servers.  Retrieve from either.  Drop box on just UIUC.

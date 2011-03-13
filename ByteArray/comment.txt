@@ -1,2 +1,1 @@
-ByteArray comment:
-'I represent an ArrayedCollection whose elements can only be integers between 0 and 255. They are stored two bytes to a word.'
+I represent an ArrayedCollection whose elements are integers between 0 and 255.

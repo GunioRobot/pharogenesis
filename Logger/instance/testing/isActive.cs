@@ -1,2 +1,0 @@
-isActive
-	^stream ~~ nil

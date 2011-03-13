@@ -1,0 +1,3 @@
+standardBorderColor
+
+	^Color veryLightGray

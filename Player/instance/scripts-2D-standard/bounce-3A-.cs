@@ -1,4 +1,5 @@
 bounce: soundName
+	"If the receiver's current bounds obtrude beyond the bounds of its container, then 'bounce' it back within the container, and make the indicated sound while doing so"
 
 	| box bounced aCostume |
 	(aCostume _ self costume) ifNil: [^ self].

@@ -1,5 +1,5 @@
 primGetPosition: id
 	"Get this files current position."
 
-	<primitive: 152>
+	<primitive: 'primitiveFileGetPosition' module: 'FilePlugin'>
 	self primitiveFailed

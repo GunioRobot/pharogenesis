@@ -1,27 +1,38 @@
 copyPixelsRGB: y
 	"Handle non-interlaced RGB color mode (colorType = 2)"
 
-	| i pixel b |
-	b _ BitBlt current bitPokerToForm: form.
-	bitsPerChannel = 8
-		ifTrue: [
-			0 to: width-1 do: [ :x |
-				i _ (x * 3) + 1.
-				pixel _ 16rFF000000
-				     + ((thisScanline at: i)<<16)
-					+ ((thisScanline at: i+1)<<8)
-					+ ((thisScanline at: i+2)).
-				b pixelAt: x@y put: pixel.
-				]
-			]
-		ifFalse: [
-			0 to: width-1 do: [ :x |
-				i _ (x * 6) + 1.
-				pixel _ 16rFF000000
-					+  ((thisScanline at: i)<<16)
-					+ ((thisScanline at: i+2)<<8)
-					+ ((thisScanline at: i+4)).
-				b pixelAt: x@y put: pixel.
-				]
-			]
+	| i pixel tempForm tempBits |
 
+	tempForm _ Form extent: width@1 depth: 32.
+	tempBits _ tempForm bits.
+	pixel := LargePositiveInteger new: 4.
+	pixel at: 4 put: 16rFF.
+	bitsPerChannel = 8 ifTrue: [
+		i := 1.
+		1 to: width do: [ :x |
+			pixel
+				at: 3 put: (thisScanline at: i);
+				at: 2 put: (thisScanline at: i+1);
+				at: 1 put: (thisScanline at: i+2).
+			tempBits at: x put: pixel.
+			i _ i + 3.
+		]
+	] ifFalse: [
+		i := 1.
+		1 to: width do: [ :x |
+			pixel
+				at: 3 put: (thisScanline at: i);
+				at: 2 put: (thisScanline at: i+2);
+				at: 1 put: (thisScanline at: i+4).
+			tempBits at: x put: pixel.
+			i _ i + 6.
+		]
+	].
+	transparentPixelValue ifNotNil: [
+		1 to: width do: [ :x |
+			(tempBits at: x) = transparentPixelValue ifTrue: [
+				tempBits at: x put: 0.
+			].
+		].
+	].
+	tempForm displayOn: form at: 0@y rule: Form paint.

@@ -1,2 +1,0 @@
-standardHolder
-	^ standardHolder

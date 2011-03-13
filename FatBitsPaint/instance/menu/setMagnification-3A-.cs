@@ -7,4 +7,4 @@ setMagnification: evt
 			selector: #magnification:
 			argumentList: (Array with: w).
 		magnification = w ifTrue: [menu lastSubmorph color: Color red]].
-	menu popUpEvent: evt
+	menu popUpEvent: evt in: self world

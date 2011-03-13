@@ -1,5 +1,7 @@
 setCenterOfRotation: evt with: rotationHandle
-
-	innerTarget setRotationCenterFromGlobalPosition:
-		(Sensor cursorPoint - self world viewBox origin).
+	| localPt |
+	evt hand obtainHalo: self.
+	evt hand showTemporaryCursor: nil.
+	localPt _ innerTarget transformFromWorld globalPointToLocal: rotationHandle center.
+	innerTarget setRotationCenterFrom: localPt.
 	self endInteraction

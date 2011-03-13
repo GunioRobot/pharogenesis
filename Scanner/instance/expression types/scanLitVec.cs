@@ -8,7 +8,7 @@ scanLitVec
 				ifTrue: 
 					[self scanToken; scanLitVec]
 				ifFalse: 
-					[tokenType = #word | (tokenType = #keyword)
+					[tokenType = #word | (tokenType = #keyword) | (tokenType = #colon)
 						ifTrue: 
 							[self scanLitWord]
 						ifFalse:

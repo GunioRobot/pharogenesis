@@ -12,19 +12,21 @@ instVarInfo: anObject
 	dummy rootObject: anObject.	"inform him about the root"
 	dummy nextPut: anObject.
 	refs _ dummy references.
-	self uniClassInstVarsRefs: dummy.	"catalog the extra objects in UniClass inst vars"
 	objCount _ refs size.		"for progress bar"
 		"Note that Dictionary must not change its implementation!  If it does, how do we read this reading information?"
 	(refs includesKey: #AnImageSegment) 
 		ifFalse: [
+			self uniClassInstVarsRefs: dummy.	"catalog the extra objects in UniClass inst vars"
 			refs keysDo: [:each | 
 				cls _ each class.
-				cls isObsolete ifTrue: [self error: 'Trying to write ', cls name].
-				cls class == Metaclass ifFalse: [
+				"cls isObsolete ifTrue: [self error: 'Trying to write ', cls name]."
+				(cls class ~~ Metaclass) & (cls isObsolete not) ifTrue: [
 					structures at: cls name put: false]]]
 		ifTrue: [self recordImageSegment: refs].
 	"Save work by only computing inst vars once for each class"
 	newSupers _ Set new.
+	structures at: #Point put: false.	"writeRectangle: does not put out class pointer"
+	structures at: #Rectangle put: false.
 	structures keysDo: [:nm | 
 		cls _ (nm endsWith: ' class') 
 			ifFalse: [Smalltalk at: nm]
@@ -41,5 +43,7 @@ instVarInfo: anObject
 			((Array with: cls classVersion), (cls allInstVarNames)).
 		superclasses at: nm ifAbsent: [
 				superclasses at: nm put: cls superclass name]].
-	self saveClassInstVars.	"of UniClassses"
+	(refs includesKey: #AnImageSegment) 
+		ifTrue: [classInstVars _ #()]
+		ifFalse: [self saveClassInstVars].	"of UniClassses"
 	^ (Array with: 'class structure' with: structures with: 'superclasses' with: superclasses)

@@ -1,6 +1,6 @@
 hideFlap
 	| aWorld |
-	aWorld _ self currentWorld.
+	aWorld _ self world ifNil: [self currentWorld].
 	referent privateDelete.
 	aWorld removeAccommodationForFlap: self.
 	flapShowing _ false.

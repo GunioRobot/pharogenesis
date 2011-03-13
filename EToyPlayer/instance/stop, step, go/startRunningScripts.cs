@@ -1,3 +1,0 @@
-startRunningScripts
-	super startRunningScripts.
-	self playfield borderColor: EToyParameters runningPlayfieldBorderColor

@@ -3,5 +3,5 @@ stampCursorBeCursorFor: anAction
 	"self stampCursorBeCursorFor: #star:.
 	currentCursor offset: -9@-3.			Has side effect on the saved cursor."
 
-	(self findButton: anAction) arguments at: 3 put: currentCursor.
+	(self submorphNamed: anAction) arguments at: 3 put: currentCursor.
 		"Already converted to 8 bits and in the right form"

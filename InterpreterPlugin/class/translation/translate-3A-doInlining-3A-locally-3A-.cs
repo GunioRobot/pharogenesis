@@ -2,7 +2,7 @@ translate: fileName doInlining: inlineFlag locally: localFlag
 	"Time millisecondsToRun: [
 		FloatArrayPlugin translate: 'SqFloatArray.c' doInlining: true.
 		Smalltalk beep]"
-	| cg theClass fullName fd |
+	| cg fullName fd |
 	fullName _ self baseDirectoryName.
 	fd _ FileDirectory on: fullName.
 	localFlag ifFalse:[
@@ -19,11 +19,5 @@ translate: fileName doInlining: inlineFlag locally: localFlag
 	localFlag ifTrue:[cg pluginPrefix: self moduleName].
 	"Add an extra declaration for module name"
 	cg declareModuleName: self moduleNameAndVersion local: localFlag.
-
-	theClass _ self.
-	[theClass == Object] whileFalse:[
-		cg addClass: theClass.
-		theClass declareCVarsIn: cg.
-		theClass _ theClass superclass].
-	cg storeCodeOnFile: fullName doInlining: inlineFlag.
+	self translateOn: cg inlining: inlineFlag to: fullName local: localFlag.
 	^cg

@@ -6,4 +6,4 @@ adhereToEdge
 			each == #-
 				ifTrue: [menu addLine]
 				ifFalse: [menu add: each asString selector: #setToAdhereToEdge: argument: each]].
-	menu popUpEvent: self currentEvent
+	menu popUpEvent: self currentEvent in: self world

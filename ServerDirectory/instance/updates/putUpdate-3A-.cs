@@ -25,12 +25,7 @@ Proceed if you know that this is okay (e.g. the file contains raw binary data).'
 	self openGroup.
 	(myServers _ self checkServers) size = 0 ifTrue: [self closeGroup.  ^ self].
 	updateStrm _ myServers first getFileNamed: 'updates.list'.
-	"get last number and add 1"
 	sequence _ Utilities lastUpdateNum: updateStrm.
-	seq _ (sequence+1) printString.
-	seq size = 1 ifTrue: [seq _ '00', seq].
-	seq size = 2 ifTrue: [seq _ '0', seq].
-	newName _ seq, local.
 	restOfText _ Utilities position: updateStrm 	"sets the postion!!"
 			atVersion: (Smalltalk at: #EToySystem) version.
 	restOfText size > 0 ifTrue: [
@@ -38,7 +33,13 @@ Proceed if you know that this is okay (e.g. the file contains raw binary data).'
 			startUpWithCaption: 'This system, ', (Smalltalk at: #EToySystem) version,
 				' is not the latest version'.
 		response = 1 ifFalse: [self closeGroup.  ^ nil].	"abort"
+		sequence _ Utilities olderVersNum: restOfText from: updateStrm default: sequence.
 		].
+	"get last number and add 1"
+	seq _ (sequence+1) printString.
+	seq size = 1 ifTrue: [seq _ '00', seq].
+	seq size = 2 ifTrue: [seq _ '0', seq].
+	newName _ seq, local.
 	"append name to updates"
 	(updateStrm skip: -1; next) == Character cr ifFalse: [
 		updateStrm nextPut: Character cr].

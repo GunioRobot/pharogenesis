@@ -4,3 +4,4 @@ veryDeepFixupWith: deepCopier
 super veryDeepFixupWith: deepCopier.
 defaultTarget _ deepCopier references at: defaultTarget ifAbsent: [defaultTarget].
 popUpOwner _ deepCopier references at: popUpOwner ifAbsent: [popUpOwner].
+activeSubMenu _ deepCopier references at: activeSubMenu ifAbsent:[activeSubMenu].

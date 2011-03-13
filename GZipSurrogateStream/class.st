@@ -1,0 +1,1 @@
+GZipSurrogateStream class instanceVariableNames: ''

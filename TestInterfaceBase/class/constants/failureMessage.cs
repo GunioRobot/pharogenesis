@@ -1,0 +1,3 @@
+failureMessage
+
+	^'*** FAIL ***' copy

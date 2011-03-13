@@ -1,0 +1,1 @@
+JoystickTabletPlugin class instanceVariableNames: ''

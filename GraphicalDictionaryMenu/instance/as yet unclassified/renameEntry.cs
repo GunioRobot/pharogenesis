@@ -1,6 +1,7 @@
 renameEntry
 	| reply curr |
-	reply _ FillInTheBlankMorph  request: 'New key? '
+	reply _ FillInTheBlank
+		request: 'New key? '
 		initialAnswer: (curr _ entryNames at: currentIndex)
 		centerAt: self center.
 	(reply isEmptyOrNil or: [reply = curr]) ifTrue: [^ self beep].

@@ -1,4 +1,4 @@
 worldBoundsForHalo
 	"To restore older behavior, change this to return  self fullBoundsInWorld"
 
-	^ self boundsInWorld
+	^ self boundsIn: nil

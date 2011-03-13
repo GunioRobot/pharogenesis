@@ -27,5 +27,6 @@ saveIndexOnURL
 	sf _ ServerDirectory new fullPath: mine.
 	Cursor wait showWhile: [
 		remoteFile _ sf fileNamed: mine.
+			remoteFile dataIsValid.
 		remoteFile fileOutClass: nil andObject: list.
 		"remoteFile close"].

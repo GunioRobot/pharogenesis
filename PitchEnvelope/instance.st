@@ -3,4 +3,4 @@ Envelope
 	instanceVariableNames: 'centerPitch '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Sound'
+	category: 'Sound-Synthesis'

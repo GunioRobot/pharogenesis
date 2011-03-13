@@ -1,2 +1,1 @@
-CompoundTileMorph comment:
-'A statement with other whole statements inside it.  If-Then.  Test.'
+A statement with other whole statements inside it.  If-Then.  Test.

@@ -3,4 +3,4 @@ AbstractSound
 	instanceVariableNames: 'initialCount count ring scaledIndex scaledIndexIncr scaledIndexLimit '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Sound'
+	category: 'Sound-Synthesis'

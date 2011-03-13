@@ -1,2 +1,0 @@
-getColorUnder
-	^ self costume colorUnder

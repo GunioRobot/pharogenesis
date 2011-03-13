@@ -5,6 +5,9 @@ updateTrailsForm
 	"Details: The positions of all morphs with their pens down are recorded each time the draw method is called. If the list from the previous display cycle isn't empty, then trails are drawn from the old to the new positions of those morphs on the turtle-trails form. The turtle-trails form is created on demand when the first pen is put down and removed (to save space) when turtle trails are cleared."
 
 	| morph oldPoint newPoint removals player tfm |
+
+	self flag: #bob.		"transformations WRONG here"
+
 	(lastTurtlePositions == nil or: [lastTurtlePositions size = 0]) ifTrue: [^ self].
 
 	removals _ OrderedCollection new.

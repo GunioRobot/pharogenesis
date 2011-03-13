@@ -1,7 +1,6 @@
 Object
 	subclass: #FakeClassPool
 	instanceVariableNames: ''
-	classVariableNames:
-		'CachedClassNames LastImageName LastQuitLogPosition LowSpaceProcess LowSpaceSemaphore SpecialSelectors SystemChanges '
+	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Interface-Browser'
+	category: 'Tools-Browser'

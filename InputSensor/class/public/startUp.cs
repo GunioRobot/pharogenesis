@@ -1,3 +1,3 @@
 startUp
 	
-	self default installInterruptWatcher.
+	self default startUp.

@@ -1,0 +1,1 @@
+ClassBuilder class instanceVariableNames: ''

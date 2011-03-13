@@ -10,7 +10,8 @@ moveCursorToTime: scoreTime
 				[self goToTime: scoreTime - (20/timeScale).
 				cursorOffset _ ((scoreTime - leftEdgeTime) asFloat * timeScale) asInteger]]
 		ifFalse:
-			[self goToTime: scoreTime - (self width//2 / timeScale).
+			[self goToTime: (scoreTime - (self width//2 / timeScale)
+							max: (self width//10 / timeScale) negated).
 			cursorOffset _ ((scoreTime - leftEdgeTime) asFloat * timeScale) asInteger].
 
 	cursor position: (self left + borderWidth + cursorOffset)@(self top + borderWidth).

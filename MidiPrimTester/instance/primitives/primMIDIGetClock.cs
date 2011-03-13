@@ -1,4 +1,4 @@
 primMIDIGetClock
 
-	<primitive: 522>
+	<primitive: 'primitiveMIDIGetClock' module: 'MIDIPlugin'>
 	self primitiveFailed.

@@ -10,11 +10,11 @@ buildButton: aButton target: aTarget label: aLabel selector: aSelector
 		borderWidth: 2;
 		color: Color gray.
 	a _ AlignmentMorph newColumn
-		centering: #center;
+		wrapCentering: #center; cellPositioning: #topCenter;
 		hResizing: #shrinkWrap;
 		vResizing: #shrinkWrap;
 		color: Color transparent;
-		inset: 1.
+		layoutInset: 1.
 	a addMorph: aButton.
 	^ a
 

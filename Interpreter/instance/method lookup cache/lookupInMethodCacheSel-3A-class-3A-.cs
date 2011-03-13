@@ -12,6 +12,7 @@ lookupInMethodCacheSel: selector class: class
 		 [(methodCache at: probe + MethodCacheClass) = class]) ifTrue:
 			[newMethod _ methodCache at: probe + MethodCacheMethod.
 			primitiveIndex _ methodCache at: probe + MethodCachePrim.
+			newNativeMethod _ methodCache at: probe + MethodCacheNative.
 			^ true	"found entry in cache; done"].
 
 	probe _ (hash >> 1) bitAnd: MethodCacheMask.  "second probe"
@@ -19,6 +20,7 @@ lookupInMethodCacheSel: selector class: class
 		 [(methodCache at: probe + MethodCacheClass) = class]) ifTrue:
 			[newMethod _ methodCache at: probe + MethodCacheMethod.
 			primitiveIndex _ methodCache at: probe + MethodCachePrim.
+			newNativeMethod _ methodCache at: probe + MethodCacheNative.
 			^ true	"found entry in cache; done"].
 
 	probe _ (hash >> 2) bitAnd: MethodCacheMask.
@@ -26,6 +28,7 @@ lookupInMethodCacheSel: selector class: class
 		 [(methodCache at: probe + MethodCacheClass) = class]) ifTrue:
 			[newMethod _ methodCache at: probe + MethodCacheMethod.
 			primitiveIndex _ methodCache at: probe + MethodCachePrim.
+			newNativeMethod _ methodCache at: probe + MethodCacheNative.
 			^ true	"found entry in cache; done"].
 
 	^ false

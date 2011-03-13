@@ -1,0 +1,1 @@
+My instances are phrases. They can carry a phrase accent ('H-' or 'L-') and a boundary tone ('H%', 'L%', '%H').

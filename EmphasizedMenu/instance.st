@@ -3,4 +3,4 @@ SelectionMenu
 	instanceVariableNames: 'emphases '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Interface-Menus'
+	category: 'Tools-Menus'

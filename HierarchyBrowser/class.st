@@ -1,0 +1,1 @@
+HierarchyBrowser class instanceVariableNames: ''

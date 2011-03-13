@@ -1,0 +1,1 @@
+WonderlandUndoStack class instanceVariableNames: ''

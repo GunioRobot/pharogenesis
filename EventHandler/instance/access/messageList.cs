@@ -7,6 +7,9 @@ messageList
 	mouseDownRecipient ifNotNil:
 		[list add: (mouseDownRecipient class classThatUnderstands:
 					mouseDownSelector) name , ' ', mouseDownSelector].
+	mouseMoveRecipient ifNotNil:
+		[list add: (mouseMoveRecipient class classThatUnderstands:
+					mouseMoveSelector) name , ' ', mouseMoveSelector].
 	mouseStillDownRecipient ifNotNil:
 		[list add: (mouseStillDownRecipient class classThatUnderstands:
 					mouseStillDownSelector) name , ' ', mouseStillDownSelector].

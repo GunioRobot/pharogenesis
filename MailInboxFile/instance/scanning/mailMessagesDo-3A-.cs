@@ -2,7 +2,7 @@ mailMessagesDo: aBlock
 	"Invoke the given block for each message in the mail inbox. The block argument is the text of a new message."
 
 	| fileStream stream msgStart msgSize msgText |
-	fileStream _ FileStream fileNamed: filename.
+	fileStream _ CrLfFileStream readOnlyFileNamed: filename.
 	Smalltalk garbageCollect.
 	(fileStream size < (Smalltalk bytesLeft - 200000))
 		ifTrue: [

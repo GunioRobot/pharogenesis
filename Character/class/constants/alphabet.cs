@@ -1,4 +1,4 @@
 alphabet
 	"($a to: $z) as: String"
 
-	^ 'abcdefghijklmnopqrstuvwxyz'
+	^ 'abcdefghijklmnopqrstuvwxyz' copy

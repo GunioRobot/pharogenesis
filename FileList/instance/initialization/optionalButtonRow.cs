@@ -1,7 +1,7 @@
 optionalButtonRow
 	| aRow aButton |
 	aRow _ AlignmentMorph newRow beSticky.
-	aRow setProperty: #clipToOwnerWidth toValue: true.
+	aRow clipSubmorphs: true.
 	aRow addTransparentSpacerOfSize: (5@0).
 	self optionalButtonSpecs do:
 			[:spec |
@@ -9,7 +9,10 @@ optionalButtonRow
 					on: self
 					getState: nil
 					action: spec second.
-				aButton useRoundedCorners;
+				aButton
+					hResizing: #spaceFill;
+					vResizing: #spaceFill;
+					useRoundedCorners;
 					label: spec first asString;
 					askBeforeChanging: true;
 					onColor: Color transparent offColor: Color transparent.

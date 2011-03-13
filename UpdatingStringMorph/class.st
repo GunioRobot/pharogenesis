@@ -1,0 +1,1 @@
+UpdatingStringMorph class instanceVariableNames: ''

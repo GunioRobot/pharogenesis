@@ -3,6 +3,7 @@ topRendererOrSelf
 
 	| top topsOwner |
 	owner ifNil: [^ self].
+	self isWorldMorph ifTrue: [^self].	"ignore scaling of this world"
 	top _ self.
 	topsOwner _ top owner.
 	[(topsOwner ~~ nil) and: [topsOwner isRenderer]] whileTrue: [

@@ -46,17 +46,17 @@ defineMaterialAndLights: dict
 		(PrimLightDirectionY 16)
 		(PrimLightDirectionZ 17)
 
-		(PrimLightAttenuation 17)
-		(PrimLightAttenuationConstant 17)
-		(PrimLightAttenuationLinear 18)
-		(PrimLightAttenuationSquared 19)
+		(PrimLightAttenuation 18)
+		(PrimLightAttenuationConstant 18)
+		(PrimLightAttenuationLinear 19)
+		(PrimLightAttenuationSquared 20)
 
-		(PrimLightFlags 20)
+		(PrimLightFlags 21)
 		"Spot light stuff"
-		(SpotLightMinCos 21)
-		(SpotLightMaxCos 22)
-		(SpotLightDeltaCos 23)
-		(SpotLightExponent 24)
+		(SpotLightMinCos 22)
+		(SpotLightMaxCos 23)
+		(SpotLightDeltaCos 24)
+		(SpotLightExponent 25)
 
 		(PrimLightSize 32)		"Round up to power of 2"
 

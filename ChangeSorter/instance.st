@@ -1,6 +1,6 @@
-StringHolder
+CodeHolder
 	subclass: #ChangeSorter
-	instanceVariableNames: 'parent myChangeSet currentClassName currentSelector '
+	instanceVariableNames: 'parent myChangeSet currentClassName currentSelector priorChangeSetList '
 	classVariableNames: 'AllChangeSets '
 	poolDictionaries: ''
-	category: 'Interface-Changes'
+	category: 'Tools-Changes'

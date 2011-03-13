@@ -1,0 +1,1 @@
+SocketPlugin class instanceVariableNames: ''

@@ -1,0 +1,7 @@
+This class implements an image that appears one way or another depending upon whether it lies within a spotlight shape that moves with the cursor.  As delivered, the shape is a simple circle, the spotlighted appearance is that of a ColorForm, and the non-highlighted apperarance is a derived gray-scale form.
+
+The implementation will space-efficient if supplied with a ColorForm, because the gray-scale derived form will share the same bitmap.
+
+In general, any two images can be used -- one could be blurred, the other sharp -- and the masking form can be any shape.
+
+At some point this class should be merged somehow with ScreeningMorph.

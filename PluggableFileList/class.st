@@ -1,0 +1,1 @@
+PluggableFileList class instanceVariableNames: ''

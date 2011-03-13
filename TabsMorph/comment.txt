@@ -1,2 +1,0 @@
-TabsMorph comment:
-'Used in conjunction wi[th a TabedPaletteComplex.  Every TabedPaletteComplex has a TabsMorph as one of its submorphs, which lives at the top of its area.  Every submorph of a TabsMorph is a TabMorph which corresponds to one of the palette-pages of the PalettesWithTabs.  When you click on one of the tab, the existing palette gets replaced by the new one, and tab highlighting takes place accordingly.'

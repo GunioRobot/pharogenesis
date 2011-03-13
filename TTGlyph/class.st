@@ -1,0 +1,1 @@
+TTGlyph class instanceVariableNames: ''

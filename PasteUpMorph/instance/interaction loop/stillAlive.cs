@@ -1,3 +1,0 @@
-stillAlive
-	
-	^StillAlive ifNil: [false]

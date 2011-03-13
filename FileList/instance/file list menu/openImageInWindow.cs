@@ -2,9 +2,12 @@ openImageInWindow
 	"Handle five file formats: GIF, JPG, PNG, Form stoteOn: (run coded), and BMP.
 	Fail if file format is not recognized."
 
-	| image |
-	image _ Form fromFileNamed: self fullName.
+	| image myStream |
+
+	myStream _ (directory readOnlyFileNamed: fileName) binary.
+	image _ Form fromBinaryStream: myStream.
+	myStream close.
 
 	Smalltalk isMorphic
-		ifTrue: [World addMorph: (SketchMorph withForm: image)]
+		ifTrue: [(SketchMorph withForm: image) openInWorld]
 		ifFalse: [FormView open: image named: fileName]

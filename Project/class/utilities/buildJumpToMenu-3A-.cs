@@ -27,7 +27,7 @@ buildJumpToMenu: menu
 	"Finally all the projects, in alphabetical order"
 	Project allNamesAndProjects do:
 		[:aPair | 
-			toAdd _ aPair last == CurrentProject
+			toAdd _ aPair last isCurrentProject
 				ifTrue:
 					[aPair first, ' (current)']
 				ifFalse:

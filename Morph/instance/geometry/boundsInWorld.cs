@@ -1,4 +1,2 @@
 boundsInWorld
-
-	owner ifNil: [^ bounds].
-	^ (owner transformFrom: self world) localBoundsToGlobal: bounds.
+	^self bounds: self bounds in: self world

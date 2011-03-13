@@ -1,0 +1,3 @@
+toggleWindowPolicy
+
+	Preferences toggleWindowPolicy

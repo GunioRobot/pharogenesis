@@ -1,7 +1,7 @@
 stack
 	^ PlayingCardDeck new color: Color transparent;
 	 layout: #stagger;
-	 orientation: #vertical;
+	 listDirection: #topToBottom;
 	 enableDragNDrop;
 	 stackingPolicy: #altStraight;
 	 stackingOrder: #descending;

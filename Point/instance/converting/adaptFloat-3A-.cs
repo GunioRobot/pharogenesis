@@ -1,2 +1,0 @@
-adaptFloat: floatScalar
-	^ floatScalar @ floatScalar

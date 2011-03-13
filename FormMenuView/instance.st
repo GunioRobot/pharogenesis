@@ -3,4 +3,4 @@ View
 	instanceVariableNames: ''
 	classVariableNames: 'BorderForm FormButtons SpecialBorderForm '
 	poolDictionaries: ''
-	category: 'Graphics-Editors'
+	category: 'ST80-Editors'

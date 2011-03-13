@@ -7,7 +7,17 @@ acceptSortedContentsFrom: aHolder
 	aHolder submorphs doWithIndex: [:m :i |
 		toAdd _ nil.
 		(m isKindOf: PasteUpMorph) ifTrue: [toAdd _ m].
-		(m isKindOf: BookPageThumbnailMorph) ifTrue: [toAdd _ m page].
+		(m isKindOf: BookPageThumbnailMorph) ifTrue: [
+			toAdd _ m page.
+			m bookMorph == self ifFalse: [
+				"borrowed from another book. preserve the original"
+				toAdd _ toAdd veryDeepCopy.	
+
+				"since we came from elsewhere, cached strings are wrong"
+				self removeProperty: #allTextUrls.
+				self removeProperty: #allText.
+			].
+		].
 		toAdd class == String ifTrue: ["a url"
 			toAdd _ pages detect: [:aPage | aPage url = toAdd] ifNone: [toAdd]].
 		toAdd class == String ifTrue: [

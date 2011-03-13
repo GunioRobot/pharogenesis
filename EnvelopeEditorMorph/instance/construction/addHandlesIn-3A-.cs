@@ -10,7 +10,10 @@ addHandlesIn: frame
 	limitHandles _ Array with: handle with: handle fullCopy with: handle fullCopy.
 	1 to: limitHandles size do:
 		[:i | handle _ limitHandles at: i.
-		handle on: #mouseStillDown
+		handle on: #mouseDown
+				send: #limitHandleMoveEvent:from:index:
+				to: self withValue: i.
+		handle on: #mouseMove
 				send: #limitHandleMoveEvent:from:index:
 				to: self withValue: i.
 		self addMorph: handle.

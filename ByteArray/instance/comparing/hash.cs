@@ -1,5 +1,6 @@
 hash
-	"Make sure that equal (=) ByteArrays hash equally."
+	| hash |
 
-	self size = 0 ifTrue: [^ 2001].
-	^ ((self at: 1) bitShift: 8) + (self at: self size)
+	hash _ 0.
+	1 to: self size do: [:i | hash _ (hash + (self at: i)) hashMultiply].
+	^hash

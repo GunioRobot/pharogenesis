@@ -3,4 +3,4 @@ AlignmentMorph
 	instanceVariableNames: 'soundColumn '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Widgets'
+	category: 'Sound-Interface'

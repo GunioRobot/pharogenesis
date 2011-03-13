@@ -1,13 +1,4 @@
 okayToDuplicate
-	self player ifNil: [^ true].
-	self instantiatedUserScriptsDo:
-		[:aScript | aScript isAnonymous ifTrue:
-			[self inform: 'This object has one or more
-unnamed, unsaved scripts,
-which would not be part
-of a duplicate.  So, for now,
-we just won''t let you do
-this.  Sorry!'.
-			^ false]].
+	"Formerly this protocol was used to guard against awkward situations when there were anonymous scripts in the etoy system.  Nowadays we just always allow duplication"
 
 	^ true

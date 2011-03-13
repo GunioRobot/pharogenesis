@@ -1,0 +1,2 @@
+lastEventTransmitted
+	^self valueOfProperty: #lastEventTransmitted

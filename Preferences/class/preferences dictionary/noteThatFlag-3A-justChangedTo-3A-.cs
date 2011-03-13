@@ -16,11 +16,10 @@ global flaps for future use?'.
 				[Smalltalk isMorphic ifTrue:
 					[self currentWorld addGlobalFlaps]]].
 
-	prefSymbol == #roundedWindowCorners ifTrue:
-		[Smalltalk isMorphic ifTrue: [World fullRepaintNeeded]].
+	prefSymbol == #roundedWindowCorners ifTrue: [Display repaintMorphicDisplay].
 
 	prefSymbol == #optionalButtons ifTrue:
-		[Utilities replacePartSatisfying: [:el |  (el isKindOf: MorphThumbnail) and: [(el morphRepresented isKindOf: SystemWindow) and: [el morphRepresented model isKindOf: FileList]]]
+		[Utilities replacePartSatisfying: [:el | (el isKindOf: MorphThumbnail) and: [(el morphRepresented isKindOf: SystemWindow) and: [el morphRepresented model isKindOf: FileList]]]
 inGlobalFlapSatisfying: [:f1 | f1 wording = 'Tools'] with:  FileList openAsMorph applyModelExtent].
 
 	(prefSymbol == #optionalButtons  or: [prefSymbol == #annotationPanes]) ifTrue:
@@ -28,4 +27,10 @@ inGlobalFlapSatisfying: [:f1 | f1 wording = 'Tools'] with:  FileList openAsMorph
 
 	(prefSymbol == #smartUpdating) ifTrue:
 		[SystemWindow allSubInstancesDo:
-			[:aWindow | aWindow amendSteppingStatus]]
+			[:aWindow | aWindow amendSteppingStatus]].
+
+	(prefSymbol == #eToyFriendly) ifTrue:
+		[ScriptingSystem customizeForEToyUsers: aBoolean].
+
+	((prefSymbol == #infiniteUndo) and: [aBoolean not]) ifTrue:
+		[CommandHistory resetCommandHistory]

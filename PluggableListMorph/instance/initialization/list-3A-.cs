@@ -11,6 +11,9 @@ list: listOfStrings
 			ifTrue: [StringMorph contents: item font: font emphasis: (item emphasisAt: 1)]
 			ifFalse: [StringMorph contents: item font: font]].
 
+	self highlightSelector ifNotNil:[
+		model perform: self highlightSelector with: list with: morphList.
+	].
 
 	"Lay items out vertically and install them in the scroller"
 	h _ morphList first height "self listItemHeight".

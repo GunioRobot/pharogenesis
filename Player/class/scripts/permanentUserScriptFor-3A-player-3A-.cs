@@ -1,7 +1,8 @@
 permanentUserScriptFor: aSelector player: aPlayer
+	"Create and answer a UserScript object for the given player (an instance of the receiver) and selector.  Save that UniclassScript in my (i.e. the class's) directory of scripts"
+
 	|  entry |
 	scripts ifNil: [scripts _ IdentityDictionary new].
-	self flag: #deferred.  "That anonymous script will of course contain refs to aPlayer who may well not be the class's prototype.  So if it is then saved, there's a problem"
-	entry _ UserScript new initializePermanentScriptFor: aPlayer.
+	entry _ UniclassScript new playerClass: aPlayer class selector: aSelector.
 	scripts at: aSelector put: entry.
 	^ entry

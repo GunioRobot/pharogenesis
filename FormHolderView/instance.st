@@ -3,4 +3,4 @@ FormView
 	instanceVariableNames: 'displayedForm '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Graphics-Views'
+	category: 'ST80-Views'

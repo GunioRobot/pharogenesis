@@ -1,0 +1,1 @@
+GZipReadStream class instanceVariableNames: ''

@@ -3,7 +3,7 @@ mixSampleCount: n into: aSoundBuffer startingAt: startIndex leftVol: leftVol rig
 	"(PluckedSound pitch: 220.0 dur: 6.0 loudness: 0.8) play"
 
 	| lastIndex scaledThisIndex scaledNextIndex average sample i s |
-	<primitive: 181>
+	<primitive:'primitiveMixPluckedSound' module:'SoundGenerationPlugin'>
 	self var: #aSoundBuffer declareC: 'short int *aSoundBuffer'.
 	self var: #ring declareC: 'short int *ring'.
 

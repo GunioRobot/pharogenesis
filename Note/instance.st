@@ -3,4 +3,4 @@ Object
 	instanceVariableNames: 'author timestamp text children title parent url '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'PluggableWebServer'
+	category: 'Network-Pluggable Web Server'

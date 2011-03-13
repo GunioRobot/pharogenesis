@@ -1,2 +1,4 @@
 project: aProject
-	project _ aProject
+
+	project _ aProject.
+	self addProjectNameMorphFiller.

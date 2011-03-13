@@ -1,0 +1,3 @@
+setFileTypeToObject
+
+	"ignore"

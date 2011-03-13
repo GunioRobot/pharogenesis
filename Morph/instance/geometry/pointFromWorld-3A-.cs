@@ -1,4 +1,2 @@
 pointFromWorld: aPoint
-
-	owner ifNil: [^ aPoint].
-	^ (owner transformFrom: self world) globalPointToLocal: aPoint.
+	^self point: aPoint from: self world

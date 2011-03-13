@@ -1,0 +1,1 @@
+Provides a magnifying glass. Magnifies the morphs below (if grabbed) or the area around the mouse pointer.

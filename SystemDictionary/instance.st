@@ -1,7 +1,7 @@
-Dictionary
+IdentityDictionary
 	subclass: #SystemDictionary
-	instanceVariableNames: ''
+	instanceVariableNames: 'cachedClassNames '
 	classVariableNames:
-		'CachedClassNames LastImageName LastQuitLogPosition LowSpaceProcess LowSpaceSemaphore SpecialSelectors SystemChanges '
+		'LastImageName LastQuitLogPosition LowSpaceProcess LowSpaceSemaphore MemoryHogs ShutDownList SpecialSelectors StartUpList StartupStamp SystemChanges VersionString '
 	poolDictionaries: ''
 	category: 'System-Support'

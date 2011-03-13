@@ -3,6 +3,10 @@ actOnClickFor: anObject
 
 	| response m |
 
+	(url beginsWith: 'sqPr://') ifTrue: [
+		ProjectLoading thumbnailFromUrl: (url copyFrom: 8 to: url size).
+		^self		"should not get here, but what the heck"
+	].
 	"if it's a web browser, tell it to jump"
 	anObject isWebBrowser
 		ifTrue: [anObject jumpToUrl: url. ^ true]

@@ -8,3 +8,4 @@ initialize
 	actions _ Dictionary new.
 	labels _ Dictionary new.
 	stepTime _ 1.
+	useTimeSync _ true.

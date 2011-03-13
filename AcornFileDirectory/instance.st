@@ -1,6 +1,6 @@
 FileDirectory
 	subclass: #AcornFileDirectory
 	instanceVariableNames: ''
-	classVariableNames: 'FormsAreLittleEndian '
+	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'System-Files'

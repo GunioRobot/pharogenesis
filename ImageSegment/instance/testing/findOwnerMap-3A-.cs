@@ -6,5 +6,5 @@ st _ ''.
 morphs do: [:mm |
 	(st includesSubString: mm printString) ifFalse: [
 		st _ st, '
-', mm withAllContainers printString]].
+', mm allOwners printString]].
 Smalltalk at: #Owners put: st.

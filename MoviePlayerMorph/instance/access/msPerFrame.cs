@@ -1,0 +1,2 @@
+msPerFrame
+	^ msPerFrame

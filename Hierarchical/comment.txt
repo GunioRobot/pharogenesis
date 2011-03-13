@@ -1,0 +1,1 @@
+The Hierarchical class provides the basic functionality for parent-child relationships (and changing these relationships) for both the WonderlandScene and any WonderlandActors in the Wonderland.

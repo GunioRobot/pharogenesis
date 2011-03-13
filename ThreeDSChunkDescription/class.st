@@ -1,0 +1,1 @@
+ThreeDSChunkDescription class instanceVariableNames: ''

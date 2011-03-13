@@ -1,0 +1,3 @@
+appearsToBeSameCostumeAs: aMorph
+
+	^false

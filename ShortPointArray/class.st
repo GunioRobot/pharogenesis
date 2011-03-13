@@ -1,0 +1,1 @@
+ShortPointArray class instanceVariableNames: ''

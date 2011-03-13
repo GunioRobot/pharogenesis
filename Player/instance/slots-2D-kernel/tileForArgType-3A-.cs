@@ -1,4 +1,5 @@
 tileForArgType: typeSymbol
+	"Anwer a default tile to represent a datum of the given argument type"
 
 	| aColor |
 	typeSymbol == #player ifTrue:
@@ -11,4 +12,6 @@ tileForArgType: typeSymbol
 	typeSymbol == #menu ifTrue: [^ MenuTile new typeColor: aColor].
 	typeSymbol == #object ifTrue: [^ nil newTileMorphRepresentative typeColor: aColor].
 	typeSymbol == #color ifTrue: [^ Color blue newTileMorphRepresentative].
+	typeSymbol == #buttonPhase ifTrue: [^ SymbolListTile new choices: #(buttonDown whilePressed buttonUp) dataType: typeSymbol].
+
 	self error: 'Unrecognized type'

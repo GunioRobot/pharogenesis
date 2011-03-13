@@ -1,6 +1,8 @@
 indicateCursorString
+	"Answer the string to be shown in a menu to represent the whether-to-indicate-cursor status"
+
 	^ self indicateCursor
 		ifTrue:
-			['stop indicating cursor']
+			['<on>indicate cursor']
 		ifFalse:
-			['start indicating cursor']
+			['<off>indicate cursor']

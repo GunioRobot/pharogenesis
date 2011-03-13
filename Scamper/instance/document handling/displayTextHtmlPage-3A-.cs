@@ -30,4 +30,9 @@ displayTextHtmlPage: newSource
 	self startDownloadingMorphState: (formatter incompleteMorphs).
 
 	self changeAll: 	#(currentUrl relabel hasLint lint backgroundColor formattedPage formattedPageSelection).
+	self status: 'done.'.
+	"pardon this horrible hack...(tk)"
+	(currentUrl authority beginsWith: 'ets.freetranslation.com') ifTrue: [
+		self status: 'done.
+**** Please Scroll Down To See Your Results ****'].
 	^true

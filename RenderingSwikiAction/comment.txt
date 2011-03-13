@@ -1,0 +1,22 @@
+An authorized Swiki that can generate cached pages with no link back to the
+Swiki
+
+Examples of setting them up:
+
+Here's one that renders to an external, FTP-accessible website:
+| sd auth |
+sd _ ServerDirectory new.
+sd directory: '/net/www/fac/mark.guzdial/testSwiki'; server: 'flintstone.com';
+	user: 'fred'; password: 'flintstone'.
+RenderingSwikiAction new restore: 'testSwiki'.
+(PWS actions at: 'testswiki') serverDirectory: sd.
+auth _ Authorizer new mapName: 'user' password: 'testSwiki' to: 'user'.
+(PWS actions at: 'testswiki') authorizer: auth.
+
+Here's one that renders to a local directory accessible from a webserver:
+| sd auth |
+sd _ 'Guz 7600:WebSTAR 2.0:testSwiki:'.
+RenderingSwikiAction setUp: 'testSwiki'.
+(PWS actions at: 'testswiki') serverDirectory: sd.
+auth _ Authorizer new mapName: 'user' password: 'testSwiki' to: 'user'.
+(PWS actions at: 'testswiki') authorizer: auth.

@@ -1,0 +1,1 @@
+ScriptableButton class instanceVariableNames: ''

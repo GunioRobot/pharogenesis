@@ -1,7 +1,6 @@
 Controller
 	subclass: #MouseMenuController
-	instanceVariableNames:
-		'redButtonMenu redButtonMessages yellowButtonMenu yellowButtonMessages blueButtonMenu blueButtonMessages '
+	instanceVariableNames: 'redButtonMenu redButtonMessages '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Interface-Support'
+	category: 'Kernel-ST80 Remnants'

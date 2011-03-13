@@ -9,12 +9,12 @@ pauseIn: aWorld
 		playHand _ nil].
 	state = #record ifTrue:
 		[state _ #suspendedRecord.
-		recHand stopReportingEventsTo: self.
+		recHand removeEventListener: self.
 		recHand _ nil].
 
 	voiceRecorder ifNotNil:
 		[voiceRecorder pause.
 		startSoundEvent ifNotNil:
-			[startSoundEvent sound: voiceRecorder recordedSound.
+			[startSoundEvent argument: voiceRecorder recordedSound.
 			voiceRecorder clearRecordedSound.
 			startSoundEvent _ nil]].

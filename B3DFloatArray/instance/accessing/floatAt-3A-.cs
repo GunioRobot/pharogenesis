@@ -1,4 +1,4 @@
 floatAt: index
 	"For subclasses that override #at:"
-	<primitive: 'primitiveFloatArrayAt'>
+	<primitive: 'primitiveAt' module: 'FloatArrayPlugin'>
 	^Float fromIEEE32Bit: (self basicAt: index)

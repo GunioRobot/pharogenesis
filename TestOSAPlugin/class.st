@@ -1,0 +1,1 @@
+TestOSAPlugin class instanceVariableNames: ''

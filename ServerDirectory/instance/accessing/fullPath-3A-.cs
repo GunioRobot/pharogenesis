@@ -6,7 +6,7 @@ fullPath: serverAndDirectory
 	sz _ serverAndDirectory size.
 	bare size > 0 ifTrue: [ 
 		start _ (bare copyFrom: 1 to: (8 min: sz)) asLowercase.
-		(start beginsWith: 'ftp:') 
+		((start beginsWith: 'ftp:') or: [start beginsWith: 'nil:']) "fix bad urls"
 			ifTrue: [type _ #ftp.
 				bare _ bare copyFrom: (7 min: sz) to: bare size].
 		(start beginsWith: 'http:') 
@@ -33,6 +33,11 @@ fullPath: serverAndDirectory
 		server = sd server ifTrue: [
 			match _ directory asLowercase charactersExactlyMatching: sd directory asLowercase.
 			match > score ifTrue: [score _ match.  best _ sd]]].
-	best 
-		ifNil: [self fromUser]
-		ifNotNil: [user _ best user.  self password: best password].
+	best ifNil: [
+		self fromUser
+	] ifNotNil: [
+		user _ best user.
+		altURL _ best altUrl.
+		loaderUrl _ best loaderUrl.
+		self password: best password
+	].

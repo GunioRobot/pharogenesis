@@ -1,8 +1,10 @@
-addCustomMenuItems: aCustomMenu hand: aHandMorph
+addCustomMenuItems: aMenu hand: aHandMorph
 
-	super addCustomMenuItems: aCustomMenu hand: aHandMorph.
-	aCustomMenu add: 'expand time' action: #expandTime.
-	aCustomMenu add: 'contract time' action: #contractTime.
+	super addCustomMenuItems: aMenu hand: aHandMorph.
+	aMenu add: 'expand time' action: #expandTime.
+	aMenu add: 'contract time' action: #contractTime.
+	aMenu addLine.
+	aMenu add: 'add movie clip player' action: #addMovieClipPlayer.
 	(self valueOfProperty: #dragNDropEnabled) == true
-		ifTrue: [aCustomMenu add: 'close drag and drop' action: #disableDragNDrop]
-		ifFalse: [aCustomMenu add: 'open drag and drop' action: #enableDragNDrop].
+		ifTrue: [aMenu add: 'close drag and drop' action: #disableDragNDrop]
+		ifFalse: [aMenu add: 'open drag and drop' action: #enableDragNDrop].

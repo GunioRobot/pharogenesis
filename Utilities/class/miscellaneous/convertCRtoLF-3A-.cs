@@ -2,7 +2,7 @@ convertCRtoLF: fileName
 	"Convert the given file to LF line endings. Put the result in a file with the extention '.lf'"
 
 	| in out c justPutCR |
-	in _ (FileStream oldFileNamed: fileName) binary.
+	in _ (FileStream readOnlyFileNamed: fileName) binary.
 	out _  (FileStream newFileNamed: fileName, '.lf') binary.
 	justPutCR _ false.
 	[in atEnd] whileFalse: [

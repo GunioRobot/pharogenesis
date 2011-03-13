@@ -1,6 +1,6 @@
 Integer
 	subclass: #SmallInteger
 	instanceVariableNames: ''
-	classVariableNames: 'Digitbuffer '
+	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Numeric-Numbers'
+	category: 'Kernel-Numbers'

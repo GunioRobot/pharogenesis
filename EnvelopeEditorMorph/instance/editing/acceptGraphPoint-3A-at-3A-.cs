@@ -14,8 +14,7 @@ acceptGraphPoint: p at: index
 		["Loop start and loop end must be tied together"
 		other _ limits at: (3 - whichLim).  " 1 <--> 2 "
 		points at: other put: (points at: other) x @ val.
-		line vertices at: other put: (line vertices at: other) x @ linePoint y.
-		line computeBounds].
+		line verticesAt: other put: (line vertices at: other) x @ linePoint y].
 	"Make sure envelope feels the change in points array..."
 	envelope setPoints: points loopStart: (limits at: 1) loopEnd: (limits at: 2).
 	^ linePoint

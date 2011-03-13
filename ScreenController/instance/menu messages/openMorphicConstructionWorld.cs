@@ -1,2 +1,0 @@
-openMorphicConstructionWorld 
-	WorldMorph openWithStandardPartsBinShowing

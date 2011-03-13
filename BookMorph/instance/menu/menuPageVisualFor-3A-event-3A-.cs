@@ -20,4 +20,4 @@ menuPageVisualFor: target event: evt
 									with: (Array with: tSpec first with: effect with: dir))].
 				menu add: effect subMenu: subMenu]].
 
-	menu popUpEvent: evt
+	menu popUpEvent: evt in: self world

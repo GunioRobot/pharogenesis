@@ -3,4 +3,4 @@ Inspector
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Interface-Debugger'
+	category: 'Tools-Debugger'

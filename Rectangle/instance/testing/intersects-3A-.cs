@@ -6,8 +6,8 @@ intersects: aRectangle
 	| rOrigin rCorner |
 	rOrigin _ aRectangle origin.
 	rCorner _ aRectangle corner.
-	rCorner x < origin x		ifTrue: [^ false].
-	rCorner y < origin y		ifTrue: [^ false].
-	rOrigin x > corner x		ifTrue: [^ false].
-	rOrigin y > corner y	ifTrue: [^ false].
+	rCorner x <= origin x	ifTrue: [^ false].
+	rCorner y <= origin y	ifTrue: [^ false].
+	rOrigin x >= corner x	ifTrue: [^ false].
+	rOrigin y >= corner y	ifTrue: [^ false].
 	^ true

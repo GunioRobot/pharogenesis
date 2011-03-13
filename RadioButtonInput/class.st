@@ -1,0 +1,1 @@
+RadioButtonInput class instanceVariableNames: ''

@@ -17,4 +17,4 @@ NOTE: "textHas:" is very slow, since it must read the message from disk.'
 		initialAnswer: oldExpr.
 	newDefinition isEmpty ifTrue: [^''].
 	CustomFilters at: filterName put: newDefinition.
-	^newDefinition
+	^filterName

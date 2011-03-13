@@ -19,21 +19,30 @@ initialize
 		on: self
 		getState: nil
 		action: #openConnection.
-	connectButton label: 'connect to server'.
+	connectButton
+		hResizing: #spaceFill;
+		vResizing: #spaceFill;
+		label: 'connect to server'.
 	column addMorphBack: connectButton.
 
 	motdButton _ PluggableButtonMorph
 		on: self
 		getState: nil
 		action: #openMotd.
-	motdButton label: 'view MOTD'.
+	motdButton
+		hResizing: #spaceFill;
+		vResizing: #spaceFill;
+		label: 'view MOTD'.
 	column addMorphBack: motdButton.
 
 	channelListButton _ PluggableButtonMorph
 		on: self
 		getState: nil
 		action: #openChannelList.
-	channelListButton label: 'channel list'.
+	channelListButton
+		hResizing: #spaceFill;
+		vResizing: #spaceFill;
+		label: 'channel list'.
 	column addMorphBack: channelListButton.
 
 	self addMorph: column frame: (0@0 extent: 0.4@0.8).

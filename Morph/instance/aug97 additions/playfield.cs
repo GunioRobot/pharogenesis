@@ -1,2 +1,0 @@
-playfield
-	^ self presenter playfield

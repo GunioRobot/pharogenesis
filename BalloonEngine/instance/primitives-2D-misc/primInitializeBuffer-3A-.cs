@@ -1,4 +1,3 @@
 primInitializeBuffer: buffer
-	<primitive: 'gePrimitiveInitializeBuffer'>
-	Debug ifTrue:[^BalloonEnginePlugin doPrimitive: 'gePrimitiveInitializeBuffer'].
+	<primitive: 'primitiveInitializeBuffer' module: 'B2DPlugin'>
 	^self primitiveFailed

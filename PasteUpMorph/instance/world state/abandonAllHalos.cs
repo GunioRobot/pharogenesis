@@ -1,2 +1,3 @@
 abandonAllHalos
-	self haloMorphs do: [:m | m delete]
+	self flag: #arNote. "Remove the method"
+	^self deleteAllHalos

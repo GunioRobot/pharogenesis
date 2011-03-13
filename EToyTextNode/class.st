@@ -1,0 +1,1 @@
+EToyTextNode class instanceVariableNames: ''

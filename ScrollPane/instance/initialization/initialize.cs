@@ -1,10 +1,10 @@
 initialize
+	retractableScrollBar _ (Preferences valueOfFlag: #inboardScrollbars) not.
+	scrollBarOnLeft _ (Preferences valueOfFlag: #scrollBarsOnRight) not.
 	super initialize.
 	hasFocus _ false.
 	borderWidth _ 2.
 	borderColor _ Color black.
-	retractableScrollBar _ (Preferences valueOfFlag: #inboardScrollbars) not.
-	scrollBarOnLeft _ (Preferences valueOfFlag: #scrollBarsOnRight) not.
 
 	scrollBar := ScrollBar new model: self slotName: 'scrollBar'.
 	scrollBar borderWidth: 1; borderColor: Color black.

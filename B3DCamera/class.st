@@ -1,0 +1,1 @@
+B3DCamera class instanceVariableNames: ''

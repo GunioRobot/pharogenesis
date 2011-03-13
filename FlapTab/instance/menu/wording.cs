@@ -3,4 +3,4 @@ wording
 		ifTrue:
 			[self existingWording]
 		ifFalse:
-			[self valueOfProperty: #priorWording ifAbsent: '---']
+			[self valueOfProperty: #priorWording ifAbsent: ['---']]

@@ -12,6 +12,9 @@ initializeInterpreter: bytesToShift
 	receiver		_ nilObj.
 	messageSelector	_ nilObj.
 	newMethod		_ nilObj.
+	methodClass		_ nilObj.
+	lkupClass		_ nilObj.
+	receiverClass	_ nilObj.
 
 	self flushMethodCache.
 	self loadInitialContext.

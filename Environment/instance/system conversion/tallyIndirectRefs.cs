@@ -36,11 +36,11 @@ tallyIndirectRefs   "Smalltalk tallyIndirectRefs"
 		refs asSet do:
 			[:varName |
 			envtRefs add: (envtForVar at: varName)
-					withOccurrences: (refs occurrencesOf: varName)].
-		(envtRefs sortedCounts isEmpty or: [envtRefs sortedCounts first value == (Smalltalk keyAtValue: cls environment)])
-			ifFalse: [allRefs add: varName withOccurrences: (refs occurrencesOf: varName).
-					tallies at: cls name put: envtRefs sortedCounts.
-					Transcript cr; print: envtRefs sortedCounts; endEntry]]].
+					withOccurrences: (refs occurrencesOf: varName).
+			(envtRefs sortedCounts isEmpty or: [envtRefs sortedCounts first value == (Smalltalk keyAtValue: cls environment)])
+				ifFalse: [allRefs add: varName withOccurrences: (refs occurrencesOf: varName).
+						tallies at: cls name put: envtRefs sortedCounts.
+						Transcript cr; print: envtRefs sortedCounts; endEntry]]]].
 
 	newCategories _ Dictionary new.
 	tallies associationsDo:

@@ -1,0 +1,1 @@
+PostscriptEncoderToDisk class instanceVariableNames: ''

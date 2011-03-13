@@ -1,2 +1,0 @@
-inspectArgument
-	argument inspect

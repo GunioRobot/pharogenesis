@@ -1,0 +1,13 @@
+position: p andWidth: w
+
+	| widthChanged |
+
+	widthChanged _ self width ~= w.
+	self position: p.
+	self width: w.
+	submorphs isEmpty ifTrue: [^self height].
+	widthChanged ifTrue: [
+		self repositionText.
+	].
+	self height: self desiredHeight.
+	^self desiredHeight

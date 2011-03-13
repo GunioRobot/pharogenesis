@@ -1,0 +1,1 @@
+HtmlFormatter class instanceVariableNames: ''

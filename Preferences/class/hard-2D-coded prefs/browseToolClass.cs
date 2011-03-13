@@ -1,6 +1,6 @@
 browseToolClass
 	^ Preferences browserShowsPackagePane
 		ifTrue:
-			[PackageBrowser]
+			[PackagePaneBrowser]
 		ifFalse:
 			[Browser]

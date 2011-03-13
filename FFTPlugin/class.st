@@ -1,0 +1,1 @@
+FFTPlugin class instanceVariableNames: ''

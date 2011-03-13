@@ -1,0 +1,1 @@
+JPEGHuffmanTable class instanceVariableNames: ''

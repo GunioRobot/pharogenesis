@@ -13,5 +13,8 @@ storeDataOn: aDataStream
 		size: cntInstVars + cntIndexedVars.
 	1 to: cntInstVars do:
 		[:i | aDataStream nextPut: (self instVarAt: i)].
-	1 to: cntIndexedVars do:
-		[:i | aDataStream nextPut: (self basicAt: i)]
+
+	(aDataStream byteStream class == DummyStream) ifFalse: [
+		1 to: cntIndexedVars do:
+			[:i | aDataStream nextPut: (self basicAt: i)]].
+		"save a little time if dummy stream"

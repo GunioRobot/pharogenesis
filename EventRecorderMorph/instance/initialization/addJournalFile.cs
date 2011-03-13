@@ -3,4 +3,4 @@ addJournalFile
 
 	journalFile ifNotNil: [journalFile close].
 	journalFile _ FileStream newFileNamed: 'EventRecorder.tape'.
-
+	journalFile nextPutAll:'Event Tape v1 ASCII'; cr.

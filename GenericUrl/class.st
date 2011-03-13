@@ -1,0 +1,1 @@
+GenericUrl class instanceVariableNames: ''

@@ -1,25 +1,36 @@
 changeListMenu: aMenu
+	"Fill aMenu up so that it comprises the primary changelist-browser menu"
 
-^ aMenu labels:
-'fileIn selections
-fileOut selections...
-compare to current
-toggle diffing
-select conflicts with any changeset
-select conflicts with current changeset
-select conflicts with...
-select unchanged methods
-select methods for this class
-select all
-deselect all
-browse current versions of selections
-remove doIts
-remove older versions
-remove selections'
-	lines: #(2 4 6 9 11 12)
-	selections: #(fileInSelections fileOutSelections
-compareToCurrentVersion toggleDiffing selectAllConflicts  selectConflicts selectConflictsWith selectUnchangedMethods selectMethodsForThisClass  selectAll  deselectAll browseCurrentVersionsOfSelections
-removeDoIts removeOlderMethodVersions removeSelections)
+	Smalltalk isMorphic ifTrue:
+		[aMenu addTitle: 'change list'.
+		aMenu addStayUpItemSpecial].
 
-"select such that...   selectSuchThat"
+	aMenu addList: #(
+
+	('fileIn selections'							fileInSelections)
+	('fileOut selections...	'						fileOutSelections)
+	-
+	('compare to current'						compareToCurrentVersion)
+	('toggle diffing (D)'							toggleDiffing)
+	-
+	('select conflicts with any changeset'		selectAllConflicts)
+	('select conflicts with current changeset'	selectConflicts)
+	-
+	('select conflicts with...'						selectConflictsWith)
+	('select unchanged methods'					selectUnchangedMethods)
+	('select methods for this class'				selectMethodsForThisClass)
+	('invert selections'							invertSelections)
+	-
+	('select all (a)'								selectAll)
+	('deselect all'								deselectAll)
+	-
+	('browse current versions of selections'		browseCurrentVersionsOfSelections)
+	('remove current methods of selections'		destroyCurrentCodeOfSelections)
+	-
+	('remove doIts'								removeDoIts)
+	('remove older versions'						removeOlderMethodVersions)
+	('remove selected items'						removeSelections)
+	('remove unselected items'					removeNonSelections)).
+
+	^ aMenu
 

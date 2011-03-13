@@ -19,6 +19,7 @@ objectForDataStream: refStrm
 	bookUrl 
 		ifNil: [	bb _ RectangleMorph new.	"write out a dummy"
 			bb bounds: bounds.
+			refStrm replace: self with: bb.
 			^ bb]
 		ifNotNil: [clone instVarNamed: 'bookMorph' put: bookUrl].
 
@@ -30,4 +31,5 @@ objectForDataStream: refStrm
 		ind _ bookMorph pages identityIndexOf: page.
 		page reserveUrl: stem,(ind printString),'.sp'].
 	clone instVarNamed: 'page' put: page url.
+	refStrm replace: self with: clone.
 	^ clone

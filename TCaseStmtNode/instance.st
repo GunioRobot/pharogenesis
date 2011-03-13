@@ -3,4 +3,4 @@ TParseNode
 	instanceVariableNames: 'expression firsts lasts cases '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Squeak-Translation to C'
+	category: 'VMConstruction-Translation to C'

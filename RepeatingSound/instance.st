@@ -1,6 +1,6 @@
 AbstractSound
 	subclass: #RepeatingSound
-	instanceVariableNames: 'sound iterationCount iteration '
+	instanceVariableNames: 'sound iterationCount iteration samplesPerIteration '
 	classVariableNames: 'CarMotorSamples '
 	poolDictionaries: ''
-	category: 'System-Sound'
+	category: 'Sound-Synthesis'

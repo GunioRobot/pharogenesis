@@ -1,2 +1,0 @@
-labelForPaintPalette
-	^ 'Paint'

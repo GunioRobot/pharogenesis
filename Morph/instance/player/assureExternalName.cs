@@ -1,3 +1,5 @@
 assureExternalName
-	self knownName ifNil:
-		[self setNameTo: self externalName]
+	| aName |
+	^ (aName _ self knownName) ifNil:
+		[self setNameTo: (aName _ self externalName).
+		^ aName]

@@ -1,8 +1,10 @@
 shiftedMessageMenu: aMenu
+	"Arm the menu so that it holds items appropriate to the message-list while the shift key is down.  Answer the menu."
+
 	^ aMenu addList: #(
 		-
 		('method pane'						makeIsolatedCodePane)
-		('toggle diffing'						toggleDiffing)
+		('toggle diffing (D)'					toggleDiffing)
 		('implementors of sent messages'		browseAllMessages)
 		('change category...'				changeCategory)
 			-
@@ -12,6 +14,6 @@ shiftedMessageMenu: aMenu
 		-
 		('change sets with this method'		findMethodInChangeSets)
 		('revert to previous version'			revertToPreviousVersion)
-		('revert and forget'					revertAndForget)
+		('revert & remove from changes'	revertAndForget)
 		-
 		('more...'							unshiftedYellowButtonActivity))

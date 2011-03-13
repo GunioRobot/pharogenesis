@@ -3,3 +3,4 @@ removeFromCurrentChanges
 
 	Smalltalk changes removeSelectorChanges: self selectedMessageName 
 			class: self selectedClassOrMetaClass.
+	self changed: #annotation

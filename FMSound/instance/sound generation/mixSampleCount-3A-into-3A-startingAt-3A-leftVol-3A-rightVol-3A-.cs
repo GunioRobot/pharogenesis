@@ -3,7 +3,7 @@ mixSampleCount: n into: aSoundBuffer startingAt: startIndex leftVol: leftVol rig
 	"(FMSound pitch: 440.0 dur: 1.0 loudness: 0.5) play"
 
 	| doingFM lastIndex sample offset i s |
-	<primitive: 180>
+	<primitive:'primitiveMixFMSound' module:'SoundGenerationPlugin'>
 	self var: #aSoundBuffer declareC: 'short int *aSoundBuffer'.
 	self var: #waveTable declareC: 'short int *waveTable'.
 

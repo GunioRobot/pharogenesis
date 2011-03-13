@@ -4,7 +4,7 @@ updateFromResource
 	(pathName _ self valueOfProperty: #resourceFilePath) ifNil: [^ self].
 	(pathName asLowercase endsWith: '.morph')
 		ifTrue:
-			[newMorph _ (FileStream oldFileNamed: pathName) fileInObjectAndCode.
+			[newMorph _ (FileStream readOnlyFileNamed: pathName) fileInObjectAndCode.
 			(newMorph isKindOf: Morph) ifFalse: [^ self error: 'Resource not a single morph']]
 		ifFalse:
 			[f _ Form fromFileNamed: pathName.

@@ -3,4 +3,4 @@ ReadWriteStream
 	instanceVariableNames: 'isBinary '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Network'
+	category: 'Collections-Streams'

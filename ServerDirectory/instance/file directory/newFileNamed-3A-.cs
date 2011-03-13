@@ -2,13 +2,10 @@ newFileNamed: fullName
 	"Create a RemoteFileStream.  If the file exists, and complain.  fullName is directory path, and does include name of the server.  Or it can just be a fileName.  Only write the data upon close."
 
 	| file remoteStrm selection |
-	file _ self as: ServerFile.
-	(fullName includes: self pathNameDelimiter)
-		ifTrue: [file fullPath: fullName]		"sets server, directory(path), fileName"
-		ifFalse: [file fileName: fullName].	"JUST a single NAME, rest is here"
-			"Mac files that include / in name, must encode it as %2F "
+
+	file _ self asServerFileNamed: fullName.
 	file readWrite.
-	file type == #file ifTrue: [
+	file isTypeFile ifTrue: [
 		^ FileStream newFileNamed: (file fileNameRelativeTo: self)].
 	file exists 
 		ifTrue: [

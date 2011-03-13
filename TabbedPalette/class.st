@@ -1,0 +1,1 @@
+TabbedPalette class instanceVariableNames: ''

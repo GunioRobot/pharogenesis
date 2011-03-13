@@ -1,2 +1,14 @@
-Preferences comment:
-'A general mechanism to store preference choices.  The default setup treats any symbol as a potential boolean flag; flags unknown to the preference dictionary are always returned as false.  It is also possible to store non-boolean data in the preference table.  sw 8/91'
+A general mechanism to store preference choices.  The default setup treats any symbol as a potential boolean flag; flags unknown to the preference dictionary are always returned as false.  It is also possible to store non-boolean data in the preference table.  sw 8/91
+	To open the control panel:		Preferences openFactoredPanel
+
+All messages are to the class.
+	Preferences logDebuggerStackToFile
+You can make up a new preference any time.  Do not define a new message in Preferences class.  When Preferences does not understand a selector, it looks in the flags dictionary.  It calls:
+	Preferences valueOfFlag: #logDebuggerStackToFile
+
+To set a preference,
+	Preferences setPreference: #logDebuggerStackToFile toValue: false.
+Or,
+	Preferences disable: #logDebuggerStackToFile.
+Or to turn it on,
+	Preferences enable: #logDebuggerStackToFile.

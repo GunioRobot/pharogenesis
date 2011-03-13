@@ -3,4 +3,4 @@ Object
 	instanceVariableNames: 'dependents '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Interface-Framework'
+	category: 'Kernel-Objects'

@@ -1,2 +1,4 @@
 value
-	^ receiver perform: selector withArguments: arguments
+	^arguments isNil
+		ifTrue: [receiver perform: selector]
+		ifFalse: [receiver perform: selector withArguments: arguments]

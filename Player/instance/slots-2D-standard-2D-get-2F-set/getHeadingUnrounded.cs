@@ -1,2 +1,0 @@
-getHeadingUnrounded
-	^ self costume forwardDirection asSmallAngleDegrees

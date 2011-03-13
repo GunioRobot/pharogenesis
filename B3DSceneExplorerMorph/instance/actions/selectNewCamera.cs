@@ -9,5 +9,5 @@ selectNewCamera
 	sel := menu startUp.
 	sel ifNotNil: [
 		self scene defaultCamera: (self scene cameras at: sel) copy.
-		self updateUpVectorForCamera: self scene defaultCamera.
+		b3DSceneMorph updateUpVectorForCamera: self scene defaultCamera.
 		self changed.]

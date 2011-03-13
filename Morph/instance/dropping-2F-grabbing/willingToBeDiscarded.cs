@@ -1,0 +1,2 @@
+willingToBeDiscarded
+	^ true

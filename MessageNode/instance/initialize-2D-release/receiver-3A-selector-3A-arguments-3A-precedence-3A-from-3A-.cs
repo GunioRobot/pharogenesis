@@ -1,10 +1,14 @@
-receiver: rcvr selector: selName arguments: args precedence: p from: encoder 
+receiver: rcvr selector: aSelector arguments: args precedence: p from: encoder 
 	"Compile."
 
+	| theSelector |
 	self receiver: rcvr
 		arguments: args
 		precedence: p.
-	self noteSpecialSelector: selName.
+	aSelector = #:Repeat:do:
+		ifTrue: [theSelector _ #do:]
+		ifFalse: [theSelector _ aSelector].
+	self noteSpecialSelector: theSelector.
 	(self transform: encoder)
 		ifTrue: 
 			[selector isNil
@@ -12,6 +16,6 @@ receiver: rcvr selector: selName arguments: args precedence: p from: encoder
 							key: (MacroSelectors at: special)
 							code: #macro]]
 		ifFalse: 
-			[selector _ encoder encodeSelector: selName.
+			[selector _ encoder encodeSelector: theSelector.
 			rcvr == NodeSuper ifTrue: [encoder noteSuper]].
 	self pvtCheckForPvtSelector: encoder

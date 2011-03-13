@@ -1,2 +1,0 @@
-mouseWillPlaytgpspm0
-	^ EToyHolder

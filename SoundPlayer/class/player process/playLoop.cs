@@ -1,7 +1,8 @@
 playLoop
 	"The sound player process loop."
 
-	| bytesPerSlice count |
+	| bytesPerSlice count willStop mayStop |
+	mayStop _ Preferences soundStopWhenDone.
 	bytesPerSlice _ Stereo ifTrue: [4] ifFalse: [2].
 	[true] whileTrue: [
 		[(count _ self primSoundAvailableBytes // bytesPerSlice) > 100]
@@ -16,5 +17,12 @@ playLoop
 			ReverbState == nil ifFalse: [
 				ReverbState applyReverbTo: Buffer startingAt: 1 count: count].
 			self primSoundPlaySamples: count from: Buffer startingAt: 1.
-			Buffer primFill: 0.
-			SoundJustStarted _ nil]].
+			willStop _ mayStop and:[
+						(ActiveSounds size = 0) and:[
+							self isAllSilence: Buffer size: count]].
+			willStop
+				ifTrue:[self shutDown. PlayerProcess _ nil]
+				ifFalse:[Buffer primFill: 0].
+			SoundJustStarted _ nil].
+		willStop ifTrue:[^self].
+	].

@@ -1,4 +1,4 @@
 delete
 
 	self breakDependents.
-	^ super delete
+	super delete.

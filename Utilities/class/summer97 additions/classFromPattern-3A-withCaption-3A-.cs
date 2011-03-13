@@ -1,15 +1,18 @@
 classFromPattern: pattern withCaption: aCaption
 	"If there is a class whose name exactly given by pattern, return it.
 	If there is only one class in the system whose name matches pattern, return it.
-	Otherwise, put up a menu offering the names of all classes that match pattern, and return the class chosen, else nil if nothing chosen"
+	Otherwise, put up a menu offering the names of all classes that match pattern, and return the class chosen, else nil if nothing chosen.
+	This method ignores tab, space, & cr characters in the pattern"
 
 	| toMatch potentialClassNames classNames exactMatch index |
-	pattern isEmpty ifTrue: [^ nil].
-	Symbol hasInterned: pattern ifTrue:
+	(toMatch _  pattern copyWithoutAll:
+			{Character space.  Character cr.  Character tab})
+		isEmpty ifTrue: [^ nil].
+	Symbol hasInterned: toMatch ifTrue:
 		[:patternSymbol | Smalltalk at: patternSymbol ifPresent:
 			[:maybeClass | (maybeClass isKindOf: Class) ifTrue: [^ maybeClass]]].
 
-	toMatch _ (pattern copyWithout: $.) asLowercase.
+	toMatch _ (toMatch copyWithout: $.) asLowercase.
 	potentialClassNames _ Smalltalk classNames asOrderedCollection.
 	classNames _ pattern last = $. 
 		ifTrue: [potentialClassNames select:

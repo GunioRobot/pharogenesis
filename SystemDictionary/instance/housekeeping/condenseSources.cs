@@ -28,18 +28,8 @@ condenseSources		"Smalltalk condenseSources"
 		toBe: self sourcesName , '.old'.
 	dir rename: self sourcesName , '.temp'
 		toBe: self sourcesName.
-
-	"On Mac, set the file type and creator (noop on other platforms)"
-	FileDirectory default
-		setMacFileNamed: self changesName
-		type: 'STch'
-		creator: 'FAST'.
-
-	FileDirectory default
-		setMacFileNamed:  self sourcesName
-		type: 'STch'
-		creator: 'FAST'.
-
+	self setMacFileInfoOn: self changesName.
+	self setMacFileInfoOn: self sourcesName.
 	self openSourceFiles.
 	SelectionMenu notify: 'Source files have been rewritten!
 Check that all is well,

@@ -1,4 +1,4 @@
 halo
-	self currentWorld haloMorphs do:
-		[:h | h target == self ifTrue: [^ h]].
+
+	(self world ifNil: [^nil]) haloMorphs do: [:h | h target == self ifTrue: [^ h]].
 	^ nil

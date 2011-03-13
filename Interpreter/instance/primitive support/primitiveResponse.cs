@@ -10,7 +10,7 @@ primitiveResponse
 	timerPending ifTrue: [
 		(self ioLowResMSecs ~= startTime) ifTrue: [
 			"primitive ran for more than a tick; check for possible timer interrupts"
-			((self ioMSecs bitAnd: 16r1FFFFFFF) >= nextWakeupTick) ifTrue: [
+			((self ioMSecs bitAnd: MillisecondClockMask) >= nextWakeupTick) ifTrue: [
 				successFlag
 					ifTrue: ["process the interrupt now"
 							self checkForInterrupts]

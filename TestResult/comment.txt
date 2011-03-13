@@ -1,0 +1,6 @@
+Collects the results of executing a test case. The test framework distinguishes between failures and errors. A failure is anticipated and checked for with assertions. Errors are unanticipated problems like a division by 0 or an index out of bound ...
+
+Instance Variables:
+	runCount	<SmallInteger>
+	failures		<OrderedCollection of: TestCase>
+	errors		<OrderedCollection of: TestCase>

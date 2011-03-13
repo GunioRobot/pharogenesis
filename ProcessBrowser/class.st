@@ -1,0 +1,1 @@
+ProcessBrowser class instanceVariableNames: ''

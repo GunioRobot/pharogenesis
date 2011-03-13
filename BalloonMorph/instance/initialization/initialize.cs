@@ -1,6 +1,7 @@
 initialize
 	super initialize.
-	color _ Color paleYellow.
+	self beSmoothCurve.
+	color _ self class balloonColor.
 	borderColor _ Color black.
 	borderWidth _ 1.
 	offsetFromTarget _ 0@0

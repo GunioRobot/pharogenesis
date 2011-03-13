@@ -1,6 +1,7 @@
 HandMorph
 	subclass: #RemoteHandMorph
-	instanceVariableNames: 'remoteWorldExtent socket waitingForConnection receiveBuffer '
+	instanceVariableNames:
+		'remoteWorldExtent remoteAddress sendSocket sendBuffer sendState socket waitingForConnection receiveBuffer '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Kernel'
+	category: 'Morphic-Support'

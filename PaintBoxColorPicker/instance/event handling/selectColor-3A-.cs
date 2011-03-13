@@ -13,6 +13,6 @@ selectColor: evt
 		ifFalse: [
 			currentColor _ image colorAt: locOfCurrent].
 
-	(owner isKindOf: PaintBoxMorph) ifTrue: [owner takeColorFrom: self].
+	(owner isKindOf: PaintBoxMorph) ifTrue: [owner takeColorEvt: evt from: self].
 
 	self changed.

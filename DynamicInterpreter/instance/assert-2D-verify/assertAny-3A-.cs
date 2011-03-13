@@ -1,2 +1,0 @@
-assertAny: ignored
-	"always succeeds"

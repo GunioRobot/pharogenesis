@@ -1,7 +1,6 @@
 ParseNode
 	subclass: #BraceNode
-	instanceVariableNames:
-		'elements sourceLocations collClassNode nElementsNode fromBraceStackNode toBraceStackNode withNode '
+	instanceVariableNames: 'elements sourceLocations emitNode '
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'System-Compiler'

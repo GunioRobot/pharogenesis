@@ -1,5 +1,0 @@
-The so-called Viewer -- a kind of browser and inspector for a singleton object.
-
-scriptedPlayer - the player whom I am viewing
-partsBank - a number representing which of several possible banks of parts is showing
-scriptsBank - a number representing which of several possible banks of scripts is showing.

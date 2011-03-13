@@ -1,2 +1,1 @@
-Fraction comment:
-'I represent some rational number as a fraction. All public arithmetic operations answer reduced fractions.'
+I represent some rational number as a fraction. All public arithmetic operations answer reduced fractions.

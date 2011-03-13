@@ -1,3 +1,0 @@
-referencePosition
-
-	^ bounds center

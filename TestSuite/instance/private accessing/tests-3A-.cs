@@ -1,0 +1,3 @@
+tests: anOrderedCollection
+
+	tests := anOrderedCollection.

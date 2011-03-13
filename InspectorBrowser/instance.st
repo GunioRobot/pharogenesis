@@ -3,4 +3,4 @@ Inspector
 	instanceVariableNames: 'fieldList msgList msgListIndex '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Interface-Inspector'
+	category: 'Tools-Inspector'

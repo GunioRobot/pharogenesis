@@ -1,0 +1,1 @@
+B3DLightAttenuation class instanceVariableNames: ''

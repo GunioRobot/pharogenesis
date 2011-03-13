@@ -1,3 +1,3 @@
 doOneCycle
-	self interCyclePause: MinCycleLapse.
-	self doOneCycleNow.
+
+	worldState doOneCycleFor: self

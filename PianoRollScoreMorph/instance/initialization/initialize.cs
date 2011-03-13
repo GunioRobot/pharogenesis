@@ -7,3 +7,4 @@ initialize
 	showMeasureLines _ true.
 	showBeatLines _ false.
 	self timeSignature: 4 over: 4.
+	self clipSubmorphs: true.

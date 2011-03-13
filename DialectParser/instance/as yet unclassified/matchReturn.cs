@@ -1,0 +1,3 @@
+matchReturn
+
+	^ self matchToken: 'Answer'

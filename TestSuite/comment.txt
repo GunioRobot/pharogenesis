@@ -1,0 +1,4 @@
+A Composite of test cases. It runs a collection of test cases.
+
+Instance Variables:
+	tests	<OrderedCollection of: TestCase>

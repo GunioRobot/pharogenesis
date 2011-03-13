@@ -1,6 +1,5 @@
 wantsDroppedMorph: aMorph event: evt
-	aMorph willingToBeEmbeddedUponLanding ifFalse: [^ false].
+	self isWorldMorph ifTrue:[^true]. "always"
 	self visible ifFalse: [^ false].  "will be a call to #hidden again very soon"
-	self dragNDropEnabled ifFalse: [^ false].
-	(self bounds containsPoint: (self pointFromWorld: evt cursorPoint)) ifFalse: [^ false].
+	self dropEnabled ifFalse: [^ false].
 	^ true

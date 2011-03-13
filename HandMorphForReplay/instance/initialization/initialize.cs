@@ -1,3 +1,3 @@
 initialize
 	super initialize.
-	self showTemporaryCursor: Cursor normal
+	self showTemporaryCursor: Cursor normal.

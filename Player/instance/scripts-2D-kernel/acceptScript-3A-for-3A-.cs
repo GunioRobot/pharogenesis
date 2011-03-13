@@ -1,9 +1,8 @@
 acceptScript: aScriptEditorMorph for: aSelector
+	"Accept the code in the script editor as the code for the given selector"
 
-	| classif |
-	classif _ aScriptEditorMorph isAnonymous ifTrue: ['anonymous scripts'] ifFalse: ['named scripts'].
 	self class
 		compileUnlogged: aScriptEditorMorph methodString
-		classified: classif
+		classified: 'scripts'
 		notifying: nil.
 	self class atSelector: aSelector putScriptEditor: aScriptEditorMorph

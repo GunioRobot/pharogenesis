@@ -1,0 +1,1 @@
+FloatArray class instanceVariableNames: ''

@@ -1,2 +1,2 @@
 changed
-	^super invalidRect: (self fullBounds insetBy: -1)
+	^self invalidRect: (self fullBounds insetBy: -1)

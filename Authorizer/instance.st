@@ -3,4 +3,4 @@ Object
 	instanceVariableNames: 'users realm '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'PluggableWebServer'
+	category: 'Network-Pluggable Web Server'

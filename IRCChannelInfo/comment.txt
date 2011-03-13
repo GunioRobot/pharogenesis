@@ -1,0 +1,1 @@
+holds various info on a channel that the user is a member of.

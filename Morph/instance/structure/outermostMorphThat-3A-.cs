@@ -1,8 +1,6 @@
-outermostMorphThat: aBlock
+outermostMorphThat: conditionBlock
 	"Return the outermost containing morph for which aBlock is true, or nil if none"
-	| current outermost |
-	current _ owner.
-	[current == nil] whileFalse:
-			[(aBlock value: current) ifTrue: [outermost _ current].
-			current _ current owner].
+
+	| outermost |
+	self allOwnersDo: [:m | (conditionBlock value: m) ifTrue: [outermost _ m]].
 	^ outermost

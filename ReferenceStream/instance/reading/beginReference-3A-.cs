@@ -8,6 +8,8 @@ beginReference: anObject
 	objects at: currentReference ifAbsent: [
 		objects at: currentReference put: anObject.
 		^ currentReference].
-	skipping ifFalse: ["If reading just to skip it, don't record this copy."
-			objects at: currentReference put: anObject].
+	(skipping includes: currentReference) ifFalse: [
+		"If reading just to skip it, don't record this copy."
+		objects at: currentReference put: anObject
+	].
 	^ currentReference		"position relative to start of data portion of file"

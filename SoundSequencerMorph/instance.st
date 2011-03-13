@@ -3,4 +3,4 @@ RectangleMorph
 	instanceVariableNames: 'controlPanel '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Morphic-Demo'
+	category: 'Sound-Interface'

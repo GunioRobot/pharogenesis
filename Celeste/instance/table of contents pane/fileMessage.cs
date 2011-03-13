@@ -4,4 +4,3 @@ fileMessage
 	| newCatName |
 	newCatName _ self getCategoryNameIfNone: [^self].
 	mailDB file: currentMsgID inCategory: newCatName.
-	self updateTOC.

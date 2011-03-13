@@ -1,0 +1,3 @@
+next
+
+	^self bufferStream next

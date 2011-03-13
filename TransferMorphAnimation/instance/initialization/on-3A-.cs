@@ -1,5 +1,8 @@
 on: aTransferMorph
+
+	self flag: #bob.		"there was a reference to World, but the class seems to be unused"
+
 	self color: Color transparent.
 	transferMorph _ aTransferMorph.
 	transferMorph addDependent: self.
-	World currentWorld addMorph: self
+	Display getCurrentMorphicWorld addMorph: self	"or perhaps aTransferMorph world"

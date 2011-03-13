@@ -13,8 +13,9 @@ nextPut: anObject
 	selector _ #(writeNil: writeTrue: writeFalse: writeInteger: 
 		writeStringOld: writeSymbol: writeByteArray:
 		writeArray: writeInstance: errorWriteReference: writeBitmap:
-		writeClass: writeUser: writeFloat: writeRectangle: == "dummy 16" 
-		writeString: writeBitmap: writeBitmap: writeWordLike:) at: typeID.
+		writeClass: writeUser: writeFloat: writeRectangle: == "<-16 short inst" 
+		writeString: writeBitmap: writeBitmap: writeWordLike: 
+		writeInstance: "CompiledMethod") at: typeID.
 	self perform: selector with: objectToStore.
 
 	^ anObject

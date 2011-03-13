@@ -5,3 +5,4 @@ initialize
 	socket _ nil.
 	waitingForConnection _ false.
 	receiveBuffer _ ''.
+	sendState _ #unconnected.

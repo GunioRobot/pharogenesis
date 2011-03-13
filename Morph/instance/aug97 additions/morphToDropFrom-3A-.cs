@@ -1,2 +1,0 @@
-morphToDropFrom: m
-	^ m

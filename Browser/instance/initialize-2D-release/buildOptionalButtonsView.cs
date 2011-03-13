@@ -1,4 +1,5 @@
 buildOptionalButtonsView
+	"Build the view for the optional buttons (mvc)"
 
 	| aView buttonView offset bWidth bHeight first previousView |
 	aView _ View new model: self.
@@ -10,7 +11,7 @@ buildOptionalButtonsView
 	self optionalButtonPairs do: [:pair |
 		buttonView _ PluggableButtonView on: self
 			getState: nil
-			action: pair last.
+			action: pair second.
 		buttonView
 			label: pair first asParagraph.
 		bWidth _ buttonView label boundingBox width // 2.  "Need something more deterministic."

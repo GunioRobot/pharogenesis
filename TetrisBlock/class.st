@@ -1,0 +1,1 @@
+TetrisBlock class instanceVariableNames: ''

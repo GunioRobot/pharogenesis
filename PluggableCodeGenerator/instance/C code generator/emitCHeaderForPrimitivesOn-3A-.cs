@@ -55,8 +55,8 @@ emitCHeaderForPrimitivesOn: aStream
 #define sizeOfSTArrayFromCPrimitive(cPtr) (interpreterProxy->sizeOfSTArrayFromCPrimitive(cPtr))
 #define storeIntegerofObjectwithValue(idx,oop,value) (interpreterProxy->storeIntegerofObjectwithValue(idx,oop,value))
 
+/* allows accessing Strings in both C and Smalltalk */
+#define asciiValue(c) c
 
-/*** Proxy Variables ***/
-struct VirtualMachine *interpreterProxy;
 '.
 	aStream cr.

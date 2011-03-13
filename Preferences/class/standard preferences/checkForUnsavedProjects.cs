@@ -1,0 +1,2 @@
+checkForUnsavedProjects
+	^ self valueOfFlag: #checkForUnsavedProjects

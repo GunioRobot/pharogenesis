@@ -1,2 +1,0 @@
-getWidth
-	^ self costume width

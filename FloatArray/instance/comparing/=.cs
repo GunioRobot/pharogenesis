@@ -1,6 +1,6 @@
 = aFloatArray 
 	| length |
-	<primitive: 'primitiveFloatArrayEqual'>
+	<primitive: 'primitiveEqual' module: 'FloatArrayPlugin'>
 	aFloatArray class = self class ifFalse: [^ false].
 	length _ self size.
 	length = aFloatArray size ifFalse: [^ false].

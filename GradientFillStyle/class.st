@@ -1,0 +1,1 @@
+GradientFillStyle class instanceVariableNames: ''

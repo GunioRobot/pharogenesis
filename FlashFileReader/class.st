@@ -1,0 +1,1 @@
+FlashFileReader class instanceVariableNames: ''

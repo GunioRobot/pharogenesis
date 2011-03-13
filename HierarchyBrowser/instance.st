@@ -1,6 +1,6 @@
 Browser
 	subclass: #HierarchyBrowser
-	instanceVariableNames: 'classList '
+	instanceVariableNames: 'classList centralClass '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Interface-Browser'
+	category: 'Tools-Browser'

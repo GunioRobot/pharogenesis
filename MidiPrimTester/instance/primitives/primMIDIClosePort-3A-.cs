@@ -1,4 +1,4 @@
 primMIDIClosePort: portNum
 
-	<primitive: 521>
+	<primitive: 'primitiveMIDIClosePort' module: 'MIDIPlugin'>
 	self primitiveFailed.

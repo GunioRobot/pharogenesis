@@ -1,0 +1,1 @@
+SolidFillStyle class instanceVariableNames: ''

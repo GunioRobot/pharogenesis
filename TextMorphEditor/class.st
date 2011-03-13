@@ -1,0 +1,1 @@
+TextMorphEditor class instanceVariableNames: ''

@@ -2,6 +2,10 @@ mapClass: incoming
 	"See if the old class named nm exists.  If so, return it.  If not, map it to a new class, and save the mapping in renamed.  "
 
 	| cls oldVer sel nm |
+
+	self flag: #bobconv.	
+
+
 	nm _ renamed at: incoming ifAbsent: [incoming].	"allow pre-mapping around collisions"
 	(nm endsWith: ' class') 
 		ifFalse: [cls _ Smalltalk at: nm ifAbsent: [nil].
@@ -15,9 +19,8 @@ mapClass: incoming
 	Symbol hasInterned: sel ifTrue: [:symb | 
 		(self class canUnderstand: sel asSymbol) ifTrue: [
 			cls _ self perform: sel asSymbol]].	"This class will take responsibility"
-	cls ifNotNil: [
-			renamed at: nm put: cls name.
-			^ cls].
-	"Never heard of it!"
-	^ self writeClassRenameMethod: sel was: nm
-				fromInstVars: (structures at: nm).
+	cls ifNil: [cls _ self writeClassRenameMethod: sel was: nm
+					fromInstVars: (structures at: nm).
+			   cls class == String ifTrue: [cls _ nil]].
+	cls ifNotNil: [renamed at: nm put: cls name].
+	^ cls

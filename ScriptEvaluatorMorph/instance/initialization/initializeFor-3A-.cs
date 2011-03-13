@@ -4,7 +4,7 @@ initializeFor: aPhraseTileMorph
 	scriptName _ aPhraseTileMorph userScriptSelector.
 	self removeAllMorphs.
 	self addMorphFront: (lm _ AlignmentMorph newRow).
-	lm color: Color transparent; inset: 0.
+	lm color: Color transparent; layoutInset: 0.
 	lm vResizing: #shrinkWrap.
 	lm addMorphBack: (ScriptingSystem tryButtonFor: aPhraseTileMorph).
 	lm addTransparentSpacerOfSize: 6@1.

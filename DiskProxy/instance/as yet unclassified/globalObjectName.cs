@@ -1,0 +1,2 @@
+globalObjectName
+	^ globalObjectName

@@ -3,7 +3,12 @@ addCustomMenuItems: aCustomMenu hand: aHandMorph
 	super addCustomMenuItems: aCustomMenu hand: aHandMorph.
 	aCustomMenu add: 'add predecessor' action: #addPredecessor:.
 	aCustomMenu add: 'add successor' action: #addSuccessor:.
-	outer _ self meOrMyDropShadow owner.
+	(Preferences valueOfFlag: #noviceMode) not & 
+		(Preferences valueOfFlag: #simpleMenus) not ifTrue: [
+			aCustomMenu add: 'code pane menu...' action: #yellowButtonActivity.
+			aCustomMenu add: 'code pane shift menu....' action: #shiftedYellowButtonActivity].
+
+	outer _ self owner.
 	((outer isKindOf: PolygonMorph) and: [outer isOpen]) ifTrue:
 		[container == nil
 			ifTrue: [aCustomMenu add: 'follow owner''s curve' action: #followCurve]

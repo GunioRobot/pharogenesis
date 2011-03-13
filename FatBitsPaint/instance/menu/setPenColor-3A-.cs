@@ -1,3 +1,3 @@
 setPenColor: evt
 
-	evt hand changeColorTarget: self selector: #brushColor: originalColor: brushColor.
+	self changeColorTarget: self selector: #brushColor: originalColor: brushColor hand: evt hand.

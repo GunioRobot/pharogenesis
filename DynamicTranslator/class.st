@@ -1,1 +1,0 @@
-DynamicTranslator class instanceVariableNames: ''

@@ -1,7 +1,5 @@
 mouseMove: evt
 	actWhen == #buttonDown ifTrue: [^ self].
 	(self containsPoint: evt cursorPoint)
-		ifTrue:
-			[self color: (oldColor mixed: 1/2 with: Color white).
-			actWhen == #whilePressed ifTrue: [self doButtonAction]]
+		ifTrue:[self color: (oldColor alphaMixed: 1/2 with: Color white)]
 		ifFalse: [self color: oldColor].

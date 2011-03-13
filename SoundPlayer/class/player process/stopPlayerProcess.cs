@@ -2,7 +2,8 @@ stopPlayerProcess
 	"Stop the sound player process."
 	"SoundPlayer stopPlayerProcess"
 
-	PlayerProcess == nil ifFalse: [PlayerProcess terminate].
+	(PlayerProcess == nil or:[PlayerProcess == Processor activeProcess]) 
+		ifFalse:[PlayerProcess terminate].
 	PlayerProcess _ nil.
 	self primSoundStop.
 	ActiveSounds _ OrderedCollection new.

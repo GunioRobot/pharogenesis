@@ -1,5 +1,6 @@
 partsBinString
+	"Answer the string to be shown in a menu to represent the parts-bin status"
 
 	^ referent isPartsBin
-		ifTrue:	['suspend parts-bin behavior']
-		ifFalse:	['bestow parts-bin behavior']
+		ifTrue:	['<yes>parts-bin']
+		ifFalse:	['<no>parts-bin']

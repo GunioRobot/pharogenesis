@@ -1,0 +1,1 @@
+B3DScene class instanceVariableNames: ''

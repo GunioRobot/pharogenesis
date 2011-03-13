@@ -1,7 +1,7 @@
-GradientFillMorph
+BorderedMorph
 	subclass: #PasteUpMorph
 	instanceVariableNames:
-		'presenter model cursor padding backgroundMorph turtleTrailsForm turtlePen lastTurtlePositions openToDragNDrop isPartsBin autoLineLayout indicateCursor resizeToFit fileName isStackLike dataInstances currentDataInstance userFrameRectangle '
-	classVariableNames: ''
+		'presenter model cursor padding backgroundMorph turtleTrailsForm turtlePen lastTurtlePositions isPartsBin autoLineLayout indicateCursor resizeToFit wantsMouseOverHalos worldState griddingOn '
+	classVariableNames: 'DisableDeferredUpdates MinCycleLapse StillAlive '
 	poolDictionaries: ''
-	category: 'Morphic-Kernel'
+	category: 'Morphic-Worlds'

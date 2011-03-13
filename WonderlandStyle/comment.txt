@@ -1,0 +1,7 @@
+The WonderlandStyle class implements different animation styles.  The four styles this class provides are gently (slow-in, slow-out), beginGently (slow-in), endGently (slow-out), and abruptly (linear).
+
+Animations use these styles through blocks of the form:
+
+[ :elapsed :duration | WonderlandStyle beginGentlyAfter: elapsed outOf: duration ]
+
+The intention is that using this mechanism the user can specify arbitrary styles using blocks and pass them to animations.

@@ -3,4 +3,4 @@ Path
 	instanceVariableNames: 'coefficients '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Graphics-Paths'
+	category: 'ST80-Paths'

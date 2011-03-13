@@ -1,6 +1,6 @@
 SimpleClientSocket
 	subclass: #HTTPSocket
-	instanceVariableNames: 'headerTokens '
-	classVariableNames: 'HTTPBlabEmail HTTPPort HTTPProxy ParamDelimiters '
+	instanceVariableNames: 'headerTokens headers responseCode '
+	classVariableNames: 'HTTPBlabEmail HTTPPort HTTPProxyExceptions HTTPProxyPort HTTPProxyServer ParamDelimiters '
 	poolDictionaries: ''
-	category: 'System-Network'
+	category: 'Network-Protocols'

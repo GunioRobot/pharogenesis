@@ -1,3 +1,0 @@
-width
-    "first dimension"
-    ^ width

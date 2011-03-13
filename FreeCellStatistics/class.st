@@ -1,0 +1,1 @@
+FreeCellStatistics class instanceVariableNames: ''

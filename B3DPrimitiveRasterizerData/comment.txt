@@ -1,0 +1,5 @@
+Instances of this class represent data on the primitive level. The major reason for the existance of this class is that all memory needed by the rasterizer is allocated from Smalltalk code[*]. Instances of this class should not be modified from Smalltalk code - they may contain pointers to other memory locations and thus modification of these instances could easily break the system.
+
+[*] This is for two reasons:
+	* Some systems (e.g., Mac) don't have the necessary allocation facilities from the primitive level (This REALLY sucks. We have 1999 and MacOS 8.5.1 still has static memory allocation!)
+	* Allocation from Smalltalk allows us to share memory between Smalltalk and C code, take advantage of GCs if the physically available space is small (e.g., on PDAs) as well as gracefully failing if there is no memory left (e.g., by signalling the low space condition).

@@ -1,4 +1,5 @@
-sampleFile
+sampleFile 
+	"If you want to enter a new acrostic, follow this format exactly with regard to CRs and the like, and store it in a file.  Do not double the string quotes as here -- that is only because they are embedded in a string.  Finally, compress the file in the fileList (so it will be easy to transport and hard to read), and name it 'yourName.crostic' so that the 'open' button on the panel will recognize it."
 	^
 'Men and women do not feel the same way about dirt.  Women for some hormonal reason can see individual dirt molecules, whereas men tend not to notice them until they join together into clumps large enough to support commercial agriculture.
 Dave Barry''s Guide to Marriage

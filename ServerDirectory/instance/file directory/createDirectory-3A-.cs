@@ -2,7 +2,9 @@ createDirectory: localName
 	"Create a new sub directory within the current one"
 
 	| so rr |
-	type == #file ifTrue: [FileDirectory createDirectory: localName].
+	self isTypeFile ifTrue: [
+		^FileDirectory createDirectory: localName
+	].
 
 	so _ self openNoDataFTP.
 	so class == String ifTrue: ["error, was reported" ^ so].

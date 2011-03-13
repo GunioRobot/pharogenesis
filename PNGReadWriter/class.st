@@ -1,0 +1,1 @@
+PNGReadWriter class instanceVariableNames: ''

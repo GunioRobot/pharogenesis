@@ -5,6 +5,7 @@ privateTransformMatrix: m1 with: m2 into: m3
 	Note that m1 may be identical to m3.
 	NOTE: The primitive implementation does NOT return m3 - and so don't we!"
 	| c1 c2 c3 c4 |
+	<primitive: 'b3dTransformMatrixWithInto' module:'Squeak3D'>
 	m2 == m3 ifTrue:[^self error:'Argument and result matrix identical'].
 	c1 _ ((m1 a11 * m2 a11) + (m1 a12 * m2 a21) + 
 				(m1 a13 * m2 a31) + (m1 a14 * m2 a41)).

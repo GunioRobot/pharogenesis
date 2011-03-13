@@ -1,0 +1,1 @@
+WeakValueAssociation class instanceVariableNames: ''

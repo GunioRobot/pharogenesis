@@ -1,8 +1,10 @@
 paragraph: para bounds: bounds color: c 
+	| displayablePara |
 	self comment:'paragraph with bounds: ' with:bounds.
-	self gsave.
-	para
-		displayOn: self
-		using: (PostscriptCharacterScanner scannerWithCanvas:self paragraph:para bounds:bounds)
-		at: bounds topLeft.
-	self grestore.
+	displayablePara _ para asParagraphForPostscript.
+	self preserveStateDuring:
+		[:inner |
+		displayablePara displayOn: inner
+			using: (PostscriptCharacterScanner
+					scannerWithCanvas: self paragraph: displayablePara bounds: bounds)
+			at: bounds topLeft]

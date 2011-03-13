@@ -1,4 +1,8 @@
 fullBounds
 	"Overridden to clip submorph hit detection to my bounds."
+	"It might be better to override doLayoutIn:, and remove this method"
 
-	^ bounds
+	fullBounds ifNotNil:[^ fullBounds].
+	fullBounds _ bounds.
+	submorphs do: [:m| m ownerChanged].
+	^ fullBounds

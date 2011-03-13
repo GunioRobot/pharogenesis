@@ -1,2 +1,0 @@
-willingToBeEmbeddedUponLanding
-	^ Preferences systemWindowEmbedOK

@@ -1,0 +1,1 @@
+FileContentsBrowser class instanceVariableNames: ''

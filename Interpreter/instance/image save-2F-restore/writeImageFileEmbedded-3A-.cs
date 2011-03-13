@@ -1,0 +1,2 @@
+writeImageFileEmbedded: imageBytes
+	self writeImageFileIO: imageBytes

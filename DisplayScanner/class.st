@@ -1,0 +1,1 @@
+DisplayScanner class instanceVariableNames: ''

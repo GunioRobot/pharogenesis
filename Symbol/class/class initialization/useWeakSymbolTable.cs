@@ -1,0 +1,2 @@
+useWeakSymbolTable
+	self initialize

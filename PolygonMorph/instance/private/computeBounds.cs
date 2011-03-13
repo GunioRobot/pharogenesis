@@ -1,4 +1,5 @@
 computeBounds
+	vertices ifNil: [^ self].
 	self changed.
 	self releaseCachedState.
 	bounds _ self curveBounds.

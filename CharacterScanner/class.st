@@ -1,0 +1,1 @@
+CharacterScanner class instanceVariableNames: ''

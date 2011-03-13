@@ -1,5 +1,5 @@
 fontNamesWithPointSizes
 	^ fontArray collect:
-		[:x | x name withoutTrailingDigits, ' ', x pointSize printString]
+		[:x | x fontNameWithPointSize]
 
   "TextStyle default fontNamesWithPointSizes"

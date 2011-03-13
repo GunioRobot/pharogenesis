@@ -1,0 +1,1 @@
+MorphicAlarm class instanceVariableNames: ''

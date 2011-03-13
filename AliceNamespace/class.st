@@ -1,0 +1,1 @@
+AliceNamespace class instanceVariableNames: ''

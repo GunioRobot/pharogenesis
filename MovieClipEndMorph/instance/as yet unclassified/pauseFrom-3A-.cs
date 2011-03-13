@@ -1,0 +1,3 @@
+pauseFrom: scorePlayer
+
+	"Ignored"

@@ -7,6 +7,6 @@ initialize
 	bounds _ 0@0 corner: 50@40.
 	cursor _ 1.
 	padding _ 3.
-	autoLineLayout _ false.
 	self enableDragNDrop.
-	self isWorldMorph ifTrue: [self setProperty: #automaticPhraseExpansion toValue: true]
+	self isWorldMorph ifTrue: [self setProperty: #automaticPhraseExpansion toValue: true].
+	self clipSubmorphs: true.

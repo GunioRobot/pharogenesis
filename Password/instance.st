@@ -3,4 +3,4 @@ Object
 	instanceVariableNames: 'cache sequence '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Network'
+	category: 'Network-Kernel'

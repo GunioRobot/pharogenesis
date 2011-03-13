@@ -1,0 +1,1 @@
+WeekMorph class instanceVariableNames: ''

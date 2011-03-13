@@ -11,7 +11,7 @@ addChannelControlsFor: channelIndex
 	divider _ AlignmentMorph new
 		extent: 10@1;
 		borderWidth: 1;
-		inset: 0;
+		layoutInset: 0;
 		borderColor: #raised;
 		color: color;
 		hResizing: #spaceFill;

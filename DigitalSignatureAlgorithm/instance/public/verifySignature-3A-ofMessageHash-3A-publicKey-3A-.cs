@@ -14,6 +14,6 @@ verifySignature: aSignature ofMessageHash: hash publicKey: publicKey
 	w _ self inverseOf: s mod: q.
 	u1 _ (hash * w) \\ q.
 	u2 _ (r * w) \\ q.
-	v0 _ (self raise: g to: u1 mod: p) * (self raise: y to: u2 mod: p).
+	v0 _ (g raisedTo: u1 modulo: p) * (y raisedTo: u2 modulo: p).
 	v _ ( v0 \\ p) \\ q.
 	^ v = r

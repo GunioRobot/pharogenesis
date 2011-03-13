@@ -3,4 +3,4 @@ Controller
 	instanceVariableNames: 'modeActive '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Interface-Framework'
+	category: 'ST80-Framework'

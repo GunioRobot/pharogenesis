@@ -1,11 +1,11 @@
 versionsMenu: aMenu
-	^ aMenu labels:
+	"Fill aMenu with menu items appropriate to the receiver"
 
-'compare to current
-revert to this version
-remove from changes
-toggle diffing
-update list
-help...'
-	lines: #()
-	selections: #(compareToCurrentVersion fileInSelections removeMethodFromChanges toggleDiffing reformulateList offerVersionsHelp)
+	^ aMenu addList: #(
+
+		('compare to current'		compareToCurrentVersion)
+		('revert to this version'		fileInSelections)
+		('remove from changes'		removeMethodFromChanges)
+		('toggle diffing (D)'			toggleDiffing)
+		('update list'				reformulateList)
+		('help...'					offerVersionsHelp))

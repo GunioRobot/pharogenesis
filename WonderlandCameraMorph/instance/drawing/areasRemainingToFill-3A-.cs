@@ -1,4 +1,4 @@
 areasRemainingToFill: aRectangle
-	^myCamera drawSceneBackground
+	^(myCamera drawSceneBackground or:[self bgCacheValid])
 		ifTrue:[aRectangle areasOutside: self bounds]
 		ifFalse:[Array with: aRectangle]

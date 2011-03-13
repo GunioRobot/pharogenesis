@@ -1,3 +1,0 @@
-getHeading
-
-	^ self getHeadingUnrounded rounded

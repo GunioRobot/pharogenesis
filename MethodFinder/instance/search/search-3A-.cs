@@ -15,5 +15,7 @@ search: multi
 			[old ifTrue: [Preferences enableGently: #autoAccessors].
 			^ selector]].
 
+	self insertConstants.
 	old ifTrue: [Preferences enableGently: #autoAccessors].
+	"(selector isEmpty not) ifTrue: [^ selector]].    expression is the answer, not a selector"
 	^ #()

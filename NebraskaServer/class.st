@@ -1,0 +1,1 @@
+NebraskaServer class instanceVariableNames: ''

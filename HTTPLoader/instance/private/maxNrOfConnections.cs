@@ -1,0 +1,2 @@
+maxNrOfConnections
+	^MaxNrOfConnections

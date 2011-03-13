@@ -1,6 +1,8 @@
 mouseOverHalosString
+	"Answer the string to be shown in a menu to represent the mouse-over-halos status"
+
 	^ self wantsMouseOverHalos
 		ifTrue:
-			['stop using mouse-over halos']
+			['<on>mouse-over halos']
 		ifFalse:
-			['start using mouse-over halos']
+			['<off>mouse-over halos']

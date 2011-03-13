@@ -1,7 +1,7 @@
 privateDecodeMono: count
 
 	| delta step predictedDelta bit |
-	<primitive: 550>
+	<primitive: 'primitiveDecodeMono' module: 'ADPCMPlugin'>
 	self var: #stepSizeTable declareC: 'short int *stepSizeTable'.
 	self var: #indexTable declareC: 'short int *indexTable'.
 	self var: #samples declareC: 'short int *samples'.

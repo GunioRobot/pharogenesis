@@ -2,5 +2,5 @@ handlesMouseDown: evt
 	mouseDownRecipient ifNotNil: [^ true].
 	mouseStillDownRecipient ifNotNil: [^ true].
 	mouseUpRecipient ifNotNil: [^ true].
-	doubleClickRecipient ifNotNil: [^ true].
+	(self handlesClickOrDrag: evt) ifTrue:[^true].
 	^ false

@@ -1,2 +1,0 @@
-labelForSuppliesPalette
-	^ 'Supplies'

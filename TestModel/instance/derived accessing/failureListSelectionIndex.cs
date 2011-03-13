@@ -1,0 +1,3 @@
+failureListSelectionIndex
+
+	^0

@@ -1,2 +1,0 @@
-currentColor
-	^ currentColor

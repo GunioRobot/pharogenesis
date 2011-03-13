@@ -3,4 +3,4 @@ AbstractSound
 	instanceVariableNames: 'sounds leftVols rightVols soundDone '
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Sound'
+	category: 'Sound-Synthesis'

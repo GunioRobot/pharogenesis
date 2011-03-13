@@ -1,0 +1,1 @@
+ScaleMorph class instanceVariableNames: ''

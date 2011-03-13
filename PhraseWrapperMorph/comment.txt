@@ -1,0 +1,1 @@
+An alignment morph designed for use in scripting Viewers; it wraps a set of phrases in a category viewer, and repels attempts to drop phrases upon it.

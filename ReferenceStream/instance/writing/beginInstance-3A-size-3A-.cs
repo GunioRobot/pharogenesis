@@ -24,3 +24,6 @@ beginInstance: aClass size: anInteger
 			"default to normal longer object header"
 			byteStream nextNumber: 4 put: anInteger + 1.
 			self nextPut: aClass name].
+	insideASegment ifTrue: [
+		aClass isSystemDefined ifFalse: [self nextPut: aClass]].
+			"just record it to put it into roots"

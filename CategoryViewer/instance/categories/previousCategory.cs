@@ -1,6 +1,8 @@
 previousCategory
+	"Change the receiver to point at the category preceding the one currently seen"
+
 	| aList anIndex newIndex already aChoice |
-	aList _ scriptedPlayer categories.
+	aList _ scriptedPlayer categoriesForViewer: self.
 	already _ self outerViewer ifNil: [#()] ifNotNil: [self outerViewer categoriesCurrentlyShowing].
 	anIndex _ aList indexOf: self currentCategory ifAbsent: [aList size + 1].
 	newIndex _ anIndex = 1

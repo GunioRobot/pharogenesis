@@ -1,3 +1,0 @@
-isMouseDown
-
-	^ type == #mouseDown

@@ -2,7 +2,7 @@ initialize
 
 	super initialize.
 	borderWidth _ 2.
-	orientation _ #vertical.
+	self listDirection: #topToBottom.
 	soundInput _ SoundInputStream new samplingRate: 22050.
 	fft _ FFT new: 512.
 	displayType _ 'sonogram'.

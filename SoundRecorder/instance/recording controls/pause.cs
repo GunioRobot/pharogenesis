@@ -9,5 +9,6 @@ pause
 	soundPlaying ifNotNil: [
 		soundPlaying pause.
 		soundPlaying _ nil].
+	"Note: there can be problems if canRecordWhilePlaying is true. Recorders which only pause will inhibit other recorders from recording. I chose to make #stopPlaying unconditional in a subclass. The same might be appropriate here at the expense of making recorders resumable"
 
-	CanRecordWhilePlaying ifFalse: [self stopRecording].
+	Preferences canRecordWhilePlaying ifFalse: [self stopRecording].

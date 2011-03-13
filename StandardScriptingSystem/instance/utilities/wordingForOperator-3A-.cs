@@ -1,10 +1,14 @@
 wordingForOperator: aString
-	| toTest |
+	"Answer the wording to be seen by the user for the given operator symbol/string"
 
+	| toTest |
+	"StandardScriptingSystem initialize"
 	toTest _ aString asString.
-	#(	(beep:					'make sound')
+	#(	(append:				'append')
+		(beep:					'make sound')
 		(bounce:				'bounce')
 		(clearTurtleTrails		'clear pen trails')
+		(doMenuItem:			'do menu item')
 		(forward:				'forward by')
 		(moveToward:			'move toward')
 		(goToRightOf:			'align after')
@@ -18,10 +22,9 @@ wordingForOperator: aString
 		(makeNewDrawingIn:	'start painting in')
 		(startScript:				'start script')
 		(stopProgramatically	'stop')
-		(stopScript				'stop script')
+		(stopScript:				'stop script')
 		(turn:					'turn by')
-		(wearCostumeOf:		'look like')
-		(=						'=?'))
+		(wearCostumeOf:		'look like'))
 
 	do:
 		[:pair | toTest = pair first ifTrue: [^ pair second]].

@@ -8,8 +8,8 @@ factoredCategories
 	((prefsWithoutInits _ self preferencesLackingInitializers) size > 0)
 		ifTrue:
 			[extraItem _ (Array with: 'uncategorized' with: prefsWithoutInits asSortedArray)].
-	^ extraItem
+	^ (extraItem
 		ifNil:
 			[CategoryInfo]
 		ifNotNil:
-			[CategoryInfo, (Array with: extraItem)]
+			[CategoryInfo, (Array with: extraItem)]) copyWith: {'search results'. OrderedCollection new}

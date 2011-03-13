@@ -1,0 +1,1 @@
+A VRMLDynamicAttribute is a hidden attribute used for storing information in a VRMLNode which is not part of the standard spec.

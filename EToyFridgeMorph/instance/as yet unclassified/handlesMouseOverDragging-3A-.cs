@@ -1,0 +1,3 @@
+handlesMouseOverDragging: globalEvt
+
+	^true

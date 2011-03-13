@@ -1,28 +1,30 @@
 makeItalicGlyphs
-	"Make an italic set of glyphs with same widths by skewing left and right
-		(may require more intercharacter space)"
-	| g r bonkForm bc |
-	g _ glyphs deepCopy.
-	"BonkForm will have bits where slanted characters overlap their neighbors."
-	bonkForm _ Form extent: (self height//4+2) @ self height.
-	bc _ self descent//4 + 1.  "Bonker x-coord corresponding to char boundary."
-	bonkForm fill: (0 @ 0 corner: (bc+1) @ self ascent) fillColor: Color black.
+	"Make an italic set of glyphs with same widths by skewing left and right.
+	In the process, characters would overlap, so we widen them all first.
+	"
+	| extraWidth newGlyphs newXTable x newX w extraOnLeft |
+	extraOnLeft _ (self height-1-self ascent+4)//4 max: 0.
+	extraWidth _ ((self ascent-5+4)//4 max: 0) + extraOnLeft.
+	newGlyphs _ Form extent: (glyphs width + extraWidth) @ glyphs height.
+	newXTable _ xTable copy.
+
+	"Copy glyphs into newGlyphs with room on left and right for overlap."
+	minAscii to: maxAscii+1 do:
+		[:ascii | x _ xTable at: ascii+1.  w _ (xTable at: ascii+2) - x.
+		newX _ newXTable at: ascii+1.
+		newGlyphs copy: ((newX + extraOnLeft) @ 0 extent: w @ glyphs height)
+			from: x @ 0 in: glyphs rule: Form over.
+		newXTable at: ascii+2 put: newX + w + extraWidth].		
+	glyphs _ newGlyphs. 
+	xTable _ newXTable.
+
+	"Slide the bitmaps left and right for synthetic italic effect."
 	4 to: self ascent-1 by: 4 do:
 		[:y | 		"Slide ascenders right..."
-		g copy: (1@0 extent: g width @ (self ascent - y))
-			from: 0@0 in: g rule: Form over.
-		bonkForm copy: (1@0 extent: bonkForm width @ (self ascent - y))
-			from: 0@0 in: bonkForm rule: Form over].
-	bonkForm fill: (0 @ 0 corner: (bc+1) @ self ascent) fillColor: Color white.
-	bonkForm fill: (bc @ self ascent corner: bonkForm extent) fillColor: Color black.
+		glyphs copy: (1@0 extent: glyphs width @ (self ascent - y))
+			from: 0@0 in: glyphs rule: Form over].
 	self ascent to: self height-1 by: 4 do:
 		[:y | 		"Slide descenders left..."
-		g copy: (0@y extent: g width @ g height)
-			from: 1@y in: g rule: Form over.
-		bonkForm copy: (0@0 extent: bonkForm width @ bonkForm height)
-			from: 1@0 in: bonkForm rule: Form over].
-	bonkForm fill: (bc @ self ascent corner: bonkForm extent) fillColor: Color white.
-	"Now use bonkForm to erase at every character boundary in glyphs."
-	bonkForm offset: (0-bc) @ 0.
-	self bonk: g with: bonkForm.
-	glyphs _ g
+		glyphs copy: (0@y extent: glyphs width @ glyphs height)
+			from: 1@y in: glyphs rule: Form over].
+

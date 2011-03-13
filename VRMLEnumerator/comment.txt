@@ -1,0 +1,1 @@
+A VRMLEnumerator enumerates a tree of VRML nodes and dispatches the nodes to appropriate actions.

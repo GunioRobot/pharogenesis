@@ -1,0 +1,2 @@
+This class implements the morph that provides a view into the 3D world.  Each instance has a camera assigned to it that determines the viewpoint and parameters of the view.  Each instance also has the camera controls for that camera attached to it, and is responsible for showing or hiding them.
+

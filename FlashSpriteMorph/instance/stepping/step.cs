@@ -1,7 +1,7 @@
 step
 	| nowStepTime maxSteps |
 	playing ifFalse:[^self].
-	UseTimeSync ifTrue:[
+	self useTimeSync ifTrue:[
 		maxSteps _ 5.
 		nowStepTime _ Time millisecondClockValue.
 		[(lastStepTime + stepTime <= nowStepTime) and:[playing and:[maxSteps >= 0]]]

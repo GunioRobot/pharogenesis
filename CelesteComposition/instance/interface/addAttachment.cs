@@ -8,6 +8,6 @@ addAttachment
 	(fileResult _ StandardFileMenu oldFile)
 		ifNotNil: 
 			[fileName _ fileResult directory fullNameFor: fileResult name.
-			file _ FileStream oldFileNamed: fileName.
+			file _ FileStream readOnlyFileNamed: fileName.
 			file ifNotNil: [self messageText: ((MailMessage from: self messageText)
 						asTextEncodingNewPart: file named: fileResult name)]] 

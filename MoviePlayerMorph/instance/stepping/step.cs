@@ -23,10 +23,19 @@ step
 								ifFalse: [nextFrameNumber _ frameNumber]].
 
 	byteCount _ self fileByteCountPerFrame.
+	self stepSoundTrack.
 	movieFile waitForCompletion.
 	movieFile primReadResult: movieFile fileHandle
-			intoBuffer: currentPage image bits
+			intoBuffer: (frameBufferIfScaled ifNil: [currentPage image]) bits
 			at: 1 count: byteCount//4.
+	frameBufferIfScaled ifNotNil:
+		["If this player has been shrunk, then we have to warp to the current page."
+		(WarpBlt current toForm: currentPage image) sourceForm: frameBufferIfScaled;
+				combinationRule: 3;
+						"Use smoothing if just stepping"
+				cellSize: (playDirection = 0 ifTrue: [2] ifFalse: [1]);
+				copyQuad: frameBufferIfScaled boundingBox innerCorners
+					toRect: currentPage image boundingBox].
 	currentPage changed.
 	frameNumber _ nextFrameNumber.	
 

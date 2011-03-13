@@ -1,0 +1,2 @@
+showDirectionHandles
+	^ self valueOfFlag: #showDirectionHandles

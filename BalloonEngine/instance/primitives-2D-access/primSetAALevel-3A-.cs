@@ -1,5 +1,4 @@
 primSetAALevel: level
 	"Set the AA level"
-	<primitive: 'gePrimitiveSetAALevel'>
-	Debug ifTrue:[^BalloonEnginePlugin doPrimitive: 'gePrimitiveSetAALevel'].
+	<primitive: 'primitiveSetAALevel' module: 'B2DPlugin'>
 	^self primitiveFailed

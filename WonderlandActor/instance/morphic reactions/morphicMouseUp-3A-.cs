@@ -5,5 +5,5 @@ morphicMouseUp: event
 	(self getProperty: #userTransition) == true ifTrue:["Shift key went up"
 		^self setProperty: #userTransition toValue: nil].
 	myTexture isMorph ifTrue:[
-		self dispatchEvent: event using:[:evt :hand| hand handleMouseUp: evt].
+		self dispatchEvent: event to: myTexture.
 	].

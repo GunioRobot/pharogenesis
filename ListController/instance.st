@@ -3,4 +3,4 @@ ScrollController
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Interface-Support'
+	category: 'ST80-Support'

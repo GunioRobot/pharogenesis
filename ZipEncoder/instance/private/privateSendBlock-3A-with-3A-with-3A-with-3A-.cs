@@ -1,7 +1,7 @@
 privateSendBlock: literalStream with: distanceStream with: litTree with: distTree
 	"Send the current block using the encodings from the given literal/length and distance tree"
 	| lit dist code extra sum |
-	<primitive:'primitiveZipSendBlock'>
+	<primitive: 'primitiveZipSendBlock' module: 'ZipPlugin'>
 	sum _ 0.
 	[lit _ literalStream next.
 	dist _ distanceStream next.

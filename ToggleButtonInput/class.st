@@ -1,0 +1,1 @@
+ToggleButtonInput class instanceVariableNames: ''

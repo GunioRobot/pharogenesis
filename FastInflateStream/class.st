@@ -1,0 +1,1 @@
+FastInflateStream class instanceVariableNames: ''

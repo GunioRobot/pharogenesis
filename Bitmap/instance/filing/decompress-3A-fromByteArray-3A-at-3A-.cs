@@ -14,7 +14,7 @@ decompress: bm fromByteArray: ba at: index
 			255		next 4 bytes"	
 	"NOTE:  If fed with garbage, this routine could read past the end of ba, but it should fail before writing past the ned of bm."
 	| i code n anInt data end k pastEnd |
-	<primitive: 234>
+	<primitive: 'primitiveDecompressFromByteArray' module: 'MiscPrimitivePlugin'>
 	self var: #bm declareC: 'int *bm'.
 	self var: #ba declareC: 'unsigned char *ba'.
 	i _ index.  "byteArray read index"

@@ -1,5 +1,4 @@
-CharacterBlock comment:
-'My instances contain information about displayed characters. They are used to return the results of methods:
+My instances contain information about displayed characters. They are used to return the results of methods:
 	Paragraph characterBlockAtPoint: aPoint and
 	Paragraph characterBlockForIndex: stringIndex.
-Any recomposition or movement of a Paragraph can make the instance obsolete.'
+Any recomposition or movement of a Paragraph can make the instance obsolete.

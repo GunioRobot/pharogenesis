@@ -1,0 +1,1 @@
+Win32Rectangle class instanceVariableNames: ''

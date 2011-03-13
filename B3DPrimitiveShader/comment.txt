@@ -1,0 +1,2 @@
+I am a shader that uses primitive level support.
+NOTE: Currently, primitive and non-primitive lights cannot be mixed.

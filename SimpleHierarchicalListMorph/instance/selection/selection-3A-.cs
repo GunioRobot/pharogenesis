@@ -4,6 +4,7 @@ selection: item
 	Note: MAY NOT work right if list includes repeated items"
 
 	| i |
+	item ifNil: [^self selectionIndex: 0].
 	i _ scroller submorphs findFirst: [:m | m complexContents == item].
 	i > 0 ifTrue: [^self selectionIndex: i].
 	i _ scroller submorphs findFirst: [:m | m withoutListWrapper = item withoutListWrapper].

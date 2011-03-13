@@ -1,2 +1,0 @@
-mouseOverHalosOn
-	mouseOverTimes _ Dictionary new

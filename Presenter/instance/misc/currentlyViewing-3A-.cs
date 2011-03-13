@@ -1,4 +1,5 @@
 currentlyViewing: aPlayer
-	"Hook, for EToyPlayer to reimplement.  Probably can be dispensed with eventually"
+	"Only detects viewers in tabs"
 
-	^ false
+	aPlayer ifNil: [^ false].
+	^ aPlayer viewerFlapTab ~~ nil

@@ -4,4 +4,4 @@ setBalloonText: stringOrText maxLineLength: aLength
 	(extension isNil and: [stringOrText isNil]) ifTrue: [^ self].
 	self assureExtension balloonText: (stringOrText
 		ifNil: [nil]
-		ifNotNil: [stringOrText withNoLineLongerThan: aLength])
+		ifNotNil: [stringOrText asString withNoLineLongerThan: aLength])

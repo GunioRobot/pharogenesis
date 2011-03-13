@@ -9,5 +9,6 @@ parts
 		partStreams add: (ReadStream on: (rwStream upToAll: '<HR>'))].
 	partStreams do: [:pp |
 		parts add: (self partOfSpeechIn: pp)].
+	parts size = 0 ifTrue: [^ parts].
 	parts last = '' ifTrue: [parts removeLast.  partStreams removeLast].
 	^ parts 

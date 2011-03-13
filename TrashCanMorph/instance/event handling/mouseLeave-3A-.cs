@@ -6,7 +6,7 @@ mouseLeave: event
 	 [hand submorphs first ~~ self])
 		ifTrue:
 			[Preferences soundsEnabled ifTrue: [self class playMouseLeaveSound].
-			hand endDisplaySuppression.
+			hand visible: true.
 			self state: #off]
 		ifFalse:
 			[self stopShowingStampIn: hand].

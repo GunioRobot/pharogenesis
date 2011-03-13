@@ -15,12 +15,12 @@ next
 		self error: 'Expected start of object, but found 0'.
 		^ nil].
 	isARefType _ self noteCurrentReference: type.
-	selector _ #(readNil readTrue readFalse readInteger
-			readStringOld readSymbol readByteArray
-			readArray readInstance readReference readBitmap
-			readClass readUser readFloat readRectangle readShortInst 
-			readString readWordArray readWordArrayForSegment 
-			readWordLike) at: type.
+	selector _ #(readNil readTrue readFalse readInteger	"<-4"
+			readStringOld readSymbol readByteArray		"<-7"
+			readArray readInstance readReference readBitmap	"<-11"
+			readClass readUser readFloat readRectangle readShortInst 	"<-16"
+			readString readWordArray readWordArrayForSegment 	"<-19"
+			readWordLike readMethod "<-21") at: type.
 	selector == 0 ifTrue: [pos _ byteStream position.	"absolute!!"
 			byteStream close. 
 			self error: 'file is more recent than this system'. ^ nil].

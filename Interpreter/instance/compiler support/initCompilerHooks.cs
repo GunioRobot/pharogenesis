@@ -9,5 +9,11 @@ initCompilerHooks
 	self cCode: 'compilerHooks[6]= nullCompilerHook'.
 	self cCode: 'compilerHooks[7]= nullCompilerHook'.
 	self cCode: 'compilerHooks[8]= nullCompilerHook'.
+	self cCode: 'compilerHooks[9]= nullCompilerHook'.
+	self cCode: 'compilerHooks[10]= nullCompilerHook'.
+	self cCode: 'compilerHooks[11]= nullCompilerHook'.
+	self cCode: 'compilerHooks[12]= nullCompilerHook'.
+	self cCode: 'compilerHooks[13]= nullCompilerHook'.
+	self cCode: 'compilerHooks[14]= nullCompilerHook'.
 
 	compilerInitialized _ false

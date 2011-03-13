@@ -1,10 +1,15 @@
 useTextualTab
-	| aLabel stringToUse |
+	"Use a textually-emblazoned tab"
+
+	| aLabel stringToUse font aColor |
 	self preserveDetails.
 	stringToUse _ self valueOfProperty: #priorWording ifAbsent: [self externalName].
-	aLabel _ StringMorph  new contents: stringToUse.
+	font _ self valueOfProperty: #priorFont ifAbsent: [Preferences standardButtonFont].
+	aColor _ self valueOfProperty: #priorColor ifAbsent: [Color green darker].
+	aLabel _ StringMorph contents: stringToUse font: font.
 	self replaceSubmorph: submorphs first by: aLabel.
 	aLabel position: self position.
+	self color: aColor.
 	aLabel highlightColor: self highlightColor; regularColor: self regularColor.
 	aLabel lock.
 	self fitContents.

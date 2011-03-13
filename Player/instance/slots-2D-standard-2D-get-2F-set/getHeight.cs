@@ -1,2 +1,0 @@
-getHeight
-	^ self costume height

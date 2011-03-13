@@ -1,4 +1,4 @@
 + aB3DMatrix
 	"Optimized for Matrix/Matrix operations"
-	<primitive: 'primitiveFloatArrayAddFloatArray'>
+	<primitive: 'primitiveAddFloatArray' module: 'FloatArrayPlugin'>
 	^super + aB3DMatrix

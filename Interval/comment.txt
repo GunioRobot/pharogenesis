@@ -1,2 +1,1 @@
-Interval comment:
-'I represent a finite arithmetic progression.'
+I represent a finite arithmetic progression.

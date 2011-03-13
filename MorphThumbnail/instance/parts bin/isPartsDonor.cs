@@ -1,0 +1,2 @@
+isPartsDonor
+	^self partRepresented isPartsDonor

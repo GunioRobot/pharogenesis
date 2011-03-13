@@ -1,8 +1,8 @@
 slideBackToFormerSituation: evt
 
 	| slideForm formerOwner formerPosition aWorld startPoint endPoint trans |
-	formerOwner _ evt hand formerOwner.
-	formerPosition _ evt hand formerPosition.
+	formerOwner _ self formerOwner.
+	formerPosition _ self formerPosition.
 	aWorld _ self world.
 
 	trans _ formerOwner transformFromWorld.

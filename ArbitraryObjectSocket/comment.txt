@@ -1,0 +1,3 @@
+A network connection that passes objects instead of bytes.  The objects are encoded with SmartRefStreams.
+
+Of course, one can send Arrays of Strings if one is unsure of what exactly SmartRefStream's are going to do.

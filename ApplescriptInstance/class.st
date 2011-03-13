@@ -1,0 +1,1 @@
+ApplescriptInstance class instanceVariableNames: ''

@@ -1,4 +1,3 @@
 primClipRectInto: rect
-	<primitive: 'gePrimitiveGetClipRect'>
-	Debug ifTrue:[^BalloonEnginePlugin doPrimitive:'gePrimitiveGetClipRect'].
+	<primitive: 'primitiveGetClipRect' module: 'B2DPlugin'>
 	^self primitiveFailed

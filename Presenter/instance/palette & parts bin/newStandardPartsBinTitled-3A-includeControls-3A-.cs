@@ -14,7 +14,6 @@ newStandardPartsBinTitled: aTitle includeControls: includeControls
 			aList do:
 				[:sym | aPage addMorphBack: (Smalltalk at: sym) authoringPrototype].
 			aPage replaceTallSubmorphsByThumbnails.
-			aPage fixLayout.
 			aBook insertPage: aPage pageSize: aSize].
 
 	self customPagesForPartsBin do:

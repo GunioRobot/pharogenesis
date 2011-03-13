@@ -1,2 +1,0 @@
-deleteTab
-	self notYetImplemented

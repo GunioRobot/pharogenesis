@@ -1,0 +1,1 @@
+Demonstrator class using FlippyArrayPlugin2

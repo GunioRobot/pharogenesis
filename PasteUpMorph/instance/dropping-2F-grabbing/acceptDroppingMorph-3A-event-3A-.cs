@@ -1,20 +1,16 @@
-acceptDroppingMorph: aMorph event: evt
-	| slotSpecs aValue incomingName nameObtained mm tfm |
+acceptDroppingMorph: dropped event: evt
+	"The supplied morph, known to be acceptable to the receiver, is now to be assimilated; the precipitating event is supplied"
 
+	| mm tfm aMorph |
+	aMorph _ self morphToDropFrom: dropped.
 	self isWorldMorph
-		ifTrue:
-			["Add the given morph to this world and start stepping it if it wants to be."
-			self addMorphFront: aMorph.
-			(aMorph fullBounds intersects: ("0@0 extent:" self viewBox "extent")) ifFalse:
-				[self beep.  aMorph position: self bounds center]]
-		ifFalse:
-			[self privateAddMorph: aMorph atIndex: (self insertionIndexFor: aMorph).
-			self changed.
-			self layoutChanged].
+		ifTrue:["Add the given morph to this world and start stepping it if it wants to be."
+				self addMorphFront: aMorph.
+				(aMorph fullBounds intersects: self viewBox) ifFalse:
+					[self beep.  aMorph position: self bounds center]]
+		ifFalse:[super acceptDroppingMorph: aMorph event: evt].
 
-	incomingName _ aMorph knownName.
 	aMorph submorphsDo: [:m | (m isKindOf: HaloMorph) ifTrue: [m delete]].
-	self autoLineLayout ifTrue: [self fixLayout].
 	aMorph allMorphsDo:  "Establish any penDown morphs in new world"
 		[:m | m player ifNotNil:
 			[m player getPenDown ifTrue:
@@ -32,13 +28,6 @@ acceptDroppingMorph: aMorph event: evt
 
 	self presenter morph: aMorph droppedIntoPasteUpMorph: self.
 
-	slotSpecs _ aMorph slotSpecifications.  "A Fabrik component, for example.  Just a hook at this time"
-	slotSpecs size > 0 ifTrue:
-		[self assuredPlayer.
-		slotSpecs do:
-			[:tuple |
-				aValue _ aMorph initialValueFor: tuple first.
-				nameObtained _ self player addSlotNamedLike: tuple first withValue: aValue.
-				nameObtained ~= incomingName ifTrue:
-					[aMorph setNameTo: nameObtained]].
-		self player updateAllViewers]
+	self showingListView ifTrue:
+		[self sortSubmorphsBy: (self valueOfProperty: #sortOrder).
+		self currentWorld abandonAllHalos]

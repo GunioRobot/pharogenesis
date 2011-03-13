@@ -1,6 +1,7 @@
 newColumn
 
 	^ self new
-		orientation: #vertical;
+		listDirection: #topToBottom;
 		hResizing: #spaceFill;
+		extent: 1@1;
 		vResizing: #spaceFill

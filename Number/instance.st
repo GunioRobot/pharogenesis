@@ -3,4 +3,4 @@ Magnitude
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Numeric-Numbers'
+	category: 'Kernel-Numbers'

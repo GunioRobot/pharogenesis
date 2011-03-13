@@ -1,0 +1,8 @@
+A lot of code in here was cloned from ChatNotes.
+
+This class is a tester for the PluggableMultiColumnListMorph.
+
+
+See the instance method #listArray for two ways you can exercise this widget.
+
+To use it just evaluate the #test class method.

@@ -1,4 +1,4 @@
 primMIDIGetPortCount
 
-	<primitive: 523>
+	<primitive: 'primitiveMIDIGetPortCount' module: 'MIDIPlugin'>
 	self primitiveFailed.

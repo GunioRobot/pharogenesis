@@ -1,6 +1,6 @@
 Morph
 	subclass: #BouncingAtomsMorph
-	instanceVariableNames: 'damageReported infectionHistory transmitInfection '
+	instanceVariableNames: 'damageReported infectionHistory transmitInfection recentTemperatures temperature '
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Demo'

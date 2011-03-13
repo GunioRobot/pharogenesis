@@ -1,0 +1,1 @@
+PointerFinder class instanceVariableNames: ''

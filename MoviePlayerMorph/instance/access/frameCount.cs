@@ -1,0 +1,3 @@
+frameCount
+
+	^ frameCount

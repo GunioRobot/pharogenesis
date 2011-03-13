@@ -4,7 +4,7 @@ insertTileRow: tileList after: index
 	| row |
 	row _ AlignmentMorph newRow
 		vResizing: #spaceFill;
-		inset: 0;
+		layoutInset: 0;
 		extent: (bounds width)@(TileMorph defaultH);
 		color: Color transparent.
 	row addAllMorphs: tileList.

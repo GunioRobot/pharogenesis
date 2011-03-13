@@ -1,0 +1,1 @@
+LiljencrantsFant class instanceVariableNames: ''

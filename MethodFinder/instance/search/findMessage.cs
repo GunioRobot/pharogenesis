@@ -3,9 +3,10 @@ findMessage
 
 	data do: [:alist |
 		(alist isKindOf: SequenceableCollection) ifFalse: [
-			^ 'first and third items are not Arrays']].
+			^ OrderedCollection with: 'first and third items are not Arrays']].
 	Approved ifNil: [self initialize].	"Sets of allowed selectors"
-	expressions _ WriteStream on: (String new: 400).
+	expressions _ OrderedCollection new.
 	self search: true.	"multi"
-	selector isEmpty ifTrue: [^ 'no single method does that function'].
- 	^ expressions contents 
+	expressions isEmpty ifTrue: [^ OrderedCollection with: 'no single method does that function'].
+	expressions class = String ifTrue: [^ OrderedCollection with: expressions].
+ 	^ expressions

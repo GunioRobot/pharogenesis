@@ -1,4 +1,4 @@
 deleteCard
-	"Still underway"
-	true ifTrue: [^ self beep].
-	self costume deleteCard
+	"Tell the receiver's stack to delete the current card"
+
+	self costume stackDo: [:aStack | aStack deleteCard]

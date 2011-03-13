@@ -4,9 +4,10 @@ Holds control buttons:
 	stopButton stepButton goButton.
 
 Holds state flags:
-	balloonHelpEnabled mouseOverHalosEnabled soundsEnabled fenceEnabled coloredTilesEnabled
+	mouseOverHalosEnabled soundsEnabled fenceEnabled coloredTilesEnabled
 
 Holds a viewerCache 
 
-Holds, optionally three standard items, idiomatic support of ongoing squeak-team internal work
+Holds, optionally three 'standard items' originally providing idiomatic support of ongoing squeak-team internal work, but now extended to more general applicability:
+
    standardPlayer standardPlayfield standardPalette 
