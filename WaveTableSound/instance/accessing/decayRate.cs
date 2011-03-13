@@ -1,0 +1,3 @@
+decayRate
+
+	^ decayRate

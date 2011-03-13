@@ -1,0 +1,13 @@
+pointNearestTo: aPoint
+	"Return the point on my border closest to aPoint"
+	| side |
+	(self containsPoint: aPoint)
+		ifTrue:
+			[side _ self sideNearestTo: aPoint.
+			side == #right ifTrue: [^ self right @ aPoint y].
+			side == #left ifTrue: [^ self left @ aPoint y].
+			side == #bottom ifTrue: [^ aPoint x @ self bottom].
+			side == #top ifTrue: [^ aPoint x @ self top]]
+		ifFalse:
+			[^ ((aPoint x max: self left) min: self right) @
+				((aPoint y max: self top) min: self bottom)]

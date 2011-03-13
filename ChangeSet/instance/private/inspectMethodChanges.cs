@@ -1,0 +1,2 @@
+inspectMethodChanges
+	methodChanges inspect

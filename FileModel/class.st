@@ -1,0 +1,1 @@
+FileModel class instanceVariableNames: ''

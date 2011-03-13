@@ -1,0 +1,2 @@
+lockModel
+	"If the receiver is lock, do so to the receiver's model.  This does something real in StringHolderController, but here it is a no-op, put in so that the Character Recognizer won't fail when used with a vanilla ParagrahEditor.  8/9/96 sw"

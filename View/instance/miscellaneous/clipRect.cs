@@ -1,0 +1,2 @@
+clipRect
+	^ superView clipRect

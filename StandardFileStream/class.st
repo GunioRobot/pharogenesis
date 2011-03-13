@@ -1,0 +1,1 @@
+StandardFileStream class instanceVariableNames: ''

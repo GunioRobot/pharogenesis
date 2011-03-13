@@ -1,0 +1,1 @@
+UndefinedObject class instanceVariableNames: ''

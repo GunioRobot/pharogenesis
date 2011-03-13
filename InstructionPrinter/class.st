@@ -1,0 +1,1 @@
+InstructionPrinter class instanceVariableNames: ''

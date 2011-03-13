@@ -1,0 +1,2 @@
+isErrorHandled
+    ^ errorHandler notNil

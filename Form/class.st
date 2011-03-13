@@ -1,0 +1,1 @@
+Form class instanceVariableNames: 'whiteMask darkGrayMask grayMask blackMask lightGrayMask veryLightGrayMask '

@@ -1,0 +1,1 @@
+AbstractSound class instanceVariableNames: ''

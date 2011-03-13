@@ -1,0 +1,1 @@
+InputState class instanceVariableNames: ''

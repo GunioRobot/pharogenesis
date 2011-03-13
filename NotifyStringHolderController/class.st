@@ -1,0 +1,1 @@
+NotifyStringHolderController class instanceVariableNames: ''

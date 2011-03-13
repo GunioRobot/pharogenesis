@@ -1,0 +1,2 @@
+doPop
+	"Decompile."

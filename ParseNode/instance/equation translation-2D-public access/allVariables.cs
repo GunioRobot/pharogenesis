@@ -1,0 +1,2 @@
+allVariables
+	^self collectVariables asSet

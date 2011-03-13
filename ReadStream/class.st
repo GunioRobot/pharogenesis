@@ -1,0 +1,1 @@
+ReadStream class instanceVariableNames: ''

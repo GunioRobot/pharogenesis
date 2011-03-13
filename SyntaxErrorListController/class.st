@@ -1,0 +1,1 @@
+SyntaxErrorListController class instanceVariableNames: ''

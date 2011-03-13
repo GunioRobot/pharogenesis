@@ -1,0 +1,2 @@
+accepted
+	"The user has told the receiver's controller to accept the current contents.  Take appropriate action if desired.  This place-holder provides a mechanism for intercepting the user's 'accept' request.  7/16/96 sw"

@@ -1,0 +1,1 @@
+PositionableStream class instanceVariableNames: ''

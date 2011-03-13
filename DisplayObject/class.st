@@ -1,0 +1,1 @@
+DisplayObject class instanceVariableNames: ''

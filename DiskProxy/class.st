@@ -1,0 +1,1 @@
+DiskProxy class instanceVariableNames: ''

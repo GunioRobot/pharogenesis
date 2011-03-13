@@ -1,0 +1,2 @@
+displayViewDeEmphasized
+	self displayView; deEmphasizeView

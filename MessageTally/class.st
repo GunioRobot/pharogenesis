@@ -1,0 +1,1 @@
+MessageTally class instanceVariableNames: ''

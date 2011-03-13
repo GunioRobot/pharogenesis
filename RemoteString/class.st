@@ -1,0 +1,1 @@
+RemoteString class instanceVariableNames: ''

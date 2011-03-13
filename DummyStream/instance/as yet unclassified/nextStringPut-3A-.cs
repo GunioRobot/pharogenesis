@@ -1,0 +1,2 @@
+nextStringPut: aString
+	"do nothing"

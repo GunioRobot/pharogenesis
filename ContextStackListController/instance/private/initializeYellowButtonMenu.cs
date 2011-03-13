@@ -1,0 +1,4 @@
+initializeYellowButtonMenu
+
+	self yellowButtonMenu: ContextStackListYellowButtonMenu
+		yellowButtonMessages: ContextStackListYellowButtonMessages

@@ -1,0 +1,1 @@
+ClassCompiledCategoryReader class instanceVariableNames: ''

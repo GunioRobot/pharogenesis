@@ -1,0 +1,1 @@
+ReferenceStream class instanceVariableNames: ''

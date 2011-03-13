@@ -1,0 +1,1 @@
+ExternalStream class instanceVariableNames: ''

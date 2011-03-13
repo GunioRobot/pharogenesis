@@ -1,0 +1,2 @@
+cacheBitsAsTwoTone
+	^ true

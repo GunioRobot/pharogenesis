@@ -1,0 +1,1 @@
+StringHolderController class instanceVariableNames: ''

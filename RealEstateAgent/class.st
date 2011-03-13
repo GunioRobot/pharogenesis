@@ -1,0 +1,1 @@
+RealEstateAgent class instanceVariableNames: ''

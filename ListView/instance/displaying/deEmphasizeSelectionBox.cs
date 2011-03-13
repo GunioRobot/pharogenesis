@@ -1,0 +1,2 @@
+deEmphasizeSelectionBox
+	self displaySelectionBox

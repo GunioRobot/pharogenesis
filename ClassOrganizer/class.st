@@ -1,0 +1,1 @@
+ClassOrganizer class instanceVariableNames: ''

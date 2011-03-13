@@ -1,0 +1,1 @@
+StrikeFont class instanceVariableNames: ''

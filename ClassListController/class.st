@@ -1,0 +1,1 @@
+ClassListController class instanceVariableNames: ''

@@ -1,0 +1,2 @@
+gridSpacing
+	^ superView gridSpacing

@@ -1,0 +1,2 @@
+extent
+	^ width @ self height

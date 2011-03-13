@@ -1,0 +1,1 @@
+BlockNode class instanceVariableNames: ''

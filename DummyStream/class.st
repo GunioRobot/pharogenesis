@@ -1,0 +1,1 @@
+DummyStream class instanceVariableNames: ''

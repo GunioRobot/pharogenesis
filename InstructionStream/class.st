@@ -1,0 +1,1 @@
+InstructionStream class instanceVariableNames: ''

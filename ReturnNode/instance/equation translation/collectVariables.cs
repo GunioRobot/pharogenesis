@@ -1,0 +1,2 @@
+collectVariables
+	^expr collectVariables

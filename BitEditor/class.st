@@ -1,0 +1,1 @@
+BitEditor class instanceVariableNames: ''

@@ -1,0 +1,1 @@
+WaveTableSound class instanceVariableNames: ''

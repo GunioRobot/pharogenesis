@@ -1,0 +1,2 @@
+emergencyCollapse
+	ScheduledControllers screenController emergencyCollapse

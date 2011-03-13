@@ -1,0 +1,1 @@
+Curve class instanceVariableNames: ''

@@ -1,0 +1,1 @@
+SystemCategoryListController class instanceVariableNames: ''

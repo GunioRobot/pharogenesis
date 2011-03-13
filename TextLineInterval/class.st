@@ -1,0 +1,1 @@
+TextLineInterval class instanceVariableNames: ''

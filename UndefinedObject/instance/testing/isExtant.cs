@@ -1,0 +1,2 @@
+isExtant
+	^ false

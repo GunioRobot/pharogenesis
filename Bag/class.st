@@ -1,0 +1,1 @@
+Bag class instanceVariableNames: ''

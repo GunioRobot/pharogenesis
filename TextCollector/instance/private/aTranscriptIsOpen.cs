@@ -1,0 +1,2 @@
+aTranscriptIsOpen
+	transcriptOpen _ true

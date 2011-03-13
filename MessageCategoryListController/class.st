@@ -1,0 +1,1 @@
+MessageCategoryListController class instanceVariableNames: ''

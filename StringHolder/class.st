@@ -1,0 +1,1 @@
+StringHolder class instanceVariableNames: ''

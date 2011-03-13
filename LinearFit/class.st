@@ -1,0 +1,1 @@
+LinearFit class instanceVariableNames: ''

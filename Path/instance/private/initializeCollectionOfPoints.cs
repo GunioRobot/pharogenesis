@@ -1,0 +1,3 @@
+initializeCollectionOfPoints
+
+	collectionOfPoints _ OrderedCollection new

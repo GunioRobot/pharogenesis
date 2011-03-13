@@ -1,0 +1,1 @@
+SmallInteger class instanceVariableNames: ''

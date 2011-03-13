@@ -1,0 +1,1 @@
+MacFileDirectory class instanceVariableNames: ''

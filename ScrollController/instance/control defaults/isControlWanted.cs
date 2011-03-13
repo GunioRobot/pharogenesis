@@ -1,0 +1,3 @@
+isControlWanted
+
+	^self viewHasCursor

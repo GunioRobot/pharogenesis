@@ -1,0 +1,3 @@
+labelString
+
+	^ labelString

@@ -1,0 +1,1 @@
+BrowserCodeController class instanceVariableNames: ''

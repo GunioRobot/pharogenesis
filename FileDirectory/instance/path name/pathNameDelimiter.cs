@@ -1,0 +1,2 @@
+pathNameDelimiter
+	^ self class pathNameDelimiter

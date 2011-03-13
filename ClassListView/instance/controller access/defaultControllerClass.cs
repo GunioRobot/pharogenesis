@@ -1,0 +1,3 @@
+defaultControllerClass
+
+	^ClassListController

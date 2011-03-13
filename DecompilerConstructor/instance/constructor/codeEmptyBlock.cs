@@ -1,0 +1,3 @@
+codeEmptyBlock
+
+	^BlockNode withJust: NodeNil

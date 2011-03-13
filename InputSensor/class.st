@@ -1,0 +1,1 @@
+InputSensor class instanceVariableNames: ''

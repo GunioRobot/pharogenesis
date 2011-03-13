@@ -1,0 +1,2 @@
+messageListIndex
+	^ messageList listIndex

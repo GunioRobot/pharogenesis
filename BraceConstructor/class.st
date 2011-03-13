@@ -1,0 +1,1 @@
+BraceConstructor class instanceVariableNames: ''

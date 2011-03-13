@@ -1,0 +1,1 @@
+Interval class instanceVariableNames: ''

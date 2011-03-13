@@ -1,0 +1,2 @@
+isInteger
+	^ false

@@ -1,0 +1,1 @@
+WriteStream class instanceVariableNames: ''

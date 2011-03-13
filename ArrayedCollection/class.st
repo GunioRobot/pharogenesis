@@ -1,0 +1,1 @@
+ArrayedCollection class instanceVariableNames: ''

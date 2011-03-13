@@ -1,0 +1,1 @@
+MessageSet class instanceVariableNames: ''

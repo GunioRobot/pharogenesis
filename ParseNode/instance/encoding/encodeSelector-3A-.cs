@@ -1,0 +1,3 @@
+encodeSelector: selector
+
+	^nil

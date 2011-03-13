@@ -1,0 +1,1 @@
+Float class instanceVariableNames: ''

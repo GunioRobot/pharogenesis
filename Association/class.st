@@ -1,0 +1,1 @@
+Association class instanceVariableNames: ''

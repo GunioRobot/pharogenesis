@@ -1,0 +1,2 @@
+isModeActive
+	^ modeActive

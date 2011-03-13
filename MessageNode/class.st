@@ -1,0 +1,1 @@
+MessageNode class instanceVariableNames: ''

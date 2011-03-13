@@ -1,0 +1,2 @@
+fastWindows
+	StandardSystemView doCacheBits

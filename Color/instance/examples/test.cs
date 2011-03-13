@@ -1,0 +1,4 @@
+test
+
+	IndexedColors do: [ :c |
+	].

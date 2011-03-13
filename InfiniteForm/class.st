@@ -1,0 +1,1 @@
+InfiniteForm class instanceVariableNames: ''

@@ -1,0 +1,1 @@
+ParagraphEditor class instanceVariableNames: ''

@@ -1,0 +1,4 @@
+initializeYellowButtonMenu
+
+	self yellowButtonMenu: MessageCategoryListYellowButtonMenu 
+		yellowButtonMessages: MessageCategoryListYellowButtonMessages 

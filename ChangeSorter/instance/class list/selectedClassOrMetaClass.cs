@@ -1,0 +1,2 @@
+selectedClassOrMetaClass
+	^ classList selectedClassOrMetaClass

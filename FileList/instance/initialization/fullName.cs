@@ -1,0 +1,2 @@
+fullName
+	^ directory fullNameFor: fileName

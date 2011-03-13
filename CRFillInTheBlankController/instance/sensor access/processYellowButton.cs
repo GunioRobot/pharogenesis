@@ -1,0 +1,3 @@
+processYellowButton
+
+	^self
