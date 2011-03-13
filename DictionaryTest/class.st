@@ -1,1 +1,0 @@
-DictionaryTest class instanceVariableNames: 'testToto pt1'

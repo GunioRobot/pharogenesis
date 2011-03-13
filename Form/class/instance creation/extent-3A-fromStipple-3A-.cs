@@ -4,5 +4,5 @@ extent: extentPoint fromStipple: fourNibbles
 	| nibble |
 	^ (self extent: extentPoint depth: 1)
 		initFromArray: ((1 to: 4) collect:
-				[:i | nibble _ (fourNibbles bitShift: -4*(4-i)) bitAnd: 16rF.
+				[:i | nibble := (fourNibbles bitShift: -4*(4-i)) bitAnd: 16rF.
 				16r11111111 * nibble])  "fill 32 bits with each 4-bit nibble"

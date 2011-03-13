@@ -1,6 +1,6 @@
 pickName
 	| name |
-	name := FillInTheBlank
-		request: 'Name (.', self configuration writerClass extension, ' will be appended):'
+	name := UIManager default
+		request: ('Name' translated, ' (.', self configuration writerClass extension, ' will be appended' translated, '):')
 		initialAnswer: (self configuration name ifNil: ['']).
-	^ name isEmpty ifFalse: [name]
+	^ name isEmptyOrNil ifFalse: [name]

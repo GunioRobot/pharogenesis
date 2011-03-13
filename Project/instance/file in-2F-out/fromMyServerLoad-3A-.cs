@@ -2,16 +2,16 @@ fromMyServerLoad: otherProjectName
 	| pair pr dirToUse |
 	"If a newer version of me is on the server, load it."
 
-	(pr _ Project named: otherProjectName) ifNotNil: ["it appeared"
+	(pr := Project named: otherProjectName) ifNotNil: ["it appeared"
 		^ pr enter
 	].
-	dirToUse _ self primaryServerIfNil: [
+	dirToUse := self primaryServerIfNil: [
 		lastDirectory ifNil: [
 			self inform: 'Current project does not know a server either.'.
 			^nil].
 		lastDirectory].
 
-	pair _ self class mostRecent: otherProjectName onServer: dirToUse.
+	pair := self class mostRecent: otherProjectName onServer: dirToUse.
 	pair first ifNil: [^self decideAboutCreatingBlank: otherProjectName].	"nothing to load"
 	^ProjectLoading
 		installRemoteNamed: pair first

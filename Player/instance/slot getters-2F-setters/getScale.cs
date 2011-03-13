@@ -1,3 +1,0 @@
-getScale
-
-	^ self costume scale

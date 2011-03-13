@@ -1,3 +1,0 @@
-convertRemoteClientToBuffered
-
-	self world convertRemoteClientToBuffered: nebraskaClient

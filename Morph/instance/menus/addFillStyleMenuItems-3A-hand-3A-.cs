@@ -2,7 +2,7 @@ addFillStyleMenuItems: aMenu hand: aHand
 	"Add the items for changing the current fill style of the Morph"
 	| menu |
 	self canHaveFillStyles ifFalse:[^aMenu add: 'change color...' translated target: self action: #changeColor].
-	menu _ MenuMorph new defaultTarget: self.
+	menu := MenuMorph new defaultTarget: self.
 	self fillStyle addFillStyleMenuItems: menu hand: aHand from: self.
 	menu addLine.
 	menu add: 'solid fill' translated action: #useSolidFill.

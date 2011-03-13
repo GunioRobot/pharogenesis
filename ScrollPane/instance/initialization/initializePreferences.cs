@@ -1,6 +1,6 @@
 initializePreferences
 	"initialize the receiver's Preferences"
-	retractableScrollBar _ false.
-	scrollBarOnLeft _ (Preferences valueOfFlag: #scrollBarsOnRight) not.
+	retractableScrollBar := false.
+	scrollBarOnLeft := (Preferences valueOfFlag: #scrollBarsOnRight) not.
 	
 

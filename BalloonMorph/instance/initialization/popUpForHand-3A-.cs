@@ -9,6 +9,6 @@ popUpForHand: aHand
 	"So that if the translation below makes it overlap the receiver, it won't
 	interfere with the rootMorphsAt: logic and hence cause flashing.  Without
 	this, flashing happens, believe me!"
-	((worldBounds _ aHand world bounds) containsRect: self bounds) ifFalse:
+	((worldBounds := aHand world bounds) containsRect: self bounds) ifFalse:
 		[self bounds: (self bounds translatedToBeWithin: worldBounds)].
 	aHand balloonHelp: self.

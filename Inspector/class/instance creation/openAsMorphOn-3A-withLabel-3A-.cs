@@ -1,5 +1,5 @@
 openAsMorphOn: anObject withLabel: aLabel 
-	"(Inspector openAsMorphOn: SystemOrganization) openInMVC"
+	"(Inspector openAsMorphOn: SystemOrganization withLabel: 'Test') openInWorld"
 	| window inspector |
 	inspector := self inspect: anObject.
 	window := (SystemWindow labelled: aLabel)

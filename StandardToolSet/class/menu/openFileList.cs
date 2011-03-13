@@ -1,2 +1,2 @@
 openFileList
-	FileList2 prototypicalToolWindow openInWorld.
+	FileList prototypicalToolWindow openInWorld.

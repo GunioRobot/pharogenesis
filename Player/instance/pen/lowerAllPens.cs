@@ -1,2 +1,0 @@
-lowerAllPens
-	self costume lowerAllPens

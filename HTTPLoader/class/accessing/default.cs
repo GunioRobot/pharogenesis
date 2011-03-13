@@ -1,4 +1,4 @@
 default
 	DefaultLoader ifNil: [
-		DefaultLoader _ HTTPLoader new].
+		DefaultLoader := HTTPLoader new].
 	^DefaultLoader

@@ -1,0 +1,1 @@
+toggleReaderMode: aBool

@@ -1,9 +1,9 @@
 every: aDuration do: aBlock
 
 	| element end |
-	element _ self start.
-	end _ self end.
+	element := self start.
+	end := self end.
 	[ element <= end ] whileTrue:
 	
 	[ aBlock value: element.
-		element _ element + aDuration. ]
+		element := element + aDuration. ]

@@ -1,2 +1,0 @@
-getPlayerAtCursor
-	^ self getValueAtCursor

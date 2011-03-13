@@ -1,2 +1,0 @@
-setUp
-	random := Random new.

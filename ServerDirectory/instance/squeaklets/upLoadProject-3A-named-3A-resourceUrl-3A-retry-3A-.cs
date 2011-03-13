@@ -7,22 +7,22 @@ upLoadProject: projectFile named: fileNameOnServer resourceUrl: resUrl retry: aB
 	projectFile isZipArchive
 		ifFalse:[^self putFile: projectFile named: fileNameOnServer retry: aBool].
 	projectFile binary.
-	archive _ ZipArchive new readFrom: projectFile.
+	archive := ZipArchive new readFrom: projectFile.
 	resUrl last = $/ 
-		ifTrue:[prefix _ resUrl copyFrom: 1 to: resUrl size-1] "remove last slash"
-		ifFalse:[prefix _ resUrl].
-	prefix _ prefix copyFrom: 1 to: (prefix lastIndexOf: $/).
-	members _ archive members select:[:entry|
+		ifTrue:[prefix := resUrl copyFrom: 1 to: resUrl size-1] "remove last slash"
+		ifFalse:[prefix := resUrl].
+	prefix := prefix copyFrom: 1 to: (prefix lastIndexOf: $/).
+	members := archive members select:[:entry|
 		"figure out where it's coming from"
-		upload _ false.
+		upload := false.
 		(entry fileName indexOf: $:) = 0 ifTrue:[
-			upload _ true. "one of the core files, e.g., project itself, resource map, meta info"
+			upload := true. "one of the core files, e.g., project itself, resource map, meta info"
 		] ifFalse:[
 			(entry fileName asLowercase beginsWith: resUrl asLowercase) ifTrue:[
-				upload _ true.
+				upload := true.
 				entry fileName: (entry fileName copyFrom: prefix size+1 to: entry fileName size).
 			].
 		].
 		upload].
-	members _ members asArray sort:[:m1 :m2| m1 compressedSize < m2 compressedSize].
+	members := members asArray sort:[:m1 :m2| m1 compressedSize < m2 compressedSize].
 	^self upLoadProject: fileNameOnServer members: members retry: aBool.

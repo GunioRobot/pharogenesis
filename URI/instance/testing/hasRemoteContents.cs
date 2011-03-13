@@ -1,2 +1,0 @@
-hasRemoteContents
-	self halt

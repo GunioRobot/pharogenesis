@@ -1,2 +1,2 @@
 method: aCompiledMethod
-	method _ aCompiledMethod
+	method := aCompiledMethod

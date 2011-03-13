@@ -1,3 +1,0 @@
-leftEdgeModeMnemonic
-
-	^ leftEdgeModeMnemonic.

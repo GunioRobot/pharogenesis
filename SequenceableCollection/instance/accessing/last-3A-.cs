@@ -3,5 +3,5 @@ last: n
 	Raise an error if there are not enough elements."
 
 	| size |
-	size _ self size.
+	size := self size.
 	^ self copyFrom: size - n + 1 to: size

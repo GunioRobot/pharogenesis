@@ -2,15 +2,15 @@ testDeleteDirectory
 	"Test deletion of a directory"
 	
 	| aContainingDirectory preTestItems |
-	aContainingDirectory := self myDirectory containingDirectory.
+	aContainingDirectory := self directory containingDirectory.
 	preTestItems := aContainingDirectory fileAndDirectoryNames.
 	
-	self assert: self myAssuredDirectory exists.
-	aContainingDirectory deleteDirectory: self myLocalDirectoryName.
+	self assert: self assuredDirectory exists.
+	aContainingDirectory deleteDirectory: self directoryName.
 
 	self shouldnt: 
 		[aContainingDirectory directoryNames 
-			includes: self myLocalDirectoryName ]
+			includes: self directoryName ]
 		description: 'Should successfully delete directory.'.
 	self should: 
 		[preTestItems = aContainingDirectory fileAndDirectoryNames]

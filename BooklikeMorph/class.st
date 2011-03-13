@@ -1,1 +1,0 @@
-BooklikeMorph class instanceVariableNames: ''

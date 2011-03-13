@@ -3,7 +3,7 @@ keep: keepButton with: keepSelector evt: evt
 	| ss |
 	owner ifNil: [^ self].
 	keepButton ifNotNil: [keepButton state: #off].
-	(ss _ self focusMorph) 
+	(ss := self focusMorph) 
 		ifNotNil: [ss savePainting: self evt: evt]
 		ifNil:
 		[keepSelector == #silent ifTrue: [^ self].

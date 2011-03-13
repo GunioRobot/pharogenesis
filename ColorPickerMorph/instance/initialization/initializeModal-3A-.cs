@@ -1,10 +1,10 @@
 initializeModal: beModal
 	"Initialize the receiver.  If beModal is true, it will be a modal color picker, else not"
 
-	isModal _ beModal.
+	isModal := beModal.
 	self removeAllMorphs.
 	isModal ifFalse:
-		[theSelectorDisplayMorph _ AlignmentMorph newRow
+		[theSelectorDisplayMorph := AlignmentMorph newRow
 			color: Color white;
 			borderWidth: 1;
 			borderColor: Color red;
@@ -30,7 +30,7 @@ initializeModal: beModal
 
 	self buildChartForm.
 	
-	selectedColor ifNil: [selectedColor _ Color white].
-	sourceHand _ nil.
-	deleteOnMouseUp _ false.
-	updateContinuously _ true.
+	selectedColor ifNil: [selectedColor := Color white].
+	sourceHand := nil.
+	deleteOnMouseUp := false.
+	updateContinuously := true.

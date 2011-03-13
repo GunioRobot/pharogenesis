@@ -1,4 +1,3 @@
-initializeSampleStreamBlocks: aCollection
-
-	mcuBlocks _ aCollection.
+initializeSampleStreamBlocks: aCollection 
+	mcuBlocks := aCollection.
 	self resetSampleStream

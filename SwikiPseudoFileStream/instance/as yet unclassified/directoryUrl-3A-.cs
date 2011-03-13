@@ -1,3 +1,3 @@
 directoryUrl: x
 
-	directoryUrl _ x
+	directoryUrl := x

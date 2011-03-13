@@ -1,2 +1,0 @@
-deferred
-	^self hasProperty:#deferred

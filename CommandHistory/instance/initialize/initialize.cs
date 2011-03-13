@@ -1,4 +1,5 @@
 initialize
-	lastCommand _ nil.
-	history _ OrderedCollection new.
-	excursions _ OrderedCollection new.
+	super initialize.
+	lastCommand := nil.
+	history := OrderedCollection new.
+	excursions := OrderedCollection new.

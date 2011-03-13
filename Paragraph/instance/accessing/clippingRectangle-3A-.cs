@@ -1,2 +1,2 @@
 clippingRectangle: clipRect 
-	clippingRectangle _ clipRect
+	clippingRectangle := clipRect

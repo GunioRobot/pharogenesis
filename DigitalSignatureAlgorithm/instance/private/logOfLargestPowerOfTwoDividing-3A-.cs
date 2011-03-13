@@ -3,10 +3,10 @@ logOfLargestPowerOfTwoDividing: aPositiveInteger
 	"DigitalSignatureAlgorithm new largestPowerOfTwoDividing: (32 * 3)"
 
 	| digitIndex power d |
-	digitIndex _ (1 to: aPositiveInteger digitLength) detect: [:i | (aPositiveInteger digitAt: i) ~= 0].
-	power _ (digitIndex - 1) * 8.
-	d _ aPositiveInteger digitAt: digitIndex.
+	digitIndex := (1 to: aPositiveInteger digitLength) detect: [:i | (aPositiveInteger digitAt: i) ~= 0].
+	power := (digitIndex - 1) * 8.
+	d := aPositiveInteger digitAt: digitIndex.
 	[d odd] whileFalse: [
-		power _ power + 1.
-		d _ d bitShift: -1].
+		power := power + 1.
+		d := d bitShift: -1].
 	^ power

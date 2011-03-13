@@ -1,10 +1,10 @@
 testPrintOn
 	| cs rw |
-	cs := ReadStream on: '1901-01-01T00:00:00+00:00'.
+	cs := '1901-01-01T00:00:00+00:00' readStream.
 	rw := ReadWriteStream on: ''.
 	aDateAndTime printOn: rw.
 	self assert: rw contents = cs contents.
-	cs  := ReadStream on: 'a TimeZone(ETZ)'.
+	cs := 'a TimeZone(ETZ)' readStream.
 	rw := ReadWriteStream on: ''.
-	aTimeZone printOn:  rw.
+	aTimeZone printOn: rw.
 	self assert: rw contents = cs contents

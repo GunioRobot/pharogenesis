@@ -1,22 +1,21 @@
 nextBits
 	| integer readBitCount shiftCount byte |
-	integer _ 0.
-	remainBitCount = 0
-		ifTrue:
-			[readBitCount _ 8.
-			shiftCount _ 0]
-		ifFalse:
-			[readBitCount _ remainBitCount.
-			shiftCount _ remainBitCount - 8].
-	[readBitCount < codeSize]
-		whileTrue:
-			[byte _ self nextByte.
-			byte == nil ifTrue: [^eoiCode].
-			integer _ integer + (byte bitShift: shiftCount).
-			shiftCount _ shiftCount + 8.
-			readBitCount _ readBitCount + 8].
-	(remainBitCount _ readBitCount - codeSize) = 0
-		ifTrue:	[byte _ self nextByte]
-		ifFalse:	[byte _ self peekByte].
-	byte == nil ifTrue: [^eoiCode].
-	^(integer + (byte bitShift: shiftCount)) bitAnd: maxCode
+	integer := 0.
+	remainBitCount = 0 
+		ifTrue: 
+			[ readBitCount := 8.
+			shiftCount := 0 ]
+		ifFalse: 
+			[ readBitCount := remainBitCount.
+			shiftCount := remainBitCount - 8 ].
+	[ readBitCount < codeSize ] whileTrue: 
+		[ byte := self nextByte.
+		byte == nil ifTrue: [ ^ eoiCode ].
+		integer := integer + (byte bitShift: shiftCount).
+		shiftCount := shiftCount + 8.
+		readBitCount := readBitCount + 8 ].
+	(remainBitCount := readBitCount - codeSize) = 0 
+		ifTrue: [ byte := self nextByte ]
+		ifFalse: [ byte := self peekByte ].
+	byte == nil ifTrue: [ ^ eoiCode ].
+	^ integer + (byte bitShift: shiftCount) bitAnd: maxCode

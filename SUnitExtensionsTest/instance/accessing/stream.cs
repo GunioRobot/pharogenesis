@@ -1,3 +1,3 @@
 stream
-	stream isNil ifTrue: [stream := WriteStream on: String new].
+	stream isNil ifTrue: [stream := String new writeStream].
 	^stream

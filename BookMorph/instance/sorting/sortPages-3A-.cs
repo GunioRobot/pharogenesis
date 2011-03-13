@@ -1,3 +1,0 @@
-sortPages: evt
-
-	^ self sortPages

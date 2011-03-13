@@ -1,3 +1,3 @@
 asYear
 
-	^ Year year: self 
+ 	^ Year year: self  

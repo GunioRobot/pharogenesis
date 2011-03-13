@@ -1,2 +1,0 @@
-scriptName
-	^ scriptName

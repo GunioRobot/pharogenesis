@@ -5,16 +5,15 @@ lowBit
 	  First we skip bits in groups of 4, then single bits.
 	  While not optimal, this is a good tradeoff; long
 	  integer #lowBit always invokes us with bytes."
-	| n result |
+	| n result last4 |
 	n := self.
 	n = 0 ifTrue: [ ^ 0 ].
-	result := 1.
-	[ (n bitAnd: 16rF) = 0 ]
+	result := 0.
+	[(last4 := n bitAnd: 16rF) = 0]
 		whileTrue: [
 			result := result + 4.
 			n := n bitShift: -4 ].
-	[ (n bitAnd: 1) = 0 ]
-		whileTrue: [
-			result := result + 1.
-			n := n bitShift: -1 ].
-	^ result
+
+	"The low bits table can be obtained with:
+	(1 to: 4) inject: #[1] into: [:lowBits :rank | (lowBits copy at: 1 put: lowBits first + 1; yourself) , lowBits]."
+	^result + ( #[5 1 2 1 3 1 2 1 4 1 2 1 3 1 2 1] at: (last4)+1)

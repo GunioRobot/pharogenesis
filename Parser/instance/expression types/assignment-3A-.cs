@@ -1,15 +1,15 @@
 assignment: varNode
-	" var '_' expression => AssignmentNode."
+	" var ':=' expression => AssignmentNode."
 	| loc start |
-	(loc _ varNode assignmentCheck: encoder at: prevMark + requestorOffset) >= 0
+	(loc := varNode assignmentCheck: encoder at: prevMark + requestorOffset) >= 0
 		ifTrue: [^self notify: 'Cannot store into' at: loc].
-	start _ self startOfNextToken.
-	varNode nowHasDef.
+	start := self startOfNextToken.
 	self advance.
 	self expression ifFalse: [^self expected: 'Expression'].
-	parseNode _ AssignmentNode new
+	parseNode := AssignmentNode new
 				variable: varNode
 				value: parseNode
 				from: encoder
 				sourceRange: (start to: self endOfLastToken).
+	varNode nowHasDef.
 	^true

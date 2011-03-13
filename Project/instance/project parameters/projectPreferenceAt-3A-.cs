@@ -3,6 +3,6 @@ projectPreferenceAt: aSymbol
 
 	| aValue |
 	^ self projectPreferenceAt: aSymbol ifAbsent: 
-		[aValue _ Preferences valueOfFlag: aSymbol.
+		[aValue := Preferences valueOfFlag: aSymbol.
 		self projectPreferenceFlagDictionary at: aSymbol put: aValue.
 		^ aValue]

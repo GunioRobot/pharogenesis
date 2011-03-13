@@ -1,3 +1,0 @@
-buttonColor 
-
-	^Color lightBrown

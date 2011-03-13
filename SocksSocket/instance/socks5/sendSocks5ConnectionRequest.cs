@@ -3,7 +3,7 @@ sendSocks5ConnectionRequest
    sends the request details."
 
 	| requestString |
-	requestString _ WriteStream on: ByteArray new.
+	requestString := ByteArray new writeStream.
 	requestString
 		nextPut: 5;
 		nextPut: self connectCommandCode;

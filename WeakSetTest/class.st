@@ -1,0 +1,1 @@
+WeakSetTest class instanceVariableNames: ''

@@ -1,0 +1,1 @@
+FreeTypeSettings class instanceVariableNames: 'current'

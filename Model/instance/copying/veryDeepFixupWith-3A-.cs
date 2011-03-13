@@ -4,15 +4,15 @@ veryDeepFixupWith: deepCopier
 
 	| originalDependents refs newDependent |
 	super veryDeepFixupWith: deepCopier.
-	originalDependents _ dependents.
+	originalDependents := dependents.
 	originalDependents ifNil: [
 		^self.
 		].
-	dependents _ nil.
-	refs _ deepCopier references.
+	dependents := nil.
+	refs := deepCopier references.
 	originalDependents
 		do: [:originalDependent | 
-			newDependent _ refs
+			newDependent := refs
 						at: originalDependent
 						ifAbsent: [].
 			newDependent

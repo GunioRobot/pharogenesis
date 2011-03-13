@@ -1,2 +1,0 @@
-canExtractMember
-	^memberIndex > 0

@@ -2,7 +2,7 @@ copy
 
 	| answer |
 
-	answer _ self class new initialize.
+	answer := self class new initialize.
 	self do: [ :each |
 		answer add: each
 	].

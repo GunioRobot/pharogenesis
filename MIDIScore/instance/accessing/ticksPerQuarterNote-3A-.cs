@@ -1,3 +1,0 @@
-ticksPerQuarterNote: anInteger
-
-	ticksPerQuarterNote := anInteger.

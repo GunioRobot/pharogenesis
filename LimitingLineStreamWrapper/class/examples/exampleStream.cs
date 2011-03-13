@@ -1,6 +1,5 @@
 exampleStream
-	^ReadStream on:
-'From me@somewhere
+	^ 'From me@somewhere
 From: me
 To: you
 Subject: Test
@@ -13,4 +12,4 @@ To: me
 Subject: Re: test
 
 okay
-'
+' readStream

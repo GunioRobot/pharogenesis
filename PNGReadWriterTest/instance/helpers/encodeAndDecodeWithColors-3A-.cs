@@ -4,7 +4,7 @@ encodeAndDecodeWithColors: aColorForm
 	fileName := 'testColors', aColorForm depth printString,'.png'.
 	indexedColors := Color indexedColors.
 	nColors := 1 bitShift: aColorForm depth.
-	colors := WriteStream on: Array new.
+	colors := Array new writeStream.
 
 	"Make first half translucent"
 	max := nColors // 2.
@@ -17,3 +17,4 @@ encodeAndDecodeWithColors: aColorForm
 	max to: nColors do:[:i|
 		colors nextPut: (indexedColors atRandom: myRandom).
 	].
+	self deleteFile.

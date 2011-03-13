@@ -1,3 +1,0 @@
-indentingItemClass
-
-	^IndentingListParagraphMorph

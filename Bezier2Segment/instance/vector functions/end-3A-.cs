@@ -1,2 +1,0 @@
-end: aPoint
-	end := aPoint.

@@ -1,7 +1,7 @@
 drawInterpolatedImage: aForm on: aCanvas
 	"Draw the given form onto the canvas using the Balloon 3D engine"
 	| engine |
-	engine _ Smalltalk at: #B3DRenderEngine 
+	engine := Smalltalk at: #B3DRenderEngine 
 		ifPresent:[:b3d | b3d defaultForPlatformOn: aCanvas form].
 	engine == nil ifTrue:[
 		self useInterpolation: false.

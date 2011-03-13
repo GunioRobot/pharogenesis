@@ -3,13 +3,13 @@ emitCase: stack on: strm value: forValue
 	| braceNode sizeStream thenSize elseSize |
 	forValue not
 		ifTrue: [^super emitForEffect: stack on: strm].
-	braceNode _ arguments first.
-	sizeStream _ ReadStream on: sizes.
+	braceNode := arguments first.
+	sizeStream := sizes readStream.
 	receiver emitForValue: stack on: strm.
 	braceNode casesForwardDo:
 		[:keyNode :valueNode :last |
-		thenSize _ sizeStream next.
-		elseSize _ sizeStream next.
+		thenSize := sizeStream next.
+		elseSize := sizeStream next.
 		last ifFalse: [strm nextPut: Dup. stack push: 1].
 		keyNode emitForEvaluatedValue: stack on: strm.
 		equalNode emit: stack args: 1 on: strm.

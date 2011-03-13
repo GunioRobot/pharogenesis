@@ -1,2 +1,2 @@
 setEditView: editPane
-	editView _ editPane
+	editView := editPane

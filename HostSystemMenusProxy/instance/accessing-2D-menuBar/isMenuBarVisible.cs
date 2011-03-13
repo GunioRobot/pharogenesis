@@ -1,0 +1,2 @@
+isMenuBarVisible
+	^true

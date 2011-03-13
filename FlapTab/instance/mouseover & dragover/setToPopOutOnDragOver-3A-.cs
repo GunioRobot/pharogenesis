@@ -1,2 +1,2 @@
 setToPopOutOnDragOver: aBoolean
-	self arrangeToPopOutOnDragOver:  (popOutOnDragOver _ aBoolean)
+	self arrangeToPopOutOnDragOver:  (popOutOnDragOver := aBoolean)

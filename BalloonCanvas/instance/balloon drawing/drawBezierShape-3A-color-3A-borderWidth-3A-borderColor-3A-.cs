@@ -4,8 +4,8 @@ drawBezierShape: vertices color: c borderWidth: borderWidth borderColor: borderC
 	For lines, the control point should be set to either the start or the end
 	of the bezier curve."
 	| fillC borderC |
-	fillC _ self shadowColor ifNil:[c].
-	borderC _ self shadowColor ifNil:[borderColor].
+	fillC := self shadowColor ifNil:[c].
+	borderC := self shadowColor ifNil:[borderColor].
 	self ensuredEngine
 		drawBezierShape: vertices
 		fill: fillC

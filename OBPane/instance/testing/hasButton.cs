@@ -1,2 +1,0 @@
-hasButton
-	^ button notNil

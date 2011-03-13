@@ -3,11 +3,11 @@ standardPositionsInWorld: aWorldOrNil
 
 	| anArea aList  midX midY |
 
-	anArea _ self maximumUsableAreaInWorld: aWorldOrNil.
+	anArea := self maximumUsableAreaInWorld: aWorldOrNil.
 
-	midX _ self scrollBarSetback +   ((anArea width - self scrollBarSetback)  // 2).
-	midY _ self screenTopSetback + ((anArea height - self screenTopSetback) // 2).
-	aList _ OrderedCollection with: (self scrollBarSetback @ self screenTopSetback).
+	midX := self scrollBarSetback +   ((anArea width - self scrollBarSetback)  // 2).
+	midY := self screenTopSetback + ((anArea height - self screenTopSetback) // 2).
+	aList := OrderedCollection with: (self scrollBarSetback @ self screenTopSetback).
 	self windowColumnsDesired > 1
 		ifTrue:
 			[aList add: (midX @ self screenTopSetback)].

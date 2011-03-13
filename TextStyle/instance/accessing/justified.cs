@@ -1,2 +1,2 @@
 justified
-	alignment _ 3
+	alignment := 3

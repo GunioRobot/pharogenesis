@@ -2,7 +2,7 @@ selfTest
 
 	| msgText msg |
 
-	msgText _ 
+	msgText := 
 'Date: Tue, 20 Feb 2001 13:52:53 +0300
 From: mdr@scn.rg (Me Ru)
 Subject: RE: Windows 2000 on your laptop
@@ -17,7 +17,7 @@ English, and then do the deed.  Oh, and expand my RAM to 128 first.
 Mike
 '.
 
-	msg _ self new from: msgText.
+	msg := self new from: msgText.
 
 	[msg text = msgText] assert.
 	[msg subject = 'RE: Windows 2000 on your laptop'] assert.

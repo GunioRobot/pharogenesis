@@ -1,4 +1,0 @@
-initialize
-
-	self registerInFlapsRegistry;
-		registerInAppRegistry.

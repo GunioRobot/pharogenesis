@@ -1,6 +1,6 @@
 MIMEDocument
 	subclass: #MIMELocalFileDocument
-	instanceVariableNames: 'contentStream'
+	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Network-Url'
+	category: 'Network-MIME'

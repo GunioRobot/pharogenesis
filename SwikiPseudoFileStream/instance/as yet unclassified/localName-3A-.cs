@@ -1,3 +1,3 @@
 localName: x
 
-	localName _ x
+	localName := x

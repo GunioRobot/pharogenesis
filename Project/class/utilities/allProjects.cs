@@ -2,5 +2,5 @@ allProjects
 
 	^AllProjects ifNil: [
 		Smalltalk garbageCollect.
-		AllProjects _ self allSubInstances select: [:p | p name notNil].
+		AllProjects := self allSubInstances select: [:p | p name notNil].
 	].

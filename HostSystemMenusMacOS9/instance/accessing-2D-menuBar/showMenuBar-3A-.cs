@@ -1,0 +1,2 @@
+showMenuBar: aWindowIndex
+	self primShowMenuBar

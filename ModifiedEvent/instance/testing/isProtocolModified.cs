@@ -1,0 +1,2 @@
+isProtocolModified
+	^ false

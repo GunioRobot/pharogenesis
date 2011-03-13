@@ -1,5 +1,5 @@
 exportAsBMP
 	| fName |
-	fName _ FillInTheBlank request:'Please enter the name' translated initialAnswer: self externalName,'.bmp'.
-	fName isEmpty ifTrue:[^self].
+	fName := UIManager default request:'Please enter the name' translated initialAnswer: self externalName,'.bmp'.
+	fName isEmptyOrNil ifTrue:[^self].
 	self imageForm writeBMPfileNamed: fName.

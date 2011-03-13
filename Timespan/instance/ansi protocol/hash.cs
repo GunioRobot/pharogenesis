@@ -1,3 +1,3 @@
 hash
 
-	^ start hash + duration hash
+	^ start hash + duration hash 

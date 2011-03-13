@@ -4,8 +4,8 @@ startDownload
 	unloaded isEmpty ifTrue:[^self].
 	self loadCachedResources.
 	unloaded isEmpty ifTrue:[^self].
-	stopFlag _ false.
-	stopSemaphore _ Semaphore new.
-	loaderProcess _ [self loaderProcess] newProcess.
+	stopFlag := false.
+	stopSemaphore := Semaphore new.
+	loaderProcess := [self loaderProcess] newProcess.
 	loaderProcess priority: Processor lowIOPriority.
 	loaderProcess resume.

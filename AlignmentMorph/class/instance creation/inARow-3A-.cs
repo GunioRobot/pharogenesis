@@ -2,7 +2,7 @@ inARow: aCollectionOfMorphs
 	"Answer a row-oriented AlignmentMorph holding the given collection"
 
 	| aRow |
-	aRow _ self newRow
+	aRow := self newRow
 		color: Color transparent;
 		vResizing: #shrinkWrap;
 		hResizing: #shrinkWrap;

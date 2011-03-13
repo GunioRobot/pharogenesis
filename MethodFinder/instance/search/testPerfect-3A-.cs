@@ -3,13 +3,13 @@ testPerfect: aSelector
 
 | sz argList val rec activeSel perform |
 	"Transcript cr; show: aSelector.		debug"
-perform _ aSelector beginsWith: 'perform:'.
-sz _ argMap size.
+perform := aSelector beginsWith: 'perform:'.
+sz := argMap size.
 1 to: thisData size do: [:ii | "each example set of args"
-	argList _ (thisData at: ii) copyFrom: 2 to: sz.
+	argList := (thisData at: ii) copyFrom: 2 to: sz.
 	perform
-		ifFalse: [activeSel _ aSelector]
-		ifTrue: [activeSel _ argList first.	"what will be performed"
+		ifFalse: [activeSel := aSelector]
+		ifTrue: [activeSel := argList first.	"what will be performed"
 			((Approved includes: activeSel) or: [AddAndRemove includes: activeSel])
 				ifFalse: [^ false].	"not approved"
 			aSelector == #perform:withArguments: 
@@ -19,17 +19,19 @@ sz _ argMap size.
 							ifFalse: [^ false]]].
 	1 to: sz do: [:num | 
 		(Blocks includes: (Array with: activeSel with: num)) ifTrue: [
-			(argList at: num) class == BlockContext ifFalse: [^ false]]].
-	rec _ (AddAndRemove includes: activeSel) 
+			(argList at: num) isBlock ifFalse: [^ false]]].
+	rec := (AddAndRemove includes: activeSel) 
 			ifTrue: [(thisData at: ii) first isSymbol ifTrue: [^ false].
 						"vulnerable to modification"
 				(thisData at: ii) first copyTwoLevel] 	"protect from damage"
 			ifFalse: [(thisData at: ii) first].
-	val _ [rec perform: aSelector withArguments: argList] 
+	val := [[rec perform: aSelector withArguments: argList] 
 				ifError: [:aString :aReceiver | 
 							"self test3."
 							"self test2: (thisData at: ii)."
-							^ false].
+							^ false]] on: Deprecation do: [:depr | 
+							"We do not want to list deprecated methods" 
+							^false.].
 	"self test3."
 	"self test2: (thisData at: ii)."
 	((answers at: ii) closeTo: val) ifFalse: [^ false].

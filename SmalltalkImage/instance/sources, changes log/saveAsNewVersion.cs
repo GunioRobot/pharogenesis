@@ -4,7 +4,7 @@ saveAsNewVersion
 	
 	| newName changesName aName anIndex |
 	aName := FileDirectory baseNameFor: (FileDirectory default localNameFor: self imageName).
-	anIndex := aName lastIndexOf: FileDirectory dot asCharacter ifAbsent: [nil].
+	anIndex := aName lastIndexOf: FileDirectory extensionDelimiter ifAbsent: [nil].
 	(anIndex notNil and: [(aName copyFrom: anIndex + 1 to: aName size) isAllDigits])
 		ifTrue:
 			[aName := aName copyFrom: 1 to: anIndex - 1].
@@ -22,9 +22,6 @@ curiously already present, even though there is
 no corresponding .image file.   Please remedy
 manually and then repeat your request.'].
 
-	(SourceFiles at: 2) ifNotNil:
-		[self closeSourceFiles; "so copying the changes file will always work"
-			saveChangesInFileNamed: (self fullNameForChangesNamed: newName)].
-	self saveImageInFileNamed: (self fullNameForImageNamed: newName)
+	^self saveAs: newName
 
 

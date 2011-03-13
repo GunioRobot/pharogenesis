@@ -1,2 +1,0 @@
-internal: aNumber
-	internal := aNumber

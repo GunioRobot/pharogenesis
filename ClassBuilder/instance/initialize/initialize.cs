@@ -1,3 +1,4 @@
 initialize
-	environ _ Smalltalk.
-	instVarMap _ IdentityDictionary new.
+	super initialize.
+	environ := Smalltalk.
+	instVarMap := IdentityDictionary new.

@@ -1,3 +1,0 @@
-buttonColor
-
-	^color darker

@@ -1,3 +1,0 @@
-getCameraPoint
-
-	^ self costume cameraPoint

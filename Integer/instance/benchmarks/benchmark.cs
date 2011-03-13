@@ -3,17 +3,17 @@ benchmark  "Handy bytecode-heavy benchmark"
 	"5000000 // (Time millisecondsToRun: [10 benchmark]) * 1000"
 	"3059000 on a Mac 8100/100"
     | size flags prime k count |
-    size _ 8190.
+    size := 8190.
     1 to: self do:
         [:iter |
-        count _ 0.
-        flags _ (Array new: size) atAllPut: true.
+        count := 0.
+        flags := (Array new: size) atAllPut: true.
         1 to: size do:
             [:i | (flags at: i) ifTrue:
-                [prime _ i+1.
-                k _ i + prime.
+                [prime := i+1.
+                k := i + prime.
                 [k <= size] whileTrue:
                     [flags at: k put: false.
-                    k _ k + prime].
-                count _ count + 1]]].
+                    k := k + prime].
+                count := count + 1]]].
     ^ count

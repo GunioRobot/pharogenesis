@@ -1,0 +1,2 @@
+collectionWithoutEqualsElements
+	^ withoutEqualElements 

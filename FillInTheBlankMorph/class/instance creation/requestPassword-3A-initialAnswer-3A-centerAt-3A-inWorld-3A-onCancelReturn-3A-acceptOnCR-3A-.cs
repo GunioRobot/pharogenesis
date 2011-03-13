@@ -6,7 +6,7 @@ requestPassword: queryString initialAnswer: defaultAnswer centerAt: aPoint inWor
 		centerAt: Display center"
 
 	| aFillInTheBlankMorph |
-	aFillInTheBlankMorph _ self new
+	aFillInTheBlankMorph := self new
 		setPasswordQuery: queryString
 		initialAnswer: defaultAnswer
 		answerHeight: 50

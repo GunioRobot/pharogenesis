@@ -1,2 +1,2 @@
 leftFlush
-	alignment _ 0
+	alignment := 0

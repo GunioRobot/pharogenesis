@@ -1,2 +1,0 @@
-defaultWorldColor
-	^ self subclassResponsibility

@@ -1,0 +1,4 @@
+unusedVariableSource
+	^ 'griffle 
+		| goo |
+		^ nil'

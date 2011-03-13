@@ -1,3 +1,0 @@
-codeMultiText
-
-	^ $c

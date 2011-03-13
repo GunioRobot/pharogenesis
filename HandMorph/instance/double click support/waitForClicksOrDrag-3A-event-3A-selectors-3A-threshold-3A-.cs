@@ -10,7 +10,7 @@ waitForClicksOrDrag: aMorph event: evt selectors: clickAndDragSelectors threshol
 	Note that mouseMove: and mouseUp: events are not sent to aMorph until it becomes the mouse focus,
 	which is typically done by aMorph in its click:, doubleClick:, or drag: methods."
 	
-	mouseClickState _ 
+	mouseClickState := 
 		MouseClickState new
 			client: aMorph 
 			click: clickAndDragSelectors first 

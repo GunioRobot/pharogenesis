@@ -2,7 +2,7 @@ fromByteArray: aByteArray
 
 	| inst |
 	aByteArray size \\ 4 = 0 ifFalse: [^ ByteString fromByteArray: aByteArray ].
-	inst _ self new: aByteArray size // 4.
+	inst := self new: aByteArray size // 4.
 	4 to: aByteArray size by: 4 do: [:i |
 		inst basicAt: i // 4
 			put: ((aByteArray at: i - 3) << 24) + 

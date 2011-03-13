@@ -1,3 +1,0 @@
-maxFileNameLength
-
-	^31

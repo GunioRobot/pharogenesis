@@ -1,3 +1,0 @@
-labelDown: aString
-
-	labelDown := aString.

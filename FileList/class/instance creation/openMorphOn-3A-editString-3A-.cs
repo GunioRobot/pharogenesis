@@ -2,10 +2,10 @@ openMorphOn: aFileStream editString: editString
 	"Open a morphic view of a FileList on the given file."
 	| fileModel window fileContentsView |
 
-	fileModel _ FileList new setFileStream: aFileStream.	"closes the stream"
-	window _ (SystemWindow labelled: aFileStream fullName) model: fileModel.
+	fileModel := FileList new setFileStream: aFileStream.	"closes the stream"
+	window := (SystemWindow labelled: aFileStream fullName) model: fileModel.
 
-	window addMorph: (fileContentsView _ PluggableTextMorph on: fileModel 
+	window addMorph: (fileContentsView := PluggableTextMorph on: fileModel 
 			text: #contents accept: #put:
 			readSelection: #contentsSelection 
 			menu: #fileContentsMenu:shifted:)

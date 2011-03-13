@@ -3,23 +3,23 @@ fileContentsMenu: aMenu shifted: shifted
 
 	| shiftMenu services maybeLine extraLines |
 	shifted ifTrue:
-		[shiftMenu _ ParagraphEditor shiftedYellowButtonMenu.
+		[shiftMenu := ParagraphEditor shiftedYellowButtonMenu.
 		^ aMenu addAllFrom: shiftMenu].
 	fileName ifNotNil:
-		[services _ OrderedCollection new.
+		[services := OrderedCollection new.
 		(#(briefHex briefFile needToGetBriefHex needToGetBrief) includes: brevityState) ifTrue:
 			[services add: self serviceGet].
 		(#(fullHex briefHex needToGetFullHex needToGetBriefHex) includes: brevityState) ifFalse:
 			[services add: self serviceGetHex].
 		(#(needToGetShiftJIS needToGetEUCJP needToGetCNGB needToGetEUCKR needToGetUTF8) includes: brevityState) ifFalse:
 			[services add: self serviceGetEncodedText].
-		maybeLine _ services size.
+		maybeLine := services size.
 		(FileStream sourceFileSuffixes includes: self suffixOfSelectedFile) ifTrue:
 			[services addAll:
 				(self servicesFromSelectorSpecs:
 					#(fileIntoNewChangeSet: fileIn: browseChangesFile: browseFile:))].
 
-		extraLines _ OrderedCollection new.
+		extraLines := OrderedCollection new.
 		maybeLine > 0 ifTrue: [extraLines add: maybeLine].
 		services size > maybeLine ifTrue: [extraLines add: services size].
 		aMenu 

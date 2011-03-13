@@ -1,1 +1,0 @@
-SMSARInstaller class instanceVariableNames: ''

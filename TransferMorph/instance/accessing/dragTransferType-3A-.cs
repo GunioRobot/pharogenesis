@@ -1,2 +1,2 @@
 dragTransferType: aSymbol
-	transferType _ aSymbol
+	transferType := aSymbol

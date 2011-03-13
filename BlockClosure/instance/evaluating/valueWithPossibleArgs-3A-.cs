@@ -1,8 +1,12 @@
 valueWithPossibleArgs: anArray 
 
-	| n |
-	(n _ self numArgs) = 0 ifTrue: [^ self value].
-	n = anArray size ifTrue: [^ self valueWithArguments: anArray].
-	^ self valueWithArguments: (n > anArray size
-		ifTrue: [anArray, (Array new: n - anArray size)]
-		ifFalse: [anArray copyFrom: 1 to: n])
+	^numArgs = 0
+		ifTrue: [self value]
+		ifFalse:
+			[self valueWithArguments:
+				(numArgs = anArray size
+					ifTrue: [anArray]
+					ifFalse:
+						[numArgs > anArray size
+							ifTrue: [anArray, (Array new: numArgs - anArray size)]
+							ifFalse: [anArray copyFrom: 1 to: numArgs]])]

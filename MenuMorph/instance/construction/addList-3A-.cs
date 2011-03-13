@@ -5,6 +5,6 @@ addList: aList
 		(tuple == #-)
 			ifTrue: [self addLine]
 			ifFalse:
-				[self add: tuple first action: tuple second.
+				[self add: tuple first capitalized action: tuple second.
 				tuple size > 2 ifTrue:
 					[self balloonTextForLastItem: tuple third]]]

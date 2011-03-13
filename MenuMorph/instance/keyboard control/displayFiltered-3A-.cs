@@ -1,16 +1,16 @@
 displayFiltered: evt
 	| matchStr allItems isMatch matches feedbackMorph |
-	matchStr _ self valueOfProperty: #matchString.
-	allItems _ self submorphs select: [:m | m isKindOf: MenuItemMorph].
-	matches _  allItems select: [:m | 
-		isMatch _ 
+	matchStr := self valueOfProperty: #matchString.
+	allItems := self submorphs select: [:m | m isKindOf: MenuItemMorph].
+	matches :=  allItems select: [:m | 
+		isMatch := 
 			matchStr isEmpty or: [
 				m contents includesSubstring: matchStr caseSensitive: false].
 		m isEnabled: isMatch.
 		isMatch].
-	feedbackMorph _ self valueOfProperty: #feedbackMorph.
+	feedbackMorph := self valueOfProperty: #feedbackMorph.
 	feedbackMorph ifNil: [
-		feedbackMorph _ 
+		feedbackMorph := 
 			TextMorph new 
 				autoFit: true;
 				color: Color darkGray.

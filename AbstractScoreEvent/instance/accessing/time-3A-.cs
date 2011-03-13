@@ -1,3 +1,0 @@
-time: aNumber
-
-	time := aNumber.

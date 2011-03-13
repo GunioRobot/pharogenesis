@@ -7,6 +7,6 @@ getPartial: limit fileNamed: remoteFileName into: dataStream
 		do: [:ex |
 			self closeDataSocket.
 			ex pass].
-	data _ self get: limit dataInto: dataStream.
+	data := self get: limit dataInto: dataStream.
 	self abortDataConnection.
 	^data

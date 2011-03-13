@@ -1,2 +1,0 @@
-dropColor
-	^ Color green darker

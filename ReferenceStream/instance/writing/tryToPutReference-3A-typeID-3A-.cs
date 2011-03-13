@@ -15,7 +15,7 @@ tryToPutReference: anObject typeID: typeID
 	(self isAReferenceType: typeID) ifFalse: [^ false].
 
 	"Have we heard of and maybe even written anObject before?"
-	referencePosn _ references at: anObject ifAbsent:
+	referencePosn := references at: anObject ifAbsent:
 			["Nope. Remember it and let the sender write it."
 			references at: anObject put: (byteStream position - basePos).	"relative"
 			^ false].
@@ -32,7 +32,7 @@ tryToPutReference: anObject typeID: typeID
 
 	"Else referencePosn is a collection of positions of weak-references to anObject.
 	 Make them full references since we're about to really write anObject."
-	references at: anObject put: (nextPosn _ byteStream position) - basePos.	"store relative"
+	references at: anObject put: (nextPosn := byteStream position) - basePos.	"store relative"
 	referencePosn do: [:weakRefPosn |
 			byteStream position: weakRefPosn + basePos.		"make absolute"
 			self outputReference: nextPosn - basePos].	"make relative"

@@ -1,6 +1,6 @@
 addRepository
 	(self pickRepositorySatisfying: [:ea | (self repositories includes: ea) not])
-		ifNotNilDo: [:repo |
+		ifNotNil: [:repo |
 			(repo isKindOf: MCHttpRepository)
 				ifFalse: [^self inform: 'Only HTTP repositories are supported'].
 			self repositories add: repo.

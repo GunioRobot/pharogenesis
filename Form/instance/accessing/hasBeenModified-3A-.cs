@@ -3,4 +3,4 @@ hasBeenModified: aBool
 	aBool ifTrue:[^self unhibernate].
 	self shouldPreserveContents
 		ifTrue:[self hibernate]
-		ifFalse:[bits _ nil]
+		ifFalse:[bits := nil]

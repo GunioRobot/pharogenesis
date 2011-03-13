@@ -1,0 +1,2 @@
+setUsePangoFlag
+	^ self

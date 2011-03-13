@@ -1,3 +1,0 @@
-isMethodContext
-
-	^ false

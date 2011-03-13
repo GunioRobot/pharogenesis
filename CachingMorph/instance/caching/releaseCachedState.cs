@@ -1,4 +1,4 @@
 releaseCachedState
 
 	super releaseCachedState.
-	cacheCanvas _ nil.
+	cacheCanvas := nil.

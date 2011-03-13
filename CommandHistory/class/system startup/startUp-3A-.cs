@@ -1,7 +1,5 @@
-startUp: aboutToQuit 
-	Preferences purgeUndoOnQuit
-		ifTrue: [
-			aboutToQuit ifTrue: [self resetAllHistory].
-		].
+startUp: resuming 
+	resuming ifFalse: [^ self].
+	Preferences purgeUndoOnQuit ifFalse: [self resetAllHistory]
  
 	

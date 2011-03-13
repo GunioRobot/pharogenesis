@@ -3,6 +3,7 @@ initRandomFromUser
 
 	| s k srcIndex |
 	s := UIManager default request: 'Enter a long random string to seed the random generator.'.
+	s isNil ifTrue: [s := '']. 
 	k := LargePositiveInteger new: (s size min: 64).
 	srcIndex := 0.
 	k digitLength to: 1 by: -1 do: [:i |

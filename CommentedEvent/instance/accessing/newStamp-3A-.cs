@@ -1,0 +1,2 @@
+newStamp: aString
+	newStamp := aString

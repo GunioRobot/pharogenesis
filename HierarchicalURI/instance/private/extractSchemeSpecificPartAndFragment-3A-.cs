@@ -1,3 +1,3 @@
 extractSchemeSpecificPartAndFragment: remainder
 	super extractSchemeSpecificPartAndFragment: remainder.
-	schemeSpecificPart _ self extractQuery: schemeSpecificPart
+	schemeSpecificPart := self extractQuery: schemeSpecificPart

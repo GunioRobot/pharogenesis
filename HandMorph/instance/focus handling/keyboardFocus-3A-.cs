@@ -1,2 +1,2 @@
 keyboardFocus: aMorphOrNil
-	keyboardFocus _ aMorphOrNil
+	keyboardFocus := aMorphOrNil

@@ -1,5 +1,5 @@
 adjustRightX
 	| shrink |
-	shrink _ container right - maxRightX.
+	shrink := container right - maxRightX.
 	lines do: [:line | line paddingWidth: (line paddingWidth - shrink)].
-	container _ container withRight: maxRightX
+	container := container withRight: maxRightX

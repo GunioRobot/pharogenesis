@@ -7,7 +7,7 @@ verify: ob1 matches: ob2 knowing: matchDict
 		((ob1 isKindOf: Behavior) and: [ob1 indexIfCompact = ob2 indexIfCompact]) ifTrue: [^ self].
 		(outPointers includes: ob1) ifTrue: [^ self].
 		self halt].
-	priorMatch _ matchDict at: ob1 ifAbsent: [nil].
+	priorMatch := matchDict at: ob1 ifAbsent: [nil].
 	priorMatch == nil
 		ifTrue: [matchDict at: ob1 put: ob2]
 		ifFalse: [priorMatch == ob2
@@ -16,8 +16,8 @@ verify: ob1 matches: ob2 knowing: matchDict
 	self verify: ob1 class matches: ob2 class knowing: matchDict.
 	ob1 class isVariable ifTrue: 
 		[ob1 basicSize = ob2 basicSize ifFalse: [self halt].
-		first _ 1.
-		(ob1 isMemberOf: CompiledMethod) ifTrue: [first _ ob1 initialPC].
+		first := 1.
+		(ob1 isMemberOf: CompiledMethod) ifTrue: [first := ob1 initialPC].
 		first to: ob1 basicSize do:
 			[:i | self verify: (ob1 basicAt: i) matches: (ob2 basicAt: i) knowing: matchDict]].
 	ob1 class instSize = ob2 class instSize ifFalse: [self halt].

@@ -3,7 +3,7 @@ initializeWithThumbnail: aThumbnail withLabel: aLabel andColor: aColor andSend: 
 
 	| labeledItem nonTranslucent |
 	nonTranslucent := aColor asNontranslucentColor.
-	labeledItem _ AlignmentMorph newColumn.
+	labeledItem := AlignmentMorph newColumn.
 	labeledItem color: nonTranslucent.
 	labeledItem borderWidth: 0.
 	labeledItem

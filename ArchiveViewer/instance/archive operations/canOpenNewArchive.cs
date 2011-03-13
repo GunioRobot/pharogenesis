@@ -1,2 +1,0 @@
-canOpenNewArchive
-	^true

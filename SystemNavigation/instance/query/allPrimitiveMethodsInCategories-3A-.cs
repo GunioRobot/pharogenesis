@@ -5,13 +5,13 @@ allPrimitiveMethodsInCategories: aList
 	#('Collections-Streams' 'Files-Streams' 'Files-Abstract' 'Files-Macintosh')"
 
 	| aColl method |
-	aColl _ OrderedCollection new: 200.
+	aColl := OrderedCollection new: 200.
 	Cursor execute
 		showWhile: [self
 				allBehaviorsDo: [:aClass | (aList includes: (SystemOrganization categoryOfElement: aClass theNonMetaClass name asString) asString)
 						ifTrue: [aClass
 								selectorsDo: [:sel | 
-									method _ aClass compiledMethodAt: sel.
+									method := aClass compiledMethodAt: sel.
 									method primitive ~= 0
 										ifTrue: [aColl addLast: aClass name , ' ' , sel , ' ' , method primitive printString]]]]].
 	^ aColl

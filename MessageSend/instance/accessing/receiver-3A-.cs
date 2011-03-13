@@ -1,2 +1,2 @@
 receiver: anObject
-	receiver _ anObject
+	receiver := anObject

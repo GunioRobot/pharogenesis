@@ -1,2 +1,2 @@
 resetEngine
-	engine _ nil.
+	engine := nil.

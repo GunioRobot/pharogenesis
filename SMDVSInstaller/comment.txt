@@ -1,4 +1,0 @@
-This is an installer class for DVS packages. It handles packages categorized with package
-format as DVS and with a download filename with extensions .st or .st.gz.
-
-This class can function without DVS installed, needed classes are looked up dynamically.

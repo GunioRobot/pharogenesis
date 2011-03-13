@@ -1,2 +1,2 @@
 subject: aTraitTransformation
-	subject _ aTraitTransformation
+	subject := aTraitTransformation

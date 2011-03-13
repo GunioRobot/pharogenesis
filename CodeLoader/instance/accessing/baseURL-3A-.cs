@@ -1,2 +1,2 @@
 baseURL: aString
-	baseURL _ aString.
+	baseURL := aString.

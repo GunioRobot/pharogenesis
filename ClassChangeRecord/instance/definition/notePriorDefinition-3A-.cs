@@ -1,4 +1,4 @@
 notePriorDefinition: oldClass
 
 	oldClass ifNil: [^ self].
-	priorDefinition ifNil: [priorDefinition _ oldClass definition]
+	priorDefinition ifNil: [priorDefinition := oldClass definition]

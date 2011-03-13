@@ -1,6 +1,6 @@
 initialize
 	"HandMorph initialize"
 
-	PasteBuffer _ nil.
-	DoubleClickTime _ 350.
-	NormalCursor _ CursorWithMask normal asCursorForm.
+	PasteBuffer := nil.
+	DoubleClickTime := 350.
+	NormalCursor := CursorWithMask normal asCursorForm.

@@ -1,0 +1,2 @@
+invalMenuBar
+	self primInvalMenuBar

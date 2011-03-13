@@ -1,1 +1,0 @@
-OBVarButtonPanel displays a horizontal row of buttons. In contrast to OBFixedButtonPanel, the buttons on display are updated to reflect the actions appropriate to the currently selected node.

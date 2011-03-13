@@ -12,6 +12,4 @@ flapsSuppressed: aBoolean
 						[:aFlapTab | Flaps removeFlapTab: aFlapTab keepInList: true]]
 
 				ifFalse:
-					[Smalltalk isMorphic  ifTrue:
-						[self currentWorld addGlobalFlaps]]].
-	Project current assureNavigatorPresenceMatchesPreference
+					[self currentWorld addGlobalFlaps]].

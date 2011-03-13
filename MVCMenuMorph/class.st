@@ -1,1 +1,0 @@
-MVCMenuMorph class instanceVariableNames: ''

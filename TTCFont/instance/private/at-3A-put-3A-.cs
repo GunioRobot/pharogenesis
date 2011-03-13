@@ -1,3 +1,5 @@
 at: char put: form
-
-	self cache at: (char asInteger + 1) put: (foregroundColor -> form).
+	| assoc |
+	assoc := foregroundColor -> form.
+	GlyphCacheData at: (GlyphCacheIndex := GlyphCacheIndex \\ GlyphCacheSize + 1) put: assoc.
+	cache at: (char asInteger + 1) put: assoc.

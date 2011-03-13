@@ -1,6 +1,6 @@
 withClippingRectangle: clipRect do: aBlock
 	| saveClip |
-	saveClip _ clippingRectangle.
-	clippingRectangle _ clipRect.
+	saveClip := clippingRectangle.
+	clippingRectangle := clipRect.
 		aBlock value.
-	clippingRectangle _ saveClip
+	clippingRectangle := saveClip

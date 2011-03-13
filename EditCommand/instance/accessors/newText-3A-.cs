@@ -1,2 +1,2 @@
 newText: aText
-	^newText _ aText
+	^newText := aText

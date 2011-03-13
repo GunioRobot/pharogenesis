@@ -1,3 +1,3 @@
 queueDict
-	queueDict ifNil: [queueDict _ IdentityDictionary new].
+	queueDict ifNil: [queueDict := IdentityDictionary new].
 	^ queueDict.

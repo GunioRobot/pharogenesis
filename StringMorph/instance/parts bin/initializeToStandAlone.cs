@@ -1,7 +1,7 @@
 initializeToStandAlone
 	super initializeToStandAlone.
 	
-	font _ nil.
-	emphasis _ 0.
-	hasFocus _ false.
+	font := nil.
+	emphasis := 0.
+	hasFocus := false.
 	self contents: 'String: Shift-click on me to edit'

@@ -1,3 +1,0 @@
-activeTextMorph
-
-	^activeTextMorph

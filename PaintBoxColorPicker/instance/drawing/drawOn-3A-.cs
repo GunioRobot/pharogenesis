@@ -4,7 +4,7 @@ drawOn: aCanvas
 	| c |
 	super drawOn: aCanvas.
 	locOfCurrent ifNotNil: [
-		c _ self ringColor.
+		c := self ringColor.
 		aCanvas
 			fillOval: (Rectangle center: locOfCurrent + self topLeft extent: 9@9)
 			color: Color transparent

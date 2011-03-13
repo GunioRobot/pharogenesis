@@ -1,2 +1,2 @@
 padding: aNumber
-	padding _ aNumber
+	padding := aNumber

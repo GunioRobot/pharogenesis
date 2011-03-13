@@ -1,2 +1,0 @@
-sortPages
-	book sortPages

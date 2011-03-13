@@ -5,7 +5,7 @@ stepToSendOrReturn
 	| ctxt |
 	[self willReallySend | self willReturn | self willStore]
 		whileFalse: [
-			ctxt _ self step.
+			ctxt := self step.
 			ctxt == self ifFalse: [self halt. 
 				"Caused by mustBeBoolean handling"
 				^ctxt]]

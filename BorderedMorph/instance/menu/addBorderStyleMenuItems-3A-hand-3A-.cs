@@ -2,7 +2,7 @@ addBorderStyleMenuItems: aMenu hand: aHandMorph
 	"Add border-style menu items"
 
 	| subMenu |
-	subMenu _ MenuMorph new defaultTarget: self.
+	subMenu := MenuMorph new defaultTarget: self.
 	"subMenu addTitle: 'border' translated."
 	subMenu addStayUpItemSpecial.
 	subMenu addList: 

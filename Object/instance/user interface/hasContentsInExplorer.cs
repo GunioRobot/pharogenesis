@@ -1,3 +1,3 @@
 hasContentsInExplorer
 
-	^self basicSize > 0 or: [self class allInstVarNames isEmpty not]
+	^self basicSize > 0 or: [self class allInstVarNames notEmpty]

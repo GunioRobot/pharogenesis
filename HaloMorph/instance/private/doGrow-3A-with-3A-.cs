@@ -3,17 +3,17 @@ doGrow: evt with: growHandle
 
 	| newExtent extentToUse scale |
 	evt hand obtainHalo: self.
-	newExtent _ (target pointFromWorld: (target griddedPoint: evt cursorPoint - positionOffset))
+	newExtent := (target pointFromWorld: (target griddedPoint: evt cursorPoint - positionOffset))
 								- target topLeft.
 	evt shiftPressed ifTrue: [
-		scale _ (newExtent x / (originalExtent x max: 1)) min:
+		scale := (newExtent x / (originalExtent x max: 1)) min:
 					(newExtent y / (originalExtent y max: 1)).
-		newExtent _ (originalExtent x * scale) asInteger @ (originalExtent y * scale) asInteger
+		newExtent := (originalExtent x * scale) asInteger @ (originalExtent y * scale) asInteger
 	].
 	(newExtent x < 1 or: [newExtent y < 1 ]) ifTrue: [^ self].
-	target renderedMorph setExtentFromHalo: (extentToUse _ newExtent).
+	target renderedMorph setExtentFromHalo: (extentToUse := newExtent).
 	growHandle position: evt cursorPoint - (growHandle extent // 2).
 	self layoutChanged.
-	(self valueOfProperty: #commandInProgress) ifNotNilDo:  
+	(self valueOfProperty: #commandInProgress) ifNotNil:  
 		[:cmd | "Update the final extent"
 			cmd redoTarget: target renderedMorph selector: #setFlexExtentFromHalo: argument: extentToUse]

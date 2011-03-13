@@ -1,2 +1,2 @@
 helpColor
-	^ self subclassResponsibility
+^ self okColor

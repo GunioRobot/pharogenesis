@@ -2,7 +2,7 @@ hiddenInfo
 	"In TextLinks, TextDoits, TextColor, and TextURLs, there is hidden info.  Return the entire string that was used by Cmd-6 to create this text attribute.  Usually enclosed in < >."
 
 	| attrList |
-	attrList _ paragraph text attributesAt: (self pointIndex +
+	attrList := paragraph text attributesAt: (self pointIndex +
 self markIndex)//2 forStyle: paragraph textStyle.
 	attrList do: [:attr |
 		(attr isKindOf: TextAction) ifTrue:

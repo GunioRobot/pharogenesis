@@ -1,2 +1,0 @@
-commandKeyPressed
-	^ event commandKeyPressed

@@ -1,3 +1,3 @@
 nanoSeconds
-
-	^ Duration nanoSeconds: self.
+ 
+ 	^ Duration nanoSeconds: self.

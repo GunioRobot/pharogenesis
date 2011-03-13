@@ -1,2 +1,2 @@
 newEmptyStack
-	stack _ QuickStack new
+	stack := QuickStack new

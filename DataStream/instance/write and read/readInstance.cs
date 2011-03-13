@@ -7,14 +7,14 @@ readInstance
 	Let the instance, not the class read the data.  "
 	| instSize aSymbol refPosn anObject newClass |
 
-	instSize _ (byteStream nextNumber: 4) - 1.
-	refPosn _ self getCurrentReference.
-	aSymbol _ self next.
-	newClass _ Smalltalk at: aSymbol asSymbol.
-	anObject _ newClass isVariable 	"Create object here"
+	instSize := (byteStream nextNumber: 4) - 1.
+	refPosn := self getCurrentReference.
+	aSymbol := self next.
+	newClass := Smalltalk at: aSymbol asSymbol.
+	anObject := newClass isVariable 	"Create object here"
 			ifFalse: [newClass basicNew]
 			ifTrue: [newClass basicNew: instSize - (newClass instSize)].
 	self setCurrentReference: refPosn.  "before readDataFrom:size:"
-	anObject _ anObject readDataFrom: self size: instSize.
+	anObject := anObject readDataFrom: self size: instSize.
 	self setCurrentReference: refPosn.  "before returning to next"
 	^ anObject

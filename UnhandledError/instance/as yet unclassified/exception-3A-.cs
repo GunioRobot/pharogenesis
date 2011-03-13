@@ -1,3 +1,3 @@
 exception: anError
 
-	exception _ anError
+	exception := anError

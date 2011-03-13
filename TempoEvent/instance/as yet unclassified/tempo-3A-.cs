@@ -1,3 +1,0 @@
-tempo: anInteger
-
-	tempo := anInteger.

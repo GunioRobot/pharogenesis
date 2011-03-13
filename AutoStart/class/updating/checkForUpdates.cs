@@ -6,12 +6,12 @@ checkForUpdates
 			ActiveHand position: 100@100].
 	HTTPClient isRunningInBrowser
 		ifFalse: [^self processUpdates].
-	availableUpdate _ (AbstractLauncher extractParameters
+	availableUpdate := (AbstractLauncher extractParameters
 		at: 'UPDATE'
 		ifAbsent: [''] ) asInteger.
 	availableUpdate
 		ifNil: [^false].
-	updateServer _ AbstractLauncher extractParameters
+	updateServer := AbstractLauncher extractParameters
 		at: 'UPDATESERVER'
 		ifAbsent: [AbstractLauncher extractParameters
 		at: 'UPDATE_SERVER'

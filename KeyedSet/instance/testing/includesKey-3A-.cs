@@ -1,3 +1,3 @@
 includesKey: key
-
-	^ (array at: (self findElementOrNil: key)) ~~ nil
+ 
+ 	^ (array at: (self findElementOrNil: key)) ~~ nil

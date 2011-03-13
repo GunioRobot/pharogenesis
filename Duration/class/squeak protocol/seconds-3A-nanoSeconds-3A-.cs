@@ -1,3 +1,4 @@
 seconds: seconds nanoSeconds: nanos
-
-	^ self days: 0 hours: 0 minutes: 0 seconds: seconds nanoSeconds: nanos
+	^ self basicNew
+		seconds: seconds truncated
+		nanoSeconds: seconds fractionPart * NanosInSecond + nanos

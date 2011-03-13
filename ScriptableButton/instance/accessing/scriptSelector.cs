@@ -1,2 +1,0 @@
-scriptSelector
-	^ scriptSelector

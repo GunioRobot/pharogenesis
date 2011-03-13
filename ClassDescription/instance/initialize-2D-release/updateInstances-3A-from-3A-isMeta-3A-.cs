@@ -8,10 +8,10 @@ updateInstances: oldInstances from: oldClass isMeta: isMeta
 		oldInstances size = 1 ifFalse:[^self error:'Metaclasses can only have one instance'].
 		self soleInstance class == self ifTrue:[
 			^self error:'Metaclasses can only have one instance']].
-	map _ self instVarMappingFrom: oldClass.
-	variable _ self isVariable.
-	instSize _ self instSize.
-	newInstances _ Array new: oldInstances size.
+	map := self instVarMappingFrom: oldClass.
+	variable := self isVariable.
+	instSize := self instSize.
+	newInstances := Array new: oldInstances size.
 	1 to: oldInstances size do:[:i|
 		newInstances at: i put: (
 			self newInstanceFrom: (oldInstances at: i) variable: variable size: instSize map: map)].

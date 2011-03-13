@@ -1,7 +1,7 @@
 startTranscriptProcess   "Transcripter startTranscriptProcess"
 	| activeProcess |
-	Transcript _ self newInFrame: Display boundingBox.
-	activeProcess _ [Transcript readEvalPrint.
+	Transcript := self newInFrame: Display boundingBox.
+	activeProcess := [Transcript readEvalPrint.
 					Smalltalk processShutDownList: true; quitPrimitive]
 						newProcess
 					priority: Processor userSchedulingPriority.

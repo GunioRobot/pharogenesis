@@ -1,10 +1,10 @@
 testWaitAndWaitTimeoutTogether
 	| semaphore value waitProcess waitTimeoutProcess |
-	semaphore _ Semaphore new.
+	semaphore := Semaphore new.
 	
-	waitProcess _ [semaphore wait. value _ #wait] fork.
+	waitProcess := [semaphore wait. value := #wait] fork.
 
-	waitTimeoutProcess _ [semaphore waitTimeoutMSecs: 50. value _ #waitTimeout] fork.
+	waitTimeoutProcess := [semaphore waitTimeoutMSecs: 50. value := #waitTimeout] fork.
 
 	"Wait for the timeout to happen"
 	(Delay forMilliseconds: 100) wait.

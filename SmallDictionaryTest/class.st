@@ -1,0 +1,1 @@
+SmallDictionaryTest class instanceVariableNames: ''

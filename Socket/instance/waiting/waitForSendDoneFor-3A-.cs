@@ -1,11 +1,12 @@
 waitForSendDoneFor: timeout
 	"Wait up until the given deadline for the current send operation to complete. Return true if it completes by the deadline, false if not."
 
-	| sendDone deadline |
-	deadline := Socket deadlineSecs: timeout.
-	[self isConnected & (sendDone _ self primSocketSendDone: socketHandle) not
+	| startTime msecsDelta msecsEllapsed sendDone |
+	startTime := Time millisecondClockValue.
+	msecsDelta := (timeout * 1000) truncated.
+	[self isConnected & (sendDone := self primSocketSendDone: socketHandle) not
 			"Connection end and final data can happen fast, so test in this order"
-		and: [Time millisecondClockValue < deadline]] whileTrue: [
-			self writeSemaphore waitTimeoutMSecs: (deadline - Time millisecondClockValue)].
+		and: [(msecsEllapsed := Time millisecondsSince: startTime) < msecsDelta]] whileTrue: [
+			self writeSemaphore waitTimeoutMSecs: msecsDelta - msecsEllapsed].
 
 	^ sendDone

@@ -1,2 +1,2 @@
 theMetaClass
-	^ self metaclass
+	^ self metaClass

@@ -3,4 +3,4 @@ depth: depthInteger width: widthInteger height: heightInteger fullscreen: aBoole
 	"DisplayScreen depth: 8 width: 1024 height: 768 fullscreen: false"
 
 	<primitive: 92>
-	self primitiveFail
+	self primitiveFailed 

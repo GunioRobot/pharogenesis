@@ -3,4 +3,4 @@ QuotedPrintableMimeConverter
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Collections-Streams'
+	category: 'Network-MIME'

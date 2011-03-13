@@ -1,0 +1,2 @@
+movableModalWindowClass
+	^4

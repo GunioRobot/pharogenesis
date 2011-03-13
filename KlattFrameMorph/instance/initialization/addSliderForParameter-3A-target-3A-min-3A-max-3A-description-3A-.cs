@@ -1,2 +1,0 @@
-addSliderForParameter: parameter target: target min: min max: max description: description
-	self addMorphFront: (self newSliderForParameter: parameter target: target min: min max: max description: description)

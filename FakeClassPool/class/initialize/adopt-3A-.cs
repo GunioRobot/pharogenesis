@@ -1,7 +1,7 @@
 adopt: classOrNil
 	"Temporarily use the classPool and sharedPools of another class"
 	classOrNil isBehavior
-		ifFalse: [classPool _ nil.
-				sharedPools _ nil]
-		ifTrue: [classPool _ classOrNil classPool.
-				sharedPools _ classOrNil sharedPools]
+		ifFalse: [classPool := nil.
+				sharedPools := nil]
+		ifTrue: [classPool := classOrNil classPool.
+				sharedPools := classOrNil sharedPools]

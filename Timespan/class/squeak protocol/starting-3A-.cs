@@ -1,4 +1,3 @@
-starting: aDateAndTime
+starting: aDateAndTime 
 
-
-	^ self starting: aDateAndTime duration: Duration zero
+	^ self starting: aDateAndTime duration: Duration zero 

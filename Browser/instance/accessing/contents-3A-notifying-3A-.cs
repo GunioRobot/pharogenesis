@@ -7,14 +7,14 @@ contents: input notifying: aController
 
 	| aString aText theClass |
 	self changed: #annotation.
-	aString _ input asString.
-	aText _ input asText.
+	aString := input asString.
+	aText := input asText.
 	editSelection == #newTrait ifTrue: [^self defineTrait: input asString notifying: aController].
 	editSelection == #editSystemCategories ifTrue: [^ self changeSystemCategories: aString].
 	editSelection == #editClass | (editSelection == #newClass) ifTrue: [^ self defineClass: aString notifying: aController].
 	editSelection == #editComment
 		ifTrue: 
-			[theClass _ self selectedClass.
+			[theClass := self selectedClass.
 			theClass
 				ifNil: 
 					[self inform: 'You must select a class

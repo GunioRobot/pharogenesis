@@ -4,4 +4,4 @@ transform: encoder
 		ifTrue: 
 			[^true]
 		ifFalse: 
-			[special _ 0. ^false]
+			[special := 0. ^false]

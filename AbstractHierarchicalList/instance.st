@@ -1,6 +1,6 @@
 Model
 	subclass: #AbstractHierarchicalList
-	instanceVariableNames: 'currentSelection myBrowser'
+	instanceVariableNames: 'currentSelection'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Explorer'

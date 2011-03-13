@@ -1,2 +1,0 @@
-wantsKeyboardFocusFor: aSubmorph
-	^ false

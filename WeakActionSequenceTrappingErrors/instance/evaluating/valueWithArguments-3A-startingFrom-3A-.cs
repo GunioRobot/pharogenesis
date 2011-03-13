@@ -9,7 +9,7 @@ valueWithArguments: anArray startingFrom: startIndex
 	startIndex to: self size do: [:index |
 		each := self at: index.
 		each isReceiverOrAnyArgumentGarbage ifFalse: [
-			[answer _ each valueWithArguments: anArray]
+			[answer := each valueWithArguments: anArray]
 				on: Halt, Error
 				do: [:exc | 
 						self valueWithArguments: anArray startingFrom: index + 1.

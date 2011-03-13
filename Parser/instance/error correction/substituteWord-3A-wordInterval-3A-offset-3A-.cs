@@ -5,5 +5,5 @@ substituteWord: correctWord wordInterval: spot offset: o
 					to: (spot last + o)
 					with: correctWord.
 
-	requestorOffset _ requestorOffset + correctWord size - spot size.
+	requestorOffset := requestorOffset + correctWord size - spot size.
 	^ o + correctWord size - spot size

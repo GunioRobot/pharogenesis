@@ -3,13 +3,10 @@ declare: varString
 	recompilation is advisable."
 
 	| newVars conflicts |
-	newVars _ 
+	newVars := 
 		(Scanner new scanFieldNames: varString)
 			collect: [:x | x asSymbol].
-	newVars do:
-		[:var | var first canBeGlobalVarInitial
-			ifFalse: [self error: var, ' class variable name should be capitalized; proceed to include anyway.']].
-	conflicts _ false.
+	conflicts := false.
 	classPool == nil 
 		ifFalse: [(classPool keys reject: [:x | newVars includes: x]) do: 
 					[:var | self removeClassVarName: var]].
@@ -19,10 +16,10 @@ declare: varString
 			(self bindingOf: var) notNil
 				ifTrue: 
 					[self error: var , ' is defined elsewhere'.
-					conflicts _ true]].
+					conflicts := true]].
 	newVars size > 0
 		ifTrue: 
-			[classPool _ self classPool.
+			[classPool := self classPool.
 			"in case it was nil"
 			newVars do: [:var | classPool declare: var from: Undeclared]].
 	^conflicts

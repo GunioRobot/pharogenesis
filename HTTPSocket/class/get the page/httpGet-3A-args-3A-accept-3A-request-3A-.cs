@@ -3,7 +3,7 @@ httpGet: url args: args accept: mimeType request: requestString
 	"Note: To fetch raw data, you can use the MIME type 'application/octet-stream'."
 
 	| document |
-	document _ self httpGetDocument: url  args: args  accept: mimeType request: requestString.
+	document := self httpGetDocument: url  args: args  accept: mimeType request: requestString.
 	(document isString) ifTrue: [
 		"strings indicate errors"
 		^ document ].

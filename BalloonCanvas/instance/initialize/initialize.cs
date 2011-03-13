@@ -1,3 +1,4 @@
 initialize
-	aaLevel _ 1.
-	deferred _ false.
+	super initialize.
+	aaLevel := 1.
+	deferred := false.

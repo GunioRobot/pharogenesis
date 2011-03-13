@@ -1,7 +1,6 @@
 raiseContextMenu: characterStream 
 	(morph respondsTo: #editView)
 		ifTrue: [morph editView yellowButtonActivity: ActiveEvent shiftPressed]
-		ifFalse: [sensor keyboard.
-			"consume the character"
+		ifFalse: [
 			morph yellowButtonActivity: false].
 	^ true

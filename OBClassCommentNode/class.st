@@ -1,1 +1,0 @@
-OBClassCommentNode class instanceVariableNames: ''

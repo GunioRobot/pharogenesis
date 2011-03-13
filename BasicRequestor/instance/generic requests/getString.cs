@@ -1,6 +1,6 @@
 getString
 	| result |
-	result _ FillInTheBlank  request:caption  initialAnswer:answer contents.
+	result := UIManager default  request:caption initialAnswer: answer contents.
 	self newCaption.
-	result isEmpty  |result isNil  ifTrue:[ServiceCancelled signal].
+	result isEmptyOrNil ifTrue:[ServiceCancelled signal].
 	^ result

@@ -1,4 +1,4 @@
 offset: newOffset
 
-	transform _ transform withOffset: newOffset - self innerBounds topLeft.
+	transform := transform withOffset: newOffset - self innerBounds topLeft.
 	self changed

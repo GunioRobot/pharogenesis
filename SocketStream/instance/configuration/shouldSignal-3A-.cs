@@ -9,7 +9,7 @@ shouldSignal: aBoolean
 	
 	Wrap your use of SocketStream with a handler like:
 	
-	[stuff _ mySocketStream next: 10]
+	[stuff := mySocketStream next: 10]
 		on: ConnectionClosed, ConnectionTimedOut
 		do: [:ex |
 			Transcript show: 'Oops! Did not get my ten bytes!;cr]

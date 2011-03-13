@@ -3,4 +3,4 @@ TestCase
 	instanceVariableNames: 'builder widget queries'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'ToolBuilder-Kernel'
+	category: 'Tests-ToolBuilder'

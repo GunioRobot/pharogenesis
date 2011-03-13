@@ -2,10 +2,10 @@ drawOn: aCanvas
 	| origin extent offset |
 	(font isNil) 
 		ifTrue:[^aCanvas frameRectangle: bounds color: Color black].
-	origin _ self position asIntegerPoint.
-	extent _ self extent asIntegerPoint.
+	origin := self position asIntegerPoint.
+	extent := self extent asIntegerPoint.
 	0 to: 16 do:[:i|
-		offset _ (extent x * i // 16) @ (extent y * i // 16).
+		offset := (extent x * i // 16) @ (extent y * i // 16).
 		aCanvas line: origin x @ (origin y + offset y) 
 				to: (origin x + extent x) @ (origin y + offset y)
 				width: borderWidth color: borderColor.

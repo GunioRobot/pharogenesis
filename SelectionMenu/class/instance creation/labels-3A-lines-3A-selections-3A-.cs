@@ -6,8 +6,8 @@ labels: labels lines: linesArray selections: selectionsArray
 
 	| labelString |
 	(labels isString)
-		ifTrue: [labelString _ labels]
-		ifFalse: [labelString _ String streamContents:
+		ifTrue: [labelString := labels]
+		ifFalse: [labelString := String streamContents:
 					[:s |
 					labels do: [:l | s nextPutAll: l; cr].
 					s skip: -1]].

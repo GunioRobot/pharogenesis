@@ -3,7 +3,7 @@ initializeWithFontArray: anArray
 	if another font has higher size"
 	| primaryFont maxHeight newFont |
 	fontArray := anArray.
-	primaryFont := anArray first.
+	primaryFont := anArray at: 1.
 	emphasis := 0.
 	name := primaryFont name.
 	maxHeight := anArray

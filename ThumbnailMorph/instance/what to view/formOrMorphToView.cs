@@ -6,8 +6,5 @@ formOrMorphToView
 	actualViewee := viewSelector ifNil: [objectToView]
 				ifNotNil: [objectToView perform: viewSelector].
 	^actualViewee == 0 
-		ifTrue: [nil	"valueAtCursor result for an empty HolderMorph"]
-		ifFalse: 
-			[(actualViewee isPlayerLike) 
-				ifTrue: [actualViewee costume]
-				ifFalse: [actualViewee]]
+		ifTrue: [nil]
+		ifFalse: [actualViewee]

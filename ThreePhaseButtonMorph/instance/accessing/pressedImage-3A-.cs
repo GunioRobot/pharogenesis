@@ -1,3 +1,3 @@
 pressedImage: aForm
-	pressedImage _ aForm.
+	pressedImage := aForm.
 	self invalidRect: self bounds.

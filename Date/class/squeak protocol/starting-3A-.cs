@@ -1,3 +1,3 @@
 starting: aDateAndTime
 
-	^super starting: (aDateAndTime midnight) duration: (Duration days: 1)
+	^ super starting: (aDateAndTime midnight) duration: (Duration days: 1)

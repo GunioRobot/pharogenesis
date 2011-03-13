@@ -1,2 +1,0 @@
-playerProcessPriority: aNumber
-	playerProcessPriority := aNumber

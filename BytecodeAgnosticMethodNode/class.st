@@ -1,0 +1,1 @@
+BytecodeAgnosticMethodNode class instanceVariableNames: ''

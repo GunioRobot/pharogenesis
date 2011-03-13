@@ -1,24 +1,24 @@
 prior
 	| currFile preamble prevPos tokens prevFileIndex |
-	currFile _ file readOnlyCopy.
+	currFile := file readOnlyCopy.
 	currFile position: (0 max: position - 150).
-	[currFile position < (position - 1)] whileTrue: [preamble _ currFile nextChunk].
+	[currFile position < (position - 1)] whileTrue: [preamble := currFile nextChunk].
 	currFile close.
-	prevPos _ nil.
+	prevPos := nil.
 	(preamble findString: 'methodsFor:' startingAt: 1) > 0
-		ifTrue: [tokens _ Scanner new scanTokens: preamble]
-		ifFalse: [tokens _ Array new].
+		ifTrue: [tokens := Scanner new scanTokens: preamble]
+		ifFalse: [tokens := Array new].
 	((tokens size between: 7 and: 8)
 	and: [(tokens at: tokens size - 5) == #methodsFor:]) ifTrue: [
 		(tokens at: tokens size - 3) == #stamp:
 		ifTrue: [
-			prevPos _ tokens last.
-			prevFileIndex _ SourceFiles fileIndexFromSourcePointer: prevPos.
-			prevPos _ SourceFiles filePositionFromSourcePointer: prevPos]
+			prevPos := tokens last.
+			prevFileIndex := SourceFiles fileIndexFromSourcePointer: prevPos.
+			prevPos := SourceFiles filePositionFromSourcePointer: prevPos]
 		ifFalse: [
-			prevPos _ tokens at: tokens size - 2.
-			prevFileIndex _ tokens last].
-		(prevPos = 0 or: [prevFileIndex = 0]) ifTrue: [prevPos _ nil]].
+			prevPos := tokens at: tokens size - 2.
+			prevFileIndex := tokens last].
+		(prevPos = 0 or: [prevFileIndex = 0]) ifTrue: [prevPos := nil]].
 	prevPos ifNil: [^ nil].
 	^ {prevFileIndex. prevPos. 
 		SourceFiles sourcePointerFromFileIndex: prevFileIndex andPosition: prevPos}

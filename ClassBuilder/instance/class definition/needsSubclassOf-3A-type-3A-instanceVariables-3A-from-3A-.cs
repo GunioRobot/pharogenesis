@@ -2,7 +2,7 @@ needsSubclassOf: newSuper type: type instanceVariables: instVars from: oldClass
 	"Answer whether we need a new subclass to conform to the requested changes"
 	| newFormat |
 	"Compute the format of the new class"
-	newFormat _ 
+	newFormat := 
 		self computeFormat: type 
 			instSize: instVars size 
 			forSuper: newSuper 

@@ -4,5 +4,5 @@ example2
 	self deliverMailFrom: 'm.rueger@acm.org' to: #('m.rueger@acm.org') text:
 'Subject: this is a test
 
-Hello from Squeak!
+Hello from Pharo!
 '	usingServer: 'smtp.concentric.net'

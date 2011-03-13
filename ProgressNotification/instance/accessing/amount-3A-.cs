@@ -1,2 +1,2 @@
 amount: aNumber
-	amount _ aNumber
+	amount := aNumber

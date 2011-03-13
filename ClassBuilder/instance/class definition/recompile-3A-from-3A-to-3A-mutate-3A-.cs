@@ -9,20 +9,20 @@ recompile: force from: oldClass to: newClass mutate: forceMutation
 	(newClass == oldClass and:[force not and:[forceMutation not]]) ifTrue:[
 		^newClass].
 
-	currentClassIndex _ 0.
-	maxClassIndex _ oldClass withAllSubclasses size.
+	currentClassIndex := 0.
+	maxClassIndex := oldClass withAllSubclasses size.
 
 	(oldClass == newClass and:[forceMutation not]) ifTrue:[
 		"Recompile from newClass without mutating"
 		self informUserDuring:[
-			newClass isSystemDefined ifFalse:[progress _ nil].
+			newClass isSystemDefined ifFalse:[progress := nil].
 			newClass withAllSubclassesDo:[:cl|
 				self showProgressFor: cl.
 				cl compileAll]].
 		^newClass].
 	"Recompile and mutate oldClass to newClass"
 	self informUserDuring:[
-		newClass isSystemDefined ifFalse:[progress _ nil].
+		newClass isSystemDefined ifFalse:[progress := nil].
 		self mutate: oldClass to: newClass.
 	].
 	^oldClass "now mutated to newClass"

@@ -1,3 +1,3 @@
 release
 
-	requestor _ nil
+	requestor := nil

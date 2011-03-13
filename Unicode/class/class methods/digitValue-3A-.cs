@@ -1,7 +1,7 @@
 digitValue: char
 
 	| value |
-	value _ char charCode.
+	value := char charCode.
 	value <= $9 asciiValue 
 		ifTrue: [^value - $0 asciiValue].
 	value >= $A asciiValue 

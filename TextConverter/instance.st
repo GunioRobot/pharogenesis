@@ -1,6 +1,6 @@
 Object
 	subclass: #TextConverter
-	instanceVariableNames: 'acceptingEncodings'
+	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: 'EventSensorConstants'
 	category: 'Multilingual-TextConversion'

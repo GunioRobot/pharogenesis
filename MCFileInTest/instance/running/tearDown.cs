@@ -1,3 +1,4 @@
 tearDown
 	(diff isNil or: [diff isEmpty not])
-		 ifTrue: [expected updatePackage: self mockPackage]
+		 ifTrue: [expected updatePackage: self mockPackage].
+	DataStream initialize

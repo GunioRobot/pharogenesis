@@ -1,2 +1,0 @@
-startTime: anInteger
-	startTime := anInteger

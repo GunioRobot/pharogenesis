@@ -1,7 +1,7 @@
 savePreferencesFor: aService 
 	| strm |
-	"pref _ ServicePreferences preferenceAt: aService shortcutPreference.
-	strm _ WriteStream with: ''.
+	"pref := ServicePreferences preferenceAt: aService shortcutPreference.
+	strm := WriteStream with: ''.
 	strm nextPutAll: aService id;
 		 nextPutAll: 'shortcut';
 		 cr;
@@ -12,7 +12,7 @@ savePreferencesFor: aService
 	aService isCategory
 		ifTrue: [aService externalPreferences
 				doWithIndex: [:e :i | 
-					strm _ WriteStream with: aService id asString.
+					strm := WriteStream with: aService id asString.
 					strm nextPutAll: e id asString;
 						 cr;
 						 tab;

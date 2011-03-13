@@ -7,7 +7,7 @@ noteMethodSubmission: selectorName forClass: class
 	self recentMethodSubmissions.	"ensure it is valid"
 	class wantsChangeSetLogging ifFalse: [^ self].
 	self purgeRecentSubmissionsOfMissingMethods.
-	submission _ class name asString, ' ', selectorName.
+	submission := class name asString, ' ', selectorName.
 	RecentSubmissions removeAllSuchThat: [ :each |
 		each asStringOrText = submission
 	].

@@ -6,7 +6,7 @@ oldStyleListenLoop
 	[true] whileTrue: [
 		((socket == nil) and: [connections size < maxQueueLength]) ifTrue: [
 			"try to create a new socket for listening"
-			socket _ Socket createIfFail: [nil]].
+			socket := Socket createIfFail: [nil]].
 
 		socket == nil
 			ifTrue: [(Delay forMilliseconds: 100) wait]
@@ -18,8 +18,8 @@ oldStyleListenLoop
 						socket isConnected
 							ifTrue: [  "connection established"
 								accessSema critical: [connections addLast: socket].
-								socket _ nil]
+								socket := nil]
 							ifFalse: [
 								socket isWaitingForConnection
-									ifFalse: [socket destroy. socket _ nil]]]].  "broken socket; start over"
+									ifFalse: [socket destroy. socket := nil]]]].  "broken socket; start over"
 		self pruneStaleConnections].

@@ -4,7 +4,7 @@ mouseEnterDragging: evt
 		^super mouseEnterDragging: evt].
 	(self wantsDroppedMorph: evt hand firstSubmorph event: evt )
 		ifTrue:[
-			aMorph _ self itemFromPoint: evt position.
+			aMorph := self itemFromPoint: evt position.
 			aMorph ifNotNil:[self potentialDropMorph: aMorph].
 			evt hand newMouseFocus: self.
 			"above is ugly but necessary for now"

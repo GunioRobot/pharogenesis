@@ -4,7 +4,7 @@ mouseMove: anEvent
 	self class fastSplitterResize
 		ifFalse:  [self updateFromEvent: anEvent]
 		ifTrue: [traceMorph
-				ifNil: [traceMorph _ Morph newBounds: self bounds.
+				ifNil: [traceMorph := Morph newBounds: self bounds.
 					traceMorph borderColor: Color lightGray.
 					traceMorph borderWidth: 1.
 					self owner addMorph: traceMorph].

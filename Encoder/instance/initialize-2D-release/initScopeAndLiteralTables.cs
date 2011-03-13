@@ -1,7 +1,14 @@
 initScopeAndLiteralTables
 
-	scopeTable _ StdVariables copy.
-	litSet _ StdLiterals copy.
-	selectorSet _ StdSelectors copy.
-	litIndSet _ Dictionary new: 16.
-	literalStream _ WriteStream on: (Array new: 32)
+	scopeTable := StdVariables copy.
+	litSet := StdLiterals copy.
+	"comments can be left hanging on nodes from previous compilations.
+	 probably better than this hack fix is to create the nodes afresh on each compilation."
+	scopeTable do:
+		[:varNode| varNode comment: nil].
+	litSet do:
+		[:varNode| varNode comment: nil].
+	selectorSet := StdSelectors copy.
+	litIndSet := Dictionary new: 16.
+	literalStream := (Array new: 32) writeStream.
+	addedSelectorAndMethodClassLiterals := false

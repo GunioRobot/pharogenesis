@@ -3,14 +3,14 @@ to: stop by: step do: aBlock
 	Evaluate aBlock for each element of the interval (self to: stop by: 
 step)."
 	| nextValue |
-	nextValue _ self.
+	nextValue := self.
 	step = 0 ifTrue: [self error: 'step must be non-zero'].
 	step < 0
 		ifTrue: [[stop <= nextValue]
 				whileTrue: 
 					[aBlock value: nextValue.
-					nextValue _ nextValue + step]]
+					nextValue := nextValue + step]]
 		ifFalse: [[stop >= nextValue]
 				whileTrue: 
 					[aBlock value: nextValue.
-					nextValue _ nextValue + step]]
+					nextValue := nextValue + step]]

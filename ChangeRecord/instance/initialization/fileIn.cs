@@ -3,12 +3,12 @@ fileIn
 
 	| methodClass s aSelector |
 	Cursor read showWhile:
-		[(methodClass _ self methodClass) notNil ifTrue:
+		[(methodClass := self methodClass) notNil ifTrue:
 			[methodClass compile: self text classified: category withStamp: stamp notifying: nil.
-			(aSelector _ self methodSelector) ifNotNil:
+			(aSelector := self methodSelector) ifNotNil:
 				[Utilities noteMethodSubmission: aSelector forClass: methodClass]].
 		(type == #doIt) ifTrue:
-			[((s _ self string) beginsWith: '----') ifFalse: [Compiler evaluate: s]].
+			[((s := self string) beginsWith: '----') ifFalse: [Compiler evaluate: s]].
 		(type == #classComment) ifTrue:
-			[ | cls | (cls _ Smalltalk at: class asSymbol) comment: self text stamp: stamp.
+			[ | cls | (cls := Smalltalk at: class asSymbol) comment: self text stamp: stamp.
 			Utilities noteMethodSubmission: #Comment forClass: cls ]]

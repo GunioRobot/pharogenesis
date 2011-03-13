@@ -2,7 +2,7 @@ classListMenu: aMenu shifted: shifted
 	"Fill aMenu with items appropriate for the class list"
 
 	aMenu title: 'class list'.
-	Smalltalk isMorphic ifTrue: [aMenu addStayUpItemSpecial].
+	aMenu addStayUpItemSpecial.
 	(parent notNil and: [shifted not])
 		ifTrue: [aMenu addList: #( "These two only apply to dual change sorters"
 			('copy class chgs to other side'			copyClassToOther)	
@@ -18,7 +18,6 @@ classListMenu: aMenu shifted: shifted
 			('browse hierarchy (h)'					spawnHierarchy)
 			('browse protocol (p)'					browseFullProtocol)
 			-
-			('printOut'								printOutClass)
 			('fileOut'								fileOutClass)
 			-
 			('inst var refs...'						browseInstVarRefs)

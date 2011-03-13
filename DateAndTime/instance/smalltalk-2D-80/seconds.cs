@@ -1,3 +1,3 @@
 seconds
-
-	^ self second
+ 
+ 	^ self second

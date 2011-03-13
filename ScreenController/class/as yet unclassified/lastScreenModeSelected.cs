@@ -1,3 +1,0 @@
-lastScreenModeSelected
-
-	^LastScreenModeSelected

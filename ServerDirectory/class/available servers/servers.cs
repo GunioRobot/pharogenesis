@@ -1,3 +1,3 @@
 servers
-	Servers ifNil: [Servers _ Dictionary new].
+	Servers ifNil: [Servers := Dictionary new].
 	^Servers

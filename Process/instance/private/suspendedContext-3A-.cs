@@ -1,3 +1,3 @@
 suspendedContext: aContext
 
-	suspendedContext _ aContext
+	suspendedContext := aContext

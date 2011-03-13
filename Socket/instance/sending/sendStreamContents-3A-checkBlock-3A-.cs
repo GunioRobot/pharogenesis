@@ -3,11 +3,11 @@ sendStreamContents: stream checkBlock: checkBlock
 	Usefull for directly sending contents of a file without reading into memory first."
 
 	| chunkSize buffer |
-	chunkSize _ 5000.
-	buffer _ ByteArray new: chunkSize.
+	chunkSize := 5000.
+	buffer := ByteArray new: chunkSize.
 	stream binary.
 	[[stream atEnd and: [checkBlock value]]
 		whileFalse: [
-			buffer _ stream next: chunkSize into: buffer.
+			buffer := stream next: chunkSize into: buffer.
 			self sendData: buffer]]
 		ensure: [stream close]

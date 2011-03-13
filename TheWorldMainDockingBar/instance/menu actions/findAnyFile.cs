@@ -1,2 +1,2 @@
 findAnyFile
-	FileList2 morphicViewGeneralLoaderInWorld: self world
+	FileList morphicViewGeneralLoaderInWorld: self world

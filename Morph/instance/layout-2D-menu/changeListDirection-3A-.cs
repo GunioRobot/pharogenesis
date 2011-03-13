@@ -3,8 +3,8 @@ changeListDirection: aSymbol
 	self listDirection: aSymbol.
 	(self wrapDirection == #none) ifTrue:[^self].
 	"otherwise automatically keep a valid table layout"
-	listDir _ self listDirection.
-	wrapDir _ self wrapDirection.
+	listDir := self listDirection.
+	wrapDir := self wrapDirection.
 	(listDir == #leftToRight or:[listDir == #rightToLeft]) ifTrue:[
 		wrapDir == #leftToRight ifTrue:[^self wrapDirection: #topToBottom].
 		wrapDir == #rightToLeft ifTrue:[^self wrapDirection: #bottomToTop].

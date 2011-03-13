@@ -1,2 +1,0 @@
-computeBounds
-	"Do nothing."

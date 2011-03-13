@@ -1,8 +1,0 @@
-A generalization of the clock morph
-
-Try
-	InfoStringMorph new openInWorld
-or
-	(InfoStringMorph on: [Smalltalk vmParameterAt: 9])
-		stepTime: 50;
-		openInWorld

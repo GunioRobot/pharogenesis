@@ -4,7 +4,7 @@ getterSelectorFor: identifier
 	"Utilities getterSelectorFor: #elvis"
 
 	| aSymbol |
-	(aSymbol _ identifier asSymbol) == #isOverColor: ifTrue: [^ #seesColor:].
+	(aSymbol := identifier asSymbol) == #isOverColor: ifTrue: [^ #seesColor:].
 	aSymbol == #copy ifTrue: [^ #getNewClone].
 
 	^ ('get', (identifier asString capitalized)) asSymbol

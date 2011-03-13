@@ -1,3 +1,2 @@
-values: anObject
-
-	values _ anObject
+values: anObject 
+	values := anObject

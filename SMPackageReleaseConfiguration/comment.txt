@@ -1,7 +1,0 @@
-A package release configuration describes the result of testing the specific release with a set of other releases that it depends on.
-The status instvar holds a symbol which reflects the result. Currently there are two valid values:
-	#working
-	#failing
-	
-The intention is that users and maintainers post these configurations to the map as "known working combinations of required releases".
-Each SMPackageRelease can then have multiple of these configurations.

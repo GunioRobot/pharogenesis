@@ -3,8 +3,8 @@ confirmRemovalOf: aSelector on: aClass
 	should be removed, 2 if it should be removed followed by a senders  
 	browse, and 3 if it should not be removed."
 	| count answer caption allCalls |
-	allCalls _ self allCallsOn: aSelector.
-	(count _ allCalls size) == 0
+	allCalls := self allCallsOn: aSelector.
+	(count := allCalls size) == 0
 		ifTrue: [^ 1].
 	"no senders -- let the removal happen without warning"
 	count == 1
@@ -12,10 +12,10 @@ confirmRemovalOf: aSelector on: aClass
 					and: [allCalls first methodSymbol == aSelector])
 				ifTrue: [^ 1]].
 	"only sender is itself"
-	caption _ 'This message has ' , count printString , ' sender'.
+	caption := 'This message has ' , count printString , ' sender'.
 	count > 1
-		ifTrue: [caption _ caption copyWith: $s].
-	answer _ UIManager default 
+		ifTrue: [caption := caption copyWith: $s].
+	answer := UIManager default 
 		chooseFrom: #('Remove it'
 				'Remove, then browse senders'
 				'Don''t remove, but show me those senders'
@@ -26,6 +26,6 @@ confirmRemovalOf: aSelector on: aClass
 				name: 'Senders of ' , aSelector
 				autoSelect: aSelector keywords first].
 	answer == 0
-		ifTrue: [answer _ 3].
+		ifTrue: [answer := 3].
 	"If user didn't answer, treat it as cancel"
 	^ answer min: 3

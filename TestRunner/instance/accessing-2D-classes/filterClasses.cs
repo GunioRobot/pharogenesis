@@ -6,4 +6,7 @@ filterClasses
 	pattern isNil ifTrue: [ ^ self ].
 	classesSelected := (classes select: [ :each | 
 		pattern match: each name ]) asSet.
-	self changed: #classSelected; changed: #hasRunnable.
+	self
+		changed: #allSelections;
+		changed: #classSelected;
+		changed: #hasRunnable

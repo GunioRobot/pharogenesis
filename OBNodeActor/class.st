@@ -1,1 +1,0 @@
-OBNodeActor class instanceVariableNames: ''

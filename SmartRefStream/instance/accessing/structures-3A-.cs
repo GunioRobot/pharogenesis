@@ -1,2 +1,2 @@
 structures: anObject
-	structures _ anObject
+	structures := anObject

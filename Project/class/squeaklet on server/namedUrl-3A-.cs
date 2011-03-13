@@ -4,6 +4,6 @@ namedUrl: urlString
 
 	"Ted's fix for unreachable projects"
 
-	projName _ (urlString findTokens: '/') last.
-	projName _ (Project parseProjectFileName: projName unescapePercents) first.
+	projName := (urlString findTokens: '/') last.
+	projName := (Project parseProjectFileName: projName unescapePercents) first.
 	^ Project named: projName

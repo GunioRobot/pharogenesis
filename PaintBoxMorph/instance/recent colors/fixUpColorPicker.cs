@@ -1,8 +1,8 @@
 fixUpColorPicker
 	| chart picker |
-	chart _ ColorChart ifNil:[Cursor wait showWhile:[ColorChart _ (ColorPickerMorph colorPaletteForDepth: 16 extent: 120@89)]].
+	chart := ColorChart ifNil:[Cursor wait showWhile:[ColorChart := (ColorPickerMorph colorPaletteForDepth: 16 extent: 120@89)]].
 	chart getCanvas frameRectangle: chart boundingBox color: Color black.
-	picker _ Form extent: (chart extent + (14@12)) depth: 16.
+	picker := Form extent: (chart extent + (14@12)) depth: 16.
 	picker fillWhite.
 	"top"
 	picker copy: (0@0 extent: picker width@6)

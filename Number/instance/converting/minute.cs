@@ -1,3 +1,4 @@
 minute
-
-	^ self sign minutes
+ 
+ 	^ self sign minutes
+ 

@@ -1,2 +1,2 @@
 sharedPools: aCollection
-	sharedPools _ aCollection
+	sharedPools := aCollection

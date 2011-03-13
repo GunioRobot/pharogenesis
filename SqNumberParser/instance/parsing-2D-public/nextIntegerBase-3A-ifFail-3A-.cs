@@ -3,7 +3,8 @@ nextIntegerBase: aRadix ifFail: aBlock
 	
 	| isNeg value |
 	isNeg := sourceStream peekFor: $-.
-	value := self nextUnsignedIntegerBase: aRadix ifFail: [^aBlock value].
+	value := self nextUnsignedIntegerOrNilBase: aRadix.
+	value isNil ifTrue: [^aBlock value].
 	^isNeg
 		ifTrue: [value negated]
 		ifFalse: [value]

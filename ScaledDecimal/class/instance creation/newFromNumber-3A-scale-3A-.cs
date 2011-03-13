@@ -1,6 +1,6 @@
-newFromNumber: aNumber scale: scaleIn 
-	"Answer a new instance of me."
-	| temp |
-	temp := self basicNew.
-	temp setFraction: aNumber asFraction scale: scaleIn.
-	^ temp
+newFromNumber: aNumber scale: anInteger
+	| aFraction |
+	aFraction := aNumber asFraction.
+	^aFraction isFraction
+		ifTrue: [self new setNumerator: aFraction numerator denominator: aFraction denominator scale: anInteger]
+		ifFalse: [self new setNumerator: aFraction denominator: 1 scale: anInteger]

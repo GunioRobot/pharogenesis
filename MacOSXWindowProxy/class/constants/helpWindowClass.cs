@@ -1,0 +1,2 @@
+helpWindowClass
+	^10

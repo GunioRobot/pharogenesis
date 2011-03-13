@@ -1,3 +1,3 @@
 hour
 
-	^ self hour24
+	^ self hour24 

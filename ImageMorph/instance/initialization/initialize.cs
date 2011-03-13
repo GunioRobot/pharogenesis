@@ -1,4 +1,4 @@
 initialize
 
 	super initialize.
-	self image: DefaultForm.
+	self image: self defaultImage.

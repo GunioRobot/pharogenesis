@@ -1,2 +1,2 @@
 inboard: aBoolean
-	inboard _ aBoolean
+	inboard := aBoolean

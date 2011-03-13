@@ -4,7 +4,7 @@ applyEdgeFractionWithin: aBoundsRectangle
 	| newPosition |
 	edgeFraction ifNil: [^ self].
 	self isCurrentlySolid ifTrue: [^ self].
-	newPosition _ self
+	newPosition := self
 		ifVertical:
 			[self left @  (self edgeFraction * (aBoundsRectangle height - self height))]
 		ifHorizontal:

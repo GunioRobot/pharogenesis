@@ -3,4 +3,4 @@ TestCase
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Localization'
+	category: 'Tests-Localization'

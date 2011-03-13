@@ -1,5 +1,5 @@
 recoverFromMDFault
 	"This method handles methodDict faults to support, eg, discoverActiveClasses (qv)."
 	(organization isMemberOf: Array) ifFalse: [^ self error: 'oops'].
-	methodDict _ organization first.
-	organization _ organization second.
+	methodDict := organization first.
+	organization := organization second.

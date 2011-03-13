@@ -3,21 +3,21 @@ reconstructChanges
 	"Smalltalk reconstructChanges"
 
 	| f oldChanges classCount |
-	f _ FileStream fileNamed: 'ST80.temp'.
+	f := FileStream fileNamed: 'ST80.temp'.
 	f header; timeStamp.
 'Condensing Changes File...'
 	displayProgressAt: Sensor cursorPoint
 	from: 0 to: self classNames size + self traitNames size
 	during:
-		[:bar | classCount _ 0.
+		[:bar | classCount := 0.
 		Smalltalk allClassesAndTraitsDo:
-			[:classOrTrait | bar value: (classCount _ classCount + 1).
+			[:classOrTrait | bar value: (classCount := classCount + 1).
 			classOrTrait moveChangesWithVersionsTo: f.
 			classOrTrait putClassCommentToCondensedChangesFile: f.
 			classOrTrait classSide moveChangesWithVersionsTo: f]].
 	SmalltalkImage current lastQuitLogPosition: f position.
 	f trailer; close.
-	oldChanges _ SourceFiles at: 2.
+	oldChanges := SourceFiles at: 2.
 	oldChanges close.
 	FileDirectory default 
 		deleteFileNamed: oldChanges name , '.old';

@@ -1,1 +1,0 @@
-SMProjectInstaller class instanceVariableNames: ''

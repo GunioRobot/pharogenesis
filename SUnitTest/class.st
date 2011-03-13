@@ -1,0 +1,1 @@
+SUnitTest class instanceVariableNames: ''

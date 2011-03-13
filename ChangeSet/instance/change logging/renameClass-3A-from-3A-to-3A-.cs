@@ -5,7 +5,7 @@ renameClass: class from: oldName to: newName
 	isolationSet ifNotNil:
 		["If there is an isolation layer above me, inform it as well."
 		isolationSet renameClass: class as: newName].
-	(recorder _ self changeRecorderFor: oldName)
+	(recorder := self changeRecorderFor: oldName)
 		noteChangeType: #rename;
 		noteNewName: newName asSymbol.
 		
@@ -16,7 +16,7 @@ renameClass: class from: oldName to: newName
 
 	newMetaClassName := newName, ' class'.
 	oldMetaClassName := oldName, ' class'.
-	recorder _ changeRecords at: oldMetaClassName ifAbsent: [^ nil].
+	recorder := changeRecords at: oldMetaClassName ifAbsent: [^ nil].
 	changeRecords at: newMetaClassName put: recorder.
 	changeRecords removeKey: oldMetaClassName.
 	recorder noteNewName: newMetaClassName

@@ -1,2 +1,0 @@
-numberDefaultBase
-	^10.

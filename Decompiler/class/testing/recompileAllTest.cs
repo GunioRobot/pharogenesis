@@ -1,5 +1,5 @@
 recompileAllTest
-	"[self recompileAllTest]"
+	"[Decompiler recompileAllTest]"
 	"decompile every method and compile it back; if the decompiler is correct then the system should keep running.  :)"
 	
 	| decompiled ast compiled |

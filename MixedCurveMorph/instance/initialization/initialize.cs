@@ -8,7 +8,7 @@ initialize
 	slopeClamps at: 1 put: 0 .
 	slopeClamps at: 4 put: 0 .
 	
-	closed _ true.
-	smoothCurve _ true.
-	arrows _ #none.
+	closed := true.
+	smoothCurve := true.
+	arrows := #none.
 	self computeBounds

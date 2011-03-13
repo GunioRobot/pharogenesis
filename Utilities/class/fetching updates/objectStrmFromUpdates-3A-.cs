@@ -3,9 +3,9 @@ objectStrmFromUpdates: fileName
 
 	| urls doc |
 	Cursor wait showWhile:
-		[urls _ Utilities serverUrls collect: [:url | url, 'updates/', fileName].
+		[urls := Utilities serverUrls collect: [:url | url, 'updates/','pharo', ScriptLoader currentMajorVersionNumber asString,'/', fileName].
 		urls do: [:aUrl |
-			doc _ HTTPSocket httpGet: aUrl accept: 'application/octet-stream'.
+			doc := HTTPSocket httpGet: aUrl accept: 'application/octet-stream'.
 			"test here for server being up"
 			doc class == RWBinaryOrTextStream ifTrue: [^ doc reset]]].
 

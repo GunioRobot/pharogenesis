@@ -1,5 +1,5 @@
 progressColor: aColor
 	progressColor = aColor
 		ifFalse:
-			[progressColor _ aColor.
+			[progressColor := aColor.
 			self changed]

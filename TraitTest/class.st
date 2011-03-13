@@ -1,1 +1,0 @@
-TraitTest class instanceVariableNames: ''

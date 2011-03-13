@@ -3,7 +3,7 @@ printOn: aStream
 	identifies the receiver."
 
 	| title |
-	title _ self class name.
+	title := self class name.
 	aStream
 		nextPutAll: (title first isVowel ifTrue: ['an '] ifFalse: ['a ']);
 		nextPutAll: title

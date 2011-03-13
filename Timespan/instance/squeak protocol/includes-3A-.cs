@@ -1,5 +1,4 @@
-includes: aDateAndTime
-
+includes: aDateAndTime 
 
 	^ (aDateAndTime isKindOf: Timespan)
 			ifTrue: [ (self includes: aDateAndTime start)

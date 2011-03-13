@@ -1,1 +1,0 @@
-My instances are clauses. They can carry a phrase accent (applicable to their last phrase) and a boundary tone: 'L- L%' (for declarative sentences in American English), 'H- H%' (for Yes-No questions), etc.

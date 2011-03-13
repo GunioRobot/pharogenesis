@@ -1,0 +1,1 @@
+WideCharacterSet class instanceVariableNames: ''

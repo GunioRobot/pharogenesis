@@ -1,3 +1,0 @@
-dataColor
-
-	^ dataColor

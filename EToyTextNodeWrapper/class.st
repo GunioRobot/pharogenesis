@@ -1,1 +1,0 @@
-EToyTextNodeWrapper class instanceVariableNames: ''

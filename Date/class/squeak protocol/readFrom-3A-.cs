@@ -1,11 +1,8 @@
 readFrom: aStream 
 	"Read a Date from the stream in any of the forms:  
-	
-		<day> <monthName> <year>		(5 April 1982; 5-APR-82)  
-	
-		<monthName> <day> <year>		(April 5, 1982)  
-	
-		<monthNumber> <day> <year>		(4/5/82) 
+			<day> <monthName> <year>		(5 April 1982; 5-APR-82)  
+			<monthName> <day> <year>		(April 5, 1982)  
+			<monthNumber> <day> <year>		(4/5/82) 
 			<day><monthName><year>			(5APR82)"
 	| day month year |
 	aStream peek isDigit
@@ -14,8 +11,7 @@ readFrom: aStream
 		whileFalse: [aStream skip: 1].
 	aStream peek isLetter
 		ifTrue: ["number/name... or name..."
-			month := WriteStream
-						on: (String new: 10).
+			month := (String new: 10) writeStream.
 			[aStream peek isLetter]
 				whileTrue: [month nextPut: aStream next].
 			month := month contents.

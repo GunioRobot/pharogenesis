@@ -7,9 +7,9 @@ readArray
 	 reference position over recursive calls to next."
 	| count array refPosn |
 
-	count _ byteStream nextNumber: 4.
+	count := byteStream nextNumber: 4.
 
-	refPosn _ self beginReference: (array _ Array new: count).		"relative pos"
+	refPosn := self beginReference: (array := Array new: count).		"relative pos"
 	1 to: count do: [:i |
 		array at: i put: self next].
 	self setCurrentReference: refPosn.		"relative pos"

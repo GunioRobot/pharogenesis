@@ -4,7 +4,7 @@ addList: listOfTuplesAndDashes
 	listOfTuplesAndDashes do: [:aTuple |
 		aTuple == #-
 			ifTrue: [self addLine]
-			ifFalse: [self add: aTuple first action: aTuple second]]
+			ifFalse: [self add: aTuple first capitalized action: aTuple second]]
 
 	"CustomMenu new addList: #(
 		('apples' buyApples)

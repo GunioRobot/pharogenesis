@@ -1,3 +1,0 @@
-filterNotUptoDate
-	
-	^[:package | package isAvailable]

@@ -2,7 +2,7 @@ name: className inEnvironment: env subclassOf: newSuper type: type instanceVaria
 	"Define a new class in the given environment.
 	If unsafe is true do not run any validation checks.
 	This facility is provided to implement important system changes."
-	| oldClass newClass organization instVars classVars force needNew oldCategory copyOfOldClass newCategory |
+	| oldClass newClass organization instVars classVars force needNew oldCategory copyOfOldClass newCategory copyOfOldTraitComposition copyOfOldClassTraitComposition |
  
 	environ := env.
 	instVars := Scanner new scanFieldNames: instVarString.
@@ -15,8 +15,12 @@ name: className inEnvironment: env subclassOf: newSuper type: type instanceVaria
 		ifFalse: [oldClass := nil]  "Already checked in #validateClassName:"
 		ifTrue: [
 			copyOfOldClass := oldClass copy.
-			copyOfOldClass superclass addSubclass: copyOfOldClass].
-	
+			copyOfOldClass superclass addSubclass: copyOfOldClass.
+			copyOfOldClass ifNotNil: [
+			oldClass hasTraitComposition ifTrue: [
+				copyOfOldTraitComposition := oldClass traitComposition copyTraitExpression ].
+			oldClass class hasTraitComposition ifTrue: [
+				copyOfOldClassTraitComposition := oldClass class traitComposition copyTraitExpression ] ] ].
 	
 	[unsafe ifFalse:[
 		"Run validation checks so we know that we have a good chance for recompilation"
@@ -68,10 +72,15 @@ name: className inEnvironment: env subclassOf: newSuper type: type instanceVaria
 
 	"... export if not yet done ..."
 	(environ at: newClass name ifAbsent:[nil]) == newClass ifFalse:[
-		[environ at: newClass name put: newClass]
-			on: AttemptToWriteReadOnlyGlobal do:[:ex| ex resume: true].
+		environ at: newClass name put: newClass.
 		Smalltalk flushClassNameCache.
 	].
+
+	"... set trait composition..."
+	copyOfOldTraitComposition ifNotNil: [
+		newClass setTraitComposition: copyOfOldTraitComposition ].
+	copyOfOldClassTraitComposition ifNotNil: [
+		newClass class setTraitComposition: copyOfOldClassTraitComposition ].
 
 
 	newClass doneCompiling.

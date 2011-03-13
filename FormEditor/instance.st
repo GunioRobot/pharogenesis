@@ -1,8 +1,0 @@
-MouseMenuController
-	subclass: #FormEditor
-	instanceVariableNames:
-		'form tool grid togglegrid mode previousTool color unNormalizedColor xgridOn ygridOn hasUnsavedChanges'
-	classVariableNames:
-		'BitEditKey BlackKey BlockKey ChangeGridsKey CurveKey DarkGrayKey EraseKey FlashCursor GrayKey InKey LightGrayKey LineKey OutKey OverKey RepeatCopyKey ReverseKey SelectKey SingleCopyKey TogglexGridKey ToggleyGridKey UnderKey WhiteKey YellowButtonMenu YellowButtonMessages YgridKey'
-	poolDictionaries: ''
-	category: 'ST80-Editors'

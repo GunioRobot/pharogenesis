@@ -5,6 +5,6 @@ removeKeyNoBecome: key
 	in a copy, and then return the copy for subsequent installation"
 
 	| copy |
-	copy _ self copy.
+	copy := self copy.
 	copy removeDangerouslyKey: key ifAbsent: [^ self].
 	^copy

@@ -5,3 +5,4 @@ shutDown
 	AccessProtect wait.
 	self primSignal: nil atMilliseconds: 0.
 	self saveResumptionTimes.
+	DelaySuspended := true.

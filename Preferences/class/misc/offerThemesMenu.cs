@@ -3,9 +3,9 @@ offerThemesMenu
 
 	"Preferences offerThemesMenu"
 	| selectors aMenu |
-	selectors _ self class allMethodsInCategory: #themes.
-	selectors _ selectors select: [:sel | sel numArgs = 0].
-	aMenu _ MenuMorph new defaultTarget: self.
+	selectors := self class allMethodsInCategory: #themes.
+	selectors := selectors select: [:sel | sel numArgs = 0].
+	aMenu := MenuMorph new defaultTarget: self.
 	aMenu addTitle: 'Choose a theme to install' translated.
 	selectors do:
 		[:sel |

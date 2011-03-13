@@ -6,7 +6,7 @@ emit: stack args: nArgs on: aStream super: supered
 		code < Send
 			ifTrue: [^ aStream nextPut: code "special"]
 			ifFalse: [^ aStream nextPut: nArgs * 16 + code]].
-	index _ code < 256 ifTrue: [code - Send] ifFalse: [code \\ 256].
+	index := code < 256 ifTrue: [code - Send] ifFalse: [code \\ 256].
 	(index <= 31 and: [nArgs <= 7]) ifTrue: 
 		["extended (2-byte) send [131 and 133]"
 		aStream nextPut: SendLong + (supered ifTrue: [2] ifFalse: [0]).

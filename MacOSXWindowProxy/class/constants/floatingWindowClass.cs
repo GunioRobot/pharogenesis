@@ -1,0 +1,2 @@
+floatingWindowClass
+	^5

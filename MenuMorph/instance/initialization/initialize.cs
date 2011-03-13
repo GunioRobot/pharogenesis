@@ -12,6 +12,6 @@ initialize
 	selectedItem := nil.
 	stayUp := false.
 	popUpOwner := nil.
-
+	self setProperty: #morphicLayerNumber toValue: self morphicLayerNumber.
 	Preferences roundedMenuCorners
 		ifTrue: [self useRoundedCorners].

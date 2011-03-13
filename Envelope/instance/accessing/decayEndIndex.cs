@@ -1,3 +1,0 @@
-decayEndIndex
-
-	^ points size

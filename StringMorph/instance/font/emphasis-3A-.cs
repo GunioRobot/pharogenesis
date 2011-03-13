@@ -13,5 +13,5 @@ emphasis: aNumber
 	5 -> bold underlined.  6 -> italic underlined.   7 -> bold italic underlined   
 	etc..."
 
-	emphasis _ aNumber.
+	emphasis := aNumber.
 	^ self font: font emphasis: emphasis

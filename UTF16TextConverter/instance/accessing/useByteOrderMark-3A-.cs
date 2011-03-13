@@ -1,3 +1,3 @@
 useByteOrderMark: aBoolean
 
-	useByteOrderMark _ aBoolean.
+	useByteOrderMark := aBoolean.

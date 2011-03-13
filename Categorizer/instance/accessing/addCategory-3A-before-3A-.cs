@@ -4,16 +4,16 @@ addCategory: catString before: nextCategory
 	If nextCategory is nil, then add the new one at the end,
 	otherwise, insert it before nextCategory."
 	| index newCategory |
-	newCategory _ catString asSymbol.
+	newCategory := catString asSymbol.
 	(categoryArray indexOf: newCategory) > 0
 		ifTrue: [^self].	"heading already exists, so done"
-	index _ categoryArray indexOf: nextCategory
+	index := categoryArray indexOf: nextCategory
 		ifAbsent: [categoryArray size + 1].
-	categoryArray _ categoryArray
+	categoryArray := categoryArray
 		copyReplaceFrom: index
 		to: index-1
 		with: (Array with: newCategory).
-	categoryStops _ categoryStops
+	categoryStops := categoryStops
 		copyReplaceFrom: index
 		to: index-1
 		with: (Array with: (index = 1

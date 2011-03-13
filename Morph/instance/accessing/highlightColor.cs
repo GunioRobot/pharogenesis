@@ -1,7 +1,7 @@
 highlightColor
 	
 	| val |
-	^ (val _ self valueOfProperty: #highlightColor)
+	^ (val := self valueOfProperty: #highlightColor)
 		ifNotNil:
 			[val ifNil: [self error: 'nil highlightColor']]
 		ifNil:

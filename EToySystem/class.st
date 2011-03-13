@@ -1,1 +1,0 @@
-EToySystem class instanceVariableNames: ''

@@ -8,5 +8,5 @@ performAction
 				[model perform: actionSelector]
 			ifFalse:
 				[argumentsProvider ifNotNil:
-					[arguments _ argumentsProvider perform: argumentsSelector].
+					[arguments := argumentsProvider perform: argumentsSelector].
 					model perform: actionSelector withArguments: arguments]]

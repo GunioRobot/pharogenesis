@@ -6,10 +6,10 @@ exampleBorder    "Form exampleBorder"
 	outlined, and the region begins with that place as its seed."
 	| f r interiorPoint |
 	Form exampleSketch.		"sketch a little area with an enclosed region"
-	r _ Rectangle fromUser.
-	f _ Form fromDisplay: r.
+	r := Rectangle fromUser.
+	f := Form fromDisplay: r.
 	Cursor crossHair showWhile:
-		[interiorPoint _ Sensor waitButton - r origin].
+		[interiorPoint := Sensor waitButton - r origin].
 	Cursor execute showWhile:
 		[f shapeBorder: Color blue width: 2 interiorPoint: interiorPoint
 			sharpCorners: false internal: false].

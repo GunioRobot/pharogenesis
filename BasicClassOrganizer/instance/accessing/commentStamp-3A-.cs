@@ -1,2 +1,2 @@
 commentStamp: aStamp
-	commentStamp _ aStamp
+	commentStamp := aStamp

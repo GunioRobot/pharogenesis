@@ -20,7 +20,7 @@ buildNotifierWith: builder label: label message: messageString
 	panelSpec frame: (0@0 corner: 1@0.2).
 	windowSpec children add: panelSpec.
 
-	Preferences eToyFriendly | messageString notNil ifTrue:[
+	messageString notNil ifTrue:[
 		listSpec := builder pluggableListSpec new.
 		listSpec 
 			model: self;

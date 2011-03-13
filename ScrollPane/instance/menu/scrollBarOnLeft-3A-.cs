@@ -1,3 +1,3 @@
 scrollBarOnLeft: aBoolean
-	scrollBarOnLeft _ aBoolean.
+	scrollBarOnLeft := aBoolean.
 	self extent: self extent

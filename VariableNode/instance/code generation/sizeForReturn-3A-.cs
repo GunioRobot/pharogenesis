@@ -1,5 +1,5 @@
 sizeForReturn: encoder
 
-	(self code >= LdSelf and: [self code <= LdNil])
+	(code >= LdSelf and: [code <= LdNil])
 		ifTrue: ["short returns" ^1].
 	^super sizeForReturn: encoder

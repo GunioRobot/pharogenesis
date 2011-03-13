@@ -1,6 +1,4 @@
 startUp
 	World ifNotNil: [World install].
-	Utilities authorName: ''.
-	Preferences eToyLoginEnabled
-		ifFalse:[^self startUpAfterLogin].
-	self doEtoyLogin.
+	"Author fullName: ''."
+	^self startUpAfterLogin.

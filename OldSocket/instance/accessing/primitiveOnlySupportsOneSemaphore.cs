@@ -1,2 +1,0 @@
-primitiveOnlySupportsOneSemaphore
-	^primitiveOnlySupportsOneSemaphore

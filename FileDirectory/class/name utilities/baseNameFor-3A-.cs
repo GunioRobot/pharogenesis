@@ -8,7 +8,7 @@ baseNameFor: fileName
 		Oh, and FileDirectory baseNameFor: 'foo.bar' should be 'foo' not '/foo' "
 
 	| delim i leaf |
-	self splitName: fileName to: [:path : fn|
+	self splitName: fileName to: [:path :fn|
 		
 		delim := DirectoryClass extensionDelimiter.
 		i := fn findLast: [:c | c = delim].

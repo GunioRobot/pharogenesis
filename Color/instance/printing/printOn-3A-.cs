@@ -1,7 +1,7 @@
-printOn: aStream
+printOn: aStream 
 	| name |
-	(name _ self name) ifNotNil:
-		[^ aStream
+	(name := self name) ifNotNil: 
+		[ ^ aStream
 			nextPutAll: 'Color ';
-			nextPutAll: name].
-	self storeOn: aStream.
+			nextPutAll: name ].
+	self storeOn: aStream

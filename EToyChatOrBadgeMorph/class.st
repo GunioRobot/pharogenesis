@@ -1,1 +1,0 @@
-EToyChatOrBadgeMorph class instanceVariableNames: ''

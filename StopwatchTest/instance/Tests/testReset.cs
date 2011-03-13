@@ -1,7 +1,7 @@
 testReset
 
 	| sw |
-	sw _ Stopwatch new.
+	sw := Stopwatch new.
 	sw activate.
 	
 	sw reset.

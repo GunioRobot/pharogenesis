@@ -1,6 +1,6 @@
 translateBy: delta clippingTo: aRectangle during: aBlock
 	"Set a translation and clipping rectangle only during the execution of aBlock."
 	| tempCanvas |
-	tempCanvas _ self copyOffset: delta clipRect: aRectangle.
+	tempCanvas := self copyOffset: delta clipRect: aRectangle.
 	aBlock value: tempCanvas.
-	foundMorph _ tempCanvas foundMorph.
+	foundMorph := tempCanvas foundMorph.

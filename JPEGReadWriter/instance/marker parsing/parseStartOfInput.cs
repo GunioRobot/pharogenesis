@@ -1,6 +1,5 @@
 parseStartOfInput
-
-	restartInterval _ 0.
-	densityUnit _ 0.
-	xDensity _ 1.
-	yDensity _ 1
+	restartInterval := 0.
+	densityUnit := 0.
+	xDensity := 1.
+	yDensity := 1

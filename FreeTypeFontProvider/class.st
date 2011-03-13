@@ -1,0 +1,1 @@
+FreeTypeFontProvider class instanceVariableNames: 'current'

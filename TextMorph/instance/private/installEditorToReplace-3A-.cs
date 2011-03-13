@@ -4,8 +4,8 @@ installEditorToReplace: priorEditor
 	We may want to rework this so it actually uses the prior editor."
 
 	| stateArray |
-	priorEditor ifNotNil: [stateArray _ priorEditor stateArray].
-	editor _ self editorClass new morph: self.
+	priorEditor ifNotNil: [stateArray := priorEditor stateArray].
+	editor := self editorClass new morph: self.
 	editor changeParagraph: self paragraph.
 	priorEditor ifNotNil: [editor stateArrayPut: stateArray].
 	self selectionChanged.

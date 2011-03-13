@@ -1,6 +1,6 @@
 compressAndDecompress: aFile using: tempName stats: stats
 	| fileSize tempFile result |
-	aFile == nil ifTrue:[^nil].
+	aFile ifNil: [^nil].
 	fileSize := aFile size.
 	(fileSize < 1"00000" "or:[fileSize > 1000000]") ifTrue:[aFile close. ^nil].
 	Transcript cr; show:'Testing ', aFile name,' ... '.

@@ -1,11 +1,11 @@
 type: eventType readFrom: aStream
 	| x y |
-	type _ eventType.
-	timeStamp _ Integer readFrom: aStream.
+	type := eventType.
+	timeStamp := Integer readFrom: aStream.
 	aStream skip: 1.
-	x _ Integer readFrom: aStream.
+	x := Integer readFrom: aStream.
 	aStream skip: 1.
-	y _ Integer readFrom: aStream.
+	y := Integer readFrom: aStream.
 	aStream skip: 1.
-	buttons _ Integer readFrom: aStream.
-	position _ x@y.
+	buttons := Integer readFrom: aStream.
+	position := x@y.

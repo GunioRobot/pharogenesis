@@ -1,4 +1,3 @@
 methodSelector
-	type == #method
-		ifFalse: [^ nil].
-	^ self class parserClass new parseSelector: self string
+	^type == #method ifTrue:
+		[(Smalltalk at: class ifAbsent: [Object]) parserClass new parseSelector: self string]

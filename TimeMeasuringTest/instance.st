@@ -3,4 +3,4 @@ TestCase
 	instanceVariableNames: 'realTime shouldProfile'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Traits-Requires'
+	category: 'Tests-Traits'

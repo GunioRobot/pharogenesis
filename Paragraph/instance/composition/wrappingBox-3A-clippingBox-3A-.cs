@@ -7,4 +7,4 @@ wrappingBox: compositionRect clippingBox: clippingRect
 				text: text
 				style: textStyle
 				offset: offset.
-	clippingRectangle _ clippingRect copy
+	clippingRectangle := clippingRect copy

@@ -1,6 +1,6 @@
 loadPatch
 	| old new |
-	(self zip memberNamed: 'patch.bin') ifNotNilDo:
+	(self zip memberNamed: 'patch.bin') ifNotNil:
 		[:m | [^ patch := (DataStream on: m contentStream) next ]
 			on: Error do: [:fallThrough ]].
 	definitions := OrderedCollection new.

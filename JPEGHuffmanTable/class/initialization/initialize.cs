@@ -1,4 +1,4 @@
 initialize
 
-	Lookahead _ 8.
-	BitBufferSize _ 16
+	Lookahead := 8.
+	BitBufferSize := 16

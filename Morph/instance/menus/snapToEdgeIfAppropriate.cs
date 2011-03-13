@@ -1,7 +1,7 @@
 snapToEdgeIfAppropriate
 	| edgeSymbol oldBounds aWorld |
-	(edgeSymbol _ self valueOfProperty: #edgeToAdhereTo) ifNotNil:
-		[oldBounds _ bounds.
+	(edgeSymbol := self valueOfProperty: #edgeToAdhereTo) ifNotNil:
+		[oldBounds := bounds.
 		self adhereToEdge: edgeSymbol.
-		bounds ~= oldBounds ifTrue: [(aWorld _ self world) ifNotNil: [aWorld viewBox ifNotNil:
+		bounds ~= oldBounds ifTrue: [(aWorld := self world) ifNotNil: [aWorld viewBox ifNotNil:
 			[aWorld displayWorld]]]]

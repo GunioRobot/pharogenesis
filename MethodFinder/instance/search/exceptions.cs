@@ -5,7 +5,7 @@ exceptions
 	| aSel |
 	answers first isSymbol ifFalse: [^ self].
 	thisData first first isString ifFalse: [^ self].
-	aSel _ #asSymbol.
+	aSel := #asSymbol.
 	(self testPerfect: aSel) ifTrue: [
 		selector add: aSel.
 		expressions add: (String streamContents: [:strm | 

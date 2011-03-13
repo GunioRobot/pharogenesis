@@ -1,2 +1,2 @@
 resetRegisteredHandlers
-	RegisteredHandlers _ nil
+	RegisteredHandlers := nil

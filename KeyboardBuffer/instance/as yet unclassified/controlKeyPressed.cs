@@ -1,2 +1,0 @@
-controlKeyPressed
-	^ event controlKeyPressed

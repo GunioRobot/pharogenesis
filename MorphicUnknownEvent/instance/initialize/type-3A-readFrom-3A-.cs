@@ -1,7 +1,7 @@
 type: eventType readFrom: aStream
 	| typeAndArg |
-	timeStamp _ Integer readFrom: aStream.
+	timeStamp := Integer readFrom: aStream.
 	aStream skip: 1.
-	typeAndArg _ Object readFrom: aStream.
-	type _ typeAndArg first.
-	argument _ typeAndArg last.
+	typeAndArg := Object readFrom: aStream.
+	type := typeAndArg first.
+	argument := typeAndArg last.

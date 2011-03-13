@@ -1,2 +1,0 @@
-fontForTiles
-	^ Preferences standardEToysFont

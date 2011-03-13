@@ -1,1 +1,0 @@
-BouncingAtomsMorph class instanceVariableNames: ''

@@ -16,7 +16,6 @@ getRecentLocatorWithPrompt: aPrompt
 					pos := Number readFrom: (chunk copyFrom: i+13 to: chunk size)]
 			ifFalse: [pos := 0]].
 	changesFile close.
-	pos := (SelectionMenu labelList: banners selections: positions)
-				startUpWithCaption: aPrompt.
-	pos == nil ifTrue: [^ nil].
+	pos := UIManager default chooseFrom:  banners values: positions title: aPrompt.
+	pos ifNil: [^ nil].
 	^ end - pos

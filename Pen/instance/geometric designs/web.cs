@@ -1,23 +1,24 @@
-web   "Display restoreAfter: [Pen new web]"
+web
+	"Display restoreAfter: [Pen new web]"
 	"Draw pretty web-like patterns from the mouse movement on the screen.
 	Press the mouse button to draw, option-click to exit.
 	By Dan Ingalls and Mark Lentczner. "
-	| history newPoint ancientPoint lastPoint filter color |
 	"self erase."
-	color _ 1.
-	[ true ] whileTrue:
-		[ history _ OrderedCollection new.
+	| history newPoint ancientPoint lastPoint filter color |
+	color := 1.
+	[ true ] whileTrue: 
+		[ history := OrderedCollection new.
 		Sensor waitButton.
-		Sensor yellowButtonPressed ifTrue: [^ self].
-		filter _ lastPoint _ Sensor mousePoint.
+		Sensor yellowButtonPressed ifTrue: [ ^ self ].
+		filter := lastPoint := Sensor cursorPoint.
 		20 timesRepeat: [ history addLast: lastPoint ].
-		self color: (color _ color + 1).
+		self color: (color := color + 1).
 		[ Sensor redButtonPressed ] whileTrue: 
-			[ newPoint _ Sensor mousePoint.
-			(newPoint = lastPoint) ifFalse:
-				[ ancientPoint _ history removeFirst.
-				filter _ filter * 4 + newPoint // 5.
+			[ newPoint := Sensor cursorPoint.
+			newPoint = lastPoint ifFalse: 
+				[ ancientPoint := history removeFirst.
+				filter := (filter * 4 + newPoint) // 5.
 				self place: filter.
 				self goto: ancientPoint.
-				lastPoint _ newPoint.
+				lastPoint := newPoint.
 				history addLast: filter ] ] ]

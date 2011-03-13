@@ -1,3 +1,2 @@
 negated
-	"Reimplementation of Number 'arithmetic' method."
-	^ ScaledDecimal newFromNumber: fraction negated scale: scale
+	^self class newFromNumber: super negated scale: scale

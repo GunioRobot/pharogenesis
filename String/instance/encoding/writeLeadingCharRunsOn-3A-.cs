@@ -3,16 +3,16 @@ writeLeadingCharRunsOn: stream
 	| runLength runValues runStart leadingChar |
 	self isEmpty ifTrue: [^ self].
 
-	runLength _ OrderedCollection new.
-	runValues _ OrderedCollection new.
-	runStart _ 1.
-	leadingChar _ (self at: runStart) leadingChar.
+	runLength := OrderedCollection new.
+	runValues := OrderedCollection new.
+	runStart := 1.
+	leadingChar := (self at: runStart) leadingChar.
 	2 to: self size do: [:index |
 		(self at: index) leadingChar = leadingChar ifFalse: [
 			runValues add: leadingChar.
 			runLength add: (index - runStart).
-			leadingChar _ (self at: index) leadingChar.
-			runStart _ index.
+			leadingChar := (self at: index) leadingChar.
+			runStart := index.
 		].
 	].
 	runValues add: (self last) leadingChar.

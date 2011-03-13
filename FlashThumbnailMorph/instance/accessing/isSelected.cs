@@ -1,2 +1,0 @@
-isSelected
-	^selected == true

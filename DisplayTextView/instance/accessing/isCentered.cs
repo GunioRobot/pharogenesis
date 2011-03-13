@@ -1,3 +1,0 @@
-isCentered
-
-	^centered

@@ -7,7 +7,7 @@ extractParameters
 	pName isEmptyOrNil] whileFalse:[
 		index := index + 1.
 		value := self getSystemAttribute: index.
-		value ifNil: [value _ ''].
+		value ifNil: [value := ''].
  		globals at: pName asUppercase put: value.
 		index := index + 1].
 	^globals

@@ -1,6 +1,9 @@
 rounded
-	"Answer the integer nearest the receiver."
+	"Answer the integer nearest the receiver.
+	Implementation note: super would not handle tricky inexact arithmetic"
+	
+	"self assert: 5000000000000001.0 rounded = 5000000000000001"
 
-	self >= 0.0
-		ifTrue: [^(self + 0.5) truncated]
-		ifFalse: [^(self - 0.5) truncated]
+	self fractionPart abs < 0.5
+		ifTrue: [^self truncated]
+		ifFalse: [^self truncated + self sign rounded]

@@ -1,19 +1,19 @@
 asSendableText
 	"break lines in the given string into shorter lines"
 	| result start end pastHeader atAttachment width aString |
-	width _ 72.
-	aString _ self text.
-	result _ WriteStream on: (String new: aString size * 50 // 49).
-	pastHeader _ false.
-	atAttachment _ false.
+	width := 72.
+	aString := self text.
+	result := (String new: aString size * 50 // 49) writeStream.
+	pastHeader := false.
+	atAttachment := false.
 	aString asString
 		linesDo: 
 			[:line | 
-			line isEmpty ifTrue: [pastHeader _ true].
+			line isEmpty ifTrue: [pastHeader := true].
 			pastHeader
 				ifTrue: 
 					["(line beginsWith: '--==')
-						ifTrue: [atAttachment _ true]."
+						ifTrue: [atAttachment := true]."
 					atAttachment
 						ifTrue: 
 							["at or after an attachment line; no more 
@@ -28,24 +28,24 @@ asSendableText
 								ifFalse: 
 									["regular old line.  Wrap it to multiple 
 									lines "
-									start _ 1.
+									start := 1.
 									"output one shorter line each time 
 									through this loop"
 									[start + width <= line size]
 										whileTrue: 
 											["find the end of the line"
-											end _ start + width - 1.
+											end := start + width - 1.
 											[end >= start and: [(line at: end + 1) isSeparator not]]
-												whileTrue: [end _ end - 1].
+												whileTrue: [end := end - 1].
 											end < start ifTrue: ["a word spans the entire 
 												width! "
-												end _ start + width - 1].
+												end := start + width - 1].
 											"copy the line to the output"
 											result nextPutAll: (line copyFrom: start to: end).
 											result cr.
 											"get ready for next iteration"
-											start _ end + 1.
-											(line at: start) isSeparator ifTrue: [start _ start + 1]].
+											start := end + 1.
+											(line at: start) isSeparator ifTrue: [start := start + 1]].
 									"write out the final part of the line"
 									result nextPutAll: (line copyFrom: start to: line size).
 									result cr]]]

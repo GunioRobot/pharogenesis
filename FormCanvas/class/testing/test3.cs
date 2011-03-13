@@ -2,7 +2,7 @@ test3
 	"FormCanvas test3"
 
 	| baseCanvas |
-	baseCanvas _ FormCanvas extent: 200@200.
+	baseCanvas := FormCanvas extent: 200@200.
 	baseCanvas fillColor: Color white.
 	baseCanvas translateBy: 10@10 during:[:canvas|
 		canvas shadowColor: (Color black alpha: 0.5).

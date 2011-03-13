@@ -1,2 +1,2 @@
 testEqual
-	self assert: aDate = (Date readFrom: (ReadStream on: 'January 23, 2004')).
+	self assert: aDate = (Date readFrom: 'January 23, 2004' readStream)

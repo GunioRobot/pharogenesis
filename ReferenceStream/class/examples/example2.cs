@@ -1,12 +1,12 @@
 example2
 "Here is the way to use DataStream and ReferenceStream:
-	rr _ ReferenceStream fileNamed: ''test.obj''.
+	rr := ReferenceStream fileNamed: ''test.obj''.
 	rr nextPut: <your object>.
 	rr close.
 
 To get it back:
-	rr _ ReferenceStream fileNamed: ''test.obj''.
-	<your object> _ rr next.
+	rr := ReferenceStream fileNamed: ''test.obj''.
+	<your object> := rr next.
 	rr close.
 "
 "An example and test of DataStream/ReferenceStream.
@@ -15,7 +15,7 @@ To get it back:
 	| input sharedPoint |
 
 	"Construct the test data."
-	input _ Array new: 9.
+	input := Array new: 9.
 	input at: 1 put: nil.
 	input at: 2 put: true.
 	input at: 3 put: false.
@@ -24,7 +24,7 @@ To get it back:
 		(input at: 5) fillWithColor: Color lightOrange.
 	input at: 6 put: 1024 @ -2048.
 	input at: 7 put: input. "a cycle"
-	input at: 8 put: (Array with: (sharedPoint _ 0 @ -30000)).
+	input at: 8 put: (Array with: (sharedPoint := 0 @ -30000)).
 	input at: 9 put: sharedPoint.
 
 	"Write it out, read it back, and return it for inspection."

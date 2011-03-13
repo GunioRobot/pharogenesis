@@ -3,7 +3,7 @@ undoCutCopy: oldPasteBuffer
 	 undo-copy does not lock the model.  Redoer: itself, so never isRedoing."
 
 	| recentCut |
-	recentCut _ self clipboardText.	
+	recentCut := self clipboardText.	
 	UndoSelection size = UndoInterval size
 		ifFalse: [self replaceSelectionWith: UndoSelection].
 	self clipboardTextPut: oldPasteBuffer.

@@ -3,7 +3,7 @@ justifiedPadFor: spaceIndex
 
 	| pad |
 	internalSpaces = 0 ifTrue: [^0].
-	pad _ paddingWidth // internalSpaces.
+	pad := paddingWidth // internalSpaces.
 	spaceIndex <= (paddingWidth \\ internalSpaces)
 		ifTrue: [^pad + 1]
 		ifFalse: [^pad]

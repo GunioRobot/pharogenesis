@@ -2,7 +2,7 @@ startRetrieval
 	| fileStream |
 	cachedName == nil ifTrue:[^super startRetrieval].
 	(FileDirectory default fileExists: cachedName) ifTrue:[
-		fileStream _ FileStream concreteStream new open: cachedName forWrite: false.
+		fileStream := FileStream concreteStream new open: cachedName forWrite: false.
 		fileStream == nil ifFalse:[^self content: 
 			(MIMEDocument 
 				contentType: 'text/plain' 
@@ -10,7 +10,7 @@ startRetrieval
 		FileDirectory default deleteFileNamed: cachedName ifAbsent:[]].
 	super startRetrieval. "fetch from URL"
 	"and cache in file dir"
-	fileStream _ FileStream concreteStream new open: cachedName forWrite: true.
+	fileStream := FileStream concreteStream new open: cachedName forWrite: true.
 	fileStream == nil ifFalse:[
 		fileStream nextPutAll: (content content).
 		fileStream close].

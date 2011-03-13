@@ -1,8 +1,7 @@
 fieldListMenu: aMenu
 	"Arm the supplied menu with items for the field-list of the receiver"
 
-	Smalltalk isMorphic ifTrue:
-		[aMenu addStayUpItemSpecial].
+	aMenu addStayUpItemSpecial.
 
 	aMenu addList: #(
 		('inspect (i)'						inspectSelection)
@@ -16,11 +15,11 @@ fieldListMenu: aMenu
 		('methods storing into this inst var'	defsOfSelection)
 		('objects pointing to this value'		objectReferencesToSelection)
 		('chase pointers'					chasePointers)
-		('explore pointers'				explorePointers)
+		('explore pointers'					explorePointers)
 		-
 		('browse full (b)'					browseMethodFull)
 		('browse class'						browseClass)
-		('browse hierarchy (h)'					classHierarchy)
+		('browse hierarchy (h)'				classHierarchy)
 		('browse protocol (p)'				browseFullProtocol)
 		-
 		('inst var refs...'					browseInstVarRefs)
@@ -30,18 +29,8 @@ fieldListMenu: aMenu
 		('class refs (N)'						browseClassRefs)
 		-
 		('copy name (c)'					copyName)		
-		('basic inspect'						inspectBasic)).
-
-	Smalltalk isMorphic ifTrue:
-		[aMenu addList: #(
-			-
-			('tile for this value	(t)'			tearOffTile)
-			('viewer for this value (v)'		viewerForValue))].
-
+		('basic inspect'						inspectBasic)
+		).
 	^ aMenu
 
-
-"			-
-			('alias for this value'			aliasForValue)
-			('watcher for this slot'			watcherForSlot)"
 

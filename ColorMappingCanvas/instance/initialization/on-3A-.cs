@@ -1,2 +1,2 @@
 on: aCanvas
-	myCanvas _ aCanvas.
+	myCanvas := aCanvas.

@@ -1,2 +1,0 @@
-mouseDownPriority
-	^100

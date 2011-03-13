@@ -1,2 +1,2 @@
 = aLocatedMethod
-	^ self method == aLocatedMethod method 
+	^ self method == aLocatedMethod method

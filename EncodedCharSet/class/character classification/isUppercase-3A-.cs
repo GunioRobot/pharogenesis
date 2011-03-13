@@ -3,5 +3,5 @@ isUppercase: char
 	(The old implementation answered whether the receiver is not a lowercase letter.)"
 
 	| value |
-	value _ char asciiValue.
+	value := char asciiValue.
 	^ 8r101 <= value and: [value <= 8r132].

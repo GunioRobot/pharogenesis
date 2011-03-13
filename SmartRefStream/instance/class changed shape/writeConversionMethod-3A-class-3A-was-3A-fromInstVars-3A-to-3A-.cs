@@ -3,11 +3,11 @@ writeConversionMethod: sel class: newClass was: oldName fromInstVars: oldList to
 
 	| code newOthers oldOthers copied |
 
-	code _ WriteStream on: (String new: 500).
+	code := (String new: 500) writeStream.
 	code nextPutAll: 'convertToCurrentVersion: varDict refStream: smartRefStrm'; cr; tab.
-	newOthers _ newList asOrderedCollection "copy".
-	oldOthers _ oldList asOrderedCollection "copy".
-	copied _ OrderedCollection new.
+	newOthers := newList asOrderedCollection "copy".
+	oldOthers := oldList asOrderedCollection "copy".
+	copied := OrderedCollection new.
 	newList do: [:instVar |
 		(oldList includes: instVar) ifTrue: [
 			instVar isInteger ifFalse: [copied add: instVar].
@@ -16,7 +16,7 @@ writeConversionMethod: sel class: newClass was: oldName fromInstVars: oldList to
 	code nextPutAll: '"These variables are automatically stored into the new instance '.
 	code nextPutAll: copied asArray printString; nextPut: $. .
 	code cr; tab; nextPutAll: 'This method is for additional changes.'; 
-		nextPutAll: ' Use statements like (foo _ varDict at: ''foo'')."'; cr; cr; tab.
+		nextPutAll: ' Use statements like (foo := varDict at: ''foo'')."'; cr; cr; tab.
 	(newOthers size = 0) & (oldOthers size = 0) ifTrue: [^ self].
 		"Instance variables are the same.  Only the order changed.  No conversion needed."
 	(newOthers size > 0) ifTrue: [code nextPutAll: '"New variables: ', newOthers asArray printString, '  If a non-nil value is needed, please assign it."\' withCRs].

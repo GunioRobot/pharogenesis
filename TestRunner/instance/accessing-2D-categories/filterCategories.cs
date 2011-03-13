@@ -6,4 +6,4 @@ filterCategories
 	pattern isNil ifTrue: [ ^ self ].
 	categoriesSelected := (categories 
 		select: [ :each | pattern match: each ]) asSet.
-	self changed: #categorySelected; updateClasses.
+	self changed: #allSelections; changed: #categorySelected; updateClasses

@@ -3,6 +3,6 @@ swapSender: coroutine
 	previous sender. For use in coroutining."
 
 	| oldSender |
-	oldSender _ sender.
-	sender _ coroutine.
+	oldSender := sender.
+	sender := coroutine.
 	^oldSender

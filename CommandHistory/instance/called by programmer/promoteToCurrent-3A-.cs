@@ -3,14 +3,14 @@ promoteToCurrent: aCommand
 
 	| itsIndex |
 	Preferences useUndo ifFalse: [^ self].
-	itsIndex _ history indexOf: aCommand ifAbsent: [nil].
+	itsIndex := history indexOf: aCommand ifAbsent: [nil].
 	itsIndex ifNotNil:
 		[history remove: aCommand ifAbsent: []].
-	history add: (lastCommand _ aCommand).
+	history add: (lastCommand := aCommand).
 	itsIndex < history size ifTrue:
 		[excursions add: (history copyFrom: (itsIndex to: history size))].
-	history _ (history copyFrom: 1 to: itsIndex) copyWith: aCommand.
+	history := (history copyFrom: 1 to: itsIndex) copyWith: aCommand.
 
-	lastCommand _ aCommand.
+	lastCommand := aCommand.
 	aCommand doCommand.
 	lastCommand phase: #done.

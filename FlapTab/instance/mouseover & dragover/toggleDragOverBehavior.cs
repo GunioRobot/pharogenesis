@@ -1,2 +1,2 @@
 toggleDragOverBehavior
-	self arrangeToPopOutOnDragOver:  (popOutOnDragOver _ popOutOnDragOver not)
+	self arrangeToPopOutOnDragOver:  (popOutOnDragOver := popOutOnDragOver not)

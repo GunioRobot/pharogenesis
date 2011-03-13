@@ -1,2 +1,2 @@
 toggleMouseOverBehavior
-	self arrangeToPopOutOnMouseOver:  (popOutOnMouseOver _ popOutOnMouseOver not)
+	self arrangeToPopOutOnMouseOver:  (popOutOnMouseOver := popOutOnMouseOver not)

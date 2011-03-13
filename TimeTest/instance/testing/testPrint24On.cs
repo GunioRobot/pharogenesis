@@ -1,6 +1,8 @@
 testPrint24On
 	| cs rw |
-	cs := ReadStream on: '12:34:56'.
+	cs := '12:34:56' readStream.
 	rw := ReadWriteStream on: ''.
-	aTime print24: true on: rw.
+	aTime 
+		print24: true
+		on: rw.
 	self assert: rw contents = cs contents

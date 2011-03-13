@@ -1,0 +1,4 @@
+blockingClasses
+
+
+	^ #(CompiledMethod)

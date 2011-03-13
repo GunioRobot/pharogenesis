@@ -1,2 +1,0 @@
-eToyUserListUrl
-	^ServerDirectory eToyUserListUrlForFileDirectory: self

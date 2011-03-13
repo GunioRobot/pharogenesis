@@ -1,3 +1,3 @@
 pushReceiverVariable: offset
 
-	bingo _ true
+	bingo := true

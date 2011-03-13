@@ -1,3 +1,0 @@
-purgeOutputQueue
-
-	connection purgeOutputQueue.

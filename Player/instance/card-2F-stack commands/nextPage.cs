@@ -1,2 +1,0 @@
-nextPage
-	self sendMessageToCostume: #nextPage

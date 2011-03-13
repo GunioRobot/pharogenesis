@@ -3,7 +3,7 @@ pickupForm: stampForm
 
 	| stampButton |
 	stampHolder stampForm: stampForm for: tool.
-	stampButton _ action == #pickup: 
+	stampButton := action == #pickup: 
 		ifTrue: [stampHolder otherButtonFor: tool]
 		ifFalse: [tool].	"was a nil stampForm"
 	stampButton state: #on.

@@ -1,2 +1,2 @@
 setTop: t
-	top _ t
+	top := t

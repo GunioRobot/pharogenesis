@@ -1,3 +1,3 @@
 isEmpty
 
-	^firstLink == nil
+	^firstLink isNil

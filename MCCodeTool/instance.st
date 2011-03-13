@@ -3,4 +3,4 @@ MCTool
 	instanceVariableNames: 'items'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Monticello-UI'
+	category: 'MonticelloGUI'

@@ -1,2 +1,0 @@
-basicWidth
-	^ 26

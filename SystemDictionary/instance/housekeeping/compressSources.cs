@@ -5,11 +5,11 @@ compressSources
 	"Smalltalk compressSources"
 
 	| f cfName cf |
-	f _ SourceFiles first.
+	f := SourceFiles first.
 	(SmalltalkImage current sourcesName endsWith: 'sources')
-		ifTrue: [cfName _ (SmalltalkImage current sourcesName allButLast: 7) , 'stc']
+		ifTrue: [cfName := (SmalltalkImage current sourcesName allButLast: 7) , 'stc']
 		ifFalse: [self error: 'Hey, I thought the sources name ended with ''.sources''.'].
-	cf _ (CompressedSourceStream on: (FileStream newFileNamed: cfName))
+	cf := (CompressedSourceStream on: (FileStream newFileNamed: cfName))
 				segmentSize: 20000 maxSize: f size.
 
 	"Copy the sources"
@@ -24,4 +24,4 @@ compressSources
 	cf close.
 	self setMacFileInfoOn: cfName.
 	self inform: 'You now have a compressed sources file!
-Squeak will use it the next time you start.'
+Pharo will use it the next time you start.'

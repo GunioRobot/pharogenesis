@@ -1,6 +1,6 @@
 privateFullPathForURI: aURI
 	| path |
-	path := aURI path.
+	path := aURI path unescapePercents.
 
 	"Check for drive notation (a: etc)"
 	path size > 1
@@ -11,4 +11,4 @@ privateFullPathForURI: aURI
 					"All other cases should be network path names (\\xxx\sdsd etc)"
 					path := '/' , path]].
 
-	^(path copyReplaceAll: '/' with: self slash) unescapePercents
+	^path copyReplaceAll: '/' with: self slash

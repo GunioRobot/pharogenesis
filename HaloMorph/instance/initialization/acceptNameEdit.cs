@@ -2,6 +2,6 @@ acceptNameEdit
 	"If the name is currently under edit, accept the changes"
 
 	| label |
-	(label _ self findA: NameStringInHalo) ifNotNil:
+	(label := self findA: NameStringInHalo) ifNotNil:
 		[label hasFocus ifTrue:
 			[label lostFocusWithoutAccepting]]

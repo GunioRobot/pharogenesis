@@ -1,2 +1,2 @@
 addPragma: aPragma
-	pragmas := pragmas copyWith: aPragma.
+	pragmas := self pragmas copyWith: aPragma.

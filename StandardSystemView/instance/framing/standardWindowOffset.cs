@@ -1,2 +1,0 @@
-standardWindowOffset
-	^ Preferences standardWindowOffset

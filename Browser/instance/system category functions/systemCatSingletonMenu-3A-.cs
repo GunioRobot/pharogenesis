@@ -1,15 +1,13 @@
 systemCatSingletonMenu: aMenu
 
 	^ aMenu labels:
-'browse all
-browse
-printOut
+'browse
 fileOut
 update
 rename...
 remove' 
 	lines: #(2 4)
 	selections:
-		#(browseAllClasses buildSystemCategoryBrowser
-		printOutSystemCategory fileOutSystemCategory updateSystemCategories
+		#(buildSystemCategoryBrowser
+		fileOutSystemCategory updateSystemCategories
 		renameSystemCategory removeSystemCategory)

@@ -5,8 +5,8 @@ weakSubclass: t uses: aTraitCompositionOrArray instanceVariableNames: f
 	have weak indexable pointer variables."
 	
 	| newClass copyOfOldClass |
-	copyOfOldClass _ self copy.
-	newClass _ self
+	copyOfOldClass := self copy.
+	newClass := self
 		weakSubclass: t 
 		instanceVariableNames: f
 		classVariableNames: d

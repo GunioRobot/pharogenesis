@@ -22,24 +22,24 @@ the front of 'updates.list', and that is the index file used."
 	| failed loaded str res servers triple tryAgain indexPrefix |
 	Utilities chooseUpdateList ifFalse: [^ self].	"ask the user which kind of updates"
 
-	servers _ Utilities serverUrls copy.
-	indexPrefix _ (Utilities updateUrlLists first first includes: $*) 
+	servers := Utilities serverUrls copy.
+	indexPrefix := (Utilities updateUrlLists first first includes: $*) 
 		ifTrue: [(Utilities updateUrlLists first first findTokens: ' ') first]
 						"special for internal updates"
 		ifFalse: ['']. 	"normal"
 	[servers isEmpty] whileFalse: [
-		triple _ self readServer: servers special: indexPrefix 
+		triple := self readServer: servers special: indexPrefix 
 					updatesThrough: maxNumber 
 					saveLocally: saveLocally updateImage: updateImage.
 
 		"report to user"
-		failed _ triple first.
-		loaded _ triple second.
-		tryAgain _ false.
+		failed := triple first.
+		loaded := triple second.
+		tryAgain := false.
 		failed ifNil: ["is OK"
 			loaded = 0 ifTrue: ["found no updates"
 				servers size > 1 ifTrue: ["not the last server"
-					res _ UIManager default 
+					res := UIManager default 
 							chooseFrom: #('Stop looking' 'Try next server')
 							title: 
 'No new updates on the server
@@ -49,9 +49,9 @@ Would you like to try the next server?
 server won''t let us store new files, and gets out of date.)' 
 						.
 					res = 2 ifFalse: [^ self]
-						 ifTrue: [servers _ servers allButFirst.	"try the next server"
-							tryAgain _ true]]]].
+						 ifTrue: [servers := servers allButFirst.	"try the next server"
+							tryAgain := true]]]].
 		tryAgain ifFalse: [
-			str _ loaded printString ,' new update file(s) processed.'.
+			str := loaded printString ,' new update file(s) processed.'.
 			^ self inform: str].
 	].

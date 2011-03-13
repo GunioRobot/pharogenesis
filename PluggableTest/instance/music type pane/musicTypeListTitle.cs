@@ -1,2 +1,0 @@
-musicTypeListTitle
-	^ 'Choose a command'

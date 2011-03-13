@@ -6,4 +6,4 @@ extract
 		state = #activeCopy ifFalse: [self errorWrongState].
 		arrayOfRoots elementsForwardIdentityTo:
 			(arrayOfRoots collect: [:r | r rootStubInImageSegment: self]).
-		state _ #active].
+		state := #active].

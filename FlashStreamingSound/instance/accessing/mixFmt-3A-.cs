@@ -1,2 +1,0 @@
-mixFmt: aNumber
-	mixFmt := aNumber

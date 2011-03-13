@@ -1,1 +1,0 @@
-LedCharacterMorph class instanceVariableNames: ''

@@ -1,0 +1,1 @@
+LogicalFontManager class instanceVariableNames: 'current'

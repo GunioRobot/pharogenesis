@@ -14,18 +14,18 @@ Smalltalk browseAllImplementorsOf: #instantiateClass:indexableSize:.
 	But when we revise the image format, it should become...
 		<5 bits=cClass><4 bits=instSpec><8 bits=instSize><1 bit=0>
 "
-	sizeHiBits _ (nInstVars+1) // 64.
-	cClass _ 0.  "for now"
-	instSpec _ isWeak
+	sizeHiBits := (nInstVars+1) // 64.
+	cClass := 0.  "for now"
+	instSpec := isWeak
 		ifTrue:[4]
 		ifFalse:[isPointers
 				ifTrue: [isVar
 						ifTrue: [nInstVars>0 ifTrue: [3] ifFalse: [2]]
 						ifFalse: [nInstVars>0 ifTrue: [1] ifFalse: [0]]]
 				ifFalse: [isWords ifTrue: [6] ifFalse: [8]]].
-	fmt _ sizeHiBits.
-	fmt _ (fmt bitShift: 5) + cClass.
-	fmt _ (fmt bitShift: 4) + instSpec.
-	fmt _ (fmt bitShift: 6) + ((nInstVars+1)\\64).  "+1 since prim size field includes header"
-	fmt _ (fmt bitShift: 1). "This shift plus integer bit lets wordSize work like byteSize"
+	fmt := sizeHiBits.
+	fmt := (fmt bitShift: 5) + cClass.
+	fmt := (fmt bitShift: 4) + instSpec.
+	fmt := (fmt bitShift: 6) + ((nInstVars+1)\\64).  "+1 since prim size field includes header"
+	fmt := (fmt bitShift: 1). "This shift plus integer bit lets wordSize work like byteSize"
 	^fmt

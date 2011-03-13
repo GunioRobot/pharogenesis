@@ -5,6 +5,6 @@ allSuperclasses
 	| temp |
 	^ superclass == nil
 		ifTrue: [ OrderedCollection new]
-		ifFalse: [temp _ superclass allSuperclasses.
+		ifFalse: [temp := superclass allSuperclasses.
 			temp addFirst: superclass.
 			temp]

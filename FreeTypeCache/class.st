@@ -1,0 +1,1 @@
+FreeTypeCache class instanceVariableNames: 'current'

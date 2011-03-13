@@ -1,2 +1,0 @@
-initializeToStandAlone
-	^ self initialize removeHandles

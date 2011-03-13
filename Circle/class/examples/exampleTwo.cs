@@ -5,8 +5,8 @@ exampleTwo
 	with a long black form."
 
 	| aCircle aForm |
-	aForm _ Form fromUser.
-	aCircle _ Circle new.
+	aForm := Form fromUser.
+	aCircle := Circle new.
 	aCircle form: aForm.
 	aCircle radius: 150.
 	aCircle center: Sensor waitButton.

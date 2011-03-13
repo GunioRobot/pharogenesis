@@ -1,4 +1,4 @@
 skipThisLine
 
-	line _ stream nextLine.
+	line := stream nextLine.
 	self updatePosition.

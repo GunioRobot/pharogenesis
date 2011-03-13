@@ -1,6 +1,6 @@
 scanFile: file from: startPosition to: stopPosition
 	| itemPosition item prevChar changeList |
-	changeList _ OrderedCollection new.
+	changeList := OrderedCollection new.
 	file position: startPosition.
 'Scanning ', file localName, '...'
 	displayProgressAt: Sensor cursorPoint
@@ -9,13 +9,13 @@ scanFile: file from: startPosition to: stopPosition
 	[file position < stopPosition] whileTrue:[
 		bar value: file position.
 		[file atEnd not and: [file peek isSeparator]]
-			whileTrue: [prevChar _ file next].
+			whileTrue: [prevChar := file next].
 		(file peekFor: $!) ifTrue:[
 			(prevChar = Character cr or: [prevChar = Character lf])
 				ifTrue: [changeList addAll: (self scanCategory: file)].
 		] ifFalse:[
-			itemPosition _ file position.
-			item _ file nextChunk.
+			itemPosition := file position.
+			item := file nextChunk.
 			file skipStyleChunk.
 			item size > 0 ifTrue:[
 				changeList add: (ChangeRecord new file: file position: itemPosition type: #doIt).

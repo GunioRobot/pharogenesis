@@ -1,2 +1,2 @@
 testEqual
-	self assert: aTime = (Time readFrom: (ReadStream on: '12:34:56')).
+	self assert: aTime = (Time readFrom: '12:34:56' readStream)

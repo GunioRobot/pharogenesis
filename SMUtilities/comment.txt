@@ -1,1 +1,0 @@
-Various loose functions in SM.

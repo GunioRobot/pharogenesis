@@ -1,2 +1,0 @@
-aboutThisSystem 
-	SmalltalkImage current aboutThisSystem

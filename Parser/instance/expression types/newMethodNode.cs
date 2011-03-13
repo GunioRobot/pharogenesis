@@ -1,3 +1,2 @@
 newMethodNode
-
-	^ MethodNode new
+	^self encoder methodNodeClass new

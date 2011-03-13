@@ -1,3 +1,3 @@
 privAccumulator: collection
 
-	accumulator _ collection
+	accumulator := collection

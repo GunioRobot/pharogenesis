@@ -5,10 +5,10 @@ colormapFromARGB
 	self hasNonStandardPalette 
 		ifTrue:[^ColorMap mappingFromARGB: self rgbaBitMasks].
 	self depth <= 8 ifTrue:[
-		map _ Color colorMapIfNeededFrom: 32 to: self depth.
-		map size = 512 ifTrue:[nBits _ 3].
-		map size = 4096 ifTrue:[nBits _ 4].
-		map size = 32768 ifTrue:[nBits _ 5].
+		map := Color colorMapIfNeededFrom: 32 to: self depth.
+		map size = 512 ifTrue:[nBits := 3].
+		map size = 4096 ifTrue:[nBits := 4].
+		map size = 32768 ifTrue:[nBits := 5].
 		^ColorMap
 			shifts: (Array 
 						with: 3 * nBits - 24

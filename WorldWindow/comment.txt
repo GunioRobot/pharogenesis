@@ -1,7 +1,0 @@
-A WorldWindow is a SystemWindow whose central area presents an inner Morphic world.
-
-WorldWindows have a red title bar when the world inside is inactive. This changes to green when the world becomes the active world. The world inside becomes activated by clicking in it. When you click outside this world, the parent world resumes control. While its world is inactive, the WorldWindow may be moved and resized like any other.
-
-It would be nice to make the world inside active whenever the WorldWindow was active, but this presents difficulties in moving and resizing, probably related to use of the global World instead of self world in many methods.
-
-This facility is mainly the work of Bob Arning, with a number of tweaks by DI.

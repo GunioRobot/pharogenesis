@@ -1,2 +1,2 @@
 doneTyping
-	beginTypeInBlock _ nil
+	beginTypeInBlock := nil

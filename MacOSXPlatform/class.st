@@ -1,0 +1,1 @@
+MacOSXPlatform class instanceVariableNames: ''

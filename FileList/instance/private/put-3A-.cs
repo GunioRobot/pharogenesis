@@ -3,21 +3,21 @@ put: aText
 
 	| ff type |
 	brevityState == #fullFile ifTrue:
-		[ff _ directory newFileNamed: self fullName.
+		[ff := directory newFileNamed: self fullName.
 		Cursor write showWhile: [ff nextPutAll: aText asString; close].
 		fileName = ff localName 
-			ifTrue: [contents _ aText asString]
+			ifTrue: [contents := aText asString]
 			ifFalse: [self updateFileList].		"user renamed the file"
 		^ true  "accepted"].
 
 	listIndex = 0 ifTrue:
 		[self inform: 'No fileName is selected' translated.
 		^ false  "failed"].
-	type _ 'These'.
-	brevityState = #briefFile ifTrue: [type _ 'Abbreviated'].
-	brevityState = #briefHex ifTrue: [type _ 'Abbreviated'].
-	brevityState = #fullHex ifTrue: [type _ 'Hexadecimal'].
-	brevityState = #FileList ifTrue: [type _ 'Directory'].
+	type := 'These'.
+	brevityState = #briefFile ifTrue: [type := 'Abbreviated'].
+	brevityState = #briefHex ifTrue: [type := 'Abbreviated'].
+	brevityState = #fullHex ifTrue: [type := 'Hexadecimal'].
+	brevityState = #FileList ifTrue: [type := 'Directory'].
 	self inform: ('{1} contents cannot
 meaningfully be saved at present.' translated format:{type translated}).
 	^ false  "failed"

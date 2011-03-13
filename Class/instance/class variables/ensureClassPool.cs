@@ -1,3 +1,3 @@
 ensureClassPool
 
-	classPool ifNil: [classPool _ Dictionary new].
+	classPool ifNil: [classPool := Dictionary new].

@@ -5,12 +5,12 @@ fileOutOn: aFileStream
 	type == #method
 		ifTrue:
 			[aFileStream nextPut: $!.
-			aString _  class asString
+			aString :=  class asString
 							, (meta ifTrue: [' class methodsFor: ']
 									ifFalse: [' methodsFor: '])
 							, category asString printString.
 			stamp ifNotNil:
-				[aString _ aString, ' stamp: ''', stamp, ''''].
+				[aString := aString, ' stamp: ''', stamp, ''''].
 			aFileStream nextChunkPut: aString.
 			aFileStream cr].
 

@@ -1,4 +1,4 @@
 start
-	"Answer the start DateAndTime of this timespan"
+ 	"Answer the start DateAndTime of this timespan"
 
-	^ start
+	^ start 

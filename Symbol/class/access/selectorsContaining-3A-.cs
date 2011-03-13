@@ -3,12 +3,12 @@ selectorsContaining: aString
 
 	| size selectorList ascii |
 
-	selectorList _ OrderedCollection new.
-	(size _ aString size) = 0 ifTrue: [^selectorList].
+	selectorList := OrderedCollection new.
+	(size := aString size) = 0 ifTrue: [^selectorList].
 
 	aString size = 1 ifTrue:
 		[
-			ascii _ aString first asciiValue.
+			ascii := aString first asciiValue.
 			ascii < 128 ifTrue: [selectorList add: (OneCharacterSymbols at: ascii+1)]
 		].
 
@@ -20,12 +20,11 @@ selectorsContaining: aString
 			^selectorList
 		].
 
-	selectorList _ selectorList copyFrom: 2 to: selectorList size.
+	selectorList := selectorList copyFrom: 2 to: selectorList size.
 
 	self allSymbolTablesDo: [:each |
 		each size >= size ifTrue:
-			[(each findSubstring: aString in: each startingAt: 1 
-				matchTable: CaseInsensitiveOrder) > 0
+			[(each findString: aString startingAt: 1 caseSensitive: false) > 0
 						ifTrue: [selectorList add: each]]].
 
 	^selectorList reject: [:each | "reject non-selectors, but keep ones that begin with an uppercase"

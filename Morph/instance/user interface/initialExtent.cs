@@ -1,6 +1,6 @@
 initialExtent
 	| ext |
-	(ext _ self valueOfProperty: #initialExtent)
+	(ext := self valueOfProperty: #initialExtent)
 		ifNotNil:
 			[^ ext].
 	^ super initialExtent

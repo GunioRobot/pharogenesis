@@ -6,5 +6,5 @@ absorbClass: className from: otherChangeSet
 	(self changeRecorderFor: className)
 			assimilateAllChangesIn: (otherChangeSet changeRecorderFor: className).
 
-	(cls _ Smalltalk classNamed: className) ifNotNil:
+	(cls := Smalltalk classNamed: className) ifNotNil:
 		[self absorbStructureOfClass: cls from: otherChangeSet].

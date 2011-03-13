@@ -2,16 +2,14 @@ allUnimplementedNonPrimitiveCalls
 	"Answer an Array of each message that is sent by an expression in a  
 	method but is not implemented by any object in the system."
 	| aStream secondStream all meth |
-	all _ self systemNavigation allImplementedMessages.
-	aStream _ WriteStream
-				on: (Array new: 50).
+	all := self systemNavigation allImplementedMessages.
+	aStream := (Array new: 50) writeStream.
 	Cursor execute
 		showWhile: [self systemNavigation
 				allBehaviorsDo: [:cl | cl
 						selectorsDo: [:sel | 
-							secondStream _ WriteStream
-										on: (String new: 5).
-							meth _ cl compiledMethodAt: sel.
+							secondStream := (String new: 5) writeStream.
+							meth := cl compiledMethodAt: sel.
 							meth primitive = 0 ifTrue: [
 								meth messages
 									do: [:m | (all includes: m)

@@ -1,0 +1,2 @@
+testOtherInstancesOfTranscriptStreamSelfEvaluating
+	self deny: TranscriptStream new isSelfEvaluating

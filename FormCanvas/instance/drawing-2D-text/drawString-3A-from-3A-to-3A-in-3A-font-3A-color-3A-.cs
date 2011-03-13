@@ -1,12 +1,12 @@
 drawString: aString from: firstIndex to: lastIndex in: bounds font: fontOrNil color: c
 	| font portRect |
 	port colorMap: nil.
-	portRect _ port clipRect.
+	portRect := port clipRect.
 	port clipByX1: bounds left + origin x 
 		y1: bounds top + origin y 
 		x2: bounds right + origin x 
 		y2: bounds bottom + origin y.
-	font _ fontOrNil ifNil: [TextStyle defaultFont].
+	font := fontOrNil ifNil: [TextStyle defaultFont].
 	port combinationRule: Form paint.
 	font installOn: port
 		foregroundColor: (self shadowColor ifNil:[c]) 

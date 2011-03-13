@@ -1,7 +1,7 @@
 initialize: size
 
-	contentsArray _ Array new: size.
-	readPosition _ 1.
-	writePosition _ 1.
-	accessProtect _ Semaphore forMutualExclusion.
-	readSynch _ Semaphore new
+	contentsArray := Array new: size.
+	readPosition := 1.
+	writePosition := 1.
+	accessProtect := Semaphore forMutualExclusion.
+	readSynch := Semaphore new

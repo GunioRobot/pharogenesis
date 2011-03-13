@@ -1,0 +1,2 @@
+defaultMenuBarForWindowIndex: aWindowIndex
+	^self

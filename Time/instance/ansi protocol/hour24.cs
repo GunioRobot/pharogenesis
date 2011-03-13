@@ -1,4 +1,3 @@
-hour24
+hour24 
 
-
-	^ self asDuration hours
+	^ self asDuration hours 

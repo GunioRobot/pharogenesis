@@ -6,6 +6,6 @@ keyAtValue: value ifAbsent: exceptionBlock
 		[:index |
 		value = (array at: index)
 			ifTrue:
-				[(theKey _ self basicAt: index) == nil
+				[(theKey := self basicAt: index) == nil
 					ifFalse: [^ theKey]]].
 	^ exceptionBlock value

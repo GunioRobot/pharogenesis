@@ -1,1 +1,0 @@
-TwoWayScrollPane class instanceVariableNames: ''

@@ -6,7 +6,6 @@ If not, choose no, and fix it.')
 		ifFalse: [^ self].
 	"Object classPool at: #DependentsFields"
 	self reclaimDependents.
-	Preferences enable: #mvcProjectsAllowed.
 	Preferences enable: #fastDragWindowForMorphic.
 	Smalltalk at: #Browser ifPresent:[:br| br initialize].
 	Undeclared isEmpty

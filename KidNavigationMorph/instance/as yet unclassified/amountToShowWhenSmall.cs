@@ -1,2 +1,0 @@
-amountToShowWhenSmall
-	^49

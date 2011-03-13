@@ -1,4 +1,6 @@
 home 
-	"Refer to the comment in ContextPart|home."
+	"Answer the context in which the receiver was defined."
 
-	^self
+	closureOrNil == nil ifTrue:
+		[^self].
+	^closureOrNil outerContext home

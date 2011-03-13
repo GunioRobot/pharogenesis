@@ -1,7 +1,7 @@
 changeEmphasisOrAlignment
 	| aList reply  |
-	aList _ #(normal bold italic narrow underlined struckOut leftFlush centered rightFlush justified).
-	reply _ (SelectionMenu labelList: aList lines: #(6) selections: aList) startUp.
+	aList := #(normal bold italic narrow underlined struckOut leftFlush centered rightFlush justified).
+	reply := UIManager default chooseFrom: (aList collect: [:t | t translated]) values: aList lines: #(6).
 	reply ~~ nil ifTrue:
 		[(#(leftFlush centered rightFlush justified) includes: reply)
 			ifTrue:
@@ -11,5 +11,5 @@ changeEmphasisOrAlignment
 				[self setEmphasis: reply.
 				paragraph composeAll.
 				self recomputeSelection.
-				self mvcRedisplay]].
+				]].
 	^ true

@@ -1,2 +1,2 @@
 pointHashBlock
-	^[:pt| (pt x bitShift: 12) + pt y] fixTemps
+	^[:pt| (pt x bitShift: 12) + pt y] 

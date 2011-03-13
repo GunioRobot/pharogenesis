@@ -1,2 +1,2 @@
 real: aNumber
-	real _ aNumber.
+	real := aNumber.

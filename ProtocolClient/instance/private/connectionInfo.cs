@@ -1,3 +1,3 @@
 connectionInfo
-	connectInfo ifNil: [connectInfo _ Dictionary new].
+	connectInfo ifNil: [connectInfo := Dictionary new].
 	^connectInfo

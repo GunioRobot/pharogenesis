@@ -1,5 +1,5 @@
 initialize
 	super initialize.
-	showSplash _ true.
+	showSplash := true.
 	HTTPClient isRunningInBrowser
-		ifTrue: [whichFlaps _ 'etoy']
+		ifTrue: [whichFlaps := 'etoy']

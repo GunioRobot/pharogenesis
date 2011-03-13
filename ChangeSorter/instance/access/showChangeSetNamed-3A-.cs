@@ -1,3 +1,3 @@
 showChangeSetNamed: aName
 
-	self showChangeSet: (ChangeSorter changeSetNamed: aName) 
+	self showChangeSet: (ChangesOrganizer changeSetNamed: aName) 

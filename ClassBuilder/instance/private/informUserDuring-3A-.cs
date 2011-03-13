@@ -1,6 +1,7 @@
-informUserDuring: aBlock
-	self class isSilent ifTrue:[^aBlock value].
-	Utilities informUserDuring:[:bar|
-		progress _ bar.
-		aBlock value].
-	progress _ nil.
+informUserDuring: aBlock 
+	self class isSilent ifTrue: [ ^ aBlock value ].
+	UIManager default informUserDuring: 
+		[ :bar | 
+		progress := bar.
+		aBlock value ].
+	progress := nil

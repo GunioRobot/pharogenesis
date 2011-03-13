@@ -1,2 +1,0 @@
-isStandardViewer
-	^false

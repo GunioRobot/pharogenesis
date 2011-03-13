@@ -1,10 +1,17 @@
 merging: listOfRects 
 	"A number of callers of merge: should use this method."
 	| minX minY maxX maxY |
-	listOfRects
-		do: [:r | minX
-				ifNil: [minX _ r topLeft x. minY _ r topLeft y.
-					maxX _ r bottomRight x. maxY _ r bottomRight y]
-				ifNotNil: [minX _ minX min: r topLeft x. minY _ minY min: r topLeft y.
-					maxX _ maxX max: r bottomRight x. maxY _ maxY max: r bottomRight y]].
-	^ minX@minY corner: maxX@maxY
+	listOfRects do: 
+		[ :r | 
+		minX 
+			ifNil: 
+				[ minX := r topLeft x.
+				minY := r topLeft y.
+				maxX := r bottomRight x.
+				maxY := r bottomRight y ]
+			ifNotNil: 
+				[ minX := minX min: r topLeft x.
+				minY := minY min: r topLeft y.
+				maxX := maxX max: r bottomRight x.
+				maxY := maxY max: r bottomRight y ] ].
+	^ minX @ minY corner: maxX @ maxY

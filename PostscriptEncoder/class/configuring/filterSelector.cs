@@ -1,2 +1,0 @@
-filterSelector
-	^#encodePostscriptOn:.

@@ -1,3 +1,3 @@
 pointSize
 
-	^ fontArray first pixelSize * 72 // 96.
+	^ (fontArray  at: 1) pixelSize * 72 // 96.

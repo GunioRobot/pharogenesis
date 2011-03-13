@@ -1,2 +1,2 @@
 registries
-	^registries ifNil: [registries _ Dictionary new]
+	^registries ifNil: [registries := Dictionary new]

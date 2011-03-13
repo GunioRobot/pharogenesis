@@ -1,2 +1,0 @@
-cacheDirectory
-	^ self lastRelease cacheDirectory

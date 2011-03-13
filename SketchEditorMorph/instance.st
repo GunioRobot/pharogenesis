@@ -4,4 +4,4 @@ Morph
 		'hostView palette ticksToDwell rotationCenter registrationPoint newPicBlock emptyPicBlock paintingForm dimForm formCanvas rotationButton scaleButton cumRot cumMag undoBuffer enclosingPasteUpMorph forEachHand'
 	classVariableNames: 'SketchTimes'
 	poolDictionaries: ''
-	category: 'MorphicExtras-Support'
+	category: 'Morphic-Basic'

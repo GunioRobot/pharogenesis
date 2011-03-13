@@ -1,4 +1,4 @@
 isSelected: aBoolean
 
-	isSelected _ aBoolean.
+	isSelected := aBoolean.
 	self changed.

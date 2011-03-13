@@ -6,17 +6,17 @@ findRogueRootsImSeg: rootArray
 4) Remember to quit without saving -- the owner pointers are smashed."
 
 | newRoots suspects bag1 bag2 |
-arrayOfRoots _ rootArray.
-[(newRoots _ self rootsIncludingPlayers) == nil] whileFalse: [
-	arrayOfRoots _ newRoots].		"world, presenter, and all Player classes"
+arrayOfRoots := rootArray.
+[(newRoots := self rootsIncludingPlayers) == nil] whileFalse: [
+	arrayOfRoots := newRoots].		"world, presenter, and all Player classes"
 self findRogueRootsPrep.	"and free that context!"
 Smalltalk forgetDoIts.
 Smalltalk garbageCollect.
 self copyFromRoots: arrayOfRoots sizeHint: 0.
 
-suspects _ outPointers select: [:oo | oo isMorph].
+suspects := outPointers select: [:oo | oo isMorph].
 suspects size > 0 ifTrue: [suspects inspect].
-bag1 _ Bag new.  bag2 _ Bag new.
+bag1 := Bag new.  bag2 := Bag new.
 outPointers do: [:key | 
 	(key isKindOf: Class) 
 		ifTrue: [bag2 add: key class name]

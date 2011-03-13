@@ -3,10 +3,10 @@ keyLike: aString satisfying: aBlock
 
 	| stemAndSuffix suffix stem newKey |
 	(aBlock value: aString) ifTrue: [^ aString].
-	stemAndSuffix _ aString stemAndNumericSuffix.
-	suffix _ stemAndSuffix last + 1.
-	stem _ stemAndSuffix first.
-	[aBlock value: (newKey _ stem, suffix printString)]
+	stemAndSuffix := aString stemAndNumericSuffix.
+	suffix := stemAndSuffix last + 1.
+	stem := stemAndSuffix first.
+	[aBlock value: (newKey := stem, suffix printString)]
 		whileFalse:
-			[suffix _ suffix + 1].
+			[suffix := suffix + 1].
 	^ newKey

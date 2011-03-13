@@ -6,5 +6,6 @@ printOn: aStream
 	aStream nextPutAll: self type; space.
 	aStream nextPutAll: self modifierString.
 	aStream nextPutAll: self buttonString.
-	aStream nextPutAll: timeStamp printString.
+	aStream nextPutAll: timeStamp printString; space.
+	aStream	 nextPutAll: self windowIndex printString.
 	aStream nextPut: $].

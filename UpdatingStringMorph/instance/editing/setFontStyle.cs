@@ -2,9 +2,8 @@ setFontStyle
 	| aList reply style |
 	aList := (TextConstants select: [:anItem | anItem isKindOf: TextStyle]) 
 				keys asOrderedCollection.
-	reply := (SelectionMenu labelList: aList selections: aList) startUp.
-	reply notNil 
-		ifTrue: 
+	reply := UIManager default chooseFrom: aList values: aList.
+	reply ifNotNil: 
 			[(style := TextStyle named: reply) ifNil: 
 					[Beeper beep.
 					^true].

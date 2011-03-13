@@ -1,2 +1,0 @@
-samplingRate: aNumber
-	samplingRate := aNumber

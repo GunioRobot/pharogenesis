@@ -1,2 +1,0 @@
-isAViewer
-	^ true

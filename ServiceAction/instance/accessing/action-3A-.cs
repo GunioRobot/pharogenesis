@@ -1,2 +1,2 @@
 action: aBlock
-	action := aBlock fixTemps
+	action := aBlock

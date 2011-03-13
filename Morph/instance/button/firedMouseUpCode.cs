@@ -3,7 +3,7 @@ firedMouseUpCode
 
 	| evt |
 	(self world isNil or: [self mouseUpCodeOrNil isNil]) ifTrue: [^false].
-	evt := MouseEvent new 
+	evt := MouseEvent basicNew 
 				setType: nil
 				position: self center
 				buttons: 0

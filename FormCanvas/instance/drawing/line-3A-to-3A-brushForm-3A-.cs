@@ -1,6 +1,6 @@
 line: pt1 to: pt2 brushForm: brush
 	| offset |
-	offset _ origin.
+	offset := origin.
 	self setPaintColor: Color black.
 	port sourceForm: brush; fillColor: nil;
 		sourceRect: brush boundingBox;

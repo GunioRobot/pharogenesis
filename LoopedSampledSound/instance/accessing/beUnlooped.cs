@@ -1,3 +1,0 @@
-beUnlooped
-
-	scaledLoopLength := 0.

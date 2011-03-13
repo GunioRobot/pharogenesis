@@ -5,16 +5,16 @@ checkFatalReshape: setOfClasses
 	self flag: #bobconv.	
 
 	setOfClasses isEmpty ifTrue: [^ self].
-	suspects _ OrderedCollection new.
+	suspects := OrderedCollection new.
 	setOfClasses do: [:aClass |
-		className _ renamed keyAtValue: aClass name ifAbsent: [aClass name].
-		oldInstVars _ (structures at: className ifAbsent: [#(0)]) allButFirst.		"should be there"
-		newInstVars _ aClass allInstVarNames.
-		oldInstVars size > newInstVars size ifTrue: [bad _ true].
+		className := renamed keyAtValue: aClass name ifAbsent: [aClass name].
+		oldInstVars := (structures at: className ifAbsent: [#(0)]) allButFirst.		"should be there"
+		newInstVars := aClass allInstVarNames.
+		oldInstVars size > newInstVars size ifTrue: [bad := true].
 		oldInstVars size = newInstVars size ifTrue: [
-			bad _ oldInstVars ~= newInstVars].
+			bad := oldInstVars ~= newInstVars].
 		oldInstVars size < newInstVars size ifTrue: [
-			bad _ oldInstVars ~= (newInstVars copyFrom: 1 to: oldInstVars size)].
+			bad := oldInstVars ~= (newInstVars copyFrom: 1 to: oldInstVars size)].
 		bad ifTrue: [suspects add: aClass]].
 
 	suspects isEmpty ifFalse: [

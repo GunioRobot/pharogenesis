@@ -1,7 +1,7 @@
 allMethodsNoDoitsSelect: aBlock 
 	"Like allSelect:, but strip out Doits"
 	| aCollection |
-	aCollection _ SortedCollection new.
+	aCollection := SortedCollection new.
 	Cursor execute
 		showWhile: [self
 				allBehaviorsDo: [:class | class

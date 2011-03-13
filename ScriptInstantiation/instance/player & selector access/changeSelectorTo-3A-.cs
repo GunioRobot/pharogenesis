@@ -1,4 +1,0 @@
-changeSelectorTo: aNewSelector
-	"Change the selector associated with the receiver to the new one provided"
-
-	selector _ aNewSelector

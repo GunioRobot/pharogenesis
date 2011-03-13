@@ -1,3 +1,0 @@
-currentIndex
-
-	^currentIndex

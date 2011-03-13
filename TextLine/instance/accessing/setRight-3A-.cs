@@ -1,2 +1,2 @@
 setRight: x
-	right _ x
+	right := x

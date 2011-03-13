@@ -4,6 +4,7 @@ testSins
 				createClassNamed: #CAA
 				superclass: ProtoObject
 				uses: { }.
+	ProtoObject removeSubclass: caa.
 	caa superclass: nil.
 	cab := self 
 				createClassNamed: #CAB

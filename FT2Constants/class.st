@@ -1,0 +1,1 @@
+FT2Constants class instanceVariableNames: ''

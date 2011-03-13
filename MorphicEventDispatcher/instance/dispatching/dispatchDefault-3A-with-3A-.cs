@@ -4,22 +4,22 @@ dispatchDefault: anEvent with: aMorph
 	"See if we're fully outside aMorphs bounds"
 	(aMorph fullBounds containsPoint: anEvent position) ifFalse:[^#rejected]. "outside"
 	"Traverse children"
-	index _ 1.
-	morphs _ aMorph submorphs.
-	inside _ false.
+	index := 1.
+	morphs := aMorph submorphs.
+	inside := false.
 	[index <= morphs size] whileTrue:[
-		child _ morphs at: index.
-		localEvt _ anEvent transformedBy: (child transformedFrom: aMorph).
+		child := morphs at: index.
+		localEvt := anEvent transformedBy: (child transformedFrom: aMorph).
 		(child processEvent: localEvt using: self) == #rejected ifFalse:[
 			"Not rejected. The event was in some submorph of the receiver"
-			inside _ true.
+			inside := true.
 			localEvt wasHandled ifTrue:[anEvent copyHandlerState: localEvt].
-			index _ morphs size. "break"
+			index := morphs size. "break"
 		].
-		index _ index + 1.
+		index := index + 1.
 	].
 
 	"Check for being inside the receiver"
-	inside ifFalse:[inside _ aMorph containsPoint: anEvent position event: anEvent].
+	inside ifFalse:[inside := aMorph containsPoint: anEvent position event: anEvent].
 	inside ifTrue:[^aMorph handleEvent: anEvent].
 	^#rejected

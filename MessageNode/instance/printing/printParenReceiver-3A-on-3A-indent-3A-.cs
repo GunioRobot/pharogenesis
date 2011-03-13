@@ -1,7 +1,7 @@
 printParenReceiver: rcvr on: aStream indent: level
 					
-	(rcvr isKindOf: BlockNode) ifTrue:
-		[^ rcvr printOn: aStream indent: level].
-	aStream nextPutAll: '('.
+	rcvr isBlockNode ifTrue:
+		[^rcvr printOn: aStream indent: level].
+	aStream nextPut: $(.
 	rcvr printOn: aStream indent: level.
-	aStream nextPutAll: ')'
+	aStream nextPut: $)

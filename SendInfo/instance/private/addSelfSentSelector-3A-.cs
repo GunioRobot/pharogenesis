@@ -1,3 +1,3 @@
 addSelfSentSelector: aSymbol
-	selfSentSelectors ifNil: [selfSentSelectors _ IdentitySet new].
+	selfSentSelectors ifNil: [selfSentSelectors := IdentitySet new].
 	selfSentSelectors add: aSymbol.

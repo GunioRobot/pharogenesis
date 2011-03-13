@@ -1,0 +1,4 @@
+GlyphContrastPreferenceChanged
+	self current glyphContrastPreferenceChanged
+		
+	

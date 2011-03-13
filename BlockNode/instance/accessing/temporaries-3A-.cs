@@ -1,2 +1,2 @@
 temporaries: aCollection
-	temporaries _ aCollection
+	temporaries := aCollection

@@ -1,3 +1,3 @@
 leftOrRight  "Change scroll bar location"
-	scrollBarOnLeft _ scrollBarOnLeft not.
+	scrollBarOnLeft := scrollBarOnLeft not.
 	self extent: self extent

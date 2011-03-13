@@ -1,2 +1,2 @@
 becomeEmpty
-	top _ 0
+	top := 0

@@ -2,7 +2,6 @@ filterMessageList
 	"Allow the user to refine the list of messages."
 
 	| aMenu evt |
-	Smalltalk isMorphic ifFalse: [^ self inform: 'sorry, morphic only at this time.'].
 	messageList size <= 1 ifTrue: [^ self inform: 'this is not a propitious filtering situation'].
 
 	"would like to get the evt coming in but thwarted by the setInvokingView: circumlocution"
@@ -37,8 +36,6 @@ filterMessageList
 		-
 		('uncommented messages' filterToUncommentedMethods 'filter to show only messages that do not have comments at the beginning')
 		('commented messages' filterToCommentedMethods 'fileter to show only messages that have comments at the beginning')
-		-
-		('messages in hardened classes'			filterToMessagesWithHardenedClasses	'filter to show only messages of established classes (as opposed to Uniclasses such as Player23)')
 		-
 		('messages that...'						filterToMessagesThat			'let me type in a block taking a class and a selector, which will specify yea or nay concerning which elements should remain in the list')
 			).

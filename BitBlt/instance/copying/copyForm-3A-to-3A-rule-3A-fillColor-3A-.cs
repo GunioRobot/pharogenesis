@@ -1,11 +1,11 @@
-copyForm: srcForm to: destPt rule: rule fillColor: color
-	sourceForm _ srcForm.
+copyForm: srcForm to: destPt rule: rule fillColor: color 
+	sourceForm := srcForm.
 	self fillColor: color.	"sets halftoneForm"
-	combinationRule _ rule.
-	destX _ destPt x + sourceForm offset x.
-	destY _ destPt y + sourceForm offset y.
-	sourceX _ 0.
-	sourceY _ 0.
-	width _ sourceForm width.
-	height _ sourceForm height.
+	combinationRule := rule.
+	destX := destPt x + sourceForm offset x.
+	destY := destPt y + sourceForm offset y.
+	sourceX := 0.
+	sourceY := 0.
+	width := sourceForm width.
+	height := sourceForm height.
 	self copyBits

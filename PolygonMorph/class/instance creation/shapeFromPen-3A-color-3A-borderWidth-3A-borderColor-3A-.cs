@@ -5,6 +5,6 @@ shapeFromPen: penBlock color: c borderWidth: bw borderColor: bc
 		color: Color red borderWidth: 1 borderColor: Color black)"
 
 	| pen |
-	penBlock value: (pen _ PenPointRecorder new).
+	penBlock value: (pen := PenPointRecorder new).
 	^ (self vertices: pen points asArray color: c borderWidth: bw borderColor: bc)
 		quickFill: false

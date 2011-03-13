@@ -2,5 +2,5 @@ beStatic
 
 	"an aid for Nebraska: make the color chart a static image to reduce traffic"
 	image isStatic ifFalse: [
-		image _ image as: StaticForm
+		image := image as: StaticForm
 	].

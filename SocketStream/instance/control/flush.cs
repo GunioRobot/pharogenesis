@@ -7,4 +7,4 @@ flush
 			[socket sendData: outBuffer count: outNextToWrite - 1]
 				on: ConnectionTimedOut
 				do: [:ex | shouldSignal ifFalse: ["swallow"]].
-			outNextToWrite _ 1]
+			outNextToWrite := 1]

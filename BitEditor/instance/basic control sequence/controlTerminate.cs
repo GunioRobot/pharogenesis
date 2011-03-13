@@ -1,3 +1,0 @@
-controlTerminate
-
-	Cursor normal show

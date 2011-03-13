@@ -9,16 +9,16 @@ absoluteFromText: aString
 
 	| remainder index scheme fragment newUrl |
 	"trim surrounding whitespace"
-	remainder _ aString withBlanksTrimmed.	
+	remainder := aString withBlanksTrimmed.	
 
 	"extract the fragment, if any"
-	index _ remainder indexOf: $#.
+	index := remainder indexOf: $#.
 	index > 0 ifTrue: [
-		fragment _ remainder copyFrom: index + 1 to: remainder size.
-		remainder _ remainder copyFrom: 1 to: index - 1].
+		fragment := remainder copyFrom: index + 1 to: remainder size.
+		remainder := remainder copyFrom: 1 to: index - 1].
 
 	"choose class based on the scheme name, and let that class do the bulk of the parsing"
-	scheme _ self schemeNameForString: remainder.
-	newUrl _ (self urlClassForScheme: scheme) new privateInitializeFromText: remainder.
+	scheme := self schemeNameForString: remainder.
+	newUrl := (self urlClassForScheme: scheme) new privateInitializeFromText: remainder.
 	newUrl privateFragment: fragment.
 	^newUrl

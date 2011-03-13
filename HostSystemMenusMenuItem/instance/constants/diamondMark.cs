@@ -1,0 +1,2 @@
+diamondMark
+^nil

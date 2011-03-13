@@ -1,0 +1,1 @@
+MirrorPrimitiveTests class instanceVariableNames: ''

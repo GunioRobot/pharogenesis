@@ -1,4 +1,5 @@
 initialize
 
+	super initialize.
 	eventSource := SystemEventManager new.
-	silenceLevel _ 0.
+	silenceLevel := 0.

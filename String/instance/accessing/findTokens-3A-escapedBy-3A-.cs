@@ -14,34 +14,37 @@ findTokens: delimiters escapedBy: quoteDelimiters
 	 
 	This method is useful for parsing comma separated variable strings for  
 	spreadsheet import and export."
-
 	| tokens rs activeEscapeCharacter ts char token delimiterChars quoteChars |
-	delimiterChars _ (delimiters isNil
-				ifTrue: ['']
-				ifFalse: [delimiters]) asString.
-	quoteChars _ (quoteDelimiters isNil
-				ifTrue: ['']
-				ifFalse: [quoteDelimiters]) asString.
-	tokens _ OrderedCollection new.
-	rs _ ReadStream on: self.
-	activeEscapeCharacter _ nil.
-	ts _ WriteStream on: ''.
-	[rs atEnd]
-		whileFalse: [char _ rs next.
-			activeEscapeCharacter isNil
-				ifTrue: [(quoteChars includes: char)
-						ifTrue: [activeEscapeCharacter _ char]
-						ifFalse: [(delimiterChars includes: char)
-								ifTrue: [token _ ts contents.
-									tokens add: token.
-									ts _ WriteStream on: '']
-								ifFalse: [ts nextPut: char]]]
-				ifFalse: [char == activeEscapeCharacter
-						ifTrue: [rs peek == activeEscapeCharacter
-								ifTrue: [ts nextPut: rs next]
-								ifFalse: [activeEscapeCharacter _ nil]]
-						ifFalse: [ts nextPut: char]]].
-	token _ ts contents.
-	(tokens isEmpty and: [token isEmpty])
-		ifFalse: [tokens add: token].
+	delimiterChars := (delimiters isNil 
+		ifTrue: [ '' ]
+		ifFalse: [ delimiters ]) asString.
+	quoteChars := (quoteDelimiters isNil 
+		ifTrue: [ '' ]
+		ifFalse: [ quoteDelimiters ]) asString.
+	tokens := OrderedCollection new.
+	rs := self readStream.
+	activeEscapeCharacter := nil.
+	ts := String new writeStream.
+	[ rs atEnd ] whileFalse: 
+		[ char := rs next.
+		activeEscapeCharacter isNil 
+			ifTrue: 
+				[ (quoteChars includes: char) 
+					ifTrue: [ activeEscapeCharacter := char ]
+					ifFalse: 
+						[ (delimiterChars includes: char) 
+							ifTrue: 
+								[ token := ts contents.
+								tokens add: token.
+								ts := String new writeStream ]
+							ifFalse: [ ts nextPut: char ] ] ]
+			ifFalse: 
+				[ char == activeEscapeCharacter 
+					ifTrue: 
+						[ rs peek == activeEscapeCharacter 
+							ifTrue: [ ts nextPut: rs next ]
+							ifFalse: [ activeEscapeCharacter := nil ] ]
+					ifFalse: [ ts nextPut: char ] ] ].
+	token := ts contents.
+	(tokens isEmpty and: [ token isEmpty ]) ifFalse: [ tokens add: token ].
 	^ tokens

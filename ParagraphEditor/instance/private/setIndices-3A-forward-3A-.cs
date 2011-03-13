@@ -1,7 +1,7 @@
 setIndices: shiftPressed forward: forward
 	"Little helper method that sets the moving and fixed indices according to some flags."
 	| indices |
-	indices _ Dictionary new.
+	indices := Dictionary new.
 	shiftPressed ifTrue: [
 			indices at: #moving put: self pointIndex.
 			indices at: #fixed put: self markIndex

@@ -1,2 +1,0 @@
-menuTitleBorderColor
-	^ self menuTitleColor 

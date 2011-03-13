@@ -5,7 +5,7 @@ undoOrRedoCommand
 	| aPhase |
 	lastCommand ifNil: [^ Beeper beep].
 
-	(aPhase _ lastCommand phase) == #done
+	(aPhase := lastCommand phase) == #done
 		ifTrue:
 			[lastCommand undoCommand.
 			lastCommand phase: #undone]

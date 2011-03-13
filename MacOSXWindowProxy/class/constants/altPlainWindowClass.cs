@@ -1,0 +1,2 @@
+altPlainWindowClass
+	^16

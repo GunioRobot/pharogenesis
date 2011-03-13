@@ -4,20 +4,20 @@ indentationOfLineIndex: lineIndex ifBlank: aBlock
 	 If the line is word-wrap overflow, back up a line and recur."
 
 	| arrayIndex first last reader leadingTabs lastSeparator cr tab ch |
-	cr _ Character cr.
-	tab _ Character tab.
-	arrayIndex _ lineIndex.
-	[first _ (lines at: arrayIndex) first.
+	cr := Character cr.
+	tab := Character tab.
+	arrayIndex := lineIndex.
+	[first := (lines at: arrayIndex) first.
 	 first > 1 and: [(text string at: first - 1) ~~ cr]] whileTrue: "word wrap"
-		[arrayIndex _ arrayIndex - 1].
-	last _ (lines at: lastLine) last.
-	reader _ ReadStream on: text string from: first to: last.
-	leadingTabs _ 0.
-	[reader atEnd not and: [(ch _ reader next) == tab]]
-		whileTrue: [leadingTabs _ leadingTabs + 1].
-	lastSeparator _ first - 1 + leadingTabs.
+		[arrayIndex := arrayIndex - 1].
+	last := (lines at: lastLine) last.
+	reader := ReadStream on: text string from: first to: last.
+	leadingTabs := 0.
+	[reader atEnd not and: [(ch := reader next) == tab]]
+		whileTrue: [leadingTabs := leadingTabs + 1].
+	lastSeparator := first - 1 + leadingTabs.
 	[reader atEnd not and: [ch isSeparator and: [ch ~~ cr]]]
-		whileTrue: [lastSeparator _ lastSeparator + 1. ch _ reader next].
+		whileTrue: [lastSeparator := lastSeparator + 1. ch := reader next].
 	lastSeparator = last | (ch == cr)
 		ifTrue: [^aBlock value: leadingTabs].
 	^leadingTabs

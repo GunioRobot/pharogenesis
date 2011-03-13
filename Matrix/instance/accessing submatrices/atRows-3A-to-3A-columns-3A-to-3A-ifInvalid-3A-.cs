@@ -4,6 +4,6 @@ atRows: r1 to: r2 columns: c1 to: c2 ifInvalid: element
 	 are filled in with element."
 	|rd cd|
 
-	rd _ r1 - 1.
-	cd _ c1 - 1.
+	rd := r1 - 1.
+	cd := c1 - 1.
 	^self class rows: r2-rd columns: c2-cd tabulate: [:r :c| self at: r+rd at: c+cd ifInvalid: element]

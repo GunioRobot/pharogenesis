@@ -1,5 +1,8 @@
 midnight
 	"Answer a DateAndTime starting at midnight local time"
-
-	^ self
-		dayMonthYearDo: [ :d :m :y | self class year: y month: m day: d ]
+	
+	^self class basicNew
+		setJdn: jdn
+		seconds: 0
+		nano: 0
+		offset: self class localOffset

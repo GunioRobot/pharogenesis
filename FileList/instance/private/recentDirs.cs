@@ -3,6 +3,6 @@ recentDirs
 
 	| dirName |
 	RecentDirs isEmpty ifTrue: [^self].
-	dirName := (SelectionMenu selections: RecentDirs) startUp.
-	dirName == nil ifTrue: [^self].
+	dirName := UIManager default chooseFrom: RecentDirs values: RecentDirs.
+	dirName ifNil: [^self].
 	self directory: (FileDirectory on: dirName)

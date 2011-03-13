@@ -3,4 +3,4 @@ MCTestCase
 	instanceVariableNames: 'expected diff'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Monticello-Tests'
+	category: 'Tests-Monticello'

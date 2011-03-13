@@ -1,2 +1,2 @@
 setHand: aHand
-	source _ aHand
+	source := aHand

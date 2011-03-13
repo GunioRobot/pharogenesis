@@ -3,6 +3,6 @@ setDefaultContentsIfNil
 
 	| toUse |
 	text ifNil:
-		[toUse _ self valueOfProperty: #defaultContents.
-		toUse ifNil: [toUse _'abc' asText "allBold"].	"try it plain for a while"
-		text _ toUse]
+		[toUse := self valueOfProperty: #defaultContents.
+		toUse ifNil: [toUse :='abc' asText "allBold"].	"try it plain for a while"
+		text := toUse]

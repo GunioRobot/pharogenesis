@@ -1,3 +1,0 @@
-reverse
-
-	self sendMessageToCostume: #reverse.

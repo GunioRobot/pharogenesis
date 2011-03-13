@@ -4,4 +4,4 @@ outputFlowControlType: anInteger
 		1 - XOn/XOff
 		2 - hardware handshaking"
 
-	outputFlowControlType _ anInteger.
+	outputFlowControlType := anInteger.

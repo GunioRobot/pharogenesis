@@ -4,6 +4,6 @@ listAtCategoryNumber: anInteger
 	| firstIndex lastIndex |
 	(anInteger < 1 or: [anInteger > categoryStops size])
 		ifTrue: [^ nil].
-	firstIndex _ self firstIndexOfCategoryNumber: anInteger.
-	lastIndex _  self lastIndexOfCategoryNumber: anInteger.
+	firstIndex := self firstIndexOfCategoryNumber: anInteger.
+	lastIndex :=  self lastIndexOfCategoryNumber: anInteger.
 	^elementArray copyFrom: firstIndex to: lastIndex

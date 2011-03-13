@@ -1,3 +1,0 @@
-hash
-
-	^numbers hash

@@ -3,5 +3,5 @@ scanLongLoad: extension
 	argument."
 
 	| scanner |
-	scanner _ InstructionStream on: self.
+	scanner := InstructionStream on: self.
 	^scanner scanFor: [:instr | instr = 128 and: [scanner followingByte = extension]]

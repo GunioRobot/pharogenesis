@@ -3,5 +3,5 @@ vLeftoverScrollRange
 	| h |
 
 	scroller hasSubmorphs ifFalse:[^0].
-	h _ self vScrollBarHeight.
+	h := self vScrollBarHeight.
 	^ (self vTotalScrollRange - h roundTo: self scrollDeltaHeight) max: 0

@@ -3,10 +3,5 @@ wantsYellowButtonMenu
 	self
 		valueOfProperty: #wantsYellowButtonMenu
 		ifPresentDo: [:value | ^ value].
-	""
-	self isInSystemWindow
-		ifTrue: [^ false].""
-	(Preferences noviceMode
-			and: [self isInDockingBar])
-		ifTrue: [^ false].""
+	self isInSystemWindow ifTrue: [^ false].
 	^ Preferences generalizedYellowButtonMenu

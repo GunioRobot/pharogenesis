@@ -1,6 +1,5 @@
-atMostAsLuminentAs: aFloat
-
+atMostAsLuminentAs: aFloat 
 	| revisedColor |
-	revisedColor _ self.
-	[revisedColor luminance > aFloat] whileTrue: [revisedColor _ revisedColor slightlyDarker].
-	^revisedColor
+	revisedColor := self.
+	[ revisedColor luminance > aFloat ] whileTrue: [ revisedColor := revisedColor slightlyDarker ].
+	^ revisedColor

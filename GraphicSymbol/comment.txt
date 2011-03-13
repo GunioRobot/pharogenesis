@@ -1,1 +1,0 @@
-I represent a structured picture built from primitive display objects and other instances of me.

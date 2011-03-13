@@ -3,8 +3,8 @@ dateCommentLastSubmitted
 	"RecentMessageSet organization dateCommentLastSubmitted"
 
 	| aStamp tokens |
-	(aStamp _ self commentStamp) isEmptyOrNil ifTrue: [^ nil].
-	tokens _ aStamp findBetweenSubStrs: ' 
+	(aStamp := self commentStamp) isEmptyOrNil ifTrue: [^ nil].
+	tokens := aStamp findBetweenSubStrs: ' 
 '.  "space is expected delimiter, but cr is sometimes seen, though of mysterious provenance"
 	^ tokens size > 1
 		ifTrue:

@@ -7,18 +7,18 @@ nextPutWeak: anObject
     | typeID referencePosn |
 
     "Is it a reference type of object? If not, just write it normally."
-    typeID _ self typeIDFor: anObject.
+    typeID := self typeIDFor: anObject.
     (self isAReferenceType: typeID) ifFalse: [^ self nextPut: anObject].
 
     "Have we heard of and maybe even written anObject before?"
-    referencePosn _ references at: anObject ifAbsent: [
+    referencePosn := references at: anObject ifAbsent: [
 			references at: anObject put: OrderedCollection new].
 
     "If referencePosn is an Integer, it's the stream position of anObject.
      Else it's a collection of hopeful weak-references to anObject."
     referencePosn isInteger ifFalse:
         [referencePosn add: byteStream position - basePos.		"relative"
-        referencePosn _ self vacantRef].
+        referencePosn := self vacantRef].
     self outputReference: referencePosn.		"relative"
 
     ^ anObject

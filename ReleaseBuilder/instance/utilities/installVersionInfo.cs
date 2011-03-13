@@ -1,2 +1,0 @@
-installVersionInfo
-	"ReleaseBuilder new installVersionInfo"

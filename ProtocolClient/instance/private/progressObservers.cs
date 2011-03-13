@@ -1,3 +1,3 @@
 progressObservers
-	progressObservers ifNil: [progressObservers _ OrderedCollection new].
+	progressObservers ifNil: [progressObservers := OrderedCollection new].
 	^progressObservers

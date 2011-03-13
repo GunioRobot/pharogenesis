@@ -1,2 +1,0 @@
-browseSenders
-	self browseClass: OBSendersBrowser

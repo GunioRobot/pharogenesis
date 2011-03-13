@@ -4,5 +4,5 @@ resizeInBuffer: newSize
 	dead data above inNextToWrite.
 	<newSize> must >= inBuffer size!"
 
-	inBuffer _ (self streamBuffer: newSize)
+	inBuffer := (self streamBuffer: newSize)
 					replaceFrom: 1 to: inNextToWrite - 1 with: inBuffer startingAt: 1

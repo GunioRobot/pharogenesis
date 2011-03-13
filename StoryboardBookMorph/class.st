@@ -1,1 +1,0 @@
-StoryboardBookMorph class instanceVariableNames: ''

@@ -1,4 +1,5 @@
 testClassFromPattern
 	"self debug: #testClassFromPattern"
 
-	self assert: (Utilities classFromPattern: 'TCompilingB' withCaption: '') = TCompilingBehavior
+	self assert: (SystemNavigation default
+		classFromPattern: 'TComposingD' withCaption: '') = TComposingDescription

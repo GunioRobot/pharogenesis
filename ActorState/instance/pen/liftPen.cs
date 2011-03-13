@@ -1,2 +1,0 @@
-liftPen
-	penDown _ false

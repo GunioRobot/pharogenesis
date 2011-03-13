@@ -1,7 +1,0 @@
-For simplicity, many actions are implemented by the nodes themselves. When the contextual menu for a node is displayed, this Actor gathers those actions and makes them available in to the user.
-
-If a node class is specified, the OBNodeActor will also make available any class side actions provided by the node class. This is convenient for the user, since it makes it possible to invoke an action without first selecting a node. Many 'create' actions are implemented in this way.
-
-iVars:
-
-nodeClass - if not nil, this class's class-side actions will be available to the user as well.

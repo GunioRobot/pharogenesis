@@ -3,8 +3,8 @@ displayOn: aDisplayMedium transformation: displayTransformation clippingBox: cli
 	DisplayObject|displayOn:transformation:clippingBox:align:with:rule:mask:."
 
 	| absolutePoint |
-	absolutePoint _ displayTransformation applyTo: relativePoint.
-	absolutePoint _ absolutePoint x asInteger @ absolutePoint y asInteger.
+	absolutePoint := displayTransformation applyTo: relativePoint.
+	absolutePoint := absolutePoint x asInteger @ absolutePoint y asInteger.
 	self displayOn: aDisplayMedium
 		at: absolutePoint - alignmentPoint
 		clippingBox: clipRectangle

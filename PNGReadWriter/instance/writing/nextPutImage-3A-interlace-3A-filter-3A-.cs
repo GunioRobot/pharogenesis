@@ -16,7 +16,7 @@ nextPutImage: aForm interlace: aMethod filter: aFilterType
 			colorType := 6.
 			bytesPerScanline := width * 4].
 	self writeFileSignature.
-	crcStream := WriteStream on: (ByteArray new: 1000).
+	crcStream := (ByteArray new: 1000) writeStream.
 	crcStream resetToStart.
 	self writeIHDRChunkOn: crcStream.
 	self writeChunk: crcStream.

@@ -1,1 +1,0 @@
-WorldWindow class instanceVariableNames: ''

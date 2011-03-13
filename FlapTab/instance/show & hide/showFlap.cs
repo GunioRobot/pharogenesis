@@ -4,10 +4,10 @@ showFlap
 	| thicknessToUse flapOwner |
 
 	"19 sept 2000 - going for all paste ups <- raa note"
-	flapOwner _ self pasteUpMorph.
+	flapOwner := self pasteUpMorph.
 	self referentThickness <= 0
 		ifTrue:
-			[thicknessToUse _ lastReferentThickness ifNil: [100].
+			[thicknessToUse := lastReferentThickness ifNil: [100].
 			self orientation == #horizontal
 				ifTrue:
 					[referent height: thicknessToUse]
@@ -24,7 +24,7 @@ showFlap
 			referent adaptToWorld: flapOwner].
 	inboard  ifFalse:
 		[self adjustPositionVisAVisFlap].
-	flapShowing _ true.
+	flapShowing := true.
 	
 	self pasteUpMorph hideFlapsOtherThan: self ifClingingTo: edgeToAdhereTo.
 

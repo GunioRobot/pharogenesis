@@ -1,1 +1,0 @@
-SoundBuffer class instanceVariableNames: ''

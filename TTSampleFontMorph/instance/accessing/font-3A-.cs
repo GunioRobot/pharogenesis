@@ -1,7 +1,7 @@
 font: aTTFontDescription
 	| morph |
-	font _ aTTFontDescription.
-	morph _ (TTSampleStringMorph font: font).
+	font := aTTFontDescription.
+	morph := (TTSampleStringMorph font: font).
 	morph extent: morph extent * 2.
 	morph color: Color magenta.
 	self addMorphCentered: morph.

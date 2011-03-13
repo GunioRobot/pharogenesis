@@ -5,10 +5,10 @@ makeNewCategory
 	catName := UIManager default request: 'Please give the new category a name' initialAnswer: ''.
 	catName isEmptyOrNil ifTrue: [^ self].
 	catName := catName asSymbol.
-	(ChangeSetCategories includesKey: catName) ifTrue:
+	(self changeSetCategories includesKey: catName) ifTrue:
 		[^ self inform: 'Sorry, there is already a category of that name'].
 
 	aCategory := StaticChangeSetCategory new categoryName: catName.
-	ChangeSetCategories elementAt: catName put: aCategory.
+	self changeSetCategories elementAt: catName put: aCategory.
 	aCategory addChangeSet: myChangeSet.
 	self showChangeSetCategory: aCategory

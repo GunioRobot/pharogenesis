@@ -4,12 +4,12 @@ chooseUpdateList
 	| index him |
 	((UpdateUrlLists size > 1) and: [Preferences promptForUpdateServer])
 		ifTrue:
-			[index _ UIManager default 
+			[index := UIManager default 
 				chooseFrom: (UpdateUrlLists collect: [:each | each first]) 
 				lines: #()
 				title: 'Choose a group of servers\from which to fetch updates.' translated withCRs.
 			index > 0 ifTrue:
-				[him _ UpdateUrlLists at: index.
+				[him := UpdateUrlLists at: index.
 				UpdateUrlLists removeAt: index.
 				UpdateUrlLists addFirst: him].
 			^ index > 0].

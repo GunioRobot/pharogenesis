@@ -3,13 +3,15 @@ notify: string at: location
 		ifTrue: [(encoder == self or: [encoder isNil]) ifTrue: [^ self fail  "failure setting up syntax error"].
 				SyntaxErrorNotification
 					inClass: encoder classEncoding
-					category: encoder classEncoding category
+					category: category
 					withCode: 
 						(source contents
 							copyReplaceFrom: location
 							to: location - 1
 							with: string , ' ->')
-					doitFlag: doitFlag]
+					doitFlag: doitFlag
+					errorMessage: string
+					location: location]
 		ifFalse: [requestor
 					notify: string , ' ->'
 					at: location

@@ -1,3 +1,3 @@
 setCollection: anArray
-	array _ anArray.
+	array := anArray.
 	self reset

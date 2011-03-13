@@ -1,3 +1,3 @@
 ascentKern
 
-	^ fontArray first ascentKern.
+	^ (fontArray  at: 1) ascentKern.

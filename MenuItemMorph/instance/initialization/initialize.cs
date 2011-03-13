@@ -3,14 +3,14 @@ initialize
 	super initialize.
 	""
 	
-	contents _ ''.
-	hasFocus _ false.
-	isEnabled _ true.
-	subMenu _ nil.
-	isSelected _ false.
-	target _ nil.
-	selector _ nil.
-	arguments _ nil.
-	font _ Preferences standardMenuFont.
+	contents := ''.
+	hasFocus := false.
+	isEnabled := true.
+	subMenu := nil.
+	isSelected := false.
+	target := nil.
+	selector := nil.
+	arguments := nil.
+	font := Preferences standardMenuFont.
 	self hResizing: #spaceFill;
 		 vResizing: #shrinkWrap

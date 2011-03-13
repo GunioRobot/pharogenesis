@@ -1,2 +1,0 @@
-screenController
-	^ screenController

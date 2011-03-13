@@ -1,4 +1,0 @@
-An SMPackage represents a named piece of an installable "thing" in the image. Typically it is a code package, but it can be other things too.
-It owns a collection of SMPackageReleases. Each release represents a version of the package, and each release has a URL that refers to the actual content that can be installed.
-
-An SMPackage also knows its packageInfoName which can tie it into the image.

@@ -1,5 +1,4 @@
 changeTabThickness
 	| newThickness |
-	newThickness := FillInTheBlank request: 'New thickness:'
-				initialAnswer: self tabThickness printString.
-	newThickness notEmpty ifTrue: [self applyTabThickness: newThickness]
+	newThickness := UIManager default request: 'New thickness:' translated initialAnswer: self tabThickness printString.
+	newThickness isEmptyOrNil ifFalse: [self applyTabThickness: newThickness]

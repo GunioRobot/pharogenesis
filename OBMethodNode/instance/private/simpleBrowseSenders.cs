@@ -1,2 +1,0 @@
-simpleBrowseSenders
-	OBSendersBrowser browseRoot: self

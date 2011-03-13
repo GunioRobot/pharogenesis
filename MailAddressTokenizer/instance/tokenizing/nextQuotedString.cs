@@ -1,9 +1,9 @@
 nextQuotedString
 	| res c |
-	res _ WriteStream on: String new.
+	res := String new writeStream.
 	res nextPut: self nextChar.   "record the starting quote"
 	[ self atEndOfChars ] whileFalse: [
-		c _ self nextChar.
+		c := self nextChar.
 		c = $\ ifTrue: [
 			res nextPut: c.
 			res nextPut: self nextChar ]

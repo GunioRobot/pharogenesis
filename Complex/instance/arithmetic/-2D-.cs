@@ -3,12 +3,12 @@
 	| a b c d newReal newImaginary |
 	anObject isComplex
 		ifTrue:
-			[a _ self real.
-			b _ self imaginary.
-			c _ anObject real.
-			d _ anObject imaginary.
-			newReal _ a - c.
-			newImaginary _ b - d.
+			[a := self real.
+			b := self imaginary.
+			c := anObject real.
+			d := anObject imaginary.
+			newReal := a - c.
+			newImaginary := b - d.
 			^ Complex real: newReal imaginary: newImaginary]
 		ifFalse:
 			[^ anObject adaptToComplex: self andSend: #-]

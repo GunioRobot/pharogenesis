@@ -1,7 +1,7 @@
 initializeFlapsQuads
 	"initialize the list of dynamic flaps quads.
 	self initializeFlapsQuads"
-	FlapsQuads _ nil. 
+	FlapsQuads := nil. 
 	self registeredFlapsQuads at: 'PlugIn Supplies' put: self defaultsQuadsDefiningPlugInSuppliesFlap;
 		 at: 'Stack Tools' put: self defaultsQuadsDefiningStackToolsFlap;
 		 at: 'Supplies' put: self defaultsQuadsDefiningSuppliesFlap;

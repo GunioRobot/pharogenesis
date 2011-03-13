@@ -1,3 +1,0 @@
-optionalAnnotationHeight
-
-	^ 10

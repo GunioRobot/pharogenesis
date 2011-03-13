@@ -1,4 +1,4 @@
 newVersion
-	^ (self requestVersionNameAndMessageWithSuggestion: self uniqueVersionName) ifNotNilDo:
+	^ (self requestVersionNameAndMessageWithSuggestion: self uniqueVersionName) ifNotNil:
 		[:pair |
 		self newVersionWithName: pair first message: pair last].

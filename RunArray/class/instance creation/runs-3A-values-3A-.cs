@@ -3,6 +3,6 @@ runs: newRuns values: newValues
 	arguments."
 
 	| instance |
-	instance _ self basicNew.
+	instance := self basicNew.
 	instance setRuns: newRuns setValues: newValues.
 	^instance

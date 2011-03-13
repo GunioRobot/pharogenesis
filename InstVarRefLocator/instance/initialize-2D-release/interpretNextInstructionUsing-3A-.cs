@@ -1,5 +1,5 @@
 interpretNextInstructionUsing: aScanner 
 	
-	bingo _ false.
+	bingo := false.
 	aScanner interpretNextInstructionFor: self.
 	^bingo

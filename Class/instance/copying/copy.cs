@@ -1,6 +1,6 @@
 copy 
 	| newClass |
-	newClass _ self class copy new
+	newClass := self class copy new
 		superclass: superclass
 		methodDict: self methodDict copy
 		format: format

@@ -6,7 +6,7 @@ renameClass
 		ifFalse: [^ self].
 	oldName := self selectedClass name.
 	newName := self request: 'Please type new class name' initialAnswer: oldName.
-	newName = ''
+	newName isEmptyOrNil
 		ifTrue: [^ self].
 	"Cancel returns ''"
 	newName := newName asSymbol.

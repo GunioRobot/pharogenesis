@@ -1,10 +1,10 @@
 testInclusion
 
 	| t1 t2 t3 t4 |
-	t1 _ timespan start.
-	t2 _ timespan start + (timespan duration / 2).
-	t3 _ timespan end.
-	t4 _ timespan start + (timespan duration).
+	t1 := timespan start.
+	t2 := timespan start + (timespan duration / 2).
+	t3 := timespan end.
+	t4 := timespan start + (timespan duration).
 
 	self 
 		assert: (timespan includes: t1);

@@ -1,3 +1,4 @@
 forDuration: aDuration
-
-	^ self forMilliseconds: aDuration asMilliSeconds
+ 
+ 	^ self forMilliseconds: aDuration asMilliSeconds
+ 

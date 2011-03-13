@@ -20,7 +20,7 @@ editDrawingIn: aPasteUpMorph forBackground: forBackground
 		initializeFor: self
 		inBounds: bnds
 		pasteUpMorph: aPasteUpMorph.
-	rotCenter _ self rotationCenter.
+	rotCenter := self rotationCenter.
 
 	sketchEditor afterNewPicDo: 
 			[:aForm :aRect | 

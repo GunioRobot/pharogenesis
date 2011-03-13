@@ -4,7 +4,7 @@ writeStringOld: aString
 	| length |
 	aString size < 16384 
 		ifTrue: [
-			(length _ aString size) < 192
+			(length := aString size) < 192
 				ifTrue: [byteStream nextPut: length]
 				ifFalse: 
 					[byteStream nextPut: (length // 256 + 192).

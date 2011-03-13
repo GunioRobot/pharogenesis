@@ -1,3 +1,3 @@
 noteSuper
 
-	supered _ true
+	supered := true

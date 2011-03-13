@@ -1,6 +1,6 @@
 addLayoutMenuItems: topMenu hand: aHand
 	| aMenu |
-	aMenu _ MenuMorph new defaultTarget: self.
+	aMenu := MenuMorph new defaultTarget: self.
 	aMenu addUpdating: #hasNoLayoutString action: #changeNoLayout.
 	aMenu addUpdating: #hasProportionalLayoutString action: #changeProportionalLayout.
 	aMenu addUpdating: #hasTableLayoutString action: #changeTableLayout.

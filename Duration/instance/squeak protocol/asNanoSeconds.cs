@@ -1,3 +1,4 @@
 asNanoSeconds
-
-	^ (seconds * NanosInSecond) + nanos
+ 
+ 	^ (seconds * NanosInSecond) + nanos
+ 

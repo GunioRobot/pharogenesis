@@ -1,2 +1,2 @@
 listSpacing: aSymbol
-	listSpacing _ aSymbol
+	listSpacing := aSymbol

@@ -1,2 +1,0 @@
-push
-	bar push: self.

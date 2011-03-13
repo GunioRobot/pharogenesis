@@ -2,7 +2,7 @@ methodsWithoutComments
 	"Return a collection representing methods in the receiver which have no precode comments"
 
 	| slips |
-	slips _ OrderedCollection new.
+	slips := OrderedCollection new.
 	self changedClasses do:
 		[:aClass |
 		(self methodChangesAtClass: aClass name) associationsDo: 

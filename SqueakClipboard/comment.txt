@@ -1,0 +1,3 @@
+A SqueakClipboard is the legacy clipboard using VM supplied primitives.
+
+

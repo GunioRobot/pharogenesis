@@ -1,9 +1,9 @@
 possibleVariablesFor: proposedVariable
 
 	| results |
-	results _ proposedVariable correctAgainstDictionary: scopeTable
+	results := proposedVariable correctAgainstDictionary: scopeTable
 								continuedFrom: nil.
 	proposedVariable first canBeGlobalVarInitial ifTrue:
-		[ results _ class possibleVariablesFor: proposedVariable
+		[ results := class possibleVariablesFor: proposedVariable
 						continuedFrom: results ].
 	^ proposedVariable correctAgainst: nil continuedFrom: results.

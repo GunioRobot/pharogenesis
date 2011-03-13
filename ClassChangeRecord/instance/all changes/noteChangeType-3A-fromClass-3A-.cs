@@ -3,7 +3,7 @@ noteChangeType: changeSymbol fromClass: class
 	(changeSymbol = #new or: [changeSymbol = #add]) ifTrue:
 		[changeTypes add: #add.
 		changeTypes remove: #change ifAbsent: [].
-		revertable _ false.
+		revertable := false.
 		^ self].
 	changeSymbol = #change ifTrue:
 		[(changeTypes includes: #add) ifTrue: [^ self].
@@ -19,7 +19,7 @@ noteChangeType: changeSymbol fromClass: class
 	(changeSymbol beginsWith: 'oldName: ') ifTrue:
 		["Must only be used when assimilating other changeSets"
 		(changeTypes includes: #add) ifTrue: [^ self].
-		priorName _ changeSymbol copyFrom: 'oldName: ' size + 1 to: changeSymbol size.
+		priorName := changeSymbol copyFrom: 'oldName: ' size + 1 to: changeSymbol size.
 		^ changeTypes add: #rename].
 	changeSymbol = #remove ifTrue:
 		[(changeTypes includes: #add)

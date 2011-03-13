@@ -1,4 +1,4 @@
 parserClass
-	"Return a parser class to use for parsing method headers."
+	"Answer a parser class to use for parsing methods compiled by instances of the receiver."
 
 	^Parser

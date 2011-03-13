@@ -1,2 +1,2 @@
 refTypes: oc
-	RefTypes _ oc
+	RefTypes := oc

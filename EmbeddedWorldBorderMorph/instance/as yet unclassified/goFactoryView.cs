@@ -1,4 +1,0 @@
-goFactoryView
-
-	self worldIEnclose showFactoryView
-

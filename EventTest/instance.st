@@ -3,4 +3,4 @@ TestCase
 	instanceVariableNames: 'eventSource eventListener succeeded'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Object Events-Tests'
+	category: 'Tests-Object Events'

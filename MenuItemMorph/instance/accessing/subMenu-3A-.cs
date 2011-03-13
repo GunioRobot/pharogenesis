@@ -1,4 +1,4 @@
 subMenu: aMenuMorph
 
-	subMenu _ aMenuMorph.
+	subMenu := aMenuMorph.
 	self changed.

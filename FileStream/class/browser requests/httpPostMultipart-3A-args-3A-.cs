@@ -5,7 +5,7 @@ httpPostMultipart: url args: argsDict
 	crLf := String crlf.
 	mimeBorder := '----squeak-', Time millisecondClockValue printString, '-stuff-----'.
 	"encode the arguments dictionary"
-	argsStream := WriteStream on: String new.
+	argsStream := String new writeStream.
 	argsDict associationsDo: [:assoc |
 		assoc value do: [ :value |
 		"print the boundary"

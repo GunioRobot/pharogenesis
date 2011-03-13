@@ -1,2 +1,3 @@
 - operand
-	"operand is a Duration" 	^ self + operand negated
+ 	"operand is a Duration" 	^ self + operand negated
+ 

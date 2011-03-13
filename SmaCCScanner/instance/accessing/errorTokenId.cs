@@ -1,2 +1,0 @@
-errorTokenId
-	^self subclassResponsibility

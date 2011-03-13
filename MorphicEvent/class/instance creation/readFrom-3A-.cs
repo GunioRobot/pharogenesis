@@ -1,8 +1,9 @@
 readFrom: aStream
+
 	"Read a MorphicEvent from the given stream."
 	| typeString c |
-	typeString _ String streamContents:
-		[:s |   [(c _ aStream next) isLetter] whileTrue: [s nextPut: c]].
+	typeString := String streamContents:
+		[:s |   [(c := aStream next) isLetter] whileTrue: [s nextPut: c]].
 	typeString = 'mouseMove' ifTrue:[^MouseMoveEvent type: #mouseMove readFrom: aStream].
 	typeString = 'mouseDown' ifTrue:[^MouseButtonEvent type: #mouseDown readFrom: aStream].
 	typeString = 'mouseUp' ifTrue:[^MouseButtonEvent type: #mouseUp readFrom: aStream].

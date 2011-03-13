@@ -1,2 +1,0 @@
-updateDisplay
-	"overridden by subclass"

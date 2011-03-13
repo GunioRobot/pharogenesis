@@ -1,7 +1,7 @@
 keyboardFocusChange: aBoolean
 	| hadFocus |
 	owner ifNil: [ ^self ].
-	hadFocus _ owner hasFocus.
+	hadFocus := owner hasFocus.
 	super keyboardFocusChange: aBoolean.
 	aBoolean ifFalse:
 		[hadFocus ifTrue:

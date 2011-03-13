@@ -3,7 +3,7 @@ addDismissHandle: handleSpec
 
 	| dismissHandle |
 	(target okayToAddDismissHandle or: [Preferences selectiveHalos not]) ifTrue:
-		[dismissHandle _ self addHandle: handleSpec
+		[dismissHandle := self addHandle: handleSpec
 			on: #mouseDown send: #mouseDownInDimissHandle:with: to: self.
 		dismissHandle on: #mouseUp send: #maybeDismiss:with: to: self.
 		dismissHandle on: #mouseDown send: #setDismissColor:with: to: self.

@@ -1,3 +1,3 @@
 columns: anArray
 
-	columns _ anArray
+	columns := anArray

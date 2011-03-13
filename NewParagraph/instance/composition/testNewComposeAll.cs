@@ -7,7 +7,7 @@ testNewComposeAll
 		into: OrderedCollection new 
 		priorLines: Array new 
 		atY: container top.
-	newResult _ TextComposer new
+	newResult := TextComposer new
 		composeLinesFrom: firstCharacterIndex 
 		to: text size 
 		delta: 0

@@ -1,1 +1,0 @@
-I represent a display transformation of a GraphicSymbol. Multiple copies of a GraphicSymbol can be displayed at different positions and scales on the screen by making appropriate, multiple, instances of me.

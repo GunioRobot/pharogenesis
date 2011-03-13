@@ -3,6 +3,6 @@ outermostOwnerWithYellowButtonMenu
 	Don't include the world."
 
 	| outermost |
-	outermost _ self outermostMorphThat: [ :ea |
+	outermost := self outermostMorphThat: [ :ea |
 		ea isWorldMorph not and: [ ea hasYellowButtonMenu ]].
 	^outermost ifNil: [ self hasYellowButtonMenu ifTrue: [ self ] ifFalse: []] 

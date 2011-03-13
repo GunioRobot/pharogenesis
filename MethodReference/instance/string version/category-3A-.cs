@@ -1,0 +1,3 @@
+category: aString
+	
+	 category := aString

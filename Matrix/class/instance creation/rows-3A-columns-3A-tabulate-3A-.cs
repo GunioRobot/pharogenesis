@@ -3,9 +3,9 @@ rows: rows columns: columns tabulate: aBlock
 	 result at: i at: j     is   aBlock value: i value: j"
 	|a i|
 
-	a _ Array new: rows*columns.
-	i _ 0.
+	a := Array new: rows*columns.
+	i := 0.
 	1 to: rows do: [:row |
 		1 to: columns do: [:column |
-			a at: (i _ i+1) put: (aBlock value: row value: column)]].
+			a at: (i := i+1) put: (aBlock value: row value: column)]].
 	^self rows: rows columns: columns contents: a

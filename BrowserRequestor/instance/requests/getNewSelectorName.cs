@@ -1,3 +1,2 @@
 getNewSelectorName
-	^ FillInTheBlank  request: 'enter the new selector name'
-					initialAnswer: self getSelector
+	^ UIManager default  request: 'Enter the new selector name' translated initialAnswer: self getSelector

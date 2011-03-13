@@ -3,4 +3,4 @@ installEventTickler
 	"Sensor installEventTickler"
 
 	EventTicklerProcess ifNotNil: [EventTicklerProcess terminate].
-	EventTicklerProcess _ [self eventTickler] forkAt: Processor lowIOPriority.
+	EventTicklerProcess := [self eventTickler] forkAt: Processor lowIOPriority.

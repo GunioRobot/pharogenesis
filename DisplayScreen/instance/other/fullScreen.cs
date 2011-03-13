@@ -1,4 +1,4 @@
 fullScreen   "Display fullScreen"
 
-	ScreenSave notNil ifTrue: [Display _ ScreenSave].
-	clippingBox _ super boundingBox
+	ScreenSave notNil ifTrue: [Display := ScreenSave].
+	clippingBox := super boundingBox

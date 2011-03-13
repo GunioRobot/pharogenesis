@@ -6,11 +6,11 @@ mouseDown: evt
 			and: [evt yellowButtonPressed])
 		ifTrue: [^ self yellowButtonActivity: evt shiftPressed].
 
-	grabbedMorph _ self morphToGrab: evt.
+	grabbedMorph := self morphToGrab: evt.
 	grabbedMorph ifNotNil:[
 		grabbedMorph isSticky ifTrue:[^self].
 		self isPartsBin ifFalse:[^evt hand grabMorph: grabbedMorph].
-		grabbedMorph _ grabbedMorph partRepresented duplicate.
+		grabbedMorph := grabbedMorph partRepresented duplicate.
 		grabbedMorph restoreSuspendedEventHandler.
 		(grabbedMorph fullBounds containsPoint: evt position) 
 			ifFalse:[grabbedMorph position: evt position].
@@ -20,7 +20,7 @@ mouseDown: evt
 	(super handlesMouseDown: evt)
 		ifTrue:[^super mouseDown: evt].
 
-	handHadHalos _ evt hand halo notNil.
+	handHadHalos := evt hand halo notNil.
 
 	evt hand removeHalo. "shake off halos"
 	evt hand releaseKeyboardFocus. "shake of keyboard foci"
@@ -28,14 +28,7 @@ mouseDown: evt
 	self submorphs
 		select:[:each | each hasProperty: #morphHierarchy]
 		thenDo:[:each | each delete].
-
-	Preferences noviceMode
-		ifTrue:[
-			self submorphs
-				select:[:each | (each isKindOf: MenuMorph) and:[each stayUp not]]
-				thenDo:[:each | each delete].
-		].
-
+ 
 	(evt shiftPressed not
 			and:[ self isWorldMorph not ]
 			and:[ self wantsEasySelection not ])

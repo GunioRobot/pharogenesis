@@ -1,2 +1,2 @@
 balloonText: newValue
-	balloonText _ newValue
+	balloonText := newValue

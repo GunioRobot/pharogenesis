@@ -1,2 +1,0 @@
-pageControlsVisible
-	^ self hasSubmorphWithProperty: #pageControl

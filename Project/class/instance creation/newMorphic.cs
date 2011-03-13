@@ -2,7 +2,7 @@ newMorphic
 	| new |
 	"ProjectView open: Project newMorphic"
 
-	new _ self basicNew.
+	new := self basicNew.
 	self addingProject: new.
 	new initMorphic.
 	^new

@@ -1,3 +1,0 @@
-trackCount
-
-	^ score tracks size

@@ -1,2 +1,2 @@
 pathName: badPathName
-	pathName _ badPathName
+	pathName := badPathName

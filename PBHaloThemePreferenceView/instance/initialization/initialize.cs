@@ -1,4 +1,5 @@
 initialize
+	super initialize.
 	self addActionTitled: 'edit custom halos' 
 		target: Preferences 
 		selector:  #editCustomHalos 

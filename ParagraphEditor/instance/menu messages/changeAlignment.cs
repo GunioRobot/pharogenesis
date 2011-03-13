@@ -1,10 +1,9 @@
 changeAlignment
 	| aList reply  |
-	aList _ #(leftFlush centered justified rightFlush).
-	reply _ (SelectionMenu labelList: (aList collect: [:t | t translated]) selections: aList) startUp.
+	aList := #(leftFlush centered justified rightFlush).
+	reply := UIManager default chooseFrom: (aList collect: [:t | t translated]) values: aList.
 	reply ifNil:[^self].
 	self setAlignment: reply.
 	paragraph composeAll.
 	self recomputeSelection.
-	self mvcRedisplay.
 	^ true

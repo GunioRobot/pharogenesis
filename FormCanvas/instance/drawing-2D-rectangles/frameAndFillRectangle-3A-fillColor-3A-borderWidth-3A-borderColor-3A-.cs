@@ -1,6 +1,6 @@
 frameAndFillRectangle: r fillColor: fillColor borderWidth: borderWidth borderColor: borderColor
 	| rect |
-	rect _ r translateBy: origin.
+	rect := r translateBy: origin.
 	"draw the border of the rectangle"
 	borderColor isTransparent ifFalse:[
 		self setFillColor: borderColor.

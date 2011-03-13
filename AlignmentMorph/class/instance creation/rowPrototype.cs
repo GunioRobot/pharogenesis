@@ -2,9 +2,9 @@ rowPrototype
 	"Answer a prototypical row"
 
 	| sampleMorphs aRow |
-	sampleMorphs _ (1 to: (2 + 3 atRandom)) collect:
+	sampleMorphs := (1 to: (2 + 3 atRandom)) collect:
 		[:integer | EllipseMorph new extent: ((60 + (20 atRandom)) @ (80 + ((20 atRandom)))); color: Color random; setNameTo: ('egg',  integer asString); yourself].
-	aRow _ self inARow: sampleMorphs.
+	aRow := self inARow: sampleMorphs.
 	aRow setNameTo: 'Row'.
 	aRow enableDragNDrop.
 	aRow cellInset: 6.

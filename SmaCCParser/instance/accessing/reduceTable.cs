@@ -1,2 +1,0 @@
-reduceTable
-	^self subclassResponsibility

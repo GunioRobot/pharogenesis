@@ -3,6 +3,7 @@ setUpTranslatingRequiresFixture
 				createClassNamed: #C6
 				superclass: ProtoObject
 				uses: { }).
+	ProtoObject removeSubclass: self c6.
 	self c6 superclass: nil.
 	self c7: (self 
 				createClassNamed: #C7

@@ -5,38 +5,38 @@ writeResourceForm: aForm fromLocator: aLocator
 	In any other case we will *not* attempt to retrieve it, because doing so can cause the system to connect to the network which is probably not what we want. It should be a rare case anyways; could only happen if one clears the squeak cache selectively."
 	| fName fStream url data |
 	"Try to be smart about the name of the file"
-	fName _ (aLocator urlString includes: $:)
+	fName := (aLocator urlString includes: $:)
 		ifTrue: [
-			url _ aLocator urlString asUrl.
+			url := aLocator urlString asUrl.
 			url path last]
 		ifFalse: [aLocator urlString].
-	fName isEmptyOrNil ifFalse:[fName _ fName asFileName].
+	fName isEmptyOrNil ifFalse:[fName := fName asFileName].
 	(fName isEmptyOrNil or:[localDirectory isAFileNamed: fName]) ifTrue:[
 		"bad luck -- duplicate name"
-		fName _ localDirectory 
+		fName := localDirectory 
 				nextNameFor:'resource' 
 				extension: (FileDirectory extensionFor: aLocator urlString)].
 	"Let's see if we have cached it locally"
 	ResourceManager
 		lookupCachedResource: self baseUrl , aLocator urlString
-		ifPresentDo:[:stream | data _ stream upToEnd].
+		ifPresentDo:[:stream | data := stream upToEnd].
 	"Check if the cache entry is without qualifying baseUrl. Workaround for older versions."
 	data ifNil:[
 		ResourceManager
 			lookupCachedResource: aLocator urlString
-			ifPresentDo:[:stream | data _ stream upToEnd]].
+			ifPresentDo:[:stream | data := stream upToEnd]].
 	data ifNil:[
 		"We don't have it cached locally. Retrieve it from its original location."
 		((url notNil and: [url hasRemoteContents]) and:[HTTPClient isRunningInBrowser not])
 			ifTrue:[^nil]. "see note above"
 		(Url schemeNameForString: aLocator urlString)
 			ifNil: [^nil].
-		data _ HTTPLoader default retrieveContentsFor: aLocator urlString.
+		data := HTTPLoader default retrieveContentsFor: aLocator urlString.
 		data ifNil:[^nil].
-		data _ data content.
+		data := data content.
 	].
 	"data size > aForm bits byteSize ifTrue:[^nil]."
-	fStream _ localDirectory newFileNamed: fName.
+	fStream := localDirectory newFileNamed: fName.
 	fStream binary.
 	fStream nextPutAll: data.
 	fStream close.

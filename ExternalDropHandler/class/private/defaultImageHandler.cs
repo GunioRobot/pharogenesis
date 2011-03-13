@@ -5,10 +5,10 @@ defaultImageHandler
 		extension: nil
 		action: [:stream :pasteUp :event |
 			stream binary.
-			image _ Form fromBinaryStream: ((RWBinaryOrTextStream with: stream contents) reset).
+			image := Form fromBinaryStream: ((RWBinaryOrTextStream with: stream contents) reset).
 			Project current resourceManager 
 				addResource: image 
 				url: (FileDirectory urlForFileNamed: stream name) asString.
-			sketch _ World drawingClass withForm: image.
+			sketch := World drawingClass withForm: image.
 			pasteUp addMorph: sketch centeredNear: event position.
-			image _ sketch _ nil] fixTemps
+			image := sketch := nil]

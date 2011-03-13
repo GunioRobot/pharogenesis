@@ -1,3 +1,0 @@
-dirAndFileName
-
-	^{directory. fileName}

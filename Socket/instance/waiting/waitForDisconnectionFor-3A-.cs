@@ -5,13 +5,14 @@ waitForDisconnectionFor: timeout
 	(e.g., because he has called 'close' to send a close request to the other end)
 	before calling this method."
 
-	| status deadline |
-	status _ self primSocketConnectionStatus: socketHandle.
-	deadline := Socket deadlineSecs: timeout.
+	| startTime msecsDelta status |
+	startTime := Time millisecondClockValue.
+	msecsDelta := (timeout * 1000) truncated.
+	status := self primSocketConnectionStatus: socketHandle.
 	[((status == Connected) or: [(status == ThisEndClosed)]) and:
-	 [Time millisecondClockValue < deadline]] whileTrue: [
+	 [(Time millisecondsSince: startTime) < msecsDelta]] whileTrue: [
 		self discardReceivedData.
-		self readSemaphore waitTimeoutMSecs: (deadline - Time millisecondClockValue).
-		status _ self primSocketConnectionStatus: socketHandle].
-
+		self readSemaphore waitTimeoutMSecs: 
+			(msecsDelta - (Time millisecondsSince: startTime) max: 0).
+		status := self primSocketConnectionStatus: socketHandle].
 	^ status ~= Connected

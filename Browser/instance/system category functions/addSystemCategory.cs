@@ -7,7 +7,7 @@ addSystemCategory
 	newName := self
 		request: 'Please type new category name'
 		initialAnswer: 'Category-Name'.
-	newName isEmpty
+	newName isEmptyOrNil
 		ifTrue: [^ self]
 		ifFalse: [newName := newName asSymbol].
 	systemOrganizer

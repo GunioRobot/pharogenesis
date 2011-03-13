@@ -4,13 +4,11 @@ octantOf: otherPoint
 	"[Sensor anyButtonPressed] whileFalse: [(Display boundingBox center 
 	octantOf: Sensor cursorPoint) printString displayAt: 0@0]"
 	| quad moreHoriz |
-	(x = otherPoint x and: [y > otherPoint y])
-		ifTrue: [^ 6].
+	(x = otherPoint x and: [ y > otherPoint y ]) ifTrue: [ ^ 6 ].
 	"special case"
-	(y = otherPoint y and: [x < otherPoint x])
-		ifTrue: [^ 8].
-	quad _ self quadrantOf: otherPoint.
-	moreHoriz _ (x - otherPoint x) abs >= (y - otherPoint y) abs.
-	(quad even eqv: moreHoriz)
-		ifTrue: [^ quad * 2]
-		ifFalse: [^ quad * 2 - 1]
+	(y = otherPoint y and: [ x < otherPoint x ]) ifTrue: [ ^ 8 ].
+	quad := self quadrantOf: otherPoint.
+	moreHoriz := (x - otherPoint x) abs >= (y - otherPoint y) abs.
+	(quad even eqv: moreHoriz) 
+		ifTrue: [ ^ quad * 2 ]
+		ifFalse: [ ^ quad * 2 - 1 ]

@@ -2,7 +2,7 @@ updateCachedThumbnail
 	"If I have a cached thumbnail, then update it.  Copied up from Dan's original version in PasteUpMorph so it can be used by all morphs."
 	| cachedThumbnail |
 
-	(cachedThumbnail _ self valueOfProperty: #cachedThumbnail) ifNotNil:
+	(cachedThumbnail := self valueOfProperty: #cachedThumbnail) ifNotNil:
 		[(cachedThumbnail respondsTo: #computeThumbnail) 
 			ifTrue: [cachedThumbnail computeThumbnail]
 			ifFalse: [self removeProperty: #computeThumbnail]].

@@ -7,6 +7,6 @@ insertPrefShortcut: short
 						projectLocal: false
 						changeInformee: [self
 								changeShortcut: short
-								to: (ServicePreferences valueOfPreference: short)] fixTemps
+								to: (ServicePreferences valueOfPreference: short)]
 						changeSelector: #value
 						viewRegistry: PreferenceViewRegistry ofTextPreferences

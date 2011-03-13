@@ -1,2 +1,2 @@
 haloBox: aBox
-	haloBox _ aBox
+	haloBox := aBox

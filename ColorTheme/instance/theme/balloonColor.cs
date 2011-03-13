@@ -1,2 +1,0 @@
-balloonColor
-	^ self subclassResponsibility

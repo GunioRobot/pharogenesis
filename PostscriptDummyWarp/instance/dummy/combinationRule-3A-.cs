@@ -1,2 +1,0 @@
-combinationRule:newRule
-	^self.

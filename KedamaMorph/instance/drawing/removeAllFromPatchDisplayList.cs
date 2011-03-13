@@ -1,3 +1,0 @@
-removeAllFromPatchDisplayList
-
-	patchesToDisplay _ #().

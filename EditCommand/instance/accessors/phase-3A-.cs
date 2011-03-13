@@ -1,2 +1,2 @@
 phase: aSymbol
-	^phase _ aSymbol
+	^phase := aSymbol

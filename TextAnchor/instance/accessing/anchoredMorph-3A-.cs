@@ -1,2 +1,2 @@
 anchoredMorph: aMorph 
-	anchoredMorph _ aMorph
+	anchoredMorph := aMorph

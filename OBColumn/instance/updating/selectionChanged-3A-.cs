@@ -1,2 +1,0 @@
-selectionChanged: ann
-	

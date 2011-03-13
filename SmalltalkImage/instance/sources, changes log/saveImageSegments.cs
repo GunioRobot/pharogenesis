@@ -1,16 +1,16 @@
 saveImageSegments
 
 	| haveSegs oldImageSegDir newImageSegDir |
-	haveSegs _ false.
+	haveSegs := false.
 	Smalltalk at: #ImageSegment ifPresent: [:theClass | 
-		(haveSegs _ theClass instanceCount ~= 0) ifTrue: [
-			oldImageSegDir _ theClass segmentDirectory]].
+		(haveSegs := theClass instanceCount ~= 0) ifTrue: [
+			oldImageSegDir := theClass segmentDirectory]].
 	haveSegs ifTrue: [
 		Smalltalk at: #ImageSegment ifPresent: [:theClass |
-			newImageSegDir _ theClass segmentDirectory.	"create the folder"
+			newImageSegDir := theClass segmentDirectory.	"create the folder"
 			oldImageSegDir fileNames do: [:theName | "copy all segment files"
 				| imageSegmentName |
-				imageSegmentName _ oldImageSegDir pathName, FileDirectory slash, theName.
+				imageSegmentName := oldImageSegDir pathName, FileDirectory slash, theName.
 				newImageSegDir 
 					copyFileWithoutOverwriteConfirmationNamed: imageSegmentName
 					toFileNamed: theName]]].

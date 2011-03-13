@@ -1,0 +1,2 @@
+platformFamily
+	^#Windows

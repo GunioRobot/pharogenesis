@@ -1,3 +1,4 @@
 asDuration
-
-	^ self
+ 
+ 	^ self
+ 

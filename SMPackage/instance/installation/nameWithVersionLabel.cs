@@ -1,2 +1,0 @@
-nameWithVersionLabel
-	^name, ' (', self versionLabel, ')'

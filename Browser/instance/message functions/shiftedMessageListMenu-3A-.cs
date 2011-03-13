@@ -1,10 +1,8 @@
 shiftedMessageListMenu: aMenu
 	"Fill aMenu with the items appropriate when the shift key is held down"
 
-	Smalltalk isMorphic ifTrue: [aMenu addStayUpItem].
+	aMenu addStayUpItem.
 	aMenu addList: #(
-		('method pane' 							makeIsolatedCodePane)
-		('tile scriptor'							openSyntaxView)
 		('toggle diffing (D)'						toggleDiffing)
 		('implementors of sent messages'			browseAllMessages)
 		-

@@ -1,1 +1,0 @@
-CompoundTileMorph class instanceVariableNames: ''

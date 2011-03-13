@@ -5,5 +5,5 @@ vResizing
 		#shrinkWrap	- resize to fit children
 	"
 	| props |
-	props _ self layoutProperties.
+	props := self layoutProperties.
 	^props ifNil:[#rigid] ifNotNil:[props vResizing].

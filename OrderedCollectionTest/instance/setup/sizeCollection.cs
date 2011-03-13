@@ -1,0 +1,3 @@
+sizeCollection
+
+	^ collection

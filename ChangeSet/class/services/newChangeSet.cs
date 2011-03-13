@@ -4,12 +4,12 @@ newChangeSet
 	of not ok, else return the actual changeset."
 
 	| newName newSet |
-	newName _ UIManager default
+	newName := UIManager default
 		request: 'Please name the new change set:'
 		initialAnswer: ChangeSet defaultName.
 	newName isEmptyOrNil ifTrue:
 		[^ nil].
-	newSet _ self basicNewChangeSet: newName.
+	newSet := self basicNewChangeSet: newName.
 	newSet ifNotNil:
 		[self  newChanges: newSet].
 	^ newSet

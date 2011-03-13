@@ -1,0 +1,2 @@
+hideMenuBar: aWindowIndex
+	self primHideMenuBar

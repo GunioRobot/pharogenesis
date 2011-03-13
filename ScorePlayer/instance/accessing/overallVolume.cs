@@ -1,3 +1,0 @@
-overallVolume
-
-	^ overallVolume

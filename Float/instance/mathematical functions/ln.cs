@@ -9,29 +9,29 @@ ln
 	self <= 0.0 ifTrue: [self error: 'ln is only defined for x > 0.0'].
 
 	"get a rough estimate from binary exponent"
-	expt _ self exponent.
-	n _ Ln2 * expt.
-	mant _ self timesTwoPower: 0 - expt.
+	expt := self exponent.
+	n := Ln2 * expt.
+	mant := self timesTwoPower: 0 - expt.
 
 	"compute fine correction from mantinssa in Taylor series"
 	"mant is in the range [0..2]"
 	"we unroll the loop to avoid use of abs"
-	x _ mant - 1.0.
-	div _ 1.0.
-	pow _ delta _ sum _ x.
-	x _ x negated.  "x <= 0"
-	eps _ Epsilon * (n abs + 1.0).
+	x := mant - 1.0.
+	div := 1.0.
+	pow := delta := sum := x.
+	x := x negated.  "x <= 0"
+	eps := Epsilon * (n abs + 1.0).
 	[delta > eps] whileTrue: [
 		"pass one: delta is positive"
-		div _ div + 1.0.
-		pow _ pow * x.
-		delta _ pow / div.
-		sum _ sum + delta.
+		div := div + 1.0.
+		pow := pow * x.
+		delta := pow / div.
+		sum := sum + delta.
 		"pass two: delta is negative"
-		div _ div + 1.0.
-		pow _ pow * x.
-		delta _ pow / div.
-		sum _ sum + delta].
+		div := div + 1.0.
+		pow := pow * x.
+		delta := pow / div.
+		sum := sum + delta].
 
 	^ n + sum
 

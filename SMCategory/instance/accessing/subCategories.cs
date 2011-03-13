@@ -1,3 +1,0 @@
-subCategories
-	subCategories ifNil: [^#()].
-	^subCategories

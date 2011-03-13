@@ -1,0 +1,8 @@
+AdrianLienhard 10/11/2009 19:08: Since many of tests are expected to fail, the super class is temporarily changed to Object so that these tests are not run anymore. Using the expected failures mechanism does not work since the tests depend on the source code loaded in the image and hence may or may not fail depending on what is loaded.
+
+Apparently the decompiler does not really work totally.
+Here are a bunch of methods that can help improving the decompiler:
+	- blockingClasses return class for which it is impossible to decompile methods 
+	- failures are problems that lead to a DNU
+	- decompilerDiscrepancies are the results of running decompileTestHelper..as you see the pattern 	
+	is quite present.

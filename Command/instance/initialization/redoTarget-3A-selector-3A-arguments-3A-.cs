@@ -3,6 +3,6 @@ redoTarget: target selector: selector arguments: arguments
 
 	target refineRedoTarget: target selector: selector arguments: arguments in:
 		[:rTarget :rSelector :rArguments |
-		redoTarget _ rTarget.
-		redoSelector _ rSelector.
-		redoArguments _ rArguments]
+		redoTarget := rTarget.
+		redoSelector := rSelector.
+		redoArguments := rArguments]

@@ -1,1 +1,0 @@
-MCSMCacheRepository class instanceVariableNames: ''

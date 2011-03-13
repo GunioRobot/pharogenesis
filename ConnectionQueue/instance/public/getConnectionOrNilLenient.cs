@@ -4,13 +4,13 @@ getConnectionOrNilLenient
 	| result |
 	accessSema critical: [
 		connections isEmpty ifTrue: [
-			result _ nil
+			result := nil
 		] ifFalse: [
-			result _ connections removeFirst.
+			result := connections removeFirst.
 			(result isValid and: [result isConnected or: [result isOtherEndClosed]]) ifFalse: [
 				"stale connection"
 				result destroy.
-				result _ nil
+				result := nil
 			]
 		]
 	].

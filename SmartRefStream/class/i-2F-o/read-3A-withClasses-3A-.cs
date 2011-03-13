@@ -2,7 +2,7 @@ read: aByteStream withClasses: structureArray
 	"Read an object off the stream, but first check structureArray against the current system."
 
 	| me |
-	me _ self on: aByteStream.
+	me := self on: aByteStream.
 	me noHeader.
 	me structures: (structureArray at: 2).
 	me superclasses: (structureArray at: 4).

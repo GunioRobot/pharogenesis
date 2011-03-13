@@ -2,9 +2,9 @@ string: str for: morph corner: cornerName
 	"Make up and return a balloon for morph. Find the quadrant that 
 	clips the text the least, using cornerName as a tie-breaker. tk 9/12/97"
 	| tm vertices |
-	tm _ self getTextMorph: str for: morph.
-	vertices _ self getVertices: tm bounds.
-	vertices _ self
+	tm := self getTextMorph: str for: morph.
+	vertices := self getVertices: tm bounds.
+	vertices := self
 				getBestLocation: vertices
 				for: morph
 				corner: cornerName.

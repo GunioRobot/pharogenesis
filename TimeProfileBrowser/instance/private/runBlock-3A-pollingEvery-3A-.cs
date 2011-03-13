@@ -8,6 +8,7 @@ runBlock: aBlock pollingEvery: pollPeriod
 						pollPeriod}.	"so we can re-run it"
 	tally := MessageTally new.
 	tally
+		reportOtherProcesses: false;
 		maxClassNameSize: 1000;
 		maxClassPlusSelectorSize: 1000;
 		maxTabs: 100.

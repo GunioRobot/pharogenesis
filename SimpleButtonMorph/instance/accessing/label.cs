@@ -1,6 +1,6 @@
 label
 
 	| s |
-	s _ ''.
-	self allMorphsDo: [:m | (m isKindOf: StringMorph) ifTrue: [s _ m contents]].
+	s := ''.
+	self allMorphsDo: [:m | (m isKindOf: StringMorph) ifTrue: [s := m contents]].
 	^ s

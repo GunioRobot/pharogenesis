@@ -4,7 +4,7 @@ inspect: anObject
 	
 	Because no object's inspectorClass method answers this class, it is OK for this method to
 	override Inspector >> inspect: "
-
+	fieldList := nil.
 	object := anObject.
-	self initialize
+	self initialize.
 	

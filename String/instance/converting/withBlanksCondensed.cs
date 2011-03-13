@@ -3,10 +3,10 @@ withBlanksCondensed
 	 and consecutive white spaces condensed."
 
 	| trimmed lastBlank |
-	trimmed _ self withBlanksTrimmed.
+	trimmed := self withBlanksTrimmed.
 	^String streamContents: [:stream |
-		lastBlank _ false.
+		lastBlank := false.
 		trimmed do: [:c | (c isSeparator and: [lastBlank]) ifFalse: [stream nextPut: c].
-			lastBlank _ c isSeparator]].
+			lastBlank := c isSeparator]].
 
 	" ' abc  d   ' withBlanksCondensed"

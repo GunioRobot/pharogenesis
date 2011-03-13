@@ -1,3 +1,3 @@
 pointSize
 
-	^ fontArray first pointSize.
+	^ (fontArray  at: 1) pointSize.

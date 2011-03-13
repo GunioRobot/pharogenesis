@@ -4,21 +4,21 @@ printSingleComment: aString on: aStream indent: indent
 	font, at 450 points."
 
 	| readStream word position lineBreak font wordWidth tabWidth spaceWidth lastChar |
-	readStream _ ReadStream on: aString.
-	font _ TextStyle default defaultFont.
-	tabWidth _ TextConstants at: #DefaultTab.
-	spaceWidth _ font widthOf: Character space.
-	position _ indent * tabWidth.
-	lineBreak _ 450.
+	readStream := aString readStream.
+	font := TextStyle default defaultFont.
+	tabWidth := TextConstants at: #DefaultTab.
+	spaceWidth := font widthOf: Character space.
+	position := indent * tabWidth.
+	lineBreak := 450.
 	[readStream atEnd]
 		whileFalse: 
-			[word _ self nextWordFrom: readStream setCharacter: [:lc | lastChar _ lc].
-			wordWidth _ word inject: 0 into: [:width :char | width + (font widthOf: char)].
-			position _ position + wordWidth.
+			[word := self nextWordFrom: readStream setCharacter: [:lc | lastChar := lc].
+			wordWidth := word inject: 0 into: [:width :char | width + (font widthOf: char)].
+			position := position + wordWidth.
 			position > lineBreak
 				ifTrue: 
 					[aStream skip: -1; crtab: indent.
-					position _ indent * tabWidth + wordWidth + spaceWidth.
+					position := indent * tabWidth + wordWidth + spaceWidth.
 					lastChar = Character cr
 						ifTrue: [[readStream peekFor: Character tab] whileTrue].
 					word isEmpty ifFalse: [aStream nextPutAll: word; space]]
@@ -26,10 +26,10 @@ printSingleComment: aString on: aStream indent: indent
 					[aStream nextPutAll: word.
 					readStream atEnd
 						ifFalse: 
-							[position _ position + spaceWidth.
+							[position := position + spaceWidth.
 							aStream space].
 					lastChar = Character cr
 						ifTrue: 
 							[aStream skip: -1; crtab: indent.
-							position _ indent * tabWidth.
+							position := indent * tabWidth.
 							[readStream peekFor: Character tab] whileTrue]]]

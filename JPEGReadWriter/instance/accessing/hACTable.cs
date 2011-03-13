@@ -1,4 +1,3 @@
 hACTable
-
-	hACTable ifNil: [hACTable _ Array new: HuffmanTableSize].
+	hACTable ifNil: [ hACTable := Array new: HuffmanTableSize ].
 	^ hACTable

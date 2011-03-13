@@ -1,2 +1,0 @@
-getPluggableYellowButtonMenu: shiftKeyState
-	^ nil

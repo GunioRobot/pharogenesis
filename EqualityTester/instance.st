@@ -3,4 +3,4 @@ PrototypeTester
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Tests-Utilities'
+	category: 'SUnit-Utilities'

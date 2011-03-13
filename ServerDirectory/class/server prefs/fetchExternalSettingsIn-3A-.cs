@@ -5,10 +5,9 @@ fetchExternalSettingsIn: aDirectory
 	| serverConfDir stream |
 	(aDirectory directoryExists: self serverConfDirectoryName)
 		ifFalse: [^self].
-	self resetLocalProjectDirectories.
-	serverConfDir _ aDirectory directoryNamed: self serverConfDirectoryName.
+	serverConfDir := aDirectory directoryNamed: self serverConfDirectoryName.
 	serverConfDir fileNames do: [:fileName |
-		stream _ serverConfDir readOnlyFileNamed: fileName.
+		stream := serverConfDir readOnlyFileNamed: fileName.
 		stream
 			ifNotNil: [
 				[self parseServerEntryFrom: stream] ifError: [:err :rcvr | ].

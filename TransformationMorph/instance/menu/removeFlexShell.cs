@@ -1,24 +1,16 @@
 removeFlexShell
 	"Remove the shell used to make a morph rotatable and scalable."
 
-	| oldHalo unflexed pensDown player myWorld refPos aPosition |
-	refPos _ self referencePosition.
-	myWorld _ self world.
-	oldHalo _ self halo.
+	| oldHalo unflexed myWorld refPos aPosition |
+	refPos := self referencePosition.
+	myWorld := self world.
+	oldHalo := self halo.
 	submorphs isEmpty ifTrue: [^ self delete].
-	aPosition _ (owner submorphIndexOf: self) ifNil: [1].
-	unflexed _ self firstSubmorph.
-	pensDown _ OrderedCollection new.
-	self allMorphsDo:  "Note any pens down -- must not be down during the move"
-		[:m | ((player _ m player) notNil and: [player getPenDown]) ifTrue:
-			[m == player costume ifTrue:
-				[pensDown add: player.
-				player setPenDown: false]]].
+	aPosition := (owner submorphIndexOf: self) ifNil: [1].
+	unflexed := self firstSubmorph.
 	self submorphs do: [:m |
 		m position: self center - (m extent // 2).
 		owner addMorph: m asElementNumber: aPosition].
-	unflexed absorbStateFromRenderer: self.
-	pensDown do: [:p | p setPenDown: true].
 	oldHalo ifNotNil: [oldHalo setTarget: unflexed].
 	myWorld ifNotNil: [myWorld startSteppingSubmorphsOf: unflexed].
 	self delete.

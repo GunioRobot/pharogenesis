@@ -1,15 +1,9 @@
 saveState
 	"Save the current state in me prior to leaving this project"
 
-	changeSet _ ChangeSet current.
+	changeSet := ChangeSet current.
 	thumbnail ifNotNil: [thumbnail hibernate].
-	Smalltalk isMorphic
-		ifTrue:
-			[world _ World.
-			world sleep.
-			ActiveWorld _ ActiveHand _ ActiveEvent _ nil]
-		ifFalse:
-			[world _ ScheduledControllers.
-			ScheduledControllers unCacheWindows].
+	world := World.
+	ActiveWorld := ActiveHand := ActiveEvent := nil.
 	Sensor flushAllButDandDEvents. "Will be reinstalled by World>>install"
-	transcript _ Transcript.
+	transcript := Transcript.

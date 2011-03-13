@@ -8,6 +8,6 @@ rememberCommand: aCommand
 		
 	"If we are building a compound command, just add the new command to that"
 	history addLast: aCommand.
-	lastCommand _ aCommand.
+	lastCommand := aCommand.
 "Debug dShow: ('Remember: ', commandToUse asString)."
 

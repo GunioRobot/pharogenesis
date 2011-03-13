@@ -43,21 +43,22 @@ together"
 3 timesRepeat: [
 	sock := HTTPSocket new.
 	sock connectTo: serverAddr port: connectToPort.
-	(sock waitForConnectionUntil: (self deadlineSecs: 30)) ifFalse: [
+	(sock waitForConnectionFor: 30 ifTimedOut: [false]) ifFalse: [
 		Socket deadServer: connectToHost.  sock destroy.
 		^ 'Server ',connectToHost,' is not responding'].
 	"Transcript cr;show: url; cr.
 	Transcript show: page; cr."
-	sock sendCommand: 'GET ', page, ' HTTP/1.0', CrLf, 
-		(mimeType ifNotNil: ['ACCEPT: ', mimeType, CrLf] ifNil: ['']),
-		'ACCEPT: text/html', CrLf,	"Always accept plain text"
+	sock sendCommand: 'GET ', page, ' HTTP/1.0', String crlf, 
+		(mimeType ifNotNil: ['ACCEPT: ', mimeType,  String crlf] ifNil: ['']),
+		'ACCEPT: text/html',  String crlf,	"Always accept plain text"
+		HTTPProxyCredentials,
 		HTTPBlabEmail,	"may be empty"
 		requestString,	"extra user request. Authorization"
-		self userAgentString, CrLf,
-		'Host: ', serverName, ':', port printString, CrLf.	"blank line 
+		self userAgentString,  String crlf,
+		'Host: ', serverName, ':', port printString,  String crlf.	"blank line 
 automatically added"
 
-	list := sock getResponseUpTo: CrLf, CrLf ignoring: (String with: CR).	"list = header, CrLf, CrLf, 
+	list := sock getResponseUpTo:  String crlf,  String crlf ignoring: String cr. "list = header, CrLf, CrLf, 
 beginningOfData"
 	header := list at: 1.
 	"Transcript show: page; cr; show: header; cr."

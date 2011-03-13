@@ -1,2 +1,0 @@
-phonemes: aPhonemeSet
-	phonemes := aPhonemeSet

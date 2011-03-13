@@ -3,11 +3,11 @@ checkForMoreRecentUpdateThanChangeSet: updateNumberChangeSet pseudoClass: pseudo
 
 	| classOrMeta allChangeSets moreRecentChangeSets conflictingChangeSets changeRecordSource classAndMethodPrintString |
 
-	classAndMethodPrintString _ pseudoClass name, (pseudoClass hasMetaclass ifTrue: [' class'] ifFalse: ['']), '>>', selector asString.
+	classAndMethodPrintString := pseudoClass name, (pseudoClass hasMetaclass ifTrue: [' class'] ifFalse: ['']), '>>', selector asString.
 
-	changeRecordSource _ pseudoClass sourceCode at: selector.
+	changeRecordSource := pseudoClass sourceCode at: selector.
 	changeRecordSource isText
-		ifTrue: [changeRecordSource _ Text
+		ifTrue: [changeRecordSource := Text
 					fromString: 'method: ', classAndMethodPrintString, ' was removed']
 		ifFalse: [changeRecordSource stamp isEmptyOrNil ifTrue:
 					[self notify: 'Warning: ', classAndMethodPrintString, ' in ', self packageName, ' has no timestamp/initials!']].
@@ -18,17 +18,17 @@ checkForMoreRecentUpdateThanChangeSet: updateNumberChangeSet pseudoClass: pseudo
 			ifFalse: [self class logCr; log: 'CONFLICT found for ', classAndMethodPrintString, '... class ', pseudoClass name asString, ' does not exist in the image and is not defined in the file'.
 					^ changeRecordSource]].
 
-	classOrMeta _ pseudoClass realClass.
+	classOrMeta := pseudoClass realClass.
 
 	"Only printout the replacing methods here, but we still check for removed methods too in the rest of this method."
 	(self class verboseConflicts and: [classOrMeta includesSelector: selector])
 		ifTrue: [self class logCr; log: '...checking ', classOrMeta asString, '>>', selector asString].
 
-	allChangeSets _ ChangeSorter allChangeSets.
-	moreRecentChangeSets _ allChangeSets
+	allChangeSets := ChangeSorter allChangeSets.
+	moreRecentChangeSets := allChangeSets
 				copyFrom: (allChangeSets indexOf: updateNumberChangeSet)
 				to: (allChangeSets size).
-	conflictingChangeSets _ (moreRecentChangeSets select:
+	conflictingChangeSets := (moreRecentChangeSets select:
 		[:cs | (cs atSelector: selector class: classOrMeta) ~~ #none]).
 	conflictingChangeSets isEmpty ifTrue: [^ nil].
 

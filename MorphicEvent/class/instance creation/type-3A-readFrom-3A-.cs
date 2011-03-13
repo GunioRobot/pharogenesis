@@ -1,2 +1,2 @@
 type: eventType readFrom: aStream
-	^self new type: eventType readFrom: aStream
+	^self basicNew type: eventType readFrom: aStream

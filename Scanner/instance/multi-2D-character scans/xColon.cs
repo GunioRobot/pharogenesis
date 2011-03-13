@@ -1,9 +1,11 @@
-xColon		"Allow := for assignment by converting to #_ "
+xColon
+	"Allow := for assignment"
+	
 	aheadChar = $= ifTrue:
 		[self step.
-		tokenType _ #leftArrow.
+		tokenType := #leftArrow.
 		self step.
-		^ token _ #'_'].
+		^ token := #':='].
 	"Otherwise, just do what normal scan of colon would do"
-	tokenType _ #colon.
-	^ token _ self step asSymbol
+	tokenType := #colon.
+	^ token := self step asSymbol

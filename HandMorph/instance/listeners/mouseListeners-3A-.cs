@@ -1,2 +1,2 @@
 mouseListeners: anArrayOrNil
-	mouseListeners _ anArrayOrNil
+	mouseListeners := anArrayOrNil

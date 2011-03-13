@@ -1,2 +1,2 @@
 privateFragment: aString
-	fragment _ aString
+	fragment := aString

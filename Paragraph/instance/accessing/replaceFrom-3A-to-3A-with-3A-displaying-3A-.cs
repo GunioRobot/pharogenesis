@@ -16,34 +16,34 @@ replaceFrom: start to: stop with: aText displaying: displayBoolean
 		displayBoolean ifTrue: [^ self displayLines: (1 to: lastLine)]].
 
 	"save -- things get pretty mashed as we go along"
-	obsoleteLines _ lines copy.
-	obsoleteLastLine _ lastLine.
+	obsoleteLines := lines copy.
+	obsoleteLastLine := lastLine.
 
 	"find the starting and stopping lines"
-	firstLineIndex _ startLine _ self lineIndexOfCharacterIndex: start.
-	stopLine _ self lineIndexOfCharacterIndex: stop.
+	firstLineIndex := startLine := self lineIndexOfCharacterIndex: start.
+	stopLine := self lineIndexOfCharacterIndex: stop.
 
 	"how many characters being inserted or deleted
 		-- negative if aText size is < characterInterval size."
-	replacementRange _ aText size - (stop - start + 1).
+	replacementRange := aText size - (stop - start + 1).
 	"Give ourselves plenty of elbow room."
-	compositionRectangle _ compositionRectangle withHeight: (textStyle lineGrid * 9999).
+	compositionRectangle := compositionRectangle withHeight: (textStyle lineGrid * 9999).
 	"build a boundingBox of the actual screen space in question -- we'll need it later"
-	visibleRectangle _ (clippingRectangle intersect: compositionRectangle)
+	visibleRectangle := (clippingRectangle intersect: compositionRectangle)
 							intersect: destinationForm boundingBox.
-	compositionScanner _ CompositionScanner new forParagraph: self.		"Initialize a scanner."
+	compositionScanner := CompositionScanner new forParagraph: self.		"Initialize a scanner."
 
 	"If the starting line is not also the first line, then measuring must commence from line preceding the one in which characterInterval start appears.  For example, deleting a line with only a carriage return may move characters following the deleted portion of text into the line preceding the deleted line."
-	startIndex _ (lines at: firstLineIndex) first.
+	startIndex := (lines at: firstLineIndex) first.
 	startLine > 1
-		ifTrue: 	[newLine _ compositionScanner composeLine: startLine - 1
+		ifTrue: 	[newLine := compositionScanner composeLine: startLine - 1
 						fromCharacterIndex: (lines at: startLine - 1) first
 						inParagraph: self.
 				(lines at: startLine - 1) = newLine
 					ifFalse:	["start in line preceding the one with the starting character"
-							startLine _ startLine - 1.
+							startLine := startLine - 1.
 							self lineAt: startLine put: newLine.
-							startIndex _ newLine last + 1]].
+							startIndex := newLine last + 1]].
 	startIndex > text size ifTrue:
 		["nil lines after a deletion -- remeasure last line below"
 		self trimLinesTo: (firstLineIndex - 1 max: 0).
@@ -54,39 +54,39 @@ replaceFrom: start to: stop with: aText displaying: displayBoolean
 			^self]].
 
 	"Now we really get to it."
-	done _ false.
-	lastLineIndex _ stopLine.
+	done := false.
+	lastLineIndex := stopLine.
 	[done or: [startIndex > text size]]
 		whileFalse: 
 		[self lineAt: firstLineIndex put:
-			(newLine _ compositionScanner composeLine: firstLineIndex
+			(newLine := compositionScanner composeLine: firstLineIndex
 							fromCharacterIndex: startIndex inParagraph: self).
 		[(lastLineIndex > obsoleteLastLine
 			or: ["no more old lines to compare with?"
 				newLine last <
-					(newStop _ (obsoleteLines at: lastLineIndex) last + replacementRange)])
+					(newStop := (obsoleteLines at: lastLineIndex) last + replacementRange)])
 			  	or: [done]]
 			whileFalse: 
 			[newStop = newLine last
 				ifTrue:	["got the match"
 						"get source and dest y's for moving the unchanged lines"
-						obsoleteY _ self topAtLineIndex: lastLineIndex + 1
+						obsoleteY := self topAtLineIndex: lastLineIndex + 1
 									using: obsoleteLines and: obsoleteLastLine.
-						newY _ self topAtLineIndex: firstLineIndex + 1.
-						stopLine _ firstLineIndex.
-						done _ true.
+						newY := self topAtLineIndex: firstLineIndex + 1.
+						stopLine := firstLineIndex.
+						done := true.
 							"Fill in the new line vector with the old unchanged lines.
 							Update their starting and stopping indices on the way."
-						((lastLineIndex _ lastLineIndex + 1) to: obsoleteLastLine) do:
+						((lastLineIndex := lastLineIndex + 1) to: obsoleteLastLine) do:
 							[:upDatedIndex | 
-							self lineAt: (firstLineIndex _ firstLineIndex + 1) 
+							self lineAt: (firstLineIndex := firstLineIndex + 1) 
 								put: ((obsoleteLines at: upDatedIndex)
 							  		slide: replacementRange)].
 							"trim off obsolete lines, if any"
 						self trimLinesTo: firstLineIndex]
-				ifFalse:	[lastLineIndex _ lastLineIndex + 1]].
-		startIndex _ newLine last + 1.
-		firstLineIndex _ firstLineIndex + 1].
+				ifFalse:	[lastLineIndex := lastLineIndex + 1]].
+		startIndex := newLine last + 1.
+		firstLineIndex := firstLineIndex + 1].
 
 	"Now the lines are up to date -- Whew!.  What remains is to move
 	the 'unchanged' lines and display those which have changed."
@@ -98,7 +98,7 @@ replaceFrom: start to: stop with: aText displaying: displayBoolean
 		end of the paragraph."
 		self updateCompositionHeight.
 		self displayLines:
-			(startLine to: (stopLine _ firstLineIndex min: lastLine)).
+			(startLine to: (stopLine := firstLineIndex min: lastLine)).
 		destinationForm  "Clear out area at the bottom"
 			fill: ((visibleRectangle left @ (self topAtLineIndex: lastLine + 1)
 						extent: visibleRectangle extent)
@@ -108,7 +108,7 @@ replaceFrom: start to: stop with: aText displaying: displayBoolean
 		[newY ~= obsoleteY ifTrue:
 			["Otherwise first move the unchanged lines within
 			the visibleRectangle with a good old bitblt."
-			moveRectangle _
+			moveRectangle :=
 				visibleRectangle left @ (obsoleteY max: visibleRectangle top)
 					corner: visibleRectangle corner.
 			destinationForm copyBits: moveRectangle from: destinationForm

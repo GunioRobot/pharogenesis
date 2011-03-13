@@ -1,9 +1,8 @@
 versionsMenu: aMenu
 	"Fill aMenu with menu items appropriate to the receiver"
 
-	Smalltalk isMorphic ifTrue:
-		[aMenu title: 'Versions' translated.
-		aMenu addStayUpItemSpecial].
+	aMenu title: 'Versions' translated.
+	aMenu addStayUpItemSpecial.
 
 	listIndex > 0 ifTrue:[
 		(list size > 1 ) ifTrue: [ aMenu addTranslatedList: #(

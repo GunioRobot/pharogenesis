@@ -8,12 +8,7 @@ initializeMessageList: anArray
 			parse: each  
 			toClassAndSelector: [ :class :sel |
 				class ifNotNil:
-					[class isUniClass
-						ifTrue:
-							[s := class typicalInstanceName, ' ', sel]
-						ifFalse:
-							[s := class name , ' ' , sel , ' {' , 
-								((class organization categoryOfElement: sel) ifNil: ['']) , '}'].
+					[s := self methodDisplayStringForClass: class selector: sel.
 					messageList add: (
 						MethodReference new
 							setClass: class  

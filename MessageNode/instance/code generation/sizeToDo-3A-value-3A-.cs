@@ -1,20 +1,20 @@
 sizeToDo: encoder value: forValue 
-	" var _ rcvr. L1: [var <= arg1] Bfp(L2) [block body. var _ var + inc] Jmp(L1) L2: "
+	" var := rcvr. L1: [var <= arg1] Bfp(L2) [block body. var := var + inc] Jmp(L1) L2: "
 	| loopSize initStmt test block incStmt blockSize blockVar initSize limitInit |
-	block _ arguments at: 3.
-	blockVar _ block firstArgument.
-	initStmt _ arguments at: 4.
-	test _ arguments at: 5.
-	incStmt _ arguments at: 6.
-	limitInit _ arguments at: 7.
-	initSize _ initStmt sizeForEffect: encoder.
+	block := arguments at: 3.
+	blockVar := block firstArgument.
+	initStmt := arguments at: 4.
+	test := arguments at: 5.
+	incStmt := arguments at: 6.
+	limitInit := arguments at: 7.
+	initSize := initStmt sizeForEffect: encoder.
 	limitInit == nil
-		ifFalse: [initSize _ initSize + (limitInit sizeForEffect: encoder)].
-	blockSize _ (block sizeForEvaluatedEffect: encoder)
+		ifFalse: [initSize := initSize + (limitInit sizeForEffect: encoder)].
+	blockSize := (block sizeForEvaluatedEffect: encoder)
 			+ (incStmt sizeForEffect: encoder) + 2.  "+2 for Jmp backward"
-	loopSize _ (test sizeForValue: encoder)
+	loopSize := (test sizeForValue: encoder)
 			+ (self sizeBranchOn: false dist: blockSize)
 			+ blockSize.
-	sizes _ Array with: blockSize with: loopSize.
+	sizes := Array with: blockSize with: loopSize.
 	^ initSize + loopSize
 			+ (forValue ifTrue: [1] ifFalse: [0])    " +1 for value (push nil) "

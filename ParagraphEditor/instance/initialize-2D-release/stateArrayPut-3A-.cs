@@ -1,13 +1,13 @@
 stateArrayPut: stateArray
 	| sel |
-	ChangeText _ stateArray at: 1.
-	FindText _ stateArray at: 2.
-	UndoInterval _ stateArray at: 3.
-	UndoMessage _ stateArray at: 4.
-	UndoParagraph _ stateArray at: 5.
-	UndoSelection _ stateArray at: 6.
-	Undone _ stateArray at: 7.
-	sel _ stateArray at: 8.
+	ChangeText := stateArray at: 1.
+	FindText := stateArray at: 2.
+	UndoInterval := stateArray at: 3.
+	UndoMessage := stateArray at: 4.
+	UndoParagraph := stateArray at: 5.
+	UndoSelection := stateArray at: 6.
+	Undone := stateArray at: 7.
+	sel := stateArray at: 8.
 	self selectFrom: sel first to: sel last.
-	beginTypeInBlock _ stateArray at: 9.
-	emphasisHere _ stateArray at: 10.
+	beginTypeInBlock := stateArray at: 9.
+	emphasisHere := stateArray at: 10.

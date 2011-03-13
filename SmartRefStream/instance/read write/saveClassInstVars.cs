@@ -4,12 +4,12 @@ classInstVars is an array of arrays (#Player3 (Player3 class's inst var
 scripts) (Player3 class's inst var slotInfo) ...) "
 
 	| normal mySize list clsPoolIndex |
-	classInstVars _ OrderedCollection new: 100.
-	normal _ Object class instSize.
-	clsPoolIndex _ Object class allInstVarNames indexOf: 'classPool'.
+	classInstVars := OrderedCollection new: 100.
+	normal := Object class instSize.
+	clsPoolIndex := Object class allInstVarNames indexOf: 'classPool'.
 	self uniClasesDo: [:aUniClass |
-		list _ OrderedCollection new.
-		mySize _ aUniClass class instSize.
+		list := OrderedCollection new.
+		mySize := aUniClass class instSize.
 		mySize = normal ifFalse:
 			[list add: aUniClass name.	"a symbol"
 			list add: 'Update to read classPool'.	"new
@@ -21,5 +21,5 @@ instead of Dictionary()"
 			normal + 1 to: mySize do: [:ii |
 				list addLast: (aUniClass instVarAt: ii)].
 			classInstVars add: list asArray]].
-	classInstVars _ classInstVars asArray.
+	classInstVars := classInstVars asArray.
 	

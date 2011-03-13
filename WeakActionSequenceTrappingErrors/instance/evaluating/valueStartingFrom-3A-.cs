@@ -9,7 +9,7 @@ valueStartingFrom: startIndex
 	startIndex to: self size do: [:index |
 		each := self at: index.
 		each isReceiverOrAnyArgumentGarbage ifFalse: [
-			[answer _ each value]
+			[answer := each value]
 				on: Halt, Error
 				do: [:exc | 
 						self valueStartingFrom: index + 1.

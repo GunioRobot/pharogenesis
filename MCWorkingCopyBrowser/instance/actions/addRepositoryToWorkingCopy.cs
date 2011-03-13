@@ -1,5 +1,5 @@
 addRepositoryToWorkingCopy
-	workingCopy ifNotNilDo:
+	workingCopy ifNotNil:
 		[:wc |
 			workingCopy repositoryGroup addRepository: self repository.
 			self

@@ -1,0 +1,2 @@
+noGrowDocProc
+	^4

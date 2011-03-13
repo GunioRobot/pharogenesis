@@ -1,2 +1,2 @@
 cacheDir: aString
-	cacheDir _ aString.
+	cacheDir := aString.

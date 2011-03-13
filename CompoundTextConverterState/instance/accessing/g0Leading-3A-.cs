@@ -1,3 +1,3 @@
 g0Leading: l
 
-	g0Leading _ l.
+	g0Leading := l.

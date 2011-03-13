@@ -3,8 +3,8 @@ referencesToIt
 
 	| aSymbol |
 	self selectLine.
-	((aSymbol _ self selectedSymbol) == nil or:
+	((aSymbol := self selectedSymbol) == nil or:
 		[(Smalltalk includesKey: aSymbol) not])
-			ifTrue: [^ view flash].
+			ifTrue: [^ self flash].
 
 	self terminateAndInitializeAround: [self systemNavigation browseAllCallsOn: (Smalltalk associationAt: self selectedSymbol)]

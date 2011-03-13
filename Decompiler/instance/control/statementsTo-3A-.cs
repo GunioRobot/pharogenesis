@@ -6,16 +6,16 @@ statementsTo: end
 	exit = end. Leave pc = end."
 
 	| blockPos stackPos t |
-	blockPos _ statements size.
-	stackPos _ stack size.
+	blockPos := statements size.
+	stackPos := stack size.
 	[pc < end]
 		whileTrue:
-			[lastPc _ pc.  limit _ end.  "for performs"
+			[lastPc := pc.  limit := end.  "for performs"
 			self interpretNextInstructionFor: self].
 	"If there is an additional item on the stack, it will be the value
 	of this block."
-	(hasValue _ stack size > stackPos)
+	(hasValue := stack size > stackPos)
 		ifTrue:
 			[statements addLast: stack removeLast].
-	lastJumpPc = lastPc ifFalse: [exit _ pc].
+	lastJumpPc = lastPc ifFalse: [exit := pc].
 	^self popTo: blockPos

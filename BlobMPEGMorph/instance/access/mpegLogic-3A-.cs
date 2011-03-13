@@ -1,2 +1,0 @@
-mpegLogic: aValue
-	mpegLogic := aValue

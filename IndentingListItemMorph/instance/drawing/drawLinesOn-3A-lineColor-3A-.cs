@@ -1,6 +1,6 @@
 drawLinesOn: aCanvas lineColor: lineColor 
 	| hasToggle |
-	hasToggle _ self hasToggle.
+	hasToggle := self hasToggle.
 	"Draw line from toggle to text"
 	self drawLineToggleToTextOn: aCanvas lineColor: lineColor hasToggle: hasToggle.
 

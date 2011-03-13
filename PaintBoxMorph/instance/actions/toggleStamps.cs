@@ -1,10 +1,10 @@
 toggleStamps
 	| tab otherTab st shapes |
 	"The sub panel that has the stamps in it.  For saving and moving parts of an image."
-	shapes _ self submorphNamed: 'shapes'.
-	otherTab _ self submorphNamed: 'shapeTab'.
-	tab _ self submorphNamed: 'stampTab'.
-	(st _ self submorphNamed: 'stamps') visible
+	shapes := self submorphNamed: 'shapes'.
+	otherTab := self submorphNamed: 'shapeTab'.
+	tab := self submorphNamed: 'stampTab'.
+	(st := self submorphNamed: 'stamps') visible
 		ifTrue: [st hide.  st bottom: self bottom.  tab top: self bottom-1.
 				shapes top: self bottom-9.
 				otherTab top: (shapes visible ifTrue: [shapes bottom - otherTab height + 10] 

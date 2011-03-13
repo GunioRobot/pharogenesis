@@ -1,0 +1,2 @@
+documentWindowClass
+	^self zoomDocProc

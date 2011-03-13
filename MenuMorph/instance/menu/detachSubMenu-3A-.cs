@@ -1,13 +1,13 @@
 detachSubMenu: evt
 	| possibleTargets item subMenu index |
-	possibleTargets _ self items select:[:any| any hasSubMenu].
+	possibleTargets := self items select:[:any| any hasSubMenu].
 	possibleTargets size > 0 ifTrue:[
-		index _ PopUpMenu 
-				withCaption:'Which menu?' 
-				chooseFrom: (possibleTargets collect:[:t| t contents asString]).
+		index := UIManager default  
+				chooseFrom: (possibleTargets collect:[:t| t contents asString]) 
+				title: 'Which menu?' translated.
 		index = 0 ifTrue:[^self]].
-	item _ possibleTargets at: index.
-	subMenu _ item subMenu.
+	item := possibleTargets at: index.
+	subMenu := item subMenu.
 	subMenu ifNotNil: [
 		item subMenu: nil.
 		item delete.

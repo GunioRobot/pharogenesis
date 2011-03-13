@@ -3,6 +3,6 @@ processBufferUsingPrimitives: aByteArray
 
 	| w |
 	"expand and process the buffer"
-	w _ Bitmap new: 80.
+	w := Bitmap new: 80.
 	self primExpandBlock: aByteArray into: w.
 	self primHashBlock: w using: totals.

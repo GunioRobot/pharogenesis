@@ -1,4 +1,4 @@
-TextConverter
+ByteTextConverter
 	subclass: #CP1253TextConverter
 	instanceVariableNames: ''
 	classVariableNames: 'FromTable'

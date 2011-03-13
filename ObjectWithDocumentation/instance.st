@@ -3,4 +3,4 @@ Object
 	instanceVariableNames: 'authoringStamp properties elementSymbol naturalLanguageTranslations'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Protocols-Kernel'
+	category: 'Tools-Changes'

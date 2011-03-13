@@ -1,21 +1,9 @@
 nextUnsignedIntegerBase: aRadix ifFail: errorBlock
 	"Form an unsigned integer with incoming digits from sourceStream.
-	Count the number of digits and the lastNonZero digit and store int in instVar"
+	Answer this integer, or execute errorBlock if no digit found.
+	Count the number of digits and the position of lastNonZero digit and store them in instVar"
 	
-	| value digit |
-	value := 0.
-	nDigits := 0.
-	lastNonZero := 0.
-	[sourceStream atEnd
-		or: [digit := sourceStream next digitValue.
-			(digit < 0
-					or: [digit >= aRadix])
-				and: [sourceStream skip: -1.
-					true]]]
-		whileFalse: [nDigits := nDigits + 1.
-			digit isZero
-				ifFalse: [lastNonZero := nDigits].
-			value := value * aRadix + digit].
-	nDigits = 0
-		ifTrue: [errorBlock value].
+	| value |
+	value := self nextUnsignedIntegerOrNilBase: aRadix.
+	value ifNil: [^errorBlock value].
 	^value

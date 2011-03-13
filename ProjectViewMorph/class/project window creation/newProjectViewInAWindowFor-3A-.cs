@@ -3,7 +3,7 @@ newProjectViewInAWindowFor: aProject
 
 	| window proj |
 	proj := self on: aProject.
-	window _ (SystemWindow labelled: aProject name) model: aProject.
+	window := (SystemWindow labelled: aProject name) model: aProject.
 	window
 		addMorph: proj
 		frame: (0@0 corner: 1.0@1.0).

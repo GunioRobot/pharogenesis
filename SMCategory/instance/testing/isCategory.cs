@@ -1,2 +1,0 @@
-isCategory
-	^true

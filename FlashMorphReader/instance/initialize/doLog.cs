@@ -1,2 +1,0 @@
-doLog
-	^false

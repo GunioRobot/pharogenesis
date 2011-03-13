@@ -1,12 +1,12 @@
 openAsMorph
 	"Open a morphic view of a FileList on the default directory."
 	| dir aFileList window upperFraction offset |
-	dir _ FileDirectory default.
-	aFileList _ self new directory: dir.
-	window _ (SystemWindow labelled: dir pathName)
+	dir := FileDirectory default.
+	aFileList := self new directory: dir.
+	window := (SystemWindow labelled: dir pathName)
 				model: aFileList.
-	upperFraction _ 0.3.
-	offset _ 0.
+	upperFraction := 0.3.
+	offset := 0.
 	self
 		addVolumesAndPatternPanesTo: window
 		at: (0 @ 0 corner: 0.3 @ upperFraction)

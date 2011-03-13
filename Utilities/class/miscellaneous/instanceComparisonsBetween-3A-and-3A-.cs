@@ -7,27 +7,27 @@ instanceComparisonsBetween: fileName1 and: fileName2
 		Smalltalk instanceComparisonsBetween: 'STspace.text1' and 'STspace.text2'"
 
 	| instCountDict report f aString items className newInstCount oldInstCount newSpace oldPair oldSpace |
-	instCountDict _ Dictionary new.
-	report _ ReadWriteStream on: ''.
-	f _ FileStream readOnlyFileNamed: fileName1.
+	instCountDict := Dictionary new.
+	report := ReadWriteStream on: ''.
+	f := FileStream readOnlyFileNamed: fileName1.
 	[f atEnd] whileFalse:
-		[aString _ f upTo: Character cr.
-		items _ aString findTokens: ' '.
+		[aString := f upTo: Character cr.
+		items := aString findTokens: ' '.
 		(items size == 4 or: [items size == 5]) ifTrue:
 			[instCountDict at: items first put: (Array with: items third asNumber with: items fourth asNumber)]].
 	f close.
 
-	f _ FileStream readOnlyFileNamed: fileName2.
+	f := FileStream readOnlyFileNamed: fileName2.
 	[f atEnd] whileFalse:
-		[aString _ f upTo: Character cr.
-		items _ aString findTokens: ' '.
+		[aString := f upTo: Character cr.
+		items := aString findTokens: ' '.
 		(items size == 4 or: [items size == 5]) ifTrue:
-			[className _ items first.
-			newInstCount _ items third asNumber.
-			newSpace _ items fourth asNumber.
-			oldPair _ instCountDict at: className ifAbsent: [nil].
-			oldInstCount _ oldPair ifNil: [0] ifNotNil: [oldPair first].
-			oldSpace _ oldPair ifNil: [0] ifNotNil: [oldPair second].
+			[className := items first.
+			newInstCount := items third asNumber.
+			newSpace := items fourth asNumber.
+			oldPair := instCountDict at: className ifAbsent: [nil].
+			oldInstCount := oldPair ifNil: [0] ifNotNil: [oldPair first].
+			oldSpace := oldPair ifNil: [0] ifNotNil: [oldPair second].
 			oldInstCount ~= newInstCount ifTrue:
 				[report nextPutAll: (newInstCount - oldInstCount) printString; tab; nextPutAll: (newSpace - oldSpace) printString; tab; nextPutAll: className asString; cr]]].
 	f close.

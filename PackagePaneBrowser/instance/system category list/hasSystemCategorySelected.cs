@@ -1,2 +1,0 @@
-hasSystemCategorySelected
-	^ systemCategoryListIndex ~= 0

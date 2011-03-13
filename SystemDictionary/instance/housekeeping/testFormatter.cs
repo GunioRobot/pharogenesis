@@ -3,9 +3,7 @@ testFormatter
 
 	"Reformats the source for every method in the system, and
 	then compiles that source and verifies that it generates
-	identical code. The formatting used will be either classic
-	monochrome or fancy polychrome, depending on the setting
-	of the preference #colorWhenPrettyPrinting."
+	identical code"
 
 	| newCodeString methodNode oldMethod newMethod badOnes n |
 	badOnes := OrderedCollection new.
@@ -27,8 +25,7 @@ testFormatter
 							newCodeString := cls prettyPrinterClass 
 										format: (cls sourceCodeAt: selector)
 										in: cls
-										notifying: nil
-										decorated: Preferences colorWhenPrettyPrinting.
+										notifying: nil.
 							methodNode := cls compilerClass new 
 										compile: newCodeString
 										in: cls

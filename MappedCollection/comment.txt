@@ -1,1 +1,0 @@
-I represent an access mechanism for a sequencable collection re-ordering or filtering its elements.

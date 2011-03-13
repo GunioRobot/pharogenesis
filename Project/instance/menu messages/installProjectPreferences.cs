@@ -5,6 +5,6 @@ installProjectPreferences
 	Preferences allPreferenceObjects do:
 		[:aPreference | 
 			aPreference localToProject ifTrue:
-				[localValue _ self projectPreferenceFlagDictionary at: aPreference name ifAbsent: [nil].
+				[localValue := self projectPreferenceFlagDictionary at: aPreference name ifAbsent: [nil].
 				localValue ifNotNil:
 					[aPreference rawValue: localValue]]]

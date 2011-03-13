@@ -1,2 +1,2 @@
-textLine: aLine
-	textLine _ aLine
+textLine: aLine 
+	textLine := aLine

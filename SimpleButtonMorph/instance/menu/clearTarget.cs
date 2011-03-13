@@ -1,3 +1,3 @@
 clearTarget
 
-	target _ nil.
+	target := nil.

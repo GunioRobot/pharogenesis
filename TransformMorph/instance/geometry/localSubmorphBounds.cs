@@ -3,8 +3,8 @@ localSubmorphBounds
 
 	localBounds ifNil:[
 		self submorphsDo:[:m |
-			localBounds ifNil: [localBounds _ m fullBounds]
-						ifNotNil: [localBounds _ localBounds quickMerge: m fullBounds]].
+			localBounds ifNil: [localBounds := m fullBounds]
+						ifNotNil: [localBounds := localBounds quickMerge: m fullBounds]].
 	].	
 
 	^ localBounds

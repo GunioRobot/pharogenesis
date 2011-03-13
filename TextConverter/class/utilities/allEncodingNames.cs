@@ -1,11 +1,11 @@
 allEncodingNames
 	"TextConverter allEncodingNames"
 	| encodingNames |
-	encodingNames _ Set new.
+	encodingNames := Set new.
 	self allSubclasses
 		do: [:each | 
 			| names | 
-			names _ each encodingNames.
+			names := each encodingNames.
 			names notEmpty
 				ifTrue: [encodingNames add: names first asSymbol]].
 	^encodingNames

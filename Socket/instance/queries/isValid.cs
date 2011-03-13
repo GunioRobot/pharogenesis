@@ -3,5 +3,5 @@ isValid
 
 	| status |
 	socketHandle == nil ifTrue: [^ false].
-	status _ self primSocketConnectionStatus: socketHandle.
+	status := self primSocketConnectionStatus: socketHandle.
 	^ status ~= InvalidSocket

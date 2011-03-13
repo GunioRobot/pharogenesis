@@ -1,3 +1,0 @@
-entries
-
-	^self allEntries

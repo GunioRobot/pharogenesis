@@ -1,7 +1,7 @@
 initializeFromStringMorph: aStringMorph
 	| style |
-	actualFont _ aStringMorph font ifNil: [ TextStyle defaultFont ].
-	style _ actualFont textStyle.
-	emphasis _ actualFont emphasis.
-	fontNumber _ (style fontIndexOf: actualFont) ifNil: [ 1 ].
-	textColor _ aStringMorph color.
+	actualFont := aStringMorph font ifNil: [ TextStyle defaultFont ].
+	style := actualFont textStyle.
+	emphasis := actualFont emphasis.
+	fontNumber := (style fontIndexOf: actualFont) ifNil: [ 1 ].
+	textColor := aStringMorph color.

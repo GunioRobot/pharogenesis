@@ -4,9 +4,9 @@ supermostPrecodeCommentFor: selector
 	| aSuper superComment |
 	(self == Behavior
 			or: [superclass == nil
-					or: [(aSuper _ superclass whichClassIncludesSelector: selector) == nil]])
+					or: [(aSuper := superclass whichClassIncludesSelector: selector) == nil]])
 		ifFalse: ["There is a super implementor"
-			superComment _ aSuper supermostPrecodeCommentFor: selector].
+			superComment := aSuper supermostPrecodeCommentFor: selector].
 	^ superComment
 		ifNil: [self firstPrecodeCommentFor: selector
 			"ActorState supermostPrecodeCommentFor: #printOn:"]

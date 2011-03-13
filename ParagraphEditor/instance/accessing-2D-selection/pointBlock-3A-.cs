@@ -1,2 +1,2 @@
 pointBlock: aCharacterBlock
-	startBlock _ aCharacterBlock.
+	startBlock := aCharacterBlock.

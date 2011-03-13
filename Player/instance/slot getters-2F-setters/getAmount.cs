@@ -1,2 +1,0 @@
-getAmount
-	^ self getValueFromCostume: #amount

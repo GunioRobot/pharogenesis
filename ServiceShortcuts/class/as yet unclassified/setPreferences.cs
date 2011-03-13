@@ -1,11 +1,11 @@
 setPreferences
 	| mm |
-	mm _ self map copy.
+	mm := self map copy.
 	(0 to: 9)
 		do: [:i | #('ctrl-' 'cmd-' 'ctrl-cmd-' )
 				do: [:str | 
 					| short | 
-					short _ (str , i asString) asSymbol.
+					short := (str , i asString) asSymbol.
 					self insertPrefShortcut: short]].
 	#(#up #down #left #right )
 		do: [:s | 

@@ -1,0 +1,2 @@
+isURI
+	^true

@@ -10,13 +10,13 @@ compileAccessorsFor: varName
 	"Assign newValue to &var.
 	Add code below to update related graphics appropriately..."
 
-	&var _ newValue.'
+	&var := newValue.'
 			copyReplaceAll: '&var' with: varName)
 		classified: 'public access' notifying: nil.
 	self compile: (
 '&var: newValue
 	"Assigns newValue to &var and updates owner"
-	&var _ newValue.
+	&var := newValue.
 	self propagate: &var as: ''&var:'''
 			copyReplaceAll: '&var' with: varName)
 		classified: 'private - propagation' notifying: nil.

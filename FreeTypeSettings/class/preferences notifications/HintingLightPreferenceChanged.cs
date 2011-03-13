@@ -1,0 +1,4 @@
+HintingLightPreferenceChanged
+	self current hintingLightPreferenceChanged
+		
+	

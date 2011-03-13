@@ -1,3 +1,3 @@
 firstDayOfMonth
-
-	^ self asMonth start day
+ 
+ 	^ self asMonth start day

@@ -1,1 +1,0 @@
-EventRecorderMorph class instanceVariableNames: ''

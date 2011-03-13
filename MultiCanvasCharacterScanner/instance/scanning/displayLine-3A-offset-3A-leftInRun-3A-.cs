@@ -1,11 +1,10 @@
 displayLine: textLine  offset: offset  leftInRun: leftInRun
 	|  nowLeftInRun done startLoc startIndex stopCondition |
-	"largely copied from DisplayScanner's routine"
+	"largely copied from DisplayScanner's routine.
+	Fixed to set left margin after setting up alignment."
 
 	line := textLine.
 	foregroundColor ifNil: [ foregroundColor := Color black ].
-	leftMargin := (line leftMarginForAlignment: alignment) + offset x.
-
 	rightMargin := line rightMargin + offset x.
 	lineY := line top + offset y.
 	lastIndex := textLine first.
@@ -13,6 +12,7 @@ displayLine: textLine  offset: offset  leftInRun: leftInRun
 		ifTrue: [self setStopConditions.  "also sets the font"
 				nowLeftInRun := text runLengthFor: lastIndex]
 		ifFalse: [nowLeftInRun := leftInRun].
+	leftMargin := (line leftMarginForAlignment: alignment) + offset x.
 	runX := destX := leftMargin.
 
 	runStopIndex := lastIndex + (nowLeftInRun - 1) min: line last.

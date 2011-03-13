@@ -1,3 +1,3 @@
 addRepository
-	self newRepository ifNotNilDo:
+	self newRepository ifNotNil:
 		[:repos | self addRepository: repos ].

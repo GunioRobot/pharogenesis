@@ -1,2 +1,2 @@
 target: newTarget
-	target _ newTarget
+	target := newTarget

@@ -4,6 +4,6 @@ yield
 	| semaphore |
 
 	<primitive: 167>
-	semaphore _ Semaphore new.
+	semaphore := Semaphore new.
 	[semaphore signal] fork.
 	semaphore wait

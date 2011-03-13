@@ -1,0 +1,1 @@
+AcornWindowProxy class instanceVariableNames: ''

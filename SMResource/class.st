@@ -1,1 +1,0 @@
-SMResource class instanceVariableNames: ''

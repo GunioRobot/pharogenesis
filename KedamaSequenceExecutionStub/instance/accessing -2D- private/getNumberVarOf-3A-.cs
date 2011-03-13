@@ -1,3 +1,0 @@
-getNumberVarOf: val
-
-	^ val.

@@ -1,0 +1,1 @@
+FreeTypeFont class instanceVariableNames: ''

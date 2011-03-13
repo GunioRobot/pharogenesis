@@ -1,2 +1,2 @@
 groupName: groupName
-	group _ groupName
+	group := groupName

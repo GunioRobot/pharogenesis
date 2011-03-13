@@ -4,12 +4,12 @@ paint: evt
 
 	|  mousePoint startRect endRect startToEnd pfPen myBrush |
 
-	pfPen _ self get: #paintingFormPen for: evt.
-	myBrush _ self getBrushFor: evt.
-	mousePoint _ evt cursorPoint.
-	startRect _ pfPen location + myBrush offset extent: myBrush extent.
+	pfPen := self get: #paintingFormPen for: evt.
+	myBrush := self getBrushFor: evt.
+	mousePoint := evt cursorPoint.
+	startRect := pfPen location + myBrush offset extent: myBrush extent.
 	pfPen goto: mousePoint - bounds origin.
-	endRect _ pfPen location + myBrush offset extent: myBrush extent.
+	endRect := pfPen location + myBrush offset extent: myBrush extent.
 	"self render: (startRect merge: endRect).	Show the user what happened"
-	startToEnd _ startRect merge: endRect.
+	startToEnd := startRect merge: endRect.
 	self invalidRect: (startToEnd translateBy: bounds origin).

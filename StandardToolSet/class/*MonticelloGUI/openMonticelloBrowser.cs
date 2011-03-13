@@ -1,0 +1,2 @@
+openMonticelloBrowser
+	MCWorkingCopyBrowser open

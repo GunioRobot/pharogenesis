@@ -1,3 +1,0 @@
-addChild
-
-	self addNewChildAfter: nil.

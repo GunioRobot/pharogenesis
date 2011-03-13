@@ -1,2 +1,2 @@
 rectifyCursor
-	cursor _ ((cursor truncated max: 1) min: submorphs size)
+	cursor := ((cursor truncated max: 1) min: submorphs size)

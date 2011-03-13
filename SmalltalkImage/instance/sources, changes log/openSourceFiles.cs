@@ -1,9 +1,9 @@
 openSourceFiles
 
 	self imageName = LastImageName ifFalse:
-		["Reset the author initials to blank when the image gets moved"
-		LastImageName _ self imageName.
-		Utilities setAuthorInitials: ''].
+		["Reset the author full name to blank when the image gets moved"
+		LastImageName := self imageName.
+		Author fullName: ''].
 	FileDirectory
 		openSources: self sourcesName
 		andChanges: self changesName

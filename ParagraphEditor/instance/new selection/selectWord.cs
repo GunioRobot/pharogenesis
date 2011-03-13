@@ -3,62 +3,62 @@ selectWord
 
 	| openDelimiter closeDelimiter direction match level leftDelimiters rightDelimiters
 	string here hereChar start stop |
-	string _ paragraph text string.
-	here _ self pointIndex.
+	string := paragraph text string.
+	here := self pointIndex.
 	(here between: 2 and: string size)
 		ifFalse: ["if at beginning or end, select entire string"
 			^self selectFrom: 1 to: string size].
-	leftDelimiters _ '([{<''"
+	leftDelimiters := '([{<''"
 '.
-	rightDelimiters _ ')]}>''"
+	rightDelimiters := ')]}>''"
 '.
-	openDelimiter _ string at: here - 1.
-	match _ leftDelimiters indexOf: openDelimiter.
+	openDelimiter := string at: here - 1.
+	match := leftDelimiters indexOf: openDelimiter.
 	match > 0
 		ifTrue: 
 			["delimiter is on left -- match to the right"
-			start _ here.
-			direction _ 1.
-			here _ here - 1.
-			closeDelimiter _ rightDelimiters at: match]
+			start := here.
+			direction := 1.
+			here := here - 1.
+			closeDelimiter := rightDelimiters at: match]
 		ifFalse: 
-			[openDelimiter _ string at: here.
-			match _ rightDelimiters indexOf: openDelimiter.
+			[openDelimiter := string at: here.
+			match := rightDelimiters indexOf: openDelimiter.
 			match > 0
 				ifTrue: 
 					["delimiter is on right -- match to the left"
-					stop _ here - 1.
-					direction _ -1.
-					closeDelimiter _ leftDelimiters at: match]
+					stop := here - 1.
+					direction := -1.
+					closeDelimiter := leftDelimiters at: match]
 				ifFalse: ["no delimiters -- select a token"
-					direction _ -1]].
-	level _ 1.
+					direction := -1]].
+	level := 1.
 	[level > 0 and: [direction > 0
 			ifTrue: [here < string size]
 			ifFalse: [here > 1]]]
 		whileTrue: 
-			[hereChar _ string at: (here _ here + direction).
+			[hereChar := string at: (here := here + direction).
 			match = 0
 				ifTrue: ["token scan goes left, then right"
 					hereChar tokenish
 						ifTrue: [here = 1
 								ifTrue: 
-									[start _ 1.
+									[start := 1.
 									"go right if hit string start"
-									direction _ 1]]
+									direction := 1]]
 						ifFalse: [direction < 0
 								ifTrue: 
-									[start _ here + 1.
+									[start := here + 1.
 									"go right if hit non-token"
-									direction _ 1]
-								ifFalse: [level _ 0]]]
+									direction := 1]
+								ifFalse: [level := 0]]]
 				ifFalse: ["bracket match just counts nesting level"
 					hereChar = closeDelimiter
-						ifTrue: [level _ level - 1"leaving nest"]
+						ifTrue: [level := level - 1"leaving nest"]
 						ifFalse: [hereChar = openDelimiter 
-									ifTrue: [level _ level + 1"entering deeper nest"]]]].
+									ifTrue: [level := level + 1"entering deeper nest"]]]].
 
-	level > 0 ifTrue: ["in case ran off string end"	here _ here + direction].
+	level > 0 ifTrue: ["in case ran off string end"	here := here + direction].
 	direction > 0
 		ifTrue: [self selectFrom: start to: here - 1]
 		ifFalse: [self selectFrom: here + 1 to: stop]

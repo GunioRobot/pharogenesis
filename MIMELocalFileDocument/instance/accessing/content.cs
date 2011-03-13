@@ -1,2 +1,2 @@
 content
-	^content ifNil:[content _ contentStream contentsOfEntireFile].
+	^contents ifNil:[contents := contentStream contentsOfEntireFile].

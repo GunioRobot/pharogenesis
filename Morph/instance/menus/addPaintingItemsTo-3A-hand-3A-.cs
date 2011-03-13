@@ -13,7 +13,7 @@ addPaintingItemsTo: aMenu hand: aHandMorph
 	subMenu add: 'reduce color palette' translated action: #reduceColorPalette:.
 	subMenu add: 'add a border around this shape...' translated
 		action: #addBorderToShape:.
-	movies := (self world rootMorphsAt: aHandMorph targetOffset) 
+	movies := (self world rootMorphsAt: aHandMorph targetPoint) 
 				select: [:m | (m isKindOf: MovieMorph) or: [m isSketchMorph]].
 	movies size > 1 
 		ifTrue: 

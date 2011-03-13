@@ -3,8 +3,8 @@ nextPutAll: aCollection
 	Currently a large collection will allocate a large buffer."
 
 	| toPut |
-	toPut _ binary ifTrue: [aCollection asByteArray] ifFalse: [aCollection asString].
+	toPut := binary ifTrue: [aCollection asByteArray] ifFalse: [aCollection asString].
 	self adjustOutBuffer: toPut size.
 	outBuffer replaceFrom: outNextToWrite to: outNextToWrite + toPut size - 1 with: toPut startingAt: 1.
-	outNextToWrite _ outNextToWrite + toPut size.
+	outNextToWrite := outNextToWrite + toPut size.
 	self checkFlush

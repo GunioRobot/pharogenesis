@@ -3,5 +3,11 @@ openExplorerFor: anObject
 ObjectExplorer new openExplorerFor: Smalltalk
 "
 
-    (self explorerFor: anObject) openInWorld.
-    ^ self
+	| win |
+	win := (self explorerFor: anObject) openInWorld.
+	Cursor wait showWhile:
+		[win submorphs do:
+			[:sm|
+			(sm respondsTo: #expandRoots) ifTrue:
+				[sm expandRoots]]].
+	^self

@@ -1,5 +1,5 @@
 testSortedElements
-	"self run: #testSortedElements"
+	"self run: #testSortedElements" 
 	"self debug: #testSortedElements"
 	
 	| bag sortedElements|

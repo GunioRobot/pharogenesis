@@ -3,7 +3,7 @@ withoutQuoting
 	"'''h''' withoutQuoting"
 	| quote |
 	self size < 2 ifTrue: [ ^self ].
-	quote _ self first.
+	quote := self first.
 	(quote = $' or: [ quote = $" ])
 		ifTrue: [ ^self copyFrom: 2 to: self size - 1 ]
 		ifFalse: [ ^self ].

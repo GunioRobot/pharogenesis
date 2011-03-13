@@ -1,2 +1,2 @@
 resetConnectionInfo
-	connectInfo _ nil
+	connectInfo := nil

@@ -1,3 +1,0 @@
-socketOwner: aChatGUI
-
-	socketOwner := aChatGUI.

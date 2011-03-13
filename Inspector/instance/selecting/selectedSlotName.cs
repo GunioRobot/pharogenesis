@@ -1,3 +1,3 @@
 selectedSlotName
 
-	^ self fieldList at: self selectionIndex
+	^ self fieldList at: self selectionIndex ifAbsent: []

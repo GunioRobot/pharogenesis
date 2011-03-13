@@ -1,4 +1,4 @@
 clearColormapCache
 
-	cachedDepth _ nil.
-	cachedColormap _ nil.
+	cachedDepth := nil.
+	cachedColormap := nil.

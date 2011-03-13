@@ -1,3 +1,0 @@
-magnitude
-
-	^ magnitude

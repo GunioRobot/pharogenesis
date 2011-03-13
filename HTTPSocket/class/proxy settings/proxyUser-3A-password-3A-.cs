@@ -5,7 +5,7 @@ proxyUser: userName password: password
 	if you use a firewall that requires authentication"
 
     | stream encodedStream |
-	stream _ ReadWriteStream on: (String new: 16).
+	stream := ReadWriteStream on: (String new: 16).
 	stream nextPutAll: userName ,':' , password.
-	encodedStream _ Base64MimeConverter mimeEncode: stream.
-	HTTPProxyCredentials _ 'Proxy-Authorization: Basic ' , (encodedStream contents) , String crlf
+	encodedStream := Base64MimeConverter mimeEncode: stream.
+	HTTPProxyCredentials := 'Proxy-Authorization: Basic ' , (encodedStream contents) , String crlf

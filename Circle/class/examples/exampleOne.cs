@@ -3,9 +3,9 @@ exampleOne
 	of the circcle of radius 150."
 
 	| aCircle aForm |
-	aForm _ Form extent: 1@30.
+	aForm := Form extent: 1@30.
 	aForm fillBlack.
-	aCircle _ Circle new.
+	aCircle := Circle new.
 	aCircle form: aForm.
 	aCircle radius: 150.
 	aCircle center: Sensor waitButton.

@@ -1,2 +1,0 @@
-getName
-	^ self externalName

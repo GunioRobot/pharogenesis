@@ -1,2 +1,0 @@
-genieGestureProcessor
-	^nil

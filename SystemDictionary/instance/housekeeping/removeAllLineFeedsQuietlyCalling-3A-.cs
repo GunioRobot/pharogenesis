@@ -7,21 +7,21 @@ removeAllLineFeedsQuietlyCalling: aBlock
 	Evaluate aBlock for each method so that status can be updated."
 	| oldCodeString newCodeString oldStamp oldCategory authors nameString |
 	self forgetDoIts.
-	authors _ Dictionary new.
+	authors := Dictionary new.
 	authors at: 'OK' put: Set new.
 	self systemNavigation
 		allBehaviorsDo: [:cls | cls selectors
 				do: [:selector | 
 					aBlock value: cls value: selector.
-					oldCodeString _ cls sourceCodeAt: selector.
+					oldCodeString := cls sourceCodeAt: selector.
 					(oldCodeString includes: Character lf)
 						ifTrue: [
-							newCodeString _ oldCodeString withSqueakLineEndings.
-							nameString _ cls name , '>>' , selector.
+							newCodeString := oldCodeString withSqueakLineEndings.
+							nameString := cls name , '>>' , selector.
 							((cls compiledMethodAt: selector) hasLiteralSuchThat: [ :lit | lit asString includes: Character lf ])
 								ifTrue: [(authors at: 'OK')
 										add: nameString]
-								ifFalse: [oldStamp _ (Utilities
+								ifFalse: [oldStamp := (Utilities
 												timeStampForMethod: (cls compiledMethodAt: selector))
 												copy replaceAll: Character cr
 												with: Character space.
@@ -29,7 +29,7 @@ removeAllLineFeedsQuietlyCalling: aBlock
 										at: (oldStamp copyFrom: 1 to: (oldStamp findFirst: [ :c | c isAlphaNumeric not ]))
 										ifAbsentPut: [Set new])
 										add: nameString.
-									oldCategory _ cls whichCategoryIncludesSelector: selector.
+									oldCategory := cls whichCategoryIncludesSelector: selector.
 									cls
 										compile: newCodeString
 										classified: oldCategory

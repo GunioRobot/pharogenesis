@@ -5,7 +5,7 @@ pathForDirectory
 	they are absolute. Filename is left out."
 
 	| delimiter |
-	delimiter _  FileDirectory default pathNameDelimiter.
+	delimiter :=  FileDirectory default pathNameDelimiter.
 	^String streamContents: [ :s |
 		(self isAbsolute and: [self firstPartIsDriveLetter not])
 			ifTrue: [ s nextPut: delimiter ].

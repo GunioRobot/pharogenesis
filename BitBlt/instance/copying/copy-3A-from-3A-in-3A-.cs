@@ -1,13 +1,13 @@
-copy: destRectangle from: sourcePt in: srcForm
+copy: destRectangle from: sourcePt in: srcForm 
 	| destOrigin |
-	sourceForm _ srcForm.
-	halftoneForm _ nil.
-	combinationRule _ 3.  "store"
-	destOrigin _ destRectangle origin.
-	destX _ destOrigin x.
-	destY _ destOrigin y.
-	sourceX _ sourcePt x.
-	sourceY _ sourcePt y.
-	width _ destRectangle width.
-	height _ destRectangle height.
+	sourceForm := srcForm.
+	halftoneForm := nil.
+	combinationRule := 3.	"store"
+	destOrigin := destRectangle origin.
+	destX := destOrigin x.
+	destY := destOrigin y.
+	sourceX := sourcePt x.
+	sourceY := sourcePt y.
+	width := destRectangle width.
+	height := destRectangle height.
 	self copyBits

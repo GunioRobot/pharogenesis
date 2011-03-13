@@ -1,1 +1,0 @@
-SmaCCToken class instanceVariableNames: ''

@@ -1,3 +1,0 @@
-suppressSilence
-
-	recordedSound := self soundSegments

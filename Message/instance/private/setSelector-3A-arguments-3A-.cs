@@ -1,4 +1,4 @@
 setSelector: aSymbol arguments: anArray
 
-	selector _ aSymbol.
-	args _ anArray
+	selector := aSymbol.
+	args := anArray

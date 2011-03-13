@@ -3,4 +3,4 @@ ImageMorph
 	instanceVariableNames: 'currentColor locOfCurrent'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'MorphicExtras-Support'
+	category: 'Morphic-Extras'

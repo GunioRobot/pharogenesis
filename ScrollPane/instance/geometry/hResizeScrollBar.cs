@@ -8,10 +8,10 @@ hResizeScrollBar
 	(self valueOfProperty: #noHScrollBarPlease ifAbsent: [false]) ifTrue: [^self].
 	bounds ifNil: [ self fullBounds ].
 	
-	h _ self scrollBarThickness.
-	border _ borderWidth.
+	h := self scrollBarThickness.
+	border := borderWidth.
 	
-	topLeft _ retractableScrollBar
+	topLeft := retractableScrollBar
 				ifTrue: [bounds bottomLeft + (border @ border negated)]
 				ifFalse: [bounds bottomLeft + (border @ (h + border) negated)].
 

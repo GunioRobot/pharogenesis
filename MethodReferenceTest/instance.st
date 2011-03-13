@@ -3,4 +3,4 @@ ClassTestCase
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Tools-Browser-Tests'
+	category: 'Tests-Browser'

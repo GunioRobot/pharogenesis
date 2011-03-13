@@ -1,1 +1,0 @@
-SMObject class instanceVariableNames: ''

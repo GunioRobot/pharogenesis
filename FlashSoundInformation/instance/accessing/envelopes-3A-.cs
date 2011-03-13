@@ -1,2 +1,0 @@
-envelopes: aCollection
-	envelopes := aCollection

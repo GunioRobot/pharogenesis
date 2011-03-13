@@ -1,0 +1,1 @@
+AnnouncementSpy class instanceVariableNames: ''

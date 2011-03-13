@@ -1,2 +1,0 @@
-selectedRelease
-	^ selectedRelease

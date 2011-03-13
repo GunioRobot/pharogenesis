@@ -1,1 +1,0 @@
-CanvasDecoder class instanceVariableNames: ''

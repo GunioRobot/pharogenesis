@@ -1,3 +1,3 @@
 registeredHandlers
-	RegisteredHandlers ifNil: [RegisteredHandlers _ OrderedCollection new].
+	RegisteredHandlers ifNil: [RegisteredHandlers := OrderedCollection new].
 	^RegisteredHandlers

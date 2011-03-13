@@ -3,24 +3,24 @@ readFrom: aStream
 	To assiste DateAndTime>>#readFrom: SS may be unpadded or absent."
 
 	| sign days hours minutes seconds nanos ws ch |
-	sign _ (aStream peekFor: $-) ifTrue: [-1] ifFalse: [1].
+	sign := (aStream peekFor: $-) ifTrue: [-1] ifFalse: [1].
 
-	days _ (aStream upTo: $:) asInteger sign: sign.
-	hours _ (aStream upTo: $:) asInteger sign: sign.
-	minutes _ (aStream upTo: $:) asInteger sign: sign.
+	days := (aStream upTo: $:) asInteger sign: sign.
+	hours := (aStream upTo: $:) asInteger sign: sign.
+	minutes := (aStream upTo: $:) asInteger sign: sign.
 
 	aStream atEnd 
-		ifTrue: [seconds _ 0. nanos _ 0]
+		ifTrue: [seconds := 0. nanos := 0]
 		ifFalse: 
-			[ ws _ String new writeStream.
-			[ch _ aStream next. (ch isNil) | (ch = $.)]
+			[ ws := String new writeStream.
+			[ch := aStream next. (ch isNil) | (ch = $.)]
 				whileFalse: [ ws nextPut: ch ].
-			seconds _ ws contents asInteger sign: sign.
+			seconds := ws contents asInteger sign: sign.
 			ws reset.
 			9 timesRepeat: 
-				[ ch _ aStream next. 
+				[ ch := aStream next. 
 				ws nextPut: (ch ifNil: [$0] ifNotNil: [ch]) ].
-			nanos _ ws contents asInteger sign: sign].
+			nanos := ws contents asInteger sign: sign].
 
 	^ self days: days hours: hours minutes: minutes seconds: seconds nanoSeconds: nanos.
 

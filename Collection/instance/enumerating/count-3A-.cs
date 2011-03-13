@@ -3,6 +3,6 @@ count: aBlock
 	Answer the number of elements that answered true."
 
 	| sum |
-	sum _ 0.
-	self do: [:each | (aBlock value: each) ifTrue: [sum _ sum + 1]].
+	sum := 0.
+	self do: [:each | (aBlock value: each) ifTrue: [sum := sum + 1]].
 	^ sum

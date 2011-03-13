@@ -1,1 +1,3 @@
 binary
+	"do nothing"
+	^self

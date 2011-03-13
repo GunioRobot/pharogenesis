@@ -1,3 +1,0 @@
-privateSlotInfo
-	"for copying"
-	^ slotInfo

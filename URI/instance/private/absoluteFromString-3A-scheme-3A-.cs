@@ -1,3 +1,3 @@
 absoluteFromString: remainder scheme: schemeName
-	scheme _ schemeName.
+	scheme := schemeName.
 	self extractSchemeSpecificPartAndFragment: remainder

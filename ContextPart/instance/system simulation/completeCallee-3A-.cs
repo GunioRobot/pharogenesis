@@ -1,11 +1,11 @@
 completeCallee: aContext
 	"Simulate the execution of bytecodes until a return to the receiver."
 	| ctxt current ctxt1 |
-	ctxt _ aContext.
+	ctxt := aContext.
 	[ctxt == current or: [ctxt hasSender: self]]
 		whileTrue: 
-			[current _ ctxt.
-			ctxt1 _ ctxt quickStep.
+			[current := ctxt.
+			ctxt1 := ctxt quickStep.
 			ctxt1 ifNil: [self halt].
-			ctxt _ ctxt1].
+			ctxt := ctxt1].
 	^self stepToSendOrReturn

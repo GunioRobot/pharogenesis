@@ -1,24 +1,26 @@
 parseServerEntryFrom: stream
 	
 	| server type directory entries serverName |
+	self flag: #etoyCleaningLeftToDo. 
+	entries := ExternalSettings parseServerEntryArgsFrom: stream.
 
-	entries _ ExternalSettings parseServerEntryArgsFrom: stream.
-
-	serverName _ entries at: 'name' ifAbsent: [^nil].
-	directory _ entries at: 'directory' ifAbsent: [^nil].
-	type _ entries at: 'type' ifAbsent: [^nil].
+	serverName := entries at: 'name' ifAbsent: [^nil].
+	directory := entries at: 'directory' ifAbsent: [^nil].
+	type := entries at: 'type' ifAbsent: [^nil].
 	type = 'file'
 		ifTrue: [
-			server _ self determineLocalServerDirectory: directory.
-			entries at: 'userListUrl' ifPresent:[:value | server eToyUserListUrl: value].
-			entries at: 'baseFolderSpec' ifPresent:[:value | server eToyBaseFolderSpec: value].
-			^self addLocalProjectDirectory: server].
-	type = 'bss'
-		ifTrue: [server _ SuperSwikiServer new type: #http].
+			server := self determineLocalServerDirectory: directory.
+			entries at: 'userListUrl' ifPresent:[:value | 
+						" I do not know what is userListUrl so I just comment that for etoy removal- stephane.ducasse." 
+													 "server eToyUserListUrl: value" ].
+			entries at: 'baseFolderSpec' ifPresent:[:value | 
+					" I do not know what is userListUrl so I just comment that for etoy removal- stephane.ducasse." 
+				"server eToyBaseFolderSpec: value"].
+			^ true].
 	type = 'http'
-		ifTrue: [server _ HTTPServerDirectory new type: #ftp].
+		ifTrue: [server := HTTPServerDirectory new type: #ftp].
 	type = 'ftp'
-		ifTrue: [server _ ServerDirectory new type: #ftp].
+		ifTrue: [server := ServerDirectory new type: #ftp].
 
 	server directory: directory.
 	entries at: 'server' ifPresent: [:value | server server: value].

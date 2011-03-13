@@ -8,7 +8,7 @@ mouseEnter: evt
 		].	"scale and rotate are not real modes.  If we enter with one, wear the previous tool."
 	evt hand showTemporaryCursor: (self getCursorFor: evt).
 	palette getSpecial == #polygon: ifFalse: [^self].
-	(poly _ self valueOfProperty: #polygon) ifNil: [^ self].
-	cColor _ self getColorFor: evt.
+	(poly := self valueOfProperty: #polygon) ifNil: [^ self].
+	cColor := self getColorFor: evt.
 	poly borderColor: cColor; borderWidth: (self getNibFor: evt) width.
 	poly changed.

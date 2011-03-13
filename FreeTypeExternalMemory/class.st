@@ -1,0 +1,1 @@
+FreeTypeExternalMemory class instanceVariableNames: ''

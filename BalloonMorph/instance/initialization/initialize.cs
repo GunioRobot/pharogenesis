@@ -4,4 +4,4 @@ initialize
 	""
 	self beSmoothCurve.
 
-	offsetFromTarget _ 0 @ 0
+	offsetFromTarget := 0 @ 0

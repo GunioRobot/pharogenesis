@@ -1,5 +1,5 @@
 setupFromParameters
 	(self includesParameter: 'showSplash')
-		ifTrue: [showSplash _ (self parameterAt: 'showSplash') asUppercase = 'TRUE'].
+		ifTrue: [showSplash := (self parameterAt: 'showSplash') asUppercase = 'TRUE'].
 	(self includesParameter: 'flaps')
-		ifTrue: [whichFlaps _ (self parameterAt: 'flaps')].
+		ifTrue: [whichFlaps := (self parameterAt: 'flaps')].

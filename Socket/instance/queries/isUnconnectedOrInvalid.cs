@@ -3,5 +3,5 @@ isUnconnectedOrInvalid
 
 	| status |
 	socketHandle == nil ifTrue: [^ true].
-	status _ self primSocketConnectionStatus: socketHandle.
+	status := self primSocketConnectionStatus: socketHandle.
 	^ (status = Unconnected) | (status = InvalidSocket)

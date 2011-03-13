@@ -4,7 +4,7 @@ initialize
 	
 	self hResizing: #spaceFill.
 	self vResizing: #spaceFill.
-	splitsTopAndBottom _ false.
+	splitsTopAndBottom := false.
 	
-	leftOrTop _ OrderedCollection new.
-	rightOrBottom _ OrderedCollection new
+	leftOrTop := OrderedCollection new.
+	rightOrBottom := OrderedCollection new

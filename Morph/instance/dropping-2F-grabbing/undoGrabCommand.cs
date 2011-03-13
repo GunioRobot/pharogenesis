@@ -4,7 +4,7 @@ undoGrabCommand
 	| cmd |
 	owner ifNil:
 		[^ nil]. "no owner - no undo"
-	^ (cmd _ Command new)
+	^ (cmd := Command new)
 		cmdWording: 'move ' translated, self nameForUndoWording;
 		undoTarget: self
 		selector: #undoMove:redo:owner:bounds:predecessor:

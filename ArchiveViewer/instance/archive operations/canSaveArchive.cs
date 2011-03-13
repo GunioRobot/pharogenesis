@@ -1,2 +1,0 @@
-canSaveArchive
-	^archive notNil

@@ -1,1 +1,0 @@
-MagnifierMorph class instanceVariableNames: ''

@@ -1,7 +1,7 @@
 drawString: aString from: firstIndex to: lastIndex at: aPoint font: fontOrNil color: c
 	| font |
 	port colorMap: nil.
-	font _ fontOrNil ifNil: [TextStyle defaultFont].
+	font := fontOrNil ifNil: [TextStyle defaultFont].
 	port combinationRule: Form paint.
 	font installOn: port
 		foregroundColor: (self shadowColor ifNil:[c]) 

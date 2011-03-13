@@ -1,8 +1,8 @@
 launchMiniEditor: evt
 
 	| textMorph |
-	hasFocus _ true.  "Really only means edit in progress for this morph"
-	textMorph _ StringMorphEditor new contentsAsIs: contents.
+	hasFocus := true.  "Really only means edit in progress for this morph"
+	textMorph := StringMorphEditor new contentsAsIs: contents.
 	textMorph beAllFont: self fontToUse.
 	textMorph bounds: (self bounds expandBy: 0@2).
 	self addMorphFront: textMorph.

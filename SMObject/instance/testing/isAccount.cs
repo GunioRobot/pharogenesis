@@ -1,2 +1,0 @@
-isAccount
-	^false

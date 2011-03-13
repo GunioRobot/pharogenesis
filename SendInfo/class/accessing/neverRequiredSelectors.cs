@@ -1,6 +1,6 @@
 neverRequiredSelectors
 	| nrs |
-	nrs _ Array new: 5.
+	nrs := Array new: 5.
 	nrs at: 1 put: CompiledMethod conflictMarker.
 	nrs at: 2 put: CompiledMethod disabledMarker.
 	nrs at: 3 put: CompiledMethod explicitRequirementMarker.

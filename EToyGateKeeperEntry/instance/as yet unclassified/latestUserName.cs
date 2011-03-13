@@ -1,3 +1,0 @@
-latestUserName
-
-	^latestUserName ifNil: ['???']

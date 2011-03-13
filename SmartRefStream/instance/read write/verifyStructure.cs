@@ -6,14 +6,14 @@ verifyStructure
 
 	self flag: #bobconv.	
 
-	converting _ OrderedCollection new.
+	converting := OrderedCollection new.
 	structures keysDo: [:nm "an old className (symbol)" |
 		"For missing classes, there needs to be a method in SmartRefStream like 
 			#rectangleoc2 that returns the new class."
-		newClass _ self mapClass: nm.	   "does (renamed at: nm put: newClass name)"
+		newClass := self mapClass: nm.	   "does (renamed at: nm put: newClass name)"
 		newClass isString ifTrue: [^ newClass].  "error, fileIn needed"
-		newList _ (Array with: newClass classVersion), (newClass allInstVarNames).
-		oldList _ structures at: nm.
+		newList := (Array with: newClass classVersion), (newClass allInstVarNames).
+		oldList := structures at: nm.
 		newList = oldList 
 			ifTrue: [steady add: newClass]  "read it in as written"
 			ifFalse: [converting add: newClass name]

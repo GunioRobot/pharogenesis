@@ -1,1 +1,0 @@
-PreferencesPanel class instanceVariableNames: ''

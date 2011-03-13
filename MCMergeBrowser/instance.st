@@ -3,4 +3,4 @@ MCPatchBrowser
 	instanceVariableNames: 'conflicts merger ok'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Monticello-UI'
+	category: 'MonticelloGUI'

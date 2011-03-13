@@ -1,3 +1,3 @@
 schedule: anArrayOfDurations
 
-	schedule _ anArrayOfDurations
+	schedule := anArrayOfDurations

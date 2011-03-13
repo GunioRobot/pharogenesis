@@ -3,5 +3,5 @@ afterNewPicDo: goodBlock ifNoBits: badBlock
 goodBlock takes 2 args, the painted form and the bounding rectangle of its bits.
 badBlock takes no args.  "
 
-	newPicBlock _ goodBlock.
-	emptyPicBlock _ badBlock.
+	newPicBlock := goodBlock.
+	emptyPicBlock := badBlock.

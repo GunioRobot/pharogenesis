@@ -1,6 +1,6 @@
 turnOnSelectedPreference
 	highlightedPreferenceButton 
-		ifNotNilDo: [:m | m highlightOff].
+		ifNotNil: [:m | m highlightOff].
 	highlightedPreferenceButton := self selectedPreferenceButton
 		highlightOn;
 		yourself.

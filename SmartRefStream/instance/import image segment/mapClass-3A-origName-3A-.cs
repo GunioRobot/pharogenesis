@@ -3,10 +3,10 @@ mapClass: newClass origName: originalName
 
 	| newName oldInstVars fakeClass |
 	newClass isMeta ifTrue: [^ newClass].
-	newName _ newClass name.
+	newName := newClass name.
 	(steady includes: newClass) & (newName == originalName) ifTrue: [^ newClass].
 		"instances in the segment have the right shape"
-	oldInstVars _ structures at: originalName ifAbsent: [
+	oldInstVars := structures at: originalName ifAbsent: [
 			self error: 'class is not in structures list'].	"Missing in object file"
 
 	"Allow mapping from old to new string names"
@@ -14,7 +14,7 @@ mapClass: newClass origName: originalName
 	(newName == #WideString and:[originalName == #MultiString]) ifTrue:[^newClass].
 	(newName == #WideSymbol and:[originalName == #MultiSymbol]) ifTrue:[^newClass].
 
-	fakeClass _ Object subclass: ('Fake37', originalName) asSymbol
+	fakeClass := Object subclass: ('Fake37', originalName) asSymbol
 		instanceVariableNames: oldInstVars allButFirst
 		classVariableNames: ''
 		poolDictionaries: ''

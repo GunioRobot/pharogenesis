@@ -8,10 +8,7 @@ addToggleItemsToHaloMenu: aMenu
 		(hasClipSubmorphsString changeClipSubmorphs 'whether the parts of objects within me that are outside my bounds should be masked.' false)
 		(hasDirectionHandlesString changeDirectionHandles 'whether direction handles are shown with the halo' false)
 		(hasDragAndDropEnabledString changeDragAndDrop 'whether I am open to having objects dropped into me' false)
-	)
-		select:[:each | Preferences noviceMode not or:[each fourth]]
-		thenDo:
-		[:each |
+	) do: [:each |
 			aMenu addUpdating: each first action: each second.
 			aMenu balloonTextForLastItem: each third translated].
 

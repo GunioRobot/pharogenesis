@@ -3,5 +3,5 @@ imageName
 	"SmalltalkImage current imageName"
 
 	| str |
-	str _ self primImageName.
+	str := self primImageName.
 	^ (FilePath pathName: str isEncoded: true) asSqueakPathName.

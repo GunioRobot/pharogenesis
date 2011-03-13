@@ -1,3 +1,0 @@
-isRound
-
-	^ owner isMemberOf: ScreeningMorph

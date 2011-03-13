@@ -1,5 +1,5 @@
 signalAbort
 	fileStream ifNotNil: [
 		fileStream close].
-	fileStream _ nil.
+	fileStream := nil.
 	super signalAbort.

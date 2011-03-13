@@ -2,7 +2,7 @@ displayOn: aDisplayMedium at: aPoint clippingBox: clipRect rule: anInteger
 fillColor: aForm
  
 	| line |
-	line _ Line new.
+	line := Line new.
 	line form: self form.
 	1 to: self size - 1 do: 
 		[:i | 

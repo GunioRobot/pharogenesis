@@ -1,17 +1,15 @@
-printOn: aStream 
-	"Reimplementation - Object 'printing' method."
-	| aFraction tmpFractionPart |
-	self < 0 ifTrue: [aStream nextPut: $-].
-	aFraction := fraction abs.
-	aStream nextPutAll: aFraction truncated printString.
-	scale = 0 ifTrue: [^ aStream nextPutAll: 's0'].
-	aStream nextPut: $..
-	tmpFractionPart := aFraction fractionPart.
-	1 to: scale
-		do: 
-			[:dummy | 
-			tmpFractionPart := tmpFractionPart * 10.
-			aStream nextPut: (Character digitValue: tmpFractionPart truncated).
-			tmpFractionPart := tmpFractionPart fractionPart].
-	aStream nextPut: $s.
-	scale printOn: aStream
+printOn: aStream
+	"Append an approximated representation of the receiver on aStream.
+	Use prescribed number of digits after decimal point (the scale) using a rounding operation if not exact"
+	
+	| fractionPart |
+	scale = 0
+		ifTrue: [self rounded printOn: aStream]
+		ifFalse: [self integerPart printOn: aStream.
+			aStream nextPut: $..
+			fractionPart := (self abs fractionPart * (10 raisedToInteger: scale)) rounded.
+			aStream nextPutAll: (String new: scale - (fractionPart numberOfDigitsInBase: 10) withAll: $0).
+			fractionPart printOn: aStream].
+	
+	"Append a scale specification so that the number can be recognized as a ScaledDecimal"
+	aStream nextPut: $s; print: scale.

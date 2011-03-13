@@ -1,0 +1,2 @@
+oldTypeOfClass
+	^ oldItem typeOfClass

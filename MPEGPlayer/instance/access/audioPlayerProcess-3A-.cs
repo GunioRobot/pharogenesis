@@ -1,2 +1,0 @@
-audioPlayerProcess: aProcess
-	audioPlayerProcess := aProcess

@@ -1,3 +1,3 @@
 active
-	active ifNil: [ active _ false ].
+	active ifNil: [ active := false ].
 	^ active

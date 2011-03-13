@@ -3,4 +3,4 @@ MCTestCase
 	instanceVariableNames: 'patch'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Monticello-Tests'
+	category: 'Tests-Monticello'

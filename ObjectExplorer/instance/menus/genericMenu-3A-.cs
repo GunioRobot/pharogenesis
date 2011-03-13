@@ -16,7 +16,7 @@ genericMenu: aMenu
 			aMenu defaultTarget: inspector.
 			inspector fieldListMenu: aMenu.
 			aMenu items
-				do: [:i | (#(#inspectSelection #exploreSelection #referencesToSelection #defsOfSelection #objectReferencesToSelection #chasePointers ) includes: i selector)
+				do: [:i | (#(#inspectSelection #exploreSelection #referencesToSelection #defsOfSelection #objectReferencesToSelection #chasePointers #explorePointers) includes: i selector)
 						ifTrue: [i target: self]].
 			aMenu addLine;
 				add: 'monitor changes'

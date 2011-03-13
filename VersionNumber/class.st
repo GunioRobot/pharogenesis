@@ -1,1 +1,0 @@
-VersionNumber class instanceVariableNames: ''

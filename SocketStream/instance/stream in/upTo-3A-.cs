@@ -12,19 +12,19 @@ upTo: aCharacterOrByte
 	A totally non greedy variant would search on every loop."
 
 	| index result lastRecentlyRead searchedSoFar |
-	searchedSoFar _ 0.
-	lastRecentlyRead _ 0.
-	index _ 0.
+	searchedSoFar := 0.
+	lastRecentlyRead := 0.
+	index := 0.
 	[self atEnd not and: [
 		((lastRecentlyRead = 0 and: [self isInBufferEmpty not]) or: [self inBufferSize > 100000]) ifTrue: [
 			"Data begins at lastRead + 1, we add searchedSoFar as offset."
-			index _ inBuffer indexOf: aCharacterOrByte startingAt: lastRead + searchedSoFar + 1.
-			searchedSoFar _ self inBufferSize.
+			index := inBuffer indexOf: aCharacterOrByte startingAt: lastRead + searchedSoFar + 1.
+			searchedSoFar := self inBufferSize.
 			(index > 0 and: [(index + 1) > inNextToWrite]) ifTrue: [
 				"Oops, hit in dead buffer area.
 				This is probably due to old data, so we ignore it.
 				No point in cleaning the dead area to avoid hits - it will still search it."
-				index _ 0]].
+				index := 0]].
 		index = 0]]
 				whileTrue: [
 					recentlyRead = 0
@@ -32,10 +32,10 @@ upTo: aCharacterOrByte
 							self receiveData]
 						ifFalse: [
 							self receiveAvailableData].
-					lastRecentlyRead _ recentlyRead].
+					lastRecentlyRead := recentlyRead].
 	index > 0
 		ifTrue: ["found it"
-			result _ self nextInBuffer: index - lastRead - 1.
+			result := self nextInBuffer: index - lastRead - 1.
 			self skip: 1.
 			^ result]
 		ifFalse: ["atEnd"

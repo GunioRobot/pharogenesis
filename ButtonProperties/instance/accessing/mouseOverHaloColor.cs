@@ -1,3 +1,0 @@
-mouseOverHaloColor
-
-	^mouseOverHaloColor

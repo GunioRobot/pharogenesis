@@ -2,8 +2,8 @@ writeFileNamed: localFileName fromDirectory: localDirectory toServer: primarySer
 
 	| local resp gifFileName f |
 
-	local _ localDirectory oldFileNamed: localFileName.
-	resp _ primaryServerDirectory upLoadProject: local named: localFileName resourceUrl: self resourceUrl retry: false.
+	local := localDirectory oldFileNamed: localFileName.
+	resp := primaryServerDirectory upLoadProject: local named: localFileName resourceUrl: self resourceUrl retry: false.
 	local close.
 	resp == true ifFalse: [
 		"abandon resources that would've been stored with the project"
@@ -14,25 +14,25 @@ writeFileNamed: localFileName fromDirectory: localDirectory toServer: primarySer
 		^ self
 	].
 
-	gifFileName _ self name,'.gif'.
+	gifFileName := self name,'.gif'.
 	localDirectory deleteFileNamed: gifFileName ifAbsent: [].
-	local _ localDirectory fileNamed: gifFileName.
+	local := localDirectory fileNamed: gifFileName.
 	thumbnail ifNil: [
-		(thumbnail _ Form extent: 100@80) fillColor: Color orange
+		(thumbnail := Form extent: 100@80) fillColor: Color orange
 	] ifNotNil: [
 		thumbnail unhibernate.
 	].
-	f _ thumbnail colorReduced.  "minimize depth"
+	f := thumbnail colorReduced.  "minimize depth"
 	f depth > 8 ifTrue: [
-		f _ thumbnail asFormOfDepth: 8
+		f := thumbnail asFormOfDepth: 8
 	].
 	GIFReadWriter putForm: f onStream: local.
 	local close.
 
-	[local _ StandardFileStream readOnlyFileNamed: (localDirectory fullNameFor: gifFileName).
+	[local := StandardFileStream readOnlyFileNamed: (localDirectory fullNameFor: gifFileName).
 	(primaryServerDirectory isKindOf: FileDirectory)
 		ifTrue: [primaryServerDirectory deleteFileNamed: gifFileName ifAbsent: []].
-	resp _ primaryServerDirectory putFile: local named: gifFileName retry: false.
+	resp := primaryServerDirectory putFile: local named: gifFileName retry: false.
 	] on: Error do: [:ex |].
 	local close.
 

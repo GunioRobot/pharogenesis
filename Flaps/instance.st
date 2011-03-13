@@ -3,4 +3,4 @@ Object
 	instanceVariableNames: ''
 	classVariableNames: 'FlapsQuads SharedFlapTabs SharedFlapsAllowed'
 	poolDictionaries: ''
-	category: 'MorphicExtras-Flaps'
+	category: 'Morphic-Worlds'

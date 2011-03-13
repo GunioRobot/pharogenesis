@@ -1,6 +1,6 @@
 VariableNode
 	subclass: #LiteralVariableNode
-	instanceVariableNames: 'splNode'
+	instanceVariableNames: 'readNode writeNode'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Compiler-ParseNodes'

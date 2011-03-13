@@ -1,3 +1,0 @@
-pageNumber
-
-	^ self pageNumberOf: currentPage

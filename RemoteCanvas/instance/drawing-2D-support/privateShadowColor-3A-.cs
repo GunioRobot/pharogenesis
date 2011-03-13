@@ -1,3 +1,0 @@
-privateShadowColor: x
-
-	shadowColor := x.

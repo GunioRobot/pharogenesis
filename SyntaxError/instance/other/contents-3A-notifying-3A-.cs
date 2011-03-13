@@ -1,11 +1,8 @@
 contents: aString notifying: aController
-	"Compile the code in aString and notify aController of any errors. If there are no errors, then automatically proceed."
+	"Compile the code in aString and proceed. Do not notify anybody of errors, because nobody would have been notified of errors if this syntax error had not arisen"
 
 	doitFlag
-	ifTrue: [Compiler new evaluate: aString in: nil to: nil
-						notifying: aController ifFail: [^ false]]
-	ifFalse: [(class compile: aString classified: category
-						notifying: aController) ifNil: [^ false]].
-
+		ifTrue: [Compiler new evaluate: aString]
+		ifFalse: [class compile: aString classified: category].
 	aController hasUnacceptedEdits: false.
 	self proceed

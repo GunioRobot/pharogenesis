@@ -1,2 +1,0 @@
-searchingViewerMorphs
-	^ self submorphsSatisfying: [:m | m isKindOf: SearchingViewer].

@@ -1,3 +1,0 @@
-relativePosition
-
-	^ frameNumber asFloat / frameCount

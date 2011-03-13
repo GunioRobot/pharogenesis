@@ -1,9 +1,11 @@
 targetWith: evt
 	"Some other morph become target of the receiver"
-	|  menu newTarget |
-	menu _ CustomMenu new.
-	self potentialTargets  do: [:m | 
-		menu add: (m knownName ifNil:[m class name asString]) action: m].
-	newTarget _ menu startUpWithCaption: ( self externalName, ' targets...').
+	|  newTarget |
+	newTarget := UIManager default
+				chooseFrom: (self potentialTargets
+						collect: [:t | t knownName
+								ifNil: [t class name asString]])
+				values: self potentialTargets
+				title: (self externalName, ' targets...' translated).
 	newTarget ifNil:[^self].
 	self target: newTarget.

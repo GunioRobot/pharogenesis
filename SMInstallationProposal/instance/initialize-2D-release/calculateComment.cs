@@ -1,3 +1,0 @@
-calculateComment
-
-	comment := ''

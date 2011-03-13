@@ -1,2 +1,0 @@
-cachingBits
-	^ CacheBits

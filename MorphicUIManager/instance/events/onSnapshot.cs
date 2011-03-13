@@ -1,0 +1,3 @@
+onSnapshot 	
+	
+	SystemWindow wakeUpTopWindowUponStartup

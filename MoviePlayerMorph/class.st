@@ -1,1 +1,0 @@
-MoviePlayerMorph class instanceVariableNames: ''

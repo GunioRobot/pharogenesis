@@ -5,6 +5,6 @@ allInstVarNames
 
 	| vars |
 	superclass == nil
-		ifTrue: [vars _ self instVarNames copy]	"Guarantee a copy is answered."
-		ifFalse: [vars _ superclass allInstVarNames , self instVarNames].
+		ifTrue: [vars := self instVarNames copy]	"Guarantee a copy is answered."
+		ifFalse: [vars := superclass allInstVarNames , self instVarNames].
 	^vars

@@ -2,12 +2,12 @@ writeClassRename: newName was: oldName
 	"Write a method that tells which modern class to map instances to."
 	| oldVer sel code |
 
-	oldVer _ self versionSymbol: (structures at: oldName).
-	sel _ oldName asString.
+	oldVer := self versionSymbol: (structures at: oldName).
+	sel := oldName asString.
 	sel at: 1 put: (sel at: 1) asLowercase.
-	sel _ sel, oldVer.	"i.e. #rectangleoc4"
+	sel := sel, oldVer.	"i.e. #rectangleoc4"
 
-	code _ WriteStream on: (String new: 500).
+	code := (String new: 500) writeStream.
 	code nextPutAll: sel; cr.
 	code cr; tab; nextPutAll: '^ ', newName.	"Return new class"
 

@@ -1,4 +1,4 @@
 < aNumber
 	aNumber isFraction ifTrue:
 		[^ numerator * aNumber denominator < (aNumber numerator * denominator)].
-	^ aNumber adaptToFraction: self andSend: #<
+	^ aNumber adaptToFraction: self andCompare: #<

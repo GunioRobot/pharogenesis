@@ -1,3 +1,3 @@
 suppressFlapsString
 	"Answer the wording of the suppress-flaps item"
-	^ CurrentProjectRefactoring suppressFlapsString
+	^ Project current suppressFlapsString

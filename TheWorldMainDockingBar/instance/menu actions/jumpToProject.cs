@@ -1,2 +1,0 @@
-jumpToProject
-	Project jumpToProject

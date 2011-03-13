@@ -1,3 +1,0 @@
-getGrouped
-
-	^ exampler getGrouped.

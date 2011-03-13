@@ -3,13 +3,13 @@ name
 	| type nameField disposition |
 
 	"try in the content-type: header"
-	type _ self fieldNamed: 'content-type' ifAbsent: [nil].
-	(type notNil and: [(nameField _ type parameters at: 'name' ifAbsent: [nil]) notNil])
+	type := self fieldNamed: 'content-type' ifAbsent: [nil].
+	(type notNil and: [(nameField := type parameters at: 'name' ifAbsent: [nil]) notNil])
 		ifTrue: [^ nameField].
 
 	"try in content-disposition:"
-	disposition _ self fieldNamed: 'content-disposition' ifAbsent: [nil].
-	(disposition notNil and: [(nameField _ disposition parameters at: 'filename' ifAbsent: [nil]) notNil])
+	disposition := self fieldNamed: 'content-disposition' ifAbsent: [nil].
+	(disposition notNil and: [(nameField := disposition parameters at: 'filename' ifAbsent: [nil]) notNil])
 		ifTrue: [^ nameField].
 
 	"give up"

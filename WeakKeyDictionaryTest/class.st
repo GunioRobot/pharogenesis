@@ -1,0 +1,1 @@
+WeakKeyDictionaryTest class instanceVariableNames: ''

@@ -5,7 +5,7 @@ chooseColor
 	ColorPickerMorph new
 		choseModalityFromPreference;
 		sourceHand: morph activeHand;
-		target: (attribute _ TextColor color: Color black "default");
+		target: (attribute := TextColor color: Color black "default");
 		selector: #color:;
 		originalColor: Color black;
 		putUpFor: morph near: morph fullBoundsInWorld.

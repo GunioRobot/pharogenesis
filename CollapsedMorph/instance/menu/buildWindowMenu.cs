@@ -2,7 +2,7 @@ buildWindowMenu
 	"Answer the menu to be put up in response to the user's clicking on the window-menu control in the window title.  Specialized for CollapsedMorphs."
 
 	| aMenu |
-	aMenu _ MenuMorph new defaultTarget: self.
+	aMenu := MenuMorph new defaultTarget: self.
 	aMenu add: 'change name...' translated action: #relabel.
 	aMenu addLine.
 	aMenu add: 'send to back' translated action: #sendToBack.

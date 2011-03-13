@@ -1,2 +1,0 @@
-neutral
-	self lips neutral

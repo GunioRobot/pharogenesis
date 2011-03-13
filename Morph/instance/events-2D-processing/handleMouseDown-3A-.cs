@@ -13,10 +13,6 @@ handleMouseDown: anEvent
 	anEvent hand newMouseFocus: self event: anEvent.
 	anEvent blueButtonChanged ifTrue:[^self blueButtonDown: anEvent].
 	
-	"this mouse down could be the start of a gesture, or the end of a gesture focus"
-	(self isGestureStart: anEvent)
-		ifTrue: [^ self gestureStart: anEvent].
-
 	self mouseDown: anEvent.
 
 	Preferences maintainHalos

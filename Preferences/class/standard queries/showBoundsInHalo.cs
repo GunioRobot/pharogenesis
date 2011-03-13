@@ -1,4 +1,5 @@
 showBoundsInHalo
 	^ self
 		valueOfFlag: #showBoundsInHalo
-		ifAbsent: [false]
+		ifAbsent: [false
+			"keep scanning"]

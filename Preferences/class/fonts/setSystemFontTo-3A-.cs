@@ -3,8 +3,8 @@ setSystemFontTo: aFont
 
 	| aStyle newDefaultStyle |
 	aFont ifNil: [^ self].
-	aStyle _ aFont textStyle ifNil: [^ self].
-	newDefaultStyle _ aStyle copy.
+	aStyle := aFont textStyle ifNil: [^ self].
+	newDefaultStyle := aStyle copy.
 	newDefaultStyle defaultFontIndex: (aStyle fontIndexOf: aFont).
 	TextConstants at: #DefaultTextStyle put: newDefaultStyle.
 	Flaps replaceToolsFlap.

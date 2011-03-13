@@ -1,18 +1,1 @@
-A BlockClosure is a block of Smalltalk code (enclosed within []) that may be executed later by sending #valueWithArguments: (or one of its variants) to it.  A block can take arguments by specifying the names of the arguments in the beginning of the block, as in "[:arg1 :arg2 | ...]", and can have its own local temps, as in "[:arg1 |  | temp1 temp2 | ...]".  The block may reference variables outside its scope directly by name.  It also may return from its home context by using ^, otherwise, the value of the last statement is returned to the sender of valueWithArguments:.
-
-Structure:
-
- method		CompiledMethod2
-			Contains the block's code.  It has its own method separate from its home method.
-
- environment  ClosureEnvironment | Object
-			The lexical environment the block was created in.  The environment only contains variables that were captured/reference by this block or other sister blocks. If only self and/or its instance variables are captured then the environment is simply the receiver object.
-
-
-Each non-inlined blocks has its own CompiledMethod. These block methods are held in the literals of the home method and sent the #createBlock: message at runtime to create BlockClosures. Home method temps captured by inner blocks are placed inside a ClosureEnvironment when the home method is started. This environment is supplied as the argument to each #createBlock:. When #value... is sent to a block closure, its method is executed in a new MethodContext with its closure environment as the receiver. The block method accesses its free variables (captured home temps) via this environment.
-
-Closure environments are nested mirroring the nesting of blocks. Each environment points to its parent environment (the top method environment has no parent). However, for efficiency, environments that have no captured temps are skipped (never created). For example, an environment's parent may actually be its grand-parent. There is no special parent variable in ClosureEnvironment, it is just another named variable such as 'self' or 'parent env' (special var with space so it can't be referenced by user code), or it may not be their at all.
-
-A block closure that returns to its home context does so by finding the thisContext sender that owns the top environment. A return inside a block forces the home environment to be created even if it has no captured temps. Each context holds its local environment (which holds its captured temps) in its #myEnv instance variable (previously the unused #receiverMap variable). Code that references captured temps goes through the #myEnv context variable.
-
-Block closures are totally separate from their home context. They are reentrant and each activation has its own block-local temps. So except for the thisContext psuedo-variable, contexts are now LIFO (assuming we get rid of old block contexts and recompile the whole image).
+I am a block closure for Eliot's closure implementation.  Not to be confused with the old BlockClosure.

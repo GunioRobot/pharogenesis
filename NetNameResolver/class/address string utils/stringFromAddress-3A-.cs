@@ -3,7 +3,7 @@ stringFromAddress: addr
 	"NetNameResolver stringFromAddress: NetNameResolver localHostAddress"
 
 	| s |
-	s _ WriteStream on: ''.
+	s := String new writeStream.
 	1 to: 3 do: [ :i | (addr at: i) printOn: s. s nextPut: $.].
 	(addr at: 4) printOn: s.
 	^ s contents

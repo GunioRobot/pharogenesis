@@ -1,0 +1,2 @@
+resetEventPollDelay
+	EventPollDelay := nil

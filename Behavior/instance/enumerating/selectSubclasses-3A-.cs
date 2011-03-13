@@ -6,7 +6,7 @@ selectSubclasses: aBlock
 	those for which aBlock evaluates true. Answer the resulting set."
 
 	| aSet |
-	aSet _ Set new.
+	aSet := Set new.
 	self allSubclasses do: 
 		[:aSubclass | 
 		(aBlock value: aSubclass) ifTrue: [aSet add: aSubclass]].

@@ -1,3 +1,3 @@
 stampHolder: newOne
 
-	stampHolder _ newOne
+	stampHolder := newOne

@@ -7,11 +7,11 @@ stackp: newStackp
 	<primitive: 76>
 	self error: 'stackp store failure'.
 "
-	stackp == nil ifTrue: [stackp _ 0].
+	stackp == nil ifTrue: [stackp := 0].
 	newStackp > stackp  'effectively checks that it is a number'
-		ifTrue: [oldStackp _ stackp.
-				stackp _ newStackp.
+		ifTrue: [oldStackp := stackp.
+				stackp := newStackp.
 				'Nil any newly accessible cells'
 				oldStackp + 1 to: stackp do: [:i | self at: i put: nil]]
-		ifFalse: [stackp _ newStackp]
+		ifFalse: [stackp := newStackp]
 "

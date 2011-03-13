@@ -1,2 +1,0 @@
-partRepresented
-	^self morphRepresented

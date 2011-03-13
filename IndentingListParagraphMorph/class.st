@@ -1,1 +1,0 @@
-IndentingListParagraphMorph class instanceVariableNames: ''

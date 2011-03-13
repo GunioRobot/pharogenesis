@@ -1,8 +1,7 @@
 searchUntranslated
 	| search |
 	search := UIManager default request: 'search for' translated initialAnswer: ''.
-	(search isNil
-			or: [search isEmpty])
+	search isEmptyOrNil
 		ifTrue: [""
 			self beep.
 			^ self].

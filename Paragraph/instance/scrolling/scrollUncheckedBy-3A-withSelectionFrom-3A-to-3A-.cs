@@ -2,13 +2,13 @@ scrollUncheckedBy: heightToMove withSelectionFrom: startBlock to: stopBlock
 	"Scroll by the given amount.  Copy bits where possible, display the rest.
 	If selection blocks are not nil, then select the newly visible text as well."
 	| savedClippingRectangle delta |
-	delta _ 0 @ (0 - heightToMove).
-	compositionRectangle _ compositionRectangle translateBy: delta.
+	delta := 0 @ (0 - heightToMove).
+	compositionRectangle := compositionRectangle translateBy: delta.
 	startBlock == nil ifFalse:
 		[startBlock moveBy: delta.
 		stopBlock moveBy: delta].
-	savedClippingRectangle _ clippingRectangle.
-	clippingRectangle _ clippingRectangle intersect: Display boundingBox.
+	savedClippingRectangle := clippingRectangle.
+	clippingRectangle := clippingRectangle intersect: Display boundingBox.
 	heightToMove abs >= clippingRectangle height
 	  ifTrue: 
 		["Entire visible region must be repainted"
@@ -21,7 +21,7 @@ scrollUncheckedBy: heightToMove withSelectionFrom: startBlock to: stopBlock
 			clippingBox: clippingRectangle
 			rule: Form over fillColor: nil.
 		"Set clippingRectangle to 'vacated' area for lines 'pulled' into view."
-		clippingRectangle _ heightToMove < 0
+		clippingRectangle := heightToMove < 0
 			ifTrue:  "On the top"
 				[clippingRectangle topLeft corner: clippingRectangle topRight + delta]
 			ifFalse:  "At the bottom"
@@ -31,4 +31,4 @@ scrollUncheckedBy: heightToMove withSelectionFrom: startBlock to: stopBlock
 	startBlock == nil ifFalse:
 		[self reverseFrom: startBlock to: stopBlock].
 	"And restore the clippingRectangle to its original value. "
-	clippingRectangle _ savedClippingRectangle
+	clippingRectangle := savedClippingRectangle

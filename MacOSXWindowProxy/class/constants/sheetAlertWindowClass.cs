@@ -1,0 +1,2 @@
+sheetAlertWindowClass
+	^15

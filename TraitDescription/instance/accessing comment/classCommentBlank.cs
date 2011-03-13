@@ -5,7 +5,7 @@ classCommentBlank
 	existingComment isEmpty
 		ifFalse: [^existingComment].
 
-	stream := WriteStream on: (String new: 100).
+	stream := (String new: 100) writeStream.
 	stream
 		nextPutAll: 'A';
 		nextPutAll: (self name first isVowel ifTrue: ['n '] ifFalse: [' ']);

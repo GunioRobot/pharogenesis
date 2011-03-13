@@ -2,7 +2,7 @@ example
 	"CustomMenu example"
 
 	| menu |
-	menu _ CustomMenu new.
+	menu := CustomMenu new.
 	menu add: 'apples' action: #apples.
 	menu add: 'oranges' action: #oranges.
 	menu addLine.

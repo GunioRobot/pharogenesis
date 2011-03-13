@@ -8,7 +8,7 @@ TextCollector allInstances do:
 
 TESTING: (Execute this text in a workspace)
 Do this first...
-	tt _ TranscriptStream new.
+	tt := TranscriptStream new.
 	tt openLabel: 'Transcript test 1'.
 Then this will open a second view -- ooooh...
 	tt openLabel: 'Transcript test 2'.

@@ -1,2 +1,0 @@
-codeLine
-	^$D

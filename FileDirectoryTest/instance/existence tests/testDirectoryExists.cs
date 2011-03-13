@@ -1,9 +1,9 @@
 testDirectoryExists
 
-	self assert: self myAssuredDirectory exists.
-	self should: [self myDirectory containingDirectory 
-					directoryExists: self myLocalDirectoryName].
+	self assert: self assuredDirectory exists.
+	self should: [self directory containingDirectory 
+					directoryExists: self directoryName].
 
-	self myDirectory containingDirectory deleteDirectory: self myLocalDirectoryName.
-	self shouldnt: [self myDirectory containingDirectory 
-						directoryExists: self myLocalDirectoryName]
+	self directory containingDirectory deleteDirectory: self directoryName.
+	self shouldnt: [self directory containingDirectory 
+						directoryExists: self directoryName]

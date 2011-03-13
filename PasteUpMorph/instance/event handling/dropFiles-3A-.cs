@@ -5,9 +5,9 @@ dropFiles: anEvent
 		- remember the resource location or (when in browser) even the actual file handle
 	"
 	| numFiles stream handler |
-	numFiles _ anEvent contents.
+	numFiles := anEvent contents.
 	1 to: numFiles do: [:i |
-		stream _ FileStream requestDropStream: i.
-		handler _ ExternalDropHandler lookupExternalDropHandler: stream.
+		stream := FileStream requestDropStream: i.
+		handler := ExternalDropHandler lookupExternalDropHandler: stream.
 		[handler ifNotNil: [handler handle: stream in: self dropEvent: anEvent]]
 			ensure: [stream close]].

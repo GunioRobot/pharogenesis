@@ -4,15 +4,14 @@ veryDeepCopyUsing: copier
 	** do not delete this method, even if it has no callers **"
 
 	| new refs newDep newModel |
-	new _ self veryDeepCopyWith: copier.
-	copier mapUniClasses.
+	new := self veryDeepCopyWith: copier.
 	copier references associationsDo: [:assoc | 
 		assoc value veryDeepFixupWith: copier].
 	"Fix dependents"
-	refs _ copier references.
+	refs := copier references.
 	DependentsFields associationsDo: [:pair |
 		pair value do: [:dep | 
-			(newDep _ refs at: dep ifAbsent: [nil]) ifNotNil: [
-				newModel _ refs at: pair key ifAbsent: [pair key].
+			(newDep := refs at: dep ifAbsent: [nil]) ifNotNil: [
+				newModel := refs at: pair key ifAbsent: [pair key].
 				newModel addDependent: newDep]]].
 	^ new

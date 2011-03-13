@@ -1,1 +1,0 @@
-EToyCommunicatorMorph class instanceVariableNames: ''

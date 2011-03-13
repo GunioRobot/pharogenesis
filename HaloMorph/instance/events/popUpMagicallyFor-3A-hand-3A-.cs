@@ -10,5 +10,5 @@ popUpMagicallyFor: aMorph hand: aHand
 		self magicAlpha: 0.0.
 		self startSteppingSelector: #fadeInInitially.
 	].
-	positionOffset _ aHand position - (aMorph point: aMorph position in: owner).
+	positionOffset := aHand position - (aMorph point: aMorph position in: owner).
 	self startStepping.

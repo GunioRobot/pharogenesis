@@ -1,0 +1,2 @@
+floatSideZoomGrowProc
+	^1999

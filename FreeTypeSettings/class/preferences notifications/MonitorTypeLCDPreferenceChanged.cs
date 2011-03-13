@@ -1,0 +1,4 @@
+MonitorTypeLCDPreferenceChanged
+	self current monitorTypeLCDPreferenceChanged
+		
+	

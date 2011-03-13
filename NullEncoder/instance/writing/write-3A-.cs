@@ -1,3 +1,3 @@
 write:anObject
-	filterSelector  ifNil:[filterSelector_self class filterSelector].
+	filterSelector  ifNil:[filterSelector:=self class filterSelector].
 	anObject ifNotNil: [anObject perform:filterSelector with:self].

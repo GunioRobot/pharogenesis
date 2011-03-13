@@ -1,3 +1,0 @@
-getObjectVarOf: var
-
-	^ var.

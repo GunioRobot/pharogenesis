@@ -1,7 +1,7 @@
 expand: aMorph to: level
 	| allChildren |
 	aMorph toggleExpandedState.
-	allChildren _ OrderedCollection new: 10.
+	allChildren := OrderedCollection new: 10.
 	aMorph recursiveAddTo: allChildren.
 	allChildren do: [:each | 
 		((each canExpand

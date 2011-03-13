@@ -5,5 +5,5 @@ mockVersionInfo: tag
 		message: self mockMessageString, '-', tag asString
 		date: Date today
 		time: Time now
-		author: Utilities authorInitials 
+		author: Author fullName
 		ancestors: #()

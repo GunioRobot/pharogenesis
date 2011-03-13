@@ -1,0 +1,1 @@
+isMenuItemEnabled: aMenuHandle item: aNumber

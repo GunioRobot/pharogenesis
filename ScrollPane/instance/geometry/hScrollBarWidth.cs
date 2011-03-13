@@ -4,9 +4,9 @@ hScrollBarWidth
 
 	| w |
 	
-	w _ bounds width - (2 * borderWidth).
+	w := bounds width - (2 * borderWidth).
 	
 	(retractableScrollBar not and: [self vIsScrollbarNeeded])
-		ifTrue: [w _ w - self scrollBarThickness ].
+		ifTrue: [w := w - self scrollBarThickness ].
 		
 	^w 

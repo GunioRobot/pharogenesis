@@ -4,7 +4,7 @@ firstPartIsDriveLetter
 	
 	| firstPart |
 	path isEmpty ifTrue: [^false].
-	firstPart _ path first.
+	firstPart := path first.
 	^firstPart size = 2 and: [
 		firstPart first isLetter
 			and: [firstPart last = $:]]

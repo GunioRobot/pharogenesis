@@ -2,7 +2,7 @@ floor
 	"Answer the integer nearest the receiver toward negative infinity."
 
 	| truncation |
-	truncation _ self truncated.
+	truncation := self truncated.
 	self >= 0 ifTrue: [^truncation].
 	self = truncation
 		ifTrue: [^truncation]

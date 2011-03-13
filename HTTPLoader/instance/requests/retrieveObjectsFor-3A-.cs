@@ -7,15 +7,15 @@ retrieveObjectsFor: aURL
 		asUrl loadRemoteObjects" 
 
 	| stream info data |
- 	data _ self retrieveContentsFor: aURL.
+ 	data := self retrieveContentsFor: aURL.
 	(data isString)
 		ifTrue: [^self error: data]
-		ifFalse: [data _ data content].
+		ifFalse: [data := data content].
 	(data beginsWith: 'error')
 		ifTrue: [^self error: data].
-	data _ data unzipped.
-	stream _ RWBinaryOrTextStream on: data.
+	data := data unzipped.
+	stream := RWBinaryOrTextStream on: data.
 	stream reset.
-	info _ stream fileInObjectAndCode.
+	info := stream fileInObjectAndCode.
 	stream close.
 	^info originalRoots

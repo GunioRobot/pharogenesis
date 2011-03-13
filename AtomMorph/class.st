@@ -1,1 +1,0 @@
-AtomMorph class instanceVariableNames: ''

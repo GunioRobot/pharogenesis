@@ -1,5 +1,5 @@
 update: what
-	what == nil ifTrue:[^self].
+	what ifNil: [^self].
 	what == getChildrenSelector ifTrue:[
 		self removeAllMorphs.
 		self addAllMorphs: (model perform: getChildrenSelector).

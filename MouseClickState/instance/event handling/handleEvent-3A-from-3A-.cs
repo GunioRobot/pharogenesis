@@ -3,14 +3,14 @@ handleEvent: evt from: aHand
 	Return true if the event should be processed by the sender, false if it shouldn't.
 	NOTE: This method heavily relies on getting *all* mouse button events."
 	| localEvt timedOut isDrag |
-	timedOut _ (evt timeStamp - firstClickTime) > dblClickTime.
-	localEvt _ evt transformedBy: (clickClient transformedFrom: aHand owner).
-	isDrag _ (localEvt position - firstClickDown position) r > dragThreshold.
+	timedOut := (evt timeStamp - firstClickTime) > dblClickTime.
+	localEvt := evt transformedBy: (clickClient transformedFrom: aHand owner).
+	isDrag := (localEvt position - firstClickDown position) r > dragThreshold.
 	clickState == #firstClickDown ifTrue: [
 		"Careful here - if we had a slow cycle we may have a timedOut mouseUp event"
 		(timedOut and:[localEvt isMouseUp not]) ifTrue:[
 			"timeout before #mouseUp -> keep waiting for drag if requested"
-			clickState _ #firstClickTimedOut.
+			clickState := #firstClickTimedOut.
 			dragSelector ifNil:[
 				aHand resetClickState.
 				self doubleClickTimeout; click "***"].
@@ -22,8 +22,8 @@ handleEvent: evt from: aHand
 				aHand resetClickState.
 				^true].
 			"Otherwise transfer to #firstClickUp"
-			firstClickUp _ evt copy.
-			clickState _ #firstClickUp.
+			firstClickUp := evt copy.
+			clickState := #firstClickUp.
 			"If timedOut or the client's not interested in dbl clicks get outta here"
 			self click.
 			aHand handleEvent: firstClickUp.
@@ -55,7 +55,7 @@ handleEvent: evt from: aHand
 			self doubleClickTimeout. "***"
 			^true].
 		localEvt isMouseDown ifTrue:["double click"
-			clickState _ #secondClickDown.
+			clickState := #secondClickDown.
 			^false]].
 
 	clickState == #secondClickDown ifTrue: [

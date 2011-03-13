@@ -6,11 +6,11 @@ drawOn: aCanvas
 	super drawOn: aCanvas.
 	self isEditingName ifTrue: [^self].
 
-	font _ self fontForName.
-	projectName _ self safeProjectName.
-	nameForm _ (StringMorph contents: projectName font: font) imageForm.
-	nameForm _ nameForm scaledToSize: (self extent - (4@2) min: nameForm extent).
-	rectForName _ self bottomLeft + 
+	font := self fontForName.
+	projectName := self safeProjectName.
+	nameForm := (StringMorph contents: projectName font: font) imageForm.
+	nameForm := nameForm scaledToSize: (self extent - (4@2) min: nameForm extent).
+	rectForName := self bottomLeft + 
 			(self width - nameForm width // 2 @ (nameForm height + 2) negated)
 				extent: nameForm extent.
 	rectForName topLeft eightNeighbors do: [ :pt |
@@ -20,9 +20,5 @@ drawOn: aCanvas
 			color: self colorAroundName.
 	].
 	aCanvas
-		stencil: nameForm 
-		at: rectForName topLeft 
-		color: Color black.
-
-
-	
+		drawImage: nameForm 
+		at: rectForName topLeft

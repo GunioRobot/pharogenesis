@@ -1,0 +1,1 @@
+SmallIdentityDictionaryTest class instanceVariableNames: ''

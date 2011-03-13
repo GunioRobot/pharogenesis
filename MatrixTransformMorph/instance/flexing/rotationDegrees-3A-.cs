@@ -1,6 +1,6 @@
 rotationDegrees: degrees
 	| last delta |
-	last _ self lastRotationDegrees.
-	delta _ degrees - last.
+	last := self lastRotationDegrees.
+	delta := degrees - last.
 	self rotateBy: delta.
 	self lastRotationDegrees: degrees.

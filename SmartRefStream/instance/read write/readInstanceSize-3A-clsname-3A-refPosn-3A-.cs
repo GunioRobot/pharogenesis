@@ -14,32 +14,32 @@ Three cases for files from older versions of the system:
 	self flag: #bobconv.	
 
 	self setCurrentReference: refPosn.  "remember pos before readDataFrom:size:"
-	newName _ renamed at: className ifAbsent: [className].
-	isMultiSymbol _ newName = #MultiSymbol or: [newName = #WideSymbol].
+	newName := renamed at: className ifAbsent: [className].
+	isMultiSymbol := newName = #MultiSymbol or: [newName = #WideSymbol].
 	"isMultiSymbol ifTrue: [self halt]."
-	newClass _ Smalltalk at: newName asSymbol.
+	newClass := Smalltalk at: newName asSymbol.
 	(steady includes: newClass) & (newName == className) ifTrue: [
-	 	anObject _ newClass isVariable "Create it here"
+	 	anObject := newClass isVariable "Create it here"
 			ifFalse: [newClass basicNew]
 			ifTrue: [newClass basicNew: instSize - (newClass instSize)].
 
-		anObject _ anObject readDataFrom: self size: instSize.
+		anObject := anObject readDataFrom: self size: instSize.
 		self setCurrentReference: refPosn.  "before returning to next"
 		isMultiSymbol ifTrue: [^ Symbol intern: anObject asString].
 		^ anObject].
-	oldInstVars _ structures at: className ifAbsent: [
+	oldInstVars := structures at: className ifAbsent: [
 			self error: 'class is not in structures list'].	"Missing in object file"
-	anObject _ newClass createFrom: self size: instSize version: oldInstVars.
+	anObject := newClass createFrom: self size: instSize version: oldInstVars.
 		"only create the instance"
 	self beginReference: anObject.
-	dict _ self catalogValues: oldInstVars size: instSize.
+	dict := self catalogValues: oldInstVars size: instSize.
 		"indexed vars as (1 -> val) etc."
 	dict at: #ClassName put: className.	"so conversion method can know it"
 
 	"Give each superclass a chance to make its changes"
 	self storeInstVarsIn: anObject from: dict.	"ones with the same names"
 
-	anObject _ self applyConversionMethodsTo: anObject className: className varMap: dict.
+	anObject := self applyConversionMethodsTo: anObject className: className varMap: dict.
 
 	self setCurrentReference: refPosn.  "before returning to next"
 	isMultiSymbol ifTrue: [^ Symbol intern: anObject asString].

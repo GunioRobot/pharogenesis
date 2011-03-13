@@ -1,15 +1,15 @@
 nextDelimited: terminator
 
 	| out ch save |
-	out _ WriteStream on: (String new: 1000).
+	out := (String new: 1000) writeStream.
 	self atEnd ifTrue: [^ ''].
-	save _ converter saveStateOf: self.
+	save := converter saveStateOf: self.
 
 	self next = terminator ifFalse: [
 		"absorb initial terminator"
 		converter restoreStateOf: self with: save.
 	].
-	[(ch _ self next) == nil] whileFalse: [
+	[(ch := self next) == nil] whileFalse: [
 		(ch = terminator) ifTrue: [
 			self peek = terminator ifTrue: [
 				self next.  "skip doubled terminator"

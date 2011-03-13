@@ -1,3 +1,0 @@
-isLooped
-
-	^ isLooped

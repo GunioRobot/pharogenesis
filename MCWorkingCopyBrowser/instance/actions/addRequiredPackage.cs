@@ -1,7 +1,9 @@
 addRequiredPackage
+	| chosen |
 	workingCopy ifNotNilDo:
 		[:wc |
-		self pickWorkingCopy ifNotNilDo:
-			[:required |
-			wc requirePackage: required package.
+		chosen := self pickWorkingCopySatisfying: 
+			[:ea | ea ~= wc and: [(wc requiredPackages includes: ea package) not]].
+		chosen ifNotNil:
+			[wc requirePackage: chosen package.
 			self workingCopyListChanged]]

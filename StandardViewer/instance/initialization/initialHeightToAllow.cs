@@ -1,2 +1,0 @@
-initialHeightToAllow
-	^ 300

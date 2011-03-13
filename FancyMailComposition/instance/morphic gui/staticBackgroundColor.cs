@@ -1,3 +1,0 @@
-staticBackgroundColor
-
-	^Color veryLightGray

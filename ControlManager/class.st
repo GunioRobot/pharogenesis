@@ -1,1 +1,0 @@
-ControlManager class instanceVariableNames: ''

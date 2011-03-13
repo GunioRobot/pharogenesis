@@ -1,2 +1,0 @@
-morph
-	^ self playerScripted costume

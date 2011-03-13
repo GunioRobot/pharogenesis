@@ -1,1 +1,0 @@
-recordLineSegmentBy: deltaPoint

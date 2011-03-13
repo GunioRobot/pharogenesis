@@ -1,2 +1,0 @@
-getUpDown
-	^ self getValueFromCostume: #upDown

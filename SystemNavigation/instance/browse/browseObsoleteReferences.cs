@@ -2,7 +2,7 @@ browseObsoleteReferences
 	"self new browseObsoleteReferences"
 
 	| references |
-	references _ OrderedCollection new.
+	references := OrderedCollection new.
 	(LookupKey allSubInstances select:
 		[:x | ((x value isKindOf: Behavior) and: ['AnOb*' match: x value name]) or:
 		['AnOb*' match: x value class name]]) 

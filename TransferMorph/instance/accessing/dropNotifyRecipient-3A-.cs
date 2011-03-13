@@ -1,2 +1,2 @@
 dropNotifyRecipient: anObject
-	dropNotifyRecipient _ anObject
+	dropNotifyRecipient := anObject

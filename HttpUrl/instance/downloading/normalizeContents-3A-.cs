@@ -5,7 +5,9 @@ normalizeContents: webDocument
 			content: 'error occured retrieving ', self asString, ': ', webDocument
 			url: (Url absoluteFromText: '')].
 	webDocument contentType = MIMEDocument defaultContentType ifTrue: [
-		^MIMEDocument contentType: (MIMEDocument guessTypeFromName: self path last) 
-			content: webDocument content url: webDocument url ].
+		^MIMEDocument 
+			contents: webDocument content 
+			mimeType: (MIMEDocument guessTypeFromName: self path last) 
+			uri: webDocument url ].
 
 	^webDocument

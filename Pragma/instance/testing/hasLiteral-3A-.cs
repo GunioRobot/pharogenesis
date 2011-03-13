@@ -1,3 +1,3 @@
 hasLiteral: aLiteral
-	^ self keyword == aLiteral 
-		or: [ self arguments hasLiteral: aLiteral ].
+	^keyword == aLiteral 
+	   or: [arguments hasLiteral: aLiteral]

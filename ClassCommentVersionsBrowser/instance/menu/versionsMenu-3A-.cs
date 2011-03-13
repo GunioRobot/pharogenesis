@@ -1,9 +1,8 @@
 versionsMenu: aMenu
 	"Fill aMenu with menu items appropriate to the receiver"
 
-	Smalltalk isMorphic ifTrue:
-		[aMenu title: 'versions'.
-		aMenu addStayUpItemSpecial].
+	aMenu title: 'versions'.
+	aMenu addStayUpItemSpecial.
 	^ aMenu addList: #(
 
 		('compare to current'		compareToCurrentVersion		'compare selected version to the current version')

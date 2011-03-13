@@ -1,2 +1,2 @@
 selector
-	^currentSelection ifNotNilDo: [ :cs | cs selector ]
+	^currentSelection ifNotNil: [ :cs | cs selector ]

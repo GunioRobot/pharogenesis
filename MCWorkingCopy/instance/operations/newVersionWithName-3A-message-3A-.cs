@@ -1,4 +1,5 @@
 newVersionWithName: nameString message: messageString
+	
 	| info deps |
 	info := ancestry infoWithName: nameString message: messageString.
 	ancestry := MCWorkingAncestry new addAncestor: info.
@@ -8,7 +9,7 @@ newVersionWithName: nameString message: messageString
 		[:ea | 
 		MCVersionDependency
 			package: ea
-			info: ea workingCopy currentVersionInfo].
+			info:  (ea workingCopy currentVersionInfoWithMessage: messageString) ].
 
 	^ MCVersion
 		package: package

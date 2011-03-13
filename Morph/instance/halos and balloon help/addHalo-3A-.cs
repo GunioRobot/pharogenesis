@@ -1,6 +1,6 @@
 addHalo: evt
 	| halo prospectiveHaloClass |
-	prospectiveHaloClass _ Smalltalk at: self haloClass ifAbsent: [HaloMorph].
-	halo _ prospectiveHaloClass new bounds: self worldBoundsForHalo.
+	prospectiveHaloClass := Smalltalk at: self haloClass ifAbsent: [HaloMorph].
+	halo := prospectiveHaloClass new bounds: self worldBoundsForHalo.
 	halo popUpFor: self event: evt.
 	^halo

@@ -1,11 +1,11 @@
 preserveStateDuring: aBlock
 	| state result |
-	state _ BalloonState new.
+	state := BalloonState new.
 	state transform: transform.
 	state colorTransform: colorTransform.
 	state aaLevel: self aaLevel.
-	result _ aBlock value: self.
-	transform _ state transform.
-	colorTransform _ state colorTransform.
+	result := aBlock value: self.
+	transform := state transform.
+	colorTransform := state colorTransform.
 	self aaLevel: state aaLevel.
 	^result

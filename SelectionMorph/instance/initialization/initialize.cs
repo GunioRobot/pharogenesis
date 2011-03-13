@@ -3,6 +3,6 @@ initialize
 	super initialize.
 	""
 	
-	selectedItems _ OrderedCollection new.
-	itemsAlreadySelected _ OrderedCollection new.
-	slippage _ 0 @ 0
+	selectedItems := OrderedCollection new.
+	itemsAlreadySelected := OrderedCollection new.
+	slippage := 0 @ 0

@@ -14,7 +14,6 @@ testAlphaCompositing2Simulated
 		bb := BitBlt toForm: f1.
 		bb sourceForm: f2.
 		bb combinationRule: Form blend.
-		bb copyBitsSimulated.
 		result := f1 colorAt: 0@0.
 		self assert: (result red - mixColor alpha) abs < eps.
 		self assert: result alpha = mixColor alpha.

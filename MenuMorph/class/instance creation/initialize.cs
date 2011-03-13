@@ -9,5 +9,4 @@ initialize
 			r: (215/255) asFloat 
 			g: (220/255) asFloat 
 			b: (232/255) asFloat).
-
-	CloseBoxImage _ nil
+	PushPinImage := nil

@@ -1,2 +1,0 @@
-isEnabled: aButton
-	^ true

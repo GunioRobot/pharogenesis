@@ -6,27 +6,27 @@ exchangeWith: prior
 	 Don't affect the paste buffer.  Undoer: itself; Redoer: Undoer."
 
 	| start stop before selection priorSelection delta altInterval |
-	start _ self startIndex.
-	stop _ self stopIndex - 1.
+	start := self startIndex.
+	stop := self stopIndex - 1.
 	((prior first <= prior last) | (start <= stop) "Something to exchange" and:
 			[self isDisjointFrom: prior])
 		ifTrue:
-			[before _ prior last < start.
-			selection _ self selection.
-			priorSelection _ paragraph text copyFrom: prior first to: prior last.
+			[before := prior last < start.
+			selection := self selection.
+			priorSelection := paragraph text copyFrom: prior first to: prior last.
 
-			delta _ before ifTrue: [0] ifFalse: [priorSelection size - selection size].
+			delta := before ifTrue: [0] ifFalse: [priorSelection size - selection size].
 			self zapSelectionWith: priorSelection.
 			self selectFrom: prior first + delta to: prior last + delta.
 
-			delta _ before ifTrue: [stop - prior last] ifFalse: [start - prior first].
+			delta := before ifTrue: [stop - prior last] ifFalse: [start - prior first].
 			self zapSelectionWith: selection.
-			altInterval _ prior first + delta to: prior last + delta.
+			altInterval := prior first + delta to: prior last + delta.
 			self undoer: #exchangeWith: with: altInterval.
 			"If one was a caret, make it otherInterval & leave the caret after the other"
 			prior first > prior last ifTrue: [self selectAt: UndoInterval last + 1].
-			otherInterval _ start > stop
+			otherInterval := start > stop
 				ifTrue: [self selectAt: altInterval last + 1. UndoInterval]
 				ifFalse: [altInterval]]
 		ifFalse:
-			[view flash]
+			[self flash]

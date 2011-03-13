@@ -1,6 +1,6 @@
 computeSlider
 	| r |
-	r _ self roomToMove.
+	r := self roomToMove.
 	self descending
 		ifFalse:
 			[slider position: (bounds isWide

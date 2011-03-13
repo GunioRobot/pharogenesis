@@ -1,11 +1,11 @@
 named: aSymbol uses: aTraitCompositionOrCollection category: aString env: anEnvironment
 	| trait oldTrait systemCategory |
-	systemCategory _ aString asSymbol.
-	trait _ anEnvironment
+	systemCategory := aString asSymbol.
+	trait := anEnvironment
 		at: aSymbol
 		ifAbsent: [nil].
-	oldTrait _ trait copy.
-	trait _ trait ifNil: [super new].
+	oldTrait := trait copy.
+	trait := trait ifNil: [super new].
 	
 	(trait isKindOf: Trait) ifFalse: [
 		^self error: trait name , ' is not a Trait'].

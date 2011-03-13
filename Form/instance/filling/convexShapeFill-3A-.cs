@@ -1,8 +1,8 @@
 convexShapeFill: aMask 
 	"Fill the interior of the outtermost outlined region in the receiver.  The outlined region must not be concave by more than 90 degrees.  Typically aMask is Color black, to produce a solid fill. then the resulting form is used with fillShape: to paint a solid color.  See also anyShapeFill"
 	| destForm tempForm |
-	destForm _ Form extent: self extent.  destForm fillBlack.
-	tempForm _ Form extent: self extent.
+	destForm := Form extent: self extent.  destForm fillBlack.
+	tempForm := Form extent: self extent.
 	(0@0) fourNeighbors do:
 		[:dir |  "Smear self in all 4 directions, and AND the result"
 		self displayOn: tempForm at: (0@0) - self offset.

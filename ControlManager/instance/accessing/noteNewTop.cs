@@ -1,2 +1,0 @@
-noteNewTop
-	newTopClicked _ true

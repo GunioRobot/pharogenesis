@@ -1,2 +1,0 @@
-hibernate 
-	"do nothing"

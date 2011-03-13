@@ -4,11 +4,11 @@ displayOn: aDisplayMedium at: aDisplayPoint clippingBox: clipRectangle rule: rul
 	DisplayObject|displayOn:at:clippingBox:rule:mask:."
 
 	| form1 rule |
-	form1 _ self form.
-	rule _ (ruleInteger = Form over and: [backColor isTransparent])
-				ifTrue: [form1 depth = 32 ifTrue: [rule _ 34] ifFalse: [Form paint]]
+	form1 := self form.
+	rule := (ruleInteger = Form over and: [backColor isTransparent])
+				ifTrue: [form1 depth = 32 ifTrue: [rule := 34] ifFalse: [Form paint]]
 				ifFalse: [ruleInteger].
-	form1 depth = 32 ifTrue: [rule _ 34].
+	form1 depth = 32 ifTrue: [rule := 34].
 	form1
 		displayOn: aDisplayMedium
 		at: aDisplayPoint + offset

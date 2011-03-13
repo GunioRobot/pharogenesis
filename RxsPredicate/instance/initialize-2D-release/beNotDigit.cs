@@ -1,0 +1,4 @@
+beNotDigit
+	self
+		beDigit;
+		negate

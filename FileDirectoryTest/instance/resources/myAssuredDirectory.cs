@@ -1,3 +1,0 @@
-myAssuredDirectory
-
-	^self myDirectory assureExistence

@@ -6,14 +6,14 @@ newBytes: numberOfBytes trailerBytes: trailer nArgs: nArgs nTemps: nTemps nStack
 		[^ self error: 'Cannot compile -- too many temporary variables'].	
 	nLits > 255 ifTrue:
 		[^ self error: 'Cannot compile -- too many literals variables'].	
-	largeBit _ (nTemps + stackSize) > SmallFrame ifTrue: [1] ifFalse: [0].
+	largeBit := (nTemps + stackSize) > SmallFrame ifTrue: [1] ifFalse: [0].
 
 	"For now the high bit of the primitive no. is in a high bit of the header"
-	primBits _ (primitiveIndex bitAnd: 16r1FF) + ((primitiveIndex bitAnd: 16r200) bitShift: 19).
+	primBits := (primitiveIndex bitAnd: 16r1FF) + ((primitiveIndex bitAnd: 16r200) bitShift: 19).
 
 	flagBit := flag ifTrue: [ 1 ] ifFalse: [ 0 ].
 
-	method _ self newMethod: numberOfBytes + trailer size
+	method := self newMethod: numberOfBytes + trailer size
 		header: (nArgs bitShift: 24) +
 				(nTemps bitShift: 18) +
 				(largeBit bitShift: 17) +

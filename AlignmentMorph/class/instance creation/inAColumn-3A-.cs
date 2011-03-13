@@ -2,7 +2,7 @@ inAColumn: aCollectionOfMorphs
 	"Answer a columnar AlignmentMorph holding the given collection"
 
 	| col |
-	col _ self newColumn
+	col := self newColumn
 		color: Color transparent;
 		vResizing: #shrinkWrap;
 		hResizing: #shrinkWrap;

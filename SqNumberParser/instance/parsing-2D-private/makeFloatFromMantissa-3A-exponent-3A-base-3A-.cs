@@ -4,5 +4,5 @@ makeFloatFromMantissa: m exponent: k base: aRadix
 	being implemented in Integer>>asFloat and Fraction>>asFloat"
 
 	^(k positive
-		ifTrue: [m * (aRadix raisedTo: k)]
-		ifFalse: [Fraction numerator: m denominator: (aRadix raisedTo: k negated)]) asFloat
+		ifTrue: [m * (aRadix raisedToInteger: k)]
+		ifFalse: [Fraction numerator: m denominator: (aRadix raisedToInteger: k negated)]) asFloat

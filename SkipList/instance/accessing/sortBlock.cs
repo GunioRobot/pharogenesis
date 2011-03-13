@@ -1,2 +1,0 @@
-sortBlock
-	^ sortBlock

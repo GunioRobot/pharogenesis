@@ -1,17 +1,17 @@
 testOldFileOrNoneNamed
 
 	| file |
-	file := self myAssuredDirectory oldFileOrNoneNamed: 'test.txt'.
+	file := self assuredDirectory oldFileOrNoneNamed: 'test.txt'.
 	[self assert: file isNil.
 	
 	"Reproduction of Mantis #1049"
-	(self myAssuredDirectory fileNamed: 'test.txt')
+	(self assuredDirectory fileNamed: 'test.txt')
 		nextPutAll: 'foo';
 		close.
 		
-	file := self myAssuredDirectory oldFileOrNoneNamed: 'test.txt'.
+	file := self assuredDirectory oldFileOrNoneNamed: 'test.txt'.
 	self assert: file notNil]
 		ensure: [
 			file ifNotNil: [file close].
-			self myAssuredDirectory deleteFileNamed: 'test.txt' ifAbsent: nil]
+			self assuredDirectory deleteFileNamed: 'test.txt' ifAbsent: nil]
 	

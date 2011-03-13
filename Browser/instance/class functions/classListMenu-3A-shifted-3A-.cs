@@ -12,7 +12,6 @@ classListMenu: aMenu shifted: shifted
 		('browse hierarchy (h)'		spawnHierarchy)
 		('browse protocol (p)'		browseFullProtocol)
 		-
-		('printOut'					printOutClass)
 		('fileOut'					fileOutClass)
 		-
 		('show hierarchy'			hierarchy)

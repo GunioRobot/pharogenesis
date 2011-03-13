@@ -1,7 +1,7 @@
 fancyPrototype
 
 	| t |
-	t _ self authoringPrototype.
+	t := self authoringPrototype.
 	t autoFit: false; extent: 150@75.
 	t borderWidth: 2; margins: 4@0; useRoundedCorners.	"Why not rounded?"
 	"fancy font, shadow, rounded"

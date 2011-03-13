@@ -13,11 +13,11 @@ changeStyle
 		ifTrue:[menuList addFirst: '<on>DefaultTextStyle']
 		ifFalse:[menuList addFirst: '<off>DefaultTextStyle'].
 	aList addFirst: 'DefaultTextStyle'.
-	reply := (SelectionMenu labelList: menuList lines: #(1) selections: aList) startUpWithCaption: nil at: ActiveHand position allowKeyboard: false.
+	reply := UIManager default chooseFrom: menuList  values: aList lines: #(1).
 	reply ifNotNil:
 		[(style := TextStyle named: reply) ifNil: [Beeper beep. ^ true].
 		paragraph textStyle: style copy.
 		paragraph composeAll.
 		self recomputeSelection.
-		self mvcRedisplay].
+		].
 	^ true

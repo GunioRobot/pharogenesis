@@ -1,2 +1,0 @@
-filterInstalled
-	^[:package | package isInstalled]

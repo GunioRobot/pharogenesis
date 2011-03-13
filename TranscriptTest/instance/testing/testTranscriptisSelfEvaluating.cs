@@ -1,0 +1,2 @@
+testTranscriptisSelfEvaluating
+	self assert: Transcript isSelfEvaluating

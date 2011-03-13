@@ -4,6 +4,6 @@ updateList
 	self listMorph listChanged.
 	self setScrollDeltas.
 	scrollBar setValue: 0.0.
-	index _ self getCurrentSelectionIndex.
+	index := self getCurrentSelectionIndex.
 	self resetPotentialDropRow.
 	self selectionIndex: index.

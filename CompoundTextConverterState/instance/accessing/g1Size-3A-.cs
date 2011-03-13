@@ -1,3 +1,3 @@
 g1Size: s
 
-	g1Size _ s.
+	g1Size := s.

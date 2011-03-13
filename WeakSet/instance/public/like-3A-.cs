@@ -4,5 +4,5 @@ like: anObject
 
 	| index element |
 
-	^(index _ self scanFor: anObject) = 0
-		ifFalse: [(element _ array at: index) == flag ifFalse: [element]]
+	^(index := self scanFor: anObject) = 0
+		ifFalse: [(element := array at: index) == flag ifFalse: [element]]

@@ -4,6 +4,6 @@ openPort: portNum andDo: aBlock
 	| result |
 	self primMIDIClosePort: portNum.
 	self primMIDIOpenPort: portNum readSemaIndex: 0 interfaceClockRate: 1000000.
-	result _ aBlock value.
+	result := aBlock value.
 	self primMIDIClosePort: portNum.
 	^ result

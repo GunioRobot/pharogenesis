@@ -1,3 +1,4 @@
 initialize
-	contents _ '' asText.
-	recent _ OrderedCollection new.
+	super initialize.
+	contents := '' asText.
+	recent := OrderedCollection new

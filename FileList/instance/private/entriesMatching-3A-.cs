@@ -4,8 +4,8 @@ entriesMatching: patternString
 	Each pattern can include a '*' or '#' as wildcards - see String>>match:"
 
 	| entries patterns |
-	entries _ directory entries.
-	patterns _ patternString findTokens: ';'.
+	entries := directory entries.
+	patterns := patternString findTokens: ';'.
 	(patterns anySatisfy: [:each | each = '*'])
 		ifTrue: [^ entries].
 	^ entries select: [:entry | 

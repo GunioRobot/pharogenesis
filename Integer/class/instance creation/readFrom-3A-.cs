@@ -1,4 +1,4 @@
-readFrom: aStream 
+readFrom: aStringOrStream 
 	"Answer a new Integer as described on the stream, aStream.
 	Embedded radix specifiers not allowed - use Number readFrom: for that."
-	^self readFrom: aStream base: 10
+	^self readFrom: aStringOrStream base: 10

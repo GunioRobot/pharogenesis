@@ -1,4 +1,4 @@
 makeOpen
-	closed _ false.
+	closed := false.
 	handles ifNotNil: [self removeHandles; addHandles].
 	self computeBounds

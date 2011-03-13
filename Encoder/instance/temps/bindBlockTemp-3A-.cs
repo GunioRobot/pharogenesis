@@ -3,7 +3,7 @@ bindBlockTemp: name
 
 	| node |
 
-	node _ scopeTable at: name ifAbsent: [^self reallyBind: name].
+	node := scopeTable at: name ifAbsent: [^self reallyBind: name].
 	node isTemp
 		ifTrue: [
 			node scope >= 0 ifTrue: [^ self notify: 'Name already used in this method'].

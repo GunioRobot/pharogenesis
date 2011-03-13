@@ -3,7 +3,7 @@ definition
 	after filing in for the first time.  Fake the superclass as Object, and repair the situation
 	during class initialisation."
 	| defn |
-	defn _ super definition.
+	defn := super definition.
 	^(defn beginsWith: 'nil ')
 		ifTrue: ['Object' , (defn copyFrom: 4 to: defn size)]
 		ifFalse: [defn].

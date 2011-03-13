@@ -1,3 +1,0 @@
-beginStats
-
-	DEBUG := OrderedCollection new

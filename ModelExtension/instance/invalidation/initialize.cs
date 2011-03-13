@@ -1,4 +1,5 @@
 initialize
+	super initialize.
 	lock := Semaphore forMutualExclusion.  
 	interests := IdentityBag new.
 	SystemChangeNotifier uniqueInstance 

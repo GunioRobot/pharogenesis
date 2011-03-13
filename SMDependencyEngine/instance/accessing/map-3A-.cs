@@ -1,2 +1,0 @@
-map: aMap
-	map := aMap

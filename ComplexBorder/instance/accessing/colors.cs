@@ -1,2 +1,2 @@
 colors
-	^colors ifNil:[colors _ self computeColors].
+	^colors ifNil:[colors := self computeColors].

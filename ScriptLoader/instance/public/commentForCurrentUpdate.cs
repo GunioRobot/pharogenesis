@@ -1,0 +1,2 @@
+commentForCurrentUpdate
+	^'Condense sources'

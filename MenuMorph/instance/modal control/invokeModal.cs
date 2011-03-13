@@ -5,10 +5,10 @@ invokeModal
 
 	"Example:
 	| menu sub entry |
-	menu _ MenuMorph new.
+	menu := MenuMorph new.
 	1 to: 3 do: [:i |
-		entry _ 'Line', i printString.
-		sub _ MenuMorph new.
+		entry := 'Line', i printString.
+		sub := MenuMorph new.
 		menu add: entry subMenu: sub.
 		#('Item A' 'Item B' 'Item C')  do:[:subEntry|
 			sub add: subEntry target: menu 

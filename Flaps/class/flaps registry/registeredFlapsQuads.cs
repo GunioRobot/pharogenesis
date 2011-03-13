@@ -1,7 +1,7 @@
 registeredFlapsQuads
 	"Answer the list of dynamic flaps quads"
 	
-	FlapsQuads ifNil: [FlapsQuads _ Dictionary new].
+	FlapsQuads ifNil: [FlapsQuads := Dictionary new].
 	^ FlapsQuads
 
-" FlapsQuads _ nil. "
+" FlapsQuads := nil. "

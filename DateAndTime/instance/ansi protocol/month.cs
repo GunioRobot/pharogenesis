@@ -1,4 +1,3 @@
 month
 
-	^ self 
-		dayMonthYearDo: [ :d :m :y | m ].
+	^ self dayMonthYearDo: [ :d :m :y | m ].

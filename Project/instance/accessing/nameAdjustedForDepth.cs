@@ -3,7 +3,7 @@ nameAdjustedForDepth
 	"	Project current nameAdjustedForDepth	"
 
 	| stream |
-	stream _ WriteStream on: String new.
+	stream := String new writeStream.
 	self depth timesRepeat: 
 	  [2 timesRepeat: [stream nextPut: $ ]].
 	stream nextPutAll: self name.

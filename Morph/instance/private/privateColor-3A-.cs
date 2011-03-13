@@ -1,3 +1,3 @@
 privateColor: aColor
 
-	color _ aColor.
+	color := aColor.

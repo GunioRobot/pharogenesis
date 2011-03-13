@@ -1,4 +1,3 @@
-updateDCValue: aNumber
-
-	priorDCValue _ priorDCValue + aNumber.
-	^priorDCValue
+updateDCValue: aNumber 
+	priorDCValue := priorDCValue + aNumber.
+	^ priorDCValue

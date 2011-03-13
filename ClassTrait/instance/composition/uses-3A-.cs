@@ -1,7 +1,7 @@
 uses: aTraitCompositionOrArray
 	| copyOfOldTrait newComposition |
-	copyOfOldTrait _ self copy.
-	newComposition _ aTraitCompositionOrArray asTraitComposition.
+	copyOfOldTrait := self copy.
+	newComposition := aTraitCompositionOrArray asTraitComposition.
 	self assertConsistantCompositionsForNew: newComposition.
 	self setTraitComposition: newComposition.
 	SystemChangeNotifier uniqueInstance

@@ -1,8 +1,8 @@
 saveImageInFileNamed: aString
 	| fullImageName |
-	fullImageName _ (FileDirectory default fullNameFor: aString).
+	fullImageName := (FileDirectory default fullNameFor: aString).
 	(FileDirectory default directoryNamed:(FileDirectory dirPathFor: fullImageName )) assureExistence.
-	self
+	^self
 		changeImageNameTo: fullImageName;
 		closeSourceFiles;
 		openSourceFiles;  "so SNAPSHOT appears in new changes file"

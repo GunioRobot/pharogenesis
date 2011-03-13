@@ -1,9 +1,9 @@
 getArgumentNames
 	| argumentNamesCollection names defaultName |
-	defaultName _ 'arg'.
-	argumentNamesCollection _ self locatedMethods
+	defaultName := 'arg'.
+	argumentNamesCollection := self locatedMethods
 		collect: [:each | each argumentNames ].
-	names _ Array new: argumentNamesCollection anyOne size.
+	names := Array new: argumentNamesCollection anyOne size.
 	argumentNamesCollection do: [:collection |
 		1 to: names size do: [:index |
 			(names at: index) isNil

@@ -1,4 +1,4 @@
 beAllFont: aFont
 
-	textStyle _ TextStyle fontArray: (Array with: aFont).
+	textStyle := TextStyle fontArray: (Array with: aFont).
 	self releaseCachedState; changed

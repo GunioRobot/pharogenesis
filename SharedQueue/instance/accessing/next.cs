@@ -9,9 +9,9 @@ next
 		critical: [readPosition = writePosition
 					ifTrue: 
 						[self error: 'Error in SharedQueue synchronization'.
-						 value _ nil]
+						 value := nil]
 					ifFalse: 
-						[value _ contentsArray at: readPosition.
+						[value := contentsArray at: readPosition.
 						 contentsArray at: readPosition put: nil.
-						 readPosition _ readPosition + 1]].
+						 readPosition := readPosition + 1]].
 	^value

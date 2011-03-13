@@ -1,11 +1,12 @@
 inspectAt: aPoint event: evt
-	| menu morphs target |
-	menu _ CustomMenu new.
-	morphs _ self morphsAt: aPoint.
-	(morphs includes: self) ifFalse:[morphs _ morphs copyWith: self].
-	morphs do: [:m | 
-		menu add: (m knownName ifNil:[m class name asString]) action: m].
-	target _ menu startUpWithCaption: ('inspect whom?
-(deepest at top)').
+	|  morphs target |
+	morphs := self morphsAt: aPoint.
+	(morphs includes: self) ifFalse:[morphs := morphs copyWith: self].
+	target := UIManager default
+				chooseFrom: (morphs
+						collect: [:t | t knownName
+								ifNil: [t class name asString]])
+				values: morphs
+				title: ('inspect whom? (deepest at top)' translated).
 	target ifNil:[^self].
 	target inspectInMorphic: evt

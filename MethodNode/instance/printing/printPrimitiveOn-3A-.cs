@@ -1,28 +1,26 @@
-printPrimitiveOn: aStream 
+printPrimitiveOn: aStream
 	"Print the primitive on aStream"
-	| primIndex primDecl |
-	primIndex _ primitive.
-	primIndex = 0
-		ifTrue: [^ self].
-	primIndex = 120
-		ifTrue: ["External call spec"
-			^ aStream print: encoder literals first].
+	| primDecl |
+	primitive = 0 ifTrue:
+		[^self].
+	primitive = 120 ifTrue: "External call spec"
+		[^aStream print: encoder literals first].
 	aStream nextPutAll: '<primitive: '.
-	primIndex = 117
-		ifTrue: [primDecl _ encoder literals at: 1.
-			aStream nextPut: $';
-				
-				nextPutAll: (primDecl at: 2);
-				 nextPut: $'.
-			(primDecl at: 1) notNil
-				ifTrue: [aStream nextPutAll: ' module:';
-						 nextPut: $';
-						
-						nextPutAll: (primDecl at: 1);
-						 nextPut: $']]
-		ifFalse: [aStream print: primIndex].
+	primitive = 117
+		ifTrue:
+			[primDecl := encoder literals at: 1.
+			 (primDecl at: 2) asString printOn: aStream.
+			 (primDecl at: 1) ifNotNil:
+				[:moduleName|
+				aStream nextPutAll:' module: '.
+				moduleName asString printOn: aStream]]
+		ifFalse:
+			[aStream print: primitive].
+	self primitiveErrorVariableName ifNotNil:
+		[:primitiveErrorVariableName|
+		 aStream nextPutAll: ' error: '; nextPutAll: primitiveErrorVariableName].
 	aStream nextPut: $>.
 	Smalltalk at: #Interpreter ifPresent:[:cls|
-		aStream nextPutAll: ' "'
-				, ((cls classPool at: #PrimitiveTable)
-						at: primIndex + 1) , '" '].
+		aStream nextPutAll: ' "',
+							((cls classPool at: #PrimitiveTable) at: primitive + 1),
+							'" ']

@@ -9,7 +9,7 @@ renameCategory
 	newName := self
 		request: 'Please type new category name'
 		initialAnswer: oldName.
-	newName isEmpty
+	newName isEmptyOrNil
 		ifTrue: [^ self]
 		ifFalse: [newName := newName asSymbol].
 	newName = oldName ifTrue: [^ self].

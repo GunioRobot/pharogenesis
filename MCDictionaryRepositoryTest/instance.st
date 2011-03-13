@@ -3,4 +3,4 @@ MCRepositoryTest
 	instanceVariableNames: 'dict'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Monticello-Tests'
+	category: 'Tests-Monticello'

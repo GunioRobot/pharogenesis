@@ -1,5 +1,4 @@
-end
-
+end 
 
 	^ self duration asNanoSeconds = 0
 		ifTrue: [ self start ]

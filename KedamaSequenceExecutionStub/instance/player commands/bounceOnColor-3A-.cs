@@ -1,3 +1,0 @@
-bounceOnColor: aPlayer
-
-	^ false.

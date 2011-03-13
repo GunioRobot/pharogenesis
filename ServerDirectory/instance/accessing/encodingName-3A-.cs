@@ -1,2 +1,2 @@
 encodingName: aName
-	encodingName _ aName
+	encodingName := aName

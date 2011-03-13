@@ -1,12 +1,12 @@
 addVolumesAndPatternPanesTo: window at: upperFraction plus: offset forFileList: aFileList 
 	| row patternHeight volumeListMorph patternMorph divider dividerDelta |
-	row _ AlignmentMorph newColumn hResizing: #spaceFill;
+	row := AlignmentMorph newColumn hResizing: #spaceFill;
 				 vResizing: #spaceFill;
 				 layoutInset: 0;
 				 borderWidth: 0;
 				 layoutPolicy: ProportionalLayout new.
-	patternHeight _ 25.
-	volumeListMorph _ (PluggableListMorph
+	patternHeight := 25.
+	volumeListMorph := (PluggableListMorph
 				on: aFileList
 				list: #volumeList
 				selected: #volumeListIndex
@@ -14,21 +14,21 @@ addVolumesAndPatternPanesTo: window at: upperFraction plus: offset forFileList: 
 				menu: #volumeMenu:)
 				autoDeselect: false.
 	volumeListMorph enableDrag: false; enableDrop: true.
-	patternMorph _ PluggableTextMorph
+	patternMorph := PluggableTextMorph
 				on: aFileList
 				text: #pattern
 				accept: #pattern:.
 	patternMorph acceptOnCR: true.
 	patternMorph hideScrollBarsIndefinitely.
-	divider _ BorderedSubpaneDividerMorph horizontal.
-	dividerDelta _ 0.
+	divider := BorderedSubpaneDividerMorph horizontal.
+	dividerDelta := 0.
 	divider extent: 4 @ 4;
 			color: Color transparent;
 			borderColor: #raised;
 			borderWidth: 2.
 		volumeListMorph borderColor: Color transparent.
 		patternMorph borderColor: Color transparent.
-		dividerDelta _ 3.
+		dividerDelta := 3.
 	row
 		addMorph: (volumeListMorph autoDeselect: false)
 		fullFrame: (LayoutFrame

@@ -1,12 +1,12 @@
 drawTabOn: aCanvas
 	| top myColor cornerRadius myArcLengths myBounds |
-	cornerRadius _ self cornerRadius.
-	myBounds _ self bounds.
+	cornerRadius := self cornerRadius.
+	myBounds := self bounds.
 	self active
-		ifTrue: [ top _ myBounds top.
-			myColor _ self color ]
-		ifFalse: [ top _ myBounds top + self topInactiveGap.
-			myColor _ self color whiter whiter ].
+		ifTrue: [ top := myBounds top.
+			myColor := self color ]
+		ifFalse: [ top := myBounds top + self topInactiveGap.
+			myColor := self color whiter whiter ].
 	aCanvas fillRectangle:
 		((myBounds left + cornerRadius)
 				@ (top + cornerRadius)
@@ -29,9 +29,9 @@ drawTabOn: aCanvas
 				@ (top + (self cornerRadius * 2)))
 		color: myColor.
 
-	myArcLengths _ self arcLengths.
+	myArcLengths := self arcLengths.
 	1 to: myArcLengths size do: [ :i | | length |
-		length _ myArcLengths at: i.
+		length := myArcLengths at: i.
 		aCanvas line: (myBounds left + cornerRadius - i) @ (myBounds bottom - 1 )
 			to: (myBounds left + cornerRadius - i) @ (myBounds bottom - length - 1)
 			color: myColor.

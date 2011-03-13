@@ -3,8 +3,8 @@ installInClass: aClass selector: aSymbol
 	The receiver will remember this for unstalling it later"
 
 	| breakMethod |
-	breakMethod _ self compilePrototype: aSymbol in: aClass.
+	breakMethod := self compilePrototype: aSymbol in: aClass.
 	breakMethod isNil
 		ifTrue: [^ nil].
 	self installed at: breakMethod put: aClass >> aSymbol. "old method"
-	aClass class basicAddSelector: aSymbol withMethod: breakMethod.
+	aClass basicAddSelector: aSymbol withMethod: breakMethod.

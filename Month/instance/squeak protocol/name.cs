@@ -1,4 +1,3 @@
-name
+name 
 
-
-	^ self monthName
+	^ self monthName 

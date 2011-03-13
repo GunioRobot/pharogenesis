@@ -1,6 +1,6 @@
 handleBoundsChange: aBlock
 	| oldBounds newBounds |
-	oldBounds _ bounds.
+	oldBounds := bounds.
 	aBlock value.
-	newBounds _ bounds.
+	newBounds := bounds.
 	self boundsChangedFrom: oldBounds to: newBounds.

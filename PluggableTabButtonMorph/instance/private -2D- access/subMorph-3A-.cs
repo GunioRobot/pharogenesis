@@ -1,2 +1,2 @@
 subMorph: aMorph
-	subMorph _ aMorph
+	subMorph := aMorph

@@ -1,0 +1,1 @@
+SystemEventManager class instanceVariableNames: ''

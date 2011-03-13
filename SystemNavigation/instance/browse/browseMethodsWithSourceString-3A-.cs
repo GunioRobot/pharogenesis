@@ -3,7 +3,7 @@ browseMethodsWithSourceString: aString
 	"Launch a browser on all methods whose source code contains aString as 
 	a substring."
 	| caseSensitive suffix |
-	suffix _ (caseSensitive _ Sensor shiftPressed)
+	suffix := (caseSensitive := Sensor shiftPressed)
 				ifTrue: [' (case-sensitive)']
 				ifFalse: [' (use shift for case-sensitive)'].
 	^ self

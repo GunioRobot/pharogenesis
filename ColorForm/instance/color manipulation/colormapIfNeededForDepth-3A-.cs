@@ -8,11 +8,11 @@ colormapIfNeededForDepth: destDepth
 
 	(destDepth = cachedDepth and:[cachedColormap isColormap not]) 
 		ifTrue: [^ cachedColormap].
-	newMap _ Bitmap new: colors size.
+	newMap := Bitmap new: colors size.
 	1 to: colors size do: [:i |
 		newMap
 			at: i
 			put: ((colors at: i) pixelValueForDepth: destDepth)].
 
-	cachedDepth _ destDepth.
-	^ cachedColormap _ newMap.
+	cachedDepth := destDepth.
+	^ cachedColormap := newMap.

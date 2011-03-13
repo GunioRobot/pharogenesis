@@ -1,17 +1,21 @@
 itemsIcons
-	"answer a collection of associations wordings -> icon to  
-	decorate  
-	the menus all over the image"
+	"answer a collection of associations wordings -> icon
+	to decorate the menus all over the image"
+	
 	| icons |
 	icons := OrderedCollection new.
-	" 
-	world menu"
+	
+	"world menu"
 	icons add: #('previous project' ) -> self smallBackIcon.
 	icons add: #('select' ) -> self smallSelectIcon.
 	icons add: #('jump to project...' ) -> self smallForwardIcon.
+	icons add: #('Tools...' ) -> self smallOpenIcon.
+	icons add: #('System...' ) -> self smallConfigurationIcon.
+	icons add: #('Software update' ) -> self smallUpdateIcon.
+	icons add: #('About...' ) -> self smallLanguageIcon.
 	icons add: #('open...' ) -> self smallOpenIcon.
-	icons add: #('appearance...' ) -> self smallConfigurationIcon.
-	icons add: #('help...' ) -> self smallHelpIcon.
+	icons add: #('preferences...' ) -> self smallConfigurationIcon.
+	icons add: #('Keyboard shortcuts...' ) -> self smallHelpIcon.
 	icons add: #('windows...' ) -> self smallWindowIcon.
 	icons add: #('print PS to file...' ) -> self smallPrintIcon.
 	icons add: #('debug...' ) -> self smallDebugIcon.
@@ -25,7 +29,9 @@ itemsIcons
 	icons add: #('do it (d)' ) -> self smallDoItIcon.
 	icons add: #('inspect it (i)' 'explore it (I)' 'inspect world' 'explore world' 'inspect model' 'inspect morph' 'explore morph' 'inspect owner chain' 'explore' 'inspect' 'explore (I)' 'inspect (i)' 'basic inspect' ) -> self smallInspectItIcon.
 	icons add: #('print it (p)' ) -> self smallPrintIcon.
-	icons add: #('debug it' ) -> self smallDebugIcon.
+	icons add: #('debug it (D)' ) -> self smallDebugIcon.
+	icons add: #('watch it' ) -> self blankIcon.
+	icons add: #('profile it' ) -> self blankIcon.
 	""
 	icons add: #('copy (c)' 'copy to paste buffer' 'copy text' ) -> self smallCopyIcon.
 	icons add: #('paste (v)' 'paste...' ) -> self smallPasteIcon.
@@ -37,7 +43,7 @@ itemsIcons
 	icons add: #('do again (j)' ) -> self smallRedoIcon.
 	icons add: #('undo (z)' ) -> self smallUndoIcon.
 	""
-	icons add: #('find...(f)' 'find again (g)' 'find class... (f)' 'find method...' ) -> self smallFindIcon.
+	icons add: #('find...(f)' 'find again (g)' 'find class... (f)' 'find method...' 'extended search...') -> self smallFindIcon.
 	""
 	icons add: #('remove' 'remove class (x)' 'delete method from changeset (d)' 'remove method from system (x)' 'delete class from change set (d)' 'remove class from system (x)' 'destroy change set (X)' ) -> self smallDeleteIcon.
 	icons add: #('add item...' 'new category...' 'new change set... (n)' ) -> self smallNewIcon.

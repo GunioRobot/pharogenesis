@@ -4,8 +4,8 @@ justifiedTabDeltaFor: spaceIndex
 
 	| pad extraPad |
 	internalSpaces = 0 ifTrue: [^0].
-	pad _ paddingWidth // internalSpaces.
-	extraPad _ paddingWidth \\ internalSpaces.
+	pad := paddingWidth // internalSpaces.
+	extraPad := paddingWidth \\ internalSpaces.
 	spaceIndex <= extraPad
 		ifTrue: [^spaceIndex * (pad + 1)]
 		ifFalse: [^extraPad * (pad + 1) + (spaceIndex - extraPad * pad)]

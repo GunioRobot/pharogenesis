@@ -1,2 +1,2 @@
 removePreamble
-	preamble _ nil
+	preamble := nil

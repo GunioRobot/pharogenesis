@@ -1,3 +1,3 @@
 openDataSocket: remoteHostAddress port: dataPort
-	dataSocket _ Socket new.
+	dataSocket := Socket new.
 	dataSocket connectTo: remoteHostAddress port: dataPort

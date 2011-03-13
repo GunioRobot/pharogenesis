@@ -8,6 +8,6 @@ initialize
 		layoutInset: 3;
 		wrapCentering: #center;
 		cellPositioning: #leftCenter.
-	accepted _ false.
-	copy _ false.
+	accepted := false.
+	copy := false.
 	self on: #keyStroke send: #keyStroke: to: self

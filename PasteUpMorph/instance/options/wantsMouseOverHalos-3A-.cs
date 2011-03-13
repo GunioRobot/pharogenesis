@@ -1,2 +1,2 @@
 wantsMouseOverHalos: aBoolean
-	wantsMouseOverHalos _ aBoolean
+	wantsMouseOverHalos := aBoolean

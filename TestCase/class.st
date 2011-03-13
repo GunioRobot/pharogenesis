@@ -1,1 +1,1 @@
-TestCase class instanceVariableNames: ''
+TestCase class instanceVariableNames: 'history'

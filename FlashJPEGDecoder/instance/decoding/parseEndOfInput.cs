@@ -1,2 +1,0 @@
-parseEndOfInput
-	eoiSeen := true.

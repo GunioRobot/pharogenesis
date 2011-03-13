@@ -1,2 +1,0 @@
-localWriteSelector
-	^ localWriteSelector

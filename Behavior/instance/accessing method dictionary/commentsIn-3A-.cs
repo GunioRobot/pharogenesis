@@ -7,7 +7,7 @@ commentsIn: sourceString
 	sourceString size == 0 ifTrue: [^ someComments].
 	aPos:=1.
 	nextQuotePos:= 0.
-	[commentStart _ sourceString findString: '"' startingAt: aPos.
+	[commentStart := sourceString findString: '"' startingAt: aPos.
 	nextQuotePos:= self nextQuotePosIn: sourceString startingFrom: commentStart.
 	(commentStart ~= 0 and: [nextQuotePos >commentStart])] whileTrue: [
 		commentStart ~= nextQuotePos ifTrue: [

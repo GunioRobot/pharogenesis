@@ -1,2 +1,0 @@
-colorSwatch
-	^ colorSwatch

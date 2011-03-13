@@ -8,7 +8,7 @@ schemeNameForString: aString
 	"Url schemeNameForString: '/etc/testing:1.2.3'"
 
 	| index schemeName |
-	index _ aString indexOf: $: ifAbsent: [^ nil].
-	schemeName _ aString first: index - 1.
+	index := aString indexOf: $: ifAbsent: [^ nil].
+	schemeName := aString first: index - 1.
 	(schemeName allSatisfy: [:each | each isLetter]) ifFalse: [^ nil].
 	^ schemeName asLowercase

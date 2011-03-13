@@ -6,6 +6,6 @@ destroy
 		Smalltalk unregisterExternalObject: semaphore.
 		Smalltalk unregisterExternalObject: readSemaphore.
 		Smalltalk unregisterExternalObject: writeSemaphore.
-		socketHandle _ nil.
-		readSemaphore _ writeSemaphore _ semaphore _ nil.
+		socketHandle := nil.
+		readSemaphore := writeSemaphore := semaphore := nil.
 		self unregister].

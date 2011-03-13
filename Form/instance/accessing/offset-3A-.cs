@@ -1,3 +1,3 @@
 offset: aPoint
 
-	offset _ aPoint
+	offset := aPoint

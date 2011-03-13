@@ -1,3 +1,3 @@
 lastUpdateString
 	"SmalltalkImage current lastUpdateString"
-	^'latest update: #' translated, SystemVersion current highestUpdate printString
+	^'Latest update: #' translated, SystemVersion current highestUpdate printString

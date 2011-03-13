@@ -3,7 +3,7 @@ mapColor: oldColor to: newColor
 	"Warnings: This method modifies the receiver. It may lose some color accuracy on 32-bit Forms, since the transformation uses a color map with only 15-bit resolution."
 
 	| map |
-	map _ (Color cachedColormapFrom: self depth to: self depth) copy.
+	map := (Color cachedColormapFrom: self depth to: self depth) copy.
 	map at: (oldColor indexInMap: map) put: (newColor pixelWordForDepth: self depth).
 	(BitBlt current toForm: self)
 		sourceForm: self;

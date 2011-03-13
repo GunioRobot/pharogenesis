@@ -1,2 +1,0 @@
-extraScrollRange
-	^ bounds height

@@ -1,5 +1,5 @@
 cleanUpWorld
-	(SelectionMenu confirm:
+	(self confirm:
 'This will remove all windows except those
 containing unsubmitted text edits, and will
 also remove all non-window morphs (other
@@ -9,5 +9,5 @@ sure you want to do this?' translated)
 
 	myWorld allNonFlapRelatedSubmorphs do:
 		[:m | m delete].
-	(SystemWindow windowsIn: myWorld satisfying: [:w | w model canDiscardEdits])
+	(myWorld windowsSatisfying: [:w | w model canDiscardEdits])
 		do: [:w | w delete]

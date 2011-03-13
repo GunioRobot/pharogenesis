@@ -3,4 +3,4 @@ A StringMorph that constantly tries to show the current data from the target obj
 floatPrecision = 1. to round to integer.
 floatPrecision = .1 to round to 1 decimal place, etc.
 
-Even when ((target == nil) or: [getSelector == nil]), the user would still like to edit the string with shift-click.
+Even when ((target isNil) or: [getSelector == nil]), the user would still like to edit the string with shift-click.

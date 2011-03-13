@@ -9,10 +9,9 @@ loadForLocaleIsoString: localeString fromGzippedMimeLiteral: mimeString
 	rbStream reset.
 	localeID := LocaleID isoString: localeString.
 	currentPlatform := Locale currentPlatform.
-	[Locale
-		currentPlatform: (Locale localeID: localeID).
-	stream := ReadStream on: rbStream contents]
-		ensure: [Locale currentPlatform: currentPlatform].
+	
+	[ Locale currentPlatform: (Locale localeID: localeID).
+	stream := rbStream contents readStream ] ensure: [ Locale currentPlatform: currentPlatform ].
 	translator := self localeID: localeID.
 	translator loadFromStream: stream.
 	LanguageEnvironment resetKnownEnvironments

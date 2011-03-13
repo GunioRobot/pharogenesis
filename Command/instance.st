@@ -4,4 +4,4 @@ Object
 		'phase cmdWording undoTarget undoSelector undoArguments redoTarget redoSelector redoArguments parameters'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'MorphicExtras-Undo'
+	category: 'Morphic-Undo'

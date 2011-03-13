@@ -1,2 +1,0 @@
-hash
-	^ smCache hash

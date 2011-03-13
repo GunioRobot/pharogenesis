@@ -3,7 +3,7 @@ setDismissColor: evt with: dismissHandle
 
 	| colorToUse |
 	evt hand obtainHalo: self.
-	colorToUse _  (dismissHandle containsPoint: evt cursorPoint)
+	colorToUse :=  (dismissHandle containsPoint: evt cursorPoint)
 		ifFalse:
 			[Color red muchLighter]
 		ifTrue:

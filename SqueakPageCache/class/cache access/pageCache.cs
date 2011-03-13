@@ -1,3 +1,0 @@
-pageCache
-
-	^ PageCache

@@ -1,1 +1,0 @@
-StickyPadMorph class instanceVariableNames: ''

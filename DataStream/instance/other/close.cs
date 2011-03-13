@@ -4,7 +4,7 @@ close
 	| bytes |
 	byteStream closed 
 		ifFalse: [
-			bytes _ byteStream position.
+			bytes := byteStream position.
 			byteStream close]
-		ifTrue: [bytes _ 'unknown'].
+		ifTrue: [bytes := 'unknown'].
 	^ bytes

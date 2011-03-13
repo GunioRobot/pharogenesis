@@ -2,7 +2,7 @@ arrowPrototype
 	"Answer an instance of the receiver that will serve as a prototypical arrow"
 
 	| aa |
-	aa _ self new. 
+	aa := self new. 
 	aa vertices: (Array with: 0@0 with: 40@40) 
 		color: Color black 
 		borderWidth: 2 

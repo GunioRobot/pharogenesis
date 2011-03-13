@@ -3,9 +3,6 @@ context: aContext isolationHead: isolationHead
 
 	^ self new
 		process: Processor activeProcess
-		controller:
-			((Smalltalk isMorphic not and: [ScheduledControllers inActiveControllerProcess])
-				ifTrue: [ScheduledControllers activeController]
-				ifFalse: [nil])
+		controller: nil
 		context: aContext
 		isolationHead: isolationHead

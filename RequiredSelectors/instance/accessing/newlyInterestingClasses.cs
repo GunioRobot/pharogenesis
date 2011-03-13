@@ -1,3 +1,3 @@
 newlyInterestingClasses
-	newlyInterestingClasses ifNil: [newlyInterestingClasses _ IdentitySet new].
+	newlyInterestingClasses ifNil: [newlyInterestingClasses := IdentitySet new].
 	^newlyInterestingClasses

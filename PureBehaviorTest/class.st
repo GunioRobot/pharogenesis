@@ -1,1 +1,0 @@
-PureBehaviorTest class instanceVariableNames: ''

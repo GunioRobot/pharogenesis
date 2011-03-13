@@ -2,8 +2,8 @@ finger: userName
 	"SocketStream finger: 'stp'"
 
 	| addr s |
-	addr _ NetNameResolver promptUserForHostAddress.
-	s _ SocketStream openConnectionToHost: addr port: 79.  "finger port number"
+	addr := NetNameResolver promptUserForHostAddress.
+	s := SocketStream openConnectionToHost: addr port: 79.  "finger port number"
 	Transcript show: '---------- Connecting ----------'; cr.
 	s sendCommand: userName.
 	Transcript show: s getLine.

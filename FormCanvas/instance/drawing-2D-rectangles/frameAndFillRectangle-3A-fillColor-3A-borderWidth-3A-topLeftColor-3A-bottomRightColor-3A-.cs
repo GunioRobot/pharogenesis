@@ -10,9 +10,9 @@ frameAndFillRectangle: r fillColor: fillColor borderWidth: borderWidth topLeftCo
 	"Now use slow code for bevelled bottom and right borders"
 	bottomRightColor isTransparent ifFalse: [
 		borderWidth isNumber
-			ifTrue: [w _ h _ borderWidth]
-			ifFalse: [w _ borderWidth x.   h _ borderWidth y].
-		rect _ r translateBy: origin.
+			ifTrue: [w := h := borderWidth]
+			ifFalse: [w := borderWidth x.   h := borderWidth y].
+		rect := r translateBy: origin.
 		self setFillColor: bottomRightColor.
 		port 
 			 frameRectRight: rect width: w;

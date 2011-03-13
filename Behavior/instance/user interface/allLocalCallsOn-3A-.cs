@@ -2,10 +2,10 @@ allLocalCallsOn: aSymbol
 	"Answer a SortedCollection of all the methods that call on aSymbol, anywhere in my class hierarchy."
 
 	| aSet special byte cls |
-	aSet _ Set new.
-	cls _ self theNonMetaClass.
-	special _ self environment hasSpecialSelector: aSymbol
-					ifTrueSetByte: [:b | byte _ b ].
+	aSet := Set new.
+	cls := self theNonMetaClass.
+	special := self environment hasSpecialSelector: aSymbol
+					ifTrueSetByte: [:b | byte := b ].
 	cls withAllSuperAndSubclassesDoGently: [ :class |
 		(class whichSelectorsReferTo: aSymbol special: special byte: byte)
 			do: [:sel |

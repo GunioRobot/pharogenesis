@@ -5,7 +5,7 @@ readonlyWithAll: aCollection notIn: notCollection
 
 	| size |
 	aCollection isEmpty ifTrue: [^ #()].
-	size _ aCollection size = 1 
+	size := aCollection size = 1 
 		ifTrue: [1]
 		ifFalse: [self sizeFor: aCollection].
 	^ (self new: size) addAll: aCollection notIn: notCollection; yourself

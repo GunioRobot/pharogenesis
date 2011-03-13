@@ -1,2 +1,0 @@
-hasRemoteServer
-	^self remoteServer notNil

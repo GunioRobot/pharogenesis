@@ -1,3 +1,3 @@
 disableDeferredUpdates
 
-	^DisableDeferredUpdates ifNil: [DisableDeferredUpdates _ false]
+	^DisableDeferredUpdates ifNil: [DisableDeferredUpdates := false]

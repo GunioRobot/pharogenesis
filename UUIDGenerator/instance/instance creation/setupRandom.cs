@@ -1,3 +1,3 @@
 setupRandom
-	randomCounter _ 0.
-	randomGenerator _ Random seed: self makeSeed.
+	randomCounter := 0.
+	randomGenerator := Random seed: self makeSeed.

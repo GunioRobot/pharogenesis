@@ -1,2 +1,0 @@
-getMenu: shiftKeyState
-	^ nil

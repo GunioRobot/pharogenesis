@@ -1,3 +1,0 @@
-takeFocus
-
-	container setSelectedMorph: self

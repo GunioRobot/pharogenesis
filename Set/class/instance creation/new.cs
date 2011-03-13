@@ -1,2 +1,4 @@
 new
-	^ self basicNew initialize: 5
+	^ self basicNew
+		initialize: 5;
+		yourself

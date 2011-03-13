@@ -1,3 +1,0 @@
-highLimit: aNumber
-
-	highLimit := aNumber.

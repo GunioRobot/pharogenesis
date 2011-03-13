@@ -5,7 +5,7 @@ convert2: partiallyCorrectInst allVarMaps: allVarMaps
 
 	self flag: #bobconv.	
 
-	varMap _ allVarMaps at: partiallyCorrectInst.
-	className _ varMap at: #ClassName.	"original"
+	varMap := allVarMaps at: partiallyCorrectInst.
+	className := varMap at: #ClassName.	"original"
 	^self applyConversionMethodsTo: partiallyCorrectInst className: className varMap: varMap.
 

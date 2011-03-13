@@ -4,6 +4,6 @@ isAliasSelector: aSymbol
 	the tree of traits compositions."
 
 	| methodDescription |
-	methodDescription _ (self methodDescriptionsForSelector: aSymbol)
+	methodDescription := (self methodDescriptionsForSelector: aSymbol)
 		detect: [:each | each selector = aSymbol].
 	^methodDescription isAliasSelector

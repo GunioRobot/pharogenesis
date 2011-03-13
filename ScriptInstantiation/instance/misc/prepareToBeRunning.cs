@@ -1,2 +1,0 @@
-prepareToBeRunning
-	lastTick _ nil.

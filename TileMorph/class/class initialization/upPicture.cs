@@ -1,2 +1,0 @@
-upPicture
-	^ UpPicture

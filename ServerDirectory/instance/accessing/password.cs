@@ -1,4 +1,4 @@
 password
 
-	passwordHolder ifNil: [passwordHolder _ Password new].
+	passwordHolder ifNil: [passwordHolder := Password new].
 	^ passwordHolder passwordFor: self	"may ask the user"

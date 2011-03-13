@@ -1,3 +1,94 @@
-I'm a dummy class that is used to load packages to create release.
-I should be merged into ReleaseBuilder in the future and ReleaseBuilder should be moved
-out of system-support so that we do not create a new version of it each time
+Pharo Process Description
+
+To change the release stream
+	ScriptLoader toPharoOne
+	ScriptLoader toPharoOneDotOne
+
+---
+In the idea that more people will be able to integrate
+
+
+Here is the pharo process.
+An enhancement
+	- should be added to the bug tracker
+	- announced to the mailing-list
+	- asked for feedback 
+	- results should be added to the BT entry
+
+Fixed tag means ready for integration
+Closed tag means integrated
+
+A bug detected
+	- discuss via the mailing-list
+	- should be added to the bug tracker
+	- fix are considered as enh (see point above)
+
+When a fix is fixed it should be either post as cs to the BT entry or in the PharoInbox
+as a Slice (a slice is an emtpy package that has as requirement other package composing the fix).
+
+We have three project:
+	Pharo
+	PharoInbox
+	PharoTreatedInbox
+
+A fix goes either from inbox to treatedInbox or to Pharo.
+If a fix does not work it is moved to the TreatedInbox.
+If a fix works it is integrated as follow - it will be moved from the Inbox to the TreatedInbox
+and integrated and published in the Pharo project
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Now the integration works as 4 steps which can be steered by the following 
+ScriptLoader releaseMenu
+
+1.) Start up a recent and clean image
+	ScriptLoader new prepareNewUpdate
+	
+	This step will 
+		- load the latest updates
+		- load the latest ScriptLoader package from the Pharo repository.
+		Indeed when we work on improving the ScriptLoader it is useful to always have the last one
+		and new versions can be available on the server but not part of the latest updates.
+		- check that the update.list (which contains the cs to load the packages) is in sync
+		with the image current version. 
+		     scp -p LOGIN@scm.gforge.inria.fr:/home/groups/pharo/htdocs/updates/updates.list .
+		- snapshot the package version to detect dirty or changed but non dirty packages.
+
+2.) Apply changes
+
+	ScriptLoader new doneApplyingChanges
+	
+	This step will 
+		- create an update method with can trigger to load of the packages and some pre/post action
+		- create a script method with describes all the package versions and it used by the update
+		- save all the packages that are different (except some filtered packages)	
+		into a local folder named package-to-be-tested.
+		
+
+3.) Verify changes
+	==> in a ***new*** image (in the current folder) execute:
+	ScriptLoader new verifyNewUpdate
+
+	This step will 
+		- load in any order (so may break) the package previously saved
+		in the packages to be tested.
+		
+
+4.) If there are problems go to 2.) to fix them, else:
+	ScriptLoader new publishChanges
+
+	This step will
+		- generate a new cs whose purpose is to load the given version of the scriptloader and trigger the 
+		correct update method.
+		- add the name of the cs file to the end of the updates.list file local to the disc
+		- copy all the package from the local directory to the Pharo
+		
+	After the updates.list and the cs file should be manually uploaded to the ftp (see below) 
+	   scp "$1" LOGIN@scm.gforge.inria.fr:/home/groups/pharo/htdocs/updates/pharo1.0
+	
+
+
+
+CurrentMajorVersionNumber should contains a string '1.0', '1.1'....
+This string will determine on which folder on the server the updates.list should be loaded.
+	i.e., updates/pharo1.0, updates/pharo1.1 ....
+

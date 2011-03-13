@@ -2,9 +2,9 @@ setEmphasis: emphasisSymbol
 	"Change the emphasis of the current selection."
 
 	| oldAttributes attribute |
-	oldAttributes _ paragraph text attributesAt: self selectionInterval first forStyle: paragraph textStyle.
+	oldAttributes := paragraph text attributesAt: self selectionInterval first forStyle: paragraph textStyle.
 
-	attribute _ TextEmphasis perform: emphasisSymbol.
+	attribute := TextEmphasis perform: emphasisSymbol.
 	(emphasisSymbol == #normal) 
 		ifFalse:	[oldAttributes do:	
 			[:att | (att dominates: attribute) ifTrue: [attribute turnOff]]].

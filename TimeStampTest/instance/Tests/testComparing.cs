@@ -14,6 +14,6 @@ testComparing
 
 	c1 := self timestampClass current.
 	c2 := self timestampClass current.
-	le _ (c1 <= c2).
+	le := (c1 <= c2).
 	self assert: le.
 

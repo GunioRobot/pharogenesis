@@ -11,13 +11,13 @@ backTo: startIndex
 	 openTypeIn).  The code is shorter than the comment."
 
 	| saveLimit newBackovers |
-	saveLimit _ beginTypeInBlock == nil
-		ifTrue: [self openTypeIn. UndoSelection _ self nullText. self stopIndex]
+	saveLimit := beginTypeInBlock == nil
+		ifTrue: [self openTypeIn. UndoSelection := self nullText. self stopIndex]
 		ifFalse: [self startOfTyping].
 	self setMark: startIndex.
 	startIndex < saveLimit ifTrue:
-		[newBackovers _ self startOfTyping - startIndex.
-		beginTypeInBlock _ self startIndex.
+		[newBackovers := self startOfTyping - startIndex.
+		beginTypeInBlock := self startIndex.
 		UndoSelection replaceFrom: 1 to: 0 with:
 			(paragraph text copyFrom: startIndex to: saveLimit - 1).
 		UndoMessage argument: (UndoMessage argument ifNil: [1]) + newBackovers].

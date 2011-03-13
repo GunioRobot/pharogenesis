@@ -1,4 +1,4 @@
 initWithTarget:aTarget
-	target _ aTarget.
-	filterSelector _ self class filterSelector.
+	target := aTarget.
+	filterSelector := self class filterSelector.
 	^self.

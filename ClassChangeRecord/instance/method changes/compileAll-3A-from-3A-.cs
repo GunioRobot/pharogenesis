@@ -4,12 +4,13 @@ compileAll: newClass from: oldClass
 	the new methods but a lower change set may override and be in force which
 	would mean that only the overriding copies go recompiled.  Just do it."
 
-	| sel changeType changeRecord newMethod |
 	methodChanges associationsDo:
-		[:assn | sel _ assn key.  changeRecord _ assn value.
-		changeType _ changeRecord changeType.
+		[:assn | | sel changeType changeRecord newMethod |
+		sel := assn key.
+		changeRecord := assn value.
+		changeType := changeRecord changeType.
 		(changeType == #add or: [changeType == #change]) ifTrue:
-			[newMethod _ newClass
+			[newMethod := newClass
 				recompileNonResidentMethod: changeRecord currentMethod
 				atSelector: sel from: oldClass.
 			changeRecord noteNewMethod: newMethod]]

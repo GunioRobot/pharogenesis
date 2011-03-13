@@ -1,3 +1,3 @@
 selectNoCategories
 	categoriesSelected := Set new.
-	self changed: #categorySelected; updateClasses.
+	self changed: #allSelections; changed: #categorySelected; updateClasses

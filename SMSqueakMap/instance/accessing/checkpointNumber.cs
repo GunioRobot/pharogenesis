@@ -1,3 +1,0 @@
-checkpointNumber
-
-	^checkpointNumber

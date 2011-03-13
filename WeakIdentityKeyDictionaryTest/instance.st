@@ -1,4 +1,4 @@
-ClassTestCase
+WeakKeyDictionaryTest
 	subclass: #WeakIdentityKeyDictionaryTest
 	instanceVariableNames: ''
 	classVariableNames: ''

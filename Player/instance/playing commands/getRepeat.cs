@@ -1,2 +1,0 @@
-getRepeat
-	^ self sendMessageToCostume: #getRepeat

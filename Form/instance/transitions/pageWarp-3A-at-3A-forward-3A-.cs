@@ -3,8 +3,8 @@ pageWarp: otherImage at: topLeft forward: forward
 	located at topLeft in this form.
 	forward == true means turn pages toward you, else away. [ignored for now]"
 	| pageRect oldPage nSteps buffer p leafRect sourceQuad warp oldBottom d |
-	pageRect _ otherImage boundingBox.
-	oldPage _ self copy: (pageRect translateBy: topLeft).
+	pageRect := otherImage boundingBox.
+	oldPage := self copy: (pageRect translateBy: topLeft).
 	(forward ifTrue: [oldPage] ifFalse: [otherImage])
 		border: pageRect
 		widthRectangle: (Rectangle
@@ -14,23 +14,23 @@ pageWarp: otherImage at: topLeft forward: forward
 				bottom: 1)
 		rule: Form over
 		fillColor: Color black.
-	oldBottom _ self copy: ((pageRect bottomLeft + topLeft) extent: (pageRect width@(pageRect height//4))).
-	nSteps _ 8.
-	buffer _ Form extent: otherImage extent + (0@(pageRect height//4)) depth: self depth.
-	d _ pageRect topLeft + (0@(pageRect height//4)) - pageRect topRight.
+	oldBottom := self copy: ((pageRect bottomLeft + topLeft) extent: (pageRect width@(pageRect height//4))).
+	nSteps := 8.
+	buffer := Form extent: otherImage extent + (0@(pageRect height//4)) depth: self depth.
+	d := pageRect topLeft + (0@(pageRect height//4)) - pageRect topRight.
 	1 to: nSteps-1 do:
 		[:i | forward
 			ifTrue: [buffer copy: pageRect from: otherImage to: 0@0 rule: Form over.
-					p _ pageRect topRight + (d * i // nSteps)]
+					p := pageRect topRight + (d * i // nSteps)]
 			ifFalse: [buffer copy: pageRect from: oldPage to: 0@0 rule: Form over.
-					p _ pageRect topRight + (d * (nSteps-i) // nSteps)].
+					p := pageRect topRight + (d * (nSteps-i) // nSteps)].
 		buffer copy: oldBottom boundingBox from: oldBottom to: pageRect bottomLeft rule: Form over.
-		leafRect _ pageRect topLeft corner: p x @ (pageRect bottom + p y).
-		sourceQuad _ Array with: pageRect topLeft
+		leafRect := pageRect topLeft corner: p x @ (pageRect bottom + p y).
+		sourceQuad := Array with: pageRect topLeft
 			with: pageRect bottomLeft + (0@p y)
 			with: pageRect bottomRight
 			with: pageRect topRight - (0@p y).
-		warp _ (WarpBlt current toForm: buffer)
+		warp := (WarpBlt current toForm: buffer)
 				clipRect: leafRect;
 				sourceForm: (forward ifTrue: [oldPage] ifFalse: [otherImage]);
 				combinationRule: Form paint.

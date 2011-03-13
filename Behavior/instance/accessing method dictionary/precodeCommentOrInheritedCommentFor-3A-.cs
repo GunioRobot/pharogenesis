@@ -4,10 +4,10 @@ precodeCommentOrInheritedCommentFor: selector
 	beginning of the actual code. If the version recorded in the receiver is 
 	uncommented, look up the inheritance chain. Return nil if none found."
 	| aSuper aComment |
-	^ (aComment _ self firstPrecodeCommentFor: selector) isEmptyOrNil
+	^ (aComment := self firstPrecodeCommentFor: selector) isEmptyOrNil
 		ifTrue: [(self == Behavior
 					or: [superclass == nil
-							or: [(aSuper _ superclass whichClassIncludesSelector: selector) == nil]])
+							or: [(aSuper := superclass whichClassIncludesSelector: selector) == nil]])
 				ifFalse: [aSuper precodeCommentOrInheritedCommentFor: selector]
 			"ActorState precodeCommentOrInheritedCommentFor: #printOn:"]
 		ifFalse: [aComment]

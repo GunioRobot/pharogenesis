@@ -1,1 +1,0 @@
-recordShapeProperty: id length: length

@@ -1,2 +1,2 @@
 characterToGlyphMap
-	^characterToGlyphMap ifNil:[characterToGlyphMap _ self createCharacterToGlyphMap].
+	^ characterToGlyphMap ifNil: [ characterToGlyphMap := self createCharacterToGlyphMap ]

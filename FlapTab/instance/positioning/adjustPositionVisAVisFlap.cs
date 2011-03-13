@@ -1,7 +1,7 @@
 adjustPositionVisAVisFlap
 	| sideToAlignTo opposite |
-	opposite _ Utilities oppositeSideTo: edgeToAdhereTo.
-	sideToAlignTo _ inboard
+	opposite := Utilities oppositeSideTo: edgeToAdhereTo.
+	sideToAlignTo := inboard
 		ifTrue:	[opposite]
 		ifFalse:	[edgeToAdhereTo].
 	self perform: (Utilities simpleSetterFor: sideToAlignTo) with: (referent perform: opposite)

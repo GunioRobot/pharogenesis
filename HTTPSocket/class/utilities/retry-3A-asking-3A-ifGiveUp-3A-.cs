@@ -4,9 +4,9 @@ retry: tryBlock asking: troubleString ifGiveUp: abortActionBlock
 	| response  |
 	[tryBlock value] whileFalse: [
 		| sema |
-		sema _ Semaphore new.
+		sema := Semaphore new.
 		WorldState addDeferredUIMessage: [
-			response _ UIManager default chooseFrom: #('Retry' 'Give Up')
+			response := UIManager default chooseFrom: #('Retry' 'Give Up')
 				title: troubleString.
 			sema signal.
 		].

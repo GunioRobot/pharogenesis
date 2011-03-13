@@ -1,1 +1,0 @@
-NumericReadoutTile class instanceVariableNames: ''

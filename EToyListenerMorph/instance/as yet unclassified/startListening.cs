@@ -1,3 +1,0 @@
-startListening
-
-	self class startListening

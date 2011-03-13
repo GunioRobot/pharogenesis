@@ -1,2 +1,2 @@
 setDefaultLabel
-	self label: 'Flash'.
+	self label: self defaultLabel

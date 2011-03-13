@@ -3,17 +3,17 @@ defineClass: defString notifying: aController
 	source code is defString. If any errors occur in compilation, notify
 	aController."
 	| oldClass class newClassName defTokens keywdIx envt |
-	oldClass _ self selectedClassOrMetaClass.
-	defTokens _ defString findTokens: Character separators.
+	oldClass := self selectedClassOrMetaClass.
+	defTokens := defString findTokens: Character separators.
 	
 	((defTokens first = 'Trait' and: [defTokens second = 'named:'])
 		or: [defTokens second = 'classTrait'])
 		ifTrue: [^self defineTrait: defString notifying: aController].
 		
-	keywdIx _ defTokens findFirst: [:x | x beginsWith: 'category'].
-	envt _ Smalltalk.
-	keywdIx _ defTokens findFirst: [:x | '*subclass*' match: x].
-	newClassName _ (defTokens at: keywdIx+1) copyWithoutAll: '#()'.
+	keywdIx := defTokens findFirst: [:x | x beginsWith: 'category'].
+	envt := Smalltalk.
+	keywdIx := defTokens findFirst: [:x | '*subclass*' match: x].
+	newClassName := (defTokens at: keywdIx+1) copyWithoutAll: '#()'.
 	((oldClass isNil or: [oldClass theNonMetaClass name asString ~= newClassName])
 		and: [envt includesKey: newClassName asSymbol]) ifTrue:
 			["Attempting to define new class over existing one when
@@ -24,8 +24,8 @@ Is this really what you want to do?') asText makeBoldFrom: 1 to: newClassName si
 				ifFalse: [^ false]].
 	"ar 8/29/1999: Use oldClass superclass for defining oldClass
 	since oldClass superclass knows the definerClass of oldClass."
-	oldClass ifNotNil:[oldClass _ oldClass superclass].
-	class _ oldClass subclassDefinerClass
+	oldClass ifNotNil:[oldClass := oldClass superclass].
+	class := oldClass subclassDefinerClass
 				evaluate: defString
 				notifying: aController
 				logged: true.

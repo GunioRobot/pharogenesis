@@ -3,7 +3,7 @@ checkClassHierarchyConsistencyFor: aClassDescription
 	subclasses"
 
 	| mySuperclass |
-	mySuperclass _ aClassDescription superclass.
+	mySuperclass := aClassDescription superclass.
 	(mySuperclass subclasses includes: aClassDescription) = aClassDescription isObsolete
 			ifTrue: [self error: 'Something wrong!'].
 	mySuperclass ifNil: [^ self].  "Obsolete subclasses of nil cannot be stored"

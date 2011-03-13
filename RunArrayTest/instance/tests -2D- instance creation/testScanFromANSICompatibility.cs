@@ -1,6 +1,5 @@
 testScanFromANSICompatibility
 	"self run: #testScanFromANSICompatibility"
-
-	RunArray scanFrom: (ReadStream on: '()f1dNumber new;;').
-	RunArray scanFrom: (ReadStream on: '()a1death;;').
-	RunArray scanFrom: (ReadStream on: '()F1death;;').
+	RunArray scanFrom: '()f1dNumber new;;' readStream.
+	RunArray scanFrom: '()a1death;;' readStream.
+	RunArray scanFrom: '()F1death;;' readStream

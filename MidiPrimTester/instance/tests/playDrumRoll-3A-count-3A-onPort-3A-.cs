@@ -6,17 +6,17 @@ playDrumRoll: mSecsBetweenNotes count: tapCount onPort: portNum
 	"Note: This example works best if the VM's millisecond clock has 1 millisecond resolution."
 
 	| gcDuringNote noteOn noteOff endTime waitTime |
-	gcDuringNote _ true.
+	gcDuringNote := true.
 	"these events use running status, so the command byte is omitted"
-	noteOn _ #(60 100) as: ByteArray.
-	noteOff _ #(60 0) as: ByteArray.
+	noteOn := #(60 100) as: ByteArray.
+	noteOff := #(60 0) as: ByteArray.
 	self primMIDIOpenPort: portNum readSemaIndex: 0 interfaceClockRate: 1000000.
 
 	"send an initial event with command byte to initiate running status"
 	self primMIDIWritePort: portNum from: (#(144 60 0) as: ByteArray) at: 0.
 
 	1 to: tapCount do: [:i |
-		endTime _ Time millisecondClockValue + mSecsBetweenNotes.
+		endTime := Time millisecondClockValue + mSecsBetweenNotes.
 		self primMIDIWritePort: portNum from: noteOn at: 0.
 		gcDuringNote
 			ifTrue: [
@@ -26,7 +26,7 @@ playDrumRoll: mSecsBetweenNotes count: tapCount onPort: portNum
 			ifFalse: [(Delay forMilliseconds: 3) wait].
 
 		self primMIDIWritePort: portNum from: noteOff at: 0.
-		waitTime _ endTime - Time millisecondClockValue.
+		waitTime := endTime - Time millisecondClockValue.
 		waitTime > 0 ifTrue: [(Delay forMilliseconds: waitTime) wait]].
 
 	self primMIDIClosePort: portNum.

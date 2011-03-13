@@ -1,3 +1,0 @@
-numberOfNewMessages
-
-	^self newAudioMessages size

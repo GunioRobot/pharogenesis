@@ -5,9 +5,7 @@ makeIntegerOrScaledInteger
 	neg
 		ifTrue: [integerPart := integerPart negated].
 	self readExponent
-		ifTrue: [integerPart := integerPart
-						* (base raisedTo: exponent)]
-		ifFalse: [self readScale
-				ifTrue: [nil.
-					^ ScaledDecimal newFromNumber: integerPart scale: scale]].
+		ifTrue: [^integerPart * (base raisedToInteger: exponent)].
+	self readScale
+		ifTrue: [^integerPart asScaledDecimal: scale].
 	^ integerPart

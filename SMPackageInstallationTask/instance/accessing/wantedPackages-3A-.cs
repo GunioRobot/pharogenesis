@@ -1,3 +1,0 @@
-wantedPackages: packages
-
-	wantedPackages := packages

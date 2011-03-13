@@ -4,6 +4,6 @@ get
 	Cursor read showWhile: [
 		self okToChange ifFalse: [^ nil].
 		brevityState == #briefHex
-			ifTrue: [brevityState _ #needToGetFullHex]
-			ifFalse: [brevityState _ #needToGetFull].
+			ifTrue: [brevityState := #needToGetFullHex]
+			ifFalse: [brevityState := #needToGetFull].
 		self changed: #contents].

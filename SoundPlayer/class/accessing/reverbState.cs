@@ -1,3 +1,0 @@
-reverbState
-
-	^ ReverbState

@@ -4,11 +4,11 @@ fileInMorphsNamed: memberName addToWorld: aBoolean
 	If aBoolean is true, also adds them and their models to the World."
 
 	| member morphOrList |
-	member _ self memberNamed: memberName.
+	member := self memberNamed: memberName.
 	member ifNil: [ ^self errorNoSuchMember: memberName ].
 	self installed: member.
 
-	morphOrList _ member contentStream fileInObjectAndCode.
+	morphOrList := member contentStream fileInObjectAndCode.
 	morphOrList ifNil: [ ^nil ].
 	aBoolean ifTrue: [ ActiveWorld addMorphsAndModel: morphOrList ].
 

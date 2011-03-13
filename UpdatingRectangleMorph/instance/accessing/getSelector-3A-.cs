@@ -1,3 +1,3 @@
 getSelector: aSymbol
 
-	getSelector _ aSymbol.
+	getSelector := aSymbol.

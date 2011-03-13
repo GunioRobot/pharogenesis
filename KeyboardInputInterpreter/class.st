@@ -1,1 +1,0 @@
-KeyboardInputInterpreter class instanceVariableNames: ''

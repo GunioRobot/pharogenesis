@@ -3,12 +3,12 @@ writeToFileWithSymbols
 
 	state = #extracted ifFalse: [self error: 'wrong state'].
 	segmentName ifNil: [
-		segmentName _ (FileDirectory localNameFor: fileName) sansPeriodSuffix].
+		segmentName := (FileDirectory localNameFor: fileName) sansPeriodSuffix].
 		"OK that still has number on end.  This is an unusual case"
-	fileName _ self class uniqueFileNameFor: segmentName.
-	symbols _ OrderedCollection new.
-	nonSymbols _ OrderedCollection new.
-	pound _ '#' asSymbol.
+	fileName := self class uniqueFileNameFor: segmentName.
+	symbols := OrderedCollection new.
+	nonSymbols := OrderedCollection new.
+	pound := '#' asSymbol.
 	outPointers do:
 		[:s | 
 		((s isSymbol) and: [s isLiteral and: [s ~~ pound]])
@@ -17,5 +17,5 @@ writeToFileWithSymbols
 	(self class segmentDirectory newFileNamed: fileName)
 		store: symbols asArray; cr;
 		nextPutAll: segment; close.
-	outPointers _ nonSymbols asArray.
-	state _ #onFileWithSymbols
+	outPointers := nonSymbols asArray.
+	state := #onFileWithSymbols

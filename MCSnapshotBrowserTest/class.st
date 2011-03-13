@@ -1,1 +1,0 @@
-MCSnapshotBrowserTest class instanceVariableNames: ''

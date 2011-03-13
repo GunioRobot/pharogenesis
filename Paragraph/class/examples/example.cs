@@ -3,8 +3,8 @@ example
 	Fixed. "
 
 	| para point |
-	point _ Sensor waitButton.
-	para _ 'This is the first line of characters
+	point := Sensor waitButton.
+	para := 'This is the first line of characters
 and this is the second line.' asParagraph.
 	para displayOn: Display at: point.
 

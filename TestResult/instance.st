@@ -1,6 +1,6 @@
 Object
 	subclass: #TestResult
-	instanceVariableNames: 'failures errors passed'
+	instanceVariableNames: 'timeStamp failures errors passed'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'SUnit-Kernel'

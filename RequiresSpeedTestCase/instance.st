@@ -3,4 +3,4 @@ TimeMeasuringTest
 	instanceVariableNames: 'displayedClasses focusedClasses interestingCategories'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Traits-Requires'
+	category: 'Tests-Traits'

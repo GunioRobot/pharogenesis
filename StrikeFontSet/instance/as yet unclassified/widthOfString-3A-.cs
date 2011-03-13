@@ -3,7 +3,7 @@ widthOfString: aString
 	aString ifNil:[^0].
 	"Optimizing"
 	(aString isByteString) ifTrue: [
-		^ self fontArray first widthOfString: aString from: 1 to: aString size].
+		^ (self fontArray  at: 1) widthOfString: aString from: 1 to: aString size].
 	^ self widthOfString: aString from: 1 to: aString size.
 "
 	TextStyle default defaultFont widthOfString: 'zort' 21

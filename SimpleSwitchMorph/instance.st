@@ -3,4 +3,4 @@ SimpleButtonMorph
 	instanceVariableNames: 'onColor offColor'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'MorphicExtras-Widgets'
+	category: 'Morphic-Widgets'

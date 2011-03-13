@@ -1,3 +1,0 @@
-clearTarget
-
-	target _ nil.

@@ -1,5 +1,5 @@
 isolationSet: setOrNil
 
 	setOrNil == self
-		ifTrue: [isolationSet _ nil]  "Means this IS the isolation set"
-		ifFalse: [isolationSet _ setOrNil]
+		ifTrue: [isolationSet := nil]  "Means this IS the isolation set"
+		ifFalse: [isolationSet := setOrNil]

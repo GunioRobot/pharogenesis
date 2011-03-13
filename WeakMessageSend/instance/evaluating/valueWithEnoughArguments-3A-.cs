@@ -2,7 +2,7 @@ valueWithEnoughArguments: anArray
 	"call the selector with enough arguments from arguments and anArray"
 	| args |
 	self ensureReceiverAndArguments ifFalse: [ ^nil ].
-	args _ Array new: selector numArgs.
+	args := Array new: selector numArgs.
 	args replaceFrom: 1
 		to: ( arguments size min: args size)
 		with: arguments

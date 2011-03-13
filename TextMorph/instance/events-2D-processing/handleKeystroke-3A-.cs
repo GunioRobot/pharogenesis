@@ -8,6 +8,6 @@ handleKeystroke: anEvent
 	anEvent keyCharacter = Character tab ifTrue:
 		["Allow passing through text morph inside pasteups"
 		(self wouldAcceptKeyboardFocusUponTab and:
-				[(pasteUp _ self pasteUpMorphHandlingTabAmongFields) notNil])
+				[(pasteUp := self pasteUpMorphHandlingTabAmongFields) notNil])
 			ifTrue:[^ pasteUp tabHitWithEvent: anEvent]].
 	self keyStroke: anEvent

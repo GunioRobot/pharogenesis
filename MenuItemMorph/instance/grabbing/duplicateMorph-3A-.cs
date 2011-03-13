@@ -1,8 +1,8 @@
 duplicateMorph: evt
 	"Make and return a duplicate of the receiver's argument"
 	| dup menu |
-	dup _ self duplicate isSelected: false.
-	menu _ MenuMorph new defaultTarget: nil.
+	dup := self duplicate isSelected: false.
+	menu := MenuMorph new defaultTarget: nil.
 	menu addMorphFront: dup.
 	menu bounds: self bounds.
 	menu stayUp: true.

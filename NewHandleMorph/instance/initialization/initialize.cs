@@ -1,8 +1,6 @@
 initialize
-"initialize the state of the receiver"
+	"initialize the state of the receiver"
 
 	super initialize.
-""
-	waitingForClickInside _ true.
-	Preferences noviceMode
-		ifTrue: [self setBalloonText: 'stretch']
+	waitingForClickInside := true.
+	

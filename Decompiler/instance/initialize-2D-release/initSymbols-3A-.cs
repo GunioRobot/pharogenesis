@@ -1,11 +1,24 @@
 initSymbols: aClass
-	| nTemps namedTemps |
 	constructor method: method class: aClass literals: method literals.
-	constTable _ constructor codeConstants.
-	instVars _ Array new: aClass instSize.
-	nTemps _ method numTemps.
-	namedTemps _ tempVars ifNil: [method tempNames].
-	tempVars _ (1 to: nTemps) collect:
-				[:i | i <= namedTemps size
-					ifTrue: [constructor codeTemp: i - 1 named: (namedTemps at: i)]
-					ifFalse: [constructor codeTemp: i - 1]]
+	constTable := constructor codeConstants.
+	instVars := Array new: aClass instSize.
+	tempVarCount := method numTemps.
+	"(tempVars isNil
+	 and: [method holdsTempNames]) ifTrue:
+		[tempVars := method tempNamesString]."
+	tempVars isString
+		ifTrue:
+			[blockStartsToTempVars := self mapFromBlockStartsIn: method
+											toTempVarsFrom: tempVars
+											constructor: constructor.
+			 tempVars := blockStartsToTempVars at: method initialPC]
+		ifFalse:
+			[| namedTemps |
+			namedTemps := tempVars ifNil: [(1 to: tempVarCount) collect: [:i| 't', i printString]].
+			tempVars := (1 to: tempVarCount) collect:
+							[:i | i <= namedTemps size
+								ifTrue: [constructor codeTemp: i - 1 named: (namedTemps at: i)]
+								ifFalse: [constructor codeTemp: i - 1]]].
+	1 to: method numArgs do:
+		[:i|
+		(tempVars at: i) beMethodArg]

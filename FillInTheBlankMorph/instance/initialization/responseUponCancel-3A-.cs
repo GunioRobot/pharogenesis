@@ -1,2 +1,2 @@
 responseUponCancel: anObject
-	responseUponCancel _ anObject
+	responseUponCancel := anObject

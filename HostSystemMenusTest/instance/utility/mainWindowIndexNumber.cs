@@ -1,0 +1,2 @@
+mainWindowIndexNumber
+	^1

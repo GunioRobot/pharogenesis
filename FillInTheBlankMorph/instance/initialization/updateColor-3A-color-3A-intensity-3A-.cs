@@ -4,7 +4,7 @@ updateColor: aMorph color: aColor intensity: anInteger
 	Preferences gradientMenu
 		ifFalse: [^ self].
 
-	fill _ GradientFillStyle ramp: {0.0 -> Color white. 1 -> aColor}.
+	fill := GradientFillStyle ramp: {0.0 -> Color white. 1 -> aColor}.
 	fill radial: false;
 		origin: aMorph topLeft;
 		direction: 0 @ aMorph height.

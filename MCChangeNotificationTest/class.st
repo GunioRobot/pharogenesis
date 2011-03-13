@@ -1,1 +1,0 @@
-MCChangeNotificationTest class instanceVariableNames: ''

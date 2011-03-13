@@ -1,2 +1,0 @@
-server
-	^self world remoteServer

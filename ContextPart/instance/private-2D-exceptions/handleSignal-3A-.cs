@@ -7,6 +7,6 @@ handleSignal: exception
 
 	exception privHandlerContext: self contextTag.
 	self tempAt: 3 put: false.  "disable self while executing handle block"
-	val _ [(self tempAt: 2) valueWithPossibleArgs: {exception}]
+	val := [(self tempAt: 2) valueWithPossibleArgs: {exception}]
 		ensure: [self tempAt: 3 put: true].
 	self return: val.  "return from self if not otherwise directed in handle block"

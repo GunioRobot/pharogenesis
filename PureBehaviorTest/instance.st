@@ -3,4 +3,4 @@ TraitsTestCase
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Traits-Tests'
+	category: 'Tests-Traits'

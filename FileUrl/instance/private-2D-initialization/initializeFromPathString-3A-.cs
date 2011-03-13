@@ -3,13 +3,13 @@ initializeFromPathString: aPathString
 	We construct a path collection using various heuristics."
 
 	| pathString hasDriveLetter |
-	pathString _ aPathString.
-	pathString isEmpty ifTrue: [pathString _ '/'].
-	path _ (pathString findTokens: '/') collect: [:token | token unescapePercents].
+	pathString := aPathString.
+	pathString isEmpty ifTrue: [pathString := '/'].
+	path := (pathString findTokens: '/') collect: [:token | token unescapePercents].
 
 	"A path like 'C:' refers in practice to 'c:/'"
 	((pathString endsWith: '/') or:
-		[(hasDriveLetter _ self firstPartIsDriveLetter) and: [path size = 1]])
+		[(hasDriveLetter := self firstPartIsDriveLetter) and: [path size = 1]])
 			ifTrue: [path add: ''].
 
 	"Decide if we are absolute by checking for leading $/ or

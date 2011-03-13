@@ -1,5 +1,5 @@
 colorsAtCorners
 	| c c14 c23 |
-	c _ self color.
-	c14 _ c lighter. c23 _ c darker.
+	c := self color.
+	c14 := c lighter. c23 := c darker.
 	^Array with: c14 with: c23 with: c23 with: c14

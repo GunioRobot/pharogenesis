@@ -1,2 +1,2 @@
 privateContent: aString
-	content _ aString
+	contents := aString

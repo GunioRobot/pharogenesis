@@ -1,2 +1,0 @@
-isAutoFit
-	^ textMorph isAutoFit

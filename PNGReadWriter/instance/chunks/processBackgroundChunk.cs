@@ -1,28 +1,34 @@
 processBackgroundChunk
-
-	| val red green blue max |
-
 	"Transcript show: '  BACKGROUND: ',chunk printString."
-	colorType = 3 ifTrue: [
-		backColor := palette at: chunk first + 1.
-		^self
-	].
-	max _ (2 raisedTo: bitsPerChannel) - 1.
-	(colorType = 0 or: [colorType = 4]) ifTrue: [
-		val _ chunk unsignedShortAt: 1 bigEndian: true.
+	| val red green blue max |
+	colorType = 3 ifTrue: 
+		[ backColor := palette at: chunk first + 1.
+		^ self ].
+	max := (2 raisedTo: bitsPerChannel) - 1.
+	(colorType = 0 or: [ colorType = 4 ]) ifTrue: 
+		[ val := chunk 
+			unsignedShortAt: 1
+			bigEndian: true.
 		backColor := Color gray: val / max.
-		^self
-	].
-	(colorType = 2 or: [colorType = 6]) ifTrue: [
-		red _ chunk unsignedShortAt: 1 bigEndian: true.
-		green _ chunk unsignedShortAt: 3 bigEndian: true.
-		blue _ chunk unsignedShortAt: 5 bigEndian: true.
-		backColor := Color r: red/max g: green/max b: blue/max.
-		^self
-	].
-"self halt."
+		^ self ].
+	(colorType = 2 or: [ colorType = 6 ]) ifTrue: 
+		[ red := chunk 
+			unsignedShortAt: 1
+			bigEndian: true.
+		green := chunk 
+			unsignedShortAt: 3
+			bigEndian: true.
+		blue := chunk 
+			unsignedShortAt: 5
+			bigEndian: true.
+		backColor := Color 
+			r: red / max
+			g: green / max
+			b: blue / max.
+		^ self ]
+	"self halt."
 
-"====
+	"====
 The bKGD chunk specifies a default background color to present the image against. Note that viewers are not bound to honor this chunk; a viewer can choose to use a different background. 
 
 For color type 3 (indexed color), the bKGD chunk contains: 

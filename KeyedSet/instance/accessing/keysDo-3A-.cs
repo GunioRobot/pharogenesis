@@ -1,3 +1,3 @@
 keysDo: block
-
-	self do: [:item | block value: (keyBlock value: item)]
+ 
+ 	self do: [:item | block value: (keyBlock value: item)]

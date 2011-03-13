@@ -1,6 +1,6 @@
 MCTestCase
 	subclass: #MCWorkingCopyTest
-	instanceVariableNames: 'savedInitials workingCopy repositoryGroup versions versions2'
+	instanceVariableNames: 'workingCopy repositoryGroup versions versions2 savedName'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Monticello-Tests'
+	category: 'Tests-Monticello'

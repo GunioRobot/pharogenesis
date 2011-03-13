@@ -1,2 +1,2 @@
 ascii
-	isBinary _ false
+	isBinary := false

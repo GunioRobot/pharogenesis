@@ -5,7 +5,7 @@ findContext
 	searchString := UIManager default 
 			request: 'Enter a string to search for in the process stack lists'
 	  initialAnswer: searchString.
-	searchString isEmpty
+	searchString isEmptyOrNil
 		ifTrue: [^ false].
 	self processListIndex: 1.
 	self stackListIndex: 1.

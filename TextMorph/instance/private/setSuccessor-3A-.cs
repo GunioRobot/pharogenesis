@@ -1,4 +1,4 @@
 setSuccessor: newSuccessor
 
-	successor _ newSuccessor.
+	successor := newSuccessor.
 	paragraph ifNotNil: [paragraph wantsColumnBreaks: successor notNil].

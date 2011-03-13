@@ -7,6 +7,6 @@ allClassVarNames
 		ifTrue: 
 			[^self classVarNames]  "This is the keys so it is a new Set."
 		ifFalse: 
-			[aSet _ self superclass allClassVarNames.
+			[aSet := self superclass allClassVarNames.
 			aSet addAll: self classVarNames.
 			^aSet]

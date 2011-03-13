@@ -3,16 +3,16 @@ primesUpTo: max do: aBlock
 	"Integer primesUpTo: 100"
 
 	| limit flags prime k |
-	limit _ max asInteger - 1.
+	limit := max asInteger - 1.
 	"Fall back into #largePrimesUpTo:do: if we'd require more than 100k of memory; 
 	the alternative will only requre 1/154th of the amount we need here and is almost as fast."
 	limit > 25000 ifTrue:[^self largePrimesUpTo: max do: aBlock].
-	flags _ (Array new: limit) atAllPut: true.
+	flags := (Array new: limit) atAllPut: true.
 	1 to: limit - 1 do: [:i |
 		(flags at: i) ifTrue: [
-			prime _ i + 1.
-			k _ i + prime.
+			prime := i + 1.
+			k := i + prime.
 			[k <= limit] whileTrue: [
 				flags at: k put: false.
-				k _ k + prime].
+				k := k + prime].
 			aBlock value: prime]].

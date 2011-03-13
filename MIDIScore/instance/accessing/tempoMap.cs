@@ -1,3 +1,0 @@
-tempoMap
-
-	^ tempoMap

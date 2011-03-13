@@ -1,0 +1,2 @@
+menuBarControler
+	^self default hostSystemProxy

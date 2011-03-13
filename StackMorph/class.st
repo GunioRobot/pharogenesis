@@ -1,1 +1,0 @@
-StackMorph class instanceVariableNames: ''

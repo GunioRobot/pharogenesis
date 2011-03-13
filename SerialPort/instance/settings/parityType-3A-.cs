@@ -4,4 +4,4 @@ parityType: anInteger
 		1 - odd parity
 		2 - even parity"
 
-	parityType _ anInteger.
+	parityType := anInteger.

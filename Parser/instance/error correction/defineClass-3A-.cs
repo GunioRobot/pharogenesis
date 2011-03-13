@@ -5,8 +5,8 @@ defineClass: className
 	| sym cat def d2 |
 	sym := className asSymbol.
 	cat := UIManager default request: 'Enter class category : ' initialAnswer: self encoder classEncoding theNonMetaClass category.
-	cat
-		ifEmpty: [cat := 'Unknown'].
+	cat isEmptyOrNil
+		ifTrue: [cat := 'Unknown'].
 	def := 'Object subclass: #' , sym , '
 		instanceVariableNames: '''' 
 		classVariableNames: ''''

@@ -1,1 +1,0 @@
-I represent a Controller that takes control if a key on the keyboard is depressed or if the cursor is within my rectangular area.

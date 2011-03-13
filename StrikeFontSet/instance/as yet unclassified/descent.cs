@@ -1,3 +1,3 @@
 descent
 
-	^ fontArray first descent.
+	^ (fontArray  at: 1) descent.

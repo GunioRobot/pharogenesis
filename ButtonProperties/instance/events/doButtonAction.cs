@@ -1,3 +1,0 @@
-doButtonAction
-	
-	self doButtonAction: nil

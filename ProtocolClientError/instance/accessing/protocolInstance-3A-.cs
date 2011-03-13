@@ -1,2 +1,2 @@
 protocolInstance: aProtocolInstance
-	protocolInstance _ aProtocolInstance
+	protocolInstance := aProtocolInstance

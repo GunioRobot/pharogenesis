@@ -5,10 +5,10 @@ recomposeFrom: start to: stop delta: delta
 	when its current lines were composed."
 	| startLine newLines |
 	"Have to recompose line above in case a word-break was affected."
-	startLine _ (self lineIndexForCharacter: start) - 1 max: 1.
+	startLine := (self lineIndexForCharacter: start) - 1 max: 1.
 	[startLine > 1 and: [(lines at: startLine-1) top = (lines at: startLine) top]]
-		whileTrue: [startLine _ startLine - 1].  "Find leftmost of line pieces"
-	newLines _ OrderedCollection new: lines size + 1.
+		whileTrue: [startLine := startLine - 1].  "Find leftmost of line pieces"
+	newLines := OrderedCollection new: lines size + 1.
 	1 to: startLine-1 do: [:i | newLines addLast: (lines at: i)].
 	text string isOctetString ifTrue: [
 		^ self composeLinesFrom: (lines at: startLine) first to: stop delta: delta

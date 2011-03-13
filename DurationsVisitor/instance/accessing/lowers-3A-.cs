@@ -1,2 +1,0 @@
-lowers: aDictionary
-	lowers := aDictionary

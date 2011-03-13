@@ -7,8 +7,8 @@ assimilateAllChangesIn: otherRecord
 		[:chg | self noteChangeType: chg fromClass: self realClass].
 
 	otherRecord methodChanges associationsDo:
-		[:assn | selector _ assn key. changeRecord _ assn value.
-		changeType _ changeRecord changeType.
+		[:assn | selector := assn key. changeRecord := assn value.
+		changeType := changeRecord changeType.
 		(changeType == #remove or: [changeType == #addedThenRemoved])
 			ifTrue:
 				[changeType == #addedThenRemoved

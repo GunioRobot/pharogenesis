@@ -1,3 +1,3 @@
 streamPosition: pos
 
-	streamPosition _ pos.
+	streamPosition := pos.

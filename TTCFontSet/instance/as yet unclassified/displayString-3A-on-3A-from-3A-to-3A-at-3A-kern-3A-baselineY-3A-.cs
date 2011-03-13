@@ -11,11 +11,11 @@ displayString: aString on: aBitBlt from: startIndex to: stopIndex at: aPoint ker
 		((charCode between: font minAscii and: font maxAscii) not) ifTrue: [
 			charCode := font maxAscii].
 		self glyphInfoOf: char into: glyphInfo.
-		form := glyphInfo first.
+		form := glyphInfo at: 1.
 		(glyphInfo fifth ~= aBitBlt lastFont) ifTrue: [
 			glyphInfo fifth installOn: aBitBlt.
 		].
-		destY := baselineY - glyphInfo fourth. 
+		destY := baselineY - (glyphInfo at: 4). 
 		aBitBlt sourceForm: form.
 		aBitBlt destX: destPoint x.
 		aBitBlt destY: destY.

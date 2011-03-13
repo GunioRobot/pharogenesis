@@ -1,2 +1,2 @@
 contents: c
-	contents _ c
+	contents := c

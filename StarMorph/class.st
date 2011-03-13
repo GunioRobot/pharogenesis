@@ -1,1 +1,0 @@
-StarMorph class instanceVariableNames: ''

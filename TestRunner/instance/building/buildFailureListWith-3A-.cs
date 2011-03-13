@@ -3,6 +3,7 @@ buildFailureListWith: aBuilder
 		model: self;
 		name: 'Failure List';
 		list: #failedList; 
+		menu: #failureMenu:;
 		getIndex: #failedSelected; 
 		setIndex: #failedSelected:;
 		yourself.

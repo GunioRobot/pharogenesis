@@ -1,3 +1,0 @@
-turtleCount
-
-	^ turtleCount.

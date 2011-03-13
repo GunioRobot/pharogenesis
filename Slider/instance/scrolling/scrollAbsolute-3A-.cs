@@ -1,10 +1,10 @@
 scrollAbsolute: event
 	| r p |
-	r _ self roomToMove.
+	r := self roomToMove.
 	bounds isWide
 		ifTrue: [r width = 0 ifTrue: [^ self]]
 		ifFalse: [r height = 0 ifTrue: [^ self]].
-	p _ event targetPoint adhereTo: r.
+	p := event targetPoint adhereTo: r.
 	self descending
 		ifFalse:
 			[self setValue: (bounds isWide 

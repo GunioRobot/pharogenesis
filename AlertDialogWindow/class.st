@@ -1,0 +1,1 @@
+AlertDialogWindow class instanceVariableNames: ''

@@ -1,0 +1,2 @@
+fromStringForceEncoding: aString
+	^aString asURIForceEncoding

@@ -1,2 +1,0 @@
-showShortFileNames: aBoolean 
-	showShortFileNames := aBoolean

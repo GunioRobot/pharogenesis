@@ -1,1 +1,0 @@
-MixedCurveMorph class instanceVariableNames: ''

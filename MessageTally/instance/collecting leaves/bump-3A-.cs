@@ -1,2 +1,2 @@
 bump: hitCount
-	tally _ tally + hitCount
+	tally := tally + hitCount

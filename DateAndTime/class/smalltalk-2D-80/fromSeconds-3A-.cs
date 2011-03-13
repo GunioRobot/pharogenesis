@@ -1,8 +1,14 @@
-fromSeconds: seconds
+fromSeconds: seconds 
 	"Answer a DateAndTime since the Squeak epoch: 1 January 1901"
 
-	| since |
-	since _ Duration days: SqueakEpoch hours: 0 minutes: 0 seconds: seconds.
+	| integerSeconds nanos |
+	integerSeconds := seconds truncated.
+	integerSeconds = seconds
+		ifTrue: [nanos := 0]
+		ifFalse: [nanos := (seconds - integerSeconds * NanosInSecond) asInteger].
 	^ self basicNew
-		ticks: since ticks offset: self localOffset;
-		yourself.
+		ticks: (Array
+				with: SqueakEpoch
+				with: integerSeconds
+				with: nanos)
+		offset: self localOffset

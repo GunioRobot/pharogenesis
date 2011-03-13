@@ -1,2 +1,0 @@
-isWritable
-	^sourceStream isWritable

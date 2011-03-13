@@ -3,6 +3,6 @@ doneWithEdits
 
 	| editor |
 	super doneWithEdits.
-	(owner respondsTo: #parseNode) ifTrue: [minimumWidth _ 8].
-	editor _ (submorphs detect: [ :sm | sm isKindOf: StringMorphEditor ] ifNone: [ ^self ]).
+	(owner respondsTo: #parseNode) ifTrue: [minimumWidth := 8].
+	editor := (submorphs detect: [ :sm | sm isKindOf: StringMorphEditor ] ifNone: [ ^self ]).
 	editor delete.

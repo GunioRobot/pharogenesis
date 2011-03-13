@@ -5,7 +5,7 @@ saveAsEmbeddedImage
 	dir := FileDirectory default.
 	newName := UIManager default request: 'Select existing VM file'
 				initialAnswer: (FileDirectory localNameFor: '').
-	newName = '' ifTrue: [^Smalltalk].
+	newName isEmptyOrNil ifTrue: [^Smalltalk].
 	newName := FileDirectory baseNameFor: newName asFileName.
 	newImageName := newName.
 	(dir includesKey: newImageName) 

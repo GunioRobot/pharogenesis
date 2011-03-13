@@ -1,13 +1,11 @@
 testInstructions
 
-	| scanner end printer methods |
+	| scanner end printer |
 
-	methods := Object methodDict values. 
-
-	methods do: [:method |
-		scanner _ InstructionStream on: method.
-		printer _ InstVarRefLocator new.
-		end _ scanner method endPC.
+	Object methods do: [:method |
+		scanner := InstructionStream on: method.
+		printer := InstVarRefLocator new.
+		end := scanner method endPC.
 
 		[scanner pc <= end] whileTrue: [
 			self shouldnt: [printer interpretNextInstructionUsing: scanner] raise: Error.

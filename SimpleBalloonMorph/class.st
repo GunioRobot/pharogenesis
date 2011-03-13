@@ -1,0 +1,1 @@
+SimpleBalloonMorph class instanceVariableNames: ''

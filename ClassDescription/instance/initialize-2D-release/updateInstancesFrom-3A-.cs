@@ -8,22 +8,22 @@ updateInstancesFrom: oldClass
 	the new receiver in which the context is executed has a different layout.
 	See bottom below for a simple example:"
 	| oldInstances |
-	oldInstances _ oldClass allInstances asArray.
-	oldInstances _ self updateInstances: oldInstances from: oldClass isMeta: self isMeta.
+	oldInstances := oldClass allInstances asArray.
+	oldInstances := self updateInstances: oldInstances from: oldClass isMeta: self isMeta.
 	"Now fix up instances in segments that are out on the disk."
 	ImageSegment allSubInstancesDo: [:seg |
 		seg segUpdateInstancesOf: oldClass toBe: self isMeta: self isMeta].
 	^oldInstances
 
 "	| crashingBlock class |
-	class _ Object subclass: #CrashTestDummy
+	class := Object subclass: #CrashTestDummy
 		instanceVariableNames: 'instVar'
 		classVariableNames: ''
 		poolDictionaries: ''
 		category: 'Crash-Test'.
-	class compile:'instVar: value instVar _ value'.
+	class compile:'instVar: value instVar := value'.
 	class compile:'crashingBlock ^[instVar]'.
-	crashingBlock _ (class new) instVar: 42; crashingBlock.
+	crashingBlock := (class new) instVar: 42; crashingBlock.
 	Object subclass: #CrashTestDummy
 		instanceVariableNames: ''
 		classVariableNames: ''

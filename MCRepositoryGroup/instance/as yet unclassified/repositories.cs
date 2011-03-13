@@ -1,2 +1,4 @@
 repositories
-	^ ((Array with: MCCacheRepository default), repositories) select: [ :ea | ea isValid ]
+	^ (self useCache 
+		ifTrue: [Array with: MCCacheRepository default] 
+		ifFalse: [Array new]) , repositories select: #isValid

@@ -7,10 +7,10 @@ nextValue
 	(Comm. Asso. Comp. Mach., 31(10):1192--1201, 1988)."
 
 	| lo hi aLoRHi answer |
-	hi _ (seed quo: q) asFloat.
-	lo _ seed - (hi * q).  " = seed rem: q"  
-	aLoRHi _ (a * lo) - (r * hi).
-	answer _ (aLoRHi > 0.0)
+	hi := (seed quo: q) asFloat.
+	lo := seed - (hi * q).  " = seed rem: q"  
+	aLoRHi := (a * lo) - (r * hi).
+	answer := (aLoRHi > 0.0)
 		ifTrue:  [aLoRHi]
 		ifFalse: [aLoRHi + m].
 	^ answer

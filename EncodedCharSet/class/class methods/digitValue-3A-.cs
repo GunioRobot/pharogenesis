@@ -3,7 +3,7 @@ digitValue: char
 	otherwise. This is used to parse literal numbers of radix 2-36."
 
 	| value |
-	value _ char charCode.
+	value := char charCode.
 	value <= $9 asciiValue 
 		ifTrue: [^value - $0 asciiValue].
 	value >= $A asciiValue 

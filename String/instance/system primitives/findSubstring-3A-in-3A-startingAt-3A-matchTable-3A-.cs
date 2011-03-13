@@ -5,26 +5,26 @@ findSubstring: key in: body startingAt: start matchTable: matchTable
 		key size = 0 ifTrue: [^ 0].
 		start to: body size - key size + 1 do:
 			[:startIndex |
-			index _ 1.
+			index := 1.
 				[(body at: startIndex+index-1)
 					= (key at: index)]
 					whileTrue:
 					[index = key size ifTrue: [^ startIndex].
-					index _ index+1]].
+					index := index+1]].
 		^ 0
 	].
 
 	key size = 0 ifTrue: [^ 0].
 	start to: body size - key size + 1 do:
 		[:startIndex |
-		index _ 1.
-		[c1 _ body at: startIndex+index-1.
-		c2 _ key at: index.
+		index := 1.
+		[c1 := body at: startIndex+index-1.
+		c2 := key at: index.
 		((c1 leadingChar = 0) ifTrue: [(matchTable at: c1 asciiValue + 1)]
 						ifFalse: [c1 asciiValue + 1])
 			= ((c2 leadingChar = 0) ifTrue: [(matchTable at: c2 asciiValue + 1)]
 								ifFalse: [c2 asciiValue + 1])]
 			whileTrue:
 				[index = key size ifTrue: [^ startIndex].
-				index _ index+1]].
+				index := index+1]].
 	^ 0

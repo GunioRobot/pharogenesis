@@ -1,6 +1,6 @@
 setWorldColor
 | world |
-world _ self world.
+world := self world.
 	world
 		changeColorTarget: world
 		selector: #color:

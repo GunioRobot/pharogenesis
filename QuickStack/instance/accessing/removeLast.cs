@@ -1,5 +1,5 @@
 removeLast
 	| answer |
-	answer _ self at: top.
-	top _ top - 1.
+	answer := self at: top.
+	top := top - 1.
 	^ answer

@@ -4,9 +4,9 @@ noteClassStructure: aClass
 	| clsName |
 	aClass isBehavior ifFalse: [^ self].
 	
-	structures ifNil: [structures _ Dictionary new.
-				superclasses _ Dictionary new].
-	clsName _ (aClass name asLowercase beginsWith: 'anobsolete') 
+	structures ifNil: [structures := Dictionary new.
+				superclasses := Dictionary new].
+	clsName := (aClass name asLowercase beginsWith: 'anobsolete') 
 		ifTrue: [(aClass name copyFrom: 11 to: aClass name size) asSymbol]
 		ifFalse: [aClass name].
 	(structures includesKey: clsName) ifFalse: [

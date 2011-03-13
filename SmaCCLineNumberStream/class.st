@@ -1,1 +1,0 @@
-SmaCCLineNumberStream class instanceVariableNames: ''

@@ -1,3 +1,3 @@
 playLoop
 
-	playMode _ #loop.
+	playMode := #loop.

@@ -5,12 +5,12 @@ testExamplesFromDisk
 
 	| msg  sig file publicKey |
 
-	file _ FileStream readOnlyFileNamed: 'dsa.test.out'.
+	file := FileStream readOnlyFileNamed: 'dsa.test.out'.
 	[
 		[file atEnd] whileFalse: [
-			sig _ file nextChunk.
-			msg _ file nextChunk.
-			publicKey _ Compiler evaluate: file nextChunk.
+			sig := file nextChunk.
+			msg := file nextChunk.
+			publicKey := Compiler evaluate: file nextChunk.
 			(self verify: sig isSignatureOf: msg publicKey: publicKey) ifTrue: [
 				Transcript show: 'SUCCESS: ',msg; cr.
 			] ifFalse: [

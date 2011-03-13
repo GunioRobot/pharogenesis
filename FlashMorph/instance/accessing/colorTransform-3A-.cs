@@ -1,2 +1,0 @@
-colorTransform: aColorTransform
-	colorTransform := aColorTransform

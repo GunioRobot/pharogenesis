@@ -1,2 +1,3 @@
 initialize
-	destX _ destY _ leftMargin _ 0.
+	super initialize.
+	destX := destY := leftMargin := 0.

@@ -1,5 +1,5 @@
 beStraightSegments
 
 	smoothCurve == false ifFalse:
-		[smoothCurve _ false.
+		[smoothCurve := false.
 		self computeBounds]

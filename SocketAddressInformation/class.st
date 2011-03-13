@@ -1,0 +1,1 @@
+SocketAddressInformation class instanceVariableNames: ''

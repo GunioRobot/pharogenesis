@@ -7,6 +7,7 @@ changePriority
 	str := UIManager default 
 				request: 'New priority' 
 		  initialAnswer: selectedProcess priority asString.
+	str ifNil: [str := String new].
 	newPriority := str asNumber asInteger.
 	newPriority
 		ifNil: [^ self].

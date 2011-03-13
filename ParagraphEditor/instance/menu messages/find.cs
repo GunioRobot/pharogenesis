@@ -3,7 +3,7 @@ find
 
 	| reply |
 	reply := UIManager default request: 'Find what? ' translated initialAnswer: ''.
-	reply size == 0 ifTrue: [^ self].
+	reply isEmptyOrNil ifTrue: [^ self].
 	self setSearch: reply.
 	ChangeText := FindText.  "Implies no replacement to againOnce: method"
 	self againOrSame: true

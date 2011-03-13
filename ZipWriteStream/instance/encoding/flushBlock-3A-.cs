@@ -31,7 +31,7 @@ flushBlock: lastBlock
 
 	"Check which method to use"
 	method := self forcedMethod.
-	method == nil ifTrue:[
+	method ifNil:[
 		method := (storedLength < fixedLength and:[storedLength < dynamicLength]) 
 			ifTrue:[#stored]
 			ifFalse:[fixedLength < dynamicLength ifTrue:[#fixed] ifFalse:[#dynamic]]].

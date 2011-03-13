@@ -4,9 +4,9 @@ example
 	two selected points."
 
 	| aLine aForm |  
-	aForm _ Form extent: 20@20.		"make a form one quarter of inch square"
+	aForm := Form extent: 20@20.		"make a form one quarter of inch square"
 	aForm fillBlack.							"turn it black"
-	aLine _ Line new.
+	aLine := Line new.
 	aLine form: aForm.						"use the black form for display"
 	aLine beginPoint: Sensor waitButton. Sensor waitNoButton.
 	aForm displayOn: Display at: aLine beginPoint.	

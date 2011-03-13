@@ -1,2 +1,0 @@
-chooseFont
-	textMorph chooseFont

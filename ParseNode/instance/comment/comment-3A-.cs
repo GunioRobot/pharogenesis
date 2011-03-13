@@ -1,3 +1,3 @@
 comment: newComment
 
-	comment _ newComment
+	comment := newComment

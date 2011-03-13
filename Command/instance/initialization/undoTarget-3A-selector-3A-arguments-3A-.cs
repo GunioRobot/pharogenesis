@@ -3,6 +3,6 @@ undoTarget: target selector: selector arguments: arguments
 
 	target refineUndoTarget: target selector: selector arguments: arguments in:
 		[:rTarget :rSelector :rArguments |
-		undoTarget _ rTarget.
-		undoSelector _ rSelector.
-		undoArguments _ rArguments]
+		undoTarget := rTarget.
+		undoSelector := rSelector.
+		undoArguments := rArguments]

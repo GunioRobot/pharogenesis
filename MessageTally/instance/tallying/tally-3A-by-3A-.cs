@@ -1,7 +1,13 @@
 tally: context by: count
 	"Explicitly tally the specified context and its stack."
-	| root |
+	| sender |
+	
+	"Add to this node if appropriate"
 	context method == method ifTrue: [^self bumpBy: count].
-	(root _ context home sender) == nil
-		ifTrue: [^ (self bumpBy: count) tallyPath: context by: count].
-	^ (self tally: root by: count) tallyPath: context by: count
+	
+	"No sender? Add new branch to the tree."
+	(sender :=  context home sender)ifNil: [
+		^ (self bumpBy: count) tallyPath: context by: count].
+	
+	"Find the node for the sending context (or add it if necessary)"
+	^ (self tally: sender by: count) tallyPath: context by: count

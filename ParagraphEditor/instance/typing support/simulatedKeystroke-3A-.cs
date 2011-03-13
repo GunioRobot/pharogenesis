@@ -3,13 +3,10 @@ simulatedKeystroke: char
 
 	self deselect.
 	self openTypeIn.
-	self markBlock = self pointBlock ifFalse: [UndoSelection _ self selection].
+	self markBlock = self pointBlock ifFalse: [UndoSelection := self selection].
 	self zapSelectionWith:
 		(Text string: char asString emphasis: emphasisHere).
 	self userHasEdited.
 	self unselect.
 	self selectAndScroll.
 	self updateMarker.
-	view ifNotNil:
-		[view topView uncacheBits
-		"in mvc, this makes sure the recognized character shows up in the pane right now; in morphic, a different mechanism is used for the same effect -- see TextMorphEditor method #recognizeCharactersWhileMouseIn:"]

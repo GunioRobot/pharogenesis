@@ -1,2 +1,2 @@
 node: aMethodNode
-	node _ aMethodNode
+	node := aMethodNode

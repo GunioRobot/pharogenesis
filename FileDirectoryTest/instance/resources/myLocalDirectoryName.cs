@@ -1,3 +1,0 @@
-myLocalDirectoryName
-
-	^'zTestDir'

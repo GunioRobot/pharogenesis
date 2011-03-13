@@ -1,1 +1,0 @@
-SMPackageInstallationTask class instanceVariableNames: ''

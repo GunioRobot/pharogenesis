@@ -2,24 +2,27 @@ method: doit context: ctxt encoder: encoderToUse
 	" pattern [ | temporaries ] block => MethodNode."
 
 	| sap blk prim temps messageComment methodNode |
-	encoder _ encoderToUse.
-	sap _ self pattern: doit inContext: ctxt.
+	properties := AdditionalMethodState new.
+	encoder := encoderToUse.
+	sap := self pattern: doit inContext: ctxt.
 	"sap={selector, arguments, precedence}"
-	(sap at: 2) do: [:argNode | argNode isArg: true].
-	doit ifFalse: [ self pragmaSequence ].
-	temps _ self temporariesIn: (sap at: 1)..
-	messageComment _ currentComment.
-	currentComment _ nil.
-	doit ifFalse: [ self pragmaSequence ].
+	properties selector: (sap at: 1).
+	encoder selector: (sap at: 1).
+	(sap at: 2) do: [:argNode | argNode beMethodArg].
+	doit ifFalse: [self pragmaSequence].
+	temps := self temporaries.
+	messageComment := currentComment.
+	currentComment := nil.
+	doit ifFalse: [self pragmaSequence].
 	prim := self pragmaPrimitives.
 	self statements: #() innerBlock: doit.
-	blk _ parseNode.
+	blk := parseNode.
 	doit ifTrue: [blk returnLast]
-		ifFalse: [blk returnSelfIfNoOther].
+		ifFalse: [blk returnSelfIfNoOther: encoder].
 	hereType == #doIt ifFalse: [^self expected: 'Nothing more'].
 	self interactive ifTrue: [self removeUnusedTemps].
-	methodNode _ self newMethodNode comment: messageComment.
-	^ methodNode
+	methodNode := self newMethodNode comment: messageComment.
+	^methodNode
 		selector: (sap at: 1)
 		arguments: (sap at: 2)
 		precedence: (sap at: 3)

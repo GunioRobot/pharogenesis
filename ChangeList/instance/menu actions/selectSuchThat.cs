@@ -3,7 +3,7 @@ selectSuchThat
 	| code block |
 	code := UIManager default request: 'selection criteria for a change named aChangeRecord?\For instance, ''aChangeRecord category = ''System-Network''''' withCRs.
 
-	code isEmpty ifTrue: [^ self ].
+	code isEmptyOrNil ifTrue: [^ self ].
 
 	block := Compiler evaluate: '[:aChangeRecord | ', code, ']'.
 

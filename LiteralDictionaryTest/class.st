@@ -1,0 +1,1 @@
+LiteralDictionaryTest class instanceVariableNames: ''

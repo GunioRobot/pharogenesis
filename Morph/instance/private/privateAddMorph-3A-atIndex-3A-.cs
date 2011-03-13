@@ -3,9 +3,9 @@ privateAddMorph: aMorph atIndex: index
 	| oldIndex myWorld itsWorld oldOwner |
 	((index >= 1) and: [index <= (submorphs size + 1)])
 		ifFalse: [^ self error: 'index out of range'].
-	myWorld _ self world.
-	oldOwner _ aMorph owner.
-	(oldOwner == self and: [(oldIndex _ submorphs indexOf: aMorph) > 0]) ifTrue:[
+	myWorld := self world.
+	oldOwner := aMorph owner.
+	(oldOwner == self and: [(oldIndex := submorphs indexOf: aMorph) > 0]) ifTrue:[
 		"aMorph's position changes within in the submorph chain"
 		oldIndex < index ifTrue:[
 			"moving aMorph to back"
@@ -20,14 +20,14 @@ privateAddMorph: aMorph atIndex: index
 	] ifFalse:[
 		"adding a new morph"
 		oldOwner ifNotNil:[
-			itsWorld _ aMorph world.
+			itsWorld := aMorph world.
 			itsWorld ifNotNil: [self privateInvalidateMorph: aMorph].
 			(itsWorld == myWorld) ifFalse: [aMorph outOfWorld: itsWorld].
 			oldOwner privateRemove: aMorph.
 			oldOwner removedMorph: aMorph.
 		].
 		aMorph privateOwner: self.
-		submorphs _ submorphs copyReplaceFrom: index to: index-1 with: (Array with: aMorph).
+		submorphs := submorphs copyReplaceFrom: index to: index-1 with: (Array with: aMorph).
 		(itsWorld == myWorld) ifFalse: [aMorph intoWorld: myWorld].
 	].
 	myWorld ifNotNil:[self privateInvalidateMorph: aMorph].

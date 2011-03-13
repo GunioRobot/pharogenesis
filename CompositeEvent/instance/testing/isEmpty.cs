@@ -1,2 +1,0 @@
-isEmpty
-	^ self timedEvents isEmpty

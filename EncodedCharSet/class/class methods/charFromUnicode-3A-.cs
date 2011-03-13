@@ -3,8 +3,8 @@ charFromUnicode: unicode
 	| table index |
 	unicode < 128 ifTrue: [^ Character value: unicode].
 
-	table _ self ucsTable.
-	index _ table indexOf: unicode.
+	table := self ucsTable.
+	index := table indexOf: unicode.
 	index = 0 ifTrue: [
 		^ nil.
 	].

@@ -1,7 +1,7 @@
 regularColor
 	
 	| val |
-	^ (val _ self valueOfProperty: #regularColor)
+	^ (val := self valueOfProperty: #regularColor)
 		ifNotNil:
 			[val ifNil: [self error: 'nil regularColor']]
 		ifNil:

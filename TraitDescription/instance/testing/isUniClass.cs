@@ -1,2 +1,0 @@
-isUniClass
-	^false

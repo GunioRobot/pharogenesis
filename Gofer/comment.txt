@@ -1,0 +1,51 @@
+: Gofer, a person who runs errands. Origin 1960s: from go for, i.e. go and fetch.
+: ''The New Oxford American Dictionary''
+
+Gofer is a small tool on top of Monticello that loads, updates, merges, diffs, reverts, commits, recompiles and unloads groups of Monticello packages. Contrary to existing tools Gofer makes sure that these operations are performed as clean as possible:
+
+- Gofer treats packages from one or more repository in one operation.
+- Gofer works with fixed versions or tries to find the "latest" version using a given name prefix.
+- Gofer automatically assigns repositories to all packages, so that the other tools are ready to be used on individual packages.
+- Gofer makes sure that there is only one repository instance registered for a single physical location.
+- Gofer works with Monticello dependencies and uniformly treats them like the primary package.
+- Gofer cleans up after Monticello, no empty class categories and no empty method protocols are to be expected.
+
+To get started with Gofer in Pharo use the following script:
+
+== ScriptLoader new installGofer
+
+To use Gofer to load the "latest" Seaside 2.8 packages (==addPackage:==) together with exact versions of its prerequisites (==addVersion:==) one would write and evaluate the following code:
+
+== Gofer new
+==     squeaksource: 'KomHttpServer';
+==     addVersion: 'DynamicBindings-gc.7';
+==     addVersion: 'KomServices-gc.19';
+==     addVersion: 'KomHttpServer-gc.32';
+==     squeaksource: 'Seaside';
+==     addPackage: 'Seaside2.8a';
+==     addPackage: 'Scriptaculous';
+==     load
+
+However, this is only the beginning. Developers might want to keep the Gofer specification in a workspace to perform other actions on the specified set of packages:
+
+== gofer := Gofer new.
+== gofer
+==     squeaksource: 'KomHttpServer';
+==     addVersion: 'DynamicBindings-gc.7';
+==     addVersion: 'KomServices-gc.19';
+==     addVersion: 'KomHttpServer-gc.32';
+==     squeaksource: 'Seaside';
+==     addPackage: 'Seaside2.8a';
+==     addPackage: 'Scriptaculous'.
+
+Now the following expressions can be used at any time:
+
+| ==gofer load== | Load all packages.
+| ==gofer update== | Update all packages.
+| ==gofer merge== | Merge all packages into their working copies.
+| ==gofer diff== | Display the difference between the working copy and the base version of all packages.
+| ==gofer commit== | Commit all modified packages.
+| ==gofer commit: aString== | Commit all modified packages with the commit comment aString.
+| ==gofer revert== | Revert all packages to their base version.
+| ==gofer recompile== | Recompile all packages.
+| ==gofer unload== | Unload all packages.

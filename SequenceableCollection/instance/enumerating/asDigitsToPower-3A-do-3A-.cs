@@ -5,5 +5,5 @@ asDigitsToPower: anInteger do: aBlock
 	"(0 to: 1) asDigitsToPower: 4 do: [:each | Transcript cr; show: each printString]"
 
 	| aCollection |
-	aCollection _ Array new: anInteger.
+	aCollection := Array new: anInteger.
 	self asDigitsAt: 1 in: aCollection do: aBlock

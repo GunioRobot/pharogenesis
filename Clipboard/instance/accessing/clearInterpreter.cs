@@ -1,3 +1,0 @@
-clearInterpreter
-
-	interpreter _ nil.

@@ -10,17 +10,17 @@ writeForExportWithSourcesGZ: fName inDirectory: aDirectory
 	state = #activeCopy ifFalse: [self error: 'wrong state'].
 	(fName includes: $.) ifFalse: [
 		^ self inform: 'Please use ''.pr'' or ''.extSeg'' at the end of the file name'.].
-	temp _ endMarker.
-	endMarker _ nil.
-	fileStream _ GZipSurrogateStream newFileNamed: fName inDirectory: aDirectory.
+	temp := endMarker.
+	endMarker := nil.
+	fileStream := GZipSurrogateStream newFileNamed: fName inDirectory: aDirectory.
 	fileStream fileOutClass: nil andObject: self.
 		"remember extra structures.  Note class names."
-	endMarker _ temp.
+	endMarker := temp.
 
 	"append sources"
-	allClassesInRoots _ arrayOfRoots select: [:cls | cls isKindOf: Behavior].
-	classesToWriteEntirely _ allClassesInRoots select: [ :cls | cls theNonMetaClass isSystemDefined].
-	methodsWithSource _ OrderedCollection new.
+	allClassesInRoots := arrayOfRoots select: [:cls | cls isKindOf: Behavior].
+	classesToWriteEntirely := allClassesInRoots select: [ :cls | cls theNonMetaClass isSystemDefined].
+	methodsWithSource := OrderedCollection new.
 	allClassesInRoots do: [ :cls |
 		(classesToWriteEntirely includes: cls) ifFalse: [
 			cls selectorsAndMethodsDo: [ :sel :meth |

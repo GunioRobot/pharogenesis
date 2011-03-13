@@ -1,3 +1,3 @@
 makeBackArrow
-	arrows _ #back.
+	arrows := #back.
 	self computeBounds

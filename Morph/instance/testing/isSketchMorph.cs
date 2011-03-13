@@ -1,2 +1,0 @@
-isSketchMorph
-	^self class isSketchMorphClass

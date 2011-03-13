@@ -4,5 +4,5 @@ makeSelectorBoldIn: aClass
 
 	| parser |
 	string size = 0 ifTrue: [^self].
-	(parser _ aClass parserClass new) parseSelector: string.
+	(parser := aClass parserClass new) parseSelector: string.
 	self makeBoldFrom: 1 to: (parser endOfLastToken min: string size)

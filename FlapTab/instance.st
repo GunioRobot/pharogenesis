@@ -4,4 +4,4 @@ ReferenceMorph
 		'flapShowing edgeToAdhereTo slidesOtherObjects popOutOnDragOver popOutOnMouseOver inboard dragged lastReferentThickness edgeFraction labelString'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'MorphicExtras-Flaps'
+	category: 'Morphic-Worlds'

@@ -3,17 +3,17 @@ ellipse: evt
 
 	| rect oldRect ww ext oldExt cColor sOrigin priorEvt |
 
-	sOrigin _ self get: #strokeOrigin for: evt.
-	cColor _ self getColorFor: evt.
-	ext _ (sOrigin - evt cursorPoint) abs * 2.
-	evt shiftPressed ifTrue: [ext _ self shiftConstrainPoint: ext].
-	rect _ Rectangle center: sOrigin extent: ext.
-	ww _ (self getNibFor: evt) width.
-	(priorEvt _ self get: #lastEvent for: evt) ifNotNil: [
-		oldExt _ (sOrigin - priorEvt cursorPoint) abs + ww * 2.
-		priorEvt shiftPressed ifTrue: [oldExt _ self shiftConstrainPoint: oldExt].
+	sOrigin := self get: #strokeOrigin for: evt.
+	cColor := self getColorFor: evt.
+	ext := (sOrigin - evt cursorPoint) abs * 2.
+	evt shiftPressed ifTrue: [ext := self shiftConstrainPoint: ext].
+	rect := Rectangle center: sOrigin extent: ext.
+	ww := (self getNibFor: evt) width.
+	(priorEvt := self get: #lastEvent for: evt) ifNotNil: [
+		oldExt := (sOrigin - priorEvt cursorPoint) abs + ww * 2.
+		priorEvt shiftPressed ifTrue: [oldExt := self shiftConstrainPoint: oldExt].
 		(oldExt < ext) ifFalse: ["Last draw sticks out, must erase the area"
-			oldRect _ Rectangle center: sOrigin extent: oldExt.
+			oldRect := Rectangle center: sOrigin extent: oldExt.
 			self restoreRect: oldRect]].
 	cColor == Color transparent
 		ifFalse:

@@ -1,11 +1,12 @@
 initialize
 	| fd pvt |
-	originalMap _ IdentityDictionary new.
-	stubMap _ IdentityDictionary new.
-	locatorMap _ IdentityDictionary new.
-	internalStubs _ IdentityDictionary new.
-	fd _ ScriptingSystem formDictionary.
-	pvt _ ScriptingSystem privateGraphics asSet.
+	super initialize.
+	originalMap := IdentityDictionary new.
+	stubMap := IdentityDictionary new.
+	locatorMap := IdentityDictionary new.
+	internalStubs := IdentityDictionary new.
+	fd := ScriptingSystem formDictionary.
+	pvt := ScriptingSystem privateGraphics asSet.
 	fd keysAndValuesDo:[:sel :form|
 		(pvt includes: sel) ifFalse:[
 			internalStubs at: form put:

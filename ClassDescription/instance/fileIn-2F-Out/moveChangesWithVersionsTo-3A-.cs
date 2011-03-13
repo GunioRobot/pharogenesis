@@ -4,7 +4,7 @@ moveChangesWithVersionsTo: newFile
 	should be moved to newFile."
 
 	| changes |
-	changes _ self methodDict keys select: [:sel | (self methodDict at: sel) fileIndex > 1].
+	changes := self methodDict keys select: [:sel | (self methodDict at: sel) fileIndex > 1].
 	self fileOutChangedMessagesHistorically: changes
 		on: newFile
 		moveSource: true

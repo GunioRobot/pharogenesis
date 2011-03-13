@@ -1,2 +1,2 @@
-characterPointSetX: xVal
-	characterPoint _ xVal @ characterPoint y
+characterPointSetX: xVal 
+	characterPoint := xVal @ characterPoint y

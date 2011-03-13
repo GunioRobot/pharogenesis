@@ -1,8 +1,8 @@
 from: textOrStream class: aClass context: aContext notifying: req
 
 	(textOrStream isKindOf: PositionableStream)
-		ifTrue: [sourceStream _ textOrStream]
-		ifFalse: [sourceStream _ ReadStream on: textOrStream asString].
-	class _ aClass.
-	context _ aContext.
-	requestor _ req
+		ifTrue: [sourceStream := textOrStream]
+		ifFalse: [sourceStream := textOrStream asString readStream].
+	class := aClass.
+	context := aContext.
+	requestor := req

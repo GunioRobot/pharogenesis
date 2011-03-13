@@ -2,7 +2,7 @@ destroyFlap
 	"Destroy the receiver"
 
 	| reply request |
-	request _ self isGlobalFlap
+	request := self isGlobalFlap
 		ifTrue:
 			['Caution -- this would permanently
 remove this flap, so it would no longer be
@@ -11,7 +11,7 @@ Do you really want to this? ']
 		ifFalse:
 			['Caution -- this is permanent!  Do
 you really want to do this? '].
-	reply _ self confirm: request translated orCancel: [^ self].
+	reply := self confirm: request translated orCancel: [^ self].
 	reply ifTrue:
 		[self isGlobalFlap
 			ifTrue:

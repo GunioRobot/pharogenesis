@@ -3,7 +3,7 @@ use: cachedSelector orMakeModelSelectorFor: selectorBody in: selectorBlock
 	model ifNil: [^ nil].
 	cachedSelector ifNil:
 			["Make up selector from slotname if any"
-			selector _ (slotName ifNil: [selectorBody]
+			selector := (slotName ifNil: [selectorBody]
 								ifNotNil: [slotName , selectorBody]) asSymbol.
 			(model class canUnderstand: selector) ifFalse:
 				[(self confirm: 'Shall I compile a null response for'
@@ -18,5 +18,5 @@ use: cachedSelector orMakeModelSelectorFor: selectorBody in: selectorBlock
 							classified: 'input events'
 							notifying: nil]]
 		ifNotNil:
-			[selector _ cachedSelector].
+			[selector := cachedSelector].
 	^ selectorBlock value: selector

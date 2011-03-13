@@ -1,7 +1,11 @@
 isFontAvailable
-	| encoding |
+	| encoding f |
 	encoding := self leadingChar + 1.
-	TextStyle defaultFont fontArray
-		at: encoding
-		ifAbsent: [^ false].
-	^ true
+	f := TextStyle defaultFont.
+	f isFontSet ifTrue: [
+		f fontArray
+			at: encoding
+			ifAbsent: [^ false].
+		^ true
+	].
+	^ encoding = 1

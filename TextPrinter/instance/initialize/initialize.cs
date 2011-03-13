@@ -7,4 +7,4 @@ initialize
 	self columns: 1.
 	self noHeader: false.
 	self noFooter: false.
-	self documentTitle: 'Squeak Document (from ', Date today printString,')'.
+	self documentTitle: 'Pharo Document (from ', Date today printString,')'.

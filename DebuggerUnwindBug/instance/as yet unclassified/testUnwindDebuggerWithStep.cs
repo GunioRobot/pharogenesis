@@ -1,5 +1,6 @@
 testUnwindDebuggerWithStep
 	"test if unwind blocks work properly when a debugger is closed"
+	"self debug:#testUnwindDebuggerWithStep"
 	| sema process debugger top |
 	sema := Semaphore forMutualExclusion.
 	self assert: sema isSignaled.

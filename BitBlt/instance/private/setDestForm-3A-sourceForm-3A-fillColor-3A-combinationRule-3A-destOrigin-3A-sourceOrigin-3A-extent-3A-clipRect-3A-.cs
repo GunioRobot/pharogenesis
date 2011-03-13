@@ -1,21 +1,19 @@
-setDestForm: df sourceForm: sf fillColor: hf combinationRule: cr destOrigin: destOrigin sourceOrigin: sourceOrigin extent: extent clipRect: clipRect
-
+setDestForm: df sourceForm: sf fillColor: hf combinationRule: cr destOrigin: destOrigin sourceOrigin: sourceOrigin extent: extent clipRect: clipRect 
 	| aPoint |
-	destForm _ df.
-	sourceForm _ sf.
+	destForm := df.
+	sourceForm := sf.
 	self fillColor: hf.	"sets halftoneForm"
-	combinationRule _ cr.
-	destX _ destOrigin x.
-	destY _ destOrigin y.
-	sourceX _ sourceOrigin x.
-	sourceY _ sourceOrigin y.
-	width _ extent x.
-	height _ extent y.
-	aPoint _ clipRect origin.
-	clipX _ aPoint x.
-	clipY _ aPoint y.
-	aPoint _ clipRect corner.
-	clipWidth _ aPoint x - clipX.
-	clipHeight _ aPoint y - clipY.
-	sourceForm == nil ifFalse:
-		[colorMap _ sourceForm colormapIfNeededFor: destForm]
+	combinationRule := cr.
+	destX := destOrigin x.
+	destY := destOrigin y.
+	sourceX := sourceOrigin x.
+	sourceY := sourceOrigin y.
+	width := extent x.
+	height := extent y.
+	aPoint := clipRect origin.
+	clipX := aPoint x.
+	clipY := aPoint y.
+	aPoint := clipRect corner.
+	clipWidth := aPoint x - clipX.
+	clipHeight := aPoint y - clipY.
+	sourceForm == nil ifFalse: [ colorMap := sourceForm colormapIfNeededFor: destForm ]

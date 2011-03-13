@@ -2,6 +2,6 @@ popUpEvent: evt in: aWorld
 	"Present this menu in response to the given event."
 
 	| aHand aPosition |
-	aHand _ evt ifNotNil: [evt hand] ifNil: [ActiveHand].
-	aPosition _ aHand position truncated.
+	aHand := evt ifNotNil: [evt hand] ifNil: [ActiveHand].
+	aPosition := aHand position truncated.
 	^ self popUpAt: aPosition forHand: aHand in: aWorld

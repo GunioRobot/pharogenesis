@@ -8,8 +8,8 @@ constUsingData1Value
 		((answers at: ii) class superclass == Boolean) ifFalse: [^ false]].
 
 	thisData do: [:datums | 
-		const _ datums first.	"use data as a constant!"
-		got _ (subTest _ MethodFinder new copy: self addArg: const) 
+		const := datums first.	"use data as a constant!"
+		got := (subTest := MethodFinder new copy: self addArg: const) 
 					searchForOne isEmpty not.
 		got ifTrue: [
 			"replace data2 with const in expressions"

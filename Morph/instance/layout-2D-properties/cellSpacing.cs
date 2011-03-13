@@ -7,5 +7,5 @@ cellSpacing
 		#none - cells are sized based on available row/column constraints
 	"
 	| props |
-	props _ self layoutProperties.
+	props := self layoutProperties.
 	^props ifNil:[#none] ifNotNil:[props cellSpacing].

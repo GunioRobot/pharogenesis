@@ -1,3 +1,0 @@
-hash
-
-	^ method hash

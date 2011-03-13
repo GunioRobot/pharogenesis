@@ -1,0 +1,1 @@
+LogicalFont class instanceVariableNames: 'all'

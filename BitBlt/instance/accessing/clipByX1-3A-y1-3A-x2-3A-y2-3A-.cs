@@ -1,12 +1,12 @@
-clipByX1: x1 y1: y1 x2: x2 y2: y2
+clipByX1: x1 y1: y1 x2: x2 y2: y2 
 	| right bottom |
-	right _ clipX + clipWidth.
-	bottom _ clipY + clipHeight.
-	x1 > clipX ifTrue:[clipX _ x1].
-	y1 > clipY ifTrue:[clipY _ y1].
-	x2 < right ifTrue:[right _ x2].
-	y2 < bottom ifTrue:[bottom _ y2].
-	clipWidth _ right - clipX.
-	clipHeight _ bottom - clipY.
-	clipWidth < 0 ifTrue:[clipWidth _ 0].
-	clipHeight < 0 ifTrue:[clipHeight _ 0].
+	right := clipX + clipWidth.
+	bottom := clipY + clipHeight.
+	x1 > clipX ifTrue: [ clipX := x1 ].
+	y1 > clipY ifTrue: [ clipY := y1 ].
+	x2 < right ifTrue: [ right := x2 ].
+	y2 < bottom ifTrue: [ bottom := y2 ].
+	clipWidth := right - clipX.
+	clipHeight := bottom - clipY.
+	clipWidth < 0 ifTrue: [ clipWidth := 0 ].
+	clipHeight < 0 ifTrue: [ clipHeight := 0 ]

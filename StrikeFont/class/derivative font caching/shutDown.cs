@@ -1,5 +1,6 @@
-shutDown  "StrikeFont shutDown"
+shutDown
+	"StrikeFont shutDown"
 	"Deallocate synthetically derived copies of base fonts to save space"
-	self allSubInstancesDo: [:sf | sf reset].
-	StrikeFontSet allSubInstancesDo: [:sf | sf reset].
-	DefaultStringScanner _ nil.
+	self allSubInstancesDo: [ :sf | sf reset ].
+	StrikeFontSet allSubInstancesDo: [ :sf | sf reset ].
+	DefaultStringScanner := nil

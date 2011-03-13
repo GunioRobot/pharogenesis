@@ -1,0 +1,1 @@
+UIThemeW2K class instanceVariableNames: 'windowColor'

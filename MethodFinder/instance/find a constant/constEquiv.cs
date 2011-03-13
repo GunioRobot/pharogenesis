@@ -7,13 +7,13 @@ constEquiv
 	2 to: answers size do: [:ii | 
 		((answers at: ii) class superclass == Boolean) ifFalse: [^ false]].
 
-	const _ (thisData at: 1) at: 1.
-	got _ (subTest _ MethodFinder new copy: self addArg: const) 
+	const := (thisData at: 1) at: 1.
+	got := (subTest := MethodFinder new copy: self addArg: const) 
 				searchForOne isEmpty not.
 	got ifFalse: ["try other polarity for ~~ "
-		(jj _ answers indexOf: (answers at: 1) not) > 0 ifTrue: [
-		const _ (thisData at: jj) at: 1.
-		got _ (subTest _ MethodFinder new copy: self addArg: const) 
+		(jj := answers indexOf: (answers at: 1) not) > 0 ifTrue: [
+		const := (thisData at: jj) at: 1.
+		got := (subTest := MethodFinder new copy: self addArg: const) 
 				searchForOne isEmpty not]]. 
 	got ifFalse: [^ false]. 
 

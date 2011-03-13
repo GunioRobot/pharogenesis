@@ -1,8 +1,8 @@
 setFillColor: aColor
 	"Install a new color used for filling."
 	| screen patternWord fillColor |
-	fillColor _ self shadowColor ifNil:[aColor].
-	fillColor ifNil:[fillColor _ Color transparent].
+	fillColor := self shadowColor ifNil:[aColor].
+	fillColor ifNil:[fillColor := Color transparent].
 	fillColor isColor ifFalse:[
 		(fillColor isKindOf: InfiniteForm) ifFalse:[^self error:'Cannot install color'].
 		^port fillPattern: fillColor; combinationRule: Form over].
@@ -25,7 +25,7 @@ setFillColor: aColor
 			ifFalse:[port combinationRule: Form blend].
 		^self].
 	"Can't represent actual transparency -- use stipple pattern"
-	screen _ Color translucentMaskFor: fillColor alpha depth: self depth.
-	patternWord _ form pixelWordFor: fillColor.
+	screen := Color translucentMaskFor: fillColor alpha depth: self depth.
+	patternWord := form pixelWordFor: fillColor.
 	port fillPattern: (screen collect: [:maskWord | maskWord bitAnd: patternWord]).
 	port combinationRule: Form paint.

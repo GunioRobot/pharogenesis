@@ -1,3 +1,3 @@
 smoothing: cellSize
-	smoothing _ cellSize.
+	smoothing := cellSize.
 	self changed

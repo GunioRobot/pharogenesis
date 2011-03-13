@@ -1,8 +1,10 @@
 associate: tokens
 	| result |
-	result _ Dictionary new.
+	result := Dictionary new.
 	tokens pairsDo: [:key :value | 
-					value isString ifFalse: [value _ value collect: [:ea | self associate: ea]].
-					value = 'nil' ifTrue: [value _ ''].
-					result at: key put: value].
+					| tmp |
+					tmp := value.
+					value isString ifFalse: [tmp := value collect: [:ea | self associate: ea]].
+					value = 'nil' ifTrue: [tmp := ''].
+					result at: key put: tmp].
 	^ result

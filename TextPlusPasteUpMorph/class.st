@@ -1,1 +1,0 @@
-TextPlusPasteUpMorph class instanceVariableNames: ''

@@ -2,7 +2,7 @@ addRotationScaleHandles
 
 	"Rotation and scaling handles"
 
-	rotationButton _ SketchMorph withForm: (palette rotationTabForm).
+	rotationButton := SketchMorph withForm: (palette rotationTabForm).
 	rotationButton position: bounds topCenter - (6@0).
 	rotationButton on: #mouseDown send: #rotateScalePrep: to: self.
 	rotationButton on: #mouseMove send: #rotateBy: to: self.
@@ -15,7 +15,7 @@ addRotationScaleHandles
 rotate your
 picture.' translated.
 
-	scaleButton _ SketchMorph withForm: (palette scaleTabForm).
+	scaleButton := SketchMorph withForm: (palette scaleTabForm).
 	scaleButton position: bounds rightCenter - ((scaleButton width)@6).
 	scaleButton on: #mouseDown send: #rotateScalePrep: to: self.
 	scaleButton on: #mouseMove send: #scaleBy: to: self.
@@ -28,8 +28,8 @@ the size
 of your picture.' translated.
 
 "REMOVED:
-	fwdButton _ PolygonMorph new.
-	pt _ bounds topCenter.
+	fwdButton := PolygonMorph new.
+	pt := bounds topCenter.
 	fwdButton borderWidth: 2; makeOpen; makeBackArrow; borderColor:
 (Color r: 0 g: 0.8 b: 0).
 	fwdButton removeHandles; setVertices: (Array with: pt+(0@7) with:
@@ -43,7 +43,7 @@ pt+(0@22)).
 in the direction
 I go forward.' translated.
 
-	toggle _ EllipseMorph
+	toggle := EllipseMorph
 		newBounds: (Rectangle center: fwdButton vertices last +
 (-4@4) extent: 8@8)
 		color: Color gray.

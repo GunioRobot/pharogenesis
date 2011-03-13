@@ -3,4 +3,4 @@ removeHandles
 
 	handles ifNotNil: [
 		handles do: [:h | h delete].
-		handles _ nil].
+		handles := nil].

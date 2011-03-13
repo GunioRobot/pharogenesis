@@ -1,2 +1,2 @@
 localDirectory: aDirectory
-	localDirectory _ aDirectory
+	localDirectory := aDirectory

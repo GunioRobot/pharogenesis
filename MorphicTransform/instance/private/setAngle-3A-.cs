@@ -1,3 +1,2 @@
-setAngle: aFloat
-
-	angle _ aFloat.
+setAngle: aFloat 
+	angle := aFloat

@@ -3,8 +3,8 @@ initChunkSize: aChunkSize size: aSize arrayClass: aClass base: b defaultValue: d
 	| lastChunkSize |
 	chunkSize := aChunkSize.
 	size := aSize.
-	base _ b.
-	defaultValue _ d.
+	base := b.
+	defaultValue := d.
 	1 to: (self basicSize - 1) do: [ :in | self basicAt: in put: (aClass new: chunkSize withAll: defaultValue) ].
 	lastChunkSize := size \\ chunkSize.
 	lastChunkSize = 0 ifTrue: [lastChunkSize := chunkSize].

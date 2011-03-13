@@ -3,19 +3,19 @@ lookupCachedResource: cachedUrlString ifPresentDo: streamBlock
 	|  urlString candidates url stream |
 	CachedResources ifNil:[^self].
 
-	candidates _ CachedResources at: cachedUrlString ifAbsent:[nil].
+	candidates := CachedResources at: cachedUrlString ifAbsent:[nil].
 	(self lookupCachedResource: cachedUrlString in: candidates ifPresentDo: streamBlock)
 		ifTrue: [^self].
 
-	urlString _ self relocatedExternalResource: cachedUrlString.
+	urlString := self relocatedExternalResource: cachedUrlString.
 	urlString ifNil: [^self].
-	candidates _ CachedResources at: urlString ifAbsent:[nil].
+	candidates := CachedResources at: urlString ifAbsent:[nil].
 	candidates
 		ifNil: [
-			(url _ urlString asUrl) schemeName = 'file'
+			(url := urlString asUrl) schemeName = 'file'
 				ifTrue: [
-					stream _ [FileStream readOnlyFileNamed: url pathForFile] 
-							on: FileDoesNotExistException do:[:ex| ex return: nil].
+					stream := [FileStream readOnlyFileNamed: url pathForFile] 
+								on: FileDoesNotExistException do:[:ex| ex return: nil].
 					stream
 						ifNotNil: [[streamBlock value: stream] ensure: [stream close]]]]
 		ifNotNil: [self lookupCachedResource: urlString in: candidates ifPresentDo: streamBlock]

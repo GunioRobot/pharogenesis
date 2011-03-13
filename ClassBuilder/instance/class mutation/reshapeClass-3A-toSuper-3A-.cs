@@ -7,7 +7,7 @@ reshapeClass: oldClass toSuper: newSuper
 	please let me know so I can put a comment here..."
 	oldClass becomeUncompact.
 
-	instVars _ instVarMap at: oldClass name ifAbsent:[oldClass instVarNames].
+	instVars := instVarMap at: oldClass name ifAbsent:[oldClass instVarNames].
 
 	^self newSubclassOf: newSuper 
 			type: oldClass typeOfClass 

@@ -1,2 +1,2 @@
 transform: aTransform
-	transform _ aTransform.
+	transform := aTransform.

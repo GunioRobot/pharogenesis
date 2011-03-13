@@ -1,3 +1,0 @@
-filterSafelyAvailable
-	
-	^[:package | package isSafelyAvailable]

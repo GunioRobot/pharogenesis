@@ -1,7 +1,7 @@
 asString
 	| result data |
-	data _ String new: 36.
-	result _ WriteStream on: data.
+	data := String new: 36.
+	result := data writeStream.
 	1 to: 4 do:[:i| self printHexAt: i to: result].
 	result nextPut: $-.
 	5 to: 6 do:[:i| self printHexAt: i to: result].

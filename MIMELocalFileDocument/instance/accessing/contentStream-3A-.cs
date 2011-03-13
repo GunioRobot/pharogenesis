@@ -1,3 +1,3 @@
 contentStream: aFileStream
-	contentStream _ aFileStream.
-	content _ nil.
+	contentStream := aFileStream.
+	contents := nil.

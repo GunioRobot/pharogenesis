@@ -1,3 +1,3 @@
 form: aForm
 
-	patternForm _ aForm
+	patternForm := aForm

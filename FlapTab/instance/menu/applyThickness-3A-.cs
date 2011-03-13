@@ -1,6 +1,6 @@
 applyThickness: newThickness
 	| toUse |
-	toUse _ newThickness asNumber max: 0.
+	toUse := newThickness asNumber max: 0.
 	(self orientation == #vertical)
 			ifTrue:
 				[referent width: toUse]

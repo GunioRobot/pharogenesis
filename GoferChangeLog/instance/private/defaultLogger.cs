@@ -1,0 +1,2 @@
+defaultLogger
+	^Transcript

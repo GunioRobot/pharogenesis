@@ -3,8 +3,8 @@ nextRandom160
 	"Details: Try again in the extremely unlikely chance that zero is encountered."
 
 	| result |
-	result _ 0.
+	result := 0.
 	[result = 0] whileTrue: [
-		result _ SecureHashAlgorithm new hashInteger: randKey seed: randSeed.
-		randKey _ randKey + result + 1].
+		result := SecureHashAlgorithm new hashInteger: randKey seed: randSeed.
+		randKey := randKey + result + 1].
 	^ result

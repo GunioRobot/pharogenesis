@@ -1,2 +1,2 @@
 superclasses: anObject
-	superclasses _ anObject
+	superclasses := anObject

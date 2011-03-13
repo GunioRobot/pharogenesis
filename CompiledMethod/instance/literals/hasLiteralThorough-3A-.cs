@@ -1,11 +1,13 @@
-hasLiteralThorough: aLiteral
-	"Answer true if any literal in this method is literal, even if embedded in array structure or within its pragmas."
+hasLiteralThorough: literal
+	"Answer true if any literal in this method is literal,
+	even if embedded in array structure."
 
-	| literal |
-	self pragmas do: [ :pragma |
-		(pragma hasLiteral: aLiteral) ifTrue: [ ^ true ] ].
-	2 to: self numLiterals + 1 do: [ :index | 
-		literal := self objectAt: index.
-		literal == aLiteral  ifTrue: [ ^ true ].
-		(literal hasLiteralThorough: aLiteral) ifTrue: [ ^ true ] ].
-	^ false.
+	(self penultimateLiteral isMethodProperties
+	 and: [self penultimateLiteral hasLiteralThorough: literal]) ifTrue:[^true].
+	2 to: self numLiterals - 1 "exclude superclass + selector/properties"
+	   do:[:index | | lit |
+		((lit := self objectAt: index) == literal
+		 or: [(lit isVariableBinding and: [lit key == literal])
+		 or: [lit isArray and: [lit hasLiteral: literal]]]) ifTrue:
+			[^ true]].
+	^ false 

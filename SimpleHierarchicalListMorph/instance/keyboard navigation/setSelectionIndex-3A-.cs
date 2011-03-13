@@ -3,5 +3,5 @@ setSelectionIndex: idx
 	| theMorph index |
 	idx ifNil: [^ self].
 	index := idx min: scroller submorphs size max: 0.
-	theMorph _ index = 0 ifTrue: [nil] ifFalse: [scroller submorphs at: index].
+	theMorph := index = 0 ifTrue: [nil] ifFalse: [scroller submorphs at: index].
 	self setSelectedMorph: theMorph.

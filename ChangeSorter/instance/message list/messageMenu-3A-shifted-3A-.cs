@@ -4,7 +4,7 @@ messageMenu: aMenu shifted: shifted
 	shifted ifTrue: [^ self shiftedMessageMenu: aMenu].
 
 	aMenu title: 'message list'.
-	Smalltalk isMorphic ifTrue: [aMenu addStayUpItemSpecial].
+	aMenu addStayUpItemSpecial.
 
 	parent ifNotNil:
 		[aMenu addList: #(
@@ -22,7 +22,6 @@ messageMenu: aMenu shifted: shifted
 			('browse protocol (p)'				browseFullProtocol)
 			-
 			('fileOut'							fileOutMessage)
-			('printOut'							printOutMessage)
 			-
 			('senders of... (n)'					browseSendersOfMessages)
 			('implementors of... (m)'				browseMessages)

@@ -1,5 +1,5 @@
 testDo
-	"self run: #testDo"
+	"self run: #testDo" 
 
 	| heap coll |
 	heap := Heap withAll: #(1 3 5).

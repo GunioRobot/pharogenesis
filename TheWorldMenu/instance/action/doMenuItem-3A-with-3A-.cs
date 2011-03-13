@@ -1,11 +1,10 @@
 doMenuItem: aCollection with: event
 	| realTarget selector nArgs |
-	selector _ aCollection second.
-	nArgs _ selector numArgs.
-	realTarget _ aCollection first.
-	realTarget == #myWorld ifTrue: [realTarget _ myWorld].
-	realTarget == #myHand ifTrue: [realTarget _ myHand].
-	realTarget == #myProject ifTrue: [realTarget _ self projectForMyWorld].
+	selector := aCollection second.
+	nArgs := selector numArgs.
+	realTarget := aCollection first.
+	realTarget == #myWorld ifTrue: [realTarget := myWorld].
+	realTarget == #myHand ifTrue: [realTarget := myHand].
 	^nArgs = 0 
 		ifTrue:[realTarget perform: selector]
 		ifFalse:[realTarget perform: selector with: event].

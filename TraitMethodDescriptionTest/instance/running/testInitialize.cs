@@ -1,6 +1,6 @@
 testInitialize
 	| empty |
-	empty _ TraitMethodDescription new.
+	empty := TraitMethodDescription new.
 	self assert: empty isEmpty.
 	self deny: empty isConflict.
 	self deny: empty isProvided.

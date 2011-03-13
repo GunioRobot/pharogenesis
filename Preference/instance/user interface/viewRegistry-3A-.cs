@@ -1,2 +1,2 @@
 viewRegistry: aRegistry
-	viewRegistry _ aRegistry
+	viewRegistry := aRegistry

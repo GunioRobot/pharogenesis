@@ -1,12 +1,12 @@
 addTree: aFileNameOrDirectory removingFirstCharacters: n match: aBlock
-	| dir newMember fullPath relativePath |
+	| dir fullPath relativePath |
 	dir := (aFileNameOrDirectory isString)
 		ifTrue: [ FileDirectory on: aFileNameOrDirectory ]
 		ifFalse: [ aFileNameOrDirectory ].
 	fullPath := dir pathName, dir slash.
 	relativePath := fullPath copyFrom: n + 1 to: fullPath size.
 	(dir entries select: [ :entry | aBlock value: entry])
-		do: [ :ea | | fullName |
+		do: [ :ea | | fullName newMember |
 		fullName := fullPath, ea name.
 		newMember := ea isDirectory
 				ifTrue: [ self memberClass newFromDirectory: fullName ]

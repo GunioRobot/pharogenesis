@@ -1,5 +1,4 @@
 invokeWorldMenu: evt
-	"Put up the world menu, triggered by the passed-in event.  But don't do it if the eToyFriendly preference is set to true."
+	"Put up the world menu, triggered by the passed-in event."
 
-	Preferences eToyFriendly ifFalse:
-		[self putUpWorldMenu: evt]
+	self putUpWorldMenu: evt

@@ -5,14 +5,14 @@ saveUpdate: doc onFile: fileName
 
 	(FileDirectory default directoryNames includes: 'updates') ifFalse:
 		[FileDirectory default createDirectory: 'updates'].
-	updateDirectory _ FileDirectory default directoryNamed: 'updates'.
+	updateDirectory := FileDirectory default directoryNamed: 'updates'.
 
-	fName _ fileName.
+	fName := fileName.
 	(Preferences valueOfFlag: #updateRemoveSequenceNum) ifTrue:
-		[pos _ fName findFirst: [:c | c isDigit not].
-		fName _ fName copyFrom: pos to: fName size].
+		[pos := fName findFirst: [:c | c isDigit not].
+		fName := fName copyFrom: pos to: fName size].
 	doc reset; ascii.
 	(updateDirectory fileExists: fName) ifFalse:
-		[file _ updateDirectory newFileNamed: fName.
+		[file := updateDirectory newFileNamed: fName.
 		file nextPutAll: doc contents.
 		file close].

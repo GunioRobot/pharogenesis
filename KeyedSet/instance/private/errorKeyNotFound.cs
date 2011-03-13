@@ -1,3 +1,3 @@
 errorKeyNotFound
-
-	self error: 'key not found'
+ 
+ 	self error: 'key not found'

@@ -3,7 +3,7 @@ add: aString action: actionItem
 
 	| s |
 	aString ifNil: [^ self addLine].
-	s _ String new: aString size + 2.
+	s := String new: aString size + 2.
 	s at: 1 put: Character space.
 	s replaceFrom: 2 to: s size - 1 with: aString.
 	s at: s size put: Character space.

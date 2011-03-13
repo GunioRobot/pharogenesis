@@ -1,0 +1,2 @@
+debuggerMap
+	^DebuggerMethodMap forMethod: self

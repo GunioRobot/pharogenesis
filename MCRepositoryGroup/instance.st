@@ -1,6 +1,6 @@
 Object
 	subclass: #MCRepositoryGroup
-	instanceVariableNames: 'repositories'
+	instanceVariableNames: 'repositories useCache'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Monticello-Versioning'

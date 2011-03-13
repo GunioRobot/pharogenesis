@@ -1,2 +1,0 @@
-codeOval
-	^$F

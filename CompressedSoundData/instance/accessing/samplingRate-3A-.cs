@@ -1,3 +1,0 @@
-samplingRate: aNumber
-
-	samplingRate := aNumber.

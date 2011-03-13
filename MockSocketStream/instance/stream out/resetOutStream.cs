@@ -1,2 +1,2 @@
 resetOutStream
-	outStream := WriteStream on: ''.
+	outStream := String new writeStream.

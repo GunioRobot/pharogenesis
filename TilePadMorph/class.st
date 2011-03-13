@@ -1,1 +1,0 @@
-TilePadMorph class instanceVariableNames: ''

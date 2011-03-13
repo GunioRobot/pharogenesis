@@ -1,3 +1,0 @@
-typeMultiChat
-
-	^'multichat'

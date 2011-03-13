@@ -1,1 +1,0 @@
-DECTalkReader class instanceVariableNames: ''

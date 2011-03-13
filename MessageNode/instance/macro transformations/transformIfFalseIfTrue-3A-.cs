@@ -1,9 +1,7 @@
 transformIfFalseIfTrue: encoder
-	((self checkBlock: (arguments at: 1) as: 'False arg' from: encoder)
-		and: [self checkBlock: (arguments at: 2) as: 'True arg' from: encoder])
-		ifTrue: 
-			[selector _ #ifTrue:ifFalse:.
+	^(self checkBlock: (arguments at: 1) as: 'False arg' from: encoder)
+	   and: [(self checkBlock: (arguments at: 2) as: 'True arg' from: encoder)
+	   and: [selector := SelectorNode new key: #ifTrue:ifFalse: code: #macro.
 			arguments swap: 1 with: 2.
-			^true]
-		ifFalse: 
-			[^false]
+			arguments do: [:arg| arg noteOptimized].
+			true]]

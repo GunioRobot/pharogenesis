@@ -3,7 +3,8 @@ asSignedInteger
 
 	| start stream |
 	start := self findFirst: [:char | char isDigit].
-	start isZero ifTrue: [^nil].
-	stream := (ReadStream on: self) position: start.
-	stream back = $- ifTrue: [stream back].
-	^Integer readFrom: stream
+	start isZero ifTrue: [^ nil].
+	stream := self readStream position: start - 1.
+	((stream position ~= 0) and: [stream peekBack = $-])
+		ifTrue: [stream back].
+	^ Integer readFrom: stream

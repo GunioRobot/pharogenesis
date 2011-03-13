@@ -13,7 +13,7 @@ testConflictMethodCreation
 	self t1 compile: '@ myArgument ^true'.
 	self t2 compile: '@myArgument ^false'.
 	self 
-		assert: ((self t5 sourceCodeAt: #@) asString beginsWith: '@ myArgument').
+		assert: ((self t5 sourceCodeAt: #@) asString beginsWith: '@ t1').
 	self should: [self c2 new @ 17] raise: Error.
 
 	"keyword"
@@ -21,15 +21,15 @@ testConflictMethodCreation
 		^true'.
 	self t2 compile: 'zork: myArgument ^false'.
 	self assert: ((self t5 sourceCodeAt: #zork:) asString 
-				beginsWith: 'zork: myArgument').
+				beginsWith: 'zork: t1').
 	self should: [self c2 new zork: 17] raise: Error.
 	self t1 compile: 'zork:myArgument ^true'.
 	self t2 compile: 'zork:myArgument ^false'.
 	self assert: ((self t5 sourceCodeAt: #zork:) asString 
-				beginsWith: 'zork: myArgument').
+				beginsWith: 'zork: t1').
 	self should: [self c2 new zork: 17] raise: Error.
-	self t1 compile: 'zork1: myArgument zork2: mySecondArgument ^true'.
+	self t1 compile: 'zork1: t1 zork2: t2 ^true'.
 	self t2 compile: 'zork1: anObject zork2: anotherObject ^false'.
 	self assert: ((self t5 sourceCodeAt: #zork1:zork2:) asString 
-				beginsWith: 'zork1: arg1 zork2: arg2').
+				beginsWith: 'zork1: t1 zork2: t2').
 	self should: [self c2 new zork1: 1 zork2: 2] raise: Error

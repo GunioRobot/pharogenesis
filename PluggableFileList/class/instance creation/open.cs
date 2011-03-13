@@ -1,3 +1,0 @@
-open
-
-	^self new open

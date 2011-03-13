@@ -5,8 +5,8 @@ size: encoder args: nArgs super: supered
 		ifTrue: [^1]. "short send"
 	(supered and: [code < Send]) ifTrue: 
 		["super special:"
-		code _ self code: (encoder sharableLitIndex: key) type: 5].
-	index _ code < 256 ifTrue: [code - Send] ifFalse: [code \\ 256].
+		code := self code: (encoder sharableLitIndex: key) type: 5].
+	index := code < 256 ifTrue: [code - Send] ifFalse: [code \\ 256].
 	(index <= 31 and: [nArgs <= 7])
 		ifTrue: [^ 2]. "medium send"
 	(supered not and: [index <= 63 and: [nArgs <= 3]])

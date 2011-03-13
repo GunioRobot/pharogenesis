@@ -1,2 +1,0 @@
-totalVideoStreams
-	^self external totalVideoStreams

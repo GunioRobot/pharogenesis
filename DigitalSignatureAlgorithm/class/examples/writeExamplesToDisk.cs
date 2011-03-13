@@ -5,16 +5,16 @@ writeExamplesToDisk
 
 	| sig file keyList dsa msgList |
 
-	dsa _ DigitalSignatureAlgorithm new.
+	dsa := DigitalSignatureAlgorithm new.
 	dsa initRandomFromUser.
 	self inform: 'About to generate 5 key sets. Will take a while'.
-	keyList _ {self testKeySet},((1 to: 5) collect: [ :ignore | self generateKeySet]).
-	msgList _ {'This is a test...'. 'This is the second test period.'. 'And finally, a third message'}.
-	file _ FileStream newFileNamed: 'dsa.test.out'.
+	keyList := {self testKeySet},((1 to: 5) collect: [ :ignore | self generateKeySet]).
+	msgList := {'This is a test...'. 'This is the second test period.'. 'And finally, a third message'}.
+	file := FileStream newFileNamed: 'dsa.test.out'.
 	[
 		msgList do: [ :msg |
 			keyList do: [ :keys |
-				sig _ self sign: msg privateKey: keys first dsa: dsa.
+				sig := self sign: msg privateKey: keys first dsa: dsa.
 				(self verify: sig isSignatureOf: msg publicKey: keys last) ifTrue: [
 					file
 						nextChunkPut: sig;

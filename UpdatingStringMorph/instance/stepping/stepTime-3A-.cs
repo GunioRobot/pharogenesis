@@ -1,3 +1,3 @@
 stepTime: mSecsPerStep
 
-	stepTime _ mSecsPerStep truncated.
+	stepTime := mSecsPerStep truncated.

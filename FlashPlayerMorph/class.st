@@ -1,1 +1,0 @@
-FlashPlayerMorph class instanceVariableNames: ''

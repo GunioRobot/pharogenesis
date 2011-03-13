@@ -3,7 +3,7 @@ scanTokens: textOrString
 	textOrString, had appeared between the array delimitors #( and ) in a 
 	Smalltalk literal expression."
 
-	self scan: (ReadStream on: textOrString asString).
+	self scan: textOrString asString readStream.
 	self scanLitVec.
 	^token
 

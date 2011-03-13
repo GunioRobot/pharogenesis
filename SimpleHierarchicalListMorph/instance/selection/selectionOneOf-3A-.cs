@@ -3,7 +3,7 @@ selectionOneOf: aListOfItems
 
 	| index |
 	aListOfItems do: [ :item |
-		index _ scroller submorphs findFirst: [:m | 
+		index := scroller submorphs findFirst: [:m | 
 			m withoutListWrapper = item withoutListWrapper
 		].
 		index > 0 ifTrue: [^self selectionIndex: index].

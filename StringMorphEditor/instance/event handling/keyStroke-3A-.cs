@@ -3,7 +3,7 @@ keyStroke: evt
 	to be any more efficient -- it's only intended to edit single-line strings."
 
 	| char priorEditor newSel |
-	(((char _ evt keyCharacter) = Character enter) or: [(char = Character cr)
+	(((char := evt keyCharacter) = Character enter) or: [(char = Character cr)
 			or: [char = $s and: [evt commandKeyPressed]]])
 				ifTrue: [owner doneWithEdits; acceptContents.
 	self flag: #arNote. "Probably unnecessary"
@@ -17,9 +17,9 @@ keyStroke: evt
 
 	super keyStroke: evt.
 	owner interimContents: self contents asString.
-	newSel _ self editor selectionInterval.
+	newSel := self editor selectionInterval.
 
-	priorEditor _ self editor.  "Save editor state"
+	priorEditor := self editor.  "Save editor state"
 	self releaseParagraph.  "Release paragraph so it will grow with selection."
 	self paragraph.      "Re-instantiate to set new bounds"
 	self installEditorToReplace: priorEditor.  "restore editor state"

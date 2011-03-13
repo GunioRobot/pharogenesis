@@ -1,3 +1,0 @@
-scrollControllermvslrrsmsms0
-
-	^ MouseMenuController

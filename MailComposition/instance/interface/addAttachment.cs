@@ -3,10 +3,10 @@ addAttachment
 	textEditor
 		ifNotNil: [self hasUnacceptedEdits ifTrue: [textEditor accept]].
 
-	(fileResult _ StandardFileMenu oldFile)
+	(fileResult := StandardFileMenu oldFile)
 		ifNotNil: 
-			[fileName _ fileResult directory fullNameFor: fileResult name.
-			file _ FileStream readOnlyFileNamed: fileName.
+			[fileName := fileResult directory fullNameFor: fileResult name.
+			file := FileStream readOnlyFileNamed: fileName.
 			file ifNotNil:
 				[file binary.
 				self messageText:

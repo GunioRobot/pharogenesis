@@ -6,6 +6,6 @@ isAliasSelector
 	
 	| locatedMethod |
 	^self size = 1 and: [
-		locatedMethod _ self locatedMethods anyOne.
+		locatedMethod := self locatedMethods anyOne.
 		(locatedMethod selector ~= self selector) or: [
 			locatedMethod location isAliasSelector: self selector]]

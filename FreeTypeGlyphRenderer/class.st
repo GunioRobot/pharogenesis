@@ -1,0 +1,1 @@
+FreeTypeGlyphRenderer class instanceVariableNames: 'current'

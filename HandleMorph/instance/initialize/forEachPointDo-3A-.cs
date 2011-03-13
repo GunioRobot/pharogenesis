@@ -1,2 +1,2 @@
 forEachPointDo: aBlock
-	pointBlock _ aBlock
+	pointBlock := aBlock

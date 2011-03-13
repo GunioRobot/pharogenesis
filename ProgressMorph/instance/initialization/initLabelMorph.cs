@@ -1,2 +1,2 @@
 initLabelMorph
-	^ labelMorph _ StringMorph contents: '' font: (self fontOfPointSize: 14)
+	^ labelMorph := StringMorph contents: '' font: (self fontOfPointSize: 14)

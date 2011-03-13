@@ -16,6 +16,5 @@ install
 				[self
 					borderWidth: 2;
 					borderColor: Color red].
-	self presenter allExtantPlayers do: [:player | player prepareToBeRunning].
 	SystemWindow noteTopWindowIn: self.
 	self displayWorldSafely

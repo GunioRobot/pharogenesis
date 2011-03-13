@@ -3,4 +3,4 @@ contentsSelection
 
 	messageCategoryListIndex > 0 & (messageListIndex = 0)
 		ifTrue: [^ 1 to: 500]	"entire empty method template"
-		ifFalse: [^ 1 to: 0]  "null selection"
+		ifFalse: [^ 1 to: 0]		"null selection"

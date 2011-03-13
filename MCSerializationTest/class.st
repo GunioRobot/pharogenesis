@@ -1,1 +1,0 @@
-MCSerializationTest class instanceVariableNames: ''

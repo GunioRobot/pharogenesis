@@ -1,0 +1,2 @@
+fakeKeyboardEventBlockascii: anAsciiValue unicode: aUnicodeValue virtualKey: aVirtualKeyValue
+	^[:evt | HostSystemMenusMenuItem fakeKeyboardEventBlockasciiActual: anAsciiValue unicode: aUnicodeValue event: evt virtualKey: aVirtualKeyValue]

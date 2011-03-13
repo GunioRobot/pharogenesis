@@ -1,2 +1,2 @@
 toggleMouseOverHalos
-	wantsMouseOverHalos _ self wantsMouseOverHalos not
+	wantsMouseOverHalos := self wantsMouseOverHalos not

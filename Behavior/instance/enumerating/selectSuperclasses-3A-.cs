@@ -7,7 +7,7 @@ selectSuperclasses: aBlock
 	resulting OrderedCollection."
 
 	| aSet |
-	aSet _ Set new.
+	aSet := Set new.
 	self allSuperclasses do: 
 		[:aSuperclass | 
 		(aBlock value: aSuperclass) ifTrue: [aSet add: aSuperclass]].

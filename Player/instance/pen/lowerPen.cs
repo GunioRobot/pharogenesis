@@ -1,2 +1,0 @@
-lowerPen
-	self actorState lowerPen

@@ -1,2 +1,2 @@
 oldInstVarNames
-	^ oldItem instVarNames asSet
+	^ oldItem instVarNames

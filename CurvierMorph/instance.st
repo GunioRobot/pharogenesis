@@ -1,6 +1,6 @@
 PolygonMorph
 	subclass: #CurvierMorph
 	instanceVariableNames: ''
-	classVariableNames: 'SlopeConstantsCache'
+	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Basic-NewCurve'

@@ -8,17 +8,17 @@ nextPut: anObject
 | info |
 topCall == nil 
 	ifTrue:
-		[topCall _ anObject.
+		[topCall := anObject.
 		'Please wait while objects are counted' 
 			displayProgressAt: Sensor cursorPoint
 			from: 0 to: 10
-			during: [:bar | info _ self instVarInfo: anObject].
+			during: [:bar | info := self instVarInfo: anObject].
 		self appendClassDefns.	"For instance-specific classes"
 		'Writing an object file' displayProgressAt: Sensor cursorPoint
 			from: 0 to: objCount*4	"estimate"
 			during: [:bar |
-				objCount _ 0.
-				progressBar _ bar.
+				objCount := 0.
+				progressBar := bar.
 				self setStream: byteStream reading: false.
 					"set basePos, but keep any class renames"
 				super nextPut: ReferenceStream versionCode.
@@ -30,9 +30,9 @@ topCall == nil
 		byteStream ascii.
 		byteStream nextPutAll: '!'; cr; cr.
 		byteStream padToEndWith: $ .	"really want to truncate file, but can't"
-		topCall _ progressBar _ nil]	"reset it"
+		topCall := progressBar := nil]	"reset it"
 	ifFalse:
 		[super nextPut: anObject.
-		progressBar ifNotNil: [progressBar value: (objCount _ objCount + 1)]].
+		progressBar ifNotNil: [progressBar value: (objCount := objCount + 1)]].
 		"return the argument - added by kwl"
 	^ anObject

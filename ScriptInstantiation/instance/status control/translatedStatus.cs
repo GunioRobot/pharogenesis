@@ -1,2 +1,0 @@
-translatedStatus
-	^ self status translated

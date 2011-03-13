@@ -1,2 +1,0 @@
-unshiftedYellowButtonActivity
-	^ self yellowButtonActivity: false

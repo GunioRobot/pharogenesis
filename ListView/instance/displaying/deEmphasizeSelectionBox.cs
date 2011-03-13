@@ -1,2 +1,0 @@
-deEmphasizeSelectionBox
-	self displaySelectionBox

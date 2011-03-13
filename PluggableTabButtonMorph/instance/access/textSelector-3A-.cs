@@ -1,2 +1,2 @@
 textSelector: aSymbol
-	textSelector _ aSymbol
+	textSelector := aSymbol

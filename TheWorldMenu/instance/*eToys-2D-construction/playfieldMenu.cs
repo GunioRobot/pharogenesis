@@ -1,3 +1,0 @@
-playfieldMenu
-
-	^ myWorld playfieldOptionsMenu

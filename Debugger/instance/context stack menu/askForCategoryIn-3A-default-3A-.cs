@@ -8,4 +8,4 @@ askForCategoryIn: aClass default: aString
 	index = 0 ifTrue: [^ aString].
 	category := index = 1 ifTrue: [UIManager default request: 'Enter category name:']
 						ifFalse: [categories at: index].
-	^ category isEmpty ifTrue: [^ aString] ifFalse: [category]
+	^ category isEmptyOrNil ifTrue: [^ aString] ifFalse: [category]

@@ -1,0 +1,2 @@
+asURIForceEncoding
+	^self

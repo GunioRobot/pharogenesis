@@ -3,4 +3,4 @@ BorderedMorph
 	instanceVariableNames: 'referent isHighlighted'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'MorphicExtras-Palettes'
+	category: 'Morphic-Worlds'

@@ -5,6 +5,6 @@ sourcePointer
 
 	| pos |
 	self last < 252 ifTrue: [^ 0  "no source"].
-	pos _ self last - 251.
-	self size - 1 to: self size - 3 by: -1 do: [:i | pos _ pos * 256 + (self at: i)].
+	pos := self last - 251.
+	self size - 1 to: self size - 3 by: -1 do: [:i | pos := pos * 256 + (self at: i)].
 	^pos

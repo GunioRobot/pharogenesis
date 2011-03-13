@@ -1,3 +1,3 @@
 smoothingOff
-	smoothing _ 1.
+	smoothing := 1.
 	self changed

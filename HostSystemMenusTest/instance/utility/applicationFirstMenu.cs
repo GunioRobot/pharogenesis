@@ -1,0 +1,2 @@
+applicationFirstMenu
+	^1

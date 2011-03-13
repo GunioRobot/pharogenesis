@@ -1,3 +1,3 @@
 privHome: context
 
-	home _ context
+	home := context

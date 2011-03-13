@@ -4,22 +4,22 @@ digitDiv: arg neg: ng
 	<primitive: 'primDigitDivNegative' module:'LargeIntegers'>
 	arg = 0 ifTrue: [^ (ZeroDivide dividend: self) signal].
 	"TFEI added this line"
-	l _ self digitLength - arg digitLength + 1.
+	l := self digitLength - arg digitLength + 1.
 	l <= 0 ifTrue: [^ Array with: 0 with: self].
 	"shortcut against #highBit"
-	d _ 8 - arg lastDigit highBitOfPositiveReceiver.
-	div _ arg digitLshift: d.
-	div _ div growto: div digitLength + 1.
+	d := 8 - arg lastDigit highBitOfPositiveReceiver.
+	div := arg digitLshift: d.
+	div := div growto: div digitLength + 1.
 	"shifts so high order word is >=128"
-	rem _ self digitLshift: d.
-	rem digitLength = self digitLength ifTrue: [rem _ rem growto: self digitLength + 1].
+	rem := self digitLshift: d.
+	rem digitLength = self digitLength ifTrue: [rem := rem growto: self digitLength + 1].
 	"makes a copy and shifts"
-	quo _ Integer new: l neg: ng.
-	dl _ div digitLength - 1.
+	quo := Integer new: l neg: ng.
+	dl := div digitLength - 1.
 	"Last actual byte of data"
-	ql _ l.
-	dh _ div digitAt: dl.
-	dnh _ dl = 1
+	ql := l.
+	dh := div digitAt: dl.
+	dnh := dl = 1
 				ifTrue: [0]
 				ifFalse: [div digitAt: dl - 1].
 	1 to: ql do: 
@@ -27,85 +27,85 @@ digitDiv: arg neg: ng
 		"maintain quo*arg+rem=self"
 		"Estimate rem/div by dividing the leading to bytes of rem by dh."
 		"The estimate is q = qhi*16+qlo, where qhi and qlo are nibbles."
-		j _ rem digitLength + 1 - k.
-		"r1 _ rem digitAt: j."
+		j := rem digitLength + 1 - k.
+		"r1 := rem digitAt: j."
 		(rem digitAt: j)
 			= dh
-			ifTrue: [qhi _ qlo _ 15
+			ifTrue: [qhi := qlo := 15
 				"i.e. q=255"]
 			ifFalse: 
 				["Compute q = (r1,r2)//dh, t = (r1,r2)\\dh.  
 				Note that r1,r2 are bytes, not nibbles.  
 				Be careful not to generate intermediate results exceeding 13  
 				bits."
-				"r2 _ (rem digitAt: j - 1)."
-				t _ ((rem digitAt: j)
+				"r2 := (rem digitAt: j - 1)."
+				t := ((rem digitAt: j)
 							bitShift: 4)
 							+ ((rem digitAt: j - 1)
 									bitShift: -4).
-				qhi _ t // dh.
-				t _ (t \\ dh bitShift: 4)
+				qhi := t // dh.
+				t := (t \\ dh bitShift: 4)
 							+ ((rem digitAt: j - 1)
 									bitAnd: 15).
-				qlo _ t // dh.
-				t _ t \\ dh.
-				"Next compute (hi,lo) _ q*dnh"
-				hi _ qhi * dnh.
-				lo _ qlo * dnh + ((hi bitAnd: 15)
+				qlo := t // dh.
+				t := t \\ dh.
+				"Next compute (hi,lo) := q*dnh"
+				hi := qhi * dnh.
+				lo := qlo * dnh + ((hi bitAnd: 15)
 								bitShift: 4).
-				hi _ (hi bitShift: -4)
+				hi := (hi bitShift: -4)
 							+ (lo bitShift: -8).
-				lo _ lo bitAnd: 255.
+				lo := lo bitAnd: 255.
 				"Correct overestimate of q.  
 				Max of 2 iterations through loop -- see Knuth vol. 2"
-				r3 _ j < 3
+				r3 := j < 3
 							ifTrue: [0]
 							ifFalse: [rem digitAt: j - 2].
 				[(t < hi
 					or: [t = hi and: [r3 < lo]])
 					and: 
 						["i.e. (t,r3) < (hi,lo)"
-						qlo _ qlo - 1.
-						lo _ lo - dnh.
+						qlo := qlo - 1.
+						lo := lo - dnh.
 						lo < 0
 							ifTrue: 
-								[hi _ hi - 1.
-								lo _ lo + 256].
+								[hi := hi - 1.
+								lo := lo + 256].
 						hi >= dh]]
-					whileTrue: [hi _ hi - dh].
+					whileTrue: [hi := hi - dh].
 				qlo < 0
 					ifTrue: 
-						[qhi _ qhi - 1.
-						qlo _ qlo + 16]].
+						[qhi := qhi - 1.
+						qlo := qlo + 16]].
 		"Subtract q*div from rem"
-		l _ j - dl.
-		a _ 0.
+		l := j - dl.
+		a := 0.
 		1 to: div digitLength do: 
 			[:i | 
-			hi _ (div digitAt: i)
+			hi := (div digitAt: i)
 						* qhi.
-			lo _ a + (rem digitAt: l) - ((hi bitAnd: 15)
+			lo := a + (rem digitAt: l) - ((hi bitAnd: 15)
 							bitShift: 4) - ((div digitAt: i)
 							* qlo).
 			rem digitAt: l put: lo - (lo // 256 * 256).
 			"sign-tolerant form of (lo bitAnd: 255)"
-			a _ lo // 256 - (hi bitShift: -4).
-			l _ l + 1].
+			a := lo // 256 - (hi bitShift: -4).
+			l := l + 1].
 		a < 0
 			ifTrue: 
 				["Add div back into rem, decrease q by 1"
-				qlo _ qlo - 1.
-				l _ j - dl.
-				a _ 0.
+				qlo := qlo - 1.
+				l := j - dl.
+				a := 0.
 				1 to: div digitLength do: 
 					[:i | 
-					a _ (a bitShift: -8)
+					a := (a bitShift: -8)
 								+ (rem digitAt: l) + (div digitAt: i).
 					rem digitAt: l put: (a bitAnd: 255).
-					l _ l + 1]].
+					l := l + 1]].
 		quo digitAt: quo digitLength + 1 - k put: (qhi bitShift: 4)
 				+ qlo].
-	rem _ rem
+	rem := rem
 				digitRshift: d
 				bytes: 0
 				lookfirst: dl.

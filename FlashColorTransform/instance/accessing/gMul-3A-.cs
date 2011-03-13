@@ -1,2 +1,0 @@
-gMul: aFixed
-	gMul := aFixed

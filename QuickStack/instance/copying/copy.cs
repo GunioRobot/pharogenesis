@@ -1,7 +1,7 @@
 copy
 	"Answer a copy of a myself"
 	| newSize |
-	newSize _ self basicSize.
+	newSize := self basicSize.
 	^ (self class new: newSize)
 		replaceFrom: 1
 		to: top

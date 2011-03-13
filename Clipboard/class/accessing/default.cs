@@ -1,2 +1,2 @@
 default
-	^Default ifNil:[Default _ self new].
+	^Default ifNil: [Default := OSPlatform current clipboardClass new].

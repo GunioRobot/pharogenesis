@@ -1,3 +1,3 @@
 toggleUpdateContinuously
 
-	updateContinuously _ updateContinuously not.
+	updateContinuously := updateContinuously not.

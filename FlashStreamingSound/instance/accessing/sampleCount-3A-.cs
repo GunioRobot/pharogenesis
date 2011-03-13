@@ -1,2 +1,0 @@
-sampleCount: aNumber
-	sampleCount := aNumber

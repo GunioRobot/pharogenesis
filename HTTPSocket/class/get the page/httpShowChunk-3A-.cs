@@ -4,7 +4,7 @@ httpShowChunk: url
 	"	HTTPSocket httpShowChunk: 'http://206.16.12.145:80/OurOwnArea.chunk.Point|class|x;y;'	"
 
 	| doc text |
-	doc _ (self httpGet: url accept: 'application/octet-stream').
-"	doc size = 0 ifTrue: [doc _ 'The server does not seem to be responding']."
-	doc isString ifTrue: [text _ doc] ifFalse: [text _ doc nextChunkText].
+	doc := (self httpGet: url accept: 'application/octet-stream').
+"	doc size = 0 ifTrue: [doc := 'The server does not seem to be responding']."
+	doc isString ifTrue: [text := doc] ifFalse: [text := doc nextChunkText].
 	(StringHolder new contents: text) openLabel: url.

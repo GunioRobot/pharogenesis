@@ -1,2 +1,2 @@
 draggedMorph: aMorph
-	draggedMorph _ aMorph
+	draggedMorph := aMorph

@@ -1,2 +1,0 @@
-hasVideo
-	^self external hasVideo

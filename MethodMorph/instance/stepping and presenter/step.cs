@@ -1,2 +1,0 @@
-step
-	model updateCodePaneIfNeeded

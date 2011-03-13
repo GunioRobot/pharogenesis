@@ -1,3 +1,0 @@
-currentBacklogString
-
-	^currentBacklogString

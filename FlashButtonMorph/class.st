@@ -1,1 +1,0 @@
-FlashButtonMorph class instanceVariableNames: ''

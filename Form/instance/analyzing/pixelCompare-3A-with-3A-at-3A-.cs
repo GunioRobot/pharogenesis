@@ -6,20 +6,20 @@ pixelCompare: aRect with: otherForm at: otherLoc
 	in the case of 8-bits or less, this will return the sum of the differing
 	bits of the corresponding pixel values (somewhat less useful)"
 	| pixPerWord temp |
-	pixPerWord _ 32//self depth.
+	pixPerWord := 32//self depth.
 	(aRect left\\pixPerWord = 0 and: [aRect right\\pixPerWord = 0]) ifTrue:
 		["If word-aligned, use on-the-fly difference"
 		^ (BitBlt current toForm: self) copy: aRect from: otherLoc in: otherForm
 				fillColor: nil rule: 32].
 	"Otherwise, combine in a word-sized form and then compute difference"
-	temp _ self copy: aRect.
+	temp := self copy: aRect.
 	temp copy: aRect from: otherLoc in: otherForm rule: 21.
 	^ (BitBlt current toForm: temp) copy: aRect from: otherLoc in: nil
 				fillColor: (Bitmap with: 0) rule: 32
 "  Dumb example prints zero only when you move over the original rectangle...
- | f diff | f _ Form fromUser.
+ | f diff | f := Form fromUser.
 [Sensor anyButtonPressed] whileFalse:
-	[diff _ f pixelCompare: f boundingBox
+	[diff := f pixelCompare: f boundingBox
 		with: Display at: Sensor cursorPoint.
 	diff printString , '        ' displayAt: 0@0]
 "

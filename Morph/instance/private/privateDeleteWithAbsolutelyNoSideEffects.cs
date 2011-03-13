@@ -4,5 +4,5 @@ privateDeleteWithAbsolutelyNoSideEffects
 
 	owner ifNil: [^self].
 	owner privateRemoveMorphWithAbsolutelyNoSideEffects: self.
-	owner _ nil.
+	owner := nil.
 

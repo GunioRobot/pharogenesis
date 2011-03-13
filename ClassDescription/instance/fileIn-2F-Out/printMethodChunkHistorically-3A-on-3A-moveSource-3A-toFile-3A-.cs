@@ -3,9 +3,9 @@ printMethodChunkHistorically: selector on: outStream moveSource: moveSource toFi
 	fileStream.  If moveSource true, then also set the source code pointer of the method."
 
 	| preamble method newPos sourceFile endPos category changeList prior |
-	category _ self organization categoryOfElement: selector.
-	preamble _ self name , ' methodsFor: ', category asString printString.
-	method _ self methodDict at: selector.
+	category := self organization categoryOfElement: selector.
+	preamble := self name , ' methodsFor: ', category asString printString.
+	method := self methodDict at: selector.
 	((method fileIndex = 0
 	or: [(SourceFiles at: method fileIndex) == nil])
 	or: [method filePosition = 0])
@@ -14,18 +14,18 @@ printMethodChunkHistorically: selector on: outStream moveSource: moveSource toFi
 		outStream nextChunkPut: method decompileString.
 		outStream nextChunkPut: ' '; cr]
 	ifFalse: [
-		changeList _ ChangeSet 
+		changeList := ChangeSet 
 			scanVersionsOf: method 
 			class: self 
 			meta: self isMeta
 			category: category 
 			selector: selector.
-		newPos _ nil.
-		sourceFile _ SourceFiles at: method fileIndex.
+		newPos := nil.
+		sourceFile := SourceFiles at: method fileIndex.
 		changeList reverseDo: [ :chgRec |
 			chgRec fileIndex = fileIndex ifTrue: [
 				outStream copyPreamble: preamble from: sourceFile at: chgRec position.
-				(prior _ chgRec prior) ifNotNil: [
+				(prior := chgRec prior) ifNotNil: [
 					outStream position: outStream position - 2.
 					outStream nextPutAll: ' prior: ', (
 						prior first = method fileIndex ifFalse: [prior third] ifTrue: [
@@ -34,14 +34,14 @@ printMethodChunkHistorically: selector on: outStream moveSource: moveSource toFi
 								andPosition: newPos]) printString.
 					outStream nextPut: $!; cr].
 				"Copy the method chunk"
-				newPos _ outStream position.
+				newPos := outStream position.
 				outStream copyMethodChunkFrom: sourceFile at: chgRec position.
 				sourceFile skipSeparators.      "The following chunk may have ]style["
 				sourceFile peek == $] ifTrue: [
 					outStream cr; copyMethodChunkFrom: sourceFile].
 				outStream nextChunkPut: ' '; cr]].
 		moveSource ifTrue: [
-			endPos _ outStream position.
+			endPos := outStream position.
 			method checkOKToAdd: endPos - newPos at: newPos.
 			method setSourcePosition: newPos inFile: fileIndex]].
 	^ outStream

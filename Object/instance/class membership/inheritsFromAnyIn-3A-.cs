@@ -4,7 +4,7 @@ inheritsFromAnyIn: aList
 	| aClass |
 	aList do:
 		[:elem | Symbol hasInterned: elem asString ifTrue: 
-			[:elemSymbol | (((aClass _ Smalltalk at: elemSymbol ifAbsent: [nil]) isKindOf: Class)
+			[:elemSymbol | (((aClass := Smalltalk at: elemSymbol ifAbsent: [nil]) isKindOf: Class)
 						and: [self isKindOf: aClass])
 				ifTrue:
 					[^ true]]].

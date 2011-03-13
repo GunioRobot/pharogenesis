@@ -3,7 +3,7 @@ objectForDataStream: refStrm
 
 	| dp |
 	self isGlobalFlap ifTrue:
-		[dp _ DiskProxy global: #Flaps selector: #globalFlapTabOrDummy: 
+		[dp := DiskProxy global: #Flaps selector: #globalFlapTabOrDummy: 
 					args: {self flapID}.
 		refStrm replace: self with: dp.
 		^ dp].

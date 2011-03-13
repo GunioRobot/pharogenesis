@@ -1,4 +1,4 @@
 assuredParameterDictionary
 	"Private!  Answer the parameters dictionary, creating it if necessary"
 
-	^ parameters ifNil: [parameters _ IdentityDictionary new]
+	^ parameters ifNil: [parameters := IdentityDictionary new]

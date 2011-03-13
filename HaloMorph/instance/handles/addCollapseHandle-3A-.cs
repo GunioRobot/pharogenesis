@@ -5,7 +5,7 @@ addCollapseHandle: handleSpec
 	(target owner notNil "nil happens, amazingly"
 			and: [target owner isWorldOrHandMorph])
 		ifFalse: [^ self].
-	collapseHandle _ self addHandle: handleSpec
+	collapseHandle := self addHandle: handleSpec
 		on: #mouseDown send: #mouseDownInCollapseHandle:with: to: self.
 	collapseHandle on: #mouseUp send: #maybeCollapse:with: to: self.
 	collapseHandle on: #mouseMove send: #setDismissColor:with: to: self

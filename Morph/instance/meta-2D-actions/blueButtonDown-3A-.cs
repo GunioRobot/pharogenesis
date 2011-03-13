@@ -1,18 +1,18 @@
 blueButtonDown: anEvent
 	"Special gestures (cmd-mouse on the Macintosh; Alt-mouse on Windows and Unix) allow a mouse-sensitive morph to be moved or bring up a halo for the morph."
 	| h tfm doNotDrag |
-	h _ anEvent hand halo.
+	h := anEvent hand halo.
 	"Prevent wrap around halo transfers originating from throwing the event back in"
-	doNotDrag _ false.
+	doNotDrag := false.
 	h ifNotNil:[
-		(h innerTarget == self) ifTrue:[doNotDrag _ true].
-		(h innerTarget hasOwner: self) ifTrue:[doNotDrag _ true].
-		(self hasOwner: h target) ifTrue:[doNotDrag _ true]].
+		(h innerTarget == self) ifTrue:[doNotDrag := true].
+		(h innerTarget hasOwner: self) ifTrue:[doNotDrag := true].
+		(self hasOwner: h target) ifTrue:[doNotDrag := true]].
 
-	tfm _ (self transformedFrom: nil) inverseTransformation.
+	tfm := (self transformedFrom: nil) inverseTransformation.
 
 	"cmd-drag on flexed morphs works better this way"
-	h _ self addHalo: (anEvent transformedBy: tfm).
+	h := self addHalo: (anEvent transformedBy: tfm).
 	h ifNil: [^ self].
 	doNotDrag ifTrue:[^self].
 	"Initiate drag transition if requested"

@@ -1,1 +1,0 @@
-F0RenderingVisitor class instanceVariableNames: ''

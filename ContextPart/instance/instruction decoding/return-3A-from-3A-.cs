@@ -4,8 +4,8 @@ return: value from: aSender
 	| newTop ctxt |
 	aSender isDead ifTrue: [
 		^ self send: #cannotReturn: to: self with: {value} super: false].
-	newTop _ aSender sender.
-	ctxt _ self findNextUnwindContextUpTo: newTop.
+	newTop := aSender sender.
+	ctxt := self findNextUnwindContextUpTo: newTop.
 	ctxt ifNotNil: [
 		^ self send: #aboutToReturn:through: to: self with: {value. ctxt} super: false].
 	self releaseTo: newTop.

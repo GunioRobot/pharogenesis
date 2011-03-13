@@ -5,15 +5,15 @@ addHandlesTo: aHaloMorph box: box
 	aHaloMorph haloBox: box.
 	Preferences haloSpecifications  do:
 		[:aSpec | 
-			aSelector _  aSpec addHandleSelector.
-			wantsIt _ Preferences selectiveHalos
+			aSelector :=  aSpec addHandleSelector.
+			wantsIt := Preferences selectiveHalos
 				ifTrue:
 					[self wantsHaloHandleWithSelector: aSelector inHalo: aHaloMorph]
 				ifFalse:
 					[true].
 			wantsIt ifTrue:
-				[(#(addMakeSiblingHandle: addDupHandle:) includes: aSelector) ifTrue:
-					[wantsIt _ self preferredDuplicationHandleSelector = aSelector].
+				[(#(addDupHandle:) includes: aSelector) ifTrue:
+					[wantsIt := self preferredDuplicationHandleSelector = aSelector].
 			wantsIt ifTrue:
 				[aHaloMorph perform: aSelector with: aSpec]]].
 

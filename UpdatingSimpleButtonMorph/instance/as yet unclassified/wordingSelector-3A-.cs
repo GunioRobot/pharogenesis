@@ -1,3 +1,3 @@
 wordingSelector: aSelector
-	wordingSelector _ aSelector.
-	wordingProvider ifNil: [wordingProvider _ target]
+	wordingSelector := aSelector.
+	wordingProvider ifNil: [wordingProvider := target]

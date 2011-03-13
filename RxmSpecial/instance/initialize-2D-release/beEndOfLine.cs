@@ -1,0 +1,2 @@
+beEndOfLine
+	matchSelector := #atEndOfLine

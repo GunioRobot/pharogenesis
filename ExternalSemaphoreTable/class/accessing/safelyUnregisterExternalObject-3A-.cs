@@ -4,7 +4,7 @@ safelyUnregisterExternalObject: anObject
 
 	| objects |
 	anObject ifNil: [^ self].
-	objects _ Smalltalk specialObjectsArray at: 39.
+	objects := Smalltalk specialObjectsArray at: 39.
 	1 to: objects size do: [:i |
 		(objects at: i) == anObject ifTrue: 
 		[objects at: i put: nil.

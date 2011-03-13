@@ -1,3 +1,0 @@
-ephemeralPlayerRef
-	"UnscriptedPlayer ephemeralPlayerRef"
-	^ ephemeralPlayerRef

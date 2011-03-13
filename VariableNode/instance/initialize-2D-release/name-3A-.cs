@@ -1,4 +1,4 @@
 name: string
 	"Change name"
 
-	name _ string.
+	name := string

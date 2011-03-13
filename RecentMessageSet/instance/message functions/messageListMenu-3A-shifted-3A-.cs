@@ -11,7 +11,6 @@ messageListMenu: aMenu shifted: shifted
 			('browse protocol (p)'					browseFullProtocol)
 			-
 			('fileOut (o)'							fileOutMessage)
-			('printOut'								printOutMessage)
 			('copy selector (c)'						copySelector)
 			-
 			('senders of... (n)'						browseSendersOfMessages)

@@ -3,7 +3,7 @@ milliseconds: currentTime since: lastTime
 	Compensate for rollover."
 
 	| delta |
-	delta _ currentTime - lastTime.
+	delta := currentTime - lastTime.
 	^ delta < 0
 		ifTrue: [SmallInteger maxVal + delta]
 		ifFalse: [delta]

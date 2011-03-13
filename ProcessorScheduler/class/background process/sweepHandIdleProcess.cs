@@ -2,7 +2,7 @@ sweepHandIdleProcess
 	"A default background process which shows a sweeping circle of XOR-ed bits on the screen."
 
 	| sweepHand |
-	sweepHand _ Pen new.
+	sweepHand := Pen new.
 	sweepHand defaultNib: 2.
 	sweepHand combinationRule: 6.
 	[true] whileTrue: [

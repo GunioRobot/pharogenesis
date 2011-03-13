@@ -1,4 +1,3 @@
-current
+current 
 
-
-	^ self starting: DateAndTime now
+	^ self starting: DateAndTime now 

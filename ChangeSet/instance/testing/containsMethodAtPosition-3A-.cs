@@ -7,7 +7,7 @@ containsMethodAtPosition: aFilePosition
 		[:classChangeRecord |
 		classChangeRecord methodChanges values do:
 			[:methodChangeRecord | | changeType |
-			changeType _ methodChangeRecord changeType.
+			changeType := methodChangeRecord changeType.
 			((changeType == #add or: [changeType == #change]) and:
 				[methodChangeRecord currentMethod notNil and: [methodChangeRecord currentMethod filePosition = aFilePosition]])
 					ifTrue: [^ true]]].

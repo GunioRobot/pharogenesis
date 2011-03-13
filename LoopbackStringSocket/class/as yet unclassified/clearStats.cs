@@ -1,3 +1,0 @@
-clearStats
-
-	WRITESTRINGSIZES := nil

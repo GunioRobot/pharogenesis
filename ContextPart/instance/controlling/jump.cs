@@ -10,6 +10,6 @@ jump
 	"Pop self return value then return it to self (since we jump to self by returning to it)"
 	stackp = 0 ifTrue: [self stepToSendOrReturn].
 	stackp = 0 ifTrue: [self push: nil].  "must be quick return self/constant"
-	top _ self pop.
+	top := self pop.
 	thisContext privSender: self.
 	^ top

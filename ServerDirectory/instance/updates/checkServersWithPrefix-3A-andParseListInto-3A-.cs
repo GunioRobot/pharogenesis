@@ -5,7 +5,7 @@ checkServersWithPrefix: prefix andParseListInto: listBlock
 	and returned via the listBlock."
 
 	|  serverList updateLists listContents maxSize outOfDateServers |
-	serverList _ self serversInGroup.
+	serverList := self serversInGroup.
 	serverList isEmpty
 		ifTrue: [^Array new].
 

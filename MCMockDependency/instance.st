@@ -3,4 +3,4 @@ Object
 	instanceVariableNames: 'name children hasResolution'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Monticello-Mocks'
+	category: 'Tests-Monticello'

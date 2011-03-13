@@ -1,3 +1,3 @@
 descending: aBoolean
-	descending _ aBoolean.
+	descending := aBoolean.
 	self value: value

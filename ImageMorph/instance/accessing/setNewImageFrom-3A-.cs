@@ -3,5 +3,5 @@ setNewImageFrom: formOrNil
 
 	|  defaultImage |
 	formOrNil ifNotNil: [^ self image: formOrNil].
-	defaultImage _ self defaultValueOrNil ifNil: [ScriptingSystem squeakyMouseForm].
+	defaultImage := ScriptingSystem squeakyMouseForm.
 	self image: defaultImage

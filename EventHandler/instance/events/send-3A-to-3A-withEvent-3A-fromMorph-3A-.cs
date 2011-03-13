@@ -1,7 +1,7 @@
 send: selector to: recipient withEvent: event fromMorph: sourceMorph
 	| arity |
 	recipient ifNil: [^ self].
-	arity _ selector numArgs.
+	arity := selector numArgs.
 	arity = 0 ifTrue:
 		[^ recipient perform: selector].
 	arity = 1 ifTrue:

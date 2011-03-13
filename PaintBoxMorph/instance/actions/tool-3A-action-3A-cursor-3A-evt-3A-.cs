@@ -5,9 +5,9 @@ tool: actionButton action: aSelector cursor: aCursor evt: evt
 		tool == actionButton ifFalse: [
 			tool state: #off.
 			action == #stamp: ifTrue: [self stampDeEmphasize]]].
-	tool _ actionButton.		"A ThreePhaseButtonMorph"
+	tool := actionButton.		"A ThreePhaseButtonMorph"
 	"tool state: #on.	already done"
-	action _ aSelector.		"paint:"
-	currentCursor _ aCursor.
+	action := aSelector.		"paint:"
+	currentCursor := aCursor.
 	self notifyWeakDependentsWith: {#action. evt. action}.
 	self notifyWeakDependentsWith: {#currentCursor. evt. currentCursor}.

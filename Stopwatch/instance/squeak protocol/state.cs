@@ -1,3 +1,3 @@
 state
 
-	^ state ifNil: [ state _ #suspended ]
+	^ state ifNil: [ state := #suspended ]

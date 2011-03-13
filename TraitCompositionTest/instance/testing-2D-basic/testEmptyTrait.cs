@@ -1,6 +1,6 @@
 testEmptyTrait
 	| composition |
-	composition _ {} asTraitComposition.
+	composition := {} asTraitComposition.
 	
 	self assert: (composition isKindOf: TraitComposition).
 	self assert: composition transformations isEmpty.

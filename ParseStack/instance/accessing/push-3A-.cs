@@ -1,4 +1,4 @@
 push: n
 
-	(position _ position + n) > length 
-		ifTrue: [length _ position]
+	(position := position + n) > length 
+		ifTrue: [length := position]

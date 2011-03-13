@@ -1,3 +1,0 @@
-fileNameConverterClass
-
-	^ Latin1TextConverter

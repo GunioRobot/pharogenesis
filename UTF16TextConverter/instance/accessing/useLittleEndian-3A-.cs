@@ -1,3 +1,3 @@
 useLittleEndian: aBoolean
 
-	useLittleEndian _ aBoolean.
+	useLittleEndian := aBoolean.

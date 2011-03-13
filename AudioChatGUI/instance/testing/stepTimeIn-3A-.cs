@@ -1,3 +1,0 @@
-stepTimeIn: aSystemWindow
-
-	^self stepTime

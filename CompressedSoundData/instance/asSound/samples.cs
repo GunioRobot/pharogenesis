@@ -1,3 +1,0 @@
-samples
-
-	^ self asSound samples

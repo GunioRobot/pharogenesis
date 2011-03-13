@@ -1,3 +1,3 @@
 onColor: aColor
 
-	onColor _ aColor.
+	onColor := aColor.

@@ -1,4 +1,0 @@
-perceivedFrequency
-
-	^ perceivedFrequency
-

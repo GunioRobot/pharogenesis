@@ -1,0 +1,1 @@
+NewArrayNode class instanceVariableNames: ''

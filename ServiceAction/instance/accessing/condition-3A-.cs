@@ -1,2 +1,2 @@
 condition: aBlock
-	condition := aBlock fixTemps
+	condition := aBlock

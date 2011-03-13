@@ -1,3 +1,0 @@
-selection: anArray
-
-	selection := anArray

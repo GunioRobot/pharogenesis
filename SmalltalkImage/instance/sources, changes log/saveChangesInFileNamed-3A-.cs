@@ -1,6 +1,6 @@
 saveChangesInFileNamed: aString
 	| fullChangesName |
-	fullChangesName _ (FileDirectory default fullNameFor: aString).
+	fullChangesName := (FileDirectory default fullNameFor: aString).
 	(FileDirectory default directoryNamed:(FileDirectory dirPathFor: fullChangesName )) assureExistence.
 	FileDirectory default 
 		copyFileWithoutOverwriteConfirmationNamed: SmalltalkImage current changesName 

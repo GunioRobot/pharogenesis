@@ -3,8 +3,7 @@ inOutdent: characterStream delta: delta
 
 	| cr realStart realStop lines startLine stopLine start stop adjustStart indentation size numLines inStream newString outStream |
 	
-	sensor keyboard.  "Flush typeahead"
-	cr := Character cr.
+cr := Character cr.
 
 	"Operate on entire lines, but remember the real selection for re-highlighting later"
 	realStart := self startIndex.
@@ -16,7 +15,7 @@ inOutdent: characterStream delta: delta
 		ifTrue:
 			[delta < 0
 				ifTrue:
-					[view flash]
+					[self flash]
 				ifFalse:
 					[self replaceSelectionWith: Character tab asSymbol asText.
 					self selectAt: realStart + 1].
@@ -34,7 +33,7 @@ inOutdent: characterStream delta: delta
 	"Find the indentation of the least-indented non-blank line; never outdent more"
 	indentation := (startLine to: stopLine) inject: 1000 into:
 		[:m :l |
-		m := m min: (paragraph indentationOfLineIndex: l ifBlank: [:tabs | 1000])].			
+		 m min: (paragraph indentationOfLineIndex: l ifBlank: [:tabs | 1000])].			
 
 	size :=  stop + 1 - start.
 	numLines := stopLine + 1 - startLine.
@@ -57,10 +56,10 @@ inOutdent: characterStream delta: delta
 
 	outStream == nil
 		ifTrue: 	"tried to outdent but some line(s) were already left flush"
-			[view flash]
+			[self flash]
 		ifFalse:
 			[self selectInvisiblyFrom: start to: stop.
-			size = newString size ifFalse: [newString _ outStream contents].
+			size = newString size ifFalse: [newString := outStream contents].
 			self replaceSelectionWith: newString asText].
 	self selectFrom: realStart to: realStop. 	"highlight only the original range"
 	^ true

@@ -1,1 +1,0 @@
-PinMorph class instanceVariableNames: ''

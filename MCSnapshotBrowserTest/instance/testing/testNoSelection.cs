@@ -3,4 +3,5 @@ testNoSelection
 	self denyAListIncludesAnyOf: self definedClasses.
 	self denyAListIncludesAnyOf: self allProtocols.
 	self denyAListIncludesAnyOf: self allMethods.
-	self assertTextIs: ''.
+	"and if there I need to see the packages scripts (or none)"
+	self assertTextIs: '(package defines no scripts)'.

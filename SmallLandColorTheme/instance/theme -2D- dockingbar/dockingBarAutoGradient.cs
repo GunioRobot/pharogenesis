@@ -1,2 +1,0 @@
-dockingBarAutoGradient
-	^ true

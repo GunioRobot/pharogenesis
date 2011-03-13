@@ -1,3 +1,0 @@
-Actors provide the basic units of domain-related functionality. They are attached to metanodes, and supply the Actions used to build context menus and buttons in the browser. Actors can be proxies for functionality supplied by other classes, as in OBFileRegistryActor, or they may supply the funtionality them selves. 
-
-OBActor is an abstract class which defines the protocol Actors must implement. Actors need not be subclasses of OBActor, however.

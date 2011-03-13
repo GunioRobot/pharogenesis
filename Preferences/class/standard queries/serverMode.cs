@@ -1,4 +1,4 @@
 serverMode
 	^ self
 		valueOfFlag: #serverMode
-		ifAbsent: [false]
+		ifAbsent: [true]

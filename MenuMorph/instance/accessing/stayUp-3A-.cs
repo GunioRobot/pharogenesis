@@ -1,4 +1,4 @@
 stayUp: aBoolean
 
-	stayUp _ aBoolean.
+	stayUp := aBoolean.
 	aBoolean ifTrue: [ self removeStayUpBox ].

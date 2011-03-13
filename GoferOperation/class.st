@@ -1,0 +1,1 @@
+GoferOperation class instanceVariableNames: ''

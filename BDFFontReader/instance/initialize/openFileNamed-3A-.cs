@@ -1,2 +1,5 @@
 openFileNamed: fileName
-	file := CrLfFileStream readOnlyFileNamed: fileName.
+	file := (MultiByteFileStream readOnlyFileNamed: fileName)
+		ascii;
+		wantsLineEndConversion: true;
+		yourself

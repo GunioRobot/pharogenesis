@@ -9,8 +9,6 @@ balloonText
 	(text := extension balloonText) ifNotNil: [^text].
 	(balloonSelector := extension balloonTextSelector) ifNotNil: 
 			[aString := ScriptingSystem helpStringOrNilFor: balloonSelector.
-			(aString isNil and: [balloonSelector == #methodComment]) 
-				ifTrue: [aString := self methodCommentAsBalloonHelp].
 			((aString isNil and: [balloonSelector numArgs = 0]) 
 				and: [self respondsTo: balloonSelector]) 
 					ifTrue: [aString := self perform: balloonSelector]].

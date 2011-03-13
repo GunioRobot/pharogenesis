@@ -7,12 +7,12 @@ detectMax: aBlock
 	self do: [:each | 
 		maxValue == nil
 			ifFalse: [
-				(val _ aBlock value: each) > maxValue ifTrue: [
-					maxElement _ each.
-					maxValue _ val]]
+				(val := aBlock value: each) > maxValue ifTrue: [
+					maxElement := each.
+					maxValue := val]]
 			ifTrue: ["first element"
-				maxElement _ each.
-				maxValue _ aBlock value: each].
+				maxElement := each.
+				maxValue := aBlock value: each].
 				"Note that there is no way to get the first element that works 
 				for all kinds of Collections.  Must test every one."].
 	^ maxElement

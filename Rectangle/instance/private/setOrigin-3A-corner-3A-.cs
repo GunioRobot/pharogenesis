@@ -1,3 +1,3 @@
-setOrigin: topLeft corner: bottomRight
-	origin _ topLeft.
-	corner _ bottomRight
+setOrigin: topLeft corner: bottomRight 
+	origin := topLeft.
+	corner := bottomRight

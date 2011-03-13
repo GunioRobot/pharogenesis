@@ -2,10 +2,6 @@ copyUpOrCopyDown
 	"Used to copy down code from a superclass to a subclass or vice-versa in one easy step, if you know what you're doing.  Prompt the user for which class to copy down or copy up to, then spawn a fresh browser for that class, with the existing code planted in it, and with the existing method category also established."
 
 	| aClass aSelector allClasses implementors aMenu aColor |
-	Smalltalk isMorphic ifFalse: [^ self inform: 
-'Sorry, for the moment you have to be in
-Morphic to use this feature.'].
-
 	((aClass := self selectedClassOrMetaClass) isNil or: [(aSelector := self selectedMessageName) == nil]) 
 		ifTrue:	[^ Beeper beep].
 

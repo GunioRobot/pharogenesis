@@ -1,2 +1,2 @@
 autoAcceptOnFocusLoss: aBoolean
-	autoAcceptOnFocusLoss _ aBoolean
+	autoAcceptOnFocusLoss := aBoolean

@@ -1,2 +1,2 @@
 annotations
-	^operation ifNotNilDo: [ :op | op annotations ]
+	^operation ifNotNil: [ :op | op annotations ]

@@ -1,1 +1,0 @@
-NetworkTerminalMorph class instanceVariableNames: ''

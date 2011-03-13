@@ -7,5 +7,5 @@ receiveDataIfAvailable
 	new data starts, regardless if anything
 	was read, see #adjustInBuffer."
 
-	recentlyRead _ socket receiveSomeDataInto: inBuffer startingAt: inNextToWrite.
+	recentlyRead := socket receiveSomeDataInto: inBuffer startingAt: inNextToWrite.
 	^self adjustInBuffer: recentlyRead

@@ -3,17 +3,18 @@ simpleSearch
 
 | class supers listOfLists |
 self exceptions.
-class _ thisData first first class.
+class := thisData first first class.
 "Cache the selectors for the receiver class"
 (class == cachedClass and: [cachedArgNum = ((argMap size) - 1)]) 
-	ifTrue: [listOfLists _ cachedSelectorLists]
-	ifFalse: [supers _ class withAllSuperclasses.
-		listOfLists _ OrderedCollection new.
+	ifTrue: [listOfLists := cachedSelectorLists]
+	ifFalse: [
+		supers := class withAllSuperclasses.
+		listOfLists := OrderedCollection new.
 		supers do: [:cls |
 			listOfLists add: (cls selectorsWithArgs: (argMap size) - 1)].
-		cachedClass _ class.
-		cachedArgNum _ (argMap size) - 1.
-		cachedSelectorLists _ listOfLists].
+		cachedClass := class.
+		cachedArgNum := (argMap size) - 1.
+		cachedSelectorLists := listOfLists].
 listOfLists do: [:selectorList |
 	selectorList do: [:aSel |
 		(selector includes: aSel) ifFalse: [

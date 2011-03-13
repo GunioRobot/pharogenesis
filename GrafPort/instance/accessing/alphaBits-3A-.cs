@@ -1,2 +1,2 @@
 alphaBits: a
-	alpha _ a
+	alpha := a

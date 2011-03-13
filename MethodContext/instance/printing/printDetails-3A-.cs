@@ -5,16 +5,16 @@ printDetails: strm
 	self printOn: strm.
 	strm cr.
 	strm tab; nextPutAll: 'Receiver: '.
-	pe _ '<<error during printing>>'.
+	pe := '<<error during printing>>'.
 	strm nextPutAll: ([receiver printStringLimitedTo: 90] ifError: [:err :rcvr | pe]).
 
 	strm cr; tab; nextPutAll: 'Arguments and temporary variables: '; cr.
-	str _ [(self tempsAndValuesLimitedTo: 80 indent: 2) 
+	str := [(self tempsAndValuesLimitedTo: 80 indent: 2) 
 				padded: #right to: 1 with: $x] ifError: [:err :rcvr | pe].
 	strm nextPutAll: (str allButLast).
 
 	strm cr; tab; nextPutAll: 'Receiver''s instance variables: '; cr.
-	pos _ strm position.
+	pos := strm position.
 	[receiver longPrintOn: strm limitedTo: 80 indent: 2] ifError: [:err :rcvr | 
 				strm nextPutAll: pe].
 	pos = strm position ifTrue: ["normal printString for an Array (it has no inst vars)"

@@ -1,11 +1,11 @@
 testModulo
 
 	| d1 d2 d3 |
-	d1 _ 11.5 seconds.
-	d2 _ d1 \\ 3.
+	d1 := 11.5 seconds.
+	d2 := d1 \\ 3.
 	self assert: d2 = (Duration nanoSeconds: 1).
 
-	d3 _ d1 \\ (3 seconds).
+	d3 := d1 \\ (3 seconds).
 	self assert: d3 =  (Duration seconds: 2 nanoSeconds: 500000000).
 
 	self assert: aDuration \\ aDuration = 

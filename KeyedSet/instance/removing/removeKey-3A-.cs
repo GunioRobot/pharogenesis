@@ -1,3 +1,3 @@
 removeKey: key 
-
-	^ self removeKey: key ifAbsent: [self errorKeyNotFound]
+ 
+ 	^ self removeKey: key ifAbsent: [self errorKeyNotFound]

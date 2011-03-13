@@ -1,1 +1,0 @@
-CanvasEncoder class instanceVariableNames: ''

@@ -3,7 +3,7 @@ testPrintString
 	"(self new setTestSelector: #testPrintString) debug"
 
 	| dt |
-	dt _DateAndTime
+	dt :=DateAndTime
 		year: 2004
 		month: 11
 		day: 2

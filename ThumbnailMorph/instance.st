@@ -3,4 +3,4 @@ RectangleMorph
 	instanceVariableNames: 'objectToView viewSelector lastSketchForm lastFormShown drawTime'
 	classVariableNames: 'EccentricityThreshhold RecursionDepth RecursionMax'
 	poolDictionaries: ''
-	category: 'MorphicExtras-Widgets'
+	category: 'Morphic-Basic'

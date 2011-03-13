@@ -1,0 +1,1 @@
+UndeclaredVariable class instanceVariableNames: ''

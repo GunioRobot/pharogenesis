@@ -3,13 +3,13 @@ replaceColor: oldColor withColor: newColor
 
 	| cm newInd target ff |
 	self depth = 32
-		ifTrue: [cm _ (Color  cachedColormapFrom: 16 to: 32) copy]
-		ifFalse: [cm _ Bitmap new: (1 bitShift: (self depth min: 15)).
+		ifTrue: [cm := (Color  cachedColormapFrom: 16 to: 32) copy]
+		ifFalse: [cm := Bitmap new: (1 bitShift: (self depth min: 15)).
 				1 to: cm size do: [:i | cm at: i put: i - 1]].
-	newInd _ newColor pixelValueForDepth: self depth.
+	newInd := newColor pixelValueForDepth: self depth.
 	cm at: (oldColor pixelValueForDepth: (self depth min: 16))+1 put: newInd.
-	target _ newColor isTransparent 
-		ifTrue: [ff _ Form extent: self extent depth: depth.
+	target := newColor isTransparent 
+		ifTrue: [ff := Form extent: self extent depth: depth.
 			ff fillWithColor: newColor.  ff]
 		ifFalse: [self].
 	(BitBlt current toForm: target)

@@ -4,7 +4,7 @@ decideAboutCreatingBlank: otherProjectName
 
 	"20 Oct - just do it"
 	true "version isNil" ifFalse: [	"if saved, then maybe don't create"
-		resp _ (UIManager default chooseFrom: #('Yes, make it up' 'No, skip it') 
+		resp := (UIManager default chooseFrom: #('Yes, make it up' 'No, skip it') 
 			title: ('I cannot locate the project\',
 				otherProjectName,
 				'\Would you like me to create a new project\with that name?'

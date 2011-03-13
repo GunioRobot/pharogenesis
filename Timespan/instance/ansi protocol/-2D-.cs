@@ -1,8 +1,6 @@
 - operand
 	"operand conforms to protocol DateAndTime or protocol Duration"
 
-	^ (operand respondsTo: #asDateAndTime)
-
+	^ (operand respondsTo: #asDateAndTime) 
 	 	ifTrue: [ self start - operand ]
-	
-	ifFalse: [ self + (operand negated) ].
+	 	ifFalse: [ self + (operand negated) ]. 

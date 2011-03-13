@@ -3,7 +3,7 @@ fixUponLoad: aProject seg: anImageSegment
 Fix up conventions that have changed."
 
 	| substituteFont |
-	substituteFont _ aProject projectParameters at:
+	substituteFont := aProject projectParameters at:
 #substitutedFont ifAbsent: [#none].
 	(substituteFont ~~ #none and: [self font == substituteFont])
 			ifTrue: [ self fitContents ].

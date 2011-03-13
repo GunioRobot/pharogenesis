@@ -1,3 +1,0 @@
-gain: aNumber
-
-	gain := aNumber.

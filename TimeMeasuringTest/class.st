@@ -1,1 +1,0 @@
-TimeMeasuringTest class instanceVariableNames: ''

@@ -1,5 +1,0 @@
-strokepath
-	^target strokepath.
-
-
-              

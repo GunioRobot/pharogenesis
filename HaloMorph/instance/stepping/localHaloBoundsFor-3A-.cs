@@ -4,6 +4,6 @@ localHaloBoundsFor: aMorph
 
 	| r |
 
-	r _ aMorph worldBoundsForHalo truncated.
+	r := aMorph worldBoundsForHalo truncated.
 	aMorph world = self world ifFalse: [^r].
 	^((self transformFromOutermostWorld) globalBoundsToLocal: r) truncated

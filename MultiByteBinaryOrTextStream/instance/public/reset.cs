@@ -1,9 +1,9 @@
 reset
 
 	super reset.
-	isBinary ifNil: [isBinary _ false].
+	isBinary ifNil: [isBinary := false].
 	collection class == ByteArray ifTrue: ["Store as String and convert as needed."
-		collection _ collection asString.
-		isBinary _ true].
+		collection := collection asString.
+		isBinary := true].
 
 	self converter. "ensure that we have a converter."

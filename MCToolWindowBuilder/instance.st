@@ -3,4 +3,4 @@ Object
 	instanceVariableNames: 'builder window currentFrame tool'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Monticello-UI'
+	category: 'MonticelloGUI'

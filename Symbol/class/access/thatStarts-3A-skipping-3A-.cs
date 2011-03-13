@@ -8,11 +8,11 @@ thatStarts: leadingCharacters skipping: skipSym
 
 	| size firstMatch key |
 
-	size _ leadingCharacters size.
+	size := leadingCharacters size.
 	size = 0 ifTrue: [^skipSym ifNil: [#''] ifNotNil: [nil]].
 
-	firstMatch _ leadingCharacters at: 1.
-	size > 1 ifTrue: [key _ leadingCharacters copyFrom: 2 to: size].
+	firstMatch := leadingCharacters at: 1.
+	size > 1 ifTrue: [key := leadingCharacters copyFrom: 2 to: size].
 
 	self allSymbolTablesDo: [:each |
 			each size >= size ifTrue:

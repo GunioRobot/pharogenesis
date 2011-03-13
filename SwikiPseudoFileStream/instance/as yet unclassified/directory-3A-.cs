@@ -1,3 +1,3 @@
 directory: x
 
-	directory _ x
+	directory := x

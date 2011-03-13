@@ -1,0 +1,2 @@
+constraintBlock: aOneArgumentBlock
+	constraintBlock := aOneArgumentBlock

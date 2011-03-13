@@ -1,4 +1,4 @@
 updateUrlLists
 
-	UpdateUrlLists ifNil: [UpdateUrlLists _ OrderedCollection new].
+	UpdateUrlLists ifNil: [UpdateUrlLists := OrderedCollection new].
 	^ UpdateUrlLists

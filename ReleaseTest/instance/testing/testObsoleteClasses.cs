@@ -1,0 +1,3 @@
+testObsoleteClasses
+	SmalltalkImage current fixObsoleteReferences.
+	self assert: SystemNavigation default obsoleteClasses isEmpty

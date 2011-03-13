@@ -4,10 +4,10 @@ removeUninstantiatedModels
 
 	| candidatesForRemoval ok |
 	Smalltalk garbageCollect.
-	candidatesForRemoval _
+	candidatesForRemoval :=
 		MorphicModel subclasses select: [:c |
 			(c instanceCount = 0) and: [c subclasses size = 0]].
 	candidatesForRemoval do: [:c |
-		ok _ self confirm: 'Are you certain that you
+		ok := self confirm: 'Are you certain that you
 want to delete the class ', c name, '?'.
 		ok ifTrue: [c removeFromSystem]].

@@ -13,7 +13,7 @@ withCurrentChangeSetNamed: aString do: aOneArgumentBlock
 			[newName := UIManager default 
 						request: 'ChangeSet already present, just confirm to overwrite or enter a new name:'
 						initialAnswer: newName.
-			newName isEmpty ifTrue: [self error: 'Cancelled by user'].
+			newName isEmptyOrNil ifTrue: [self error: 'Cancelled by user'].
 			changeSet := self changeSetNamed: newName].
 	changeSet ifNil: [changeSet := self basicNewChangeSet: newName].
 	changeSet 

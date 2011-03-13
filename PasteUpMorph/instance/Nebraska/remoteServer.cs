@@ -1,2 +1,0 @@
-remoteServer
-	^worldState remoteServer.

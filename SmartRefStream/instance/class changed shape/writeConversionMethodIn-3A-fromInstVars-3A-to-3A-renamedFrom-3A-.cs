@@ -3,15 +3,15 @@ writeConversionMethodIn: newClass fromInstVars: oldList to: newList renamedFrom:
 
 	| code newOthers oldOthers copied newCode |
 
-	newOthers _ newList asOrderedCollection "copy".
-	oldOthers _ oldList asOrderedCollection "copy".
-	copied _ OrderedCollection new.
+	newOthers := newList asOrderedCollection "copy".
+	oldOthers := oldList asOrderedCollection "copy".
+	copied := OrderedCollection new.
 	newList do: [:instVar |
 		(oldList includes: instVar) ifTrue: [
 			instVar isInteger ifFalse: [copied add: instVar].
 			newOthers remove: instVar.
 			oldOthers remove: instVar]].
-	code _ WriteStream on: (String new: 500).
+	code := (String new: 500) writeStream.
 	code cr; cr; tab; nextPutAll: '"From ', SystemVersion current version, ' [', SmalltalkImage current lastUpdateString;
 			nextPutAll: '] on ', Date today printString, '"'; cr.
 	code tab; nextPutAll: '"These variables are automatically stored into the new instance: '.
@@ -34,10 +34,10 @@ writeConversionMethodIn: newClass fromInstVars: oldList to: newList renamedFrom:
 
 	(newClass includesSelector: #convertToCurrentVersion:refStream:) 
 		ifTrue: ["append to old methods"
-			newCode _ (newClass sourceCodeAt: #convertToCurrentVersion:refStream:),
+			newCode := (newClass sourceCodeAt: #convertToCurrentVersion:refStream:),
 				code contents]
 		ifFalse: ["new method"
-			newCode _ 'convertToCurrentVersion: varDict refStream: smartRefStrm',
+			newCode := 'convertToCurrentVersion: varDict refStream: smartRefStrm',
 				code contents, 
 				'	^ super convertToCurrentVersion: varDict refStream: smartRefStrm'].
 	newClass compile: newCode classified: 'object fileIn'.

@@ -5,7 +5,7 @@ messageList
 	self flag: #mref.
 	"is this still needed? I replaced the one use that I could spot with 
 	#methodRefList "
-	list _ SortedCollection new.
+	list := SortedCollection new.
 	mouseDownRecipient
 		ifNotNil: [list add: (mouseDownRecipient class whichClassIncludesSelector: mouseDownSelector) name , ' ' , mouseDownSelector].
 	mouseMoveRecipient

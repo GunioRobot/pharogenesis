@@ -3,13 +3,13 @@ validateSubclassFormat: newType from: oldClass forSuper: newSuper extra: newInst
 	| deltaSize |
 	oldClass == nil ifTrue: [^ true]. "No subclasses"
 	"Compute the # of instvars needed for all subclasses"
-	deltaSize _ newInstSize.
+	deltaSize := newInstSize.
 	(oldClass notNil)
-		ifTrue: [deltaSize _ deltaSize - oldClass instVarNames size].
+		ifTrue: [deltaSize := deltaSize - oldClass instVarNames size].
 	(newSuper notNil)
-		ifTrue: [deltaSize _ deltaSize + newSuper instSize].
+		ifTrue: [deltaSize := deltaSize + newSuper instSize].
 	(oldClass notNil and: [oldClass superclass notNil]) 
-		ifTrue: [deltaSize _ deltaSize - oldClass superclass instSize].
+		ifTrue: [deltaSize := deltaSize - oldClass superclass instSize].
 	(oldClass == nil)
 		 ifTrue: [ (deltaSize > 254)
 					ifTrue: [ self error: 'More than 254 instance variables'.

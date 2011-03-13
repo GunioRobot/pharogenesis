@@ -3,22 +3,22 @@ reconstructChanges2
 	"SmalltalkImage reconstructChanges2"
 
 	| f oldChanges classCount |
-	f _ FileStream fileNamed: 'ST80.temp'.
+	f := FileStream fileNamed: 'ST80.temp'.
 	f header; timeStamp.
 	(SourceFiles at: 2) converter: MacRomanTextConverter new.
 'Recoding Changes File...'
 	displayProgressAt: Sensor cursorPoint
 	from: 0 to: Smalltalk classNames size
 	during:
-		[:bar | classCount _ 0.
+		[:bar | classCount := 0.
 		Smalltalk allClassesDo:
-			[:class | bar value: (classCount _ classCount + 1).
+			[:class | bar value: (classCount := classCount + 1).
 			class moveChangesWithVersionsTo: f.
 			class putClassCommentToCondensedChangesFile: f.
 			class class moveChangesWithVersionsTo: f]].
 	self lastQuitLogPosition: f position.
 	f trailer; close.
-	oldChanges _ SourceFiles at: 2.
+	oldChanges := SourceFiles at: 2.
 	oldChanges close.
 	FileDirectory default 
 		deleteFileNamed: oldChanges name , '.old';

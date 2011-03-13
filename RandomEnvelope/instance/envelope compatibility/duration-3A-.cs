@@ -1,2 +1,0 @@
-duration: seconds
-	"Do nothing."

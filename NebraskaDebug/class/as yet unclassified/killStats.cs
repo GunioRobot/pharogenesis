@@ -1,3 +1,0 @@
-killStats
-
-	DEBUG := nil.

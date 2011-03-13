@@ -2,12 +2,7 @@ buildHandleMenu: aHand
 	"Build the morph menu for the given morph's halo's menu handle. This menu has two sections. The first section contains commands that are interpreted by the hand; the second contains commands provided by the target morph. This method allows the morph to decide which items should be included in the hand's section of the menu."
 
 	| menu |
-
-	(Preferences generalizedYellowButtonMenu
-			and: [Preferences noviceMode])
-		ifTrue: [^ self buildYellowButtonMenu: aHand].
-
-	menu _ MenuMorph new defaultTarget: self.
+	menu := MenuMorph new defaultTarget: self.
 	menu addStayUpItem.
 	menu addLine.
 	self addStandardHaloMenuItemsTo: menu hand: aHand.

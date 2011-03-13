@@ -1,9 +1,0 @@
-An SMCategory is a "tag" that can be attached to SMCategorizableObjects in order to classify them.
-
-The SMCategories are arranged in a strict hierarchy and each SMCategory both knows it's parent and it's subcategories.
-The instvar objects holds all SMObjects belonging to this category.
-Instvars name and summary are already inherited from SMObject and describe the category.
-The instvar url can be used to refer to a web page that can explain the category in more detail, typically a page at the Squeak Swiki.
-SMCategory adds an instance variable called mandatory holding a Set with the classes (SMPackage, SMPackageRelease, SMAccount, SMResource etc) that must belong to at least one subcategory of this SMCategory. Obviously not many categories will be mandatory for each class.
-
-The category tree is maintained by a few trusted people so that chaos will not reign. :-)

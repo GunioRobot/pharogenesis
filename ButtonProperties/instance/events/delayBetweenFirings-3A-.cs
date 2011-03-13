@@ -1,3 +1,0 @@
-delayBetweenFirings: millisecondsOrNil
-
-	delayBetweenFirings _ millisecondsOrNil

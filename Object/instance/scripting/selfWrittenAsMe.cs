@@ -1,3 +1,0 @@
-selfWrittenAsMe
-
-	^self

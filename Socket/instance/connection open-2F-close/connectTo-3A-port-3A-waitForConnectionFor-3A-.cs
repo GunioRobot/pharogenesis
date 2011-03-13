@@ -5,4 +5,4 @@ connectTo: hostAddress port: port waitForConnectionFor: timeout
 	self
 		waitForConnectionFor: timeout
 		ifTimedOut: [ConnectionTimedOut signal: 'Cannot connect to '
-					, (NetNameResolver stringFromAddress: hostAddress) , ':' , port asString]
+					, hostAddress hostNumber , ':' , port asString]

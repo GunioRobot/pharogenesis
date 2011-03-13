@@ -1,6 +1,6 @@
 initialize
 
 	super initialize.
-	currentColor _ Color black.
-	locOfCurrent _ nil.
+	currentColor := Color black.
+	locOfCurrent := nil.
 	self initMouseHandlers.

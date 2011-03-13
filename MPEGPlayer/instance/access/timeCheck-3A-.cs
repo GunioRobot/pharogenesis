@@ -1,2 +1,0 @@
-timeCheck: aNumber
-	timeCheck := aNumber

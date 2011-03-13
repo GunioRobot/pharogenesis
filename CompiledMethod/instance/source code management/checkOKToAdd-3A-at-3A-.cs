@@ -3,9 +3,9 @@ checkOKToAdd: size at: filePosition
 	and finally halt with an error when the end is reached."
 
 	| fileSizeLimit margin |
-	fileSizeLimit _ 16r2000000.
+	fileSizeLimit := 16r2000000.
 	3 to: 1 by: -1 do:
-		[:i | margin _ i*100000.
+		[:i | margin := i*100000.
 		(filePosition + size + margin) > fileSizeLimit
 			ifTrue: [(filePosition + margin) > fileSizeLimit ifFalse:
 						[self inform: 'WARNING: your changes file is within

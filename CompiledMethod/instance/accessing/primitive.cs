@@ -5,6 +5,6 @@ primitive
 	for  backward compatibility.  The time to unpack is negligible,
 	since the reconstituted full index is stored in the method cache."
 	| primBits |
-	primBits _ self header bitAnd: 16r100001FF.
+	primBits := self header bitAnd: 16r100001FF.
 	
 	^ (primBits bitAnd: 16r1FF) + (primBits bitShift: -19)

@@ -10,7 +10,7 @@ printSubclassesOn: aStream level: level
 		ifTrue: 
 			[aStream crtab: level + 1; nextPutAll: '[ ... all the Metaclasses ... ]'.
 			^self].
-	subclassNames _ self subclasses asSortedCollection:[:c1 :c2| c1 name <= c2 name].
+	subclassNames := self subclasses asSortedCollection:[:c1 :c2| c1 name <= c2 name].
 	"Print subclasses in alphabetical order"
 	subclassNames do:
 		[:subclass | subclass printSubclassesOn: aStream level: level + 1]

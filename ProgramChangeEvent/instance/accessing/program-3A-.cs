@@ -1,3 +1,0 @@
-program: midiProgramChange
-
-	program := midiProgramChange.

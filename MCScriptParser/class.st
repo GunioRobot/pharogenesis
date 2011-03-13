@@ -1,0 +1,1 @@
+MCScriptParser class instanceVariableNames: ''

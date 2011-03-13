@@ -3,7 +3,7 @@ useUpMemory
 	"Smalltalk installLowSpaceWatcher; useUpMemory"
 
 	| lst |
-	lst _ nil.
+	lst := nil.
 	[true] whileTrue: [
-		lst _ Link nextLink: lst.
+		lst := Link nextLink: lst.
 	].

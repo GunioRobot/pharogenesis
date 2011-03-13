@@ -1,1 +1,0 @@
-PrimitiveNode class instanceVariableNames: ''

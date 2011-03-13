@@ -1,3 +1,3 @@
 days
-
-	^ Duration days: self
+ 
+ 	^ Duration days: self

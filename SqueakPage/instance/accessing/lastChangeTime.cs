@@ -1,2 +1,0 @@
-lastChangeTime
-	^ lastChangeTime

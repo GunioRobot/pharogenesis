@@ -8,5 +8,5 @@ wait
 	self primitiveFailed
 
 	"excessSignals>0  
-		ifTrue: [excessSignals _ excessSignals-1]  
+		ifTrue: [excessSignals := excessSignals-1]  
 		ifFalse: [self addLastLink: Processor activeProcess suspend]"

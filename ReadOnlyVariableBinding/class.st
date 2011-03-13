@@ -1,1 +1,0 @@
-ReadOnlyVariableBinding class instanceVariableNames: ''

@@ -1,9 +1,9 @@
 testArithmetic
 
 	| ts1 ts2 d |
-	ts1 _ timespan + 2 days.
-	ts2 _ ts1 - 2 days.
-	d _ ts1 - (DateAndTime year: 2003 month: 03 day: 20).
+	ts1 := timespan + 2 days.
+	ts2 := ts1 - 2 days.
+	d := ts1 - (DateAndTime year: 2003 month: 03 day: 20).
 
 	self 
 		assert: (ts1 start = 

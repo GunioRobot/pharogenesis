@@ -1,3 +1,0 @@
-returnToPreviousProject
-
-	Project returnToPreviousProject.

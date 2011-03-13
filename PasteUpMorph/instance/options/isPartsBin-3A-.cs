@@ -1,2 +1,2 @@
 isPartsBin: aBoolean
-	isPartsBin _ aBoolean
+	isPartsBin := aBoolean

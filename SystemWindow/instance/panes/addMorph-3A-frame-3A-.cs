@@ -1,6 +1,6 @@
 addMorph: aMorph frame: relFrame
 	| frame |
-	frame _ LayoutFrame new.
+	frame := LayoutFrame new.
 	frame 
 		leftFraction: relFrame left; 
 		rightFraction: relFrame right; 

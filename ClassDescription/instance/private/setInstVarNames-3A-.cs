@@ -1,10 +1,10 @@
 setInstVarNames: instVarArray
 	"Private - for class initialization only"
 	| required |
-	required _ self instSize.
-	superclass notNil ifTrue:[required _ required - superclass instSize].
+	required := self instSize.
+	superclass notNil ifTrue:[required := required - superclass instSize].
 	instVarArray size = required
 		ifFalse:[^self error: required printString, ' instvar names are required'].
 	instVarArray isEmpty
-		ifTrue:[instanceVariables _ nil]
-		ifFalse:[instanceVariables _ instVarArray asArray].
+		ifTrue:[instanceVariables := nil]
+		ifFalse:[instanceVariables := instVarArray asArray].

@@ -1,4 +1,4 @@
 compilerClass
 	^self methodClass 
-		ifNil: [self class compilerClass] 
-		ifNotNilDo: [:class | class compilerClass].
+		ifNil: [Compiler] 
+		ifNotNil: [:class | class compilerClass].

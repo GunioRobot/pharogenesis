@@ -5,7 +5,7 @@ replaceFrom: start to: stop with: replacement startingAt: repStart
 	performed."
 
 	| index repOff |
-	repOff _ repStart - start.
-	index _ start - 1.
-	[(index _ index + 1) <= stop]
+	repOff := repStart - start.
+	index := start - 1.
+	[(index := index + 1) <= stop]
 		whileTrue: [self at: index put: (replacement at: repOff + index)]

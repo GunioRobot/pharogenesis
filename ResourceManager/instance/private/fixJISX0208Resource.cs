@@ -1,11 +1,11 @@
 fixJISX0208Resource
 
 	| keys value url |
-	keys _ resourceMap keys.
+	keys := resourceMap keys.
 
 	keys do: [:key |
-		value _ resourceMap at: key.
-		url _ key urlString copy.
+		value := resourceMap at: key.
+		url := key urlString copy.
 		url isOctetString not ifTrue: [url mutateJISX0208StringToUnicode].
 		resourceMap removeKey: key.
 		key urlString: url.

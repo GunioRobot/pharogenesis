@@ -5,13 +5,13 @@ fromHandFreehand: hand
 	Cursor crossHair showWhile:
 		[[Sensor anyButtonPressed] whileFalse:
 			[self currentWorld displayWorldSafely; runStepMethods].
-		p1 _ Sensor cursorPoint].
-	opposite _ (Display colorAt: p1) negated.
-	opposite = Color transparent ifTrue: [opposite _ Color red].
-	(poly _ LineMorph from: p1 to: p1 color: opposite width: 2) openInWorld.
+		p1 := Sensor cursorPoint].
+	opposite := (Display colorAt: p1) negated.
+	opposite = Color transparent ifTrue: [opposite := Color red].
+	(poly := LineMorph from: p1 to: p1 color: opposite width: 2) openInWorld.
 	self currentWorld displayWorldSafely; runStepMethods.
 	[Sensor anyButtonPressed] whileTrue:
-			[pN _ Sensor cursorPoint.
+			[pN := Sensor cursorPoint.
 			(pN dist: poly vertices last) > 3 ifTrue:
 				[poly setVertices: (poly vertices copyWith: pN).
 				self currentWorld displayWorldSafely; runStepMethods]].

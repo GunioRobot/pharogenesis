@@ -1,3 +1,0 @@
-getSniffRange
-
-	^ self getValueFromCostume: #sniffRange.

@@ -1,6 +1,6 @@
 Object
 	subclass: #TheWorldMainDockingBar
-	instanceVariableNames: 'icons'
+	instanceVariableNames: ''
 	classVariableNames: 'Instance TS'
 	poolDictionaries: ''
-	category: 'Morphic-Kernel'
+	category: 'Morphic-DockingBar'

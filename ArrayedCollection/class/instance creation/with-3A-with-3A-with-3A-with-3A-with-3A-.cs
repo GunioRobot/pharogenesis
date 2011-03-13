@@ -3,7 +3,7 @@ with: firstObject with: secondObject with: thirdObject with: fourthObject with: 
 	elements."
 
 	| newCollection |
-	newCollection _ self new: 5.
+	newCollection := self new: 5.
 	newCollection at: 1 put: firstObject.
 	newCollection at: 2 put: secondObject.
 	newCollection at: 3 put: thirdObject.

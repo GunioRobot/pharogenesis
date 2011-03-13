@@ -1,6 +1,6 @@
 MCTool
 	subclass: #MCSaveVersionDialog
 	instanceVariableNames: 'name message'
-	classVariableNames: ''
+	classVariableNames: 'PreviousMessages'
 	poolDictionaries: ''
-	category: 'Monticello-UI'
+	category: 'MonticelloGUI'

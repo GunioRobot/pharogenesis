@@ -1,1 +1,0 @@
-AttributedTextStream class instanceVariableNames: ''

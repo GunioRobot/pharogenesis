@@ -1,2 +1,0 @@
-announcer
-	^ browser announcer

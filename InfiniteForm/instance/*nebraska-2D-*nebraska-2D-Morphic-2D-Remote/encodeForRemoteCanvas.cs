@@ -1,3 +1,0 @@
-encodeForRemoteCanvas
-
-	^patternForm encodeForRemoteCanvas

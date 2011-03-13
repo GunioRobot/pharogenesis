@@ -1,4 +1,3 @@
 resetSampleStream
-
-	currentX _ 0.
-	currentY _ 0
+	currentX := 0.
+	currentY := 0

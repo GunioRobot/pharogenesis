@@ -1,1 +1,0 @@
-LedDigitMorph class instanceVariableNames: ''

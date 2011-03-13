@@ -7,8 +7,8 @@ testTimeZoneEquivalence
 	 " Detroit is 5 hours behind UTC, this offset to UTC is therefore written with a minus sign. This example tests both the correct interpretation of the DateAndTime denotation and correct DateAndTime arithmetics. "
 
 	| twoPmInLondon nineAmInDetroit durationDifference |
-	twoPmInLondon _ '2004-11-02T14:00:00+00:00' asDateAndTime.
-	nineAmInDetroit  _ '2004-11-02T09:00:00-05:00' asDateAndTime.
-	durationDifference _ twoPmInLondon - nineAmInDetroit.
+	twoPmInLondon := '2004-11-02T14:00:00+00:00' asDateAndTime.
+	nineAmInDetroit  := '2004-11-02T09:00:00-05:00' asDateAndTime.
+	durationDifference := twoPmInLondon - nineAmInDetroit.
 	self assert: durationDifference asSeconds = 0.
 	self assert: twoPmInLondon = nineAmInDetroit

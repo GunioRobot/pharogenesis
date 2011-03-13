@@ -1,2 +1,2 @@
 originalForm: aForm
-	originalForm _ aForm
+	originalForm := aForm

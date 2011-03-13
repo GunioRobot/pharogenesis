@@ -1,2 +1,2 @@
 eventHandler: newValue
-	eventHandler _ newValue
+	eventHandler := newValue

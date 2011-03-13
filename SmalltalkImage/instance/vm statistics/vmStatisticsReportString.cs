@@ -2,25 +2,23 @@ vmStatisticsReportString
 	"StringHolderView open: (StringHolder new contents:
 		SmalltalkImage current vmStatisticsReportString) label: 'VM Statistics'"
 
-	| params oldSpaceEnd youngSpaceEnd memoryEnd fullGCs fullGCTime incrGCs incrGCTime tenureCount mcMisses mcHits icHits upTime sendCount tms tmSize upTime2 fullGCs2 fullGCTime2 incrGCs2 incrGCTime2 tenureCount2 str |
-	params _ self getVMParameters.
-	oldSpaceEnd			_ params at: 1.
-	youngSpaceEnd		_ params at: 2.
-	memoryEnd			_ params at: 3.
-	fullGCs				_ params at: 7.
-	fullGCTime			_ params at: 8.
-	incrGCs				_ params at: 9.
-	incrGCTime			_ params at: 10.
-	tenureCount			_ params at: 11.
-	mcMisses			_ params at: 15.
-	mcHits				_ params at: 16.
-	icHits				_ params at: 17.
-	upTime _ Time millisecondClockValue.
-	sendCount _ mcMisses + mcHits + icHits.
-	tms _ TranslatedMethod allSubInstances.
-	tmSize _ tms inject: 0 into: [:sum :tm | sum + (tm size * 4)].
+	| params oldSpaceEnd youngSpaceEnd memoryEnd fullGCs fullGCTime incrGCs incrGCTime tenureCount mcMisses mcHits icHits upTime sendCount upTime2 fullGCs2 fullGCTime2 incrGCs2 incrGCTime2 tenureCount2 str |
+	params := self getVMParameters.
+	oldSpaceEnd			:= params at: 1.
+	youngSpaceEnd		:= params at: 2.
+	memoryEnd			:= params at: 3.
+	fullGCs				:= params at: 7.
+	fullGCTime			:= params at: 8.
+	incrGCs				:= params at: 9.
+	incrGCTime			:= params at: 10.
+	tenureCount			:= params at: 11.
+	mcMisses			:= params at: 15.
+	mcHits				:= params at: 16.
+	icHits				:= params at: 17.
+	upTime := Time millisecondClockValue.
+	sendCount := mcMisses + mcHits + icHits.
 
-	str _ WriteStream on: (String new: 1000).
+	str := (String new: 1000) writeStream.
 	str	nextPutAll: 'uptime			';
 		print: (upTime / 1000 / 60 // 60); nextPut: $h;
 		print: (upTime / 1000 / 60 \\ 60) asInteger; nextPut: $m;
@@ -67,14 +65,14 @@ vmStatisticsReportString
 		[str nextPutAll: ' (avg '; print: (incrGCs / tenureCount) asInteger; nextPutAll: ' GCs/tenure)'].
 	str	cr.
 
-LastStats ifNil: [LastStats _ Array new: 6]
+LastStats ifNil: [LastStats := Array new: 6]
 ifNotNil: [
-	upTime2 _ upTime - (LastStats at: 1).
-	fullGCs2 _ fullGCs - (LastStats at: 2).
-	fullGCTime2 _ fullGCTime - (LastStats at: 3).
-	incrGCs2 _ incrGCs - (LastStats at: 4).
-	incrGCTime2 _ incrGCTime - (LastStats at: 5).
-	tenureCount2 _ tenureCount - (LastStats at: 6).
+	upTime2 := upTime - (LastStats at: 1).
+	fullGCs2 := fullGCs - (LastStats at: 2).
+	fullGCTime2 := fullGCTime - (LastStats at: 3).
+	incrGCs2 := incrGCs - (LastStats at: 4).
+	incrGCTime2 := incrGCTime - (LastStats at: 5).
+	tenureCount2 := tenureCount - (LastStats at: 6).
 
 	str	nextPutAll: self textMarkerForShortReport ;
 		nextPutAll: (fullGCs2 + incrGCs2) asStringWithCommas.
@@ -127,14 +125,5 @@ ifNotNil: [
 			nextPutAll: icHits asStringWithCommas;
 			nextPutAll: ' ('; print: ((icHits / sendCount * 100) roundTo: 0.1); nextPutAll: '%)'; cr].
 
-	icHits > 0 ifTrue: [
-		str	nextPutAll: 'methods			';
-			nextPutAll: tms size asStringWithCommas; nextPutAll: ' translated'; cr.
-		str	nextPutAll: '	size			';
-			nextPutAll: tmSize asStringWithCommas; nextPutAll: ' bytes, avg ';
-			print: ((tmSize / tms size) roundTo: 0.1); nextPutAll: ' bytes/method'; cr.
-		str	nextPutAll: '	memory		';
-			print: ((tmSize / youngSpaceEnd * 100) roundTo: 0.1); nextPutAll: '% of used, ';
-			print: ((tmSize / memoryEnd * 100) roundTo: 0.1); nextPutAll: '% of available'; cr].
 
 	^ str contents

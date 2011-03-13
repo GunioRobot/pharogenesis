@@ -1,2 +1,2 @@
 reset
-	active _ true
+	active := true

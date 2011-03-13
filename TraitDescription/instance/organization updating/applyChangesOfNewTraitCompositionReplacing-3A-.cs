@@ -1,5 +1,5 @@
 applyChangesOfNewTraitCompositionReplacing: oldComposition
 	| changedSelectors |
-	changedSelectors _ super applyChangesOfNewTraitCompositionReplacing: oldComposition.
+	changedSelectors := super applyChangesOfNewTraitCompositionReplacing: oldComposition.
 	self noteRecategorizedSelectors: changedSelectors oldComposition: oldComposition.
 	^ changedSelectors.

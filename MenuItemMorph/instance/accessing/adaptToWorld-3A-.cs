@@ -1,4 +1,4 @@
 adaptToWorld: aWorld
 
 	super adaptToWorld: aWorld.
-	target _ target adaptedToWorld: aWorld.
+	target := target adaptedToWorld: aWorld.

@@ -2,7 +2,7 @@ optionalButtonRow
 	"Answer the button row associated with a file list"
 
 	| aRow |
-	aRow _ AlignmentMorph newRow beSticky.
+	aRow := AlignmentMorph newRow beSticky.
 	aRow color: Color transparent.
 	aRow clipSubmorphs: true.
 	aRow layoutInset: 5@1; cellInset: 6.

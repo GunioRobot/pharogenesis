@@ -21,11 +21,11 @@ objectAt: anInteger
 
     ^ objects at: anInteger "relative position.  case 1: It's in 'objects'"
         ifAbsent:   "do like super objectAt:, but remember the fwd-ref-end position"
-            [savedPosn _ byteStream position.		"absolute"
-            refPosn _ self getCurrentReference.	"relative position"
+            [savedPosn := byteStream position.		"absolute"
+            refPosn := self getCurrentReference.	"relative position"
 
             byteStream position: anInteger + basePos.	"was relative"
-            anObject _ self next.
+            anObject := self next.
 
             (self isAReferenceType: (self typeIDFor: anObject))
                 ifTrue:  [fwdRefEnds at: anInteger put: byteStream position - basePos] "cases 2, 4"

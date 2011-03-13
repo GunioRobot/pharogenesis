@@ -3,7 +3,7 @@ jump: distance if: condition
 	argument, distance, and whose condition is the argument, condition."
 
 	| bool |
-	bool _ self pop.
+	bool := self pop.
 	(bool == true or: [bool == false]) ifFalse: [
 		^self
 			send: #mustBeBooleanIn:

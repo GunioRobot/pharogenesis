@@ -1,2 +1,0 @@
-newStandAlone
-	^self new createWindow

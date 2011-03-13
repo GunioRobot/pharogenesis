@@ -1,0 +1,2 @@
+updateFontList
+	FreeTypeFontProvider current updateFromSystem.

@@ -3,10 +3,10 @@ initializeDesktopCommandKeySelectors
 
 	"ActiveWorld initializeDesktopCommandKeySelectors"
 	| dict messageSend |
-	dict _ IdentityDictionary new.
+	dict := IdentityDictionary new.
 	self defaultDesktopCommandKeyTriplets do:
 		[:trip |
-			messageSend _ MessageSend receiver: trip second selector: trip third.
+			messageSend := MessageSend receiver: trip second selector: trip third.
 			dict at: trip first put: messageSend].
 	self setProperty: #commandKeySelectors toValue: dict.
 	^ dict

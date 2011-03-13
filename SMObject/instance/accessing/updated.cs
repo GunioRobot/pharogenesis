@@ -1,2 +1,0 @@
-updated
-	^TimeStamp fromSeconds: updated

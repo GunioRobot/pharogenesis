@@ -1,2 +1,0 @@
-staggerPolicyString
-	^ Preferences staggerPolicyString

@@ -1,3 +1,3 @@
 closeLog
 	self logFileStream close.
-	LogFileStream _ nil.
+	LogFileStream := nil.

@@ -1,3 +1,3 @@
 balloonText: aStringOrNil
 
-	balloonText _ aStringOrNil
+	balloonText := aStringOrNil

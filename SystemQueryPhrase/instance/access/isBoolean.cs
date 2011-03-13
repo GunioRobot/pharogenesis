@@ -1,2 +1,0 @@
-isBoolean
-	^ true

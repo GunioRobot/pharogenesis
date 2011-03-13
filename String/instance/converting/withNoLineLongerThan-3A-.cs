@@ -2,29 +2,29 @@ withNoLineLongerThan: aNumber
 	"Answer a string with the same content as receiver, but rewrapped so that no line has more characters than the given number"
 	| listOfLines currentLast currentStart resultString putativeLast putativeLine crPosition |
 	aNumber isNumber not | (aNumber < 1) ifTrue: [self error: 'too narrow'].
-	listOfLines _ OrderedCollection new.
-	currentLast _ 0.
+	listOfLines := OrderedCollection new.
+	currentLast := 0.
 	[currentLast < self size] whileTrue:
-		[currentStart _ currentLast + 1.
-		putativeLast _ (currentStart + aNumber - 1) min: self size.
-		putativeLine _ self copyFrom: currentStart to: putativeLast.
-		(crPosition _ putativeLine indexOf: Character cr) > 0 ifTrue:
-			[putativeLast _ currentStart + crPosition - 1.
-			putativeLine _ self copyFrom: currentStart to: putativeLast].
-		currentLast _ putativeLast == self size
+		[currentStart := currentLast + 1.
+		putativeLast := (currentStart + aNumber - 1) min: self size.
+		putativeLine := self copyFrom: currentStart to: putativeLast.
+		(crPosition := putativeLine indexOf: Character cr) > 0 ifTrue:
+			[putativeLast := currentStart + crPosition - 1.
+			putativeLine := self copyFrom: currentStart to: putativeLast].
+		currentLast := putativeLast == self size
 			ifTrue:
 				[putativeLast]
 			ifFalse:
 				[currentStart + putativeLine lastSpacePosition - 1].
 		currentLast <= currentStart ifTrue:
 			["line has NO spaces; baleout!"
-			currentLast _ putativeLast].
+			currentLast := putativeLast].
 		listOfLines add: (self copyFrom: currentStart to: currentLast) withBlanksTrimmed].
 
 	listOfLines size > 0 ifFalse: [^ ''].
-	resultString _ listOfLines first.
+	resultString := listOfLines first.
 	2 to: listOfLines size do:
-		[:i | resultString _ resultString, String cr, (listOfLines at: i)].
+		[:i | resultString := resultString, String cr, (listOfLines at: i)].
 	^ resultString
 
 "#(5 7 20) collect:

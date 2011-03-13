@@ -1,3 +1,0 @@
-asBufferedCanvas
-
-	^self

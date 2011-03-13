@@ -5,7 +5,7 @@ printDetails: strm
 	self printOn: strm.  
 
 	strm cr; tab; nextPutAll: 'Arguments and temporary variables: '; cr.
-	str _ [self tempsAndValuesLimitedTo: 80 indent: 2] ifError: [:err :rcvr | 
+	str := [self tempsAndValuesLimitedTo: 80 indent: 2] ifError: [:err :rcvr | 
 						'<<error during printing>>'].
 	strm nextPutAll: str.
 	strm peekLast == Character cr ifFalse: [strm cr].

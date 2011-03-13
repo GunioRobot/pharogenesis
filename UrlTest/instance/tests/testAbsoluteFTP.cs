@@ -1,6 +1,6 @@
 testAbsoluteFTP
 	
-	url _ 'ftP://some.server/some/directory/' asUrl.
+	url := 'ftP://some.server/some/directory/' asUrl.
 
 	self assert: url schemeName = 'ftp'.
 	self assert: url class = FtpUrl.

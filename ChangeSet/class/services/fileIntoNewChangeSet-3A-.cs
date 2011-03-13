@@ -3,5 +3,6 @@ fileIntoNewChangeSet: fullName
 
 	| fn ff |
 	fullName ifNil: [^ Beeper beep].
-	ff _ FileStream readOnlyFileNamed: (fn _ GZipReadStream uncompressedFileName: fullName).
-	ChangeSet newChangesFromStream: ff named: (FileDirectory localNameFor: fn)
+	[ff := FileStream readOnlyFileNamed: (fn := GZipReadStream uncompressedFileName: fullName).
+	ChangeSet newChangesFromStream: ff named: (FileDirectory localNameFor: fn)]
+		ensure: [ff ifNotNil: [ff close]]

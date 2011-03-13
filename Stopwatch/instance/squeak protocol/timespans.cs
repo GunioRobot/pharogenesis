@@ -1,3 +1,3 @@
 timespans
 
-	^ timespans ifNil: [ timespans _ OrderedCollection new ]
+	^ timespans ifNil: [ timespans := OrderedCollection new ]

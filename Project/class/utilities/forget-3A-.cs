@@ -1,3 +1,3 @@
 forget: aProject
 
-	AllProjects _ self allProjects reject: [ :x | x == aProject].
+	AllProjects := self allProjects reject: [ :x | x == aProject].

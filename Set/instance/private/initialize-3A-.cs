@@ -1,4 +1,4 @@
 initialize: n
 	"Initialize array to an array size of n"
-	array _ Array new: n.
-	tally _ 0
+	array := Array new: n.
+	tally := 0

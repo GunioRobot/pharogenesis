@@ -9,14 +9,14 @@ displayString: aString on: aBitBlt from: startIndex to: stopIndex at: aPoint ker
 		char := aString at: rIndex.
 		((fromFont hasGlyphOf: char) or: [char leadingChar ~= tag]) ifTrue: [^ Array with: rIndex with: destPoint].
 		self glyphInfoOf: char into: glyphInfo.
-		g := glyphInfo first.
-		leftX := glyphInfo second.
-		rightX := glyphInfo third.
+		g := glyphInfo at: 1.
+		leftX := glyphInfo at: 2.
+		rightX := glyphInfo at: 3.
 		(glyphInfo fifth ~= aBitBlt lastFont) ifTrue: [
 			glyphInfo fifth installOn: aBitBlt.
 		].
 		aBitBlt sourceForm: g.
-		destY := baselineY - glyphInfo fourth. 
+		destY := baselineY - (glyphInfo at: 4). 
 		aBitBlt destX: destPoint x.
 		aBitBlt destY: destY.
 		aBitBlt sourceOrigin: leftX @ 0.

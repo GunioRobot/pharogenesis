@@ -1,2 +1,0 @@
-isDescendantOfMethodVersion: anOBMethodVersionNode 
-	^ false

@@ -1,9 +1,10 @@
 allMethodsInCategory: category 
 	| aCollection |
-	aCollection _ SortedCollection new.
-	Cursor wait showWhile:
-		[self allBehaviorsDo:
-			[:x | (x allMethodsInCategory: category) do:
-				[:sel | aCollection add: x name , ' ' , sel]]].
+	aCollection := Set new.
+	Cursor wait showWhile: [
+			self allBehaviorsDo: [:x | ((category = ClassOrganizer allCategory
+					ifTrue: [x organization allMethodSelectors]
+					ifFalse: [x organization listAtCategoryNamed: category])) do:
+				[:sel | aCollection add: (MethodReference new setStandardClass: x 
+methodSymbol: sel)]]].
 	^aCollection.
-	

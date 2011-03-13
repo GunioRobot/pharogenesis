@@ -1,3 +1,0 @@
-removeAllFromTurtleDisplayList
-
-	costume renderedMorph removeAllFromTurtleDisplayList.

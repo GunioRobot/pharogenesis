@@ -1,3 +1,0 @@
-stopListening
-
-	self class stopListening

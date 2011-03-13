@@ -1,0 +1,2 @@
+arbitraryMenuItem
+	^1

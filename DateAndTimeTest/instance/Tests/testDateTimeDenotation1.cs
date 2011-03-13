@@ -12,7 +12,7 @@ testDateTimeDenotation1
 				minute: 0
 				second: 0
 				offset: 0 hours.
-	twoPmUTCInLocalTimeOfDetroit _ twoPmInLondon utcOffset: -5 hours.
-	nineAmInDetroit  _ '2004-11-02T09:00:00-05:00' asDateAndTime.
+	twoPmUTCInLocalTimeOfDetroit := twoPmInLondon utcOffset: -5 hours.
+	nineAmInDetroit  := '2004-11-02T09:00:00-05:00' asDateAndTime.
 	self assert:  twoPmUTCInLocalTimeOfDetroit = nineAmInDetroit.
 	

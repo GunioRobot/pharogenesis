@@ -4,8 +4,8 @@ vSetScrollDelta
 
 	scroller hasSubmorphs ifFalse:[scrollBar interval: 1.0. ^self].
 	
-	delta _ self scrollDeltaHeight.
-	range _ self vLeftoverScrollRange.
+	delta := self scrollDeltaHeight.
+	range := self vLeftoverScrollRange.
 	range = 0 ifTrue: [^ scrollBar scrollDelta: 0.02 pageDelta: 0.2; interval: 1.0; setValue: 0].
 
 	"Set up for one line (for arrow scrolling), or a full pane less one line (for paging)."

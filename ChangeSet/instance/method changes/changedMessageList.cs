@@ -2,10 +2,10 @@ changedMessageList
 	"Used by a message set browser to access the list view information."
 
 	| messageList classNameInFull classNameInParts |
-	messageList _ OrderedCollection new.
+	messageList := OrderedCollection new.
 	changeRecords associationsDo: [:clAssoc |
-		classNameInFull _ clAssoc key asString.
-		classNameInParts _ classNameInFull findTokens: ' '.
+		classNameInFull := clAssoc key asString.
+		classNameInParts := classNameInFull findTokens: ' '.
 
 		(clAssoc value allChangeTypes includes: #comment) ifTrue:
 			[messageList add:

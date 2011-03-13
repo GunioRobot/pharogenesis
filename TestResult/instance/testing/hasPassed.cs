@@ -1,2 +1,2 @@
 hasPassed
-	^self runCount = (self passedCount + self expectedDefectCount)
+	^ self hasErrors not and: [ self hasFailures not ]

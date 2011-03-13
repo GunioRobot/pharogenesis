@@ -1,1 +1,0 @@
-SymbolListTile class instanceVariableNames: ''

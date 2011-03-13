@@ -1,2 +1,2 @@
 passenger: anObject
-	passenger _ anObject
+	passenger := anObject

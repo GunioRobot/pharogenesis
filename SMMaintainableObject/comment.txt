@@ -1,2 +1,0 @@
-A mainainable object is a personal object that is of such a complexity that it seems beneficial to optionally co-maintain with other people.
-It thus has a potential list of maintainers - other accounts that also can modify the object. It also has a field to be able to refer to an RSS feed regarding the object.

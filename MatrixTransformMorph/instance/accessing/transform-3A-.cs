@@ -1,3 +1,3 @@
 transform: aMatrixTransform
-	transform _ aMatrixTransform.
+	transform := aMatrixTransform.
 	self computeBounds.

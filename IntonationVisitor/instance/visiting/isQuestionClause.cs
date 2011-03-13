@@ -1,2 +1,0 @@
-isQuestionClause
-	^ clause string includes: $?

@@ -1,1 +1,0 @@
-OBRequestor class instanceVariableNames: ''

@@ -1,1 +1,0 @@
-MCSortingTest class instanceVariableNames: ''

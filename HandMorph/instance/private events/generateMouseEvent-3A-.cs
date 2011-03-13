@@ -29,7 +29,7 @@ generateMouseEvent: evtBuf
 	type == #mouseMove 
 		ifTrue: 
 			[trail := self mouseTrailFrom: evtBuf.
-			^MouseMoveEvent new 
+			^MouseMoveEvent basicNew 
 				setType: type
 				startPoint: (self position)
 				endPoint: trail last
@@ -37,7 +37,7 @@ generateMouseEvent: evtBuf
 				buttons: buttons
 				hand: self
 				stamp: stamp].
-	^MouseButtonEvent new 
+	^MouseButtonEvent basicNew 
 		setType: type
 		position: position
 		which: (oldButtons bitXor: buttons)

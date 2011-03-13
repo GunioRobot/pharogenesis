@@ -5,7 +5,7 @@ basicRemoveElement: element
 	elementIndex := 0.
 	nextStop := 0.
 	"nextStop keeps track of the stops in the new element array"
-	newElements := WriteStream on: (Array new: elementArray size).
+	newElements := (Array new: elementArray size) writeStream.
 	[(elementIndex := elementIndex + 1) <= elementArray size]
 		whileTrue: 
 			[[elementIndex > (categoryStops at: categoryIndex)]

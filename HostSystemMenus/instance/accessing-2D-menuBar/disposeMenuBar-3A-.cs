@@ -1,0 +1,2 @@
+disposeMenuBar: aWindowIndex
+	self hostSystemProxy disposeMenuBar: aWindowIndex

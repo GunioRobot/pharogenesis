@@ -3,23 +3,23 @@ compare: string1 with: string2 collated: order
 
 	| len1 len2 c1 c2 |
 	order == nil ifTrue: [
-		len1 _ string1 size.
-		len2 _ string2 size.
+		len1 := string1 size.
+		len2 := string2 size.
 		1 to: (len1 min: len2) do:[:i |
-			c1 _ (string1 at: i) asInteger.
-			c2 _ (string2 at: i) asInteger.
+			c1 := (string1 at: i) asInteger.
+			c2 := (string2 at: i) asInteger.
 			c1 = c2 ifFalse: [c1 < c2 ifTrue: [^ 1] ifFalse: [^ 3]].
 		].
 		len1 = len2 ifTrue: [^ 2].
 		len1 < len2 ifTrue: [^ 1] ifFalse: [^ 3].
 	].
-	len1 _ string1 size.
-	len2 _ string2 size.
+	len1 := string1 size.
+	len2 := string2 size.
 	1 to: (len1 min: len2) do:[:i |
-		c1 _ (string1 at: i) asInteger.
-		c2 _ (string2 at: i) asInteger.
-		c1 < 256 ifTrue: [c1 _ order at: c1 + 1].
-		c2 < 256 ifTrue: [c2 _ order at: c2 + 1].
+		c1 := (string1 at: i) asInteger.
+		c2 := (string2 at: i) asInteger.
+		c1 < 256 ifTrue: [c1 := order at: c1 + 1].
+		c2 < 256 ifTrue: [c2 := order at: c2 + 1].
 		c1 = c2 ifFalse:[c1 < c2 ifTrue: [^ 1] ifFalse: [^ 3]].
 	].
 	len1 = len2 ifTrue: [^ 2].

@@ -1,6 +1,6 @@
 statusColor
-	result hasPassed 
-		ifTrue:[ ^ Color green ].
+	result hasFailures 
+		ifTrue:[ ^ Color yellow ].
 	result hasErrors 
 		ifTrue: [ ^ Color red ].
-	^ Color yellow.
+	^ Color green

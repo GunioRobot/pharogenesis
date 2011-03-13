@@ -1,2 +1,0 @@
-url: aString
-	url := aString

@@ -1,8 +1,8 @@
 replaceSubmorph: oldMorph by: newMorph
 	| t b |
-	t _ transform.
-	b _ bounds.
+	t := transform.
+	b := bounds.
 	super replaceSubmorph: oldMorph by: newMorph.
-	transform _ t.
-	bounds _ b.
+	transform := t.
+	bounds := b.
 	self layoutChanged

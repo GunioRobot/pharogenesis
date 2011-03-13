@@ -1,3 +1,3 @@
-consistOnlyOf: aFont
-	fontArray _ Array with: aFont.
-	defaultFontIndex _ 1
+consistOnlyOf: aFont 
+	fontArray := Array with: aFont.
+	defaultFontIndex := 1

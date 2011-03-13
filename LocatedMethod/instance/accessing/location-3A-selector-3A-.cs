@@ -1,3 +1,3 @@
 location: aPureBehavior selector: aSymbol
-	location _ aPureBehavior.
-	selector _ aSymbol
+	location := aPureBehavior.
+	selector := aSymbol

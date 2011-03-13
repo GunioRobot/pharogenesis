@@ -1,4 +1,4 @@
 initialize
 	super initialize.
-	"currentBorderColor _ Color gray."
+	"currentBorderColor := Color gray."
 	self addProjectNameMorphFiller.

@@ -3,10 +3,10 @@ disconnectRemoteUser
 
 	"select hand to remove"
 	| initials handToRemove |
-	initials _ FillInTheBlank request: 'Enter initials for remote user''s cursor?'.
-	initials isEmpty ifTrue: [^ self].  "abort"
-	handToRemove _ nil.
+	initials := UIManager default request: 'Enter initials for remote user''s cursor?' translated.
+	initials isEmptyOrNil ifTrue: [^ self].  "abort"
+	handToRemove := nil.
 	self handsDo: [:h |
-		h userInitials = initials ifTrue: [handToRemove _ h]].
+		h userInitials = initials ifTrue: [handToRemove := h]].
 	handToRemove ifNil: [^ self].  "no hand with those initials"
 	handToRemove withdrawFromWorld.

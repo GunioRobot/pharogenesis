@@ -1,7 +1,7 @@
 fixUpRecentColors
 	| inner outer border box form newImage canvas morph |
 	self fixUpColorPicker.
-	recentColors := WriteStream on: Array new.
+	recentColors := Array new writeStream.
 	form := image.
 	newImage := Form extent: form extent + (0 @ 41) depth: form depth.
 	form displayOn: newImage.

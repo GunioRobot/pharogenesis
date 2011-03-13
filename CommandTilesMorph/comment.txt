@@ -1,1 +1,0 @@
-An entire Smalltalk statement in tiles.  A line of code.

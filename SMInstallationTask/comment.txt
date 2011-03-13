@@ -1,2 +1,0 @@
-An SMInstallationProposal is effectively a list of releases to install or upgrade to in a specific order to achieve an SMInstallationTask.
-The task can be either an upgrade or a new installation - the proposal still involved an ordered list of installations or upgrades.

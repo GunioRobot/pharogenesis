@@ -1,3 +1,3 @@
 privateRemoveMorph: aMorph
-	backgroundMorph == aMorph ifTrue: [ backgroundMorph _ nil ].
+	backgroundMorph == aMorph ifTrue: [ backgroundMorph := nil ].
 	^super privateRemoveMorph: aMorph.

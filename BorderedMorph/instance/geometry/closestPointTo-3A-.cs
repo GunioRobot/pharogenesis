@@ -1,7 +1,7 @@
 closestPointTo: aPoint
 	"account for round corners. Still has a couple of glitches at upper left and right corners"
 	| pt |
-	pt _ self bounds pointNearestTo: aPoint.
+	pt := self bounds pointNearestTo: aPoint.
 	self wantsRoundedCorners ifFalse: [ ^pt ].
 	self bounds corners with: (self bounds insetBy: 6) corners do: [ :out :in |
 		(pt - out) abs < (6@6)

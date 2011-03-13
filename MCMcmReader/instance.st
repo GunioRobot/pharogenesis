@@ -1,6 +1,6 @@
 MCVersionReader
 	subclass: #MCMcmReader
-	instanceVariableNames: 'fileName'
+	instanceVariableNames: 'fileName configuration'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'MonticelloConfigurations'

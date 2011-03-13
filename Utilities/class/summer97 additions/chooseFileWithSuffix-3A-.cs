@@ -1,12 +1,11 @@
 chooseFileWithSuffix: aSuffix
 	"Utilities chooseFileWithSuffix: '.gif'"
-	| aList aName |
-	aList _ FileDirectory default fileNamesMatching: '*', aSuffix.
+	| aList |
+	aList := FileDirectory default fileNamesMatching: '*', aSuffix.
 	aList size > 0
 		ifTrue:
-			[aName _ (SelectionMenu selections: aList) startUpWithCaption: 'Choose a file'.
-			^ aName]
+			[^ UIManager default chooseFrom: aList values: aList title: 'Choose a file' translated]
 		ifFalse:
 			[self inform: 'Sorry, there are no files
-whose names end with "', aSuffix, '".'.
+whose names end with' translated, ' "', aSuffix, '".'.
 			^ nil]

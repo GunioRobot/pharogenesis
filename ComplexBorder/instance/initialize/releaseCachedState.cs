@@ -1,3 +1,3 @@
 releaseCachedState
-	colors _ nil.
-	lineStyles _ nil.
+	colors := nil.
+	lineStyles := nil.

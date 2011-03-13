@@ -6,4 +6,4 @@ bitAnd: arg
 
 	<primitive: 14>
 	self >= 0 ifTrue: [^ arg bitAnd: self].
-	^ (self bitInvert bitOr: arg bitInvert) bitInvert
+	^ (self bitInvert bitOr: arg bitInvert) bitInvert.

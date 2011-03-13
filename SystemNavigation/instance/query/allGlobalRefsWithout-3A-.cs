@@ -6,9 +6,9 @@ allGlobalRefsWithout: classesAndMessagesPair
 	"may be a problem if namespaces are introduced as for the moment  
 	only Smalltalk is queried. sd 29/4/03"
 	| globalRefs absentClasses absentSelectors |
-	globalRefs _ IdentitySet new: CompiledMethod instanceCount.
-	absentClasses _ classesAndMessagesPair first.
-	absentSelectors _ classesAndMessagesPair second.
+	globalRefs := IdentitySet new: CompiledMethod instanceCount.
+	absentClasses := classesAndMessagesPair first.
+	absentSelectors := classesAndMessagesPair second.
 	self flag: #shouldBeRewrittenUsingSmalltalkAllClassesDo:.
 	"sd 29/04/03"
 	Cursor execute
@@ -21,8 +21,7 @@ allGlobalRefsWithout: classesAndMessagesPair
 								ifFalse: [cl selectors copyWithoutAll: absentSelectors])
 								do: [:sel | "Include all capitalized symbols for good 
 									measure"
-									(cl compiledMethodAt: sel) literals
-										do: [:m | 
+									(cl compiledMethodAt: sel) literalsDo: [:m | 
 											((m isSymbol)
 													and: [m size > 0
 															and: [m first canBeGlobalVarInitial]])

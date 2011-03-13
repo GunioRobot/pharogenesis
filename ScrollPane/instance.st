@@ -1,7 +1,7 @@
-ComponentLikeModel
+MorphicModel
 	subclass: #ScrollPane
 	instanceVariableNames:
-		'scrollBar scroller retractableScrollBar scrollBarOnLeft getMenuSelector getMenuTitleSelector scrollBarHidden hasFocus hScrollBar'
+		'scrollBar scroller retractableScrollBar scrollBarOnLeft getMenuSelector getMenuTitleSelector hasFocus hScrollBar'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Windows'

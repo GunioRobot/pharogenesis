@@ -1,3 +1,3 @@
 foregroundColor: cf backgroundColor: cb
-	foreColor _ cf.
-	backColor _ cb
+	foreColor := cf.
+	backColor := cb

@@ -2,7 +2,7 @@ installResource: aResource from: aStream locator: loc
 	| repl |
 	aResource ifNil:[^false]. "it went away, so somebody might have deleted it"
 	(aStream == nil or:[aStream size = 0]) ifTrue:[^false]. "error?!"
-	repl _ aResource clone readResourceFrom: aStream asUnZippedStream.
+	repl := aResource clone readResourceFrom: aStream asUnZippedStream.
 	repl ifNotNil:[
 		aResource replaceByResource: repl.
 		unloaded remove: loc.

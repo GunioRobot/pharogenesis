@@ -1,3 +1,3 @@
 ascent
 
-	^ fontArray first ascent.
+	^ (fontArray  at: 1) ascent.

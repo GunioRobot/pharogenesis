@@ -5,18 +5,18 @@ rotateScalePrep: evt
 
 	(self getActionFor: evt) == #scaleOrRotate ifTrue: [^ self].	"Already doing it"
 	paintingForm width > 120 
-		ifTrue: [newBox _ paintingForm rectangleEnclosingPixelsNotOfColor: Color transparent.
+		ifTrue: [newBox := paintingForm rectangleEnclosingPixelsNotOfColor: Color transparent.
 			"minimum size"
-			newBox _ newBox insetBy: 
+			newBox := newBox insetBy: 
 				((18 - newBox width max: 0)//2) @ ((18 - newBox height max: 0)//2) * -1]
-		ifFalse: [newBox _ paintingForm boundingBox].
-	newBox _ newBox expandBy: 1.
-	self set: #buff for: evt to: (myBuff _ Form extent: newBox extent depth: paintingForm depth).
+		ifFalse: [newBox := paintingForm boundingBox].
+	newBox := newBox expandBy: 1.
+	self set: #buff for: evt to: (myBuff := Form extent: newBox extent depth: paintingForm depth).
 	myBuff offset: newBox center - paintingForm center.
 	myBuff copyBits: newBox from: paintingForm at: 0@0 
 		clippingBox: myBuff boundingBox rule: Form over fillColor: nil.
 	"Could just run up owner chain asking colorUsed, but may not be embedded"
-	cumRot _ 0.0.  cumMag _ 1.0.	"start over"
+	cumRot := 0.0.  cumMag := 1.0.	"start over"
 	self set: #changed for: evt to: true.
 	self set: #action for: evt to: #scaleOrRotate.
 		"Only changed by mouseDown with tool in paint area"

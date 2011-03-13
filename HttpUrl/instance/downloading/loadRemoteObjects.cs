@@ -7,13 +7,13 @@ loadRemoteObjects
 		asUrl loadRemoteObjects" 
 
 	| stream info data extension |
- 	data _ self retrieveContents content.
-	extension _ (FileDirectory extensionFor: self path last) asLowercase.
+ 	data := self retrieveContents content.
+	extension := (FileDirectory extensionFor: self path last) asLowercase.
 	(#('zip' 'gzip') includes: extension)
-		ifTrue: [data _ (GZipReadStream on: data) upToEnd].
-"	stream _ StreamWrapper streamOver: (ReadStream on: data)."
-	stream _ RWBinaryOrTextStream on: data.
+		ifTrue: [data := (GZipReadStream on: data) upToEnd].
+"	stream := StreamWrapper streamOver: (ReadStream on: data)."
+	stream := RWBinaryOrTextStream on: data.
 	stream reset.
-	info _ stream fileInObjectAndCode.
+	info := stream fileInObjectAndCode.
 	stream close.
 	^info arrayOfRoots

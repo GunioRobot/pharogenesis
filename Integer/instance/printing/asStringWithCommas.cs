@@ -2,7 +2,7 @@ asStringWithCommas
 	"123456789 asStringWithCommas"
 	"-123456789 asStringWithCommas"
 	| digits |
-	digits _ self abs printString.
+	digits := self abs printString.
 	^ String streamContents:
 		[:strm | 
 		self sign = -1 ifTrue: [strm nextPut: $-].

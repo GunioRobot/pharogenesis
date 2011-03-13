@@ -3,4 +3,4 @@ ToolBuilderTests
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'ToolBuilder-Morphic'
+	category: 'Tests-Morphic'

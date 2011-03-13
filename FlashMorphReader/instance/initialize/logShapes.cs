@@ -1,2 +1,0 @@
-logShapes
-	^false

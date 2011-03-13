@@ -1,3 +1,3 @@
 load
-	 self createClass ifNotNilDo: [:trait |
+	 self createClass ifNotNil: [:trait |
 		self hasComment ifTrue: [trait classComment: comment stamp: commentStamp]]

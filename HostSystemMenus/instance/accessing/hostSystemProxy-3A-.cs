@@ -1,0 +1,2 @@
+hostSystemProxy: anObject
+	hostSystemProxy := anObject

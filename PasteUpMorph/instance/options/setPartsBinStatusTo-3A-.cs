@@ -1,5 +1,5 @@
 setPartsBinStatusTo: aBoolean
-	isPartsBin _ aBoolean.
+	isPartsBin := aBoolean.
 	aBoolean ifFalse: [self enableDragNDrop].
 		"but note that we no longer reset openToDragNDrop to false upon making it a parts bin again"
 	isPartsBin

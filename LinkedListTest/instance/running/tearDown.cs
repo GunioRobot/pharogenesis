@@ -4,4 +4,9 @@ tearDown
 	link2 := nil.
 	link3 := nil.
 	link4 := nil.
+	
+	link := nil.
+	nonEmpty := nil.
+	otherList := nil.
+	
 	^ super tearDown

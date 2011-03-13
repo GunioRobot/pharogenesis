@@ -1,2 +1,0 @@
-created: c
-	created := c

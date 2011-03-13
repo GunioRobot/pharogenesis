@@ -2,7 +2,7 @@ rename: aString
 	"The new name of the receiver is the argument, aString."
 
 	| newName |
-	(newName _ aString asSymbol) ~= self name
+	(newName := aString asSymbol) ~= self name
 		ifFalse: [^ self].
 	(self environment includesKey: newName)
 		ifTrue: [^ self error: newName , ' already exists'].
@@ -10,4 +10,4 @@ rename: aString
 		ifTrue: [self inform: 'There are references to, ' , aString printString , '
 from Undeclared. Check them after this change.'].
 	self environment renameClass: self as: newName.
-	name _ newName
+	name := newName

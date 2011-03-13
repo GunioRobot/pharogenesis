@@ -1,1 +1,0 @@
-ClassDescription class instanceVariableNames: ''

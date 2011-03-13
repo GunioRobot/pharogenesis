@@ -1,3 +1,0 @@
-startAudioChat
-
-	self startAudioChat: true

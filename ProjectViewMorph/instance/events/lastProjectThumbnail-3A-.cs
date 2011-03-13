@@ -1,3 +1,3 @@
 lastProjectThumbnail: aForm
 	
-	lastProjectThumbnail _ aForm
+	lastProjectThumbnail := aForm

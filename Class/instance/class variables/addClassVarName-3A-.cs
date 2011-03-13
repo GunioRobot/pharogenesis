@@ -3,17 +3,17 @@ addClassVarName: aString
 	Signal an error if the first character of aString is not capitalized,
 	or if it is already a variable named in the class."
 	| symbol oldState |
-	oldState _ self copy.
+	oldState := self copy.
 	aString first canBeGlobalVarInitial
 		ifFalse: [^self error: aString, ' class variable name should be capitalized; proceed to include anyway.'].
-	symbol _ aString asSymbol.
+	symbol := aString asSymbol.
 	self withAllSubclasses do: 
 		[:subclass | 
 		(subclass bindingOf: symbol) ifNotNil:[
 			^ self error: aString 
 				, ' is already used as a variable name in class ' 
 				, subclass name]].
-	classPool == nil ifTrue: [classPool _ Dictionary new].
+	classPool == nil ifTrue: [classPool := Dictionary new].
 	(classPool includesKey: symbol) ifFalse: 
 		["Pick up any refs in Undeclared"
 		classPool declare: symbol from: Undeclared.

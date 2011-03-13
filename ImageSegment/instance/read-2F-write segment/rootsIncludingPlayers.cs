@@ -1,29 +1,23 @@
 rootsIncludingPlayers
-	"Return a new roots array with more objects.  (Caller should store into rootArray.) Player (non-systemDefined) gets its class and metaclass put into the Roots array.  Then ask for the segment again."
-
-| extras havePresenter players morphs existing |
-userRootCnt ifNil: [userRootCnt _ arrayOfRoots size].
-extras _ OrderedCollection new.
-arrayOfRoots do: [:root | 
-	(root isKindOf: Presenter) ifTrue: [havePresenter _ root].
-	(root isKindOf: PasteUpMorph) ifTrue: [
-			root isWorldMorph ifTrue: [havePresenter _ root presenter]].
-	(root isKindOf: Project) ifTrue: [havePresenter _ root world presenter]].
-havePresenter ifNotNil: [
-	havePresenter flushPlayerListCache.		"old and outside guys"
-	morphs _ IdentitySet new: 400.
-	havePresenter associatedMorph allMorphsAndBookPagesInto: morphs.
-	players _ (morphs select: [:m | m player ~~ nil] 
-				thenCollect: [:m | m player]) asArray.
-	players _ players select: [:ap | (arrayOfRoots includes: ap class) not
-		& (ap class isSystemDefined not)].
-	extras addAll: (players collect: [:each | each class]).
-	extras addAll: (players collect: [:each | each class class]).
-	extras addAll: morphs.	"Make then ALL roots!"
-	].
-existing _ arrayOfRoots asIdentitySet.
-extras _ extras reject: [ :each | existing includes: each].
-extras isEmpty ifTrue: [^ nil].	"no change"
+	"Players have been removed from Morphs, this method could now more accurately be renamed rootsIncludingMorphs"
+	"Return a new roots array with more objects.  (Caller should store into rootArray.) The world morph gets all its submorphs put into the Roots array.  Then ask for the segment again."
 	
-		havePresenter _ players _ morphs _ nil.
-		^ arrayOfRoots, extras	"will contain multiples of some, but reduced later"
+	"I'm not sure if the usage of this method, just doing refactoring....
+	Is it a bug that if you have more than one WorldMorph/Project/Presenter in roots, only the submorphs of the (originally final, now first due to use of detect: instead of do:) ones world will be added? "
+| morphs existing worldAccessRoot |
+	userRootCnt ifNil: [userRootCnt := arrayOfRoots size].
+
+	worldAccessRoot := arrayOfRoots detect: [:one |
+		(one isMorph and: [one isWorldMorph])  or: [
+		{Presenter. Project} contains: [:class | one isKindOf: class]]]
+								 ifNone: [^nil].
+
+	worldAccessRoot world ifNotNil: [:world |
+		morphs := IdentitySet new: 400.
+		world allMorphsInto: morphs.].
+	
+	existing := arrayOfRoots asIdentitySet.
+	morphs := morphs asOrderedCollection reject: [ :each | existing includes: each].
+	morphs isEmpty ifTrue: [^ nil].	"no change"
+	worldAccessRoot := morphs := nil.
+^ arrayOfRoots, morphs	"will contain multiples of some, but reduced later"

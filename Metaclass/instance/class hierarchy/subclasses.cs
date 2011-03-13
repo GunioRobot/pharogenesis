@@ -6,4 +6,4 @@ subclasses
 		thenCollect:[:aSubclass| aSubclass class]
 
 	"Metaclass allInstancesDo:
-		[:m | Compiler evaluate: 'subclasses_nil' for: m logged: false]"
+		[:m | Compiler evaluate: 'subclasses:=nil' for: m logged: false]"

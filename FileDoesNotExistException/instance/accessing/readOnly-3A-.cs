@@ -1,2 +1,2 @@
 readOnly: aBoolean
-	readOnly _ aBoolean
+	readOnly := aBoolean

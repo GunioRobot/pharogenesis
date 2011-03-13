@@ -3,6 +3,6 @@ installInterruptWatcher
 	"Sensor installInterruptWatcher"
 
 	InterruptWatcherProcess ifNotNil: [InterruptWatcherProcess terminate].
-	InterruptSemaphore _ Semaphore new.
-	InterruptWatcherProcess _ [self userInterruptWatcher] forkAt: Processor lowIOPriority.
+	InterruptSemaphore := Semaphore new.
+	InterruptWatcherProcess := [self userInterruptWatcher] forkAt: Processor lowIOPriority.
 	self primInterruptSemaphore: InterruptSemaphore.

@@ -1,3 +1,0 @@
-vertical
-
-	self vResizing: #spaceFill.

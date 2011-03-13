@@ -1,3 +1,0 @@
-pianoRoll: prMorph
-
-	pianoRoll := prMorph

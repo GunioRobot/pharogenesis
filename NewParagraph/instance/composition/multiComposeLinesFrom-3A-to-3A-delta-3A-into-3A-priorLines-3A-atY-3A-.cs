@@ -4,7 +4,7 @@ multiComposeLinesFrom: start to: stop delta: delta into: lineColl priorLines: pr
 
 	| newResult |
 
-	newResult _ MultiTextComposer new
+	newResult := MultiTextComposer new
 		multiComposeLinesFrom: start 
 		to: stop 
 		delta: delta 
@@ -15,7 +15,7 @@ multiComposeLinesFrom: start to: stop delta: delta into: lineColl priorLines: pr
 		text: text 
 		container: container
 		wantsColumnBreaks: wantsColumnBreaks == true.
-	lines _ newResult first asArray.
-	maxRightX _ newResult second.
+	lines := newResult first asArray.
+	maxRightX := newResult second.
 	"maxRightX printString displayAt: 0@0."
 	^maxRightX

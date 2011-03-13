@@ -3,9 +3,9 @@ inheritsFrom: aClass
 	chain."
 
 	| aSuperclass |
-	aSuperclass _ superclass.
+	aSuperclass := superclass.
 	[aSuperclass == nil]
 		whileFalse: 
 			[aSuperclass == aClass ifTrue: [^true].
-			aSuperclass _ aSuperclass superclass].
+			aSuperclass := aSuperclass superclass].
 	^false

@@ -1,7 +1,7 @@
 select: aBlock 
 	"Refer to the comment in Collection|select:."
 	| aStream |
-	aStream _ WriteStream on: (self species new: self size).
+	aStream := (self species new: self size) writeStream.
 	self do:[:obj|
 		(aBlock value: obj)
 			ifTrue: [aStream nextPut: obj]].

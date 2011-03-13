@@ -7,8 +7,8 @@ of #(normal leftRight upDown none)."
 "Clear the indicator"
 
 "Find new style, store it, install the indicator"
-rr _ self rotationStyle.
-ii _ #(normal leftRight upDown none) indexOf: rr.
+rr := self rotationStyle.
+ii := #(normal leftRight upDown none) indexOf: rr.
 self setProperty: #rotationStyle toValue:
 	(#(leftRight upDown none normal) at: ii).
 ii = 4 ifTrue: ["normal" self forward: self forwardDirection

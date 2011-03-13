@@ -1,0 +1,2 @@
+disable
+	disabled := true.

@@ -1,3 +1,3 @@
 indent: numTabs
 
-	indent _ numTabs
+	indent := numTabs

@@ -1,3 +1,3 @@
 selector: symbol
 
-	selectorOrFalse _ symbol
+	selectorOrFalse := symbol

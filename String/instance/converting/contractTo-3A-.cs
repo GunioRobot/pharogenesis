@@ -5,7 +5,7 @@ contractTo: smallSize
 		ifTrue: [^ self].  "short enough"
 	smallSize < 5
 		ifTrue: [^ self copyFrom: 1 to: smallSize].    "First N characters"
-	leftSize _ smallSize-2//2.
+	leftSize := smallSize-2//2.
 	^ self copyReplaceFrom: leftSize+1		"First N/2 ... last N/2"
 		to: self size - (smallSize - leftSize - 3)
 		with: '...'

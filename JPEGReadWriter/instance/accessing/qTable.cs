@@ -1,4 +1,3 @@
 qTable
-
-	qTable ifNil: [qTable _ Array new: QuantizationTableSize].
+	qTable ifNil: [ qTable := Array new: QuantizationTableSize ].
 	^ qTable

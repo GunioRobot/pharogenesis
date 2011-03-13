@@ -1,3 +1,0 @@
-deleteCurrentPage
-
-	"no-op here"

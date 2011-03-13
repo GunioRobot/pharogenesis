@@ -1,7 +1,7 @@
 printOn: strm indent: level precedence: outerPrecedence
 
 	| parenthesize |
-	parenthesize _ precedence > outerPrecedence
+	parenthesize := precedence > outerPrecedence
 		or: [outerPrecedence = 3 and: [precedence = 3 "both keywords"]].
 	parenthesize
 		ifTrue: [strm nextPutAll: '('.

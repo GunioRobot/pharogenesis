@@ -1,2 +1,2 @@
 getSelector: sel
-	getSelector _ sel
+	getSelector := sel

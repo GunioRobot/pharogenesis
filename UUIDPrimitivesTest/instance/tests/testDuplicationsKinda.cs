@@ -1,10 +1,10 @@
 testDuplicationsKinda
 	|check uuid size |
 
-	size _ 5000.
-	check _ Set new: size.
+	size := 5000.
+	check := Set new: size.
 	size timesRepeat: 
-		[uuid _ UUID new.
+		[uuid := UUID new.
 		self shouldnt: [check includes: uuid].
 		check add: uuid].
 		

@@ -3,10 +3,10 @@ putCommentOnFile: aFileStream numbered: sourceIndex moveSource: moveSource forCl
 	| header |
 	classComment ifNotNil:
 		[aFileStream cr; nextPut: $!.
-		header _ String streamContents: [:strm | 
+		header := String streamContents: [:strm | 
 				strm nextPutAll: aClass name;
 				nextPutAll: ' commentStamp: '.
-				commentStamp ifNil: [commentStamp _ '<historical>'].
+				commentStamp ifNil: [commentStamp := '<historical>'].
 				commentStamp storeOn: strm.
 				strm nextPutAll: ' prior: '; nextPutAll: '0'].
 		aFileStream nextChunkPut: header.

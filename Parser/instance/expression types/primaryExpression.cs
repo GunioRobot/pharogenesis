@@ -1,9 +1,9 @@
 primaryExpression 
 	hereType == #word 
 		ifTrue: 
-			[parseNode _ self variable.
+			[parseNode := self variable.
 			(parseNode isUndefTemp and: [self interactive])
-				ifTrue: [self queryUndefined].
+				ifTrue: [ self warns ifTrue: [self queryUndefined]].
 			parseNode nowHasRef.
 			^ true].
 	hereType == #leftBracket
@@ -24,11 +24,11 @@ primaryExpression
 			^true].
 	(hereType == #string or: [hereType == #number or: [hereType == #literal]])
 		ifTrue: 
-			[parseNode _ encoder encodeLiteral: self advance.
+			[parseNode := encoder encodeLiteral: self advance.
 			^true].
 	(here == #- and: [tokenType == #number])
 		ifTrue: 
 			[self advance.
-			parseNode _ encoder encodeLiteral: self advance negated.
+			parseNode := encoder encodeLiteral: self advance negated.
 			^true].
 	^false

@@ -2,7 +2,7 @@ loadFromURL
 	"Allow the user to change the text in a crude way"
 
 	| url |
-	url _ FillInTheBlankMorph request: ' Type in the url for a TrueType font on the web. '
+	url := UIManager default request:  ' Type in the url for a TrueType font on the web.' translated
 				 initialAnswer: 'http://www.fontguy.com/download.asp?fontid=1494'.
-	url isEmpty ifTrue: [^ self].
+	url isEmptyOrNil ifTrue: [^ self].
 	self loadFromURL: url.

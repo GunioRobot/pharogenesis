@@ -4,8 +4,8 @@ traitProvidingSelector: aSymbol
 	Take aliases into account. Return the trait which the aliased method is defined in."
 
 	| methodDescription locatedMethod |
-	methodDescription _ self methodDescriptionForSelector: aSymbol.
+	methodDescription := self methodDescriptionForSelector: aSymbol.
 	(methodDescription isProvided not or: [methodDescription isConflict])	
 		ifTrue: [^nil].
-	locatedMethod _ methodDescription providedLocatedMethod.
+	locatedMethod := methodDescription providedLocatedMethod.
 	^locatedMethod location traitOrClassOfSelector: locatedMethod selector

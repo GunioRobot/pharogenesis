@@ -1,2 +1,2 @@
 evalString: str
-	evalString _ str 
+	evalString := str 

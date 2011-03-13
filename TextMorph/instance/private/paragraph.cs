@@ -7,7 +7,7 @@ self setProperty: #CreatingParagraph toValue: true.
 	self setDefaultContentsIfNil.
 
 	"...Code here to recreate the paragraph..."
-	paragraph _ (self paragraphClass new textOwner: self owner).
+	paragraph := (self paragraphClass new textOwner: self owner).
 	paragraph wantsColumnBreaks: successor notNil.
 	paragraph
 		compose: text

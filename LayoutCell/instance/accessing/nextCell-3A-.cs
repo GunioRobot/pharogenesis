@@ -1,2 +1,2 @@
 nextCell: aCell
-	nextCell _ aCell
+	nextCell := aCell

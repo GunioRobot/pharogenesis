@@ -1,1 +1,0 @@
-PowerManagement class instanceVariableNames: ''

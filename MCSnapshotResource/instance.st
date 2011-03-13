@@ -3,4 +3,4 @@ TestResource
 	instanceVariableNames: 'snapshot'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Monticello-Tests'
+	category: 'Tests-Monticello'

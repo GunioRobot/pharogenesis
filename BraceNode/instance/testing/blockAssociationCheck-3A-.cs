@@ -10,10 +10,10 @@ blockAssociationCheck: encoder
 			(x 	isMessage: #->
 				receiver:
 					[:rcvr |
-					(rcvr isKindOf: BlockNode) and: [rcvr numberOfArguments = 0]]
+					rcvr isBlockNode and: [rcvr numberOfArguments = 0]]
 				arguments:
 					[:arg |
-					(arg isKindOf: BlockNode) and: [arg numberOfArguments = 0]])
+					arg isBlockNode and: [arg numberOfArguments = 0]])
 			  ifFalse:
 				[^encoder notify: 'Association between 0-argument blocks required' at: loc]].
 	^true

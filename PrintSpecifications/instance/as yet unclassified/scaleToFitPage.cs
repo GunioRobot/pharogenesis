@@ -1,3 +1,0 @@
-scaleToFitPage
-
-	^scaleToFitPage ifNil: [false]

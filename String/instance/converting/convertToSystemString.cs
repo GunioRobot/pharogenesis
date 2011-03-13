@@ -1,9 +1,9 @@
 convertToSystemString
 
 	| readStream writeStream converter |
-	readStream _ self readStream.
-	writeStream _ String new writeStream.
-	converter _ LanguageEnvironment defaultSystemConverter.
+	readStream := self readStream.
+	writeStream := String new writeStream.
+	converter := LanguageEnvironment defaultSystemConverter.
 	converter ifNil: [^ self].
 	[readStream atEnd] whileFalse: [
 		converter nextPut: readStream next toStream: writeStream

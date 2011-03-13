@@ -1,2 +1,0 @@
-clearTurtleTrails
-	self world clearTurtleTrails

@@ -5,7 +5,7 @@ writeList: listContents toStream: strm
 	| fileNames version |
 	strm reset.
 	listContents do:
-		[:pair | version _ pair first.  fileNames _ pair last.
+		[:pair | version := pair first.  fileNames := pair last.
 		strm nextPut: $#; nextPutAll: version; cr.
 		fileNames do: [:fileName | strm nextPutAll: fileName; cr]].
 	strm close

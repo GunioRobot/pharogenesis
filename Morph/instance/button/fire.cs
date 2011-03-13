@@ -3,8 +3,4 @@ fire
 	For the present, we'll try out doing *all* the firings this object can do. "
 
 	self firedMouseUpCode.   	"This will run the mouseUpCodeToRun, if any"
-
-	self player ifNotNil:		
-		[self player fireOnce].  "Run mouseDown and mouseUp scripts"
-
 	self doButtonAction			"Do my native button action, if any"

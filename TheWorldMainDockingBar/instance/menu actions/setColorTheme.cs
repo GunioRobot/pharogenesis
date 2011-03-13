@@ -1,2 +1,0 @@
-setColorTheme
-		SmallLandColorTheme chooseTheme.  

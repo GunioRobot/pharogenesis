@@ -1,8 +1,7 @@
 inboxRepository
-	repository isNil 
-		ifTrue: [ repository := 
-					MCHttpRepository
-						location: 'http://source.squeakfoundation.org/inbox'
-						user: ''
-						password: ''].
-	^ repository
+	^ inboxRepository ifNil: [
+		inboxRepository :=  (MCHttpRepository new 
+			location: 'http://www.squeaksource.com/PharoInbox/';
+			user: '';
+			password: '')]
+	

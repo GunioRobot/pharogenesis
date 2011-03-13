@@ -5,5 +5,5 @@ popTo: aContext value: aValue
 	| callee |
 	self == Processor activeProcess
 		ifTrue: [^ self error: 'The active process cannot pop contexts'].
-	callee _ (self calleeOf: aContext) ifNil: [^ self].  "aContext is on top"
+	callee := (self calleeOf: aContext) ifNil: [^ self].  "aContext is on top"
 	self return: callee value: aValue

@@ -1,2 +1,0 @@
-normalActivity
-	super controlActivity

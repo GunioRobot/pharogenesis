@@ -1,7 +1,7 @@
 testHeap
 	"self run: #testHeap"
 
-	| heap |
+	| heap | 
 	heap := Heap new.
 	self assert: heap isHeap.
 	

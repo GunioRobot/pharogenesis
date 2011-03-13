@@ -1,4 +1,4 @@
 setVertices: newVertices
-	vertices _ newVertices.
+	vertices := newVertices.
 	handles ifNotNil: [self removeHandles; addHandles].
 	self computeBounds

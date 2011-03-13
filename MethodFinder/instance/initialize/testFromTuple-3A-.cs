@@ -2,11 +2,11 @@ testFromTuple: nth
 	"verify that the methods allowed don't crash the system.  Try N of each of the fundamental types.  up to 4 of each kind." 
 
 | objects nonRepeating even other aa cnt |
-objects _ #((1 4 17 42) ($a $b $c $d) ('one' 'two' 'three' 'four')
+objects := #((1 4 17 42) ($a $b $c $d) ('one' 'two' 'three' 'four')
 	(x + rect: new) ((a b 1 4) (c 1 5) ($a 3 d) ()) (4.5 0.0 3.2 100.3)
 	).
 
-objects _ objects, {{true. false. true. false}. {Point. SmallInteger. Association. Array}.
+objects := objects, {{true. false. true. false}. {Point. SmallInteger. Association. Array}.
 	{Point class. SmallInteger class. Association class. Array class}.
 	"{ 4 blocks }."
 	{Date today. '1 Jan 1950' asDate. '25 Aug 1987' asDate. '1 Jan 2000' asDate}.
@@ -20,21 +20,21 @@ objects _ objects, {{true. false. true. false}. {Point. SmallInteger. Associatio
 
 self test2: objects.
 "rec+0, rec+1, rec+2, rec+3 need to be tested.  " 
-cnt _ 0.
+cnt := 0.
 nth to: 4 do: [:take |
-	nonRepeating _ OrderedCollection new.
+	nonRepeating := OrderedCollection new.
 	objects do: [:each |
 		nonRepeating addAll: (each copyFrom: 1 to: take)].
 	"all combinations of take, from nonRepeating"
-	even _ true.
+	even := true.
 	nonRepeating combinations: take atATimeDo: [:tuple |
-		even ifTrue: [other _ tuple clone]
-			ifFalse: [self load: (aa _ Array with: tuple with: 1 with: other with: 7).
-				(cnt _ cnt+1) \\ 50 = 0 ifTrue: [
+		even ifTrue: [other := tuple clone]
+			ifFalse: [self load: (aa := Array with: tuple with: 1 with: other with: 7).
+				(cnt := cnt+1) \\ 50 = 0 ifTrue: [
 					Transcript cr; show: aa first printString].
 				self search: true.
 				self test2: aa.
 				self test2: nonRepeating.
 				"self test2: objects"].
-		even _ even not].
+		even := even not].
 	].

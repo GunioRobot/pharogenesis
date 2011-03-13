@@ -1,7 +1,7 @@
 justDroppedInto: aMorph event: evt
 	| halo |
 	super justDroppedInto: aMorph event: evt.
-	halo _ evt hand halo.
+	halo := evt hand halo.
 	(halo notNil and:[halo target hasOwner: self]) ifTrue:[
 		"Grabbed single menu item"
 		self addHalo: evt.

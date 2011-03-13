@@ -1,3 +1,3 @@
 colorMemory: aMorph
 
-	colorMemory _ aMorph
+	colorMemory := aMorph

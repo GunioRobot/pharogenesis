@@ -1,2 +1,0 @@
-isWrapped
-	^ textMorph isWrapped

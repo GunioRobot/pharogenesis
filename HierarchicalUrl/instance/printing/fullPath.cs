@@ -1,6 +1,6 @@
 fullPath
 	| ans |
-	ans _ WriteStream on: String new.
+	ans := String new writeStream.
 	path do: [ :pathElem |
 		ans nextPut: $/.
 		ans nextPutAll: pathElem encodeForHTTP. ].

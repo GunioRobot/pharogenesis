@@ -3,7 +3,7 @@ getCurrentSelectionIndex
 	| item |
 	getIndexSelector == nil
 		ifTrue: [^ 0].
-	item _ model perform: getIndexSelector.
+	item := model perform: getIndexSelector.
 
 	^ list first
 		findFirst: [:x | x  = item]

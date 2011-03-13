@@ -1,2 +1,2 @@
 wrapDirection: aSymbol
-	wrapDirection _ aSymbol
+	wrapDirection := aSymbol

@@ -3,6 +3,6 @@ fileOutCommentOn: aFileStream moveSource: moveSource toFile: fileIndex
 	| fileComment |
 	classComment ifNotNil: 
 			[aFileStream cr.
-			fileComment _ RemoteString newString: classComment text
+			fileComment := RemoteString newString: classComment text
 							onFileNumber: fileIndex toFile: aFileStream.
-			moveSource ifTrue: [classComment _ fileComment]]
+			moveSource ifTrue: [classComment := fileComment]]

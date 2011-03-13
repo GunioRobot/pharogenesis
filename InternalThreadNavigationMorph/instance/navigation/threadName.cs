@@ -1,3 +1,0 @@
-threadName
-
-	^threadName

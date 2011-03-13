@@ -1,14 +1,5 @@
-ScaledDecimal provides a numeric representation of fixed point decimal numbers able to accurately represent decimal fractions.  It supports unbounded precision, with no limit to the number of digits before and after the decimal point.
-	ScaledDecimal complies with the ANSI protocols:
+ScaledDecimal implement a special kind of Fraction that prints in decimal notation.
+It uses a limited number of digits (scale) after the decimal separation dot and round the result.
+Note that a ScaledDecimal does not printOn: exactly, however it will storeOn: exactly because the full precision fraction is kept in memory.
 
-	Object
-	number
-	ScaledDecimal
-	????
-#todo. "finish protocol list."
-
-Implementation Notes:
-
-	I implemented ScaledDecimal with the decimal fraction stored in instance variables numerator and denominator, and the number of digits after the decimal point in fractionalDigit as a positive Integer.  I implemented operations by first coercing the aurguments to fractions, doing the operations, then coercing the result to the proper numeric representation when necessary and scale.  This is because I assume the Fraction class is more likely to implement them correctly.  
-
-Richard A. Harmon
+This is mostly usefull with denominators being powers of 10.

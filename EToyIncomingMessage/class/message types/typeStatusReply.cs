@@ -1,3 +1,0 @@
-typeStatusReply
-
-	^'statusreply'

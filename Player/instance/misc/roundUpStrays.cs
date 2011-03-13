@@ -1,2 +1,0 @@
-roundUpStrays
-	self sendMessageToCostume: #roundUpStrays

@@ -8,7 +8,7 @@ fill: evt
 	"would like to only invalidate the area changed, but can't find out what it is."
 	Cursor execute
 		showWhile: [
-			box _ paintingForm
+			box := paintingForm
 				floodFill: (self getColorFor: evt)
 				at: evt cursorPoint - bounds origin.
 			self render: (box translateBy: bounds origin)]

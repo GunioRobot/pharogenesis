@@ -1,1 +1,0 @@
-ScreenController class instanceVariableNames: ''

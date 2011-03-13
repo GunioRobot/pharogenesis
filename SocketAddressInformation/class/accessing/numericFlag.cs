@@ -1,0 +1,3 @@
+numericFlag
+
+	^NumericFlag

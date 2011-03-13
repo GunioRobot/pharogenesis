@@ -3,9 +3,9 @@ destroy
 
 	process ifNotNil: [
 		process terminate.
-		process _ nil].
+		process := nil].
 	socket ifNotNil: [
 		socket destroy.
-		socket _ nil].
+		socket := nil].
 	connections do: [:s | s destroy].
-	connections _ OrderedCollection new.
+	connections := OrderedCollection new.

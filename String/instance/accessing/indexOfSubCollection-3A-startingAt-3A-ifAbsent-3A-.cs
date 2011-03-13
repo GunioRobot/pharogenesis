@@ -1,5 +1,5 @@
 indexOfSubCollection: sub startingAt: start ifAbsent: exceptionBlock
 	| index |
-	index _ self findSubstring: sub in: self startingAt: start matchTable: CaseSensitiveOrder.
+	index := self findString: sub startingAt: start.
 	index = 0 ifTrue: [^ exceptionBlock value].
 	^ index

@@ -1,3 +1,3 @@
 descentOf: aChar
 
-	^ fontArray first descentOf: aChar
+	^ (fontArray  at: 1) descentOf: aChar

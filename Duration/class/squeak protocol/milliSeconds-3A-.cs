@@ -1,5 +1,4 @@
 milliSeconds: milliCount
+	"Since seconds is 0 we can call the instance directly."
 
-
-	^ self days: 0 hours: 0 minutes: 0 seconds: 0 nanoSeconds: 
-			(milliCount * (10 raisedToInteger: 6))
+	^ self basicNew seconds: 0 nanoSeconds: milliCount * NanosInMillisecond

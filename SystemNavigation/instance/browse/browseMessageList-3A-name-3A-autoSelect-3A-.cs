@@ -6,7 +6,7 @@ browseMessageList: messageList name: labelString autoSelect: autoSelectString
 		[^ self inform: 'There are no
 ' , labelString].
 
-	title _ (aSize _ messageList size) > 1
+	title := (aSize := messageList size) > 1
 		ifFalse:	[labelString]
 		ifTrue:	[ labelString, ' [', aSize printString, ']'].
 

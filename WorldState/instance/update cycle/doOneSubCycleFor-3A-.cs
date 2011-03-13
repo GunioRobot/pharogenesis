@@ -2,6 +2,6 @@ doOneSubCycleFor: aWorld
 	"Like doOneCycle, but preserves activeHand."
 
 	| currentHand |
-	currentHand _ ActiveHand.
+	currentHand := ActiveHand.
 	self doOneCycleFor: aWorld.
-	ActiveHand _ currentHand
+	ActiveHand := currentHand

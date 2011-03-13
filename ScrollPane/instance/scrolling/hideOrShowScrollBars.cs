@@ -2,8 +2,8 @@ hideOrShowScrollBars
 
 	| wasHShowing wasVShowing |
 
-	wasVShowing _ self vIsScrollbarShowing.
-	wasHShowing _ self hIsScrollbarShowing.
+	wasVShowing := self vIsScrollbarShowing.
+	wasHShowing := self hIsScrollbarShowing.
 
 	self 
 		vHideOrShowScrollBar; 

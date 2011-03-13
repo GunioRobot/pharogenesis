@@ -3,8 +3,8 @@ testExample2
 	forking process about termination of both forked processes"
 
 	| producer1 producer2  monitor goal work counter goalReached activeProducers|
-	goal _ (1 to: 1000) asOrderedCollection.
-	work _ OrderedCollection new.
+	goal := (1 to: 1000) asOrderedCollection.
+	work := OrderedCollection new.
 	counter := 0.
 	goalReached := false.
 	activeProducers := 0.

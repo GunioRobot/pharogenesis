@@ -1,4 +1,4 @@
 bottomFraction: aNumber offset: anInteger
 
-	bottomFraction _ aNumber.
-	bottomOffset _ anInteger
+	bottomFraction := aNumber.
+	bottomOffset := anInteger

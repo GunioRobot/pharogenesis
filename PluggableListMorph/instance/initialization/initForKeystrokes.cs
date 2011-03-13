@@ -1,3 +1,3 @@
 initForKeystrokes
-	lastKeystrokeTime _ 0.
-	lastKeystrokes _ ''
+	lastKeystrokeTime := 0.
+	lastKeystrokes := ''

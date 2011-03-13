@@ -3,4 +3,4 @@ MCTestCase
 	instanceVariableNames: 'navigation isModified'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Monticello-Tests'
+	category: 'Tests-Monticello'

@@ -1,1 +1,0 @@
-OBPane class instanceVariableNames: ''

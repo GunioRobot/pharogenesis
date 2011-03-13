@@ -1,1 +1,0 @@
-PluggableListViewOfMany class instanceVariableNames: ''

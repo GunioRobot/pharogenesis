@@ -2,7 +2,7 @@ skipSeparators
 
 	| state |
 	[self atEnd] whileFalse: [
-		state _ converter saveStateOf: self.
+		state := converter saveStateOf: self.
 		self next isSeparator ifFalse: [
 			^ converter restoreStateOf: self with: state]]
 

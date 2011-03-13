@@ -3,7 +3,7 @@ findNextUnwindContextUpTo: aContext
 
 	| ctx |
 	<primitive: 195>
-	ctx _ self.
-		[(ctx _ ctx sender) == nil or: [ctx == aContext]] whileFalse:
+	ctx := self.
+		[(ctx := ctx sender) == nil or: [ctx == aContext]] whileFalse:
 		[ ctx isUnwindContext ifTrue: [^ctx]].
 	^nil

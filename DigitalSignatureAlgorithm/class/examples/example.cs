@@ -4,9 +4,9 @@ example
 	"DigitalSignatureAlgorithm example"
 
 	| msg keys sig |
-	msg _ 'This is a test...'.
-	keys _ self testKeySet.
-	sig _ self sign: msg privateKey: keys first.
+	msg := 'This is a test...'.
+	keys := self testKeySet.
+	sig := self sign: msg privateKey: keys first.
 	self inform: 'Signature created'.
 	(self verify: sig isSignatureOf: msg publicKey: keys last)
 		ifTrue: [self inform: 'Signature verified.']

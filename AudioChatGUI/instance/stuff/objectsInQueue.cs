@@ -1,3 +1,0 @@
-objectsInQueue
-
-	^self class numberOfNewMessages

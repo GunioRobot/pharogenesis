@@ -3,9 +3,9 @@ writeScanOn: strm
 
 	| nn str |
 	strm nextPut: $c.
-	(nn _ color name) ifNotNil: [
+	(nn := color name) ifNotNil: [
 		(self class respondsTo: nn) ifTrue: [
 			^ strm nextPutAll: nn; nextPut: $;]].
 	(Array with: color red with: color green with: color blue) do: [:float |
-		str _ '000', (float * 255) asInteger printString.
+		str := '000', (float * 255) asInteger printString.
 		strm nextPutAll: (str copyFrom: str size-2 to: str size)]

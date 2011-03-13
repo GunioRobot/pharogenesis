@@ -1,2 +1,0 @@
-timedEvents: aCollection
-	timedEvents := aCollection

@@ -1,3 +1,3 @@
 initializeCollectionOfPoints
 
-	collectionOfPoints _ OrderedCollection new
+	collectionOfPoints := OrderedCollection new

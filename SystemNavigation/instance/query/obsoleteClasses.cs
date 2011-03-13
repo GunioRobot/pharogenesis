@@ -3,9 +3,9 @@ obsoleteClasses
 	"SystemNavigation default obsoleteClasses inspect"
 	"NOTE:  Also try inspecting comments below"
 	| obs c |
-	obs _ OrderedCollection new.  Smalltalk garbageCollect.
+	obs := OrderedCollection new.  Smalltalk garbageCollect.
 	Metaclass allInstancesDo:
-		[:m | c _ m soleInstance.
+		[:m | c := m soleInstance.
 		(c ~~ nil and: ['AnOb*' match: c name asString])
 			ifTrue: [obs add: c]].
 	^ obs asArray
@@ -16,11 +16,11 @@ obsoleteClasses
 "Obsolete class refs or super pointer in last lit of a method...
 | n l found |
 Smalltalk browseAllSelect:
-	[:m | found _ false.
+	[:m | found := false.
 	1 to: m numLiterals do:
-		[:i | (((l _ m literalAt: i) isMemberOf: Association)
+		[:i | (((l := m literalAt: i) isMemberOf: Association)
 				and: [(l value isKindOf: Behavior)
 				and: ['AnOb*' match: l value name]])
-			ifTrue: [found _ true]].
+			ifTrue: [found := true]].
 	found]
 "

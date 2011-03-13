@@ -1,6 +1,6 @@
 Inspector
 	subclass: #ContextVariablesInspector
-	instanceVariableNames: ''
+	instanceVariableNames: 'fieldList'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Tools-Debugger'

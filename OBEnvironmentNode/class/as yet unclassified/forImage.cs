@@ -1,2 +1,0 @@
-forImage
-	^ self on: Smalltalk

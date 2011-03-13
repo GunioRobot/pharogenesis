@@ -8,6 +8,7 @@ customButtonSpecs
 		('Over'			doStep				'step Over message sends')
 		('Through'		stepIntoBlock		'step into a block')
 		('Full Stack'		fullStack			'show full stack')
+		('Run to Here'	runToSelection		'run to selection')
 		('Where'		where				'select current pc range')).
 	Preferences restartAlsoProceeds ifTrue:
 		[list := list collect: [:each |

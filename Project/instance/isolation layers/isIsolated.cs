@@ -1,3 +1,3 @@
 isIsolated
 
-	^ isolatedHead ifNil: [isolatedHead _ false]
+	^ isolatedHead ifNil: [isolatedHead := false]

@@ -7,7 +7,7 @@ ensureImageReady
 		^self
 	].
 	project thumbnail ~~ lastProjectThumbnail ifTrue: ["scale thumbnail to fit my bounds"
-		lastProjectThumbnail _ project thumbnail.
+		lastProjectThumbnail := project thumbnail.
 		self updateImageFrom: lastProjectThumbnail.
 		project thumbnail ifNotNil: [project thumbnail hibernate].
 		image borderWidth: 1

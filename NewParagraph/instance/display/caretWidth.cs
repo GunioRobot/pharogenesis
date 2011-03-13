@@ -1,2 +1,0 @@
-caretWidth
-	^ Preferences caretWidth

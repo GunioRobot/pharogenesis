@@ -1,3 +1,0 @@
-bounceOn: aPlayer
-
-	^ false.

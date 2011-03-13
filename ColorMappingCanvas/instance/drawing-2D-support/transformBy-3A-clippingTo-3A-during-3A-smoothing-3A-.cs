@@ -2,11 +2,11 @@ transformBy: aDisplayTransform clippingTo: aClipRect during: aBlock	 smoothing: 
 
 	"Transform the receiver by the given display transformation during the execution of aBlock. The given clip rectangle defines the *global* (e.g., outer) rectangle against which the receiver should clip (which would be equivalent to 'self clipRect: aClipRect; transformBy: aDisplayTransform')."
 	| oldCanvas |
-	oldCanvas _ myCanvas.
+	oldCanvas := myCanvas.
 	myCanvas transformBy: aDisplayTransform
 		clippingTo: aClipRect
 		during: [:newCanvas |
-				myCanvas _ newCanvas.
+				myCanvas := newCanvas.
 				aBlock value: self]
 		smoothing: cellSize.
-	myCanvas _ oldCanvas.
+	myCanvas := oldCanvas.

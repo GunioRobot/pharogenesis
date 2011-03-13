@@ -1,2 +1,0 @@
-isResource
-	^false

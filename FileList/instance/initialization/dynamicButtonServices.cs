@@ -6,6 +6,6 @@ dynamicButtonServices
 			[#()]
 		ifFalse:
 			[ | toReject |
-				toReject _ self buttonSelectorsToSuppress.
+				toReject := self buttonSelectorsToSuppress.
 				(self itemsForFile: self fullName) reject:
 					[:svc | toReject includes: svc selector]]

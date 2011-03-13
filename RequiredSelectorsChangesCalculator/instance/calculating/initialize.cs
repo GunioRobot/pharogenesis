@@ -1,2 +1,3 @@
 initialize
-	possiblyAffectedPerRoot _ IdentityDictionary new.
+	super initialize.
+	possiblyAffectedPerRoot := IdentityDictionary new.

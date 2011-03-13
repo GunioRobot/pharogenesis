@@ -1,13 +1,13 @@
 copy: destRectangle from: sourcePt in: srcForm halftoneForm: hf rule: rule 
 	| destOrigin |
-	sourceForm _ srcForm.
-	self fillColor: hf.		"sets halftoneForm"
-	combinationRule _ rule.
-	destOrigin _ destRectangle origin.
-	destX _ destOrigin x.
-	destY _ destOrigin y.
-	sourceX _ sourcePt x.
-	sourceY _ sourcePt y.
-	width _ destRectangle width.
-	height _ destRectangle height.
+	sourceForm := srcForm.
+	self fillColor: hf.	"sets halftoneForm"
+	combinationRule := rule.
+	destOrigin := destRectangle origin.
+	destX := destOrigin x.
+	destY := destOrigin y.
+	sourceX := sourcePt x.
+	sourceY := sourcePt y.
+	width := destRectangle width.
+	height := destRectangle height.
 	self copyBits

@@ -3,11 +3,11 @@ addNullLineForIndex: index
 
 	| oldLastLine r |
 
-	oldLastLine _ lines last.
+	oldLastLine := lines last.
 	oldLastLine last - oldLastLine first >= 0 ifFalse: [^self].
 	oldLastLine last = (index - 1) ifFalse: [^self].
 
-	r _ oldLastLine left @ oldLastLine bottom 
+	r := oldLastLine left @ oldLastLine bottom 
 				extent: 0@(oldLastLine bottom - oldLastLine top).
 	"Even though we may be below the bottom of the container,
 	it is still necessary to compose the last line for consistency..."

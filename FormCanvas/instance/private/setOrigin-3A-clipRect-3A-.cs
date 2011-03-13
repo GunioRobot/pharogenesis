@@ -1,5 +1,5 @@
 setOrigin: aPoint clipRect: aRectangle
 
-	origin _ aPoint.
-	clipRect _ aRectangle.
+	origin := aPoint.
+	clipRect := aRectangle.
 	port clipRect: aRectangle.

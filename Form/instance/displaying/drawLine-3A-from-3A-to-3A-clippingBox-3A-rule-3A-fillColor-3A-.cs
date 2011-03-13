@@ -4,7 +4,7 @@ drawLine: sourceForm from: beginPoint to: endPoint clippingBox: clipRect rule: a
 	
 	| dotSetter |
 	"set up an instance of BitBlt for display"
-	dotSetter _ BitBlt current
+	dotSetter := BitBlt current
 		destForm: self
 		sourceForm: sourceForm
 		fillColor: aForm

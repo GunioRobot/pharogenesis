@@ -1,1 +1,0 @@
-PseudoPoolVariable class instanceVariableNames: ''

@@ -1,3 +1,0 @@
-isControlChange
-
-	^ true

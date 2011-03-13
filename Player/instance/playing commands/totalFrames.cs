@@ -1,3 +1,0 @@
-totalFrames
-
-	^ self sendMessageToCostume: #totalFrames

@@ -5,14 +5,4 @@ requestPassword: queryString
 
 	"FillInTheBlank requestPassword: 'POP password'"
 
-	| model fillInView |
-	Smalltalk isMorphic 
-		ifTrue: [^self fillInTheBlankMorphClass requestPassword: queryString].
-	model := self new.
-	model contents: ''.
-	fillInView := self fillInTheBlankViewClass 
-				requestPassword: model
-				message: queryString
-				centerAt: Sensor cursorPoint
-				answerHeight: 40.
-	^model show: fillInView
+	^self fillInTheBlankMorphClass requestPassword: queryString

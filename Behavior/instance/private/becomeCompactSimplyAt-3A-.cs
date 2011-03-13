@@ -4,12 +4,12 @@ becomeCompactSimplyAt: index
 	| cct |
 
 	self isWeak ifTrue:[^ self halt: 'You must not make a weak class compact'].
-	cct _ self environment compactClassesArray.
+	cct := self environment compactClassesArray.
 	(self indexIfCompact > 0 or: [cct includes: self])
 		ifTrue: [^ self halt: self name , 'is already compact'].
 	(cct at: index) ifNotNil: [^ self halt: 'compact table slot already in use'].
 	"Install this class in the compact class table"
 	cct at: index put: self.
 	"Update instspec so future instances will be compact"
-	format _ format + (index bitShift: 11).
+	format := format + (index bitShift: 11).
 	"Caller must convert the instances"

@@ -1,1 +1,0 @@
-TextPlusMorph class instanceVariableNames: ''

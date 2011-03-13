@@ -1,2 +1,2 @@
 eventPollPeriod
-	^EventPollPeriod ifNil: [ EventPollPeriod _ 500 ].
+	^EventPollPeriod ifNil: [ EventPollPeriod := 500 ].

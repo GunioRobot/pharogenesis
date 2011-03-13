@@ -3,4 +3,4 @@ MCTestCase
 	instanceVariableNames: 'previousChangeSet'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Monticello-Tests'
+	category: 'Tests-Monticello'

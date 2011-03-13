@@ -1,3 +1,3 @@
 bumpBy: count
 
-	tally _ tally + count
+	tally := tally + count

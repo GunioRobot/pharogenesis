@@ -1,3 +1,3 @@
 storeOn: aStream
-
-	aStream print: self printString; nextPutAll: ' asDate'
+ 
+ 	aStream print: self printString; nextPutAll: ' asDate'

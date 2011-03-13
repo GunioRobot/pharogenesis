@@ -4,17 +4,17 @@ applyNewEToyLook
 	"StandardScriptingSystem applyNewEToyLook"
 
 "	| aTextStyle aFont | 
-	aTextStyle _ TextStyle named: #BitstreamVeraSansMono.
-	aFont _ aTextStyle fontOfSize: 12.
-	aFont _ aFont emphasis: 1.
+	aTextStyle := TextStyle named: #BitstreamVeraSansMono.
+	aFont := aTextStyle fontOfSize: 12.
+	aFont := aFont emphasis: 1.
 	Preferences setEToysFontTo: aFont.
 	Preferences setButtonFontTo: aFont.
 
-	aTextStyle _ TextStyle named: #Accushi.
-	aFont _ aTextStyle fontOfSize: 12.
+	aTextStyle := TextStyle named: #Accushi.
+	aFont := aTextStyle fontOfSize: 12.
 	Preferences setFlapsFontTo: aFont.
 
-	(aTextStyle _ TextStyle named: #Accuny)
+	(aTextStyle := TextStyle named: #Accuny)
 		ifNotNil:
 			[Preferences setSystemFontTo: (aTextStyle fontOfSize: 12)]"
 

@@ -1,3 +1,0 @@
-displayIsFullyUpdated
-
-	self checkIfTimeToDisplay

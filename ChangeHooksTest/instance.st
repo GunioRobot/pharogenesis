@@ -4,4 +4,4 @@ SystemChangeTestRoot
 		'previousChangeSet testsChangeSet capturedEvents generatedTestClass generatedTestClassX createdMethodName createdMethod doItExpression'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'SystemChangeNotification-Tests'
+	category: 'Tests-SystemChangeNotification'

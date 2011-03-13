@@ -1,2 +1,2 @@
 defaultFontIndex
-	^ defaultFontIndex ifNil: [defaultFontIndex _ 1]
+	^ defaultFontIndex ifNil: [ defaultFontIndex := 1 ]

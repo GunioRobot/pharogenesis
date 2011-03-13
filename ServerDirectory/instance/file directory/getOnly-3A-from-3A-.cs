@@ -3,12 +3,12 @@ getOnly: nnn from: fileNameOnServer
 	"Use FTP to just capture the first nnn characters of the file.  Break the connection after that.  Goes faster for long files.  Return the contents, not a stream."
 
 	self isTypeFile ifTrue: [
-		file _ self as: ServerFile.
+		file := self as: ServerFile.
 		file fileName: fileNameOnServer.
-		ff _ FileStream oldFileOrNoneNamed: (file fileNameRelativeTo: self).
+		ff := FileStream oldFileOrNoneNamed: (file fileNameRelativeTo: self).
 		^ ff next: nnn].
 	self isTypeHTTP ifTrue: [
-		resp _ HTTPSocket httpGet: (self fullNameFor: fileNameOnServer) 
+		resp := HTTPSocket httpGet: (self fullNameFor: fileNameOnServer) 
 				accept: 'application/octet-stream'.
 			"For now, get the whole file.  This branch not used often."
 		^ resp truncateTo: nnn].

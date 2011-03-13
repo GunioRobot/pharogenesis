@@ -4,7 +4,7 @@ readFloat
 	 We support 8-byte Floats here.  Non-IEEE"
 
 	| new |
-	new _ Float new: 2.		"To get an instance"
+	new := Float new: 2.		"To get an instance"
 	new at: 1 put: (byteStream nextNumber: 4).
 	new at: 2 put: (byteStream nextNumber: 4).
 	^ new

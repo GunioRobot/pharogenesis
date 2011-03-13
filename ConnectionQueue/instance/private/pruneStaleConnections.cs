@@ -3,10 +3,10 @@ pruneStaleConnections
 
 	| foundStaleConnection |
 	accessSema critical: [
-		foundStaleConnection _ false.
+		foundStaleConnection := false.
 		connections do: [:s |
 			s isUnconnected ifTrue: [
 				s destroy.
-				foundStaleConnection _ true]].
+				foundStaleConnection := true]].
 		foundStaleConnection ifTrue: [
-			connections _ connections select: [:s | s isValid]]].
+			connections := connections select: [:s | s isValid]]].

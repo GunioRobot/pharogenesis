@@ -28,6 +28,8 @@ displaySelectionInLine: line on: aCanvas
 		ifTrue: 
 			[rightX := rightX + 1.
 			w := self caretWidth.
+			caretRect := (leftX-w) @ line top corner: (rightX+w)@ line bottom.
+			self showCaret ifFalse:[^self].
 			caretColor := self insertionPointColor.
 			1 to: w
 				do: 
@@ -43,5 +45,6 @@ displaySelectionInLine: line on: aCanvas
 			aCanvas fillRectangle: (leftX @ line top corner: rightX @ line bottom)
 				color: caretColor]
 		ifFalse: 
-			[aCanvas fillRectangle: (leftX @ line top corner: rightX @ line bottom)
+			[caretRect := nil.
+			aCanvas fillRectangle: (leftX @ line top corner: rightX @ line bottom)
 				color: self selectionColor]

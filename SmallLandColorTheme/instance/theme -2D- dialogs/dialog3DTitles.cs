@@ -1,2 +1,0 @@
-dialog3DTitles
-	^ false

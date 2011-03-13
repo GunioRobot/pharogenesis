@@ -1,5 +1,0 @@
-closepath
-	^target closepath.
-
-
-              

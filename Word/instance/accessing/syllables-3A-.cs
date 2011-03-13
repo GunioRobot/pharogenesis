@@ -1,2 +1,0 @@
-syllables: aCollection
-	syllables := aCollection

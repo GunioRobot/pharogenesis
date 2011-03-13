@@ -1,3 +1,0 @@
-playNextMessage
-
-	self class playNextAudioMessage.

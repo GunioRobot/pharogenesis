@@ -1,6 +1,6 @@
 testSortedCounts
 	"self run: #testSortedCounts"
-	"self debug: #testSortedCounts"
+	"self debug: #testSortedCounts" 
 	
 	| bag sortedCounts|
 	bag := Bag new.

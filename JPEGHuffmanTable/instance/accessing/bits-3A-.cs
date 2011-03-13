@@ -1,3 +1,2 @@
-bits: anObject
-
-	bits _ anObject
+bits: anObject 
+	bits := anObject

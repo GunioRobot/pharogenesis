@@ -8,27 +8,17 @@ discardOddsAndEnds
 	self organization removeSystemCategory: 'System-Compression'.
 	self organization removeSystemCategory: 'Tools-Explorer'.
 	self organization removeSystemCategory: 'System-Digital Signatures'.
-	Form removeSelector: #edit.
-	self
-		at: #FormView
-		ifPresent: [:c | c compile: 'defaultControllerClass  ^ NoController' classified: 'controller access'].
-	self removeClassNamed: #FormEditorView.
-	self removeClassNamed: #FormEditor.
 	self organization removeSystemCategory: 'ST80-Paths'.
 	"bit editor (remove Form editor first):"
 	Form removeSelector: #bitEdit.
-	Form removeSelector: #bitEditAt:scale:.
 	StrikeFont removeSelector: #edit:.
 	self removeClassNamed: #FormButtonCache.
 	self removeClassNamed: #FormMenuController.
 	self removeClassNamed: #FormMenuView.
-	self removeClassNamed: #BitEditor.
+	"self removeClassNamed: #BitEditor."
 	"inspector for Dictionaries of Forms"
 	Dictionary removeSelector: #inspectFormsWithLabel:.
 	SystemDictionary removeSelector: #viewImageImports.
-	ScreenController removeSelector: #viewImageImports.
-	self removeClassNamed: #FormHolderView.
-	self removeClassNamed: #FormInspectView.
 	"experimental updating object viewer:"
 	Object removeSelector: #evaluate:wheneverChangeIn:.
 	self removeClassNamed: #ObjectViewer.

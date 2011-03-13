@@ -1,3 +1,0 @@
-currentCharSize
-
-	^ 1.

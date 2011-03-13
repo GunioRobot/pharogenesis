@@ -1,5 +1,5 @@
 testPrimitiveIndexed2
-	"This test useses the #asOop primitive."
+	"This test useses the #identityHash primitive."
 
-	self compile: '<primitive: 75> ^ #oop' selector: #oop.
-	self assert: self oop = self asOop.
+	self compile: '<primitive: 75> ^ #idHash' selector: #idHash.
+	self assert: self idHash = self identityHash.

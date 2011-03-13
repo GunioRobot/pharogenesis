@@ -1,2 +1,0 @@
-voice: aVoice
-	voice := aVoice

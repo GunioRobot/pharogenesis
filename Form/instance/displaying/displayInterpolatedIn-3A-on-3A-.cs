@@ -7,7 +7,7 @@ displayInterpolatedIn: aRectangle on: aForm
 	| engine adjustedR |
 	self extent = aRectangle extent ifTrue:[^self displayOn: aForm at: aRectangle origin].
 	Smalltalk at: #B3DRenderEngine 
-		ifPresent:[:engineClass| engine _ (engineClass defaultForPlatformOn: aForm)].
+		ifPresent:[:engineClass| engine := (engineClass defaultForPlatformOn: aForm)].
 	engine ifNil:[
 		"We've got no bilinear interpolation. Use WarpBlt instead"
 		(WarpBlt current toForm: aForm)
@@ -21,7 +21,7 @@ displayInterpolatedIn: aRectangle on: aForm
 	"Otherwise use the 3D engine for our purposes"
 
 	"there seems to be a slight bug in B3D which the following adjusts for"
-	adjustedR _ (aRectangle withRight: aRectangle right + 1) translateBy: 0@1.
+	adjustedR := (aRectangle withRight: aRectangle right + 1) translateBy: 0@1.
 	engine viewport: adjustedR.
 	engine material: ((Smalltalk at: #B3DMaterial) new emission: Color white).
 	engine texture: self.

@@ -3,5 +3,5 @@ frameHeight
 	since the menu may well end up being displayed in Morphic anyway."
 	| nItems |
 	frame ifNotNil: [^ frame height].
-	nItems _ 1 + (labelString occurrencesOf: Character cr).
+	nItems := 1 + (labelString occurrencesOf: Character cr).
 	^ (nItems * MenuStyle lineGrid) + 4 "border width"

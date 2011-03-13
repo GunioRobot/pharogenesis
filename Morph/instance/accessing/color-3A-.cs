@@ -4,5 +4,5 @@ color: aColor
 	(aColor isColor or: [aColor isKindOf: InfiniteForm]) ifFalse:[^ self fillStyle: aColor].
 	color = aColor ifFalse:
 		[self removeProperty: #fillStyle.
-		color _ aColor.
+		color := aColor.
 		self changed]

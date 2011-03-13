@@ -3,10 +3,10 @@ isSortedBy: aBlock
 
 	| lastElm elm |
 	self isEmpty ifTrue: [^ true].
-	lastElm _ self first.
+	lastElm := self first.
 	2 to: self size do: 
 		[:index | 
-		elm _ self at: index.
+		elm := self at: index.
 		(aBlock value: lastElm value: elm) ifFalse: [^ false].
-		lastElm _ elm].
+		lastElm := elm].
 	^ true

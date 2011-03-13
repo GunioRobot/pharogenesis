@@ -1,6 +1,6 @@
 includes: aDateAndTime
 
 	| dt |
-	dt _ aDateAndTime asDateAndTime.
+	dt := aDateAndTime asDateAndTime.
 	self scheduleDo: [ :e | e = dt ifTrue: [^true] ].
 	^ false.

@@ -1,2 +1,2 @@
 isRevisionOf: aDefinition
-	^ aDefinition description = self description
+	^ (aDefinition isKindOf: MCDefinition) and: [aDefinition description = self description]

@@ -1,4 +1,4 @@
 indexUpdateBlock: aBlockOrNil
 
-	indexUpdateBlock _ aBlockOrNil.
-	indexUpdateBlock fixTemps.
+	indexUpdateBlock := aBlockOrNil.
+

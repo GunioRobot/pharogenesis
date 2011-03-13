@@ -1,0 +1,1 @@
+DecompilerConstructor class instanceVariableNames: ''

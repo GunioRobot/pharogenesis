@@ -3,11 +3,11 @@ openSources: sourcesName andChanges: changesName forImage: imageName
 	"Note: SourcesName and imageName are full paths; changesName is a  
 	local name."
 	| sources changes msg wmsg |
-	msg := 'Squeak cannot locate &fileRef.
+	msg := 'Pharo cannot locate &fileRef.
 
 Please check that the file is named properly and is in the
 same directory as this image.'.
-	wmsg := 'Squeak cannot write to &fileRef.
+	wmsg := 'Pharo cannot write to &fileRef.
 
 Please check that you have write permission for this file.
 

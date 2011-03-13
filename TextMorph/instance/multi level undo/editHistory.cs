@@ -1,3 +1,3 @@
 editHistory
-	editHistory ifNil: [ editHistory _ TextMorphCommandHistory new].
+	editHistory ifNil: [ editHistory := TextMorphCommandHistory new].
 	^editHistory

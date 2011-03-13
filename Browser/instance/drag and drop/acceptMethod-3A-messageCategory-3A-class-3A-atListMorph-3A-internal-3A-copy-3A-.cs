@@ -1,12 +1,12 @@
 acceptMethod: methodSel messageCategory: srcMessageCategorySel class: srcClassOrMeta atListMorph: dstListMorph internal: internal copy: copyFlag 
 	| success dstClassOrMeta dstClass dstMessageCategorySel |
-	dstClass _ self dstClassDstListMorph: dstListMorph.
-	dstClassOrMeta _ dstClass
+	dstClass := self dstClassDstListMorph: dstListMorph.
+	dstClassOrMeta := dstClass
 				ifNotNil: [self metaClassIndicated
 						ifTrue: [dstClass classSide]
 						ifFalse: [dstClass]].
-	dstMessageCategorySel _ self dstMessageCategoryDstListMorph: dstListMorph.
-	success _ (dstClassOrMeta notNil
+	dstMessageCategorySel := self dstMessageCategoryDstListMorph: dstListMorph.
+	success := (dstClassOrMeta notNil
 				and: [dstClassOrMeta == srcClassOrMeta])
 						ifTrue: ["one class"
 							self

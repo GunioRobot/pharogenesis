@@ -1,6 +1,5 @@
 pickRepositorySatisfying: aBlock
 	| index list |
 	list := MCRepositoryGroup default repositories select: aBlock.
-	index := (PopUpMenu labelArray: (list collect: [:ea | ea description]))
-		startUpWithCaption: 'Repository:'.
+	index := (UIManager default chooseFrom: (list collect: [:ea | ea description]) title: 'Repository:' translated).
 	^ index = 0 ifFalse: [list at: index]

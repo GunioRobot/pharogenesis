@@ -1,2 +1,0 @@
-repository: aString
-	repository := aString

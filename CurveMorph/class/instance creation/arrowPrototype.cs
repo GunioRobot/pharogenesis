@@ -1,7 +1,7 @@
 arrowPrototype
 
 	| aa |
-	aa _ PolygonMorph vertices: (Array with: 5@40 with: 5@8 with: 35@8 with: 35@40) 
+	aa := PolygonMorph vertices: (Array with: 5@40 with: 5@8 with: 35@8 with: 35@40) 
 		color: Color black 
 		borderWidth: 2 
 		borderColor: Color black.

@@ -1,7 +1,7 @@
 setText: aText
 	scrollBar setValue: 0.0.
 	textMorph
-		ifNil: [textMorph _ self textMorphClass new
+		ifNil: [textMorph := self textMorphClass new
 						contents: aText wrappedTo: self innerBounds width-6.
 				textMorph setEditView: self.
 				scroller addMorph: textMorph]

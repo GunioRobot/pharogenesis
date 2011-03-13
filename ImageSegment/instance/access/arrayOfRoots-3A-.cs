@@ -1,2 +1,2 @@
 arrayOfRoots: array
-	arrayOfRoots _ array
+	arrayOfRoots := array

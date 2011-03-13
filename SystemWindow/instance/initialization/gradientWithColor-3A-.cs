@@ -1,7 +1,7 @@
 gradientWithColor: aColor
 
 	| ramp |
-	ramp _ {0.0 -> Color white. 1.0 -> aColor}.
+	ramp := {0.0 -> Color white. 1.0 -> aColor}.
 
 	^ (GradientFillStyle ramp: ramp)
 		radial: true;

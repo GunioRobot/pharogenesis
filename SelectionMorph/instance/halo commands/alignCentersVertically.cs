@@ -3,8 +3,8 @@ alignCentersVertically
 
 	| minTop topMost |
 	selectedItems size > 1 ifFalse: [^ self].
-	minTop _ (selectedItems collect: [:itm | itm top]) min.
-	topMost _ selectedItems detect: [:m | m top = minTop].
+	minTop := (selectedItems collect: [:itm | itm top]) min.
+	topMost := selectedItems detect: [:m | m top = minTop].
 	selectedItems do:
 		[:itm | itm center: (topMost center x @ itm center y)].
 

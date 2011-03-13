@@ -20,9 +20,7 @@ fixObsoleteReferences
 			Transcript show: obsName; cr.
 			realName := obsName copyReplaceAll: 'AnObsolete' with: ''.
 			realClass := Smalltalk at: realName asSymbol ifAbsent: [UndefinedObject].
-			binding isSpecialWriteBinding
-				ifTrue: [binding privateSetKey: binding key value: realClass]
-				ifFalse: [binding key: binding key value: realClass]]].
+			binding key: binding key value: realClass]].
 
 
 	Behavior flushObsoleteSubclasses.

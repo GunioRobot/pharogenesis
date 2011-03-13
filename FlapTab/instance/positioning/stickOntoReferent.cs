@@ -4,14 +4,14 @@ stickOntoReferent
 	referent addMorph: self.
 	edgeToAdhereTo == #left
 		ifTrue:
-			[newPosition _ (referent width - self width) @ self top].
+			[newPosition := (referent width - self width) @ self top].
 	edgeToAdhereTo == #right
 		ifTrue:
-			[newPosition _ (referent left @ self top)].
+			[newPosition := (referent left @ self top)].
 	edgeToAdhereTo == #top
 		ifTrue:
-			[newPosition _ self left @ (referent height - self height)].
+			[newPosition := self left @ (referent height - self height)].
 	edgeToAdhereTo == #bottom
 		ifTrue:
-			[newPosition _ self left @ referent top].
+			[newPosition := self left @ referent top].
 	self position: newPosition

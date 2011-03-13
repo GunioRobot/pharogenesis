@@ -1,3 +1,0 @@
-instSize
-
-	^ arrays size.

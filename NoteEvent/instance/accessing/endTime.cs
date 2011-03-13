@@ -1,3 +1,0 @@
-endTime
-
-	^ time + duration

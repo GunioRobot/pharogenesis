@@ -1,1 +1,0 @@
-MCAncestryTest class instanceVariableNames: ''

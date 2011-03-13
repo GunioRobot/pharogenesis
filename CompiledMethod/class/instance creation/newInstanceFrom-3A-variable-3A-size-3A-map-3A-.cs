@@ -3,7 +3,7 @@ newInstanceFrom: oldInstance variable: variable size: instSize map: map
 	The supplied map contains a mapping of the old instVar names into
 	the receiver's instVars"
 	| new |
-	new _ self newFrom: oldInstance.
+	new := self newFrom: oldInstance.
 	1 to: instSize do: 
 		[:offset |  (map at: offset) > 0 ifTrue:
 			[new instVarAt: offset

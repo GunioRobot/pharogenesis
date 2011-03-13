@@ -9,8 +9,8 @@ dimTheWindow
 	"an experiment for Nebraska to see if opaque background speeds things up"
 
 "----- now using the color variable to control background
-	bgColor _ false ifTrue: [TranslucentColor r:1.0 g:1.0 b:1.0 alpha:0.5] ifFalse: [Color white].
-	dimForm _ (RectangleMorph new color: bgColor; bounds: self bounds; borderWidth: 0).
+	bgColor := false ifTrue: [TranslucentColor r:1.0 g:1.0 b:1.0 alpha:0.5] ifFalse: [Color white].
+	dimForm := (RectangleMorph new color: bgColor; bounds: self bounds; borderWidth: 0).
 	dimForm position: self position.
 	owner
 		privateAddMorph: dimForm

@@ -1,0 +1,3 @@
+deleteChangeSetsNumberedLowerThan: anInteger
+
+	^ ChangesOrganizer deleteChangeSetsNumberedLowerThan: anInteger

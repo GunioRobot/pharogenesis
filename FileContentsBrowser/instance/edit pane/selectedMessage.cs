@@ -10,8 +10,7 @@ selectedMessage
 			[contents := class prettyPrinterClass 
 						format: contents
 						in: class
-						notifying: nil
-						decorated: Preferences colorWhenPrettyPrinting].
+						notifying: nil].
 	self showingAnyKindOfDiffs 
 		ifTrue: 
 			[contents := self 

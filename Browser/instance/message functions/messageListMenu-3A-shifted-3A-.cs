@@ -14,12 +14,10 @@ messageListMenu: aMenu shifted: shifted
 			('browse protocol (p)'			browseFullProtocol)
 			-
 			('fileOut'				fileOutMessage)
-			('printOut'				printOutMessage)
 			-
 			('senders of... (n)'			browseSendersOfMessages)
 			('implementors of... (m)'		browseMessages)
 			('inheritance (i)'			methodHierarchy)
-			('tile scriptor'			openSyntaxView)
 			('versions (v)'				browseVersions)
 			-
 			('inst var refs...'			browseInstVarRefs)

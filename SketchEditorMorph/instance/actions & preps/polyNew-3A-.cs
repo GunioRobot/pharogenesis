@@ -10,9 +10,9 @@ another tool."
 			ifTrue:[palette plainCursor: (self valueOfProperty: #polyCursor) event: evt.
 					self removeProperty: #polyCursor].
 		^self].
-	cColor _ self getColorFor: evt.
+	cColor := self getColorFor: evt.
 	self polyFreeze.		"any old one we were working on"
-	poly _ PolygonMorph new "addHandles".
+	poly := PolygonMorph new "addHandles".
 	poly referencePosition: poly bounds origin.
 	poly align: poly bounds center with: evt cursorPoint.
 	poly borderWidth: (self getNibFor: evt) width.

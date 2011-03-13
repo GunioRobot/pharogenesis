@@ -1,5 +1,5 @@
 baseUrl: aString
-	baseUrl _ aString.
+	baseUrl := aString.
 	baseUrl isEmpty ifFalse:[
-		baseUrl last = $/ ifFalse:[baseUrl _ baseUrl copyWith: $/].
+		baseUrl last = $/ ifFalse:[baseUrl := baseUrl copyWith: $/].
 	].

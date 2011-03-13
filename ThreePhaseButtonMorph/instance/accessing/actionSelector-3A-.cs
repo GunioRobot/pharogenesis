@@ -3,6 +3,6 @@ actionSelector: aSymbolOrString
 	(nil = aSymbolOrString or:
 	 ['nil' = aSymbolOrString or:
 	 [aSymbolOrString isEmpty]])
-		ifTrue: [^ actionSelector _ nil].
+		ifTrue: [^ actionSelector := nil].
 
-	actionSelector _ aSymbolOrString asSymbol.
+	actionSelector := aSymbolOrString asSymbol.

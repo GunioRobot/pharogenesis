@@ -1,3 +1,3 @@
 useSymbolFormat
 
-	format _ #symbol.
+	format := #symbol.

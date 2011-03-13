@@ -1,3 +1,0 @@
-getGrouped
-
-	^ self getValueFromCostume: #isGroup.

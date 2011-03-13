@@ -1,10 +1,10 @@
 readFrom: aStream
 
 	| m y c |
-	m _ (ReadWriteStream with: '') reset.
-	[(c _ aStream next) isSeparator] whileFalse: [m nextPut: c].
-	[(c _ aStream next) isSeparator] whileTrue.
-	y _ (ReadWriteStream with: '') reset.
+	m := (ReadWriteStream with: '') reset.
+	[(c := aStream next) isSeparator] whileFalse: [m nextPut: c].
+	[(c := aStream next) isSeparator] whileTrue.
+	y := (ReadWriteStream with: '') reset.
 	y nextPut: c.
 	[aStream atEnd] whileFalse: [y nextPut: aStream next].
 

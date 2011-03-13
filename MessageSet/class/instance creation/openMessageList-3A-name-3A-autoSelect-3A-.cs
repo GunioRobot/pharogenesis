@@ -5,5 +5,4 @@ openMessageList: messageList name: labelString autoSelect: autoSelectString
 	| messageSet |
 	messageSet := self messageList: messageList.
 	messageSet autoSelectString: autoSelectString.
-	Smalltalk isMorphic ifTrue: [^ self openAsMorph: messageSet name: labelString].
-	ScheduledControllers scheduleActive: (self open: messageSet name: labelString)
+	^ self openAsMorph: messageSet name: labelString

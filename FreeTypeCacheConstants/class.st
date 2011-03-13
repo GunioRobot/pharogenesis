@@ -1,0 +1,1 @@
+FreeTypeCacheConstants class instanceVariableNames: ''

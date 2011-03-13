@@ -1,3 +1,0 @@
-invalidateTurtleMap
-
-	turtleMapValid _ false.

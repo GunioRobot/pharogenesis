@@ -1,1 +1,0 @@
-A morph that always displays the current contents of the text clipboard.

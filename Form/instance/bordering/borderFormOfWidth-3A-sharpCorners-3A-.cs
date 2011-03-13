@@ -5,14 +5,14 @@ borderFormOfWidth: borderWidth sharpCorners: sharpen
 	horizontal and vertical smears)."
 	| smearForm bigForm smearPort all cornerForm cornerPort nbrs |
 	self depth > 1 ifTrue: [self halt]. "Only meaningful for B/W forms."
-	bigForm _ self deepCopy.
-	all _ bigForm boundingBox.
-	smearForm _ Form extent: self extent.
-	smearPort _ BitBlt current toForm: smearForm.
+	bigForm := self deepCopy.
+	all := bigForm boundingBox.
+	smearForm := Form extent: self extent.
+	smearPort := BitBlt current toForm: smearForm.
 	sharpen ifTrue:
-		[cornerForm _ Form extent: self extent.
-		cornerPort _ BitBlt current toForm: cornerForm].
-	nbrs _ (0@0) fourNeighbors.
+		[cornerForm := Form extent: self extent.
+		cornerPort := BitBlt current toForm: cornerForm].
+	nbrs := (0@0) fourNeighbors.
 	1 to: borderWidth do:
 		[:i |  "Iterate to get several layers of 'skin'"
 		nbrs do:

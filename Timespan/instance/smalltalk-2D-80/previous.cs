@@ -1,4 +1,3 @@
-previous
+previous 
 
-
-	^ self class starting: (start - duration) duration: duration
+	^ self class starting: (start - duration) duration: duration 

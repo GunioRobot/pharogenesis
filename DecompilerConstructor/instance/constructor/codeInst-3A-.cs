@@ -1,6 +1,5 @@
 codeInst: index
 
-	^VariableNode new
+	^InstanceVariableNode new
 		name: (instVars at: index + 1 ifAbsent: ['unknown', index asString])
-		index: index
-		type: LdInstType
+		index: index + 1

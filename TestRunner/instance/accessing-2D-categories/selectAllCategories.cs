@@ -1,3 +1,3 @@
 selectAllCategories
 	categoriesSelected := categories asSet.
-	self changed: #categorySelected; updateClasses.
+	self changed: #allSelections; changed: #categorySelected; updateClasses

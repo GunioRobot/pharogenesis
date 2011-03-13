@@ -1,3 +1,0 @@
-asString
-
-	^item contents

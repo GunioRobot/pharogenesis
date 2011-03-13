@@ -1,2 +1,0 @@
-veto
-	veto _ true

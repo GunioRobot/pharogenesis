@@ -1,2 +1,0 @@
-textSelection
-	^ self selection

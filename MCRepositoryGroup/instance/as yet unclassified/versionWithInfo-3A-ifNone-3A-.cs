@@ -1,3 +1,3 @@
 versionWithInfo: aVersionInfo ifNone: aBlock
-	self repositoriesDo: [:ea | (ea versionWithInfo: aVersionInfo) ifNotNilDo: [:v | ^ v]].
+	self repositoriesDo: [:ea | (ea versionWithInfo: aVersionInfo) ifNotNil: [:v | ^ v]].
 	^aBlock value

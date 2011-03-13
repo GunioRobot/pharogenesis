@@ -1,3 +1,3 @@
 duration
 
-	^ Duration zero
+	^ Duration zero 

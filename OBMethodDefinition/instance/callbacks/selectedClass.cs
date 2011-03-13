@@ -1,2 +1,0 @@
-selectedClass
-	^ self theClass

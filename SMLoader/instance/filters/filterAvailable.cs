@@ -1,3 +1,0 @@
-filterAvailable
-	
-	^[:package | package isAvailable]

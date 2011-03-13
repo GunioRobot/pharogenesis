@@ -1,3 +1,3 @@
 weeks
-
-	^ Duration weeks: self
+ 
+ 	^ Duration weeks: self

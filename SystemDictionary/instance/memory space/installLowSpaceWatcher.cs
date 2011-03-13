@@ -4,7 +4,7 @@ installLowSpaceWatcher
 
 	self primSignalAtBytesLeft: 0.  "disable low-space interrupts"
 	LowSpaceProcess == nil ifFalse: [LowSpaceProcess terminate].
-	LowSpaceProcess _ [self lowSpaceWatcher] newProcess.
+	LowSpaceProcess := [self lowSpaceWatcher] newProcess.
 	LowSpaceProcess priority: Processor lowIOPriority.
 	LowSpaceProcess resume.
 

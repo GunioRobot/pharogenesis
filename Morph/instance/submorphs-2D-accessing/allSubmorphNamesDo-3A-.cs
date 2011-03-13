@@ -3,5 +3,5 @@ allSubmorphNamesDo: nameBlock
 
 	self isPartsBin ifTrue: [^ self]. "Don't report names from parts bins"
 	self submorphsDo: 
-		[:m | m knownName ifNotNilDo: [:n | nameBlock value: n].
+		[:m | m knownName ifNotNil: [:n | nameBlock value: n].
 		m allSubmorphNamesDo: nameBlock].

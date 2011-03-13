@@ -1,3 +1,3 @@
 hasEditingConflicts: aBoolean
 
-	hasEditingConflicts _ aBoolean
+	hasEditingConflicts := aBoolean

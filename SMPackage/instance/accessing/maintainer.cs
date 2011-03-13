@@ -1,4 +1,0 @@
-maintainer
-	"Deprecated"
-
-	^self owner

@@ -6,8 +6,8 @@ recent
 	| className class recentList |
 	recentList := RecentClasses select: [:n | Smalltalk includesKey: n].
 	recentList size == 0 ifTrue: [^ Beeper beep].
-	className := (SelectionMenu selections: recentList) startUp.
-	className == nil ifTrue: [^ self].
+	className := UIManager default chooseFrom: recentList values: recentList.
+	className isNil ifTrue: [^ self].
 	class := Smalltalk at: className.
 	self selectCategoryForClass: class.
 	self classListIndex: (self classList indexOf: class name)

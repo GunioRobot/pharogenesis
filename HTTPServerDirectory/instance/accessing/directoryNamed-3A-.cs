@@ -1,5 +1,5 @@
 directoryNamed: localFileName
 	| newDir |
-	newDir _ super directoryNamed: localFileName.
+	newDir := super directoryNamed: localFileName.
 	newDir altUrl: (self altUrl , '/' , localFileName).
 	^newDir

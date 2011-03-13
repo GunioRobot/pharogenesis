@@ -2,7 +2,7 @@ holderForCharacters
 	"Hand the user a Holder that is populated with individual text morphs representing my characters"
 
 	| aHolder |
-	aHolder _ ScriptingSystem prototypicalHolder.
+	aHolder := ScriptingSystem prototypicalHolder.
 	aHolder setNameTo: 'H', self externalName.
 	text string do:
 		[:aChar |

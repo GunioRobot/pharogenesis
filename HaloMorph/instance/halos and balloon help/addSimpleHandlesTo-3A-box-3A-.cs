@@ -1,6 +1,6 @@
 addSimpleHandlesTo: aHaloMorph box: aBox
 	| aHandle |
-	simpleMode _ true.
+	simpleMode := true.
 
 	target isWorldMorph ifTrue: [^ self addSimpleHandlesForWorldHalos].
 
@@ -11,7 +11,7 @@ addSimpleHandlesTo: aHaloMorph box: aBox
 	self addHandleAt: (((aBox topLeft + aBox leftCenter) // 2) + self simpleFudgeOffset) color: Color paleBuff icon: 'Halo-MoreHandles'
 		on: #mouseDown send: #addFullHandles to: self.
 
-	aHandle _ self addGraphicalHandle: #Rotate at: aBox bottomLeft on: #mouseDown send: #startRot:with: to: self.
+	aHandle := self addGraphicalHandle: #Rotate at: aBox bottomLeft on: #mouseDown send: #startRot:with: to: self.
 	aHandle on: #mouseMove send: #doRot:with: to: self.
 
 	target isFlexMorph
@@ -23,6 +23,6 @@ addSimpleHandlesTo: aHaloMorph box: aBox
 	innerTarget wantsSimpleSketchMorphHandles ifTrue:
 		[self addSimpleSketchMorphHandlesInBox: aBox].
 
-	growingOrRotating _ false.
+	growingOrRotating := false.
 	self layoutChanged.
 	self changed.

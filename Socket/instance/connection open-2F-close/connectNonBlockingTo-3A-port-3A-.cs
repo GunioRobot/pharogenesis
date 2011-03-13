@@ -3,8 +3,12 @@ connectNonBlockingTo: hostAddress port: port
 
 	| status |
 	self initializeNetwork.
-	status _ self primSocketConnectionStatus: socketHandle.
+	status := self primSocketConnectionStatus: socketHandle.
 	(status == Unconnected)
 		ifFalse: [InvalidSocketStatusException signal: 'Socket status must Unconnected before opening a new connection'].
 
-	self primSocket: socketHandle connectTo: hostAddress port: port.
+	NetNameResolver useOldNetwork
+		ifTrue: [self primSocket: socketHandle connectTo: hostAddress port: port]
+		ifFalse: [
+			hostAddress port: port.
+			self connectNonBlockingTo: hostAddress]

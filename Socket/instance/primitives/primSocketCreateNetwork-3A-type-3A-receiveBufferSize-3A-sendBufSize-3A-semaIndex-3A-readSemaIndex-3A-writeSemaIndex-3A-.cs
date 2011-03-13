@@ -4,7 +4,7 @@ primSocketCreateNetwork: netType type: socketType receiveBufferSize: rcvBufSize 
 	reading and writing"
 
 	<primitive: 'primitiveSocketCreate3Semaphores' module: 'SocketPlugin'>
-	primitiveOnlySupportsOneSemaphore _ true.
+	primitiveOnlySupportsOneSemaphore := true.
 	^ self primSocketCreateNetwork: netType
 			type: socketType
 			receiveBufferSize: rcvBufSize

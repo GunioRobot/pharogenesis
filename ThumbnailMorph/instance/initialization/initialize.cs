@@ -4,7 +4,7 @@ initialize
 	| anExtent |
 	super initialize.
 	""
-	anExtent _ self
+	anExtent := self
 				valueOfProperty: #nominalExtent
 				ifAbsent: [25 @ 25].
 	self

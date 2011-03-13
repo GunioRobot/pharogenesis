@@ -2,10 +2,10 @@ depthBelow: aContext
 	"Answer how many calls there are between this and aContext."
 
 	| this depth |
-	this _ self.
-	depth _ 0.
+	this := self.
+	depth := 0.
 	[this == aContext or: [this == nil]]
 		whileFalse:
-			[this _ this sender.
-			depth _ depth + 1].
+			[this := this sender.
+			depth := depth + 1].
 	^depth

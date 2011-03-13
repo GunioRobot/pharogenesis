@@ -1,3 +1,3 @@
 recordStartupStamp
 	
-	StartupStamp _ '----STARTUP----', Time dateAndTimeNow printString, ' as ', self imageName.
+	StartupStamp := '----STARTUP----', Time dateAndTimeNow printString, ' as ', self imageName.

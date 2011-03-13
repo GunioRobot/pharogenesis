@@ -1,0 +1,2 @@
+openMonticelloConfigurations
+	MCConfigurationBrowser open

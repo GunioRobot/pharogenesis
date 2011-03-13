@@ -1,2 +1,0 @@
-textDirection: plusOrMinusOne
-	textDirection _ plusOrMinusOne

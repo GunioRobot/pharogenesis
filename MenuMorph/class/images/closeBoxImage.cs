@@ -1,4 +1,4 @@
 closeBoxImage
 	"Supplied here because we don't necessarily have ComicBold"
 
-	^ CloseBoxImage ifNil: [CloseBoxImage _ SystemWindow closeBoxImage]
+	^ CloseBoxImage ifNil: [CloseBoxImage := SystemWindow closeBoxImage]

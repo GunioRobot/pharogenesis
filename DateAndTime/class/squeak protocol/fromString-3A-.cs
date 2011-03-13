@@ -1,4 +1,2 @@
-fromString: aString
-
-
-	^ self readFrom: (ReadStream on: aString)
+fromString: aString 
+	^ self readFrom: aString readStream

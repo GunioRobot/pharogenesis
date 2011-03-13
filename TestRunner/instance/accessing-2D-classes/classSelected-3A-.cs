@@ -1,2 +1,3 @@
 classSelected: anInteger
-	self changed: #classSelected.
+	classIndex := anInteger.
+	self changed: #classSelected

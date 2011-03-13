@@ -7,17 +7,17 @@ withSeparatorsCompacted
 	| out in next isSeparator |
 	self isEmpty ifTrue: [^ self].
 
-	out _ WriteStream on: (String new: self size).
-	in _ self readStream.
-	isSeparator _ [:char | char asciiValue < 256
+	out := (String new: self size) writeStream.
+	in := self readStream.
+	isSeparator := [:char | char asciiValue < 256
 				and: [CSSeparators includes: char]].
 	[in atEnd] whileFalse: [
-		next _ in next.
+		next := in next.
 		(isSeparator value: next)
 			ifTrue: [
 				out nextPut: $ .
 				[in atEnd or:
-					[next _ in next.
+					[next := in next.
 					(isSeparator value: next)
 						ifTrue: [false]
 						ifFalse: [out nextPut: next. true]]] whileFalse]

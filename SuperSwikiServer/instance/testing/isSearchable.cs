@@ -1,2 +1,0 @@
-isSearchable
-	^true

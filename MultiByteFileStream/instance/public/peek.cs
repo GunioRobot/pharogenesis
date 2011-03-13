@@ -3,8 +3,8 @@ peek
 
 	| next save |
 	self atEnd ifTrue: [^ nil].
-	save _ converter saveStateOf: self.
-	next _ self next.
+	save := converter saveStateOf: self.
+	next := self next.
 	converter restoreStateOf: self with: save.
 	^ next.
 

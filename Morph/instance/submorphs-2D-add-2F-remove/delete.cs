@@ -14,7 +14,4 @@ delete
 	  [self disableSubmorphFocusForHand: self activeHand.
 	  self activeHand releaseKeyboardFocus: self;
 		  releaseMouseFocus: self.].
-	owner ifNotNil:[ self privateDelete.
-		self player ifNotNilDo: [ :player |
-			"Player must be notified"
-			player noteDeletionOf: self fromWorld: aWorld]].
+	owner ifNotNil:[ self privateDelete].

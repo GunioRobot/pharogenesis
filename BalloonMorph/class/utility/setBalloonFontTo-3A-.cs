@@ -1,2 +1,2 @@
 setBalloonFontTo: aFont
-	aFont ifNotNil: [BalloonFont _ aFont]
+	aFont ifNotNil: [BalloonFont := aFont]

@@ -1,0 +1,2 @@
+executor
+	^self shallowCopy asExecutor

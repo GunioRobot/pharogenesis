@@ -1,3 +1,3 @@
 useLineAfter: aBoolean
 
-	useLineAfter _ aBoolean
+	useLineAfter := aBoolean

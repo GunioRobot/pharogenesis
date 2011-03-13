@@ -1,4 +1,4 @@
 oldFileFrom: aDirectory
 
-	canTypeFileName _ false.
+	canTypeFileName := false.
 	^self makeFileMenuFor: aDirectory

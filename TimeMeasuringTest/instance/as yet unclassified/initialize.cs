@@ -1,2 +1,3 @@
 initialize
-	shouldProfile _ false.
+	super initialize.
+	shouldProfile := false.

@@ -1,1 +1,0 @@
-ProjectView class instanceVariableNames: ''

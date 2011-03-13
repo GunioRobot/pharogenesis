@@ -1,2 +1,0 @@
-packageInfoName
-	^packageInfoName

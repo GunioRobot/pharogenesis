@@ -16,8 +16,8 @@ printOn: aStream format: formatArray
 	
 	See the examples in printOn: and mmddyy"
 	| gregorian twoDigits element monthFormat |
-	gregorian _ self dayMonthYearDo: [ :d :m :y | {d. m. y} ].
-	twoDigits _ formatArray size > 6 and: [(formatArray at: 7) > 1].
+	gregorian := self dayMonthYearDo: [ :d :m :y | {d. m. y} ].
+	twoDigits := formatArray size > 6 and: [(formatArray at: 7) > 1].
 	1 to: 3 do: 
 		[ :i | 
 			element := formatArray at: i.

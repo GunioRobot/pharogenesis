@@ -6,9 +6,9 @@ collapseOrExpand
 		ifTrue: 
 			[uncollapsedMorph setProperty: #collapsedPosition toValue: self position.
 			labelString ifNotNil: [uncollapsedMorph setNameTo: labelString].
-			mustNotClose _ false.	"We're not closing but expanding"
+			mustNotClose := false.	"We're not closing but expanding"
 			self delete.
-			(aWorld _ self currentWorld) addMorphFront: uncollapsedMorph.
+			(aWorld := self currentWorld) addMorphFront: uncollapsedMorph.
 			aWorld startSteppingSubmorphsOf: uncollapsedMorph]
 		ifFalse:
 			[super collapseOrExpand]

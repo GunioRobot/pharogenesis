@@ -1,2 +1,2 @@
-defaultFontIndex: anIndex
-	defaultFontIndex _ anIndex
+defaultFontIndex: anIndex 
+	defaultFontIndex := anIndex

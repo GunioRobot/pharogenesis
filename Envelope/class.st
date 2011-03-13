@@ -1,1 +1,0 @@
-Envelope class instanceVariableNames: ''

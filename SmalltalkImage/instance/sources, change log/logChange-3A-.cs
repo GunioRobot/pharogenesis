@@ -7,7 +7,7 @@ logChange: aStringOrText
 	aString := aStringOrText asString.
 	(aString findFirst: [:char | char isSeparator not]) = 0
 		ifTrue: [^ self].  "null doits confuse replay"
-	(changesFile _ SourceFiles at: 2).
+	(changesFile := SourceFiles at: 2).
 	changesFile isReadOnly ifTrue:[^self].
 	changesFile setToEnd; cr; cr.
 	changesFile nextChunkPut: aString.

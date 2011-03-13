@@ -1,7 +1,7 @@
-writeAsStrike2named: fileName
+writeAsStrike2named: fileName 
 	"Write me onto a file in strike2 format.
 	fileName should be of the form: <family name><pointSize>.sf2"
 	| file |
-	file _ FileStream fileNamed: fileName.
+	file := FileStream fileNamed: fileName.
 	self writeAsStrike2On: file.
-	file close.
+	file close

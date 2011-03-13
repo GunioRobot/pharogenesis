@@ -2,9 +2,9 @@ assuredPreferenceDirectory
 	"Answer the preference directory, creating it if necessary"
 
 	|  prefDir |
-	prefDir _ self preferenceDirectory.
+	prefDir := self preferenceDirectory.
 	prefDir
 		ifNil:
-			[prefDir _ FileDirectory default directoryNamed: self preferenceDirectoryName.
+			[prefDir := FileDirectory default directoryNamed: self preferenceDirectoryName.
 			prefDir assureExistence].
 	^ prefDir

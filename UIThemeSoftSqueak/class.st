@@ -1,0 +1,1 @@
+UIThemeSoftSqueak class instanceVariableNames: ''

@@ -3,6 +3,6 @@ instanceCount
 	use."
 
 	| count |
-	count _ 0.
-	self allInstancesDo: [:x | count _ count + 1].
+	count := 0.
+	self allInstancesDo: [:x | count := count + 1].
 	^count

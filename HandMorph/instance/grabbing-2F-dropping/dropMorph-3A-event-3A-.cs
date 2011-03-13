@@ -7,10 +7,10 @@ dropMorph: aMorph event: anEvent
 	self privateRemove: aMorph.
 	aMorph privateOwner: self.
 
-	dropped _ aMorph.
+	dropped := aMorph.
 	(dropped hasProperty: #addedFlexAtGrab) 
-		ifTrue:[dropped _ aMorph removeFlexShell].
-	event _ DropEvent new setPosition: self position contents: dropped hand: self.
+		ifTrue:[dropped := aMorph removeFlexShell].
+	event := DropEvent new setPosition: self position contents: dropped hand: self.
 	self sendEvent: event focus: nil.
 	event wasHandled ifFalse:[aMorph rejectDropMorphEvent: event].
 	aMorph owner == self ifTrue:[aMorph delete].

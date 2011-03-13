@@ -1,0 +1,2 @@
+subexpressionCount
+	^markerCount // 2

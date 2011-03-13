@@ -1,17 +1,17 @@
 emitIf: stack on: strm value: forValue
 	| thenExpr thenSize elseExpr elseSize |
-	thenSize _ sizes at: 1.
-	elseSize _ sizes at: 2.
+	thenSize := sizes at: 1.
+	elseSize := sizes at: 2.
 	(forValue not and: [(elseSize*thenSize) > 0])
 		ifTrue:  "Two-armed IFs forEffect share a single pop"
 			[^ super emitForEffect: stack on: strm].
-	thenExpr _ arguments at: 1.
-	elseExpr _ arguments at: 2.
+	thenExpr := arguments at: 1.
+	elseExpr := arguments at: 2.
 	receiver emitForValue: stack on: strm.
 	forValue
 		ifTrue:  "Code all forValue as two-armed"
 			[self emitBranchOn: false dist: thenSize pop: stack on: strm.
-			pc _ strm position.
+			pc := strm position.
 			thenExpr emitForEvaluatedValue: stack on: strm.
 			stack pop: 1.  "then and else alternate; they don't accumulate"
 			thenExpr returns not
@@ -22,9 +22,9 @@ emitIf: stack on: strm value: forValue
 			[thenSize > 0
 				ifTrue:
 					[self emitBranchOn: false dist: thenSize pop: stack on: strm.
-					pc _ strm position.
+					pc := strm position.
 					thenExpr emitForEvaluatedEffect: stack on: strm]
 				ifFalse:
 					[self emitBranchOn: true dist: elseSize pop: stack on: strm.
-					pc _ strm position.
+					pc := strm position.
 					elseExpr emitForEvaluatedEffect: stack on: strm]]

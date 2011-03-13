@@ -10,7 +10,7 @@ frameAndFillRectangle: r fillColor: fillColor borderWidth: borderWidth topLeftCo
 		ifTrue:[^super frameAndFillRectangle: r fillColor: fillColor borderWidth: borderWidth topLeftColor: topLeftColor bottomRightColor: bottomRightColor].
 
 	"Fill rectangle and draw top and left border"
-	bw _ borderWidth // 2.
+	bw := borderWidth // 2.
 	self drawRectangle: (r insetBy: bw)
 		color: fillColor
 		borderWidth: borderWidth

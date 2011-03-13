@@ -6,8 +6,8 @@ int32: anInteger
 		ifTrue: [self error: 'outside 32-bit integer range'].
 
 	anInteger < 0
-		ifTrue: [n _ 16r100000000 + anInteger]
-		ifFalse: [n _ anInteger].
+		ifTrue: [n := 16r100000000 + anInteger]
+		ifFalse: [n := anInteger].
 	self nextPut: (n digitAt: 4).
 	self nextPut: (n digitAt: 3).
 	self nextPut: (n digitAt: 2).

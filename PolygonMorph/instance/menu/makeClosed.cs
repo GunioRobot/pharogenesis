@@ -1,4 +1,4 @@
 makeClosed
-	closed _ true.
+	closed := true.
 	handles ifNotNil: [self removeHandles; addHandles].
 	self computeBounds

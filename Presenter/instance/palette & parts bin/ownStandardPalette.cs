@@ -1,2 +1,0 @@
-ownStandardPalette
-	^ standardPalette

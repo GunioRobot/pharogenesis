@@ -2,18 +2,18 @@ setPlatformPreferences
 	"Set some platform specific preferences on system startup"
 	| platform specs |
 	Preferences automaticPlatformSettings ifFalse:[^self].
-	platform _ self platformName.
-	specs _ 	#(	
+	platform := self platformName.
+	specs := 	#(	
 					(soundStopWhenDone false)
 					(soundQuickStart false)
 			).
 	platform = 'Win32' ifTrue:[
-		specs _ #(	
+		specs := #(	
 					(soundStopWhenDone true)
 					(soundQuickStart false)
 				)].
 	platform = 'Mac OS' ifTrue:[
-		specs _ #(	
+		specs := #(	
 					(soundStopWhenDone false)
 					(soundQuickStart true)
 				)].

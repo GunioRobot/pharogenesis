@@ -3,6 +3,6 @@ fullBounds
 	"It might be better to override doLayoutIn:, and remove this method"
 
 	fullBounds ifNotNil:[^ fullBounds].
-	fullBounds _ bounds.
+	fullBounds := bounds.
 	submorphs do: [:m| m ownerChanged].
 	^ fullBounds

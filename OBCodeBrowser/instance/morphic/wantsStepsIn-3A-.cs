@@ -1,2 +1,0 @@
-wantsStepsIn: aSystemWindow
-	^ true

@@ -1,2 +1,2 @@
 last
-	^self string ifNotNilDo: [ :s | s last ]
+	^self string ifNotNil: [ :s | s last ]

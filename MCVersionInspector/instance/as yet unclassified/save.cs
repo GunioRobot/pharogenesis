@@ -1,4 +1,4 @@
 save
-	self pickRepository ifNotNilDo:
+	self pickRepository ifNotNil:
 		[:ea |
 		ea storeVersion: self version]

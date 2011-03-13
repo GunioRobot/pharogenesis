@@ -1,2 +1,0 @@
-An installer takes care of installing SqueakMap packages represented by SMCards.
-Deciding if a package is installable and instantiating the correct installer class is done on the class side, see implementors of #canInstall:. Two methods need to be implemented by subclasses - download and install. Upgrade can also be specialized by implementing #upgrade, otherwise it will default to #install.

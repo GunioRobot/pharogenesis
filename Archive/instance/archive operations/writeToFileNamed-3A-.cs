@@ -4,5 +4,5 @@ writeToFileNamed: aFileName
 	(self canWriteToFileNamed: aFileName)
 		ifFalse: [ ^self error: (aFileName, ' is needed by one or more members in this archive') ].
 	stream := StandardFileStream forceNewFileNamed: aFileName.
-	self writeTo: stream.
-	stream close.
+	[ self writeTo: stream ]
+		ensure: [ stream close ]

@@ -3,7 +3,7 @@ report: strm cutoff: threshold
 		ifTrue: [strm nextPutAll: ' - no tallies obtained']
 		ifFalse: 
 			[strm nextPutAll: ' - '; print: tally; nextPutAll: ' tallies, ', time printString, ' msec.'; cr; cr.
-			self fullPrintOn: strm tallyExact: false orThreshold: threshold].
+			self fullPrintOn: strm threshold: threshold].
 		
 	time isZero ifFalse:	
 		[self reportGCStatsOn: strm].

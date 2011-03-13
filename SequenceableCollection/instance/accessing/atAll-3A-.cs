@@ -4,7 +4,7 @@ atAll: indexArray
 	"#('one' 'two' 'three' 'four') atAll: #(3 2 4)"
 
 	| newCollection |
-	newCollection _ self species ofSize: indexArray size.
+	newCollection := self species ofSize: indexArray size.
 	1 to: indexArray size do:
 		[:index |
 		newCollection at: index put: (self at: (indexArray at: index))].

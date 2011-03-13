@@ -1,12 +1,12 @@
 initialize
      
-	SystemRockBottomPriority _ 10.
-	SystemBackgroundPriority _ 20.
-	UserBackgroundPriority _ 30.
-	UserSchedulingPriority _ 40.
-	UserInterruptPriority _ 50.
-	LowIOPriority _ 60.
-	HighIOPriority _ 70.
-	TimingPriority _ 80.
+	SystemRockBottomPriority := 10.
+	SystemBackgroundPriority := 20.
+	UserBackgroundPriority := 30.
+	UserSchedulingPriority := 40.
+	UserInterruptPriority := 50.
+	LowIOPriority := 60.
+	HighIOPriority := 70.
+	TimingPriority := 80.
 
 	"ProcessorScheduler initialize."

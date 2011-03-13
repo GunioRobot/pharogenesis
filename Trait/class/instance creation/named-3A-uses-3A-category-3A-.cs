@@ -1,6 +1,6 @@
 named: aSymbol uses: aTraitCompositionOrCollection category: aString
 	| env |
-	env _ self environment.
+	env := self environment.
 	^self
 		named: aSymbol
 		uses: aTraitCompositionOrCollection

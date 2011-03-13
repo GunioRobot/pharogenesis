@@ -1,3 +1,0 @@
-instrument: aSound
-
-	instrument := aSound.

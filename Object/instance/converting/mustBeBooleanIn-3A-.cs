@@ -3,7 +3,7 @@ mustBeBooleanIn: context
 
 	| proceedValue |
 	context skipBackBeforeJump.
-	proceedValue _ NonBooleanReceiver new
+	proceedValue := NonBooleanReceiver new
 		object: self;
 		signal: 'proceed for truth.'.
 	^ proceedValue ~~ false

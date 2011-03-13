@@ -3,5 +3,5 @@ discardDiscards
 
 	(self class selectors select: [:each | each beginsWith: 'discard']) 
 		do: [:each | self class removeSelector: each].
-	#(lastRemoval majorShrink zapMVCprojects)
+	#(lastRemoval majorShrink)
 		do: [:each | self class removeSelector: each]

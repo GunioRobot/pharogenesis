@@ -1,7 +1,7 @@
 adoptMessageInCurrentChangeset
 	"Add the receiver's method to the current change set if not already there"
 
-	self selectedClassOrMetaClass ifNotNilDo: [ :cl |
-		self selectedMessageName ifNotNilDo: [ :sel |
+	self selectedClassOrMetaClass ifNotNil: [ :cl |
+		self selectedMessageName ifNotNil: [ :sel |
 			ChangeSet current adoptSelector: sel forClass: cl.
 			self changed: #annotations ]]

@@ -1,0 +1,1 @@
+OSPlatform class instanceVariableNames: ''

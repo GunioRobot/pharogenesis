@@ -1,6 +1,6 @@
 receiver: rcvr arguments: args precedence: p
 
-	receiver _ rcvr.
-	arguments _ args.
-	sizes _ Array new: arguments size.
-	precedence _ p
+	receiver := rcvr.
+	arguments := args.
+	sizes := Array new: arguments size.
+	precedence := p

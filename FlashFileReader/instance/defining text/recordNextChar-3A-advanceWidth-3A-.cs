@@ -1,1 +1,0 @@
-recordNextChar: glyphIndex advanceWidth: advance

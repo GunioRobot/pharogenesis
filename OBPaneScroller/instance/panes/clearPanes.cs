@@ -1,2 +1,0 @@
-clearPanes
-	transform removeAllMorphs

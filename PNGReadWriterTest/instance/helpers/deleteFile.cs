@@ -1,0 +1,2 @@
+deleteFile
+	FileDirectory default deleteFileNamed: fileName

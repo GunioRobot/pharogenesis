@@ -1,1 +1,0 @@
-NebraskaDebug class instanceVariableNames: ''

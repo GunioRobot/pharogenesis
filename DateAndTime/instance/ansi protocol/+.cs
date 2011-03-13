@@ -2,7 +2,7 @@
 	"operand conforms to protocol Duration"
 
 	| ticks |
- 	ticks _ self ticks + (operand asDuration ticks) .
+ 	ticks := self ticks + (operand asDuration ticks) .
 
 	^ self class basicNew
 		ticks: ticks

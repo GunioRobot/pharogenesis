@@ -1,3 +1,0 @@
-doAccept
-
-	self delete

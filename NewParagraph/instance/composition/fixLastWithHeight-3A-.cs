@@ -5,16 +5,16 @@ fixLastWithHeight: lineHeightGuess
 
 	(text size > 1 and: [text last = Character cr]) ifFalse: [^self].
 
-	oldLastLine _ lines last.
+	oldLastLine := lines last.
 	oldLastLine last - oldLastLine first >= 0 ifFalse: [^self].
 	oldLastLine last = text size ifFalse: [^self].
 
-	newRectangle _ oldLastLine left @ oldLastLine bottom 
+	newRectangle := oldLastLine left @ oldLastLine bottom 
 				extent: 0@(oldLastLine bottom - oldLastLine top).
 	"Even though we may be below the bottom of the container,
 	it is still necessary to compose the last line for consistency..."
 
-	line _ TextLine start: text size+1 stop: text size internalSpaces: 0 paddingWidth: 0.
+	line := TextLine start: text size+1 stop: text size internalSpaces: 0 paddingWidth: 0.
 	line rectangle: newRectangle.
 	line lineHeight: lineHeightGuess baseline: textStyle baseline.
-	lines _ lines, (Array with: line).
+	lines := lines, (Array with: line).

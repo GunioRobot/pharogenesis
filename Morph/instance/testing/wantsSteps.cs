@@ -4,7 +4,6 @@ wantsSteps
 
 	| c |
 	self isPartsDonor ifTrue: [^ false].
-	(self == self topRendererOrSelf) ifTrue: [self player wantsSteps ifTrue: [^ true]].
-	c _ self class.
-	[c includesSelector: #step] whileFalse: [c _ c superclass].
+	c := self class.
+	[c includesSelector: #step] whileFalse: [c := c superclass].
 	^ c ~= Morph

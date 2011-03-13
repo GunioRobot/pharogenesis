@@ -1,2 +1,0 @@
-clearChanges
-	hasChanges := false

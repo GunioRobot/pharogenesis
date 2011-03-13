@@ -1,3 +1,0 @@
-drawAsBitmapFlag
-
-	^drawAsBitmapFlag ifNil: [false]

@@ -1,2 +1,0 @@
-isPackageRelease
-	^true

@@ -1,6 +1,6 @@
 takeColor: aColor event: evt
 	"Accept the given color programmatically"
-	currentColor _ aColor.
+	currentColor := aColor.
 	self notifyWeakDependentsWith: {#currentColor. evt. currentColor}.
 	self showColor.
 	self colorable ifFalse: [self setAction: #paint: evt: evt].	"User now thinking of painting"

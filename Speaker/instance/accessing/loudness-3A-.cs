@@ -1,2 +1,0 @@
-loudness: aNumber
-	loudness := aNumber

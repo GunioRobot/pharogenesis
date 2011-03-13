@@ -1,0 +1,1 @@
+MessageDialogWindow class instanceVariableNames: ''

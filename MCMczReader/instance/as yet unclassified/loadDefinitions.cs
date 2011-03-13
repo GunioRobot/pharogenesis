@@ -1,6 +1,6 @@
 loadDefinitions
 	definitions := OrderedCollection new.
-	(self zip memberNamed: 'snapshot.bin') ifNotNilDo:
+	(self zip memberNamed: 'snapshot.bin') ifNotNil:
 		[:m | [^ definitions := (DataStream on: m contentStream) next definitions]
 			on: Error do: [:fallThrough ]].
 	"otherwise"

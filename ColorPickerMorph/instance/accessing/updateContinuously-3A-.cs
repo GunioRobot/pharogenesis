@@ -1,3 +1,3 @@
 updateContinuously: aBoolean
 
-	updateContinuously _ aBoolean.
+	updateContinuously := aBoolean.

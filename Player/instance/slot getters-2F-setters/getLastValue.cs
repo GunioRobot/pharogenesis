@@ -1,3 +1,0 @@
-getLastValue
-
-	^ self getValueFromCostume: #lastValue

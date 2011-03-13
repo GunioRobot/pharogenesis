@@ -5,8 +5,8 @@ processMouseOver: anEvent
 	hand := anEvent hand.
 	leftMorphs := mouseOverMorphs asIdentitySet.
 	"Assume some coherence for the number of objects in over list"
-	overMorphs := WriteStream on: (Array new: leftMorphs size).
-	enteredMorphs := WriteStream on: #().
+	overMorphs := (Array new: leftMorphs size) writeStream.
+	enteredMorphs := Array new writeStream.
 	"Now go looking for eventual mouse overs"
 	hand handleEvent: anEvent asMouseOver.
 	"Get out early if there's no change"

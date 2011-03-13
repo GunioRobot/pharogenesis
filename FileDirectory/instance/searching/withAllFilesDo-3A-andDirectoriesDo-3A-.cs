@@ -10,9 +10,9 @@ withAllFilesDo: fileStreamBlock andDirectoriesDo: directoryBlock
 	[todo size > 0] whileTrue: [
 		dir := todo removeFirst.
 		directoryBlock value: dir.
-		dir fileNames do: [: n | 
+		dir fileNames do: [:n | 
 			fileStreamBlock value: 
 				(FileStream readOnlyFileNamed: (dir fullNameFor: n))].
-		dir directoryNames do: [: n | 
+		dir directoryNames do: [:n | 
 			todo add: (dir directoryNamed: n)]]
 

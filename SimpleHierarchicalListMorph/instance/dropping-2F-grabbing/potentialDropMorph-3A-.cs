@@ -1,3 +1,3 @@
 potentialDropMorph: aMorph
-	potentialDropMorph _ aMorph.
+	potentialDropMorph := aMorph.
 	aMorph highlightForDrop

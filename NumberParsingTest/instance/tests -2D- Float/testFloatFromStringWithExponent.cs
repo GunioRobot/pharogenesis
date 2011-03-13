@@ -2,13 +2,13 @@ testFloatFromStringWithExponent
 	"This covers parsing in Number>>readFrom:"
 
 	| aFloat |
-	aFloat _ '1.0e-14' asNumber.
+	aFloat := '1.0e-14' asNumber.
 	self assert: 1.0e-14 = aFloat.
-	aFloat _ '1.0e-14 1' asNumber.
+	aFloat := '1.0e-14 1' asNumber.
 	self assert: 1.0e-14 = aFloat.
-	aFloat _ '1.0e-14e' asNumber.
+	aFloat := '1.0e-14e' asNumber.
 	self assert: 1.0e-14 = aFloat.
-	aFloat _ '1.0e14e' asNumber.
+	aFloat := '1.0e14e' asNumber.
 	self assert: 1.0e14 = aFloat.
-	aFloat _ '1.0e+14e' asNumber. "Plus sign is not parseable"
+	aFloat := '1.0e+14e' asNumber. "Plus sign is not parseable"
 	self assert: 1.0 = aFloat.

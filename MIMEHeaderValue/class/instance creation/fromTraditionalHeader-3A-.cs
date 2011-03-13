@@ -3,7 +3,7 @@ fromTraditionalHeader: aString
 
 	| newValue |
 
-	newValue _ self new.
+	newValue := self new.
 	newValue mainValue: aString.
 	newValue parameters: #().
 	^newValue.

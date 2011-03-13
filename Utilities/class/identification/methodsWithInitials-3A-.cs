@@ -1,5 +1,5 @@
 methodsWithInitials: targetInitials
-	"Based on a do-it contributed to the Squeak mailing list by Göran Hultgen:
+	"Based on a do-it contributed to the Squeak mailing list by Goran Hultgen:
  Browse methods whose initials (in the time-stamp, as logged to disk) match the given initials.
  Print out the complete time-stamp table to the Transcript.
  Answer a list of (initials -> count) associations.
@@ -9,19 +9,19 @@ CAUTION: It may take several minutes for this to complete."
 	"Time millisecondsToRun: [Utilities methodsWithInitials: 'bf']"
 
 	| initials timeStamp  allSubmitters |
-	initials _ ''.
-	timeStamp _ ''.
-	allSubmitters _ Bag new.
+	initials := ''.
+	timeStamp := ''.
+	allSubmitters := Bag new.
 	self systemNavigation
 		browseAllSelect:
 			[:cm |
-				timeStamp _ Utilities timeStampForMethod: cm.
-				initials _ timeStamp isEmpty
+				timeStamp := Utilities timeStampForMethod: cm.
+				initials := timeStamp isEmpty
 					ifTrue:
 						['']
 					ifFalse:
 						[timeStamp substrings first].
-				initials _ initials isEmpty
+				initials := initials isEmpty
 					ifTrue:
 						['<no time stamp>']
 					ifFalse:

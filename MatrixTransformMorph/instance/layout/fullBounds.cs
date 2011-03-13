@@ -1,10 +1,10 @@
 fullBounds
 	| subBounds |
 	fullBounds ifNil:[
-		fullBounds _ self bounds.
+		fullBounds := self bounds.
 		submorphs do:[:m|
-			subBounds _ (self transform localBoundsToGlobal: m fullBounds).
-			fullBounds _ fullBounds quickMerge: subBounds.
+			subBounds := (self transform localBoundsToGlobal: m fullBounds).
+			fullBounds := fullBounds quickMerge: subBounds.
 		].
 	].
 	^fullBounds

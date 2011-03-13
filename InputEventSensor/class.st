@@ -1,0 +1,1 @@
+InputEventSensor class instanceVariableNames: ''

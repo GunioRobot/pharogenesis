@@ -1,6 +1,6 @@
 CommandHistory
 	subclass: #TextMorphCommandHistory
-	instanceVariableNames: 'textMorph'
+	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Text Support'

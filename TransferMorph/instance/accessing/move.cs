@@ -1,2 +1,2 @@
 move
-	copy _ false
+	copy := false

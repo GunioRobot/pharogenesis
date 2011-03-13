@@ -3,10 +3,10 @@ removeDuplicateFlapTabs
 	"Flaps removeDuplicateFlapTabs"
 	| tabs duplicates same |
 	SharedFlapTabs copy ifNil: [^self].
-	tabs _ SharedFlapTabs copy.
-	duplicates _ Set new.
+	tabs := SharedFlapTabs copy.
+	duplicates := Set new.
 	tabs do: [:tab |
-		same _ tabs select: [:each | each wording = tab wording].
+		same := tabs select: [:each | each wording = tab wording].
 		same isEmpty not
 			ifTrue: [
 				same removeFirst.

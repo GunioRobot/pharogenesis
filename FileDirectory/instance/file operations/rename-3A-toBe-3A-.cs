@@ -12,13 +12,11 @@ rename: oldFileName toBe: newFileName
 		^self error:'Attempt to rename a non-existent file'.
 	].
 	(self fileExists: newFileName) ifTrue:[
-		selection := (PopUpMenu labels:
-'delete old version
-cancel')
-				startUpWithCaption: 'Trying to rename a file to be
+		selection := UIManager default confirm: 'Trying to rename a file to be' translated, '
 ', newFileName , '
-and it already exists.'.
-		selection = 1 ifTrue:
+', 'and it already exists' translated, '
+', 'delete old version?' translated.
+		selection ifTrue:
 			[self deleteFileNamed: newFileName.
 			^ self rename: oldFileName toBe: newFileName]].
 	^self error:'Failed to rename file'.

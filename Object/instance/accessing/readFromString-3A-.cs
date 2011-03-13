@@ -1,4 +1,3 @@
-readFromString: aString
+readFromString: aString 
 	"Create an object based on the contents of aString."
-
-	^self readFrom: (ReadStream on: aString)
+	^ self readFrom: aString readStream

@@ -1,1 +1,0 @@
-FlashMorph class instanceVariableNames: ''

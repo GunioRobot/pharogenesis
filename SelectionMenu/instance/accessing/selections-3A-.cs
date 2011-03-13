@@ -1,2 +1,2 @@
 selections: selectionArray
-	selections _ selectionArray
+	selections := selectionArray

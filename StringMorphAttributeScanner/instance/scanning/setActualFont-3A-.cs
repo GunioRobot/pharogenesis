@@ -1,5 +1,5 @@
 setActualFont: aFont
 	"Set the value of actualFont, from a TextFontReference"
 
-	actualFont _ aFont.
-	aFont textStyle ifNotNilDo: [ :ts | fontNumber _ ts fontIndexOf: aFont ]
+	actualFont := aFont.
+	aFont textStyle ifNotNil: [ :ts | fontNumber := ts fontIndexOf: aFont ]

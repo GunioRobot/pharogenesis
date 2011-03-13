@@ -7,5 +7,5 @@ drawOn: aCanvas
 	closed ifTrue:
 		[aCanvas drawPolygon: self getVertices fillStyle: self fillStyle.
 		aCanvas isShadowDrawing ifTrue: [^ self]].
-	array _ self drawArrowsOn: aCanvas.
+	array := self drawArrowsOn: aCanvas.
 	self drawClippedBorderOn: aCanvas usingEnds: array.

@@ -1,0 +1,1 @@
+ThreadSafeTranscript class instanceVariableNames: ''

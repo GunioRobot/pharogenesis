@@ -1,6 +1,6 @@
 flash
 	| c w |
-	c _ self color.
+	c := self color.
 	self color: Color black.
-	(w _ self world) ifNotNil: [w displayWorldSafely].
+	(w := self world) ifNotNil: [w displayWorldSafely].
 	self color: c

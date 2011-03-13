@@ -1,5 +1,5 @@
 children
 	| children |
-	children _ OrderedCollection new.
+	children := OrderedCollection new.
 	self childrenDo: [:each | children add: each].
 	^children

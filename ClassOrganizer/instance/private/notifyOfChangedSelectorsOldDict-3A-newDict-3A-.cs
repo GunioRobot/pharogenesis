@@ -1,5 +1,4 @@
 notifyOfChangedSelectorsOldDict: oldDictionaryOrNil newDict: newDictionaryOrNil
-	| newCat |
 	(oldDictionaryOrNil isNil and: [newDictionaryOrNil isNil])
 		ifTrue: [^ self].
 		
@@ -15,7 +14,7 @@ notifyOfChangedSelectorsOldDict: oldDictionaryOrNil newDict: newDictionaryOrNil
 		^ self.
 	].
 		
-	oldDictionaryOrNil keysAndValuesDo: [:el :cat |
-		newCat _ newDictionaryOrNil at: el.
+	oldDictionaryOrNil keysAndValuesDo: [:el :cat | | newCat |
+		newCat := newDictionaryOrNil at: el.
 		self notifyOfChangedSelector: el from: cat to: newCat.
 	].

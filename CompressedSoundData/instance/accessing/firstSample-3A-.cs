@@ -1,3 +1,0 @@
-firstSample: anInteger
-
-	firstSample := anInteger.

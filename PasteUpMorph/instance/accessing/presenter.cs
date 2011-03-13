@@ -3,5 +3,5 @@ presenter
 
 	^ presenter ifNil:
 		[self isWorldMorph
-			ifTrue: [presenter _ Presenter new associatedMorph: self]
+			ifTrue: [presenter := Presenter new associatedMorph: self]
 			ifFalse: [super presenter]]

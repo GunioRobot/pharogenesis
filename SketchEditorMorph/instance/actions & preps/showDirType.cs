@@ -3,8 +3,8 @@ showDirType
 is one of #(normal leftRight upDown none)."
 
 | rr poly |
-rr _ self rotationStyle.
-poly _ self valueOfProperty: #fwdButton.
+rr := self rotationStyle.
+poly := self valueOfProperty: #fwdButton.
 rr == #normal ifTrue: [^ poly makeBackArrow].
 rr == #leftRight ifTrue: [
 	poly makeBothArrows.

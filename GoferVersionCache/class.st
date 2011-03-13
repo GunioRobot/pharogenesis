@@ -1,0 +1,1 @@
+GoferVersionCache class instanceVariableNames: ''

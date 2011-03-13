@@ -1,5 +1,5 @@
 ticks: anArray
 	"ticks is an Array: { days. seconds. nanoSeconds }"
 
-	seconds _ anArray second.
-	nanos _ anArray third.
+	seconds := anArray at: 2.
+	nanos := anArray at: 3

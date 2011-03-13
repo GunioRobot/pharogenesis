@@ -1,2 +1,0 @@
-color
-	^ self costume color

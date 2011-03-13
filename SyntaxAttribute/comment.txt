@@ -1,1 +1,0 @@
-Represents a color and possibly a style attribute to be applied to a syntactic element for pretty-printing.  The attributeList inst var is a cache.

@@ -7,8 +7,8 @@ extendSelectionMark: markBlock pointBlock: pointBlock
 					showingCaret:(pointBlock = markBlock)]
 		ifFalse:
 		[	| beginBlock endBlock |
-			beginBlock _ markBlock min: pointBlock.
-			endBlock _ markBlock max: endBlock.
+			beginBlock := markBlock min: pointBlock.
+			endBlock := markBlock max: endBlock.
 	
 			(self characterBlockAtPoint: Sensor cursorPoint) <= beginBlock
 				ifTrue: [^self mouseMovedFrom: beginBlock 

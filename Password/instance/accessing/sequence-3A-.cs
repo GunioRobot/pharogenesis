@@ -1,2 +1,2 @@
 sequence: anNumber
-	sequence _ anNumber
+	sequence := anNumber

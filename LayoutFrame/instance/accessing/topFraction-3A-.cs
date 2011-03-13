@@ -1,2 +1,2 @@
 topFraction: aNumber
-	topFraction _ aNumber
+	topFraction := aNumber

@@ -5,4 +5,4 @@ scope: level
 		1	block args and doLimiT temps
 		-1	a block temp that is no longer active
 		-2	a block temp that held limit of to:do:"
-	scope _ level
+	scope := level

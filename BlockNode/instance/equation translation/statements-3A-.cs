@@ -1,2 +1,2 @@
 statements: val
-	statements _ val
+	statements := val

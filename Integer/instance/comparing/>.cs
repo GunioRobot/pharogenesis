@@ -5,4 +5,4 @@
 						ifTrue: [^(self digitCompare: aNumber) < 0]
 						ifFalse: [^(self digitCompare: aNumber) > 0]]
 			ifFalse: [^ aNumber negative]].
-	^ aNumber adaptToInteger: self andSend: #>
+	^ aNumber adaptToInteger: self andCompare: #>

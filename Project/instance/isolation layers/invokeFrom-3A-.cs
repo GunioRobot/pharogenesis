@@ -2,8 +2,8 @@ invokeFrom: otherProject
 	"Revoke the changes in force for this project, and then invoke those in force for otherProject.  This method shortens the process to the shortest path up then down through the isolation layers."
 
 	| pathUp pathDown |
-	pathUp _ otherProject layersToTop.  "Full paths to top"
-	pathDown _ self layersToTop.
+	pathUp := otherProject layersToTop.  "Full paths to top"
+	pathDown := self layersToTop.
 
 	"Shorten paths to nearest common ancestor"
 	[pathUp isEmpty not

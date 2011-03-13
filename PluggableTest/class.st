@@ -1,1 +1,0 @@
-PluggableTest class instanceVariableNames: ''

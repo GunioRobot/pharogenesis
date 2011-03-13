@@ -1,2 +1,0 @@
-handlesMouseDown: evt
-	^self visible

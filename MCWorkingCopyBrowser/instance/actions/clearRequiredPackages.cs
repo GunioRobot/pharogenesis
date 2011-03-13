@@ -1,5 +1,5 @@
 clearRequiredPackages
-	workingCopy ifNotNilDo:
+	workingCopy ifNotNil:
 		[:wc |
 		wc clearRequiredPackages.
 		self workingCopyListChanged]

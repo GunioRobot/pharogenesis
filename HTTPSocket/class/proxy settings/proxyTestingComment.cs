@@ -11,7 +11,7 @@ proxyTestingComment
 
 	"Test Windows Machine in our cubicle at DOL"
 	"	HTTPSocket useProxyServerNamed: '206.18.67.150' port: 8080.
-		HTTPSocket httpShowPage: 'http://kids.online.disney.com/~kevin/squeak/k_t.morph'.
+		HTTPSocket httpShowPage: 'http://kids.online.disney.com/~kevin/squeak/k:=t.morph'.
 		HTTPSocket stopUsingProxyServer.	"
 
 	"	HTTPSocket httpShowPage: 'kids.online.disney.com/'	"

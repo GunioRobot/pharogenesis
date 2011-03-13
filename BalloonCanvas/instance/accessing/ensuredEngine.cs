@@ -1,7 +1,7 @@
 ensuredEngine
 	engine ifNil:[
-		engine _ BalloonEngine new.
-		"engine _ BalloonDebugEngine new"
+		engine := BalloonEngine new.
+		"engine := BalloonDebugEngine new"
 		engine aaLevel: aaLevel.
 		engine bitBlt: port.
 		engine destOffset: origin.

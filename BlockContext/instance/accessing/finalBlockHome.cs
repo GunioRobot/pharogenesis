@@ -1,3 +1,0 @@
-finalBlockHome
-
-	^ self home

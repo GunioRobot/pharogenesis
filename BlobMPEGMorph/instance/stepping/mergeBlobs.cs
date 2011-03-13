@@ -1,2 +1,0 @@
-mergeBlobs
-	^self

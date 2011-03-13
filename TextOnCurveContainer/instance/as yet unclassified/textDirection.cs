@@ -1,2 +1,0 @@
-textDirection
-	^ textDirection

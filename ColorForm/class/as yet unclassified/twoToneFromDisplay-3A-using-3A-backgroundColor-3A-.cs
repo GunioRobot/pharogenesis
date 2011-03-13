@@ -3,9 +3,9 @@ twoToneFromDisplay: aRectangle using: oldForm backgroundColor: bgColor
 
 	| f |
 	((oldForm ~~ nil) and: [oldForm extent = aRectangle extent]) ifTrue: [
-		f _ oldForm fromDisplay: aRectangle.
+		f := oldForm fromDisplay: aRectangle.
 	] ifFalse: [
-		f _ ColorForm extent: aRectangle extent depth: 1.
+		f := ColorForm extent: aRectangle extent depth: 1.
 		f twoToneFromDisplay: aRectangle backgroundColor: bgColor.
 		f colors: (Array
 			with: bgColor

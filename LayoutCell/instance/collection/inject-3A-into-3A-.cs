@@ -6,6 +6,6 @@ inject: thisValue into: binaryBlock
 	next]."
 
 	| nextValue |
-	nextValue _ thisValue.
-	self do: [:each | nextValue _ binaryBlock value: nextValue value: each].
+	nextValue := thisValue.
+	self do: [:each | nextValue := binaryBlock value: nextValue value: each].
 	^nextValue

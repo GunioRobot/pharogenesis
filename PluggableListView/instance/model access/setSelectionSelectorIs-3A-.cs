@@ -1,2 +1,0 @@
-setSelectionSelectorIs: aSelector
-	^ aSelector == setSelectionSelector

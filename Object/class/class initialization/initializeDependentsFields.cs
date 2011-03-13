@@ -1,3 +1,3 @@
 initializeDependentsFields
 	"Object initialize"
-	DependentsFields _ WeakIdentityKeyDictionary new.
+	DependentsFields := WeakIdentityKeyDictionary new.

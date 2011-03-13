@@ -3,9 +3,9 @@ connectTo: hostAddress port: port
 	self shouldUseSocks
 		ifFalse: [^super connectTo: hostAddress port: port].
 	super connectTo: socksIP port: socksPort.
-	self waitForConnectionUntil: Socket standardDeadline.
-	dstIP _ hostAddress.
-	dstPort _ port.
+	self waitForConnectionFor: Socket standardTimeout.
+	dstIP := hostAddress.
+	dstPort := port.
 	vers == 4
 		ifTrue: [self connectSocks4]
 		ifFalse: [self connectSocks5]

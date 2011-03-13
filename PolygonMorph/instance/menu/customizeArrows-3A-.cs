@@ -1,8 +1,8 @@
 customizeArrows: evt
 	| handle origin aHand |
-	aHand _ evt ifNil: [self primaryHand] ifNotNil: [evt hand].
-	origin _ aHand position.
-	handle _ HandleMorph new
+	aHand := evt ifNil: [self primaryHand] ifNotNil: [evt hand].
+	origin := aHand position.
+	handle := HandleMorph new
 		forEachPointDo:
 			[:newPoint | handle removeAllMorphs.
 			handle addMorph:
@@ -10,7 +10,7 @@ customizeArrows: evt
 			self arrowSpec: (newPoint - origin) / 5.0]
 		lastPointDo:
 			[:newPoint | handle deleteBalloon.
-			self halo ifNotNilDo: [:halo | halo addHandles].].
+			self halo ifNotNil: [:halo | halo addHandles].].
 	aHand attachMorph: handle.
 	handle setProperty: #helpAtCenter toValue: true.
 	handle showBalloon:

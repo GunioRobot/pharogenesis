@@ -7,7 +7,7 @@ fileOutClass: extraClass andObject: theObject
 
 	extraClass ifNotNil: [
 		class := extraClass.	"A specific class the user wants written"
-		class sharedPools size > 0 ifTrue: [
+		class hasSharedPools ifTrue: [
 			class shouldFileOutPools ifTrue: [class fileOutSharedPoolsOn: self]
 		].
 		class fileOutOn: self moveSource: false toFile: 0

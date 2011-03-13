@@ -1,3 +1,0 @@
-formChanged
-
-	formChanged _ true.

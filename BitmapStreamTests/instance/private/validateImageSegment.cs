@@ -1,14 +1,10 @@
 validateImageSegment
-	"array is set up with an array."
-	| other filename |
-	filename := 'bitmapStreamTest.extSeg'.
-
-	FileDirectory default deleteFileNamed: filename ifAbsent: [ ].
-
+	| other externalSegmentFilename |
+	externalSegmentFilename := 'bitmapStreamTest.extSeg'.
+	[
 	(ImageSegment new copyFromRootsForExport: (Array with: array))
-         writeForExport: filename.
-
-	other := (FileDirectory default readOnlyFileNamed: filename)
-		fileInObjectAndCode.
-
+		writeForExport: externalSegmentFilename.
+	other := (FileDirectory default readOnlyFileNamed: externalSegmentFilename)
+		fileInObjectAndCode
+	] ensure: [ FileDirectory default deleteFileNamed: externalSegmentFilename ifAbsent: [ ] ]. 
 	self assert: array = other originalRoots first

@@ -1,2 +1,0 @@
-handlesMouseOver: anEvent
-	^true

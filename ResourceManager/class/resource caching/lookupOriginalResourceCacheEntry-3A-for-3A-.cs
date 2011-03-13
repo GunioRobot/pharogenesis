@@ -5,15 +5,15 @@ lookupOriginalResourceCacheEntry: resourceFileName for: resourceUrl
 	CachedResources ifNil:[^nil].
 
 	"Strip the version number from the resource url"
-	resourceBase _ resourceUrl copyFrom: 1 to: (resourceUrl lastIndexOf: $.) .
+	resourceBase := resourceUrl copyFrom: 1 to: (resourceUrl lastIndexOf: $.) .
 	"Now collect all urls that have the same resource base"
-	resourceMatch _ resourceBase , '*/' , resourceFileName.
-	matchingUrls _ self resourceCache keys
+	resourceMatch := resourceBase , '*/' , resourceFileName.
+	matchingUrls := self resourceCache keys
 		select: [:entry | (resourceMatch match: entry) and: [(entry beginsWith: resourceUrl) not]].
 	matchingUrls isEmpty
 		ifTrue: [^nil].
 	matchingUrls asSortedCollection do: [:entry | 
-			candidates _ (self resourceCache at: entry).
+			candidates := (self resourceCache at: entry).
 			candidates isEmptyOrNil
 				ifFalse: [candidates do: [:candidate |
 					candidate = resourceFileName

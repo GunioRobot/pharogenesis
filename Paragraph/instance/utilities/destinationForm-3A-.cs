@@ -1,2 +1,2 @@
 destinationForm: destForm
-	destinationForm _ destForm
+	destinationForm := destForm

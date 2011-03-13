@@ -1,2 +1,0 @@
-copy
-	^super copy postCopyBlocks

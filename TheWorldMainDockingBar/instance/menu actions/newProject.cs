@@ -1,2 +1,0 @@
-newProject
-	Project newMorphicOn: nil

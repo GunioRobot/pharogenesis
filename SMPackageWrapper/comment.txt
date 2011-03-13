@@ -1,1 +1,0 @@
-This is a wrapper for showing the SqueakMap packages (SMPackage) using the SimpleHierarchicalListMorph in the SMLoader, see SMLoader>>packageWrapperList.

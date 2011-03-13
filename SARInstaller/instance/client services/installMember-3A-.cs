@@ -1,13 +1,10 @@
 installMember: memberOrName
 	| memberName extension isGraphic stream member |
-	member _ self memberNamed: memberOrName.
+	member := self memberNamed: memberOrName.
 	member ifNil: [ ^false ].
-	memberName _ member fileName.
-	extension _ (FileDirectory extensionFor: memberName) asLowercase.
-	Smalltalk at: #CRDictionary ifPresent: [ :crDictionary |
-		(extension = crDictionary fileNameSuffix) ifTrue: [  self fileInGenieDictionaryNamed: memberName. ^true ] ].
+	memberName := member fileName.
+	extension := (FileDirectory extensionFor: memberName) asLowercase.
 	extension caseOf: {
-		[ Project projectExtension ] -> [ self fileInProjectNamed: memberName createView: true ].
 		[ FileStream st ] -> [ self fileInPackageNamed: memberName ].
 		[ FileStream cs ] -> [  self fileInMemberNamed: memberName  ].
 "		[ FileStream multiSt ] -> [  self fileInMemberNamedAsUTF8: memberName  ].
@@ -21,8 +18,8 @@ installMember: memberOrName
 		[ 'translation' ] -> [  self fileInMemberNamed: memberName  ].
 	} otherwise: [
 		('t*xt' match: extension) ifTrue: [ self openTextFile: memberName ]
-			ifFalse: [ stream _ member contentStream.
-		isGraphic _ ImageReadWriter understandsImageFormat: stream.
+			ifFalse: [ stream := member contentStream.
+		isGraphic := ImageReadWriter understandsImageFormat: stream.
 		stream reset.
 		isGraphic
 			ifTrue: [ self openGraphicsFile: member ]

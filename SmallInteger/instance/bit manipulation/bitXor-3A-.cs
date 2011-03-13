@@ -8,4 +8,4 @@ bitXor: arg
 	self >= 0 ifTrue: [^ arg bitXor: self].
 	^ arg < 0
 		ifTrue: [self bitInvert bitXor: arg bitInvert]
-		ifFalse: [(self bitInvert bitXor: arg) bitInvert]
+		ifFalse: [(self bitInvert bitXor: arg) bitInvert].

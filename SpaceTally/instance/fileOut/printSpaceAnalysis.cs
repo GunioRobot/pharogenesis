@@ -1,4 +1,6 @@
 printSpaceAnalysis	
 	"SpaceTally new printSpaceAnalysis"
 
-	^ self printSpaceAnalysis: 0 on: 'STspace.text'
+	| stream |
+	stream := FileStream newFileNamed: 'STspace.text'.
+	[ self printSpaceAnalysis: 1 on: stream ] ensure: [ stream close ]

@@ -1,6 +1,6 @@
 aliasesForSelector: aSymbol
 	| selectors |
-	selectors _ self aliases
+	selectors := self aliases
 		select: [:association | association value = aSymbol]
 		thenCollect: [:association | association key].
 	^(super aliasesForSelector: aSymbol)

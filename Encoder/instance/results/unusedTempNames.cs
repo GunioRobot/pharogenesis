@@ -1,8 +1,9 @@
 unusedTempNames 
-	| unused name |
-	unused _ OrderedCollection new.
+	| unused |
+	unused := OrderedCollection new.
 	scopeTable associationsDo:
-		[:assn | (assn value isUnusedTemp)
-			ifTrue: [name _ assn value key.
-					name ~= 'homeContext' ifTrue: [unused add: name]]].
+		[:assn | | name |
+		(assn value isUnusedTemp) ifTrue:
+			[name := assn value key.
+			 name ~= self doItInContextName ifTrue: [unused add: name]]].
 	^ unused

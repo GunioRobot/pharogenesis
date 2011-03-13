@@ -1,2 +1,2 @@
 fileClass: aClass
-	fileClass _ aClass
+	fileClass := aClass

@@ -3,5 +3,3 @@ notify: aString
 	order to request confirmation before a process can proceed."
 
 	Warning signal: aString
-
-	"nil notify: 'confirmation message'"

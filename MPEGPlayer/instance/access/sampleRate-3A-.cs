@@ -1,2 +1,0 @@
-sampleRate: aRate
-	sampleRate := aRate

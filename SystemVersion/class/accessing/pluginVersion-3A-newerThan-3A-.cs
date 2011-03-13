@@ -3,8 +3,8 @@ pluginVersion: availableVersionString newerThan: currentVersionString
 	(currentVersionString isEmptyOrNil
 		or: [availableVersionString isEmptyOrNil])
 		ifTrue: [^true].
-	currentVersion _ self parseVersionString: currentVersionString.
-	availableVersion _ self parseVersionString: availableVersionString.
+	currentVersion := self parseVersionString: currentVersionString.
+	availableVersion := self parseVersionString: availableVersionString.
 	(currentVersion isNil
 		or: [availableVersion isNil])
 		ifTrue: [^false].

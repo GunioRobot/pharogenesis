@@ -1,6 +1,6 @@
 modalWindow: aMorph 
 	(self valueOfProperty: #modalWindow)
-		ifNotNilDo: [:morph | morph doCancel].
+		ifNotNil: [:morph | morph doCancel].
 	self setProperty: #modalWindow toValue: aMorph.
 	aMorph
 		ifNotNil: [self

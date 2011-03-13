@@ -1,10 +1,9 @@
 initialize
-"
+	"
 	self initialize
 "
-
-	CompoundTextSequence _ String streamContents: [:s |
+	compoundTextSequence := String streamContents: 
+		[ :s | 
 		s nextPut: (Character value: 27).
 		s nextPut: $$.
-		s nextPut: $B
-	].
+		s nextPut: $B ]

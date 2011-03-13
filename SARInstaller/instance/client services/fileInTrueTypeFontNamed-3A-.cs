@@ -4,7 +4,7 @@ fileInTrueTypeFontNamed: memberOrName
 	member := self memberNamed: memberOrName.
 	member ifNil: [^self errorNoSuchMember: memberOrName].
 
-	description _ TTFontDescription addFromTTStream: member contentStream.
+	description := TTFontDescription addFromTTStream: member contentStream.
 	TTCFont newTextStyleFromTT: description.
 
 	World doOneCycle.

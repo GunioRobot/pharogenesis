@@ -1,2 +1,0 @@
-isTicking
-	^isTicking ifNil:[false].

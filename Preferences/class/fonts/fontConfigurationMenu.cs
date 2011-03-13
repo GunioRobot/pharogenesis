@@ -17,14 +17,6 @@ fontConfigurationMenu
 	aMenu lastItem font: Preferences standardFlapFont.
 	aMenu balloonTextForLastItem: 'Choose the font to be used on textual flap tabs' translated.
 
-	aMenu add: 'eToys font...' translated action: #chooseEToysFont.
-	aMenu lastItem font: Preferences standardEToysFont.
-	aMenu balloonTextForLastItem: 'Choose the font to be used on eToys environment' translated.
-
-	aMenu add: 'eToys title font...' translated action: #chooseEToysTitleFont.
-	aMenu lastItem font: Preferences standardEToysTitleFont.
-	aMenu balloonTextForLastItem: 'Choose the font to be used in titles on eToys environment' translated.
-
 	aMenu add: 'halo label font...' translated action: #chooseHaloLabelFont.
 	aMenu lastItem font: Preferences standardHaloLabelFont.
 	aMenu balloonTextForLastItem: 'Choose the font to be used on labels ih halo' translated.
@@ -34,7 +26,7 @@ fontConfigurationMenu
 	aMenu balloonTextForLastItem: 'Choose the font to be used in menus' translated.
 	
 	aMenu add: 'window-title font...' translated action: #chooseWindowTitleFont.
-	aMenu lastItem font: Preferences windowTitleFont emphasis: 1.
+	aMenu lastItem font: Preferences windowTitleFont.
 	aMenu balloonTextForLastItem: 'Choose the font to be used in window titles.' translated.
 
 	aMenu add: 'balloon-help font...' translated action: #chooseBalloonHelpFont.

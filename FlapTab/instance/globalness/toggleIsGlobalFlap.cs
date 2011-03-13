@@ -3,7 +3,7 @@ toggleIsGlobalFlap
 
 	| oldWorld |
 	self hideFlap.
-	oldWorld _ self currentWorld.
+	oldWorld := self currentWorld.
 	self isGlobalFlap
 		ifTrue:
 			[Flaps removeFromGlobalFlapTabList: self.

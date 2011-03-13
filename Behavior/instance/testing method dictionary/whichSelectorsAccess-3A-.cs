@@ -3,7 +3,7 @@ whichSelectorsAccess: instVarName
 	instVarName, as a named instance variable."
 
 	| instVarIndex |
-	instVarIndex _ self allInstVarNames indexOf: instVarName ifAbsent: [^IdentitySet new].
+	instVarIndex := self instVarIndexFor: instVarName ifAbsent: [^IdentitySet new].
 	^ self methodDict keys select: 
 		[:sel | 
 		((self methodDict at: sel)

@@ -1,2 +1,2 @@
 isDirectoryList: aMorph
-	^aMorph getListSelector == #volumeList
+	^aMorph isKindOf: SimpleHierarchicalListMorph

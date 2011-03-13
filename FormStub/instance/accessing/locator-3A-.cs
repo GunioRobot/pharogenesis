@@ -1,2 +1,2 @@
 locator: aString
-	locator _ aString
+	locator := aString

@@ -1,2 +1,2 @@
 seed: anInteger 
-	seed _ anInteger
+	seed := anInteger

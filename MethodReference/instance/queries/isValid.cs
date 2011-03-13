@@ -3,6 +3,6 @@ isValid
 
 	| aClass |
 	methodSymbol isDoIt ifTrue: [^ false].
-	(aClass _ self actualClass) ifNil: [^ false].
+	(aClass := self actualClass) ifNil: [^ false].
 	^ (aClass includesSelector: methodSymbol) or:
 		[methodSymbol == #Comment]

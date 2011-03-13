@@ -4,6 +4,6 @@ collect: aBlock
 	the new collection."
 
 	| newCollection |
-	newCollection _ self species new.
+	newCollection := self species new.
 	self do: [:each | newCollection add: (aBlock value: each)].
 	^ newCollection

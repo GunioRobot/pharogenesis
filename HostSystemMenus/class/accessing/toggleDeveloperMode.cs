@@ -1,0 +1,3 @@
+toggleDeveloperMode
+
+	DeveloperMode := DeveloperMode not.

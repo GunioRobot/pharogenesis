@@ -6,7 +6,7 @@ objectForDataStream: refStrm
 		(refStrm insideASegment and: [self subject isSystemDefined not]) ifTrue: [
 			^ self].	"do trace me"
 		(self subject isKindOf: Class) ifTrue: [
-			dp _ DiskProxy global: self subject name selector: #organization args: #().
+			dp := DiskProxy global: self subject name selector: #organization args: #().
 			refStrm replace: self with: dp.
 			^ dp]].
 	^ self	"in desparation"

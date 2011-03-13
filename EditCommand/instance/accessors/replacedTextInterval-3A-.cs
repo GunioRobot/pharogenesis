@@ -1,2 +1,2 @@
 replacedTextInterval: anInterval
-	^replacedTextInterval _ anInterval
+	^replacedTextInterval := anInterval

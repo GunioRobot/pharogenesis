@@ -1,3 +1,0 @@
-midiParser
-
-	^ midiParser

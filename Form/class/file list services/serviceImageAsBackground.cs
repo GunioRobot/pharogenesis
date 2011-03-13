@@ -4,6 +4,6 @@ serviceImageAsBackground
 	^ SimpleServiceEntry 
 		provider: self 
 		label: 'use graphic as background'
-		selector: #openAsBackground:
+		selector: #setBackgroundFromImageFileNamed:
 		description: 'use the graphic as the background for the desktop'
 		buttonLabel: 'background'

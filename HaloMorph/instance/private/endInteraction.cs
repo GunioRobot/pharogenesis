@@ -15,7 +15,7 @@ endInteraction
 
 			self comeToFront.
 			self addHandles].
-	(self valueOfProperty: #commandInProgress) ifNotNilDo: 
+	(self valueOfProperty: #commandInProgress) ifNotNil: 
 			[:cmd | 
 			self rememberCommand: cmd.
 			self removeProperty: #commandInProgress]

@@ -1,2 +1,0 @@
-hasVariable
-	^ pinSpec hasVariable

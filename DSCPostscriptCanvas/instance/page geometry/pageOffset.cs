@@ -1,2 +1,0 @@
-pageOffset
-	^self pageBBox origin.

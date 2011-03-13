@@ -1,2 +1,2 @@
 wasHandled: aBool
-	wasHandled _ aBool.
+	wasHandled := aBool.

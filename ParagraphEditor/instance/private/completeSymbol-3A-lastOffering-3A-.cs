@@ -9,38 +9,38 @@ completeSymbol: hintText lastOffering: selectorOrNil
 	If redoing, just redisplay the last offering, selector[OrNil]."
 
 	| firstTime input prior caret newStart sym kwds outStream |
-	firstTime _ self isRedoing
-		ifTrue: [prior _ sym _ selectorOrNil. true]
+	firstTime := self isRedoing
+		ifTrue: [prior := sym := selectorOrNil. true]
 		ifFalse: [hintText isNil].
 	firstTime
 		ifTrue: "Initial Ctrl-q (or redo)"					
-			[caret _ self startIndex.
+			[caret := self startIndex.
 			self selectPrecedingIdentifier.
-			input _ self selection]
+			input := self selection]
 		ifFalse: "Repeated Ctrl-q"
-			[caret _ UndoInterval first + hintText size.
+			[caret := UndoInterval first + hintText size.
 			self selectInvisiblyFrom: UndoInterval first to: UndoInterval last.
-			input _ hintText.
-			prior _ selectorOrNil].
+			input := hintText.
+			prior := selectorOrNil].
 	(input size ~= 0 and: [sym ~~ nil or:
-			[(sym _ Symbol thatStarts: input string skipping: prior) ~~ nil]])
+			[(sym := Symbol thatStarts: input string skipping: prior) ~~ nil]])
 		ifTrue: "found something to offer"
-			[newStart _ self startIndex.
-			outStream _ WriteStream on: (String new: 2 * sym size).
-			1 to: (kwds _ sym keywords) size do:
+			[newStart := self startIndex.
+			outStream := (String new: 2 * sym size) writeStream.
+			1 to: (kwds := sym keywords) size do:
 				[:i |
 				outStream nextPutAll: (kwds at: i).
-				i = 1 ifTrue: [caret _ newStart + outStream contents size + 1].
+				i = 1 ifTrue: [caret := newStart + outStream contents size + 1].
 				outStream nextPutAll:
 					(i < kwds size ifTrue: ['  '] ifFalse: [' '])].
-			UndoSelection _ input.
+			UndoSelection := input.
 			self deselect; zapSelectionWith: outStream contents asText.
 			self undoer: #undoQuery:lastOffering: with: input with: sym]
 		ifFalse: "no more matches"
 			[firstTime ifFalse: "restore original text & set up for a redo"
-				[UndoSelection _ self selection.
+				[UndoSelection := self selection.
 				self deselect; zapSelectionWith: input.
 				self undoer: #completeSymbol:lastOffering: with: input with: prior.
-				Undone _ true].
-			view flash].
+				Undone := true].
+			self flash].
 	self selectAt: caret

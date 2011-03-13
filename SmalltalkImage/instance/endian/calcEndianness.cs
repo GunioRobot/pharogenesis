@@ -3,9 +3,9 @@ calcEndianness
 	"What endian-ness is the current hardware?  The String '1234' will be stored into a machine word.  On BigEndian machines (the Mac), $1 will be the high byte if the word.  On LittleEndian machines (the PC), $4 will be the high byte."
 	"SmalltalkImage current endianness"
 
-	bytes _ ByteArray withAll: #(0 0 0 0).  "(1 2 3 4) or (4 3 2 1)"
-	word _ WordArray with: 16r01020304.
-	blt _ (BitBlt toForm: (Form new hackBits: bytes)) 
+	bytes := ByteArray withAll: #(0 0 0 0).  "(1 2 3 4) or (4 3 2 1)"
+	word := WordArray with: 16r01020304.
+	blt := (BitBlt toForm: (Form new hackBits: bytes)) 
 				sourceForm: (Form new hackBits: word).
 	blt combinationRule: Form over.  "store"
 	blt sourceY: 0; destY: 0; height: 1; width: 4.

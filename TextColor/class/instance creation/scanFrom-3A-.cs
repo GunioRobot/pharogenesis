@@ -4,9 +4,9 @@ scanFrom: strm
 	| r g b |
 	strm peek isDigit
 		ifTrue:
-			[r _ (strm next: 3) asNumber.
-			g _ (strm next: 3) asNumber.
-			b _ (strm next: 3) asNumber.
+			[r := (strm next: 3) asNumber.
+			g := (strm next: 3) asNumber.
+			b := (strm next: 3) asNumber.
 			^ self color: (Color r: r g: g b: b range: 255)].
 	"A name of a color"
 	^ self color: (Color perform: (strm upTo: $;) asSymbol)

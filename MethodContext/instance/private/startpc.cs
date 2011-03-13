@@ -1,3 +1,4 @@
 startpc
-
-	^ self method initialPC
+	^closureOrNil
+		ifNil:	[self method initialPC]
+		ifNotNil: [closureOrNil startpc]

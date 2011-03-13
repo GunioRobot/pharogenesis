@@ -2,9 +2,9 @@ testDifferentBases
 	"self run: #testDifferentBases"
 	"| value |
 	2 to: 36 do: [:each|
-		value _ 0.
-		1 to: each-1 do: [:n| value _ value + (n * (each raisedToInteger: n))].
-		value _ value negated.
+		value := 0.
+		1 to: each-1 do: [:n| value := value + (n * (each raisedToInteger: n))].
+		value := value negated.
 		Transcript tab; show: 'self assert: (', value printString, ' printStringBase: ', each printString, ') = ''', (value printStringBase: each), '''.'; cr.
 		Transcript tab; show: 'self assert: (', value printString, ' radix: ', each printString, ') = ''', (value radix: each), '''.'; cr.
 		Transcript tab; show: 'self assert: ', value printString, ' printStringHex = ''', (value printStringBase: 16), '''.'; cr.

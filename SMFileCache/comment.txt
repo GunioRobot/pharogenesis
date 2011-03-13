@@ -1,3 +1,0 @@
-A repository for SMSqueakMap downloads. This behaves like a Set, responding to add: and include:, but also package contents may be forcibly refreshed with download:.
-
-The SqueakMap determines what path the cache resides at. Within the cache, there is a 'packages' directory containing UUID-based directories for each package containing further directories for each release. A 'resources' directory stores UUID-based directories for each Resource, with the file stored within that by its original name. Because the cache follows a Set protocol, it can be automatically traversed within Smalltalk's collection protocol, avoiding manual hassles.

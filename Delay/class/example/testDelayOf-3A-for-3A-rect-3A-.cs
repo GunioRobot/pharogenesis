@@ -3,8 +3,8 @@ testDelayOf: delay for: testCount rect: r
 	 Delay testDelayOf: 400 for: 20 rect: (50@10 extent: 30@30)."
 
 	| onDelay offDelay |
-	onDelay _ Delay forMilliseconds: 50.
-	offDelay _ Delay forMilliseconds: delay - 50.
+	onDelay := Delay forMilliseconds: 50.
+	offDelay := Delay forMilliseconds: delay - 50.
 	Display fillBlack: r.
 	[1 to: testCount do: [:i |
 		Display fillWhite: r.

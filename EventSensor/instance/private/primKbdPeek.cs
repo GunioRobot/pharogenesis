@@ -5,9 +5,8 @@ primKbdPeek
 	self wait2ms.
 	self fetchMoreEvents.
 	keyboardBuffer isEmpty ifFalse: [^ keyboardBuffer peek].
-	char _ nil.
-	eventQueue ifNotNil:
-		[eventQueue nextOrNilSuchThat:  "NOTE: must not return out of this block, so loop to end"
-			[:buf | (self isKbdEvent: buf) ifTrue: [char ifNil: [char _ buf at: 3]].
-			false  "NOTE: block value must be false so Queue won't advance"]].
+	char := nil.
+	self eventQueue nextOrNilSuchThat:  "NOTE: must not return out of this block, so loop to end"
+			[:buf | (self isKbdEvent: buf) ifTrue: [char ifNil: [char := buf at: 6]].
+			false  "NOTE: block value must be false so Queue won't advance"].
 	^ char

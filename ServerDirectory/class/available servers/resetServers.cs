@@ -1,2 +1,2 @@
 resetServers
-	Servers _ nil
+	Servers := nil

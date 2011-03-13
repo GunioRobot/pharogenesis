@@ -6,7 +6,10 @@ raisedTo: aNumber
 		^ self raisedToInteger: aNumber].
 	self < 0 ifTrue:
 		[ self error: self printString, ' raised to a non-integer power' ].
-	aNumber = 0 ifTrue: [^ 1].		"Special case of exponent=0"
-	(self = 0) | (aNumber = 1) ifTrue:
-		[^ self].						"Special case of exponent=1"
+	0 = aNumber ifTrue: [^ self class one].	"Special case of exponent=0"
+	1 = aNumber ifTrue: [^ self].	"Special case of exponent=1"
+	0 = self ifTrue: [				"Special case of self = 0"
+		aNumber < 0
+			ifTrue: [^ (ZeroDivide dividend: self) signal]
+			ifFalse: [^ self]].
 	^ (aNumber * self ln) exp		"Otherwise use logarithms"

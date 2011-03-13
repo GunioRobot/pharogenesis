@@ -2,7 +2,7 @@ example
 	"ProgressMorph example"
 
 	| progress |
-	progress _ ProgressMorph label: 'Test progress'.
+	progress := ProgressMorph label: 'Test progress'.
 	progress subLabel: 'this is the subheading'.
 	progress openInWorld.
 	[10 timesRepeat:

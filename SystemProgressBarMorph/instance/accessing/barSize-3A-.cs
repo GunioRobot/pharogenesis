@@ -1,3 +1,3 @@
 barSize: anInteger
-	barSize _ anInteger.
+	barSize := anInteger.
 	self changed.

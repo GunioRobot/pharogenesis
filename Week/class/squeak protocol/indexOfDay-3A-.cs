@@ -1,3 +1,3 @@
 indexOfDay: aSymbol
 
-	^ DayNames indexOf: aSymbol
+	^ DayNames indexOf: aSymbol 

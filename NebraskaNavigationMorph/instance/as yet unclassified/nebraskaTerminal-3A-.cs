@@ -1,3 +1,0 @@
-nebraskaTerminal: aNebraskaTerminal
-
-	nebraskaTerminal := aNebraskaTerminal

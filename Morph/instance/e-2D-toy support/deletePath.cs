@@ -1,2 +1,0 @@
-deletePath
-	self removeProperty: #pathPoints

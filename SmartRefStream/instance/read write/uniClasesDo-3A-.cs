@@ -4,5 +4,5 @@ uniClasesDo: aBlock
 	| cls |
 	structures keysDo: [:clsName | 
 		(clsName endsWith: ' class') ifFalse: [
-			(cls _ Smalltalk at: clsName) isSystemDefined ifFalse: [
+			(cls := Smalltalk at: clsName) isSystemDefined ifFalse: [
 					aBlock value: cls]]]

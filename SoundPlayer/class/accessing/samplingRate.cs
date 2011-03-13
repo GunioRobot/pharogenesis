@@ -1,3 +1,0 @@
-samplingRate
-
-	^ SamplingRate

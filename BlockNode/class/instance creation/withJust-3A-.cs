@@ -1,2 +1,2 @@
 withJust: aNode
-	^ self statements: (OrderedCollection with: aNode) returns: false
+	^ self new statements: (Array with: aNode) returns: false

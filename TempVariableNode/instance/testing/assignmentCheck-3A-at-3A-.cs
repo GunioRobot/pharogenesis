@@ -1,4 +1,5 @@
 assignmentCheck: encoder at: location
-
-	self isArg ifTrue: [^ location]
-			ifFalse: [^ -1]
+	^((self isBlockArg and: [Preferences allowBlockArgumentAssignment not])
+	    or: [self isMethodArg])
+			ifTrue: [location]
+			ifFalse: [-1]

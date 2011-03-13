@@ -5,8 +5,8 @@ variableByteSubclass: t uses: aTraitCompositionOrArray instanceVariableNames: f
 	have indexable byte-sized nonpointer variables."
 	
 	| newClass copyOfOldClass |
-	copyOfOldClass _ self copy.
-	newClass _ self
+	copyOfOldClass := self copy.
+	newClass := self
 		variableByteSubclass: t 
 		instanceVariableNames: f
 		classVariableNames: d

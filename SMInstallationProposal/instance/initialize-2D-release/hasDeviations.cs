@@ -1,2 +1,0 @@
-hasDeviations
-	^ deviations notEmpty

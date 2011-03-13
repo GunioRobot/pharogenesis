@@ -3,8 +3,8 @@ blockReturnTop
 	encountered in the receiver."
 
 	| save dest |
-	save _ home.	"Needed because return code will nil it"
-	dest _ self return: self pop from: self.
-	home _ save.
-	sender _ nil.
+	save := home.	"Needed because return code will nil it"
+	dest := self return: self pop from: self.
+	home := save.
+	sender := nil.
 	^ dest

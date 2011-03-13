@@ -1,0 +1,1 @@
+ExpanderMorph class instanceVariableNames: ''

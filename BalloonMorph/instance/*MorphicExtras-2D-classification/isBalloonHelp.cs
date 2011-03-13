@@ -1,2 +1,0 @@
-isBalloonHelp
-	^true

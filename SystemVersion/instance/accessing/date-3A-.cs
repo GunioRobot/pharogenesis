@@ -1,2 +1,2 @@
 date: newDate
-	date _ newDate
+	date := newDate

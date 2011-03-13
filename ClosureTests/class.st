@@ -1,0 +1,1 @@
+ClosureTests class instanceVariableNames: ''

@@ -1,4 +1,4 @@
 converter
 
-	converter ifNil: [converter _ self class defaultConverter].
+	converter ifNil: [converter := self class defaultConverter].
 	^ converter

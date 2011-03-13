@@ -1,2 +1,0 @@
-buttonOffColor
-	^self defaultBackgroundColor darker

@@ -1,2 +1,0 @@
-associatedPlayer
-	^ nil

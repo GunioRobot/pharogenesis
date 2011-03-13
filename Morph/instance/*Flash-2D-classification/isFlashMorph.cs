@@ -1,2 +1,0 @@
-isFlashMorph
-	^false

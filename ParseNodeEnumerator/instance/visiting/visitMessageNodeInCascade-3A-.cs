@@ -1,0 +1,3 @@
+visitMessageNodeInCascade: aMessageNodeInCascade
+	theBlock value: aMessageNodeInCascade.
+	^super visitMessageNodeInCascade: aMessageNodeInCascade

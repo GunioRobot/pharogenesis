@@ -1,0 +1,1 @@
+PluggableSliderMorph class instanceVariableNames: ''

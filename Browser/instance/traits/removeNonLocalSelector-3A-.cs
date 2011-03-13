@@ -1,7 +1,7 @@
 removeNonLocalSelector: aSymbol
 	| traits isAlias |
-	traits _ self selectedClassOrMetaClass traitsProvidingSelector: aSymbol.
-	isAlias _ self selectedClassOrMetaClass isLocalAliasSelector: aSymbol.
+	traits := self selectedClassOrMetaClass traitsProvidingSelector: aSymbol.
+	isAlias := self selectedClassOrMetaClass isLocalAliasSelector: aSymbol.
 	isAlias
 		ifTrue: [
 			self assert: traits size = 1.

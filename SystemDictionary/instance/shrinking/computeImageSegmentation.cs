@@ -86,7 +86,6 @@ computeImageSegmentation
 				streamContents: [:s | #('Morphic-Components' )
 						do: [:cat | (SystemOrganization superclassOrder: cat)
 								do: [:c | s nextPut: c name]]].
-	newClasses := newClasses copyWithoutAll: #(#ComponentLikeModel ).
 	expandedCandM := Smalltalk unusedClassesAndMethodsWithout: {unusedCandM first asArray , newClasses. unusedCandM second}.
 	partitions at: 'Components' put: {(expandedCandM first copyWithoutAll: unusedCandM first) addAll: newClasses;
 			 yourself. expandedCandM second copyWithoutAll: unusedCandM second}.

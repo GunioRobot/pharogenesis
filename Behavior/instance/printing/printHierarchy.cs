@@ -3,12 +3,12 @@ printHierarchy
 	of all of the subclasses and superclasses of the receiver."
 
 	| aStream index |
-	index _ 0.
-	aStream _ WriteStream on: (String new: 16).
+	index := 0.
+	aStream := (String new: 16) writeStream.
 	self allSuperclasses reverseDo: 
 		[:aClass | 
 		aStream crtab: index.
-		index _ index + 1.
+		index := index + 1.
 		aStream nextPutAll: aClass name.
 		aStream space.
 		aStream print: aClass instVarNames].

@@ -1,0 +1,1 @@
+ErrorDialogWindow class instanceVariableNames: ''

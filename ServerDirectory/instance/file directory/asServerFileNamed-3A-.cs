@@ -1,7 +1,7 @@
 asServerFileNamed: aName
 
 	| rFile |
-	rFile _ self as: ServerFile.
+	rFile := self as: ServerFile.
 	(aName includes: self pathNameDelimiter)
 		ifTrue: [rFile fullPath: aName]
 			"sets server, directory(path), fileName.  If relative, merge with self."

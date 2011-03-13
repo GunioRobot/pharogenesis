@@ -7,5 +7,5 @@ critical: aBlock
 
 	| result |
 	[self enter.
-	result _ aBlock value] ensure: [self exit].
+	result := aBlock value] ensure: [self exit].
 	^ result.

@@ -5,7 +5,7 @@ mouseUp: evt
 		inside me, e.g. because of a cmd-drag; in this case we want
 		to avoid triggering the action!"
 		self color: oldColor.
-		oldColor _ nil.
+		oldColor := nil.
 		(self containsPoint: evt cursorPoint) 
 				ifTrue: [ actWhen == #buttonUp 
 							ifTrue: [self doButtonAction]  ]

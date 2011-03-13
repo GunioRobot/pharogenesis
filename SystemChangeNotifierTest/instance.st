@@ -1,6 +1,6 @@
 SystemChangeTestRoot
 	subclass: #SystemChangeNotifierTest
-	instanceVariableNames: 'capturedEvent'
+	instanceVariableNames: 'capturedEvent notifier'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'SystemChangeNotification-Tests'
+	category: 'Tests-SystemChangeNotification'

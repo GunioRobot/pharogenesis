@@ -1,3 +1,0 @@
-isOn
-
-	^ process notNil

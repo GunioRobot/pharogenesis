@@ -1,2 +1,0 @@
-optionalButtons
-	^ #('browse' 'revert')

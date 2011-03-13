@@ -1,3 +1,0 @@
-askBeforeChanging
-
-	^ askBeforeChanging

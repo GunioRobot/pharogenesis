@@ -3,7 +3,7 @@ confirmExistingFiles: aResult
 	|choice|
 	(aResult directory fileExists: aResult name) ifFalse: [^aResult].
 	
-	choice _ (UIManager default chooseFrom: #('overwrite that file' 'choose another name'
+	choice := (UIManager default chooseFrom: #('overwrite that file' 'choose another name'
  'cancel')
 		title: aResult name, '
 already exists.').

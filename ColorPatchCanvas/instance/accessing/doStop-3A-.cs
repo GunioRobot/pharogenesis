@@ -1,2 +1,2 @@
 doStop: aBoolean
-	doStop _ aBoolean
+	doStop := aBoolean

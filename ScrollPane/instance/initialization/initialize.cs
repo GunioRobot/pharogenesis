@@ -4,7 +4,7 @@ initialize
 	super initialize.
 	""
 	self initializePreferences.
-	hasFocus _ false.
+	hasFocus := false.
 	self initializeScrollBars.
 	""
 	self extent: self defaultExtent.

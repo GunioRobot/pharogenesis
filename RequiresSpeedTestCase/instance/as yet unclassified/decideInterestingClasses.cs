@@ -8,9 +8,7 @@ decideInterestingClasses
 			}.
 	displayedClasses := self classesInCategories: interestingCategories.
 	focusedClasses := {
-				AtomMorph.
 				AlignmentMorph.
-				BookMorph.
 				GZipReadStream.
 				CommentNode
 			}

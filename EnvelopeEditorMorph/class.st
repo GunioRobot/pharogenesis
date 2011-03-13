@@ -1,1 +1,0 @@
-EnvelopeEditorMorph class instanceVariableNames: ''

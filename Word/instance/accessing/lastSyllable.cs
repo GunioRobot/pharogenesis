@@ -1,2 +1,0 @@
-lastSyllable
-	^ self syllables last

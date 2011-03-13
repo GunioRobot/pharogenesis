@@ -1,3 +1,0 @@
-starLogoMorphbosfcedppplppppttwssdlgrstt0
-
-	^ StarSqueakMorph

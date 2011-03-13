@@ -4,7 +4,7 @@ printPaddedWith: aCharacter to: anInteger base: aRadix
 	| aStream padding digits |
 	#Numeric.
 	"2000/03/04  Harmon R. Added Date and Time support"
-	aStream := WriteStream on: (String new: 10).
+	aStream := (String new: 10) writeStream.
 	self
 		printOn: aStream
 		base: aRadix

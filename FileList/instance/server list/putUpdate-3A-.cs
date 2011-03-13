@@ -3,9 +3,9 @@ putUpdate: fullFileName
 
 	| names choice |
 	self canDiscardEdits ifFalse: [^ self changed: #flash].
-	names _ ServerDirectory groupNames asSortedArray.
-	choice _ (SelectionMenu labelList: names selections: names) startUp.
-	choice == nil ifTrue: [^ self].
+	names := ServerDirectory groupNames asSortedArray.
+	choice := UIManager default chooseFrom: names values: names.
+	choice ifNil: [^ self].
 	(ServerDirectory serverInGroupNamed: choice) putUpdate: 
 				(directory oldFileNamed: fullFileName).
 	self volumeListIndex: volListIndex.

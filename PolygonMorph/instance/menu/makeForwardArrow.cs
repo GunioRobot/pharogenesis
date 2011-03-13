@@ -1,3 +1,3 @@
 makeForwardArrow
-	arrows _ #forward.
+	arrows := #forward.
 	self computeBounds

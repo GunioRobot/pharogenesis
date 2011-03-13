@@ -2,11 +2,11 @@ saveResumptionTimes
 	"Private! Record the resumption times of all Delays relative to a base time of zero. This is done prior to snapshotting or adjusting the resumption times after a clock roll-over. This method should be called only while the AccessProtect semaphore is held."
 
 	| oldBaseTime |
-	oldBaseTime _ Time millisecondClockValue.
+	oldBaseTime := Time millisecondClockValue.
 	ActiveDelay == nil
 		ifFalse: [
 			oldBaseTime < ActiveDelayStartTime
-				ifTrue: [oldBaseTime _ ActiveDelayStartTime].  "clock rolled over"
+				ifTrue: [oldBaseTime := ActiveDelayStartTime].  "clock rolled over"
 			ActiveDelay adjustResumptionTimeOldBase: oldBaseTime newBase: 0].
 	SuspendedDelays do:
 		[:d | d adjustResumptionTimeOldBase: oldBaseTime newBase: 0].

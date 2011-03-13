@@ -5,8 +5,8 @@ initialize
 	"DataStream initialize"
 
 	| refTypes t |
-	refTypes _ OrderedCollection new.
-	t _ TypeMap _ Dictionary new: 80. "sparse for fast hashing"
+	refTypes := OrderedCollection new.
+	t := TypeMap := Dictionary new: 80. "sparse for fast hashing"
 
 	t at: UndefinedObject put: 1.   refTypes add: 0.
 	t at: True put: 2.   refTypes add: 0.
@@ -32,8 +32,10 @@ self flag: #ByteArray.
 	t at: ByteString put: 17.   refTypes add: 1.	"new String format, 1 or 4 bytes of length"
 	t at: WordArray put: 18.  refTypes add: 1.	"bitmap-like"
 	t at: WordArrayForSegment put: 19.  refTypes add: 1.		"bitmap-like"
-	t at: SoundBuffer put: 20.  refTypes add: 1.	"And all other word arrays, both 
+	Smalltalk at: #SoundBuffer ifPresent: [ :class |
+		t at: class put: 20.  refTypes add: 1.	"And all other word arrays, both 
 		16-bit and 32-bit.  See methods in ArrayedCollection.  Overridden in SoundBuffer."
+	].
 	t at: CompiledMethod put: 21.  refTypes add: 1.	"special creation method"
 	"t at:  put: 22.  refTypes add: 0."
 	ReferenceStream refTypes: refTypes.		"save it"

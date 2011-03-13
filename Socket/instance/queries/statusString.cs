@@ -3,7 +3,7 @@ statusString
 
 	| status |
 	socketHandle == nil ifTrue: [^ 'destroyed'].
-	status _ self primSocketConnectionStatus: socketHandle.
+	status := self primSocketConnectionStatus: socketHandle.
 	status = InvalidSocket ifTrue: [^ 'invalidSocketHandle'].
 	status = Unconnected ifTrue: [^ 'unconnected'].
 	status = WaitingForConnection ifTrue: [^ 'waitingForConnection'].

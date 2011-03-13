@@ -13,16 +13,16 @@ sin
 	self > Halfpi ifTrue: [^ (Pi - self) sin].
 
 	"unroll loop to avoid use of abs"
-	sum _ delta _ self.
-	self2 _ 0.0 - (self * self).
-	i _ 2.0.
+	sum := delta := self.
+	self2 := 0.0 - (self * self).
+	i := 2.0.
 	[delta > Epsilon] whileTrue: [
 		"once"
-		delta _ (delta * self2) / (i * (i + 1.0)).
-		i _ i + 2.0.
-		sum _ sum + delta.
+		delta := (delta * self2) / (i * (i + 1.0)).
+		i := i + 2.0.
+		sum := sum + delta.
 		"twice"
-		delta _ (delta * self2) / (i * (i + 1.0)).
-		i _ i + 2.0.
-		sum _ sum + delta].
+		delta := (delta * self2) / (i * (i + 1.0)).
+		i := i + 2.0.
+		sum := sum + delta].
 	^ sum

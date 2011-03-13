@@ -1,4 +1,4 @@
 removeMenuBox
 	menuBox ifNotNil:
 		[menuBox delete.
-		menuBox _ nil].
+		menuBox := nil].

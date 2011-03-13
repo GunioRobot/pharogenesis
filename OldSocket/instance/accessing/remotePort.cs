@@ -1,3 +1,0 @@
-remotePort
-
-	^ self primSocketRemotePort: socketHandle

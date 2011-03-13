@@ -1,5 +1,5 @@
 testDirectoryNamed
 
-	self should: [(self myDirectory containingDirectory 
-					directoryNamed: self myLocalDirectoryName) pathName 
-						= self myDirectory pathName]
+	self should: [(self directory containingDirectory 
+					directoryNamed: self directoryName) pathName 
+						= self directory pathName]

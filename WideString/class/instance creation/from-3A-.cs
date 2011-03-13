@@ -3,6 +3,6 @@ from: aString
 	| newString |
 	(aString isMemberOf: self)
 		ifTrue: [^ aString copy].
-	newString _ self new: aString size.
+	newString := self new: aString size.
 	1 to: aString size do: [:index | newString basicAt: index put: (aString basicAt: index)].
 	^ newString

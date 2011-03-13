@@ -1,11 +1,11 @@
 initialize
-"initialize the state of the receiver"
+	"initialize the state of the receiver"
+	
 	super initialize.
-""
-	edgeToAdhereTo _ #left.
-	flapShowing _ false.
-	slidesOtherObjects _ false.
-	popOutOnDragOver _ false.
-	popOutOnMouseOver _ false.
-	inboard _ false.
-	dragged _ false
+	edgeToAdhereTo := #left.
+	flapShowing := false.
+	slidesOtherObjects := false.
+	popOutOnDragOver := false.
+	popOutOnMouseOver := false.
+	inboard := false.
+	dragged := false

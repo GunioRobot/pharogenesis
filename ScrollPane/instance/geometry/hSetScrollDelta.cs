@@ -4,8 +4,8 @@ hSetScrollDelta
 
 	scroller hasSubmorphs ifFalse:[scrollBar interval: 1.0. ^self].
 	
-	delta _ self scrollDeltaWidth.
-	range _ self hLeftoverScrollRange.
+	delta := self scrollDeltaWidth.
+	range := self hLeftoverScrollRange.
 	range = 0 ifTrue: [ hScrollBar scrollDelta: 0.02 pageDelta: 0.2; interval: 1.0; setValue: 0. ^self].
 
 	"Set up for one line (for arrow scrolling), or a full pane less one line (for paging)."

@@ -1,3 +1,3 @@
 stringVersion: aString
 
-	stringVersion _ aString
+	stringVersion := aString

@@ -1,4 +1,4 @@
 deleteDirectory
 	
-	(self myDirectory exists) ifTrue:
-		[self myDirectory containingDirectory deleteDirectory: self myLocalDirectoryName]
+	(self directory exists) ifTrue:
+		[self directory containingDirectory deleteDirectory: self directoryName]

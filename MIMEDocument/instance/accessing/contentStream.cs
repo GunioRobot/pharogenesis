@@ -1,4 +1,8 @@
 contentStream
 	"Answer a RWBinaryOrTextStream on the contents."
 
-	^ (RWBinaryOrTextStream with: self content) reset
+	contentStream
+		ifNil: [contentStream := contents
+				ifNil: [self contentStreamOnURI]
+				ifNotNil: [(RWBinaryOrTextStream with: self contents) reset]].
+	^contentStream

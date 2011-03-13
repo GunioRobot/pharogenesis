@@ -3,7 +3,7 @@ goBehind
 	| cont |
 	container ifNil: [^ super goBehind].
 	self releaseParagraph.  "Cause recomposition"
-	cont _ container.  "Save the container"
+	cont := container.  "Save the container"
 	super goBehind.  "This will change owner, nilling the container"
-	container _ cont.  "Restore the container"
+	container := cont.  "Restore the container"
 	self changed

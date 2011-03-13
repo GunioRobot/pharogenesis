@@ -1,5 +1,5 @@
 resourceCache
 	^CachedResources ifNil:[
-		CachedResources _ Dictionary new.
+		CachedResources := Dictionary new.
 		self reloadCachedResources.
 		CachedResources].

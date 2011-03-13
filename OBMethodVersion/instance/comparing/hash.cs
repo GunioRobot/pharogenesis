@@ -1,2 +1,0 @@
-hash
-	^ pointer hash

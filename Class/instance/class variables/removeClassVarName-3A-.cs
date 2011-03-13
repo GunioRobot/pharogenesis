@@ -5,7 +5,7 @@ removeClassVarName: aString
 	the class."
 
 	| aSymbol |
-	aSymbol _ aString asSymbol.
+	aSymbol := aString asSymbol.
 	(classPool includesKey: aSymbol)
 		ifFalse: [^self error: aString, ' is not a class variable'].
 	self withAllSubclasses do:[:subclass |
@@ -20,4 +20,4 @@ removeClassVarName: aString
 						ifTrue:[^Undeclared declare: aSymbol from: classPool]
 						ifFalse:[^self]]]].
 	classPool removeKey: aSymbol.
-	classPool isEmpty ifTrue: [classPool _ nil].
+	classPool isEmpty ifTrue: [classPool := nil].

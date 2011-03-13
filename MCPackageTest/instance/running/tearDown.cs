@@ -1,2 +1,3 @@
 tearDown
-	self mockSnapshot install
+	self mockSnapshot install.
+	DataStream initialize "MCMockClassG ends up in the DataStream TypeMap -- we need to reset"

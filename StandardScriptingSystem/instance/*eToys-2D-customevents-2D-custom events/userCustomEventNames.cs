@@ -1,2 +1,0 @@
-userCustomEventNames
-	^ self currentWorld userCustomEventNames

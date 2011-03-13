@@ -1,2 +1,0 @@
-soundQueue
-	^soundQueue

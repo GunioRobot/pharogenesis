@@ -7,26 +7,26 @@ dispatchMouseDown: anEvent with: aMorph
 "
 	| globalPt localEvt index child morphs handler inside lastHandler |
 	"Try to get out quickly"
-	globalPt _ anEvent cursorPoint.
+	globalPt := anEvent cursorPoint.
 	(aMorph fullBounds containsPoint: globalPt) ifFalse:[^#rejected].
 
 	"Install the prospective handler for the receiver"
-	lastHandler _ anEvent handler. "in case the mouse wasn't even in the receiver"
-	handler _ aMorph handlerForMouseDown: anEvent.
+	lastHandler := anEvent handler. "in case the mouse wasn't even in the receiver"
+	handler := aMorph handlerForMouseDown: anEvent.
 	handler ifNotNil:[anEvent handler: handler].
 
 	"Now give our submorphs a chance to handle the event"
-	index _ 1.
-	morphs _ aMorph submorphs.
+	index := 1.
+	morphs := aMorph submorphs.
 	[index <= morphs size] whileTrue:[
-		child _ morphs at: index.
-		localEvt _ anEvent transformedBy: (child transformedFrom: aMorph).
+		child := morphs at: index.
+		localEvt := anEvent transformedBy: (child transformedFrom: aMorph).
 		(child processEvent: localEvt using: self) == #rejected ifFalse:[
 			"Some child did contain the point so we're part of the top-most chain."
-			inside _ false.
+			inside := false.
 			localEvt wasHandled ifTrue:[anEvent copyHandlerState: localEvt].
-			index _ morphs size].
-		index _ index + 1.
+			index := morphs size].
+		index := index + 1.
 	].
 
 	(inside == false or:[aMorph containsPoint: anEvent cursorPoint event: anEvent]) ifTrue:[

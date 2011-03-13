@@ -1,3 +1,0 @@
-loopLength: anInteger
-
-	loopLength := anInteger.

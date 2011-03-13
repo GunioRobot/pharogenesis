@@ -1,2 +1,2 @@
 mouseOverHandler
-	^mouseOverHandler ifNil:[mouseOverHandler _ MouseOverHandler new].
+	^mouseOverHandler ifNil:[mouseOverHandler := MouseOverHandler new].

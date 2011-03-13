@@ -4,18 +4,18 @@ uniClassInstVarsRefs: dummy
 | uniClasses normal more aUniClass mySize allClasses |
 
 "Note: Any classes used in the structure of classInstVars must be written out also!"
-uniClasses _ Set new.
-allClasses _ IdentitySet new.
-normal _ Object class instSize.
-more _ true.
+uniClasses := Set new.
+allClasses := IdentitySet new.
+normal := Object class instSize.
+more := true.
 [more] whileTrue: [
-	more _ false.
+	more := false.
 	dummy references keysDo: [:each | "any faster way to do this?"
-		(aUniClass _ each class) isSystemDefined ifFalse: [
+		(aUniClass := each class) isSystemDefined ifFalse: [
 			(uniClasses includes: aUniClass name) ifFalse: [
-				mySize _ aUniClass class instSize.
+				mySize := aUniClass class instSize.
 				normal+1 to: mySize do: [:ii | 
-					more _ true.
+					more := true.
 					dummy nextPut: (aUniClass instVarAt: ii)].
 				uniClasses add: aUniClass name]].
 		each class class isMeta ifFalse: ["it is a class" allClasses add: each]]].

@@ -3,7 +3,7 @@ hasInterned: aString ifTrue: symBlock
 	otherwise supply the symbol to symBlock and return true."
 
 	| symbol |
-	^ (symbol _ self lookup: aString)
+	^ (symbol := self lookup: aString)
 		ifNil: [false]
 		ifNotNil: [symBlock value: symbol.
 			true]

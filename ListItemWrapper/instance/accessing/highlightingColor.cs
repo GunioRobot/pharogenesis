@@ -1,3 +1,0 @@
-highlightingColor
-
-	^Color red

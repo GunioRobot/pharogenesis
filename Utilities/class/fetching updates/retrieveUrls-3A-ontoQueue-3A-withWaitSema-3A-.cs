@@ -9,30 +9,30 @@ retrieveUrls: urls ontoQueue: queue withWaitSema: waitSema
 	| doc canPeek front updateCounter |
 	UpdateDownloader
 		ifNotNil: [UpdateDownloader terminate].
-	updateCounter _ 0.
+	updateCounter := 0.
 	"fork a new downloading process"
-	UpdateDownloader _ [
+	UpdateDownloader := [
 		'Downloading updates' displayProgressAt: Sensor cursorPoint from: 0 to: urls size during: [:bar |
 			urls
 				do: [:url | 
 					waitSema wait.
 					queue nextPut: url.
-					doc _ HTTPClient httpGet: url.
+					doc := HTTPClient httpGet: url.
 					doc isString
 						ifTrue: [queue nextPut: #failed.
-							UpdateDownloader _ nil.
+							UpdateDownloader := nil.
 							Processor activeProcess terminate]
-						ifFalse: [canPeek _ 120 min: doc size.
-							front _ doc next: canPeek.  doc skip: -1 * canPeek.
+						ifFalse: [canPeek := 120 min: doc size.
+							front := doc next: canPeek.  doc skip: -1 * canPeek.
 							(front beginsWith: '<!DOCTYPE') ifTrue: [
 								(front includesSubString: 'Not Found') ifTrue: [
 									queue nextPut: #failed.
-									UpdateDownloader _ nil.
+									UpdateDownloader := nil.
 									Processor activeProcess terminate]]].
-						UpdateDownloader ifNotNil: [queue nextPut: doc. updateCounter _ updateCounter + 1. bar value: updateCounter]]].
+						UpdateDownloader ifNotNil: [queue nextPut: doc. updateCounter := updateCounter + 1. bar value: updateCounter]]].
 			queue nextPut: ''.
 			queue nextPut: #finished.
-			UpdateDownloader _ nil] newProcess.
+			UpdateDownloader := nil] newProcess.
 	UpdateDownloader priority: Processor userInterruptPriority.
 	"start the process running"
 	UpdateDownloader resume

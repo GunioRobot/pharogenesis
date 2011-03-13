@@ -1,3 +1,3 @@
 dataIsValid
 
-	localDataValid _ true.
+	localDataValid := true.

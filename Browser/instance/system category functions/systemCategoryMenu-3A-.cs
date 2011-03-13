@@ -5,19 +5,17 @@ systemCategoryMenu: aMenu
 	^ aMenu labels:
 'find class... (f)
 recent classes... (r)
-browse all
 browse
-printOut
 fileOut
 reorganize
 alphabetize
 update
-add item...
+add category...
 rename...
 remove' 
 	lines: #(2 4 6 8)
 	selections:
-		#(findClass recent browseAllClasses buildSystemCategoryBrowser
-		printOutSystemCategory fileOutSystemCategory
+		#(findClass recent buildSystemCategoryBrowser
+		fileOutSystemCategory
 		editSystemCategories alphabetizeSystemCategories updateSystemCategories
 		addSystemCategory renameSystemCategory removeSystemCategory )

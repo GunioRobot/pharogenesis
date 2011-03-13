@@ -1,3 +1,2 @@
 compoundTextSequence
-
-	^ CompoundTextSequence
+	^ compoundTextSequence

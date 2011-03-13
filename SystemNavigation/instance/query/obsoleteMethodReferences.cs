@@ -4,7 +4,7 @@ obsoleteMethodReferences
 	"Open a browser on all referenced behaviors that are obsolete"
 
 	| obsClasses obsRefs references |
-	references := WriteStream on: Array new.
+	references := Array new writeStream.
 	obsClasses := self obsoleteBehaviors.
 	'Scanning for methods referencing obsolete classes' 
 		displayProgressAt: Sensor cursorPoint
@@ -15,7 +15,7 @@ obsoleteMethodReferences
 			obsClasses keysAndValuesDo: 
 					[:index :each | 
 					bar value: index.
-					obsRefs := Utilities pointersTo: each except: obsClasses.
+					obsRefs := PointerFinder pointersTo: each except: obsClasses.
 					obsRefs do: 
 							[:ref | 
 							"Figure out if it may be a global"
@@ -25,5 +25,5 @@ obsoleteMethodReferences
 									[(Utilities pointersTo: ref) do: 
 											[:meth | 
 											(meth isKindOf: CompiledMethod) 
-												ifTrue: [meth methodReference ifNotNilDo: [:mref | references nextPut: mref]]]]]]].
+												ifTrue: [meth methodReference ifNotNil: [:mref | references nextPut: mref]]]]]]].
 	^references contents

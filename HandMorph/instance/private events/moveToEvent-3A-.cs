@@ -1,6 +1,6 @@
 moveToEvent: anEvent
 	"Issue a mouse move event to make the receiver appear at the given position"
-	self handleEvent: (MouseMoveEvent new
+	self handleEvent: (MouseMoveEvent basicNew
 		setType: #mouseMove 
 		startPoint: self position 
 		endPoint: anEvent position 

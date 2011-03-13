@@ -1,2 +1,2 @@
 initSubLabelMorph
-	^ subLabelMorph _ StringMorph contents: '' font: (self fontOfPointSize: 12)
+	^ subLabelMorph := StringMorph contents: '' font: (self fontOfPointSize: 12)

@@ -4,6 +4,6 @@ addIndividualGlobalFlapItemsTo: aMenu
 	|  anItem |
 	self globalFlapTabsIfAny do:
 		[:aFlapTab |
-			anItem _ aMenu addUpdating: #globalFlapWithIDEnabledString: enablementSelector: #showSharedFlaps target: self selector: #enableDisableGlobalFlapWithID: argumentList: {aFlapTab flapID}.
+			anItem := aMenu addUpdating: #globalFlapWithIDEnabledString: enablementSelector: #showSharedFlaps target: self selector: #enableDisableGlobalFlapWithID: argumentList: {aFlapTab flapID}.
 			anItem wordingArgument: aFlapTab flapID.
 			anItem setBalloonText: aFlapTab balloonTextForFlapsMenu].

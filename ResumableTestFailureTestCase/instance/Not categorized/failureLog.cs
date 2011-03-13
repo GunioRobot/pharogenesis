@@ -1,3 +1,0 @@
-failureLog
-	^Transcript
-			

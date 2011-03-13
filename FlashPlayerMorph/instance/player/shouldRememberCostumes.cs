@@ -1,2 +1,0 @@
-shouldRememberCostumes
-	^false

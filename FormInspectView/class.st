@@ -1,1 +1,0 @@
-FormInspectView class instanceVariableNames: ''

@@ -2,10 +2,7 @@ testFormatter2
 	"Smalltalk testFormatter2"
 
 	"Reformats the source for every method in the system, and
-	then verifies that the order of source tokens is unchanged.
-	The formatting used will be either classic monochrome or
-	fancy polychrome, depending on the setting of the preference
-	#colorWhenPrettyPrinting. "
+	then verifies that the order of source tokens is unchanged."
 
 	| newCodeString badOnes n oldCodeString oldTokens newTokens |
 	badOnes := OrderedCollection new.
@@ -28,8 +25,7 @@ testFormatter2
 							newCodeString := cls prettyPrinterClass 
 										format: oldCodeString
 										in: cls
-										notifying: nil
-										decorated: Preferences colorWhenPrettyPrinting.
+										notifying: nil.
 							oldTokens := oldCodeString findTokens: Character separators.
 							newTokens := newCodeString findTokens: Character separators.
 							oldTokens = newTokens 

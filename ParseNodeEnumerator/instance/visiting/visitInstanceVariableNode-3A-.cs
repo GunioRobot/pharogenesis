@@ -1,0 +1,3 @@
+visitInstanceVariableNode: anInstanceVariableNode
+	theBlock value: anInstanceVariableNode.
+	^super visitInstanceVariableNode: anInstanceVariableNode

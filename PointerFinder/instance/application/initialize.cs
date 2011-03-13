@@ -1,4 +1,5 @@
 initialize
+	super initialize.
 	parents := IdentityDictionary new: 20000.
 	parents at: Smalltalk put: nil.
 	parents at: Processor put: nil.

@@ -11,16 +11,16 @@ removeSharedPool: aDictionary
 	"first see if it is declared in a superclass in which case we can remove it."
 	(self selectSuperclasses: [:class | class sharedPools includes: aDictionary]) isEmpty
 		ifFalse: [sharedPools remove: aDictionary.
-				sharedPools isEmpty ifTrue: [sharedPools _ nil].
+				sharedPools isEmpty ifTrue: [sharedPools := nil].
 				^self]. 
 
 	"second get all the subclasses that reference aDictionary through me rather than a 
 	superclass that is one of my subclasses."
 
-	workingSet _ self subclasses asOrderedCollection.
-	satisfiedSet _ Set new.
+	workingSet := self subclasses asOrderedCollection.
+	satisfiedSet := Set new.
 	[workingSet isEmpty] whileFalse:
-		[aSubclass _ workingSet removeFirst.
+		[aSubclass := workingSet removeFirst.
 		(aSubclass sharedPools includes: aDictionary)
 			ifFalse: 
 				[satisfiedSet add: aSubclass.
@@ -38,4 +38,4 @@ removeSharedPool: aDictionary
 								, ' is still used in code of class '
 								, sub name]]].
 	sharedPools remove: aDictionary.
-	sharedPools isEmpty ifTrue: [sharedPools _ nil]
+	sharedPools isEmpty ifTrue: [sharedPools := nil]

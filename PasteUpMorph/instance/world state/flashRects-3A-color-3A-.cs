@@ -3,13 +3,13 @@ flashRects: rectangleList color: aColor
 	"Details: Uses two reverses so that the display is restored to its original state. This is necessary when in deferred update mode."
 
 	| blt screenRect |
-	blt _ (BitBlt current toForm: Display)
+	blt := (BitBlt current toForm: Display)
 		sourceForm: nil;
 		sourceOrigin: 0@0;
 		clipRect: self viewBox;
 		combinationRule: Form reverse.
 	rectangleList do: [:r |
-		screenRect _ r translateBy: self viewBox origin.
+		screenRect := r translateBy: self viewBox origin.
 		blt destRect: screenRect; copyBits.
 		Display forceToScreen: screenRect; forceDisplayUpdate.
 		(Delay forMilliseconds: 15) wait.

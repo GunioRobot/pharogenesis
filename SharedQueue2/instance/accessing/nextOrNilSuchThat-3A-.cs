@@ -4,7 +4,7 @@ nextOrNilSuchThat: aBlock
 
 	| index |
 	^monitor critical: [
-		index _ items findFirst: aBlock.
+		index := items findFirst: aBlock.
 		index = 0 ifTrue: [
 			nil ]
 		ifFalse: [

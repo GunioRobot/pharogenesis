@@ -1,19 +1,20 @@
-readEFontBDFFromFile: fileName name: aString rangeFrom: startRange to: endRange
-
+readEFontBDFFromFile: fileName name: aString rangeFrom: startRange to: endRange 
 	| fontReader stream |
-	fontReader _ EFontBDFFontReader readOnlyFileNamed: fileName.
-	stream _ ReadStream on: (fontReader readFrom: startRange to: endRange).
-	xTable _ stream next.
-	glyphs _ stream next.
-	minAscii _ stream next.
-	maxAscii _ stream next.
-	maxWidth _ stream next.
-	ascent _ stream next.
-	descent _ stream next.
-	pointSize _ stream next.
-	name _ aString.
-	type _ 0. "no one see this"
-	superscript _ ascent - descent // 3.	
-	subscript _ descent - ascent // 3.	
-	emphasis _ 0.
-	self reset.
+	fontReader := EFontBDFFontReader readOnlyFileNamed: fileName.
+	stream := (fontReader 
+		readFrom: startRange
+		to: endRange) readStream.
+	xTable := stream next.
+	glyphs := stream next.
+	minAscii := stream next.
+	maxAscii := stream next.
+	maxWidth := stream next.
+	ascent := stream next.
+	descent := stream next.
+	pointSize := stream next.
+	name := aString.
+	type := 0.	"no one see this"
+	superscript := (ascent - descent) // 3.
+	subscript := (descent - ascent) // 3.
+	emphasis := 0.
+	self reset

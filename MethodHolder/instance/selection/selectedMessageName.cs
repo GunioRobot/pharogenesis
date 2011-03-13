@@ -1,2 +1,0 @@
-selectedMessageName
-	^ methodSelector

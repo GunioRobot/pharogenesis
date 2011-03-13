@@ -6,11 +6,11 @@ httpFileIn: url
 	"	HTTPSocket httpFileIn: 'jumbo/tedk/sample.etoy'	 "
 
 	| doc eToyHolder |
-	doc _ self httpGet: url accept: 'application/octet-stream'.
+	doc := self httpGet: url accept: 'application/octet-stream'.
 	doc isString ifTrue:
 			[self inform: 'Cannot seem to contact the web site'].
 	doc reset.
-	eToyHolder _ doc fileInObjectAndCode.
+	eToyHolder := doc fileInObjectAndCode.
 
 	eToyHolder ifNotNil: [eToyHolder open].
 	"Later may want to return it, instead of open it"

@@ -1,5 +1,5 @@
 name: string key: object code: byte
 	"Only used for initting std variables, nil, true, false, self, etc."
-	self name: string.
-	self key: object.
-	self code: byte
+	name := string.
+	key := object.
+	code := byte

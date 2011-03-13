@@ -1,2 +1,2 @@
 directory: anObject
-	directory _ anObject
+	directory := anObject

@@ -1,1 +1,0 @@
-EToyMultiChatMorph class instanceVariableNames: ''

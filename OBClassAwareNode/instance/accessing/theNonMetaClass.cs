@@ -1,2 +1,0 @@
-theNonMetaClass
-	^ self theClass theNonMetaClass

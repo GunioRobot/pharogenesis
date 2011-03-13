@@ -1,2 +1,2 @@
 exclusions: aCollection
-	exclusions _ aCollection
+	exclusions := aCollection

@@ -1,3 +1,0 @@
-fromSystemClipboard: aString
-
-	^ aString macToSqueak.

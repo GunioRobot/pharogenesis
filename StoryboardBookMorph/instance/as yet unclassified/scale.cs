@@ -1,3 +1,0 @@
-scale
-
-	^currentPage scale

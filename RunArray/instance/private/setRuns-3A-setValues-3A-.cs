@@ -1,4 +1,4 @@
 setRuns: newRuns setValues: newValues
-	lastIndex _ nil.  "flush access cache"
-	runs _ newRuns asArray.
-	values _ newValues asArray.
+	lastIndex := nil.  "flush access cache"
+	runs := newRuns asArray.
+	values := newValues asArray.

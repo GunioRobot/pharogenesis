@@ -1,0 +1,3 @@
+visitRemoteTempVectorNode: aRemoteTempVectorNode
+	theBlock value: aRemoteTempVectorNode.
+	^super visitRemoteTempVectorNode: aRemoteTempVectorNode

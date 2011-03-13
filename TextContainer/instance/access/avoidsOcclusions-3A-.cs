@@ -1,3 +1,3 @@
 avoidsOcclusions: aBoolean
-	avoidsOcclusions _ aBoolean.
+	avoidsOcclusions := aBoolean.
 	self releaseCachedState

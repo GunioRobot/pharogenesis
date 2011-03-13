@@ -1,2 +1,0 @@
-isShadowDrawing
-	^shadowColor notNil

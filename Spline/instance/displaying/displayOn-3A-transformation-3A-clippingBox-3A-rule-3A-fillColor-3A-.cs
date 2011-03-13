@@ -2,8 +2,8 @@ displayOn: aDisplayMedium transformation: aTransformation clippingBox: clipRect 
 	"Get the scaled and translated path of newKnots."
 
 	| newKnots newSpline |
-	newKnots _ aTransformation applyTo: self.
-	newSpline _ Spline new.
+	newKnots := aTransformation applyTo: self.
+	newSpline := Spline new.
 	newKnots do: [:knot | newSpline add: knot].
 	newSpline form: self form.
 	newSpline

@@ -11,7 +11,7 @@ fixupButtons
 		at: #toss:with: put: #toss:with:evt:;
 		at: #eyedropper:action:cursor: put: #eyedropper:action:cursor:evt:;
 		at: #clear:with: put: #clear:with:evt:.
-	answer := WriteStream on: String new.
+	answer := String new writeStream.
 	self allMorphsDo: 
 			[:each | 
 			(each isKindOf: ThreePhaseButtonMorph) 

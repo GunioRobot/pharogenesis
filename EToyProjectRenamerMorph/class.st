@@ -1,1 +1,0 @@
-EToyProjectRenamerMorph class instanceVariableNames: ''

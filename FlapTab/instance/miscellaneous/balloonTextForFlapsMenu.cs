@@ -2,7 +2,7 @@ balloonTextForFlapsMenu
 	"Answer the balloon text to show on a menu item in the flaps menu that governs the visibility of the receiver in the current project"
 
 	| id |
-	id _ self flapID.
+	id := self flapID.
 	#(
 	('Squeak'		'Has a few generally-useful controls; it is also a place where you can "park" objects')
 	('Tools'			'A quick way to get browsers, change sorters, file lists, etc.')

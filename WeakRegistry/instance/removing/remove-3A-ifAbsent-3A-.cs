@@ -1,10 +1,10 @@
 remove: oldObject ifAbsent: exceptionBlock
 	"Remove oldObject as one of the receiver's elements."
 	| removedObject |
-	oldObject isNil ifTrue:[^oldObject].
+	oldObject ifNil: [^oldObject].
 	self protected:[
-		removedObject := valueDictionary removeKey: oldObject ifAbsent:[nil].
+		removedObject := valueDictionary removeKey: oldObject ifAbsent: [nil].
 	].
-	^removedObject isNil
-		ifTrue:[exceptionBlock value]
-		ifFalse:[removedObject].
+	^removedObject
+		ifNil: [exceptionBlock value]
+		ifNotNil: [removedObject].

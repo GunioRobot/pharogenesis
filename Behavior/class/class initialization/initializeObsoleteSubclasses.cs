@@ -1,2 +1,2 @@
 initializeObsoleteSubclasses
-	ObsoleteSubclasses _ WeakKeyToCollectionDictionary new.
+	ObsoleteSubclasses := WeakKeyToCollectionDictionary new.

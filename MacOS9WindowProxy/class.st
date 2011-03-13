@@ -1,0 +1,1 @@
+MacOS9WindowProxy class instanceVariableNames: ''

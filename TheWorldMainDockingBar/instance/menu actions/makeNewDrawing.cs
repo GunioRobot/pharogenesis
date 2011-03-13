@@ -1,2 +1,0 @@
-makeNewDrawing
-	self doNewPainting

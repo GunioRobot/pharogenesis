@@ -1,2 +1,0 @@
-currentSound: aSound
-	currentSound := aSound

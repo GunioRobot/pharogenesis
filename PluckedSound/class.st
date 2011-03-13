@@ -1,1 +1,0 @@
-PluckedSound class instanceVariableNames: ''

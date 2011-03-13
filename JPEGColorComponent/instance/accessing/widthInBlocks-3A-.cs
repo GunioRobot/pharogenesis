@@ -1,3 +1,2 @@
-widthInBlocks: anInteger
-
-	widthInBlocks _ anInteger
+widthInBlocks: anInteger 
+	widthInBlocks := anInteger

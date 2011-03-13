@@ -1,3 +1,4 @@
 hour
-
-	^ self sign hours
+ 
+ 	^ self sign hours
+ 

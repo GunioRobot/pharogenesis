@@ -1,4 +1,4 @@
 formsFromFileNamed: fileName 
 	| stream |
-	stream _ FileStream readOnlyFileNamed: fileName.
+	stream := FileStream readOnlyFileNamed: fileName.
 	^ self formsFromStream: stream

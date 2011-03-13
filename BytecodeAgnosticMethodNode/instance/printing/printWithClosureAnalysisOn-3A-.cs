@@ -1,0 +1,3 @@
+printWithClosureAnalysisOn: aStream
+	self ensureClosureAnalysisDone.
+	super printWithClosureAnalysisOn: aStream

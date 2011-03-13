@@ -3,21 +3,21 @@ position: updateStrm atVersion: version
 
 	| char foundIt where data |
 	updateStrm reset; ascii.
-	foundIt _ false.
-	[char _ updateStrm next.
+	foundIt := false.
+	[char := updateStrm next.
 	 updateStrm atEnd] whileFalse: [
 		(char == Character cr or: [char == Character lf]) ifTrue: [
 			updateStrm peek == $# ifTrue: [
 				foundIt ifTrue: ["Next section"
-					where _ updateStrm position.
-					data _ updateStrm upTo: (255 asCharacter).
+					where := updateStrm position.
+					data := updateStrm upTo: (255 asCharacter).
 					updateStrm position: where.
 					^ data].	"won't be found -- copy all the way to the end"
 				updateStrm next.
 				(updateStrm nextMatchAll: version) ifTrue: [
 					(updateStrm atEnd or: [(updateStrm peek = Character cr) | 
 						(updateStrm peek = Character lf)]) ifTrue: [
-							foundIt _ true
+							foundIt := true
 					]]]]].
 	foundIt ifTrue: [
 		updateStrm setToEnd.

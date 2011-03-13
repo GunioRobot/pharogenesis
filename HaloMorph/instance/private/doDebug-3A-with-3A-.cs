@@ -8,6 +8,6 @@ doDebug: evt with: menuHandle
 		[self delete.
 		^ innerTarget inspectInMorphic: evt].
 
-	menu _ innerTarget buildDebugMenu: evt hand.
+	menu := innerTarget buildDebugMenu: evt hand.
 	menu addTitle: (innerTarget externalName truncateWithElipsisTo: 40).
 	menu popUpEvent: evt in: self world

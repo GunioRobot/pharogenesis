@@ -6,5 +6,5 @@ example
 To: "not listed"
 Subject: this is a test
 
-Hello from Squeak!
+Hello from Pharo!
 '	usingServer: 'smtp.concentric.net'

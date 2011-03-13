@@ -3,9 +3,9 @@ doRot: evt with: rotHandle
 
 	| degrees |
 	evt hand obtainHalo: self.
-	degrees _ (evt cursorPoint - (target pointInWorld: target referencePosition)) degrees.
-	degrees _ degrees - angleOffset degrees.
-	degrees _ degrees detentBy: 10.0 atMultiplesOf: 90.0 snap: false.
+	degrees := (evt cursorPoint - (target pointInWorld: target referencePosition)) degrees.
+	degrees := degrees - angleOffset degrees.
+	degrees := degrees detentBy: 10.0 atMultiplesOf: 90.0 snap: false.
 	degrees = 0.0
 		ifTrue: [self setColor: Color lightBlue toHandle: rotHandle]
 		ifFalse: [self setColor: Color blue toHandle: rotHandle].
@@ -19,7 +19,7 @@ doRot: evt with: rotHandle
 	target rotationDegrees: degrees.
 
 	rotHandle position: evt cursorPoint - (rotHandle extent // 2).
-	(self valueOfProperty: #commandInProgress) ifNotNilDo:
+	(self valueOfProperty: #commandInProgress) ifNotNil:
 		[:cmd | "Update the final rotation"
 		cmd redoTarget: target renderedMorph selector: #heading: argument: degrees].
 	self layoutChanged

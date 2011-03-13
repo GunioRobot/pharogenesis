@@ -14,22 +14,22 @@ upToAll: aStringOrByteArray
 	A totally non greedy variant would search on every loop."
 
 	| index sz result lastRecentlyRead searchedSoFar |
-	sz _ aStringOrByteArray size.
-	searchedSoFar _ 0.
-	lastRecentlyRead _ 0.
-	index _ 0.
+	sz := aStringOrByteArray size.
+	searchedSoFar := 0.
+	lastRecentlyRead := 0.
+	index := 0.
 	[self atEnd not and: [
 		((lastRecentlyRead = 0 and: [self isInBufferEmpty not]) or: [self inBufferSize > 100000]) ifTrue: [
 			"Data begins at lastRead + 1, we add searchedSoFar as offset and backs up sz - 1
 			so that we can catch any borderline hits."
-			index _ inBuffer indexOfSubCollection: aStringOrByteArray
+			index := inBuffer indexOfSubCollection: aStringOrByteArray
 						startingAt: lastRead + searchedSoFar - sz + 2.
-			searchedSoFar _ self inBufferSize.
+			searchedSoFar := self inBufferSize.
 			(index > 0 and: [(index + sz) > inNextToWrite]) ifTrue: [
 				"Oops, hit partially or completely in dead buffer area.
 				This is probably due to old data, so we ignore it.
 				No point in cleaning the dead area to avoid hits - it will still search it."
-				index _ 0]].
+				index := 0]].
 		index = 0]]
 				whileTrue: [
 					recentlyRead = 0
@@ -37,10 +37,10 @@ upToAll: aStringOrByteArray
 							self receiveData]
 						ifFalse: [
 							self receiveAvailableData].
-					lastRecentlyRead _ recentlyRead].
+					lastRecentlyRead := recentlyRead].
 	index > 0
 		ifTrue: ["found it"
-			result _ self nextInBuffer: index - lastRead - 1.
+			result := self nextInBuffer: index - lastRead - 1.
 			self skip: sz.
 			^ result]
 		ifFalse: ["atEnd"

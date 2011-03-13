@@ -1,2 +1,0 @@
-hasTraitComposition
-	^self traitCompositionString ~= '{}'

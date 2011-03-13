@@ -20,7 +20,6 @@ customHaloSpecs
 
 	(addRecolorHandle:		left			center			(green muchLighter lighter)		'Halo-Recolor')
 
-	(addPaintBgdHandle:		right		center			(lightGray)						'Halo-Paint')
 	(addRepaintHandle:		right		center			(lightGray)						'Halo-Paint')
 	(addFontSizeHandle:		leftCenter	bottom			(lightGreen)						'Halo-FontSize')
 	(addFontStyleHandle:		center		bottom			(lightRed)						'Halo-FontStyle')
@@ -28,9 +27,6 @@ customHaloSpecs
 	(addRotateHandle:		left			bottom			(blue)							'Halo-Rot')
 
 	(addDebugHandle:		right		topCenter		(blue	veryMuchLighter)		'Halo-Debug')
-	(addPoohHandle:			right		center			(white)							'Halo-Pooh')
-
-
 			)
 
 	"  Other useful handles...

@@ -1,12 +1,13 @@
 implement: aMessage inClass: aClass
 	
-	| category |
-	category := self askForCategoryIn: aClass default: 'as yet unclassified'.
-	aClass compile: aMessage createStubMethod classified: category.
+	aClass
+		compile: aMessage createStubMethod
+		classified: (self askForCategoryIn: aClass default: 'as yet unclassified').
 	self setContentsToForceRefetch.
 	self selectedContext privRefreshWith: (aClass lookupSelector: aMessage selector).
-	aMessage arguments doWithIndex: [:arg :i |
-		self selectedContext at: i put: arg.
-	].
+	self selectedContext method numArgs > 0 ifTrue:
+		[(self selectedContext tempAt: 1) arguments withIndexDo:
+			[:arg :index|
+			self selectedContext tempAt: index put: arg]].
 	self resetContext: self selectedContext.
 	self debug.

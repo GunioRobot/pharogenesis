@@ -2,7 +2,7 @@ openBlankProjectNamed: projName
 
 	| proj projViewer |
 
-	proj _ Project newMorphicOn: nil.
+	proj := Project newMorphicOn: nil.
 	proj changeSet name: projName.
 	proj world addMorph: (
 		TextMorph new 
@@ -11,7 +11,7 @@ openBlankProjectNamed: projName
 			contents: 'Welcome to a new project - ',projName
 	).
 	proj setParent: self current.
-	projViewer _ (CurrentProject findProjectView: projName) ifNil: [^proj].
+	projViewer := (CurrentProject findProjectView: projName) ifNil: [^proj].
 	(projViewer owner isSystemWindow) ifTrue: [
 			projViewer owner model: proj].
 	^ projViewer project: proj

@@ -3,10 +3,7 @@ doDeferredUpdatingFor: aWorld
 	| properDisplay |
 	PasteUpMorph disableDeferredUpdates ifTrue: [^ false].
 	(Display deferUpdates: true) ifNil: [^ false].  "deferred updates not supported"
-	remoteServer ifNotNil:[
-		self assuredCanvas.
-		^true].
-	properDisplay _ canvas notNil and: [canvas form == Display].
+	properDisplay := canvas notNil and: [canvas form == Display].
 	aWorld == World ifTrue: [  "this world fills the entire Display"
 		properDisplay ifFalse: [
 			aWorld viewBox: Display boundingBox.    "do first since it may clear canvas"

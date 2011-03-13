@@ -1,3 +1,3 @@
 argumentGetter: aBlock
 
-	argumentGetter _ aBlock
+	argumentGetter := aBlock

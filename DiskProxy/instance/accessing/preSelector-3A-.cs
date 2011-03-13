@@ -1,3 +1,3 @@
 preSelector: aSelector
 
-	preSelector _ aSelector
+	preSelector := aSelector

@@ -5,8 +5,8 @@ take: kk
 	| num denom |
 	kk < 0 ifTrue: [^ 0].
 	kk > self ifTrue: [^ 0].
-	num _ 1.
-	self to: (kk max: self-kk) + 1 by: -1 do: [:factor | num _ num * factor].
-	denom _ 1.
-	1 to: (kk min: self-kk) do: [:factor | denom _ denom * factor].
+	num := 1.
+	self to: (kk max: self-kk) + 1 by: -1 do: [:factor | num := num * factor].
+	denom := 1.
+	1 to: (kk min: self-kk) do: [:factor | denom := denom * factor].
 	^ num // denom

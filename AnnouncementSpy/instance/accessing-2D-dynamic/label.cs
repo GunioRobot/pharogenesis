@@ -1,0 +1,2 @@
+label
+	^ self announcer printString

@@ -1,0 +1,1 @@
+NepaleseEnvironment class instanceVariableNames: ''

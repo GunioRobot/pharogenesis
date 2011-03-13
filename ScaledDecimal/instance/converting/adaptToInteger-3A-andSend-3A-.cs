@@ -1,5 +1,4 @@
-adaptToInteger: receiver andSend: arithmeticOpSelector 
-	"Convert receiver to a ScaledDecimal and do the arithmetic. 
-	receiver arithmeticOpSelector self."
-	^ (receiver asScaledDecimal: 0)
-		perform: arithmeticOpSelector with: self
+adaptToInteger: rcvr andSend: selector
+	"If I am involved in arithmetic with an Integer, convert it to a ScaledDecimal."
+
+	^(rcvr asScaledDecimal: scale) perform: selector with: self

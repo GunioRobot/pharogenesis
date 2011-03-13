@@ -2,7 +2,7 @@ example
 	"MenuMorph example"
 
 	| menu |
-	menu _ MenuMorph new.
+	menu := MenuMorph new.
 	menu addStayUpItem.
 	menu add: 'apples' action: #apples.
 	menu add: 'oranges' action: #oranges.

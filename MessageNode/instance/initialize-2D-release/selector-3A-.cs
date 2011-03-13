@@ -1,2 +1,2 @@
 selector: sel
-	selector _ sel
+	selector := sel

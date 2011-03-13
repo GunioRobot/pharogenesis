@@ -1,3 +1,0 @@
-setNewContentsFrom: stringOrNumberOrNil
-
-	self acceptValue: stringOrNumberOrNil

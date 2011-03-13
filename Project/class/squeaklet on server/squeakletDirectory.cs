@@ -1,7 +1,7 @@
 squeakletDirectory
 
 	| squeakletDirectoryName |
-	squeakletDirectoryName _ 'Squeaklets'.
+	squeakletDirectoryName := 'Squeaklets'.
 	(FileDirectory default directoryExists: squeakletDirectoryName) ifFalse: [
 		FileDirectory default createDirectory: squeakletDirectoryName
 	].

@@ -3,10 +3,10 @@ setStream: aStream reading: isReading
 
 	super setStream: aStream reading: isReading.
 	"isReading ifFalse: [  when we are sure"
-	references _ IdentityDictionary new: 4096 * 5.
+	references := IdentityDictionary new: 4096 * 5.
 	isReading ifTrue: [
-		objects _ IdentityDictionary new: 4096 * 5.
-		skipping _ IdentitySet new.
-		insideASegment _ false.
-		fwdRefEnds _ IdentityDictionary new].
-	blockers ifNil: [blockers _ IdentityDictionary new].	"keep blockers we just passed in"
+		objects := IdentityDictionary new: 4096 * 5.
+		skipping := IdentitySet new.
+		insideASegment := false.
+		fwdRefEnds := IdentityDictionary new].
+	blockers ifNil: [blockers := IdentityDictionary new].	"keep blockers we just passed in"

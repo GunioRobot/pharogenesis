@@ -1,2 +1,0 @@
-showAllViewers
-	self world showAllPlayers

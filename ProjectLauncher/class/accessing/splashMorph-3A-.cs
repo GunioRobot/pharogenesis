@@ -1,2 +1,2 @@
 splashMorph: aMorph
-	SplashMorph _ aMorph.
+	SplashMorph := aMorph.

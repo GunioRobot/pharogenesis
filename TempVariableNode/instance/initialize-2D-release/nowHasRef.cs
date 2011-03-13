@@ -1,2 +1,2 @@
 nowHasRef
-	hasRefs _ true
+	hasRefs := true

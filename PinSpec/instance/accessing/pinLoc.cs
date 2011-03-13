@@ -1,2 +1,0 @@
-pinLoc
-	^ pinLoc

@@ -1,5 +1,5 @@
 method: method pc: startpc
 
-	sender _ method. 
+	sender := method. 
 	"allows this class to stand alone as a method scanner"
-	pc _ startpc
+	pc := startpc

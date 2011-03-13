@@ -1,0 +1,3 @@
+directoryChangeBlock: aBlockOrNil
+
+	directoryChangeBlock := aBlockOrNil.

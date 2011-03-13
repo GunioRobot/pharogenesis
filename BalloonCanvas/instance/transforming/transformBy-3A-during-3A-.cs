@@ -1,7 +1,7 @@
 transformBy: aDisplayTransform during: aBlock
 	| myTransform result |
-	myTransform _ transform.
+	myTransform := transform.
 	self transformBy: aDisplayTransform.
-	result _ aBlock value: self.
-	transform _ myTransform.
+	result := aBlock value: self.
+	transform := myTransform.
 	^result

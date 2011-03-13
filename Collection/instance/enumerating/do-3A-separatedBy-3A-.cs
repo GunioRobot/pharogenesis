@@ -3,10 +3,10 @@ do: elementBlock separatedBy: separatorBlock
 	and evaluate the separatorBlock between."
 
 	| beforeFirst | 
-	beforeFirst _ true.
+	beforeFirst := true.
 	self do:
 		[:each |
 		beforeFirst
-			ifTrue: [beforeFirst _ false]
+			ifTrue: [beforeFirst := false]
 			ifFalse: [separatorBlock value].
 		elementBlock value: each]

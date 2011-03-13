@@ -2,14 +2,14 @@ asIdentifier: shouldBeCapitalized
 	"Return a legal identifier, with first character in upper case if shouldBeCapitalized is true, else lower case.  This will always return a legal identifier, even for an empty string"
 
 	| aString firstChar firstLetterPosition |
-	aString _ self select: [:el | el isAlphaNumeric].
-	firstLetterPosition _ aString findFirst: [:ch | ch isLetter].
-	aString _ firstLetterPosition == 0
+	aString := self select: [:el | el isAlphaNumeric].
+	firstLetterPosition := aString findFirst: [:ch | ch isLetter].
+	aString := firstLetterPosition == 0
 		ifFalse:
 			[aString copyFrom: firstLetterPosition to: aString size]
 		ifTrue:
 			['a', aString].
-	firstChar _ shouldBeCapitalized ifTrue: [aString first asUppercase] ifFalse: [aString first asLowercase].
+	firstChar := shouldBeCapitalized ifTrue: [aString first asUppercase] ifFalse: [aString first asLowercase].
 
 	^ firstChar asString, (aString copyFrom: 2 to: aString size)
 "

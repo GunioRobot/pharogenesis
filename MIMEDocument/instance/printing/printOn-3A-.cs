@@ -1,10 +1,10 @@
 printOn: aStream
 	aStream nextPutAll: self class name;
 		nextPutAll: ' (';
-		nextPutAll: self contentType;
+		nextPutAll: self mimeType asString;
 		nextPutAll: ', '.
-	self content
+	contents
 		ifNotNil: [aStream
-			nextPutAll: self content size printString;
+			nextPutAll: self contents size printString;
 			nextPutAll: ' bytes)']
 		ifNil: [aStream nextPutAll: 'unknown size)'].

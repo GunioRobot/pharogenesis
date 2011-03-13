@@ -1,5 +1,5 @@
 testIdentity
-	"self run:#testIdentity"
+	"self run:#testIdentity" 
 	"self debug:#testIdentity"
 	| bag identityBag aString anOtherString |
 	

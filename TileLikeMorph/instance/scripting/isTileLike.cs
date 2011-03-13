@@ -1,2 +1,0 @@
-isTileLike
-	^true

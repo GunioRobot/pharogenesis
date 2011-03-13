@@ -1,2 +1,0 @@
-firstPage
-	self sendMessageToCostume: #firstPage

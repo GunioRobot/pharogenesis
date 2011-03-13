@@ -1,7 +1,7 @@
 contents
 
 	^( self log
-		inject: (WriteStream on: (String new: 80))
+		inject: (String new: 80) writeStream
 		into: 
 			[:result :item |
 			result 

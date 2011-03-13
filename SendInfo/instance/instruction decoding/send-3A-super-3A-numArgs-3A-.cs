@@ -7,11 +7,11 @@ send: selector super: superFlag numArgs: numArgs
 	| stackTop |
 	selector == #blockCopy:
 		ifTrue: ["self assert: [numArgs = 1]."
-			isStartOfBlock _ true.
-			numBlockArgs _ self pop.
+			isStartOfBlock := true.
+			numBlockArgs := self pop.
 			^ self].
 	self pop: numArgs.
-	stackTop _ self pop.
+	stackTop := self pop.
 	superFlag
 		ifTrue: [self addSuperSentSelector: selector]
 		ifFalse: [stackTop == #self

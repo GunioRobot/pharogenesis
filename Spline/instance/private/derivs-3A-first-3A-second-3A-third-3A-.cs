@@ -3,13 +3,13 @@ derivs: a first: point1 second: point2 third: point3
 	the Points in this Path (coefficients at: 1 and coefficients at: 5)."
 
 	| l v anArray |
-	l _ a size.
+	l := a size.
 	l < 2 ifTrue: [^self].
 	l > 2
 	  ifTrue:
-		[v _ Array new: l.
+		[v := Array new: l.
 		 v  at:  1 put: 4.0.
-		 anArray _ Array new: l.
+		 anArray := Array new: l.
 		 anArray  at:  1 put: (6.0 * ((a  at:  1) - ((a  at:  2) * 2.0) + (a  at:  3))).
 		 2 to: l - 2 do:
 			[:i | 

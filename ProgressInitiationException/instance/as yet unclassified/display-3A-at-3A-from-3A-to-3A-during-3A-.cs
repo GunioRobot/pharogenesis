@@ -1,8 +1,8 @@
 display: argString at: argPoint from: argMinVal to: argMaxVal during: argWorkBlock
 
-	progressTitle _ argString.
-	aPoint _ argPoint.
-	minVal _ argMinVal.
-	maxVal _ argMaxVal.
-	workBlock _ argWorkBlock.
+	progressTitle := argString.
+	aPoint := argPoint.
+	minVal := argMinVal.
+	maxVal := argMaxVal.
+	workBlock := argWorkBlock.
 	^self signal

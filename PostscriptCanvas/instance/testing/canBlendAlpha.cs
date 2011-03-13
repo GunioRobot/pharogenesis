@@ -1,2 +1,0 @@
-canBlendAlpha
-	^false

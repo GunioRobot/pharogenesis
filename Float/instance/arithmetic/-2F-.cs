@@ -4,5 +4,5 @@
 	whatIsAPrimitive."
 
 	<primitive: 50>
-	aNumber isZero ifTrue: [^(ZeroDivide dividend: self) signal].
-	^ aNumber adaptToFloat: self andSend: #/
+	aNumber = 0.0 ifTrue: [ ZeroDivide signalWithDividend: self].
+	^aNumber adaptToFloat: self andSend: #/

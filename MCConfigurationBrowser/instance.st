@@ -3,4 +3,4 @@ MCTool
 	instanceVariableNames: 'configuration dependencyIndex repositoryIndex'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'MonticelloConfigurations'
+	category: 'MonticelloGUI'

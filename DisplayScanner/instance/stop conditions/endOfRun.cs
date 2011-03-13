@@ -3,9 +3,9 @@ endOfRun
 	a change in the style (run code) to be associated with the string or the 
 	end of this line has been reached."
 	| runLength |
-	lastIndex = line last ifTrue: [^true].
-	runX _ destX.
-	runLength _ text runLengthFor: (lastIndex _ lastIndex + 1).
-	runStopIndex _ lastIndex + (runLength - 1) min: line last.
+	lastIndex = line last ifTrue: [ ^ true ].
+	runX := destX.
+	runLength := text runLengthFor: (lastIndex := lastIndex + 1).
+	runStopIndex := lastIndex + (runLength - 1) min: line last.
 	self setStopConditions.
 	^ false

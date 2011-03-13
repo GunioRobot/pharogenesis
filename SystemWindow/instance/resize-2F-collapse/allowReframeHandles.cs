@@ -1,3 +1,0 @@
-allowReframeHandles
-
-	^ allowReframeHandles

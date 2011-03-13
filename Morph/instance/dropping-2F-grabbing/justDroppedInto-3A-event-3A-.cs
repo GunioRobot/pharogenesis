@@ -1,17 +1,17 @@
 justDroppedInto: aMorph event: anEvent
 	"This message is sent to a dropped morph after it has been dropped on -- and been accepted by -- a drop-sensitive morph"
 
-	| aWindow partsBinCase cmd aStack |
+	| aWindow partsBinCase cmd |
 	(self formerOwner notNil and: [self formerOwner ~~ aMorph])
 		ifTrue: [self removeHalo].
 	self formerOwner: nil.
 	self formerPosition: nil.
-	cmd _ self valueOfProperty: #undoGrabCommand.
+	cmd := self valueOfProperty: #undoGrabCommand.
 	cmd ifNotNil:[aMorph rememberCommand: cmd.
 				self removeProperty: #undoGrabCommand].
-	(partsBinCase _ aMorph isPartsBin) ifFalse:
+	(partsBinCase := aMorph isPartsBin) ifFalse:
 		[self isPartsDonor: false].
-	(aWindow _ aMorph ownerThatIsA: SystemWindow) ifNotNil:
+	(aWindow := aMorph ownerThatIsA: SystemWindow) ifNotNil:
 		[aWindow isActive ifFalse:
 			[aWindow activate]].
 	(self isInWorld and: [partsBinCase not]) ifTrue:
@@ -24,6 +24,3 @@ justDroppedInto: aMorph event: anEvent
 			[self goHome].
 		self removeProperty: #beFullyVisibleAfterDrop].
 
-	(self holdsSeparateDataForEachInstance and: [(aStack _ self stack) notNil])
-		ifTrue:
-			[aStack reassessBackgroundShape]

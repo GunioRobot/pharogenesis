@@ -7,6 +7,6 @@ getFileNamed: remoteFileName
 		do: [:ex |
 			self closeDataSocket.
 			ex pass].
-	data _ self getData.
+	data := self getData.
 	self checkResponse.
 	^data

@@ -11,7 +11,7 @@ preserveDetails
 				ifTrue:
 					[self setProperty: #priorGraphic toValue: submorphs first form]
 				ifFalse:
-					[thickness _ (self orientation == #vertical)
+					[thickness := (self orientation == #vertical)
 						ifTrue:	[self width]
 						ifFalse:	[self height].
 					self setProperty: #priorThickness toValue: thickness]]

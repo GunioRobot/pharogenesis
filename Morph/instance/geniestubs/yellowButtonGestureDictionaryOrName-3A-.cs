@@ -1,1 +1,0 @@
-yellowButtonGestureDictionaryOrName: aSymbolOrDictionary

@@ -1,3 +1,0 @@
-doChatsInternalToBadge
-
-	^true

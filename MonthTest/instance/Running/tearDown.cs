@@ -1,4 +1,4 @@
 tearDown
 
 	super tearDown.
-	month _ nil.
+	month := nil.

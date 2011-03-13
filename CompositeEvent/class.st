@@ -1,1 +1,0 @@
-CompositeEvent class instanceVariableNames: ''

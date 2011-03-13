@@ -5,5 +5,5 @@ adjustOutBuffer: bytesToWrite
 	larger we double that instead. Never shrinks."
 
 	(outBuffer size - outNextToWrite - bytesToWrite) < 1024 ifTrue: [
-		outBuffer _ (self streamBuffer: ((outBuffer size max: bytesToWrite) * 2))
+		outBuffer := (self streamBuffer: ((outBuffer size max: bytesToWrite) * 2))
 						replaceFrom: 1 to: outBuffer size with: outBuffer startingAt: 1]

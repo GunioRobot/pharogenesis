@@ -1,6 +1,6 @@
 class: aClass method: aMethod
 
-	class _ aClass.
-	method _ aMethod.
-	tally _ 0.
-	receivers _ Array new: 0
+	class := aClass.
+	method := aMethod.
+	tally := 0.
+	receivers := Array new: 0

@@ -4,8 +4,8 @@ removeUninstantiatedSubclassesSilently
 
 	| candidatesForRemoval  oldFree |
 
-	oldFree _ self environment garbageCollect.
-	candidatesForRemoval _
+	oldFree := self environment garbageCollect.
+	candidatesForRemoval :=
 		self subclasses select: [:c |
 			(c instanceCount = 0) and: [c subclasses size = 0]].
 	candidatesForRemoval do: [:c | c removeFromSystem].

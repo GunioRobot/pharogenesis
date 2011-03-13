@@ -5,10 +5,10 @@ evaluateSelection
 
 	(model respondsTo: #doItReceiver) 
 		ifTrue: [FakeClassPool adopt: model selectedClass.  "Include model pool vars if any"
-				rcvr _ model doItReceiver.
-				ctxt _ model doItContext]
-		ifFalse: [rcvr _ ctxt _ nil].
-	result _ [
+				rcvr := model doItReceiver.
+				ctxt := model doItContext]
+		ifFalse: [rcvr := ctxt := nil].
+	result := [
 		rcvr class evaluatorClass new 
 			evaluate: self selectionAsStream
 			in: ctxt

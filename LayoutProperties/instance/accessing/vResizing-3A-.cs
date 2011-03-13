@@ -1,2 +1,2 @@
 vResizing: aSymbol
-	vResizing _ aSymbol
+	vResizing := aSymbol

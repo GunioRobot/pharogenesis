@@ -1,3 +1,2 @@
-id: anObject
-
-	id _ anObject
+id: anObject 
+	id := anObject

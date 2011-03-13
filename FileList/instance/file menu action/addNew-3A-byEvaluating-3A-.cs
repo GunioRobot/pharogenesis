@@ -8,7 +8,7 @@ addNew: aString byEvaluating: aBlock
 	(response := UIManager default
 						request: ('New {1} Name?' translated format: {aString translated})
 						initialAnswer: ('{1}Name' translated format: {aString translated}))
-		isEmpty ifTrue: [^ self].
+		isEmptyOrNil ifTrue: [^ self].
 	newName := response asFileName.
 	Cursor wait showWhile: [
 		aBlock value: newName].

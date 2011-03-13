@@ -2,8 +2,8 @@ drawHighResolutionOn: aCanvas in: aRectangle
 
 	| r finalClipRect scale sourceOrigin sourceExtent sourceRect biggerSource biggerDestExtent interForm offsetInBigger |
 
-	r _ aRectangle translateBy: aCanvas origin.
-	finalClipRect _ r intersect: (aCanvas clipRect translateBy: aCanvas origin).
+	r := aRectangle translateBy: aCanvas origin.
+	finalClipRect := r intersect: (aCanvas clipRect translateBy: aCanvas origin).
 	self canBeEnlargedWithB3D ifTrue: [
 		(WarpBlt toForm: aCanvas form)
 			clipRect: finalClipRect;
@@ -15,15 +15,15 @@ drawHighResolutionOn: aCanvas in: aRectangle
 			toRect: r.
 		^self
 	].
-	scale _ aRectangle extent / originalForm extent.
-	sourceOrigin _ originalForm offset + (aCanvas clipRect origin - aRectangle origin / scale).
-	sourceExtent _ aCanvas clipRect extent / scale.
-	sourceRect _ sourceOrigin rounded extent: sourceExtent rounded.
-	biggerSource _ sourceRect expandBy: 1.
-	biggerDestExtent _ (biggerSource extent * scale) rounded.
-	offsetInBigger _ (sourceOrigin - biggerSource origin * scale) rounded.
+	scale := aRectangle extent / originalForm extent.
+	sourceOrigin := originalForm offset + (aCanvas clipRect origin - aRectangle origin / scale).
+	sourceExtent := aCanvas clipRect extent / scale.
+	sourceRect := sourceOrigin rounded extent: sourceExtent rounded.
+	biggerSource := sourceRect expandBy: 1.
+	biggerDestExtent := (biggerSource extent * scale) rounded.
+	offsetInBigger := (sourceOrigin - biggerSource origin * scale) rounded.
 
-	interForm _ Form extent: biggerDestExtent depth: aCanvas depth.
+	interForm := Form extent: biggerDestExtent depth: aCanvas depth.
 	(originalForm copy: biggerSource)
 		displayInterpolatedIn: interForm boundingBox
 		on: interForm.

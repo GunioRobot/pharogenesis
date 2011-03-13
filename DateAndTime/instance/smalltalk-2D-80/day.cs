@@ -1,3 +1,3 @@
 day
-
-	^ self dayOfYear
+ 
+ 	^ self dayOfYear

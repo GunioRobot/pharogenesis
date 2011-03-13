@@ -1,0 +1,2 @@
+windowClass
+	^windowClass

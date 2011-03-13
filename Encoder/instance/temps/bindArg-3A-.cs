@@ -3,5 +3,5 @@ bindArg: name
 	| node |
 	nTemps >= 15
 		ifTrue: [^self notify: 'Too many arguments'].
-	node _ self bindTemp: name.
+	node := self bindTemp: name.
 	^ node nowHasDef nowHasRef

@@ -1,1 +1,0 @@
-KedamaMorph class instanceVariableNames: ''

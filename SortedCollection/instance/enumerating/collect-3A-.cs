@@ -5,6 +5,6 @@ collect: aBlock
 	of a SortedCollection."
 
 	| newCollection | 
-	newCollection _ OrderedCollection new: self size.
+	newCollection := OrderedCollection new: self size.
 	self do: [:each | newCollection addLast: (aBlock value: each)].
 	^ newCollection

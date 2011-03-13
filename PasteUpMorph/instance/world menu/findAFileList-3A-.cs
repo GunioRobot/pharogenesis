@@ -4,4 +4,4 @@ findAFileList: evt
 
 	self
 		findAWindowSatisfying: [:aWindow | aWindow model isKindOf: FileList]
-		orMakeOneUsing: [FileList2 prototypicalToolWindow]
+		orMakeOneUsing: [FileList prototypicalToolWindow]

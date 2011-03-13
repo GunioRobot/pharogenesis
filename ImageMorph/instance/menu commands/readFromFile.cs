@@ -1,7 +1,7 @@
 readFromFile
 	| fileName |
-	fileName _ FillInTheBlank
-		request: 'Please enter the image file name'
+	fileName := UIManager default
+		request: 'Please enter the image file name' translated
 		initialAnswer: 'fileName'.
-	fileName isEmpty ifTrue: [^ self].
+	fileName isEmptyOrNil ifTrue: [^ self].
 	self image: (Form fromFileNamed: fileName).

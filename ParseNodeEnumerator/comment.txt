@@ -1,0 +1,8 @@
+self superclass selectors do:
+	[:s|
+	self compile: (String streamContents:
+		[:str| | arg |
+		arg := 'a', (s allButFirst: 5) allButLast.
+		str nextPutAll: s, ' ', arg; crtab;
+			nextPutAll: 'theBlock value: '; nextPutAll: arg; nextPut: $.; crtab;
+			nextPutAll: '^super '; nextPutAll: s, ' ', arg])]

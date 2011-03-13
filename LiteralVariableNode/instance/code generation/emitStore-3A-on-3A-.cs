@@ -1,6 +1,6 @@
 emitStore: stack on: strm
-	splNode ifNil:[^super emitStore: stack on: strm].
-	splNode
+	writeNode ifNil:[^super emitStore: stack on: strm].
+	writeNode
 			emit: stack
 			args: 1
 			on: strm

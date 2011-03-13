@@ -1,1 +1,0 @@
-PianoKeyboardMorph class instanceVariableNames: ''

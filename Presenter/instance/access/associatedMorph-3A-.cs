@@ -1,2 +1,2 @@
 associatedMorph: aMorph
-	associatedMorph _ aMorph
+	associatedMorph := aMorph

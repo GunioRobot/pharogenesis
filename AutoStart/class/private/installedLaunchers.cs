@@ -1,4 +1,4 @@
 installedLaunchers
 	InstalledLaunchers ifNil: [
-		InstalledLaunchers _ OrderedCollection new].
+		InstalledLaunchers := OrderedCollection new].
 	^InstalledLaunchers

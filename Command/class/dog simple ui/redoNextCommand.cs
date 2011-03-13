@@ -1,3 +1,3 @@
 redoNextCommand
 	| w |
-	^(w _ self currentWorld) == nil ifFalse:[w commandHistory redoNextCommand]
+	^(w := self currentWorld) == nil ifFalse:[w commandHistory redoNextCommand]

@@ -1,2 +1,0 @@
-getListSelector
-	^ getListSelector

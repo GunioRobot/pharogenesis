@@ -1,3 +1,2 @@
-debugging: aBoolean
-
-	Debugging _ aBoolean
+debugging: aBoolean 
+	Debugging := aBoolean

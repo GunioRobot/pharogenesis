@@ -1,3 +1,0 @@
-deadZoneWidth
-
-	^8

@@ -1,4 +1,4 @@
-ClassTestCase
+TestCase
 	subclass: #SimpleSwitchMorphTest
 	instanceVariableNames: 'testSwitch'
 	classVariableNames: ''

@@ -1,7 +1,7 @@
 fontForName
 
 	| pickem |
-	pickem _ 3.
+	pickem := 3.
 
 	pickem = 1 ifTrue: [
 		^(((TextStyle named: #Helvetica) ifNil: [TextStyle default]) fontOfSize: 13) emphasized: 1.

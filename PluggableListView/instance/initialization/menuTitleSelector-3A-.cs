@@ -1,2 +1,0 @@
-menuTitleSelector: getMenuTitleSel
-	getMenuTitleSelector _ getMenuTitleSel

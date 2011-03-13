@@ -1,3 +1,0 @@
-loopEnd
-
-	^ loopEnd

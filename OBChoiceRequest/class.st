@@ -1,1 +1,0 @@
-OBChoiceRequest class instanceVariableNames: ''

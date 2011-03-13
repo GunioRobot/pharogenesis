@@ -1,4 +1,5 @@
 asMilliSeconds
-
-
-	^ ((seconds * NanosInSecond) + nanos) // (10 raisedToInteger: 6)
+ 
+ 
+ 	^ ((seconds * NanosInSecond) + nanos) // (10 raisedToInteger: 6)
+ 

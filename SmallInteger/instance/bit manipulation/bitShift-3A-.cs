@@ -8,4 +8,4 @@ bitShift: arg
 	self >= 0 ifTrue: [^ super bitShift: arg].
 	^ arg >= 0
 		ifTrue: [(self negated bitShift: arg) negated]
-		ifFalse: [(self bitInvert bitShift: arg) bitInvert]
+		ifFalse: [(self bitInvert bitShift: arg) bitInvert].

@@ -1,6 +1,6 @@
 updateAlpha: alpha
 	| sliderRect |
-	sliderRect _ (TransparentBox left + 10)@1 corner: (TransparentBox right - 9)@9.
+	sliderRect := (TransparentBox left + 10)@1 corner: (TransparentBox right - 9)@9.
 	originalForm fill: (sliderRect withRight: sliderRect left + (alpha*sliderRect width))
 				fillColor: Color lightGray.
 	originalForm fillWhite: (sliderRect withLeft: sliderRect left + (alpha*sliderRect width)).

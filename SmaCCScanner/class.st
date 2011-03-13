@@ -1,1 +1,0 @@
-SmaCCScanner class instanceVariableNames: 'keywordMap'

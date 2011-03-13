@@ -1,2 +1,0 @@
-newCustomEventsVocabulary
-	^UserCustomEventNameType new.

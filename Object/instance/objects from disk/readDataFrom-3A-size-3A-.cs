@@ -5,13 +5,13 @@ readDataFrom: aDataStream size: varsOnDisk
 	 Allow aDataStream to have fewer inst vars.  See SmartRefStream."
 	| cntInstVars cntIndexedVars |
 
-	cntInstVars _ self class instSize.
+	cntInstVars := self class instSize.
 	self class isVariable
-		ifTrue: [cntIndexedVars _ varsOnDisk - cntInstVars.
+		ifTrue: [cntIndexedVars := varsOnDisk - cntInstVars.
 				cntIndexedVars < 0 ifTrue: [
 					self error: 'Class has changed too much.  Define a convertxxx method']]
-		ifFalse: [cntIndexedVars _ 0.
-				cntInstVars _ varsOnDisk]. 	"OK if fewer than now"
+		ifFalse: [cntIndexedVars := 0.
+				cntInstVars := varsOnDisk]. 	"OK if fewer than now"
 
 	aDataStream beginReference: self.
 	1 to: cntInstVars do:

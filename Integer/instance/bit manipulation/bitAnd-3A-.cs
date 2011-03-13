@@ -3,7 +3,7 @@ bitAnd: n
 	and those of the argument, n."
 	| norm |
 	<primitive: 'primDigitBitAnd' module:'LargeIntegers'>
-	norm _ n normalize.
+	norm := n normalize.
 	^ self
 		digitLogic: norm
 		op: #bitAnd:

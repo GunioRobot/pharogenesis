@@ -3,6 +3,7 @@ setUpTwoLevelRequiresFixture
 				createClassNamed: #C4
 				superclass: ProtoObject
 				uses: { }).
+	ProtoObject removeSubclass: self c4.
 	self c4 superclass: nil.
 	self c5: (self 
 				createClassNamed: #C5

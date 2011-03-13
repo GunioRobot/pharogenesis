@@ -1,1 +1,0 @@
-FormMenuView class instanceVariableNames: ''

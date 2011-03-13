@@ -1,2 +1,0 @@
-nameOfGraphic
-	^ entryNames at: currentIndex

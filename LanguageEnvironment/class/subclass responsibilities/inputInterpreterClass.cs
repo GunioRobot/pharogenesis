@@ -1,4 +1,0 @@
-inputInterpreterClass
-
-	self subclassResponsibility.
-	^ MacRomanInputInterpreter.

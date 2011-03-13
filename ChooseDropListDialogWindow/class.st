@@ -1,0 +1,1 @@
+ChooseDropListDialogWindow class instanceVariableNames: ''

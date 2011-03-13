@@ -1,2 +1,2 @@
 setViewSize: aPoint
-	viewSize _ aPoint
+	viewSize := aPoint

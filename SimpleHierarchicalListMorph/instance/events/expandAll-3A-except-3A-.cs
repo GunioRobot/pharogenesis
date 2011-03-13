@@ -3,7 +3,7 @@ expandAll: aMorph except: aBlock
 	(aBlock value: aMorph complexContents)
 		ifFalse: [^self].
 	aMorph toggleExpandedState.
-	allChildren _ OrderedCollection new: 10.
+	allChildren := OrderedCollection new: 10.
 	aMorph recursiveAddTo: allChildren.
 	allChildren do: [:each | 
 		(each canExpand

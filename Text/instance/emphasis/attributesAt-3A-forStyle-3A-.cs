@@ -3,5 +3,5 @@ attributesAt: characterIndex forStyle: aTextStyle
 	| attributes |
 	self size = 0
 		ifTrue: [^ Array with: (TextFontChange new fontNumber: aTextStyle defaultFontIndex)].  "null text tolerates access"
-	attributes _ runs at: characterIndex.
+	attributes := runs at: characterIndex.
 	^ attributes

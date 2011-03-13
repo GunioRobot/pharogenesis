@@ -1,3 +1,3 @@
 sortingSelector: s
 
-	sortingSelector _ s
+	sortingSelector := s

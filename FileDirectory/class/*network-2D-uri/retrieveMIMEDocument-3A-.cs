@@ -1,6 +1,7 @@
 retrieveMIMEDocument: uri
 	| file |
-	file  _ [self contentStreamForURI: uri] 
+	file  := [self contentStreamForURI: uri] 
 			on: FileDoesNotExistException do:[:ex| ex return: nil].
-	file ifNotNil: [^MIMEDocument contentType: (MIMEDocument guessTypeFromName: uri) content: file contents url: uri].
+	file ifNotNil: [^MIMEDocument contentStream: file 
+					mimeType: (MIMEType forURIReturnSingleMimeTypeOrDefault: uri)].
 	^nil

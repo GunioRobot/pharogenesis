@@ -1,5 +1,5 @@
 initialize
 	"	self  initialize	"
 	
-	Default _ 'as yet unclassified' asSymbol.
-	NullCategory _ 'no messages' asSymbol.
+	Default := 'as yet unclassified' asSymbol.
+	NullCategory := 'no messages' asSymbol.

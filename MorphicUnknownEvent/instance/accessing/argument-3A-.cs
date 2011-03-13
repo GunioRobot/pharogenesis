@@ -1,2 +1,2 @@
 argument: arg
-	argument _ arg
+	argument := arg

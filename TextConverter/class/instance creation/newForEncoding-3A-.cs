@@ -1,8 +1,8 @@
 newForEncoding: aString 
 	| class encoding |
 	aString ifNil: [^ Latin1TextConverter new].
-	encoding _ aString asLowercase.
-	class _ self allSubclasses
+	encoding := aString asLowercase.
+	class := self allSubclasses
 				detect: [:each | each encodingNames includes: encoding]
 				ifNone: [].
 	class isNil

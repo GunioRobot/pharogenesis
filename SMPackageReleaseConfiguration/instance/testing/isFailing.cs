@@ -1,2 +1,0 @@
-isFailing
-	^status == #failing

@@ -1,2 +1,0 @@
-isDescendantOf: aNode
-	^ false

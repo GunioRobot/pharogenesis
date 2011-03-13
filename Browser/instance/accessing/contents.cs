@@ -4,8 +4,8 @@ contents
 	method of the currently selected class and message."
 
 	| comment theClass latestCompiledMethod |
-	latestCompiledMethod _ currentCompiledMethod.
-	currentCompiledMethod _ nil.
+	latestCompiledMethod := currentCompiledMethod.
+	currentCompiledMethod := nil.
 
 	editSelection == #newTrait
 		ifTrue: [^Trait newTemplateIn: self selectedSystemCategoryName].
@@ -13,7 +13,7 @@ contents
 	editSelection == #editSystemCategories 
 		ifTrue: [^ systemOrganizer printString].
 	editSelection == #newClass 
-		ifTrue: [^ (theClass _ self selectedClass)
+		ifTrue: [^ (theClass := self selectedClass)
 			ifNil:
 				[Class template: self selectedSystemCategoryName]
 			ifNotNil:
@@ -22,9 +22,9 @@ contents
 		ifTrue: [^self classDefinitionText].
 	editSelection == #editComment 
 		ifTrue:
-			[(theClass _ self selectedClass) ifNil: [^ ''].
-			comment _ theClass comment.
-			currentCompiledMethod _ theClass organization commentRemoteStr.
+			[(theClass := self selectedClass) ifNil: [^ ''].
+			comment := theClass comment.
+			currentCompiledMethod := theClass organization commentRemoteStr.
 			^ comment size = 0
 				ifTrue: ['This class has not yet been commented.']
 				ifFalse: [comment]].
@@ -37,13 +37,13 @@ contents
 		ifTrue: [^ self classOrMetaClassOrganizer printString].
 	editSelection == #newMessage
 		ifTrue:
-			[^ (theClass _ self selectedClassOrMetaClass) 
+			[^ (theClass := self selectedClassOrMetaClass) 
 				ifNil: ['']
 				ifNotNil: [theClass sourceCodeTemplate]].
 	editSelection == #editMessage
 		ifTrue:
 			[self showingByteCodes ifTrue: [^ self selectedBytecodes].
-			currentCompiledMethod _ latestCompiledMethod.
+			currentCompiledMethod := latestCompiledMethod.
 			^ self selectedMessage].
 
 	self error: 'Browser internal error: unknown edit selection.'

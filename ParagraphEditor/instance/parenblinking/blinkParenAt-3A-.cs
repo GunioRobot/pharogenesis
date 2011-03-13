@@ -3,4 +3,4 @@ blinkParenAt: parenLocation
 		addAttribute: TextEmphasis bold
 		from: parenLocation
 		to: parenLocation.
-	lastParentLocation _ parenLocation.
+	lastParentLocation := parenLocation.

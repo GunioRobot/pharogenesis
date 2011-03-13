@@ -1,1 +1,0 @@
-SyntaxMorph class instanceVariableNames: ''

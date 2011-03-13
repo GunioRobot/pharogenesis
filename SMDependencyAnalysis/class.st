@@ -1,1 +1,0 @@
-SMDependencyAnalysis class instanceVariableNames: ''

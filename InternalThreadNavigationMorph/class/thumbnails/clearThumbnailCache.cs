@@ -1,3 +1,0 @@
-clearThumbnailCache
-
-	CachedThumbnails _ nil

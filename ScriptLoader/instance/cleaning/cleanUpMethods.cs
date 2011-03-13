@@ -7,7 +7,6 @@ cleanUpMethods
 	WorldState allInstancesDo:[:ws| ws convertAlarms; convertStepList].
 	ExternalDropHandler initialize.
 	ScrollBar initializeImagesCache.
-	Vocabulary initialize.
 	GradientFillStyle initPixelRampCache.
 	ProcessBrowser initialize.
 	Smalltalk garbageCollect.

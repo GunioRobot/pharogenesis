@@ -6,7 +6,7 @@ bitShiftMagnitude: shiftCount
 	| rShift |
 	<primitive: 'primDigitBitShiftMagnitude' module:'LargeIntegers'>
 	shiftCount >= 0 ifTrue: [^ self digitLshift: shiftCount].
-	rShift _ 0 - shiftCount.
+	rShift := 0 - shiftCount.
 	^ (self
 		digitRshift: (rShift bitAnd: 7)
 		bytes: (rShift bitShift: -3)

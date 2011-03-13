@@ -3,7 +3,7 @@ findNextHandlerContextStarting
 
 	| ctx |
 	<primitive: 197>
-	ctx _ self.
+	ctx := self.
 		[ctx isHandlerContext ifTrue:[^ctx].
-		(ctx _ ctx sender) == nil ] whileFalse.
+		(ctx := ctx sender) == nil ] whileFalse.
 	^nil

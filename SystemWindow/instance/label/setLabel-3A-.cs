@@ -1,6 +1,6 @@
 setLabel: aString
 	| frame |
-	labelString _ aString.
+	labelString := aString.
 	label ifNil: [^ self].
 	label contents: aString.
 	self labelWidgetAllowance.  "Sets it if not already"
@@ -9,8 +9,8 @@ setLabel: aString
 		ifFalse: [label fitContents; setWidth: (label width min: bounds width - labelWidgetAllowance).
 				label align: label bounds topCenter with: bounds topCenter + (0@borderWidth).
 				collapsedFrame ifNotNil:
-					[collapsedFrame _ collapsedFrame withWidth: label width + labelWidgetAllowance]].
-	frame _ LayoutFrame new.
+					[collapsedFrame := collapsedFrame withWidth: label width + labelWidgetAllowance]].
+	frame := LayoutFrame new.
 	frame leftFraction: 0.5;
 		 topFraction: 0.5;
 		 leftOffset: label width negated // 2;

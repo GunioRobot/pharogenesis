@@ -1,2 +1,0 @@
-firstFrame
-	^firstFrame

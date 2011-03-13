@@ -5,7 +5,7 @@ adoptInstance: oldInstance from: oldMetaClass
 	thisClass class == self ifTrue:[^self error:'Metaclasses have only one instance'].
 	oldMetaClass isMeta ifFalse:[^self error:'Argument must be Metaclass'].
 	oldInstance class == oldMetaClass ifFalse:[^self error:'Not the class of argument'].
-	^thisClass _ self 
+	^thisClass := self 
 		newInstanceFrom: oldInstance 
 		variable: self isVariable 
 		size: self instSize 

@@ -1,10 +1,10 @@
 readContentsShiftJIS
-	| f writeStream |
-	f _ directory oldFileOrNoneNamed: self fullName.
+	| f stream |
+	f := directory oldFileOrNoneNamed: self fullName.
 	f ifNil: [^ 'For some reason, this file cannot be read'].
-	writeStream _ WriteStream on: String new.
+	stream := String new writeStream.
 	f converter: ShiftJISTextConverter new.
 	[f atEnd]
-		whileFalse: [writeStream nextPut: f next].
+		whileFalse: [stream nextPut: f next].
 	f close.
-	^ writeStream contents
+	^ stream contents

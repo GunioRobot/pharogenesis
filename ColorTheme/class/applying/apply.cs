@@ -1,2 +1,0 @@
-apply
-	^self new apply

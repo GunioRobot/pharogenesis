@@ -3,8 +3,8 @@ peek
 
 	| next pos |
 	self atEnd ifTrue: [^ nil].
-	pos _ self position.
-	next _ self next.
+	pos := self position.
+	next := self next.
 	self position: pos.
 	^ next.
 

@@ -1,7 +1,7 @@
 httpProxyServer: aStringOrNil
 	| serverName |
 	self checkHTTPProxyPreferences.
-	serverName _ aStringOrNil 
+	serverName := aStringOrNil 
 						ifNil: [''] 
 						ifNotNil: [aStringOrNil withBlanksTrimmed ].
 	Preferences setPreference: #httpProxyServer toValue: serverName

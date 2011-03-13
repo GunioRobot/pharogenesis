@@ -1,2 +1,2 @@
-stream: s
-	stream _ s
+stream: s 
+	stream := s

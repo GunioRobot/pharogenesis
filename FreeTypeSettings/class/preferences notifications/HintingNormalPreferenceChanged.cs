@@ -1,0 +1,4 @@
+HintingNormalPreferenceChanged
+	self current hintingNormalPreferenceChanged
+		
+	

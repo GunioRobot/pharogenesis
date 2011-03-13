@@ -5,5 +5,5 @@ veryDeepFixupWith: deepCopier
 
 	"If my owner is being duplicated too, then store his duplicate.
 	 If I am owned outside the duplicated tree, then I am no longer owned!"
-	owner _ deepCopier references at: owner ifAbsent: [nil].
+	owner := deepCopier references at: owner ifAbsent: [nil].
 

@@ -1,2 +1,2 @@
 referent: m
-	referent _ m
+	referent := m

@@ -2,7 +2,7 @@ mouseUp: evt
 	| myAction |
 	"Do nothing except those that work on mouseUp."
 
-	myAction _ self getActionFor: evt.
+	myAction := self getActionFor: evt.
 	myAction == #fill: ifTrue: [
 		self perform: myAction with: evt.
 		"Each action must do invalidRect:"

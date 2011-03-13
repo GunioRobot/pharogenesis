@@ -4,9 +4,9 @@ originalChangeSetForSelector: methodSelector
 	| likelyChangeSets originalChangeSet |
 	(file localName findTokens: '.') last = 'sources'
 		ifTrue: [^ #sources].
-	likelyChangeSets _ ChangeSet allChangeSets select: 
+	likelyChangeSets := ChangeSet allChangeSets select: 
 		[:cs | (cs atSelector: methodSelector class: self methodClass) ~~ #none].
-	originalChangeSet _ likelyChangeSets
+	originalChangeSet := likelyChangeSets
 		detect: [:cs | cs containsMethodAtPosition: position]
 		ifNone: [nil].
 	^ originalChangeSet  "(still need to check for sources file)"

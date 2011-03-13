@@ -2,18 +2,18 @@ openPath: anArray
 	| found |
 	anArray isEmpty
 		ifTrue: [^ container setSelectedMorph: nil].
-	found _ nil.
+	found := nil.
 	self
 		withSiblingsDo: [:each | found
 				ifNil: [(each complexContents asString = anArray first
 							or: [anArray first isNil])
-						ifTrue: [found _ each]]].
+						ifTrue: [found := each]]].
 	found
 		ifNil: ["try again with no case sensitivity"
 			self
 				withSiblingsDo: [:each | found
 						ifNil: [(each complexContents asString sameAs: anArray first)
-								ifTrue: [found _ each]]]].
+								ifTrue: [found := each]]]].
 	found
 		ifNotNil: [found isExpanded
 				ifFalse: [found toggleExpandedState.

@@ -1,0 +1,1 @@
+TextEditorDialogWindow class instanceVariableNames: ''

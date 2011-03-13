@@ -1,11 +1,13 @@
-setActualFont: aFont
+setActualFont: aFont 
 	"Keep track of max height and ascent for auto lineheight"
 	| descent |
 	super setActualFont: aFont.
-	lineHeight == nil
-		ifTrue: [descent _ font descent.
-				baseline _ font ascent.
-				lineHeight _ baseline + descent]
-		ifFalse: [descent _ lineHeight - baseline max: font descent.
-				baseline _ baseline max: font ascent.
-				lineHeight _ lineHeight max: baseline + descent]
+	lineHeight == nil 
+		ifTrue: 
+			[ descent := font descent.
+			baseline := font ascent.
+			lineHeight := baseline + descent ]
+		ifFalse: 
+			[ descent := lineHeight - baseline max: font descent.
+			baseline := baseline max: font ascent.
+			lineHeight := lineHeight max: baseline + descent ]

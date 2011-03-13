@@ -1,0 +1,2 @@
+clearMenuBar: aWindowIndex
+	self primClearMenuBar

@@ -1,0 +1,2 @@
+drawMenuBar: aWindowIndex
+	self primDrawMenuBar

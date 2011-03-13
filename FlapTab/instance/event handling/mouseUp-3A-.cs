@@ -5,9 +5,9 @@ mouseUp: evt
 	(self referentThickness <= 0 or:
 		[(referent isInWorld and: [(referent boundsInWorld intersects: referent owner boundsInWorld) not])]) ifTrue:
 			[self hideFlap.
-			flapShowing _ false].
+			flapShowing := false].
 	self fitOnScreen.
 	dragged ifTrue:
 		[self computeEdgeFraction.
-		dragged _ false].
+		dragged := false].
 	Flaps doAutomaticLayoutOfFlapsIfAppropriate

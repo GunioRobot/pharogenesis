@@ -1,4 +1,3 @@
-lineHeight: height baseline: ascent
-
-	lineHeight _ height.
-	baseline _ ascent
+lineHeight: height baseline: ascent 
+	lineHeight := height.
+	baseline := ascent

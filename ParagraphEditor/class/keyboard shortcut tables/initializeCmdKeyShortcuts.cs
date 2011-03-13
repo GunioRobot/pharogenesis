@@ -21,14 +21,14 @@ initializeCmdKeyShortcuts
 	cmdMap at: 30 + 1 put: #cursorUp:.				"up arrow key"
 	cmdMap at: 31 + 1 put: #cursorDown:.			"down arrow key"
 	cmdMap at: 32 + 1 put: #selectWord:.			"space bar key"
-	cmdMap at: 127 + 1 put: #forwardDelete:.		"del key"
+	cmdMap at: 127 + 1 put: #forwardDelete:keyEvent:.		"del key"
 
 	'0123456789-=' 
-		do: [:char | cmdMap at: char asciiValue + 1 put: #changeEmphasis:].
+		do: [:char | cmdMap at: char asciiValue + 1 put: #changeEmphasis:keyEvent:].
 
-	'([{''"<' do: [:char | cmdMap at: char asciiValue + 1 put: #enclose:].
+	'([{''"<' do: [:char | cmdMap at: char asciiValue + 1 put: #enclose:keyEvent:].
 
-	cmdMap at: $, asciiValue + 1 put: #shiftEnclose:.
+	cmdMap at: $, asciiValue + 1 put: #shiftEnclose:keyEvent:.
 
 	"triplet = {character. comment selector. novice appropiated}"
 	#(
@@ -42,23 +42,18 @@ initializeCmdKeyShortcuts
 		($h		#setSearchString:		true)
 		($i		#inspectIt:				false)
 		($j		#doAgainOnce:			true)
-		($k		#offerFontMenu:		true)
 		($l		#cancel:					true)
-		($m	#implementorsOfIt:		false)
+		($m		#implementorsOfIt:		false)
 		($n		#sendersOfIt:			false)
-		($o		#spawnIt:				false)
 		($p		#printIt:					false)
 		($q		#querySymbol:			false)
 		($s		#save:					true)
-		($t		#tempCommand:		false)
-		($u		#align:					true)
 		($v		#paste:					true)
-		($w	#backWord:				true)
+		($w		#backWord:				true)
 		($x		#cut:						true)
 		($y		#swapChars:				true)
 		($z		#undo:					true)
 	)
-		select:[:triplet | Preferences noviceMode not or:[triplet third]]
-		thenDo:[:triplet | cmdMap at: triplet first asciiValue + 1 put: triplet second].
+		do: [:triplet | cmdMap at: triplet first asciiValue + 1 put: triplet second].
 
 	CmdActions := cmdMap.

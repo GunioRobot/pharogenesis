@@ -1,2 +1,2 @@
 pathComponents
-	^self path findTokens: $/
+	^pathComponents ifNil: [pathComponents := (self path findTokens: $/) collect: [:each | each unescapePercents]]

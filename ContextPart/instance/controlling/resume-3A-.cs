@@ -3,11 +3,11 @@ resume: value
 
 	| ctxt unwindBlock |
 	self isDead ifTrue: [self cannotReturn: value to: self].
-	ctxt _ thisContext.
-	[	ctxt _ ctxt findNextUnwindContextUpTo: self.
+	ctxt := thisContext.
+	[	ctxt := ctxt findNextUnwindContextUpTo: self.
 		ctxt isNil
 	] whileFalse: [
-		unwindBlock _ ctxt tempAt: 1.
+		unwindBlock := ctxt tempAt: 1.
 		unwindBlock ifNotNil: [
 			ctxt tempAt: 1 put: nil.
 			thisContext terminateTo: ctxt.

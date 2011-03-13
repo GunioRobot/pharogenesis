@@ -1,2 +1,0 @@
-stopPlaying
-	player stopPlaying

@@ -1,0 +1,2 @@
+lastRun
+	^ TestResult historyFor: self

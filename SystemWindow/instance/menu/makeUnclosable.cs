@@ -1,3 +1,3 @@
 makeUnclosable
-	mustNotClose _ true.
+	mustNotClose := true.
 	self deleteCloseBox

@@ -1,12 +1,12 @@
 longAt: index put: value bigEndian: aBool
 	"Return a 32bit integer quantity starting from the given byte index"
 	| b0 b1 b2 b3 |
-	b0 _ value bitShift: -24.
-	b0 _ (b0 bitAnd: 16r7F) - (b0 bitAnd: 16r80).
+	b0 := value bitShift: -24.
+	b0 := (b0 bitAnd: 16r7F) - (b0 bitAnd: 16r80).
 	b0 < 0 ifTrue:[b0 := 256 + b0].
-	b1 _ (value bitShift: -16) bitAnd: 255.
-	b2 _ (value bitShift: -8) bitAnd: 255.
-	b3 _ value bitAnd: 255.
+	b1 := (value bitShift: -16) bitAnd: 255.
+	b2 := (value bitShift: -8) bitAnd: 255.
+	b3 := value bitAnd: 255.
 	aBool ifTrue:[
 		self at: index put: b0.
 		self at: index+1 put: b1.

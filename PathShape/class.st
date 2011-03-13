@@ -1,0 +1,1 @@
+PathShape class instanceVariableNames: ''

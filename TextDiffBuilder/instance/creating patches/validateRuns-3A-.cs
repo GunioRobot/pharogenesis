@@ -1,8 +1,8 @@
 validateRuns: runList
 	| srcPosCopy dstPosCopy lines srcIndex dstIndex |
-	srcPosCopy _ srcPos copy.
+	srcPosCopy := srcPos copy.
 	srcPosCopy associationsDo:[:assoc| assoc value: assoc value asSet].
-	dstPosCopy _ dstPos copy.
+	dstPosCopy := dstPos copy.
 	dstPosCopy associationsDo:[:assoc| assoc value: assoc value asSet].
 	runList associationsDo:[:assoc|
 		srcIndex := assoc key y.

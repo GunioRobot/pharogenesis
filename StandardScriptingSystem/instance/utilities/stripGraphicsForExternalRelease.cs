@@ -2,7 +2,7 @@ stripGraphicsForExternalRelease
 	"ScriptingSystem stripGraphicsForExternalRelease"
 
 	|  replacement |
-	replacement _ FormDictionary at: #Gets.
+	replacement := FormDictionary at: #Gets.
 
 	#('BadgeMiniPic' 'BadgePic' 'Broom' 'CedarPic' 'CollagePic' 'CoverMain' 'CoverSpiral' 'CoverTexture' 'Fred' 'ImagiPic' 'KayaPic' 'StudioPic')
 		do:

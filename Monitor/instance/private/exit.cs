@@ -1,6 +1,6 @@
 exit
-	nestingLevel _ nestingLevel - 1.
+	nestingLevel := nestingLevel - 1.
 	nestingLevel < 1 ifTrue: [
-		ownerProcess _ nil.
+		ownerProcess := nil.
 		mutex signal
 	].

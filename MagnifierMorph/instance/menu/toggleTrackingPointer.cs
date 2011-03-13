@@ -1,2 +1,0 @@
-toggleTrackingPointer
-	trackPointer _ trackPointer not

@@ -1,0 +1,1 @@
+ByteTextConverter class instanceVariableNames: 'byteToUnicode unicodeToByte'

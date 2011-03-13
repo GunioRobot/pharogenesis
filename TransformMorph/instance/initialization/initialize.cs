@@ -3,5 +3,5 @@ initialize
 	super initialize.
 	""
 	
-	smoothing _ 1.
-	transform _ MorphicTransform identity
+	smoothing := 1.
+	transform := MorphicTransform identity

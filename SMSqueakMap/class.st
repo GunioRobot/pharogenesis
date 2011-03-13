@@ -1,1 +1,0 @@
-SMSqueakMap class instanceVariableNames: ''

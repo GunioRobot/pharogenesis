@@ -1,2 +1,0 @@
-phonemes: aCollection
-	phonemes := aCollection

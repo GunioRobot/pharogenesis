@@ -1,2 +1,0 @@
-owner: anAccount
-	owner := anAccount

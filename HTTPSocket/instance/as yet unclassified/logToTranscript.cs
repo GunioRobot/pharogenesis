@@ -1,3 +1,0 @@
-logToTranscript
-
-	^LogToTranscript == true

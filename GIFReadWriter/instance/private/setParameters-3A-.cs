@@ -1,6 +1,6 @@
-setParameters: initCodeSize
-	clearCode _ 1 bitShift: initCodeSize.
-	eoiCode _ clearCode + 1.
-	freeCode _ clearCode + 2.
-	codeSize _ initCodeSize + 1.
-	maxCode _ (1 bitShift: codeSize) - 1
+setParameters: initCodeSize 
+	clearCode := 1 bitShift: initCodeSize.
+	eoiCode := clearCode + 1.
+	freeCode := clearCode + 2.
+	codeSize := initCodeSize + 1.
+	maxCode := (1 bitShift: codeSize) - 1

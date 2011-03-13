@@ -1,3 +1,0 @@
-targetTextColor
-
-	^Color black

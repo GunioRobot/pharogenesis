@@ -1,3 +1,0 @@
-depth: aNumber
-
-	depth := aNumber.

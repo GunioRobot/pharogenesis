@@ -1,3 +1,0 @@
-fileNameConverterClass
-
-	^ self systemConverterClass.

@@ -3,6 +3,4 @@ checkClassHierarchyConsistency
 	two logical equivalences hold for classes A and B:
 	- B is obsolete and 'B superclass' yields A  <-->  'A obsoleteSubclasses' contains B
 	- B is not obsolete and 'B superclass' yields A  <-->  'A subclasses' contains B"
-	Utilities informUserDuring:[:bar|
-		self checkClassHierarchyConsistency: bar.
-	].
+	UIManager default informUserDuring: [ :bar | self checkClassHierarchyConsistency: bar ]

@@ -9,8 +9,8 @@ removeMessage
 		ifTrue: [^ self].
 	self okToChange
 		ifFalse: [^ self].
-	messageName _ self selectedMessageName.
-	confirmation _ self systemNavigation   confirmRemovalOf: messageName on: self selectedClassOrMetaClass.
+	messageName := self selectedMessageName.
+	confirmation := self systemNavigation   confirmRemovalOf: messageName on: self selectedClassOrMetaClass.
 	confirmation == 3
 		ifTrue: [^ self].
 	(self selectedClassOrMetaClass includesLocalSelector: messageName)

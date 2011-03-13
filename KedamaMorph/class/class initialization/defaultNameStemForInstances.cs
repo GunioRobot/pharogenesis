@@ -1,3 +1,0 @@
-defaultNameStemForInstances
-
-	^ 'KedamaWorld' translated.

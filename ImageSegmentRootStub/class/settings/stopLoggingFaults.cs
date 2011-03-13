@@ -1,4 +1,4 @@
 stopLoggingFaults  "ImageSegmentRootStub stopLoggingFaults"
 
-	FaultLogs _ Dictionary new.
-	LoggingFaults _ false.
+	FaultLogs := Dictionary new.
+	LoggingFaults := false.

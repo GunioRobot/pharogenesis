@@ -6,7 +6,7 @@ printPaddedWith: aCharacter to: aNumber
 	| aStream digits fPadding fLen iPadding iLen curLen periodIndex |
 	#Numeric.
 	"2000/03/04  Harmon R. Added Date and Time support"
-	aStream := WriteStream on: (String new: 10).
+	aStream := (String new: 10) writeStream.
 	self printOn: aStream.
 	digits := aStream contents.
 	periodIndex := digits indexOf: $..

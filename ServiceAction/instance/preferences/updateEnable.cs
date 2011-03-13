@@ -1,4 +1,4 @@
 updateEnable
-	enabled _ ServicePreferences
+	enabled := ServicePreferences
 				valueOfPreference: self id
 				ifAbsent: [true]

@@ -1,2 +1,0 @@
-name
-	^ collection species name

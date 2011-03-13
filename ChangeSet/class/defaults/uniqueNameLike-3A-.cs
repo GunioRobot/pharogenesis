@@ -4,5 +4,5 @@ uniqueNameLike: aString
 	(self named: aString) ifNil: [^ aString].
 
 	1 to: 999999 do:
-		[:i | try _ aString , i printString.
+		[:i | try := aString , i printString.
 		(self named: try) ifNil: [^ try]]

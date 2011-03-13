@@ -15,7 +15,5 @@ startDrag: evt
 		ifNotNil: [ddm := TransferMorph withPassenger: passenger from: self.
 			ddm
 				dragTransferType: (self model dragTransferTypeForMorph: self).
-			Preferences dragNDropWithAnimation
-				ifTrue: [self model dragAnimationFor: itemMorph transferMorph: ddm].
 			evt hand grabMorph: ddm].
 	evt hand releaseMouseFocus: self

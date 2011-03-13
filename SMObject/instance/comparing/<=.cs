@@ -1,3 +1,0 @@
-<= anSMObject
-
-	^name <= anSMObject name

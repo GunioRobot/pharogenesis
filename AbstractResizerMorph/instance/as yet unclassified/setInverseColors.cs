@@ -1,4 +1,4 @@
 setInverseColors
 
-	handleColor _ Color lightGray.
-	dotColor _ Color white
+	handleColor := Color lightGray.
+	dotColor := Color white

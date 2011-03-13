@@ -4,13 +4,13 @@ removeLast
 
 	| oldLink aLink |
 	self emptyCheck.
-	oldLink _ lastLink.
+	oldLink := lastLink.
 	firstLink == lastLink
-		ifTrue: [firstLink _ nil. lastLink _ nil]
-		ifFalse: [aLink _ firstLink.
+		ifTrue: [firstLink := nil. lastLink := nil]
+		ifFalse: [aLink := firstLink.
 				[aLink nextLink == oldLink] whileFalse:
-					[aLink _ aLink nextLink].
+					[aLink := aLink nextLink].
 				 aLink nextLink: nil.
-				 lastLink _ aLink].
+				 lastLink := aLink].
 	oldLink nextLink: nil.
 	^oldLink

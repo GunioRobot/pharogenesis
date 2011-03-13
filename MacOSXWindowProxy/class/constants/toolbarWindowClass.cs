@@ -1,0 +1,2 @@
+toolbarWindowClass
+	^12

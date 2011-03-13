@@ -1,9 +1,7 @@
-decodeInteger: mimeString
-	| bytes sum |
+decodeInteger: mimeString 
 	"Decode the MIME string into an integer of any length"
-
-	bytes _ (Base64MimeConverter mimeDecodeToBytes: 
-				(ReadStream on: mimeString)) contents.
-	sum _ 0.
-	bytes reverseDo: [:by | sum _ sum * 256 + by].
+	| bytes sum |
+	bytes := (Base64MimeConverter mimeDecodeToBytes: mimeString readStream) contents.
+	sum := 0.
+	bytes reverseDo: [ :by | sum := sum * 256 + by ].
 	^ sum

@@ -1,3 +1,0 @@
-alansTextPlusMorphbosfcebbmsopssrsggshtt0
-
-	^ TextPlusMorph

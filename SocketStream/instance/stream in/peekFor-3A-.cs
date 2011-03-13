@@ -8,8 +8,8 @@ peekFor: aCharacterOrByte
 	self isInBufferEmpty ifTrue: 
 		[self receiveData.
 		self atEnd ifTrue: [^false]].
-	nextObject _ inBuffer at: lastRead.
+	nextObject := inBuffer at: lastRead.
 	nextObject = aCharacterOrByte ifTrue: [
-		lastRead _ lastRead + 1.
+		lastRead := lastRead + 1.
 		^true].
 	^false

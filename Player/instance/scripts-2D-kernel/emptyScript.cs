@@ -1,2 +1,0 @@
-emptyScript
-	"The empty script"

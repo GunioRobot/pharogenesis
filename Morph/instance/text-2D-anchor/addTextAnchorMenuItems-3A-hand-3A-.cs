@@ -1,6 +1,6 @@
 addTextAnchorMenuItems: topMenu hand: aHand
 	| aMenu |
-	aMenu _ MenuMorph new defaultTarget: self.
+	aMenu := MenuMorph new defaultTarget: self.
 	aMenu addUpdating: #hasInlineAnchorString action: #changeInlineAnchor.
 	aMenu addUpdating: #hasParagraphAnchorString action: #changeParagraphAnchor.
 	aMenu addUpdating: #hasDocumentAnchorString action: #changeDocumentAnchor.

@@ -22,8 +22,8 @@ recentLogOn: origChangesFile startingFrom: initialPos
 	changesFile close.
 	banners size == 0 ifTrue: [^self recent: end on: origChangesFile].
 
-	pos := (SelectionMenu labelList: banners selections: positions)
-				startUpWithCaption: 'Browse as far back as...'.
+	pos := UIManager default chooseFrom: banners values: positions
+				title: 'Browse as far back as...'.
 	pos == nil
 		ifTrue: [^ self].
 	^self recent: end - pos on: origChangesFile

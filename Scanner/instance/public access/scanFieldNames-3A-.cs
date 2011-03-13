@@ -6,8 +6,8 @@ scanFieldNames: stringOrArray
 	| strm |
 	(stringOrArray isMemberOf: Array)
 		ifTrue: [^stringOrArray].
-	self scan: (ReadStream on: stringOrArray asString).
-	strm _ WriteStream on: (Array new: 10).
+	self scan: stringOrArray asString readStream.
+	strm := (Array new: 10) writeStream.
 	[tokenType = #doIt]
 		whileFalse: 
 			[tokenType = #word ifTrue: [strm nextPut: token].

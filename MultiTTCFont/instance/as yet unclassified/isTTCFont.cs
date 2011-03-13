@@ -1,2 +1,0 @@
-isTTCFont
-	^true

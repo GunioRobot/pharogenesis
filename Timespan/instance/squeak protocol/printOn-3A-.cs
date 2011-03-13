@@ -1,5 +1,4 @@
-printOn: aStream
-
+printOn: aStream 
 
 	super printOn: aStream.
 	aStream 

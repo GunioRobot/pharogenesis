@@ -1,1 +1,0 @@
-ThreadNavigationMorph class instanceVariableNames: ''

@@ -1,3 +1,0 @@
-topEdgeMode
-
-	^ topEdgeMode.

@@ -4,5 +4,4 @@ anchorAndRunModeless: aHand
 
 	aHand showTemporaryCursor: nil.  "revert to normal cursor"
 	self initializeModal: false; originalColor: originalColor.  "reset as modeless"
-	aHand flushEvents.  "Drop any events gathered during modal loop"
 	aHand position: Sensor cursorPoint; grabMorph: self.  "Slip into drag operation"

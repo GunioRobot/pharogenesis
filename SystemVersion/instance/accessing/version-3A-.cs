@@ -1,2 +1,2 @@
 version: newVersion
-	version _ newVersion
+	version := newVersion

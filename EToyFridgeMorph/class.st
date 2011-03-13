@@ -1,1 +1,0 @@
-EToyFridgeMorph class instanceVariableNames: ''

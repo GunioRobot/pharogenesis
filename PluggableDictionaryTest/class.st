@@ -1,0 +1,1 @@
+PluggableDictionaryTest class instanceVariableNames: ''

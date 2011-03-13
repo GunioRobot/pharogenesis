@@ -1,6 +1,6 @@
 objectToView: objectOrNil
 	(objectOrNil isMorph and: [objectOrNil allMorphs includes: self]) ifTrue:
 		["cannot view a morph containing myself or drawOn: goes into infinite recursion"
-		objectToView _ nil.
+		objectToView := nil.
 		^ self].
-	objectToView _ objectOrNil
+	objectToView := objectOrNil

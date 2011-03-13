@@ -1,6 +1,6 @@
 testAbsoluteFILE2
 	
-	url _ 'fILE:/foo/bar//zookie/?fakequery/#fragger' asUrl.
+	url := 'fILE:/foo/bar//zookie/?fakequery/#fragger' asUrl.
 
 	self assert: url schemeName = 'file'.
 	self assert: url class = FileUrl.

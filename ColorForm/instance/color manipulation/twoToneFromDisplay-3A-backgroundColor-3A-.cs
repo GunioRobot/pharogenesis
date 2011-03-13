@@ -7,7 +7,7 @@ twoToneFromDisplay: aRectangle backgroundColor: bgColor
 
 	"make a color map mapping the background color
 	 to zero and all other colors to one"
-	map _ Bitmap new: (1 bitShift: (Display depth min: 9)).
+	map := Bitmap new: (1 bitShift: (Display depth min: 9)).
 	1 to: map size do: [:i | map at: i put: 16rFFFFFFFF].
 	map at: (bgColor indexInMap: map) put: 0.
 

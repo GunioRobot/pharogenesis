@@ -1,3 +1,0 @@
-beginStats
-
-	SentTypesAndSizes := Dictionary new.

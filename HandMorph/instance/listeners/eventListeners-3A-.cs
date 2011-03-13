@@ -1,2 +1,2 @@
 eventListeners: anArrayOrNil
-	eventListeners _ anArrayOrNil
+	eventListeners := anArrayOrNil

@@ -7,8 +7,8 @@ messageCount
 	self checkResponse.
 	self logProgress: self lastResponse.
 
-	[answerString _ (self lastResponse findTokens: Character separators) second.
-	numMessages _ answerString asNumber asInteger]
+	[answerString := (self lastResponse findTokens: Character separators) second.
+	numMessages := answerString asNumber asInteger]
 		on: Error
 		do: [:ex | (ProtocolClientError protocolInstance: self) signal: 'Invalid STAT response.'].
 	^numMessages

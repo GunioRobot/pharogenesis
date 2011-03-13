@@ -3,7 +3,7 @@ getOnlyBuffer: buffer from: fileNameOnServer
 
 	| dataStream |
 	client := self openFTPClient.
-	dataStream := WriteStream on: buffer.
+	dataStream := buffer writeStream.
 	[client getPartial: buffer size fileNamed: fileNameOnServer into: dataStream]
 		ensure: [self quit].
 	^buffer

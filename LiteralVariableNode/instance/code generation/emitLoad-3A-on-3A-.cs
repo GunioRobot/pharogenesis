@@ -1,6 +1,6 @@
 emitLoad: stack on: strm
-	splNode ifNil:[^super emitLoad: stack on: strm].
-	self code < 256
-		ifTrue: [strm nextPut: self code]
+	writeNode ifNil:[^super emitLoad: stack on: strm].
+	code < 256
+		ifTrue: [strm nextPut: code]
 		ifFalse: [self emitLong: LoadLong on: strm].
 	stack push: 1.

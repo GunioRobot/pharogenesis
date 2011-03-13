@@ -8,6 +8,6 @@ atEnd
 	"Force decompression, by calling #next. Since #moveContentsToFront
 	will never move data to the beginning of the buffer it is safe to
 	skip back the read position afterwards"
-	self next == nil ifTrue:[^true].
+	self next ifNil: [^true].
 	position := position - 1.
 	^false

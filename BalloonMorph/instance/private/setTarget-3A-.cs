@@ -1,2 +1,2 @@
 setTarget: aMorph
-	(target _ aMorph) ifNotNil: [offsetFromTarget _ self position - target position]
+	(target := aMorph) ifNotNil: [offsetFromTarget := self position - target position]

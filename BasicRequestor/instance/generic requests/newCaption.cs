@@ -1,3 +1,3 @@
 newCaption
-	caption _ 'Enter text'.
-	answer _ WriteStream  on:''
+	caption := 'Enter text'.
+	answer := String new writeStream.

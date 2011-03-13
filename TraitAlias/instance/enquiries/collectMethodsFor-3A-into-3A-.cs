@@ -3,9 +3,9 @@ collectMethodsFor: aSelector into: methodDescription
 	self subject
 		collectMethodsFor: aSelector
 		into: methodDescription.			
-	association _ self aliasNamed: aSelector ifAbsent: [nil].
+	association := self aliasNamed: aSelector ifAbsent: [nil].
 	association notNil ifTrue: [
-		originalSelector _ association value.
+		originalSelector := association value.
 		self subject
 			collectMethodsFor: originalSelector
 			into: methodDescription]

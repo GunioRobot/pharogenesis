@@ -6,7 +6,7 @@ receiveDataInto: aStringOrByteArray fromHost: hostAddress port: portNumber
 		[self setPeer: hostAddress port: portNumber.
 		^self receiveDataInto: aStringOrByteArray].
 	[true] whileTrue: 
-		[datagram _ self receiveUDPDataInto: aStringOrByteArray.
+		[datagram := self receiveUDPDataInto: aStringOrByteArray.
 		((datagram at: 2) = hostAddress and: [(datagram at: 3) = portNumber]) 
 			ifTrue: [^datagram at: 1]
 			ifFalse: [^0]]

@@ -1,3 +1,0 @@
-centerPitch
-
-	^ centerPitch

@@ -1,3 +1,3 @@
 lookupClass: aClass
 
-	lookupClass _ aClass
+	lookupClass := aClass

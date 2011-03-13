@@ -3,7 +3,7 @@ from: beginPoint to: endPoint withForm: aForm
 	the source form for displaying the line is aForm."
 
 	| newSelf | 
-	newSelf _ super new: 2.
+	newSelf := super new: 2.
 	newSelf add: beginPoint.
 	newSelf add: endPoint.
 	newSelf form: aForm.

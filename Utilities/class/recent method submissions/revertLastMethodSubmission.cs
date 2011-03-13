@@ -5,10 +5,10 @@ revertLastMethodSubmission
 	remove that method."
 
 	RecentSubmissions isEmptyOrNil ifTrue: [^ Beeper beep].
-	lastSubmission _ RecentSubmissions last.
-	theClass _ lastSubmission actualClass ifNil: [^ Beeper beep].
-	theSelector _ lastSubmission methodSymbol.
-	changeRecords _ theClass changeRecordsAt: theSelector.
+	lastSubmission := RecentSubmissions last.
+	theClass := lastSubmission actualClass ifNil: [^ Beeper beep].
+	theSelector := lastSubmission methodSymbol.
+	changeRecords := theClass changeRecordsAt: theSelector.
 	changeRecords isEmptyOrNil ifTrue: [^ Beeper beep].
 	changeRecords size == 1
 		ifTrue:

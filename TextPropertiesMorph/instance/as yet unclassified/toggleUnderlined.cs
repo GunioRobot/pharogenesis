@@ -1,3 +1,0 @@
-toggleUnderlined
-
-	self toggleSelectionAttribute: TextEmphasis underlined

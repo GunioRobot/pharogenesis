@@ -1,2 +1,0 @@
-typeForConstant: anObject
-	^ anObject basicType

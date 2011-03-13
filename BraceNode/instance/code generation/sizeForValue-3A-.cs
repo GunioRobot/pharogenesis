@@ -1,6 +1,6 @@
 sizeForValue: encoder
 
-	emitNode _ elements size <= 4
+	emitNode := elements size <= 4
 		ifTrue: ["Short form: Array braceWith: a with: b ... "
 				MessageNode new
 					receiver: (encoder encodeVariable: #Array)

@@ -4,7 +4,7 @@ bitShift: shiftCount
 	the number of bits indicated by the argument. Negative arguments  
 	shift right. Zeros are shifted in from the right in left shifts."
 	| magnitudeShift |
-	magnitudeShift _ self bitShiftMagnitude: shiftCount.
+	magnitudeShift := self bitShiftMagnitude: shiftCount.
 	^ ((self negative and: [shiftCount negative])
 		and: [self anyBitOfMagnitudeFrom: 1 to: shiftCount negated])
 		ifTrue: [magnitudeShift - 1]

@@ -3,8 +3,6 @@ annotationEditingWindow
 	| aPanel ins outs current aMorph aWindow aButton info pair standardHeight standardWidth |
 	standardHeight := 180.
 	standardWidth := (2 sqrt reciprocal * standardHeight) rounded.
-	Smalltalk isMorphic
-		ifFalse: [self error: 'annotations can be edited only in morphic'].
 	aPanel := AlignmentMorph newRow extent: 2 * standardWidth @ standardHeight.
 	ins := AlignmentMorph newColumn extent: standardWidth @ standardHeight.
 	ins color: Color green muchLighter.

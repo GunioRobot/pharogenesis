@@ -1,3 +1,3 @@
 makeNoArrows
-	arrows _ #none.
+	arrows := #none.
 	self computeBounds

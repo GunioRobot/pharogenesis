@@ -1,2 +1,4 @@
 size
-	^self inject: 0 into: [ :count :dep | dep ifNil: [ count ] ifNotNil: [ count + 1 ]]
+	
+	"No nil verification required. See do: implementation that only evaluates not nil objects"
+	^self inject: 0 into: [:size :anObject | size + 1]

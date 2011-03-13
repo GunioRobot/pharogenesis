@@ -3,11 +3,11 @@ storeOn: aStream
 	aStream nextPutAll: '(('.
 	aStream nextPutAll: self class name.
 	aStream nextPutAll: ' new)'.
-	noneYet _ true.
+	noneYet := true.
 	self associationsDo: 
 			[:each | 
 			noneYet
-				ifTrue: [noneYet _ false]
+				ifTrue: [noneYet := false]
 				ifFalse: [aStream nextPut: $;].
 			aStream nextPutAll: ' add: '.
 			aStream store: each].

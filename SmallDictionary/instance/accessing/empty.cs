@@ -1,0 +1,2 @@
+empty
+	size := 0

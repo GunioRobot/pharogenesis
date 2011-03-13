@@ -2,7 +2,7 @@ buttonToTriggerIn: aFileList
 	"Answer a button that will trigger the receiver service in a file list"
 
 	| aButton |
-	aButton _  PluggableButtonMorph
+	aButton :=  PluggableButtonMorph
 					on: self
 					getState: nil
 					action: #performServiceFor:.

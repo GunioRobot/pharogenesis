@@ -7,29 +7,33 @@ drawLoopX: xDelta Y: yDelta
 	Optional. See Object documentation whatIsAPrimitive."
 	| dx dy px py P |
 	<primitive: 'primitiveDrawLoop' module: 'BitBltPlugin'>
-	dx _ xDelta sign.
-	dy _ yDelta sign.
-	px _ yDelta abs.
-	py _ xDelta abs.
+	dx := xDelta sign.
+	dy := yDelta sign.
+	px := yDelta abs.
+	py := xDelta abs.
 	"self copyBits."
-	py > px
+	py > px 
 		ifTrue: 
-			["more horizontal"
-			P _ py // 2.
-			1 to: py do: 
-				[:i |
-				destX _ destX + dx.
-				(P _ P - px) < 0 ifTrue: 
-						[destY _ destY + dy.
-						P _ P + py].
-				i < py ifTrue: [self copyBits]]]
+			[ "more horizontal"
+			P := py // 2.
+			1 
+				to: py
+				do: 
+					[ :i | 
+					destX := destX + dx.
+					(P := P - px) < 0 ifTrue: 
+						[ destY := destY + dy.
+						P := P + py ].
+					i < py ifTrue: [ self copyBits ] ] ]
 		ifFalse: 
-			["more vertical"
-			P _ px // 2.
-			1 to: px do:
-				[:i |
-				destY _ destY + dy.
-				(P _ P - py) < 0 ifTrue: 
-						[destX _ destX + dx.
-						P _ P + px].
-				i < px ifTrue: [self copyBits]]]
+			[ "more vertical"
+			P := px // 2.
+			1 
+				to: px
+				do: 
+					[ :i | 
+					destY := destY + dy.
+					(P := P - py) < 0 ifTrue: 
+						[ destX := destX + dx.
+						P := P + px ].
+					i < px ifTrue: [ self copyBits ] ] ]

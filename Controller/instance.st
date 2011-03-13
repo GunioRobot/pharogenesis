@@ -1,6 +1,6 @@
 Object
 	subclass: #Controller
-	instanceVariableNames: 'model view sensor lastActivityTime'
-	classVariableNames: 'MinActivityLapse'
+	instanceVariableNames: 'model sensor'
+	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'ST80-Kernel-Remnants'

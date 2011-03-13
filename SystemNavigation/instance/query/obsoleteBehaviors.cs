@@ -3,7 +3,7 @@ obsoleteBehaviors
 	"Find all obsolete behaviors including meta classes"
 
 	| obs |
-	obs _ OrderedCollection new.
+	obs := OrderedCollection new.
 	Smalltalk garbageCollect.
 	self 
 		allObjectsDo: [:cl | (cl isBehavior

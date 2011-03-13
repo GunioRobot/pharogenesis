@@ -10,4 +10,4 @@ chooseCngSet
 	chosen := (SelectionMenu selections: changeSetsSortedAlphabetically)
 			startUp.
 	chosen ifNil: [^ self].
-	self showChangeSet: (ChangeSorter changeSetNamed: chosen)
+	self showChangeSet: (ChangesOrganizer changeSetNamed: chosen)

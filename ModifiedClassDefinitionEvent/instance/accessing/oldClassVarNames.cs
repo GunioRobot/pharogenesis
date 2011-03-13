@@ -1,2 +1,2 @@
 oldClassVarNames
-	^ oldItem classVarNames asSet
+	^ oldItem classVarNames

@@ -1,6 +1,6 @@
 buildChartForm
 	| chartForm |
-	chartForm _ ColorChart deepCopy asFormOfDepth: Display depth.
+	chartForm := ColorChart deepCopy asFormOfDepth: Display depth.
 	chartForm fill: ((TransparentBox left + 9)@0 extent: 1@9) fillColor: Color lightGray.
 	chartForm fill: ((TransparentBox right - 10)@0 extent: 1@9) fillColor: Color lightGray.
 	TransText displayOn: chartForm at: 62@0.

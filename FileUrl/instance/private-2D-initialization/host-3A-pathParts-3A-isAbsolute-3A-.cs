@@ -1,5 +1,5 @@
 host: aHostString pathParts: aCollection isAbsolute: aBoolean
 
-	host _ aHostString.
-	path _ aCollection.
-	isAbsolute _ aBoolean
+	host := aHostString.
+	path := aCollection.
+	isAbsolute := aBoolean

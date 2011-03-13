@@ -3,7 +3,7 @@ fromBinaryStream: aBinaryStream
 
 	| firstByte |
 	aBinaryStream binary.
-	firstByte _ aBinaryStream next.
+	firstByte := aBinaryStream next.
 	firstByte = 1 ifTrue: [
 		"old Squeakform format"
 		^ self new readFromOldFormat: aBinaryStream].

@@ -4,11 +4,18 @@ listenLoop
 	"Note: If the machine is disconnected from the network while the server is running, the currently waiting socket will go from 'isWaitingForConnection' to 'unconnected', and attempts to create new sockets will fail. When this happens, delete the broken socket and keep trying to create a socket in case the network connection is re-established. Connecting and disconnecting was tested under PPP on Mac system 8.1. It is not if this will work on other platforms."
 
 
-	| newConnection |
+	| newConnection adressInfos |
+	NetNameResolver useOldNetwork
+		ifTrue: [^self oldListenLoop].
 
-	socket := Socket newTCP.
+	adressInfos := SocketAddressInformation
+						forHost: '' service: portNumber asString
+						flags: SocketAddressInformation passiveFlag
+						addressFamily: SocketAddressInformation addressFamilyINET4
+						socketType: SocketAddressInformation socketTypeStream
+						protocol: SocketAddressInformation protocolTCP.
 	"We'll accept four simultanous connections at the same time"
-	socket listenOn: portNumber backlogSize: 4.
+	socket := adressInfos first listenWithBacklog: 4.
 	"If the listener is not valid then the we cannot use the
 	BSD style accept() mechanism."
 	socket isValid ifFalse: [^self oldStyleListenLoop].
@@ -18,11 +25,8 @@ listenLoop
 			socket destroy.
 			(Delay forMilliseconds: 10) wait.
 			^self listenLoop ].
-		[newConnection := socket waitForAcceptFor: 10]
-			on: ConnectionTimedOut
-			do: [:ex | newConnection := nil].
-		(newConnection notNil and: [newConnection isConnected]) ifTrue: [
-			accessSema critical: [connections addLast: newConnection.].
-			newConnection := nil.
-			self changed].
+		newConnection := socket waitForAcceptFor: 10.
+		(newConnection notNil and:[newConnection isConnected]) ifTrue:
+			[accessSema critical: [connections addLast: newConnection].
+			newConnection := nil].
 		self pruneStaleConnections]. 

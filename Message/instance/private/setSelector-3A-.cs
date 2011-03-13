@@ -1,3 +1,3 @@
 setSelector: aSymbol
 
-	selector _ aSymbol.
+	selector := aSymbol.

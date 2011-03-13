@@ -9,20 +9,20 @@ methodHierarchyBrowserForClass: aClass selector: sel
 	aClass ifNil: [^ self].
 	aClass isTrait ifTrue: [^ self].
 	sel ifNil: [^ self].
-	aClassNonMeta _ aClass theNonMetaClass.
-	isMeta _ aClassNonMeta ~~ aClass.
-	list _ OrderedCollection new.
-	tab _ ''.
+	aClassNonMeta := aClass theNonMetaClass.
+	isMeta := aClassNonMeta ~~ aClass.
+	list := OrderedCollection new.
+	tab := ''.
 	aClass allSuperclasses reverseDo:
 		[:cl |
 		(cl includesSelector: sel) ifTrue:
 			[list addLast: tab , cl name, ' ', sel].
-		tab _ tab , '  '].
+		tab := tab , '  '].
 	aClassNonMeta allSubclassesWithLevelDo:
 		[:cl :level |
-		theClassOrMeta _ isMeta ifTrue: [cl class] ifFalse: [cl].
+		theClassOrMeta := isMeta ifTrue: [cl class] ifFalse: [cl].
 		(theClassOrMeta includesSelector: sel) ifTrue:
-			[stab _ ''.  1 to: level do: [:i | stab _ stab , '  '].
+			[stab := ''.  1 to: level do: [:i | stab := stab , '  '].
 			list addLast: tab , stab , theClassOrMeta name, ' ', sel]]
 	 	startingLevel: 0.
 	self browseMessageList: list name: 'Inheritance of ' , sel

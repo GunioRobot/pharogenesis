@@ -1,3 +1,0 @@
-allFoldersFileFilter
-
-	^[:each | each isDirectory]

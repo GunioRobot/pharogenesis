@@ -1,61 +1,61 @@
 scanVersionsOf: method class: class meta: meta category: category selector: selector
 	| position prevPos prevFileIndex preamble tokens sourceFilesCopy stamp cat |
-	selectorOfMethod _ selector.
-	currentCompiledMethod _ method.
-	classOfMethod _ meta ifTrue: [class class] ifFalse: [class].
-	cat _ category ifNil: [''].
-	changeList _ OrderedCollection new.
-	list _ OrderedCollection new.
-	self addedChangeRecord ifNotNilDo: [ :change |
+	selectorOfMethod := selector.
+	currentCompiledMethod := method.
+	classOfMethod := meta ifTrue: [class class] ifFalse: [class].
+	cat := category ifNil: [''].
+	changeList := OrderedCollection new.
+	list := OrderedCollection new.
+	self addedChangeRecord ifNotNil: [ :change |
 		self addItem: change text: ('{1} (in {2})' translated format: { change stamp. change fileName }) ].
-	listIndex _ 0.
-	position _ method filePosition.
-	sourceFilesCopy _ SourceFiles collect:
+	listIndex := 0.
+	position := method filePosition.
+	sourceFilesCopy := SourceFiles collect:
 		[:x | x isNil ifTrue: [ nil ]
 				ifFalse: [x readOnlyCopy]].
 	method fileIndex == 0 ifTrue: [^ nil].
-	file _ sourceFilesCopy at: method fileIndex.
+	file := sourceFilesCopy at: method fileIndex.
 
 	[position notNil & file notNil]
 		whileTrue:
 		[file position: (0 max: position-150).  "Skip back to before the preamble"
-		preamble _ method getPreambleFrom: file at: (0 max: position - 3).
+		preamble := method getPreambleFrom: file at: (0 max: position - 3).
 
 		"Preamble is likely a linked method preamble, if we're in
 			a changes file (not the sources file).  Try to parse it
 			for prior source position and file index"
-		prevPos _ nil.
-		stamp _ ''.
+		prevPos := nil.
+		stamp := ''.
 		(preamble findString: 'methodsFor:' startingAt: 1) > 0
-			ifTrue: [tokens _ Scanner new scanTokens: preamble]
-			ifFalse: [tokens _ Array new  "ie cant be back ref"].
+			ifTrue: [tokens := Scanner new scanTokens: preamble]
+			ifFalse: [tokens := Array new  "ie cant be back ref"].
 		((tokens size between: 7 and: 8)
 			and: [(tokens at: tokens size-5) = #methodsFor:])
 			ifTrue:
 				[(tokens at: tokens size-3) = #stamp:
 				ifTrue: ["New format gives change stamp and unified prior pointer"
-						stamp _ tokens at: tokens size-2.
-						prevPos _ tokens last.
-						prevFileIndex _ sourceFilesCopy fileIndexFromSourcePointer: prevPos.
-						prevPos _ sourceFilesCopy filePositionFromSourcePointer: prevPos]
+						stamp := tokens at: tokens size-2.
+						prevPos := tokens last.
+						prevFileIndex := sourceFilesCopy fileIndexFromSourcePointer: prevPos.
+						prevPos := sourceFilesCopy filePositionFromSourcePointer: prevPos]
 				ifFalse: ["Old format gives no stamp; prior pointer in two parts"
-						prevPos _ tokens at: tokens size-2.
-						prevFileIndex _ tokens last].
-				cat _ tokens at: tokens size-4.
-				(prevPos = 0 or: [prevFileIndex = 0]) ifTrue: [prevPos _ nil]].
+						prevPos := tokens at: tokens size-2.
+						prevFileIndex := tokens last].
+				cat := tokens at: tokens size-4.
+				(prevPos = 0 or: [prevFileIndex = 0]) ifTrue: [prevPos := nil]].
 		((tokens size between: 5 and: 6)
 			and: [(tokens at: tokens size-3) = #methodsFor:])
 			ifTrue:
 				[(tokens at: tokens size-1) = #stamp:
 				ifTrue: ["New format gives change stamp and unified prior pointer"
-						stamp _ tokens at: tokens size].
-				cat _ tokens at: tokens size-2].
+						stamp := tokens at: tokens size].
+				cat := tokens at: tokens size-2].
  		self addItem:
 				(ChangeRecord new file: file position: position type: #method
 						class: class name category: category meta: meta stamp: stamp)
 			text: stamp , ' ' , class name , (meta ifTrue: [' class '] ifFalse: [' ']) , selector, ' {', cat, '}'.
-		position _ prevPos.
+		position := prevPos.
 		prevPos notNil ifTrue:
-			[file _ sourceFilesCopy at: prevFileIndex]].
+			[file := sourceFilesCopy at: prevFileIndex]].
 	sourceFilesCopy do: [:x | x notNil ifTrue: [x close]].
-	listSelections _ Array new: list size withAll: false
+	listSelections := Array new: list size withAll: false

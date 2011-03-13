@@ -3,5 +3,5 @@ extent: newExtent
 	Avoid extents where X or Y is zero."
 	(newExtent y = 0 or: [ newExtent x = 0 ]) ifTrue: [ ^self ].
 	self extent = newExtent ifTrue:[^self].
-	scalePoint _ newExtent asFloatPoint / (originalForm extent max: 1@1).
+	scalePoint := newExtent asFloatPoint / (originalForm extent max: 1@1).
 	self layoutChanged.

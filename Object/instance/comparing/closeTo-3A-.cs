@@ -3,6 +3,4 @@ closeTo: anObject
 	object. If = is redefined in any subclass, consider also redefining the
 	message hash."
 
-	| ans |
-	[ans _ self = anObject] ifError: [:aString :aReceiver | ^ false].
-	^ ans
+	^[self = anObject] ifError: [:aString :aReceiver | ^ false]

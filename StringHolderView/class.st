@@ -1,1 +1,0 @@
-StringHolderView class instanceVariableNames: ''

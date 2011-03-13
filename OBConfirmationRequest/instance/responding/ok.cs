@@ -1,2 +1,0 @@
-ok
-	self resume: true

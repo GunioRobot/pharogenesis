@@ -1,3 +1,0 @@
-allowReframeHandles: aBoolean
-
-	allowReframeHandles := aBoolean

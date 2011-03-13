@@ -6,4 +6,4 @@
 
 	<primitive: 47>
 	aNumber isNumber ifFalse: [^ false].
-	^ aNumber adaptToFloat: self andSend: #=
+	^ aNumber adaptToFloat: self andCompare: #=

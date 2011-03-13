@@ -6,5 +6,5 @@ peek: anInteger
 
 	| start |
 	self receiveData: anInteger.
-	start _ lastRead + 1.
+	start := lastRead + 1.
 	^inBuffer copyFrom: start to: ((lastRead + anInteger) min: inNextToWrite - 1).

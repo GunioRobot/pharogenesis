@@ -1,2 +1,2 @@
 extraParam: anObject
-	extra _ anObject
+	extra := anObject

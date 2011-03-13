@@ -4,5 +4,5 @@ nextCommand
 	| anIndex |
 	lastCommand ifNil: [^ nil].
 	lastCommand phase == #undone ifTrue: [^ lastCommand].
-	anIndex _ history indexOf: lastCommand ifAbsent: [^ nil].
+	anIndex := history indexOf: lastCommand ifAbsent: [^ nil].
 	^ anIndex = history size ifTrue: [nil] ifFalse: [history at: (anIndex + 1)]

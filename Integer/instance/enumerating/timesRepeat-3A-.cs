@@ -3,8 +3,8 @@ timesRepeat: aBlock
 	receiver."
 
 	| count |
-	count _ 1.
+	count := 1.
 	[count <= self]
 		whileTrue: 
 			[aBlock value.
-			count _ count + 1]
+			count := count + 1]

@@ -4,7 +4,7 @@ tooDangerousClasses
 		"Object will break immediately"
 		ProtoObject Object
 		"Contexts and their superclasses"
-		InstructionStream ContextPart BlockContext MethodContext
+		InstructionStream ContextPart BlockContext MethodContext BlockClosure
 		"Superclasses of basic collections"
 		Collection SequenceableCollection ArrayedCollection
 		"Collections known to the VM"
@@ -12,5 +12,5 @@ tooDangerousClasses
 		"Basic Numbers"
 		Magnitude Number SmallInteger Float
 		"Misc other"
-		LookupKey Association Link Point Rectangle PositionableStream UndefinedObject
+		LookupKey Association Link Point Rectangle Behavior PositionableStream UndefinedObject
 	)

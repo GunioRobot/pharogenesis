@@ -4,6 +4,6 @@ withFirstCharacterDownshifted
 	| answer |
 	
 	self ifEmpty: [^ self copy].
-	answer _ self copy.
+	answer := self copy.
 	answer at: 1 put: (answer at: 1) asLowercase.
 	^ answer. 

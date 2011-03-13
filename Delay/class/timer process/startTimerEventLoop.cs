@@ -2,7 +2,6 @@ startTimerEventLoop
 	"Start the timer event loop"
 	"Delay startTimerEventLoop"
 	self stopTimerEventLoop.
-	self stopTimerInterruptWatcher.
 	AccessProtect := Semaphore forMutualExclusion.
 	ActiveDelayStartTime := Time millisecondClockValue.
 	SuspendedDelays := 

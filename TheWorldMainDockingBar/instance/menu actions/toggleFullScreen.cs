@@ -1,6 +1,4 @@
 toggleFullScreen
-	ScreenController lastScreenModeSelected
-		ifTrue: [ScreenController new fullScreenOff]
-		ifFalse: [ScreenController new fullScreenOn].
+	Display toggleFullScreen.
 	self world positionSubmorphs.
-self class updateInstances
+	self class updateInstances

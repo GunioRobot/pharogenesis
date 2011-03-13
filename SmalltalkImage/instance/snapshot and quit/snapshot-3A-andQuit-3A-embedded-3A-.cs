@@ -8,7 +8,7 @@ snapshot: save andQuit: quit embedded: embeddedFlag
 	Object flushEvents.
 
 	(SourceFiles at: 2) ifNotNil:[
-		msg _ String streamContents: [ :s |
+		msg := String streamContents: [ :s |
 			s nextPutAll: '----';
 			nextPutAll: (save ifTrue: [ quit ifTrue: [ 'QUIT' ] ifFalse: [ 'SNAPSHOT' ] ]
 							ifFalse: [quit ifTrue: [ 'QUIT/NOSAVE' ] ifFalse: [ 'NOP' ]]);
@@ -18,21 +18,21 @@ snapshot: save andQuit: quit embedded: embeddedFlag
 			nextPutAll: ' priorSource: ';
 			print: LastQuitLogPosition ].
 		self assureStartupStampLogged.
-		save ifTrue: [ LastQuitLogPosition _ (SourceFiles at: 2) setToEnd; position ].
+		save ifTrue: [ LastQuitLogPosition := (SourceFiles at: 2) setToEnd; position ].
 		self logChange: msg.
 		Transcript cr; show: msg
 	].
 
 	Smalltalk processShutDownList: quit.
 	Cursor write show.
-	save ifTrue: [resuming _ embeddedFlag 
+	save ifTrue: [resuming := embeddedFlag 
 					ifTrue: [self snapshotEmbeddedPrimitive] 
 					ifFalse: [self snapshotPrimitive].  "<-- PC frozen here on image file"
 				resuming == false "guard against failure" ifTrue:
 					["Time to reclaim segment files is immediately after a save"
 					Smalltalk at: #ImageSegment
 						ifPresent: [:theClass | theClass reclaimObsoleteSegmentFiles]]]
-		ifFalse: [resuming _ false].
+		ifFalse: [resuming := false].
 	quit & (resuming == false) ifTrue: [self quitPrimitive].
 	Cursor normal show.
 	Smalltalk setGCParameters.
@@ -41,7 +41,9 @@ snapshot: save andQuit: quit embedded: embeddedFlag
 	resuming == true ifTrue:[
 		self setPlatformPreferences.
 		self recordStartupStamp].
-	Smalltalk isMorphic ifTrue: [SystemWindow wakeUpTopWindowUponStartup].
+	
+	UIManager default onSnapshot.
+	
 	"Now it's time to raise an error"
 	resuming == nil ifTrue: [self error:'Failed to write image file (disk full?)'].
 	^ resuming

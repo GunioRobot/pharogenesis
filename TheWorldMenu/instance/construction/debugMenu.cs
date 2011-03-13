@@ -1,31 +1,24 @@
 debugMenu
-
-        | menu |
-
-        menu _ self menu: 'debug...'.
-        self fillIn: menu from: { 
-                { 'inspect world' . { #myWorld . #inspect } }.
-                { 'explore world' . { #myWorld . #explore } }.
-                { 'inspect model' . { self . #inspectWorldModel } }.
-                        " { 'talk to world...' . { self . #typeInMessageToWorld } }."
-                { 'start MessageTally' . { self . #startMessageTally } }.
-                { 'start/browse MessageTally' . { self . #startThenBrowseMessageTally } }.
-                { 'open process browser' . { self . #openProcessBrowser } }.
-                nil.
-                        "(self hasProperty: #errorOnDraw) ifTrue:  Later make this come up only when needed."
-                { 'start drawing again' . { #myWorld . #resumeAfterDrawError } }.
-                { 'start stepping again' . { #myWorld . #resumeAfterStepError } }.
-                nil.
-                { 'call #tempCommand' . { #myWorld . #tempCommand } }.
-                { 'define #tempCommand' . { #myWorld . #defineTempCommand } }.
-        }.
+	| menu |
+	menu := MenuMorph new.
+	self fillIn: menu from: { 
+		{'Vm statistics' . { self . #vmStatistics}.  'obtain some intriguing data about the vm.'}.
+		{'Space left' . { self . #garbageCollect}. 'perform a full garbage-collection and report how many bytes of space remain in the image.'}.
+		{ 'Start profiling all Processes' . { self . #startMessageTally } }.
+		{ 'Start profiling UI ' . { self . #startThenBrowseMessageTally } }.
+		nil.
+		{ 'start drawing again' . { #myWorld . #resumeAfterDrawError } }.
+		{ 'start stepping again' . { #myWorld . #resumeAfterStepError } }.
+		nil.
+		{'close all debuggers'. { Utilities. #closeAllDebuggers } }.
+		{'restore display (r)'. { World. #restoreMorphicDisplay }. 'repaint the screen -- useful for removing unwanted display artifacts, lingering cursors, etc.' } }.
 	self haltOnceEnabled
 		ifTrue: [menu
-				add: 'disable halt/inspect once' translated
+				add: 'Disable halt/inspect once' translated
 				target: menu
 				action: #clearHaltOnce]
 		ifFalse: [menu
-				add: 'enable halt/inspect once' translated
+				add: 'Enable halt/inspect once' translated
 				target: menu
 				action: #setHaltOnce].
 	^menu

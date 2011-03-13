@@ -3,11 +3,11 @@ superclass: sup methodDict: md format: ft name: nm organization: org instVarName
 	message as the needed information.
 	Must only be sent to a new instance; else we would need Object flushCache."
 
-	superclass _ sup.
-	methodDict _ md.
-	format _ ft.
-	name _ nm.
-	instanceVariables _ nilOrArray.
-	classPool _ pool.
-	sharedPools _ poolSet.
+	superclass := sup.
+	methodDict := md.
+	format := ft.
+	name := nm.
+	instanceVariables := nilOrArray.
+	classPool := pool.
+	sharedPools := poolSet.
 	self organization: org.

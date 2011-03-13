@@ -4,7 +4,7 @@ copySelection
 	self lineSelectAndEmptyCheck: [^ self].
 
 	"Simulate 'substitute: self selection' without locking the controller"
-	UndoSelection _ self selection.
+	UndoSelection := self selection.
 	self undoer: #undoCutCopy: with: self clipboardText.
-	UndoInterval _ self selectionInterval.
+	UndoInterval := self selectionInterval.
 	self clipboardTextPut: UndoSelection

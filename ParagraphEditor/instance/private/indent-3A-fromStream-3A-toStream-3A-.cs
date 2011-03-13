@@ -4,21 +4,21 @@ indent: delta fromStream: inStream toStream: outStream
 	 to totally empty lines, and be sure nothing but tabs are removed from lines."
 
 	| ch skip cr tab prev atEnd |
-	cr _ Character cr.
-	tab _ Character tab.
+	cr := Character cr.
+	tab := Character tab.
 	delta > 0
 		ifTrue: "shift right"
-			[prev _ cr.
-			 [ch _ (atEnd _ inStream atEnd) ifTrue: [cr] ifFalse: [inStream next].
+			[prev := cr.
+			 [ch := (atEnd := inStream atEnd) ifTrue: [cr] ifFalse: [inStream next].
 			  (prev == cr and: [ch ~~ cr]) ifTrue:
 				[delta timesRepeat: [outStream nextPut: tab]].
 			  atEnd]
 				whileFalse:
 					[outStream nextPut: ch.
-					prev _ ch]]
+					prev := ch]]
 		ifFalse: "shift left"
-			[skip _ delta. "a negative number"
+			[skip := delta. "a negative number"
 			 [inStream atEnd] whileFalse:
-				[((ch _ inStream next) == tab and: [skip < 0]) ifFalse:
+				[((ch := inStream next) == tab and: [skip < 0]) ifFalse:
 					[outStream nextPut: ch].
-				skip _ ch == cr ifTrue: [delta] ifFalse: [skip + 1]]]
+				skip := ch == cr ifTrue: [delta] ifFalse: [skip + 1]]]

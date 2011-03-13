@@ -1,4 +1,4 @@
 setSelectedItems: items
 
-	selectedItems _ items.
+	selectedItems := items.
 	self changed

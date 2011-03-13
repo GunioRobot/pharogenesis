@@ -1,6 +1,6 @@
 StringHolder
 	subclass: #Workspace
 	instanceVariableNames: 'bindings acceptDroppedMorphs acceptAction mustDeclareVariables'
-	classVariableNames: ''
+	classVariableNames: 'LastContents'
 	poolDictionaries: ''
 	category: 'Tools-Base'

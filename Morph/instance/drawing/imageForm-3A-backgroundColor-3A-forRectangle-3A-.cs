@@ -1,6 +1,6 @@
 imageForm: depth backgroundColor: aColor forRectangle: rect
 	| canvas |
-	canvas _ Display defaultCanvasClass extent: rect extent depth: depth.
+	canvas := Display defaultCanvasClass extent: rect extent depth: depth.
 	canvas translateBy: rect topLeft negated
 		during:[:tempCanvas| 
 			tempCanvas fillRectangle: rect color: aColor.

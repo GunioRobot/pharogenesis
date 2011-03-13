@@ -4,12 +4,12 @@ fullPath: serverAndDirectory
 	| delim ii |
 	super fullPath: serverAndDirectory.		"set server and directory"
 	self isTypeFile ifTrue: [
-		fileName _  ''.
+		fileName :=  ''.
 		^ self
 	].
-	delim _ self pathNameDelimiter.
-	ii _ directory findLast: [:c | c = delim].
+	delim := self pathNameDelimiter.
+	ii := directory findLast: [:c | c = delim].
 	ii = 0
 		ifTrue: [self error: 'expecting directory and fileName']
-		ifFalse: [fileName _ directory copyFrom: ii+1 to: directory size.
-			directory _ (directory copyFrom: 1 to: directory size - fileName size - 1)].
+		ifFalse: [fileName := directory copyFrom: ii+1 to: directory size.
+			directory := (directory copyFrom: 1 to: directory size - fileName size - 1)].

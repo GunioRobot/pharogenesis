@@ -1,2 +1,0 @@
-sqkPage
-	^ page

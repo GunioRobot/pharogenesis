@@ -9,13 +9,13 @@ primitiveCopyFileNamed: srcName to: dstName
 	"If the plugin doesn't do it, go the slow way and lose the filetype info"
 	"This method may signal FileDoesNotExistException if either the source or 
 	dest files cannnot be opened; possibly permissions or bad name problems"
-	[[src _ FileStream readOnlyFileNamed: srcName]
+	[[src := FileStream readOnlyFileNamed: srcName]
 		on: FileDoesNotExistException
 		do: [^ self error: ('could not open file ', srcName)].
-	[dst _ FileStream forceNewFileNamed: dstName]
+	[dst := FileStream forceNewFileNamed: dstName]
 		on: FileDoesNotExistException
 		do: [^ self error: ('could not open file ', dstName)].
-	buffer _ String new: 50000.
+	buffer := String new: 50000.
 	[src atEnd]
 		whileFalse: [dst
 				nextPutAll: (src nextInto: buffer)]]

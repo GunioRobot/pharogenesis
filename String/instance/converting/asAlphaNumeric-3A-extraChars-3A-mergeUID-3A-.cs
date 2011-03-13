@@ -1,4 +1,4 @@
-asAlphaNumeric: totalSize extraChars: additionallyAllowed mergeUID: minimalSizeOfRandomPart
+asAlphaNumeric: totalSize extraChars: additionallyAllowed mergeUID: minimalSizeOfRandomPart 
 	"Generates a String with unique identifier ( UID ) qualities, the difference to a
 	 UUID is that its beginning is derived from the receiver, so that it has a meaning
 	 for a human reader.
@@ -25,39 +25,46 @@ asAlphaNumeric: totalSize extraChars: additionallyAllowed mergeUID: minimalSizeO
 		at the bottom is a snippet for your own calculations  
 		Note: the calculated propabilites are theoretical,
 			for the actually used random generator they may be much worse"
-
 	| stream out sizeOfFirstPart index ascii ch skip array random |
-	totalSize > minimalSizeOfRandomPart 
-		ifFalse: [ self errorOutOfBounds ].
-	stream := ReadStream on: self.
-	out := WriteStream on: ( String new: totalSize ).
+	totalSize > minimalSizeOfRandomPart ifFalse: [ self errorOutOfBounds ].
+	stream := self readStream.
+	out :=  (String new: totalSize) writeStream.
 	index := 0.
 	skip := true.
 	sizeOfFirstPart := totalSize - minimalSizeOfRandomPart - 1.
-	[ stream atEnd or: [ index >= sizeOfFirstPart ]]
-	whileFalse: [
-		((( ascii := ( ch := stream next ) asciiValue ) >= 65 and: [ ascii <= 90 ]) or: [
-			( ascii >= 97 and: [ ascii <= 122 ]) or: [			 
-			ch isDigit or: [
-			additionallyAllowed notNil and: [ additionallyAllowed includes: ch ]]]])
-		ifTrue: [
-			skip
-				ifTrue: [ out nextPut: ch asUppercase ]
-				ifFalse: [ out nextPut: ch ].
-			index := index + 1.
-			skip := false ]
-		ifFalse: [ skip := true ]].
+	[ stream atEnd or: [ index >= sizeOfFirstPart ] ] whileFalse: 
+		[ (((ascii := (ch := stream next) asciiValue) >= 65 and: [ ascii <= 90 ]) or: 
+			[ (ascii >= 97 and: [ ascii <= 122 ]) or: 
+				[ ch isDigit or: [ additionallyAllowed notNil and: [ additionallyAllowed includes: ch ] ] ] ]) 
+			ifTrue: 
+				[ skip 
+					ifTrue: [ out nextPut: ch asUppercase ]
+					ifFalse: [ out nextPut: ch ].
+				index := index + 1.
+				skip := false ]
+			ifFalse: [ skip := true ] ].
 	out nextPut: $_.
 	array := Array new: 62.
-	1 to: 26 do: [ :i |
-		array at: i put: ( i + 64 ) asCharacter.
-		array at: i + 26 put: ( i + 96 ) asCharacter ].
-	53 to: 62 do: [ :i |
-		array at: i put: ( i - 5 ) asCharacter ].
-	random := UUIDGenerator default randomGenerator. 
-	totalSize - index - 1 timesRepeat: [
-		out nextPut: ( array atRandom: random )].
-	^out contents
+	1 
+		to: 26
+		do: 
+			[ :i | 
+			array 
+				at: i
+				put: (i + 64) asCharacter.
+			array 
+				at: i + 26
+				put: (i + 96) asCharacter ].
+	53 
+		to: 62
+		do: 
+			[ :i | 
+			array 
+				at: i
+				put: (i - 5) asCharacter ].
+	random := UUIDGenerator default randomGenerator.
+	totalSize - index - 1 timesRepeat: [ out nextPut: (array atRandom: random) ].
+	^ out contents
 
 	"	calculation of probability p for failure of uniqueness in n UIDs
 		Note: if answer will be converted to upper or lower case replace 62 with 36
@@ -73,7 +80,7 @@ asAlphaNumeric: totalSize extraChars: additionallyAllowed mergeUID: minimalSizeO
 	p   
 
 	approximation formula: n squared / ( 62.0 raisedTo: sizeOfRandomPart ) / 2 
-	" 
+	"
 
 	"'Crop SketchMorphs and Grab Screen Rect to JPG' 
 			asAlphaNumeric: 31 extraChars: nil mergeUID: 10  
@@ -84,4 +91,3 @@ asAlphaNumeric: totalSize extraChars: additionallyAllowed mergeUID: minimalSizeO
 	 'version-', ( '1.1.2' replaceAll: $. with: $- )
 			asAlphaNumeric: 31 extraChars: #( $- ) mergeUID: 10    
 				'Version-1-1-2_kuz2tMg2xX9iRLDVR'"
-		

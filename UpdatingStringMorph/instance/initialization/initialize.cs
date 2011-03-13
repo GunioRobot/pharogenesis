@@ -3,12 +3,12 @@ initialize
 	variables "
 	super initialize.
 ""
-	format _ #default.
+	format := #default.
 	"formats: #string, #default"
-	target _ getSelector _ putSelector _ nil.
-	floatPrecision _ 1.
-	growable _ true.
-	stepTime _ 50.
-	autoAcceptOnFocusLoss _ true.
-	minimumWidth _ 8.
-	maximumWidth _ 300
+	target := getSelector := putSelector := nil.
+	floatPrecision := 1.
+	growable := true.
+	stepTime := 50.
+	autoAcceptOnFocusLoss := true.
+	minimumWidth := 8.
+	maximumWidth := 300

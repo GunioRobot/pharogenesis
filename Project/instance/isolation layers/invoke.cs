@@ -5,4 +5,4 @@ invoke
 	isolatedHead ifFalse: [^ self error: 'This isnt an isolation layer.'].
 	inForce ifTrue: [^ self error: 'This layer is already in force.'].
 	changeSet invoke.	
-	inForce _ true.
+	inForce := true.

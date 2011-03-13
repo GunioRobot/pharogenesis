@@ -1,4 +1,4 @@
 defaultTextPrinter
 	"This is the global default TextPrinter instance."
-	DefaultTextPrinter isNil ifTrue: [DefaultTextPrinter _ self new].
-	^DefaultTextPrinter
+	DefaultTextPrinter isNil ifTrue: [ DefaultTextPrinter := self new ].
+	^ DefaultTextPrinter

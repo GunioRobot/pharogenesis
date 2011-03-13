@@ -1,14 +1,14 @@
-copyFrom: sourceRectangle in: srcForm to: destPt
+copyFrom: sourceRectangle in: srcForm to: destPt 
 	| sourceOrigin |
-	sourceForm _ srcForm.
-	halftoneForm _ nil.
-	combinationRule _ 3.  "store"
-	destX _ destPt x.
-	destY _ destPt y.
-	sourceOrigin _ sourceRectangle origin.
-	sourceX _ sourceOrigin x.
-	sourceY _ sourceOrigin y.
-	width _ sourceRectangle width.
-	height _ sourceRectangle height.
-	colorMap _ srcForm colormapIfNeededFor: destForm.
+	sourceForm := srcForm.
+	halftoneForm := nil.
+	combinationRule := 3.	"store"
+	destX := destPt x.
+	destY := destPt y.
+	sourceOrigin := sourceRectangle origin.
+	sourceX := sourceOrigin x.
+	sourceY := sourceOrigin y.
+	width := sourceRectangle width.
+	height := sourceRectangle height.
+	colorMap := srcForm colormapIfNeededFor: destForm.
 	self copyBits

@@ -1,1 +1,0 @@
-GeePrinterDialogMorph class instanceVariableNames: ''

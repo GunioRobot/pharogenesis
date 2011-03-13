@@ -1,1 +1,0 @@
-BackgroundMorph class instanceVariableNames: ''

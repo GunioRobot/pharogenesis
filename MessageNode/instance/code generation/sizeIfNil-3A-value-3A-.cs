@@ -1,13 +1,13 @@
 sizeIfNil: encoder value: forValue
 
 	| theNode theSize theSelector |
-	equalNode _ encoder encodeSelector: #==.
-	sizes _ Array new: 1.
-	theNode _ arguments first.
-	theSelector _ #ifNotNil:.
+	equalNode := encoder encodeSelector: #==.
+	sizes := Array new: 1.
+	theNode := arguments first.
+	theSelector := #ifNotNil:.
 	forValue
 		ifTrue:
-			[sizes at: 1 put: (theSize _ (1 "pop" + (theNode sizeForEvaluatedValue: encoder))).
+			[sizes at: 1 put: (theSize := (1 "pop" + (theNode sizeForEvaluatedValue: encoder))).
 			 ^(receiver sizeForValue: encoder) +
 				2 "Dup. LdNil" +
 				(equalNode size: encoder args: 1 super: false) +
@@ -16,7 +16,7 @@ sizeIfNil: encoder value: forValue
 					dist: theSize) +
 				theSize]
 		ifFalse:
-			[sizes at: 1 put: (theSize _ (theNode sizeForEvaluatedEffect: encoder)).
+			[sizes at: 1 put: (theSize := (theNode sizeForEvaluatedEffect: encoder)).
 			 ^(receiver sizeForValue: encoder) +
 				1 "LdNil" +
 				(equalNode size: encoder args: 1 super: false) +

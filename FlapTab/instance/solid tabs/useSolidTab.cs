@@ -2,8 +2,8 @@ useSolidTab
 	| thickness colorToUse |
 	self preserveDetails.
 
-	thickness _ self valueOfProperty: #priorThickness ifAbsent: [20].
-	colorToUse _ self valueOfProperty: #priorColor ifAbsent: [Color red muchLighter].
+	thickness := self valueOfProperty: #priorThickness ifAbsent: [20].
+	colorToUse := self valueOfProperty: #priorColor ifAbsent: [Color red muchLighter].
 	self color: colorToUse.
 	self removeAllMorphs.
 	

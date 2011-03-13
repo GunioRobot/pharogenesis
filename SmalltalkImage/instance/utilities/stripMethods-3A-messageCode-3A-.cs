@@ -4,21 +4,21 @@ stripMethods: tripletList messageCode: messageString
 	| aClass sel keywords codeString |
 	tripletList do:
 		[:triplet |  
-			(aClass _ (Smalltalk at: triplet first ifAbsent: [nil])) notNil ifTrue:
+			(aClass := (Smalltalk at: triplet first ifAbsent: [nil])) notNil ifTrue:
 				[triplet second == #class ifTrue:
-					[aClass _ aClass class].
-				sel _ triplet third.
-				keywords _ sel keywords.
+					[aClass := aClass class].
+				sel := triplet third.
+				keywords := sel keywords.
 				(keywords size == 1 and: [keywords first asSymbol isKeyword not])
 					ifTrue:
-						[codeString _ keywords first asString]
+						[codeString := keywords first asString]
 					ifFalse:
-						[codeString _ ''.
+						[codeString := ''.
 						keywords withIndexDo:
 							[:kwd :index |
-								codeString _ codeString, ' ', (keywords at: index), ' ',
+								codeString := codeString, ' ', (keywords at: index), ' ',
 									'arg', index printString]].
-				codeString _ codeString, '
+				codeString := codeString, '
 	self codeStrippedOut: ', (messageString surroundedBySingleQuotes).
 
 				aClass compile: codeString classified: 'stripped']]

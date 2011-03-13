@@ -1,2 +1,0 @@
-memberIndex
-	^memberIndex

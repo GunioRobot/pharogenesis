@@ -5,8 +5,8 @@ innerPixelRectFor: pv orNot: not
 	that are DIFFERENT from the supplied (background) value"
 
 	| xTally yTally |
-	xTally _ self xTallyPixelValue: pv orNot: not.
-	yTally _ self yTallyPixelValue: pv orNot: not.
+	xTally := self xTallyPixelValue: pv orNot: not.
+	yTally := self yTallyPixelValue: pv orNot: not.
 	^ ((xTally findFirst: [:t | t>0]) - 1) @ ((yTally findFirst: [:t | t>0]) - 1)
 		corner:
 			(xTally findLast: [:t | t>0])@(yTally findLast: [:t | t>0])

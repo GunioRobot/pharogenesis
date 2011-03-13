@@ -1,2 +1,0 @@
-filterAutoInstall
-	^[:package | package isInstallable]

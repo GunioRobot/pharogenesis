@@ -1,3 +1,3 @@
 canSurrenderToOS: aBoolean
 
-	CanSurrenderToOS _ aBoolean
+	CanSurrenderToOS := aBoolean

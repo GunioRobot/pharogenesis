@@ -1,3 +1,3 @@
 refreshWorld
 	| aWorld |
-	(aWorld _ self world) ifNotNil: [aWorld displayWorldSafely]
+	(aWorld := self world) ifNotNil: [aWorld displayWorldSafely]

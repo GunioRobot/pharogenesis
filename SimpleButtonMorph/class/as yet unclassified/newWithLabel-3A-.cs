@@ -1,3 +1,3 @@
 newWithLabel: labelString
 
-	^ self basicNew initializeWithLabel: labelString
+	^ self new label:  labelString

@@ -3,11 +3,11 @@ runsFrom: start to: stop do: aBlock
 	| run value index |
 	start > stop ifTrue:[^self].
 	self at: start setRunOffsetAndValue:[:firstRun :offset :firstValue|
-		run _ firstRun.
-		value _ firstValue.
-		index _ start + (runs at: run) - offset.
+		run := firstRun.
+		value := firstValue.
+		index := start + (runs at: run) - offset.
 		[aBlock value: value.
 		index <= stop] whileTrue:[
-			run _ run + 1.
-			value _ values at: run.
-			index _ index + (runs at: run)]].
+			run := run + 1.
+			value := values at: run.
+			index := index + (runs at: run)]].

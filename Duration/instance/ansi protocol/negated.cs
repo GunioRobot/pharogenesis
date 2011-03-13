@@ -1,3 +1,4 @@
 negated
-
-	^ self class seconds: seconds negated nanoSeconds: nanos negated
+ 
+ 	^ self class seconds: seconds negated nanoSeconds: nanos negated
+ 

@@ -1,7 +1,7 @@
 specifyDashedLine
 
 	| executableSpec newSpec |
-	executableSpec _ FillInTheBlank
+	executableSpec := UIManager default
 		request:
 'Enter a dash specification as
 { major dash length. minor dash length. minor dash color }
@@ -11,9 +11,9 @@ A blank response will remove the dash specification.
 where the 4th ityem is zero, and the 5th is the number of pixels
 by which the dashes will move in each step of animation]' translated
 		initialAnswer: '{ 10. 5. Color red }'.
-	executableSpec isEmpty ifTrue:
+	executableSpec isEmptyOrNil ifTrue:
 		[^ self stopStepping; dashedBorder: nil].
-	newSpec _ [Compiler evaluate: executableSpec] ifError:
+	newSpec := [Compiler evaluate: executableSpec] ifError:
 		[^ self stopStepping; dashedBorder: nil].
 	newSpec first isNumber & newSpec second isNumber & newSpec third isColor ifFalse:
 		[^ self stopStepping; dashedBorder: nil].

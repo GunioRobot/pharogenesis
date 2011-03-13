@@ -1,3 +1,3 @@
 deleteOnMouseUp: aBoolean
 
-	deleteOnMouseUp _ aBoolean.
+	deleteOnMouseUp := aBoolean.

@@ -6,8 +6,8 @@ monthDayTime24StringFrom: aSecondCount
           Utilities monthDayTime24StringFrom: Time primSecondsClock
 "
 
-	aDate _ Date fromSeconds: aSecondCount.
-	aTime _ Time fromSeconds: aSecondCount \\ 86400.
+	aDate := Date fromSeconds: aSecondCount.
+	aTime := Time fromSeconds: aSecondCount \\ 86400.
 
 	^ (aDate dayOfMonth asTwoCharacterString), 
 		(aDate monthName copyFrom: 1 to: 3), 

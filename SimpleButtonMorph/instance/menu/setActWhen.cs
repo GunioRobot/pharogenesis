@@ -1,7 +1,8 @@
 setActWhen
-
 	| selections |
-	selections _ #(buttonDown buttonUp whilePressed startDrag).
-	actWhen := (SelectionMenu 
-				labels: (selections collect: [:t | t translated]) selections: selections) 
-					startUpWithCaption: 'Choose one of the following conditions' translated
+	selections := #(#buttonDown #buttonUp #whilePressed #startDrag ).
+	actWhen := UIManager default
+				chooseFrom: (selections 
+						collect: [:t | t translated])
+				values: selections
+				title: 'Choose one of the following conditions' translated

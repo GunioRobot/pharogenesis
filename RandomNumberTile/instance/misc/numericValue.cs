@@ -1,2 +1,0 @@
-numericValue
-	^ super numericValue atRandom

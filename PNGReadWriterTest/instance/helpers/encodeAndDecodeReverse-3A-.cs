@@ -41,3 +41,4 @@ encodeAndDecodeReverse: original
 			self assert: ((c1 alpha * 255) truncated - (c2 alpha * 255) truncated) abs <= maxErr.
 		].
 	].
+	self deleteFile.

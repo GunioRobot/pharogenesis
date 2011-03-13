@@ -2,7 +2,7 @@ traitComposition: aComposition methodDict: aMethodDict localSelectors: aSet orga
 
 	"Used by copy of Trait"
 
-	localSelectors _ aSet.
-	methodDict _ aMethodDict.
-	traitComposition _ aComposition.
+	localSelectors := aSet.
+	methodDict := aMethodDict.
+	traitComposition := aComposition.
 	self organization: aClassOrganization

@@ -2,14 +2,14 @@ presumedSentMessages   | sent |
 "Smalltalk presumedSentMessages"
 
 	"The following should be preserved for doIts, etc"
-	sent _ IdentitySet new.
+	sent := IdentitySet new.
 	#( rehashWithoutBecome compactSymbolTable rebuildAllProjects
 		browseAllSelect:  lastRemoval
 		scrollBarValue: vScrollBarValue: scrollBarMenuButtonPressed: 
 		withSelectionFrom:  to: removeClassNamed:
-		dragon: hilberts: mandala: web test3 factorial tinyBenchmarks benchFib
+		dragon: hilberts: mandala: web factorial tinyBenchmarks benchFib
 		newDepth: restoreAfter: forgetDoIts zapAllMethods obsoleteClasses
-		removeAllUnSentMessages abandonSources removeUnreferencedKeys
+		removeAllUnsentMessages abandonSources removeUnreferencedKeys
 		reclaimDependents zapOrganization condenseChanges browseObsoleteReferences
 		subclass:instanceVariableNames:classVariableNames:poolDictionaries:category:
 		methodsFor:stamp: methodsFor:stamp:prior: instanceVariableNames:

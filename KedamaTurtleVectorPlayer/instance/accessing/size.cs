@@ -1,3 +1,0 @@
-size
-
-	^ arrays first size.

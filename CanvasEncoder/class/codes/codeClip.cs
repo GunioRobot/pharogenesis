@@ -1,2 +1,0 @@
-codeClip
-	^$A

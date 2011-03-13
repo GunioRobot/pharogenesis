@@ -1,3 +1,3 @@
 seconds
-
-	^ Duration seconds: self
+ 
+ 	^ Duration seconds: self

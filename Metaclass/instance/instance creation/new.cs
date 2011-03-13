@@ -3,5 +3,5 @@ new
 	one already exists."
 
 	thisClass class ~~ self
-		ifTrue: [^thisClass _ self basicNew]
+		ifTrue: [^thisClass := self basicNew]
 		ifFalse: [self error: 'A Metaclass should only have one instance!']

@@ -1,2 +1,0 @@
-isEToyVocabulary
-	^true

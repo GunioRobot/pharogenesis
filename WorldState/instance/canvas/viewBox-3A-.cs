@@ -1,3 +1,3 @@
 viewBox: x
 
-	viewBox _ x
+	viewBox := x

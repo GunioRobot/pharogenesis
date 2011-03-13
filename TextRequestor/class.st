@@ -1,0 +1,1 @@
+TextRequestor class instanceVariableNames: ''

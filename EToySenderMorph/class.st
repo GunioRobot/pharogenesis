@@ -1,1 +1,0 @@
-EToySenderMorph class instanceVariableNames: ''

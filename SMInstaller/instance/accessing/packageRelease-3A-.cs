@@ -1,2 +1,0 @@
-packageRelease: aPackageRelease
-	packageRelease := aPackageRelease

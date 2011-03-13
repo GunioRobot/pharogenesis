@@ -1,0 +1,1 @@
+ExclusiveWeakMessageSend class instanceVariableNames: ''

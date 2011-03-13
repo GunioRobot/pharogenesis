@@ -1,6 +1,6 @@
 areasRemainingToFill: aRectangle
 	| areas |
-	(areas _ super areasRemainingToFill: aRectangle) isEmpty
+	(areas := super areasRemainingToFill: aRectangle) isEmpty
 		ifTrue: [^ areas "good news -- complete occlusion"].
 	"Check for special case that this is scrollbar damage"
 	((bounds topLeft - (14@0) corner: bounds bottomRight) containsRect: aRectangle) ifTrue:

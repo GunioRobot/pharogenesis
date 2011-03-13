@@ -1,3 +1,3 @@
 isExpanded: aBoolean
 
-	isExpanded _ aBoolean
+	isExpanded := aBoolean

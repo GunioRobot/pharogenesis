@@ -3,10 +3,10 @@ storeDataOn: aDataStream
 	| cntInstVars cntIndexedVars ti localInstVars |
 
 	"block my owner unless he is written out by someone else"
-	cntInstVars _ self class instSize.
-	cntIndexedVars _ self basicSize.
-	localInstVars _ Morph instVarNames.
-	ti _ 2.  
+	cntInstVars := self class instSize.
+	cntIndexedVars := self basicSize.
+	localInstVars := Morph instVarNames.
+	ti := 2.  
 	((localInstVars at: ti) = 'owner') & (Morph superclass == Object) ifFalse:
 			[self error: 'this method is out of date'].
 	aDataStream

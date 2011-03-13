@@ -1,4 +1,4 @@
 boundingBox
 	clippingBox == nil
-		ifTrue: [clippingBox _ super boundingBox].
+		ifTrue: [clippingBox := super boundingBox].
 	^ clippingBox

@@ -1,0 +1,2 @@
+cr
+	self defaultLogger cr

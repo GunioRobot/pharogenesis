@@ -1,3 +1,0 @@
-clear
-
-	self sendMessageToCostume: #clear.

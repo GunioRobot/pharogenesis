@@ -3,10 +3,10 @@ addFlexShell
 
 	| oldHalo flexMorph myWorld anIndex |
 
-	myWorld _ self world.
-	oldHalo _ self halo.
-	anIndex _ self owner submorphIndexOf: self.
-	self owner addMorph: (flexMorph _ self newTransformationMorph asFlexOf: self)
+	myWorld := self world.
+	oldHalo := self halo.
+	anIndex := self owner submorphIndexOf: self.
+	self owner addMorph: (flexMorph := self newTransformationMorph asFlexOf: self)
 		asElementNumber: anIndex.
 	self transferStateToRenderer: flexMorph.
 	oldHalo ifNotNil: [oldHalo setTarget: flexMorph].

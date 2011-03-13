@@ -1,2 +1,0 @@
-email: address
-	email := address

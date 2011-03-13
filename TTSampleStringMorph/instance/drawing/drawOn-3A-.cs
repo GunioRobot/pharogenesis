@@ -2,12 +2,12 @@ drawOn: aCanvas
 	| xStart glyph |
 	(font isNil or:[string isNil or:[string isEmpty]]) 
 		ifTrue:[^aCanvas frameRectangle: bounds color: Color black].
-	xStart _ 0.
+	xStart := 0.
 	aCanvas asBalloonCanvas preserveStateDuring:[:balloonCanvas|
 		balloonCanvas transformBy: self transform.
 		balloonCanvas aaLevel: self smoothing.
 		string do:[:char|
-			glyph _ font at: char.
+			glyph := font at: char.
 			balloonCanvas preserveStateDuring:[:subCanvas|
 				subCanvas transformBy: (MatrixTransform2x3 withOffset: xStart@0).
 				subCanvas 
@@ -15,6 +15,6 @@ drawOn: aCanvas
 					color: color 
 					borderWidth: borderWidth 
 					borderColor: borderColor].
-			xStart _ xStart + glyph advanceWidth.
+			xStart := xStart + glyph advanceWidth.
 		].
 	].

@@ -8,4 +8,3 @@ submit
 	SMTPClient deliverMailFrom: message from to: (Array with: message to) text: message text usingServer: self smtpServer.
 
 	morphicWindow ifNotNil: [morphicWindow delete].
-	mvcWindow ifNotNil: [mvcWindow controller close]

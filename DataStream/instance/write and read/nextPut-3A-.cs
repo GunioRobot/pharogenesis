@@ -2,15 +2,15 @@ nextPut: anObject
 	"Write anObject to the receiver stream. Answer anObject."
 	| typeID selector objectToStore |
 
-	typeID _ self typeIDFor: anObject.
+	typeID := self typeIDFor: anObject.
 	(self tryToPutReference: anObject typeID: typeID)
 		ifTrue: [^ anObject].
 
-	objectToStore _ (self objectIfBlocked: anObject) objectForDataStream: self.
-	objectToStore == anObject ifFalse: [typeID _ self typeIDFor: objectToStore].
+	objectToStore := (self objectIfBlocked: anObject) objectForDataStream: self.
+	objectToStore == anObject ifFalse: [typeID := self typeIDFor: objectToStore].
 
 	byteStream nextPut: typeID.
-	selector _ #(writeNil: writeTrue: writeFalse: writeInteger: 
+	selector := #(writeNil: writeTrue: writeFalse: writeInteger: 
 		writeStringOld: writeSymbol: writeByteArray:
 		writeArray: writeInstance: errorWriteReference: writeBitmap:
 		writeClass: writeUser: writeFloat: writeRectangle: == "<-16 short inst" 

@@ -1,3 +1,3 @@
 content: retrievedContent
-	content _ retrievedContent.
+	content := retrievedContent.
 	semaphore signal

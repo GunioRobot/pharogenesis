@@ -3,12 +3,12 @@ tallyOfSubObjects: anObject
 	1450->Point   835->Rectangle   549->Array   300->String"
 
 	| dummy bag |
-	dummy _ ReferenceStream on: (DummyStream on: nil).
+	dummy := ReferenceStream on: (DummyStream on: nil).
 		"Write to a fake Stream, not a file"
 	"Collect all objects"
 	dummy rootObject: anObject.	"inform him about the root"
 	dummy nextPut: anObject.
-	bag _ Bag new.
+	bag := Bag new.
 	dummy references keysDo: [:key | bag add: key class name].
 	"(bag sortedCounts) is the SortedCollection"
 	(StringHolder new contents: bag sortedCounts printString) 

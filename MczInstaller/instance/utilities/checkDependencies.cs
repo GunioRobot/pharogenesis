@@ -1,8 +1,8 @@
 checkDependencies
 	| dependencies unmet |
-	dependencies _ (zip membersMatching: 'dependencies/*') 
+	dependencies := (zip membersMatching: 'dependencies/*') 
 			collect: [:member | self extractInfoFrom: (self parseMember: member)].
-	unmet _ dependencies reject: [:dep |
+	unmet := dependencies reject: [:dep |
 		self versions: Versions anySatisfy: (dep at: #id)].
 	^ unmet isEmpty or: [
 		self confirm: (String streamContents: [:s|

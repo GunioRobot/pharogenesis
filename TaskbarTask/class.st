@@ -1,0 +1,1 @@
+TaskbarTask class instanceVariableNames: ''

@@ -16,7 +16,7 @@ answ := (UIManager default
 answ = 1 ifTrue: [
 	tell := 'Name of the modern class {1} should translate to:' translated format: {oldName}.
 	choice := UIManager default request: tell.		"class name"
-	(choice size = 0) 
+	choice isEmptyOrNil 
 		ifTrue: [answ := 'conversion method needed']
 		ifFalse: [newName := choice.
 			answ := Smalltalk at: newName asSymbol 

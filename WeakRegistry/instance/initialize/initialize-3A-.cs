@@ -1,3 +1,3 @@
 initialize: n
-	valueDictionary := WeakKeyDictionary new: n.
+	valueDictionary := WeakIdentityKeyDictionary new: n.
 	accessLock := Semaphore forMutualExclusion.

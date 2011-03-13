@@ -1,2 +1,0 @@
-dialogPaneBorderWidth
-	^ 1

@@ -1,6 +1,6 @@
 testRelativeFTP
 	
-	baseUrl _ 'ftp://somewhere/some/dir/?query#fragment' asUrl.
-	url _ baseUrl newFromRelativeText: 'ftp://a.b'.
+	baseUrl := 'ftp://somewhere/some/dir/?query#fragment' asUrl.
+	url := baseUrl newFromRelativeText: 'ftp://a.b'.
 
 	self assert: url asString =  'ftp://a.b/'.

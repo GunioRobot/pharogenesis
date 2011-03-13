@@ -1,2 +1,0 @@
-root
-	^self navigationPanel root

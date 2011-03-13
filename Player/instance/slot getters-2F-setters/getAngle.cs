@@ -1,2 +1,0 @@
-getAngle
-	^ self getValueFromCostume: #angle

@@ -1,3 +1,0 @@
-offsetX
-
-	^currentPage offsetX

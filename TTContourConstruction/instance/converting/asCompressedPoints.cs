@@ -7,11 +7,9 @@ asCompressedPoints
 	maxPt := 16r8000 asPoint.
 	"Check if we need full 32bit range"
 	fullRange := points anySatisfy: [:any| any asPoint < minPt or:[any asPoint > maxPt]].
-	fullRange ifTrue:[
-		out := WriteStream on: (PointArray new: points size).
-	] ifFalse:[
-		out := WriteStream on: (ShortPointArray new: points size).
-	].
+	out := fullRange
+		ifTrue: [(PointArray new: points size) writeStream]
+		ifFalse:[(ShortPointArray new: points size) writeStream].
 	self segmentsDo:[:segment|
 		out nextPut: segment start.
 		segment isBezier2Segment 

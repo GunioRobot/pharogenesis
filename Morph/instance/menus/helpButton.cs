@@ -2,7 +2,7 @@ helpButton
 	"Answer a button whose action would be to put up help concerning the receiver"
 
 	| aButton |
-	aButton _ SimpleButtonMorph new.
+	aButton := SimpleButtonMorph new.
 	aButton
 		target: self;
 		color: ColorTheme current helpColor;

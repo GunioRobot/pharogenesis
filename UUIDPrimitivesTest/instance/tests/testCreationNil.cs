@@ -1,6 +1,6 @@
 testCreationNil
 	| uuid |
-	uuid _ UUID nilUUID.
+	uuid := UUID nilUUID.
 	self should: [uuid size = 16].
 	self should: [uuid isNilUUID].
 	self should: [uuid asString size = 36].

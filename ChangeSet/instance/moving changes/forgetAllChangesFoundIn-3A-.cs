@@ -9,19 +9,19 @@ forgetAllChangesFoundIn: otherChangeSet
 "  Old code...
 	aChangeSet changedClassNames do: 
 		[:className |
-			(cls _ Smalltalk classNamed: className) ~~ nil ifTrue:
-				[itsMethodChanges _ aChangeSet methodChanges at: className 
+			(cls := Smalltalk classNamed: className) ~~ nil ifTrue:
+				[itsMethodChanges := aChangeSet methodChanges at: className 
 						ifAbsent: [Dictionary new].
 				itsMethodChanges associationsDo: [:assoc | 
 					self forgetChange: assoc value forSelector: assoc key class: cls].
-				myClassChange _ self classChangeAt: className.
+				myClassChange := self classChangeAt: className.
 				myClassChange size > 0 ifTrue:
 					[(aChangeSet classChangeAt: className) do:
 						[:aChange | myClassChange remove: aChange ifAbsent: []]].
 				self noteClassForgotten: className]].
 
 	aChangeSet classRemoves do:
-		[:className | (recorder _ changeRecords at: className ifAbsent: [])
+		[:className | (recorder := changeRecords at: className ifAbsent: [])
 			ifNotNil: [recorder forgetClassRemoval]].
 	self expungeEmptyClassChangeEntries
 "

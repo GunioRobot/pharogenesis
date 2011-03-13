@@ -1,0 +1,2 @@
+initialize
+	references := OrderedCollection new

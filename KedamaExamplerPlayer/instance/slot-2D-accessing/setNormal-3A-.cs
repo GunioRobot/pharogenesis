@@ -1,2 +1,0 @@
-setNormal: degree
-

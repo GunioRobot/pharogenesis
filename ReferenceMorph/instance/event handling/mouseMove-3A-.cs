@@ -2,7 +2,7 @@ mouseMove: evt
 	"The mouse moved while the butten was down in the receiver"
 
 	| aForm |
-	aForm _ self imageForm.
+	aForm := self imageForm.
 	(self containsPoint: evt cursorPoint)
 		ifTrue:
 			[aForm reverse displayOn: Display]

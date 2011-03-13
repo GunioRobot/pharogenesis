@@ -1,2 +1,0 @@
-codeForce
-	^$J

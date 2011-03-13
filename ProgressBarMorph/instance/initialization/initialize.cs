@@ -1,5 +1,5 @@
 initialize
 	super initialize.
-	progressColor _ Color green.
+	progressColor := Color green.
 	self value: (ValueHolder new contents: 0.0).
-	lastValue _ 0.0
+	lastValue := 0.0

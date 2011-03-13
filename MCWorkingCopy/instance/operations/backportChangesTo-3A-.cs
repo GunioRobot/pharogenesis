@@ -7,7 +7,7 @@ backportChangesTo: aVersionInfo
 	(MCChangeSelectionRequest new
 		patch: fullPatch;
 		label: 'Changes to Backport';
-		signal ) ifNotNilDo:
+		signal ) ifNotNil:
 		[:partialPatch |
 		newSnapshot := MCPatcher apply: partialPatch to: baseVersion snapshot.
 		newAncestry := MCWorkingAncestry new

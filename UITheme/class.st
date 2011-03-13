@@ -1,0 +1,1 @@
+UITheme class instanceVariableNames: 'defaultSettings'

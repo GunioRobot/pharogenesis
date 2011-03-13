@@ -1,2 +1,2 @@
 alignment: aNumber
-	alignment _ aNumber.
+	alignment := aNumber.

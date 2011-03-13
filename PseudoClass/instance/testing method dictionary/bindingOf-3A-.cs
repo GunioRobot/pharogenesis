@@ -1,5 +1,5 @@
 bindingOf: varName
 	self exists ifTrue:[
-		(self realClass bindingOf: varName) ifNotNilDo:[:binding| ^binding].
+		(self realClass bindingOf: varName) ifNotNil:[:binding| ^binding].
 	].
 	^Smalltalk bindingOf: varName asSymbol

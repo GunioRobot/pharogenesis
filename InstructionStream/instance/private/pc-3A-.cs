@@ -1,3 +1,3 @@
 pc: n
 
-	pc _ n
+	pc := n

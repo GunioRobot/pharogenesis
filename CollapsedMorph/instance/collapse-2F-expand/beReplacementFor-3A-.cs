@@ -1,13 +1,13 @@
 beReplacementFor: aMorph
 
 	| itsWorld priorPosition |
-	(itsWorld _ aMorph world) ifNil: [^self].
-	uncollapsedMorph _ aMorph.
+	(itsWorld := aMorph world) ifNil: [^self].
+	uncollapsedMorph := aMorph.
 			
 	self setLabel: aMorph externalName.
 	aMorph delete.
 	itsWorld addMorphFront: self.
 	self collapseOrExpand.
-	(priorPosition _ aMorph valueOfProperty: #collapsedPosition ifAbsent: [nil])
+	(priorPosition := aMorph valueOfProperty: #collapsedPosition ifAbsent: [nil])
 	ifNotNil:
 		[self position: priorPosition].

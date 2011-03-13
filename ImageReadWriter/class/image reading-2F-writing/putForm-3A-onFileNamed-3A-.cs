@@ -1,7 +1,6 @@
-putForm: aForm onFileNamed: fileName
+putForm: aForm onFileNamed: fileName 
 	"Store the given form on a file of the given name."
-
 	| writer |
-	writer _ self on: (FileStream newFileNamed: fileName) binary.
-	Cursor write showWhile: [writer nextPutImage: aForm].
-	writer close.
+	writer := self on: (FileStream newFileNamed: fileName) binary.
+	Cursor write showWhile: [ writer nextPutImage: aForm ].
+	writer close

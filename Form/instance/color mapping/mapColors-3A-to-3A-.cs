@@ -4,11 +4,11 @@ mapColors: oldColorBitsCollection to: newColorBits
 
 	| map |
 	self depth < 16
-		ifTrue: [map _ (Color cachedColormapFrom: self depth to: self depth) copy]
+		ifTrue: [map := (Color cachedColormapFrom: self depth to: self depth) copy]
 		ifFalse: [
 			"use maximum resolution color map"
 			"source is 16-bit or 32-bit RGB; use colormap with 5 bits per color component"
-			map _ Color computeRGBColormapFor: self depth bitsPerColor: 5].
+			map := Color computeRGBColormapFor: self depth bitsPerColor: 5].
 	oldColorBitsCollection do:[ :oldColor | map at: oldColor put: newColorBits].
 
 	(BitBlt current toForm: self)

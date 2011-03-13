@@ -4,11 +4,11 @@ indentationOfLineIndex: lineIndex ifBlank: aBlock
 	 If the line is word-wrap overflow, back up a line and recur."
 
 	| arrayIndex first last cr |
-	cr _ Character cr.
-	arrayIndex _ lineIndex.
-	[first _ (lines at: arrayIndex) first.
+	cr := Character cr.
+	arrayIndex := lineIndex.
+	[first := (lines at: arrayIndex) first.
 	 first > 1 and: [(text string at: first - 1) ~~ cr]] whileTrue: "word wrap"
-		[arrayIndex _ arrayIndex - 1].
-	last _ (lines at: arrayIndex) last.
+		[arrayIndex := arrayIndex - 1].
+	last := (lines at: arrayIndex) last.
 	
 	^(text string copyFrom: first to: last) indentationIfBlank: aBlock.

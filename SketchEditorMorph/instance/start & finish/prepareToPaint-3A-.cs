@@ -3,20 +3,20 @@ prepareToPaint: evt
 
 	| specialMode pfPen cColor cNib myBrush |
 	"Install the brush, color, (replace mode), and cursor."
-	specialMode _ self getActionFor: evt.
- 	cColor  _ self getColorFor: evt.
-	cNib _ self getNibFor: evt.
-	self set: #brush for: evt to: (myBrush _ cNib).
-	self set: #paintingFormPen for: evt to: (pfPen _ Pen newOnForm: paintingForm).
+	specialMode := self getActionFor: evt.
+ 	cColor  := self getColorFor: evt.
+	cNib := self getNibFor: evt.
+	self set: #brush for: evt to: (myBrush := cNib).
+	self set: #paintingFormPen for: evt to: (pfPen := Pen newOnForm: paintingForm).
 	self set: #stampForm for: evt to: nil.	"let go of stamp"
-	formCanvas _ paintingForm getCanvas.	"remember to change when undo"
-	formCanvas _ formCanvas
+	formCanvas := paintingForm getCanvas.	"remember to change when undo"
+	formCanvas := formCanvas
 		copyOrigin: self topLeft negated
 		clipRect: (0@0 extent: bounds extent).
 
 	specialMode == #paint: ifTrue: [
 		"get it to one bit depth.  For speed, instead of going through a colorMap every time ."
-		self set: #brush for: evt to: (myBrush _ Form extent: myBrush extent depth: 1).
+		self set: #brush for: evt to: (myBrush := Form extent: myBrush extent depth: 1).
 		myBrush offset: (0@0) - (myBrush extent // 2).
 		cNib displayOn: myBrush at: (0@0 - cNib offset).
 

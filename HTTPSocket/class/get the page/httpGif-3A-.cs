@@ -4,10 +4,10 @@ httpGif: url
 	"	HTTPSocket httpShowGif: 'www.webPage.com/~kaehler2/ainslie.gif'	 "
 
 	| doc ggg |
-	doc _ self httpGet: url accept: 'image/gif'.
+	doc := self httpGet: url accept: 'image/gif'.
 	doc isString ifTrue: [
 		self inform: 'The server with that GIF is not responding'.
 		^ ColorForm extent: 20@20 depth: 8].
 	doc binary; reset.
-	(ggg _ GIFReadWriter new) setStream: doc.
+	(ggg := GIFReadWriter new) setStream: doc.
 	^ ggg nextImage.

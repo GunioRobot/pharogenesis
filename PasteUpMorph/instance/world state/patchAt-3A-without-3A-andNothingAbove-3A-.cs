@@ -3,7 +3,7 @@ patchAt: patchRect without: stopMorph andNothingAbove: stopThere
 	without stopMorph, and possibly without anything above it."
 
 	| c |
-	c _ ColorPatchCanvas
+	c := ColorPatchCanvas
 		extent: patchRect extent
 		depth: Display depth
 		origin: patchRect topLeft negated

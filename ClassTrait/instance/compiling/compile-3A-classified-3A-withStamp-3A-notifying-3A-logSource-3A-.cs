@@ -1,9 +1,9 @@
 compile: text classified: category withStamp: changeStamp notifying: requestor logSource: logSource
 	
 	| classSideUsersOfBaseTrait message |
-	classSideUsersOfBaseTrait _ self baseTrait users select: [:each | each isClassSide].
+	classSideUsersOfBaseTrait := self baseTrait users select: [:each | each isClassSide].
 	classSideUsersOfBaseTrait isEmpty ifFalse: [
-		message _ String streamContents: [:stream |
+		message := String streamContents: [:stream |
 			stream nextPutAll: 'The instance side of this trait is used on '; cr.
 			classSideUsersOfBaseTrait
 				do: [:each | stream nextPutAll: each name]

@@ -1,2 +1,0 @@
-defaultNameStemForInstances
-	^ 'button'

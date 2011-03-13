@@ -1,7 +1,7 @@
 testSortBlock
 	"self run: #testSortBlock"
 
-	| heap |
+	| heap | 
 	heap := Heap withAll: #(1 3 5).
 	self assert: heap = #(1 3 5).
 	

@@ -6,24 +6,24 @@ sameColumn: start newLine: lineBlock forward: isForward
 	"The boolean isForward is used in the border case to determine if
 	we should move to the beginning or the end of the line."
 	| wordStyle column currentLine offsetAtTargetLine targetEOL lines numberOfLines currentLineNumber targetLineNumber |
-	wordStyle _ Preferences wordStyleCursorMovement.
+	wordStyle := Preferences wordStyleCursorMovement.
 	wordStyle
 		ifTrue: [
-			lines _ paragraph lines.
+			lines := paragraph lines.
 			numberOfLines := paragraph numberOfLines.
-			currentLineNumber  _ paragraph lineIndexOfCharacterIndex: start.
-			currentLine _ lines at: currentLineNumber]
+			currentLineNumber  := paragraph lineIndexOfCharacterIndex: start.
+			currentLine := lines at: currentLineNumber]
 		ifFalse: [
-			lines _ self lines.
+			lines := self lines.
 			numberOfLines := lines size.
-			currentLine _ lines
+			currentLine := lines
 				detect:[:lineInterval | lineInterval last >= start]
 				ifNone:[lines last].
-			currentLineNumber _ currentLine second].
-	column _ start - currentLine first.
-	targetLineNumber _ ((lineBlock value: currentLineNumber) max: 1) min: numberOfLines.
-	offsetAtTargetLine _ (lines at: targetLineNumber) first.
-	targetEOL _ (lines at: targetLineNumber) last + (targetLineNumber == numberOfLines ifTrue:[1]ifFalse:[0]).
+			currentLineNumber := currentLine second].
+	column := start - currentLine first.
+	targetLineNumber := ((lineBlock value: currentLineNumber) max: 1) min: numberOfLines.
+	offsetAtTargetLine := (lines at: targetLineNumber) first.
+	targetEOL := (lines at: targetLineNumber) last + (targetLineNumber == numberOfLines ifTrue:[1]ifFalse:[0]).
 	targetLineNumber == currentLineNumber
 	"No movement or movement failed. Move to beginning or end of line."
 		ifTrue:[^isForward

@@ -9,7 +9,7 @@ exponent
 	self >= 1.0 ifTrue: [^self floorLog: 2].
 	self > 0.0
 		ifTrue: 
-			[positive _ (1.0 / self) exponent.
+			[positive := (1.0 / self) exponent.
 			self = (1.0 / (1.0 timesTwoPower: positive))
 				ifTrue: [^positive negated]
 				ifFalse: [^positive negated - 1]].

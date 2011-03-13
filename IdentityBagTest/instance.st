@@ -1,6 +1,7 @@
-TestCase
+BagTest
 	subclass: #IdentityBagTest
-	instanceVariableNames: ''
+	instanceVariableNames:
+		'equalNotIdenticalElement elementToCopy identityBagNonEmptyNoDuplicate5Elements elementAlreadyIncluded identityBagWithoutElement'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'CollectionsTests-Unordered'

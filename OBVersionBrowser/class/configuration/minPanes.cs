@@ -1,2 +1,0 @@
-minPanes
-	^ 1

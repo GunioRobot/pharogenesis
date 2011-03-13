@@ -1,0 +1,2 @@
+platformFamily
+	^#RiscOS

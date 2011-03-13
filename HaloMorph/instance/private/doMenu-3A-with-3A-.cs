@@ -4,6 +4,6 @@ doMenu: evt with: menuHandle
 	| menu |
 	self obtainHaloForEvent: evt andRemoveAllHandlesBut: nil.
 	self world displayWorld.
-	menu _ innerTarget buildHandleMenu: evt hand.
+	menu := innerTarget buildHandleMenu: evt hand.
 	innerTarget addTitleForHaloMenu: menu.
 	menu popUpEvent: evt in: self world.

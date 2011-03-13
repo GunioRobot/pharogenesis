@@ -3,6 +3,6 @@ udpCreateIfFail: failBlock
 
 	| sock |
 	self initializeNetwork.
-	sock _ super new initialize: UDPSocketType.
+	sock := self newUDP.
 	sock isValid ifFalse: [^ failBlock value].
 	^ sock

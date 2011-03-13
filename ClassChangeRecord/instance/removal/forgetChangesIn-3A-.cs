@@ -1,11 +1,12 @@
 forgetChangesIn: otherRecord
 	"See forgetAllChangesFoundIn:.  Used in culling changeSets."
 
-	| cls otherMethodChanges selector actionToSubtract |
-	(cls _ self realClass) == nil ifTrue: [^ self].  "We can do better now, though..."
-	otherMethodChanges _ otherRecord methodChangeTypes.
+	| cls otherMethodChanges |
+	(cls := self realClass) == nil ifTrue: [^ self].  "We can do better now, though..."
+	otherMethodChanges := otherRecord methodChangeTypes.
 	otherMethodChanges associationsDo:
-		[:assoc | selector _ assoc key. actionToSubtract _ assoc value.
+		[:assoc | | selector actionToSubtract |
+		selector := assoc key. actionToSubtract := assoc value.
 		(cls includesSelector: selector)
 			ifTrue: [(#(add change) includes: actionToSubtract)
 					ifTrue: [methodChanges removeKey: selector ifAbsent: []]]

@@ -1,5 +1,4 @@
 getMenu: shiftKeyState 
-	^ (shiftKeyState not
-			or: [Preferences noviceMode])
+	^ shiftKeyState not
 		ifTrue: [ParagraphEditor yellowButtonMenu]
 		ifFalse: [ParagraphEditor shiftedYellowButtonMenu]

@@ -1,2 +1,2 @@
 ticksToDwell: t
-	ticksToDwell _ t
+	ticksToDwell := t

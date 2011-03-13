@@ -1,7 +1,7 @@
 getData
 
 	| dataStream |
-	dataStream _ RWBinaryOrTextStream on: (String new: 4000).
+	dataStream := RWBinaryOrTextStream on: (String new: 4000).
 	self getDataInto: dataStream.
 	self closeDataSocket.
 	^dataStream contents

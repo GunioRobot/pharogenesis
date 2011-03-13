@@ -1,3 +1,0 @@
-resetToolSet
-
-	ToolSet default: nil

@@ -96,13 +96,7 @@ isKindOf: Set) ifTrue: [obj rehash]]].
 		proj setParent: Project current.
 		projectsToBeDeleted := OrderedCollection new.
 		existingView ifNil: [
-			Smalltalk isMorphic ifTrue: [
-				proj createViewIfAppropriate.
-			] ifFalse: [
-				ChangeSet allChangeSets add: proj changeSet.
-				ProjectView openAndEnter: proj.
-				"Note: in MVC we get no further than the above"
-			].
+			proj createViewIfAppropriate.
 		] ifNotNil: [
 			(existingView project isKindOf: DiskProxy) ifFalse: [
 				existingView project changeSet name: 
@@ -130,9 +124,10 @@ ChangeSet defaultName.
 		^ ProjectEntryNotification signal: proj
 	].
 
-	(morphOrList isKindOf: SqueakPage) ifTrue: [
-		morphOrList := morphOrList contentsMorph
-	].
+	Smalltalk at: #SqueakPage ifPresent: [ :class |
+		(morphOrList isKindOf: class) ifTrue: [
+			morphOrList := morphOrList contentsMorph
+		] ].
 	(morphOrList isKindOf: PasteUpMorph) ifFalse:
 		[^ self inform: 'This is not a PasteUpMorph or
 exported Project.' translated].

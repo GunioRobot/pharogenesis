@@ -1,3 +1,0 @@
-flashCmd
-
-	Display reverse; reverse.

@@ -1,2 +1,2 @@
 rubberBandCells: aBool
-	rubberBandCells _ aBool.
+	rubberBandCells := aBool.

@@ -1,2 +1,2 @@
 errorHandler: aBlock
-    errorHandler _ aBlock
+    errorHandler := aBlock

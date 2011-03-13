@@ -1,2 +1,0 @@
-speaker: aSpeaker
-	^ self

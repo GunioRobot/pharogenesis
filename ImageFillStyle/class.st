@@ -1,0 +1,1 @@
+ImageFillStyle class instanceVariableNames: ''

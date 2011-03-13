@@ -1,6 +1,6 @@
 print: positiveNumberString on: aStream prefix: prefix length: minimum padded: zeroFlag
 	| padLength |
-	padLength _ minimum - positiveNumberString size - prefix size.
+	padLength := minimum - positiveNumberString size - prefix size.
 	padLength > 0
 		ifTrue: [zeroFlag
 				ifTrue: [aStream nextPutAll: prefix; nextPutAll: (String new: padLength withAll: $0)]

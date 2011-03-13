@@ -1,3 +1,0 @@
-wantsHaloFromClick
-
-	^ Preferences eToyFriendly not.

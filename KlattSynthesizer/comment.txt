@@ -1,7 +1,0 @@
-My instances are Klatt-style cascade/parallel formant synthesizers, first described by Dennis Klatt in [1]. An updated version of the model was described in [2]. This version implements the LF (Liljencrants-Fant) glottal pulse model from [3], and the jitter and shimmer parameters suggested in [4]. For a description of the Klatt parameters, see KlattFrame.
-
-References:
-	[1] Klatt,D.H. "Software for a cascade/parallel formant synthesizer", in the Journal of the Acoustical Society of America, pages 971-995, volume 67, number 3, March 1980.
-	[2] Klatt,D.H. and Klatt, L.C. "Analysis, synthesis and perception of voice quality variations among female and male talkers". In the Journal of the Acoustical Society of America, pages 820-857, volume 87, number 2. February 1990.
-	[3] Fant, G., Liljencrants, J., & Lin, Q. "A four-parameter model of glottal flow", Speech Transmission Laboratory Qurterly Progress Report 4/85, KTH.
-	[4] Alwan, A., Bangayan, P., Kreiman, J., and Long, C. "Time and Frequency Synthesis Parameters of Severely Pathological Voice Qualities."

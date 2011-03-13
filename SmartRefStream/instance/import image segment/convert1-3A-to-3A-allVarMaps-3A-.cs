@@ -9,11 +9,11 @@ convert1: misShapenInst to: goodClass allVarMaps: allVarMaps
 		goodClass error: 'shape change for variable class not implemented yet'
 	].
 	(misShapenInst class name beginsWith: 'Fake37') ifFalse: [self error: 'why mapping?'].
-	className _ (misShapenInst class name allButFirst: 6) asSymbol.
-	oldInstVars _ structures at: className.
-	anObject _ goodClass basicNew.
+	className := (misShapenInst class name allButFirst: 6) asSymbol.
+	oldInstVars := structures at: className.
+	anObject := goodClass basicNew.
 
-	varMap _ Dictionary new.	"later, indexed vars as (1 -> val) etc."
+	varMap := Dictionary new.	"later, indexed vars as (1 -> val) etc."
 	2 to: oldInstVars size do: [:ind |
 		varMap at: (oldInstVars at: ind) put: (misShapenInst instVarAt: ind-1)].
 	varMap at: #ClassName put: className.	"original"

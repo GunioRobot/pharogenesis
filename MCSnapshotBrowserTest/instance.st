@@ -3,4 +3,4 @@ MCTestCase
 	instanceVariableNames: 'model morph'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Monticello-Tests'
+	category: 'Tests-Monticello'

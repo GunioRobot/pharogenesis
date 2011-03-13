@@ -1,7 +1,7 @@
 testCreationFromString
 	| uuid string |
-	string _ UUID nilUUID asString.
-	uuid _ UUID fromString: string.
+	string := UUID nilUUID asString.
+	uuid := UUID fromString: string.
 	self should: [uuid size = 16].
 	self should: [uuid = UUID nilUUID].
 	self should: [uuid isNilUUID].

@@ -2,6 +2,6 @@ separators
 	"return a set containing just the whitespace characters"
 
 	| set |
-	set _ self empty.
+	set := self empty.
 	set addAll: Character separators.
 	^set

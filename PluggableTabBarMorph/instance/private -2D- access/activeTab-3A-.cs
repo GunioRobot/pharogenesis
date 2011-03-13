@@ -1,6 +1,6 @@
 activeTab: aTabMorph
 	self activeTab ifNotNil: [self activeTab toggle].
-	activeTab _ aTabMorph.
+	activeTab := aTabMorph.
 	self activeTab toggle.
 	aTabMorph delete.
 	self addMorphFront: aTabMorph.

@@ -1,2 +1,0 @@
-preferences
-	Preferences openFactoredPanel

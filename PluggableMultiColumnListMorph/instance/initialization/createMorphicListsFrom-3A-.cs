@@ -1,7 +1,7 @@
 createMorphicListsFrom: arrayOfLists 
 	| array |
 
-	array _ Array new: arrayOfLists size.
+	array := Array new: arrayOfLists size.
 	1 to: arrayOfLists size do: [:arrayIndex |
 		array at: arrayIndex put: (
 			(arrayOfLists at: arrayIndex) collect: [:item | item isText

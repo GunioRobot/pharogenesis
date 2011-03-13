@@ -1,2 +1,0 @@
-isControlActive
-	^ self isControlWanted

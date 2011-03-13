@@ -1,3 +1,0 @@
-jumpLabel
-
-	^jumpLabel

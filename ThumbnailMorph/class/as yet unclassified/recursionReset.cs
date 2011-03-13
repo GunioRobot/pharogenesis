@@ -4,4 +4,4 @@ recursionReset
 during a thumbnail being drawn.  Do this just once in a while when no
 drawOn: is being called.  tk 9/8/97"
 
-	RecursionDepth _ 0.
+	RecursionDepth := 0.

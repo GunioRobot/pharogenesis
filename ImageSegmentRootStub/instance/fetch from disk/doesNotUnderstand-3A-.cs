@@ -2,7 +2,7 @@ doesNotUnderstand: aMessage
 	 | segmentName |
 "Any normal message sent to this object is really intended for another object that is in a non-resident imageSegment.  Reinstall the segment and resend the message."
 
-	segmentName _ imageSegment segmentName.
+	segmentName := imageSegment segmentName.
 	imageSegment install.
 	LoggingFaults ifTrue:		"Save the stack printout to show who caused the fault"
 		[FaultLogs at: Time millisecondClockValue printString

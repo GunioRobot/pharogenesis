@@ -1,3 +1,0 @@
-isControlActive 
-
-	^ sensor anyButtonPressed

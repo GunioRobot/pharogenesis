@@ -2,14 +2,14 @@ veryDeepInner: deepCopier
 	"Copy all of my instance variables.  Some need to be not copied at all, but shared."
 
 	super veryDeepInner: deepCopier.
-	format _ format veryDeepCopyWith: deepCopier.
-	target _ target.					"Weakly copied"
-	lastValue _ lastValue veryDeepCopyWith: deepCopier.
-	getSelector _ getSelector.			"Symbol"
-	putSelector _ putSelector.		"Symbol"
-	floatPrecision _ floatPrecision veryDeepCopyWith: deepCopier.
-	growable _ growable veryDeepCopyWith: deepCopier.
-	stepTime _ stepTime veryDeepCopyWith: deepCopier.
-	autoAcceptOnFocusLoss _ autoAcceptOnFocusLoss veryDeepCopyWith: deepCopier.
-	minimumWidth _ minimumWidth veryDeepCopyWith: deepCopier.
-	maximumWidth _ maximumWidth veryDeepCopyWith: deepCopier.
+	format := format veryDeepCopyWith: deepCopier.
+	target := target.					"Weakly copied"
+	lastValue := lastValue veryDeepCopyWith: deepCopier.
+	getSelector := getSelector.			"Symbol"
+	putSelector := putSelector.		"Symbol"
+	floatPrecision := floatPrecision veryDeepCopyWith: deepCopier.
+	growable := growable veryDeepCopyWith: deepCopier.
+	stepTime := stepTime veryDeepCopyWith: deepCopier.
+	autoAcceptOnFocusLoss := autoAcceptOnFocusLoss veryDeepCopyWith: deepCopier.
+	minimumWidth := minimumWidth veryDeepCopyWith: deepCopier.
+	maximumWidth := maximumWidth veryDeepCopyWith: deepCopier.

@@ -1,2 +1,2 @@
 dockingBarColor
-	^ self subclassResponsibility
+	^self normal:1

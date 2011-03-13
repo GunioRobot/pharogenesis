@@ -6,7 +6,7 @@ renameCachedResource: urlString to: newUrlString external: isExternal
 			isExternal
 				ifTrue: [self resourceCache "force init" ]
 				ifFalse: [^self]].
-	candidates _ CachedResources at: urlString ifAbsent:[nil].
+	candidates := CachedResources at: urlString ifAbsent:[nil].
 	(candidates isNil or:[candidates size = 0])
 		ifFalse: [
 		candidates do: [:candidate |

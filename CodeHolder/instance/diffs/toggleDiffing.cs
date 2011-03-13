@@ -4,7 +4,6 @@ toggleDiffing
 	| wasShowingDiffs |
 	self okToChange ifTrue:
 		[wasShowingDiffs := self showingAnyKindOfDiffs.
-		self restoreTextualCodingPane.
 		self showDiffs: wasShowingDiffs not.
 		self setContentsToForceRefetch.
 		self contentsChanged]

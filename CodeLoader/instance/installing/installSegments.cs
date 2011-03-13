@@ -2,4 +2,4 @@ installSegments
 	"Install the previously loaded segments"
 	segments == nil ifTrue:[^self].
 	segments do:[:req| self installSegment: req].
-	segments _ nil.
+	segments := nil.

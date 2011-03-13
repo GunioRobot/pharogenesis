@@ -2,7 +2,7 @@ addHaloActionsTo: aMenu
 	"Add items to aMenu representing actions requestable via halo"
 
 	| subMenu |
-	subMenu _ MenuMorph new defaultTarget: self.
+	subMenu := MenuMorph new defaultTarget: self.
 	subMenu addTitle: self externalName.
 	subMenu addStayUpItemSpecial.
 	subMenu addLine.
@@ -22,25 +22,11 @@ addHaloActionsTo: aMenu
 	subMenu balloonTextForLastItem: 'Hand me a copy of this object' translated.
 	"Note that this allows access to the non-instancing duplicate even when this is a uniclass instance"
 
-	self couldMakeSibling ifTrue:
-		[subMenu add: 'make a sibling' translated action: #handUserASibling.
-		subMenu balloonTextForLastItem: 'Make a new sibling of this object and hand it to me' translated].
-
 	subMenu addLine.
-	subMenu add: 'property sheet' translated target: self renderedMorph action: #openAPropertySheet.
-	subMenu balloonTextForLastItem: 'Open a property sheet for me. Allows changing lots of stuff at once.' translated.
 
 	subMenu add: 'set color' translated target: self renderedMorph action: #changeColor.
 	subMenu balloonTextForLastItem: 'Change the color of this object' translated.
 
-	subMenu add: 'viewer' translated target: self action: #beViewed.
-	subMenu balloonTextForLastItem: 'Open a Viewer that will allow everything about this object to be seen and controlled.' translated.
-
-	subMenu add: 'tile browser' translated target: self action: #openInstanceBrowserWithTiles.
-	subMenu balloonTextForLastItem: 'Open a tool that will facilitate tile scripting of this object.' translated.
-
-	subMenu add: 'hand me a tile' translated target: self action: #tearOffTile.
-	subMenu balloonTextForLastItem: 'Hand me a tile represting this object' translated.
 	subMenu addLine.
 
 	subMenu add: 'inspect' translated target: self action: #inspect.

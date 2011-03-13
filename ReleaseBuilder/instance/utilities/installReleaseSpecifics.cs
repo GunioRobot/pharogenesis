@@ -1,2 +1,0 @@
-installReleaseSpecifics
-	"ReleaseBuilder new installReleaseSpecifics"

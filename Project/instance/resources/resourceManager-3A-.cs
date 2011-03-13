@@ -1,2 +1,2 @@
 resourceManager: aResourceManager
-	resourceManager _ aResourceManager
+	resourceManager := aResourceManager

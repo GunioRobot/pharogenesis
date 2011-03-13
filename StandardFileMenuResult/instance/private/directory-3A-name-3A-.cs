@@ -1,5 +1,5 @@
 directory: aDirectory name: aString
 
-	directory _ aDirectory.
-	name _ aString.
+	directory := aDirectory.
+	name := aString.
 	^self

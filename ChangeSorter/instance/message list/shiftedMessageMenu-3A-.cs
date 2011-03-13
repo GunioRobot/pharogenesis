@@ -3,7 +3,6 @@ shiftedMessageMenu: aMenu
 
 	^ aMenu addList: #(
 		-
-		('method pane'						makeIsolatedCodePane)
 		('toggle diffing (D)'					toggleDiffing)
 		('implementors of sent messages'		browseAllMessages)
 		('change category...'				changeCategory)

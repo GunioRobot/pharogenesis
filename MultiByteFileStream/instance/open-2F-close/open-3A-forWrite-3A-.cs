@@ -3,5 +3,6 @@ open: fileName forWrite: writeMode
 	result := super open: fileName forWrite: writeMode.
 	result ifNotNil: [
 			converter ifNil: [converter := UTF8TextConverter new].
-			self detectLineEndConvention].
+			lineEndConvention ifNil: [ self detectLineEndConvention ]
+	].
 	^result

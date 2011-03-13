@@ -1,3 +1,0 @@
-encodeFillStyle: aFillStyle
-	
-	^aFillStyle encodeForRemoteCanvas

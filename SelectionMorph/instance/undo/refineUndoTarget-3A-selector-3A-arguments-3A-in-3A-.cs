@@ -2,13 +2,13 @@ refineUndoTarget: target selector: selector arguments: arguments in: refineBlock
 	"Any morph can override this method to refine its undo specification"
 	selector == #fillStyle: ifTrue:
 		[refineBlock value: target value: #fillStyleForItems: value: {undoProperties}.
-		^ undoProperties _ nil].
+		^ undoProperties := nil].
 	selector == #borderColor: ifTrue:
 		[refineBlock value: target value: #borderColorForItems: value: {undoProperties}.
-		^ undoProperties _ nil].
+		^ undoProperties := nil].
 	selector == #borderWidth: ifTrue:
 		[refineBlock value: target value: #borderWidthForItems: value: {undoProperties}.
-		^ undoProperties _ nil].
+		^ undoProperties := nil].
 	selector == #undoMove:redo:owner:bounds:predecessor: ifTrue:
 		["This is the biggy.  Need to gather parameters for all selected items"
 		refineBlock value: target

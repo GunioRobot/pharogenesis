@@ -10,9 +10,9 @@ d---------   1 owner    group               0 Apr 27 22:01 blasttest
 		^ (FileDirectory on: urlObject pathForDirectory) entries
 	].
 
-	dir _ self getDirectory.
+	dir := self getDirectory.
 	(dir respondsTo: #contentsOfEntireFile) ifFalse: [^ #()].
-	ftpEntries _ dir contentsOfEntireFile findTokens: String crlf.
+	ftpEntries := dir contentsOfEntireFile findTokens: String crlf.
 "ftpEntries inspect."
 	^ ftpEntries 
 		collect:[:ftpEntry | self class parseFTPEntry: ftpEntry]

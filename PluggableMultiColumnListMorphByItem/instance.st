@@ -1,6 +1,6 @@
 PluggableMultiColumnListMorph
 	subclass: #PluggableMultiColumnListMorphByItem
-	instanceVariableNames: 'itemList'
+	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Pluggable Widgets'

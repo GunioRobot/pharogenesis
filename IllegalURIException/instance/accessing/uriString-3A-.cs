@@ -1,2 +1,2 @@
 uriString: aString
-	uriString _ aString
+	uriString := aString

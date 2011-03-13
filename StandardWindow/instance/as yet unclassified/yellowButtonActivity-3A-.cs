@@ -1,0 +1,2 @@
+yellowButtonActivity: shiftState 
+	"Do nothing."

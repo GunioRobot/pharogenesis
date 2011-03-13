@@ -2,9 +2,7 @@ fromArray: anArray
 	"Construct a menu from anArray. The elements of anArray  
 	must be either:  
 	* A pair of the form: <label> <selector>  
-	or	* The 'dash' (or 'minus sign') symbol  
-	 
-	Refer to the example at the bottom of the method"
+	or	* The 'dash' (or 'minus sign') symbol"
 	| menu |
 
 	menu := self new.

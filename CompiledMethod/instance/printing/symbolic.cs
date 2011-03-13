@@ -3,6 +3,6 @@ symbolic
 	with a short description of each."
 
 	| aStream |
-	aStream _ WriteStream on: (String new: 1000).
+	aStream := (String new: 1000) writeStream.
 	self longPrintOn: aStream.
 	^aStream contents

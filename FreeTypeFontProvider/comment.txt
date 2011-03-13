@@ -1,0 +1,11 @@
+A FreeTypeFontProvider is xxxxxxxxx.
+
+Instance Variables
+	fontInfoCache:		<Object>
+	fontInfos:		<Object>
+
+fontInfoCache
+	- xxxxx
+
+fontInfos
+	- set of FreeTypeFontInfo. Info about all the fonts that are available

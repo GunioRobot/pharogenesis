@@ -1,3 +1,0 @@
-isReadOnlyView
-
-	^ setTextSelector == nil

@@ -1,3 +1,0 @@
-shutDown
-
-	self recreateCache.

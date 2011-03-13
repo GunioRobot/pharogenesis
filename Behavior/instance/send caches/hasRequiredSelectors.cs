@@ -1,0 +1,2 @@
+hasRequiredSelectors
+	^ self requiredSelectors notEmpty

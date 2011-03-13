@@ -3,7 +3,7 @@ removeUndoneCommands
 
 	history reversed do: [ :command |
 		(command phase == #done) ifTrue:[
-			lastCommand _ command.
+			lastCommand := command.
 			^self
 		]ifFalse:[
 			history remove: command.
@@ -11,4 +11,4 @@ removeUndoneCommands
 	].
 	
 	"If there were no #done commands on the stack, then get rid of lastCommand"
-	lastCommand _ nil.
+	lastCommand := nil.

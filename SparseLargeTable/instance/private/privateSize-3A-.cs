@@ -1,3 +1,3 @@
 privateSize: s
 
-	size _ s.
+	size := s.

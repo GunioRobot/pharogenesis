@@ -1,3 +1,3 @@
 urlObject: aUrl
 
-	urlObject _ aUrl
+	urlObject := aUrl

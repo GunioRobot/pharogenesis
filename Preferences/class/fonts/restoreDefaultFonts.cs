@@ -4,15 +4,15 @@ restoreDefaultFonts
 	Preferences restoreDefaultFonts
 	"
 
-	self setDefaultFonts: #(
-		(setSystemFontTo:		Accuny				10)
-		(setListFontTo:			Accuny				10)
-		(setFlapsFontTo:			Accushi				12)
-		(setEToysFontTo:			BitstreamVeraSansBold	9)
-		(setPaintBoxButtonFontTo:			BitstreamVeraSansBold	9)
-		(setMenuFontTo:			Accuny				10)
-		(setWindowTitleFontTo:	BitstreamVeraSansBold	12)
-		(setBalloonHelpFontTo:	Accujen				9)
-		(setCodeFontTo:			Accuny				10)
-		(setButtonFontTo:		BitstreamVeraSansMono				9)
-	)
+	Preferences setDefaultFonts: #(
+		(setSystemFontTo: 'Bitmap DejaVu Sans' 9)
+		(setCodeFontTo: 'Bitmap DejaVu Sans' 9)
+		(setListFontTo: 'Bitmap DejaVu Sans' 9)
+		(setMenuFontTo: 'Bitmap DejaVu Sans' 9)
+		(setFlapsFontTo: 'Accuny' 15)
+		(setEToysFontTo: 'Accuny' 12)
+		(setEToysTitleFontTo: 'Accuny' 12)
+		(setPaintBoxButtonFontTo: 'Accuny' 12)
+		(setWindowTitleFontTo: 'Bitmap DejaVu Sans' 12)
+		(setBalloonHelpFontTo: 'Accuny' 10)
+		(setButtonFontTo: 'Accuny' 9))

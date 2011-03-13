@@ -1,6 +1,6 @@
 fromMethodTimeStamp: aString
 	| stream |
-	stream := ReadStream on: aString.
-	stream skipSeparators.
-	stream skipTo: Character space.
+	(stream := aString readStream)
+		skipSeparators;
+		skipTo: Character space.
 	^self readFrom: stream.

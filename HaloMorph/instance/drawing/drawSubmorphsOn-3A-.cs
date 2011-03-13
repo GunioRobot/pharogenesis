@@ -1,5 +1,5 @@
 drawSubmorphsOn: aCanvas
 	| alpha |
-	((alpha _ self magicAlpha) = 1.0)
+	((alpha := self magicAlpha) = 1.0)
 		ifTrue:[^super drawSubmorphsOn: aCanvas].
 	^super drawSubmorphsOn: (aCanvas asAlphaBlendingCanvas: alpha)

@@ -1,30 +1,31 @@
 initialize
 	"The methods we are allowed to use.  (MethodFinder new initialize) "
+	super initialize.
 
-	Approved _ Set new.
-	AddAndRemove _ Set new.
-	Blocks _ Set new.
+	Approved := Set new.
+	AddAndRemove := Set new.
+	Blocks := Set new.
 	"These modify an argument and are not used by the MethodFinder: longPrintOn: printOn: storeOn: sentTo: storeOn:base: printOn:base: absPrintExactlyOn:base: absPrintOn:base: absPrintOn:base:digitCount: writeOn: writeScanOn: possibleVariablesFor:continuedFrom: printOn:format:"
 
 "Object"  
-	#("in class, instance creation" categoryForUniclasses chooseUniqueClassName initialInstance isSystemDefined newFrom: officialClass readCarefullyFrom:
-"accessing" at: basicAt: basicSize bindWithTemp: in: size yourself 
-"testing" basicType ifNil: ifNil:ifNotNil: ifNotNil: ifNotNil:ifNil: isColor isFloat isFraction isInMemory isInteger isMorph isNil isNumber isPoint isPseudoContext isText isTransparent isWebBrowser knownName notNil pointsTo: wantsSteps 
-"comparing" = == closeTo: hash hashMappedBy: identityHash identityHashMappedBy: identityHashPrintString ~= ~~ 
+	#("in class, instance creation"  chooseUniqueClassName isSystemDefined newFrom: officialClass readCarefullyFrom:
+"accessing" at: basicAt: basicSize in: size yourself 
+"testing" ifNil: ifNil:ifNotNil: ifNotNil: ifNotNil:ifNil: isColor isFloat isFraction isInMemory isInteger isMorph isNil isNumber isPoint isPseudoContext isText isTransparent isWebBrowser knownName notNil pointsTo: wantsSteps 
+"comparing" = == closeTo: hash identityHash identityHashPrintString ~= ~~ 
 "copying" clone copy shallowCopy 
 "dependents access" canDiscardEdits dependents hasUnacceptedEdits 
 "updating" changed changed: okToChange update: windowIsClosing 
 "printing" fullPrintString isLiteral longPrintString printString storeString stringForReadout stringRepresentation 
-"class membership" class isKindOf: isKindOf:orOf: isMemberOf: respondsTo: xxxClass 
+"class membership" class isKindOf: isMemberOf: respondsTo: xxxClass 
 "error handling" 
-"user interface" addModelMenuItemsTo:forMorph:hand: defaultBackgroundColor defaultLabelForInspector fullScreenSize initialExtent modelWakeUp mouseUpBalk: newTileMorphRepresentative windowActiveOnFirstClick windowReqNewLabel: 
-"system primitives" asOop instVarAt: instVarNamed: 
+"user interface" addModelMenuItemsTo:forMorph:hand: defaultBackgroundColor defaultLabelForInspector fullScreenSize initialExtent modelWakeUp mouseUpBalk:  windowActiveOnFirstClick windowReqNewLabel: 
+"system primitives" instVarAt: instVarNamed: 
 "private" 
 "associating" -> 
 "converting" as: asOrderedCollection asString 
 "casing" caseOf: caseOf:otherwise: 
 "binding" bindingOf: 
-"macpal" contentsChanged currentEvent currentHand currentWorld flash instanceVariableValues scriptPerformer 
+"macpal" contentsChanged currentEvent currentHand currentWorld flash instanceVariableValues  
 "flagging" flag: 
 "translation support" "objects from disk" "finalization" ) do: [:sel | Approved add: sel].
 	#(at:add: at:modify: at:put: basicAt:put: "NOT instVar:at:"
@@ -132,7 +133,7 @@ initialize
 "mathematical functions" arcCos arcSin arcTan arcTan: cos exp floorLog: ln log log: raisedTo: raisedToInteger: sin sqrt squared tan
 "truncation and round off" ceiling detentBy:atMultiplesOf:snap: floor roundTo: roundUpTo: rounded truncateTo: truncated
 "comparing"
-"testing" even isDivisibleBy: isInf isInfinite isNaN isZero negative odd positive sign strictlyPositive
+"testing" even isDivisibleBy: isInfinite isNaN isZero negative odd positive sign strictlyPositive
 "converting" @ asInteger asNumber asPoint asSmallAngleDegrees degreesToRadians radiansToDegrees
 "intervals" to: to:by: 
 "printing" printStringBase: storeStringBase: ) do: [:sel | Approved add: sel].

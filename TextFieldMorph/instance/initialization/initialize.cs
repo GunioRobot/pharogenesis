@@ -4,5 +4,5 @@ initialize
 	super initialize.
 	""
 	
-	self addMorph: (tm _ TextMorph new).
+	self addMorph: (tm := TextMorph new).
 	tm fillingOnOff

@@ -1,2 +1,0 @@
-hierarchicalImplementors
-	^ self implementorsNav: #implementorsHierarchically

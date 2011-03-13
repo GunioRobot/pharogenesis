@@ -1,2 +1,0 @@
-configureFonts
-	Preferences presentMvcFontConfigurationMenu

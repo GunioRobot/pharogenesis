@@ -1,8 +1,8 @@
 preserveStateDuring: aBlock
 	"Preserve the full canvas state during the execution of aBlock"
 	| oldCanvas |
-	oldCanvas _ myCanvas.
+	oldCanvas := myCanvas.
 	myCanvas preserveStateDuring:[:newCanvas|
-		myCanvas _ newCanvas.
+		myCanvas := newCanvas.
 		aBlock value: self].
-	myCanvas _ oldCanvas.
+	myCanvas := oldCanvas.

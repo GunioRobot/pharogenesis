@@ -1,3 +1,0 @@
-chooseLanguage
-
-	Project current chooseNaturalLanguage

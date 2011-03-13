@@ -11,9 +11,9 @@ displayStringR2L: aString on: aBitBlt from: startIndex to: stopIndex at: aPoint 
 		((charCode between: font minAscii and: font maxAscii) not) ifTrue: [
 			charCode := font maxAscii].
 		self glyphInfoOf: char into: glyphInfo.
-		form := glyphInfo first.
-			(glyphInfo size > 4 and: [glyphInfo fifth notNil and: [glyphInfo fifth ~= aBitBlt lastFont]]) ifTrue: [
-				glyphInfo fifth installOn: aBitBlt.
+		form := glyphInfo at: 1.
+			(glyphInfo size > 4 and: [(glyphInfo at: 5) notNil and: [(glyphInfo at: 5) ~= aBitBlt lastFont]]) ifTrue: [
+				(glyphInfo at: 5) installOn: aBitBlt.
 			].
 		aBitBlt sourceForm: form.
 		aBitBlt destX: destPoint x - form width.

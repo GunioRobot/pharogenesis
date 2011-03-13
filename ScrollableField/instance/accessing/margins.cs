@@ -1,2 +1,0 @@
-margins
-	^ textMorph margins

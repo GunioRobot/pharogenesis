@@ -5,8 +5,8 @@ aboutToBeGrabbedBy: aHand
 		"I am a lonely menuitem already; just grab my owner"
 		owner stayUp: true.
 		^owner 	aboutToBeGrabbedBy: aHand].
-	box _ self bounds.
-	menu _ MenuMorph new defaultTarget: nil.
+	box := self bounds.
+	menu := MenuMorph new defaultTarget: nil.
 	menu addMorphFront: self.
 	menu bounds: box.
 	menu stayUp: true.

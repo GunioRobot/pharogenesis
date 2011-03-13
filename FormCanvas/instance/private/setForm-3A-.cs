@@ -1,5 +1,5 @@
 setForm: aForm
 
 	self reset.
-	form _ aForm.
-	port _ self portClass toForm: form.
+	form := aForm.
+	port := self portClass toForm: form.

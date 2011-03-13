@@ -1,2 +1,0 @@
-ancestrySelector
-	^ #isDescendantOfMethodCat:

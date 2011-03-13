@@ -1,2 +1,0 @@
-presentOpenMenu
-	self popUpMenuFor: #openMenu

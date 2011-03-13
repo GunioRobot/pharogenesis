@@ -1,1 +1,0 @@
-LocatedMethodTest class instanceVariableNames: ''

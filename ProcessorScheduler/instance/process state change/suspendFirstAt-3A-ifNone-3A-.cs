@@ -3,7 +3,7 @@ suspendFirstAt: aPriority ifNone: noneBlock
 	no Process is waiting, evaluate the argument, noneBlock."
 
 	| aList |
-	aList _ quiescentProcessLists at: aPriority.
+	aList := quiescentProcessLists at: aPriority.
 	aList isEmpty
 		ifTrue: [^noneBlock value]
 		ifFalse: [^aList first suspend]

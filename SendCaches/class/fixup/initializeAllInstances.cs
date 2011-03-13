@@ -1,2 +1,2 @@
 initializeAllInstances
-	self allSubInstancesDo: [ : each | each properlyInitialize ]
+	self allSubInstancesDo: [ :each | each properlyInitialize ]

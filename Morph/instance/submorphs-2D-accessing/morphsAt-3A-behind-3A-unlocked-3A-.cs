@@ -30,7 +30,7 @@ morphsAt: aPoint behind: aMorph unlocked: aBool
 								unlocked: aBool.
 					found notEmpty 
 						ifTrue: 
-							[all ifNil: [all := WriteStream on: #()].
+							[all ifNil: [all := Array new  writeStream].
 							all nextPutAll: found]].
 			m == aMorph ifTrue: [isBack := true]].
 	(isBack and: [self containsPoint: aPoint]) 

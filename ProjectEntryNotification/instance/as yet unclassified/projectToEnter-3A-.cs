@@ -1,3 +1,3 @@
 projectToEnter: aProject
 
-	projectToEnter _ aProject
+	projectToEnter := aProject

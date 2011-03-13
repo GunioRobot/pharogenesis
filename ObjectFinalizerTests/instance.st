@@ -1,6 +1,6 @@
 TestCase
 	subclass: #ObjectFinalizerTests
-	instanceVariableNames: 'log'
+	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Finalization'
+	category: 'Tests-Finalization'

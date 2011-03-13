@@ -3,7 +3,7 @@ addExportMenuItems: aMenu hand: aHandMorph
 
 	aMenu ifNotNil:
 		[ | aSubMenu |
-		aSubMenu _ MenuMorph new defaultTarget: self.
+		aSubMenu := MenuMorph new defaultTarget: self.
 		aSubMenu add: 'BMP file' translated action: #exportAsBMP.
 		aSubMenu add: 'GIF file' translated action: #exportAsGIF.
 		aSubMenu add: 'JPEG file' translated action: #exportAsJPEG.

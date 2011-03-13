@@ -1,5 +1,5 @@
 asHex
 	| stream |
-	stream _ WriteStream on: (String new: self size * 4).
+	stream := (String new: self size * 4) writeStream.
 	self do: [ :ch | stream nextPutAll: ch hex ].
 	^stream contents

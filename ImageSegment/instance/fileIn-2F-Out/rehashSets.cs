@@ -3,16 +3,16 @@ rehashSets
 	Also, collect all classes of receivers of blocks.  Return them.  Caller will check if they have been reshaped."
 
 	| object sets receiverClasses inSeg |
-	object _ segment.
-	sets _ OrderedCollection new.
+	object := segment.
+	sets := OrderedCollection new.
 		"have to collect them, because Dictionary makes a copy, and that winds up at the end of memory and gets rehashed and makes another one."
-	receiverClasses _ IdentitySet new.
-	inSeg _ true.
-	[object _ object nextObject.  
-		object == endMarker ifTrue: [inSeg _ false].	"off end"
+	receiverClasses := IdentitySet new.
+	inSeg := true.
+	[object := object nextObject.  
+		object == endMarker ifTrue: [inSeg := false].	"off end"
 		object isInMemory ifTrue: [
 			(object isKindOf: Set) ifTrue: [sets add: object].
-			object class == BlockContext ifTrue: [inSeg ifTrue: [
+			object isBlock ifTrue: [inSeg ifTrue: [
 					receiverClasses add: object receiver class]].	
 			object class == MethodContext ifTrue: [inSeg ifTrue: [
 					receiverClasses add: object receiver class]].	

@@ -1,2 +1,2 @@
 viewOrder: aNumber
-	viewOrder _ aNumber
+	viewOrder := aNumber

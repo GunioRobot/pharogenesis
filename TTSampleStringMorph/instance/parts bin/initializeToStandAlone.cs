@@ -2,7 +2,7 @@ initializeToStandAlone
 	"Make me into an example"
 
 	| dd |
-	dd _ TTFontDescription default.
+	dd := TTFontDescription default.
 	dd ifNil: [^ RectangleMorph initializeToStandAlone].	"not available"
 
 	super initializeToStandAlone.

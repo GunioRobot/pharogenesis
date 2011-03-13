@@ -2,7 +2,7 @@ toggleExpandedState: aMorph event: event
 	| oldState |
 	"self setSelectedMorph: aMorph."
 	event yellowButtonPressed ifTrue: [
-		oldState _ aMorph isExpanded.
+		oldState := aMorph isExpanded.
 		scroller submorphs copy do: [ :each |
 			(each canExpand and: [each isExpanded = oldState]) ifTrue: [
 				each toggleExpandedState.

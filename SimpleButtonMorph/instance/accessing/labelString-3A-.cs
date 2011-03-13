@@ -1,7 +1,7 @@
 labelString: aString
 
 	| existingLabel |
-	(existingLabel _ self findA: StringMorph)
+	(existingLabel := self findA: StringMorph)
 		ifNil:
 			[self label: aString]
 		ifNotNil:

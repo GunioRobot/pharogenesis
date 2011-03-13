@@ -1,4 +1,3 @@
-monthAbbreviation
+monthAbbreviation 
 
-
-	^ start monthAbbreviation
+	^ start monthAbbreviation 

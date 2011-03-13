@@ -1,2 +1,2 @@
 isHighlighted
-	^ isHighlighted == true
+	^ isHighlighted

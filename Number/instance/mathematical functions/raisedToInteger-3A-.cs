@@ -1,19 +1,19 @@
-raisedToInteger: operand 
-	"Answer the receiver raised to the power operand, an Integer."
-	| count result |
-	#Numeric.
-	"Changed 200/01/19 For ANSI <number> support."
-	operand isInteger ifFalse: [^ ArithmeticError signal: 'parameter is not an Integer'"<- Chg"].
-	operand = 0 ifTrue: [^ self class one].
-	operand = 1 ifTrue: [^ self].
-	operand < 0 ifTrue: [^ (self raisedToInteger: operand negated) reciprocal].
-	count := 1.
-	[(count := count + count) < operand] whileTrue.
-	result := self class one.
-	[count > 0]
-		whileTrue: 
-			[result := result * result.
-			(operand bitAnd: count)
-				= 0 ifFalse: [result := result * self].
-			count := count bitShift: -1].
-	^ result
+raisedToInteger: anInteger
+
+	"The 0 raisedToInteger: 0 is an special case. In some contexts must be 1 and in others must
+	be handled as an indeterminate form.
+	I take the first context because that's the way that was previously handled.
+	Maybe further discussion is required on this topic."
+	
+	|bitProbe result|
+
+	anInteger negative ifTrue: [^(self raisedToInteger: anInteger negated) reciprocal].
+	bitProbe := 1 bitShift: anInteger highBit - 1.
+ 	result := self class one.
+  	[
+		(anInteger bitAnd: bitProbe) = 0 ifFalse: [result := result * self].
+       bitProbe := bitProbe bitShift: -1.
+		bitProbe > 0 ]
+	whileTrue: [result := result * result].
+	
+	^result

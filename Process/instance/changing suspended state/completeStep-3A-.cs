@@ -4,7 +4,7 @@ completeStep: aContext
 	| callee |
 	self suspendedContext == aContext ifFalse: [
 		^ self complete: (self calleeOf: aContext)].
-	callee _ self step.
+	callee := self step.
 	callee == aContext ifTrue: [^ callee].
 	aContext isDead ifTrue: [^ self suspendedContext].  "returned"
 	^ self complete: callee  "finish send"

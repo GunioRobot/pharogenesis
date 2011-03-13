@@ -1,3 +1,3 @@
 setItem: anObject
 
-	item _ anObject
+	item := anObject

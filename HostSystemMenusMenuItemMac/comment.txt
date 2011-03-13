@@ -1,0 +1,1 @@
+mac specific information, contains the magic constants for the mark characters. 

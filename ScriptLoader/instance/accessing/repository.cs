@@ -1,8 +1,6 @@
 repository
-	repository isNil  
-		ifTrue: [ repository := 
-					MCHttpRepository
-						location:  'http://source.squeakfoundation.org/39a'
-						user: ''
-						password: ''].
-	^ repository
+	^ repository ifNil: [
+		repository := MCHttpRepository new
+			location:  'http://www.squeaksource.com/Pharo';
+			user: '';
+			password: '']

@@ -1,2 +1,2 @@
 flapShowing
-	^ flapShowing == true
+	^ flapShowing

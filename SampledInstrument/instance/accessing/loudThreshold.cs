@@ -1,3 +1,0 @@
-loudThreshold
-
-	^ loudThreshold

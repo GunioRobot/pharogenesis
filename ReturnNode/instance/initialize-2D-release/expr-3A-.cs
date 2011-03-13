@@ -1,3 +1,3 @@
 expr: e
 
-	expr _ e
+	expr := e

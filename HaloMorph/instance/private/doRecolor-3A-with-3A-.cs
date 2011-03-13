@@ -6,8 +6,5 @@ doRecolor: evt with: aHandle
 		ifFalse:  "only do it if mouse still in handle on mouse up"
 			[self delete.
 			target addHalo: evt]
-		ifTrue:
-			[(Preferences propertySheetFromHalo == evt shiftPressed)
-				ifFalse:	[innerTarget openAPropertySheet]
-				ifTrue:	[innerTarget changeColor].
-			self showingDirectionHandles ifTrue: [self addHandles]]
+		ifTrue: [innerTarget changeColor].
+			self showingDirectionHandles ifTrue: [self addHandles]

@@ -4,6 +4,6 @@ text
 		ifNotNil: [
 			file openReadOnly.
 			file position: position.
-			text _ file nextChunkText.
+			text := file nextChunkText.
 			file close.
 			text]

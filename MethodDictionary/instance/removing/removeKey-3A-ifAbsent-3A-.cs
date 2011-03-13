@@ -3,6 +3,6 @@ removeKey: key ifAbsent: errorBlock
 	this method is running!  Therefore we perform the removal
 	in a copy, and then atomically become that copy"
 	| copy |
-	copy _ self copy.
+	copy := self copy.
 	copy removeDangerouslyKey: key ifAbsent: [^ errorBlock value].
 	self become: copy

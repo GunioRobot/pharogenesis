@@ -3,4 +3,4 @@ TestCase
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Compression-Streams'
+	category: 'Tests-Compression'

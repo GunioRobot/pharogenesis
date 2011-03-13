@@ -1,2 +1,2 @@
-pragma: s
-	pragma _ s
+pragma: s 
+	pragma := s

@@ -3,12 +3,12 @@ setConstrainedPosition: aPoint hangOut: partiallyOutside
 
 	| trialRect delta boundingMorph bRect |
 	owner ifNil:[^self].
-	trialRect _ aPoint extent: self bounds extent.
-	boundingMorph _ self topRendererOrSelf owner.
-	delta _ boundingMorph
+	trialRect := aPoint extent: self bounds extent.
+	boundingMorph := self topRendererOrSelf owner.
+	delta := boundingMorph
 			ifNil:    [0@0]
 			ifNotNil: [
-				bRect _ partiallyOutside 
+				bRect := partiallyOutside 
 					ifTrue: [boundingMorph bounds insetBy: 
 								self extent negated + boundingMorph borderWidth + (2@2)]
 					ifFalse: [boundingMorph bounds].

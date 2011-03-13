@@ -1,11 +1,11 @@
 cleanupClassHierarchyFor: aClassDescription
 	
 	| myName mySuperclass |
-	mySuperclass _ aClassDescription superclass.
+	mySuperclass := aClassDescription superclass.
 	(self isReallyObsolete: aClassDescription) ifTrue: [
 		
 		"Remove class >>>from SystemDictionary if it is obsolete"
-		myName _ aClassDescription name asString.
+		myName := aClassDescription name asString.
 		Smalltalk keys asArray do: [:each | 
 			(each asString = myName and: [(Smalltalk at: each) == aClassDescription])
 				ifTrue: [Smalltalk removeKey: each]].
@@ -24,7 +24,7 @@ cleanupClassHierarchyFor: aClassDescription
 			ifFalse: [mySuperclass addObsoleteSubclass: aClassDescription].
 	] ifFalse:[
 		"check if superclass has aClassDescription in its obsolete subclasses"
-		mySuperclass ifNil:[mySuperclass _ Class]. "nil subclasses"
+		mySuperclass ifNil:[mySuperclass := Class]. "nil subclasses"
 		mySuperclass removeObsoleteSubclass: aClassDescription.
 	].
 	"And remove its obsolete subclasses if not actual superclass"

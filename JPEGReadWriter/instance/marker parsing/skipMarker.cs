@@ -1,6 +1,5 @@
 skipMarker
-
 	| length markerStart |
-	markerStart _ self position.
-	length _ self nextWord.
+	markerStart := self position.
+	length := self nextWord.
 	self next: length - (self position - markerStart)

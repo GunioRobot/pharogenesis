@@ -1,12 +1,12 @@
 analyzeSpaceSaving
 
 	| total elems tablesTotal nonNilTables |
-	total _ size - base + 1.
-	elems _ 0.
-	base to: size do: [:i | (self at: i) ~= defaultValue ifTrue: [elems _ elems + 1]].
-	tablesTotal _ self basicSize.
-	nonNilTables _ 0.
-	1 to: self basicSize do: [:i | (self basicAt: i) ifNotNil: [nonNilTables _ nonNilTables + 1]].
+	total := size - base + 1.
+	elems := 0.
+	base to: size do: [:i | (self at: i) ~= defaultValue ifTrue: [elems := elems + 1]].
+	tablesTotal := self basicSize.
+	nonNilTables := 0.
+	1 to: self basicSize do: [:i | (self basicAt: i) ifNotNil: [nonNilTables := nonNilTables + 1]].
 
 	^ String streamContents: [:strm |
 		strm nextPutAll: 'total: '.

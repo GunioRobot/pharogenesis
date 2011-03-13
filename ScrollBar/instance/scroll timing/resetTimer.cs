@@ -1,5 +1,5 @@
 resetTimer
-	timeOfMouseDown _ Time millisecondClockValue.
-	timeOfLastScroll _ timeOfMouseDown - 1000 max: 0.
-	nextPageDirection _ nil.
-	currentScrollDelay _ nil
+	timeOfMouseDown := Time millisecondClockValue.
+	timeOfLastScroll := timeOfMouseDown - 1000 max: 0.
+	nextPageDirection := nil.
+	currentScrollDelay := nil

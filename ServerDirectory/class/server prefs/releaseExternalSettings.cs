@@ -3,6 +3,4 @@ releaseExternalSettings
 	"ServerDirectory releaseExternalSettings"
 
 	Preferences externalServerDefsOnly
-		ifTrue: [
-			self resetLocalProjectDirectories.
-			Servers _ Dictionary new]
+		ifTrue: [ Servers := Dictionary new]

@@ -2,7 +2,7 @@ fail
 
 	| exitBlock |
 	encoder == nil
-		ifFalse: [encoder release. encoder _ nil]. "break cycle"
-	exitBlock _ failBlock.
-	failBlock _ nil.
+		ifFalse: [encoder release. encoder := nil]. "break cycle"
+	exitBlock := failBlock.
+	failBlock := nil.
 	^exitBlock value

@@ -10,7 +10,8 @@ updateResults
 		self 
 			changed: #failedList; 
 			changed: #failedSelected;
-			changed: #hasFailures ].
+			changed: #hasFailures;
+			changed: #hasProgress  ].
 	errorList size = result errors size ifFalse: [
 		errorList := result errors asArray
 			sort: [ :a :b | a printString <= b printString ].
@@ -18,4 +19,5 @@ updateResults
 		self 
 			changed: #errorList; 
 			changed: #errorSelected;
-			changed: #hasErrors ].
+			changed: #hasErrors;
+			changed: #hasProgress ].

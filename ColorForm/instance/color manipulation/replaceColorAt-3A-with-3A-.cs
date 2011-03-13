@@ -3,6 +3,6 @@ replaceColorAt: aPoint with: newColor
 
 	| oldIndex |
 	self ensureColorArrayExists.
-	oldIndex _ self pixelValueAt: aPoint.
+	oldIndex := self pixelValueAt: aPoint.
 	colors at: oldIndex+1 put: newColor.
 	self clearColormapCache.

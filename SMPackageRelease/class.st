@@ -1,1 +1,0 @@
-SMPackageRelease class instanceVariableNames: ''

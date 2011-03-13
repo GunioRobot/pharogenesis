@@ -6,12 +6,12 @@ undoAgain: indices andReselect: home typedKey: wasTypedKey
 		[self selectInterval: home.
 		self zapSelectionWith: self nullText].
 
-	findSize _ (self isRedoing ifTrue: [FindText] ifFalse: [ChangeText]) size.
-	substText _ self isUndoing ifTrue: [FindText] ifFalse: [ChangeText].
+	findSize := (self isRedoing ifTrue: [FindText] ifFalse: [ChangeText]) size.
+	substText := self isUndoing ifTrue: [FindText] ifFalse: [ChangeText].
 	(self isUndoing ifTrue: [indices size to: 1 by: -1] ifFalse: [1 to: indices size]) do:
 		[:i |
-		index _ indices at: i.
-		(subject _ index to: index + findSize - 1) = self selectionInterval ifFalse:
+		index := indices at: i.
+		(subject := index to: index + findSize - 1) = self selectionInterval ifFalse:
 			[self selectInterval: subject].
 		FindText == ChangeText ifFalse: [self zapSelectionWith: substText]].
 

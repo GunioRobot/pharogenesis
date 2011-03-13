@@ -8,16 +8,16 @@ magnify: aRectangle by: scale
 	[(Display magnify: (Sensor cursorPoint extent: 31@41) by: 5@3) display]
 "
 "Scaling test...
-| f cp | f _ Form fromDisplay: (Rectangle originFromUser: 100@100).
+| f cp | f := Form fromDisplay: (Rectangle originFromUser: 100@100).
 Display restoreAfter: [Sensor waitNoButton.
 [Sensor anyButtonPressed] whileFalse:
-	[cp _ Sensor cursorPoint.
+	[cp := Sensor cursorPoint.
 	(f magnify: f boundingBox by: (cp x asFloat@cp y asFloat)/f extent) display]]
 "
 "Consistency test...
  | f f2 p | [Sensor anyButtonPressed] whileFalse:
-	[f _ Form fromDisplay: ((p _ Sensor cursorPoint) extent: 31@41).
+	[f := Form fromDisplay: ((p := Sensor cursorPoint) extent: 31@41).
 	Display fillBlack: (p extent: 31@41).
-	f2 _ f magnify: f boundingBox by: 5@3.
+	f2 := f magnify: f boundingBox by: 5@3.
 	(f2 shrink: f2 boundingBox by: 5@3) displayAt: p]
 "

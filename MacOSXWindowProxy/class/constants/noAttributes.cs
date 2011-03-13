@@ -1,0 +1,2 @@
+noAttributes
+	^0

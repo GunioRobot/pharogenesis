@@ -1,6 +1,6 @@
 familySizeFace
 
 	^ Array
-		with: fontArray first name
+		with: (fontArray  at: 1) name
 		with: self height
-		with: fontArray first emphasis
+		with: (fontArray  at: 1) emphasis

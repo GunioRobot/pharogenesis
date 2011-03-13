@@ -8,8 +8,8 @@ setExtent: aPoint depth: bitsPerPixel  "DisplayScreen startUp"
 
 	(depth == bitsPerPixel and: [aPoint = self extent and: 
 					[self supportsDisplayDepth: bitsPerPixel]]) ifFalse: [
-		bits _ nil.  "Free up old bitmap in case space is low"
-		DisplayChangeSignature _ (DisplayChangeSignature ifNil: [0]) + 1.
+		bits := nil.  "Free up old bitmap in case space is low"
+		DisplayChangeSignature := (DisplayChangeSignature ifNil: [0]) + 1.
 		(self supportsDisplayDepth: bitsPerPixel)
 			ifTrue:[super setExtent: aPoint depth: bitsPerPixel]
 			ifFalse:[(self supportsDisplayDepth: bitsPerPixel negated)
@@ -17,4 +17,4 @@ setExtent: aPoint depth: bitsPerPixel  "DisplayScreen startUp"
 				ifFalse:["Search for a suitable depth"
 					super setExtent: aPoint depth: self findAnyDisplayDepth]].
 	].
-	clippingBox _ super boundingBox
+	clippingBox := super boundingBox

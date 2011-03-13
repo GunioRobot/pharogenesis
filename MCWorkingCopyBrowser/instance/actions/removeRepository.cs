@@ -1,5 +1,5 @@
 removeRepository
-	self repository ifNotNilDo:
+	self repository ifNotNil:
 		[:repos |
 		self repositoryGroup removeRepository: repos.
 		self repositorySelection: (1 min: self repositories size)].

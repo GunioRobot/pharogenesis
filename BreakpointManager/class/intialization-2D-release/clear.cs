@@ -1,7 +1,7 @@
 clear
-	"BreakpointManager clear"
+ 	"BreakpointManager clear"
 
-	self installed copy keysDo:[ :breakMethod |
-		self unInstall: breakMethod].
+ 	self installed associations do: [:entry |
+		self unInstall: entry key].
 		
 		

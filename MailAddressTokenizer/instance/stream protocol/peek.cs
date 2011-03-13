@@ -1,4 +1,4 @@
 peek
-	cachedToken ifNil: [ cachedToken _ self nextToken. ].
+	cachedToken ifNil: [ cachedToken := self nextToken. ].
 	
 	^cachedToken	

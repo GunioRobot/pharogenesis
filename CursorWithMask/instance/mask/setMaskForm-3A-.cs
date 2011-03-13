@@ -1,2 +1,2 @@
 setMaskForm: aForm
-	maskForm _ aForm
+	maskForm := aForm

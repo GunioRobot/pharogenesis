@@ -1,24 +1,24 @@
 withArray: anArray 
 	"Modifies self to contain the list of strings in anArray"
 	| startOfLine endOfLine lineIndex aString |
-	lines _ Array new: 20.
-	lastLine _ 0.
-	startOfLine _ 1.
-	endOfLine _ 1.
-	lineIndex _ 0.
+	lines := Array new: 20.
+	lastLine := 0.
+	startOfLine := 1.
+	endOfLine := 1.
+	lineIndex := 0.
 	anArray do: 
 		[:item | 
-		endOfLine _ startOfLine + item size.		"this computation allows for a cr after each line..."
+		endOfLine := startOfLine + item size.		"this computation allows for a cr after each line..."
 												"...but later we will adjust for no cr after last line"
-		lineIndex _ lineIndex + 1.
+		lineIndex := lineIndex + 1.
 		self lineAt: lineIndex put:
 			((TextLineInterval start: startOfLine stop: endOfLine
 				internalSpaces: 0 paddingWidth: 0)
 				lineHeight: textStyle lineGrid baseline: textStyle baseline).
-		startOfLine _ endOfLine + 1].
-	endOfLine _ endOfLine - 1.		"endOfLine is now the total size of the text"
+		startOfLine := endOfLine + 1].
+	endOfLine := endOfLine - 1.		"endOfLine is now the total size of the text"
 	self trimLinesTo: lineIndex.
-	aString _ String new: endOfLine.
+	aString := String new: endOfLine.
 	anArray with: lines do: 
 		[:item :interval | 
 		aString

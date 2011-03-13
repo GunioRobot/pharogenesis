@@ -1,0 +1,1 @@
+Win32Platform class instanceVariableNames: ''

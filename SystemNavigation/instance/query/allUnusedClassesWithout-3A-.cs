@@ -6,10 +6,10 @@ allUnusedClassesWithout: classesAndMessagesPair
 	"SystemNavigation new unusedClasses"
 
 	| unused cl |
-	unused _ Smalltalk classNames asIdentitySet
+	unused := Smalltalk classNames asIdentitySet
 				copyWithoutAll: (self allGlobalRefsWithout: classesAndMessagesPair).
 	^ unused
 		reject: [:cName | 
-			cl _ Smalltalk at: cName.
+			cl := Smalltalk at: cName.
 			cl subclasses isEmpty not
 				or: [cl inheritsFrom: FileDirectory]]

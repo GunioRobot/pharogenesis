@@ -1,2 +1,2 @@
 imaginary: aNumber
-	imaginary _ aNumber.
+	imaginary := aNumber.

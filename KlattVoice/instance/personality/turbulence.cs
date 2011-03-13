@@ -1,2 +1,0 @@
-turbulence
-	^ self patternFrame turbulence

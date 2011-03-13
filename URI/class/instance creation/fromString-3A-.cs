@@ -1,7 +1,11 @@
 fromString: aString
 	| parseString scheme |
-	parseString _ aString withBlanksTrimmed.
-	scheme _ self extractSchemeFrom: parseString.
+	parseString := aString withBlanksTrimmed.
+	scheme := self extractSchemeFrom: parseString.
 	^scheme
-		ifNil: [HierarchicalURI new relativeFromString: aString]
+		ifNil: [aString size > 1
+				ifTrue: [(aString last = $/
+					ifTrue: [DirectoryURI]
+					ifFalse: [HierarchicalURI]) new relativeFromString: aString]
+				ifFalse: [HierarchicalURI new relativeFromString: aString]]
 		ifNotNil: [self absoluteFromString: aString scheme: scheme]

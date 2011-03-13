@@ -1,4 +1,3 @@
-- operand 
-	"Implementation of Number 'arithmetic' method."
-	(operand isKindOf: ScaledDecimal) ifTrue: [^ ScaledDecimal newFromNumber: fraction - operand asFraction scale: (scale max: operand scale)].
-	^ operand adaptToScaledDecimal: self andSend: #-
+- aNumber
+	aNumber class = self class ifTrue: [^self asFraction - aNumber asFraction asScaledDecimal: (scale max: aNumber scale)].
+	^self coerce: self asFraction - aNumber

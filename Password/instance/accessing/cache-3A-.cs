@@ -1,2 +1,2 @@
 cache: anObject
-	cache _ anObject
+	cache := anObject

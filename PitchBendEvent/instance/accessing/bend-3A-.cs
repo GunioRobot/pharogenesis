@@ -1,3 +1,0 @@
-bend: midiPitchBend
-
-	bend := midiPitchBend.

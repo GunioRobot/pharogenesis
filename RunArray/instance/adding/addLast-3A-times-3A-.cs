@@ -1,10 +1,10 @@
 addLast: value  times: times
 	"Add value as the last element of the receiver, the given number of times"
 	times = 0 ifTrue: [ ^self ].
-	lastIndex _ nil.  "flush access cache"
+	lastIndex := nil.  "flush access cache"
 	(runs size=0 or: [values last ~= value])
 	  ifTrue:
-		[runs _ runs copyWith: times.
-		values _ values copyWith: value]
+		[runs := runs copyWith: times.
+		values := values copyWith: value]
 	  ifFalse:
 		[runs at: runs size put: runs last+times]

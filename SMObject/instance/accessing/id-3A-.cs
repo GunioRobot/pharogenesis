@@ -1,2 +1,0 @@
-id: anId
-	id := anId

@@ -1,2 +1,0 @@
-inspectView
-	^self inspect

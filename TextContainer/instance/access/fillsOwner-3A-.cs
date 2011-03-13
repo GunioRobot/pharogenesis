@@ -1,3 +1,3 @@
 fillsOwner: aBoolean
-	fillsOwner _ aBoolean.
+	fillsOwner := aBoolean.
 	self releaseCachedState

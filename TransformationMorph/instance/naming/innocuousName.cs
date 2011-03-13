@@ -1,4 +1,4 @@
 innocuousName
 	| r |
-	^ (r _ self renderedMorph) == self
+	^ (r := self renderedMorph) == self
 		ifTrue: [super innocuousName] ifFalse: [r innocuousName]

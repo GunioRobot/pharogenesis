@@ -1,1 +1,0 @@
-CosineInterpolator class instanceVariableNames: ''

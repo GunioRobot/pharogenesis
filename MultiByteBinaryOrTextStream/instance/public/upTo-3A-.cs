@@ -1,9 +1,9 @@
 upTo: delim 
 
 	| out ch |
-	out _ WriteStream on: (String new: 1000).
+	out := (String new: 1000) writeStream.
 	self atEnd ifTrue: [^ ''].
-	[(ch _ self next) isNil] whileFalse: [
+	[(ch := self next) isNil] whileFalse: [
 		(ch = delim) ifTrue: [
 			^ out contents  "terminator is not doubled; we're done!"
 		].

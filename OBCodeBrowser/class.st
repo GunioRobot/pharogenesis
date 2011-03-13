@@ -1,1 +1,0 @@
-OBCodeBrowser class instanceVariableNames: ''

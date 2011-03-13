@@ -1,7 +1,8 @@
 initialize
 
-	hands _ Array new.
-	damageRecorder_ DamageRecorder new.
-	stepList _ Heap sortBlock: self stepListSortBlock.
-	lastStepTime _ 0.
-	lastAlarmTime _ 0.
+	super initialize.
+	hands := Array new.
+	damageRecorder:= DamageRecorder new.
+	stepList := Heap sortBlock: self stepListSortBlock.
+	lastStepTime := 0.
+	lastAlarmTime := 0.

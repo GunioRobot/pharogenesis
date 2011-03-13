@@ -1,21 +1,15 @@
 findRogueRootsPrep
 	"Part of the tool to track down unwanted pointers into the segment.  Break all owner pointers in submorphs, scripts, and viewers in flaps."
 
-| wld players morphs scriptEditors |
-wld _ arrayOfRoots detect: [:obj | 
+| wld morphs |
+wld := arrayOfRoots detect: [:obj | 
 	obj isMorph ifTrue: [obj isWorldMorph] ifFalse: [false]] ifNone: [nil].
-wld ifNil: [wld _ arrayOfRoots detect: [:obj | obj isMorph] 
+wld ifNil: [wld := arrayOfRoots detect: [:obj | obj isMorph] 
 				ifNone: [^ self error: 'can''t find a root morph']].
-morphs _ IdentitySet new: 400.
-wld allMorphsAndBookPagesInto: morphs.
-players _ wld presenter allExtantPlayers.	"just the cached list"
-players do: [:pp |
-	scriptEditors _ pp class tileScriptNames collect: [:nn | 
-			pp scriptEditorFor: nn].
-	scriptEditors do: [:se | morphs addAll: se allMorphs]].
+morphs := IdentitySet new: 400.
 wld submorphs do: [:mm | 	"non showing flaps"
 	(mm isKindOf: FlapTab) ifTrue: [
-		mm referent allMorphsAndBookPagesInto: morphs]].
+		mm referent allMorphsInto: morphs]].
 morphs do: [:mm | 	"break the back pointers"
 	mm isInMemory ifTrue: [
 	(mm respondsTo: #target) ifTrue: [

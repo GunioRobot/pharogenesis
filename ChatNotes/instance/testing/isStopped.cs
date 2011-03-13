@@ -1,3 +1,0 @@
-isStopped
-
-	^false

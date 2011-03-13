@@ -1,3 +1,3 @@
 clearCompositionWindowManager
 
-	CompositionWindowManager _ nil.
+	CompositionWindowManager := nil.

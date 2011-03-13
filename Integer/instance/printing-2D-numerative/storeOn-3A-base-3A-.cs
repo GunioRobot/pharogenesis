@@ -6,7 +6,7 @@ storeOn: aStream base: base
 	like for example: 16rFCE2"
 
 	| integer |
-	integer _ self negative
+	integer := self negative
 		ifTrue: [aStream nextPut: $-. self negated]
 		ifFalse: [self].
 	base = 10 ifFalse: [aStream nextPutAll: base printString; nextPut: $r].

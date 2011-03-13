@@ -1,8 +1,7 @@
 saveVersion
 	| repo |
 	self canSave ifFalse: [^self].
-	self checkForNewerVersions ifFalse: [^self].
-	repo _ self repository.
+	repo := self repository.
 	workingCopy newVersion ifNotNilDo:
 		[:v |
 		(MCVersionInspector new version: v) show.

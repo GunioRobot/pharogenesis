@@ -3,6 +3,6 @@ union: aTimespan
 
 	| aBegin anEnd |
 
-	aBegin _ self start min: aTimespan start.
-	anEnd _ self end max: aTimespan end.
+	aBegin := self start min: aTimespan start.
+	anEnd := self end max: aTimespan end.
 	^ Timespan starting: aBegin ending: (anEnd + DateAndTime clockPrecision).

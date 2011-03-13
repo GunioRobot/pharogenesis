@@ -1,3 +1,3 @@
 fillPattern: anObject
-	fillPattern _ anObject.
+	fillPattern := anObject.
 	self fillColor: anObject.

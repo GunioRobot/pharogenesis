@@ -1,0 +1,2 @@
+standardDocumentAttributes 
+	^self closeBoxAttribute

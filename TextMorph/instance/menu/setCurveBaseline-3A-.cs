@@ -1,7 +1,7 @@
 setCurveBaseline: evt
 	| handle origin |
-	origin _ evt cursorPoint.
-	handle _ HandleMorph new forEachPointDo:
+	origin := evt cursorPoint.
+	handle := HandleMorph new forEachPointDo:
 		[:newPoint | handle removeAllMorphs.
 		handle addMorph:
 			(PolygonMorph vertices: (Array with: origin with: newPoint)

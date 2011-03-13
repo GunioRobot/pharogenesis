@@ -2,11 +2,9 @@ fileExistsUserHandling: fullFileName
 	| dir localName choice newName newFullFileName |
 	dir := FileDirectory forFileName: fullFileName.
 	localName := FileDirectory localNameFor: fullFileName.
-	choice := (PopUpMenu
-		labels:
-'overwrite that file\choose another name\cancel' withCRs)
-		startUpWithCaption: localName, '
-already exists.'.
+	choice := UIManager default 
+		chooseFrom: {'Overwrite that file' translated. 'Choose another name' translated} 
+		message: localName , ('\', ('already exists.' translated)) withCRs.
 
 	choice = 1 ifTrue: [
 		dir deleteFileNamed: localName
@@ -14,7 +12,7 @@ already exists.'.
 		^ self new open: fullFileName forWrite: true].
 
 	choice = 2 ifTrue: [
-		newName := FillInTheBlank request: 'Enter a new file name' initialAnswer: fullFileName.
+		newName := UIManager default request: 'Enter a new file name' translated initialAnswer: fullFileName.
 		newFullFileName := self fullName: newName.
 		^ self newFileNamed: newFullFileName].
 

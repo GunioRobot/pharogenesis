@@ -1,1 +1,0 @@
-PostscriptCanvas class instanceVariableNames: ''

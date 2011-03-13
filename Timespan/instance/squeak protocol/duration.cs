@@ -1,4 +1,4 @@
 duration
-	"Answer the Duration of this timespan"
+ 	"Answer the Duration of this timespan"
 
-	^ duration
+	^ duration 

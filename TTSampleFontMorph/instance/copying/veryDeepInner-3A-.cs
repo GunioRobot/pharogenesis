@@ -5,6 +5,6 @@ veryDeepInner: deepCopier
 	See DeepCopier class comment."
 
 	super veryDeepInner: deepCopier.
-	"font _ font"
-	transform _ transform veryDeepCopyWith: deepCopier.
-	smoothing _ smoothing veryDeepCopyWith: deepCopier
+	"font := font"
+	transform := transform veryDeepCopyWith: deepCopier.
+	smoothing := smoothing veryDeepCopyWith: deepCopier

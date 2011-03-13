@@ -1,2 +1,0 @@
-newPlayerInstance
-	^ UnscriptedPlayer newUserInstance

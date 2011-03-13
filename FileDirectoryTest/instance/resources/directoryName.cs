@@ -1,0 +1,2 @@
+directoryName
+	^ self class name

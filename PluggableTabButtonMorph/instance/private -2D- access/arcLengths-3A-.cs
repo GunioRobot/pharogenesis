@@ -1,2 +1,2 @@
 arcLengths: anArrayOfIntegers
-	arcLengths _ anArrayOfIntegers
+	arcLengths := anArrayOfIntegers

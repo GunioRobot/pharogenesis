@@ -1,3 +1,4 @@
 initialize
 
-	firstLevel _ Dictionary new.
+	super initialize.
+	firstLevel := Dictionary new.

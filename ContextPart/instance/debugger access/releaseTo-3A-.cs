@@ -3,9 +3,9 @@ releaseTo: caller
 	chain up to caller in order to break circularities."
 
 	| c s |
-	c _ self.
+	c := self.
 	[c == nil or: [c == caller]]
 		whileFalse: 
-			[s _ c sender.
+			[s := c sender.
 			c singleRelease.
-			c _ s]
+			c := s]

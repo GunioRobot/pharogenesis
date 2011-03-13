@@ -1,1 +1,0 @@
-GraphicSymbolInstance class instanceVariableNames: ''

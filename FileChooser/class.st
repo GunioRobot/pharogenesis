@@ -1,1 +1,0 @@
-FileChooser class instanceVariableNames: ''

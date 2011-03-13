@@ -1,2 +1,2 @@
 menuTitleSelector: aSelector
-	getMenuTitleSelector _ aSelector
+	getMenuTitleSelector := aSelector

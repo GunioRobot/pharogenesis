@@ -1,10 +1,10 @@
 testRemove
 	"self run: #testRemove"
-	"self debug: #testRemove"
+	"self debug: #testRemove" 
 	
 	| bag item |
 	item := 'test item'.
-	bag := Bag new.
+	bag := Bag new. 
 	
 	bag add: item.
 	self assert: (bag size) = 1.

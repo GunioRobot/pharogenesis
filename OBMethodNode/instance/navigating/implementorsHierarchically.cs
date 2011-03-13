@@ -1,2 +1,0 @@
-implementorsHierarchically
-	^ OBClassAwareNode sortHierarchically: self implementors

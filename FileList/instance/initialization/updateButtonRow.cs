@@ -2,7 +2,6 @@ updateButtonRow
 	"Dynamically update the contents of the button row, if any."
 
 	| aWindow aRow |
-	Smalltalk isMorphic ifFalse: [^self].
 	aWindow := self dependents 
 				detect: [:m | (m isSystemWindow) and: [m model == self]]
 				ifNone: [^self].

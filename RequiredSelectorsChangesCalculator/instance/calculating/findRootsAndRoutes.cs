@@ -12,10 +12,10 @@ findRootsAndRoutes
 	rootClasses := IdentitySet new.
 	modifiedClasses := (modifiedBehaviors gather: [:mb | mb classesComposedWithMe]) asIdentitySet.
 	targetClasses do: [:currentTargetClass | 
-		highestSuperclassOfCurrentTarget _ nil.
+		highestSuperclassOfCurrentTarget := nil.
 		currentTargetClass withAllSuperclassesDo: [:sc | 
 			(modifiedClasses includes: sc) ifTrue: 
 				[highestSuperclassOfCurrentTarget := sc.
 				self noteRoot: sc possiblyAffected: currentTargetClass]].
-			highestSuperclassOfCurrentTarget ifNotNilDo: [:highestRoot | 
+			highestSuperclassOfCurrentTarget ifNotNil: [:highestRoot | 
 				self addUpdatePathTo: currentTargetClass from: highestRoot]]

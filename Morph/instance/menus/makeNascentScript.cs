@@ -1,2 +1,0 @@
-makeNascentScript
-	^ self notYetImplemented

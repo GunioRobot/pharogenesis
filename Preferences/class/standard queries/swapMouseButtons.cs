@@ -1,4 +1,5 @@
 swapMouseButtons
 	^ self
 		valueOfFlag: #swapMouseButtons
-		ifAbsent: [false]
+		ifAbsent: [
+			OSPlatform current platformFamily ~= #Windows ]

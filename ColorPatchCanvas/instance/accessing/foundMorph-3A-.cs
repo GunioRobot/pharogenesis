@@ -1,2 +1,2 @@
 foundMorph: aBoolean
-	foundMorph _ aBoolean
+	foundMorph := aBoolean

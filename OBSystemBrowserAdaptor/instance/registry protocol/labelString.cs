@@ -1,2 +1,0 @@
-labelString
-	^ 'System Browser'

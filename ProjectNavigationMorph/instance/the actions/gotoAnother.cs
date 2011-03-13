@@ -1,3 +1,0 @@
-gotoAnother
-
-	EToyProjectHistoryMorph new openInWorld

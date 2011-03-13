@@ -1,3 +1,0 @@
-canAssign
-
-	^ setterBlock notNil

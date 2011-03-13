@@ -1,6 +1,6 @@
 contentStreamForURI: aURI
-	| fullPath fileDir |
+	| fullPath stream |
+
 	fullPath := self fullPathForURI: aURI.
-	fileDir := self forFileName: fullPath.
-"	^fileDir readOnlyFileNamed: (self localNameFor: fullPath)"
-	^StandardFileStream readOnlyFileNamed: fullPath
+	stream := FileStream readOnlyFileFullyNamed: fullPath.
+	^stream binary

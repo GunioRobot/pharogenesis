@@ -1,6 +1,6 @@
 contents
 
-	(item respondsTo: #explorerContents) ifTrue: [^item explorerContents].
+	(item customizeExplorerContents) ifTrue: [^item explorerContents].
 	"For all others, show named vars first, then indexed vars"
 	^(item class allInstVarNames asOrderedCollection withIndexCollect: [:each :index |
 		self class

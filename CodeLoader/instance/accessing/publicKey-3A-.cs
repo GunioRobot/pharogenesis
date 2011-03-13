@@ -1,2 +1,2 @@
 publicKey: aPublicKey
-	publicKey _ aPublicKey
+	publicKey := aPublicKey

@@ -1,1 +1,0 @@
-MCScannerTest class instanceVariableNames: ''

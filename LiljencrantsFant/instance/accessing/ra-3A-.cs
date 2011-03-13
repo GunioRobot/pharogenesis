@@ -1,2 +1,0 @@
-ra: aNumber
-	ra := aNumber

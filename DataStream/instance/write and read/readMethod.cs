@@ -7,26 +7,26 @@ readMethod
 	Let the instance, not the class read the data.  "
 	| instSize refPosn newClass className xxHeader nLits byteCodeSizePlusTrailer newMethod lits |
 
-	instSize _ (byteStream nextNumber: 4) - 1.
-	refPosn _ self getCurrentReference.
-	className _ self next.
-	newClass _ Smalltalk at: className asSymbol.
+	instSize := (byteStream nextNumber: 4) - 1.
+	refPosn := self getCurrentReference.
+	className := self next.
+	newClass := Smalltalk at: className asSymbol.
 
-	xxHeader _ self next.
-		"nArgs _ (xxHeader >> 24) bitAnd: 16rF."
-		"nTemps _ (xxHeader >> 18) bitAnd: 16r3F."
-		"largeBit _ (xxHeader >> 17) bitAnd: 1."
-	nLits _ (xxHeader >> 9) bitAnd: 16rFF.
-		"primBits _ ((xxHeader >> 19) bitAnd: 16r600) + (xxHeader bitAnd: 16r1FF)."
-	byteCodeSizePlusTrailer _ instSize - (newClass instSize "0") - (nLits + 1 * 4).
+	xxHeader := self next.
+		"nArgs := (xxHeader >> 24) bitAnd: 16rF."
+		"nTemps := (xxHeader >> 18) bitAnd: 16r3F."
+		"largeBit := (xxHeader >> 17) bitAnd: 1."
+	nLits := (xxHeader >> 9) bitAnd: 16rFF.
+		"primBits := ((xxHeader >> 19) bitAnd: 16r600) + (xxHeader bitAnd: 16r1FF)."
+	byteCodeSizePlusTrailer := instSize - (newClass instSize "0") - (nLits + 1 * 4).
 
-	newMethod _ newClass 
+	newMethod := newClass 
 		newMethod: byteCodeSizePlusTrailer
 		header: xxHeader.
 
 	self setCurrentReference: refPosn.  "before readDataFrom:size:"
 	self beginReference: newMethod.
-	lits _ newMethod numLiterals + 1.	"counting header"
+	lits := newMethod numLiterals + 1.	"counting header"
 	2 to: lits do:
 		[:ii | newMethod objectAt: ii put: self next].
 	lits*4+1 to: newMethod basicSize do:

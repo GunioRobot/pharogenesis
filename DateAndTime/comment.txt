@@ -1,8 +1,7 @@
 I represent a point in UTC time as defined by ISO 8601. I have zero duration.
 
 
-My implementation uses three SmallIntegers
- and a Duration:
+My implementation uses three SmallIntegers and a Duration:
 jdn		- julian day number.
 seconds	- number of seconds since midnight.
 nanos	- the number of nanoseconds since the second.

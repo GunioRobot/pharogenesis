@@ -11,67 +11,67 @@ absByteEncode: aStream base: base
 
 	| significantBits fBase exp baseExpEstimate r s mPlus mMinus scale d tc1 tc2 fixedFormat decPointCount |
 	self isInfinite ifTrue: [aStream print: 'Infinity'. ^ self].
-	significantBits _ 50.  "approximately 3 lsb's of accuracy loss during conversion"
-	fBase _ base asFloat.
-	exp _ self exponent.
-	baseExpEstimate _ (exp * fBase reciprocalLogBase2 - 1.0e-10) ceiling.
+	significantBits := 50.  "approximately 3 lsb's of accuracy loss during conversion"
+	fBase := base asFloat.
+	exp := self exponent.
+	baseExpEstimate := (exp * fBase reciprocalLogBase2 - 1.0e-10) ceiling.
 	exp >= 0
 		ifTrue:
-			[r _ self.
-			s _ 1.0.
-			mPlus _ 1.0 timesTwoPower: exp - significantBits.
-			mMinus _ self significand ~= 1.0 ifTrue: [mPlus] ifFalse: [mPlus / 2.0]]
+			[r := self.
+			s := 1.0.
+			mPlus := 1.0 timesTwoPower: exp - significantBits.
+			mMinus := self significand ~= 1.0 ifTrue: [mPlus] ifFalse: [mPlus / 2.0]]
 		ifFalse:
-			[r _ self timesTwoPower: significantBits.
-			s _ 1.0 timesTwoPower:  significantBits.
-			mMinus _ 1.0 timesTwoPower: (exp max: -1024).
-			mPlus _
+			[r := self timesTwoPower: significantBits.
+			s := 1.0 timesTwoPower:  significantBits.
+			mMinus := 1.0 timesTwoPower: (exp max: -1024).
+			mPlus :=
 				(exp = MinValLogBase2) | (self significand ~= 1.0)
 					ifTrue: [mMinus]
 					ifFalse: [mMinus * 2.0]].
 	baseExpEstimate >= 0
 		ifTrue:
-			[s _ s * (fBase raisedToInteger: baseExpEstimate).
+			[s := s * (fBase raisedToInteger: baseExpEstimate).
 			exp = 1023
 				ifTrue:   "scale down to prevent overflow to Infinity during conversion"
-					[r _ r / fBase.
-					s _ s / fBase.
-					mPlus _ mPlus / fBase.
-					mMinus _ mMinus / fBase]]
+					[r := r / fBase.
+					s := s / fBase.
+					mPlus := mPlus / fBase.
+					mMinus := mMinus / fBase]]
 		ifFalse:
 			[exp < -1023
 				ifTrue:   "scale up to prevent denorm reciprocals overflowing to Infinity"
-					[d _ (53 * fBase reciprocalLogBase2 - 1.0e-10) ceiling.
-					scale _ fBase raisedToInteger: d.
-					r _ r * scale.
-					mPlus _ mPlus * scale.
-					mMinus _ mMinus * scale.
-					scale _ fBase raisedToInteger: (baseExpEstimate + d) negated]
+					[d := (53 * fBase reciprocalLogBase2 - 1.0e-10) ceiling.
+					scale := fBase raisedToInteger: d.
+					r := r * scale.
+					mPlus := mPlus * scale.
+					mMinus := mMinus * scale.
+					scale := fBase raisedToInteger: (baseExpEstimate + d) negated]
 				ifFalse:
-				[scale _ fBase raisedToInteger: baseExpEstimate negated].
-			s _ s / scale].
+				[scale := fBase raisedToInteger: baseExpEstimate negated].
+			s := s / scale].
 	(r + mPlus >= s)
-		ifTrue: [baseExpEstimate _ baseExpEstimate + 1]
+		ifTrue: [baseExpEstimate := baseExpEstimate + 1]
 		ifFalse:
-			[s _ s / fBase].
-	(fixedFormat _ baseExpEstimate between: -3 and: 6)
+			[s := s / fBase].
+	(fixedFormat := baseExpEstimate between: -3 and: 6)
 		ifTrue:
-			[decPointCount _ baseExpEstimate.
+			[decPointCount := baseExpEstimate.
 			baseExpEstimate <= 0
 				ifTrue: [aStream print: ('0.000000' truncateTo: 2 - baseExpEstimate)]]
 		ifFalse:
-			[decPointCount _ 1].
-	[d _ (r / s) truncated.
-	r _ r - (d * s).
-	(tc1 _ r <= mMinus) | (tc2 _ r + mPlus >= s)] whileFalse:
+			[decPointCount := 1].
+	[d := (r / s) truncated.
+	r := r - (d * s).
+	(tc1 := r <= mMinus) | (tc2 := r + mPlus >= s)] whileFalse:
 		[aStream print: (Character digitValue: d).
-		r _ r * fBase.
-		mPlus _ mPlus * fBase.
-		mMinus _ mMinus * fBase.
-		decPointCount _ decPointCount - 1.
+		r := r * fBase.
+		mPlus := mPlus * fBase.
+		mMinus := mMinus * fBase.
+		decPointCount := decPointCount - 1.
 		decPointCount = 0 ifTrue: [aStream print: $.]].
 	tc2 ifTrue:
-		[tc1 not | (tc1 & (r*2.0 >= s)) ifTrue: [d _ d + 1]].
+		[tc1 not | (tc1 & (r*2.0 >= s)) ifTrue: [d := d + 1]].
 	aStream print: (Character digitValue: d).
 	decPointCount > 0
 		ifTrue:

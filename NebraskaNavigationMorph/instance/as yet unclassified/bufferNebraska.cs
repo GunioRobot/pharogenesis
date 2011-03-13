@@ -1,3 +1,0 @@
-bufferNebraska
-
-	nebraskaTerminal requestBufferedConnection

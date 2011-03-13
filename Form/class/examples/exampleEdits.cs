@@ -4,10 +4,10 @@ exampleEdits
 	 
 	This is the general form editor:
 	| f | 
-	f _ Form fromUser. 
+	f := Form fromUser. 
 	f edit. 
 	 
 	This is the general bit editor:
 	| f | 
-	f _ Form fromUser. 
+	f := Form fromUser. 
 	f bitEdit."

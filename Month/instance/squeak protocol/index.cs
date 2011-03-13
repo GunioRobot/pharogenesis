@@ -1,3 +1,3 @@
 index
 
-	^ self monthIndex
+	^ self monthIndex 

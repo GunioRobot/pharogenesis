@@ -3,5 +3,5 @@ connectionCount
 
 	| count |
 	self pruneStaleConnections.
-	accessSema critical: [count _ connections size].
+	accessSema critical: [count := connections size].
 	^ count

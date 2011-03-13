@@ -3,4 +3,4 @@ Object
 	instanceVariableNames: 'morph label modal modalValue'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Monticello-UI'
+	category: 'MonticelloGUI'

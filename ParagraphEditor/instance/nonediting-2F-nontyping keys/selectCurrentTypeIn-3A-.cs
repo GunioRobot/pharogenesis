@@ -4,9 +4,8 @@ selectCurrentTypeIn: characterStream
 	| prior |
 
 	self closeTypeIn: characterStream.
-	prior _ otherInterval.
-	sensor keyboard.		"flush character"
+	prior := otherInterval.
 	self closeTypeIn: characterStream.
 	self selectInterval: UndoInterval.
-	otherInterval _ prior.
+	otherInterval := prior.
 	^ true

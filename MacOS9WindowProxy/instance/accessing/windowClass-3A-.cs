@@ -1,0 +1,2 @@
+windowClass: aNumber
+	windowClass := aNumber

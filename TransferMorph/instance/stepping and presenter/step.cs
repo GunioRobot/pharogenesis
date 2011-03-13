@@ -1,3 +1,3 @@
 step
-	self shouldCopy: Sensor shiftPressed.
+	self shouldCopy: dragHand shiftPressed.
 	self updateCopyIcon

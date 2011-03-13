@@ -1,3 +1,0 @@
-midiPort
-
-	^ midiPort

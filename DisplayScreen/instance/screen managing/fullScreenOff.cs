@@ -1,0 +1,3 @@
+fullScreenOff
+
+	self fullScreen: false

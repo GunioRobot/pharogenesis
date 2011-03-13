@@ -1,11 +1,11 @@
 nextWordFrom: aStream setCharacter: aBlock
 	| outStream char |
-	outStream _ WriteStream on: (String new: 16).
+	outStream := (String new: 16) writeStream.
 	[(aStream peekFor: Character space) 
 		or: [aStream peekFor: Character tab]] whileTrue.
 	[aStream atEnd
 		or:
-			[char _ aStream next.
+			[char := aStream next.
 			char = Character cr or: [char = Character space]]]
 		whileFalse: [outStream nextPut: char].
 	aBlock value: char.

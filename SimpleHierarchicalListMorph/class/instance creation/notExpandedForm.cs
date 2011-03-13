@@ -1,8 +1,8 @@
 notExpandedForm
 
-	notExpandedForm ifNotNil: [ notExpandedForm depth ~= Display depth ifTrue: [ notExpandedForm _ nil ]].
+	notExpandedForm ifNotNil: [ notExpandedForm depth ~= Display depth ifTrue: [ notExpandedForm := nil ]].
 
-	^notExpandedForm ifNil: [notExpandedForm _ 
+	^notExpandedForm ifNil: [notExpandedForm := 
 			(Form
 				extent: 10@9
 				depth: 8

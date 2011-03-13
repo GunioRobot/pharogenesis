@@ -3,9 +3,9 @@ growTo: anInteger
 
 	| oldElements |
 
-	oldElements _ array.
-	array _ WeakArray new: anInteger.
+	oldElements := array.
+	array := WeakArray new: anInteger.
 	array atAllPut: flag.
-	tally _ 0.
+	tally := 0.
 	oldElements do:
 		[:each | (each == flag or: [each == nil]) ifFalse: [self noCheckAdd: each]]

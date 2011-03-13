@@ -1,6 +1,6 @@
 BorderedMorph
 	subclass: #MorphicModel
 	instanceVariableNames: 'model slotName open'
-	classVariableNames: 'TimeOfError'
+	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Kernel'

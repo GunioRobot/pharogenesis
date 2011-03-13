@@ -1,1 +1,0 @@
-FlashMorphReader class instanceVariableNames: ''

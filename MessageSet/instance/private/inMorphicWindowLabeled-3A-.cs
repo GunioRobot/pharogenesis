@@ -3,7 +3,7 @@ inMorphicWindowLabeled: labelString
 
 	| window listFraction |
 	window := (SystemWindow labelled: labelString) model: self.
-	listFraction := 0.2.
+	listFraction := 0.4.
 	window addMorph: self buildMorphicMessageList frame: (0@0 extent: 1@listFraction).
 	self 
 		addLowerPanesTo: window 

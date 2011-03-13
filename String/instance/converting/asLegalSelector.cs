@@ -1,10 +1,10 @@
 asLegalSelector
 	| toUse |
-	toUse _ ''.
+	toUse := ''.
 	self do:
-		[:char | char isAlphaNumeric ifTrue: [toUse _ toUse copyWith: char]].
+		[:char | char isAlphaNumeric ifTrue: [toUse := toUse copyWith: char]].
 	(self size == 0 or: [self first isLetter not])
-		ifTrue:		[toUse _ 'v', toUse].
+		ifTrue:		[toUse := 'v', toUse].
 
 	^ toUse withFirstCharacterDownshifted
 

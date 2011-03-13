@@ -1,3 +1,0 @@
-leadingChar
-
-	^ 0.

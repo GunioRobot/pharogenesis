@@ -1,6 +1,6 @@
 Object
 	subclass: #ColorTheme
 	instanceVariableNames: ''
-	classVariableNames: 'Current'
+	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'System-Support'

@@ -1,4 +1,4 @@
 showDeprecationWarnings
 	^ self
 		valueOfFlag: #showDeprecationWarnings
-		ifAbsent: [false]
+		ifAbsent: [true]

@@ -3,7 +3,7 @@ createBox
 	"Transcript show: self paneColor asString;  
 	cr."
 	| box |
-	box _ IconicButton new.
+	box := IconicButton new.
 	box color: Color transparent;
 		 target: self;
 		 useSquareCorners;

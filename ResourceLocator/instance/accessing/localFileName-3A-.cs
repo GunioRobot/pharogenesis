@@ -1,2 +1,2 @@
 localFileName: aString
-	localFileName _ aString
+	localFileName := aString

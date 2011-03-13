@@ -4,8 +4,8 @@ defaultStemUrl
 "	ServerDirectory defaultStemUrl	"
 
 | rand dir |
-rand _ String new: 4.
+rand := String new: 4.
 1 to: rand size do: [:ii |
 	rand at: ii put: ('bdfghklmnpqrstvwz' at: 17 atRandom)].
-dir _ self serverNamed: 'DaniOnJumbo'.
+dir := self serverNamed: 'DaniOnJumbo'.
 ^ 'ftp://', dir server, dir slashDirectory, '/BK', rand

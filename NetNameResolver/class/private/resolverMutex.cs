@@ -1,3 +1,3 @@
 resolverMutex
-	ResolverMutex ifNil: [ResolverMutex _ Semaphore forMutualExclusion].
+	ResolverMutex ifNil: [ResolverMutex := Semaphore forMutualExclusion].
 	^ResolverMutex

@@ -1,0 +1,1 @@
+countMenuItems: aMenuHandle

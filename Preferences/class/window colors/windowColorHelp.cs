@@ -2,7 +2,7 @@ windowColorHelp
 	"Provide help for the window-color panel"
 
 	| helpString |
-	helpString _ 
+	helpString := 
 'The "Window Colors" panel lets you select colors for many kinds of standard Squeak windows.
 
 You can change your color preference for any particular tool by clicking on the color swatch and then selecting the desired color from the resulting color-picker.

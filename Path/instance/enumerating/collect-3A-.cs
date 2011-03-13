@@ -4,6 +4,6 @@ collect: aBlock
 	the new path."
 
 	| newCollection |
-	newCollection _ collectionOfPoints collect: aBlock.
+	newCollection := collectionOfPoints collect: aBlock.
 	newCollection form: self form.
 	^newCollection

@@ -1,0 +1,1 @@
+ProceedDialogWindow class instanceVariableNames: ''

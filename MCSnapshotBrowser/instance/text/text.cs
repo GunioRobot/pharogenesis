@@ -3,4 +3,5 @@ text
 	methodSelection ifNotNil: [^ methodSelection source].
 	protocolSelection ifNotNil: [^ ''].
 	classSelection ifNotNil: [^ self classDefinitionString].
+	categorySelection ifNil: [^self scriptDefinitionString].
 	^ ''

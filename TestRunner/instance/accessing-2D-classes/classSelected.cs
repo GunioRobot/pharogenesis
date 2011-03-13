@@ -1,2 +1,2 @@
 classSelected
-	^ 0
+	^ classIndex

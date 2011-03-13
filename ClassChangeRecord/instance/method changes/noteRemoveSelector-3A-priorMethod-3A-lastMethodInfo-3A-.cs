@@ -1,7 +1,7 @@
 noteRemoveSelector: selector priorMethod: priorMethod lastMethodInfo: infoOrNil
 
 	| methodChange |
-	methodChange _ self findOrMakeMethodChangeAt: selector priorMethod: priorMethod.
+	methodChange := self findOrMakeMethodChangeAt: selector priorMethod: priorMethod.
 	methodChange changeType == #add
 		ifTrue: [methodChange noteChangeType: #addedThenRemoved]
 		ifFalse: [methodChange noteChangeType: #remove].

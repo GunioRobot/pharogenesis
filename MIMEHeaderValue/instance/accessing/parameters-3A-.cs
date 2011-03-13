@@ -1,2 +1,2 @@
 parameters: anObject
-	parameters _ anObject
+	parameters := anObject

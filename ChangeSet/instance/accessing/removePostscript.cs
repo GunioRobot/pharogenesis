@@ -1,2 +1,2 @@
 removePostscript
-	postscript _ nil
+	postscript := nil

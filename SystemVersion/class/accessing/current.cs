@@ -1,3 +1,3 @@
 current
-	Current ifNil: [Current _ SystemVersion new].
+	Current ifNil: [Current := SystemVersion new].
 	^Current

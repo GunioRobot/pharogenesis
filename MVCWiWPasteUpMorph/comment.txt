@@ -1,1 +1,0 @@
-A subclass of WiWPasteUpMorph that supports Morphic worlds embedded in MVC Views.

@@ -1,2 +1,2 @@
 selectionInterval: sel
-	selectionInterval _ sel
+	selectionInterval := sel

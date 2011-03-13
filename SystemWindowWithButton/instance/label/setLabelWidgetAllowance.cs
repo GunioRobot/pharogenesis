@@ -1,2 +1,2 @@
 setLabelWidgetAllowance
-	^ labelWidgetAllowance _ 115
+	^ labelWidgetAllowance := 115

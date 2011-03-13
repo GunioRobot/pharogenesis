@@ -5,5 +5,5 @@ mouseDown: evt
 		[self userEditsAllowed ifTrue:
 			[(owner respondsTo: #parseNode)
 					ifTrue: 	"leave space for editing"
-						[minimumWidth _ (49 max: minimumWidth)].
+						[minimumWidth := (49 max: minimumWidth)].
 			self launchMiniEditor: evt]]

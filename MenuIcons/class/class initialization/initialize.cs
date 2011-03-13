@@ -1,4 +1,5 @@
 initialize
 	"self initialize"
-self initializeIcons.
+	
+	self initializeIcons.
 	Smalltalk addToStartUpList: self

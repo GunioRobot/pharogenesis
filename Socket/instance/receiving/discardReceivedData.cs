@@ -2,9 +2,9 @@ discardReceivedData
 	"Discard any data received up until now, and return the number of bytes discarded."
 
 	| buf totalBytesDiscarded |
-	buf _ String new: 10000.
-	totalBytesDiscarded _ 0.
+	buf := String new: 10000.
+	totalBytesDiscarded := 0.
 	[self isConnected] whileTrue: [
-		totalBytesDiscarded _
+		totalBytesDiscarded :=
 			totalBytesDiscarded + (self receiveDataInto: buf)].
 	^ totalBytesDiscarded

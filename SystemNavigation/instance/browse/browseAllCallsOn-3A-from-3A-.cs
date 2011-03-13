@@ -5,9 +5,9 @@ browseAllCallsOn: aSymbol from: aClass
 	"self new browseAllCallsOn: #/. from: Number"
 
 	| key label |
-	label _ (aSymbol isKindOf: LookupKey)
-			ifTrue: ['Users of ' , (key _ aSymbol key)]
-			ifFalse: ['Senders of ' , (key _ aSymbol)].
+	label := (aSymbol isKindOf: LookupKey)
+			ifTrue: ['Users of ' , (key := aSymbol key)]
+			ifFalse: ['Senders of ' , (key := aSymbol)].
 	^ self 
 		browseMessageList: (self  allCallsOn: aSymbol from: aClass)
 		name: label

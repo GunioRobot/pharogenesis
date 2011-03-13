@@ -1,4 +1,4 @@
 newFileFrom: aDirectory
 
-	canTypeFileName _ true.
+	canTypeFileName := true.
 	^self makeFileMenuFor: aDirectory

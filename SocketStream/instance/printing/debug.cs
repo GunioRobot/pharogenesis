@@ -2,7 +2,7 @@ debug
 	"Display debug info."
 
 	| data |
-	data _ self inBufferSize.
+	data := self inBufferSize.
 	^String streamContents: [:s |
 		s
 			nextPutAll: 'Buffer size: ', inBuffer size asString;cr;

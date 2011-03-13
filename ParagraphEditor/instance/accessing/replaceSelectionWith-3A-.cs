@@ -5,6 +5,6 @@ replaceSelectionWith: aText
 	 Set up undo to use UndoReplace."
 
 	beginTypeInBlock ~~ nil ifTrue: [^self zapSelectionWith: aText]. "called from old code"
-	UndoSelection _ self selection.
+	UndoSelection := self selection.
 	self zapSelectionWith: aText.
 	self undoer: #undoReplace

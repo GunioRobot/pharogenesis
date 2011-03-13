@@ -3,26 +3,27 @@ startUpSegmented: segmentHeight withCaption: captionOrNil at: location allowKeyb
 	Break it up into smaller chunks, and manage the relative indices.
 	Inspired by a special-case solution by Reinier van Loon.  The boolean parameter indicates whether the menu should be given keyboard focus (if in morphic)"
 
-"
-(PopUpMenu labels: (String streamContents: [:s | 1 to: 100 do: [:i | s print: i; cr]. s skip: -1])
-		lines: (5 to: 100 by: 5)) startUpWithCaption: 'Give it a whirl...'.
-"
+	" Example:
+		(PopUpMenu labels: (String streamContents: [:s | 1 to: 100 do: [:i | s print: i; cr]. s skip: -1])
+			lines: (5 to: 100 by: 5)) startUpWithCaption: 'Give it a whirl...'.
+	"
 	| nLines nLinesPer allLabels from to subset subLines index |
 	frame ifNil: [self computeForm].
 	allLabels := labelString findTokens: Character cr asString.
-	nLines _ allLabels size.
-	lineArray ifNil: [lineArray _ Array new].
-	nLinesPer _ segmentHeight // marker height - 3.
+	nLines := allLabels size.
+	lineArray ifNil: [lineArray := Array new].
+	nLinesPer := segmentHeight // marker height - 3.
 	from := 1.
 	[ true ] whileTrue:
 		[to := (from + nLinesPer) min: nLines.
 		subset := allLabels copyFrom: from to: to.
 		subset add: (to = nLines ifTrue: ['start over...' translated] ifFalse: ['more...' translated])
 			before: subset first.
-		subLines _ lineArray select: [:n | n >= from] thenCollect: [:n | n - (from-1) + 1].
-		subLines _ (Array with: 1) , subLines.
+		subLines := lineArray select: [:n | n >= from] thenCollect: [:n | n - (from-1) + 1].
+		subLines := (Array with: 1) , subLines.
 		index := (PopUpMenu labels: subset asStringWithCr lines: subLines)
 					startUpWithCaption: captionOrNil at: location allowKeyboard: aBoolean.
+		index ifNil: [^ 0].
 		index = 1
 			ifTrue: [from := to + 1.
 					from > nLines ifTrue: [ from := 1 ]]

@@ -4,7 +4,7 @@ recordImageSegment: refs
 	| cls list |
 	"Do not record Player class inst vars.  They are in the segement."
 	refs keysDo: [:each | 
-		cls _ each class.
+		cls := each class.
 		cls isObsolete ifTrue: [self error: 'Trying to write ', cls name].
 		cls class == Metaclass 
 			ifFalse: [structures at: cls name put: false.
@@ -19,6 +19,6 @@ recordImageSegment: refs
 					"each arrayOfRoots do: [:rr | (rr isKindOf: Class) ifTrue: [
 							structures at: rr theNonMetaClass name put: false]]."
 					 	"all classes in roots are local to seg"]]].
-	list _ refs at: #BlockReceiverClasses ifAbsent: [^ self].
+	list := refs at: #BlockReceiverClasses ifAbsent: [^ self].
 	list do: [:meta | structures at: meta name put: false].
 		"Just the metaclasses whose instances are block receivers.  Otherwise metaclasses are not allowed."

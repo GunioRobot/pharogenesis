@@ -3,4 +3,4 @@ MCTestCase
 	instanceVariableNames: 'conflictBlock conflicts'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Monticello-Tests'
+	category: 'Tests-Monticello'

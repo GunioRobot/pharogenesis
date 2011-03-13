@@ -1,3 +1,0 @@
-mutedState
-
-	^ muted

@@ -5,8 +5,8 @@ variableSubclass: t uses: aTraitCompositionOrArray instanceVariableNames: f
 	have indexable pointer variables."
 	
 	| newClass copyOfOldClass |
-	copyOfOldClass _ self copy.
-	newClass _ self
+	copyOfOldClass := self copy.
+	newClass := self
 		variableSubclass: t 
 		instanceVariableNames: f
 		classVariableNames: d

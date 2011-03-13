@@ -1,3 +1,0 @@
-target: anObject
-
-	target := anObject.

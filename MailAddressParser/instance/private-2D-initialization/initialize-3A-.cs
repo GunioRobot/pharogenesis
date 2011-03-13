@@ -1,3 +1,3 @@
 initialize: tokenList
-	tokens _ tokenList asOrderedCollection copy.
-	addresses _ OrderedCollection new.
+	tokens := tokenList asOrderedCollection copy.
+	addresses := OrderedCollection new.

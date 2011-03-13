@@ -1,11 +1,11 @@
 autoBind: name 
 	"Declare a block argument as a temp if not already declared."
 	| node |
-	node _ scopeTable 
+	node := scopeTable 
 			at: name
 			ifAbsent: 
 				[(self lookupInPools: name ifFound: [:assoc | assoc])
-					ifTrue: [self notify: 'Name already used in a Pool or Global'].
+					ifTrue: [self warnAboutShadowed: name].
 				^ (self reallyBind: name) nowHasDef nowHasRef scope: 1].
 	node isTemp
 		ifTrue: [node scope >= 0 ifTrue:

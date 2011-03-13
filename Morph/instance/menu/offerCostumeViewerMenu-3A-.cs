@@ -1,2 +1,0 @@
-offerCostumeViewerMenu: aMenu
-	"do nothing"

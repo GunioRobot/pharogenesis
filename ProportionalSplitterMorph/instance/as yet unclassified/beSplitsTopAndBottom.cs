@@ -1,4 +1,4 @@
 beSplitsTopAndBottom
 
-	splitsTopAndBottom _ true.
+	splitsTopAndBottom := true.
 	

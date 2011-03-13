@@ -1,2 +1,2 @@
 model: anObject
-	model _ anObject
+	model := anObject

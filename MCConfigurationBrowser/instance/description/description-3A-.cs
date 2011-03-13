@@ -1,6 +1,6 @@
 description: aText
 
-	self selectedRepository ifNotNilDo: [:repo | 
+	self selectedRepository ifNotNil: [:repo | 
 		| new | 
 		new := MCRepository readFrom: aText asString.
 		(new class = repo class 

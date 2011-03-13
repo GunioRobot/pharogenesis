@@ -5,8 +5,8 @@ atRows: r1 to: r2 columns: c1 to: c2 put: aMatrix
 	 we don't care if it is bigger or even if it is a Matrix at all."
 	|rd cd|
 
-	rd _ r1 - 1.
-	cd _ c1 - 1.
+	rd := r1 - 1.
+	cd := c1 - 1.
 	r1 to: r2 do: [:r |
 		c1 to: c2 do: [:c |
 			self at: r at: c put: (aMatrix at: r-rd at: c-cd)]].

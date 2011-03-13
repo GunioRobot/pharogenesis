@@ -1,2 +1,2 @@
 classAndMethod: aString
-	classAndMethod _ aString
+	classAndMethod := aString

@@ -1,48 +1,66 @@
 asFloat
 	"Answer a Float that represents the value of the receiver.
-	Optimized to process only the significant digits of a LargeInteger.
-	SqR: 11/30/1998 21:1
+	This is the nearest possible Float according to IEEE 754 round to nearest even mode.
+	If the receiver is too large, then answer with Float infinity."
 	
-	This algorithm does honour IEEE 754 round to nearest even mode.
-	Numbers are first rounded on nearest integer on 53 bits.
-	In case of exact half difference between two consecutive integers (2r0.1),
-	there are two possible choices (two integers are as near, 0 and 1)
-	In this case, the nearest even integer is chosen.
-	examples (with less than 53bits for clarity)
-	2r0.00001 is rounded to 2r0
-	2r1.00001 is rounded to 2.1
-	2r0.1 is rounded to 2r0 (nearest event)
-	2r1.1 is rounded to 2.10 (neraest even)
-	2r0.10001 is rounded to 2r1
-	2r1.10001 is rounded to 2.10"
-	
-	| abs shift sum delta mask trailingBits carry |
+	| mantissa shift sum numberOfTruncatedBits mask truncatedBits |
 	self isZero
 		ifTrue: [^ 0.0].
-	abs := self abs.
+	mantissa := self abs.
 
 	"Assume Float is a double precision IEEE 754 number with 53bits mantissa.
 	We should better use some Float class message for that (Float precision)..."
-	delta := abs highBit - 53.
-	delta > 0
-		ifTrue: [mask := (1 bitShift: delta) - 1.
-			trailingBits := abs bitAnd: mask.
-			"inexact := trailingBits isZero not."
-			carry := trailingBits bitShift: 1 - delta.
-			abs := abs bitShift: delta negated.
-			shift := delta.
-			(carry isZero
-					or: [(trailingBits bitAnd: (mask bitShift: -1)) isZero
-							and: [abs even]])
-				ifFalse: [abs := abs + 1]]
-		ifFalse: [shift := 0].
+	numberOfTruncatedBits := mantissa highBit - 53.
+	numberOfTruncatedBits > 0
+		ifTrue: [mask := (1 bitShift: numberOfTruncatedBits) - 1.
+			truncatedBits := mantissa bitAnd: mask.
+			mantissa := mantissa bitShift: numberOfTruncatedBits negated.
+			"inexact := truncatedBits isZero not."
+			truncatedBits highBit = numberOfTruncatedBits
+				ifTrue: ["There is a carry, whe must eventually round upper"
+					(mantissa even and: [truncatedBits isPowerOfTwo])
+						ifFalse: ["Either the mantissa is odd, and we must round upper to the nearest even
+							Or the truncated part is not a power of two, so has more than 1 bit, so is > 0.5ulp: we must round upper"
+							mantissa := mantissa + 1]]]
+		ifFalse: [numberOfTruncatedBits := 0].
 	
-	"now, abs has no more than 53 bits, we can do exact floating point arithmetic"
+	"now, mantissa has no more than 53 bits, we can do exact floating point arithmetic"
 	sum := 0.0.
-	1 to: abs size do:
+	shift := numberOfTruncatedBits.
+	1 to: mantissa digitLength do:
 		[:byteIndex | 
-		sum := ((abs digitAt: byteIndex) asFloat timesTwoPower: shift) + sum.
+		sum := ((mantissa digitAt: byteIndex) asFloat timesTwoPower: shift) + sum.
 		shift := shift + 8].
 	^ self positive
 			ifTrue: [sum]
 			ifFalse: [sum negated]
+
+	
+	"Implementation notes:
+	The receiver is split in three parts:
+	- a sign
+	- a truncated mantissa made of first 53 bits which is the maximum precision of Float
+	- trailing truncatedBits
+	This is like placing a floating point after numberOfTruncatedBits from the right:
+	self = (self sign*(mantissa + fractionPart)*(1 bitShift: numberOfTruncatedBits)).
+	where 0 <= fractionPart < 1,
+	fractionPart = (truncatedBits/(1 bitShift: numberOfTruncatedBits)).
+	Note that the converson is inexact if fractionPart > 0.
+	
+	If fractionPart > 0.5 (2r0.1), then the mantissa must be rounded upward.
+	If fractionPart = 0.5, then it is case of exact difference between two consecutive integers.
+	In this later case, we always round to nearest even. That is round upward if mantissa is odd.
+
+	The two cases imply first bit after floating point is 1: truncatedBits highBit = numberOfTruncatedBits
+	Possible variants: (self abs bitAt: numberOfTruncatedBits) = 1
+	In the former case, there must be another truncated bit set to 1: truncatedBits isPowerOfTwo not.
+	Possible variants: (self abs lowBit < numberOfTruncatedBits)
+	The later case is recognized as: mantissa odd.
+	
+	examples (I omit first 52 bits of mantissa for clarity)
+	2r0.00001 is rounded to 2r0
+	2r1.00001 is rounded to 2r1
+	2r0.1 is rounded to 2r0 (nearest even)
+	2r1.1 is rounded to 2r10 (nearest even)
+	2r0.10001 is rounded to 2r1
+	2r1.10001 is rounded to 2r10"

@@ -1,14 +1,14 @@
 filledForm
 	"Note: The filled form is actually 2 pixels bigger than bounds, and the point corresponding to this morphs' position is at 1@1 in the form.  This is due to the details of the fillig routines, at least one of which requires an extra 1-pixel margin around the outside.  Computation of the filled form is done only on demand."
 	| bb origin |
-	closed ifFalse: [^ filledForm _ nil].
+	closed ifFalse: [^ filledForm := nil].
 	filledForm ifNotNil: [^ filledForm].
-	filledForm _ Form extent: bounds extent+2.
+	filledForm := Form extent: bounds extent+2.
 
 	"Draw the border..."
-	bb _ (BitBlt current toForm: filledForm) sourceForm: nil; fillColor: Color black;
+	bb := (BitBlt current toForm: filledForm) sourceForm: nil; fillColor: Color black;
 			combinationRule: Form over; width: 1; height: 1.
-	origin _ bounds topLeft asIntegerPoint-1.
+	origin := bounds topLeft asIntegerPoint-1.
 	self lineSegmentsDo: [:p1 :p2 | bb drawFrom: p1 asIntegerPoint-origin
 										to: p2 asIntegerPoint-origin].
 

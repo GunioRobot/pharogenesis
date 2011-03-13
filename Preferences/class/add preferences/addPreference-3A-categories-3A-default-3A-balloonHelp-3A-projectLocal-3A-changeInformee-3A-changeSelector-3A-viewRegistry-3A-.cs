@@ -2,8 +2,8 @@ addPreference: aName categories: categoryList default: aValue balloonHelp: helpS
 	"Add or replace a preference as indicated.  Reuses the preexisting Preference object for this symbol, if there is one, so that UI artifacts that interact with it will remain valid."
 
 	| aPreference aPrefSymbol |
-	aPrefSymbol _ aName asSymbol.
-	aPreference _ self dictionaryOfPreferences  at:aPrefSymbol
+	aPrefSymbol := aName asSymbol.
+	aPreference := self dictionaryOfPreferences  at:aPrefSymbol
 				 ifAbsent:[Preference new].
 	aPreference 
 		 name:aPrefSymbol

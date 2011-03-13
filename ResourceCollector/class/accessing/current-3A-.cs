@@ -1,2 +1,2 @@
 current: aResourceManager
-	Current _ aResourceManager
+	Current := aResourceManager

@@ -1,3 +1,3 @@
 translateBy: delta
 	"add delta to cursorPoint, and return the new event"
-	position _ position + delta.
+	position := position + delta.

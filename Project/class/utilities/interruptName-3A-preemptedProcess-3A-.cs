@@ -1,24 +1,18 @@
 interruptName: labelString preemptedProcess: theInterruptedProcess
 	"Create a Notifier on the active scheduling process with the given label."
-	| preemptedProcess projectProcess suspendingList |
-	Smalltalk isMorphic ifFalse:
-		[^ ScheduledControllers interruptName: labelString].
+	| preemptedProcess projectProcess |
 	ActiveHand ifNotNil:[ActiveHand interrupted].
-	ActiveWorld _ World. "reinstall active globals"
-	ActiveHand _ World primaryHand.
+	ActiveWorld := World. "reinstall active globals"
+	ActiveHand := World primaryHand.
 	ActiveHand interrupted. "make sure this one's interrupted too"
-	ActiveEvent _ nil.
+	ActiveEvent := nil.
 
-	projectProcess _ self uiProcess.	"we still need the accessor for a while"
-	preemptedProcess _ theInterruptedProcess ifNil: [Processor preemptedProcess].
+	projectProcess := self uiProcess.	"we still need the accessor for a while"
+	preemptedProcess := theInterruptedProcess ifNil: [Processor preemptedProcess].
 	"Only debug preempted process if its priority is >= projectProcess' priority"
 	preemptedProcess priority < projectProcess priority ifTrue:[
-		(suspendingList _ projectProcess suspendingList) == nil
-			ifTrue: [projectProcess == Processor activeProcess
-						ifTrue: [projectProcess suspend]]
-			ifFalse: [suspendingList remove: projectProcess ifAbsent: [].
-					projectProcess offList].
-		preemptedProcess _ projectProcess.
+		projectProcess suspend.
+		preemptedProcess := projectProcess.
 	] ifFalse:[
 		preemptedProcess suspend offList.
 	].

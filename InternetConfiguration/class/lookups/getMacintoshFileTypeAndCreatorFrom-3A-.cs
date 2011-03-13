@@ -5,6 +5,6 @@ getMacintoshFileTypeAndCreatorFrom: aFileName
 	"InternetConfiguration getMacintoshFileTypeAndCreatorFrom: 'test.jpg'"
 	| string |
 
-	string _ self primitiveGetMacintoshFileTypeAndCreatorFrom: aFileName.
+	string := self primitiveGetMacintoshFileTypeAndCreatorFrom: aFileName.
 	string = '********' ifTrue: [^nil].
 	^Array with: (string first: 4) with: (string last: 4)

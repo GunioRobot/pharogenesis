@@ -5,7 +5,7 @@ browseAllStoresInto: instVarName from: aClass
 	"self new browseAllStoresInto: 'contents' from: Collection."
 
 	| coll |
-	coll _ OrderedCollection new.
+	coll := OrderedCollection new.
 	Cursor wait showWhile: [
 		aClass withAllSubAndSuperclassesDo: [:class | 
 			(class whichSelectorsStoreInto: instVarName) do: [:sel |

@@ -1,4 +1,4 @@
-TextConverter
+ByteTextConverter
 	subclass: #ISO88592TextConverter
 	instanceVariableNames: ''
 	classVariableNames: 'FromTable'

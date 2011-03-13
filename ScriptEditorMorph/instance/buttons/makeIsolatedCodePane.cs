@@ -1,2 +1,0 @@
-makeIsolatedCodePane
-	MethodHolder makeIsolatedCodePaneForClass: playerScripted class selector: scriptName

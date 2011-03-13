@@ -3,7 +3,7 @@ oldFileOrNoneNamed: fullName
  
 	| file |
 	^ Cursor wait showWhile:
-		[file _ self asServerFileNamed: fullName.
+		[file := self asServerFileNamed: fullName.
 		file readOnly.
 		"file exists ifFalse: [^ nil]."		"on the server"
 		file isTypeFile

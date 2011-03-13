@@ -5,5 +5,5 @@ rotationStyle: aSymbol
 		#upDown		-- quantize angle to up or down facing
 		#none			-- do not rotate"
 
-	rotationStyle _ aSymbol.
+	rotationStyle := aSymbol.
 	self layoutChanged.

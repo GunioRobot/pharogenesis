@@ -1,3 +1,3 @@
 defaultQueue
-	defaultQueue ifNil: [defaultQueue _ OrderedCollection new].
+	defaultQueue ifNil: [defaultQueue := OrderedCollection new].
 	^ defaultQueue

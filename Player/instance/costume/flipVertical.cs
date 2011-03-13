@@ -1,2 +1,0 @@
-flipVertical
-	self costume flipVertical

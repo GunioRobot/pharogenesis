@@ -1,2 +1,0 @@
-changeWindowPolicy
-	Preferences toggleWindowPolicy

@@ -1,2 +1,0 @@
-pageBBox
-	^psBounds

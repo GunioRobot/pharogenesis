@@ -1,3 +1,3 @@
 subscript
 
-	^ fontArray first subscript
+	^ (fontArray  at: 1) subscript

@@ -3,7 +3,7 @@ forContext: aContext priority: anInteger
 	anInteger."
 
 	| newProcess |
-	newProcess _ self new.
+	newProcess := self new.
 	newProcess suspendedContext: aContext.
 	newProcess priority: anInteger.
 	^newProcess

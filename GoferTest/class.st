@@ -1,0 +1,1 @@
+GoferTest class instanceVariableNames: ''

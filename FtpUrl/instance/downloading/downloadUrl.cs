@@ -1,7 +1,7 @@
 downloadUrl
 	"Returns a http download url for the location defined by this url."
 	| ans |
-	ans _ WriteStream on: String new.
+	ans := String new writeStream.
 	ans nextPutAll: self schemeName.
 	ans nextPutAll: '://'.
 	ans nextPutAll: self authority.

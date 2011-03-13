@@ -1,2 +1,2 @@
 object
-	^currentSelection ifNotNilDo: [ :cs | cs withoutListWrapper ]
+	^currentSelection ifNotNil: [ :cs | cs withoutListWrapper ]

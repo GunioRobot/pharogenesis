@@ -1,9 +1,7 @@
 positionNavigatorAndOtherFlapsAccordingToPreference
 	"Lay out flaps along the designated edge right-to-left, possibly positioning the navigator flap, exceptionally, on the left."
 
-	| ids |
-	ids _ Preferences navigatorOnLeftEdge ifTrue: [{'Navigator' translated}] ifFalse: [#()].
 
-	Flaps positionVisibleFlapsRightToLeftOnEdge: #bottom butPlaceAtLeftFlapsWithIDs: ids
+	Flaps positionVisibleFlapsRightToLeftOnEdge: #bottom butPlaceAtLeftFlapsWithIDs:  {'Navigator' translated}.
 
 "Flaps positionNavigatorAndOtherFlapsAccordingToPreference"

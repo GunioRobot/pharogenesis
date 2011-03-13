@@ -1,3 +1,3 @@
 stamp: threePartString
 
-	stamp _ threePartString
+	stamp := threePartString

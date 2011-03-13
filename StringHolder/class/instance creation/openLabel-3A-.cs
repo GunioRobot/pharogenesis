@@ -1,3 +1,3 @@
 openLabel: aString
 
-	self new openLabel: aString
+	^self new openLabel: aString

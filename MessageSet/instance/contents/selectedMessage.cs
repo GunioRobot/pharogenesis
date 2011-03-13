@@ -9,7 +9,7 @@ selectedMessage
 				[currentCompiledMethod := class organization commentRemoteStr.
 				^ class comment].
 			selector == #Definition ifTrue:
-				[^ class definitionST80].
+				[^ class definition].
 			selector == #Hierarchy ifTrue: [^ class printHierarchy]].
 		source := class sourceMethodAt: selector ifAbsent:
 			[currentCompiledMethod := nil.

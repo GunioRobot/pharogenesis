@@ -6,9 +6,9 @@ findMethodWithWildcard
 	self okToChange ifFalse: [^ self].
 	aClass := self selectedClassOrMetaClass.
 	selectors := aClass selectors asSortedArray.
-	selectors isEmpty ifTrue: [self inform: aClass name, ' has no methods.'. ^ self].
+	selectors isEmpty ifTrue: [self inform: aClass name, ' has no methods.' translated. ^ self].
 
-	reply := UIManager default request: 'Enter partial method name:'.
+	reply := UIManager default request: 'Enter partial method name:' translated.
 	(reply isNil or: [reply isEmpty])
 		ifTrue: [^self].
 	(reply includes: $*)
@@ -17,10 +17,7 @@ findMethodWithWildcard
 	selectors isEmpty ifTrue: [self inform: aClass name, ' has no matching methods.'. ^ self].
 	reply := selectors size = 1
 		ifTrue: [selectors first]
-		ifFalse: [
-			(SelectionMenu
-				labelList: selectors
-				selections: selectors) startUp].
+		ifFalse: [UIManager default chooseFrom: selectors values: selectors].
 	reply == nil ifTrue: [^ self].
 
 	cat := aClass whichCategoryIncludesSelector: reply.

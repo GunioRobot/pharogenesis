@@ -1,2 +1,0 @@
-requiredReleases
-	^ requiredReleases

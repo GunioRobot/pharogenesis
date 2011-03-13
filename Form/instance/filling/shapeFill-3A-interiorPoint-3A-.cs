@@ -9,28 +9,28 @@ shapeFill: aColor interiorPoint: interiorPoint
 			seedBlock: [:form | form pixelValueAt: interiorPoint put: 1]].
 
 	"First map this form into a B/W form with 0's in the interior region."
-		"bwForm _ self makeBWForm: interiorColor."	"won't work for two whites"
-	interiorPixVal _ self pixelValueAt: interiorPoint.
-	bwForm _ Form extent: self extent.
-	map _ Bitmap new: (1 bitShift: (self depth min: 12)).  "Not calling newColorMap.  All 
+		"bwForm := self makeBWForm: interiorColor."	"won't work for two whites"
+	interiorPixVal := self pixelValueAt: interiorPoint.
+	bwForm := Form extent: self extent.
+	map := Bitmap new: (1 bitShift: (self depth min: 12)).  "Not calling newColorMap.  All 
 			non-foreground go to 0.  Length is 2 to 4096."
-	ppd _ self depth.	"256 long color map in depth 8 is not one of the following cases"
+	ppd := self depth.	"256 long color map in depth 8 is not one of the following cases"
 	3 to: 5 do: [:bitsPerColor | 
 		(2 raisedTo: bitsPerColor*3) = map size 
-			ifTrue: [ppd _ bitsPerColor*3]].	"ready for longer maps than 512"
+			ifTrue: [ppd := bitsPerColor*3]].	"ready for longer maps than 512"
 
 	ppd <= 8
 		ifTrue: [map at: interiorPixVal+1 put: 1]
 		ifFalse: [interiorPixVal = 0 
-			ifFalse: [color _ Color colorFromPixelValue: interiorPixVal depth: self depth.
-				ind _ color pixelValueForDepth: ppd.
+			ifFalse: [color := Color colorFromPixelValue: interiorPixVal depth: self depth.
+				ind := color pixelValueForDepth: ppd.
 				map at: ind+1 put: 1]
 			ifTrue: [map at: 1 put: 1]].
 	bwForm copyBits: self boundingBox from: self at: 0@0 colorMap: map.
 	bwForm reverse.  "Make interior region be 0's"
 
 	"Now fill the interior region and return that shape"
-	bwForm _ bwForm findShapeAroundSeedBlock:
+	bwForm := bwForm findShapeAroundSeedBlock:
 					[:form | form pixelValueAt: interiorPoint put: 1].
 
 	"Finally use that shape as a mask to flood the region with color"

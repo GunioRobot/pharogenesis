@@ -1,2 +1,2 @@
 type: aSymbol
-	type _ aSymbol
+	type := aSymbol

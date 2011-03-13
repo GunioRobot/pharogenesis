@@ -2,7 +2,7 @@ scanFrom: aByteStream
 	"During a code fileIn, we need to read in an object, and stash it in ScannedObject.  "
 
 	self setStream: aByteStream reading: true.
-	ScannedObject _ self next.
+	ScannedObject := self next.
 	byteStream ascii.
 	byteStream next == $! ifFalse: [
 		byteStream close.

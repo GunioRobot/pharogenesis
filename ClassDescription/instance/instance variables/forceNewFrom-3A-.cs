@@ -3,8 +3,8 @@ forceNewFrom: anArray
     its instance variables up with the array."
     | object max |
 
-    object _ self new.
-    max _ self instSize.
+    object := self new.
+    max := self instSize.
     anArray doWithIndex: [:each :index |
         index > max ifFalse:
             [object instVarAt: index put: each]].

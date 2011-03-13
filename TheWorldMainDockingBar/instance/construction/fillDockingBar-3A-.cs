@@ -1,20 +1,11 @@
 fillDockingBar: aDockingBar 
 	"Private - fill the given docking bar"
+	
 	self fillMenuItemsBar: aDockingBar.
-	""
-	aDockingBar addSpacer.
-	self fillNavigatorOn: aDockingBar.
-	""
 	aDockingBar addSpacer.
 	Preferences tinyDisplay
-		ifFalse: [| clock | 
-			clock := ClockMorph new.
-			clock show24hr: true.
-			clock showSeconds: false.
-			clock font: Preferences standardMenuFont emphasis: 0.
-			aDockingBar addMorphBack: clock.
-			aDockingBar addSpace: 5.
-	""
+		ifFalse: [
+
 	aDockingBar
 		addMorphBack: (self
 				createButtonIcon: self volumeIcon
@@ -23,7 +14,7 @@ fillDockingBar: aDockingBar
 	aDockingBar
 		addMorphBack: (self
 				createButtonIcon: self fullScreenIcon
-				help: (ScreenController lastScreenModeSelected
+				help: (Display isFullScreen
 						ifTrue: ['Exit from full screen']
 						ifFalse: ['Switch to full screen'])
 				selector: #toggleFullScreen).

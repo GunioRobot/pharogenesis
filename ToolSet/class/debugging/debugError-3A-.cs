@@ -4,7 +4,7 @@ debugError: anError
 		Smalltalk 
 			logError: anError description 
 			inContext: (ctx := anError signalerContext)
-			to: 'SqueakDebug.log'.
+			to: 'PharoDebug.log'.
 		self inform: (anError description, String cr, ctx shortStack).
 		^anError return].
 	^self default debugError: anError

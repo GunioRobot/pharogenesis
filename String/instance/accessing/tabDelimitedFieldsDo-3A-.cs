@@ -3,12 +3,12 @@ tabDelimitedFieldsDo: aBlock
 
 	| start end |
 	"No senders but was useful enough in earlier work that it's retained for the moment."
-	start _ 1.
+	start := 1.
 	[start <= self size] whileTrue: 
-		[end _ self indexOf: Character tab startingAt: start ifAbsent: [self size + 1].
-		end _ end - 1.
+		[end := self indexOf: Character tab startingAt: start ifAbsent: [self size + 1].
+		end := end - 1.
 		aBlock value: (self copyFrom: start  to: end).
-		start _ end + 2]
+		start := end + 2]
 
 "
 'fred	charlie	elmo		2' tabDelimitedFieldsDo: [:aField | Transcript cr; show: aField]

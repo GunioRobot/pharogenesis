@@ -1,1 +1,0 @@
-My instances are used to save information needed to construct the switch in a menu for a FormEditor. A collection of my instances is stored as a class variable of FormMenuView.

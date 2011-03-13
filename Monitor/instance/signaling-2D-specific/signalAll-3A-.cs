@@ -3,6 +3,6 @@ signalAll: aSymbolOrNil
 
 	| queue |
 	self checkOwnerProcess.
-	queue _ self queueFor: aSymbolOrNil.
+	queue := self queueFor: aSymbolOrNil.
 	self signalAllInQueue: self defaultQueue.
 	queue ~~ self defaultQueue ifTrue: [self signalAllInQueue: queue].

@@ -1,3 +1,0 @@
-initalizeAsSystemWindow
-	self initalizeBasicParameters.
-	self createSystemWindowUI.

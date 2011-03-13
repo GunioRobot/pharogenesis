@@ -24,18 +24,18 @@ httpPostToSuperSwiki: url args: argsDict accept: mimeType request: requestString
 
 	mimeBorder := '---------SuperSwiki',Time millisecondClockValue printString,'-----'.
 	contentsData := String streamContents: [ :strm |
-		strm nextPutAll: mimeBorder, CrLf.
+		strm nextPutAll: mimeBorder, String crlf.
 		argsDict associationsDo: [:assoc |
 			assoc value do: [ :value |
 				strm
 					nextPutAll: 'Content-disposition: form-data; name="', assoc key, '"';
-					nextPutAll: CrLf;
-					nextPutAll: CrLf;
+					nextPutAll: String crlf;
+					nextPutAll: String crlf;
 					nextPutAll: value;
-					nextPutAll: CrLf;
-					nextPutAll: CrLf;
+					nextPutAll: String crlf;
+					nextPutAll: String crlf;
 					nextPutAll: mimeBorder;
-					nextPutAll: CrLf.
+					nextPutAll: String crlf.
 			]
 		].
 	].
@@ -47,21 +47,21 @@ httpPostToSuperSwiki: url args: argsDict accept: mimeType request: requestString
 
 	s := HTTPSocket new.
 	s connectTo: serverAddr port: port.
-	s waitForConnectionUntil: self standardDeadline.
-	s sendCommand: 'POST ', page, ' HTTP/1.1', CrLf, 
-		(mimeType ifNotNil: ['ACCEPT: ', mimeType, CrLf] ifNil: ['']),
-		'ACCEPT: text/html', CrLf,	"Always accept plain text"
+	s waitForConnectionFor: self standardTimeout.
+	s sendCommand: 'POST ', page, ' HTTP/1.1', String crlf, 
+		(mimeType ifNotNil: ['ACCEPT: ', mimeType, String crlf] ifNil: ['']),
+		'ACCEPT: text/html', String crlf,	"Always accept plain text"
 		HTTPProxyCredentials,
 		HTTPBlabEmail,	"may be empty"
 		requestString,	"extra user request. Authorization"
-		self userAgentString, CrLf,
-		'Content-type: multipart/form-data; boundary=', mimeBorder, CrLf,
-		'Content-length: ', contentsData size printString, CrLf,
-		'Host: ', specifiedServer, CrLf.  "blank line automatically added"
+		self userAgentString, String crlf,
+		'Content-type: multipart/form-data; boundary=', mimeBorder, String crlf,
+		'Content-length: ', contentsData size printString, String crlf,
+		'Host: ', specifiedServer, String crlf.  "blank line automatically added"
 
 	s sendCommand: contentsData.
 
-	list := s getResponseUpTo: CrLf, CrLf.	"list = header, CrLf, CrLf, beginningOfData"
+	list := s getResponseUpTo: String crlf, String crlf.	"list = header, CrLf, CrLf, beginningOfData"
 	header := list at: 1.
 	firstData := list at: 3.
 

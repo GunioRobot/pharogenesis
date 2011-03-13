@@ -1,8 +1,7 @@
 validateSmartRefStreamOnDisk
 	"array is set up with an array."
-	| other filename |
+	| other  |
 
-	filename := 'bitmapStreamTest.ref'.
 	FileDirectory default deleteFileNamed: filename ifAbsent: [ ].
 
 	stream := FileDirectory default fileNamed: filename.

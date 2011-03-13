@@ -1,3 +1,3 @@
 setFont
-	specialWidth _ nil.
+	specialWidth := nil.
 	super setFont

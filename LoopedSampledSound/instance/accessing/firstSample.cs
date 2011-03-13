@@ -1,3 +1,0 @@
-firstSample
-
-	^ firstSample

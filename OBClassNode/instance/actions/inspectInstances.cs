@@ -1,2 +1,0 @@
-inspectInstances
-	self theNonMetaClass inspectAllInstances

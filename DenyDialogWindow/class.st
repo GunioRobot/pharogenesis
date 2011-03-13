@@ -1,0 +1,1 @@
+DenyDialogWindow class instanceVariableNames: ''

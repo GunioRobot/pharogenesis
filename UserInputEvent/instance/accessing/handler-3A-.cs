@@ -1,2 +1,2 @@
 handler: anObject
-	handler _ anObject
+	handler := anObject

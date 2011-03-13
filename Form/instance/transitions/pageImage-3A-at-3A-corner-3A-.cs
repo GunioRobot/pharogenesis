@@ -3,37 +3,37 @@ pageImage: otherImage at: topLeft corner: corner
 	located at topLeft in this form.  Corner specifies which corner, as
 		1=topLeft, 2=topRight, 3=bottomRight, 4=bottomLeft."
 	| bb maskForm resultForm delta maskLoc maskRect stepSize cornerSel smallRect |
-	stepSize _ 10.
-	bb _ otherImage boundingBox.
-	resultForm _ self copy: (topLeft extent: bb extent).
-	maskForm _ Form extent: ((otherImage width min: otherImage height) + stepSize) asPoint.
+	stepSize := 10.
+	bb := otherImage boundingBox.
+	resultForm := self copy: (topLeft extent: bb extent).
+	maskForm := Form extent: ((otherImage width min: otherImage height) + stepSize) asPoint.
 
-	"maskLoc _ starting loc rel to topLeft"
+	"maskLoc := starting loc rel to topLeft"
 	otherImage width > otherImage height
 		ifTrue: ["wide image; motion is horizontal."
 				(corner between: 2 and: 3) not ifTrue:
 					["motion is to the right"
-					delta _ 1@0.
-					maskLoc _ bb topLeft - (corner = 1
+					delta := 1@0.
+					maskLoc := bb topLeft - (corner = 1
 						ifTrue: [maskForm width@0]
 						ifFalse: [maskForm width@stepSize])]
 					ifFalse:
 					["motion is to the left"
-					delta _ -1@0.
-					maskLoc _ bb topRight - (corner = 2
+					delta := -1@0.
+					maskLoc := bb topRight - (corner = 2
 						ifTrue: [0@0]
 						ifFalse: [0@stepSize])]]
 		ifFalse: ["tall image; motion is vertical."
 				corner <= 2 ifTrue:
 					["motion is downward"
-					delta _ 0@1.
-					maskLoc _ bb topLeft - (corner = 1
+					delta := 0@1.
+					maskLoc := bb topLeft - (corner = 1
 						ifTrue: [0@maskForm height]
 						ifFalse: [stepSize@maskForm height])]
 					ifFalse:
 					["motion is upward"
-					delta _ 0@-1.
-					maskLoc _ bb bottomLeft - (corner = 3
+					delta := 0@-1.
+					maskLoc := bb bottomLeft - (corner = 3
 						ifTrue: [stepSize@0]
 						ifFalse: [0@0])]].
 
@@ -45,20 +45,20 @@ pageImage: otherImage at: topLeft corner: corner
 	maskForm smear: delta negated distance: maskForm width.
 	"Copy the mask to full resolution for speed.  Make it be the reversed
 	so that it can be used for ORing in the page-corner color"
-	maskForm _ (Form extent: maskForm extent depth: otherImage depth)
+	maskForm := (Form extent: maskForm extent depth: otherImage depth)
 		copyBits: maskForm boundingBox from: maskForm at: 0@0
 		colorMap: (Bitmap with: 16rFFFFFFFF with: 0).
 
 	"Now move the triangle maskForm across the resultForm selecting the
 	triangular part of otherImage to display, and across the resultForm,
 	selecting the part of the original image to erase."
-	cornerSel _ #(topLeft topRight bottomRight bottomLeft) at: corner.
+	cornerSel := #(topLeft topRight bottomRight bottomLeft) at: corner.
 	1 to: (otherImage width + otherImage height // stepSize)+1 do:
 		[:i |		"Determine the affected square"
-		maskRect _ (maskLoc extent: maskForm extent) intersect: bb.
+		maskRect := (maskLoc extent: maskForm extent) intersect: bb.
 		((maskLoc x*delta x) + (maskLoc y*delta y)) < 0 ifTrue:
-			[smallRect _ 0@0 extent: (maskRect width min: maskRect height) asPoint.
-			maskRect _ smallRect align: (smallRect perform: cornerSel)
+			[smallRect := 0@0 extent: (maskRect width min: maskRect height) asPoint.
+			maskRect := smallRect align: (smallRect perform: cornerSel)
 								with: (maskRect perform: cornerSel)].
 
 		"AND otherForm with triangle mask, and OR into result"
@@ -73,7 +73,7 @@ pageImage: otherImage at: topLeft corner: corner
 		self copyBits: maskRect from: resultForm at: topLeft + maskRect topLeft
 				clippingBox: self boundingBox rule: Form over fillColor: nil.
 		Display forceDisplayUpdate.
-		maskLoc _ maskLoc + (delta*stepSize)]
+		maskLoc := maskLoc + (delta*stepSize)]
 "
 1 to: 4 do: [:corner | Display pageImage:
 				(Form fromDisplay: (10@10 extent: 200@300)) reverse

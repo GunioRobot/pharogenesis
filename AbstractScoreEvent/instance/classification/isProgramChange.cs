@@ -1,3 +1,0 @@
-isProgramChange
-
-	^ false

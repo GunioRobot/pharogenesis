@@ -1,3 +1,3 @@
-globalTransform: gt localTransform: lt
-	globalTransform _ gt.
-	localTransform _ lt
+globalTransform: gt localTransform: lt 
+	globalTransform := gt.
+	localTransform := lt

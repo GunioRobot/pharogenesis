@@ -1,6 +1,6 @@
 addDropShadowMenuItems: aMenu hand: aHand
 	| menu |
-	menu _ MenuMorph new defaultTarget: self.
+	menu := MenuMorph new defaultTarget: self.
 	menu
 		addUpdating: #hasDropShadowString
 		action: #toggleDropShadow.

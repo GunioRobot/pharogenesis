@@ -1,2 +1,0 @@
-unhideHiddenObjects
-	self sendMessageToCostume: #unhideHiddenObjects

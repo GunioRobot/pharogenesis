@@ -1,1 +1,0 @@
-KedamaPatchMorph class instanceVariableNames: ''

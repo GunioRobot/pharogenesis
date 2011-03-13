@@ -1,7 +1,7 @@
 testRemove
 	"self run: #testRemove"
 	
-	| heap |
+	| heap | 
 	heap := Heap new.
 	self should: [heap removeFirst] raise: Error.
 	heap add: 5.

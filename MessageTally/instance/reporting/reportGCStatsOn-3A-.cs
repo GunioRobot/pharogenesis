@@ -1,15 +1,15 @@
 reportGCStatsOn: str
 	| oldSpaceEnd youngSpaceEnd memoryEnd fullGCs fullGCTime incrGCs incrGCTime tenureCount upTime rootOverflows |
-	upTime _ time.
-	oldSpaceEnd			_ gcStats at: 1.
-	youngSpaceEnd		_ gcStats at: 2.
-	memoryEnd			_ gcStats at: 3.
-	fullGCs				_ gcStats at: 7.
-	fullGCTime			_ gcStats at: 8.
-	incrGCs				_ gcStats at: 9.
-	incrGCTime			_ gcStats at: 10.
-	tenureCount			_ gcStats at: 11.
-	rootOverflows		_ gcStats at: 22.
+	upTime := time.
+	oldSpaceEnd			:= gcStats at: 1.
+	youngSpaceEnd		:= gcStats at: 2.
+	memoryEnd			:= gcStats at: 3.
+	fullGCs				:= gcStats at: 7.
+	fullGCTime			:= gcStats at: 8.
+	incrGCs				:= gcStats at: 9.
+	incrGCTime			:= gcStats at: 10.
+	tenureCount			:= gcStats at: 11.
+	rootOverflows		:= gcStats at: 22.
 
 	str cr.
 	str	nextPutAll: '**Memory**'; cr.

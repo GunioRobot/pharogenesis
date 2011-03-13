@@ -2,7 +2,7 @@ copy: aRect
  	"Return a new ColorForm containing the portion of the receiver delineated by aRect."
 
 	| newForm |
-	newForm _ self class extent: aRect extent depth: depth.
+	newForm := self class extent: aRect extent depth: depth.
 	((BitBlt current
 		destForm: newForm
 		sourceForm: self

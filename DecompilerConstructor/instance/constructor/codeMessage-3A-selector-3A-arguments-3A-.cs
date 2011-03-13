@@ -1,11 +1,11 @@
 codeMessage: receiver selector: selector arguments: arguments
 	| symbol node |
-	symbol _ selector key.
-	(node _ BraceNode new
+	symbol := selector key.
+	(node := BraceNode new
 			matchBraceWithReceiver: receiver
 			selector: symbol
 			arguments: arguments) ifNotNil: [^ node].
-	(node _ self decodeIfNilWithReceiver: receiver
+	(node := self decodeIfNilWithReceiver: receiver
 			selector: symbol
 			arguments: arguments) ifNotNil: [^ node].
 	^ MessageNode new

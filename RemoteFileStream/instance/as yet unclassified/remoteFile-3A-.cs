@@ -1,3 +1,3 @@
 remoteFile: aServerFile
-	remoteFile _ aServerFile.
-	localDataValid _ false.	"need to read from the server"
+	remoteFile := aServerFile.
+	localDataValid := false.	"need to read from the server"

@@ -6,6 +6,6 @@
 
 	<primitive: 10>
 	aNumber isZero ifTrue: [^(ZeroDivide dividend: self) signal].
-	(aNumber isMemberOf: SmallInteger)
-		ifTrue: [^(Fraction numerator: self denominator: aNumber) reduced]
-		ifFalse: [^super / aNumber]
+	^(aNumber isMemberOf: SmallInteger)
+		ifTrue: [(Fraction numerator: self denominator: aNumber) reduced]
+		ifFalse: [super / aNumber]

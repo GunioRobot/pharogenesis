@@ -1,3 +1,0 @@
-endMorph
-
-	^ endMorph

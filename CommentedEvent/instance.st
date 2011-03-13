@@ -1,6 +1,6 @@
 AbstractEvent
 	subclass: #CommentedEvent
-	instanceVariableNames: ''
+	instanceVariableNames: 'oldComment newComment oldStamp newStamp'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'System-Change Notification'

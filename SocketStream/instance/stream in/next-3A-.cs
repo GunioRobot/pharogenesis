@@ -5,6 +5,6 @@ next: anInteger
 
 	| start |
 	self receiveData: anInteger.
-	start _ lastRead + 1.
-	lastRead _ (lastRead + anInteger) min: inNextToWrite - 1.
+	start := lastRead + 1.
+	lastRead := (lastRead + anInteger) min: inNextToWrite - 1.
 	^inBuffer copyFrom: start to: lastRead

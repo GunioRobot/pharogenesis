@@ -1,7 +1,7 @@
 doneExtending
 
 	otherSelection ifNotNil:
-		[selectedItems _ otherSelection selectedItems , selectedItems.
+		[selectedItems := otherSelection selectedItems , selectedItems.
 		otherSelection delete.
 		self setOtherSelection: nil].
 	self changed.

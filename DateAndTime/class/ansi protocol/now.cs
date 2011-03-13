@@ -1,10 +1,4 @@
 now
 	^ self basicNew 
-		ticks: (Duration 
-				days: SqueakEpoch 
-				hours: 0 
-				minutes: 0 
-				seconds: self totalSeconds 
-				nanoSeconds: 0) ticks
-		offset: self localOffset;
-		yourself
+		ticks: (Array with: SqueakEpoch with: Time totalSeconds with: 0)
+		offset: self localTimeZone offset

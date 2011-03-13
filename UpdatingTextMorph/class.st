@@ -1,1 +1,0 @@
-UpdatingTextMorph class instanceVariableNames: ''

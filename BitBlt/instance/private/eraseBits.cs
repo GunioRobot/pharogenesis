@@ -4,11 +4,13 @@ eraseBits
 	has a 1.  This requires the colorMap to be set in order to AND
 	all 1's into the destFrom pixels regardless of their size."
 	| oldMask oldMap |
-	oldMask _ halftoneForm.
-	halftoneForm _ nil.
-	oldMap _ colorMap.
-	self colorMap: (Bitmap with: 0 with: 16rFFFFFFFF).
-	combinationRule _ Form erase.
-	self copyBits. 		"Erase the dest wherever the source is 1"
-	halftoneForm _ oldMask.	"already converted to a Bitmap"
-	colorMap _ oldMap
+	oldMask := halftoneForm.
+	halftoneForm := nil.
+	oldMap := colorMap.
+	self colorMap: (Bitmap 
+			with: 0
+			with: 4294967295).
+	combinationRule := Form erase.
+	self copyBits.	"Erase the dest wherever the source is 1"
+	halftoneForm := oldMask.	"already converted to a Bitmap"
+	colorMap := oldMap

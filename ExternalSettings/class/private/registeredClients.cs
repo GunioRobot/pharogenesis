@@ -1,3 +1,3 @@
 registeredClients
-	RegisteredClients ifNil: [RegisteredClients _ Set new].
+	RegisteredClients ifNil: [RegisteredClients := Set new].
 	^RegisteredClients

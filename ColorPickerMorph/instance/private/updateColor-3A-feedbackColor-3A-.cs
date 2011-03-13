@@ -6,6 +6,6 @@ updateColor: aColor feedbackColor: feedbackColor
 	self updateAlpha: aColor alpha.
 	originalForm fill: FeedbackBox fillColor: feedbackColor.
 	self form: originalForm.
-	selectedColor _ aColor.
+	selectedColor := aColor.
 	updateContinuously ifTrue: [self updateTargetColor].
 	self locationIndicator center: self topLeft + (self positionOfColor: feedbackColor).

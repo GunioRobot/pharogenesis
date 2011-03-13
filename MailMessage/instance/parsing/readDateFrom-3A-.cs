@@ -8,21 +8,21 @@ readDateFrom: aStream
 
 	| day month year |
 	self skipWeekdayName: aStream.
-	aStream peek isDigit ifTrue: [day _ Integer readFrom: aStream].
+	aStream peek isDigit ifTrue: [day := Integer readFrom: aStream].
 	[aStream peek isAlphaNumeric] whileFalse: [aStream skip: 1].
 	aStream peek isLetter
 		ifTrue:		"month name or weekday name"
-			[month _ WriteStream on: (String new: 10).
+			[month := (String new: 10) writeStream.
 			 [aStream peek isLetter] whileTrue: [month nextPut: aStream next].
-			 month _ month contents.
+			 month := month contents.
 			 day isNil ifTrue:		"name/number..."
 				[[aStream peek isAlphaNumeric] whileFalse: [aStream skip: 1].
 				 (aStream peek isDigit) ifFalse: [^nil].
-				 day _ Integer readFrom: aStream]]
+				 day := Integer readFrom: aStream]]
 		ifFalse:		"number/number..."
-			[month _ Date nameOfMonth: day.
-			 day _ Integer readFrom: aStream].
+			[month := Date nameOfMonth: day.
+			 day := Integer readFrom: aStream].
 	[aStream peek isAlphaNumeric] whileFalse: [aStream skip: 1].
 	(aStream peek isDigit) ifFalse: [^nil].
-	year _ Integer readFrom: aStream.
+	year := Integer readFrom: aStream.
 	^Date newDay: day month: month year: year

@@ -4,7 +4,8 @@ fileExists: fileName
 	| stream |
 	self isTypeFile ifTrue: [^ self fileNames includes: fileName].
 	self isTypeHTTP ifTrue: [
-		stream _ self readOnlyFileNamed: fileName.
+		"http"
+		stream := self readOnlyFileNamed: fileName.
 		^stream contents notEmpty].
 	"ftp"
 	^ self entries anySatisfy: [:entry | entry name = fileName]

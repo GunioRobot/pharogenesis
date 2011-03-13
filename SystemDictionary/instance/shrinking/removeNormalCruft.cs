@@ -3,7 +3,6 @@ removeNormalCruft
 	comment at bottom of method"
 	"Smalltalk removeNormalCruft"
 	ScriptingSystem stripGraphicsForExternalRelease.
-	ScriptingSystem spaceReclaimed.
 	References keys
 		do: [:k | References removeKey: k].
 	self classNames

@@ -1,4 +1,4 @@
 setTextStyle: aTextStyle
 
-	textStyle _ aTextStyle.
+	textStyle := aTextStyle.
 	self releaseCachedState; changed

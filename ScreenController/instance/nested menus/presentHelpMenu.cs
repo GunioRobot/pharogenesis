@@ -1,2 +1,0 @@
-presentHelpMenu
-	self popUpMenuFor: #helpMenu

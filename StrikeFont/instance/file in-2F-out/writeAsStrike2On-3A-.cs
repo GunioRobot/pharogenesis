@@ -1,4 +1,4 @@
-writeAsStrike2On: file
+writeAsStrike2On: file 
 	"Write me onto a file in strike2 format.
 	fileName should be of the form: <family name><pointSize>.sf2"
 	file binary.
@@ -9,10 +9,9 @@ writeAsStrike2On: file
 	file nextInt32Put: ascent.
 	file nextInt32Put: descent.
 	file nextInt32Put: pointSize.
-	superscript _ ascent - descent // 3.	
-	subscript _ descent - ascent // 3.	
+	superscript := (ascent - descent) // 3.
+	subscript := (descent - ascent) // 3.
 	file nextInt32Put: emphasis.
-	(minAscii + 1 to: maxAscii + 3) do:
-		[:index | file nextInt32Put: (xTable at: index)].
+	(minAscii + 1 to: maxAscii + 3) do: [ :index | file nextInt32Put: (xTable at: index) ].
 	glyphs writeOn: file.
-	file close.
+	file close

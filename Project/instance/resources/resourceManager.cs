@@ -1,2 +1,2 @@
 resourceManager
-	^resourceManager ifNil:[resourceManager _ ResourceManager new]
+	^resourceManager ifNil:[resourceManager := ResourceManager new]

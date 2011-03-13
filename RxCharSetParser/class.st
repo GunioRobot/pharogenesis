@@ -1,0 +1,1 @@
+RxCharSetParser class instanceVariableNames: ''

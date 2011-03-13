@@ -1,1 +1,0 @@
-ViewerFlapTab class instanceVariableNames: ''

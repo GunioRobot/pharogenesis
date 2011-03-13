@@ -4,7 +4,7 @@ initialize
 "
 	self allSubclassesDo: [:each | each initialize].
 
-	EncodedCharSets _ Array new: 256.
+	EncodedCharSets := Array new: 256.
 
 	EncodedCharSets at: 0+1 put: Latin1Environment.
 	EncodedCharSets at: 1+1 put: JISX0208.
@@ -20,4 +20,6 @@ initialize
 	EncodedCharSets at: 12+1 put: KSX1001.
 	EncodedCharSets at: 13+1 put: GreekEnvironment.
 	EncodedCharSets at: 14+1 put: Latin2Environment.
+	EncodedCharSets at: 15+1 put: RussianEnvironment.
+	EncodedCharSets at: 15+1 put: NepaleseEnvironment.
 	EncodedCharSets at: 256 put: Unicode.

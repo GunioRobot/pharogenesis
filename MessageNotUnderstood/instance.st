@@ -1,6 +1,6 @@
 Error
 	subclass: #MessageNotUnderstood
-	instanceVariableNames: 'message receiver'
+	instanceVariableNames: 'message receiver reachedDefaultHandler'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Exceptions-Kernel'

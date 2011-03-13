@@ -1,4 +1,4 @@
 workDatesDo: aBlock
-	"Exclude Saturday and Sunday"
+ 	"Exclude Saturday and Sunday"
 
-	self do: aBlock with: start asDate when: [ :d | d dayOfWeek < 6 ].
+	self do: aBlock with: start asDate when: [ :d | d dayOfWeek < 6 ]. 

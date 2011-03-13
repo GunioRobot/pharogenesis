@@ -14,7 +14,7 @@ divideSecureBy: anObject
 		 bis := anObject imaginary / s.
 		 s := brs squared + bis squared.
 		
-		newReal _ ars*brs + (ais*bis) /s.
-		newImaginary _ ais*brs - (ars*bis)/s.
+		newReal := ars*brs + (ais*bis) /s.
+		newImaginary := ais*brs - (ars*bis)/s.
 		^ Complex real: newReal imaginary: newImaginary].
 	^ anObject adaptToComplex: self andSend: #/.

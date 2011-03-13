@@ -1,0 +1,2 @@
+floatProc
+	^1985

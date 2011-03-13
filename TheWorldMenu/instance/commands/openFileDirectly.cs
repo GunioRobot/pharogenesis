@@ -1,3 +1,0 @@
-openFileDirectly
-
-	FileList openFileDirectly

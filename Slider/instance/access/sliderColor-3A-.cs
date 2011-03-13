@@ -1,4 +1,4 @@
 sliderColor: newColor
 
-	sliderColor _ newColor.
+	sliderColor := newColor.
 	slider ifNotNil: [slider color: sliderColor]

@@ -1,2 +1,0 @@
-fullFileName 
-	^ dir fullNameFor: fileName

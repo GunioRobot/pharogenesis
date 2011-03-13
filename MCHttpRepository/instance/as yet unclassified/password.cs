@@ -1,18 +1,18 @@
 password
 	self userAndPasswordFromSettingsDo: [:usr :pwd | ^pwd].
 
-	self user isEmpty ifTrue: [^password].
+	self user isEmpty ifTrue: [^password ifNil: ['']].
 
-	[password isEmpty] whileTrue: [
+	[password isEmptyOrNil] whileTrue: [
 		| answer |
 		"Give the user a chance to change the login"
-		answer := FillInTheBlank request: 'User name for ', String cr, location
+		answer := UIManager default request: 'User name for ', String cr, location
 			initialAnswer: self user.
-		answer isEmpty
+		answer isEmptyOrNil
 			ifTrue: [^password]
 			ifFalse: [self user: answer].
 		
-		password := FillInTheBlank requestPassword: 'Password for "', self user, '" at ', String cr, location.
+		password := UIManager default requestPassword: 'Password for "', self user, '" at ', String cr, location.
 	].
 
 	^ password

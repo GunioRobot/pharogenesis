@@ -1,15 +1,21 @@
-nextPutGray: aForm
+nextPutGray: aForm 
 	| myType peeker val |
-	cols _ aForm width.
-	rows _ aForm height.
-	depth _ aForm depth.
+	cols := aForm width.
+	rows := aForm height.
+	depth := aForm depth.
 	"stream position: 0."
-	aForm depth = 1 ifTrue:[myType _ $4] ifFalse:[myType _ $5].
+	aForm depth = 1 
+		ifTrue: [ myType := $4 ]
+		ifFalse: [ myType := $5 ].
 	self writeHeader: myType.
-	peeker _ BitBlt current bitPeekerFromForm: aForm.
-	0 to: rows-1 do: [:y |
-		0 to: cols-1 do: [:x |
-			val _ peeker pixelAt: x@y.
-			stream nextPut: val.
-		]
-	].
+	peeker := BitBlt current bitPeekerFromForm: aForm.
+	0 
+		to: rows - 1
+		do: 
+			[ :y | 
+			0 
+				to: cols - 1
+				do: 
+					[ :x | 
+					val := peeker pixelAt: x @ y.
+					stream nextPut: val ] ]

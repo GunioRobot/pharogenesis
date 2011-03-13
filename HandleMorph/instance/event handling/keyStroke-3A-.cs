@@ -2,7 +2,7 @@ keyStroke: evt
 	"Check for cursor keys"
 	| keyValue |
 	owner isHandMorph ifFalse:[^self].
-	keyValue _ evt keyValue.
+	keyValue := evt keyValue.
 	keyValue = 28 ifTrue:[^self position: self position - (1@0)].
 	keyValue = 29 ifTrue:[^self position: self position + (1@0)].
 	keyValue = 30 ifTrue:[^self position: self position - (0@1)].

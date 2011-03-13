@@ -1,6 +1,6 @@
 authoringPrototype
 	| t |
-	t _ super authoringPrototype.
+	t := super authoringPrototype.
 	t contents: 'abc' translated asText.
 	t wrapFlag: true. 
 

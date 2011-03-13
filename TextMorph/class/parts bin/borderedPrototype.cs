@@ -1,7 +1,7 @@
 borderedPrototype
 
 	| t |
-	t _ self authoringPrototype.
+	t := self authoringPrototype.
 	t fontName: 'BitstreamVeraSans' pointSize: 24.
 	t autoFit: false; extent: 250@100.
 	t borderWidth: 1; margins: 4@0.

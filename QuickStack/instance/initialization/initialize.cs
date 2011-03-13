@@ -1,2 +1,3 @@
 initialize
-	top _ 0
+	super initialize.
+	top := 0

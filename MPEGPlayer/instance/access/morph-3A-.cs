@@ -1,2 +1,0 @@
-morph: aMorph	
-	morph := aMorph.

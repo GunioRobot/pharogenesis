@@ -1,0 +1,1 @@
+ClassFactoryForTestCaseTest class instanceVariableNames: ''

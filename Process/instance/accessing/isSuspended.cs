@@ -1,2 +1,2 @@
 isSuspended
-	^myList isNil
+	^myList isNil or: [ myList isEmpty ]

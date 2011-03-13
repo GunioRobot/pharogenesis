@@ -1,0 +1,2 @@
+isEnumerable
+	^false

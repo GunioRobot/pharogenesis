@@ -1,6 +1,6 @@
 ThreePhaseButtonMorph
 	subclass: #UpdatingThreePhaseButtonMorph
-	instanceVariableNames: 'getSelector getArgument'
+	instanceVariableNames: 'getSelector'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Widgets'

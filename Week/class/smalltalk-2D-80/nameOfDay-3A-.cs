@@ -1,3 +1,3 @@
 nameOfDay: anIndex
 
-	^ DayNames at: anIndex
+	^ DayNames at: anIndex 

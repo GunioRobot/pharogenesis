@@ -1,4 +1,3 @@
 fileNameConverterClass
 
-	self subclassResponsibility.
-	^ Latin1TextConverter.
+	^UTF8TextConverter

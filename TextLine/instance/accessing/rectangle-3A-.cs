@@ -1,5 +1,5 @@
 rectangle: lineRectangle
-	left _ lineRectangle left.
-	right _ lineRectangle right.
-	top _ lineRectangle top.
-	bottom _ lineRectangle bottom
+	left := lineRectangle left.
+	right := lineRectangle right.
+	top := lineRectangle top.
+	bottom := lineRectangle bottom

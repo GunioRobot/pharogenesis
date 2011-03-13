@@ -3,15 +3,15 @@ readDecimalByteFrom: aStream
 JMM - 000503 fixed didn't work correctly"
 
 	| digitSeen value digit |
-	digitSeen _ false.
-	value _ 0.
+	digitSeen := false.
+	value := 0.
 	[aStream atEnd] whileFalse: 
-		[digit _ aStream next digitValue.
+		[digit := aStream next digitValue.
 		(digit < 0 or: [digit > 9]) ifTrue: [
 			aStream skip: -1.
 			(digitSeen not or: [value > 255]) ifTrue: [^ nil].
 			^ value].
-		digitSeen _ true.
-		value _ (value * 10) + digit].
+		digitSeen := true.
+		value := (value * 10) + digit].
 	(digitSeen not or: [value > 255]) ifTrue: [^ nil].
 	^ value

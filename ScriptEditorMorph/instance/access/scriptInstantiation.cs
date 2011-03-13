@@ -1,2 +1,0 @@
-scriptInstantiation
-	^ playerScripted scriptInstantiationForSelector: scriptName

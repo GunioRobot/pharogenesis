@@ -3,7 +3,7 @@ addTextualLabels
 
 	#('keep:' 'undo:' 'clear:' 'toss:') with: #('KEEP' 'UNDO' 'CLEAR' 'TOSS') do: [:extName :label |
 		| button |
-		button _ submorphs detect: [:m | m externalName = extName] ifNone: [nil].
+		button := submorphs detect: [:m | m externalName = extName] ifNone: [nil].
 		button ifNotNil: [
 			button removeAllMorphs.
 			button addMorph: (TextMorph new 

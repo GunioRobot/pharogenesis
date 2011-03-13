@@ -1,7 +1,7 @@
 defineApplicationView
 
 	| r |
-	r _ Rectangle fromUser.
+	r := Rectangle fromUser.
 	self 
 		setProperty: #applicationViewBounds 
 		toValue: ((self transformFromOutermostWorld) globalBoundsToLocal: r) truncated 

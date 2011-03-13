@@ -1,1 +1,0 @@
-DropDownChoiceMorph class instanceVariableNames: ''

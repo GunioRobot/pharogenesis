@@ -2,8 +2,8 @@ tempsAndValuesLimitedTo: sizeLimit indent: indent
 	"Return a string of the temporary variabls and their current values"
 
 	| aStream |
-	aStream _ WriteStream on: (String new: 100).
-	self tempNames
+	aStream := (String new: 100) writeStream.
+	self tempScopedNames
 		doWithIndex: [:title :index |
 			indent timesRepeat: [aStream tab].
 			aStream nextPutAll: title; nextPut: $:; space; tab.

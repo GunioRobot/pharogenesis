@@ -1,2 +1,2 @@
 highestUpdate: anInteger
-	highestUpdate _ anInteger
+	highestUpdate := anInteger

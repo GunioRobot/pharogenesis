@@ -11,7 +11,7 @@ Three cases for files from older versions of the system:
 	All classes used to construct the structures dictionary *itself* need to be in 'steady' and they must not change!  See setStream:"
 	| instSize className refPosn |
 
-	instSize _ (byteStream nextNumber: 4) - 1.
-	refPosn _ self getCurrentReference.
-	className _ self next asSymbol.
+	instSize := (byteStream nextNumber: 4) - 1.
+	refPosn := self getCurrentReference.
+	className := self next asSymbol.
 	^ self readInstanceSize: instSize clsname: className refPosn: refPosn

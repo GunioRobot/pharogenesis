@@ -2,9 +2,9 @@ putUpFor: aMorph near: aRectangle
 	"Put the receiver up on the screen.   Note highly variant behavior depending on the setting of the #modalColorPickers preference"
 	| layerNumber |
 	aMorph isMorph ifTrue: [
-		layerNumber _ aMorph morphicLayerNumber.
+		layerNumber := aMorph morphicLayerNumber.
 		aMorph allOwnersDo:[:m|
-			layerNumber _ layerNumber min: m morphicLayerNumber].
+			layerNumber := layerNumber min: m morphicLayerNumber].
 		self setProperty: #morphicLayerNumber toValue: layerNumber - 0.1
 	].
 

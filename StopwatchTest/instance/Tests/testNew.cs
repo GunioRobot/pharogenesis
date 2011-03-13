@@ -1,7 +1,7 @@
 testNew
 
 	| sw |
-	sw _ Stopwatch new.
+	sw := Stopwatch new.
 	
 	self 
 		assert: (sw isSuspended);

@@ -7,7 +7,7 @@ displayInterpolatedOn: aForm
 	| engine |
 	self extent = aForm extent ifTrue:[^self displayOn: aForm].
 	Smalltalk at: #B3DRenderEngine 
-		ifPresent:[:engineClass| engine _ (engineClass defaultForPlatformOn: aForm)].
+		ifPresent:[:engineClass| engine := (engineClass defaultForPlatformOn: aForm)].
 	engine ifNil:[
 		"We've got no bilinear interpolation. Use WarpBlt instead"
 		(WarpBlt current toForm: aForm)

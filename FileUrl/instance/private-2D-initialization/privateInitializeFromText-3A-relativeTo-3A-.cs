@@ -7,7 +7,7 @@ privateInitializeFromText: pathString relativeTo: aUrl
 	self initializeFromPathString: pathString.
 	self isAbsolute: aUrl isAbsolute.
 
-	newPath _ aUrl path copy.
+	newPath := aUrl path copy.
 	newPath removeLast.	"empty string that says its a directory"
 	path do: [ :token |
 		((token ~= '..') and: [token ~= '.']) ifTrue: [ 
@@ -16,6 +16,6 @@ privateInitializeFromText: pathString relativeTo: aUrl
 			newPath isEmpty ifFalse: [ 
 				newPath last = '..' ifFalse: [ newPath removeLast ] ] ].
 		"token = '.' do nothing" ].
-	path _ newPath
+	path := newPath
 
 	

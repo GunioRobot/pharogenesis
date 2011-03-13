@@ -1,20 +1,19 @@
 parseShiftSeqFromStream: aStream
 
 	| c set target id |
-	c _ aStream basicNext.
+	c := aStream basicNext.
 	c = $$ ifTrue: [
-		set _ #multibyte.
-		c _ aStream basicNext.
-		c = $( ifTrue: [target _ 1].
-		c = $) ifTrue: [target _ 2].
-		target ifNil: [target _ 1. id _ c]
-			ifNotNil: [id _ aStream basicNext].
+		set := #multibyte.
+		c := aStream basicNext.
+		c = $( ifTrue: [target := 1].
+		c = $) ifTrue: [target := 2].
+		target ifNil: [target := 1. id := c]
+			ifNotNil: [id := aStream basicNext].
 	] ifFalse: [
-		c = $( ifTrue: [target _ 1. set _ #nintyfour].
-		c = $) ifTrue: [target _ 2. set _ #nintyfour].
-		c = $- ifTrue: [target _ 2. set _ #nintysix].
-		"target = nil ifTrue: [self errorMalformedInput]."
-		id _ aStream basicNext.
+		c = $( ifTrue: [target := 1. set := #nintyfour].
+		c = $) ifTrue: [target := 2. set := #nintyfour].
+		c = $- ifTrue: [target := 2. set := #nintysix].
+		id := aStream basicNext.
 	].
 	(set = #multibyte and: [id = $B]) ifTrue: [
 		state charSize: 2.
@@ -51,5 +50,3 @@ parseShiftSeqFromStream: aStream
 		state g1Leading: 0.
 		^ self
 	].
-
-	"self errorUnsupported."

@@ -1,1 +1,0 @@
-TabMorph class instanceVariableNames: ''

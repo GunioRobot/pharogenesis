@@ -4,6 +4,6 @@ isDisjointFrom: anInterval
 	 selection."
 
 	| fudge |
-	fudge _ anInterval size = 0 ifTrue: [1] ifFalse: [0].
+	fudge := anInterval size = 0 ifTrue: [1] ifFalse: [0].
 	^(anInterval last + fudge < self startIndex or:
 			[anInterval first - fudge >= self stopIndex])

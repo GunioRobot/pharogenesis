@@ -1,2 +1,0 @@
-soundChoices
-	^ #('new...') , AbstractSound soundNames

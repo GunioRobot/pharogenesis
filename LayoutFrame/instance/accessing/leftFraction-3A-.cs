@@ -1,2 +1,2 @@
 leftFraction: aNumber
-	leftFraction _ aNumber
+	leftFraction := aNumber

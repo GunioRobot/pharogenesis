@@ -1,3 +1,3 @@
 < comparand
 
-	^ self start < comparand	
+	^ self start < comparand	 

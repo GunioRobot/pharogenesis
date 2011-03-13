@@ -1,3 +1,4 @@
 initialize
-	hResizing _ vResizing _ #rigid.
-	disableLayout _ false.
+	super initialize.
+	hResizing := vResizing := #rigid.
+	disableLayout := false.

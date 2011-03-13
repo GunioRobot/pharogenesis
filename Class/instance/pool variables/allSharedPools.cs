@@ -4,6 +4,6 @@ allSharedPools
 	| aSet | 
 	^self superclass == nil
 		ifTrue: [self sharedPools copy]
-		ifFalse: [aSet _ self superclass allSharedPools.
+		ifFalse: [aSet := self superclass allSharedPools.
 			aSet addAll: self sharedPools.
 			aSet]

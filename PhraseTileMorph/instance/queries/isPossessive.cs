@@ -1,2 +1,0 @@
-isPossessive
-	^ false

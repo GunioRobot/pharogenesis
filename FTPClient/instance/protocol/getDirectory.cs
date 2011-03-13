@@ -2,7 +2,7 @@ getDirectory
 	| dirList |
 	self openPassiveDataConnection.
 	self sendCommand: 'LIST'.
-	dirList _ self getData.
+	dirList := self getData.
 	self checkResponse.
 	self checkResponse.
 	^dirList

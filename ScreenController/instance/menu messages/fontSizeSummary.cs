@@ -1,2 +1,0 @@
-fontSizeSummary
-	TextStyle fontSizeSummary

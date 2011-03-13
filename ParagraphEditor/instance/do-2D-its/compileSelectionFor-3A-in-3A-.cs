@@ -1,7 +1,7 @@
 compileSelectionFor: anObject in: evalContext
 
 	| methodNode method |
-	methodNode _ [Compiler new
+	methodNode := [Compiler new
 		compileNoPattern: self selectionAsStream
 		in: anObject class
 		context: evalContext
@@ -9,5 +9,5 @@ compileSelectionFor: anObject in: evalContext
 		ifFail: [^nil]]
 			on: OutOfScopeNotification
 			do: [:ex | ex resume: true].
-	method _ methodNode generate.
-	^method copyWithTempNames: methodNode tempNames
+	method := methodNode generate: #(0 0 0 0).
+	^method copyWithTempsFromMethodNode: methodNode

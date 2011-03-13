@@ -1,1 +1,0 @@
-getRedComponentIn: aPatch

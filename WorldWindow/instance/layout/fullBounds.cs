@@ -1,3 +1,0 @@
-fullBounds
-
-	^self bounds

@@ -1,5 +1,5 @@
 selectedMorph: aMorph
 
 	self unhighlightSelection.
-	selectedMorph _ aMorph.
+	selectedMorph := aMorph.
 	self highlightSelection

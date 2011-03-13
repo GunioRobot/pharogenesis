@@ -1,1 +1,0 @@
-MCPatchTest class instanceVariableNames: ''

@@ -1,2 +1,0 @@
-hasEToyUserList
-	^eToyUserListUrl notNil

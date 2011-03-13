@@ -1,5 +1,0 @@
-A package release refers to a specific version of the package.
-Releases are auto numbered (with a VersionNumber) and also has a designated version name which can be whatever the maintainer wants.
-There is also a release note and the URL for download. The inherited url is for any homepage for the release.
-The instvar publisher refers to the SMAccount that owned the package at the time of the release and the instvar package refers to the owning package.
-The instvar repository holds a String that is used to connect to the live repository for the package release, for example a Monticello repository.

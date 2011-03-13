@@ -14,16 +14,16 @@ fillIn: aMenu from: dataForMenu
 
 	dataForMenu do: [ :itemData |
 		itemData ifNil: [aMenu addLine] ifNotNil:
-			[item _ (itemData first isKindOf: Symbol)
+			[item := (itemData first isKindOf: Symbol)
 				ifTrue: 
 					[aMenu 
-						addUpdating: itemData first 
+						addUpdating: itemData first
 						target: self 
 						selector: #doMenuItem:with: 
 						argumentList: {itemData second}]
 				 ifFalse:
 					[aMenu 
-						add: itemData first translated
+						add: (itemData first translated) capitalized
 						target: self 
 						selector: #doMenuItem:with: 
 						argumentList: {itemData second}].

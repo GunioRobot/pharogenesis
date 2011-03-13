@@ -1,2 +1,0 @@
-dialogBorderWidth
-	^ 2

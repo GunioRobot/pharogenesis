@@ -1,6 +1,6 @@
 changeTabText
 	| reply |
-	reply _ FillInTheBlank
-		request: 'new wording for this tab:'
+	reply := UIManager default
+		request: 'new wording for this tab:' translated
 		initialAnswer: submorphs first contents.
 	reply isEmptyOrNil ifFalse: [submorphs first contents: reply]

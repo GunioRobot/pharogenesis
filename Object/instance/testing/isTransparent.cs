@@ -1,2 +1,0 @@
-isTransparent
-	^ false

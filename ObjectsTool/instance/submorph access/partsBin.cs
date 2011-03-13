@@ -1,2 +1,0 @@
-partsBin
-	^self findDeeplyA: PartsBin.

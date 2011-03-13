@@ -1,3 +1,0 @@
-defaultRule
-
-	^Form over

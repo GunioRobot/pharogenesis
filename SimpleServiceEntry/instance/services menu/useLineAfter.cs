@@ -1,3 +1,3 @@
 useLineAfter
 
-	^useLineAfter == true
+	^ useLineAfter == true

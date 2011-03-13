@@ -1,3 +1,0 @@
-realData
-
-	^ realData

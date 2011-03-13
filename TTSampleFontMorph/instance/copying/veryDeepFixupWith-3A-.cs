@@ -3,4 +3,4 @@ veryDeepFixupWith: deepCopier
 	tree being copied, fix them up, otherwise point to the originals!!"
 
 	super veryDeepFixupWith: deepCopier.
-	font _ deepCopier references at: font ifAbsent: [font]
+	font := deepCopier references at: font ifAbsent: [font]

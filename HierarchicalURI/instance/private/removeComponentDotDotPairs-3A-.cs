@@ -1,9 +1,9 @@
-removeComponentDotDotPairs: pathComponents
+removeComponentDotDotPairs: pathParts
 	| dotDotIndex |
-	dotDotIndex _ pathComponents indexOf: '..'.
+	dotDotIndex := pathParts indexOf: '..'.
 	[dotDotIndex > 1]
 		whileTrue: [
-			pathComponents
+			pathParts
 				removeAt: dotDotIndex;
 				removeAt: dotDotIndex-1.
-			dotDotIndex _ pathComponents indexOf: '..']
+			dotDotIndex := pathParts indexOf: '..']

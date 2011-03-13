@@ -1,6 +1,6 @@
 Object
 	subclass: #MIMEDocument
-	instanceVariableNames: 'mainType subType content url'
-	classVariableNames: 'MIMEdatabase'
+	instanceVariableNames: 'type contents contentStream uri'
+	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Network-Url'
+	category: 'Network-MIME'

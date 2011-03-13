@@ -1,1 +1,0 @@
-LipsMorph class instanceVariableNames: ''

@@ -1,3 +1,3 @@
 hash
 
-	^ self ticks hash
+	^ self ticks hash 

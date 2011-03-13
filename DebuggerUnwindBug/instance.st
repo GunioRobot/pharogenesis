@@ -3,4 +3,4 @@ TestCase
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Tools-Debugger-Tests'
+	category: 'Tests-Tools'

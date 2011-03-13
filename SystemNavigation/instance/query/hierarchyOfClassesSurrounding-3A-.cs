@@ -5,14 +5,14 @@ hierarchyOfClassesSurrounding: aClass
 	| list aClassNonMeta isMeta theClassOrMeta |
 	aClass ifNil: [^ OrderedCollection new].
 	aClass ifNil: [^ self].
-	aClassNonMeta _ aClass theNonMetaClass.
-	isMeta _ aClassNonMeta ~~ aClass.
-	list _ OrderedCollection new.
+	aClassNonMeta := aClass theNonMetaClass.
+	isMeta := aClassNonMeta ~~ aClass.
+	list := OrderedCollection new.
 	aClass allSuperclasses reverseDo:
 		[:cl | list addLast: cl].
 	aClassNonMeta allSubclassesWithLevelDo:
 		[:cl :level |
-		theClassOrMeta _ isMeta ifTrue: [cl class] ifFalse: [cl].
+		theClassOrMeta := isMeta ifTrue: [cl class] ifFalse: [cl].
 		list addLast: theClassOrMeta]
 	 	startingLevel: 0.
 	^ list

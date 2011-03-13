@@ -3,5 +3,5 @@ clip
 	tallied by the SendInfo interpreter."
 	| temp |
 	self printString.
-	temp _ self.
+	temp := self.
 	temp error: 4 + 5

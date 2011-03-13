@@ -1,2 +1,3 @@
 initialize
-	properties _ Dictionary new.
+	super initialize.
+	properties := Dictionary new.

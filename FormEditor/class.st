@@ -1,1 +1,0 @@
-FormEditor class instanceVariableNames: ''

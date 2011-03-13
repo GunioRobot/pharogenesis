@@ -1,6 +1,6 @@
 Warning
 	subclass: #Deprecation
-	instanceVariableNames: ''
-	classVariableNames: ''
+	instanceVariableNames: 'methodReference explanationString deprecationDate versionString'
+	classVariableNames: 'Log'
 	poolDictionaries: ''
 	category: 'Exceptions-Kernel'

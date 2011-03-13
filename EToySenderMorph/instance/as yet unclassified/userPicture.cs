@@ -1,3 +1,0 @@
-userPicture
-
-	^userPicture

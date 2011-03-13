@@ -1,6 +1,7 @@
 sharableLitIndex: literal
 	"Special access prevents multiple entries for post-allocated super send special selectors"
-	| p |
-	p _ literalStream originalContents indexOf: literal.
-	p = 0 ifFalse: [^ p-1].
-	^ self litIndex: literal
+	1 to: literalStream position do:
+		[:index|
+		(litSet literalEquality: literal and: (literalStream originalContents at: index)) ifTrue:
+			[^index - 1]].
+	^self litIndex: literal

@@ -4,8 +4,8 @@ update: aSelector
 			ifTrue: [ | morph |
 				(aSelector isSymbol and: [model notNil])
 					ifTrue: [
-						morph _
+						morph :=
 							(self model perform: aSelector) asMorph]
-					ifFalse: [ morph _ aSelector value asMorph].
+					ifFalse: [ morph := aSelector value asMorph].
 				self subMorph: morph]].
 	self changed

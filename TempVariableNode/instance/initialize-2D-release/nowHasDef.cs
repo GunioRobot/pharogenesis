@@ -1,2 +1,2 @@
 nowHasDef
-	hasDefs _ true
+	hasDefs := true

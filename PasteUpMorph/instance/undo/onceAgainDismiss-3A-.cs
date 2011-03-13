@@ -4,5 +4,4 @@ onceAgainDismiss: aMorph
 	aMorph dismissMorph.
 	Preferences preserveTrash ifTrue: 
 		[Preferences slideDismissalsToTrash
-			ifTrue:[aMorph slideToTrash: nil]
-			ifFalse:[TrashCanMorph moveToTrash: aMorph]]
+			ifTrue:[aMorph slideToTrash: nil]]

@@ -14,7 +14,7 @@ asApproximateFractionAtOrder: maxOrder
 	[frac = 0 or: [order = 0] ]
 		whileFalse: 
 			["repeat while the fractional part is not zero and max order is not reached"
-			order _ order - 1.
+			order := order - 1.
 			newD := 1.0 / frac.			"Take reciprocal of the fractional part"
 			int := newD asInteger.		"get the integer part of this"
 			frac := newD fractionPart.	"and save the fractional part for next time"

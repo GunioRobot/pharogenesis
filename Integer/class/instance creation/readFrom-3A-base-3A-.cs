@@ -1,20 +1,9 @@
-readFrom: aStream base: base 
+readFrom: aStringOrStream base: base 
 	"Answer an instance of one of the concrete subclasses if Integer. 
 	Initial minus sign accepted, and bases > 10 use letters A-Z.
 	Imbedded radix specifiers not allowed;  use Number 
-	class readFrom: for that. Answer zero if there are no digits."
+	class readFrom: for that.
+	Raise an Error if there are no digits.
+	If stringOrStream dos not start with a valid number description, answer 0 for backward compatibility. This is not clever and should better be changed."
 
-	| digit value neg |
-	neg := aStream peekFor: $-.
-	value := 0.
-	[aStream atEnd]
-		whileFalse: 
-			[digit := aStream next digitValue.
-			(digit < 0 or: [digit >= base])
-				ifTrue: 
-					[aStream skip: -1.
-					neg ifTrue: [^value negated].
-					^value]
-				ifFalse: [value := value * base + digit]].
-	neg ifTrue: [^value negated].
-	^value
+	^(SqNumberParser on: aStringOrStream) failBlock: [^0]; nextIntegerBase: base

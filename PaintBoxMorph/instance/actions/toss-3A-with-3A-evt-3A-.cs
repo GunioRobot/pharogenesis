@@ -3,7 +3,7 @@ toss: cancelButton with: cancelSelector evt: evt
 
 	| focus |
 	owner ifNil: ["it happens"  ^ self].
-	(focus _ self focusMorph) 
+	(focus := self focusMorph) 
 		ifNotNil: [focus cancelPainting: self evt: evt]
 		ifNil:
 			[self delete].

@@ -3,6 +3,6 @@ perform: selector orSendTo: otherTarget
 perform it on myself. If not, send it to otherTarget, presumably the
 editPane from which the menu was invoked."
 
-	(self respondsTo: selector)
-		ifTrue: [^ self perform: selector]
-		ifFalse: [^ otherTarget perform: selector]
+	^ (self respondsTo: selector)
+		ifTrue: [ self perform: selector]
+		ifFalse: [ otherTarget perform: selector]

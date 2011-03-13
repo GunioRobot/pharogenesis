@@ -1,3 +1,0 @@
-topEdgeModeMnemonic
-
-	^ topEdgeModeMnemonic.

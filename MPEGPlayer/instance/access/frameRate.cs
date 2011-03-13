@@ -1,2 +1,0 @@
-frameRate
-	^frameRate

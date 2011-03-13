@@ -1,11 +1,13 @@
 verifyState: evt
+	
+	<lint: 'Unnecessary "= true"' rationale: 'Quite ugly...' author: 'stephane.ducasse'>
 	| myAction |
 	"We are sure we will make a mark now.  Make sure the palette has not changed state while we were away.  If so, end this action and start another one.  6/11/97 19:52 tk  action, currentColor, brush"
 
 	"Install the brush, color, (replace mode), and cursor."
 	palette isInWorld ifFalse:
 		[self world addMorphFront: palette].  "It happens.  might want to position it also"
-	myAction _ self getActionFor: evt.
+	myAction := self getActionFor: evt.
 	(self get: #changed for: evt) == false ifFalse: [
 		self set: #changed for: evt to: false.
 		self invalidRect: rotationButton bounds.	"snap these back"

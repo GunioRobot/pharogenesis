@@ -7,14 +7,14 @@ okayToAccept
 only submit changes here when
 you are showing source.  Later, you
 will be able to edit the isolated comment
-here and save it back, but only if YOU
-implement it!.'.
+here and save it back, but only if you
+implement it!.' translated.
 		^ false].
 
 	self showingAnyKindOfDiffs ifFalse:
 		[^ true]. 
-	^ SelectionMenu confirm: 
-'Caution!  You are "showing diffs" here, so 
+	^ self confirm: 
+'Caution!
+You are "showing diffs" here, so 
 there is a danger that some of the text in the
-code pane is contaminated by the "diff" display'
-	trueChoice: 'accept anyway -- I''ll take my chances' falseChoice: 'um, let me reconsider'
+code pane is contaminated by the "diff" display' translated

@@ -4,7 +4,7 @@ startDownload
 	downloads size >= self maxNrOfConnections ifTrue: [^self].
 	requests size <= 0 ifTrue: [^self].
 
-	newDownloadProcess _ [
+	newDownloadProcess := [
 		[
 			self nextRequest startRetrieval
 		] on: FTPConnectionException do: [ :ex | 

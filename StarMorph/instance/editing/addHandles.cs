@@ -1,2 +1,0 @@
-addHandles
-	self addStarHandles

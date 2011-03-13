@@ -5,6 +5,6 @@ flexing: aMorph byTransformation: tfm
 	(aMorph isKindOf: TransformationMorph)
 		ifTrue: [aMorph submorphsDo: [:m | self addMorph: m clone]]
 		ifFalse: [self addMorph: aMorph].
-	transform _ tfm.
+	transform := tfm.
 	self chooseSmoothing.
 	self layoutChanged.

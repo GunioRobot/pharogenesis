@@ -3,8 +3,8 @@ copyFrom: anotherObject
 
 	| mine his |
 	<primitive: 168>
-	mine _ self class allInstVarNames.
-	his _ anotherObject class allInstVarNames.
+	mine := self class allInstVarNames.
+	his := anotherObject class allInstVarNames.
 	1 to: (mine size min: his size) do: [:ind |
 		(mine at: ind) = (his at: ind) ifTrue: [
 			self instVarAt: ind put: (anotherObject instVarAt: ind)]].

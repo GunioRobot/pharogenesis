@@ -1,10 +1,10 @@
 extent: aPoint 
 	| newExtent priorEditor |
 	bounds extent = aPoint ifTrue: [^ self].
-	priorEditor _ editor.
+	priorEditor := editor.
 	self isAutoFit
 		ifTrue: [wrapFlag ifFalse: [^ self].  "full autofit can't change"
-				newExtent _ aPoint truncated max: self minimumExtent.
+				newExtent := aPoint truncated max: self minimumExtent.
 				newExtent x = self extent x ifTrue: [^ self].  "No change of wrap width"
 				self releaseParagraphReally.  "invalidate the paragraph cache"
 				super extent: newExtent.

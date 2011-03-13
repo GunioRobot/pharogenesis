@@ -1,1 +1,0 @@
-ZoomMorph class instanceVariableNames: ''

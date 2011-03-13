@@ -1,2 +1,2 @@
 parent: anObject
-	parent _ anObject
+	parent := anObject

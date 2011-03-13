@@ -1,2 +1,0 @@
-allowEtoyUserCustomEventsPreferenceChanged
-	Cursor wait showWhile: [ Vocabulary changeMadeToViewerAdditions ]

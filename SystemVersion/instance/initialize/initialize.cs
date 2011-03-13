@@ -1,4 +1,5 @@
 initialize
-	version _ 'No version set'.
-	date _ Date today.
-	updates _ Set new.
+	super initialize.
+	version := 'No version set'.
+	date := Date today.
+	updates := Set new.

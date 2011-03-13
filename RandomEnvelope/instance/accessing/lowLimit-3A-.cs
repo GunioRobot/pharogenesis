@@ -1,3 +1,0 @@
-lowLimit: aNumber
-
-	lowLimit := aNumber.

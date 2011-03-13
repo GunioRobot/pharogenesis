@@ -1,2 +1,2 @@
 isLeaf
-	^left == nil
+	^left isNil

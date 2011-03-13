@@ -1,0 +1,2 @@
+lineGlyph: ignore
+	^self

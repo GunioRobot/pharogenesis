@@ -3,5 +3,5 @@ cellPositioning
 		#topLeft, #topRight, #bottomLeft, #bottomRight, #topCenter, #leftCenter, #rightCenter, #bottomCenter, #center 
 	which align the receiver's bounds with the cell at the given point."
 	| props |
-	props _ self layoutProperties.
+	props := self layoutProperties.
 	^props ifNil:[#center] ifNotNil:[props cellPositioning].

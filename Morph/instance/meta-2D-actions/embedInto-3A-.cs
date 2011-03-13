@@ -1,9 +1,12 @@
-embedInto: evt
+embedInto: evt 
 	"Embed the receiver into some other morph"
-	|  menu target |
-	menu _ CustomMenu new.
-	self potentialEmbeddingTargets  do: [:m | 
-		menu add: (m knownName ifNil:[m class name asString]) action: m].
-	target _ menu startUpWithCaption: ('Place ', self externalName, ' in...').
-	target ifNil:[^self].
-	target addMorphFront: self fromWorldPosition: self positionInWorld.
+	| target |
+	target := UIManager default
+				chooseFrom: (self potentialEmbeddingTargets
+						collect: [:t | t knownName
+								ifNil: [t class name asString]])
+				values: self potentialEmbeddingTargets
+				title: 'Place ' translated, self externalName , ' in...' translated.
+	target
+		ifNil: [^ self].
+	target addMorphFront: self fromWorldPosition: self positionInWorld

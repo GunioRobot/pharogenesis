@@ -1,3 +1,0 @@
-nebraskaBorder: aNebraskaBorder
-
-	nebraskaBorder := aNebraskaBorder

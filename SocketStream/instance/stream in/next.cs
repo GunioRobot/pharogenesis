@@ -6,5 +6,5 @@ next
 	self isInBufferEmpty ifTrue:
 		[self receiveData.
 		self atEnd ifTrue: [^nil]].
-	lastRead _ lastRead + 1.
+	lastRead := lastRead + 1.
 	^inBuffer at: lastRead

@@ -1,5 +1,5 @@
 textColor: aColor
 
 	color = aColor ifTrue: [^ self].
-	color _ aColor.
+	color := aColor.
 	self changed.

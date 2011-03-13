@@ -8,7 +8,7 @@ printStandardSystemFonts
 	standardEToysFont standardMenuFont windowTitleFont 
 	standardBalloonHelpFont standardCodeFont standardButtonFont) do: [:selector |
 		| font |
-		font _ Preferences perform: selector.
+		font := Preferences perform: selector.
 		s
 			nextPutAll: selector; space;
 			nextPutAll: font familyName; space;

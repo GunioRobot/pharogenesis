@@ -1,6 +1,6 @@
 storeDataOn: aDataStream
 	| oldMethod |
-	oldMethod _ currentMethod.
-	currentMethod _ nil.
+	oldMethod := currentMethod.
+	currentMethod := nil.
 	super storeDataOn: aDataStream.
-	currentMethod _ oldMethod.
+	currentMethod := oldMethod.

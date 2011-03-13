@@ -1,1 +1,0 @@
-EToyPeerToPeer class instanceVariableNames: ''

@@ -1,24 +1,21 @@
-writesField: field 
-	"Answer whether the receiver stores into the instance variable indexed by the argument."
+writesField: varIndex
+	"Answer whether the receiver stores into the instance variable indexed
+	 by the argument."
+	"eem 5/24/2008 Rewritten to no longer assume the compler uses the
+	 most compact encoding available (for EncoderForLongFormV3 support)."
 
-	self allEmbeddedBlockMethods do: [:meth |
-		| scanner catcher instr scan |
-		scanner := meth scanner.
-		catcher := MessageCatcher new.
-		[scanner atEnd] whileFalse: [
-			instr := scanner interpretNextInstructionFor: catcher.
-			(instr selector = #send:super:numArgs: and: [instr argument = #privStoreIn:instVar:]) ifTrue: [
-				scan := scanner copy.
-				scan pc: scan previousPc. scan pc: scan previousPc.
-				instr := scan interpretNextInstructionFor: catcher.
-				(instr selector = #pushConstant: and: [instr argument = field])
-					ifTrue: [^ true]
-			].
-		].
-	].
-	self isQuick ifTrue: [^ false].
-	field <= 8 ifTrue:
-		[^ (self scanFor: 96 + field - 1) or: [self scanLongStore: field - 1]].
-	field <= 64 ifTrue:
-		[^ self scanLongStore: field - 1].
-	^ self scanVeryLongStore: 160 offset: field - 1
+	| varIndexCode scanner |
+	self isQuick ifTrue: [^false].
+	varIndexCode := varIndex - 1.
+	^(scanner := InstructionStream on: self) scanFor:
+		[:b|
+		b >= 96
+		and: [b <= 103
+				ifTrue: [b - 96 = varIndexCode]
+				ifFalse:
+					[(b = 129 or: [b = 130])
+						ifTrue: [scanner followingByte = varIndexCode and: [varIndexCode <= 63]]
+						ifFalse:
+							[b = 132
+							 and: [(scanner followingByte between: 160 and: 223)
+							 and: [scanner thirdByte = varIndexCode]]]]]]

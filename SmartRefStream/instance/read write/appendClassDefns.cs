@@ -9,7 +9,7 @@ byteStream position = 0 ifTrue: [
 
 byteStream cr; nextPutAll: '!ObjectScanner new initialize!'; cr; cr.
 self uniClasesDo: [:class | class
-		class sharedPools size > 0 ifTrue:  "This never happens"
+		class hasSharedPools ifTrue:  "This never happens"
 			[class shouldFileOutPools
 				ifTrue: [class fileOutSharedPoolsOn: self]].
 		class fileOutOn: byteStream moveSource: false toFile: 0].	

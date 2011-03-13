@@ -1,2 +1,2 @@
 positionWhenComposed: pos
-	positionWhenComposed _ pos
+	positionWhenComposed := pos

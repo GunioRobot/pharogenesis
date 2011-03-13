@@ -1,1 +1,0 @@
-PrintSpecifications class instanceVariableNames: ''

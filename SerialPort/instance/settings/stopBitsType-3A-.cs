@@ -4,4 +4,4 @@ stopBitsType: anInteger
 		1 - one stop bit
 		2 - two stop bits"
 
-	stopBitsType _ anInteger.
+	stopBitsType := anInteger.

@@ -1,3 +1,3 @@
 height
 
-	^ fontArray first height.
+	^ (fontArray  at: 1) height.

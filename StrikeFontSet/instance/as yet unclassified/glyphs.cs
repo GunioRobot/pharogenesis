@@ -1,3 +1,3 @@
 glyphs
 
-	^ fontArray first glyphs
+	^ (fontArray  at: 1) glyphs

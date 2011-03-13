@@ -6,16 +6,16 @@ checkIfReadyToSlide
 
 	[prevIndex < prevLines size
 		and: [(prevLines at: prevIndex) first < (currCharIndex - deltaCharIndex)]]
-			whileTrue: [prevIndex _ prevIndex + 1].
+			whileTrue: [prevIndex := prevIndex + 1].
 
 	(prevLines at: prevIndex) first = (currCharIndex - deltaCharIndex) ifTrue: [
 		"Yes -- next line will have same start as prior line."
-		prevIndex _ prevIndex - 1.
-		possibleSlide _ false.
-		nowSliding _ true
+		prevIndex := prevIndex - 1.
+		possibleSlide := false.
+		nowSliding := true
 	] ifFalse: [
 		prevIndex = prevLines size ifTrue: [
 			"Weve reached the end of prevLines, so no use to keep looking for lines to slide."
-			possibleSlide _ false
+			possibleSlide := false
 		]
 	]

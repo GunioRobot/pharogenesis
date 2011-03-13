@@ -3,4 +3,4 @@ ToolBuilderTests
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'ToolBuilder-SUnit'
+	category: 'Tests-ToolBuilder'

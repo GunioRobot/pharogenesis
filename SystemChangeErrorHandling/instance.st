@@ -3,4 +3,4 @@ SystemChangeTestRoot
 	instanceVariableNames: 'capturedEvents'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'SystemChangeNotification-Tests'
+	category: 'Tests-SystemChangeNotification'

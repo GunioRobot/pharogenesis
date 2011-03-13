@@ -3,12 +3,12 @@ selectionIndex: idx
 	| theMorph range index |
 	idx ifNil: [^ self].
 	index := idx min: scroller submorphs size max: 0.
-	(theMorph _ index = 0 ifTrue: [nil] ifFalse: [scroller submorphs at: index])
+	(theMorph := index = 0 ifTrue: [nil] ifFalse: [scroller submorphs at: index])
 		ifNotNil:
 		[((theMorph bounds top - scroller offset y) >= 0
 			and: [(theMorph bounds bottom - scroller offset y) <= bounds height]) ifFalse:
 			["Scroll into view -- should be elsewhere"
-			range _ self vTotalScrollRange.
+			range := self vTotalScrollRange.
 			scrollBar value: (range > 0
 				ifTrue: [((index-1 * theMorph height) / self vTotalScrollRange)
 									truncateTo: scrollBar scrollDelta]

@@ -3,6 +3,7 @@ chooseTTCFontSize: args
 
 	| f n style |
 	f := UIManager default request: 'New Point Size' initialAnswer: '0'.
+	f ifNil: [f := String new].
 	n := f asNumber.
 	style := (TextConstants at: args first) addNewFontSize: n.
 	style ifNotNil: [

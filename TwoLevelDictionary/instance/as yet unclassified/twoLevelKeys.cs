@@ -2,6 +2,6 @@ twoLevelKeys
 
 	| twoLevelSet |
 
-	twoLevelSet _ TwoLevelSet new.
+	twoLevelSet := TwoLevelSet new.
 	self keysDo: [ :each | twoLevelSet add: each].
 	^twoLevelSet

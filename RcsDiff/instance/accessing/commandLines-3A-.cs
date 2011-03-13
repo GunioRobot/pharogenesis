@@ -1,2 +1,0 @@
-commandLines: aString
-	commandLines := aString

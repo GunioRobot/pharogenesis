@@ -1,7 +1,7 @@
 readRGB
 	"RGB form, use 16/32 bits"
 	| val form poker sample shift |
-	maxValue > 255 ifTrue:[self error:'RGB value > 32 bits not supported in Squeak'].
+	maxValue > 255 ifTrue:[self error:'RGB value > 32 bits not supported'].
 	stream binary.
 	form := Form extent: cols@rows depth: depth.
 	poker := BitBlt current bitPokerToForm: form.

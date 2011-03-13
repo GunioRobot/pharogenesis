@@ -1,3 +1,3 @@
 height
 
-	^fontArray first pixelSize.
+	^(fontArray at: 1) pixelSize.

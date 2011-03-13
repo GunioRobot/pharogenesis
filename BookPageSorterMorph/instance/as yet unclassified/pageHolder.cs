@@ -1,3 +1,0 @@
-pageHolder
-
-	^ pageHolder

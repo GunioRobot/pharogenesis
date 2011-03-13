@@ -1,0 +1,1 @@
+FileDialogWindow class instanceVariableNames: ''

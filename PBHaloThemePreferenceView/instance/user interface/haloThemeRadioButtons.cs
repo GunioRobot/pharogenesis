@@ -5,7 +5,6 @@ haloThemeRadioButtons
 	buttonColumn := self verticalPanel.
 	#(	(iconicHaloSpecifications iconic iconicHalosInForce	'circular halos with icons inside')
 		(classicHaloSpecs	classic	classicHalosInForce		'plain circular halos')
-		(simpleFullHaloSpecifications		simple	simpleHalosInForce	'fewer, larger halos')
 		(customHaloSpecs	custom	customHalosInForce		'customizable halos')) do:
 
 		[:quad |

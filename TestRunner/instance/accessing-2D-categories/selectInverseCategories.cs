@@ -2,4 +2,4 @@ selectInverseCategories
 	categoriesSelected := categories asSet 
 		removeAll: categoriesSelected;
 		yourself.
-	self changed: #categorySelected; updateClasses.
+	self changed: #allSelections; changed: #categorySelected; updateClasses

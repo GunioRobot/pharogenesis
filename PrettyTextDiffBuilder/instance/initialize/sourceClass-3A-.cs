@@ -1,2 +1,2 @@
 sourceClass: aClass
-	sourceClass _ aClass.
+	sourceClass := aClass.

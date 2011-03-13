@@ -3,7 +3,6 @@ messageCategoryMenu: aMenu
 	ServiceGui onlyServices ifTrue: [^aMenu].
 	^ aMenu labels:
 'browse
-printOut
 fileOut
 reorganize
 alphabetize
@@ -14,6 +13,6 @@ rename...
 remove'
 		lines: #(3 8)
 		selections:
-		#(buildMessageCategoryBrowser printOutMessageCategories fileOutMessageCategories
+		#(buildMessageCategoryBrowser fileOutMessageCategories
 		editMessageCategories alphabetizeMessageCategories removeEmptyCategories
 		categorizeAllUncategorizedMethods addCategory renameCategory removeMessageCategory)

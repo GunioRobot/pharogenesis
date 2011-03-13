@@ -1,0 +1,1 @@
+CompositeFillStyle class instanceVariableNames: ''

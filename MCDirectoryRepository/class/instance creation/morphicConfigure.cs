@@ -1,4 +1,4 @@
 morphicConfigure
-	^ FileList2 modalFolderSelector ifNotNilDo:
+	^ UIManager default chooseDirectory ifNotNil:
 		[:directory |
 		self new directory: directory]

@@ -1,2 +1,2 @@
 lastResponse: aString
-	lastResponse _ aString.
+	lastResponse := aString.

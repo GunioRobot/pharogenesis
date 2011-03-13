@@ -1,3 +1,0 @@
-doOneCycleInBackground
-	
-	worldState doOneCycleInBackground

@@ -2,13 +2,13 @@ image: aForm at: aPoint sourceRect: sourceRect rule: rule
 	| warp dstRect srcQuad dstOffset center |
 	(self ifNoTransformWithIn: sourceRect) & false
 		ifTrue:[^super image: aForm at: aPoint sourceRect: sourceRect rule: rule].
-	dstRect _ (transform localBoundsToGlobal: (aForm boundingBox translateBy: aPoint)).
-	dstOffset _ 0@0. "dstRect origin."
-	"dstRect _ 0@0 corner: dstRect extent."
-	center _ 0@0."transform globalPointToLocal: dstRect origin."
-	srcQuad _ transform globalPointsToLocal: (dstRect innerCorners).
-	srcQuad _ srcQuad collect:[:pt| pt - aPoint].
-	warp _ (WarpBlt current toForm: form)
+	dstRect := (transform localBoundsToGlobal: (aForm boundingBox translateBy: aPoint)).
+	dstOffset := 0@0. "dstRect origin."
+	"dstRect := 0@0 corner: dstRect extent."
+	center := 0@0."transform globalPointToLocal: dstRect origin."
+	srcQuad := transform globalPointsToLocal: (dstRect innerCorners).
+	srcQuad := srcQuad collect:[:pt| pt - aPoint].
+	warp := (WarpBlt current toForm: form)
 			sourceForm: aForm;
 			cellSize: 2;  "installs a new colormap if cellSize > 1"
 			combinationRule: Form over.

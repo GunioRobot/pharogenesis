@@ -1,2 +1,0 @@
-downPicture
-	^ DownPicture

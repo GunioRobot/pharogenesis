@@ -1,50 +1,50 @@
 messagePart: level repeat: repeat
 
 	| start receiver selector args precedence words keywordStart |
-	[receiver _ parseNode.
+	[receiver := parseNode.
 	(hereType == #keyword and: [level >= 3])
 		ifTrue: 
-			[start _ self startOfNextToken.
-			selector _ WriteStream on: (String new: 32).
-			args _ OrderedCollection new.
-			words _ OrderedCollection new.
+			[start := self startOfNextToken.
+			selector := (String new: 32) writeStream.
+			args := OrderedCollection new.
+			words := OrderedCollection new.
 			[hereType == #keyword]
 				whileTrue: 
-					[keywordStart _ self startOfNextToken + requestorOffset.
+					[keywordStart := self startOfNextToken + requestorOffset.
 					selector nextPutAll: self advance.
 					words addLast: (keywordStart to: self endOfLastToken + requestorOffset).
 					self primaryExpression ifFalse: [^self expected: 'Argument'].
 					self messagePart: 2 repeat: true.
 					args addLast: parseNode].
-			(Symbol hasInterned: selector contents ifTrue: [ :sym | selector _ sym])
-				ifFalse: [ selector _ self correctSelector: selector contents
+			(Symbol hasInterned: selector contents ifTrue: [ :sym | selector := sym])
+				ifFalse: [ selector := self correctSelector: selector contents
 										wordIntervals: words
 										exprInterval: (start to: self endOfLastToken)
 										ifAbort: [ ^ self fail ] ].
-			precedence _ 3]
+			precedence := 3]
 		ifFalse: [((hereType == #binary or: [hereType == #verticalBar])
 				and: [level >= 2])
 				ifTrue: 
-					[start _ self startOfNextToken.
-					selector _ self advance asOctetString asSymbol.
+					[start := self startOfNextToken.
+					selector := self advance asOctetString asSymbol.
 					self primaryExpression ifFalse: [^self expected: 'Argument'].
 					self messagePart: 1 repeat: true.
-					args _ Array with: parseNode.
-					precedence _ 2]
+					args := Array with: parseNode.
+					precedence := 2]
 				ifFalse: [hereType == #word
 						ifTrue: 
-							[start _ self startOfNextToken.
-							selector _ self advance.
-							args _ #().
-							words _ OrderedCollection with: (start  + requestorOffset to: self endOfLastToken + requestorOffset).
-							(Symbol hasInterned: selector ifTrue: [ :sym | selector _ sym])
-								ifFalse: [ selector _ self correctSelector: selector
+							[start := self startOfNextToken.
+							selector := self advance.
+							args := #().
+							words := OrderedCollection with: (start  + requestorOffset to: self endOfLastToken + requestorOffset).
+							(Symbol hasInterned: selector ifTrue: [ :sym | selector := sym])
+								ifFalse: [ selector := self correctSelector: selector
 													wordIntervals: words
 													exprInterval: (start to: self endOfLastToken)
 													ifAbort: [ ^ self fail ] ].
-							precedence _ 1]
+							precedence := 1]
 						ifFalse: [^args notNil]]].
-	parseNode _ MessageNode new
+	parseNode := MessageNode new
 				receiver: receiver
 				selector: selector
 				arguments: args

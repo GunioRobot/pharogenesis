@@ -3,10 +3,10 @@ valueUnpreemptively
 	"Think about using Block>>valueUninterruptably first, and think about using Semaphore>>critical: before that, and think about redesigning your application even before that! 
 	After you've done all that thinking, go right ahead and use it..."
 	| activeProcess oldPriority result |
-	activeProcess _ Processor activeProcess.
-	oldPriority _ activeProcess priority.
+	activeProcess := Processor activeProcess.
+	oldPriority := activeProcess priority.
 	activeProcess priority: Processor highestPriority.
-	result _ self ensure: [activeProcess priority: oldPriority].
+	result := self ensure: [activeProcess priority: oldPriority].
 	"Yield after restoring priority to give the preempted processes a chance to run"
 	Processor yield.
 	^result

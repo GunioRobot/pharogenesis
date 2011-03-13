@@ -1,2 +1,2 @@
 randomCounter: aNumber
-	randomCounter _ aNumber
+	randomCounter := aNumber

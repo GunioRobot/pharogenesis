@@ -1,2 +1,0 @@
-simplePane
-	^ OBPane forColumn: self

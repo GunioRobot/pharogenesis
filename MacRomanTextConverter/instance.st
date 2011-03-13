@@ -1,4 +1,4 @@
-TextConverter
+ByteTextConverter
 	subclass: #MacRomanTextConverter
 	instanceVariableNames: ''
 	classVariableNames: ''

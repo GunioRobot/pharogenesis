@@ -2,7 +2,7 @@ drawWorld: aWorld submorphs: submorphs invalidAreasOn: aCanvas
 	"Redraw the damaged areas of the given canvas and clear the damage list. Return a collection of the areas that
 were redrawn."
 
-	| rectList c i n mm morphs rects rectToFill remnants rect validList |
+	| rectList c i n mm morphs rects rectToFill remnants remnantIntersects rect validList |
 	rectList := damageRecorder invalidRectsFullBounds: aWorld viewBox.
 	"sort by areas to draw largest portions first"
 	rectList := rectList asArray sort: [:r1 :r2 | r1 area > r2 area].
@@ -21,18 +21,20 @@ were redrawn."
 			If only a single rectangle remains, then continue with the reduced rectangle."
 
 					rectToFill := r.
+					remnants := OrderedCollection with: r.
 					i := 1.
-					[rectToFill isNil or: [i > n]] whileFalse: 
+					[remnants isEmpty or: [i > n]] whileFalse: 
 							[mm := submorphs at: i.
-							((mm fullBounds intersects: r) and: [mm visible]) 
+							((remnantIntersects := remnants select: [:each | (mm fullBounds intersects: each)]) notEmpty and: [mm visible]) 
 								ifTrue: 
 									[morphs addLast: mm.
-									rects addLast: rectToFill.
-									remnants := mm areasRemainingToFill: rectToFill.
+									
+									rects addLast: (Rectangle merging: (remnantIntersects collect: [:each | mm fullBounds intersect: each])).
+									remnants removeAll: remnantIntersects.
+									remnantIntersects do: [:eachIntersect | remnants addAll: (mm areasRemainingToFill: eachIntersect)].
 									remnants size = 1 ifTrue: [rectToFill := remnants first].
 									remnants isEmpty ifTrue: [rectToFill := nil]].
 							i := i + 1].
-
 					"Now paint from bottom to top, but using the reduced rectangles."
 					rectToFill 
 						ifNotNil: [aWorld drawOn: (c := aCanvas copyClipRect: rectToFill)].

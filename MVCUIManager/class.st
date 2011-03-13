@@ -1,1 +1,0 @@
-MVCUIManager class instanceVariableNames: ''

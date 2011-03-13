@@ -1,2 +1,2 @@
 insideASegment: aBoolean
-	insideASegment _ aBoolean
+	insideASegment := aBoolean

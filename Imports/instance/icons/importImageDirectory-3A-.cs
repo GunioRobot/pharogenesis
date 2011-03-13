@@ -13,5 +13,5 @@ importImageDirectory: directoryOrName
 		do: [:fileName | | fullName | (fileName endsWithAnyOf: extensions)
 				ifTrue: [fullName := dir fullNameFor: fileName.
 					(self importImageFromFileNamed: fullName)
-						ifNotNilDo: [:form | forms add: form]]].
+						ifNotNil: [:form | forms add: form]]].
 	^ forms

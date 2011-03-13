@@ -1,2 +1,0 @@
-clockBias: aArray
-	clockBias := aArray

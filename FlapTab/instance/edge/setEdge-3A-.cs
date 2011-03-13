@@ -2,14 +2,14 @@ setEdge: anEdge
 	"Set the edge as indicated, if possible"
 
 	| newOrientation e |
-	e _ anEdge asSymbol.
+	e := anEdge asSymbol.
 	self edgeToAdhereTo = anEdge ifTrue: [^ self].
-	newOrientation _ nil.
+	newOrientation := nil.
 	self orientation == #vertical
 		ifTrue: [(#top == e or: [#bottom == e]) ifTrue:
-					[newOrientation _ #horizontal]]
+					[newOrientation := #horizontal]]
 		ifFalse: [(#top == e or: [#bottom == e]) ifFalse:
-					[newOrientation _ #vertical]].
+					[newOrientation := #vertical]].
 	self edgeToAdhereTo: e.
 	newOrientation ifNotNil: [self transposeParts].
 	referent isInWorld ifTrue: [self positionReferent].

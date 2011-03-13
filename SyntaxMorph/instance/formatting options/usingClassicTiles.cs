@@ -1,3 +1,0 @@
-usingClassicTiles 
-
-	^ Preferences uniTilesClassic

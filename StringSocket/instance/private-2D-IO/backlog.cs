@@ -1,3 +1,0 @@
-backlog
-
-	^bytesInOutputQueue + extraUnsentBytes

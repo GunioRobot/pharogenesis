@@ -1,3 +1,0 @@
-midiPort
-
-	^ midiParser midiPort

@@ -1,3 +1,3 @@
 privHandlerContext: aContextTag
 
-	handlerContext _ aContextTag
+	handlerContext := aContextTag

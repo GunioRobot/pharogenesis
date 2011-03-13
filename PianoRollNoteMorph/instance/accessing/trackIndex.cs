@@ -1,3 +1,0 @@
-trackIndex
-
-	^ trackIndex

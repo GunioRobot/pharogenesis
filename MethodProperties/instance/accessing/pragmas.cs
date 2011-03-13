@@ -1,2 +1,2 @@
 pragmas
-	^ pragmas
+	^pragmas ifNil:[#()]

@@ -1,2 +1,2 @@
 instVarNames
-	^ item instVarNames asSet
+	^ item instVarNames

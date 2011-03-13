@@ -1,7 +1,7 @@
 hiliteRect: rect
 
 	| highlightColor |
-	highlightColor _ Color quickHighLight: destinationForm depth.
+	highlightColor := Color quickHighLight: destinationForm depth.
 	rect ifNotNil: [
 		destinationForm
 			fill: rect

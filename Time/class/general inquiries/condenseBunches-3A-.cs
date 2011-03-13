@@ -14,18 +14,18 @@ condenseBunches: aCollectionOfSeconds
 			collect: [ :tt | self totalSeconds - tt])
 "
 
-	secArray _ aCollectionOfSeconds asSortedCollection.
-	pause _ 1.
-	now _ self totalSeconds.
-	out _ OrderedCollection new.
-	prev _ 0.
-	bunchEnd _ nil.
+	secArray := aCollectionOfSeconds asSortedCollection.
+	pause := 1.
+	now := self totalSeconds.
+	out := OrderedCollection new.
+	prev := 0.
+	bunchEnd := nil.
 	secArray reverseDo: [:secs | "descending"
-		ago _ now - secs.
-		ago > (60*30) ifTrue: [pause _ "60*30" 1800].
-		ago > (60*60*24) ifTrue: [pause _ "60*120" 7200].
-		ago - prev >= pause ifTrue: [out add: bunchEnd.  bunchEnd _ secs].
-		prev _ ago].
+		ago := now - secs.
+		ago > (60*30) ifTrue: [pause := "60*30" 1800].
+		ago > (60*60*24) ifTrue: [pause := "60*120" 7200].
+		ago - prev >= pause ifTrue: [out add: bunchEnd.  bunchEnd := secs].
+		prev := ago].
 	out add: bunchEnd.
 	out removeFirst.
 	^ out

@@ -1,12 +1,14 @@
 removeStayUpBox
-	| box |
+	| box ext |
 	submorphs isEmpty ifTrue: [^self].
 	(submorphs first isAlignmentMorph) ifFalse: [^self].
 	box := submorphs first submorphs last.
+	ext := box extent.
 	(box isKindOf: IconicButton) 
 		ifTrue: 
 			[box
-				labelGraphic: (Form extent: box extent depth: 8);
+				labelGraphic: (Form extent: ext depth: 8);
 				shedSelvedge;
 				borderWidth: 0;
-				lock]
+				lock].
+		box extent: ext.

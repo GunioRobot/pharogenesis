@@ -5,7 +5,7 @@ browseAllAccessesTo: instVarName from: aClass
 	"self new browseAllAccessesTo: 'contents' from: Collection."
 	
 	| coll |
-	coll _ OrderedCollection new.
+	coll := OrderedCollection new.
 	Cursor wait showWhile: [
 		aClass withAllSubAndSuperclassesDo: [:class | 
 			(class whichSelectorsAccess: instVarName) do: [:sel |

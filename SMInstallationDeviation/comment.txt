@@ -1,3 +1,0 @@
-An installation deviation is when the user decides to install or upgrade to a release that is newer than one or more used configurations specify.
-This means that the other installed releases which configurations will be broken may not work correctly.
-Instvar selectedRelease refers to the release selected to install, brokenConfigurations is a collection of all configurations that need another release of this package.

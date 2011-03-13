@@ -1,1 +1,0 @@
-OBPanel class instanceVariableNames: ''

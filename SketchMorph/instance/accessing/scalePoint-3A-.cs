@@ -1,4 +1,4 @@
 scalePoint: aPoint
 
-	scalePoint _ aPoint.
+	scalePoint := aPoint.
 	self layoutChanged.

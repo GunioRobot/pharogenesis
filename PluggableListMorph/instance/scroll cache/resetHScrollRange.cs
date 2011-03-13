@@ -1,4 +1,4 @@
 resetHScrollRange
 
-	hScrollRangeCache _ nil.
+	hScrollRangeCache := nil.
 	self deriveHScrollRange.

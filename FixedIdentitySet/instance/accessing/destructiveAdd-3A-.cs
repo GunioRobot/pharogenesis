@@ -1,8 +1,8 @@
 destructiveAdd: anObject
 	| index old |
 	self isFull ifTrue: [^ false].
-	index _ self indexOf: anObject.
-	old _ self basicAt: index.
+	index := self indexOf: anObject.
+	old := self basicAt: index.
 	self basicAt: index put: anObject.
-	old ifNil: [tally _ tally + 1].
+	old ifNil: [tally := tally + 1].
 	^ true

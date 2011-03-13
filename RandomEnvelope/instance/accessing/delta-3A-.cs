@@ -1,3 +1,0 @@
-delta: aNumber
-
-	delta := aNumber.

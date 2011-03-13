@@ -1,0 +1,1 @@
+WateryThemeIcons class instanceVariableNames: ''

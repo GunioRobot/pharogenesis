@@ -1,9 +1,9 @@
 setActionSelector
 
 	| newSel |
-	newSel _ FillInTheBlank
+	newSel := UIManager default
 		request:
 'Please type the selector to be sent to
 the target when this button is pressed' translated
 		initialAnswer: actionSelector.
-	newSel isEmpty ifFalse: [self actionSelector: newSel].
+	newSel isEmptyOrNil ifFalse: [self actionSelector: newSel].

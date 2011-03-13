@@ -1,3 +1,0 @@
-figureOutScriptSelector
-
-	self halt

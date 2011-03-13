@@ -1,2 +1,0 @@
-dialogPaneBorderColor
-	^ self dialogTextBoxBorderColor 

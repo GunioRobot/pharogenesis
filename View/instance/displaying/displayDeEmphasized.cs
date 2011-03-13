@@ -1,2 +1,0 @@
-displayDeEmphasized
-	self display; deEmphasize

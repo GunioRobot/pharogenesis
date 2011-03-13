@@ -1,2 +1,0 @@
-isCandidateForAutomaticViewing
-	^ true

@@ -1,3 +1,2 @@
-priorDCValue: aNumber
-
-	priorDCValue _ aNumber
+priorDCValue: aNumber 
+	priorDCValue := aNumber

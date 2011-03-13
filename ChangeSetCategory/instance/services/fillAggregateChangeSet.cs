@@ -9,4 +9,4 @@ Created at ', Time now printString, ' on ', Date today printString, ' by combini
 
 	(self elementsInOrder copyWithout: aggChangeSet) do:
 		[:aChangeSet  | aggChangeSet assimilateAllChangesFoundIn: aChangeSet].
-	Smalltalk isMorphic ifTrue: [SystemWindow wakeUpTopWindowUponStartup] 
+	SystemWindow wakeUpTopWindowUponStartup

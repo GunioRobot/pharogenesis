@@ -1,7 +1,7 @@
 type: eventType readFrom: aStream
-	type _ eventType.
-	timeStamp _ Integer readFrom: aStream.
+	type := eventType.
+	timeStamp := Integer readFrom: aStream.
 	aStream skip: 1.
-	buttons _ Integer readFrom: aStream.
+	buttons := Integer readFrom: aStream.
 	aStream skip: 1.
-	keyValue _ Integer readFrom: aStream.
+	keyValue := Integer readFrom: aStream.

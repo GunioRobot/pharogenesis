@@ -4,12 +4,12 @@ argStringUnencoded: args
 	| argsString first |
 	args isString ifTrue: ["sent in as a string, not a dictionary"
 		^ (args first = $? ifTrue: [''] ifFalse: ['?']), args].
-	argsString _ WriteStream on: String new.
+	argsString := String new writeStream.
 	argsString nextPut: $?.
-	first _ true.
+	first := true.
 	args associationsDo: [ :assoc |
 		assoc value do: [ :value |
-			first ifTrue: [ first _ false ] ifFalse: [ argsString nextPut: $& ].
+			first ifTrue: [ first := false ] ifFalse: [ argsString nextPut: $& ].
 			argsString nextPutAll: assoc key.
 			argsString nextPut: $=.
 			argsString nextPutAll: value. ] ].

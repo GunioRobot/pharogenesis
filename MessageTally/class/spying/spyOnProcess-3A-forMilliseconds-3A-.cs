@@ -1,16 +1,12 @@
 spyOnProcess: aProcess forMilliseconds: msecDuration 
-	"| p |  
-	p _ [100000 timesRepeat: [3.14159 printString]] fork.  
+	"
+	Spy on aProcess for a certain amount of time
+	| p1 p2 |  
+	p1 := [100000 timesRepeat: [3.14159 printString. Processor yield]] newProcess.  
+	p2 := [100000 timesRepeat: [3.14159 printString. Processor yield]] newProcess.
+	p1 resume.
+	p2 resume.  
 	(Delay forMilliseconds: 100) wait.  
-	MessageTally spyOnProcess: p forMilliseconds: 1000"
-	| node |
-	node _ self new.
-	node
-		spyEvery: self defaultPollPeriod
-		onProcess: aProcess
-		forMilliseconds: msecDuration.
-	(StringHolder new
-		contents: (String
-				streamContents: [:s | node report: s;
-						 close]))
-		openLabel: 'Spy Results'
+	MessageTally spyOnProcess: p1 forMilliseconds: 1000
+	"
+	^self spyOnProcess: aProcess forMilliseconds: msecDuration reportOtherProcesses: false

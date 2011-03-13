@@ -1,0 +1,3 @@
+initializeChangeSetCategories
+
+	^ ChangesOrganizer initializeChangeSetCategories

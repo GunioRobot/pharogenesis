@@ -1,1 +1,0 @@
-WindowingTransformation class instanceVariableNames: ''

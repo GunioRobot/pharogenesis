@@ -2,7 +2,7 @@ deleteBackgroundPainting
 	backgroundMorph
 		ifNotNil:
 			[backgroundMorph delete.
-			backgroundMorph _ nil]
+			backgroundMorph := nil]
 		ifNil:
 			[self inform: 'There is presently no
 background painting

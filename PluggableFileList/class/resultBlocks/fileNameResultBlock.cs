@@ -1,3 +1,0 @@
-fileNameResultBlock
-
-	^[:theDirectory :theFileName | theFileName]

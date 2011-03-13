@@ -5,8 +5,8 @@ numberOfImplementorsOf: aSelector
 	self new numberOfImplementorsOf: #nobodyImplementsThis.  
 	self new numberOfimplementorsOf: #numberOfImplementorsOf:."
 	| aCount |
-	aCount _ 0.
+	aCount := 0.
 	self
 		allBehaviorsDo: [:class | (class includesSelector: aSelector)
-				ifTrue: [aCount _ aCount + 1]].
+				ifTrue: [aCount := aCount + 1]].
 	^ aCount

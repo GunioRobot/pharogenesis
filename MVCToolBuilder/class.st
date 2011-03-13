@@ -1,1 +1,0 @@
-MVCToolBuilder class instanceVariableNames: ''

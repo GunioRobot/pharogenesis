@@ -1,4 +1,4 @@
 containingDirectory
 
-	self splitName: directory to: [:parentPath :localName |
-		^self copy directory: parentPath]
+	^ self copy directory: (self dirPathFor: directory).
+

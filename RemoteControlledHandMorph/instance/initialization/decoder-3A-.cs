@@ -1,2 +1,0 @@
-decoder: aDecoder
-	eventDecoder := aDecoder

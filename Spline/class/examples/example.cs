@@ -4,11 +4,11 @@ example
 	selected points, using a long black form."
 
 	| splineCurve aForm flag|
-	aForm _ Form extent: 2@2.
+	aForm := Form extent: 2@2.
 	aForm  fillBlack.
-	splineCurve _ Spline new.
+	splineCurve := Spline new.
 	splineCurve form: aForm.
-	flag _ true.
+	flag := true.
 	[flag] whileTrue:
 		[Sensor waitButton.
 		 Sensor redButtonPressed
@@ -16,7 +16,7 @@ example
 				[splineCurve add: Sensor waitButton. 
 				 Sensor waitNoButton.
 				 aForm displayOn: Display at: splineCurve last]
-			ifFalse: [flag_false]].
+			ifFalse: [flag:=false]].
 	splineCurve computeCurve.
 	splineCurve isEmpty 
 		ifFalse: [splineCurve displayOn: Display.

@@ -1,22 +1,23 @@
 displayString: aString on: aBitBlt from: startIndex to: stopIndex at: aPoint kern: kernDelta baselineY: baselineY
 
-	| destPoint form glyphInfo destY |
-	destPoint := aPoint.
+	| form glyphInfo destX destY hereX nextX actualFont |
+	destX := aPoint x.
 	glyphInfo := Array new: 5.
 	startIndex to: stopIndex do: [:charIndex |
 		self glyphInfoOf: (aString at: charIndex) into: glyphInfo.
-		form := glyphInfo first.
-		((glyphInfo at:5) ~= aBitBlt lastFont) ifTrue: [
-			(glyphInfo at:5) installOn: aBitBlt.
-		].
-		destY := baselineY - (glyphInfo at:4). 
+		form := glyphInfo at: 1.
+		hereX := glyphInfo at: 2.
+		nextX := glyphInfo at: 3.
+		(actualFont := glyphInfo at: 5) ==  aBitBlt lastFont
+			ifFalse: [actualFont installOn: aBitBlt].
+		destY := baselineY - (glyphInfo at: 4). 
 		aBitBlt sourceForm: form.
-		aBitBlt destX: destPoint x.
+		aBitBlt destX: destX.
 		aBitBlt destY: destY.
-		aBitBlt sourceOrigin: (glyphInfo at:2) @ 0.
-		aBitBlt width: glyphInfo third - glyphInfo second.
+		aBitBlt sourceX: hereX; sourceY: 0.
+		aBitBlt width: nextX - hereX.
 		aBitBlt height: form height.
 		aBitBlt copyBits.
-		destPoint := destPoint + (((glyphInfo at:3) - (glyphInfo at:2)) + kernDelta @ 0).
+		destX := destX + (nextX - hereX) + kernDelta.
 	].
-	^ destPoint.
+	^ destX @ destY

@@ -1,6 +1,6 @@
 font: aFont emphasis: emphasisCode
-	font _ aFont.
-	emphasis _ emphasisCode.
+	font := aFont.
+	emphasis := emphasisCode.
 	self fitContents.
 "
 in inspector say,

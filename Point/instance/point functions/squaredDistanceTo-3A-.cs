@@ -1,5 +1,5 @@
-squaredDistanceTo: aPoint
+squaredDistanceTo: aPoint 
 	"Answer the distance between aPoint and the receiver."
 	| delta |
-	delta _ aPoint - self.
-	^delta dotProduct: delta
+	delta := aPoint - self.
+	^ delta dotProduct: delta

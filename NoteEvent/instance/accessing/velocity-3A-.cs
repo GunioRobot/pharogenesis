@@ -1,3 +1,0 @@
-velocity: midiVelocity
-
-	velocity := midiVelocity.

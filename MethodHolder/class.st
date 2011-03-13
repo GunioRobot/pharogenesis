@@ -1,1 +1,0 @@
-MethodHolder class instanceVariableNames: ''

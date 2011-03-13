@@ -2,9 +2,9 @@ contents
 	| |
 	semaphore wait.
 	(content isNil and:[fileStream notNil]) ifTrue:[
-"		pos _ fileStream position."
+"		pos := fileStream position."
 		fileStream position: 0.
-		content _ MIMEDocument content: fileStream upToEnd.
+		content := MIMEDocument content: fileStream upToEnd.
 		fileStream close.
 	].
 	^content

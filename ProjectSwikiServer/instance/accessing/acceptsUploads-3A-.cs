@@ -1,2 +1,2 @@
 acceptsUploads: aBoolean
-	acceptsUploads _ aBoolean
+	acceptsUploads := aBoolean

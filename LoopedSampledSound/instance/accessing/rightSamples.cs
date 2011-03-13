@@ -1,3 +1,0 @@
-rightSamples
-
-	^ rightSamples

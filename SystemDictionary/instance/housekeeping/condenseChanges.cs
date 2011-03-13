@@ -26,4 +26,4 @@ condenseChanges
 	self setMacFileInfoOn: oldChanges name.
 	SourceFiles
 		at: 2
-		put: (StandardFileStream oldFileNamed: oldChanges name)
+		put: (FileStream oldFileNamed: oldChanges name)

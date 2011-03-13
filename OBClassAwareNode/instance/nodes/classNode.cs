@@ -1,2 +1,0 @@
-classNode
-	^self theClass asNode

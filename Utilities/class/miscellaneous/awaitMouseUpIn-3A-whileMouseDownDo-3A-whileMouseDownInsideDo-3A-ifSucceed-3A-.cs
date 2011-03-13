@@ -4,20 +4,20 @@ awaitMouseUpIn: box whileMouseDownDo: doBlock1 whileMouseDownInsideDo: doBlock2 
 
 	| p inside lightForm darkForm isLight |
 
-	p _ Sensor cursorPoint.
-	inside _ box insetBy: 1.
-	isLight _ true.
-	lightForm _ Form fromDisplay: inside.
-	darkForm _ lightForm deepCopy reverse.
+	p := Sensor cursorPoint.
+	inside := box insetBy: 1.
+	isLight := true.
+	lightForm := Form fromDisplay: inside.
+	darkForm := lightForm deepCopy reverse.
 	[Sensor anyButtonPressed] whileTrue:
 		[doBlock1 value.
-		(box containsPoint: (p _ Sensor cursorPoint))
+		(box containsPoint: (p := Sensor cursorPoint))
 			ifTrue: [doBlock2 value.
 					isLight ifTrue: 
-						[isLight _ false.
+						[isLight := false.
 						darkForm displayAt: inside origin]]
 			ifFalse: [isLight ifFalse:
-						[isLight _ true.
+						[isLight := true.
 						lightForm displayAt: inside origin]]].
 	(box containsPoint: p)
 		ifTrue: [lightForm displayAt: inside origin.

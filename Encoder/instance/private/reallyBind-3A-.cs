@@ -1,6 +1,6 @@
 reallyBind: name
 
 	| node |
-	node _ self newTemp: name.
+	node := self newTemp: name.
 	scopeTable at: name put: node.
 	^node

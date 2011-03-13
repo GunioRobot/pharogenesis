@@ -2,11 +2,13 @@ inspectElement
 	"Create and schedule an Inspector on the otherProperties and the 
 	named properties."
 	| key obj |
-	key _ (SelectionMenu selections: self sortedPropertyNames)
-				startUpWithCaption: 'Inspect which property?'.
+	key := UIManager default 
+				chooseFrom: self sortedPropertyNames 
+				values: self sortedPropertyNames
+				title: 'Inspect which property?' translated.
 	key
 		ifNil: [^ self].
-	obj _ otherProperties
+	obj := otherProperties
 				at: key
 				ifAbsent: ['nOT a vALuE'].
 	obj = 'nOT a vALuE'

@@ -5,9 +5,9 @@ reset
 	   9/3/93 sw: monster version for Sasha"
 
 	super reset.
-	references _ IdentityDictionary new: 4096 * 5.
-"	objects _ IdentityDictionary new: 4096 * 5.
-	fwdRefEnds _ IdentityDictionary new.
+	references := IdentityDictionary new: 4096 * 5.
+"	objects := IdentityDictionary new: 4096 * 5.
+	fwdRefEnds := IdentityDictionary new.
 "
-	blockers ifNil: [blockers _ IdentityDictionary new].
+	blockers ifNil: [blockers := IdentityDictionary new].
  

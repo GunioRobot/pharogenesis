@@ -1,0 +1,1 @@
+Generic object<->string converter for use with PluggableTextFieldMorph. #next: and #previous: unused at present.

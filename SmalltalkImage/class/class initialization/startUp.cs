@@ -1,3 +1,0 @@
-startUp
-
-	EndianCache _ nil.

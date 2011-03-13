@@ -1,6 +1,6 @@
 copyWithTempNames: tempNames
 	| tempStr compressed |
-	tempStr _ String streamContents:
+	tempStr := String streamContents:
 		[:strm | tempNames do: [:n | strm nextPutAll: n; space]].
 	compressed := self qCompress: tempStr firstTry: true.
 	compressed ifNil:

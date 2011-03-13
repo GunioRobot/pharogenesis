@@ -2,13 +2,13 @@ wellFormedInstanceVariableNameFrom: aString
 	"Answer a legal instance variable name, derived from aString"
 
 	| cleansedString |
-	cleansedString _ aString select: [:ch | ch isDigit or: [ch isLetter]].
+	cleansedString := aString select: [:ch | ch isDigit or: [ch isLetter]].
 	(cleansedString isEmpty or: [cleansedString first isDigit])
-		ifTrue: [cleansedString _ 'a', cleansedString]
-		ifFalse:	[cleansedString _ cleansedString withFirstCharacterDownshifted].
+		ifTrue: [cleansedString := 'a', cleansedString]
+		ifFalse:	[cleansedString := cleansedString withFirstCharacterDownshifted].
 
 	[self isLegalInstVarName: cleansedString] whileFalse:
-		[cleansedString _ cleansedString, 'x'].
+		[cleansedString := cleansedString, 'x'].
 	^ cleansedString
 
 "Scanner wellFormedInstanceVariableNameFrom:  '234 xx\ Uml /ler42342380-4'"

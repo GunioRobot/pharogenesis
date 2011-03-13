@@ -1,3 +1,3 @@
 noteNewName: newName
 
-	thisName _ newName
+	thisName := newName

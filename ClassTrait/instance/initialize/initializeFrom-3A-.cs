@@ -1,5 +1,5 @@
 initializeFrom: anotherClassTrait
-	traitComposition _ self traitComposition copyTraitExpression.
-	methodDict _ self methodDict copy.
-	localSelectors _ self localSelectors copy.
-	organization _ self organization copy.
+	traitComposition := self traitComposition copyTraitExpression.
+	methodDict := self methodDict copy.
+	localSelectors := self localSelectors copy.
+	organization := self organization copy.

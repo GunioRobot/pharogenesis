@@ -9,7 +9,6 @@ methodListMenu: aMenu
 			('browse protocol (p)'					browseFullProtocol)
 			-
 			('fileOut (o)'							fileOutMessage)
-			('printOut'								printOutMessage)
 			('copy selector (c)'						copySelector)).
 		aMenu addList: #(
 			-

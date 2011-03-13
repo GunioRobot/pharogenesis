@@ -2,7 +2,7 @@ deleteGlobalFlapArtifacts
 	"Delete all flap-related detritus from the world"
 
 	| localFlaps |
-	localFlaps _ self localFlapTabs collect: [:m | m referent].
+	localFlaps := self localFlapTabs collect: [:m | m referent].
 	self submorphs do:
 		[:m | 
 			((m isFlapTab) and: [m isGlobalFlap]) ifTrue: [m delete].

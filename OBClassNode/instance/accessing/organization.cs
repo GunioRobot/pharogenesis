@@ -1,2 +1,0 @@
-organization
-	^ self theClass organization

@@ -1,6 +1,6 @@
 testAbsoluteBrowser
 
-	url _ Url absoluteFromText: 'browser:bookmarks#mainPart'.
+	url := Url absoluteFromText: 'browser:bookmarks#mainPart'.
 
 	self assert: url schemeName = 'browser'.
 	self assert: url locator = 'bookmarks'.

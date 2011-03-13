@@ -6,5 +6,5 @@ listDirection
 		#bottomToTop
 	indicating the direction in which any layout should take place"
 	| props |
-	props _ self layoutProperties.
+	props := self layoutProperties.
 	^props ifNil:[#topToBottom] ifNotNil:[props listDirection].

@@ -1,8 +1,8 @@
 testExample1
 
 	| producer1 producer2  monitor goal work counter goalReached finished |
-	goal _ (1 to: 1000) asOrderedCollection.
-	work _ OrderedCollection new.
+	goal := (1 to: 1000) asOrderedCollection.
+	work := OrderedCollection new.
 	counter := 0.
 	goalReached := false.
 	finished := Semaphore new.

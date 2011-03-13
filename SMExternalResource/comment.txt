@@ -1,3 +1,0 @@
-An external resource is a downloadable resource.
-The instance variable downloadUrl holds the URL to the resource and the resource is cacheable in the FileCache for the SqueakMap.
-An external resource can be used for any kind of document that is to be attached to another SMObject.

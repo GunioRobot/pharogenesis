@@ -1,1 +1,0 @@
-MCStWriterTest class instanceVariableNames: ''

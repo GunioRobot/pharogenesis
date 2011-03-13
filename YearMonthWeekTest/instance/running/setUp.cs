@@ -1,6 +1,6 @@
 setUp
-	restoredStartDay _ Week startDay.
-	restoredTimeZone _ DateAndTime localTimeZone.
+	restoredStartDay := Week startDay.
+	restoredTimeZone := DateAndTime localTimeZone.
 
 	Week startDay: #Sunday.
 	DateAndTime localTimeZone: (TimeZone timeZones detect: [:tz | tz abbreviation = 'GMT']).

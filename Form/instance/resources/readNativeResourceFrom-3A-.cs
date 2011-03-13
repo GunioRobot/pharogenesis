@@ -2,11 +2,11 @@ readNativeResourceFrom: byteStream
 	| img aStream |
 	(byteStream isKindOf: FileStream) ifTrue:[
 		"Ugly, but ImageReadWriter will send #reset which is implemented as #reopen and we may not be able to do so."
-		aStream _ RWBinaryOrTextStream with: byteStream contents.
+		aStream := RWBinaryOrTextStream with: byteStream contents.
 	] ifFalse:[
-		aStream _ byteStream.
+		aStream := byteStream.
 	].
-	img _ [ImageReadWriter formFromStream: aStream] on: Error do:[:ex| nil].
+	img := [ImageReadWriter formFromStream: aStream] on: Error do:[:ex| nil].
 	img ifNil:[^nil].
 	(img isColorForm and:[self isColorForm]) ifTrue:[
 		| cc |
@@ -17,4 +17,4 @@ readNativeResourceFrom: byteStream
 	] ifFalse:[
 		img displayOn: self.
 	].
-	img _ nil.
+	img := nil.

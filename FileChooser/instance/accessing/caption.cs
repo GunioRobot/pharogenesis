@@ -1,2 +1,0 @@
-caption
-	^caption

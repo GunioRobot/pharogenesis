@@ -1,0 +1,2 @@
+utilityWindowClass
+	^8

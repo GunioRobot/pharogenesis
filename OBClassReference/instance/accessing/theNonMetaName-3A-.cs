@@ -1,2 +1,0 @@
-theNonMetaName: aSymbol
-	name := aSymbol

@@ -1,3 +1,3 @@
 offImage: aForm
-	offImage _ aForm.
+	offImage := aForm.
 	self invalidRect: self bounds.

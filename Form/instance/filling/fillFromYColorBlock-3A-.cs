@@ -4,7 +4,7 @@ fillFromYColorBlock: colorBlock
 	and paint each pixel with the color that comes back"
 	| yRel |
 	0 to: height-1 do:
-		[:y |  yRel _ y asFloat / (height-1) asFloat.
+		[:y |  yRel := y asFloat / (height-1) asFloat.
 		self fill: (0@y extent: width@1) 
 			fillColor: (colorBlock value: yRel)]
 "

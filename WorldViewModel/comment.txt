@@ -1,1 +1,0 @@
-Serves as a model for a WorldView -- a morphic world viewed within an mvc project.

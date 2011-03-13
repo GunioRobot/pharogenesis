@@ -1,2 +1,0 @@
-cancel
-	self resume: false

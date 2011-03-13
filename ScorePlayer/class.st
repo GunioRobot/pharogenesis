@@ -1,1 +1,0 @@
-ScorePlayer class instanceVariableNames: ''

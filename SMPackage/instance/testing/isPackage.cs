@@ -1,2 +1,0 @@
-isPackage
-	^true

@@ -1,3 +1,0 @@
-getCurrentFrameForm
-
-	^ self sendMessageToCostume: #getCurrentFrameForm

@@ -1,3 +1,0 @@
-shadowColor
-
-	^shadowColor

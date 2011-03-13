@@ -1,8 +1,7 @@
 literalStrings
-	| lits litStrs |
-	lits _ self literals.
-	litStrs _ OrderedCollection new: lits size * 3.
-	self literals do:
+	| litStrs |
+	litStrs := OrderedCollection new: self numLiterals.
+	self literalsDo:
 		[:lit | 
 		(lit isVariableBinding)
 			ifTrue: [litStrs addLast: lit key]

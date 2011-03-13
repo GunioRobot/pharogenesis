@@ -1,2 +1,2 @@
 classPool: aDictionary
-	classPool _ aDictionary
+	classPool := aDictionary

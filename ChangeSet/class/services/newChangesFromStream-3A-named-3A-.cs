@@ -4,16 +4,16 @@ newChangesFromStream: aStream named: aName
 	unchanged. Return the new change set or nil on failure."
 
 	| oldChanges newName newSet newStream |
-	oldChanges _ ChangeSet current.
-	PreviousSet _ oldChanges name. 		"so a Bumper update can find it"
-	newName _ aName sansPeriodSuffix.
-	newSet _ self basicNewChangeSet: newName.
+	oldChanges := ChangeSet current.
+	PreviousSet := oldChanges name. 		"so a Bumper update can find it"
+	newName := aName sansPeriodSuffix.
+	newSet := self basicNewChangeSet: newName.
 	[newSet ifNotNil:[
 		(aStream respondsTo: #converter:) ifFalse: [
-			newStream _ MultiByteBinaryOrTextStream with: (aStream contentsOfEntireFile).
+			newStream := MultiByteBinaryOrTextStream with: (aStream contentsOfEntireFile).
 			newStream reset.
 		] ifTrue: [
-			newStream _ aStream.
+			newStream := aStream.
 		].
 
 		self newChanges: newSet.

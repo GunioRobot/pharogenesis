@@ -1,2 +1,2 @@
 defaultBaseURL: aURLString
-	DefaultBaseURL _ aURLString
+	DefaultBaseURL := aURLString

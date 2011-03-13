@@ -3,7 +3,7 @@ addCustomMenuItems: aCustomMenu hand: aHandMorph
 	| movies subMenu |
 	super addCustomMenuItems: aCustomMenu hand: aHandMorph.
 	aCustomMenu addLine.
-	subMenu _ MenuMorph new defaultTarget: self.
+	subMenu := MenuMorph new defaultTarget: self.
 	frameList size > 1 ifTrue: [
 		subMenu add: 'repaint' translated action: #editDrawing.
 		subMenu add: 'set rotation center' translated action: #setRotationCenter.
@@ -15,8 +15,8 @@ addCustomMenuItems: aCustomMenu hand: aHandMorph
 		currentFrameIndex < frameList size ifTrue: [
 			subMenu add: 'next frame' translated action: #nextFrame]].
 	subMenu add: 'extract this frame' translated action: #extractFrame:.
-	movies _
-		(self world rootMorphsAt: aHandMorph targetOffset)
+	movies :=
+		(self world rootMorphsAt: aHandMorph targetPoint)
 			select: [:m | (m isKindOf: MovieMorph) or:
 						[m isSketchMorph]].
 	(movies size > 1) ifTrue:

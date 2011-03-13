@@ -3,8 +3,8 @@ startGrow: evt with: growHandle
 
 	| botRt |
 	self obtainHaloForEvent: evt andRemoveAllHandlesBut: growHandle.
-	botRt _ target point: target bottomRight in: owner.
-	positionOffset _ (self world viewBox containsPoint: botRt)
+	botRt := target point: target bottomRight in: owner.
+	positionOffset := (self world viewBox containsPoint: botRt)
 		ifTrue: [evt cursorPoint - botRt]
 		ifFalse: [0@0].
 
@@ -13,4 +13,4 @@ startGrow: evt with: growHandle
 			cmdWording: ('resize ' translated, target nameForUndoWording);
 			undoTarget: target renderedMorph selector: #setFlexExtentFromHalo: argument: target extent).
 
-	originalExtent _ target extent
+	originalExtent := target extent

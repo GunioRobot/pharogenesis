@@ -8,5 +8,5 @@ drawOnTest: aCanvas
 	(self startingIndex > text size)
 		ifTrue: [self drawNullTextOn: aCanvas].
 	"Hack here:  The canvas expects bounds to carry the location of the text, but we also need to communicate clipping."
-	fauxBounds _ self bounds topLeft corner: self innerBounds bottomRight.
+	fauxBounds := self bounds topLeft corner: self innerBounds bottomRight.
 	aCanvas paragraph3: self paragraph bounds: fauxBounds color: color

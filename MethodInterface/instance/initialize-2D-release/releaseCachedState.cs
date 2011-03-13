@@ -1,2 +1,0 @@
-releaseCachedState
-	"Sent by player"

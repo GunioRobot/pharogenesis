@@ -4,8 +4,8 @@ pathString
 	| first |
 	^String streamContents: [ :s |
 		"isAbsolute ifTrue:[ s nextPut: $/ ]."
-		first _ true.
+		first := true.
 		self path do: [ :p |
 			first ifFalse: [ s nextPut: $/ ].
-			first _ false.
+			first := false.
 			s nextPutAll: p encodeForHTTP ] ]

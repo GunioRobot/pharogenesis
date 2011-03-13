@@ -3,7 +3,7 @@ outer
 
 	| prevOuterContext |
 	self isResumable ifTrue: [
-		prevOuterContext _ outerContext.
-		outerContext _ thisContext contextTag.
+		prevOuterContext := outerContext.
+		outerContext := thisContext contextTag.
 	].
 	self pass.

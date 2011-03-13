@@ -1,3 +1,2 @@
-streamOn: collection upToAll: subcollection
-
-	^(ReadStream on: collection) upToAll: subcollection
+streamOn: collection upToAll: subcollection 
+	^ collection readStream upToAll: subcollection

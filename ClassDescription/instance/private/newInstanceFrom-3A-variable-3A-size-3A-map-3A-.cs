@@ -4,8 +4,8 @@ newInstanceFrom: oldInstance variable: variable size: instSize map: map
 	the receiver's instVars"
 	| new |
 	variable
-		ifTrue: [new _ self basicNew: oldInstance basicSize]
-		ifFalse: [new _ self basicNew].
+		ifTrue: [new := self basicNew: oldInstance basicSize]
+		ifFalse: [new := self basicNew].
 	1 to: instSize do: 
 		[:offset |  (map at: offset) > 0 ifTrue:
 			[new instVarAt: offset

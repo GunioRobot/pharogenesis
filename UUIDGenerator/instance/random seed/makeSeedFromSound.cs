@@ -1,5 +1,5 @@
 makeSeedFromSound
-	| answer |
-	[answer := SoundService default randomBitsFromSoundInput: 32
-	] ifError: [answer := nil].
-	^answer
+ 	| answer |
+ 	[answer := SoundService default randomBitsFromSoundInput: 32
+ 	] ifError: [answer := nil].
+ 	^answer

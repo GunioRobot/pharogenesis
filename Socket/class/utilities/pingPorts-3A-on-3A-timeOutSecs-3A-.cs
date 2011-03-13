@@ -2,33 +2,34 @@ pingPorts: portList on: hostName timeOutSecs: timeOutSecs
 	"Attempt to connect to each of the given sockets on the given host. Wait at most timeOutSecs for the connections to be established. Answer an array of strings indicating the available ports."
 	"Socket pingPorts: #(7 13 19 21 23 25 80 110 119) on: 'squeak.cs.uiuc.edu' timeOutSecs: 15"
 
-	| serverAddr sockets sock deadline done unconnectedCount connectedCount waitingCount result |
-	serverAddr _ NetNameResolver addressForName: hostName timeout: 10.
+	| serverAddr sockets sock startTime timeoutMsecs done unconnectedCount connectedCount waitingCount result |
+	serverAddr := NetNameResolver addressForName: hostName timeout: 10.
 	serverAddr = nil ifTrue: [
 		self inform: 'Could not find an address for ', hostName.
 		^ #()].
 
-	sockets _ portList collect: [:portNum |
-		sock _ Socket new.
+	sockets := portList collect: [:portNum |
+		sock := Socket new.
 		sock connectTo: serverAddr port: portNum].
 
-	deadline _ self deadlineSecs: timeOutSecs.
-	done _ false.
+	startTime := Time millisecondClockValue.
+	timeoutMsecs := (1000 * timeOutSecs) truncated.
+	done := false.
 	[done] whileFalse: [
-		unconnectedCount _ 0.
-		connectedCount _ 0.
-		waitingCount _ 0.
+		unconnectedCount := 0.
+		connectedCount := 0.
+		waitingCount := 0.
 		sockets do: [:s |
 			s isUnconnectedOrInvalid
-				ifTrue: [unconnectedCount _ unconnectedCount + 1]
+				ifTrue: [unconnectedCount := unconnectedCount + 1]
 				ifFalse: [
-					s isConnected ifTrue: [connectedCount _ connectedCount + 1].
-					s isWaitingForConnection ifTrue: [waitingCount _ waitingCount + 1]]].
-		waitingCount = 0 ifTrue: [done _ true].
-		connectedCount = sockets size ifTrue: [done _ true].
-		Time millisecondClockValue > deadline ifTrue: [done _ true]].
+					s isConnected ifTrue: [connectedCount := connectedCount + 1].
+					s isWaitingForConnection ifTrue: [waitingCount := waitingCount + 1]]].
+		waitingCount = 0 ifTrue: [done := true].
+		connectedCount = sockets size ifTrue: [done := true].
+		(Time millisecondsSince: startTime) >= timeoutMsecs ifTrue: [done := true]].
 
-	result _ (sockets select: [:s | s isConnected])
+	result := (sockets select: [:s | s isConnected])
 		collect: [:s | self nameForWellKnownTCPPort: s remotePort].
 	sockets do: [:s | s destroy].
 	^ result

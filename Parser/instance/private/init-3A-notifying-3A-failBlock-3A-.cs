@@ -1,8 +1,8 @@
 init: sourceStream notifying: req failBlock: aBlock
 
-	requestor _ req.
-	failBlock _ aBlock.
+	requestor := req.
+	failBlock := aBlock.
 	super scan: sourceStream.
-	prevMark _ hereMark _ mark.
-	requestorOffset _ 0.
+	prevMark := hereMark := mark.
+	requestorOffset := 0.
 	self advance

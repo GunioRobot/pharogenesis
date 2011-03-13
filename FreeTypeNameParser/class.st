@@ -1,0 +1,1 @@
+FreeTypeNameParser class instanceVariableNames: 'weightNames stretchNames obliqueNames normalNames italicNames'

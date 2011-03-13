@@ -1,1 +1,0 @@
-JoystickMorph class instanceVariableNames: ''

@@ -2,10 +2,10 @@ uncollapseSketch
 
 	| uncollapsedVersion w whomToDelete |
 
-	(w _ self world) ifNil: [^self].
-	uncollapsedVersion _ self valueOfProperty: #uncollapsedMorph.
+	(w := self world) ifNil: [^self].
+	uncollapsedVersion := self valueOfProperty: #uncollapsedMorph.
 	uncollapsedVersion ifNil: [^self].
-	whomToDelete _ self valueOfProperty: #collapsedMorphCarrier.
+	whomToDelete := self valueOfProperty: #collapsedMorphCarrier.
 	uncollapsedVersion setProperty: #collapsedPosition toValue: whomToDelete position.
 
 	whomToDelete delete.

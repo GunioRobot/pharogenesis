@@ -1,0 +1,2 @@
+developerMode: aBool
+	DeveloperMode := aBool.

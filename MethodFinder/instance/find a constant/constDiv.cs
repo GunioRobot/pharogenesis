@@ -2,8 +2,8 @@ constDiv
 	| const subTest got |
 	"See if (data1 // C) is the answer"
 
-	const _ ((thisData at: 1) at: 1) // (answers at: 1).  "May not be right!"
-	got _ (subTest _ MethodFinder new copy: self addArg: const) 
+	const := ((thisData at: 1) at: 1) // (answers at: 1).  "May not be right!"
+	got := (subTest := MethodFinder new copy: self addArg: const) 
 				searchForOne isEmpty not.
 	got ifFalse: [^ false]. 
 

@@ -2,8 +2,8 @@ methodRefList
 	"Return a MethodReference for each message I can send. tk 9/13/97, raa 
 	5/29/01 "
 	| list adder |
-	list _ SortedCollection new.
-	adder _ [:recip :sel | recip
+	list := SortedCollection new.
+	adder := [:recip :sel | recip
 				ifNotNil: [list
 						add: (MethodReference new
 								setStandardClass: (recip class whichClassIncludesSelector: sel)

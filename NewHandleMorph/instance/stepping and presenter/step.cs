@@ -1,13 +1,13 @@
 step
 	| eventSource |
 
-	eventSource _ self sensorMode ifTrue: [
+	eventSource := self sensorMode ifTrue: [
 		Sensor
 	] ifFalse: [
 		hand lastEvent
 	].
 	eventSource anyButtonPressed
-		ifTrue: [waitingForClickInside _ false.
+		ifTrue: [waitingForClickInside := false.
 				self position: eventSource cursorPoint - (self extent // 2).
 				pointBlock value: self center]
 		ifFalse: [waitingForClickInside

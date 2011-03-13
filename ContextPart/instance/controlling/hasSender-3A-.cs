@@ -3,9 +3,9 @@ hasSender: context
 
 	| s |
 	self == context ifTrue: [^false].
-	s _ sender.
+	s := sender.
 	[s == nil]
 		whileFalse: 
 			[s == context ifTrue: [^true].
-			s _ s sender].
+			s := s sender].
 	^false

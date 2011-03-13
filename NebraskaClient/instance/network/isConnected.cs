@@ -1,2 +1,0 @@
-isConnected
-	^connection isConnected

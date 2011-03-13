@@ -5,35 +5,35 @@ toggleAnnotationPaneSize
 	self flag: #bob.		"CRUDE HACK to enable changing the size of the annotations pane"
 
 	owner ifNil: [^self].
-	siblings _ owner submorphs.
+	siblings := owner submorphs.
 	siblings size > 3 ifTrue: [^self].
 	siblings size < 2 ifTrue: [^self].
 
-	aHand _ self primaryHand.
-	origin _ aHand position.
-	handle _ HandleMorph new
+	aHand := self primaryHand.
+	origin := aHand position.
+	handle := HandleMorph new
 		forEachPointDo: [:newPoint |
 			handle removeAllMorphs.
-			newHeight _ (newPoint - origin) y asInteger min: owner height - 50 max: 16.
-			lf _ siblings last layoutFrame.
+			newHeight := (newPoint - origin) y asInteger min: owner height - 50 max: 16.
+			lf := siblings last layoutFrame.
 			lf bottomOffset: newHeight.
-			prevBottom _ newHeight.
+			prevBottom := newHeight.
 			siblings size - 1 to: 1 by: -1 do: [ :index |
-				m _ siblings at: index.
-				lf _ m layoutFrame.
-				ht _ lf bottomOffset - lf topOffset.
+				m := siblings at: index.
+				lf := m layoutFrame.
+				ht := lf bottomOffset - lf topOffset.
 				lf topOffset: prevBottom.
 				lf bottomOffset = 0 ifFalse: [
 					lf bottomOffset: (prevBottom + ht).
 				].
-				prevBottom _ prevBottom + ht.
+				prevBottom := prevBottom + ht.
 			].
 			owner layoutChanged.
 
 		]
 		lastPointDo:
 			[:newPoint | handle deleteBalloon.
-			self halo ifNotNilDo: [:halo | halo addHandles].
+			self halo ifNotNil: [:halo | halo addHandles].
 		].
 	aHand attachMorph: handle.
 	handle setProperty: #helpAtCenter toValue: true.

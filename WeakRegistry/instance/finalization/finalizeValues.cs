@@ -4,14 +4,14 @@ finalizeValues
 	finiObjects := nil.
 	"First collect the objects."
 	self protected:[
-		valueDictionary associationsDo:[:assoc|
-			assoc key isNil ifTrue:[
-				finiObjects isNil 
-					ifTrue:[finiObjects := OrderedCollection with: assoc value]
-					ifFalse:[finiObjects add: assoc value]]
+		valueDictionary associationsDo: [:assoc|
+			assoc key ifNil: [
+				finiObjects 
+					ifNil: [finiObjects := OrderedCollection with: assoc value]
+					ifNotNil: [finiObjects add: assoc value]]
 		].
-		finiObjects isNil ifFalse:[valueDictionary finalizeValues: finiObjects asArray].
+		finiObjects ifNotNil: [valueDictionary finalizeValues: finiObjects asArray].
 	].
 	"Then do the finalization"
-	finiObjects isNil ifTrue:[^self].
+	finiObjects ifNil: [^self].
 	finiObjects do:[:each| each finalize].

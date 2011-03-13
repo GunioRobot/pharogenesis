@@ -6,11 +6,10 @@ dismissViaHalo
 	self dismissMorph.
 	Preferences preserveTrash ifTrue: [ 
 		Preferences slideDismissalsToTrash
-			ifTrue:[self slideToTrash: nil]
-			ifFalse:[TrashCanMorph moveToTrash: self].
+			ifTrue:[self slideToTrash: nil].
 	].
 
-	cmd _ Command new cmdWording: 'dismiss ' translated, self externalName.
+	cmd := Command new cmdWording: 'dismiss ' translated, self externalName.
 	cmd undoTarget: ActiveWorld selector: #reintroduceIntoWorld: argument: self.
 	cmd redoTarget: ActiveWorld selector: #onceAgainDismiss: argument: self.
 	ActiveWorld rememberCommand: cmd

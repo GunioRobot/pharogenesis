@@ -1,5 +1,5 @@
 beSmoothCurve
 
 	smoothCurve == true ifFalse:
-		[smoothCurve _ true.
+		[smoothCurve := true.
 		self computeBounds]

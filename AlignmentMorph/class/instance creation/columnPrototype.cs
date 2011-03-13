@@ -2,9 +2,9 @@ columnPrototype
 	"Answer a prototypical column"
 
 	| sampleMorphs aColumn |
-	sampleMorphs _ #(red yellow green) collect:
+	sampleMorphs := #(red yellow green) collect:
 		[:aColor | Morph new extent: 130 @ 38; color: (Color perform: aColor); setNameTo: aColor asString; yourself].
-	aColumn _ self inAColumn: sampleMorphs.
+	aColumn := self inAColumn: sampleMorphs.
 	aColumn setNameTo: 'Column'.
 	aColumn color: Color veryVeryLightGray.
 	aColumn cellInset: 4; layoutInset: 6.

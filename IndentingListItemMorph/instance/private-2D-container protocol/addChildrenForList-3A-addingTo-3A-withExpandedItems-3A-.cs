@@ -3,9 +3,9 @@ addChildrenForList: hostList addingTo: morphList withExpandedItems: expandedItem
 	firstChild ifNotNil: [
 		firstChild withSiblingsDo: [ :aNode | aNode delete].
 	].
-	firstChild _ nil.
+	firstChild := nil.
 	complexContents hasContents ifFalse: [^self].
-	firstChild _ hostList 
+	firstChild := hostList 
 		addMorphsTo: morphList
 		from: complexContents contents 
 		allowSorting: true

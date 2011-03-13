@@ -3,4 +3,4 @@ MCTestCase
 	instanceVariableNames: 'stream writer'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Monticello-Tests'
+	category: 'Tests-Monticello'

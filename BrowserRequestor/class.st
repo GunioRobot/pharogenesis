@@ -1,0 +1,1 @@
+BrowserRequestor class instanceVariableNames: ''

@@ -1,18 +1,18 @@
 forceDamageToScreen: allDamage
 	"Force all the damage rects to the screen."
 	| rectList excluded remaining regions |
-	rectList _ allDamage.
+	rectList := allDamage.
 	"Note: Reset extra regions at the beginning to prevent repeated errors"
-	regions _ extraRegions.
-	extraRegions _ nil.
+	regions := extraRegions.
+	extraRegions := nil.
 	regions ifNotNil:[
 		"exclude extra regions"
 		regions do:[:drawerAndRect|
-			excluded _ drawerAndRect at: 2.
-			remaining _ WriteStream on: #().
+			excluded := drawerAndRect at: 2.
+			remaining := Array new writeStream.
 			rectList do:[:r|
 				remaining nextPutAll:(r areasOutside: excluded)].
-			rectList _ remaining contents].
+			rectList := remaining contents].
 	].
 	rectList do:[:r| self forceToScreen: r].
 	regions ifNotNil:[

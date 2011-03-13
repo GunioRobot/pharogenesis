@@ -1,0 +1,3 @@
+Implementation for os-x specific menu logic
+
+Their is a lot to do, first we must disable the hide command key, enable the Quit Squeak VM in the application menu, add items to the File menu, enable the edit menu, and install and alter the Window menu. This requires access to a few specific os-x menu calls to get menus by commandID. Both the application menu and the Window menu are found by commandID information, menu items on these special menus are also found by commandID since the menus hide menu items by default. 

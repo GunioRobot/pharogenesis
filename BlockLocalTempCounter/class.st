@@ -1,0 +1,1 @@
+BlockLocalTempCounter class instanceVariableNames: ''

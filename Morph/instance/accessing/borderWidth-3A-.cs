@@ -1,6 +1,6 @@
 borderWidth: aNumber
 	| style |
-	style _ self borderStyle.
+	style := self borderStyle.
 	style width = aNumber ifTrue: [ ^self ].
 
 	style style = #none

@@ -1,8 +1,8 @@
 signFile: fileName renameAs: destFile key: privateKey dsa: dsa
 	"Sign the given file using the private key."
 	| in out |
-	in _ FileStream readOnlyFileNamed: fileName.	in binary.
-	out _ FileStream newFileNamed: destFile.			out binary.
+	in := FileStream readOnlyFileNamed: fileName.	in binary.
+	out := FileStream newFileNamed: destFile.			out binary.
 	[in atEnd] whileFalse:[out nextPutAll: (in next: 4096)].
 	in close.	out close.
 	FileDirectory activeDirectoryClass splitName: destFile to:[:path :file|

@@ -1,0 +1,2 @@
+documentProc
+	^0

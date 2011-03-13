@@ -3,6 +3,6 @@ adjustSelection: directionBlock
 	"See also expandSelection:"
 	"Accepts a one argument Block that computes the new postion given an old one."
 	| newPosition |
-	newPosition _ directionBlock value: self pointIndex.
+	newPosition := directionBlock value: self pointIndex.
 	self selectMark: self markIndex point: newPosition.
 	^true.

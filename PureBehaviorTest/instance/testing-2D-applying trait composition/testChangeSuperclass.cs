@@ -30,9 +30,3 @@ testChangeSuperclass
 
 	self c2 compile: 'm51 ^19'.
 	self assert: aC2 m51 = 19.
-
-	"Other methods than those sending super should not have been recompiled"
-	self assert: self c2 >> #m52 == (self t5 >> #m52).
-
-	
-	

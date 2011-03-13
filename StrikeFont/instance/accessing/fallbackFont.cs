@@ -1,3 +1,2 @@
 fallbackFont
-	^ fallbackFont
-		ifNil: [fallbackFont _ FixedFaceFont new errorFont fontSize: self height]
+	^ fallbackFont ifNil: [ fallbackFont := FixedFaceFont new errorFont fontSize: self height ]

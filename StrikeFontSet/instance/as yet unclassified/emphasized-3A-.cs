@@ -3,9 +3,9 @@ emphasized: code
 	"Answer a copy of the receiver with emphasis set to include code."
 	| derivative addedEmphasis base safeCode |
 	code = 0 ifTrue: [^ self].
-	(derivativeFonts == nil or: [derivativeFonts size = 0]) ifTrue: [^ self].
+	derivativeFonts isEmptyOrNil ifTrue: [^ self].
 	derivative := derivativeFonts at: (safeCode := code min: derivativeFonts size).
-	derivative == nil ifFalse: [^ derivative].  "Already have this style"
+	derivative ifNotNil: [^ derivative].  "Already have this style"
 
 	"Dont have it -- derive from another with one with less emphasis"
 	addedEmphasis := 1 bitShift: safeCode highBit - 1.

@@ -3,8 +3,8 @@ constMult
 	"See if (data1 * C) is the answer"
 
 	((thisData at: 1) at: 1) = 0 ifTrue: [^ false].
-	const _ ((answers at: 1) asFloat / ((thisData at: 1) at: 1)) reduce.
-	got _ (subTest _ MethodFinder new copy: self addArg: const) 
+	const := ((answers at: 1) asFloat / ((thisData at: 1) at: 1)) reduce.
+	got := (subTest := MethodFinder new copy: self addArg: const) 
 				searchForOne isEmpty not.
 	got ifFalse: [^ false]. 
 

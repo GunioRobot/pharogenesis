@@ -1,0 +1,1 @@
+Gofer class instanceVariableNames: ''

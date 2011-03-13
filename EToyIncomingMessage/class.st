@@ -1,1 +1,0 @@
-EToyIncomingMessage class instanceVariableNames: ''

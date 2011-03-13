@@ -5,12 +5,11 @@ cancel
 	Sure enough, nobody overrode them who had cancel in the menu, and if
 	anybody really cared they could override cancel."
 
-	UndoSelection _ paragraph text.
+	UndoSelection := paragraph text.
 	self undoer: #undoAndReselect:redoAndReselect: with: self selectionInterval with: (1 to: 0).
-	view ifNotNil: [view clearInside].
 	self changeParagraph: (paragraph text: initialText).
-	UndoParagraph _ paragraph.
-	otherInterval _ UndoInterval _ 1 to: initialText size. "so undo will replace all"
+	UndoParagraph := paragraph.
+	otherInterval := UndoInterval := 1 to: initialText size. "so undo will replace all"
 	paragraph displayOn: Display.
 	self selectAt: 1.
 	self scrollToTop

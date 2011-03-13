@@ -7,9 +7,9 @@ testIntegerReadWithRadix
 	Squeak behavior is documented in this test. -dtl"
 
 	| aNumber rs |
-	aNumber _ '2r1e26' asNumber.
+	aNumber := '2r1e26' asNumber.
 	self assert: 67108864 = aNumber.
 	self assert: (Number readFrom: '2r1e26') = (2 raisedTo: 26).
-	rs _ '2r1e26eee' readStream.
+	rs := '2r1e26eee' readStream.
 	self assert: (Number readFrom: rs) = 67108864.
 	self assert: rs upToEnd = 'eee'

@@ -1,3 +1,4 @@
 asDuration
-
-	^ Duration nanoSeconds: self asInteger
+ 
+ 	^ Duration nanoSeconds: self asInteger
+ 

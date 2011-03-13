@@ -4,7 +4,7 @@ removeDefinition: aDefinition
 		ifPresent: [:other | other = aDefinition
 								ifTrue:
 									[(self modificationConflictForDefinition: aDefinition)
-										ifNotNilDo:
+										ifNotNil:
 											[:c |
 											self addOperation: c operation.
 											self removeConflict: c.

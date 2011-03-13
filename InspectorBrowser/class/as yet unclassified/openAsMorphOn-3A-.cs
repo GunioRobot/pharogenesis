@@ -1,5 +1,5 @@
 openAsMorphOn: anObject
-	"(InspectorBrowser openAsMorphOn: SystemOrganization) openInMVC"
+	"(InspectorBrowser openAsMorphOn: SystemOrganization) openInWorld"
 	| window inspector |
 	inspector := self inspect: anObject.
 	window := (SystemWindow labelled: anObject defaultLabelForInspector)

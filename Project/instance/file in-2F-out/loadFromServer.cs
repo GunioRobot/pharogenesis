@@ -1,3 +1,0 @@
-loadFromServer
-	
-	^self loadFromServer: false

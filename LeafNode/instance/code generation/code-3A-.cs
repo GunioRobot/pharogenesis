@@ -1,3 +1,0 @@
-code: aValue
-
-	code := aValue

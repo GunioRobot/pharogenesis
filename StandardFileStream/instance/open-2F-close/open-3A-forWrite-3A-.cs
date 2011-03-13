@@ -8,7 +8,7 @@ open: fileName forWrite: writeMode
 					until:[:id| id notNil] 
 					forFileNamed: fileName.
 	fileID ifNil: [^ nil].  "allows sender to detect failure"
-	self register.
 	name := fileName.
+	self register.
 	rwmode := writeMode.
 	buffer1 := String new: 1.

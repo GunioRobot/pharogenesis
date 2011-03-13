@@ -1,3 +1,3 @@
 stepToSendOrReturn
 
-	^ suspendedContext _ suspendedContext stepToSendOrReturn
+	^ suspendedContext := suspendedContext stepToSendOrReturn

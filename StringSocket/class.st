@@ -1,1 +1,0 @@
-StringSocket class instanceVariableNames: ''

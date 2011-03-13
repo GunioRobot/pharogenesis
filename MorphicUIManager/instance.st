@@ -1,6 +1,6 @@
 UIManager
 	subclass: #MorphicUIManager
-	instanceVariableNames: ''
+	instanceVariableNames: 'interactiveParser'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'ToolBuilder-Morphic'

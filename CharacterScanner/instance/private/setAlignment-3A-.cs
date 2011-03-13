@@ -1,3 +1,2 @@
-setAlignment: style
-	alignment _ style.
-	
+setAlignment: style 
+	alignment := style

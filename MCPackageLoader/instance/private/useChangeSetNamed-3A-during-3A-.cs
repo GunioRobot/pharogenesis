@@ -8,6 +8,6 @@ useChangeSetNamed: baseName during: aBlock
 						ifTrue: [ChangeSet current]
 						ifFalse: [Smalltalk changes].
 
-	newChanges := (ChangeSorter changeSetNamed: baseName) ifNil: [ ChangeSet new name: baseName ].
+	newChanges := (ChangesOrganizer changeSetNamed: baseName) ifNil: [ ChangeSet new name: baseName ].
 	changeHolder newChanges: newChanges.
 	[aBlock value] ensure: [changeHolder newChanges: oldChanges].

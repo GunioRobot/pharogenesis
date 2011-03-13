@@ -2,15 +2,15 @@ fileNameFormattedFrom: entry sizePad: sizePad
 	"entry is a 5-element array of the form:
 		(name creationTime modificationTime dirFlag fileSize)"
 	| sizeStr nameStr dateStr |
-	nameStr _ (entry at: 4)
+	nameStr := (entry at: 4)
 		ifTrue: [entry first , self folderString]
 		ifFalse: [entry first].
-	dateStr _ ((Date fromSeconds: (entry at: 3) )
+	dateStr := ((Date fromSeconds: (entry at: 3) )
 					printFormat: #(3 2 1 $. 1 1 2)) , ' ' ,
 				(String streamContents: [:s |
 					(Time fromSeconds: (entry at: 3) \\ 86400)
 						print24: true on: s]).
-	sizeStr _ (entry at: 5) asStringWithCommas.
+	sizeStr := (entry at: 5) asStringWithCommas.
 	sortMode = #name ifTrue:
 		[^ nameStr , '    (' , dateStr , ' ' , sizeStr , ')'].
 	sortMode = #date ifTrue:

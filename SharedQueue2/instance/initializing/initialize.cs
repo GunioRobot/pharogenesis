@@ -1,3 +1,4 @@
 initialize
-	monitor _ Monitor new.
-	items _ OrderedCollection new.
+	super initialize.
+	monitor := Monitor new.
+	items := OrderedCollection new.

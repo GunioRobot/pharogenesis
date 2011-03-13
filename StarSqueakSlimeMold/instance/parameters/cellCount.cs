@@ -1,3 +1,0 @@
-cellCount
-
-	^ cellCount

@@ -1,2 +1,0 @@
-presentChangesMenu
-	self popUpMenuFor: #changesMenu

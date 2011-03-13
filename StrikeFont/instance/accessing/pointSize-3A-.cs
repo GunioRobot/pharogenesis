@@ -1,2 +1,2 @@
-pointSize: anInteger
-	pointSize _ anInteger
+pointSize: anInteger 
+	pointSize := anInteger

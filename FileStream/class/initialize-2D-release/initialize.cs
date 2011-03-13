@@ -1,3 +1,3 @@
 initialize
 
-	FileList registerFileReader: self
+	FileServices registerFileReader: self

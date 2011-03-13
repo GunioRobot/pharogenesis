@@ -1,2 +1,0 @@
-startTime: aArray
-	startTime := aArray

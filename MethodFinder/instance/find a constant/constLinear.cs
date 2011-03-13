@@ -2,15 +2,15 @@ constLinear
 	| const subTest got denom num slope offset |
 	"See if (data1 * C1) + C2 is the answer.  In the form  #(C2 C1) polynomialEval: data1 "
 
-	denom _ ((thisData at: 2) at: 1) - ((thisData at: 1) at: 1).
+	denom := ((thisData at: 2) at: 1) - ((thisData at: 1) at: 1).
 	denom = 0 ifTrue: [^ false].   "will divide by it"
-	num _ (answers at: 2) - (answers at: 1).
+	num := (answers at: 2) - (answers at: 1).
 
     slope := (num asFloat / denom) reduce.
     offset := ((answers at: 2) - (((thisData at: 2) at: 1) * slope)) reduce.
 
-	const _ Array with: offset with: slope.
-	got _ (subTest _ MethodFinder new copy: self addArg: const) 
+	const := Array with: offset with: slope.
+	got := (subTest := MethodFinder new copy: self addArg: const) 
 				searchForOne isEmpty not.
 	got ifFalse: [^ false]. 
 

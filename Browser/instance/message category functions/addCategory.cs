@@ -28,7 +28,7 @@ addCategory
 			ifFalse: [
 				labels at: menuIndex].
 	oldIndex := messageCategoryListIndex.
-	newName isEmpty
+	newName isEmptyOrNil
 		ifTrue: [^ self]
 		ifFalse: [newName := newName asSymbol].
 	self classOrMetaClassOrganizer

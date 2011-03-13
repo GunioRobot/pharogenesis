@@ -1,2 +1,0 @@
-selectionPath
-	^self navigationPanel selectionPath

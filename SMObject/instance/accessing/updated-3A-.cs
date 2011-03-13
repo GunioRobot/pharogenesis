@@ -1,2 +1,0 @@
-updated: c
-	updated := c

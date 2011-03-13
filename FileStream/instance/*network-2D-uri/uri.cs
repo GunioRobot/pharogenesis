@@ -1,2 +1,2 @@
 uri
-	^self directory uri resolveRelativeURI: self localName
+	^self directory uri resolveRelativeURI: self localName encodeForHTTP

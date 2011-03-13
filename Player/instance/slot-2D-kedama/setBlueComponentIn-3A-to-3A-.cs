@@ -1,1 +1,0 @@
-setBlueComponentIn: aPatch to: value

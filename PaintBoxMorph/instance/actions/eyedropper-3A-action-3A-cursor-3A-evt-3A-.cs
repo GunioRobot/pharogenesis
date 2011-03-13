@@ -2,7 +2,7 @@ eyedropper: aButton action: aSelector cursor: aCursor evt: evt
 	"Take total control and pick up a color!!"
 
 	| pt feedbackColor delay |
-	delay _ Delay forMilliseconds: 10.
+	delay := Delay forMilliseconds: 10.
 	aButton state: #on.
 	tool ifNotNil: [tool state: #off].
 	currentCursor := aCursor.
@@ -27,7 +27,7 @@ eyedropper: aButton action: aSelector cursor: aCursor evt: evt
 			"the hand needs to be drawn"
 			evt hand position: pt.
 			currentColor ~= feedbackColor ifTrue: [
-				currentColor _ feedbackColor.
+				currentColor := feedbackColor.
 				self showColor ].
 			self world displayWorldSafely.
 			delay wait].

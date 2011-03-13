@@ -1,3 +1,0 @@
-originalMorph
-
-	^ originalMorph

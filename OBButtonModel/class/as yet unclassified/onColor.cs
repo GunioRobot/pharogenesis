@@ -1,2 +1,0 @@
-onColor
-	^ Color lightGray lighter

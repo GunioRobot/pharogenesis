@@ -2,28 +2,28 @@ transformBy: aDisplayTransform clippingTo: aClipRect during: aBlock smoothing: c
 	"Note: This method has been originally copied from TransformationMorph."
 	| innerRect patchRect sourceQuad warp start subCanvas |
 	(aDisplayTransform isPureTranslation) ifTrue:[
-		subCanvas _ self copyOffset: aDisplayTransform offset negated truncated
+		subCanvas := self copyOffset: aDisplayTransform offset negated truncated
 							clipRect: aClipRect.
 		aBlock value: subCanvas.
-		foundMorph _ subCanvas foundMorph.
+		foundMorph := subCanvas foundMorph.
 		^self
 	].
 	"Prepare an appropriate warp from patch to innerRect"
-	innerRect _ aClipRect.
-	patchRect _ aDisplayTransform globalBoundsToLocal:
+	innerRect := aClipRect.
+	patchRect := aDisplayTransform globalBoundsToLocal:
 					(self clipRect intersect: innerRect).
-	sourceQuad _ (aDisplayTransform sourceQuadFor: innerRect)
+	sourceQuad := (aDisplayTransform sourceQuadFor: innerRect)
 					collect: [:p | p - patchRect topLeft].
-	warp _ self warpFrom: sourceQuad toRect: innerRect.
+	warp := self warpFrom: sourceQuad toRect: innerRect.
 	warp cellSize: cellSize.
 
 	"Render the submorphs visible in the clipping rectangle, as patchForm"
-	start _ (self depth = 1 and: [self isShadowDrawing not])
+	start := (self depth = 1 and: [self isShadowDrawing not])
 		"If this is true B&W, then we need a first pass for erasure."
 		ifTrue: [1] ifFalse: [2].
 	start to: 2 do:
 		[:i | "If i=1 we first make a shadow and erase it for opaque whites in B&W"
-		subCanvas _ ColorPatchCanvas extent: patchRect extent depth: self depth.
+		subCanvas := ColorPatchCanvas extent: patchRect extent depth: self depth.
 		subCanvas stopMorph: stopMorph.
 		subCanvas foundMorph: foundMorph.
 		subCanvas doStop: doStop.
@@ -34,6 +34,6 @@ transformBy: aDisplayTransform clippingTo: aClipRect during: aBlock smoothing: c
 					warp combinationRule: Form paint].
 		subCanvas translateBy: patchRect topLeft negated
 			during:[:offsetCanvas| aBlock value: offsetCanvas].
-		i = 2 ifTrue:[foundMorph _ subCanvas foundMorph].
+		i = 2 ifTrue:[foundMorph := subCanvas foundMorph].
 		warp sourceForm: subCanvas form; warpBits.
-		warp sourceForm: nil.  subCanvas _ nil "release space for next loop"]
+		warp sourceForm: nil.  subCanvas := nil "release space for next loop"]

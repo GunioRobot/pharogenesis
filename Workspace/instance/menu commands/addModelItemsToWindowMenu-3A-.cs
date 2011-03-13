@@ -1,10 +1,5 @@
 addModelItemsToWindowMenu: aMenu 
-	
 	aMenu addLine.
-	aMenu
-		add: 'save contents to file...'
-		target: self
-		action: #saveContentsInFile.
 	aMenu
 		add: 'reset variables'
 		target: self
@@ -16,4 +11,9 @@ addModelItemsToWindowMenu: aMenu
 	aMenu
 		addUpdating: #acceptDroppedMorphsWording
 		target: self
-		action: #toggleDroppingMorphForReference
+		action: #toggleDroppingMorphForReference.
+
+	aMenu 
+		add: 'previous contents...'
+		target: self
+		selector: #selectPreviousContent

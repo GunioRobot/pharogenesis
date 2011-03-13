@@ -1,2 +1,0 @@
-author: aString
-	author := aString

@@ -3,4 +3,4 @@ addComment
 	parseNode ~~ nil
 		ifTrue: 
 			[parseNode comment: currentComment.
-			currentComment _ nil]
+			currentComment := nil]

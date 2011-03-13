@@ -1,3 +1,0 @@
-transmittedObjectCategory
-
-	^EToyIncomingMessage typeKeyboardChat

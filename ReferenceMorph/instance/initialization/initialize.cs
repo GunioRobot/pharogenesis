@@ -1,6 +1,6 @@
 initialize
-"initialize the state of the receiver"
+	"initialize the state of the receiver"
+	
 	super initialize.
-""
-	isHighlighted _ false.
-	referent _ nil
+	isHighlighted := false.
+	referent := nil

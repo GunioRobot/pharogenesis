@@ -1,5 +1,0 @@
-An environment is a collection of temporary variable values that have escaped the original method context and placed in this environment because blocks existed in the method that reference these variables (and blocks may out live their creating context). Nested blocks create nested environments when temp vars are introduced at multiple levels and referenced at lower levels. So each environment has a parent environment in its first slot. The top environment has the original receiver in it first slot (if referenced by an inner block).
-
-A block consists of its outer environment and a method to execute while the outer environment is in the receiver position.
-
-A block that remote returns from its home context holds the home environment in its outer environment. The remote return unwinds the call stack to the context that created the home context.

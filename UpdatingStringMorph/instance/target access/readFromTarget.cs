@@ -3,7 +3,7 @@ readFromTarget
 
 	| v ret |
 	(target isNil or: [getSelector isNil]) ifTrue: [^contents].
-	ret _ self checkTarget.
+	ret := self checkTarget.
 	ret ifFalse: [^ '0'].
 	v := target perform: getSelector.	"scriptPerformer"
 	(v isKindOf: Text) ifTrue: [v := v asString].

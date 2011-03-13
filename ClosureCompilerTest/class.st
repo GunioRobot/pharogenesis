@@ -1,0 +1,1 @@
+ClosureCompilerTest class instanceVariableNames: ''

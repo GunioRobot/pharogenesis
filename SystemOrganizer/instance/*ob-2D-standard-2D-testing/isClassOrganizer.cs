@@ -1,2 +1,0 @@
-isClassOrganizer
-	^ false

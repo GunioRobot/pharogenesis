@@ -5,7 +5,7 @@ displayOn: aDisplayMedium transformation: displayTransformation clippingBox: cli
 	confined to the area that intersects with clipRectangle."
 
 	| absolutePoint |
-	absolutePoint _ displayTransformation applyTo: relativePoint.
+	absolutePoint := displayTransformation applyTo: relativePoint.
 	self displayOn: aDisplayMedium
 		at: (absolutePoint - alignmentPoint) 
 		clippingBox: clipRectangle 

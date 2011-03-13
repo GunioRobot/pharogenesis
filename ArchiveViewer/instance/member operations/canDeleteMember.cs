@@ -1,2 +1,0 @@
-canDeleteMember
-	^memberIndex > 0

@@ -2,23 +2,23 @@ extent: newExtent
 	
 	| oldW oldH wasHShowing wasVShowing noVPlease noHPlease minH minW |
 	
-	oldW _ self width.
-	oldH _ self height.
-	wasHShowing _ self hIsScrollbarShowing.
-	wasVShowing _ self vIsScrollbarShowing.
+	oldW := self width.
+	oldH := self height.
+	wasHShowing := self hIsScrollbarShowing.
+	wasVShowing := self vIsScrollbarShowing.
 
 	"Figure out the minimum width and height for this pane so that scrollbars will appear"
-	noVPlease _ self valueOfProperty: #noVScrollBarPlease ifAbsent: [false]. 
-	noHPlease _ self valueOfProperty: #noHScrollBarPlease ifAbsent: [false]. 
-	minH _ self scrollBarThickness + 16.
-	minW _ self scrollBarThickness + 20.
+	noVPlease := self valueOfProperty: #noVScrollBarPlease ifAbsent: [false]. 
+	noHPlease := self valueOfProperty: #noHScrollBarPlease ifAbsent: [false]. 
+	minH := self scrollBarThickness + 16.
+	minW := self scrollBarThickness + 20.
 	noVPlease ifTrue:[ 
 		noHPlease
-			ifTrue:[minH _ 1. minW _ 1 ]
-			ifFalse:[minH _ self scrollBarThickness ].
+			ifTrue:[minH := 1. minW := 1 ]
+			ifFalse:[minH := self scrollBarThickness ].
 	] ifFalse:[
 		noHPlease
-			ifTrue:[minH _ self scrollBarThickness + 5].
+			ifTrue:[minH := self scrollBarThickness + 5].
 	].
 	super extent: (newExtent max: (minW@minH)).
 

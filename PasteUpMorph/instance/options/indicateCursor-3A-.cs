@@ -1,2 +1,2 @@
 indicateCursor: aBoolean
-	indicateCursor _ aBoolean
+	indicateCursor := aBoolean

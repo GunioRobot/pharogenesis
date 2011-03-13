@@ -1,2 +1,0 @@
-previousPage
-	self sendMessageToCostume: #previousPage

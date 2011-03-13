@@ -1,4 +1,4 @@
 layoutFrame: aLayoutFrame 
-	aLayoutFrame isNil
-		ifTrue: [self removeProperty: #layoutFrame]
-		ifFalse: [self setProperty: #layoutFrame toValue: aLayoutFrame]
+	aLayoutFrame
+		ifNil: [self removeProperty: #layoutFrame]
+		ifNotNil: [self setProperty: #layoutFrame toValue: aLayoutFrame]

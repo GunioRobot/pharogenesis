@@ -1,6 +1,6 @@
 TestCase
 	subclass: #RectangleTest
-	instanceVariableNames: ''
+	instanceVariableNames: 'emptyRectangle rectangle1'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'GraphicsTests-Primitives'

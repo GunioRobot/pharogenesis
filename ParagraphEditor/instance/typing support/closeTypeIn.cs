@@ -8,10 +8,10 @@ closeTypeIn
 	| begin stop |
 	beginTypeInBlock == nil ifFalse:
 		[(UndoMessage sends: #noUndoer) ifTrue: "should always be true, but just in case..."
-			[begin _ self startOfTyping.
-			stop _ self stopIndex.
+			[begin := self startOfTyping.
+			stop := self stopIndex.
 			self undoer: #undoAndReselect:redoAndReselect:
 				with: (begin + UndoMessage argument to: begin + UndoSelection size - 1)
 				with: (stop to: stop - 1).
-			UndoInterval _ begin to: stop - 1].
-		beginTypeInBlock _ nil]
+			UndoInterval := begin to: stop - 1].
+		beginTypeInBlock := nil]

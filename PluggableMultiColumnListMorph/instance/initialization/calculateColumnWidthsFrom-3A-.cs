@@ -1,6 +1,6 @@
 calculateColumnWidthsFrom: arrayOfMorphs 
 	| maxWidths |
-	maxWidths _ Array new: arrayOfMorphs size - 1.
+	maxWidths := Array new: arrayOfMorphs size - 1.
 	1
 		to: maxWidths size
 		do: [:idx | maxWidths at: idx put: 0].

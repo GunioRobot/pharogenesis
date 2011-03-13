@@ -1,1 +1,0 @@
-ComplexProgressIndicator class instanceVariableNames: ''

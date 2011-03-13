@@ -1,6 +1,6 @@
 testAbsoluteFILE
 	
-	url _ Url absoluteFromText: 'file:/etc/passwd#foo'.
+	url := Url absoluteFromText: 'file:/etc/passwd#foo'.
 
 	self assert: url schemeName = 'file'.
 	self assert: url path first = 'etc'.

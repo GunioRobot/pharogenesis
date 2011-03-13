@@ -1,14 +1,14 @@
-clipBy: aRectangle
+clipBy: aRectangle 
 	| aPoint right bottom |
-	right _ clipX + clipWidth.
-	bottom _ clipY + clipHeight.
-	aPoint _ aRectangle origin.
-	aPoint x > clipX ifTrue:[clipX _ aPoint x].
-	aPoint y > clipY ifTrue:[clipY _ aPoint y].
-	aPoint _ aRectangle corner.
-	aPoint x < right ifTrue:[right _ aPoint x].
-	aPoint y < bottom ifTrue:[bottom _ aPoint y].
-	clipWidth _ right - clipX.
-	clipHeight _ bottom - clipY.
-	clipWidth < 0 ifTrue:[clipWidth _ 0].
-	clipHeight < 0 ifTrue:[clipHeight _ 0].
+	right := clipX + clipWidth.
+	bottom := clipY + clipHeight.
+	aPoint := aRectangle origin.
+	aPoint x > clipX ifTrue: [ clipX := aPoint x ].
+	aPoint y > clipY ifTrue: [ clipY := aPoint y ].
+	aPoint := aRectangle corner.
+	aPoint x < right ifTrue: [ right := aPoint x ].
+	aPoint y < bottom ifTrue: [ bottom := aPoint y ].
+	clipWidth := right - clipX.
+	clipHeight := bottom - clipY.
+	clipWidth < 0 ifTrue: [ clipWidth := 0 ].
+	clipHeight < 0 ifTrue: [ clipHeight := 0 ]

@@ -1,2 +1,0 @@
-paneCount
-	^ self panes size

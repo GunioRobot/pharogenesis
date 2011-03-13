@@ -1,1 +1,0 @@
-OBBrowseRequest class instanceVariableNames: ''

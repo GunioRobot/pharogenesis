@@ -2,7 +2,7 @@ test1
 	"FormCanvas test1"
 
 	| canvas |
-	canvas _ FormCanvas extent: 200@200.
+	canvas := FormCanvas extent: 200@200.
 	canvas fillColor: (Color black).
 	canvas line: 10@10 to: 50@30 width: 1 color: (Color red).
 	canvas frameRectangle: ((20@20) corner: (120@120)) width: 4 color: (Color green).

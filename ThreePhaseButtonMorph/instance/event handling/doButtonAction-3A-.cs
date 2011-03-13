@@ -5,7 +5,7 @@ doButtonAction: evt
 	target ifNil: [^self].
 	actionSelector ifNil: [^self].
 	Cursor normal showWhile: [
-		moreArgs _ actionSelector numArgs > arguments size ifTrue: [
+		moreArgs := actionSelector numArgs > arguments size ifTrue: [
 			arguments copyWith: evt
 		] ifFalse: [
 			arguments

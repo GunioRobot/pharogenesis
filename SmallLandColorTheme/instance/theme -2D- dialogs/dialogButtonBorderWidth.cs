@@ -1,2 +1,0 @@
-dialogButtonBorderWidth
-	^ 1

@@ -1,2 +1,2 @@
 setToPopOutOnMouseOver: aBoolean
-	self arrangeToPopOutOnMouseOver:  (popOutOnMouseOver _ aBoolean)
+	self arrangeToPopOutOnMouseOver:  (popOutOnMouseOver := aBoolean)

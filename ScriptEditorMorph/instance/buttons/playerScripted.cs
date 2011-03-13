@@ -1,2 +1,0 @@
-playerScripted
-	^ playerScripted

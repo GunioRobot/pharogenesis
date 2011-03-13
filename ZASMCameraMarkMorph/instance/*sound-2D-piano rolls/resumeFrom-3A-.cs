@@ -1,3 +1,0 @@
-resumeFrom: scorePlayer
-
-	self cameraController resumeProgrammedMoves

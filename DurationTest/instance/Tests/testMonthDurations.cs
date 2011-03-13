@@ -1,9 +1,9 @@
 testMonthDurations
 
 	| jan feb dec |
-	jan _ Duration month: #January.
-	feb _ Duration month: #February.
-	dec _ Duration month: #December.
+	jan := Duration month: #January.
+	feb := Duration month: #February.
+	dec := Duration month: #December.
 	
 	self 
 		assert: jan = (Year current months first duration);

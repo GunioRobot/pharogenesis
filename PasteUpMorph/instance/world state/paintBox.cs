@@ -3,13 +3,13 @@ paintBox
 
 	| newPaintBox refPoint aPalette |
 	self allMorphsDo: [:m | (m isKindOf: PaintBoxMorph) ifTrue: [^ m]].
-	refPoint _ (aPalette _ self standardPalette)
+	refPoint := (aPalette := self standardPalette)
 		ifNotNil:
 			[aPalette showNoPalette.
 			aPalette topRight + (0 @ 12)]
 		ifNil:
 			[self topRight].
-	newPaintBox _ PaintBoxMorph new.
+	newPaintBox := PaintBoxMorph new.
 	newPaintBox position: (refPoint - (newPaintBox width @ 0)). 
 	self addMorph: newPaintBox.
 	^ newPaintBox

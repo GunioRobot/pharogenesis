@@ -1,2 +1,0 @@
-hasSubCategories
-	^subCategories isEmptyOrNil not

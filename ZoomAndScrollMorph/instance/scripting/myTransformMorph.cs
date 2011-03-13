@@ -1,3 +1,0 @@
-myTransformMorph
-
-	^self firstSubmorph

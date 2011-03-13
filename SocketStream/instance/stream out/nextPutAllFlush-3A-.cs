@@ -5,7 +5,7 @@ nextPutAllFlush: aCollection
 	and also flushes any other pending data first."
 
 	| toPut |
-	toPut _ binary ifTrue: [aCollection asByteArray] ifFalse: [aCollection asString].
+	toPut := binary ifTrue: [aCollection asByteArray] ifFalse: [aCollection asString].
 	self flush. "first flush pending stuff, then directly send"
 	socket isOtherEndClosed ifFalse: [
 		[socket sendData: toPut count: toPut size]

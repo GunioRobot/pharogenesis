@@ -3,8 +3,8 @@ forceTo: length paddingStartWith: elem
 	the beginning of the result if necessary with elem.  
 	Note that this makes a copy."
 	| newCollection padLen |
-	newCollection _ self species new: length.
-	padLen _ length - self size max: 0.
+	newCollection := self species ofSize: length.
+	padLen := length - self size max: 0.
 	newCollection
 		from: 1
 		to: padLen

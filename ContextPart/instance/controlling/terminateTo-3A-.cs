@@ -4,9 +4,9 @@ terminateTo: previousContext
 	| currentContext sendingContext |
 	<primitive: 196>
 	(self hasSender: previousContext) ifTrue: [
-		currentContext _ sender.
+		currentContext := sender.
 		[currentContext == previousContext] whileFalse: [
-			sendingContext _ currentContext sender.
+			sendingContext := currentContext sender.
 			currentContext terminate.
-			currentContext _ sendingContext]].
-	sender _ previousContext
+			currentContext := sendingContext]].
+	sender := previousContext

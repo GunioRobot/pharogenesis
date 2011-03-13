@@ -5,7 +5,7 @@ newAcceptCheck
 	
 	| socket |
 	self initializeNetwork.
-	socket _ self newTCP.
+	socket := self newTCP.
 	socket listenOn: 44444 backlogSize: 4.
 	socket isValid ifTrue: [
 		self inform: 'Everything looks OK for the BSD style accept()'

@@ -1,0 +1,2 @@
+alertWindowClass
+	^1

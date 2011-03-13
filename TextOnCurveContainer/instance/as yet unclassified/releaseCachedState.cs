@@ -1,2 +1,0 @@
-releaseCachedState
-	textSegments _ nil.

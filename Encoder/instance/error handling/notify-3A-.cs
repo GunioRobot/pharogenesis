@@ -3,7 +3,7 @@ notify: string
 	| req |
 	requestor == nil
 		ifFalse: 
-			[req _ requestor.
+			[req := requestor.
 			self release.
 			req notify: string].
 	^false

@@ -1,2 +1,0 @@
-advogatoId: aString
-	advogatoId := aString

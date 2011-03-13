@@ -1,3 +1,2 @@
 getInitializingExpressionForTheNewParameter
-	^ FillInTheBlank request: 'enter default parameter code'
-				 initialAnswer: '42'
+	^ UIManager default request: 'Enter default parameter code' translated initialAnswer: '42'

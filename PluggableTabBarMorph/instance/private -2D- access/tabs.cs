@@ -1,3 +1,3 @@
 tabs
-	tabs ifNil: [ tabs _ OrderedCollection new ].
+	tabs ifNil: [ tabs := OrderedCollection new ].
 	^ tabs

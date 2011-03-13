@@ -1,2 +1,0 @@
-encodeTransform: transform
-	^transform encodeForRemoteCanvas

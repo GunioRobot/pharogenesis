@@ -1,1 +1,0 @@
-I am a controller for StandardSystemViews, that is, those views that are at the top level of a project in the system user interface. I am a kind of MouseMenuController that creates a blue button menu for moving, framing, collapsing, and closing ScheduledViews, and for selecting views under the view of my instance.

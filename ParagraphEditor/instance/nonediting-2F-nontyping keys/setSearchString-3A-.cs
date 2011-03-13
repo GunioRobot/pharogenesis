@@ -3,9 +3,8 @@ setSearchString: characterStream
 
 	| aString |
 	self closeTypeIn: characterStream.
-	sensor keyboard.
 	self lineSelectAndEmptyCheck: [^ true].
-	aString _  self selection string.
+	aString :=  self selection string.
 	aString size == 0
 		ifTrue:
 			[self flash]

@@ -6,7 +6,7 @@ numArgs: n
 	
 	selector := self.
 	(numArgs := selector numArgs) >= n ifTrue: [^self].	
-	aStream := WriteStream on: (String new: 16).
+	aStream := (String new: 16) writeStream.
 	aStream nextPutAll: self.
 	
 	(numArgs = 0) ifTrue: [aStream nextPutAll: ':'. offs := 0] ifFalse: [offs := 1].

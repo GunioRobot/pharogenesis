@@ -4,9 +4,9 @@
 	^ (operand respondsTo: #asDateAndTime)
 		ifTrue: 
 			[ | lticks rticks |
-			lticks _ self asLocal ticks.
+			lticks := self asLocal ticks.
 	
-		rticks _ operand asDateAndTime asLocal ticks.
+		rticks := operand asDateAndTime asLocal ticks.
 			Duration
  				seconds: (SecondsInDay *(lticks first - rticks first)) + 
 							(lticks second - rticks second)

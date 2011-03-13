@@ -1,2 +1,0 @@
-I represent a selection setting and actions to take depending on a change in the setting. An instance has three attributes: state, which is either on or off; on action; and off action. The on and off actions are blocks of code that execute whenever the instance changes state. I am typically used as a menu item in conjunction with a SwitchView and a SwitchController.
-1/24/96 sw: made this a subclass of Model, for faster dependents handling

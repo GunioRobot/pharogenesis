@@ -1,1 +1,0 @@
-GeeMailMorph class instanceVariableNames: ''

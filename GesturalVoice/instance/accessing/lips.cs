@@ -1,2 +1,0 @@
-lips
-	^ self face lips

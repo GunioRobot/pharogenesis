@@ -1,11 +1,15 @@
-invokeMetaMenuAt: aPoint event: evt
-	| menu morphs target |
-	menu _ CustomMenu new.
-	morphs _ self morphsAt: aPoint.
-	(morphs includes: self) ifFalse:[morphs _ morphs copyWith: self].
-	morphs size = 1 ifTrue:[morphs first invokeMetaMenu: evt].
-	morphs do: [:m | 
-		menu add: (m knownName ifNil:[m class name asString]) action: m].
-	target _ menu startUp.
-	target ifNil:[^self].
-	target invokeMetaMenu: evt
+invokeMetaMenuAt: aPoint event: evt 
+	| morphs target |
+	morphs := self morphsAt: aPoint.
+	(morphs includes: self)
+		ifFalse: [morphs := morphs copyWith: self].
+	morphs size = 1
+		ifTrue: [morphs anyOne invokeMetaMenu: evt]
+		ifFalse: [target := UIManager default
+						chooseFrom: (morphs
+								collect: [:t | t knownName
+										ifNil: [t class name asString]])
+						values: morphs.
+			target 
+				ifNil: [^ self].
+			target invokeMetaMenu: evt]

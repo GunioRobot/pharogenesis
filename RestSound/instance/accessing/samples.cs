@@ -1,2 +1,0 @@
-samples
-	^ SoundBuffer newMonoSampleCount: initialCount

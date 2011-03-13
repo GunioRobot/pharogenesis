@@ -1,4 +1,4 @@
 argumentCount
-	"Answers the number of arguments needed to evaluate the receiver."
-	#Valuable.
+
+	"Added for ANSI compatibility."
 	^ self numArgs

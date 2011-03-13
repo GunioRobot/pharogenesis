@@ -4,12 +4,12 @@ createMouseEvent
 	processing after manual polling"
 
 	| buttons modifiers pos mapped eventBuffer |
-	eventBuffer _ Array new: 8.
-	buttons _ self primMouseButtons.
-	pos _ self primMousePt.
-	modifiers _ buttons bitShift: -3.
-	buttons _ buttons bitAnd: 7.
-	mapped _ self mapButtons: buttons modifiers: modifiers.
+	eventBuffer := Array new: 8.
+	buttons := self primMouseButtons.
+	pos := self primMousePt.
+	modifiers := buttons bitShift: -3.
+	buttons := buttons bitAnd: 7.
+	mapped := self mapButtons: buttons modifiers: modifiers.
 	eventBuffer
 		at: 1
 		put: EventTypeMouse;

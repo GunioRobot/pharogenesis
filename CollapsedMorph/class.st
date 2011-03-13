@@ -1,1 +1,0 @@
-CollapsedMorph class instanceVariableNames: ''

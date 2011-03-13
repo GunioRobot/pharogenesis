@@ -3,4 +3,4 @@ install: aContext
 
 	self == Processor activeProcess
 		ifTrue: [^self error: 'The active process cannot install contexts'].
-	suspendedContext _ aContext
+	suspendedContext := aContext

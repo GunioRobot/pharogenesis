@@ -7,11 +7,11 @@ storeOn: aStream
 	aStream nextPutAll: ' header: '.
 	aStream store: self header.
 	aStream nextPut: $).
-	noneYet _ self storeElementsFrom: self initialPC to: self endPC on: aStream.
+	noneYet := self storeElementsFrom: self initialPC to: self endPC on: aStream.
 	1 to: self numLiterals do:
 		[:index |
 		noneYet
-			ifTrue: [noneYet _ false]
+			ifTrue: [noneYet := false]
 			ifFalse: [aStream nextPut: $;].
 		aStream nextPutAll: ' literalAt: '.
 		aStream store: index.

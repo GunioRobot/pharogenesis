@@ -1,2 +1,0 @@
-isSelected
-	^ bar isSelected: self

@@ -1,2 +1,0 @@
-current
-	^ OBAnnouncerRequest signal

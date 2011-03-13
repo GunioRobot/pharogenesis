@@ -1,1 +1,0 @@
-OBTextRequest class instanceVariableNames: ''

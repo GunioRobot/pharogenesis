@@ -1,2 +1,0 @@
-openFile
-	FileList openFileDirectly

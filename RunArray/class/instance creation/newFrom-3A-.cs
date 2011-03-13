@@ -2,7 +2,7 @@ newFrom: aCollection
 	"Answer an instance of me containing the same elements as aCollection."
 
 	| newCollection |
-	newCollection _ self new.
+	newCollection := self new.
 	aCollection do: [:x | newCollection addLast: x].
 	^newCollection
 

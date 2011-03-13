@@ -1,2 +1,0 @@
-isSystemDefined
-	^ true

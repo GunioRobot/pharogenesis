@@ -6,7 +6,7 @@ update: oldClass to: newClass
 	Given the above two, we know that after #updateInstancesFrom: there are no pointer to any old instances. After the forwarding become there will be no pointers to the old class or meta class either. Meaning that if we throw in a nice fat GC at the end of the critical block, everything will be gone (but see the comment right there). There's no need to worry.
 	"
 	| meta |
-	meta _ oldClass isMeta.
+	meta := oldClass isMeta.
 	"Note: Everything from here on will run without the ability to get interrupted
 	to prevent any other process to create new instances of the old class."
 	[

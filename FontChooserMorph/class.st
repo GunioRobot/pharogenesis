@@ -1,0 +1,1 @@
+FontChooserMorph class instanceVariableNames: ''

@@ -7,9 +7,9 @@ browseAllImplementorsOfList: selectorList title: aTitle
 	1/24/96 sw: use a SortedCollection  
 	2/1/96 sw: show normal cursor"
 	| implementorLists flattenedList |
-	implementorLists _ selectorList
+	implementorLists := selectorList
 				collect: [:each | self allImplementorsOf: each].
-	flattenedList _ SortedCollection new.
+	flattenedList := SortedCollection new.
 	implementorLists
 		do: [:each | flattenedList addAll: each].
 	Cursor normal show.

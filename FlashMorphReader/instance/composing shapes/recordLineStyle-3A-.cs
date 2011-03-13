@@ -1,2 +1,0 @@
-recordLineStyle: styleIndex
-	lineStyleIndex := styleIndex.

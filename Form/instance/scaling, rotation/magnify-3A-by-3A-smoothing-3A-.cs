@@ -2,7 +2,7 @@ magnify: aRectangle by: scale smoothing: cellSize
         "Answer a Form created as a scaling of the receiver.
         Scale may be a Float or even a Point, and may be greater or less than 1.0."
         | newForm |
-        newForm _ self blankCopyOf: aRectangle scaledBy: scale.
+        newForm := self blankCopyOf: aRectangle scaledBy: scale.
         (WarpBlt current toForm: newForm)
                 sourceForm: self;
                 colorMap: (self colormapIfNeededFor: newForm);
@@ -16,9 +16,9 @@ magnify: aRectangle by: scale smoothing: cellSize
         [(Display magnify: (Sensor cursorPoint extent: 131@81) by: 0.5 smoothing: 2) display]
 "
 "Scaling test...
-| f cp | f _ Form fromDisplay: (Rectangle originFromUser: 100@100).
+| f cp | f := Form fromDisplay: (Rectangle originFromUser: 100@100).
 Display restoreAfter: [Sensor waitNoButton.
 [Sensor anyButtonPressed] whileFalse:
-        [cp _ Sensor cursorPoint.
+        [cp := Sensor cursorPoint.
         (f magnify: f boundingBox by: (cp x asFloat@cp y asFloat)/f extent smoothing: 2) display]]
 "

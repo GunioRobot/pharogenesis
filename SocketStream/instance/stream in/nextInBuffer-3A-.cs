@@ -3,7 +3,7 @@ nextInBuffer: anInteger
 	but only from the inBuffer."
 
 	| start amount |
-	amount _ anInteger min: (inNextToWrite - lastRead - 1).
-	start _ lastRead + 1.
-	lastRead _ lastRead + amount.
+	amount := anInteger min: (inNextToWrite - lastRead - 1).
+	start := lastRead + 1.
+	lastRead := lastRead + amount.
 	^inBuffer copyFrom: start to: lastRead

@@ -1,0 +1,1 @@
+BasicRequestor class instanceVariableNames: ''

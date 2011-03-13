@@ -1,2 +1,2 @@
 cellInset: aNumber
-	cellInset _ aNumber
+	cellInset := aNumber

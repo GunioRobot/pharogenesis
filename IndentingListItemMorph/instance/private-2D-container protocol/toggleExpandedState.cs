@@ -2,8 +2,8 @@ toggleExpandedState
 
  	| newChildren toDelete c |
 
-	isExpanded _ isExpanded not.
-	toDelete _ OrderedCollection new.
+	isExpanded := isExpanded not.
+	toDelete := OrderedCollection new.
 	firstChild ifNotNil: [
 		firstChild withSiblingsDo: [ :aNode | aNode recursiveAddTo: toDelete].
 	].
@@ -11,9 +11,9 @@ toggleExpandedState
 	(isExpanded and: [complexContents hasContents]) ifFalse: [
 		^self changed
 	].
-	(c _ complexContents contents) isEmpty ifTrue: [^self changed].
-	newChildren _ container 
+	(c := complexContents contents) isEmpty ifTrue: [^self changed].
+	newChildren := container 
 		addSubmorphsAfter: self 
 		fromCollection: c 
 		allowSorting: true.
-	firstChild _ newChildren first.
+	firstChild := newChildren first.

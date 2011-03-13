@@ -1,1 +1,0 @@
-EToyMorphsWelcomeMorph class instanceVariableNames: ''

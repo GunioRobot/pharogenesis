@@ -10,4 +10,4 @@ deletingProject: outgoingProject
 		p deletingProject: outgoingProject.
 		p project == outgoingProject ifTrue: [p abandon]].
 
-	AllProjects _ self allProjects copyWithout: outgoingProject.
+	AllProjects := self allProjects copyWithout: outgoingProject.

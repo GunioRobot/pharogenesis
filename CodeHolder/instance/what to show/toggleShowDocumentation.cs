@@ -4,7 +4,6 @@ toggleShowDocumentation
 	| wasShowing |
 	self okToChange ifTrue:
 		[wasShowing := self showingDocumentation.
-		self restoreTextualCodingPane.
 		self showDocumentation: wasShowing not.
 		self setContentsToForceRefetch.
 		self contentsChanged]

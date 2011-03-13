@@ -12,15 +12,15 @@ This will take a few minutes...'
 		from: 0
 		to: CompiledMethod instanceCount
 		during: [:bar | 
-			n _ 0.
-			authors _ self
-						removeAllLineFeedsQuietlyCalling: [:cls :sel | (n _ n + 1) \\ 100 = 0
+			n := 0.
+			authors := self
+						removeAllLineFeedsQuietlyCalling: [:cls :sel | (n := n + 1) \\ 100 = 0
 								ifTrue: [bar value: n]]].
-	totalStripped _ authors
+	totalStripped := authors
 				inject: 1
 				into: [:sum :set | sum + set size].
-	totalOK _ (authors at: 'OK') size.
-	totalStripped _ totalStripped - totalOK.
+	totalOK := (authors at: 'OK') size.
+	totalStripped := totalStripped - totalOK.
 	Transcript cr; show: totalStripped printString , ' methods stripped of LFs.'.
 	Transcript cr; show: totalOK printString , ' methods still correctly contain LFs.'.
 	(self confirm: 'Do you want to see the affected methods?')

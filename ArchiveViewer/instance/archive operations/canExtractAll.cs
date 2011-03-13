@@ -1,2 +1,0 @@
-canExtractAll
-	^self members notEmpty

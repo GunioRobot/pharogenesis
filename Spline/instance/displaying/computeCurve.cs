@@ -2,9 +2,9 @@ computeCurve
 	"Compute an array for the coefficients."
 
 	| length extras |
-	length _ self size.
-	extras _ 0.
-	coefficients _ Array new: 8.
+	length := self size.
+	extras := 0.
+	coefficients := Array new: 8.
 	1 to: 8 do: [:i | coefficients at: i put: (Array new: length + extras)].
 	1 to: 5 by: 4 do: 
 		[:k | 

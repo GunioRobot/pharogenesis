@@ -9,13 +9,13 @@ shapeBorder: aColor width: borderWidth interiorPoint: interiorPoint
 	around every other foreground image."
 	| shapeForm borderForm interiorColor |
 	"First identify the shape in question as a B/W form"
-	interiorColor _ self colorAt: interiorPoint.
-	shapeForm _ (self makeBWForm: interiorColor) reverse
+	interiorColor := self colorAt: interiorPoint.
+	shapeForm := (self makeBWForm: interiorColor) reverse
 				findShapeAroundSeedBlock:
 					[:form | form pixelValueAt: interiorPoint put: 1].
 	"Reverse the image to grow the outline inward"
 	internal ifTrue: [shapeForm reverse].
 	"Now find the border fo that shape"
-	borderForm _ shapeForm borderFormOfWidth: borderWidth sharpCorners: sharpen.
+	borderForm := shapeForm borderFormOfWidth: borderWidth sharpCorners: sharpen.
 	"Finally use that shape as a mask to paint the border with color"
 	self fillShape: borderForm fillColor: aColor

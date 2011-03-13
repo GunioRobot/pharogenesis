@@ -1,2 +1,2 @@
 done: aNumber
-	done _ aNumber
+	done := aNumber

@@ -4,12 +4,12 @@ httpGetNoError: url args: args accept: mimeType
 "Edited to remove a lineFeed from the source 4/4/99 - di"
 
 	| document data |
-	document _ self httpGetDocument: url  args: args  accept: mimeType.
+	document := self httpGetDocument: url  args: args  accept: mimeType.
 	(document isString) ifTrue: [
 		"strings indicate errors"
 		^ document ].
-	data _ document content.
-	(data beginsWith: '<HTML><HEAD>' , (String with: Character linefeed) , '<TITLE>4')
+	data := document content.
+	(data beginsWith: '<HTML><HEAD>' , String lf , '<TITLE>4')
 		ifTrue: ["an error message  404 File not found"
 				^ data copyFrom: 21 to: data size-16].	
 

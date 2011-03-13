@@ -1,1 +1,0 @@
-SMInstallationRegistry class instanceVariableNames: ''

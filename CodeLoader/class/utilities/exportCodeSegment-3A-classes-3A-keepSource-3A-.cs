@@ -2,38 +2,38 @@ exportCodeSegment: exportName classes: aClassList keepSource: keepSources
 
 	"Code for writing out a specific category of classes as an external image segment.  Perhaps this should be a method."
 
-	| is oldMethods newMethods m oldCodeString argsAndTemps classList symbolHolder fileName |
+	| is oldMethods newMethods classList symbolHolder fileName |
 	keepSources
 		ifTrue: [
 			self confirm: 'We are going to abandon sources.
 Quit without saving after this has run.' orCancel: [^self]].
 
-	classList _ aClassList asArray.
+	classList := aClassList asArray.
 
 	"Strong pointers to symbols"
 	symbolHolder := Symbol allInstances.
 
-	oldMethods _ OrderedCollection new: classList size * 150.
-	newMethods _ OrderedCollection new: classList size * 150.
+	oldMethods := OrderedCollection new: classList size * 150.
+	newMethods := OrderedCollection new: classList size * 150.
 	keepSources
 		ifTrue: [
 			classList do: [:cl |
 				cl selectors do:
-					[:selector |
-					m _ cl compiledMethodAt: selector.
+					[:selector | | m oldCodeString methodNode |
+					m := cl compiledMethodAt: selector.
 					m fileIndex > 0 ifTrue:
-						[oldCodeString _ cl sourceCodeAt: selector.
-						argsAndTemps _ (cl compilerClass new
-							parse: oldCodeString in: cl notifying: nil) tempNames.
+						[oldCodeString := cl sourceCodeAt: selector.
+						methodNode := cl compilerClass new
+											parse: oldCodeString in: cl notifying: nil.
 						oldMethods addLast: m.
-						newMethods addLast: (m copyWithTempNames: argsAndTemps)]]]].
+						newMethods addLast: (m copyWithTempsFromMethodNode: methodNode)]]]].
 	oldMethods asArray elementsExchangeIdentityWith: newMethods asArray.
-	oldMethods _ newMethods _ m _ oldCodeString _ argsAndTemps _ nil.
+	oldMethods := newMethods := nil.
 
 	Smalltalk garbageCollect.
-	is _ ImageSegment new copyFromRootsForExport: classList.	"Classes and MetaClasses"
+	is := ImageSegment new copyFromRootsForExport: classList.	"Classes and MetaClasses"
 
-	fileName _ FileDirectory fileName: exportName extension: ImageSegment fileExtension.
+	fileName := FileDirectory fileName: exportName extension: ImageSegment fileExtension.
 	is writeForExport: fileName.
 	self compressFileNamed: fileName
 

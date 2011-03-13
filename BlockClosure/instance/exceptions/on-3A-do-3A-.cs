@@ -3,5 +3,5 @@ on: exception do: handlerAction
 
 	| handlerActive |
 	<primitive: 199>  "just a marker, fail and execute the following"
-	handlerActive _ true.
+	handlerActive := true.
 	^ self value

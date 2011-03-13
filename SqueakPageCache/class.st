@@ -1,1 +1,0 @@
-SqueakPageCache class instanceVariableNames: ''

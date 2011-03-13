@@ -7,13 +7,13 @@ closeTypeIn
 		[
 		beginTypeInBlock == nil ifFalse:
 			[
-				begin _ self startOfTyping.
-				stop _ self stopIndex.
-				rInterval _ (begin "+ UndoMessage argument" 
+				begin := self startOfTyping.
+				stop := self stopIndex.
+				rInterval := (begin "+ UndoMessage argument" 
 																to: begin + UndoSelection size - 1).
-				nInterval _ begin to: stop - 1.
+				nInterval := begin to: stop - 1.
 				(nInterval = rInterval) ifTrue:[ ^super closeTypeIn ].
-				newText _ nInterval size > 0
+				newText := nInterval size > 0
 										ifTrue: [ paragraph text 
 																copyFrom: nInterval first 
 																to: nInterval last ]

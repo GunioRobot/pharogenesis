@@ -1,1 +1,0 @@
-EToyChatMorph class instanceVariableNames: ''

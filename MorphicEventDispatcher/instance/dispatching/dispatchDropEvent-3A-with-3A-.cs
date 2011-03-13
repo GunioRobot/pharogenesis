@@ -9,19 +9,19 @@ dispatchDropEvent: anEvent with: aMorph
 	anEvent wasHandled ifTrue:[^self].
 
 	"Go looking if any of our submorphs wants it"
-	index _ 1.
-	inside _ false.
-	morphs _ aMorph submorphs.
+	index := 1.
+	inside := false.
+	morphs := aMorph submorphs.
 	[index <= morphs size] whileTrue:[
-		child _ morphs at: index.
-		localEvt _ anEvent transformedBy: (child transformedFrom: aMorph).
+		child := morphs at: index.
+		localEvt := anEvent transformedBy: (child transformedFrom: aMorph).
 		(child processEvent: localEvt using: self) == #rejected ifFalse:[
 			localEvt wasHandled ifTrue:[^anEvent wasHandled: true]. "done"
-			inside _ true.
-			index _ morphs size]. "break"
-		index _ index + 1.
+			inside := true.
+			index := morphs size]. "break"
+		index := index + 1.
 	].
 
-	inside ifFalse:[inside _ aMorph containsPoint: anEvent cursorPoint event: anEvent].
+	inside ifFalse:[inside := aMorph containsPoint: anEvent cursorPoint event: anEvent].
 	inside ifTrue:[^aMorph handleEvent: anEvent].
 	^#rejected

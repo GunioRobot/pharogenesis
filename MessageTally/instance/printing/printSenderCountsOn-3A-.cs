@@ -1,9 +1,9 @@
 printSenderCountsOn: aStream
 	| mergedSenders mergedNode |
-	mergedSenders _ IdentityDictionary new.
+	mergedSenders := IdentityDictionary new.
 	senders do:
 		[:node |
-		mergedNode _ mergedSenders at: node method ifAbsent: [nil].
+		mergedNode := mergedSenders at: node method ifAbsent: [nil].
 		mergedNode == nil
 			ifTrue: [mergedSenders at: node method put: node]
 			ifFalse: [mergedNode bump: node tally]].

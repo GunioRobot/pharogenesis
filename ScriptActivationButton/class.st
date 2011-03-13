@@ -1,1 +1,0 @@
-ScriptActivationButton class instanceVariableNames: ''

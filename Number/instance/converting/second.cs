@@ -1,3 +1,4 @@
 second
-
-	^ self sign seconds
+ 
+ 	^ self sign seconds
+ 

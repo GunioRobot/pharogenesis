@@ -3,7 +3,7 @@ resetHScrollRangeIfNecessary
 	hScrollRangeCache ifNil: [ ^self deriveHScrollRange ].
 
 	(list isNil or: [list isEmpty]) 
-		ifTrue:[^hScrollRangeCache _ Array with: 0 with: 0 with: 0 with: 0 with: 0].
+		ifTrue:[^hScrollRangeCache := Array with: 0 with: 0 with: 0 with: 0 with: 0].
 
 "Make a guess as to whether the scroll ranges need updating based on whether the size, first item, or last item of the list has changed"
 	(

@@ -4,12 +4,12 @@ statsOfSubObjects: anObject
 		SortedCollection (21->LayoutMorph 15->SimpleButtonMorph 9->Array 4->CompoundTileMorph 2->StringMorph )"
 
 	| dummy printOut |
-	dummy _ ReferenceStream on: (DummyStream on: nil).
+	dummy := ReferenceStream on: (DummyStream on: nil).
 		"Write to a fake Stream, not a file"
 	"Collect all objects"
 	dummy rootObject: anObject.	"inform him about the root"
 	dummy nextPut: anObject.
 	"(dummy references) is the raw data"
-	printOut _ dummy statisticsOfRefs.
+	printOut := dummy statisticsOfRefs.
 	(StringHolder new contents: printOut) 
 		openLabel: 'ReferenceStream statistics'.

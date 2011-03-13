@@ -1,2 +1,0 @@
-processDefineButtonCxform: data
-	^true

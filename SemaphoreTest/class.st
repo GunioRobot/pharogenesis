@@ -1,0 +1,1 @@
+SemaphoreTest class instanceVariableNames: ''

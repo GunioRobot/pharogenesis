@@ -1,2 +1,0 @@
-eToyUserName: aString
-	"Ignored here"

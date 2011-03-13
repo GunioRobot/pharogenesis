@@ -1,6 +1,6 @@
 on: aCollection
 
-	collection _ aCollection.
-	readLimit _ aCollection size.
-	position _ 0.
+	collection := aCollection.
+	readLimit := aCollection size.
+	position := 0.
 	self reset

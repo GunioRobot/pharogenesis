@@ -1,8 +1,8 @@
 setFirstCharacter: source 
 	"Set the first character of the receiver as indicated"
 	| aChar chars |
-	aChar _ source asCharacter.
-	(chars _ self getCharacters) isEmpty
+	aChar := source asCharacter.
+	(chars := self getCharacters) isEmpty
 		ifTrue: [self
 				newContents: (String with: aChar)]
 		ifFalse: [chars first = aChar

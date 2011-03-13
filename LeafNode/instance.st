@@ -1,6 +1,6 @@
 ParseNode
 	subclass: #LeafNode
-	instanceVariableNames: 'key code'
+	instanceVariableNames: 'key code index'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Compiler-ParseNodes'

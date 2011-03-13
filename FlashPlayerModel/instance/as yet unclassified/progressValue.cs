@@ -1,2 +1,0 @@
-progressValue
-	^player progressValue

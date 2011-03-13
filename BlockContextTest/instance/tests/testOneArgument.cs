@@ -1,6 +1,6 @@
 testOneArgument
 	| c |
-	c _ OrderedCollection new.
+	c := OrderedCollection new.
 	c add: 'hello'.
 	[c
 		do: [1 + 2]]

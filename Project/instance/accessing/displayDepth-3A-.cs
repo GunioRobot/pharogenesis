@@ -1,2 +1,2 @@
 displayDepth: newDepth
-	displayDepth _ newDepth
+	displayDepth := newDepth

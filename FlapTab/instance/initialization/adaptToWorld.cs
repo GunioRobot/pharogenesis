@@ -1,9 +1,9 @@
 adaptToWorld
 	| wasShowing new |
-	(wasShowing _ self flapShowing) ifTrue:
+	(wasShowing := self flapShowing) ifTrue:
 					[self hideFlap].
 	(self respondsTo: #unhibernate) ifTrue: [
-		(new _ self unhibernate) == self ifFalse: [
+		(new := self unhibernate) == self ifFalse: [
 			^ new adaptToWorld]].
 	self spanWorld.
 	self positionObject: self.

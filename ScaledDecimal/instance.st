@@ -1,6 +1,6 @@
-Number
+Fraction
 	subclass: #ScaledDecimal
-	instanceVariableNames: 'fraction scale'
+	instanceVariableNames: 'scale'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Kernel-Numbers'

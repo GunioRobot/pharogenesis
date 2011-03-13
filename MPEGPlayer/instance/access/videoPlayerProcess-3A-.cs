@@ -1,2 +1,0 @@
-videoPlayerProcess: aProcess
-	videoPlayerProcess := aProcess

@@ -11,5 +11,5 @@ jump: distance
 	the savedStacks dictionary, here we need to allocate a new stack."
 	self newEmptyStack.  
 	isStartOfBlock
-		ifTrue: [isStartOfBlock _ false.
+		ifTrue: [isStartOfBlock := false.
 			numBlockArgs	timesRepeat: [self push: #stuff]]

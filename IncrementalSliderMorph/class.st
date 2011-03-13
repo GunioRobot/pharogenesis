@@ -1,0 +1,1 @@
+IncrementalSliderMorph class instanceVariableNames: ''

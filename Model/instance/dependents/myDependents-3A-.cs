@@ -1,2 +1,2 @@
 myDependents: aCollectionOrNil
-	dependents _ aCollectionOrNil
+	dependents := aCollectionOrNil

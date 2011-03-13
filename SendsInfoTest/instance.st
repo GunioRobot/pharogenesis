@@ -3,4 +3,4 @@ TestCase
 	instanceVariableNames: 'state'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Traits-Tests'
+	category: 'Tests-Traits'

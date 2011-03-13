@@ -1,2 +1,2 @@
 providedMethod
-	^self providedLocatedMethod ifNotNilDo: [:locatedMethod | locatedMethod method]
+	^self providedLocatedMethod ifNotNil: [:locatedMethod | locatedMethod method]

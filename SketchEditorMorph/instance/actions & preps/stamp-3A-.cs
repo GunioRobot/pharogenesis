@@ -4,8 +4,8 @@ stamp: evt
 	"Check depths"
 	| pt sForm |
 
-	sForm _ self get: #stampForm for: evt.
-	pt _ evt cursorPoint - (sForm extent // 2).
+	sForm := self get: #stampForm for: evt.
+	pt := evt cursorPoint - (sForm extent // 2).
 	sForm displayOn: paintingForm 
 		at: pt - bounds origin
 		clippingBox: paintingForm boundingBox

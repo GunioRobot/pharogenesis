@@ -1,3 +1,0 @@
-channelCount
-
-	^ channelCount

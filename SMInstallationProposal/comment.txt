@@ -1,1 +1,0 @@
-This is primarily an ordered list of package release installations or upgrades to achieve a given installation task.

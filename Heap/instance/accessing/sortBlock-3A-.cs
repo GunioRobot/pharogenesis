@@ -1,4 +1,3 @@
 sortBlock: aBlock
-	sortBlock _ aBlock.
-	sortBlock fixTemps.
+	sortBlock := aBlock.
 	self reSort.

@@ -12,11 +12,11 @@ and address it to the list with the appropriate subject prefix."
 	Cursor write
 		showWhile: 
 			["Prepare the message"
-			messageStrm := WriteStream on: (String new: 1500).
+			messageStrm := (String new: 1500) writeStream.
 			messageStrm nextPutAll: 'From: ';
 			 nextPutAll: MailSender userName;
 			 cr;
-			 nextPutAll: 'To: squeak-dev@lists.squeakfoundation.org';
+			 nextPutAll: 'To: Pharo-project@lists.gforge.inria.fr';
 			 cr;
 			 nextPutAll: 'Subject: ';
 			 nextPutAll: '[BUG]'; nextPutAll: self interruptedContext printString;

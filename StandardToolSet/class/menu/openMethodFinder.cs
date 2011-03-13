@@ -1,0 +1,2 @@
+openMethodFinder
+	SelectorBrowser new open

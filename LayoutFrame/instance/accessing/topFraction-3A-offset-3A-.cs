@@ -1,4 +1,4 @@
 topFraction: aNumber offset: anInteger
 
-	topFraction _ aNumber.
-	topOffset _ anInteger
+	topFraction := aNumber.
+	topOffset := anInteger

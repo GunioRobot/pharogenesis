@@ -21,3 +21,4 @@ instance vars:
 	limit
 	hasValue
 	blockStackBase
+	numLocaltemps - number of temps local to a block; also a flag indicating decompiling a block

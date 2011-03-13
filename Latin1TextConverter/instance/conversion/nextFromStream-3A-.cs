@@ -1,3 +1,0 @@
-nextFromStream: aStream
-
-	^ aStream basicNext.

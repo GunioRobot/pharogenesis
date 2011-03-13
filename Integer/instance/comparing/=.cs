@@ -4,4 +4,4 @@
 		[aNumber negative == self negative
 			ifTrue: [^ (self digitCompare: aNumber) = 0]
 			ifFalse: [^ false]].
-	^ aNumber adaptToInteger: self andSend: #=
+	^ aNumber adaptToInteger: self andCompare: #=

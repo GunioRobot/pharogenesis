@@ -1,4 +1,4 @@
 addDefinitionsFromDoit: aString
-	(MCDoItParser forDoit: aString) ifNotNilDo:
+	(MCDoItParser forDoit: aString) ifNotNil:
 		[:parser |
 		parser addDefinitionsTo: definitions]

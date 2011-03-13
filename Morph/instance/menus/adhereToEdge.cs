@@ -1,6 +1,6 @@
 adhereToEdge
 	| menu |
-	menu _ MenuMorph new defaultTarget: self.
+	menu := MenuMorph new defaultTarget: self.
 	#(top right bottom left - center - topLeft topRight bottomRight bottomLeft - none)
 		do: [:each |
 			each == #-

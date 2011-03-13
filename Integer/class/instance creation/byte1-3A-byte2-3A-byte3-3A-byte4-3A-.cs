@@ -7,7 +7,7 @@ byte1: byte1 byte2: byte2 byte3: byte3 byte4: byte4
 		 + (byte3 bitShift: 16)
 		 + (byte2 bitShift: 8)
 		 + byte1].
-	value _ LargePositiveInteger new: 4.
+	value := LargePositiveInteger new: 4.
 	value digitAt: 4 put: byte4.
 	value digitAt: 3 put: byte3.
 	value digitAt: 2 put: byte2.

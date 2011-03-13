@@ -1,7 +1,7 @@
 setLabel
 
 	| newLabel |
-	newLabel _ FillInTheBlank
-		request: 'Please enter a new label for this button'
+	newLabel := UIManager default
+		request: 'Please enter a new label for this button' translated
 		initialAnswer: self label.
-	newLabel isEmpty ifFalse: [self labelString: newLabel].
+	newLabel isEmptyOrNil ifFalse: [self labelString: newLabel].

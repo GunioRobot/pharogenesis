@@ -11,5 +11,5 @@ addCustomMenuItems: aCustomMenu hand: aHandMorph
 		ifFalse:
 			[aCustomMenu add: 'use textual label' translated action: #useTextualTab.
 			aCustomMenu add: 'choose graphic...' translated action: #changeTabGraphic.
-			(sketch _ self findA: SketchMorph) ifNotNil:
+			(sketch := self findA: SketchMorph) ifNotNil:
 				[aCustomMenu add: 'repaint' translated target: sketch action: #editDrawing]]

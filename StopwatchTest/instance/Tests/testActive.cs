@@ -1,7 +1,7 @@
 testActive
 
 	| sw |
-	sw _ Stopwatch new.
+	sw := Stopwatch new.
 	sw activate.
 	
 	1 seconds asDelay wait.

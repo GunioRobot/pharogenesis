@@ -7,7 +7,7 @@ addWeakDependent: anObject
 		[index := index + 1.
 		finished not and:[index <= FinalizationDependents size]] whileTrue:[
 			weakDependent := FinalizationDependents at: index.
-			weakDependent isNil ifTrue:[
+			weakDependent ifNil: [
 				FinalizationDependents at: index put: anObject.
 				finished := true.
 			].

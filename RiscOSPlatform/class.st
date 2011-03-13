@@ -1,0 +1,1 @@
+RiscOSPlatform class instanceVariableNames: ''

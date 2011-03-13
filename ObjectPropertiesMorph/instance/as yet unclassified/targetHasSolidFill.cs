@@ -1,3 +1,0 @@
-targetHasSolidFill
-
-	^myTarget fillStyle isSolidFill

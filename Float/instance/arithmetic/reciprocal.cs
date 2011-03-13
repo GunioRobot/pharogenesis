@@ -1,7 +1,6 @@
 reciprocal
-	#Numeric.
-	"Changed 200/01/19 For ANSI <number> support."
-	self = 0 ifTrue: ["<- Chg"
-		^ (ZeroDivide dividend: self) signal"<- Chg"].
-	"<- Chg"
-	^ 1.0 / self
+
+	"Returns the reciprocal.
+	If self is 0.0 the / signals a ZeroDivide"
+	
+	^1.0 / self

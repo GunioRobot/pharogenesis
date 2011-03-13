@@ -1,6 +1,6 @@
 externalClasses
 	| myClasses |
-	myClasses := self classesAndMetaClasses.
+	myClasses := self classesAndMetaClasses asSet.
 	^ Array streamContents:
 		[:s |
 		ProtoObject withAllSubclassesDo:

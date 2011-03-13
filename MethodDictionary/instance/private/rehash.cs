@@ -1,7 +1,7 @@
 rehash 
 	| newSelf key |
-	newSelf _ self species new: self size.
+	newSelf := self species new: self size.
 	1 to: self basicSize do:
-		[:i | key _ self basicAt: i.
+		[:i | key := self basicAt: i.
 		key == nil ifFalse: [newSelf at: key put: (array at: i)]].
 	self become: newSelf

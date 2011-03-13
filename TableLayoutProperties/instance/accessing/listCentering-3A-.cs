@@ -1,2 +1,2 @@
 listCentering: aSymbol
-	listCentering _ aSymbol
+	listCentering := aSymbol

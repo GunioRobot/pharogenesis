@@ -1,1 +1,0 @@
-ScrollableField class instanceVariableNames: ''

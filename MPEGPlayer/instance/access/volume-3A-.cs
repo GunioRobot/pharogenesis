@@ -1,2 +1,0 @@
-volume: aVolume
-	volume := aVolume

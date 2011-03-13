@@ -1,15 +1,14 @@
 codePaneProvenanceButton
 	"Answer a button that reports on, and allow the user to modify,
 	the code-pane-provenance setting"
-	| aButton |
-	aButton := UpdatingSimpleButtonMorph newWithLabel: 'source'.
-	aButton setNameTo: 'codeProvenance'.
-	aButton useSquareCorners.
-	aButton target: self;
-		 wordingSelector: #codePaneProvenanceString;
-		 actionSelector: #offerWhatToShowMenu.
-	aButton setBalloonText: 'Governs what view is shown in the code pane.  Click here to change the view'.
-	aButton actWhen: #buttonDown.
-	aButton color: Color white;
-		borderStyle: BorderStyle thinGray; vResizing: #spaceFill.
-	^ aButton
+	
+	^(UITheme builder
+		newDropListFor: self
+		list: #codePaneProvenanceList
+		getSelected: #codePaneProvenanceIndex
+		setSelected: #codePaneProvenanceIndex:
+		help: 'Select what is shown in the code pane' translated)
+			useRoundedCorners;
+			hResizing: #spaceFill;
+			vResizing: #spaceFill;
+			minWidth: 88

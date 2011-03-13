@@ -1,4 +1,4 @@
 elements: collection
 	"Decompile."
 
-	elements _ collection
+	elements := collection

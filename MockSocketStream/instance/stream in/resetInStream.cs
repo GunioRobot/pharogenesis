@@ -1,2 +1,2 @@
 resetInStream
-	inStream := WriteStream on: ''.
+	inStream := String new writeStream.

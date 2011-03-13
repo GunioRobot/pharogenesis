@@ -1,3 +1,3 @@
 default
-	Default isNil ifTrue: [Default _ self new].
+	Default ifNil: [Default := self new].
 	^Default

@@ -1,10 +1,10 @@
 list: aCollection
 
 	| wereExpanded morphList |
-	wereExpanded _ self currentlyExpanded.
+	wereExpanded := self currentlyExpanded.
 	scroller removeAllMorphs.
 	(aCollection isNil or: [aCollection isEmpty]) ifTrue: [^ self selectedMorph: nil].
-	morphList _ OrderedCollection new.
+	morphList := OrderedCollection new.
 	self 
 		addMorphsTo: morphList
 		from: aCollection 

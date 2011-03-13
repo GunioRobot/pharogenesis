@@ -1,2 +1,2 @@
 parameters: startupParameters
-	parameters _ startupParameters
+	parameters := startupParameters

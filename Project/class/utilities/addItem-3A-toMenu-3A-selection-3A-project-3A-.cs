@@ -1,12 +1,8 @@
 addItem: item toMenu: menu selection: action project: aProject 
 	| color |
-	color := aProject isMorphic
-				ifTrue: [aProject world isInMemory
-						ifTrue: [Color black]
-						ifFalse: [Color brown]]
-				ifFalse: [aProject world isInMemory
-						ifTrue: [Color veryVeryDarkGray]
-						ifFalse: [Color blue]].
+	color := aProject world isInMemory
+				ifTrue: [Color black]
+				ifFalse: [Color brown].
 	(menu isKindOf: MenuMorph)
 		ifTrue: [| thumbnail | 
 			menu
@@ -17,5 +13,8 @@ addItem: item toMenu: menu selection: action project: aProject
 			thumbnail := aProject thumbnail.
 			thumbnail isNil
 				ifFalse: [menu lastItem
-						icon: (thumbnail scaledIntoFormOfSize: (Preferences tinyDisplay ifTrue: [16] ifFalse: [28]))]]
+						icon: (thumbnail
+								scaledIntoFormOfSize: (Preferences tinyDisplay
+										ifTrue: [16]
+										ifFalse: [28]))]]
 		ifFalse: [menu add: item action: action]

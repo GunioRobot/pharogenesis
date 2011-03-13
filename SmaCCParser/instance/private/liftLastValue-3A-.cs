@@ -1,2 +1,0 @@
-liftLastValue: aCollection 
-	^aCollection last

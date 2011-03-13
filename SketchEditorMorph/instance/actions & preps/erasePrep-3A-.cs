@@ -3,9 +3,9 @@ erasePrep: evt
 
 	| size pfPen myBrush |
 
-	pfPen _ self get: #paintingFormPen for: evt.
-	size _ (self getNibFor: evt) width.
-	self set: #brush for: evt to: (myBrush _ Form extent: size@size depth: 1).
+	pfPen := self get: #paintingFormPen for: evt.
+	size := (self getNibFor: evt) width.
+	self set: #brush for: evt to: (myBrush := Form extent: size@size depth: 1).
 	myBrush offset: (0@0) - (myBrush extent // 2).
 	myBrush fillWithColor: Color black.
 	pfPen sourceForm: myBrush.

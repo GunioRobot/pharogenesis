@@ -3,12 +3,12 @@ getDriverParameters
 	"MidiPrimTester new getDriverParameters"
 
 	| s parameterNames v |
-	parameterNames _ #(Installed Version HasBuffer HasDurs CanSetClock CanUseSemaphore EchoOn UseControllerCache EventsAvailable FlushDriver ClockTicksPerSec HasInputClock).
+	parameterNames := #(Installed Version HasBuffer HasDurs CanSetClock CanUseSemaphore EchoOn UseControllerCache EventsAvailable FlushDriver ClockTicksPerSec HasInputClock).
 
-	s _ WriteStream on: String new.
+	s := String new writeStream.
 	s cr.
 	1 to: parameterNames size do: [:i |
-		v _ self primMIDIParameterGet: i.
+		v := self primMIDIParameterGet: i.
 		s nextPutAll: (parameterNames at: i).
 		s nextPutAll: ' = '.
 		s print: v; cr].

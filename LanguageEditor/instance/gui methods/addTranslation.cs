@@ -5,8 +5,7 @@ addTranslation
 				request: 'enter the original:'
 				initialAnswer: ''.
 
-	(phrase isNil
-			or: [phrase = ''])
+	phrase isEmptyOrNil
 		ifTrue: [""
 			self beep.
 			^ self].

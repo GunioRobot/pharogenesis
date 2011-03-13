@@ -1,0 +1,2 @@
+paneColor
+	^Color blue muchLighter

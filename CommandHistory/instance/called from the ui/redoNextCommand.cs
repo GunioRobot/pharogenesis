@@ -5,10 +5,10 @@ redoNextCommand
 	lastCommand ifNil: [^ Beeper beep].
 	lastCommand phase == #undone
 		ifFalse:
-			[anIndex _ history indexOf: lastCommand.
+			[anIndex := history indexOf: lastCommand.
 			(anIndex < history size)
 				ifTrue:
-					[lastCommand _ history at: anIndex + 1]
+					[lastCommand := history at: anIndex + 1]
 				ifFalse:
 					[^ Beeper beep]].
 

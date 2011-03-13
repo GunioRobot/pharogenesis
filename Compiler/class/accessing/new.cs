@@ -1,3 +1,2 @@
 new
-
-	^ super new parserClass: self parserClass
+	^ super new parser: self parserClass new

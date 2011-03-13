@@ -3,4 +3,4 @@ MCCodeTool
 	instanceVariableNames: 'selection'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Monticello-UI'
+	category: 'MonticelloGUI'

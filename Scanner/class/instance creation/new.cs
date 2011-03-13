@@ -1,3 +1,3 @@
 new
 
-	^super new initScanner
+	^self basicNew initScanner

@@ -1,8 +1,8 @@
 clipboardText: text 
 
 	| string |
-	string _ text asString.
+	string := text asString.
 	self noteRecentClipping: text asText.
-	contents _ text asText.
-	string _ self interpreter toSystemClipboard: string.
+	contents := text asText.
+	string := string convertToWithConverter: UTF8TextConverter new.
 	self primitiveClipboardText: string.

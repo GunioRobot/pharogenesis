@@ -1,2 +1,2 @@
 forDoit: aString
-	^ (self subclassForDoit: aString) ifNotNilDo: [:c | c new source: aString]
+	^ (self subclassForDoit: aString) ifNotNil: [:c | c new source: aString]

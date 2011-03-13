@@ -1,1 +1,0 @@
-I am the controller for a FillInTheBlankView. Based on a flag in the view, I can either accept the input string when a carriage return is typed, or I can allow multiple lines of input that is accepted by either typing enter or by invoking the 'accept' command.

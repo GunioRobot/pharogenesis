@@ -1,4 +1,4 @@
 universalButtonServices
-	"Answer a list of services underlying the universal buttons in their initial inception.  For the moment, only the sorting buttons are shown."
+	"Answer the services to be reflected in the receiver's buttons"
 
-	^ {self serviceSortByName. self serviceSortByDate. self serviceSortBySize}
+	^ self optionalButtonSpecs

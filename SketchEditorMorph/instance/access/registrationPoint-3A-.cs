@@ -1,2 +1,2 @@
 registrationPoint: aPoint
-	registrationPoint _ aPoint
+	registrationPoint := aPoint

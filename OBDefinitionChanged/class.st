@@ -1,1 +1,0 @@
-OBDefinitionChanged class instanceVariableNames: ''

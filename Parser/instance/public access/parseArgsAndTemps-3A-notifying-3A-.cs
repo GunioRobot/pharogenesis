@@ -4,7 +4,7 @@ parseArgsAndTemps: aString notifying: req
         names and temporary variable names)."
 
         aString == nil ifTrue: [^#()].
-        doitFlag _ false.               "Don't really know if a doit or not!"
+        doitFlag := false.               "Don't really know if a doit or not!"
         ^self initPattern: aString
                 notifying: req
                 return: [:pattern | (pattern at: 2) , (self temporariesIn: (pattern at: 1))]

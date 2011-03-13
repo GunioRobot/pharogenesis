@@ -6,14 +6,14 @@ checkAuthorization: webDocument retry: retryBlock
 			or: [webDocument beginsWith: 'HTTP/1.1 401']])
 	ifFalse: [^self].
 
-	oldRealm _ realm.
-	i _ webDocument findString: 'realm="'.
+	oldRealm := realm.
+	i := webDocument findString: 'realm="'.
 	i = 0 ifTrue: [^self].
-	end _ webDocument indexOf: $" startingAt: i.
-	realm _ webDocument copyFrom: i+7 to: end.
-	"realm _ (webDocument findTokens: '""') at: 2."
-	Passwords ifNil: [Passwords _ Dictionary new].
-	encoded _ Passwords at: realm ifAbsent: [nil].
+	end := webDocument indexOf: $" startingAt: i.
+	realm := webDocument copyFrom: i+7 to: end.
+	"realm := (webDocument findTokens: '""') at: 2."
+	Passwords ifNil: [Passwords := Dictionary new].
+	encoded := Passwords at: realm ifAbsent: [nil].
 	(oldRealm ~= realm) & (encoded ~~ nil) 
 		ifTrue: [^ retryBlock value]
 		ifFalse: ["ask the user"

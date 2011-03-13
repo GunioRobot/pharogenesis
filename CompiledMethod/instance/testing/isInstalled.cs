@@ -1,5 +1,7 @@
 isInstalled
-	| class selector |
-	class := self methodClass ifNil: [^false].
-	selector := self selector ifNil: [^false].
-	^self == (class methodDict at: selector ifAbsent: [^false]).
+	self methodClass ifNotNil:
+		[:class|
+		self selector ifNotNil:
+			[:selector|
+			^self == (class methodDict at: selector ifAbsent: [])]].
+	^false

@@ -1,0 +1,2 @@
+paneColor
+	^self backgroundColor

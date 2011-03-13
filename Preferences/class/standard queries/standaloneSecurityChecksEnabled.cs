@@ -1,4 +1,4 @@
 standaloneSecurityChecksEnabled
-	^ self
-		valueOfFlag: #standaloneSecurityChecksEnabled
-		ifAbsent: [false]
+ 	^ self
+ 		valueOfFlag: #standaloneSecurityChecksEnabled
+ 		ifAbsent: [false]

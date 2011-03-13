@@ -4,12 +4,14 @@ goto: aPoint
 	form source as the shape of the drawing brush. The receiver's set 
 	direction does not change."
 	| old |
-	old _ location.
-	location _ aPoint.
-	penDown ifTrue: [self drawFrom: old rounded
-								to: location rounded]
+	old := location.
+	location := aPoint.
+	penDown ifTrue: 
+		[ self 
+			drawFrom: old rounded
+			to: location rounded
 
-	"NOTE:  This should be changed so it does NOT draw the first point, so as
+		"NOTE:  This should be changed so it does NOT draw the first point, so as
 	not to overstrike at line junctions.  At the same time, place should draw
 	a single dot if the pen is down, as should down (put-pen-down) if it
-	was not down before."
+	was not down before." ]

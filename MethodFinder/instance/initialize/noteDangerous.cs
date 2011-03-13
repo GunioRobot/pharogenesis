@@ -1,7 +1,7 @@
 noteDangerous
 	"Remember the methods with really bad side effects."
 
-	Dangerous _ Set new.
+	Dangerous := Set new.
 "Object accessing, testing, copying, dependent access, macpal, flagging"
 	#(addInstanceVarNamed:withValue: haltIfNil copyAddedStateFrom: veryDeepCopy veryDeepCopyWith: veryDeepFixupWith: veryDeepInner: addDependent: evaluate:wheneverChangeIn: codeStrippedOut: playSoundNamed: isThisEverCalled isThisEverCalled: logEntry logExecution logExit)
 		do: [:sel | Dangerous add: sel].
@@ -11,7 +11,7 @@ noteDangerous
 		do: [:sel | Dangerous add: sel].
 
 "Object user interface"
-	#(basicInspect beep inform: inspect inspectWithLabel: notYetImplemented inspectElement )
+	#(basicInspect inform: inspect inspectWithLabel: notYetImplemented inspectElement )
 		do: [:sel | Dangerous add: sel].
 
 "Object system primitives"

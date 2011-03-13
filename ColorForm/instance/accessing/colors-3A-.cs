@@ -3,17 +3,17 @@ colors: colorList
 
 	| colorArray colorCount newColors |
 	colorList ifNil: [
-		colors _ cachedDepth _ cachedColormap _ nil.
+		colors := cachedDepth := cachedColormap := nil.
 		^ self].
 
-	colorArray _ colorList asArray.
-	colorCount _ colorArray size.
-	newColors _ Array new: (1 bitShift: self depth).
+	colorArray := colorList asArray.
+	colorCount := colorArray size.
+	newColors := Array new: (1 bitShift: self depth).
 	1 to: newColors size do: [:i |
 		i <= colorCount
 			ifTrue: [newColors at: i put: (colorArray at: i)]
 			ifFalse: [newColors at: i put: Color transparent]].
 
-	colors _ newColors.
-	cachedDepth _ nil.
-	cachedColormap _ nil.
+	colors := newColors.
+	cachedDepth := nil.
+	cachedColormap := nil.

@@ -3,4 +3,4 @@ ProtoObject
 	instanceVariableNames: 'accumulator'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Kernel-Contexts'
+	category: 'Kernel-Methods'

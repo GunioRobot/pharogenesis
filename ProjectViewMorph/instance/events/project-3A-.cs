@@ -1,4 +1,4 @@
 project: aProject
 
-	project _ aProject.
+	project := aProject.
 	self addProjectNameMorphFiller.

@@ -4,32 +4,34 @@ validateClassvars: classVarArray from: oldClass forSuper: newSuper
 	classVarArray isEmpty ifTrue:[^true]. "Okay"
 
 	"Validate the class var names"
-	usedNames _ classVarArray asSet.
+	usedNames := classVarArray asSet.
 	usedNames size = classVarArray size 
 		ifFalse:[	classVarArray do:[:var|
-					usedNames remove: var ifAbsent:[temp _ var]].
+					usedNames remove: var ifAbsent:[temp := var]].
 				self error: temp,' is multiply defined'. ^false].
 	(usedNames includesAnyOf: self reservedNames) 
 		ifTrue:[	self reservedNames do:[:var|
-					(usedNames includes: var) ifTrue:[temp _ var]].
+					(usedNames includes: var) ifTrue:[temp := var]].
 				self error: temp,' is a reserved name'. ^false].
 
 	newSuper == nil ifFalse:[
-		usedNames _ newSuper allClassVarNames asSet.
+		usedNames := newSuper allClassVarNames asSet.
 		classVarArray do:[:iv|
 			(usedNames includes: iv) ifTrue:[
 				newSuper withAllSuperclassesDo:[:cl|
-					(cl classVarNames includes: iv) ifTrue:[temp _ cl]].
+					(cl classVarNames includes: iv) ifTrue:[temp := cl]].
 				self error: iv, ' is already defined in ', temp name.
 				^false]]].
 
+	classVars := classVarArray.
+
 	oldClass == nil ifFalse:[
-		usedNames _ Set new: 20.
-		oldClass allSubclassesDo:[:cl| usedNames addAll: cl classVarNames].
-		classVars _ classVarArray.
-		newSuper == nil ifFalse:[classVars _ classVars, newSuper allClassVarNames asArray].
+		usedNames := Set new: 20.
+		(oldClass allSubclasses reject: #isMeta) do: [:cl | usedNames addAll: cl classVarNames].
+		newSuper == nil ifFalse:[classVars := classVars, newSuper allClassVarNames asArray].
 		classVars do:[:iv|
 			(usedNames includes: iv) ifTrue:[
 				self error: iv, ' is already defined in a subclass of ', oldClass name.
 				^false]]].
+
 	^true

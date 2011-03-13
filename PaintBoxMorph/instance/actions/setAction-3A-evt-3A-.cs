@@ -2,7 +2,7 @@ setAction: aSelector evt: evt
 	"Find this button and turn it on.  Does not work for stamps or pickups"
 
 	| button |
-	button _ self submorphNamed: aSelector.
+	button := self submorphNamed: aSelector.
  
 	button ifNotNil: [
 		button state: #on.

@@ -2,5 +2,5 @@ shutDown
 	super shutDown.
 	EventTicklerProcess ifNotNil: [
 		EventTicklerProcess terminate.
-		EventTicklerProcess _ nil. ].
+		EventTicklerProcess := nil. ].
 	inputSemaphore ifNotNil:[Smalltalk unregisterExternalObject: inputSemaphore].

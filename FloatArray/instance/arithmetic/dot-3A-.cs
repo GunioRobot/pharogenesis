@@ -4,8 +4,8 @@ dot: aFloatVector
 	| result |
 	"<primitive:'primitiveFloatArrayDotProduct'>"
 	self size = aFloatVector size ifFalse:[^self error:'Must be equal size'].
-	result _ 0.0.
+	result := 0.0.
 	1 to: self size do:[:i|
-		result _ result + ((self at: i) * (aFloatVector at: i)).
+		result := result + ((self at: i) * (aFloatVector at: i)).
 	].
 	^result

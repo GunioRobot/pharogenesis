@@ -17,31 +17,31 @@ parseProjectFileName: aString
 		3 = suffix (pr)"
 
 	"First check for the old style versions"
-	index _ aString findLast:[:ch| ch = $|].
+	index := aString findLast:[:ch| ch = $|].
 	index = 0 ifFalse:["Old style version"
-		baseName _ aString copyFrom: 1 to: index-1.
-		versionAndSuffix _ aString copyFrom: index+1 to: aString size.
+		baseName := aString copyFrom: 1 to: index-1.
+		versionAndSuffix := aString copyFrom: index+1 to: aString size.
 		(versionAndSuffix occurrencesOf: $.) = 0 ifTrue: [^ #('no suffix')].
-		version _ versionAndSuffix copyUpTo: $..
-		suffix _ versionAndSuffix copyFrom: version size+1 to: versionAndSuffix size.
+		version := versionAndSuffix copyUpTo: $..
+		suffix := versionAndSuffix copyFrom: version size+1 to: versionAndSuffix size.
 		"Decode Base64 encoded version"
 		version isEmpty
-			ifTrue:[version _ 0]
-			ifFalse:[version _ Base64MimeConverter decodeInteger: version unescapePercents].
+			ifTrue:[version := 0]
+			ifFalse:[version := Base64MimeConverter decodeInteger: version unescapePercents].
 		^{baseName. version. suffix}].
 	"New style versions"
-	tokens _ aString findTokens: FileDirectory dot.
+	tokens := aString findTokens: FileDirectory dot.
 	tokens size < 2 "Not even a single dot"
 		ifTrue:[^{aString. 0. ''}].
 	tokens size < 3 ifTrue:["Only one dot"
 		self flag: #arNote. "We could allow project file names of the form 'project.001' (e.g., no project extension) or '.001.pr' (without a base name) but I don't think its a good idea."
 		^{tokens first. 0. tokens last}].
-	suffix _ tokens last.
-	version _ tokens at: tokens size - 1.
+	suffix := tokens last.
+	version := tokens at: tokens size - 1.
 	(version anySatisfy:[:ch| ch isDigit not]) ifTrue:[
 		"Non-digit version??? I don't think so..."
-		baseName _ aString copyFrom: 1 to: aString size - suffix size - 1.
+		baseName := aString copyFrom: 1 to: aString size - suffix size - 1.
 		^{baseName. 0. suffix}].
-	baseName _ aString copyFrom: 1 to: aString size - suffix size - version size - 2.
-	version _ version asInteger.
+	baseName := aString copyFrom: 1 to: aString size - suffix size - version size - 2.
+	version := version asInteger.
 	^{baseName. version. suffix}

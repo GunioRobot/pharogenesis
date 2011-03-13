@@ -4,5 +4,11 @@ adaptToNumber: rcvr andSend: selector
 	selector == #+ ifTrue:[^self + rcvr].
 	selector == #* ifTrue:[^self * rcvr].
 	selector == #- ifTrue:[^self negated += rcvr].
-	selector == #/ ifTrue:[^self * (1.0 / rcvr)].
+	selector == #/ ifTrue:[
+		"DO NOT USE TRIVIAL CODE
+			^self reciprocal * rcvr
+		BECAUSE OF GRADUAL UNDERFLOW
+		self should: (1.0e-39 / (FloatArray with: 1.0e-39)) first < 2."
+			^(self class new: self size withAll: rcvr) / self
+		].
 	^super adaptToNumber: rcvr andSend: selector

@@ -1,0 +1,1 @@
+InputEventPollingFetcher class instanceVariableNames: ''

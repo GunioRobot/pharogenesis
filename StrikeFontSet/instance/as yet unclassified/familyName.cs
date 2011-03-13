@@ -1,3 +1,3 @@
 familyName
 
-	^ fontArray first familyName.
+	^ (fontArray at: 1) familyName.

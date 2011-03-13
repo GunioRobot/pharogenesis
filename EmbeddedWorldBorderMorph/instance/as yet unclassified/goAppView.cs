@@ -1,4 +1,0 @@
-goAppView
-
-	self worldIEnclose showApplicationView
-

@@ -1,4 +1,3 @@
-julianDayNumber
+julianDayNumber 
 
-
-	^ start julianDayNumber
+	^ start julianDayNumber 

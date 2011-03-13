@@ -4,5 +4,5 @@ printOn: aStream
 
 	| name |
 
-	aStream nextPutAll: ((name _ self name) ifNil: ['Text: ' , self excerpt]
+	aStream nextPutAll: ((name := self name) ifNil: ['Text: ' , self excerpt]
 			ifNotNil: ['File: ' , name])

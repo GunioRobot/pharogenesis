@@ -1,3 +1,3 @@
 environment: anEnvironment
 
-	environment _ anEnvironment
+	environment := anEnvironment

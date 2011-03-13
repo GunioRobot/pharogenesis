@@ -1,3 +1,0 @@
-showPageBreaksString
-
-	^(thePasteUp ifNil: [^'???']) showPageBreaksString

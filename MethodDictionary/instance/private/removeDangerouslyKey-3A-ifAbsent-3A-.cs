@@ -6,11 +6,11 @@ removeDangerouslyKey: key ifAbsent: aBlock
 	not being used), and then use the copy after the removal."
 
 	| index element |
-	index _ self findElementOrNil: key.
+	index := self findElementOrNil: key.
 	(self basicAt: index) == nil ifTrue: [ ^ aBlock value ].
-	element _ array at: index.
+	element := array at: index.
 	array at: index put: nil.
 	self basicAt: index put: nil.
-	tally _ tally - 1.
+	tally := tally - 1.
 	self fixCollisionsFrom: index.
 	^ element

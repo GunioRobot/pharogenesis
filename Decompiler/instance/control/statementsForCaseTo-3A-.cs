@@ -8,18 +8,18 @@ statementsForCaseTo: end
 	a subsequent Pop instruction, so adjust the StackPos accordingly."
 
 	| blockPos stackPos |
-	blockPos _ statements size.
-	stackPos _ stack size - 1. "Adjust for CaseFlag"
+	blockPos := statements size.
+	stackPos := stack size - 1. "Adjust for CaseFlag"
 	[pc < end]
 		whileTrue:
-			[lastPc _ pc.  limit _ end.  "for performs"
+			[lastPc := pc.  limit := end.  "for performs"
 			self interpretNextInstructionFor: self].
 	"If there is an additional item on the stack, it will be the value
 	of this block."
-	(hasValue _ stack size > stackPos)
+	(hasValue := stack size > stackPos)
 		ifTrue:
 			[stack last == CaseFlag
 				ifFalse: [ statements addLast: stack removeLast] ].
-	lastJumpPc = lastPc ifFalse: [exit _ pc].
+	lastJumpPc = lastPc ifFalse: [exit := pc].
 	caseExits add: exit.
 	^self popTo: blockPos

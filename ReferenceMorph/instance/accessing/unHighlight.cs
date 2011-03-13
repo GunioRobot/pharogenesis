@@ -4,5 +4,7 @@ unHighlight
 	self borderWidth: 0.
 	submorphs notEmpty 
 		ifTrue: 
-			[((str := submorphs first) isKindOf: StringMorph orOf: RectangleMorph) 
-				ifTrue: [str color: self regularColor]]
+			[ str := submorphs first.
+			  (str isKindOf: StringMorph) or: 
+				[ (str isKindOf: RectangleMorph) 
+					ifTrue: [str color: self regularColor]]]

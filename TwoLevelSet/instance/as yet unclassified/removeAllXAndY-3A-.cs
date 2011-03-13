@@ -2,7 +2,7 @@ removeAllXAndY: aPoint
 
 	| deletes |
 
-	deletes _ OrderedCollection new.
+	deletes := OrderedCollection new.
 	firstLevel removeKey: aPoint x ifAbsent: [].
 	firstLevel keysAndValuesDo: [ :x :lev2 |
 		lev2 remove: aPoint y ifAbsent: [].

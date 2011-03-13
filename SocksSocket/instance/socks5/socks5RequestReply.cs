@@ -1,7 +1,7 @@
 socks5RequestReply
 
 	| response |
-	response _ self waitForReply: 4 for: self defaultTimeOutDuration.
+	response := self waitForReply: 4 for: self defaultTimeOutDuration.
 	"Skip rest for now."
 	(response at: 4) = self hostIPCode
 		ifTrue: [self waitForReply: 6 for: self defaultTimeOutDuration].

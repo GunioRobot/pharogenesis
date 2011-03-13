@@ -1,2 +1,0 @@
-scrollBarAction
-	^self valueOfProperty: #scrollBarAction

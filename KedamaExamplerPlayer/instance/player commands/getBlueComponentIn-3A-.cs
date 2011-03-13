@@ -1,3 +1,0 @@
-getBlueComponentIn: aPatch
-
-	^ 0.

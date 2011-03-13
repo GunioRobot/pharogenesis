@@ -1,2 +1,0 @@
-text: aText
-	^ false

@@ -1,7 +1,7 @@
 initializeForPropertiesPanel
 	"Initialize the receiver.  If beModal is true, it will be a modal color picker, else not"
 
-	isModal _ false.
+	isModal := false.
 	self removeAllMorphs.
 	self setProperty: #noDraggingThisPicker toValue: true.
 
@@ -14,7 +14,7 @@ initializeForPropertiesPanel
 
 	self buildChartForm.
 	
-	selectedColor ifNil: [selectedColor _ Color white].
-	sourceHand _ nil.
-	deleteOnMouseUp _ false.
-	updateContinuously _ true.
+	selectedColor ifNil: [selectedColor := Color white].
+	sourceHand := nil.
+	deleteOnMouseUp := false.
+	updateContinuously := true.

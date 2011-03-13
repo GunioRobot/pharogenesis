@@ -1,2 +1,2 @@
 setBalloonColorTo: aColor 
-	aColor ifNotNil: [BalloonColor _ aColor]
+	aColor ifNotNil: [BalloonColor := aColor]

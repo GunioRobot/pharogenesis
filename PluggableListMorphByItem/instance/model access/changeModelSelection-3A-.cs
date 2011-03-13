@@ -3,6 +3,6 @@ changeModelSelection: anInteger
 
 	| item |
 	setIndexSelector ifNotNil: [
-		item _ (anInteger = 0 ifTrue: [nil] ifFalse: [itemList at: anInteger]).
+		item := (anInteger = 0 ifTrue: [nil] ifFalse: [itemList at: anInteger]).
 		model perform: setIndexSelector with: item].
 	self update: getIndexSelector.

@@ -1,4 +1,4 @@
 borderWidth: anInteger
-	borderColor ifNil: [borderColor _ Color black].
-	borderWidth _ anInteger max: 0.
+	borderColor ifNil: [borderColor := Color black].
+	borderWidth := anInteger max: 0.
 	self changed

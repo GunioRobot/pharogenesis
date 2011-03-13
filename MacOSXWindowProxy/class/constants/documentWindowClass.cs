@@ -1,0 +1,2 @@
+documentWindowClass
+	^6

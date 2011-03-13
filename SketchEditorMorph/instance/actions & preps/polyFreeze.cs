@@ -4,7 +4,7 @@ delete it."
 
 	| poly |
 	self polyEditing ifFalse:[^self].
-	(poly _ self valueOfProperty: #polygon) ifNil: [^ self].
+	(poly := self valueOfProperty: #polygon) ifNil: [^ self].
 	poly drawOn: formCanvas.
 	poly delete.
 	self setProperty: #polygon toValue: nil.

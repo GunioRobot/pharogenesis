@@ -3,6 +3,6 @@ showWhile: aBlock
 	shape."
 
 	| oldcursor |
-	oldcursor _ Sensor currentCursor.
+	oldcursor := Sensor currentCursor.
 	self show.
 	^aBlock ensure: [oldcursor show]

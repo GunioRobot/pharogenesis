@@ -7,6 +7,6 @@ browseAllCallsOn: aLiteral
 				name: 'Users of ' , aLiteral key
 				autoSelect: aLiteral key].
 	self
-		browseMessageList: (self allCallsOn: aLiteral) asSortedCollection
+		browseSendersOf: aLiteral
 		name: 'Senders of ' , aLiteral
 		autoSelect: aLiteral keywords first

@@ -3,4 +3,4 @@ ObjectWithDocumentation
 	instanceVariableNames: 'categoryName keysInOrder elementDictionary'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Protocols-Kernel'
+	category: 'Tools-Changes'

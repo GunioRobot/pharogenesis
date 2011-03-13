@@ -6,7 +6,7 @@ initKnownEnvironments
 	self allSubclassesDo: [:subClass | 
 		subClass supportedLanguages do: [:language | 
 			env := subClass new.
-			id _ LocaleID isoString: language.
+			id := LocaleID isoString: language.
 			env localeID: id.
 			known at: id put: env]].
 	^known

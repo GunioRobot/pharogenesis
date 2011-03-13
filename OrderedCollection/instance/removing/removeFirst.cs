@@ -3,7 +3,7 @@ removeFirst
 	empty, create an error notification."
 	| firstObject |
 	self emptyCheck.
-	firstObject _ array at: firstIndex.
+	firstObject := array at: firstIndex.
 	array at: firstIndex put: nil.
-	firstIndex _ firstIndex + 1.
+	firstIndex := firstIndex + 1.
 	^ firstObject

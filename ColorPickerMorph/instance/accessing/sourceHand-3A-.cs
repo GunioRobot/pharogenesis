@@ -1,3 +1,3 @@
 sourceHand: aHand
 
-	sourceHand _ aHand.
+	sourceHand := aHand.

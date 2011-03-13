@@ -11,9 +11,9 @@ revert
 	Cursor write showWhile: [
 		arrayOfRoots elementsForwardIdentityTo:
 			(arrayOfRoots collect: [:r | r rootStubInImageSegment: self]).
-		state _ #onFile.
-		segment _ nil.
-		endMarker _ nil].
+		state := #onFile.
+		segment := nil.
+		endMarker := nil].
 
 "Old version:
 	How to use revert:  In the project, execute 

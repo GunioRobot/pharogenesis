@@ -1,1 +1,0 @@
-PRServerDirectory class instanceVariableNames: ''

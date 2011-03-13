@@ -5,7 +5,6 @@ primKbdNext
 	self wait2ms.
 	self fetchMoreEvents.
 	keyboardBuffer isEmpty ifFalse:[^ keyboardBuffer next].
-	eventQueue ifNotNil:
-		[evtBuf _ eventQueue nextOrNilSuchThat: [:buf | self isKbdEvent: buf].
-		self flushNonKbdEvents].
-	^ evtBuf ifNotNil: [evtBuf at: 3]
+	evtBuf := self eventQueue nextOrNilSuchThat: [:buf | self isKbdEvent: buf].
+	self flushNonKbdEvents.
+	^ evtBuf ifNotNil: [evtBuf at: 6]

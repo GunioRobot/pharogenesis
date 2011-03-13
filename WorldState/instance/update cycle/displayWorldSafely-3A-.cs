@@ -4,15 +4,15 @@ displayWorldSafely: aWorld
 	[aWorld displayWorld] ifError: [:err :rcvr |
 		"Handle a drawing error"
 		| errCtx errMorph |
-		errCtx _ thisContext.
+		errCtx := thisContext.
 		[
-			errCtx _ errCtx sender.
+			errCtx := errCtx sender.
 			"Search the sender chain to find the morph causing the problem"
 			[errCtx notNil and:[(errCtx receiver isMorph) not]] 
-				whileTrue:[errCtx _ errCtx sender].
+				whileTrue:[errCtx := errCtx sender].
 			"If we're at the root of the context chain then we have a fatal drawing problem"
 			errCtx ifNil:[^self handleFatalDrawingError: err].
-			errMorph _ errCtx receiver.
+			errMorph := errCtx receiver.
 			"If the morph causing the problem has already the #drawError flag set,
 			then search for the next morph above in the caller chain."
 			errMorph hasProperty: #errorOnDraw

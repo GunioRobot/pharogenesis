@@ -4,7 +4,6 @@ togglePlainSource
 	| wasShowingPlainSource |
 	self okToChange ifTrue:
 		[wasShowingPlainSource := self showingPlainSource.
-		self restoreTextualCodingPane.
 		wasShowingPlainSource
 			ifTrue:
 				[self showDocumentation: true]

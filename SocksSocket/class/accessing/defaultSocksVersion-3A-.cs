@@ -1,3 +1,3 @@
 defaultSocksVersion: anInteger
 	"nil means no socks"
-	DefaultSocksVersion _ anInteger
+	DefaultSocksVersion := anInteger

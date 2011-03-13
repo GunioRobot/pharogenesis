@@ -1,2 +1,0 @@
-realValue
-	^value

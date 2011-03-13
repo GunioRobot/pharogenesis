@@ -1,3 +1,0 @@
-sniffRange
-
-	^ sniffRange.

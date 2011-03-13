@@ -4,7 +4,7 @@ hash
 	  -- two equal objects have equal hash values"
 
 	| hash |
-	hash _ self species hash.
+	hash := self species hash.
 	self size <= 10 ifTrue:
-		[self do: [:elem | hash _ hash bitXor: elem hash]].
+		[self do: [:elem | hash := hash bitXor: elem hash]].
 	^hash bitXor: self size hash

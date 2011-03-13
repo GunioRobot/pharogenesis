@@ -1,4 +1,4 @@
 restoreStateOf: aStream with: aConverterState
 
-	state _ aConverterState copy.
+	state := aConverterState copy.
 	aStream position: state streamPosition.

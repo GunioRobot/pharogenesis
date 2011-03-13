@@ -3,7 +3,7 @@ addProjectNameMorphFiller
 	| m |
 
 	self removeAllMorphs.
-	m _ AlignmentMorph newRow color: Color transparent.
+	m := AlignmentMorph newRow color: Color transparent.
 	self addMorphBack: m.
 	m
 		on: #mouseDown send: #editTheName: to: self;

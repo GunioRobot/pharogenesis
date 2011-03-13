@@ -4,10 +4,10 @@ positionAt: aPoint relativeTo: aMenuItem inWorld: aWorld
 
 	| i yOffset sub delta |	
 	self fullBounds. "force layout"
-	i _ 0.
-	yOffset _ 0.
-	[(sub _ self submorphs at: (i _ i + 1)) == aMenuItem]
-		whileFalse: [yOffset _ yOffset + sub height].
+	i := 0.
+	yOffset := 0.
+	[(sub := self submorphs at: (i := i + 1)) == aMenuItem]
+		whileFalse: [yOffset := yOffset + sub height].
 
 	self position: aPoint - (2 @ (yOffset + 8)).
 
@@ -17,6 +17,6 @@ positionAt: aPoint relativeTo: aMenuItem inWorld: aWorld
 			[self right: aPoint x + 1].
 
 	"Make sure that the menu fits in the world."
-	delta _ self bounds amountToTranslateWithin:
+	delta := self bounds amountToTranslateWithin:
 		(aWorld worldBounds withHeight: ((aWorld worldBounds height - 18) max: (ActiveHand position y) + 1)).
 	delta = (0 @ 0) ifFalse: [self position: self position + delta]

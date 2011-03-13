@@ -1,7 +1,7 @@
 balloonHelp: aBalloonMorph
 	"Return the balloon morph associated with this hand"
 	| oldHelp |
-	oldHelp _ self balloonHelp.
+	oldHelp := self balloonHelp.
 	oldHelp ifNotNil:[oldHelp delete].
 	aBalloonMorph
 		ifNil:[self removeProperty: #balloonHelpMorph]

@@ -1,6 +1,6 @@
 Notification
 	subclass: #MCVersionNameAndMessageRequest
-	instanceVariableNames: 'suggestion'
+	instanceVariableNames: 'suggestion suggestedLogComment'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Monticello-Versioning'

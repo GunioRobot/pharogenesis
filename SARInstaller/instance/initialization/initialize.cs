@@ -1,2 +1,3 @@
 initialize
-	installed _ OrderedCollection new.
+	super initialize.
+	installed := OrderedCollection new.

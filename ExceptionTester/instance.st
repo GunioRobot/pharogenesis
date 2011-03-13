@@ -3,4 +3,4 @@ Object
 	instanceVariableNames: 'log suiteLog iterationsBeforeTimeout'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Exceptions-Tests'
+	category: 'Tests-Exceptions'

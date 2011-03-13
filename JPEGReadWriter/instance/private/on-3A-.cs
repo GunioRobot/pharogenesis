@@ -1,3 +1,3 @@
-on: aStream
+on: aStream 
 	super on: aStream.
-	stream _ JPEGReadStream on: stream upToEnd.
+	stream := JPEGReadStream on: stream upToEnd

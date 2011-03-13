@@ -6,11 +6,11 @@ send: selector super: superFlag numArgs: numArgs
 	the receiver just below them."
 
 	| receiver arguments answer |
-	arguments _ Array new: numArgs.
+	arguments := Array new: numArgs.
 	numArgs to: 1 by: -1 do: [ :i | arguments at: i put: self pop].
-	receiver _ self pop.
+	receiver := self pop.
 	selector == #doPrimitive:method:receiver:args:
-		ifTrue: [answer _ receiver 
+		ifTrue: [answer := receiver 
 					doPrimitive: (arguments at: 1)
 					method: (arguments at: 2)
 					receiver: (arguments at: 3)
@@ -18,6 +18,6 @@ send: selector super: superFlag numArgs: numArgs
 				self push: answer.
 				^self].
 	QuickStep == self ifTrue: [
-		QuickStep _ nil.
+		QuickStep := nil.
 		^self quickSend: selector to: receiver with: arguments super: superFlag].
 	^self send: selector to: receiver with: arguments super: superFlag

@@ -3,11 +3,11 @@ noUndoReplace: anInterval with: aText
 
 	| start stop |
 	self deselect.
-	start _ (anInterval first max: 1).
-	stop _ (anInterval last min: paragraph text size).
+	start := (anInterval first max: 1).
+	stop := (anInterval last min: paragraph text size).
 	(aText isEmpty and: [stop > start]) ifTrue:
 		["If deleting, then set emphasisHere from 1st character of the deletion"
-		emphasisHere _ (paragraph text attributesAt: start forStyle: paragraph textStyle)
+		emphasisHere := (paragraph text attributesAt: start forStyle: paragraph textStyle)
 					select: [:att | att mayBeExtended]].
 "Debug dShow: ('zap start->stop: ', (start to: stop) asString)."
 	paragraph 

@@ -7,14 +7,13 @@ sourceStringPrettifiedAndDiffed
 	(class isNil or: [selector isNil]) ifTrue: [^'missing'].
 	sourceString := class ultimateSourceCodeAt: selector ifAbsent: [^'error'].
 	self validateMessageSource: sourceString forSelector: selector.
-	(#(#prettyPrint #colorPrint #prettyDiffs) 
+	(#(#prettyPrint #prettyDiffs) 
 		includes: contentsSymbol) 
 			ifTrue: 
 				[sourceString := class prettyPrinterClass 
 							format: sourceString
 							in: class
-							notifying: nil
-							contentsSymbol: contentsSymbol].
+							notifying: nil].
 	self showingAnyKindOfDiffs 
 		ifTrue: [sourceString := self diffFromPriorSourceFor: sourceString].
 	^sourceString

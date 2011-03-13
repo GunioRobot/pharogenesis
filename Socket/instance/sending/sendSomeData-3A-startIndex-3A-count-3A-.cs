@@ -5,7 +5,7 @@ sendSomeData: aStringOrByteArray startIndex: startIndex count: count
 	| bytesSent |
 	(self waitForSendDoneFor: 20)
 		ifTrue: [
-			bytesSent _ self primSocket: socketHandle
+			bytesSent := self primSocket: socketHandle
 				sendData: aStringOrByteArray
 				startIndex: startIndex
 				count: count]

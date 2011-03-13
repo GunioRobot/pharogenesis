@@ -1,4 +1,4 @@
 defaultSystemConverter
 
-	SystemConverterClass ifNil: [SystemConverterClass _ self currentPlatform class systemConverterClass].
+	SystemConverterClass ifNil: [SystemConverterClass := self currentPlatform class systemConverterClass].
 	^ SystemConverterClass new.

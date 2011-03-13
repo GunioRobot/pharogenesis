@@ -2,7 +2,7 @@ endDrawing: evt
 	"If painting is already underway
 	in the receiver, finish and save it."
 	| editor |
-	(editor _ self sketchEditorOrNil) ifNotNil:[
+	(editor := self sketchEditorOrNil) ifNotNil:[
 		editor save: evt.
 		Cursor normal show.
 	].

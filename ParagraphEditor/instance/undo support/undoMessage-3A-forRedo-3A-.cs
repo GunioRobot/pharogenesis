@@ -5,6 +5,6 @@ undoMessage: aMessage forRedo: aBoolean
 	 established (generally by zapSelectionWith:) and that UndoSelection has been
 	 saved (generally by replaceSelectionWith: or replace:With:and:)."
 
-	self isDoing ifTrue: [UndoParagraph _ paragraph].
-	UndoMessage _ aMessage.
-	Undone _ aBoolean
+	self isDoing ifTrue: [UndoParagraph := paragraph].
+	UndoMessage := aMessage.
+	Undone := aBoolean

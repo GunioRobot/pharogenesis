@@ -1,24 +1,24 @@
 star: evt 
 	"Draw an star from the center."
 	| poly ext ww rect oldExt oldRect oldR verts pt cColor sOrigin priorEvt |
-	sOrigin _ self get: #strokeOrigin for: evt.
-	cColor _ self getColorFor: evt.
-	ww _ (self getNibFor: evt) width.
-	ext _ (pt _ sOrigin - evt cursorPoint) r + ww * 2.
-	rect _ Rectangle center: sOrigin extent: ext.
-	(priorEvt _ self get: #lastEvent for: evt)
-		ifNotNil: [oldExt _ (sOrigin - priorEvt cursorPoint) r + ww * 2.
+	sOrigin := self get: #strokeOrigin for: evt.
+	cColor := self getColorFor: evt.
+	ww := (self getNibFor: evt) width.
+	ext := (pt := sOrigin - evt cursorPoint) r + ww * 2.
+	rect := Rectangle center: sOrigin extent: ext.
+	(priorEvt := self get: #lastEvent for: evt)
+		ifNotNil: [oldExt := (sOrigin - priorEvt cursorPoint) r + ww * 2.
 			"Last draw sticks out, must erase the area"
-			oldRect _ Rectangle center: sOrigin extent: oldExt.
+			oldRect := Rectangle center: sOrigin extent: oldExt.
 			self restoreRect: oldRect].
-	ext _ pt r.
-	oldR _ ext.
-	verts _ (0 to: 350 by: 36)
-				collect: [:angle | (Point r: (oldR _ oldR = ext
+	ext := pt r.
+	oldR := ext.
+	verts := (0 to: 350 by: 36)
+				collect: [:angle | (Point r: (oldR := oldR = ext
 									ifTrue: [ext * 5 // 12]
 									ifFalse: [ext]) degrees: angle + pt degrees)
 						+ sOrigin].
-	poly _ PolygonMorph new addHandles.
+	poly := PolygonMorph new addHandles.
 	poly borderColor: (cColor isTransparent ifTrue: [Color black] ifFalse: [cColor]).
 	poly borderWidth: (self getNibFor: evt) width.
 	poly fillStyle: Color transparent.

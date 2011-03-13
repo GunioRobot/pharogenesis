@@ -11,6 +11,6 @@ Some preferences can be ''local'' instead of global. When a preference is set as
 
 The ''Save'' button allow you to quickly save your current settings so it can later be restored with the ''Load'' button.
 
-To carry your settings to another Squeak you might want to use the ''Save to disk'' and ''Load from disk'' buttons. The save to disk option will store all your settings in a ''my.prefs'' file in your Squeak''s current directory.
+To carry your settings to another image you might want to use the ''Save to disk'' and ''Load from disk'' buttons. The save to disk option will store all your settings in a ''my.prefs'' file in your Pharo''s current directory.
 
-Lastly, you can use the "theme..." button to set multiple preferences all at once; click on the "theme..." button and try the themes already provided with your Squeak image.']) translated
+Lastly, you can use the "theme..." button to set multiple preferences all at once; click on the "theme..." button and try the themes already provided with your Pharo image.']) translated

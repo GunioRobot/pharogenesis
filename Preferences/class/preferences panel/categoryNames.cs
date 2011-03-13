@@ -1,6 +1,6 @@
 categoryNames
 	| aSet |
-	aSet _ Set new.
+	aSet := Set new.
 	self dictionaryOfPreferences  do:
 			[:aPreference | 
 			aSet  addAll:(aPreference categoryList 

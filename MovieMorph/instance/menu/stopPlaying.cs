@@ -1,4 +1,4 @@
 stopPlaying
 
-	playMode _ #stop.
+	playMode := #stop.
 	self setFrame: 1.

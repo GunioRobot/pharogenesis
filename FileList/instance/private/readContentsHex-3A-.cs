@@ -10,7 +10,7 @@ readContentsHex: brevity
 		ifTrue: [data := f next: 10000. f close. brevityState := #briefHex]
 		ifFalse: [data := f contentsOfEntireFile. brevityState := #fullHex].
 
-	s := WriteStream on: (String new: data size*4).
+	s := (String new: data size*4) writeStream.
 	0 to: data size-1 by: 16 do:
 		[:loc | s nextPutAll: loc printStringHex; space;
 			nextPut: $(; print: loc; nextPut: $); space; tab.

@@ -1,1 +1,0 @@
-EtoyUpdatingThreePhaseButtonMorph class instanceVariableNames: ''

@@ -1,3 +1,0 @@
-beAccepted
-
-	^accepted _ true

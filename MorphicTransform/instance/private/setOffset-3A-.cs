@@ -1,3 +1,2 @@
-setOffset: aPoint
-
-	offset _ aPoint.
+setOffset: aPoint 
+	offset := aPoint

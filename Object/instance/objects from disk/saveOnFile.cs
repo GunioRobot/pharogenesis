@@ -5,7 +5,7 @@ saveOnFile
 	aFileName := self class name asFileName.	"do better?"
 	aFileName := UIManager default 
 				request: 'File name?' translated initialAnswer: aFileName.
-	aFileName size == 0 ifTrue: [^ Beeper beep].
+	aFileName isEmptyOrNil ifTrue: [^ Beeper beep].
 
 	fileStream := FileStream newFileNamed: aFileName asFileName.
 	fileStream fileOutClass: nil andObject: self.

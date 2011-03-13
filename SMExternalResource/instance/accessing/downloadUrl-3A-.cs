@@ -1,2 +1,0 @@
-downloadUrl: anUrl
-	downloadUrl := anUrl

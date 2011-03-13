@@ -1,7 +1,4 @@
 classDefinitionText
 	"return the text to display for the definition of the currently selected class"
 	| theClass |
-	theClass := self selectedClassOrMetaClass.
-	theClass ifNil: [ ^''].
-
-	^theClass definitionST80.
+	^(theClass := self selectedClassOrMetaClass) ifNil: [''] ifNotNil: [theClass definition]

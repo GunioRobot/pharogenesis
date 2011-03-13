@@ -13,7 +13,7 @@ grabAddresses
 		"check whether any tokens are left"
 		tokens isEmpty 
 	] whileFalse: [
-		token _ tokens last.
+		token := tokens last.
 
 		"delegate, depending on what form the address is in"
 		"the from can be determined from the last token"

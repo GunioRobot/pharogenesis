@@ -22,15 +22,15 @@ update: aSymbol
 	aSymbol == #appendEntry 
 		ifTrue: 
 			[self handleEdit: [self appendEntry].
-			^self refreshWorld].
+			^self ].
 	aSymbol == #clearText 
 		ifTrue: 
 			[self handleEdit: [self changeText: Text new].
-			^self refreshWorld].
+			^self ].
 	aSymbol == #bs 
 		ifTrue: 
 			[self handleEdit: [self bsText].
-			^self refreshWorld].
+			^self ].
 	aSymbol == #codeChangedElsewhere 
 		ifTrue: 
 			[self hasEditingConflicts: true.

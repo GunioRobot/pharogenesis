@@ -3,6 +3,6 @@ upToEnd
 
 	| newStream buffer |
 	buffer := collection species new: 1000.
-	newStream := WriteStream on: (collection species new: 100).
+	newStream := (collection species new: 100) writeStream.
 	[self atEnd] whileFalse: [newStream nextPutAll: (self nextInto: buffer)].
 	^ newStream contents

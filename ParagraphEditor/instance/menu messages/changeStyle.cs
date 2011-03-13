@@ -3,13 +3,13 @@ changeStyle
 	 Moved from experimentalCommand to its own method  "
 
 	| aList reply style |
-	aList _ StrikeFont actualFamilyNames.
+	aList := StrikeFont actualFamilyNames.
 	aList addFirst: 'DefaultTextStyle'.
-	reply _ (SelectionMenu labelList: aList lines: #(1) selections: aList) startUp.
+	reply := UIManager default chooseFrom: aList values: aList lines: #(1).
 	reply ifNotNil:
-		[(style _ TextStyle named: reply) ifNil: [Beeper beep. ^ true].
+		[(style := TextStyle named: reply) ifNil: [Beeper beep. ^ true].
 		paragraph textStyle: style copy.
 		paragraph composeAll.
 		self recomputeSelection.
-		self mvcRedisplay].
+		].
 	^ true

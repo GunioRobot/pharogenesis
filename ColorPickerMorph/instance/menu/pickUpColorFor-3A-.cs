@@ -1,9 +1,9 @@
 pickUpColorFor: aMorph
 	"Show the eyedropper cursor, and modally track the mouse through a mouse-down and mouse-up cycle"
 
-      | aHand localPt c |
-	aHand _ aMorph ifNil: [self activeHand] ifNotNil: [aMorph activeHand].
-	aHand ifNil: [aHand _ self currentHand].
+      | aHand localPt |
+	aHand := aMorph ifNil: [self activeHand] ifNotNil: [aMorph activeHand].
+	aHand ifNil: [aHand := self currentHand].
 	self addToWorld: aHand world near: (aMorph ifNil: [aHand world]) fullBounds.
 	self owner ifNil: [^ self].
 
@@ -16,24 +16,22 @@ pickUpColorFor: aMorph
 			 [self trackColorUnderMouse].
 	self deleteAllBalloons.
 
-	localPt _ Sensor cursorPoint - self topLeft.
+	localPt := Sensor cursorPoint - self topLeft.
 	self inhibitDragging ifFalse: [
 		(DragBox containsPoint: localPt) ifTrue:
 			["Click or drag the drag-dot means to anchor as a modeless picker"
 			^ self anchorAndRunModeless: aHand].
 	].
-	(clickedTranslucency _ TransparentBox containsPoint: localPt)
-		ifTrue: [selectedColor _ originalColor].
+	(clickedTranslucency := TransparentBox containsPoint: localPt)
+		ifTrue: [selectedColor := originalColor].
 
 	self updateContinuously: true.
 	[Sensor anyButtonPressed]
 		whileTrue:
 			 [self updateTargetColorWith: self indicateColorUnderMouse].
-	c _ self getColorFromKedamaWorldIfPossible: Sensor cursorPoint.
-	c ifNotNil: [selectedColor _ c].
-	aHand newMouseFocus: nil;
-		showTemporaryCursor: nil;
-		flushEvents.
+	aHand
+		newMouseFocus: nil;
+		showTemporaryCursor: nil.
 	self delete.
 		 
  

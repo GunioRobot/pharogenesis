@@ -3,8 +3,8 @@ replaceSelfWithMovie
 
 	| o movie |
 	self changed.
-	o _ self owner.
-	movie _ MovieMorph new position: self referencePosition.
+	o := self owner.
+	movie := MovieMorph new position: self referencePosition.
 	movie insertFrames: (Array with: self).
 	o ifNil: [^ movie].
 	o addMorphFront: movie.

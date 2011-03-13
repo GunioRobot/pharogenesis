@@ -22,7 +22,7 @@ markerOrNil
 	for the second form."
 
 	| e |
-	((e _ self endPC) = 19 or: [e = 20]) ifFalse: [^ nil].
+	((e := self endPC) = 19 or: [e = 20]) ifFalse: [^ nil].
 	(self numLiterals = 3) ifFalse:[^ nil].
 	(self at: 17) =  16r70 ifFalse:[^ nil].		"push self"
 	(self at: 18) = 16rD0 ifFalse:[^ nil].		"send <literal 1>"

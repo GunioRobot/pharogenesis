@@ -3,4 +3,4 @@ ClassTestCase
 	instanceVariableNames: 'hash'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'System-Digital Signatures-Tests'
+	category: 'Tests-Digital Signatures'

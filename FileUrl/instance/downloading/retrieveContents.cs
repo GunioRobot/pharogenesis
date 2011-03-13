@@ -1,23 +1,22 @@
 retrieveContents
 	| file pathString s type entries |
-	pathString _ self pathForFile.
-	file _ [FileStream readOnlyFileNamed: pathString] 
-			on: FileDoesNotExistException do:[:ex| ex return: nil].
-	file ifNotNil: [
-		type _ file mimeTypes.
-		type ifNotNil:[type _ type first].
-		type ifNil:[type _ MIMEDocument guessTypeFromName: self path last].
+	pathString := self pathForFile.
+	
+	"We pursue the execution even if the file is not found"
+	[file := FileStream readOnlyFileNamed: pathString.
+	  	type := file mimeTypes.
+		type ifNotNil: [type := type first].
+		type ifNil: [type := MIMEDocument guessTypeFromName: self path last].
 		^MIMELocalFileDocument 
-			contentType: type
-			contentStream: file].
+			contentStream: file
+			mimeType: type]  on: FileDoesNotExistException do:[:ex| ].
 
-	"see if it's a directory..."
-	entries _ [(FileDirectory on: pathString) entries] 
-				on: InvalidDirectoryError do:[:ex| ex return: nil].
-	entries ifNil:[^nil].
+	"see if it's a directory... If not, then nil is returned"
+	entries := [(FileDirectory on: pathString) entries] 
+				on: InvalidDirectoryError do: [:ex| ^ nil].
 
-	s _ WriteStream on: String new.
-	(pathString endsWith: '/') ifFalse: [ pathString _ pathString, '/' ].
+	s := String new writeStream.
+	(pathString endsWith: '/') ifFalse: [ pathString := pathString, '/' ].
 	s nextPutAll: '<title>Directory Listing for ', pathString, '</title>'.
 	s nextPutAll: '<h1>Directory Listing for ', pathString, '</h1>'.
 	s nextPutAll: '<ul>'.

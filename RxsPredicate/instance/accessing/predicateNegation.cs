@@ -1,0 +1,2 @@
+predicateNegation
+	^negation

@@ -2,7 +2,7 @@ addScalingMenuItems: menu hand: aHandMorph
 
 	| subMenu |
 
-	(subMenu _ MenuMorph new)
+	(subMenu := MenuMorph new)
 		defaultTarget: self;
 		add: 'show application view' translated action: #showApplicationView;
 		add: 'show factory view' translated action: #showFactoryView;

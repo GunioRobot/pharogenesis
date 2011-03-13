@@ -1,3 +1,0 @@
-toggleStruckOut
-
-	self toggleSelectionAttribute: TextEmphasis struckOut

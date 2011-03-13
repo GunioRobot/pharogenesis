@@ -1,2 +1,0 @@
-packageInfoName: aString
-	packageInfoName := aString

@@ -6,30 +6,24 @@ initialFrameFor: aView initialExtent: initialExtent world: aWorld
 	Preferences reverseWindowStagger ifTrue:
 		[^ self strictlyStaggeredInitialFrameFor: aView initialExtent: initialExtent world: aWorld].
 
-	allowedArea _ self maximumUsableAreaInWorld: aWorld.
-	screenRight _ allowedArea right.
-	screenBottom _ allowedArea bottom.
+	allowedArea := self maximumUsableAreaInWorld: aWorld.
+	screenRight := allowedArea right.
+	screenBottom := allowedArea bottom.
 
-	otherFrames _ Smalltalk isMorphic
-		ifTrue: [(SystemWindow windowsIn: aWorld satisfying: [:w | w isCollapsed not])
-					collect: [:w | w bounds]]
-		ifFalse: [ScheduledControllers scheduledWindowControllers
-				select: [:aController | aController view ~~ nil]
-				thenCollect: [:aController | aController view isCollapsed
-								ifTrue: [aController view expandedFrame]
-								ifFalse: [aController view displayBox]]].
+	otherFrames := (aWorld windowsSatisfying: [:w | w isCollapsed not])
+					collect: [:w | w bounds].
 
-	allOrigins _ otherFrames collect: [:f | f origin].
+	allOrigins := otherFrames collect: [:f | f origin].
 	(self standardPositionsInWorld: aWorld) do:  "First see if one of the standard positions is free"
 		[:aPosition | (allOrigins includes: aPosition)
 			ifFalse:
 				[^ (aPosition extent: initialExtent) translatedAndSquishedToBeWithin: allowedArea]].
 
-	staggerOrigin _ (self standardPositionsInWorld: aWorld) first.  "Fallback: try offsetting from top left"
-	putativeOrigin _ staggerOrigin.
+	staggerOrigin := (self standardPositionsInWorld: aWorld) first.  "Fallback: try offsetting from top left"
+	putativeOrigin := staggerOrigin.
 
-	[putativeOrigin _ putativeOrigin + StaggerOffset.
-	putativeFrame _ putativeOrigin extent: initialExtent.
+	[putativeOrigin := putativeOrigin + StaggerOffset.
+	putativeFrame := putativeOrigin extent: initialExtent.
 	(putativeFrame bottom < screenBottom) and:
 					[putativeFrame right < screenRight]]
 				whileTrue:

@@ -1,6 +1,4 @@
 fullNameForImageNamed: aName
-
-	| imgDir newName |
+	| imgDir |
 	imgDir := FileDirectory on: self imagePath.
-	newName := FileDirectory baseNameFor: (imgDir fullNameFor: aName).
-	^newName , FileDirectory dot, FileDirectory imageSuffix.
+	^FileDirectory fileName: (imgDir fullNameFor: aName) extension: FileDirectory imageSuffix.

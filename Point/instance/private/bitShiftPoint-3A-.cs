@@ -1,3 +1,3 @@
-bitShiftPoint: bits
-	x _ x bitShift: bits.
-	y _ y bitShift: bits.
+bitShiftPoint: bits 
+	x := x bitShift: bits.
+	y := y bitShift: bits

@@ -1,0 +1,3 @@
+newChangeSet
+
+	^ ChangesOrganizer newChangeSet

@@ -1,0 +1,1 @@
+UserInterruptHandler class instanceVariableNames: ''

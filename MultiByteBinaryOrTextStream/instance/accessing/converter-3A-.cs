@@ -1,3 +1,3 @@
 converter: aConverter
 
-	converter _ aConverter.
+	converter := aConverter.

@@ -1,3 +1,3 @@
 removeLast: n
 
-	top _ top - n
+	top := top - n

@@ -1,3 +1,0 @@
-handlesMouseDown: evt
-
-	^evt yellowButtonPressed 

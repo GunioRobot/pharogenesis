@@ -1,6 +1,6 @@
-buildAbsolutePath: pathComponents
+buildAbsolutePath: pathParts
 	^String streamContents: [:stream |
 		stream nextPut: $/.
-		pathComponents
+		pathParts
 			do: [:pathPart | stream nextPutAll: pathPart]
 			separatedBy: [stream nextPut: $/]]

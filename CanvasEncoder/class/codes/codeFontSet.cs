@@ -1,3 +1,0 @@
-codeFontSet
-
-	^ $S

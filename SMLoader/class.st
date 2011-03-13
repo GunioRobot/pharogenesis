@@ -1,1 +1,0 @@
-SMLoader class instanceVariableNames: ''

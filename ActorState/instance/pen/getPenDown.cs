@@ -1,2 +1,0 @@
-getPenDown
-	^ penDown == true

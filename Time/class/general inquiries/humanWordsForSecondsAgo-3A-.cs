@@ -8,8 +8,8 @@ humanWordsForSecondsAgo: secs
 	secs < "45*60" 2700 ifTrue: [^ (secs//60) printString, ' minutes ago'].
 	secs < "90*60" 5400 ifTrue: [^ 'an hour ago'].
 	secs < "18*60*60" 64800 ifTrue: [^ (secs//3600) printString, ' hours ago'].
-	date _ Date fromSeconds: self totalSeconds - secs.		"now work with dates"
-	today _ Date today.
+	date := Date fromSeconds: self totalSeconds - secs.		"now work with dates"
+	today := Date today.
 	date > (today subtractDays: 2) ifTrue: [^ 'yesterday'].
 	date > (today subtractDays: 8) ifTrue: [^ 'last ', date dayOfWeekName].
 	date > (today subtractDays: 13) ifTrue: [^ 'a week ago'].

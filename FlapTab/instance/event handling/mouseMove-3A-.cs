@@ -1,15 +1,15 @@
 mouseMove: evt
 	| aPosition newReferentThickness adjustedPosition thick |
 
-	dragged ifFalse: [(thick _ self referentThickness) > 0
-			ifTrue: [lastReferentThickness _ thick]].
-	((self containsPoint: (aPosition _ evt cursorPoint)) and: [dragged not])
+	dragged ifFalse: [(thick := self referentThickness) > 0
+			ifTrue: [lastReferentThickness := thick]].
+	((self containsPoint: (aPosition := evt cursorPoint)) and: [dragged not])
 		ifFalse:
 			[flapShowing ifFalse: [self showFlap].
-			adjustedPosition _ aPosition - evt hand targetOffset.
+			adjustedPosition := aPosition - evt hand targetOffset.
 			(edgeToAdhereTo == #bottom)
 				ifTrue:
-					[newReferentThickness _ inboard
+					[newReferentThickness := inboard
 						ifTrue:
 							[self world height - adjustedPosition y]
 						ifFalse:
@@ -17,7 +17,7 @@ mouseMove: evt
 
 			(edgeToAdhereTo == #left)
 					ifTrue:
-						[newReferentThickness _
+						[newReferentThickness :=
 							inboard
 								ifTrue:
 									[adjustedPosition x + self width]
@@ -26,7 +26,7 @@ mouseMove: evt
 
 			(edgeToAdhereTo == #right)
 					ifTrue:
-						[newReferentThickness _
+						[newReferentThickness :=
 							inboard
 								ifTrue:
 									[self world width - adjustedPosition x]
@@ -35,7 +35,7 @@ mouseMove: evt
 
 			(edgeToAdhereTo == #top)
 					ifTrue:
-						[newReferentThickness _
+						[newReferentThickness :=
 							inboard
 								ifTrue:
 									[adjustedPosition y + self height]
@@ -50,6 +50,6 @@ mouseMove: evt
 						[self top: adjustedPosition y]].
 
 			self applyThickness: newReferentThickness.
-			dragged _ true.
+			dragged := true.
 			self fitOnScreen.
 			self computeEdgeFraction]

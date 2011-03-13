@@ -1,2 +1,0 @@
-helpColor
-^ self okColor

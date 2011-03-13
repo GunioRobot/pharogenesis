@@ -1,0 +1,1 @@
+EncoderForLongFormV3PlusClosures class instanceVariableNames: ''

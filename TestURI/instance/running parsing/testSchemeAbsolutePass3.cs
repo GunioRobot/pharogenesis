@@ -1,6 +1,6 @@
 testSchemeAbsolutePass3
 	| uri |
-	uri _ URI fromString: 'ftp://ftp@squeak.org'.
+	uri := URI fromString: 'ftp://ftp@squeak.org'.
 	self should: [uri scheme = 'ftp'].
 	self should: [uri isAbsolute].
 	self shouldnt: [uri isOpaque].

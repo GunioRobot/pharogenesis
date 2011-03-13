@@ -8,4 +8,4 @@ decompile: aSelector in: aClass method: aMethod
 		decompile: aSelector
 		in: aClass
 		method: aMethod
-		using: DecompilerConstructor new
+		using: (self constructorForMethod: aMethod)

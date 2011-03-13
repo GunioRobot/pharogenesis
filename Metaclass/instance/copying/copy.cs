@@ -3,8 +3,8 @@ copy
 	reference to the sole instance."
 
 	| copy t |
-	t _ thisClass.
-	thisClass _ nil.
-	copy _ super copy.
-	thisClass _ t.
+	t := thisClass.
+	thisClass := nil.
+	copy := super copy.
+	thisClass := t.
 	^copy

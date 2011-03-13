@@ -1,3 +1,3 @@
 opaqueBackgroundColor: aColor
 
-	opaqueBackgroundColor _ aColor
+	opaqueBackgroundColor := aColor

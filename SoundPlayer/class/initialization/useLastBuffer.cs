@@ -1,2 +1,0 @@
-useLastBuffer
-	^LastBuffer notNil

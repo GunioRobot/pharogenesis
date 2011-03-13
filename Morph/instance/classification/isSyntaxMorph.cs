@@ -1,2 +1,0 @@
-isSyntaxMorph
-	^false

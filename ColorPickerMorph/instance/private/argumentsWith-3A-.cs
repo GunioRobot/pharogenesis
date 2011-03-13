@@ -2,7 +2,7 @@ argumentsWith: aColor
 	"Return an argument array appropriate to this action selector"
 
 	| nArgs |
-	nArgs _ selector ifNil:[0] ifNotNil:[selector numArgs].
+	nArgs := selector ifNil:[0] ifNotNil:[selector numArgs].
 	nArgs = 0 ifTrue:[^#()].
 	nArgs = 1 ifTrue:[^ {aColor}].
 	nArgs = 2 ifTrue:[^ {aColor. sourceHand}].

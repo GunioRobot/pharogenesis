@@ -1,2 +1,0 @@
-note: anObject
-	^note := anObject

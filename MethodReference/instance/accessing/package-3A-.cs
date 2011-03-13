@@ -1,0 +1,3 @@
+package: aPackage
+	
+	package := aPackage

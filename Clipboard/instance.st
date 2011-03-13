@@ -1,6 +1,6 @@
 Object
 	subclass: #Clipboard
-	instanceVariableNames: 'contents recent interpreter'
+	instanceVariableNames: 'contents recent'
 	classVariableNames: 'Default'
 	poolDictionaries: ''
-	category: 'ST80-Kernel-Remnants'
+	category: 'System-Clipboard'

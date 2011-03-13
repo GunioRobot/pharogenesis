@@ -4,16 +4,16 @@ send: selector to: rcvr with: args super: superFlag
 	receiver of the message was specified with 'super' in the source method."
 
 	| class meth val |
-	class _ superFlag
+	class := superFlag
 			ifTrue: [(self method literalAt: self method numLiterals) value superclass]
 			ifFalse: [rcvr class].
-	meth _ class lookupSelector: selector.
+	meth := class lookupSelector: selector.
 	meth == nil
 		ifTrue: [^ self send: #doesNotUnderstand:
 					to: rcvr
 					with: (Array with: (Message selector: selector arguments: args))
 					super: superFlag]
-		ifFalse: [val _ self tryPrimitiveFor: meth
+		ifFalse: [val := self tryPrimitiveFor: meth
 						receiver: rcvr
 						args: args.
 				val == PrimitiveFailToken ifFalse: [^ val].

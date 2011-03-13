@@ -1,6 +1,5 @@
 initiateSession
-	"HELO <SP> <domain> <CRLF>"
+	"EHLO <SP> <domain> <CRLF>"
 
-	"self checkResponse."
-	self sendCommand: 'HELO ' , NetNameResolver localHostName.
+	self sendCommand: (self useHelo ifTrue:['HELO '] ifFalse: ['EHLO ']) , NetNameResolver localHostName.
 	self checkResponse.

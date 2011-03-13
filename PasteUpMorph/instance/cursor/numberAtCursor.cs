@@ -3,5 +3,5 @@ numberAtCursor
 
 	| chosenMorph |
 	submorphs isEmpty ifTrue: [^ 0].
-	chosenMorph _ submorphs at: ((cursor truncated max: 1) min: submorphs size).
+	chosenMorph := submorphs at: ((cursor truncated max: 1) min: submorphs size).
 	^ chosenMorph getNumericValue

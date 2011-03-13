@@ -1,0 +1,2 @@
+methodNodeClass
+	^BytecodeAgnosticMethodNode

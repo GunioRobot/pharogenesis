@@ -1,1 +1,1 @@
-EncodedCharSet class instanceVariableNames: 'CompoundTextSequence'
+EncodedCharSet class instanceVariableNames: 'compoundTextSequence'

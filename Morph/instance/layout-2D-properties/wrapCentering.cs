@@ -6,5 +6,5 @@ wrapCentering
 		#justified - insert extra space inbetween rows/columns
 	"
 	| props |
-	props _ self layoutProperties.
+	props := self layoutProperties.
 	^props ifNil:[#topLeft] ifNotNil:[props wrapCentering].

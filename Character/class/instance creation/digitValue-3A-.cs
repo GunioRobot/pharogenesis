@@ -3,7 +3,7 @@ digitValue: x
 	x=9, $0 for x=0, $A for x=10, $Z for x=35."
 
 	| index |
-	index _ x asInteger.
+	index := x asInteger.
 	^CharacterTable at: 
 		(index < 10
 			ifTrue: [48 + index]

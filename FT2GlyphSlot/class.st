@@ -1,0 +1,1 @@
+FT2GlyphSlot class instanceVariableNames: ''

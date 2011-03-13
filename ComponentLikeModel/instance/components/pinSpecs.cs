@@ -1,2 +1,0 @@
-pinSpecs
-	^ pinSpecs

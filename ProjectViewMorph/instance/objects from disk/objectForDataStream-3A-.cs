@@ -4,6 +4,6 @@ objectForDataStream: refStrm
 
 	1 = 1 ifTrue: [^self].		"this didn't really work"
 
-	copy _ self copy lastProjectThumbnail: nil.
+	copy := self copy lastProjectThumbnail: nil.
 	"refStrm replace: self with: copy."
 	^copy

@@ -3,7 +3,7 @@ scanStringStruct: textOrString
 	 groups of identifiers.  Answer an array reflecting that structure, representing
 	 each identifier by an uninterned string."
 
-	self scan: (ReadStream on: textOrString asString).
+	self scan: textOrString asString readStream.
 	self scanStringStruct.
 	^token
 

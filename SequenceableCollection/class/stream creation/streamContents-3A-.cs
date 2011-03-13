@@ -1,5 +1,5 @@
 streamContents: blockWithArg
 	| stream |
-	stream _ WriteStream on: (self new: 100).
+	stream := (self new: 100) writeStream.
 	blockWithArg value: stream.
 	^stream contents

@@ -12,7 +12,7 @@ lookForCode: code ifDifferent: handleBlock
 	(self lastResponse size > 3
 			and: [(self lastResponse at: 4) = $-])
 		ifTrue: ["Discard continuation lines."
-			[headToDiscard _ self lastResponse first: 4.
+			[headToDiscard := self lastResponse first: 4.
 			[[self stream peekForAll: headToDiscard]
 				whileTrue: [self stream nextLine]]
 				on: Exception

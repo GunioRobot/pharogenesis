@@ -1,3 +1,0 @@
-myFont
-
-	^ Preferences standardEToysFont

@@ -3,4 +3,4 @@ RequiresSpeedTestCase
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Traits-Requires'
+	category: 'Tests-Traits'

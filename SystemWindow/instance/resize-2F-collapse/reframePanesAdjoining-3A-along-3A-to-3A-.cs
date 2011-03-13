@@ -1,19 +1,19 @@
 reframePanesAdjoining: growingPane along: side to: aDisplayBox 
 	| delta newRect minDim theMin horiz |
 	growingPane ifNil: [^ self].  "As from click outside"
-	newRect _ aDisplayBox.
-	horiz _ #(left right) includes: side.
-	theMin _ horiz ifTrue: [40] ifFalse: [20].
+	newRect := aDisplayBox.
+	horiz := #(left right) includes: side.
+	theMin := horiz ifTrue: [40] ifFalse: [20].
 
 	"First check that this won't make any pane smaller than theMin screen dots"
-	minDim _ (((paneMorphs select: [:pane | pane bounds bordersOn: growingPane bounds along: side])
+	minDim := (((paneMorphs select: [:pane | pane bounds bordersOn: growingPane bounds along: side])
 		collect: [:pane | pane bounds adjustTo: newRect along: side]) copyWith: aDisplayBox)
 			inject: 999 into:
 				[:was :rect | was min: (horiz ifTrue: [rect width] ifFalse: [rect height])].
 	"If so, amend newRect as required"
 	minDim > theMin ifFalse:
-		[delta _ minDim - theMin.
-		newRect _ newRect withSide: side setTo: 
+		[delta := minDim - theMin.
+		newRect := newRect withSide: side setTo: 
 				((newRect perform: side) > (growingPane bounds perform: side)
 					ifTrue: [(newRect perform: side) + delta]
 					ifFalse: [(newRect perform: side) - delta])].

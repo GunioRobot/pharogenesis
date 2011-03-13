@@ -4,9 +4,9 @@ removeInstVarName: aString
 	| newInstVarString |
 	(self instVarNames includes: aString)
 		ifFalse: [self error: aString , ' is not one of my instance variables'].
-	newInstVarString _ ''.
+	newInstVarString := ''.
 	(self instVarNames copyWithout: aString) do: 
-		[:varName | newInstVarString _ newInstVarString , ' ' , varName].
+		[:varName | newInstVarString := newInstVarString , ' ' , varName].
 	^(ClassBuilder new)
 		name: self name
 		inEnvironment: self environment

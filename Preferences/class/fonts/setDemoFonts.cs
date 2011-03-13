@@ -1,15 +1,18 @@
 setDemoFonts
 	"Preferences setDemoFonts"
+	|size font codeFont titleFont|
+	size := UIManager default request: 'Base font size?' initialAnswer: '14'.
+	size isEmptyOrNil ifTrue: [^ self].
+	size := size asInteger.
+	(size isNil or: [size <= 0]) ifTrue: [^ self].
+	font := LogicalFont familyName: 'DejaVu Sans' pointSize: size.
+	codeFont := LogicalFont familyName: 'DejaVu Sans Mono' pointSize: size.
+	titleFont := LogicalFont familyName: 'DejaVu Serif' pointSize: size.
 
-	self setDefaultFonts: #(
-		(setSystemFontTo:			BitstreamVeraSans			 		12)
-		(setListFontTo:				BitstreamVeraSans					14)
-		(setFlapsFontTo:				Accushi								12)
-		(setEToysFontTo:				BitstreamVeraSansBold				9)
-		(setPaintBoxButtonFontTo:	BitstreamVeraSansBold				9)
-		(setMenuFontTo:				BitstreamVeraSans					14)
-		(setWindowTitleFontTo:		BitstreamVeraSansBold				12)
-		(setBalloonHelpFontTo:		Accujen								18)
-		(setCodeFontTo:				BitstreamVeraSans					18)
-		(setButtonFontTo:			BitstreamVeraSansMono				14)
-	)
+Preferences
+	setListFontTo: font;
+	setMenuFontTo: font;
+	setCodeFontTo: codeFont;
+	setButtonFontTo: font;
+	setSystemFontTo: font;
+	setWindowTitleFontTo: titleFont.

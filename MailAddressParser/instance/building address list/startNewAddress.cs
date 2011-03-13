@@ -3,5 +3,5 @@ startNewAddress
 	(curAddrTokens ~~ nil) ifTrue: [
 		self error: 'starting new address before finishing the last one!' ].
 
-	curAddrTokens _ OrderedCollection new.
+	curAddrTokens := OrderedCollection new.
 	

@@ -1,6 +1,6 @@
 VariableNode
 	subclass: #TempVariableNode
-	instanceVariableNames: 'isAnArg hasRefs hasDefs scope'
+	instanceVariableNames: 'argType hasRefs hasDefs scope definingScope readingScopes writingScopes remoteNode'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Compiler-ParseNodes'

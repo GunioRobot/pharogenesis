@@ -3,6 +3,6 @@ removeSelectorChanges: selector class: class
 	this class."
 
 	| chgRecord |
-	(chgRecord _ changeRecords at: class name ifAbsent: [^ self])
+	(chgRecord := changeRecords at: class name ifAbsent: [^ self])
 		removeSelector: selector.
 	chgRecord hasNoChanges ifTrue: [changeRecords removeKey: class name]

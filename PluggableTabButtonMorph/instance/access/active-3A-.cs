@@ -1,3 +1,3 @@
 active: aBoolean
-	active _ aBoolean.
+	active := aBoolean.
 	self changed.

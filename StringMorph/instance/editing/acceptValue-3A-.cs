@@ -1,4 +1,4 @@
 acceptValue: aValue
 	| val |
-	self contents: (val _ aValue asString).
+	self contents: (val := aValue asString).
 	^ val

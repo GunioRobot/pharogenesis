@@ -1,0 +1,3 @@
+variablesAndOffsetsDo: aBlock
+
+	^self

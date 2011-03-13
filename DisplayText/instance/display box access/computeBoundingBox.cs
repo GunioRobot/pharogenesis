@@ -2,18 +2,18 @@ computeBoundingBox
 	"Compute minimum enclosing rectangle around characters."
 
 	| character font width carriageReturn lineWidth lineHeight |
-	carriageReturn _ Character cr.
-	width _ lineWidth _ 0.
-	font _ textStyle defaultFont.
-	lineHeight _ textStyle lineGrid.
+	carriageReturn := Character cr.
+	width := lineWidth := 0.
+	font := textStyle defaultFont.
+	lineHeight := textStyle lineGrid.
 	1 to: text size do: 
 		[:i | 
-		character _ text at: i.
+		character := text at: i.
 		character = carriageReturn
 		  ifTrue: 
-			[lineWidth _ lineWidth max: width.
-			lineHeight _ lineHeight + textStyle lineGrid.
-			width _ 0]
-		  ifFalse: [width _ width + (font widthOf: character)]].
-	lineWidth _ lineWidth max: width.
+			[lineWidth := lineWidth max: width.
+			lineHeight := lineHeight + textStyle lineGrid.
+			width := 0]
+		  ifFalse: [width := width + (font widthOf: character)]].
+	lineWidth := lineWidth max: width.
 	^offset extent: lineWidth @ lineHeight

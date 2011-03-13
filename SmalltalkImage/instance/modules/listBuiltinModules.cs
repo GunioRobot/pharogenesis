@@ -4,11 +4,11 @@ listBuiltinModules
 	or not. Note that the list returned is not sorted!"
 
 	| modules index name |
-	modules _ WriteStream on: Array new.
-	index _ 1.
+	modules := Array new writeStream.
+	index := 1.
 	[true] whileTrue:[
-		name _ self listBuiltinModule: index.
+		name := self listBuiltinModule: index.
 		name ifNil:[^modules contents].
 		modules nextPut: name.
-		index _ index + 1.
+		index := index + 1.
 	].

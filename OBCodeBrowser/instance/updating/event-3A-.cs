@@ -1,2 +1,0 @@
-event: anEvent
-	hasChanges := true

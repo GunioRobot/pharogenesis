@@ -1,6 +1,6 @@
 dateAndTimes
 
 	| dateAndTimes |
-	dateAndTimes _ OrderedCollection new.
+	dateAndTimes := OrderedCollection new.
 	self scheduleDo: [ :e | dateAndTimes add: e ].
 	^ dateAndTimes asArray.

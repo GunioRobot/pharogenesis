@@ -1,2 +1,0 @@
-tearDown
-	morph delete.

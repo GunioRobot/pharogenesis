@@ -3,4 +3,4 @@ noteMethodInfoFromRemoval: info
 	and the category in which it was defined (so it can be put back there if
 	re-accepted from a version browser)."
 
-	infoFromRemoval _ info
+	infoFromRemoval := info

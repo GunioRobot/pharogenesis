@@ -1,1 +1,0 @@
-AnimatedImageMorph class instanceVariableNames: ''

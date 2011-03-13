@@ -4,13 +4,13 @@ undoLastCommand
 	| aPhase anIndex |
 	lastCommand ifNil: [^ Beeper beep].
 
-	(aPhase _ lastCommand phase) == #done
+	(aPhase := lastCommand phase) == #done
 		ifFalse:
 			[aPhase == #undone
 				ifTrue:
-					[anIndex _ history indexOf: lastCommand.
+					[anIndex := history indexOf: lastCommand.
 					anIndex > 1 ifTrue:
-						[lastCommand _ history at: anIndex - 1]]].
+						[lastCommand := history at: anIndex - 1]]].
 
 	lastCommand undoCommand.
 	lastCommand phase: #undone

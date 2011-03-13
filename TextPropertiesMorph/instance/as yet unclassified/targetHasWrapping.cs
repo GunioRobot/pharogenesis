@@ -1,3 +1,0 @@
-targetHasWrapping
-
-	^myTarget isWrapped

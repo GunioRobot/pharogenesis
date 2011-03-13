@@ -2,7 +2,7 @@ allUnreferencedClassVariablesOf: aClass
 	"Answer a list of the names of all the receiver's unreferenced class  
 	vars, including those defined in superclasses"
 	| aList |
-	aList _ OrderedCollection new.
+	aList := OrderedCollection new.
 	aClass withAllSuperclasses
 		reverseDo: [:aSuperClass | aSuperClass classVarNames
 				do: [:var | (self allCallsOn: (aSuperClass classPool associationAt: var)) isEmpty

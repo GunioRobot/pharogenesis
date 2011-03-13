@@ -20,16 +20,11 @@ enterAsActiveSubprojectWithin: enclosingWorld
 
 	self isCurrentProject ifTrue: [^ self].
 
-	guards ifNotNil: [
-		guards _ guards reject: [:obj | obj isNil].
-		guards do: [:obj | obj okayToEnterProject ifFalse: [^ self]]
-	].
-
 		"CurrentProject makeThumbnail."
 		"--> Display bestGuessOfCurrentWorld triggerClosingScripts."
 	CurrentProject displayDepth: Display depth.
 
-	displayDepth == nil ifTrue: [displayDepth _ Display depth].
+	displayDepth == nil ifTrue: [displayDepth := Display depth].
 		"Display newDepthNoRestore: displayDepth."
 
 		"(world hasProperty: #letTheMusicPlay)
@@ -38,22 +33,22 @@ enterAsActiveSubprojectWithin: enclosingWorld
 						playerClass allSubInstancesDo: [:player | player pause]]]."
 
 		"returningFlag
-			ifTrue: [nextProject _ CurrentProject]
-			ifFalse: [previousProject _ CurrentProject]."
+			ifTrue: [nextProject := CurrentProject]
+			ifFalse: [previousProject := CurrentProject]."
 
 		"CurrentProject saveState."
-		"CurrentProject _ self."
+		"CurrentProject := self."
 		"Smalltalk newChanges: changeSet."
 		"TranscriptStream newTranscript: transcript."
 		"Sensor flushKeyboard."
-		"recorderOrNil _ Display pauseMorphicEventRecorder."
+		"recorderOrNil := Display pauseMorphicEventRecorder."
 
 		"Display changeMorphicWorldTo: world."  "Signifies Morphic"
-	world 
+	"world 
 		installAsActiveSubprojectIn: enclosingWorld 
-		titled: self name.
+		titled: self name. to remove alignmentBob1Morph shit"
 
 		"recorderOrNil ifNotNil: [recorderOrNil resumeIn: world]."
-	world triggerOpeningScripts.
+	
 	self removeParameter: #exportState.
 		"self spawnNewProcessAndTerminateOld: true"

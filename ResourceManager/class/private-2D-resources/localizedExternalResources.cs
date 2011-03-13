@@ -1,2 +1,2 @@
 localizedExternalResources
-	^LocalizedExternalResources ifNil:[LocalizedExternalResources _ Dictionary new]
+	^LocalizedExternalResources ifNil:[LocalizedExternalResources := Dictionary new]

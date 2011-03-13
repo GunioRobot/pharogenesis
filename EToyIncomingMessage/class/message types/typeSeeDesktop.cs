@@ -1,3 +1,0 @@
-typeSeeDesktop
-
-	^'seedesktop'

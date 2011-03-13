@@ -1,2 +1,2 @@
 visible: newValue
-	visible _ newValue
+	visible := newValue

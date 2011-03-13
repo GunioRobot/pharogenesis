@@ -1,5 +1,5 @@
 testCumulativeCounts
-	"self run: #testCumulativeCounts"
+	"self run: #testCumulativeCounts" 
 	"self debug: #testCumulativeCounts"
 		
 	| bag cumulativeCounts |

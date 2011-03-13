@@ -4,10 +4,10 @@ lookupSelector: selector
 	Otherwise chase the superclass chain and try again.
 	Return nil if no method is found."
 	| lookupClass |
-	lookupClass _ self.
+	lookupClass := self.
 	[lookupClass == nil]
 		whileFalse: 
 			[(lookupClass includesSelector: selector)
 				ifTrue: [^ lookupClass compiledMethodAt: selector].
-			lookupClass _ lookupClass superclass].
+			lookupClass := lookupClass superclass].
 	^ nil

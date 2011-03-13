@@ -1,3 +1,0 @@
-top
-
-	^textMorph owner top

@@ -3,4 +3,4 @@ TestCase
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Multilingual-Display'
+	category: 'Tests-Multilingual'

@@ -1,2 +1,2 @@
 resetHighestUpdate
-	highestUpdate _ nil
+	highestUpdate := nil

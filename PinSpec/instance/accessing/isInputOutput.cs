@@ -1,2 +1,0 @@
-isInputOutput
-	^ direction = #inputOutput

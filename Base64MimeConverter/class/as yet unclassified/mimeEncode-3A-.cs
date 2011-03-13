@@ -3,7 +3,7 @@ mimeEncode: aStream
 
 	| me |
 	aStream position: 0.
-	me _ self new dataStream: aStream.
+	me := self new dataStream: aStream.
 	me mimeStream: (ReadWriteStream on: (String new: aStream size + 20 * 4 // 3)).
 	me mimeEncode.
 	me mimeStream position: 0.

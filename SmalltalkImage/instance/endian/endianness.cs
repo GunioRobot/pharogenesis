@@ -1,4 +1,4 @@
 endianness
 
-	EndianCache ifNil: [EndianCache _ self calcEndianness].
+	EndianCache ifNil: [EndianCache := self calcEndianness].
 	^ EndianCache.

@@ -3,7 +3,7 @@ asSortedCollection: aSortBlock
 	receiver. The sort order is defined by the argument, aSortBlock."
 
 	| aSortedCollection |
-	aSortedCollection _ SortedCollection new: self size.
+	aSortedCollection := SortedCollection new: self size.
 	aSortedCollection sortBlock: aSortBlock.
 	aSortedCollection addAll: self.
 	^ aSortedCollection

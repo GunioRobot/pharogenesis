@@ -1,1 +1,0 @@
-SMLanguageInstaller class instanceVariableNames: ''

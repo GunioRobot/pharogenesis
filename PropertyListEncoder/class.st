@@ -1,1 +1,0 @@
-PropertyListEncoder class instanceVariableNames: ''

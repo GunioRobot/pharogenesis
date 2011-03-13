@@ -1,17 +1,14 @@
 initialize
-"
+	"
 	self initialize
 "
-
-
-	CompoundTextSequence _ String streamContents: [:s |
+	compoundTextSequence := String streamContents: 
+		[ :s | 
 		s nextPut: (Character value: 27).
 		s nextPut: $(.
-		s nextPut: $B.
-	].
-
-	RightHalfSequence _ String streamContents: [:s |
+		s nextPut: $B ].
+	rightHalfSequence := String streamContents: 
+		[ :s | 
 		s nextPut: (Character value: 27).
 		s nextPut: $-.
-		s nextPut: $A.
-	].
+		s nextPut: $A ]

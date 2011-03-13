@@ -1,1 +1,1 @@
-Latin1 class instanceVariableNames: 'RightHalfSequence'
+Latin1 class instanceVariableNames: 'rightHalfSequence'

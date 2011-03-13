@@ -3,5 +3,5 @@ implementorsOfIt
 
 	| aSelector |
 	self lineSelectAndEmptyCheck: [^ self].
-	(aSelector _ self selectedSelector) == nil ifTrue: [^ view flash].
+	(aSelector := self selectedSelector) == nil ifTrue: [^ self flash].
 	self terminateAndInitializeAround: [ self systemNavigation browseAllImplementorsOf: aSelector]

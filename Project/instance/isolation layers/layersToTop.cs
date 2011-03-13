@@ -3,7 +3,7 @@ layersToTop
 
 	| layers |
 	self isTopProject
-		ifTrue: [layers _ OrderedCollection new]
-		ifFalse: [layers _ parentProject layersToTop].
+		ifTrue: [layers := OrderedCollection new]
+		ifFalse: [layers := parentProject layersToTop].
 	isolatedHead ifTrue: [layers addFirst: self].
 	^ layers

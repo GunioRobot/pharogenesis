@@ -2,8 +2,8 @@ test2
 	"FormCanvas test2"
 
 	| baseCanvas p |
-	baseCanvas _ FormCanvas extent: 200@200.
-	p _ Sensor cursorPoint.
+	baseCanvas := FormCanvas extent: 200@200.
+	p := Sensor cursorPoint.
 	[Sensor anyButtonPressed] whileFalse: [
 		baseCanvas translateBy: (Sensor cursorPoint - p) during:[:canvas|
 			canvas fillColor: Color white.

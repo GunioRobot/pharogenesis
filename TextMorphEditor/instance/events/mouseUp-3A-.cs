@@ -6,5 +6,5 @@ mouseUp: evt
 		ifTrue: [self selectWord].
 	self setEmphasisHere.
 	(self isDisjointFrom: oldInterval) ifTrue:
-		[otherInterval _ oldInterval].
+		[otherInterval := oldInterval].
 	self storeSelectionInParagraph

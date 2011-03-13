@@ -1,7 +1,7 @@
 daysInMonth: indexOrName forYear: yearInteger 
 
 	| index |
-	index _ indexOrName isInteger 
+	index := indexOrName isInteger 
 				ifTrue: [indexOrName]
 				ifFalse: [self indexOfMonth: indexOrName].
 	^ (DaysInMonth at: index)

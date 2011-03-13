@@ -5,9 +5,9 @@ aboutToBeGrabbedBy: aHand
 	| extentToHandToHand cmd |
 	self formerOwner: owner.
 	self formerPosition: self position.
-	cmd _ self undoGrabCommand.
+	cmd := self undoGrabCommand.
 	cmd ifNotNil:[self setProperty: #undoGrabCommand toValue: cmd].
-	(extentToHandToHand _ self valueOfProperty: #expandedExtent)
+	(extentToHandToHand := self valueOfProperty: #expandedExtent)
 			ifNotNil:
 				[self removeProperty: #expandedExtent.
 				self extent: extentToHandToHand].

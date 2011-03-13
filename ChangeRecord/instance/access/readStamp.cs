@@ -2,11 +2,11 @@ readStamp
 	"Get the time stamp of this method off the file"
 
 	| item tokens anIndex |
-	stamp _ ''.
+	stamp := ''.
 	file ifNil: [^ stamp].
 	file position: position.
-	item _ file nextChunk.
-	tokens _ Scanner new scanTokens: item.
+	item := file nextChunk.
+	tokens := Scanner new scanTokens: item.
 	tokens size < 3 ifTrue: [^ stamp].
-	anIndex _ tokens indexOf: #stamp: ifAbsent: [^ stamp].
-	^ stamp _ tokens at: (anIndex + 1).
+	anIndex := tokens indexOf: #stamp: ifAbsent: [^ stamp].
+	^ stamp := tokens at: (anIndex + 1).

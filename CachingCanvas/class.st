@@ -1,1 +1,0 @@
-CachingCanvas class instanceVariableNames: ''

@@ -1,3 +1,0 @@
-asParagraphForPostscript
-
-	^ self as: TextOnCurvePS

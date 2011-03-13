@@ -4,15 +4,6 @@ defineMessageFrom: aString notifying: aController
 	selectedMessageName := self selectedMessageName.
 	oldMessageList := self messageList.
 	contents := nil.
-	selector := (self selectedClassOrMetaClass parserClass new parseSelector: aString).
-	(self metaClassIndicated
-		and: [(self selectedClassOrMetaClass includesSelector: selector) not
-		and: [Metaclass isScarySelector: selector]])
-		ifTrue: ["A frist-time definition overlaps the protocol of Metaclasses"
-				(self confirm: ((selector , ' is used in the existing class system.
-Overriding it could cause serious problems.
-Is this really what you want to do?') asText makeBoldFrom: 1 to: selector size))
-				ifFalse: [^nil]].
 	selector := self selectedClassOrMetaClass
 				compile: aString
 				classified: (category := self selectedMessageCategoryName)

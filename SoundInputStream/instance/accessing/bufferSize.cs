@@ -1,3 +1,0 @@
-bufferSize
-
-	^ bufferSize

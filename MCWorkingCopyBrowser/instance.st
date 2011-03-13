@@ -1,6 +1,6 @@
 MCTool
 	subclass: #MCWorkingCopyBrowser
-	instanceVariableNames: 'workingCopy workingCopyWrapper repository defaults'
-	classVariableNames: ''
+	instanceVariableNames: 'workingCopy workingCopyWrapper repository defaults order'
+	classVariableNames: 'Order'
 	poolDictionaries: ''
-	category: 'Monticello-UI'
+	category: 'MonticelloGUI'

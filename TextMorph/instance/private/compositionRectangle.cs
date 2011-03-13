@@ -1,7 +1,7 @@
 compositionRectangle
 	| compRect |
-	compRect _ self innerBounds.
-	margins ifNotNil: [compRect _ compRect insetBy: margins].
-	compRect width < 9 ifTrue: [compRect _ compRect withWidth: 9].
-	compRect height < 16 ifTrue: [compRect _ compRect withHeight: 16].
+	compRect := self innerBounds.
+	margins ifNotNil: [compRect := compRect insetBy: margins].
+	compRect width < 9 ifTrue: [compRect := compRect withWidth: 9].
+	compRect height < 16 ifTrue: [compRect := compRect withHeight: 16].
 	^ compRect

@@ -1,7 +1,7 @@
 composeMailTo: address subject: subject body: body
 	"HTTPClient composeMailTo: 'michael.rueger@squeakland.org' subject: 'test subject' body: 'message' "
 	| mailTo |
-	mailTo _ WriteStream on: String new.
+	mailTo := String new writeStream.
 	mailTo nextPutAll: 'mailto:'.
 	mailTo
 		nextPutAll: address;

@@ -1,0 +1,3 @@
+grafPort	
+	
+	^ Display defaultBitBltClass current

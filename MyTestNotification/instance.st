@@ -3,4 +3,4 @@ Notification
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Exceptions-Tests'
+	category: 'Tests-Exceptions'

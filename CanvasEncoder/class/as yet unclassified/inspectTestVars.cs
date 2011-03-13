@@ -1,6 +1,0 @@
-inspectTestVars
-"
-CanvasEncoder inspectTestVars
-"
-	^SimpleCounters
-

@@ -4,14 +4,14 @@ install
 	| newRoots |
 	state = #onFile ifTrue: [self readFromFile].
 	state = #onFileWithSymbols ifTrue: [self readFromFileWithSymbols.
-		endMarker _ segment nextObject. 	"for enumeration of objects"
-		endMarker == 0 ifTrue: [endMarker _ 'End' clone]].
+		endMarker := segment nextObject. 	"for enumeration of objects"
+		endMarker == 0 ifTrue: [endMarker := 'End' clone]].
 	(state = #active) | (state = #imported) ifFalse: [self errorWrongState].
-	newRoots _ self loadSegmentFrom: segment outPointers: outPointers.
+	newRoots := self loadSegmentFrom: segment outPointers: outPointers.
 	state = #imported 
 		ifTrue: ["just came in from exported file"
-			arrayOfRoots _ newRoots]
+			arrayOfRoots := newRoots]
 		ifFalse: [
 			arrayOfRoots elementsForwardIdentityTo: newRoots].
-	state _ #inactive.
+	state := #inactive.
 	Beeper beepPrimitive

@@ -1,7 +1,7 @@
 value: anArgument
 	| nArgs |
-	numArgs ifNil:[numArgs _ selector numArgs].
-	nArgs _ arguments ifNil:[0] ifNotNil:[arguments size].
+	numArgs ifNil:[numArgs := selector numArgs].
+	nArgs := arguments ifNil:[0] ifNotNil:[arguments size].
 	nArgs = numArgs ifTrue:[
 		"Ignore extra argument"
 		^self value].

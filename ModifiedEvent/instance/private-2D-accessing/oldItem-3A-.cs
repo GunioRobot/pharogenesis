@@ -1,2 +1,2 @@
 oldItem: anItem
-	oldItem _ anItem
+	oldItem := anItem

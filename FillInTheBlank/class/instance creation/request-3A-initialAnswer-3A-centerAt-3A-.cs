@@ -8,17 +8,7 @@ request: queryString initialAnswer: defaultAnswer centerAt: aPoint
 		initialAnswer: 'yo ho ho!'
 		centerAt: Display center"
 
-	| model fillInView |
-	Smalltalk isMorphic 
-		ifTrue: 
-			[^self fillInTheBlankMorphClass 
+	^self fillInTheBlankMorphClass 
 				request: queryString
 				initialAnswer: defaultAnswer
-				centerAt: aPoint].
-	model := self new.
-	model contents: defaultAnswer.
-	fillInView := self fillInTheBlankViewClass 
-				on: model
-				message: queryString
-				centerAt: aPoint.
-	^model show: fillInView
+				centerAt: aPoint

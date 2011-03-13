@@ -5,11 +5,11 @@ rememberCommand: aCommand
 	Preferences useUndo ifFalse: [^ self].  "Command initialize"
 
 	Preferences infiniteUndo ifTrue:
-		[currentCommandIndex _ history indexOf: lastCommand.
+		[currentCommandIndex := history indexOf: lastCommand.
 		((currentCommandIndex < history size) and: [Preferences preserveCommandExcursions]) ifTrue:
 			[excursions add: (history copyFrom: (currentCommandIndex to: history size)).
-			history _ history copyFrom: 1 to: currentCommandIndex].
+			history := history copyFrom: 1 to: currentCommandIndex].
 		history addLast: aCommand].
 
-	lastCommand _ aCommand.
+	lastCommand := aCommand.
 	lastCommand phase: #done.

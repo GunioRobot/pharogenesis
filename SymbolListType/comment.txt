@@ -1,1 +1,0 @@
-A type whose values range across a finite set of symbols, which are held in the "symbols" instance variable.

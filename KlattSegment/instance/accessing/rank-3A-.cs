@@ -1,2 +1,0 @@
-rank: aNumber
-	rank := aNumber

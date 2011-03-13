@@ -1,4 +1,4 @@
 expr: e encoder: encoder sourceRange: range
 
-	expr _ e.
+	expr := e.
 	encoder noteSourceRange: range forNode: self

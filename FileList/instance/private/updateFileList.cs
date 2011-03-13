@@ -3,7 +3,7 @@ updateFileList
 	that match the pattern.
 	The pattern string may have embedded newlines or semicolons; these separate different patterns."
 	| patterns |
-	patterns _ OrderedCollection new.
+	patterns := OrderedCollection new.
 	Cursor wait showWhile: [
 	(pattern findTokens: (String with: Character cr with: Character lf with: $;))
 		do: [ :each |
@@ -13,11 +13,11 @@ updateFileList
 										ifTrue: [ patterns add: '*']
 										ifFalse: [ patterns add: '*' , each , '*']]].
 
-	list _ self listForPatterns: patterns.
-	listIndex _ 0.
-	volListIndex _ volList size.
-	fileName _ nil.
-	contents _ ''.
+	list := self listForPatterns: patterns.
+	listIndex := 0.
+	volListIndex := volList size.
+	fileName := nil.
+	contents := ''.
 	self changed: #volumeListIndex.
 	self changed: #fileList.
 	self updateButtonRow]

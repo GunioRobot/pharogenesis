@@ -1,3 +1,0 @@
-start
-
-	counting _ true

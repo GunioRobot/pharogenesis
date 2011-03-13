@@ -1,3 +1,3 @@
 backgroundColor: newColor
-	backgroundColor _ newColor.
+	backgroundColor := newColor.
 	self changed

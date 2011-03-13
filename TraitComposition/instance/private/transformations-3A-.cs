@@ -1,2 +1,2 @@
 transformations: aCollection
-	transformations _ aCollection
+	transformations := aCollection

@@ -1,2 +1,0 @@
-cellSize:newCellSize
-	^self.

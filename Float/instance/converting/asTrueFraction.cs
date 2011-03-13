@@ -36,7 +36,7 @@ asTrueFraction
 		ifTrue: [
 			result := signedFraction bitShift: exp negated ]
 		ifFalse:	[
-			zeroBitsCount _ fraction lowBit - 1.
+			zeroBitsCount := fraction lowBit - 1.
 			exp := exp - zeroBitsCount.
 			exp <= 0
 				ifTrue: [

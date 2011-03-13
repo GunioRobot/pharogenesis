@@ -1,3 +1,3 @@
 smoothing: aNumber
-	smoothing _ aNumber.
+	smoothing := aNumber.
 	self changed

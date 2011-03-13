@@ -1,3 +1,3 @@
 setMyText: someText
-	myContents _ someText.
+	myContents := someText.
 	^true.

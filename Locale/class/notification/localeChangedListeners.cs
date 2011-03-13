@@ -1,2 +1,2 @@
 localeChangedListeners
-	^LocaleChangeListeners ifNil: [LocaleChangeListeners _ OrderedCollection new]
+	^LocaleChangeListeners ifNil: [LocaleChangeListeners := OrderedCollection new]

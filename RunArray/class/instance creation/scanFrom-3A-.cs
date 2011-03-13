@@ -2,14 +2,14 @@ scanFrom: strm
 	"Read the style section of a fileOut or sources file.  nextChunk has already been done.  We need to return a RunArray of TextAttributes of various kinds.  These are written by the implementors of writeScanOn:"
 	| rr vv aa this |
 	(strm peekFor: $( ) ifFalse: [^ nil].
-	rr _ OrderedCollection new.
+	rr := OrderedCollection new.
 	[strm skipSeparators.
 	 strm peekFor: $)] whileFalse: 
 		[rr add: (Number readFrom: strm)].
-	vv _ OrderedCollection new.	"Value array"
-	aa _ OrderedCollection new.	"Attributes list"
-	[(this _ strm next) == nil] whileFalse: [
-		this == $, ifTrue: [vv add: aa asArray.  aa _ OrderedCollection new].
+	vv := OrderedCollection new.	"Value array"
+	aa := OrderedCollection new.	"Attributes list"
+	[(this := strm next) == nil] whileFalse: [
+		this == $, ifTrue: [vv add: aa asArray.  aa := OrderedCollection new].
 		this == $a ifTrue: [aa add: 
 			(TextAlignment new alignment: (Integer readFrom: strm))].
 		this == $f ifTrue: [aa add: 
@@ -27,8 +27,6 @@ scanFrom: strm
 		this == $L ifTrue: [aa add: (TextLink scanFrom: strm)].	"L not look like 1"
 		this == $R ifTrue: [aa add: (TextURL scanFrom: strm)].
 				"R capitalized so it can follow a number"
-		this == $q ifTrue: [aa add: (TextSqkPageLink scanFrom: strm)].
-		this == $p ifTrue: [aa add: (TextSqkProjectLink scanFrom: strm)].
 		this == $P ifTrue: [aa add: (TextPrintIt scanFrom: strm)].
 		this == $d ifTrue: [aa add: (TextDoIt scanFrom: strm)].
 		"space, cr do nothing"

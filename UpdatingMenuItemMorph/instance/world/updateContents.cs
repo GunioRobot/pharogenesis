@@ -3,8 +3,8 @@ updateContents
 
 	| newString enablement nArgs |
 	((wordingProvider isNil) or: [wordingSelector isNil]) ifTrue: [^ self].
-	nArgs _ wordingSelector numArgs.
-	newString _ nArgs == 0
+	nArgs := wordingSelector numArgs.
+	newString := nArgs == 0
 		ifTrue:
 			[wordingProvider perform: wordingSelector]
 		ifFalse:
@@ -18,5 +18,5 @@ updateContents
 		ifFalse: [self contents: newString.
 			MenuIcons decorateMenu: owner ].
 	enablementSelector ifNotNil:
-		[(enablement _ self enablement) == isEnabled 
+		[(enablement := self enablement) == isEnabled 
 			ifFalse:	[self isEnabled: enablement]]

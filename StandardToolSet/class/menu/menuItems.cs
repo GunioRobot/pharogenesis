@@ -1,15 +1,20 @@
 menuItems
 	"Answer the menu items available for this tool set"
 	^#(
-		('class browser' 			#openClassBrowser)
-		('workspace'				#openWorkspace)
-		('file list'					#openFileList)
-		('package pane browser' 	#openPackagePaneBrowser)
-		('process browser' 			#openProcessBrowser)
+		('Class Browser' 			#openClassBrowser)
+		('Message Names'				#openMessageNames)
+		('Method Finder'				#openMethodFinder)
 		-
-		('method finder'				#openSelectorBrowser)
-		('message names'			#openMessageNames)
+		('Workspace'					#openWorkspace)
+		('Transcript' 				#openTranscript)
+		('File Browser'				#openFileList)
 		-
-		('simple change sorter'		#openChangeSorter)
-		('dual change sorter'		#openDualChangeSorter)
+		('Test Runner'				#openTestRunner)
+		('Process Browser' 			#openProcessBrowser)
+		-
+		('Monticello Browser'		#openMonticelloBrowser)
+		"('Monticello Configurations' #openMonticelloConfigurations)"
+		('Recover lost changes...'	#openRecentChangesLog)
+		"('Simple Change Sorter'		#openChangeSorter)"
+		('Change Sorter'				#openDualChangeSorter)
 	)

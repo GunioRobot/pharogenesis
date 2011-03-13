@@ -1,6 +1,6 @@
 toggleOriginAtCenter
 	| hasIt |
-	hasIt _ self hasProperty: #originAtCenter.
+	hasIt := self hasProperty: #originAtCenter.
 	hasIt
 		ifTrue:
 			[self removeProperty: #originAtCenter]

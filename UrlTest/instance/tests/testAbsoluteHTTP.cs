@@ -1,6 +1,6 @@
 testAbsoluteHTTP
 	
-	url _ 'hTTp://chaos.resnet.gatech.edu:8000/docs/java/index.html?A%20query%20#part' asUrl.
+	url := 'hTTp://chaos.resnet.gatech.edu:8000/docs/java/index.html?A%20query%20#part' asUrl.
 
 	self assert: url schemeName = 'http'.
 	self assert: url authority = 'chaos.resnet.gatech.edu'.

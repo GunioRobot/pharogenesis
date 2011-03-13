@@ -6,8 +6,8 @@ adjustInBuffer: bytesRead
 
 	| old |
 	bytesRead = 0 ifTrue: [^inNextToWrite].
-	old _ inNextToWrite.
-	inNextToWrite _ inNextToWrite + bytesRead.
+	old := inNextToWrite.
+	inNextToWrite := inNextToWrite + bytesRead.
 	(inBuffer size - inNextToWrite) < 1024
 		ifTrue: [
 			"Hit the roof, move data down (if enough has been read) or do we grow?"

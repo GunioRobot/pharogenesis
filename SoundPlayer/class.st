@@ -1,1 +1,0 @@
-SoundPlayer class instanceVariableNames: ''

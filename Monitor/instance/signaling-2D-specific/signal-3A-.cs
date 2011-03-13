@@ -4,6 +4,6 @@ signal: aSymbolOrNil
 
 	| queue |
 	self checkOwnerProcess.
-	queue _ self queueFor: aSymbolOrNil.
-	queue isEmpty ifTrue: [queue _ self defaultQueue].
+	queue := self queueFor: aSymbolOrNil.
+	queue isEmpty ifTrue: [queue := self defaultQueue].
 	self signalQueue: queue.

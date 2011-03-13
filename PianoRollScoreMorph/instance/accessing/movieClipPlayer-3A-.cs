@@ -1,3 +1,0 @@
-movieClipPlayer: moviePlayer
-
-	movieClipPlayer := moviePlayer

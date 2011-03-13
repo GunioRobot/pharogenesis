@@ -1,2 +1,0 @@
-scriptedPlayer
-	^ scriptedPlayer

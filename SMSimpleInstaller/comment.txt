@@ -1,2 +1,0 @@
-This is a base class that you can subclass if your package format can be downloaded using
-a single file url and possibly also be decompressed using gzip.

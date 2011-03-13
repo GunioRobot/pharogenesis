@@ -2,8 +2,8 @@ tallyMethods: aBlock
 	"This method uses the simulator to count the number of calls on each method
 	invoked in evaluating aBlock. Results are given in order of decreasing counts."
 	| prev tallies |
-	tallies _ Bag new.
-	prev _ aBlock.
+	tallies := Bag new.
+	prev := aBlock.
 	thisContext sender
 		runSimulated: aBlock
 		contextAtEachStep:
@@ -11,7 +11,7 @@ tallyMethods: aBlock
 			current == prev ifFalse: "call or return"
 				[prev sender == nil ifFalse: "call only"
 					[tallies add: current printString].
-				prev _ current]].
+				prev := current]].
 	^tallies sortedCounts
 
 	"ContextPart tallyMethods: [3.14159 printString]"

@@ -28,9 +28,8 @@ addModelItemsToWindowMenu: aMenu
 	
 	aMenu add: 'destroy change set' action: #remove.
 	aMenu addLine.
-	Smalltalk isMorphic ifTrue:
-		[aMenu addLine.
-		aMenu add: 'what to show...' target: self action: #offerWhatToShowMenu].
+	aMenu addLine.
+	aMenu add: 'what to show...' target: self action: #offerWhatToShowMenu.
 	aMenu addLine.
 	aMenu add: 'more...' action: #offerShiftedChangeSetMenu.
 	aMenu defaultTarget: oldTarget.

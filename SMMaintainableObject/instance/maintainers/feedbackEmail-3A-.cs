@@ -1,2 +1,0 @@
-feedbackEmail: anEmail
-	feedbackEmail := anEmail

@@ -2,8 +2,7 @@ saveToFile
 	"save the translator to a file"
 	| fileName |
 	fileName := UIManager default request: 'file name' translated initialAnswer: translator localeID isoString , '.translation'.
-	(fileName isNil
-			or: [fileName isEmpty])
+	fileName isEmptyOrNil
 		ifTrue: [""
 			self beep.
 			^ self].

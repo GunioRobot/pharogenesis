@@ -1,2 +1,2 @@
 semaphoreForGenerator: aSema
-	semaphoreForGenerator _ aSema
+	semaphoreForGenerator := aSema

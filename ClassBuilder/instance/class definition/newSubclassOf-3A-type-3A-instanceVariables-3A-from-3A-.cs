@@ -24,13 +24,7 @@ newSubclassOf: newSuper type: type instanceVariables: instVars from: oldClass
 		newClass organization: oldClass organization.
 		"Recompile the new class"
 		oldClass hasMethods 
-			ifTrue:[newClass compileAllFrom: oldClass].
-
-		oldClass hasTraitComposition ifTrue: [
-			newClass setTraitComposition: oldClass traitComposition copyTraitExpression ].
-		oldClass class hasTraitComposition ifTrue: [
-			newClass class setTraitComposition: oldClass class traitComposition copyTraitExpression ].
-		
+			ifTrue:[newClass compileAllFrom: oldClass].		
 		self recordClass: oldClass replacedBy: newClass.
 	].
 

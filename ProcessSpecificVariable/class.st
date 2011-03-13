@@ -1,0 +1,1 @@
+ProcessSpecificVariable class instanceVariableNames: 'hash'

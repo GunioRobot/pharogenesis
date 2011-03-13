@@ -11,18 +11,18 @@ broadcastUpdatesFrom: n1 to: n2 except: skipList
 			exportUpdatesExcept: #().
 "
 	| fileNames fileNamesInOrder names choice file updateDirectory |
-	updateDirectory _ FileDirectory default directoryNamed: 'updates'.
-	fileNames _ updateDirectory fileNames select:
+	updateDirectory := FileDirectory default directoryNamed: 'updates'.
+	fileNames := updateDirectory fileNames select:
 		[:n | n first isDigit
 			and: [(n initialIntegerOrNil between: n1 and: n2)
 			and: [(skipList includes: n initialIntegerOrNil) not]]].
-	(file _ fileNames select: [:n | (n occurrencesOf: $.) > 1]) size > 0
+	(file := fileNames select: [:n | (n occurrencesOf: $.) > 1]) size > 0
 		ifTrue: [self halt: file first , ' has multiple periods'].
-	fileNamesInOrder _ fileNames asSortedCollection:
+	fileNamesInOrder := fileNames asSortedCollection:
 		[:a :b | a initialIntegerOrNil < b initialIntegerOrNil].
 
-	names _ ServerDirectory groupNames asSortedArray.
-	choice _ (SelectionMenu labelList: names selections: names) startUp.
-	choice == nil ifTrue: [^ self].
+	names := ServerDirectory groupNames asSortedArray.
+	choice := UIManager default chooseFrom: names values: names.
+	choice ifNil: [^ self].
 	(ServerDirectory serverInGroupNamed: choice)
 		putUpdateMulti: fileNamesInOrder fromDirectory: updateDirectory

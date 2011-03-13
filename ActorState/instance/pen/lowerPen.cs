@@ -1,2 +1,0 @@
-lowerPen
-	penDown _ true

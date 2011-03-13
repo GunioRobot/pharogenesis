@@ -1,0 +1,1 @@
+RussianEnvironment class instanceVariableNames: ''

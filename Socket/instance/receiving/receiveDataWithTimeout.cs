@@ -5,6 +5,6 @@ receiveDataWithTimeout
 	Either returns data or signals a time out or connection close."
 
 	| buffer bytesRead |
-	buffer _ String new: 2000.
-	bytesRead _ self receiveDataWithTimeoutInto: buffer.
+	buffer := String new: 2000.
+	bytesRead := self receiveDataWithTimeoutInto: buffer.
 	^buffer copyFrom: 1 to: bytesRead

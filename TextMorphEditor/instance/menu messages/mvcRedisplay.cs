@@ -1,2 +1,0 @@
-mvcRedisplay
-	"Ignore mvcRedisplay requests."

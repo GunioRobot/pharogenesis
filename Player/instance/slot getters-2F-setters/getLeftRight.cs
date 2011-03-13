@@ -1,2 +1,0 @@
-getLeftRight
-	^ self getValueFromCostume: #leftRight

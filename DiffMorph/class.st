@@ -1,0 +1,1 @@
+DiffMorph class instanceVariableNames: ''

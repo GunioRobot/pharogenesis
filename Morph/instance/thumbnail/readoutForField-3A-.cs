@@ -3,7 +3,7 @@ readoutForField: fieldSym
 
 	| aContainer |
 	"still need to get this right"
-	aContainer _ AlignmentMorph newColumn.
+	aContainer := AlignmentMorph newColumn.
 	aContainer layoutInset: 0; hResizing: #rigid; vResizing: #shrinkWrap.
 	aContainer addMorphBack: (StringMorph new contents: (self perform: fieldSym) asString).
 	^ aContainer

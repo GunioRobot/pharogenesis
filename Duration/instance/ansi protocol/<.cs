@@ -1,3 +1,4 @@
 < comparand
-
-	^ self asNanoSeconds < comparand asNanoSeconds
+ 
+ 	^ self asNanoSeconds < comparand asNanoSeconds
+ 

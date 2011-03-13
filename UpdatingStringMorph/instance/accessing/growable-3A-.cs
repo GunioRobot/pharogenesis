@@ -1,3 +1,3 @@
 growable: aBoolean
 
-	growable _ aBoolean.
+	growable := aBoolean.

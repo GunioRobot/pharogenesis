@@ -1,3 +1,0 @@
-textMorphString
-
-	^nameTextMorph text string

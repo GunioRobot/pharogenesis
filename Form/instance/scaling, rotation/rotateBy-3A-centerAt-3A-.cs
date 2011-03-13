@@ -5,8 +5,8 @@ rotateBy: direction centerAt: aPoint
 	direction == #none ifTrue: [^ self].
 	scale :=  (direction = #pi ifTrue: [width@height] ifFalse: [height@width]) / self extent .
 	newForm := self blankCopyOf: self boundingBox scaledBy: scale.
-	quad _ self boundingBox innerCorners.
-	rot _ #(right pi left) indexOf: direction.
+	quad := self boundingBox innerCorners.
+	rot := #(right pi left) indexOf: direction.
 	(WarpBlt current toForm: newForm)
 		sourceForm: self;
 		colorMap: (self colormapIfNeededFor: newForm);
@@ -22,8 +22,8 @@ rotateBy: direction centerAt: aPoint
 "
 "Consistency test...
  | f f2 p | [Sensor anyButtonPressed] whileFalse:
-	[f _ Form fromDisplay: ((p _ Sensor cursorPoint) extent: 31@41).
+	[f := Form fromDisplay: ((p := Sensor cursorPoint) extent: 31@41).
 	Display fillBlack: (p extent: 31@41).
-	f2 _ f rotateBy: #left centerAt: 0@0.
+	f2 := f rotateBy: #left centerAt: 0@0.
 	(f2 rotateBy: #right centerAt: 0@0) displayAt: p]
 "

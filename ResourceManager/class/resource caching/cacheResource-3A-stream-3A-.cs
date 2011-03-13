@@ -3,19 +3,19 @@ cacheResource: urlString stream: aStream
 	HTTPClient shouldUsePluginAPI ifTrue:[^self]. "use browser cache"
 	(self resourceCache at: urlString ifAbsent:[#()]) size > 0 
 		ifTrue:[^self]. "don't waste space"
-	fd _ Project squeakletDirectory.
-	localName _ fd nextNameFor: 'resource' extension:'cache'.
-	file _ fd forceNewFileNamed: localName.
-	buf _ ByteArray new: 10000.
+	fd := Project squeakletDirectory.
+	localName := fd nextNameFor: 'resource' extension:'cache'.
+	file := fd forceNewFileNamed: localName.
+	buf := ByteArray new: 10000.
 	aStream binary.
 	file binary.
 	[aStream atEnd] whileFalse:[
-		buf _ aStream next: buf size into: buf.
+		buf := aStream next: buf size into: buf.
 		file nextPutAll: buf.
 	].
 	file close.
 	"update cache"
-	file _ [fd oldFileNamed: self resourceCacheName] 
+	file := [fd oldFileNamed: self resourceCacheName] 
 			on: FileDoesNotExistException
 			do:[:ex| fd forceNewFileNamed: self resourceCacheName].
 	file setToEnd.

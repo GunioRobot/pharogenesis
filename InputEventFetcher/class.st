@@ -1,0 +1,1 @@
+InputEventFetcher class instanceVariableNames: ''

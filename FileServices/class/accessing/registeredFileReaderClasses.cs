@@ -1,3 +1,3 @@
 registeredFileReaderClasses
-	FileReaderRegistry ifNil: [FileReaderRegistry _ OrderedCollection new].
+	FileReaderRegistry ifNil: [FileReaderRegistry := OrderedCollection new].
 	^ FileReaderRegistry

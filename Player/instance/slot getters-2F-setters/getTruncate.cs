@@ -1,2 +1,0 @@
-getTruncate
-	^  self getValueFromCostume: #truncate

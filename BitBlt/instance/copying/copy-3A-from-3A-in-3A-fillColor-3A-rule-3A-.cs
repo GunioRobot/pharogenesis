@@ -1,16 +1,15 @@
-copy: destRectangle from: sourcePt in: srcForm fillColor: hf rule: rule
-	"Specify a Color to fill, not a Form. 6/18/96 tk"  
+copy: destRectangle from: sourcePt in: srcForm fillColor: hf rule: rule 
+	"Specify a Color to fill, not a Form. 6/18/96 tk"
 	| destOrigin |
-	sourceForm _ srcForm.
+	sourceForm := srcForm.
 	self fillColor: hf.	"sets halftoneForm"
-	combinationRule _ rule.
-	destOrigin _ destRectangle origin.
-	destX _ destOrigin x.
-	destY _ destOrigin y.
-	sourceX _ sourcePt x.
-	sourceY _ sourcePt y.
-	width _ destRectangle width.
-	height _ destRectangle height.
-	srcForm == nil ifFalse:
-		[colorMap _ srcForm colormapIfNeededFor: destForm].
+	combinationRule := rule.
+	destOrigin := destRectangle origin.
+	destX := destOrigin x.
+	destY := destOrigin y.
+	sourceX := sourcePt x.
+	sourceY := sourcePt y.
+	width := destRectangle width.
+	height := destRectangle height.
+	srcForm == nil ifFalse: [ colorMap := srcForm colormapIfNeededFor: destForm ].
 	^ self copyBits

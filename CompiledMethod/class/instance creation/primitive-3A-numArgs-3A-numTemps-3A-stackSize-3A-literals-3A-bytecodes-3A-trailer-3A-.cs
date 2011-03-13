@@ -2,7 +2,7 @@ primitive: primNum numArgs: numArgs numTemps: numTemps stackSize: stackSize lite
 	"Create method with given attributes.  numTemps includes numArgs.  stackSize does not include numTemps."
 
 	| compiledMethod |
-	compiledMethod _ self
+	compiledMethod := self
 		newBytes: bytecodes size
 		trailerBytes: trailerBytes 
 		nArgs: numArgs

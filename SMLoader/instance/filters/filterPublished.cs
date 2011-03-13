@@ -1,2 +1,0 @@
-filterPublished
-	^[:package | package isPublished]

@@ -1,12 +1,11 @@
 enableGlobalFlaps
 	"Start using global flaps, given that they were not present."
-
-	Cursor wait showWhile:
-		[SharedFlapsAllowed _ true.
-		self globalFlapTabs. "This will create them"
-		Smalltalk isMorphic ifTrue:
-			[ActiveWorld addGlobalFlaps.
+	Cursor wait
+		showWhile: [SharedFlapsAllowed := true.
+			self globalFlapTabs.
+			"This will create them"
+			ActiveWorld addGlobalFlaps.
 			self doAutomaticLayoutOfFlapsIfAppropriate.
-			FlapTab allInstancesDo:
-				[:aTab | aTab computeEdgeFraction].
-			ActiveWorld reformulateUpdatingMenus]]
+			FlapTab
+				allInstancesDo: [:aTab | aTab computeEdgeFraction].
+			ActiveWorld reformulateUpdatingMenus]

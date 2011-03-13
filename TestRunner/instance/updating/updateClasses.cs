@@ -3,6 +3,7 @@ updateClasses
 	classesForCategories := self findClassesForCategories: categoriesSelected.
 	classes := classesForCategories asArray
 		sort: [ :a :b | self sortClass: a before: b ].
+	classIndex := 0.
 	classesSelected := classesSelected isNil
 		ifTrue: [ classesForCategories ]
 		ifFalse: [ 

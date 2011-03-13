@@ -1,2 +1,0 @@
-addCategoryViewer	
-	self addCategoryViewerFor: self likelyCategoryToShow

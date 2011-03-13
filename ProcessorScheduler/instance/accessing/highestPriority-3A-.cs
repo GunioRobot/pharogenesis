@@ -6,9 +6,9 @@ highestPriority: newHighestPriority
 		and: [self anyProcessesAbove: newHighestPriority])
 			ifTrue: [self error: 'There are processes with priority higher than '
 													,newHighestPriority printString].
-	newProcessLists _ Array new: newHighestPriority.
+	newProcessLists := Array new: newHighestPriority.
 	1 to: ((quiescentProcessLists size) min: (newProcessLists size)) do: 
 		[:priority | newProcessLists at: priority put: (quiescentProcessLists at: priority)].
 	quiescentProcessLists size to: newProcessLists size do: 
 		[:priority | newProcessLists at: priority put: LinkedList new].
-	quiescentProcessLists _ newProcessLists
+	quiescentProcessLists := newProcessLists

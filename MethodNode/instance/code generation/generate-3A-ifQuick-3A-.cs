@@ -2,7 +2,7 @@ generate: trailer ifQuick: methodBlock
 	| v |
 	(primitive = 0 and: [arguments size = 0 and: [block isQuick]])
 		ifFalse: [^ self].
-	v _ block code.
+	v := block code.
 	v < 0
 		ifTrue: [^ self].
 	v = LdSelf

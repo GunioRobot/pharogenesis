@@ -1,3 +1,0 @@
-isPrototypeTurtlePlayer
-
-	^ true.

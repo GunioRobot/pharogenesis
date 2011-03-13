@@ -1,3 +1,3 @@
 target: anObject
 
-	target _ anObject.
+	target := anObject.

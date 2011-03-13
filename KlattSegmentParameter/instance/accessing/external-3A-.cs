@@ -1,2 +1,0 @@
-external: aNumber
-	external := aNumber

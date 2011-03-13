@@ -1,35 +1,35 @@
 initialize
 	"ParseNode initialize. VariableNode initialize"
-	LdInstType _ 1.
-	LdTempType _ 2.
-	LdLitType _ 3.
-	LdLitIndType _ 4.
-	SendType _ 5.
-	CodeBases _ #(0 16 32 64 208 ).
-	CodeLimits _ #(16 16 32 32 16 ).
-	LdSelf _ 112.
-	LdTrue _ 113.
-	LdFalse _ 114.
-	LdNil _ 115.
-	LdMinus1 _ 116.
-	LoadLong _ 128.
-	Store _ 129.
-	StorePop _ 130.
-	ShortStoP _ 96.
-	SendLong _ 131.
-	DblExtDoAll _ 132.
-	SendLong2 _ 134.
-	LdSuper _ 133.
-	Pop _ 135.
-	Dup _ 136.
-	LdThisContext _ 137.
-	EndMethod _ 124.
-	EndRemote _ 125.
-	Jmp _ 144.
-	Bfp _ 152.
-	JmpLimit _ 8.
-	JmpLong _ 164.  "code for jmp 0"
-	BtpLong _ 168.
-	SendPlus _ 176.
-	Send _ 208.
-	SendLimit _ 16
+	LdInstType := 1.
+	LdTempType := 2.
+	LdLitType := 3.
+	LdLitIndType := 4.
+	SendType := 5.
+	CodeBases := #(0 16 32 64 208 ).
+	CodeLimits := #(16 16 32 32 16 ).
+	LdSelf := 112.
+	LdTrue := 113.
+	LdFalse := 114.
+	LdNil := 115.
+	LdMinus1 := 116.
+	LoadLong := 128.
+	Store := 129.
+	StorePop := 130.
+	ShortStoP := 96.
+	SendLong := 131.
+	DblExtDoAll := 132.
+	SendLong2 := 134.
+	LdSuper := 133.
+	Pop := 135.
+	Dup := 136.
+	LdThisContext := 137.
+	EndMethod := 124.
+	EndRemote := 125.
+	Jmp := 144.
+	Bfp := 152.
+	JmpLimit := 8.
+	JmpLong := 164.  "code for jmp 0"
+	BtpLong := 168.
+	SendPlus := 176.
+	Send := 208.
+	SendLimit := 16

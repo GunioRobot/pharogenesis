@@ -1,0 +1,3 @@
+setUp
+	
+	testSwitch := SimpleSwitchMorph new

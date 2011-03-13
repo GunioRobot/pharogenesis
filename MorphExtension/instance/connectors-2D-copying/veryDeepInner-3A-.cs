@@ -6,24 +6,24 @@ veryDeepInner: deepCopier
 
 	| namesOfWeaklyCopiedProperties weaklyCopiedValues |
 	super veryDeepInner: deepCopier.
-	locked _ locked veryDeepCopyWith: deepCopier.
-	visible _ visible veryDeepCopyWith: deepCopier.
-	sticky _ sticky veryDeepCopyWith: deepCopier.
-	balloonText _ balloonText veryDeepCopyWith: deepCopier.
-	balloonTextSelector _ balloonTextSelector veryDeepCopyWith: deepCopier.
-	externalName _ externalName veryDeepCopyWith: deepCopier.
-	isPartsDonor _ isPartsDonor veryDeepCopyWith: deepCopier.
-	actorState _ actorState veryDeepCopyWith: deepCopier.
-	player _ player veryDeepCopyWith: deepCopier.		"Do copy the player of this morph"
-	eventHandler _ eventHandler veryDeepCopyWith: deepCopier. 	"has its own restrictions"
+	locked := locked veryDeepCopyWith: deepCopier.
+	visible := visible veryDeepCopyWith: deepCopier.
+	sticky := sticky veryDeepCopyWith: deepCopier.
+	balloonText := balloonText veryDeepCopyWith: deepCopier.
+	balloonTextSelector := balloonTextSelector veryDeepCopyWith: deepCopier.
+	externalName := externalName veryDeepCopyWith: deepCopier.
+	isPartsDonor := isPartsDonor veryDeepCopyWith: deepCopier.
+	actorState := actorState veryDeepCopyWith: deepCopier.
+	player := player veryDeepCopyWith: deepCopier.		"Do copy the player of this morph"
+	eventHandler := eventHandler veryDeepCopyWith: deepCopier. 	"has its own restrictions"
 
 	otherProperties ifNil: [ ^self ].
 
 	otherProperties := otherProperties copy.
 	self propertyNamesNotCopied do: [ :propName | otherProperties removeKey: propName ifAbsent: [] ].
 
-	namesOfWeaklyCopiedProperties _ self copyWeakly.
-	weaklyCopiedValues _ namesOfWeaklyCopiedProperties collect: [  :propName | otherProperties removeKey: propName ifAbsent: [] ].
+	namesOfWeaklyCopiedProperties := self copyWeakly.
+	weaklyCopiedValues := namesOfWeaklyCopiedProperties collect: [  :propName | otherProperties removeKey: propName ifAbsent: [] ].
 
 	"Now copy all the others."
 	otherProperties := otherProperties veryDeepCopyWith: deepCopier.

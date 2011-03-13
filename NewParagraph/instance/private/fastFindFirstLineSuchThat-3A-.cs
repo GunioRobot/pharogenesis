@@ -5,12 +5,12 @@ fastFindFirstLineSuchThat: lineBlock
 	increasing line numbers (as, eg, yval > somey or start char > somex).
 	If lineBlock is not true for any element, return size+1."
 	| index low high |
-	low _ 1.
-	high _ lines size.
-	[index _ high + low // 2.
+	low := 1.
+	high := lines size.
+	[index := high + low // 2.
 	low > high]
 		whileFalse: 
 			[(lineBlock value: (lines at: index))
-				ifTrue: [high _ index - 1]
-				ifFalse: [low _ index + 1]].
+				ifTrue: [high := index - 1]
+				ifFalse: [low := index + 1]].
 	^ low

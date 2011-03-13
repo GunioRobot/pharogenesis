@@ -1,2 +1,0 @@
-theClassName
-	^ self theClass name

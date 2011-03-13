@@ -1,5 +1,5 @@
 update: aSymbol 
 	aSymbol == #contents
 		ifTrue: 
-			[lastValue _ value contents.
+			[lastValue := value contents.
 			self changed]

@@ -3,4 +3,4 @@ Object
 	instanceVariableNames: 'prototype'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Tests-Utilities'
+	category: 'SUnit-Utilities'

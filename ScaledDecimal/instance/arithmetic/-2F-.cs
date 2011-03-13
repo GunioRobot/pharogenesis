@@ -1,7 +1,3 @@
-/ operand 
-	"Implementation of Number 'arithmetic' method."
-	#ScalDec.
-	"Protocol: ANSI <number>."
-	operand = 0 ifTrue: [^ (ZeroDivide dividend: self) signal].
-	(operand isKindOf: ScaledDecimal) ifTrue: [^ ScaledDecimal newFromNumber: fraction / operand asFraction scale: (scale max: operand scale)].
-	^ operand adaptToScaledDecimal: self andSend: #/
+/ aNumber
+	aNumber class = self class ifTrue: [^self asFraction / aNumber asFraction asScaledDecimal: (scale max: aNumber scale)].
+	^self coerce: self asFraction / aNumber

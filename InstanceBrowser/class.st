@@ -1,1 +1,0 @@
-InstanceBrowser class instanceVariableNames: ''

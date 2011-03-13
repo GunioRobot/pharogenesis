@@ -1,6 +1,6 @@
 ClassTestCase
 	subclass: #CompiledMethodTest
-	instanceVariableNames: ''
+	instanceVariableNames: 'x y'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'KernelTests-Methods'

@@ -9,7 +9,7 @@ has been replaced, probably because a
 "look like" script was run.  Please dismiss
 the menu and get a new one!.  Sorry!' translated].
 
-	((aGraphic _ self valueOfProperty: #baseGraphic)
+	((aGraphic := self valueOfProperty: #baseGraphic)
 				notNil and: [aGraphic ~= originalForm])
 		ifTrue:
 			[self setProperty: #baseGraphic toValue: originalForm]

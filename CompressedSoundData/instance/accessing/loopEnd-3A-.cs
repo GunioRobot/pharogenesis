@@ -1,3 +1,0 @@
-loopEnd: anInteger
-
-	loopEnd := anInteger.

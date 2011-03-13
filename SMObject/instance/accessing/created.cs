@@ -1,2 +1,0 @@
-created
-	^TimeStamp fromSeconds: created

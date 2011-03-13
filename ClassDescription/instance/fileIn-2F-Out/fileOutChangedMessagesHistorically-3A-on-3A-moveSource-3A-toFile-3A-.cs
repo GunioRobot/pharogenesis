@@ -5,9 +5,9 @@ fileOutChangedMessagesHistorically: aSet on: aFileStream moveSource: moveSource 
 	Note when this method is called with moveSource=true, it is condensing the
 	.changes file, and should only write a preamble for every method."
 	| org sels |
-	(org _ self organization) categories do: 
+	(org := self organization) categories do: 
 		[:cat | 
-		sels _ (org listAtCategoryNamed: cat) select: [:sel | aSet includes: sel].
+		sels := (org listAtCategoryNamed: cat) select: [:sel | aSet includes: sel].
 		sels do:
 			[:sel |  self printMethodChunkHistorically: sel on: aFileStream
 							moveSource: moveSource toFile: fileIndex]]

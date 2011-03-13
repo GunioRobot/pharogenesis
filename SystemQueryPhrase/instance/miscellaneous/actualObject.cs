@@ -1,2 +1,0 @@
-actualObject
-	^ nil

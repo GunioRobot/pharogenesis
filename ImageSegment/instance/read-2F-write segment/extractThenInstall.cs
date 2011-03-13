@@ -5,7 +5,7 @@ extractThenInstall
 	state = #activeCopy ifFalse: [self errorWrongState].
 	arrayOfRoots elementsForwardIdentityTo:
 		(arrayOfRoots collect: [:r | r rootStubInImageSegment: self]).
-	state _ #active.
-	newRoots _ self loadSegmentFrom: segment outPointers: outPointers.
-	state _ #inactive.
+	state := #active.
+	newRoots := self loadSegmentFrom: segment outPointers: outPointers.
+	state := #inactive.
 	arrayOfRoots elementsForwardIdentityTo: newRoots.

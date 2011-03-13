@@ -3,31 +3,31 @@ storeToMakeRoom
 	Include the size of the project about to come in."
 
 	| params memoryEnd goalFree cnt gain proj skip tried |
-	GoalFreePercent ifNil: [GoalFreePercent _ 33].
-	GoalNotMoreThan ifNil: [GoalNotMoreThan _ 20000000].
-	params _ SmalltalkImage current  getVMParameters.
-	memoryEnd	_ params at: 3.
-"	youngSpaceEnd	_ params at: 2.
-	free _ memoryEnd - youngSpaceEnd.
+	GoalFreePercent ifNil: [GoalFreePercent := 33].
+	GoalNotMoreThan ifNil: [GoalNotMoreThan := 20000000].
+	params := SmalltalkImage current  getVMParameters.
+	memoryEnd	:= params at: 3.
+"	youngSpaceEnd	:= params at: 2.
+	free := memoryEnd - youngSpaceEnd.
 "
-	goalFree _ GoalFreePercent asFloat / 100.0 * memoryEnd.
-	goalFree _ goalFree min: GoalNotMoreThan.
+	goalFree := GoalFreePercent asFloat / 100.0 * memoryEnd.
+	goalFree := goalFree min: GoalNotMoreThan.
 	world isInMemory ifFalse: ["enough room to bring it in"
-		goalFree _ goalFree + (self projectParameters at: #segmentSize ifAbsent: [0])].
-	cnt _ 30.
-	gain _ Smalltalk garbageCollectMost.
+		goalFree := goalFree + (self projectParameters at: #segmentSize ifAbsent: [0])].
+	cnt := 30.
+	gain := Smalltalk garbageCollectMost.
 	"skip a random number of projects that are in memory"
-	proj _ self.  skip _ 6 atRandom.
-	[proj _ proj nextInstance ifNil: [Project someInstance].
-		proj world isInMemory ifTrue: [skip _ skip - 1].
+	proj := self.  skip := 6 atRandom.
+	[proj := proj nextInstance ifNil: [Project someInstance].
+		proj world isInMemory ifTrue: [skip := skip - 1].
 		skip > 0] whileTrue.
-	cnt _ 0.  tried _ 0.
+	cnt := 0.  tried := 0.
 
 	[gain > goalFree] whileFalse: [
-		proj _ proj nextInstance ifNil: [Project someInstance].
+		proj := proj nextInstance ifNil: [Project someInstance].
 		proj storeSegment ifTrue: ["Yes, did send its morphs to the disk"
-			gain _ gain + (proj projectParameters at: #segmentSize 
+			gain := gain + (proj projectParameters at: #segmentSize 
 						ifAbsent: [20000]).	"a guess"
 			Beeper beep.
-			(cnt _ cnt + 1) > 5 ifTrue: [^ self]].	"put out 5 at most"
-		(tried _ tried + 1) > 23 ifTrue: [^ self]].	"don't get stuck in a loop"
+			(cnt := cnt + 1) > 5 ifTrue: [^ self]].	"put out 5 at most"
+		(tried := tried + 1) > 23 ifTrue: [^ self]].	"don't get stuck in a loop"

@@ -2,7 +2,7 @@ step
 	| newBounds |
 	target
 		ifNil: [^ self].
-	newBounds _ target isWorldMorph
+	newBounds := target isWorldMorph
 				ifTrue: [target bounds]
 				ifFalse: [self localHaloBoundsFor: target renderedMorph].
 	newBounds = self bounds

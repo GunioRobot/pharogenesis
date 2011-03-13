@@ -1,2 +1,2 @@
 arguments: list
-	arguments _ list
+	arguments := list

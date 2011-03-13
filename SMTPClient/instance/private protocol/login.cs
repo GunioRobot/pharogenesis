@@ -1,5 +1,6 @@
 login
 	self user ifNil: [^self].
+	self initiateSession.
 	self sendCommand: 'AUTH LOGIN ' , (self encodeString: self user).
 	[self checkResponse]
 		on: TelnetProtocolError

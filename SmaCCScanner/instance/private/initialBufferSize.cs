@@ -1,2 +1,0 @@
-initialBufferSize
-	^128

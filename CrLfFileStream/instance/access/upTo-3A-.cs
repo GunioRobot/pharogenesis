@@ -1,6 +1,6 @@
 upTo: aCharacter
 	| newStream char |
-	newStream := WriteStream on: (String new: 100).
+	newStream := (String new: 100) writeStream.
 	[(char := self next) isNil or: [char == aCharacter]]
 		whileFalse: [newStream nextPut: char].
 	^ newStream contents

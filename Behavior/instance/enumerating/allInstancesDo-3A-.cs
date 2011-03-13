@@ -6,10 +6,10 @@ allInstancesDo: aBlock
 	it is essential to compute next before aBlock value: inst."
 	| inst next |
 	self ==  UndefinedObject ifTrue: [^ aBlock value: nil].
-	inst _ self someInstance.
+	inst := self someInstance.
 	[inst == nil]
 		whileFalse:
 		[
-		next _ inst nextInstance.
+		next := inst nextInstance.
 		aBlock value: inst.
-		inst _ next]
+		inst := next]

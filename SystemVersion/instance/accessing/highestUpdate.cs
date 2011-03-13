@@ -1,8 +1,8 @@
 highestUpdate
 	| sortedUpdates |
 	highestUpdate ifNil: [
-		sortedUpdates _ self updates asSortedCollection.
-		highestUpdate _ (sortedUpdates isEmpty
+		sortedUpdates := self updates asSortedCollection.
+		highestUpdate := (sortedUpdates isEmpty
 			ifTrue: [0]
 			ifFalse: [sortedUpdates last])].
 	^highestUpdate

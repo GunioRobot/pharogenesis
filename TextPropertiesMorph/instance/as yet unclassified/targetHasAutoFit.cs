@@ -1,3 +1,0 @@
-targetHasAutoFit
-
-	^myTarget isAutoFit

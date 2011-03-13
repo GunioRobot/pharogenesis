@@ -1,2 +1,2 @@
 randomGenerator: aGenerator
-	randomGenerator _ aGenerator
+	randomGenerator := aGenerator

@@ -1,7 +1,7 @@
 addRepositoryToPackage
-	self repository ifNotNilDo:
+	self repository ifNotNil:
 		[:repos |
-		(self pickWorkingCopySatisfying: [ :p | (p repositoryGroup includes: repos) not ]) ifNotNilDo:
+		(self pickWorkingCopySatisfying: [ :p | (p repositoryGroup includes: repos) not ]) ifNotNil:
 			[:wc |
 			workingCopy := wc.
 			workingCopy repositoryGroup addRepository: repos.

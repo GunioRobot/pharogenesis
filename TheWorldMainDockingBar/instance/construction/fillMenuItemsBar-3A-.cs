@@ -1,5 +1,6 @@
 fillMenuItemsBar: aDockingBar 
 	"Private - fill the given docking bar"
+	
 	| squeakIcon homeIcon configurationIcon helpIcon squeakLabel projectLabel configurationLabel helpLabel |
 	(aDockingBar isDockingBar not
 			or: [Preferences tinyDisplay])

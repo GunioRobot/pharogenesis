@@ -4,7 +4,7 @@ buttonForCategory: aService
 	| aButton |
 	aButton := PluggableButtonMorph 
 				on: [:button | aService requestor: button requestor. 
-								self class openMenuFor: aService] fixTemps
+								self class openMenuFor: aService] 
 				getState: nil
 				action: #value:.
 	aButton arguments: (Array with: aButton).

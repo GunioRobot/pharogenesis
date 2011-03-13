@@ -1,1 +1,0 @@
-TranslatedMethod class instanceVariableNames: ''

@@ -1,2 +1,2 @@
 extraSpace: aPoint
-	extraSpace _ aPoint
+	extraSpace := aPoint

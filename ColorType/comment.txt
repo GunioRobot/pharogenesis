@@ -1,1 +1,0 @@
-A data type representing a Color value.

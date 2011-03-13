@@ -6,7 +6,7 @@ readServer: serverList special: indexPrefix updatesThrough: maxNumber saveLocall
 	| urls failed loaded docQueue this nextDoc docQueueSema str updateName |
 	Cursor wait showWhile: [
 
-	urls := self newUpdatesOn: (serverList collect: [:url | url, 'updates/']) 
+	urls := self newUpdatesOn: (serverList collect: [:url | url, 'updates/','pharo', ScriptLoader currentMajorVersionNumber asString, '/']) 
 				special: indexPrefix
 				throughNumber: maxNumber.
 	loaded := 0.
@@ -36,7 +36,7 @@ readServer: serverList special: indexPrefix updatesThrough: maxNumber saveLocall
 			nextDoc peek asciiValue = 4	"pure object file"
 				ifTrue: [failed := this]].	"Must be fileIn, not pure object file"
 		failed ifNil: [
-			"(this endsWith: '.html') ifTrue: [doc _ doc asHtml]."
+			"(this endsWith: '.html') ifTrue: [doc := doc asHtml]."
 				"HTML source code not supported here yet"
 			updateImage
 				ifTrue: [

@@ -1,0 +1,2 @@
+closeBoxAttribute
+	^1

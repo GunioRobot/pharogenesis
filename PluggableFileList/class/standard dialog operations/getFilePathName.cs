@@ -1,3 +1,0 @@
-getFilePathName
-
-	^self getFilePathNameDialog open

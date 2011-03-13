@@ -1,0 +1,2 @@
+drawMenuBar
+	self primDrawMenuBar

@@ -4,12 +4,11 @@ moveCursor: directionBlock forward: forward specialBlock: specialBlock
 	specialBlock is a one argumentBlock that computes the new position from a given one under the alternate semantics.
 	Note that directionBlock always is evaluated first."
 	| shift indices newPosition |
-	shift _ sensor leftShiftDown.
-	indices _ self setIndices: shift forward: forward.
-	newPosition _ directionBlock value: (indices at: #moving).
-	(sensor commandKeyPressed or:[sensor controlKeyPressed])
-		ifTrue: [newPosition _ specialBlock value: newPosition].
-	sensor keyboard.
+	shift := Sensor leftShiftDown.
+	indices := self setIndices: shift forward: forward.
+	newPosition := directionBlock value: (indices at: #moving).
+	(Sensor commandKeyPressed or:[Sensor controlKeyPressed])
+		ifTrue: [newPosition := specialBlock value: newPosition].
 	shift
 		ifTrue: [self selectMark: (indices at: #fixed) point: newPosition - 1]
 		ifFalse: [self selectAt: newPosition]

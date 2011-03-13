@@ -4,10 +4,10 @@ hasInstVarRef
 	| method scanner end printer |
 
 	home ifNil: [^false].
-	method _ self method.
-	end _ self endPC.
-	scanner _ InstructionStream new method: method pc: startpc.
-	printer _ InstVarRefLocator new.
+	method := self method.
+	end := self endPC.
+	scanner := InstructionStream new method: method pc: startpc.
+	printer := InstVarRefLocator new.
 
 	[scanner pc <= end] whileTrue: [
 		(printer interpretNextInstructionUsing: scanner) ifTrue: [^true].

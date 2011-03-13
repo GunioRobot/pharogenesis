@@ -1,5 +1,5 @@
 testCreation
-	"self run: #testCreation"
+	"self run: #testCreation" 
 	"self debug: #testCreation"
 		
 	| bag |

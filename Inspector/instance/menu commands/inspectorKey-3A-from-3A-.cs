@@ -8,7 +8,5 @@ inspectorKey: aChar from: view
 	aChar == $c ifTrue: [^ self copyName].
 	aChar == $p ifTrue: [^ self browseFullProtocol].
 	aChar == $N ifTrue: [^ self browseClassRefs].
-	aChar == $t ifTrue: [^ self tearOffTile].
-	aChar == $v ifTrue: [^ self viewerForValue].
 
 	^ self arrowKey: aChar from: view

@@ -1,30 +1,30 @@
 on: eventName send: selector to: recipient
 	eventName == #mouseDown ifTrue:
-		[mouseDownRecipient _ recipient.  mouseDownSelector _ selector. ^ self].
+		[mouseDownRecipient := recipient.  mouseDownSelector := selector. ^ self].
 	eventName == #mouseMove ifTrue:
-		[mouseMoveRecipient _ recipient.  mouseMoveSelector _ selector. ^ self].
+		[mouseMoveRecipient := recipient.  mouseMoveSelector := selector. ^ self].
 	eventName == #mouseStillDown ifTrue:
-		[mouseStillDownRecipient _ recipient.  mouseStillDownSelector _ selector. ^ self].
+		[mouseStillDownRecipient := recipient.  mouseStillDownSelector := selector. ^ self].
 	eventName == #mouseUp ifTrue:
-		[mouseUpRecipient _ recipient.  mouseUpSelector _ selector. ^ self].
+		[mouseUpRecipient := recipient.  mouseUpSelector := selector. ^ self].
 	eventName == #mouseEnter ifTrue:
-		[mouseEnterRecipient _ recipient.  mouseEnterSelector _ selector. ^ self].
+		[mouseEnterRecipient := recipient.  mouseEnterSelector := selector. ^ self].
 	eventName == #mouseLeave ifTrue:
-		[mouseLeaveRecipient _ recipient.  mouseLeaveSelector _ selector. ^ self].
+		[mouseLeaveRecipient := recipient.  mouseLeaveSelector := selector. ^ self].
 	eventName == #mouseEnterDragging ifTrue:
-		[mouseEnterDraggingRecipient _ recipient.  mouseEnterDraggingSelector _ selector. ^ self].
+		[mouseEnterDraggingRecipient := recipient.  mouseEnterDraggingSelector := selector. ^ self].
 	eventName == #mouseLeaveDragging ifTrue:
-		[mouseLeaveDraggingRecipient _ recipient.  mouseLeaveDraggingSelector _ selector. ^ self].
+		[mouseLeaveDraggingRecipient := recipient.  mouseLeaveDraggingSelector := selector. ^ self].
 	eventName == #click ifTrue:
-		[clickRecipient _ recipient. clickSelector _ selector. ^ self].
+		[clickRecipient := recipient. clickSelector := selector. ^ self].
 	eventName == #doubleClick ifTrue:
-		[doubleClickRecipient _ recipient. doubleClickSelector _ selector. ^ self].
+		[doubleClickRecipient := recipient. doubleClickSelector := selector. ^ self].
 	eventName == #doubleClickTimeout ifTrue:
-		[doubleClickTimeoutRecipient _ recipient. doubleClickTimeoutSelector _ selector. ^ self].
+		[doubleClickTimeoutRecipient := recipient. doubleClickTimeoutSelector := selector. ^ self].
 	eventName == #startDrag ifTrue:
-		[startDragRecipient _ recipient. startDragSelector _ selector. ^ self].
+		[startDragRecipient := recipient. startDragSelector := selector. ^ self].
 	eventName == #keyStroke ifTrue:
-		[keyStrokeRecipient _ recipient.  keyStrokeSelector _ selector. ^ self].
+		[keyStrokeRecipient := recipient.  keyStrokeSelector := selector. ^ self].
 	eventName == #gesture ifTrue:
 		[ ^self onGestureSend: selector to: recipient ].
 	self error: 'Event name, ' , eventName , ' is not recognizable.'

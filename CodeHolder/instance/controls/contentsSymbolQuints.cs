@@ -12,12 +12,9 @@ contentsSymbolQuints
 (documentation	toggleShowDocumentation	showingDocumentationString	'documentation'		'the first comment in the method')
 -
 (prettyPrint		togglePrettyPrint 			prettyPrintString			'prettyPrint'			'the method source presented in a standard text format')
-(colorPrint		toggleColorPrint				colorPrintString				'colorPrint'			'the method source in a standard text format with colors to distinguish structural parts') 
 -
 (showDiffs		toggleRegularDiffing		showingRegularDiffsString	'showDiffs'				'the textual source diffed from its prior version')
 (prettyDiffs		togglePrettyDiffing			showingPrettyDiffsString	'prettyDiffs'		'formatted textual source diffed from formatted form of prior version')
 -
 (decompile		toggleDecompile				showingDecompileString		'decompile'			'source code decompiled from byteCodes')
-(byteCodes		toggleShowingByteCodes		showingByteCodesString		'byteCodes'			'the bytecodes that comprise the compiled method')
--
-(tiles			toggleShowingTiles 			showingTilesString			'tiles'				'universal tiles representing the method'))
+(byteCodes		toggleShowingByteCodes		showingByteCodesString		'byteCodes'			'the bytecodes that comprise the compiled method'))

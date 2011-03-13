@@ -28,11 +28,6 @@ drawOn: aCanvas
 				during: [ :canvas | canvas fullDrawMorph: backgroundMorph ]]
 			ifFalse: [ aCanvas fullDrawMorph: backgroundMorph ]].
 
-	"draw turtle trails"
-	self updateTrailsForm.
-	turtleTrailsForm 
-		ifNotNil: [aCanvas paintImage: turtleTrailsForm at: self position].
-
 	"draw cursor"
 	(submorphs notEmpty and: [self indicateCursor]) 
 		ifTrue: 

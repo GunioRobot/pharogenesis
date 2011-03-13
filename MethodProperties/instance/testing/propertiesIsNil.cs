@@ -1,0 +1,3 @@
+propertiesIsNil
+
+	^ properties isNil

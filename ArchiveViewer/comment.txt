@@ -1,1 +1,0 @@
-This is a viewer window that allows editing and viewing of Zip archives.

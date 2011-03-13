@@ -3,7 +3,7 @@ findElementOrNil: anObject
 
 	| index |
 
-	index _ self scanFor: anObject.
+	index := self scanFor: anObject.
 	index > 0 ifTrue: [^index].
 
 	"Bad scene.  Neither have we found a matching element

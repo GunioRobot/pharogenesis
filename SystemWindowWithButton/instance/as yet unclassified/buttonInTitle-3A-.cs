@@ -1,3 +1,3 @@
 buttonInTitle: aButton
-	buttonInTitle _ aButton.
+	buttonInTitle := aButton.
 	self addMorphFront: aButton

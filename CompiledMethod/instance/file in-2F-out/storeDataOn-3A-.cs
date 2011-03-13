@@ -3,11 +3,11 @@ storeDataOn: aDataStream
 
 	| byteLength lits |
 	"No inst vars of the normal type"
-	byteLength _ self basicSize.
+	byteLength := self basicSize.
 	aDataStream
 		beginInstance: self class
 		size: byteLength.
-	lits _ self numLiterals + 1.	"counting header"
+	lits := self numLiterals + 1.	"counting header"
 	1 to: lits do:
 		[:ii | aDataStream nextPut: (self objectAt: ii)].
 	lits*4+1 to: byteLength do:

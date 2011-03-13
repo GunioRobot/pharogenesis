@@ -1,2 +1,2 @@
 cellSize: aPoint
-	cellSize _ aPoint
+	cellSize := aPoint

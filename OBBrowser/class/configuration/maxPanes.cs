@@ -1,2 +1,0 @@
-maxPanes
-	^ self paneCount

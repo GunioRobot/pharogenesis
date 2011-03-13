@@ -1,3 +1,0 @@
-getFolder
-
-	^self getFolderDialog open

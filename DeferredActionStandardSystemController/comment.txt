@@ -1,1 +1,0 @@
-This is a StandardSystemController that can queue up objects to be evaluated before its control loop.

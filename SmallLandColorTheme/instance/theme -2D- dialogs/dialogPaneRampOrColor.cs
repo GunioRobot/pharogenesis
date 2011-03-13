@@ -1,2 +1,0 @@
-dialogPaneRampOrColor
-	^ self dialogTextBoxColor

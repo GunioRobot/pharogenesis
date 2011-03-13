@@ -3,6 +3,6 @@ asFileName
 	name."
 
 	| string checkedString |
-	string _ FileDirectory checkName: self fixErrors: true.
-	checkedString _ (FilePath pathName: string) asVmPathName.
+	string := FileDirectory checkName: self fixErrors: true.
+	checkedString := (FilePath pathName: string) asVmPathName.
 	^ (FilePath pathName: checkedString isEncoded: true) asSqueakPathName.

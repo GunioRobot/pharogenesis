@@ -1,1 +1,0 @@
-ButtonProperties class instanceVariableNames: ''

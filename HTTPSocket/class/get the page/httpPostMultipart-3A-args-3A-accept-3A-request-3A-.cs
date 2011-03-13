@@ -27,21 +27,21 @@ httpPostMultipart: url args: argsDict accept: mimeType request: requestString
 
 	mimeBorder := '----squeak-georgia-tech-', Time millisecondClockValue printString, '-csl-cool-stuff-----'.
 	"encode the arguments dictionary"
-	argsStream := WriteStream on: String new.
+	argsStream := String new writeStream.
 	argsDict associationsDo: [:assoc |
 		assoc value do: [ :value |
 		"print the boundary"
-		argsStream nextPutAll: '--', mimeBorder, CrLf.
+		argsStream nextPutAll: '--', mimeBorder, String crlf.
 		" check if it's a non-text field "
 		argsStream nextPutAll: 'Content-disposition: multipart/form-data; name="', assoc key, '"'.
 		(value isKindOf: MIMEDocument)
 			ifFalse: [fieldValue := value]
-			ifTrue: [argsStream nextPutAll: ' filename="', value url pathForFile, '"', CrLf, 'Content-Type: ', value contentType.
+			ifTrue: [argsStream nextPutAll: ' filename="', value url pathForFile, '"', String crlf, 'Content-Type: ', value contentType.
 				fieldValue := (value content
 					ifNil: [(FileStream fileNamed: value url pathForFile) contentsOfEntireFile]
 					ifNotNil: [value content]) asString].
 " Transcript show: 'field=', key, '; value=', fieldValue; cr. "
-		argsStream nextPutAll: CrLf, CrLf, fieldValue, CrLf.
+		argsStream nextPutAll: String crlf, String crlf, fieldValue, String crlf.
 	]].
 	argsStream nextPutAll: '--', mimeBorder, '--'.
 
@@ -53,23 +53,23 @@ httpPostMultipart: url args: argsDict accept: mimeType request: requestString
 
 	s := HTTPSocket new.
 	s connectTo: serverAddr port: port.
-	s waitForConnectionUntil: self standardDeadline.
+	s waitForConnectionFor: self standardTimeout.
 	Transcript cr; show: serverName, ':', port asString; cr.
-	s sendCommand: 'POST ', page, ' HTTP/1.1', CrLf, 
-		(mimeType ifNotNil: ['ACCEPT: ', mimeType, CrLf] ifNil: ['']),
-		'ACCEPT: text/html', CrLf,	"Always accept plain text"
+	s sendCommand: 'POST ', page, ' HTTP/1.1', String crlf, 
+		(mimeType ifNotNil: ['ACCEPT: ', mimeType, String crlf] ifNil: ['']),
+		'ACCEPT: text/html', String crlf,	"Always accept plain text"
 		HTTPProxyCredentials,
 		HTTPBlabEmail,	"may be empty"
 		requestString,	"extra user request. Authorization"
-		self userAgentString, CrLf,
-		'Content-type: multipart/form-data; boundary=', mimeBorder, CrLf,
-		'Content-length: ', argsStream contents size printString, CrLf,
-		'Host: ', specifiedServer, CrLf.  "blank line automatically added"
+		self userAgentString, String crlf,
+		'Content-type: multipart/form-data; boundary=', mimeBorder, String crlf,
+		'Content-length: ', argsStream contents size printString, String crlf,
+		'Host: ', specifiedServer, String crlf.  "blank line automatically added"
 
 	s sendCommand: argsStream contents.
 
 	"get the header of the reply"
-	list := s getResponseUpTo: CrLf, CrLf.	"list = header, CrLf, CrLf, beginningOfData"
+	list := s getResponseUpTo: String crlf, String crlf.	"list = header, CrLf, CrLf, beginningOfData"
 	header := list at: 1.
 	"Transcript show: page; cr; show: argsStream contents; cr; show: header; cr."
 	firstData := list at: 3.

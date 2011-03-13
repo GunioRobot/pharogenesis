@@ -1,1 +1,0 @@
-ScriptEditorMorph class instanceVariableNames: ''

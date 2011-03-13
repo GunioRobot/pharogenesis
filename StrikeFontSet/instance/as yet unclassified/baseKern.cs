@@ -1,3 +1,3 @@
 baseKern
 
-	^ fontArray first baseKern.
+	^ (fontArray  at: 1) baseKern.

@@ -5,4 +5,4 @@
 	whatIsAPrimitive. "
 
 	<primitive: 46>
-	^ aNumber adaptToFloat: self andSend: #>
+	^ aNumber adaptToFloat: self andCompare: #>=

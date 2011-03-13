@@ -3,7 +3,7 @@ copyTo: aContext blocks: dict
 
 	| copy |
 	self == aContext ifTrue: [^ nil].
-	copy _ self copy.
+	copy := self copy.
 	(dict at: self home ifAbsentPut: [OrderedCollection new]) add: copy.
 	self sender ifNotNil: [
 		copy privSender: (self sender copyTo: aContext blocks: dict)].

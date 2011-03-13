@@ -4,5 +4,5 @@ listSpacing
 		#none - all rows may have different heights
 	"
 	| props |
-	props _ self layoutProperties.
+	props := self layoutProperties.
 	^props ifNil:[#none] ifNotNil:[props listSpacing].

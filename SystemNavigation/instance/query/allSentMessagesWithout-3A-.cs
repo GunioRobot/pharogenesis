@@ -2,9 +2,9 @@ allSentMessagesWithout: classesAndMessagesPair
 	"Answer the set of selectors which are sent somewhere in the system,  
 	computed in the absence of the supplied classes and messages."
 	| sent absentClasses absentSelectors |
-	sent _ IdentitySet new: CompiledMethod instanceCount.
-	absentClasses _ classesAndMessagesPair first.
-	absentSelectors _ classesAndMessagesPair second.
+	sent := IdentitySet new: CompiledMethod instanceCount.
+	absentClasses := classesAndMessagesPair first.
+	absentSelectors := classesAndMessagesPair second.
 	self flag: #shouldBeRewrittenUsingSmalltalkAllClassesDo:.
 	"sd 29/04/03"
 	Cursor execute showWhile: [
@@ -16,8 +16,7 @@ allSentMessagesWithout: classesAndMessagesPair
 						ifTrue: [each selectors]
 						ifFalse: [each selectors copyWithoutAll: absentSelectors])
 						do: [:sel | "Include all sels, but not if sent by self"
-							(each compiledMethodAt: sel) literals
-								do: [:m | 
+							(each compiledMethodAt: sel) literalsDo: [:m | 
 									(m isSymbol)
 										ifTrue: ["might be sent"
 											m == sel

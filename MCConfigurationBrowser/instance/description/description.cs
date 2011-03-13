@@ -1,7 +1,7 @@
 description
-	self selectedDependency ifNotNilDo: [:dep | ^ ('Package: ', dep package name, String cr,
+	self selectedDependency ifNotNil: [:dep | ^ ('Package: ', dep package name, String cr,
 		dep versionInfo summary) asText].
-	self selectedRepository ifNotNilDo: [:repo | ^repo creationTemplate
+	self selectedRepository ifNotNil: [:repo | ^repo creationTemplate
 		ifNotNil: [repo creationTemplate asText]
 		ifNil: [repo asCreationTemplate asText addAttribute: TextColor red]].
 	^ ''

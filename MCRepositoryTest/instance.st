@@ -3,4 +3,4 @@ MCTestCase
 	instanceVariableNames: 'repository ancestors'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Monticello-Tests'
+	category: 'Tests-Monticello'

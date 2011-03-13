@@ -1,4 +1,4 @@
 style: newStyle
 	style == newStyle ifTrue:[^self].
-	style _ newStyle.
+	style := newStyle.
 	self releaseCachedState.

@@ -1,8 +1,8 @@
 filterFor: aFileStream
 
 	| rw |
-	name _ aFileStream name.
-	rw _ aFileStream isReadOnly not.
+	name := aFileStream name.
+	rw := aFileStream isReadOnly not.
 	aFileStream close.
 	self open: name forWrite: rw.
 	^self.

@@ -1,2 +1,0 @@
-scanForToken
-	^self subclassResponsibility

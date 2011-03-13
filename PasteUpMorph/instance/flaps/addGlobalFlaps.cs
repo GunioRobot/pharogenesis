@@ -2,10 +2,10 @@ addGlobalFlaps
 	"Must make global flaps adapt to world.  Do this even if not shown, so the old world will not be pointed at by the flaps."
 
 	| use thisWorld |
-	use _ Flaps sharedFlapsAllowed.
-	Project current flapsSuppressed ifTrue: [use _ false].
-	"Smalltalk isMorphic ifFalse: [use _ false]."
-	thisWorld _ use 
+	use := Flaps sharedFlapsAllowed.
+	Project current flapsSuppressed ifTrue: [use := false].
+	"Smalltalk isMorphic ifFalse: [use := false]."
+	thisWorld := use 
 		ifTrue: [self]
 		ifFalse: [PasteUpMorph new initForProject:  "fake to be flap owner"
 						WorldState new;

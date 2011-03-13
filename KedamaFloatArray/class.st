@@ -3,4 +3,4 @@ FloatArray
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'EToys-StarSqueak'
+	category: 'Collections-Arrayed'

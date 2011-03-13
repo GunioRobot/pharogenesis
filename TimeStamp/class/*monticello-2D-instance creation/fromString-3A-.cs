@@ -4,4 +4,4 @@ fromString: aString
 	 TimeStamp fromString: '1-10-2000 11:55:00 am'. 
 	"
 
-	^self readFrom: (ReadStream on: aString).
+	^self readFrom: aString readStream.

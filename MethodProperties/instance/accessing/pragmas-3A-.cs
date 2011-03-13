@@ -1,0 +1,2 @@
+pragmas: anArray
+	pragmas := anArray

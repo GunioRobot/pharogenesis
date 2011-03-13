@@ -1,8 +1,7 @@
-clippingTo: aRect do: aBlock
-	"Display clippingTo: Rectangle fromUser do:
-	[ScheduledControllers restore: Display fullBoundingBox]"
+clippingTo: aRect do: aBlock 
+	"Display clippingTo: Rectangle fromUser do:"
 	| saveClip |
-	saveClip _ clippingBox.
-	clippingBox _ aRect.
+	saveClip := clippingBox.
+	clippingBox := aRect.
 	aBlock value.
-	clippingBox _ saveClip
+	clippingBox := saveClip

@@ -1,1 +1,0 @@
-EToyListenerMorph class instanceVariableNames: ''

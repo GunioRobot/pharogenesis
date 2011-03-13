@@ -1,5 +1,5 @@
 testAt
-	"self run: #testAt"
+	"self run: #testAt" 
 
 	| heap |
 	heap := Heap new.

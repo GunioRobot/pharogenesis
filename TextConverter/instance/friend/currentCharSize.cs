@@ -1,3 +1,0 @@
-currentCharSize
-
-	self subclassResponsibility.

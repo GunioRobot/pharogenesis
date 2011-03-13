@@ -1,3 +1,0 @@
-updateDuration
-
-	durationInTicks := score durationInTicks.

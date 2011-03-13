@@ -1,6 +1,6 @@
 updateCopyIcon
 	| copyIcon |
-	copyIcon _ self submorphWithProperty: #tmCopyIcon.
+	copyIcon := self submorphWithProperty: #tmCopyIcon.
 	(self shouldCopy and: [ copyIcon isNil ]) ifTrue: [
 		^self addMorphFront: ((ImageMorph new image: CopyPlusIcon) setProperty: #tmCopyIcon toValue: true)
 	].

@@ -1,2 +1,2 @@
 newTextInterval: anInterval
-	^newText _ anInterval
+	^newText := anInterval

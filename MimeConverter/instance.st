@@ -3,4 +3,4 @@ Object
 	instanceVariableNames: 'dataStream mimeStream'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Collections-Streams'
+	category: 'Network-MIME'

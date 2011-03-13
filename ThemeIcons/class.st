@@ -1,0 +1,1 @@
+ThemeIcons class instanceVariableNames: 'icons'

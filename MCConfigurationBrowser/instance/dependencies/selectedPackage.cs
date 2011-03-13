@@ -1,2 +1,2 @@
 selectedPackage
-	^ self selectedDependency ifNotNilDo: [:dep | dep package]
+	^ self selectedDependency ifNotNil: [:dep | dep package]

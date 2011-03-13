@@ -1,3 +1,0 @@
-starLogoAntColonybosfcedppplppppttwssdlgrstta0
-
-	^ StarSqueakAntColony

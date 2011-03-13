@@ -1,3 +1,3 @@
 ascentOf: aCharacter
 
-	^ fontArray first ascentOf: aCharacter.
+	^ (fontArray at: 1) ascentOf: aCharacter.

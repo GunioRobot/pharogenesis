@@ -1,6 +1,6 @@
 addWorkingCopy
 	|name|
-	name := FillInTheBlankMorph request: 'Name of package:'.
+	name := UIManager default request: 'Name of package:' translated.
 	name isEmptyOrNil ifFalse:
 		[PackageInfo registerPackageName: name.
 		workingCopy := MCWorkingCopy forPackage: (MCPackage new name: name).

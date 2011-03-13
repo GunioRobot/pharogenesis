@@ -3,12 +3,12 @@ methodsWithoutClassifications
 
 	| slips notClassified aSelector |
 
-	notClassified _ {'as yet unclassified' asSymbol. #all}.
-	slips _ OrderedCollection new.
+	notClassified := {'as yet unclassified' asSymbol. #all}.
+	slips := OrderedCollection new.
 	self changedClasses do:
 		[:aClass |
 		(self methodChangesAtClass: aClass name) associationsDo: 
-				[:mAssoc | (aClass selectors includes:  (aSelector _ mAssoc key)) ifTrue:
+				[:mAssoc | (aClass selectors includes:  (aSelector := mAssoc key)) ifTrue:
 						[(notClassified includes: (aClass organization categoryOfElement: aSelector))
 								ifTrue: [slips add: aClass name , ' ' , aSelector]]]].
 	^ slips

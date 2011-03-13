@@ -4,4 +4,4 @@ inputFlowControlType: anInteger
 		1 - XOn/XOff
 		2 - hardware handshaking"
 
-	inputFlowControlType _ anInteger.
+	inputFlowControlType := anInteger.

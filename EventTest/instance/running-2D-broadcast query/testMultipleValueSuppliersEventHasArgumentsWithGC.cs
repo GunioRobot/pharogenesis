@@ -12,4 +12,4 @@ testMultipleValueSuppliersEventHasArgumentsWithGC
 		with: Object new.
 	Smalltalk garbageCollectMost.
 	succeeded := eventSource triggerEvent: #needsValue: with: 'kolme'.
-	self should: [succeeded = nil]
+	self should: [succeeded isNil]

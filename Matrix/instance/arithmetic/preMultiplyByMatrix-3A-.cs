@@ -4,6 +4,6 @@ preMultiplyByMatrix: m
 
 	nrows = m columnCount ifFalse: [self error: 'dimensions do not conform'].
 	^Matrix rows: m rowCount columns: ncols tabulate: [:row :col |
-		s _ 0.
-		1 to: nrows do: [:k | s _ (m at: row at: k) * (self at: k at: col) + s].
+		s := 0.
+		1 to: nrows do: [:k | s := (m at: row at: k) * (self at: k at: col) + s].
 		s]

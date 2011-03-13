@@ -1,2 +1,2 @@
 socket: aSocket
-	socket _ aSocket
+	socket := aSocket

@@ -1,4 +1,4 @@
 initialProject
 	self saveState.
-	parentProject _ self.
-	previousProject _ nextProject _ nil
+	parentProject := self.
+	previousProject := nextProject := nil

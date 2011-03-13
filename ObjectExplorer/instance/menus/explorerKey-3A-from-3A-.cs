@@ -17,8 +17,6 @@ explorerKey: aChar from: view
 		aChar == $h ifTrue:	[^ inspector classHierarchy].
 		aChar == $c ifTrue: [^ inspector copyName].
 		aChar == $p ifTrue: [^ inspector browseFullProtocol].
-		aChar == $N ifTrue: [^ inspector browseClassRefs].
-		aChar == $t ifTrue: [^ inspector tearOffTile].
-		aChar == $v ifTrue: [^ inspector viewerForValue]].
+		aChar == $N ifTrue: [^ inspector browseClassRefs]].
 
 	^ self arrowKey: aChar from: view

@@ -1,4 +1,4 @@
 setUp
 
 	super setUp.
-	month _ Month month: 7 year: 1998.
+	month := Month month: 7 year: 1998.

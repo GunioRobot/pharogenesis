@@ -1,2 +1,0 @@
-selectedClass
-	^ methodClass theNonMetaClass

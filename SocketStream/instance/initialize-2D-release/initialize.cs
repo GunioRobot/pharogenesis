@@ -1,6 +1,7 @@
 initialize
-	autoFlush _ true.
-	shouldSignal _ true.
-	recentlyRead _ 0.
-	bufferSize _ 4096.
+	super initialize.
+	autoFlush := true.
+	shouldSignal := true.
+	recentlyRead := 0.
+	bufferSize := 4096.
 	self ascii

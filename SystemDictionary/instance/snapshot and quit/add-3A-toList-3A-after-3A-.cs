@@ -3,7 +3,7 @@ add: aClass toList: startUpOrShutDownList after: predecessor
 	Add it after the name of predecessor, or at the end if predecessor is nil."
 
 	| name earlierName |
-	name _ aClass name.
+	name := aClass name.
 	(self at: name ifAbsent: [nil]) == aClass ifFalse:
 		[self error: name , ' cannot be found in Smalltalk dictionary.'].
 	predecessor == nil
@@ -15,7 +15,7 @@ add: aClass toList: startUpOrShutDownList after: predecessor
 						ifFalse: ["Add to front of shutDown list"
 								startUpOrShutDownList addFirst: name]]]
 		ifFalse: ["Add after predecessor, moving it if already there."
-				earlierName _ predecessor name.
+				earlierName := predecessor name.
 				(self at: earlierName) == predecessor ifFalse:
 					[self error: earlierName , ' cannot be found in Smalltalk dictionary.'].
 				(startUpOrShutDownList includes: earlierName) ifFalse:

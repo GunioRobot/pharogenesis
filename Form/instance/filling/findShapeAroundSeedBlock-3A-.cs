@@ -6,15 +6,15 @@ findShapeAroundSeedBlock: seedBlock
 	when smearing hits a black border and thus goes no further."
 	| smearForm previousSmear all count smearPort |
 	self depth > 1 ifTrue: [self halt]. "Only meaningful for B/W forms."
-	all _ self boundingBox.
-	smearForm _ Form extent: self extent.
-	smearPort _ BitBlt current toForm: smearForm.
+	all := self boundingBox.
+	smearForm := Form extent: self extent.
+	smearPort := BitBlt current toForm: smearForm.
 	seedBlock value: smearForm.		"Blacken seeds to be smeared"
 	smearPort copyForm: self to: 0@0 rule: Form erase.  "Clear any in black"
-	previousSmear _ smearForm deepCopy.
-	count _ 1.
+	previousSmear := smearForm deepCopy.
+	count := 1.
 	[count = 10 and:   "check for no change every 10 smears"
-		[count _ 1.
+		[count := 1.
 		previousSmear copy: all from: 0@0 in: smearForm rule: Form reverse.
 		previousSmear isAllWhite]]
 		whileFalse: 
@@ -26,7 +26,7 @@ findShapeAroundSeedBlock: seedBlock
 			smearPort copyForm: smearForm to: 0@-1 rule: Form under.
 			"After vert smear, trim around the region border"
 			smearPort copyForm: self to: 0@0 rule: Form erase.
-			count _ count+1.
+			count := count+1.
 			count = 9 ifTrue: "Save penultimate smear for comparison"
 				[previousSmear copy: all from: 0@0 in: smearForm rule: Form over]].
 	"Now paint the filled region in me with aHalftone"

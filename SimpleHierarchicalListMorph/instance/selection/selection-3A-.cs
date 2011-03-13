@@ -5,7 +5,7 @@ selection: item
 
 	| i |
 	item ifNil: [^self selectionIndex: 0].
-	i _ scroller submorphs findFirst: [:m | m complexContents == item].
+	i := scroller submorphs findFirst: [:m | m complexContents == item].
 	i > 0 ifTrue: [^self selectionIndex: i].
-	i _ scroller submorphs findFirst: [:m | m withoutListWrapper = item withoutListWrapper].
+	i := scroller submorphs findFirst: [:m | m withoutListWrapper = item withoutListWrapper].
 	self selectionIndex: i

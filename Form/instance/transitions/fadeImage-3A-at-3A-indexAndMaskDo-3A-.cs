@@ -6,11 +6,11 @@ fadeImage: otherImage at: topLeft
 	IndexAndMaskBlock gets evaluated prior to each cycle,
 	and the resulting boolean determines whether to continue cycling."
 	| index imageRect maskForm resultForm |
-	imageRect _ otherImage boundingBox.
-	resultForm _ self copy: (topLeft extent: imageRect extent).
-	maskForm _ Form extent: 32@32.
-	index _ 0.
-	[indexAndMaskBlock value: (index _ index+1) value: maskForm]
+	imageRect := otherImage boundingBox.
+	resultForm := self copy: (topLeft extent: imageRect extent).
+	maskForm := Form extent: 32@32.
+	index := 0.
+	[indexAndMaskBlock value: (index := index+1) value: maskForm]
 	whileTrue:
 		[maskForm reverse.
 		resultForm copyBits: imageRect from: resultForm at: 0@0

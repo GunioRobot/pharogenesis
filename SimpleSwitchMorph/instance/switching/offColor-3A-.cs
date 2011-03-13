@@ -1,3 +1,3 @@
 offColor: aColor
 
-	offColor _ aColor.
+	offColor := aColor.

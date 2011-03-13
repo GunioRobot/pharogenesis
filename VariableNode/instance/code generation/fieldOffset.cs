@@ -1,7 +1,5 @@
-fieldOffset  "Return temp or instVar offset for this variable"
-
-	self code < 256
-		ifTrue: 
-			[^ self code \\ 16]
-		ifFalse: 
-			[^ self code \\ 256]
+fieldOffset
+	"Return temp or instVar offset for this variable"
+	^index ifNil: [code < 256
+					ifTrue: [code \\ 16]
+					ifFalse: [code \\ 256]]

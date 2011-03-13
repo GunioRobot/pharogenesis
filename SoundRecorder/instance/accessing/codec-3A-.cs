@@ -1,3 +1,0 @@
-codec: aSoundCodec
-
-	codec := aSoundCodec

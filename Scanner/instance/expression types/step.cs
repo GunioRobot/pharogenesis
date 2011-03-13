@@ -1,9 +1,9 @@
 step
 
 	| c |
-	c _ hereChar.
-	hereChar _ aheadChar.
+	c := hereChar.
+	hereChar := aheadChar.
 	source atEnd
-		ifTrue: [aheadChar _ 30 asCharacter "doit"]
-		ifFalse: [aheadChar _ source next].
+		ifTrue: [aheadChar := 30 asCharacter "doit"]
+		ifFalse: [aheadChar := source next].
 	^c

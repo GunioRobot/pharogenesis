@@ -1,4 +1,0 @@
-goFullView
-
-	self worldIEnclose showFullView
-

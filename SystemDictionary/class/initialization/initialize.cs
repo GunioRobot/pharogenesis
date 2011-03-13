@@ -2,14 +2,14 @@ initialize
 	"SystemDictionary initialize"
 
 	| oldList |
-	oldList _ StartUpList.
-	StartUpList _ OrderedCollection new.
+	oldList := StartUpList.
+	StartUpList := OrderedCollection new.
 	"These get processed from the top down..."
 	#(
 		Delay
 		DisplayScreen
 		Cursor
-		InputSensor
+		InputEventFetcher
 		ProcessorScheduler  "Starts low space watcher and bkground."
 		LanguageEnvironment
 		FileDirectory  "Enables file stack dump and opens sources."
@@ -25,21 +25,21 @@ initialize
 	#(
 		ImageSegment
 		PasteUpMorph
-		ControlManager
+		"ControlManager"
 	) do:[:clsName|
 		Smalltalk at: clsName ifPresent:[:cls| Smalltalk addToStartUpList: cls].
 	].
 		
 
-	oldList _ ShutDownList.
-	ShutDownList _ OrderedCollection new.
+	oldList := ShutDownList.
+	ShutDownList := OrderedCollection new.
 	"These get processed from the bottom up..."
 	#(
 		Delay
 		DisplayScreen
-		InputSensor
+		InputEventFetcher
 		Form
-		ControlManager
+		"ControlManager"
 		PasteUpMorph
 		StrikeFont
 		Color

@@ -4,15 +4,15 @@ remove: aLink ifAbsent: aBlock
 
 	| tempLink |
 	aLink == firstLink
-		ifTrue: [firstLink _ aLink nextLink.
+		ifTrue: [firstLink := aLink nextLink.
 				aLink == lastLink
-					ifTrue: [lastLink _ nil]]
-		ifFalse: [tempLink _ firstLink.
+					ifTrue: [lastLink := nil]]
+		ifFalse: [tempLink := firstLink.
 				[tempLink == nil ifTrue: [^aBlock value].
 				 tempLink nextLink == aLink]
-					whileFalse: [tempLink _ tempLink nextLink].
+					whileFalse: [tempLink := tempLink nextLink].
 				tempLink nextLink: aLink nextLink.
 				aLink == lastLink
-					ifTrue: [lastLink _ tempLink]].
+					ifTrue: [lastLink := tempLink]].
 	aLink nextLink: nil.
 	^aLink

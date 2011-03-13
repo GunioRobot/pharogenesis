@@ -1,3 +1,3 @@
 changed
 
-	hasChanged _ true.
+	hasChanged := true.

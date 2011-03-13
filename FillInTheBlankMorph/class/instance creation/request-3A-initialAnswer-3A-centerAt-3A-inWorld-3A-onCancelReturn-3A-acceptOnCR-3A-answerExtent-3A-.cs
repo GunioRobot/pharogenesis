@@ -6,7 +6,7 @@ request: queryString initialAnswer: defaultAnswer centerAt: aPoint inWorld: aWor
 		centerAt: Display center"
 
 	| aFillInTheBlankMorph |
-	aFillInTheBlankMorph _ self new
+	aFillInTheBlankMorph := self new
 		setQuery: queryString
 		initialAnswer: defaultAnswer
 		answerExtent: answerExtent

@@ -5,13 +5,13 @@ testWith: anObject
 	"ReferenceStream testWith: 'hi'"
 	| file result |
 
-	file _ FileStream fileNamed: (self name, ' test').
+	file := FileStream fileNamed: (self name, ' test').
 	file binary.
 	(self on: file) nextPut: anObject.
 	file close.
 
-	file _ FileStream fileNamed: (self name, ' test').
+	file := FileStream fileNamed: (self name, ' test').
 	file binary.
-	result _ (self on: file) next.
+	result := (self on: file) next.
 	file close.
 	^ result

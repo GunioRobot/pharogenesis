@@ -4,5 +4,5 @@ modified: aBoolean
 	self changed: #modified.
 	
 	modified ifFalse:
-		[(((Smalltalk classNamed: 'SmalltalkImage') ifNotNilDo: [:si | si current]) ifNil: [Smalltalk])
+		[(((Smalltalk classNamed: 'SmalltalkImage') ifNotNil: [:si | si current]) ifNil: [Smalltalk])
 			logChange: '"', self packageName, '"'].

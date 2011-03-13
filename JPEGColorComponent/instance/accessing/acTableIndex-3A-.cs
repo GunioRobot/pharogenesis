@@ -1,3 +1,2 @@
-acTableIndex: anInteger
-
-	acTableIndex _ anInteger
+acTableIndex: anInteger 
+	acTableIndex := anInteger

@@ -1,3 +1,2 @@
-run: aResult
-	aResult runCase: self
-			
+run: aResult 
+	aResult runCase: self.

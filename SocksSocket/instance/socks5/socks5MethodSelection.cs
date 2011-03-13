@@ -5,14 +5,14 @@ socks5MethodSelection
    sends a METHOD selection message."
 
 	| requestString response |
-	requestString _ WriteStream on: ByteArray new.
+	requestString := ByteArray new writeStream.
 	requestString
 		nextPut: 5;
 		nextPut: 1;
 		nextPut: 0.
 	self sendData: requestString contents.
 
-	response _ self waitForReply: 2 for: self defaultTimeOutDuration.
+	response := self waitForReply: 2 for: self defaultTimeOutDuration.
 	(response at: 2) == 16rFF
 		ifTrue: [self socksError: 'No acceptable methods.']
-		ifFalse: [method _ response at: 2]
+		ifFalse: [method := response at: 2]

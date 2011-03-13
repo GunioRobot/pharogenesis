@@ -13,7 +13,7 @@ nonCachingFullDrawOn: aCanvas
 		"Note: We use a shadow form here to prevent drawing
 		overlapping morphs multiple times using the transparent
 		shadow color."
-		shadowForm _ self shadowForm.
+		shadowForm := self shadowForm.
 "
 shadowForm displayAt: shadowForm offset negated. Display forceToScreen: (0@0 extent: shadowForm extent).
 "

@@ -3,13 +3,13 @@ setDecimalPlacesFromTypeIn: typeIn
 
 	| decimalPointPosition tail places |
 	(typeIn includes: $e) ifTrue: [^ self].
-	decimalPointPosition _ typeIn indexOf: $. ifAbsent: [nil].
-	places _ 0.
+	decimalPointPosition := typeIn indexOf: $. ifAbsent: [nil].
+	places := 0.
 	decimalPointPosition
 		ifNotNil:
-			[tail _ typeIn copyFrom: decimalPointPosition + 1 to: typeIn size.
+			[tail := typeIn copyFrom: decimalPointPosition + 1 to: typeIn size.
 			[places < tail size and: [(tail at: (places + 1)) isDigit]]
 				whileTrue:
-					[places _ places + 1]].
+					[places := places + 1]].
 		
 	self decimalPlaces: places

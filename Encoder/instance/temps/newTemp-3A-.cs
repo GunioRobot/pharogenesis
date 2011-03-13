@@ -1,6 +1,6 @@
 newTemp: name
 
-	nTemps _ nTemps + 1.
+	nTemps := nTemps + 1.
 	^ TempVariableNode new
 		name: name
 		index: nTemps - 1

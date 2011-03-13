@@ -1,7 +1,6 @@
 browserPrintStringWith: anObject 
 	| stream |
-	stream _ WriteStream
-				on: (String new: 100).
+	stream := (String new: 100) writeStream.
 	stream nextPut: $(.
 	priority printOn: stream.
 	self isSuspended

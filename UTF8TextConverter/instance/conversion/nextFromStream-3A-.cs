@@ -7,7 +7,6 @@ nextFromStream: aStream
 	value1 := character1 asciiValue.
 	value1 <= 127 ifTrue: [
 		"1-byte character"
-		currentCharSize := 1.
 		^ character1
 	].
 
@@ -17,7 +16,6 @@ nextFromStream: aStream
 	value2 := character2 asciiValue.
 
 	(value1 bitAnd: 16rE0) = 192 ifTrue: [
-		currentCharSize := 2.
 		^ Unicode value: ((value1 bitAnd: 31) bitShift: 6) + (value2 bitAnd: 63).
 	].
 
@@ -28,7 +26,6 @@ nextFromStream: aStream
 	(value1 bitAnd: 16rF0) = 224 ifTrue: [
 		unicode := ((value1 bitAnd: 15) bitShift: 12) + ((value2 bitAnd: 63) bitShift: 6)
 				+ (value3 bitAnd: 63).
-		currentCharSize := 3.
 	].
 
 	(value1 bitAnd: 16rF8) = 240 ifTrue: [
@@ -36,7 +33,6 @@ nextFromStream: aStream
 		character4 := aStream basicNext.
 		character4 = nil ifTrue: [^self errorMalformedInput].
 		value4 := character4 asciiValue.
-		currentCharSize := 4.
 		unicode := ((value1 bitAnd: 16r7) bitShift: 18) +
 					((value2 bitAnd: 63) bitShift: 12) + 
 					((value3 bitAnd: 63) bitShift: 6) +

@@ -1,3 +1,5 @@
 testStoreOn
-     self assert: (aDuration storeOn: (WriteStream on:'')) asString ='1:02:03:04.000000005'. 
-     "storeOn: returns a duration (self) not a stream"
+	| stream |
+	aDuration storeOn: (stream := (String new: 20) writeStream).
+	self assert: stream contents = '(Duration seconds: 93784 nanoSeconds: 5)'.
+

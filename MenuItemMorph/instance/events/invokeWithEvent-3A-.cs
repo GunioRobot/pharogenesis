@@ -6,13 +6,13 @@ invokeWithEvent: evt
 	target class == HandMorph ifTrue: [(self notObsolete) ifFalse: [^ self]].
 	owner ifNotNil:[self isStayUpItem ifFalse:[
 		self flag: #workAround. "The tile system invokes menus straightforwardly so the menu might not be in the world."
-		(w _ self world) ifNotNil:[
+		(w := self world) ifNotNil:[
 			owner deleteIfPopUp: evt.
 			"Repair damage before invoking the action for better feedback"
 			w displayWorldSafely]]].
 	selector ifNil:[^self].
 	Cursor normal showWhile: [  "show cursor in case item opens a new MVC window"
-		(selArgCount _ selector numArgs) = 0
+		(selArgCount := selector numArgs) = 0
 			ifTrue:
 				[target perform: selector]
 			ifFalse:

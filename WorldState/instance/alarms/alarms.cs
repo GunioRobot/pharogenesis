@@ -1,3 +1,3 @@
 alarms
 
-	^alarms ifNil: [alarms _ Heap sortBlock: self alarmSortBlock]
+	^alarms ifNil: [alarms := Heap sortBlock: self alarmSortBlock]

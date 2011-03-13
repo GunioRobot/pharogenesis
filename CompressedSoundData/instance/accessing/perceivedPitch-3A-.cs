@@ -1,3 +1,0 @@
-perceivedPitch: aNumber
-
-	perceivedPitch := aNumber.

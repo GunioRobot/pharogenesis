@@ -1,3 +1,0 @@
-optionalButtonHeight
-
-	^ 15

@@ -1,3 +1,0 @@
-worldUnderCursor
-
-        ^self

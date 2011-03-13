@@ -1,4 +1,5 @@
 initialize
+	super initialize.
 	self setupRandom.
-	semaphoreForGenerator _ Semaphore forMutualExclusion.
+	semaphoreForGenerator := Semaphore forMutualExclusion.
 	

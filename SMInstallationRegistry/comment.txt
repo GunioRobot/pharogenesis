@@ -1,1 +1,0 @@
-A registry instance keeps track of installations into an image. Typically used by the SMSqueakMap instance when installing package releases.

@@ -1,2 +1,2 @@
 commandHistory
-	^commandHistory ifNil:[commandHistory _ CommandHistory new]
+	^commandHistory ifNil:[commandHistory := CommandHistory new]

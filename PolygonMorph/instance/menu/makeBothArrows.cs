@@ -1,3 +1,3 @@
 makeBothArrows
-	arrows _ #both.
+	arrows := #both.
 	self computeBounds

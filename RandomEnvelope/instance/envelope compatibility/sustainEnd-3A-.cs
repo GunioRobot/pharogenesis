@@ -1,2 +1,0 @@
-sustainEnd: seconds
-	"Do nothing."

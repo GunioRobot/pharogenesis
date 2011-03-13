@@ -1,3 +1,3 @@
 step
 
-	^ suspendedContext _ suspendedContext step
+	^ suspendedContext := suspendedContext step

@@ -1,3 +1,3 @@
 getItemsArgs: aCollection
 
-	getItemsArgs _ aCollection asArray copy.
+	getItemsArgs := aCollection asArray copy.

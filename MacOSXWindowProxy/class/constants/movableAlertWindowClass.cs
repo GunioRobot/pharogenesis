@@ -1,0 +1,2 @@
+movableAlertWindowClass
+	^2

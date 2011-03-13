@@ -2,10 +2,10 @@ inspectAllInstances
 	"Inpsect all instances of the receiver.  1/26/96 sw"
 
 	| all allSize prefix |
-	all _ self allInstances.
-	(allSize _ all size) == 0 ifTrue: [^ self inform: 'There are no 
+	all := self allInstances.
+	(allSize := all size) == 0 ifTrue: [^ self inform: 'There are no 
 instances of ', self name].
-	prefix _ allSize == 1
+	prefix := allSize == 1
 		ifTrue: 	['The lone instance']
 		ifFalse:	['The ', allSize printString, ' instances'].
 	

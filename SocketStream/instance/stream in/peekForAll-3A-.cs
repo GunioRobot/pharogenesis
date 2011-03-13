@@ -7,11 +7,11 @@ peekForAll: aString
 	NOTE: This method doesn't honor timeouts if shouldSignal is false!"
 
 	| sz start |
-	sz _ aString size.
+	sz := aString size.
 	self receiveData: sz.
 	(inNextToWrite - lastRead - 1) < sz ifTrue: [^false].
-	start _ lastRead + 1.
+	start := lastRead + 1.
 	(inBuffer findString: aString startingAt: start) = start
 		ifFalse: [^false].
-	lastRead _ lastRead + sz.
+	lastRead := lastRead + sz.
 	^true

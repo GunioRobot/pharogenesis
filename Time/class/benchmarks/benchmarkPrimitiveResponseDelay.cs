@@ -14,23 +14,23 @@ benchmarkPrimitiveResponseDelay	"Time benchmarkPrimitiveResponseDelay"
 	looks a lot better (see above; approx. 8,000,000 prims per sec with an active delay)."
 
 	| nLoops bb index baseTime actualTime delayTime |
-	delayTime _ 5000. "Time to run this test is approx. 3*delayTime"
+	delayTime := 5000. "Time to run this test is approx. 3*delayTime"
 
 	Delay anyActive ifTrue:[
 		^self notify:'Some delay is currently active.
 Running this benchmark will not give any useful result.'].
 
-	bb _ Array new: 1. "The object we send the prim message to"
+	bb := Array new: 1. "The object we send the prim message to"
 
 	"Compute the # of loops we'll run in a decent amount of time"
 	[(Delay forMilliseconds: delayTime) wait] 
 		forkAt: Processor userInterruptPriority.
 
-	nLoops _ 0.
+	nLoops := 0.
 	[Delay anyActive] whileTrue:[
 		bb basicSize; basicSize; basicSize; basicSize; basicSize; 
 			basicSize; basicSize; basicSize; basicSize; basicSize.
-		nLoops _ nLoops + 1.
+		nLoops := nLoops + 1.
 	].
 
 	"Flush the cache and make sure #basicSize is in there"
@@ -39,28 +39,28 @@ Running this benchmark will not give any useful result.'].
 
 	"Now run the loop without any active delay
 	for getting an idea about its actual speed."
-	baseTime _ self millisecondClockValue.
-	index _ nLoops.
+	baseTime := self millisecondClockValue.
+	index := nLoops.
 	[index > 0] whileTrue:[
 		bb basicSize; basicSize; basicSize; basicSize; basicSize; 
 			basicSize; basicSize; basicSize; basicSize; basicSize.
-		index _ index - 1.
+		index := index - 1.
 	].
-	baseTime _ self millisecondClockValue - baseTime.
+	baseTime := self millisecondClockValue - baseTime.
 
 	"Setup the active delay but try to never make it active"
 	[(Delay forMilliseconds: delayTime + delayTime) wait] 
 		forkAt: Processor userInterruptPriority.
 
 	"And run the loop"
-	actualTime _ self millisecondClockValue.
-	index _ nLoops.
+	actualTime := self millisecondClockValue.
+	index := nLoops.
 	[index > 0] whileTrue:[
 		bb basicSize; basicSize; basicSize; basicSize; basicSize; 
 			basicSize; basicSize; basicSize; basicSize; basicSize.
-		index _ index - 1.
+		index := index - 1.
 	].
-	actualTime _ self millisecondClockValue - actualTime.
+	actualTime := self millisecondClockValue - actualTime.
 
 	"And get us some result"
 	^((actualTime - baseTime) * 1000 asFloat / (nLoops * 10) truncateTo: 0.001) printString,

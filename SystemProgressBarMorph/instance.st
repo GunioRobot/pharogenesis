@@ -1,6 +1,6 @@
 RectangleMorph
 	subclass: #SystemProgressBarMorph
 	instanceVariableNames: 'barSize'
-	classVariableNames: 'BarHeight BarWidth FillColor'
+	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Widgets'

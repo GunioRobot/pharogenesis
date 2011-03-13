@@ -1,0 +1,2 @@
+setName: aString
+	self subclassResponsibility

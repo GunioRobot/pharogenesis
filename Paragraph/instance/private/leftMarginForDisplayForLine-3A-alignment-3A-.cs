@@ -11,9 +11,9 @@ leftMarginForDisplayForLine: lineIndex alignment: alignment
 	there are no valid lines, hence following nil check."
 	(lineIndex <= lines size and: [(lines at: lineIndex) notNil])
 		ifTrue: 
-			[pad _ (lines at: lineIndex) paddingWidth]
+			[pad := (lines at: lineIndex) paddingWidth]
 		ifFalse: 
-			[pad _ 
+			[pad := 
 				compositionRectangle width - textStyle firstIndent - textStyle rightIndent].
 	alignment = Centered 
 		ifTrue: 

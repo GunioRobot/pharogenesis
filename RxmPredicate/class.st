@@ -1,0 +1,1 @@
+RxmPredicate class instanceVariableNames: ''

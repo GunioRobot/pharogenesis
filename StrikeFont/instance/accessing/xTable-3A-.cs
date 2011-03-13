@@ -1,3 +1,2 @@
-xTable: anObject
-
-	xTable _ anObject.
+xTable: anObject 
+	xTable := anObject

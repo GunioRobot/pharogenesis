@@ -1,4 +1,4 @@
 clobberFlapTabList
 	"Flaps clobberFlapTabList"
 
-	SharedFlapTabs _ nil
+	SharedFlapTabs := nil

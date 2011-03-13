@@ -1,9 +1,9 @@
 releaseCachedState
 	| oo ui |
-	ui _ userInitials.
+	ui := userInitials.
 	super releaseCachedState.
-	cacheCanvas _ nil.
-	oo _ owner.
+	cacheCanvas := nil.
+	oo := owner.
 	self removeAllMorphs.
 	self initialize.	"nuke everything"
 	self privateOwner: oo.

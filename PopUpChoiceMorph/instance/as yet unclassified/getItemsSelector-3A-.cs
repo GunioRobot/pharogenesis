@@ -3,6 +3,6 @@ getItemsSelector: aSymbolOrString
 	(nil = aSymbolOrString or:
 	 ['nil' = aSymbolOrString or:
 	 [aSymbolOrString isEmpty]])
-		ifTrue: [^ getItemsSelector _ nil].
+		ifTrue: [^ getItemsSelector := nil].
 
-	getItemsSelector _ aSymbolOrString asSymbol.
+	getItemsSelector := aSymbolOrString asSymbol.

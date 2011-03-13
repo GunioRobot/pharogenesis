@@ -2,16 +2,16 @@ selectionRectsFrom: characterBlock1 to: characterBlock2
 	"Return an array of rectangles representing the area between the two character blocks given as arguments."
 	| line1 line2 rects cb1 cb2 w |
 	characterBlock1 <= characterBlock2
-		ifTrue: [cb1 _ characterBlock1.  cb2 _ characterBlock2]
-		ifFalse: [cb2 _ characterBlock1.  cb1 _ characterBlock2].
+		ifTrue: [cb1 := characterBlock1.  cb2 := characterBlock2]
+		ifFalse: [cb2 := characterBlock1.  cb1 := characterBlock2].
 	cb1 = cb2 ifTrue:
-		[w _ self caretWidth.
+		[w := self caretWidth.
 		^ Array with: (cb1 topLeft - (w@0) corner: cb1 bottomLeft + ((w+1)@0))].
-	line1 _ self lineIndexForCharacter: cb1 stringIndex.
-	line2 _ self lineIndexForCharacter: cb2 stringIndex.
+	line1 := self lineIndexForCharacter: cb1 stringIndex.
+	line2 := self lineIndexForCharacter: cb2 stringIndex.
 	line1 = line2 ifTrue:
 		[^ Array with: (cb1 topLeft corner: cb2 bottomRight)].
-	rects _ OrderedCollection new.
+	rects := OrderedCollection new.
 	rects addLast: (cb1 topLeft corner: (lines at: line1) bottomRight).
 	line1+1 to: line2-1 do: [ :i |
 		| line |

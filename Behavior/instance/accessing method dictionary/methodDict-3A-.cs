@@ -1,2 +1,2 @@
 methodDict: aDictionary
-	methodDict _ aDictionary
+	methodDict := aDictionary

@@ -1,3 +1,0 @@
-targetHasGradientFill
-
-	^myTarget fillStyle isGradientFill

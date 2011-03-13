@@ -1,2 +1,2 @@
 traitComposition: aTraitComposition
-	traitComposition _ aTraitComposition
+	traitComposition := aTraitComposition

@@ -1,10 +1,10 @@
 transformAnd: encoder
 	(self transformBoolean: encoder)
 		ifTrue: 
-			[arguments _ 
+			[arguments := 
 				Array 
-					with: (arguments at: 1)
-					with: (BlockNode withJust: NodeFalse).
+					with: (arguments at: 1) noteOptimized
+					with: (BlockNode withJust: NodeFalse) noteOptimized.
 			^true]
 		ifFalse: 
 			[^false]

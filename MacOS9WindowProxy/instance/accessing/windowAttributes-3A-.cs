@@ -1,0 +1,2 @@
+windowAttributes: aNumber
+	windowAttributes := aNumber

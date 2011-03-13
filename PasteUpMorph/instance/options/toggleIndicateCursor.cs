@@ -1,3 +1,3 @@
 toggleIndicateCursor
-	indicateCursor _ self indicateCursor not.
+	indicateCursor := self indicateCursor not.
 	self changed.

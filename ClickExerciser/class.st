@@ -1,1 +1,0 @@
-ClickExerciser class instanceVariableNames: ''

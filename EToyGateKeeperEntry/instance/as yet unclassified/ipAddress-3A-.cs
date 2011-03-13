@@ -1,3 +1,0 @@
-ipAddress: aString
-
-	ipAddress := aString

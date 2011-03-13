@@ -3,11 +3,11 @@ copyFrom: start to: stop
 
 	| realStart realStop |
 	stop > self size
-		ifTrue: [realStop _ self size]		"handle selection at end of string"
-		ifFalse: [realStop _ stop].
+		ifTrue: [realStop := self size]		"handle selection at end of string"
+		ifFalse: [realStop := stop].
 	start < 1
-		ifTrue: [realStart _ 1]			"handle selection before start of string"
-		ifFalse: [realStart _ start].
-	^Text 
+		ifTrue: [realStart := 1]			"handle selection before start of string"
+		ifFalse: [realStart := start].
+	^self class 
 		string: (string copyFrom: realStart to: realStop)
 		runs: (runs copyFrom: realStart to: realStop)

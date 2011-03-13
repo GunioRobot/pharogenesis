@@ -1,2 +1,0 @@
-isEmpty
-	^ children isEmpty

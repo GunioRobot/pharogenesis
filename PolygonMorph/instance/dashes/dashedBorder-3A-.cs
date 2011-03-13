@@ -7,5 +7,5 @@ dashedBorder: dashSpec
 		amount to add to offset at each step }
 	Starting offset is usually = 0, but changing it moves the dashes along the curve."
 
-	borderDashSpec _ dashSpec.
+	borderDashSpec := dashSpec.
 	self changed

@@ -9,7 +9,7 @@ save
 		]
 	].
 	fileName := UIManager default request: 'File name for save?' initialAnswer: fileName.
-	fileName isEmpty
+	fileName isEmptyOrNil
 		ifTrue: [^ nil].
 	file := FileStream newFileNamed: fileName.
 	file nextPutAll: self bodyText.

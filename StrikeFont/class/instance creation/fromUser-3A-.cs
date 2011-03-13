@@ -1,2 +1,3 @@
 fromUser: priorFont
-	^self fromUser: priorFont allowKeyboard: true
+	
+	^ UIManager default fontFromUser: priorFont.

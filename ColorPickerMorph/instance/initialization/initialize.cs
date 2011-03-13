@@ -5,10 +5,10 @@ initialize
 	self clipSubmorphs: true.
 	self buildChartForm.
 	
-	selectedColor _ Color white.
-	sourceHand _ nil.
-	deleteOnMouseUp _ false.
-	clickedTranslucency _ false.
-	updateContinuously _ true.
-	selector _ nil.
-	target _ nil
+	selectedColor := Color white.
+	sourceHand := nil.
+	deleteOnMouseUp := false.
+	clickedTranslucency := false.
+	updateContinuously := true.
+	selector := nil.
+	target := nil

@@ -1,0 +1,2 @@
+getTypeToMimeMappings
+	^TypeToMimeMappings

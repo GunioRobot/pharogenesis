@@ -9,14 +9,14 @@ arcTan
 	self < 0.0 ifTrue: [ ^ 0.0 - (0.0 - self) arcTan ].
 
 	"first guess"
-	theta _ (self * Halfpi) / (self + 1.0).
+	theta := (self * Halfpi) / (self + 1.0).
 
 	"iterate"
-	eps _ Halfpi * Epsilon.
-	step _ theta.
+	eps := Halfpi * Epsilon.
+	step := theta.
 	[(step * step) > eps] whileTrue: [
-		sinTheta _ theta sin.
-		cosTheta _ theta cos.
-		step _ (sinTheta * cosTheta) - (self * cosTheta * cosTheta).
-		theta _ theta - step].
+		sinTheta := theta sin.
+		cosTheta := theta cos.
+		step := (sinTheta * cosTheta) - (self * cosTheta * cosTheta).
+		theta := theta - step].
 	^ theta

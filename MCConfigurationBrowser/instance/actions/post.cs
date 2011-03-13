@@ -2,10 +2,10 @@ post
 	"Take the current configuration and post an update"
 	| name update managers names choice |
 	(self checkRepositories and: [self checkDependencies]) ifFalse: [^self].
-	name := FillInTheBlank
-		request: 'Update name (.cs) will be appended):'
+	name := UIManager default
+		request: 'Update name (.cs) will be appended):' translated
 		initialAnswer: (self configuration name ifNil: ['']).
-	name isEmpty ifTrue:[^self].
+	name isEmptyOrNil ifTrue:[^self].
 	self configuration name: name.
 	update := MCPseudoFileStream on: (String new: 100).
 	update localName: name, '.cs'.
@@ -35,7 +35,7 @@ post
 		choice := names at: index.
 	] ifFalse:[
 		names := ServerDirectory groupNames asSortedArray.
-		choice := (SelectionMenu labelList: names selections: names) startUp.
-		choice == nil ifTrue: [^ self].
+		choice := UIManager default chooseFrom: names values: names.
+		choice ifNil: [^ self].
 	].
 	(ServerDirectory serverInGroupNamed: choice) putUpdate: update.

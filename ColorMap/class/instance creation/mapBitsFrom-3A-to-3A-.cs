@@ -1,21 +1,25 @@
-mapBitsFrom: srcBitMask to: dstBitMask
+mapBitsFrom: srcBitMask to: dstBitMask 
 	"Return an array consisting of the shift and the mask for
 	mapping component values out of srcBitMask and into dstBitMask.
 	While this computation is somewhat complicated it eases the batch
 	conversion of all the pixels in BitBlt."
 	| srcBits dstBits srcLow srcHigh dstLow dstHigh bits mask shift |
-	(srcBitMask = 0 or:[dstBitMask = 0]) ifTrue:[^#(0 0)]. "Zero mask and shift"
+	(srcBitMask = 0 or: [ dstBitMask = 0 ]) ifTrue: 
+		[ ^ #(0 0 ) ].	"Zero mask and shift"
 	"Compute low and high bit position for source and dest bit mask"
-	srcLow _ srcBitMask lowBit - 1.	srcHigh _ srcBitMask highBit.
-	dstLow _ dstBitMask lowBit - 1.	dstHigh _ dstBitMask highBit.
+	srcLow := srcBitMask lowBit - 1.
+	srcHigh := srcBitMask highBit.
+	dstLow := dstBitMask lowBit - 1.
+	dstHigh := dstBitMask highBit.
 	"Compute the number of bits in source and dest bit mask"
-	srcBits _ srcHigh - srcLow.		dstBits _ dstHigh - dstLow.
+	srcBits := srcHigh - srcLow.
+	dstBits := dstHigh - dstLow.
 	"Compute the maximum number of bits we can transfer inbetween"
-	bits _ srcBits min: dstBits.
+	bits := srcBits min: dstBits.
 	"Compute the (unshifted) transfer mask"
-	mask _ (1 bitShift: bits) - 1.
+	mask := (1 bitShift: bits) - 1.
 	"Shift the transfer mask to the mask the highest n bits of srcBitMask"
-	mask _ mask bitShift: (srcHigh - bits).
+	mask := mask bitShift: srcHigh - bits.
 	"Compute the delta shift so that the most significant bit of the
 	source bit mask falls on the most significant bit of the dest bit mask.
 	Note that delta is used for #bitShift: so
@@ -23,6 +27,8 @@ mapBitsFrom: srcBitMask to: dstBitMask
 		shift < 0 : shift left
 	e.g., if dstHigh > srcHigh we need to shift left and if dstHigh < srcHigh
 	we need to shift right. This leads to:"
-	shift _ dstHigh - srcHigh.
+	shift := dstHigh - srcHigh.
 	"And that's all we need"
-	^Array with: shift with: mask
+	^ Array 
+		with: shift
+		with: mask

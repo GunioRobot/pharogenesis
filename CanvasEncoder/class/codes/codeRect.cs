@@ -1,2 +1,0 @@
-codeRect
-	^$E

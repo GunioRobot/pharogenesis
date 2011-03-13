@@ -3,7 +3,7 @@ tallyInstructions: aBlock
 	each of the Smalltalk instructions executed during evaluation of aBlock.
 	Results appear in order of the byteCode set."
 	| tallies |
-	tallies _ Bag new.
+	tallies := Bag new.
 	thisContext sender
 		runSimulated: aBlock
 		contextAtEachStep:

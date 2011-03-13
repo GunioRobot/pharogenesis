@@ -1,5 +1,5 @@
 socks4
-	vers _ 4.
-	method _ nil.
-	socksIP _ self class defaultSocksHostAddress.
-	socksPort _ self class defaultSocksPort
+	vers := 4.
+	method := nil.
+	socksIP := self class defaultSocksHostAddress.
+	socksPort := self class defaultSocksPort

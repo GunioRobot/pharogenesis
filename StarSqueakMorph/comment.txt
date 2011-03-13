@@ -1,1 +1,0 @@
-I implement a StarSqueak simulation. StarSqueak is a Squeak version of Mitchel Resnick's Star Logo, a simulation environment designed to explore massively parallel simulations with hundreds or thousands of turtles. See the excellent book "Turtles, Termites, and Traffic Jams: Explorations in Massively Parallel Microworlds" by Mitchel Resnick, MIT Press, 1994.

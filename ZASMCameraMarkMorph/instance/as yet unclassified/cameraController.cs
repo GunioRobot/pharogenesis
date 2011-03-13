@@ -1,3 +1,0 @@
-cameraController
-
-	^(self valueOfProperty: #cameraController)

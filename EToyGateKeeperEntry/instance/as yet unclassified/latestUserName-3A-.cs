@@ -1,3 +1,0 @@
-latestUserName: aString
-
-	latestUserName := aString

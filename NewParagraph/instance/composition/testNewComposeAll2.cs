@@ -1,6 +1,6 @@
 testNewComposeAll2
 	| newResult |
-	newResult _ TextComposer new
+	newResult := TextComposer new
 		composeLinesFrom: firstCharacterIndex 
 		to: text size 
 		delta: 0

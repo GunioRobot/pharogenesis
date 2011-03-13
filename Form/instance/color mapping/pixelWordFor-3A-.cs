@@ -3,7 +3,7 @@ pixelWordFor: aColor
 	| basicPattern |
 	self hasNonStandardPalette 
 		ifFalse:[^aColor pixelWordForDepth: self depth].
-	basicPattern _ self pixelValueFor: aColor.
+	basicPattern := self pixelValueFor: aColor.
 	self depth = 32 
 		ifTrue:[^basicPattern]
 		ifFalse:[^aColor pixelWordFor: self depth filledWith: basicPattern]

@@ -1,4 +1,3 @@
 current
 
-
 	^ self now

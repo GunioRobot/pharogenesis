@@ -1,2 +1,0 @@
-highlightSelector
-	^self valueOfProperty: #highlightSelector

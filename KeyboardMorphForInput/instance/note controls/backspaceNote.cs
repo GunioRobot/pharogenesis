@@ -1,3 +1,0 @@
-backspaceNote
-
-	self deleteNotes

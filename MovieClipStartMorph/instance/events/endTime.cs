@@ -1,3 +1,0 @@
-endTime
-
-	^ endMorph scoreEvent time

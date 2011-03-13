@@ -1,6 +1,6 @@
 SharedPool
 	subclass: #ChronologyConstants
-	instanceVariableNames: 'seconds offset jdn nanos'
+	instanceVariableNames: ''
 	classVariableNames:
 		'DayNames DaysInMonth MonthNames NanosInMillisecond NanosInSecond SecondsInDay SecondsInHour SecondsInMinute SqueakEpoch'
 	poolDictionaries: ''

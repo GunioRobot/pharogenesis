@@ -1,2 +1,0 @@
-morphRepresented
-	^ morphRepresented

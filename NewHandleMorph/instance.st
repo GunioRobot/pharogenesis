@@ -1,6 +1,6 @@
 HandleMorph
 	subclass: #NewHandleMorph
-	instanceVariableNames: 'hand offset waitingForClickInside'
+	instanceVariableNames: 'hand waitingForClickInside'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Morphic-Widgets'

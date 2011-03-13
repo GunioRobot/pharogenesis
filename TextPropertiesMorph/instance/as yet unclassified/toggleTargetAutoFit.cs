@@ -1,3 +1,0 @@
-toggleTargetAutoFit
-
-	^myTarget autoFitOnOff

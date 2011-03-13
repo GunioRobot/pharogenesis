@@ -1,3 +1,3 @@
 releaseAllFoci
-	mouseFocus _ nil.
-	keyboardFocus _ nil.
+	mouseFocus := nil.
+	keyboardFocus := nil.

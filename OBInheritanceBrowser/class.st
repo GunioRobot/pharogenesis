@@ -1,1 +1,0 @@
-OBInheritanceBrowser class instanceVariableNames: ''

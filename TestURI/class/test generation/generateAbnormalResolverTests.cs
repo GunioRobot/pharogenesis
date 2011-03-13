@@ -3,7 +3,7 @@ generateAbnormalResolverTests
 
 	| relURIString result method testPairs pair |
 
-	testPairs _ #(
+	testPairs := #(
 		#('../../../g' 'http://a/../g' )
 		#('../../../../g' 'http://a/../../g' )
 		#('/./g' 'http://a/./g' )
@@ -24,15 +24,15 @@ generateAbnormalResolverTests
 		#('g#s/../x' 'http://a/b/c/g#s/../x' )
 	).
 	1 to: testPairs size do: [:index |
-		pair _ testPairs at: index.
-		relURIString _ pair first.
-		result _ pair last.
-		method _ String streamContents: [:stream |
+		pair := testPairs at: index.
+		relURIString := pair first.
+		result := pair last.
+		method := String streamContents: [:stream |
 			stream nextPutAll: 'testResolveAbnormal' , index printString; cr.
 			stream
 				nextPutAll: '	| baseURI relURI resolvedURI |' ; cr;
-				nextPutAll: '	baseURI _ ''http://a/b/c/d;p?q'' asURI.' ; cr;
-				nextPutAll: '	relURI _ '; nextPut: $'; nextPutAll: relURIString; nextPutAll: '''.' ; cr;
-				nextPutAll: '	resolvedURI _ baseURI resolveRelativeURI: relURI.' ; cr;
+				nextPutAll: '	baseURI := ''http://a/b/c/d;p?q'' asURI.' ; cr;
+				nextPutAll: '	relURI := '; nextPut: $'; nextPutAll: relURIString; nextPutAll: '''.' ; cr;
+				nextPutAll: '	resolvedURI := baseURI resolveRelativeURI: relURI.' ; cr;
 				nextPutAll: '	self should: [resolvedURI asString = '''; nextPutAll: result; nextPutAll: '''].' ; cr].
 		self compile: method classified: 'running resolving'].

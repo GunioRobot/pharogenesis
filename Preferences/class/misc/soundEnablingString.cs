@@ -1,6 +1,6 @@
 soundEnablingString
 	^ self soundsEnabled
 		ifFalse:
-			['turn sound on' translated]
+			['Turn sound on' translated]
 		ifTrue:
-			['turn sound off' translated]
+			['Turn sound off' translated]

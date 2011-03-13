@@ -1,3 +1,0 @@
-clearKnownThreads
-
-	KnownThreads _ nil

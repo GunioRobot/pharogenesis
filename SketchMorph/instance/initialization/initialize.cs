@@ -1,3 +1,5 @@
 initialize
-"initialize the state of the receiver"
-	^ self initializeWith: (ScriptingSystem formAtKey: 'Painting') deepCopy
+	"initialize the state of the receiver"
+	super initialize.
+	self initializeAllButForm.
+	self initializeForm: self defaultForm

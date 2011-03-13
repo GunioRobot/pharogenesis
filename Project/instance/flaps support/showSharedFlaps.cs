@@ -2,7 +2,7 @@ showSharedFlaps
 	"Answer whether shared flaps are shown or suppressed in this project"
 
 	| result |
-	result _ Preferences showSharedFlaps.
+	result := Preferences showSharedFlaps.
 	^ self == Project current
 		ifTrue:
 			[result]

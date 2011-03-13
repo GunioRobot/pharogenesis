@@ -5,6 +5,6 @@ infoWithName: nameString message: messageString
 		message: messageString
 		date: Date today
 		time: Time now
-		author: Utilities authorInitials
+		author: Author fullName
 		ancestors: ancestors asArray
 		stepChildren: self stepChildren asArray

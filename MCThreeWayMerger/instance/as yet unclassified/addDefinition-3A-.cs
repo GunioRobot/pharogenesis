@@ -3,7 +3,7 @@ addDefinition: aDefinition
 		definitionLike: aDefinition
 		ifPresent: [:other |
 			(self removalForDefinition: aDefinition)
-				ifNotNilDo:
+				ifNotNil:
 					[:op |
 					self addOperation: (MCModification of: other to: aDefinition).
 					self removeOperation: op.

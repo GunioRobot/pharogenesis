@@ -1,2 +1,2 @@
 cellPositioning: aSymbol
-	cellPositioning _ aSymbol
+	cellPositioning := aSymbol

@@ -1,4 +1,4 @@
 seconds: seconds
-	"Answer a Time from midnight"
+	"Answer a Time from midnight."
 
-	^ self seconds: seconds nanoSeconds: 0
+	^ self basicNew ticks: (Duration seconds: seconds) ticks

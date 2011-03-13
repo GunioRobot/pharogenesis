@@ -1,2 +1,0 @@
-step
-	self changed

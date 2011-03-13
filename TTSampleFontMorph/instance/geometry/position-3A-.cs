@@ -1,3 +1,3 @@
 position: pos
 	super position: pos.
-	transform _ nil.
+	transform := nil.

@@ -1,2 +1,0 @@
-wantsButton
-	^ self buttonLabel notNil

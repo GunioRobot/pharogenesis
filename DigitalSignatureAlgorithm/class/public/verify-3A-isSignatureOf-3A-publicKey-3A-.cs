@@ -1,12 +1,14 @@
-verify: signatureString isSignatureOf: aStringOrStream publicKey: publicKey
+verify: signatureString isSignatureOf: aStringOrStream publicKey: publicKey 
 	"Answer true if the given signature string signs the given message (a stream or string)."
 	"Note: Random numbers are not needed for signature verification; thus, there is no need to call initRandomFromUser before verifying a signature."
-
 	| dsa hasher h sig |
-	dsa _ DigitalSignatureAlgorithm new.
-	hasher _ SecureHashAlgorithm new.
-	(aStringOrStream class isBytes)
-		ifTrue: [h _ hasher hashMessage: aStringOrStream]
-		ifFalse: [h _ hasher hashStream: aStringOrStream].
-	sig _ dsa stringToSignature: signatureString.
-	^ dsa verifySignature: sig ofMessageHash: h publicKey: publicKey
+	dsa := DigitalSignatureAlgorithm new.
+	hasher := SecureHashAlgorithm new.
+	h := aStringOrStream class isBytes 
+		ifTrue: [ hasher hashMessage: aStringOrStream ]
+		ifFalse: [ hasher hashStream: aStringOrStream ].
+	sig := dsa stringToSignature: signatureString.
+	^ dsa 
+		verifySignature: sig
+		ofMessageHash: h
+		publicKey: publicKey

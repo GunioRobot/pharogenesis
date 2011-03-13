@@ -5,10 +5,10 @@ interpretNextInstructionFor: client
 "Change false here will trace all state in Transcript."
 true ifTrue: [^ super interpretNextInstructionFor: client].
 
-	varNames _ self class allInstVarNames.
-	code _ (self method at: pc) radix: 16.
+	varNames := self class allInstVarNames.
+	code := (self method at: pc) radix: 16.
 	Transcript cr; cr; print: pc; space;
-		nextPutAll: '<' , code, '>'.
+		nextPutAll: '<' , (code copyFrom: 4 to: code size), '>'.
 	8 to: varNames size do:
 		[:i | i <= 10 ifTrue: [Transcript cr]
 				ifFalse: [Transcript space; space].

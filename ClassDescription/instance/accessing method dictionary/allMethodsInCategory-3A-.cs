@@ -1,8 +1,9 @@
 allMethodsInCategory: aName 
-	"Answer a list of all the method categories of the receiver and all its 
-	superclasses "
+	"Answer a list of all the methods of the receiver and all its 
+	superclasses that are in the category named aName"
+	
 	| aColl |
-	aColl _ OrderedCollection new.
+	aColl := OrderedCollection new.
 	self withAllSuperclasses
 		do: [:aClass | aColl
 				addAll: (aName = ClassOrganizer allCategory

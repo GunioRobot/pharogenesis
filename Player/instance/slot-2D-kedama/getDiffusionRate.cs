@@ -1,3 +1,0 @@
-getDiffusionRate
-
-	^ self getValueFromCostume: #diffusionRate.

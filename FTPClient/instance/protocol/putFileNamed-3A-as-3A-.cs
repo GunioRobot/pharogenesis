@@ -3,7 +3,7 @@ putFileNamed: filePath as: fileNameOnServer
 
 
 	| fileStream |
-	fileStream _ FileStream readOnlyFileNamed: filePath.
+	fileStream := FileStream readOnlyFileNamed: filePath.
 	fileStream
 		ifNil: [(FileDoesNotExistException fileName: filePath) signal].
 	self putFileStreamContents: fileStream as: fileNameOnServer

@@ -2,7 +2,7 @@ isLeapYear: aYearInteger
 
 
 	| adjustedYear |
-	adjustedYear _ aYearInteger > 0
+	adjustedYear := aYearInteger > 0
 		ifTrue: [aYearInteger]
 		ifFalse: [(aYearInteger + 1) negated].
 

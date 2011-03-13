@@ -1,0 +1,1 @@
+A soft gradient-based UI theme. Do UIThemeSoftSqueak beCurrent to use.

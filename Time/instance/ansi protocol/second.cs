@@ -1,4 +1,3 @@
-second
-
+second 
 
 	^ self asDuration seconds

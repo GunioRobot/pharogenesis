@@ -3,26 +3,26 @@ newUpdatesOn: serverList special: indexPrefix throughNumber: aNumber
 	No updates numbered higher than aNumber (if it is not nil) are returned " 
 
 	| existing doc list out ff raw char maxNumber itsNumber |
-	maxNumber _ aNumber ifNil: [99999].
-	out _ OrderedCollection new.
-	existing _ SystemVersion current updates.
+	maxNumber := aNumber ifNil: [99999].
+	out := OrderedCollection new.
+	existing := SystemVersion current updates.
 	serverList do: [:server |
-		doc _ HTTPClient httpGet: 'http://' , server,indexPrefix,'updates.list'.
+		doc := HTTPClient httpGet: 'http://' , server,indexPrefix,'updates.list'.
 		"test here for server being up"
 		doc class == RWBinaryOrTextStream ifTrue:
-			[raw _ doc reset; contents.	"one file name per line"
-			list _ self extractThisVersion: raw.
+			[raw := doc reset; contents.	"one file name per line"
+			list := self extractThisVersion: raw.
 			list reverseDo: [:fileName |
-				ff _ (fileName findTokens: '/') last.	"allow subdirectories"
-				itsNumber _ ff initialIntegerOrNil. 
+				ff := (fileName findTokens: '/') last.	"allow subdirectories"
+				itsNumber := ff initialIntegerOrNil. 
 				(existing includes: itsNumber)
 					ifFalse:
 						[
-						(itsNumber == nil or: [itsNumber <= maxNumber])
+						(itsNumber isNil or: [itsNumber <= maxNumber])
 							ifTrue:
 								[out addFirst: 'http://' , server, fileName]]
 					ifTrue: [^ out]].
-			((out size > 0) or: [char _ doc reset; skipSeparators; next.
+			((out size > 0) or: [char := doc reset; skipSeparators; next.
 				(char == $*) | (char == $#)]) ifTrue:
 					[^ out "we have our list"]].	"else got error msg instead of file"
 		"Server was down, try next one"].

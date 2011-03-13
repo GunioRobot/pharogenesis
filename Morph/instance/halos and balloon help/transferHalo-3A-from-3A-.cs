@@ -5,11 +5,11 @@ transferHalo: event from: formerHaloOwner
 	self flag: #workAround. "For halo's distinction between 'target' and 'innerTarget' we need to bypass any renderers."
 	(formerHaloOwner == self and:[self isRenderer and:[self wantsHaloFromClick not]]) ifTrue:[
 		event shiftPressed ifTrue:[
-			target _ owner.
-			localEvt _ event transformedBy: (self transformedFrom: owner).
+			target := owner.
+			localEvt := event transformedBy: (self transformedFrom: owner).
 		] ifFalse:[
-			target _ self renderedMorph.
-			localEvt _ event transformedBy: (target transformedFrom: self).
+			target := self renderedMorph.
+			localEvt := event transformedBy: (target transformedFrom: self).
 		].
 		^target transferHalo: localEvt from: target].
 
@@ -28,7 +28,7 @@ transferHalo: event from: formerHaloOwner
 		^self processEvent: event copy resetHandlerFields.
 	].
 	self submorphsDo:[:m|
-		localEvt _ event transformedBy: (m transformedFrom: self).
+		localEvt := event transformedBy: (m transformedFrom: self).
 		(m fullContainsPoint: localEvt position) 
 			ifTrue:[^m transferHalo: event from: formerHaloOwner].
 	].
@@ -36,7 +36,7 @@ transferHalo: event from: formerHaloOwner
 	formerHaloOwner removeHalo.
 
 	Preferences maintainHalos ifFalse:[
-		(w _ self world) ifNil: [ ^self ].
-		localEvt _ event transformedBy: (self transformedFrom: w) inverseTransformation.
+		(w := self world) ifNil: [ ^self ].
+		localEvt := event transformedBy: (self transformedFrom: w) inverseTransformation.
 		^w processEvent: localEvt resetHandlerFields.
 	].

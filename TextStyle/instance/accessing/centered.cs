@@ -1,2 +1,2 @@
 centered
-	alignment _ 2
+	alignment := 2

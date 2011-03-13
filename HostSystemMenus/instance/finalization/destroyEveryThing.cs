@@ -1,0 +1,2 @@
+destroyEveryThing
+	self hostSystemProxy destroyEveryThing

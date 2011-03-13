@@ -1,3 +1,0 @@
-privateMorphs
-
-	^ privateMorphs

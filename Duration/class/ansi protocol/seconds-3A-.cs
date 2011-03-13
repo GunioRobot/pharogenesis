@@ -1,3 +1,3 @@
-seconds: aNumber
+seconds: seconds
 
-	^ (self basicNew) seconds: aNumber nanoSeconds: 0; yourself.
+	^ self seconds: seconds nanoSeconds: 0

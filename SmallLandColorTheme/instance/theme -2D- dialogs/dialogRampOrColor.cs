@@ -1,2 +1,0 @@
-dialogRampOrColor
-	^ self dialogColor

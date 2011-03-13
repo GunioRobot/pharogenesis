@@ -1,3 +1,0 @@
-nebraskaClient: aNebraskaClient
-
-	nebraskaClient := aNebraskaClient

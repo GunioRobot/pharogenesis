@@ -3,13 +3,13 @@ browseClassVarRefs: aClass
 	that refer to the selected class variable"
 
 	| lines labelStream vars allVars index owningClasses |
-	lines _ OrderedCollection new.
-	allVars _ OrderedCollection new.
-	owningClasses _ OrderedCollection new.
-	labelStream _ WriteStream on: (String new: 200).
+	lines := OrderedCollection new.
+	allVars := OrderedCollection new.
+	owningClasses := OrderedCollection new.
+	labelStream := (String new: 200) writeStream.
 	aClass withAllSuperclasses reverseDo:
 		[:class |
-		vars _ class classVarNames asSortedCollection.
+		vars := class classVarNames asSortedCollection.
 		vars do:
 			[:var |
 			labelStream nextPutAll: var; cr.
@@ -18,7 +18,7 @@ browseClassVarRefs: aClass
 		vars isEmpty ifFalse: [lines add: allVars size]].
 	labelStream contents isEmpty ifTrue: [^Beeper beep]. "handle nil superclass better"
 	labelStream skip: -1 "cut last CR".
-	index _ (UIManager default chooseFrom: (labelStream contents substrings) lines: lines).
+	index := (UIManager default chooseFrom: (labelStream contents substrings) lines: lines).
 	index = 0 ifTrue: [^ self].
 	self browseAllCallsOn:
 		((owningClasses at: index) classPool associationAt: (allVars at: index))

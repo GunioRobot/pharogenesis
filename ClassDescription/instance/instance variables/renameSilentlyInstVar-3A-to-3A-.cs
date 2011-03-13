@@ -1,8 +1,8 @@
 renameSilentlyInstVar: old to: new
 	| i oldName newName |
-	oldName _ old asString.
-	newName _ new asString.
-	(i _ self instVarNames indexOf: oldName) = 0 ifTrue:
+	oldName := old asString.
+	newName := new asString.
+	(i := self instVarNames indexOf: oldName) = 0 ifTrue:
 		[self error: oldName , ' is not defined in ', self name].
 	self allSuperclasses , self withAllSubclasses asOrderedCollection do:
 		[:cls | (cls instVarNames includes: newName) ifTrue:

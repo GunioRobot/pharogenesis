@@ -6,8 +6,4 @@ morphToView
 		ifTrue:
 			[objectToView]
 		ifFalse:
-			[(objectToView isPlayerLike)
-				ifTrue:
-					[objectToView costume]
-				ifFalse:
-					[RectangleMorph new color: Color blue]]
+			[RectangleMorph new color: Color blue]

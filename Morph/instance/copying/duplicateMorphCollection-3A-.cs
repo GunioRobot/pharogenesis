@@ -3,12 +3,12 @@ duplicateMorphCollection: aCollection
 
 	| newCollection names |
 
-	names _ aCollection collect: [ :ea | | newMorph w |
-		(w _ ea world) ifNotNil:
+	names := aCollection collect: [ :ea | | newMorph w |
+		(w := ea world) ifNotNil:
 			[w nameForCopyIfAlreadyNamed: ea].
 	].
 
-	newCollection _ aCollection veryDeepCopy.
+	newCollection := aCollection veryDeepCopy.
 
 	newCollection with: names do: [ :newMorph :name |
 		name ifNotNil: [ newMorph setNameTo: name ].

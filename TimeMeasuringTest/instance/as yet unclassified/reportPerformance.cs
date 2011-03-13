@@ -1,6 +1,6 @@
 reportPerformance
 	| str |
-	str := CrLfFileStream fileNamed: 'performanceReports.txt'.
+	str := (MultiByteFileStream fileNamed: 'performanceReports.txt') ascii; wantsLineEndConversion: true; yourself.
 	str setToEnd;
 		nextPutAll: ' test: ', testSelector;
 		nextPutAll: ' time: ', realTime asString; 

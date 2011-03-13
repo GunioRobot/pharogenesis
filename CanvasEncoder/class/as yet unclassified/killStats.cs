@@ -1,3 +1,0 @@
-killStats
-
-	SentTypesAndSizes := nil

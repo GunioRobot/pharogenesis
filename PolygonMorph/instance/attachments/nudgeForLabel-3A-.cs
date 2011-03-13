@@ -3,20 +3,20 @@ nudgeForLabel: aRectangle
 
 	| i flags nudge |
 	(self bounds intersects: aRectangle) ifFalse: [^ 0@0 ].
-	flags _ 0.
-	nudge _ 0@0.
-	i _ 1.
+	flags := 0.
+	nudge := 0@0.
+	i := 1.
 	aRectangle lineSegmentsDo: [ :rp1 :rp2 | | rectSeg int |
-		rectSeg _ LineSegment from: rp1 to: rp2.
+		rectSeg := LineSegment from: rp1 to: rp2.
 		self straightLineSegmentsDo: [ :lp1 :lp2 | | polySeg  |
-			polySeg _ LineSegment from: lp1 to: lp2.
-			int _ polySeg intersectionWith: rectSeg.
-			int ifNotNil: [ flags _ flags bitOr: i ].
+			polySeg := LineSegment from: lp1 to: lp2.
+			int := polySeg intersectionWith: rectSeg.
+			int ifNotNil: [ flags := flags bitOr: i ].
 		].
-		i _ i * 2.
+		i := i * 2.
 	].
 	"Now flags has bitflags for which sides"
-	nudge _ flags caseOf: {
+	nudge := flags caseOf: {
 "no intersection"
 		[ 0 ] -> [ 0@0 ].
 "2 adjacent sides only" 

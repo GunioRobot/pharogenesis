@@ -1,1 +1,0 @@
-StarSqueakSlimeMold class instanceVariableNames: ''

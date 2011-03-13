@@ -1,7 +1,7 @@
 initWithContents: aString font: aFont emphasis: emphasisCode 
 	super initialize.
 	
-	font _ aFont.
-	emphasis _ emphasisCode.
-	hasFocus _ false.
+	font := aFont.
+	emphasis := emphasisCode.
+	hasFocus := false.
 	self contents: aString

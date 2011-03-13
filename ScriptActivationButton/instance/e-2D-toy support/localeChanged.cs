@@ -1,2 +1,0 @@
-localeChanged
-	"Do nothing"

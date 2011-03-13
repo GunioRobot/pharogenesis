@@ -1,2 +1,0 @@
-definitionPanel
-	^ OBDefinitionPanel new

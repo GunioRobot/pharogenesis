@@ -5,8 +5,8 @@ instVarNames
 	instance variables."
 
 	| mySize superSize |
-	mySize _ self instSize.
-	superSize _ 
+	mySize := self instSize.
+	superSize := 
 		superclass == nil
 			ifTrue: [0]
 			ifFalse: [superclass instSize].

@@ -5,6 +5,6 @@ storeAttributesOn: aStream
 	self storeAttributeKey: 'Squeak-LatestUpdate' value: SystemVersion current highestUpdate printString on: aStream.
 	self storeAttributeKey: 'File-Name-Encoding' value: LanguageEnvironment defaultFileNameConverter class encodingNames first on: aStream.
 
-	details _ self world valueOfProperty: #ProjectDetails ifAbsent: [Dictionary new].
+	details := self world valueOfProperty: #ProjectDetails ifAbsent: [Dictionary new].
 	details associationsDo: [:assoc |
 		self storeAttributeKey: assoc key asString value: assoc value asString on: aStream.].

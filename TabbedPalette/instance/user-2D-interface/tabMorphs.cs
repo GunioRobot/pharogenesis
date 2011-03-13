@@ -1,2 +1,0 @@
-tabMorphs
-	^ tabsMorph tabMorphs

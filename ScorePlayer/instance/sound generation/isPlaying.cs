@@ -1,2 +1,0 @@
-isPlaying
-	^ SoundPlayer isPlaying: self

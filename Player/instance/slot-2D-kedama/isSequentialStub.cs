@@ -1,3 +1,0 @@
-isSequentialStub
-
-	^ false.

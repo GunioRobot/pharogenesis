@@ -1,4 +1,5 @@
 initialize
-	mutex _ Semaphore forMutualExclusion.
-	queuesMutex _ Semaphore forMutualExclusion.
-	nestingLevel _ 0.
+	super initialize.
+	mutex := Semaphore forMutualExclusion.
+	queuesMutex := Semaphore forMutualExclusion.
+	nestingLevel := 0.

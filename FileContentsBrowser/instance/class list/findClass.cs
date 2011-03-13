@@ -2,7 +2,7 @@ findClass
 	| pattern foundClass classNames index foundPackage |
 	self okToChange ifFalse: [^ self classNotFound].
 	pattern := (UIManager default request: 'Class Name?') asLowercase.
-	pattern isEmpty ifTrue: [^ self].
+	pattern isEmptyOrNil ifTrue: [^ self].
 	classNames := Set new.
 	self packages do:[:p| classNames addAll: p classes keys].
 	classNames := classNames asArray select: 

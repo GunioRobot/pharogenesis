@@ -1,4 +1,3 @@
-printOn: aStream 
-
-	super printOn: aStream.
-	aStream space; nextPutAll: self identityHashPrintString
+printOn: aStream
+	aStream nextPutAll: '[closure] in '.
+	outerContext printOn: aStream

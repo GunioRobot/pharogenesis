@@ -1,0 +1,1 @@
+VistaryThemeIcons class instanceVariableNames: ''

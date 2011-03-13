@@ -1,19 +1,19 @@
 privateAddAllMorphs: aCollection atIndex: index
 	"Private. Add aCollection of morphs to the receiver"
 	| myWorld itsWorld otherSubmorphs |
-	myWorld _ self world.
-	otherSubmorphs _ submorphs copyWithoutAll: aCollection.
+	myWorld := self world.
+	otherSubmorphs := submorphs copyWithoutAll: aCollection.
 	(index between: 0 and: otherSubmorphs size)
 		ifFalse: [^ self error: 'index out of range'].
 	index = 0
-		ifTrue:[	submorphs _ aCollection asArray, otherSubmorphs]
+		ifTrue:[	submorphs := aCollection asArray, otherSubmorphs]
 		ifFalse:[	index = otherSubmorphs size
-			ifTrue:[	submorphs _ otherSubmorphs, aCollection]
-			ifFalse:[	submorphs _ otherSubmorphs copyReplaceFrom: index + 1 to: index with: aCollection ]].
+			ifTrue:[	submorphs := otherSubmorphs, aCollection]
+			ifFalse:[	submorphs := otherSubmorphs copyReplaceFrom: index + 1 to: index with: aCollection ]].
 	aCollection do: [:m | | itsOwner |
-		itsOwner _ m owner.
+		itsOwner := m owner.
 		itsOwner ifNotNil: [
-			itsWorld _ m world.
+			itsWorld := m world.
 			(itsWorld == myWorld) ifFalse: [
 				itsWorld ifNotNil: [self privateInvalidateMorph: m].
 				m outOfWorld: itsWorld].

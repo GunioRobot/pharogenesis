@@ -1,3 +1,3 @@
 loaderUrl: aString
 
-	loaderUrl _ aString
+	loaderUrl := aString

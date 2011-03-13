@@ -1,4 +1,3 @@
 parameters
-	parameters == nil
-		ifTrue: [parameters _ self class extractParameters].
+	parameters ifNil: [parameters := self class extractParameters].
 	^parameters

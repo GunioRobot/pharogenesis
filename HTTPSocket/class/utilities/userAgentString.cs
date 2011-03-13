@@ -1,5 +1,5 @@
 userAgentString 
-	"self userAgentString"
+	"self userAgentString."
 
 	^'User-Agent: ',
 		SystemVersion current version, '-', 

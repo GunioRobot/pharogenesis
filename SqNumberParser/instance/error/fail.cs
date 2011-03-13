@@ -1,3 +1,3 @@
 fail
-	failBlock isNil ifFalse: [^failBlock value].
+	failBlock ifNotNil: [^failBlock value].
 	self error: 'Reading a number failed'

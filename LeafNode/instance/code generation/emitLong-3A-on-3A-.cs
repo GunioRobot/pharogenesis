@@ -1,22 +1,22 @@
 emitLong: mode on: aStream 
 	"Emit extended variable access."
 	| type index |
-	self code < 256
+	code < 256
 		ifTrue:
-			[self code < 16
-			ifTrue: [type _ 0.
-					index _ self code]
-			ifFalse: [self code < 32
-					ifTrue: [type _ 1.
-							index _ self code - 16]
-					ifFalse: [self code < 96
-							ifTrue: [type _ self code // 32 + 1.
-									index _ self code \\ 32]
+			[code < 16
+			ifTrue: [type := 0.
+					index := code]
+			ifFalse: [code < 32
+					ifTrue: [type := 1.
+							index := code - 16]
+					ifFalse: [code < 96
+							ifTrue: [type := code // 32 + 1.
+									index := code \\ 32]
 							ifFalse: [self error: 
 									'Sends should be handled in SelectorNode']]]]
 		ifFalse: 
-			[index _ self code \\ 256.
-			type _ self code // 256 - 1].
+			[index := code \\ 256.
+			type := code // 256 - 1].
 	index <= 63 ifTrue:
 		[aStream nextPut: mode.
 		^ aStream nextPut: type * 64 + index].

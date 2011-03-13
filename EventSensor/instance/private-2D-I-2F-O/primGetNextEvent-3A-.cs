@@ -9,8 +9,8 @@ primGetNextEvent: array
 	array at: 1 put: EventTypeNone. "assume no more events"
 
 	"First check for keyboard"
-	kbd _ super primKbdNext.
-	kbd = nil ifFalse:[
+	kbd := super primKbdNext.
+	kbd isNil ifFalse:[
 		"simulate keyboard event"
 		array at: 1 put: EventTypeKeyboard. "evt type"
 		array at: 2 put: Time millisecondClockValue. "time stamp"
@@ -20,11 +20,11 @@ primGetNextEvent: array
 		^self].
 
 	"Then check for mouse"
-	buttons _ super primMouseButtons.
-	pos _ super primMousePt.
-	modifiers _ buttons bitShift: -3.
-	buttons _ buttons bitAnd: 7.
-	mapped _ self mapButtons: buttons modifiers: modifiers.
+	buttons := super primMouseButtons.
+	pos := super primMousePt.
+	modifiers := buttons bitShift: -3.
+	buttons := buttons bitAnd: 7.
+	mapped := self mapButtons: buttons modifiers: modifiers.
 	(pos = mousePosition and:[(mapped bitOr: (modifiers bitShift: 3)) = mouseButtons])
 		ifTrue:[^self].
 	array 

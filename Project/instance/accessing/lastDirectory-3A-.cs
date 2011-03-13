@@ -1,2 +1,2 @@
 lastDirectory: aDirectoryOrNil
-	lastDirectory _ aDirectoryOrNil
+	lastDirectory := aDirectoryOrNil

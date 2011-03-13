@@ -16,23 +16,10 @@ or canceling via menu or press Alt+s/Alt+l'
 		initialAnswer: 'Once upon a time...'
 		answerHeight: 200"
 
-	| model fillInView |
-	Smalltalk isMorphic 
-		ifTrue: 
-			[^self fillInTheBlankMorphClass 
+	^self fillInTheBlankMorphClass 
 				request: queryString
 				initialAnswer: defaultAnswer
 				centerAt: aPoint
 				inWorld: self currentWorld
 				onCancelReturn: nil
-				acceptOnCR: false].
-	model := self new.
-	model contents: defaultAnswer.
-	model responseUponCancel: nil.
-	model acceptOnCR: false.
-	fillInView := self fillInTheBlankViewClass 
-				multiLineOn: model
-				message: queryString
-				centerAt: aPoint
-				answerHeight: answerHeight.
-	^model show: fillInView
+				acceptOnCR: false

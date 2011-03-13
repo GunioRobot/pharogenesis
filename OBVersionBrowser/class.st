@@ -1,1 +1,0 @@
-OBVersionBrowser class instanceVariableNames: ''

@@ -1,2 +1,2 @@
 activeOnlyOnTop: trueOrFalse
-	activeOnlyOnTop _ trueOrFalse
+	activeOnlyOnTop := trueOrFalse

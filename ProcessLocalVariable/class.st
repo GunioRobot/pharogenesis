@@ -1,0 +1,1 @@
+ProcessLocalVariable class instanceVariableNames: ''

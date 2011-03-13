@@ -1,6 +1,6 @@
 subclasses
 	"Return all the subclasses of nil"
 	| classList |
-	classList _ WriteStream on: Array new.
+	classList := Array new writeStream.
 	self subclassesDo:[:class| classList nextPut: class].
 	^classList contents

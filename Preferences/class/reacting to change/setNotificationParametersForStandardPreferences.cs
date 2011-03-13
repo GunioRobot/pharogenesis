@@ -8,18 +8,13 @@ setNotificationParametersForStandardPreferences
 	| aPreference |
 	#(	
 		(annotationPanes		annotationPanesChanged)
-		(eToyFriendly			eToyFriendlyChanged)
 		(infiniteUndo			infiniteUndoChanged)
-		(uniTilesClassic			classicTilesSettingToggled)
 		(optionalButtons			optionalButtonsChanged)
 		(roundedWindowCorners	roundedWindowCornersChanged)
-		(showProjectNavigator	showProjectNavigatorChanged)
 		(smartUpdating			smartUpdatingChanged)
-		(universalTiles			universalTilesSettingToggled)
 		(showSharedFlaps		sharedFlapsSettingChanged)
-		(noviceMode		noviceModeSettingChanged)
 	)  do:
 
 			[:pair |
-				aPreference _ self preferenceAt: pair first.
+				aPreference := self preferenceAt: pair first.
 				aPreference changeInformee: self changeSelector: pair second]

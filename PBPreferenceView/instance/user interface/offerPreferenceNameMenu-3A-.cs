@@ -15,9 +15,8 @@ offerPreferenceNameMenu: aPreferenceBrowser
 	aMenu add: 'show category...' target: aPreferenceBrowser selector: #findCategoryFromPreference: argument: self preference name.
 	aMenu balloonTextForLastItem: 'Allows you to find out which category, or categories, this preference belongs to.'.
 
-	Smalltalk isMorphic ifTrue:
-		[aMenu add: 'hand me a button for this preference' target: self selector: #tearOffButton.
-		aMenu balloonTextForLastItem: 'Will give you a button that governs this preference, which you may deposit wherever you wish'].
+	aMenu add: 'hand me a button for this preference' target: self selector: #tearOffButton.
+	aMenu balloonTextForLastItem: 'Will give you a button that governs this preference, which you may deposit wherever you wish'.
 
 	aMenu add: 'copy this name to clipboard' target: self preference selector: #copyName.
 	aMenu balloonTextForLastItem: 'Copy the name of the preference to the text clipboard, so that you can paste into code somewhere'.

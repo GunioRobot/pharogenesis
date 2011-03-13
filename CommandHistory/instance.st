@@ -3,4 +3,4 @@ Object
 	instanceVariableNames: 'lastCommand history excursions'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'MorphicExtras-Undo'
+	category: 'Morphic-Undo'

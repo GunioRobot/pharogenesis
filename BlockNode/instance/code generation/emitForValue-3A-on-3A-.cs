@@ -14,6 +14,6 @@ emitForValue: stack on: aStream
 	self emitForEvaluatedValue: stack on: aStream.
 	self returns ifFalse: [
 		aStream nextPut: EndRemote.
-		pc _ aStream position.
+		pc := aStream position.
 	].
 	stack pop: 1

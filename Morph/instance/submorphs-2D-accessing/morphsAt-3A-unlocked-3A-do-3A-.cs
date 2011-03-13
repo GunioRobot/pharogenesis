@@ -4,6 +4,6 @@ morphsAt: aPoint unlocked: aBool do: aBlock
 	(self fullBounds containsPoint: aPoint) ifFalse:[^self].
 	(aBool and:[self isLocked or:[self visible not]]) ifTrue:[^self].
 	self submorphsDo:[:m|
-		tfm _ m transformedFrom: self.
+		tfm := m transformedFrom: self.
 		m morphsAt: (tfm globalPointToLocal: aPoint) unlocked: aBool do: aBlock].
 	(self containsPoint: aPoint) ifTrue:[aBlock value: self].

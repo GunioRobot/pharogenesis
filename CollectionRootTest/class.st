@@ -1,0 +1,1 @@
+CollectionRootTest class instanceVariableNames: ''

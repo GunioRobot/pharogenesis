@@ -1,0 +1,1 @@
+SmallDictionary class instanceVariableNames: ''

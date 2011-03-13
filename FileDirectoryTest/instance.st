@@ -3,4 +3,4 @@ ClassTestCase
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Files-Tests'
+	category: 'Tests-Files'

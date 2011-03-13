@@ -1,1 +1,0 @@
-PostscriptDummyWarp class instanceVariableNames: ''

@@ -2,7 +2,7 @@ edit
 	"Allow the user to change the text in a crude way"
 
 	| str |
-	str _ FillInTheBlankMorph request: 'Type in new text for this TrueType displayer.'
+	str :=  UIManager default request: 'Type in new text for this TrueType displayer.' translated
 				 initialAnswer: 'some text'.
-	str isEmpty ifTrue: [^ self].
+	str isEmptyOrNil ifTrue: [^ self].
 	self string: str.

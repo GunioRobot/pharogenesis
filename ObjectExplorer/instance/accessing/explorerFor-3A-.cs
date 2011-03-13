@@ -1,7 +1,7 @@
 explorerFor: anObject
 	| window listMorph |
 	rootObject := anObject.
-	window := (SystemWindow labelled: self label) model: self.
+	window := (SystemWindow labelled: (rootObject printStringLimitedTo: 32)) model: self.
 	window addMorph: (listMorph := SimpleHierarchicalListMorph 
 			on: self
 			list: #getList
@@ -14,6 +14,5 @@ explorerFor: anObject
 				readSelection: #contentsSelection menu: #codePaneMenu:shifted:)
 					askBeforeDiscardingEdits: false)
 		frame: (0@0.8 corner: 1@1).
-	listMorph
-		autoDeselect: false.
+	listMorph autoDeselect: false.
      ^ window

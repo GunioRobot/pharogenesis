@@ -1,2 +1,3 @@
 isInf
-	^ false
+	self deprecated: 'Use #isInfinite instead'.
+	^self isInfinite

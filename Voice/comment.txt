@@ -1,1 +1,0 @@
-I am an abstract class for speaking voices that know how to play VoiceEvents.

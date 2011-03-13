@@ -1,10 +1,10 @@
 assureTableProperties
 	| props |
-	props _ self layoutProperties.
-	props == self ifTrue:[props _ nil].
+	props := self layoutProperties.
+	props == self ifTrue:[props := nil].
 	props ifNil:[
-		props _ TableLayoutProperties new initializeFrom: self.
+		props := TableLayoutProperties new initializeFrom: self.
 		self layoutProperties: props].
 	props includesTableProperties 
-		ifFalse:[self layoutProperties: (props _ props asTableLayoutProperties)].
+		ifFalse:[self layoutProperties: (props := props asTableLayoutProperties)].
 	^props

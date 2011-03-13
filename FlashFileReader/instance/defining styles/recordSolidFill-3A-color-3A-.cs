@@ -1,1 +1,0 @@
-recordSolidFill: index color: fillColor

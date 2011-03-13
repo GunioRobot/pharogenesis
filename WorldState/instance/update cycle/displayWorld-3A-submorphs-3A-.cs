@@ -6,14 +6,14 @@ displayWorld: aWorld submorphs: submorphs
 	submorphs do: [:m | m fullBounds].  "force re-layout if needed"
 	self checkIfUpdateNeeded ifFalse: [^ self].  "display is already up-to-date"
 
-	deferredUpdateMode _ self doDeferredUpdatingFor: aWorld.
+	deferredUpdateMode := self doDeferredUpdatingFor: aWorld.
 	deferredUpdateMode ifFalse: [self assuredCanvas].
 	canvas roundCornersOf: aWorld during:[
-		worldDamageRects _ self drawWorld: aWorld submorphs: submorphs invalidAreasOn: canvas.  "repair world's damage on canvas"
+		worldDamageRects := self drawWorld: aWorld submorphs: submorphs invalidAreasOn: canvas.  "repair world's damage on canvas"
 		"self handsDo:[:h| h noticeDamageRects: worldDamageRects]."
-		handsToDraw _ self selectHandsToDrawForDamage: worldDamageRects.
-		handDamageRects _ handsToDraw collect: [:h | h savePatchFrom: canvas].
-		allDamage _ worldDamageRects, handDamageRects.
+		handsToDraw := self selectHandsToDrawForDamage: worldDamageRects.
+		handDamageRects := handsToDraw collect: [:h | h savePatchFrom: canvas].
+		allDamage := worldDamageRects, handDamageRects.
 
 		handsToDraw reverseDo: [:h | canvas fullDrawMorph: h].  "draw hands onto world canvas"
 	].

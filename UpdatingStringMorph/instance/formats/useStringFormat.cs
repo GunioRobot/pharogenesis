@@ -1,3 +1,3 @@
 useStringFormat
 
-	format _ #string.
+	format := #string.

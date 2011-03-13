@@ -1,7 +1,7 @@
 emphasisStringFor: emphasisCode
 	"Answer a translated string that represents the attributes given in emphasisCode."
 
-	| emphases bit |
+	| emphases |
 	emphasisCode = 0 ifTrue: [ ^'Normal' translated ].
 
 	emphases := (IdentityDictionary new)
@@ -12,8 +12,8 @@ emphasisStringFor: emphasisCode
 		at: 16 put: 'StruckOut' translated;
 		yourself.
 
-	bit := 1.
-	^String streamContents: [ :s |
+	^String streamContents: [ :s | | bit |
+		bit := 1.
 		[ bit < 32 ] whileTrue: [ | code |
 			code := emphasisCode bitAnd: bit.
 			code isZero ifFalse: [ s nextPutAll: (emphases at: code); space ].

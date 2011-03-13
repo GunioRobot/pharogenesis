@@ -1,4 +1,3 @@
 startUp
 
-	self clearCompositionWindowManager.
-	self clearInterpreters.
+	self clearCompositionWindowManager

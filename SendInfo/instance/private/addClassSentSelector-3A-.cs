@@ -1,3 +1,3 @@
 addClassSentSelector: aSymbol
-	classSentSelectors ifNil: [classSentSelectors _ IdentitySet new].
+	classSentSelectors ifNil: [classSentSelectors := IdentitySet new].
 	classSentSelectors add: aSymbol.

@@ -1,2 +1,2 @@
 labelString
-	^ directory pathName contractTo: 50
+	^ (directory ifNil: [^'[]']) pathName contractTo: 50

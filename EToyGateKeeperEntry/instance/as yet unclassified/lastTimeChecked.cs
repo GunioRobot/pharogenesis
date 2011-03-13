@@ -1,3 +1,0 @@
-lastTimeChecked
-
-	^self valueOfProperty: #lastTimeChecked

@@ -1,3 +1,3 @@
-textColor: textColor
-	ignoreColorChanges ifTrue: [^ self].
-	foregroundColor _ textColor
+textColor: textColor 
+	ignoreColorChanges ifTrue: [ ^ self ].
+	foregroundColor := textColor

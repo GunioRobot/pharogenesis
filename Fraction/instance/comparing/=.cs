@@ -6,4 +6,4 @@
 					(aNumber numerator * denominator)
 				"Note: used to just compare num and denom,
 					but this fails for improper fractions"].
-	^ aNumber adaptToFraction: self andSend: #=
+	^ aNumber adaptToFraction: self andCompare: #=

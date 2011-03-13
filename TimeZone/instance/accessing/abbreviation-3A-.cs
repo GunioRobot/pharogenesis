@@ -1,3 +1,3 @@
 abbreviation: aString
 
-	abbreviation _ aString
+	abbreviation := aString

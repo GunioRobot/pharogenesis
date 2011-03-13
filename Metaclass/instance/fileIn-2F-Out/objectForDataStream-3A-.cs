@@ -4,7 +4,7 @@ objectForDataStream: refStrm
 
 	(refStrm insideASegment and: [self isSystemDefined not]) ifTrue: [
 		^ self].	"do trace me"
-	dp _ DiskProxy global: self theNonMetaClass name selector: #class
+	dp := DiskProxy global: self theNonMetaClass name selector: #class
 			args: (Array new).
 	refStrm replace: self with: dp.
 	^ dp

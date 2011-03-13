@@ -5,8 +5,8 @@ variableWordSubclass: t uses: aTraitCompositionOrArray instanceVariableNames: f
 	have indexable word-sized nonpointer variables."
 	
 	| newClass copyOfOldClass |
-	copyOfOldClass _ self copy.
-	newClass _ self
+	copyOfOldClass := self copy.
+	newClass := self
 		variableWordSubclass: t 
 		instanceVariableNames: f
 		classVariableNames: d

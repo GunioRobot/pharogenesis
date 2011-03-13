@@ -1,6 +1,6 @@
 buildPluggableMenuItem: itemSpec
 	| item action label menu |
-	item _ MenuItemMorph new.
+	item := MenuItemMorph new.
 	label := itemSpec label.
 	itemSpec checked ifTrue:[label := '<on>', label] ifFalse:[label := '<off>', label].
 	item contents: label.

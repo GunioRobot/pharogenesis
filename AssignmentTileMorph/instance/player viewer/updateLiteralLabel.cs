@@ -1,3 +1,0 @@
-updateLiteralLabel
-	self computeOperatorOrExpression.
-	super updateLiteralLabel

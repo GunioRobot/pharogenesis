@@ -1,2 +1,2 @@
 resourceFileSize: aNumber
-	fileSize _ aNumber
+	fileSize := aNumber

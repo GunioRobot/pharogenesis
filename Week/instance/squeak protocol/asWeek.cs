@@ -1,3 +1,3 @@
 asWeek
 
-	^ self
+	^ self 

@@ -3,9 +3,9 @@ anyShapeFill
 
 	| shape |
 	"Draw a seed line around the edge and fill inward from the outside."
-	shape _ self findShapeAroundSeedBlock: [:f | f borderWidth: 1].
+	shape := self findShapeAroundSeedBlock: [:f | f borderWidth: 1].
 	"Reverse so that this becomes solid in the middle"
-	shape _ shape reverse.
+	shape := shape reverse.
 	"Finally erase any bits from the original so the fill is only elsewhere"
 	shape copy: shape boundingBox from: self to: 0@0 rule: Form erase.
 	^ shape

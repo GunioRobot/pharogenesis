@@ -1,6 +1,6 @@
 advance
 
 	| prevToken |
-	prevToken _ token.
+	prevToken := token.
 	self scanToken.
 	^prevToken

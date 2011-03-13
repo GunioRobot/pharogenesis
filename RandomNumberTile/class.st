@@ -1,1 +1,0 @@
-RandomNumberTile class instanceVariableNames: ''

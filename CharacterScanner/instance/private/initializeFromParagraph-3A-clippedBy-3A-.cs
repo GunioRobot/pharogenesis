@@ -1,4 +1,3 @@
-initializeFromParagraph: aParagraph clippedBy: clippingRectangle
-
-	text _ aParagraph text.
-	textStyle _ aParagraph textStyle. 
+initializeFromParagraph: aParagraph clippedBy: clippingRectangle 
+	text := aParagraph text.
+	textStyle := aParagraph textStyle

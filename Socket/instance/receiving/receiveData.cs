@@ -5,6 +5,6 @@ receiveData
 	Either returns data or signals a time out or connection close."
 
 	| buffer bytesRead |
-	buffer _ String new: 2000.
-	bytesRead _ self receiveDataInto: buffer.
+	buffer := String new: 2000.
+	bytesRead := self receiveDataInto: buffer.
 	^buffer copyFrom: 1 to: bytesRead

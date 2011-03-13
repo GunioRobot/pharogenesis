@@ -1,7 +1,7 @@
 useStringTab: aString
 	| aLabel |
-	labelString _ aString asString.
-	aLabel _ StringMorph  new contents: labelString.
+	labelString := aString asString.
+	aLabel := StringMorph  new contents: labelString.
 	self addMorph: aLabel.
 	aLabel position: self position.
 	aLabel highlightColor: self highlightColor; regularColor: self regularColor.

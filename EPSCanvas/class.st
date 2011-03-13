@@ -1,1 +1,0 @@
-EPSCanvas class instanceVariableNames: ''

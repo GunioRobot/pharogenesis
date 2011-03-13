@@ -3,7 +3,7 @@ scaleBy: aPoint
 	this Path."
 
 	| newPath | 
-	newPath _ self species new: self size. 
+	newPath := self species new: self size. 
 	newPath form: self form.
 	collectionOfPoints do: [:element | newPath add: (element scaleBy: aPoint)].
 	^newPath

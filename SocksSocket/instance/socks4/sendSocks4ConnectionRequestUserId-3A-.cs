@@ -11,9 +11,9 @@ destination host, and userid, in the following format.
 	"
 
 	| requestString |
-	requestString _ WriteStream on: ByteArray new.
+	requestString := ByteArray new writeStream.
 	dstIP
-		ifNil: [dstIP _ NetNameResolver addressForName: dstName].
+		ifNil: [dstIP := NetNameResolver addressForName: dstName].
 	requestString
 		nextPut: 4;
 		nextPut: self connectCommandCode;

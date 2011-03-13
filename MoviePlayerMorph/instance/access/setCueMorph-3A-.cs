@@ -1,2 +1,0 @@
-setCueMorph: aMorph
-	cueMorph := aMorph

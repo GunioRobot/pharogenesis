@@ -4,10 +4,10 @@ getConnectionOrNil
 	| result |
 	accessSema critical: [
 		connections isEmpty
-			ifTrue: [result _ nil]
+			ifTrue: [result := nil]
 			ifFalse: [
-				result _ connections removeFirst.
+				result := connections removeFirst.
 				((result isValid) and: [result isConnected]) ifFalse: [  "stale connection"
 					result destroy.
-					result _ nil]]].
+					result := nil]]].
 	^ result

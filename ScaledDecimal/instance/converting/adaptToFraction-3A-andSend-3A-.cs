@@ -1,4 +1,4 @@
-adaptToFraction: receiver andSend: arithmeticOpSelector 
-	"Convert me to a Fraction and do the arithmetic. 
-	receiver arithmeticOpSelector self."
-	^ receiver perform: arithmeticOpSelector with: fraction
+adaptToFraction: rcvr andSend: selector
+	"If I am involved in arithmetic with a Fraction, convert it to a ScaledDecimal."
+
+	^(rcvr asScaledDecimal: scale) perform: selector with: self

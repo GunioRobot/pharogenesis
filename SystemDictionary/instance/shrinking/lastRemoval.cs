@@ -6,7 +6,7 @@ lastRemoval
 	#(#abandonSources )
 		do: [:each | self class removeSelector: each].
 	"Get rid of all unsent methods."
-	[self removeAllUnSentMessages > 0] whileTrue.
+	[self removeAllUnsentMessages > 0] whileTrue.
 	"Shrink method dictionaries."
 	self garbageCollect.
 	oldDicts := MethodDictionary allInstances.

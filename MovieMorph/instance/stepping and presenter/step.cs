@@ -3,7 +3,7 @@ step
 	playMode = #stop ifTrue: [^ self].
 
 	dwellCount > 0 ifTrue: [
-		dwellCount _ dwellCount - 1.
+		dwellCount := dwellCount - 1.
 		^ self].
 
 	currentFrameIndex < frameList size
@@ -11,4 +11,4 @@ step
 
 	playMode = #loop
 		ifTrue: [self setFrame: 1]
-		ifFalse: [playMode _ #stop].
+		ifFalse: [playMode := #stop].

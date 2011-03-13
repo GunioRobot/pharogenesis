@@ -1,0 +1,2 @@
+beNotWordBoundary
+	matchSelector := #notAtWordBoundary

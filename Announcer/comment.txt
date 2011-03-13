@@ -1,0 +1,1 @@
+The code is based on the announcements as described by Vassili Bykov in <http://www.cincomsmalltalk.com/userblogs/vbykov/blogView?searchCategory=Announcements%20Framework>. The implementation is a slightly extended and generalized version of the code found in OmniBrowser by Colin Putney.

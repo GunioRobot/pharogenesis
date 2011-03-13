@@ -3,9 +3,9 @@ privateNewSubclassOf: newSuper from: oldClass
 	"WARNING: This method does not preserve the superclass/subclass invariant!"
 	| newSuperMeta oldMeta newMeta |
 	oldClass ifNil:[^self privateNewSubclassOf: newSuper].
-	newSuperMeta _ newSuper ifNil:[Class] ifNotNil:[newSuper class].
-	oldMeta _ oldClass class.
-	newMeta _ oldMeta clone.
+	newSuperMeta := newSuper ifNil:[Class] ifNotNil:[newSuper class].
+	oldMeta := oldClass class.
+	newMeta := oldMeta clone.
 	newMeta 
 		superclass: newSuperMeta
 		methodDictionary: MethodDictionary new

@@ -1,2 +1,0 @@
-vertical
-	^self new vertical

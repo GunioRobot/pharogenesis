@@ -1,1 +1,0 @@
-PluggableTextView class instanceVariableNames: ''

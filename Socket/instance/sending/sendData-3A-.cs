@@ -4,15 +4,15 @@ sendData: aStringOrByteArray
 	"An experimental version use on slow lines: Longer timeout and smaller writes to try to avoid spurious timeouts."
 
 	| bytesSent bytesToSend count |
-	bytesToSend _ aStringOrByteArray size.
-	bytesSent _ 0.
+	bytesToSend := aStringOrByteArray size.
+	bytesSent := 0.
 	[bytesSent < bytesToSend] whileTrue: [
 		(self waitForSendDoneFor: 60)
 			ifFalse: [ConnectionTimedOut signal: 'send data timeout; data not sent'].
-		count _ self primSocket: socketHandle
+		count := self primSocket: socketHandle
 			sendData: aStringOrByteArray
 			startIndex: bytesSent + 1
 			count: (bytesToSend - bytesSent min: 5000).
-		bytesSent _ bytesSent + count].
+		bytesSent := bytesSent + count].
 
 	^ bytesSent

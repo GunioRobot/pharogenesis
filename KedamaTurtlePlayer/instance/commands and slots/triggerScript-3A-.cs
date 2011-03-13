@@ -1,1 +1,0 @@
-triggerScript: aSymbol

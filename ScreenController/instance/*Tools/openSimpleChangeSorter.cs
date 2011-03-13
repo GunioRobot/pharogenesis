@@ -1,2 +1,0 @@
-openSimpleChangeSorter
-	ChangeSorter new open

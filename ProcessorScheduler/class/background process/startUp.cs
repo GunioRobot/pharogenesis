@@ -4,6 +4,6 @@ startUp
 
 	Smalltalk installLowSpaceWatcher.
 	BackgroundProcess == nil ifFalse: [BackgroundProcess terminate].
-	BackgroundProcess _ [self idleProcess] newProcess.
+	BackgroundProcess := [self idleProcess] newProcess.
 	BackgroundProcess priority: SystemRockBottomPriority.
 	BackgroundProcess resume.

@@ -5,7 +5,7 @@ scrollToShow: aRectangle
 		(aRectangle bottom - scroller offset y) <= (self innerBounds height) ])
 		ifTrue:[ "already visible"^self ].
 
-	range _ self vLeftoverScrollRange.
+	range := self vLeftoverScrollRange.
 	scrollBar value: (range > 0
 		ifTrue: [((aRectangle top) / self vLeftoverScrollRange)
 							truncateTo: scrollBar scrollDelta]

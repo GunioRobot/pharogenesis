@@ -6,9 +6,9 @@ peekFor: anObject
 
 	| nextObject |
 	self atEnd ifTrue: [^false].
-	nextObject _ self next.
+	nextObject := self next.
 	"peek for matching element"
 	anObject = nextObject ifTrue: [^true].
 	"gobble it if found"
-	position _ position - 1.
+	position := position - 1.
 	^false

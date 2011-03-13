@@ -4,5 +4,5 @@ deleteBalloonTarget: aMorph
 	self balloonHelp: nil
 
 "	| h |
-	h _ self balloonHelp ifNil: [^ self].
+	h := self balloonHelp ifNil: [^ self].
 	h balloonOwner == aMorph ifTrue: [self balloonHelp: nil]"

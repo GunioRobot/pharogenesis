@@ -1,2 +1,0 @@
-additionsToViewerCategories
-	^ TextMorph additionsToViewerCategories

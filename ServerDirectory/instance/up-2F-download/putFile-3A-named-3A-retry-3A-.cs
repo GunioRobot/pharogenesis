@@ -5,8 +5,8 @@ putFile: fileStream named: fileNameOnServer retry: aBool
 		^ (FileDirectory on: urlObject pathForDirectory)
 			putFile: fileStream named: fileNameOnServer].
 
-	[[resp _ self putFile: fileStream named: fileNameOnServer] 
-		ifError:[:err :rcvr| resp _ '5xx ',err]. "Report as error"
+	[[resp := self putFile: fileStream named: fileNameOnServer] 
+		ifError:[:err :rcvr| resp := '5xx ',err]. "Report as error"
 	aBool and:[((resp isString) and: [resp size > 0]) and:[resp first ~= $2]]] whileTrue:[
 		(self confirm:('Error storing ',fileNameOnServer,' on the server.\(',resp,',)\Retry operation?') withCRs) ifFalse:[^resp].
 	].

@@ -1,7 +1,7 @@
 printStringRoman
 	| stream integer |
-	stream _ WriteStream on: String new.
-	integer _ self negative ifTrue: [stream nextPut: $-. self negated] ifFalse: [self].
+	stream := String new writeStream.
+	integer := self negative ifTrue: [stream nextPut: $-. self negated] ifFalse: [self].
 	integer // 1000 timesRepeat: [stream nextPut: $M].
 	integer
 		romanDigits: 'MDC' for: 100 on: stream;

@@ -1,2 +1,0 @@
-isAdmin: aBoolean
-	isAdmin := aBoolean

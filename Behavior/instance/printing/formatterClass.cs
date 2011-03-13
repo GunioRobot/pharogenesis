@@ -1,2 +1,0 @@
-formatterClass
-	 ^self compilerClass

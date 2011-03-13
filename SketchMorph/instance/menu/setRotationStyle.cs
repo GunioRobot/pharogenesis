@@ -1,8 +1,8 @@
 setRotationStyle
 	| selections labels sel reply |
-	selections _ #(normal leftRight upDown none).
-	labels _ #('rotate smoothly' 'left-right flip only' 'top-down flip only' 'don''t rotate').
-	sel _ labels at: (selections indexOf: self rotationStyle ifAbsent:[1]).
-	labels _ labels collect:[:lbl| sel = lbl ifTrue:['<on>', lbl translated] ifFalse:['<off>', lbl translated]].
-	reply _ (SelectionMenu labelList: labels selections: selections) startUp.
+	selections := #(normal leftRight upDown none).
+	labels := #('rotate smoothly' 'left-right flip only' 'top-down flip only' 'don''t rotate').
+	sel := labels at: (selections indexOf: self rotationStyle ifAbsent:[1]).
+	labels := labels collect:[:lbl| sel = lbl ifTrue:['<on>', lbl translated] ifFalse:['<off>', lbl translated]].
+	reply := UIManager default chooseFrom: labels values: labels.
 	reply ifNotNil: [self rotationStyle: reply].

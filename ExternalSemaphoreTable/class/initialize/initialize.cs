@@ -1,2 +1,2 @@
 initialize
-	ProtectTable _ Semaphore forMutualExclusion
+	ProtectTable := Semaphore forMutualExclusion

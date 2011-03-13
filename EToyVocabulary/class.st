@@ -1,1 +1,0 @@
-EToyVocabulary class instanceVariableNames: ''

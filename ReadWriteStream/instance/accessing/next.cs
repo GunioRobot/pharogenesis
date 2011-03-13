@@ -9,4 +9,4 @@ next
 	"treat me as a FIFO"
 	position >= readLimit
 		ifTrue: [^nil]
-		ifFalse: [^collection at: (position _ position + 1)]
+		ifFalse: [^collection at: (position := position + 1)]

@@ -1,4 +1,4 @@
 passwordSequence: aNumber
 
-	passwordHolder ifNil: [passwordHolder _ Password new].
+	passwordHolder ifNil: [passwordHolder := Password new].
 	passwordHolder sequence: aNumber

@@ -1,2 +1,2 @@
 argument: anObject
-	argument _ anObject
+	argument := anObject

@@ -5,7 +5,7 @@
 	 (c) for each (common) key, they have the same value"
 
 	self == aDictionary ifTrue: [ ^ true ].
-	(aDictionary isKindOf: Dictionary) ifFalse: [^false].
+	(aDictionary isDictionary) ifFalse: [^false].
 	self size = aDictionary size ifFalse: [^false].
 	self associationsDo: [:assoc|
 		(aDictionary at: assoc key ifAbsent: [^false]) = assoc value

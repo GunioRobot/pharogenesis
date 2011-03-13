@@ -5,6 +5,6 @@
 		and: [self classTraitCompositionString = aDefinition classTraitCompositionString])
 		and: [category = aDefinition category]
 		and: [type = aDefinition type]
-		and: [variables = aDefinition variables]
+		and: [self sortedVariables = aDefinition sortedVariables]
 		and: [comment = aDefinition comment]
 		

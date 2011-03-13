@@ -3,10 +3,10 @@ mimeDecode
 
 	| c |
 	[mimeStream atEnd] whileFalse: [
-		c _ mimeStream next.
+		c := mimeStream next.
 		c = $=
-			ifTrue: [c _ Character value: mimeStream next digitValue * 16
+			ifTrue: [c := Character value: mimeStream next digitValue * 16
 				+ mimeStream next digitValue]
-			ifFalse: [c = $_ ifTrue: [c _ $ ]].
+			ifFalse: [c = $_ ifTrue: [c := $ ]].
 		dataStream nextPut: c].
 	^ dataStream

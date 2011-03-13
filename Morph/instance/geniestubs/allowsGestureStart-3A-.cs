@@ -1,2 +1,0 @@
-allowsGestureStart: evt
-	^false

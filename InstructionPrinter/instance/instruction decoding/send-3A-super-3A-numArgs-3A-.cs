@@ -5,4 +5,5 @@ send: selector super: supered numArgs: numberArguments
 	the top numArguments locations on the stack and the receiver just 
 	below them."
 
-	self print: (supered ifTrue: ['superSend: '] ifFalse: ['send: ']) , selector
+	self print: (supered ifTrue: ['superSend: '] ifFalse: ['send: ']) , selector.
+	indentSpanOfFollowingJump := #(blockCopy: #closureCopy:copiedValues:) includes: selector

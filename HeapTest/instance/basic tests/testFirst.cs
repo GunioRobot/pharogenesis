@@ -1,6 +1,6 @@
 testFirst
 	"self run: #testFirst"
-	| heap |
+	| heap | 
 	heap := Heap new.
 	heap add: 5.
 	heap add: 12.

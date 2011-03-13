@@ -1,2 +1,2 @@
 alpha: newAlpha
-	alpha _ newAlpha.
+	alpha := newAlpha.

@@ -2,15 +2,15 @@ initialize
 	"Socket initialize"
 
 	"Socket Types"
-	TCPSocketType _ 0.
-	UDPSocketType _ 1.
+	TCPSocketType := 0.
+	UDPSocketType := 1.
 
 	"Socket Status Values"
-	InvalidSocket _ -1.
-	Unconnected _ 0.
-	WaitingForConnection _ 1.
-	Connected _ 2.
-	OtherEndClosed _ 3.
-	ThisEndClosed _ 4.
+	InvalidSocket := -1.
+	Unconnected := 0.
+	WaitingForConnection := 1.
+	Connected := 2.
+	OtherEndClosed := 3.
+	ThisEndClosed := 4.
 
-	RegistryThreshold _ 100. "# of sockets"
+	RegistryThreshold := 100. "# of sockets"

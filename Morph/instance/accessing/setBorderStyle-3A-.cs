@@ -2,7 +2,7 @@ setBorderStyle: aSymbol
 	"Set the border style of my costume"
 
 	| aStyle |
-	aStyle _ self borderStyleForSymbol: aSymbol.
+	aStyle := self borderStyleForSymbol: aSymbol.
 	aStyle ifNil: [^ self].
 	(self canDrawBorder: aStyle)
 		ifTrue:

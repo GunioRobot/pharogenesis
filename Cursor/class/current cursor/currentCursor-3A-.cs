@@ -3,6 +3,6 @@ currentCursor: aCursor
 	Create an error if the argument is not a Cursor."
 
 	(aCursor isKindOf: self)
-		ifTrue: [CurrentCursor _ aCursor.
+		ifTrue: [CurrentCursor := aCursor.
 				aCursor beCursor]
 		ifFalse: [self error: 'The new cursor must be an instance of class Cursor']

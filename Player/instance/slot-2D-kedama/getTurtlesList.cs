@@ -1,3 +1,0 @@
-getTurtlesList
-
-	^ self getValueFromCostume: #turtlesToDisplayAsString.

@@ -1,7 +1,7 @@
 retractableOrNot
 	"Change scroll bar operation"
 
-	retractableScrollBar _ retractableScrollBar not.
+	retractableScrollBar := retractableScrollBar not.
 	retractableScrollBar
 		ifTrue: [self removeMorph: scrollBar]
 		ifFalse: [(submorphs includes: scrollBar) 

@@ -1,2 +1,2 @@
 disableTableLayout: aBool
-	disableLayout _ aBool
+	disableLayout := aBool

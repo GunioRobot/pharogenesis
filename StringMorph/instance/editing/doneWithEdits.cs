@@ -1,3 +1,3 @@
 doneWithEdits
 
-	hasFocus _ false
+	hasFocus := false

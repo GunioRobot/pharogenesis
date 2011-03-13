@@ -1,6 +1,6 @@
 fixStamp: changeStamp 
 	| parts |
-	parts _ changeStamp findTokens: ' '.
+	parts := changeStamp findTokens: ' '.
 	(parts size > 0 and: [parts last first isLetter]) ifTrue:
 		["Put initials first in all time stamps..."
 		^ String streamContents:

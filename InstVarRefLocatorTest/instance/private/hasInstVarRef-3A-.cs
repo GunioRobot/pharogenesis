@@ -3,9 +3,9 @@ hasInstVarRef: aMethod
 
 	| scanner end printer |
 
-	scanner _ InstructionStream on: aMethod.
-	printer _ InstVarRefLocator new.
-	end _ scanner method endPC.
+	scanner := InstructionStream on: aMethod.
+	printer := InstVarRefLocator new.
+	end := scanner method endPC.
 
 	[scanner pc <= end] whileTrue: [
 		(printer interpretNextInstructionUsing: scanner) ifTrue: [^true].

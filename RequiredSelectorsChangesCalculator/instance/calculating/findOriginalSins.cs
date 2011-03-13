@@ -1,6 +1,6 @@
 findOriginalSins
 	| sinnedSelectors sinners checkedClasses |
-	checkedClasses _ IdentitySet new.
+	checkedClasses := IdentitySet new.
 	originalSinsPerSelector := IdentityDictionary new.
 	rootClasses do: 
 			[:rootClass | 

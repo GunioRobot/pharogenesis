@@ -10,8 +10,7 @@ selectedMessage
 					[source := class prettyPrinterClass 
 								format: source
 								in: class
-								notifying: nil
-								decorated: false].
+								notifying: nil].
 			self selectedClass: class.
 			self selectedSelector: selector.
 			^source asText makeSelectorBoldIn: class].

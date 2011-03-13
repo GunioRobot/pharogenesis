@@ -2,11 +2,6 @@ actOnClickFor: anObject
 	"Do what you can with this URL.  Later a web browser."
 
 	| response m |
-
-	(url beginsWith: 'sqPr://') ifTrue: [
-		ProjectLoading thumbnailFromUrl: (url copyFrom: 8 to: url size).
-		^self		"should not get here, but what the heck"
-	].
 	"if it's a web browser, tell it to jump"
 	anObject isWebBrowser
 		ifTrue: [anObject jumpToUrl: url. ^ true]
@@ -15,7 +10,7 @@ actOnClickFor: anObject
 
 		"if it's a morph, see if it is contained in a web browser"
 		(anObject isKindOf: Morph) ifTrue: [
-			m _ anObject.
+			m := anObject.
 			[ m ~= nil ] whileTrue: [
 				(m isWebBrowser) ifTrue: [
 					m  jumpToUrl: url.
@@ -23,7 +18,7 @@ actOnClickFor: anObject
 				(m hasProperty: #webBrowserView) ifTrue: [
 					m model jumpToUrl: url.
 					^true ].
-				m _ m owner. ]
+				m := m owner. ]
 		].
 
 	"no browser in sight.  ask if we should start a new browser"
@@ -33,7 +28,7 @@ actOnClickFor: anObject
 
 	"couldn't display in a browser.  Offer to put up just the source"
 
-	response _ (UIManager default 
+	response := (UIManager default 
 				chooseFrom: (Array with: 'View web page as source' translated
 									with: 'Cancel' translated)
 				title:  'Couldn''t find a web browser. View\page as source?' withCRs translated).

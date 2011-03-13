@@ -1,2 +1,2 @@
 isArg
-	^ isAnArg
+	^argType notNil

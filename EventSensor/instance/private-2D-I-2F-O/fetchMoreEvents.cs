@@ -4,7 +4,7 @@ fetchMoreEvents
 
 	"Reset input semaphore so clients can wait for the next events after this one."
 	inputSemaphore isSignaled
-		ifTrue: [ hasInputSemaphore _ true.
+		ifTrue: [ hasInputSemaphore := true.
 			inputSemaphore initSignals ].
 
 	"Remember the last time that I checked for events."

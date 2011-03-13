@@ -3,7 +3,7 @@ asSkipList: aSortBlock
 	receiver. The sort order is defined by the argument, aSortBlock."
 
 	| skipList |
-	skipList _ SortedCollection new: self size.
+	skipList := SortedCollection new: self size.
 	skipList sortBlock: aSortBlock.
 	skipList addAll: self.
 	^ skipList

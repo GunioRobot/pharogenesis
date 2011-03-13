@@ -1,2 +1,0 @@
-minimumWidth
-	^ 40

@@ -1,3 +1,0 @@
-needsToBeDrawn
-
-	^true

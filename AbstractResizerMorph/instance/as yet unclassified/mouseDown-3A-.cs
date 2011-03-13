@@ -1,3 +1,3 @@
 mouseDown: anEvent
 
-	lastMouse _ anEvent cursorPoint
+	lastMouse := anEvent cursorPoint

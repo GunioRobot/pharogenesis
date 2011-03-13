@@ -1,3 +1,2 @@
-heightInBlocks: anInteger
-
-	heightInBlocks _ anInteger
+heightInBlocks: anInteger 
+	heightInBlocks := anInteger

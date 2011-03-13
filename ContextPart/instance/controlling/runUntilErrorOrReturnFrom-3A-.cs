@@ -3,21 +3,21 @@ runUntilErrorOrReturnFrom: aSender
 	"Self is run by jumping directly to it (the active process abandons thisContext and executes self).  However, before jumping to self we insert an ensure block under aSender that jumps back to thisContext when evaluated.  We also insert an exception handler under aSender that jumps back to thisContext when an unhandled exception is raised.  In either case, the inserted ensure and exception handler are removed once control jumps back to thisContext."
 
 	| error ctxt here topContext |
-	here _ thisContext.
+	here := thisContext.
 
 	"Insert ensure and exception handler contexts under aSender"
-	error _ nil.
-	ctxt _ aSender insertSender: (ContextPart
+	error := nil.
+	ctxt := aSender insertSender: (ContextPart
 		contextOn: UnhandledError do: [:ex |
 			error ifNil: [
-				error _ ex exception.
-				topContext _ thisContext.
+				error := ex exception.
+				topContext := thisContext.
 				ex resumeUnchecked: here jump]
 			ifNotNil: [ex pass]
 		]).
-	ctxt _ ctxt insertSender: (ContextPart
+	ctxt := ctxt insertSender: (ContextPart
 		contextEnsure: [error ifNil: [
-				topContext _ thisContext.
+				topContext := thisContext.
 				here jump]
 		]).
 	self jump.  "Control jumps to self"
@@ -25,7 +25,7 @@ runUntilErrorOrReturnFrom: aSender
 	"Control resumes here once above ensure block or exception handler is executed"
 	^ error ifNil: [
 		"No error was raised, remove ensure context by stepping until popped"
-		[ctxt isDead] whileFalse: [topContext _ topContext stepToCallee].
+		[ctxt isDead] whileFalse: [topContext := topContext stepToCallee].
 		{topContext. nil}
 
 	] ifNotNil: [

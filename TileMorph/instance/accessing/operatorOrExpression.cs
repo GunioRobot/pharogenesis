@@ -1,3 +1,0 @@
-operatorOrExpression
-
-	^ operatorOrExpression

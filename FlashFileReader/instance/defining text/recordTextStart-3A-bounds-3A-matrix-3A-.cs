@@ -1,1 +1,0 @@
-recordTextStart: id bounds: bounds matrix: matrix

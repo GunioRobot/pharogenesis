@@ -1,0 +1,2 @@
+simpleWindowClass
+	^18

@@ -5,12 +5,12 @@ fileOutClassDefinition: class on: stream
 		[stream nextChunkPut: 'Smalltalk renameClassNamed: #', (self oldNameFor: class), ' as: #', class name; cr].
 
 	(self atClass: class includes: #change) ifTrue: [ "fat definition only needed for changes"
-		stream command: 'H3'; nextChunkPut: (self fatDefForClass: class); cr; command: '/H3'.
+		stream nextChunkPut: (self fatDefForClass: class); cr.
 		DeepCopier new checkClass: class.	"If veryDeepCopy weakly copies some inst 
 			vars in this class, warn author when new ones are added." 
 	] ifFalse: [
 		(self atClass: class includes: #add) ifTrue: [ "use current definition for add"
-			stream command: 'H3'; nextChunkPut: class definition; cr; command: '/H3'.
+			stream nextChunkPut: class definition; cr.
 			DeepCopier new checkClass: class.	"If veryDeepCopy weakly copies some inst 
 				vars in this class, warn author when new ones are added." 
 		].

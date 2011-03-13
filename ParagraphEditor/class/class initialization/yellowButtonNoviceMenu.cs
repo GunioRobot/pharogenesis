@@ -5,8 +5,6 @@ yellowButtonNoviceMenu
 			{'set style... (K)' translated.				#changeStyle}.
 			{'set alignment... (u)' translated.		#chooseAlignment}.
 			#-.
-			{'make project link (P)' translated.	#makeProjectLink}.
-			#-.
 			{'find...(f)' translated.					#find}.
 			{'find again (g)' translated.				#findAgain}.
 			{'set search string (h)' translated.		#setSearchString}.

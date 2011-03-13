@@ -3,16 +3,16 @@ arrowsContainPoint: aPoint
 
 	| retval f |
 
-	retval _ { false . false }.
+	retval := { false . false }.
 	(super containsPoint: aPoint) ifFalse: [^ retval ].
 	(closed or: [arrows == #none or: [vertices size < 2]]) ifTrue: [^ retval].
 
 	(arrows == #forward or: [arrows == #both]) ifTrue: [	"arrowForms first has end form"
-		f _ self arrowForms first.
+		f := self arrowForms first.
 		retval at: 2 put: ((f pixelValueAt: aPoint - f offset) > 0)
 	].
 	(arrows == #back or: [arrows == #both]) ifTrue: [ "arrowForms last has start form"
-		f _ self arrowForms last.
+		f := self arrowForms last.
 		retval at: 1 put: ((f pixelValueAt: aPoint - f offset) > 0)
 	].
 	^retval.

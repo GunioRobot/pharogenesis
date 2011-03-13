@@ -1,3 +1,3 @@
 arguments: aCollection
 
-	arguments _ aCollection.
+	arguments := aCollection.

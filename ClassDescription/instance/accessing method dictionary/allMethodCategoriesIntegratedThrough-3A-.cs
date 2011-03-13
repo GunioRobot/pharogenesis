@@ -2,7 +2,7 @@ allMethodCategoriesIntegratedThrough: mostGenericClass
 	"Answer a list of all the method categories of the receiver and all its superclasses, up through mostGenericClass"
 
 	| aColl |
-	aColl _ OrderedCollection new.
+	aColl := OrderedCollection new.
 	self withAllSuperclasses do:
 		[:aClass |
 			(aClass includesBehavior: mostGenericClass)

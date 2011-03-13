@@ -8,6 +8,6 @@ signal
 	self primitiveFailed
 
 	"self isEmpty    
-		ifTrue: [excessSignals _ excessSignals+1]    
+		ifTrue: [excessSignals := excessSignals+1]    
 		ifFalse: [Processor resume: self removeFirstLink]"
 

@@ -1,2 +1,0 @@
-selectedMessageCategoryName
-	^ methodClass organization categoryOfElement: methodSelector

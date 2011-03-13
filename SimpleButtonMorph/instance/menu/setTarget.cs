@@ -1,6 +1,6 @@
 setTarget
 	
 	| newLabel |
-	newLabel := FillInTheBlank request: 'Enter an expression that create the target' translated initialAnswer: 'World'.
-	newLabel isEmpty
+	newLabel := UIManager default request: 'Enter an expression that create the target' translated initialAnswer: 'World'.
+	newLabel isEmptyOrNil
 		ifFalse: [self target: (Compiler evaluate: newLabel)]

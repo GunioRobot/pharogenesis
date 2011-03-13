@@ -3,6 +3,6 @@ relabel
 	newLabel := UIManager default 
 		request: 'New title for this window' translated
 		initialAnswer: labelString.
-	newLabel isEmpty ifTrue: [^self].
+	newLabel isEmptyOrNil ifTrue: [^self].
 	(model windowReqNewLabel: newLabel)
 		ifTrue: [self setLabel: newLabel]

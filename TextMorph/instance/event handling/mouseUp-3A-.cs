@@ -1,2 +1,2 @@
 mouseUp: evt
-	self handleInteraction: [editor mouseUp: evt] fromEvent: evt
+	self handleInteraction: [editor mouseUp: evt]

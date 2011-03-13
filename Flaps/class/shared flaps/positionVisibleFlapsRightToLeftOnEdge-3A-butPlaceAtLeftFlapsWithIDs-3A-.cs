@@ -5,27 +5,27 @@ positionVisibleFlapsRightToLeftOnEdge: edgeSymbol butPlaceAtLeftFlapsWithIDs: id
 	Flaps sharedFlapsAlongBottom"
 
 	| leftX flapList flapsOnRight flapsOnLeft |
-	flapList _ self globalFlapTabsIfAny select:
+	flapList := self globalFlapTabsIfAny select:
 		[:aFlapTab | aFlapTab isInWorld and: [aFlapTab edgeToAdhereTo == edgeSymbol]].
-	flapsOnLeft _ flapList select: [:fl | idList includes: fl flapID].
+	flapsOnLeft := flapList select: [:fl | idList includes: fl flapID].
 	flapList removeAll: flapsOnLeft.
 
-	flapsOnRight _ flapList asSortedCollection:
+	flapsOnRight := flapList asSortedCollection:
 		[:f1 :f2 | f1 left > f2 left].
-	leftX _ ActiveWorld width - 15.
+	leftX := ActiveWorld width - 15.
 
 	flapsOnRight do:
 		[:aFlapTab |
 			aFlapTab right: leftX - 3.
-			leftX _ aFlapTab left].
+			leftX := aFlapTab left].
 
-	leftX _ ActiveWorld left.
-	flapsOnLeft _ flapsOnLeft asSortedCollection:
+	leftX := ActiveWorld left.
+	flapsOnLeft := flapsOnLeft asSortedCollection:
 		[:f1 :f2 | f1 left > f2 left].
 	flapsOnLeft do:
 		[:aFlapTab |
 			aFlapTab left: leftX + 3.
-			leftX _ aFlapTab right].
+			leftX := aFlapTab right].
 
 	(flapsOnLeft asOrderedCollection, flapsOnRight asOrderedCollection) do:
 		[:ft | ft computeEdgeFraction.

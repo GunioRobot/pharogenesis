@@ -1,6 +1,6 @@
 TextConverter
 	subclass: #UTF8TextConverter
-	instanceVariableNames: 'currentCharSize forceToEncodingTag'
+	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Multilingual-TextConversion'

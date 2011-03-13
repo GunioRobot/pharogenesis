@@ -1,1 +1,0 @@
-EToyProjectQueryMorph class instanceVariableNames: ''

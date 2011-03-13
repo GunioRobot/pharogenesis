@@ -3,7 +3,7 @@ newChanges: aChangeSet
 
 	SystemChangeNotifier uniqueInstance noMoreNotificationsFor: current.
 	current isolationSet: nil.
-	current _ aChangeSet.
+	current := aChangeSet.
 	SystemChangeNotifier uniqueInstance notify: aChangeSet ofAllSystemChangesUsing: #event:.
 	Smalltalk currentProjectDo:
 		[:proj |

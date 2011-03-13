@@ -5,6 +5,6 @@ openTypeIn
 	 You can't undo typing until after closeTypeIn."
 
 	beginTypeInBlock == nil ifTrue:
-		[UndoSelection _ self nullText.
+		[UndoSelection := self nullText.
 		self undoer: #noUndoer with: 0.
-		beginTypeInBlock _ self startIndex]
+		beginTypeInBlock := self startIndex]

@@ -1,3 +1,0 @@
-smallThumbnailForPageSorter
-
-	^ self sqkPage thumbnail

@@ -1,14 +1,14 @@
 optionalButtonRow
 	"Answer a row of buttons to occur in a tool pane"
 
-	| aRow aButton |
+	| aRow |
 	aRow := AlignmentMorph newRow.
 	aRow hResizing: #spaceFill.
 	aRow clipSubmorphs: true.
 	aRow layoutInset: 2@2; cellInset: 3.
 	aRow wrapCentering: #center; cellPositioning: #leftCenter.
 	self changeListButtonSpecs do:
-		[:triplet |
+		[:triplet | | aButton |
 			aButton := PluggableButtonMorph
 				on: self
 				getState: nil

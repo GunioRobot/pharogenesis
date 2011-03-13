@@ -1,3 +1,0 @@
-getTurtleCount
-
-	^ self getValueFromCostume: #turtleCount.

@@ -1,1 +1,0 @@
-SMSimpleInstaller class instanceVariableNames: ''

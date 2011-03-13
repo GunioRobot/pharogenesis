@@ -1,2 +1,0 @@
-retrieveContents
-	^self retrieveMIMEDocument contents

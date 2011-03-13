@@ -1,2 +1,0 @@
-dialogTextBoxColor
-	^ Color white

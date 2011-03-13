@@ -1,3 +1,0 @@
-wantedReleases
-	^wantedReleases
-	

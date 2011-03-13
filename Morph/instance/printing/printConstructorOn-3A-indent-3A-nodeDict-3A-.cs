@@ -1,6 +1,6 @@
 printConstructorOn: aStream indent: level nodeDict: nodeDict
 	| nodeString |
-	(nodeString _ nodeDict at: self ifAbsent: [nil])
+	(nodeString := nodeDict at: self ifAbsent: [nil])
 		ifNotNil: [^ aStream nextPutAll: nodeString].
 	submorphs isEmpty ifFalse: [aStream nextPutAll: '('].
 	aStream nextPutAll: '('.

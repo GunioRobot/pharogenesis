@@ -1,0 +1,1 @@
+FT2MemoryFaceData class instanceVariableNames: ''

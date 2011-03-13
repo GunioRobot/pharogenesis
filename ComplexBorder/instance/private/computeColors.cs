@@ -1,5 +1,5 @@
 computeColors
-	width = 0 ifTrue:[^colors _ #()].
+	width = 0 ifTrue:[^colors := #()].
 	style == #complexFramed ifTrue:[^self computeFramedColors].
 	style == #complexAltFramed ifTrue:[^self computeAltFramedColors].
 	style == #complexRaised ifTrue:[^self computeRaisedColors].

@@ -1,3 +1,0 @@
-waterCount
-
-	^ waterCount

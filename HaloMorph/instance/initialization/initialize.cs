@@ -2,5 +2,8 @@ initialize
 	"initialize the state of the receiver"
 	super initialize.
 	""
-	growingOrRotating _ false.
-	simpleMode _ Preferences simpleHalosInForce 
+	growingOrRotating := false.
+	simpleMode := Preferences simpleHalosInForce.
+	self borderStyle: (SimpleBorder
+		width: 2
+		color: (Preferences menuSelectionColor ifNil: [Color blue]))

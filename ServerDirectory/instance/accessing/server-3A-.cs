@@ -1,2 +1,2 @@
 server: anObject
-	server _ anObject
+	server := anObject

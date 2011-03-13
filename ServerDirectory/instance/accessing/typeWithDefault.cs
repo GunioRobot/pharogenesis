@@ -1,3 +1,3 @@
 typeWithDefault
 
-	^ type ifNil: [type _ #ftp]
+	^ type ifNil: [type := #ftp]

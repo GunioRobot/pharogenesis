@@ -2,9 +2,9 @@ bytesLeftString
 	"Return a string describing the amount of memory available"
 	| availInternal availPhysical availTotal |
 	self garbageCollect.
-	availInternal _ self primBytesLeft.
-	availPhysical _ self bytesLeft: false.
-	availTotal _ self bytesLeft: true.
+	availInternal := self primBytesLeft.
+	availPhysical := self bytesLeft: false.
+	availTotal := self bytesLeft: true.
 	(availTotal > (availInternal + 10000)) "compensate for mini allocations inbetween"
 		ifFalse:[^availInternal asStringWithCommas, ' bytes available'].
 	^String streamContents:[:s|

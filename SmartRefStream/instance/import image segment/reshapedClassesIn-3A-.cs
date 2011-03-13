@@ -6,12 +6,12 @@ reshapedClassesIn: outPointers
 	self flag: #bobconv.	
 
 
-	mapFakeClassesToReal _ IdentityDictionary new.
+	mapFakeClassesToReal := IdentityDictionary new.
 	outPointers withIndexDo: [:outp :ind | 
 		outp isBehavior ifTrue: [
-			originalName _ renamedConv at: ind ifAbsent: [outp name].
+			originalName := renamedConv at: ind ifAbsent: [outp name].
 				"in DiskProxy>>comeFullyUpOnReload: we saved the name at the index"
-			fakeCls _ self mapClass: outp origName: originalName.
+			fakeCls := self mapClass: outp origName: originalName.
 			fakeCls == outp ifFalse: [
 				mapFakeClassesToReal at: fakeCls put: outp.
 				outPointers at: ind put: fakeCls]]].

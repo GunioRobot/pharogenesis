@@ -1,3 +1,4 @@
 initialize: n
-	super initialize: n.
-	keyBlock _ [:element | element key].
+ 	super initialize: n.
+ 	keyBlock := [:element | element key].
+ 

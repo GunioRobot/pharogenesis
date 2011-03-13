@@ -1,2 +1,0 @@
-addLocalProjectDirectory: aFileDirectory
-	self localProjectDirectories add: aFileDirectory

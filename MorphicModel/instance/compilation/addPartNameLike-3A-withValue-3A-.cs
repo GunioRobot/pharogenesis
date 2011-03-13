@@ -1,15 +1,16 @@
 addPartNameLike: className withValue: aMorph
 	| otherNames i default partName stem |
-	stem _ className first asLowercase asString , className allButFirst.
-	otherNames _ self class allInstVarNames.
-	i _ 1.
-	[otherNames includes: (default _ stem, i printString)]
-		whileTrue: [i _ i + 1].
-	partName _ FillInTheBlank
-		request: 'Please give this part a name'
+	stem := className first asLowercase asString , className allButFirst.
+	otherNames := self class allInstVarNames.
+	i := 1.
+	[otherNames includes: (default := stem, i printString)]
+		whileTrue: [i := i + 1].
+	partName := UIManager default
+		request: 'Please give this part a name' translated
 		initialAnswer: default.
+	partName ifNil: [partName := String new].
 	(otherNames includes: partName)
-		ifTrue: [self inform: 'Sorry, that name is already used'. ^ nil].
+		ifTrue: [self inform: 'Sorry, that name is already used' translated. ^ nil].
 	self class addInstVarName: partName.
 	self instVarAt: self class instSize put: aMorph.  "Assumes added as last field"
 	^ partName

@@ -1,3 +1,3 @@
 minutes
-
-	^ Duration minutes: self
+ 
+ 	^ Duration minutes: self

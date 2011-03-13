@@ -1,0 +1,2 @@
+isMacintosh
+	^self class isMacintosh

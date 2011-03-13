@@ -1,3 +1,2 @@
 getNewVariableName
-	^ FillInTheBlank request: 'Enter the new variable name'
-				initialAnswer: 'foo'
+	^ UIManager default request: 'Enter the new variable name' translated initialAnswer: 'foo'

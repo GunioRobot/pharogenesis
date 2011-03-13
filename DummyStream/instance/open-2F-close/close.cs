@@ -1,2 +1,0 @@
-close
-	"do nothing"

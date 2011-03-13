@@ -3,7 +3,7 @@ readOnlyFileNamed: aName
 
 	| rFile |
 
-	rFile _ self asServerFileNamed: aName.
+	rFile := self asServerFileNamed: aName.
 	rFile readOnly.
 	rFile isTypeFile ifTrue: [
 		^ FileStream oldFileNamed: (rFile fileNameRelativeTo: self)].

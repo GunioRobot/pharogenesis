@@ -4,14 +4,14 @@ veryDeepInner: deepCopier
 	We must also implement veryDeepFixupWith:.  See DeepCopier class comment."
 
 	super veryDeepInner: deepCopier.
-	textStyle _ textStyle veryDeepCopyWith: deepCopier.
-	text _ text veryDeepCopyWith: deepCopier.
-	wrapFlag _ wrapFlag veryDeepCopyWith: deepCopier.
-	paragraph _ paragraph veryDeepCopyWith: deepCopier.
-	editor _ editor veryDeepCopyWith: deepCopier.
-	container _ container veryDeepCopyWith: deepCopier.
-	predecessor _ predecessor.
-	successor _ successor.
-	backgroundColor _ backgroundColor veryDeepCopyWith: deepCopier.
-	margins _ margins veryDeepCopyWith: deepCopier.
-	editHistory _ editHistory veryDeepCopyWith: deepCopier.
+	textStyle := textStyle veryDeepCopyWith: deepCopier.
+	text := text veryDeepCopyWith: deepCopier.
+	wrapFlag := wrapFlag veryDeepCopyWith: deepCopier.
+	paragraph := paragraph veryDeepCopyWith: deepCopier.
+	editor := editor veryDeepCopyWith: deepCopier.
+	container := container veryDeepCopyWith: deepCopier.
+	predecessor := predecessor.
+	successor := successor.
+	backgroundColor := backgroundColor veryDeepCopyWith: deepCopier.
+	margins := margins veryDeepCopyWith: deepCopier.
+	editHistory := editHistory veryDeepCopyWith: deepCopier.

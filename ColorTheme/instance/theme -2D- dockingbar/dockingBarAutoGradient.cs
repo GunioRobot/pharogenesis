@@ -1,2 +1,2 @@
 dockingBarAutoGradient
-	^ self subclassResponsibility
+	^ true

@@ -1,2 +1,0 @@
-accept: aWriter
-	"do nothing"

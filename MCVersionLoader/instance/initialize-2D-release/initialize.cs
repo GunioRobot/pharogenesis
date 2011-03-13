@@ -1,2 +1,0 @@
-initialize
-	versions := OrderedCollection new

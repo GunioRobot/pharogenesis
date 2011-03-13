@@ -3,7 +3,7 @@ segUpdateInstancesOf: oldClass toBe: newClass isMeta: isMeta
 	"Bring me in, locate instances of oldClass and get them converted.  Write me out again."
 
 	(state = #onFile or: [state = #onFileWithSymbols]) ifFalse: [^ self].
-	withSymbols _ state = #onFileWithSymbols.
+	withSymbols := state = #onFileWithSymbols.
 	"If has instances, they point out at the class"
 	(outPointers includes: oldClass) ifFalse: [
 		oldClass == SmallInteger ifTrue: [^ self].	"instance not changable"
@@ -13,9 +13,9 @@ segUpdateInstancesOf: oldClass toBe: newClass isMeta: isMeta
 		"For a compact class, must search the segment.  Instance does not 
 		 point outward to class"
 	state = #onFile ifTrue: [Cursor read showWhile: [self readFromFile]].
-	segSize _ segment size.
+	segSize := segment size.
 	self install.
-	oldInstances _ OrderedCollection new.
+	oldInstances := OrderedCollection new.
 	self allObjectsDo: [:obj | obj class == oldClass ifTrue: [
 		oldInstances add: obj]].
 	newClass updateInstances: oldInstances asArray from: oldClass isMeta: isMeta.

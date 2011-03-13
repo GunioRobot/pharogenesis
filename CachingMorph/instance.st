@@ -3,4 +3,4 @@ Morph
 	instanceVariableNames: 'damageRecorder cacheCanvas'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'MorphicExtras-Kernel'
+	category: 'Morphic-Basic'

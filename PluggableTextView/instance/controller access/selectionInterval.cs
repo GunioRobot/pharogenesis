@@ -1,3 +1,0 @@
-selectionInterval
-
-  ^self controller selectionInterval

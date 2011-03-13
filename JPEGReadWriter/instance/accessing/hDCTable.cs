@@ -1,4 +1,3 @@
 hDCTable
-
-	hDCTable ifNil: [hDCTable _ Array new: HuffmanTableSize].
+	hDCTable ifNil: [ hDCTable := Array new: HuffmanTableSize ].
 	^ hDCTable

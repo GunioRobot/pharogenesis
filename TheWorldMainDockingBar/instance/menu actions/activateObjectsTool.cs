@@ -1,2 +1,2 @@
 activateObjectsTool
-	self world activateObjectsTool
+	"self world activateObjectsTool"

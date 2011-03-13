@@ -2,8 +2,8 @@ scanFrom: aByteStream
 	"During a code fileIn, we need to read in an object, and stash it in ScannedObject.  "
 
 	| me |
-	me _ self on: aByteStream.
-	ScannedObject _ me next.
+	me := self on: aByteStream.
+	ScannedObject := me next.
 	aByteStream ascii.
 	aByteStream next == $! ifFalse: [
 		aByteStream close.

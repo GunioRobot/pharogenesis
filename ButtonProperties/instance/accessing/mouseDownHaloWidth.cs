@@ -1,3 +1,0 @@
-mouseDownHaloWidth
-
-	^mouseDownHaloWidth

@@ -1,3 +1,0 @@
-squeakletDirectory
-
-	^self class squeakletDirectory

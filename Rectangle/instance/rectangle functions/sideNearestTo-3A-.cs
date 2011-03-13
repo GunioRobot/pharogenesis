@@ -1,15 +1,22 @@
-sideNearestTo: aPoint
+sideNearestTo: aPoint 
 	| distToLeft distToRight distToTop distToBottom closest side |
-	distToLeft _ aPoint x - self left.
-	distToRight _ self right - aPoint x.
-	distToTop _ aPoint y - self top.
-	distToBottom _ self bottom - aPoint y.
-	closest _ distToLeft. side _ #left.
-	distToRight < closest ifTrue: [closest _ distToRight. side _ #right].
-	distToTop < closest ifTrue: [closest _ distToTop. side _ #top].
-	distToBottom < closest ifTrue: [closest _ distToBottom. side _ #bottom].
+	distToLeft := aPoint x - self left.
+	distToRight := self right - aPoint x.
+	distToTop := aPoint y - self top.
+	distToBottom := self bottom - aPoint y.
+	closest := distToLeft.
+	side := #left.
+	distToRight < closest ifTrue: 
+		[ closest := distToRight.
+		side := #right ].
+	distToTop < closest ifTrue: 
+		[ closest := distToTop.
+		side := #top ].
+	distToBottom < closest ifTrue: 
+		[ closest := distToBottom.
+		side := #bottom ].
 	^ side
-"
+	"
  | r | r _ Rectangle fromUser.
 Display border: r width: 1.
 [Sensor anyButtonPressed] whileFalse:

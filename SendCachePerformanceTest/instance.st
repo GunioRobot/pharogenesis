@@ -3,4 +3,4 @@ TimeMeasuringTest
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Traits-LocalSends'
+	category: 'Tests-Traits'

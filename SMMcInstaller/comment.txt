@@ -1,1 +1,0 @@
-I am a SMInstaller that knows how to install .mcz (Monticello) files. If Monticello is installed I use that (MCMczReader), otherwise I file in the code more simply using the package MCInstaller (MczInstaller).

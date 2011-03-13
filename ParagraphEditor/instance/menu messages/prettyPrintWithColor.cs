@@ -1,2 +1,0 @@
-prettyPrintWithColor
-	self prettyPrint: true

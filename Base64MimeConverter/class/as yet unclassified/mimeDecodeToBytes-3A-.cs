@@ -3,7 +3,7 @@ mimeDecodeToBytes: aStream
 
 	| me |
 	aStream position: 0.
-	me _ self new mimeStream: aStream.
+	me := self new mimeStream: aStream.
 	me dataStream: (RWBinaryOrTextStream on: (ByteArray new: aStream size * 3 // 4)).
 	me mimeDecodeToByteArray.
 	me dataStream position: 0.

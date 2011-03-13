@@ -1,3 +1,3 @@
 localPathExists: localPath
 
-	^self directoryNames includes: localPath
+	^ self directoryNames includes: localPath

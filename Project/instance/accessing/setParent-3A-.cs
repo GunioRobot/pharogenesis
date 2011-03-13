@@ -1,4 +1,4 @@
 setParent: newParent
 
-	parentProject _ newParent.
-	nextProject _ previousProject _ nil.
+	parentProject := newParent.
+	nextProject := previousProject := nil.

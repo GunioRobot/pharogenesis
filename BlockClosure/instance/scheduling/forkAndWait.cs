@@ -1,7 +1,7 @@
 forkAndWait
-	"Suspend current process while self runs"
+	"Suspend current process and execute self in new process, when it completes resume current process"
 
 	| semaphore |
-	semaphore _ Semaphore new.
+	semaphore := Semaphore new.
 	[self ensure: [semaphore signal]] fork.
 	semaphore wait.

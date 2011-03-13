@@ -3,7 +3,7 @@ headerDescription
 	receiver and the form of the context needed to run the receiver."
 
 	| s |
-	s _ '' writeStream.
+	s := '' writeStream.
 	self header printOn: s.
 	s cr; nextPutAll: '"primitive: '.
 	self primitive printOn: s.
@@ -16,8 +16,6 @@ headerDescription
 	s cr; nextPutAll: ' frameSize: '.
 	self frameSize printOn: s.
 	s cr; nextPutAll: ' isClosureCompiled: '.
-	self isClosureCompiled printOn: s.
-	s cr; nextPutAll: ' isBlockMethod: '.
-	self isBlockMethod printOn: s.
+	self isBlueBookCompiled not printOn: s.
 	s nextPut: $"; cr.
 	^ s contents

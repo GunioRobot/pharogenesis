@@ -1,2 +1,0 @@
-uncacheBits
-	"Normally only sent to a StandardSystemView, but for casees where a DisplayTextView is used alone, without a superview, in which we make this a no-op, put in so that the Character Recognizer doesn't fail.  8/9/96 sw"

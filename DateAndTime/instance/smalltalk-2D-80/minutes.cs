@@ -1,3 +1,3 @@
 minutes
-
-	^ self minute
+ 
+ 	^ self minute

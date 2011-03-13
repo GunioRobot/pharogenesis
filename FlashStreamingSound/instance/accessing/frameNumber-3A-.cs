@@ -1,2 +1,0 @@
-frameNumber: aNumber
-	frameNumber := aNumber

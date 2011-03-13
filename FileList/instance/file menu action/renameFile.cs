@@ -5,7 +5,7 @@ renameFile
 	self okToChange ifFalse: [^ self].
 	(response := UIManager default request: 'NewFileName?' translated
  					initialAnswer: fileName)
-		isEmpty ifTrue: [^ self].
+		isEmptyOrNil ifTrue: [^ self].
 	newName := response asFileName.
 	newName = fileName ifTrue: [^ self].
 	directory rename: fileName toBe: newName.

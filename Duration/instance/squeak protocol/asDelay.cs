@@ -1,3 +1,3 @@
 asDelay
-
-	^ Delay forDuration: self
+ 
+ 	^ Delay forDuration: self

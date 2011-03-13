@@ -1,1 +1,0 @@
-FrameRateMorph class instanceVariableNames: ''

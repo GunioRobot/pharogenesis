@@ -5,7 +5,7 @@ cursorHome: characterStream
 
 	| string |
 
-	string _ paragraph text string.
+	string := paragraph text string.
 	self
 		moveCursor: [ :position | Preferences wordStyleCursorMovement
 				ifTrue:[

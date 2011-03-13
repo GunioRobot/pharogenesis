@@ -1,2 +1,2 @@
 registeredClasses
-	^ registeredClasses ifNil: [registeredClasses _ OrderedCollection new]
+	^ registeredClasses ifNil: [registeredClasses := OrderedCollection new]

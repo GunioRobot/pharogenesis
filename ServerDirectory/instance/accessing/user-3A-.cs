@@ -1,2 +1,2 @@
 user: anObject
-	user _ anObject
+	user := anObject

@@ -1,14 +1,11 @@
 reverseDo: aBlock 
-	"Evaluate aBlock for each element of my interval, in reverse order."
+	"Evaluate aBlock for each element of my interval, in reverse order.
+	Implementation notes: see do: for an explanation on loop detail"
 
-	| aValue |
-	aValue _ stop.
-	step < 0
-		ifTrue: [[start >= aValue]
-				whileTrue: 
-					[aBlock value: aValue.
-					aValue _ aValue - step]]
-		ifFalse: [[start <= aValue]
-				whileTrue: 
-					[aBlock value: aValue.
-					aValue _ aValue - step]]
+	| aValue index |
+	index := self size.
+	[index > 0]
+		whileTrue: [
+			index := index - 1.
+			aValue := start + (index * step).
+			aBlock value: aValue]

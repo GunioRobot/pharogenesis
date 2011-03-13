@@ -2,10 +2,10 @@ storeDataOn: aDataStream
 	"Write me out.  All references to other projects are weak references.  They only go out if they are written for another reason."
 	| cntInstVars cntIndexedVars localInstVars offset |
 
-	cntInstVars _ self class instSize.
-	cntIndexedVars _ self basicSize.
-	localInstVars _ Project instVarNames.
-	offset _ Project superclass instSize.
+	cntInstVars := self class instSize.
+	cntIndexedVars := self basicSize.
+	localInstVars := Project instVarNames.
+	offset := Project superclass instSize.
 	aDataStream
 		beginInstance: self class
 		size: cntInstVars + cntIndexedVars.

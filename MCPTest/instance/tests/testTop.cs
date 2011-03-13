@@ -2,11 +2,11 @@ testTop
 	"test the #top: messages and its consequences"
 
 	| morph factor newTop newBounds |
-	morph _ Morph new.
+	morph := Morph new.
 	""
-	factor _ 10.
-	newTop _ self defaultTop + factor.
-	newBounds _ self defaultBounds translateBy: 0 @ factor.
+	factor := 10.
+	newTop := self defaultTop + factor.
+	newBounds := self defaultBounds translateBy: 0 @ factor.
 	""
 	morph top: newTop.
 	""

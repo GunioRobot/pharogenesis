@@ -2,7 +2,7 @@ selectAllMethods: aBlock
 	"Answer a SortedCollection of each method that, when used as the block  
 	argument to aBlock, gives a true result."
 	| aCollection |
-	aCollection _ SortedCollection new.
+	aCollection := SortedCollection new.
 	Cursor execute
 		showWhile: [self
 				allBehaviorsDo: [:class | class

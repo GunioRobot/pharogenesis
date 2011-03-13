@@ -1,11 +1,11 @@
 askServerInfo
 	"Get the user to create a ServerDirectory for a new server.  Fill in and say Accept."
 	| template |
-	template _ '"Please fill in the following info, then select all text and choose DoIt."
+	template := '"Please fill in the following info, then select all text and choose DoIt."
 
 	| aa | 
 	self flag: #ViolateNonReferenceToOtherClasses.
-	aa _ ServerDirectory new.
+	aa := ServerDirectory new.
 	aa server: ''st.cs.uiuc.edu''.    "host"
 	aa user: ''anonymous''.
 	aa password: ''yourEmail@school.edu''.

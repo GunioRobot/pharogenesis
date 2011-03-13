@@ -1,2 +1,2 @@
 doubleClickSelector: aSymbol
-	doubleClickSelector _ aSymbol
+	doubleClickSelector := aSymbol

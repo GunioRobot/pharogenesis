@@ -2,7 +2,7 @@ defaultEncoderFor: aFileName
 
 	"This method just illustrates the stupidest possible implementation of encoder selection."
 	| l |
-	l _ aFileName asLowercase.
+	l := aFileName asLowercase.
 "	((l endsWith: FileStream multiCs) or: [
 		l endsWith: FileStream multiSt]) ifTrue: [
 		^ UTF8TextConverter new.

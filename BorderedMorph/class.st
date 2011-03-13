@@ -1,0 +1,1 @@
+BorderedMorph class instanceVariableNames: ''

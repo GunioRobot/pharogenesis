@@ -1,3 +1,0 @@
-getTurtleVisible
-
-	^ self costume visible.

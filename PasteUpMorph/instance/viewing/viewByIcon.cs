@@ -4,7 +4,7 @@ viewByIcon
 	|  oldSubs |
 	self showingListView
 		ifTrue:
-			[oldSubs _ submorphs.
+			[oldSubs := submorphs.
 			self removeAllMorphs.
 			self layoutPolicy: nil.
 			oldSubs do:

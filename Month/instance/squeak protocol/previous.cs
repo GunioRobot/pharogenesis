@@ -1,4 +1,3 @@
-previous
+previous 
 
-
-	^ self class starting: (self start - 1)
+	^ self class starting: (self start - 1) 

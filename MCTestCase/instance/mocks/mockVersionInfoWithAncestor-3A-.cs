@@ -5,5 +5,5 @@ mockVersionInfoWithAncestor: aVersionInfo
 		message: self mockMessageString
 		date: Date today
 		time: Time now
-		author: Utilities authorInitials 
+		author: Author fullName
 		ancestors: {aVersionInfo}

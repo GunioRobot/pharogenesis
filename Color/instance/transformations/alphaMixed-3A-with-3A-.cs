@@ -4,11 +4,12 @@ alphaMixed: proportion with: aColor
 	use in the mix. For example, 0.9 would yield a color close to the  
 	receiver. This method uses RGB interpolation; HSV interpolation can lead 
 	to surprises.  Mixes the alphas (for transparency) also."
-
 	| frac1 frac2 |
-	frac1 _ proportion asFloat min: 1.0 max: 0.0.
-	frac2 _ 1.0 - frac1.
-	^ Color
+	frac1 := proportion asFloat 
+		min: 1.0
+		max: 0.0.
+	frac2 := 1.0 - frac1.
+	^ Color 
 		r: self red * frac1 + (aColor red * frac2)
 		g: self green * frac1 + (aColor green * frac2)
 		b: self blue * frac1 + (aColor blue * frac2)

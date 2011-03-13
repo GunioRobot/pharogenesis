@@ -3,7 +3,7 @@ undoRedoButtons
 
 	| aButton wrapper |
 	"self currentHand attachMorph: Command undoRedoButtons"
-	wrapper _ AlignmentMorph newColumn.
+	wrapper := AlignmentMorph newColumn.
 	wrapper color: Color veryVeryLightGray lighter;
 		borderWidth: 0;
 		layoutInset: 0;
@@ -13,7 +13,7 @@ undoRedoButtons
 	(CrudeRedo redoNextCommand 'redo last undone command' redoEnabled CrudeRedoDisabled CrudeRedoDisabled)) do:
 		[:tuple |
 			wrapper addTransparentSpacerOfSize: (8@0).
-			aButton _ UpdatingThreePhaseButtonMorph new.
+			aButton := UpdatingThreePhaseButtonMorph new.
 			aButton
 				onImage: (ScriptingSystem formAtKey: tuple first);
 				offImage: (ScriptingSystem formAtKey: tuple fifth);

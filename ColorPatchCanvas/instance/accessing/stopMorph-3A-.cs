@@ -1,2 +1,2 @@
 stopMorph: aMorph
-	stopMorph _ aMorph
+	stopMorph := aMorph

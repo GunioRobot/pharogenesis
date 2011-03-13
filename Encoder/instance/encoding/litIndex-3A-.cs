@@ -1,6 +1,6 @@
 litIndex: literal
 	| p |
-	p _ literalStream position.
+	p := literalStream position.
 	p = 256 ifTrue:
 		[self notify: 'More than 256 literals referenced. 
 You must split or otherwise simplify this method.

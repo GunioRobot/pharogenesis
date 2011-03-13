@@ -1,3 +1,0 @@
-hide
-
-	visible _ false

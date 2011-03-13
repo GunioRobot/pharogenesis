@@ -1,6 +1,6 @@
 handle: dropStream in: pasteUp dropEvent: anEvent
 	| numArgs |
-	numArgs _ action numArgs.
+	numArgs := action numArgs.
 	numArgs == 1
 		ifTrue: [^action value: dropStream].
 	numArgs == 2

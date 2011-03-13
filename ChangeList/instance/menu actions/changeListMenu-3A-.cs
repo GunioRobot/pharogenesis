@@ -1,9 +1,8 @@
 changeListMenu: aMenu
 	"Fill aMenu up so that it comprises the primary changelist-browser menu"
 
-	Smalltalk isMorphic ifTrue:
-		[aMenu addTitle: 'change list'.
-		aMenu addStayUpItemSpecial].
+	aMenu addTitle: 'change list'.
+	aMenu addStayUpItemSpecial.
 
 	aMenu addList: #(
 

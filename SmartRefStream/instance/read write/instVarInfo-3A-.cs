@@ -4,32 +4,32 @@ instVarInfo: anObject
 	"Make a pass through the objects, not writing, but recording the classes.  Construct a database of their inst vars and any version info (classVersion)."
 
 	| dummy refs cls newSupers |
-	structures _ Dictionary new.
-	superclasses _ Dictionary new.
-	dummy _ ReferenceStream on: (DummyStream on: nil).
+	structures := Dictionary new.
+	superclasses := Dictionary new.
+	dummy := ReferenceStream on: (DummyStream on: nil).
 		"Write to a fake Stream, not a file"
 	"Collect all objects"
 	dummy rootObject: anObject.	"inform him about the root"
 	dummy nextPut: anObject.
-	refs _ dummy references.
-	objCount _ refs size.		"for progress bar"
+	refs := dummy references.
+	objCount := refs size.		"for progress bar"
 		"Note that Dictionary must not change its implementation!  If it does, how do we read this reading information?"
 	(refs includesKey: #AnImageSegment) 
 		ifFalse: [
 			self uniClassInstVarsRefs: dummy.	"catalog the extra objects in UniClass inst vars"
 			refs keysDo: [:each | 
-				cls _ each class.
+				cls := each class.
 				"cls isObsolete ifTrue: [self error: 'Trying to write ', cls name]."
 				(cls class ~~ Metaclass) & (cls isObsolete not) ifTrue: [
 					structures at: cls name put: false]]]
 		ifTrue: [self recordImageSegment: refs].
 	"Save work by only computing inst vars once for each class"
-	newSupers _ Set new.
+	newSupers := Set new.
 	structures at: #Point put: false.	"writeRectangle: does not put out class pointer"
 	structures at: #Rectangle put: false.
 	structures at: #LargePositiveInteger put: false.	"used in slow case of WordArray"
 	structures keysDo: [:nm | 
-		cls _ (nm endsWith: ' class') 
+		cls := (nm endsWith: ' class') 
 			ifFalse: [Smalltalk at: nm]
 			ifTrue: [(Smalltalk at: nm substrings first asSymbol) class].
 		cls allSuperclasses do: [:aSuper |
@@ -37,7 +37,7 @@ instVarInfo: anObject
 			"Don't modify structures during iteration"
 	newSupers do: [:nm | structures at: nm put: 3].	"Get all superclasses into list"
 	structures keysDo: [:nm | "Nothing added to classes during loop"
-		cls _ (nm endsWith: ' class') 
+		cls := (nm endsWith: ' class') 
 			ifFalse: [Smalltalk at: nm]
 			ifTrue: [(Smalltalk at: nm substrings first asSymbol) class].
 		structures at: nm put: 
@@ -45,6 +45,6 @@ instVarInfo: anObject
 		superclasses at: nm ifAbsent: [
 				superclasses at: nm put: cls superclass name]].
 	(refs includesKey: #AnImageSegment) 
-		ifTrue: [classInstVars _ #()]
+		ifTrue: [classInstVars := #()]
 		ifFalse: [self saveClassInstVars].	"of UniClassses"
 	^ (Array with: 'class structure' with: structures with: 'superclasses' with: superclasses)

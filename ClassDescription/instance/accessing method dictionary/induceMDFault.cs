@@ -4,6 +4,6 @@ induceMDFault
 	See: ClassDescription>>recoverFromMDFault
 	and ImageSegment>>discoverActiveClasses."
 
-	organization _ Array with: methodDict with: organization.
-	methodDict _ nil.
+	organization := Array with: methodDict with: organization.
+	methodDict := nil.
 	self flushCache

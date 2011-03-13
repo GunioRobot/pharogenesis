@@ -20,4 +20,5 @@ testRequirement
    "Fail here:"
    self deny: (class requiredSelectors includes: #isCalled)]
 
-  ensure: [class removeFromSystem] 
+  ensure: [class removeFromSystem.
+	RequiredSelectors current clearOut: class ] 

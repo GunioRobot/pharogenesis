@@ -1,9 +1,9 @@
 mouseDown: anEvent
 	| xPosition newTab |
-	xPosition _ anEvent cursorPoint x.
-	newTab _
+	xPosition := anEvent cursorPoint x.
+	newTab :=
 		((self tabs detect: [ :anAssociation | | tabBounds |
-				tabBounds _ anAssociation key bounds.
+				tabBounds := anAssociation key bounds.
 				(tabBounds left <= xPosition) and: [ tabBounds right >= xPosition]]
 			ifNone: [nil])
 		key).

@@ -1,3 +1,0 @@
-typeAudioChat
-
-	^'audiochat'

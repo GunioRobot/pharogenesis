@@ -1,2 +1,0 @@
-showNoPalette
-	self showNoPaletteAndHighlightTab: nil

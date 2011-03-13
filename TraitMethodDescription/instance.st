@@ -1,6 +1,6 @@
 Object
 	subclass: #TraitMethodDescription
 	instanceVariableNames: 'selector locatedMethods'
-	classVariableNames: 'ConflictMethods RequiredMethods'
+	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Traits-Composition'

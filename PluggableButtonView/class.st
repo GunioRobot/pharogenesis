@@ -1,1 +1,0 @@
-PluggableButtonView class instanceVariableNames: ''

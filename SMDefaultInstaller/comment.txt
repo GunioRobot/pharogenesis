@@ -1,3 +1,0 @@
-An installer takes care of installing SqueakMap packages represented by SMCards.
-This installer handles packages that consist of classical fileins (single changesets and .st-files) and optional gzip-decompression of those. Deciding if a package is installable and instantiating the correct installer class is done on the class side in SMInstaller, to see how this installer gets chosen - see SMDefaultInstaller class>>canInstall:.
-

@@ -1,5 +1,5 @@
 setItem: anObject name: aString model: aModel
 
-	item _ anObject.
-	model _ aModel.
-	itemName _ aString.
+	item := anObject.
+	model := aModel.
+	itemName := aString.

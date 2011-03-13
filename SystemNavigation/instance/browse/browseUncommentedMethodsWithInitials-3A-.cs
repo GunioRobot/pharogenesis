@@ -3,13 +3,13 @@ browseUncommentedMethodsWithInitials: targetInitials
 	"Time millisecondsToRun: [SystemNavigation default browseUncommentedMethodsWithInitials: 'jm']"
 
 	| initials timeStamp methodReferences cm |
-	methodReferences _ OrderedCollection new.
+	methodReferences := OrderedCollection new.
 	self  allBehaviorsDo:
 		[:aClass | aClass selectors do: [:sel |
-			cm _ aClass compiledMethodAt: sel.
-			timeStamp _ Utilities timeStampForMethod: cm.
+			cm := aClass compiledMethodAt: sel.
+			timeStamp := Utilities timeStampForMethod: cm.
 			timeStamp isEmpty ifFalse:
-				[initials _ timeStamp substrings first.
+				[initials := timeStamp substrings first.
 				initials first isDigit ifFalse:
 					[((initials = targetInitials) and: [(aClass firstPrecodeCommentFor: sel) isNil])
 						ifTrue:

@@ -1,2 +1,2 @@
 handlesPanel: aPreferencePanel
-	^aPreferencePanel isKindOf: PreferencesPanel
+	^false

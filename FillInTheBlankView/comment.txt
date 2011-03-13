@@ -1,1 +1,0 @@
-I am a view of a FillInTheBlank. I display a query and an editable view of the user's reply string.

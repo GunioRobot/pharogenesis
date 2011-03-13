@@ -1,13 +1,14 @@
 saveAsWorld
 	| worldName s |
-	worldName _ FillInTheBlank
-		request: 'Please give this world a name'
+	worldName := UIManager default
+		request: 'Please give this world a name' translated
 		initialAnswer: 'test'.
+	worldName ifNil: [worldName := String new].
 	((self class class includesSelector: worldName asSymbol) and:
-		[(PopUpMenu confirm: 'OK to overwrite ' , worldName , '?') not])
+		[(self confirm: 'OK to overwrite' translated, ' "' , worldName , '"?') not])
 		ifTrue: [^ self].
 
-	s _ WriteStream on: (String new: 1000).
+	s := (String new: 1000) writeStream.
 	s	nextPutAll: worldName; cr; tab;
 		nextPutAll: '"' , self class name , ' ' , worldName, ' open"'; cr; cr; tab;
 		nextPutAll: '^ '.

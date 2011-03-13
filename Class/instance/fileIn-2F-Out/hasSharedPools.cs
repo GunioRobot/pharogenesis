@@ -1,0 +1,3 @@
+hasSharedPools
+
+	^ self sharedPools notEmpty

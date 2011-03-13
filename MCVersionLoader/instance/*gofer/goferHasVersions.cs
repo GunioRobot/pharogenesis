@@ -1,0 +1,3 @@
+goferHasVersions
+
+	^ versions isEmpty not
