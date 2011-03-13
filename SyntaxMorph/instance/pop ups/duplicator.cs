@@ -2,12 +2,12 @@ duplicator
 	"Return the icon to duplicate this tile."
 	| handle handleSpec colorToUse iconName form |
 
-	handleSpec _ Preferences haloSpecifications at: 11.	"duplicate"
-	handle _ EllipseMorph
+	handleSpec := Preferences haloSpecifications at: 11.	"duplicate"
+	handle := EllipseMorph
 			newBounds: (Rectangle center: 10@10 extent: 16 asPoint)
-			color: (colorToUse _ Color colorFrom: handleSpec color).
-	iconName _ handleSpec iconSymbol.
-	form _ ScriptingSystem formAtKey: iconName.	"#'Halo-Dup'"
+			color: (colorToUse := Color colorFrom: handleSpec color).
+	iconName := handleSpec iconSymbol.
+	form := ScriptingSystem formAtKey: iconName.	"#'Halo-Dup'"
 	handle addMorphCentered: (ImageMorph new
 				image: form; 
 				color: colorToUse makeForegroundColor;

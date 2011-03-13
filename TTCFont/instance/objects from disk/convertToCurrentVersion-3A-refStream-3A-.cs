@@ -3,6 +3,6 @@ convertToCurrentVersion: varDict refStream: smartRefStrm
 
 	"Deal with the change from pixelSize to pointSize, assuming the current monitor dpi."
 	varDict at: 'pixelSize' ifPresent: [ :x | 
-		pointSize := (TextStyle pixelsToPoints: x) rounded.
+		pointSize _ (TextStyle pixelsToPoints: x) rounded.
 	].
 	^super convertToCurrentVersion: varDict refStream: smartRefStrm.

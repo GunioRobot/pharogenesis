@@ -1,0 +1,2 @@
+handleStartDocument
+	self saxHandler startDocument

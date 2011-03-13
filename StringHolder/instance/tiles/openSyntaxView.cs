@@ -3,7 +3,7 @@ openSyntaxView
 
 	| class selector |
 
-	(selector _ self selectedMessageName) ifNotNil: [
-		class _ self selectedClassOrMetaClass.
+	(selector := self selectedMessageName) ifNotNil: [
+		class := self selectedClassOrMetaClass.
 		SyntaxMorph testClass: class andMethod: selector.
 	]

@@ -1,3 +1,3 @@
 mouseOverHaloColor: x
 
-	mouseOverHaloColor _ x
+	mouseOverHaloColor := x

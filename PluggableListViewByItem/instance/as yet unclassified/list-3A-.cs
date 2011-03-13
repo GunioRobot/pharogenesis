@@ -4,11 +4,11 @@ list: arrayOfStrings
 	 The instance variable 'list' is a paragraph constructed from
 	 this list."
 
-	itemList _ arrayOfStrings.
-	isEmpty _ arrayOfStrings isEmpty.
+	itemList := arrayOfStrings.
+	isEmpty := arrayOfStrings isEmpty.
 
 	"add top and bottom delimiters"
-	list _ ListParagraph
+	list := ListParagraph
 		withArray:
 			(Array streamContents: [:s |
 				s nextPut: topDelimiter.
@@ -16,5 +16,5 @@ list: arrayOfStrings
 				s nextPut: bottomDelimiter])
 		 style: self assuredTextStyle.
 
-	selection _ self getCurrentSelectionIndex.
+	selection := self getCurrentSelectionIndex.
 	self positionList.

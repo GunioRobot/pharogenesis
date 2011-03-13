@@ -1,2 +1,0 @@
-isOn
-	^ self color = onColor

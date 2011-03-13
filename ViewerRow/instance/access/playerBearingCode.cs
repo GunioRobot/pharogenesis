@@ -1,2 +1,0 @@
-playerBearingCode
-	^ owner playerBearingCode

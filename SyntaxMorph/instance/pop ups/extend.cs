@@ -4,9 +4,9 @@ extend
 
 	"Later do evaluation of self to see what type and offer right selector"
 	self deselect.
-	messageNodeMorph _ (MessageSend receiver: 1 selector: #+ arguments: #(1))
+	messageNodeMorph := (MessageSend receiver: 1 selector: #+ arguments: #(1))
 								asTilesIn: Player globalNames: false.
 	owner replaceSubmorph: self by: messageNodeMorph.
-	first _ messageNodeMorph submorphs detect: [:mm | mm isSyntaxMorph].
+	first := messageNodeMorph submorphs detect: [:mm | mm isSyntaxMorph].
 	messageNodeMorph replaceSubmorph: first by: self.
 	self acceptIfInScriptor.

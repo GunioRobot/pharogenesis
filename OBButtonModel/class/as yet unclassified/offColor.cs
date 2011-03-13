@@ -1,2 +1,0 @@
-offColor
-	^ Color lightGray twiceLighter

@@ -1,2 +1,2 @@
 setContents: aDictionary
-	contents _ aDictionary
+	contents := aDictionary

@@ -2,11 +2,11 @@ adjustSubmorphPositions
 
 	| p h w |
 
-	p _ 0@0.
-	w _ self width.
+	p := 0@0.
+	w := self width.
 	scroller submorphsDo: [ :each |
-		h _ each position: p andWidth: w.
-		p _ p + (0@h)
+		h := each position: p andWidth: w.
+		p := p + (0@h)
 	].
 	self 
 		changed;

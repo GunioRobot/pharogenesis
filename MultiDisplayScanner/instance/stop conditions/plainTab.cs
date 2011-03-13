@@ -1,6 +1,6 @@
 plainTab
 	| oldX |
-	oldX := destX.
+	oldX _ destX.
 	super plainTab.
 	fillBlt == nil ifFalse:
 		[fillBlt destX: oldX destY: destY width: destX - oldX height: font height; copyBits]

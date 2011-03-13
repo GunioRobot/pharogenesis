@@ -2,7 +2,7 @@ getBaseGraphic
 	"Answer a form representing the receiver's base graphic"
 
 	| aMorph |
-	^ ((aMorph _ costume renderedMorph) isSketchMorph)
+	^ ((aMorph := costume renderedMorph) isSketchMorph)
 		ifTrue:
 			[aMorph baseGraphic]
 		ifFalse:

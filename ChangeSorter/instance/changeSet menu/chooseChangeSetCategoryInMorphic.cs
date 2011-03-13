@@ -8,7 +8,7 @@ chooseChangeSetCategoryInMorphic
 change sets to show in
 this Change Sorter
 (red = current choice)'.
-	ChangeSetCategories elementsInOrder do:
+	self changeSetCategories elementsInOrder do:
 		[:aCategory |
 			aMenu add: aCategory categoryName target: self selector: #showChangeSetCategory: argument: aCategory.
 			aCategory == changeSetCategory ifTrue:

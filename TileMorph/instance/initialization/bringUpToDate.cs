@@ -3,7 +3,7 @@ bringUpToDate
 
 	| newLabel |
 		(type == #objRef and: [actualObject isPlayerLike]) ifTrue:
-		[newLabel _ actualObject externalName.
+		[newLabel := actualObject externalName.
 		self isPossessive ifTrue:
-			[newLabel _ newLabel, '''s' translated].
+			[newLabel := newLabel, '''s' translated].
 		self line1: newLabel]

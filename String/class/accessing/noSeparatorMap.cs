@@ -1,0 +1,2 @@
+noSeparatorMap
+	^CSNonSeparators byteArrayMap

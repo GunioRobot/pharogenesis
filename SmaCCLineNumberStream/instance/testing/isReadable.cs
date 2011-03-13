@@ -1,2 +1,0 @@
-isReadable
-	^sourceStream isReadable

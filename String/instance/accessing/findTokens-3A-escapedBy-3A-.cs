@@ -16,32 +16,32 @@ findTokens: delimiters escapedBy: quoteDelimiters
 	spreadsheet import and export."
 
 	| tokens rs activeEscapeCharacter ts char token delimiterChars quoteChars |
-	delimiterChars _ (delimiters isNil
+	delimiterChars := (delimiters isNil
 				ifTrue: ['']
 				ifFalse: [delimiters]) asString.
-	quoteChars _ (quoteDelimiters isNil
+	quoteChars := (quoteDelimiters isNil
 				ifTrue: ['']
 				ifFalse: [quoteDelimiters]) asString.
-	tokens _ OrderedCollection new.
-	rs _ ReadStream on: self.
-	activeEscapeCharacter _ nil.
-	ts _ WriteStream on: ''.
+	tokens := OrderedCollection new.
+	rs := ReadStream on: self.
+	activeEscapeCharacter := nil.
+	ts := WriteStream on: ''.
 	[rs atEnd]
-		whileFalse: [char _ rs next.
+		whileFalse: [char := rs next.
 			activeEscapeCharacter isNil
 				ifTrue: [(quoteChars includes: char)
-						ifTrue: [activeEscapeCharacter _ char]
+						ifTrue: [activeEscapeCharacter := char]
 						ifFalse: [(delimiterChars includes: char)
-								ifTrue: [token _ ts contents.
+								ifTrue: [token := ts contents.
 									tokens add: token.
-									ts _ WriteStream on: '']
+									ts := WriteStream on: '']
 								ifFalse: [ts nextPut: char]]]
 				ifFalse: [char == activeEscapeCharacter
 						ifTrue: [rs peek == activeEscapeCharacter
 								ifTrue: [ts nextPut: rs next]
-								ifFalse: [activeEscapeCharacter _ nil]]
+								ifFalse: [activeEscapeCharacter := nil]]
 						ifFalse: [ts nextPut: char]]].
-	token _ ts contents.
+	token := ts contents.
 	(tokens isEmpty and: [token isEmpty])
 		ifFalse: [tokens add: token].
 	^ tokens

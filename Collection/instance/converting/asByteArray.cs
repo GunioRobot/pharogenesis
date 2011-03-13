@@ -5,7 +5,7 @@ asByteArray
 	primitive."
 
 	| array index |
-	array _ ByteArray new: self size.
-	index _ 0.
-	self do: [:each | array at: (index _ index + 1) put: each].
+	array := ByteArray new: self size.
+	index := 0.
+	self do: [:each | array at: (index := index + 1) put: each].
 	^ array

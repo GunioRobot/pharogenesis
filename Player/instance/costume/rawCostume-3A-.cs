@@ -1,2 +1,2 @@
 rawCostume: aMorph
-	costume _ aMorph
+	costume := aMorph

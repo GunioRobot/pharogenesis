@@ -1,0 +1,1 @@
+UUniverseBrowser class instanceVariableNames: ''

@@ -6,11 +6,11 @@ magnifyOnScreen
 	screen location is updated immediately. This is the same as FormEditor
 	magnify."
 	| smallRect smallForm scaleFactor tempRect |
-	scaleFactor _ 8 @ 8.
-	smallRect _ Rectangle fromUser.
+	scaleFactor := 8 @ 8.
+	smallRect := Rectangle fromUser.
 	smallRect isNil ifTrue: [^self].
-	smallForm _ Form fromDisplay: smallRect.
-	tempRect _ self locateMagnifiedView: smallForm scale: scaleFactor.
+	smallForm := Form fromDisplay: smallRect.
+	tempRect := self locateMagnifiedView: smallForm scale: scaleFactor.
 	"show magnified form size until mouse is depressed"
 	self
 		openScreenViewOnForm: smallForm 

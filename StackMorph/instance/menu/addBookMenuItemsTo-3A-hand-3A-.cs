@@ -2,14 +2,14 @@ addBookMenuItemsTo: aMenu hand: aHandMorph
 	"Add book-related items to the given menu"
 
 	| controlsShowing subMenu |
-	subMenu _ MenuMorph new defaultTarget: self.
+	subMenu := MenuMorph new defaultTarget: self.
 	subMenu add: 'previous card' translated action: #goToPreviousCardInStack.
 	subMenu add: 'next card' translated action: #goToNextCardInStack.
 	subMenu add: 'go to card...' translated action: #goToCard.
 	subMenu add: 'insert a card' translated action: #insertCard.
 	subMenu add: 'delete this card' translated action: #deleteCard.
 
-	controlsShowing _ self hasSubmorphWithProperty: #pageControl.
+	controlsShowing := self hasSubmorphWithProperty: #pageControl.
 	controlsShowing
 		ifTrue:
 			[subMenu add: 'hide card controls' translated action: #hidePageControls.

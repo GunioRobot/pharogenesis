@@ -1,2 +1,0 @@
-cursor 
-	^self frameNumber

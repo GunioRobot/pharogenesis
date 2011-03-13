@@ -1,2 +1,0 @@
-ra
-	^ self patternFrame ra

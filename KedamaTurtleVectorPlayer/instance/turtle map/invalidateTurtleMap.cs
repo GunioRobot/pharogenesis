@@ -1,3 +1,3 @@
 invalidateTurtleMap
 
-	turtleMapValid _ false.
+	turtleMapValid := false.

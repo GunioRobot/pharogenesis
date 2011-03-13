@@ -1,6 +1,6 @@
 playerRepresented: anObject
 	"Set the value of playerRepresented"
 
-	playerRepresented _ anObject.
+	playerRepresented := anObject.
 	self rebuildRow.
 	self setNameTo: anObject costume topRendererOrSelf externalName

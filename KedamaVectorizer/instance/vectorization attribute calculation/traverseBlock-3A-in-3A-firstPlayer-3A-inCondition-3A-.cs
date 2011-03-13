@@ -1,7 +1,7 @@
 traverseBlock: aBlockNode in: obj firstPlayer: firstPlayer inCondition: inCondition
 
 	| value statements |
-	statements _ aBlockNode statements.
+	statements := aBlockNode statements.
 	statements do: [:stmt |
 		(stmt isMemberOf: MessageNode)	ifTrue: [
 			self traverseMessage: stmt in: obj firstPlayer: firstPlayer inCondition: inCondition.
@@ -16,7 +16,7 @@ traverseBlock: aBlockNode in: obj firstPlayer: firstPlayer inCondition: inCondit
 			attributes setAttribute: #constant of: stmt to: true
 		].
 	].
-	value _ statements collect: [:stmt | attributes getAttribute: #constant of: stmt].
-	value _ value inject: true into: [:s :t | s & t].
+	value := statements collect: [:stmt | attributes getAttribute: #constant of: stmt].
+	value := value inject: true into: [:s :t | s & t].
 
 	attributes setAttribute: #constant of: aBlockNode to: value.

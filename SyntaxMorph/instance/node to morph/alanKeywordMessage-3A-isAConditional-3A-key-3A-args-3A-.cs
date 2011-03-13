@@ -37,13 +37,13 @@ alanKeywordMessage: aNode isAConditional: template key: key args: args
 			key: key 
 			args: args
 	].
-	nodeWithNilReceiver _ aNode copy receiver: nil.
+	nodeWithNilReceiver := aNode copy receiver: nil.
 	template = 1 ifTrue: [
 		self listDirection: #topToBottom.
 	].
-	column _ self addColumn: #keyword1 on: nodeWithNilReceiver.
-	keywords _ key keywords.
-	onlyOne _ args size = 1.
+	column := self addColumn: #keyword1 on: nodeWithNilReceiver.
+	keywords := key keywords.
+	onlyOne := args size = 1.
 	onlyOne ifFalse: ["necessary for three keyword messages!"
 		column setProperty: #deselectedBorderColor toValue: column compoundBorderColor].
 	keywords
@@ -52,7 +52,7 @@ alanKeywordMessage: aNode isAConditional: template key: key args: args
 			template = 1 ifTrue: [
 				column addMorphBack: (column transparentSpacerOfSize: 3@3).
 			].
-			(row _ column addRow: #keyword2 on: nodeWithNilReceiver)
+			(row := column addRow: #keyword2 on: nodeWithNilReceiver)
 				parseNode: (nodeWithNilReceiver as: 
 						(onlyOne ifTrue: [MessageNode] ifFalse: [MessagePartNode]));
 				borderColor: row stdBorderColor.
@@ -65,6 +65,6 @@ alanKeywordMessage: aNode isAConditional: template key: key args: args
 		].
 	onlyOne ifTrue: [
 		self replaceSubmorph: column by: row.
-		column _ row.
+		column := row.
 	].
 			

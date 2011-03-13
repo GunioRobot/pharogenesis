@@ -5,11 +5,11 @@ isCommand
 	| rcvrTile pad |
 	submorphs isEmpty
 		ifTrue: [^ false].
-	pad _ submorphs first.
+	pad := submorphs first.
 	(pad isKindOf: TilePadMorph)
 		ifTrue: [(submorphs second isKindOf: AssignmentTileMorph)
 				ifTrue: [^ true].
-			(((rcvrTile _ pad submorphs first) isKindOf: TileMorph)
+			(((rcvrTile := pad submorphs first) isKindOf: TileMorph)
 					and: [rcvrTile isPossessive])
 				ifTrue: [^ false]].
 	^ true

@@ -1,0 +1,1 @@
+XMLElement class instanceVariableNames: ''

@@ -1,3 +1,3 @@
 initialize
-	monitor _ Monitor new.
-	items _ OrderedCollection new.
+	monitor := Monitor new.
+	items := OrderedCollection new.

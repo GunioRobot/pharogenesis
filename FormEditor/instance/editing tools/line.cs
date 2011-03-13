@@ -11,8 +11,8 @@ line
 	    [drawForm mapColor: Color white to: Color transparent; 
 	                 mapColor: Color black to: color].
 	           
-	firstPoint _ self cursorPoint.
-	endPoint _ self rubberBandFrom: firstPoint until: [sensor noButtonPressed].
+	firstPoint := self cursorPoint.
+	endPoint := self rubberBandFrom: firstPoint until: [sensor noButtonPressed].
 	endPoint isNil ifTrue: [^self].
 	Display depth > 1 ifTrue: [self deleteRubberBandFrom: firstPoint to: endPoint.].
 	(Line from: firstPoint to: endPoint withForm: drawForm)

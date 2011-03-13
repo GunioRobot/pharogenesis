@@ -1,6 +1,6 @@
 initialize
 	"Initialize the receiver's instance variables to default values"
 
-	documentation _ 'as yet undocumented'.
-	type _ #Number.
-	floatPrecision _ 0.1.
+	documentation := 'as yet undocumented'.
+	type := #Number.
+	floatPrecision := 0.1.

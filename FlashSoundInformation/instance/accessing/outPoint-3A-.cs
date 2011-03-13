@@ -1,2 +1,0 @@
-outPoint: anInteger
-	outPoint := anInteger

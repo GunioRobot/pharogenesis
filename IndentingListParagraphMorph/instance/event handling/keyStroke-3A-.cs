@@ -1,7 +1,7 @@
 keyStroke: evt
 
 	| char |
-	char _ evt keyCharacter.
+	char := evt keyCharacter.
 	evt controlKeyPressed ifTrue: [
 		char = Character cr ifTrue: [
 			container model addSibling.

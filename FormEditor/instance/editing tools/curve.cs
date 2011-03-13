@@ -6,14 +6,14 @@ curve
 
 	| firstPoint secondPoint thirdPoint curve drawForm |
 	"sensor noButtonPressed ifTrue: [^self]."
-	firstPoint _ self cursorPoint.
-	secondPoint _ self rubberBandFrom: firstPoint until: [sensor noButtonPressed].
-	thirdPoint _  self rubberBandFrom: secondPoint until: [sensor redButtonPressed].
+	firstPoint := self cursorPoint.
+	secondPoint := self rubberBandFrom: firstPoint until: [sensor noButtonPressed].
+	thirdPoint :=  self rubberBandFrom: secondPoint until: [sensor redButtonPressed].
 	Display depth > 1
 	  ifTrue:
 	    [self deleteRubberBandFrom: secondPoint to: thirdPoint.
 	     self deleteRubberBandFrom: firstPoint to: secondPoint].
-	curve _ CurveFitter new.
+	curve := CurveFitter new.
 	curve firstPoint: firstPoint.
 	curve secondPoint: secondPoint.
 	curve thirdPoint: thirdPoint.

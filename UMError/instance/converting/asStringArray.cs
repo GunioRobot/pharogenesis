@@ -1,0 +1,2 @@
+asStringArray
+	^{'error' . description }

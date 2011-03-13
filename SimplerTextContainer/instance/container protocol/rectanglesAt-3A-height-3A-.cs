@@ -5,6 +5,6 @@ rectanglesAt: lineY height: lineHeight
 	| rects |
 
 	lineY > textMorph owner bottom ifTrue: [^#()].
-	rects _ Array with: (self left@lineY extent: textMorph width@lineHeight).
-	"rects _ rects collect: [:r | r insetBy: OuterMargin@0]."
+	rects := Array with: (self left@lineY extent: textMorph width@lineHeight).
+	"rects := rects collect: [:r | r insetBy: OuterMargin@0]."
 	^ rects

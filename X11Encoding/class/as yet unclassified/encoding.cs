@@ -1,6 +1,6 @@
 encoding
 
 	| enc |
-	enc := self getEncoding.
+	enc _ self getEncoding.
 	enc ifNil: [ ^ nil ].
 	^ enc asLowercase.

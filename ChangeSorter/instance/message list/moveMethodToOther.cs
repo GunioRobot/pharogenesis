@@ -8,7 +8,7 @@ moveMethodToOther
 			[other := (parent other: self) changeSet.
 			other == myChangeSet ifTrue: [^Beeper  beep].
 			cls := self selectedClassOrMetaClass.
-			sel := currentSelector asSymbol.
+			sel := self selectedMessageName.
 			other 
 				absorbMethod: sel
 				class: cls

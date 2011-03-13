@@ -1,0 +1,3 @@
+evaluate: stream
+
+stream fileIn.

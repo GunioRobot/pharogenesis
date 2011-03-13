@@ -1,3 +1,3 @@
 mouseDownHaloColor: x
 
-	mouseDownHaloColor _ x
+	mouseDownHaloColor := x

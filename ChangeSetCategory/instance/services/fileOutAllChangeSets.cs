@@ -9,4 +9,4 @@ fileOutAllChangeSets
 Are you certain you want to do this?') ifFalse: [^ self].
 
 	Preferences setFlag: #checkForSlips toValue: false during: 
-		[ChangeSorter fileOutChangeSetsNamed: (aList collect: [:m | m name]) asSortedArray]
+		[ChangesOrganizer fileOutChangeSetsNamed: (aList collect: [:m | m name]) asSortedArray]

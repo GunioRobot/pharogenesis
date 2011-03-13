@@ -2,7 +2,7 @@ computeBoundingBox
 	"Refer to the comment in DisplayObject|computeBoundingBox."
 
 	| box |
-	box _ Rectangle origin: (self at: 1) extent: 0 @ 0.
+	box := Rectangle origin: (self at: 1) extent: 0 @ 0.
 	collectionOfPoints do: 
-		[:aPoint | box _ box merge: (Rectangle origin: aPoint extent: 0 @ 0)].
+		[:aPoint | box := box merge: (Rectangle origin: aPoint extent: 0 @ 0)].
 	^box

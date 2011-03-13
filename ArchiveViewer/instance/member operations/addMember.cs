@@ -1,12 +1,14 @@
 addMember
-	| result relative |
+	| result local full |
 	self canAddMember ifFalse: [ ^self ].
-	result := StandardFileMenu oldFile.
+	result := FileList2 modalFileSelector .
 	result ifNil: [ ^self ].
-	relative := result directory fullNameFor: result name.
-	(relative beginsWith: FileDirectory default pathName)
-		ifTrue: [ relative := relative copyFrom: FileDirectory default pathName size + 2 to: relative size ].
-	(archive addFile: relative)
+	
+local := result directory localNameFor: result name.
+
+	full := result directory fullNameFor: result name.
+	
+	(archive addFile: full as: local)
 		desiredCompressionMethod: ZipArchive compressionDeflated.
 	self memberIndex: self members size.
 	self changed: #memberList.

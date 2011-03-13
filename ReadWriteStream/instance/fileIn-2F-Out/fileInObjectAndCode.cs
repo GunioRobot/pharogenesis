@@ -8,10 +8,10 @@ fileInObjectAndCode
 	self text.
 	self peek asciiValue = 4
 		ifTrue: [  "pure object file"
-			refStream _ SmartRefStream on: self.
-			object _ refStream nextAndClose]
+			refStream := SmartRefStream on: self.
+			object := refStream nextAndClose]
 		ifFalse: [  "objects mixed with a fileIn"
 			self fileIn.  "reads code and objects, then closes the file"
-			object _ SmartRefStream scannedObject].	"set by side effect of one of the chunks"
+			object := SmartRefStream scannedObject].	"set by side effect of one of the chunks"
 	SmartRefStream scannedObject: nil.  "clear scannedObject"
 	^ object

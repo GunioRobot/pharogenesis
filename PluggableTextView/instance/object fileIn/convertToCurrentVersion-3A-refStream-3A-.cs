@@ -1,5 +1,5 @@
 convertToCurrentVersion: varDict refStream: smartRefStrm
 	
-	hasEditingConflicts ifNil: [hasEditingConflicts _ false].
+	hasEditingConflicts ifNil: [hasEditingConflicts := false].
 	^super convertToCurrentVersion: varDict refStream: smartRefStrm.
 

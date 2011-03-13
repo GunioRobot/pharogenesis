@@ -4,5 +4,5 @@ acceptScript: aScriptEditorMorph for: aSelector
 	| aUniclassScript |
 	self class compileSilently: aScriptEditorMorph methodString
 		classified: 'scripts'.
-	aUniclassScript _ self class assuredMethodInterfaceFor: aSelector asSymbol.
+	aUniclassScript := self class assuredMethodInterfaceFor: aSelector asSymbol.
 	aUniclassScript currentScriptEditor: aScriptEditorMorph

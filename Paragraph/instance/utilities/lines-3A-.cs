@@ -1,2 +1,2 @@
 lines: lineArray
-	lines _ lineArray
+	lines := lineArray

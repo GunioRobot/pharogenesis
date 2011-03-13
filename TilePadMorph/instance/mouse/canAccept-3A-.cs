@@ -3,6 +3,6 @@ canAccept: aMorph
 
 	| itsType myType |
 	((aMorph isKindOf: PhraseTileMorph) or: [aMorph isKindOf: TileMorph orOf: WatcherWrapper]) 		ifTrue:
-			[^ ((itsType _ aMorph resultType capitalized) = (myType _ self type capitalized)) or:
+			[^ ((itsType := aMorph resultType capitalized) = (myType := self type capitalized)) or:
 				[(myType = #Graphic) and: [itsType = #Player]]].
 	^ false

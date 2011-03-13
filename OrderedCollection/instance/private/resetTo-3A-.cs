@@ -1,3 +1,3 @@
 resetTo: index
-	firstIndex _ index.
-	lastIndex _ firstIndex - 1
+	firstIndex := index.
+	lastIndex := firstIndex - 1

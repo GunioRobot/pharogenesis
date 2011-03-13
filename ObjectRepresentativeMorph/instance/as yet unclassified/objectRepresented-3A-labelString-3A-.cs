@@ -1,7 +1,7 @@
 objectRepresented: anObject labelString: aLabel
 	"Set the receiver's representee as indicated, and use the given label to tag it"
 
-	objectRepresented _ anObject.
+	objectRepresented := anObject.
 	self removeAllMorphs.
 	self hResizing: #shrinkWrap.  
 	self vResizing: #shrinkWrap.

@@ -1,0 +1,3 @@
+wsm
+
+^self websqueakmap

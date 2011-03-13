@@ -2,17 +2,17 @@ testPercentEncodingJa
 	| leading hiraA hiraO hiraAO encodedHiraA encodedHiraO encodedHiraAO |
 
     "Make Japanese String from unicode. see http://www.unicode.org/charts/PDF/U3040.pdf"
-     leading _ JapaneseEnvironment leadingChar.
-	hiraA _ (Character leadingChar: leading code: 16r3042) asString.  "HIRAGANA LETTER A"
-	hiraO _ (Character leadingChar: leading code: 16r304A) asString.  "HIRAGANA LETTER O"
-	hiraAO _ hiraA, hiraO.
+     leading := JapaneseEnvironment leadingChar.
+	hiraA := (Character leadingChar: leading code: 16r3042) asString.  "HIRAGANA LETTER A"
+	hiraO := (Character leadingChar: leading code: 16r304A) asString.  "HIRAGANA LETTER O"
+	hiraAO := hiraA, hiraO.
 
 	"Percent Encoded Japanese String"
-	encodedHiraA _ hiraA encodeForHTTP.
+	encodedHiraA := hiraA encodeForHTTP.
 	self assert: encodedHiraA = '%E3%81%82'.
-	encodedHiraO _ hiraO encodeForHTTP.
+	encodedHiraO := hiraO encodeForHTTP.
 	self assert: encodedHiraO = '%E3%81%8A'.
-	encodedHiraAO _ hiraAO encodeForHTTP.
+	encodedHiraAO := hiraAO encodeForHTTP.
 	self assert: encodedHiraAO =  '%E3%81%82%E3%81%8A'.
 
      "without percent encoded string"

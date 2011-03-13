@@ -1,3 +1,3 @@
 instantiatedUserScriptsDictionary
-	instantiatedUserScriptsDictionary ifNil: [instantiatedUserScriptsDictionary _ IdentityDictionary new].
+	instantiatedUserScriptsDictionary ifNil: [instantiatedUserScriptsDictionary := IdentityDictionary new].
 	^ instantiatedUserScriptsDictionary

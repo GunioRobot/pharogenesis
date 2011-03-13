@@ -2,10 +2,10 @@ sortTopologically
 	"Plenty of room for increased efficiency in this one."
 
 	| remaining result pick |
-	remaining _ self asOrderedCollection.
-	result _ OrderedCollection new.
+	remaining := self asOrderedCollection.
+	result := OrderedCollection new.
 	[remaining isEmpty] whileFalse: [
-		pick _ remaining select: [:item |
+		pick := remaining select: [:item |
 			remaining allSatisfy: [:anotherItem |
 				item == anotherItem or: [self should: item precede: anotherItem]]].
 		pick isEmpty ifTrue: [self error: 'bad topological ordering'].

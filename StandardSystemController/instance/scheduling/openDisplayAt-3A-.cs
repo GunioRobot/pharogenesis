@@ -5,5 +5,5 @@ openDisplayAt: aPoint
 	view align: view viewport center with: aPoint.
 	view translateBy:
 		(view displayBox amountToTranslateWithin: Display boundingBox).
-	status _ #open.
+	status := #open.
 	ScheduledControllers scheduleActive: self

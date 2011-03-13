@@ -1,2 +1,0 @@
-loopCount: anInteger
-	loopCount := anInteger

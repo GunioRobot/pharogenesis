@@ -1,26 +1,26 @@
 forgetDispatchesTo: aSelector
 	"aSelector is no longer implemented by my corresponding Player, so don't call it any more"
 	mouseDownSelector == aSelector
-		ifTrue: [mouseDownRecipient _ mouseDownSelector _ nil].
+		ifTrue: [mouseDownRecipient := mouseDownSelector := nil].
 	mouseMoveSelector == aSelector
-		ifTrue: [mouseMoveRecipient _ mouseMoveSelector _ nil].
+		ifTrue: [mouseMoveRecipient := mouseMoveSelector := nil].
 	mouseStillDownSelector == aSelector
-		ifTrue: [mouseStillDownRecipient _ mouseStillDownSelector _ nil].
+		ifTrue: [mouseStillDownRecipient := mouseStillDownSelector := nil].
 	mouseUpSelector == aSelector
-		ifTrue: [mouseUpRecipient _ mouseUpSelector _ nil].
+		ifTrue: [mouseUpRecipient := mouseUpSelector := nil].
 	mouseEnterSelector == aSelector
-		ifTrue: [mouseEnterRecipient _ mouseEnterSelector _ nil].
+		ifTrue: [mouseEnterRecipient := mouseEnterSelector := nil].
 	mouseLeaveSelector == aSelector
-		ifTrue: [mouseLeaveRecipient _ mouseLeaveSelector _ nil].
+		ifTrue: [mouseLeaveRecipient := mouseLeaveSelector := nil].
 	mouseEnterDraggingSelector == aSelector
-		ifTrue: [mouseEnterDraggingRecipient _ mouseEnterDraggingSelector _ nil].
+		ifTrue: [mouseEnterDraggingRecipient := mouseEnterDraggingSelector := nil].
 	mouseLeaveDraggingSelector == aSelector
-		ifTrue: [mouseLeaveDraggingRecipient _ mouseLeaveDraggingSelector _ nil].
+		ifTrue: [mouseLeaveDraggingRecipient := mouseLeaveDraggingSelector := nil].
 	clickSelector == aSelector
-		ifTrue: [clickRecipient _ clickSelector _ nil].
+		ifTrue: [clickRecipient := clickSelector := nil].
 	doubleClickSelector == aSelector
-		ifTrue: [doubleClickRecipient _ doubleClickSelector _ nil].
+		ifTrue: [doubleClickRecipient := doubleClickSelector := nil].
 	doubleClickTimeoutSelector == aSelector
-		ifTrue: [doubleClickTimeoutRecipient _ doubleClickTimeoutSelector _ nil].
+		ifTrue: [doubleClickTimeoutRecipient := doubleClickTimeoutSelector := nil].
 	keyStrokeSelector == aSelector
-		ifTrue: [keyStrokeRecipient _ keyStrokeSelector _ nil].
+		ifTrue: [keyStrokeRecipient := keyStrokeSelector := nil].

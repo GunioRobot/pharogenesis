@@ -3,7 +3,7 @@ with: otherCollection collect: twoArgBlock
 	corresponding elements from this collection and otherCollection."
 	| result |
 	otherCollection size = self size ifFalse: [self error: 'otherCollection must be the same size'].
-	result _ self species new: self size.
+	result := self species new: self size.
 	1 to: self size do:
 		[:index | result addLast: (twoArgBlock value: (self at: index)
 									value: (otherCollection at: index))].

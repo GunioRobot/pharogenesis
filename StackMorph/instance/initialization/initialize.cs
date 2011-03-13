@@ -3,7 +3,7 @@ initialize
 
 	| initialBackground |
 	super initialize.
-	initialBackground _ pages first.
+	initialBackground := pages first.
 	initialBackground extent: (640@480); beSticky.
 	initialBackground beAStackBackground.
 	self beUnsticky.

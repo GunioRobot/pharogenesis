@@ -2,7 +2,7 @@ storeCodeOn: aStream indent: tabCount
 	"Store code on the stream"
  
 	| myTypeString |
-	myTypeString _ self resultType.
+	myTypeString := self resultType.
 	(self scriptEditor hasParameter and: [self scriptEditor typeForParameter = myTypeString])
 		ifTrue:
 			[aStream nextPutAll: 'parameter']

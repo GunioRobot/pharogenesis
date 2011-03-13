@@ -1,7 +1,7 @@
 withAttributes: attributes do: streamBlock 
 	| pos1 val |
-	pos1 _ self position.
-	val _ streamBlock value.
+	pos1 := self position.
+	val := streamBlock value.
 	attributes do: [:attribute |
 		collection
 			addAttribute: attribute

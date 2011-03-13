@@ -6,9 +6,9 @@ test1: aProject
 	(self basicNew)
 		project: aProject
 		actionBlock: [ :x | 
-			criteria _ OrderedCollection new.
+			criteria := OrderedCollection new.
 			x keysAndValuesDo: [ :k :v |
-				(clean _ v withBlanksTrimmed) isEmpty ifFalse: [
+				(clean := v withBlanksTrimmed) isEmpty ifFalse: [
 					criteria add: k,': *',clean,'*'
 				].
 			].

@@ -3,7 +3,7 @@ printOn: strm indent: level
 	| nodeClass |
 
 	(self hasProperty: #ignoreNodeWhenPrinting) ifFalse: [
-		nodeClass _ parseNode class.
+		nodeClass := parseNode class.
 		nodeClass == VariableNode ifTrue: [^self printVariableNodeOn: strm indent: level].
 		nodeClass == LiteralVariableNode ifTrue: [^self printVariableNodeOn: strm indent: level].
 		nodeClass == MessageNode ifTrue: [^self printMessageNodeOn: strm indent: level].

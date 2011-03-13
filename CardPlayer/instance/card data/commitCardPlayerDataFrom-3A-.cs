@@ -2,11 +2,11 @@ commitCardPlayerDataFrom: aPlayfield
 	"Transport data back from the morphs that may be holding it into the instance variables that must hold it when the receiver is not being viewed"
 
 	| prior itsOrigin |
-	itsOrigin _ aPlayfield topLeft.
+	itsOrigin := aPlayfield topLeft.
 	self class variableDocks do:
 		[:aDock | aDock storeMorphDataInInstance: self].
-	prior _ nil.
-	privateMorphs _ OrderedCollection new.
+	prior := nil.
+	privateMorphs := OrderedCollection new.
 	self costume ifNotNil:
 		[self costume submorphs do:
 			[:aMorph | aMorph renderedMorph isShared
@@ -15,4 +15,4 @@ commitCardPlayerDataFrom: aPlayfield
 					privateMorphs add: aMorph.
 					aMorph delete.
 					aMorph position: (aMorph position - itsOrigin)].
-			prior _ aMorph]]
+			prior := aMorph]]

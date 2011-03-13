@@ -7,15 +7,15 @@ from: startIndex to: endIndex put: anObject
 
 	startIndex > endIndex ifTrue: [^self].
 	self at: startIndex put: anObject.
-	written _ 1.
-	toWrite _ endIndex - startIndex + 1.
+	written := 1.
+	toWrite := endIndex - startIndex + 1.
 	[written < toWrite] whileTrue:
 		[
-			thisWrite _ written min: toWrite - written.
+			thisWrite := written min: toWrite - written.
 			self 
 				replaceFrom: startIndex + written
 				to: startIndex + written + thisWrite - 1
 				with: self startingAt: startIndex.
-			written _ written + thisWrite
+			written := written + thisWrite
 		].
 	^anObject

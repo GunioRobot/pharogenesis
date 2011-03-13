@@ -2,13 +2,13 @@ scrollUp
 	| markerForm firstTime |
 	self changeCursor: Cursor up.
 	sensor anyButtonPressed ifTrue:
-	  [markerForm _ Form fromDisplay: marker.
+	  [markerForm := Form fromDisplay: marker.
 	  Display fill: marker fillColor: scrollBar insideColor.
-	  firstTime _ true.
+	  firstTime := true.
 	  markerForm 
 		follow: 
 			[self scrollViewUp ifTrue:
-				[marker _ marker translateBy: 0 @
+				[marker := marker translateBy: 0 @
 					((self markerDelta negated 
 						min: scrollBar inside bottom - marker bottom) 
 						max: scrollBar inside top - marker top).
@@ -16,7 +16,7 @@ scrollUp
 					ifTrue: [
 						"pause before scrolling repeatedly"
 						(Delay forMilliseconds: 250) wait.
-						firstTime _ false.
+						firstTime := false.
 					] ifFalse: [
 						(Delay forMilliseconds: 50) wait.
 					].

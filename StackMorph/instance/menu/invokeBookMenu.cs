@@ -2,7 +2,7 @@ invokeBookMenu
 	"Invoke the book's control panel menu."
 
 	| aMenu |
-	aMenu _ MenuMorph new defaultTarget: self.
+	aMenu := MenuMorph new defaultTarget: self.
 	aMenu addTitle: 'Stack' translated.
 	Preferences noviceMode
 		ifFalse: [aMenu addStayUpItem].

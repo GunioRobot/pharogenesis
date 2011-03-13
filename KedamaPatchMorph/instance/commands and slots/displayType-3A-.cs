@@ -1,4 +1,4 @@
 displayType: aSymbol
 
-	displayType _ aSymbol asSymbol.
+	displayType := aSymbol asSymbol.
 	self formChanged.

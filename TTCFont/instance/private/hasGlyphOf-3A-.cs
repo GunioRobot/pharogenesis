@@ -1,3 +1,3 @@
 hasGlyphOf: aCharacter
-
-	^ aCharacter charCode <= 255
+	"Answer whether this font includes a glyph for the given character"
+	^ aCharacter charCode <= self maxAscii

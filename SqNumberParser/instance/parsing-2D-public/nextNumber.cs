@@ -3,14 +3,17 @@ nextNumber
 	This one can read Float Integer and ScaledDecimal"
 	
 	| numberOfTrailingZeroInIntegerPart numberOfNonZeroFractionDigits mantissa decimalMultiplier decimalFraction value numberOfTrailingZeroInFractionPart |
-	(sourceStream nextMatchAll: 'NaN')
-		ifTrue: [^ Float nan].
 	neg := sourceStream peekFor: $-.
-	(sourceStream nextMatchAll: 'Infinity')
-		ifTrue: [^ neg
-				ifTrue: [Float infinity negated]
-				ifFalse: [Float infinity]].
-	integerPart := self nextUnsignedIntegerBase: base.
+	integerPart := self nextUnsignedIntegerBase: base ifFail: [
+		"This is not a regular number beginning with a digit
+		It is time to check for exceptional condition NaN and Infinity"
+		neg ifFalse: [(sourceStream nextMatchAll: 'NaN')
+			ifTrue: [^ Float nan]].
+		(sourceStream nextMatchAll: 'Infinity')
+			ifTrue: [^ neg
+					ifTrue: [Float infinity negated]
+					ifFalse: [Float infinity]].
+		^self expected: ['a digit between 0 and 9']].
 	numberOfTrailingZeroInIntegerPart := nDigits - lastNonZero.
 	(sourceStream peekFor: $r)
 		ifTrue: ["<base>r<integer>"

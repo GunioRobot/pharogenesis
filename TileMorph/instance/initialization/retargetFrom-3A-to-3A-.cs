@@ -3,8 +3,8 @@ retargetFrom: oldPlayer to: newPlayer
 
 	| newLabel |
 	(type == #objRef  and: [actualObject == oldPlayer]) ifTrue:
-		[actualObject _ newPlayer.
-		newLabel _ actualObject externalName.
+		[actualObject := newPlayer.
+		newLabel := actualObject externalName.
 		self isPossessive ifTrue:
-			[newLabel _ newLabel, '''s' translated].
+			[newLabel := newLabel, '''s' translated].
 		self line1: newLabel]

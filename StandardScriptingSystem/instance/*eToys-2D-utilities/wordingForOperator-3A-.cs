@@ -2,7 +2,7 @@ wordingForOperator: aString
 	"Answer the wording to be seen by the user for the given operator symbol/string"
 
 	| toTest |
-	toTest _ aString asString.
+	toTest := aString asString.
 	#(	(append:				'include at end')
 		(arrowheadsOnAllPens	'arrowheads on all pens')
 		(beep:					'make sound')

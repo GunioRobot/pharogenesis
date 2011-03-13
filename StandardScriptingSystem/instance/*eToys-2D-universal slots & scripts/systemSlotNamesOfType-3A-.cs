@@ -3,7 +3,7 @@ systemSlotNamesOfType: aType
 	
 	| aList |
 	self flag: #deferred.  "Hard-coded etoyVocabulary needed here to make this work."
-	aList _ OrderedCollection new.
+	aList := OrderedCollection new.
 	Vocabulary eToyVocabulary methodInterfacesDo:
 		 [:anInterface |
 			anInterface resultType = aType ifTrue:

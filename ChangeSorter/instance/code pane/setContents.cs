@@ -5,7 +5,7 @@ setContents
 	self clearUserEditFlag.
 	currentClassName ifNil: [^ contents := myChangeSet preambleString ifNil: ['']].
 	class := self selectedClassOrMetaClass.
-	(sel := currentSelector) == nil
+	(sel := self selectedMessageName) == nil
 		ifFalse: [changeType := (myChangeSet atSelector: (sel := sel asSymbol) class: class).
 			changeType == #remove
 				ifTrue: [^ contents := 'Method has been removed (see versions)'].

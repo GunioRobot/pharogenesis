@@ -1,2 +1,0 @@
-theClass
-	^ classRef theClass

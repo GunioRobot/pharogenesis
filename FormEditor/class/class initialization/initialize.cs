@@ -1,8 +1,8 @@
 initialize
 
-	FlashCursor _ false.
+	FlashCursor := false.
 	self setKeyboardMap.
-	YellowButtonMenu _ SelectionMenu 
+	YellowButtonMenu := SelectionMenu 
 		labels:
 'accept
 cancel

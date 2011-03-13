@@ -1,2 +1,2 @@
 jettisonScripts
-	scripts _ IdentityDictionary new
+	scripts := IdentityDictionary new

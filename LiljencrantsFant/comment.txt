@@ -1,2 +1,0 @@
-This is the LF glottal-pulse model. Actually this is here only for pedagogical purposes. The LF model is again implemented in KlattSynthesizer (and as primitive in the KlattSynthesizerPluggin). For more details on the LF model see:
-	Fant, G., Liljencrants, J., & Lin, Q. "A four-parameter model of glottal flow", Speech Transmission Laboratory Qurterly Progress Report 4/85, KTH.

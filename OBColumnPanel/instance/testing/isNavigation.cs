@@ -1,2 +1,0 @@
-isNavigation
-	^ true

@@ -5,5 +5,5 @@ getTurtleOf: aBreedPlayer
 		"self error: 'should not happen'."
 		^ aBreedPlayer.
 	].
-	xy _ aBreedPlayer getXAndY.
+	xy := aBreedPlayer getXAndY.
 	^ (self aTurtleAtX: xy x y: xy y) ifNil: [^ aBreedPlayer].

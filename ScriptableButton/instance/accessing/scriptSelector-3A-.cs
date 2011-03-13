@@ -1,2 +1,2 @@
 scriptSelector: aSymbol
-	scriptSelector _ aSymbol
+	scriptSelector := aSymbol

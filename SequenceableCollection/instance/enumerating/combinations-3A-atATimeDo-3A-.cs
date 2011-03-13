@@ -3,5 +3,5 @@ combinations: kk atATimeDo: aBlock
 	" 'abcde' combinations: 3 atATimeDo: [:each | Transcript cr; show: each printString]"
 
 	| aCollection |
-	aCollection _ Array new: kk.
+	aCollection := Array new: kk.
 	self combinationsAt: 1 in: aCollection after: 0 do: aBlock

@@ -1,9 +1,9 @@
 borderPrototype: aBorderStyle help: helpString
 	| selector proto |
-	selector _ BorderedMorph new.
+	selector := BorderedMorph new.
 	selector borderWidth: 0.
 	selector color: Color transparent.
-	proto _ Morph new extent: 16@16.
+	proto := Morph new extent: 16@16.
 	proto color:  Color transparent.
 	proto borderStyle: aBorderStyle.
 	selector extent: proto extent + 4.

@@ -1,12 +1,12 @@
 addTurtlesCount: count ofPrototype: prototype for: aKedamaWorld positionAndColorArray: positionAndColorArray
 
 	| index array defaultValue newArray oldCount |
-	oldCount _ self size.
+	oldCount := self size.
 	info associationsDo: [:assoc |
-		index _ info at: assoc key.
-		array _ arrays at: (info at: assoc key).
-		defaultValue _ prototype at: index.
-		newArray _ array class new: count.
+		index := info at: assoc key.
+		array := arrays at: (info at: assoc key).
+		defaultValue := prototype at: index.
+		newArray := array class new: count.
 		(#(who x y heading color normal) includes: assoc key) ifFalse: [
 			newArray atAllPut: defaultValue.
 		].
@@ -22,7 +22,7 @@ addTurtlesCount: count ofPrototype: prototype for: aKedamaWorld positionAndColor
 	#(who) do: [:name |
 		self setInitialValueOf: name from: oldCount + 1 to: self size for: aKedamaWorld.
 	].
-	whoTableValid _ false.
-	turtleMapValid _ false.
+	whoTableValid := false.
+	turtleMapValid := false.
 
 	

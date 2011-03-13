@@ -1,3 +1,3 @@
 examplerPlayer: e
 
-	exampler _ e.
+	exampler := e.

@@ -5,14 +5,14 @@ paddedSpace
 	scanning has crossed the cursor."
 
 	| pad |
-	pad := 0.
-	spaceCount := spaceCount + 1.
-	pad := line justifiedPadFor: spaceCount.
-	lastSpaceOrTabExtent := lastCharacterExtent copy.
+	pad _ 0.
+	spaceCount _ spaceCount + 1.
+	pad _ line justifiedPadFor: spaceCount.
+	lastSpaceOrTabExtent _ lastCharacterExtent copy.
 	self lastSpaceOrTabExtentSetX:  spaceWidth + pad.
 	(destX + lastSpaceOrTabExtent x)  >= characterPoint x
-		ifTrue: [lastCharacterExtent := lastSpaceOrTabExtent copy.
+		ifTrue: [lastCharacterExtent _ lastSpaceOrTabExtent copy.
 				^self crossedX].
-	lastIndex := lastIndex + 1.
-	destX := destX + lastSpaceOrTabExtent x.
+	lastIndex _ lastIndex + 1.
+	destX _ destX + lastSpaceOrTabExtent x.
 	^ false

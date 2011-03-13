@@ -3,7 +3,7 @@ removeLast
 	empty, create an error notification."
 	| lastObject |
 	self emptyCheck.
-	lastObject _ array at: lastIndex.
+	lastObject := array at: lastIndex.
 	array at: lastIndex put: nil.
-	lastIndex _ lastIndex - 1.
+	lastIndex := lastIndex - 1.
 	^ lastObject

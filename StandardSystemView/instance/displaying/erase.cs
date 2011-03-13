@@ -3,9 +3,9 @@ erase
 	| oldValid |
 	CacheBits
 		ifTrue:
-			[oldValid _ bitsValid.
-			bitsValid _ false.
+			[oldValid := bitsValid.
+			bitsValid := false.
 			ScheduledControllers restore: self windowBox without: self.
-			bitsValid _ oldValid]
+			bitsValid := oldValid]
 		ifFalse:
 			[ScheduledControllers restore: self windowBox without: self]

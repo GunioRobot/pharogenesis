@@ -5,5 +5,5 @@ clear
 
 	self isOn
 		ifTrue: 
-			[on _ false.
+			[on := false.
 			self changed]

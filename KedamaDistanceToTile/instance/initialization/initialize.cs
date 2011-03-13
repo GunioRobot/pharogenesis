@@ -1,6 +1,6 @@
 initialize
 
 	super initialize.
-	type _ #Player.
-	operatorOrExpression _ #getDistanceTo:.
+	type := #Player.
+	operatorOrExpression := #getDistanceTo:.
 	self addTile.

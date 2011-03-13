@@ -1,10 +1,10 @@
 mouseDown: evt
 
 	self displayCostume: #mouseDown.
-	mouseDownTime _ Time millisecondClockValue.
-	nextTimeToFire _ nil.
+	mouseDownTime := Time millisecondClockValue.
+	nextTimeToFire := nil.
 	delayBetweenFirings ifNotNil: [
-		nextTimeToFire _ mouseDownTime + delayBetweenFirings.
+		nextTimeToFire := mouseDownTime + delayBetweenFirings.
 	].
 	self wantsRolloverIndicator ifTrue: [
 		visibleMorph 
@@ -19,12 +19,12 @@ mouseDown: evt
 
 	aMorph .
 
-	now _ Time millisecondClockValue.
-	oldColor _ color. 
+	now := Time millisecondClockValue.
+	oldColor := color. 
 	actWhen == #buttonDown
 		ifTrue: [self doButtonAction]
 		ifFalse: [	self updateVisualState: evt; refreshWorld].
-	dt _ Time millisecondClockValue - now max: 0.
+	dt := Time millisecondClockValue - now max: 0.
 	dt < 200 ifTrue: [(Delay forMilliseconds: 200-dt) wait].
 	self mouseStillDown: evt.
 ====="

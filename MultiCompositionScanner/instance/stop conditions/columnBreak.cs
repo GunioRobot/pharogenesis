@@ -5,7 +5,7 @@ columnBreak
 
 	line stop: lastIndex.
 	presentationLine stop: lastIndex - numOfComposition.
-	spaceX := destX.
+	spaceX _ destX.
 	line paddingWidth: rightMargin - spaceX.
 	presentationLine paddingWidth: rightMargin - spaceX.
 	^true

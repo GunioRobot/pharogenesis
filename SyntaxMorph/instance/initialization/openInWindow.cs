@@ -1,11 +1,11 @@
 openInWindow
 
 	| window widget sel |
-	sel _ ''.
+	sel := ''.
 	self firstSubmorph allMorphs do: [:rr | 
-			(rr isKindOf: StringMorph) ifTrue: [sel _ sel, rr contents]].
-	window _ (SystemWindow labelled: 'Tiles for ', self parsedInClass printString, '>>',sel).
-	widget _ self inAScrollPane.
+			(rr isKindOf: StringMorph) ifTrue: [sel := sel, rr contents]].
+	window := (SystemWindow labelled: 'Tiles for ', self parsedInClass printString, '>>',sel).
+	widget := self inAScrollPane.
 	widget color: Color paleOrange.
 	window
 		addMorph: widget

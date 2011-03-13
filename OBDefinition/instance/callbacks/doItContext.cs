@@ -1,2 +1,0 @@
-doItContext
-	^ nil

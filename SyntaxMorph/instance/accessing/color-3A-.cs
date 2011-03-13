@@ -7,14 +7,14 @@ color: aColorOrSymbol
 			^ super color: (self scaleColorByUserPref: aColorOrSymbol)].
 		^ super color: aColorOrSymbol].
 
-	deselectedColor _ self valueOfProperty: #deselectedColor ifAbsent: [nil].
+	deselectedColor := self valueOfProperty: #deselectedColor ifAbsent: [nil].
 	deselectedColor ifNotNil: [^ super color: (self scaleColorByUserPref: deselectedColor)].
 
 	aColorOrSymbol == #comment  ifTrue: [^ self color: Color blue lighter].
 	SyntaxMorph noTileColor ifTrue: [	"override"
 		^ self color: Color transparent].	"Fix this to be real color!"
 
-	(cc _ self class translateColor: aColorOrSymbol) isColor
+	(cc := self class translateColor: aColorOrSymbol) isColor
 		ifTrue: [^ self color: cc]
 		ifFalse: [Transcript show: aColorOrSymbol, ' needs to be handled in translateColor:'; cr.
 			^ self color: Color transparent].	"help!"

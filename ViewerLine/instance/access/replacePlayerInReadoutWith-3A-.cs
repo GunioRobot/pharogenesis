@@ -1,7 +1,7 @@
 replacePlayerInReadoutWith: aPlayer 
 
 	| tile |
-	tile _ self firstMorphBearingKedamaPlayer.
+	tile := self firstMorphBearingKedamaPlayer.
 	tile ifNil: [^ self].
 	(tile isMemberOf: TileMorph) ifFalse: [^ self].
 	tile type = #objRef ifFalse: [^ self].

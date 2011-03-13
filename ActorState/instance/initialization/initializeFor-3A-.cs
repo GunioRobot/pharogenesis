@@ -1,9 +1,9 @@
 initializeFor: aPlayer
 	| aNewDictionary |
-	owningPlayer _ aPlayer.
+	owningPlayer := aPlayer.
 	instantiatedUserScriptsDictionary ifNil: [^ self].
-	aNewDictionary _ IdentityDictionary new.
+	aNewDictionary := IdentityDictionary new.
 	instantiatedUserScriptsDictionary associationsDo: 
 		[:assoc |
 			aNewDictionary at: assoc key put: (assoc value shallowCopy player: aPlayer)].
-	instantiatedUserScriptsDictionary _ aNewDictionary.
+	instantiatedUserScriptsDictionary := aNewDictionary.

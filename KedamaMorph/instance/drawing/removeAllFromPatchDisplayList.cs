@@ -1,3 +1,3 @@
 removeAllFromPatchDisplayList
 
-	patchesToDisplay _ #().
+	patchesToDisplay := #().

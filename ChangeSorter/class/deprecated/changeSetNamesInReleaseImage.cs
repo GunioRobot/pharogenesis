@@ -1,0 +1,3 @@
+changeSetNamesInReleaseImage
+
+	^ ChangesOrganizer changeSetNamesInReleaseImage

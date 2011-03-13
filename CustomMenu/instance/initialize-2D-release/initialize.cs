@@ -1,8 +1,8 @@
 initialize
 
-	labels _ OrderedCollection new.
-	selections _ OrderedCollection new.
-	dividers _ OrderedCollection new.
-	lastDivider _ 0.
-	targets _ OrderedCollection new.
-	arguments _ OrderedCollection new	
+	labels := OrderedCollection new.
+	selections := OrderedCollection new.
+	dividers := OrderedCollection new.
+	lastDivider := 0.
+	targets := OrderedCollection new.
+	arguments := OrderedCollection new	

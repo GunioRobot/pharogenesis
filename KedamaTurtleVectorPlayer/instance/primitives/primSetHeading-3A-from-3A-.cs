@@ -5,14 +5,14 @@ primSetHeading: headingArray from: val
 	"^ KedamaPlugin doPrimitive: #setHeadingArrayFrom."
 
 	val isCollection ifFalse: [
-		heading _ val asFloat.
-		heading _ KedamaMorph degreesToRadians: heading.
+		heading := val asFloat.
+		heading := KedamaMorph degreesToRadians: heading.
 	].
 
 	1 to: headingArray size do: [:i |
 		val isCollection ifTrue: [
-			heading _ val at: i.
-			heading _ KedamaMorph degreesToRadians: heading.
+			heading := val at: i.
+			heading := KedamaMorph degreesToRadians: heading.
 		].
 		headingArray at: i put: heading.
 	].

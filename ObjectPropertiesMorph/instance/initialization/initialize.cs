@@ -3,5 +3,5 @@ initialize
 	super initialize.
 ""
 	myTarget
-		ifNil: [myTarget _ RectangleMorph new openInWorld].
+		ifNil: [myTarget := RectangleMorph new openInWorld].
 	self rebuild

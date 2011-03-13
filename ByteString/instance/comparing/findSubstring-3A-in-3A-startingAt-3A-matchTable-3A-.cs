@@ -11,12 +11,12 @@ findSubstring: key in: body startingAt: start matchTable: matchTable
 	key size = 0 ifTrue: [^ 0].
 	start to: body size - key size + 1 do:
 		[:startIndex |
-		index _ 1.
+		index := 1.
 			[(matchTable at: (body at: startIndex+index-1) asciiValue + 1)
 				= (matchTable at: (key at: index) asciiValue + 1)]
 				whileTrue:
 				[index = key size ifTrue: [^ startIndex].
-				index _ index+1]].
+				index := index+1]].
 	^ 0
 "
 ' ' findSubstring: 'abc' in: 'abcdefabcd' startingAt: 1 matchTable: CaseSensitiveOrder 1

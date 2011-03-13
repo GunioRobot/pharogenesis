@@ -1,0 +1,1 @@
+A policy somewhat suitable for stable versions.  All updates must come through a single master userid and password.

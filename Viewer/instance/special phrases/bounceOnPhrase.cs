@@ -8,7 +8,7 @@ bounceOnPhrase
 				argType: #Color.	"temp dummy"
 	(outerPhrase submorphs second) delete.	"operator"
 	(outerPhrase submorphs second) delete.	"color"
-	upHill _ KedamaBounceOnTile new.
+	upHill := KedamaBounceOnTile new.
 	"upHill setPatchDefaultTo: (scriptedPlayer defaultPatchPlayer)."
 	outerPhrase addMorphBack: upHill.
 	^outerPhrase.

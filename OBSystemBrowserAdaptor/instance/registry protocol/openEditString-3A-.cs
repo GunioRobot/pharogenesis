@@ -1,2 +1,0 @@
-openEditString: anUndefinedObject 
-	^ self

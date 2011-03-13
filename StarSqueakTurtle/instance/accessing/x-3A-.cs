@@ -1,3 +1,0 @@
-x: aNumber
-
-	x := aNumber.

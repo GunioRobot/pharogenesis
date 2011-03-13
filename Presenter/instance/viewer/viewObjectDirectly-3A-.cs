@@ -3,14 +3,14 @@ viewObjectDirectly: anObject
 
 	|  aViewer aRect aPoint nominalHeight aFlapTab flapLoc |
 
-	associatedMorph addMorph: (aViewer _ self nascentPartsViewerFor: anObject).
-	flapLoc _ associatedMorph "world".
+	associatedMorph addMorph: (aViewer := self nascentPartsViewerFor: anObject).
+	flapLoc := associatedMorph "world".
 	Preferences viewersInFlaps ifTrue:
 		[aViewer setProperty: #noInteriorThumbnail toValue: true.
 		aViewer initializeFor: anObject barHeight: 0.
 		aViewer enforceTileColorPolicy.
 		flapLoc hideViewerFlapsOtherThanFor: anObject.
-		aFlapTab _ flapLoc viewerFlapTabFor: anObject.
+		aFlapTab := flapLoc viewerFlapTabFor: anObject.
 		aFlapTab referent submorphs do: 
 			[:m | (m isKindOf: Viewer) ifTrue: [m delete]].
 		aFlapTab referent addMorph: aViewer beSticky.
@@ -27,9 +27,9 @@ viewObjectDirectly: anObject
 	aViewer initializeFor: anObject barHeight: 6.
 	aViewer enforceTileColorPolicy.
 	Preferences automaticViewerPlacement ifTrue:
-		[aPoint _ anObject bounds right @ 
-			(anObject center y - ((nominalHeight _ aViewer initialHeightToAllow) // 2)).
-		aRect _ (aPoint extent: (aViewer width @ nominalHeight)) translatedToBeWithin: flapLoc bounds.
+		[aPoint := anObject bounds right @ 
+			(anObject center y - ((nominalHeight := aViewer initialHeightToAllow) // 2)).
+		aRect := (aPoint extent: (aViewer width @ nominalHeight)) translatedToBeWithin: flapLoc bounds.
 		aViewer position: aRect topLeft.
 		aViewer visible: true.
 		flapLoc startSteppingSubmorphsOf: aViewer.

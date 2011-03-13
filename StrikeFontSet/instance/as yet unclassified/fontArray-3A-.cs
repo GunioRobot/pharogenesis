@@ -1,3 +1,3 @@
 fontArray: anArray
 
-	fontArray := anArray.
+	fontArray _ anArray.

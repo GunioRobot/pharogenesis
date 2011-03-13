@@ -6,6 +6,6 @@ formOf: char
 		^ form.
 	].
 
-	newForm := self computeForm: char.
+	newForm _ self computeForm: char.
 	self at: char put: newForm.
 	^ newForm.

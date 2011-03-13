@@ -3,12 +3,12 @@ getGraphicAtCursor
 
 	| anObject aMorph |
 	
-	anObject _ self getValueFromCostume: #valueAtCursor.
+	anObject := self getValueFromCostume: #valueAtCursor.
 	^ anObject == 0  "weird return from GraphMorph"
 		ifTrue:
 			[ScriptingSystem formAtKey: #Paint]
 		ifFalse:
-			[((aMorph _ anObject renderedMorph) isSketchMorph)
+			[((aMorph := anObject renderedMorph) isSketchMorph)
 				ifTrue:
 					[aMorph form]
 				ifFalse:

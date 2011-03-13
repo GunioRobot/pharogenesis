@@ -1,2 +1,0 @@
-isFlashButton
-	^false

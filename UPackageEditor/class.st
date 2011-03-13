@@ -1,0 +1,1 @@
+UPackageEditor class instanceVariableNames: ''

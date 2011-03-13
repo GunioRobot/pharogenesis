@@ -5,10 +5,10 @@ setLength: aLength
 
 	self hasCostumeThatIsAWorld ifTrue:[^ self].
 
-	((cost _ self costume) isLineMorph)
+	((cost := self costume) isLineMorph)
 		ifTrue:
 			[^ cost unrotatedLength: aLength].
-	lengthToUse _ cost isRenderer
+	lengthToUse := cost isRenderer
 		ifTrue:
 			[aLength / cost scaleFactor]
 		ifFalse:

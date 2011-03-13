@@ -1,3 +1,0 @@
-relatedPlayer
- 
-	^ movieClipPlayer

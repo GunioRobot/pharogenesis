@@ -10,10 +10,10 @@ activeControllerNoTerminate: aController andProcess: aProcess
 				ifTrue: [(scheduledControllers includes: aController)
 							ifTrue: [self promote: aController]
 							ifFalse: [self error: 'Old controller not scheduled']].
-			activeController _ aController.
+			activeController := aController.
 			activeController == nil
 				ifFalse: [activeController controlInitialize].
-			activeControllerProcess _ aProcess.
+			activeControllerProcess := aProcess.
 			activeControllerProcess resume]
 		ifFalse: 
 			[self error: 'New active controller process must be set from old one'] 

@@ -3,8 +3,8 @@ currentVocabulary
 
 	vocabulary "fix up old strutures"
 		ifNotNil: 
-			[vocabularySymbol _ vocabulary vocabularyName.
-			vocabulary _ nil].
+			[vocabularySymbol := vocabulary vocabularyName.
+			vocabulary := nil].
 
 	^ vocabularySymbol
 		ifNotNil:

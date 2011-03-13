@@ -3,8 +3,8 @@ at: key put: anObject
 	entry for key and set is value to anObject. Answer anObject."
 	| index element |
 	key isNil ifTrue:[^anObject].
-	index _ self findElementOrNil: key.
-	element _ array at: index.
+	index := self findElementOrNil: key.
+	element := array at: index.
 	element == nil
 		ifTrue: [self atNewIndex: index put: (WeakKeyAssociation key: key value: anObject)]
 		ifFalse: [element value: anObject].

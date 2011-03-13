@@ -2,7 +2,7 @@ offerStackDebugMenu
 	"Put up a menu offering debugging items for the stack"
 
 	| aMenu |
-	aMenu _ MenuMorph new defaultTarget: self.
+	aMenu := MenuMorph new defaultTarget: self.
 	aMenu addTitle: 'Stack debugging'.
 	Preferences noviceMode
 		ifFalse: [aMenu addStayUpItem].

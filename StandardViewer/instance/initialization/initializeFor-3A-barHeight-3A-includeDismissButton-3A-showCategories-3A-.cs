@@ -1,7 +1,7 @@
 initializeFor: aPlayer barHeight: anInteger includeDismissButton: aBoolean showCategories: categoryInfo
 	"Initialize the receiver to be a look inside the given Player.  The categoryInfo, if present, describes which categories should be present in it, in which order"
 
-	scriptedPlayer _ aPlayer.
+	scriptedPlayer := aPlayer.
 	self listDirection: #topToBottom;
 		hResizing: #shrinkWrap;
 		vResizing: #shrinkWrap;

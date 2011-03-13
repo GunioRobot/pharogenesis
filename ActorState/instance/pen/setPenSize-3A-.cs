@@ -1,2 +1,2 @@
 setPenSize: aNumber
-	penSize _ aNumber
+	penSize := aNumber

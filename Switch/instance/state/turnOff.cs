@@ -5,6 +5,6 @@ turnOff
 
 	self isOn
 		ifTrue: 
-			[on _ false.
+			[on := false.
 			self changed.
 			self doAction: offAction]

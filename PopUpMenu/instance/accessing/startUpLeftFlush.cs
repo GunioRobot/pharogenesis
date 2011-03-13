@@ -6,9 +6,9 @@ startUpLeftFlush
 
 	| saveAlignment result |
 	Smalltalk isMorphic ifFalse:
-		[saveAlignment _ PopUpMenu alignment.
+		[saveAlignment := PopUpMenu alignment.
 		PopUpMenu leftFlush].
-	[result _ self startUp] ensure:
+	[result := self startUp] ensure:
 		[Smalltalk isMorphic ifFalse:
 			[PopUpMenu alignment: saveAlignment]].
 	^ result

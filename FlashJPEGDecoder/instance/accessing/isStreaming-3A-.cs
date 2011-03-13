@@ -1,2 +1,0 @@
-isStreaming: aBool
-	streaming := aBool

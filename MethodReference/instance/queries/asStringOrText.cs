@@ -1,3 +1,0 @@
-asStringOrText
-
-	^stringVersion

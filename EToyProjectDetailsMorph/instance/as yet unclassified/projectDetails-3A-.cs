@@ -1,3 +1,3 @@
 projectDetails: aDictionary
 
-	projectDetails _ aDictionary.
+	projectDetails := aDictionary.

@@ -1,0 +1,1 @@
+XMLDOMParser class instanceVariableNames: ''

@@ -2,9 +2,9 @@ new
 
 	| listMorph model |
 
-	model _ EToyHierarchicalTextGizmo new 
+	model := EToyHierarchicalTextGizmo new 
 		topNode: EToyTextNode newNode.
-	(listMorph _ EToyHierarchicalTextMorph 
+	(listMorph := EToyHierarchicalTextMorph 
 		on: model
 		list: #getList
 		selected: #getCurrentSelection

@@ -2,8 +2,8 @@ tilesForQuery: expressionString label: aLabel
 	"Answer scripting tiles that represent the query,"
 
 	| aPhrase aTile |
-	aPhrase _ SystemQueryPhrase new.
-	aTile _ BooleanTile new.
+	aPhrase := SystemQueryPhrase new.
+	aTile := BooleanTile new.
 	aTile setExpression: expressionString  label: aLabel.
 	aPhrase addMorph: aTile.
 	^ aPhrase

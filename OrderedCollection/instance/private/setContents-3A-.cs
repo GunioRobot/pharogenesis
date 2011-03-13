@@ -1,4 +1,4 @@
 setContents: anArray
-	array _ anArray.
-	firstIndex _ 1.
-	lastIndex _ array size.
+	array := anArray.
+	firstIndex := 1.
+	lastIndex := array size.

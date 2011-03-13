@@ -6,8 +6,8 @@ booleanPhraseFromPhrase: phrase
 	phrase isBoolean ifTrue: [^ phrase].
 	((scriptedPlayer respondsTo: #costume) 
 		and:[scriptedPlayer costume isInWorld not]) ifTrue: [^ Array new].
-	((retrieverTile _ phrase submorphs last) isKindOf: TileMorph) ifFalse: [^ phrase].
-	retrieverOp _ retrieverTile operatorOrExpression.
+	((retrieverTile := phrase submorphs last) isKindOf: TileMorph) ifFalse: [^ phrase].
+	retrieverOp := retrieverTile operatorOrExpression.
 
 	(Vocabulary vocabularyForType: phrase resultType)
 		affordsCoercionToBoolean ifTrue: [

@@ -2,7 +2,7 @@ revealPlayerIn: aWorld
 	"Reveal the receiver if at all possible in the world; once it's visible, flash its image for a bit, and leave it with its halo showing"
 
 	| aMorph |
-	(aMorph _ self costume) isInWorld ifTrue:
+	(aMorph := self costume) isInWorld ifTrue:
 		[aMorph goHome.
 		self indicateLocationOnScreen.
 		aMorph addHalo.

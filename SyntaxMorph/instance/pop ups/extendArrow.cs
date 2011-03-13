@@ -5,6 +5,6 @@ extendArrow
 	
 	self isNoun ifFalse: [^ nil].
 	self isDeclaration ifTrue: [^ nil].
-	patch _ (ImageMorph new image: (TileMorph classPool at: #SuffixPicture)).
+	patch := (ImageMorph new image: (TileMorph classPool at: #SuffixPicture)).
 	patch on: #mouseDown send: #extend to: self.
 	^ patch

@@ -6,9 +6,9 @@ typeForSlotWithGetter: aGetter
 	(#(+ * - /) includes: aGetter) ifTrue: [^ #Player].  "weird vector stuff"
   	"Annoying special cases"
 
-	inherentSelector _ Utilities inherentSelectorForGetter: aGetter.
+	inherentSelector := Utilities inherentSelectorForGetter: aGetter.
 	(self slotInfo includesKey: inherentSelector) ifTrue: [^ (self slotInfoAt: inherentSelector) type].
-	getter _ (aGetter beginsWith: 'get')
+	getter := (aGetter beginsWith: 'get')
 		ifTrue:
 			[aGetter]
 		ifFalse:

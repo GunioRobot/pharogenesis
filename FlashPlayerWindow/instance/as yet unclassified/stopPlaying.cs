@@ -1,2 +1,0 @@
-stopPlaying
-	model stopPlaying

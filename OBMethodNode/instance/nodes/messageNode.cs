@@ -1,2 +1,0 @@
-messageNode
-	^ OBMessageNode fromMethodNode: self

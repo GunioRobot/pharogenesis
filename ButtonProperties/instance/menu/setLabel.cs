@@ -1,7 +1,7 @@
 setLabel
 
 	| newLabel |
-	newLabel _ FillInTheBlank
+	newLabel := FillInTheBlank
 		request:
 'Please a new label for this button'
 		initialAnswer: self label.

@@ -1,9 +1,9 @@
 createStandardPlayer
 	| aMorph |
 
-	aMorph _ ImageMorph new image: (ScriptingSystem formAtKey: 'standardPlayer').
+	aMorph := ImageMorph new image: (ScriptingSystem formAtKey: 'standardPlayer').
 	associatedMorph addMorphFront: aMorph.
-	(standardPlayer _ aMorph assuredPlayer) renameTo: 'dot' translated.
+	(standardPlayer := aMorph assuredPlayer) renameTo: 'dot' translated.
 	aMorph setBalloonText: '...'.
 	self positionStandardPlayer.
 	^ standardPlayer

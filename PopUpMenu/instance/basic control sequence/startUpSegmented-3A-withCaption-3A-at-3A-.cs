@@ -9,17 +9,17 @@ startUpSegmented: segmentHeight withCaption: captionOrNil at: location
 	| nLines nLinesPer allLabels from to subset subLines index |
 	frame ifNil: [self computeForm].
 	allLabels := labelString findTokens: Character cr asString.
-	nLines _ allLabels size.
-	lineArray ifNil: [lineArray _ Array new].
-	nLinesPer _ segmentHeight // marker height - 3.
+	nLines := allLabels size.
+	lineArray ifNil: [lineArray := Array new].
+	nLinesPer := segmentHeight // marker height - 3.
 	from := 1.
 	[ true ] whileTrue:
 		[to := (from + nLinesPer) min: nLines.
 		subset := allLabels copyFrom: from to: to.
 		subset add: (to = nLines ifTrue: ['start over...' translated] ifFalse: ['more...' translated])
 			before: subset first.
-		subLines _ lineArray select: [:n | n >= from] thenCollect: [:n | n - (from-1) + 1].
-		subLines _ (Array with: 1) , subLines.
+		subLines := lineArray select: [:n | n >= from] thenCollect: [:n | n - (from-1) + 1].
+		subLines := (Array with: 1) , subLines.
 		index := (PopUpMenu labels: subset asStringWithCr lines: subLines)
 					startUpWithCaption: captionOrNil at: location.
 		index = 1

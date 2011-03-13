@@ -1,7 +1,7 @@
 inAColumn: aCollectionOfMorphs
 
 	| col |
-	col _ AlignmentMorphBob1 newColumn
+	col := AlignmentMorphBob1 newColumn
 		color: Color transparent;
 		vResizing: #shrinkWrap;
 		layoutInset: 1;

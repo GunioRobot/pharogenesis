@@ -2,7 +2,7 @@ getFullInfoFor: aProject ifValid: aBlock expandedFormat: expandedFormat
 
 	| me |
 
-	(me _ self basicNew)
+	(me := self basicNew)
 		expandedFormat: expandedFormat;
 		project: aProject
 		actionBlock: [ :x | 

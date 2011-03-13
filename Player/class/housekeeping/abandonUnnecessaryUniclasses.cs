@@ -1,17 +1,17 @@
 abandonUnnecessaryUniclasses
 	"Player abandonUnnecessaryUniclasses"
 	| oldCount oldFree newFree newCount report |
-	oldCount _ self subclasses size - 1.
-	oldFree _ Smalltalk garbageCollect.
+	oldCount := self subclasses size - 1.
+	oldFree := Smalltalk garbageCollect.
 	self allSubInstances do:
 		[:aPlayer | aPlayer revertToUnscriptedPlayerIfAppropriate.  
 		"encourage last one to get garbage-collected"
-		aPlayer _ nil ].
+		aPlayer := nil ].
 
 	ScriptingSystem spaceReclaimed.
-	newFree _ Smalltalk garbageCollect.
-	newCount _ self subclasses size - 1.
-	report _ 'Before: ', oldCount printString, ' uniclasses, ', oldFree
+	newFree := Smalltalk garbageCollect.
+	newCount := self subclasses size - 1.
+	report := 'Before: ', oldCount printString, ' uniclasses, ', oldFree
 printString, ' bytes free
 After:  ', newCount printString, ' uniclasses, ', newFree printString, '
 bytes free'.

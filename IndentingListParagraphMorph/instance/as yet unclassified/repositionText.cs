@@ -1,8 +1,8 @@
 repositionText
 
 	| sRect tm |
-	sRect _ self textMorphBounds.
-	(tm _ complexContents withoutListWrapper)
+	sRect := self textMorphBounds.
+	(tm := complexContents withoutListWrapper)
 		"clipToOwner: isExpanded not;"
 		position: sRect origin;
 		width: sRect width.

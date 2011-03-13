@@ -3,7 +3,7 @@ typeForSlot: aSlotName
 
 	| getter |
 	(self slotInfo includesKey: aSlotName) ifTrue: [^ (self slotInfoAt: aSlotName) type].
-	getter _ (aSlotName beginsWith: 'get')
+	getter := (aSlotName beginsWith: 'get')
 		ifTrue:
 			[aSlotName]
 		ifFalse:

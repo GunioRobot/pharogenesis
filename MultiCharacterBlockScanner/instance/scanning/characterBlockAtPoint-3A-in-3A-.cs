@@ -4,5 +4,5 @@ characterBlockAtPoint: aPoint in: aParagraph
 	to the text's destination form rectangle and the composition rectangle."
 
 	self initializeFromParagraph: aParagraph clippedBy: aParagraph clippingRectangle.
-	characterPoint := aPoint.
+	characterPoint _ aPoint.
 	^self buildCharacterBlockIn: aParagraph

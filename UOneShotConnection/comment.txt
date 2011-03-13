@@ -1,0 +1,3 @@
+A fake StringSocket used to integrate a UUniverseServer with an HTTP server.
+
+A OneShotConnection has exactly one input message and only accepts one output message.  It puts the supplied output message onto a SharedQueue and then disconnects itself.

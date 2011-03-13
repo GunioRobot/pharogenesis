@@ -4,30 +4,30 @@ findText: wants
 
 	"Later sort wants so longest key is first"
 	| allText good thisWord here fromHereOn startToHere oldContainer oldIndex otherKeys strings |
-	allText _ self valueOfProperty: #allText ifAbsent: [#()].
-	here _ self privateCards identityIndexOf: self currentCard ifAbsent: [1].
-	fromHereOn _ here+1 to: self privateCards size.
-	startToHere _ 1 to: here.		"repeat this page"
+	allText := self valueOfProperty: #allText ifAbsent: [#()].
+	here := self privateCards identityIndexOf: self currentCard ifAbsent: [1].
+	fromHereOn := here+1 to: self privateCards size.
+	startToHere := 1 to: here.		"repeat this page"
 	(self valueOfProperty: #searchKey ifAbsent: [#()]) = wants ifTrue: [
 		"does page have all the other keys?  No highlight if found!"
-		otherKeys _ wants allButFirst.
-		strings _ allText at: here.
-		good _ true.
+		otherKeys := wants allButFirst.
+		strings := allText at: here.
+		good := true.
 		otherKeys do: [:searchString | "each key"
-			good ifTrue: [thisWord _ false.
+			good ifTrue: [thisWord := false.
 				strings do: [:longString |
 					(longString findWordStart: searchString startingAt: 1) > 0 ifTrue: [
-							thisWord _ true]].
-				good _ thisWord]].
+							thisWord := true]].
+				good := thisWord]].
 		good ifTrue: ["all are on this page.  Look in rest for string again."
-			oldContainer _ self valueOfProperty: #searchContainer.
-			oldIndex _ self valueOfProperty: #searchOffset.
+			oldContainer := self valueOfProperty: #searchContainer.
+			oldIndex := self valueOfProperty: #searchOffset.
 			(self findText: (OrderedCollection with: wants first) inStrings: strings	
 				startAt: oldIndex+1 container: oldContainer 
 				cardNum: here) ifTrue: [
 					self setProperty: #searchKey toValue: wants.
 					^ true]]]
-		ifFalse: [fromHereOn _ here to: self privateCards size].	"do search this page"
+		ifFalse: [fromHereOn := here to: self privateCards size].	"do search this page"
 	"other pages"
 	fromHereOn do: [:cardNum |
 		(self findText: wants inStrings: (allText at: cardNum) startAt: 1 container: nil 

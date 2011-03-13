@@ -1,8 +1,8 @@
 senders
 
 	| m o |
-	m := SystemNavigation default allCallsOn: #translated.
-	m := m collect: [:e |
+	m _ SystemNavigation default allCallsOn: #translated.
+	m _ m collect: [:e |
 		e classIsMeta ifTrue: [
 			(Smalltalk at: e classSymbol) class decompile: e methodSymbol.
 		] ifFalse: [
@@ -10,6 +10,6 @@ senders
 		]
 	].
 
-	o := SortedCollection new.
+	o _ SortedCollection new.
 	m do: [:e | self searchMethodNode: e addTo: o].
 	^ o.

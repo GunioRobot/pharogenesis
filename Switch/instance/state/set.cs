@@ -5,5 +5,5 @@ set
 
 	self isOff
 		ifTrue: 
-			[on _ true.
+			[on := true.
 			self changed]

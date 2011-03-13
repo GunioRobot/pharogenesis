@@ -10,7 +10,7 @@ showScrollBar
 		ifTrue:
 			["Bring the pane to the front so that it is fully visible"
 			"self comeToFront. -- thanks but no thanks"
-			(scriptor _ self ownerThatIsA: ScriptEditorMorph)
+			(scriptor := self ownerThatIsA: ScriptEditorMorph)
 				ifNotNil:
 					[scriptor comeToFront]]
 		ifFalse: [self resetExtent]

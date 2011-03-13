@@ -3,7 +3,7 @@ withText: aText style: aTextStyle compositionRectangle: compRect clippingRectang
 	aTextStyle, composition rectangle is compRect and the clipping rectangle 
 	is clipRect."
 	| para |
-	para _ super new.
+	para := super new.
 	para setWithText: aText
 		style: aTextStyle
 		compositionRectangle: compRect

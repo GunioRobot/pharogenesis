@@ -4,6 +4,6 @@ initialize
 	""
 	self vResizing: #shrinkWrap;
 	 hResizing: #shrinkWrap.
-	resultQueue _ SharedQueue new.
-	fields _ Dictionary new.
+	resultQueue := SharedQueue new.
+	fields := Dictionary new.
 	self useRoundedCorners

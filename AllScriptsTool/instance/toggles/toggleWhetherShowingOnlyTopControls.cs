@@ -2,8 +2,8 @@ toggleWhetherShowingOnlyTopControls
 	"Toggle whether the receiver is showing only the stop/step/go line or the full whammy"
 
 	| aCenter |
-	showingOnlyTopControls _ self showingOnlyTopControls not.
-	aCenter _ self center x.
+	showingOnlyTopControls := self showingOnlyTopControls not.
+	aCenter := self center x.
 	self showingOnlyTopControls
 		ifTrue:
 			[self removeAllButFirstSubmorph]

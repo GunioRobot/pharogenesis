@@ -1,2 +1,0 @@
-ne: anInteger
-	ne := anInteger

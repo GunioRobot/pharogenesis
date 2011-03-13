@@ -1,6 +1,6 @@
 initialize
 
 	super initialize.
-	type _ #Patch.
-	operatorOrExpression _ #getUphillIn:.
+	type := #Patch.
+	operatorOrExpression := #getUphillIn:.
 	self addPatchTile.

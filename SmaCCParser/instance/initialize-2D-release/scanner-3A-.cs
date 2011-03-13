@@ -1,2 +1,0 @@
-scanner: aScanner 
-	scanner := aScanner

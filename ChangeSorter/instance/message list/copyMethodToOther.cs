@@ -5,7 +5,7 @@ copyMethodToOther
 	currentSelector ifNotNil:
 		[other := (parent other: self) changeSet.
 		cls := self selectedClassOrMetaClass.
-		sel := currentSelector asSymbol.
+		sel := self selectedMessageName.
 
 		other absorbMethod: sel class: cls from: myChangeSet.
 		(parent other: self) showChangeSet: other]

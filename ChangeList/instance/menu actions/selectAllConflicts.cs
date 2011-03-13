@@ -8,5 +8,5 @@ selectAllConflicts
 			listSelections at: i put:
 				(aChange type = #method
 				and: [(aClass := aChange methodClass) notNil
-				and: [ChangeSorter doesAnyChangeSetHaveClass: aClass andSelector:  aChange methodSelector]])]].
+				and: [ChangesOrganizer doesAnyChangeSetHaveClass: aClass andSelector:  aChange methodSelector]])]].
 	self changed: #allSelections

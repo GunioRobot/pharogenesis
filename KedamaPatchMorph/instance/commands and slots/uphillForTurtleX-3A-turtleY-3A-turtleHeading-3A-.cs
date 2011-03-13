@@ -3,6 +3,6 @@ uphillForTurtleX: tX turtleY: tY turtleHeading: tH
 
 	| ret |
 	form bits class == ByteArray ifTrue: [form unhibernate].
-	ret _ self primUpHillX: tX y: tY heading: tH bits: form bits width: form width height: form height sniffRange: sniffRange.
+	ret := self primUpHillX: tX y: tY heading: tH bits: form bits width: form width height: form height sniffRange: sniffRange.
 	ret ifNotNil: [^ ret].
 	^ self basicUphillForTurtleX: tX turtleY: tY turtleHeading: tH.

@@ -1,2 +1,0 @@
-useTimeSync: aBool
-	useTimeSync := aBool

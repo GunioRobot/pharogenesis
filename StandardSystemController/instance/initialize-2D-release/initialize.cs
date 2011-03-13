@@ -1,3 +1,3 @@
 initialize
 	super initialize.
-	status _ #inactive
+	status := #inactive

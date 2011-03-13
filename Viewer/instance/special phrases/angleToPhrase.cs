@@ -8,6 +8,6 @@ angleToPhrase
 				argType: #Color.	"temp dummy"
 	(outerPhrase submorphs second) delete.	"operator"
 	(outerPhrase submorphs second) delete.	"color"
-	getTile _ KedamaAngleToTile new.
+	getTile := KedamaAngleToTile new.
 	outerPhrase addMorphBack: getTile.
 	^outerPhrase

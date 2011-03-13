@@ -2,8 +2,8 @@ browseAllScriptsTextually
 	"Open a method-list browser on all the scripts in the project"
 
 	| aList aMethodList |
-	(aList _ self uniclassesAndCounts) size == 0 ifTrue: [^ self inform: 'there are no scripted players'].
-	aMethodList _ OrderedCollection new.
+	(aList := self uniclassesAndCounts) size == 0 ifTrue: [^ self inform: 'there are no scripted players'].
+	aMethodList := OrderedCollection new.
 	aList do:
 		[:aPair | aPair first addMethodReferencesTo: aMethodList].
 	aMethodList size > 0 ifFalse: [^ self inform: 'there are no scripts in this project!'].

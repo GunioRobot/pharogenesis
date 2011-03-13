@@ -1,5 +1,5 @@
 setAssignmentRoot: opSymbol type: opType rcvrType: rcvrType argType: argType
-	resultType _ opType.
+	resultType := opType.
 	self color: (ScriptingSystem colorForType: opType).
 	self removeAllMorphs.
 	self addMorph: (TilePadMorph new setType: rcvrType).

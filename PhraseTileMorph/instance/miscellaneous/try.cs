@@ -4,7 +4,7 @@ try
 	| aPlayer |
 	(userScriptSelector notNil and: [userScriptSelector numArgs = 0])
 		ifTrue:
-			[aPlayer _ self objectViewed player.
+			[aPlayer := self objectViewed player.
 			aPlayer triggerScript: userScriptSelector]
 		ifFalse:
 			[Compiler evaluate:

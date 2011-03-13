@@ -1,7 +1,7 @@
 setMenuFontTo: aFont
 	"Set the menu font as indicated"
 
-	MenuStyle _ TextStyle fontArray: { aFont }.
+	MenuStyle := TextStyle fontArray: { aFont }.
 	MenuStyle 
 		gridForFont: 1 withLead: 0;
 		centered.

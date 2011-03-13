@@ -1,3 +1,3 @@
 initialize
 
-	attributes _ KedamaAttributeDictionary new initialize.
+	attributes := KedamaAttributeDictionary new initialize.

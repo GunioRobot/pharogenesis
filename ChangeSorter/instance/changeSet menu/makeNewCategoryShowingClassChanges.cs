@@ -6,11 +6,11 @@ makeNewCategoryShowingClassChanges
 	clsName := UIManager default request: 'Which class?' initialAnswer: clsName.
 	clsName isEmptyOrNil ifTrue: [^ self].
 	catName := ('Changes to ', clsName) asSymbol.
-	(ChangeSetCategories includesKey: catName) ifTrue:
+	(self changeSetCategories includesKey: catName) ifTrue:
 		[^ self inform: 'Sorry, there is already a category of that name'].
 
 	aCategory := ChangeSetCategoryWithParameters new categoryName: catName.
 	aCategory membershipSelector: #changeSet:containsClass: ; parameters: { clsName }.
-	ChangeSetCategories elementAt: catName put: aCategory.
+	self changeSetCategories elementAt: catName put: aCategory.
 	aCategory reconstituteList.
 	self showChangeSetCategory: aCategory

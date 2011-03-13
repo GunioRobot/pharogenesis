@@ -1,2 +1,0 @@
-buffers: anArray
-	buffers := anArray

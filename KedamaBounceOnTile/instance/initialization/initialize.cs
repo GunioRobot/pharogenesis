@@ -1,6 +1,6 @@
 initialize
 
 	super initialize.
-	type _ #Player.
-	operatorOrExpression _ #bounceOn:.
+	type := #Player.
+	operatorOrExpression := #bounceOn:.
 	self addPlayerTile.

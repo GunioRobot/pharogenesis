@@ -4,7 +4,7 @@ after: target ifAbsent: exceptionBlock
 	no elements after it."
 
 	| index |
-	index _ self indexOf: target.
+	index := self indexOf: target.
 	^ (index == 0 or: [index = self size])
 		ifTrue: [exceptionBlock value]
 		ifFalse: [self at: index + 1]

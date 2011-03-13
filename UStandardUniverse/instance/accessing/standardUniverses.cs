@@ -1,0 +1,2 @@
+standardUniverses
+	^{self}

@@ -1,1 +1,0 @@
-recordPlaceObject: objectIndex name: aString depth: depth matrix: matrix colorMatrix: colorMatrix

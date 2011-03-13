@@ -7,6 +7,6 @@ setStopConditions
 "
 	alignment = Justified ifTrue: [
 		stopConditions == DefaultStopConditions 
-			ifTrue:[stopConditions := stopConditions copy].
+			ifTrue:[stopConditions _ stopConditions copy].
 		stopConditions at: Space asciiValue + 1 put: #paddedSpace]
 "

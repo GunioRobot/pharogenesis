@@ -1,2 +1,0 @@
-duration: aNumber
-	duration := aNumber

@@ -27,7 +27,7 @@ rebuild
 	].
 	self addARow: {self space }.
 
-	bottomButtons _ self expandedFormat
+	bottomButtons := self expandedFormat
 		ifTrue: [ { self okButton. self cancelButton } ]
 		ifFalse: [ { self okButton. self expandButton. self cancelButton } ].
 	self addARow: bottomButtons.

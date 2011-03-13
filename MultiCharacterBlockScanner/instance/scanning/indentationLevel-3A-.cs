@@ -1,7 +1,7 @@
 indentationLevel: anInteger
 	super indentationLevel: anInteger.
-	nextLeftMargin := leftMargin.
+	nextLeftMargin _ leftMargin.
 	indentationLevel timesRepeat: [
-		nextLeftMargin := textStyle nextTabXFrom: nextLeftMargin
+		nextLeftMargin _ textStyle nextTabXFrom: nextLeftMargin
 					leftMargin: leftMargin
 					rightMargin: rightMargin]

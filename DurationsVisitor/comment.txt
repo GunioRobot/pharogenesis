@@ -1,1 +1,0 @@
-This is an implementation of the Klatt rule system as described in chapter 9 of "From text to speech: The MITalk system", Allen, Hunnicutt and Klatt.

@@ -1,2 +1,0 @@
-entryType
-	^ self viewerRow entryType

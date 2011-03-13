@@ -1,6 +1,6 @@
 goButton
 	| aButton |
-	aButton _  ThreePhaseButtonMorph new.
+	aButton :=  ThreePhaseButtonMorph new.
 	aButton image:  (ScriptingSystem formAtKey: 'GoPicOn');
 			offImage: (ScriptingSystem formAtKey: 'GoPic');
 			pressedImage: (ScriptingSystem formAtKey: 'GoPicOn');

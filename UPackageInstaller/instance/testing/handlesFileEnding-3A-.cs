@@ -1,0 +1,2 @@
+handlesFileEnding: anEnding
+	^false

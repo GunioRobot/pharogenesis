@@ -4,7 +4,7 @@ match: keys fields: docks
 
 	keys withIndexDo: [:kk :ind |
 		kk ifNotNil: [
-			longString _ (self perform: (docks at: ind) playerGetSelector) string.
+			longString := (self perform: (docks at: ind) playerGetSelector) string.
 			kk do: [:aKey |
 				((longString findString: aKey startingAt: 1 caseSensitive: false) > 0)
 					ifFalse: [^ false]]]]. 	"all keys must match"

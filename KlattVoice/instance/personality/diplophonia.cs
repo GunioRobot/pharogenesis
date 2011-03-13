@@ -1,2 +1,0 @@
-diplophonia
-	^ self patternFrame diplophonia

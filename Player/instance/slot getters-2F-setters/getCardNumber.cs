@@ -2,4 +2,4 @@ getCardNumber
 	"Answer the current card number"
 
 	| aStack |
-	^ (aStack _ self stackEmbodied) cardNumberOf: aStack currentCard
+	^ (aStack := self stackEmbodied) cardNumberOf: aStack currentCard

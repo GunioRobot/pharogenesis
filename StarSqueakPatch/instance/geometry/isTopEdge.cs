@@ -1,3 +1,0 @@
-isTopEdge
-
-	^ y = 0

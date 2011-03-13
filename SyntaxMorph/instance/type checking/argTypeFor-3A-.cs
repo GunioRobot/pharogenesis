@@ -4,6 +4,6 @@ argTypeFor: aSelector
 	| itsInterface |
 	aSelector numArgs = 0 
 		ifTrue: [self inform: aSelector, ' does not take an argument'. ^ #error "7"].
-	itsInterface _ self currentVocabulary methodInterfaceAt: aSelector ifAbsent:
+	itsInterface := self currentVocabulary methodInterfaceAt: aSelector ifAbsent:
 		[^ #unknown].
 	^ itsInterface typeForArgumentNumber: 1

@@ -1,7 +1,7 @@
 initialize
 
-	FromCharTable _ Array new: 256.	"nils"
-	ToCharTable _ Array new: 64.
+	FromCharTable := Array new: 256.	"nils"
+	ToCharTable := Array new: 64.
 	($A asciiValue to: $Z asciiValue) doWithIndex: [:val :ind | 
 		FromCharTable at: val+1 put: ind-1.
 		ToCharTable at: ind put: val asCharacter].

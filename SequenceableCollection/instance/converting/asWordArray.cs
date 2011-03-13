@@ -3,6 +3,6 @@ asWordArray
 	the same order."
 
 	| wordArray |
-	wordArray _ WordArray new: self size.
+	wordArray := WordArray new: self size.
 	1 to: self size do:[:i| wordArray at: i put: (self at: i)].
 	^wordArray

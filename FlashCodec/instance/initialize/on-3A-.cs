@@ -1,2 +1,0 @@
-on: aStream
-	stream := aStream

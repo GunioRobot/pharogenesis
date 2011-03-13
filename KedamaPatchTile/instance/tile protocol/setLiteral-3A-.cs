@@ -1,5 +1,5 @@
 setLiteral: anObject
 	"Set the receiver's literal to be anObject. No readout morph here."
 
-	type _ #literal.
+	type := #literal.
 	self setLiteralInitially: anObject.

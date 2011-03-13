@@ -1,17 +1,17 @@
 displayStringR2L: aString on: aBitBlt from: startIndex to: stopIndex at: aPoint kern: kernDelta 
 
 	| destPoint font form encoding char charCode glyphInfo |
-	destPoint := aPoint.
-	glyphInfo := Array new: 5.
+	destPoint _ aPoint.
+	glyphInfo _ Array new: 5.
 	startIndex to: stopIndex do: [:charIndex |
-		char := aString at: charIndex.
-		encoding := char leadingChar + 1.
-		charCode := char charCode.
-		font := fontArray at: encoding.
+		char _ aString at: charIndex.
+		encoding _ char leadingChar + 1.
+		charCode _ char charCode.
+		font _ fontArray at: encoding.
 		((charCode between: font minAscii and: font maxAscii) not) ifTrue: [
-			charCode := font maxAscii].
+			charCode _ font maxAscii].
 		self glyphInfoOf: char into: glyphInfo.
-		form := glyphInfo first.
+		form _ glyphInfo first.
 			(glyphInfo size > 4 and: [glyphInfo fifth notNil and: [glyphInfo fifth ~= aBitBlt lastFont]]) ifTrue: [
 				glyphInfo fifth installOn: aBitBlt.
 			].
@@ -22,5 +22,5 @@ displayStringR2L: aString on: aBitBlt from: startIndex to: stopIndex at: aPoint 
 		aBitBlt width: form width.
 		aBitBlt height: form height.
 		aBitBlt copyBits.
-		destPoint := destPoint - (form width + kernDelta @ 0).
+		destPoint _ destPoint - (form width + kernDelta @ 0).
 	].

@@ -1,7 +1,7 @@
 setString: aString setRunsChecking: aRunArray
 	"Check runs and do the best you can to make them fit..."
 
-	string _ aString.
+	string := aString.
 	"check the runs"
 	aRunArray ifNil: [^ aString asText].
 	(aRunArray isKindOf: RunArray) ifFalse: [^ aString asText].
@@ -9,4 +9,4 @@ setString: aString setRunsChecking: aRunArray
 	(aRunArray values includes: #()) ifTrue: [^ aString asText].	"not allowed?"
 	aRunArray size = aString size ifFalse: [^ aString asText].
 	
-	runs _ aRunArray.
+	runs := aRunArray.

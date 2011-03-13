@@ -1,4 +1,4 @@
 offset: anInteger
 	"Set the receiver's offset."
 
-	offset _ anInteger
+	offset := anInteger

@@ -1,6 +1,6 @@
 deleteLine
 	| temp |
-	temp _ owner.
+	temp := owner.
 	self deletePopup.
 	self delete.
 	temp setSelection: nil.

@@ -3,7 +3,7 @@ offerPopUp
 		Literals (Integer, true),
 		Selector (beep: sound, +,-,*,//,\\, r:g:b:, setX: incX: decX: for any X,),
 		Variable (Color),
-		not AssignmentNode (_ inc dec),
+		not AssignmentNode (:= inc dec),
 	Extend arrows on each literal, variable, and message, (block that is by itself).
 	Retract arrows on each literal or variable, or message or block that is an argument.
 	Any literal can be changed by Shift-clicking and typing."
@@ -16,7 +16,7 @@ offerPopUp
 	(extend := self extendArrow) ifNotNil: [any := true].
 	(dismiss := self dismisser) ifNotNil: [any := true].
 	(duplicate := self duplicator) ifNotNil: [any := true].
-	"(assign _ self assignmentArrow) ifNotNil: [any _ true].
+	"(assign := self assignmentArrow) ifNotNil: [any := true].
 			get from menu or any other assignment"
 	submorphs last class == ColorTileMorph 
 		ifFalse: [(colorPatch := self colorPatch) ifNotNil: [any := true]].
@@ -68,7 +68,7 @@ offerPopUp
 			panel addMorphBack: dismiss.
 			dismiss align: dismiss topLeft with: (edge + 2) @ (panel top + 1)].
 	"	assign ifNotNil: [
-		edge _ panel submorphs isEmpty 
+		edge := panel submorphs isEmpty 
 			ifTrue: [panel left] 
 			ifFalse: [panel submorphs last right].
 		panel addMorphBack: assign.

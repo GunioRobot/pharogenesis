@@ -3,10 +3,10 @@ readFrom: aStream
 	"Read the raw font byte data"
 	| fontData |
 	(aStream respondsTo: #binary) ifTrue:[aStream binary].
-	fontData := aStream contents asByteArray.
+	fontData _ aStream contents asByteArray.
 
-	fonts := self parseTTCHeaderFrom: fontData.
+	fonts _ self parseTTCHeaderFrom: fontData.
 	^ ((Array with: fonts first) collect: [:offset |
-		fontDescription := TTCFontDescription new.
+		fontDescription _ TTCFontDescription new.
 		self readFrom: fontData fromOffset: offset at: EncodingTag.
 	]) at: 1.

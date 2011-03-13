@@ -1,6 +1,6 @@
 adoptVocabulary: aVocabulary
 	"Set the receiver's vocabulary"
 
-	vocabularySymbol _ aVocabulary vocabularyName.
+	vocabularySymbol := aVocabulary vocabularyName.
 	self updateWordingToMatchVocabulary.
 	super adoptVocabulary: aVocabulary

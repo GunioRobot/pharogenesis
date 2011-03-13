@@ -3,5 +3,5 @@ isEmptyTileScript: aScriptName
 
 	| aUserScript |
 	Preferences universalTiles ifTrue: [^ false].
-	aUserScript _ self class userScriptForPlayer: self selector: aScriptName.
+	aUserScript := self class userScriptForPlayer: self selector: aScriptName.
 	^ (aUserScript instantiatedScriptEditorForPlayer: self) isEmpty

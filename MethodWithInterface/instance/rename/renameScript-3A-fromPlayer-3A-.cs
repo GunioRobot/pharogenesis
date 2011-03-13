@@ -12,7 +12,7 @@ renameScript: newSelector fromPlayer: aPlayer
 		ifTrue:
 			[self argumentVariables: OrderedCollection new].
 
-	selector _ newSelector asSymbol.
+	selector := newSelector asSymbol.
 	self bringUpToDate.
 	self playerClass atSelector: selector putScript: self.
 	self allScriptActivationButtons do:

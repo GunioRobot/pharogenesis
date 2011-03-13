@@ -1,3 +1,3 @@
 setCollection: aCollection
-	array _ aCollection.
-	tally _ 0.
+	array := aCollection.
+	tally := 0.

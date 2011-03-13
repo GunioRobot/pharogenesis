@@ -4,17 +4,17 @@ example
 	piece-wise linear approximation." 
 
 	| aLinearFit aForm flag |
-	aLinearFit _ LinearFit new.
-	aForm _ Form extent: 1 @ 40.
+	aLinearFit := LinearFit new.
+	aForm := Form extent: 1 @ 40.
 	aForm  fillBlack.
 	aLinearFit form: aForm.
-	flag _ true.
+	flag := true.
 	[flag] whileTrue:
 		[Sensor waitButton.
 		 Sensor redButtonPressed
 			ifTrue: [aLinearFit add: Sensor waitButton. Sensor waitNoButton.
 					aForm displayOn: Display at: aLinearFit last]
-			ifFalse: [flag_false]].
+			ifFalse: [flag:=false]].
 	aLinearFit displayOn: Display
 
 	"LinearFit example"

@@ -10,5 +10,5 @@ newFromStream: s
 		special sound compression format.  Callers normally compress their own way."
 		^ self error: 'not implemented'].
 	s skip: -1.
-	len _ s nextInt32.
+	len := s nextInt32.
 	^ s nextWordsInto: (self basicNew: len)

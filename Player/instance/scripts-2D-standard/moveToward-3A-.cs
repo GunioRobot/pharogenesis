@@ -3,7 +3,7 @@ moveToward: aPlayer
 
 	| myPosition itsPosition |
 	((aPlayer ~~ self) and: [(self overlaps: aPlayer) not]) ifTrue:
-		[((myPosition _ self costume referencePosition) = (itsPosition _ aPlayer costume referencePosition))
+		[((myPosition := self costume referencePosition) = (itsPosition := aPlayer costume referencePosition))
 			ifFalse:
 				[self setHeading: (myPosition bearingToPoint: itsPosition).
 				self forward: self getSpeed]]

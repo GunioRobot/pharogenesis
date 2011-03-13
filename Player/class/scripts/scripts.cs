@@ -3,7 +3,7 @@ scripts
 
 	scripts
 		ifNil:
-			[scripts _ IdentityDictionary new]
+			[scripts := IdentityDictionary new]
 		ifNotNil:
 			[self cleanseScriptsOfNilKeys].
 	^ scripts

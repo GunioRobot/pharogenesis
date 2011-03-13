@@ -1,5 +1,5 @@
 runIfClosing
 	| result |
-	(result _ status == #closing) ifTrue:
+	(result := status == #closing) ifTrue:
 		[player triggerScript: selector].
 	^ result

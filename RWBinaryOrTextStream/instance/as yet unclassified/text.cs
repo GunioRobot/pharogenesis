@@ -1,2 +1,2 @@
 text
-	isBinary _ false
+	isBinary := false

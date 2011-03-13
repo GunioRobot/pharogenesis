@@ -1,4 +1,4 @@
 resetStandardPartsBin
 	"ScriptingSystem resetStandardPartsBin"
 
-	StandardPartsBin _ nil
+	StandardPartsBin := nil

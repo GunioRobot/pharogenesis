@@ -1,7 +1,7 @@
 translateToWordySelfVariant: aString
 
 	| lc |
-	lc _ aString asLowercase.
+	lc := aString asLowercase.
 	lc = 'me' ifTrue: [^#selfWrittenAsMe].
 	lc = 'my' ifTrue: [^#selfWrittenAsMy].
 	lc = 'i''ll' ifTrue: [^#selfWrittenAsIll].

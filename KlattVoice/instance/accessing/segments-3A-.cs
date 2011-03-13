@@ -1,2 +1,0 @@
-segments: aKlattSegmentSet
-	segments := aKlattSegmentSet

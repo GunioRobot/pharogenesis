@@ -1,2 +1,0 @@
-firstFrame: frame
-	firstFrame := frame.

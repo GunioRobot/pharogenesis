@@ -4,13 +4,13 @@ http://groups.yahoo.com/group/squeak/message/40560"
 
 	| envelope trueNeighbor trueGoal trueSelf itsPlayer |
 	aPrototypicalPlayer ifNil: [^ false].
-	envelope _ costume owner ifNil: [^ false].
-	trueSelf _ costume renderedMorph.
-	trueGoal _ aPrototypicalPlayer costume renderedMorph.
+	envelope := costume owner ifNil: [^ false].
+	trueSelf := costume renderedMorph.
+	trueGoal := aPrototypicalPlayer costume renderedMorph.
 	envelope submorphs do: [:each |
-		trueNeighbor _ each renderedMorph.
+		trueNeighbor := each renderedMorph.
 		(trueNeighbor == trueGoal or: [trueNeighbor == trueSelf]) ifFalse:
-			[(itsPlayer _ each player) ifNotNil:
+			[(itsPlayer := each player) ifNotNil:
 				[(itsPlayer overlaps: self) ifTrue:
 					[(trueGoal appearsToBeSameCostumeAs: trueNeighbor) ifTrue: [^ true]]]]].
 	^ false

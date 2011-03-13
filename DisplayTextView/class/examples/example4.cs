@@ -1,7 +1,7 @@
 example4	
 	"Create four passive views of some text on the screen with fat borders."
 	| view |
-	view_ self new model: 'this is a test of one line
+	view:= self new model: 'this is a test of one line
 and the second line' asDisplayText.
 	view translateBy: 100@100.	
 	view borderWidth: 5.

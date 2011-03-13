@@ -1,0 +1,1 @@
+XMLWriter class instanceVariableNames: ''

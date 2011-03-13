@@ -1,0 +1,2 @@
+isConnected
+	^hasBeenWritten not

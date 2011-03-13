@@ -2,9 +2,9 @@ makeSetterForColorComponent: selectorAndTypePair componentName: componentName ev
 
 	| argType m argTile selfTile argValue actualGetter |
 	argType := selectorAndTypePair second.
-	componentName = #red ifTrue: [actualGetter _ #setRedComponentIn:].
-	componentName = #green ifTrue: [actualGetter _ #setGreenComponentIn:].
-	componentName = #blue ifTrue: [actualGetter _ #setBlueComponentIn:].
+	componentName = #red ifTrue: [actualGetter := #setRedComponentIn:].
+	componentName = #green ifTrue: [actualGetter := #setGreenComponentIn:].
+	componentName = #blue ifTrue: [actualGetter := #setBlueComponentIn:].
 	m := PhraseTileMorph new 
 				setColorComponentRoot: actualGetter
 				componentName: componentName

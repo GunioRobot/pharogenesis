@@ -1,0 +1,2 @@
+defaultNamespace
+	^self scope defaultNamespace

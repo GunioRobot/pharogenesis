@@ -1,2 +1,0 @@
-transitionTable
-	^self subclassResponsibility

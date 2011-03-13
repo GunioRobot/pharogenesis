@@ -2,7 +2,7 @@ isSelectable
 	| ss |
 	"Spacer morphs enclose other morphs with the same parseNode"
 	self submorphs size > 1 ifTrue: [
-		ss _ self submorphs second.
+		ss := self submorphs second.
 		ss isSyntaxMorph ifTrue: [
 			ss parseNode == parseNode ifTrue: [
 				^ self submorphs first class ~~ Morph]]].

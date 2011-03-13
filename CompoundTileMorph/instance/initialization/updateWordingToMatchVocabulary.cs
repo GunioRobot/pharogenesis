@@ -1,6 +1,6 @@
 updateWordingToMatchVocabulary
 	| labels |
-	labels _ OrderedCollection new.
+	labels := OrderedCollection new.
 	self submorphs do: [:submorph |
 		submorph submorphs do: [:subsubmorph |
 			subsubmorph class == StringMorph ifTrue: [labels add: subsubmorph]]].

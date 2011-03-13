@@ -4,6 +4,6 @@ receiverTypeFor: aSelector
 	| itsInterface |
 
 	aSelector ifNil: [^ #unknown].
-	itsInterface _ self currentVocabulary methodInterfaceAt: aSelector ifAbsent:
+	itsInterface := self currentVocabulary methodInterfaceAt: aSelector ifAbsent:
 		[^ #unknown].
 	^ itsInterface receiverType

@@ -6,9 +6,9 @@ explanation
 			ifAbsent: ['UNK',self type printString]),' variable <',self name,'>'
 		
 
-	"LdInstType _ 1.
-	LdTempType _ 2.
-	LdLitType _ 3.
-	LdLitIndType _ 4.
+	"LdInstType := 1.
+	LdTempType := 2.
+	LdLitType := 3.
+	LdLitIndType := 4.
 "
 

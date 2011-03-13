@@ -9,7 +9,7 @@ updateStatusMorph: statusControlMorph
 			[statusControlMorph assurePauseTickControlsShow]
 		ifFalse:
 			[statusControlMorph maybeRemovePauseTickControls].
-	statusReadoutButton _ statusControlMorph submorphs last.
-	colorSelector _ ScriptingSystem statusColorSymbolFor: self status.
+	statusReadoutButton := statusControlMorph submorphs last.
+	colorSelector := ScriptingSystem statusColorSymbolFor: self status.
 	statusReadoutButton color: (Color perform: colorSelector) muchLighter.
 	statusReadoutButton label: self translatedStatus asString font: Preferences standardButtonFont

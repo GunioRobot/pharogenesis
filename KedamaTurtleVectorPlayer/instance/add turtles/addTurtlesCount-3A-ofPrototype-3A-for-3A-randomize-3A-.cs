@@ -1,12 +1,12 @@
 addTurtlesCount: count ofPrototype: prototype for: aKedamaWorld randomize: randomizeFlag
 
 	| index array defaultValue newArray oldCount |
-	oldCount _ self size.
+	oldCount := self size.
 	info associationsDo: [:assoc |
-		index _ info at: assoc key.
-		array _ arrays at: index.
-		defaultValue _ prototype at: index.
-		newArray _ array class new: count.
+		index := info at: assoc key.
+		array := arrays at: index.
+		defaultValue := prototype at: index.
+		newArray := array class new: count.
 		newArray atAllPut: defaultValue.
 		arrays at: index put: (array, newArray).
 	].
@@ -18,4 +18,4 @@ addTurtlesCount: count ofPrototype: prototype for: aKedamaWorld randomize: rando
 			self setInitialValueOf: name from: oldCount + 1 to: self size for: aKedamaWorld.
 		].
 	].
-	whoTableValid _ false.
+	whoTableValid := false.

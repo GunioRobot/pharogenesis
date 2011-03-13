@@ -2,10 +2,10 @@ openScreenViewOnForm: aForm at: formLocation magnifiedAt: magnifiedLocation scal
 	"Create and schedule a BitEditor on the form aForm. Show the magnified
 	view of aForm in a scheduled window."
 	| smallFormView bitEditor savedForm r |
-	smallFormView _ FormView new model: aForm.
+	smallFormView := FormView new model: aForm.
 	smallFormView align: smallFormView viewport topLeft with: formLocation.
-	bitEditor _ self bitEdit: aForm at: magnifiedLocation scale: scaleFactor remoteView: smallFormView.
-	savedForm _ Form fromDisplay: (r _ bitEditor displayBox expandBy: (0@23 corner: 0@0)).
+	bitEditor := self bitEdit: aForm at: magnifiedLocation scale: scaleFactor remoteView: smallFormView.
+	savedForm := Form fromDisplay: (r := bitEditor displayBox expandBy: (0@23 corner: 0@0)).
 	bitEditor controller startUp.
 	savedForm displayOn: Display at: r topLeft.
 	bitEditor release.

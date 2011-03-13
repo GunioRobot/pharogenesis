@@ -10,4 +10,4 @@ removeIndex: removedIndex
 		with: array 
 		startingAt: removedIndex+1.
 	array at: lastIndex put: nil.
-	lastIndex _ lastIndex - 1.
+	lastIndex := lastIndex - 1.

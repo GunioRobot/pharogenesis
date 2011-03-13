@@ -4,7 +4,7 @@ invokeOn: targetObject
 	nil if no item is selected."
 
 	| sel |
-	sel _ self startUp.
+	sel := self startUp.
 	sel = nil ifFalse: [^ targetObject perform: sel].
 	^ nil
 

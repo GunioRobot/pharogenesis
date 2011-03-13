@@ -2,7 +2,7 @@ setGraphic: aForm
 	"Set the receiver's graphic as indicated"
 
 	| aMorph |
-	^ ((aMorph _ costume renderedMorph) isSketchMorph)
+	^ ((aMorph := costume renderedMorph) isSketchMorph)
 		ifTrue:
 			[aMorph form: aForm]
 		ifFalse:

@@ -1,3 +1,3 @@
 index: i
 
-	index _ i.
+	index := i.

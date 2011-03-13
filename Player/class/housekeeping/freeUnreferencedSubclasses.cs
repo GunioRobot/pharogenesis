@@ -13,8 +13,8 @@ classes, and add back to Smalltalk."
 	"Player freeUnreferencedSubclasses"
 
 	| oldFree candidatesForRemoval class |
-	oldFree _ Smalltalk garbageCollect.
-	candidatesForRemoval _ self subclasses asOrderedCollection select:
+	oldFree := Smalltalk garbageCollect.
+	candidatesForRemoval := self subclasses asOrderedCollection select:
 		[:aClass | (aClass name beginsWith: 'Player') and: [aClass name
 endsWithDigit]].
 
@@ -23,7 +23,7 @@ endsWithDigit]].
 		[:c | self removeSubclass: c.  "Break downward subclass pointers."
 		Smalltalk removeKey: c name ifAbsent: [].  "Break binding of global
 name"].
-	candidatesForRemoval _ nil.
+	candidatesForRemoval := nil.
 	Smalltalk garbageCollect.  "Now this should reclaim all unused
 subclasses"
 
@@ -33,7 +33,7 @@ subclasses"
 			[:assn | (assn key isSymbol)
 					and: [(assn key beginsWith: 'Player')
 					and: [assn key endsWithDigit]]])
-		do: [:assn | class _ assn value.
+		do: [:assn | class := assn value.
 			(class isKindOf: self class) ifTrue:
 				[self addSubclass: class.
 				Smalltalk add: assn]].
@@ -42,7 +42,7 @@ associations."
 	(Metaclass allInstances select:
 			[:m | (m soleInstance name beginsWith: 'Player')
 					and: [m soleInstance name endsWithDigit]])
-		do: [:m | class _ m soleInstance.
+		do: [:m | class := m soleInstance.
 			((class isKindOf: self class) and: [(Smalltalk includesKey: class
 name) not]) ifTrue:
 				[self addSubclass: class.

@@ -1,1 +1,0 @@
-My instances are voices that play PhoneticEvents using a KlattSynthesizer and KlattSegments. There are many controls to change voice personalities, such as vocal tract length, breathiness, jitter, shimmer and glottal pulse shape.

@@ -3,4 +3,4 @@ filterToNotAnyChangeSet
 
 	self filterFrom:
 		[:aClass :aSelector |
-			(ChangeSorter doesAnyChangeSetHaveClass: aClass andSelector: aSelector) not]
+			(ChangesOrganizer doesAnyChangeSetHaveClass: aClass andSelector: aSelector) not]

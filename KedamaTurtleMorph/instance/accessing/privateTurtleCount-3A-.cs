@@ -1,3 +1,3 @@
 privateTurtleCount: c
 
-	turtleCount _ c.
+	turtleCount := c.

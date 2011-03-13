@@ -2,11 +2,11 @@ methodInterfacesForInstanceVariablesCategoryIn: aVocabulary
 	"Return a collection of methodInterfaces for the instance-variables category.  The vocabulary parameter, at present anyway, is not used."
 
 	| aList anInterface itsSlotName |
-	aList _ OrderedCollection new.
+	aList := OrderedCollection new.
 	self slotInfo associationsDo:
 		[:assoc |
-			anInterface _ MethodInterface new.
-			itsSlotName _ assoc key.
+			anInterface := MethodInterface new.
+			itsSlotName := assoc key.
 			anInterface
 				wording: itsSlotName;
 				helpMessage: 'a variable defined by this object' translated.

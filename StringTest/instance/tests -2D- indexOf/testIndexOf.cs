@@ -13,3 +13,6 @@ testIndexOf
 	self assert: ('abc' indexOfAnyOf: (CharacterSet newFrom: (String with: 811 asCharacter with: 812 asCharacter))) = 0.
 	
 	self assert: ('abc' indexOfAnyOf: (CharacterSet newFrom: (String with: 811 asCharacter with: $c))) = 3.
+	
+	"make sure start index is used in wide string algorithm"
+	self assert: ('ab bcd abc' copyWith: 811 asCharacter) substrings = {'ab'. 'bcd'. 'abc' copyWith: 811 asCharacter}.

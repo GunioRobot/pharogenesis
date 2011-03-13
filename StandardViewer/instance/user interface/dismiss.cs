@@ -4,6 +4,6 @@ dismiss
 	(owner isKindOf: TabbedPalette)
 		ifTrue:
 			[^ owner showNoPalette].
-	(aFlapTab _ self pasteUpMorph correspondingFlapTab) ifNotNil:
+	(aFlapTab := self pasteUpMorph correspondingFlapTab) ifNotNil:
 		[^ aFlapTab dismissViaHalo].
 	self topRendererOrSelf delete

@@ -1,7 +1,7 @@
 initializePatch
 
 	| f |
-	f _ self player addPatchVarNamed: #patch.
-	patchesToDisplay _ Array new: 0.
+	f := self player addPatchVarNamed: #patch.
+	patchesToDisplay := Array new: 0.
 	self addToPatchDisplayList: f.
 	^ f.

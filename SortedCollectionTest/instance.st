@@ -3,4 +3,4 @@ TestCase
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'CollectionsTests-Unordered'
+	category: 'CollectionsTests-Sequenceable'

@@ -1,3 +1,3 @@
 getPenColor
-	penColor ifNil: [penColor _ self defaultPenColor].
+	penColor ifNil: [penColor := self defaultPenColor].
 	^ penColor

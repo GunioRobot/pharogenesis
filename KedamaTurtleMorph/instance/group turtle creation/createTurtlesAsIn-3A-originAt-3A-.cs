@@ -1,15 +1,15 @@
 createTurtlesAsIn: aForm originAt: origin
 
 	| c xArray yArray colorArray newX newY |
-	xArray _ OrderedCollection new: aForm width * aForm height.
-	yArray _ OrderedCollection new: aForm width * aForm height.
-	colorArray _ OrderedCollection new: aForm width * aForm height.
+	xArray := OrderedCollection new: aForm width * aForm height.
+	yArray := OrderedCollection new: aForm width * aForm height.
+	colorArray := OrderedCollection new: aForm width * aForm height.
 	0 to: aForm height do: [:y |
 		0 to: aForm width do: [:x |
-			c _ aForm colorAt: (x@y).
+			c := aForm colorAt: (x@y).
 			c isTransparent ifFalse: [
-				newX _ x + origin x.
-				newY _ y + origin y.
+				newX := x + origin x.
+				newY := y + origin y.
 				((newX >= 0 and: [newX < kedamaWorld dimensions x]) and: [newY >= 0 and: [newY < kedamaWorld dimensions y]]) ifTrue: [
 					xArray add: newX.
 					yArray add: newY.

@@ -1,3 +1,3 @@
 toggleApplyToWholeText
 
-	applyToWholeText _ applyToWholeText not.
+	applyToWholeText := applyToWholeText not.

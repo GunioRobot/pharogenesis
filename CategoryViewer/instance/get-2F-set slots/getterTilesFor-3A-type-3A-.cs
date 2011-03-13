@@ -1,31 +1,31 @@
 getterTilesFor: getterSelector type: aType 
 	"Answer classic getter for the given name/type"
 
-	"aPhrase _ nil, assumed"
+	"aPhrase := nil, assumed"
 
 	| selfTile selector aPhrase |
 	(#(#color:sees: #colorSees) includes: getterSelector) 
 		ifTrue: [aPhrase := self colorSeesPhrase].
 	(#(#getPatchValueIn:) includes: getterSelector)
-		ifTrue: [aPhrase _ self patchValuePhrase].
+		ifTrue: [aPhrase := self patchValuePhrase].
 	(#(#getRedComponentIn:) includes: getterSelector)
-		ifTrue: [aPhrase _ self colorComponentPhraseFor: #red].
+		ifTrue: [aPhrase := self colorComponentPhraseFor: #red].
 	(#(#getGreenComponentIn:) includes: getterSelector)
-		ifTrue: [aPhrase _ self colorComponentPhraseFor: #green].
+		ifTrue: [aPhrase := self colorComponentPhraseFor: #green].
 	(#(#getBlueComponentIn:) includes: getterSelector)
-		ifTrue: [aPhrase _ self colorComponentPhraseFor: #blue].
+		ifTrue: [aPhrase := self colorComponentPhraseFor: #blue].
 	(#(#getUphillIn:) includes: getterSelector)
-		ifTrue: [aPhrase _ self patchUphillPhrase].
+		ifTrue: [aPhrase := self patchUphillPhrase].
 	(#(#bounceOn:) includes: getterSelector)
-		ifTrue: [aPhrase _ self bounceOnPhrase].
+		ifTrue: [aPhrase := self bounceOnPhrase].
 	(#(#bounceOn:color: #bounceOnColor:) includes: getterSelector)
-		ifTrue: [aPhrase _ self bounceOnColorPhrase].
+		ifTrue: [aPhrase := self bounceOnColorPhrase].
 	(getterSelector = #getDistanceTo:)
-		ifTrue: [aPhrase _ self distanceToPhrase].
+		ifTrue: [aPhrase := self distanceToPhrase].
 	(getterSelector = #getAngleTo:)
-		ifTrue: [aPhrase _ self angleToPhrase].
+		ifTrue: [aPhrase := self angleToPhrase].
 	(getterSelector = #getTurtleOf:)
-		ifTrue: [aPhrase _ self turtleOfPhrase].
+		ifTrue: [aPhrase := self turtleOfPhrase].
 	(#(#seesColor: #isOverColor) includes: getterSelector) 
 		ifTrue: [aPhrase := self seesColorPhrase].
 	(#(#overlaps: #overlaps) includes: getterSelector) 

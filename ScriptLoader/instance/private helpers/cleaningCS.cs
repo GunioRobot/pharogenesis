@@ -1,5 +1,5 @@
 cleaningCS
 	"self new cleaningCS" 
 	 
-	ChangeSorter removeChangeSetsNamedSuchThat: [:each | true].
+	ChangesOrganizer removeChangeSetsNamedSuchThat: [:each | true].
 	ChangeSet resetCurrentToNewUnnamedChangeSet 

@@ -2,14 +2,14 @@ alanKwdSetter2: aNode isAConditional: template key: key args: args
 	"translates
 		foo setHeading: 0
 	to
-		foo's heading _ 0
+		foo's heading := 0
 	"
 	| kwdHolder wordy |
-	kwdHolder _ self
+	kwdHolder := self
 		addToken: key
 		type: #keywordSetter
 		on: (SelectorNode new key: key code: nil "fill this in?").
-	wordy _ self translateToWordySetter: key.
+	wordy := self translateToWordySetter: key.
 	kwdHolder firstSubmorph 
 		setProperty: #syntacticReformatting toValue: #keywordSetter;
 		contents: wordy;

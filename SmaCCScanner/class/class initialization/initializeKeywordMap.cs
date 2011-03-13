@@ -1,2 +1,0 @@
-initializeKeywordMap
-	keywordMap := Dictionary new

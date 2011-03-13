@@ -1,0 +1,3 @@
+A server holding the authoratative information about a universe.  Clients may make requests to view and update the universe.
+
+The server does not manage its own thread; it requires that processNetworking is called periodically.

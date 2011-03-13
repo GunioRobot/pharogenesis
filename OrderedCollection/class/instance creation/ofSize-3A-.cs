@@ -3,6 +3,6 @@ ofSize: n
 	This method exists because OrderedCollection new: n creates an
 	empty collection,  not one of size n."
 	| collection |
-	collection _ self new: n.
+	collection := self new: n.
 	collection setContents: (collection collector).
 	^ collection

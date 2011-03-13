@@ -1,2 +1,0 @@
-errorForSoundStart: aValueInMilliseconds
-	errorForSoundStart := aValueInMilliseconds

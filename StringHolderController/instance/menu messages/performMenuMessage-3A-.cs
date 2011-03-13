@@ -2,7 +2,7 @@ performMenuMessage: aSelector
 	"Intercept #again so the model does not get locked by keying the search text."
 
 	| hadEdits |
-	hadEdits _ view canDiscardEdits not.
+	hadEdits := view canDiscardEdits not.
 	super performMenuMessage: aSelector.
 	(hadEdits not and:
 	 [aSelector == #again and:

@@ -4,6 +4,6 @@ setTransformation: aTransformation
 	recomputed when needed). Should be used instead of setting the 
 	transformation directly."
 
-	transformation _ aTransformation.
+	transformation := aTransformation.
 	self unlock.
-	viewport _ nil
+	viewport := nil

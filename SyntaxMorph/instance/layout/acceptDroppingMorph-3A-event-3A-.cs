@@ -4,7 +4,7 @@ acceptDroppingMorph: aMorph event: evt
 		2) aMorph is replacing self by dropping on it.
 	For the moment, you have to drop it the right place (the end of a tile if it is complex).  We do not look at enclosing morphs"
 
-	itNoun _ aMorph isNoun.
+	itNoun := aMorph isNoun.
 	self withAllOwnersDo:
 		[:m | (m isSyntaxMorph and: [m isBlockNode])
 				ifTrue: [m stopStepping; removeDropZones]].
@@ -33,5 +33,5 @@ acceptDroppingMorph: aMorph event: evt
 					ifFalse: [^ self]]].	"only assign to a variable"
 
 	aMorph deselect.
-	(old _ owner) replaceSubmorph: self by: aMorph.	"do the normal replacement"
+	(old := owner) replaceSubmorph: self by: aMorph.	"do the normal replacement"
 	(old isSyntaxMorph) ifTrue: [old cleanupAfterItDroppedOnMe].	"now owned by no one"

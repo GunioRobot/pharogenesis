@@ -1,3 +1,0 @@
-fontForButtons
-
-	^Preferences standardEToysFont

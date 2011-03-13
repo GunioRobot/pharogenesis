@@ -1,0 +1,2 @@
+asStringArray
+	^{'selectserver' . shortName}

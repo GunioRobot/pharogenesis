@@ -1,3 +1,3 @@
 initializeDeletingIndex
 
-	deletingIndex _ 0.
+	deletingIndex := 0.

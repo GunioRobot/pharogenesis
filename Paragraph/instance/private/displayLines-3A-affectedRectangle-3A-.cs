@@ -8,16 +8,16 @@ displayLines: linesInterval affectedRectangle: affectedRectangle
 	| lineGrid topY firstLineIndex lastLineIndex lastLineIndexBottom |
 
 	"Save some time by only displaying visible lines"
-	firstLineIndex _ self lineIndexOfTop: affectedRectangle top.
-	firstLineIndex < linesInterval first ifTrue: [firstLineIndex _ linesInterval first].
-	lastLineIndex _ self lineIndexOfTop: affectedRectangle bottom - 1.
+	firstLineIndex := self lineIndexOfTop: affectedRectangle top.
+	firstLineIndex < linesInterval first ifTrue: [firstLineIndex := linesInterval first].
+	lastLineIndex := self lineIndexOfTop: affectedRectangle bottom - 1.
 	lastLineIndex > linesInterval last ifTrue:
 			[linesInterval last > lastLine
-		 		ifTrue: [lastLineIndex _ lastLine]
-		  		ifFalse: [lastLineIndex _ linesInterval last]].
-	lastLineIndexBottom _ (self bottomAtLineIndex: lastLineIndex).
+		 		ifTrue: [lastLineIndex := lastLine]
+		  		ifFalse: [lastLineIndex := linesInterval last]].
+	lastLineIndexBottom := (self bottomAtLineIndex: lastLineIndex).
 	((Rectangle 
-		origin: affectedRectangle left @ (topY _ self topAtLineIndex: firstLineIndex) 
+		origin: affectedRectangle left @ (topY := self topAtLineIndex: firstLineIndex) 
 		corner: affectedRectangle right @ lastLineIndexBottom)
 	  intersects: affectedRectangle)
 		ifTrue: [ " . . . (skip to clear-below if no lines displayed)"

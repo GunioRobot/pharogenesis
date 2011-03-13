@@ -1,3 +1,3 @@
 clearInterpreter
 
-	interpreter _ nil.
+	interpreter := nil.

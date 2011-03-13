@@ -7,9 +7,9 @@ markerOn: aPoint
 					ifTrue: [Display reverse: marker]
 					ifFalse: 
 						[selection > 0 ifTrue: [Display reverse: marker].
-						marker _ 
+						marker := 
 							marker 
 								align: marker topLeft 
 								with: marker left @ (self markerTop: aPoint).
 						Display reverse: marker]].
-	selection _ marker top - frame top // marker height + 1
+	selection := marker top - frame top // marker height + 1

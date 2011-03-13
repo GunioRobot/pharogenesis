@@ -5,12 +5,12 @@ askIfAddStyle: priorMethod req: requestor
 		ifTrue: [self couldDeriveFromPrettyPrinting ifTrue: [^ self asString]].
 	self runs coalesce.
 	self unembellished ifTrue: [^ self asString].
-	priorMethod ifNotNil: [old _ priorMethod getSourceFromFile].
+	priorMethod ifNotNil: [old := priorMethod getSourceFromFile].
 	(old == nil or: [old unembellished])
 		ifTrue:
-			[tell _ 'This method contains style for the first time (e.g. bold or colored text).
+			[tell := 'This method contains style for the first time (e.g. bold or colored text).
 Do you really want to save the style info?'.
-			answ _ (UIManager default 
+			answ := (UIManager default 
 						chooseFrom: #('Save method with style' 'Save method simply')
 						title: tell).
 			answ = 2 ifTrue: [^ self asString]]

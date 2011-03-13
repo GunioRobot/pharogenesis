@@ -6,8 +6,8 @@ removeSlotNamed: aSlotName
 		[^ self inform: ('Sorry, {1} is in
 use in a script.' translated format: {aSlotName})].
 
-	aSetter _ Utilities setterSelectorFor: aSlotName.
-	aGetter _ Utilities getterSelectorFor: aSlotName.
+	aSetter := Utilities setterSelectorFor: aSlotName.
+	aGetter := Utilities getterSelectorFor: aSlotName.
 	((self systemNavigation allCallsOn: aSetter) size > 0 or: [(self systemNavigation allCallsOn: aGetter) size > 0]) ifTrue:
 		[self inform: 
 'Caution!  There may be scripts belonging to

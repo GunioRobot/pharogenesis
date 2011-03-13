@@ -2,18 +2,18 @@ scrollAbsolute
 	| markerOutline oldY markerForm |
 	self changeCursor: Cursor rightArrow.
 
-	oldY _ -1.
+	oldY := -1.
 	sensor anyButtonPressed ifTrue: 
-	  [markerOutline _ marker deepCopy.
-	  markerForm _ Form fromDisplay: marker.
+	  [markerOutline := marker deepCopy.
+	  markerForm := Form fromDisplay: marker.
 	  Display fill: marker fillColor: scrollBar insideColor.
 	  Display border: markerOutline width: 1 fillColor: Color gray.
 	  markerForm 
 		follow: 
 			[oldY ~= sensor cursorPoint y
 				ifTrue: 
-					[oldY _ sensor cursorPoint y.
-					marker _ marker translateBy: 
+					[oldY := sensor cursorPoint y.
+					marker := marker translateBy: 
 					  0 @ ((oldY - marker center y 
 						min: scrollBar inside bottom - marker bottom) 
 						max: scrollBar inside top - marker top).

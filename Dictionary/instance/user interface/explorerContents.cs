@@ -2,7 +2,7 @@ explorerContents
 
 	| contents |
 	
-	contents _ OrderedCollection new.
+	contents := OrderedCollection new.
 	self keysSortedSafely do: [:key |
 		contents add: (ObjectExplorerWrapper
 			with: (self at: key)

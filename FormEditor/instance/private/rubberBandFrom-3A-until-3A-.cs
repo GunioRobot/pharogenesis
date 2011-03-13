@@ -1,9 +1,9 @@
 rubberBandFrom: startPoint until: aBlock
 
 	| endPoint previousEndPoint |
-	previousEndPoint _ startPoint.
+	previousEndPoint := startPoint.
 	[aBlock value] whileFalse:
-		[(endPoint _ self cursorPoint) = previousEndPoint 
+		[(endPoint := self cursorPoint) = previousEndPoint 
 			ifFalse:
 			[(Line from: startPoint to: previousEndPoint withForm: form) 
 				displayOn: Display
@@ -17,7 +17,7 @@ rubberBandFrom: startPoint until: aBlock
 				clippingBox: view insetDisplayBox
 				rule: Form reverse
 				fillColor: Color gray.
-			previousEndPoint  _ endPoint]].
+			previousEndPoint  := endPoint]].
 	(Line from: startPoint to: previousEndPoint withForm: form)
 		displayOn: Display
 		at: 0 @ 0

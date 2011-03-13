@@ -4,12 +4,12 @@ beNotZero: aNumber
 	aNumber = 0 ifFalse: [^ aNumber].	"normal case"
 	"We have a problem"
 	TimeOfError 
-		ifNil: [TimeOfError _ Time totalSeconds]
+		ifNil: [TimeOfError := Time totalSeconds]
 		ifNotNil: [(Time totalSeconds - TimeOfError) > 45 ifTrue: [
-			TimeOfError _ Time totalSeconds.	"in case user interrupt and reenter"
+			TimeOfError := Time totalSeconds.	"in case user interrupt and reenter"
 			self inform: 
 'Dividing by zero makes a number too
 large for even a Sorcerer to handle.
 Please change your script.' translated.
-			TimeOfError _ Time totalSeconds]].
+			TimeOfError := Time totalSeconds]].
 	^ 0.001

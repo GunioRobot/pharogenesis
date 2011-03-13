@@ -1,6 +1,6 @@
 jumpToProject
 
 	| selection |
-	selection _ (Project buildJumpToMenu: CustomMenu new) startUp.
+	selection := (Project buildJumpToMenu: CustomMenu new) startUp.
 	self closeMyFlapIfAny.
 	Project jumpToSelection: selection

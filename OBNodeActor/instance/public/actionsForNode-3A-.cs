@@ -1,2 +1,0 @@
-actionsForNode: aNode
-	^ aNode actions

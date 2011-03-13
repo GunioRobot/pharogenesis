@@ -1,5 +1,5 @@
 actionSelector: aSymbolOrString
 
-	aSymbolOrString isEmptyOrNil ifTrue: [^actionSelector _ nil].
-	aSymbolOrString = 'nil' ifTrue: [^actionSelector _ nil].
-	actionSelector _ aSymbolOrString asSymbol.
+	aSymbolOrString isEmptyOrNil ifTrue: [^actionSelector := nil].
+	aSymbolOrString = 'nil' ifTrue: [^actionSelector := nil].
+	actionSelector := aSymbolOrString asSymbol.

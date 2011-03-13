@@ -2,10 +2,10 @@ addTextToButton: aStringOrText
 
 	| tm existing |
 
-	existing _ self currentTextMorphsInButton.
+	existing := self currentTextMorphsInButton.
 	existing do: [ :x | x delete].
 	aStringOrText ifNil: [^self].
-	tm _ TextMorph new contents: aStringOrText.
+	tm := TextMorph new contents: aStringOrText.
 	tm 
 		fullBounds;
 		lock;

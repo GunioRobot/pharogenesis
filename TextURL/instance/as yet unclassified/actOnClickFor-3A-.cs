@@ -15,7 +15,7 @@ actOnClickFor: anObject
 
 		"if it's a morph, see if it is contained in a web browser"
 		(anObject isKindOf: Morph) ifTrue: [
-			m _ anObject.
+			m := anObject.
 			[ m ~= nil ] whileTrue: [
 				(m isWebBrowser) ifTrue: [
 					m  jumpToUrl: url.
@@ -23,7 +23,7 @@ actOnClickFor: anObject
 				(m hasProperty: #webBrowserView) ifTrue: [
 					m model jumpToUrl: url.
 					^true ].
-				m _ m owner. ]
+				m := m owner. ]
 		].
 
 	"no browser in sight.  ask if we should start a new browser"
@@ -33,7 +33,7 @@ actOnClickFor: anObject
 
 	"couldn't display in a browser.  Offer to put up just the source"
 
-	response _ (UIManager default 
+	response := (UIManager default 
 				chooseFrom: (Array with: 'View web page as source' translated
 									with: 'Cancel' translated)
 				title:  'Couldn''t find a web browser. View\page as source?' withCRs translated).

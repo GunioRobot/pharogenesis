@@ -1,3 +1,0 @@
-isLeftEdge
-
-	^ x = 0

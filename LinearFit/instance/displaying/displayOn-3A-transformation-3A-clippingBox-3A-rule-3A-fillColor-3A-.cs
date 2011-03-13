@@ -3,7 +3,7 @@ clipRect rule: anInteger fillColor: aForm
 
 	| transformedPath |
 	"get the scaled and translated Path."
-	transformedPath _ aTransformation applyTo: self.
+	transformedPath := aTransformation applyTo: self.
 	transformedPath
 		displayOn: aDisplayMedium
 		at: 0 @ 0

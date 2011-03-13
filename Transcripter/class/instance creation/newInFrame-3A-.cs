@@ -6,6 +6,6 @@ newInFrame: frame
 	readEvalPrint.
 "
 	| transcript |
-	transcript _ self on: (String new: 100).
+	transcript := self on: (String new: 100).
 	transcript initInFrame: frame.
 	^ transcript clear

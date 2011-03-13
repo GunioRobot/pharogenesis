@@ -1,0 +1,1 @@
+ChangesOrganizer class instanceVariableNames: ''

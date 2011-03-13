@@ -1,0 +1,2 @@
+classUnderTest
+	self explicitRequirement

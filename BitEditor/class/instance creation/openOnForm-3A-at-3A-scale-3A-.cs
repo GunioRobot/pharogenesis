@@ -3,7 +3,7 @@ openOnForm: aForm at: magnifiedLocation scale: scaleFactor
 	magnified view of aForm."
 
 	| aScheduledView |
-	aScheduledView _ self
+	aScheduledView := self
 				bitEdit: aForm
 				at: magnifiedLocation
 				scale: scaleFactor

@@ -15,12 +15,12 @@ testNaN2
 
 	"test two instances of NaN with the same bit pattern"
 	self deny: nan1 = nan2.
-	self deny: nan1 == nan2.
+	self deny: nan1 = nan2.
 	self deny: nan1 = nan1.
 	self assert: nan1 == nan1.
 
 	"change the bit pattern of nan1"
-	self assert: nan1 size == 2.
+	self assert: nan1 size = 2.
 	self assert: (nan1 at: 2) = 0.
 	nan1 at: 1 put: (nan1 at: 1) + 999.
 	self assert: nan1 isNaN.
@@ -29,6 +29,6 @@ testNaN2
 
 	"test two instances of NaN with different bit patterns"
 	self deny: nan1 = nan2.
-	self deny: nan1 == nan2.
+	self deny: nan1 = nan2.
 	self deny: nan1 = nan1.
 	self assert: nan1 == nan1

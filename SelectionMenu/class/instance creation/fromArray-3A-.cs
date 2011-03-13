@@ -6,10 +6,10 @@ or	*  The 'dash' (or 'minus sign') symbol
 	Refer to the example at the bottom of the method"
 
 	| labelList lines selections anIndex |
-	labelList _ OrderedCollection new.
-	lines _ OrderedCollection new.
-	selections _ OrderedCollection new.
-	anIndex _ 0.
+	labelList := OrderedCollection new.
+	lines := OrderedCollection new.
+	selections := OrderedCollection new.
+	anIndex := 0.
 	anArray do:
 		[:anElement |
 			anElement size == 1
@@ -18,7 +18,7 @@ or	*  The 'dash' (or 'minus sign') symbol
 					lines add: anIndex]
 				ifFalse:
 					[anElement size == 2 ifFalse: [self error: 'badly-formed menu constructor'].
-					anIndex _ anIndex + 1.
+					anIndex := anIndex + 1.
 					labelList add: anElement first.
 					selections add: anElement second]].
 	^ self labelList: labelList lines: lines selections: selections

@@ -1,5 +1,5 @@
 lineGrid
 
 	| f |
-	f := fontArray first.
+	f _ fontArray first.
 	^ f ascent + f descent.

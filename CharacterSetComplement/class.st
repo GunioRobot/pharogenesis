@@ -1,0 +1,1 @@
+CharacterSetComplement class instanceVariableNames: ''

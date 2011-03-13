@@ -2,7 +2,7 @@ makeUniversalTilesGetter: aMethodInterface event: evt from: aMorph
 	"Button in viewer performs this to make a universal-tiles getter and attach it to hand."
 
 	| newTiles |
-	newTiles _ self newGetterTilesFor: scriptedPlayer methodInterface: aMethodInterface.
+	newTiles := self newGetterTilesFor: scriptedPlayer methodInterface: aMethodInterface.
 	newTiles setProperty: #beScript toValue: true.
 	owner
 		ifNotNil:

@@ -3,6 +3,6 @@ asFloatArray
 	the same order."
 
 	| floatArray |
-	floatArray _ FloatArray new: self size.
+	floatArray := FloatArray new: self size.
 	1 to: self size do:[:i| floatArray at: i put: (self at: i) asFloat ].
 	^floatArray

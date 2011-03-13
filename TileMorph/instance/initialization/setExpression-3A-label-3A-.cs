@@ -1,5 +1,5 @@
 setExpression: exprString label: labelString
 
-	type _ #expression.
-	operatorOrExpression _ exprString.
+	type := #expression.
+	operatorOrExpression := exprString.
 	self line1: labelString.

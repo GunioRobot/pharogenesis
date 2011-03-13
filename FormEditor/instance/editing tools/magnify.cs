@@ -6,16 +6,16 @@ magnify
 	key on the keyboard."
 
 	| smallRect smallForm scaleFactor tempRect |
-	scaleFactor _ 8@8.
-	smallRect _ (Rectangle fromUser: grid) intersect: view insetDisplayBox.
+	scaleFactor := 8@8.
+	smallRect := (Rectangle fromUser: grid) intersect: view insetDisplayBox.
 	smallRect isNil ifTrue: [^self].
-	smallForm _ Form fromDisplay: smallRect.
+	smallForm := Form fromDisplay: smallRect.
 
 	"Do this computation here in order to be able to save the existing display screen."
-	tempRect _ BitEditor locateMagnifiedView: smallForm scale: scaleFactor.
+	tempRect := BitEditor locateMagnifiedView: smallForm scale: scaleFactor.
 	BitEditor
 		openScreenViewOnForm: smallForm 
 		at: smallRect topLeft 
 		magnifiedAt: tempRect topLeft 
 		scale: scaleFactor.
-	tool _ previousTool
+	tool := previousTool

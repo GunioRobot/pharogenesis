@@ -1,0 +1,1 @@
+UPWild class instanceVariableNames: ''

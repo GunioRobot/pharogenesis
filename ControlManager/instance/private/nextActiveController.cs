@@ -4,7 +4,7 @@ nextActiveController
 	that now has the mouse, otherwise it's just the top window."
 
 	(newTopClicked notNil and: [newTopClicked])
-		ifTrue: [newTopClicked _ false.
+		ifTrue: [newTopClicked := false.
 				^ scheduledControllers 
 					detect: [:aController | aController isControlWanted]
 					ifNone: [scheduledControllers first]]

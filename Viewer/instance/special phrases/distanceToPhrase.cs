@@ -8,6 +8,6 @@ distanceToPhrase
 				argType: #Color.	"temp dummy"
 	(outerPhrase submorphs second) delete.	"operator"
 	(outerPhrase submorphs second) delete.	"color"
-	getTile _ KedamaDistanceToTile new.
+	getTile := KedamaDistanceToTile new.
 	outerPhrase addMorphBack: getTile.
 	^outerPhrase

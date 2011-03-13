@@ -1,1 +1,0 @@
-OBMetaNode class instanceVariableNames: ''

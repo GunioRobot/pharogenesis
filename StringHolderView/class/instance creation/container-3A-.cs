@@ -3,6 +3,6 @@ container: aContainer
 	border."
 
 	| aCodeView |
-	aCodeView _ self new model: aContainer.
+	aCodeView := self new model: aContainer.
 	aCodeView borderWidthLeft: 2 right: 2 top: 2 bottom: 2.
 	^aCodeView

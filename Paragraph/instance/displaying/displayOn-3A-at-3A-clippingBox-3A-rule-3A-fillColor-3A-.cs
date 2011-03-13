@@ -2,9 +2,9 @@ displayOn: aDisplayMedium at: aDisplayPoint clippingBox: clipRectangle rule: rul
 	"Default display message when aDisplayPoint is in absolute screen
 	coordinates."
 
-	rule _ ruleInteger.
-	mask _ aForm.
-	clippingRectangle _ clipRectangle.
-	compositionRectangle _ aDisplayPoint extent: compositionRectangle extent.
+	rule := ruleInteger.
+	mask := aForm.
+	clippingRectangle := clipRectangle.
+	compositionRectangle := aDisplayPoint extent: compositionRectangle extent.
 	(lastLine == nil or: [lastLine < 1]) ifTrue: [self composeAll].
 	self displayOn: aDisplayMedium lines: (1 to: lastLine)

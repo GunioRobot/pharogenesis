@@ -4,6 +4,6 @@ select: aBlock
 	aBlock evaluates to true. Answer the new path."
 
 	| newCollection |
-	newCollection _ collectionOfPoints select: aBlock.
+	newCollection := collectionOfPoints select: aBlock.
 	newCollection form: self form.
 	^newCollection

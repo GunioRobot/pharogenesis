@@ -3,16 +3,16 @@ currentVocabulary
 
 	| outer aVocab |
 	vocabulary ifNotNil:  "old structures -- bring up to date"
-		[vocabularySymbol _ vocabulary vocabularyName.
-		vocabulary _ nil].
+		[vocabularySymbol := vocabulary vocabularyName.
+		vocabulary := nil].
 	^ vocabularySymbol
 		ifNotNil:
 			[Vocabulary vocabularyNamed: vocabularySymbol]
 		ifNil:
-			[(outer _ self ownerThatIsA: StandardViewer orA: ScriptEditorMorph) 
+			[(outer := self ownerThatIsA: StandardViewer orA: ScriptEditorMorph) 
 				ifNotNil:
-					[aVocab _ outer currentVocabulary.
-					vocabularySymbol _ aVocab vocabularyName.
+					[aVocab := outer currentVocabulary.
+					vocabularySymbol := aVocab vocabularyName.
 					aVocab]
 				ifNil:
 					[super currentVocabulary]]

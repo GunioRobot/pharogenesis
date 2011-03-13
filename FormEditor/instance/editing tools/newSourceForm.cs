@@ -4,12 +4,12 @@ newSourceForm
 	Resets the tool to be repeatCopy."
 	| dForm interiorPoint interiorColor |
 
-	dForm _ Form fromUser: grid.
+	dForm := Form fromUser: grid.
 	"sourceForm must be only 1 bit deep"
-	interiorPoint _ dForm extent // 2.
-	interiorColor _ dForm colorAt: interiorPoint.
-	form _ (dForm makeBWForm: interiorColor) reverse
+	interiorPoint := dForm extent // 2.
+	interiorColor := dForm colorAt: interiorPoint.
+	form := (dForm makeBWForm: interiorColor) reverse
 				findShapeAroundSeedBlock:
 					[:f | f pixelValueAt: interiorPoint put: 1].
-	form _ form trimBordersOfColor: Color white.
-	tool _ previousTool
+	form := form trimBordersOfColor: Color white.
+	tool := previousTool

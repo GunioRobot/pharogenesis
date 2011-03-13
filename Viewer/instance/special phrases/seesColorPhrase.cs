@@ -12,7 +12,7 @@ seesColorPhrase
 	seesColorTile := TileMorph new setOperator: #seesColor:.
 	outerPhrase addMorphBack: seesColorTile.
 	(outerPhrase submorphs second) goBehind.	"Make it third"
-	"	selfTile _ self tileForSelf bePossessive.	Done by caller.
+	"	selfTile := self tileForSelf bePossessive.	Done by caller.
 	selfTile position: 1.
 	outerPhrase firstSubmorph addMorph: selfTile.
 "

@@ -4,4 +4,4 @@ controlActivity
 	shownAsComplemented = self viewHasCursor
 		ifFalse:
 			[view ifNotNil: [view toggleMouseOverFeedback]. 
-			shownAsComplemented _ shownAsComplemented not]
+			shownAsComplemented := shownAsComplemented not]

@@ -2,10 +2,10 @@ showSliderFeedback: aString
 
 	| feedBack |
 
-	feedBack _ self 
+	feedBack := self 
 		valueOfProperty: #sliderFeedback 
 		ifAbsent: [
-			feedBack _ AlignmentMorph newRow
+			feedBack := AlignmentMorph newRow
 				hResizing: #shrinkWrap;
 				vResizing: #shrinkWrap;
 				color: (Color yellow" alpha: 0.6");

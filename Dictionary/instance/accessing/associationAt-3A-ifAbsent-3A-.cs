@@ -3,7 +3,7 @@ associationAt: key ifAbsent: aBlock
 	If key is not found, return the result of evaluating aBlock."
 
 	| index assoc |
-	index _ self findElementOrNil: key.
-	assoc _ array at: index.
+	index := self findElementOrNil: key.
+	assoc := array at: index.
 	nil == assoc ifTrue: [ ^ aBlock value ].
 	^ assoc

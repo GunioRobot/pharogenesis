@@ -1,8 +1,8 @@
 unembellished 
 	"Return true if the only emphases are the default font and bold"
 	| font1 bold |
-	font1 _ TextFontChange defaultFontChange.
-	bold _ TextEmphasis bold.
+	font1 := TextFontChange defaultFontChange.
+	bold := TextEmphasis bold.
 	Preferences ignoreStyleIfOnlyBold ifFalse:
 		["Ignore font1 only or font1-bold followed by font1-plain"
 		^ (runs values = (Array with: (Array with: font1)))

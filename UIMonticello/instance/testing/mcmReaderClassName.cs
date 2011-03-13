@@ -1,0 +1,2 @@
+mcmReaderClassName
+	^ #MCMcmReader

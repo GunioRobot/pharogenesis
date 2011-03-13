@@ -3,4 +3,4 @@ recreateScriptFrom: anEditor
 
 	formerScriptingTiles isEmptyOrNil ifTrue: [^ self].
 	anEditor reinsertSavedTiles: formerScriptingTiles last second.
-	isTextuallyCoded _ false
+	isTextuallyCoded := false

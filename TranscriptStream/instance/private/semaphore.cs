@@ -1,2 +1,2 @@
 semaphore
-	^AccessSema ifNil:[AccessSema _ Semaphore forMutualExclusion]
+	^AccessSema ifNil:[AccessSema := Semaphore forMutualExclusion]

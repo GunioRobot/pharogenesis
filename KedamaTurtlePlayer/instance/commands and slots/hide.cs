@@ -1,3 +1,3 @@
 hide
 
-	visible _ false
+	visible := false

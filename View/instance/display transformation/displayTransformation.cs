@@ -6,5 +6,5 @@ displayTransformation
 	display screen coordinate system."
 
 	displayTransformation == nil
-		ifTrue: [displayTransformation _ self computeDisplayTransformation].
+		ifTrue: [displayTransformation := self computeDisplayTransformation].
 	^displayTransformation

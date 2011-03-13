@@ -1,2 +1,0 @@
-origin: aNumber
-	origin := aNumber

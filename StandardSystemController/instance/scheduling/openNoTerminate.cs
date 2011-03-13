@@ -3,5 +3,5 @@ openNoTerminate
 	Make it the active view. Do not terminate the currently active process."
 
 	view resizeInitially.
-	status _ #open.
+	status := #open.
 	ScheduledControllers scheduleActiveNoTerminate: self

@@ -11,7 +11,7 @@ rebuild
 	}.
 
 
-	c _ self addAColumn: {
+	c := self addAColumn: {
 		self activeTextMorph.
 	}.
 	c 
@@ -33,7 +33,7 @@ rebuild
 		self paneForMargins.
 	}.
 
-	buttonColor _ color lighter.
+	buttonColor := color lighter.
 	self addARow: {
 		self inAColumn: {
 			self addARow: {

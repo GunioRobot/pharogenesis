@@ -1,2 +1,2 @@
 title: aTitle
-	title _ aTitle
+	title := aTitle

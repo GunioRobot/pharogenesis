@@ -1,2 +1,0 @@
-compressed: aBool
-	compressed := aBool

@@ -4,6 +4,6 @@ removeAllEventTriggers
 	while system custom events are triggered on individual Morphs."
 
 	| player |
-	(player _ self player) ifNil: [ ^self ].
+	(player := self player) ifNil: [ ^self ].
 	self removeAllEventTriggersFor: player.
 	self currentWorld removeAllEventTriggersFor: player.

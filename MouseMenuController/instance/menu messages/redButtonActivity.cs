@@ -6,7 +6,7 @@ redButtonActivity
 	| index |
 	redButtonMenu ~~ nil
 		ifTrue: 
-			[index _ redButtonMenu startUp.
+			[index := redButtonMenu startUp.
 			index ~= 0 
 				ifTrue: [self perform: (redButtonMessages at: index)]]
 		ifFalse: [super controlActivity]

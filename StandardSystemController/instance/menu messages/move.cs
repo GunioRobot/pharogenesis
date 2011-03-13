@@ -3,7 +3,7 @@ move
 	6/10/96 sw: tell the view that it has moved"
 
 	| oldBox | 
-	oldBox _ view windowBox.
+	oldBox := view windowBox.
 	view uncacheBits.
 	view align: view windowBox topLeft
 		with: view chooseMoveRectangle topLeft.

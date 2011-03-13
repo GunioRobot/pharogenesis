@@ -3,7 +3,7 @@ partName: aName categories: aList documentation: aDoc sampleImageForm: aForm
 
 
 	| descr |
-	descr _ DescriptionForPartsBin new
+	descr := DescriptionForPartsBin new
 		formalName: aName
 		categoryList: aList
 		documentation: aDoc

@@ -1,2 +1,0 @@
-lowPitch
-	^ pitch - (pitch * range)

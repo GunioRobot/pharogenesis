@@ -1,0 +1,1 @@
+Rather than testing a single class, this set of tests looks at the interactions between Character, String, Integer and Color using hex and printStringHex

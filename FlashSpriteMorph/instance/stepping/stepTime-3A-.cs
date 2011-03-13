@@ -1,2 +1,0 @@
-stepTime: time
-	stepTime := time.

@@ -1,3 +1,3 @@
 initialize 
 	super initialize.
-	hasEditingConflicts _ false
+	hasEditingConflicts := false

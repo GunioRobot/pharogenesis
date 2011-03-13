@@ -1,0 +1,2 @@
+usesNamespaces
+	^false

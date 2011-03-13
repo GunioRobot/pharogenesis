@@ -5,8 +5,8 @@ findSelection: aPoint
 
 	| trialSelection |
 	(self clippingBox containsPoint: aPoint) ifFalse: [^nil].
-	trialSelection _ aPoint y - list compositionRectangle top // list lineGrid + 1.
-	topDelimiter == nil ifFalse: [trialSelection _ trialSelection - 1].
+	trialSelection := aPoint y - list compositionRectangle top // list lineGrid + 1.
+	topDelimiter == nil ifFalse: [trialSelection := trialSelection - 1].
 	(trialSelection < 1) | (trialSelection > self maximumSelection)
 		ifTrue: [^ nil]
 		ifFalse: [^ trialSelection]

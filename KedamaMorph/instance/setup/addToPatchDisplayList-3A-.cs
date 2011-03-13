@@ -1,5 +1,5 @@
 addToPatchDisplayList: p
 
 	| a |
-	a _ patchesToDisplay copyWithout: p.
-	patchesToDisplay _ a copyWith: p.
+	a := patchesToDisplay copyWithout: p.
+	patchesToDisplay := a copyWith: p.

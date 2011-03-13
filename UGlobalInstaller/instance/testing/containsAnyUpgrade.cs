@@ -1,0 +1,2 @@
+containsAnyUpgrade
+	^ self allPossibleUpgrades notEmpty 

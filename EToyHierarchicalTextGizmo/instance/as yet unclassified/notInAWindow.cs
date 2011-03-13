@@ -1,7 +1,7 @@
 notInAWindow
 	| listMorph |
 
-	(listMorph _ EToyHierarchicalTextMorph 
+	(listMorph := EToyHierarchicalTextMorph 
 		on: self
 		list: #getList
 		selected: #getCurrentSelection

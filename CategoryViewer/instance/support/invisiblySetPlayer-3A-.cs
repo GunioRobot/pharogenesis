@@ -1,2 +1,2 @@
 invisiblySetPlayer: aPlayer
-	scriptedPlayer _ aPlayer
+	scriptedPlayer := aPlayer

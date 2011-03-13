@@ -6,16 +6,16 @@ initTextConstants
 
 	| letter varAndValue tempArray width |
 	"CtrlA..CtrlZ, Ctrla..Ctrlz"
-	letter _ $A.
+	letter := $A.
  	#(		212 230 228 196 194 226 241 243 214 229 200 217 246 
 			245 216 202 210 239 211 240 197 198 209 215 242 231
 	 		1 166 228 132 130 12 232 179 150 165 136 153 182 
 			14 15 138 17 18 19 11 21 134 145 151 178 167 ) do:
 		[:kbd |
 		TextConstants at: ('Ctrl', letter asSymbol) asSymbol put: kbd asCharacter.
-		letter _ letter == $Z ifTrue: [$a] ifFalse: [(letter asciiValue + 1) asCharacter]].
+		letter := letter == $Z ifTrue: [$a] ifFalse: [(letter asciiValue + 1) asCharacter]].
 
-	varAndValue _ #(
+	varAndValue := #(
 		Space	32
 		Tab		9
 		CR		13
@@ -30,10 +30,10 @@ initTextConstants
 	(2 to: varAndValue size by: 2) do:
 		[:i | TextConstants at: (varAndValue at: i - 1) put: (varAndValue at: i) asCharacter].
 
-	varAndValue _ #(
+	varAndValue := #(
 		CtrlDigits 			(159 144 143 128 127 129 131 180 149 135)
 		CtrlOpenBrackets	(201 7 218 249 219 15)
-			"lparen gottn by ctrl-_ = 201; should be 213 but can't type that on Mac"
+			"lparen gottn by ctrl-:= = 201; should be 213 but can't type that on Mac"
 
 			"location of non-character stop conditions"
 		EndOfRun	257
@@ -70,12 +70,12 @@ initTextConstants
 	TextConstants at: #DefaultRule	put: Form over.
 	TextConstants at: #DefaultMask	put: Color black.
 
-	width _ Display width max: 720.
-	tempArray _ Array new: width // DefaultTab.
+	width := Display width max: 720.
+	tempArray := Array new: width // DefaultTab.
 	1 to: tempArray size do:
 		[:i | tempArray at: i put: DefaultTab * i].
 	TextConstants at: #DefaultTabsArray put: tempArray.
-	tempArray _ Array new: (width // DefaultTab) // 2.
+	tempArray := Array new: (width // DefaultTab) // 2.
 	1 to: tempArray size do:
 		[:i | tempArray at: i put: (Array with: (DefaultTab*i) with: (DefaultTab*i))].
 	TextConstants at: #DefaultMarginTabsArray put: tempArray.

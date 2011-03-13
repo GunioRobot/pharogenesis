@@ -1,7 +1,7 @@
 checkForReframe
 	| cp |
 	view isCollapsed ifTrue: [^ self].
-	cp _ sensor cursorPoint.
+	cp := sensor cursorPoint.
 	((view closeBoxFrame expandBy: 2) containsPoint: cp)
 		| ((view growBoxFrame expandBy: 2) containsPoint: cp)
 		ifTrue: [^ self].  "Dont let reframe interfere with close/grow"

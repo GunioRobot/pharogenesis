@@ -1,7 +1,7 @@
 reversed
 	"Answer a copy of the receiver with element order reversed.  "
 	| newCol |
-	newCol _ self species new.
+	newCol := self species new.
 	self reverseDo:
 		[:elem | newCol addLast: elem].
 	^ newCol

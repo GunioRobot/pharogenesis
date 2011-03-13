@@ -1,2 +1,0 @@
-syllable: aSyllable
-	syllable := aSyllable

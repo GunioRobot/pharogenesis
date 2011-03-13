@@ -2,8 +2,8 @@ ellipticalButtonWithText: aStringOrText
 
 	| m prop |
 
-	m _ EllipseMorph new.
-	prop _ m ensuredButtonProperties.
+	m := EllipseMorph new.
+	prop := m ensuredButtonProperties.
 	prop
 		target: #(1 2 3);
 		actionSelector: #inspect;

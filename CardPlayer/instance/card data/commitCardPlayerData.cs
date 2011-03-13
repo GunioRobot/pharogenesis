@@ -4,8 +4,8 @@ commitCardPlayerData
 	| prior |
 	self class variableDocks do:
 		[:aDock | aDock storeMorphDataInInstance: self].
-	prior _ nil.
-	privateMorphs _ OrderedCollection new.
+	prior := nil.
+	privateMorphs := OrderedCollection new.
 	self costume ifNotNil:
 		[self costume submorphs do:
 			[:aMorph | aMorph renderedMorph isShared
@@ -13,4 +13,4 @@ commitCardPlayerData
 					[aMorph setProperty: #priorMorph toValue: prior.
 					privateMorphs add: aMorph.
 					aMorph delete].
-			prior _ aMorph]]
+			prior := aMorph]]

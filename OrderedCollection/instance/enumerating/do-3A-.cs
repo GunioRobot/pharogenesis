@@ -1,8 +1,8 @@
 do: aBlock 
 	"Override the superclass for performance reasons."
 	| index |
-	index _ firstIndex.
+	index := firstIndex.
 	[index <= lastIndex]
 		whileTrue: 
 			[aBlock value: (array at: index).
-			index _ index + 1]
+			index := index + 1]

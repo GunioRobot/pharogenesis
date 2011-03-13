@@ -1,2 +1,2 @@
 selection: selIndex
-	selection _ selIndex
+	selection := selIndex

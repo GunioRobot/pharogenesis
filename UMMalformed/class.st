@@ -1,0 +1,1 @@
+UMMalformed class instanceVariableNames: ''

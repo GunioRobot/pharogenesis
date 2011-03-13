@@ -1,2 +1,0 @@
-category
-	^ 'as yet unclassified'

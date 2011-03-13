@@ -1,3 +1,3 @@
 isGroup: aBoolean
 
-	isGroup _ aBoolean.
+	isGroup := aBoolean.

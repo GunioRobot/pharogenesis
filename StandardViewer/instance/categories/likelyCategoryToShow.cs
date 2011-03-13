@@ -3,7 +3,7 @@ likelyCategoryToShow
 
 	| possible all aCat currVocab |
 	all := (scriptedPlayer categoriesForViewer: self) asOrderedCollection.
-	possible _ all copy.
+	possible := all copy.
 
 	currVocab := self currentVocabulary.
 	self categoryMorphs do: 

@@ -2,19 +2,19 @@ groupSetY: val
 
 	| yArray headingArray origY origHeading topEdgeMode bottomEdgeMode newArray wrapY minY maxY |
 	self size = 0 ifTrue: [^ self].
-	yArray _ arrays at: 3.
-	headingArray _ arrays at: 4.
+	yArray := arrays at: 3.
+	headingArray := arrays at: 4.
 	
-	origY _ yArray first.
-	origHeading _ headingArray first.
+	origY := yArray first.
+	origHeading := headingArray first.
 
-	topEdgeMode _ kedamaWorld topEdgeModeMnemonic.
-	bottomEdgeMode _ kedamaWorld bottomEdgeModeMnemonic.
+	topEdgeMode := kedamaWorld topEdgeModeMnemonic.
+	bottomEdgeMode := kedamaWorld bottomEdgeModeMnemonic.
 
-	newArray _ yArray collect: [:e | e + val - origY].
-	wrapY _ kedamaWorld wrapY.
-	minY _ newArray min.
-	maxY _ newArray max.
+	newArray := yArray collect: [:e | e + val - origY].
+	wrapY := kedamaWorld wrapY.
+	minY := newArray min.
+	maxY := newArray max.
 	((minY < 0.0) not and: [(maxY >= wrapY) not]) ifTrue: [
 		arrays at: 3 put: newArray.
 		^ self.

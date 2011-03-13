@@ -1,0 +1,3 @@
+A policy for manipulations on a universe.  All of the methods return 'true' on success or on allowing the requested operation, or 'false' on an error or if the operation is not allowed.  By default everything is disallowed.
+
+Note that since policy is completely implemented on the server, there is no requirement that a particular UUniverse has a policy describable with this class or a subclass.  A particular server can always modify UUniverseServer to implement an arbitrary policy.

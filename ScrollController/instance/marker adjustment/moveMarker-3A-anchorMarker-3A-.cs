@@ -7,7 +7,7 @@ moveMarker: anInteger anchorMarker: anchorMarker
 	Display fill: marker fillColor: scrollBar insideColor.
 	anchorMarker = nil
 		ifFalse: [Display border: anchorMarker width: 1 fillColor: Color gray].
-	marker _ marker translateBy: 0 @
+	marker := marker translateBy: 0 @
 				((anInteger min: scrollBar inside bottom - marker bottom) max:
 					scrollBar inside top - marker top).
 	marker displayOn: Display

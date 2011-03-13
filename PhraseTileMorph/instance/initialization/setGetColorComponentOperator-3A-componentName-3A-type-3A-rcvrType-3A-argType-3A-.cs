@@ -3,11 +3,11 @@ setGetColorComponentOperator: opSymbol componentName: componentName type: opType
 
 	| aTileMorph |
 
-	resultType _ opType.
+	resultType := opType.
 	opType ifNotNil: [self color: (ScriptingSystem colorForType: opType)].
 	self removeAllMorphs.
 	self addMorph: (TilePadMorph new setType: rcvrType).
-	aTileMorph _ KedamaGetColorComponentTile new adoptVocabulary: self currentVocabulary.
+	aTileMorph := KedamaGetColorComponentTile new adoptVocabulary: self currentVocabulary.
 	aTileMorph componentName: componentName.
 	self addMorphBack: ((aTileMorph setOperator: opSymbol asString) typeColor: color).
 	opSymbol numArgs = 1 ifTrue:

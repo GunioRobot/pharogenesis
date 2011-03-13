@@ -6,7 +6,7 @@ drawToggleOn: aCanvas in: aRectangle
 		fillRectangle: (bounds withRight: aRectangle right)
 		color: container color.
 	complexContents hasContents ifFalse: [^self].
-	aForm _ isExpanded 
+	aForm := isExpanded 
 		ifTrue: [container expandedForm]
 		ifFalse: [container notExpandedForm].
 	^aCanvas 

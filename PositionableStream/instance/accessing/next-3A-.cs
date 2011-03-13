@@ -4,6 +4,6 @@ next: anInteger
 	collection."
 
 	| newArray |
-	newArray _ collection species new: anInteger.
+	newArray := collection species new: anInteger.
 	1 to: anInteger do: [:index | newArray at: index put: self next].
 	^newArray

@@ -1,1 +1,0 @@
-OBAllMethodCategoryNode class instanceVariableNames: ''

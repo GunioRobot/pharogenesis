@@ -1,7 +1,7 @@
 stopButton
 	"Answer a new button that can serve as a stop button"
 	| aButton |
-	aButton _ ThreePhaseButtonMorph new.
+	aButton := ThreePhaseButtonMorph new.
 	aButton
 		image:  (ScriptingSystem formAtKey: 'StopPic');
 		offImage: (ScriptingSystem formAtKey: 'StopPic');

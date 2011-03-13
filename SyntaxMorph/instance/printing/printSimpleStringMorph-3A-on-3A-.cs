@@ -8,6 +8,6 @@ printSimpleStringMorph: aMorph on: strm
 		^self
 	].
 	(aMorph hasProperty: #noiseWord) ifFalse: [
-		trialContents _ self cleanUpString: aMorph.
+		trialContents := self cleanUpString: aMorph.
 		strm nextPutAll: trialContents
 	].

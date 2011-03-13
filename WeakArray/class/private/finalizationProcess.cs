@@ -9,7 +9,7 @@ finalizationProcess
 					[weakDependent finalizeValues.
 					"***Following statement is required to keep weakDependent
 					from holding onto its value as garbage.***"
-					weakDependent _ nil]]]
+					weakDependent := nil]]]
 			ifError:
 			[:msg :rcvr | rcvr error: msg].
 		].

@@ -3,7 +3,7 @@ addCustomMenuItems:  aMenu hand: aHandMorph
 
 	| aPlayer |
 	super addCustomMenuItems: aMenu hand: aHandMorph.
-	((aPlayer _ self associatedPlayer) notNil and:
+	((aPlayer := self associatedPlayer) notNil and:
 		[aPlayer costume isMorph]) ifTrue:
 			[aMenu addLine.
 			aMenu add: 'hand me this object' translated target: self action: #handReferentMorph.

@@ -4,5 +4,5 @@ maybeAddArrowsTo: header
 	| wrpr |
 	header addTransparentSpacerOfSize: 5@5.
 	header addUpDownArrowsFor: self.
-	(wrpr _ header submorphs last) submorphs second setBalloonText: 'previous category' translated.	
+	(wrpr := header submorphs last) submorphs second setBalloonText: 'previous category' translated.	
 	wrpr submorphs first  setBalloonText: 'next category' translated

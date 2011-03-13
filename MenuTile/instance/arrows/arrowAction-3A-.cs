@@ -1,8 +1,8 @@
 arrowAction: delta
 	| phrase aPlayer newItem |
-	(phrase _ self ownerThatIsA: PhraseTileMorph) ifNil: [^ self].
-	aPlayer _ phrase associatedPlayer.
-	newItem _ delta > 0
+	(phrase := self ownerThatIsA: PhraseTileMorph) ifNil: [^ self].
+	aPlayer := phrase associatedPlayer.
+	newItem := delta > 0
 		ifTrue:
 			[aPlayer menuItemAfter: literal]
 		ifFalse:

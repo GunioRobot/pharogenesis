@@ -1,15 +1,15 @@
 rightEdgeMode: aSymbol
 
-	rightEdgeMode _ aSymbol asSymbol.
+	rightEdgeMode := aSymbol asSymbol.
 	rightEdgeMode == #wrap ifTrue: [
-		rightEdgeModeMnemonic _ 1.
+		rightEdgeModeMnemonic := 1.
 		^ self
 	].
 	rightEdgeMode == #stick ifTrue: [
-		rightEdgeModeMnemonic _ 2.
+		rightEdgeModeMnemonic := 2.
 		^ self
 	].
 	(rightEdgeMode == #bounce or: [rightEdgeMode == #bouncing]) ifTrue: [
-		rightEdgeModeMnemonic _ 3.
+		rightEdgeModeMnemonic := 3.
 		^ self
 	].

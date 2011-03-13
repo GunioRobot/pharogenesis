@@ -2,19 +2,19 @@ groupSetX: val
 
 	| xArray headingArray origX origHeading leftEdgeMode rightEdgeMode newArray wrapX minX maxX |
 	self size = 0 ifTrue: [^ self].
-	xArray _ arrays at: 2.
-	headingArray _ arrays at: 4.
+	xArray := arrays at: 2.
+	headingArray := arrays at: 4.
 	
-	origX _ xArray first.
-	origHeading _ headingArray first.
+	origX := xArray first.
+	origHeading := headingArray first.
 
-	leftEdgeMode _ kedamaWorld leftEdgeModeMnemonic.
-	rightEdgeMode _ kedamaWorld rightEdgeModeMnemonic.
+	leftEdgeMode := kedamaWorld leftEdgeModeMnemonic.
+	rightEdgeMode := kedamaWorld rightEdgeModeMnemonic.
 
-	newArray _ xArray collect: [:e | e + val - origX].
-	wrapX _ kedamaWorld wrapX.
-	minX _ newArray min.
-	maxX _ newArray max.
+	newArray := xArray collect: [:e | e + val - origX].
+	wrapX := kedamaWorld wrapX.
+	minX := newArray min.
+	maxX := newArray max.
 	((minX < 0.0) not and: [(maxX >= wrapX) not]) ifTrue: [
 		arrays at: 2 put: newArray.
 		^ self.

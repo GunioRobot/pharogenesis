@@ -4,7 +4,7 @@ applyInverseTo: anObject
 	coordinates."
 
 	| transformedObject |
-	transformedObject _ anObject translateBy: translation x negated @ translation y negated.
+	transformedObject := anObject translateBy: translation x negated @ translation y negated.
 	scale == nil
-		ifFalse: [transformedObject _ transformedObject scaleBy: 1.0 / scale x @ (1.0 / scale y)].
+		ifFalse: [transformedObject := transformedObject scaleBy: 1.0 / scale x @ (1.0 / scale y)].
 	^transformedObject

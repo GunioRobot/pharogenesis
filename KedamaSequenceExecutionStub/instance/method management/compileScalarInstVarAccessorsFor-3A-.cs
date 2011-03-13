@@ -1,24 +1,24 @@
 compileScalarInstVarAccessorsFor: varName
 
 	| nameString type setPhrase arrayIndex getPhrase |
-	nameString _ varName asString capitalized.
-	arrayIndex _ turtles info at: varName asSymbol.
+	nameString := varName asString capitalized.
+	arrayIndex := turtles info at: varName asSymbol.
 
-	type _ turtles types at: arrayIndex.
+	type := turtles types at: arrayIndex.
 	type = #Number ifTrue: [
-		setPhrase _ 'setNumberVarAt:'.
-		getPhrase _ 'getNumberVarOf:'.
+		setPhrase := 'setNumberVarAt:'.
+		getPhrase := 'getNumberVarOf:'.
 	].
 	type = #Boolean ifTrue: [
-		setPhrase _ 'setBooleanVarAt:'.
-		getPhrase _ 'getBooleanVarOf:'
+		setPhrase := 'setBooleanVarAt:'.
+		getPhrase := 'getBooleanVarOf:'
 	].
 	type = #Color ifTrue: [
-		setPhrase _ 'setColorVarAt:'.
-		getPhrase _ 'getColorVarOf:'
+		setPhrase := 'setColorVarAt:'.
+		getPhrase := 'getColorVarOf:'
 	].
-	setPhrase ifNil: [setPhrase _ 'setObjectVarAt:'].
-	getPhrase ifNil: [getPhrase _ 'getObjectVarOf:'].
+	setPhrase ifNil: [setPhrase := 'setObjectVarAt:'].
+	getPhrase ifNil: [getPhrase := 'getObjectVarOf:'].
 
 	self class compileSilently: ('get', nameString, '
 	^ self ', getPhrase, '((turtles arrays at: ', arrayIndex printString, ') at: self index)')

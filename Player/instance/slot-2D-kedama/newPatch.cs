@@ -1,7 +1,7 @@
 newPatch
 
 	| f |
-	f _ KedamaPatchMorph newExtent: self costume renderedMorph dimensions.
+	f := KedamaPatchMorph newExtent: self costume renderedMorph dimensions.
 	f assuredPlayer assureUniClass.
 	f setNameTo: (ActiveWorld unusedMorphNameLike: f innocuousName).
 	self createSlotForPatch: f.

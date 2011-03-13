@@ -1,8 +1,8 @@
 addArrows
 	| frame |
-	downArrow _ ImageMorph new image: DownPicture.
-	upArrow _ ImageMorph new image: UpPicture.
-	frame _ Morph new color: Color transparent.
+	downArrow := ImageMorph new image: DownPicture.
+	upArrow := ImageMorph new image: UpPicture.
+	frame := Morph new color: Color transparent.
 	frame 
 		layoutPolicy: TableLayout new;
 		listDirection: #topToBottom;

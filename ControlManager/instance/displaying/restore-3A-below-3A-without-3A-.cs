@@ -1,7 +1,7 @@
 restore: aRectangle below: index without: aView
 	"Restore all windows visible in aRectangle, but without aView"
 	| view | 
-	view _ (scheduledControllers at: index) view.
+	view := (scheduledControllers at: index) view.
 	view == aView ifTrue: 
 		[index >= scheduledControllers size ifTrue: [^ self].
 		^ self restore: aRectangle below: index+1 without: aView].

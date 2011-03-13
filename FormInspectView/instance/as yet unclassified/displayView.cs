@@ -4,8 +4,8 @@ displayView
 	| scale |
 	Display fill: self insetDisplayBox fillColor: Color white.
 	model selectionIndex == 0 ifTrue: [^ self].
-	scale _ self insetDisplayBox extent / model selection extent.
-	scale _ (scale x min: scale y) min: 1.
+	scale := self insetDisplayBox extent / model selection extent.
+	scale := (scale x min: scale y) min: 1.
 	model selection
 		displayOn: Display
 		transformation: (WindowingTransformation

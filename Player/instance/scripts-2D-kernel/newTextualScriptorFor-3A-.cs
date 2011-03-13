@@ -4,8 +4,8 @@ newTextualScriptorFor: aSelector
 	| aMethodWithInterface aScriptEditor |
 	(self class selectors includes: aSelector) ifTrue: [self error: 'selector already exists'].
 
-	aMethodWithInterface _ self class permanentUserScriptFor: aSelector player: self.
-	aScriptEditor _ aMethodWithInterface instantiatedScriptEditorForPlayer: self.
+	aMethodWithInterface := self class permanentUserScriptFor: aSelector player: self.
+	aScriptEditor := aMethodWithInterface instantiatedScriptEditorForPlayer: self.
 	aScriptEditor install.
 	aScriptEditor showSourceInScriptor.
 	aMethodWithInterface selector numArgs == 0 ifTrue:

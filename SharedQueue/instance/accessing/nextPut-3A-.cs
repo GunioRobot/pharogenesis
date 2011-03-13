@@ -6,6 +6,6 @@ nextPut: value
 		critical: [writePosition > contentsArray size
 						ifTrue: [self makeRoomAtEnd].
 				 contentsArray at: writePosition put: value.
-				 writePosition _ writePosition + 1].
+				 writePosition := writePosition + 1].
 	readSynch signal.
 	^value

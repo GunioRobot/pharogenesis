@@ -1,2 +1,0 @@
-voices: aCollection
-	voices := aCollection

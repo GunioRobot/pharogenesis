@@ -11,7 +11,7 @@ glyphInfoOf: char into: glyphInfoArray
 		^ glyphInfoArray.
 	].
 
-	newForm := self computeForm: char.
+	newForm _ self computeForm: char.
 	self at: char put: newForm.
 
 	glyphInfoArray at: 1 put: newForm;

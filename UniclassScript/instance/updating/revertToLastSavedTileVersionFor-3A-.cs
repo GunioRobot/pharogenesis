@@ -9,4 +9,4 @@ revertToLastSavedTileVersionFor: anEditor
 			[anEditor removeAllButFirstSubmorph.
 			anEditor insertUniversalTiles].
 	anEditor showingMethodPane: false.
-	isTextuallyCoded _ false
+	isTextuallyCoded := false

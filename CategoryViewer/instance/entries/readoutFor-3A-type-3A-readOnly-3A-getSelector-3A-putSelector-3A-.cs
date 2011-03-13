@@ -2,10 +2,10 @@ readoutFor: partName type: partType readOnly: readOnly getSelector: getSelector 
 	"Answer a readout morph for the given part"
 
 	| readout delta |
-	readout _ (Vocabulary vocabularyForType: partType) updatingTileForTarget: scriptedPlayer partName: partName getter: getSelector setter: putSelector.
+	readout := (Vocabulary vocabularyForType: partType) updatingTileForTarget: scriptedPlayer partName: partName getter: getSelector setter: putSelector.
 
 	(partType == #Number) ifTrue:
-		[(delta _ scriptedPlayer arrowDeltaFor: getSelector) = 1
+		[(delta := scriptedPlayer arrowDeltaFor: getSelector) = 1
 			ifFalse:
 				[readout setProperty: #arrowDelta toValue: delta].
 		scriptedPlayer setFloatPrecisionFor: readout updatingStringMorph].

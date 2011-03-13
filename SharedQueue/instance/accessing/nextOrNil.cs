@@ -6,11 +6,11 @@ nextOrNil
 
 	accessProtect critical: [
 		readPosition >= writePosition ifTrue: [
-			value _ nil
+			value := nil
 		] ifFalse: [
-			value _ contentsArray at: readPosition.
+			value := contentsArray at: readPosition.
 			contentsArray at: readPosition put: nil.
-			readPosition _ readPosition + 1
+			readPosition := readPosition + 1
 		].
 		readPosition >= writePosition ifTrue: [readSynch initSignals].
 	].

@@ -1,2 +1,0 @@
-words: aCollection
-	words := aCollection

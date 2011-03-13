@@ -1,3 +1,0 @@
-frameNumber: n
-
-	frameNumber := n

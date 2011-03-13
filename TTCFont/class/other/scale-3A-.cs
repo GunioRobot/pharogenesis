@@ -1,3 +1,3 @@
 scale: anObject
 
-	Scale := anObject.
+	Scale _ anObject.

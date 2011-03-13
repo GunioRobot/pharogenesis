@@ -1,0 +1,2 @@
+allowed
+	^self allowed: nil

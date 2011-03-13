@@ -16,7 +16,7 @@ addCustomMenuItems: aCustomMenu hand: aHandMorph
 			subMenu add: 'next frame' translated action: #nextFrame]].
 	subMenu add: 'extract this frame' translated action: #extractFrame:.
 	movies _
-		(self world rootMorphsAt: aHandMorph targetOffset)
+		(self world rootMorphsAt: aHandMorph targetPoint)
 			select: [:m | (m isKindOf: MovieMorph) or:
 						[m isSketchMorph]].
 	(movies size > 1) ifTrue:

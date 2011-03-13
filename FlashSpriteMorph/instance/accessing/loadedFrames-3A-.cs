@@ -1,2 +1,0 @@
-loadedFrames: n
-	loadedFrames := n.

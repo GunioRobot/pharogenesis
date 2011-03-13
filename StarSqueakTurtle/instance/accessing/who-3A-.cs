@@ -1,3 +1,0 @@
-who: anInteger
-
-	who := anInteger.

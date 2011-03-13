@@ -1,1 +1,0 @@
-recordMoveTo: aPoint

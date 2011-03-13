@@ -3,4 +3,4 @@ encodingTag: aNumber
 	TTCFontReader encodingTag: 6
 "
 
-	EncodingTag := aNumber.
+	EncodingTag _ aNumber.

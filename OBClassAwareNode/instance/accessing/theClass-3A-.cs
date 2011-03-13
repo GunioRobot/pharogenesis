@@ -1,2 +1,0 @@
-theClass: aClass
-	theClass := aClass

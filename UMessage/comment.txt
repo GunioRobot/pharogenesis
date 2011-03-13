@@ -1,0 +1,1 @@
+A message that can be sent to or from a UServer.  All instances may be converted to an array of strings, and that array of strings may be parsed back with fromStringArray:.

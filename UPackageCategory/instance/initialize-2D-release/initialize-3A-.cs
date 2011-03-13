@@ -1,0 +1,2 @@
+initialize: anArrayOfStrings
+	components := anArrayOfStrings

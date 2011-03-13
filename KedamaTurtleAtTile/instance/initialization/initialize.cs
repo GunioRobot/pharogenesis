@@ -1,6 +1,6 @@
 initialize
 
 	super initialize.
-	type _ #Player.
-	operatorOrExpression _ #getTurtleAt:.
+	type := #Player.
+	operatorOrExpression := #getTurtleAt:.
 	self addTile.

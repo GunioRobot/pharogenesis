@@ -7,5 +7,5 @@ getViewport
 	viewport actually exists. It should not be used outside of View or
 	subclasses because the viewport is not sharable."
 
-	viewport == nil ifTrue: [viewport _ (self transform: self getWindow) truncated].
+	viewport == nil ifTrue: [viewport := (self transform: self getWindow) truncated].
 	^viewport

@@ -5,7 +5,7 @@ browseMethodConflicts
 
 	aList := myChangeSet 
 		messageListForChangesWhich: [ :aClass :aSelector |
-			(ChangeSorter allChangeSetsWithClass: aClass selector: aSelector) size > 1
+			(ChangesOrganizer allChangeSetsWithClass: aClass selector: aSelector) size > 1
 		]
 		ifNone: [^ self inform: 'No other change set has changes
 for any method in this change set.'].

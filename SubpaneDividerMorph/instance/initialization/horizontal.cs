@@ -1,3 +1,0 @@
-horizontal
-
-	self hResizing: #spaceFill.

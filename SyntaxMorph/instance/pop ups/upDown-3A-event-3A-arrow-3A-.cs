@@ -1,7 +1,7 @@
 upDown: delta event: evt arrow: arrowMorph
 
 	| st |
-	st _ submorphs detect: [:mm | mm isKindOf: StringMorph] ifNone: [^ self].
+	st := submorphs detect: [:mm | mm isKindOf: StringMorph] ifNone: [^ self].
 	(self nodeClassIs: LiteralNode) ifTrue:
 		[ "+/- 1"
 		st contents: (self decompile asNumber + delta) printString.

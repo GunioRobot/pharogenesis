@@ -2,9 +2,9 @@ unparenthetically
 	"If the receiver starts with (..( and ends with matching )..), strip them"
 
 	| curr |
-	curr _ self.
+	curr := self.
 	[((curr first = $() and: [curr last = $)])] whileTrue:
-		[curr _ curr copyFrom: 2 to: (curr size - 1)].
+		[curr := curr copyFrom: 2 to: (curr size - 1)].
 
 	^ curr
 

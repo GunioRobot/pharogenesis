@@ -1,3 +1,3 @@
 menu: getMenuSel
 
-	getMenuSelector _ getMenuSel
+	getMenuSelector := getMenuSel

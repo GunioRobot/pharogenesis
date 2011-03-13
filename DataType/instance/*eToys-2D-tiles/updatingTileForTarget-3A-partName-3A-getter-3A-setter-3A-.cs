@@ -2,12 +2,12 @@ updatingTileForTarget: aTarget partName: partName getter: getter setter: setter
 	"Answer, for classic tiles, an updating readout tile for a part with the receiver's type, with the given getter and setter"
 
 	| aTile displayer actualSetter |
-	actualSetter _ setter ifNotNil:
+	actualSetter := setter ifNotNil:
 		[(#(none #nil unused) includes: setter) ifTrue: [nil] ifFalse: [setter]].
 
-	aTile _ self newReadoutTile.
+	aTile := self newReadoutTile.
 
-	displayer _ UpdatingStringMorph new
+	displayer := UpdatingStringMorph new
 		getSelector: getter;
 		target: aTarget;
 		growable: true;

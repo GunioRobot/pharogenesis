@@ -6,14 +6,14 @@ findBinary: aBlock ifNone: exceptionBlock
 		>0	- if the search should continue in the second half
 	If no matching element is found, evaluate exceptionBlock."
 	| index low high test item |
-	low _ 1.
-	high _ self size.
-	[index _ high + low // 2.
+	low := 1.
+	high := self size.
+	[index := high + low // 2.
 	low > high] whileFalse:[
-		test _ aBlock value: (item _ self at: index).
+		test := aBlock value: (item := self at: index).
 		test = 0 
 			ifTrue:[^item]
 			ifFalse:[test > 0
-				ifTrue: [low _ index + 1]
-				ifFalse: [high _ index - 1]]].
+				ifTrue: [low := index + 1]
+				ifFalse: [high := index - 1]]].
 	^exceptionBlock value

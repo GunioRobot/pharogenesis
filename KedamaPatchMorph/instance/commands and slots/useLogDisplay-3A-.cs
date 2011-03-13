@@ -1,4 +1,4 @@
 useLogDisplay: aBoolean
 
-	displayType _ aBoolean ifTrue: [#logScale] ifFalse: [#linear].
+	displayType := aBoolean ifTrue: [#logScale] ifFalse: [#linear].
 	self formChanged.

@@ -1,2 +1,0 @@
-isFlashPlayer
-	^false

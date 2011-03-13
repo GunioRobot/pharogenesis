@@ -1,2 +1,2 @@
 type: aType
-	type _ aType
+	type := aType

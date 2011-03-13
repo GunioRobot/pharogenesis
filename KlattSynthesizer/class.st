@@ -1,1 +1,0 @@
-KlattSynthesizer class instanceVariableNames: ''

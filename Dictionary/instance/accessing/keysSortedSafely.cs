@@ -1,7 +1,7 @@
 keysSortedSafely
 	"Answer a SortedCollection containing the receiver's keys."
 	| sortedKeys |
-	sortedKeys _ SortedCollection new: self size.
+	sortedKeys := SortedCollection new: self size.
 	sortedKeys sortBlock:
 		[:x :y |  "Should really be use <obj, string, num> compareSafely..."
 		((x isString and: [y isString])

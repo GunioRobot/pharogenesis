@@ -1,2 +1,0 @@
-browseImplementors
-	self browseClass: OBImplementorsBrowser

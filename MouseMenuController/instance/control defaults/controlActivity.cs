@@ -1,7 +1,7 @@
 controlActivity
 	"Refer to the comment in Controller|controlActivity."
 	| cursorPoint |
-	cursorPoint _ sensor cursorPoint.
+	cursorPoint := sensor cursorPoint.
 	super controlActivity.
 	(cursorPoint = sensor cursorPoint and: [self viewHasCursor])
 		ifTrue: 

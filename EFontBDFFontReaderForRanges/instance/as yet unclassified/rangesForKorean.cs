@@ -1,10 +1,10 @@
 rangesForKorean
 
 	| basics etc |
-	basics := {
+	basics _ {
 		Array with: 16rA1 with: 16rFF
 	}.
-	etc := {
+	etc _ {
 		Array with: 16r100 with: 16r17F. "extended latin"
 		Array with: 16r370 with: 16r3FF. "greek"
 		Array with: 16r400 with: 16r52F. "cyrillic"

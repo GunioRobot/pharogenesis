@@ -1,28 +1,28 @@
 decodeCmapFmtTable: entry
 	| cmapFmt length cmap firstCode entryCount segCount segments offset code |
-	cmapFmt := entry nextUShort.
-	length := entry nextUShort.
+	cmapFmt _ entry nextUShort.
+	length _ entry nextUShort.
 	entry skip: 2. "skip version"
 
 	cmapFmt = 0 ifTrue: "byte encoded table"
-		[length := length - 6. 		"should be always 256"
+		[length _ length - 6. 		"should be always 256"
 		length <= 0 ifTrue: [^ nil].	"but sometimes, this table is empty"
-		cmap := Array new: length.
+		cmap _ Array new: length.
 		entry nextBytes: length into: cmap startingAt: entry offset.
 		^ cmap].
 
 	cmapFmt = 4 ifTrue: "segment mapping to deltavalues"
-		[segCount := entry nextUShort // 2.
+		[segCount _ entry nextUShort // 2.
 		entry skip: 6. "skip searchRange, entrySelector, rangeShift"
-		segments := Array new: segCount.
-		segments := (1 to: segCount) collect: [:e | Array new: 4].
+		segments _ Array new: segCount.
+		segments _ (1 to: segCount) collect: [:e | Array new: 4].
 		1 to: segCount do: [:i | (segments at: i) at: 2 put: entry nextUShort]. "endCount"
 		entry skip: 2. "skip reservedPad"
 		1 to: segCount do: [:i | (segments at: i) at: 1 put: entry nextUShort]. "startCount"
 		1 to: segCount do: [:i | (segments at: i) at: 3 put: entry nextShort]. "idDelta"
-		offset := entry offset.
+		offset _ entry offset.
 		1 to: segCount do: [:i | (segments at: i) at: 4 put: entry nextUShort]. "idRangeOffset"
-		cmap := Array new: 65536 withAll: 0.
+		cmap _ Array new: 65536 withAll: 0.
 		segments withIndexDo:
 			[:seg :si |
 			seg first to: seg second do:
@@ -30,19 +30,19 @@ decodeCmapFmtTable: entry
 					seg last > 0 ifTrue:
 						["offset to glypthIdArray - this is really C-magic!"
 						entry offset: i - seg first - 1 * 2 + seg last + si + si + offset.
-						code := entry nextUShort.
-						code > 0 ifTrue: [code := code + seg third]]
+						code _ entry nextUShort.
+						code > 0 ifTrue: [code _ code + seg third]]
 					ifFalse:
 						["simple offset"
-						code := i + seg third].
+						code _ i + seg third].
 					cmap at: i + 1 put: (code \\ 16r10000)]].
 		^ cmap].
 
 	cmapFmt = 6 ifTrue: "trimmed table"
-		[firstCode := entry nextUShort.
-		entryCount := entry nextUShort.
-		cmap := Array new: entryCount + firstCode withAll: 0.
+		[firstCode _ entry nextUShort.
+		entryCount _ entry nextUShort.
+		cmap _ Array new: entryCount + firstCode withAll: 0.
 		entryCount timesRepeat:
-			[cmap at: (firstCode := firstCode + 1) put: entry nextUShort].
+			[cmap at: (firstCode _ firstCode + 1) put: entry nextUShort].
 		^ cmap].
 	^ nil

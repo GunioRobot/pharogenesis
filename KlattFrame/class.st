@@ -1,1 +1,0 @@
-KlattFrame class instanceVariableNames: ''

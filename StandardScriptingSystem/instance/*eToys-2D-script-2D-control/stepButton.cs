@@ -1,7 +1,7 @@
 stepButton
 	| aButton |
 	self flag: #deferred.  "ambiguity about recipients"
-	aButton _ ThreePhaseButtonMorph new.
+	aButton := ThreePhaseButtonMorph new.
 		aButton
 			image:  (ScriptingSystem formAtKey: 'StepPicOn');
 			offImage: (ScriptingSystem formAtKey: 'StepPic');

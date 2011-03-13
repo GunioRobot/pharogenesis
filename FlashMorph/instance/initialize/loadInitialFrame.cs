@@ -1,2 +1,0 @@
-loadInitialFrame
-	self computeBounds.

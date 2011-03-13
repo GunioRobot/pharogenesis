@@ -1,0 +1,2 @@
+initializeSelectedPackageVersions
+	selectedPackageVersions := Set new

@@ -1,2 +1,0 @@
-useTimeSync
-	^useTimeSync ifNil:[true]

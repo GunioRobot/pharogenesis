@@ -1,3 +1,0 @@
-length: aNumber
-
-	length := aNumber.

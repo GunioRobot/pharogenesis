@@ -2,7 +2,7 @@ changeInstVarOrder
 	"Change the order of the receiver's instance variables"
 
 	| reply |
-	reply _ FillInTheBlank request: 'rearrange, then accept; or cancel' initialAnswer:
+	reply := FillInTheBlank request: 'rearrange, then accept; or cancel' initialAnswer:
 		((self currentPage player class instVarNames asArray collect: [:v | v asSymbol]) storeString copyWithoutAll: #($# $( $))) asString.
 	reply isEmptyOrNil ifTrue: [^ self].
 	self flag: #deferred.  "Error checking and graceful escape wanted"

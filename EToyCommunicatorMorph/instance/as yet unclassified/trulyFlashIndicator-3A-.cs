@@ -2,8 +2,8 @@ trulyFlashIndicator: aSymbol
 
 	| indicator firstColor |
 
-	indicator _ fields at: aSymbol ifAbsent: [^self].
-	firstColor _ indicator 
+	indicator := fields at: aSymbol ifAbsent: [^self].
+	firstColor := indicator 
 		valueOfProperty: #firstColor
 		ifAbsent: [
 			indicator setProperty: #firstColor toValue: indicator color.

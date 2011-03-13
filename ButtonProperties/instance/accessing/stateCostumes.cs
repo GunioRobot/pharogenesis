@@ -1,3 +1,3 @@
 stateCostumes
 
-	^stateCostumes ifNil: [stateCostumes _ Dictionary new]
+	^stateCostumes ifNil: [stateCostumes := Dictionary new]

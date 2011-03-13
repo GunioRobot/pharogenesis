@@ -1,2 +1,0 @@
-asAnnouncement
-	^ self

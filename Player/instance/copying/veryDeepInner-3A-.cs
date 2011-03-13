@@ -5,13 +5,13 @@ veryDeepInner: deepCopier
 
 	super veryDeepInner: deepCopier.
 	"my own instance variables are completely normal"
-	costume _ costume veryDeepCopyWith: deepCopier.
-	costumes _ costumes veryDeepCopyWith: deepCopier.
+	costume := costume veryDeepCopyWith: deepCopier.
+	costumes := costumes veryDeepCopyWith: deepCopier.
 
 	Player instSize + 1 to: self class instSize do: [:index |
-		instVar _ self instVarAt: index.
-		weak _ instVar isMorph | instVar isPlayerLike. 
-		(subAss _ deepCopier references associationAt: instVar ifAbsent: [nil])
+		instVar := self instVarAt: index.
+		weak := instVar isMorph | instVar isPlayerLike. 
+		(subAss := deepCopier references associationAt: instVar ifAbsent: [nil])
 				"use association, not value, so nil is an exceptional value"
 			ifNil: [weak ifFalse: [
 					self instVarAt: index put: (instVar veryDeepCopyWith: deepCopier)]]

@@ -1,3 +1,0 @@
-thumbnailHeight
-
-	^ 30

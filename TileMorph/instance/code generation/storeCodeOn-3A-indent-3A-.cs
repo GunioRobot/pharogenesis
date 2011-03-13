@@ -52,7 +52,7 @@ storeCodeOn: aStream indent: tabCount
 	"The following branch has long been disused
 	type = #slotRef ifTrue:
 		[self isThisEverCalled.
-		refType _ self slotRefType.
+		refType := self slotRefType.
 		refType = #get ifTrue:
 			[^ aStream
 				nextPutAll: targetName;

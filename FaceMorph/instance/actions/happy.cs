@@ -1,2 +1,0 @@
-happy
-	self lips smile

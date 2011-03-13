@@ -6,6 +6,6 @@ hasLiteral: literal
 	| lit |
 	1 to: self size do: 
 		[:index | 
-		(lit _ self at: index) == literal ifTrue: [^ true].
+		(lit := self at: index) == literal ifTrue: [^ true].
 		(lit class == Array and: [lit hasLiteral: literal]) ifTrue: [^ true]].
 	^ false

@@ -1,2 +1,2 @@
 setPenColor: aColor
-	penColor _ aColor
+	penColor := aColor

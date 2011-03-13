@@ -4,6 +4,6 @@ leftMarginForCompositionForLine: lineIndex
 
 	| indent |
 	lineIndex = 1
-		ifTrue: [indent _ textStyle firstIndent]
-		ifFalse: [indent _ textStyle restIndent].
+		ifTrue: [indent := textStyle firstIndent]
+		ifFalse: [indent := textStyle restIndent].
 	^indent + (textStyle leftMarginTabAt: marginTabsLevel)

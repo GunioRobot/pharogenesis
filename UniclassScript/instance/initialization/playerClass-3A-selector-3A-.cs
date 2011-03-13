@@ -3,4 +3,4 @@ playerClass: aPlayerClass selector: aSelector
 
 	super playerClass: aPlayerClass selector: aSelector.
 	aSelector numArgs = 1 ifTrue:
-		[argumentVariables _ {Variable new name: 'parameter' type: #Number}]
+		[argumentVariables := {Variable new name: 'parameter' type: #Number}]

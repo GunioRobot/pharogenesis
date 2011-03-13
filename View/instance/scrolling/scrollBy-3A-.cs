@@ -12,9 +12,9 @@ scrollBy: aPoint
 	Note: subclasses may override to return false if no scrolling takes place."
 
 	| aRectangle |
-	aRectangle _ insetDisplayBox.
-	transformation _ transformation scrollBy: aPoint.
-	window _ self getWindow translateBy: aPoint x negated @ aPoint y negated.
+	aRectangle := insetDisplayBox.
+	transformation := transformation scrollBy: aPoint.
+	window := self getWindow translateBy: aPoint x negated @ aPoint y negated.
 	self unlock.
-	insetDisplayBox _ aRectangle.
+	insetDisplayBox := aRectangle.
 	^ true

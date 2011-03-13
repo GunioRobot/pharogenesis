@@ -1,2 +1,2 @@
 textColor: color
-	foregroundColor := color
+	foregroundColor _ color

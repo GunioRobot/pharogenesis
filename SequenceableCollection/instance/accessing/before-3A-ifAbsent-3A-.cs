@@ -4,7 +4,7 @@ before: target ifAbsent: exceptionBlock
 	of the receiver, or if there are no elements before it."
 
 	| index |
-	index _ self indexOf: target.
+	index := self indexOf: target.
 	^ (index == 0 or: [index == 1])
 		ifTrue: [exceptionBlock value]
 		ifFalse: [self at: index - 1]

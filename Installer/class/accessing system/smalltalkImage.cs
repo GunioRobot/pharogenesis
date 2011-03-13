@@ -1,0 +1,3 @@
+smalltalkImage
+
+^ SmalltalkImage current

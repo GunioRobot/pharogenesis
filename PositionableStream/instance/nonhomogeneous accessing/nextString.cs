@@ -5,10 +5,10 @@ nextString
 
 	"read the length in binary mode"
 	self binary.
-	length _ self next.		"first byte."
-	length >= 192 ifTrue: [length _ length - 192.
-		1 to: 3 do: [:ii | length _ length * 256 + self next]].
-	aByteArray _ ByteArray new: length.
+	length := self next.		"first byte."
+	length >= 192 ifTrue: [length := length - 192.
+		1 to: 3 do: [:ii | length := length * 256 + self next]].
+	aByteArray := ByteArray new: length.
 
 	self nextInto: aByteArray.
 	^aByteArray asString.

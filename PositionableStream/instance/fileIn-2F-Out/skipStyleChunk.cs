@@ -2,7 +2,7 @@ skipStyleChunk
 	"Get to the start of the next chunk that is not a style for the previous chunk"
 
 	| pos |
-	pos _ self position.
+	pos := self position.
 	self skipSeparators.
 	self peek == $] 
 		ifTrue: [(self upTo: $[) = ']text' 	"old -- no longer needed"

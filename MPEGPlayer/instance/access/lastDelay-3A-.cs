@@ -1,2 +1,0 @@
-lastDelay: aNumber
-	lastDelay := aNumber

@@ -6,10 +6,10 @@ collapse
 			[model modelSleep.
 			(subViews ~~ nil and: [subViews size = 1 and: [subViews first isKindOf: MorphWorldView]])
 				ifTrue: [subViews first deEmphasizeView].
-			expandedViewport _ self viewport.
-			savedSubViews _ subViews.
+			expandedViewport := self viewport.
+			savedSubViews := subViews.
 			self resetSubViews.
-			labelText isNil ifTrue: [self label: nil.  bitsValid _ false.].
+			labelText isNil ifTrue: [self label: nil.  bitsValid := false.].
 			self window: (self inverseDisplayTransform:
 					((self labelDisplayBox topLeft extent: (labelText extent x + 70) @ self labelHeight)
 						 intersect: self labelDisplayBox))]

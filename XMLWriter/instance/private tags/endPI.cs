@@ -1,0 +1,2 @@
+endPI
+	self stream nextPutAll: ' ?>'

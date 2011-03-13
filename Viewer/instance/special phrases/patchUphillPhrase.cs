@@ -8,7 +8,7 @@ patchUphillPhrase
 				argType: #Color.	"temp dummy"
 	(outerPhrase submorphs second) delete.	"operator"
 	(outerPhrase submorphs second) delete.	"color"
-	upHill _ KedamaUpHillTile new.
+	upHill := KedamaUpHillTile new.
 	upHill setPatchDefaultTo: (scriptedPlayer defaultPatchPlayer).
 	outerPhrase addMorphBack: upHill.
 	^outerPhrase.

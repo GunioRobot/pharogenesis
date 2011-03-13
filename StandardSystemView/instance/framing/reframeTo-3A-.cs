@@ -3,13 +3,13 @@ reframeTo: newFrame
 	Repaint difference after the change.  "
 	| oldBox newBox portRect |
 	self uncacheBits.
-	oldBox _ self windowBox.
-	portRect _ newFrame topLeft + self labelOffset
+	oldBox := self windowBox.
+	portRect := newFrame topLeft + self labelOffset
 				corner: newFrame corner.
 	self setWindow: nil.
 	self resizeTo: portRect.
 	self setLabelRegion.
-	newBox _ self windowBox.
+	newBox := self windowBox.
 	(oldBox areasOutside: newBox) do:
 		[:rect | ScheduledControllers restore: rect].
 	self displayEmphasized

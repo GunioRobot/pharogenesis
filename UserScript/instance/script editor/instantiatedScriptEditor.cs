@@ -5,7 +5,7 @@ instantiatedScriptEditor
 			[^ (player costume pasteUpMorph ifNil: [player costume "the world, backstop"]) scriptorForTextualScript: selector ofPlayer: player].
 
 	currentScriptEditor ifNil:
-		[currentScriptEditor _ (player class includesSelector: selector) 
+		[currentScriptEditor := (player class includesSelector: selector) 
 			ifTrue: [ScriptEditorMorph new 
 				fromExistingMethod: selector 
 				forPlayer: player]

@@ -2,13 +2,13 @@ initialize
 	"initialize the state of the receiver"
 	super initialize.
 	""
-	applyToWholeText _ true.
+	applyToWholeText := true.
 	myTarget
 		ifNil: [""
-			myTarget _ TextMorph new openInWorld.
+			myTarget := TextMorph new openInWorld.
 			myTarget contents: ''].
 
-	activeTextMorph _ myTarget copy.
+	activeTextMorph := myTarget copy.
 	activeTextMorph extent: 300 @ 100;	 
 			 releaseCachedState.
 	thingsToRevert

@@ -1,3 +1,3 @@
 who: anInteger
 
-	who _ anInteger.
+	who := anInteger.

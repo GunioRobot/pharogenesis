@@ -1,3 +1,3 @@
 targetMorph: x
 
-	myTarget _ x
+	myTarget := x

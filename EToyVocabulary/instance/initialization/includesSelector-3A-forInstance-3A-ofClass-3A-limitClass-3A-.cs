@@ -4,14 +4,14 @@ includesSelector: aSelector forInstance: anInstance ofClass: aTargetClass limitC
 	| classToUse aClass theKeys |
 	(aTargetClass isUniClass and:
 		[(aTargetClass namedTileScriptSelectors includes: aSelector) or:
-			[(((theKeys _ aTargetClass slotInfo keys collect:
+			[(((theKeys := aTargetClass slotInfo keys collect:
 				[:anInstVarName | Utilities getterSelectorFor: anInstVarName])) includes: aSelector)
 					or:
 						[(theKeys collect: [:anInstVarName | Utilities setterSelectorFor: anInstVarName]) includes: aSelector]]]) ifTrue: [^ true].
 
 	(methodInterfaces includesKey: aSelector) ifFalse: [^ false].
-	classToUse _ self classToUseFromInstance: anInstance ofClass: aTargetClass.
-	^ (aClass _ classToUse whichClassIncludesSelector: aSelector)
+	classToUse := self classToUseFromInstance: anInstance ofClass: aTargetClass.
+	^ (aClass := classToUse whichClassIncludesSelector: aSelector)
 		ifNil:
 			[false]
 		ifNotNil:

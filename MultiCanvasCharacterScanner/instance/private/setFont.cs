@@ -1,5 +1,5 @@
 setFont
-	foregroundColor ifNil: [foregroundColor := Color black].
+	foregroundColor ifNil: [foregroundColor _ Color black].
 	super setFont.
-	baselineY := lineY + line baseline.
-	destY := baselineY - font ascent.
+	baselineY _ lineY + line baseline.
+	destY _ baselineY - font ascent.

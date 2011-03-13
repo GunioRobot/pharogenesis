@@ -4,6 +4,6 @@ compactSymbolTable
 	| oldSize |
 
 	Smalltalk garbageCollect.
-	oldSize _ SymbolTable array size.
+	oldSize := SymbolTable array size.
 	SymbolTable growTo: SymbolTable size * 4 // 3 + 100.
 	^oldSize printString,'  ',(oldSize - SymbolTable array size) printString, ' slot(s) reclaimed'

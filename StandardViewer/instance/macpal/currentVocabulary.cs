@@ -2,11 +2,11 @@ currentVocabulary
 	"Answer the vocabulary currently associated with the receiver"
 
 	| aSym aVocab |
-	aSym _ self valueOfProperty: #currentVocabularySymbol ifAbsent: [nil].
+	aSym := self valueOfProperty: #currentVocabularySymbol ifAbsent: [nil].
 	aSym ifNil:
-		[aVocab _ self valueOfProperty: #currentVocabulary ifAbsent: [nil].
+		[aVocab := self valueOfProperty: #currentVocabulary ifAbsent: [nil].
 		aVocab ifNotNil:
-			[aSym _ aVocab vocabularyName.
+			[aSym := aVocab vocabularyName.
 			self removeProperty: #currentVocabulary.
 			self setProperty: #currentVocabularySymbol toValue: aSym]].
 	^ aSym

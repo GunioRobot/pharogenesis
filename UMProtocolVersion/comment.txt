@@ -1,0 +1,1 @@
+Tell the receiver what protocol version the sender understands.  The receiver should not send messages back which use a newer protocol version.

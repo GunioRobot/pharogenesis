@@ -3,13 +3,13 @@ storeCodeOn: aStream indent: tabCount
 
 	| firstKeyword |
 	(#('redComponentIn:' 'setRedComponentIn:') includes: assignmentRoot) ifTrue: [
-		firstKeyword _ 'setRedComponentIn'.
+		firstKeyword := 'setRedComponentIn'.
 	].
 	(#('greenComponentIn:' 'setGreenComponentIn:') includes: assignmentRoot) ifTrue: [
-		firstKeyword _ 'setGreenComponentIn'
+		firstKeyword := 'setGreenComponentIn'
 	].
 	(#('blueComponentIn:' 'setBlueComponentIn:') includes: assignmentRoot) ifTrue: [
-		firstKeyword _ 'setBlueComponentIn'
+		firstKeyword := 'setBlueComponentIn'
 	].
 
 	aStream nextPutAll: firstKeyword.

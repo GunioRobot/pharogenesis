@@ -3,6 +3,6 @@ at: key ifAbsent: aBlock
 	answer the result of evaluating aBlock."
 
 	| obj |
-	obj _ array at: (self findElementOrNil: key).
+	obj := array at: (self findElementOrNil: key).
 	obj ifNil: [^ aBlock value].
 	^ obj

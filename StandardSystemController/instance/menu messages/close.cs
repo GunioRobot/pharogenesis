@@ -3,5 +3,5 @@ close
 	collection of scheduled views."
 
 	model okToChange ifFalse: [^self].
-	status _ #closed.
+	status := #closed.
 	view erase

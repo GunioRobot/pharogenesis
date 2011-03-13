@@ -4,11 +4,11 @@ tempVarNodesDo: aBlock
 	| tempHolder argsHolder |
 	((self parseNode class == MethodNode) or: [self parseNode class == BlockNode]) ifTrue: [
 		self submorphsDoIfSyntax: [:sub | 
-				(sub nodeClassIs: MethodTempsNode) ifTrue: [tempHolder _ sub].
+				(sub nodeClassIs: MethodTempsNode) ifTrue: [tempHolder := sub].
 				((sub nodeClassIs: UndefinedObject) and: [tempHolder isNil]) ifTrue: [
-					tempHolder _ sub findA: MethodTempsNode].
-				(sub nodeClassIs: BlockArgsNode) ifTrue: [tempHolder _ sub].
-				(sub nodeClassIs: SelectorNode) ifTrue: [argsHolder _ sub].
+					tempHolder := sub findA: MethodTempsNode].
+				(sub nodeClassIs: BlockArgsNode) ifTrue: [tempHolder := sub].
+				(sub nodeClassIs: SelectorNode) ifTrue: [argsHolder := sub].
 				]
 			ifString: [:sub | ].
 		tempHolder ifNotNil: ["Temp variables"

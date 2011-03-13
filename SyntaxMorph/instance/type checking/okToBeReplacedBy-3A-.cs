@@ -16,7 +16,7 @@ okToBeReplacedBy: aSyntaxMorph
 		"Transcript show: aSyntaxMorph resultType printString, ' dropped on ', 
 			self receiverOrArgType printString; cr.
 		"
-	(itsType _ aSyntaxMorph resultType) == #unknown ifTrue: [^ true].
-	(myType _ self receiverOrArgType) == #unknown ifTrue: [^ true].
+	(itsType := aSyntaxMorph resultType) == #unknown ifTrue: [^ true].
+	(myType := self receiverOrArgType) == #unknown ifTrue: [^ true].
 		"my type in enclosing message"
 	^ myType = itsType

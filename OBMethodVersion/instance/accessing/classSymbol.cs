@@ -1,2 +1,0 @@
-classSymbol
-	^ classRef name

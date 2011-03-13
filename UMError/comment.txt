@@ -1,0 +1,1 @@
+An error message from the server to the client.

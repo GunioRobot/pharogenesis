@@ -1,1 +1,0 @@
-OBScrollBar class instanceVariableNames: ''

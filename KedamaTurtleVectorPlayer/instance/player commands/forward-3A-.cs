@@ -5,4 +5,4 @@ forward: val
 	] ifTrue: [
 		self groupForward: val
 	].
-	turtleMapValid _ false.
+	turtleMapValid := false.

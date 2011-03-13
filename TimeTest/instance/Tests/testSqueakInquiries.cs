@@ -4,7 +4,7 @@ testSqueakInquiries
 		(self timeClass namesForTimes: #(2 10000023 10000026))
 			= #('January, 1901' 'April, 1901, 4/26/1901, 5:47 pm' 'April, 1901, 4/26/1901, 5:47 pm').
 
-	timewords := #(0.5 30 62 130 4000 10000 60000 90000) 
+	timewords := #(0.5 30 62 130 4000 10000 60000 86401) 
 		collect: [ :ss | self timeClass humanWordsForSecondsAgo: ss ].
 	self assert: 
 		timewords = #('a second ago' '30 seconds ago' 'a minute ago' '2 minutes ago' 

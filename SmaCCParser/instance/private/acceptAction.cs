@@ -1,2 +1,0 @@
-acceptAction
-	^0

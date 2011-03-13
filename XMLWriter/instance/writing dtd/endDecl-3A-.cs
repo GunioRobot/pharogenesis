@@ -1,0 +1,2 @@
+endDecl: type
+	self endTag

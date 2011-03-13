@@ -1,6 +1,6 @@
 commResult: anArrayOfAssociations
 
 	| aDictionary |
-	aDictionary _ Dictionary new.
+	aDictionary := Dictionary new.
 	anArrayOfAssociations do: [ :each | aDictionary add: each].
 	resultQueue nextPut: aDictionary

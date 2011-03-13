@@ -11,6 +11,6 @@ scrollBy: aPoint
 
 	| newTranslation |
 	scale == nil
-		ifTrue: [newTranslation _ aPoint]
-		ifFalse: [newTranslation _ scale * aPoint].
+		ifTrue: [newTranslation := aPoint]
+		ifFalse: [newTranslation := scale * aPoint].
 	^self translateBy: newTranslation

@@ -1,2 +1,2 @@
 initialize
-	map _ ByteArray new: 256 withAll: 0.
+	map := ByteArray new: 256 withAll: 0.

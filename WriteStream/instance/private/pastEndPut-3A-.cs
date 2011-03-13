@@ -5,10 +5,10 @@ pastEndPut: anObject
 	Finally we put <anObject> at the current write position."
 
 	| oldSize grownCollection |
-	oldSize _ collection size.
-	grownCollection _ collection class new: oldSize + ((oldSize max: 20) min: 1000000).
-	collection _ grownCollection replaceFrom: 1 to: oldSize with: collection startingAt: 1.
-	writeLimit _ collection size.
-	collection at: (position _ position + 1) put: anObject.
+	oldSize := collection size.
+	grownCollection := collection class new: oldSize + ((oldSize max: 20) min: 1000000).
+	collection := grownCollection replaceFrom: 1 to: oldSize with: collection startingAt: 1.
+	writeLimit := collection size.
+	collection at: (position := position + 1) put: anObject.
 	"return the argument - added by kwl"
 	^ anObject

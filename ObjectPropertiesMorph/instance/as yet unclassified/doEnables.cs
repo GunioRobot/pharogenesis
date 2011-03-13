@@ -2,9 +2,9 @@ doEnables
 
 	| itsName fs |
 
-	fs _ myTarget fillStyle.
+	fs := myTarget fillStyle.
 	self allMorphsDo: [ :each |
-		itsName _ each knownName.
+		itsName := each knownName.
 		itsName == #pickerForColor ifTrue: [
 			self enable: each when: fs isSolidFill | fs isGradientFill
 		].

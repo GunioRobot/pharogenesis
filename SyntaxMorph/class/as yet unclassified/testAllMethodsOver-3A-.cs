@@ -27,9 +27,9 @@ testAllMethodsOver: methodSize
 	74% build morphs, 6% get source, 13% layout, 7% parse  
 	"
 	| tree source biggies morph stats time area |
-	biggies _ self systemNavigation 
+	biggies := self systemNavigation 
 				allMethodsSelect: [:cm | cm size > methodSize].
-	stats _ OrderedCollection new.
+	stats := OrderedCollection new.
 	'Laying out all ' , biggies size printString , ' methods over ' , methodSize printString , ' bytes...'
 		displayProgressAt: Sensor cursorPoint
 		from: 1
@@ -40,14 +40,14 @@ testAllMethodsOver: methodSize
 					Utilities
 						setClassAndSelectorFrom: methodRef
 						in: [:aClass :aSelector | 
-							source _ (aClass compiledMethodAt: aSelector) getSourceFromFile.
-							time _ Time
-										millisecondsToRun: [tree _ Compiler new
+							source := (aClass compiledMethodAt: aSelector) getSourceFromFile.
+							time := Time
+										millisecondsToRun: [tree := Compiler new
 														parse: source
 														in: aClass
 														notifying: nil.
-											morph _ tree asMorphicSyntaxUsing: SyntaxMorph.
-											area _ morph fullBounds area]].
+											morph := tree asMorphicSyntaxUsing: SyntaxMorph.
+											area := morph fullBounds area]].
 					stats add: {methodRef. area. time}]].
 	^ {{biggies size. methodSize. stats
 		detectSum: [:a | a second]. stats

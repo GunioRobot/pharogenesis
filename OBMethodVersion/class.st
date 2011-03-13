@@ -1,1 +1,0 @@
-OBMethodVersion class instanceVariableNames: ''

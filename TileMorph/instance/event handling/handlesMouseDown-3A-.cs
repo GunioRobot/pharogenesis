@@ -2,7 +2,7 @@ handlesMouseDown: evt
 	"Answer whether the receiver would handle the mouseDown represented by evt"
 
 	| aPoint |
-	aPoint _ evt cursorPoint.
+	aPoint := evt cursorPoint.
 	(operatorOrExpression notNil and: [upArrow notNil]) ifTrue: [^ true].
 		"Click on the operator presents list of alternatives"
 

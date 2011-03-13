@@ -1,0 +1,4 @@
+ss
+
+^self squeaksource
+ 

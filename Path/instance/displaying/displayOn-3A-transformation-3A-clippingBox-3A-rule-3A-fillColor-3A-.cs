@@ -3,8 +3,8 @@ displayOn: aDisplayMedium transformation: displayTransformation clippingBox: cli
 	scaled and translated Path."
 
 	| newPath transformedPath |
-	transformedPath _ displayTransformation applyTo: self.
-	newPath _ Path new.
+	transformedPath := displayTransformation applyTo: self.
+	newPath := Path new.
 	transformedPath do: [:point | newPath add: point].
 	newPath form: self form.
 	newPath

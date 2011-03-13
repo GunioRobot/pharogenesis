@@ -7,7 +7,7 @@ fileOutClass: extraClass andObject: theObject blocking: anIdentDict
 	self header; timeStamp.
 
 	extraClass ifNotNil: [
-		class _ extraClass.	"A specific class the user wants written"
+		class := extraClass.	"A specific class the user wants written"
 		class sharedPools size > 0 ifTrue:
 			[class shouldFileOutPools
 				ifTrue: [class fileOutSharedPoolsOn: self]].
@@ -15,7 +15,7 @@ fileOutClass: extraClass andObject: theObject blocking: anIdentDict
 	self trailer.	"Does nothing for normal files.  HTML streams will have trouble with object data"
 
 	"Append the object's raw data"
-	srefStream _ SmartRefStream on: self.
+	srefStream := SmartRefStream on: self.
 	srefStream blockers: anIdentDict.
 	srefStream nextPut: theObject.  "and all subobjects"
 	srefStream close.		"also closes me"

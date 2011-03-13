@@ -1,0 +1,2 @@
+categoryString
+	^package category printString

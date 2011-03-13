@@ -1,3 +1,0 @@
-closeMIDIPort
-
-	midiPort _ nil.

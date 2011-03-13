@@ -1,1 +1,0 @@
-OBNode class instanceVariableNames: ''

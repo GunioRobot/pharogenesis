@@ -1,3 +1,3 @@
 mouseDownHaloWidth: x
 
-	mouseDownHaloWidth _ x
+	mouseDownHaloWidth := x

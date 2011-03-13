@@ -1,0 +1,3 @@
+This is the wild-n-wooly policy.  Anyone may create a new account, and the first person to try to add or remove a package with a given name comes to exclusively own that package name.  Only the owner of a package name may make changes to packages with that name.
+
+As an exception, the supuser/suppassword may be used to change any package.  This is intended to allow a universe manager to override decisions made by package owners.

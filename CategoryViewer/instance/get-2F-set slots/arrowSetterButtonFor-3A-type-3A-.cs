@@ -1,7 +1,7 @@
 arrowSetterButtonFor: partName type: partType
 
 	| m |
-	m _ RectangleMorph new
+	m := RectangleMorph new
 		color: (ScriptingSystem colorForType: #command);
 		extent: 24@TileMorph defaultH;
 		borderWidth: 0.

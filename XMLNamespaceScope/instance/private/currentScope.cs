@@ -1,0 +1,2 @@
+currentScope
+	^self scope last

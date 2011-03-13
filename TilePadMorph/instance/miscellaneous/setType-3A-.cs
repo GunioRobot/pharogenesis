@@ -1,5 +1,5 @@
 setType: aSymbol
 
-	type _ aSymbol.
+	type := aSymbol.
 	self color: (ScriptingSystem colorForType: type).
 	self extent: (self basicWidth @ TileMorph defaultH)

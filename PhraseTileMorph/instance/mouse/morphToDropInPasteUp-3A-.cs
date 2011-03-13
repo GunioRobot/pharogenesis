@@ -3,21 +3,21 @@ morphToDropInPasteUp: aPasteUp
 
 	| actualObject itsSelector aScriptor pos aWatcher op |
 
-	((actualObject _ self actualObject) isNil or: [actualObject costume isInWorld not]) ifTrue: [^ self].
+	((actualObject := self actualObject) isNil or: [actualObject costume isInWorld not]) ifTrue: [^ self].
 	self isCommand ifFalse:  "Can't expand to a scriptor, but maybe launch a watcher..."
 		[^ (Preferences dropProducesWatcher and: [(#(unknown command) includes: self resultType) not] and:
-			[(op _ self operatorTile operatorOrExpression) notNil] and: [op numArgs = 0] and: [(Vocabulary gettersForbiddenFromWatchers includes: op) not])
+			[(op := self operatorTile operatorOrExpression) notNil] and: [op numArgs = 0] and: [(Vocabulary gettersForbiddenFromWatchers includes: op) not])
 			ifTrue:
-				[aWatcher _ WatcherWrapper new fancyForPlayer: self associatedPlayer getter: op.
+				[aWatcher := WatcherWrapper new fancyForPlayer: self associatedPlayer getter: op.
 				aWatcher position: self position]
 			ifFalse:
 				[self]].
 
 	self justGrabbedFromViewer ifFalse: [^ self].
 	actualObject assureUniClass.
-	itsSelector _ self userScriptSelector.
-	pos _ self position.
-	aScriptor _ itsSelector isEmptyOrNil
+	itsSelector := self userScriptSelector.
+	pos := self position.
+	aScriptor := itsSelector isEmptyOrNil
 		ifFalse:
 			[actualObject scriptEditorFor: itsSelector]
 		ifTrue:

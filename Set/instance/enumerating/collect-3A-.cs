@@ -4,6 +4,6 @@ collect: aBlock
 	the new collection."
 
 	| newSet |
-	newSet _ Set new: self size.
+	newSet := Set new: self size.
 	array do: [:each | each ifNotNil: [newSet add: (aBlock value: each)]].
 	^ newSet

@@ -1,0 +1,1 @@
+A request to remove a package from a universe.

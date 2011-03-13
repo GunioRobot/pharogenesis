@@ -3,6 +3,6 @@ getList
 
 	| lst |
 	getListSelector == nil ifTrue: [^ #()].
-	lst _ model perform: getListSelector.
+	lst := model perform: getListSelector.
 	lst == nil ifTrue: [^ #()].
 	^ lst

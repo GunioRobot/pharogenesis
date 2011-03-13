@@ -1,1 +1,0 @@
-chooseMagnification: evt

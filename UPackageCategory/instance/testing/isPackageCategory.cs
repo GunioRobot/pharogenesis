@@ -1,0 +1,2 @@
+isPackageCategory
+	^true

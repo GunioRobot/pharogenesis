@@ -1,1 +1,0 @@
-OBListBrowser class instanceVariableNames: ''

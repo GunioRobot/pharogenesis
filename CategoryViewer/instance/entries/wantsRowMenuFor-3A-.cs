@@ -5,7 +5,7 @@ wantsRowMenuFor: aSymbol
 
 	true ifTrue: [^ true].  "To allow show categories item.  So someday this method can be removed, and its sender can stop sending it..."
 
-	elementType _ scriptedPlayer elementTypeFor: aSymbol vocabulary: self currentVocabulary.
+	elementType := scriptedPlayer elementTypeFor: aSymbol vocabulary: self currentVocabulary.
 	(elementType == #systemScript) ifTrue: [^ false].
 	((elementType == #systemSlot) and:
 		[#(color:sees: touchesA: overlaps: overlapsAny:) includes: aSymbol]) ifTrue: [^ false].

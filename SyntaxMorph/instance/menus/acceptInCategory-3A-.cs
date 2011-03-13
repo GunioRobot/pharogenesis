@@ -4,8 +4,8 @@ acceptInCategory: categoryString
 	self isMethodNode ifFalse: [
 		self rootTile == self ifTrue: [^ self].  "not in a script"
 		^ self rootTile accept  "always accept at the root"].
-	(cls _ self parsedInClass) ifNil: [^ self].
-	sel _ cls compile: self decompile classified: categoryString.
-	(sc _ self firstOwnerSuchThat: [:mm | mm class == ScriptEditorMorph]) 
+	(cls := self parsedInClass) ifNil: [^ self].
+	sel := cls compile: self decompile classified: categoryString.
+	(sc := self firstOwnerSuchThat: [:mm | mm class == ScriptEditorMorph]) 
 		ifNotNil: [sc hibernate; unhibernate].	"rebuild the tiles"
 	^ sel

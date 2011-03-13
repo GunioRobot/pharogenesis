@@ -8,9 +8,9 @@ controlContrast2: evt
 	evt isMouseDown ifTrue: [
 		^self setProperty: #startingPointForSomeAdjustment toValue: evt cursorPoint
 	].
-	ContrastFactor ifNil: [ContrastFactor _ 0.5].
-	scale _ 200.0.
-	startingContrastX _ ContrastFactor * scale.
-	origin _ self valueOfProperty: #startingPointForSomeAdjustment.
-	ContrastFactor _ (evt cursorPoint x - origin x + startingContrastX) / scale min: 1.0 max: 0.0.
+	ContrastFactor ifNil: [ContrastFactor := 0.5].
+	scale := 200.0.
+	startingContrastX := ContrastFactor * scale.
+	origin := self valueOfProperty: #startingPointForSomeAdjustment.
+	ContrastFactor := (evt cursorPoint x - origin x + startingContrastX) / scale min: 1.0 max: 0.0.
 	self finalAppearanceTweaks.

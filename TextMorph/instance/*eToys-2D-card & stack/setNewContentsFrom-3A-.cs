@@ -5,9 +5,9 @@ setNewContentsFrom: stringOrTextOrNil
 	stringOrTextOrNil ifNotNil: [^ self newContents: stringOrTextOrNil 
 		fromCard: (self valueOfProperty: #cardInstance)].
 		   "Well, totally yuk -- emergency measure late on eve of demo"
-	defaultValue _ self valueOfProperty: #defaultValue 
-					ifAbsent: [atts _ text attributesAt: 1.	"Preserve size, emphasis"
-						tt _ text copyReplaceFrom: 1 to: text size
+	defaultValue := self valueOfProperty: #defaultValue 
+					ifAbsent: [atts := text attributesAt: 1.	"Preserve size, emphasis"
+						tt := text copyReplaceFrom: 1 to: text size
 								with: 'blankText'.
 						atts do: [:anAtt | tt addAttribute: anAtt].
 						tt].

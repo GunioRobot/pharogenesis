@@ -3,5 +3,5 @@ setTargetColor: aColor
 
 	putSelector ifNotNil:
 		[self color: aColor.
-		contents _ aColor.
+		contents := aColor.
 		target perform: self putSelector withArguments: (Array with: argument with: aColor)]

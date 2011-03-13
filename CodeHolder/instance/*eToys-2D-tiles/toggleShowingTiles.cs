@@ -4,11 +4,11 @@ toggleShowingTiles
 	self okToChange ifTrue:
 		[self showingTiles
 			ifTrue:
-				[contentsSymbol _ #source.
+				[contentsSymbol := #source.
 				self setContentsToForceRefetch.
 				self installTextualCodingPane.
 				self contentsChanged]
 			ifFalse:
-				[contentsSymbol _ #tiles.
+				[contentsSymbol := #tiles.
 				self installTilesForSelection.
 				self changed: #tiles]]

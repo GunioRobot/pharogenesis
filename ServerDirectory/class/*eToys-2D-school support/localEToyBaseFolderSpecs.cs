@@ -1,2 +1,2 @@
 localEToyBaseFolderSpecs
-	^LocalEToyBaseFolderSpecs ifNil:[LocalEToyBaseFolderSpecs _ IdentityDictionary new]
+	^LocalEToyBaseFolderSpecs ifNil:[LocalEToyBaseFolderSpecs := IdentityDictionary new]

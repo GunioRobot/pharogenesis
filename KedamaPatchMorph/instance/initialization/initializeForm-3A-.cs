@@ -1,10 +1,10 @@
 initializeForm: aForm 
 
-	form _ aForm. 
+	form := aForm. 
 	form fillColor: Color transparent.
 
-	displayForm _ (Form extent: aForm extent depth: 32).
-	tmpForm _ (Form extent: aForm extent depth: 32).
+	displayForm := (Form extent: aForm extent depth: 32).
+	tmpForm := (Form extent: aForm extent depth: 32).
 	tmpForm fillColor: Color black.
 
 	super extent: form extent.

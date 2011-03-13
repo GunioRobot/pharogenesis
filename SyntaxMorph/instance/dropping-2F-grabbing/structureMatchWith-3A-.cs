@@ -2,8 +2,8 @@ structureMatchWith: aMorph
 	| meNoun itNoun |
 	"Return true if the node types would allow aMorph to replace me.  This tests the gross structure of the method only."
 
-	meNoun _ self isNoun.
-	itNoun _ aMorph isNoun.
+	meNoun := self isNoun.
+	itNoun := aMorph isNoun.
 
 	"Consider these nouns to be equal:  TempVariableNode, LiteralNode, VariableNode, (MessageNode with receiver), CascadeNode, AssignmentNode"
 	meNoun & itNoun ifTrue: [^ true].

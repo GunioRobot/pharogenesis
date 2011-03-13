@@ -1,7 +1,7 @@
 initialize
 
 	super initialize.
-	info _ IdentityDictionary new.
+	info := IdentityDictionary new.
 	info at: #who put: 1.
 	info at: #x put: 2.
 	info at: #y put: 3.
@@ -10,7 +10,7 @@ initialize
 	info at: #visible put: 6.
 	info at: #normal put: 7.
 
-	arrays _ Array new: 7.
+	arrays := Array new: 7.
 	arrays at: (info at: #who) put: (WordArray new: 0).
 	arrays at: (info at: #x) put: (KedamaFloatArray new: 0).
 	arrays at: (info at: #y) put: (KedamaFloatArray new: 0).
@@ -19,7 +19,7 @@ initialize
 	arrays at: (info at: #visible) put: (ByteArray new: 0).
 	arrays at: (info at: #normal) put: (KedamaFloatArray new: 0).
 
-	types _ Array new: 64.
+	types := Array new: 64.
 
 	types at: 1 put: #Integer.
 	types at: 2 put: #Number.
@@ -29,7 +29,7 @@ initialize
 	types at: 6 put: #Boolean.
 	types at: 7 put: #Number.
 
-	whoTableValid _ false.
-	turtleMapValid _ false.
+	whoTableValid := false.
+	turtleMapValid := false.
 
 

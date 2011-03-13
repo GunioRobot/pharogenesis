@@ -1,9 +1,9 @@
 makeTurtlesAtPositionsIn: positionAndColorArray examplerPlayer: tp ofPrototype: prototype
 
 	| array inst |
-	array _ tp turtles.
+	array := tp turtles.
 
-	inst _ prototype ifNil: [self makePrototypeOfExampler: tp].
+	inst := prototype ifNil: [self makePrototypeOfExampler: tp].
 
 	turtlesDictSemaphore critical: [array addTurtlesCount: positionAndColorArray first size ofPrototype: inst for: self positionAndColorArray: positionAndColorArray].
 	self calcTurtlesCount.

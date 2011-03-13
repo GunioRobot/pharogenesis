@@ -6,5 +6,5 @@ initialize
 	self layoutInset: 4.
 	self hResizing: #shrinkWrap.
 	self vResizing: #shrinkWrap.
-	thingsToRevert _ Dictionary new.
+	thingsToRevert := Dictionary new.
 	self useRoundedCorners

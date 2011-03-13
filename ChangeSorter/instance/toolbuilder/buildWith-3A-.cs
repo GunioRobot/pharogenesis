@@ -1,6 +1,6 @@
 buildWith: builder
 	"
-		MorphicUIBuilder open: ChangeSorter.
+		ToolBuilder open: ChangeSorter.
 	"
 	|  windowSpec |
 	windowSpec := builder pluggableWindowSpec new.

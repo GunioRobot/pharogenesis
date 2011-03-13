@@ -5,17 +5,17 @@ getAllText
 
 	| oldUrls oldStringLists allText allTextUrls aUrl which |
 	self writeSingletonData.
-	oldUrls _ self valueOfProperty: #allTextUrls ifAbsent: [#()].
-	oldStringLists _ self valueOfProperty: #allText ifAbsent: [#()].
-	allText _ self privateCards collect: [:pg | OrderedCollection new].
-	allTextUrls _ Array new: self privateCards size.
-	self privateCards doWithIndex: [:aCard :ind | aUrl _ aCard url.  aCard isInMemory 
+	oldUrls := self valueOfProperty: #allTextUrls ifAbsent: [#()].
+	oldStringLists := self valueOfProperty: #allText ifAbsent: [#()].
+	allText := self privateCards collect: [:pg | OrderedCollection new].
+	allTextUrls := Array new: self privateCards size.
+	self privateCards doWithIndex: [:aCard :ind | aUrl := aCard url.  aCard isInMemory 
 		ifTrue: [(allText at: ind) addAll: (aCard allStringsAfter: nil).
-			aUrl ifNil: [aUrl _ ind].
+			aUrl ifNil: [aUrl := ind].
 			allTextUrls at: ind put: aUrl]
 		ifFalse: ["Order of cards on server may be different.  (later keep up to date?)"
 			"*** bug in this algorithm if delete a page?"
-			which _ oldUrls indexOf: aUrl.
+			which := oldUrls indexOf: aUrl.
 			allTextUrls at: ind put: aUrl.
 			which = 0 ifFalse: [allText at: ind put: (oldStringLists at: which)]]].
 	self setProperty: #allText toValue: allText.

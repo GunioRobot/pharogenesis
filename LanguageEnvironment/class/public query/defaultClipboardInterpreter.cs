@@ -1,5 +1,5 @@
 defaultClipboardInterpreter
-
-	ClipboardInterpreterClass ifNil: [ClipboardInterpreterClass _ self currentPlatform class clipboardInterpreterClass].
+	SmalltalkImage current platformName = 'Win32' ifTrue:[^UTF8ClipboardInterpreter new].
+	ClipboardInterpreterClass ifNil: [ClipboardInterpreterClass := self currentPlatform class clipboardInterpreterClass].
 	^ ClipboardInterpreterClass new.
 

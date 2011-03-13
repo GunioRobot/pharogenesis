@@ -2,7 +2,7 @@ instantiatedScriptEditorForPlayer: aPlayer
 	"Return the current script editor, creating it if necessary"
 
 	currentScriptEditor ifNil:
-		[currentScriptEditor _ (self playerClass includesSelector: selector) 
+		[currentScriptEditor := (self playerClass includesSelector: selector) 
 			ifTrue:
 				[Preferences universalTiles
 					ifFalse:

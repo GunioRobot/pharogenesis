@@ -1,1 +1,0 @@
-JPEGMovieFile class instanceVariableNames: ''

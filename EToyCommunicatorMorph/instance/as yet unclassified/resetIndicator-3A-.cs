@@ -1,8 +1,8 @@
 resetIndicator: aSymbol
 
 	| indicator firstColor |
-	indicator _ fields at: aSymbol ifAbsent: [^self].
-	firstColor _ indicator 
+	indicator := fields at: aSymbol ifAbsent: [^self].
+	firstColor := indicator 
 		valueOfProperty: #firstColor
 		ifAbsent: [^self].
 	indicator color: firstColor.

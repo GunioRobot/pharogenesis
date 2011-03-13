@@ -5,8 +5,8 @@ installPrivateMorphsInto: aBackground
 	self flag: #deferred.  "not robust if the background is showing a list view"
 	privateMorphs ifNotNil: [privateMorphs do:
 		[:aMorph |
-			originToUse _ aBackground topLeft.
-			prior _ aMorph valueOfProperty: #priorMorph ifAbsent: [nil].
+			originToUse := aBackground topLeft.
+			prior := aMorph valueOfProperty: #priorMorph ifAbsent: [nil].
 			aMorph position: (aMorph position + originToUse).
 			(prior notNil and: [aBackground submorphs includes: prior])
 				ifTrue:

@@ -3,6 +3,6 @@ adoptVocabulary: aVocabulary
 
 	| aCategory |
 	chosenCategorySymbol ifNil: [^ self delete].
-	aCategory _ aVocabulary categoryAt: chosenCategorySymbol.
+	aCategory := aVocabulary categoryAt: chosenCategorySymbol.
 	aCategory ifNil: [self delete] ifNotNil: [self updateCategoryNameTo: aCategory wording].
 	super adoptVocabulary: aVocabulary

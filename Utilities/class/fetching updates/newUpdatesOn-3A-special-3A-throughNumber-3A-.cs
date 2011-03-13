@@ -8,6 +8,7 @@ newUpdatesOn: serverList special: indexPrefix throughNumber: aNumber
 	existing _ SystemVersion current updates.
 	serverList do: [:server |
 		doc _ HTTPClient httpGet: 'http://' , server,indexPrefix,'updates.list'.
+		
 		"test here for server being up"
 		doc class == RWBinaryOrTextStream ifTrue:
 			[raw _ doc reset; contents.	"one file name per line"

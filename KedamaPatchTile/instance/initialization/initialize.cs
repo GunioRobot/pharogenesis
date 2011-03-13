@@ -1,5 +1,5 @@
 initialize
 
 	super initialize.
-	type _ #literal.
+	type := #literal.
 	self extent: 16@16.

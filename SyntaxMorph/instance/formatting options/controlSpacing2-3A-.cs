@@ -8,9 +8,9 @@ controlSpacing2: evt
 	evt isMouseDown ifTrue: [
 		^self setProperty: #startingPointForSomeAdjustment toValue: evt cursorPoint
 	].
-	SizeScaleFactor ifNil: [SizeScaleFactor _ 0.15].
-	scale _ 200.0.
-	startingContrastX _ SizeScaleFactor * scale.
-	origin _ self valueOfProperty: #startingPointForSomeAdjustment.
-	SizeScaleFactor _ (evt cursorPoint x - origin x + startingContrastX) / scale min: 1.0 max: 0.0.
+	SizeScaleFactor ifNil: [SizeScaleFactor := 0.15].
+	scale := 200.0.
+	startingContrastX := SizeScaleFactor * scale.
+	origin := self valueOfProperty: #startingPointForSomeAdjustment.
+	SizeScaleFactor := (evt cursorPoint x - origin x + startingContrastX) / scale min: 1.0 max: 0.0.
 	self finalAppearanceTweaks.

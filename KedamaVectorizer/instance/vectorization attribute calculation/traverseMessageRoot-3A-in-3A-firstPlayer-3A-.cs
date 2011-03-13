@@ -1,8 +1,8 @@
 traverseMessageRoot: aMessageNode in: obj firstPlayer: firstPlayer
 
 	| inCondition |
-	inCondition _ #(ifTrue: ifFalse: ifTrue:ifFalse:) includes: aMessageNode selector key.
+	inCondition := #(ifTrue: ifFalse: ifTrue:ifFalse:) includes: aMessageNode selector key.
 
-	root _ aMessageNode.
+	root := aMessageNode.
 
 	self traverseMessage: aMessageNode in: obj firstPlayer: firstPlayer inCondition: inCondition.

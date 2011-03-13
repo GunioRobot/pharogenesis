@@ -1,0 +1,3 @@
+isSkipLoadingTestsSet
+
+^SkipLoadingTests ifNil: [ false ]

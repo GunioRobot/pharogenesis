@@ -1,2 +1,2 @@
 currentScriptEditor: anEditor
-	currentScriptEditor _ anEditor
+	currentScriptEditor := anEditor

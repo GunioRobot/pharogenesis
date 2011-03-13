@@ -1,2 +1,2 @@
 liftPen
-	penDown _ false
+	penDown := false

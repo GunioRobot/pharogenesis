@@ -1,5 +1,5 @@
 justGrabbedFrom: formerOwner
 	| editor |
 	formerOwner ifNil:[^self].
-	editor _ formerOwner topEditor.
+	editor := formerOwner topEditor.
 	editor ifNotNil:[editor scriptEdited].

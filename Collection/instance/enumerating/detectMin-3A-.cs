@@ -7,12 +7,12 @@ detectMin: aBlock
 	self do: [:each | 
 		minValue == nil
 			ifFalse: [
-				(val _ aBlock value: each) < minValue ifTrue: [
-					minElement _ each.
-					minValue _ val]]
+				(val := aBlock value: each) < minValue ifTrue: [
+					minElement := each.
+					minValue := val]]
 			ifTrue: ["first element"
-				minElement _ each.
-				minValue _ aBlock value: each].
+				minElement := each.
+				minValue := aBlock value: each].
 				"Note that there is no way to get the first element that works 
 				for all kinds of Collections.  Must test every one."].
 	^ minElement

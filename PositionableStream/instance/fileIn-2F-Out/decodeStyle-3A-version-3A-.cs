@@ -6,6 +6,6 @@ decodeStyle: runsObjData version: styleVersion
 	styleVersion = RemoteString currentTextAttVersion ifTrue: [
 		"Matches our classes, no need for checking"
 		^ (ReferenceStream on: runsObjData) next].
-	structureInfo _ RemoteString structureAt: styleVersion.	"or nil"
+	structureInfo := RemoteString structureAt: styleVersion.	"or nil"
 		"See SmartRefStream instVarInfo: for dfn"
 	^ SmartRefStream read: runsObjData withClasses: structureInfo

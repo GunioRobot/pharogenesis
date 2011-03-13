@@ -3,8 +3,8 @@ isKnownVarName: newVarName
 
 	| syntLevel |
 	(self parsedInClass allInstVarNames includes: newVarName) ifTrue: [^ true].
-	syntLevel _ self.
+	syntLevel := self.
 	[syntLevel tempVarNodesDo: [:node | 
 		node decompile string = newVarName ifTrue: [^ true]].
-	 (syntLevel _ syntLevel owner) isSyntaxMorph] whileTrue.
+	 (syntLevel := syntLevel owner) isSyntaxMorph] whileTrue.
 	^ false

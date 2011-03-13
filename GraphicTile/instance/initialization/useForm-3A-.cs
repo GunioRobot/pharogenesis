@@ -3,7 +3,7 @@ useForm: aForm
 
 	| thumbnail |
 	self removeAllMorphs.
-	literal _ aForm.
-	thumbnail _ ThumbnailMorph  new objectToView: self viewSelector: #literal.
+	literal := aForm.
+	thumbnail := ThumbnailMorph  new objectToView: self viewSelector: #literal.
 	self addMorphBack: thumbnail.
 	thumbnail extent: 16 @ 16.

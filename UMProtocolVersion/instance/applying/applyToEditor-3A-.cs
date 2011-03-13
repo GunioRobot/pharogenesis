@@ -1,0 +1,1 @@
+applyToEditor: editor

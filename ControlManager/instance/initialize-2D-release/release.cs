@@ -7,4 +7,4 @@ release
 				do: [:controller | (controller isKindOf: Controller)
 								ifTrue: [controller view release]
 								ifFalse: [controller release]].
-			scheduledControllers _ nil]
+			scheduledControllers := nil]

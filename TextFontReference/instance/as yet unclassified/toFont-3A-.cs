@@ -1,3 +1,3 @@
 toFont: aFont
 
-	font _ aFont
+	font := aFont

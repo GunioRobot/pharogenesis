@@ -3,12 +3,12 @@ tearOffButtonToFireScriptForSelector: aSelector
 
 	| aButton props |
 	Preferences useButtonProprtiesToFire ifFalse:
-		[aButton _ ScriptActivationButton new.
+		[aButton := ScriptActivationButton new.
 		aButton initializeForPlayer: self uniclassScript:  (self class scripts at: aSelector).
 		^ aButton openInHand].
 
-	(aButton _ RectangleMorph new) useRoundedCorners; color: Color yellow.
-	props _ aButton ensuredButtonProperties.
+	(aButton := RectangleMorph new) useRoundedCorners; color: Color yellow.
+	props := aButton ensuredButtonProperties.
 	props
 		target: self;
 		actionSelector: #runScript:;

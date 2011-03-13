@@ -1,2 +1,0 @@
-jumpToRoot
-	^self navigationPanel jumpToRoot

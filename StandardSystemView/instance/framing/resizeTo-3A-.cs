@@ -6,4 +6,4 @@ resizeTo: aRectangle
 		viewport: (aRectangle insetBy: borderWidth).
 
 	"Then ensure window maps to aRectangle"
-	window _ transformation applyInverseTo: aRectangle
+	window := transformation applyInverseTo: aRectangle

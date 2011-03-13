@@ -19,11 +19,12 @@ yellowButtonExpertMenu
 			{'paste (v)' translated.					#paste}.
 			{'paste...' translated.					#pasteRecent}.
 			#-.
-			{'do it (d)' translated.					#doIt}.
-			{'print it (p)' translated.				#printIt}.
-			{'inspect it (i)' translated.				#inspectIt}.
-			{'explore it (I)' translated.				#exploreIt}.
-			{'debug it' translated.					#debugIt}.
+			{'do it (d)' translated.		#doIt}.			     
+		{'print it (p)' translated.		#printIt}.		     
+		{'inspect it (i)' translated.		#inspectIt}.		     
+		{'explore it (I)' translated.		#exploreIt}.		     
+		{'debug it' translated.			#debugIt}.		     
+		{'tally it' translated.			#tallyIt}.
 			#-.
 			{'accept (s)' translated.					#accept}.
 			{'cancel (l)' translated.					#cancel}.

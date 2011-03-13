@@ -10,4 +10,4 @@ displayView
 		label displayOn: Display
 				at: label boundingBox topLeft
 				clippingBox: self insetDisplayBox].
-	complemented _ false.
+	complemented := false.

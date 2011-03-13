@@ -2,7 +2,7 @@ addPlayerMenuItemsTo: aMenu hand: aHandMorph
 	"Note that these items are primarily available in another way in an object's Viewer"
 
 	| subMenu |
-	subMenu _ MenuMorph new defaultTarget: self.
+	subMenu := MenuMorph new defaultTarget: self.
 	self getPenDown
 		ifTrue: [subMenu add: 'lift pen' action: #liftPen]
 		ifFalse: [subMenu add: 'lower pen' action: #lowerPen].

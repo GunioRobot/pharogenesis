@@ -6,7 +6,7 @@ genericMenu: aMenu
 		aMenu add: '*nothing selected*' target: self selector: #yourself.
 		^aMenu
 	].
-	menu _ DumberMenuMorph new defaultTarget: self.
+	menu := DumberMenuMorph new defaultTarget: self.
 	menu 
 		add: 'expand all below me' target: self selector: #expandAllBelow;
 		add: 'addChild' target: self selector: #addChild;

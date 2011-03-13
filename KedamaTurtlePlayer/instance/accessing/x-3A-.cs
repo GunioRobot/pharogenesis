@@ -1,3 +1,3 @@
 x: aNumber
 
-	x _ aNumber.
+	x := aNumber.

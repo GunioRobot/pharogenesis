@@ -2,8 +2,8 @@ addTemporaryControls
 
 	| row stdSize |
 	
-	stdSize _ 8@8.
-	row _ AlignmentMorph newRow
+	stdSize := 8@8.
+	row := AlignmentMorph newRow
 		color: Color transparent;
 		hResizing: #shrinkWrap;
 		vResizing: #shrinkWrap.

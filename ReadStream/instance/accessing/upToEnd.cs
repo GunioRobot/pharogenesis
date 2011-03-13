@@ -1,6 +1,6 @@
 upToEnd
 	| start |
 
-	start _ position+1.
-	position _ collection size.
+	start := position+1.
+	position := collection size.
 	^collection copyFrom: start to: position

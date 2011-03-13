@@ -1,2 +1,0 @@
-rk: aNumber
-	rk := aNumber

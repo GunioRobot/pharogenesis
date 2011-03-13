@@ -1,3 +1,3 @@
 initializeNewerKeys
 
-	newerKeys := Set new.
+	newerKeys _ Set new.

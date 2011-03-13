@@ -1,8 +1,8 @@
 selectionAndEmphasisPairs: interleavedList
 	"An alternative form of call.  "
 	| selList  emphList |
-	selList _ OrderedCollection new.
-	emphList _ OrderedCollection new.
+	selList := OrderedCollection new.
+	emphList := OrderedCollection new.
 	interleavedList pairsDo:
 		[:aSel :anEmph |
 			selList add: aSel.

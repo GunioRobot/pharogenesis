@@ -1,2 +1,0 @@
-defaultAction
-	^ browser openInMorphic

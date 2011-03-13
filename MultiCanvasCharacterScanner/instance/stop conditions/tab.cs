@@ -1,6 +1,6 @@
 tab
 
-	destX := (alignment == Justified and: [self leadingTab not])
+	destX _ (alignment == Justified and: [self leadingTab not])
 		ifTrue:		"imbedded tabs in justified text are weird"
 			[destX + (textStyle tabWidth - (line justifiedTabDeltaFor: spaceCount)) max: destX]
 		ifFalse: 
@@ -8,5 +8,5 @@ tab
 				leftMargin: leftMargin
 				rightMargin: rightMargin].
 
-	lastIndex := lastIndex + 1.
+	lastIndex _ lastIndex + 1.
 	^ false

@@ -1,4 +1,4 @@
 initializeWithFontArray: anArray
 
-	fontArray := anArray.
-	"name := anArray first name."
+	fontArray _ anArray.
+	"name _ anArray first name."

@@ -1,8 +1,8 @@
 scanForNil: anObject
 	"Private. Scan the key array for the first slot containing nil (indicating an empty slot). Answer the index of that slot."
 	| start finish |
-	start _ (anObject hash \\ array size) + 1.
-	finish _ array size.
+	start := (anObject hash \\ array size) + 1.
+	finish := array size.
 
 	"Search from (hash mod size) to the end."
 	start to: finish do:

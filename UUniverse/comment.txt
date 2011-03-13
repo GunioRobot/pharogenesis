@@ -1,0 +1,1 @@
+Abstract.  One "package universe".  A package universe is an evolving set of packages that multiple people can participate in.  Each Squeak image is a member of exactly one universe.

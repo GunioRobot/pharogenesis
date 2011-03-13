@@ -4,6 +4,6 @@ add: newObject
 
 	| index |
 	newObject ifNil: [self error: 'Sets cannot meaningfully contain nil as an element'].
-	index _ self findElementOrNil: (keyBlock value: newObject).
+	index := self findElementOrNil: (keyBlock value: newObject).
 	(array at: index) ifNil: [self atNewIndex: index put: newObject].
 	^ newObject

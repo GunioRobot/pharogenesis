@@ -1,8 +1,8 @@
 displayOn: aDisplayMedium transformation: aTransformation clippingBox: clipRect rule: anInteger fillColor: aForm
 
 	| transformedPath newCurveFitter |
-	transformedPath _ aTransformation applyTo: self.
-	newCurveFitter _ CurveFitter new.
+	transformedPath := aTransformation applyTo: self.
+	newCurveFitter := CurveFitter new.
 	newCurveFitter firstPoint: transformedPath firstPoint.
 	newCurveFitter secondPoint: transformedPath secondPoint.
 	newCurveFitter thirdPoint: transformedPath thirdPoint.

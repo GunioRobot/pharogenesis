@@ -2,12 +2,12 @@ usePatch: aPatch
 
 	| aTile displayer |
 	self removeAllMorphs.
-	literal _ aPatch.
+	literal := aPatch.
 
 
-	aTile _ KedamaPatchType basicNew newReadoutTile.
+	aTile := KedamaPatchType basicNew newReadoutTile.
 
-	displayer _ UpdatingStringMorph new
+	displayer := UpdatingStringMorph new
 		getSelector: #externalName;
 		target: aPatch;
 		growable: true;

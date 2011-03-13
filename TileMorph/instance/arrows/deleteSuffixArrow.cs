@@ -1,8 +1,8 @@
 deleteSuffixArrow
 
 	suffixArrow delete.
-	suffixArrow _ nil.
+	suffixArrow := nil.
 	retractArrow ifNotNil: ["backward compat"
 		retractArrow delete.
-		retractArrow _ nil].
+		retractArrow := nil].
 	self updateLiteralLabel

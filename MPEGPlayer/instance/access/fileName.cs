@@ -1,2 +1,0 @@
-fileName
-	^self external fileName

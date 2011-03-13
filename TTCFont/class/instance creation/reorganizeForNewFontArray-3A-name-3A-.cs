@@ -7,14 +7,14 @@ reorganizeForNewFontArray: array name: styleName
 	].
  
 	"There is a text style with the name I want to use.  See if it is a TTC font..."
-	style := TextConstants at: styleName.
+	style _ TextConstants at: styleName.
 	style isTTCStyle ifFalse: [
-		altName := ((array at: 1) name, 'TT') asSymbol.
+		altName _ ((array at: 1) name, 'TT') asSymbol.
 		^ self reorganizeForNewFontArray: array name: altName.
 	].
 
-	existings := (self getExistings: style fontArray), (Array with: array).
-	regular := existings detect: [:e | (e at: 1) isRegular] ifNone: [existings at: 1].
+	existings _ (self getExistings: style fontArray), (Array with: array).
+	regular _ existings detect: [:e | (e at: 1) isRegular] ifNone: [existings at: 1].
 
 	regular do: [:r |
 		r addLined: r.
@@ -24,7 +24,7 @@ reorganizeForNewFontArray: array name: styleName
 	existings do: [:e |
 		(e at: 1) isRegular ifFalse: [
 			regular do: [ :r | | f |
-				f := e detect: [ :ea | ea pointSize = r pointSize ] ifNone: [ ].
+				f _ e detect: [ :ea | ea pointSize = r pointSize ] ifNone: [ ].
 				f ifNotNil: [ r derivativeFont: f ].
 			].
 		].

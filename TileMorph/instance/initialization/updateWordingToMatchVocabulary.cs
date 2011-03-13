@@ -8,7 +8,7 @@ updateWordingToMatchVocabulary
 			ifTrue: [self addArrows].
 		self updateLiteralLabel.
 
-		aMethodInterface _ self currentVocabulary methodInterfaceAt: operatorOrExpression
+		aMethodInterface := self currentVocabulary methodInterfaceAt: operatorOrExpression
 			ifAbsent: [
 				Vocabulary eToyVocabulary
 					methodInterfaceAt: operatorOrExpression ifAbsent: [^ self]].

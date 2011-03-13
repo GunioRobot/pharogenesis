@@ -1,1 +1,0 @@
-recordFillStyle1: fillIndex

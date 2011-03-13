@@ -3,7 +3,7 @@ catchDivideByZero: aStream indent: tabCount
 
 	| exp |
 	submorphs second type = #operator ifFalse: [^false].	"not me"
-	exp _ submorphs second operatorOrExpression.
+	exp := submorphs second operatorOrExpression.
 	(#(/ // \\) includes: exp) ifFalse: [^false].	"not me"
 	aStream space.
 	aStream nextPutAll: '(self beNotZero: '.

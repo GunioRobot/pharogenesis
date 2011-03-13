@@ -2,8 +2,8 @@ offerAlternateViewerMenuFor: aViewer event: evt
 	"Put up an alternate Viewer menu on behalf of the receiver."
 
 	| aMenu aWorld  |
-	aWorld _ aViewer world.
-	aMenu _ MenuMorph new defaultTarget: self.
+	aWorld := aViewer world.
+	aMenu := MenuMorph new defaultTarget: self.
 	costumes ifNotNil:
 		[(costumes size > 1 or: [costumes size == 1 and: [costumes first ~~ costume renderedMorph]])
 			ifTrue:

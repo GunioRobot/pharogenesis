@@ -2,7 +2,7 @@ asMorphicSyntaxIn: parent
 
 	| row |
 
-	row _ parent addRow: #literal on: self.
+	row := parent addRow: #literal on: self.
 	(key isVariableBinding) ifFalse: [
 		row layoutInset: 1.
 		^ row addMorphBack: (row addString: key storeString special: false)].

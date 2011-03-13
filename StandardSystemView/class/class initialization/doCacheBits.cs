@@ -1,5 +1,5 @@
 doCacheBits
 	"StandardSystemView doCacheBits - Enable fast window repaint feature"
-	CacheBits _ true.
+	CacheBits := true.
 	ScheduledControllers unCacheWindows.
 	ScheduledControllers restore

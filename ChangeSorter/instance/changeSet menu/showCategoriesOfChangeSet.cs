@@ -15,7 +15,7 @@ inclined to do that, thanks in advance...']
 'Categories which
 contain change set
 "', myChangeSet name, '"'.
-			ChangeSetCategories elementsInOrder do:
+			self changeSetCategories elementsInOrder do:
 				[:aCategory |
 					(aCategory includesChangeSet: myChangeSet)
 						ifTrue:

@@ -1,3 +1,3 @@
 kern: kernValue
-	kern _ kernValue.
+	kern := kernValue.
 	self reset.

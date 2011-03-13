@@ -4,4 +4,4 @@ release
 	released independently."
 
 	super release.
-	form _ nil
+	form := nil

@@ -1,0 +1,3 @@
+noteChangeSetsInRelease
+
+	^ ChangesOrganizer noteChangeSetsInRelease

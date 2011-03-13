@@ -1,0 +1,3 @@
+A multi-server server.  This listens on one port, and dispatches to whichever universe was requested.
+
+An active server needs someone to call #step periodically on it, in order for it to process networking, save checkpoints, etc.

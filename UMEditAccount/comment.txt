@@ -1,0 +1,1 @@
+A request to change the password or email of an account.

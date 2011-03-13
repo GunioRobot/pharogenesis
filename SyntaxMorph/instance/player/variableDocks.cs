@@ -3,12 +3,12 @@ variableDocks
 
 	"Is CardPlayer class holding my variableDock, or should I be using the caching mechanism in Morph>>variableDocks?"
 	| updatingString lab nn aGetter |
-	(updatingString _ self readOut) ifNil: [^ #()].
+	(updatingString := self readOut) ifNil: [^ #()].
 	updatingString getSelector ifNil: [
-		lab _ self submorphNamed: 'label' ifNone: [self defaultName].
-		nn _ lab contents asString.
+		lab := self submorphNamed: 'label' ifNone: [self defaultName].
+		nn := lab contents asString.
 		"nn at: 1 put: nn first asUppercase."
-		updatingString getSelector: (aGetter _ 'get',nn) asSymbol;
+		updatingString getSelector: (aGetter := 'get',nn) asSymbol;
 			putSelector: (ScriptingSystem setterSelectorForGetter: aGetter).
 		].
 	^ Array with: (VariableDock new 

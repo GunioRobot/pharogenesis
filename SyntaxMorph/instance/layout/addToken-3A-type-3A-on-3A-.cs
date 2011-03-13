@@ -2,14 +2,14 @@ addToken: aString type: aColorOrSymbol on: aNode
 
 	| sMorph modifiedString noiseWord row |
 
-	row _ (self addRow: aColorOrSymbol on: aNode) layoutInset: 1.
+	row := (self addRow: aColorOrSymbol on: aNode) layoutInset: 1.
 	self alansTest1 ifFalse: [
-		sMorph _ self addString: aString special: false.
+		sMorph := self addString: aString special: false.
 		row addMorphBack: sMorph.
 		^row
 	].
 
-	noiseWord _ [ :w |
+	noiseWord := [ :w |
 		w ifNotNil: [
 			row 
 				addMorphBack: (self noiseStringMorph: w);
@@ -17,15 +17,15 @@ addToken: aString type: aColorOrSymbol on: aNode
 		].
 	].
 	(self shouldBeBrokenIntoWords: aColorOrSymbol) ifTrue: [
-		modifiedString _ self substituteKeywordFor: aString.
-		sMorph _ self addString: modifiedString special: (aColorOrSymbol ~= #assignmentArrow).
+		modifiedString := self substituteKeywordFor: aString.
+		sMorph := self addString: modifiedString special: (aColorOrSymbol ~= #assignmentArrow).
 			"(#(unary keywordGetz keywordSetter unaryGetter) includes: aColorOrSymbol)"
 		modifiedString = aString ifFalse: [
 			sMorph setProperty: #syntacticallyCorrectContents toValue: aString].
 		sMorph setProperty: #syntacticReformatting toValue: aColorOrSymbol;
 			contents: modifiedString.
 	] ifFalse: [
-		sMorph _ self addString: (modifiedString _ aString) special: false.
+		sMorph := self addString: (modifiedString := aString) special: false.
 	].
 	(#(keyword2 upArrow) includes: aColorOrSymbol) ifTrue: [
 		sMorph 

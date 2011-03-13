@@ -2,12 +2,12 @@ alanKwdCollect: aNode isAConditional: template key: key args: args
 
 	| nodeWithNilReceiver row kwdHolder |
 
-	nodeWithNilReceiver _ aNode copy receiver: nil.
-	(row _ self addRow: #keyword2 on: nodeWithNilReceiver)
+	nodeWithNilReceiver := aNode copy receiver: nil.
+	(row := self addRow: #keyword2 on: nodeWithNilReceiver)
 		borderWidth: 1;
 		parseNode: (nodeWithNilReceiver as: MessageNode);
 		borderColor: row stdBorderColor.
-	kwdHolder _ row
+	kwdHolder := row
 		addToken: key
 		type: #keyword2
 		on: (SelectorNode new key: key code: nil "fill this in?").

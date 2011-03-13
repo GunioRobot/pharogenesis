@@ -3,21 +3,21 @@ editButtonsScript: evt
 
 	| cardsPasteUp cardsPlayer anEditor scriptSelector |
 
-	cardsPasteUp _ self pasteUpMorph.
-	(cardsPlayer _ cardsPasteUp assuredPlayer) assureUniClass.
-	scriptSelector _ self figureOutScriptSelector.
+	cardsPasteUp := self pasteUpMorph.
+	(cardsPlayer := cardsPasteUp assuredPlayer) assureUniClass.
+	scriptSelector := self figureOutScriptSelector.
 	scriptSelector ifNil: [
-		scriptSelector _ cardsPasteUp scriptSelectorToTriggerFor: self.
-		anEditor _ cardsPlayer newTextualScriptorFor: scriptSelector.
+		scriptSelector := cardsPasteUp scriptSelectorToTriggerFor: self.
+		anEditor := cardsPlayer newTextualScriptorFor: scriptSelector.
 		evt hand attachMorph: anEditor.
 		^self
 	].
 
 	(cardsPlayer class selectors includes: scriptSelector) ifTrue: [
-		anEditor _ cardsPlayer scriptEditorFor: scriptSelector.
+		anEditor := cardsPlayer scriptEditorFor: scriptSelector.
 		evt hand attachMorph: anEditor.
 		^self
 	].
 	"Method somehow got removed; I guess we start aftresh"
-	scriptSelector _ nil.
+	scriptSelector := nil.
 	^ self editButtonsScript

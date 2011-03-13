@@ -3,8 +3,8 @@ allMultiStringMethods
 	aSelector."
 
 	| list adder num i |
-	list _ Set new.
-	adder _ [ :mrClass :mrSel |
+	list := Set new.
+	adder := [ :mrClass :mrSel |
 		list add: (
 			MethodReference new
 				setStandardClass: mrClass
@@ -12,12 +12,12 @@ allMultiStringMethods
 		)
 	].
 
-	num _ CompiledMethod allInstances size.
-	i _ 0.
+	num := CompiledMethod allInstances size.
+	i := 0.
 	'processing...' displayProgressAt: Sensor cursorPoint from: 0 to: num during: [:bar |
 		SystemNavigation new allBehaviorsDo: [ :class |
 			class selectors do: [:s |
-				bar value: (i _ i + 1).				
+				bar value: (i := i + 1).				
 				((class sourceCodeAt: s) asString isOctetString) ifFalse: [
 					adder value: class value: s.
 				]

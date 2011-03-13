@@ -1,5 +1,5 @@
 newFrom: aCollection
 	| newCollection |
-	newCollection _ self new.
+	newCollection := self new.
 	newCollection addAll: aCollection.
 	^newCollection

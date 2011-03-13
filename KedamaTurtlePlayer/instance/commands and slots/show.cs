@@ -1,3 +1,3 @@
 show
 
-	visible _ true.
+	visible := true.

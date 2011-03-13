@@ -3,6 +3,6 @@ asIntegerArray
 	the same order."
 
 	| intArray |
-	intArray _ IntegerArray new: self size.
+	intArray := IntegerArray new: self size.
 	1 to: self size do:[:i| intArray at: i put: (self at: i)].
 	^intArray

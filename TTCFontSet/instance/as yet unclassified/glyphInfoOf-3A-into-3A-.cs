@@ -1,11 +1,11 @@
 glyphInfoOf: aCharacter into: glyphInfoArray
 
 	| index f code |
-	index := aCharacter leadingChar + 1.
+	index _ aCharacter leadingChar + 1.
 	fontArray size < index ifTrue: [^ self questionGlyphInfoInto: glyphInfoArray].
-	(f := fontArray at: index) ifNil: [^ self questionGlyphInfoInto: glyphInfoArray].
+	(f _ fontArray at: index) ifNil: [^ self questionGlyphInfoInto: glyphInfoArray].
 
-	code := aCharacter charCode.
+	code _ aCharacter charCode.
 	((code between: f minAscii and: f maxAscii) not) ifTrue: [
 		^ self questionGlyphInfoInto: glyphInfoArray.
 	].

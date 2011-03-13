@@ -1,3 +1,3 @@
 assuredTextStyle
 	^ textStyle ifNil:
-		[textStyle _  ListParagraph standardListStyle]
+		[textStyle :=  ListParagraph standardListStyle]

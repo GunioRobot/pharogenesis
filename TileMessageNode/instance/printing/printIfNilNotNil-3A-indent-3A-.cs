@@ -1,7 +1,7 @@
 printIfNilNotNil: aMorph indent: level
 
 	| newNode |
-	newNode _ aMorph parseNode clone.
+	newNode := aMorph parseNode clone.
 	newNode receiver ifNotNil:
 		[newNode receiver: newNode receiver ifNilReceiver].	"fudge so it prints right"
 

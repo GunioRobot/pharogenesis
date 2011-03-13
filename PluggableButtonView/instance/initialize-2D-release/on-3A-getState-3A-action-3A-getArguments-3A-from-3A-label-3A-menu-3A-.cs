@@ -2,9 +2,9 @@ on: anObject getState: getStateSel action: actionSel getArguments: getArgumentsS
 
 	self initialize.
 	self model: anObject.
-	getStateSelector _ getStateSel.
-	actionSelector _ actionSel.
-	argumentsSelector _ getArgumentsSel.
-	argumentsProvider _ argsProvidor.
-	getLabelSelector _ labelSel.
-	getMenuSelector _ menuSel
+	getStateSelector := getStateSel.
+	actionSelector := actionSel.
+	argumentsSelector := getArgumentsSel.
+	argumentsProvider := argsProvidor.
+	getLabelSelector := labelSel.
+	getMenuSelector := menuSel

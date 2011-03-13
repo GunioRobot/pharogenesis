@@ -6,26 +6,26 @@ parseCompositionMappingFrom: stream
 
 	| line fieldEnd point fieldStart compositions toNumber diacritical result |
 
-	toNumber := [:quad | ('16r', quad) asNumber].
+	toNumber _ [:quad | ('16r', quad) asNumber].
 
-	Compositions := IdentityDictionary new: 2048.
-	Decompositions := IdentityDictionary new: 2048.
-	Diacriticals := IdentitySet new: 2048.
+	Compositions _ IdentityDictionary new: 2048.
+	Decompositions _ IdentityDictionary new: 2048.
+	Diacriticals _ IdentitySet new: 2048.
 
-	[(line := stream upTo: Character cr) size > 0] whileTrue: [
-		fieldEnd := line indexOf: $; startingAt: 1.
-		point := ('16r', (line copyFrom: 1 to: fieldEnd - 1)) asNumber.
+	[(line _ stream upTo: Character cr) size > 0] whileTrue: [
+		fieldEnd _ line indexOf: $; startingAt: 1.
+		point _ ('16r', (line copyFrom: 1 to: fieldEnd - 1)) asNumber.
 		2 to: 6 do: [:i |
-			fieldStart := fieldEnd + 1.
-			fieldEnd := line indexOf: $; startingAt: fieldStart.
+			fieldStart _ fieldEnd + 1.
+			fieldEnd _ line indexOf: $; startingAt: fieldStart.
 		].
-		compositions := line copyFrom: fieldStart to: fieldEnd - 1.
+		compositions _ line copyFrom: fieldStart to: fieldEnd - 1.
 		(compositions size > 0 and: [compositions first ~= $<]) ifTrue: [
-			compositions := compositions substrings collect: toNumber.
+			compositions _ compositions substrings collect: toNumber.
 			compositions size > 1 ifTrue: [
-				diacritical := compositions first.
+				diacritical _ compositions first.
 				Diacriticals add: diacritical.
-				result := compositions second.
+				result _ compositions second.
 				(Decompositions includesKey: point) ifTrue: [
 					self error: 'should not happen'.
 				] ifFalse: [

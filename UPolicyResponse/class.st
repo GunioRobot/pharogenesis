@@ -1,0 +1,1 @@
+UPolicyResponse class instanceVariableNames: ''

@@ -6,12 +6,12 @@ addFromTTFile: fileName
 
 	| tt old |
 	(fileName asLowercase endsWith: 'ttf') ifTrue: [
-		tt := TTCFontReader readTTFFrom: (FileStream readOnlyFileNamed: fileName).
+		tt _ TTCFontReader readTTFFrom: (FileStream readOnlyFileNamed: fileName).
 	] ifFalse: [
-		tt := TTCFontReader readFrom: (FileStream readOnlyFileNamed: fileName).
+		tt _ TTCFontReader readFrom: (FileStream readOnlyFileNamed: fileName).
 	].
 		
-	old := TTCDescriptions detect: [:f | f first name = tt first name] ifNone: [nil].
+	old _ TTCDescriptions detect: [:f | f first name = tt first name] ifNone: [nil].
 	old ifNotNil: [TTCDescriptions remove: old].
 	TTCDescriptions add: tt.
 	^ tt.

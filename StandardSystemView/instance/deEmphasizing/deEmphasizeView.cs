@@ -3,4 +3,4 @@ deEmphasizeView
 
 	isLabelComplemented ifTrue:
 		[self deEmphasizeLabel.
-		isLabelComplemented _ false]
+		isLabelComplemented := false]

@@ -1,7 +1,7 @@
 withoutLeadingDigits
 	"Answer the portion of the receiver that follows any leading series of digits and blanks.  If the receiver consists entirely of digits and blanks, return an empty string"
 	| firstNonDigit |
-	firstNonDigit _ (self findFirst: [:m | m isDigit not and: [m ~= $ ]]).
+	firstNonDigit := (self findFirst: [:m | m isDigit not and: [m ~= $ ]]).
 	^ firstNonDigit > 0
 		ifTrue:
 			[self copyFrom: firstNonDigit  to: self size]

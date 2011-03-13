@@ -1,1 +1,0 @@
-OBConfirmationRequest class instanceVariableNames: ''

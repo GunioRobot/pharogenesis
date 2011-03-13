@@ -2,10 +2,10 @@ renameSlotInWatchersOld: oldName new: newName
 	"A variable has been renamed; get all relevant extant watchers updated.  All this assumed to be happening in the ActiveWorld"
 
 	| wasStepping oldGetter |
-	oldGetter _ Utilities getterSelectorFor: oldName.
+	oldGetter := Utilities getterSelectorFor: oldName.
 	self allPossibleWatchersFromWorld do: [:aWatcher |
 		(aWatcher getSelector = oldGetter) ifTrue:
-			[(wasStepping _ aWatcher isStepping) ifTrue: [aWatcher stopStepping].
+			[(wasStepping := aWatcher isStepping) ifTrue: [aWatcher stopStepping].
 			aWatcher getSelector: (Utilities getterSelectorFor: newName).
 			aWatcher putSelector ifNotNil:
 				[aWatcher putSelector: (Utilities setterSelectorFor: newName)].

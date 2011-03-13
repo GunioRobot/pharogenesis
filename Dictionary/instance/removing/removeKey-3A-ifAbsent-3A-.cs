@@ -4,10 +4,10 @@ removeKey: key ifAbsent: aBlock
 	the value externally named by key."
 
 	| index assoc |
-	index _ self findElementOrNil: key.
-	assoc _ array at: index.
+	index := self findElementOrNil: key.
+	assoc := array at: index.
 	assoc == nil ifTrue: [ ^ aBlock value ].
 	array at: index put: nil.
-	tally _ tally - 1.
+	tally := tally - 1.
 	self fixCollisionsFrom: index.
 	^ assoc value

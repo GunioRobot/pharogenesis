@@ -1,1 +1,0 @@
-recordFontShapeEnd: fontId with: charId

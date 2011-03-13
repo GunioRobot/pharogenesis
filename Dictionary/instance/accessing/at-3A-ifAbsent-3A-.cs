@@ -3,6 +3,6 @@ at: key ifAbsent: aBlock
 	answer the result of evaluating aBlock."
 
 	| assoc |
-	assoc _ array at: (self findElementOrNil: key).
+	assoc := array at: (self findElementOrNil: key).
 	assoc ifNil: [^ aBlock value].
 	^ assoc value

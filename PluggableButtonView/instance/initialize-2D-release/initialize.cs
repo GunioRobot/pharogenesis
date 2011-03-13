@@ -1,12 +1,12 @@
 initialize
 
  	super initialize.
-	label _ nil.
-	getStateSelector _ nil.
-	actionSelector _ nil.
-	getLabelSelector _ nil.
-	getMenuSelector _ nil.
-	shortcutCharacter _ nil.
-	askBeforeChanging _ false.
-	triggerOnMouseDown _ false.
-	complemented _ false.
+	label := nil.
+	getStateSelector := nil.
+	actionSelector := nil.
+	getLabelSelector := nil.
+	getMenuSelector := nil.
+	shortcutCharacter := nil.
+	askBeforeChanging := false.
+	triggerOnMouseDown := false.
+	complemented := false.

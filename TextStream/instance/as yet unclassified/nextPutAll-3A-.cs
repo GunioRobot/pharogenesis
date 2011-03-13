@@ -1,7 +1,7 @@
 nextPutAll: aCollection 
 	"Optimized access to get around Text at:Put: overhead"
 	| n |
-	n _ aCollection size.
+	n := aCollection size.
      position + n > writeLimit
        ifTrue:
         [self growTo: position + n + 10].
@@ -10,4 +10,4 @@ nextPutAll: aCollection
 		to: position + n
 		with: aCollection
 		startingAt: 1.
-	position _ position + n
+	position := position + n

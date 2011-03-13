@@ -4,7 +4,7 @@ setParameterFor: aSelector toType: aTypeSymbol
 	| aUniclassScript |
 	aTypeSymbol isEmptyOrNil ifTrue: [^ self].
 	(self typeforParameterFor: aSelector) = aTypeSymbol ifTrue: [^ self].
-	aUniclassScript _ self class scripts at: aSelector.
+	aUniclassScript := self class scripts at: aSelector.
 	aUniclassScript argumentVariables first variableType: aTypeSymbol.
 	aUniclassScript currentScriptEditorDo:
 		[:aScriptEditor | aScriptEditor assureParameterTilesValid].

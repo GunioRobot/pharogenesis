@@ -1,7 +1,7 @@
 setActionSelector
 
 	| newSel |
-	newSel _ FillInTheBlank
+	newSel := FillInTheBlank
 		request:
 'Please type the selector to be sent to
 the target when this button is pressed' translated

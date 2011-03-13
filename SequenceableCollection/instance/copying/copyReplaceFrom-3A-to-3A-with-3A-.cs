@@ -6,9 +6,9 @@ copyReplaceFrom: start to: stop with: replacementCollection
 	and stop have to be within the receiver's bounds."
 
 	| newSequenceableCollection newSize endReplacement |
-	newSize _ self size - (stop - start + 1) + replacementCollection size.
-	endReplacement _ start - 1 + replacementCollection size.
-	newSequenceableCollection _ self species new: newSize.
+	newSize := self size - (stop - start + 1) + replacementCollection size.
+	endReplacement := start - 1 + replacementCollection size.
+	newSequenceableCollection := self species new: newSize.
 	start > 1 ifTrue:[
 		newSequenceableCollection
 			replaceFrom: 1

@@ -1,10 +1,10 @@
 isObscured
 
 	| topController displayRect |
-	(topController _ self topView controller)
+	(topController := self topView controller)
 		== ScheduledControllers activeController
 			ifTrue: [^false].
-	displayRect _ self insetDisplayBox.
+	displayRect := self insetDisplayBox.
 	ScheduledControllers scheduledControllers do: [:ctrlr |
 		ctrlr == topController ifTrue: [^false].
 		(displayRect intersects: ctrlr view insetDisplayBox)

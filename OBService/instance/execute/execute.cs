@@ -1,2 +1,0 @@
-execute
-	^ self executeFor: nil

@@ -1,2 +1,0 @@
-children
-	^ metaNode children

@@ -1,7 +1,7 @@
 scroll
 	"Check to see whether the user wishes to jump, scroll up, or scroll down."
 	| savedCursor |
-	savedCursor _ sensor currentCursor.
+	savedCursor := sensor currentCursor.
 			[self scrollBarContainsCursor]
 				whileTrue: 
 					[self interActivityPause.

@@ -4,5 +4,5 @@ addMethodReferencesTo: aCollection
 	| sel |
 	self scripts do:
 		[:aScript |
-			(sel _ aScript selector) ifNotNil:
+			(sel := aScript selector) ifNotNil:
 				[aCollection add: (MethodReference new setStandardClass: self methodSymbol: sel)]]

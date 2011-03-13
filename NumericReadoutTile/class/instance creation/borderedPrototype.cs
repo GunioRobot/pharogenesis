@@ -3,8 +3,8 @@ borderedPrototype
 
 	| aWatcher aTile |
 
-	aTile _ self new typeColor: (Color r: 0.387 g: 0.581 b: 1.0).
-	aWatcher _ UpdatingStringMorph new.
+	aTile := self new typeColor: (Color r: 0.387 g: 0.581 b: 1.0).
+	aWatcher := UpdatingStringMorph new.
 	aWatcher growable: true; setNameTo: 'value'.
 	aTile addMorphBack: aWatcher.
 	aTile addArrows; setNameTo: 'Number (mid)'.

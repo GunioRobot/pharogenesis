@@ -2,10 +2,10 @@ getterButtonFor: getterSelector type: partType
 	"Answer a classic-tiles getter button for a part of the given name"
 
 	| m inherent wording |
-	m _ TileMorph new adoptVocabulary: self currentVocabulary.
+	m := TileMorph new adoptVocabulary: self currentVocabulary.
 
-	inherent _ Utilities inherentSelectorForGetter: getterSelector.
-	wording _ (scriptedPlayer slotInfo includesKey: inherent)
+	inherent := Utilities inherentSelectorForGetter: getterSelector.
+	wording := (scriptedPlayer slotInfo includesKey: inherent)
 		ifTrue: [inherent]
 		ifFalse: [self currentVocabulary tileWordingForSelector: 
 getterSelector].

@@ -4,9 +4,9 @@ startUpWithCaption: captionOrNil icon: aForm at: location allowKeyboard: aBoolea
 
 	| maxHeight |
 	(ProvideAnswerNotification signal: captionOrNil) ifNotNilDo:
-		[:answer | ^ selection _ answer ifTrue: [1] ifFalse: [2]].
+		[:answer | ^ selection := answer ifTrue: [1] ifFalse: [2]].
 		 
-	maxHeight _ Display height*3//4.
+	maxHeight := Display height*3//4.
 	self frameHeight > maxHeight ifTrue:
 		[^ self
 			startUpSegmented: maxHeight
@@ -16,7 +16,7 @@ startUpWithCaption: captionOrNil icon: aForm at: location allowKeyboard: aBoolea
 
 	Smalltalk isMorphic
 		ifTrue:[
-			selection _ Cursor normal showWhile:
+			selection := Cursor normal showWhile:
 				[| menuMorph | 
 				menuMorph := MVCMenuMorph from: self title: nil.
 				(captionOrNil notNil or:[aForm notNil])

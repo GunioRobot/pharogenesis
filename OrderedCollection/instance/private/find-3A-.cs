@@ -5,9 +5,9 @@ find: oldObject
         #indexOf:ifAbsent: "
 
 	| index |
-	index _ firstIndex.
+	index := firstIndex.
 	[index <= lastIndex]
 		whileTrue:
 			[(array at: index) = oldObject ifTrue: [^ index].
-			index _ index + 1].
+			index := index + 1].
 	self errorNotFound: oldObject

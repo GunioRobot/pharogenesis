@@ -1,2 +1,0 @@
-targetClass
-	^ class

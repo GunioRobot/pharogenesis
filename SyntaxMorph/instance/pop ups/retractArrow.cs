@@ -6,6 +6,6 @@ retractArrow
 	(self nodeClassIs: MessageNode) ifFalse: [^ nil].
 	(owner isSyntaxMorph and: [owner parseNode == parseNode]) ifTrue: [^ nil].
 
-	patch _ (ImageMorph new image: (TileMorph classPool at: #RetractPicture)).
+	patch := (ImageMorph new image: (TileMorph classPool at: #RetractPicture)).
 	patch on: #mouseDown send: #retract to: self.
 	^ patch

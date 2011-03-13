@@ -1,2 +1,0 @@
-speed: aNumber
-	speed := aNumber

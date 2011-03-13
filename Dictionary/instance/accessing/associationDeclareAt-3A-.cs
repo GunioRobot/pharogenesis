@@ -5,7 +5,7 @@ associationDeclareAt: aKey
 	^ self associationAt: aKey ifAbsent: [
 		(Undeclared includesKey: aKey)
 			ifTrue: 
-				[existing _ Undeclared associationAt: aKey.
+				[existing := Undeclared associationAt: aKey.
 				Undeclared removeKey: aKey.
 				self add: existing]
 			ifFalse: 

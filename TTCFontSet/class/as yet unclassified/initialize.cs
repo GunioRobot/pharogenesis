@@ -4,5 +4,5 @@ initialize
 "
 
 	| tt |
-	tt := TTCFontDescription default.
+	tt _ TTCFontDescription default.
 	tt ifNotNil: [self newTextStyleFromTT: tt].

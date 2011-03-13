@@ -6,13 +6,13 @@ window: aWindow viewport: aViewport
 	| scale translation |
 	aViewport width = aWindow width & (aViewport height = aWindow height)
 		ifTrue:
-			[scale _ nil]
+			[scale := nil]
 		ifFalse:
-			[scale _ aViewport width asFloat / aWindow width asFloat
+			[scale := aViewport width asFloat / aWindow width asFloat
 						@ (aViewport height asFloat / aWindow height asFloat)].
 	scale == nil
-		ifTrue: [translation _ aViewport left - aWindow left
+		ifTrue: [translation := aViewport left - aWindow left
 								@ (aViewport top - aWindow top)]
-		ifFalse: [translation _ aViewport left - (scale x * aWindow left)
+		ifFalse: [translation := aViewport left - (scale x * aWindow left)
 								@ (aViewport top - (scale y * aWindow top))].
 	^self new setScale: scale translation: translation

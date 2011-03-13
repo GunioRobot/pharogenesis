@@ -3,12 +3,12 @@ selectorsContaining: aString
 
 	| size selectorList ascii |
 
-	selectorList _ OrderedCollection new.
-	(size _ aString size) = 0 ifTrue: [^selectorList].
+	selectorList := OrderedCollection new.
+	(size := aString size) = 0 ifTrue: [^selectorList].
 
 	aString size = 1 ifTrue:
 		[
-			ascii _ aString first asciiValue.
+			ascii := aString first asciiValue.
 			ascii < 128 ifTrue: [selectorList add: (OneCharacterSymbols at: ascii+1)]
 		].
 
@@ -20,7 +20,7 @@ selectorsContaining: aString
 			^selectorList
 		].
 
-	selectorList _ selectorList copyFrom: 2 to: selectorList size.
+	selectorList := selectorList copyFrom: 2 to: selectorList size.
 
 	self allSymbolTablesDo: [:each |
 		each size >= size ifTrue:

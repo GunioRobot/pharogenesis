@@ -1,2 +1,2 @@
 status: aSymbol
-	status _ aSymbol
+	status := aSymbol

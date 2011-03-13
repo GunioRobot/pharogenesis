@@ -4,7 +4,7 @@ displayView
 	| oldOffset |
 	super displayView.
 	insideColor == nil ifFalse: [Display fill: self insetDisplayBox fillColor: insideColor].
-	oldOffset _ model offset.
+	oldOffset := model offset.
 	model offset: "borderWidth origin" 0@0.
 	model
 		displayOn: Display

@@ -1,7 +1,7 @@
 at: index
 
 	| i |
-	i _ 0.
+	i := 0.
 	self do: [:link |
-		(i _ i + 1) = index ifTrue: [^ link]].
+		(i := i + 1) = index ifTrue: [^ link]].
 	^ self errorSubscriptBounds: index

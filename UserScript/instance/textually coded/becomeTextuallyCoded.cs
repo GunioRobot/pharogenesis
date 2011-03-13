@@ -1,2 +1,2 @@
 becomeTextuallyCoded
-	currentScriptEditor _ #textuallyCoded
+	currentScriptEditor := #textuallyCoded

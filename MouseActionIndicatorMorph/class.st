@@ -1,1 +1,0 @@
-MouseActionIndicatorMorph class instanceVariableNames: ''

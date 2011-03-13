@@ -3,5 +3,5 @@ skipSeparatorsAndPeekNext
 	| peek |
 	[self atEnd]
 		whileFalse:
-		[(peek _ self next) isSeparator
+		[(peek := self next) isSeparator
 			ifFalse: [self position: self position-1. ^ peek]]

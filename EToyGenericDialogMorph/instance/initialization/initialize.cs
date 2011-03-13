@@ -2,6 +2,6 @@ initialize
 	"initialize the state of the receiver"
 super initialize.
 ""
-	namedFields _ Dictionary new.
+	namedFields := Dictionary new.
 	
 	self rebuild

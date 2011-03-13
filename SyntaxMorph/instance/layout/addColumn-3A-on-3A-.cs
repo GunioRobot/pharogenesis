@@ -1,6 +1,6 @@
 addColumn: aColorOrSymbol on: aNode
 	| col |
-	self addMorphBack: (col _ self class column: aColorOrSymbol on: aNode).
+	self addMorphBack: (col := self class column: aColorOrSymbol on: aNode).
 
 "col setProperty: #howCreated toValue: thisContext longStack."
 

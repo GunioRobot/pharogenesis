@@ -5,4 +5,4 @@ playerClass
 		ifTrue:
 			[playerClass]
 		ifFalse:
-			[playerClass _ playerClass class]
+			[playerClass := playerClass class]

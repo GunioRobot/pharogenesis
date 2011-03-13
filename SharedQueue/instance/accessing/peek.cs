@@ -6,8 +6,8 @@ peek
 	| value |
 	accessProtect
 		critical: [readPosition >= writePosition
-					ifTrue: [readPosition _ 1.
-							writePosition _ 1.
-							value _ nil]
-					ifFalse: [value _ contentsArray at: readPosition]].
+					ifTrue: [readPosition := 1.
+							writePosition := 1.
+							value := nil]
+					ifFalse: [value := contentsArray at: readPosition]].
 	^value

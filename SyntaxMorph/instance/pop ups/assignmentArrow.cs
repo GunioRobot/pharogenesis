@@ -4,7 +4,7 @@ assignmentArrow
 
 	self isAVariable ifFalse: [^ nil].
 	self isDeclaration ifTrue: [^ nil].
-	^ (rr _ RectangleMorph new)
+	^ (rr := RectangleMorph new)
 		extent: 11@13; borderWidth: 1; color: Color lightGreen;
 		borderColor: Color gray;
 		addMorph: ((self noiseStringMorph: '_') topLeft: rr topLeft + (3@0));

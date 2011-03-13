@@ -2,7 +2,7 @@ presentHelp
 	"Sent when a Help button is hit; provide the user with some form of help for the tool at hand"
 
 	| aString |
-	aString _ 
+	aString := 
 'This tool allows you to see all the scripts for all the objects in this project.
 
 Sometimes you are only interested in those scripts that are ticking, or that are *ready* to tick when you hit the GO button (which are said to be "paused.")

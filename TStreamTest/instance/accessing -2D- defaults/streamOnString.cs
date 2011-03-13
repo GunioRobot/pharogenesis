@@ -1,0 +1,2 @@
+streamOnString
+	^ self streamOn: 'abcde'

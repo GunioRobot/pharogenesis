@@ -1,0 +1,1 @@
+XMLStringNode class instanceVariableNames: ''

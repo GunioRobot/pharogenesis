@@ -1,3 +1,3 @@
 topNode: aTextNode
 
-	topNode _ aTextNode
+	topNode := aTextNode

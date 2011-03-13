@@ -7,7 +7,7 @@ trigger."
 	super displayDeEmphasized.
 	ArmsLengthCmd ifNil: [^ self].
 	ArmsLengthCmd first == model ifFalse: [^ self].	"not ours"
-	cmd _ ArmsLengthCmd second.
-	ArmsLengthCmd _ nil.
+	cmd := ArmsLengthCmd second.
+	ArmsLengthCmd := nil.
 	model "project" perform: cmd.
 	model "project" enter.

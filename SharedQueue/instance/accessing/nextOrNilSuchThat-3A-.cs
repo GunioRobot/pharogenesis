@@ -5,29 +5,29 @@ nextOrNilSuchThat: aBlock
 
 	| value readPos |
 	accessProtect critical: [
-		value _ nil.
-		readPos _ readPosition.
+		value := nil.
+		readPos := readPosition.
 		[readPos < writePosition and: [value isNil]] whileTrue: [
-			value _ contentsArray at: readPos.
-			readPos _ readPos + 1.
+			value := contentsArray at: readPos.
+			readPos := readPos + 1.
 			(aBlock value: value) ifTrue: [
 				readPosition to: readPos - 1 do: [ :j |
 					contentsArray at: j put: nil.
 				].
-				readPosition _ readPos.
+				readPosition := readPos.
 			] ifFalse: [
-				value _ nil.
+				value := nil.
 			].
 		].
 		readPosition >= writePosition ifTrue: [readSynch initSignals].
 	].
 	^value
 "===
-q _ SharedQueue new.
+q := SharedQueue new.
 1 to: 10 do: [ :i | q nextPut: i].
-c _ OrderedCollection new.
+c := OrderedCollection new.
 [
-	v _ q nextOrNilSuchThat: [ :e | e odd].
+	v := q nextOrNilSuchThat: [ :e | e odd].
 	v notNil
 ] whileTrue: [
 	c add: {v. q size}

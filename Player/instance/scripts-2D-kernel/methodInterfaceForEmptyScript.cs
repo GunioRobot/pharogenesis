@@ -2,7 +2,7 @@ methodInterfaceForEmptyScript
 	"Answer a MethodInterface representing Andreas's 'emptyScript' feature"
 
 	| anInterface |
-	anInterface _ MethodInterface new.
+	anInterface := MethodInterface new.
 	anInterface receiverType: #Player.
 	anInterface flagAttribute: #scripts.
 	anInterface

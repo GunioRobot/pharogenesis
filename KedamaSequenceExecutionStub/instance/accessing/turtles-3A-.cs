@@ -1,3 +1,3 @@
 turtles: t
 
-	turtles _ t.
+	turtles := t.

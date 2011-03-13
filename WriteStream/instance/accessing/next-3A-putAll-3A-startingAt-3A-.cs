@@ -1,14 +1,16 @@
 next: anInteger putAll: aCollection startingAt: startIndex
 	"Store the next anInteger elements from the given collection."
 
-	| newEnd numPut |
+
+	| newEnd |
 	collection class == aCollection class ifFalse:
-		[^ super next: anInteger putAll: aCollection startingAt: startIndex ].
+		[^ super next: anInteger putAll: aCollection startingAt: startIndex].
 
-	numPut _ anInteger min: (aCollection size - startIndex + 1).
-	newEnd _ position + numPut.
+	newEnd _ position + anInteger.
 	newEnd > writeLimit ifTrue:
-		[^ super next: anInteger putAll: aCollection startingAt: startIndex "Trigger normal pastEndPut: logic"].
+		[self growTo: newEnd + 10].
 
-	collection replaceFrom: position+1 to: newEnd with: aCollection startingAt: startIndex.
+	collection replaceFrom: position+1 to: newEnd  with: aCollection startingAt: startIndex.
 	position _ newEnd.
+
+	^aCollection

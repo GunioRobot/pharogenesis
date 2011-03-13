@@ -1,25 +1,25 @@
 mouseMovedFrom: beginBlock pivotBlock: pivotBlock showingCaret: caretOn 
 	| startBlock stopBlock showingCaret |
-	stopBlock _ startBlock _ beginBlock.
-	showingCaret _ caretOn.
+	stopBlock := startBlock := beginBlock.
+	showingCaret := caretOn.
 	[Sensor redButtonPressed]
 		whileTrue: 
-			[stopBlock _ self characterBlockAtPoint: Sensor cursorPoint.
+			[stopBlock := self characterBlockAtPoint: Sensor cursorPoint.
 			stopBlock = startBlock
 				ifFalse: 
 					[showingCaret
 						ifTrue: 
-							[showingCaret _ false.
+							[showingCaret := false.
 							self reverseFrom: pivotBlock to: pivotBlock].
 			((startBlock >= pivotBlock and: [stopBlock >= pivotBlock])
 				or: [startBlock <= pivotBlock and: [stopBlock <= pivotBlock]])
 				ifTrue: 
 					[self reverseFrom: startBlock to: stopBlock.
-					startBlock _ stopBlock]
+					startBlock := stopBlock]
 				ifFalse: 
 					[self reverseFrom: startBlock to: pivotBlock.
 					self reverseFrom: pivotBlock to: stopBlock.
-					startBlock _ stopBlock].
+					startBlock := stopBlock].
 			(clippingRectangle containsRect: stopBlock) ifFalse:
 				[stopBlock top < clippingRectangle top
 				ifTrue: [self scrollBy: stopBlock top - clippingRectangle top

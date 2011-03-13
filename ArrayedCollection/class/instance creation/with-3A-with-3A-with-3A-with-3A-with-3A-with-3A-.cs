@@ -2,7 +2,7 @@ with: firstObject with: secondObject with: thirdObject with: fourthObject with: 
 	"Answer a new instance of me, containing only the 6 arguments as elements."
 
 	| newCollection |
-	newCollection _ self new: 6.
+	newCollection := self new: 6.
 	newCollection at: 1 put: firstObject.
 	newCollection at: 2 put: secondObject.
 	newCollection at: 3 put: thirdObject.

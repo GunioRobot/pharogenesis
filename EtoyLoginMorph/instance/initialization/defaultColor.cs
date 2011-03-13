@@ -1,7 +1,7 @@
 defaultColor
 	"answer the default color/fill style for the receiver"
 	| result |
-	result _ GradientFillStyle ramp: {0.0
+	result := GradientFillStyle ramp: {0.0
 					-> (Color
 							r: 0.5
 							g: 0.5

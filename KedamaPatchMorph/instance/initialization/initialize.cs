@@ -6,10 +6,10 @@ initialize
 	self diffusionRate: 1.
 	self sniffRange: 1.
 
-	displayType _ #logScale.
-	displayMax _ WordArray with: 1024.
-	shiftAmount _ -2.
+	displayType := #logScale.
+	displayMax := WordArray with: 1024.
+	shiftAmount := -2.
 
-	autoChanged _ true.
+	autoChanged := true.
 
 	self formChanged.

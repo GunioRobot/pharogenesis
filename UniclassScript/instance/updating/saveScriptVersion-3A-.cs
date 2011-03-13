@@ -7,7 +7,7 @@ to my list of former scripting tiles.  The morph-list will get copied back into 
 
 	Preferences universalTiles ifFalse:  "the following only applies to Classic tiles"
 		[(currentScriptEditor notNil and: [currentScriptEditor showingMethodPane not]) ifTrue:
-				[formerScriptingTiles ifNil: [formerScriptingTiles _ OrderedCollection new].
+				[formerScriptingTiles ifNil: [formerScriptingTiles := OrderedCollection new].
 				formerScriptingTiles add:
 					(Array with: timeStamp
 						with: (currentScriptEditor submorphs allButFirst collect: [:m | m veryDeepCopy])).

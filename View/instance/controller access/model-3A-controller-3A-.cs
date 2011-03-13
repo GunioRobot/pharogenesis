@@ -12,9 +12,9 @@ model: aModel controller: aController
 		ifTrue: [model removeDependent: self].
 	aModel ~~ nil & (aModel ~~ model)
 		ifTrue: [aModel addDependent: self].
-	model _ aModel.
+	model := aModel.
 	aController ~~ nil
 		ifTrue: 
 			[aController view: self.
 			aController model: aModel].
-	controller _ aController
+	controller := aController

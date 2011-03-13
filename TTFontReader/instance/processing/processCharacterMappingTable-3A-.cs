@@ -10,16 +10,16 @@ processCharacterMappingTable: entry
 		pID := entry nextUShort.
 		sID := entry nextUShort.
 		offset := entry nextULong.
-		"Check if this is either a Macintosh encoded table
-		or a Windows encoded table"
-		(pID = 1 or:[pID = 3]) ifTrue:[
+		"Check if this is either a Unicode (0), Macintosh (1),
+		or a Windows (3) encoded table"
+		(#(0 1 3) includes: pID) ifTrue:[
 			"Go to the beginning of the table"
 			copy := entry copy.
 			copy offset: initialOffset + offset.
 			cmap := self decodeCmapFmtTable: copy.
-			(pID = 3 and: [cmap notNil]) "Prefer Windows encoding over everything else"
+			(pID = 0 and: [cmap notNil]) "Prefer Unicode encoding over everything else"
 				ifTrue: [^ pID -> cmap].
-			assoc := pID -> cmap. "Keep it in case we don't find a Mac encoded table"
+			assoc := pID -> cmap. "Keep it in case we don't find a better table"
 		].
 	].
 	^assoc

@@ -1,23 +1,23 @@
 compileVectorInstVarAccessorsFor: varName
 
 	| nameString index type setPhrase |
-	nameString _ varName asString capitalized.
-	index _ info at: varName asSymbol.
+	nameString := varName asString capitalized.
+	index := info at: varName asSymbol.
 	self class compileSilently: ('get', nameString, '
 	^ ', '(arrays at: ', index printString, ')')
 		classified: 'access'.
 
-	type _ types at: index.
+	type := types at: index.
 	type = #Number ifTrue: [
-		setPhrase _ 'setNumberVarAt:'.
+		setPhrase := 'setNumberVarAt:'.
 	].
 	type = #Boolean ifTrue: [
-		setPhrase _ 'setBooleanVarAt:'.
+		setPhrase := 'setBooleanVarAt:'.
 	].
 	type = #Color ifTrue: [
-		setPhrase _ 'setColorVarAt:'.
+		setPhrase := 'setColorVarAt:'.
 	].
-	setPhrase ifNil: [setPhrase _ 'setObjectVarAt:'].
+	setPhrase ifNil: [setPhrase := 'setObjectVarAt:'].
 
 	self class compileSilently: ('set', nameString, ': xxxArg
 	self ', setPhrase, index printString, ' put: xxxArg')

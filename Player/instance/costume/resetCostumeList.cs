@@ -1,2 +1,2 @@
 resetCostumeList
-	costumes _ nil
+	costumes := nil

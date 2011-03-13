@@ -3,7 +3,7 @@ offerMenuIn: aStatusViewer
 
 	| aMenu |
 	ActiveHand showTemporaryCursor: nil.
-	aMenu _ MenuMorph new defaultTarget: self.
+	aMenu := MenuMorph new defaultTarget: self.
 	aMenu title: player knownName, ' ', selector.
 	aMenu addStayUpItem.
 	(player class instanceCount > 1) ifTrue:

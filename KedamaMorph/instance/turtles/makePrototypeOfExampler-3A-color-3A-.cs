@@ -1,15 +1,15 @@
 makePrototypeOfExampler: examplerPlayer color: cPixel
 
 	| array inst info |
-	array _ examplerPlayer turtles.
-	info _ array info.
+	array := examplerPlayer turtles.
+	info := array info.
 	array size > 0 ifTrue: [
-		inst _ array makePrototypeFromFirstInstance.
+		inst := array makePrototypeFromFirstInstance.
 		cPixel ifNotNil: [inst at: (info at: #color) put: cPixel].
 		^ inst.
 	].
 
-	inst _ Array new: array instSize.
+	inst := Array new: array instSize.
 	info associationsDo: [:assoc |
 		inst at: (assoc value) put: (examplerPlayer perform: (Utilities getterSelectorFor: assoc key)).
 	].

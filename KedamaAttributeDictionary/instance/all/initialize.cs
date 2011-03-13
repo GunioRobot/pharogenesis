@@ -1,3 +1,3 @@
 initialize
 
-	dictionaries _ IdentityDictionary new.
+	dictionaries := IdentityDictionary new.

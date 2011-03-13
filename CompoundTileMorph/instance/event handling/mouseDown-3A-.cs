@@ -4,21 +4,21 @@ mouseDown: evt
 	"The essence of ScriptEditor mouseEnter:"
 	| ed ss guyToTake |
 "	self isPartsDonor ifTrue:[
-		dup _ self duplicate.
+		dup := self duplicate.
 		evt hand attachMorph: dup.
 		dup position: evt position.
 		^self].
 	submorphs isEmpty 			never true
 		ifTrue: [^ self].
 "
-	(ed _ self enclosingEditor) ifNil: [^evt hand grabMorph: self].
+	(ed := self enclosingEditor) ifNil: [^evt hand grabMorph: self].
 
-	guyToTake _ self.
+	guyToTake := self.
 	owner class == TilePadMorph
 		ifTrue: ["picking me out of another phrase"
-			(ss _ submorphs first) class == TilePadMorph
-				ifTrue: [ss _ ss submorphs first].
-			guyToTake _  ss veryDeepCopy].
+			(ss := submorphs first) class == TilePadMorph
+				ifTrue: [ss := ss submorphs first].
+			guyToTake :=  ss veryDeepCopy].
 	evt hand grabMorph: guyToTake.
 	ed startStepping.
 	ed mouseEnterDragging: evt.

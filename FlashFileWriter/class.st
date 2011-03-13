@@ -1,1 +1,0 @@
-FlashFileWriter class instanceVariableNames: ''

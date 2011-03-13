@@ -2,7 +2,7 @@ insertCardOfBackground: aBackground withDataFrom: aLine forInstanceVariables: sl
 	"Insert a new card of the given background and have it become the current card. "
 
 	| newCard |
-	newCard _  aBackground newCard.
+	newCard :=  aBackground newCard.
 	self privateCards add: newCard after: self currentCard.
 	newCard absorbBackgroundDataFrom: aLine forInstanceVariables: slotNames.
 	self goToCard: newCard

@@ -1,3 +1,3 @@
 delayBetweenFirings: millisecondsOrNil
 
-	delayBetweenFirings _ millisecondsOrNil
+	delayBetweenFirings := millisecondsOrNil

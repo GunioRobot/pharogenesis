@@ -7,5 +7,5 @@ insetDisplayBox
 	the receiver is totally clipped by the display screen and its superView, 
 	the resulting Rectangle will be invalid."
 
-	insetDisplayBox ifNil: [insetDisplayBox _ self computeInsetDisplayBox].
+	insetDisplayBox ifNil: [insetDisplayBox := self computeInsetDisplayBox].
 	^insetDisplayBox

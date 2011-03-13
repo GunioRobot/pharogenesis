@@ -5,10 +5,10 @@ promptForCancel
 		[(self confirm: 'Changes have not been saved.
 Is it OK to cancel those changes?' translated) ifTrue: [model clearUserEditFlag].
 		^ self].
-	stripes _ (Form extent: 16@16 fromStipple: 16r36C9) bits.
+	stripes := (Form extent: 16@16 fromStipple: 16r36C9) bits.
 	Display border: self insetDisplayBox width: 4
 			rule: Form reverse fillColor: stripes.
-	okToCancel _ self confirm: 'Changes have not been saved.
+	okToCancel := self confirm: 'Changes have not been saved.
 Is it OK to cancel those changes?' translated.
 	Display border: self insetDisplayBox width: 4
 			rule: Form reverse fillColor: stripes.

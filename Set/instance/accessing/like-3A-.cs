@@ -4,5 +4,5 @@ like: anObject
 
 	| index |
 
-	^(index _ self scanFor: anObject) = 0
+	^(index := self scanFor: anObject) = 0
 		ifFalse: [array at: index]

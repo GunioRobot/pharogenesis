@@ -1,1 +1,0 @@
-OBColumn class instanceVariableNames: ''

@@ -1,5 +1,5 @@
 player: aPlayer variableName: aVariableName
 	"Set up my initial state"
-	player _ aPlayer.
-	variableName _ aVariableName.
+	player := aPlayer.
+	variableName := aVariableName.
 	self reconstituteName

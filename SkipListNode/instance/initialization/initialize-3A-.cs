@@ -1,2 +1,2 @@
 initialize: maxLevel
-	pointers _ Array new: maxLevel
+	pointers := Array new: maxLevel

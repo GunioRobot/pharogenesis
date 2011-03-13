@@ -1,2 +1,2 @@
 userScriptSelector: s
-	userScriptSelector _ s
+	userScriptSelector := s

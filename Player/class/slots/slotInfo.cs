@@ -1,3 +1,3 @@
 slotInfo
-	slotInfo ifNil: [slotInfo _ IdentityDictionary new].
+	slotInfo ifNil: [slotInfo := IdentityDictionary new].
 	^ slotInfo

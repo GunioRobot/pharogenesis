@@ -1,5 +1,5 @@
 fullScreenOff
 
-	Display fullScreenMode: (LastScreenModeSelected _ false).
+	Display fullScreenMode: (LastScreenModeSelected := false).
 	DisplayScreen checkForNewScreenSize.
 	self restoreDisplay.

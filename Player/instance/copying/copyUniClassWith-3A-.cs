@@ -1,7 +1,7 @@
 copyUniClassWith: deepCopier
 	"my class is a subclass of Player.  Return another class just like my class.  Share the costume list."
 	| newCls |
-	newCls _ self class officialClass 
+	newCls := self class officialClass 
 		newUniqueClassInstVars: self class instanceVariablesString 
 		classInstVars: self class class instanceVariablesString.
 	newCls copyMethodDictionaryFrom: self class.

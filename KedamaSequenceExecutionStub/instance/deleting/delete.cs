@@ -1,8 +1,8 @@
 delete
 
 	| anInstance |
-	arrays _ nil.
-	exampler _ nil.
+	arrays := nil.
+	exampler := nil.
 	self class removeFromSystem: false.
 	anInstance := UnscriptedPlayer new.
 	self become: anInstance.

@@ -1,2 +1,0 @@
-scrollBarHeight
-	^ 12

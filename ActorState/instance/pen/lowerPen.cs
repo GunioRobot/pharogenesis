@@ -1,2 +1,2 @@
 lowerPen
-	penDown _ true
+	penDown := true

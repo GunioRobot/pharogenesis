@@ -3,7 +3,7 @@ adoptScriptsFrom
 
 	| aMorph |
 	Sensor waitNoButton.
-	aMorph _ ActiveWorld chooseClickTarget.
+	aMorph := ActiveWorld chooseClickTarget.
 	aMorph ifNil: [^ Beeper beep].
 
 	(((aMorph isSketchMorph) and: [aMorph player belongsToUniClass]) and: [self belongsToUniClass not])

@@ -1,2 +1,0 @@
-isFlashCharacter
-	^false

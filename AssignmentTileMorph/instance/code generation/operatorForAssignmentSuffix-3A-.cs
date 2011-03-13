@@ -2,7 +2,7 @@ operatorForAssignmentSuffix: aString
 	"Answer the operator associated with the receiver, assumed to be one of the compound assignments"
 
 	| toTest |
-	toTest _ aString asString.
+	toTest := aString asString.
 	#(	('Incr:'				'+')
 		('Decr:'				'-')
 		('Mult:'				'*'))

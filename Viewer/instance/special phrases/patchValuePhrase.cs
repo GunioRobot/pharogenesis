@@ -8,7 +8,7 @@ patchValuePhrase
 				argType: #Color.	"temp dummy"
 	(outerPhrase submorphs second) delete.	"operator"
 	(outerPhrase submorphs second) delete.	"color"
-	getTile _ KedamaGetPixelValueTile new.
+	getTile := KedamaGetPixelValueTile new.
 	getTile setPatchDefaultTo: (scriptedPlayer defaultPatchPlayer).
 	outerPhrase addMorphBack: getTile.
 	^outerPhrase

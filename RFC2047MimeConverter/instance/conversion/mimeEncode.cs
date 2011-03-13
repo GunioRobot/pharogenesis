@@ -3,16 +3,16 @@ mimeEncode
 
 	| word pos wasGood isGood max |
 	true ifTrue: [mimeStream nextPutAll: dataStream upToEnd].
-	pos _ 0.
-	max _ 72.
-	wasGood _ true.
+	pos := 0.
+	max := 72.
+	wasGood := true.
 	[dataStream atEnd] whileFalse: [
-		word _ self readWord.
-		isGood _ word allSatisfy: [:c | c asciiValue < 128].
+		word := self readWord.
+		isGood := word allSatisfy: [:c | c asciiValue < 128].
 		wasGood & isGood ifTrue: [
 			pos + word size < max
 				ifTrue: [dataStream nextPutAll: word.
-					pos _ pos + word size]
+					pos := pos + word size]
 				ifFalse: []
 		]
 	].

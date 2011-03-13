@@ -3,8 +3,8 @@ systemQueryPhraseWithActionString: anActionString labelled: aLabel
 
 	| aTile aPhrase |
 	
-	aPhrase _ SystemQueryPhrase new.
-	aTile _ BooleanTile new.
+	aPhrase := SystemQueryPhrase new.
+	aTile := BooleanTile new.
 	aTile setExpression: anActionString label: aLabel.
 	aPhrase addMorph: aTile.
 	aPhrase enforceTileColorPolicy.

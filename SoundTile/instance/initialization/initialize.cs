@@ -4,8 +4,8 @@ initialize
 	
 	| soundChoices startingSoundName |
 	super initialize.
-	soundChoices _ self soundChoices.
-	startingSoundName _ (soundChoices includes: 'croak')
+	soundChoices := self soundChoices.
+	startingSoundName := (soundChoices includes: 'croak')
 							ifTrue: ['croak']
 							ifFalse: [[soundChoices anyOne] ifError: ['silence']].
 	self addArrows; setLiteral: startingSoundName.

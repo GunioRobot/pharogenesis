@@ -1,1 +1,0 @@
-PHOReader class instanceVariableNames: ''

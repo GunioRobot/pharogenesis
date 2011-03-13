@@ -6,12 +6,12 @@ initialize
 	self vResizing: #shrinkWrap.
 	self typeColor: (ScriptingSystem colorForType: #Number).
 	self addArrows.
-	m1 _ StringMorph contents: 'random' translated font: ScriptingSystem fontForTiles.
+	m1 := StringMorph contents: 'random' translated font: ScriptingSystem fontForTiles.
 	self addMorph: m1.
-	m2 _ UpdatingStringMorph contents: '180' font: ScriptingSystem fontForTiles.
+	m2 := UpdatingStringMorph contents: '180' font: ScriptingSystem fontForTiles.
 	m2 target: self; getSelector: #literal; putSelector: #literal:.
 	m2 position: m1 topRight.
 	self addMorphBack: m2.
-	literal _ 180.
+	literal := 180.
 	self updateLiteralLabel.
 	self makeAllTilesGreen

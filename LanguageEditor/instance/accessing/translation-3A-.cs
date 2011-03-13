@@ -3,7 +3,7 @@ translation: aStringOrText
 	| phrase |
 	self selectedTranslation isZero
 		ifTrue: [^ self].
-	phrase := self translations at: self selectedTranslation.
+	phrase _ self translations at: self selectedTranslation.
 	translator
 		phrase: phrase
 		translation: aStringOrText asString.

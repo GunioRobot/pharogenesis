@@ -7,6 +7,6 @@ lock
 	methods of the View, but can also be done explicitly if desired."
 
 	self isLocked ifTrue: [^self].
-	displayTransformation _ self computeDisplayTransformation.
-	insetDisplayBox _ self computeInsetDisplayBox.
+	displayTransformation := self computeDisplayTransformation.
+	insetDisplayBox := self computeInsetDisplayBox.
 	subViews do: [:aSubView | aSubView lock]

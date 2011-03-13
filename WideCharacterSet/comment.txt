@@ -1,0 +1,13 @@
+WideCharacterSet is used to store a Set of WideCharacter with fast access and inclusion test.
+
+Implementation should be efficient in memory if sets are sufficently sparse.
+
+Wide Characters are at most 32bits.
+We split them into 16 highBits and 16 lowBits.
+
+map is a dictionary key: 16 highBits value: map of 16 lowBits.
+
+Maps of lowBits  are stored as arrays of bits in a WordArray.
+If a bit is set to 1, this indicate that corresponding character is present.
+Only 2048 entries are necessary in each lowmap.
+And only lowmap corresponding to a present high value are stored.

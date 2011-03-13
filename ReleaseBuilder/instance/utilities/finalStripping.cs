@@ -1,2 +1,0 @@
-finalStripping
-	"ReleaseBuilder new finalStripping"

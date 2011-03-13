@@ -5,7 +5,7 @@ fromString: aString
 	(aString isMemberOf: self) ifTrue: [
 		^ aString copy.
 	].
-	inst _ self new: aString size.
+	inst := self new: aString size.
 	1 to: aString size do: [:pos |
 		inst basicAt: pos put: (aString basicAt: pos).
 	].

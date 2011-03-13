@@ -2,8 +2,8 @@ statusControlRowIn: aStatusViewer
 	"Answer an object that reports my status and lets the user change it"
 
 	| aRow aMorph buttonWithPlayerName |
-	aRow _ ScriptStatusLine newRow beTransparent.
-	buttonWithPlayerName _ UpdatingSimpleButtonMorph new.
+	aRow := ScriptStatusLine newRow beTransparent.
+	buttonWithPlayerName := UpdatingSimpleButtonMorph new.
 	buttonWithPlayerName
 		on: #mouseEnter send: #menuButtonMouseEnter: to: buttonWithPlayerName;
 		 on: #mouseLeave send: #menuButtonMouseLeave: to: buttonWithPlayerName.
@@ -15,7 +15,7 @@ statusControlRowIn: aStatusViewer
 	aRow addTransparentSpacerOfSize: 10@0.
 	aRow addMorphBack: AlignmentMorph newVariableTransparentSpacer.
 
-	aMorph _ UpdatingStringMorph on: self selector: #selector.
+	aMorph := UpdatingStringMorph on: self selector: #selector.
 	aMorph color: Color brown lighter; useStringFormat.
 	aMorph setBalloonText: 'This is the name of the script to which this entry pertains.' translated.
 	aRow addMorphBack: aMorph.

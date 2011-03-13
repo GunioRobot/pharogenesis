@@ -1,0 +1,2 @@
+registeredInstallers
+	^Installers asArray

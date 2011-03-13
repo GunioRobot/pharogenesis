@@ -1,2 +1,0 @@
-theNonMetaName
-	^ name

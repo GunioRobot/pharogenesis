@@ -3,22 +3,22 @@ buildColorMenu: extent colorCount: nColors
 
 	| menuView form aSwitchView
 	 button formExtent highlightForm color leftOffset |
-	menuView _ FormMenuView new.
+	menuView := FormMenuView new.
 	menuView window: (0@0 corner: extent).
-	formExtent _ 30@30 min: extent//(nColors*2+1@2).  "compute this better"
-	leftOffset _ extent x-(nColors*2-1*formExtent x)//2.
-	highlightForm _ Form extent: formExtent.
+	formExtent := 30@30 min: extent//(nColors*2+1@2).  "compute this better"
+	leftOffset := extent x-(nColors*2-1*formExtent x)//2.
+	highlightForm := Form extent: formExtent.
 	highlightForm borderWidth: 4.
 	1 to: nColors do: [:index | 
-		color _ (nColors = 1
+		color := (nColors = 1
 			ifTrue: [#(black)]
 			ifFalse: [#(black gray)]) at: index.
-		form _ Form extent: formExtent.
+		form := Form extent: formExtent.
 		form fill: form boundingBox fillColor: (Color perform: color).
 		form borderWidth: 5.
 		form border: form boundingBox width: 4 fillColor: Color white.
-		button _ Button new.
-		aSwitchView _ PluggableButtonView
+		button := Button new.
+		aSwitchView := PluggableButtonView
 			on: button
 			getState: #isOn
 			action: #turnOn

@@ -2,7 +2,7 @@ invigorateButton
 	"Answer a button that triggers reinvigoration"
 
 	| aButton |
-	aButton _ IconicButton new target: self;
+	aButton := IconicButton new target: self;
 		borderWidth: 0;
 		labelGraphic: (ScriptingSystem formAtKey: #Refresh);
 		color: Color transparent; 

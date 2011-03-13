@@ -4,16 +4,16 @@ viewMorph: aMorph
 	((currentPage isKindOf: Viewer) and: [currentPage scriptedPlayer == aMorph player])
 		ifTrue:
 			[^ self].
-	oldOwner _ owner.
+	oldOwner := owner.
 	self delete.
 	self visible: false.
-	aPlayer _ aMorph assuredPlayer.
+	aPlayer := aMorph assuredPlayer.
 	self showNoPalette.
-	aViewer _  StandardViewer new initializeFor: aPlayer barHeight: 0.
+	aViewer :=  StandardViewer new initializeFor: aPlayer barHeight: 0.
 	aViewer enforceTileColorPolicy.
 	self showNoPalette.
 	currentPage ifNotNil: [currentPage delete].
-	self addMorphBack: (currentPage _ aViewer beSticky).
+	self addMorphBack: (currentPage := aViewer beSticky).
 	self snapToEdgeIfAppropriate.
 	tabsMorph highlightTab: nil.
 	self visible: true.

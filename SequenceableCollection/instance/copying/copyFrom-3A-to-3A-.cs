@@ -3,7 +3,7 @@ copyFrom: start to: stop
 	index start until element at index stop."
 
 	| newSize |
-	newSize _ stop - start + 1.
+	newSize := stop - start + 1.
 	^(self species new: newSize)
 		replaceFrom: 1
 		to: newSize

@@ -2,7 +2,7 @@ offerShiftedMenuIn: aStatusViewer
 	"Put up the shifted menu"
 
 	| aMenu |
-	aMenu _ MenuMorph new defaultTarget: self.
+	aMenu := MenuMorph new defaultTarget: self.
 	aMenu title: player knownName, ' ', selector.
 	aMenu add: 'grab this object' translated target: player selector: #grabPlayerIn: argument: self currentWorld.
 	aMenu balloonTextForLastItem: 'Wherever this object currently is, the "grab" command will rip it out, and place it in your "hand".  This is a very drastic step, that can disassemble things that may be very hard to put back together!' translated.

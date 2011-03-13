@@ -2,7 +2,7 @@ doOK
 
 	| proposed |
 
-	proposed _ theNameMorph contents string.
+	proposed := theNameMorph contents string.
 	proposed isEmpty ifTrue: [^self inform: 'Please enter your login name' translated].
 	proposed size > 24 ifTrue: [^self inform: 'Please make the name 24 characters or less' translated].
 	(Project isBadNameForStoring: proposed) ifTrue: [

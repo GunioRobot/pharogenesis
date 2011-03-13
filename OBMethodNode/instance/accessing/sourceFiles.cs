@@ -1,2 +1,0 @@
-sourceFiles
-	^ OBSourceFilesRequest signal

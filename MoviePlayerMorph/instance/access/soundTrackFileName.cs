@@ -1,2 +1,0 @@
-soundTrackFileName
-	^ soundTrackFileName

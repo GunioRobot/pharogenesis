@@ -1,3 +1,3 @@
 exampler: e
 
-	exampler _ e.
+	exampler := e.

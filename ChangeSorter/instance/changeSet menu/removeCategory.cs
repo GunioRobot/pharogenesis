@@ -8,7 +8,7 @@ removeCategory
 	(self confirm: 'Really remove the change-set-category
 named ', (itsName := changeSetCategory categoryName), '?') ifFalse: [^ self].
 
-	ChangeSetCategories removeElementAt: itsName.
+	self changeSetCategories removeElementAt: itsName.
 	self setDefaultChangeSetCategory.
 
 	self update

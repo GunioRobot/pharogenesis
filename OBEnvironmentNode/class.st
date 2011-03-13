@@ -1,1 +1,0 @@
-OBEnvironmentNode class instanceVariableNames: ''

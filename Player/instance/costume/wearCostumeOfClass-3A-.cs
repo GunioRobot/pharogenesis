@@ -8,5 +8,5 @@ wearCostumeOfClass: aClass
 				ifTrue:
 					[^ self renderedCostume: aCostume]]].
 
-	newCostume _ aClass new.
+	newCostume := aClass new.
 	self renderedCostume: newCostume

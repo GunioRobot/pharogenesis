@@ -4,12 +4,12 @@ makeItalicGlyphs
 
 	| g bonkForm bc font |
 	1 to: fontArray size do: [:j |
-		font := (fontArray at: j).
+		font _ (fontArray at: j).
 		font ifNotNil: [
-			g := font glyphs deepCopy.
+			g _ font glyphs deepCopy.
 			"BonkForm will have bits where slanted characters overlap their neighbors."
-			bonkForm := Form extent: (self height//4+2) @ self height.
-			bc := font descent//4 + 1.  "Bonker x-coord corresponding to char boundary."
+			bonkForm _ Form extent: (self height//4+2) @ self height.
+			bc _ font descent//4 + 1.  "Bonker x-coord corresponding to char boundary."
 			bonkForm fill: (0 @ 0 corner: (bc+1) @ font ascent) fillColor: Color black.
 			4 to: font ascent-1 by: 4 do:
 				[:y | 		"Slide ascenders right..."

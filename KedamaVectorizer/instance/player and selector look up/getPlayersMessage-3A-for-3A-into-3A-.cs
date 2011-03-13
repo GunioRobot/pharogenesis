@@ -9,7 +9,7 @@ getPlayersMessage: aMessageNode for: obj into: aCollection
 			self getPlayersBlock: stmt for: obj into: aCollection..
 		].
 		(stmt isMemberOf: VariableNode) ifTrue: [
-			thisPlayer _ Compiler evaluate: stmt name for: obj logged: false.
+			thisPlayer := Compiler evaluate: stmt name for: obj logged: false.
 			(thisPlayer isKindOf: Player) ifTrue: [aCollection add: stmt].
 		].
 	].

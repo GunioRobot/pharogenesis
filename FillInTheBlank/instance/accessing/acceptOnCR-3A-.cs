@@ -1,3 +1,3 @@
 acceptOnCR: aBoolean
 
-	acceptOnCR _ aBoolean.
+	acceptOnCR := aBoolean.

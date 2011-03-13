@@ -1,5 +1,5 @@
 project: aProject actionBlock: aBlock
 
-	theProject _ aProject.
-	actionBlock _ aBlock.
+	theProject := aProject.
+	actionBlock := aBlock.
 	(namedFields at: 'projectname') contentsWrapped: theProject name.

@@ -1,0 +1,2 @@
+handleEndDocument
+	self saxHandler endDocument

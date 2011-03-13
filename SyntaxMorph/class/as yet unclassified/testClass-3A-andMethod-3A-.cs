@@ -1,6 +1,6 @@
 testClass: aClass andMethod: aSelector
 	| tree |
-	tree _ Compiler new 
+	tree := Compiler new 
 		parse: (aClass sourceCodeAt: aSelector) 
 		in: aClass 
 		notifying: nil.

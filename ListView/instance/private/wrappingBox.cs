@@ -1,7 +1,7 @@
 wrappingBox
 
 	| aRectangle |
-	aRectangle _ self insetDisplayBox. 
+	aRectangle := self insetDisplayBox. 
 	selection = 0
 		ifTrue: [^aRectangle topLeft + (4 @ 0) extent: list compositionRectangle extent]
 		ifFalse: [^aRectangle left + 4 @ 

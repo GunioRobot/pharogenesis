@@ -1,7 +1,8 @@
 showCategory: aCategoryName fromButton: aButton 
 	"Project items from the given category into my lower pane"
 	| quads |
-	self partsBin removeAllMorphs.
+	"self partsBin removeAllMorphs. IMHO is redundant, "
+	
 	Cursor wait
 		showWhile: [quads := OrderedCollection new.
 			Morph withAllSubclasses

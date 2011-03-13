@@ -1,2 +1,0 @@
-visitors: aCollection
-	visitors := aCollection

@@ -4,5 +4,5 @@ veryDeepFixupWith: deepCopier
 
 super veryDeepFixupWith: deepCopier.
 Player instSize + 1 to: self class instSize do:
-	[:ii | old _ self instVarAt: ii.
+	[:ii | old := self instVarAt: ii.
 	self instVarAt: ii put: (deepCopier references at: old ifAbsent: [old])].

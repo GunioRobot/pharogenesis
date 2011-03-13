@@ -1,2 +1,2 @@
 noteNewTop
-	newTopClicked _ true
+	newTopClicked := true

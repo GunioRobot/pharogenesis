@@ -3,5 +3,5 @@ initialize
 
 	super initialize.
 	self removeAllMorphs.
-	resultType _ #Boolean.
+	resultType := #Boolean.
 	self vResizing: #shrinkWrap

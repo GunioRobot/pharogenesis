@@ -1,2 +1,0 @@
-parent
-	^ panel parentNodeForColumn: self

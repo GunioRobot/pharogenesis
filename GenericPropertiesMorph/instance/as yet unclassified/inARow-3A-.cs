@@ -1,7 +1,7 @@
 inARow: aCollectionOfMorphs
 
 	| row |
-	row _ AlignmentMorphBob1 newRow
+	row := AlignmentMorphBob1 newRow
 		color: Color transparent;
 		vResizing: #shrinkWrap;
 		layoutInset: 1;

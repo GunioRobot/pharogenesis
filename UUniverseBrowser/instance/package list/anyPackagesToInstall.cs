@@ -1,0 +1,2 @@
+anyPackagesToInstall
+	^self installSet anyPackageSelected 

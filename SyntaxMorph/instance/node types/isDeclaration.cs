@@ -3,7 +3,7 @@ isDeclaration
 
 	| opc |
 	owner isSyntaxMorph ifFalse: [^ false].
-	opc _ owner parseNode class.
+	opc := owner parseNode class.
 	opc == BlockArgsNode ifTrue: [^ true].
 	opc == MethodTempsNode ifTrue: [^ true].
 	opc == SelectorNode ifTrue: [^ true].

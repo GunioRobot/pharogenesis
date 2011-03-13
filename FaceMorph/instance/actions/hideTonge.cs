@@ -1,2 +1,0 @@
-hideTonge
-	self lips hideTonge

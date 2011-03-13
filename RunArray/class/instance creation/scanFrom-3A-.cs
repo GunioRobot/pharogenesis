@@ -2,14 +2,14 @@ scanFrom: strm
 	"Read the style section of a fileOut or sources file.  nextChunk has already been done.  We need to return a RunArray of TextAttributes of various kinds.  These are written by the implementors of writeScanOn:"
 	| rr vv aa this |
 	(strm peekFor: $( ) ifFalse: [^ nil].
-	rr _ OrderedCollection new.
+	rr := OrderedCollection new.
 	[strm skipSeparators.
 	 strm peekFor: $)] whileFalse: 
 		[rr add: (Number readFrom: strm)].
-	vv _ OrderedCollection new.	"Value array"
-	aa _ OrderedCollection new.	"Attributes list"
-	[(this _ strm next) == nil] whileFalse: [
-		this == $, ifTrue: [vv add: aa asArray.  aa _ OrderedCollection new].
+	vv := OrderedCollection new.	"Value array"
+	aa := OrderedCollection new.	"Attributes list"
+	[(this := strm next) == nil] whileFalse: [
+		this == $, ifTrue: [vv add: aa asArray.  aa := OrderedCollection new].
 		this == $a ifTrue: [aa add: 
 			(TextAlignment new alignment: (Integer readFrom: strm))].
 		this == $f ifTrue: [aa add: 

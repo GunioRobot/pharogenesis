@@ -5,7 +5,7 @@ moveSelectionBox: anInteger
 	selection ~= anInteger
 		ifTrue: 
 			[self deselect.
-			selection _ anInteger.
+			selection := anInteger.
 			self displaySelectionBox].
 	self isSelectionBoxClipped
 		ifTrue: [self scrollSelectionIntoView]

@@ -5,7 +5,7 @@ turnOn
 
 	self isOff
 		ifTrue: 
-			[on _ true.
+			[on := true.
 			self changed.
 			self notifyConnection.
 			self doAction: onAction]

@@ -4,8 +4,8 @@ offerFontMenu
 
 	| aList reply |
 
-	aList _ self activeTextMorph textStyle fontNamesWithPointSizes.
-	reply _ (SelectionMenu labelList: aList selections: aList) startUp.
+	aList := self activeTextMorph textStyle fontNamesWithPointSizes.
+	reply := (SelectionMenu labelList: aList selections: aList) startUp.
 	reply ifNil: [^self].
 	self applyToWholeText ifTrue: [self activeEditor selectAll].
 	self activeEditor replaceSelectionWith:

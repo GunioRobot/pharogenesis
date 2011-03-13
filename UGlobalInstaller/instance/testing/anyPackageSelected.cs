@@ -1,0 +1,2 @@
+anyPackageSelected
+	^ selectedPackageVersions notEmpty

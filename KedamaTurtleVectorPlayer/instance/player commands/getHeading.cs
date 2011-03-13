@@ -1,8 +1,8 @@
 getHeading
 
 	| heading result ret |
-	heading _ (arrays at: 4).
-	result _ KedamaFloatArray new: heading size.
-	ret _ self primGetHeading: heading into: result.
+	heading := (arrays at: 4).
+	result := KedamaFloatArray new: heading size.
+	ret := self primGetHeading: heading into: result.
 	ret ifNotNil: [^ result].
 	

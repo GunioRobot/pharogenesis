@@ -1,2 +1,0 @@
-player: flashPlayer
-	player := flashPlayer

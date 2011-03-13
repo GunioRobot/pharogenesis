@@ -1,0 +1,1 @@
+UConfiguration class instanceVariableNames: ''

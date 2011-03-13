@@ -15,6 +15,7 @@ for the new source code file...' initialAnswer: SmalltalkImage current sourceFil
 
 	"Write all sources with fileIndex 1"
 	f := FileStream newFileNamed: SmalltalkImage current sourcesName.
+	f nextChunkPut: self license storeString.
 	f header; timeStamp.
 'Condensing Sources File...'
 	displayProgressAt: Sensor cursorPoint

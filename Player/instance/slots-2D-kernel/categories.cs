@@ -5,7 +5,7 @@ categories
 	(self hasCostumeThatIsAWorld)
 		ifTrue:	[^ self categoriesForWorld].
 
-	aList _ OrderedCollection new.
+	aList := OrderedCollection new.
 	self slotNames notEmpty ifTrue:
 		[aList add: ScriptingSystem nameForInstanceVariablesCategory].
 	aList addAll: costume categoriesForViewer.

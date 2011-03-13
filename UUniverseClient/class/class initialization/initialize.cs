@@ -1,0 +1,2 @@
+initialize
+	Preferences removePreference: #universesUsesHTTP 

@@ -2,10 +2,10 @@ handReferentMorph
 	"Hand the user the actual morph referred to"
 
 	| aMorph surrogate |
-	((aMorph _ actualObject costume) isMorph and:
+	((aMorph := actualObject costume) isMorph and:
 		[aMorph isWorldMorph not])
 			ifTrue:
-				[surrogate _ CollapsedMorph collapsedMorphOrNilFor: aMorph.
+				[surrogate := CollapsedMorph collapsedMorphOrNilFor: aMorph.
 				surrogate
 					ifNotNil:
 						[surrogate uncollapseToHand]

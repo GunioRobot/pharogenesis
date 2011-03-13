@@ -3,7 +3,7 @@ mouseUp: evt
 	self rootTile isMethodNode ifFalse: [^ self].
 	self currentSelectionDo:
 		[:innerMorph :mouseDownLoc :outerMorph |
-		newSel _ outerMorph
+		newSel := outerMorph
 			ifNil: [self "first click"]
 			ifNotNil: [(outerMorph firstOwnerSuchThat:
 							[:m | m isSyntaxMorph and: [m isSelectable]]) ifNil: [self]].

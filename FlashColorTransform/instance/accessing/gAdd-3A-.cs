@@ -1,2 +1,0 @@
-gAdd: aFixed
-	gAdd := aFixed

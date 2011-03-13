@@ -4,10 +4,10 @@ setSlotInfoFromVariableDocks
 	| aDock newInfo |
 	
 	self slotInfo copy do:  "Remove old automatically-created slots"
-		[:aSlotInfo | (aDock _ aSlotInfo variableDock) ifNotNil:
+		[:aSlotInfo | (aDock := aSlotInfo variableDock) ifNotNil:
 			[slotInfo removeKey: aDock variableName]].
 
 	self variableDocks do:  [:dock | "Generate fresh slots from variable docks"
-			newInfo _ SlotInformation new type: dock variableType.
+			newInfo := SlotInformation new type: dock variableType.
 			newInfo variableDock: dock.
 			slotInfo at: dock variableName asSymbol put: newInfo]

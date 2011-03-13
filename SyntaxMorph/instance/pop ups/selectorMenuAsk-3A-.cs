@@ -5,13 +5,13 @@ selectorMenuAsk: listOfLists
 	listOfLists isEmpty ifTrue: [^ nil].
 	listOfLists first addFirst: (self aSimpleStringMorphWith: '( Cancel )').
 	listOfLists first first color: Color red.
-	menu _ RectangleMorph new.
+	menu := RectangleMorph new.
 	menu listDirection: #leftToRight; layoutInset: 3; cellInset: 1@0.
 	menu layoutPolicy: TableLayout new; hResizing: #shrinkWrap; 
 		vResizing: #shrinkWrap; color: (Color r: 0.767 g: 1.0 b: 0.767);
 		useRoundedCorners; cellPositioning: #topLeft.
 	listOfLists do: [:ll |
-		col _ Morph new.
+		col := Morph new.
 	 	col listDirection: #topToBottom; layoutInset: 0; cellInset: 0@0.
 		col layoutPolicy: TableLayout new; hResizing: #shrinkWrap.
 		col color: Color transparent; vResizing: #shrinkWrap.

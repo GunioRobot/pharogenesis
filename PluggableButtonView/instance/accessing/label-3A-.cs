@@ -3,6 +3,6 @@ label: aStringOrDisplayObject
 
 	((aStringOrDisplayObject isKindOf: Paragraph)
 	or: [aStringOrDisplayObject isForm])
-		ifTrue: [label _ aStringOrDisplayObject]
-		ifFalse: [label _ aStringOrDisplayObject asParagraph].
+		ifTrue: [label := aStringOrDisplayObject]
+		ifFalse: [label := aStringOrDisplayObject asParagraph].
 	self centerLabel.

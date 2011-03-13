@@ -4,10 +4,10 @@ addInstanceVariableNamed: nameSymbol type: typeChosen value: aValue
 	| initialValue setterSelector |
 	self assureUniClass.
 	self slotInfo at: nameSymbol put: (SlotInformation new type: typeChosen).
-	initialValue _ self initialValueForSlotOfType: typeChosen.
+	initialValue := self initialValueForSlotOfType: typeChosen.
 	self addInstanceVarNamed: nameSymbol withValue: aValue.
 	self class compileAccessorsFor: nameSymbol.
-	setterSelector _ Utilities setterSelectorFor: nameSymbol.
+	setterSelector := Utilities setterSelectorFor: nameSymbol.
 	(self class allSubInstances copyWithout: self) do:
 		[:anInstance | anInstance perform: setterSelector with: initialValue].
 	self updateAllViewersAndForceToShow: ScriptingSystem nameForInstanceVariablesCategory

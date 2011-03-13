@@ -4,10 +4,10 @@ makeBoldGlyphs
 
 	| g bonkForm font |
 	1 to: fontArray size do: [:i |
-		font := fontArray at: i.
+		font _ fontArray at: i.
 		font ifNotNil: [
-			g := font glyphs deepCopy.
-			bonkForm := (Form extent: 1@16) fillBlack offset: -1@0.
+			g _ font glyphs deepCopy.
+			bonkForm _ (Form extent: 1@16) fillBlack offset: -1@0.
 			self bonk: g with: bonkForm at: i.
 			g copyBits: g boundingBox from: g at: (1@0)
 				clippingBox: g boundingBox rule: Form under fillColor: nil.

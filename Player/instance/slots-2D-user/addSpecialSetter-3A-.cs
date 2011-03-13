@@ -3,9 +3,9 @@ addSpecialSetter: selector
 	"For the special setters, fooIncreaseBy:, fooDecreaseBy:, fooMultiplyBy:, add a method that does them."
 
  	self assureUniClass.
-	instVar _ (selector allButLast: 11) asLowercase.  "all three are 11 long!"
+	instVar := (selector allButLast: 11) asLowercase.  "all three are 11 long!"
 	(self respondsTo: ('set', instVar capitalized, ':') asSymbol) ifFalse: [^ false].
-	code _ String streamContents: [:strm |
+	code := String streamContents: [:strm |
 		strm nextPutAll: selector, ' amount'; crtab.
 		strm nextPutAll: 'self set', instVar capitalized, ': (self get', instVar capitalized; space.
 		(selector endsWith: 'IncreaseBy:') ifTrue: [strm nextPut: $+].

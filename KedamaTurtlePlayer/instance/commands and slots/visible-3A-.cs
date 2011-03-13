@@ -1,3 +1,3 @@
 visible: aBoolean
 
-	visible _ aBoolean.
+	visible := aBoolean.

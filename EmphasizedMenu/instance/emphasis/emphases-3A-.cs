@@ -1,2 +1,2 @@
 emphases: emphasisArray
-	emphases _ emphasisArray
+	emphases := emphasisArray

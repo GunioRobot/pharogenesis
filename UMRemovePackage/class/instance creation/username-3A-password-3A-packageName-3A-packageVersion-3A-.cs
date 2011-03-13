@@ -1,0 +1,2 @@
+username: username password: password packageName: packageName packageVersion: packageVersion
+	^self basicNew username: username password: password packageName: packageName packageVersion: packageVersion

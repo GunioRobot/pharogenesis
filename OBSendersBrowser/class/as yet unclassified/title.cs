@@ -1,2 +1,0 @@
-title
-	^ 'Senders of'

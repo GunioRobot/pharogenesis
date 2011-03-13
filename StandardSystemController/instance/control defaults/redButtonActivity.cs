@@ -4,16 +4,16 @@ redButtonActivity
 	or edit the label."
 
 	| box p |
-	p _ sensor cursorPoint.
+	p := sensor cursorPoint.
 	self labelHasCursor ifFalse: [super redButtonActivity. ^ self].
-	((box _ view closeBoxFrame) containsPoint: p)
+	((box := view closeBoxFrame) containsPoint: p)
 		ifTrue:
 			[Utilities
 				awaitMouseUpIn: box
 				repeating: []
 				ifSucceed: [self close. ^ self].
 			^ self].
-	((box _ view growBoxFrame) containsPoint: p)
+	((box := view growBoxFrame) containsPoint: p)
 		ifTrue:
 			[Utilities
 				awaitMouseUpIn: box
@@ -24,7 +24,7 @@ redButtonActivity
 						ifTrue: [self expand]
 						ifFalse: [self collapse]].
 			^ self].
-	(((box _ view labelTextRegion expandBy: 1) containsPoint: p)
+	(((box := view labelTextRegion expandBy: 1) containsPoint: p)
 			and: [Preferences clickOnLabelToEdit or: [sensor leftShiftDown]])
 		ifTrue:
 			[Utilities

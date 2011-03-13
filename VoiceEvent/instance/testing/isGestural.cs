@@ -1,2 +1,0 @@
-isGestural
-	^ false

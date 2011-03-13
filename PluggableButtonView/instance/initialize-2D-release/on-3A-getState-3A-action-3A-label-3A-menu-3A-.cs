@@ -2,7 +2,7 @@ on: anObject getState: getStateSel action: actionSel label: labelSel menu: menuS
 
 	self initialize.
 	self model: anObject.
-	getStateSelector _ getStateSel.
-	actionSelector _ actionSel.
-	getLabelSelector _ labelSel.
-	getMenuSelector _ menuSel.
+	getStateSelector := getStateSel.
+	actionSelector := actionSel.
+	getLabelSelector := labelSel.
+	getMenuSelector := menuSel.

@@ -7,7 +7,7 @@ initializeFor: aPlayer categoryChoice: aChoice
 		borderWidth: 1;
 		beSticky.
 	self color: Color green muchLighter muchLighter.
-	scriptedPlayer _ aPlayer.
+	scriptedPlayer := aPlayer.
 	self addHeaderMorph.
 
 	self chooseCategoryWhoseTranslatedWordingIs: aChoice

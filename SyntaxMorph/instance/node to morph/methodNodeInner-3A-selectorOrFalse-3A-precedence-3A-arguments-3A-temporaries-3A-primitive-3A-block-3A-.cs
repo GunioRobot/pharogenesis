@@ -1,10 +1,10 @@
 methodNodeInner: aNode selectorOrFalse: selectorOrFalse precedence: precedence arguments: arguments temporaries: temporaries primitive: primitive block: block
 	| header selNode |
 
-	selNode _ selectorOrFalse class == SelectorNode 
+	selNode := selectorOrFalse class == SelectorNode 
 		ifTrue: [selectorOrFalse] 
 		ifFalse: [SelectorNode new key: selectorOrFalse code: nil].
-	header _ self addRow: Color white on: selNode.
+	header := self addRow: Color white on: selNode.
 	precedence = 1
 		ifTrue: [header addToken: aNode selector type: #methodHeader1 on: selNode]
 		ifFalse: [aNode selector keywords with: arguments do:

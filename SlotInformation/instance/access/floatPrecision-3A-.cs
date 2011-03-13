@@ -1,2 +1,2 @@
 floatPrecision: prec
-	floatPrecision _ prec
+	floatPrecision := prec

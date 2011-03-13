@@ -1,2 +1,0 @@
-actionsForParent: aNode
-	^ #()

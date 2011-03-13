@@ -1,13 +1,13 @@
 componentName: aSymbol
 
 	aSymbol = #blue ifTrue: [
-		operatorOrExpression _ #getBlueComponentIn:.
+		operatorOrExpression := #getBlueComponentIn:.
 	].
 	aSymbol = #green ifTrue: [
-		operatorOrExpression _ #getGreenComponentIn:.
+		operatorOrExpression := #getGreenComponentIn:.
 	].
 	aSymbol = #red ifTrue: [
-		operatorOrExpression _ #getRedComponentIn:.
+		operatorOrExpression := #getRedComponentIn:.
 	].
 	self addPatchTile.
 

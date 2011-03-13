@@ -1,3 +1,3 @@
 analyze: aString
 
-	^url _ aString
+	^url := aString

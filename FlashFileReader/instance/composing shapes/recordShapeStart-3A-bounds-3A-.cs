@@ -1,1 +1,0 @@
-recordShapeStart: shapeId bounds: shapeBounds

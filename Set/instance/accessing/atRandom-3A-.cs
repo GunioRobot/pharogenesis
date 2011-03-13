@@ -6,7 +6,7 @@ atRandom: aGenerator
 	| rand |
 
 	self emptyCheck.
-	rand _ aGenerator nextInt: self size.
+	rand := aGenerator nextInt: self size.
 	self doWithIndex:[:each :ind |
 		ind == rand ifTrue:[^each]].
 	^ self errorEmptyCollection

@@ -2,7 +2,7 @@ deleteTurtleID: who of: examplerPlayer
 	"Delete the given turtle from this world."
 
 	| array |
-	array _ examplerPlayer turtles.
+	array := examplerPlayer turtles.
 	array ifNil: [^ self].
 	turtlesDictSemaphore critical: [
 		array deleteTurtleID: who.

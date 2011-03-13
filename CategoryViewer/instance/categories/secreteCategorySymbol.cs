@@ -2,8 +2,8 @@ secreteCategorySymbol
 	"Set my chosenCategorySymbol by translating back from its representation in the namePane.  Answer the chosenCategorySymbol"
 
 	| aCategory |
-	aCategory _ self currentVocabulary categoryWhoseTranslatedWordingIs: self currentCategory.
-	^ chosenCategorySymbol _ aCategory
+	aCategory := self currentVocabulary categoryWhoseTranslatedWordingIs: self currentCategory.
+	^ chosenCategorySymbol := aCategory
 		ifNotNil:
 			[aCategory categoryName]
 		ifNil:

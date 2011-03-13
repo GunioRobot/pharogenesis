@@ -2,7 +2,7 @@ isExpanded: aBoolean
 
 	| tm |
 	super isExpanded: aBoolean.
-	tm _ self repositionText.
+	tm := self repositionText.
 	isExpanded ifFalse: [
 		self height: tm height.
 	].

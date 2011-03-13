@@ -1,10 +1,5 @@
 messageList 
-
-	| probe newSelectors |
-	currentClassName ifNil: [^ #()].
-	probe := (currentClassName endsWith: ' class')
-		ifTrue: [currentClassName]
-		ifFalse: [currentClassName asSymbol].
-	newSelectors := myChangeSet selectorsInClass: probe.
-	(newSelectors includes: currentSelector) ifFalse: [currentSelector := nil].
-	^ newSelectors asSortedCollection
+	| thisClass |
+	(thisClass := self selectedClassOrMetaClass) ifNil: [^ #() ] .
+	^self basicMessageList collect: [ :each |
+		each asString , (self packageNoteForClass: thisClass selector: each) ] .

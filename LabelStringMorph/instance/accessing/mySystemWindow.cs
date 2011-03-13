@@ -1,2 +1,0 @@
-mySystemWindow
-	mySystemWindow

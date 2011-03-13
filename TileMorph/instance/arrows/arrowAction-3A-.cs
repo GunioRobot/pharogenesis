@@ -5,9 +5,9 @@ arrowAction: delta
 	(type == #literal
 			and: [literal isNumber])
 		ifTrue: [self value: literal + delta]
-		ifFalse: [options _ self options
+		ifFalse: [options := self options
 						ifNil: [^ self].
-			index _ (options first indexOf: self value)
+			index := (options first indexOf: self value)
 						+ delta.
 			self
 				value: (options first atWrap: index).

@@ -2,9 +2,9 @@ initialize
 
 	| newStyle |
 	super initialize.
-	firstDisplay _ true.
-	children _ OrderedCollection new.
-	(newStyle _ TextStyle named: #Palatino) ifNotNil: [
-		textStyle _ newStyle copy defaultFontIndex: 2
+	firstDisplay := true.
+	children := OrderedCollection new.
+	(newStyle := TextStyle named: #Palatino) ifNotNil: [
+		textStyle := newStyle copy defaultFontIndex: 2
 	].
 

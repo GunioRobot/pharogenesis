@@ -3,7 +3,7 @@ getMenu: shiftKeyDown
 
 	| menu |
 	getMenuSelector == nil ifTrue: [^ nil].
-	menu _ CustomMenu new.
+	menu := CustomMenu new.
 	getMenuSelector numArgs = 1
 		ifTrue: [^ model perform: getMenuSelector with: menu].
 	getMenuSelector numArgs = 2

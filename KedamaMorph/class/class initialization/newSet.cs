@@ -1,13 +1,13 @@
 newSet
 
 	| k p t s w |
-	k _ self new.
-	p _ k assuredPlayer getPatch costume renderedMorph.
-	t _ k assuredPlayer newTurtleForSet.
+	k := self new.
+	p := k assuredPlayer getPatch costume renderedMorph.
+	t := k assuredPlayer newTurtleForSet.
 
-	s _ SelectionMorph new.
+	s := SelectionMorph new.
 
-	w _ PasteUpMorph new.
+	w := PasteUpMorph new.
 	w extent: 400@400.
 	p position: 275@50.
 	t position: 300@175.

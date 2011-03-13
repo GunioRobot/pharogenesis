@@ -3,11 +3,11 @@ list: arrayOfStrings
 	The instance variable 'items' holds the original list. The instance variable 'list' is a paragraph constructed from this list."
 
 	((items == arrayOfStrings) "fastest" or: [items = arrayOfStrings]) ifTrue: [^ self].
-	items _ arrayOfStrings.
-	isEmpty _ arrayOfStrings isEmpty.
+	items := arrayOfStrings.
+	isEmpty := arrayOfStrings isEmpty.
 
 	"add top and bottom delimiters"
-	list _ ListParagraph
+	list := ListParagraph
 		withArray:
 			(Array streamContents: [:s |
 				s nextPut: topDelimiter.
@@ -19,5 +19,5 @@ list: arrayOfStrings
 				s nextPut: bottomDelimiter])
 		 style: self assuredTextStyle.
 
-	selection _ self getCurrentSelectionIndex.
+	selection := self getCurrentSelectionIndex.
 	self positionList.

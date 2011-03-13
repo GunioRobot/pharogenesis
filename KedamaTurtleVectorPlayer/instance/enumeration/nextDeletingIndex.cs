@@ -1,3 +1,3 @@
 nextDeletingIndex
 
-	^ deletingIndex _ deletingIndex + 1.
+	^ deletingIndex := deletingIndex + 1.

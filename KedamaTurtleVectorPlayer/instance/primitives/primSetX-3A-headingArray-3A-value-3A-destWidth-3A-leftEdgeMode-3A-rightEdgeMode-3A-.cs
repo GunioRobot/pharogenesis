@@ -5,14 +5,14 @@ primSetX: xArray headingArray: headingArray value: v destWidth: destWidth leftEd
 	"^ KedamaPlugin doPrimitive: #turtlesSetX."
 
 	v isCollection ifFalse: [
-		val _ v asFloat.
+		val := v asFloat.
 	].
 
 	1 to: xArray size do: [:i |
 		v isCollection ifTrue: [
-			newX _ v at: i.
+			newX := v at: i.
 		] ifFalse: [
-			newX _ val.
+			newX := val.
 		].
 		KedamaMorph scalarXAt: i xArray: xArray headingArray: headingArray value: newX destWidth: destWidth leftEdgeMode: leftEdgeMode rightEdgeMode: rightEdgeMode.
 	].

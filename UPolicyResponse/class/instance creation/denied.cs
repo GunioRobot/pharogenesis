@@ -1,0 +1,2 @@
+denied
+	^self denied: nil

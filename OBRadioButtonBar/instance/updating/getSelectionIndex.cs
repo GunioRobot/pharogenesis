@@ -1,2 +1,0 @@
-getSelectionIndex
-	^ model perform: getSelectionSelector

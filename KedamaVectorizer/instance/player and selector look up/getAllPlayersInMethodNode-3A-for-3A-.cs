@@ -1,7 +1,7 @@
 getAllPlayersInMethodNode: aMethodNode for: obj
 
 	| aCollection |
-	aCollection _ OrderedCollection new.
+	aCollection := OrderedCollection new.
 	aMethodNode block statements do: [:stmt |
 		(stmt isMemberOf: MessageNode) ifTrue: [
 			self getPlayersMessage: stmt for: obj into: aCollection.

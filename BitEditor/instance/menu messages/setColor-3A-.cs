@@ -3,6 +3,6 @@ setColor: aColor
 	aSymbol. aSymbol can be any color changing message understood by a  
 	Form, such as white or black."
 
-	color _ aColor pixelValueForDepth: Display depth.
+	color := aColor pixelValueForDepth: Display depth.
 	squareForm fillColor: aColor.
 	self changed: #getCurrentColor

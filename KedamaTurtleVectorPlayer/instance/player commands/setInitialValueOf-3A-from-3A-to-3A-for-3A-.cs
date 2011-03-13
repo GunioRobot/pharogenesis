@@ -1,7 +1,7 @@
 setInitialValueOf: name from: from to: to for: aKedamaWorld
 
 	| array max |
-	array _ arrays at: (info at: name).
+	array := arrays at: (info at: name).
 	name = #who ifTrue: [
 		from to: to do: [:index |
 			array at: index put: (aKedamaWorld nextTurtleID).
@@ -9,12 +9,12 @@ setInitialValueOf: name from: from to: to for: aKedamaWorld
 		^ self.
 	].
 	name = #x ifTrue: [
-		max _ aKedamaWorld dimensions x * 100.
+		max := aKedamaWorld dimensions x * 100.
 		self primRandomRange: max from: from to: to intoFloatArray: array factor: 0.01.
 		^ self.
 	].
 	name = #y ifTrue: [
-		max _ aKedamaWorld dimensions y * 100.
+		max := aKedamaWorld dimensions y * 100.
 		self primRandomRange: max from: from to: to intoFloatArray: array factor: 0.01.
 		^ self.
 	].

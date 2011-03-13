@@ -1,3 +1,3 @@
 getPenSize
-	penSize ifNil: [penSize _ self defaultPenSize].
+	penSize ifNil: [penSize := self defaultPenSize].
 	^ penSize

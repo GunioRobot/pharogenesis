@@ -3,5 +3,5 @@ clearDescriptions
 	self clearDescriptions
 "
 
-	TTCDescriptions := Set new.
+	TTCDescriptions _ Set new.
 	TTCDefault ifNotNil: [TTCDescriptions add: TTCDefault].

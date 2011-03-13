@@ -2,7 +2,7 @@ flashIndicator: aSymbol
 
 	| now |
 
-	now _ Time millisecondClockValue.
+	now := Time millisecondClockValue.
 	(LastFlashTime notNil and: [(Time millisecondClockValue - now) abs < 500]) ifTrue: [^self].
-	LastFlashTime _ now.
+	LastFlashTime := now.
 	self trulyFlashIndicator: aSymbol

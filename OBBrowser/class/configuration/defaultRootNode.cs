@@ -1,2 +1,0 @@
-defaultRootNode
-	self subclassResponsibility

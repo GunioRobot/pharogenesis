@@ -1,2 +1,0 @@
-form: aForm
-	form := aForm

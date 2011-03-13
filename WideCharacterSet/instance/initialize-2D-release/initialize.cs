@@ -1,0 +1,2 @@
+initialize
+	map := Dictionary new.

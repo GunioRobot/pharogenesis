@@ -1,12 +1,12 @@
 setVariables
-	tool _ #repeatCopy.
-	previousTool _ tool.
-	grid _ 1 @ 1.
-	togglegrid _ 8 @ 8.
-	xgridOn _ false.
-	ygridOn _ false.
-	mode _ Form over.
-	form _ Form extent: 8 @ 8.
+	tool := #repeatCopy.
+	previousTool := tool.
+	grid := 1 @ 1.
+	togglegrid := 8 @ 8.
+	xgridOn := false.
+	ygridOn := false.
+	mode := Form over.
+	form := Form extent: 8 @ 8.
 	form fillBlack.
-	unNormalizedColor _ color _ Color black.
+	unNormalizedColor := color := Color black.
 	hasUnsavedChanges := ValueHolder new contents: false.

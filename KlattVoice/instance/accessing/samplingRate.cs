@@ -1,2 +1,0 @@
-samplingRate
-	^ self synthesizer samplingRate

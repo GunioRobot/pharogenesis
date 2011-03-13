@@ -1,1 +1,0 @@
-recordMorphLineStyle: i width1: lineWidth1 width2: lineWidth2 color1: lineColor1 color2: lineColor2

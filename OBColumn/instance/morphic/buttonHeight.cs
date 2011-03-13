@@ -1,2 +1,0 @@
-buttonHeight
-	^ 20

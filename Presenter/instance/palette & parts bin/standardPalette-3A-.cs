@@ -1,2 +1,2 @@
 standardPalette: aPalette
-	standardPalette _ aPalette
+	standardPalette := aPalette

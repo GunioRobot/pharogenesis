@@ -3,7 +3,7 @@ at: index ifAbsentPut: block
 
 	| v |
 	index <= self size ifTrue: [
-		^ (v _ self at: index)
+		^ (v := self at: index)
 			ifNotNil: [v]
 			ifNil: [self at: index put: block value]
 	].

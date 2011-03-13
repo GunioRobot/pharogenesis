@@ -2,7 +2,7 @@ instVarTile: aName
 	"Make and put into hand a tile for an instance variable"
 
 	| sm |
-	sm _ ((VariableNode new
+	sm := ((VariableNode new
 					name: aName
 					index: 1
 					type: 1 "LdInstType") asMorphicSyntaxIn: SyntaxMorph new).

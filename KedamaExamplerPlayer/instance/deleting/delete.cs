@@ -6,5 +6,5 @@ delete
 
 	self class removeFromSystem: false.
 
-	anInstance _ UnscriptedPlayer new.
+	anInstance := UnscriptedPlayer new.
 	self become: anInstance.

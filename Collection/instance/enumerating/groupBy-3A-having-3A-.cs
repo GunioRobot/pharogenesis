@@ -3,12 +3,12 @@ groupBy: keyBlock having: selectBlock
 	elements for which keyBlock returns the same results, and return those 
 	collections allowed by selectBlock. keyBlock should return an Integer."
 	| result key |
-	result _ PluggableDictionary integerDictionary.
+	result := PluggableDictionary integerDictionary.
 	self do: 
 		[:e | 
-		key _ keyBlock value: e.
+		key := keyBlock value: e.
 		(result includesKey: key)
 			ifFalse: [result at: key put: OrderedCollection new].
 		(result at: key)
 			add: e].
-	^ result _ result select: selectBlock
+	^ result := result select: selectBlock

@@ -4,13 +4,13 @@ mouseSelect
 	to make double-click more responsive."
 
 	| pivotBlock startBlock stopBlock origPoint stillDown |
-	stillDown _ Sensor redButtonPressed.
-	pivotBlock _ startBlock _ stopBlock _
-		self characterBlockAtPoint: (origPoint _ Sensor cursorPoint).
-	stillDown _ stillDown and: [Sensor redButtonPressed].
+	stillDown := Sensor redButtonPressed.
+	pivotBlock := startBlock := stopBlock :=
+		self characterBlockAtPoint: (origPoint := Sensor cursorPoint).
+	stillDown := stillDown and: [Sensor redButtonPressed].
 	self reverseFrom: startBlock to: startBlock.
 	[stillDown and: [Sensor cursorPoint = origPoint]] whileTrue:
-		[stillDown _ Sensor redButtonPressed].
+		[stillDown := Sensor redButtonPressed].
 	(stillDown and: [clippingRectangle containsPoint: Sensor cursorPoint])
 		ifFalse: [^Array with: pivotBlock with: stopBlock].
 	^ self mouseMovedFrom: startBlock 

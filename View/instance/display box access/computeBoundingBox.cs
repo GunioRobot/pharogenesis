@@ -7,8 +7,8 @@ computeBoundingBox
 
 	| aRectangle |
 	subViews isEmpty ifTrue: [^self getWindow].
-	aRectangle _ self firstSubView transform: self firstSubView boundingBox.
+	aRectangle := self firstSubView transform: self firstSubView boundingBox.
 	subViews do: 
 		[:aView | 
-		aRectangle _ aRectangle merge: (aView transform: aView boundingBox).].
+		aRectangle := aRectangle merge: (aView transform: aView boundingBox).].
 	^aRectangle expandBy: borderWidth

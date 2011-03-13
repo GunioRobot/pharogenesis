@@ -1,3 +1,0 @@
-frameNumber: newFrame
-
-	frameNumber := newFrame

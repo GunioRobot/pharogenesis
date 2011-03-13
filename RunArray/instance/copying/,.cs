@@ -5,7 +5,7 @@
 	| new newRuns |
 	(aRunArray isMemberOf: RunArray)
 		ifFalse: 
-			[new _ self copy.
+			[new := self copy.
 			"attempt to be sociable"
 			aRunArray do: [:each | new addLast: each].
 			^new].
@@ -15,7 +15,7 @@
 		ifTrue: [^RunArray
 					runs: runs , aRunArray runs
 					values: values , aRunArray values].
-	newRuns _ runs
+	newRuns := runs
 					copyReplaceFrom: runs size
 					to: runs size
 					with: aRunArray runs.

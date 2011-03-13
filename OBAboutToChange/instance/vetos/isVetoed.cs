@@ -1,2 +1,0 @@
-isVetoed
-	^ veto notNil

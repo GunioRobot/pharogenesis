@@ -5,4 +5,4 @@ nextUnsignedIntegerBase: aRadix
 	
 	^ self
 		nextUnsignedIntegerBase: aRadix
-		ifFail: [self expected: 'a digit between 0 and 9']
+		ifFail: [self expected: ('a digit between 0 and ' copyWith: (Character digitValue: aRadix - 1))]

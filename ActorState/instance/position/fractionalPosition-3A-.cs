@@ -1,3 +1,3 @@
 fractionalPosition: aPoint
 
-	fractionalPosition _ aPoint asFloatPoint.
+	fractionalPosition := aPoint asFloatPoint.

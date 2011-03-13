@@ -4,9 +4,9 @@ doButtonAction: evt
 
 	target ifNil: [^self].
 	actionSelector ifNil: [^self].
-	arguments ifNil: [arguments _ #()].
+	arguments ifNil: [arguments := #()].
 	Cursor normal showWhile: [
-		arity _ actionSelector numArgs.
+		arity := actionSelector numArgs.
 		arity = arguments size ifTrue: [
 			target perform: actionSelector withArguments: arguments
 		].

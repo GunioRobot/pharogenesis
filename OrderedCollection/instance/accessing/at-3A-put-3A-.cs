@@ -4,7 +4,7 @@ at: anInteger put: anObject
 	knowledgeable client to replace an element."
 
 	| index |
-	index _ anInteger asInteger.
+	index := anInteger asInteger.
 	(index < 1 or: [index + firstIndex - 1 > lastIndex])
 		ifTrue: [self errorNoSuchElement]
 		ifFalse: [^array at: index + firstIndex - 1 put: anObject]

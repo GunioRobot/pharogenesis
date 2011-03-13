@@ -1,11 +1,11 @@
 rebuild
 
 	| history r1 |
-	history _ ProjectHistory currentHistory mostRecentCopy.
-	changeCounter _ ProjectHistory changeCounter.
+	history := ProjectHistory currentHistory mostRecentCopy.
+	changeCounter := ProjectHistory changeCounter.
 	self removeAllMorphs.
 	self rubberBandCells: false. "enable growing"
-	r1 _ self addARow: {
+	r1 := self addARow: {
 		self inAColumn: {
 			StringMorph new contents: 'Jump...' translated; lock.
 		}.
@@ -36,7 +36,7 @@ rebuild
 			setBalloonText: (each third isEmptyOrNil ifTrue: ['not saved'] ifFalse: [each third])
 	].
 "---
-	newTuple _ {
+	newTuple := {
 		aProject name.
 		aProject thumbnail.
 		aProject url.

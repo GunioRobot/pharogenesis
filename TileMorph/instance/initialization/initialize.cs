@@ -9,10 +9,10 @@ initialize
 				g: 1.0
 				b: 0.6).
 
-	type _ #literal.
+	type := #literal.
 	"#literal, #slotRef, #objRef, #operator, #expression"
-	slotName _ ''.
-	literal _ 1.
+	slotName := ''.
+	literal := 1.
 	self layoutPolicy: TableLayout new.
 	self cellInset: 2 @ 0.
 	self layoutInset: 1 @ 0.

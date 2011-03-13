@@ -2,7 +2,7 @@ setNewContentsFrom: textOrString
 	"talk to my text"
 	| tm |
 
-	(tm _ self findA: TextMorph) ifNil: [^ nil].
+	(tm := self findA: TextMorph) ifNil: [^ nil].
 	tm valueOfProperty: #cardInstance ifAbsent: ["move it down"
 		tm setProperty: #cardInstance toValue: (self valueOfProperty: #cardInstance)].
 	tm valueOfProperty: #holdsSeparateDataForEachInstance ifAbsent: ["move it down"

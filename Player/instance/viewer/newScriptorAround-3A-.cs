@@ -2,8 +2,8 @@ newScriptorAround: aPhrase
 	"Sprout a scriptor around aPhrase, thus making a new script.  aPhrase may either be a PhraseTileMorph (classic tiles 1997-2001) or a SyntaxMorph (2001 onward)"
 
 	| aScriptEditor aUniclassScript tw blk |
-	aUniclassScript _ self class permanentUserScriptFor: self unusedScriptName player: self.
-	aScriptEditor _ aUniclassScript instantiatedScriptEditorForPlayer: self.
+	aUniclassScript := self class permanentUserScriptFor: self unusedScriptName player: self.
+	aScriptEditor := aUniclassScript instantiatedScriptEditorForPlayer: self.
 
 	Preferences universalTiles ifTrue: [
 		aScriptEditor install.
@@ -12,9 +12,9 @@ newScriptorAround: aPhrase
 			cellPositioning: #topLeft;
 			setProperty: #autoFitContents toValue: true."
 		aScriptEditor insertUniversalTiles.  "Gets an empty SyntaxMorph for a MethodNode"
-		tw _ aScriptEditor findA: TwoWayScrollPane.
+		tw := aScriptEditor findA: TwoWayScrollPane.
 		aPhrase ifNotNil:
-			[blk _ (tw scroller findA: SyntaxMorph "MethodNode") findA: BlockNode.
+			[blk := (tw scroller findA: SyntaxMorph "MethodNode") findA: BlockNode.
 			blk addMorphFront: aPhrase.
 			aPhrase accept.
 		].

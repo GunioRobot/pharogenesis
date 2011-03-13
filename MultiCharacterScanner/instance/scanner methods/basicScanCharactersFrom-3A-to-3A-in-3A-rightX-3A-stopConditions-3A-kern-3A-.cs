@@ -11,18 +11,18 @@ basicScanCharactersFrom: startIndex to: stopIndex in: sourceString rightX: right
 	See Object documentation whatIsAPrimitive."
 	| ascii nextDestX char |
 	<primitive: 103>
-	lastIndex := startIndex.
+	lastIndex _ startIndex.
 	[lastIndex <= stopIndex]
 		whileTrue: 
-			[char := (sourceString at: lastIndex).
-			ascii := char asciiValue + 1.
+			[char _ (sourceString at: lastIndex).
+			ascii _ char asciiValue + 1.
 			(stops at: ascii) == nil ifFalse: [^stops at: ascii].
 			"Note: The following is querying the font about the width
 			since the primitive may have failed due to a non-trivial
 			mapping of characters to glyphs or a non-existing xTable."
-			nextDestX := destX + (font widthOf: char).
+			nextDestX _ destX + (font widthOf: char).
 			nextDestX > rightX ifTrue: [^stops at: CrossedX].
-			destX := nextDestX + kernDelta.
-			lastIndex := lastIndex + 1].
-	lastIndex := stopIndex.
+			destX _ nextDestX + kernDelta.
+			lastIndex _ lastIndex + 1].
+	lastIndex _ stopIndex.
 	^stops at: EndOfRun

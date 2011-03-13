@@ -5,6 +5,6 @@ sum
 	Consider a collection of measurement objects, 0 would be the unitless 
 	value and would not be appropriate to add with the unit-ed objects."
 	| sum sample |
-	sample _ self anyOne.
-	sum _ self inject: sample into: [:accum :each | accum + each].
+	sample := self anyOne.
+	sum := self inject: sample into: [:accum :each | accum + each].
 	^ sum - sample

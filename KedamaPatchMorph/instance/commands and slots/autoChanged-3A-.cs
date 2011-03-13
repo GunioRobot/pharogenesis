@@ -1,3 +1,3 @@
 autoChanged: aBoolean
 
-	autoChanged _ aBoolean.
+	autoChanged := aBoolean.

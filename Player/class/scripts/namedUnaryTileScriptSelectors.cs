@@ -3,5 +3,5 @@ namedUnaryTileScriptSelectors
 
 	| sel |
 	scripts ifNil: [^ OrderedCollection new].
-	^ scripts select: [:aScript | ((sel _ aScript selector) ~~ nil) and: [sel numArgs == 0]] 
+	^ scripts select: [:aScript | ((sel := aScript selector) ~~ nil) and: [sel numArgs == 0]] 
 		thenCollect: [:aScript | aScript selector]

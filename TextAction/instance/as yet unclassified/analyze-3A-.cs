@@ -7,28 +7,28 @@ Click Here<3+4>
 "
 	"Obtain the showing text and the instructions"
 	| b1 b2 trim param show |
-	b1 _ aString indexOf: $<.
-	b2 _ aString indexOf: $>.
+	b1 := aString indexOf: $<.
+	b2 := aString indexOf: $>.
 	(b1 < b2) & (b1 > 0) ifFalse: ["only one part"
-		param _ self validate: aString.
+		param := self validate: aString.
 		param ifNil: [ ^{ nil. nil } ].
 		^ Array with: param with: (param size = 0 ifTrue: [nil] ifFalse: [param])].
 	"Two parts"
-	trim _ aString withBlanksTrimmed.
+	trim := aString withBlanksTrimmed.
 	(trim at: 1) == $< 
 		ifTrue: [(trim last) == $>
 			ifTrue: ["only instructions" 
-				param _ self validate: (aString copyFrom: b1+1 to: b2-1).
-				show _ param size = 0 ifTrue: [nil] ifFalse: [param]]
+				param := self validate: (aString copyFrom: b1+1 to: b2-1).
+				show := param size = 0 ifTrue: [nil] ifFalse: [param]]
 			ifFalse: ["at the front"
-				param _ self validate: (aString copyFrom: b1+1 to: b2-1).
-				show _ param size = 0 ifTrue: [nil] 
+				param := self validate: (aString copyFrom: b1+1 to: b2-1).
+				show := param size = 0 ifTrue: [nil] 
 						ifFalse: [aString copyFrom: b2+1 to: aString size]]]
 		ifFalse: [(trim last) == $>
 			ifTrue: ["at the end"
-				param _ self validate: (aString copyFrom: b1+1 to: b2-1).
-				show _ param size = 0 ifTrue: [nil] 
+				param := self validate: (aString copyFrom: b1+1 to: b2-1).
+				show := param size = 0 ifTrue: [nil] 
 						ifFalse: [aString copyFrom: 1 to: b1-1]]
 			ifFalse: ["Illegal -- <> has text on both sides"
-				show _ nil]].
+				show := nil]].
 	^ Array with: param with: show

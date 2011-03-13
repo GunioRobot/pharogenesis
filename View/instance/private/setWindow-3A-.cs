@@ -4,6 +4,6 @@ setWindow: aWindow
 	subclasses to set the View window (rather than directly setting the
 	instance variable) to insure that the View is unlocked."
 
-	window _ aWindow.
-	viewport _ nil.
+	window := aWindow.
+	viewport := nil.
 	self unlock

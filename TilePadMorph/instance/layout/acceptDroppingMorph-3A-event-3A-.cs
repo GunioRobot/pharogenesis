@@ -3,7 +3,7 @@ acceptDroppingMorph: aMorph event: evt
 
 	| editor wasPossessive morphToUse |
 	wasPossessive := submorphs notEmpty and: [submorphs first isPossessive].
-	morphToUse _ self morphToDropFrom: aMorph.
+	morphToUse := self morphToDropFrom: aMorph.
 	self prepareToUndoDropOf: morphToUse.
 	self removeAllMorphs.
 	morphToUse position: self position.

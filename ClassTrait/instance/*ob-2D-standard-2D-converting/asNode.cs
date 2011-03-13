@@ -1,2 +1,0 @@
-asNode
-	^ OBMetaclassNode on: self

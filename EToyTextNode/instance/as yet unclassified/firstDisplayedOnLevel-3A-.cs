@@ -1,4 +1,4 @@
 firstDisplayedOnLevel: level
 
-	firstDisplay _ false.
+	firstDisplay := false.
 	text addAttribute: (TextFontChange fontNumber: ((5 - level) max: 1)).

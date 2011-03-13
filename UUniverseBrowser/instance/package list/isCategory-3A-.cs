@@ -1,0 +1,2 @@
+isCategory: anObject
+	^anObject isUPackageCategory

@@ -1,7 +1,7 @@
 initializeFromParagraph: aParagraph clippedBy: clippingRectangle
 
 	super initializeFromParagraph: aParagraph clippedBy: clippingRectangle.
-	bitBlt := BitBlt asGrafPort toForm: aParagraph destinationForm.
+	bitBlt _ BitBlt asGrafPort toForm: aParagraph destinationForm.
 	bitBlt sourceX: 0; width: 0.	"Init BitBlt so that the first call to a primitive will not fail"
 	bitBlt combinationRule: Form paint.
 	bitBlt colorMap:

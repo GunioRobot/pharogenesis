@@ -1,7 +1,7 @@
 scrollView: anInteger 
 	"Need to minimize the selections which get recomputed"
 	| oldLimit |
-	oldLimit _ anInteger > 0
+	oldLimit := anInteger > 0
 		ifTrue: [view firstShown]
 		ifFalse: [view lastShown].
 	(view scrollBy: anInteger)

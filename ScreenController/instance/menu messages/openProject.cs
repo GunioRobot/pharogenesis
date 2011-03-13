@@ -3,5 +3,5 @@ openProject
 
 	| proj |
 	Smalltalk at: #ProjectView ifPresent:
-		[:c | proj _ Project new.
+		[:c | proj := Project new.
 		c open: proj].

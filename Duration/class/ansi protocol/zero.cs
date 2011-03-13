@@ -1,3 +1,3 @@
 zero
 
-	^ (self basicNew) seconds: 0 nanoSeconds: 0; yourself.
+	^ self basicNew seconds: 0 nanoSeconds: 0

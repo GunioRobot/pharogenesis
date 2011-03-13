@@ -1,2 +1,0 @@
-rMul: aFixed
-	rMul := aFixed

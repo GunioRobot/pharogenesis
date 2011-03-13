@@ -2,10 +2,10 @@ chooseSlotTypeFor: aGetter
 	"Let the user designate a type for the slot associated with the given getter"
 
 	| typeChoices typeChosen slotName |
-	slotName _ Utilities inherentSelectorForGetter: aGetter.
-	typeChoices _ Vocabulary typeChoices.
+	slotName := Utilities inherentSelectorForGetter: aGetter.
+	typeChoices := Vocabulary typeChoices.
 
-	typeChosen _ (SelectionMenu labelList: (typeChoices collect: [:t | t translated]) lines: #() selections: typeChoices) startUpWithCaption: 
+	typeChosen := (SelectionMenu labelList: (typeChoices collect: [:t | t translated]) lines: #() selections: typeChoices) startUpWithCaption: 
 		('Choose the TYPE
 for ' translated, slotName, '
 (currently ' translated, (self slotInfoAt: slotName) type translated, ')').

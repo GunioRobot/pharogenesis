@@ -3,6 +3,6 @@ add: newObject before: oldObject
 	the sequence just preceding oldObject. Answer newObject."
 	
 	| index |
-	index _ self find: oldObject.
+	index := self find: oldObject.
 	self insert: newObject before: index.
 	^newObject

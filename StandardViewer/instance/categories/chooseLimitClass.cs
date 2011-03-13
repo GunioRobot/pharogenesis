@@ -2,8 +2,8 @@ chooseLimitClass
 	"Put up a menu allowing the user to choose the most generic class to show"
 
 	| aMenu limitClass |
-	aMenu _ MenuMorph new defaultTarget: self.
-	limitClass _ self limitClass.
+	aMenu := MenuMorph new defaultTarget: self.
+	limitClass := self limitClass.
 	scriptedPlayer class withAllSuperclasses do:
 		[:aClass | 
 			aClass == ProtoObject

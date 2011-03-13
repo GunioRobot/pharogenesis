@@ -6,7 +6,7 @@ initializeFor: aPresenter
 	self useRoundedCorners.
 	self borderStyle: BorderStyle complexAltInset; borderWidth: 4; borderColor: (Color r: 0.452 g: 0.839 b: 1.0).  "Color fromUser"
 	self addHeaderRow.
-	placeHolder _ Morph new beTransparent.
+	placeHolder := Morph new beTransparent.
 	placeHolder extent: 200@1.
 	self addMorphBack: placeHolder.
 	ActiveWorld presenter reinvigoratePlayersTool: self 

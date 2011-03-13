@@ -1,2 +1,0 @@
-arpabet
-	^ self new initializeArpabet

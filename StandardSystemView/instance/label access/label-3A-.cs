@@ -1,6 +1,6 @@
 label: aString 
 	"Set aString to be the receiver's label."
-	labelText _ Paragraph
+	labelText := Paragraph
 			withText: (Text string: ((aString == nil or: [aString isEmpty])
 								ifTrue: ['Untitled' copy]
 								ifFalse: [aString])

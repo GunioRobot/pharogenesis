@@ -1,0 +1,2 @@
+isPackageVersionInstalled: aPackageVersion
+	^ self installedPackageVersions includes: aPackageVersion

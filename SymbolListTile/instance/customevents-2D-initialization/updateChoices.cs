@@ -1,3 +1,3 @@
 updateChoices
-	choices _ (Vocabulary vocabularyNamed: dataType) choices.
-	(choices includes: literal) ifFalse: [ literal _ choices first. self changed ]
+	choices := (Vocabulary vocabularyNamed: dataType) choices.
+	(choices includes: literal) ifFalse: [ literal := choices first. self changed ]

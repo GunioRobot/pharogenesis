@@ -3,8 +3,8 @@ reinvigorateThumbnailsInViewerFlapTabs
 	| vwr thumbnail |
 	ViewerFlapTab allInstancesDo:
 		[:aTab | 
-			vwr _ aTab referent findA: StandardViewer.
-			thumbnail _ aTab findA: ThumbnailMorph.
+			vwr := aTab referent findA: StandardViewer.
+			thumbnail := aTab findA: ThumbnailMorph.
 			(vwr notNil and: [thumbnail notNil]) ifTrue:
 				[thumbnail objectToView: vwr scriptedPlayer]]
 

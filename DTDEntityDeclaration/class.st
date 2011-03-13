@@ -1,0 +1,1 @@
+DTDEntityDeclaration class instanceVariableNames: 'contextBehavior'

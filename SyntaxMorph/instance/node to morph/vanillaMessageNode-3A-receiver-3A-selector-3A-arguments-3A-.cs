@@ -1,12 +1,12 @@
 vanillaMessageNode: aNode receiver: receiver selector: selector arguments: arguments
 
 	| substitute row sel |
-	sel _ #message.
+	sel := #message.
 	((self nodeClassIs: CascadeNode) and: [self parseNode receiver ~~ aNode]) ifTrue: [
-		sel _ #keyword2.
+		sel := #keyword2.
 		receiver ifNotNil: [self inform: 'receiver should be nil']].
-	row _ self addRow: sel on: aNode.
-	substitute _ aNode as: TileMessageNode.
+	row := self addRow: sel on: aNode.
+	substitute := aNode as: TileMessageNode.
 	(aNode macroPrinter == #printCaseOn:indent:) ifTrue: [
 		aNode asMorphicCaseOn: row indent: nil.
 		^ self].

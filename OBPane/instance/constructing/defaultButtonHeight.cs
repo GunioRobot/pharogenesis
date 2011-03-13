@@ -1,2 +1,0 @@
-defaultButtonHeight
-	^ 23

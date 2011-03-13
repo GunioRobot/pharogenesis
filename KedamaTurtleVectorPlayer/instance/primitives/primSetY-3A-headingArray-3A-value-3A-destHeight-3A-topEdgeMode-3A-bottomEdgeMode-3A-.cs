@@ -5,14 +5,14 @@ primSetY: yArray headingArray: headingArray value: v destHeight: destHeight topE
 	"^ KedamaPlugin doPrimitive: #turtlesSetY."
 
 	v isCollection ifFalse: [
-		val _ v asFloat.
+		val := v asFloat.
 	].
 
 	1 to: yArray size do: [:i |
 		v isCollection ifTrue: [
-			newY _ v at: i.
+			newY := v at: i.
 		] ifFalse: [
-			newY _ val.
+			newY := val.
 		].
 		KedamaMorph scalarYAt: i yArray: yArray headingArray: headingArray value: newY destHeight: destHeight topEdgeMode: topEdgeMode bottomEdgeMode: bottomEdgeMode.
 	].

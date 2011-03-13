@@ -4,7 +4,7 @@ printBlockArgsNodeOn: strm indent: level
 
 	self
 		submorphsDoIfSyntax: [ :sub |
-			(argString _ sub decompile) isEmpty ifFalse: [
+			(argString := sub decompile) isEmpty ifFalse: [
 				strm 
 					nextPut: $:;
 					nextPutAll: argString;

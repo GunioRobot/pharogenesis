@@ -1,4 +1,4 @@
 addPane: aPane paneType: aType
 	| anIndex |
-	anIndex _ self insertionIndexForPaneOfType: aType.
+	anIndex := self insertionIndexForPaneOfType: aType.
 	self privateAddMorph: aPane atIndex: anIndex

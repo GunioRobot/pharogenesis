@@ -1,7 +1,7 @@
 ranges: pairArray
 
-	xTables := Array new: 0.
+	xTables _ Array new: 0.
 	pairArray do: [:range |
-		xTables := xTables copyWith: (Array new: range last - range first + 1 withAll: 0).
+		xTables _ xTables copyWith: (Array new: range last - range first + 1 withAll: 0).
 	].
-	ranges := pairArray.
+	ranges _ pairArray.

@@ -8,8 +8,8 @@ open: aStringHolder label: labelString
 
 	Smalltalk isMorphic ifTrue: [^ aStringHolder openAsMorphLabel: labelString].
 
-	aStringHolderView _ self container: aStringHolder.
-	topView _ StandardSystemView new.
+	aStringHolderView := self container: aStringHolder.
+	topView := StandardSystemView new.
 	topView model: aStringHolderView model.
 	topView addSubView: aStringHolderView.
 	topView label: labelString.

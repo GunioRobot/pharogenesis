@@ -1,2 +1,0 @@
-mySystemWindow: aSystemWindow
-	mySystemWindow := aSystemWindow.

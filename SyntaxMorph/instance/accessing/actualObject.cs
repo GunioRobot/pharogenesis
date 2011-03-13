@@ -4,17 +4,17 @@ actualObject
 
 
 	(self nodeClassIs: LiteralVariableNode) ifTrue: [
-		(sub _ self findA: StringMorph) ifNil: [^ nil].
+		(sub := self findA: StringMorph) ifNil: [^ nil].
 		"Need to decompile here for odd synonyms of 'self' ?"
 		^ Compiler evaluate: sub contents for: Player logged: false].
 
 	(self nodeClassIs: VariableNode) ifTrue: [
-		(sub _ self findA: StringMorph) ifNil: [^ nil].
+		(sub := self findA: StringMorph) ifNil: [^ nil].
 		^ References at: (self cleanUpString: sub) asSymbol ifAbsent: [nil]].
 
 	(self nodeClassIs: LiteralNode) ifTrue: [
-		(sub _ self findA: StringMorph) ifNil: [^ nil].
+		(sub := self findA: StringMorph) ifNil: [^ nil].
 		^ Compiler evaluate: sub contents for: nil logged: false].
 
-	(sub _ self findA: SyntaxMorph) ifNil: [^ nil].
+	(sub := self findA: SyntaxMorph) ifNil: [^ nil].
 	^ sub actualObject	"receiver"

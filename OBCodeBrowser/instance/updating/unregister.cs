@@ -1,2 +1,0 @@
-unregister
-	SystemChangeNotifier uniqueInstance noMoreNotificationsFor: self

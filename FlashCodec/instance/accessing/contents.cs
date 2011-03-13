@@ -1,2 +1,0 @@
-contents
-	^stream contents

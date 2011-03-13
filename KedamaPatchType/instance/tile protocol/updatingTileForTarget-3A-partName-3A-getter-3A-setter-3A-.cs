@@ -1,12 +1,12 @@
 updatingTileForTarget: aTarget partName: partName getter: getter setter: setter
 
 	| aTile displayer actualSetter |
-	actualSetter _ setter ifNotNil:
+	actualSetter := setter ifNotNil:
 		[(#(none nil unused) includes: setter) ifTrue: [nil] ifFalse: [setter]].
 
-	aTile _ self newReadoutTile.
+	aTile := self newReadoutTile.
 
-	displayer _ UpdatingStringMorph new
+	displayer := UpdatingStringMorph new
 		getSelector: #externalName;
 		target: (aTarget perform: getter) costume renderedMorph;
 		growable: true;

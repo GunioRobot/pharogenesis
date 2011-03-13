@@ -7,17 +7,17 @@ addBlockArg: aMorph
 	owner isMethodNode ifTrue: [
 		^ (self addTempVar: aMorph)].	"Node for them is not inside the block"
 		"If exists, drop the temp in this block and let user extend it."
-	nn _ aMorph decompile string.	"name"
+	nn := aMorph decompile string.	"name"
 	(self isKnownVarName: nn) ifTrue: [^ false].	"already defined"
 
-	tt _ self firstSubmorph.
-	tempHolder _ tt firstSubmorph isSyntaxMorph 
+	tt := self firstSubmorph.
+	tempHolder := tt firstSubmorph isSyntaxMorph 
 				ifTrue: [(tt nodeClassIs: BlockArgsNode) 
 							ifTrue: [tt] ifFalse: [nil]]
 				ifFalse: [nil].
 
 	tempHolder ifNil: ["make new row"
-		tempHolder _ self addRow: #blockarg1 on: (BlockArgsNode new).
+		tempHolder := self addRow: #blockarg1 on: (BlockArgsNode new).
 		tempHolder addNoiseString: self noiseBeforeBlockArg.
 		tempHolder submorphs last firstSubmorph emphasis: TextEmphasis bold emphasisCode.
 		tempHolder useRoundedCorners.
@@ -32,7 +32,7 @@ addBlockArg: aMorph
 
 	aMorph parseNode name: nn key: nn code: nil.
 	tempHolder addMorphBack: (tempHolder transparentSpacerOfSize: 4@4).
-	var _ tempHolder addRow: #tempVariable on: aMorph parseNode.
+	var := tempHolder addRow: #tempVariable on: aMorph parseNode.
 	var layoutInset: 1.
 	var addMorphBack: (self aSimpleStringMorphWith: nn).
 	var cleanupAfterItDroppedOnMe.

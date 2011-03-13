@@ -6,7 +6,7 @@ findUpdateChangeSetMatching: updateNumber
 	updateNumberToTry _ updateNumber.
 	updateNumberChangeSet _ nil.
 	[updateNumberChangeSet isNil and: [updateNumberToTry notNil]] whileTrue:
-		[updateNumberChangeSet _ ChangeSorter allChangeSets
+		[updateNumberChangeSet _ ChangesOrganizer allChangeSets
 			detect: [:cs | (cs name beginsWith: updateNumberToTry asString)
 							and: [(cs name at: (updateNumberToTry asString size + 1)) isDigit not]]
 			ifNone: [nil].
@@ -26,6 +26,6 @@ updateNumber asString, ' (within +/- 10) was found in the image.
 You must have changesets going back this far in your image
 in order to accurately check for conflicts.
 Proceed anyway?')
-			ifTrue: [updateNumberChangeSet _ ChangeSorter allChangeSets first]].
+			ifTrue: [updateNumberChangeSet _ ChangesOrganizer allChangeSets first]].
 
 	^ updateNumberChangeSet

@@ -5,4 +5,4 @@ view: aView
 	View|controller: and the receiver's model and view links are set up 
 	automatically by the view."
 
-	view _ aView
+	view := aView

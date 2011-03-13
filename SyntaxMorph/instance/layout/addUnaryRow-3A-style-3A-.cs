@@ -2,10 +2,10 @@ addUnaryRow: aStringLikeItem style: aSymbol
 
 	| row sMorph modifiedString fontToUse |
 
-	(row _ self class row: #text on: nil) borderWidth: 1.
-	modifiedString _ self substituteKeywordFor: aStringLikeItem.
-	sMorph _ self addString: modifiedString special: true.
-	fontToUse _ self fontToUseForSpecialWord: modifiedString.
+	(row := self class row: #text on: nil) borderWidth: 1.
+	modifiedString := self substituteKeywordFor: aStringLikeItem.
+	sMorph := self addString: modifiedString special: true.
+	fontToUse := self fontToUseForSpecialWord: modifiedString.
 
 	sMorph 
 		font: fontToUse emphasis: 1;

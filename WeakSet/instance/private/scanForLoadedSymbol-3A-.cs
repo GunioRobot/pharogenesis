@@ -3,17 +3,17 @@ scanForLoadedSymbol: anObject
 
 	| element start finish |
 
-	start _ (anObject hash \\ array size) + 1.
-	finish _ array size.
+	start := (anObject hash \\ array size) + 1.
+	finish := array size.
 
 	"Search from (hash mod size) to the end."
 	start to: finish do:
-		[:index | ((element _ array at: index) == flag or: [element asString = anObject asString])
+		[:index | ((element := array at: index) == flag or: [element asString = anObject asString])
 			ifTrue: [^ index ]].
 
 	"Search from 1 to where we started."
 	1 to: start-1 do:
-		[:index | ((element _ array at: index) == flag or: [element asString = anObject asString])
+		[:index | ((element := array at: index) == flag or: [element asString = anObject asString])
 			ifTrue: [^ index ]].
 
 	^ 0  "No match AND no empty slot"

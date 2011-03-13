@@ -1,2 +1,2 @@
 localEToyUserListUrls
-	^LocalEToyUserListUrls ifNil:[LocalEToyUserListUrls _ IdentityDictionary new].
+	^LocalEToyUserListUrls ifNil:[LocalEToyUserListUrls := IdentityDictionary new].

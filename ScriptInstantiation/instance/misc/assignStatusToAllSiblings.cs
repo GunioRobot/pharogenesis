@@ -4,7 +4,7 @@ assignStatusToAllSiblings
 	| aScriptInstantiation |
 	(player class allInstances copyWithout: player) do:
 		[:aPlayer |
-			aScriptInstantiation _ aPlayer scriptInstantiationForSelector: selector.
+			aScriptInstantiation := aPlayer scriptInstantiationForSelector: selector.
 			aScriptInstantiation status: status.
 			aScriptInstantiation frequency: self frequency.
 			aScriptInstantiation tickingRate: self tickingRate.

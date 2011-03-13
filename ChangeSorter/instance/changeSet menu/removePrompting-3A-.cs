@@ -34,5 +34,5 @@ Do you really want to go ahead with this?') ifFalse: [^ self]]].
 	"Go ahead and remove the change set"
 	changeSetNumber := myChangeSet name initialIntegerOrNil.
 	changeSetNumber ifNotNil: [SystemVersion current unregisterUpdate: changeSetNumber].
-	ChangeSorter removeChangeSet: myChangeSet.
+	ChangesOrganizer removeChangeSet: myChangeSet.
 	self showChangeSet: ChangeSet current.

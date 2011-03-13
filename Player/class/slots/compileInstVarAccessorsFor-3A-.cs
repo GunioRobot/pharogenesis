@@ -2,10 +2,10 @@ compileInstVarAccessorsFor: varName
 	"Compile getters and setteres for the given instance variable name"
 
 	| nameString |
-	nameString _ varName asString capitalized.
+	nameString := varName asString capitalized.
 	self compileSilently: ('get', nameString, '
 	^ ', varName)
 		classified: 'access'.
 	self compileSilently: ('set', nameString, ': val
-	', varName, ' _ val')
+	', varName, ' := val')
 		classified: 'access'

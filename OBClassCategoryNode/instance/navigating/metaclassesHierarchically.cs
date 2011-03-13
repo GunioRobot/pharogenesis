@@ -1,2 +1,0 @@
-metaclassesHierarchically
-	^ OBClassAwareNode sortHierarchically: self metaclasses

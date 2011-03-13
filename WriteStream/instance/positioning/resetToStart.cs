@@ -1,2 +1,2 @@
 resetToStart
-	readLimit _ position _ 0.
+	readLimit := position := 0.

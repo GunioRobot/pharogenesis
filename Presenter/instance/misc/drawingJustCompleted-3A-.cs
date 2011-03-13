@@ -4,7 +4,7 @@ drawingJustCompleted: aSketchMorph
 	| aWorld |
 	self flushPlayerListCache.  "Because a new drawing already created one, thus obviating #assuredPlayer kicking in with its invalidation"
 
-	aWorld _ associatedMorph world.
+	aWorld := associatedMorph world.
 	(aWorld hasProperty: #automaticFlapViewing)
 		ifTrue:
 			[^ aWorld presenter viewMorph: aSketchMorph].

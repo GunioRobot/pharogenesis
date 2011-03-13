@@ -6,16 +6,16 @@ compose: aTransformation
 	its result."
 
 	| aTransformationScale newScale newTranslation |
-	aTransformationScale _ aTransformation scale.
+	aTransformationScale := aTransformation scale.
 	scale == nil
 		ifTrue: 
 			[aTransformation noScale
-				ifTrue: [newScale _ nil]
-				ifFalse: [newScale _ aTransformationScale].
-			newTranslation _ translation + aTransformation translation]
+				ifTrue: [newScale := nil]
+				ifFalse: [newScale := aTransformationScale].
+			newTranslation := translation + aTransformation translation]
 		ifFalse: 
 			[aTransformation noScale
-				ifTrue: [newScale _ scale]
-				ifFalse: [newScale _ scale * aTransformationScale].
-			newTranslation _ translation + (scale * aTransformation translation)].
+				ifTrue: [newScale := scale]
+				ifFalse: [newScale := scale * aTransformationScale].
+			newTranslation := translation + (scale * aTransformation translation)].
 	^WindowingTransformation scale: newScale translation: newTranslation

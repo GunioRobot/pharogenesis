@@ -2,5 +2,5 @@ selectedMorph: aMorph
 
 	selectedMorph == aMorph ifTrue: [^self].
 	self unhighlightSelection.
-	selectedMorph _ aMorph.
+	selectedMorph := aMorph.
 	self highlightSelection

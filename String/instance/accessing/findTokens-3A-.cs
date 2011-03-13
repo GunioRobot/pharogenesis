@@ -3,14 +3,14 @@ findTokens: delimiters
 
 	| tokens keyStart keyStop separators |
 
-	tokens _ OrderedCollection new.
-	separators _ delimiters isCharacter 
+	tokens := OrderedCollection new.
+	separators := delimiters isCharacter 
 		ifTrue: [Array with: delimiters]
 		ifFalse: [delimiters].
-	keyStop _ 1.
+	keyStop := 1.
 	[keyStop <= self size] whileTrue:
-		[keyStart _ self skipDelimiters: separators startingAt: keyStop.
-		keyStop _ self findDelimiters: separators startingAt: keyStart.
+		[keyStart := self skipDelimiters: separators startingAt: keyStop.
+		keyStop := self findDelimiters: separators startingAt: keyStart.
 		keyStart < keyStop
 			ifTrue: [tokens add: (self copyFrom: keyStart to: (keyStop - 1))]].
 	^tokens

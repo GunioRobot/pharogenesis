@@ -1,2 +1,2 @@
 initialize
-	destX := destY := leftMargin := 0.
+	destX _ destY _ leftMargin _ 0.

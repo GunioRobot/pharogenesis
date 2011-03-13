@@ -6,4 +6,4 @@ floatPrecision
 		etc.
 	Initialize the precision to 1 if it is not present"
 
-	^ floatPrecision isNumber ifTrue: [floatPrecision] ifFalse: [floatPrecision _ 1]
+	^ floatPrecision isNumber ifTrue: [floatPrecision] ifFalse: [floatPrecision := 1]

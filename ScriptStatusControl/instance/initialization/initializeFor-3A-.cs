@@ -4,10 +4,10 @@ initializeFor: aScriptInstantiation
 	|  statusReadout |
 	self hResizing: #shrinkWrap.
 	self cellInset: 2@0.
-	scriptInstantiation _ aScriptInstantiation.
-	tickPauseButtonsShowing _ false.
+	scriptInstantiation := aScriptInstantiation.
+	tickPauseButtonsShowing := false.
 
-	self addMorphBack: (statusReadout _ UpdatingSimpleButtonMorph new).
+	self addMorphBack: (statusReadout := UpdatingSimpleButtonMorph new).
 	statusReadout label: aScriptInstantiation status asString font: Preferences standardButtonFont.
 	statusReadout setNameTo: 'trigger'.
 	statusReadout target: aScriptInstantiation; wordingSelector: #translatedStatus; actionSelector: #presentScriptStatusPopUp.

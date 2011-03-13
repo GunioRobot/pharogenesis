@@ -5,4 +5,4 @@ model: aModel
 	View|controller: so that the receiver's model and view links can be set 
 	up by the view."
 
-	model _ aModel
+	model := aModel

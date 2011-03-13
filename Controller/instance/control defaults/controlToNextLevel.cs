@@ -7,5 +7,5 @@ controlToNextLevel
 	the message Controller|isControlWanted."
 
 	| aView |
-	aView _ view subViewWantingControl.
+	aView := view subViewWantingControl.
 	aView ~~ nil ifTrue: [aView controller startUp]

@@ -1,1 +1,0 @@
-recordGradientFill: fillIndex matrix: gradientMatrix ramp: colorRampArray linear: aBoolean

@@ -1,2 +1,2 @@
 menuTitleSelector: getMenuTitleSel
-	getMenuTitleSelector _ getMenuTitleSel
+	getMenuTitleSelector := getMenuTitleSel

@@ -3,7 +3,7 @@ intern: aStringOrSymbol
 	^(self lookup: aStringOrSymbol) ifNil:[
 		| aClass aSymbol |
 		aStringOrSymbol isSymbol ifTrue:[
-			aSymbol _ aStringOrSymbol.
+			aSymbol := aStringOrSymbol.
 		] ifFalse:[
 			aClass := aStringOrSymbol isOctetString ifTrue:[ByteSymbol] ifFalse:[WideSymbol].
 			aSymbol := aClass new: aStringOrSymbol size.

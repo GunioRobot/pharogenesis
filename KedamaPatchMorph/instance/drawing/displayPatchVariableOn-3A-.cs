@@ -5,9 +5,9 @@ displayPatchVariableOn: aForm
 
 	formChanged ifTrue: [
 		"displayForm fillColor: Color transparent."
-		pixelValue _ (self color pixelValueForDepth: 32) bitAnd: 16rFFFFFF.
+		pixelValue := (self color pixelValueForDepth: 32) bitAnd: 16rFFFFFF.
 		form bits class == ByteArray ifTrue: [form unhibernate].
-		patchVar _ form bits.
+		patchVar := form bits.
 		displayForm bits class == ByteArray ifTrue: [displayForm unhibernate].
 		displayType = #linear ifTrue: [
 			self primMakeMaskOf: patchVar in: displayForm bits colorPixel: pixelValue shift: shiftAmount.
@@ -26,5 +26,5 @@ displayPatchVariableOn: aForm
 	aForm == tmpForm ifFalse: [
 		displayForm displayOn: aForm at: 0@0 rule: 24.
 	].
-	formChanged _ false.
+	formChanged := false.
 

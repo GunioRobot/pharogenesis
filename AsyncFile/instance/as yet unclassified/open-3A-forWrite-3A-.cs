@@ -14,7 +14,7 @@ open: fullFileName forWrite: aBoolean
 	writeable := aBoolean.
 	semaphore := Semaphore new.
 	semaIndex := Smalltalk registerExternalObject: semaphore.
-	fileHandle := self primOpen: name forWrite: writeable semaIndex: semaIndex.
+	fileHandle := self primOpen: name asVmPathName forWrite: writeable semaIndex: semaIndex.
 	fileHandle ifNil: [
 		Smalltalk unregisterExternalObject: semaphore.
 		semaphore := nil.

@@ -2,11 +2,11 @@ addNamePaneTo: header
 	"Add the namePane, which may be a popup or a type-in depending on the type of CategoryViewer"
 
 	| plugTextMor searchButton |
-	namePane _ AlignmentMorph newRow vResizing: #spaceFill; height: 14.
+	namePane := AlignmentMorph newRow vResizing: #spaceFill; height: 14.
 	namePane hResizing: #spaceFill.
 	namePane listDirection: #leftToRight.
 
-	plugTextMor _ PluggableTextMorph on: self
+	plugTextMor := PluggableTextMorph on: self
 					text: #searchString accept: #searchString:notifying:
 					readSelection: nil menu: nil.
 	plugTextMor setProperty: #alwaysAccept toValue: true.
@@ -18,7 +18,7 @@ addNamePaneTo: header
 	plugTextMor hideScrollBarsIndefinitely.
 	plugTextMor setTextMorphToSelectAllOnMouseEnter.
 
-	searchButton _ SimpleButtonMorph new 
+	searchButton := SimpleButtonMorph new 
 		target: self;
 		beTransparent;
 		actionSelector: #doSearchFrom:;

@@ -3,8 +3,6 @@ mouseMove: evt
 		ifNotNil: [^ self showOptions].
 	(self hasProperty: #previousLiteral)
 		ifFalse: [^ self].
-	(self hasProperty: #previousPoint)
-		ifFalse: [^ evt hand grabMorph: self rootInPasteUp].
 	self currentHand releaseKeyboardFocus.
 	"Once reviving the value at drag start"
 	literal := self valueOfProperty: #previousLiteral.

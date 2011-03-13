@@ -1,2 +1,2 @@
 setPenArrowheads: aBoolean
-	penArrowheads _ aBoolean
+	penArrowheads := aBoolean

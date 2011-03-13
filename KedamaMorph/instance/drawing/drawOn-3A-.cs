@@ -12,7 +12,7 @@ drawOn: aCanvas
 	pixelsPerPatch = 1 ifTrue: [
 		aCanvas drawImage: patchVarDisplayForm at: bounds origin.
 	] ifFalse: [
-		result _ self zoom: patchVarDisplayForm into: magnifiedDisplayForm factor: pixelsPerPatch.
+		result := self zoom: patchVarDisplayForm into: magnifiedDisplayForm factor: pixelsPerPatch.
 		result ifNil: [
 			aCanvas warpImage: patchVarDisplayForm transform: (MatrixTransform2x3 withScale: pixelsPerPatch) at: self innerBounds origin.
 		] ifNotNil: [

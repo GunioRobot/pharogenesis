@@ -7,12 +7,12 @@ compare: string1 with: string2 collated: order
 	self var: #string2 declareC: 'unsigned char *string2'.
 	self var: #order declareC: 'unsigned char *order'.
 
-	len1 _ string1 size.
-	len2 _ string2 size.
+	len1 := string1 size.
+	len2 := string2 size.
 	1 to: (len1 min: len2) do:
 		[:i |
-		c1 _ order at: (string1 basicAt: i) + 1.
-		c2 _ order at: (string2 basicAt: i) + 1.
+		c1 := order at: (string1 basicAt: i) + 1.
+		c2 := order at: (string2 basicAt: i) + 1.
 		c1 = c2 ifFalse: 
 			[c1 < c2 ifTrue: [^ 1] ifFalse: [^ 3]]].
 	len1 = len2 ifTrue: [^ 2].

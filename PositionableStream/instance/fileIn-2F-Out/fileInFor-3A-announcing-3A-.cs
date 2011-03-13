@@ -13,10 +13,10 @@ fileInFor: client announcing: announcement
 			whileFalse: 
 				[bar value: self position.
 				self skipSeparators.
-				[ val _ (self peekFor: $!) ifTrue: [
+				[ val := (self peekFor: $!) ifTrue: [
 						(Compiler evaluate: self nextChunk for: client logged: false) scanFrom: self
 					] ifFalse: [
-						chunk _ self nextChunk.
+						chunk := self nextChunk.
 						self checkForPreamble: chunk.
 						Compiler evaluate: chunk for: client logged: true ].
 				] on: InMidstOfFileinNotification

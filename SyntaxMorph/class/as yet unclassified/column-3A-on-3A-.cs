@@ -1,8 +1,8 @@
 column: aColor on: aParseNode
 
 	| c color |
-	color _ self translateColor: aColor.
-	(c _ self newColumn)
+	color := self translateColor: aColor.
+	(c := self newColumn)
 		parseNode: aParseNode;
 		layoutInset: c standardInset;
 		hResizing: #shrinkWrap;

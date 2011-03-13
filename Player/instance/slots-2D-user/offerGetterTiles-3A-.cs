@@ -14,7 +14,7 @@ of data to get from
 	slotChoices := thePlayerThereNow slotNamesOfType: typeChosen.
 	slotChoices isEmpty 
 		ifTrue: [^self inform: 'sorry -- no slots of that type' translated].
-	slotChoices _ slotChoices asSortedArray.
+	slotChoices := slotChoices asSortedArray.
 	slotChosen := (SelectionMenu labelList: (slotChoices collect: [:t | t translated]) selections: slotChoices) 
 				startUpWithCaption: ('Choose the datum
 you want to extract from {1}''s {2}' translated format: {self externalName. slotName translated}).

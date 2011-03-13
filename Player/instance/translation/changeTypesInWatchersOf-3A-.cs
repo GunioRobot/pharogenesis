@@ -2,12 +2,12 @@ changeTypesInWatchersOf: slotName
 	"The type of a variable has changed; adjust watchers to that fact."
 
 	| aGetter newWatcher |
-	aGetter _ Utilities getterSelectorFor: slotName.
+	aGetter := Utilities getterSelectorFor: slotName.
 	self allPossibleWatchersFromWorld do: [:aWatcher |
 		(aWatcher getSelector = aGetter) ifTrue:
 			[(aWatcher ownerThatIsA: WatcherWrapper) ifNotNilDo:
 				[:aWrapper |
-					newWatcher _ (aWrapper submorphs size = 1)
+					newWatcher := (aWrapper submorphs size = 1)
 						ifTrue:
 							[WatcherWrapper new unlabeledForPlayer: self getter: aGetter]
 						ifFalse:

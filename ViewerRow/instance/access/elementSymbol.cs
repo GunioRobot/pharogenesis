@@ -1,2 +1,0 @@
-elementSymbol
-	^ elementSymbol

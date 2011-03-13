@@ -3,5 +3,5 @@ superView: aView
 	View|unlock). It is sent by View|addSubView: in order to properly set all
 	the links."
 
-	superView _ aView.
+	superView := aView.
 	self unlock

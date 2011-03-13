@@ -3,8 +3,8 @@ release
 	necessary to send release provided the receiver's view has been properly 
 	released independently."
 
-	model _ nil.
+	model := nil.
 	view ~~ nil
 		ifTrue: 
 			[view controller: nil.
-			view _ nil]
+			view := nil]

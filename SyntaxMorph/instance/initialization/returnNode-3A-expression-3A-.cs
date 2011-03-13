@@ -1,11 +1,11 @@
 returnNode: aNode expression: expr
 
 	| row expMorph sMorph aNoiseString |
-	row _ self addRow: #return on: aNode.
+	row := self addRow: #return on: aNode.
 	self alansTest1 ifTrue: [
 		row setSpecialOuterTestFormat.
-		aNoiseString _ ' Reply '.
-		sMorph _ self aSimpleStringMorphWith: aNoiseString.
+		aNoiseString := ' Reply '.
+		sMorph := self aSimpleStringMorphWith: aNoiseString.
 		sMorph 
 			emphasis: TextEmphasis bold emphasisCode;
 			setProperty: #syntacticallyCorrectContents toValue: '^'.
@@ -14,7 +14,7 @@ returnNode: aNode expression: expr
 	] ifFalse: [
 		row addToken: '^ ' type: #upArrow on: aNode.
 	].
-	expMorph _ expr asMorphicSyntaxIn: row.
+	expMorph := expr asMorphicSyntaxIn: row.
 	self alansTest1 ifTrue: [
 		(expMorph hasProperty: #deselectedColor) ifFalse: [expMorph setConditionalPartStyle].
 	].

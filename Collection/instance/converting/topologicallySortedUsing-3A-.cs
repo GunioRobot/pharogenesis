@@ -4,7 +4,7 @@ topologicallySortedUsing: aSortBlock
 	by the argument, aSortBlock."
 
 	| aSortedCollection |
-	aSortedCollection _ SortedCollection new: self size.
+	aSortedCollection := SortedCollection new: self size.
 	aSortedCollection sortBlock: aSortBlock.
 	self do: [:each | aSortedCollection addLast: each].	"avoids sorting"
 	^ aSortedCollection sortTopologically

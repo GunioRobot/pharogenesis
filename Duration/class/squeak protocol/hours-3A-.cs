@@ -1,4 +1,3 @@
 hours: aNumber
 
-
-	^ self days: 0 hours: aNumber minutes: 0 seconds: 0 nanoSeconds: 0
+	^ self seconds: aNumber * SecondsInHour nanoSeconds: 0

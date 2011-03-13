@@ -2,9 +2,9 @@ installNewFontAtIndex: newIndex fromOld: oldIndex
 
 	| fontArray newArray |
 	self allInstances do: [:set |
-		fontArray := set fontArray.
+		fontArray _ set fontArray.
 		newIndex + 1 > fontArray size ifTrue: [
-			newArray := Array new: newIndex + 1.
+			newArray _ Array new: newIndex + 1.
 			newArray replaceFrom: 1 to: fontArray size with: fontArray startingAt: 1.
 			newArray at: newIndex + 1 put: (fontArray at: oldIndex + 1).
 			set initializeWithFontArray: newArray.

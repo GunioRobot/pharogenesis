@@ -1,0 +1,2 @@
+fromStringArray: array
+	^self basicNew

@@ -1,0 +1,2 @@
+asStringArray
+	^#('packageadded'), package stringArrayEncoding

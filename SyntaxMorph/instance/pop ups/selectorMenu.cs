@@ -4,43 +4,43 @@ selectorMenu
 	Put up a table.  Each column is a viewer category."
 
 	| cats value catNames interfaces list setter wording all words ind aVocabulary limitClass |
-	cats _ #().
-	all _ Set new.
-	value _ self receiverObject.
+	cats := #().
+	all := Set new.
+	value := self receiverObject.
 	value class == Error ifTrue: [^ nil].
 	
-	aVocabulary _ self vocabularyToUseWith: value.
-	limitClass _ self limitClassToUseWith: value vocabulary: aVocabulary.
-	catNames _ value categoriesForVocabulary: aVocabulary limitClass: limitClass.
-	cats _ catNames collect: [:nn | 
-		list _ OrderedCollection new.
-		interfaces _ value methodInterfacesForCategory: nn 
+	aVocabulary := self vocabularyToUseWith: value.
+	limitClass := self limitClassToUseWith: value vocabulary: aVocabulary.
+	catNames := value categoriesForVocabulary: aVocabulary limitClass: limitClass.
+	cats := catNames collect: [:nn | 
+		list := OrderedCollection new.
+		interfaces := value methodInterfacesForCategory: nn 
 						inVocabulary: aVocabulary limitClass: limitClass.
 		interfaces do: [:mi | 
 			(all includes: mi selector) ifFalse: [
 				"list add: (self aSimpleStringMorphWith: mi elementWording).  Expensive"
-				words _ mi selector.
-				(words beginsWith: 'get ') ifTrue: [words _ words allButFirst: 4].
+				words := mi selector.
+				(words beginsWith: 'get ') ifTrue: [words := words allButFirst: 4].
 				mi selector last == $: ifTrue: [
-					words _ String streamContents: [:strm | "add fake args"
+					words := String streamContents: [:strm | "add fake args"
 						(words findTokens: $:) do: [:part | strm nextPutAll: part; nextPutAll: ' 5 ']].
-					words _ words allButLast].
-				mi selector isInfix ifTrue: [words _ words, ' 5'].
-				words _ self splitAtCapsAndDownshifted: words.	
+					words := words allButLast].
+				mi selector isInfix ifTrue: [words := words, ' 5'].
+				words := self splitAtCapsAndDownshifted: words.	
 				list add: (self anUpdatingStringMorphWith: words special: true).
 				words = mi selector ifFalse: [
 					list last setProperty: #syntacticallyCorrectContents toValue: mi selector].
 				all add: mi selector].
-			setter _ mi companionSetterSelector asString.
+			setter := mi companionSetterSelector asString.
 			(setter = 'nil') | (all includes: setter) ifFalse: ["need setters also"
-				wording _ (self translateToWordySetter: setter).
+				wording := (self translateToWordySetter: setter).
 				list add:  (self aSimpleStringMorphWith: wording, ' 5').
 				wording = setter ifFalse: [
 					list last setProperty: #syntacticallyCorrectContents 
 						toValue: setter].
 				all add: setter]].
 		list].
-	(ind _ catNames indexOf: 'scripts') > 0 ifTrue: [
+	(ind := catNames indexOf: 'scripts') > 0 ifTrue: [
 		(cats at: ind) first contents = 'empty script' ifTrue: [(cats at: ind) removeFirst]].
 	cats first addFirst: (self aSimpleStringMorphWith: ' ').	"spacer"
 	cats first addFirst: (self aSimpleStringMorphWith: '( from ', value class name, ' )').

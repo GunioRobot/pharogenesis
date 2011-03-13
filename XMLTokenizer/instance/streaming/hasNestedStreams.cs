@@ -1,0 +1,2 @@
+hasNestedStreams
+	^nestedStreams notNil

@@ -2,19 +2,19 @@ updateViewer: aViewer forceToShow: aCategorySymbol
 	"Update the given viewer to make sure it is in step with various possible changes in the outside world, and when reshowing it be sure it shows the given category"
 
 	| aPlayer aPosition newViewer oldOwner wasSticky barHeight itsVocabulary aCategory categoryInfo restrictedIndex |
-	aCategory _ aCategorySymbol ifNotNil: [aViewer currentVocabulary translatedWordingFor: aCategorySymbol].
-	categoryInfo _ aViewer categoryMorphs  asOrderedCollection collect:
+	aCategory := aCategorySymbol ifNotNil: [aViewer currentVocabulary translatedWordingFor: aCategorySymbol].
+	categoryInfo := aViewer categoryMorphs  asOrderedCollection collect:
 		[:aMorph | aMorph categoryRestorationInfo].
 
-	itsVocabulary _ aViewer currentVocabulary.
+	itsVocabulary := aViewer currentVocabulary.
 	aCategory ifNotNil: [(categoryInfo includes: aCategorySymbol) ifFalse: [categoryInfo addFirst: aCategorySymbol]].
-	aPlayer _ aViewer scriptedPlayer.
-	aPosition _ aViewer position.
-	wasSticky _ aViewer isSticky.
-	newViewer _ aViewer species new visible: false.
+	aPlayer := aViewer scriptedPlayer.
+	aPosition := aViewer position.
+	wasSticky := aViewer isSticky.
+	newViewer := aViewer species new visible: false.
 	(aViewer isMemberOf: KedamaStandardViewer)
-		ifTrue: [restrictedIndex _ aViewer restrictedIndex].
-	barHeight _ aViewer submorphs first listDirection == #topToBottom
+		ifTrue: [restrictedIndex := aViewer restrictedIndex].
+	barHeight := aViewer submorphs first listDirection == #topToBottom
 		ifTrue:
 			[aViewer submorphs first submorphs first height]
 		ifFalse:
@@ -30,7 +30,7 @@ updateViewer: aViewer forceToShow: aCategorySymbol
 			newViewer providePossibleRestrictedView: 0.
 			newViewer providePossibleRestrictedView: restrictedIndex].
 	wasSticky ifTrue: [newViewer beSticky].
-	oldOwner _ aViewer owner.
+	oldOwner := aViewer owner.
 	oldOwner ifNotNil:
 		[oldOwner replaceSubmorph: aViewer by: newViewer].
 	

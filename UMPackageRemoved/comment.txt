@@ -1,0 +1,1 @@
+A message claiming that a package has been removed.

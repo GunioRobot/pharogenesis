@@ -1,5 +1,5 @@
 parseNode: x
 	
-	parseNode _ x
+	parseNode := x
 		
 	

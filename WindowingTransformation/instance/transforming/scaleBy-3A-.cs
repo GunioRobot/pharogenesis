@@ -5,12 +5,12 @@ scaleBy: aScale
 	| checkedScale newScale newTranslation |
 	aScale == nil
 		ifTrue: 
-			[newScale _ scale.
-			newTranslation _ translation]
+			[newScale := scale.
+			newTranslation := translation]
 		ifFalse: 
-			[checkedScale _ self checkScale: aScale.
+			[checkedScale := self checkScale: aScale.
 			scale == nil
-				ifTrue: [newScale _ checkedScale]
-				ifFalse: [newScale _ scale * checkedScale].
-			newTranslation _ checkedScale * translation].
+				ifTrue: [newScale := checkedScale]
+				ifFalse: [newScale := scale * checkedScale].
+			newTranslation := checkedScale * translation].
 	^WindowingTransformation scale: newScale translation: newTranslation

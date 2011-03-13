@@ -1,12 +1,12 @@
 add: char
 
 	| dict elem |
-	codes ifNil: [codes := Array with: char. combined := char. ^ true].
+	codes ifNil: [codes _ Array with: char. combined _ char. ^ true].
 
-	dict := Compositions at: combined charCode ifAbsent: [^ false].
+	dict _ Compositions at: combined charCode ifAbsent: [^ false].
 
-	elem := dict at: combined charCode ifAbsent: [^ false].
+	elem _ dict at: combined charCode ifAbsent: [^ false].
 
-	codes := codes copyWith: char.
-	combined := elem.
+	codes _ codes copyWith: char.
+	combined _ elem.
 	^ true.

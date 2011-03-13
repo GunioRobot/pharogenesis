@@ -4,7 +4,7 @@ establishEtoyLabelWording
 	| itsName |
 
 	self isTileScriptingElement ifFalse: [^self].
-	itsName _ target externalName.
+	itsName := target externalName.
 	self addTextToButton: itsName, ' ', arguments first.
 	visibleMorph setBalloonText: 
 		('click to run the script "{1}" in player named "{2}"' translated format: {arguments first. itsName}).

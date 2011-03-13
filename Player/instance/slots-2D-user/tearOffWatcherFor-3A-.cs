@@ -3,14 +3,14 @@ tearOffWatcherFor: aSlotGetter
 
 	| aWatcher anInterface info isNumeric |
 
-	info _ self slotInfoForGetter: aSlotGetter.
+	info := self slotInfoForGetter: aSlotGetter.
 	info
 		ifNotNil:
-			[isNumeric _ info type == #Number]
+			[isNumeric := info type == #Number]
 		ifNil:
-			[anInterface _ Vocabulary eToyVocabulary methodInterfaceAt: aSlotGetter ifAbsent: [nil].
-			isNumeric _ anInterface notNil and: [anInterface resultType == #Number]].
-	aWatcher _ UpdatingStringMorph new.
+			[anInterface := Vocabulary eToyVocabulary methodInterfaceAt: aSlotGetter ifAbsent: [nil].
+			isNumeric := anInterface notNil and: [anInterface resultType == #Number]].
+	aWatcher := UpdatingStringMorph new.
 	
 	aWatcher
 		growable: true;

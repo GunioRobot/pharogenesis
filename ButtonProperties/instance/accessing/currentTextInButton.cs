@@ -2,6 +2,6 @@ currentTextInButton
 
 	| existing |
 
-	existing _ self currentTextMorphsInButton.
+	existing := self currentTextMorphsInButton.
 	existing isEmpty ifTrue: [^nil].
 	^existing first

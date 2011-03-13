@@ -1,4 +1,4 @@
 tab
 	self plainTab.
-	lastIndex := lastIndex + 1.
+	lastIndex _ lastIndex + 1.
 	^ false

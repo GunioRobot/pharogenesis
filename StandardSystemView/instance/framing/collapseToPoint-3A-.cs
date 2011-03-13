@@ -1,5 +1,5 @@
 collapseToPoint: collapsePoint
 	self collapse.
 	self align: self displayBox topLeft with: collapsePoint.
-	collapsedViewport _ self viewport.
+	collapsedViewport := self viewport.
 	self displayEmphasized

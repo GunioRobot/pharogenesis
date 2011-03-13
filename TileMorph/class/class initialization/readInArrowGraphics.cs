@@ -2,11 +2,11 @@ readInArrowGraphics
 	"TileMorph readInArrowGraphics"
 
 	| obj |
-	obj _ (FileStream readOnlyFileNamed: 'tile inc arrow.morph') fileInObjectAndCode.
-	UpPicture _ obj form.
+	obj := (FileStream readOnlyFileNamed: 'tile inc arrow.morph') fileInObjectAndCode.
+	UpPicture := obj form.
 
-	obj _ (FileStream readOnlyFileNamed: 'tile dec arrow.morph') fileInObjectAndCode.
-	DownPicture _ obj form.
+	obj := (FileStream readOnlyFileNamed: 'tile dec arrow.morph') fileInObjectAndCode.
+	DownPicture := obj form.
 
-	obj _ (FileStream readOnlyFileNamed: 'tile suffix arrow.morph')fileInObjectAndCode.
-	SuffixPicture _ obj form.
+	obj := (FileStream readOnlyFileNamed: 'tile suffix arrow.morph')fileInObjectAndCode.
+	SuffixPicture := obj form.

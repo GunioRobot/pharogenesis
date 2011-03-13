@@ -1,2 +1,0 @@
-fixed: aNumber
-	fixed := aNumber

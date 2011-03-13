@@ -4,4 +4,4 @@ controlInitialize
 	self setMark: self markBlock stringIndex.
 	self setPoint: self pointBlock stringIndex.
 	self initializeSelection.
-	beginTypeInBlock _ nil.
+	beginTypeInBlock := nil.

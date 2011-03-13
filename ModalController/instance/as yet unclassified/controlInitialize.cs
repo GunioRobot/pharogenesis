@@ -1,4 +1,4 @@
 controlInitialize
 
-	modeActive _ true.
+	modeActive := true.
 	^ super controlInitialize

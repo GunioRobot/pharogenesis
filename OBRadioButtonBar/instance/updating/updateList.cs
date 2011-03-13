@@ -1,4 +1,0 @@
-updateList
-	self 
-		updateButtons; 
-		updateMorphs

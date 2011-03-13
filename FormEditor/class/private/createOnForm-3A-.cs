@@ -1,12 +1,12 @@
 createOnForm: aForm
 	"Create a StandardSystemView for a FormEditor on the form aForm."
 	| formView formEditor menuView aView topView extent topViewBorder |
-	topViewBorder _ 2.
-	formView _ FormHolderView new model: aForm.
-	formEditor _ formView controller.
-	menuView _ FormMenuView new makeFormEditorMenu model: formEditor.
+	topViewBorder := 2.
+	formView := FormHolderView new model: aForm.
+	formEditor := formView controller.
+	menuView := FormMenuView new makeFormEditorMenu model: formEditor.
 	formEditor model: aForm.
-	aView _ View new.
+	aView := View new.
 	aView model: aForm.
 	aView addSubView: formView.
 	aView 
@@ -17,13 +17,13 @@ createOnForm: aForm
 		((formView viewport 
 			merge: (menuView viewport expandBy: (16 @ 0 corner: 16@16))) 
 		  expandBy: (0@topViewBorder corner: 0@0)).
-	topView _ "ColorSystemView" FormEditorView new.
+	topView := "ColorSystemView" FormEditorView new.
 	topView model: formEditor.
 	topView backgroundColor: #veryLightGray.
 	topView addSubView: aView.
 	topView label: 'Form Editor'.
 	topView borderWidth: topViewBorder.
-	extent _ topView viewport extent.
+	extent := topView viewport extent.
 	topView minimumSize: extent.
 	topView maximumSize: extent.
 	^topView

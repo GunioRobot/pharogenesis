@@ -1,3 +1,3 @@
 mouseOverHaloWidth: x
 
-	mouseOverHaloWidth _ x
+	mouseOverHaloWidth := x

@@ -1,0 +1,2 @@
+asUVersion
+	^UVersion readFromString: self

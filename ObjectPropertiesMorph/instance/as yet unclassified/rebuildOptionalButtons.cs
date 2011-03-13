@@ -2,10 +2,10 @@ rebuildOptionalButtons
 
 	| answer |
 
-	answer _ #() .
+	answer := #() .
 	
 	myTarget isTextMorph ifTrue: [
-		answer _ answer, {
+		answer := answer, {
 			self 
 				buttonNamed: 'Text' translated action: #doTextProperties color: color lighter 
 				help: 'open a text properties panel for the morph' translated.

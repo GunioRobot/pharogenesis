@@ -6,11 +6,11 @@ evalStrings
     | it |
 
     ^ self collect: [:each |
-        it _ each.
-        each == #true ifTrue: [it _ true].
-		      each == #false ifTrue: [it _ false].
-        each == #nil ifTrue: [it _ nil].
+        it := each.
+        each == #true ifTrue: [it := true].
+		      each == #false ifTrue: [it := false].
+        each == #nil ifTrue: [it := nil].
         (each isString and:[each isSymbol not]) ifTrue: [
-			it _ Compiler evaluate: each].
-        each class == Array ifTrue: [it _ it evalStrings].
+			it := Compiler evaluate: each].
+        each class == Array ifTrue: [it := it evalStrings].
         it]

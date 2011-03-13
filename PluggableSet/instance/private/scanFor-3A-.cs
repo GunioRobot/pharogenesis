@@ -9,17 +9,17 @@ overridden
  
 	elements."
 	| element start finish |
-	start _ (hashBlock ifNil: [anObject hash]
+	start := (hashBlock ifNil: [anObject hash]
 				ifNotNil: [hashBlock value: anObject])
 				\\ array size + 1.
-	finish _ array size.
+	finish := array size.
 	"Search from (hash mod size) to the end."
-	start to: finish do: [:index | ((element _ array at: index) == nil or:
+	start to: finish do: [:index | ((element := array at: index) == nil or:
 [equalBlock ifNil: [element = anObject]
 				ifNotNil: [equalBlock value: element value: anObject]])
 			ifTrue: [^ index]].
 	"Search from 1 to where we started."
-	1 to: start - 1 do: [:index | ((element _ array at: index) == nil or:
+	1 to: start - 1 do: [:index | ((element := array at: index) == nil or:
 [equalBlock ifNil: [element = anObject]
 				ifNotNil: [equalBlock value: element value: anObject]])
 			ifTrue: [^ index]].

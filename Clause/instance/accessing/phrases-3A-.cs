@@ -1,2 +1,0 @@
-phrases: aCollection
-	phrases := aCollection

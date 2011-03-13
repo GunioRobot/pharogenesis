@@ -3,7 +3,7 @@ openFullScreenForm
 	extent of the display screen."
 
 	| topView |
-	topView _ self createFullScreenForm.
+	topView := self createFullScreenForm.
 	topView controller 
 		openDisplayAt: (topView viewport extent//2)
 

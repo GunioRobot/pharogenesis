@@ -1,3 +1,3 @@
 setAlignment: style
-	alignment := style.
+	alignment _ style.
 	

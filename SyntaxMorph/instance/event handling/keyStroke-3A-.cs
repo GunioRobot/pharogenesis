@@ -5,7 +5,7 @@ keyStroke: evt
 		[(owner notNil and: [owner isSyntaxMorph]) ifTrue:
 			[owner isBlockNode ifTrue:
 				["Delete a statement."
-				(spacer _ self submorphAfter) class == AlignmentMorph
+				(spacer := self submorphAfter) class == AlignmentMorph
 						ifTrue: [spacer delete].
 				self delete].
 			]].

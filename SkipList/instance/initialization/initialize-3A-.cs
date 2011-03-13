@@ -1,6 +1,6 @@
 initialize: maxLevel
-	pointers _ Array new: maxLevel.
-	splice _ Array new: maxLevel.
-	numElements _ 0.
-	level _ 0.
-	Rand ifNil: [Rand _ Random new]
+	pointers := Array new: maxLevel.
+	splice := Array new: maxLevel.
+	numElements := 0.
+	level := 0.
+	Rand ifNil: [Rand := Random new]

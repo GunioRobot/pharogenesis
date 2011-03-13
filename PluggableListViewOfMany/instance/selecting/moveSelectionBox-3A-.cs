@@ -3,5 +3,5 @@ moveSelectionBox: anInteger
 	previous selection and display the new one, highlighted."
 	selection ~= anInteger
 		ifTrue: 
-			[selection _ anInteger.
+			[selection := anInteger.
 			self displaySelectionBox]

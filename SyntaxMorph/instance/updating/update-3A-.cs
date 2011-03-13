@@ -2,12 +2,12 @@ update: aSymbol
 
 	| bingo saveOwner newMorph db |
 
-	(db _ self debugger) ifNil: [^super update: aSymbol].
+	(db := self debugger) ifNil: [^super update: aSymbol].
 	aSymbol == #contents ifTrue: [
-		saveOwner _ owner.
+		saveOwner := owner.
 		db removeDependent: self.
-		markerMorph ifNotNil: [markerMorph delete. markerMorph _ nil].
-		newMorph _ db createSyntaxMorph.
+		markerMorph ifNotNil: [markerMorph delete. markerMorph := nil].
+		newMorph := db createSyntaxMorph.
 		self delete.
 		saveOwner addMorph: newMorph.
 		saveOwner owner setScrollDeltas.
@@ -15,7 +15,7 @@ update: aSymbol
 	].
 	aSymbol == #contentsSelection ifTrue: [
 		markerMorph ifNil: [
-			markerMorph _ RectangleMorph new.
+			markerMorph := RectangleMorph new.
 			markerMorph
 				color: Color transparent;
 				borderWidth: 2;
@@ -23,7 +23,7 @@ update: aSymbol
 				lock.
 			owner addMorphFront: markerMorph.
 		].
-		bingo _ parseNode rawSourceRanges keyAtValue: db pcRange ifAbsent: [nil].
+		bingo := parseNode rawSourceRanges keyAtValue: db pcRange ifAbsent: [nil].
 		self testForNode: bingo andDo: [ :foundMorph | 
 			markerMorph
 				position: foundMorph position;

@@ -1,2 +1,0 @@
-syncFlags: anInteger
-	syncFlags := anInteger

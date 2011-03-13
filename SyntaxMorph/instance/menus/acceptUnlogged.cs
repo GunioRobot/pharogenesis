@@ -6,7 +6,7 @@ acceptUnlogged
 		[self rootTile == self ifTrue: [^ self].  "not in a script"
 		^ self rootTile acceptUnlogged  "always accept at the root"].
 	(self ownerThatIsA: ScriptEditorMorph) ifNil: [^ self].
-	(cls _ self parsedInClass) ifNil: [^ self].
+	(cls := self parsedInClass) ifNil: [^ self].
 	cls compile: self decompile
 		classified: ClassOrganizer default
 		withStamp: nil

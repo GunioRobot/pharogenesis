@@ -6,7 +6,7 @@ rebuild
 		(StringMorph contents: 'Please enter your Squeak login name' font: self myFont) lock.
 	}.
 	(self addARow: {
-		(theNameMorph _ TextMorph new
+		(theNameMorph := TextMorph new
 			beAllFont: self myFont;
 			crAction: (MessageSend receiver: self selector: #doOK);
 			extent: 300@20;

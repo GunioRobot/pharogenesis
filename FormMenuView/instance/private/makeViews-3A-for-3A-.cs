@@ -1,8 +1,8 @@
 makeViews: cache for: aSwitch
 
 	| form aSwitchView |
-	form _ cache form.
-	aSwitchView _ PluggableButtonView
+	form := cache form.
+	aSwitchView := PluggableButtonView
 		on: aSwitch
 		getState: #isOn
 		action: #switch.

@@ -1,2 +1,2 @@
 foregroundColor: aColor
-	borderColor _ aColor
+	borderColor := aColor

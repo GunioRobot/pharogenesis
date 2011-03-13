@@ -1,2 +1,0 @@
-requestor
-	^ OBRequestor for: self

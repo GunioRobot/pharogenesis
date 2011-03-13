@@ -1,0 +1,2 @@
+squeakMapID: aUUID 
+	squeakMapID := aUUID

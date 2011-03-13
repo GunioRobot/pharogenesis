@@ -3,13 +3,13 @@ setEmphasis
 
 	| selStart selEnd currEmphasis |
 	
-	labelString _ labelString asText.
+	labelString := labelString asText.
 	emphases isEmptyOrNil ifTrue: [^ self].
-	selStart _ 1.
+	selStart := 1.
 	1 to: selections size do:
 		[:line |
-			selEnd _ selStart + (selections at: line) size - 1.
-			((currEmphasis _ emphases at: line) size > 0 and: [currEmphasis ~~ #normal]) ifTrue:
+			selEnd := selStart + (selections at: line) size - 1.
+			((currEmphasis := emphases at: line) size > 0 and: [currEmphasis ~~ #normal]) ifTrue:
 				[labelString addAttribute: (TextEmphasis perform: currEmphasis)
 					from: selStart to: selEnd].
-			selStart _ selEnd + 2]
+			selStart := selEnd + 2]

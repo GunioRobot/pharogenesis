@@ -1,3 +1,0 @@
-starLogoTurtlewwxywwhcpn0
-
-	^ StarSqueakTurtle

@@ -1,0 +1,2 @@
+anyPackageSelected
+	^selectedPackageIndex > 0

@@ -4,6 +4,6 @@ resultTypeFor: aSelector
 	| itsInterface |
 	aSelector ifNil: [self inform: 'Please tell Ted how you caused this'.
 		^ #abs "a bogus type"].
-	itsInterface _ self currentVocabulary methodInterfaceAt: aSelector ifAbsent:
+	itsInterface := self currentVocabulary methodInterfaceAt: aSelector ifAbsent:
 		[^ #unknown].
 	^ itsInterface resultType

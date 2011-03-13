@@ -5,12 +5,12 @@ rebuildRow
 	self removeAllMorphs.
 	self layoutInset: 2; cellInset: 3.
 	self beTransparent.
-	aThumbnail _ ThumbnailForAllPlayersTool new objectToView: playerRepresented viewSelector: #graphicForViewerTab.
+	aThumbnail := ThumbnailForAllPlayersTool new objectToView: playerRepresented viewSelector: #graphicForViewerTab.
 	aThumbnail setBalloonText: 'Click here to reveal this object' translated.
 	self addMorphBack: aThumbnail.
 	aThumbnail on: #mouseUp send: #beRevealedInActiveWorld to: playerRepresented.
 	
-	"aMenuButton _ IconicButton new labelGraphic: Cursor menu.
+	"aMenuButton := IconicButton new labelGraphic: Cursor menu.
 	aMenuButton target: self;
 		actionSelector: #playerButtonHit;
 
@@ -20,7 +20,7 @@ rebuildRow
 		actWhen: #buttonDown.
 	aMenuButton setBalloonText: 'Press here to get a menu'.
 	self addMorphBack: aMenuButton."
-	aViewerButton _ IconicButton new labelGraphic: (ScriptingSystem formAtKey: #Viewer).
+	aViewerButton := IconicButton new labelGraphic: (ScriptingSystem formAtKey: #Viewer).
 	aViewerButton color: Color transparent; 
 			actWhen: #buttonUp;
 			actionSelector: #beViewed; target: playerRepresented;
@@ -31,7 +31,7 @@ rebuildRow
 
 	self addMorphBack: aViewerButton.
 
-	aTileButton _ IconicButton  new borderWidth: 0.
+	aTileButton := IconicButton  new borderWidth: 0.
 	aTileButton labelGraphic: (TileMorph new setToReferTo: playerRepresented) imageForm.
 	aTileButton color: Color transparent; 
 			actWhen: #buttonDown;
@@ -39,7 +39,7 @@ rebuildRow
 			setBalloonText: 'click here to obtain a tile that refers to this player.' translated.
 	self addMorphBack: aTileButton.
 
-"	aNameMorph _ UpdatingStringMorph new
+"	aNameMorph := UpdatingStringMorph new
 		useStringFormat;
 		target:  playerRepresented;
 		getSelector: #nameForViewer;

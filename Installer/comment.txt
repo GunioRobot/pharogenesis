@@ -1,0 +1,138 @@
+Installer provides a simple Domain Specific Language for installing packages from monticello and squeakmap of various version.
+
+One design decision is to be able to paste scripts a workspace and run and tested from there without any special editing.
+
+Installer can also be used as a squeak startup document with various commandline parameters.
+
+example 1 (non working example)
+
+unix$ squeak Squeak3.8-7067 http://installer.pbwiki.com/f/Installer.st Url="http://..." saveas="MyImage" postinstall=Tester done=quit
+
+This will load installer as the startup document, installer will install a file/script from the given url, then the image will be saved in the given filename, and processing is then passed on to the class Tester, once complete the image will quit.
+
+supported parameters:
+P|PATH=prefix1*suffix1;...;prefixN*suffixN
+I|IN|INSTALL=aPage (needs PATH)
+U|URL=aUrl
+O|OUT|SAVEAS=aFileName
++S|SAVE
+P|TEST|POSTINSTALL=aClassName | aPage(given PATH) | aUrl
+DONE= save | quit | save&quit | aClassName
++SKIPTESTS
+
+example 2: (working example)
+
+unix$ squeak Squeak3.8-7067 http://installer.pbwiki.com/f/Installer.st path=wiki.squeak.org/squeak/;installer.pbwiki.com/*-alt in=CommandLineExample2 done=quit.
+
+===
+Examples - Using SqueakMap
+
+1)
+squeakmap := Installer squeakmap.
+squeakmap install: 'DynamicBindings'.
+squeakmap open. "opens the squeak map loader gui"
+2)
+Installer squeakmap install: 'DynamicBindings'.
+
+3) Alternatively using websqueakmap which uses http (similar usage api to squeakmap)
+squeakmap := Installer websqueakmap.
+squeakmap package: 'DynamicBindings'; install.
+
+4) Abbreviated instanciation
+squeakmap := Installer sm. "squeakmap"
+squeakmap := Installer wsm. "web-squeakmap"
+
+5) Finding Packages by Name
+(Installer sm match: 'Labby*') explore.
+
+6) Obtaining List of Package Versions
+(Installer sm package: 'Labby & Walker'; versions)  explore.  
+
+6) Searching Packages
+Installer sm search: 'seaside'.
+Installer sm search: 'author:*Smith'. 
+"fields available for searching: author: name:, summary:,description:"
+
+7) Specify specific version of a package for installation
+Installer sm install: 'Labby(17)'.
+
+Examples - Using Monticello
+1)
+squeaksource := Installer repository: 'http://www.squeaksource.com'.
+seaside := squeaksource project: 'Seaside'.
+seaside install: 'Comet-lr.8';
+		install: 'Scriptaculous'.
+2) 
+squeaksource := Installer repository: 'http://www.squeaksource.com'		
+squeaksource project: 'Seaside';
+			  install: 'Comet-lr.8;
+			  install: 'Scriptaculous'.
+3) Supplying user/password.
+squeaksource := Installer repository: 'http://www.squeaksource.com'.
+squeaksource user: 'me'; password: 'asecret'.
+
+4) Abbreviated instanciation for convenience.
+squeaksource := Installer squeakSource.
+or
+squeaksource := Installer ss.
+
+Examples - install straight from a url		
+1a)
+(Installer url: 'http://minnow.cc.gatech.edu/squeak/uploads/5889/MakeTestsGreen39.cs') install.
+1b)
+Installer installUrl: 'http://minnow.cc.gatech.edu/squeak/uploads/5889/MakeTestsGreen39.cs'.
+
+2)
+| page |
+page := Installer url: 'http://minnow.cc.gatech.edu/squeak/uploads/5889/'.
+page package: 'MakeTestsGreen39.cs'.
+page install.
+
+3)
+In html page scripts are delimited by <code st>...</code st>
+| page |
+page := Installer url: 'http://wiki.squeak.org/squeak/742'.
+page install.
+4)
+specify your own delimeters
+| page |
+page := Installer url: 'http://wiki.squeak.org/742'.
+page markers: 'beginning of script...end of script'.
+page install.
+
+Note: Scripts embedded in html or a swiki page may need to escape some entities.
+Supported entities are &amp; &gt; &lt; &star; &quot; (see Installer-c-entities)
+
+Examples - Using Mantis
+1 . Viewing a file uploaded to a mantis bug report
+
+Installer mantis bug: 4874 view: 'Join.4.cs'.
+
+1. Installing a file uploaded to a mantis bug report
+Installer mantis bug: 4874 fix: 'Join.4.cs'.
+
+2. as above, inform user if bug report has been updated since a given date 
+Installer mantix	bug: 4874 fix: 'JoinTest.1.cs' date: '12-18-06'. 
+	
+3. Install or view a fix for a given bug.
+
+Installer mantis viewBug: 4874.
+Installer mantis fixBug: 4874.
+
+The fix script is published in a note added to the bug report page with the following syntax
+
+"fix begin"
+ Installer mantis bug: 474 fix: 'Join.4.cs'.
+"fix test"
+ Installer mantis bug: 474 fix: 'JoinTest.1.cs' date: '12-18-06'. 
+"fix end"
+
+4. Install a fix for a given bug, ignoring all test code
+(test code being delimeted by: "fix test" ... "fix end" )
+
+Installer mantis justFixBug: 474.
+or
+Installer mantis justFixBug: 474 date: '12-19-06'.
+
+
+

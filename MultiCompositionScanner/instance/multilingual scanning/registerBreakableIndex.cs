@@ -5,17 +5,17 @@ registerBreakableIndex
 	right edge of the composition rectangle of the paragraph."
 
 	(text at: lastIndex) = Character space ifTrue: [
-		breakAtSpace := true.
-		spaceX := destX.
-		spaceCount := spaceCount + 1.
-		lineHeightAtBreak := lineHeight.
-		baselineAtBreak := baseline.
-		breakableIndex := lastIndex.
+		breakAtSpace _ true.
+		spaceX _ destX.
+		spaceCount _ spaceCount + 1.
+		lineHeightAtBreak _ lineHeight.
+		baselineAtBreak _ baseline.
+		breakableIndex _ lastIndex.
 		destX > rightMargin ifTrue: 	[^self crossedX].
 	] ifFalse: [
-		breakAtSpace := false.
-		lineHeightAtBreak := lineHeight.
-		baselineAtBreak := baseline.
-		breakableIndex := lastIndex - 1.
+		breakAtSpace _ false.
+		lineHeightAtBreak _ lineHeight.
+		baselineAtBreak _ baseline.
+		breakableIndex _ lastIndex - 1.
 	].
 	^ false.

@@ -3,4 +3,4 @@ do: aBlock
 	1 to: array size do:
 		[:index |
 		| each |
-		(each _ array at: index) ifNotNil: [aBlock value: each]]
+		(each := array at: index) ifNotNil: [aBlock value: each]]

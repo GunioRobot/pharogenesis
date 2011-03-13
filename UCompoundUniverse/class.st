@@ -1,0 +1,1 @@
+UCompoundUniverse class instanceVariableNames: ''

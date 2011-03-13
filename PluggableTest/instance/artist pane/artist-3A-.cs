@@ -1,4 +1,4 @@
 artist: anInteger
 
-	artistIndex _ anInteger.
+	artistIndex := anInteger.
 	self changed: #artist.

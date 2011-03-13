@@ -1,1 +1,0 @@
-StarSqueakMorph class instanceVariableNames: ''

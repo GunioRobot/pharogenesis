@@ -2,8 +2,8 @@ installRollBackButtons: target
 	| mine |
 	"If I don't already have such a button, put one in at the upper right.  Set its target to the furtherest enclosing book.  Send chooseAndRevertToVersion when clicked.  Stay in place via scrollBar install."
 
-	mine _ self submorphNamed: #chooseAndRevertToVersion ifNone: [nil].
-	mine ifNil: [mine _ SimpleButtonMorph new.
+	mine := self submorphNamed: #chooseAndRevertToVersion ifNone: [nil].
+	mine ifNil: [mine := SimpleButtonMorph new.
 		"mine height: mine height - 2."
 		mine label: 'Roll Back'; cornerStyle: #square.
 		mine color: Color white; borderColor: Color black.

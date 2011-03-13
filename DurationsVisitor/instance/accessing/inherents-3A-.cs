@@ -1,2 +1,0 @@
-inherents: aDictionary
-	inherents := aDictionary

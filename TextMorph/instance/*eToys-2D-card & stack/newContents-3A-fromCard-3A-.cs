@@ -2,13 +2,13 @@ newContents: stringOrText fromCard: aCard
 	"Accept new text contents."
 	| newText setter |
 
-	newText _ stringOrText asText.
+	newText := stringOrText asText.
 	text = newText ifTrue: [^ self].  "No substantive change"
 
 	text ifNotNil: [
 		text embeddedMorphs do: [ :m | m delete ] ].
 
-	text _ newText.
+	text := newText.
 
 	"add all morphs off the visible region; they'll be moved into the right place when they become visible.  (this can make the scrollable area too large, though)"
 	stringOrText asText embeddedMorphs do: [ :m | 
@@ -20,7 +20,7 @@ newContents: stringOrText fromCard: aCard
 
 	self holdsSeparateDataForEachInstance
 		ifTrue:
-			[setter _ self valueOfProperty: #setterSelector.
+			[setter := self valueOfProperty: #setterSelector.
 			setter ifNotNil:
 				[aCard perform: setter with: newText]].
 

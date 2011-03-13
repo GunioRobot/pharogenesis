@@ -6,5 +6,5 @@ assignStatus: newStatus toAllFor: scriptName
 		[:scriptInstantiation |
 				scriptInstantiation status: newStatus.
 				scriptInstantiation assignStatusToAllSiblings.
-				^ (aWorld _ self costume world) ifNotNil:
+				^ (aWorld := self costume world) ifNotNil:
 					[aWorld updateStatusForAllScriptEditors]]

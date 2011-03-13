@@ -3,6 +3,6 @@ copyWith: newElement
 	includes the argument, newElement, at the end."
 
 	| newCollection |
-	newCollection _ self copy.
+	newCollection := self copy.
 	newCollection add: newElement.
 	^newCollection

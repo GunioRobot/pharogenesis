@@ -2,11 +2,11 @@ setPixelValueRoot: opSymbol type: opType rcvrType: rcvrType argType: argType voc
 	"Add submorphs to make me constitute a setter of the given symbol"
 
 	| anAssignmentTile |
-	resultType _ opType.
+	resultType := opType.
 	self color: (ScriptingSystem colorForType: opType).
 	self removeAllMorphs.
 	self addMorph: (TilePadMorph new setType: rcvrType).
-	anAssignmentTile _ KedamaSetPixelValueTile new rawVocabulary: aVocabulary.
+	anAssignmentTile := KedamaSetPixelValueTile new rawVocabulary: aVocabulary.
 	self addMorphBack: (anAssignmentTile typeColor: color).
 	anAssignmentTile setRoot: opSymbol asString dataType: argType.
 	self addMorphBack: (TilePadMorph new setType: argType)

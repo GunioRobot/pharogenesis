@@ -1,2 +1,0 @@
-hasSelection
-	^ false

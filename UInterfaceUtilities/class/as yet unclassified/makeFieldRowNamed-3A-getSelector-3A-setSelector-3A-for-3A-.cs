@@ -1,0 +1,2 @@
+makeFieldRowNamed: fieldName  getSelector: getSelector setSelector: setSelector for: model
+	^self makeFieldRowNamed: fieldName  getSelector: getSelector setSelector: setSelector isPassword: false for: model

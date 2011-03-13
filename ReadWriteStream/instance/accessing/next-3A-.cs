@@ -4,7 +4,7 @@ next: anInteger
 	| ans endPosition |
 	readLimit := readLimit max: position.
 
-	endPosition _ position + anInteger  min:  readLimit.
-	ans _ collection copyFrom: position+1 to: endPosition.
-	position _ endPosition.
+	endPosition := position + anInteger  min:  readLimit.
+	ans := collection copyFrom: position+1 to: endPosition.
+	position := endPosition.
 	^ans

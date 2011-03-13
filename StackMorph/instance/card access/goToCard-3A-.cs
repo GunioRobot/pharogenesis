@@ -6,9 +6,9 @@ goToCard: destinationCard
 	self currentPlayerDo:
 		[:aPlayer | aPlayer runAllClosingScripts].   "Like HyperCard 'on closeCard'"
 
-	aBackground _ self backgroundWithCard: destinationCard.
-	existingCard _ aBackground currentDataInstance.
-	oldViewers _ existingCard ifNil: [#()] ifNotNil: [existingCard allOpenViewers].
+	aBackground := self backgroundWithCard: destinationCard.
+	existingCard := aBackground currentDataInstance.
+	oldViewers := existingCard ifNil: [#()] ifNotNil: [existingCard allOpenViewers].
 
 	aBackground installAsCurrent: destinationCard.
 	aBackground setProperty: #myStack toValue: self.	"pointer cardMorph -> stack"

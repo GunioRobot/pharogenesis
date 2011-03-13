@@ -5,7 +5,7 @@ EToySenderMorph instanceReport
 	| answer resp |
 
 	Smalltalk garbageCollect.
-	answer _ self allInstances collect: [ :each |
+	answer := self allInstances collect: [ :each |
 		{
 			each.
 			[each ipAddress] on: Error do: [ 'no ipAddress'].
@@ -15,7 +15,7 @@ EToySenderMorph instanceReport
 			each world ifNil: ['-----no project-----'] ifNotNil: [each world project name].
 		}
 	].
-	resp _ (PopUpMenu labels: 'IP Address\Project\Owner' withCRs) startUpWithCaption: 
+	resp := (PopUpMenu labels: 'IP Address\Project\Owner' withCRs) startUpWithCaption: 
 					'Sorted by'.
 	resp = 1 ifTrue: [
 		^(answer asSortedCollection: [ :a :b | a second <= b second]) asArray explore

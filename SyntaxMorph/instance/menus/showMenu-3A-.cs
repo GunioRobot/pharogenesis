@@ -1,6 +1,6 @@
 showMenu: evt
 	| menu |
-	menu _ MenuMorph new.
+	menu := MenuMorph new.
 	self rootTile isMethodNode ifTrue:
 		[menu add: 'accept method' target: self selector: #accept.
 		menu addLine.

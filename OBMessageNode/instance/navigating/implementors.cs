@@ -1,2 +1,0 @@
-implementors
-	^ self implementorsOf: message

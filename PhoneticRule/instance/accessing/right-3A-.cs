@@ -1,2 +1,0 @@
-right: aString
-	right := aString

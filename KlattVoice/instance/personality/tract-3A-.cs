@@ -1,2 +1,0 @@
-tract: aNumber
-	tract := aNumber

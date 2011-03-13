@@ -6,7 +6,7 @@ objectForDataStream: refStrm
 	(TextConstants at: #forceFontWriting ifAbsent: [false]) ifTrue: [^ self].
 		"special case for saving the default fonts on the disk.  See collectionFromFileNamed:"
 
-	dp := DiskProxy global: #TTCFontDescription selector: #descriptionNamed:at:
+	dp _ DiskProxy global: #TTCFontDescription selector: #descriptionNamed:at:
 			args: {self name. ((TTCFontDescription descriptionNamed: self name) indexOf: self)}.
 	refStrm replace: self with: dp.
 	^ dp.

@@ -3,7 +3,7 @@ impartSketchScripts
 
 	| aMorph |
 	Sensor waitNoButton.
-	aMorph _ ActiveWorld chooseClickTarget.
+	aMorph := ActiveWorld chooseClickTarget.
 	aMorph ifNil: [^ self].
 	(aMorph renderedMorph isSketchMorph) ifTrue:
 		[aMorph acquirePlayerSimilarTo: self]

@@ -2,8 +2,8 @@ setCharacterAtCursor: aCharOrString
 	"Insert the given character at my cursor position"
 
 	| aLoc aTextMorph aString charToUse |
-	aLoc _ (aTextMorph _ self costume renderedMorph) cursor.
-	charToUse _ (aString _ aCharOrString asString) size > 0
+	aLoc := (aTextMorph := self costume renderedMorph) cursor.
+	charToUse := (aString := aCharOrString asString) size > 0
 		ifTrue:
 			[aString first]
 		ifFalse:

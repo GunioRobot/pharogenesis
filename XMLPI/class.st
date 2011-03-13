@@ -1,0 +1,1 @@
+XMLPI class instanceVariableNames: ''

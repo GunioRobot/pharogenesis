@@ -1,7 +1,7 @@
 initialize
 
 	super initialize.
-	type _ #Patch.
-	operatorOrExpression _ #getPatchValueIn:.
+	type := #Patch.
+	operatorOrExpression := #getPatchValueIn:.
 	self addPatchTile.
 	self line1: 'getPatchValueIn:'.

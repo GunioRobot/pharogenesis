@@ -1,2 +1,0 @@
-maxFrames: n
-	maxFrames := n

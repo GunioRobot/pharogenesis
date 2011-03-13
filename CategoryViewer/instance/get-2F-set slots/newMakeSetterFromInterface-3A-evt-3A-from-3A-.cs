@@ -2,7 +2,7 @@ newMakeSetterFromInterface: aMethodInterface evt: evt from: aMorph
 	"Button in viewer performs this to make a new style tile and attach to hand."
 
 	| m |
-	m _ self newSetterTilesFor: scriptedPlayer methodInterface: aMethodInterface.
+	m := self newSetterTilesFor: scriptedPlayer methodInterface: aMethodInterface.
 	m setProperty: #beScript toValue: true.
 
 	owner

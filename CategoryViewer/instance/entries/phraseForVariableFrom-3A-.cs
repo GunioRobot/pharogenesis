@@ -2,14 +2,14 @@ phraseForVariableFrom: aMethodInterface
 	"Return a structure consisting of tiles and controls and a readout representing a 'variable' belonging to the player, complete with an appropriate readout when indicated.  Functions in both universalTiles mode and classic mode.  Slightly misnamed in that this path is used for any methodInterface that indicates an interesting resultType."
 
 	| anArrow slotName getterButton cover inner aRow doc setter tryer universal hotTileForSelf spacer buttonFont varName |
-	aRow _ ViewerLine newRow
+	aRow := ViewerLine newRow
 		color: self color;
 		beSticky;
-		elementSymbol: (slotName _ aMethodInterface selector);
+		elementSymbol: (slotName := aMethodInterface selector);
 		wrapCentering: #center;
 		cellPositioning: #leftCenter.
-	(universal _ scriptedPlayer isUniversalTiles) ifFalse:
-		[buttonFont _ Preferences standardEToysFont.
+	(universal := scriptedPlayer isUniversalTiles) ifFalse:
+		[buttonFont := Preferences standardEToysFont.
 			aRow addMorphBack: (Morph new color: self color;
 					 extent: (((buttonFont widthOfString: '!') + 8) @ (buttonFont height + 6));
 					 yourself)].  "spacer"
@@ -17,21 +17,21 @@ phraseForVariableFrom: aMethodInterface
 	aRow addMorphBack: (Morph new color: self color; extent: 0@10).  " vertical spacer"
 	universal
 		ifTrue:
-			[inner _ scriptedPlayer universalTilesForGetterOf: aMethodInterface.
-			cover _ Morph new color: Color transparent.
+			[inner := scriptedPlayer universalTilesForGetterOf: aMethodInterface.
+			cover := Morph new color: Color transparent.
 			cover extent: inner fullBounds extent.
-			(getterButton _ cover copy) addMorph: cover; addMorphBack: inner.
+			(getterButton := cover copy) addMorph: cover; addMorphBack: inner.
 			cover on: #mouseDown send: #makeUniversalTilesGetter:event:from: 
 					to: self withValue: aMethodInterface.
-			aRow addMorphFront:  (tryer _ ScriptingSystem tryButtonFor: inner).
+			aRow addMorphFront:  (tryer := ScriptingSystem tryButtonFor: inner).
 			tryer color: tryer color lighter lighter]
 		ifFalse:
-			[hotTileForSelf _ self tileForSelf bePossessive.
+			[hotTileForSelf := self tileForSelf bePossessive.
 			hotTileForSelf  on: #mouseDown send: #makeGetter:event:from:
 				to: self
 				withValue: (Array with: aMethodInterface selector with: aMethodInterface resultType).
 			aRow addMorphBack: hotTileForSelf.
-			aRow addMorphBack: (spacer _ Morph new color: self color; extent: 2@10).
+			aRow addMorphBack: (spacer := Morph new color: self color; extent: 2@10).
 			spacer on: #mouseEnter send: #addGetterFeedback to: aRow.
 			spacer on: #mouseLeave send: #removeHighlightFeedback to: aRow.
 			spacer on: #mouseLeaveDragging send: #removeHighlightFeedback to: aRow.
@@ -41,15 +41,15 @@ phraseForVariableFrom: aMethodInterface
 			hotTileForSelf on: #mouseEnter send: #addGetterFeedback to: aRow.
 			hotTileForSelf on: #mouseLeave send: #removeHighlightFeedback to: aRow.
 			hotTileForSelf on: #mouseLeaveDragging send: #removeHighlightFeedback to: aRow.
-			getterButton _ self getterButtonFor: aMethodInterface selector type: aMethodInterface resultType].
+			getterButton := self getterButtonFor: aMethodInterface selector type: aMethodInterface resultType].
 	aRow addMorphBack: getterButton.
 	getterButton on: #mouseEnter send: #addGetterFeedback to: aRow.
 	getterButton on: #mouseLeave send: #removeHighlightFeedback to: aRow.
 	getterButton on: #mouseLeaveDragging send: #removeHighlightFeedback to: aRow.
-	(doc _ aMethodInterface documentation) ifNotNil:
+	(doc := aMethodInterface documentation) ifNotNil:
 		[getterButton setBalloonText: doc].
 
-	(scriptedPlayer slotInfo includesKey: (varName _ Utilities inherentSelectorForGetter: slotName)) "user slot"
+	(scriptedPlayer slotInfo includesKey: (varName := Utilities inherentSelectorForGetter: slotName)) "user slot"
 		ifTrue:
 			["aRow addTransparentSpacerOfSize: 3@0.
 			aRow addMorphBack: (self slotTypeMenuButtonFor: varName)"].
@@ -65,9 +65,9 @@ phraseForVariableFrom: aMethodInterface
 			[self addOverlapsDetailTo: aRow.
 			^ aRow]].
 	aRow addMorphBack: (AlignmentMorph new beTransparent).  "flexible spacer"
-	(setter _ aMethodInterface companionSetterSelector) ifNotNil:
+	(setter := aMethodInterface companionSetterSelector) ifNotNil:
 		[aRow addMorphBack: (Morph new color: self color; extent: 2@10).  " spacer"
-		anArrow _ universal 
+		anArrow := universal 
 			ifTrue: [self arrowSetterButton: #newMakeSetterFromInterface:evt:from:  
 						args: aMethodInterface]
 			ifFalse: [self arrowSetterButton: #makeSetter:from:forPart:

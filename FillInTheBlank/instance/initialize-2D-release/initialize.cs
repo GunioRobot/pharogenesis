@@ -1,6 +1,6 @@
 initialize
 
 	super initialize.
-	acceptOnCR _ false.
-	done _ false.
-	responseUponCancel _ ''
+	acceptOnCR := false.
+	done := false.
+	responseUponCancel := ''

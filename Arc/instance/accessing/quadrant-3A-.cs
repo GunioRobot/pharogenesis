@@ -2,4 +2,4 @@ quadrant: section
 	"Set the part of the circle represented by the receiver to be the argument, 
 	section."
 
-	quadrant _ section
+	quadrant := section

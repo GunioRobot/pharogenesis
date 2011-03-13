@@ -7,9 +7,9 @@ slotInfoButtonHitFor: aGetterSymbol inViewer: aViewer
 		ifTrue:
 			 [^ self inform: aGetterSymbol, ' is used for vector operations'].
 
-	slotSym _ Utilities inherentSelectorForGetter: aGetterSymbol.
-	aType _ self typeForSlotWithGetter: aGetterSymbol asSymbol.
-	aMenu _ MenuMorph new defaultTarget: self.
+	slotSym := Utilities inherentSelectorForGetter: aGetterSymbol.
+	aType := self typeForSlotWithGetter: aGetterSymbol asSymbol.
+	aMenu := MenuMorph new defaultTarget: self.
 	interface := aViewer currentVocabulary methodInterfaceAt: aGetterSymbol ifAbsent: [nil].
 	selector := interface isNil
 		ifTrue: [slotSym asString]
@@ -24,7 +24,7 @@ slotInfoButtonHitFor: aGetterSymbol inViewer: aViewer
 			aMenu addLine.
 	].
 
-	(typeVocab _ Vocabulary vocabularyForType: aType) addWatcherItemsToMenu: aMenu forGetter: aGetterSymbol.
+	(typeVocab := Vocabulary vocabularyForType: aType) addWatcherItemsToMenu: aMenu forGetter: aGetterSymbol.
 
 	(self slotInfo includesKey: slotSym)
 		ifTrue:

@@ -4,18 +4,18 @@ testAll
 "
 SyntaxMorph testAll
 "
-	systNav _ self systemNavigation.
-	count _ total _ 0.
-	systNav allBehaviorsDo: [ :aClass | total _ total + 1].
+	systNav := self systemNavigation.
+	count := total := 0.
+	systNav allBehaviorsDo: [ :aClass | total := total + 1].
 'Testing all behaviors'
 	displayProgressAt: Sensor cursorPoint
 	from: 0 to: total
 	during: [ :bar |
 		systNav allBehaviorsDo: [ :aClass |
-			bar value: (count _ count + 1).
+			bar value: (count := count + 1).
 			aClass selectors do: [ :aSelector |
-				source _ (aClass compiledMethodAt: aSelector) getSourceFromFile.
-				tree _ Compiler new 
+				source := (aClass compiledMethodAt: aSelector) getSourceFromFile.
+				tree := Compiler new 
 					parse: source 
 					in: aClass 
 					notifying: nil.

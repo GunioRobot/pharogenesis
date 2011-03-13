@@ -1,2 +1,0 @@
-columns: anObject
-	columns := anObject

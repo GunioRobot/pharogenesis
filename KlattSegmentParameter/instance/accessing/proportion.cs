@@ -1,2 +1,0 @@
-proportion
-	^ proportion

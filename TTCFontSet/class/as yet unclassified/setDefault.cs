@@ -3,7 +3,7 @@ setDefault
 	self setDefault
 "
 	| tt |
-	tt := TTCFontDescription default.
+	tt _ TTCFontDescription default.
 	tt ifNil: [TTCFontDescription setDefault].
-	tt := TTCFontDescription default.
+	tt _ TTCFontDescription default.
 	tt ifNotNil: [self newTextStyleFromTT: tt].

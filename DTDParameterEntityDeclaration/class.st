@@ -1,0 +1,1 @@
+DTDParameterEntityDeclaration class instanceVariableNames: ''

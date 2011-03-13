@@ -3,7 +3,7 @@ presentScriptStatusPopUp
 
 	| reply  m menu submenu |
 
-	menu _ MenuMorph new.
+	menu := MenuMorph new.
 	self addStatusChoices: #( normal " -- run when called" ) toMenu: menu.
 	self addStatusChoices: 
 		#(	paused 		"ready to run all the time"
@@ -16,7 +16,7 @@ presentScriptStatusPopUp
 			closing			"when I am being closed" )
 		toMenu: menu.
 	
-	submenu _ MenuMorph new.
+	submenu := MenuMorph new.
 	self addStatusChoices: (ScriptingSystem globalCustomEventNamesFor: player) toSubMenu: submenu forMenu: menu.
 	menu add: 'more... ' translated subMenu: submenu.
 
@@ -50,6 +50,6 @@ presentScriptStatusPopUp
 	reply ifNotNil: 
 		[self status: reply.  "Gets event handlers fixed up"
 		reply == #paused ifTrue:
-			[m _ player costume.
+			[m := player costume.
 			(m isKindOf: SpeakerMorph) ifTrue: [m stopSound]].
 		self updateAllStatusMorphs]

@@ -1,4 +1,4 @@
 nbsp
-	"non-breakable space."
+	"non-breakable space. Latin1 encoding common usage."
 
-	^ Character value: 202
+	^ Character value: 160

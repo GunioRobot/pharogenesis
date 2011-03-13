@@ -44,7 +44,6 @@ addTitle: aString icon: aForm updatingSelector: aSelector updateTarget: aTarget
 	title setProperty: #titleString toValue: aString.
 	self addMorphFront: title.
 	""
-	title borderWidth: 1.
 	title useSquareCorners.
 	(self hasProperty: #needsTitlebarWidgets)
 		ifTrue: [self addStayUpIcons]

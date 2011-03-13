@@ -1,3 +1,3 @@
 currentLook
 
-	^currentLook ifNil: [currentLook _ #normal]
+	^currentLook ifNil: [currentLook := #normal]

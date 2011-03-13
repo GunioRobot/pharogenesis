@@ -10,17 +10,17 @@ allMethodsInCategory: aCategoryName forInstance: anObject ofClass: aClass
 		aCategoryName = ScriptingSystem nameForInstanceVariablesCategory ifTrue:
 			[^ aClass slotInfo keys asSortedArray collect:
 				[:anInstVarName | Utilities getterSelectorFor: anInstVarName]]].
-	unfiltered _ (isAll _ aCategoryName = self allCategoryName)
+	unfiltered := (isAll := aCategoryName = self allCategoryName)
 		ifTrue:
 			[methodInterfaces collect: [:anInterface | anInterface selector]]
 		ifFalse:
-			[aCategory _ categories detect: [:cat | cat categoryName = aCategoryName] 
+			[aCategory := categories detect: [:cat | cat categoryName = aCategoryName] 
 							ifNone: [^ OrderedCollection new].
 			aCategory elementsInOrder collect: [:anElement | anElement selector]].
 
 	(anObject isKindOf: Player) ifTrue:
-		[suitableSelectors _ anObject costume selectorsForViewer.
-		unfiltered _ unfiltered  select:
+		[suitableSelectors := anObject costume selectorsForViewer.
+		unfiltered := unfiltered  select:
 			[:aSelector | suitableSelectors includes: aSelector]].
 	(isAll and: [aClass isUniClass]) ifTrue:
 		[unfiltered addAll: aClass namedTileScriptSelectors.

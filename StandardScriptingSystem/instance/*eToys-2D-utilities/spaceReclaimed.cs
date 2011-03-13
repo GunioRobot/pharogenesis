@@ -3,7 +3,7 @@ spaceReclaimed
 	"ScriptingSystem spaceReclaimed"
 
 	| oldFree  |
-	oldFree _ Smalltalk garbageCollect.
+	oldFree := Smalltalk garbageCollect.
 	ThumbnailMorph recursionReset.
 	Player removeUninstantiatedSubclassesSilently.
 	Smalltalk cleanOutUndeclared.

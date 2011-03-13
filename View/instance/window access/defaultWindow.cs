@@ -10,6 +10,6 @@ defaultWindow
 
 	| aRectangle |
 	subViews isEmpty ifTrue: [^DisplayScreen boundingBox].
-	aRectangle _ self firstSubView viewport.
-	subViews do: [:aView | aRectangle _ aRectangle merge: aView viewport].
+	aRectangle := self firstSubView viewport.
+	subViews do: [:aView | aRectangle := aRectangle merge: aView viewport].
 	^aRectangle expandBy: borderWidth

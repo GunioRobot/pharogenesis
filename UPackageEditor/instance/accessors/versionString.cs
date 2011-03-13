@@ -1,0 +1,2 @@
+versionString
+	^package version printString

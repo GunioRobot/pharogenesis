@@ -64,11 +64,11 @@ annotationForSelector: aSelector ofClass: aClass
 					stamp
 						ifNotNil: [aStream nextPutAll: 'prior time stamp: ' , stamp , separator]].
 			aRequest == #recentChangeSet
-				ifTrue: [aString := ChangeSorter mostRecentChangeSetWithChangeForClass: aClass selector: aSelector.
+				ifTrue: [aString := ChangesOrganizer mostRecentChangeSetWithChangeForClass: aClass selector: aSelector.
 					aString size > 0
 						ifTrue: [aStream nextPutAll: aString , separator]].
 			aRequest == #allChangeSets
-				ifTrue: [aList := ChangeSorter allChangeSetsWithClass: aClass selector: aSelector.
+				ifTrue: [aList := ChangesOrganizer allChangeSetsWithClass: aClass selector: aSelector.
 					aList size > 0
 						ifTrue: [aList size = 1
 								ifTrue: [aStream nextPutAll: 'only in change set ']

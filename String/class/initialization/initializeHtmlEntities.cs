@@ -1,7 +1,7 @@
 initializeHtmlEntities
 	"self initializeHtmlEntities"
 
-	HtmlEntities _ (Dictionary new: 128)
+	HtmlEntities := (Dictionary new: 128)
 		at: 'amp'	put: $&;
 		at: 'lt'		put: $<;
 		at: 'gt'		put: $>;

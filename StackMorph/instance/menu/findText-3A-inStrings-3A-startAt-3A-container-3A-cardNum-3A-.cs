@@ -32,7 +32,7 @@ findText: keys inStrings: rawStrings startAt: startIndex container: oldContainer
 		ifTrue: 
 			["all are on this page"
 
-			"wasIn _ (pages at: pageNum) isInMemory."
+			"wasIn := (pages at: pageNum) isInMemory."
 
 			self goToCardNumber: cardNum
 			"wasIn ifFalse: ['search again, on the real current text.  Know page is in.'.

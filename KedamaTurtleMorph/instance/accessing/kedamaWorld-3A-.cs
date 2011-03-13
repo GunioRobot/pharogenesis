@@ -1,3 +1,3 @@
 kedamaWorld: k
 
-	kedamaWorld _ k.
+	kedamaWorld := k.

@@ -1,15 +1,15 @@
 leftEdgeMode: aSymbol
 
-	leftEdgeMode _ aSymbol asSymbol.
+	leftEdgeMode := aSymbol asSymbol.
 	leftEdgeMode == #wrap ifTrue: [
-		leftEdgeModeMnemonic _ 1.
+		leftEdgeModeMnemonic := 1.
 		^ self
 	].
 	leftEdgeMode == #stick ifTrue: [
-		leftEdgeModeMnemonic _ 2.
+		leftEdgeModeMnemonic := 2.
 		^ self
 	].
 	(leftEdgeMode == #bounce or: [leftEdgeMode == #bouncing]) ifTrue: [
-		leftEdgeModeMnemonic _ 3.
+		leftEdgeModeMnemonic := 3.
 		^ self
 	].

@@ -3,10 +3,10 @@ tile: tile isOnLineAfter: previousTile
 
 	| tileRow previousRow |
 	previousTile ifNil: [^ true].
-	tileRow _ tile owner.
+	tileRow := tile owner.
 	[tileRow isMemberOf: AlignmentMorph]
-		whileFalse: [tileRow _ tileRow owner].  "find the owning row"
-	previousRow _ previousTile owner.
+		whileFalse: [tileRow := tileRow owner].  "find the owning row"
+	previousRow := previousTile owner.
 	[previousRow isMemberOf: AlignmentMorph]
-		whileFalse: [previousRow _ previousRow owner].  "find the owning row"
+		whileFalse: [previousRow := previousRow owner].  "find the owning row"
 	^ tileRow ~~ previousRow

@@ -13,13 +13,13 @@ traverseMessage: aMessageNode in: obj firstPlayer: firstPlayer inCondition: inCo
 			attributes setAttribute: #constant of: argument to: true.
 		].
 		(argument isMemberOf: VariableNode) ifTrue: [
-			thisPlayer _ Compiler evaluate: argument name for: obj logged: false.
-			ret _ (thisPlayer isKindOf: Player) and: [thisPlayer costume renderedMorph isKindOf: KedamaPatchMorph].
+			thisPlayer := Compiler evaluate: argument name for: obj logged: false.
+			ret := (thisPlayer isKindOf: Player) and: [thisPlayer costume renderedMorph isKindOf: KedamaPatchMorph].
 			attributes setAttribute: #constant of: argument to: ret.
 		].
 	].
 
-	receiver _ aMessageNode receiver.
+	receiver := aMessageNode receiver.
 	(receiver isMemberOf: MessageNode) ifTrue: [
 		self traverseMessage: receiver in: obj firstPlayer: firstPlayer inCondition: inCondition.
 	].
@@ -30,10 +30,10 @@ traverseMessage: aMessageNode in: obj firstPlayer: firstPlayer inCondition: inCo
 		attributes setAttribute: #constant of: receiver to: true.
 	].
 	(receiver isMemberOf: VariableNode) ifTrue: [
-		thisPlayer _ Compiler evaluate: receiver name for: obj logged: false.
-		ret _ thisPlayer == firstPlayer.
+		thisPlayer := Compiler evaluate: receiver name for: obj logged: false.
+		ret := thisPlayer == firstPlayer.
 		attributes setAttribute: #constant of: receiver to: ret.
-		proto _ (thisPlayer isKindOf: Player) and: [thisPlayer isPrototypeTurtlePlayer].
+		proto := (thisPlayer isKindOf: Player) and: [thisPlayer isPrototypeTurtlePlayer].
 		attributes setAttribute: #isTurtle of: receiver to: proto.
 		attributes setAttribute: #scalar of: aMessageNode selector to:
 		(ret not and: [(proto and: [self isScalarizable: thisPlayer andSelector: aMessageNode selector key])]).
@@ -48,7 +48,7 @@ traverseMessage: aMessageNode in: obj firstPlayer: firstPlayer inCondition: inCo
 		].
 
 	] ifFalse: [
-		constant _ (aMessageNode arguments copyWith: receiver) inject: true into: [:s :t | s _ s and: [attributes getAttribute: #constant of: t]].
+		constant := (aMessageNode arguments copyWith: receiver) inject: true into: [:s :t | s := s and: [attributes getAttribute: #constant of: t]].
 		attributes setAttribute: #constant of: aMessageNode to: constant.
 	].
 

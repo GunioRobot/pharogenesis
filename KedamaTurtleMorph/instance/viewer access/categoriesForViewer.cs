@@ -3,7 +3,7 @@ categoriesForViewer
 	"^ super categoriesForViewer."
 
 	| aList |
-	aList _ OrderedCollection new.
+	aList := OrderedCollection new.
 	aList addAllFirstUnlessAlreadyPresent: (self class additionsToViewerCategories collect:
 				[:categorySpec | categorySpec first]).
 	^ aList

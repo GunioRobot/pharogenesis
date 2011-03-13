@@ -1,3 +1,3 @@
 totalSeconds
 
-	^ Time totalSeconds
+	^ self clock totalSeconds

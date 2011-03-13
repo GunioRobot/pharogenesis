@@ -1,7 +1,7 @@
 is: node before: element 
         | key |
         node ifNil: [^ false].
-        key _ node key.
+        key := node key.
         ^ sortBlock
                 ifNil: [key < element]
                 ifNotNil: [(self is: key equalTo: element) ifTrue: [^ false].

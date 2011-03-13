@@ -8,7 +8,7 @@ fileOutClass: extraClass andObject: theObject
 	self header; timeStamp.
 
 	extraClass ifNotNil: [
-		class _ extraClass.	"A specific class the user wants written"
+		class := extraClass.	"A specific class the user wants written"
 		class sharedPools size > 0 ifTrue:
 			[class shouldFileOutPools
 				ifTrue: [class fileOutSharedPoolsOn: self]].
@@ -17,6 +17,6 @@ fileOutClass: extraClass andObject: theObject
 	self binary.
 
 	"Append the object's raw data"
-	srefStream _ SmartRefStream on: self.
+	srefStream := SmartRefStream on: self.
 	srefStream nextPut: theObject.  "and all subobjects"
 	srefStream close.		"also closes me"

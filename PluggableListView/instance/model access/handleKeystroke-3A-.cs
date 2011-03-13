@@ -3,12 +3,12 @@ handleKeystroke: aChar
 
 	| args aSpecialKey |
 
-	aSpecialKey _ aChar asciiValue.
+	aSpecialKey := aChar asciiValue.
 	aSpecialKey < 32 ifTrue: [ self specialKeyPressed: aSpecialKey. ^nil ].
 	keystrokeActionSelector ifNil: [^ nil].
 
 	controller controlTerminate.
-	(args _ keystrokeActionSelector numArgs) = 1
+	(args := keystrokeActionSelector numArgs) = 1
 		ifTrue: [model perform: keystrokeActionSelector with: aChar.
 				^ controller controlInitialize].
 	args = 2

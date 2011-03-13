@@ -1,2 +1,2 @@
 lastCharacterExtentSetX: xVal
-	lastCharacterExtent := xVal @ lastCharacterExtent y
+	lastCharacterExtent _ xVal @ lastCharacterExtent y

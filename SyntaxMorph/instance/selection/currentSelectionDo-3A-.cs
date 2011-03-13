@@ -1,6 +1,6 @@
 currentSelectionDo: blockForSelection
 	| rootTile |
-	(rootTile _ self rootTile) isMethodNode ifFalse:
+	(rootTile := self rootTile) isMethodNode ifFalse:
 		 [^ blockForSelection value: nil value: nil value: nil].
 	rootTile valueOfProperty: #selectionSpec ifPresentDo:
 		[:selectionSpec | ^ blockForSelection

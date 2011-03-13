@@ -1,2 +1,2 @@
 frequency: aNumber
-	frequency _ aNumber
+	frequency := aNumber

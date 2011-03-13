@@ -19,8 +19,8 @@ convertAlignment
 	(upArrow notNil and:[upArrow owner == self "e.g., not converted"
 		and:[downArrow notNil and:[downArrow owner == self]]]) ifTrue:[
 			"where to insert the frame"
-			where _ (submorphs indexOf: upArrow) min: (submorphs indexOf: downArrow).
-			frame _ Morph new color: Color transparent.
+			where := (submorphs indexOf: upArrow) min: (submorphs indexOf: downArrow).
+			frame := Morph new color: Color transparent.
 			frame 
 				layoutPolicy: TableLayout new;
 				listDirection: #topToBottom;

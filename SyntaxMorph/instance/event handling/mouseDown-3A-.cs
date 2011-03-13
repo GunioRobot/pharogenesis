@@ -1,7 +1,7 @@
 mouseDown: evt 
 	| dup rootTile |
 	evt yellowButtonPressed ifTrue: [^ self showMenu: evt].
-	(rootTile _ self rootTile) isMethodNode ifTrue:
+	(rootTile := self rootTile) isMethodNode ifTrue:
 		[self currentSelectionDo:
 			[:innerMorph :mouseDownLoc :outerMorph |
 			(outerMorph notNil and: [self == innerMorph])
@@ -14,9 +14,9 @@ mouseDown: evt
 	"Out in the world -- treat as a unit"
 	rootTile isSticky ifTrue: [^ self].	"later may allow to be selected"
 	rootTile isPartsDonor 
-		ifTrue: [dup _ rootTile duplicate.
+		ifTrue: [dup := rootTile duplicate.
 				dup setProperty: #beScript toValue: true]
-		ifFalse: [dup _ rootTile].
+		ifFalse: [dup := rootTile].
 	evt hand attachMorph: dup.
 	Preferences tileTranslucentDrag
 		ifTrue: [^ dup lookTranslucent]

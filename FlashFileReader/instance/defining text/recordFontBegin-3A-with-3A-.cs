@@ -1,1 +1,0 @@
-recordFontBegin: fontId with: nGlyphs

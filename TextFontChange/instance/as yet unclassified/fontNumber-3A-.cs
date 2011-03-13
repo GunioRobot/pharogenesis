@@ -1,2 +1,2 @@
 fontNumber: int
-	fontNumber _ int
+	fontNumber := int

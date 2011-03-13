@@ -4,11 +4,11 @@ infoButtonFor: aScriptOrSlotSymbol
 	| aButton |
 	(self wantsRowMenuFor: aScriptOrSlotSymbol) ifFalse:
 		["Fill the space with sweet nothing, since there is no meaningful menu to offer"
-		aButton _ RectangleMorph new beTransparent extent: (17@20).
+		aButton := RectangleMorph new beTransparent extent: (17@20).
 		aButton borderWidth: 0.
 		^ aButton].
 
-	aButton _ IconicButton new labelGraphic: Cursor menu.
+	aButton := IconicButton new labelGraphic: Cursor menu.
 	aButton target: scriptedPlayer;
 		actionSelector: #infoFor:inViewer:;
 		arguments: (Array with:aScriptOrSlotSymbol with: self);

@@ -6,4 +6,4 @@ setColor: aColor
 	self normalizeColor:  (unNormalizedColor := Display depth > 1
 							ifTrue: [Color fromUser]
 							ifFalse: [aColor]).
-	tool _ previousTool
+	tool := previousTool

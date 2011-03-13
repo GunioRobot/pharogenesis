@@ -2,7 +2,7 @@ offerTilesMenuFor: aReceiver in: aLexiconModel
 	"Offer a menu of tiles for assignment and constants"
 
 	| menu |
-	menu _ MenuMorph new addTitle: 'Hand me a tile for...'.
+	menu := MenuMorph new addTitle: 'Hand me a tile for...'.
 	menu addLine.
 	menu add: '(accept method now)' target: aLexiconModel selector: #acceptTiles.
 	menu submorphs last color: Color red darker.

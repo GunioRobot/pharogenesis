@@ -3,7 +3,7 @@ copyWith: newElement
 	newElement at the last element."
 
 	| newIC |
-	newIC _ self species new: self size + 1.
+	newIC := self species new: self size + 1.
 	newIC 
 		replaceFrom: 1
 		to: self size

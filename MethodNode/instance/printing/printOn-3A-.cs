@@ -25,7 +25,7 @@ printOn: aStream
 			each keyword = #primitive:
 				ifFalse: [ aStream crtab: 1. each printOn: aStream ]
 				ifTrue: [
-					((each argumentAt: 1) between: 255 and: 519)
+					( (each argumentAt: 1) isNumber and: [(each argumentAt: 1) between: 255 and: 519])
 						ifFalse: [ aStream crtab: 1. self printPrimitiveOn: aStream ] ] ] ].
 	aStream crtab: 1.
 	^ block printStatementsOn: aStream indent: 0

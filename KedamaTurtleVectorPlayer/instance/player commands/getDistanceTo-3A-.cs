@@ -2,22 +2,22 @@ getDistanceTo: players
 
 	| p xArray yArray result pX pY xy |
 	players isCollection ifFalse: [
-		p _ players
+		p := players
 	].
-	xArray _ arrays at: 2.
-	yArray _ arrays at: 3.
-	result _ KedamaFloatArray new: self size.
+	xArray := arrays at: 2.
+	yArray := arrays at: 3.
+	result := KedamaFloatArray new: self size.
 	players isCollection ifTrue: [
-		pX _ KedamaFloatArray new: players size.
-		pY _ KedamaFloatArray new: players size.
+		pX := KedamaFloatArray new: players size.
+		pY := KedamaFloatArray new: players size.
 		1 to: players size do: [:i |
-			xy _ (players at: i) getXAndY.
+			xy := (players at: i) getXAndY.
 			pX at: i put: xy x.
 			pY at: i put: xy y.
 		].
 	] ifFalse: [
-		xy _ p getXAndY.
-		pX _ xy x.
-		pY _ xy y.
+		xy := p getXAndY.
+		pX := xy x.
+		pY := xy y.
 	].
 	^ self primGetDistanceToX: pX toY: pY xArray: xArray yArray: yArray resultInto: result.

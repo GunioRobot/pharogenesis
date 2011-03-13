@@ -1,7 +1,7 @@
 initialize
 	"StandardSystemController initialize"
 
-	ScheduledBlueButtonMenu _ SelectionMenu
+	ScheduledBlueButtonMenu := SelectionMenu
 		labels:
 'edit label
 choose color...
@@ -14,7 +14,7 @@ close'
 	lines: #(3 7)
 	selections: #(label chooseColor toggleTwoTone move reframe fullScreen collapse close).
 
-	VBorderCursor _ Cursor extent: 16@16 fromArray: #(
+	VBorderCursor := Cursor extent: 16@16 fromArray: #(
 		2r1010000000000000
 		2r1010000000000000
 		2r1010000000000000
@@ -32,7 +32,7 @@ close'
 		2r1010000000000000
 		2r1010000000000000)
 			offset: 0@0.
-	HBorderCursor _ Cursor extent: 16@16 fromArray: #(
+	HBorderCursor := Cursor extent: 16@16 fromArray: #(
 		2r1111111111111111
 		2r0000000000000000
 		2r1111111111111111

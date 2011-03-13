@@ -16,7 +16,7 @@ validateTheProjectName
 		^false
 	].
 	proposed = theProject name ifTrue: [^true].
-	(ChangeSorter changeSetNamed: proposed) ifNotNil: [
+	(ChangesOrganizer changeSetNamed: proposed) ifNotNil: [
 		Utilities inform: 'Sorry that name is already used' translated.
 		^false
 	].

@@ -6,10 +6,10 @@ printOn: aStream delimiter: delimString last: lastDelimString
 	Note: Feel free to improve the code to detect the last element."
 
 	| n sz |
-	n _ 1.
-	sz _ self size.
+	n := 1.
+	sz := self size.
 	self do: [:elem |
-		n _ n + 1.
+		n := n + 1.
 		aStream print: elem]
 	separatedBy: [
 		n = sz

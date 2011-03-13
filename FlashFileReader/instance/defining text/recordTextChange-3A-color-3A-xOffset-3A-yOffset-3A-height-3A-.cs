@@ -1,1 +1,0 @@
-recordTextChange: fontId color: color xOffset: xOffset yOffset: yOffset height: height

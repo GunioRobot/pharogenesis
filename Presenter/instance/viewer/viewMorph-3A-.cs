@@ -5,7 +5,7 @@ viewMorph: aMorph
 			[((aPalette := aMorph standardPalette) notNil and: [aPalette isInWorld]) 
 				ifTrue: [^aPalette viewMorph: aMorph]].
 	aPlayer := (topItem := aMorph topRendererOrSelf) assuredPlayer.
-	openViewers _ aPlayer allOpenViewers.
+	openViewers := aPlayer allOpenViewers.
 	aViewer := openViewers isEmpty ifFalse: [ openViewers first ] ifTrue: [ self nascentPartsViewer ].
 	self cacheSpecs: topItem.	"redo the spec cache once in a while"
 

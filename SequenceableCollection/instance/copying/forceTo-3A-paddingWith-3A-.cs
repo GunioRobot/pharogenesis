@@ -3,8 +3,8 @@ forceTo: length paddingWith: elem
 	if necessary with elem.  Note that this makes a copy."
 
 	| newCollection copyLen |
-	newCollection _ self species new: length.
-	copyLen _ self size min: length.
+	newCollection := self species new: length.
+	copyLen := self size min: length.
 	newCollection replaceFrom: 1 to: copyLen with: self startingAt: 1.
 	newCollection from: copyLen + 1 to: length put: elem.
 	^ newCollection

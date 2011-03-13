@@ -15,5 +15,5 @@ zapDefaultOnlyEntries
 		(newInst allDefaultValueSubtableAt: i) ifTrue: [newInst basicAt: i put: nil].
 	].
 
-	self becomeForward: newInst.
+	" this is not allowed in production: self becomeForward: newInst. "
 	^ newInst.

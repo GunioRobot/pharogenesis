@@ -1,7 +1,7 @@
 fileIntoNewChangeSet: fullFileName
 	"FileIn the contents of a gzipped file"
 	| zipped unzipped cs |
-	cs := Smalltalk at: #ChangeSorter ifAbsent: [ ^self ].
+	cs := Smalltalk at: #ChangesOrganizer ifAbsent: [ ^self ].
 	zipped := self on: (FileStream readOnlyFileNamed: fullFileName).
 	unzipped := MultiByteBinaryOrTextStream with: zipped contents asString.
 	unzipped reset.

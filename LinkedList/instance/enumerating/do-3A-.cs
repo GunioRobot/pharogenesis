@@ -1,7 +1,7 @@
 do: aBlock
 
 	| aLink |
-	aLink _ firstLink.
+	aLink := firstLink.
 	[aLink == nil] whileFalse:
 		[aBlock value: aLink.
-		 aLink _ aLink nextLink]
+		 aLink := aLink nextLink]

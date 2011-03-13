@@ -2,8 +2,8 @@ reportPlayersAndScripts
 	"Open a window which contains a report on players and their scripts"
 
 	| aList aString |
-	(aList _ self uniclassesAndCounts) ifEmpty:  [^ self inform: 'there are no scripted players' translated].
-	aString _ String streamContents:
+	(aList := self uniclassesAndCounts) ifEmpty:  [^ self inform: 'there are no scripted players' translated].
+	aString := String streamContents:
 		[:aStream |
 			aList do:
 				[:aPair |

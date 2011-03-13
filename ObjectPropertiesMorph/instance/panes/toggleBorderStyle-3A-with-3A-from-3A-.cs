@@ -1,7 +1,7 @@
 toggleBorderStyle: provider with: arg1 from: arg2
 	| oldStyle newStyle |
-	oldStyle _ myTarget borderStyle.
-	newStyle _ provider borderStyle copy.
+	oldStyle := myTarget borderStyle.
+	newStyle := provider borderStyle copy.
 	oldStyle width = 0 
 		ifTrue:[newStyle width: 2]
 		ifFalse:[newStyle width: oldStyle width].

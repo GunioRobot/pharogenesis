@@ -6,7 +6,7 @@ objectForDataStream: refStrm
 	(TextConstants at: #forceFontWriting ifAbsent: [false]) ifTrue: [^ self].
 		"special case for saving the default fonts on the disk.  See collectionFromFileNamed:"
 
-	dp := DiskProxy global: #StrikeFontSet selector: #familyName:size:emphasized:
+	dp _ DiskProxy global: #StrikeFontSet selector: #familyName:size:emphasized:
 			args: (Array with: self familyName with: self pointSize
 					with: self emphasis).
 	refStrm replace: self with: dp.

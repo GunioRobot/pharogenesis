@@ -9,11 +9,11 @@ nextPut: anObject
 	<primitive: 66>
 	((collection class == ByteString) and: [
 		anObject isCharacter and:[anObject isOctetCharacter not]]) ifTrue: [
-			collection _ (WideString from: collection).
+			collection := (WideString from: collection).
 			^self nextPut: anObject.
 	].
 	position >= writeLimit
 		ifTrue: [^ self pastEndPut: anObject]
 		ifFalse: 
-			[position _ position + 1.
+			[position := position + 1.
 			^collection at: position put: anObject]

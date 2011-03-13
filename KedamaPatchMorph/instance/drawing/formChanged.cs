@@ -1,3 +1,3 @@
 formChanged
 
-	formChanged _ true.
+	formChanged := true.

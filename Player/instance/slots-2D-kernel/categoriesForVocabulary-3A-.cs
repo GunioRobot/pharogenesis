@@ -4,9 +4,9 @@ categoriesForVocabulary: aVocabulary
 	| aList |
 	self hasCostumeThatIsAWorld
 		ifTrue:
-			[aList _ self categoriesForWorld]
+			[aList := self categoriesForWorld]
 		ifFalse:
-			[aList _ OrderedCollection new.
+			[aList := OrderedCollection new.
 			self slotNames ifNotEmpty:
 				[aList add: ScriptingSystem nameForInstanceVariablesCategory].
 			aList addAll: costume categoriesForViewer].

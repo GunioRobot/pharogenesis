@@ -1,0 +1,1 @@
+UMProtocolVersion class instanceVariableNames: ''

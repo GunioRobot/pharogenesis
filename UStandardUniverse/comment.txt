@@ -1,0 +1,1 @@
+A universe that looks to one single server for authoritative information.

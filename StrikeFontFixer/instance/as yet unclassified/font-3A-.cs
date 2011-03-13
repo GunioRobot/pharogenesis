@@ -1,4 +1,4 @@
 font: aStrikeFont
 
-	strikeFont := aStrikeFont.
+	strikeFont _ aStrikeFont.
 	self forms.

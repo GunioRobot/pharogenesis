@@ -1,3 +1,3 @@
 uncacheBits
-	windowBits _ nil.
-	bitsValid _ false.
+	windowBits := nil.
+	bitsValid := false.

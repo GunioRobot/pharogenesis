@@ -5,9 +5,9 @@ release
 	Subclasses should include 'super release.' when redefining release."
 
 	model removeDependent: self.
-	model _ nil.
+	model := nil.
 	controller release.
-	controller _ nil.
+	controller := nil.
 	subViews ~~ nil ifTrue: [subViews do: [:aView | aView release]].
-	subViews _ nil.
-	superView _ nil
+	subViews := nil.
+	superView := nil

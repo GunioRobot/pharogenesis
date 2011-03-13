@@ -1,1 +1,0 @@
-OBOrganizationDefinition class instanceVariableNames: ''

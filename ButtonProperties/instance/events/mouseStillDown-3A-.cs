@@ -4,6 +4,6 @@ mouseStillDown: evt
 	nextTimeToFire ifNil: [^self].
 	nextTimeToFire <= Time millisecondClockValue ifTrue: [
 		self doButtonAction: evt.
-		nextTimeToFire _ Time millisecondClockValue + self delayBetweenFirings.
+		nextTimeToFire := Time millisecondClockValue + self delayBetweenFirings.
 		^self
 	].

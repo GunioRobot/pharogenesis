@@ -1,0 +1,2 @@
+anyPackageSelected
+	^ selectedPackage notNil

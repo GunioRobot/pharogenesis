@@ -1,2 +1,2 @@
 terminateDuringSelect: trueOrFalse
-	terminateDuringSelect _ trueOrFalse
+	terminateDuringSelect := trueOrFalse

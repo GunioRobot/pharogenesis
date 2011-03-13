@@ -24,7 +24,7 @@ checkForMoreRecentUpdateThanChangeSet: updateNumberChangeSet pseudoClass: pseudo
 	(self class verboseConflicts and: [classOrMeta includesSelector: selector])
 		ifTrue: [self class logCr; log: '...checking ', classOrMeta asString, '>>', selector asString].
 
-	allChangeSets _ ChangeSorter allChangeSets.
+	allChangeSets _ ChangesOrganizer allChangeSets.
 	moreRecentChangeSets _ allChangeSets
 				copyFrom: (allChangeSets indexOf: updateNumberChangeSet)
 				to: (allChangeSets size).

@@ -3,5 +3,5 @@ open
 	be displayed. Make it the active view."
 
 	view resizeInitially.
-	status _ #open.
+	status := #open.
 	ScheduledControllers scheduleActive: self

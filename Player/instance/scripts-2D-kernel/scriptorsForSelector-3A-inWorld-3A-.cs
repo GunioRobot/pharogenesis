@@ -3,6 +3,6 @@ scriptorsForSelector: aSelector inWorld: aWorld
 
 	| scriptors |
 	aWorld ifNil: [^ OrderedCollection new].
-	scriptors _ (aWorld allMorphs select:
+	scriptors := (aWorld allMorphs select:
 		[:m | (((m isKindOf: ScriptEditorMorph) and: [m playerScripted class == self class]) and: [m scriptName == aSelector])] thenCollect: [:m | m topEditor]) asSet.
 	^ scriptors asArray

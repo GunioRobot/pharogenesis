@@ -1,4 +1,4 @@
 showingOnlyTopControls
 	"Answer whether the receiver is currently showing only the top controls"
  
-	^ showingOnlyTopControls ifNil: [showingOnlyTopControls _ true]
+	^ showingOnlyTopControls ifNil: [showingOnlyTopControls := true]

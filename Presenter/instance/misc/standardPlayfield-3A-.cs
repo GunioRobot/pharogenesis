@@ -1,2 +1,2 @@
 standardPlayfield: aPlayfield
-	standardPlayfield _ aPlayfield
+	standardPlayfield := aPlayfield

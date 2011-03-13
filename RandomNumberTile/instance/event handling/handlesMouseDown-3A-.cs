@@ -3,7 +3,7 @@ handlesMouseDown: evt
 	| aPoint |
 
 	self inPartsBin ifTrue: [^false].
-	aPoint _ evt cursorPoint.
+	aPoint := evt cursorPoint.
 
 	"This might actually be a suitable test for the superclass, but I'll do it here to minimize the downside"
 

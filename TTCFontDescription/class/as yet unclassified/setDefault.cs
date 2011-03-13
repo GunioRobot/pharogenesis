@@ -3,6 +3,6 @@ setDefault
 	self setDefault
 "
 
-	TTCDefault := TTCFontReader readFrom: (FileStream readOnlyFileNamed: 'C:\WINDOWS\Fonts\msgothic.ttc').
+	TTCDefault _ TTCFontReader readFrom: (FileStream readOnlyFileNamed: 'C:\WINDOWS\Fonts\msgothic.ttc').
 	self clearDescriptions.
 

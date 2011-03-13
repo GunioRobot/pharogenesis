@@ -3,8 +3,8 @@ changeTool: aCharacter
 	corresponding to aCharacter. Typically sent from a Switch in a 
 	FormMenuView."
 
-	previousTool _ tool.
-	tool _ self selectTool: aCharacter.
+	previousTool := tool.
+	tool := self selectTool: aCharacter.
 	(#(singleCopy repeatCopy line curve block) includes: tool)
 		ifFalse:
 			[self perform: tool]

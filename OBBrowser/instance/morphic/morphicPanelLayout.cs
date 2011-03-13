@@ -1,2 +1,0 @@
-morphicPanelLayout
-	^ OBMorphicPanelLayout for: panels

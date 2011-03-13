@@ -5,12 +5,12 @@ fixCollisionsFrom: index
 
 	| length oldIndex newIndex element |
 
-	oldIndex _ index.
-	length _ array size.
+	oldIndex := index.
+	length := array size.
 	[oldIndex = length
-			ifTrue: [oldIndex _ 1]
-			ifFalse: [oldIndex _ oldIndex + 1].
-	(element _ self keyAt: oldIndex) == nil]
+			ifTrue: [oldIndex := 1]
+			ifFalse: [oldIndex := oldIndex + 1].
+	(element := self keyAt: oldIndex) == nil]
 		whileFalse: 
-			[newIndex _ self findElementOrNil: element.
+			[newIndex := self findElementOrNil: element.
 			oldIndex = newIndex ifFalse: [self swap: oldIndex with: newIndex]]

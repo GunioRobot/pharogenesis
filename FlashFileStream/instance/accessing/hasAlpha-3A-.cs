@@ -1,2 +1,0 @@
-hasAlpha: aBoolean
-	hasAlpha := aBoolean

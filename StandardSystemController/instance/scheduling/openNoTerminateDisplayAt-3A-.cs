@@ -4,5 +4,5 @@ openNoTerminateDisplayAt: aPoint
 	currently active process."
 
 	view resizeMinimumCenteredAt: aPoint.
-	status _ #open.
+	status := #open.
 	ScheduledControllers scheduleActiveNoTerminate: self

@@ -1,0 +1,3 @@
+A client for talking to a universe server.
+
+The universe must be a UStandardUniverse.  The client will track update the universe automatically as messages come in.

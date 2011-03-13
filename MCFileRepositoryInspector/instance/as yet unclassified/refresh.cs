@@ -10,6 +10,7 @@ refresh
 					with: ((name copyAfterLast: $-) copyUpTo: $.)				"user"
 					with: ((name copyAfterLast: $-) copyAfter: $.) asInteger	"version"
 					with: each]].
+	versions := versions select: [:each | (each at: 3) isNumber].
 	newer := Set new.
 	inherited := Set new.
 	loaded := Set new.

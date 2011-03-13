@@ -4,7 +4,7 @@ sproutNewScriptor
 	| newScriptor |
 
 	self actualObject assureUniClass.
-	newScriptor _ self actualObject newScriptorAround:
+	newScriptor := self actualObject newScriptorAround:
 		((self ownerThatIsA: Viewer orA: ScriptEditorMorph)
 			ifNotNil:
 				[self veryDeepCopy]

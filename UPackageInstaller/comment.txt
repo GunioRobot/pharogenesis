@@ -1,0 +1,1 @@
+A simply hierarchy for loading Squeak content in various formats.

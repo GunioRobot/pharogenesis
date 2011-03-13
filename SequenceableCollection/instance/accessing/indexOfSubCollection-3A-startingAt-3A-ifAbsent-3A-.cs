@@ -6,13 +6,13 @@ indexOfSubCollection: sub startingAt: start ifAbsent: exceptionBlock
 	evaluating argument, exceptionBlock."
 	| first index |
 	sub isEmpty ifTrue: [^ exceptionBlock value].
-	first _ sub first.
+	first := sub first.
 	start to: self size - sub size + 1 do:
 		[:startIndex |
 		(self at: startIndex) = first ifTrue:
-			[index _ 1.
+			[index := 1.
 			[(self at: startIndex+index-1) = (sub at: index)]
 				whileTrue:
 				[index = sub size ifTrue: [^startIndex].
-				index _ index+1]]].
+				index := index+1]]].
 	^ exceptionBlock value

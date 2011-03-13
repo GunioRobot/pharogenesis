@@ -5,4 +5,4 @@ viewContentsInWorkspace
 	aString := (aFileStream := directory readOnlyFileNamed: self fullName) setConverterForCode contentsOfEntireFile.
 	aName := aFileStream localName.
 	aFileStream close.
-	UIManager default edit: aString label: 'Workspace from ', aName
+	UIManager default edit: aString withSqueakLineEndings label: 'Workspace from ', aName

@@ -1,6 +1,6 @@
 wantsRolloverIndicator: aBoolean
 
-	wantsRolloverIndicator _ aBoolean.
+	wantsRolloverIndicator := aBoolean.
 	wantsRolloverIndicator ifTrue: [
 		self setEventHandlers: true.
 	].

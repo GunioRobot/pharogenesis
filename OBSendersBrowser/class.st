@@ -1,1 +1,0 @@
-OBSendersBrowser class instanceVariableNames: ''

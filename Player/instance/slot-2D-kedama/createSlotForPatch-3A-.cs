@@ -4,7 +4,7 @@ createSlotForPatch: aPatchMorph
 	| itsName openViewers |
 	self costume isInWorld ifFalse: [ ^self ].
 
-	itsName _ aPatchMorph externalName asSymbol.
+	itsName := aPatchMorph externalName asSymbol.
 
 	self slotInfo
 		at: itsName

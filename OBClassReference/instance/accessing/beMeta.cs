@@ -1,2 +1,0 @@
-beMeta
-	isMeta := true

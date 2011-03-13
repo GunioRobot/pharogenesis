@@ -3,8 +3,8 @@ reconstituteList
 
 	| newMembers |
 	"First determine newMembers and check if they have not changed..."
-	newMembers := ChangeSorter allChangeSets select:
-		[:aChangeSet | ChangeSorter perform: membershipSelector with: aChangeSet].
+	newMembers := ChangesOrganizer allChangeSets select:
+		[:aChangeSet | ChangesOrganizer perform: membershipSelector with: aChangeSet].
 	(newMembers collect: [:cs | cs name]) = keysInOrder ifTrue: [^ self  "all current"].
 
 	"Things have changed.  Need to recompute the whole category"

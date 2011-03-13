@@ -1,4 +1,4 @@
 selectedMessageName
 
 	currentSelector ifNil: [^ nil].
-	^ currentSelector asSymbol
+	^ (self withoutItemAnnotation: currentSelector) asSymbol

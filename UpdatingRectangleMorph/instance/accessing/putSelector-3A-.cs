@@ -1,2 +1,2 @@
 putSelector: aSymbol
-	putSelector _ aSymbol
+	putSelector := aSymbol

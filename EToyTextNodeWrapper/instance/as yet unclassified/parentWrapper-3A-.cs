@@ -1,3 +1,3 @@
 parentWrapper: anotherWrapper
 
-	parentWrapper _ anotherWrapper
+	parentWrapper := anotherWrapper

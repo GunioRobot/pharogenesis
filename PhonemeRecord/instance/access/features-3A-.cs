@@ -1,3 +1,0 @@
-features: anObject
-
-	features := anObject.

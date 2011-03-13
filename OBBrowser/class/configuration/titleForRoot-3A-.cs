@@ -1,2 +1,0 @@
-titleForRoot: aNode
-	^ self title

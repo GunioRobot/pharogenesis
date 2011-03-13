@@ -1,6 +1,6 @@
 show: fillInView
 	| savedArea |
-	savedArea _ Form fromDisplay: fillInView displayBox.
+	savedArea := Form fromDisplay: fillInView displayBox.
 	fillInView display.
 	contents isEmpty
 		ifFalse: [fillInView lastSubView controller selectFrom: 1 to: contents size].

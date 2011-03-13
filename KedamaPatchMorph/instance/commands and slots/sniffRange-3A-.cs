@@ -1,3 +1,3 @@
 sniffRange: aNumber
 
-	sniffRange _ aNumber.
+	sniffRange := aNumber.

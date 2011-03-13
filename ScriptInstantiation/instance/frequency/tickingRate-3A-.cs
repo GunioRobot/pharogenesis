@@ -1,4 +1,4 @@
 tickingRate: aNumber
 	"See the comment in #tickingRate"
-	tickingRate _ aNumber.
+	tickingRate := aNumber.
 	self updateAllStatusMorphs.

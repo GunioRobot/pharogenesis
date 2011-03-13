@@ -1,2 +1,0 @@
-segments: aDictionary
-	segments := aDictionary

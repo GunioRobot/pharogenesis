@@ -2,12 +2,12 @@ addSecondLineOfControls
 	"Add the second line of controls"
 
 	| aRow outerButton aButton worldToUse |
-	aRow _ AlignmentMorph newRow listCentering: #center; color: Color transparent.
-	outerButton _ AlignmentMorph newRow.
+	aRow := AlignmentMorph newRow listCentering: #center; color: Color transparent.
+	outerButton := AlignmentMorph newRow.
 	outerButton wrapCentering: #center; cellPositioning: #leftCenter.
 	outerButton color:  Color transparent.
 	outerButton hResizing: #shrinkWrap; vResizing: #shrinkWrap.
-	outerButton addMorph: (aButton _ UpdatingThreePhaseButtonMorph checkBox).
+	outerButton addMorph: (aButton := UpdatingThreePhaseButtonMorph checkBox).
 	aButton
 		target: self;
 		actionSelector: #toggleWhetherShowingOnlyActiveScripts;
@@ -22,11 +22,11 @@ addSecondLineOfControls
 
 	aRow addTransparentSpacerOfSize: 20@0.
 
-	outerButton _ AlignmentMorph newRow.
+	outerButton := AlignmentMorph newRow.
 	outerButton wrapCentering: #center; cellPositioning: #leftCenter.
 	outerButton color:  Color transparent.
 	outerButton hResizing: #shrinkWrap; vResizing: #shrinkWrap.
-	outerButton addMorph: (aButton _ UpdatingThreePhaseButtonMorph checkBox).
+	outerButton addMorph: (aButton := UpdatingThreePhaseButtonMorph checkBox).
 	aButton
 		target: self;
 		actionSelector: #toggleWhetherShowingAllInstances;
@@ -37,6 +37,6 @@ addSecondLineOfControls
 	aRow addMorphBack: outerButton.
 
 	self addMorphBack: aRow.
-	worldToUse _ self isInWorld ifTrue: [self world] ifFalse: [ActiveWorld].
+	worldToUse := self isInWorld ifTrue: [self world] ifFalse: [ActiveWorld].
 	worldToUse presenter reinvigorateAllScriptsTool: self.
 	self layoutChanged.

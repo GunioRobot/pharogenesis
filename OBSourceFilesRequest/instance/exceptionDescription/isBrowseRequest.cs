@@ -1,2 +1,0 @@
-isBrowseRequest
-	^ false

@@ -1,0 +1,1 @@
+DTDExternalEntityDeclaration class instanceVariableNames: ''

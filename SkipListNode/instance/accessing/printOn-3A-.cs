@@ -5,9 +5,9 @@ printOn: aStream
         super printOn: aStream.
         aStream
                 nextPutAll: ']-->('.
-        first _ true.
+        first := true.
         pointers do: [:node |
-                first ifTrue: [first _ false] ifFalse: [aStream space].
+                first ifTrue: [first := false] ifFalse: [aStream space].
                 node ifNil: [aStream nextPutAll: '*'] 
                 ifNotNil: [node printOn: aStream]].
         aStream nextPut: $)

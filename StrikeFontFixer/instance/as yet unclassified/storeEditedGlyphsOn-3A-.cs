@@ -2,8 +2,8 @@ storeEditedGlyphsOn: aStream
 
 	| n |
 	NoFontTable do: [:i |
-		n := strikeFont name.
-		(n beginsWith: 'NewYork') ifTrue: [n := 'NewYork'].
+		n _ strikeFont name.
+		(n beginsWith: 'NewYork') ifTrue: [n _ 'NewYork'].
 		aStream nextPutAll: '((StrikeFont familyName: ''', n, ''' size: ',
 			strikeFont height asString, ')'.
 		aStream nextPutAll: ' characterFormAt: '.

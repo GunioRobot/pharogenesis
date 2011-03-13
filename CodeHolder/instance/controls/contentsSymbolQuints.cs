@@ -8,7 +8,7 @@ contentsSymbolQuints
 	A hypen indicates a need for a seperator line in a menu of such choices"
 
 	^ #(
-(source			togglePlainSource 			showingPlainSourceString	'source'		'the textual source code as writen')
+(source			togglePlainSource 			showingPlainSourceString	'source'		'the textual source code as written')
 (documentation	toggleShowDocumentation	showingDocumentationString	'documentation'		'the first comment in the method')
 -
 (prettyPrint		togglePrettyPrint 			prettyPrintString			'prettyPrint'			'the method source presented in a standard text format')

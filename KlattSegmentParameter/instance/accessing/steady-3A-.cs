@@ -1,2 +1,0 @@
-steady: aNumber
-	steady := aNumber

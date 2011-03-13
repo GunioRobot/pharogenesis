@@ -1,3 +1,3 @@
 eToyUserListUrl: aString
-	eToyUserListUrl _ aString.
-	eToyUserList _ nil.
+	eToyUserListUrl := aString.
+	eToyUserList := nil.

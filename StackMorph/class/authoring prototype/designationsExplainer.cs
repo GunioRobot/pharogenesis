@@ -2,7 +2,7 @@ designationsExplainer
 	"Answer a morph that contains designation explanation"
 
 	| aMorph aSwatch aTextMorph |
-	aMorph _ AlignmentMorph newColumn color: Color black; layoutInset: 1.
+	aMorph := AlignmentMorph newColumn color: Color black; layoutInset: 1.
 	#((green		
 'Shared items on
 Background.
@@ -20,10 +20,10 @@ unique
 to this card')) do:
 
 	[:aPair |
-		aSwatch _ AlignmentMorph new extent: 132 @80; color: (Color perform: aPair first); lock.
+		aSwatch := AlignmentMorph new extent: 132 @80; color: (Color perform: aPair first); lock.
 		aSwatch hResizing: #rigid; vResizing: #rigid; layoutInset: 0.
 		aSwatch borderColor: Color black.
-		aTextMorph _ TextMorph new string: aPair second fontName: Preferences standardEToysFont familyName size: 18.
+		aTextMorph := TextMorph new string: aPair second fontName: Preferences standardEToysFont familyName size: 18.
 		aTextMorph width: 130.
 		aTextMorph centered.
 		aSwatch addMorphBack: aTextMorph.

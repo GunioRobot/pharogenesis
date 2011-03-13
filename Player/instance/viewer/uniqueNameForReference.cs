@@ -5,7 +5,7 @@ uniqueNameForReference
 	self flag: #deferred.  "The once-and-maybe-future ObjectRepresentativeMorph scheme is for the moment disenfranchised"
 
 	"(costume isKindOf: ObjectRepresentativeMorph) ifTrue:
-		[((itsReferent _ costume objectRepresented) isKindOf: Class)
+		[((itsReferent := costume objectRepresented) isKindOf: Class)
 			ifTrue:
 				[^ itsReferent name].
 		itsReferent == Smalltalk ifTrue: [^ #Smalltalk].

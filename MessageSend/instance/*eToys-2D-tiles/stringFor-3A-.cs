@@ -8,10 +8,10 @@ stringFor: anObject
 	anObject class == BlockContext ifTrue: [^ '[''do nothing'']'].	"default block"
 		"Real blocks need to construct tiles in a different way"
 	anObject class isMeta ifTrue: ["a class" ^ anObject name].
-	generic _ anObject knownName.	"may be nil or 'Ellipse' "
-	aName _ anObject uniqueNameForReference.
+	generic := anObject knownName.	"may be nil or 'Ellipse' "
+	aName := anObject uniqueNameForReference.
 	generic ifNil:
 		[(anObject respondsTo: #renameTo:) 
 			ifTrue: [anObject renameTo: aName]
-			ifFalse: [aName _ anObject storeString]].	"for Fraction, LargeInt, etc"
+			ifFalse: [aName := anObject storeString]].	"for Fraction, LargeInt, etc"
 	^ aName

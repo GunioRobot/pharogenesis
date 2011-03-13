@@ -6,7 +6,7 @@ readKeyboard
 	Answer true if the menu should be closed and false otherwise."
 
 	| ch labels occurences |
-	ch _ Sensor keyboard asciiValue.
+	ch := Sensor keyboard asciiValue.
 	(ch = 13 or: [ch = 32]) ifTrue: [^ true].
 	ch = 27 ifTrue: [self setSelection: 0. ^ true].
 	ch = 30
@@ -15,12 +15,12 @@ readKeyboard
 				ifTrue: [self nItems]
 				ifFalse: [selection - 1])].
 	ch = 31 ifTrue: [self setSelection: selection \\ self nItems + 1].
-	ch _ ch asCharacter asLowercase.
-	labels _ labelString findTokens: Character cr asString.
-	occurences _ 0.
+	ch := ch asCharacter asLowercase.
+	labels := labelString findTokens: Character cr asString.
+	occurences := 0.
 	1 + selection to: selection + labels size do:
 		[:index |
-		| i | i _ index - 1 \\ labels size + 1.
+		| i | i := index - 1 \\ labels size + 1.
 		(labels at: i) withBlanksTrimmed first asLowercase = ch
-			ifTrue: [(occurences _ occurences + 1) = 1 ifTrue: [self setSelection: i]]].
+			ifTrue: [(occurences := occurences + 1) = 1 ifTrue: [self setSelection: i]]].
 	^ occurences = 1

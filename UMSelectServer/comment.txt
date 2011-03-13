@@ -1,0 +1,1 @@
+A request to a multi-server, to select the server for a specific universe.  Subsequent messages should be directed to the selected universe instead of to the specific universes.

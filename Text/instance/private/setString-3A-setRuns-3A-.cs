@@ -1,4 +1,4 @@
 setString: aString setRuns: anArray
 
-	string _ aString.
-	runs _ anArray
+	string := aString.
+	runs := anArray

@@ -8,6 +8,6 @@ unlock
 	the View, but can also be done explicitly if desired."
 
 	self isUnlocked ifTrue: [^self].
-	displayTransformation _ nil.
-	insetDisplayBox _ nil.
+	displayTransformation := nil.
+	insetDisplayBox := nil.
 	subViews do: [:aSubView | aSubView unlock]

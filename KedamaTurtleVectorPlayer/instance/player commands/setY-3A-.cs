@@ -11,4 +11,4 @@ setY: v
 	] ifTrue: [
 		self groupSetY: v.
 	].
-	turtleMapValid _ false.
+	turtleMapValid := false.

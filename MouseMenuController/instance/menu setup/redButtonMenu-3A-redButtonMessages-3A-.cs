@@ -4,5 +4,5 @@ redButtonMenu: aSystemMenu redButtonMessages: anArray
 	should be sent are listed in the array, anArray."
 
 	redButtonMenu release.
-	redButtonMenu _ aSystemMenu.
-	redButtonMessages _ anArray
+	redButtonMenu := aSystemMenu.
+	redButtonMessages := anArray

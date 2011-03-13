@@ -4,8 +4,8 @@ grabPlayerIn: aWorld
 	| aMorph newPosition |
 	self costume == aWorld ifTrue: [^ self].
 	ActiveHand releaseMouseFocus.
-	(aMorph _ self costume) visible: true.
-	newPosition _ ActiveHand position - (aMorph extent // 2).
+	(aMorph := self costume) visible: true.
+	newPosition := ActiveHand position - (aMorph extent // 2).
 	aMorph isInWorld
 		ifTrue:
 			[aMorph goHome.

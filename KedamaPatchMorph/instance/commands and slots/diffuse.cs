@@ -1,9 +1,9 @@
 diffuse
 
 	| dim newV |
-	dim _ form extent.
+	dim := form extent.
 	form bits class == ByteArray ifTrue: [form unhibernate].
-	newV _ Bitmap new: form bits size.
+	newV := Bitmap new: form bits size.
 	self primDiffuseFrom: form bits
 		to: newV
 		width: dim x

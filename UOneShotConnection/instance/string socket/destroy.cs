@@ -1,0 +1,2 @@
+destroy
+	hasBeenWritten _ true

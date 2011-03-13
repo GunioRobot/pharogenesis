@@ -1,0 +1,2 @@
+defaultCategory
+	^ UPackageCategory withComponents: #('Uncategorized' )

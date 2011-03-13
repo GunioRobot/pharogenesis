@@ -3,5 +3,5 @@ initialize
 	initialize' when redefining this message to insure proper initialization."
 
 	self resetSubViews.
-	transformation _ WindowingTransformation identity.
+	transformation := WindowingTransformation identity.
 	self borderWidth: 0

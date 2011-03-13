@@ -2,7 +2,7 @@ exampleBackgroundField
 	"Answer a background field for a parts bin"
 
 	| aMorph |
-	aMorph _ TextMorph authoringPrototype.
+	aMorph := TextMorph authoringPrototype.
 	aMorph contents: 'background field' asText allBold.
 	aMorph setProperty: #shared toValue: true.
 	aMorph setNameTo: 'field1'.

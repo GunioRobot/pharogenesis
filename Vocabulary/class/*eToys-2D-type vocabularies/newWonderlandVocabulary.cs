@@ -3,7 +3,7 @@ newWonderlandVocabulary
 
 	| aVocabulary  |
 	"Vocabulary newWonderlandVocabulary"
-	aVocabulary _ Vocabulary new vocabularyName: #Wonderland.
+	aVocabulary := Vocabulary new vocabularyName: #Wonderland.
 	aVocabulary documentation: 'A simple vocabulary for scripting Alice objects'.
 	aVocabulary initializeFromTable:  #(
 		(color color: () Color (basic color) 'The color of the object' unused updating)

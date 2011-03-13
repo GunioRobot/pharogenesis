@@ -1,5 +1,5 @@
 flashCursor: aBoolean
 
-	FlashCursor _ aBoolean
+	FlashCursor := aBoolean
 
 	"FormEditor flashCursor: true"

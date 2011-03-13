@@ -10,9 +10,9 @@ placeEmbeddedObject: anchoredMorph
 	anchoredMorph isMorph ifTrue: [
 		anchoredMorph position: ((destX - anchoredMorph width)@lineY) - morphicOffset
 	] ifFalse: [
-		destY := lineY.
-		baselineY := lineY + anchoredMorph height..
-		runX := destX.
+		destY _ lineY.
+		baselineY _ lineY + anchoredMorph height..
+		runX _ destX.
 		anchoredMorph 
 			displayOn: bitBlt destForm 
 			at: destX - anchoredMorph width @ destY

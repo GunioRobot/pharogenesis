@@ -3,9 +3,9 @@ noteDeletionOf: aMorph fromWorld: aWorld
 	"This may be too aggressive because deletion of a morph may not really mean deletion of its associated player -- in light of hoped-for multiple viewing"
 
 	| viewers scriptors viewerFlaps |
-	viewers _ OrderedCollection new.
-	viewerFlaps _ OrderedCollection new.
-	scriptors _ OrderedCollection new.
+	viewers := OrderedCollection new.
+	viewerFlaps := OrderedCollection new.
+	scriptors := OrderedCollection new.
 	aWorld allMorphs do:
 		[:m | m isAViewer ifTrue: [viewers add: m].
 			((m isKindOf: ViewerFlapTab) and: [m scriptedPlayer == self])

@@ -3,7 +3,7 @@ exampleBackgroundSketch
 
 
 	| aSketch |
-	aSketch _ self newSticky form: (ScriptingSystem formAtKey: #squeakyMouse).
+	aSketch := self newSticky form: (ScriptingSystem formAtKey: #squeakyMouse).
 	aSketch setProperty: #shared toValue: true.
 	aSketch setProperty: #holdsSeparateDataForEachInstance toValue: true.
 	^ aSketch

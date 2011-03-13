@@ -3,8 +3,8 @@ showTiles: aBoolean
 
 	aBoolean
 		ifTrue:
-			[contentsSymbol _ #tiles]
+			[contentsSymbol := #tiles]
 		ifFalse:
-			[contentsSymbol == #tiles ifTrue: [contentsSymbol _ #source]].
+			[contentsSymbol == #tiles ifTrue: [contentsSymbol := #source]].
 	self setContentsToForceRefetch.
 	self changed: #contents

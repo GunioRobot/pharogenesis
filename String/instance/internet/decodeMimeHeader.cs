@@ -10,21 +10,21 @@ decodeMimeHeader
 	'=?ISO-2022-JP?B?U1dJS0lQT1AvGyRCPUJDKyVpJXMlQRsoQi8=?= =?ISO-2022-JP?B?GyRCJVElRiUjJSobKEIoUGF0aW8p?=' decodeMimeHeader.
 "
 	| input output temp charset decoder encodedStream encoding pos |
-	input _ ReadStream on: self.
-	output _ WriteStream on: String new.
+	input := ReadStream on: self.
+	output := WriteStream on: String new.
 	[output
 		nextPutAll: (input upTo: $=).
 	"ASCII Text"
 	input atEnd]
-		whileFalse: [(temp _ input next) = $?
-				ifTrue: [charset _ input upTo: $?.
-					encoding _ (input upTo: $?) asUppercase.
-					temp _ input upTo: $?.
+		whileFalse: [(temp := input next) = $?
+				ifTrue: [charset := input upTo: $?.
+					encoding := (input upTo: $?) asUppercase.
+					temp := input upTo: $?.
 					input next.
 					"Skip final ="
-					(charset isNil or: [charset size = 0]) ifTrue: [charset _ 'LATIN-1'].
-					encodedStream _ MultiByteBinaryOrTextStream on: String new encoding: charset.
-					decoder _ encoding = 'B'
+					(charset isNil or: [charset size = 0]) ifTrue: [charset := 'LATIN-1'].
+					encodedStream := MultiByteBinaryOrTextStream on: String new encoding: charset.
+					decoder := encoding = 'B'
 								ifTrue: [Base64MimeConverter new]
 								ifFalse: [RFC2047MimeConverter new].
 					decoder
@@ -32,7 +32,7 @@ decodeMimeHeader
 						 dataStream: encodedStream;
 						 mimeDecode.
 					output nextPutAll: encodedStream reset contents.
-					pos _ input position.
+					pos := input position.
 					input skipSeparators.
 					"Delete spaces if followed by ="
 					input peek = $=

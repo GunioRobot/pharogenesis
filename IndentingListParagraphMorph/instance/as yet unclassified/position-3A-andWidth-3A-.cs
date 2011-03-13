@@ -2,7 +2,7 @@ position: p andWidth: w
 
 	| widthChanged |
 
-	widthChanged _ self width ~= w.
+	widthChanged := self width ~= w.
 	self position: p.
 	self width: w.
 	submorphs isEmpty ifTrue: [^self height].

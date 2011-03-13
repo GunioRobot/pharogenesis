@@ -1,7 +1,7 @@
 objectRepresented: anObject
 	"Set the receiver's representee.  This clears out any preexisting state in the receiver"
 
-	objectRepresented _ anObject.
+	objectRepresented := anObject.
 	self removeAllMorphs.
 	self hResizing: #shrinkWrap.  
 	self vResizing: #shrinkWrap.

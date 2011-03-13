@@ -5,7 +5,7 @@ form
 	| aForm |
 	form == nil
 		ifTrue: 
-			[aForm _ Form extent: 1 @ 1.
+			[aForm := Form extent: 1 @ 1.
 			aForm fillBlack.
 			^aForm]
 		ifFalse: 

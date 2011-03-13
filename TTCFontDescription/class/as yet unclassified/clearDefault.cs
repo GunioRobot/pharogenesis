@@ -3,4 +3,4 @@ clearDefault
 	self clearDefault
 "
 
-	TTCDefault := nil.
+	TTCDefault _ nil.

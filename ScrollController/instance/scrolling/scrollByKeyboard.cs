@@ -1,6 +1,6 @@
 scrollByKeyboard
 	| keyEvent |
-	keyEvent _ sensor keyboardPeek.
+	keyEvent := sensor keyboardPeek.
 	keyEvent ifNil: [^ false].
 	(sensor controlKeyPressed or:[sensor commandKeyPressed]) ifFalse: [^ false].
 	keyEvent asciiValue = 30

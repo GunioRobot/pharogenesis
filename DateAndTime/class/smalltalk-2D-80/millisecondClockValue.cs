@@ -1,3 +1,3 @@
 millisecondClockValue
 
-	^ Time millisecondClockValue
+	^ self clock millisecondClockValue

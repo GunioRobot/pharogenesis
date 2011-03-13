@@ -1,4 +1,4 @@
 addSuffixArrow
 
-	suffixArrow _ ImageMorph new image: SuffixPicture.
+	suffixArrow := ImageMorph new image: SuffixPicture.
 	self addMorphBack: suffixArrow.

@@ -1,3 +1,3 @@
 initialize
 
-	charForms := Array new: 256.
+	charForms _ Array new: 256.

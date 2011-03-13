@@ -1,4 +1,4 @@
 centered
 
-	centered _ true.
+	centered := true.
 	self centerText

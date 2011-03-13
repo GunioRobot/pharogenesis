@@ -1,1 +1,0 @@
-OBButtonModel class instanceVariableNames: ''

@@ -1,4 +1,4 @@
 localOffset
 	"Answer the duration we are offset from UTC"
 
-	^ self localTimeZone offset
+	^ LocalOffset ifNil:[ LocalOffset := self localTimeZone offset ]

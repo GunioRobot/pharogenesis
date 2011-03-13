@@ -1,2 +1,2 @@
 setUp
-	para _ 'i i' asParagraph
+	para := 'i i' asParagraph

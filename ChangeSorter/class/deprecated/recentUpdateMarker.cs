@@ -1,0 +1,3 @@
+recentUpdateMarker
+
+	^ ChangesOrganizer recentUpdateMarker

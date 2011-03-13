@@ -1,2 +1,0 @@
-syncFlags
-	^syncFlags

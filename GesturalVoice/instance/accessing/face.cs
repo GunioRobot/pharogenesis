@@ -1,2 +1,0 @@
-face
-	^ self head face

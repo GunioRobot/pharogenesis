@@ -4,9 +4,9 @@ select: aBlock
 	evaluates to true."
 
 	| newCollection element |
-	newCollection _ self copyEmpty.
+	newCollection := self copyEmpty.
 	firstIndex to: lastIndex do:
 		[:index |
-		(aBlock value: (element _ array at: index))
+		(aBlock value: (element := array at: index))
 			ifTrue: [newCollection addLast: element]].
 	^ newCollection

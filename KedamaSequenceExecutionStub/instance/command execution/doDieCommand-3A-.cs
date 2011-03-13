@@ -1,7 +1,7 @@
 doDieCommand: aBlock
 
 	| ret |
-	ret _ self doExamplerCommand: aBlock.
+	ret := self doExamplerCommand: aBlock.
 	sequentialStub index: index.
 	aBlock value: sequentialStub.
 

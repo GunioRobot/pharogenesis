@@ -1,2 +1,0 @@
-bMul: aFixed
-	bMul := aFixed

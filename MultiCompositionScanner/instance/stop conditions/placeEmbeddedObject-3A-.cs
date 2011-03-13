@@ -7,9 +7,9 @@ placeEmbeddedObject: anchoredMorph
 		lastIndex < line first ifFalse:[
 			line stop: lastIndex-1.
 			^ false]].
-	descent := lineHeight - baseline.
-	lineHeight := lineHeight max: anchoredMorph height.
-	baseline := lineHeight - descent.
+	descent _ lineHeight - baseline.
+	lineHeight _ lineHeight max: anchoredMorph height.
+	baseline _ lineHeight - descent.
 	line stop: lastIndex.
 	presentationLine stop: lastIndex - numOfComposition.
 	^ true

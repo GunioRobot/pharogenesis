@@ -4,10 +4,10 @@ initWithContents: anObject prior: priorMorph forList: hostList indentLevel: newL
 	self width: hostList width.
 	complexContents withoutListWrapper firstDisplay ifTrue: [
 		complexContents withoutListWrapper firstDisplayedOnLevel: indentLevel.
-		isExpanded _ true.
+		isExpanded := true.
 	].
 	complexContents withoutListWrapper showInOpenedState ifTrue: [
-		isExpanded _ true.
+		isExpanded := true.
 	].
 	self addMorph: self repositionText.
 

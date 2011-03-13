@@ -30,7 +30,7 @@ rebuild
 			help: 'cancel changes made and close panel' translated.
 	}, self rebuildOptionalButtons.
 
-	thingsToRevert _ Dictionary new.
+	thingsToRevert := Dictionary new.
 	"thingsToRevert at: #fillStyle: put: myTarget fillStyle."
 	myTarget isSystemWindow ifTrue: [
 		thingsToRevert at: #setWindowColor: put: myTarget paneColorToUse

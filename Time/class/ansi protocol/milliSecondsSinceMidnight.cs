@@ -1,0 +1,3 @@
+milliSecondsSinceMidnight
+	
+^ DateAndTime milliSecondsSinceMidnight

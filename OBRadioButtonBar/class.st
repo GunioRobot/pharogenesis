@@ -1,1 +1,0 @@
-OBRadioButtonBar class instanceVariableNames: ''

@@ -1,3 +1,3 @@
 removeAllFromTurtleDisplayList
 
-	turtlesToDisplay _ #().
+	turtlesToDisplay := #().

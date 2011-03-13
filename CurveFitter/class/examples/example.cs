@@ -3,9 +3,9 @@ example
 	curve determined by the points will be displayed with a long black form."
 
 	| aCurveFitter aForm |  
-	aForm _ Form extent: 1@30.			"make a long thin Form for display "
+	aForm := Form extent: 1@30.			"make a long thin Form for display "
 	aForm fillBlack.							"turn it black"
-	aCurveFitter _ CurveFitter new.
+	aCurveFitter := CurveFitter new.
 	aCurveFitter form: aForm.						"set the form for display"
 				"collect three Points and show them on the dispaly"
 	aCurveFitter firstPoint: Sensor waitButton. Sensor waitNoButton.

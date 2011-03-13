@@ -1,2 +1,2 @@
 sortBlock: aBlock
-	sortBlock _ aBlock
+	sortBlock := aBlock

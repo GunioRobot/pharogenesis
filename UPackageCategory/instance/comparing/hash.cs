@@ -1,0 +1,2 @@
+hash
+	^components hash

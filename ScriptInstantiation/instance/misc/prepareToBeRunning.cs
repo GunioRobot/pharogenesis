@@ -1,2 +1,2 @@
 prepareToBeRunning
-	lastTick _ nil.
+	lastTick := nil.

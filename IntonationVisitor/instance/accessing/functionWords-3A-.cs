@@ -1,2 +1,0 @@
-functionWords: aCollection
-	functionWords := aCollection

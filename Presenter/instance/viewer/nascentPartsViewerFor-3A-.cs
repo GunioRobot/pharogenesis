@@ -3,12 +3,12 @@ nascentPartsViewerFor: aViewee
 
 	| aViewer aVocab |
 	(aViewee isKindOf: KedamaExamplerPlayer) ifTrue: [^ KedamaStandardViewer new].
-	aViewer _ StandardViewer new.
-	(aVocab _ aViewee vocabularyDemanded)
+	aViewer := StandardViewer new.
+	(aVocab := aViewee vocabularyDemanded)
 		ifNotNil:
 			[aViewer useVocabulary: aVocab]
 		ifNil:
-			[(aVocab _ associatedMorph currentVocabularyFor: aViewee) ifNotNil:
+			[(aVocab := associatedMorph currentVocabularyFor: aViewee) ifNotNil:
 				[aViewer useVocabulary: aVocab]].
 	
 	"If the viewee does not *demand* a special kind of Viewer, and if the project has not specified a preferred vocabulary, then the system defaults will kick in later"

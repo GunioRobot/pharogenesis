@@ -1,4 +1,4 @@
 clockPrecision
 	"One nanosecond precision"
 
-	^ Duration nanoSeconds: 1
+	^ Duration seconds: 0 nanoSeconds: 1

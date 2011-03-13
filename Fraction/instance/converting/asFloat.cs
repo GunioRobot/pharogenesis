@@ -33,13 +33,13 @@ asFloat
 	
 	hq > n
 		ifTrue: [exponent := exponent + hq - n.
-			r := (q bitAnd: (1 bitShift: n - hq) - 1) * b + r.
+			r := (q bitAnd: (1 bitShift: hq - n) - 1) * b + r.
 			q := q bitShift: n - hq].
 	hq < n
 		ifTrue: [exponent := exponent + hq - n.
 			q1 := (r bitShift: n - hq) quo: b.
 			q := (q bitShift: n - hq) bitAnd: q1.
-			r := r - (q1 * b)].
+			r := (r bitShift: n - hq) - (q1 * b)].
 		
 	"check if we should round upward.
 	The case of exact half (q bitAnd: 1) isZero not & (r isZero)

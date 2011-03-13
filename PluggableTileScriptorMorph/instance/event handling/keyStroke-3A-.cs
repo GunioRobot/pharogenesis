@@ -3,5 +3,5 @@ keyStroke: evt
 
 
 	| sm |
-	(sm _ self syntaxMorph) ifNotNil: [sm keyStroke: evt].
+	(sm := self syntaxMorph) ifNotNil: [sm keyStroke: evt].
 	super keyStroke: evt

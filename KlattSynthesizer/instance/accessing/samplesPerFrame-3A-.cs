@@ -1,2 +1,0 @@
-samplesPerFrame: anInteger
-	samplesPerFrame := anInteger

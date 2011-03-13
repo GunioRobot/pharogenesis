@@ -5,29 +5,29 @@ holderWithAlphabet
 
 	"ScriptingSystem holderWithAlphabet openInHand"
 
-	aContainer _ self prototypicalHolder useRoundedCorners.
+	aContainer := self prototypicalHolder useRoundedCorners.
 	aContainer borderColor: Color blue lighter.
 
-	aWrapper _ AlignmentMorph new hResizing: #shrinkWrap; vResizing: #shrinkWrap; layoutInset: 0.
-	aWrapper addMorphBack: (aMorph _ TextMorph new contents: 'A').
+	aWrapper := AlignmentMorph new hResizing: #shrinkWrap; vResizing: #shrinkWrap; layoutInset: 0.
+	aWrapper addMorphBack: (aMorph := TextMorph new contents: 'A').
 	aMorph beAllFont: ((TextStyle named: Preferences standardEToysFont familyName) fontOfSize: 24).
 	aMorph width: 14; lock.
 	aWrapper beTransparent; setNameTo: 'A'.
-	aPlayer _ aWrapper assuredPlayer.
+	aPlayer := aWrapper assuredPlayer.
 	aPlayer addInstanceVariableNamed: #index type: #Number value: 1.
 	aContainer addMorphBack: aWrapper.
 	2 to: 26 do:
 		[:anIndex |
-			newMorph _ aWrapper usableSiblingInstance.
+			newMorph := aWrapper usableSiblingInstance.
 			newMorph player perform: #setIndex: with: anIndex.
-			newMorph firstSubmorph contents: (oneCharString _ ($A asciiValue + anIndex - 1) asCharacter asString).
+			newMorph firstSubmorph contents: (oneCharString := ($A asciiValue + anIndex - 1) asCharacter asString).
 			newMorph setNameTo: oneCharString.
 
 			aContainer addMorphBack: newMorph].
 
 	#(' ' '.' '#') with: #(27 28 29) do:
 		[:aString :anIndex |
-			newMorph _ aWrapper usableSiblingInstance.
+			newMorph := aWrapper usableSiblingInstance.
 			newMorph player perform: #setIndex: with: anIndex.
 			newMorph firstSubmorph contents: aString.
 			aString = ' '

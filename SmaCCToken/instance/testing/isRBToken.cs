@@ -1,2 +1,0 @@
-isRBToken
-	^false

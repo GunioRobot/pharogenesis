@@ -1,8 +1,8 @@
 row: aColor on: aParseNode
 
 	| r color |
-	color _ self translateColor: aColor.
-	(r _ self newRow)
+	color := self translateColor: aColor.
+	(r := self newRow)
 		parseNode: aParseNode;
 		layoutInset: r standardInset;
 		hResizing: #shrinkWrap;

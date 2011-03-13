@@ -1,3 +1,0 @@
-stopSound
-
-	SoundPlayer shutDown.

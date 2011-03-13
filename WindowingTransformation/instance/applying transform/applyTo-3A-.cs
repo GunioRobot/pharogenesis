@@ -4,7 +4,7 @@ applyTo: anObject
 
 	| transformedObject |
 	scale == nil
-		ifTrue: [transformedObject _ anObject]
-		ifFalse: [transformedObject _ anObject scaleBy: scale].
-	transformedObject _ transformedObject translateBy: translation.
+		ifTrue: [transformedObject := anObject]
+		ifFalse: [transformedObject := anObject scaleBy: scale].
+	transformedObject := transformedObject translateBy: translation.
 	^transformedObject

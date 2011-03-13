@@ -3,4 +3,4 @@ updateToPlayer: aPlayer
 
 	(currentScriptEditor notNil and: [currentScriptEditor ~~ #textuallyCoded]) ifTrue:
 		[currentScriptEditor updateToPlayer: aPlayer].
-	player _ aPlayer
+	player := aPlayer

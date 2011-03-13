@@ -1,9 +1,9 @@
 initialize
 
-	musicTypeList _ #('reggae' 'classical' 'early').
-	artistList _ #(
+	musicTypeList := #('reggae' 'classical' 'early').
+	artistList := #(
 		('alpha blondy' 'black uhuru' 'bob marley' 'burning spear')
 		('bach' 'beethoven' 'josquin' 'morley' 'mozart' 'telemann')
 		('josquin' 'morley' 'telemann')).
-	musicTypeIndex _ 0.
-	artistIndex _ 0.
+	musicTypeIndex := 0.
+	artistIndex := 0.

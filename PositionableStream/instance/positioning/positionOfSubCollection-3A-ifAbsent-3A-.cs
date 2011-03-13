@@ -3,7 +3,7 @@ positionOfSubCollection: subCollection ifAbsent: exceptionBlock
 	If no such match is found, answer the result of evaluating argument, exceptionBlock."
 
 	| pattern startPosition currentPosition |
-	pattern _ ReadStream on: subCollection.
+	pattern := ReadStream on: subCollection.
 	startPosition := self position.
 	[pattern atEnd] whileFalse: 
 		[self atEnd ifTrue: [^exceptionBlock value].

@@ -1,1 +1,0 @@
-FixUnderscores class instanceVariableNames: ''

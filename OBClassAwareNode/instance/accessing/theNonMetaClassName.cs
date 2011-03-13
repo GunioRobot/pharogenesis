@@ -1,2 +1,0 @@
-theNonMetaClassName
-	^ self theNonMetaClass name

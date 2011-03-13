@@ -2,10 +2,10 @@ matchIndex: newPlace
 	| tms pair |
 	"One we are looking at, in cards that matched the last template search."
 
-	tms _ self class classPool at: #TemplateMatches ifAbsent: [
+	tms := self class classPool at: #TemplateMatches ifAbsent: [
 		self class addClassVarName: 'TemplateMatches'.
 		self class classPool at: #TemplateMatches put: IdentityDictionary new].
-	pair _ tms at: self ifAbsent: [tms at: self put: (Array new: 2)].
+	pair := tms at: self ifAbsent: [tms at: self put: (Array new: 2)].
 	pair at: 2 put: newPlace.
 	newPlace = 0 ifTrue: [^ self].
 	pair first ifNil: [^ self].

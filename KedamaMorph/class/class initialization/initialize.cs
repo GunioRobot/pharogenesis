@@ -1,4 +1,4 @@
 initialize
 	"Kedama initialize"
 
-	RandomSeed _ 17.
+	RandomSeed := 17.

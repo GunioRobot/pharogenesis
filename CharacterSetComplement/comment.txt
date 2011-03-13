@@ -1,0 +1,4 @@
+CharacterSetComplement is a space efficient implementation of (CharacterSet complement) taking care of WideCharacter (code > 255)
+
+instance variables:
+	absent <CharacterSet> contains character that are not in the set (i.e. my complement)

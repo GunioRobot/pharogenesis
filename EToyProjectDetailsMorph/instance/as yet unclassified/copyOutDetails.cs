@@ -2,7 +2,7 @@ copyOutDetails
 
 	| newDetails |
 
-	newDetails _ Dictionary new.
+	newDetails := Dictionary new.
 	self fieldToDetailsMappings do: [ :each |
 		namedFields at: each first ifPresent: [ :field |
 			newDetails at: each second put: field contents string

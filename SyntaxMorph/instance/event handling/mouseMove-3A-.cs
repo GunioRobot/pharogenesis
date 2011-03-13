@@ -8,9 +8,9 @@ false ifTrue: ["for now, do not drag off a tile"
 		mouseDownLoc ifNotNil: [
 			(evt cursorPoint dist: mouseDownLoc) > 4 ifTrue:
 				["If drag 5 pixels, then tear off a copy of outer selection."
-				selection _ outerMorph ifNil: [self].
+				selection := outerMorph ifNil: [self].
 				selection deletePopup.
-				evt hand attachMorph: (dup _ selection duplicate).
+				evt hand attachMorph: (dup := selection duplicate).
 				Preferences tileTranslucentDrag
 					ifTrue: [dup lookTranslucent]
 					ifFalse: [dup align: dup topLeft

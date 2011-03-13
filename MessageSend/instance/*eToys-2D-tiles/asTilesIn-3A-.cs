@@ -3,26 +3,26 @@ asTilesIn: playerClass
 	"Construct SyntaxMorph tiles for me."
 
 	"This is really cheating!  Make a true parse tree later. -tk"
-	code _ String streamContents: [:strm | 
+	code := String streamContents: [:strm | 
 		strm nextPutAll: 'doIt'; cr; tab.
 		strm nextPutAll: (self stringFor: receiver).
-		keywords _ selector keywords.
+		keywords := selector keywords.
 		strm space; nextPutAll: keywords first.
-		(num _ selector numArgs) > 0 ifTrue: [strm space. 
+		(num := selector numArgs) > 0 ifTrue: [strm space. 
 					strm nextPutAll: (self stringFor: arguments first)].
 		2 to: num do: [:kk |
 			strm space; nextPutAll: (keywords at: kk).
 			strm space; nextPutAll: (self stringFor: (arguments at: kk))]].
 	"decompile to tiles"
-	tree _ Compiler new 
+	tree := Compiler new 
 		parse: code 
 		in: playerClass
 		notifying: nil.
-	syn _ tree asMorphicSyntaxUsing: SyntaxMorph.
-	block _ syn submorphs detect: [:mm | 
+	syn := tree asMorphicSyntaxUsing: SyntaxMorph.
+	block := syn submorphs detect: [:mm | 
 		(mm respondsTo: #parseNode) ifTrue: [
 			mm parseNode class == BlockNode] ifFalse: [false]].
-	phrase _ block submorphs detect: [:mm | 
+	phrase := block submorphs detect: [:mm | 
 		(mm respondsTo: #parseNode) ifTrue: [
 			mm parseNode class == MessageNode] ifFalse: [false]].
 	^ phrase

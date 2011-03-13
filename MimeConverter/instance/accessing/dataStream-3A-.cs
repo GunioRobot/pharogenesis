@@ -1,2 +1,2 @@
 dataStream: anObject
-	dataStream _ anObject
+	dataStream := anObject

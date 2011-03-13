@@ -1,3 +1,3 @@
 removeFromTurtleDisplayList: examplerPlayer
 
-	turtlesToDisplay _ turtlesToDisplay copyWithout: examplerPlayer.
+	turtlesToDisplay := turtlesToDisplay copyWithout: examplerPlayer.

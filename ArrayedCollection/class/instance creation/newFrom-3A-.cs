@@ -1,7 +1,7 @@
 newFrom: aCollection 
 	"Answer an instance of me containing the same elements as aCollection."
 	| newArray |
-	newArray _ self new: aCollection size.
+	newArray := self new: aCollection size.
 	1 to: aCollection size do: [:i | newArray at: i put: (aCollection at: i)].
 	^ newArray
 

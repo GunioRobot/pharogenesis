@@ -3,7 +3,7 @@ displayView
 	fillColor specifed by this class."
 
 	| oldOffset |
-	oldOffset _ displayedForm offset.
+	oldOffset := displayedForm offset.
 	displayedForm offset: 0@0.
 	displayedForm
 		displayOn: Display

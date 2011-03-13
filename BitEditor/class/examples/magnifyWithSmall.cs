@@ -8,9 +8,9 @@ magnifyWithSmall
 "
 	"Open a BitEditor viewing an area on the screen which the user chooses"
 	| area form |
-	area _ Rectangle fromUser.
+	area := Rectangle fromUser.
 	area isNil ifTrue: [^ self].
-	form _ Form fromDisplay: area.
+	form := Form fromDisplay: area.
 	self openOnForm: form
 
 	"BitEditor magnifyWithSmall."

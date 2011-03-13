@@ -7,19 +7,19 @@ Call #flushPlayerListCache; to force recomputation."
 	playerList ifNotNil:
 		[^ playerList].
 
-	fullList _ associatedMorph allMorphs select: 
+	fullList := associatedMorph allMorphs select: 
 		[:m | m player ~~ nil] thenCollect: [:m | m player].
 	fullList copy do:
 		[:aPlayer |
 			aPlayer class scripts do:
 				[:aScript |  aScript isTextuallyCoded ifFalse:
 					[aScript currentScriptEditor ifNotNilDo: [:ed |
-						objectsReferredToByTiles _ ed allMorphs
+						objectsReferredToByTiles := ed allMorphs
 							select:
 								[:aMorph | (aMorph isKindOf: TileMorph) and: [aMorph type == #objRef]]
 							thenCollect:
 								[:aMorph | aMorph actualObject].
 						fullList addAll: objectsReferredToByTiles]]]].
 
-	^ playerList _ (fullList asSet asSortedCollection:
+	^ playerList := (fullList asSet asSortedCollection:
 			[:a :b | a externalName < b externalName]) asArray

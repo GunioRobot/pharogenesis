@@ -6,9 +6,9 @@ onServer: aProjectServer
 	(self basicNew)
 		project: nil
 		actionBlock: [ :x | 
-			criteria _ OrderedCollection new.
+			criteria := OrderedCollection new.
 			x keysAndValuesDo: [ :k :v |
-				(clean _ v withBlanksTrimmed) isEmpty
+				(clean := v withBlanksTrimmed) isEmpty
 					ifFalse: [criteria add: k,': *',clean,'*']].
 			aProjectServer queryProjectsAndShow: criteria];
 

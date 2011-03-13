@@ -1,2 +1,0 @@
-emptySymbolTokenId
-	^scanner emptySymbolTokenId

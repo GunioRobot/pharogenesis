@@ -1,2 +1,0 @@
-asClassSideNode
-	^OBMetaclassNode on: self

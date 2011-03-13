@@ -8,6 +8,6 @@ insetDisplayBox
 	the resulting Rectangle will be invalid."
 
 	insetDisplayBox ifNil: 
-		[insetDisplayBox _ self computeInsetDisplayBox.
+		[insetDisplayBox := self computeInsetDisplayBox.
 		 self centerLabel].
 	^insetDisplayBox

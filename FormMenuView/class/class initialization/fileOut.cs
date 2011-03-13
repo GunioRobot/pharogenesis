@@ -3,7 +3,7 @@ fileOut
 	"FormMenuView fileOut"
 
 	| names |
-	names _ 
+	names := 
 		#('select.form' 'singlecopy.form' 'repeatcopy.form' 'line.form' 'curve.form'
 		'block.form' 'over.form' 'under.form' 'reverse.form' 'erase.form' 'in.form'
 		'magnify.form' 'white.form' 'lightgray.form' 'gray.form' 'darkgray.form' 'black.form'

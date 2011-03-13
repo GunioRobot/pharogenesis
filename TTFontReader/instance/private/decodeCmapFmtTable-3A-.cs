@@ -22,21 +22,21 @@ decodeCmapFmtTable: entry
 		1 to: segCount do: [:i | (segments at: i) at: 3 put: entry nextShort]. "idDelta"
 		offset := entry offset.
 		1 to: segCount do: [:i | (segments at: i) at: 4 put: entry nextUShort]. "idRangeOffset"
-		cmap := Array new: 256 withAll: 0. "could be larger, but Squeak can't handle that"
+		entryCount := segments inject: 0 into: [:max :seg | max max: seg second].
+		cmap := Array new: entryCount+1 withAll: 0..
 		segments withIndexDo:
 			[:seg :si |
 			seg first to: seg second do:
 				[:i |
-				i < 256 ifTrue:
-					[seg last > 0 ifTrue:
-						["offset to glypthIdArray - this is really C-magic!"
-						entry offset: i - seg first - 1 * 2 + seg last + si + si + offset. 
-						code := entry nextUShort.
-						code > 0 ifTrue: [code := code + seg third]]
-					ifFalse:
-						["simple offset"
-						code := i + seg third].
-					cmap at: i + 1 put: code]]].
+				seg last > 0 ifTrue:
+					["offset to glypthIdArray - this is really C-magic!"
+					entry offset: i - seg first - 1 * 2 + seg last + si + si + offset. 
+					code := entry nextUShort.
+					code > 0 ifTrue: [code := code + seg third]]
+				ifFalse:
+					["simple offset"
+					code := i + seg third].
+				cmap at: i + 1 put: code]].
 		^ cmap].
 
 	cmapFmt = 6 ifTrue: "trimmed table"

@@ -2,7 +2,7 @@ initialize
 	"Refer to the comment in View|initialize."
 
 	super initialize.
-	topDelimiter _ '------------'.
-	bottomDelimiter _ '------------'.
-	isEmpty _ true.
+	topDelimiter := '------------'.
+	bottomDelimiter := '------------'.
+	isEmpty := true.
 	self list: Array new

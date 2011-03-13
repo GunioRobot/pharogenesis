@@ -1,5 +1,5 @@
 setRoot: aString dataType: aSymbol
-	assignmentRoot _ aString.
-	assignmentSuffix _ ':'.
-	dataType _ aSymbol.
+	assignmentRoot := aString.
+	assignmentSuffix := ':'.
+	dataType := aSymbol.
 	self updateLiteralLabel

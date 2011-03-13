@@ -1,2 +1,2 @@
 flushPlayerListCache
-	playerList _ nil
+	playerList := nil

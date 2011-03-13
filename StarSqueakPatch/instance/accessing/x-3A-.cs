@@ -1,3 +1,0 @@
-x: anInteger
-
-	x := anInteger.

@@ -1,4 +1,4 @@
 ttcDescription: aTTCDescription
 
 	ttcDescription := aTTCDescription.
-	self recreateCache.
+	self flushCache.

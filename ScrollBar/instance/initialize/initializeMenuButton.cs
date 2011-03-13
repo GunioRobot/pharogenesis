@@ -3,7 +3,7 @@ initializeMenuButton
 	"Preferences disable: #scrollBarsWithoutMenuButton"
 	"Preferences enable: #scrollBarsWithoutMenuButton"
 	(Preferences valueOfFlag: #scrollBarsWithoutMenuButton)
-		ifTrue: [^ self].
+		ifTrue: [menuButton := nil .^ self].
 	menuButton _ self roundedScrollbarLook
 		ifTrue: [RectangleMorph
 					newBounds: ((bounds isWide

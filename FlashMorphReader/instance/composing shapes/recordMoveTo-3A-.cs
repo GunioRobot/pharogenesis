@@ -1,2 +1,0 @@
-recordMoveTo: aPoint
-	location := aPoint.

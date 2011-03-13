@@ -1,6 +1,6 @@
 extent: aPoint
 
 	| wasDifferent |
-	wasDifferent _ self extent ~= aPoint.
+	wasDifferent := self extent ~= aPoint.
 	super extent: aPoint.
 	wasDifferent ifTrue: [self adjustSubmorphPositions].

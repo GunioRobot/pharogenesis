@@ -1,13 +1,13 @@
 rememberCostume: aCostume
 	"Put aCostume in my remembered-costumes list, as the final element"
 	| costumeToRemember existing |
-	costumeToRemember _ aCostume renderedMorph.
+	costumeToRemember := aCostume renderedMorph.
 		"Remember real morphs, not their transformations"
-	costumes ifNil: [costumes _ OrderedCollection new].
-	existing _ (costumeToRemember isSketchMorph)
+	costumes ifNil: [costumes := OrderedCollection new].
+	existing := (costumeToRemember isSketchMorph)
 		ifTrue:
 			[self knownSketchCostumeWithSameFormAs: costumeToRemember]
 		ifFalse:
 			[costumes detect: [:c | c == costumeToRemember] ifNone: [nil]].
-	costumes _ costumes copyWithout: existing.
+	costumes := costumes copyWithout: existing.
 	costumes addLast: costumeToRemember

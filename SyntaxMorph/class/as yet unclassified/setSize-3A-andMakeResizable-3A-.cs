@@ -1,6 +1,6 @@
 setSize: oldExtent andMakeResizable: outerMorph
 	| tw |
-	(tw _ outerMorph findA: TwoWayScrollPane) ifNil: [^self].
+	(tw := outerMorph findA: TwoWayScrollPane) ifNil: [^self].
 	tw hResizing: #spaceFill;
 		vResizing: #spaceFill;
 		color: Color transparent;

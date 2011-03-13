@@ -1,2 +1,2 @@
 documentation: d
-	documentation _ d
+	documentation := d

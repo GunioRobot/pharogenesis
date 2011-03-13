@@ -1,3 +1,3 @@
 nextTurtleID
 
-	^ lastTurtleID _ lastTurtleID + 1.
+	^ lastTurtleID := lastTurtleID + 1.

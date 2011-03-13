@@ -1,7 +1,7 @@
 markerDelta
 
 	| viewList |
-	viewList _ view list.
+	viewList := view list.
 	viewList compositionRectangle height == 0 ifTrue: [
 		^ (marker top - scrollBar inside top) - scrollBar inside height
 	].

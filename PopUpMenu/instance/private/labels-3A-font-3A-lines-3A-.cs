@@ -1,5 +1,5 @@
 labels: aString font: aFont lines: anArray
 
-	labelString _ aString.
-	font _ aFont.
-	lineArray _ anArray.
+	labelString := aString.
+	font := aFont.
+	lineArray := anArray.

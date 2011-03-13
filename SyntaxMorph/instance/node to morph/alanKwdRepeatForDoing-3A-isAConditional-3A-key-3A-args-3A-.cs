@@ -2,13 +2,13 @@ alanKwdRepeatForDoing: aNode isAConditional: template key: key args: args
 
 	| nodeWithNilReceiver row column keywords |
 
-	nodeWithNilReceiver _ aNode copy receiver: nil.
-	column _ self addColumn: #keyword1 on: nodeWithNilReceiver.
-	keywords _ key keywords.
+	nodeWithNilReceiver := aNode copy receiver: nil.
+	column := self addColumn: #keyword1 on: nodeWithNilReceiver.
+	keywords := key keywords.
 	keywords
 		with: (args first: keywords size)
 		do: [:kwd :arg |
-			(row _ column addRow: #keyword2 on: nodeWithNilReceiver)
+			(row := column addRow: #keyword2 on: nodeWithNilReceiver)
 				parseNode: (nodeWithNilReceiver as: MessagePartNode).
 			row addToken: kwd
 				type: #keyword2

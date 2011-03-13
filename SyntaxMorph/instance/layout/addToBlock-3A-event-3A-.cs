@@ -2,15 +2,15 @@ addToBlock: aMorph event: evt
 	"Insert a new line of code.  Figure out who it goes before.  If evt Y is within an existing line (to the right of a tile), then replace that tile."
 
 	| whereDropped dropBefore replace |
-	whereDropped _ "self pointFromWorld:" evt cursorPoint.
-	dropBefore _ self submorphs 
+	whereDropped := "self pointFromWorld:" evt cursorPoint.
+	dropBefore := self submorphs 
 		detect: [:each | each isSyntaxMorph ifTrue: [
 			whereDropped y < each top ifTrue: [true]	"before this one"
 				ifFalse: [whereDropped y < each bottom 
-							ifTrue: [replace _ true]	"replace this one"
+							ifTrue: [replace := true]	"replace this one"
 							ifFalse: [false]]]] "try next line"
 		ifNone: [nil].
-	(aMorph nodeClassIs: ReturnNode) ifTrue: [dropBefore _ nil].
+	(aMorph nodeClassIs: ReturnNode) ifTrue: [dropBefore := nil].
 		"Returns are always at the end. (Watch out for comments)"
 
 	dropBefore 

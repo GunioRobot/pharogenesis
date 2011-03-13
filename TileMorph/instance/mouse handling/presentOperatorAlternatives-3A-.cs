@@ -3,10 +3,10 @@ presentOperatorAlternatives: evt
 
 	| result ops |
 
-	((ops _ ScriptingSystem arithmeticalOperatorsAndHelpStrings first) includes: operatorOrExpression) ifFalse:
-		[((ops _ ScriptingSystem numericComparitorsAndHelpStrings first) includes: operatorOrExpression)
+	((ops := ScriptingSystem arithmeticalOperatorsAndHelpStrings first) includes: operatorOrExpression) ifFalse:
+		[((ops := ScriptingSystem numericComparitorsAndHelpStrings first) includes: operatorOrExpression)
 			ifFalse: [^ self]].
 		
-	(result _ (SelectionMenu selections: ops) startUp) ifNotNil:
+	(result := (SelectionMenu selections: ops) startUp) ifNotNil:
 		[self setOperatorAndUseArrows: result asString.
 		self scriptEdited]

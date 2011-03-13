@@ -8,7 +8,7 @@ colorComponentPhraseFor: componentName
 				argType: #Color.	"temp dummy"
 	(outerPhrase submorphs second) delete.	"operator"
 	(outerPhrase submorphs second) delete.	"color"
-	getTile _ KedamaGetColorComponentTile new.
+	getTile := KedamaGetColorComponentTile new.
 	getTile componentName: componentName.
 	getTile setPatchDefaultTo: (scriptedPlayer defaultPatchPlayer).
 	outerPhrase addMorphBack: getTile.

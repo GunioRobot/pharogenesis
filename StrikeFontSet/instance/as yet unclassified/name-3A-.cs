@@ -1,3 +1,3 @@
 name: aString
 
-	name := aString
+	name _ aString

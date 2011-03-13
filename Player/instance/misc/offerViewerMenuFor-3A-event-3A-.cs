@@ -6,8 +6,8 @@ offerViewerMenuFor: aViewer event: evt
 		^ self offerAlternateViewerMenuFor: aViewer event: evt
 	].
 
-	aWorld _ aViewer world.
-	aMenu _ MenuMorph new defaultTarget: self.
+	aWorld := aViewer world.
+	aMenu := MenuMorph new defaultTarget: self.
 	aMenu title: self externalName.
 	aMenu addStayUpItem.
 	self costume renderedMorph offerCostumeViewerMenu: aMenu.

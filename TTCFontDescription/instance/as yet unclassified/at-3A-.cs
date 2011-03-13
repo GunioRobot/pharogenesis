@@ -1,5 +1,5 @@
 at: aCharOrInteger
 
 	| char |
-	char := aCharOrInteger asCharacter.
+	char _ aCharOrInteger asCharacter.
 	^ glyphs at: (char charCode) + 1.

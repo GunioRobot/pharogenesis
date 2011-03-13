@@ -6,7 +6,7 @@ renameScript: oldSelector newSelector: newSelector
 	costume allMorphsDo: [:mm |
 		self retargetButton: mm oldSelector: oldSelector newSelector: newSelector].
 
-	stack _ costume valueOfProperty: #myStack.
+	stack := costume valueOfProperty: #myStack.
 	stack ifNotNil:
 		[stack cards do: [:cc |
 			cc privateMorphs do: [:pp | 

@@ -1,0 +1,2 @@
+startComment
+	self stream nextPutAll: '<-- '

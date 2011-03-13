@@ -3,7 +3,7 @@ asStringWithCr
 usually strings.
 	 Useful for labels for PopUpMenus."
 	| labelStream |
-	labelStream _ WriteStream on: (String new: 200).
+	labelStream := WriteStream on: (String new: 200).
 	self do: [:each |
 		each isString
 			ifTrue: [labelStream nextPutAll: each; cr]

@@ -1,2 +1,0 @@
-ratioData
-	^rData

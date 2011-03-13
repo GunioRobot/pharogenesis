@@ -7,7 +7,7 @@ closeUnchangedWindows
 except those with unaccepted edits?')
 		ifFalse: [^ self].
 
-	clean _ ScheduledControllers scheduledControllers select:
+	clean := ScheduledControllers scheduledControllers select:
 		[:c | c model canDiscardEdits and: [(c isKindOf: ScreenController) not]].
 	clean do: [:c | c closeAndUnscheduleNoTerminate].
 	self restoreDisplay.

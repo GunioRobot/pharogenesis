@@ -8,16 +8,16 @@ attachTileForCode: expression nodeType: nodeClass
 				findA: ReturnNode) findA: nodeClass) attachToHand].
 
 	expression = '<me by name>' ifTrue: ["Tile for the variable in References"
-		nn _ nodeClass knownName ifNil: [#+].
+		nn := nodeClass knownName ifNil: [#+].
 		(References at: nn asSymbol ifAbsent: [nil]) == nodeClass ifTrue: [
 			^ self attachTileForCode: nn nodeType: LiteralVariableNode].
 		"otherwise just give a tile for self"
 		^ self attachTileForCode: 'self' nodeType: VariableNode].
 
 	expression = '<assignment>' ifTrue: ["do something really special"
-		master _ self class new.
-		master addNoiseString: '  _  ' emphasis: TextEmphasis bold emphasisCode.
-		tile _ master firstSubmorph.
+		master := self class new.
+		master addNoiseString: '  _   ' emphasis: TextEmphasis bold emphasisCode.
+		tile := master firstSubmorph.
 		^ (tile parseNode: AssignmentNode new) attachToHand].	"special marker"
 		"When this is dropped on a variable, enclose it in 
 			a new assignment statement"

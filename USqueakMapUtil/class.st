@@ -1,0 +1,1 @@
+USqueakMapUtil class instanceVariableNames: ''

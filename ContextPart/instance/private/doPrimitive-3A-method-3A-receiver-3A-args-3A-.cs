@@ -6,6 +6,8 @@ doPrimitive: primitiveIndex method: meth receiver: receiver args: arguments
 	<primitive: 19> "Simulation guard"
 	"If successful, push result and return resuming context,
 		else ^ PrimitiveFailToken"
+		
+		
 	(primitiveIndex = 19) ifTrue:[
 		ToolSet 
 			debugContext: self
@@ -19,6 +21,9 @@ doPrimitive: primitiveIndex method: meth receiver: receiver args: arguments
 						nargs: (arguments at: 1))].
 	(primitiveIndex = 81 and: [receiver isMemberOf: BlockContext])
 		ifTrue: [^receiver pushArgs: arguments from: self].
+	(primitiveIndex = 82 and: [receiver isMemberOf: BlockContext])
+		ifTrue: [^receiver pushArgs: arguments first from: self].
+
 	primitiveIndex = 83 "afr 9/11/1998 19:50"
 		ifTrue: [^ self send: arguments first to: receiver
 					with: arguments allButFirst

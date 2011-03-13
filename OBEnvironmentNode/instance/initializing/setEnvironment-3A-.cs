@@ -1,2 +1,0 @@
-setEnvironment: anEnvironment
-	environment := anEnvironment

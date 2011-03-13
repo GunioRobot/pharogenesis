@@ -2,7 +2,7 @@ writeSingletonData
 	"Backgrounds that have just one card, may never get their data written into a CardPlayer. Make sure we do it."
 
 	| sieve |
-	sieve _ IdentityDictionary new.
+	sieve := IdentityDictionary new.
 	pages do: [:pp | sieve at: pp put: 0].
 	self privateCards do: [:cc | sieve at: cc costume put: (sieve at: cc costume) + 1].
 	sieve associationsDo: [:ass | 

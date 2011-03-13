@@ -1,2 +1,2 @@
 setPenDown: aBoolean
-	penDown _ aBoolean
+	penDown := aBoolean

@@ -3,6 +3,6 @@ collect: aBlock
 	resulting values into a collection that is like me. Answer with the new
 	collection."
 	| newCollection |
-	newCollection _ OrderedCollection new: self size.
+	newCollection := OrderedCollection new: self size.
 	self do: [:each | newCollection add: (aBlock value: each)].
 	^ newCollection

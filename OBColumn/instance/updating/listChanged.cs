@@ -1,2 +1,0 @@
-listChanged
-	self refreshAndSignal: true

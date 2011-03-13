@@ -1,1 +1,0 @@
-recordBitmap: bitmapId data: aForm

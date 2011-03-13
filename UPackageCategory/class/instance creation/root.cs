@@ -1,0 +1,2 @@
+root
+	^self withComponents: #()

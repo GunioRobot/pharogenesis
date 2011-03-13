@@ -9,5 +9,5 @@ morphToDropFrom: aMorph
 			ifFalse:
 				[aMorph]
 			ifTrue:
-				[vwr _ CategoryViewer new initializeFor: aMorph associatedPlayer categoryChoice: #basic.
+				[vwr := CategoryViewer new initializeFor: aMorph associatedPlayer categoryChoice: #basic.
 				vwr getterTilesFor: (Utilities getterSelectorFor: #graphic)  type: #Graphic]

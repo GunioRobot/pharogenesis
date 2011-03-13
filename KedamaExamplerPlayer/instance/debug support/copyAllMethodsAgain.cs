@@ -1,8 +1,8 @@
 copyAllMethodsAgain
 
 	| c result |
-	c _ turtles class.
-	result _ (ClassBuilder new)
+	c := turtles class.
+	result := (ClassBuilder new)
 		name: c name
 		inEnvironment: c environment
 		subclassOf: c superclass

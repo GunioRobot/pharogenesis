@@ -1,4 +1,4 @@
 searchString
 	"Answer the search string"
 
-	^ searchString ifNil: [searchString _ '']
+	^ searchString ifNil: [searchString := '']

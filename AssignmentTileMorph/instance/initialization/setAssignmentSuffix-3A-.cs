@@ -1,6 +1,6 @@
 setAssignmentSuffix: aString
-	assignmentSuffix _ aString.
+	assignmentSuffix := aString.
 	self computeOperatorOrExpression.
-	type _ #operator.
+	type := #operator.
  	self line1: (ScriptingSystem wordingForOperator: operatorOrExpression).
 	self addArrowsIfAppropriate; updateLiteralLabel

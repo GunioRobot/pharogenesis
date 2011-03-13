@@ -1,6 +1,6 @@
 changeTargetColorTo: aColor
 
 	self applyToWholeText ifTrue: [
-		lastGlobalColor _ aColor
+		lastGlobalColor := aColor
 	].
 	self changeSelectionAttributeTo: (TextColor color: aColor)

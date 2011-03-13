@@ -4,10 +4,10 @@ multiComposeLinesFrom: start to: stop delta: delta into: lineColl priorLines: pr
 
 	| newResult composer presentationInfo |
 
-	composer := MultiTextComposer new.
-	presentationLines := nil.
-	presentationText := nil.
-	newResult := composer
+	composer _ MultiTextComposer new.
+	presentationLines _ nil.
+	presentationText _ nil.
+	newResult _ composer
 		multiComposeLinesFrom: start 
 		to: stop 
 		delta: delta 
@@ -18,10 +18,10 @@ multiComposeLinesFrom: start to: stop delta: delta into: lineColl priorLines: pr
 		text: text 
 		container: container
 		wantsColumnBreaks: wantsColumnBreaks == true.
-	lines := newResult first asArray.
-	maxRightX := newResult second.
-	presentationInfo := composer getPresentationInfo.
-	presentationLines := presentationInfo first asArray.
-	presentationText := presentationInfo second.
+	lines _ newResult first asArray.
+	maxRightX _ newResult second.
+	presentationInfo _ composer getPresentationInfo.
+	presentationLines _ presentationInfo first asArray.
+	presentationText _ presentationInfo second.
 	"maxRightX printString displayAt: 0@0."
 	^maxRightX

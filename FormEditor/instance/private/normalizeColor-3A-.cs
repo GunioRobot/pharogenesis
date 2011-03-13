@@ -1,3 +1,3 @@
 normalizeColor: aColor
 
-	color _ aColor.
+	color := aColor.

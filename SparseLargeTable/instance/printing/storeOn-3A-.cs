@@ -5,7 +5,7 @@ storeOn: aStream
 		[aStream nextPut: $'.
 		1 to: self size do:
 			[:i |
-			aStream nextPut: (x _ self at: i).
+			aStream nextPut: (x := self at: i).
 			x == $' ifTrue: [aStream nextPut: x]].
 		aStream nextPutAll: ''' asLargeArrayChunkSize: '.
 		aStream nextPutAll: self chunkSize asString.
